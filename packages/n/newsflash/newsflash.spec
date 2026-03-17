@@ -1,7 +1,7 @@
 #
 # spec file for package newsflash
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define         appname io.gitlab.news_flash.NewsFlash
+%define         appid io.gitlab.news_flash.NewsFlash
 Name:           newsflash
-Version:        4.1.4
+Version:        5.0.0
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only
@@ -26,7 +26,6 @@ URL:            https://gitlab.com/news-flash/news_flash_gtk
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  appstream-glib
-BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
@@ -36,7 +35,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
-BuildRequires:  rust >= 1.88
+BuildRequires:  rust+cargo >= 1.92
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:  pkgconfig(clapper-gtk-0.0)
@@ -45,6 +44,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtksourceview-5)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
@@ -63,10 +63,28 @@ and having access to all your articles as long as you like.
 %autosetup -a1
 
 # show the actual version in the about page
-sed -i "s|version: '0.0.0'|version: '%{version}'|g" meson.build
+sed -i "s|version: '0.0.0'|version: '%{version}'|g" meson.build Cargo.toml
 
 %build
-%meson
+%{__meson} setup \
+        --buildtype=plain \
+        --prefix=%{_prefix} \
+        --libdir=%{_libdir} \
+        --libexecdir=%{_libexecdir} \
+        --bindir=%{_bindir} \
+        --sbindir=%{_sbindir} \
+        --includedir=%{_includedir} \
+        --datadir=%{_datadir} \
+        --mandir=%{_mandir} \
+        --infodir=%{_infodir} \
+        --localedir=%{_datadir}/locale \
+        --sysconfdir=%{_sysconfdir} \
+        --localstatedir=%{_localstatedir} \
+        --sharedstatedir=%{_sharedstatedir} \
+        --wrap-mode=%{__meson_wrap_mode} \
+        --auto-features=%{__meson_auto_features} \
+        %{_vpath_srcdir} %{_vpath_builddir} \
+        %{nil}
 %meson_build
 
 %install
@@ -76,12 +94,12 @@ sed -i "s|version: '0.0.0'|version: '%{version}'|g" meson.build
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/%{appname}
-%{_datadir}/applications/%{appname}.desktop
-%{_datadir}/dbus-1/services/%{appname}.service
-%{_datadir}/metainfo/%{appname}.appdata.xml
-%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
-%{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/dbus-1/services/%{appid}.service
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_iconsdir}/hicolor/scalable/apps/%{appid}.svg
+%{_iconsdir}/hicolor/symbolic/apps/%{appid}-symbolic.svg
 
 %files lang -f %{name}.lang
 

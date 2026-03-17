@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Mar 16 17:18:32 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 5.0.0:
+  * Replace webkitgtk with custom html2gtk widget
+  * Update audio/video/image enclosure widgets
+  * Fix showing online toast if not offline before
+  * Replace lots of libxml2 code with html5ever
+  * Category management fixes
+  * Local RSS: add small delay between requests to avoid issues
+- Update to version 4.2.1:
+  * Fix appstream data
+- Update to version 4.2.0:
+  * fix jumping back to article list after scrape
+  * use rustls instead of native tls
+  * remove share to pocket
+  * add share to bluesky
+  * show current selection in article column title if sidebar is hidden
+  * fix inconsistent today start/end times
+  * move article view settings into popover
+  * local RSS: always space out requests to same host
+  * Show keybindings in tooltips
+  * enclosure image gallery
+  * update gnome runtime to 49
+  * env var to log to file
+  * switch article list sort by to published by default
+  * fix article scroll with 'large text' enabled
+
+-------------------------------------------------------------------
 Tue Sep 16 12:33:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 4.1.4:

@@ -203,4 +203,35 @@
     mapping (forwarded request 1305185 from rrahl0)</comment>
     <requestid>1305186</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c1db71c3e58f8aac30694ae4c7fc5246</srcmd5>
+    <version>5.0.0</version>
+    <time>1773770729</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.0.0:
+  * Replace webkitgtk with custom html2gtk widget
+  * Update audio/video/image enclosure widgets
+  * Fix showing online toast if not offline before
+  * Replace lots of libxml2 code with html5ever
+  * Category management fixes
+  * Local RSS: add small delay between requests to avoid issues
+- Update to version 4.2.1:
+  * Fix appstream data
+- Update to version 4.2.0:
+  * fix jumping back to article list after scrape
+  * use rustls instead of native tls
+  * remove share to pocket
+  * add share to bluesky
+  * show current selection in article column title if sidebar is hidden
+  * fix inconsistent today start/end times
+  * move article view settings into popover
+  * local RSS: always space out requests to same host
+  * Show keybindings in tooltips
+  * enclosure image gallery
+  * update gnome runtime to 49
+  * env var to log to file
+  * switch article list sort by to published by default
+  * fix article scroll with 'large text' enabled (forwarded request 1339536 from rrahl0)</comment>
+    <requestid>1339537</requestid>
+  </revision>
 </revisionlist>
