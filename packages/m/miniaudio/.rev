@@ -29,4 +29,15 @@
   * Web: Fixed an error when uninitializing a context</comment>
     <requestid>1328410</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7686d56f5f7fb2024d5fdd9bd1ada43a</srcmd5>
+    <version>0.11.25</version>
+    <time>1773770757</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.11.25:
+  * Bug fixes to the WAV decoder
+  * Fixed warnings with the Emscripten build relating to the renaming of of
+    __EMSCRIPTEN_major/minor/tiny__ macros (forwarded request 1339633 from rrahl0)</comment>
+    <requestid>1339634</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           miniaudio
-Version:        0.11.24
+Version:        0.11.25
 Release:        0
 Summary:        Audio playback and capture library written in C, in a single source file
 License:        MIT-0 OR Unlicense

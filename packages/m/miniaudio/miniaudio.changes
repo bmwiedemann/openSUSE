@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 13:31:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.11.25:
+  * Bug fixes to the WAV decoder
+  * Fixed warnings with the Emscripten build relating to the renaming of of
+    __EMSCRIPTEN_major/minor/tiny__ macros
+
+-------------------------------------------------------------------
 Wed Jan 21 00:56:53 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.11.24:
