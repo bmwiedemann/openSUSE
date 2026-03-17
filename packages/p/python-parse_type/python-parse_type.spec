@@ -1,7 +1,7 @@
 #
 # spec file for package python-parse_type
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %{?sle15_python_module_pythons}
-%bcond_without python2
 Name:           python-parse_type
-Version:        0.6.3
+Version:        0.6.6
 Release:        0
 Summary:        Extension to the parse module
 License:        MIT
@@ -36,12 +35,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-parse >= 1.12.0
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-enum34
-%endif
-%ifpython2
-Requires:       python-enum34
-%endif
 # SECTION test requirements
 BuildRequires:  %{python_module parse >= 1.12.0}
 BuildRequires:  %{python_module pytest >= 3.0}

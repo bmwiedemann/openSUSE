@@ -93,4 +93,19 @@
     <comment></comment>
     <requestid>1218158</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0ff3022444c65a283d324480f9c1f24d</srcmd5>
+    <version>0.6.6</version>
+    <time>1773770672</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.6:
+  * Disable setuptools-scm: Too many side-effects
+  * README: Remove &quot;downloads&quot; badge -- too noisy
+  * setup.py/pyproject.toml: Update, correct and tweaks
+  * tests: Fix file permissions.
+  * Use `setuptools-scm` to simplify config-management tasks.
+  * Test balloon for CI workflow
+- update python-parse_type-remove-python2.patch</comment>
+    <requestid>1339443</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 16 21:42:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.6:
+  * Disable setuptools-scm: Too many side-effects
+  * README: Remove "downloads" badge -- too noisy
+  * setup.py/pyproject.toml: Update, correct and tweaks
+  * tests: Fix file permissions.
+  * Use `setuptools-scm` to simplify config-management tasks.
+  * Test balloon for CI workflow
+- update python-parse_type-remove-python2.patch
+
+-------------------------------------------------------------------
 Thu Sep 26 22:26:13 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons.
