@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 15 10:11:16 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 17.0.04:
+  * Plane 0: Add a new set of over 28,000 Unicode Standard T-source
+    Chinese glyphs that parallel the Unicode G-source Chinese
+    glyphs. This new collection of glyphs is available as unifont_t
+    BDF, PCF, and OpenType font files
+  * Adjusted several Devanagari glyphs (U+0900..U+097F)
+  * Adjust several glyphs in Chinese, Ancient Syllables
+  * Completed the first 2100 characters of the "Standardized
+    Character Form Table for Commonly Used Characters in Ancient
+    Book Printing"
+  * Plane 3: multiple updates
+
+-------------------------------------------------------------------
 Sun Nov  2 09:19:36 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 17.0.03:
