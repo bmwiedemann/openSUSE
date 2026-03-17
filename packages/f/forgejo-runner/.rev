@@ -552,4 +552,17 @@
   * refactor: add 1-to-1 client-to-runner relationship into poller (forwarded request 1334502 from rrahl0)</comment>
     <requestid>1334503</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>644379b73e2c403371ccc04756cef6d8</srcmd5>
+    <version>12.7.2</version>
+    <time>1773770737</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.7.2:
+  * fix: only ping Forgejo during offline registration when --connect is enabled
+  * fix: URL comparison when determining token auth support
+- Update to version 12.7.1:
+  * fix: implement idempotent FetchTask API calls to reduce risk of lost tasks
+  * fix: accept boolean workflow_call inputs that are booleans (forwarded request 1339564 from rrahl0)</comment>
+    <requestid>1339565</requestid>
+  </revision>
 </revisionlist>
