@@ -47,7 +47,7 @@ Source8:        oniguruma-v6.9.4_mark1-src.tar.xz
 # public-mipi-sys-t: https://github.com/MIPI-Alliance/public-mipi-sys-t
 Source9:        public-mipi-sys-t-1.1-edk2.tar.gz
 # mbedtls: https://github.com/Mbed-TLS/mbedtls
-Source10:       mbedtls-3.3.0.tar.gz
+Source10:       mbedtls-3.6.5.tar.gz
 # brotli: https://github.com/google/brotli
 Source11:       brotli-e230f474b87134e8c6c85b630084c612057f253e.tar.gz
 # libspdm: https://github.com/DMTF/libspdm.git

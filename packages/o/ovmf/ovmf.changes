@@ -1,9 +1,23 @@
 -------------------------------------------------------------------
-Thu Mar 12 06:31:49 UTC 2026 - YI HSIN Lyu <richard.lyu@suse.com>
+Tue Mar 17 02:47:54 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
 
-- Deprecate the 2MB OVMF image (jsc#PED-12652)
-  - Remove ovmf-x86_64 
-  - Remove ovmf-x86_64-xen
+- Update mbedtls to 3.6.5 to fix CVE-2025-59438 (bsc#1252441)
+  - Requires Mbed TLS 3.6.5 or higher to mitigate vulnerability.
+
+-------------------------------------------------------------------
+Thu Mar 12 06:31:49 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Deprecate the 2MB OVMF image (jsc#PED-12652):
+  As the EDK II code base continues to grow, the 2MB OVMF image is no 
+  longer sufficient to accommodate the full set of features and 
+  up-to-date libraries. This limitation poses a potential security 
+  risk, as critical components such as OpenSSL cannot be upgraded 
+  to their latest secure versions within the constraints of the 
+  2MB image size. To ensure long-term maintainability, feature 
+  completeness, and security compliance, we deprecate the 2MB OVMF 
+  image and transition fully to the 4MB version.
+  - Remove ovmf-x86_64 (users should migrate to ovmf-x86_64-4m)
+  - Remove ovmf-x86_64-xen (users should migrate to ovmf-x86_64-xen-4m)
   - Remove ovmf-OvmfPkg-Adjust-Memory-Layout-for-2MB-OVMF.patch 
 
 -------------------------------------------------------------------
