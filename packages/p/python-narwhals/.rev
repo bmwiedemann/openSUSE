@@ -125,4 +125,17 @@
   * feat: Add `testing.assert_frame_equal`</comment>
     <requestid>1337635</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f76aa5f61708a88ab37445b5c22f2101</srcmd5>
+    <version>2.18.0</version>
+    <time>1773770675</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.18.0:
+  * tests: Remove xfail for SQLFrame `Expr.skew`
+  * Update marimo downstream CI to use uv instead of hatch
+  * fix: pyarrow when/then with nulls
+  * fix: Enable `Expr.replace_strict` for SQLFrame backend
+  * chore: Update end year in LICENSE.md</comment>
+    <requestid>1339439</requestid>
+  </revision>
 </revisionlist>
