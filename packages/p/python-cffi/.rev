@@ -456,4 +456,13 @@
   * Dropped support for Python 3.8.</comment>
     <requestid>1304687</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>7cf9a603c29075dbedaff104e13c5e93</srcmd5>
+    <version>2.0.0</version>
+    <time>1773770537</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pycparser-3.patch:
+  * Support pycparser 3 exception message changes.</comment>
+    <requestid>1339194</requestid>
+  </revision>
 </revisionlist>

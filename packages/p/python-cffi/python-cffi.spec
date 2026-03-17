@@ -1,7 +1,7 @@
 #
 # spec file for package python-cffi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 URL:            https://cffi.readthedocs.org
 Source0:        https://files.pythonhosted.org/packages/source/c/cffi/cffi-%{version}.tar.gz
 Source1:        python-cffi-rpmlintrc
+# PATCH-FIX-UPSTREAM gh#python-cffi/cffi#224
+Patch0:         support-pycparser-3.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycparser}
@@ -61,6 +63,6 @@ export CFLAGS="%{optflags}"
 %doc README.md doc/source/*.rst doc/misc/*.rst
 %{python_sitearch}/cffi
 %{python_sitearch}/_cffi_backend.*.so
-%{python_sitearch}/cffi-%{version}*-info
+%{python_sitearch}/cffi-%{version}.dist-info
 
 %changelog
