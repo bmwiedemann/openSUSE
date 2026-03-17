@@ -196,4 +196,13 @@
     <comment></comment>
     <requestid>1277570</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>3fb1540fe91056b99a87a8120759e596</srcmd5>
+    <version>1.1</version>
+    <time>1773770760</time>
+    <user>anag_factory</user>
+    <comment>- fix build with gcc15
+  0001-fix-prototypes-for-newer-gtk-just-cast-to-void-fopr-.patch (forwarded request 1339644 from msmeissn)</comment>
+    <requestid>1339645</requestid>
+  </revision>
 </revisionlist>

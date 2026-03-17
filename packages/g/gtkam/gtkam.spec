@@ -1,7 +1,7 @@
 #
 # spec file for package gtkam
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://gphoto.org
 Source:         https://github.com/gphoto/gtkam/releases/download/v%{version}/gtkam-%{version}.tar.bz2
 Source1:        https://github.com/gphoto/gtkam/releases/download/v%{version}/gtkam-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
+Patch0:         0001-fix-prototypes-for-newer-gtk-just-cast-to-void-fopr-.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libexif-gtk-devel

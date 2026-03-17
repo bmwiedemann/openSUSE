@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 17 14:11:11 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- fix build with gcc15
+  0001-fix-prototypes-for-newer-gtk-just-cast-to-void-fopr-.patch
+
+-------------------------------------------------------------------
 Wed May 14 15:41:36 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %make_build instead of %jobs (boo#1237231)

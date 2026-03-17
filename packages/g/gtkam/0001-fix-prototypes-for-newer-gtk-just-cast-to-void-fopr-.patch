@@ -1,0 +1,74 @@
+From 28affeda001536685eecc8904f13f1835349545a Mon Sep 17 00:00:00 2001
+From: Marcus Meissner <marcus@jet.franken.de>
+Date: Sun, 10 Aug 2025 16:22:20 +0200
+Subject: [PATCH] fix prototypes for newer gtk, just cast to void* fopr now
+
+---
+ src/gtkam-list.c | 10 +++++-----
+ src/gtkam-tree.c | 22 +++++++++++-----------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/src/gtkam-list.c b/src/gtkam-list.c
+index 60f44c9..9343395 100644
+--- a/src/gtkam-list.c
++++ b/src/gtkam-list.c
+@@ -804,15 +804,15 @@ action_view (gpointer callback_data, guint callback_action,
+ static GtkItemFactoryEntry mi[] =
+ {
+ 	{N_("/_View with..."), NULL, NULL, 0, "<Branch>"},
+-	{N_("/View with.../Built-in viewer"), NULL, action_view, 0, NULL},
++	{N_("/View with.../Built-in viewer"), NULL, (void*)action_view, 0, NULL},
+ 	{"/sep0", NULL, NULL, 0, "<Separator>"},
+-	{N_("/View file _properties"), NULL, action_info, 0, NULL},
++	{N_("/View file _properties"), NULL, (void*)action_info, 0, NULL},
+ #ifdef HAVE_LIBEXIF
+-	{N_("/View _EXIF data"), NULL, action_exif, 0, NULL},
++	{N_("/View _EXIF data"), NULL, (void*)action_exif, 0, NULL},
+ #endif
+ 	{"/sep1", NULL, NULL, 0, "<Separator>"},
+-	{N_("/_Save"), NULL, gtkam_list_save_selected, 0, "<StockItem>", GTK_STOCK_SAVE},
+-	{N_("/_Delete"), NULL, gtkam_list_delete_selected, 0, "<StockItem>", GTK_STOCK_DELETE}
++	{N_("/_Save"), NULL, (void*)gtkam_list_save_selected, 0, "<StockItem>", GTK_STOCK_SAVE},
++	{N_("/_Delete"), NULL, (void*)gtkam_list_delete_selected, 0, "<StockItem>", GTK_STOCK_DELETE}
+ };
+ 
+ #ifdef ENABLE_NLS
+diff --git a/src/gtkam-tree.c b/src/gtkam-tree.c
+index 08dd0a5..9fa0254 100644
+--- a/src/gtkam-tree.c
++++ b/src/gtkam-tree.c
+@@ -1156,20 +1156,20 @@ on_add_camera_activate (GtkMenuItem *item, GtkamTree *tree)
+ 
+ static GtkItemFactoryEntry mi[] =
+ {
+-	{N_("/Upload file..."), NULL, action_upload, 0, NULL},
+-	{N_("/Make directory..."), NULL, action_mkdir, 0, NULL},
+-	{N_("/Delete directory"), NULL, action_rmdir, 0, NULL},
+-	{N_("/Save directory tree..."), NULL, action_download, 0, NULL},
++	{N_("/Upload file..."), NULL, (void*)action_upload, 0, NULL},
++	{N_("/Make directory..."), NULL, (void*)action_mkdir, 0, NULL},
++	{N_("/Delete directory"), NULL, (void*)action_rmdir, 0, NULL},
++	{N_("/Save directory tree..."), NULL, (void*)action_download, 0, NULL},
+ 	{"/sep1", NULL, NULL, 0, "<Separator>"},
+-	{N_("/Capture image..."), NULL, action_capture, 0, NULL},
+-	{N_("/View camera preferences"), NULL, action_preferences, 0,
++	{N_("/Capture image..."), NULL, (void*)action_capture, 0, NULL},
++	{N_("/View camera preferences"), NULL, (void*)action_preferences, 0,
+ 	 "<StockItem>", GTK_STOCK_PREFERENCES},
+-	{N_("/View camera summary"), NULL, action_summary, 0, NULL},
+-	{N_("/View camera manual"), NULL, action_manual, 0, NULL},
+-	{N_("/View driver details"), NULL, action_about, 0, NULL},
++	{N_("/View camera summary"), NULL, (void*)action_summary, 0, NULL},
++	{N_("/View camera manual"), NULL, (void*)action_manual, 0, NULL},
++	{N_("/View driver details"), NULL, (void*)action_about, 0, NULL},
+ 	{"/sep2", NULL, NULL, 0, "<Separator>"},
+-	{N_("/Select camera..."), NULL, action_select_camera, 0, NULL},
+-	{N_("/Remove camera"), NULL, action_remove_camera, 0, NULL},
++	{N_("/Select camera..."), NULL, (void*)action_select_camera, 0, NULL},
++	{N_("/Remove camera"), NULL, (void*)action_remove_camera, 0, NULL},
+ };
+ 
+ #ifdef ENABLE_NLS
+-- 
+2.53.0
+
