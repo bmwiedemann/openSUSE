@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-docprovider
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 2.1
+%define distversion 2.2.1
 Name:           python-jupyter-docprovider
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Jupyter extension integrating collaborative shared models
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
-Requires:       jupyter-docprovider = %{version}
+Requires:       jupyter-docprovider = %{distversion}
 Provides:       python-jupyter_docprovider = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
