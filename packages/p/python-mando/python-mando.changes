@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 16 20:47:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.2:
+  * Update support versions trove classifiers
+  * Remove funcsigs dependency
+  * Drop support for Python 2 and the dependency on six
+- Drop python-mando-no-python2.patch, redundant for 0.8.2.
+
+-------------------------------------------------------------------
 Thu Aug 29 04:08:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Switch to pyproject macros. 
+- Switch to pyproject macros.
 
 -------------------------------------------------------------------
 Wed Aug 28 09:19:47 UTC 2024 - pgajdos@suse.com
@@ -27,7 +36,7 @@ Thu Feb 24 09:37:25 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 Mon Dec 13 05:41:16 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch python-310-support.patch:
-  * Support argparse changes introduced in Python 3.10. 
+  * Support argparse changes introduced in Python 3.10.
 
 -------------------------------------------------------------------
 Wed Apr  1 09:34:37 UTC 2020 - pgajdos@suse.com
@@ -62,4 +71,3 @@ Tue Oct 24 20:13:04 UTC 2017 - aloisio@gmx.com
 Fri Oct 14 19:21:27 UTC 2016 - toddrme2178@gmail.com
 
 - Initial version
-

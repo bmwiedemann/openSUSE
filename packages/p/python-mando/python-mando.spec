@@ -1,7 +1,7 @@
 #
 # spec file for package python-mando
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mando
-Version:        0.7.1
+Version:        0.8.2
 Release:        0
 Summary:        Python wrapper around argparse, a tool to create CLI apps
 License:        MIT
 URL:            https://mando.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mando/mando-%{version}.tar.gz
-# https://github.com/rubik/mando/pull/57
-Patch0:         python-mando-no-python2.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

@@ -79,4 +79,19 @@
   + python-mando-no-python2.patch</comment>
     <requestid>1197230</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1345437c23a27ba3bdb31aafde1d6817</srcmd5>
+    <version>0.8.2</version>
+    <time>1773770667</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.2:
+  * Update support versions trove classifiers
+  * Remove funcsigs dependency
+  * Drop support for Python 2 and the dependency on six
+- Drop python-mando-no-python2.patch, redundant for 0.8.2.
+
+- Switch to pyproject macros.
+  * Support argparse changes introduced in Python 3.10.</comment>
+    <requestid>1339432</requestid>
+  </revision>
 </revisionlist>
