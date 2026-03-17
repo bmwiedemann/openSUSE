@@ -134,4 +134,22 @@
 - remove unneded dependencies</comment>
     <requestid>983962</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a011ee1928c3db42ca0dc0596d67c7e6</srcmd5>
+    <version>4.0.1</version>
+    <time>1773770719</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.1:
+  * Add 2024.2 to sitemap generator script
+  * Update sitemap generator with current series
+  * Update python classifier in setup.cfg
+  * Remove python-dev from bindep
+  * remove unicode literal from code
+  * Drop python3.6/3.7 support in testing runtime
+
+- remove unneded dependencies
+- demjson is no longer required, remove it from BuildRequires.
+- update to wallaby template (url fixup)</comment>
+    <requestid>1339533</requestid>
+  </revision>
 </revisionlist>
