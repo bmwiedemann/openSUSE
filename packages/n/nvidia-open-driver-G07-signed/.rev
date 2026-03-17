@@ -58,4 +58,14 @@
 - kernel-5.14.patch: fixed build of 595.45.04 driver on SP4</comment>
     <requestid>1337819</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1636b044ac04a66adaaa55a27baef685</srcmd5>
+    <version>595.45.04</version>
+    <time>1773770648</time>
+    <user>anag_factory</user>
+    <comment>- add 'Provides: open-driver-non-cuda-variant = %version' for
+  non-CUDA variant to be able to distinguish between both variants;
+  to be used by nvidia-open-driver-G07-signed-kmp-meta for TW ...</comment>
+    <requestid>1339414</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 14:51:34 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- add 'Provides: open-driver-non-cuda-variant = %version' for
+  non-CUDA variant to be able to distinguish between both variants;
+  to be used by nvidia-open-driver-G07-signed-kmp-meta for TW ...
+
+-------------------------------------------------------------------
 Mon Mar  9 18:01:24 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update CUDA variant to 595.45.04

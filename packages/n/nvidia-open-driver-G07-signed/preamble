@@ -29,3 +29,7 @@ Conflicts:   nvidia-open-driver-G06-signed-kmp < 590.44.01
 Supplements: packageand(nvidia-open-driver-G06-signed-kmp)
 Conflicts:   nvidia-open-driver-G06-signed-kmp-%1 < 590.44.01
 Supplements: packageand(nvidia-open-driver-G06-signed-kmp-%1)
+
+%if %{without cuda}
+Provides: open-driver-non-cuda-variant = %{-v*}
+%endif
