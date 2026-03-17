@@ -37,7 +37,7 @@
 %define alsa_version            1.0.0
 %define appstream_version       0.16.1
 %define atk_version             2.4.0
-%define babl_version            0.1.114
+%define babl_version            0.1.118
 %define cairo_version           1.14.0
 %define cairo_pdf_version       1.14.0
 %define dbus_glib_version       0.70
@@ -46,8 +46,9 @@
 %define freetype2_version       2.1.7
 %define exiv2_version           0.27.4
 %define gdk_pixbuf_version      2.30.8
-%define gegl_version            0.4.62
-%define gexiv2_version          0.14.0
+%define gegl_version            0.4.66
+%define gexiv2_min_version      0.14.5
+%define gexiv2_max_version      0.15.0
 %define glib_version            2.70.0
 %define gtk3_version            3.24.50
 %define gudev_version           167
@@ -56,13 +57,13 @@
 %define libexif_version         0.6.15
 %define libheif_version         1.15.1
 %define liblzma_version         5.0.0
-%define libmypaint_version      1.4.0
+%define libmypaint_version      1.5.0
 %define libopenjp2_version      2.1.0
 %define libpng_version          1.6.25
 %define librsvg_version         2.40.6
 %define libunwind_version       1.1.0
 %define libwebp_version         0.6.0
-%define mypaint_brushes_version 1.3.0
+%define mypaint_brushes_version 2
 %define OpenEXR_version         1.6.1
 %define pango_version           1.55.0
 %define poppler_data_version    0.4.9
@@ -85,14 +86,14 @@
 %define pkg_name gimp
 
 Name:           gimp
-Version:        3.0.8
+Version:        3.2.0
 Release:        0
 %global pkg_version %{version}
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.gimp.org/
-Source:         https://download.gimp.org/pub/gimp/v3.0/%{pkg_name}-%{pkg_version}.tar.xz
+Source:         https://download.gimp.org/pub/gimp/v3.2/%{pkg_name}-%{pkg_version}.tar.xz
 Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
@@ -100,8 +101,6 @@ Source2:        openSUSE.gpl
 Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
-# PATCH-FIX-UPSTREAM gimp-2026-2239.patch bsc#1257959 mgorse@suse.com -- fix heap buffer overflow in psd-util.c.
-Patch4:         gimp-CVE-2026-2239.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif
@@ -160,7 +159,7 @@ BuildRequires:  pkgconfig(fontconfig) >= %{fontconfig_version}
 BuildRequires:  pkgconfig(freetype2) >= %{freetype2_version}
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= %{gdk_pixbuf_version}
 BuildRequires:  pkgconfig(gegl-0.4) >= %{gegl_version}
-BuildRequires:  pkgconfig(gexiv2) >= %{gexiv2_version}
+BuildRequires:  (pkgconfig(gexiv2) >= %{gexiv2_min_version} with pkgconfig(gexiv2) < %{gexiv2_max_version})
 BuildRequires:  pkgconfig(gjs-1.0)
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
@@ -186,7 +185,7 @@ BuildRequires:  pkgconfig(librsvg-2.0) >= %{librsvg_version}
 BuildRequires:  pkgconfig(libtiff-4) >= %{libtiff_version}
 BuildRequires:  pkgconfig(libunwind) >= %{libunwind_version}
 BuildRequires:  pkgconfig(libwebp) >= %{libwebp_version}
-BuildRequires:  pkgconfig(mypaint-brushes-1.0) >= %{mypaint_brushes_version}
+BuildRequires:  pkgconfig(mypaint-brushes-2.0) >= %{mypaint_brushes_version}
 BuildRequires:  pkgconfig(pango) >= %{pango_version}
 BuildRequires:  pkgconfig(poppler-data) >= %{poppler_data_version}
 BuildRequires:  pkgconfig(poppler-glib) >= %{poppler_glib_version}
@@ -203,7 +202,7 @@ BuildRequires:  python3 >= 3.6.0
 BuildRequires:  python3-gobject
 BuildRequires:  typelib-1_0-Babl-0_1 >= %{babl_version}
 BuildRequires:  typelib-1_0-Gegl-0_4 >= %{gegl_version}
-BuildRequires:  typelib-1_0-GExiv2-0_10 >= %{gexiv2_version}
+BuildRequires:  (typelib-1_0-GExiv2-0_10 >= %{gexiv2_min_version} with typelib-1_0-GExiv2-0_10 < %{gexiv2_max_version})
 %requires_eq    gegl-0_4
 Requires:       gjs
 # Explicitly declare the libgimp versions for upgrade purposes
@@ -219,7 +218,7 @@ Requires:       shared-mime-info
 Requires:       xdg-utils
 Requires:       typelib-1_0-Babl-0_1 >= %{babl_version}
 Requires:       typelib-1_0-Gegl-0_4 >= %{gegl_version}
-Requires:       typelib-1_0-GExiv2-0_10 >= %{gexiv2_version}
+Requires:       (typelib-1_0-GExiv2-0_10 >= %{gexiv2_min_version} with typelib-1_0-GExiv2-0_10 < %{gexiv2_max_version})
 Recommends:     %{name}-plugins-python3 = %{version}
 Recommends:     iso-codes
 Suggests:       AdobeICCProfiles
@@ -476,7 +475,7 @@ install -m 644 -c macros.gimp \
 %exclude %{_libdir}/gimp/3.0/plug-ins/file-aa
 %{_libdir}/girepository-1.0/Gimp-3.0.typelib
 %{_libdir}/girepository-1.0/GimpUi-3.0.typelib
-%{_datadir}/bash-completion/completions/gimp-3.0
+%{_datadir}/bash-completion/completions/gimp-3.2
 
 %files plugin-aa
 %{_libdir}/gimp/3.0/plug-ins/file-aa

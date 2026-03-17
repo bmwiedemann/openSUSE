@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 14 19:14:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.2.0
+  https://www.gimp.org/news/2026/03/14/gimp-3-2-released/
+- drop gimp-CVE-2026-2239.patch: included in update
+
+-------------------------------------------------------------------
 Wed Feb 11 15:32:17 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add gimp-CVE-2026-2239.patch: fix a heap buffer overflow in
