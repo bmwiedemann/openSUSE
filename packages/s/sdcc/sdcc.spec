@@ -1,7 +1,7 @@
 #
 # spec file for package sdcc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define with_non_free 0
 
@@ -29,6 +30,7 @@ Source1:        %{name}-rpmlintrc
 Source2:        sdccman.pdf
 Patch0:         0001-Doc-Disable-fallback-to-dvipdfm-remove-non-pdftex-ta.patch
 Patch2:         sdcc_enable_additional_target_libs.patch
+Patch3:         sdcc-fix-for-cpp23.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -38,6 +40,7 @@ BuildRequires:  glibc-devel
 BuildRequires:  gputils
 # documentation
 BuildRequires:  inkscape
+BuildRequires:  libboost_headers-devel >= 1.79
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  lyx
@@ -53,9 +56,9 @@ BuildRequires:  texlive-latex
 BuildRequires:  texlive-makeindex
 BuildRequires:  texlive-makeindex-bin
 BuildRequires:  texlive-ulem
+BuildRequires:  texlive-xcolor
 BuildRequires:  zlib-devel
 BuildRequires:  tex(footnote.sty)
-BuildRequires:  libboost_headers-devel >= 1.79
 %if 0%{?suse_version} >= 1500
 BuildRequires:  texlive-footnotehyper
 %endif
@@ -105,6 +108,7 @@ find -name '*.[ch]' -perm -u=x | xargs chmod a-x
 %patch -P 0 -p1
 %patch -P 2 -p1
 sed -i '1 s@.*@#!%{_bindir}/python3@' support/scripts/as2gbmap.py
+%patch -P 3 -p1
 
 %build
 export PYTHON=%{_bindir}/python3
@@ -117,7 +121,7 @@ export PYTHON=%{_bindir}/python3
 
 inkscape --export-area-drawing --export-pdf=doc/MCS51_named.pdf doc/MCS51_named.svg
 export LDFLAGS=-s
-%make_build VERBOSE= 
+%make_build VERBOSE=
 %if 0%{?suse_version} > 1500
 %make_build -C doc sdccman.pdf
 %else

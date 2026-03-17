@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar  9 13:41:54 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fix build for Factory and Tumbleweed
+
+-------------------------------------------------------------------
+Thu Oct 30 00:57:25 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Add patch sdcc-fix-for-cpp23.patch to fix build for Tumbleweed
+
+-------------------------------------------------------------------
 Wed Feb 12 22:35:06 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.5.0
@@ -381,21 +391,21 @@ Mon Jul 28 17:24:46 UTC 2014 - dmitry_r@opensuse.org
 - Move libc sources to separate package
 
 -------------------------------------------------------------------
-Sun Oct  4 2012 Wojciech Kazubski <wk@ire.pw.edu.pl> -3.2.0-13
+Sun Oct  4 12:00:00 UTC 2012 - Wojciech Kazubski <wk@ire.pw.edu.pl> -3.2.0-13
 
 - update to 3.2.0
 
 -------------------------------------------------------------------
-Mon Sep  3 2012 Wojciech Kazubski <wk@ire.pw.edu.pl>
+Mon Sep  3 12:00:00 UTC 2012 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - update to 3.1.0
 
 -------------------------------------------------------------------
-Sun Nov 30 2007 Tuukka Pasanen <rpms@ilmi.fi>
+Sun Nov 30 12:00:00 UTC 2007 - Tuukka Pasanen <rpms@ilmi.fi>
 
 - New version
 
 -------------------------------------------------------------------
-Tue Feb 20 2007 Tuukka Pasanen <rpms@ilmi.fi>
+Tue Feb 20 12:00:00 UTC 2007 - Tuukka Pasanen <rpms@ilmi.fi>
 
 - Initial build

@@ -226,4 +226,13 @@
     <comment></comment>
     <requestid>1247752</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>8e58420566fdfe482d438d4305668bdf</srcmd5>
+    <version>4.5.0</version>
+    <time>1773770653</time>
+    <user>anag_factory</user>
+    <comment>- Fix build for Factory and Tumbleweed
+- Add patch sdcc-fix-for-cpp23.patch to fix build for Tumbleweed</comment>
+    <requestid>1339411</requestid>
+  </revision>
 </revisionlist>
