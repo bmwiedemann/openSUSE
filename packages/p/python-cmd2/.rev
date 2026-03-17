@@ -693,4 +693,30 @@
     codes will be stripped to ensure plain text output</comment>
     <requestid>1334455</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>cd9be035706412cf785bc022ceebada8</srcmd5>
+    <version>3.4.0</version>
+    <time>1773770550</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.0:
+  * Moved cmd2-specific printing logic from `Cmd.print_to()` into
+    `Cmd2BaseConsole.print()` and
+  * `Cmd2BaseConsole.log()`. This removes need to pass a console
+    object to `Cmd.print_to()`.
+  * Addressed a bug in `rich.console.Console` where complex
+    renderables (like `Table` and `Rule`) may not receive
+    formatting settings passed to `console.print()` and
+    `console.log()`.
+  * Renamed the `destination` parameter of `Cmd.print_to()` back
+    to `file` since you can no longer pass in a console.
+  * Added ability to pass a console object to `Cmd.print_to()`.
+    This provides support for things like wrapping a `print_to()`
+    call in a `console.status()` or `console.capture()` context
+    manager.
+  * Renamed the `file` parameter of `Cmd.print_to()` to
+    `destination` to support file-like objects and console objects.
+  * `Cmd2BaseConsole(file)` argument is now a keyword-only
+    argument to be consistent with the `rich.console.Console` class.</comment>
+    <requestid>1339303</requestid>
+  </revision>
 </revisionlist>
