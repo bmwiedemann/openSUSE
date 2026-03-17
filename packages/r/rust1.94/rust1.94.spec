@@ -300,6 +300,8 @@ Patch3:         0001-Disable-pidfs-tests-for-15SP3.patch
 
 # Can't disable these tests individually
 Patch4:         0001-Disable-broken-linker-tests.patch
+# PATCH-FIX-UPSTREAM 0001-proto-avoid-unwrapping-varint-decoding-during-parame.patch bsc#1259623 CVE-2026-31812 xwang@suse.com -- avoid unwrapping varint decoding during parameters parsing
+Patch5:         0001-proto-avoid-unwrapping-varint-decoding-during-parame.patch
 
 BuildRequires:  chrpath
 BuildRequires:  curl

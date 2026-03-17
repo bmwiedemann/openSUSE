@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1337961</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>82f7f82c7741fc7381e9babb5b3eb8a0</srcmd5>
+    <version>1.94.0</version>
+    <time>1773770585</time>
+    <user>anag_factory</user>
+    <comment>- Add 0001-proto-avoid-unwrapping-varint-decoding-during-parame.patch:
+  avoid unwrapping varint decoding during parameters parsing
+  (bsc#1259623 CVE-2026-31812).
+
+- Release notes can be found externally: https://github.com/rust-lang/rust/releases/tag/1.94.0</comment>
+    <requestid>1339477</requestid>
+  </revision>
 </revisionlist>
