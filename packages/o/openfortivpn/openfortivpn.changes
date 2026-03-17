@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 16 15:00:59 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.1
+  * fix regression where the plugin was not passed to pppd.
+- Update to version 1.24.0
+  * add OpenSSL 3.0+ PKCS#11 support using OSSL_STORE API.
+  * add OpenSSL Engine support (with OpenSSL < 3.0).
+  * update package links for distros in README.
+  * remove deprecated option --plugin.
+  * increase the maximum size of the proxy response.
+  * route: always remove wrong pppd route to self.
+  * fix several Coverity warnings.
+  * fix a memory leak in new ipv4_drop_wrong_route method.
+  * HTTP: fixes missing '\0' in debug.
+  * IO: fixes a RC use after free.
+  * SSL: Avoid leaking SSL context.
+
+-------------------------------------------------------------------
 Tue Feb 18 15:11:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.23.1:

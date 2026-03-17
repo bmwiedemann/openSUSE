@@ -264,4 +264,12 @@
 - remove Leap &lt; 1500 (forwarded request 1246792 from rrahl0)</comment>
     <requestid>1246793</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9caf2a1682293e591fa5ba4465f965e2</srcmd5>
+    <version>1.24.1</version>
+    <time>1773770640</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1339418</requestid>
+  </revision>
 </revisionlist>
