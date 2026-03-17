@@ -1,7 +1,7 @@
 #
 # spec file for package isa-l
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           isa-l
-Version:        2.31.1
+Version:        2.32.0
 Release:        0
 Summary:        Intel Intelligent Storage Acceleration Library
 Group:          Development/Libraries/C and C++
@@ -28,7 +28,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libtool
-BuildRequires:  nasm >= 2.13
+BuildRequires:  nasm >= 2.14.01
 
 %description
 Optimized low-level functions targeting storage applications.
@@ -103,6 +103,7 @@ in libisal2.
 %{_includedir}/%{name}/crc64.h
 %{_includedir}/%{name}/erasure_code.h
 %{_includedir}/%{name}/gf_vect_mul.h
+%{_includedir}/%{name}/isal_api.h
 %{_includedir}/%{name}/igzip_lib.h
 %{_includedir}/%{name}/mem_routines.h
 %{_includedir}/%{name}/raid.h
@@ -114,6 +115,6 @@ in libisal2.
 
 %files -n libisal2
 %{_libdir}/libisal.so.2
-%{_libdir}/libisal.so.2.0.31
+%{_libdir}/libisal.so.2.0.32
 
 %changelog
