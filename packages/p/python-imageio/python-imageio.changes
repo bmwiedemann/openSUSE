@@ -1,8 +1,29 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:40:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.37.3:
+  * Update dependencies
+- update to 2.37.2:
+  * Gracefully handle reading of invalid EXIF orientation in
+    Pillow plugin
+  * Prevent OverflowError for FPS in pyav plugin
+  * Allow github actions to push to master in CD
+  * Fix publishing to GH and PyPI in CD
+  * Remove obsolete code for Python <= 3.4
+- update to 2.37.1:
+  * Add fsspec as freeimage dependency
+  * Fix plugin `ffmpeg` cannot load file with carets
+  * Fix the error when `time_base` is set to null
+- update to 2.37.0:
+  * Arr.newbyteorder deprecation in numpy>2.0
+  * Upgrade pyav plugin to support av v14
+  * Expose bacterial colony standard image
+
+-------------------------------------------------------------------
 Wed Jan  8 16:37:03 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - update to 2.36.1:
-  * Fix failing pillow test (#1110) (9a9d9f1) 
+  * Fix failing pillow test (#1110) (9a9d9f1)
 
 -------------------------------------------------------------------
 Tue Nov 19 10:14:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
