@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        18.13.2
+Version:        18.13.3
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -64,6 +64,15 @@ BuildArch:      noarch
 %description zsh-completion
 Zsh command line completion support for %{name}.
 
+%package nushell-completion
+Summary:        Nushell completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and nushell)
+BuildArch:      noarch
+
+%description nushell-completion
+Nushell command line completion support for %{name}.
+
 %prep
 %autosetup -a1 -p1
 # Git does not resolve symlinks
@@ -72,7 +81,7 @@ cp -v CONTRIBUTORS crates/atuin/src/command/CONTRIBUTORS
 %build
 %{cargo_build} --no-default-features -F "atuin/client,atuin/sync,atuin/daemon,atuin/clipboard"
 
-for shell in "zsh" "bash" "fish"
+for shell in "zsh" "bash" "fish" "nushell"
 do
   ./target/release/%{name} gen-completions --shell "$shell" > target/%{name}."$shell"
 done
@@ -82,6 +91,7 @@ install -D -m 0755 "%{_builddir}/%{name}-%{version}/target/release/atuin" "%{bui
 install -D -m 0644 "target/%{name}.bash" "%{buildroot}/%{_datadir}/bash-completion/completions/%{name}"
 install -D -m 0644 "target/%{name}.fish" "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
 install -D -m 0644 "target/%{name}.zsh" "%{buildroot}/%{_datadir}/zsh/site-functions/_%{name}"
+install -D -m 0644 "target/%{name}.nushell" "%{buildroot}/%{_datadir}/nushell/vendor/autoload/atuin.nu"
 
 %files
 %license LICENSE
@@ -100,5 +110,11 @@ install -D -m 0644 "target/%{name}.zsh" "%{buildroot}/%{_datadir}/zsh/site-funct
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_%{name}
+
+%files nushell-completion
+%dir %{_datadir}/nushell
+%dir %{_datadir}/nushell/vendor
+%dir %{_datadir}/nushell/vendor/autoload
+%{_datadir}/nushell/vendor/autoload/atuin.nu
 
 %changelog
