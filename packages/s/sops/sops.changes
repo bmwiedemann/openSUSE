@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:05:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.12.2:
+  * Set version to 3.12.2.
+  * Add 3.12.2 changelog entry.
+  * Revert "Merge pull request #1697 from onjen/fix-1142"
+  * build(deps): Bump tempfile in /functional-tests in the rust
+    group
+  * build(deps): Bump the ci group with 4 updates
+  * Delete temporary file on termination.
+  * At least on Linux, you need to press Enter.
+  * Refactor loop.
+  * Uniformly check file before encrypting.
+  * build(deps): Bump the ci group with 4 updates
+  * fix: handle mac only encrypted flag in global
+  * build(deps): Bump github.com/docker/cli
+  * build(deps): Bump tempfile in /functional-tests in the rust
+    group
+  * build(deps): Bump the ci group with 4 updates
+  * build(deps): Bump go.opentelemetry.io/otel/sdk from 1.39.0 to
+    1.40.0
+  * build(deps): Bump github.com/cloudflare/circl from 1.6.1 to
+    1.6.3
+  * build(deps): Bump the ci group with 2 updates
+  * build(deps): Bump the go group with 6 updates
+  * Rearrange CI steps; disable setup-go's caching.
+
+-------------------------------------------------------------------
+Wed Feb 25 10:06:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.12.1 (.0 was not released):
+  * Features:
+    - Add support for HuaweiCloud KMS (#2001).
+    - GCP KMS: Add SOPS_GCP_KMS_CLIENT_TYPE environment variable
+      support to select between gRPC and REST clients (#1973).
+    - Age: support hybrid post-quantum identities (#2033).
+    - Age: pass SOPS_AGE_RECIPIENT environment variable to
+      SOPS_AGE_KEY_CMD (#2045).
+    - Age: add SOPS_AGE_SSH_PRIVATE_KEY_CMD environment variable
+      (#2070).
+  * Improvements:
+    - Dependency updates (#1967, #1971, #1978, #1986, #1988, #1991,
+      #1993, #2002, #2004, #2007, #2012, #2018, #2024, #2029,
+      #2037, #2043, #2047, #2050, #2059, #2074, #2078).
+    - Fix mistakes in --help output (#1975, #1963).
+    - Improve documentation (#1997).
+    - Unset user's GNUPGHOME environment variable for tests
+      (#2052).
+    - Use age's plugin.NewTerminalUI() instead of vendoring the
+      code (#2034).
+    - Remove dead code during YAML loading (#2072).
+    - Build release with Go 1.26 (#2071).
+  * Bugfixes:
+    - Add --decryption-order flag to exec-env, exec-file, and
+      publish commands. The subcommand code was using the flags,
+      but it wasn't declared (#1965).
+    - Fix AWS KMS encryption context not being passed when config
+      is pre-loaded (#2021).
+    - Fix recursive publish (#2019).
+    - Set quota project to API project in GCP KMS (#1697).
+    - DotEnv store now properly reports missing metadata (#2055).
+    - AWS KMS: allow role splitting without hard-coded aws
+      partition (#2042).
+  * Project changes:
+    - Add Go 1.26 to CI (#2071).
+    - CI dependency updates (#1961, #1966, #1970, #1979, #1985,
+      #1989, #1992, #2003, #2006, #2010, #2011, #2017, #2023,
+      #2028, #2038, #2044, #2046, #2049, #2058, #2075).
+    - Rust dependency updates for functional tests (#1962, #2027,
+      #2035, #2073).
+
+-------------------------------------------------------------------
 Mon Sep 29 04:59:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.0:
