@@ -760,4 +760,41 @@
   (bsc#1258187)</comment>
     <requestid>1338002</requestid>
   </revision>
+  <revision rev="40" vrev="40">
+    <srcmd5>c325a14a6952d8f96f923bd677b881dc</srcmd5>
+    <version>0</version>
+    <time>1773848960</time>
+    <user>anag_factory</user>
+    <comment>- Version 19
+
+- Ensure the list of storage issues is correctly updated
+  (gh#agama-project/agama#3291).
+
+- fix the ssh keys for first user (gh#agama-project/agama#3290)
+
+- Ensure storage system is probed before configuring DASD
+  (bsc#1259354).
+
+- Extend the network service to monitor connections, access points,
+  and general state changes, ensuring awareness of external
+  modifications to the network.
+- Notify about System or Proposal changes when applying the
+  configuration and added progress reporting.
+- Notify about System changes when devices change
+  (gh#agama-project/agama#3244, gh#agama-project/agama#3247,
+  gh#agama-project/agama#3276).
+
+- Fix method for getting zFCP issues (gh#agama-project/agama#3287).
+
+- Fix the sshPublicKeys alias (gh#agama-project/agama#3284).
+
+- jsc#PED-15434
+  - support for multiple SSH keys for root even first user in
+    agama profile
+  - both sshPublicKey and sshPublicKeys aliases are available and
+    handled in the same way
+
+- Temporary adjustment in the system schema (related to the</comment>
+    <requestid>1340718</requestid>
+  </revision>
 </revisionlist>

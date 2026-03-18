@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Tue Mar 17 12:15:22 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 19
+
+-------------------------------------------------------------------
+Tue Mar 17 07:09:37 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Ensure the list of storage issues is correctly updated
+  (gh#agama-project/agama#3291).
+
+-------------------------------------------------------------------
+Tue Mar 17 07:00:30 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- fix the ssh keys for first user (gh#agama-project/agama#3290)
+
+-------------------------------------------------------------------
+Mon Mar 16 16:52:49 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Ensure storage system is probed before configuring DASD
+  (bsc#1259354).
+
+-------------------------------------------------------------------
+Mon Mar 16 13:17:33 UTC 2026 - Knut Anderssen <kanderssen@suse.com>
+
+- Extend the network service to monitor connections, access points,
+  and general state changes, ensuring awareness of external
+  modifications to the network.
+- Notify about System or Proposal changes when applying the
+  configuration and added progress reporting.
+- Notify about System changes when devices change
+  (gh#agama-project/agama#3244, gh#agama-project/agama#3247,
+  gh#agama-project/agama#3276).
+
+-------------------------------------------------------------------
+Mon Mar 16 12:39:37 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Fix method for getting zFCP issues (gh#agama-project/agama#3287).
+
+-------------------------------------------------------------------
+Mon Mar 16 06:50:07 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the sshPublicKeys alias (gh#agama-project/agama#3284).
+
+-------------------------------------------------------------------
+Sat Mar 14 20:15:07 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-15434
+  - support for multiple SSH keys for root even first user in
+    agama profile
+  - both sshPublicKey and sshPublicKeys aliases are available and
+    handled in the same way
+
+-------------------------------------------------------------------
+Fri Mar 13 15:51:57 UTC 2026 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Temporary adjustment in the system schema (related to the
+  fix for bsc#1258486).
+
+-------------------------------------------------------------------
+Fri Mar 13 12:22:07 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update the software proposal after changing the resolvables list (bsc#1259533).
+
+-------------------------------------------------------------------
+Fri Mar 13 10:54:49 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- Release zypp lock after software finish to allow run zypper
+  in post install scripts (bsc#1258188)
+
+-------------------------------------------------------------------
+Thu Mar 12 13:20:48 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add error reporting when working with AutoYaST profiles (related
+  to bsc#1259434).
+
+-------------------------------------------------------------------
+Thu Mar 12 13:05:51 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Added support for the "inst.listen_on" boot parameter
+  - The "inst.listen_on=localhost" option disables remote access
+  - It is possible to specify IP address (both IPv4 and IPv6)
+    or network interface, accepts comma separated list
+  - agama-web-server --address2 option removed, --address can now be repeated
+  (jsc#AGM-153)
+
+-------------------------------------------------------------------
+Thu Mar 12 10:03:39 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not force to push the "Reboot" button if inst.finish is given
+  (jsc#PED-15031).
+
+-------------------------------------------------------------------
 Tue Mar 10 12:16:53 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Recalculate the issues and actions on language change (gh#agama-project/agama#3262).
