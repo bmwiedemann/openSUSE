@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 18 01:07:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.03.17
+  * Always respect webpage_client extractor-arg
+  * Fix --live-from-start support
+
+-------------------------------------------------------------------
 Fri Mar 13 09:19:22 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2026.03.13
