@@ -7400,4 +7400,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.19.7 &amp; fix softlockups &amp; other fixes; bugs: bsc#1012628 bsc#1258936 bsc#1259459</comment>
     <requestid>1338458</requestid>
   </revision>
+  <revision rev="831" vrev="1">
+    <srcmd5>ba2db2f5f9714e8fe78a1b42838ce2ef</srcmd5>
+    <version>6.19.8</version>
+    <time>1773848945</time>
+    <user>anag_factory</user>
+    <comment>6.19.8; bugs: bsc#1012628 bsc#1258413 bsc#1258415 bsc#1258419 bsc#1258421 bsc#1258422 bsc#1258424 bsc#1258429 bsc#1258430 bsc#1258431 bsc#1258432 bsc#1258442 bsc#1258461 bsc#1258467 bsc#1258469 bsc#1258472 bsc#1258474 bsc#1258483 bsc#1258484 bsc#1258660 bsc#1258820 bsc#1259186 bsc#1259188 bsc#1259192 bsc#1259193 bsc#1259194 bsc#1259195 bsc#1259199 bsc#1259484 bsc#1259485</comment>
+    <requestid>1339225</requestid>
+  </revision>
 </revisionlist>
