@@ -1,7 +1,7 @@
 #
 # spec file for package python-beartype
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-beartype
-Version:        0.21.0
+Version:        0.22.9
 Release:        0
 Summary:        Unbearably fast runtime type checking in pure Python
 License:        MIT

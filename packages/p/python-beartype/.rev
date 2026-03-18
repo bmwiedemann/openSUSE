@@ -291,4 +291,40 @@
     <comment></comment>
     <requestid>1300052</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ad7d1d3ffa1ec1de3ab955f29b71f82f</srcmd5>
+    <version>0.22.9</version>
+    <time>1773849026</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.22.9:
+  * Added official support for PyInstaller to facilitate
+    bundling type-checked applications.
+  * Added preliminary support for Astral's &quot;ty&quot; static
+    type-checker.
+  * Fixed handling of return values for synchronous
+    generators.
+  * Achieved full compatibility with the Gradio machine
+    learning web framework.
+  * Restored support for Python optimization modes,
+    including the -O flag and PYTHONOPTIMIZE environment
+    variable.
+  * Resolved installation and metadata incompatibilities
+    with Poetry and pipenv.
+  * Added official support for the Redis Python client
+    (redis.Redis class).
+  * Dropped support for Python 3.9.
+  * Implemented compatibility for hostile decorators used
+    in LangChain, FastMCP, and Celery.
+  * Added support for Python 3.14 features, specifically
+    PEP 649 and PEP 749.
+  * Added support for validating Polars DataFrames via the
+    Pandera library.
+  * Implemented PEP 646 (Variadic Generics) support,
+    including type variable tuples and tuple hint unpacking.
+  * Revamped beartype.claw import hooks for significantly
+    improved compatibility and reduced errors.
+  * Introduced a formal security policy and a public
+    vulnerability disclosure process.</comment>
+    <requestid>1340823</requestid>
+  </revision>
 </revisionlist>
