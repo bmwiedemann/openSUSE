@@ -17,7 +17,7 @@
 
 
 Name:           python-slixmpp
-Version:        1.13.2
+Version:        1.14.1
 Release:        0
 Summary:        Python XMPP (Jabber) Library that Implements Everything as a Plugin
 License:        MIT

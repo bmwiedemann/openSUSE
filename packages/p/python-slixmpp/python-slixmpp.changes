@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 16 09:45:55 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.14.1:
+  Removals:
+  * The obsolete UnescapedJID class was removed.
+  Features:
+  * New plugin: XEP-0462 (Pubsub Type Filtering)
+  * New plugin: XEP-0511 (Link Metadata)
+  * New plugin: XEP-0478 (Stream Limits Advertisment)
+  * StanzaBase objects now have a pretty_print() method, for better readability.
+  * XEP-0050: use of the slixmpp "internal API" to handle commands
+  * Added the missing unescape_node() method on the rust JID implementation
+  Fixes:
+  * Fixed a bug in XEP-0410 when changing nicks
+  Documentation:
+  * Added a lot of docstrings, and improved other ones
+  * Lots of typing updates as well
+  Internal, CI & build:
+  * Doctests are now run
+  * Doc dependencies are now part of the pyproject file
+  * pyo3 update
+  * performance micro-optimization on session establishment
+
+-------------------------------------------------------------------
 Wed Feb 18 16:07:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.13.2:
