@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 16 14:15:52 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add elfutils-fix-const-correctness.patch to fix build with new glibc
+
+-------------------------------------------------------------------
+Mon Mar 16 13:10:09 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- update to 0.194 
+  debuginfod: Add CORS (webapp access) support to webapi and --cors option.
+	      Add --listen-address option for binding the HTTP listen socket
+	      to a specific IPv4 or IPv6 address.
+	      debuginfod client now caches x-debuginfod-* HTTP headers
+	      alongside downloaded files.
+  debuginfod-find: Fixed caching bug preventing user-cancelled downloads
+                   from being re-downloaded at a later time.
+
+-------------------------------------------------------------------
 Wed Jan 14 15:51:25 UTC 2026 - Michael Matz <matz@suse.com>
 
 - Move debuginfod homedir creation to tmpfiles.d

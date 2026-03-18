@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar 16 14:15:52 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add elfutils-fix-const-correctness.patch to fix build with new glibc
+
+-------------------------------------------------------------------
+Mon Mar 16 13:07:31 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- update to 0.194
+  elfclassify: New options --has-debug-sections and --any-ar-member.
+  elflint: Presence of vendor- and application-specific ELF note types no
+           longer triggers compliance errors.
+  libdwfl_stacktrace: New function dwflst_sample_getframes.  The
+                      libdwfl_stacktrace library interface is experimental
+                      and may be subject to API/ABI changes.
+                      Experimental new library interface for unwinding
+    		      stack samples into call chains, and tracking and
+ 		      caching Elf data for multiple processes, building
+		      on libdwfl.  Initially supports perf_events stack
+		      sample data.
+  libelf: Manual pages have been added for many libelf library functions.
+          Additional manual pages are planned for future releases.
+          elf_scnshndx has been rewritten to be more robust, particularily
+          for ELF files with more than 64K sections.
+  readelf: Up to 13% faster when using the -N option.
+           Improved handling of corrupt ELF data.
+	   --section-headers output now includes a "Key to Flags" explaining
+	   section flag meanings.
+  libdw: Add dwarf_language and dwarf_language_lower_bound functions.
+         Improved support for DWARF6 language metadata as well as DWARF
+         language constants for Nim, Dylan, Algol68, V and Mojo.
+         dwarf_srclang is now forward-compatible with DWARF6 language
+         constants.
+- Drop no longer necessary fix-static-linking.patch
+
+-------------------------------------------------------------------
 Thu Dec 12 18:37:00 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Add fix-static-linking.patch (bsc#1234445)
