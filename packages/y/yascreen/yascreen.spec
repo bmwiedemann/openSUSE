@@ -1,7 +1,7 @@
 #
 # spec file for package yascreen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define sover 0
 Name:           yascreen
-Version:        2.06
+Version:        2.11
 Release:        0
 Summary:        A terminal control library (ncurses alternative)
 License:        LGPL-3.0-or-later
 URL:            https://github.com/bbonev/yascreen/
 Source:         %{url}releases/download/v%{version}/yascreen-%{version}.tar.xz
 Source2:        %{url}releases/download/v%{version}/yascreen-%{version}.tar.xz.asc
-Source3:        https://raw.githubusercontent.com/bbonev/yascreen/v%{version}/debian/upstream/signing-key.asc#/%{name}.keyring
+# https://raw.githubusercontent.com/bbonev/yascreen/v%%{version}/debian/upstream/signing-key.asc
+Source3:        %{name}.keyring
 %if 0%{?suse_version} && %{?suse_version} < 1599
 BuildRequires:  gcc12
 %endif
@@ -77,8 +78,7 @@ find %{buildroot}%{_libdir} -type f -name "*.a" -print -delete
 
 %files -n libyascreen0
 %license LICENSE
-%{_libdir}/libyascreen.so.%{sover}
-%{_libdir}/libyascreen.so.%{sover}.*
+%{_libdir}/libyascreen.so.%{sover}{,.*}
 
 %files devel
 %license LICENSE

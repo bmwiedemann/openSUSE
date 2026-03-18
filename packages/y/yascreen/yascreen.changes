@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 15 15:23:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.11:
+  * ignore non-printable utf code points
+  * fix a buffer overflow
+  * fix strdup error handling while copying from mem to scr
+  * fix (im)possible int*int overflow
+
+-------------------------------------------------------------------
 Sun Feb  9 21:28:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.06:
