@@ -1,0 +1,106 @@
+From d1103f2beaed2b6ca82ceb8ca0fa67f1888af319 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Fri, 13 Mar 2026 14:37:07 +0100
+Subject: [PATCH] Make users with backslash working for salt-ssh
+ (bsc#1254629)
+
+* Make users with backslash working for salt-ssh (bsc#1254629)
+
+* Add tests for ssh user with backslash
+---
+ salt/client/ssh/__init__.py                  |  5 ++++-
+ salt/client/ssh/shell.py                     |  4 ++--
+ tests/pytests/unit/client/ssh/test_shell.py  | 15 +++++++++++++++
+ tests/pytests/unit/client/ssh/test_single.py | 18 ++++++++++++++++++
+ 4 files changed, 39 insertions(+), 3 deletions(-)
+
+diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
+index 86e4bcceb08..6025b76c3b6 100644
+--- a/salt/client/ssh/__init__.py
++++ b/salt/client/ssh/__init__.py
+@@ -1059,7 +1059,10 @@ class Single:
+             self.python_env = kwargs.get("ssh_python_env")
+         else:
+             if user:
+-                thin_dir = DEFAULT_THIN_DIR.replace("%%USER%%", user)
++                thin_dir = DEFAULT_THIN_DIR.replace(
++                    "%%USER%%",
++                    re.sub(r"[^a-zA-Z0-9\._\-@]", "_", user),
++                )
+             else:
+                 thin_dir = DEFAULT_THIN_DIR.replace("%%USER%%", "root")
+             self.thin_dir = thin_dir.replace(
+diff --git a/salt/client/ssh/shell.py b/salt/client/ssh/shell.py
+index fcacfa6f737..fa6e9ed637d 100644
+--- a/salt/client/ssh/shell.py
++++ b/salt/client/ssh/shell.py
+@@ -151,7 +151,7 @@ class Shell:
+         if self.priv and self.priv != "agent-forwarding":
+             options.append("IdentityFile={}".format(self.priv))
+         if self.user:
+-            options.append("User={}".format(self.user))
++            options.append("User={}".format(shlex.quote(self.user)))
+         if self.identities_only:
+             options.append("IdentitiesOnly=yes")
+ 
+@@ -197,7 +197,7 @@ class Shell:
+         if self.port:
+             options.append("Port={}".format(self.port))
+         if self.user:
+-            options.append("User={}".format(self.user))
++            options.append("User={}".format(shlex.quote(self.user)))
+         if self.identities_only:
+             options.append("IdentitiesOnly=yes")
+ 
+diff --git a/tests/pytests/unit/client/ssh/test_shell.py b/tests/pytests/unit/client/ssh/test_shell.py
+index 37065c4c187..66746b347b9 100644
+--- a/tests/pytests/unit/client/ssh/test_shell.py
++++ b/tests/pytests/unit/client/ssh/test_shell.py
+@@ -52,3 +52,18 @@ def test_ssh_shell_exec_cmd(caplog):
+         ret = _shell.exec_cmd("ls {}".format(passwd))
+         assert not any([x for x in ret if passwd in str(x)])
+         assert passwd not in caplog.text
++
++
++def test_ssh_using_user_with_backslash():
++    _shell = shell.Shell(
++        opts={"_ssh_version": (4, 9)},
++        host="host.example.org",
++        user="exampledomain\\user",
++        passwd="password",
++    )
++    with patch.object(
++        _shell, "_run_cmd", return_value=(None, None, None)
++    ) as mock_run_cmd:
++        cmd_string = _shell.exec_cmd("whoami")
++        args, _ = mock_run_cmd.call_args
++        assert " User='exampledomain\\user' " in args[0]
+diff --git a/tests/pytests/unit/client/ssh/test_single.py b/tests/pytests/unit/client/ssh/test_single.py
+index 8d87da8700c..0cc05922e63 100644
+--- a/tests/pytests/unit/client/ssh/test_single.py
++++ b/tests/pytests/unit/client/ssh/test_single.py
+@@ -871,3 +871,21 @@ def test_ssh_single__cmd_str_sudo_passwd_user(opts):
+     )
+ 
+     assert expected in cmd
++
++
++def test_check_thin_dir_with_backslash_user(opts):
++    """
++    Test `thin_dir` path generation for the user with backslash in the name
++    """
++    single = ssh.Single(
++        opts,
++        opts["argv"],
++        "host.example.org",
++        "host.example.org",
++        user="exampledomain\\user",
++        mods={},
++        fsclient=None,
++        mine=False,
++    )
++    assert single.thin_dir == single.opts["thin_dir"]
++    assert ".exampledomain_user_" in single.thin_dir
+-- 
+2.53.0
+

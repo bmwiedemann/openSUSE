@@ -1,0 +1,37 @@
+From bd8b0bfecc36af97bc85db67fe14594f56c1344f Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Fri, 13 Mar 2026 12:22:50 +0100
+Subject: [PATCH] Fix virtualenv call in test helper to use proper
+ python version
+
+---
+ tests/support/helpers.py | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/tests/support/helpers.py b/tests/support/helpers.py
+index 5dc4041ff4d..21bd35c69dd 100644
+--- a/tests/support/helpers.py
++++ b/tests/support/helpers.py
+@@ -1742,12 +1742,14 @@ class VirtualEnv:
+         return data
+ 
+     def _create_virtualenv(self):
+-        virtualenv = shutil.which("virtualenv")
+-        if not virtualenv:
+-            pytest.fail("'virtualenv' binary not found")
++        pyexec = self.get_real_python()
++        if not pyexec:
++            pytest.fail("'python' binary not found for virtualenv")
+         cmd = [
+-            virtualenv,
+-            "--python={}".format(self.get_real_python()),
++            pyexec,
++            "-m",
++            "virtualenv",
++            f"--python={pyexec}",
+         ]
+         if self.system_site_packages:
+             cmd.append("--system-site-packages")
+-- 
+2.53.0
+

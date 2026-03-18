@@ -1,0 +1,95 @@
+From d2564c52e7b53251f62d1f997bffcd63a76b6c65 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Fri, 13 Mar 2026 14:38:21 +0100
+Subject: [PATCH] Add `x86_64_v2` as a possible rpm package
+ architecture
+
+* Add x86_64_v2 as a possible rpm architecture
+
+and make it resolving the right way in case of mixing with x86_64
+
+* Reuse existing logic from salt.utils.pkg.rpm.resolve_name
+
+for salt.modules.yumpkg.normalize_name
+
+* Extend the tests if x86_64_v2 package arch can be handled
+---
+ salt/modules/yumpkg.py                    |  7 +++----
+ salt/utils/pkg/rpm.py                     | 11 ++++++++---
+ tests/pytests/unit/modules/test_yumpkg.py | 16 ++++++++++++++++
+ 3 files changed, 27 insertions(+), 7 deletions(-)
+
+diff --git a/salt/modules/yumpkg.py b/salt/modules/yumpkg.py
+index b2be251a408..4c9330231e1 100644
+--- a/salt/modules/yumpkg.py
++++ b/salt/modules/yumpkg.py
+@@ -473,10 +473,9 @@ def normalize_name(name):
+             return name
+     except ValueError:
+         return name
+-    if arch in (__grains__["osarch"], "noarch") or salt.utils.pkg.rpm.check_32(
+-        arch, osarch=__grains__["osarch"]
+-    ):
+-        return name[: -(len(arch) + 1)]
++    stripped_name = name[: -(len(arch) + 1)]
++    if salt.utils.pkg.rpm.resolve_name(stripped_name, arch) == stripped_name:
++        return stripped_name
+     return name
+ 
+ 
+diff --git a/salt/utils/pkg/rpm.py b/salt/utils/pkg/rpm.py
+index 147447ba757..2a4e26cbe71 100644
+--- a/salt/utils/pkg/rpm.py
++++ b/salt/utils/pkg/rpm.py
+@@ -13,7 +13,8 @@ import salt.utils.stringutils
+ log = logging.getLogger(__name__)
+ 
+ # These arches compiled from the rpmUtils.arch python module source
+-ARCHES_64 = ("x86_64", "athlon", "amd64", "ia32e", "ia64", "geode")
++ARCHES_X86_64 = ("x86_64", "x86_64_v2")
++ARCHES_64 = ARCHES_X86_64 + ("athlon", "amd64", "ia32e", "ia64", "geode")
+ ARCHES_32 = ("i386", "i486", "i586", "i686")
+ ARCHES_PPC = ("ppc", "ppc64", "ppc64le", "ppc64iseries", "ppc64pseries")
+ ARCHES_S390 = ("s390", "s390x")
+@@ -105,8 +106,12 @@ def resolve_name(name, arch, osarch=None):
+     if osarch is None:
+         osarch = get_osarch()
+ 
+-    if not check_32(arch, osarch) and arch not in (osarch, "noarch"):
+-        name += ".{}".format(arch)
++    if (
++        not check_32(arch, osarch)
++        and arch not in (osarch, "noarch")
++        and not (arch in ARCHES_X86_64 and osarch in ARCHES_X86_64)
++    ):
++        name += f".{arch}"
+     return name
+ 
+ 
+diff --git a/tests/pytests/unit/modules/test_yumpkg.py b/tests/pytests/unit/modules/test_yumpkg.py
+index 45c62d793d3..286c985bbb7 100644
+--- a/tests/pytests/unit/modules/test_yumpkg.py
++++ b/tests/pytests/unit/modules/test_yumpkg.py
+@@ -2150,3 +2150,19 @@ def test_59705_version_as_accidental_float_should_become_text(
+         yumpkg.install("fnord", version=new)
+         call = cmd_mock.mock_calls[0][1][0]
+         assert call == expected_cmd
++
++
++def test_normalize_name_with_arch_x86_64_v2():
++    """
++    Test if `salt.modules.yumpkg.normalize_name` is able to identify x86_64_v2
++    as a possible package architecture and remove it from name in case of
++    using it on x86_64 and not in any other cases.
++    """
++    with patch("salt.utils.pkg.rpm.get_osarch", MagicMock(return_value="x86_64")):
++        assert yumpkg.normalize_name("chrony.x86_64_v2") == "chrony"
++    with patch("salt.utils.pkg.rpm.get_osarch", MagicMock(return_value="x86_64")):
++        assert yumpkg.normalize_name("chrony.x86_64") == "chrony"
++    with patch("salt.utils.pkg.rpm.get_osarch", MagicMock(return_value="amd64")):
++        assert yumpkg.normalize_name("chrony.x86_64") == "chrony.x86_64"
++    with patch("salt.utils.pkg.rpm.get_osarch", MagicMock(return_value="x86_64")):
++        assert yumpkg.normalize_name("rootfiles.noarch") == "rootfiles"
+-- 
+2.53.0
+

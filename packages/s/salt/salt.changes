@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 17 11:02:24 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Backport security patch for Salt vendored tornado (bsc#1259554):
+  * CVE-2026-31958: Add limits on multipart form data parsing
+
+- Added:
+  * backport-of-the-cve-2026-31958-fix-bsc-1259554.patch
+
+-------------------------------------------------------------------
+Fri Mar 13 14:11:34 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Add x86_64_v2 as a possible rpm package architecture
+- Make users with backslash working for salt-ssh (bsc#1254629)
+- Fix ansible.playbooks extra-vars quoting (bsc#1257831)
+- Fix virtualenv call in test helper to use proper python version
+
+- Added:
+  * add-x86_64_v2-as-a-possible-rpm-package-architecture.patch
+  * make-users-with-backslash-working-for-salt-ssh-bsc-1.patch
+  * fix-ansible.playbooks-extra-vars-quoting-bsc-1257831.patch
+  * fix-virtualenv-call-in-test-helper-to-use-proper-pyt.patch
+
+-------------------------------------------------------------------
 Mon Jan 19 09:21:31 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 
 - Make syntax in httputil_test compatible with Python 3.6
@@ -17,6 +40,7 @@ Wed Jan 14 14:19:10 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
   * CVE-2025-67724: missing validation of supplied reason phrase (bsc#1254903)
   * CVE-2025-67725: fix DoS via malicious HTTP request (bsc#1254905)
   * CVE-2025-67726: fix HTTP header parameter parsing algorithm (bsc#1254904)
+- CVE-2025-13836: limit http.client response read in NXOS modules
 - Simplify and speed up utils.find_json function (bsc#1246130)
 
 - Added:
