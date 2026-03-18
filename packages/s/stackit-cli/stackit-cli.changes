@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:12:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.0:
+  * fix(iaas): change routing table root to network area (#1343)
+  * feat(ske): add idp support for kubeconfig create (#1328)
+  * fix(ske): cluster describe command does not print the name
+    correctly (#1342)
+  * feat(iaas): onboard routing-table command (#1339)
+  * chore(kms): move kms out of beta (#1315)
+  * feat(iaas): implement machine-type filter (#1321)
+  * feat(ske): port to v2api version of SDK (#1337)
+  * chore(deps): bump crazy-max/ghaction-import-gpg from 6 to 7
+    (#1336)
+  * chore(deps): bump actions/upload-artifact from 6 to 7 (#1333)
+  * feat(auth): add flag to choose used port in user auth flow
+    (#1326)
+  * chore(deps): bump actions/download-artifact from 7 to 8 (#1323)
+  * feat(ske): implement idp flow for kubeconfig login (#1322)
+  * feat(config) allow setting assume-yes in config (#1324)
+
+-------------------------------------------------------------------
 Tue Mar 03 05:59:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.55.0:
