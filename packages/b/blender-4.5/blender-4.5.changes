@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Mar 17 11:03:50 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.8
+  - 819b1d018a1 Fix #155341: Draw: Memory leak when rendering
+    fluids
+  - 8a432e698af Fix #155207: Linear Burn brush color mode only
+    applies black
+  - bb334a07361 Fix #154678: Boundary brush produces incorrect
+    deformation with symmetry
+  - b6dbe5abb9b Fix #155162: Invalid out of bounds check reading
+    SGI images
+  - c833ea58b88 Fix #153137: Grease Pencil hook modifier not
+    updating with bone movement
+  - 6fb8e21ff1d Fix #154201, #130854: EEVEE: small fixes to
+    subsurface shader
+  - 9663231430f Fix: Correctly set new action user count to 0
+  - 07933c3729f Fix #154632: LineArt: Prevent erroreous use of
+    LineartEdge::t1/t2
+  - 85ee694a564 Fix #154651: Crash when joining armatures in
+    hierarchy
+  - ca6e527ca33 Fix #154399: Autokeying not working when using
+    depth picker of camera
+  - f1274bb704a Fix: Exceeding the rotation mode enum range with
+    animation
+  - 9622ebe859d Release: Bump to 4.5.8 candidate
+  - 825023908d4 Backport: Fix #154087: Ensure all animation
+    handlers are removed when removing instanced panels
+  - c1240a8798d Fix #153226: Sculpt undo doesn't work with shapekey
+    solo
+
+-------------------------------------------------------------------
 Wed Feb 18 00:04:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.5.7
