@@ -1,7 +1,0 @@
-<package name="csync" project="openSUSE:Factory">
-  <title>A user level bidirectional client only file synchronizer</title>
-  <description>csync is an implementation of a file synchronizer which provides the
-feature of roaming home directories for Linux clients. csync makes use
-of libsmbclient in Samba/Windows environments.</description>
-  <devel project="network:synchronization:files" package="csync"/>
-</package>
