@@ -18,7 +18,7 @@
 %global soversion 0
 
 Name:           sso-mib
-Version:        0.7.0
+Version:        0.8.0
 Release:        1%{?dist}
 Summary:        Tools and library for Single-Sign-On with CA for Entra via Himmelblau
 

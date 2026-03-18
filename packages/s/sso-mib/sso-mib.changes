@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 23:50:08 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
+
+- Import version 0.8.0
+  This release adds support for v2.0.2+ MSFT broker versions and adds
+  JSON output for sso-mib-tool commands. Along that, many minor bugs
+  in the library have been fixed.
+
+-------------------------------------------------------------------
 Sun Mar 8 17:40:23 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
 
 - Import version 0.7.0
