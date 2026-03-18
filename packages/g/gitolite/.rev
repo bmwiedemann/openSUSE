@@ -103,4 +103,19 @@
     <comment></comment>
     <requestid>1144128</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ceb8381e2bf0c11d96e04506cc006612</srcmd5>
+    <version>3.6.14</version>
+    <time>1773849009</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.14:
+  * detect HEAD name in admin repo (don't require it be &quot;master&quot;)
+
+  * make 'who-pushed' more efficient (local push logs, and
+    push certs into 'refs/push-certs'; for details see
+- update to 3.6.1
+- change requires to git-daemon
+    setperms (thanks to Jeff from KDE for the idea/need)</comment>
+    <requestid>1340792</requestid>
+  </revision>
 </revisionlist>
