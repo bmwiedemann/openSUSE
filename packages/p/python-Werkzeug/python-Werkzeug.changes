@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 17 16:20:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.6
+  * ``safe_join`` on Windows does not allow special devices names
+    in multi-segment paths. :ghsa:`29vq-49wr-vm6x`
+
+-------------------------------------------------------------------
 Tue Jan 27 16:24:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.5:
