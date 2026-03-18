@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lmdb
-Version:        1.7.5
+Version:        2.0.0
 Release:        0
 Summary:        Universal Python binding for the LMDB 'Lightning' Database
 License:        OLDAP-2.8
 Group:          Development/Languages/Python
 URL:            https://github.com/dw/py-lmdb/
 Source:         https://files.pythonhosted.org/packages/source/l/lmdb/lmdb-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM relax_assertion.patch -- based on PR 400
-Patch0:         relax_assertion.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -68,6 +66,7 @@ export LMDB_FORCE_SYSTEM=1
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+export LMDB_PURE=1
 %pytest_arch
 
 %files %{python_files}

@@ -199,4 +199,41 @@
     <comment></comment>
     <requestid>1328338</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>48befe6f1224abee80cbb170d5816342</srcmd5>
+    <version>2.0.0</version>
+    <time>1773849025</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.0:
+  * Environment.close(), Transaction.abort(), Transaction.commit(),
+    and cursor operations are now serialized with locks to prevent
+    use-after-free and double-free crashes when called concurrently
+    gh#jnwatson/py-lmdb#180
+  * Opening the same LMDB path twice in one process now raises
+    lmdb.Error instead of silently proceeding to a likely segfault.
+    This will surface latent bugs in code that accidentally opened
+    the same environment twice.
+    gh#jnwatson/py-lmdb#230
+  * Minimum Python version is now 3.9
+  * PEP 561 type stubs (py.typed) are now shipped.
+    IDEs and type checkers will pick up lmdb's types automatically.
+    gh#jnwatson/py-lmdb#257
+  * Cache getpid() result to avoid a syscall on every transaction
+    dealloc. Since glibc 2.25, getpid() is no longer cached in
+    userspace; this showed up in profiles for workloads with many
+    short-lived transactions.
+    gh#jnwatson/py-lmdb#421
+  * Fix CPython and CFFI memory safety issues
+    gh#jnwatson/py-lmdb#420
+    gh#jnwatson/py-lmdb#372
+  * Fix cmd_copyfd fd validation to use os.fstat() instead of
+    os.fdopen(), which consumed the fd.
+  * Add fork detection to CFFI implementation. Previously,
+    Transaction.__del__ and Environment.__del__ would call
+    mdb_txn_abort / mdb_env_close in forked child processes,
+    risking corruption of the parent's environment.
+  * Release GIL during mdb_env_close so the event loop isn't
+    blocked while msync/fsync runs on large writemap databases.</comment>
+    <requestid>1340815</requestid>
+  </revision>
 </revisionlist>
