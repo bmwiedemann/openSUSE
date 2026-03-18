@@ -17,7 +17,7 @@
 
 
 Name:           telemetrygen
-Version:        0.147.0
+Version:        0.148.0
 Release:        0
 Summary:        Telemetry generator for OpenTelemetry
 License:        Apache-2.0

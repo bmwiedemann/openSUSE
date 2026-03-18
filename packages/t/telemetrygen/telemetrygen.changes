@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:11:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.148.0:
+  telemetrygen-related changes
+  * [chore][cmd/telemetrygen] Promote metrics and logs to alpha
+    stability (#46801)
+  * [chore] [telemetrygen] Update readme with new telemetrygen
+    features (#46727)
+  Dependencies
+  * fix(deps): update all cloud.google.com/go packages (#46960)
+  * fix(deps): update module google.golang.org/api to v0.272.0
+    (#46949)
+  * [chore] Update core dependencies (#46952)
+  * [chore] Update core dependencies (#46942)
+  * [chore] Update core dependencies (#46901)
+  * [chore] Update core dependencies (#46867)
+  * [chore] Update core dependencies (#46860)
+  * fix(deps): update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.54 (#46826)
+  * chore(deps): update golang:1.26 docker digest to cdebbd5
+    (#46829)
+  * fix(deps): update module
+    github.com/testcontainers/testcontainers-go to v0.41.0 (#46823)
+  * fix(deps): update module
+    github.com/datadog/datadog-api-client-go/v2 to v2.56.0 (#46611)
+  * fix(deps): update module
+    github.com/azure/azure-sdk-for-go/sdk/messaging/azeventhubs/v2
+    to v2.0.2 (#46821)
+  * Update dependency simple-git to v3.33.0 (#46818)
+  * Update module gitlab.com/gitlab-org/api/client-go to v2
+    (#46807)
+  * Update module github.com/googleapis/gax-go/v2 to v2.18.0
+    (#46813)
+  * Update module go.opentelemetry.io/otel/sdk/metric to v1.42.0
+    (#46810)
+  * Update mcr.microsoft.com/mssql/server:2025-latest Docker digest
+    to d24e4c2 (#46812)
+  * Update opentelemetry-go monorepo (#46805)
+  * Update github-actions deps (major) (#46806)
+  * Update module
+    github.com/open-telemetry/opentelemetry-collector-contrib/extension/internal/credentialsfile
+    to v0.147.0 (#46795)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.53 (#46787)
+  * Update module sigs.k8s.io/controller-runtime to v0.23.3
+    (#46789)
+  * Update module go.opentelemetry.io/proto/otlp to v1.10.0
+    (#46797)
+  * Update module google.golang.org/grpc to v1.79.2 (#46788)
+  * Update module k8s.io/klog/v2 to v2.140.0 (#46798)
+  * Update All opentelemetry-go-contrib packages (#46792)
+  * Update All golang.org/x packages (#46790)
+  * [exporter/elasticsearch] Update ECS mode encoder to add
+    conversions for `telemetry.sdk.language` and
+    `telemetry.sdk.version` (#46690)
+  * Update module github.com/cloudfoundry/go-cfclient/v3 to
+    v3.0.0-alpha.20 (#46784)
+  * Update module github.com/knadh/koanf/v2 to v2.3.3 (#46785)
+  * Update module github.com/SAP/go-hdb to v1.15.2 (#46786)
+  * Update github-actions deps (#46783)
+  * Update All github.com/aws packages (#46780)
+  * [chore] Update core dependencies (#46774)
+  * Update golang:1.26 Docker digest to e2ddb15 (#46779)
+  * [chore] Update core dependencies (#46709)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to
+    v2 (#46598)
+  * chore(deps): update module github.com/jstemmer/go-junit-report
+    to v2 (#46596)
+  * [chore] Update core dependencies (#46691)
+  * fix(deps): update module github.com/google/go-github/v83 to v84
+    (#46597)
+  * [chore][pkg/stanza/fileconsumer] Update from_version of
+    filelog.protobufCheckpointEncoding feature gate (#46641)
+  * [chore][pkg/ottl] Update user agent parser version (#46643)
+  * fix(deps): update all github.com/aws packages (#46625)
+  * fix(deps): update module github.com/datadog/agent-payload/v5 to
+    v5.0.183 (#46601)
+  * fix(deps): update module gitlab.com/gitlab-org/api/client-go to
+    v1.46.0 (#46591)
+  * fix(deps): update module github.com/aws/aws-lambda-go to
+    v1.53.0 (#46593)
+  * fix(deps): update opentelemetry-go monorepo (#46592)
+  * chore(deps): update github-actions deps (major) (#46594)
+  * fix(deps): update module github.com/prometheus/procfs to
+    v0.20.1 (#46585)
+  * fix(deps): update module github.com/cloudfoundry/go-cfclient/v3
+    to v3.0.0-alpha.19 (#46566)
+  * chore(deps): update docker-compose deps (#46574)
+  * fix(deps): update module github.com/sap/go-hdb to v1.15.1
+    (#46569)
+  * fix(deps): update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.51 (#46573)
+  * chore(deps): update module github.com/jcchavezs/porto to v0.7.0
+    (#46576)
+  * fix(deps): update module go.opentelemetry.io/ebpf-profiler to
+    v0.0.202610 (#46577)
+  * fix(deps): update module github.com/ibm/sarama to v1.47.0
+    (#46582)
+  * fix(deps): update all opentelemetry-go-contrib packages
+    (#46578)
+  * chore(deps): update module github.com/daixiang0/gci to v0.14.0
+    (#46575)
+  * fix(deps): update module github.com/shirou/gopsutil/v4 to
+    v4.26.2 (#46570)
+  * fix(deps): update kubernetes packages to v0.35.2 (#46565)
+  * fix(deps): update all github.com/aws packages (#46563)
+  * fix(deps): update dependency simple-git to v3.32.3 (#46564)
+  * chore(deps): update golang:1.26 docker digest to fb612b7
+    (#46567)
+  * chore(deps): update github-actions deps (#46560)
+  * chore(deps): update golang:1.26 docker digest to 9edf713
+    (#46561)
+
+-------------------------------------------------------------------
 Tue Mar 03 06:05:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.147.0:
