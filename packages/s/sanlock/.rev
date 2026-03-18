@@ -366,4 +366,12 @@ corruption of the VM's disk image.  See FATE#306399.</comment>
   * systemd-wdmd: work around race with udev setting softdog label</comment>
     <requestid>1307442</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4257d81deb61aa39f2457bbb1c3522e5</srcmd5>
+    <version>4.2.0</version>
+    <time>1773848967</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1340745</requestid>
+  </revision>
 </revisionlist>

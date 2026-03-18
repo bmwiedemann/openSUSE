@@ -1,7 +1,7 @@
 #
 # spec file for package sanlock
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@
 %endif
 %define pname   sanlock
 Name:           %{pprefix}%{pname}
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 %if ! %{with python}
 Summary:        A shared disk lock manager

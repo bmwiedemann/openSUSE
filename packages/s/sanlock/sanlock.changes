@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 10 14:50:32 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to version 4.2.0:
+  * release 4.2.0
+  * sanlock: external host dead control
+  * sanlock: verify input paths are terminated
+  * release 4.1.0
+  * sanlock: fix previous change to delta_read_lockspace_sizes
+  * sanlock: add debugging for read_lockspace
+  * sanlock: make delta_read_lockspace_sizes compare host_id
+  * sanlock: add client init_host to initialize one delta lease
+  * sanlock: fix help output for init_host
+  * sanlock: add direct read to read complete lockspace or resource
+  * sanlock: fix warning for set_config io_timeout
+  * sanlock: delta_read_lockspace_sizes with specific host_id
+  * sanlock: fix zero io timeout for direct lockspace requests
+
+-------------------------------------------------------------------
 Wed Sep 17 19:22:37 UTC 2025 - jfehlig@suse.com
 
 - Update to version 4.0.0:
