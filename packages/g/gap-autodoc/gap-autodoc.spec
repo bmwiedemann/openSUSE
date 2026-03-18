@@ -1,7 +1,7 @@
 #
 # spec file for package gap-autodoc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-autodoc
-Version:        2025.12.19
+Version:        2026.03.17
 Release:        0
 Summary:        GAP: Tools for generating automatic GAPDoc documentations
 License:        GPL-2.0-only
@@ -28,9 +28,8 @@ URL:            https://gap-packages.github.io/AutoDoc/
 Source:         https://github.com/gap-packages/AutoDoc/releases/download/v%version/AutoDoc-%version.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
-BuildRequires:  xz
 BuildArch:      noarch
-Requires:       gap-core >= 4.5
+Requires:       gap-core >= 4.11
 Requires:       gap-gapdoc >= 1.6.3
 
 %description
