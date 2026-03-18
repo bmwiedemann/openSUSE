@@ -1,0 +1,40 @@
+From e84c9a29ae9d33e747be9cb4cc522e58eb675fd8 Mon Sep 17 00:00:00 2001
+From: Mia Herkt <mia@0x0.st>
+Date: Tue, 17 Mar 2026 02:17:34 +0100
+Subject: [PATCH] Add openSUSE-specific defaults to help output
+
+---
+ src/main.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 8ff65f9..35b6a37 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -911,6 +911,7 @@ Use Ctrl+C to stop.)");
+   -c, --codec               Specifies the codec of the video. These can be found by using:
+                             ffmpeg -encoders
+                             To modify codec parameters, use -p <option_name>=<option_value>
++                            openSUSE default: utvideo (lossless)
+   
+   -r, --framerate           Changes framerate to constant framerate with a given value.
+   
+@@ -940,6 +941,7 @@ Use Ctrl+C to stop.)");
+ 
+   -x, --pixel-format        Set the output pixel format. These can be found by running:
+                             ffmpeg -pix_fmts
++                            openSUSE default: gbrp (lowest recording overhead with utvideo)
+ 
+   -g, --geometry            Selects a specific part of the screen. The format is "x,y WxH".
+ 
+@@ -971,6 +973,7 @@ Use Ctrl+C to stop.)");
+   -C, --audio-codec         Specifies the codec of the audio. These can be found by running:
+                             ffmpeg -encoders
+                             To modify codec parameters, use -P <option_name>=<option_value>
++                            openSUSE default: flac (lossless)
+ 
+   -X, --sample-format       Set the output audio sample format. These can be found by running: 
+                             ffmpeg -sample_fmts
+-- 
+2.53.0
+

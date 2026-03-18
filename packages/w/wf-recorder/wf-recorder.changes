@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Mar 17 00:35:21 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Use RPM 4.20 declarative build system
+- Use non-patented and lossless formats by default and print these
+  openSUSE-specific defaults in the program’s help output
+  0001-Add-openSUSE-specific-defaults-to-help-output.patch
+- Add fish-completion package
+- Update to version 0.6.0+git4:
+  * Actually use parsed audio options when opening audio codec
+    gh#ammen99/wf-recorder#337
+  * frame-writer: do not set output color range
+    gh#ammen99/wf-recorder#332
+  * frame-writer: ensure compatibility with ffmpeg 8
+    gh#ammen99/wf-recorder#326
+  * Fix -y/--overwrite requiring an argument
+    gh#ammen99/wf-recorder#318
+  * feat: add output listing capability
+    gh#ammen99/wf-recorder#317
+  * Automatically transpose video based on output transform
+    gh#ammen99/wf-recorder#315
+  * Document multiple codec parameters
+    gh#ammen99/wf-recorder#306
+  * Update wf-recorder.1
+    gh#ammen99/wf-recorder#302
+  * Move 'selected region' status message to stderr
+    gh#ammen99/wf-recorder#303
+  * frame-writer: WebM+Opus: Fix silent audio due to inconsistent
+    sample rate time base in PTS and packet rescaling
+    gh#ammen99/wf-recorder#298
+  * Add fish shell completions
+    gh#ammen99/wf-recorder#295
+  * fix build error if have_audio is false
+    gh#ammen99/wf-recorder#297
+  * add support for RTP streaming
+    gh#ammen99/wf-recorder#296
+  * frame-writer: Use superfast instead of ultrafast for libx264/5
+    gh#ammen99/wf-recorder#280
+  * Update wf-recorder.1: fix quote rendering in slurp call
+    gh#ammen99/wf-recorder#290
+  * frame-writer: Call the correct function for loading
+    audio codec parameters
+    gh#ammen99/wf-recorder#292
+
+-------------------------------------------------------------------
 Mon Oct 14 12:52:54 UTC 2024 - ammen99@gmail.com
 
 - Update to version 0.5.0+git1:

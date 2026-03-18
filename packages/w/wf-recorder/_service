@@ -1,19 +1,16 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/ammen99/wf-recorder.git</param>
-    <param name="revision">560bb92d3ddaeb31d7af77d22d01b0050b45bebe</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">ammen99@gmail.com</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">gz</param>
+    <param name="compression">zstd</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 </services>
 
