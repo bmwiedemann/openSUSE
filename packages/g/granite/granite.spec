@@ -19,7 +19,7 @@
 %define         sover 7
 %define         appid io.elementary.granite-%{sover}
 Name:           granite
-Version:        7.8.0
+Version:        7.8.1
 Release:        0
 Summary:        An extension of GTK+ libraries
 License:        LGPL-3.0-or-later
@@ -89,9 +89,11 @@ This package contains the development files for libgranite.
 
 %build
 %meson \
+  -Ddemo=true \
   -Ddocumentation=false \
+  -Dgtk-stylesheets=true \
   -Dintrospection=true \
-  -Ddemo=true
+  %{nil}
 %meson_build
 
 %install

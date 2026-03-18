@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 17 20:11:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 7.8.1:
+  * ListItem uses the context menu cursor when menu_model is set
+  * Updated translations
+  * Styles: optionally build install gtk styles
+  * Icons: add points of interest
+
+-------------------------------------------------------------------
 Tue Feb 24 19:28:09 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 7.8.0:

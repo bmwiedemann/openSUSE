@@ -269,4 +269,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1336194</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fde5818dd60dbcf6c685d413e96c6559</srcmd5>
+    <version>7.8.1</version>
+    <time>1773849001</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 7.8.1:
+  * ListItem uses the context menu cursor when menu_model is set
+  * Updated translations
+  * Styles: optionally build install gtk styles
+  * Icons: add points of interest (forwarded request 1340771 from rrahl0)</comment>
+    <requestid>1340772</requestid>
+  </revision>
 </revisionlist>
