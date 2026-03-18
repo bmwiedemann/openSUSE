@@ -35,4 +35,15 @@
   * Add support for 3.14 and drop 3.9|3.8</comment>
     <requestid>1322771</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1bef19d11c9ad0d96c40b16b8528402d</srcmd5>
+    <version>1.1.1</version>
+    <time>1773849058</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.1:
+  * Migrate type checking from mypy to ty
+  * Move from extras to dependency-groups
+  * Align dependency versions across projects</comment>
+    <requestid>1340847</requestid>
+  </revision>
 </revisionlist>

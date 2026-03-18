@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:23:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Migrate type checking from mypy to ty
+  * Move from extras to dependency-groups
+  * Align dependency versions across projects
+
+-------------------------------------------------------------------
 Sat Dec 13 11:25:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

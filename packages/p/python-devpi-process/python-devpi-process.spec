@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-process
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,31 +27,31 @@
 %{?sle15_python_module_pythons}
 %define skip_python39 1
 Name:           python-devpi-process%{psuffix}
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Programmatic API to create and use a devpi server process
 License:        MIT
 URL:            https://github.com/tox-dev/devpi-process
 Source:         https://files.pythonhosted.org/packages/source/d/devpi_process/devpi_process-%{version}.tar.gz
-BuildRequires:  %{python_module hatch-vcs >= 0.3}
-BuildRequires:  %{python_module hatchling >= 1.18}
+BuildRequires:  %{python_module hatch-vcs >= 0.5}
+BuildRequires:  %{python_module hatchling >= 1.28}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module typing-extensions >= 4.7.1 if %python-base < 3.11}
+BuildRequires:  %{python_module typing-extensions >= 4.15 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-devpi-client >= 6.0.5
-Requires:       python-devpi-server >= 6.9.2
-Suggests:       python-httpx >= 0.24.1
+Requires:       python-devpi-client >= 7.2
+Requires:       python-devpi-server >= 6.17
+Suggests:       python-httpx >= 0.28.1
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module covdefaults >= 2.3}
-BuildRequires:  %{python_module devpi-client >= 6.0.5}
-BuildRequires:  %{python_module devpi-server >= 6.8}
-BuildRequires:  %{python_module httpx >= 0.24.1}
-BuildRequires:  %{python_module pytest >= 7.4}
-BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module devpi-client >= 7.2}
+BuildRequires:  %{python_module devpi-server >= 6.17}
+BuildRequires:  %{python_module httpx >= 0.28.1}
+BuildRequires:  %{python_module pytest >= 8.4.2}
+BuildRequires:  %{python_module pytest-cov >= 7}
 %endif
 # /SECTION
 %python_subpackages
