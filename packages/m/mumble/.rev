@@ -106,4 +106,12 @@
     <comment></comment>
     <requestid>1316492</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>cdd40d2468bc3c35ec4a4ef382e211f9</srcmd5>
+    <version>1.5.857</version>
+    <time>1773848986</time>
+    <user>anag_factory</user>
+    <comment>CVE-2025-71264 boo#1259721 (forwarded request 1340721 from AndreasStieger)</comment>
+    <requestid>1340722</requestid>
+  </revision>
 </revisionlist>

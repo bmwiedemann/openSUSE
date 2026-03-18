@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 17 15:37:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- CVE-2025-71264: (opus) incorrect size calculations allow for an
+  out-of-bounds array access and can lead to a client crash
+  (boo#1259721) add mumble-1.5.857-CVE-2025-71264.patch
+
+-------------------------------------------------------------------
 Fri Nov  7 20:03:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.5.857:

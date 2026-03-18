@@ -2,7 +2,7 @@
 # spec file for package mumble
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 # Copyright (c) 2024 Tobias Burnus <burnus@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,6 +40,8 @@ Source:         %{name}-%{version}.tar.xz
 Source6:        baselibs.conf
 # PATCH-FIX-UPSTREAM fix-64bit-only-plugins.patch -- Requires 64bit memory alignment ( https://github.com/mumble-voip/mumble/issues/5849 )
 Patch0:         fix-64bit-only-plugins.patch
+# PATCH-FIX-UPSTREAM mumble-1.5.857-CVE-2025-71264.patch -- boo#1259721
+Patch1:         mumble-1.5.857-CVE-2025-71264.patch
 # Patches related to dependency unbundling
 Patch100:       licenses.patch
 Patch101:       mumble-unbundle-tracy.patch
