@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Wed Mar 18 06:23:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.1:
+  * C++26 support to reflect C Arrays
+  * Increase strictness of time_point parsing
+  * Support string_as_number option with std::string_view and
+    arrays of char
+  * Propagate Opts into lazy_json read_into
+  * Better error messages for unknown variant type
+  * Use ensure_space for always_null_t JSON
+  * Accept ISO 8601 format strings without timezone information
+  * Finalize read_into context for partial reading with lazy_json
+  * Minor cleanup of includes and use std::unreachable
+- update to 7.2.0:
+  * Glaze now supports P2996 "Reflection for C++26".
+  * Make stream_request buffer size configurable + update docs
+  * YAML fix for unindented sequence under a known key
+  * Fix YAML double-quoted \xXX being interpreted as a byte
+    instead of a codepoint
+  * YAML Fixes and Improvements
+- update to 7.1.1:
+  * Reduced static thread_local use
+  * > Using a temporary scratch buffer in `glz::context` that
+    will only be allocated in certain edge cases. This allows
+    more control over memory usage and less surprises from
+    `static thread_local` temporary buffers that may not get
+    deallocated.
+  * ImprovedTOML 1.1 compliance and unit tests in
+    https://github.com/stephenberry/glaze/pull/2341
+  * Implement `skip_read_constraint` option
+  * JSON schema value support
+  * Value type variant schema support
+- update to 7.1.0:
+  * This release focuses on YAML maturity, networking
+    reliability, container/generic behavior, and platform
+    compatibility.
+  * glz::generic now supports different underlying map types, but
+    now defaults to a faster, ordered map, which preserves
+    insertion order rather than sorting lexicographically. This
+    ensures proper round tripping for unsorted JSON objects. See
+    documentation for more details:
+    https://stephenberry.github.io/glaze/generic-json
+  * YAML support received major hardening and coverage
+    improvements, including parser correctness, conformance,
+    roundtrip behavior, and generic integration.
+  * HTTP/WebSocket behavior was improved across TLS support,
+    handshake compatibility, CPU efficiency, and server
+    internals.
+  * ## Generic and Container Behavior
+  * Runtime generic behavior and ordered container support were
+    improved, including insertion-order preservation and
+    additional integer generic access support.
+- update to 7.0.2:
+  * **YAML 1.2 support**
+  * **`std::expected` support extended** to BEVE and CBOR
+    formats, plus `std::expected` handling in JSON
+  * **Enum hashing improvements for writing** with graceful
+    fallbacks when perfect hashing fails and a two-element fast
+    path
+  * **HTTP server/client flexibility** via
+    `asio::any_io_executor` for shared event loops
+- update to 7.0.1:
+  * **Reduced binary size** for embedded and size-constrained
+    environments (use `glz::size_opts` and
+    `GLZ_DISABLE_ALWAYS_INLINE`)
+  * **TOML support for `std::variant` and generic types**
+    (`glz::generic`, maps)
+  * **Optimized floating-point parsing**
+  * **Fixed sparse enums with large values**
+- update to 7.0.0:
+  * Cleaner compiler errors with a smaller core `glz::opts` while
+    still allowing the same compile time customization options.
+  * Faster integer to string serialization using larger tables,
+    but also added `optimization_level` to remove large tables
+    and optimize for size for small, embedded devices.
+  * Lazy parsers for JSON and BEVE
+  * Much more
+  * New `optimization_level` option for binary size vs.
+    performance tradeoff
+  * #### Faster Integer Serialization
+  * Specialized `itoa` routines for 8/16-bit integer types
+    provide performance improvements for these common types.
+  * #### Reduced Template Instantiations
+  * Core template instantiation optimizations reduce compile
+    times and binary sizes.
+- update to 6.5.1:
+  * Binary formats like BEVE and CBOR encode length headers
+    indicating how many elements follow. Previously, a malicious
+    actor could craft a message claiming billions of elements but
+    containing minimal data, causing memory exhaustion before
+    validation.
+  * Glaze now validates length headers against remaining buffer
+    size **before** any memory allocation:
+- update to 6.4.1:
+  * New formatting controls, TOML enum support, extended binary
+    format validation, and SSL/TLS networking improvements.
+
+-------------------------------------------------------------------
 Tue Jan 28 13:21:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Quantify speed claims

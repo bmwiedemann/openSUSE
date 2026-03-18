@@ -7,4 +7,41 @@
     <comment></comment>
     <requestid>1240853</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>78224784a9794f536327aa10ef9575f1</srcmd5>
+    <version>7.2.1</version>
+    <time>1773849032</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.2.1:
+  * C++26 support to reflect C Arrays
+  * Increase strictness of time_point parsing
+  * Support string_as_number option with std::string_view and
+    arrays of char
+  * Propagate Opts into lazy_json read_into
+  * Better error messages for unknown variant type
+  * Use ensure_space for always_null_t JSON
+  * Accept ISO 8601 format strings without timezone information
+  * Finalize read_into context for partial reading with lazy_json
+  * Minor cleanup of includes and use std::unreachable
+- update to 7.2.0:
+  * Glaze now supports P2996 &quot;Reflection for C++26&quot;.
+  * Make stream_request buffer size configurable + update docs
+  * YAML fix for unindented sequence under a known key
+  * Fix YAML double-quoted \xXX being interpreted as a byte
+    instead of a codepoint
+  * YAML Fixes and Improvements
+- update to 7.1.1:
+  * Reduced static thread_local use
+  * &gt; Using a temporary scratch buffer in `glz::context` that
+    will only be allocated in certain edge cases. This allows
+    more control over memory usage and less surprises from
+    `static thread_local` temporary buffers that may not get
+    deallocated.
+  * ImprovedTOML 1.1 compliance and unit tests in
+    https://github.com/stephenberry/glaze/pull/2341
+  * Implement `skip_read_constraint` option
+  * JSON schema value support
+  * Value type variant schema support</comment>
+    <requestid>1340818</requestid>
+  </revision>
 </revisionlist>

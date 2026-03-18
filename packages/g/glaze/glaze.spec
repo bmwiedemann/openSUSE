@@ -19,7 +19,7 @@
 %define debug_package %{nil}
 
 Name:           glaze
-Version:        4.3.1
+Version:        7.2.1
 Release:        0
 Summary:        JSON library for modern C++
 License:        MIT
