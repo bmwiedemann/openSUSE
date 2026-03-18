@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 17 09:09:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.47.1:
+  * Block on running parallel dependencies
+  * Fix setting-exported assignment visibility in child modules
+  * Add eager keyword to force evaluation of unused assignments
+  * Only evaluate used variables in --evaluate and --command
+- Update to version 1.47.0:
+  * Add lazy evaluation setting
+  * Add guard sigil ?
+  * Add --group flag to filter --list output by group
+  * Add attributes for DragonFly BSD, FreeBSD, and NetBSD
+  * Add [env(NAME, VALUE) recipe attribute
+  * Make --timestamp print timestamps unconditionally
+  * Print --timestamps with script recipes
+  * [private] modules are excluded from --list output
+
+-------------------------------------------------------------------
 Sun Jan  4 20:46:31 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.46.0:

@@ -522,4 +522,25 @@
 - enable tests again, needs package-meta, so switching to obs_scm (forwarded request 1325324 from rrahl0)</comment>
     <requestid>1325325</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>59a3335c4177c9554d26423c37306815</srcmd5>
+    <version>1.47.1</version>
+    <time>1773848971</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.47.1:
+  * Block on running parallel dependencies
+  * Fix setting-exported assignment visibility in child modules
+  * Add eager keyword to force evaluation of unused assignments
+  * Only evaluate used variables in --evaluate and --command
+- Update to version 1.47.0:
+  * Add lazy evaluation setting
+  * Add guard sigil ?
+  * Add --group flag to filter --list output by group
+  * Add attributes for DragonFly BSD, FreeBSD, and NetBSD
+  * Add [env(NAME, VALUE) recipe attribute
+  * Make --timestamp print timestamps unconditionally
+  * Print --timestamps with script recipes
+  * [private] modules are excluded from --list output (forwarded request 1339538 from rrahl0)</comment>
+    <requestid>1339539</requestid>
+  </revision>
 </revisionlist>
