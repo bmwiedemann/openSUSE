@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Mar 13 16:04:31 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add zypper support in package block
+  + 0001-packages-add-zypper-support-from-openSUSE.patch
+
+-------------------------------------------------------------------
+Thu Mar 12 09:38:40 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update to 0.36.0:
+  * `calendar`: added support for recurring events
+  * `disk_iostats`: added persistent device name and partition support
+  * `disk_space`: added support for `btrfs`
+  * `notify`: added `history_count` variable and `show_all` action
+  * `packages`: added support for `apk`, `brew`, `flatpak` and `snap`
+  * `sound`: added `pipewire` driver
+  * `sound`: improved headphones detection for PipeWire
+  * `taskwarrior`: fixed high CPU usage with taskwarrior v3
+  * `vpn`: added driver for cloudflare's `warp`
+  * `vpn`: added driver for `tailscale`
+  * `xrandr`: added `refresh_rate`
+  * Breaking changes:
+    * `weather`: `sunrise`/`sunset` will not be set during polar days/nights
+       when using the `metno` or `nws` service
+- Update to 0.35.0
+  * `battery`: fixed negative remaining time that appears in recent Linux kernels
+  * `calendar`: fixed calendar retrieval if caldav server replies with multiple
+    `<comp ..>` entities
+  * `memory`: fixed "available memory" estimate provided by the Linux kernel.
+     This matches other tooling other than htop - refer to
+     https://github.com/htop-dev/htop/issues/1307
+  * `net`: fixed default interface detection to use the one with the lowest metric
+  * `packages`: fixed to handle recent updates in `pacman` package manager
+  * `service_status`: added support for systemd user services
+
+-------------------------------------------------------------------
 Fri Apr  4 12:04:36 UTC 2025 - Dawid Adam <nyslay@gmail.com>
 
 - Update to 0.33.2:

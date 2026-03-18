@@ -1,7 +1,7 @@
 #
 # spec file for package i3status-rust
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           i3status-rust
-Version:        0.33.2
+Version:        0.36.0
 Release:        0%{?dist}
 Summary:        Feature-rich and resource-friendly replacement for i3status, written in Rust
 
@@ -28,6 +28,7 @@ URL:            https://github.com/greshake/i3status-rust
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
+Patch1:         0001-packages-add-zypper-support-from-openSUSE.patch
 
 ExclusiveArch:  %{rust_tier1_arches}
 
@@ -52,6 +53,7 @@ compatible with sway.
 
 %prep
 %setup -qa1
+%autopatch -p1
 
 cp %{SOURCE2} .cargo/config
 
