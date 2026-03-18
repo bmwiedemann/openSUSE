@@ -20,7 +20,7 @@
 %global force_gcc_version 12
 %endif
 Name:           gerbera
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only

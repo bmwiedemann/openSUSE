@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Mar 14 13:53:05 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 3.2.0
+  * NEW Features
+    - Split config files into modules (from-file)
+    - Export and import changed objects
+    - Extract Matroska metadata also with taglib 2.2.1
+    - Select content type for import library to reduce import time
+  * FIXES
+    - Timeouts in transcoding or other read errors leading to broken responses
+    - LastFM with rest API
+    - Configuration for FFmpeg stream data import to reduce import times
+    - Error return codes to LibPUPnP
+  * Code Improvements
+    - Remove prefix for location type in database
+    - Object Flags refactored to enum
+    - Update maximum versions of npupnp (6.2.3), cmake (4.2.3), pupnp (1.18.2), taglib (2.2.1), libexiv2 (0.28.8)
+    - cxxopts was updated to version 3.3.1 and can now be updated like any library
+  * Changes
+    - Gerbera 3.2.0 (#3817)
+    - Update cxxopts to 3.3.1 (#3816)
+    - Fix entryType for builtin layout (#3815)
+    - Convert ObjectFlags to enum (#3813)
+    - Upgrade broken check-socket stuff (#3807)
+    - Bump docker/setup-buildx-action from 3 to 4 (#3808)
+    - Bump docker/setup-qemu-action from 3 to 4 (#3809)
+    - Bump docker/build-push-action from 6 to 7 (#3810)
+    - Bump docker/login-action from 3 to 4 (#3811)
+    - Bump docker/metadata-action from 5 to 6 (#3812)
+    - More configuration of online content (#3806)
+    - Improve configuration of online content (#3804)
+    - Threading and Transcoding with better configuration (#3803)
+    - Bump actions/upload-artifact from 6 to 7 (#3801)
+    - Update libexiv2 to 0.28.8 (#3799)
+    - Update npm and web ui tests (#3798)
+    - Bump minimatch in /gerbera-web (#3797)
+    - xsd improvement (#3796)
+    - Reduce almost duplicate methods (#3794)
+    - Bump basic-ftp from 5.1.0 to 5.2.0 in /gerbera-web (#3795)
+    - Split off Database Migrations (#3793)
+    - Refactor FFMpegThumbnailer (#3791)
+    - Extend content type filter configuration (#3789)
+    - FFmpeg: configuration for stream data import (#3788)
+    - Update to pupnp 1.18.0 (#3784)
+    - Upgrade to taglib 2.2 with new file type and filtering (#3782)
+    - Use entry_type instead of location prefix (#3781)
+    - Bump qs from 6.14.1 to 6.14.2 in /gerbera-web (#3780)
+    - Update to pupnp 1.14.29 (#3779)
+    - Update to pupnp 1.14.27 (#3777)
+    - Update to pupnp 1.14.26 (#3775)
+    - Export and import changed object from database (#3772)
+    - Show changed items in UI (#3771)
+    - Keep track of changed objects (#3770)
+    - Bump lodash from 4.17.21 to 4.17.23 in /gerbera-web (#3768)
+    - Update npupnp to 6.2.3 (#3767)
+    - Document MARIADB_TLS_DISABLE_PEER_VERIFICATION (#3766)
+    - Load Config file modules (#3764)
+    - Bump master (#3763)
+
+-------------------------------------------------------------------
 Mon Jan 19 15:16:26 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.1.1
 
 - Update to 3.1.1
