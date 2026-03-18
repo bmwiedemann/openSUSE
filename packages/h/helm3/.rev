@@ -48,4 +48,12 @@
     <comment>- Update to version 3.18.5 (bsc#1248093, CVE-2025-55199):</comment>
     <requestid>1337916</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00e9d87bb46fa4b0635014b42f34979b</srcmd5>
+    <version>3.20.1</version>
+    <time>1773849028</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1340817</requestid>
+  </revision>
 </revisionlist>

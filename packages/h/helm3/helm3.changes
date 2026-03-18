@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 12 07:19:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.20.1:
+  * chore(deps): bump the k8s-io group with 7 updates a2369ca
+    (dependabot[bot])
+  * add image index test 90e1056 (Pedro Tôrres)
+  * fix pulling charts from OCI indices 911f2e9 (Pedro Tôrres)
+  * Remove refactorring changes from coalesce_test.go 76dad33
+    (Evans Mungai)
+  * Fix import 45c12f7 (Evans Mungai)
+  * Update pkg/chart/common/util/coalesce_test.go 26c6f19 (Evans
+    Mungai)
+  * Fix lint warning 09f5129 (Evans Mungai)
+  * Preserve nil values in chart already 417deb2 (Evans Mungai)
+  * fix(values): preserve nil values when chart default is empty
+    map 5417bfa (Evans Mungai)
+
+-------------------------------------------------------------------
 Thu Jan 22 06:01:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.20.0:

@@ -1,4 +1,5 @@
 <package name="helm3" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="Virtualization:containers" package="helm3"/>
 </package>
