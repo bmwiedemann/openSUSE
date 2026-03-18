@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:08:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.3:
+  * Backport #6711 to release-v2.10: fix(s3): treat SSE-C
+    encryption_key as a secret (CVE-2026-28377) (#6713)
+
+-------------------------------------------------------------------
 Fri Mar 13 06:07:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.10.2:
