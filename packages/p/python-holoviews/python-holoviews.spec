@@ -1,7 +1,7 @@
 #
 # spec file for package python-holoviews
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE holoviews-opensuse-pyproject.patch -- for obs builds, code@bnavigator.de
 Patch0:         holoviews-opensuse-pyproject.patch
+# PATCH-FIX-OPENSUSE Ignore pyparsing deprecation warnings
+Patch1:         support-new-pyparsing.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}

@@ -534,4 +534,13 @@
     #6596, #6609) Add dendrogram plot (#6511, #6625, #6600) Add (forwarded request 1323824 from bnavigator)</comment>
     <requestid>1323825</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>e4e7207a593653d6147d4364287a8a77</srcmd5>
+    <version>1.22.1</version>
+    <time>1773849024</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-new-pyparsing.patch:
+  * Ignore PyparsingDeprecationWarning for now.</comment>
+    <requestid>1340812</requestid>
+  </revision>
 </revisionlist>

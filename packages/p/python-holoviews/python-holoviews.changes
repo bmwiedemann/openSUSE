@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 18 01:21:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-pyparsing.patch:
+  * Ignore PyparsingDeprecationWarning for now.
+
+-------------------------------------------------------------------
 Sat Dec 20 17:44:16 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.22.1

@@ -1,0 +1,13 @@
+Index: holoviews-1.22.1/pyproject.toml
+===================================================================
+--- holoviews-1.22.1.orig/pyproject.toml
++++ holoviews-1.22.1/pyproject.toml
+@@ -147,6 +147,8 @@ filterwarnings = [
+     # OBS
+     "ignore::FutureWarning",
+     "ignore:\\s*The dash_core_components package is deprecated:UserWarning",
++    # Can be removed after upgrading from 1.22.1
++    "ignore::pyparsing.warnings.PyparsingDeprecationWarning",
+ ]
+ 
+ [tool.coverage]
