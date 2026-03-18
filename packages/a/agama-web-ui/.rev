@@ -692,4 +692,32 @@
   (gh#agama-project/agama#3143).</comment>
     <requestid>1338003</requestid>
   </revision>
+  <revision rev="38" vrev="38">
+    <srcmd5>10a4f7af0f417646eed355c65297b60f</srcmd5>
+    <version>0</version>
+    <time>1773848963</time>
+    <user>anag_factory</user>
+    <comment>- Version 19
+
+- Prevent bulk selection using stale data (gh#agama-project/agama#3289).
+
+- Log actions failures (related to bsc#1259354).
+
+- Change network web user interface to offer more control and
+  interaction with connections (gh#agama-project/agama#3247).
+
+- Prevent error when there is no zFCP config
+  (gh#agama-project/agama#3287).
+
+- Prevent error when displaying reused LVM VGs (related to
+  gh#agama-project/agama#3210, jsc#PED-15104, bsc#1254718 and
+  gh#agama-project/agama#3171).
+
+- Sync system schema with the backend (related to the fix for
+  bsc#1258486).
+
+- Improve error page with filtered, source-mapped stack traces
+  for better error reporting (gh#agama-project/agama#3261).</comment>
+    <requestid>1340724</requestid>
+  </revision>
 </revisionlist>
