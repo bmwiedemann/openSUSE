@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 17 06:11:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.39.0 (4.38.0 was not released):
+  * Features
+    - api: bump rename sub-repository limit from 1000 to 2000
+      (4d39bcc)
+    - batched migration for blobs.media_type_id_convert_to_bigint
+      backfill (38f61b2)
+  * Build
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.11 (3e7c952)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.96.3 (7dd637b)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.10
+    - deps: update module github.com/redis/go-redis/v9 to v9.18.0
+    - deps: update module gitlab.com/gitlab-org/labkit to v1.38.6
+  * Refactors
+    - handlers: separate legacy filesystem and database code paths
+      for catalog GET (b5c78f3)
+    - improve tests for Stat call in tests suite (d20b86e)
+
+-------------------------------------------------------------------
 Mon Mar 02 06:34:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.37.0:
