@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 10 21:43:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * Add numpy to default dependencies, update install section to
+    highlight backend installation, update error message on
+    missing backend
+  * Fix ros3 test
+  * Support pyfive as an alternative backend
+  * Add support for filters() for Variables to match netCDF4
+    python API.
+
+-------------------------------------------------------------------
 Mon Dec 22 11:36:29 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.7.3
