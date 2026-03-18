@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 17 17:15:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12:
+  * Fix issue with handling expiration of PMKSA.
+  * Fix issue with handling uninitialized buffer and PMKID.
+  * Fix issue with checking for PKCS#8 key parser in unit tests.
+  * Fix issue with using -std=c23 compiler setting.
+
+-------------------------------------------------------------------
 Tue Feb 10 09:35:21 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.11

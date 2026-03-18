@@ -568,4 +568,16 @@
     <comment></comment>
     <requestid>1332391</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4bba175d162c1c224bd54cdaf0f8d3a9</srcmd5>
+    <version>3.12</version>
+    <time>1773849101</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.12:
+  * Fix issue with handling expiration of PMKSA.
+  * Fix issue with handling uninitialized buffer and PMKID.
+  * Fix issue with checking for PKCS#8 key parser in unit tests.
+  * Fix issue with using -std=c23 compiler setting. (forwarded request 1340752 from dirkmueller)</comment>
+    <requestid>1340868</requestid>
+  </revision>
 </revisionlist>
