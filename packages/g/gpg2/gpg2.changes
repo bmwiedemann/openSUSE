@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 25 10:09:20 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.5.18:
+  * gpg: Support deleting a composite secret key in gpg-agent
+  * gpg: Fix armor parsing when no CRC is found
+  * gpgsm: New option --assert-validsig
+  * agent: Fix the recent regression in pkdecrypt with TPM RSA
+  * scdaemon: Add support for D-Trust Card 6.1/6.4
+  * dirmngr: Let KS_SEARCH print all uid records for a key
+    Fixes regression since 2015
+  * gpg-authcode-sign.sh: Keep the log file even on success
+  * Remove patch upstream:
+    - gnupg-gpgscm-New-operator-long-time-t-to-detect-proper-tim.patch
+
+-------------------------------------------------------------------
 Wed Feb 11 10:27:56 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix Y2K38 FTBFS:
