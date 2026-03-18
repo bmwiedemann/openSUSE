@@ -18,7 +18,7 @@
 
 
 %define keydir  %{_prefix}/lib/rpm/gnupg/keys/
-%define pqkeydir  %{_prefix}/lib/rpm/gnupg/pqkeys/
+%define pqkeydir  %{_prefix}/lib/rpm/pqkeys/
 %define containerkeydir  %{_datadir}/container-keys/
 %define pemcontainerkeydir  /%{_datadir}/pki/containers/
 

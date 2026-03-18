@@ -487,4 +487,12 @@ However, it would be good to have these out before we do switch. (forwarded requ
     <comment>- add the openSUSE post quantum key in /usr/lib/rpm/pqkeys/ (forwarded request 1338515 from msmeissn)</comment>
     <requestid>1338523</requestid>
   </revision>
+  <revision rev="55" vrev="64">
+    <srcmd5>ff4f72823b7c53b9d1b9dacc92aa097e</srcmd5>
+    <version>1.0</version>
+    <time>1773848958</time>
+    <user>anag_factory</user>
+    <comment>- move the pqkeys out of gnupg, its not gpg style.</comment>
+    <requestid>1339646</requestid>
+  </revision>
 </revisionlist>

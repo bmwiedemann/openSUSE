@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 17 14:02:29 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- move the pqkeys out of gnupg, its not gpg style.
+
+-------------------------------------------------------------------
 Thu Mar 12 15:16:40 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - add the openSUSE post quantum key in /usr/lib/rpm/pqkeys/
