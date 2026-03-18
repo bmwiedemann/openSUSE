@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 18 09:50:16 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.2
+  * Update Aliyun OpenAPI meta data
+- from version 3.3.1
+  * {Core} Add custom User-Agent support and enable duplicate
+    flag for plugin commands by @AllyW in (#1292)
+  * Update Aliyun OpenAPI meta data
+- from version 3.3.0
+  * {Core} Add plugin management by @AllyW in (#1284)
+  * Update Aliyun OpenAPI meta data
+- from version 3.2.13
+  * Update Aliyun OpenAPI meta data
+- from version 3.2.12
+  * Update Aliyun OpenAPI meta data
+- from version 3.2.11
+  * Update Aliyun OpenAPI meta data
+- from version 3.2.10
+  * {Mcp-proxy} Add access control for MCP servers by @AllyW in (#1291)
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
 Tue Feb 17 09:10:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.2.9
