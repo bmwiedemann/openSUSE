@@ -1,7 +1,7 @@
 #
 # spec file for package hypre
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ ExclusiveArch:  do_not_build
 %global mpi_family  openmpi
 %define mpi_vers 5
 %{?DisOMPI5}
+ExcludeArch:    i586 %arm s390
 %endif
 
 %if "%{flavor}" == "mvapich2"
@@ -88,19 +89,14 @@ ExclusiveArch:  do_not_build
 %define libname  lib%{PNAME}%{somver}%{?_suffix}
 
 Name:           %package_name
-Version:        2.20.0
-%define somver 2_20_0
+Version:        3.1.0
+%define somver 301
 Release:        0
 Summary:        Scalable algorithms for solving linear systems of equations
 License:        Apache-2.0 OR MIT
 Group:          Productivity/Scientific/Math
 URL:            https://www.llnl.gov/casc/hypre/
-Source:         https://github.com/hypre-space/hypre/archive/v%{version}.tar.gz#/hypre-%{version}.tar.gz
-Patch0:         hypre_Makefile_examples.patch
-Patch1:         Add-library-version.patch
-
-# TODO : add babel
-#BuildRequires:  babel-devel
+Source0:        https://github.com/hypre-space/hypre/archive/v%{version}.tar.gz#/hypre-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
@@ -110,7 +106,6 @@ BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
 %endif
 BuildRequires:  cmake
 BuildRequires:  fdupes
-# Default library install path
 
 %description
 Hypre is a library of preconditioners that feature parallel multigrid
@@ -155,41 +150,35 @@ This package contains examples for Hypre.
 Summary:        Development documentation for Hypre
 Group:          Documentation/Other
 BuildArch:      noarch
-BuildRequires:  texlive-bibtex
-BuildRequires:  texlive-latex-bin-bin
-BuildRequires:  texlive-xypic
 
 %description    doc
 This package contains development documentation for Hypre.
 
 %prep
-%autosetup -p0 -n %{pname}-%{version}
-
-cat > %{_sourcedir}/baselibs.conf  <<EOF
-%{libname}
-%{libname}-devel
-  requires %{?_suffix}-<targettype>
-  requires "%{libname}-<targettype> = <version>"
-EOF
+%autosetup -n %{pname}-%{version}
 
 %build
 %{?with_mpi: . %{my_bindir}/mpivars.sh}
 
-export LDFLAGS="-lm"
-
 cd src/
 %cmake \
-       -DHYPRE_SHARED=ON \
+       -DCMAKE_SHARED_LINKER_FLAGS="-lm" \
+       -DCMAKE_INSTALL_INCLUDEDIR="include/hypre" \
+       -DHYPRE_ENABLE_FORTRAN=ON \
+       -DHYPRE_ENABLE_LTO=ON \
        %if %{without mpi}
-       -DHYPRE_WITH_MPI=OFF \
+       -DHYPRE_ENABLE_OPENMP=ON \
+       -DHYPRE_ENABLE_MPI=OFF \
        %else
-       -DHYPRE_WITH_MPI=ON \
+       -DHYPRE_ENABLE_OPENMP=OFF \
+       -DHYPRE_ENABLE_MPI=ON \
        %endif
-       -DHYPRE_USING_HYPRE_BLAS=OFF \
-       -DHYPRE_USING_HYPRE_LAPACK=OFF \
-       -DCMAKE_SHARED_LINKER_FLAGS="-lm"
+       -DHYPRE_ENABLE_HYPRE_BLAS=OFF \
+       -DHYPRE_ENABLE_HYPRE_LAPACK=OFF \
+       -DHYPRE_ENABLE_SUPERLU=ON \
+%{nil}
 
-%make_jobs
+%cmake_build
 
 %install
 cd src/
@@ -200,8 +189,7 @@ install -m 644 -D docs/usr-manual/*pdf -t %{buildroot}%{_docdir}/%{package_name}
 
 %fdupes -s %{buildroot}%{_prefix}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %{_libdir}/*.so.*

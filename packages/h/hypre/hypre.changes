@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Mar 17 09:41:26 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.0:
+  * Added a Chebyshev solver.
+  * Added rocm 7.0 support.
+  * Added CMake option to fetch and build Umpire.
+  * Added new options and improvements to MGR solver.
+  * Various bug fixes.
+- Changes from version 3.0.0:
+  * Major rewrite of the semi-structured code (Struct and
+    SStruct):
+    - Extended matrices to be rectangular (not just square as
+      before).
+    - Added support for rectangular Matvec and Matmat.
+    - Generalized support for matrices with constant coefficients.
+    - Added a new semi-structured algebraic multigrid solver
+      (SSAMG) that takes advantage of structure and builds on the
+      PFMG and BoomerAMG solvers.
+  * Added new mixed precision functionality:
+    - Provides support to switch between precisions at runtime.
+    - Provides mixed-precision preconditioned Krylov solvers
+      (lower-order preconditioning of higher-order Krylov method).
+  * API changes:
+    - HYPRE_StructVectorSetValues, HYPRE_StructVectorAddToValues.
+    - Removed SStruct solvers FAC and Maxwell.
+    - Removed Struct solver MSG.
+  * Added support for tagged residual norms (allows norms on
+    subsets of values).
+  * Added support for block scaling of IJ matrices and vectors.
+  * Various bug fixes.
+- Changes from older version 2.x:
+  * see changelog at
+    https://github.com/hypre-space/hypre/blob/master/CHANGELOG
+- Drop patches that are no longer needed:
+  * Add-library-version.patch: library version already added by
+    cmake build script
+  * hypre_Makefile_examples.patch: appropriate linking done by
+    using installed cmake targets
+- Drop unnecessary tex BuildRequires since documentation is not
+  rebuilt, bundled pdf is packaged instead.
+- Drop baselibs.conf: not used by any application/library.
+
+-------------------------------------------------------------------
 Mon Mar 31 12:32:54 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Remove support for gnu-hpc build flavors (bsc#1239982).

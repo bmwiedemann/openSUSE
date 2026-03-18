@@ -141,4 +141,15 @@
     <comment></comment>
     <requestid>1266059</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9d9746dbe83718e42101c19571f8e622</srcmd5>
+    <version>3.1.0</version>
+    <time>1773848976</time>
+    <user>anag_factory</user>
+    <comment>* Update to version 3.1.0.
+* Drop patches that are no longer needed: Add-library-version.patch, hypre_Makefile_examples.patch.
+* Drop unnecessary tex BuildRequires since documentation is not rebuilt, bundled pdf is packaged instead.
+* Drop baselibs.conf: not used by any application/library. (forwarded request 1339559 from badshah400)</comment>
+    <requestid>1339579</requestid>
+  </revision>
 </revisionlist>
