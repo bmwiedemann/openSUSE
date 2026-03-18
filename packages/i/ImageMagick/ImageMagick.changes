@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 17 11:03:31 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version lupdate to 7.1.2.17
+  * Add cast to unsigned char helper method to check for out of band data
+  * eliminate compiler warning
+  * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-rwgm-46rq-f86h
+  * ImageMagick/ImageMagick#8609
+  * ImageMagick/ImageMagick#8608
+  * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-354p-2qx7-jg9g
+  * Corrected out of bounds write of a single zero byte (GHSA-gc62-2v5p-qpmp)
+  * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-354p-2qx7-jg9g
+  * ImageMagick/ImageMagick#8603
+  * ImageMagick/ImageMagick#5807
+  * Apply correct patch for GHSA-cqw9-w2m7-r2m2.
+- modified patches
+  * ImageMagick-library-installable-in-parallel.patch (refreshed)
+- fixes CVE-2026-32259 [bsc#1259612]
+
+-------------------------------------------------------------------
 Mon Mar  9 08:43:02 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 7.1.2.16
@@ -11,6 +30,23 @@ Mon Mar  9 08:43:02 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * fix NULL pointer dereference in HEIC NCLX color profile allocation #8585
   * Fix double-free in SVG gradientTransform / transform parsing #8583
   * Typo fix in coders/dng.c #8580
+- fixes CVE-2026-28693 [bsc#1259466]
+        CVE-2026-30883 [bsc#1259467]
+        CVE-2026-30929 [bsc#1259468]
+        CVE-2026-30931 [bsc#1259469]
+        CVE-2026-28493 [bsc#1259446]
+        CVE-2026-28494 [bsc#1259447]
+        CVE-2026-28686 [bsc#1259448]
+        CVE-2026-28687 [bsc#1259450]
+        CVE-2026-28691 [bsc#1259455]
+        CVE-2026-28690 [bsc#1259456]
+        CVE-2026-28692 [bsc#1259457]
+        CVE-2026-28688 [bsc#1259451]
+        CVE-2026-30936 [bsc#1259464]
+        CVE-2026-28689 [bsc#1259452]
+        CVE-2026-30937 [bsc#1259463]
+        CVE-2026-30935 [bsc#1259497]
+        CVE-2026-31853 [bsc#1259528]
 
 -------------------------------------------------------------------
 Mon Mar  2 10:56:53 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
