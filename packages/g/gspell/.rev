@@ -261,4 +261,12 @@
     <comment>- Remove unsued dependency on valgrind (forwarded request 1332052 from Andreas_Schwab)</comment>
     <requestid>1332075</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4a1ad73dbad1c3e9c90ee32d1adc0a82</srcmd5>
+    <version>1.14.3</version>
+    <time>1773848956</time>
+    <user>anag_factory</user>
+    <comment>New stable rel (forwarded request 1339508 from iznogood)</comment>
+    <requestid>1339614</requestid>
+  </revision>
 </revisionlist>
