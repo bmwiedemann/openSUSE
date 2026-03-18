@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 17 12:46:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.3:
+  * add pyproject.toml
+  * merge jp2 module into img2pdf
+  * Add support for TIFF images with alpha channel
+  * Avoid division by zero aspect ratio
+
+-------------------------------------------------------------------
 Wed Apr 30 06:27:37 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.6.1
