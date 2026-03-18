@@ -18,4 +18,14 @@
   * only pull forbiddenfruit if impl is cpython</comment>
     <requestid>1294215</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2a7105348c15d79d562e26095280a584</srcmd5>
+    <version>1.5.26</version>
+    <time>1773848969</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.26:
+  * Add ThreadPoolExecutor.submit to ignored methods
+  * Fix false positive when importing modules in Python 3.14t</comment>
+    <requestid>1340844</requestid>
+  </revision>
 </revisionlist>

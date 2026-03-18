@@ -1,7 +1,7 @@
 #
 # spec file for package python-blockbuster
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-blockbuster
-Version:        1.5.25
+Version:        1.5.26
 Release:        0
 Summary:        Utility to detect blocking calls in the async event loop
 License:        Apache-2.0
