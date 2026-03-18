@@ -1083,6 +1083,7 @@ unsorted:
   - atuin 
   - atuin-bash-completion 
   - atuin-fish-completion 
+  - atuin-nushell-completion 
   - atuin-zsh-completion 
   - aubio-docs 
   - aubio-tools 
@@ -3005,7 +3006,6 @@ unsorted:
   - csound-plugins 
   - csound-samples 
   - csvprintf 
-  - csync 
   - csync2 
   - ctdb 
   - ctdb-pcp-pmda 
@@ -9362,6 +9362,13 @@ unsorted:
   - java-25-openjdk-javadoc 
   - java-25-openjdk-jmods 
   - java-25-openjdk-src 
+  - java-26-openjdk 
+  - java-26-openjdk-demo 
+  - java-26-openjdk-devel 
+  - java-26-openjdk-headless 
+  - java-26-openjdk-javadoc 
+  - java-26-openjdk-jmods 
+  - java-26-openjdk-src 
   - java-atk-wrapper 
   - java-cup 
   - java-cup-bootstrap 
@@ -10877,9 +10884,6 @@ unsorted:
   - lame 
   - lame-doc 
   - lame-mp3rtp 
-  - lammps 
-  - lammps-data 
-  - lammps-devel 
   - language-detector 
   - language-detector-javadoc 
   - languagetool 
@@ -11219,11 +11223,11 @@ unsorted:
   - libHACD3_17 
   - libHTTPDFaust0 
   - libHX-devel 
-  - libHYPRE2_20_0 
-  - libHYPRE2_20_0-mpich 
-  - libHYPRE2_20_0-mvapich2 
-  - libHYPRE2_20_0-openmpi4 
-  - libHYPRE2_20_0-openmpi5 
+  - libHYPRE301 
+  - libHYPRE301-mpich 
+  - libHYPRE301-mvapich2 
+  - libHYPRE301-openmpi4 
+  - libHYPRE301-openmpi5 
   - libHepMC3-4 
   - libHepMC3search5 
   - libHepMC4 
@@ -12847,13 +12851,6 @@ unsorted:
   - libcss0 
   - libcsv-devel 
   - libcsv3 
-  - libcsync-devel 
-  - libcsync-devel-doc 
-  - libcsync-doc 
-  - libcsync-plugin-owncloud 
-  - libcsync-plugin-sftp 
-  - libcsync-plugin-smb 
-  - libcsync0 
   - libct4 
   - libctemplate-devel 
   - libctemplate3 
@@ -14442,7 +14439,6 @@ unsorted:
   - liblalpulsar30 
   - liblalsimulation37 
   - liblalsupport14 
-  - liblammps0 
   - liblangtag-devel 
   - liblangtag-doc 
   - liblapack3-32bit 
@@ -15515,10 +15511,6 @@ unsorted:
   - libpmempool1 
   - libpmi0 
   - libpmix2 
-  - libpnetcdf4-mpich 
-  - libpnetcdf4-mvapich2 
-  - libpnetcdf4-openmpi4 
-  - libpnetcdf4-openmpi5 
   - libpng12-0 
   - libpng12-0-32bit 
   - libpng12-compat-devel 
@@ -23392,20 +23384,6 @@ unsorted:
   - pmix-plugin-munge 
   - pmix-plugins 
   - pmix-test 
-  - pnetcdf-devel-data 
-  - pnetcdf-doc 
-  - pnetcdf-mpich 
-  - pnetcdf-mpich-devel 
-  - pnetcdf-mpich-devel-static 
-  - pnetcdf-mvapich2 
-  - pnetcdf-mvapich2-devel 
-  - pnetcdf-mvapich2-devel-static 
-  - pnetcdf-openmpi4 
-  - pnetcdf-openmpi4-devel 
-  - pnetcdf-openmpi4-devel-static 
-  - pnetcdf-openmpi5 
-  - pnetcdf-openmpi5-devel 
-  - pnetcdf-openmpi5-devel-static 
   - png++-devel 
   - pngcheck 
   - pngcrush 
@@ -24199,7 +24177,6 @@ unsorted:
   - python3-kiwi 
   - python3-kiwi_crossprepare_plugin 
   - python3-ktoblzcheck 
-  - python3-lammps 
   - python3-lash 
   - python3-lasso 
   - python3-ldb-32bit 
@@ -46113,6 +46090,7 @@ unsorted:
   - wezterm-zsh-completion 
   - wf-config-devel 
   - wf-recorder 
+  - wf-recorder-fish-completion 
   - wf-shell 
   - wf-shell-devel 
   - wfview 
