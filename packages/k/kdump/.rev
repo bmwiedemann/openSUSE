@@ -1497,4 +1497,18 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
   * exclude kernel.panic_on_warn sysctl (bsc#1247355)</comment>
     <requestid>1301015</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>325877b8fda7c4e4043fb30eb652fadc</srcmd5>
+    <version>2.1.7</version>
+    <time>1773848962</time>
+    <user>anag_factory</user>
+    <comment>- upgrade to version 2.1.7
+  * fix VLAN interface naming (bsc#1255300)
+  * fix bonding options for VLAN slaves
+  * fix return value of kdumptool commandline -d (bsc#1257471)
+  * use primary IP address (bsc#1259058)
+  * dracut: avoid error message if /etc/sysctl.conf does not exist
+  * dracut: update dracut hooks path from /lib/dracut to /var/lib/dracut</comment>
+    <requestid>1340720</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 13 16:27:05 UTC 2026 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.1.7
+  * fix VLAN interface naming (bsc#1255300)
+  * fix bonding options for VLAN slaves
+  * fix return value of kdumptool commandline -d (bsc#1257471)
+  * use primary IP address (bsc#1259058)
+  * dracut: avoid error message if /etc/sysctl.conf does not exist
+  * dracut: update dracut hooks path from /lib/dracut to /var/lib/dracut
+
+-------------------------------------------------------------------
 Fri Aug 22 18:33:18 UTC 2025 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.1.6
