@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 18 04:01:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.0.4:
+  * Switch to dynamic versioning with pdm build system.
+  * Add typing-extensions to test requirements for Python < 3.9.
+- Ship the README in the binary packages as docs.
+
+-------------------------------------------------------------------
 Thu Oct 30 12:07:09 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Initial package v0.0.3, needed by python-fastapi

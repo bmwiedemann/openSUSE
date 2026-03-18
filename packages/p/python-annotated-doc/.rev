@@ -7,4 +7,15 @@
     <comment>Required by  python-fastapi</comment>
     <requestid>1314694</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>11c7e3f93379769b1f4e872e78525974</srcmd5>
+    <version>0.0.4</version>
+    <time>1773848968</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.0.4:
+  * Switch to dynamic versioning with pdm build system.
+  * Add typing-extensions to test requirements for Python &lt; 3.9.
+- Ship the README in the binary packages as docs.</comment>
+    <requestid>1340813</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-annotated-doc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           python-annotated-doc
-Version:        0.0.3
+Version:        0.0.4
 Release:        0
 Summary:        Document params, attributes, types and variables inline
 License:        MIT
 URL:            https://github.com/fastapi/annotated-doc
 Source:         https://files.pythonhosted.org/packages/source/a/annotated-doc/annotated_doc-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module uv-build < 0.10.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,6 +50,7 @@ Document parameters, class attributes, return types, and variables inline, with 
 
 %files %{python_files}
 %license LICENSE
+%doc README.md
 %{python_sitelib}/annotated_doc
 %{python_sitelib}/annotated_doc-%{version}.dist-info
 
