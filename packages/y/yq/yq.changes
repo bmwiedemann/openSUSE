@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 18 06:46:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.52.4:
+  * Dropping windows/arm - no longer supported in cross-compile
+  * Fixing comments in TOML arrays
+  * Bumped dependencies
+
+-------------------------------------------------------------------
 Mon Feb  2 10:24:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.52.2:
