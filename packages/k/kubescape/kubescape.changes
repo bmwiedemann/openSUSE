@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:05:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.3:
+  * README.md updated
+  * log added in scanImage(): value of scanInfo.ListingURL for
+    reference
+  * fix: missing host do not return nil error
+  * feat: new falg --grype-db-url added to overload the url in
+    kubescape scan command
+  * build(deps): Bump go.opentelemetry.io/otel/sdk from 1.39.0 to
+    1.40.0
+
+-------------------------------------------------------------------
 Thu Feb 19 06:32:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.2:
