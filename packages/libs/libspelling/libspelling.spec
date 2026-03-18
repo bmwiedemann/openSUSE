@@ -24,7 +24,7 @@ Version:        0.4.10
 Release:        0
 Summary:        A spellcheck library for GTK 4
 License:        LGPL-2.1-or-later
-URL:            https://gitlab.gnome.org/chergert/libspelling
+URL:            https://gitlab.gnome.org/GNOME/libspelling
 Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  c_compiler
