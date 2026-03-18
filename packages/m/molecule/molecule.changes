@@ -1,4 +1,225 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:07:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.3.0:
+  * Features
+    - feat: add --workers flag for concurrent scenario execution
+      (#4616) @cidrblock
+  * Maintenance
+    - chore(deps): update pep621 (#4619) @renovate[bot]
+    - chore(deps): update all dependencies (#4618) @renovate[bot]
+
+-------------------------------------------------------------------
+Thu Feb 26 06:21:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.2.0:
+  * Features
+    - feat: improve scenario selection and filtering for large
+      collection trees (#4613) @cidrblock
+    - feat: support nested scenario directories in collection mode
+      (#4611) @cidrblock
+  * Fixes
+    - fix: remove use of click-help-colors (#4569) @ssbarnea
+    - fix: validate .git directories in find_vcs_root() (#4610)
+      @skeetmtp
+    - fix: handle missing molecule_yml_date_modified key in state
+      (#4606) @dmzoneill
+    - Add execution flow documentation (#4589) @Qalthos
+    - Modify contact links in issue template config (#4586)
+      @alisonlhart
+  * Maintenance
+    - chore(deps): update all dependencies (#4612) @renovate[bot]
+    - chore: replace pre-commit with prek (#4614) @ssbarnea
+    - chore: use tox>=4.46.0 during testing (#4615) @ssbarnea
+    - chore(deps): update pep621 (#4609) @renovate[bot]
+    - Bump cryptography from 46.0.4 to 46.0.5 (#4604)
+      @dependabot[bot]
+    - Bump pillow from 12.1.0 to 12.1.1 (#4605) @dependabot[bot]
+    - chore(deps): update all dependencies (#4608) @renovate[bot]
+    - chore(deps): update all dependencies (#4603) @renovate[bot]
+    - chore(deps): update all dependencies (#4599) @renovate[bot]
+    - chore(deps): update dependencies [security] (#4601)
+      @renovate[bot]
+    - chore(deps): update all dependencies (#4598) @renovate[bot]
+    - chore(deps): update all dependencies (#4595) @renovate[bot]
+    - chore(deps): update all dependencies (#4594) @renovate[bot]
+    - chore(deps): update all dependencies (#4593) @renovate[bot]
+    - chore(deps): update all dependencies (#4592) @renovate[bot]
+    - chore(deps): update all dependencies (#4591) @renovate[bot]
+    - chore(deps): update all dependencies (#4590) @renovate[bot]
+    - chore(deps): update all dependencies (#4587) @renovate[bot]
+    - chore: adopt pytest>=9.0.0 config (#4583) @Qalthos
+
+-------------------------------------------------------------------
+Fri Dec  5 07:58:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.12.0:
+  * Maintenance
+    - chore: Add check for platform versions (#4584) @cidrblock
+    - chore(deps): update all dependencies (#4580) @renovate[bot]
+    - chore(deps): update all dependencies (#4579) @renovate[bot]
+* - update to 25.11.0:
+  * Fixes
+    - docs: migrate RTD URLs to docs.ansible.com (#4575) @gundalow
+  * Maintenance
+    - chore: Temporarily ignore tombi schema strict checking in
+      pyproject.toml (#4577) @alisonlhart
+
+-------------------------------------------------------------------
+Thu Nov 13 08:49:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.11.0:
+  * Fixes
+    - Fix molecule list with ansible-native configs. (#4570)
+      @Qalthos
+    - fix: adopt uv.lock and newer packaging (#4554) @ssbarnea
+    - Remove default ansible.cfg configuration option
+      ansible_managed as it's deprecated (#4553) @ziegenberg
+  * Maintenance
+    - chore(deps): update all dependencies (#4573) @renovate[bot]
+    - chore(deps): update all dependencies (#4572) @renovate[bot]
+    - chore(deps): update all dependencies (#4571) @renovate[bot]
+    - chore(deps): update all dependencies (#4565) @renovate[bot]
+    - Add finalize workflow for secure sonarcloud checks (#4567)
+      @alisonlhart
+    - chore: update hooks (#4566) @ssbarnea
+    - Update sonar-project.properties configuration (#4564)
+      @alisonlhart
+    - [pre-commit.ci] pre-commit autoupdate (#4561)
+      @pre-commit-ci[bot]
+    - chore: rename sonar config file (#4563) @ssbarnea
+    - chore(deps): update all dependencies (#4560) @renovate[bot]
+    - chore(deps): update all dependencies (#4559) @renovate[bot]
+    - chore(deps): update all dependencies (#4555) @renovate[bot]
+    - chore: minor cleanups (#4557) @ssbarnea
+
+-------------------------------------------------------------------
+Fri Sep 19 09:14:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.9.0:
+  * Enhancements
+    - Add documentation links to molecule login error message
+      (#4536) @cidrblock
+    - Set Click standalone_mode=False by default (#4537) @cidrblock
+    - Replace ImmediateExit with sysexit_with_message for direct
+      exits (#4534) @cidrblock
+    - Add sysexit_from_exception, restore sysexit_with_message
+      (#4538) @Qalthos
+    - Debug the galaxy.yml missing (#4533) @cidrblock
+    - Add environment variable support for report and
+      command-borders (#4530) @cidrblock
+    - Debug missing galaxy.yml file not warning (#4531) @cidrblock
+    - Remove non-functional html report (#4528) @cidrblock
+    - Bump the dependencies group in /.config with 14 updates
+      (#4527) @dependabot[bot]
+    - Refactor configuration docs (#4529) @cidrblock
+    - README and index updates (#4526) @cidrblock
+    - Add kubevirt driver support to molecule.json (#4492)
+      @gokberkgunduzz
+    - Note other examples as pre ansible-native (#4525) @cidrblock
+    - Convert Podman example to ansible-native configuration
+      (#4524) @cidrblock
+    - Update native inventory example (#4523) @cidrblock
+    - Remove indent (#4522) @cidrblock
+    - Improve playbook doc (#4521) @cidrblock
+    - Add missing doc from PR 4519 (#4520) @cidrblock
+    - Add testing philosophy documentation (#4504) @cidrblock
+    - Add comprehensive getting started guides for collections and
+      playbooks (#4519) @cidrblock
+    - Add comprehensive ansible-native documentation and workflow
+      reference (#4518) @cidrblock
+    - Remove experimental shared inventory support (#4516)
+      @cidrblock
+    - Add shared_state configuration documentation (#4517)
+      @cidrblock
+    - Add shared_state configuration option with CLI override
+      support (#4514) @cidrblock
+    - Fix KeyError command_borders in login and reset commands
+      (#4515) @cidrblock
+    - Introduce centralized ansible configuration section and
+      simplify init command (#4509) @cidrblock
+    - Bump actions/checkout from 4 to 5 (#4511) @dependabot[bot]
+    - Enable ansible_args for user-provided create/destroy
+      playbooks (#4505) @cidrblock
+    - Add always-on one-line execution summary with improved
+      formatting (#4506) @cidrblock
+    - Add --all flag support to molecule reset command (#4503)
+      @cidrblock
+    - Improve messaging terminology: replace 'Completed' with
+      'Executed' (#4507) @cidrblock
+    - Add collection-aware scenario discovery and creation (#4499)
+      @cidrblock
+    - refactor: introduce ImmediateExit exception for clean error
+      handling (#4501) @cidrblock
+    - Reverted: Add MOLECULE_SHARED_INVENTORY_DIR environment
+      variable and playbook variable (#4500) @cidrblock
+    - Add experimental --command-borders flag for visual command
+      output separation (#4496) @cidrblock
+    - Add Ansible-style Scenario Recap to Report Output (#4494)
+      @cidrblock
+    - Remove extra line whem an action has no completions (#4493)
+      @cidrblock
+    - Implement Action Completion Reporting System (#4490)
+      @cidrblock
+  * Fixes
+    - Improve default templates for converge and verify (#4476)
+      @dragetd
+    - Update getting-started-playbooks.md (#4546) @sdunne
+  * Maintenance
+    - Bump the dependencies group across 1 directory with 24
+      updates (#4549) @dependabot[bot]
+    - chore: configure renovate (#4552) @ssbarnea
+    - chore: pre-commit autoupdate (#4548) @pre-commit-ci[bot]
+    - Replace to_bool calls with boolean function (#4542)
+      @cidrblock
+    - Collapse utils module into single util.py file (#4541)
+      @cidrblock
+    - Replace util.print_as_yaml with ansi_output.print_matrix
+      (#4540) @cidrblock
+    - Refactor print_environment_vars to use logging instead of
+      console (#4539) @cidrblock
+    - Bump the dependencies group across 1 directory with 20
+      updates (#4508) @dependabot[bot]
+    - chore: pre-commit autoupdate (#4498) @pre-commit-ci[bot]
+    - Add StrEnum compatibility layer for Python 3.10 (#4491)
+      @cidrblock
+
+-------------------------------------------------------------------
+Sun Aug  3 13:35:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.7.0:
+  * Enhancements
+    - Provide step information in additional log messages (#4484)
+      @cidrblock
+    - Enhance logging with consistent scenario and step information
+      (#4483) @cidrblock
+    - Enhance color scheme and formatting methods (#4481)
+      @cidrblock
+    - Add scenario names to log messages for improved debugging
+      (#4478) @cidrblock
+    - Share state between molecule scenarios (#4470) @Qalthos
+    - Add shared-state argument (#4452) @Qalthos
+  * Bugfixes
+    - Make sure path exists before writing (#4472) @Qalthos
+    - Add pipeline for galaxy publishing (#4469) @ssbarnea
+    - Bring community.molecule collection as part of molecule
+      repository (#4467) @ssbarnea
+    - Fix #4448: molecule init scenario ignores the -d flag (#4456)
+      @panchal-yash
+  * Maintenance
+    - Consolidate command class loggers into base.Base property
+      (#4486) @cidrblock
+    - refactor: enhance Config and command base with comprehensive
+      scenario-aware logging (#4488) @cidrblock
+    - cleanup: remove unused logger definitions across codebase
+      (#4487) @cidrblock
+    - refactor(cli): Framework-agnostic CLI options with enhanced
+      UX and comprehensive audit (#4480) @cidrblock
+    - More GHA release fixes (#4474) @ssbarnea
+    - GHA release fixes (#4473) @ssbarnea
+    - Update pre-commit (#4462) @Qalthos
+
+-------------------------------------------------------------------
 Thu Jun 19 06:33:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.6.0:
