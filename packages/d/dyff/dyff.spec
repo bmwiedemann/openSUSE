@@ -17,7 +17,7 @@
 
 
 Name:           dyff
-Version:        1.11.2
+Version:        1.11.3
 Release:        0
 Summary:        Diff tool for YAML files, and sometimes JSON
 License:        MIT
