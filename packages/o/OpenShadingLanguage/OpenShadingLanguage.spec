@@ -1,7 +1,7 @@
 #
 # spec file for package OpenShadingLanguage
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -204,6 +204,7 @@ Summary:        Development files for %{name}
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       OpenImageIO-plugin-osl = %{version}
 Requires:       liboslcomp%{sufx} = %{version}
 Requires:       liboslexec%{sufx} = %{version}
 Requires:       liboslnoise%{sufx} = %{version}

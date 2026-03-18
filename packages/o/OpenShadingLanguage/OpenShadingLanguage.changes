@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 17 10:51:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- cmake files reference OpenImageIO-plugin-osl
+
+-------------------------------------------------------------------
 Wed Oct  1 14:03:06 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on libboost_system-devel,
