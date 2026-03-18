@@ -273,4 +273,21 @@ use private glib API but implement a share memory mkstemp</comment>
   * blog-install.patch</comment>
     <requestid>1273161</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2715d242033466bcf118c1ba234f2b39</srcmd5>
+    <version>2.36</version>
+    <time>1773848954</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.36
+  * If SYS_pidfd_open is not defined use a fallback
+    Include &lt;asm/unistd.h&gt; to get __NR_pidfd_open for
+    the definition of SYS_pidfd_open.
+  * Changes to let systemd find plymouth replacements
+    which means to add the appropiate Alias in systemd-ask-password-blog.path
+    and also in systemd-ask-password-blog.service with new Install
+    sections.  Also change description in systemd-ask-password-blog.path
+    to hint for blogd as replacement.
+  * Rework password asking method to be asynchronous</comment>
+    <requestid>1339556</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package blog
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           blog
-Version:        2.35
+Version:        2.36
 %define sonum   2
 Release:        0
 Summary:        Boot logging

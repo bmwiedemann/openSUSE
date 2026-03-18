@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 17 09:18:40 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.36
+  * If SYS_pidfd_open is not defined use a fallback
+    Include <asm/unistd.h> to get __NR_pidfd_open for
+    the definition of SYS_pidfd_open.
+  * Changes to let systemd find plymouth replacements
+    which means to add the appropiate Alias in systemd-ask-password-blog.path
+    and also in systemd-ask-password-blog.service with new Install
+    sections.  Also change description in systemd-ask-password-blog.path
+    to hint for blogd as replacement.
+  * Rework password asking method to be asynchronous
+
+-------------------------------------------------------------------
 Mon Apr 28 13:42:43 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.35
