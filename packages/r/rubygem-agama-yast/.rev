@@ -630,4 +630,23 @@
   (gh#agama-project/agama#3143).</comment>
     <requestid>1337998</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f0ebca32a2b770b09c167675dabf3f2c</srcmd5>
+    <version>19</version>
+    <time>1773848961</time>
+    <user>anag_factory</user>
+    <comment>- Version 19
+
+- Report an error if storage needs to be probed meanwhile DASD is
+  formatting (related to bsc#1259354).
+
+- Fix the id reported to identify the encryption method used for
+  TPM-based unlocking (bsc#1258486).
+
+- Add errors to the output of agama-autoyast (related to bsc#1259434).
+
+- Infer the boot device, if omitted in the user configuration, when
+  reusing a pre-existing LVM or RAID (bsc#1248504).</comment>
+    <requestid>1340719</requestid>
+  </revision>
 </revisionlist>
