@@ -347,4 +347,24 @@
 - Rename &quot;transactional_base&quot; to &quot;immutable_base&quot; (related to jsc#PED-14307).</comment>
     <requestid>1334919</requestid>
   </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>43d66ba298859db63591d620a8cd5b18</srcmd5>
+    <version>0</version>
+    <time>1773848963</time>
+    <user>anag_factory</user>
+    <comment>- Version 19
+
+- Add wayland ready patterns to Leap 16.1 and TW
+  - lxqt_wayland
+  - openSUSEway
+  - hyprland (Tumbleweed exclusive for now)
+  - Leap 16.0 retrospective action item
+
+- Fix SLES and SLES_SAP release package names (bsc#1258271).
+
+- bsc#1258416
+  - made sudo-policy-wheel-auth-self for MicroOS 
+  - missed in original implementation of jsc#PM-2128</comment>
+    <requestid>1340725</requestid>
+  </revision>
 </revisionlist>
