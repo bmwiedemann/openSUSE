@@ -490,4 +490,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338683</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a6eb427618f5247cab41b3dec8666d16</srcmd5>
+    <version>19.0.0</version>
+    <time>1773848964</time>
+    <user>anag_factory</user>
+    <comment>- Version 19
+
+- Make sure Agama started before launching Firefox (gh#agama-project/agama#3273).</comment>
+    <requestid>1340726</requestid>
+  </revision>
 </revisionlist>
