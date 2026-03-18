@@ -683,4 +683,22 @@
     <comment></comment>
     <requestid>1330968</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>628d52857175e823aadcbc487be740fb</srcmd5>
+    <version>2.49.1</version>
+    <time>1773848964</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.49.1
+  * fix request session error (#16050)
+  * remove deprecated rsa dependency (#16020)
+- from version 2.49.0
+  * mTLS configuration via x.509 for asynchronous session in google-auth (#1959)
+  * Support timeout as aiohttp.ClientTimeout and total_attempts (max retries) in AsyncAuthorizedSession (#1961)
+  * Add helper methods for asynchronous x.509 certificate discovery (#1956)
+  * support an alternative env to decide if mtls should be enabled (#1945)
+  * gracefully fallback if workload fields are missing from cert config (#16022)
+- Update Github upsream URL in URL field
+</comment>
+    <requestid>1340731</requestid>
+  </revision>
 </revisionlist>

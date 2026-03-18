@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 17 12:14:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.49.1
+  * fix request session error (#16050)
+  * remove deprecated rsa dependency (#16020)
+- from version 2.49.0
+  * mTLS configuration via x.509 for asynchronous session in google-auth (#1959)
+  * Support timeout as aiohttp.ClientTimeout and total_attempts (max retries) in AsyncAuthorizedSession (#1961)
+  * Add helper methods for asynchronous x.509 certificate discovery (#1956)
+  * support an alternative env to decide if mtls should be enabled (#1945)
+  * gracefully fallback if workload fields are missing from cert config (#16022)
+- Update Github upsream URL in URL field
+
+-------------------------------------------------------------------
 Wed Feb  4 09:02:33 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.48.0

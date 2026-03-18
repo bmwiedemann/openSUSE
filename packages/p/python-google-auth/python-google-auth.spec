@@ -18,11 +18,11 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.48.0
+Version:        2.49.1
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
-URL:            https://github.com/googleapis/google-auth-library-python
+URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-auth
 Source:         https://files.pythonhosted.org/packages/source/g/google_auth/google_auth-%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PyJWT >= 2.0}
@@ -39,7 +39,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyu2f >= 0.1.5}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module responses}
-BuildRequires:  %{python_module rsa >= 3.1.4}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module wheel}
@@ -47,7 +46,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 38.0.3
 Requires:       python-pyasn1-modules >= 0.2.1
-Requires:       python-rsa >= 3.1.4
 Requires:       python-urllib3
 Recommends:     python-PyJWT >= 2.0
 Recommends:     python-aiohttp >= 3.6.2
