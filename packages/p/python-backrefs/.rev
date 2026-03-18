@@ -56,4 +56,14 @@
 - initial version 5.8</comment>
     <requestid>1322583</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8ff537bec16498f1dd666b6187dbc9b</srcmd5>
+    <version>6.2</version>
+    <time>1773849057</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2:
+  * **NEW** Add alias `prefixmatch` for `match` in both `bre` and
+    `bregex`.</comment>
+    <requestid>1340842</requestid>
+  </revision>
 </revisionlist>

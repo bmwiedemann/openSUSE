@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:23:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2:
+  * **NEW** Add alias `prefixmatch` for `match` in both `bre` and
+    `bregex`.
+
+-------------------------------------------------------------------
 Fri Dec 12 10:48:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1:
