@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 15 17:51:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.12
+  * Removed the quadratic spline interpolation option. It didn't
+    make much sense anyway in comparison to cubic spline.
+  * Reduced the number of pre-computed interpolation phases from
+    8192 to 4096 for less pressure on the CPU cache. The audible
+    difference is minimal.
+  * Mixer code is no longer unrolled. The speed difference was
+    minimal, and it would cause a ton of extra code bytes for
+    almost no performance gain.
+
+-------------------------------------------------------------------
 Thu Mar 12 15:46:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.11
