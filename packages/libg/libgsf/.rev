@@ -598,4 +598,12 @@
   + Documentation fixes. (forwarded request 1327148 from iznogood)</comment>
     <requestid>1327173</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>a6319fdea14fcc5cdc76820acf5e751c</srcmd5>
+    <version>1.14.56</version>
+    <time>1773848957</time>
+    <user>anag_factory</user>
+    <comment>New stable rel (forwarded request 1339515 from iznogood)</comment>
+    <requestid>1339618</requestid>
+  </revision>
 </revisionlist>
