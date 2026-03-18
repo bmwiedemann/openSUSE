@@ -66,4 +66,15 @@
     <comment>- Remove redundant Neovim workaround</comment>
     <requestid>1337741</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c51276124848c91a124730c10d841c6f</srcmd5>
+    <version>0.5.0</version>
+    <time>1773849098</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.0:
+  * fix(queries): re-add removed assignment operator
+  * fix: apply operator field to =
+  * support lua5.5 grammar (forwarded request 1340856 from rrahl0)</comment>
+    <requestid>1340857</requestid>
+  </revision>
 </revisionlist>

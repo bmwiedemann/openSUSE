@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-lua
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         _name lua
 Name:           tree-sitter-lua
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Lua grammar for tree-sitter
 License:        MIT
