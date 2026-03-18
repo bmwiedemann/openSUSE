@@ -27,25 +27,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        1.5.0
+Version:        1.7.1
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause
 URL:            https://github.com/scientific-python/pytest-doctestplus
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest_doctestplus-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+# PATCH-FIX-UPSTREAM gh#scientific-python/pytest-doctestplus#322
+Patch0:         more-skipping-ufunc-test.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 17.0
-Requires:       python-pytest >= 4.6
+Requires:       python-pytest >= 7
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pip >= 19.3.1}
 BuildRequires:  %{python_module pytest-doctestplus = %{version}}
 BuildRequires:  %{python_module pytest-remotedata >= 0.3.2}
 BuildRequires:  git-core

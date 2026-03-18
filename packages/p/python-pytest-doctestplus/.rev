@@ -225,4 +225,27 @@
 - Drop upstream patch add-missing-xfail-version.patch</comment>
     <requestid>1314025</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a6c747ea08b64383ea2bdc852c98de0f</srcmd5>
+    <version>1.7.1</version>
+    <time>1773849031</time>
+    <user>anag_factory</user>
+    <comment>- Add patch more-skipping-ufunc-test.patch:
+  * Skip test_ufunc for more Python versions.
+
+- Update to 1.7.1:
+  * Fixing bug where __doctest_requires__ with version specifiers (e.g.,
+    numpy&gt;=2.0) incorrectly skipped tests even when dependencies were
+    satisfied.
+  * Fixing crashing sphinx builds where multiple directives are used with the
+    first one expecting content. The order of the directives used does not
+    matter after this fix.
+  * Versions of Python &lt;3.10 and pytest&lt;7 are no longer supported.
+  * Fixing directives that should not have any content and therefore fixing
+    previously crashing sphinx builds. Using these directives with a content
+    now results an error.
+  * Ensure that tests skipped with __doctest_skip__ and __doctest_requires__
+    show up as skipped tests in Pytest's output.</comment>
+    <requestid>1340816</requestid>
+  </revision>
 </revisionlist>

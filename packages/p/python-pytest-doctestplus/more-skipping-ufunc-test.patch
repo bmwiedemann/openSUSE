@@ -1,0 +1,30 @@
+From 21754d989677f20d66b4d871c8813c6aef4bb4b4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Brigitta=20Sip=C5=91cz?= <bsipocz@gmail.com>
+Date: Tue, 17 Mar 2026 10:48:40 -0700
+Subject: [PATCH] skip test for more python versions
+
+---
+ tests/test_doctestplus.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_doctestplus.py b/tests/test_doctestplus.py
+index cb2c4fa..91542ce 100644
+--- a/tests/test_doctestplus.py
++++ b/tests/test_doctestplus.py
+@@ -22,6 +22,7 @@
+ 
+ 
+ pytest_plugins = ['pytester']
++py_version = Version(python_version())
+ 
+ 
+ def test_ignored_whitespace(testdir):
+@@ -1211,7 +1212,7 @@ def f():
+ 
+ 
+ @pytest.mark.xfail(
+-        python_version() in ('3.11.9', '3.11.10', '3.11.11', '3.11.12', '3.11.13', '3.11.14', '3.12.3'),
++        py_version > Version('3.11.8') and py_version < Version('3.12') or py_version == '3.12.3',
+         reason='broken by https://github.com/python/cpython/pull/115440')
+ def test_ufunc(testdir):
+     pytest.importorskip('numpy')

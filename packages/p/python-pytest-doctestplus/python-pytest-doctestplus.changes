@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 18 04:59:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch more-skipping-ufunc-test.patch:
+  * Skip test_ufunc for more Python versions.
+
+-------------------------------------------------------------------
+Fri Feb 13 02:00:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.1:
+  * Fixing bug where __doctest_requires__ with version specifiers (e.g.,
+    numpy>=2.0) incorrectly skipped tests even when dependencies were
+    satisfied.
+  * Fixing crashing sphinx builds where multiple directives are used with the
+    first one expecting content. The order of the directives used does not
+    matter after this fix.
+  * Versions of Python <3.10 and pytest<7 are no longer supported.
+  * Fixing directives that should not have any content and therefore fixing
+    previously crashing sphinx builds. Using these directives with a content
+    now results an error.
+  * Ensure that tests skipped with __doctest_skip__ and __doctest_requires__
+    show up as skipped tests in Pytest's output.
+
+-------------------------------------------------------------------
 Tue Oct 28 09:11:39 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.5.0:
