@@ -244,4 +244,21 @@
     <comment></comment>
     <requestid>1324856</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>12c3e8e28deda589800112dd773ccaf7</srcmd5>
+    <version>2.3.3</version>
+    <time>1773848951</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.3:
+  * Make deflate output deterministic if stream is reused after
+    deflateReset #2102
+  * minigzip: Fix integer overflow in gz_compress_mmap #2110
+  * Use GCC's may_alias attribute for access to buffers in
+    crc32_chorba #2078
+  * Fix false-positive infinite loop warning detected by GCC-14
+    static analyzer #2101
+  * Fix warning for potentially uninitialized local variable ft
+    used. #2043</comment>
+    <requestid>1339543</requestid>
+  </revision>
 </revisionlist>
