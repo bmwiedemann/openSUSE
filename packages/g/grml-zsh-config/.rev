@@ -267,4 +267,14 @@
   * zshrc: switch to myip.grml.org with IPv6 support</comment>
     <requestid>1333292</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bb1bba17cd94d284bb426bd0f24b9788</srcmd5>
+    <version>0.19.28</version>
+    <time>1773849094</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.28:
+  * tmux: show username, make user/host part bold
+  * tmux: make active pane color match our screen style</comment>
+    <requestid>1340845</requestid>
+  </revision>
 </revisionlist>

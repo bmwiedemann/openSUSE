@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:18:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.28:
+  * tmux: show username, make user/host part bold
+  * tmux: make active pane color match our screen style
+
+-------------------------------------------------------------------
 Mon Feb 16 09:06:20 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.27:
