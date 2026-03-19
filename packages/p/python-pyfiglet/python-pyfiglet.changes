@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 19 08:08:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Minor release to include tlf fonts in PyPi distribution and
+    fix/remove non-working characters.
+  * Fixed character codes for diacritics in 48 fonts
+  * Seven characters in `5x8.flf` should have height 9
+  * added .tlf files to MANIFEST.in and setup.py
+
+-------------------------------------------------------------------
 Wed Aug  6 10:13:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.3

@@ -81,4 +81,17 @@
     * Big type hinting and modernization upgrade</comment>
     <requestid>1298179</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cbc0cc41c16efb69a2b643d9bc112d27</srcmd5>
+    <version>1.0.4</version>
+    <time>1773938386</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.4:
+  * Minor release to include tlf fonts in PyPi distribution and
+    fix/remove non-working characters.
+  * Fixed character codes for diacritics in 48 fonts
+  * Seven characters in `5x8.flf` should have height 9
+  * added .tlf files to MANIFEST.in and setup.py</comment>
+    <requestid>1341091</requestid>
+  </revision>
 </revisionlist>

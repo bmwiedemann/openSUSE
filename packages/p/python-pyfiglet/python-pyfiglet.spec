@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyfiglet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyfiglet
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Pure Python FIGlet implementation
 License:        MIT
@@ -26,13 +26,14 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pwaller/pyfiglet
 Source:         https://files.pythonhosted.org/packages/source/p/pyfiglet/pyfiglet-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 68.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  figlet
 BuildRequires:  python-rpm-macros
+BuildRequires:  toilet
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
