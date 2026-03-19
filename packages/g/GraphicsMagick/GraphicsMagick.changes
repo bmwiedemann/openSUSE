@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 18 10:20:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-30883: missing bounds check when encoding a PNG image can lead to a heap buffer over-write (bsc#1259467)
+  * GraphicsMagick-CVE-2026-30883.patch
+
+-------------------------------------------------------------------
 Mon Mar  9 10:13:37 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - security update

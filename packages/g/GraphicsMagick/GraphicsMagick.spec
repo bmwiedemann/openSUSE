@@ -1,6 +1,7 @@
 #
 # spec file for package GraphicsMagick
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,6 +36,8 @@ Patch0:         GraphicsMagick-perl-linkage.patch
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
 # CVE-2026-25799 [bsc#1258786], Division-by-Zero in YUV sampling factor validation leads to crash
 Patch2:         GraphicsMagick-CVE-2026-25799.patch
+# CVE-2026-30883: missing bounds check when encoding a PNG image can lead to a heap buffer over-write (bsc#1259467)
+Patch3:         GraphicsMagick-CVE-2026-30883.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

@@ -1362,4 +1362,12 @@ New Features:
   * GraphicsMagick-CVE-2026-25799.patch</comment>
     <requestid>1337630</requestid>
   </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>a507afd73a9d286d5e1535dfe40efbce</srcmd5>
+    <version>1.3.46</version>
+    <time>1773938141</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-30883, (bsc#1259467)</comment>
+    <requestid>1340871</requestid>
+  </revision>
 </revisionlist>
