@@ -1,7 +1,7 @@
 #
 # spec file for package obs-scm-bridge
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,12 @@
 %define primary_python python3
 %endif
 
-%if 0%{?fedora} || 0%{?rhel}
-%define build_pkg_name obs-build
+%if 0%{?suse_version}
+%global build_pkg_name build
+%global git_pkg_name git-core
 %else
-%define build_pkg_name build
+%global build_pkg_name obs-build
+%global git_pkg_name git
 %endif
 
 Name:           obs-scm-bridge
@@ -39,13 +41,8 @@ Requires:       %{build_pkg_name} >= 20211125
 # these are just recommends in build package, but we need it here
 Requires:       perl(Date::Parse)
 Requires:       git-lfs
-%if 0%{?opensuse_version}
-BuildRequires:  git-core >= 2.46
-Requires:       git-core >= 2.46
-%else
-BuildRequires:  git >= 2.46
-Requires:       git >= 2.46
-%endif
+BuildRequires:  %{git_pkg_name} >= 2.46
+Requires:       %{git_pkg_name} >= 2.46
 Requires:       perl(LWP::Protocol::https)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Net::SSL)
