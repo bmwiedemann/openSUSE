@@ -251,4 +251,23 @@ After this PR, there will be a delete request for kernel-firmware.
   * lenovo: remove obsolete ish_lnlm_53c4ffad_2a17559f.bin firmware</comment>
     <requestid>1335280</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>90fb4d052cd674c61287892394c5500c</srcmd5>
+    <version>20260317</version>
+    <time>1773938146</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260317 (git commit 66ca9a5b63a5):
+  * Add LENOVO ISH firmware v5.8.1.7720 for X1 Carbon (Gen 14) and X1 2-in-1 (Gen 11)
+  * linux-firmware: Add ISH firmware file for Intel Wildcat Lake platform
+
+- Update to version 20260313 (git commit 57303edc4101):
+  * intel_vpu: Update NPU firmware
+
+- Update to version 20260310 (git commit d13cd498318b):
+  * Add LENOVO ISH firmware v5.8.0.7720 for X9-15 2025
+
+- Update to version 20260309 (git commit b3929cfcd543):
+  * linux-firmware: Remove duplicate fw and Rename Lenovo ISH LNLM firmware files accordingly</comment>
+    <requestid>1340880</requestid>
+  </revision>
 </revisionlist>
