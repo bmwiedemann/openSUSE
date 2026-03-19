@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 12 14:36:53 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 7.7:
+  * Wrap disassembly in try/except to handle invalid instruction
+	bytes
+  * Fix callPreceded filtering
+  * Fix sintax warnings for python 3.13
+
+-------------------------------------------------------------------
 Tue Apr 22 19:51:40 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Initial packaging at version 7.6 

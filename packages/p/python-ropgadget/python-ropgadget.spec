@@ -17,7 +17,7 @@
 
 
 Name:           python-ropgadget
-Version:        7.6
+Version:        7.7
 Release:        0
 Summary:        This tool lets you search your gadgets on your binaries to facilitate your ROP exploitation
 License:        BSD-3-Clause
