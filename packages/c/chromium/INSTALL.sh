@@ -139,7 +139,7 @@ fi
 # launcher script and symlink
 sed \
     -e "s#@@PROGNAME#${PROGNAME}#g" \
-    -e "s#@@CHANNEL#${CHANNEL}#g" \
+    -e "s#@@channel#${CHANNEL}#g" \
     "chrome/installer/linux/common/wrapper" > "${STAGEDIR}/${INSTALLDIR}/chrome-wrapper"
 chmod 755 "${STAGEDIR}/${INSTALLDIR}/chrome-wrapper"
 ln -s "${INSTALLDIR}/chrome-wrapper" "${STAGEDIR}/usr/bin/${PACKAGE}" 

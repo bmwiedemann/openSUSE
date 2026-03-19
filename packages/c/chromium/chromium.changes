@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 18 18:12:44 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 146.0.7680.153
+
+-------------------------------------------------------------------
+Mon Mar 16 12:32:12 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- fix INSTALL.sh (upstream changed CHANNEL to channel in wrapper) 
+
+-------------------------------------------------------------------
 Sat Mar 14 06:55:38 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 146.0.7680.80:
