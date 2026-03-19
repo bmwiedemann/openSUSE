@@ -1,4 +1,203 @@
 -------------------------------------------------------------------
+Wed Mar 18 07:50:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.34.0:
+  * feat(cli): add chat resume footer on session quit #20667
+  * Support bold and other styles in svg snapshots #20937
+  * fix(core): increase A2A agent timeout to 30 minutes #21028
+  * Cleanup old branches. #19354
+  * chore(release): bump version to 0.34.0-nightly.20260303.34f0c1538 #21034
+  * feat(ui): standardize semantic focus colors and enhance history visibility #20745
+  * fix: merge duplicate imports in packages/core (3/4) #20928
+  * Add extra safety checks for proto pollution #20396
+  * feat(core): Add tracker CRUD tools & visualization #19489
+  * Revert "fix(ui): persist expansion in AskUser dialog when navigating options" #21042
+  * Changelog for v0.33.0-preview.0 #21030
+  * fix: model persistence for all scenarios #21051
+  * chore/release: bump version to 0.34.0-nightly.20260304.28af4e127 #21054
+  * Consistently guard restarts against concurrent auto updates #21016
+  * Defensive coding to reduce the risk of Maximum update depth errors #20940
+  * fix(cli): Polish shell autocomplete rendering to be a little more shell native feeling. #20931
+  * Docs: Update plan mode docs #19682
+  * fix(mcp): Notifications/tools/list_changed support not working #21050
+  * fix(cli): register extension lifecycle events in DebugProfiler #20101
+  * chore(dev): update vscode settings for typescriptreact #19907
+  * fix(cli): enable multi-arch docker builds for sandbox #19821
+  * Changelog for v0.32.0 #21033
+  * Changelog for v0.33.0-preview.1 #21058
+  * feat(core): improve @file autocomplete to prioritize filenames #21064
+  * feat(sandbox): add experimental LXC container sandbox support #20735
+  * feat(evals): add overall pass rate row to eval nightly summary table #20905
+  * feat(telemetry): include language in telemetry and fix accepted lines computation #21126
+  * Changelog for v0.32.1 #21055
+  * feat(core): add robustness tests, logging, and metrics for CodeAssistServer SSE parsing #21013
+  * feat: add issue assignee workflow #21003
+  * fix: improve error message when OAuth succeeds but project ID is required #21070
+  * feat(loop-reduction): implement iterative loop detection and model feedback #20763
+  * chore(github): require prompt approvers for agent prompt files #20896
+  * Docs: Create tools reference #19470
+  * fix(core, a2a-server): prevent hang during OAuth in non-interactive sessions #21045
+  * chore(cli): enable deprecated settings removal by default #20682
+  * feat(core): Disable fast ack helper for hints. #21011
+  * fix(ui): suppress redundant failure note when tool error note is shown #21078
+  * docs: document planning workflows with Conductor example #21166
+  * feat(release): ship esbuild bundle in npm package #19171
+  * fix(extensions): preserve symlinks in extension source path while enforcing folder trust #20867
+  * fix(cli): defer tool exclusions to policy engine in non-interactive mode #20639
+  * fix(ui): removed double padding on rendered content #21029
+  * fix(core): truncate excessively long lines in grep search output #21147
+  * feat: add custom footer configuration via /footer #19001
+  * perf(core): fix OOM crash in long-running sessions #19608
+  * refactor(cli): categorize built-in themes into dark/ and light/ directories #18634
+  * fix(core): explicitly allow codebase_investigator and cli_help in read-only mode #21157
+  * test: add browser agent integration tests #21151
+  * fix(cli): fix enabling kitty codes on Windows Terminal #21136
+  * refactor(core): extract shared OAuth flow primitives from MCPOAuthProvider #20895
+  * fix(ui): add partial output to cancelled shell UI #21178
+  * fix(cli): replace hardcoded keybinding strings with dynamic formatters #21159
+  * DOCS: Update quota and pricing page #21194
+  * feat(telemetry): implement Clearcut logging for startup statistics #21172
+  * feat(triage): add area/documentation to issue triage #21222
+  * Fix so shell calls are formatted #21237
+  * feat(cli): add native gVisor (runsc) sandboxing support #21062
+  * docs: use absolute paths for internal links in plan-mode.md #21299
+  * fix(core): prevent unhandled AbortError crash during stream loop detection #21123
+  * fix:reorder env var redaction checks to scan values first #21059
+  * fix(acp): rename --experimental-acp to --acp & remove Zed-specific refrences #21171
+  * feat(core): fallback to 2.5 models with no access for toolcalls #21283
+  * test(core): improve testing for API request/response parsing #21227
+  * docs(links): update docs-writer skill and fix broken link #21314
+  * Fix code colorizer ansi escape bug. #21321
+  * remove wildcard behavior on keybindings #21315
+  * feat(acp): Add support for AI Gateway auth #21305
+  * fix(theme): improve theme color contrast for macOS Terminal.app #21175
+  * feat (core): Implement tracker related SI changes #19964
+  * Changelog for v0.33.0-preview.2 #21333
+  * Changelog for v0.33.0-preview.3 #21347
+  * docs: format release times as HH:MM UTC #20726
+  * fix(cli): implement --all flag for extensions uninstall #21319
+  * docs: fix incorrect relative links to command reference #20964
+  * documentiong ensures ripgrep #21298
+  * fix(core): handle AbortError thrown during processTurn #21296
+  * docs(cli): clarify ! command output visibility in shell commands tutorial #21041
+  * fix: logic for task tracker strategy and remove tracker tools #21355
+  * fix(partUtils): display media type and size for inline data parts #21358
+  * Fix(accessibility): add screen reader support to RewindViewer #20750
+  * fix(hooks): propagate stopHookActive in AfterAgent retry path (#20426) #20439
+  * fix(core): deduplicate GEMINI.md files by device/inode on case-insensitive filesystems (#19904) #19915
+  * feat(core): add concurrency safety guidance for subagent delegation (#17753) #21278
+  * feat(ui): dynamically generate all keybinding hints #21346
+  * feat(core): implement unified KeychainService and migrate token storage #21344
+  * fix(cli): gracefully handle --resume when no sessions exist #21429
+  * fix(plan): keep approved plan during chat compression #21284
+  * feat(core): implement generic CacheService and optimize setupUser #21374
+  * Update quota and pricing documentation with subscription tiers #21351
+  * fix(core): append correct OTLP paths for HTTP exporters #16836
+  * Changelog for v0.33.0-preview.4 #21354
+  * feat(cli): implement dot-prefixing for slash command conflicts #20979
+  * refactor(core): standardize MCP tool naming to mcp_ FQN format #21425
+  * feat(cli): hide gemma settings from display and mark as experimental #21471
+  * feat(skills): refine string-reviewer guidelines and description #20368
+  * fix(core): whitelist TERM and COLORTERM in environment sanitization #20514
+  * fix(billing): fix overage strategy lifecycle and settings integration #21236
+  * fix: expand paste placeholders in TextInput on submit #19946
+  * fix(core): add in-memory cache to ChatRecordingService to prevent OOM #21502
+  * feat(cli): overhaul thinking UI #18725
+  * fix(ui): unify Ctrl+O expansion hint experience across buffer modes #21474
+  * fix(cli): correct shell height reporting #21492
+  * Make test suite pass when the GEMINI_SYSTEM_MD env variable or GEMINI_WRITE_SYSTEM_MD variable happens to be set locally/ #21480
+  * Disallow underspecified types #21485
+  * refactor(cli): standardize on 'reload' verb for all components #20654
+  * feat(cli): Invert quota language to 'percent used' #20100
+  * Docs: Add documentation for notifications (experimental)(macOS) #21163
+  * Code review comments as a pr #21209
+  * feat(cli): unify /chat and /resume command UX #20256
+  * docs: fix typo 'allowslisted' -> 'allowlisted' in mcp-server.md #21665
+  * fix(core): display actual graph output in tracker_visualize tool #21455
+  * fix(core): sanitize SSE-corrupted JSON and domain strings in error classification #21702
+  * Docs: Make documentation links relative #21490
+  * feat(cli): expose /tools desc as explicit subcommand for discoverability #21241
+  * feat(cli): add /compact alias for /compress command #21711
+  * feat(plan): enable Plan Mode by default #21713
+  * feat(core): Introduce AgentLoopContext. #21198
+  * fix(core): resolve symlinks for non-existent paths during validation #21487
+  * docs: document tool exclusion from memory via deny policy #21428
+  * perf(core): cache loadApiKey to reduce redundant keychain access #21520
+  * feat(cli): implement /upgrade command #21511
+  * Feat/browser agent progress emission #21218
+  * fix(settings): display objects as JSON instead of [object Object] #21458
+  * Unmarshall update #21721
+  * Update mcp's list function to check for disablement. #21148
+  * robustness(core): static checks to validate history is immutable #21228
+  * refactor(cli): better react patterns for BaseSettingsDialog #21206
+  * feat(security): implement robust IP validation and safeFetch foundation #21401
+  * feat(core): improve subagent result display #20378
+  * docs: fix broken markdown syntax and anchor links in /tools #20902
+  * feat(policy): support subagent-specific policies in TOML #21431
+  * Add script to speed up reviewing PRs adding a worktree. #21748
+  * fix(core): prevent infinite recursion in symlink resolution #21750
+  * fix(docs): fix headless mode docs #21287
+  * feat/redesign header compact #20922
+  * refactor: migrate to useKeyMatchers hook #21753
+  * perf(cli): cache loadSettings to reduce redundant disk I/O at startup #21521
+  * fix(core): resolve Windows line ending and path separation bugs across CLI #21068
+  * docs: fix heading formatting in commands.md and phrasing in tools-api.md #20679
+  * refactor(ui): unify keybinding infrastructure and support string initialization #21776
+  * Add support for updating extension sources and names #21715
+  * fix(core): handle GUI editor non-zero exit codes gracefully #20376
+  * fix(core): destroy PTY on kill() and exception to prevent fd leak #21693
+  * fix(docs): update theme screenshots and add missing themes #20689
+  * refactor(cli): rename 'return' key to 'enter' internally #21796
+  * build(release): restrict npm bundling to non-stable tags #21821
+  * fix(core): override toolRegistry property for sub-agent schedulers #21766
+  * fix(cli): make footer items equally spaced #21843
+  * docs: clarify global policy rules application in plan mode #21864
+  * fix(core): ensure correct flash model steering in plan mode implementation phase #21871
+  * fix(core): update @a2a-js/sdk to 0.3.11 #21875
+  * refactor(core): improve API response error logging when retry #21784
+  * fix(ui): handle headless execution in credits and upgrade dialogs #21850
+  * fix(core): treat retryable errors with >5 min delay as terminal quota errors #21881
+  * feat(telemetry): add specific PR, issue, and custom tracking IDs for GitHub Actions #21129
+  * feat(core): add OAuth2 Authorization Code auth provider for A2A agents #21496
+  * feat(cli): give visibility to /tools list command in the TUI and follow the subcommand pattern of other commands #21213
+  * Handle dirty worktrees better and warn about running scripts/review.sh on untrusted code. #21791
+  * feat(policy): support auto-add to policy by default and scoped persistence #20361
+  * fix(core): handle AbortError when ESC cancels tool execution #20863
+  * fix(release): Improve Patch Release Workflow Comments: Clearer Approval Guidance #21894
+  * docs: clarify telemetry setup and comprehensive data map #21879
+  * feat(core): add per-model token usage to stream-json output #21839
+  * docs: remove experimental badge from plan mode in sidebar #21906
+  * fix(cli): prevent race condition in loop detection retry #17916
+  * Add behavioral evals for tracker #20069
+  * fix(auth): update terminology to 'sign in' and 'sign out' #20892
+  * docs(mcp): standardize mcp tool fqn documentation #21664
+  * fix(ui): prevent empty tool-group border stubs after filtering #21852
+  * make command names consistent #21907
+  * refactor: remove agent_card_requires_auth config flag #21914
+  * feat(a2a): implement standardized normalization and streaming reassembly #21402
+  * feat(cli): enable skill activation via slash commands #21758
+  * docs(cli): mention per-model token usage in stream-json result event #21908
+  * fix(plan): prevent plan truncation in approval dialog by supporting unconstrained heights #21037
+  * feat(a2a): switch from callback-based to event-driven tool scheduler #21467
+  * feat(voice): implement speech-friendly response formatter #20989
+  * feat: add pulsating blue border automation overlay to browser agent #21173
+  * Add extensionRegistryURI setting to change where the registry is read from #20463
+  * fix: patch gaxios v7 Array.toString() stream corruption #21884
+  * fix: prevent hangs in non-interactive mode and improve agent guidance #20893
+  * Add ExtensionDetails dialog and support install #20845
+  * chore/release: bump version to 0.34.0-nightly.20260310.4653b126f #21816
+  * Changelog for v0.33.0-preview.13 #21927
+  * fix(cli): stabilize prompt layout to prevent jumping when typing #21081
+  * fix: preserve prompt text when cancelling streaming #21103
+  * fix: robust UX for remote agent errors #20307
+  * feat: implement background process logging and cleanup #21189
+  * Changelog for v0.33.0-preview.14 #21938
+  * fix(patch): cherry-pick 45faf4d to release/v0.34.0-preview.0-pr-22148 [CONFLICTS] #22174
+  * fix(patch): cherry-pick 8432bce to release/v0.34.0-preview.1-pr-22069 to patch version v0.34.0-preview.1 and create version 0.34.0-preview.2 #22205
+  * fix(patch): cherry-pick 24adacd to release/v0.34.0-preview.2-pr-22332 to patch version v0.34.0-preview.2 and create version 0.34.0-preview.3 #22391
+  * fix(patch): cherry-pick 48130eb to release/v0.34.0-preview.3-pr-22665 to patch version v0.34.0-preview.3 and create version 0.34.0-preview.4 #22719
+
+-------------------------------------------------------------------
 Tue Mar 17 08:47:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.33.2:
