@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 18 22:16:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.14:
+  * Missing \_\_init\_\_.py
+  * Provide optional way to request response headers
+  * Recognize an alternate MegaRAC system name
+
+-------------------------------------------------------------------
 Tue Mar  3 18:54:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.13:

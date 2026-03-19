@@ -17,7 +17,7 @@
 
 
 Name:           python-pyghmi
-Version:        1.6.13
+Version:        1.6.14
 Release:        0
 Summary:        General Hardware Management Initiative (IPMI and others)
 License:        Apache-2.0

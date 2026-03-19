@@ -536,4 +536,15 @@
   * Adapt for alternate type presented in devicedescription</comment>
     <requestid>1336185</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>054b11b7eac5ee847693355303427dcf</srcmd5>
+    <version>1.6.14</version>
+    <time>1773938333</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.14:
+  * Missing \_\_init\_\_.py
+  * Provide optional way to request response headers
+  * Recognize an alternate MegaRAC system name</comment>
+    <requestid>1341043</requestid>
+  </revision>
 </revisionlist>
