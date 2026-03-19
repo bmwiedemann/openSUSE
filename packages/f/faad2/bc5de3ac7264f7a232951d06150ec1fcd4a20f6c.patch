@@ -1,0 +1,64 @@
+From bc5de3ac7264f7a232951d06150ec1fcd4a20f6c Mon Sep 17 00:00:00 2001
+From: Dario Binacchi <45538935+passgat@users.noreply.github.com>
+Date: Wed, 1 Oct 2025 20:08:07 +0200
+Subject: [PATCH] libfaad/fixed.h: Fix ISO C warning (#211)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Building faad2 in Buildroot raises the following warning:
+
+In file included from buildroot/output/build/faad2-2.11.2/libfaad/common.h:255,
+                 from buildroot/output/build/faad2-2.11.2/libfaad/bits.c:31:
+buildroot/output/build/faad2-2.11.2/libfaad/fixed.h: In function ‘MUL_R’:
+buildroot/output/build/faad2-2.11.2/libfaad/fixed.h:163:1: warning: ISO C forbids braced-groups within expressions [-Wpedantic]
+  163 | ({ \
+      | ^
+buildroot/output/build/faad2-2.11.2/libfaad/fixed.h:179:12: note: in expansion of macro ‘arm_mul’
+  179 |     return arm_mul(A, B, REAL_BITS);
+
+Signed-off-by: Dario Binacchi <dario.binacchi@amarulasolutions.com>
+---
+ libfaad/fixed.h | 29 +++++++++++++++--------------
+ 1 file changed, 15 insertions(+), 14 deletions(-)
+
+diff --git a/libfaad/fixed.h b/libfaad/fixed.h
+index 117cfeac..396f1957 100644
+--- a/libfaad/fixed.h
++++ b/libfaad/fixed.h
+@@ -159,20 +159,21 @@ static INLINE void ComplexMult(real_t *y1, real_t *y2,
+ #elif defined(__GNUC__) && defined (__arm__)
+ 
+ /* taken from MAD */
+-#define arm_mul(x, y, SCALEBITS) \
+-({ \
+-    uint32_t __hi; \
+-    uint32_t __lo; \
+-    uint32_t __result; \
+-    asm("smull  %0, %1, %3, %4\n\t" \
+-        "movs   %0, %0, lsr %5\n\t" \
+-        "adc    %2, %0, %1, lsl %6" \
+-        : "=&r" (__lo), "=&r" (__hi), "=r" (__result) \
+-        : "%r" (x), "r" (y), \
+-        "M" (SCALEBITS), "M" (32 - (SCALEBITS)) \
+-        : "cc"); \
+-        __result; \
+-})
++static INLINE real_t arm_mul(real_t x, real_t y, unsigned int SCALEBITS)
++{
++    uint32_t __hi;
++    uint32_t __lo;
++    uint32_t __result;
++
++    asm("smull  %0, %1, %3, %4\n\t"
++        "movs   %0, %0, lsr %5\n\t"
++        "adc    %2, %0, %1, lsl %6"
++        : "=&r" (__lo), "=&r" (__hi), "=r" (__result)
++        : "%r" (x), "r" (y),
++        "M" (SCALEBITS), "M" (32 - (SCALEBITS))
++        : "cc");
++    return __result;					\
++}
+ 
+ static INLINE real_t MUL_R(real_t A, real_t B)
+ {

@@ -31,6 +31,10 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/knik0/faad2
 Source0:        %name-%version.tar.zst
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM bc5de3ac7264f7a232951d06150ec1fcd4a20f6c.patch -- libfaad/fixed.h: Fix ISO C warning
+Patch0:         https://github.com/knik0/faad2/commit/bc5de3ac7264f7a232951d06150ec1fcd4a20f6c.patch
+# PATCH-FIX-UPSTREAM 2653c918d788c5dc83826c97aaa4de4dd8931a8b.patch -- check for mp4config.frame.nsclices == 0
+Patch1:         https://github.com/knik0/faad2/commit/2653c918d788c5dc83826c97aaa4de4dd8931a8b.patch
 
 BuildRequires:  cmake >= 3.15
 BuildRequires:  pkgconfig

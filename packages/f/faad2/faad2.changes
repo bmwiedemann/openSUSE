@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 17 20:55:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bugfix patches:
+  + bc5de3ac7264f7a232951d06150ec1fcd4a20f6c.patch:
+    libfaad/fixed.h: Fix ISO C warning
+  + 2653c918d788c5dc83826c97aaa4de4dd8931a8b.patch: check for
+    mp4config.frame.nsclices == 0
+
+-------------------------------------------------------------------
 Sun Jul 20 18:01:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Tweak _service. Compress archive during build.

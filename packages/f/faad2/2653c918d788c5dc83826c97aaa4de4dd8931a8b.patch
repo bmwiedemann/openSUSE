@@ -1,0 +1,24 @@
+From 2653c918d788c5dc83826c97aaa4de4dd8931a8b Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Wed, 15 Oct 2025 09:58:15 +0200
+Subject: [PATCH] check for mp4config.frame.nsclices == 0
+
+Fixes #212
+---
+ frontend/mp4read.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/frontend/mp4read.c b/frontend/mp4read.c
+index a157d7d6..b81034a3 100644
+--- a/frontend/mp4read.c
++++ b/frontend/mp4read.c
+@@ -347,6 +347,9 @@ static int stscin(int size)
+ 
+     mp4config.frame.nsclices = u32in();
+ 
++    if (!mp4config.frame.nsclices)
++        return ERR_FAIL;
++
+     tmp = sizeof(slice_info_t) * mp4config.frame.nsclices;
+     if (tmp < mp4config.frame.nsclices)
+         return ERR_FAIL;
