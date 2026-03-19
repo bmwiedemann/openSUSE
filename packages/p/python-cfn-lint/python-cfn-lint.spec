@@ -1,7 +1,7 @@
 #
 # spec file for package python-cfn-lint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cfn-lint
-Version:        1.40.4
+Version:        1.47.0
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT

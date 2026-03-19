@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Mar 18 09:08:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.47.0
+  * Remove Python 3.9 support (EOL October 2025)
+  * feat: add region filtering to --update-specs
+  * Add unknown validation state for intrinsic
+    functions in composite validators
+  * Update CloudFormation schemas to `2026-03-10`
+  * Fix/skip resolve unconstrained schema
+  * chore(deps): bump setuptools from 82.0.0 to 82.0.1 in /requirements
+  * Update CloudFormation schemas to `2026-03-13`
+- from version 1.46.0
+  * Add rule E3063 to validate GuardDuty Detector property exclusivity
+  * Update CloudFormation schemas to `2026-03-02`
+- from version 1.45.0
+  * chore(deps): bump setuptools from `80.10.2` to `82.0.0` in /requirements
+  * Add rule E3685 to validate container image functions cannot use `Handler`,
+    `Runtime`, or `Layers`
+  * Add rule E3696 to validate `LogLevel` is not supported when `LogFormat`
+    is set to `Text`
+  * chore(deps): bump pyinstaller from `6.18.0` to `6.19.0` in /requirements
+  * Pin cfn-lint version to `1.44.0` in Dockerfile
+  * Fix E3009 false positive for `Fn::Transform` in additional properties
+  * Accept any SSM parameter and List types with warning for undocumented types
+  * Update CloudFormation schemas to `2026-02-23`
+- from version 1.44.0
+  * Add E3704: Enforce TransitEncryptionEnabled for Valkey ReplicationGroups
+  * Add in more .kiro files for steering and agents
+  * Migrate schema patches from botocore to AWS Smithy models
+  * chore(deps): bump setuptools from 80.9.0 to 80.10.2 in /requirements
+  * Update tox configurations and use tox in gha
+  * Update setuptools in pyproject.toml
+  * Update CloudFormation schemas to 2026-02-03
+  * Update CloudFormation schemas to 2026-02-05
+- from version 1.43.4
+  * Fix update specs in quick succession failing the command
+  * Update CloudFormation schemas to 2026-01-21
+  * Update E3601 to support Seconds as JSONata in Wait
+  * Update E3601 to have Choices support Comment
+- from version 1.43.3
+  * Update Lambda runtime lifecycle data with latest AWS runtimes
+  * chore(deps): bump pyinstaller from 6.17.0 to 6.18.0 in /requirements
+  * Update CloudFormation schemas to 2026-01-15
+- from version 1.43.2
+  * Update CloudFormation schemas to 2026-01-05
+- from version 1.43.1
+  * SecurityGroupIds can take a name from a default VPC
+  * Add permissions to github actions
+  * Update CloudFormation schemas to 2025-12-18
+- from version 1.43.0
+  * Add `us-isob-west-1` region
+  * Refactor: Deduplicate schemas using hash-based storage
+  * Update step function schema to allow `Output` in `Succeeed` state
+  * Update CloudFormation schemas to `2025-12-11`
+  * Update CloudFormation schemas to `2025-12-15`
+  * chore(deps): bump peter-evans/create-pull-request from 7 to 8
+- from version 1.42.1
+  * Fix rule E3601 Step Functions StartAt path resolution in Parallel branches
+  * Fix rule E3601 Step Functions Map Iterator validation crash in StateMachineDefinition
+  * Update CloudFormation schemas to `2025-12-08`
+- from version 1.42.0
+  * chore(deps): bump actions/checkout from 5 to 6
+  * .cfnlintrc config errors are returned as E0003
+  * New rules for RDS EOL
+  * Update supported Python versions
+  * State Machine: Implement check & Unit Tests for "StartAt"
+  * Update CloudFormation schemas to 2025-11-30
+  * chore(deps): bump pyinstaller from 6.16.0 to 6.17.0 in /requirements
+- from version 1.41.0
+  * Update rule E3006 to fail on bad serverless resource types
+  * Validate resource `Properties` type
+  * Update github actions python version
+  * Add upcoming Europe Sovereign Region
+  * Update CloudFormation schemas to `2025-11-18`
+
+-------------------------------------------------------------------
 Tue Nov  4 07:18:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.40.4
