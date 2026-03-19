@@ -1633,4 +1633,12 @@
     <comment>Update to version 15.2.3</comment>
     <requestid>1328906</requestid>
   </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>184ba6b0d9d833427b472e0b333a2260</srcmd5>
+    <version>15.2.4</version>
+    <time>1773938302</time>
+    <user>anag_factory</user>
+    <comment>Update to 15.2.4</comment>
+    <requestid>1341016</requestid>
+  </revision>
 </revisionlist>
