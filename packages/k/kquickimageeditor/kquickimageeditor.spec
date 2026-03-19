@@ -1,7 +1,7 @@
 #
 # spec file for package kquickimageeditor
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ ExclusiveArch:  do_not_build
 
 %bcond_without released
 Name:           kquickimageeditor%{?pkg_suffix}
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        A set of QtQuick components for image editing
 License:        LGPL-2.1-or-later
@@ -110,7 +110,6 @@ basic image editing capabilities.
 
 %files devel
 %if 0%{?qt6}
-%{_includedir}/kquickimageeditor/
 %{_includedir}/KQuickImageEditor/
 %{_kf6_cmakedir}/KQuickImageEditor/
 %{_kf6_libdir}/libKQuickImageEditor.so

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 18 14:30:15 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.6.1
+  * CropTool: fix undefined aspectRatio error
+  * fix include paths
+  * TextTool: fix DragHandler not working
+  * imagedocument: Clean up UndoCommand pointers on destruction
+  * resizerectangle: Assign parent to QQmlComponent to prevent leak
+- Add new key from ndavis to kquickimageeditor.keyring
+
+-------------------------------------------------------------------
 Sat Nov 15 21:21:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.6.0
