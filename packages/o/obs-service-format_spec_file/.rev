@@ -863,4 +863,13 @@
   * License updates from SPDX org (March 2026)</comment>
     <requestid>1336336</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>08b9537d7742aaf121ed8a2eb0b7c7c4</srcmd5>
+    <version>20260319</version>
+    <time>1773938348</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260319:
+  * Start introducing LicenseRef-SUSE-*</comment>
+    <requestid>1341052</requestid>
+  </revision>
 </revisionlist>
