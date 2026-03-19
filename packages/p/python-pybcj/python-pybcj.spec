@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybcj
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,21 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pybcj
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        A bcj filter library
 License:        LGPL-2.1-or-later
-URL:            https://codeberg.org/miurahr/pybcj
-Source:         https://files.pythonhosted.org/packages/source/p/pybcj/pybcj-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.6}
-BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
+URL:            https://github.com/miurahr/pybcj
+Source:         https://github.com/miurahr/pybcj/archive/refs/tags/v%{version}.tar.gz#/pybcj-%{version}.tar.gz
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 58.0}
 BuildRequires:  %{python_module setuptools_scm >= 6.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-importlib_metadata if python-base < 3.8)
 # SECTION test
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}

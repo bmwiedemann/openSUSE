@@ -43,4 +43,14 @@
   * ci: azure-pipelines</comment>
     <requestid>1274210</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a59b18d953d125b72d82c76a323b0ff</srcmd5>
+    <version>1.0.7</version>
+    <time>1773938329</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.7:
+  * Support for python 3.14
+  * ci: fix test and release workflows</comment>
+    <requestid>1341039</requestid>
+  </revision>
 </revisionlist>
