@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:22:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.16.1:
+  * Use configured JSON module in managers #1549 (commit)
+  * Admin UI fixes: remove duplicate tasks, report transport
+    upgrades (commit)
+  * Switch to Furo documentation template (commit)
+  * Add Python free-threading to CI #1554 (commit)
+
+-------------------------------------------------------------------
 Sun Dec 28 19:45:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.16.0:

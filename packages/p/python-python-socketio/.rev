@@ -166,4 +166,17 @@
     (commit)</comment>
     <requestid>1324590</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8c913e1126d58b70bd93e598ab9ec164</srcmd5>
+    <version>5.16.1</version>
+    <time>1773938328</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.16.1:
+  * Use configured JSON module in managers #1549 (commit)
+  * Admin UI fixes: remove duplicate tasks, report transport
+    upgrades (commit)
+  * Switch to Furo documentation template (commit)
+  * Add Python free-threading to CI #1554 (commit)</comment>
+    <requestid>1341034</requestid>
+  </revision>
 </revisionlist>
