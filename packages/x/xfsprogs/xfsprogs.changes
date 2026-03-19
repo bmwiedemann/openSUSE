@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 18 13:15:22 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.19.0
+  - xfs_io: print more realtime subvolume related information in statfs
+  - xfs_io: fix fsmap help
+  - mkfs: fix log sunit automatic configuration
+  - mkfs: fix protofile data corruption when in/out file block sizes don't match
+  - libxfs: fix data corruption bug in libxfs_file_write
+  - misc: fix a few memory leaks
+  - debian: Drop Uploader: Bastian Germann
+  - mkfs.xfs fix sunit size on 512e and 4kN disks.
+  - xfs_scrub_all: fix non-service-mode arguments to xfs_scrub
+  - mkfs: remove unnecessary return value affectation
+  - xfs: use blkdev_report_zones_cached()
+  - include blkzoned.h in platform_defs.h
+  - debian: don't explicitly reload systemd from postinst
+  - xfs_mdrestore: fix restoration on filesystems with 4k sectors
+  - mkfs: quiet down warning about insufficient write zones
+  - xfs_logprint: print log data to the screen in host-endian order
+  - mkfs: set rtstart from user-specified dblocks
+
+ -------------------------------------------------------------------
 Mon Mar  9 09:45:32 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
 
 - xfsprogs: move the xfs_scrub_all manpage into the scrub pkg
