@@ -145,6 +145,8 @@ Patch104:       openssh-6.6p1-keycat.patch
 Patch105:       openssh-6.6.1p1-selinux-contexts.patch
 Patch106:       openssh-7.6p1-cleanup-selinux.patch
 Patch107:       openssh-send-extra-term-env.patch
+# PATCH-FIX-OPENSUSE openssh-7.7p1-gssapi-new-unique.patch bsc#1258166 hpj@suse.com
+Patch108:       openssh-7.7p1-gssapi-new-unique.patch
 # 200 - 300  --  Patches submitted to upstream
 # PATCH-FIX-UPSTREAM -- https://github.com/openssh/openssh-portable/pull/452 boo#1229010
 Patch200:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch

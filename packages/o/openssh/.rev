@@ -2013,4 +2013,13 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment>Remove erroneous %config() directive (forwarded request 1322250 from hpjansson)</comment>
     <requestid>1322252</requestid>
   </revision>
+  <revision rev="199" vrev="3">
+    <srcmd5>d5e22114e7a567f3637e9e98014c0f96</srcmd5>
+    <version>10.2p1</version>
+    <time>1773938134</time>
+    <user>anag_factory</user>
+    <comment>- Add openssh-7.7p1-gssapi-new-unique.patch (bsc#1258166). This
+  allows using SSSD with a non-file backend. (forwarded request 1335914 from hpjansson)</comment>
+    <requestid>1340773</requestid>
+  </revision>
 </revisionlist>

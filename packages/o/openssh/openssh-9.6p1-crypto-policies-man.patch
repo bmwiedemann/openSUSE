@@ -1,8 +1,8 @@
-Index: openssh-9.6p1/ssh_config.5
+Index: openssh-10.2p1/ssh_config.5
 ===================================================================
---- openssh-9.6p1.orig/ssh_config.5
-+++ openssh-9.6p1/ssh_config.5
-@@ -403,17 +403,14 @@ A single argument of
+--- openssh-10.2p1.orig/ssh_config.5
++++ openssh-10.2p1/ssh_config.5
+@@ -441,17 +441,14 @@ A single argument of
  causes no CNAMEs to be considered for canonicalization.
  This is the default behaviour.
  .It Cm CASignatureAlgorithms
@@ -26,7 +26,7 @@ Index: openssh-9.6p1/ssh_config.5
  If the specified list begins with a
  .Sq +
  character, then the specified algorithms will be appended to the default set
-@@ -542,20 +539,26 @@ If the option is set to
+@@ -590,20 +587,26 @@ If the option is set to
  (the default),
  the check will not be executed.
  .It Cm Ciphers
@@ -57,7 +57,7 @@ Index: openssh-9.6p1/ssh_config.5
  .Pp
  The supported ciphers are:
  .Bd -literal -offset indent
-@@ -571,13 +574,6 @@ aes256-gcm@openssh.com
+@@ -619,13 +622,6 @@ aes256-gcm@openssh.com
  chacha20-poly1305@openssh.com
  .Ed
  .Pp
@@ -71,7 +71,7 @@ Index: openssh-9.6p1/ssh_config.5
  The list of available ciphers may also be obtained using
  .Qq ssh -Q cipher .
  .It Cm ClearAllForwardings
-@@ -979,6 +975,12 @@ command line will be passed untouched to
+@@ -1027,6 +1023,12 @@ command line will be passed untouched to
  The default is
  .Dq no .
  .It Cm GSSAPIKexAlgorithms
@@ -84,7 +84,7 @@ Index: openssh-9.6p1/ssh_config.5
  The list of key exchange algorithms that are offered for GSSAPI
  key exchange. Possible values are
  .Bd -literal -offset 3n
-@@ -991,10 +993,8 @@ gss-nistp256-sha256-,
+@@ -1039,10 +1041,8 @@ gss-nistp256-sha256-,
  gss-curve25519-sha256-
  .Ed
  .Pp
@@ -96,7 +96,7 @@ Index: openssh-9.6p1/ssh_config.5
  .It Cm HashKnownHosts
  Indicates that
  .Xr ssh 1
-@@ -1012,36 +1013,26 @@ will not be converted automatically,
+@@ -1061,36 +1061,26 @@ will not be converted automatically,
  but may be manually hashed using
  .Xr ssh-keygen 1 .
  .It Cm HostbasedAcceptedAlgorithms
@@ -142,7 +142,7 @@ Index: openssh-9.6p1/ssh_config.5
  .Pp
  The
  .Fl Q
-@@ -1094,6 +1085,17 @@ to prefer their algorithms.
+@@ -1143,6 +1133,17 @@ to prefer their algorithms.
  .Pp
  The list of available signature algorithms may also be obtained using
  .Qq ssh -Q HostKeyAlgorithms .
@@ -160,7 +160,7 @@ Index: openssh-9.6p1/ssh_config.5
  .It Cm HostKeyAlias
  Specifies an alias that should be used instead of the
  real host name when looking up or saving the host key
-@@ -1311,36 +1313,30 @@ it may be zero or more of:
+@@ -1363,6 +1364,12 @@ it may be zero or more of:
  and
  .Cm pam .
  .It Cm KexAlgorithms
@@ -173,8 +173,7 @@ Index: openssh-9.6p1/ssh_config.5
  Specifies the permitted KEX (Key Exchange) algorithms that will be used and
  their preference order.
  The selected algorithm will be the first algorithm in this list that
- the server also supports.
- Multiple algorithms must be comma-separated.
+@@ -1371,28 +1378,16 @@ Multiple algorithms must be comma-separa
  .Pp
  If the specified list begins with a
  .Sq +
@@ -207,7 +206,7 @@ Index: openssh-9.6p1/ssh_config.5
  .Pp
  The list of supported key exchange algorithms may also be obtained using
  .Qq ssh -Q kex .
-@@ -1445,37 +1442,34 @@ function, and all code in the
+@@ -1509,37 +1504,34 @@ function, and all code in the
  file.
  This option is intended for debugging and no overrides are enabled by default.
  .It Cm MACs
@@ -255,7 +254,7 @@ Index: openssh-9.6p1/ssh_config.5
  The list of available MAC algorithms may also be obtained using
  .Qq ssh -Q mac .
  .It Cm NoHostAuthenticationForLocalhost
-@@ -1666,39 +1660,32 @@ instead of continuing to execute and pas
+@@ -1728,39 +1720,32 @@ instead of continuing to execute and pas
  The default is
  .Cm no .
  .It Cm PubkeyAcceptedAlgorithms
@@ -308,7 +307,7 @@ Index: openssh-9.6p1/ssh_config.5
  .It Cm PubkeyAuthentication
  Specifies whether to try public key authentication.
  The argument to this keyword must be
-@@ -2395,7 +2382,9 @@ This file provides the vendor defaults a
+@@ -2512,7 +2497,9 @@ This file provides the vendor defaults a
  configuration file does not exist.
  .El
  .Sh SEE ALSO
@@ -319,10 +318,10 @@ Index: openssh-9.6p1/ssh_config.5
  .Sh AUTHORS
  .An -nosplit
  OpenSSH is a derivative of the original and free
-Index: openssh-9.6p1/sshd_config.5
+Index: openssh-10.2p1/sshd_config.5
 ===================================================================
---- openssh-9.6p1.orig/sshd_config.5
-+++ openssh-9.6p1/sshd_config.5
+--- openssh-10.2p1.orig/sshd_config.5
++++ openssh-10.2p1/sshd_config.5
 @@ -381,17 +381,14 @@ If the argument is
  then no banner is displayed.
  By default, no banner is displayed.
@@ -347,7 +346,7 @@ Index: openssh-9.6p1/sshd_config.5
  If the specified list begins with a
  .Sq +
  character, then the specified algorithms will be appended to the default set
-@@ -527,20 +524,26 @@ The default is
+@@ -535,20 +532,26 @@ The default is
  indicating not to
  .Xr chroot 2 .
  .It Cm Ciphers
@@ -378,7 +377,7 @@ Index: openssh-9.6p1/sshd_config.5
  .Pp
  The supported ciphers are:
  .Pp
-@@ -567,13 +570,6 @@ aes256-gcm@openssh.com
+@@ -575,13 +578,6 @@ aes256-gcm@openssh.com
  chacha20-poly1305@openssh.com
  .El
  .Pp
@@ -392,7 +391,7 @@ Index: openssh-9.6p1/sshd_config.5
  The list of available ciphers may also be obtained using
  .Qq ssh -Q cipher .
  .It Cm ClientAliveCountMax
-@@ -764,53 +760,45 @@ For this to work
+@@ -772,53 +768,45 @@ For this to work
  .Cm GSSAPIKeyExchange
  needs to be enabled in the server and also used by the client.
  .It Cm GSSAPIKexAlgorithms
@@ -467,7 +466,7 @@ Index: openssh-9.6p1/sshd_config.5
  .Pp
  The list of available signature algorithms may also be obtained using
  .Qq ssh -Q HostbasedAcceptedAlgorithms .
-@@ -876,25 +865,15 @@ is specified, the location of the socket
+@@ -885,25 +873,15 @@ is specified, the location of the socket
  .Ev SSH_AUTH_SOCK
  environment variable.
  .It Cm HostKeyAlgorithms
@@ -499,9 +498,9 @@ Index: openssh-9.6p1/sshd_config.5
  The list of available signature algorithms may also be obtained using
  .Qq ssh -Q HostKeyAlgorithms .
  .It Cm IgnoreRhosts
-@@ -1027,24 +1006,30 @@ file on logout.
- The default is
- .Cm yes .
+@@ -1043,6 +1021,12 @@ The default value
+ can lead to overwriting previous tickets by subseqent connections to the same
+ user account.
  .It Cm KexAlgorithms
 +The default is handled system-wide by
 +.Xr crypto-policies 7 .
@@ -512,8 +511,7 @@ Index: openssh-9.6p1/sshd_config.5
  Specifies the permitted KEX (Key Exchange) algorithms that the server will
  offer to clients.
  The ordering of this list is not important, as the client specifies the
- preference order.
- Multiple algorithms must be comma-separated.
+@@ -1051,16 +1035,16 @@ Multiple algorithms must be comma-separa
  .Pp
  If the specified list begins with a
  .Sq +
@@ -534,7 +532,7 @@ Index: openssh-9.6p1/sshd_config.5
  .Pp
  The supported algorithms are:
  .Pp
-@@ -1072,14 +1057,6 @@ ecdh-sha2-nistp521
+@@ -1097,14 +1081,6 @@ sntrup761x25519-sha512
  sntrup761x25519-sha512@openssh.com
  .El
  .Pp
@@ -549,7 +547,7 @@ Index: openssh-9.6p1/sshd_config.5
  The list of supported key exchange algorithms may also be obtained using
  .Qq ssh -Q KexAlgorithms .
  .It Cm ListenAddress
-@@ -1167,21 +1142,27 @@ function, and all code in the
+@@ -1191,21 +1167,27 @@ function, and all code in the
  file.
  This option is intended for debugging and no overrides are enabled by default.
  .It Cm MACs
@@ -581,7 +579,7 @@ Index: openssh-9.6p1/sshd_config.5
  .Pp
  The algorithms that contain
  .Qq -etm
-@@ -1224,15 +1205,6 @@ umac-64-etm@openssh.com
+@@ -1248,15 +1230,6 @@ umac-64-etm@openssh.com
  umac-128-etm@openssh.com
  .El
  .Pp
@@ -597,7 +595,7 @@ Index: openssh-9.6p1/sshd_config.5
  The list of available MAC algorithms may also be obtained using
  .Qq ssh -Q mac .
  .It Cm Match
-@@ -1614,36 +1586,26 @@ or equivalent.)
+@@ -1742,36 +1715,26 @@ or equivalent.)
  The default is
  .Cm yes .
  .It Cm PubkeyAcceptedAlgorithms
@@ -644,7 +642,7 @@ Index: openssh-9.6p1/sshd_config.5
  .Pp
  The list of available signature algorithms may also be obtained using
  .Qq ssh -Q PubkeyAcceptedAlgorithms .
-@@ -2122,7 +2084,9 @@ This file should be writable by root onl
+@@ -2284,7 +2247,9 @@ This file should be writable by root onl
  .El
  .Sh SEE ALSO
  .Xr sftp-server 8 ,

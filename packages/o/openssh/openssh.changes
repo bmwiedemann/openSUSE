@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  2 19:44:45 UTC 2026 - Hans Petter Jansson <hpj@suse.com>
+
+- Add openssh-7.7p1-gssapi-new-unique.patch (bsc#1258166). This
+  allows using SSSD with a non-file backend.
+
+-------------------------------------------------------------------
 Thu Dec 11 15:29:12 UTC 2025 - Hans Petter Jansson <hpj@suse.com>
 
 - Install 50-suse.conf in distconfdir instead of sysconfdir if
