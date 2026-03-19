@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyasynchat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyasynchat
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Make asynchat available for Python 312 onwards
 License:        PSF-2.0
 URL:            https://github.com/simonrob/pyasynchat
 Source:         https://files.pythonhosted.org/packages/source/p/pyasynchat/pyasynchat-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pyasyncore >= 1.0.2}
 BuildRequires:  %{python_module testsuite}
