@@ -18,4 +18,20 @@
 - Remove qpageview.pdf and qpageview_smoketest.py</comment>
     <requestid>1267343</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0730182055aac170f96ed6b3faf7d1b4</srcmd5>
+    <version>1.0.3</version>
+    <time>1773938332</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.3:
+  * Fix an OverflowError during rapid kinetic scrolling (#47).
+  * This fixes frescobaldi/frescobaldi#2130.
+  * Set resolution metadata in ImageExporter.export() (#45).
+  * This fixes frescobaldi/frescobaldi#2117 (copy to image
+  * always had 96dpi regardless of the set DPI).
+  * Fix a few missing imports (#43).
+  * Remove remaining pieces that depend on Poppler
+  * Raster page layout renamed to Grid Layout</comment>
+    <requestid>1341042</requestid>
+  </revision>
 </revisionlist>

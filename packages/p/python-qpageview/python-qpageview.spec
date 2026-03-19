@@ -1,7 +1,7 @@
 #
 # spec file for package python-qpageview
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-qpageview
-Version:        1.0.0
+Version:        1.0.3
 Release:        0
 Summary:        Widget to display page-based documents for Qt5/PyQt5
 License:        GPL-3.0-only

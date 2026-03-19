@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 18 22:15:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.3:
+  * Fix an OverflowError during rapid kinetic scrolling (#47).
+  * This fixes frescobaldi/frescobaldi#2130.
+  * Set resolution metadata in ImageExporter.export() (#45).
+  * This fixes frescobaldi/frescobaldi#2117 (copy to image
+  * always had 96dpi regardless of the set DPI).
+  * Fix a few missing imports (#43).
+  * Remove remaining pieces that depend on Poppler
+  * Raster page layout renamed to Grid Layout
+
+-------------------------------------------------------------------
 Thu Apr  3 17:31:42 UTC 2025 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 1.0.0:
