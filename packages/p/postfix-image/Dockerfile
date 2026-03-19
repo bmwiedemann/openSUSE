@@ -27,6 +27,10 @@ RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends ca-certificates-mozilla curl cyrus-sasl cyrus-sasl-plain ed findutils gawk grep netcfg postfix postfix-ldap postfix-lmdb sed timezone openldap2 openldap2-client mandoc spamassassin-spamc spamass-milter gzip tar
 
+RUN set -euo pipefail; zypper -n install --no-recommends systemd && \
+    systemd-tmpfiles --create --root /target postfix.conf
+
+
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
