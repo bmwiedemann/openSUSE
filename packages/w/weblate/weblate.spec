@@ -23,7 +23,7 @@
 %define skip_python11 1
 Name:           weblate
 # version 5.14.3 was the last to support Python 3.11
-Version:        5.16.1
+Version:        5.16.2
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 18 12:53:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.16.2
+  * New setting PUBLIC_ENGAGE to make the engage page public even with REQUIRE_LOGIN.
+  * Improved matching in Translation Memory.
+  * Show the number of strings waiting for review in listings.
+  * Few bugfixes (non-security so far)
+
+-------------------------------------------------------------------
 Tue Mar  3 14:32:38 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.16.1 (CVE-2026-27457, bsc#1258989)
