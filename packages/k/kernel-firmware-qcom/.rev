@@ -399,4 +399,18 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: add ADSP, CDSP firmware for glymur platform</comment>
     <requestid>1333338</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>24bbf6ad925657548f7ec9c959332c8d</srcmd5>
+    <version>20260310</version>
+    <time>1773938154</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260310 (git commit d13cd498318b):
+  * qcom: add QUPv3 firmware for QCS615 platform
+
+- Update to version 20260305 (git commit 7d2b4c758cfd):
+  * qcom: Update CDSP firmware for QCM6490 platform
+  * qcom: update ADSP, CDSP firmware for sm8750  platform
+  * qcom: update ADSP dtb.mbn for glymur platform</comment>
+    <requestid>1340884</requestid>
+  </revision>
 </revisionlist>
