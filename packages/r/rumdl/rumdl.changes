@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 19 06:13:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.54:
+  * Fixed
+    - MD013: Lines consisting entirely of inline HTML (e.g., badge
+      links <a href="..."><img .../></a>) are no longer flagged
+      when strict = false (#535)
+      - Two-tier detection: lines where all content is inside HTML
+        tags, and lines that start/end with tags containing URL
+        attributes (href, src, srcset, poster)
+      - HTML-only lines are also treated as paragraph boundaries in
+        reflow mode, preventing them from being merged into
+        adjacent prose
+
+-------------------------------------------------------------------
 Tue Mar 17 06:12:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.53:
