@@ -70,4 +70,21 @@
   * Languages are now a choice (forwarded request 1339581 from rrahl0)</comment>
     <requestid>1339582</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3936da53b5e31580e3abe50db66e6aa8</srcmd5>
+    <version>2.1.0</version>
+    <time>1773938284</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.1.0:
+  * Starred Stations can now be ordered via Drag and Drop
+  * Startup Jingle
+  * Copy Stream Metadata to clipboard with a Right Click
+  * Images in stream metadata are displayed in a frameless window
+  * Titles can be Hearted in the play history
+  * Exiting with Hearted Titles will prompt to save the list
+  * Categories expansion is remembered
+  * Refactored mucho
+  * Removing translation of metadata (forwarded request 1340999 from rrahl0)</comment>
+    <requestid>1341000</requestid>
+  </revision>
 </revisionlist>

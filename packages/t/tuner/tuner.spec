@@ -18,7 +18,7 @@
 
 %define         appid io.github.tuner_labs.tuner
 Name:           tuner
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 Summary:        Minimalist radio station player
 License:        GPL-3.0-or-later
@@ -55,25 +55,8 @@ An Internet Radio Station player for the Pantheon Desktop.
 %autosetup -p1
 
 %build
-%{__meson} setup \
-        --buildtype=plain \
-        --prefix=%{_prefix} \
-        --libdir=%{_libdir} \
-        --libexecdir=%{_libexecdir} \
-        --bindir=%{_bindir} \
-        --sbindir=%{_sbindir} \
-        --includedir=%{_includedir} \
-        --datadir=%{_datadir} \
-        --mandir=%{_mandir} \
-        --infodir=%{_infodir} \
-        --localedir=%{_datadir}/locale \
-        --sysconfdir=%{_sysconfdir} \
-        --localstatedir=%{_localstatedir} \
-        --sharedstatedir=%{_sharedstatedir} \
-        --wrap-mode=%{__meson_wrap_mode} \
-        --auto-features=%{__meson_auto_features} \
-        %{_vpath_srcdir} %{_vpath_builddir} \
-        %{nil}
+export CFLAGS="%{optflags} -Wno-error=return-type"
+%meson
 %meson_build
 
 %install

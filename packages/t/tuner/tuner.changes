@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 18 08:35:33 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.1.0:
+  * Starred Stations can now be ordered via Drag and Drop
+  * Startup Jingle
+  * Copy Stream Metadata to clipboard with a Right Click
+  * Images in stream metadata are displayed in a frameless window
+  * Titles can be Hearted in the play history
+  * Exiting with Hearted Titles will prompt to save the list
+  * Categories expansion is remembered
+  * Refactored mucho
+  * Removing translation of metadata
+
+-------------------------------------------------------------------
 Tue Mar 17 11:32:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 2.0.3:
