@@ -394,4 +394,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops</comment>
     <requestid>1335284</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f7048a60ad5cc6533863bf19abb225aa</srcmd5>
+    <version>20260310</version>
+    <time>1773938159</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260310 (git commit d13cd498318b):
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l63: Add firmware for Cirrus CS35L63 for various Dell laptops
+
+- Update to version 20260305 (git commit 7d2b4c758cfd):
+  * linux-firmware: qcom: sync audioreach firmwares from v1.0.2 build</comment>
+    <requestid>1340885</requestid>
+  </revision>
 </revisionlist>
