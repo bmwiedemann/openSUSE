@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 19 11:37:06 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.10:
+  * drop publishing rules from dependencies.yaml on release branch
+  * test/images: read .go-version instead of duplicating
+  * cmd/kubeadm: ignore EINVAL error during unmount
+  * kubeadm: do not add learner member to etcd client endpoints
+  * Fix NPE in CEl accessors of additionalProperties=true objects
+  * Use fast policy refresh interval for TestParamRef
+
+-------------------------------------------------------------------
 Mon Mar  2 07:11:05 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.9:

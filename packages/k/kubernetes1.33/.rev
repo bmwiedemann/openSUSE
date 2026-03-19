@@ -81,4 +81,12 @@
     <comment>Kubernetes 1.33.9 - out-of-band patch release built with Go 1.24.13</comment>
     <requestid>1335750</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4a61190687421242c90b972e3d371830</srcmd5>
+    <version>1.33.10</version>
+    <time>1773938409</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – March, 2026: Update to version 1.33.10</comment>
+    <requestid>1341163</requestid>
+  </revision>
 </revisionlist>
