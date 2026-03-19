@@ -50,6 +50,7 @@ Requires:       python-numpy >= 1.25
 Requires:       python-packaging >= 19
 %if %{with test}
 BuildRequires:  %{python_module asdf-astropy = %{version}}
+BuildRequires:  %{python_module pytest-asdf-plugin}
 BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}

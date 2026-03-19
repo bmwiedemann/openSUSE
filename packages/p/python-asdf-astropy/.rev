@@ -187,4 +187,12 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
   * Fix magunit serialization to match unit</comment>
     <requestid>1333402</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4cd09b1f1c0cc36fd75e101284249019</srcmd5>
+    <version>0.10.0</version>
+    <time>1773938382</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires for pytest-asdf-plugin for the testsuite.</comment>
+    <requestid>1341085</requestid>
+  </revision>
 </revisionlist>
