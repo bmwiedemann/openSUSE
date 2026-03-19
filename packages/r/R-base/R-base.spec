@@ -1,7 +1,7 @@
 #
 # spec file for package R-base
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.5.2
+Version:        4.5.3
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -1386,7 +1386,7 @@ This packages provides R-class, one of the recommended packages.
 
 %package -n R-cluster
 Summary:        Package provides recommended R-cluster
-Version:        2.1.8.1
+Version:        2.1.8.2
 Release:        %release
 Requires:       R-base
 
@@ -1441,7 +1441,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.90
+Version:        0.8.91
 Release:        %release
 Requires:       R-base
 
@@ -1500,7 +1500,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Version:        0.22.7
+Version:        0.22.9
 Release:        %release
 Requires:       R-base
 
@@ -1629,7 +1629,7 @@ This packages provides R-Matrix, one of the recommended packages.
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.9.3
+Version:        1.9.4
 Release:        %release
 Requires:       R-base
 
@@ -1787,7 +1787,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.8.3
+Version:        3.8.6
 Release:        %release
 Requires:       R-base
 
