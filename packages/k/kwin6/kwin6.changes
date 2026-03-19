@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 18 11:04:36 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.3
+- Changes since 6.6.2:
+  * Update version for new release 6.6.3
+  * plugins/zoom: Fix segmentation fault when changing pointer mode from Hide to Scale (kde#517073)
+  * kcms/scripts: Check result from loading UI file (kde#517137)
+  * plugins/mousemark: Enable Apply button when editing shortcut (kde#501537)
+  * compositor: Undim faster than you dim
+  * plugins/squash: Avoid extending lifetime of windows (kde#495952)
+  * core/backendoutput: disable DDC/CI for the Samsung LS24D60xU (kde#516605)
+  * input: be more strict about passing input to the decoration
+  * scene/workspace: change rounding policy in 'addCandidates()' (kde#517264)
+  * backends: fix crash in OutputDeviceV2Interface::updateModes (kde#517198)
+  * backends/drm: fix check for ddc/ci software dimming (kde#516867)
+  * plugins/screencast: set appropriate minFramerate
+  * backends/drm: if the current mode is removed, attempt to find an equivalent one
+  * options: emit correct signal
+
+-------------------------------------------------------------------
 Tue Mar  3 12:25:31 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.2:
