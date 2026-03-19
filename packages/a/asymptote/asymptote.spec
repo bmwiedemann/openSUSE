@@ -1,7 +1,7 @@
 #
 # spec file for package asymptote
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with lsp
 Name:           asymptote
-Version:        3.04
+Version:        3.09
 Release:        0
 Summary:        2D & 3D TeX-Aware vector graphics language
 License:        LGPL-3.0-or-later

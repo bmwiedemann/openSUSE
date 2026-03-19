@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 18 22:23:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.09
+  * A bug in handling Xasy-generated transforms was fixed.
+  * XDR and binary string reads and writes were implemented.
+  * V3D and gzipped XDR files are now supported up to size 2^64-1.
+  * A busy loop and race conditions in WebGL animations were
+    addressed.
+
+-------------------------------------------------------------------
 Thu Jun  5 19:16:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.04
