@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyFFTW
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,29 +23,30 @@
 %endif
 
 Name:           python-pyFFTW
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        A pythonic wrapper around FFTW, the FFT library
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/pyFFTW/pyFFTW
-Source:         https://github.com/pyFFTW/pyFFTW/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+Source:         https://files.pythonhosted.org/packages/source/p/pyfftw/pyfftw-%{version}.tar.gz
+BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.16}
+BuildRequires:  %{python_module numpy-devel >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.2.1}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module scipy >= 1.8.0}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-dask
-Requires:       python-numpy >= 1.16
-Requires:       python-scipy >= 1.2.1
+Requires:       python-numpy >= 1.20
+Requires:       python-scipy >= 1.8.0
 
 %python_subpackages
 
@@ -64,7 +65,7 @@ A comprehensive unittest suite can be found with the source on the github
 repository.
 
 %prep
-%autosetup -p1 -n pyFFTW-%{version}
+%autosetup -p1 -n pyfftw-%{version}
 # remove shebangs
 sed -i -e '/^#!\//, 1d' pyfftw/*.py
 sed -i -e '/^#!\//, 1d' pyfftw/*/*.py

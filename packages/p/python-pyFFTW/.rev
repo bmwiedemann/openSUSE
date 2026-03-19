@@ -130,4 +130,16 @@
     <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
     <requestid>1271222</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>557d929c6714703b8e0fc86cbb2cd09b</srcmd5>
+    <version>0.15.1</version>
+    <time>1773938334</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.1:
+  * `PYFFTW_FFTW_PREFIX` can now be used at build time to indicate
+    the location of FFTW libraries and header
+  * Support for Python 3.14
+  * Stop support for Python 3.10</comment>
+    <requestid>1341048</requestid>
+  </revision>
 </revisionlist>
