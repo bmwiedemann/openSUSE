@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Mar 18 11:06:03 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.3
+- Changes since 6.6.2:
+  * kcms/fonts: Fix font previews Use QFontInfo for pixelSize rather than calculating it ourselves, remove old workarounds, and ensure the image provider is ready before trying to load the images. Make them async and non-blocking, ensure the previews scale correctly, and finally ensure the popup width is correct.
+  * Update version for new release 6.6.3
+  * Logout greeter: back off initial focus grab timeout to 3 seconds
+  * applets/systemtray: Make QMenu::adjustSize() X11-specific
+  * klipper: Only show QR code button for text items
+  * applets/systemtray: Make QTBUG-59044 workaround X11-specific
+  * applets/systemtray: Make popup placement on Wayland more robust (kde#517093)
+  * Fix resizing widgets from the top handles in some situations
+  * WidgetExplorer: Update applet instance counter when removing all widgets
+  * Hide panel spacer from WidgetExplorer
+  * applets/systemtray: Use correct context object for future continuation
+  * applets/systemtray: Assert plugin metadata validity earlier
+  * applets/digitalClock: fix current time zone not being bold in popup
+  * applets/appmenu: handle null action
+  * applets/kicker: emit favoriteModelChanged when funneling
+  * Revert "ContainmentLayoutManager: send recursive mouse release events too" (kde#517040)
+  * shell: Generate plasma-shell Wayland interface for the right target
+  * shellcorona: use QPointer for m_waitingPanels to futureproof against dangling pointers (kde#516937)
+  * shell: restore early destroyed guard for panel containments (kde#516937)
+  * applets/notifications: Fix display of total or processed value
+
+-------------------------------------------------------------------
 Tue Mar  3 12:28:49 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.2:
