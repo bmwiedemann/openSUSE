@@ -212,4 +212,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdnpu: Restore old NPU firmware for compatibility</comment>
     <requestid>1335283</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>43e19f8670c592068a391279cd782c38</srcmd5>
+    <version>20260305</version>
+    <time>1773938152</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260305 (git commit 7d2b4c758cfd):
+  * linux-firmware: add firmware for Lontium LT8713SX DP hub</comment>
+    <requestid>1340883</requestid>
+  </revision>
 </revisionlist>
