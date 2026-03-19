@@ -1,0 +1,340 @@
+From 83a5d9064208d705b490bed89f37ade4da3c4a29 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 14 Mar 2026 15:29:05 +0100
+Subject: [PATCH 5/8] [gdb/tui] Don't enter TUI if debuginfod enabled == ask
+
+PR tui/31449 reports a SIGFPE when the debuginfod query happens while enabling
+TUI using the "tui enable" command:
+...
+Thread 1 "gdb" received signal SIGFPE, Arithmetic exception.
+0x0000000001021084 in tui_inject_newline_into_command_window ()
+    at /data/vries/gdb/src/gdb/tui/tui-io.c:1096
+1096          py += px / tui_cmd_win ()->width;
+...
+due to divide-by-zero because tui_cmd_win ()->width == 0.
+
+The corresponding backtrace is:
+...
+ (gdb) bt
+ #0  0x0000000001021084 in tui_inject_newline_into_command_window ()
+     at gdb/tui/tui-io.c:1096
+ #1  0x0000000000fe65fd in gdb_readline_wrapper_line (line=...) at gdb/top.c:939
+ #2  0x0000000000944eef in gdb_rl_callback_handler (rl=0x2cc865a0 "n")
+     at gdb/event-top.c:288
+ #3  0x0000000001175779 in rl_callback_read_char ()
+     at readline/readline/callback.c:302
+ #4  0x0000000000944bc3 in gdb_rl_callback_read_char_wrapper_sjlj ()
+     at gdb/event-top.c:197
+ #5  0x0000000000944cd4 in gdb_rl_callback_read_char_wrapper_noexcept ()
+     at gdb/event-top.c:240
+ #6  0x0000000000944d52 in gdb_rl_callback_read_char_wrapper (...)
+     at gdb/event-top.c:252
+ #7  0x0000000001062352 in stdin_event_handler (error=0, client_data=0x2c865150)
+     at gdb/ui.c:154
+ #8  0x0000000001a04edf in handle_file_event (file_ptr=0x2ccf8850, ready_mask=1)
+     at gdbsupport/event-loop.cc:551
+ #9  0x0000000001a05522 in gdb_wait_for_event (block=1)
+     at gdbsupport/event-loop.cc:672
+ #10 0x0000000001a043ff in gdb_do_one_event (mstimeout=-1)
+     at gdbsupport/event-loop.cc:263
+ #11 0x00000000006d5480 in interp::do_one_event (this=0x2cc2af20, mstimeout=-1)
+     at gdb/interps.h:93
+ #12 0x0000000000fe670d in gdb_readline_wrapper (
+     prompt=0x2ccca4e0 "Enable debuginfod for this session? (y or [n]) ")
+     at gdb/top.c:1033
+ #13 0x00000000010c6853 in defaulted_query(...) (...)
+     at gdb/utils.c:844
+ #14 0x00000000010c6b8a in nquery (...)
+     at gdb/utils.c:901
+ #15 0x00000000007a9324 in debuginfod_is_enabled ()
+     at gdb/debuginfod-support.c:268
+ #16 0x00000000007a950d in debuginfod_source_query (...)
+     at gdb/debuginfod-support.c:311
+ #17 0x0000000000efc2c7 in open_source_file (s=0x2cc8f4b0) at gdb/source.c:1152
+ #18 0x0000000000efc619 in symtab_to_fullname (...) at gdb/source.c:1214
+ #19 0x0000000000f5ebb3 in find_line_symtab (...)
+     at gdb/symtab.c:3287
+ #20 0x0000000000f5f0e5 in find_pc_for_line (...)
+     at gdb/symtab.c:3391
+ #21 0x0000000001011f54 in tui_get_begin_asm_address (...)
+     at gdb/tui/tui-disasm.c:404
+ #22 0x000000000104888d in tui_source_window_base::rerender (this=0x2cbdc570)
+     at gdb/tui/tui-winsource.c:474
+ #23 0x0000000001028e81 in tui_win_info::resize (this=0x2cbdc570,
+     height_=21, width_=127, origin_x_=0,
+     origin_y_=0) at gdb/tui/tui-layout.c:299
+ #24 0x00000000010297d0 in tui_layout_window::apply (this=0x2cc50350,
+     x_=0, y_=0, width_=127,
+     height_=21, preserve_cmd_win_size_p=false) at gdb/tui/tui-layout.c:432
+ #25 0x000000000102bfea in tui_layout_split::apply (this=0x2caea920,
+     x_=0, y_=0, width_=127,
+     height_=33, preserve_cmd_win_size_p=false) at gdb/tui/tui-layout.c:1026
+ #26 0x0000000001028267 in tui_apply_current_layout (...)
+     at gdb/tui/tui-layout.c:68
+ #27 0x0000000001028737 in tui_set_layout (layout=0x2c9b9e90)
+     at gdb/tui/tui-layout.c:133
+ #28 0x0000000001028af5 in tui_set_initial_layout () at gdb/tui/tui-layout.c:209
+ #29 0x000000000104b795 in tui_enable () at gdb/tui/tui.c:496
+ #30 0x000000000104bab3 in tui_enable_command (args=0x0, from_tty=1)
+     at gdb/tui/tui.c:591
+ #31 0x00000000006c5ffe in do_simple_func (args=0x0, from_tty=1, c=0x2c9bb2f0)
+     at gdb/cli/cli-decode.c:94
+ #32 0x00000000006cc94f in cmd_func (cmd=0x2c9bb2f0, args=0x0, from_tty=1)
+     at gdb/cli/cli-decode.c:2831
+ #33 0x0000000000fe53ad in execute_command (p=0x2c86699a "", from_tty=1)
+     at gdb/top.c:563
+ #34 0x000000000094584d in command_handler (command=0x2c866990 "tui enable")
+     at gdb/event-top.c:611
+ #35 0x0000000000945dfe in command_line_handler (rl=...) at gdb/event-top.c:844
+ #36 0x000000000101e916 in tui_command_line_handler (rl=...)
+     at gdb/tui/tui-interp.c:101
+ #37 0x0000000000944eef in gdb_rl_callback_handler (rl=0x2cc86a30 "tui enable")
+     at gdb/event-top.c:288
+ #38 0x0000000001175779 in rl_callback_read_char ()
+     at readline/readline/callback.c:302
+ #39 0x0000000000944bc3 in gdb_rl_callback_read_char_wrapper_sjlj ()
+     at gdb/event-top.c:197
+ #40 0x0000000000944cd4 in gdb_rl_callback_read_char_wrapper_noexcept ()
+     at gdb/event-top.c:240
+ #41 0x0000000000944d52 in gdb_rl_callback_read_char_wrapper (...)
+     at gdb/event-top.c:252
+ #42 0x0000000001062352 in stdin_event_handler (error=0, client_data=0x2c865150)
+     at gdb/ui.c:154
+ #43 0x0000000001a04edf in handle_file_event (file_ptr=0x2ccf8850, ready_mask=1)
+     at gdbsupport/event-loop.cc:551
+ #44 0x0000000001a05522 in gdb_wait_for_event (block=1)
+     at gdbsupport/event-loop.cc:672
+ #45 0x0000000001a043ff in gdb_do_one_event (mstimeout=-1)
+     at gdbsupport/event-loop.cc:263
+ #46 0x00000000006d5480 in interp::do_one_event (this=0x2cc2af20, mstimeout=-1)
+     at gdb/interps.h:93
+ #47 0x0000000000b77f25 in start_event_loop () at gdb/main.c:403
+ #48 0x0000000000b78113 in captured_command_loop () at gdb/main.c:468
+ #49 0x0000000000b7a07c in captured_main (context=0x7fff660b9e60)
+     at gdb/main.c:1381
+ #50 0x0000000000b7a178 in gdb_main (args=0x7fff660b9e60) at gdb/main.c:1400
+ #51 0x0000000000419705 in main (argc=5, argv=0x7fff660b9f98) at gdb/gdb.c:38
+ (gdb)
+...
+
+The problem is that the command window is used (during initialization of the
+source window) before it's properly initialized.
+
+A patch [1] was posted for this PR, which fixes the problem by calling
+a function that will force the debuginfod query to happen before enabling the
+TUI:
+...
+ static void
+ tui_enable_command (const char *args, int from_tty)
+ {
++  /* Trigger any debuginfod-related y/n prompts now to avoid having
++     it occur during tui initialization.  Handling the prompt while
++     tui windows are initializing can cause crashes.  */
++  debuginfod_is_enabled ();
++
+   tui_enable ();
+ }
+...
+
+A review comment reported a problem when using C-x C-a to enable TUI instead
+of "tui enable", not fixed by the previous patch.  This was filed as PR33794.
+
+Another patch [2] took the following approach: add a layout with only the
+command window, and activate that layout first, making sure that we finalize
+the initialization of the command window before we activate the initial layout.
+
+However, that approach made the debuginfod query happen in an empty screen
+in between the CLI and TUI interfaces, which is confusing.
+
+So yet another patch [3] took the following approach:
+- adding a facility defer_tui_rerender that allows deferral of calling the
+  rerender methods (which draws everything but the window borders), and
+- using that facility to postpone rerendering in tui_enable until after io has
+  been initialized.
+
+Then yet another patch [4] tried a minimal fix: add a check at the start of
+tui_inject_newline_into_command_window that avoids the SIGFPE.
+
+This patch handles the problem by simply bailing out if debuginfod enabled is
+set to ask when entering TUI, which is very similar to [1].  Unlike all
+other approaches, it does fix PR33794 as well.
+
+The v4 version of this patch [5] unnecessarily bailed out for:
+...
+$ gdb -q outputs/gdb.tui/query/query -ex "set confirm off" -ex "tui enable"
+...
+
+This v5 version fixes that using defaulted_query_auto_answers_p.
+
+Tested on x86_64-linux.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31449
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33794
+
+[1] https://sourceware.org/pipermail/gdb-patches/2024-March/207224.html
+[2] v1 https://sourceware.org/pipermail/gdb-patches/2026-January/224038.html
+[3] v2 https://sourceware.org/pipermail/gdb-patches/2026-January/224103.html
+[4] v3 https://sourceware.org/pipermail/gdb-patches/2026-February/225210.html
+[5] v4 https://sourceware.org/pipermail/gdb-patches/2026-February/225351.html
+---
+ gdb/testsuite/gdb.tui/query-foo.c | 24 ++++++++
+ gdb/testsuite/gdb.tui/query.exp   | 92 +++++++++++++++++++++++++++++++
+ gdb/tui/tui.c                     |  5 ++
+ 3 files changed, 121 insertions(+)
+ create mode 100644 gdb/testsuite/gdb.tui/query-foo.c
+ create mode 100644 gdb/testsuite/gdb.tui/query.exp
+
+diff --git a/gdb/testsuite/gdb.tui/query-foo.c b/gdb/testsuite/gdb.tui/query-foo.c
+new file mode 100644
+index 00000000000..bf4a8766dcd
+--- /dev/null
++++ b/gdb/testsuite/gdb.tui/query-foo.c
+@@ -0,0 +1,24 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2026 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++extern int foo (void);
++
++int
++foo (void)
++{
++  return 0;
++}
+diff --git a/gdb/testsuite/gdb.tui/query.exp b/gdb/testsuite/gdb.tui/query.exp
+new file mode 100644
+index 00000000000..bc1a55a1b96
+--- /dev/null
++++ b/gdb/testsuite/gdb.tui/query.exp
+@@ -0,0 +1,92 @@
++# Copyright 2026 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Check that a debuginfod query during TUI initialization doesn't cause a
++# crash.
++
++require allow_tui_tests
++
++load_lib debuginfod-support.exp
++require allow_debuginfod_tests
++
++tuiterm_env
++
++standard_testfile -main.c -foo.c
++
++set tmpfile [standard_output_file $srcfile]
++set srcfiles [list $tmpfile $srcfile2]
++
++set fd [open $tmpfile w]
++puts $fd {
++    extern int foo (void);
++    int
++    main (void)
++    {
++	return foo ();
++    }
++}
++close $fd
++
++if { [build_executable "failed to prepare" $testfile $srcfiles] == -1 } {
++    return
++}
++
++# Delete query-main.c to trigger the debuginfod query during TUI
++# initialization.
++file delete $tmpfile
++
++set l {}
++lappend l "command"
++lappend l "keys"
++
++foreach_with_prefix how $l {
++    save_vars { env(DEBUGINFOD_URLS) } {
++	setenv DEBUGINFOD_URLS "foo"
++	Term::clean_restart 24 80 $testfile
++    }
++
++    if {![Term::prepare_for_tui]} {
++	return 0
++    }
++
++    Term::gen_prompt
++
++    if { $how == "command" } {
++	send_gdb "tui enable\n"
++    } else {
++	send_gdb "\030\001"
++    }
++    set re \
++	"Please set debuginfod enabled to on or off before enabling TUI"
++    gdb_assert { [Term::wait_for_region_contents 0 0 80 24 $re] }
++
++    # Check that prompt is responsive.
++    gdb_assert { [Term::command "print 1"] } "responsive prompt"
++
++    set cmd "set debuginfod enabled off"
++    gdb_assert { [Term::command "$cmd"] } $cmd
++
++    with_test_prefix tui {
++	if { $how == "command" } {
++	    send_gdb "tui enable\n"
++	} else {
++	    send_gdb "\030\001"
++	}
++	gdb_assert { [Term::wait_for ""] } "entered"
++
++	# Check that prompt is responsive.
++	gdb_assert { [Term::command "print 1"] } "responsive prompt"
++    }
++}
+diff --git a/gdb/tui/tui.c b/gdb/tui/tui.c
+index 06a899e2418..5dabb9967ae 100644
+--- a/gdb/tui/tui.c
++++ b/gdb/tui/tui.c
+@@ -41,6 +41,7 @@
+ #include "top.h"
+ #include "ui.h"
+ #include "observable.h"
++#include "debuginfod-support.h"
+ 
+ #include <fcntl.h>
+ 
+@@ -392,6 +393,10 @@ tui_enable (void)
+   if (tui_active)
+     return;
+ 
++  if (debuginfod_enabled_ask_p ()
++      && defaulted_query_auto_answers_p () != TRIBOOL_TRUE)
++    error (_("Please set debuginfod enabled to on or off before enabling TUI"));
++
+   /* To avoid to initialize curses when gdb starts, there is a deferred
+      curses initialization.  This initialization is made only once
+      and the first time the curses mode is entered.  */
+-- 
+2.51.0
+

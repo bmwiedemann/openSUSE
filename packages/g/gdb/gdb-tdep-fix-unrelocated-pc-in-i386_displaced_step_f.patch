@@ -1,0 +1,153 @@
+From 62f9da4e6fb357b710c763162e14a6db0ffed2e3 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 16 Mar 2026 16:30:38 +0100
+Subject: [PATCH 1/8] [gdb/tdep] Fix unrelocated pc in
+ i386_displaced_step_fixup
+
+With test-case gdb.threads/next-fork-other-thread.exp and target board
+unix/-m32 I run into:
+...
+(gdb) next^M
+[Switching to Thread 0xf643ab40 (LWP 3267939)]^M
+^M
+Thread 5 "next-fork-other" hit Breakpoint 1, main () at \
+  next-fork-other-thread.c:73^M
+73        alarm (60);^M
+(gdb) FAIL: $exp: fork_func=fork: target-non-stop=off: non-stop=off: \
+  displaced-stepping=on: i=$n: next to break here
+...
+
+Before we go into how this happens, let's first look at the inferior.
+
+In main, 4 threads are started with the same thread function, leaving all 5
+threads in a loop:
+- the main thread is stuck in a loop calling sleep, and gdb steps through this
+  loop using next
+- the other, non-main threads are stuck in a loop where each thread:
+  - forks off a child process that exits immediately
+  - waits for the child process to exit
+  - calls sleep
+
+The FAIL happens as follows (following snippets from this gdb.log [1]).
+
+One of the non-main threads enters __syscall_cancel_arch to do a sycall (
+either to sleep, or to wait).
+
+Then the non-main thread stops:
+...
+  [infrun] handle_signal_stop: [2937316.2937324.0] hit another thread's \
+    single-step breakpoint^M
+  [infrun] handle_signal_stop: delayed software breakpoint trap, ignoring^M
+  [infrun] switch_back_to_stepped_thread: need to step [2937316.2937324.0] \
+    over single-step breakpoint^M
+...
+because we "hit another thread's single-step breakpoint".
+
+AFAIU, this is because of the main thread stepping through
+__syscall_cancel_arch.
+
+To handle this, we're going to try displaced stepping.
+
+The syscall instruction is copied:
+...
+  [displaced] displaced_step_prepare_throw: original insn 0xf7cdce69: \
+    cd 80      int    $0x80^M
+  [displaced] prepare: selected buffer at 0x80490d2^M
+...
+to a buffer at _start+2:
+...
+080490d0 <_start>:
+ 80490d0:       31 ed                   xor    %ebp,%ebp
+ 80490d2:       5e                      pop    %esi
+...
+and we're going to resume execution there.
+
+However, right after resuming we get a GDB_SIGNAL_CHLD for the same thread.
+
+Part of handling that is finalizing the displaced stepping:
+...
+  [displaced] finish: restored 2937316.2937324.0 0x80490d2^M
+  [displaced] i386_displaced_step_fixup: fixup (0xf7cdce69, 0x80490d2), \
+    insn = 0xcd 0x80 ...^M
+  [displaced] i386_displaced_step_fixup: syscall changed %eip; not relocating^M
+  [infrun] handle_signal_stop: stop_pc=0x80490d2^M
+...
+
+The stop pc is 0x80490d2, the address of the copied instruction.  In other
+words, we've stopped without making progress.
+
+The problem is that the address is in the displaced stepping buffer, and needs
+relocating, but instead we have "syscall changed %eip; not relocating".
+
+The code in i386_displaced_step_fixup doesn't recognize this situation:
+...
+      if (i386_syscall_p (insn, &insn_len)
+	  && pc != to + (insn - insn_start) + insn_len
+	  /* GDB can get control back after the insn after the syscall.
+	     Presumably this is a kernel bug.
+	     i386_displaced_step_copy_insn ensures it's a nop,
+	     we add one to the length for it.  */
+	  && pc != to + (insn - insn_start) + insn_len + 1)
+ 	displaced_debug_printf ("syscall changed %%eip; not relocating");
+...
+
+It only handles the cases where the stop pc is:
+- the address after the syscall insn, or
+- the address after the nop after the syscall insn
+
+So, instead of relocating the stop pc back to the original 0xf7cdce69, it
+stays 0x80490d2.  After resuming at that address, the thread:
+- executes the syscall,
+- executes the rest of _start,
+- enters main, and
+- runs into the breakpoint at the start of main.
+
+Since commit cf141dd8ccd ("gdb: fix reg corruption from displaced stepping on
+amd64"), we do handle the "pc == to" case in amd64_displaced_step_fixup:
+...
+       if (amd64_syscall_p (insn_details, &insn_len)
+ 	  /* GDB can get control back after the insn after the syscall.
+	     Presumably this is a kernel bug.  Fixup ensures its a nop, we
+	     add one to the length for it.  */
+	  && (pc < to || pc > (to + insn_len + 1)))
+ 	displaced_debug_printf ("syscall changed %%rip; not relocating");
+...
+
+Fix this in the same way.
+
+Tested on x86_64-linux, with target board unix/-m32.
+
+On openSUSE Tumbleweed (kernel version 6.19.7), this patch fixes the test-case.
+
+On openSUSE Leap 16.0 (kernel version 6.12.0), we still run into PR29040.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33997
+
+[1] https://sourceware.org/bugzilla/attachment.cgi?id=16660
+---
+ gdb/i386-tdep.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/gdb/i386-tdep.c b/gdb/i386-tdep.c
+index a552a2bee8f..9c9c6864e58 100644
+--- a/gdb/i386-tdep.c
++++ b/gdb/i386-tdep.c
+@@ -854,12 +854,11 @@ i386_displaced_step_fixup (struct gdbarch *gdbarch,
+ 	 it unrelocated.  Goodness help us if there are PC-relative
+ 	 system calls.  */
+       if (i386_syscall_p (insn, &insn_len)
+-	  && pc != to + (insn - insn_start) + insn_len
+ 	  /* GDB can get control back after the insn after the syscall.
+ 	     Presumably this is a kernel bug.
+ 	     i386_displaced_step_copy_insn ensures it's a nop,
+ 	     we add one to the length for it.  */
+-	  && pc != to + (insn - insn_start) + insn_len + 1)
++	  && (pc < to || pc > to + (insn - insn_start) + insn_len + 1))
+ 	displaced_debug_printf ("syscall changed %%eip; not relocating");
+       else
+ 	{
+
+base-commit: ccc03544a6bc2f886e06d8b477a84eb8b2033e31
+-- 
+2.51.0
+

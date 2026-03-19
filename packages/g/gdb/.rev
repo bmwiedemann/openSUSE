@@ -4267,4 +4267,35 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>1333328</requestid>
   </revision>
+  <revision rev="192" vrev="6">
+    <srcmd5>70c7f98d3945846e78e347733d99f41a</srcmd5>
+    <version>16.3</version>
+    <time>1773937893</time>
+    <user>anag_factory</user>
+    <comment>- Testsuite fixes.  Patches added:
+  *  add-proc-subst_vars.patch
+  *  gdb-testsuite-fix-printf-regexp-for-ppc64le-with-gli.patch
+- Re-enable ptype /o for flexible array member types (swo#33966,
+  bsc#1249147).  Patches added:
+  * gdb-minor-refactoring-of-is_dynamic_type_internal.patch
+  * gdb-factor-out-is_dynamic_type_internal_1.patch
+  * gdb-enable-ptype-o-for-some-dynamic-types.patch
+- Fix TUI crash when encountering a debuginfod query while entering
+  TUI (swo#31449, swo#33794).  Patches added:
+  * gdb-simplify-debuginfod_is_enabled.patch
+  * gdb-add-debuginfod_enabled_ask_p.patch
+  * gdb-add-defaulted_query_auto_answers_p.patch
+  * gdb-tui-don-t-enter-tui-if-debuginfod-enabled-ask.patch
+- Fix a case on x86_64/-m32 where displaced stepping steps out of
+  the displaced stepping buffer (swo#33997).  Patches added:
+  * gdb-tdep-fix-unrelocated-pc-in-i386_displaced_step_f.patch
+- Fix generation of core files using gcore for glibc 2.42
+  (swo#33855).  Patches added:
+  * gcore-handle-unreadable-pages-within-readable-memory.patch
+  * gcore-query-auxv-for-at_pagesz-in-gcore_copy_callbac.patch
+  Maintenance script qa.sh:
+  * Remove PR33054 kfails.
+- Maintenance script qa.sh cleanup.</comment>
+    <requestid>1340997</requestid>
+  </revision>
 </revisionlist>

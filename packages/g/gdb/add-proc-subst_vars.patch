@@ -1,0 +1,48 @@
+From 7cf30f7f6a6358bc16d04b40524106dd6a7480e6 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 22 Oct 2025 07:36:07 +0200
+Subject: [PATCH 2/2] Add proc subst_vars
+
+Add proc subst_vars, an alias of subst -nobackslashes -nocommands.
+
+I've used tailcall to implement this:
+...
+proc subst_vars { str } {
+    tailcall subst -nobackslashes -nocommands $str
+}
+...
+but I found that this also works:
+...
+proc subst_vars { str } {
+    return [uplevel 1 [list subst -nobackslashes -nocommands $str]]
+}
+...
+
+I've found other uses of subst that don't add "-nobackslashes -nocommands",
+but really only use subst to do variable substitution.  Also use subst_vars in
+those cases.
+
+Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+---
+ gdb/testsuite/lib/gdb-utils.exp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/gdb/testsuite/lib/gdb-utils.exp b/gdb/testsuite/lib/gdb-utils.exp
+index 34223e654ed..1999701b0a5 100644
+--- a/gdb/testsuite/lib/gdb-utils.exp
++++ b/gdb/testsuite/lib/gdb-utils.exp
+@@ -236,3 +236,9 @@ proc with_lock { lock_file body } {
+ 	return -code $code $result
+     }
+ }
++
++# Alias for subst -nobackslashes -nocommands.
++
++proc subst_vars { str } {
++    tailcall subst -nobackslashes -nocommands $str
++}
+-- 
+2.51.0
+

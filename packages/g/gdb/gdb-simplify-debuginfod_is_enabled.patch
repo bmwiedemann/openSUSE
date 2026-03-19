@@ -1,0 +1,117 @@
+From 654c61f7878b63deae626da6e55cfbbd854ee4e3 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 14 Mar 2026 13:43:37 +0100
+Subject: [PATCH 2/8] [gdb] Simplify debuginfod_is_enabled
+
+Simplify debuginfod_is_enabled by adding an early-exit for the
+debuginfod_enabled == debuginfod_on case.
+---
+ gdb/debuginfod-support.c | 81 ++++++++++++++++++++--------------------
+ 1 file changed, 41 insertions(+), 40 deletions(-)
+
+diff --git a/gdb/debuginfod-support.c b/gdb/debuginfod-support.c
+index 2ae722858a2..f97c1f921ab 100644
+--- a/gdb/debuginfod-support.c
++++ b/gdb/debuginfod-support.c
+@@ -230,57 +230,58 @@ debuginfod_is_enabled ()
+ {
+   const char *urls = skip_spaces (getenv (DEBUGINFOD_URLS_ENV_VAR));
+ 
+-  if (debuginfod_enabled == debuginfod_off
+-      || urls == nullptr
++  if (urls == nullptr
+       || *urls == '\0')
+     return false;
+ 
+-  if (debuginfod_enabled == debuginfod_ask)
+-    {
+-      gdb_printf (_("\nThis GDB supports auto-downloading debuginfo " \
+-		    "from the following URLs:\n"));
++  if (debuginfod_enabled != debuginfod_ask)
++    return debuginfod_enabled == debuginfod_on;
+ 
+-      std::string_view url_view (urls);
+-      while (true)
+-	{
+-	  size_t off = url_view.find_first_not_of (' ');
+-	  if (off == std::string_view::npos)
+-	    break;
+-	  url_view = url_view.substr (off);
+-	  /* g++ 11.2.1 on s390x, g++ 11.3.1 on ppc64le and g++ 11 on
+-	     hppa seem convinced url_view might be of SIZE_MAX length.
+-	     And so complains because the length of an array can only
+-	     be PTRDIFF_MAX.  */
+-	  DIAGNOSTIC_PUSH
+-	  DIAGNOSTIC_IGNORE_STRINGOP_OVERREAD
+-	  off = url_view.find_first_of (' ');
+-	  DIAGNOSTIC_POP
+-	  gdb_printf
+-	    (_("  <%ps>\n"),
+-	     styled_string (file_name_style.style (),
+-			    std::string (url_view.substr (0, off)).c_str ()));
+-	  if (off == std::string_view::npos)
+-	    break;
+-	  url_view = url_view.substr (off);
+-	}
++  gdb_printf (_("\nThis GDB supports auto-downloading debuginfo " \
++		"from the following URLs:\n"));
+ 
+-      int resp = nquery (_("Enable debuginfod for this session? "));
+-      if (!resp)
+-	{
+-	  gdb_printf (_("Debuginfod has been disabled.\nTo make this " \
+-			"setting permanent, add \'set debuginfod " \
+-			"enabled off\' to .gdbinit.\n"));
+-	  debuginfod_enabled = debuginfod_off;
+-	  return false;
+-	}
++  std::string_view url_view (urls);
++  while (true)
++    {
++      size_t off = url_view.find_first_not_of (' ');
++      if (off == std::string_view::npos)
++	break;
++      url_view = url_view.substr (off);
++      /* g++ 11.2.1 on s390x, g++ 11.3.1 on ppc64le and g++ 11 on
++	 hppa seem convinced url_view might be of SIZE_MAX length.
++	 And so complains because the length of an array can only
++	 be PTRDIFF_MAX.  */
++      DIAGNOSTIC_PUSH
++	DIAGNOSTIC_IGNORE_STRINGOP_OVERREAD
++	off = url_view.find_first_of (' ');
++      DIAGNOSTIC_POP
++	gdb_printf
++	(_("  <%ps>\n"),
++	 styled_string (file_name_style.style (),
++			std::string (url_view.substr (0, off)).c_str ()));
++      if (off == std::string_view::npos)
++	break;
++      url_view = url_view.substr (off);
++    }
+ 
+-      gdb_printf (_("Debuginfod has been enabled.\nTo make this " \
++  int resp = nquery (_("Enable debuginfod for this session? "));
++  if (!resp)
++    {
++      gdb_printf (_("Debuginfod has been disabled.\nTo make this " \
++		    "setting permanent, add \'set debuginfod " \
++		    "enabled off\' to .gdbinit.\n"));
++      debuginfod_enabled = debuginfod_off;
++    }
++  else
++    {
++      gdb_printf (_("Debuginfod has been enabled.\nTo make this "      \
+ 		    "setting permanent, add \'set debuginfod enabled " \
+ 		    "on\' to .gdbinit.\n"));
+       debuginfod_enabled = debuginfod_on;
+     }
+ 
+-  return true;
++  gdb_assert (debuginfod_enabled != debuginfod_ask);
++  return debuginfod_enabled == debuginfod_on;
+ }
+ 
+ /* Print the result of the most recent attempted download.  */
+-- 
+2.51.0
+

@@ -1,0 +1,114 @@
+From e536b8c1ae2e0212e86dd741a4fa31b4d09f9dd0 Mon Sep 17 00:00:00 2001
+From: Abhay Kandpal <abhay@linux.ibm.com>
+Date: Tue, 3 Mar 2026 10:25:09 -0500
+Subject: [PATCH 1/2] gdb/testsuite: fix printf regexp for ppc64le with glibc
+ ieee128 fix
+
+On ppc64le, when the compiler selects IEEE-128 long double ABI
+(-mabi=ieeelongdouble), calls to printf are redirected to
+___ieee128_printf.  This causes 'break printf' in GDB to never stop
+at printf:
+...
+(gdb) break printf
+Breakpoint 3 at 0x7ffff7a6b880
+(gdb) continue
+Continuing.
+value is 7
+
+[Inferior 1 (process 403664) exited normally]
+(gdb) FAIL: gdb.base/annota1.exp: continue to printf
+...
+
+glibc fixed this by adding local symbol aliases in the ieee128
+compatibility files so that the original symbol names are present in
+the symbol table again (glibc commit f05ab7c4a99b).  After the glibc
+fix, GDB stops at printf but the breakpoint is reported as
+'Breakpoint 3.2, ___ieee128_printf' since printf now resolves to two
+locations.  The current GDB test regexps do not match this output.
+
+...
+(gdb) break printf
+Breakpoint 3 at 0x7ffff7a6b278: printf. (2 locations)
+(gdb) continue
+Continuing.
+
+Breakpoint 3.2, ___ieee128_printf (format=0x10000970 \"value is %d\n\")
+    at ../sysdeps/ieee754/ldbl-128ibm-compat/ieee128-printf.c:28
+(gdb) FAIL: gdb.base/annota1.exp: continue to printf
+...
+
+This causes failures in gdb.base/annota1.exp and gdb.base/annota3.exp
+because the pattern 'Breakpoint 3, ' does not match 'Breakpoint 3.2, '.
+Fix this by changing 'Breakpoint 3, ' to 'Breakpoint 3.*, '.
+
+In gdb.server/sysroot.exp the pattern '(__)?printf' does not match
+'___ieee128_printf'.
+Fix this by changing '(__)?printf' to '.*printf' to match any printf
+variant including printf, __printf, and ___ieee128_printf,
+following the same approach as previous fixes for __printf on x86_64
+(commit f870f78fb2d) and printf@@GLIBC_2.17 on ppc64le (commit
+29004660c94).
+
+Tested on ppc64le, x86_64-linux.
+
+Approved-By: Tom de Vries <tdevries@suse.de>
+---
+ gdb/testsuite/gdb.base/annota1.exp   | 2 +-
+ gdb/testsuite/gdb.base/annota3.exp   | 6 +++---
+ gdb/testsuite/gdb.server/sysroot.exp | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/annota1.exp b/gdb/testsuite/gdb.base/annota1.exp
+index 927e8a7e579..ac8e29333ac 100644
+--- a/gdb/testsuite/gdb.base/annota1.exp
++++ b/gdb/testsuite/gdb.base/annota1.exp
+@@ -260,7 +260,7 @@ gdb_test_multiple "break printf" "break printf" {
+ #
+ set pat_begin "\r\n\032\032post-prompt\r\nContinuing.\r\n\r\n\032\032starting\r\n\r\n\032\032frames-invalid\r\n${breakpoints_invalid}\r\n\032\032frames-invalid\r\n"
+ set pat_adjust "warning: Breakpoint 3 address previously adjusted from $hex to $hex.\r\n"
+-set pat_end "\r\n\032\032breakpoint 3\r\n\r\nBreakpoint 3, \r\n\032\032frame-begin 0 $hex\r\n\r\n(\032\032frame-address\r\n$hex\r\n\032\032frame-address-end\r\n in \r\n)*.*\032\032frame-function-name\r\n.*printf(@.*)?\r\n\032\032frame-args\r\n.*\032\032frame-end\r\n\r\n\032\032stopped\r\n$gdb_prompt$"
++set pat_end "\r\n\032\032breakpoint 3\r\n\r\nBreakpoint 3(\\.$decimal)?, \r\n\032\032frame-begin 0 $hex\r\n\r\n(\032\032frame-address\r\n$hex\r\n\032\032frame-address-end\r\n in \r\n)*.*\032\032frame-function-name\r\n.*printf(@.*)?\r\n\032\032frame-args\r\n.*\032\032frame-end\r\n\r\n\032\032stopped\r\n$gdb_prompt$"
+ 
+ gdb_test_multiple "continue" "continue to printf" {
+     -re "${pat_begin}($pat_adjust)?$pat_end" {
+diff --git a/gdb/testsuite/gdb.base/annota3.exp b/gdb/testsuite/gdb.base/annota3.exp
+index 134a3d37c80..d5bbed735ce 100644
+--- a/gdb/testsuite/gdb.base/annota3.exp
++++ b/gdb/testsuite/gdb.base/annota3.exp
+@@ -164,15 +164,15 @@ gdb_test -prompt "$gdb_prompt$" "break printf" \
+ # get to printf
+ #
+ send_gdb "continue\n"
+-gdb_expect_list "continue to printf" "$gdb_prompt$" {
++gdb_expect_list "continue to printf" "$gdb_prompt$" [subst_vars {
+     "\r\n\032\032post-prompt\r\n"
+     "Continuing.\r\n"
+     "\r\n\032\032starting\r\n"
+     "\r\n\032\032breakpoint 3\r\n"
+     "\r\n"
+-    "Breakpoint 3, \[^\r\n\]*\r\n"
++    "Breakpoint 3(\\.$decimal)?, \[^\r\n\]*\r\n"
+     "\r\n\032\032stopped\r\n"
+-}
++}]
+ 
+ send_gdb "backtrace\n"
+ gdb_expect_list "backtrace from shlibrary" "$gdb_prompt$" {
+diff --git a/gdb/testsuite/gdb.server/sysroot.exp b/gdb/testsuite/gdb.server/sysroot.exp
+index 7f5597d7306..e4e14b349bf 100644
+--- a/gdb/testsuite/gdb.server/sysroot.exp
++++ b/gdb/testsuite/gdb.server/sysroot.exp
+@@ -88,7 +88,7 @@ foreach_with_prefix sysroot $modes {
+ 
+ 	# Test that we can stop inside a library.
+ 	gdb_breakpoint printf
+-	gdb_test "continue" "Breakpoint $decimal.* (__)?printf.*" \
++	gdb_test "continue" "Breakpoint $decimal.* (__|___ieee128_)?printf.*" \
+ 	    "continue to printf"
+     }
+ }
+
+base-commit: fbb1f8cff499031b1c9a7fbc189039e669fb1cf0
+-- 
+2.51.0
+

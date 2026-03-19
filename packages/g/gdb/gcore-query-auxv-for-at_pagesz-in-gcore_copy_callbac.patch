@@ -1,0 +1,56 @@
+From ccc03544a6bc2f886e06d8b477a84eb8b2033e31 Mon Sep 17 00:00:00 2001
+From: Kevin Buettner <kevinb@redhat.com>
+Date: Tue, 17 Feb 2026 19:09:48 -0700
+Subject: [PATCH] gcore: Query auxv for AT_PAGESZ in gcore_copy_callback
+
+This is a followup patch to commit c1da013915e, titled "gcore:  Handle
+unreadable pages within readable memory regions".
+
+In his review of that earlier patch, Tom de Vries recommended using
+target_auxv_search with AT_PAGESZ to find the page size if it's
+available; this patch implements that suggestion.  As before, a 4k
+fallback size is used should the search for an AT_PAGESZ value not
+succeed.
+---
+ gdb/gcore.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/gcore.c b/gdb/gcore.c
+index 38f6880d71c..6482c8913aa 100644
+--- a/gdb/gcore.c
++++ b/gdb/gcore.c
+@@ -37,6 +37,7 @@
+ #include "gdbsupport/gdb_unlinker.h"
+ #include "gdbsupport/byte-vector.h"
+ #include "gdbsupport/scope-exit.h"
++#include "auxv.h"
+ 
+ /* To generate sparse cores, we look at the data to write in chunks of
+    this size when considering whether to skip the write.  Only if we
+@@ -767,6 +768,11 @@ gcore_copy_callback (bfd *obfd, asection *osec)
+   size = std::min (total_size, (bfd_size_type) MAX_COPY_BYTES);
+   gdb::byte_vector memhunk (size);
+ 
++  bfd_size_type page_size = FALLBACK_PAGE_SIZE;
++  CORE_ADDR at_pagesz;
++  if (target_auxv_search (AT_PAGESZ, &at_pagesz) > 0)
++    page_size = (bfd_size_type) at_pagesz;
++
+   while (total_size > 0)
+     {
+       if (size > total_size)
+@@ -787,8 +793,7 @@ gcore_copy_callback (bfd *obfd, asection *osec)
+ 
+ 	  while (remaining > 0)
+ 	    {
+-	      bfd_size_type chunk_size
+-		= std::min (remaining, (bfd_size_type) FALLBACK_PAGE_SIZE);
++	      bfd_size_type chunk_size = std::min (remaining, page_size);
+ 
+ 	      if (target_read_memory (addr, p, chunk_size) != 0)
+ 		{
+
+base-commit: d4387f9b56295835508d5c2886d28fc73e00aa3a
+-- 
+2.51.0
+

@@ -298,6 +298,10 @@ Patch2522:      gdb-testsuite-add-missing-require-in-gdb.debuginfod-.patch
 Patch2523:      gdb-tdep-fix-gdb.base-siginfo.exp-on-s390x-linux.patch
 Patch2524:      gdb-testsuite-remove-guile-test-byte-at-sp-before-fl.patch
 Patch2525:      gdb-fix-gdb.base-inline-frame-cycle-unwind.exp-for-s.patch
+Patch2526:      gcore-handle-unreadable-pages-within-readable-memory.patch
+Patch2527:      gcore-query-auxv-for-at_pagesz-in-gcore_copy_callbac.patch
+Patch2528:      gdb-testsuite-fix-printf-regexp-for-ppc64le-with-gli.patch
+Patch2529:      add-proc-subst_vars.patch
 
 # Backport from gdb-patches
 
@@ -334,6 +338,17 @@ Patch3019:      bfd-elf-handle-prstatus-of-156-bytes-in-elf32_arm_na.patch
 # https://sourceware.org/pipermail/gdb-patches/2025-November/222919.html
 # Todo: submit arm part.
 Patch3020:      powerpc-mark-rtti-typeid-tests-as-expected-fail-befo.patch
+# https://sourceware.org/pipermail/gdb-patches/2026-March/226050.html
+Patch3021:      gdb-tdep-fix-unrelocated-pc-in-i386_displaced_step_f.patch
+# https://sourceware.org/pipermail/gdb-patches/2026-March/226009.html
+Patch3022:      gdb-simplify-debuginfod_is_enabled.patch
+Patch3023:      gdb-add-debuginfod_enabled_ask_p.patch
+Patch3024:      gdb-add-defaulted_query_auto_answers_p.patch
+Patch3025:      gdb-tui-don-t-enter-tui-if-debuginfod-enabled-ask.patch
+# https://sourceware.org/pipermail/gdb-patches/2026-March/225792.html
+Patch3026:      gdb-minor-refactoring-of-is_dynamic_type_internal.patch
+Patch3027:      gdb-factor-out-is_dynamic_type_internal_1.patch
+Patch3028:      gdb-enable-ptype-o-for-some-dynamic-types.patch
 
 # Debug patches.
 
@@ -758,6 +773,10 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2523 -p1
 %patch -P 2524 -p1
 %patch -P 2525 -p1
+%patch -P 2526 -p1
+%patch -P 2527 -p1
+%patch -P 2528 -p1
+%patch -P 2529 -p1
 
 %patch -P 3000 -p1
 %patch -P 3001 -p1
@@ -773,6 +792,14 @@ find -name "*.info*"|xargs rm -f
 %patch -P 3018 -p1
 %patch -P 3019 -p1
 %patch -P 3020 -p1
+%patch -P 3021 -p1
+%patch -P 3022 -p1
+%patch -P 3023 -p1
+%patch -P 3024 -p1
+%patch -P 3025 -p1
+%patch -P 3026 -p1
+%patch -P 3027 -p1
+%patch -P 3028 -p1
 
 %patch -P 3500 -p1
 

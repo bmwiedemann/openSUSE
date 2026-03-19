@@ -1,0 +1,101 @@
+From 9988e69be7216b688ca3963515e0829803ab6fdf Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Sat, 14 Mar 2026 15:26:42 +0100
+Subject: [PATCH 3/8] [gdb] Add debuginfod_enabled_ask_p
+
+Factor out debuginfod_is_enabled_1 out of debuginfod_is_enabled, and use it to
+implement debuginfod_enabled_ask_p.
+---
+ gdb/debuginfod-support.c | 40 +++++++++++++++++++++++++++++++---------
+ gdb/debuginfod-support.h |  5 +++++
+ 2 files changed, 36 insertions(+), 9 deletions(-)
+
+diff --git a/gdb/debuginfod-support.c b/gdb/debuginfod-support.c
+index f97c1f921ab..5ced58b410e 100644
+--- a/gdb/debuginfod-support.c
++++ b/gdb/debuginfod-support.c
+@@ -222,20 +222,20 @@ get_debuginfod_client ()
+   return global_client;
+ }
+ 
+-/* Check if debuginfod is enabled.  If configured to do so, ask the user
+-   whether to enable debuginfod.  */
++/* Check if debuginfod is enabled.  If configured to do so and ALLOW_ASK, ask
++   the user whether to enable debuginfod.  */
+ 
+-static bool
+-debuginfod_is_enabled ()
++static const char *
++debuginfod_is_enabled_1 (bool allow_ask)
+ {
+   const char *urls = skip_spaces (getenv (DEBUGINFOD_URLS_ENV_VAR));
+ 
+   if (urls == nullptr
+       || *urls == '\0')
+-    return false;
++    return debuginfod_off;
+ 
+-  if (debuginfod_enabled != debuginfod_ask)
+-    return debuginfod_enabled == debuginfod_on;
++  if (debuginfod_enabled != debuginfod_ask || !allow_ask)
++    return debuginfod_enabled;
+ 
+   gdb_printf (_("\nThis GDB supports auto-downloading debuginfo " \
+ 		"from the following URLs:\n"));
+@@ -280,8 +280,18 @@ debuginfod_is_enabled ()
+       debuginfod_enabled = debuginfod_on;
+     }
+ 
+-  gdb_assert (debuginfod_enabled != debuginfod_ask);
+-  return debuginfod_enabled == debuginfod_on;
++  return debuginfod_enabled;
++}
++
++/* Check if debuginfod is enabled.  If configured to do so, ask the user
++   whether to enable debuginfod.  */
++
++static bool
++debuginfod_is_enabled ()
++{
++  const char *res = debuginfod_is_enabled_1 (true);
++  gdb_assert (res != debuginfod_ask);
++  return res == debuginfod_on;
+ }
+ 
+ /* Print the result of the most recent attempted download.  */
+@@ -484,6 +494,18 @@ debuginfod_section_query (const unsigned char *build_id,
+ 
+ #endif
+ 
++/* See debuginfod-support.h.  */
++
++bool
++debuginfod_enabled_ask_p ()
++{
++#if defined(HAVE_LIBDEBUGINFOD)
++  return debuginfod_is_enabled_1 (false) == debuginfod_ask;
++#else
++  return false;
++#endif
++}
++
+ /* Set callback for "set debuginfod enabled".  */
+ 
+ static void
+diff --git a/gdb/debuginfod-support.h b/gdb/debuginfod-support.h
+index 2b396dc13c1..1db2f511925 100644
+--- a/gdb/debuginfod-support.h
++++ b/gdb/debuginfod-support.h
+@@ -105,4 +105,9 @@ extern scoped_fd debuginfod_section_query (const unsigned char *build_id,
+ 					   const char *section_name,
+ 					   gdb::unique_xmalloc_ptr<char>
+ 					     *destname);
++
++/* Check if debuginfod enabled is set to ask.  */
++
++extern bool debuginfod_enabled_ask_p ();
++
+ #endif /* GDB_DEBUGINFOD_SUPPORT_H */
+-- 
+2.51.0
+
