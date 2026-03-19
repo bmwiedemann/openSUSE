@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 18 11:05:41 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.3
+- Changes since 6.6.2:
+  * Update version for new release 6.6.3
+  * applets/taskmanager: keep thumbnails in horizontal group tooltips aligned
+  * applets/kicker: take expanded rootList width into account
+  * PanelConfiguration: always play animations when combobox is changed (kde#516917)
+  * kcm/keys: Preserve selected item when clearing search (kde#516973)
+  * applets/kicker: a bunch of small fixes for the sidebar (kde#517065)
+  * applets/taskmanager: allow some tooltip labels to be multi-line
+  * Positioner: Skip convertFolderModelData if loaded positions are empty
+
+-------------------------------------------------------------------
 Tue Mar  3 12:27:52 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.2:
