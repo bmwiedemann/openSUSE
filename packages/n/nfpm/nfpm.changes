@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 19 06:22:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.45.2:
+  * Bug fixes
+    - 092276a: fix(deb): ensure no ./ prefix on files (@caarlos0)
+    - 66fa3f7: fix: path in Debian md5sums file (#1052)
+      (@Flood1993)
+  * Build process updates
+    - 5508e77: ci(deps): bump the actions group with 3 updates
+      (#1053) (@dependabot[bot])
+  * Other work
+    - 6b4cbe5: docs: update cmd docs (@caarlos0)
+
+-------------------------------------------------------------------
 Thu Mar 12 11:47:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.45.1:
