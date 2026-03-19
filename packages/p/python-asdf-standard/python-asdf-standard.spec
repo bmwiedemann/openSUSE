@@ -33,7 +33,7 @@ Summary:        The ASDF Standard schemas
 License:        BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf-standard
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-standard/asdf_standard-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
@@ -45,6 +45,7 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module asdf >= 3}
 BuildRequires:  %{python_module asdf-standard = %{version}}
 BuildRequires:  %{python_module packaging >= 16.0}
+BuildRequires:  %{python_module pytest-asdf-plugin}
 BuildRequires:  %{python_module pytest}
 %endif
 BuildArch:      noarch
@@ -76,8 +77,10 @@ sed -i "/addopts = '--color=yes'/d" pyproject.toml
 
 %if !%{with test}
 %files %{python_files}
+%license LICENSE
+%doc README.md
 %{python_sitelib}/asdf_standard
-%{python_sitelib}/asdf_standard-%{version}*-info
+%{python_sitelib}/asdf_standard-%{version}.dist-info
 %endif
 
 %changelog

@@ -116,4 +116,13 @@
   * Drop support for Python 3.9</comment>
     <requestid>1336599</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f9b2a9cc6e505c3cec62a214d8a1231b</srcmd5>
+    <version>1.5.0</version>
+    <time>1773938383</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires for pytest-asdf-plugin for the testsuite.
+- Ship the LICENSE and the README in the binary packages.</comment>
+    <requestid>1341086</requestid>
+  </revision>
 </revisionlist>
