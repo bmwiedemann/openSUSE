@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Feb  9 02:05:51 UTC 2026 - zero mind <zeromind@gmx.com>
+
+- update to 0.10.0:
+  * New '(git revwalker)' module
+  * New '(git notes)' module
+  * New '(git graph)' module
+  * 'remote-fetch' now accepts a '#:refspecs' argument
+  * New procedures under (git submodules)
+  * 0.9.0
+    * New procedures in (git settings)
+  * 0.8.0
+    * Support for libgit2 1.8 added
+    * Support for Guile 2.0 dropped
+    * New 'config-entry-backend-type' and 'config-entry-origin-path' procedures in '(git config)'
+  * 0.7.0
+    * New 'config-string', 'set-config-integer', and 'set-config-boolean' procedures in '(git config)'
+    * New 'repository-common-directory' procedure
+  * 0.6.0
+    * Support libgit2 up to 1.7.x
+    * Support for checkout options
+    * New 'remote-connect/detached' procedure
+    * New '(git ignore)' module and 'ignored-file?' procedure
+    * New 'owner-validation?' and 'set-owner-validation!' procedures
+    * New 'describe-checkout' procedure
+    * Always use native endianness when interpreting 'size_t' pointers
+    * Add missing argument to C call made by 'repository-index'
+    * Clone-over-SSH tests now ignores '~/.ssh/known_hosts{.verbatim}' validation
+    * Fix various binary interface incompatibility issues
+
+-------------------------------------------------------------------
 Sun Dec 18 18:30:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.2:

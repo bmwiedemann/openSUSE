@@ -1,7 +1,7 @@
 #
 # spec file for package guile-git
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           guile-git
-Version:        0.5.2
+Version:        0.10.0
 Release:        0
 Summary:        Guile bindings of libgit2
 License:        GPL-3.0-or-later
