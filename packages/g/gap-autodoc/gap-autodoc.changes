@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 18 23:07:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.03.18
+  * Fix running the test suite via `TestPackage("AutoDoc")` when
+    CWD is not the package root
+
+-------------------------------------------------------------------
 Wed Mar 18 08:36:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2026.03.17
