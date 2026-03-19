@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykickstart
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %bcond_without libalternatives
 # Python 2 isn't supported...
 Name:           python-%{mod_name}
-Version:        3.54
+Version:        3.69
 Release:        0
 Summary:        Python module for parsing and writing kickstart files
 License:        GPL-2.0-only AND MIT

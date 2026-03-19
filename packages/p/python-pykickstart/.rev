@@ -92,4 +92,41 @@
     <comment>- Convert to pip-based build and libalternatives</comment>
     <requestid>1284361</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b27b029c30b9aab0550cc3853f30cfac</srcmd5>
+    <version>3.69</version>
+    <time>1773938335</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.69:
+  * Makefile: Drop coverage-report.log (bcl)
+  * Add Fedora 45 support (bcl)
+  * tests: Use pytest-cov to support coverage of parallel tests
+    from pytest-xdist (bcl)
+  * workflows: Use latest released py3.14 and py3.12 (bcl)
+  * test: Use pytest-xdist to run tests in parallel (bcl)
+  * tests: Use ThreadingHTTPServer and threads for load and
+    include tests (bcl)
+  * tests: Mark helper classes as not tests (bcl)
+  * bootc: Add bootc command to the RHEL10 handler (bcl)
+  * rdp: Add rdp support to the RHEL10 handler (bcl)
+  * raid: Update RHEL10 handler to match rhel10-branch (bcl)
+  * Fix handling filesystem labels with spaces (marmarek)
+- update to 3.66:
+  * workflows: Use py3.14 beta.4 (bcl)
+  * pylint: Ignore files in .git (bcl)
+  * pyproject: Bump setuptools to 77 or later (bcl)
+  * Makefile: Stop running setup.py directly (bcl)
+- update to 3.65:
+  * workflows: Add python 3.14 to the test matrix (bcl)
+  * Add support for RDP (jkonecny)
+  * Deprecate VNC (jkonecny)
+  * docs: Fix chapter numbering after adding certificate (bcl)
+- update to 3.64:
+  * workflow: Add python 3.13 testing (bcl)
+  * tests: Remove unused import of constants (bcl)
+  * realm: Clean up documentation (bcl)
+  * Add support for new bootc kickstart command (ppolawsk)
+  * Update documentation for clearpart --initlabel option.</comment>
+    <requestid>1341051</requestid>
+  </revision>
 </revisionlist>
