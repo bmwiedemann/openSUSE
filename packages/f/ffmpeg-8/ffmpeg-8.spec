@@ -96,7 +96,7 @@
 %define _major_expected 9
 
 Name:           ffmpeg-8
-Version:        8.0.1
+Version:        8.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -119,6 +119,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+BuildRequires:  c++_compiler
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  nasm
@@ -775,7 +776,7 @@ done
 #
 #!BcntSyncTag:  ffmpeg-8
 Name:           ffmpeg-8-mini
-Version:        8.0.1
+Version:        8.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later

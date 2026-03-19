@@ -46,4 +46,12 @@
     <comment>- Enable harfbuzz-based plugins [boo#1256873]</comment>
     <requestid>1329391</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c057b814aae8b36686912e67668bfb7</srcmd5>
+    <version>8.1</version>
+    <time>1773938132</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 8.1</comment>
+    <requestid>1340756</requestid>
+  </revision>
 </revisionlist>

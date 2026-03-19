@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 16 22:36:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.1
+  * EXIF metadata parsing support
+
+-------------------------------------------------------------------
 Tue Jan 27 00:01:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable harfbuzz-based plugins [boo#1256873]

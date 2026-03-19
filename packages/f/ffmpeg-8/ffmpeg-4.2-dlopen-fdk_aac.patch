@@ -12,11 +12,11 @@ fdkaac/lame/x264/x265.
  libavcodec/libfdk-aacenc.c |   47 +++++++++++++++++++++++++++++++++++++++
  4 files changed, 115 insertions(+)
 
-Index: ffmpeg-7.0/configure
+Index: ffmpeg-8.1/configure
 ===================================================================
---- ffmpeg-7.0.orig/configure
-+++ ffmpeg-7.0/configure
-@@ -230,6 +230,7 @@ External library support:
+--- ffmpeg-8.1.orig/configure
++++ ffmpeg-8.1/configure
+@@ -232,6 +232,7 @@ External library support:
    --enable-libdvdnav       enable libdvdnav, needed for DVD demuxing [no]
    --enable-libdvdread      enable libdvdread, needed for DVD demuxing [no]
    --enable-libfdk-aac      enable AAC de/encoding via libfdk-aac [no]
@@ -24,15 +24,15 @@ Index: ffmpeg-7.0/configure
    --enable-libflite        enable flite (voice synthesis) support via libflite [no]
    --enable-libfontconfig   enable libfontconfig, useful for drawtext filter [no]
    --enable-libfreetype     enable libfreetype, needed for drawtext filter [no]
-@@ -1873,6 +1874,7 @@ EXTERNAL_LIBRARY_GPL_LIST="
+@@ -2004,6 +2005,7 @@ EXTERNAL_LIBRARY_GPL_LIST="
  EXTERNAL_LIBRARY_NONFREE_LIST="
      decklink
      libfdk_aac
 +    libfdk_aac_dlopen
-     libtls
+     libmpeghdec
  "
  
-@@ -6847,6 +6849,7 @@ enabled libdvdread        && require_pkg
+@@ -7257,6 +7259,7 @@ enabled libdvdread        && require_pkg
  enabled libfdk_aac        && { check_pkg_config libfdk_aac fdk-aac "fdk-aac/aacenc_lib.h" aacEncOpen ||
                                 { require libfdk_aac fdk-aac/aacenc_lib.h aacEncOpen -lfdk-aac &&
                                   warn "using libfdk without pkg-config"; } }
@@ -40,10 +40,10 @@ Index: ffmpeg-7.0/configure
  flite_extralibs="-lflite_cmu_time_awb -lflite_cmu_us_awb -lflite_cmu_us_kal -lflite_cmu_us_kal16 -lflite_cmu_us_rms -lflite_cmu_us_slt -lflite_usenglish -lflite_cmulex -lflite"
  enabled libflite          && require libflite "flite/flite.h" flite_init $flite_extralibs
  enabled fontconfig        && enable libfontconfig
-Index: ffmpeg-7.0/libavcodec/dlopen.h
+Index: ffmpeg-8.1/libavcodec/dlopen.h
 ===================================================================
 --- /dev/null
-+++ ffmpeg-7.0/libavcodec/dlopen.h
++++ ffmpeg-8.1/libavcodec/dlopen.h
 @@ -0,0 +1,12 @@
 +#ifndef LOCALINC_DLOPEN_H
 +#define LOCALINC_DLOPEN_H
@@ -57,11 +57,11 @@ Index: ffmpeg-7.0/libavcodec/dlopen.h
 +		goto error;
 +
 +#endif
-Index: ffmpeg-7.0/libavcodec/libfdk-aacdec.c
+Index: ffmpeg-8.1/libavcodec/libfdk-aacdec.c
 ===================================================================
---- ffmpeg-7.0.orig/libavcodec/libfdk-aacdec.c
-+++ ffmpeg-7.0/libavcodec/libfdk-aacdec.c
-@@ -38,6 +38,54 @@
+--- ffmpeg-8.1.orig/libavcodec/libfdk-aacdec.c
++++ ffmpeg-8.1/libavcodec/libfdk-aacdec.c
+@@ -39,6 +39,54 @@
  #define AAC_PCM_MAX_OUTPUT_CHANNELS AAC_PCM_OUTPUT_CHANNELS
  #endif
  
@@ -116,7 +116,7 @@ Index: ffmpeg-7.0/libavcodec/libfdk-aacdec.c
  enum ConcealMethod {
      CONCEAL_METHOD_SPECTRAL_MUTING      =  0,
      CONCEAL_METHOD_NOISE_SUBSTITUTION   =  1,
-@@ -244,6 +292,11 @@ static av_cold int fdk_aac_decode_init(A
+@@ -248,6 +296,11 @@ static av_cold int fdk_aac_decode_init(A
      FDKAACDecContext *s = avctx->priv_data;
      AAC_DECODER_ERROR err;
  
@@ -128,11 +128,11 @@ Index: ffmpeg-7.0/libavcodec/libfdk-aacdec.c
      s->handle = aacDecoder_Open(avctx->extradata_size ? TT_MP4_RAW : TT_MP4_ADTS, 1);
      if (!s->handle) {
          av_log(avctx, AV_LOG_ERROR, "Error opening decoder\n");
-Index: ffmpeg-7.0/libavcodec/libfdk-aacenc.c
+Index: ffmpeg-8.1/libavcodec/libfdk-aacenc.c
 ===================================================================
---- ffmpeg-7.0.orig/libavcodec/libfdk-aacenc.c
-+++ ffmpeg-7.0/libavcodec/libfdk-aacenc.c
-@@ -37,6 +37,48 @@
+--- ffmpeg-8.1.orig/libavcodec/libfdk-aacenc.c
++++ ffmpeg-8.1/libavcodec/libfdk-aacenc.c
+@@ -38,6 +38,48 @@
  #define FDKENC_VER_AT_LEAST(vl0, vl1) 0
  #endif
  
@@ -181,7 +181,7 @@ Index: ffmpeg-7.0/libavcodec/libfdk-aacenc.c
  typedef struct AACContext {
      const AVClass *class;
      HANDLE_AACENCODER handle;
-@@ -182,6 +224,11 @@ static av_cold int aac_encode_init(AVCod
+@@ -184,6 +226,11 @@ static av_cold int aac_encode_init(AVCod
      int aot = AV_PROFILE_AAC_LOW + 1;
      int sce = 0, cpe = 0;
  
