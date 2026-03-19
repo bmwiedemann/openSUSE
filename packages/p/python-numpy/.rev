@@ -1452,4 +1452,14 @@ This was now merged upstream, so I added relevant metadata
     to typing.Any. This way, type-checkers will infer annotations such</comment>
     <requestid>1337642</requestid>
   </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>d4651ac420191d5074a02f5278b3ae53</srcmd5>
+    <version>2.4.3</version>
+    <time>1773937598</time>
+    <user>anag_factory</user>
+    <comment>- Remove custom code for copy binaries for tests, the new version of
+  python-rpm-macros does that now as part of
+  %python_flavored_alternatives</comment>
+    <requestid>1341130</requestid>
+  </revision>
 </revisionlist>

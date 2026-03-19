@@ -159,12 +159,6 @@ mkdir -p testing
 cp pytest.ini testing/
 pushd testing
 %python_flavored_alternatives
-%if %{with libalternatives}
-%{python_expand #
-for b in f2py numpy-config; do
-  ln -s %{buildroot}%{_bindir}/$b-%{$python_bin_suffix} build/flavorbin/$b
-done
-}
 
 # flaky tests
 test_failok+=" or test_structured_object_indexing"
@@ -241,7 +235,6 @@ $python runobstest.py "not (test_new_policy ${test_failok} or slow)"
 }
 
 popd
-%endif
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.

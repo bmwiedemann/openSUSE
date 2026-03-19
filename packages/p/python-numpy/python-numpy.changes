@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 19 09:42:57 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove custom code for copy binaries for tests, the new version of
+  python-rpm-macros does that now as part of
+  %python_flavored_alternatives
+
+-------------------------------------------------------------------
 Mon Mar  9 11:44:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.3:
