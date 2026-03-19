@@ -1,7 +1,7 @@
 #
 # spec file for package icu
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # what icu thinks the package is
 %define amajor 78
-%define aversion 78.1
+%define aversion 78.3
 # for the rare case that SUSE needs to workaround ABI breaks:
 %define sonum %amajor
 # like sonum, but with underscore
@@ -31,12 +31,13 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        78.1
+Version:        78.3
 Release:        0
 Summary:        International Components for Unicode
 License:        Unicode-3.0
 Group:          Development/Libraries/C and C++
 URL:            https://icu.unicode.org/
+#Git-Clone:     https://github.com/unicode-org/icu
 Source:         https://github.com/unicode-org/icu/releases/download/release-%version/icu4c-%version-sources.tgz
 Source2:        https://github.com/unicode-org/icu/releases/download/release-%version/icu4c-%version-sources.tgz.asc
 Source3:        https://github.com/unicode-org/icu/releases/download/release-%version/icu4c-%version-docs.zip
@@ -53,7 +54,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  unzip
-Provides:       bundled(timezone) = 2024b
+Provides:       bundled(timezone) = 2026a
 
 %description
 ICU is a set of C and C++ libraries that provide extensive Unicode and locale

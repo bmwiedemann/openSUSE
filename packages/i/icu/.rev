@@ -785,4 +785,12 @@ Jan added the patch name of all changed patches.</comment>
     <comment>- Update to release 78.1</comment>
     <requestid>1314693</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>11e114c5a14ca603ed24559e0563bb93</srcmd5>
+    <version>78.3</version>
+    <time>1773938139</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 78.3</comment>
+    <requestid>1340855</requestid>
+  </revision>
 </revisionlist>
