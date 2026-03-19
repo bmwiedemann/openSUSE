@@ -702,4 +702,14 @@ prerequisite for new python submission</comment>
   * Make RPM macro expansions POSIX sh-compatible</comment>
     <requestid>1312385</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>54af5221fb0054a470adb1dadfae8c41</srcmd5>
+    <version>20260317.5e02b19</version>
+    <time>1773937596</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260317.5e02b19:
+  * fix: don't double escape %{**} code.
+  * Copy libalternatives binaries from buildroot to flavorbin</comment>
+    <requestid>1339571</requestid>
+  </revision>
 </revisionlist>

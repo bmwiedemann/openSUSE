@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 17 11:01:51 UTC 2026 - mcepl@cepl.eu
+
+- Update to version 20260317.5e02b19:
+  * fix: don't double escape %{**} code.
+  * Copy libalternatives binaries from buildroot to flavorbin
+
+-------------------------------------------------------------------
 Mon Oct 20 11:19:11 UTC 2025 - mcepl@cepl.eu
 
 - Update to version 20250923.c3cfac8:
