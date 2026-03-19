@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 18 11:06:22 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.3
+- Changes since 6.6.2:
+  * Update version for new release 6.6.3
+  * Magnifier: Fix graphical size being off by 1 pixel (kde#517274)
+  * Fix crash on quit with a quickly selected region (kde#517064)
+  * Fix tesseract not being found on Fedora (kde#516162)
+  * Set explicit layer surface screen
+  * SelectionEditor: compensate for initial mouse offset when resizing
+
+-------------------------------------------------------------------
 Tue Mar  3 12:29:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.2:
