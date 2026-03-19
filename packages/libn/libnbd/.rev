@@ -224,4 +224,20 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>Update libnbd to version 1.24.1</comment>
     <requestid>1333634</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>17189f34b90026d49a16438c6c1df4f4</srcmd5>
+    <version>1.24.1</version>
+    <time>1772050416</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335138</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>31d1d1d1295068bf5a50d0edc11ae477</srcmd5>
+    <version>1.24.2</version>
+    <time>1773938296</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1341018</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define sover 0
 
 Name:           libnbd
-Version:        1.24.1
+Version:        1.24.2
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(ublksrv)
 Requires:       libnbd%{sover} = %{version}
 # Only for running the test suite.
 BuildRequires:  gcc-c++
@@ -162,11 +163,13 @@ done
 %{_bindir}/nbddump
 %{_bindir}/nbdinfo
 %{_bindir}/nbddiscard
+%{_bindir}/nbdublk
 %{_bindir}/nbdzero
 %{_mandir}/man1/nbdcopy.1*
 %{_mandir}/man1/nbddump.1*
 %{_mandir}/man1/nbddiscard.1*
 %{_mandir}/man1/nbdinfo.1*
+%{_mandir}/man1/nbdublk.1*
 %{_mandir}/man1/nbdzero.1*
 
 %files -n libnbd%{sover} -f %name.files

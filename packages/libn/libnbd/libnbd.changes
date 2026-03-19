@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 11 17:35:05 UTC 2026 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.24.2:
+  * Version 1.24.2.
+  * golang: Rename more exported functions
+  * ublk/nbdublk.pod: Simplify duplicated sections of the synopsis
+  * ci: Rebuild CI files
+  * ci/manifest.yml: Skip Rust on some platforms
+  * ci: Allow Rust to be skipped by setting variable $RUST == "skip"
+  * ci/manifest.yml: Drop freebsd-13, add freebsd-15
+  * ci/manifest.yml: Add Alpine 3.23
+  * ci/manifest.yml: Drop Alpine 3.21
+  * golang: Rename global freeCallbackId to nbd_internal_freeCallbackId
+  * generator: Compile-time error if a reserved word is used
+
+-------------------------------------------------------------------
+Mon Feb 23 15:22:27 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Add libublksrv as dependency to build nbdublk
+
+-------------------------------------------------------------------
 Tue Feb 17 14:19:04 UTC 2026 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.24.1: (jsc#PED-14625)
