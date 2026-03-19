@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 18 09:22:58 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix changelog
+
+-------------------------------------------------------------------
+Tue Mar 17 14:00:58 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Adapt %suse_version checks to support new %suse_version design for
+  16.1 and following (jsc#PED-15850)
+
+-------------------------------------------------------------------
+Fri Mar 13 18:20:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
+  ensuring that `SourcelessFileLoader` uses `io.open_code` when
+  opening `.pyc` files (bsc#1259240, CVE-2026-2297).
+
+-------------------------------------------------------------------
 Fri Feb  6 10:28:12 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.13.12: Python 3.13.12 final Release date:
@@ -28,7 +46,7 @@ Fri Feb  6 10:28:12 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
     - gh-144125: BytesGenerator will now refuse to serialize
       (write) headers that are unsafely folded or delimited; see
       verify_generated_headers. (Contributed by Bas Bloemsaat and
-      Petr Viktorin in gh-121650).
+      Petr Viktorin in gh-121650) (bsc#1257181, CVE-2026-1299).
     - gh-143935: Fixed a bug in the folding of comments when
       flattening an email message using a modern email policy.
       Comments consisting of a very long sequence of non-foldable

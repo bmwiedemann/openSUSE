@@ -62,7 +62,7 @@
 
 # Only for Tumbleweed
 # https://en.opensuse.org/openSUSE:Python:Externally_managed
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %bcond_without externally_managed
 %else
 %bcond_with externally_managed
@@ -81,7 +81,7 @@
 %endif
 
 # No experimental_jit in SLES, there's no clang >=18
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
 %bcond_with experimental_jit
 %else
     # Disable experimental_jit for primary python.
@@ -236,6 +236,9 @@ Patch45:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-UPSTREAM pass-test_write_read_limited_history.patch bsc#[0-9]+ mcepl@suse.com
 # Fix readline history truncation when length is reduced
 Patch48:        pass-test_write_read_limited_history.patch
+# PATCH-FIX-UPSTREAM CVE-2026-2297-SourcelessFileLoader-io_open_code.patch bsc#1259240 mcepl@suse.com
+# Ensure SourcelessFileLoader uses io.open_code
+Patch49:        CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
 #### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

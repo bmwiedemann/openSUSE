@@ -1181,4 +1181,21 @@
       flattening an email message using a modern email policy.</comment>
     <requestid>1332992</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>5b571a3a398ea99fb811eace3cc6a5ec</srcmd5>
+    <version>3.13.12</version>
+    <time>1773939484</time>
+    <user>anag_factory</user>
+    <comment>- Fix changelog
+
+- Adapt %suse_version checks to support new %suse_version design for
+  16.1 and following (jsc#PED-15850)
+
+- Add CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
+  ensuring that `SourcelessFileLoader` uses `io.open_code` when
+  opening `.pyc` files (bsc#1259240, CVE-2026-2297).
+
+      Petr Viktorin in gh-121650) (bsc#1257181, CVE-2026-1299).</comment>
+    <requestid>1341041</requestid>
+  </revision>
 </revisionlist>
