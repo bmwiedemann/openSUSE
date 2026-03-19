@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 11 05:58:38 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260310 (git commit d13cd498318b):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
+Mon Mar  9 14:44:44 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260309 (git commit b3929cfcd543):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
 Thu Feb 26 12:36:03 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260225 (git commit fb7d64e497d1):

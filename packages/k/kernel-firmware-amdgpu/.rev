@@ -600,4 +600,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update SDMA 6.1.1 firmware</comment>
     <requestid>1335279</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b2556d1c33fb4174430d03303248add4</srcmd5>
+    <version>20260310</version>
+    <time>1773938143</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260310 (git commit d13cd498318b):
+  * amdgpu: DMCUB updates for various ASICs
+
+- Update to version 20260309 (git commit b3929cfcd543):
+  * amdgpu: DMCUB updates for various ASICs</comment>
+    <requestid>1340877</requestid>
+  </revision>
 </revisionlist>
