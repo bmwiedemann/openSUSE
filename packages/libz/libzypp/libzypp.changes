@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 18 14:36:27 CET 2026 - ma@suse.de
+
+- Fix preloader not caching packages from arch specific subrepos
+  (bsc#1253740)
+- Deprioritize invalid mirrors (fixes openSUSE/zypper#636)
+- version 17.38.5 (35)
+
+-------------------------------------------------------------------
 Tue Mar 10 11:05:16 CET 2026 - ma@suse.de
 
 - Fix Product::referencePackage lookup (bsc#1259311)
