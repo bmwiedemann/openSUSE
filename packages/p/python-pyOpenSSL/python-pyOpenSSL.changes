@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 18 13:48:45 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 26.0.0 (bsc#1259808, CVE-2026-27459, bsc#1259804, CVE-2026-27448):
+  ## Backward-incompatible changes:
+  * Dropped support for Python 3.7.
+  * The minimum cryptography version is now 46.0.0.
+
+  ## Changes:
+  - Added support for using aws-lc instead of OpenSSL.
+  - Properly raise an error if a DTLS cookie callback returned a
+    cookie longer than DTLS1_COOKIE_LENGTH bytes. Previously this
+    would result in a buffer-overflow. Credit to dark_haxor for
+    reporting the issue. CVE-2026-27459
+  - Added OpenSSL.SSL.Connection.get_group_name to determine which
+    group name was negotiated.
+  - Context.set_tlsext_servername_callback now handles exceptions
+    raised in the callback by calling sys.excepthook and returning a
+    fatal TLS alert. Previously, exceptions were silently swallowed
+    and the handshake would proceed as if the callback had succeeded.
+    Credit to Leury Castillo for reporting this issue. CVE-2026-27448
+
+-------------------------------------------------------------------
 Wed Oct  8 08:34:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Skip test_client_receives_servers_data failing with openssl 3.6.0
