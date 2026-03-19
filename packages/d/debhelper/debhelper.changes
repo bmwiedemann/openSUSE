@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 19 09:08:23 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- update to 13.31
+  * dh_assistant: Add new `parse-dh-cli-args` subcommand
+  * dh: Fix description of the `dwz` add-on
+  * dh_clean: do not require `/` for symlinks to directories.
+    Thanks to David Prévot <taffit@debian.org> (Closes: #1128894)
+  * dh_installchangelogs: Require all changelog dates seen to be valid.
+    Previously, we would allow invalid dates and that causes problems.
+    With this change, we now require the dates to be valid. This may
+    bring some invalid entries out in the open in the form of FTBFS
+    bugs. These were always bugs and how we flag them.
+    (Closes: #1128372)
+  * dh_installinit/dh_installsystemduser: stop adding dependencies
+    satisfied since bullseye/jammy
+  * Update cutoff date in dh_installchangelogs to Bookworm release date
+  * Do not install NEWS entries beyond cutoff-date (Closes: #1128414)
+
+-------------------------------------------------------------------
 Thu Feb 19 11:32:45 UTC 2026 - Jan Baier <jbaier@suse.com>
 
 - update to 13.30
