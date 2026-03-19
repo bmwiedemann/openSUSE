@@ -1,7 +1,7 @@
 #
 # spec file for package openvdb
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2024 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,14 +25,14 @@
 #
 %bcond_without openvdb_tool
 
-%define libname libopenvdb12_0
+%define libname libopenvdb13_0
 %if 0%{suse_version} <= 1500
 # force a recent gcc version on 15.X, default would be gcc7 which is too old
 %define gcc_major 14
 %endif
 
 Name:           openvdb
-Version:        12.0.1
+Version:        13.0.0
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0
