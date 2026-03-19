@@ -1,7 +1,7 @@
 #
 # spec file for package kdsoap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %define mkspecsdir %{_qt6_mkspecsdir}
 %endif
 Name:           kdsoap%{pkg_suffix}
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        A Qt-based client-side and server-side SOAP component
 # No "or later" clause, licenses specified explicitly
@@ -99,12 +99,12 @@ applications.
 
 %build
 %if 0%{?qt5}
-%cmake
+%cmake -DKDSoap_QT6:BOOL=FALSE
 %cmake_build
 %endif
 %if 0%{?qt6}
 # The two helloworld examples fail to build
-%cmake_qt6 -DKDSoap_QT6:BOOL=TRUE -DKDSoap_EXAMPLES:BOOL=FALSE
+%cmake_qt6 -DKDSoap_EXAMPLES:BOOL=FALSE
 %qt6_build
 %endif
 

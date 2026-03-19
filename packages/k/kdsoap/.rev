@@ -57,4 +57,12 @@ release of this library.</comment>
     <comment></comment>
     <requestid>1164492</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bdc4ce6672319b7299360702c1e6ce81</srcmd5>
+    <version>2.3.0</version>
+    <time>1773938169</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.3.0 (forwarded request 1339047 from krop)</comment>
+    <requestid>1340918</requestid>
+  </revision>
 </revisionlist>
