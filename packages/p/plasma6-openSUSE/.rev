@@ -320,4 +320,12 @@
     <comment> (forwarded request 1336072 from Vogtinator)</comment>
     <requestid>1336128</requestid>
   </revision>
+  <revision rev="40" vrev="39">
+    <srcmd5>3353835220b3041c06f3decac609fc6e</srcmd5>
+    <version>84.87~git20240313T170730~9c664b7</version>
+    <time>1773938111</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.6.3. Built, but not install tested. plasma6-keyboard and knighttime redone (forwarded request 1340928 from Vogtinator)</comment>
+    <requestid>1340977</requestid>
+  </revision>
 </revisionlist>
