@@ -1,7 +1,7 @@
 #
 # spec file for package socat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           socat
-Version:        1.8.0.3
+Version:        1.8.1.1
 Release:        0
 Summary:        Multipurpose relay for bidirectional data transfer
 License:        MIT AND SUSE-GPL-2.0-with-openssl-exception
@@ -31,8 +31,6 @@ Source2:        socat-test-dhparam
 # TODO: as of 1.8.0.0, test.sh supports "--expect-fail <code>", this should be used
 #       instead of ignoring all test failures
 Patch1:         socat-ignore-tests-failure-boo1078346.patch
-# Support build environments without a TTY
-Patch2:         socat-test-without-tty.patch
 BuildRequires:  iputils
 BuildRequires:  net-tools
 BuildRequires:  openssl-devel

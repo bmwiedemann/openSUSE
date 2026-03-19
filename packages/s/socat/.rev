@@ -456,4 +456,16 @@ See README (forwarded request 157221 from babelworx)</comment>
     <comment></comment>
     <requestid>1252497</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>db4daf0bd86c99ab966a42997dc460d0</srcmd5>
+    <version>1.8.1.1</version>
+    <time>1773938161</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.1.1:
+  * fixes compilation with glibc 2.43, xio-netlink.c for Musl, and a
+    few minor bugs
+  * provides new address types TEXT and STALL and a few new address options
+- Remove no longer necessary socat-test-without-tty.patch (forwarded request 1340896 from rguenther)</comment>
+    <requestid>1340897</requestid>
+  </revision>
 </revisionlist>
