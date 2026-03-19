@@ -186,4 +186,12 @@ support for software auditability among other things</comment>
   see /usr/share/doc/packages/rl-2.33.md</comment>
     <requestid>1335502</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>55370697f316479313d12213985a1304</srcmd5>
+    <version>2.34.1</version>
+    <time>1773938250</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1340907</requestid>
+  </revision>
 </revisionlist>

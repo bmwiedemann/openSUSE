@@ -26,7 +26,7 @@
 %endif
 
 Name:           nix
-Version:        2.33.3
+Version:        2.34.1
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only
@@ -36,7 +36,7 @@ Source1:        nix.conf
 Source2:        sysusers.conf
 Source9:        series
 Patch1:         0001-port-option-to-disable-functional-tests-to-meson.patch
-Patch2:         0002-libutil-fix-unreachable-case.patch
+Patch2:         de426e1a3.patch
 BuildRequires:  bison
 BuildRequires:  boost-devel
 BuildRequires:  busybox-static
@@ -166,7 +166,6 @@ echo %{version} > .version
     -Dunit-tests=false \
     -Dfunctional-tests=disabled \
     -Djson-schema-checks=false \
-    -Dkaitai-struct-checks=false \
     -Dlibcmd:readline-flavor=readline \
     -Dlibstore:embedded-sandbox-shell=true \
     -Dlibstore:sandbox-shell=busybox-static \
@@ -223,7 +222,7 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 
 %files
 %license COPYING
-%doc doc/manual/source/release-notes/rl-2.33.md
+%doc doc/manual/source/release-notes/rl-2.34.md
 %doc CONTRIBUTING.md README.md
 # config files
 %config(noreplace) %{_sysconfdir}/nix/
@@ -233,6 +232,7 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 %config %{_sysconfdir}/profile.d/nix.sh
 # binaries
 %{_bindir}/nix*
+%{_libexecdir}/nix-nswrapper
 # systemd
 %{_unitdir}/nix*
 %{_tmpfilesdir}/nix-daemon.conf

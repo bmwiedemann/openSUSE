@@ -1,0 +1,41 @@
+commit de426e1a38920e38aa129df45baf1838bd68d588
+Author: Lisanna Dettwyler <lisanna.dettwyler@gmail.com>
+Date:   Sat Mar 14 17:16:01 2026 -0400
+
+    Fix compatibility with lowdown 3
+    
+    Resolves #15420
+    
+    Signed-off-by: Lisanna Dettwyler <lisanna.dettwyler@gmail.com>
+    (cherry picked from commit 342faaa1fa0aa3accc3027081b66c7c2ca36670b)
+
+diff --git a/src/libcmd/markdown.cc b/src/libcmd/markdown.cc
+index c3341da73..2cdc8e38c 100644
+--- a/src/libcmd/markdown.cc
++++ b/src/libcmd/markdown.cc
+@@ -38,7 +38,9 @@ static std::string doRenderMarkdownToTerminal(std::string_view markdown)
+ #  endif
+         .feat = LOWDOWN_COMMONMARK | LOWDOWN_FENCED | LOWDOWN_DEFLIST | LOWDOWN_TABLES,
+         .oflags =
+-#  if HAVE_LOWDOWN_1_4
++#  if HAVE_LOWDOWN_3
++            LOWDOWN_NORELLINK
++#  elif HAVE_LOWDOWN_1_4
+             LOWDOWN_TERM_NORELLINK // To render full links while skipping relative ones
+ #  else
+             LOWDOWN_TERM_NOLINK
+diff --git a/src/libcmd/meson.build b/src/libcmd/meson.build
+index ced5f0d97..d970a8e4b 100644
+--- a/src/libcmd/meson.build
++++ b/src/libcmd/meson.build
+@@ -44,6 +44,10 @@ configdata.set(
+   'HAVE_LOWDOWN_1_4',
+   lowdown.version().version_compare('>= 1.4.0').to_int(),
+ )
++configdata.set(
++  'HAVE_LOWDOWN_3',
++  lowdown.version().version_compare('>= 3.0.0').to_int(),
++)
+ 
+ readline_flavor = get_option('readline-flavor')
+ if readline_flavor == 'editline'

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 17 18:55:45 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.34.1:
+  see /usr/share/doc/packages/rl-2.34.md
+- refresh 0001-port-option-to-disable-functional-tests-to-meson.patch
+- drop 0002-libutil-fix-unreachable-case.patch
+- add de426e1a3.patch to support lowdown 3
+
+-------------------------------------------------------------------
 Fri Feb 13 14:40:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.33.3:
