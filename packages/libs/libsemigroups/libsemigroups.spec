@@ -26,11 +26,15 @@ Group:          Productivity/Scientific/Math
 URL:            https://github.com/libsemigroups/libsemigroups
 Source:         https://github.com/libsemigroups/libsemigroups/releases/download/v%version/%name-%version.tar.gz
 BuildRequires:  automake
+%if 0%{?suse_version} >= 1690
 BuildRequires:  backward-cpp-devel
-BuildRequires:  gcc-c++
+%endif
+BuildRequires:  gcc-c++ >= 9
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(eigen3)
+%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(fmt) >= 10.1
+%endif
 Provides:       bundled(magic_enum)
 Provides:       bundled(rx-ranges)
 
@@ -64,15 +68,22 @@ This subpackage provides the development headers for it.
 
 %prep
 %autosetup -p1
+%if 0%{?suse_version} >= 1690
 rm -Rf third_party/backward-cpp
+%endif
 
 %build
 autoreconf -fi
 # hpcombi requires AVX-256, which is not guaranteed to exist everywhere
-%configure --disable-static --disable-hpcombi \
+%configure \
 	--enable-eigen --with-external-eigen \
+%if 0%{?suse_version} >= 1600
 	--enable-fmt --with-external-fmt \
-	--with-external-backward
+%endif
+%if 0%{?suse_version} >= 1690
+	--with-external-backward \
+%endif
+	--disable-static --disable-hpcombi
 %make_build
 
 %install

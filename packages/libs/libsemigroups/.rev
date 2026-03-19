@@ -339,4 +339,12 @@
     <comment>- Update to release 3.5.3</comment>
     <requestid>1339500</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>1df82dd1415879bf22b71e7f0be795fc</srcmd5>
+    <version>3.5.3</version>
+    <time>1773938354</time>
+    <user>anag_factory</user>
+    <comment>- Make Leap 16 build succeed again</comment>
+    <requestid>1341054</requestid>
+  </revision>
 </revisionlist>
