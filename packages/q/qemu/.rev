@@ -4856,4 +4856,106 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1330621</requestid>
   </revision>
+  <revision rev="306" vrev="1">
+    <srcmd5>04fe84cdca28f9fa5c305cb4316023b2</srcmd5>
+    <version>10.2.1</version>
+    <time>1772127479</time>
+    <user>anag_factory</user>
+    <comment>- Update to stable release 10.2.1:
+  Full backport list here:
+   https://lore.kernel.org/qemu-devel/20260213060607.200695-1-mjt@tls.msk.ru/
+  This release includes the fixes for (among others):
+   bsc#1255400 (CVE-2025-14876)
+  A selection of them is reported here below:
+   scripts/qemugdb: timers: Fix KeyError in 'qemu timers' command
+   Revert &quot;tcg/user: do not set exit_request gratuitously&quot;
+   linux-user/syscall.c: Prevent acquiring clone_lock while fork()
+   hw/cxl: Take into account how many media operations are requested for param check
+   hw/cxl: Check for overflow on santize media as both base and offset 64bit.
+   virtio-gpu: fix error handling in virgl_cmd_resource_create_blob
+   virtio-pmem: ignore empty queue notifications
+   virtio-gpu-virgl: correct parent for blob memory region
+   cryptodev-builtin: Limit the maximum size
+   hw/virtio/virtio-crypto: verify asym request size
+   q35: Fix migration of SMRAM state
+   pcie_sriov: Fix PCI_SRIOV_* accesses in pcie_sriov_pf_exit()
+   virtio: Fix crash when sriov-pf is set for non-PCI-Express device
+   virtio-dmabuf: Ensure UUID persistence for hash table insertion
+   vdpa: fix vhost-vdpa suspended state not be shared
+   hw/i2c/aspeed_i2c: Fix DMA moving data into incorrect address
+   hw/i2c/aspeed: Fix wrong I2CC_DMA_LEN when I2CM_DMA_TX/RX_ADDR set first
+   hw/arm/aspeed_ast27x0: Fix EHCI3/4 IRQ routing to GIC
+   hw/i2c/aspeed_i2c.c: Add a check for dma_read
+   hw/adc: Fix out-of-bounds write in Aspeed ADC model
+   hw/uefi: fix size negotiation
+   hw/nvme: Fix bootindex suffix use-after-free
+   python: fix msys64 wheel directory specification
+   tests/qtest/ufs-test: Add test for mcq completion queue wraparound
+   hw/ufs: Fix mcq completion queue wraparound
+   hw/ufs: fix CQE endianness and UPIU length
+   hw/ufs: Ensure DBC of PRDT uses only lower 18 bits
+   tests/functional: migrate sbsa_ref test images
+   pc-bios/optionrom: Use 32-bit linker emulation for the optionroms
+   gitlab: preserve base rules for container template
+   target/i386/tcg: fix a few instructions that do not support VEX.L=1
+   linux-user: fixup termios2 related things on PowerPC
+   linux-user: Add missing termios baud rates
+   linux-user: Add termios2 support to sparc target
+   linux-user: Add termios2 support to sh4 target
+   linux-user: Add termios2 support to mips target
+   linux-user: Add termios2 support to hppa target
+   linux-user: Add termios2 support to alpha target
+   linux-user: Add termios2 support
+   hw/intc: avoid byte swap fiddling in gicv3 its path
+   ...
+- Fix bsc#1257492:
+  * [openSUSE][RPM] spec: Tie guest-agent supplements to the kernel package (bsc#1257492)
+</comment>
+    <requestid>1334890</requestid>
+  </revision>
+  <revision rev="307" vrev="1">
+    <srcmd5>1419fb2f1d45e41d7f5d99448fd1b222</srcmd5>
+    <version>10.2.2</version>
+    <time>1773937606</time>
+    <user>anag_factory</user>
+    <comment>- Update to latest stable release (10.2.2)
+  Full backport list here:
+   https://lore.kernel.org/qemu-devel/20260318045608.8332313DFF9@think4mjt.localdomain/
+  This release includes the fixes for (among others):
+   bsc#1258509 (CVE-2026-2243)
+   bsc#1259079 (CVE-2026-3196) / bsc#1259080 (CVE-2026-3195)
+  A selection of them is reported here below:
+   target/i386: add compat for migrating error code
+   hyperv/syndbg: check length returned by cpu_physical_memory_map()
+   fuse: Copy write buffer content before polling
+   target/loongarch: Preserve PTE permission bits in LDPTE
+   target/loongarch: Avoid recursive PNX exception on CSR_BADI fetch
+   hw: Make qdev_get_printable_name() consistently return freeable string
+   hw/net/npcm_gmac: Catch accesses off the end of the register array
+   linux-user: fix TIOCGSID ioctl
+   tests/tcg/multiarch/test-mmap: Check mmaps beyond reserved_va
+   bsd-user: Deal with mmap where start &gt; reserved_va
+   linux-user: Deal with mmap where start &gt; reserved_va
+   hw/net/xilinx_ethlite: Check for oversized TX packets
+   virtio-gpu: Ensure BHs are invoked only from main-loop thread
+   fdmon-io_uring: check CQ ring directly in gsource_check
+   aio-posix: notify main loop when SQEs are queued
+   block/nfs: Do not enter coroutine from CB
+   block: Never drop BLOCK_IO_ERROR with action=stop for rate limiting
+   block/throttle-groups: fix deadlock with iolimits and muliple iothreads
+   mirror: Fix missed dirty bitmap writes during startup
+   block/curl: fix concurrent completion handling
+   block/vmdk: fix OOB read in vmdk_read_extent()
+   hw/net/smc91c111: Don't allow negative-length packets
+   io: fix cleanup for websock I/O source data on cancellation
+   io: fix cleanup for TLS I/O source data on cancellation
+   io: separate freeing of tasks from marking them as complete
+   target/ppc/translate: Fix TCG debug assert translating CLRBWIBC
+   target/i386/emulate/x86_decode: Actually use stream in decode_instruction_stream()
+   target/i386/hvf/x86_mmu: Fix compiler warning
+   target/i386/emulate/x86_decode: Fix compiler warning
+   ...
+</comment>
+    <requestid>1340996</requestid>
+  </revision>
 </revisionlist>

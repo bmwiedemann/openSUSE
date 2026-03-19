@@ -89,7 +89,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        10.2.0
+Version:        10.2.2
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -1794,9 +1794,7 @@ Summary:        Guest agent for QEMU
 Group:          System/Emulators/PC
 Requires:       group(kvm)
 Requires(post): udev
-Supplements:    modalias(acpi*:QEMU0002%3A*)
-Supplements:    modalias(pci:v00005853d00000001sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000FFFDd00000101sv*sd*bc*sc*i*)
+Supplements:    (kernel and (modalias(acpi*:QEMU0002%3A*) or modalias(pci:v00005853d00000001sv*sd*bc*sc*i*) or modalias(pci:v0000FFFDd00000101sv*sd*bc*sc*i*)))
 %{?systemd_ordering}
 
 %description guest-agent
@@ -1982,7 +1980,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        10.2.0%{sbver}
+Version:        10.2.2%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -2003,7 +2001,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        10.2.0%{sbver}
+Version:        10.2.2%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -2029,7 +2027,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        10.2.0
+Version:        10.2.2
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
