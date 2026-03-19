@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyECLib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           python-PyECLib
-Version:        1.6.4
+Version:        1.7.0
 Release:        0
 Summary:        Simple interface for implementing erasure codes
 License:        BSD-3-Clause
 URL:            https://opendev.org/openstack/pyeclib/
 Source:         https://files.pythonhosted.org/packages/source/p/pyeclib/pyeclib-%{version}.tar.gz
-Source99:       https://opendev.org/openstack/pyeclib/raw/branch/master/LICENSE
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  liberasurecode-devel >= 1.4.0
 BuildRequires:  python-rpm-macros
+Requires:       alts
+BuildRequires:  alts
 %python_subpackages
 
 %description
@@ -46,14 +46,20 @@ reconstruction (think XOR-based LRC code).
 
 %prep
 %setup -q -n pyeclib-%{version}
-cp %{SOURCE99} .
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/pyeclib-backend
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%post
+%python_install_alternative pyeclib-backend
+
+%postun
+%python_uninstall_alternative pyeclib-backend
 
 %check
 %pyunittest_arch discover -v
@@ -61,6 +67,7 @@ cp %{SOURCE99} .
 %files %{python_files}
 %doc README.rst
 %license LICENSE
+%python_alternative %{_bindir}/pyeclib-backend
 %{python_sitearch}/pyeclib
 %{python_sitearch}/pyeclib_c.abi3.so
 %{python_sitearch}/[Pp]y[Ee][Cc][Ll]ib-%{version}.dist-info
