@@ -28,7 +28,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-keyboard
-Version:        6.6.2
+Version:        6.6.3
 Release:        0
 Summary:        Virtual Keyboard for Qt based desktops
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig
 
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
