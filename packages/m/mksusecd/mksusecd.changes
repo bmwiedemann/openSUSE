@@ -1,4 +1,29 @@
 --------------------------------------------------------------------
+Wed Mar 18 18:18:39 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#100
+- follow parti 2.11 update
+- 5.1
+
+--------------------------------------------------------------------
+Wed Mar 18 17:47:38 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#99
+- more doc updates
+
+--------------------------------------------------------------------
+Wed Mar 18 17:36:09 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#98
+- avoid problems with xz and landlock lsm
+- rewrite boot option handling to allow to repeat boot options
+  (bsc#1259255)
+- update boot options in all s390x parmfiles (bsc#1259255)
+- set umask to a sensible value and clear ACLs for tmp dir
+  (bsc#1259255)
+- documentation update
+
+--------------------------------------------------------------------
 Thu Mar 5 18:58:20 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#97
