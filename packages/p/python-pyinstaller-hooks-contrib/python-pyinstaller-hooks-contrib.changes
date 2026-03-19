@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 12 08:30:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3:
+  * Add hook for chardet, required for compatibility with chardet
+    v7.0.0 and later. (#995)
+  * Update charset_normalizer hook for compatibility with
+    charset-normalizer v3.4.5. (#995)
+  * Update psutil hook for compatibility with psutil installed
+    in a Termux environment with python 3.13 or later. (#996)
+  * Add hook for adbc_driver_manager package. (#990)
+  * Add hook for rich to ensure that modules from
+    rich._unicode_data are collected for rich v14.3.0 and later.
+  * Update langchain hook for compatibility with langchain 1.2.10.
+  * Update vtkmodules hooks for compatibility with vtk 9.6.0.
+
+-------------------------------------------------------------------
 Tue Jan 27 07:11:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.0:
