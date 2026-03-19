@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 18 16:59:02 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.18.3:
+  * switch over to metainfo
+- Update to version 4.18.2:
+  * Added initial CLI interface with support for add, list, list-projects, and
+    update commands
+  * Complete redesign of the date/time picker with improved usability and
+    instant updates
+  * Added preference to preserve task properties in "Keep Adding" mode
+  * Improved multi-day calendar event display in Scheduled view
+  * Fixed events not loading correctly in month view
+  * Fixed incorrect event overlap detection in date ranges
+  * Fixed crash when deleting multiple tasks using multiselect
+  * Fixed duplicate task submissions during async operations
+  * Restored keyboard shortcuts on startup
+  * Fixed project cache not updating when adding tasks via Quick Add
+
+-------------------------------------------------------------------
 Mon Feb  9 14:36:06 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 4.18.0:

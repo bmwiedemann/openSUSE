@@ -19,7 +19,7 @@
 %define         sover 0
 %define         appid io.github.alainm23.planify
 Name:           planify
-Version:        4.18.0
+Version:        4.18.3
 Release:        0
 Summary:        Task and project manager
 License:        GPL-3.0-or-later
@@ -37,7 +37,6 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.14.4
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.12.1
 BuildRequires:  pkgconfig(gxml-0.20)
-BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.8.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.0
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.52.4
@@ -46,6 +45,7 @@ BuildRequires:  pkgconfig(libportal) >= 0.7.1
 BuildRequires:  pkgconfig(libportal-gtk4) >= 0.7.1
 BuildRequires:  pkgconfig(libsecret-1) >= 0.21.4
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.4.4
+BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(sqlite3) >= 3.45.1
 BuildRequires:  pkgconfig(webkitgtk-6.0) >= 2.44.3
 Provides:       elementary-planner = %{version}
@@ -118,8 +118,8 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 %files
 %license LICENSE
 %doc AUTHORS README.md
-%{_bindir}/%{appid}{,.quick-add}
-%{_datadir}/appdata/%{appid}.appdata.xml
+%{_bindir}/%{appid}{,.cli,.quick-add}
+%{_datadir}/metainfo/%{appid}.metainfo.xml
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/scalable/apps/%{appid}{,.Devel}.svg
