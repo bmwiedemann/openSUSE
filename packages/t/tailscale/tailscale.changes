@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar 18 17:38:41 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.96.2:
+  * tailscale dns query|status command supports --json flag to return JSON
+    output
+  * tailscale wait [flags] command waits for Tailscale resources to become
+    available for binding
+  * tailscale ip command supports --assert=<specific-ip-address> flag to assert
+    that one or more of the node's IP addresses matches the specified IP
+    address
+  * Tailscale Peer Relays advertise addresses discovered via Amazon EC2
+    Instance Metadata Service
+  * tailscaled_peer_relay_endpoints gauge user metrics are available for
+    Tailscale Peer Relays
+  * The AuthKey system policy applies only when a user is not in a logged in
+    state
+  * UPnP routes as expected during long lived port mapping sessions scenarios,
+    including hard NAT
+  * Launch the systray application on startup using autostart file with the
+    tailscale configure systray --enable-startup=freedesktop command
+  * Scaling of Tailscale Peer Relays UDP sockets is gated by container-aware
+    GOMAXPROCS defaults
+  * Firewall rules created on Linux platforms correctly mark their traffic,
+    avoiding reverse path filtering dropping connections and producing health
+    warnings and risk prompts
+
+-------------------------------------------------------------------
 Mon Feb 23 13:41:56 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.94.2:
