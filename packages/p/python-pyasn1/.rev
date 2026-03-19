@@ -449,4 +449,17 @@
     <comment></comment>
     <requestid>1328046</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>5df2fe408ea60128d8469a3eff3d1ed2</srcmd5>
+    <version>0.6.3</version>
+    <time>1773937604</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.3 (bsc#1259803, CVE-2026-30922)
+  * Added nesting depth limit to ASN.1 decoder to prevent stack
+    overflow from deeply nested structures (CVE-2026-30922).
+  * Fixed OverflowError from oversized BER length field.
+  * Fixed DeprecationWarning stacklevel for deprecated attributes.
+  * Fixed asDateTime incorrect fractional seconds parsing.</comment>
+    <requestid>1340912</requestid>
+  </revision>
 </revisionlist>
