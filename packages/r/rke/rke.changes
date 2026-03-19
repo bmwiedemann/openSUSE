@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 19 06:25:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.12:
+  NOTE: v1.32.13-rancher1-1 and v1.31.14-rancher1-1 are not
+  available without an active RKE Extended Life subscription. For
+  more details, please refer to the SUSE EOL article.
+  * RKE Kubernetes versions
+    -  v1.30.14-rancher1-1
+    -  v1.31.14-rancher1-1
+    -  v1.32.13-rancher1-1 (default)
+
+-------------------------------------------------------------------
 Thu Mar  5 06:52:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.11:
