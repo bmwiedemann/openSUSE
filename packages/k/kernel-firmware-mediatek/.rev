@@ -328,4 +328,22 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: update firmware for MT7902 WiFi device</comment>
     <requestid>1335282</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>42ddbf2fae6c5e1afc542207425c1542</srcmd5>
+    <version>20260317</version>
+    <time>1773938149</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260317 (git commit 66ca9a5b63a5):
+  * mediatek MT7921: update bluetooth firmware to 20260224111243
+  * mediatek MT7920: update bluetooth firmware to 20260224111231
+
+- Update to version 20260313 (git commit 57303edc4101):
+  * linux-firmware: update firmware for MT7920 WiFi device
+  * linux-firmware: update firmware for MT7921 WiFi device
+
+- Update to version 20260310 (git commit d13cd498318b):
+  * mediatek MT7922: update bluetooth firmware to 20260224103448
+  * linux-firmware: update firmware for MT7922 WiFi device</comment>
+    <requestid>1340882</requestid>
+  </revision>
 </revisionlist>
