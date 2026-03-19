@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 19 00:44:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a test due to chardet 6.
+
+-------------------------------------------------------------------
 Thu Jun  5 04:38:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

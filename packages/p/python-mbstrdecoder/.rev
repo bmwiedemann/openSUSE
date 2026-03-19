@@ -130,4 +130,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282930</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>8b138610fc35924e313603c7cf50729c</srcmd5>
+    <version>1.1.4</version>
+    <time>1773938375</time>
+    <user>anag_factory</user>
+    <comment>- Skip a test due to chardet 6.</comment>
+    <requestid>1341057</requestid>
+  </revision>
 </revisionlist>

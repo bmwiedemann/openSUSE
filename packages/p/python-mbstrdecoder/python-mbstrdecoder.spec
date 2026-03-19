@@ -1,7 +1,7 @@
 #
 # spec file for package python-mbstrdecoder
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,8 @@ sed -i '/build =/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/thombashi/mbstrdecoder/issues/14
+%pytest -k 'not test_normal_codec_candidate'
 
 %files %{python_files}
 %license LICENSE
