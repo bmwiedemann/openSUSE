@@ -4,6 +4,8 @@
      <param name="revision">main</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
+     <param name="versionrewriteregex">^v?(.*)</param>
+     <param name="versionrewritepattern">$1</param>
      <param name="changesgenerate">true</param>
      <param name="changesauthor">Soc Virnyl Estela</param>
      <param name="changesemail">uncomfyhalomacro@opensuse.org</param>
