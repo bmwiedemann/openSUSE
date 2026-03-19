@@ -1,0 +1,11 @@
+--- popt-1.19/src/poptconfig.c.orig	2026-03-18 13:06:17.594692100 +0100
++++ popt-1.19/src/poptconfig.c	2026-03-18 13:06:19.938692135 +0100
+@@ -394,7 +394,7 @@
+ int poptReadConfigFiles(poptContext con, const char * paths)
+ {
+     char * buf = (paths ? xstrdup(paths) : NULL);
+-    const char * p;
++    char * p;
+     char * pe;
+     int rc = 0;		/* assume success */
+ 

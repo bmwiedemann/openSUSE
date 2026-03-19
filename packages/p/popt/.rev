@@ -333,4 +333,13 @@ New spdx.org license list now contains an official entry for X11 (forwarded requ
     <comment></comment>
     <requestid>1006596</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>37fe03db3f77598d6e7864c865dba236</srcmd5>
+    <version>1.19</version>
+    <time>1773938167</time>
+    <user>anag_factory</user>
+    <comment>- Add popt-libc-updates2.patch to fix const correctness preventing
+  build with new glibc (forwarded request 1340894 from rguenther)</comment>
+    <requestid>1340908</requestid>
+  </revision>
 </revisionlist>

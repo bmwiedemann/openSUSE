@@ -1,7 +1,7 @@
 #
 # spec file for package popt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/rpm-software-management/popt
 Source0:        http://ftp.rpm.org/popt/releases/popt-1.x/popt-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch0:         popt-libc-updates.patch
+Patch1:         popt-libc-updates2.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 #!BuildIgnore:  rpmlint-Factory
