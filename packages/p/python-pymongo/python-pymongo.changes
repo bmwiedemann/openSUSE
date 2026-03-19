@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 19 08:36:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- rely on backports.zstd only on 313 or older
+
+-------------------------------------------------------------------
 Sun Mar  8 20:29:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.16.0:

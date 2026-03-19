@@ -38,7 +38,9 @@ BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Suggests:       mongodb
 %endif
+%if 0%{?python_version_nodots} < 314
 Requires:       python-backports.zstd
+%endif
 Requires:       python-dnspython >= 2.6.1
 # Same namespace, different implementation (https://github.com/py-bson/bson)
 Conflicts:      python-bson

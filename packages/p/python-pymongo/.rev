@@ -627,4 +627,12 @@
     unless the linked library search path is set.</comment>
     <requestid>1337516</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>dc21cb35750036456f8891fddd1e3b9b</srcmd5>
+    <version>4.16.0</version>
+    <time>1773938392</time>
+    <user>anag_factory</user>
+    <comment>- rely on backports.zstd only on 313 or older</comment>
+    <requestid>1341093</requestid>
+  </revision>
 </revisionlist>
