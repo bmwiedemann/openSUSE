@@ -235,4 +235,12 @@ This should fix my previously declined package submission: https://build.opensus
     <comment>Resubmitting primecount-8.2 after improving the ChangeLog in primecount.changes. My previous attempt was declined: https://build.opensuse.org/requests/1332178 due to changes being not verbose enough.</comment>
     <requestid>1332213</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e4fae4252a87cd2d652f072d7c7d5ea6</srcmd5>
+    <version>8.3</version>
+    <time>1773938301</time>
+    <user>anag_factory</user>
+    <comment>Update to latest primecount-8.3</comment>
+    <requestid>1341005</requestid>
+  </revision>
 </revisionlist>

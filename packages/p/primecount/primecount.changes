@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 17 08:00:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-8.3 (API & ABI are backwards compatible).
+- fast_div.hpp: Improve x64 assembly.
+- S2_easy.cpp: Bidirectional clustered easy leaves optimization, GitHub#108.
+- AC.cpp: Bidirectional clustered easy leaves optimization, GitHub#108.
+- AC.cpp: Cast to smaller type optimization.
+- SegmentedPiTable.hpp: Use faster lightweight compression, GitHub#105.
+- SegmentedPiTable.cpp: Use faster lightweight compression, GitHub#105.
+- SegmentedPiTable.cpp: Do not interleave pi and bits lookup tables.
+- SegmentedPiTable.cpp: Reuse primesieve::iterator object when initializing multiple segments.
+- LoadBalancerAC.cpp: Tune single thread performance.
+- Sieve.cpp: Optimize cross_off() and cross_off_count(), GitHub#107.
+- Sieve.cpp: Tune minimum counter distance.
+- nth_prime_sieve.hpp: Optimize 128-bit division on x64 CPUs.
+- util.hpp: Tune alpha_z for new AC algorithm.
+- README.md: Update benchmark timings.
+
+-------------------------------------------------------------------
 Fri Feb 10 11:03:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-8.2, this is a minor bugfix release.
