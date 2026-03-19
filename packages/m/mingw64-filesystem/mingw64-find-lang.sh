@@ -125,7 +125,7 @@ rm -f $MO_NAME_NEW
 
 # remove languages we do not yet support - but give out statistics
 find "$TOP_DIR/usr/x86_64-w64-mingw32/sys-root/mingw/share/locale/" -maxdepth 1 -type d | sed 's:'"$TOP_DIR"/usr/x86_64-w64-mingw32/sys-root/mingw/share/locale/'::; /^$/d' | while read dir; do
-  if ! rpm -ql mingw64-filesystem | egrep -q "/usr/x86_64-w64-mingw32/sys-root/mingw/share/locale/$dir"$; then
+  if ! rpm -ql mingw64-filesystem | grep -E -q "/usr/x86_64-w64-mingw32/sys-root/mingw/share/locale/$dir"$; then
     find $TOP_DIR/usr/x86_64-w64-mingw32/sys-root/mingw/share/locale/$dir -name *.mo | sed 's:'"$TOP_DIR"'::' | while read file; do
       echo -n "removing translation $file: "
       msgunfmt "$TOP_DIR/$file" | msgfmt --statistics -o /dev/null -
@@ -134,7 +134,7 @@ find "$TOP_DIR/usr/x86_64-w64-mingw32/sys-root/mingw/share/locale/" -maxdepth 1 
   fi
 done
 find $TOP_DIR/usr/x86_64-w64-mingw32/sys-root/mingw/share/help/ -maxdepth 1 -type d | sed 's:'"$TOP_DIR"/usr/x86_64-w64-mingw32/sys-root/mingw/share/help/'::; /^$/d' | while read dir; do
-  if ! rpm -ql mingw64-filesystem | egrep -q "/share/help/$dir"$; then
+  if ! rpm -ql mingw64-filesystem | grep -E -q "/share/help/$dir"$; then
     echo "removing help translation /share/help/$dir"
     rm -rf $TOP_DIR/usr/x86_64-w64-mingw32/sys-root/mingw/share/help/$dir
   fi
