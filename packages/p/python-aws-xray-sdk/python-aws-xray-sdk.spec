@@ -1,7 +1,7 @@
 #
 # spec file for package python-aws-xray-sdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -336,6 +336,13 @@ ignore_tests+=" --ignore tests/ext/pynamodb/test_pynamodb.py"
 %if !%{with flask_sqlalchemy}
 ignore_tests+=" --ignore tests/ext/flask_sqlalchemy/test_query.py"
 %endif
+# Broken tests with pytest-asyncio 1.3.0, with the removal of
+# event_loop and loop fixture
+ignore_tests+=" --ignore tests/ext/aiohttp/test_client.py"
+ignore_tests+=" --ignore tests/ext/aiohttp/test_middleware.py"
+ignore_tests+=" --ignore tests/test_async_local_storage.py"
+ignore_tests+=" --ignore tests/test_async_recorder.py"
+
 # needs a running PyMySQL instance
 donttest="test_db_url_with_special_char"
 # https://github.com/aws/aws-xray-sdk-python/issues/321
