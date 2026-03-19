@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin-emu
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define __builder ninja
 Name:           dolphin-emu
-Version:        2512
+Version:        2603a
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=2512 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/dolphin.git $n && pushd $n && git submodule && git submodule update --init --recursive Externals/SFML/SFML Externals/VulkanMemoryAllocator Externals/cpp-ipc/cpp-ipc Externals/cpp-optparse/cpp-optparse Externals/cubeb/cubeb Externals/gtest Externals/imgui/imgui Externals/implot/implot Externals/libspng/libspng Externals/minizip-ng/minizip-ng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/watcher/watcher Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=2603a && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/dolphin.git $n && pushd $n && git submodule && git submodule update --init --recursive Externals/SFML/SFML Externals/VulkanMemoryAllocator Externals/cpp-ipc/cpp-ipc Externals/cpp-optparse/cpp-optparse Externals/cubeb/cubeb Externals/gtest Externals/imgui/imgui Externals/implot/implot Externals/libspng/libspng Externals/minizip-ng/minizip-ng Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/watcher/watcher Externals/zlib-ng/zlib-ng && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -131,8 +131,7 @@ cmake . -LA \
     -DQT_NO_PRIVATE_MODULE_WARNING=ON \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DUSE_MGBA=OFF \
-    -DUSE_SANITIZERS=OFF \
-    -DXXHASH_FOUND=ON
+    -DUSE_SANITIZERS=OFF
 %cmake_build
 
 %install
