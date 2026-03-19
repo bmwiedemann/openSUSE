@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 18 11:05:20 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.3
+- Changes since 6.6.2:
+  * Update version for new release 6.6.3
+  * Fix infinite loop parsing /proc/cpuinfo when no newline at end last CPU block.
+
+-------------------------------------------------------------------
 Tue Mar  3 12:26:58 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.2:
