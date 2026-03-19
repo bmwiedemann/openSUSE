@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Wed Mar 18 09:44:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.42.70
+  * api-change:``bedrock-agentcore-control``: [``botocore``] Deprecating namespaces field and adding
+    namespaceTemplates.
+  * api-change:``emr``: [``botocore``] Add S3LoggingConfiguration to Control LogUploads
+  * api-change:``glue``: [``botocore``] Provide approval to overwrite existing Lake Formation
+    permissions on all child resources with the default permissions specified in
+    'CreateTableDefaultPermissions' and 'CreateDatabaseDefaultPermissions' when updating catalog.
+    Allowed values are ["Accept","Deny"] .
+- from version 1.42.69
+  * api-change:``bedrock``: [``botocore``] You can now generate policy scenarios on demand using the
+    new GENERATE POLICY SCENARIOS build workflow type. Scenarios will no longer be automatically
+    generated during INGEST CONTENT, REFINE POLICY, and IMPORT POLICY workflows, resulting in faster
+    completion times for these operations.
+  * api-change:``bedrock-agentcore``: [``botocore``] Provide support to perform deterministic
+    operations on agent runtime through shell command executions via the new InvokeAgentRuntimeCommand
+    API
+  * api-change:``bedrock-agentcore-control``: [``botocore``] Supporting hosting of public ECR
+    Container Images in AgentCore Runtime
+  * api-change:``ecs``: [``botocore``] Amazon ECS now supports configuring whether tags are
+    propagated to the EC2 Instance Metadata Service (IMDS) for instances launched by the Managed
+    Instances capacity provider. This gives customers control over tag visibility in IMDS when using
+    ECS Managed Instances.
+- from version 1.42.68
+  * api-change:``apigateway``: [``botocore``] API Gateway now supports an additional security policy
+    "SecurityPolicy-TLS13-1-2-FIPS-PFS-PQ-2025-09" for REST APIs and custom domain names. The new
+    policy is compliant with TLS 1.3, Federal Information Processing Standards (FIPS), Perfect Forward
+    Secrecy (PFS), and post-quantum (PQ) cryptography
+  * api-change:``config``: [``botocore``] Fix pagination support for
+    DescribeConformancePackCompliance, and update OrganizationConfigRule InputParameters max length to
+    match ConfigRule.
+  * api-change:``connect``: [``botocore``] Deprecating PredefinedNotificationID field
+  * api-change:``gameliftstreams``: [``botocore``] Feature launch that enables customers to connect
+    streaming sessions to their own VPCs running in AWS.
+  * api-change:``glue``: [``botocore``] Add QuerySessionContext to BatchGetPartitionRequest
+  * api-change:``ivs-realtime``: [``botocore``] Updates maximum reconnect window seconds from 60 to
+    300 for participant replication
+  * api-change:``mediaconvert``: [``botocore``] This update adds support for Dolby AC-4 audio output,
+    frame rate conversion between non-Dolby Vision inputs to Dolby Vision outputs, and clear lead CMAF
+    HLS output.
+  * api-change:``medialive``: [``botocore``] Documents the
+    VideoDescription.ScalingBehavior.SMART(underscore)CROP enum value.
+  * api-change:``mgn``: [``botocore``] Network Migration APIs are now publicly available for direct
+    programmatic access. Customers can now call Network Migration APIs directly without going through
+    AWS Transform (ATX), enabling automation, integration with existing tools, and self-service
+    migration workflows.
+  * api-change:``quicksight``: [``botocore``] The change adds a new capability named
+    ManageSharedFolders in Custom Permissions
+- from version 1.42.67
+  * api-change:``datasync``: [``botocore``] DataSync's 3 location types, Hadoop Distributed File
+    System (HDFS), FSx for Windows File Server (FSx Windows), and FSx for NetApp ONTAP (FSx ONTAP) now
+    have credentials managed via Secrets Manager, which may be encrypted with service keys or be
+    configured to use customer-managed keys or secret.
+  * api-change:``ecr``: [``botocore``] Add Chainguard to PTC upstreamRegistry enum
+  * api-change:``s3``: [``botocore``] Adds support for account regional namespaces for general
+    purpose buckets. The account regional namespace is a reserved subdivision of the global bucket
+    namespace where only your account can create general purpose buckets.
+  * enhancement:``sso-oidc``: [``botocore``] Fixed missing error messages in SSO OIDC error responses
+    by mapping OAuth2 error_description field to the standard Message field.  Issue was raised in
+    `#2216 <https://github.com/boto/botocore/issues/2216>`__.
+- from version 1.42.66
+  * api-change:``customer-profiles``: [``botocore``] Today, Amazon Connect is announcing the ability
+    to filter (include or exclude) recommendations based on properties of items and interactions.
+  * api-change:``eks``: [``botocore``] Adds support for a new tier in controlPlaneScalingConfig on
+    EKS Clusters.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``polly``: [``botocore``] Added support for the new voices - Ambre (fr-FR), Beatrice
+    (it-IT), Florian (fr-FR), Lennart (de-DE), Lorenzo (it-IT) and Tiffany (en-US). They are available
+    as a Generative voices only.
+  * api-change:``sagemaker``: [``botocore``] SageMaker training plans allow you to extend your
+    existing training plans to avoid workload interruptions without workload reconfiguration. When a
+    training plan is approaching expiration, you can extend it directly through the SageMaker AI
+    console or programmatically using the API or AWS CLI.
+  * api-change:``simpledbv2``: [``botocore``] Introduced Amazon SimpleDB export functionality
+    enabling domain data export to S3 in JSON format. Added three new APIs StartDomainExport,
+    GetExport, and ListExports via SimpleDBv2 service. Supports cross-region exports and KMS encryption.
+  * api-change:``workspaces``: [``botocore``] Added WINDOWS SERVER 2025 OperatingSystemName.
+- from version 1.42.65
+  * api-change:``bedrock-agentcore-control``: [``botocore``] Adding first class support for AG-UI
+    protocol in AgentCore Runtime.
+  * api-change:``connectcases``: [``botocore``] Added functionality for the Required and Hidden case
+    rule types to be conditionally evaluated on up to 5 conditions.
+  * api-change:``dms``: [``botocore``] Not need to include to any release notes. The only change is
+    to correct LoadTimeout unit from milliseconds to seconds in RedshiftSettings
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``kafka``: [``botocore``] Add dual stack endpoint to SDK
+  * api-change:``lexv2-models``: [``botocore``] This release introduces a new generative AI feature
+    called Lex Bot Analyzer. This feature leverage AI to analyze the bot configuration against AWS Lex
+    best practices to identify configuration issues and provides recommendations.
+- from version 1.42.64
+  * api-change:``iam``: [``botocore``] Added support for CloudWatch Logs long-term API keys,
+    currently available in Preview
+  * api-change:``mgn``: [``botocore``] Adds support for new storeSnapshotOnLocalZone field in
+    ReplicationConfiguration and updateReplicationConfiguration
+  * api-change:``opensearch``: [``botocore``] This change enables cross-account and cross-region
+    access for DataSources. Customers can now define access policies on their datasources to allow
+    other AWS accounts to access and query their data.
+  * api-change:``route53globalresolver``: [``botocore``] Adds support for dual stack Global Resolvers
+    and Dictionary-based Domain Generation Firewall Advanced Protection.
+- from version 1.42.63
+  * api-change:``appintegrations``: [``botocore``] This release adds support for webhooks, allowing
+    customers to create an Event Integration with a webhook source.
+  * api-change:``bcm-data-exports``: [``botocore``] Fixed wrong endpoint resolutions in few regions.
+    Added AWS CFN resource schema for BCM Data Exports. Added max value validation for pagination
+    parameter. Fixed ARN format validation for BCM Data Exports resources. Updated size constraints for
+    table properties. Added AccessDeniedException error.
+  * api-change:``bedrock``: [``botocore``] Amazon Bedrock Guardrails account-level enforcement APIs
+    now support lists for model inclusion and exclusion from guardrail enforcement.
+  * api-change:``bedrock-agentcore-control``: [``botocore``] Adds support for streaming memory
+    records in AgentCore Memory
+  * api-change:``connect``: [``botocore``] Amazon Connect now supports the ability to
+    programmatically configure and run automated tests for contact center experiences for Chat.
+    Integrate testing into CICD pipelines, run multiple tests at scale, and retrieve results via API to
+    automate validation of chat interactions and workflows.
+  * api-change:``deadline``: [``botocore``] AWS Deadline Cloud now supports cost scale factors for
+    farms, enabling studios to adjust reported costs to reflect their actual rendering economics.
+    Adjusted costs are reflected in Deadline Cloud's Usage Explorer and Budgets.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``gameliftstreams``: [``botocore``] Added new Gen6 stream classes based on the EC2 G6f
+    instance family. These stream classes provide cost-optimized options for streaming well-optimized
+    or lower-fidelity games on Windows environments.
+  * api-change:``sesv2``: [``botocore``] Adds support for longer email message header values,
+    increasing the maximum length from 870 to 995 characters for RFC 5322 compliance.
+- from version 1.42.62
+  * api-change:``connecthealth``: [``botocore``] Connect-Health SDK is AWS's unified SDK for the
+    Amazon Connect Health offering. It allows healthcare developers to integrate purpose-built agents -
+    such as patient insights, ambient documentation, and medical coding - into their existing
+    applications, including EHRs, telehealth, and revenue cycle.
+  * api-change:``ec2``: [``botocore``] Added metadata field to CapacityAllocation.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+  * api-change:``guardduty``: [``botocore``] Added MALICIOUS FILE to IndicatorType enum in MDC
+    Sequence
+  * api-change:``mpa``: [``botocore``] Updates to multi-party approval (MPA) service to add support
+    for approval team baseline operations.
+  * api-change:``sagemaker``: [``botocore``] Adds support for S3 Bucket Ownership validation for
+    SageMaker Managed MLflow.
+  * api-change:``savingsplans``: [``botocore``] Added support for OpenSearch and Neptune Analytics to
+    Database Savings Plans.
+  * enhancement:S3 redirect: [``botocore``] Validate new region name when redirecting.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Mar  5 13:37:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.4.61
