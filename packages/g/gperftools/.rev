@@ -342,4 +342,18 @@
     <comment></comment>
     <requestid>1302534</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0e3aedbe1657c058c599961da2a4f420</srcmd5>
+    <version>2.18.1</version>
+    <time>1773938137</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.18.1:
+  * Correctness of C23 sized deallocation (free_sized) vs realloc
+    has been fixed.
+  * Building with 256k logical pages on 32-bit targets is fixed.
+  * Several fixes to Valgrind integration were made.
+  * CPU profiler now uses a different mechanism to force child
+    processes to use the pid in the cpu profile file name.</comment>
+    <requestid>1340790</requestid>
+  </revision>
 </revisionlist>

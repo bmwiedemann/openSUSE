@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 17 22:09:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.1:
+  * Correctness of C23 sized deallocation (free_sized) vs realloc
+    has been fixed.
+  * Building with 256k logical pages on 32-bit targets is fixed.
+  * Several fixes to Valgrind integration were made.
+  * CPU profiler now uses a different mechanism to force child
+    processes to use the pid in the cpu profile file name.
+
+-------------------------------------------------------------------
 Tue Sep  2 10:45:33 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.17.2
