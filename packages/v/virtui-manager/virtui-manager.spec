@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           virtui-manager
-Version:        2.3.1
+Version:        2.4.8
 Release:        0
 Summary:        Terminal-based interface to manage virtual machines using libvirt
 License:        GPL-3.0-or-later
@@ -58,6 +58,7 @@ Requires:       %{name} = %{version}
 Requires:       python3-gobject
 Requires:       python3-libvirt-python
 Requires:       gtk3
+Requires:       vte
 #Requires:       libgtk-vnc-2_0-0
 #Requires:       libvirt-glib-1_0-0
 # Spice support (optional but good to have)
@@ -79,8 +80,6 @@ bash src/vmanager/manage_translation.sh compile-mo
 
 %install
 %python3_pyproject_install
-rm %{buildroot}%{python3_sitelib}/vmanager/remote_viewer_gtk4.py
-chmod 755 %{buildroot}%{python3_sitelib}/vmanager/remote_viewer.py
 chmod 755 %{buildroot}%{python3_sitelib}/vmanager/gui_wrapper.py
 chmod 755 %{buildroot}%{python3_sitelib}/vmanager/virtui_dev.py
 
@@ -106,6 +105,8 @@ cp README.md %{buildroot}%{_docdir}/%{name}/
 %{_bindir}/virtui-gui
 %{python3_sitelib}/vmanager
 %exclude %{python3_sitelib}/vmanager/locale
+%exclude %{python3_sitelib}/vmanager/gui_wrapper.py
+%exclude %{python3_sitelib}/vmanager/viewer
 %{python3_sitelib}/virtui_manager-*-info
 
 %files lang -f %{name}.lang
@@ -118,5 +119,7 @@ cp README.md %{buildroot}%{_docdir}/%{name}/
 
 %files -n virtui-remote-viewer
 %{_bindir}/virtui-remote-viewer
+%{python3_sitelib}/vmanager/gui_wrapper.py
+%{python3_sitelib}/vmanager/viewer
 
 %changelog

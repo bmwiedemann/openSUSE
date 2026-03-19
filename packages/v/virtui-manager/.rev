@@ -229,4 +229,35 @@
 </comment>
     <requestid>1338383</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ab41a82132832a2bc421b2cf56926ae6</srcmd5>
+    <version>2.4.8</version>
+    <time>1773938384</time>
+    <user>anag_factory</user>
+    <comment>- version 2.4.8:
+  * Install VM: add network selection
+  * Fix openSUSE provider: getting ISO
+  * virtui-manager-cmd:
+    * add installvm support
+
+- version 2.4.7:
+  * Add Spice copy/paste support with vdagent and channel
+    (remote viewer)
+
+- version 2.4.5:
+  * Fix Arch Linux auto installation
+  * Update doc and add missing images
+
+- version 2.4.4:
+  * Fix auto-installation issues (All distributions)
+  * update doc
+  * Fix web console remote: ssh tunnel error (novnc)
+
+version 2.4.3:
+  * fix autoinstall alpine linux
+  * improve alpine install
+  * Update translation and enhance OS information
+</comment>
+    <requestid>1341092</requestid>
+  </revision>
 </revisionlist>

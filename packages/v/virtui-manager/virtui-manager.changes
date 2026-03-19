@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Mar 18 23:32:02 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 2.4.8:
+  * Install VM: add network selection
+  * Fix openSUSE provider: getting ISO
+  * virtui-manager-cmd:
+    * add installvm support
+
+- version 2.4.7:
+  * Add Spice copy/paste support with vdagent and channel
+    (remote viewer)
+
+- version 2.4.5:
+  * Fix Arch Linux auto installation
+  * Update doc and add missing images
+
+- version 2.4.4:
+  * Fix auto-installation issues (All distributions)
+  * update doc
+  * Fix web console remote: ssh tunnel error (novnc)
+
+version 2.4.3:
+  * fix autoinstall alpine linux
+  * improve alpine install
+  * Update translation and enhance OS information
+
+-------------------------------------------------------------------
+Fri Mar 13 15:08:10 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 2.4.2:
+  * Enhance testing and fix NVRAM cloning issue
+  * remove yast2 in agama templates
+  * use nvram pool for VARS.fd (ovmf) if exist
+  * always show Remote Viewer quick button
+  * fix on_reboot restart issue (restart on all VM except Secure VM)
+  * virtui-remote-viewer:
+    * add first boot menu with Hibernate and viewer icon options
+    * remove the --wait option (obsolete)
+    * various fixes in connection/reconnection
+
+-------------------------------------------------------------------
+Thu Mar 12 21:47:18 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 2.4.0
+  * Add Alpine linux support (WIP)
+  * Fix issue with cancelling worker (some where not cancelled...)
+  * Fix shortcuts and improve openSUSE product support
+  * Enhance console support and refactor viewer into multiple files
+
+-------------------------------------------------------------------
 Wed Mar 11 13:44:58 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 2.3.1:
