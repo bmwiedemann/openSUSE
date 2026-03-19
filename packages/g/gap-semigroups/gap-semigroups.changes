@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 18 23:57:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.6.1
+  * Added Cartan matrix computation for monoids.
+  * Implemented `IsCryptoGroup`.
+  * Added `OnePseudoInverseOfSemigroupElement` method for more
+    types.
+  * Duplicate named generators in `FreeBand` and
+    `FreeInverseSemigroup` are disallowed now.
+- Delete bundled-paths.patch
+
+-------------------------------------------------------------------
 Mon Sep  1 13:16:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.5.4
