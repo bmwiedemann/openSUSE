@@ -88,4 +88,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath12k: QCN9274 hw2.0: update to WLAN.WBE.1.6-01243-QCAHKSWPL_SILICONZ-1</comment>
     <requestid>1333332</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8fee7eaf598e9092c3accff122e09951</srcmd5>
+    <version>20260317</version>
+    <time>1773938144</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260317 (git commit 66ca9a5b63a5):
+  * ath12k: WCN7850 hw2.0: update to WLAN.HMT.1.1.c7-00108-QCAHMTSWPL_V1.0_V2.0_SILICONZ_UPSTREAM-3</comment>
+    <requestid>1340878</requestid>
+  </revision>
 </revisionlist>
