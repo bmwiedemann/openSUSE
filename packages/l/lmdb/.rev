@@ -172,4 +172,39 @@
     <comment></comment>
     <requestid>1154147</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>62e6bede487bf687a894b77f5b5eb92c</srcmd5>
+    <version>0.9.35</version>
+    <time>1773938133</time>
+    <user>anag_factory</user>
+    <comment>- Enable tests
+- Update to 0.9.35:
+  * fix race condition freeing spilled pages at end of transaction
+  * Update mdb_dump(1) and mdb_load(1) man pages for append (-a)
+    option
+  * mdb_load: add -Q option to use NOSYNC
+  * fix memleak in mdb_txn_begin for nested txns
+  * fix mdb_env_copy2 with values &gt; (2GB-16)
+  * fix mplay build on musl
+  * fix mdb_cursor_del0 with multiple DUPSORT cursors
+  * mdb_load: check for malicious input
+- 0.9.33 Release (2024/05/21)
+  * mdb_page_search: fix error code when DBI record is missing
+  * Fix meta page usage by read only tools
+- 0.9.32 Release (2024/01/29)
+  * Add ability to replay log and replay log tool
+  * mdb_load: fix cursor reinit in Append mode
+  * Allow users to define MDB_IDL_LOGN
+- 0.9.31 Release (2023/07/10)
+  * Fix cursor_put(MDB_CURRENT) on DUPSORT DB with different sized
+    data
+- Refresh patches:
+  * 0001-Add-extra-tools-and-CFEngine-modifications-for-LMDB.patch
+    -&gt; 0002-Add-extra-tools-and-CFEngine-modifications-for-LMDB.patch
+    Merge with liblmdb-implicit-decl.patch
+  * Makefile-build-use-shared-lib.patch
+    -&gt; 0001-Makefile-use-shared-library.patch
+</comment>
+    <requestid>1340760</requestid>
+  </revision>
 </revisionlist>
