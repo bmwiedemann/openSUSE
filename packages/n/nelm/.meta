@@ -10,5 +10,6 @@
 * continuous printing of logs, events, resource statuses and errors during deploy;
 * lots of fixes for Helm 3 bugs, e.g. [&quot;no matches for kind Deployment in version apps/v1beta1&quot;](https://github.com/helm/helm/issues/7219);
 * ... and more.</description>
+  <devel project="devel:kubic" package="nelm"/>
   <url>https://github.com/werf/nelm</url>
 </package>

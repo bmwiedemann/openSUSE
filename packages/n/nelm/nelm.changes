@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar 19 06:16:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.21.0:
+  * Features
+    - Add TypeScript chart rendering support (00ef36a)
+    - annotation werf.io/delete-dependency-<id> (#539) (a0009f4)
+    - enhanced local resource validation (#545) (53505d1)
+    - implement resource validation against api spec (#530)
+      (870efeb)
+    - webhook configuration deploy dependency (#538) (dcb818b)
+  * Bug Fixes
+    - deploy/delete deps try to connect to later stages (#557)
+      (3823686)
+    - few fixes for typescript in charts (#550) (d6b4b29)
+    - major slowdown if node_modules in chart with TS enabled
+      (#558) (295d3e5)
+
+-------------------------------------------------------------------
+Fri Feb 20 11:33:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.20.0:
+  * Features
+    - NELM_FEAT_MORE_DETAILED_EXIT_CODE_FOR_PLAN=true to return
+      exit code 3 on "no resource changes, but must install
+      release" if --exit-code (#515) (d24f926)
+  * Bug Fixes
+    - panic in pre/post-delete hooks tracking (#518) (f01de36)
+
+-------------------------------------------------------------------
 Thu Feb 05 06:07:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.19.1:
