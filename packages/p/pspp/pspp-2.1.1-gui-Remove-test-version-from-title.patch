@@ -1,0 +1,29 @@
+From 7905927997d88c7789845968b22980944c5a7453 Mon Sep 17 00:00:00 2001
+From: Ben Pfaff <blp@cs.stanford.edu>
+Date: Mon, 9 Mar 2026 15:57:32 -0700
+Subject: [PATCH 1/2] gui: Remove "test version" from title.
+
+Commit 5b587f70f274 ("Remove the "unreleased test version" code.")
+was supposed to take care of this, but it was incomplete.
+
+Thanks to Friedrich Beckmann for the report.
+---
+ src/ui/gui/psppire-window.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/ui/gui/psppire-window.c b/src/ui/gui/psppire-window.c
+index 8736eed49..4f4f09d84 100644
+--- a/src/ui/gui/psppire-window.c
++++ b/src/ui/gui/psppire-window.c
+@@ -83,8 +83,6 @@ psppire_window_set_title (PsppireWindow *window)
+ 
+   int minor = 1;
+   sscanf (bare_version, "%*d.%d.%*d", &minor);
+-  if (minor % 2)
+-    g_string_append_printf (title, " - Test version! Please report bugs to %s", PACKAGE_BUGREPORT);
+ 
+   gtk_window_set_title (GTK_WINDOW (window), title->str);
+ 
+-- 
+2.53.0
+

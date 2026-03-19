@@ -1,0 +1,35 @@
+From 9028c6e208d7677b1d7775f9eb55c491c6db84ea Mon Sep 17 00:00:00 2001
+From: Ben Pfaff <blp@cs.stanford.edu>
+Date: Wed, 11 Mar 2026 08:07:07 -0700
+Subject: [PATCH 2/2] gui: Avoid using "test" splash screen for odd minor
+ releases.
+
+Friedrich found another case.
+---
+ src/ui/gui/icons/automake.mk | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/src/ui/gui/icons/automake.mk b/src/ui/gui/icons/automake.mk
+index 8e84c0187..d2f2bb5f1 100644
+--- a/src/ui/gui/icons/automake.mk
++++ b/src/ui/gui/icons/automake.mk
+@@ -91,14 +91,9 @@ UNINSTALL_DATA_HOOKS += uninstall-icons uninstall-ext-icons
+ if building_gui
+ nodist_src_ui_gui_psppire_DATA = src/ui/gui/icons/splash.png
+ 
+-src/ui/gui/icons/splash.png: $(top_srcdir)/src/ui/gui/icons/splash-t.png $(top_srcdir)/src/ui/gui/icons/splash-r.png Makefile
++src/ui/gui/icons/splash.png: $(top_srcdir)/src/ui/gui/icons/splash-r.png Makefile
+ 	@$(MKDIR_P) src/ui/gui/icons
+-	@case `echo $(VERSION) | $(SED) -e 's/[0-9][0-9]*\.[0-9]*\([0-9]\)\.[0-9][0-9]*/\1/'` in \
+-	  [13579]) cp $(top_srcdir)/src/ui/gui/icons/splash-t.png $@ ; \
+-	;;\
+-	  *) cp $(top_srcdir)/src/ui/gui/icons/splash-r.png $@ ; \
+-	;;\
+-esac
++	cp $< $@
+ 
+ EXTRA_DIST += $(top_srcdir)/src/ui/gui/artwork/splash.svg $(icons) $(icon_srcs)
+ 
+-- 
+2.53.0
+

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 18 19:26:09 UTC 2026 - <opensuse.lietuviu.kalba@gmail.com>
+
+- Remove optional free-ttf-fonts dependency to build for openSUSE 16.0.
+
+-------------------------------------------------------------------
+Sun Mar 15 17:45:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.1.1:
+ * Bug fixes in build system and tests
+ * Translation updates
+- fix non-breaking space warning in package changelog
+- add patches to remove "test version" warning":
+  * pspp-2.1.1-gui-Avoid-using-test-splash-screen-for-odd-minor-rel.patch
+  * pspp-2.1.1-gui-Remove-test-version-from-title.patch
+
+-------------------------------------------------------------------
 Sat Mar 15 10:26:07 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gtksourceview-3.0) BuildRequires: Not needed, nor
@@ -211,7 +227,7 @@ Thu Aug 20 19:31:33 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
         Many bug fixes.
   * drop avoid_old_Texinfo_4.13.patch
   * drop CVE-2018-20230.patch
-  * drop CVE-2019-9211.patch
+  * drop CVE-2019-9211.patch
 
 -------------------------------------------------------------------
 Wed Jul 15 10:57:45 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>

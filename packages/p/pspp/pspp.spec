@@ -20,13 +20,8 @@
 #
 
 
-%if 0%{?mandriva_version}
-%define _disable_ld_no_undefined 1
-#Next line is needed for Mandriva build
-%define _disable_ld_as_needed 1
-%endif
 Name:           pspp
-Version:        2.0.1
+Version:        2.1.1
 Release:        0
 Summary:        A program for statistical analysis of sampled data
 License:        GPL-3.0-or-later
@@ -35,19 +30,13 @@ URL:            https://www.gnu.org/software/pspp/
 Source0:        https://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=245#/%{name}.keyring
-
+Patch0:         pspp-2.1.1-gui-Avoid-using-test-splash-screen-for-odd-minor-rel.patch
+Patch1:         pspp-2.1.1-gui-Remove-test-version-from-title.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?fedora} 
-BuildRequires:  atlas
-%endif
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
 PreReq:         %install_info_prereq
-%endif
-%if 0%{?is_opensuse}
-# Next package only for "make check", but "free-ttf-fonts" exist only in openSUSE, not in SUSE
-BuildRequires:  free-ttf-fonts
 %endif
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -150,7 +139,7 @@ This subpackage contains development documentation for PSPP.
 
 
 %prep
-%setup -q -n pspp-%{version}
+%autosetup -p1
 
 %build
 export SUSE_ASNEEDED=0
@@ -292,6 +281,4 @@ fi
 %dir %{_datadir}/doc/pspp/pspp-dev.html/
 %doc %{_datadir}/doc/pspp/pspp-dev.html/*.html
 
-
 %changelog
-
