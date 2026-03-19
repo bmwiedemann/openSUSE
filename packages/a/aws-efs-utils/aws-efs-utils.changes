@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 18 10:59:07 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.4.2
+  * Skip stunnel binary invocation when efs-proxy mode is enabled
+  * Retry "access denied" only for access point mounting
+  * Fix issue for missing PATH in env when check stunnel lib
+  * Fix EFS_FQDN_RE to support ADC DNS suffixes with hyphens
+  * Fix IPv6-only mount target FQDN resolution in match_device
+- Drop initialize-arrays-as-arrays.patch, merged upstream
+- Refresh fix-cargo-checksums.patch
+
+-------------------------------------------------------------------
 Mon Nov 24 13:21:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.4.1

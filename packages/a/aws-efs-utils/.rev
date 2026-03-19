@@ -281,4 +281,19 @@
 - Refresh support-relro-in-delocator.patch (forwarded request 1319744 from glaubitz)</comment>
     <requestid>1319769</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>936dba730b2ffd4f414170f38c75e682</srcmd5>
+    <version>2.4.2</version>
+    <time>1773938207</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.2
+  * Skip stunnel binary invocation when efs-proxy mode is enabled
+  * Retry &quot;access denied&quot; only for access point mounting
+  * Fix issue for missing PATH in env when check stunnel lib
+  * Fix EFS_FQDN_RE to support ADC DNS suffixes with hyphens
+  * Fix IPv6-only mount target FQDN resolution in match_device
+- Drop initialize-arrays-as-arrays.patch, merged upstream
+- Refresh fix-cargo-checksums.patch (forwarded request 1340876 from glaubitz)</comment>
+    <requestid>1340886</requestid>
+  </revision>
 </revisionlist>
