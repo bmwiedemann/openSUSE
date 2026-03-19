@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 12 10:12:34 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Fix packages for %suse_version bump: haproxy
+  (jsc#PED-15852)
+- Remove deprecated %if-s
+
+-------------------------------------------------------------------
 Mon Mar 09 15:35:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.3.5+git0.f0a2d1bf5:

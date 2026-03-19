@@ -22,29 +22,15 @@
 
 %bcond_with awslc
 
-%if 0%{?suse_version} > 1600 || %{with awslc}
+%if 0%{?suse_version} >= 1699  || %{with awslc}
 %bcond_without quic
 %else
 %bcond_with quic
 %endif
 
-%if 0%{?suse_version} > 1500
-%bcond_with    rc_symlink
-%else
-%bcond_without rc_symlink
-%endif
-
 %bcond_without pcre2_jit
 
 %bcond_without  apparmor
-
-%if 0%{?suse_version} >= 1500
-%bcond_without sysusers
-%bcond_without tmpfiles
-%else
-%bcond_with sysusers
-%bcond_with tmpfiles
-%endif
 
 %bcond_with ech
 
@@ -173,9 +159,6 @@ install    -m 0640 %{SOURCE4}              %{buildroot}%{_sysconfdir}/%{pkg_name
 install -D -m 0755 admin/halog/halog %{buildroot}%{_sbindir}/haproxy-halog
 
 install -D -m 0644 admin/systemd/%{pkg_name}.service  %{buildroot}%{_unitdir}/%{pkg_name}.service
-%if %{with rc_symlink}
-ln -sf /sbin/service   %{buildroot}%{_sbindir}/rc%{pkg_name}
-%endif
 install -D -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/haproxy-user.conf
 install -D -m 644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -d -m 0750                          %{buildroot}%{pkg_home}
@@ -219,9 +202,6 @@ rm examples/*init*
 %dir %ghost %{_rundir}/%{name}
 %{_sbindir}/haproxy
 %{_sbindir}/haproxy-halog
-%if %{with rc_symlink}
-%{_sbindir}/rchaproxy
-%endif
 %dir %ghost %{pkg_home}
 %{_mandir}/man1/%{pkg_name}.1%{?ext_man}
 %dir %{_datadir}/vim
@@ -229,9 +209,6 @@ rm examples/*init*
 %dir %{vim_data_dir}/syntax
 %{vim_data_dir}/syntax/%{pkg_name}.vim
 %if %{with apparmor}
-%if 0%{?suse_version} == 1110
-%dir %{_sysconfdir}/apparmor.d/local/
-%endif
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.haproxy
 %config(noreplace) %ghost %{_sysconfdir}/apparmor.d/local/haproxy
 %config(noreplace) %ghost %{_sysconfdir}/apparmor.d/local/usr.sbin.haproxy
