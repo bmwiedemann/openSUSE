@@ -327,4 +327,12 @@
     <comment>- Add /srv/www directories to filelist [bsc#1231027]</comment>
     <requestid>1204346</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8332e5b6348343bb77ba17b1591a5dfe</srcmd5>
+    <version>1.3</version>
+    <time>1773938397</time>
+    <user>anag_factory</user>
+    <comment>- Update to verison 1.3:</comment>
+    <requestid>1341127</requestid>
+  </revision>
 </revisionlist>

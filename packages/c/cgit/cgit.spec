@@ -16,9 +16,9 @@
 #
 
 
-%define git_version	2.25.1
+%define         git_version 2.53.0
 Name:           cgit
-Version:        1.2.3
+Version:        1.3
 Release:        0
 Summary:        A web frontend for git repositories
 License:        GPL-2.0-only
@@ -26,47 +26,46 @@ Group:          Development/Tools/Version Control
 URL:            http://git.zx2c4.com/cgit/
 #Git-Clone:	https://git.zx2c4.com/cgit
 Source:         https://git.zx2c4.com/cgit/snapshot/%name-%version.tar.xz
-Source2:        https://www.kernel.org/pub/software/scm/git/git-%git_version.tar.xz
-Source3:        https://www.kernel.org/pub/software/scm/git/git-%git_version.tar.sign
-Source4:        %name.keyring
+Source3:        https://www.kernel.org/pub/software/scm/git/git-%git_version.tar.xz
+Source4:        https://www.kernel.org/pub/software/scm/git/git-%git_version.tar.sign
+Source8:        %name.keyring
 Source9:        cgitrc
 # Requirements for cgitrc man page generation
 BuildRequires:  asciidoc
 # Requirements for cgit
-BuildRequires:  libopenssl-devel
 BuildRequires:  libxslt
-BuildRequires:  libzip-devel
 BuildRequires:  xz
+BuildRequires:  nginx
+BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Provides:       bundled(git) = %version
+Provides:       bundled(git) = %git_version
 
 %description
 A web interface for the Git SCM, using a built-in cache to decrease server
 I/O pressure.
 
 %prep
-%setup -qa2
+%autosetup -a3
 rm -rf git
 ln -s git-%git_version git
 
-%build
-perl -i -pe 's{^#!/usr/bin/env }{#!/usr/bin/}g' filters/email-gravatar.py \
+perl -i -pe 's{^#!%_bindir/env }{#!%_bindir/}g' filters/email-gravatar.py \
 	filters/html-converters/md2html filters/syntax-highlighting.py
-make V=1 prefix="%_prefix" CFLAGS="%optflags" %{?_smp_mflags} all
+
+%build
+%make_build
 
 %install
-%make_install V=1 prefix="%_prefix" CFLAGS="%optflags" \
-	CGIT_SCRIPT_PATH="/srv/www/htdocs/cgit" install-man
 b="%buildroot"
-mkdir -p "$b/srv/www/cgi-bin/cgit/" "$b/var/cache/cgit"
-mv $b/srv/www/htdocs/cgit/cgit.cgi $b/srv/www/cgi-bin/cgit/cgit.cgi
-mkdir -p "$b/%_sysconfdir"
-cp "%_sourcedir/cgitrc" "$b/%_sysconfdir/"
+%make_install V=1 prefix="%_prefix" CGIT_SCRIPT_PATH="/srv/www/htdocs/cgit" install-man
+mkdir -p "$b/srv/www/cgi-bin/%name" "$b/var/cache/%name" "$b/%_sysconfdir"
+mv -v "$b/srv/www/htdocs/%name/%name.cgi" "$b/srv/www/cgi-bin/%name/%name.cgi"
+cp -av "%_sourcedir/cgitrc" "$b/%_sysconfdir/"
 
 %files
-%defattr(-,root,root)
-%doc README COPYING
+%license COPYING
+%doc README
 %_mandir/man5/cgitrc.5%ext_man
 %dir /srv/www
 %dir /srv/www/cgi-bin
