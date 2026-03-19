@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 18 11:05:53 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.3
+- Changes since 6.6.2:
+  * Update version for new release 6.6.3
+  * kcm/qml: Set max height for the class member list
+
+-------------------------------------------------------------------
 Tue Mar  3 12:28:24 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.2:
