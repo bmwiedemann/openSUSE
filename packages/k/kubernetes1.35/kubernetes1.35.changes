@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 19 11:33:11 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.35.3:
+  * cmd/kubeadm: ignore EINVAL error during unmount
+  * Use localhost image reference in PodObservedGenerationTracking test
+  * drop publishing rules from dependencies.yaml on release branch
+  * start scheduler after creating binding/non-binding slices
+  * dra: stabilize DeviceBindingConditions BasicFlow by creating without-binding slice first
+  * kubeadm: do not add learner member to etcd client endpoints
+  * Fix flake TestDeviceTaintRule test by adjusting event hanlder status update logic
+  * add dockerized go cache to  `make clean`
+  * fake client-go: un-deprecate NewSimpleClientset
+  * Fix flaky TestApplyCRDuringCRDFinalization test
+
+-------------------------------------------------------------------
 Mon Mar  2 07:06:36 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.35.2:
