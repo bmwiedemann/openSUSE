@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyX
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_without  test
 %{?sle15_python_module_pythons}
 Name:           python-PyX
-Version:        0.16
+Version:        0.17
 Release:        0
 Summary:        Python package for the generation of PostScript, PDF, and SVG files
 License:        GPL-2.0-or-later

@@ -56,4 +56,31 @@
     <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
     <requestid>1271225</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>42a1a1b27e18a278ea0b72178005dc92</srcmd5>
+    <version>0.17</version>
+    <time>1773938329</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.17:
+  * Move metadata from setup.py to pyproject.toml
+  * graph modules:
+  * enable log axis on negative values (either all values need
+    to be positive or negative)
+  * move the density parameter to the rater (with a deprecation
+    warning in the axis)
+  * limit subaxis range in bar and split axes to [0..1] except
+    for epsilon=None
+  * improve exception handling for invalid data in density
+    style
+  * add a new grid layer below filldata and paint axes grids
+    there
+  * support modification of x2, y2, etc. graph axes by keyword
+    arguments
+  * Cleanup of pdfwriter and pdfextras
+  * Add support for fillattrs and trafos in UnicodeEngine
+  * various improvements to the documentation
+
+    repository has been converted to git and is now hosted at</comment>
+    <requestid>1341035</requestid>
+  </revision>
 </revisionlist>
