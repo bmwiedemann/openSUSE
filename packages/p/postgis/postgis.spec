@@ -1,7 +1,7 @@
 #
 # spec file for package postgis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define         main_version 3.5
 
 Name:           %{pg_name}-%{ext_name}
-Version:        3.5.0
+Version:        3.6.2
 Release:        0
 Summary:        Geographic Information Systems Extensions to PostgreSQL
 License:        GPL-2.0-or-later

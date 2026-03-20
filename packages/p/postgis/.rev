@@ -154,4 +154,18 @@ I welcome any suggestion of improvement of this beast ;-)</comment>
     <comment></comment>
     <requestid>1246441</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>020599d79e639eae8e5530f8154d63e3</srcmd5>
+    <version>3.6.2</version>
+    <time>1774037999</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.2
+  see full release note especially breaking changes
+  https://gitea.osgeo.org/postgis/postgis/raw/tag/3.6.2/NEWS
+- upgrade to version 3.5.2 to caputre pg_update issue fix in 77eddb114e21ec0b7eba2b5caa496d7e864ef247
+  see full release note especially breaking changes
+  https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.5.2/NEWS
+</comment>
+    <requestid>1341180</requestid>
+  </revision>
 </revisionlist>
