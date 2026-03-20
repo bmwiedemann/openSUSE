@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 20 12:01:09 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.96.3:
+  * DNS resolution issue caused by NRPT rule formatting is resolved
+
+-------------------------------------------------------------------
 Wed Mar 18 17:38:41 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.96.2:
