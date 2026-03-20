@@ -18,19 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-env
-Version:        1.1.5
+Version:        1.6.0
 Release:        0
 Summary:        Pytest plugin to add environment variables
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-env
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-env/pytest_env-%{version}.tar.gz
-BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatch_vcs >= 0.5}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module python-dotenv >= 1.2.2}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 2.6.0
+Requires:       python-pytest >= 9
+Requires:       python-python-dotenv >= 1.2.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,8 +49,12 @@ A py.test plugin that allows you to add environment variables.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
 %license LICENSE
+%doc README.md
 %{python_sitelib}/pytest_env
 %{python_sitelib}/pytest_env-%{version}.dist-info
 
