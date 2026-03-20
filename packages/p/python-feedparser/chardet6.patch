@@ -1,0 +1,75 @@
+Index: feedparser-6.0.12/tests/illformed/chardet/big5.xml
+===================================================================
+--- feedparser-6.0.12.orig/tests/illformed/chardet/big5.xml
++++ feedparser-6.0.12/tests/illformed/chardet/big5.xml
+@@ -1,8 +1,8 @@
+ <!--
+ SkipUnless:   __import__('chardet')
+ Description:  Big5 with no encoding information
+-Expect:       bozo and encoding == 'Big5'
++Expect:       bozo and encoding in ('Big5', 'BIG5')
+ -->
+ <feed xmlns="http://www.w3.org/2005/Atom">
+ <title>§Ú§Æ±æ??«Ü®e©ö?¨äÂ½?¦¨¤¤¤å¡A¦}¦³§U¤_§ï??¥ó¡C ·P?±z??¥»¤å¡C</title>
+-</feed>
+\ No newline at end of file
++</feed>
+Index: feedparser-6.0.12/tests/illformed/chardet/euckr.xml
+===================================================================
+--- feedparser-6.0.12.orig/tests/illformed/chardet/euckr.xml
++++ feedparser-6.0.12/tests/illformed/chardet/euckr.xml
+@@ -1,7 +1,7 @@
+ <!--
+ SkipUnless:   __import__('chardet')
+ Description:  EUC-KR with no encoding information
+-Expect:       bozo and encoding == 'EUC-KR'
++Expect:       bozo and encoding in ('EUC-KR', 'UHC', 'CP949')
+ -->
+ <rss>
+ <channel>
+@@ -10,4 +10,4 @@ Expect:       bozo and encoding == 'EUC-
+ <description>TypeKey ½Ã½ºÅÛÀÌ UTF-8·Î µ¹¾Æ°¡´Âµ¥, °Å±â¼­ ÇÑ±Û·Î µÈ ´Ð³×ÀÓÀ» Á¤ÇÒ °æ¿ì¿¡, EUC-KR·Î µÈ ¹«¹öºíÅ¸ÀÔ ºí·Ï¿¡¼± ¸®´ÙÀÌ·ºÆ®µÇ¾î Àü¼ÛµÇ¾î¿À´Â ´Ð³×ÀÓÀÌ UTF¶ó ´ç¿¬È÷ ±ú¾îÁ® ³ªÅ¸³­´Ù. ½ÇÁ¦ ºí·Ï µî¿¡¼­ »ç¿ëÇÏ´Â ÇÊ¸í ³»Áö´Â ´Ð³×ÀÓÀº ÇÑ±Û·Î »ç¿ëÇÏ´Â ¸¹Àº ºÐµéµµ Å¸ÀÔÅ°¿¡¼­ÀÇ ´Ð³×ÀÓÀº ÀÌ·± ¹®Á¦¶§¹®¿¡ ¿ï¸ç°ÜÀÚ¸Ô±â·Î ¿µ¾î·Î Áþ°í ÀÖ´Ù....</description>
+ </item>
+ </channel>
+-</rss>
+\ No newline at end of file
++</rss>
+Index: feedparser-6.0.12/tests/illformed/chardet/gb2312.xml
+===================================================================
+--- feedparser-6.0.12.orig/tests/illformed/chardet/gb2312.xml
++++ feedparser-6.0.12/tests/illformed/chardet/gb2312.xml
+@@ -1,7 +1,7 @@
+ <!--
+ SkipUnless:   __import__('chardet')
+ Description:  GB2312 with no encoding information
+-Expect:       bozo and encoding == 'GB2312'
++Expect:       bozo and encoding in ('GB2312', 'GB18030')
+ -->
+ <rss>
+ <channel>
+Index: feedparser-6.0.12/tests/illformed/chardet/tis620.xml
+===================================================================
+--- feedparser-6.0.12.orig/tests/illformed/chardet/tis620.xml
++++ feedparser-6.0.12/tests/illformed/chardet/tis620.xml
+@@ -1,7 +1,7 @@
+ <!--
+ SkipUnless:   __import__('chardet')
+ Description:  TIS-620 with no encoding information
+-Expect:       bozo and encoding == 'TIS-620'
++Expect:       bozo and encoding in ('TIS-620', 'CP874')
+ -->
+ <rss>
+ <channel>
+Index: feedparser-6.0.12/tests/illformed/chardet/windows1255.xml
+===================================================================
+--- feedparser-6.0.12.orig/tests/illformed/chardet/windows1255.xml
++++ feedparser-6.0.12/tests/illformed/chardet/windows1255.xml
+@@ -1,7 +1,7 @@
+ <!--
+ SkipUnless:   __import__('chardet')
+ Description:  windows-1255 with no encoding information
+-Expect:       bozo and encoding == 'windows-1255'
++Expect:       bozo and encoding in ('windows-1255', 'WINDOWS-1255')
+ -->
+ <rss>
+ <channel>

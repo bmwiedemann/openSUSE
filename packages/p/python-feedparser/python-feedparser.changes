@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 19 12:04:29 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream-issue-inspired chardet6.patch to fix tests
+
+-------------------------------------------------------------------
 Wed Sep 10 19:04:09 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
-- update to version 6.0.11:
+- update to version 6.0.12:
   * Fix an AssertionError crash that occurs with Python 3.10 and
     higher. (#304)
   * Fix a DeprecationWarning thrown during calls to re.sub. (#389)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-feedparser
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/kurtmckee/feedparser
 Source:         https://files.pythonhosted.org/packages/source/f/feedparser/feedparser-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM inspired by https://github.com/kurtmckee/feedparser/issues/318 and the linked patches
+Patch:          chardet6.patch
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
