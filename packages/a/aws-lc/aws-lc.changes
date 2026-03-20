@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Mar 20 12:05:15 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.71.0:
+  * Fixes for PKCS12_set_mac
+  * Allow zero-length PEM passwords in callback paths
+  * Relicense OpenSSL Sources to Apache-2.0
+  * Harden HMAC error paths: fix resource leaks, state bugs, and missing
+    cleansing
+  * Fix modulewrapper memory leak
+  * Distribution Packaging Improvements
+  * Add bounds checks for size_t to int truncation in RSA_METHOD calls
+  * Clean up sensitive stack buffers and minor fixes in PKCS#8
+  * More NULL checks in bio_ssl.cc
+  * Reject IPv6 literal URIs in name constraint checking
+  * Abort on RAND_bytes failure
+  * Fix race condition in new_certs_dir output path
+  * Fall back to EVP_{marshal,parse} in {i2d,d2i}_{Public,Private}Key
+  * Fix stale key_method pointer after private key switch in CERT
+  * Clean up on X509_STORE_CTX_add_custom_crit_oid error paths
+  * Correct purpose setting for OCSP_request_verify
+  * Correct types finished-based APIs for TLS 1.3
+  * Fix issues in pass_util.cc password handling
+  * Use explicit check for X509 path length
+  * Fix CN fallback handling in name constraints checking
+  * Fix CRL distribution point scope check logic in crl_crldp_check
+
+-------------------------------------------------------------------
 Tue Mar 17 14:04:58 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.70.0:

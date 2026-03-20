@@ -19,7 +19,7 @@
 %define         sover 0
 %define         __builder ninja
 Name:           aws-lc
-Version:        1.70.0
+Version:        1.71.0
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
@@ -113,10 +113,13 @@ export OPENSSL_TOOL_PATH=%{_builddir}/%{name}-%{version}/build/tool-openssl/open
 %dir %{_libdir}/ssl
 %{_includedir}/openssl
 %{_libdir}/crypto/cmake
+%{_libdir}/libcrypto-awslc.so
 %{_libdir}/libcrypto.so
+%{_libdir}/libssl-awslc.so
 %{_libdir}/libssl.so
-%{_libdir}/pkgconfig/libcrypto.pc
-%{_libdir}/pkgconfig/libssl.pc
+%{_libdir}/pkgconfig/aws-lc.pc
+%{_libdir}/pkgconfig/libcrypto-awslc.pc
+%{_libdir}/pkgconfig/libssl-awslc.pc
 %{_libdir}/pkgconfig/openssl.pc
 %{_libdir}/ssl/cmake/
 

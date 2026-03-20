@@ -330,4 +330,12 @@
   * Fix PKCS7 verify content memleak (forwarded request 1339648 from rrahl0)</comment>
     <requestid>1339649</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6b1380166aea6030c8701ed7de32b6ac</srcmd5>
+    <version>1.71.0</version>
+    <time>1774038397</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1341546</requestid>
+  </revision>
 </revisionlist>
