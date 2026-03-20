@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Mar 20 06:59:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.33.0:
+  * a56697e Add DNS provider for EuroDNS (#2898)
+  * 9be8cd4 Add DNS provider for Excedo (#2910)
+  * 847c763 feat: Add DNS provider for Czechia (#2885)
+  * 491dcaa feat: allow to Unwrap obtainError (#2874)
+  * 87b172f gigahostno: remove unused Zone fields (#2913)
+  * 7d459b5 liara: add support for team ID (#2867)
+  * 7b1aa50 safedns: rename UKFast SafeDNS to ANS SafeDNS (#2877)
+
+-------------------------------------------------------------------
+Fri Feb 20 06:04:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.32.0:
+  * 078a188 Add DNS provider for ArtFiles (#2859)
+  * de869c8 Add DNS provider for Bluecat v2 (#2791)
+  * 4d41c52 Add DNS provider for DDNSS (#2795)
+  * 527d51d Add DNS provider for DNSExit (#2787)
+  * 2e095b9 Add DNS provider for FusionLayer NameSurfer (#2852)
+  * dd1ea80 Add DNS provider for Leaseweb (#2856)
+  * 7f10c13 Add DNS provider for TodayNIC/时代互联 (#2788)
+  * 2ce04a6 alidns: add line record option (#2814)
+  * 16894fb allinkl: detect zone through API (#2721)
+  * 44b89b7 allinkl: factorize findZone
+  * d063b15 azure: reinforces deprecation (#2792)
+  * c1aaf19 docs: make it more clear that any ACME CA may be used
+    (#2841)
+  * 4a61728 fix: deduplicate authz for DNS01 challenge (#2828)
+  * fac5c39 fix: implement parsing for Retry-After header according
+    to RFC 7231 (#2830)
+  * d896c1f fix: preserve domain order (#2862)
+  * a7145a2 fix: use IPs to define the main domain (#2817)
+  * c06f378 namesurfer: fix updateDNSHost (#2854)
+  * 1991339 timewebcloud: fix subdomain support (#2845)
+
+-------------------------------------------------------------------
 Sun Jan 11 13:10:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.31.0:
