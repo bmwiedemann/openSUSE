@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 17 11:35:53 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 84.87+git20260317.a0eb4ba:
+  * prg-brp-symlink: Check against end of vector before
+    dereferencing it (boo#1259443)
+
+-------------------------------------------------------------------
 Fri Mar 24 13:05:24 UTC 2023 - dmueller@suse.com
 
 - Update to version 84.87+git20230324.8680ce4:
