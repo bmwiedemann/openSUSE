@@ -1,7 +1,7 @@
 #
 # spec file for package nvidia-settings
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,12 @@
 %endif
 
 Name:           nvidia-settings
-Version:        580.119.02
+Version:        580.142
 Release:        0
 Summary:        Configure the NVIDIA graphics driver
 License:        GPL-2.0-only
 URL:            https://github.com/NVIDIA/nvidia-settings
-Source0:        %{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}-load.desktop
 Source2:        nvidia-libXNVCtrl.rpmlintrc
 Patch0:         %{name}-desktop.patch

@@ -162,4 +162,20 @@ make use of %ldconfig_scriptlets</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1323542</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8034054817ac55dce900c2c844ad2268</srcmd5>
+    <version>580.126.18</version>
+    <time>1772127380</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1334771</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0896e59e38affc815415ec128386ac5b</srcmd5>
+    <version>580.142</version>
+    <time>1774037982</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1341176</requestid>
+  </revision>
 </revisionlist>
