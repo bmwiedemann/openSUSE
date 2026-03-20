@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Mar 20 07:00:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.3.3:
+  * build(deps): bump codecov/codecov-action from 5.5.2 to 5.5.3
+    (#15068)
+  * build(deps): bump windows-strings from 0.5.0 to 0.5.1 (#15066)
+  * build(deps): bump windows-core from 0.62.1 to 0.62.2 (#15067)
+  * build(deps): bump windows-result from 0.4.0 to 0.4.1 (#15065)
+  * build(deps): bump dtoa from 1.0.10 to 1.0.11 (#15064)
+  * build(deps): bump proxy-init from 2.4.5 to 2.4.6 (#15062)
+  * chore(deps): upgrade to go 1.25.8 (#15061)
+  * build(deps): bump windows-link from 0.2.0 to 0.2.1 (#15032)
+  * build(deps-dev): bump jest from 30.1.3 to 30.3.0 in /web/app
+    (#15043)
+  * build(deps-dev): bump babel-jest from 30.1.2 to 30.3.0 in
+    /web/app (#15045)
+  * build(deps): bump once_cell from 1.21.3 to 1.21.4 (#15059)
+  * build(deps): bump pin-project from 1.1.10 to 1.1.11 (#15058)
+  * build(deps): bump socket2 from 0.6.2 to 0.6.3 (#15057)
+  * build(deps-dev): bump sinon from 21.0.1 to 21.0.2 in /web/app
+    (#15013)
+  * build(deps): bump helm.sh/helm/v3 from 3.20.0 to 3.20.1
+    (#15031)
+  * build(deps): bump actions/download-artifact from 8.0.0 to 8.0.1
+    (#15036)
+  * build(deps-dev): bump babel-loader from 10.1.0 to 10.1.1 in
+    /web/app (#15044)
+  * build(deps): bump softprops/action-gh-release from 2.5.0 to
+    2.6.1 (#15049)
+  * build(deps): bump google.golang.org/grpc from 1.79.2 to 1.79.3
+    (#15055)
+  * build(deps): bump anstyle from 1.0.13 to 1.0.14 (#15053)
+  * build(deps): bump cc from 1.2.56 to 1.2.57 (#15052)
+  * build(deps): bump h2 from 0.4.12 to 0.4.13 (#15051)
+  * chore(deps): upgrade extension-init version (#15009)
+  * build(deps): bump the clap group with 4 updates (#15046)
+  * build(deps): bump tracing-subscriber in the tracing group
+    (#15047)
+  * build(deps): bump openssl-sys from 0.9.111 to 0.9.112 (#15048)
+  * build(deps): bump golang.org/x/tools from 0.42.0 to 0.43.0
+    (#15039)
+  * build(deps): bump Swatinem/rust-cache from 2.8.2 to 2.9.1
+    (#15040)
+  * build(deps): bump bitflags from 2.10.0 to 2.11.0 (#15035)
+  * build(deps): bump rustls from 0.23.35 to 0.23.37 (#15034)
+  * build(deps): bump getrandom from 0.2.16 to 0.2.17 (#15033)
+  * build(deps): bump actions/download-artifact (#15037)
+
+-------------------------------------------------------------------
 Fri Mar 13 06:11:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.3.2:
