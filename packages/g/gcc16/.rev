@@ -20,4 +20,30 @@ add
 %product_libs_gcc_ver_libgdruntime6 15</comment>
     <requestid>1337303</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fc50faf8ab7bd867b20b694dd5e5b9f8</srcmd5>
+    <version>16.0.1+git8152</version>
+    <time>1774037957</time>
+    <user>anag_factory</user>
+    <comment>############
+
+Please stage separately from 'gcc', this should fix the build on s390x,
+unbreaking the zSystems repository.  It should also speedup Ring-0
+builds significantly due to switching to release checking.
+
+############
+
+- Update to 16.0.1+git8152
+- Avoids intermittent ABI breakage for libgccjit
+
+- Switch to release checking
+
+- Update to 16.0.1+git8070
+- Revert s390x PGO bootstrap-lto-lean workaround.
+
+- Avoid PGO bootstrap-lto-lean on s390x because of PR124406.
+
+- Package libquadmath independently of fortran</comment>
+    <requestid>1340890</requestid>
+  </revision>
 </revisionlist>

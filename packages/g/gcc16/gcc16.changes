@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Mar 18 08:54:47 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to 16.0.1+git8152
+- Avoids intermittent ABI breakage for libgccjit
+
+-------------------------------------------------------------------
+Fri Mar 13 09:08:19 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Switch to release checking
+
+-------------------------------------------------------------------
+Fri Mar 13 07:15:39 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to 16.0.1+git8070
+- Revert s390x PGO bootstrap-lto-lean workaround.
+
+-------------------------------------------------------------------
+Wed Mar 11 14:29:30 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Avoid PGO bootstrap-lto-lean on s390x because of PR124406.
+
+-------------------------------------------------------------------
+Tue Mar 10 12:57:26 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Package libquadmath independently of fortran
+
+-------------------------------------------------------------------
 Fri Mar  6 07:09:46 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update to 16.0.1+git7922

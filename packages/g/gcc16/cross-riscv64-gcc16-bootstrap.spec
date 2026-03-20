@@ -1,7 +1,7 @@
 #
 # spec file for package cross-riscv64-gcc16-bootstrap
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,6 +22,8 @@
 %define gcc_target_glibc 1
 %define gcc_libc_bootstrap 1
 # nospeccleaner
+
+%bcond_without release_checking
 
 %define build_cp 1
 %if 0%{?gcc_libc_bootstrap:1} || "%{cross_arch}" == "bpf"
@@ -104,7 +106,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        16.0.1+git7922
+Version:        16.0.1+git8152
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -429,8 +431,11 @@ languages=$languages,algol68
 
 # In general we want to ship release checking enabled compilers
 # which is the default for released compilers
+%if %{with release_checking}
+ENABLE_CHECKING="--enable-checking=release"
+%else
 ENABLE_CHECKING="--enable-checking=yes"
-#ENABLE_CHECKING="--enable-checking=release"
+%endif
 #ENABLE_CHECKING=""
 
 # Work around tail/head -1 changes

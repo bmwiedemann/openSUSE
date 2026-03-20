@@ -29,6 +29,7 @@
 %endif
 
 %bcond_without bootstrap
+%bcond_without release_checking
 
 # Ada currently fails to build on a few platforms, enable it only
 # on those that work
@@ -836,7 +837,7 @@ Group:        Development/Languages/Fortran
 Requires: libquadmath%{libquadmath_sover}@variant@ >= %{version}-%{release}
 
 %description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}@variant@
-The libquadmatah runtime library development files.
+The libquadmath runtime library development files.
 # PACKAGE-END
 
 # PACKAGE-BEGIN
@@ -1534,8 +1535,11 @@ languages=$languages,algol68
 
 # In general we want to ship release checking enabled compilers
 # which is the default for released compilers
+%if %{with release_checking}
+ENABLE_CHECKING="--enable-checking=release"
+%else
 ENABLE_CHECKING="--enable-checking=yes"
-#ENABLE_CHECKING="--enable-checking=release"
+%endif
 #ENABLE_CHECKING=""
 
 # Work around tail/head -1 changes
@@ -2271,10 +2275,8 @@ mv %{buildroot}/%{_infodir}/libgomp.info %{buildroot}/%{_infodir}/libgomp%{binsu
 %ifarch %itm_arch
 mv %{buildroot}/%{_infodir}/libitm.info %{buildroot}/%{_infodir}/libitm%{binsuffix}.info
 %endif
-%if %{build_fortran}
 %ifarch %quadmath_arch
 mv %{buildroot}/%{_infodir}/libquadmath.info %{buildroot}/%{_infodir}/libquadmath%{binsuffix}.info
-%endif
 %endif
 %if %{build_ada}
 mv %{buildroot}/%{_infodir}/gnat-style.info %{buildroot}/%{_infodir}/gnat-style%{binsuffix}.info
@@ -2308,9 +2310,9 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc@base_ver@-locale.lang
 %endif
 %if %{build_fortran}
 %install_info --info-dir=%{_infodir} %{_infodir}/gfortran%{binsuffix}.info.gz
+%endif
 %ifarch %quadmath_arch
 %install_info --info-dir=%{_infodir} %{_infodir}/libquadmath%{binsuffix}.info.gz
-%endif
 %endif
 %if %{build_ada}
 %install_info --info-dir=%{_infodir} %{_infodir}/gnat-style%{binsuffix}.info.gz
@@ -2341,9 +2343,9 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc@base_ver@-locale.lang
 %endif
 %if %{build_fortran}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gfortran%{binsuffix}.info.gz
+%endif
 %ifarch %quadmath_arch
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/libquadmath%{binsuffix}.info.gz
-%endif
 %endif
 %if %{build_ada}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gnat-style%{binsuffix}.info.gz
@@ -2999,6 +3001,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc@base_ver@-locale.lang
 %defattr(-,root,root)
 %biarchlib libgfortran.so.%{libgfortran_sover}*
 %endif
+%endif
 
 %ifarch %quadmath_arch
 %files -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}
@@ -3025,7 +3028,6 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc@base_ver@-locale.lang
 %versbiarchlib libquadmath.so
 %endif
 %endif
-%endif
 
 %files info
 %defattr(-,root,root)
@@ -3040,9 +3042,9 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc@base_ver@-locale.lang
 %endif
 %if %{build_fortran}
 %doc %{_infodir}/gfortran%{binsuffix}.info*.gz
+%endif
 %ifarch %quadmath_arch
 %doc %{_infodir}/libquadmath%{binsuffix}.info*.gz
-%endif
 %endif
 %if %{build_ada}
 %doc %{_infodir}/gnat-style%{binsuffix}.info*gz

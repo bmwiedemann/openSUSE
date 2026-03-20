@@ -1,5 +1,7 @@
 # nospeccleaner
 
+%bcond_without release_checking
+
 %define build_cp 1
 %if 0%{?gcc_libc_bootstrap:1} || "%{cross_arch}" == "bpf"
 %define build_cp 0

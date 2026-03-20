@@ -1,7 +1,7 @@
 #
 # spec file for package gcc16
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@
 %endif
 
 %bcond_without bootstrap
+%bcond_without release_checking
 
 # Ada currently fails to build on a few platforms, enable it only
 # on those that work
@@ -223,7 +224,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        16.0.1+git7922
+Version:        16.0.1+git8152
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -1275,7 +1276,7 @@ Group:          Development/Languages/Fortran
 Requires:       libquadmath%{libquadmath_sover} >= %{version}-%{release}
 
 %description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}
-The libquadmatah runtime library development files.
+The libquadmath runtime library development files.
 
 %package -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-32bit
 Summary:        The GNU Fortran Compiler Quadmath Runtime Library Development Files
@@ -1284,7 +1285,7 @@ Group:          Development/Languages/Fortran
 Requires:       libquadmath%{libquadmath_sover}-32bit >= %{version}-%{release}
 
 %description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-32bit
-The libquadmatah runtime library development files.
+The libquadmath runtime library development files.
 
 %package -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-64bit
 Summary:        The GNU Fortran Compiler Quadmath Runtime Library Development Files
@@ -1293,7 +1294,7 @@ Group:          Development/Languages/Fortran
 Requires:       libquadmath%{libquadmath_sover}-64bit >= %{version}-%{release}
 
 %description -n libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-64bit
-The libquadmatah runtime library development files.
+The libquadmath runtime library development files.
 
 %package -n libitm%{libitm_sover}%{libitm_suffix}
 Summary:        The GNU Compiler Transactional Memory Runtime Library
@@ -2665,8 +2666,11 @@ languages=$languages,algol68
 
 # In general we want to ship release checking enabled compilers
 # which is the default for released compilers
+%if %{with release_checking}
+ENABLE_CHECKING="--enable-checking=release"
+%else
 ENABLE_CHECKING="--enable-checking=yes"
-#ENABLE_CHECKING="--enable-checking=release"
+%endif
 #ENABLE_CHECKING=""
 
 # Work around tail/head -1 changes
@@ -3396,10 +3400,8 @@ mv %{buildroot}/%{_infodir}/libgomp.info %{buildroot}/%{_infodir}/libgomp%{binsu
 %ifarch %itm_arch
 mv %{buildroot}/%{_infodir}/libitm.info %{buildroot}/%{_infodir}/libitm%{binsuffix}.info
 %endif
-%if %{build_fortran}
 %ifarch %quadmath_arch
 mv %{buildroot}/%{_infodir}/libquadmath.info %{buildroot}/%{_infodir}/libquadmath%{binsuffix}.info
-%endif
 %endif
 %if %{build_ada}
 mv %{buildroot}/%{_infodir}/gnat-style.info %{buildroot}/%{_infodir}/gnat-style%{binsuffix}.info
@@ -3433,9 +3435,9 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc16-locale.lang
 %endif
 %if %{build_fortran}
 %install_info --info-dir=%{_infodir} %{_infodir}/gfortran%{binsuffix}.info.gz
+%endif
 %ifarch %quadmath_arch
 %install_info --info-dir=%{_infodir} %{_infodir}/libquadmath%{binsuffix}.info.gz
-%endif
 %endif
 %if %{build_ada}
 %install_info --info-dir=%{_infodir} %{_infodir}/gnat-style%{binsuffix}.info.gz
@@ -3466,9 +3468,9 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc16-locale.lang
 %endif
 %if %{build_fortran}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gfortran%{binsuffix}.info.gz
+%endif
 %ifarch %quadmath_arch
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/libquadmath%{binsuffix}.info.gz
-%endif
 %endif
 %if %{build_ada}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gnat-style%{binsuffix}.info.gz
@@ -4114,6 +4116,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc16-locale.lang
 %defattr(-,root,root)
 %biarchlib libgfortran.so.%{libgfortran_sover}*
 %endif
+%endif
 
 %ifarch %quadmath_arch
 %files -n libquadmath%{libquadmath_sover}%{libquadmath_suffix}
@@ -4140,7 +4143,6 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc16-locale.lang
 %versbiarchlib libquadmath.so
 %endif
 %endif
-%endif
 
 %files info
 %defattr(-,root,root)
@@ -4155,9 +4157,9 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc16-locale.lang
 %endif
 %if %{build_fortran}
 %doc %{_infodir}/gfortran%{binsuffix}.info*.gz
+%endif
 %ifarch %quadmath_arch
 %doc %{_infodir}/libquadmath%{binsuffix}.info*.gz
-%endif
 %endif
 %if %{build_ada}
 %doc %{_infodir}/gnat-style%{binsuffix}.info*gz
