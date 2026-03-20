@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 20 07:06:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.42.2:
+  * Release v1.42.2 (#7071)
+  * updating ansible operator plugin to 1.42.2 (#7070)
+  * Bump google.golang.org/grpc from 1.78.0 to 1.79.3 (#7069)
+  * updating generated files post 1.42.1 release (#7067)
+
+-------------------------------------------------------------------
 Tue Mar 10 06:44:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.42.1:
