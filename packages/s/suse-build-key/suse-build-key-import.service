@@ -1,0 +1,8 @@
+[Unit]
+Description=Import new SUSE RPM signing keys
+ConditionPathExists=/var/lib/suse-build-key/imported
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/import-suse-build-key

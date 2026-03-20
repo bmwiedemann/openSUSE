@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+triggerfile=/var/lib/suse-build-key/imported
+
+# if zypp is running we will get into lock conflicts, and zypper might die
+# unexpectedly.
+if [ -s /run/zypp.pid ]; then
+	echo "Aborted, zypper is running"
+	exit 0
+fi
+
+# first remove trigger file
+rm -f $triggerfile
+
+# The import might fail if something has locked the RPM database. in that case we retry again on next boot or so.
+for KFN in /usr/lib/rpm/gnupg/keys/gpg-pubkey-*.asc; do
+    if [ ! -e "$KFN" ];then
+        #
+        # check if file exists because if the glob match did
+        # not find files bash will use the glob string as
+        # result and we just continue in this case
+        #
+        continue
+    fi
+    KEY=$(basename "$KFN" .asc)
+    rpm -q "$KEY" >/dev/null && continue
+    echo "Importing $KEY to rpm database"
+    rpm --import "$KFN" || touch "$triggerfile"
+done
+
+# if we have finished import, disable and stop the timer.
+if [ ! -f $triggerfile -a -x /usr/bin/systemctl ] ; then
+	systemctl stop suse-build-key-import.timer
+	systemctl disable suse-build-key-import.timer
+fi

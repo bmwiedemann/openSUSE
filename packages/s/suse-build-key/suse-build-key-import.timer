@@ -1,0 +1,9 @@
+[Unit]
+Description=Timer to import new SUSE RPM signing keys
+
+[Timer]
+OnBootSec=1h
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target

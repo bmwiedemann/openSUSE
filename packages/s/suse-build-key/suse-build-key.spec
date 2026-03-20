@@ -1,7 +1,7 @@
 #
 # spec file for package suse-build-key
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,20 @@ Source5:        gpg-pubkey-09d9ea69-68595a8c.asc
 #uid                             ALP Package Signing Key (reserve key) <build-alp@suse.de>
 Source6:        gpg-pubkey-73f03759-626bd414.asc
 
+#
+# ML-DSA 87 key for SLES 15
+#       Subject: CN=SUSE Linux Enterprise 15 Build PQC Key, C=DE, L=Nuremberg, O=SUSE Software Solutions Germany GmbH, OU=Build Team, emailAddress=build-pqc-15@suse.de
+#           Not Before: Feb  9 14:48:46 2026 GMT
+#           Not After : Aug  2 14:48:46 2031 GMT
+Source11:       build-pqc-15.pem
+#
+# ML-DSA 87 key for SLES 15
+#       Subject: CN=SUSE Linux Enterprise 16 Build PQC Key, C=DE, L=Nuremberg, O=SUSE Software Solutions Germany GmbH, OU=Build Team, emailAddress=build-pqc-16@suse.de
+#           Not Before: Feb  9 14:35:33 2026 GMT
+#           Not After : Aug  2 14:35:33 2031 GMT
+#
+Source12:       build-pqc-16.pem
+
 # new 4096 bit SLES container key.
 #pub   rsa4096/0x100CEB438FD6C337 2023-01-19 [SC] [expires: 2027-01-18]
 #      Key fingerprint = 2BFA 4649 1A1C FFA8 31EF  C4B6 100C EB43 8FD6 C337
@@ -98,10 +112,15 @@ Source98:       suse_ptf_4096_key.asc
 Source99:       security_at_suse_de.asc
 
 Source100:      dumpsigs
+Source101:      import-suse-build-key
+Source102:      suse-build-key-import.service
+Source103:      suse-build-key-import.timer
+
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %define keydir  %{_prefix}/lib/rpm/gnupg/keys
+%define pqkeydir  %{_prefix}/lib/rpm/pqkeys
 %define containerkeydir  %{_prefix}/share/container-keys/
 %define pemcontainerkeydir  %{_prefix}/share/pki/containers/
 
@@ -142,6 +161,12 @@ done
 install -m 755 %{SOURCE100} $RPM_BUILD_ROOT/usr/lib/rpm/gnupg
 %endif
 
+# copy PQC certs
+install -d -m 755 $RPM_BUILD_ROOT/%pqkeydir
+install -c -m 644 %{SOURCE11} $RPM_BUILD_ROOT/%pqkeydir
+install -c -m 644 %{SOURCE12} $RPM_BUILD_ROOT/%pqkeydir
+
+# copy container certs, to both dirs
 install -d -m 755 $RPM_BUILD_ROOT%{containerkeydir}/
 install -c -m 644 %{SOURCE3} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key-old.asc
 install -c -m 644 %{SOURCE7} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-key.asc
@@ -150,11 +175,33 @@ install -d -m 755 $RPM_BUILD_ROOT%{pemcontainerkeydir}/
 install -c -m 644 %{SOURCE10} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key-old.pem
 install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container-key.pem
 
+mkdir -p $RPM_BUILD_ROOT/usr/bin/
+mkdir -p $RPM_BUILD_ROOT/var/lib/suse-build-key
+install -m 755 %{SOURCE101} $RPM_BUILD_ROOT/usr/bin/import-suse-build-key
+mkdir -p $RPM_BUILD_ROOT/%_unitdir
+install -m 644 %{SOURCE102} $RPM_BUILD_ROOT/%_unitdir
+install -m 644 %{SOURCE103} $RPM_BUILD_ROOT/%_unitdir
+
+%post
+touch /var/lib/%{name}/imported
+%service_add_post suse-build-key-import.service suse-build-key-import.timer
+test -x /usr/bin/systemctl && systemctl enable suse-build-key-import.timer && systemctl start suse-build-key-import.timer || true
+
+%pre
+%service_add_pre suse-build-key-import.service suse-build-key-import.timer
+
+%preun
+%service_del_preun suse-build-key-import.service suse-build-key-import.timer
+
+%postun
+%service_del_postun suse-build-key-import.service suse-build-key-import.timer
+
 %files
 %defattr(644,root,root)
 %doc security_at_suse_de.asc
 %attr(755,root,root) %dir %{_prefix}/lib/rpm/gnupg
 %attr(755,root,root) %dir %{keydir}
+%attr(755,root,root) %dir %{pqkeydir}
 %attr(755,root,root) %dir %{containerkeydir}
 %if 0%{?suse_version} &&  0%{?suse_version} < 1120
 %attr(755,root,root) %{_prefix}/lib/rpm/gnupg/dumpsigs
@@ -162,11 +209,18 @@ install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{pemcontainerkeydir}/suse-container
 %{keydir}/gpg-pubkey-*.asc
 %{keydir}/suse_ptf_4096_key.asc
 %{keydir}/suse_ptf_key.asc
+%{pqkeydir}/build-pqc-15.pem
+%{pqkeydir}/build-pqc-16.pem
 %{containerkeydir}/suse-container-key.asc
 %{containerkeydir}/suse-container-key-old.asc
 %dir /usr/share/pki/
 %dir %{pemcontainerkeydir}/
 %{pemcontainerkeydir}/suse-container-key.pem
 %{pemcontainerkeydir}/suse-container-key-old.pem
+%attr(755,root,root) %_bindir/import-suse-build-key
+%dir /var/lib/%{name}
+%ghost /var/lib/%{name}/imported
+%_unitdir/suse-build-key-import.service
+%_unitdir/suse-build-key-import.timer
 
 %changelog

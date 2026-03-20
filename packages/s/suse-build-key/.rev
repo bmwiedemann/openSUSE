@@ -416,4 +416,16 @@ This fixes build on SLE15SP7. (forwarded request 1190501 from epaolantonio)</com
   names. (bsc#1245223) (forwarded request 1292191 from msmeissn)</comment>
     <requestid>1292192</requestid>
   </revision>
+  <revision rev="50" vrev="21">
+    <srcmd5>66227877af37f30e1984036513c95d9b</srcmd5>
+    <version>12.0</version>
+    <time>1774038001</time>
+    <user>anag_factory</user>
+    <comment>- add the auto import framework
+
+- Added post quantum cryptographic keys for SLES 15 and SLES 16.
+  - build-pqc-15.pem
+  - build-pqc-16.pem</comment>
+    <requestid>1341188</requestid>
+  </revision>
 </revisionlist>
