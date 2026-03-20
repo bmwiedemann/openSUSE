@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-event-stream
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-c-event-stream
-Version:        0.5.9
+Version:        0.6.0
 Release:        0
 Summary:        C99 implementation of the vnd.amazon.eventstream content-type
 License:        Apache-2.0

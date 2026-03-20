@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 17 13:22:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.6.0
+  * Fix possible overflow by @TingDaoK in (#139)
+
+-------------------------------------------------------------------
 Mon Jan  5 09:05:21 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.5.9
