@@ -2,7 +2,7 @@
 # spec file for package timezone
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global AREA    Etc
 %global ZONE    UTC
 Name:           timezone
-Version:        2025c
+Version:        2026a
 Release:        0
 Summary:        Time Zone Descriptions
 License:        BSD-3-Clause AND SUSE-Public-Domain
@@ -73,7 +73,6 @@ export AREA LANG LC_ALL ZONE
 mkdir -p %{buildroot}%{_datadir}/zoneinfo
 cp -a zoneinfo %{buildroot}%{_datadir}/zoneinfo/posix
 cp -al %{buildroot}%{_datadir}/zoneinfo/posix/. %{buildroot}%{_datadir}/zoneinfo
-cp -a zoneinfo-leaps %{buildroot}%{_datadir}/zoneinfo/right
 mkdir -p %{buildroot}%{_sysconfdir}
 rm -f  %{buildroot}%{_sysconfdir}/localtime
 rm -f  %{buildroot}%{_datadir}/zoneinfo/posixrules

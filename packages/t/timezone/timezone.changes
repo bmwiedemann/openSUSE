@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar  5 10:45:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2026a:
+  * Moldova has used EU transition times since 2022
+  * The "right" TZif files are no longer installed by default
+  * TZif files are no longer limited to 50 bytes of abbreviations
+  * zic is no longer limited to 50 leap seconds
+  * Several integer overflow bugs have been fixed
+
+-------------------------------------------------------------------
 Sat Dec 13 13:52:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2025c:
