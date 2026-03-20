@@ -45,6 +45,8 @@ of Alibaba Cloud OpenAPI.
 
 %prep
 %setup -n %{repo}-v%{version} -a1
+# Fix version reported by command line utility
+sed -i 's/\(\tVersion\s=\s"\)0.0.1\("$\)/\1%{version}\2/g' cli/version.go
 
 %build
 %goprep %{import_path}

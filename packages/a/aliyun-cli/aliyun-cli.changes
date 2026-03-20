@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 19 09:57:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Fix version reported by command line utility (bsc#1259227)
+
+-------------------------------------------------------------------
 Wed Mar 18 09:50:16 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.2
