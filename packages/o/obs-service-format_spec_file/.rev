@@ -872,4 +872,13 @@
   * Start introducing LicenseRef-SUSE-*</comment>
     <requestid>1341052</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>fe10a2a9a9e9e07825106190266f80a1</srcmd5>
+    <version>20260320</version>
+    <time>1774038382</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260320:
+  * A &quot;+&quot; suffix is only allowed for license-id</comment>
+    <requestid>1341539</requestid>
+  </revision>
 </revisionlist>

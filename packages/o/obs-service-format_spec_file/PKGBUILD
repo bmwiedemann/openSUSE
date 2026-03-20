@@ -1,5 +1,5 @@
 pkgname=obs-service-format_spec_file
-pkgver=20260319
+pkgver=20260320
 pkgrel=0
 pkgdesc='An OBS source service: reformats a spec file to SUSE standard'
 arch=('any')
