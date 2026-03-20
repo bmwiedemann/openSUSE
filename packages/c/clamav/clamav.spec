@@ -68,7 +68,7 @@ Patch5:         clamav-obsolete-config.patch
 Patch14:        clamav-document-maxsize.patch
 Patch15:        clamav-format.patch
 Patch16:        clamav-workaround.patch
-ExcludeArch:    %{arml}
+ExcludeArch:    %{arml} %{ix86}
 
 BuildRequires:  cargo%{?vrust}
 BuildRequires:  cmake%{?vcmake}
@@ -289,7 +289,7 @@ install -m 0644 %SOURCE12 %{buildroot}%{_unitdir}/clamonacc.service
 
 %check
 # regression tests
-%if !0%{?qemu_user_space_build:1} && ( 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500 )
+%if !0%{?qemu_user_space_build:1}
 # Run ctest with a single job to avoid failures
 # due to race conditions, e.g. on s390x.
 %define _smp_mflags -j1

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 12 18:56:55 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Disable build for 32 bit ix86 because of testsuite failures with
+  rust >= 1.87 that upstream is not planning to fix.
+- Run the test suite on all SUSE releases.
+
+-------------------------------------------------------------------
 Thu Mar  5 16:46:47 UTC 2026 - Reinhard Max <max@suse.com>
 
 - New version 1.5.2:

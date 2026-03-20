@@ -1472,4 +1472,12 @@
     file when checking for false positives (bsc#1221954).</comment>
     <requestid>1338542</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>0726179a7e562987bd91d40e287355d5</srcmd5>
+    <version>1.5.2</version>
+    <time>1774038394</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1341545</requestid>
+  </revision>
 </revisionlist>
