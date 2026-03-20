@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 20 00:11:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Deactive polydb since it does not support linking with
+  bson2/mongoc2.
+
+-------------------------------------------------------------------
 Tue Jan 13 20:37:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable polydb for Tumbleweed / suse_version>=1690

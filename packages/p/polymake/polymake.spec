@@ -53,10 +53,6 @@ BuildRequires:  pkgconfig(flint)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(mpfr)
 BuildRequires:  pkgconfig(readline) >= 5
-%if 0%{?suse_version} >= 1690
-BuildRequires:  pkgconfig(libbson-1.0)
-BuildRequires:  pkgconfig(libmongoc-1.0)
-%endif
 Requires:       perl(JSON)
 Requires:       perl(Term::ReadKey)
 Requires:       perl(Term::ReadLine::Gnu)

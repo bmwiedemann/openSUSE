@@ -56,4 +56,13 @@
 - Reenable callable library mode [boo#1256453]</comment>
     <requestid>1327087</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>950b068262436521f64462bc10c984f3</srcmd5>
+    <version>4.15</version>
+    <time>1774038089</time>
+    <user>anag_factory</user>
+    <comment>- Deactive polydb since it does not support linking with
+  bson2/mongoc2.</comment>
+    <requestid>1341462</requestid>
+  </revision>
 </revisionlist>
