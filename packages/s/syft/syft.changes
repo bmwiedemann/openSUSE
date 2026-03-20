@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Mar 20 06:39:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.42.3:
+  * Bug Fixes
+    - Missing secondary evidence for .NET dependency in
+      ghcr.io/open-telemetry/demo:2.0.0-accounting image [#4652]
+  * Additional Changes
+    - centralize temp files and prefer streaming IO [#4668
+      @willmurphyscode]
+    - chore(deps): update anchore dependencies (#4681)
+    - chore(deps): bump github.com/buger/jsonsparser to v1.1.2
+      (#4680)
+    - chore(deps): bump the go-minor-patch group with 2 updates
+      (#4678)
+    - chore(deps): bump google.golang.org/grpc from 1.78.0 to
+      1.79.3 (#4675)
+    - chore(deps): bump the go-minor-patch group with 2 updates
+      (#4674)
+    - chore(deps): update tools to latest versions (#4663)
+    - chore(deps): bump the go-minor-patch group with 3 updates
+      (#4669)
+    - chore(deps): bump github/codeql-action (#4670)
+    - chore(deps): bump docker/login-action from 3.7.0 to 4.0.0
+      (#4671)
+    - chore(deps): update CPE dictionary index (#4673)
+    - chore(tests): fix test fixture build on modern ARM Mac
+      (#4666)
+
+-------------------------------------------------------------------
+Tue Mar 10 06:16:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.42.2:
+  * Bug Fixes
+    - [BUG] Incorrect Maven PURL generation: Automatic-Module-Name
+      should not be used as Maven groupId [#4611 #4642 @xnox]
+    - Checksum is 0 for spdx files [#2307 #4620 @ppalucha]
+    - Support grafana binary various versions [#4559 #4635
+      @witchcraze]
+  * Additional Changes
+    - migrate fixtures to testdata [#4651 @wagoodman]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4631)
+    - chore(deps): update tools to latest versions (#4630)
+    - chore(deps): update SPDX license list (#4637)
+    - chore(deps): bump actions/download-artifact from 7.0.0 to
+      8.0.0 (#4658)
+    - chore(deps): bump github.com/cloudflare/circl from 1.6.1 to
+      1.6.3 (#4638)
+    - chore(deps): bump the actions-minor-patch group across 2
+      directories with 2 updates (#4657)
+    - chore(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0
+      (#4659)
+    - chore(deps): bump go.opentelemetry.io/otel/sdk from 1.39.0 to
+      1.40.0 (#4646)
+    - chore(deps): update CPE dictionary index (#4647)
+    - chore(deps): bump the go-minor-patch group across 1 directory
+      with 5 updates (#4661)
+    - chore(deps): update CPE dictionary index (#4636)
+    - chore(deps): bump github/codeql-action (#4634)
+    - chore(deps): bump github.com/charmbracelet/bubbles from
+      0.21.1 to 1.0.0 (#4633)
+    - chore(deps): bump the go-minor-patch group with 5 updates
+      (#4632)
+
+-------------------------------------------------------------------
 Thu Feb 19 06:12:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.42.1:
