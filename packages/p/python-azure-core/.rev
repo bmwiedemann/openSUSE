@@ -656,4 +656,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1339360 from glaubitz)</comment>
     <requestid>1339361</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>91bcaaa6339e2b8cb4d4c42f7c164451</srcmd5>
+    <version>1.39.0</version>
+    <time>1774037970</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.39.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1341095 from glaubitz)</comment>
+    <requestid>1341137</requestid>
+  </revision>
 </revisionlist>
