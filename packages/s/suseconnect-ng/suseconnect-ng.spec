@@ -2,7 +2,6 @@
 # spec file for package suseconnect-ng
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +22,14 @@ Name:           suseconnect-ng
 Version:        1.20.0
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
-License:        LGPL-2.1-or-later
+License:        LGPL-3.0-or-later
 Summary:        Utility to register a system with the SUSE Customer Center
 Group:          System/Management
 Source:         suseconnect-ng-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        vendor.tar.xz
+# PATCH-FIX-UPSTREAM fix-libsuseconnect-and-pci.patch
+Patch0:         fix-libsuseconnect-and-pci.patch
 
 # Build against latest golang in Tumbleweed and
 # go1.21-openssl on all other distributions
