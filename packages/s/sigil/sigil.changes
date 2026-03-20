@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 19 22:21:26 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.7.6
+
+- Update to 2.7.6
+  * New Features
+    - add ability to unset environment variables using the env-vars.txt file
+  * Bug Fixes
+    - fix many translations from Transifex that somehow were improperly updated
+    - Fix bug in Clips Window (dock widget) that messed up its layout
+
+-------------------------------------------------------------------
 Wed Mar 11 18:50:22 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.7.5
 
 - Update to 2.7.5
