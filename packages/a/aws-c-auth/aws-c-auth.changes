@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 14:21:16 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.10.1
+  * Fix byo crypto by @TingDaoK in (#290)
+- from version 0.10.0
+  * Support imds endpoint override by @TingDaoK in (#286)
+
+-------------------------------------------------------------------
 Wed Feb 18 09:35:47 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.6
