@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar 20 06:39:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.110.0:
+  * Added Features
+    - suppress GHSA matches on language packages in fixed APKs
+      [#3282 @willmurphyscode]
+  * Bug Fixes
+    - use Syft for decoding CPEs [#3058 @chovanecadam]
+  * Additional Changes
+    - update quality gate labels [#3293 @westonsteimel]
+    - chore(deps): update anchore dependencies (#3300)
+    - chore(deps): update anchore dependencies (#3298)
+    - chore(deps): bump github.com/buger/jsonparser to v1.1.2
+      (#3297)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.8.4
+      to 1.8.5 (#3290)
+    - chore(deps): bump google.golang.org/grpc from 1.76.0 to
+      1.79.3 (#3295)
+    - chore(deps): update tools to latest versions (#3273)
+    - chore(deps): bump golang.org/x/text from 0.34.0 to 0.35.0
+      (#3289)
+    - chore(deps): bump sigstore/cosign-installer from 4.0.0 to
+      4.1.0 (#3291)
+    - chore(deps): bump anchore/sbom-action from 0.23.0 to 0.23.1
+      (#3292)
+    - chore(deps): bump docker/login-action from 3.7.0 to 4.0.0
+      (#3278)
+    - chore(deps): bump github/codeql-action from 4.32.4 to 4.32.6
+      (#3283)
+    - chore(deps): bump golang.org/x/time from 0.14.0 to 0.15.0
+      (#3272)
+
+-------------------------------------------------------------------
 Tue Mar 10 06:16:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.109.1:
