@@ -23,7 +23,7 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends osc expect obs-service-format_spec_file obs-service-source_validator typescript git-core openSUSE-release openSUSE-release-appliance-docker
+    zypper -n install --no-recommends build expect git-core obs-scm-bridge obs-service-format_spec_file obs-service-set_version obs-service-source_validator obs-service-tar_scm openSUSE-release openSUSE-release-appliance-docker osc rpm-build typescript
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
