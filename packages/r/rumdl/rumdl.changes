@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar 20 13:52:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.57:
+  * Fixed
+    - MD041: MDX-style inline disable comments ({/* <!--
+      rumdl-disable MD041 --> */}) now correctly suppress MD041
+      (#538)
+    - MD041: Extracted shared first_content_line_idx() helper to
+      prevent check/fix path inconsistencies
+- Update to version 0.1.56:
+  * Added
+    - MD057: Obsidian attachment folder auto-detection when flavor
+      = "obsidian" is set — supports all 4 Obsidian attachment
+      modes (vault root, named folder, same as file, subfolder
+      under file) (#537)
+    - MD057: New search-paths config option for specifying
+      additional directories to search when resolving relative
+      links
+- Update to version 0.1.55:
+  * Fixed
+    - MD064: Fixed false positives inside indented fenced code
+      blocks when --- horizontal rules appear later in the document
+      (#536)
+      - Replaced Options::all() with an explicit pulldown-cmark
+        option allowlist, excluding
+        ENABLE_YAML_STYLE_METADATA_BLOCKS which misinterprets ---
+        horizontal rules as YAML metadata delimiters (works around
+        pulldown-cmark#1000)
+      - rumdl handles front matter detection independently and
+        correctly (requires --- at line 1, not anywhere in the
+        document)
+
+-------------------------------------------------------------------
 Thu Mar 19 06:13:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.54:
