@@ -1299,6 +1299,7 @@ unsorted:
   - azure-storage-azcopy 
   - b3sum 
   - b4 
+  - b4n 
   - babelstone-han-fonts 
   - babelstone-marchen-fonts 
   - babelstone-modern-fonts 
@@ -12604,6 +12605,7 @@ unsorted:
   - libcap-ng-utils 
   - libcap-ng0-32bit 
   - libcap-progs 
+  - libcap2-32bit 
   - libcapi20 
   - libcapi20-3 
   - libcapi20-3-32bit 
@@ -14536,7 +14538,7 @@ unsorted:
   - liblldb20 
   - liblldb21 
   - liblldpctl4 
-  - liblmdb-0_9_30-32bit 
+  - liblmdb-0_9_35-32bit 
   - liblms7002m-devel 
   - liblms7compact0 
   - liblnk-devel 
@@ -15263,7 +15265,7 @@ unsorted:
   - libopenssl-fips-provider 
   - libopentimelineio18 
   - libopentracing-cpp1 
-  - libopenvdb12_0 
+  - libopenvdb13_0 
   - libopenvino2600 
   - libopenvino_c2600 
   - libopenvino_ir_frontend2600 
@@ -16264,7 +16266,6 @@ unsorted:
   - libsemanage-migrate-store 
   - libsemanage2-32bit 
   - libsemigroups-devel 
-  - libsemigroups2 
   - libsemigroups3 
   - libsensors4-32bit 
   - libsensors4-devel 
