@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Mar 20 06:49:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.7:
+  * chore(deps): update dependency siderolabs/talos to v1.12.6
+  * chore(schema): update talos-extensions.yaml JSON schema (#1511)
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.12.6
+  * chore(container): update ghcr.io/getsops/sops docker tag to
+    v3.12.2
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.35.3
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.13.0-beta.0
+  * fix(deps): update module github.com/getsops/sops/v3 to v3.12.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#1507)
+  * feat(config): validate per node `talosImageURL`
+  * chore(schema): update talos-extensions.yaml JSON schema (#1503)
+  * fix(deps): update module github.com/google/go-containerregistry
+    to v0.21.3
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.5
+  * chore(schema): update talos-extensions.yaml JSON schema (#1500)
+  * chore(github-action)!: Update workflow/nix-shell-action action
+    to v4
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.6
+  * feat: update Scoop for talhelper version v3.1.6
+  * feat: update flake (#1496)
+
+-------------------------------------------------------------------
 Thu Mar 12 11:53:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.6:
