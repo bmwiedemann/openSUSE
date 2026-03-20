@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 19 07:30:54 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.37
+  * Make release.sh active
+  * Run klogctl with console massages off only once in the
+    password asking processes on the main console device only
+  * Clean up white spaces
+  * This will help on high console I/O as now blogd uses its epoll
+    event handler to monitor via a file descriptor open with pidfd_open
+    the password asking child processes (boo#1259547)
+
+-------------------------------------------------------------------
 Tue Mar 17 09:18:40 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.36

@@ -17,7 +17,7 @@
 
 
 Name:           blog
-Version:        2.36
+Version:        2.37
 %define sonum   2
 Release:        0
 Summary:        Boot logging
