@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Mar 19 15:28:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  New Features:
+  * When sources are removed mid-run, they become N/A instead of
+    crashing the util.
+  * The current performance governor is now shown in the sidebar.
+  * The performance governor can be seleted on systems that support
+    it (some options require root).
+  * A new built-in stress test, no more need for external stress
+    support. Exteranl stress support is still an option, but no
+    longer required for the stress test option to be available.
+  * Hardening of application errors and failures that were reported
+    by some users.
+  * An extensive test suite, mocking psutil and various edge cases.
+  Changes:
+  * fix: Always specify '=' as delimiter in config parser.
+  * Add a test suite to test sources and e2e more extensivly.
+  * Handle issues #255 and #256, with NoneType returned by pstuil.
+  * Solve issue #263, more robust poser reads.
+  * Feat/dynamic source.
+  * Update urwid AttrWrap to AttrMap.
+  * Feat/dynamic temp sensors.
+  * Harden stress test kill on exit.
+  * Feat/new stresser.
+  * Feat/governors.
+  * Feat/throttle detect.
+
+-------------------------------------------------------------------
 Mon Jan 12 17:29:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.0
