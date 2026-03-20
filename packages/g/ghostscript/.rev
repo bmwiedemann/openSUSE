@@ -688,4 +688,12 @@ https://build.opensuse.org/requests/1305216
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1332668</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>b25c21c486b6438616bcb7008b04e148</srcmd5>
+    <version>10.07.0</version>
+    <time>1774037967</time>
+    <user>anag_factory</user>
+    <comment>Ghostscript version upgrade to 10.07.0 fixes security issues where MITRE has not yet CVEs assigned - see 'This release addresses CVEs: TBC (Two applied for)' in https://ghostscript.readthedocs.io/en/gs10.07.0/News.html (forwarded request 1341106 from jsmeix)</comment>
+    <requestid>1341108</requestid>
+  </revision>
 </revisionlist>

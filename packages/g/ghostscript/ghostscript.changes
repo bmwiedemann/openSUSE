@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 19 08:24:27 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 10.07.0
+  See 'Recent Changes in Ghostscript' at Ghostscript upstream
+  https://ghostscript.readthedocs.io/en/gs10.07.0/News.html
+  * This release addresses CVEs: TBC (Two applied for)
+  * The 10.07.0 removes the non-standard operator ".tempfile",
+    and removes the "temp" directory from the default file
+    permission lists. By default, such access is now only
+    available internally, not from "user level" PostScript,
+    cf. https://bugs.ghostscript.com/show_bug.cgi?id=709155
+- ghostscript-10.06.0-Fix_32-bit_build.patch is no longer
+  needed because it is fixed in the upstream sources.
+
+-------------------------------------------------------------------
 Tue Sep 16 13:45:31 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 10.06.0
