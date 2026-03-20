@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 20 12:50:42 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- bump ruby gems w.r.t ruby-4.0.2 
+  * action_text-trix-2.1.17.gem
+  * erb-6.0.2.gem
+  * fiddle-1.1.8.gem
+  * gettext-3.5.2.gem
+  * gettext_i18n_rails_js-3.1.1.gem
+  * irb-1.17.0.gem
+  * json-2.19.2.gem
+  * kramdown-2.5.2.gem
+  * locale-2.1.5.gem
+  * loofah-2.25.1.gem
+  * minitest-6.0.2.gem
+  * net-imap-0.6.3.gem
+  * nokogiri-1.19.2.gem
+  * po_to_json-3.0.1.gem
+  * prism-1.9.0.gem
+  * puma-7.2.0.gem
+  * rails-html-sanitizer-1.7.0.gem
+  * rdoc-7.2.0.gem
+  * sorbet-runtime-0.6.13051.gem
+  * timeout-0.6.1.gem
+  * zeitwerk-2.7.5.gem
+
+-------------------------------------------------------------------
 Mon Mar 02 15:38:34 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Update to version 2.7.0+git.1772201206.4725acc7:
