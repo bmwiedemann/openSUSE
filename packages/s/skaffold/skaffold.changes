@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 20 07:06:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.1:
+  * fix: update gcr.io/kpt-fn/ to
+    ghcr.io/kptdev/krm-functions-catalog fo… (#10020)
+  * fix: update gcr.io/kpt-fn/ to
+    ghcr.io/kptdev/krm-functions-catalog for the kpt transformers
+  * fix some images, update unit test
+  * integration test fixes
+
+-------------------------------------------------------------------
 Fri Mar 13 06:19:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.0:

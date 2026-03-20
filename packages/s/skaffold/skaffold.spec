@@ -17,7 +17,7 @@
 
 
 Name:           skaffold
-Version:        2.18.0
+Version:        2.18.1
 Release:        0
 Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0
