@@ -1,0 +1,270 @@
+-------------------------------------------------------------------
+Sat Mar 14 22:21:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1:
+  Fixed
+  * Community Scripts Metadata Source: Switched the Community
+    Scripts plugin from the stale archive fallback to the newly
+    exposed public PocketBase metadata API at
+    db.community-scripts.org, restoring up-to-date script listings
+    while keeping install script execution on
+    community-scripts/ProxmoxVE.
+  * Community Scripts Development Script Labeling: Community
+    Scripts entries now indicate when a script is in development
+    and sourced from the community-scripts/ProxmoxVED dev
+    repository.
+- Update to version 1.2.0:
+  Added
+  * Storage Browser Navigation: Added a first-class Storage page
+    with its own configurable shortcut (Alt+4 by default),
+    footer/help integration, node-scoped storage browsing, content
+    filtering, and storage refresh controls.
+  * Storage Content Acquisition: Added storage-level download
+    actions for URL-based ISO/template/import downloads and OCI
+    image pulls from the Storage page.
+  * Guest Creation Flows: Added initial node/global creation flows
+    for VMs and LXCs, including VM creation from ISO-based
+    installers and LXC creation from templates.
+  Fixed
+  * Storage Browser Actions: Added storage-content context actions
+    for deleting ISO/template/snippet/backup entries and restoring
+    backups directly from the Storage page, while removing the
+    redundant Storage Browser entry from the Global menu.
+  * Community Scripts Metadata Source: Temporarily restored
+    Community Scripts plugin metadata loading by switching from the
+    removed upstream frontend JSON path to the archived
+    community-scripts/ProxmoxVE-Frontend-Archive metadata source
+    while upstream stabilizes a replacement for the new website
+    architecture.
+
+-------------------------------------------------------------------
+Mon Mar  9 08:01:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.0:
+  Added
+  * Ansible Toolkit Plugin: Added a new opt-in ansible plugin with
+    integrated toolkit workflows for generating inventory from
+    loaded Proxmox nodes/guests (YAML or INI, compact/expanded
+    styles, optional custom inventory_vars), previewing/saving
+    inventory, running ansible -m ping, executing ansible-playbook
+    with reusable form state, and providing an SSH setup guide.
+    Includes plugin settings for default user/password/key path,
+    limit behavior, and default Ansible extra arguments.
+  Fixed
+  * Startup Profile Chooser Default Handling: When default_profile
+    is unset, startup now correctly prompts for profile/group
+    selection even if a profile is literally named default, and
+    non-interactive launches now return a clear error instead of
+    exiting successfully without starting the app.
+  * Template Guest Handling: Template VMs/CTs are now labeled as
+    templates in the guest list and Guest Details, no longer appear
+    as ordinary stopped guests for lifecycle UX, and are excluded
+    from start-oriented context-menu and batch-action flows.
+
+-------------------------------------------------------------------
+Sat Feb 28 11:10:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20:
+  Added
+  * Guest Network Config Editor: Added an "Edit Network Interfaces"
+    action in guest configuration with a dedicated interface editor
+    (bridge/VLAN/rate/firewall plus VM/CT-specific fields),
+    including LXC DHCP/Static IP assignment toggle and LXC
+    nameserver/searchdomain fields, writing back to Proxmox netX
+    config entries on save.
+  * Cluster Group Mode (HA Failover): Added per-group
+    group_settings with mode: cluster so a group can connect
+    through one active profile and automatically fail over to the
+    next healthy candidate.
+  * Group Mode Controls in Profiles UI: Added a mode selector to
+    the Edit Group dialog and a cluster mode marker in the
+    Connection Profiles list.
+  Fixed
+  * Guest Details Description Consistency: The Description row now
+    always appears in Guest Details and shows N/A when a guest
+    description is empty; for stopped guests, details now hydrate
+    description from config when available.
+  * Running Guest CPU Metric Stability: Running guests now display
+    0.0% CPU instead of transient N/A when APIs briefly return
+    invalid non-finite CPU values after restart.
+  * Guest Selection Snap-Back After Config Save Refresh: Preserved
+    any user-initiated list selection changes made during in-flight
+    refreshes so completion no longer forces selection back to the
+    pre-refresh guest/node.
+  * Transient CPU N/A After Guest Restart: Sanitized non-finite
+    numeric values from API responses during single-guest refreshes
+    so running guests no longer briefly show CPU as N/A when
+    metrics momentarily return NaN/Inf after restart.
+  * Tasks Panel Focus Freeze: Fixed an immediate freeze when
+    tabbing from Task History to Active Operations by keeping task
+    table cells selectable and avoiding a tview table selection
+    loop.
+  * Cluster Failover Refresh Re-entrancy: Triggered failover
+    refresh asynchronously to avoid nested QueueUpdateDraw callback
+    paths.
+  * Single Guest Refresh IP Staleness: Fixed per-guest refresh so
+    running guests (including LXC containers after network/VLAN
+    changes) update IP information without requiring a full cluster
+    refresh.
+
+-------------------------------------------------------------------
+Sun Feb 22 10:05:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.19:
+  Added
+  * Vim-Style List Navigation: Added gg (top) and G (bottom)
+    navigation in focused Nodes, Guests, and Tasks lists/tables.
+  * Guest Multi-Select + Batch Actions: Added Space-based guest
+    multi-selection and batch context-menu actions so you can
+    queue operations across multiple selected guests.
+  * Task Queue Throughput Control: Added a global in-progress
+    concurrency limit so queued operations are processed without
+    overloading the API/task polling path.
+  * Queued Task Cancellation: Added support for canceling queued
+    tasks before they enter the running state.
+  * Advanced Guest Filter Modal: Added a Guests-page advanced
+    filter modal (default Ctrl+f, configurable via
+    key_bindings.advanced_guest_filter) with structured criteria
+    for status, type, node, and tag matching, while preserving
+    combined text-search + advanced filtering across refreshes.
+  Fixed
+  * Task Panel Focus Stability: Prevented a Tasks-page freeze
+    when tabbing between Task History and Active Operations by
+    avoiding layout rebuilds during active task refreshes and
+    tightening pane focus switching logic.
+  * Global Menu Defaults: Esc is now the primary global menu key
+    by default, while global_menu remains configurable as an
+    optional additional shortcut.
+  * Global Menu Unbind Support: key_bindings.global_menu: "" now
+    correctly disables the additional global-menu shortcut instead
+    of silently reverting to the default.
+  * Task Keybind Configurability: toggle_task_panel and
+    task_stop_cancel can now be customized like other key bindings.
+  * Help Modal Keybinding Layout: Reorganized help sections so task
+    controls and page-specific actions are grouped more clearly.
+  * Back Navigation Consistency: Standardized back/close handling
+    so Backspace works alongside Escape in Command Runner,
+    Snapshot Manager, and Backup Manager flows.
+  * Context Menu Placement: Node/Guest context menus are now
+    anchored near the focused list selection instead of always
+    centered, keeping details panes visible while menus are open.
+
+-------------------------------------------------------------------
+Sun Feb 15 09:09:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.18:
+  Added
+  * Async Task Queue System: Introduced a queued background task
+    system for VM operations with task panel visibility controls,
+    UPID tracking, improved keyboard/focus behavior, and safer
+    non-blocking UI execution flow.
+  * Profile/Group CLI Listing: Added --list-profiles to print
+    configured connection profiles and aggregate groups (including
+    key connection details and memberships) and exit, making it
+    easier to pair with --profile for direct startup selection.
+  * QEMU Guest Agent Toggle in VM Config Editor: Added a checkbox
+    to VM Edit Configuration so the QEMU guest agent can be
+    enabled/disabled directly from the TUI.
+  Fixed
+  * Guest Insights Plugin ID Compatibility: Renamed the plugin
+    identifier to guest-insights while keeping demo-guest-list as
+    a backward-compatible alias so existing configs continue to
+    load without changes.
+  * Form Label Readability: Standardized form field labels to use
+    HeaderText color across VM/task/wizard dialogs for improved
+    readability in terminal themes where default secondary text
+    appears too dim.
+
+-------------------------------------------------------------------
+Sun Feb 01 19:48:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.17:
+  * Added
+    - Node Disk SMART Information: Node details now display disk
+      health status and SMART data for all attached disks,
+      including disk type (SSD/HDD), size, model, and health status
+      (PASSED/FAILED).
+    - System Update Notifications: Node details now show available
+      system package updates with version information, displaying
+      up to 5 pending updates with a count of any additional
+      updates.
+    - Icon Toggle: Added multiple ways to control icons/emojis
+      throughout the UI. Icons are enabled by default. To disable:
+      use --show-icons=false CLI flag, PVETUI_SHOW_ICONS=false
+      environment variable, or show_icons: false in YAML config.
+      (#75)
+    - Guest Tags: Added editable tag list for VM/LXC configuration,
+      using a semicolon-separated tag field in the Edit
+      Configuration form. (#76)
+    - SSH Jump Host Support: Added SSH jump host (bastion host)
+      configuration for accessing Proxmox environments through an
+      intermediate SSH server. Configure via config wizard, CLI
+      flags (--ssh-jumphost-addr, --ssh-jumphost-user,
+      --ssh-jumphost-keyfile, --ssh-jumphost-port), environment
+      variables (PVETUI_SSH_JUMPHOST_ADDR,
+      PVETUI_SSH_JUMPHOST_USER, PVETUI_SSH_JUMPHOST_KEYFILE,
+      PVETUI_SSH_JUMPHOST_PORT), or YAML config (ssh_jump_host
+      section). Per-profile configuration supported.
+    - Release Announcements: GoReleaser now posts release
+      announcements to Mastodon and Bluesky when the required
+      secrets are configured.
+  * Changed
+    - Release Pipeline: Simplified GitHub token configuration by
+      removing duplicate secret names (HOMEBREW_TAP_TOKEN,
+      SCOOP_BUCKET_TOKEN) in favor of consistent '_GITHUB_TOKEN'
+      naming.
+    - Makefile Build: make build now uses the build cache by
+      default; set REBUILD=1 to force a full toolchain rebuild.
+    - Local Dev Workflow: Added build-fast and test-quick targets
+      and cached package lists for faster local builds/tests;
+      optional TRIMPATH=0 disables trimpath in local builds.
+    - Nix Flake: Automated vendorHash updates with dependency
+      changes to prevent hash mismatches on Nix installations.
+      (#80, #81)
+  * Fixed
+    - UI Deadlocks: Eliminated nested QueueUpdateDraw deadlocks
+      that occurred when displaying error messages from menu
+      handlers by switching to direct SetFocus calls. This fixes
+      deadlocks in various scenarios including interacting with
+      offline nodes and group connection handling.
+    - Group Connection Handling: Improved connection handling
+      during bootstrap and resource fetching in aggregate groups to
+      prevent UI freezes.
+    - Group Mode Filter Persistence: Fixed active search filters
+      being lost during manual refresh (Ctrl+R) and after VM
+      operations in aggregate group mode. Filters now persist
+      correctly across all refresh operations.
+    - Group Mode VM Details Refresh: Fixed VM details panel not
+      updating after operations (reboot, start, stop, etc.) in
+      group mode by ensuring the correct profile-specific client is
+      used to fetch fresh VM data.
+    - Group Mode Source Profile Preservation: Fixed VMs losing
+      their cluster association after operations in group mode,
+      which caused "source profile not set" errors. The
+      SourceProfile field is now preserved when refreshing
+      individual VM data.
+    - Group Mode Initial Loading Feedback: Added header loading
+      message "Loading guest agent data" during initial startup in
+      group mode. Previously, profile names would appear in the UI
+      without warning after a silent enrichment process.
+    - CI Cache Noise: Removed redundant Go module cache restore in
+      CI to prevent tar "File exists" errors during lint/test/build
+      jobs.
+    - Group Mode Config Polling: Avoided cross-profile cluster
+      resource polling when only tags change, reducing delays after
+      saving guest configuration.
+    - Header Loading Animation: Prevented overlapping loading
+      spinners that made the header animation appear overly fast
+      during concurrent updates.
+  * Dependencies
+    - deps(deps): bump github.com/gdamore/tcell/v2 from 2.13.7 to
+      2.13.8
+    - deps(deps): bump golang.org/x/crypto from 0.46.0 to 0.47.0
+    - deps(deps): bump github.com/gdamore/tcell/v2 from 2.13.5 to
+      2.13.7
+    - deps(deps): bump golang.org/x/term from 0.38.0 to 0.39.0
+
+-------------------------------------------------------------------
+Mon Jan 12 12:05:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package pvetui: Terminal UI for Proxmox VE
