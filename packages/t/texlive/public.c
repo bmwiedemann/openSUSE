@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
 
 #ifdef HAVE_SELINUX
     if (is_selinux_enabled() > 0) {
-	    char *cur_con = NULL;
+	char *cur_con = NULL;
 
 	if (getcon(&cur_con) == 0) {
 	    context_t ctx = context_new(cur_con);

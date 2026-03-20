@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 19 13:24:08 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Disable SELinux as not required by most systems out there (boo#1258938)
+
+-------------------------------------------------------------------
 Fri Mar  6 09:30:43 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Reenable setgid usage for mktexls and texhash commands

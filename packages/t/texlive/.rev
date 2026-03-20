@@ -1345,4 +1345,12 @@
   and its %pre, %post, %postun, and %posttrans scriplets</comment>
     <requestid>1337291</requestid>
   </revision>
+  <revision rev="113" vrev="116">
+    <srcmd5>973062ab40509a8a0cf14dd4bd5af1a1</srcmd5>
+    <version>unknown</version>
+    <time>1774037984</time>
+    <user>anag_factory</user>
+    <comment>- Disable SELinux as not required by most systems out there (boo#1258938)</comment>
+    <requestid>1341179</requestid>
+  </revision>
 </revisionlist>

@@ -70,7 +70,7 @@
 #
 #
 %bcond_without	luametatex
-%bcond_without	selinux
+%bcond_with	selinux
 
 %global         modulename texlive_wrapper
 %global         selinuxtype targeted
@@ -4770,12 +4770,14 @@ popd
 
     # compile public
     mkdir -p %{libexecdir}/mktex
+    FLAGS_SELINUX=
+    LIBS_SELINUX=
 %if %{with selinux}
     cp -p %{S:52} %{S:53} .
     make -f %{_datadir}/selinux/devel/Makefile %{modulename}.pp
-%endif
     FLAGS_SELINUX=-DHAVE_SELINUX
     LIBS_SELINUX=-lselinux
+%endif
     $CC ${RPM_OPT_FLAGS} -D_GNU_SOURCE -DTEXGRP='"%{texgrp}"' -DTEXUSR='"%{texusr}"' ${FLAGS_SELINUX} \
 	-DMKTEX='"%{_libexecdir}/mktex"' -fPIE -pie -o %{libexecdir}/mktex/public %{S:50} ${LIBS_SELINUX}
 

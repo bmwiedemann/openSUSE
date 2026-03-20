@@ -9,6 +9,7 @@ gen_require(`
     type gconf_home_t;
     type cache_home_t;
     type data_home_t;
+    type user_home_t;
     type tmpfs_t;
     type cgroup_t;
     type tetex_data_t;
@@ -59,6 +60,7 @@ userdom_use_user_terminals(texlive_target_t)
 # The ~/.cache/texmf and ~/.local/texmf of normal users
 userdom_search_user_home_dirs(texlive_wrapper_t)
 userdom_search_user_home_dirs(texlive_target_t)
+allow texlive_target_t user_home_t:dir { search getattr };
 allow texlive_target_t home_bin_t:dir { search };
 allow texlive_target_t data_home_t:dir { search getattr };
 allow texlive_target_t gconf_home_t:dir { search getattr };
