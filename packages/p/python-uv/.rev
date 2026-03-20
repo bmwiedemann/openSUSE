@@ -2265,4 +2265,29 @@
     * Update build backend versions used in uv init</comment>
     <requestid>1339580</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>f0e50736f1ba1c9ee18893a890740419</srcmd5>
+    <version>0.10.12</version>
+    <time>1774038373</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.12
+ * Enhancements
+  * Include uv's target triple in version report 
+  * Allow comma separated values in --no-emit-package 
+ * Preview features
+  * Show uv audit in the CLI help 
+ * Bug fixes
+  * Improve reporting of managed interpreter symlinks in uv python list 
+  * Preserve end-of-line comments on previous entries when removing dependencies 
+  * Treat abi3 wheel Python version as a lower bound 
+  * Detect hard-float support on aarch64 kernels running armv7 userspace 
+ * Documentation
+  * Add Python 3.15 to supported versions 
+  * Adjust the PyPy note 
+  * Move Pyodide to Tier 2 in the Python support policy 
+  * Move Rust and Python version support out of the Platform support policy 
+  * Update Docker guide with changes from uv-docker-example 
+  * Update the Python version policy</comment>
+    <requestid>1341536</requestid>
+  </revision>
 </revisionlist>

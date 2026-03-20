@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 20 11:37:37 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.10.12
+ * Enhancements
+  * Include uv's target triple in version report 
+  * Allow comma separated values in --no-emit-package 
+ * Preview features
+  * Show uv audit in the CLI help 
+ * Bug fixes
+  * Improve reporting of managed interpreter symlinks in uv python list 
+  * Preserve end-of-line comments on previous entries when removing dependencies 
+  * Treat abi3 wheel Python version as a lower bound 
+  * Detect hard-float support on aarch64 kernels running armv7 userspace 
+ * Documentation
+  * Add Python 3.15 to supported versions 
+  * Adjust the PyPy note 
+  * Move Pyodide to Tier 2 in the Python support policy 
+  * Move Rust and Python version support out of the Platform support policy 
+  * Update Docker guide with changes from uv-docker-example 
+  * Update the Python version policy 
+
+-------------------------------------------------------------------
 Tue Mar 17 11:34:26 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.10.11 
