@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyJWT
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyJWT
-Version:        2.10.1
+Version:        2.12.1
 Release:        0
 Summary:        JSON Web Token implementation in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/progrium/pyjwt
 Source:         https://files.pythonhosted.org/packages/source/p/pyjwt/pyjwt-%{version}.tar.gz
+# Patch0:         skip-tests-incompatible-with-opensuse-toolchain.patch
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module cryptography >= 3.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sphinx_rtd_theme}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-cryptography >= 3.4
@@ -39,7 +44,7 @@ BuildArch:      noarch
 A Python implementation of JSON Web Token draft 01.
 
 %prep
-%setup -q -n pyjwt-%{version}
+%autosetup -p1 -n pyjwt-%{version}
 
 %build
 %pyproject_wheel
@@ -55,6 +60,8 @@ find ./ -type f -name "*.py" -perm 644 -exec sed -i -e '1{\@^#!%{_bindir}/env py
 donttest="test_verify_false_deprecated or test_get_jwt_set_sslcontext_default"
 # Failing test: gh#jpadilla/pyjwt#802
 donttest+=" or test_ec_to_jwk_with_invalid_curve"
+# compatibility with cryptography gh#jpadilla/pyjwt#1153
+donttest+=" or test_ec_curve_validation_rejects_p192_for_es256 or test_ec_curve_validation_with_pem_key or test_decodes_complete_valid_jwt_with_compressed_payload"
 %pytest -k "not ($donttest)"
 
 %files %{python_files}
