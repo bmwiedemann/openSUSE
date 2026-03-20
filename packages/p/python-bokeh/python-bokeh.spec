@@ -30,7 +30,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bokeh%{psuffix}
-Version:        3.8.2
+Version:        3.9.0
 Release:        0
 Summary:        Interactive plots and applications in the browser from Python
 License:        BSD-3-Clause
@@ -84,7 +84,7 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pyshp}
-BuildRequires:  %{python_module pytest-asyncio >= 0.18.1 with %python-pytest-asyncio < 0.23}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-tornado}
 BuildRequires:  %{python_module pytest-xdist}
@@ -195,7 +195,7 @@ export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %doc README.md CHANGELOG
 %python_alternative %{_bindir}/bokeh
 %{python_sitelib}/bokeh/
-%{python_sitelib}/bokeh-%{version}*-info
+%{python_sitelib}/bokeh-%{version}.dist-info
 %{python_sitelib}/typings/
 %endif
 

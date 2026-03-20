@@ -511,4 +511,41 @@
 </comment>
     <requestid>1328887</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>789853d55a6591dbdfdc716e7b9c1d78</srcmd5>
+    <version>3.9.0</version>
+    <time>1774038091</time>
+    <user>anag_factory</user>
+    <comment>- Remove upper bound on python-pytest-asyncio.
+
+- update to 3.9.0:
+  * - #14817 MyPy can crash on Bokeh 3.9.0.dev9 code
+  * - #14776 [component: bokehjs] Don't add BBox if an axis has
+    fixed position
+  * - #14815 [component: bokehjs] Bounds using FactorRanges
+    aren't respected in the first visualization
+  * - #14881 Default compression level seems too high
+  * - #14894 NoChannelsConfiguredError breaks CI after PR #14309
+  * - #10706 [component: bokehjs] [BUG] DataCube not respecting
+    'target' arg on initial creation
+  * - #14404 bokeh info should handle missing npm more gracefully
+  * - #14502 Legends fail to export using bokeh.io.export_svgs
+  * - #14549 [component: bokehjs] Updating Div text from hover
+    causes infinite loop
+  * - #14616 Add `is_silenced` function to the public API
+  * - #14645 [component: bokehjs] `CategoricalSlider` shows
+    'undefined' for some categories when a certain number of
+    categories is given
+  * - #14690 [component: bokehjs] Bokehjs test/devtools server
+    examples error on Windows
+  * - #14700 [component: tests] Regression test for #11339 fails
+    randomly since Chrome version upgrade.
+  * - #14709 [component: build] ESM minified bundles don't work
+    due to bad imports
+  * - #14730 CI sometimes fails on MacOS with &quot;The template is
+    not valid&quot;
+  * - #14744 [component: bokehjs] Use `outline_width` in `Legend`
+  * - #14750 [component: bokehjs] Block glyph doesn't account for</comment>
+    <requestid>1341470</requestid>
+  </revision>
 </revisionlist>
