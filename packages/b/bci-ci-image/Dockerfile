@@ -23,7 +23,7 @@
 FROM opensuse/bci/python:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends build buildah dnf fish gcc git-core iproute2 jq osc patch python3-devel python3-dnf python3-pipx python3-poetry
+    zypper -n install --no-recommends build buildah fish gcc git-core iproute2 jq osc patch python3-devel python3-pipx python3-poetry
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
