@@ -301,4 +301,17 @@
 - Override upstream version with 14.1.0~b1 (forwarded request 1291417 from glaubitz)</comment>
     <requestid>1291493</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5572a28879fb372a91be0d838ea1cb5d</srcmd5>
+    <version>15.0.0</version>
+    <time>1774038377</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 15.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from pyproject.toml (forwarded request 1341521 from glaubitz)</comment>
+    <requestid>1341538</requestid>
+  </revision>
 </revisionlist>
