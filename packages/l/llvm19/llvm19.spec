@@ -1,7 +1,7 @@
 #
 # spec file for package llvm19
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,7 @@
 
 %ifarch aarch64 ppc64le s390x x86_64
 %bcond_without lldb
-%if %{suse_version} > 1600
+%if %{suse_version} > 1699
 %bcond_without lldb_python
 %else
 # LLDB Python bindings require Swig 4, which SLE/Leap don't have.

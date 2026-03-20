@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 09 15:11:08 UTC 2026 - Martin Jambor <mjambor@suse.com>
+
+- Adjust a condition in the spec file to be ready when %suse_version
+  is increased in SLES 16.1 [jira#PED-15787].
+
+-------------------------------------------------------------------
 Sun Sep 21 12:56:36 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Port back llvm-constant-folding-fp128-instrinsics.patch to fix
