@@ -1843,4 +1843,14 @@ C API
   opening `.pyc` files (bsc#1259240, CVE-2026-2297).</comment>
     <requestid>1339368</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>48f7cf282367ee72f44df2b403072d82</srcmd5>
+    <version>3.11.15</version>
+    <time>1774037958</time>
+    <user>anag_factory</user>
+    <comment>- Fix changelog
+
+      Petr Viktorin in gh-121650) (bsc#1257181, CVE-2026-1299).</comment>
+    <requestid>1341037</requestid>
+  </revision>
 </revisionlist>
