@@ -1,7 +1,7 @@
 #
 # spec file for package gerbv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           gerbv
 %define libname lib%{name}
-Version:        2.10.0
+Version:        2.12.0
 Release:        0
 %define somajor 1
 Summary:        Gerber File Viewer that supports the RS-274X Standard
@@ -26,15 +26,17 @@ License:        GPL-2.0-only
 Group:          Productivity/Scientific/Electronics
 URL:            http://gerbv.geda-project.org/
 Source0:        https://github.com/gerbv/gerbv/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/gerbv/gerbv/issues/255
-Patch0:         gerbv-gcc15.patch
+Patch1:         gerbv-build-with-g++-13.patch
+BuildRequires:  cmake
+%if 0%{?suse_version} >= 1600
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc13-c++
+%endif
 BuildRequires:  gtk2-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtool
-BuildRequires:  opensp
 BuildRequires:  pkgconfig
-BuildRequires:  po4a
 BuildRequires:  update-desktop-files
 
 %description
@@ -66,27 +68,24 @@ This package contains development files for developing applications
 that use gerbv library.
 
 %prep
-%autosetup -p1
+%setup -q
+%if 0%{?suse_version} < 1600
+%patch -P 1 -p1
+%endif
 
 %build
-./autogen.sh
-%configure  \
-            --disable-static \
-            --enable-unit-mm \
-            --disable-update-desktop-database
-
-%make_build
+%cmake --preset linux-gnu-gcc
+%cmake_build
 
 %install
-%make_install
+%cmake_install
+
 %suse_update_desktop_file -r %{name} Education Engineering
 find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 
-#move translated man page
-mkdir -p %{buildroot}/%{_mandir}/ru/man1
-mv %{buildroot}/%{_mandir}/man1/%{name}.ru.1 %{buildroot}/%{_mandir}/ru/man1/%{name}.1
-
 %find_lang %{name}
+
+%check
 
 %post -n %{libname}%{somajor} -p /sbin/ldconfig
 
@@ -94,10 +93,10 @@ mv %{buildroot}/%{_mandir}/man1/%{name}.ru.1 %{buildroot}/%{_mandir}/ru/man1/%{n
 
 %files -f %{name}.lang
 %license COPYING
-%doc NEWS README
+%doc AUTHORS BUGS CONTRIBUTORS HACKING README.md
+%doc example
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}*
-%{_mandir}/*/man1/%{name}*
 %{_datadir}/%{name}/
 %{_datadir}/icons/*
 %{_datadir}/applications/%{name}.desktop

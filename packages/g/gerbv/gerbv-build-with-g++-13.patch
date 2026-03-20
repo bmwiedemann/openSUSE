@@ -1,0 +1,14 @@
+diff -up gerbv-2.12.0/cmake/toolchains/linux-gnu-gcc.cmake.aaaa gerbv-2.12.0/cmake/toolchains/linux-gnu-gcc.cmake
+--- gerbv-2.12.0/cmake/toolchains/linux-gnu-gcc.cmake.aaaa	2026-03-12 21:23:05.985250418 +0100
++++ gerbv-2.12.0/cmake/toolchains/linux-gnu-gcc.cmake	2026-03-12 21:23:51.166172755 +0100
+@@ -20,8 +20,8 @@ set(CMAKE_SYSTEM_NAME Linux)
+ # Toolchain Config #
+ ####################
+ 
+-set(CMAKE_C_COMPILER    gcc)
+-set(CMAKE_CXX_COMPILER  g++)
++set(CMAKE_C_COMPILER    gcc-13)
++set(CMAKE_CXX_COMPILER  g++-13)
+ set(AS                  as)
+ set(CMAKE_AR            gcc-ar)
+ set(OBJCOPY             objcopy)

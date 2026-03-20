@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Mar 12 21:10:27 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to 2.12.0:
+  Security fixes
+  * fix: undef DPRINTF before redefining to avoid macOS warning by
+    @rampageservices in #358
+  * fix: replace sprintf with snprintf in dxflib by @rampageservices
+    in #359
+  Bug fixes
+  * Fix all implicit case fallthrough (#287) by @rampageservices in #294
+  * Wire NOTE messages into CLI output with severity prefixes by
+    @rampageservices in #292
+  * fix: DXF export renders arcs as straight lines by @rampageservices in #296
+  * fix: Put version number into libgerbv.pc correctly. by @eyal0 in #337
+  * fix: Correct computation for bounding box of gerber files. by @eyal0 in #342
+  * Fix errno clobbered by cleanup in gerb_fopen() by @rampageservices in #319
+  * Fix non-ASCII file path handling on Windows by @rampageservices in #318
+  * fix: replace unsafe dprintf macro with safe DPRINTF variadic macro
+    by @rampageservices in #320
+  * fix: use portable font name for layer Modified column by @rampageservices in #355
+  * Fix double rotation of macro circle/line center coordinates (#233) by
+    @rampageservices in #310
+  * Guard INCH/METRIC unit assignment with autod in drill header parsing (#241)
+    by @rampageservices in #313
+  * Fix missing rotation for circle primitives in GDK renderer by @rampageservices in #375
+  * Fix use-after-free SEGV on RS274-X export (#162) by @rampageservices in #379
+  New features
+  * feat: add gerbv_create_excellon_image_from_filename() to public API by @spe-ciellt in #302
+  * fix: support Excellon G02/G03 arc routing with I/J center offsets by
+    @rampageservices in #298
+  * feat: add directory opening support (gerbv .) by @rampageservices in #309
+  * feat: optimized SVG export writer (fixes #236) by @rampageservices in #317
+  * refactor: move tinyscheme to thirdparty/ directory by @rampageservices in #357
+  * feat: warn when loaded file contains no geometry by @rampageservices in #307
+  * Implement our own local version of isascii() for tinyscheme. by @spe-ciellt in #390
+  * Move some toplevel definitions to respective toolchain files by @spe-ciellt in #391
+  * ci: add native Windows build with MSYS2 UCRT64 by @rampageservices in #378
+  Documentation
+  * docs: audit and update man page for current codebase by @rampageservices in #312
+  * Add TinyScheme BSD license notice by @rampageservices in #329
+  * fix: document dxflib patches and remove dead tessellation guard by @rampageservices in #340
+  * Update HACKING with modern git and GitHub recommendations. by @spe-ciellt in #347
+  Buildsystem (CMake/CTest/CPack/etc)
+  * Added label buildsystem for future release notes by @spe-ciellt in #311
+  * cmake: fix tarball builds and generated path handling by @chenrui333 in #303
+  * ci: add macos test by @chenrui333 in #327
+  * Allow static library builds via BUILD_SHARED_LIBS by @rampageservices in #314
+  * CMake for thirdparty libraries by @spe-ciellt in #374
+  * fix: Build authors.c before all locales. by @eyal0 in #365
+  * Pipeline fixes by @spe-ciellt in #389
+  * ci: fix Windows regression test runner by @rampageservices in #401
+  Other changes
+  * Add GitHub Sponsors funding configuration by @rampageservices in #315
+  * fix: address fopen() patch followups in main.c by @rampageservices in #351
+  * ix: remove dead NULL checks after g_malloc/g_new in gerb_file.c by @rampageservices in #353
+  * fix: apply rotation when computing aperture macro bounding boxes by @rampageservices in #341
+  * We now have DXF always compiled in so we need to remove all checks if… by @spe-ciellt in #388
+  * ix: Define M_PI, M_PI_2, and M_1_PI. by @eyal0 in #393
+- Update to 2.11.1:
+  * fix: Put version number into libgerbv.pc correctly by @eyal0 in #337
+- Update to 2.11.0:
+  Bug fixes
+  * Remove potential efence support by @spe-ciellt in #264
+  * Make MAX/MIN use pure C11 functions and not depend on GNU
+    extensions by @spe-ciellt in #265
+  * fix: set omit_zeros unconditionally when LZ/TZ is declared in
+  Excellon header by @rampageservices in #275
+  * test: wire up CTest integration and fix set -e abort
+  in run_tests.sh by @spe-ciellt in #276
+  * fix: correctly apply N from FILE_FORMAT=N:M with LZ trailing
+    suppression by @spe-ciellt in #278
+  * Add .gitignore to test to ignore files that are generated
+    during test. by @spe-ciellt in #281
+  * fix: silently ignore Gerber X2 attribute commands (TF, TA,
+    TO, TD) by @rampageservices in #282
+  * Fix aperture macro 0X parsed as hex float instead o
+    multiplication by @rampageservices in #285
+  * Fix circle primitives in aperture macros ignoring rotation by
+    @rampageservices in #286
+  * fix: add bounds-check guards for file reading functions by
+    @rampageservices in #293
+  * Number of monitors should not affect the start window height.
+    by @spe-ciellt in #295
+  * ci: add tag trigger and GitHub Release job by @spe-ciellt in #299
+  New features
+  * Updating to use CMake by @spe-ciellt in #261
+  * Packing of DEB and RPM by @spe-ciellt in #270
+  * feat: add optional Inkscape-layer SVG export by @5shekel in #279
+  * fix: support Excellon routing/milling commands (G00, G01, M15,
+    M16, M17) by @rampageservices in #283
+  * fix: add DXF image export to CLI by @spe-ciellt in #289
+- Patch gerbv-gcc15.patch removed (applied upstream)
+- Patch gerbv-build-with-g++-13.patch added as a workaround for
+  Leap-15.x (C++23 is required for build)
+
+-------------------------------------------------------------------
 Tue Jun 10 10:46:26 UTC 2025 - pgajdos@suse.com
 
 - added patches
