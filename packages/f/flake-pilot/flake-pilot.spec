@@ -19,7 +19,7 @@
 
 
 Name:           flake-pilot
-Version:        3.1.27
+Version:        3.1.28
 Release:        0
 Summary:        Launcher for flake applications
 License:        MIT
@@ -84,7 +84,7 @@ BuildRequires:  clang
 BuildRequires:  clang-devel
 %endif
 Requires:       rsync
-%if 0%{?fedora} || 0%{?suse_version} > 1600
+%if 0%{?fedora} || 0%{?suse_version} == 1699
 Requires:       firecracker
 %endif
 Requires:       e2fsprogs

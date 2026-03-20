@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Mar 12 16:06:42 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.27 → 3.1.28
+
+-------------------------------------------------------------------
+Thu Mar 12 12:07:07 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix spec file
+
+  Require firecracker only for SUSE TW, it does
+  not exists anywhere else
+
+-------------------------------------------------------------------
+Wed Feb 04 15:48:48 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add ai sandbox example workflow
+
+-------------------------------------------------------------------
+Wed Feb 04 15:41:41 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Clippy fixes
+
+-------------------------------------------------------------------
+Wed Feb 04 15:27:36 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Fix language mistakes and wording
+
+-------------------------------------------------------------------
 Mon Jan 26 22:07:12 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.26 → 3.1.27
