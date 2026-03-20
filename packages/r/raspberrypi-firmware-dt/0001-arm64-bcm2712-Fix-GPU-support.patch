@@ -1,0 +1,45 @@
+From 98a0f221b24f33b0c6743f9c46d898a2fd76f6fc Mon Sep 17 00:00:00 2001
+From: Andrea della Porta <andrea.porta@suse.com>
+Date: Thu, 19 Mar 2026 11:22:48 +0100
+Subject: [PATCH] arm64: bcm2712: Fix GPU support
+
+Add a new `reg` property with a lower base address than the `v3d`
+device. This is required to ensure the `vc4` device is enumerated
+as the primary display card.
+
+Additionally, disable the associated `iommu` node, as it currently
+lacks driver support.
+
+Signed-off-by: Andrea della Porta <andrea.porta@suse.com>
+---
+ arch/arm64/boot/dts/broadcom/bcm2712-ds.dtsi | 1 +
+ arch/arm64/boot/dts/broadcom/bcm2712.dtsi    | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-ds.dtsi b/arch/arm64/boot/dts/broadcom/bcm2712-ds.dtsi
+index 88b5cde..451ee70 100644
+--- a/arch/arm64/boot/dts/broadcom/bcm2712-ds.dtsi
++++ b/arch/arm64/boot/dts/broadcom/bcm2712-ds.dtsi
+@@ -295,6 +295,7 @@
+ 		cache = <&iommuc>;
+ 		#iommu-cells = <0>;
+ 		#interconnect-cells = <0>;
++		status = "disabled";
+ 	};
+ 
+ 	iommu5: iommu@5280 {
+diff --git a/arch/arm64/boot/dts/broadcom/bcm2712.dtsi b/arch/arm64/boot/dts/broadcom/bcm2712.dtsi
+index e5f7cb3..1e4213a 100644
+--- a/arch/arm64/boot/dts/broadcom/bcm2712.dtsi
++++ b/arch/arm64/boot/dts/broadcom/bcm2712.dtsi
+@@ -442,6 +442,7 @@
+ 
+ 		vc4: gpu {
+ 			compatible = "brcm,bcm2712-vc6";
++			reg = <0x10 0x1000000 0x00 0x00>;
+ 		};
+ 
+ 		pcie0: pcie@1000100000 {
+-- 
+2.51.0
+
