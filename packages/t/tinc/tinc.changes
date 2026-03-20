@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 13 15:34:23 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.37:
+  * Minor fixes
+  * Drop support for Linux ethertap devices
+  * Ensure tinc compiles cleanly on modern systems
+- Drop patches tinc-systemd-path-fix.patch, harden_tinc@.service.patch
+  harden_tinc.service.patch
+- Attach the signature and keyring for verifying the source
+
+-------------------------------------------------------------------
 Mon Feb 26 14:51:51 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

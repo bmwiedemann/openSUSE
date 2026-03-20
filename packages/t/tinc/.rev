@@ -78,4 +78,18 @@
     <comment></comment>
     <requestid>1159641</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>302f2f251270b8183050052eabbc0352</srcmd5>
+    <version>1.0.37</version>
+    <time>1774038393</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.37:
+  * Minor fixes
+  * Drop support for Linux ethertap devices
+  * Ensure tinc compiles cleanly on modern systems
+- Drop patches tinc-systemd-path-fix.patch, harden_tinc@.service.patch
+  harden_tinc.service.patch
+- Attach the signature and keyring for verifying the source (forwarded request 1340860 from rrahl0)</comment>
+    <requestid>1341551</requestid>
+  </revision>
 </revisionlist>

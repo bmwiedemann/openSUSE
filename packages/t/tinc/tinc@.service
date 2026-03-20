@@ -1,0 +1,33 @@
+[Unit]
+Description=Tinc net %i
+Documentation=info:tinc
+Documentation=man:tinc(8) man:tinc.conf(5)
+Documentation=http://tinc-vpn.org/docs/
+PartOf=tinc.service
+ReloadPropagatedFrom=tinc.service
+
+[Service]
+Type=simple
+WorkingDirectory=@sysconfdir@/tinc/%i
+ExecStart=@sbindir@/tincd -n %i -D
+ExecReload=@sbindir@/tincd -n %i -kHUP
+KillMode=mixed
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=5
+
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions
+
+[Install]
+WantedBy=tinc.service
