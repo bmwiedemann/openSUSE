@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 20 05:40:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.0.20:
+  * update translations
+
+-------------------------------------------------------------------
+Mon Feb  9 14:46:08 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.19:
+  * hande "uncache path" operation
+- includes changes from 3.0.18:
+  * fixes for other platforms
+- includes changes from 3.0.17:
+  * Check if daemon is started before set sync errors
+  * Add a FAQ link to error dialog
+  * Fix icon display error
+  * Add log rotate
+  * Update translations
+  * Set log rotate interval
+  * Close log file before rename
+- fix dependency on seadrive-fuse (boo#1259858)
+
+-------------------------------------------------------------------
+Tue Jan 13 13:01:35 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.16:
+- Drop issue477.patch
+
+-------------------------------------------------------------------
 Mon Oct 20 07:19:04 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0.13:

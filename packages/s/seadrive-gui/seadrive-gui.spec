@@ -2,6 +2,7 @@
 # spec file for package seadrive-gui
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           seadrive-gui
-Version:        3.0.16
+Version:        3.0.20
 Release:        0
 Summary:        GUI part of seafile drive
 License:        GPL-3.0-only
@@ -29,8 +30,6 @@ Patch1:         fix-cmake-exec-name.patch
 Patch2:         fix-return-value.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         issue446.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         issue477.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -40,9 +39,6 @@ BuildRequires:  libsearpc-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libevent)
-BuildRequires:  pkgconfig(uuid)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Designer)
@@ -54,9 +50,12 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5WebEngineCore)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(sqlite3)
-Requires:       seadrive-fuse = %{version}
+BuildRequires:  pkgconfig(uuid)
+Requires:       seadrive-fuse >= 3.0.18
 
 %description
 This package provides a graphical user interface for seadrive-fuse
@@ -69,12 +68,15 @@ export CFLAGS="%{optflags} -fPIE -pie"
 export CXXFLAGS="%{optflags} -fPIE -pie"
 %cmake \
   -DCMAKE_BUILD_TYPE=Release \
-  -DBUILD_ENABLE_WARNINGS=OFF
-
+  -DBUILD_ENABLE_WARNINGS=OFF \
+  %{nil}
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %doc README.md
