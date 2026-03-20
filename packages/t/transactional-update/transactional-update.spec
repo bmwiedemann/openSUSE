@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        6.0.6
+Version:        6.0.7
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -77,6 +77,7 @@ Requires:       lsof
 Requires:       psmisc
 Requires:       tukit = %{version}-%{release}
 Requires:       zypper
+Requires:       (transactional-update-up-as-default if (distribution-release without (product-update() = dup)))
 Requires:       (tukit-snapper-plugin if (snapper and read-only-root-fs))
 # Parameter --drop-if-no-change requires it
 Recommends:     inotify-tools
@@ -87,16 +88,21 @@ Conflicts:      kdump < 2.1.0
 # Support for /etc as subvolume
 Conflicts:      read-only-root-fs < 1.0+git20250410
 Conflicts:      sdbootutil < 1+git20250409
-# Includes policy for the 50-etc snapper plugin
-%if 0%{?suse_version} == 1600 && !0%{?is_opensuse}
-Conflicts:      selinux-policy < 20241031+git652.e1d5a07e
-%else
-Conflicts:      selinux-policy < 20250411
-%endif
 
 %description
 transactional-update is a tool to update a system in an atomic
 way with zypper, btrfs and snapshots.
+
+%package up-as-default
+Summary:        Sets 'up' as default update mechanism for transactional-update
+Group:          System/Base
+Requires:       transactional-update
+BuildArch:      noarch
+
+%description up-as-default
+In some cases, especially for the update timer, transactional-update has to
+know which update method to use. If the installed system is not using 'dup'
+as the default, then this package should be installed.
 
 %package -n tukit
 Summary:        Tool for doing transactional updates using Btrfs snapshots
@@ -189,9 +195,8 @@ autoreconf -fiv
 %make_build
 
 # Use "up" for non-rolling releases
-%if (%{defined sle_version} && %{undefined is_susecasp}) || 0%{?suse_version} == 1600
-sed -i 's/^UPDATE_METHOD=.*/UPDATE_METHOD=up/' etc/transactional-update.conf
-%endif
+echo '# Overwrite default update method
+UPDATE_METHOD=up' >> 10-use-up-as-default.conf
 
 # Enable soft-reboot by default
 sed -i 's/^REBOOT_ALLOW_SOFT_REBOOT=.*/REBOOT_ALLOW_SOFT_REBOOT=false/' etc/tukit.conf
@@ -204,6 +209,9 @@ sed -i 's/^REBOOT_ALLOW_SOFT_REBOOT=.*/REBOOT_ALLOW_SOFT_REBOOT=false/' etc/tuki
 # Install zypp config files
 mkdir -p %{buildroot}%{_sysconfdir}/zypp/systemCheck.d/
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/zypp/systemCheck.d/
+
+mkdir -p %{buildroot}%{_distconfdir}/transactional-update.conf.d/
+install -m 644 10-use-up-as-default.conf %{buildroot}%{_distconfdir}/transactional-update.conf.d/
 
 # Delete libtool cruft
 rm -rf %{buildroot}%{_libdir}/*.la
@@ -303,11 +311,15 @@ done
 %{_unitdir}/transactional-update-cleanup.timer
 %{_sbindir}/transactional-update
 %{_distconfdir}/transactional-update.conf
+%dir %{_distconfdir}/transactional-update.conf.d
 %{_mandir}/man5/transactional-update.conf.5*
 %{_mandir}/man8/transactional-update.8*
 %{_mandir}/man8/transactional-update.timer.8*
 %{_mandir}/man8/transactional-update.service.8*
 %ghost %attr(0644,root,root) %{_localstatedir}/log/transactional-update.log
+
+%files up-as-default
+%{_distconfdir}/transactional-update.conf.d/10-use-up-as-default.conf
 
 %files -n tukit
 %license COPYING gpl-2.0.txt

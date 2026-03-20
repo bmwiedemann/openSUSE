@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 19 11:16:06 UTC 2026 - Ignaz Forster <iforster@suse.com>
+
+- Version 6.0.7:
+  * libtukit: Fix --drop-if-no-change after `apply`
+  * libtukit: Remove stale snapshot after --discard
+  * systemd: Read from snippet directory in service file
+    [jsc#PED-15786]
+  * t-u: Allow overwriting the location of some files
+  * README: Update link to libdnf-plugin-txnupd
+- Remove %suse_version checks (jsc#PED-15786):
+  * The SELinux check is not required any more, the SELinux package
+    version was adjusted in the corresponding releases.
+  * Setting whether the distribution has to be updated by up or dup
+    was changed into a generic RPM dependency and a corresponding
+    configuration file snippet in a separte package.
+
+-------------------------------------------------------------------
 Mon Jan 19 18:47:48 UTC 2026 - Ignaz Forster <iforster@suse.com>
 
 - Version 6.0.6:
