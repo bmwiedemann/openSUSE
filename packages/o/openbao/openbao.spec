@@ -23,7 +23,7 @@
 %define short_executable_name bao
 
 Name:           openbao
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Manage, store, and distribute sensitive data
 License:        MPL-2.0
@@ -37,6 +37,7 @@ Source4:        %{name}-agent.hcl.sample
 #
 Source11:       Makefile
 Source12:       PACKAGING_README.md
+Source13:       prepare_webassets.sh
 BuildRequires:  fdupes
 BuildRequires:  golang(API) >= 1.25
 BuildRequires:  user(openbao)

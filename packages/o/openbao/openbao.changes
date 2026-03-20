@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Feb 25 12:12:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.5.1:
+  * SECURITY
+    - Build with Go 1.25.7 to resolve CVE-2025-68121 /
+      GO-2026-4337. [GH-2426]
+    - Bump go.opentelemetry.io/otel/sdk to 1.40.0 to resolve
+      CVE-2026-24051 / GO-2026-4394 / GHSA-9h8m-3fm2-qjrq.
+      [GH-2518]
+  * BUG FIXES
+    - seal: Fix Auto Unseal failing when upgrading to v2.5.0 or
+      downgrading from v2.5.0 to an earlier version. This affected
+      the following providers: AliCloud KMS, AWS KMS, Azure Key
+      Vault, GCP Cloud KMS & OCI KMS. [GH-2505]
+    - core/mounts: Don't attempt to upgrade legacy mount tables
+      when in read-only standby mode. [GH-2467]
+    - core/expiration: Fix total lease count not being decremented
+      when revoking irrevocable leases. [GH-2414]
+    - pki: Fix "context canceled" issue when processing cache
+      invalidation, leading to pki returning 500 until reload.
+      [GH-2472]
+    - command: Fix panic when the home directory cannot be
+      trivially deduced via environment variables. [GH-2446]
+  * CHANGES
+    - core/identity: Remove pre-v2.5.0 corrupt namespace identity
+      groups during unseal; corrupt groups need to be recreated by
+      an admin. Check for deleting corrupt group in server startup
+      logs. [GH-2454]
+- add script to package webassets inside a podman container, to not
+  endanger or pollute the host system with npm
+
+-------------------------------------------------------------------
 Thu Feb 05 05:55:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.5.0:
