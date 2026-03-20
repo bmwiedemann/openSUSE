@@ -122,4 +122,29 @@ outside of Factory
   * added esbuild-ppc64.patch</comment>
     <requestid>1333286</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>cd938b9643e7daebcb68c777a5dd35a4</srcmd5>
+    <version>14.4</version>
+    <time>1772050325</time>
+    <user>anag_factory</user>
+    <comment>- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258637/CVE-2026-26996</comment>
+    <requestid>1335042</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0223de6f9e5fb69f94b6a2b6d0e189a4</srcmd5>
+    <version>16</version>
+    <time>1774038373</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 16
+  * Changes since 14.4
+    - 16
+      * Translation updates
+      * Dependency updates
+      * Another bugfix to error handling bsc#1257033
+    - 15
+      * Translation updates
+      * Dependency updates
+      * Rework error handling</comment>
+    <requestid>1341522</requestid>
+  </revision>
 </revisionlist>
