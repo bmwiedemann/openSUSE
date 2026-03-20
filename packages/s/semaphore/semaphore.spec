@@ -17,7 +17,7 @@
 
 
 Name:           semaphore
-Version:        2.17.26
+Version:        2.17.27
 Release:        0
 Summary:        Modern UI for Ansible
 License:        MIT
@@ -27,6 +27,7 @@ Source1:        vendor.tar.gz
 Source2:        web-%{version}.tar.gz
 Source3:        Makefile
 Source4:        PACKAGING_README.md
+Source5:        prepare_webassets.sh
 Source11:       %{name}.service
 Source12:       server-config.json.example
 Source21:       %{name}-runner.service

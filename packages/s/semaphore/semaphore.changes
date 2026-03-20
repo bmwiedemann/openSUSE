@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 20 07:06:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.27:
+  * Bugfixes
+    - Fixed bug with running Terragrunt
+- add script to package webassets inside a podman container, to not
+  endanger or pollute the host system with npm
+
+-------------------------------------------------------------------
 Mon Mar 16 06:07:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.26:
