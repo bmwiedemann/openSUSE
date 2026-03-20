@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Feb  5 23:16:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.12
+  * Eliminate 'unused parameter' clang warnings in GC_darwin_sigbus
+  * Fix a cycle in NORMAL freelist if malloc is redirected on Linux
+  * Fix code defect of LOCK/UNLOCK in separate 'if' in
+    GC_generic_malloc_many
+  * Fix missing new-line in help message of console variant of
+    cord/de
+  * Fix redirected 'free' for callers from libdl/libpthread if
+    IGNORE_FREE
+  * Fix reliance on glibc-specific '__data_start' for some Linux
+    platforms
+  * Fix SIGSEGV if pthread_detach is called before collector
+    initialization
+  * Fix SIGSEGV in remove_all_threads_but_me if fork from
+    unregistered thread
+  * Prevent collection if fork from an unregistered thread
+  * Workaround locals not pushed in sanitized binaries by disabling
+    fake stacks
+
+-------------------------------------------------------------------
+Sun Oct 19 09:36:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.10
+  * Support RISC-V ILP32 ABI (rv64ilp32)
+  * Turn off thread suspend/resume API support explicitly
+  * Export CMake libraries with aliases
+  * Fix deprecation warning about support of CMake older than v3.10
+  * Fix 'missing GNU-stack section in atomic_ops_sysdeps' ld
+    warning
+  * Fix assertion violation about GC_mark_lock_holder in
+    fork_child_proc
+  * Fix CPP_WORDSZ for LoongArch
+  * Fix I_HOLD_LOCK assertion violation in child process
+  * Fix mark lock in child process after fork
+  * Fix missing parentheses in SIG_THR_RESTART macro definition
+  * Fix print_heap_obj call with the lock held in backgraph
+    add_edge
+  * Fix pthread id stored in GC_threads of child process
+  * Fix pthread id stored in key thread_specific_data of child
+    process
+  * Fix pthread_sigmask result checking in
+    GC_start_mark_threads_inner
+  * Fix reading async proc maps when GC is single-threaded but
+    process is not
+  * Fix undefined reference to GC_objfreelist and GC_bytes_allocd
+  * Grow GC_proc_buf to required size in GC_proc_read_dirty instead
+    of WARN
+  * Workaround vpush/vpop instructions generation for non-FPU ARMv5
+    target
+
+-------------------------------------------------------------------
 Mon Sep  9 05:56:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.8

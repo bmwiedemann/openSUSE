@@ -1,7 +1,7 @@
 #
 # spec file for package gc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           gc
-Version:        8.2.8
+Version:        8.2.12
 Release:        0
 Summary:        A garbage collector for C and C++
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://www.hboehm.info/gc/
 
-#Git-Clone:	https://github.com/ivmai/bdwgc
-Source:         https://github.com/ivmai/bdwgc/releases/download/v%version/%name-%version.tar.gz
+#Git-Clone:	https://github.com/bdwgc/bdwgc
+Source:         https://github.com/bdwgc/bdwgc/releases/download/v%version/%name-%version.tar.gz
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  c++_compiler
 BuildRequires:  libtool
@@ -80,7 +80,6 @@ autoreconf -fi
 
 # see bugzilla.redhat.com/689877
 export CPPFLAGS="-DUSE_GET_STACKBASE_FOR_MAIN"
-export CXXFLAGS="%optflags"
 %configure --disable-static --docdir="%_docdir/%name" --with-gnu-ld \
 	--enable-cplusplus --enable-large-config --enable-threads=posix \
 	--enable-parallel-mark --with-libatomic-ops=yes
@@ -97,7 +96,7 @@ done
 
 %check
 %if !0%{?qemu_user_space_build}
-make check -j1
+%make_build check -j1
 %endif
 
 %ldconfig_scriptlets -n libgc1
