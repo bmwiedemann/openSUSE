@@ -1,0 +1,70 @@
+From b4d38bed1129057cf318df05376449694a68f421 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Thu, 19 Mar 2026 10:50:04 +0100
+Subject: [PATCH] Fix const correctness wrt C23 conforming string functions
+ exposed by glibc 2.43
+
+---
+ lib/plain/server.c   | 4 ++--
+ lib/securid/server.c | 2 +-
+ lib/src/mechtools.c  | 2 +-
+ tests/md5file.c      | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/lib/plain/server.c b/lib/plain/server.c
+index 44a5c0dc..31d8eccd 100644
+--- a/lib/plain/server.c
++++ b/lib/plain/server.c
+@@ -37,8 +37,8 @@ _gsasl_plain_server_step (Gsasl_session *sctx,
+ 			  char **output, size_t *output_len)
+ {
+   const char *authzidptr = input;
+-  char *authidptr = NULL;
+-  char *passwordptr = NULL;
++  const char *authidptr = NULL;
++  const char *passwordptr = NULL;
+   char *passwdz = NULL, *passprep = NULL, *authidprep = NULL;
+   int res;
+ 
+diff --git a/lib/securid/server.c b/lib/securid/server.c
+index 5452f413..426040ef 100644
+--- a/lib/securid/server.c
++++ b/lib/securid/server.c
+@@ -43,7 +43,7 @@ _gsasl_securid_server_step (Gsasl_session *sctx,
+   const char *authentication_id = NULL;
+   const char *passcode = NULL;
+   const char *suggestedpin;
+-  char *pin = NULL;
++  const char *pin = NULL;
+   int res;
+   size_t len;
+ 
+diff --git a/lib/src/mechtools.c b/lib/src/mechtools.c
+index 8eab62fa..63caa867 100644
+--- a/lib/src/mechtools.c
++++ b/lib/src/mechtools.c
+@@ -96,7 +96,7 @@ int
+ _gsasl_parse_gs2_header (const char *data, size_t len,
+ 			 char **authzid, size_t *headerlen)
+ {
+-  char *authzid_endptr;
++  const char *authzid_endptr;
+ 
+   if (len < 3)
+     return GSASL_MECHANISM_PARSE_ERROR;
+diff --git a/tests/md5file.c b/tests/md5file.c
+index 3b11e2c4..c3fc0564 100644
+--- a/tests/md5file.c
++++ b/tests/md5file.c
+@@ -42,7 +42,7 @@ doit (void)
+   md5file = getenv ("MD5FILE");
+   if (md5file)
+     {
+-      char *p;
++      const char *p;
+       if ((p = strchr (md5file, '=')))
+ 	md5file = p;
+     }
+-- 
+2.51.0
+

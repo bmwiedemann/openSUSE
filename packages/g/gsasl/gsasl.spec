@@ -1,6 +1,7 @@
 #
 # spec file for package gsasl
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,8 +30,10 @@ Source2:        https://ftp.gnu.org/gnu/gsasl/%{name}-%{version}.tar.gz.sig
 Source3:        %{name}.keyring
 Patch1:         0001-uninitialized_x.patch
 Patch2:         authzid.patch
+Patch3:         gsasl-const-correctness.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel >= 0.19.8
+BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(krb5-gssapi)
 BuildRequires:  pkgconfig(libgcrypt) >= 1.4.4

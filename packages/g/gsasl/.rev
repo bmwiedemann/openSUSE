@@ -32,4 +32,13 @@
 (not enough to fix the breakage with glibc-2.43, unfortunately)</comment>
     <requestid>1330636</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>29d9ebd05809f2141d0f360a19bc0780</srcmd5>
+    <version>2.2.2</version>
+    <time>1774037973</time>
+    <user>anag_factory</user>
+    <comment>- Add gsasl-const-correctness.patch to fix build with glibc 2.43 
+- Add makeinfo BuildRequires to fix build (forwarded request 1341133 from rguenther)</comment>
+    <requestid>1341157</requestid>
+  </revision>
 </revisionlist>
