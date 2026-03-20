@@ -1,8 +1,8 @@
 #
 # spec file for package growlight
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2020-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_without  pandoc
 %endif
 Name:           growlight
-Version:        1.2.40
+Version:        1.2.41
 Release:        0
 Summary:        Disk manipulation and system setup tool
 License:        GPL-3.0-or-later
