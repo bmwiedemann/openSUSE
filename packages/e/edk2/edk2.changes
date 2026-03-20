@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 19 10:22:35 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add edk2-const-correctness.patch to fix build with glibc 2.43
+
+-------------------------------------------------------------------
 Mon Jun  9 13:34:52 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Replace usage of %jobs for reproducible builds (boo#1237231)
