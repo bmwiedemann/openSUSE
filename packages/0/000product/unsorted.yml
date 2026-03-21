@@ -23604,6 +23604,8 @@ unsorted:
   - postgresql18-plr 
   - postgresql18-plr-doc 
   - postgresql18-pltcl 
+  - postgresql18-postgis 
+  - postgresql18-postgis-utils 
   - postgresql18-server-devel 
   - postgresql18-test 
   - postgresql18-timescaledb 
@@ -23886,6 +23888,7 @@ unsorted:
   - pure-ftpd 
   - putty 
   - pv 
+  - pvetui 
   - pw3270 
   - pw3270-branding-upstream 
   - pw3270-lang 
@@ -24212,7 +24215,6 @@ unsorted:
   - python3-lldb 
   - python3-lldb15 
   - python3-lldb18 
-  - python3-lldb19 
   - python3-lldb20 
   - python3-lldb21 
   - python3-logreduce 
@@ -42609,7 +42611,6 @@ unsorted:
   - texlive-selectp-doc 
   - texlive-selinput 
   - texlive-selinput-doc 
-  - texlive-selinux 
   - texlive-selnolig 
   - texlive-selnolig-doc 
   - texlive-semantex 
@@ -44782,6 +44783,7 @@ unsorted:
   - traefik 
   - traefik2 
   - trang 
+  - transactional-update-up-as-default 
   - transconnect 
   - transfig 
   - translate-suse-desktop 
