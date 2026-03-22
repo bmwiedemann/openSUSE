@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 21 19:20:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- freeciv 3.2.4:
+  * CVE-2026-33250: Fix a vulnerability allowing remote crashing
+    of the server (boo#1260036)
+  * SDL2 client: Fix crash on selecting nation style or nation
+- includes changes from version 3.2.3:
+  * Restore server to sane state after savegame loading failures
+  * Assert unit goto tile validity rather than outright crashing
+  * Improvements to AI players
+  * Client UI tweaks and bug fixes
+  * translation updates
+- drop SDL3 client, build alongside SDL2 is no longer supported,
+  requires more intrusive changes to rpm spec
+
+-------------------------------------------------------------------
 Fri Jan  2 09:46:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - freeciv 3.2.2, a compatible general bugfix release:

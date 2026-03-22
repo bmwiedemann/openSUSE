@@ -17,14 +17,8 @@
 #
 
 
-# SDL3 is available from Leap 16.0 and up
-%if 0%{?suse_version} >= 1600
-%bcond_without sdl3
-%else
-%bcond_with sdl3
-%endif
 Name:           freeciv
-Version:        3.2.2
+Version:        3.2.4
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
@@ -54,10 +48,6 @@ BuildRequires:  pkgconfig(lua) >= 5.4
 BuildRequires:  pkgconfig(sqlite3) >= 3.0.0
 BuildRequires:  pkgconfig(zlib)
 Requires:       freeciv_client-%{version}
-%if %{with sdl3}
-BuildRequires:  pkgconfig(sdl3-image)
-BuildRequires:  pkgconfig(sdl3-ttf)
-%endif
 %if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(readline)
 %else
@@ -116,17 +106,6 @@ Provides:       freeciv_client-%{version}
 %description sdl2
 Freeciv executable using the SDL2 library
 
-%if %{with sdl3}
-%package sdl3
-Summary:        SDL3 client for freeciv
-Group:          Amusements/Games/Strategy/Turn Based
-Requires:       freeciv = %{version}
-Provides:       freeciv_client-%{version}
-
-%description sdl3
-Freeciv executable using the SDL3 library
-%endif
-
 %prep
 %autosetup -p1
 
@@ -135,7 +114,8 @@ Freeciv executable using the SDL3 library
 export CXX=g++-12
 %endif
 %meson \
-	-Dclients=gtk3.22,gtk4,qt,sdl2%{?with_sdl3:,sdl3} \
+	-Dclients=gtk3.22,gtk4,qt,sdl2 \
+	-Daudio=sdl2 \
 	-Dfcmp=gtk3,gtk4,qt \
 	-Dsyslua=true \
 	-Dreadline=true \
@@ -221,13 +201,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/freeciv-sdl2
 %{_datadir}/applications/org.freeciv.sdl2.desktop
 %{_datadir}/metainfo/org.freeciv.sdl2.metainfo.xml
-
-%if %{with sdl3}
-%files sdl3
-%license COPYING
-%{_bindir}/freeciv-sdl3
-%{_datadir}/applications/org.freeciv.sdl3.desktop
-%{_datadir}/metainfo/org.freeciv.sdl3.metainfo.xml
-%endif
 
 %changelog
