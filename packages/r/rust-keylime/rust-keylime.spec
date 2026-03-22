@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.2.8+116
+Version:        0.2.9+8
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND ISC AND MIT
@@ -42,6 +42,7 @@ Source8:        README.suse
 # PATCH-FIX-OPENSUSE keylime-agent.conf.diff
 Patch1:         keylime-agent.conf.diff
 Patch2:         Cargo_lock.patch
+Patch3:         Cargo_toml.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  firewall-macros
@@ -54,7 +55,7 @@ BuildRequires:  tpm2-0-tss-devel
 Requires:       libtss2-tcti-device0
 Requires:       logrotate
 Requires:       tpm2.0-abrmd
-Recommends:     (keylime-ima-policy if selinux-policy-targeted)
+Suggests:       (keylime-ima-policy if selinux-policy-targeted)
 Provides:       user(keylime)
 %sysusers_requires
 # Disable this line if you wish to support all platforms.  In most

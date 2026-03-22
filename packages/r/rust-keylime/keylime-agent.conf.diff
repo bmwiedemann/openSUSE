@@ -1,5 +1,5 @@
 diff --git i/keylime-agent.conf w/keylime-agent.conf
-index 49124f3..5dd707b 100644
+index a9d8220..1ed9465 100644
 --- i/keylime-agent.conf
 +++ w/keylime-agent.conf
 @@ -33,14 +33,16 @@ api_versions = "default"
@@ -30,8 +30,8 @@ index 49124f3..5dd707b 100644
 +registrar_ip = "<REMOTE_IP>"
  registrar_port = 8890
  
- # Enable mTLS communication between agent, verifier and tenant.
-@@ -191,7 +194,8 @@ revocation_actions_dir = "/usr/libexec/keylime"
+ # The TLS port of the registrar server which agent communicates with when
+@@ -220,7 +223,8 @@ revocation_actions_dir = "/usr/libexec/keylime"
  # KEYLIME_AGENT_REVOCATION_NOTIFICATION_IP environment variable.
  # To override revocation_notification_port, set
  # KEYLIME_AGENT_REVOCATION_NOTIFICATION_PORT environment variable.
