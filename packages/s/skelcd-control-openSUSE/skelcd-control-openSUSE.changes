@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 26 08:50:52 UTC 2026 - Stefan Schubert <schubi@suse.de>
+
+- Set default bootloader to systemd-boot (jsc#PED-1906).
+- 20260226
+
+-------------------------------------------------------------------
 Thu Nov  6 16:42:15 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - GNOME: Pre-configure graphical.target: don't let yast guess the
