@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 11 07:52:53 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.2.1:
+  * Changed: HLS stream names using the "pixels" format to include framerate
+    data, if available
+  * Deprecated: imports of re-exported attributes from streamlink.stream
+  * Fixed: plugin-related typing issues and missing typing annotations
+  * Updated plugins:
+    - ceskatelevize: fixed sports streams
+    - nrk: updated to tv-player v9
+    - pluto: updated to v2 API
+    - twitch: switched to Usher v2 API endpoints
+    - youtube: updated API clientVersion
+
+-------------------------------------------------------------------
 Tue Feb 10 11:00:25 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.2.0:
