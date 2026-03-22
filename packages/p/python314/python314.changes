@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 13 18:20:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
+  ensuring that `SourcelessFileLoader` uses `io.open_code` when
+  opening `.pyc` files (bsc#1259240, CVE-2026-2297).
+
+-------------------------------------------------------------------
 Wed Mar  4 13:02:48 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Adapt %suse_version checks to support new %suse_version design for

@@ -238,6 +238,9 @@ Patch50:        CVE-2025-15366-imap-ctrl-chars.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15367-poplib-ctrl-chars.patch bsc#1257041 mcepl@suse.com
 # Reject control characters in poplib
 Patch51:        CVE-2025-15367-poplib-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2026-2297-SourcelessFileLoader-io_open_code.patch bsc#1259240 mcepl@suse.com
+# Ensure SourcelessFileLoader uses io.open_code
+Patch52:        CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
 #### Python 3.14 END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

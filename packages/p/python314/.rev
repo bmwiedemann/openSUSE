@@ -2792,4 +2792,14 @@
 jsc#PED-15851</comment>
     <requestid>1336639</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>cb3a3e1dc5735626d83129a657f7b201</srcmd5>
+    <version>3.14.3</version>
+    <time>1774185120</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
+  ensuring that `SourcelessFileLoader` uses `io.open_code` when
+  opening `.pyc` files (bsc#1259240, CVE-2026-2297).</comment>
+    <requestid>1341600</requestid>
+  </revision>
 </revisionlist>
