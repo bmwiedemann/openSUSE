@@ -1,0 +1,61 @@
+From 604349088afb7a07c9418803f4c88ab1a3264ec8 Mon Sep 17 00:00:00 2001
+From: Sergio Ammirata <sergio@ammirata.net>
+Date: Wed, 11 Mar 2026 18:19:37 -0400
+Subject: [PATCH] fix: improve const correctness in URL parameter parsing
+
+Change local 'query' pointer variables to const char* in both
+parse_url_udp_options() and udpsocket_parse_url_parameters()
+to properly reflect that these pointers reference string data
+that should not be modified through this alias.
+
+Since strtok() requires a non-const char* argument (it modifies
+the string in-place), add an explicit cast when passing to strtok().
+This is safe because the underlying buffer (url parameter) is
+writable; the const qualifier on query is for local code clarity,
+not to indicate truly immutable memory.
+
+This fixes compiler warnings about implicit const conversions
+that appear with stricter warning levels.
+---
+ src/rist-common.c | 2 +-
+ src/udpsocket.c   | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/rist-common.c b/src/rist-common.c
+index 7e5ba29..c82e451 100755
+--- a/src/rist-common.c
++++ b/src/rist-common.c
+@@ -45,7 +45,7 @@ void remove_peer_from_flow(struct rist_peer *peer);
+ int parse_url_udp_options(const char* url, struct rist_udp_config *output_udp_config)
+ {
+ 	uint32_t clean_url_len = 0;
+-	char* query = NULL;
++	const char* query = NULL;
+ 	uint32_t prefix_len = 0;
+ 	struct udpsocket_url_param url_params[32];
+ 	int num_params = 0;
+diff --git a/src/udpsocket.c b/src/udpsocket.c
+index 80c0a40..d3014d4 100644
+--- a/src/udpsocket.c
++++ b/src/udpsocket.c
+@@ -381,7 +381,7 @@ int udpsocket_close(int sd)
+ int udpsocket_parse_url_parameters(const char *url, udpsocket_url_param_t *params, int max_params,
+ 	uint32_t *clean_url_len)
+ {
+-	char* query = NULL;
++	const char* query = NULL;
+ 	int i = 0;
+ 	char *token = NULL;
+ 
+@@ -397,7 +397,7 @@ int udpsocket_parse_url_parameters(char *url, udpsocket_url_param_t *params, int
+ 		return 0;
+ 
+ 	const char amp[2] = "&";
+-	token = strtok( query + 1, amp );
++	token = strtok( (char*)query + 1, amp );
+ 	while (token != NULL && i < max_params) {
+ 		params[i].key = token;
+ 		params[i].val = NULL;
+-- 
+2.51.0
+

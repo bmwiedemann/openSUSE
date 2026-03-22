@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1255845</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b74a134e4c33c8c45182ca17d7210ae2</srcmd5>
+    <version>0.2.11</version>
+    <time>1774185077</time>
+    <user>dimstar_suse</user>
+    <comment>- Add librist-const-correctness.patch to fix build with new glibc
+  (bsc#1257261)
+</comment>
+    <requestid>1341583</requestid>
+  </revision>
 </revisionlist>

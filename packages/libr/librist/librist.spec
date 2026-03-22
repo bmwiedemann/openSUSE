@@ -1,7 +1,7 @@
 #
 # spec file for package librist
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ License:        BSD-2-Clause
 URL:            https://code.videolan.org/rist/librist
 Source0:        https://code.videolan.org/rist/librist/-/archive/v%{version}/librist-v%{version}.tar.gz
 Source99:       baselibs.conf
+Patch0:         librist-const-correctness.patch
 Group:          Development/Libraries/C and C++
 BuildRequires:  meson >= 0.47
 BuildRequires:  ninja
@@ -67,7 +68,7 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 This package contains the user tools for the RIST protocol library.
 
 %prep
-%autosetup -n %{name}-v%{version}
+%autosetup -n %{name}-v%{version} -p1
 
 %build
 %meson
