@@ -468,4 +468,12 @@ Thus there's no need for the parsing or extra dependency. (forwarded request 580
     <comment>- Update to release 1.24</comment>
     <requestid>1290914</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>80f5288546cc720ce0b23d2bca8d1f9c</srcmd5>
+    <version>1.25.0</version>
+    <time>1774185085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.25</comment>
+    <requestid>1341514</requestid>
+  </revision>
 </revisionlist>

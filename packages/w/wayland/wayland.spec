@@ -16,7 +16,7 @@
 #
 
 
-%define _version 1.24.0
+%define _version 1.25.0
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
 %define eglversion 99~%_version
 %else
