@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 10:00:22 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Release 0.4.0:
+  * Add regression testsuite
+  * make code more robust against non-UTF8 filename
+  * drop unused crate.
+
+-------------------------------------------------------------------
 Tue Feb 24 21:04:33 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
 
 - Release 0.3.0:
