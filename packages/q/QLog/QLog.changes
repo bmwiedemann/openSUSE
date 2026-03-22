@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 21 20:34:44 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.49.1:
+  * Fix Online Map OSM Access Blocked banner
+  * Fix Package build process issue - openssl-dev is missing
+  * Fix Missing dependence for QTKeychain
+  * Add French Translation
+
+-------------------------------------------------------------------
 Sat Mar 14 07:23:25 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.49.0:

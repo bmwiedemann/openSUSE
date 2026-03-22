@@ -96,4 +96,12 @@
     <comment>QLog 0.49.0</comment>
     <requestid>1338841</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bf06845fc533d5af2c78f640a4e36907</srcmd5>
+    <version>0.49.1</version>
+    <time>1774185179</time>
+    <user>dimstar_suse</user>
+    <comment>QLog 0.49.1 (forwarded request 1341739 from AndreasStieger)</comment>
+    <requestid>1341740</requestid>
+  </revision>
 </revisionlist>
