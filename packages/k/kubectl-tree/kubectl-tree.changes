@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 21 07:33:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.0:
+  * chore(deps): bump goreleaser/goreleaser-action from 6 to 7
+    (#110)
+  * fix(ci): use version from go.mod (#114)
+  * feat: allow filtering by API groups (#113)
+  * chore(deps): bump rajatjindal/krew-release-bot from 0.0.50 to
+    0.0.51
+  * chore(deps): bump the kubernetes group with 3 updates
+  * chore(deps): bump rajatjindal/krew-release-bot from 0.0.47 to
+    0.0.50
+  * chore(deps): bump the kubernetes group with 3 updates
+  * chore(deps): bump the kubernetes group with 4 updates
+  * chore(deps): bump the kubernetes group with 3 updates
+  * chore(deps): bump github.com/spf13/cobra from 1.10.1 to 1.10.2
+  * chore(deps): bump the kubernetes group with 3 updates
+
+-------------------------------------------------------------------
 Mon Nov 17 07:04:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.6:
