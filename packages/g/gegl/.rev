@@ -806,4 +806,12 @@ Update the changelog to record security CVE fixed in previous update. (CVE-2025-
     <comment></comment>
     <requestid>1323157</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>76b8349c910fa362360004f3b10aa13c</srcmd5>
+    <version>0.4.68</version>
+    <time>1774185079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1341594</requestid>
+  </revision>
 </revisionlist>

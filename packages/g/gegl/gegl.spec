@@ -1,7 +1,7 @@
 #
 # spec file for package gegl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with gegl_docs
 
 Name:           gegl
-Version:        0.4.66
+Version:        0.4.68
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -234,7 +234,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/vala/vapi/gegl-0.4.vapi
 
 %files doc
-%doc AUTHORS docs/ChangeLog NEWS
+%doc AUTHORS docs/ChangeLog docs/NEWS.adoc
 %if %{with gegl_docs}
 %doc %{_datadir}/gegl-0.4/
 %endif
