@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar 21 15:51:53 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.46.2:
+  * Watchers: Add an on_quit event to global watchers (#9675)
+  * Wayland: Fix a crash on some compositors when dragging a tab between OS
+    Windows (#9677)
+  * Fix incorrect behavior when using the actions to move tab forward/backward
+    with a tab_bar_filter active (#9672)
+  * Prevent stacking of multiple rename tab windows (#9691)
+  * choose files kitten: Fix a regression that caused incorrect highlight of
+    matched letters
+  * macOS: When using `macos_traditional_fullscreen` do not render content under
+    the notch (#9678)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.macos_traditional_fullscreen
+  * X11: Fix massive scroll when switching focus between kitty and another
+    application (#9703)
+  * Markers: Fix marking not working for multicell characters (#9705)
+  * Fix a regression in 0.46 that broke drag select in unfocused
+    windows (#9713)
+
+-------------------------------------------------------------------
 Mon Mar 16 17:13:37 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.46.1:
