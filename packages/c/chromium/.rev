@@ -6334,4 +6334,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>Chromium 146.0.7680.153</comment>
     <requestid>1341027</requestid>
   </revision>
+  <revision rev="509" vrev="2">
+    <srcmd5>d8e7b21af07f9ded6ddc954295067960</srcmd5>
+    <version>146.0.7680.153</version>
+    <time>1774185106</time>
+    <user>dimstar_suse</user>
+    <comment>changelog update only for Chromium 146.0.7680.153 (boo#1259964)</comment>
+    <requestid>1341518</requestid>
+  </revision>
 </revisionlist>
