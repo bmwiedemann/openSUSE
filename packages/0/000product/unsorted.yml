@@ -4480,7 +4480,6 @@ unsorted:
   - freeciv-lang 
   - freeciv-qt 
   - freeciv-sdl2 
-  - freeciv-sdl3 
   - freedoom 
   - freedoom-freedm 
   - freedup 
@@ -13112,7 +13111,7 @@ unsorted:
   - libedit-devel 
   - libedit0-32bit 
   - libeditorconfig-devel 
-  - libeduvpn_common-4_0_0 
+  - libeduvpn_common-5_0_1 
   - libefa1-32bit 
   - libei-devel 
   - libeiskaltdcpp2_4 
@@ -15513,6 +15512,9 @@ unsorted:
   - libpmempool1 
   - libpmi0 
   - libpmix2 
+  - libpnetcdf4-mpich 
+  - libpnetcdf4-mvapich2 
+  - libpnetcdf4-openmpi5 
   - libpng12-0 
   - libpng12-0-32bit 
   - libpng12-compat-devel 
@@ -23385,6 +23387,16 @@ unsorted:
   - pmix-plugin-munge 
   - pmix-plugins 
   - pmix-test 
+  - pnetcdf-doc 
+  - pnetcdf-mpich 
+  - pnetcdf-mpich-devel 
+  - pnetcdf-mpich-devel-static 
+  - pnetcdf-mvapich2 
+  - pnetcdf-mvapich2-devel 
+  - pnetcdf-mvapich2-devel-static 
+  - pnetcdf-openmpi5 
+  - pnetcdf-openmpi5-devel 
+  - pnetcdf-openmpi5-devel-static 
   - png++-devel 
   - pngcheck 
   - pngcrush 
@@ -26798,6 +26810,7 @@ unsorted:
   - python311-pipreqs 
   - python311-pipx 
   - python311-pivy 
+  - python311-pixelmatch 
   - python311-pkgconfig 
   - python311-pkginfo 
   - python311-pkgutil-resolve-name 
@@ -28168,10 +28181,6 @@ unsorted:
   - python312-gwpy 
   - python312-idle 
   - python312-jupyter-sphinx 
-  - python312-lalburst 
-  - python312-lalinference 
-  - python312-lalinspiral 
-  - python312-lalpulsar 
   - python312-onnx 
   - python312-pegasus-wms.api 
   - python312-plotly 
@@ -30691,6 +30700,7 @@ unsorted:
   - python313-pipreqs 
   - python313-pipx 
   - python313-pivy 
+  - python313-pixelmatch 
   - python313-pkgconfig 
   - python313-pkginfo 
   - python313-pkgutil-resolve-name 
