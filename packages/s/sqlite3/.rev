@@ -1982,4 +1982,12 @@ CVE-2020-13871 boo#1172646</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1332086</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>5c2cfc758d5dbc95dabde5223bb4193f</srcmd5>
+    <version>3.51.3</version>
+    <time>1774185075</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1341580</requestid>
+  </revision>
 </revisionlist>

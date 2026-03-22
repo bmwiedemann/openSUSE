@@ -19,12 +19,12 @@
 
 %define _buildshell /bin/bash
 %define oname sqlite
-%define tarversion 3510200
-%define docversion 3510200
+%define tarversion 3510300
+%define docversion 3510300
 %bcond_with icu
 %bcond_without check
 Name:           sqlite3
-Version:        3.51.2
+Version:        3.51.3
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -202,7 +202,7 @@ export CFLAGS="%{optflags} \
 
 %if %{with check}
 %check
-%make_build test
+%make_build devtest
 %endif
 
 %install
@@ -214,7 +214,10 @@ install -Dpvm 0644 -t %{buildroot}%{_datadir}/lemon tool/lempar.c
 #rm -rf %%{buildroot}%%{_libdir}/tcl/tcl8.?/sqlite3*
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%ldconfig_scriptlets -n libsqlite3-0
+# Deliberately not using ldconfig_scriptlets
+# to stay compatible with SLE 12 and 15.
+%post -n libsqlite3-0 -p /sbin/ldconfig
+%postun -n libsqlite3-0 -p /sbin/ldconfig
 
 %files
 %license LICENSE.md
