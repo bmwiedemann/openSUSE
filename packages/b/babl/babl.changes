@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 20 18:51:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.124:
+  + DisplayP3 pre-defined colorspace, build and sanity improvements
+    for CI and windows.
+- Changes from version 0.1.122:
+  + Fix for startup crash due to mis-loading of x86_64-v4 on -v2
+    with some ports.
+- Changes from version 0.1.120:
+  + x86_64-v4 microarchitecture support.
+- Drop 4efc8b827e008417c4995a93ae3310697318cfab.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Mon Dec 15 16:09:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Added https://gitlab.gnome.org/GNOME/babl/-/commit/4efc8b827e008417c4995a93ae3310697318cfab.patch
