@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 21 10:59:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.69.3:
+  * release: v0.69.3 [release/v0.69] (#10293)
+  * fix(deps): bump github.com/go-git/go-git/v5 from 5.16.4 to 5.16.5 [backport: release/v0.69] (#10291)
+  * release: v0.69.2 [release/v0.69] (#10266)
+  * fix(deps): bump go.opentelemetry.io/otel/sdk from 1.39.0 to 1.40.0 [backport: release/v0.69] (#10267)
+  * fix(deps): bump github.com/cloudflare/circl from 1.6.1 to 1.6.3 [backport: release/v0.69] (#10264)
+  * ci: remove apidiff workflow
+  * release: v0.69.1 [release/v0.69] (#10145)
+  * ci: add composite action for Go setup [backport: release/v0.69] (#10150)
+  * fix(misconf): apply check aliases when filtering results via .trivyignore [backport: release/v0.69] (#10143)
+  * chore(deps): bump to alpine:3.23.3 and go-1.25.6 to fix CVEs [backport: release/v0.69] (#10135)
+
+-------------------------------------------------------------------
 Mon Feb 02 10:31:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.69.0 (bsc#1255366, CVE-2025-64702):
