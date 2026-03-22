@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 16 17:29:59 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.7.0:
+  * expand API
+  * BTF type lookup optimization
+  * fsession support
+  * arena globals are moved to the end of the arena mmap region if
+    kernel supports it
+  * avoid expensive kallsyms parsing when kprobe.session target is
+    an exact function match
+  * new dont_enable option in struct bpf_perf_event_opts to
+    suppress perf event auto-enablement
+  * USDT SIB (Scale-Index-Base) addressing support
+  * dynptr helper signatures
+
+-------------------------------------------------------------------
 Wed Feb  4 07:58:43 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - update to 1.6.3:

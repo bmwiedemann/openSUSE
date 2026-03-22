@@ -2,7 +2,7 @@
 # spec file for package libbpf
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover_major 1
 %define libname libbpf%{sover_major}
 Name:           libbpf
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
@@ -29,7 +29,8 @@ Source:         https://github.com/libbpf/libbpf/archive/v%{version}.tar.gz#/%{n
 Source99:       baselibs.conf
 BuildRequires:  libelf-devel
 BuildRequires:  linux-glibc-devel >= 4.5
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib)
 
 %description
 libbpf is a C library which provides API for managing eBPF programs and maps.
@@ -81,6 +82,7 @@ cd src
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files devel-static
+%license LICENSE LICENSE.BSD-2-Clause LICENSE.LGPL-2.1
 %{_libdir}/%{name}.a
 
 %changelog
