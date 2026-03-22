@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 20 08:00:50 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to version 4.0.8:
+  * Use display name for E2EE shares
+    (gh#nextcloud/desktop#9610)
+  * Add basic support for E2EE metadata format 2.1
+    (gh#nextcloud/desktop#9611)
+  * Ensure PIN input dialog is the top‑most window
+    (gh#nextcloud/desktop#9613)
+  * Improve E2EE handling for hardware‑certificate encryption
+    (gh#nextcloud/desktop#9614)
+  * Migrate user encryption certificate
+    (gh#nextcloud/desktop#9612)
+  * Allow reading metadata format 1.2 again
+    (gh#nextcloud/desktop#9615)
+  * Improve handling of locked files during upload
+    (gh#nextcloud/desktop#9627)
+  * Set folders writable when remote permissions require it,
+    and recurse into subdirectories if etag or remote perms differ
+    (gh#nextcloud/desktop#9642)
+
+-------------------------------------------------------------------
 Fri Mar 13 06:49:09 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
 
 - Update to version 4.0.7:

@@ -783,4 +783,12 @@
     <comment>Update to version 4.0.7</comment>
     <requestid>1338830</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>f757fc68491281dc61eae2fa498d38c2</srcmd5>
+    <version>4.0.8</version>
+    <time>1774185134</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.0.8</comment>
+    <requestid>1341627</requestid>
+  </revision>
 </revisionlist>
