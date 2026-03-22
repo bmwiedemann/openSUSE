@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 06:11:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.4.3:
+  * Use get_option api from callback plugins (#1488). This fixes some
+    problems around using custom callback plugins.
+  * Fix container --tty detection in subprocess mode (#1489)
+
+-------------------------------------------------------------------
 Fri Oct 17 08:00:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.4.2:
