@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 20 11:02:38 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-28690: missing bounds check in the MNG encoder can lead to a stack buffer overflow (bsc#1259456)
+  * GraphicsMagick-CVE-2026-28690.patch
+
+-------------------------------------------------------------------
 Wed Mar 18 10:20:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches

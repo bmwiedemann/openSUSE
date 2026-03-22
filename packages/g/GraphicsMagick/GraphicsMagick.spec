@@ -1,7 +1,6 @@
 #
 # spec file for package GraphicsMagick
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -38,6 +37,8 @@ Patch1:         GraphicsMagick-disable-insecure-coders.patch
 Patch2:         GraphicsMagick-CVE-2026-25799.patch
 # CVE-2026-30883: missing bounds check when encoding a PNG image can lead to a heap buffer over-write (bsc#1259467)
 Patch3:         GraphicsMagick-CVE-2026-30883.patch
+# CVE-2026-28690: missing bounds check in the MNG encoder can lead to a stack buffer overflow (bsc#1259456)
+Patch4:         GraphicsMagick-CVE-2026-28690.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++
