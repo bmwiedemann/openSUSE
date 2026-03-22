@@ -7,4 +7,13 @@
     <comment>Config and dependencies to enable systemd wide no_new_privs</comment>
     <requestid>1323508</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>178643489e5056111f56188e1f11d28f</srcmd5>
+    <version>1.1</version>
+    <time>1774185102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies for account-utils and shadow
+- Add run0-policy-wheel-auth-self</comment>
+    <requestid>1341148</requestid>
+  </revision>
 </revisionlist>

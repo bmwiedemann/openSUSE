@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 19 09:11:50 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update dependencies for account-utils and shadow
+- Add run0-policy-wheel-auth-self
+
+-------------------------------------------------------------------
 Thu Dec 18 09:36:38 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update dependencies to account-utils and run0-wrappers
