@@ -1,7 +1,7 @@
 #
 # spec file for package blender
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2025 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           blender
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Package to pull in the latest blender for you
 License:        GPL-2.0-or-later
@@ -39,6 +39,7 @@ This package by defaults pulls in the latest version for you.
 Summary:        Package to pull in the latest blender for you
 Requires:       (blender-4.5-lang if blender-4.5)
 Requires:       (blender-5.0-lang if blender-5.0)
+Requires:       (blender-5.1-lang if blender-5.1)
 Provides:       blender-wrapper-lang = %{version}-%{release}
 
 %description lang
@@ -50,6 +51,7 @@ This package by defaulang pulls in the latest lang version for you.
 Summary:        Package to pull in the latest blender for you
 Requires:       (blender-4.5-demo if blender-4.5)
 Requires:       (blender-5.0-demo if blender-5.0)
+Requires:       (blender-5.1-demo if blender-5.1)
 Provides:       blender-wrapper-demo = %{version}-%{release}
 
 %description demo
