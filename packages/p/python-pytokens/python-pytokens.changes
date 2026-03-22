@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 20 00:36:23 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.1:
+  * Avoid emitting dedents after an escaped new line
+  * Add --json support to the CLI
+  * Fix quiet mode in the CLI
+  * Improve performance by removing slicing in TokenIterator.name that can
+    cause quadratic behaviour
+  * Use mypyc for compilation for a 2.5x performance improvement
+- Switch from noarch due to switch to mypyc.
+
+-------------------------------------------------------------------
 Tue Nov 11 16:36:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.0:

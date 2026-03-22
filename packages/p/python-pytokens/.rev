@@ -35,4 +35,19 @@
   * bugfixes</comment>
     <requestid>1317160</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f9150ecc9fefd0af7f9a53178212ef17</srcmd5>
+    <version>0.4.1</version>
+    <time>1774185083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * Avoid emitting dedents after an escaped new line
+  * Add --json support to the CLI
+  * Fix quiet mode in the CLI
+  * Improve performance by removing slicing in TokenIterator.name that can
+    cause quadratic behaviour
+  * Use mypyc for compilation for a 2.5x performance improvement
+- Switch from noarch due to switch to mypyc.</comment>
+    <requestid>1341459</requestid>
+  </revision>
 </revisionlist>

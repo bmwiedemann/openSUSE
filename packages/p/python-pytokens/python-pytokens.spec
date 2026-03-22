@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytokens
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytokens
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        A Fast, spec compliant Python 3.12+ tokenizer that runs on older Pythons
 License:        MIT
 URL:            https://github.com/tusharsadhwani/pytokens
 Source:         https://files.pythonhosted.org/packages/source/p/pytokens/pytokens-%{version}.tar.gz
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
@@ -31,7 +33,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -45,15 +46,16 @@ A Fast, spec compliant Python 3.12+ tokenizer that runs on older Pythons.
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest
+%pytest_arch
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/pytokens
-%{python_sitelib}/pytokens-%{version}.dist-info
+%{python_sitearch}/*__mypyc.cpython-*.so
+%{python_sitearch}/pytokens
+%{python_sitearch}/pytokens-%{version}.dist-info
 
 %changelog
