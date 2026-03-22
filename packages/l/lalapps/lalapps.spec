@@ -1,7 +1,7 @@
 #
 # spec file for package lalapps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,8 @@
 #
 
 
-%define skip_python2 1
-# NEP 29: astropy, numpy, scipy do not have a python36 flavor package in TW
-%define skip_python36 1
 Name:           lalapps
-Version:        10.0.1
+Version:        10.1.0
 Release:        0
 Summary:        LSC Algorithm Library Applications
 License:        GPL-2.0-or-later
