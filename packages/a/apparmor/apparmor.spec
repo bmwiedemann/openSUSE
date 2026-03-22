@@ -1,7 +1,7 @@
 #
 # spec file for package apparmor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011-2024 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,11 +51,11 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v4.1.6
-%define pyeggversion 4.1.6
+%define tarversion v4.1.7
+%define pyeggversion 4.1.7
 
 Name:           apparmor
-Version:        4.1.6
+Version:        4.1.7
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -802,7 +802,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %defattr(-,root,root)
 %{python3_sitearch}/LibAppArmor-%{pyeggversion}-py*.egg-info
 %{python3_sitearch}/LibAppArmor.py
-%{python3_sitearch}/_LibAppArmor.cpython-*-linux-gnu.so
+%{python3_sitearch}/_LibAppArmor.cpython-*-linux-gnu*.so
 %{python3_sitearch}/__pycache__/LibAppArmor.cpython-*.pyc
 %{python3_sitelib}/apparmor/
 %{python3_sitelib}/apparmor-%{pyeggversion}-py*.egg-info

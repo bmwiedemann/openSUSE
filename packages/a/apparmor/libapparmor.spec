@@ -1,7 +1,7 @@
 #
 # spec file for package libapparmor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011-2024 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define tarversion v4.1.6
+%define tarversion v4.1.7
 
 Name:           libapparmor
-Version:        4.1.6
+Version:        4.1.7
 Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later

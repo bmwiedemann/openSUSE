@@ -3087,4 +3087,15 @@ Also note that the &quot;mailserver_setup&quot; test in https://openqa.opensuse.
 - refresh kerberosclient-usrmerge.diff (forwarded request 1332579 from cboltz)</comment>
     <requestid>1332580</requestid>
   </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>f6cb9e8f5af084ffb53491abc04a0c97</srcmd5>
+    <version>4.1.7</version>
+    <time>1774185081</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 4.1.7
+  - various bugfixes
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.7
+    for the full upstream changelog (forwarded request 1341448 from cboltz)</comment>
+    <requestid>1341449</requestid>
+  </revision>
 </revisionlist>
