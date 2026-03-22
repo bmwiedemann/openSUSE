@@ -23,4 +23,12 @@
     <comment>Update to 4.6.0 (compat. update eduvpn-common 4.0.0)</comment>
     <requestid>1311147</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0826ea1d3d98bcf492ad64ae97051711</srcmd5>
+    <version>4.7.1</version>
+    <time>1774185185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1341748</requestid>
+  </revision>
 </revisionlist>
