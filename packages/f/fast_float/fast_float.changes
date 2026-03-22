@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 20 09:02:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.4
+  * Optimized uint16_t parsing with a similar approach to the one
+    used for uint8_t
+  * Optimized fastfloat_strncasecmp
+
+-------------------------------------------------------------------
 Tue Feb  3 14:56:22 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.2
