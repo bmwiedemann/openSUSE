@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 20 15:20:32 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.9.1 (bsc#1259992, CVE-2026-33123)
+  * Improve performance and limit length of array-based content streams
+  * Expose /Perms verification result on Encryption object
+  * Fix O(n²) performance in NameObject read/write
+  * Batch-parse all objects in ObjStm on first access
+  * Avoid sharing array-based content streams between pages
+  * Avoid accessing invalid page when inserting blank page under some conditions
+
+-------------------------------------------------------------------
 Wed Mar 11 13:01:50 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 6.8.0 (CVE-2026-31826, bsc#1259508)
