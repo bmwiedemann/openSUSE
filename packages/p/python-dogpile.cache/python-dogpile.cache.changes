@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 21 15:07:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * **[feature] [redis]** Added a new `RedisBackend.lock_prefix`
+    parameter to the `RedisBackend` and `ValkeyBackend` backends
+    to allow customization of the lock key prefix. The prefix
+    must be between 2 and 10 characters long and may contain
+    any alphanumeric character and the symbols
+    `_-.:` . This allows for improved visual clarity when
+    inspecting backend keys, particularly when key names may be
+    ambiguous with the default `_lock` prefix.
+  * **[change] [platform]** Minimum Python version is now 3.10,
+    as Python 3.9 is EOL.
+  * **[bug] [typing]** A wide range of typing improvements and
+    modernizations within the codebase.
+
+-------------------------------------------------------------------
 Sat Jul  5 15:09:59 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

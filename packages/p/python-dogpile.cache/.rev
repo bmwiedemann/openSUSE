@@ -494,4 +494,24 @@ Requires python-setuptools 78 to build successfully.
     runtime typing error that prevented it from running.</comment>
     <requestid>1290791</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>358b23be194a55dfdee4d512b89eab31</srcmd5>
+    <version>1.5.0</version>
+    <time>1774185168</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * **[feature] [redis]** Added a new `RedisBackend.lock_prefix`
+    parameter to the `RedisBackend` and `ValkeyBackend` backends
+    to allow customization of the lock key prefix. The prefix
+    must be between 2 and 10 characters long and may contain
+    any alphanumeric character and the symbols
+    `_-.:` . This allows for improved visual clarity when
+    inspecting backend keys, particularly when key names may be
+    ambiguous with the default `_lock` prefix.
+  * **[change] [platform]** Minimum Python version is now 3.10,
+    as Python 3.9 is EOL.
+  * **[bug] [typing]** A wide range of typing improvements and
+    modernizations within the codebase.</comment>
+    <requestid>1341716</requestid>
+  </revision>
 </revisionlist>
