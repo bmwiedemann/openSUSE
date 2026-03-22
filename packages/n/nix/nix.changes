@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 20 11:24:04 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.34.2:
+  see /usr/share/doc/packages/rl-2.34.md
+- drop de426e1a3.patch: included in upstream
+
+-------------------------------------------------------------------
 Tue Mar 17 18:55:45 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.34.1:

@@ -26,7 +26,7 @@
 %endif
 
 Name:           nix
-Version:        2.34.1
+Version:        2.34.2
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only
@@ -36,7 +36,6 @@ Source1:        nix.conf
 Source2:        sysusers.conf
 Source9:        series
 Patch1:         0001-port-option-to-disable-functional-tests-to-meson.patch
-Patch2:         de426e1a3.patch
 BuildRequires:  bison
 BuildRequires:  boost-devel
 BuildRequires:  busybox-static
