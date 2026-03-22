@@ -234,6 +234,9 @@ Patch44:        test_ci_fuzz_stdlib-failure.patch
 # PATCH-FIX-UPSTREAM gh-145802-atomic-profile-update-for-PGO.patch gh#python/cpython#145803 mcepl@suse.com
 # Use gcc -fprofile-update=atomic for PGO builds
 Patch45:        gh-145802-atomic-profile-update-for-PGO.patch
+# PATCH-FIX-UPSTREAM gh-144741-frame_pointer_unwind.patch gh#python/cpython#144741 mcepl@suse.com
+# Fix test_frame_pointer_unwind for libpython
+Patch46:        gh-144741-frame_pointer_unwind.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 20 20:37:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add gh-144741-frame_pointer_unwind.patch to fix
+  test_frame_pointer_unwind for libpython on aarch64
+  (gh#python/cpython#144741).
+
+-------------------------------------------------------------------
 Wed Mar 11 13:41:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add gh-145802-atomic-profile-update-for-PGO.patch

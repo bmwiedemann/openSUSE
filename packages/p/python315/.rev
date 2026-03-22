@@ -170,4 +170,14 @@ covered).</comment>
     - gh-145417: venv: Prevent incorrect preservation of SELinux</comment>
     <requestid>1339137</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7e2c20e35ccec043068c19e5713df002</srcmd5>
+    <version>3.15.0~a7</version>
+    <time>1774185126</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gh-144741-frame_pointer_unwind.patch to fix
+  test_frame_pointer_unwind for libpython on aarch64
+  (gh#python/cpython#144741).</comment>
+    <requestid>1341615</requestid>
+  </revision>
 </revisionlist>
