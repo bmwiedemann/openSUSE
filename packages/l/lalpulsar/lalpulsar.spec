@@ -1,7 +1,7 @@
 #
 # spec file for package lalpulsar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -145,6 +145,7 @@ This package provides the necessary files for using LAL Pulsar with octave.
 %build
 # Patch1 needs autoreconf
 autoreconf -fvi
+export SWIG_FEATURES="-w999"
 %{python_expand # Necessary to run configure with multiple py3 flavors
 export PYTHON=%{_bindir}/$python
 mkdir ../$python
@@ -203,8 +204,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %{_libdir}/*.so.*
@@ -235,6 +235,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %else
 
 %check
+export SWIG_FEATURES="-w999"
 %{python_expand export PYTHON=%{_bindir}/$python
 pushd ../$python
 %make_build check
