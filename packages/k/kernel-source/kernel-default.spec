@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.19
-%define patchversion 6.19.8
-%define git_commit e3eac5696d68ff367d9ae5b3ed4f1faa971dcc84
+%define patchversion 6.19.9
+%define git_commit 456e8605b897b8d9f8b8a658a604a2c4d3c7a838
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-default
-Version:        6.19.8
+Version:        6.19.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ge3eac56
+Release:        <RELEASE>.g456e860
 %else
 Release:        0
 %endif
