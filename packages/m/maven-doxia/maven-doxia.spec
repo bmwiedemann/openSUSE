@@ -17,7 +17,7 @@
 
 
 Name:           maven-doxia
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Content generation framework
 License:        Apache-2.0
@@ -28,8 +28,6 @@ Source1:        %{name}-build.tar.xz
 Source2:        https://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
-BuildRequires:  apache-commons-lang3
-BuildRequires:  apache-commons-text
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -37,7 +35,6 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  jetbrains-annotations
 BuildRequires:  modello
 BuildRequires:  objectweb-asm
-BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
 BuildRequires:  slf4j
@@ -124,14 +121,11 @@ cp %{SOURCE2} LICENSE
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-    apache-commons-lang3 \
-    apache-commons-text/commons-text \
     atinject \
     commons-io \
     jetbrains-annotations \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
-    plexus/utils \
     plexus/xml \
     slf4j/api
 

@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Mar 21 22:21:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.1.0
+  * New features and improvements
+    + Distinguish between linebreaks for formatting markup and
+      linebreaks in output
+    + Return SinkEventAttributes instead of super class
+      MutableAttributeSet for filterAttributes
+    + Optionally leave fragments of internal links untouched
+    Support strikethrough for Markdown sink
+    + DOXIA-770: Only escape when necessary
+    + DOXIA-760: Clarify table justification semantics and introduce
+      new "JUSTIFY_DEFAULT" alignment
+    + DOXIA-756: Allow to customize macro execution
+    + DOXIA-759: Support anchors in MarkdownSink
+  * Bug Fixes
+    + MarkdownSink: Fix verbatim inside table cell
+    + Make sure to emit metadata prior everything else
+    + Convert all globally available attributes to HTML5 compliant
+      ones
+    + Html5BaseSink: Convert non-compliant HTML5 attributes to
+      compliant ones
+    + Support "name" attribute in "a" element still in XHTML5
+    + Never emit Markdown inside HTML context
+    + Use JSoup to convert HTML to XHTML after parsing with Flexmark
+    + DOXIA-764: Strip leading newline after
+    + DOXIA-763: Distinguish between verbatim source and non-source
+      in MarkdownSink
+    + DOXIA-758: Consider emitComments flag in MarkdownSink
+    + DOXIA-757: Don't strip leading "#" from link names
+    + DOXIA-753: Do not end lists with a blank line
+    + DOXIA-751: Linked inline code must be emitted in right order
+    + DOXIA-749: Correctly indent and separate blocks inside list
+      items
+    + DOXIA-750: Properly apply inlines inside HTML blocks
+    + DOXIA-747: Emit headings at beginning of line for Markdown
+  * Documentation updates
+    + Site: Convert APT to Markdown
+    + Improve documentation of supported extensions
+    + (doc) Fix missing references in JavaDocs
+  * Maintenance
+    + Cleanup tests
+    + JUnit Jupiter best practices
+    + Remove commons-lang3 and commons-text dependencies
+    + feat: enable prevent branch protection rules
+    + Cleanup pom, remove redundant dependencies
+    + Drop almost all usages of plexus-utils
+    + Remove not used and outdated clirr-maven-plugin
+    + Enable Github Issues
+    + DOXIA-772: Deprecate Sink.sectionTitle() and sectionTitle_()
+    + DOXIA-754: Clarify method order for nested lists
+  * Dependency updates
+    + Bump org.jetbrains:annotations from 25.0.0 to 26.1.0
+    + Bump org.codehaus.plexus:plexus-testing from 1.4.0 to 2.1.0
+    + Update to parent 47 and site 2.0.0
+    + Bump org.jsoup:jsoup from 1.21.2 to 1.22.1
+    + Bump commons-io:commons-io from 2.17.0 to 2.21.0
+    + Drop almost all usages of plexus-utils
+    + Bump org.junit:junit-bom from 5.11.1 to 5.13.4
+    + Bump xmlunitVersion from 2.10.0 to 2.10.3
+
+-------------------------------------------------------------------
 Tue Jun  3 08:17:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4
