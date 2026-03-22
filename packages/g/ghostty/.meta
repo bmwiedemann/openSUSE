@@ -5,5 +5,6 @@
 * Standards-compliant terminal emulation
 * Basic customization -- fonts, bg colors, etc.
 * Rich windowing features -- multi-window, tabbing, panes </description>
+  <devel project="X11:terminals" package="ghostty"/>
   <url>https://ghostty.org/</url>
 </package>
