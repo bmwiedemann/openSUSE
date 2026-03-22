@@ -145,4 +145,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1288114</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>10a81c8d370c7b933c1cb9be3b3bd236</srcmd5>
+    <version>2.15</version>
+    <time>1774185173</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1341733</requestid>
+  </revision>
 </revisionlist>

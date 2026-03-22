@@ -1,7 +1,7 @@
 #
 # spec file for package python-vulture
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-vulture
-Version:        2.13
+Version:        2.15
 Release:        0
 Summary:        Python module for finding dead code
 License:        MIT
@@ -35,6 +35,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest > 3.2.3}
 BuildRequires:  %{python_module Pint}
+BuildRequires:  %{python_module pytest-cov}
 # /SECTION
 %python_subpackages
 
@@ -71,7 +72,7 @@ sed -i -e '/^#! \//, 1d' vulture/core.py
 
 %check
 rm setup.cfg
-%pytest
+%pytest -k 'not test_pytype'
 
 %post
 %python_install_alternative vulture
@@ -83,6 +84,7 @@ rm setup.cfg
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/vulture
+%{python_sitelib}/dev
 %{python_sitelib}/vulture
 %{python_sitelib}/vulture-%{version}.dist-info
 

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 14 19:32:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15:
+  * Handle `while True` loops without `break` statements
+    (kreathon).
+  * Add whitelist for `ssl.SSLContext` (tunnelsociety, #392).
+  * Add more ruff rules (even-even).
+  * Drop support for Python 3.8 (Jendrik Seipp, #398).
+  * Add support for Python 3.14 (even-even).
+  * Improve reachability analysis (kreathon, #270, #302).
+  * Add type hints for `get_unused_code` and the fields of the
+    `Item` class (John Doknjas, #361).
+
+-------------------------------------------------------------------
 Tue Jun 24 02:55:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
