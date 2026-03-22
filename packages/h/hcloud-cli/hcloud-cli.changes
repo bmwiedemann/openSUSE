@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Mar 21 07:32:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.62.0:
+  * Features
+    - build .deb and .rpm release files (#1311)
+    - primary-ip: new flag to specify assignee-type on primary-ip
+      create (#1348)
+    - increase default poll interval for long running actions
+      (#1364)
+    - server-type: add location to list table default columns
+      (#1340)
+    - server-type: remove storage_type from list table default
+      columns (#1340)
+    - allow listing contexts as json/yaml (#1352)
+    - add --long flag to version command (#1353)
+  * Bug Fixes
+    - suppress trailing spaces in tables (#1355)
+  * Dependencies
+    - deps: update module github.com/fatih/color to v1.19.0 (#1365)
+    - deps: update dependency github:golangci/golangci-lint to
+      v2.11.3 (#1336)
+    - deps: update jdx/mise-action action to v4 (#1362)
+    - deps: update golang.org/x/exp digest to 7ab1446 (#1361)
+    - deps: update dependency jdx/mise to v2026.3.8 (#1356)
+    - deps: update golang.org/x/ (#1360)
+    - deps: update module github.com/guptarohit/asciigraph to
+      v0.8.1 (#1358)
+    - deps: update dependency github:goreleaser/goreleaser to
+      v2.14.3 (#1357)
+    - deps: update dependency github:anchore/quill to v0.7.1
+      (#1359)
+    - deps: update dependency jdx/mise to v2026.3.3 (#1350)
+    - deps: update dependency go to v1.25.8 (#1354)
+    - deps: update docker/login-action action to v4 (#1351)
+    - deps: update dependency jdx/mise to v2026.3.0 (#1345)
+    - deps: update crazy-max/ghaction-import-gpg action to v7
+      (#1349)
+    - deps: update actions/upload-artifact action to v7 (#1344)
+    - deps: update apricote/releaser-pleaser action to v0.8.0
+      (#1346)
+    - deps: update dependency jdx/mise to v2026.2.20 (#1328)
+    - deps: update dependency github:goreleaser/goreleaser to
+      v2.14.1 (#1338)
+    - deps: update module golang.org/x/net to v0.51.0 (#1341)
+    - deps: update golang.org/x/ (#1331)
+    - deps: update dependency go to v1.25.7 (#1327)
+    - deps: update dependency jdx/mise to v2026.2.3 (#1326)
+    - deps: update dependency jdx/mise to v2026.2.1
+    - deps: update dependency jdx/mise to v2026.1.9 (#1321)
+
+-------------------------------------------------------------------
 Mon Jan 26 06:22:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.61.0:
