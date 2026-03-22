@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Mar 22 06:19:32 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.5.1
+
+- Update to 1.5.1
+  * Fixes
+    - Crash on Wayland when screenAt() returns null (#706, #663)
+    - CLI arguments being parsed as password search (#652)
+    - OTP error handling with better messages (#677)
+    - Window icon not showing on dialog boxes (#671)
+    - Slovak translation GPG keygen script (#667)
+    - Suppress qApp deprecation warnings on Qt6
+- Rebase QtPass-desktop_version.patch
+
+-------------------------------------------------------------------
+Sat Mar 21 09:41:02 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.5.0
+
+- Update to 1.5.0
+  * Highlights
+    - Modernized C++/Qt build pipeline with clang-tidy and wider
+      lint/test hardening.
+    - Windows release pipeline reliability improvements for AppVeyor
+      and Inno Setup packaging.
+    - 1.5.0 release metadata and packaging preparation across the
+      desktop app, installer, and CI configuration.
+  * Fixes & Improvements
+    - Fixed profile handling issues in Qt6 compatibility scenarios
+      and improved profile selection behavior #681, #695.
+    - Preserved existing application behavior when launching qtpass
+      without parameters #704.
+    - Removed a regression where gpg_id comments could be altered #658.
+    - Added missing include path fixes and small reliability
+      hardening in core code paths #690, #716.
+  * Release, CI and Maintenance
+    - Added/updated PublicCode and CI workflows, including release-time
+      validation and action upgrades #701, #709, #710, #711, #712.
+    - Completed the AppVeyor/Inno Setup modernization and packaging
+      updates #722.
+    - Updated readme status badges and branch links to current
+      workflow targets #724.
+  * Localization
+    - Synchronised a large set of translation updates through
+      Weblate and translation automation.
+- Add QtPass-desktop_version.patch to fix invalid-desktopfile.
+
+-------------------------------------------------------------------
 Tue Sep 19 15:44:06 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.4.0

@@ -1,7 +1,7 @@
 #
 # spec file for package QtPass
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           QtPass
-Version:        1.4.0
+Version:        1.5.1
 Release:        0
 Summary:        A multi-platform gui for pass
 License:        GPL-3.0-only
 Group:          Productivity/Security
 URL:            https://qtpass.org/
 Source0:        https://github.com/IJHack/qtpass/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         %{name}-desktop_version.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
@@ -44,7 +45,7 @@ Provides:       qtpass
 QtPass is a multi-platform GUI for pass, the standard unix password manager.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export QT_HASH_SEED=0
