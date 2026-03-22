@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 06:25:37 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.1.9 (no release notes).
+- Drop lalinference-swig-stringval-not-value.patch: upstreamed.
+- Disable warning 999 requiring exact swig version match by
+  exporting env var SWIG_FEATURE="-w999".
+
+-------------------------------------------------------------------
 Mon Dec  2 15:18:22 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add lalinference-swig-stringval-not-value.patch: For

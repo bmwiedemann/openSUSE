@@ -1,7 +1,7 @@
 #
 # spec file for package lalinference
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %bcond_with octave
 
 Name:           %{pname}%{?psuffix}
-Version:        4.1.7
+Version:        4.1.9
 Release:        0
 Summary:        LSC Algorithm Inference Library
 License:        GPL-2.0-or-later
@@ -41,8 +41,6 @@ URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalinference-printf-data-type-consistency.patch badshah400@gmail.com -- Cast data passed to printf from size_t to long to make it consistent with the format "%li"; this fixes build failures on i586
 Patch0:         lalinference-printf-data-type-consistency.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalinference-swig-stringval-not-value.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes
@@ -158,9 +156,9 @@ This package provides the necessary files for using LAL Inference with octave.
 # Patch0 is not upstream and uses -p1, so we have a mix of -p1 and -p2 patches
 %autosetup -N -n %{pname}-%{version}
 %patch -P0 -p1
-%patch -P1 -p2
 
 %build
+export SWIG_FEATURES="-w999"
 %{python_expand # Necessary to run %%configure with all python flavors
 export PYTHON=%{_bindir}/$python
 mkdir ../$python
@@ -225,8 +223,7 @@ sed -E -i "1 s|^#\!\s*%{_bindir}/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %{_libdir}/*.so.*
@@ -259,6 +256,7 @@ sed -E -i "1 s|^#\!\s*%{_bindir}/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir
 %else
 
 %check
+export SWIG_FEATURES="-w999"
 %{python_expand # check for all python flavors
 export PYTHON=%{_bindir}/$python
 %make_build -C ../$python check
