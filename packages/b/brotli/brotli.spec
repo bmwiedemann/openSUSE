@@ -27,6 +27,7 @@ Group:          Productivity/Archiving/Compression
 URL:            https://github.com/google/brotli
 Source:         https://github.com/google/brotli/archive/v%version.tar.gz
 Source99:       baselibs.conf
+Patch1:         0001-disable-BROTLI_MODEL-macro-for-LoongArch64.patch
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  gzip
