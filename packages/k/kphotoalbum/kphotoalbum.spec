@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kphotoalbum
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        A photo administration utility
 License:        GPL-2.0-or-later
@@ -53,6 +53,8 @@ BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Marble) >= 24.12.0
 BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}

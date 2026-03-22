@@ -169,4 +169,12 @@
     <comment>Update to 6.1.0</comment>
     <requestid>1309054</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>896af53e934555564d3df8d38a33a93a</srcmd5>
+    <version>6.2.0</version>
+    <time>1774185164</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.2.0</comment>
+    <requestid>1341701</requestid>
+  </revision>
 </revisionlist>
