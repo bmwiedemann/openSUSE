@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 20 13:37:27 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.21.2:
+  * [performance] don't block on media load on API endpoints to
+    improve latency
+  * [bugfix] numerous media processing bug fixes
+  * [bugfix] Preescape backslashes when doing plaintext parsing
+  * [bugfix] fix media setting errors on codec unsupported or generic
+    ffmpeg/ffprobe related errors
+  * [bugfix] Fix 404 for local audio files with no cover image
+  * [chore] Update gotosocial-woodpecker-build version number
+  * [chore] update dependencies
+  * [chore/performance] Set lazy loading in HTML for status header
+    avatars
+  * [chore] Use bun.Ident() in GetCachedAttachments
+  * [docs/bugfix] Fix link to example systemctl file
+
+-------------------------------------------------------------------
 Thu Mar  5 13:00:19 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.21.1:
