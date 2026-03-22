@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 21 20:29:11 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260320:
+  * Fix hiding Tone column on radios that support no tones
+  * Add Radioddity DB40-G driver
+  * Add support for Retevis HA2 model
+  * ha1: Fix mem.duplex="off" setting
+  * ha1: Fix dtmfsignalinglist
+  * Add Radio Amateur Satellites query source, integrate it into
+    the UI.
+  * Move repeaterbook to cached/proxied service
+  * Add Baofeng UV-28Plus
+
+-------------------------------------------------------------------
 Fri Mar 13 17:33:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260313:
