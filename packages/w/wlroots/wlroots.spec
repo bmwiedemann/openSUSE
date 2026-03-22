@@ -18,7 +18,7 @@
 
 %global ver_suffix 0.19
 %global sover      0_19
-%global patch_ver  2
+%global patch_ver  3
 %global libname libwlroots-%{sover}
 %bcond_without  drm_backend
 %bcond_without  libinput_backend
@@ -103,7 +103,6 @@ Pluggable, composable modules for building a Wayland compositor.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -I/usr/include/wayland -Wno-redundant-decls -Wno-error=switch"
 %meson \
   "-Dbackends=[
     %{?with_drm_backend:'drm',}

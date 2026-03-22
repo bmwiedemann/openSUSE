@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 20 22:13:53 UTC 2026 - zeus <dunning1kruger@mailfence.com>
+
+- Update to 0.19.3
+  * backend/libinput: fix build with libinput 1.31
+  * backend/libinput: add support for LIBINPUT_SWITCH_KEYPAD_SLIDE
+  * image_capture_source/output: Update constraints on enable
+  * Add "const" to eliminate "error: initialization discards ‘const’ qualifier from pointer target type"
+  * wlr_virtual_pointer: Set axis source on all axis
+  * render/allocator: add missing wlr_buffer_finish() in destroy impls
+  * backend/drm: Close non-master drm fd on failure
+  * tinywl: fix duplicate object files passed to linker
+  * backend/libinput: guard against new enum entries
+  * render/vulkan: introduce buffer_import_sync_file()
+  * render/vulkan: take render pass in vulkan_sync_render_buffer()
+  * render/vulkan: fix missing DMA-BUF implicit read fence for textures
+  * render/vulkan: introduce buffer_export_sync_file()
+  * render/vulkan: add "acquire" to vulkan_sync_foreign_texture()
+  * render/vulkan: fix missing DMA-BUF implicit write fence for render buffer
+  * build: bump version to 0.19.3
+  * ci: update dalligi upstream repo
+  * xwayland: fix memory leak on pipe() failure
+  * backend/session: respond to event hangup or error
+  
+- Remove compiler workarounds
+
+-------------------------------------------------------------------
 Thu Mar 12 05:53:38 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Attempt to ignore this error "unhandled switch"
