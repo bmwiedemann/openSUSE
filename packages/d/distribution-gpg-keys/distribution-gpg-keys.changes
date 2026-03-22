@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 21 21:50:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.118:
+  * update copr keys
+  * Add symlinks to rpmfusion 44, 45 and 46
+  * Add Fedora 46 key
+  * Add Remi's key for 2026 (Fedora 44 and 45)
+  * Add CentOS PQC signing keys
+  * Add RHEL PQC signing keys
+  * suse: Update RPM-GPG-KEY-SuSE-SLE-12
+  * Refresh CentOS SIG Extras key
+  * Update CentOS SIG keys downlod script
+  * Add missing CentOS SIG keys
+  * Add new Slack key used by versions 4.47 and above
+  * Add openSUSE Leap SLE imports
+  * Add Slack key
+
+-------------------------------------------------------------------
 Sun Dec 14 13:38:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.115:

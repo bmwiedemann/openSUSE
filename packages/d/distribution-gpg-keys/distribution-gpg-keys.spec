@@ -4,7 +4,7 @@
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Nicolas FORMICHELLA <stigpro@outlook.fr>
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>.
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 
 Name:           distribution-gpg-keys
-Version:        1.115
+Version:        1.118
 Release:        0
 Summary:        GPG keys of various Linux distributions
 Group:          System/Packages

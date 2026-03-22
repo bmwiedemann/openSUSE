@@ -2,7 +2,7 @@
   <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/rpm-software-management/distribution-gpg-keys.git</param>
     <param name="scm">git</param>
-    <param name="revision">distribution-gpg-keys-1.115-1</param>
+    <param name="revision">distribution-gpg-keys-1.118-1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="match-tag">*</param>
     <param name="changesgenerate">enable</param>

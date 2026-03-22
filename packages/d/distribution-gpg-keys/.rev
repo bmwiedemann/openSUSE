@@ -181,4 +181,12 @@
     <comment>distribution-gpg-keys 1.115</comment>
     <requestid>1322847</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1188aabd1f2fe6fbb059a1f52aaab4e7</srcmd5>
+    <version>1.118</version>
+    <time>1774185187</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.118 (forwarded request 1341753 from AndreasStieger)</comment>
+    <requestid>1341754</requestid>
+  </revision>
 </revisionlist>
