@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 06:04:04 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.3 (no release notes).
+- Disable warning 999 requiring exact swig version match by
+  exporting env var SWIG_FEATURE="-w999".
+- Drop lalinspiral-swig-stringval-not-value.patch: upstreamed.
+
+-------------------------------------------------------------------
 Sun Dec  1 07:00:56 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add lalinspiral-swig-stringval-not-value.patch: For

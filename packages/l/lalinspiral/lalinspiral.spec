@@ -1,7 +1,7 @@
 #
 # spec file for package lalinspiral
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,15 +35,13 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           %{pname}%{?psuffix}
-Version:        5.0.1
+Version:        5.0.3
 Release:        0
 Summary:        LSC Algorithm Inspiral Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalinspiral-swig-stringval-not-value.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes
@@ -139,6 +137,7 @@ This package provides the necessary files for using LAL Inspiral with octave.
 %autosetup -p2 -n %{pname}-%{version}
 
 %build
+export SWIG_FEATURES="-w999"
 %{python_expand # Necessary to run configure with multiple py3 flavors
 export PYTHON=%{_bindir}/$python
 builddir=../`basename ${PYTHON}`_build
@@ -199,8 +198,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %{_libdir}/*.so.*
@@ -228,6 +226,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %else
 
 %check
+export SWIG_FEATURES="-w999"
 %{python_expand export PYTHON=%{_bindir}/$python
 %make_build -C ../`basename ${PYTHON}`_build check
 }
