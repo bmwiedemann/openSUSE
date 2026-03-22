@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Mar 22 09:40:05 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.20.2
+  - Fixed a crash during event handling when no gamepad is connected.
+  - Fixed a crash when there are cached feed entries belonging to a subscription
+    whose bookmark has been deleted.
+  - Fixed build issue with glibc 2.43+.
+- update to 1.20.1
+  - Preferences: Hide the SOCKS5 password in the input field (use "sensitive"
+    mode).
+  - Updated UI translations.
+- update to 1.20.0
+  - New features:
+    - SOCKS5 proxy support. When enabled, all connections and DNS resolution are
+      tunneled through the proxy.
+    - Option to show input prompts at bottom of window (Preferences >
+      Appearance). The placement can also be toggled in the input prompt [...]
+      menu.
+    - Scroll the page and lists by dragging with the middle mouse button.
+    - Context menu for error/warning messages. These messages are not selectable
+      text so this way one can copy the message to the clipboard.
+    - Context menu for input dialog prompt text.
+    - Option for Return key behavior: Shift for newline, Command/Control for
+      accept.
+    - Option to prefer IPv6 in DNS resolution.
+    - Experimental gamepad support. You can scroll the page and move a pointer
+      with the thumb sticks, and map actions to gamepad buttons. (Gamepad does
+      not interact with native popups, so gamepad controls work best without any
+      native UI controls.)
+    - Build option for handheld devices (ENABLE_MOBILE_HANDHELD). This is a
+      variant of the mobile phone layout with the assumption that a gamepad is
+      used for controlling the app. It is suitable for handheld game consoles,
+      for instance.
+  - Changes and enhancements:
+    - Fixed ability to scroll the page while an input prompt is open.
+    - Plain text lines are wrapped to the maximum available width when the
+      expand-to-long-lines option is enabled.
+    - Improved warning message when there is a problem with the proxy server
+      certificate.
+    - Revised order of input prompt […] menu items; added prompt position
+      toggle.
+  - Fixes:
+    - Stability and behavior issues with audio players. For example, history
+      navigation was not releasing audio player resources when leaving a page.
+      (Previously, they were just paused.)
+    - Auto-stopping an audio player when at end of content.
+    - Excessive audio player refresh interval.
+    - Opening a link context menu using the keyboard shortcut will remember
+      which link as hovered using the keyboard.
+    - Gopher: Misdetected menu styling particularly with non-ASCII characters.
+    - Crash in the simple text renderer (e.g., TUI) when encountering a
+      Backspace character.
+    - Potential hang when laying out text into a narrow space.
+    - Invalid initial layout for resizable input fields, causing a flicker.
+    - OpenSSL error messages are no longer printed to stderr.
+
+-------------------------------------------------------------------
 Thu Dec  4 08:05:59 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.19.4
