@@ -1,7 +1,7 @@
 #
 # spec file for package octave
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define apiver  v60
+%define apiver  v61
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 10.3.0
+%define pkg_ver 11.1.0
 %define src_ver %{pkg_ver}
 # Image processing library
 %if 0
@@ -64,8 +64,6 @@ Source3:        %{name}.attr
 Patch0:         octave_tools_pie.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
 Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
-# PATCH-FIX-UPSTREAM octave-reproducible-jar.patch badshah400@gmail.com -- Set jar date to source modification date-time for reproducible builds [https://savannah.gnu.org/bugs/index.php?67140]
-Patch2:         octave-reproducible-jar.patch
 #
 BuildRequires:  %{blas_library}-devel
 BuildRequires:  arpack-ng-devel

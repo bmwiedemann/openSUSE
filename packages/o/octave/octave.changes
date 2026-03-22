@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 15 15:28:10 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 11.1.0:
+  * Too many changes to list, see
+    <https://octave.org/NEWS-11.html>.
+- Re-base octave_tools_pie.patch for update.
+- Bump api ver to 61 in keeping with upstream.
+- Drop octave-reproducible-jar.patch as it's been fixed upstream (bug #67140).
+
+-------------------------------------------------------------------
 Mon Oct 27 06:16:36 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 10.3.0:
