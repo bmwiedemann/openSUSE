@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 21 14:30:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.3.1
+  * Do not leak pages into the stackview (kde#515036)
+  * Consistently install an appstream file again
+  * Updated translations
+
+-------------------------------------------------------------------
 Sat Sep 13 08:23:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update file list after KDE Frameworks 6.18 release

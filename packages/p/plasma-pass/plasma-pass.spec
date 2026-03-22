@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.3.0
+%define kf6_version 6.18.0
 %define plasma6_version 6.0.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           plasma-pass
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Plasma widget for the pass password manager
 License:        LGPL-2.1-or-later
@@ -73,13 +73,11 @@ generated and stored by the "pass" password manager.
 %files
 %license LICENSES/*
 %doc README.md
+%{_kf6_appstreamdir}/org.kde.plasma.pass.appdata.xml
 %{_kf6_debugdir}/plasma-pass.categories
 %{_kf6_plasmadir}/plasmoids/org.kde.plasma.pass/
 %dir %{_kf6_qmldir}/org/kde/plasma/private
 %{_kf6_qmldir}/org/kde/plasma/private/plasmapass/
-%if %{pkg_vcmp cmake(KF6Package) < 6.18}
-%{_kf6_appstreamdir}/org.kde.plasma.pass.appdata.xml
-%endif
 
 %files lang -f %{name}.lang
 
