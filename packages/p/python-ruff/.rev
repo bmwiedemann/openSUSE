@@ -3157,4 +3157,25 @@
  * Rule changes</comment>
     <requestid>1338758</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>b62d51988652819108949a8e09a721f6</srcmd5>
+    <version>0.15.7</version>
+    <time>1774185093</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.7 
+ * Preview features
+  * Display output severity in preview 
+  * Don't show noqa hover for non-Python documents 
+ * Rule changes
+  * [pycodestyle] Recognize pyrefly: as a pragma comment (E501) 
+ * Server
+  * Don't return code actions for non-Python documents 
+ * Documentation
+  * Add company AI policy to contributing guide 
+  * Document editor features for Markdown code formatting 
+  * [pylint] Improve phrasing (PLC0208) 
+ * Other changes
+  * Use PEP 639 license information</comment>
+    <requestid>1341537</requestid>
+  </revision>
 </revisionlist>

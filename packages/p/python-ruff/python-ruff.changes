@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 20 11:39:55 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.7 
+ * Preview features
+  * Display output severity in preview 
+  * Don't show noqa hover for non-Python documents 
+ * Rule changes
+  * [pycodestyle] Recognize pyrefly: as a pragma comment (E501) 
+ * Server
+  * Don't return code actions for non-Python documents 
+ * Documentation
+  * Add company AI policy to contributing guide 
+  * Document editor features for Markdown code formatting 
+  * [pylint] Improve phrasing (PLC0208) 
+ * Other changes
+  * Use PEP 639 license information 
+
+-------------------------------------------------------------------
 Fri Mar 13 15:13:02 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.6 
