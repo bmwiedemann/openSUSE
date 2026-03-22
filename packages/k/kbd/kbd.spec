@@ -364,7 +364,7 @@ while read line; do
   fi
   # fix conversion of h and H in fr-afnor keymap (boo#1259269)
   if [ "$XKBLAYOUT-$XKBVARIANT" == "fr-afnor" ]; then
-    sed -i '/^keycode 35 /s/AltGr AltGr AltGr AltGr/+U+0067 +U+0047 +U+0067 +U+0047/g' /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map
+    sed -i '/^keycode 35 /s/AltGr AltGr AltGr AltGr/+U+0068 +U+0048 +U+0068 +U+0048/g' /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map
   fi
   # skip converted layouts which cannot input ASCII (rh#1031848)
   grep -q "U+0041" /tmp/"$XKBLAYOUT"-"$XKBVARIANT".map && \

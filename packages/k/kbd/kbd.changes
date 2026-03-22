@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 20 16:18:19 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix conversion of h and H fr-afnor xkb keymap for real. The
+  previous fix mapped it to g (boo#1259269#c2).
+
+-------------------------------------------------------------------
 Mon Mar 16 05:45:52 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Fix conversion of h and H fr-afnor xkb keymap (boo#1259269).
