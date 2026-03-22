@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Mar 21 07:33:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.0:
+  * Features
+    - Update restic to 0.18.1 (#1126)
+    - enhancement: Add restore filter based on timestamp of
+      snapshots (#1122)
+    - enhancement: add support for restic's --delete parameter
+      (#1123)
+    - enhancement: add support for restic's --path parameter to
+      operator and cli (#1121)
+    - Improve sleep for reliable repository creation (#1105)
+    - Add flag to disable Snapshots CR sync (#1112)
+  * Fixes
+    - Fix cluster label in backup metrics (#1097)
+    - bug: Unable to AND-join tags (#1120)
+  * Dependency Updates
+    - chore(deps): update dependency go to v1.26.1 (#993)
+    - Update golang version on root as well
+    - chore(deps): update goreleaser/goreleaser-action action to v7
+    - chore(deps): update github/codeql-action action to v4
+    - Update adjacent dependencies
+    - fix(deps): update module github.com/gruntwork-io/terratest to
+      v0.56.0
+    - chore(deps): update giantswarm/install-binary-action action
+      to v4
+    - chore(deps): update docker/setup-qemu-action action to v4
+    - chore(deps): update docker/setup-buildx-action action to v4
+    - chore(deps): update docker/login-action action to v4
+    - chore(deps): update actions/upload-artifact action to v7
+    - chore(deps): update actions/setup-go action to v6
+    - chore(deps): update actions/checkout action to v6
+    - chore(deps): update actions/cache action to v5
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.89.0
+    - Also update adjacent dependencies
+    - fix(deps): update kubernetes monorepo to v0.35.2
+    - Update module github.com/norwoodj/helm-docs to v1.14.2
+    - fix(deps): update module github.com/norwoodj/helm-docs to
+      v1.14.2
+    - Update module github.com/restic/restic to v0.18.1
+    - chore(deps): update sigstore/cosign-installer action to
+      v3.10.1
+    - Update docker.io/library/alpine Docker tag to v3.23
+    - Update module github.com/go-logr/logr to v1.4.3
+    - Update dependency bats to v1.13.0
+    - Update github/codeql-action action to v2.28.1
+    - Update actions/upload-artifact action to v4.6.2
+    - Update ossf/scorecard-action action to v2.4.3
+    - Update module go.uber.org/zap to v1.27.1
+
+-------------------------------------------------------------------
 Fri Oct 03 16:12:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version k8up-4.8.6:

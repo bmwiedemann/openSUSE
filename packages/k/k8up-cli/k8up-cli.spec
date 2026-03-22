@@ -1,7 +1,7 @@
 #
 # spec file for package k8up-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define executable_name k8up
 
 Name:           k8up-cli
-Version:        2.13.1
+Version:        2.14.0
 Release:        0
 Summary:        CLI for the K8up Kubernetes and OpenShift Backup Operator
 License:        Apache-2.0
 URL:            https://github.com/k8up-io/k8up
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.21
+BuildRequires:  go1.26 >= 1.26.1
 
 %description
 K8up is a Kubernetes backup operator based on Restic that will handle PVC and
