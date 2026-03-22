@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 17 03:58:23 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable warning 999 requiring exact swig version match by
+  exporting env var SWIG_FEATURE="-w999".
+
+-------------------------------------------------------------------
+Thu Feb 19 16:42:40 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.7:
+  * No upstream changelog.
+- Add Requires: python-igwn-segments and python-igwn-ligolw.
+- Drop upstreamed patches:
+  * lalburst-swig-stringval-not-value.patch
+  * lalburst-tests-unittest-makeSuite.patch
+
+-------------------------------------------------------------------
 Mon Dec  2 14:31:34 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add lalburst-swig-stringval-not-value.patch: For

@@ -1,7 +1,7 @@
 #
 # spec file for package lalburst
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalburst
-Version:        2.0.5
+Version:        2.0.7
 Release:        0
 Summary:        LSC Algorithm Burst Library
 License:        GPL-2.0-or-later
@@ -34,10 +34,6 @@ URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalburst-fix-uninitialised-variable.patch badshah400@gmail.com -- fix usage of an uninitialised variable
 Patch1:         lalburst-fix-uninitialised-variable.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf691247a442704f13c075ed34.patch#/lalburst-swig-stringval-not-value.patch
-# PATCH-FIX-UPSTREAM lalburst-tests-unittest-makeSuite.patch badshah400@gmail.com -- Remove usage of `unittest.makeSuite` as it is deprecated in Python 3.11+
-Patch3:         lalburst-tests-unittest-makeSuite.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module glue}
 BuildRequires:  %{python_module lal >= 7.2.0}
@@ -57,6 +53,8 @@ BuildRequires:  pkgconfig(lal) >= 7.2.0
 BuildRequires:  pkgconfig(lalmetaio) >= 3.0.0
 BuildRequires:  pkgconfig(lalsimulation) >= 4.0.0
 Requires:       python-glue
+Requires:       python-igwn-ligolw
+Requires:       python-igwn-segments
 Requires:       python-lal >= 7.2.0
 Requires:       python-lalmetaio >= 3.0.0
 Requires:       python-lalsimulation >= 4.0.0
@@ -74,6 +72,8 @@ BuildRequires:  octave-lalsimulation >= 4.0.0
 BuildRequires:  pkgconfig(octave)
 %endif
 # SECTION For tests
+BuildRequires:  %{python_module igwn-ligolw}
+BuildRequires:  %{python_module igwn-segments}
 BuildRequires:  %{python_module ligo-lw}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pytest}
@@ -125,6 +125,7 @@ This package provides the necessary files for using LAL Burst with octave.
 %patch -P3 -p1
 
 %build
+export SWIG_FEATURES="-w999"
 %{python_expand # Necessary to run configure with multiple py3 flavors
 export PYTHON=%{_bindir}/$python
 builddir=../`basename ${PYTHON}`_build
@@ -185,12 +186,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
 %check
+export SWIG_FEATURES="-w999"
 %{python_expand export PYTHON=%{_bindir}/$python
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} %make_build -C ../`basename ${PYTHON}`_build check
 }
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %{_libdir}/*.so.*
