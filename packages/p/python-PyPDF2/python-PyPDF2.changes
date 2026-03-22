@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 20 15:53:50 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- CVE-2026-33123: excessive resource consumption when processing specially
+  crafted PDF due to inefficient decoding of array-based streams (bsc#1259992)
+  * CVE-2026-33123.patch
+
+-------------------------------------------------------------------
 Thu Mar 12 11:56:22 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - CVE-2026-31826: denial of service due to excessive memory consumption via crafted PDF, bsc#1259508

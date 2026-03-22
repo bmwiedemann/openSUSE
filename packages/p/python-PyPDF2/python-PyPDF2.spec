@@ -41,6 +41,8 @@ Patch5:         CVE-2026-27888.patch
 Patch6:         CVE-2026-28804.patch
 # PATCH-FIX-UPSTREAM CVE-2026-31826.patch bsc#1259508
 Patch7:         CVE-2026-31826.patch
+# PATCH-FIX-UPSTREAM CVE-2026-33123.patch bsc#1259992
+Patch8:         CVE-2026-33123.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
