@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Mar 22 08:37:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.7.0
+  * Protection level is shown in main window.
+  * Scroll only the list of transmitters in map-viewer.
+  * Extend AJAX timeout for map view to fit better slower browser
+    startups.
+  * Fix in FIG size calculation (and make it more generic).
+  * Many additions and fixes are made.
+  * Update xml-reader.
+  * Faster replacement for cmplx_from_phase().
+  * Calculate phase shift from sampling rate deviation.
+  * Bugfix in estimate_carrier_offset.
+  * Bugfixes in soapy handler.
+  * Adding SoapySDR support (experimental) by taken over Qt-Dab
+    SoapySDR and making many adaptions.
+  * More work on Soapy handler and SIMD.
+  * Change bandwidth selection in Soapy handler.
+  * Reduce CPU load, summarize 3x dongle select code, ppm and
+    third gain setting added to soapy handler.
+  * Skip audio driver in soapy handler and omit the file's suffix
+    in QLibrary.
+  * Use lib VOLK in SampleReader.
+
+-------------------------------------------------------------------
+Sun Dec 21 08:14:36 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.6.0
+  * Improved softbit decoder 2.
+  * Add slider for XML/UFF file-player position control.
+  * The dump button of the device windows showed further "writing"
+    after channel change.
+  * Automatically check for a new DABstar version on GitHub (the
+    work for AbracaDABra is very acknowledged here). This feature
+    can be deactivated on the configuration window; also the
+    repetition time for the next check. There is also a new button
+    on the configuration window to trigger this check manually.
+  * A new button on the main window allows opening the slide show
+    picture storage folder for fast access. See the tooltip there
+    for more details.
+
+-------------------------------------------------------------------
 Sat Dec  6 09:03:29 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.5.0

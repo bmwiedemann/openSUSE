@@ -1,7 +1,7 @@
 #
 # spec file for package dabstar
 #
-# Copyright (c) 2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dabstar
-Version:        4.5.0
+Version:        4.7.0
 Release:        0
 Summary:        A DAB receiver with a technical focus
 License:        GPL-2.0-only
@@ -38,6 +38,7 @@ BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(fftw3f)
 BuildRequires:  pkgconfig(librtlsdr)
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(SoapySDR)
 
 %description
 A DAB receiver with a technical focus.
@@ -47,8 +48,9 @@ A DAB receiver with a technical focus.
 
 %build
 %cmake \
-  -DRTLSDR_LINUX=ON \
-  -DRTL_TCP=ON
+  -DRTLSDR=ON \
+  -DRTL_TCP=ON \
+  -DSOAPY=ON
 %make_jobs
 
 %install
