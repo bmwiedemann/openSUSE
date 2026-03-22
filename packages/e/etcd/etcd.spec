@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.6.8
+Version:        3.6.9
 Release:        0
 Summary:        Reliable key-value store for the most critical data of a distributed system
 License:        Apache-2.0
@@ -39,7 +39,7 @@ Source13:       %{name}.sysconfig
 Source14:       %{name}.sysuser
 Source15:       README.security
 Source16:       update-etcd-conf.sh
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools

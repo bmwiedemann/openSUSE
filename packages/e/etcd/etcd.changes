@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 20 18:59:47 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.6.9:
+  * dependency: Bump google.golang.org/grpc from v1.75.0 to 1.79.3
+  * server/etcdserver: guard unauthenticated endpoints with auth checks
+  * server/etcdserver: enforce auth checks for nested txn ops
+  * build(deps): bump distroless/static-debian12 from `3f2b64e` to `20bc6c0`
+  * Revert "Reuse events between sync loops"
+  * Bump golang.org/x/net@ v0.51.0 fixes  GO-2026-4559
+  * Don't reuse same ReadIndex
+  * etcdctl: add license header
+  * etcdctl: add unit test for Argify
+  * etcdctl: fix slice bounds trimming single-quoted args
+  * Add defer-recover block to prevent panic when cc is nil
+  * Print the endpoint the grpc client connected to in unary interceptor
+  * Fix race berween read index and leader change causing a stale read
+  * server/etcdmain: fix deadlock issue for grpcproxy
+  * dependency: bump go.opentelemetry.io/otel/sdk from v1.34.0 to v1.40.0
+  * server/etcdserver/api/v3rpc: run metrics interceptors before handlers
+
+-------------------------------------------------------------------
 Mon Feb 16 13:45:10 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.6.8:
