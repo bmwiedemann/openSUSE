@@ -1,7 +1,7 @@
 #
 # spec file for package eduvpn-common
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define _name eduvpn_common
 Name:           eduvpn-common
-Version:        4.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Shared library for eduVPN
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc
-BuildRequires:  go1.23
+BuildRequires:  go1.24
 BuildRequires:  golang-packaging
 BuildRequires:  python-rpm-macros
 Recommends:     python3-%{name}
@@ -47,13 +47,13 @@ Recommends:     python3-%{name}
 %description
 Shared library written in Go with functions that all eduVPN clients can use.
 
-%package -n lib%{_name}-4_0_0
+%package -n lib%{_name}-5_0_1
 Summary:        Shared library for eduVPN
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
-%description -n lib%{_name}-4_0_0
+%description -n lib%{_name}-5_0_1
 Shared library written in Go with functions that all eduVPN clients can use.
 
 %package -n python-%{name}
@@ -102,10 +102,10 @@ pushd wrappers/python
 %pytest tests.py
 popd
 
-%post -n lib%{_name}-4_0_0 -p /sbin/ldconfig
-%postun -n lib%{_name}-4_0_0 -p /sbin/ldconfig
+%post -n lib%{_name}-5_0_1 -p /sbin/ldconfig
+%postun -n lib%{_name}-5_0_1 -p /sbin/ldconfig
 
-%files -n lib%{_name}-4_0_0
+%files -n lib%{_name}-5_0_1
 %license LICENSE
 %doc CHANGES.md README.md
 %{_libdir}/lib%{_name}-%{version}.so
