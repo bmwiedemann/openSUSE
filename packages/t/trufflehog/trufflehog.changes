@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar 21 07:34:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.94.0:
+  * Expand tilde manually in TUI (#4827)
+  * Confine symlink state handling to scanSymlink in Filesystem
+    source (#4807)
+  * Add test cases for escaped unicode (#4812)
+  * Update README formatting and CLI help output (#4758)
+  * Add anypoint oauth2 detector to defaults.go (#4722)
+  * Analysis info now uses snake case (#4765)
+  * [INS-241] Datadogapikey detector (#4627)
+  * [INS-254] Datadog detector verification fix and endpoint
+    configuration (#4616)
+  * Rearrange some method parameters in the Filesystem source
+    (#4806)
+  * Make naming more consistent in the Filesystem source (#4805)
+  * Use trContext instead of context throughout Filesystem source
+    (#4804)
+
+-------------------------------------------------------------------
 Tue Mar 10 07:33:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.93.8:
