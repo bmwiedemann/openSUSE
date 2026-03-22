@@ -26,7 +26,7 @@
 %endif
 
 Name:           dracut
-Version:        109+suse.39.g53459763
+Version:        110+suse.16.g47bca564
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -146,13 +146,12 @@ but are not normally supported or required.
   --systemdsystemunitdir=%{_unitdir} \
   --bashcompletiondir=%{_datadir}/bash-completion/completions \
   --libdir=%{_prefix}/lib \
-  --enable-dracut-cpio
-%make_build all CFLAGS="%{optflags}" %{?_smp_mflags}
+  --enable-dracut-cpio \
+  --enable-network-legacy
+%make_build all CFLAGS="%{optflags}" %{?_smp_mflags} DRACUT_FULL_VERSION="%{version}-%{rbrelease}"
 
 %install
-%make_install
-
-echo -e "#!/bin/bash\nDRACUT_VERSION=%{version}-%{rbrelease}" > %{buildroot}%{dracutlibdir}/dracut-version.sh
+%make_install DRACUT_FULL_VERSION="%{version}-%{rbrelease}"
 
 # Remove architecture specific modules.
 %ifnarch ppc ppc64 ppc64le ppc64p7
@@ -335,9 +334,7 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %dir %{dracutlibdir}
 %{dracutlibdir}/skipcpio
 %{dracutlibdir}/dracut-functions.sh
-%{dracutlibdir}/dracut-init.sh
 %{dracutlibdir}/dracut-functions
-%{dracutlibdir}/dracut-version.sh
 %{dracutlibdir}/dracut-logger.sh
 %{dracutlibdir}/dracut-initramfs-restore
 %{dracutlibdir}/dracut-install
@@ -361,7 +358,6 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/11systemd-bsod
 %{dracutlibdir}/modules.d/11systemd-coredump
 %{dracutlibdir}/modules.d/11systemd-creds
-%{dracutlibdir}/modules.d/11systemd-cryptsetup
 %{dracutlibdir}/modules.d/11systemd-hostnamed
 %{dracutlibdir}/modules.d/11systemd-initrd
 %{dracutlibdir}/modules.d/11systemd-integritysetup
@@ -369,7 +365,7 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/11systemd-ldconfig
 %{dracutlibdir}/modules.d/11systemd-modules-load
 %{dracutlibdir}/modules.d/11systemd-networkd
-%{dracutlibdir}/modules.d/11systemd-pcrphase
+%{dracutlibdir}/modules.d/11systemd-pcrextend
 %{dracutlibdir}/modules.d/11systemd-portabled
 %{dracutlibdir}/modules.d/11systemd-pstore
 %{dracutlibdir}/modules.d/11systemd-repart
@@ -426,6 +422,7 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/70livenet
 %{dracutlibdir}/modules.d/70lvm
 %{dracutlibdir}/modules.d/70mdraid
+%{dracutlibdir}/modules.d/70memdisk
 %{dracutlibdir}/modules.d/70multipath
 %{dracutlibdir}/modules.d/70numlock
 %{dracutlibdir}/modules.d/70nvdimm
@@ -434,6 +431,7 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/70qemu
 %{dracutlibdir}/modules.d/70qemu-net
 %{dracutlibdir}/modules.d/70uefi-lib
+%{dracutlibdir}/modules.d/71systemd-cryptsetup
 %{dracutlibdir}/modules.d/73crypt-gpg
 %{dracutlibdir}/modules.d/73crypt-loop
 %{dracutlibdir}/modules.d/73fido2

@@ -3,7 +3,7 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/opensuse/dracut-ng.git</param>
-    <param name="revision">SUSE/109</param>
+    <param name="revision">SUSE/110</param>
     <param name="versionformat">@PARENT_TAG@+suse.@TAG_OFFSET@.g%h</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">dracut</param>

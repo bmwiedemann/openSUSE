@@ -2598,4 +2598,12 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
   * fix(systemd-tmpfiles): do not include tmpfiles configured in /etc (bsc#1258186)</comment>
     <requestid>1333518</requestid>
   </revision>
+  <revision rev="255" vrev="1">
+    <srcmd5>24179411b9fab1f23438c2c8c1baf152</srcmd5>
+    <version>110+suse.16.g47bca564</version>
+    <time>1774185087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1341526</requestid>
+  </revision>
 </revisionlist>
