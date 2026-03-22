@@ -1,7 +1,7 @@
 #
 # spec file for package consoleet-oldschoolpc-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           consoleet-oldschoolpc-fonts
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Smooth-edge versions of int10h's IBM/PC fonts
 License:        CC-BY-SA-4.0
