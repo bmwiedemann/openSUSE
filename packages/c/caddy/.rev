@@ -469,4 +469,41 @@
   * Update to BuildRequires: golang(API) &gt;= 1.25 matching go.mod (forwarded request 1301068 from jfkw)</comment>
     <requestid>1301069</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>66ef9ce23cc8ab7a1b2b71381a82d802</srcmd5>
+    <version>2.11.2</version>
+    <time>1774185130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.11.2:
+  * Revert cosign (see #7536)
+  * build(deps): bump the actions-deps group across 1 directory with 12 updates (#7536)
+  * build(deps): bump github.com/smallstep/certificates (#7535)
+  * Wire up Cause for most context cancels (#7538)
+  * rewrite: Force recomputing path when escaped path matches rewrite target
+  * Update SECURITY.md
+  * fileserver: document hide case-sensitivity (F-CADDY-FILESERVER-HIDE-CASE-001) (#7548)
+  * reverseproxy: prevent body close on dial-error retries (#7547)
+  * reverseproxy: Track dynamic upstreams, enable passive healthchecking (#7539)
+  * Merge commit from fork
+  * forward_auth: `copy_headers` does not strip client-supplied identity headers (Fixes GHSA-7r4p-vjf4-gxv4) (#7545)
+  * caddyhttp: Collect metrics once per route instead of per handler (#7492)
+  * api: Add all in-flight requests /reverse_proxy/upstreams (Fixes #7277) (#7517)
+  * core: Check whether @id is unique (#7002)
+  * proxyproto: Generated test coverage (#7540)
+  * logging: Ensure `slog` error level logs don't print stack traces (#7512)
+  * autohttps: Ensure CertMagic config is recreated after autohttps runs (#7510)
+  * fix(caddyfile): Prevent parser to panic when no token were added by empty {block} (#7543)
+  * reverseproxy: Fix `health_port` being ignored in health checks (#7533)
+  * cmd: Custom binary names through `CustomBinaryName` and `CustomLongDescription` (#7513)
+  * reverseproxy: query escape request urls when proxy protocol is enabled (#7537)
+  * tls: Add `tls_resolvers` global option for DNS challenge configuration (#7297)
+  * caddyhttp: Evaluate tls.client placeholders more accurately (fix #7530) (#7534)
+  * cmd: Pass configFile, not configFlag, for reload command (#7532)
+  * Revert &quot;encode: Implement Flush for legacy compatibility&quot;
+  * go.mod: Upgrade x/net
+  * caddyhttp: Limit empty Host check to HTTP/1.1
+  * chore: Enable modernize linter (#7519)
+  * caddyhttp: Avoid nil pointer dereference in proxyWrapper (#7521)</comment>
+    <requestid>1341619</requestid>
+  </revision>
 </revisionlist>

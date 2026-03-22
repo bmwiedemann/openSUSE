@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Thu Mar  5 15:41:54 UTC 2026 - OStester 1 <AKsubacct@gmail.com>
+
+- Update to version 2.11.2:
+  * Revert cosign (see #7536)
+  * build(deps): bump the actions-deps group across 1 directory with 12 updates (#7536)
+  * build(deps): bump github.com/smallstep/certificates (#7535)
+  * Wire up Cause for most context cancels (#7538)
+  * rewrite: Force recomputing path when escaped path matches rewrite target
+  * Update SECURITY.md
+  * fileserver: document hide case-sensitivity (F-CADDY-FILESERVER-HIDE-CASE-001) (#7548)
+  * reverseproxy: prevent body close on dial-error retries (#7547)
+  * reverseproxy: Track dynamic upstreams, enable passive healthchecking (#7539)
+  * Merge commit from fork
+  * forward_auth: `copy_headers` does not strip client-supplied identity headers (Fixes GHSA-7r4p-vjf4-gxv4) (#7545)
+  * caddyhttp: Collect metrics once per route instead of per handler (#7492)
+  * api: Add all in-flight requests /reverse_proxy/upstreams (Fixes #7277) (#7517)
+  * core: Check whether @id is unique (#7002)
+  * proxyproto: Generated test coverage (#7540)
+  * logging: Ensure `slog` error level logs don't print stack traces (#7512)
+  * autohttps: Ensure CertMagic config is recreated after autohttps runs (#7510)
+  * fix(caddyfile): Prevent parser to panic when no token were added by empty {block} (#7543)
+  * reverseproxy: Fix `health_port` being ignored in health checks (#7533)
+  * cmd: Custom binary names through `CustomBinaryName` and `CustomLongDescription` (#7513)
+  * reverseproxy: query escape request urls when proxy protocol is enabled (#7537)
+  * tls: Add `tls_resolvers` global option for DNS challenge configuration (#7297)
+  * caddyhttp: Evaluate tls.client placeholders more accurately (fix #7530) (#7534)
+  * cmd: Pass configFile, not configFlag, for reload command (#7532)
+  * Revert "encode: Implement Flush for legacy compatibility"
+  * go.mod: Upgrade x/net
+  * caddyhttp: Limit empty Host check to HTTP/1.1
+  * chore: Enable modernize linter (#7519)
+  * caddyhttp: Avoid nil pointer dereference in proxyWrapper (#7521)
+  * logging: Support `zstd` roll compression (#7515)
+  * logging: add DirMode options and propagate FileMode to rotations (#7335)
+  * http: Sort auto-HTTPS redirect routes by host specificity (fixes #7390) (#7502)
+  * httpcaddyfile: Fix missing TLS connection policies when auto_https is default (#7325) (#7507)
+  * reverseproxy: fix tls dialing w/ proxy protocol (#7508)
+
+-------------------------------------------------------------------
+Fri Feb 20 22:47:21 UTC 2026 - OStester 1 <AKsubacct@gmail.com>
+
+- Update to version 2.11.1:
+  * chore: Disable windows/arm build target (Go 1.26 disabled) (#7503)
+
+-------------------------------------------------------------------
+Fri Feb 20 19:28:11 UTC 2026 - OStester 1 <AKsubacct@gmail.com>
+
+- Update to version 2.11.0:
+  * go.mod: Upgrade dependencies
+  * fileserver: Fix tests on Windows
+  * Merge commit from fork
+  * Merge commit from fork
+  * fileserver: Replace \ with \\ in file matcher paths
+  * build(deps): bump filippo.io/edwards25519 from 1.1.0 to 1.1.1 (#7497)
+  * Revert "listeners: Add support for named socket activation (#7243)"
+  * chore: Add nolints to work around haywire linters (#7493)
+  * admin: Fix tests locally, properly isolate storage (#7486)
+  * caddytest: make TestReverseProxyHealthCheck deterministic with poll instead of sleep (#7474)
+  * encode: Implement Flush for legacy compatibility
+  * caddytls: Enable debug logging for DNSManager (#7491)
+  * chore: fix some comments to improve readability (#7395)
+  * refactor: use strings.Builder to improve performance (#7364)
+  * build(deps): bump the all-updates group across 1 directory with 12 updates (#7490)
+  * dep: upgrade cel-go (#7478)
+  * caddyhttp: Option to disable 0-RTT (#7485)
+  * chore: Remove obsolete comment in `ech.go` (#7487)
+  * chore: Bump zerossl dependency to 0.1.5 (#7489)
+  * pki: add per-CA configurable `maintenance_interval` and `renewal_window_ratio` (#7479)
+  * httpcaddyfile: Override global `dns` with `acme_dns` (fix #7294) (#7458)
+  * caddyfile: Add `renewal_window_ratio` global option and `tls` subdirective (#7473)
+  * caddytls: Finish removing prefer_wildcard
+  * go.mod: update nebula v1.10.3 to resolve cve (#7471)
+  * caddytls: Return errors instead of nil in client auth provisioning (#7464)
+  * acmeserver: warn when policy rules unset (#7469)
+  * chore: bump Go to v1.26 (#7466)
+  * admin: Enforce origin implicitly based on request headers
+  * use math/rand/v2 instead of math/rand (#7413)
+  * reverseproxy: fix X-Forwarded-* headers for Unix socket requests (#7463)
+  * Merge commit from fork
+  * Update SECURITY.md
+  * Update LLM disclosure requirements in SECURITY.md
+  * caddyhttp: Use case-insensitive comparison for large Host lists
+  * caddyhttp: Lowercase comparison when matching with escape sequence
+  * reverseproxy: Set `Host` to `{upstream_hostport}` automatically if TLS (#7454)
+  * Update detail in readme
+  * admin: Reject requests with Sec-Fetch-Mode headers
+  * Require disclosure of LLM usage in security reports
+  * caddytls: Check type assertion
+  * reverseproxy: Customizable dial network for SRV upstreams
+  * caddtls: Skip .ts.net domains for ECH (#6971)
+  * caddyhttp: Reject invalid Host header (fix #7449)
+  * autohttps: deterministic logic and strict bind checking on Linux (#7435)
+  * core: Show JSON error offsets where possible (#7437)
+  * caddyfile: add `observe_catchall_hosts` option (#7434)
+  * core: Embed `time/tzdata` (#7432)
+  * caddyconfig: Fix indentation of multiline strings in fmt (#7425) (#7433)
+  * reverseproxy: fix error when remote address is not an IP (#7429)
+  * update quic-go to v0.59.0 (#7431)
+  * chore: Dumb `prealloc` lint fix (#7430)
+  * Revise top of readme to include Warp sponsorship section
+  * headers: Make ApplyTo nil-safe (#7426)
+  * reverseproxy: make error chan bigger when reverse proxying websocket (#7419)
+  * build(deps): bump the all-updates group across 1 directory with 12 updates (#7421)
+  * go.mod: Upgrade CertMagic and ZeroSSL deps
+  * readme: fix fence (#7416)
+  * tracing: Add span attributes to tracing module (#7269)
+  * cmd: Add --json flag to list-modules command (#7409)
+  * chore: update quic-go to v0.58.0 (#7404)
+  * logging: `log_append` Early option, Supports `{http.response.body}` (#7368)
+  * go.mod: update tscert package to latest (aea342f6) (#7397)
+  * caddyhttp: {http.request.body_base64} placeholder (#7367)
+  * notify: implement windows service status and error notifications (#7389)
+  * caddytls: panic when using tls.ca_pool.source.http -> tls.ca (#7393)
+  * caddytls: ECH key rotation (#7356)
+  * test: mark `Assert*` functions as test helpers (#7380)
+  * caddytls: fix preferred chains options by appending values instead of replacing (#7387)
+  * caddyhttp: create a placeholder for and log ech status (#7328)
+  * docs: add  maybe template function documentation (#7388)
+  * Introduce packet conn wrappers (#7180)
+  * caddyhttp: Fix logging on wildcard sites when SkipUnmappedHosts is true (#7372)
+  * caddypki: Add support for multiple intermediates in signing chain (#7057)
+  * build(deps): bump github.com/smallstep/certificates (#7381)
+  * ci: escape backticks in changelogs embedded in JS (#7382)
+  * build(deps): bump the all-updates group with 3 updates (#7376)
+  * reverseproxy: Fix retries for requests with bodies (#7360)
+  * encode: modernize, replace HasSuffix+TrimSuffix with CutSuffix (#7357)
+  * update quic-go to v0.57.0 (#7359)
+  * build(deps): bump golang.org/x/crypto from 0.43.0 to 0.45.0 (#7355)
+  * reverse_proxy: use interfaces to modify the behaviors of the transports (#7353)
+  * ci: implement new release flow (#7341)
+  * core: custom slog handlers for modules (log contextual data) (#7346)
+  * build(deps): bump the all-updates group with 4 updates (#7333)
+  * chore: update quic-go to v0.56.0, enable qlog for HTTP/3 (#7345)
+  * caddyhttp: allow customizing the Server header (#7338)
+  * chore: fix golangci-lint error G602 in caddyhttp (#7334)
+  * caddytls: correct documentation of `LeafFolderLoader` (#7327)
+  * caddyfile: fix nested quotes formatted incorrectly by fmt (#7045)
+  * reverseproxy: set default values for keepalive if only some of them are set (#7318)
+  * tracing: switch to autoexport for OpenTelemetry span exporter (#7317)
+  * build(deps): bump github.com/slackhq/nebula from 1.9.5 to 1.9.7 (#7315)
+  * build(deps): bump the all-updates group across 1 directory with 2 updates (#7307)
+  * refactor: use reflect.TypeFor (#7313)
+  * reverseproxy: use http.Protocols to handle h2c requests (#6990)
+  * metrics: resolve per-host inifinite cardinality (#7306)
+  * reverseproxy: do not disable keepalive if proxy protocol is used (#7300)
+  * listeners: Add support for named socket activation (#7243)
+  * intercept: use already buffered response if possible when intercepting (#7028)
+  * logging: fix multiple regexp filters on same field (fixes #7049) (#7061)
+  * caddyhttp: wrap accepted connection to suppress tls.ConnectionState (#7247)
+  * caddyhttp: Add `trusted_proxies_unix` for trusting unix socket `X-Forwarded-*` headers (#7265)
+  * reverseproxy: Use http1.1 upgrade for websocket for extended connect of http2 and http3 (#7305)
+  * logging: Switch from `lumberjack` to `timberjack`, add time-rolling options (#7244)
+  * chore: fix some comments (#7303)
+  * caddyhttp: Add server options `keepalive_idle` and `keepalive_count` (#7298)
+  * reverse_proxy: use http1 for outbound tls requests with placeholder that are likely websockets (#7296)
+  * chore: Update quic-go to v0.55.0 (#7288)
+  * basicauth: Implement argon2id (#7186)
+  * httpcaddyfile: Map default_bind to BindHost in globalACMEDefaults (#7278)
+  * httpcaddyfile: Add missing DNS challenge check for `acme_dns` (#7270)
+  * build(deps): bump the actions-deps group with 8 updates (#7284)
+  * core: Reloading with `SIGUSR1` if config never changed via admin (#7258)
+  * core: use reflect.TypeFor to check for encoding/json.RawMessage (#7274)
+  * caddyhttp: omit unnecessary reassignment (#7276)
+  * caddypki: check intermediate lifetime to actual root cert lifetime (#7272)
+  * chore: ugh, lint fix... (#7275)
+  * go.mod: update quic-go to v0.54.1 (#7273)
+  * cmd: prevent commas in header values from being split (#7268)
+  * logging: Adjustments to BufferedLog to keep logs in the correct order (#7257)
+  * caddyfile: Allow `block` to do nothing if nothing passed to `import` (#7206)
+  * Use WaitGroup.Go to simplify code (#7253)
+  * fileserver: set Content-Length for precompressed files (#7251)
+  * logging: Buffer the logs before config is loaded (#7245)
+  * caddypki: Disable internal auto-CA when auto_https is disabled (fix #7211) (#7238)
+  * caddytls: Allow disabling distributed solving (except http-01)
+  *  encode: fix response corruption when handle_errors is used (#7235)
+  * build(deps): bump the actions-deps group with 5 updates (#7237)
+  * build(deps): bump the all-updates group with 17 updates (#7236)
+  * caddyhttp: remove redundant middleware next copy (#7217)
+  * encode: add graphql-response header to list (#7214)
+  * caddyfile: prevent adding trailing space on line before env variable (#7215)
+  * caddyhttp: Normalize (lowercase) {label.N} placeholders
+  * It can't be in the subfolder!?
+  * Uhh I guess it has to be named something specific
+  * Tweak issue form
+  * Issue template chooser config
+  * Fix issue form ... again
+  * Fix syntax of issue form
+  * AI assistance disclosure (#7212)
+  * Set read permissions as default
+  * caddyhttp: add replacer placeholders for escaped values (#7181)
+
+-------------------------------------------------------------------
 Sat Aug 23 13:03:43 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.10.2:
