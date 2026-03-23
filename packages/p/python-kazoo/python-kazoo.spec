@@ -1,7 +1,7 @@
 #
 # spec file for package python-kazoo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kazoo
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        Higher Level Zookeeper Client
 License:        Apache-2.0
 URL:            https://github.com/python-zk/kazoo
 Source:         https://files.pythonhosted.org/packages/source/k/kazoo/kazoo-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 46.4.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-pure-sasl
+Suggests:       python-eventlet >= 0.17.1
+Suggests:       python-gevent >= 1.2
+Suggests:       python-pure-sasl >= 0.5.1
 BuildArch:      noarch
-%ifpython2
-Requires:       python-eventlet >= 0.17.1
-Requires:       python-gevent >= 1.2
-%endif
 %python_subpackages
 
 %description

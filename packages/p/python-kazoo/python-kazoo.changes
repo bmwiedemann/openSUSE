@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:09:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.11.0:
+  * bump deps for Python > 3.8
+  * add Python 3.13 & 3.14
+  * be a little more verbose about ZK download URL
+  * removing tiny remaining bits of Python2 hybridation
+  * add support for SNI
+  * Proper retry count in KazooRetry
+  * Revert "Fix possible endless wait in stop() after AUTH_FAILED
+    error (#688)"
+  * prefer use of `time.monotonic` (b00d88ff, closes #722)
+  * Add missing Zookeeper exceptions codes
+  * fix spelling
+  * **test:**  avoid racy reader vs writer contender in
+    `test_rw_lock`
+  * **testing:**  follow redirect when downloading ZK and use
+    https
+
+-------------------------------------------------------------------
 Mon Jun 30 04:12:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
