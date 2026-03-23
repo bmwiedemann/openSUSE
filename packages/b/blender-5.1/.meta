@@ -1,0 +1,8 @@
+<package name="blender-5.1" project="openSUSE:Factory">
+  <title>Some Blender demo files</title>
+  <description>Some Blender demo scenes
+
+geeko_example_scene: showing raytracing, rigging, animation, curves,
+                     shading, texturing, vertex groups and rendering.</description>
+  <url>https://www.blender.org/</url>
+</package>

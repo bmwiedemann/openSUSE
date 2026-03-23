@@ -1,0 +1,35 @@
+#!/bin/bash -x
+
+if [ -s /usr/share/doc/packages/blender/geeko_example_scene.blend ]; then
+    demo=/usr/share/doc/packages/blender/geeko_example_scene.blend
+else
+    demo=/usr/share/doc/packages/blender/geeko.blend
+fi
+
+usage() {
+    cat >&2 <<EOF
+run blender with a geeko demo scene, depending on what is available
+
+usage: $0 [-h] [-v1] [other.blend]
+       -h   this message
+       -o   force old geeko.blend
+
+without arguments, it loads $demo
+EOF
+    exit 1
+}
+
+while getopts ho par ; do
+    case $par in
+    h) usage;;
+    o) demo=/usr/share/doc/packages/blender/geeko.blend;;
+    esac
+done
+
+shift $(($OPTIND - 1))
+
+if [ "$#" -ge 1 -a "${1: -6}" == ".blend" ]; then
+    demo="$1"
+fi
+
+exec /usr/bin/blender "$demo"

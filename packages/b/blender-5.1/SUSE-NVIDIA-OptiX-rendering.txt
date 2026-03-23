@@ -1,0 +1,38 @@
+NVIDIA OptiX rendering on openSUSE
+
+Prerequisites
+
+Given, you mastered SUSE-NVIDIA-GPU-rendering.txt already, follow this guide 
+in order to have OptiX rendering available from Blender.
+
+Note, that you need an account on https://developer.nvidia.com for the next step
+to succeed.
+
+Download the OptiX package for Linux from
+
+https://developer.nvidia.com/designworks/optix/download
+
+At the time of this writing, this was Version 7.4.0.
+The further description refers to this version.
+
+You need to unpack it in a specific location (as root). Since we need to specify
+the path to OptiX at build time, /opt/nvidia/optix needs to point to your current
+OptiX environment:
+
+$ su
+# mkdir -p /opt/nvidia
+# cd /opt/nvidia
+# sh ~user/Downloads/NVIDIA-OptiX-SDK-7.4.0-linux64-x86_64.sh
+# # Answer all questions with yes.
+
+# # Note: adjust path accordingly
+# ln -s NVIDIA-OptiX-SDK-7.4.0-linux64-x86_64 optix
+
+Now set up OptiX environment, e.g. in ~/.profile or in /etc/profile.local:
+
+export OPTIX_ROOT_DIR=/opt/nvidia/optix
+export OPTIX_INCLUDE_DIR=$OPTIX_ROOT_DIR/include
+
+Given, all prerequisites are fulfilled, you should find the OptiX rendering device
+in Edit -> Preferences -> System.
+
