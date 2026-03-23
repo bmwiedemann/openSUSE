@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-upgrade
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-upgrade
-Version:        1.22.2
+Version:        1.30.0
 Release:        0
 Summary:        Automatically upgrade your Django projects
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/adamchainz/django-upgrade
 Source:         https://github.com/adamchainz/django-upgrade/archive/refs/tags/%{version}.tar.gz#/django-upgrade-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

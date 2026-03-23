@@ -187,4 +187,41 @@
     check_constraint_condition index_together  Issue #513.</comment>
     <requestid>1228547</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f9c603b30c9a046984ddfc773b385ea4</srcmd5>
+    <version>1.30.0</version>
+    <time>1774282296</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.30.0:
+  * Support parsing Django versions without a minor part from
+    pyproject.toml. For example, django&gt;=6 will be parsed as for
+    Django 6.0+. PR #625.
+  * Drop Python 3.9 support.
+  * Remove the AppConfig rewriting behaviour of
+    :ref:`default_auto_field &lt;default_auto_field&gt;`. It was unsafe
+    for projects setting DEFAULT_AUTO_FIELD to a field other than
+    BigAutoField, triggering regressive migrations for primary
+    keys in affected apps. PR #606.
+  * Add Django 6.0+ fixer :ref:`mail_api_kwargs
+    &lt;mail_api_kwargs&gt;` to rewrite positional arguments to keyword
+    arguments for some django.core.mail APIs. PR #600.
+  * Add Django 6.0+ fixer :ref:`default_auto_field
+    &lt;default_auto_field&gt;` to remove now-redundant auto field
+    specifications. The fixer removes the DEFAULT_AUTO_FIELD
+    setting and AppConfig.default_auto_field attribute when they
+    are set to the new default of django.db.models.BigAutoField.
+    Thanks to q0w in PR #591.
+  * Add Django 6.0+ fixer :ref:`stringagg &lt;stringagg&gt;` to rewrite
+    StringAgg imports from django.contrib.postgres.aggregates to
+    django.db.models. This fixer replaces the compatibility
+    import rewrite added in 1.27.0, and now correctly wraps the
+    delimiter argument in Value() when it is a string literal. PR
+    #596.
+  * Add Django 6.0+ fixer :ref:`settings_admins_managers
+    &lt;settings_admins_managers&gt;` to rewrite the ADMINS and
+    MANAGERS settings to drop the previously-unused name parts of
+    the tuples. PR #601.
+  * Support Python 3.14.</comment>
+    <requestid>1341702</requestid>
+  </revision>
 </revisionlist>
