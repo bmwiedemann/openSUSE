@@ -1194,4 +1194,24 @@
   * docs: update GitHub Action assets (#6419) (forwarded request 1338028 from jfkw)</comment>
     <requestid>1338033</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>24a3200f980dd9fa727a3a6455403e2b</srcmd5>
+    <version>2.11.4</version>
+    <time>1774282369</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.11.4:
+  * chore: prepare release
+  * build(deps): bump github.com/ryanrolds/sqlclosecheck from 0.5.1 to 0.6.0 (#6452)
+  * build(deps): bump github.com/fatih/color from 1.18.0 to 1.19.0 (#6451)
+  * docs: update reference (#6450)
+  * docs: update link to default linters page (#6447)
+  * build(deps): bump github.com/ryanrolds/sqlclosecheck from v0.5.1 to a fork (#6441)
+  * docs: fix typos and grammar errors in docs and code comments (#6440)
+  * build(deps): bump golang.org/x/tools from 0.42.0 to 0.43.0 (#6434)
+  * build(deps): bump github.com/sonatard/noctx from 0.5.0 to 0.5.1 (#6436)
+  * build(deps): bump golang.org/x/sys from 0.41.0 to 0.42.0 (#6435)
+  * build(deps): bump golang.org/x/mod from 0.33.0 to 0.34.0 (#6433)
+  * docs: update GitHub Action assets (#6427) (forwarded request 1341888 from jfkw)</comment>
+    <requestid>1341889</requestid>
+  </revision>
 </revisionlist>
