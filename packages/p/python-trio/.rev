@@ -312,4 +312,12 @@
   - Update BuildRequires from pyproject.toml</comment>
     <requestid>1320602</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f3ffd47fdfb7049d72a7dd6ca5a9f385</srcmd5>
+    <version>0.33.0</version>
+    <time>1774282275</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1341732</requestid>
+  </revision>
 </revisionlist>

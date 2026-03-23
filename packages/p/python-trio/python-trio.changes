@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 14 19:21:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.33.0:
+  * Start supporting Android's new "android" sys.platform.
+  * Both :class:`trio.testing.RaisesGroup` and
+    :class:`trio.testing.Matcher` have been deprecated. Pytest
+    alternatives pytest.RaisesGroup and pytest.RaisesExc
+    (respectively) are considered correct replacement.
+
+-------------------------------------------------------------------
 Fri Nov 28 10:38:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.32.0
