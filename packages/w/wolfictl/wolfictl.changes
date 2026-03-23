@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 23 06:12:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.6:
+  * build(deps): bump google.golang.org/grpc from 1.79.2 to 1.79.3
+  * build(deps): bump the chainguard group with 2 updates (#1902)
+  * build(deps): bump golang.org/x/oauth2 from 0.35.0 to 0.36.0
+    (#1903)
+  * build(deps): bump golang.org/x/text from 0.34.0 to 0.35.0
+    (#1904)
+  * build(deps): bump step-security/harden-runner from 2.15.1 to
+    2.16.0 (#1906)
+  * build(deps): bump the chainguard group with 3 updates (#1891)
+  * build(deps): bump github.com/samber/lo from 1.52.0 to 1.53.0
+    (#1892)
+  * build(deps): bump step-security/harden-runner from 2.15.0 to
+    2.15.1 (#1894)
+  * build(deps): bump golang.org/x/sync from 0.19.0 to 0.20.0
+    (#1896)
+  * build(deps): bump chainguard-dev/actions from 1.6.5 to 1.6.8
+    (#1901)
+
+-------------------------------------------------------------------
 Mon Mar 16 06:07:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.5:
