@@ -2630,10 +2630,6 @@ unsorted:
   - copacetic-fish-completion 
   - copacetic-zsh-completion 
   - coppwr 
-  - coq 
-  - coq-devel 
-  - coq-doc 
-  - coq-ide 
   - coreboot-utils 
   - coredns 
   - coredns-extras 
@@ -10884,6 +10880,9 @@ unsorted:
   - lame 
   - lame-doc 
   - lame-mp3rtp 
+  - lammps 
+  - lammps-data 
+  - lammps-devel 
   - language-detector 
   - language-detector-javadoc 
   - languagetool 
@@ -12182,9 +12181,9 @@ unsorted:
   - libattr1-32bit 
   - libaubio-devel 
   - libaubio5 
-  - libaudaspace-c1_8 
-  - libaudaspace-py1_8 
-  - libaudaspace1_8 
+  - libaudaspace-c1_9 
+  - libaudaspace-py1_9 
+  - libaudaspace1_9 
   - libaudcore5 
   - libaudgui6 
   - libaudiofile1 
@@ -14440,6 +14439,7 @@ unsorted:
   - liblalpulsar30 
   - liblalsimulation37 
   - liblalsupport14 
+  - liblammps0 
   - liblangtag-devel 
   - liblangtag-doc 
   - liblapack3-32bit 
@@ -24193,6 +24193,7 @@ unsorted:
   - python3-kiwi 
   - python3-kiwi_crossprepare_plugin 
   - python3-ktoblzcheck 
+  - python3-lammps 
   - python3-lash 
   - python3-lasso 
   - python3-ldb-32bit 
@@ -25141,6 +25142,7 @@ unsorted:
   - python311-azure-multiapi-storage 
   - python311-azure-nspkg 
   - python311-azure-onlineexperimentation 
+  - python311-azure-planetarycomputer 
   - python311-azure-purview-account 
   - python311-azure-purview-administration 
   - python311-azure-purview-catalog 
@@ -26874,6 +26876,7 @@ unsorted:
   - python311-protobuf 
   - python311-proton-client 
   - python311-proton-core 
+  - python311-proton-keyring-linux 
   - python311-proton-vpn-api-core 
   - python311-proton-vpn-local-agent 
   - python311-proton-vpn-network-manager 
@@ -26963,6 +26966,7 @@ unsorted:
   - python311-pycomposefile 
   - python311-pycountry 
   - python311-pycrdt 
+  - python311-pycrdt-store 
   - python311-pycrdt-websocket 
   - python311-pycrowdsec 
   - python311-pycryptodome 
@@ -27037,6 +27041,7 @@ unsorted:
   - python311-pykwalify 
   - python311-pylama 
   - python311-pylast 
+  - python311-pylerc 
   - python311-pyleri 
   - python311-pylev 
   - python311-pylibacl 
@@ -27154,7 +27159,6 @@ unsorted:
   - python311-pytest-astropy 
   - python311-pytest-astropy-header 
   - python311-pytest-asyncio 
-  - python311-pytest-asyncio0.21 
   - python311-pytest-attrib 
   - python311-pytest-base-url 
   - python311-pytest-bdd 
@@ -28096,6 +28100,7 @@ unsorted:
   - python311-xkbgroup 
   - python311-xkcdpass 
   - python311-xlrd 
+  - python311-xlsx2csv 
   - python311-xlwt 
   - python311-xmldiff 
   - python311-xmlschema 
@@ -29006,6 +29011,7 @@ unsorted:
   - python313-azure-multiapi-storage 
   - python313-azure-nspkg 
   - python313-azure-onlineexperimentation 
+  - python313-azure-planetarycomputer 
   - python313-azure-purview-account 
   - python313-azure-purview-administration 
   - python313-azure-purview-catalog 
@@ -30763,6 +30769,7 @@ unsorted:
   - python313-protobuf 
   - python313-proton-client 
   - python313-proton-core 
+  - python313-proton-keyring-linux 
   - python313-proton-vpn-api-core 
   - python313-proton-vpn-local-agent 
   - python313-proton-vpn-network-manager 
@@ -30853,6 +30860,7 @@ unsorted:
   - python313-pycomposefile 
   - python313-pycountry 
   - python313-pycrdt 
+  - python313-pycrdt-store 
   - python313-pycrdt-websocket 
   - python313-pycrowdsec 
   - python313-pycryptodome 
@@ -30926,6 +30934,7 @@ unsorted:
   - python313-pykwalify 
   - python313-pylama 
   - python313-pylast 
+  - python313-pylerc 
   - python313-pyleri 
   - python313-pylev 
   - python313-pylibacl 
@@ -31043,7 +31052,6 @@ unsorted:
   - python313-pytest-astropy 
   - python313-pytest-astropy-header 
   - python313-pytest-asyncio 
-  - python313-pytest-asyncio0.21 
   - python313-pytest-attrib 
   - python313-pytest-base-url 
   - python313-pytest-bdd 
@@ -31988,6 +31996,7 @@ unsorted:
   - python313-xkbgroup 
   - python313-xkcdpass 
   - python313-xlrd 
+  - python313-xlsx2csv 
   - python313-xlwt 
   - python313-xmldiff 
   - python313-xmlschema 
@@ -33164,6 +33173,13 @@ unsorted:
   - rocm-smi-devel 
   - rocminfo 
   - rocprim-devel 
+  - rocq 
+  - rocq-devel 
+  - rocq-doc 
+  - rocq-ide 
+  - rocq-stdlib 
+  - rocq-stdlib-devel 
+  - rocq-stdlib-doc 
   - rocrand-devel 
   - rocs 
   - rocs-devel 
