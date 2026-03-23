@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 23 02:21:40 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774101470.e82b4cb:
+  * feat: implement 'always_run' test flag
+  * refactor: use gitlint from os-autoinst-common
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * feat(snd2png): restore erroneously deleted test
+  * style: fix copyright in crop.py
+  * chore: remove unused pyproject line
+  * chore(deps): Add PPI to development dependencies
+  * chore(snd2png): update test.png.md5.original based on current snd2png
+  * test(full-stack): optimize execution time by reducing timeouts
+  * feat(vnc): make connection retry sleep configurable
+  * feat: add configurable secret key hiding support
+
+-------------------------------------------------------------------
 Fri Mar 13 22:24:45 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1773429030.ba0de6e:
