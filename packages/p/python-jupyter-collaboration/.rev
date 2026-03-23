@@ -180,4 +180,41 @@
   * Fix translation loading in share link dialog #488 (@krassowski)</comment>
     <requestid>1290007</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>43cef2740784169c2f6eae4e66a28953</srcmd5>
+    <version>4.2.1</version>
+    <time>1774282347</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.2.1
+  ## Bugs fixed
+  * Save immediately when triggering manual save #540 (@Carreau,
+    @krassowski)
+  * Use serverSettings for API requests #539 (@krassowski, @jtpio)
+  ## Maintenance and upkeep improvements
+  * Add testing on Python 3.14 #541 (@Carreau, @krassowski)
+  * Update snapshots bot checkout and permission check #536
+    (@martinRenou, @davidbrochart, @krassowski)
+  * Update shared link icon snapshot to fix UI tests #534
+    (@krassowski, @davidbrochart)
+  * Improve file watcher cancellation message and increase test
+    coverage #533 (@krassowski, @davidbrochart)
+  * Fix tests hanging on CI due to pytest configured to turn
+    warnings into errors #531 (@krassowski, @davidbrochart)
+  * Add a test for file watcher cleanup after delay #529
+    (@krassowski, @davidbrochart)
+- Releaes 4.2.0
+  ## Enhancements made
+  * Stop file watcher on persistent errors #520 (@krassowski)
+  ## Bugs fixed
+  * RtcContentProvider: depend on DefaultDrive rather than on the
+    RestContentProvider for routing get() and save() #525
+    (@martinRenou)
+  * Enable TempFileYStore to work with Jupyter Lab #519
+    (@Darshan808)
+  * Fix bug with saving of files with DOS line endings by
+    normalizing them before loading to ydoc #449 (@BaukJ)
+  ## Maintenance and upkeep improvements
+  * Bump JupyterLab packages to 4.5.0 #524 (@martinRenou)</comment>
+    <requestid>1341874</requestid>
+  </revision>
 </revisionlist>
