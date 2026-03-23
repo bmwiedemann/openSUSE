@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 23 14:12:42 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 0.8.2:
+  * bsc#1258945, CVE-2026-3172: Fixed buffer overflow with parallel
+    HNSW index build.
+  * Fixed Index Searches in EXPLAIN output for Postgres 18
+ 
+-------------------------------------------------------------------
 Thu Sep 25 16:09:17 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - enable pg 18

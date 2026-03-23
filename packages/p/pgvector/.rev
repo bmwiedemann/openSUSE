@@ -33,4 +33,15 @@ Add reproducible.patch to avoid compile-time CPU-detection (boo#1100677)</commen
     <comment>- enable pg 18</comment>
     <requestid>1308367</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe2162807c7215a758b58589d7cf2619</srcmd5>
+    <version>0.8.2</version>
+    <time>1774282576</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.2:
+  * bsc#1258945, CVE-2026-3172: Fixed buffer overflow with parallel
+    HNSW index build.
+  * Fixed Index Searches in EXPLAIN output for Postgres 18</comment>
+    <requestid>1342055</requestid>
+  </revision>
 </revisionlist>
