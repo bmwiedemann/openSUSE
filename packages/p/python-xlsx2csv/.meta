@@ -1,0 +1,5 @@
+<package name="python-xlsx2csv" project="openSUSE:Factory">
+  <title>Convert xlsx to csv</title>
+  <description>A tool to convert xlsx files to the csv format.</description>
+  <url>https://github.com/dilshod/xlsx2csv</url>
+</package>
