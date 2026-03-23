@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 21 14:52:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Select2 v4 adaptor now correctly handles new values in the
+    input field
+
+-------------------------------------------------------------------
 Thu Apr 17 11:25:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream django52b1.patch adding compatibility with Django 5.2b1

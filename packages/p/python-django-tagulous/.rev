@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1270981</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0cb4da4512e43876e29d80b6f7c51766</srcmd5>
+    <version>2.1.1</version>
+    <time>1774282305</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.1:
+  * Select2 v4 adaptor now correctly handles new values in the
+    input field</comment>
+    <requestid>1341711</requestid>
+  </revision>
 </revisionlist>
