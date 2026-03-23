@@ -466,4 +466,27 @@
   * Improve OpenAPI scripts</comment>
     <requestid>1337521</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0db25a10c4c6d80f339594dba9843a9d</srcmd5>
+    <version>2.9.0</version>
+    <time>1774282418</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.9.0:
+  ## New Features
+  * Consider per-page settings when iterating paginated properties
+  * Add Secret Scanning Alerts and Improve Code Scan Alerts
+  ## Improvements
+  * Make more objects lazy
+  * Allow for enterprise base url prefixed with api
+  * Add throw option to Workflow.create_dispatch to raise exceptions
+  * Use GET url or _links.self as object url
+  * Add support for type parameter to get_issues
+  * Align implemented paths with OpenAPI spec
+  * Add suggested OpenAPI schemas
+  * Apply OpenAPI schemas
+  ## Bug Fixes
+  * Fix PaginatedList.totalCount returning 0 with GitHub deprecation notices
+  * Use default type if known type is not supported</comment>
+    <requestid>1341915</requestid>
+  </revision>
 </revisionlist>

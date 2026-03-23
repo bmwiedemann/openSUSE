@@ -18,37 +18,36 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyGithub
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        Python library to use the GitHub API v3
 License:        LGPL-3.0-or-later
 URL:            https://github.com/PyGithub/PyGithub
 Source:         https://files.pythonhosted.org/packages/source/p/pygithub/pygithub-%{version}.tar.gz
 Source99:       python-PyGithub.rpmlintrc
-BuildRequires:  %{python_module Deprecated}
-BuildRequires:  %{python_module PyJWT >= 2.4.0}
-BuildRequires:  %{python_module PyNaCl >= 1.4.0}
-BuildRequires:  %{python_module cryptography >= 3.4}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module requests >= 2.14.0}
-BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing-extensions >= 4.0.0}
-BuildRequires:  %{python_module urllib3 >= 1.26.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Deprecated
 Requires:       python-PyJWT >= 2.4.0
 Requires:       python-PyNaCl >= 1.4.0
 Requires:       python-cryptography >= 3.4
 Requires:       python-requests >= 2.14.0
-Requires:       python-typing-extensions >= 4.0.0
+Requires:       python-typing-extensions >= 4.5.0
 Requires:       python-urllib3 >= 1.26.0
 Provides:       python-pygithub = %{version}-%{release}
 # SECTION test requirements
+BuildRequires:  %{python_module PyJWT >= 2.4.0}
+BuildRequires:  %{python_module PyNaCl >= 1.4.0}
+BuildRequires:  %{python_module cryptography >= 3.4}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.14.0}
+BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module typing-extensions >= 4.5.0}
+BuildRequires:  %{python_module urllib3 >= 1.26.0}
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
