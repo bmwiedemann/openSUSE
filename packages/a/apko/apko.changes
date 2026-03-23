@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 23 06:11:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.16:
+  * build(deps): bump github/codeql-action from 4.33.0 to 4.34.0
+    (#2138)
+  * build(deps): bump github.com/buger/jsonparser from 1.1.1 to
+    1.1.2 in the go_modules group across 1 directory (#2137)
+  * build(deps): bump k8s.io/apimachinery from 0.35.2 to 0.35.3
+    (#2135)
+  * build(deps): bump chainguard.dev/sdk from 0.1.50 to 0.1.51
+    (#2136)
+  * build(deps): bump google.golang.org/api from 0.271.0 to 0.272.0
+    (#2130)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.21.2 to 0.21.3 (#2131)
+  * build(deps): bump google.golang.org/grpc from 1.79.2 to 1.79.3
+    in the go_modules group across 1 directory (#2134)
+  * build(deps): bump go.step.sm/crypto from 0.76.2 to 0.77.1
+    (#2132)
+  * Allow periods in certificate names (#2133)
+
+-------------------------------------------------------------------
 Mon Mar 16 15:15:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.15:
