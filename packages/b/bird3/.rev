@@ -68,4 +68,12 @@ sense to provide it as the main implementation.</comment>
   * Protocol: Fixed broken state announcements</comment>
     <requestid>1306739</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>84d2c43cb6eaef9b0124513ceaa884b7</srcmd5>
+    <version>3.2.0</version>
+    <time>1774282401</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1341906</requestid>
+  </revision>
 </revisionlist>

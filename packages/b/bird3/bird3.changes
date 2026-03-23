@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar  3 23:33:29 UTC 2026 - Blake Purdie <blake.purdie@breadlord.org>
+
+- Update to version 3.2.0
+  * BGP: Listening socket rework
+  * IGP metric: Split out local_metric again
+  * Table: Optimal and Any Export refactoring
+  * Various race condition fixes
+  * All fixes included in 3.1.0 -- 3.1.5
+  * Merged 2.18 
+
+-------------------------------------------------------------------
 Mon Sep 22 20:41:15 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - Update to version 3.1.4
