@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:17:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * NEW: added deployment of Python 3.14 packages
+  * CHANGE: requires Python 3.10, Python 3.9 has reached End of
+    Life in Oktober 2025
+  * CHANGE: removed the forced override of
+    `Settings.output_coordinate_space` in the `SVGBacked`
+  * NEW: Support for exporting elevations by the `geo` add-on
+  * contributed by #rdesparbes
+  * BUGFIX: fix `target_point` usage in the `VIEWPORT`
+    transformation matrix
+  * contributed by #eXponenta
+  * BUGFIX: Filter polyline vertices for rendering based on
+    vertex flags
+  * contributed by #PaulLampe
+  * BUGFIX: draw `ATTRIB` entities of block references at last
+  * contributed by #eXponenta
+  * CHANGE: faster and smaller PDF export by the `PyMuPDF`
+    backend
+  * Test with 19 CADKIT samples:
+  * the export of PDF is in average 38x faster
+  * the PDFs are in average 2.5x smaller
+  * contributed by #leonardopbatista
+  * CHANGE: The construction tool for the `SPLINE` entity uses
+    rounded knot-values according the DXF attribute
+    `knot_tolerance`.
+  * BUGFIX: `DICTIONARY` - set the default value of the
+    `hard_owned` flag to 0
+  * copy/paste of INSERT with dynamic features works in BricsCAD
+  * copy/paste in general works in BricsCAD
+  * not fixed - repair of the example file by the `Auditor` is
+    not possible
+  * BUGFIX: The `ACAD_FILTER` dict in the extension dict of the
+    `INSERT` entity is the hard owner of it's entries.
+  * copy/paste of `INSERT` preserves the clipping path
+  * BUGFIX: proxy graphic parsing
+  * BUGFIX: fix weighted basis vector for rational splines
+  * Returns the original basis vector, when the weights cannot be
+    applied.
+  * BUGFIX: `FIELDLIST` load and export error
+  * BUGFIX: revert invalid spline decomposition into Bèzier
+    curves added in commit fe284766
+  * BUGFIX: fix ``__geo_interface__`` mapping of
+    ``MultiLineString`` in the ``geo`` add-on
+  * contributed by #rdesparbes
+  * BUGFIX: fix X11 crash due to a screen use conflict -
+    ``odafc`` add-on
+  * contributed by #jsimomaa
+  * BUGFIX: set landing gap size in method
+    `MultiLeaderBuilder.set_connection_properties()`
+  * BUGFIX: revert fix for issue 1203
+  * NEW: `ezdxf.edgeminer` module to find connected edges
+  * NEW: `ezdxf.edgesmith` module, a companion module for
+    `edgeminer` to create edges from DXF entities and convert
+    connected edges back to DXF entities
+  * NEW: `Mesh.audit()` removes `MESH` entities without vertices
+    or faces
+  * NEW: `Polyline.points_in_wcs()` method
+  * NEW: `EdgePath.close_gaps()` method
+  * NEW: `BSpline.degree_elevation()` method
+  * NEW: `BSpline.point_inversion()` method
+  * NEW: `BSpline.measure()` method
+  * NEW: `BSpline.split()` method
+  * NEW: `BSpline.insert_knot()` and `BSpline.knot_refinement()`
+    supports rational splines
+  * NEW: function `ezdxf.math.is_vertex_order_ccw_3d()`
+  * BUGFIX: Exported `MESH` entities  without vertices or faces
+    create invalid DXF files
+  * BUGFIX: `pickle` support added by #mbway
+  * BUGFIX: fix font name resolution in `ezdxf.tools.text_size()`
+    function
+  * BUGFIX: do not write `None` handles
+  * NEW: `ezdxf.blkrefs.find_unreferenced_blocks()` function
+    returns the names of unused block definitions
+  * NEW: `Auditor` checks if modelspace and active paperspace
+    exists
+  * NEW: support for multi-line attributes for
+    `Insert.add_auto_attribs()` method
+
+-------------------------------------------------------------------
 Fri May  9 05:09:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

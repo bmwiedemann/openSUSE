@@ -1,7 +1,7 @@
 #
 # spec file for package python-ezdxf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define packagename ezdxf
 Name:           python-ezdxf
-Version:        1.2.0
+Version:        1.4.3
 Release:        0
 Summary:        Python package for manipulating DXF drawings
 License:        MIT
@@ -40,11 +40,13 @@ BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module pyparsing >= 2.0.1}
 BuildRequires:  %{python_module fonttools}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module typing_extensions >= 4.6.0}
 Requires:       python-fonttools
 Requires:       python-numpy
 Requires:       python-pyparsing >= 2.0.1
-Requires:       python-typing_extensions
+Requires:       python-typing_extensions >= 4.6.0
+Recommends:     python-Pillow
+Recommends:     python-PyMuPDF >= 1.20.0
 Recommends:     python-matplotlib
 Recommends:     python-qt5
 Requires(post): update-alternatives
