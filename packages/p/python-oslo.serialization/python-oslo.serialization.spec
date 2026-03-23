@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.serialization
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.serialization
-Version:        5.8.0
+Version:        5.9.1
 Release:        0
 Summary:        OpenStack serialization library
 License:        Apache-2.0
@@ -35,7 +35,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-msgpack >= 0.5.2
 Requires:       python-oslo.utils >= 3.33.0
-Requires:       python-tzdata
 BuildArch:      noarch
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-oslo.serialization < %{version}

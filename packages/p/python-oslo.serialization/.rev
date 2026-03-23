@@ -354,4 +354,26 @@
     <comment>switch to singlespec</comment>
     <requestid>1316789</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9eb6bb8c4f2cde184ccc97a9f5670fcd</srcmd5>
+    <version>5.9.1</version>
+    <time>1774282535</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.9.1:
+  * Remove tzdata from requirements
+  * Add typing classifier
+  * Enable logging related ruff checks
+  * Add typing
+  * Delay string interpolations at logging calls
+  * Add ruff
+  * Remove reference to tag framework
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2</comment>
+    <requestid>1342030</requestid>
+  </revision>
 </revisionlist>
