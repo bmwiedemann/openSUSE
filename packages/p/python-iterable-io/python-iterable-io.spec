@@ -1,7 +1,7 @@
 #
-# spec file for package python-iterableio
+# spec file for package python-iterable-io
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,19 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           python-iterable-io
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Adapt generators and other iterables to a file-like interface
-License:        LGPL-3.0
+License:        LGPL-3.0-only
 URL:            https://github.com/pR0Ps/iterable-io
-Source:         https://files.pythonhosted.org/packages/source/i/iterable-io/iterable-io-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://files.pythonhosted.org/packages/source/i/iterable-io/iterable_io-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -35,7 +36,7 @@ BuildArch:      noarch
 Adapt generators and other iterables to a file-like interface
 
 %prep
-%autosetup -p1 -n iterable-io-%{version}
+%autosetup -p1 -n iterable_io-%{version}
 
 %build
 %pyproject_wheel
