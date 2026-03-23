@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Mar 22 06:06:35 UTC 2026 - ecsos <ecsos@opensuse.org> 3.2.1
+
+- Update to 3.2.1
+  * Features
+    - Run cmake-format (#3829)
+    - Add autolabeler (#3824)
+  * Bug Fixes
+    - Fix init with disabled ffmpegthumbnailer (#3834)
+    - Fix SQL Migration Statement (#3823)
+  * Dependencies
+    - Update to jsoncpp 1.9.7 (#3830)
+    - Bump flatted from 3.4.1 to 3.4.2 in /gerbera-web (#3831)
+    - Run cmake-format (#3829)
+    - Update/autolabeler (#3828)
+    - Update to pupnp 1.18.3 (#3826)
+    - Add Autolabeler (#3827) 
+    - Add Autolabeler (#3825)
+    - Bump ReleaseDrafter from 6 to 7 (#3821)
+
+-------------------------------------------------------------------
 Sat Mar 14 13:53:05 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 3.2.0
