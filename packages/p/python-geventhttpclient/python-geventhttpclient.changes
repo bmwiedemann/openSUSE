@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:24:32 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.9
+  * Use select() for socket validation with stdlib SSL support
+    by @devamsheth21 in (#240)
+- from version 2.3.8
+  * feat: Add connection validation to prevent stale connection
+    reuse by @devamsheth21 in (#238)
+
+-------------------------------------------------------------------
 Thu Jan  8 03:20:27 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on urllib3.

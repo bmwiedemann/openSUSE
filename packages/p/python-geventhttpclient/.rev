@@ -147,4 +147,12 @@
     <comment>- Add missing BuildRequires on urllib3.</comment>
     <requestid>1325883</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>58a592dabd55fc8d4fb3cceeef32f512</srcmd5>
+    <version>2.3.9</version>
+    <time>1774282511</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342004</requestid>
+  </revision>
 </revisionlist>
