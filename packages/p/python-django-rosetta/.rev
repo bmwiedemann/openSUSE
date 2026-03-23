@@ -88,4 +88,36 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282138</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>525f41364b1c6257620386a869b741c8</srcmd5>
+    <version>0.10.3</version>
+    <time>1774282303</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.3:
+  * Test against Django 6.0
+  * Test using tox-uv
+  * Tests: update flake8 in tox tests
+  * Format all rendered assets (html, css, js) in a pre-commit
+    task. (PR #294, thanks @balazs-endresz)
+  * Fix Deepl translations containing variables
+  * Rewrite rosetta.js: drop jQuery and modernize rosetta.js (PR
+    #295, thanks @balazs-endresz)
+  * Fix broken link in documentation (PR #300, thanks @KommuSoft)
+  * Test against Django 5.2
+  * Add OPENAI_BASE_URL and OPENAI_MODEL config for self hosted
+    LLM translation (PR #301, thanks @ydf)
+  * Remamed the zh_hans locale to zh_Hans (issue #282, thanks
+    @sunfkny)
+  * Fixed the test configuration following #282
+  * Improve CSP support by avoiding inline styles and server-side
+    rendered stylesheets
+  * Improve error handling when using the Deepl translation
+    service
+  * Add support for translation using OpenAI API
+  * Adds Azerbaijani translation
+  * Allow overriding OpenAI prompt with a template (PR #293,
+    thanks @danleyb2)
+  * Test against Django 5.1</comment>
+    <requestid>1341710</requestid>
+  </revision>
 </revisionlist>

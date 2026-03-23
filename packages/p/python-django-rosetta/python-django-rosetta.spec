@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rosetta
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-django-rosetta
-Version:        0.10.0
+Version:        0.10.3
 Release:        0
 Summary:        Django application that eases the translation of Django projects
 License:        MIT
 URL:            https://github.com/mbi/django-rosetta
-Source:         https://files.pythonhosted.org/packages/source/d/django-rosetta/django-rosetta-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-rosetta/django_rosetta-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -49,9 +49,7 @@ BuildRequires:  memcached
 Django application that eases the translation of Django projects.
 
 %prep
-%setup -q -n django-rosetta-%{version}
-# Workaround https://github.com/mbi/django-rosetta/issues/233
-sed -i 's/test_47_azure_ajax_translation/_test_47_azure_ajax_translation/' rosetta/tests/tests.py
+%setup -q -n django_rosetta-%{version}
 
 %build
 %pyproject_wheel
