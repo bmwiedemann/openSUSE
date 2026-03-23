@@ -41,4 +41,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338270</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2d19ed16f5626b16c4d628daac551ec6</srcmd5>
+    <version>10.32.2</version>
+    <time>1774282562</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.32.2
+  * cloud.google.com/go/storage v1.45.0 -&gt; v1.50.0
+  * Golang 1.24.13 -&gt; 1.25.8
+  * Golangci-lint v1.64.8 -&gt; v2.11.3
+  * Fixed a regression where the folder tracker would panic with
+    pre-existing folders and --overwrite=ifSourceNewer. (#3403)
+  * Fixed a regression where cancellation was not working via stdin (#3373)
+  * Fixed a regression where we hit segfaults from logging
+    to a nil logger in the process checker. (#3384)
+  * Fixed a race condition panic from concurrent access to a
+    shared metadata resource by introducing thread safety. (#3341)
+  * Fixed a bug where --posix-properties-style was not being chained
+    through the copy flow correctly. (#3401)
+  * Fixed a regression where in tandem use of --list-of-files
+    and --include-pattern no longer worked. (#3389)
+- from version 10.32.1
+  * Golang 1.24.11 -&gt; 1.24.13
+- from version 10.32.0
+  * Added support for AMLFS style posix metadata. (#3317)
+  * Fixed a bug where hdi_isfolder metadata key would sometimes
+    not be sent in all lowercase, resulting in unexpected behavior
+    on the service side when fetching properties. (#3312)
+  * Fixed a typo in the benchmark command, to allow the --put-md5 flag to work. (#3324)
+  * Fixed a bug where network errors would not be retried on. (#3338)
+  * Fixed a bug where unexpected requests would be logged in syslog. (#3339)
+  * Fixed a bug where pre-existing folders would be recreated. (#3295)
+  * Updated README to clarify supported source-destination pairs and
+    authorization mechanisms. (#3213)
+  * Updated format of wiki generated docs to improve readability. (#3311)
+  * AzCopy download URLs starting with https://azcopyvnext-awgzd8g7aagqhzhe.b02.azurefd.net/ (forwarded request 1342037 from glaubitz)</comment>
+    <requestid>1342040</requestid>
+  </revision>
 </revisionlist>

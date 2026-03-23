@@ -23,7 +23,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           azure-storage-azcopy
-Version:	10.31.1
+Version:	10.32.2
 Release:        0
 License:        MIT
 Summary:        Microsoft Azure Storage data transfer utility
@@ -32,6 +32,8 @@ Source0:        %{name}-v%{version}.tar.gz
 Source1:        vendor.tar.gz
 # PATCH-FIX-UPSTREAM - Add support for s390x architecture - gh/wastore/keyctl#2
 Patch0:         keyctl-add-s390x-support.patch
+# PATCH-FIX-UPSTREAM - grpc: enforce strict path checking for incoming requests on the server
+Patch1:         CVE-2026-33186.patch
 BuildRequires:  golang-packaging
 BuildRequires:  go >= 1.24
 # Building with -buildmode=pie is currently unsupported on armv7l, i586, riscv64 and s390x
@@ -49,6 +51,9 @@ easy-to-use commands that are optimized for high performance and throughput.
 %setup -n %{repo}-v%{version} -a1
 pushd vendor/github.com/wastore/keyctl
 %patch -P0 -p1
+popd
+pushd vendor/google.golang.org/grpc
+%patch -P1 -p1
 popd
 
 %build
