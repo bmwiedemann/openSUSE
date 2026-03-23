@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Mar 15 18:51:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.59:
+  * Further improvements to `GPSDate` class
+  * Small bug fix in NANU processing when no sats are detected
+  * SP3 validation improvements, including line length check
+    (files with overlong lines are now rejected)
+  * Tests updated for `diff_clk` which replaces `compare_clk`
+    (deprecated in previous release `0.0.58`)
+  * Improvements to `convert_nominal_span()`
+  * Improvements to IGS log file reading
+  * CDDIS downloads switched from FTP-SSL to HTTPS (requires NASA
+    Earthdata credentials), thanks to @aclel
+  * Unit test output tidied up (expected warnings are now
+    evaluated without printing)
+  * `pandas` is now pinned to `2.3.3` to ensure consistent
+    behaviour, while work is underway to ensure correct operation
+    with `pandas 3`
+  * **Notes on Pandas 3 changes and Python compatibility**:
+  * `Pandas 3` disallows chained assignment operations, and leans
+    heavily on CoW. We are working through these changes to
+    ensure our code operates correctly with them. In the interim
+    we are pinning `pandas` `2.3.3` to ensure stability.
+  * `Pandas 3` requires `python3.11+`, while `gnssanalysis`
+    officially supports `python 3.10+`.
+  * Therefore, once we move to `pandas 3`, we will **not** pin
+    it, and `python 3.10` users will still be able to use `pandas
+    2.3.3` until our minimum supported python version becomes
+    `python 3.11`.
+  * NPI-4006 Added SolutionType style definitions of standard
+    file types
+  * NPI-4062 - Produce empty list when no sats detected in NANUS
+  * NPI-4066 Reject SP3 files with overlong data lines
+  * NPI-4175 Revise filename property extraction functionality
+  * NPI-3945 Further refinements to GPSDate
+  * Npi 3470 misc clarity and hint improvements
+  * NPI-4068 Updated tests for diff_clk (replacement for
+    deprecated compare_clk)
+  * NPI-4067 Improvements to SP3 validation and unit tests
+  * NPI-4237 Clean up of deprecated type hinting (PEP 585)
+  * fix _gz2bytes assert on type
+  * NPI-4236 More robust error handling in convert_nominal_span()
+  * NPI-4295 Better error handling in IGS log file reading
+  * Switch CDDIS downloads from FTP-SSL to HTTPS with NASA
+    Earthdata authentication
+  * NPI-4360 More SP3 missing data checks
+  * NPI-4318 Updates to SP3 trimming utility
+  * NPI-4443 Clean up unit test outputs and temporarily pin
+    supported Pandas version
+
+-------------------------------------------------------------------
 Mon Jan 26 10:40:00 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - first version 0.0.58

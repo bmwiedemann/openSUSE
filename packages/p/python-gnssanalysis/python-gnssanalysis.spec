@@ -15,13 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# affects the python macros even if not used in the spec file
+
 %bcond_without libalternatives
 
 %{?sle15_python_module_pythons}
 %define pyname gnssanalysis
 Name:           python-%{pyname}
-Version:        0.0.58
+Version:        0.0.59
 Release:        0
 Summary:        GNSS-related functionality from Geoscience Australia
 License:        BSD-3-Clause
