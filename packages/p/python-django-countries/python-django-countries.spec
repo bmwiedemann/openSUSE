@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-countries
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-countries
-Version:        7.6.1
+Version:        8.2.0
 Release:        0
 Summary:        Provides a country field for Django models
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/SmileyChris/django-countries/
-Source:         https://files.pythonhosted.org/packages/source/d/django-countries/django-countries-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-countries/django_countries-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module uv-build}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,8 +52,8 @@ Provides a country field for Django models, including
 support for Django REST Framework.
 
 %prep
-%setup -q -n django-countries-%{version}
-sed -i '1{/^#!/d}' django_countries/*.py
+%setup -q -n django_countries-%{version}
+rm -rv django_countries/.mypy_cache
 
 %build
 %pyproject_wheel
@@ -69,7 +70,7 @@ export PYTHONPATH=${PWD}
 %pytest
 
 %files %{python_files}
-%doc CHANGES.rst README.rst
+%doc CHANGES.md README.md
 %license LICENSE
 %{python_sitelib}/django_countries
 %{python_sitelib}/django_countries-%{version}.dist-info

@@ -68,4 +68,41 @@ ISO 3166-1 alpha-2 country code.</comment>
   * Support Django 5.0.</comment>
     <requestid>1165951</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec1896bcdf297cd7a52806df05c6cc92</srcmd5>
+    <version>8.2.0</version>
+    <time>1774282498</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.2.0:
+  * Add `django_countries.django_filters.CountryFilter` for
+    django-filters integration with support for custom
+    `empty_label`. This filter automatically sets country choices
+    and seamlessly integrates with django-filters FilterSets,
+    making it easier to add country filtering to your views.
+  * Enable `CountryFieldMixin` to accept `name_only`,
+    `country_dict`, and output customization options via
+    `Meta.extra_kwargs`. You can now configure country field
+    serialization behavior without explicitly declaring
+    serializer fields, making it easier to customize output for
+    both single and multiple country fields.
+  * `CountryField(country_dict=...)` now accepts either a boolean
+    (existing behaviour) or an iterable/string of keys so you can
+    control exactly which values appear in the serialized country
+    dict (for example `(&quot;code&quot;, &quot;name&quot;, &quot;alpha3&quot;)` or just
+    `&quot;alpha3&quot;`).
+  * Add `COUNTRIES_FIRST_BY_LANGUAGE` and
+    `COUNTRIES_FIRST_AUTO_DETECT` settings for dynamic country
+    ordering based on user language. Countries can now be
+    automatically reordered based on the current language, with
+    locale-based auto-detection (e.g., `fr-CA` users see Canada
+    prepended to the French country group).
+  * Add support for custom `flag_url` in `COUNTRIES_OVERRIDE`
+    setting. You can now specify a custom flag URL for overridden
+    countries:
+  * Fix `CountryField` serializer to respect current language
+    when deserializing localized country names. The field now
+    automatically uses Django's `get_language()` to detect the
+    active language and falls back to English if the country name</comment>
+    <requestid>1341715</requestid>
+  </revision>
 </revisionlist>

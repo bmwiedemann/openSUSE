@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sat Mar 21 14:33:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.0:
+  * Add `django_countries.django_filters.CountryFilter` for
+    django-filters integration with support for custom
+    `empty_label`. This filter automatically sets country choices
+    and seamlessly integrates with django-filters FilterSets,
+    making it easier to add country filtering to your views.
+  * Enable `CountryFieldMixin` to accept `name_only`,
+    `country_dict`, and output customization options via
+    `Meta.extra_kwargs`. You can now configure country field
+    serialization behavior without explicitly declaring
+    serializer fields, making it easier to customize output for
+    both single and multiple country fields.
+  * `CountryField(country_dict=...)` now accepts either a boolean
+    (existing behaviour) or an iterable/string of keys so you can
+    control exactly which values appear in the serialized country
+    dict (for example `("code", "name", "alpha3")` or just
+    `"alpha3"`).
+  * Add `COUNTRIES_FIRST_BY_LANGUAGE` and
+    `COUNTRIES_FIRST_AUTO_DETECT` settings for dynamic country
+    ordering based on user language. Countries can now be
+    automatically reordered based on the current language, with
+    locale-based auto-detection (e.g., `fr-CA` users see Canada
+    prepended to the French country group).
+  * Add support for custom `flag_url` in `COUNTRIES_OVERRIDE`
+    setting. You can now specify a custom flag URL for overridden
+    countries:
+  * Fix `CountryField` serializer to respect current language
+    when deserializing localized country names. The field now
+    automatically uses Django's `get_language()` to detect the
+    active language and falls back to English if the country name
+    is not found in the current language.
+  * Fixed `CountryFilter` to support filtering on `CountryField`
+    through relations (e.g., `list_filter = [("contact__country",
+    CountryFilter)]`). Previously this would fail with a
+    `FieldError`.
+  * Fixed `CountryFilter` admin filter to work correctly with
+    `CountryField(multiple=True)`. The filter now uses the
+    `__contains` lookup instead of exact matching to properly
+    find records where the selected country appears in the comma-
+    separated country list.
+  * Added support for `empty_label` parameter in
+    `CountryField.formfield()` to customize the blank choice
+    label in form fields. This allows using `empty_label=""` for
+    an empty label or `empty_label="Custom text"` for custom
+    text, resolving the issue where `empty_label` was previously
+    ignored.
+  * Fixed type annotation for `CountryField.countries` parameter
+    in stub file to accept `type[Countries]` instead of
+    `Countries` instance, resolving mypy errors when using custom
+    Countries subclasses. Also removed unnecessary exclusion of
+    tests from mypy checking.
+  * Fixed `CountryField(multiple=True)` not marking selected
+    options in Django forms.
+  * DRF serializer fields now respect the `allow_null` parameter,
+    returning `None` for NULL values when `allow_null=True`.
+  * This enables better API consistency and is particularly
+    useful with `unique=True` constraints, which allow multiple
+    NULL values but not multiple empty strings in the database.
+  * Add support for `null=True` on multiple country fields,
+    allowing This nullable unique constraints on multiple country
+    fields.
+  * `CountryField(multiple=True, null=True)` now returns `None`
+    for NULL database values instead of crashing and the
+    historical system check `E100` that blocked `multiple=True` +
+    `null=True` has been removed.
+  * Fixed OpenAPI schema generation for `CountryField` when using
+    `country_dict=True` or `name_only=True`. The field now
+    correctly generates an object schema (with `code` and `name`
+    properties) for `country_dict=True` and a string schema for
+    `name_only=True`, instead of incorrectly generating an enum
+    schema. This fixes schema generation for both DRF's built-in
+    OpenAPI support and drf-spectacular, enabling accurate
+    TypeScript client generation and other API tooling.
+  * Major performance enhancement for Django admin. Added per-
+    language caching to `Countries.__iter__()`, delivering 20-40×
+    speedup when displaying `CountryField` in `list_display`
+    (admin changelist now renders in <0.5s instead of 6-10s).
+  * Fixed a regression where a country field allowing for
+    selection of multiple countries could not be added to using
+    the + operator.
+
+-------------------------------------------------------------------
 Sun Apr  7 09:09:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.6.1:
