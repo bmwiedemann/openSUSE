@@ -44,4 +44,25 @@
   * Dropped support for Python 3.7 and added support for 3.12.</comment>
     <requestid>1310617</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b4551cada223efdbc956a9d9049ba3f1</srcmd5>
+    <version>2.4.4</version>
+    <time>1774282557</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.4:
+  * chore: pytest log_level is better than log_cli_level
+  * chore(deps): bump the actions group with 2 updates
+  * chore(deps): update pre-commit hooks
+  * Update copyright to 2026
+- update to 2.4.3:
+  * Added explicit support of Python 3.14
+    (https://github.com/scikit-hep/hepunits/pull/282) and removed
+    support of Python 3.8 (https://github.com/scikit-
+    hep/hepunits/pull/288)
+  * Modernisation based on sp-repo-review checks
+    (https://github.com/scikit-hep/hepunits/pull/283)
+  * Skip irrelevant lines in coverage test
+    (https://github.com/scikit-hep/hepunits/pull/280)</comment>
+    <requestid>1342027</requestid>
+  </revision>
 </revisionlist>

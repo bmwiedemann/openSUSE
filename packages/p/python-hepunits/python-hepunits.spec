@@ -1,7 +1,7 @@
 #
 # spec file for package python-hepunits
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global modname hepunits
 
 Name:           python-hepunits
-Version:        2.4.2
+Version:        2.4.4
 Release:        0
 Summary:        Units and constants in the HEP system of units
 License:        BSD-3-Clause

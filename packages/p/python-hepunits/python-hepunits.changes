@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 23 11:53:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.4:
+  * chore: pytest log_level is better than log_cli_level
+  * chore(deps): bump the actions group with 2 updates
+  * chore(deps): update pre-commit hooks
+  * Update copyright to 2026
+- update to 2.4.3:
+  * Added explicit support of Python 3.14
+    (https://github.com/scikit-hep/hepunits/pull/282) and removed
+    support of Python 3.8 (https://github.com/scikit-
+    hep/hepunits/pull/288)
+  * Modernisation based on sp-repo-review checks
+    (https://github.com/scikit-hep/hepunits/pull/283)
+  * Skip irrelevant lines in coverage test
+    (https://github.com/scikit-hep/hepunits/pull/280)
+
+-------------------------------------------------------------------
 Fri Oct 10 16:46:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.2:
