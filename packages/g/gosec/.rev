@@ -777,4 +777,39 @@
   * Update to gosec to v2.24.0 in the action and fix the docker image signing (#1552) (forwarded request 1335721 from ph03nix)</comment>
     <requestid>1336200</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4378a220d987f496ca5445b241cb5022</srcmd5>
+    <version>2.25.0</version>
+    <time>1774282537</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.25.0:
+  * chore(deps): bump google.golang.org/grpc from 1.75.0 to 1.79.3 (#1617)
+  * fix: allow barry action to access secrets on fork PRs (#1616)
+  * fix: reduce G117 false positives for custom marshalers and transformed values (#1614) (#1615)
+  * Add barry security scanner as a step in the CI (#1612)
+  * chore(deps): update all dependencies (#1611)
+  * fix: prevent taint analysis hang on packages with many CHA call graph edges (#1608) (#1610)
+  * Add some skills for claude code to automate some tasks (#1609)
+  * Add G701-G706 rule-to-CWE mappings and CWE-117, CWE-918 entries (#1606)
+  * fix: skip SSA analysis on ill-typed packages to prevent panic (#1607)
+  * Port G120 from SSA-based to taint analysis (fixes #1600, #1603) (#1605)
+  * fix(G118): eliminate false positive for package-level cancel variables (#1602)
+  * feat: add G124 rule for insecure HTTP cookie configuration (#1599)
+  * feat: add G709 rule for unsafe deserialization of untrusted data (#1598)
+  * feat: add G708 rule for server-side template injection via text/template (#1597)
+  * fix(G118): eliminate false positive when cancel is called via struct field in a closure (#1596)
+  * Fix infinite recursion in interprocedural taint analysis (#1594)
+  * Fix G118 false positive when cancel is stored in returned struct field (#1593)
+  * Fix G118 false positive on cancel called inside goroutine closure (#1592)
+  * fix(analyzer): per-package rule instantiation eliminates concurrent map crash (#1589)
+  * chore(deps): update all dependencies (#1588)
+  * fix(G118): treat returned cancel func as called (fixes #1584) (#1585)
+  * chore(go): update supported Go versions to 1.25.8 and 1.26.1 (#1583)
+  * Update the README with the correct version of the Github action for gosec (#1582)
+  * chore(deps): update all dependencies (#1579)
+  * Fix G115 false positives for guarded int64-to-byte conversions (#1578)
+  * Update the container image migration notice (#1576)
+  * chore(action): bump gosec to 2.24.7 (#1575) (forwarded request 1341983 from ph03nix)</comment>
+    <requestid>1342025</requestid>
+  </revision>
 </revisionlist>
