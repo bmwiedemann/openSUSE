@@ -19,7 +19,7 @@
 %define  sover  4
 %define  lname  libLerc
 Name:           lerc
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Limited Error Raster Compression
 License:        Apache-2.0
@@ -30,6 +30,7 @@ Source99:       baselibs.conf
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  dos2unix
+
 
 %description
 LERC is an open-source image or raster format which supports rapid encoding
@@ -57,8 +58,6 @@ The package contains libraries and header files for %{name}
 %prep
 %autosetup -p1
 dos2unix -v -o NOTICE
-dos2unix -v -o README.md
-dos2unix -v -o doc/MORE.md
 
 %build
 %cmake
@@ -68,22 +67,27 @@ dos2unix -v -o doc/MORE.md
 %cmake_install
 
 %check
-cd build
-c++ %{optflags} --std=c++17 ../src/LercTest/main.cpp -L. -lLerc -o testLerc
-LD_LIBRARY_PATH=. ./testLerc
+mkdir test
+cd test
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+# Test C++ library
+c++ %{optflags} --std=c++17 ../src/LercTest/main.cpp -L%{buildroot}%{_libdir} -lLerc -o testLerc
+./testLerc
 
 %ldconfig_scriptlets -n %{lname}%{sover}
 
 %files -n %{lname}%{sover}
-%doc README.md CHANGELOG.md NOTICE
+%doc README.md CHANGELOG.md
+%license LICENSE NOTICE
 %{_libdir}/libLerc.so.%{sover}
-%license LICENSE
 
 %files devel
-%doc README.md CHANGELOG.md NOTICE doc/
+%doc README.md CHANGELOG.md doc/
+%license LICENSE NOTICE
 %{_includedir}/Lerc_c_api.h
 %{_includedir}/Lerc_types.h
 %{_libdir}/libLerc.so
 %{_libdir}/pkgconfig/Lerc.pc
+
 
 %changelog

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Mar 21 15:47:09 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Make the python package in a multibuild: Avoid build cycle
+  pylerc -> numpy -> meson-python --> git -> ... -> tiff -> lerc
+
+-------------------------------------------------------------------
+Wed Mar 18 16:19:21 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix a dependency problem:
+  nothing provides 'libLerc4 = 4.1-0' needed by the to be installed 
+  lerc-devel-4.1.0-0.x86_64
+  Thanks to darix, I've learned, that the version redefinition affects
+  %{version} to some degree. Using %{VERSION} fixed it. Don't ask.
+
+-------------------------------------------------------------------
+Sun Mar 15 11:34:34 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Add Python binding package: python3XX-pylerc 4.1
+  * Add pylerc-use-syslib.patch 
+
+-------------------------------------------------------------------
+Sun Mar 15 11:08:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.0
+  Fixed
+  * Renamed Lerc python package to pylerc.
+  * Cleaned up the treatment of line endings (CRLF vs LF) across
+    platforms.
+  * Cleaned up the code to avoid pointer casts from unaligned byte
+    pointers to integer or float pointers. Such pointer casts may
+    cause problems on some platforms (e.g., embedded).
+
+-------------------------------------------------------------------
 Sun Feb  1 13:04:47 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Add baselibs.conf for bi-arch distributions

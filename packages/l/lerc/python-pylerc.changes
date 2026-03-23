@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Sat Mar 21 15:21:03 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Make the python package in a multibuild: Avoid build cycle
+  pylerc -> numpy -> meson-python --> git -> ... -> tiff -> lerc
