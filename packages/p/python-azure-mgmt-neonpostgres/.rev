@@ -7,4 +7,15 @@
     <comment>- New component package of the Python Azure SDK</comment>
     <requestid>1273409</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8bfcc501f0bdd861ae90181f11377763</srcmd5>
+    <version>1.0.1</version>
+    <time>1774282554</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1342013 from glaubitz)</comment>
+    <requestid>1342031</requestid>
+  </revision>
 </revisionlist>
