@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component>
-  <id type="desktop">fr.inria.coq.coqide</id>
+  <id type="desktop">org.rocq-prover.rocqide</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <name>Coq IDE</name>
-  <summary>Graphical frontend for the Coq formal proof management system</summary>
+  <name>Coq IDE / RocqIDE</name>
+  <summary>Graphical frontend for the Coq/Rocq formal proof management system</summary>
   <description>
     <p>
       Coq implements a program specification and mathematical higher-level language called <em>Gallina</em> that is based on an expressive formal language called the <em>Calculus of Inductive Constructions</em> that itself combines both a higher-order logic and a richly-typed functional programming language.
@@ -33,19 +33,23 @@
   </categories>
   <keywords>
     <keyword>dependent-types</keyword>
-    <keyword>coq</keyword>
     <keyword>theorem-proving</keyword>
     <keyword>proof-assistant</keyword>
   </keywords>
-  <url type="homepage">https://coq.inria.fr/</url>
-  <url type="bugtracker">https://github.com/coq/coq/issues</url>
-  <url type="faq">https://github.com/coq/coq/wiki/The-Coq-FAQ</url>
-  <url type="help">https://coq.inria.fr/refman/practical-tools/coqide.html</url>
-  <url type="donation">https://coq.inria.fr/consortium</url>
-  <url type="vcs-browser">https://github.com/coq/coq</url>
-  <url type="contribute">https://github.com/coq/coq/blob/master/CONTRIBUTING.md</url>
-  <launchable type="desktop-id">fr.inria.coq.coqide.desktop</launchable>
+  <url type="homepage">https://rocq-prover.org/</url>
+  <url type="bugtracker">https://github.com/rocq-prover/rocq/issues</url>
+  <url type="faq">https://github.com/rocq-prover/rocq/wiki/The-Rocq-FAQ</url>
+  <url type="help">https://rocq-prover.org/refman/practical-tools/coqide.html</url>
+  <url type="donation">https://rocq-prover.org/consortium</url>
+  <url type="vcs-browser">https://github.com/rocq-prover/rocq</url>
+  <url type="contribute">https://github.com/rocq-prover/rocq/blob/master/CONTRIBUTING.md</url>
+  <launchable type="desktop-id">org.rocq-prover.rocqide.desktop</launchable>
   <releases>
+    <release version="9.1.1"  date="2026-02-09"/>
+    <release version="9.1.0"  date="2025-09-15"/>
+    <release version="9.0.0"  date="2025-03-12"/>
+    <release version="8.20.1" date="2025-01-16"/>
+    <release version="8.20.0" date="2024-09-04"/>
     <release version="8.19.1" date="2024-03-04"/>
     <release version="8.19.0" date="2024-01-24"/>
     <release version="8.18.0" date="2023-09-08"/>
@@ -63,7 +67,7 @@
   <screenshots>
     <screenshot type="default">
       <image type="source">
-        https://coq.inria.fr/refman/_images/coqide.png
+        https://rocq-prover.org/refman/_images/rocqide.png
       </image>
     </screenshot>
   </screenshots>

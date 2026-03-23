@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="text/x-coqsrc">
+    <comment>Coq/Rocq source code</comment>
+    <!-- Translations stolen from other source code types -->
+    <comment xml:lang="zh-Hant-TW">Coq/Rocq 源碼</comment>
+    <comment xml:lang="zh-Hans-CN">Coq/Rocq 源代码</comment>
+    <comment xml:lang="vi">Mã nguồn Coq/Rocq</comment>
+    <comment xml:lang="uk">початковий код мовою Coq/Rocq</comment>
+    <comment xml:lang="tr">Coq/Rocq kaynak kodu</comment>
+    <comment xml:lang="sv">Coq/Rocq-källkod</comment>
+    <comment xml:lang="sq">kod burim Coq/Rocq</comment>
+    <comment xml:lang="sl">Datoteka izvorne kode Coq/Rocq</comment>
+    <comment xml:lang="si">Coq/Rocq මූල කේතය</comment>
+    <comment xml:lang="sk">Zdrojový kód jazyka Coq/Rocq</comment>
+    <comment xml:lang="ru">Исходный код Coq/Rocq</comment>
+    <comment xml:lang="ro">Cod sursă Coq/Rocq</comment>
+    <comment xml:lang="pt-BR">Código-fonte Coq/Rocq</comment>
+    <comment xml:lang="pt">código origem Coq/Rocq</comment>
+    <comment xml:lang="pl">Kod źródłowy Coq/Rocq</comment>
+    <comment xml:lang="oc">còde font Coq/Rocq</comment>
+    <comment xml:lang="nn">Coq/Rocq-kjeldekode</comment>
+    <comment xml:lang="nl">Coq/Rocq-broncode</comment>
+    <comment xml:lang="nb">Coq/Rocq-kildekode</comment>
+    <comment xml:lang="ms">Kod sumber Coq/Rocq</comment>
+    <comment xml:lang="lv">Coq/Rocq pirmkods</comment>
+    <comment xml:lang="lt">Coq/Rocq pradinis kodas</comment>
+    <comment xml:lang="ko">Coq/Rocq 소스 코드</comment>
+    <comment xml:lang="kk-Cyrl">Coq/Rocq бастапқы коды</comment>
+    <comment xml:lang="ka">Coq/Rocq-ის საწყისი კოდი</comment>
+    <comment xml:lang="ja">Coq/Rocq ソースコード</comment>
+    <comment xml:lang="it">Codice sorgente Coq/Rocq</comment>
+    <comment xml:lang="is">Coq/Rocq frumkóði</comment>
+    <comment xml:lang="id">Kode sumber Coq/Rocq</comment>
+    <comment xml:lang="ia">Codice-fonte Coq/Rocq</comment>
+    <comment xml:lang="hu">Coq/Rocq-forráskód</comment>
+    <comment xml:lang="hr">Coq/Rocq izvorni kôd</comment>
+    <comment xml:lang="he">קוד מקור של Coq/Rocq‎</comment>
+    <comment xml:lang="gl">código fonte de Coq/Rocq</comment>
+    <comment xml:lang="ga">cód foinseach Coq/Rocq</comment>
+    <comment xml:lang="fur">codiç sorzint Coq/Rocq</comment>
+    <comment xml:lang="fr">code source Coq/Rocq</comment>
+    <comment xml:lang="fo">Coq/Rocq keldukota</comment>
+    <comment xml:lang="fi">Coq/Rocq-lähdekoodi</comment>
+    <comment xml:lang="eu">Coq/Rocq iturburu-kodea</comment>
+    <comment xml:lang="es">código fuente en Coq/Rocq</comment>
+    <comment xml:lang="eo">Coq/Rocq-fontkodo</comment>
+    <comment xml:lang="en-GB">Coq/Rocq source code</comment>
+    <comment xml:lang="el">Πηγαίος κώδικας Coq/Rocq</comment>
+    <comment xml:lang="de">Coq/Rocq-Quelltext</comment>
+    <comment xml:lang="da">Coq/Rocq-kildekode</comment>
+    <comment xml:lang="cs">zdrojový kód v jazyce Coq/Rocq</comment>
+    <comment xml:lang="ca">codi font en Coq/Rocq</comment>
+    <comment xml:lang="bg">Изходен код — Coq/Rocq</comment>
+    <comment xml:lang="be-Latn">Kryničny kod Coq/Rocq</comment>
+    <comment xml:lang="be-Cyrl">зыходны код Coq/Rocq</comment>
+    <comment xml:lang="ar">شفرة مصدر Coq/Rocq</comment>
+    <comment xml:lang="af">Coq/Rocq-bronkode</comment>
+    <glob pattern="*.v"/>
+    <!-- To distinguish from Verilog, which has the same file ending.  -->
+    <magic>
+      <match type="string" offset="0" value="(*"/>
+      <match type="string" offset="0:31" value="Require"/>
+    </magic>
+    <icon name="rocq"/>
+  </mime-type>
+  <mime-type type="application/x-coq-object">
+    <comment>Coq/Rocq object code</comment>
+    <!-- Translations stolen from object code type -->
+    <comment xml:lang="uk">об'єктний код Coq/Rocq</comment>
+    <comment xml:lang="sv">Coq/Rocq-objektkod</comment>
+    <comment xml:lang="ru">Объектный код Coq/Rocq</comment>
+    <comment xml:lang="pl">Kod obiektowy Coq/Rocq</comment>
+    <comment xml:lang="ja">Coq/Rocq 目的符号文書</comment>
+    <comment xml:lang="it">Codice oggetto Coq/Rocq</comment>
+    <comment xml:lang="gl">Código obxecto de Coq/Rocq</comment>
+    <comment xml:lang="eu">Coq/Rocq Objektu-kodea</comment>
+    <comment xml:lang="es">código de objeto en Coq/Rocq</comment>
+    <comment xml:lang="de">Coq/Rocq-Objektcode</comment>
+    <glob pattern="*.vo"/>
+  </mime-type>
+</mime-info>

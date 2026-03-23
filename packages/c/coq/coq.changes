@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Feb 24 22:14:06 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 9.0.0. The most important changes:
+  * "The Rocq Prover" is the new official name of the project.
+  * A single rocq binary dispatches commands for compilation,
+    read-eval-print-loop, documentation building, dependency
+    computation, etc.
+  * The Coq standard library has been split into two libraries:
+    - A Corelib library. This is an extended prelude, which is
+      enough to run Rocq tactics and contains the Ltac2 library and
+      bindings for primitive types (integers, floats, arrays and
+      strings).
+    - An Stdlib library. The Stdlib is now maintained out of the
+      main rocq repository.
+- The standard library is no longer part of the main package and
+  has to be installed separately.
+- For a detailed change log see
+  https://rocq-prover.org/doc/v9.0/refman/changes.html#changes-in-9-0-0.
+- Update to version 9.1.0. The most important changes:
+  * Fixed incorrect guard checking leading to inconsistencies.
+  * Sort polymorphic universe instances should now be written as
+    `@{s ; u}` instead of `@{s | u}`.
+  * Fixed handling of notation variables for ltac2 in notations
+    (i.e. `Notation "'foo' x" := ltac2:(...)`).
+  * Support for refine attribute in Definition.
+  * Rocq can be compile-time configured to be relocatable.
+  * Extraction handles sort polymorphic definitions.
+- For a detailed change log see
+  https://rocq-prover.org/doc/v9.1/refman/changes.html#changes-in-9-1-0.
+- Update to version 9.1.1.
+  * Fixed an anomaly when defining a sort polymorphic inductive
+    without enabling Universe Polymorphism.
+  * Compatibility with OCaml 5.4 with warnings as errors.
+  * Various documentation updates.
+- Add translations and magic to MIME types, to distinguish from
+  other MIME types for the same glob.
+- Stop using %suse_update_desktop_file.
+- Set license for documentation as Open Publication License v1.0.
+- Relax constraints a bit, since we're no longer building the
+  standard library.
+
+-------------------------------------------------------------------
 Sat Jan 18 15:10:40 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.20.1.
