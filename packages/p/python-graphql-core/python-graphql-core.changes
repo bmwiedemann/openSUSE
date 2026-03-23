@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:39:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.8:
+  * Patch-release GraphQL-core v3.2.8, based on GraphQL.js
+    v16.9.0.
+  * Require non-empty directive locations
+  * Also, for backward compatibility, introspection.TypeResolvers
+    is available again, as alias for TypeFields.
+
+-------------------------------------------------------------------
 Thu Nov 27 15:10:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.2.7
@@ -49,7 +59,7 @@ Tue Jun 13 12:09:58 UTC 2023 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Fri Oct 28 17:25:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.2.3 
+- Update to 3.2.3
   Patch-release GraphQL-core v3.2.3, based on GraphQL.js v16.6.0.
   This patch-releases includes only one change in GraphQL.js v16.6.0:
   The parser now allows to limit the number of tokens
@@ -118,7 +128,7 @@ Sun May 22 13:59:41 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 Mon Jan 25 02:15:12 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.1.2
-  * match GrapqhQL.js v15.1.0 
+  * match GrapqhQL.js v15.1.0
   * Use proper type hints for serializers
   * Add @SpecifiedBy directive
   * Simplify get_operation_type_node function

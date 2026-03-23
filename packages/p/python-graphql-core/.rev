@@ -92,4 +92,20 @@
     * GraphQLEnumType values can now be specified via a callable</comment>
     <requestid>1320596</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>36f3da5ec938b6e40e3e27612de0ab2e</srcmd5>
+    <version>3.2.8</version>
+    <time>1774282571</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.8:
+  * Patch-release GraphQL-core v3.2.8, based on GraphQL.js
+    v16.9.0.
+  * Require non-empty directive locations
+  * Also, for backward compatibility, introspection.TypeResolvers
+    is available again, as alias for TypeFields.
+
+- Update to 3.2.3
+  * match GrapqhQL.js v15.1.0</comment>
+    <requestid>1342011</requestid>
+  </revision>
 </revisionlist>
