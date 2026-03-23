@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Mar 16 23:02:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.6:
+  * Replace scrollback implementation with scroll anchoring
+    outside of `full` windowing mode #18522 (@krassowski)
+  * Harmonize translation wrappers in Python files to use
+    `gettext` methods #18597 (@tmetzl)
+  * Remove unimplemented `filebrowser:search` command #18593
+    (@krassowski)
+  * Fix status bar focus outlines #18585 (@IsabelParedes)
+  * Fix `filebrowser:create-new-file` context menu selector
+  * Fix single-character code blocks rendering as empty #18572
+  * Hide `code` input in `CodeConsole` when configured #18554
+  * Fix theme settings broken in non-English locales #18530
+  * Fix comms subshell resource management on disposal and when
+    changing settings #18531 (@krassowski)
+  * Upgrade `@codemirror/view`, fixing slow selection when line
+    wrapping is enabled #18479 (@krassowski)
+  * Only turn off overflow anchor when windowing is active #18503
+  * Fix table of contents navigation for Markdown files #18411
+  * Avoid using system clipboard in Notebook widget #18474
+  * Update CodeMirror versions, fixing a few selection issues
+    #18466 (@krassowski)
+  * Fix debugger variable panel to render value 0 properly #18464
+  * Consider both the content type and pattern match in
+    `DocumentRegistry.getFileTypeForModel()` #18409 (@krassowski)
+  * false in saveAs to avoid fetching file body #18379
+    (@DeborahOlaboye)
+  * Clarify notebook and cell metadata API changes in JupyterLab
+    4 #18304 (@Krish-876)
+  * Document a change in the Code Editor source updates via
+    `sharedModel` in JupyterLab 4 #18260 (@Krish-876)
+  * Fix Contents API fetch documentation of the `content` default
+    #18383 (@ceasermikes002)
+  * Add AI rules #18322 (@jtpio)
+  * Fix error in console when the debugger switch from a module
+    to another #18352 (@brichet)
+  * Fix focus of replace buttons in the document search box
+    #18362 (@IsabelParedes)
+  * Update CodeMirror to latest versions #18344 (@krassowski)
+  * Fix deferred cell loading in `defer` and `contentVisibility`
+    windowing mode #18359 (@krassowski)
+  * Backport PR #18349: Fix "Open With > Editor" for `.py` files,
+    update `@lumino` packages to `v2026.1.15` #18351
+    (@krassowski, @aaron-seq)
+  * Fix UI tests: config useSystemClipboardForCells=true for
+    notebook toolbar test #18335 (@brichet)
+  * Remove generated docs files from the repo #18340 (@jtpio)
+  * Add installation instructions for JupyterLab with uv #18363
+  * Backport PR #18250: Make system clipboard opt-in #18319
+    (@Darshan808, @krassowski)
+  * Fix empty math block throws codemirror's error #18308
+    (@i-aki-y)
+  * Fix cell footer width for smaller screens #18276 (@MUFFANUJ)
+  * Fix scrolling to anchor from ToC/links in Markdown and HTML
+    with data attributes #18208 (@pranshugupta01)
+  * Fix merge breaking rendering cell order in `defer` mode
+    #18220 (@krassowski)
+  * Fix inverted Unicode surrogate checks #18209 (@JamesWrigley)
+
+-------------------------------------------------------------------
 Wed Dec 17 11:28:46 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.5.1
