@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-collaboration-ui
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 2.1
+%define distversion 2.2.1
 Name:           python-jupyter-collaboration-ui
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Jupyter extension providing collaboration
 License:        BSD-3-Clause
