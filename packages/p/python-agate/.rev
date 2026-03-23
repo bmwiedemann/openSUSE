@@ -223,4 +223,12 @@
   * fix: :meth:`.Table.order_by` sorts None as equal to None.</comment>
     <requestid>1292443</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>78cf1e010ef715aa2d68525a2c17ae91</srcmd5>
+    <version>1.14.2</version>
+    <time>1774282489</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1341750</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 14 21:42:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.2:
+  * fix: :meth:`.Table.from_csv` on empty CSV.
+  * fix: :meth:`.Table.join` was joining incorrectly when
+    full_outer=True and left_key and right_key were sequences.
+  * fix: :meth:`.Table.print_table` replaces newlines with ↵ to
+    avoid broken output.
+  * Add Python 3.13 and 3.14 support. Drop support for end-of-
+    life versions 3.8 and 3.9.
+
+-------------------------------------------------------------------
 Sat Jul 12 17:33:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.0:

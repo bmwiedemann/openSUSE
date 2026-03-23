@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-agate
-Version:        1.13.0
+Version:        1.14.2
 Release:        0
 Summary:        Data analysis library optimized for humans instead of machines
 License:        MIT
