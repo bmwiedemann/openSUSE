@@ -1,7 +1,7 @@
 #
 # spec file for package editorconfig-core-c
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://editorconfig.org/
 Source:         https://github.com/editorconfig/editorconfig-core-c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch1:         editorconfig-core-c-const-correctness.patch
 BuildRequires:  cmake >= 3.16.3
 BuildRequires:  doxygen
 BuildRequires:  pkgconfig

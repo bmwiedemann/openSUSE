@@ -1,0 +1,30 @@
+From 03464d34ed5b32cf128834112dc91b33d67b9109 Mon Sep 17 00:00:00 2001
+From: Zhu Qun-Ying <zhu.qunying@gmail.com>
+Date: Fri, 30 Jan 2026 19:25:33 -0800
+Subject: [PATCH] Fix gcc 15.2 compile error (#150)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+src/lib/editorconfig.c:291:23: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+  291 |     char* path_char = strrchr(absolute_path, '/');
+---
+ src/lib/editorconfig.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lib/editorconfig.c b/src/lib/editorconfig.c
+index 4903274..9cb0d90 100644
+--- a/src/lib/editorconfig.c
++++ b/src/lib/editorconfig.c
+@@ -288,7 +288,7 @@ static int ini_handler(void* hfp, const char* section, const char* name,
+ static int split_file_path(char** directory, char** filename,
+         const char* absolute_path)
+ {
+-    char* path_char = strrchr(absolute_path, '/');
++    const char* path_char = strrchr(absolute_path, '/');
+ 
+     if (path_char == NULL) {
+         if (directory)
+-- 
+2.51.0
+

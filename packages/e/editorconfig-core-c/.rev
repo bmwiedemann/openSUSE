@@ -122,4 +122,15 @@
 editorconfig-core-c 0.12.10</comment>
     <requestid>1335516</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>abe8932d0ae6189ecf233f42efcfa3a6</srcmd5>
+    <version>0.12.10</version>
+    <time>1774282282</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1341144 from rguenther
+
+- Add editorconfig-core-c-const-correctness.patch to fix build with
+  glibc 2.43</comment>
+    <requestid>1341911</requestid>
+  </revision>
 </revisionlist>
