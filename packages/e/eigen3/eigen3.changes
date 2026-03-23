@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 20 08:50:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.0.1
+  * Fix a test failure in `casting_all`
+  * Resolve a segfault due to insufficiently-aligned AVX stores
+
+-------------------------------------------------------------------
 Tue Feb  3 14:51:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.0.0

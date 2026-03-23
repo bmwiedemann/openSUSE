@@ -34,7 +34,7 @@
 %define api_docdir %{_docdir}/%{name}/api
 
 Name:           eigen3
-Version:        %{major_ver}.0
+Version:        %{major_ver}.1
 Release:        0
 Summary:        C++ Template Library for Linear Algebra
 License:        BSD-3-Clause AND LGPL-2.1-only AND MPL-2.0 AND LGPL-2.1-or-later
