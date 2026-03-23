@@ -308,4 +308,15 @@
 - Update Requires from pyproject.toml (forwarded request 1326992 from glaubitz)</comment>
     <requestid>1327002</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>cd13bce7f8489890dd030a4a495f0d2d</srcmd5>
+    <version>14.0.0</version>
+    <time>1774282559</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 14.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1341971 from glaubitz)</comment>
+    <requestid>1342033</requestid>
+  </revision>
 </revisionlist>
