@@ -1,7 +1,7 @@
 #
 # spec file for package python-dynaconf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,19 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-dynaconf
-Version:        3.2.5
+Version:        3.2.13
 Release:        0
 Summary:        The dynamic configurator for your Python Project
 License:        MIT
-URL:            https://github.com/rochacbruno/dynaconf
-Source:         https://github.com/rochacbruno/dynaconf/archive/%{version}.tar.gz#/dynaconf-%{version}.tar.gz
+URL:            https://github.com/dynaconf/dynaconf
+Source:         https://github.com/dynaconf/dynaconf/archive/%{version}.tar.gz#/dynaconf-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  %{python_module wheel}
@@ -37,9 +43,14 @@ Requires:       python-python-dotenv
 Requires:       python-redis
 Requires:       python-setuptools
 Requires:       python-toml
-Requires(post): alts
-Requires(postun): alts
 Suggests:       python-Django
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
@@ -79,7 +90,12 @@ rm tests/test_vault.py
 export LANG=en_US.UTF-8
 %{_sbindir}/redis-server --stop-writes-on-bgsave-error no &
 export DYNACONF_TEST_REDIS_URL==http://127.0.0.1:6379
-%pytest tests/
+# test_help_dont_require_instance needs an installed binary in PATH
+%pytest -k "not (test_help_dont_require_instance)" tests/
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative dynaconf
 
 %post
 %python_install_alternative dynaconf

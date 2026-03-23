@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 23 09:32:12 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.2.13 (fixes CVE-2026-33154, bsc#1260063)
+  * Fix @jinja and @format templating vulnerabilities
+  * Fix failing @get converter
+- use update-alternatives on SLE-15
+
+-------------------------------------------------------------------
 Mon May 26 12:39:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
