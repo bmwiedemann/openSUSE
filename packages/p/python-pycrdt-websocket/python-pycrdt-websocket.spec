@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycrdt-websocket
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-pycrdt-websocket%{?psuffix}
-Version:        0.15.5
+Version:        0.16.0
 Release:        0
 Summary:        WebSocket connector for pycrdt
 License:        MIT
@@ -38,6 +38,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 3.6.2
+Requires:       python-pycrdt-store
 Requires:       (python-pycrdt >= 0.10.3 with python-pycrdt < 0.13)
 Requires:       (python-sqlite-anyio >= 0.2.3 with python-sqlite-anyio < 0.3.0)
 Provides:       python-pycrdt_websocket = %{version}-%{release}
@@ -79,7 +80,8 @@ It can be used to create collaborative web applications.
 
 %if !%{with test}
 %files %{python_files}
-%{python_sitelib}/pycrdt_websocket
+%dir %{python_sitelib}/pycrdt
+%{python_sitelib}/pycrdt/websocket
 %{python_sitelib}/pycrdt_websocket-%{version}.dist-info
 %endif
 

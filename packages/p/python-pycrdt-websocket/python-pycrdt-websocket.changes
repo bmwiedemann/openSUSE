@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Dec  1 21:36:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.0:
+  * Allow room to sync with provider.
+  * Add `log` to `BaseYStore`.
+  * Handle ASGI lifespan.
+  * Move `test` and `docs` dependencies to dependency groups.
+  * Extract out stores to `pycrdt-store`.
+
+-------------------------------------------------------------------
 Wed Jul  2 15:23:49 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - revert to 0.15.5: jupyter ecosystem not ready yet
