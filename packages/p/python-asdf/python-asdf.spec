@@ -1,7 +1,7 @@
 #
 # spec file for package python-asdf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf%{psuffix}
-Version:        4.3.0
+Version:        5.1.0
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -113,7 +113,6 @@ mv asdf asdf.moved
 %python_alternative %{_bindir}/asdftool
 %{python_sitelib}/asdf
 %{python_sitelib}/asdf-%{version}*-info
-%{python_sitelib}/pytest_asdf
 %endif
 
 %changelog
