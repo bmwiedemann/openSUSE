@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:40:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Simplify IMAP4_TLS class and fix Python 3.14+ compatibility
+  * Fix typo in man page: certifcate -> certificate
+  * Move man page to section 7
+  * update supported python versions in doc
+  * chore: add `setuptools` to `requirements-dev.txt`
+  * Don't assume capabilities have been cached when sending
+    literals
+  * Support Python 3.8 - 3.13
+  * feat: add popular special folder for SENT provided by qq mail
+  * Remove unused import in imapclient.tls
+  * Updates for 3.1.0
+
+-------------------------------------------------------------------
 Mon Apr 14 05:58:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

@@ -1,7 +1,7 @@
 #
 # spec file for package python-IMAPClient
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-IMAPClient
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Pythonic IMAP client library
 License:        BSD-3-Clause
@@ -26,7 +26,7 @@ URL:            https://github.com/mjs/imapclient/
 Source0:        https://github.com/mjs/imapclient/archive/%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 20.5}
+BuildRequires:  %{python_module setuptools >= 80.9.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

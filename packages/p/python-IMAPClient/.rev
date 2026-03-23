@@ -90,4 +90,23 @@
 - Lowercase metadata directory name.</comment>
     <requestid>1269077</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9e0ed94b692f0b889824eb0710f0e999</srcmd5>
+    <version>3.1.0</version>
+    <time>1774282542</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.0:
+  * Simplify IMAP4_TLS class and fix Python 3.14+ compatibility
+  * Fix typo in man page: certifcate -&gt; certificate
+  * Move man page to section 7
+  * update supported python versions in doc
+  * chore: add `setuptools` to `requirements-dev.txt`
+  * Don't assume capabilities have been cached when sending
+    literals
+  * Support Python 3.8 - 3.13
+  * feat: add popular special folder for SENT provided by qq mail
+  * Remove unused import in imapclient.tls
+  * Updates for 3.1.0</comment>
+    <requestid>1342020</requestid>
+  </revision>
 </revisionlist>
