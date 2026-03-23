@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:52:15 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.18
+  * Configure pyproject.toml to have custom 'pyproject' file type
+
+-------------------------------------------------------------------
 Wed Mar  4 09:29:46 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.17
