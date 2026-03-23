@@ -1,4 +1,5 @@
 <package name="renovate-pretty-log" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="network:utilities" package="renovate-pretty-log"/>
 </package>

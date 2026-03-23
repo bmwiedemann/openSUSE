@@ -17,7 +17,7 @@
 
 
 Name:           renovate-pretty-log
-Version:        0.1.2
+Version:        0.5.2
 Release:        0
 Summary:        Two utilities for exploring Renovate debug log files
 License:        Apache-2.0

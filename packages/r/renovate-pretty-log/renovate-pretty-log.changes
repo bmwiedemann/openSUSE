@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Mar 09 07:53:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.2:
+  * Bug Fixes
+    - f67ff8d1 fix(tui): don't show "More ..." indicator when at
+      bottom
+- Update to version 0.5.2:
+  * Bug Fixes
+    - de60a406 fix(tui): don't add an additional line when
+      displaying "More ..." indicator
+- Update to version 0.5.0:
+  * Features
+    - 9716e18e feat(tui): default to debug logs
+- Update to version 0.4.0:
+  * Features
+    - 18aafdb2 feat: add tool to convert from text-based logs to
+      JSONL
+- Update to version 0.3.0:
+  * Features
+    - 8141d99f feat(tui): add search interface
+  * Others
+    - 49984a69 fixup! chore(deps): upgrade to Chroma v2
+- Update to version 0.2.0:
+  * Features
+    - 2f8559ff feat(styles): always pretty-print fields with Chroma
+    - 39755f6f feat(styles): use Srcery colour scheme for JSON
+    - 78aacf91 feat(tui): colour code JSON
+    - 0a6a286b feat(tui): rewrite UI to be split-pane
+    - 4da6971e feat: allow specifying -max-line-size
+  * Bug Fixes
+    - dffdc26d fix(styles): don't re-use bytes.Buffer in the loop
+    - b843db7c fix(tui): log when failing to read log file
+    - 8e140801 fix(tui): parse log lines up to 10MB
+  * Others
+    - 67cdc2e9 Merge branch 'rewrite' into 'main'
+    - 045ee925 chore(deps): upgrade to Chroma v2
+
+-------------------------------------------------------------------
+Thu Mar 05 10:24:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.6:
+  * ci: use `CI_JOB_TOKEN` for publishing
+
+-------------------------------------------------------------------
+Thu Mar 05 10:18:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.5:
+  * ci: override `goreleaser` entrypoint
+
+-------------------------------------------------------------------
+Thu Mar 05 10:15:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.4:
+  * ci: correct Docker image path
+  * docs: add Claude usage
+
+-------------------------------------------------------------------
+Thu Mar 05 10:13:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.3:
+  * ci: add Goreleaser setup
+  * Add renovate.json
+
+-------------------------------------------------------------------
 Wed Jun 11 05:31:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package renovate-pretty-log: two utilities for exploring
