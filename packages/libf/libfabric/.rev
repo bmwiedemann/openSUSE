@@ -816,4 +816,41 @@ Binary file libfabric-1.6.0.0.0e74cba7ad59.tar.bz2 (revision 11) deleted</commen
   fix kernel oops when running on Broadcom NIC (bsc#1258723)</comment>
     <requestid>1335364</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>7a6a936259f766f835e614900818e05d</srcmd5>
+    <version>2.5.0</version>
+    <time>1774282280</time>
+    <user>anag_factory</user>
+    <comment>- Update to v2.5.0
+  - Core
+    - man: Clarify parameter behavior for 0 byte ops
+    - include/ofi_atomic_queue: Add entry init function
+    - include/ofi_atomic_queue: Fix create function
+    - include/ofi_xpmem: Change cap into bool
+    - include/ofi.h: Add MIN3 function
+    - include/ofi_hmem: Make ofi_copy_mr_iov non-static
+    - include/ofi_mem: Add avail function and index of elements function
+    - README: Add configure options
+    - core/fi_tostr: Use %p for domain pointer formatting
+    - core: Fix hugepage count calculation
+    - man: Clarify failed inject calls generate error cqes
+    - core: Add missing fields to fi_info output
+    - core: Add max_cntr_value and max_err_cntr_value to fi_domain_attr
+    - Enable 32-bit build support
+    - hmem: Add dmabuf support detection infrastructure
+    - Add `fi_tostr()` support for wait conditions and objects
+    - hmem/cuda: sync_memops: Log the attribute name
+    - man/fi_av: Define av_remove behavior
+    - man/fi_av: Define out of range lookup behavior
+    - src: Check iface before addr, flags, and sa_family
+    - src: Remove iface fallback
+    - hmem/rocr: Add HSA memory allocation utilities
+    - Add `rocr` to `fi_mr_attr.device`
+  - CXI
+    - Fix hang in MPI when using cxi with lnx
+    - Fix append sequence for standard MR
+    - Add cxi unit tests and update man/fi_cxi.7
+    - Bump minor version and integrate fi_writedata API support</comment>
+    <requestid>1341853</requestid>
+  </revision>
 </revisionlist>
