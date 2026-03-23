@@ -38,7 +38,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-allauth
-Version:        65.14.3
+Version:        65.15.0
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT

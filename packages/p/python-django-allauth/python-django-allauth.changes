@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar 21 15:10:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 65.15.0:
+  * All user facing codes (e.g. those that the user needs to
+    manually input over at password reset, email/phone
+    verification, login code, OIDC device codes) now follow the
+    recommendations over at RFC 8628, Section 6.1.  It uses
+    dashed codes, such as "WDJB-MJHT", by default. You can
+    control the format of all codes via a new setting
+    ALLAUTH_USER_CODE_FORMAT`, or, adjust the format per use case
+    via one of ACCOUNT_LOGIN_BY_CODE_FORMAT,
+    ACCOUNT_PHONE_VERIFICATION_CODE_FORMAT,
+    ACCOUNT_PASSWORD_RESET_BY_CODE_FORMAT,
+    ACCOUNT_EMAIL_VERIFICATION_BY_CODE_FORMAT,
+    IDP_OIDC_USER_CODE_FORMAT.
+  * Added optional support for requesting new login codes. See
+    ACCOUNT_LOGIN_BY_CODE_SUPPORTS_RESEND.
+  * Dropped support for Python 3.8 and 3.9. Both these Python
+    versions are end-of-life.
+
+-------------------------------------------------------------------
 Tue Mar  3 11:24:12 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 65.14.3

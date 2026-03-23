@@ -186,4 +186,28 @@
     <comment></comment>
     <requestid>1336166</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ff89326d93ed305eb829c0975f2924fc</srcmd5>
+    <version>65.15.0</version>
+    <time>1774282308</time>
+    <user>anag_factory</user>
+    <comment>- update to 65.15.0:
+  * All user facing codes (e.g. those that the user needs to
+    manually input over at password reset, email/phone
+    verification, login code, OIDC device codes) now follow the
+    recommendations over at RFC 8628, Section 6.1.  It uses
+    dashed codes, such as &quot;WDJB-MJHT&quot;, by default. You can
+    control the format of all codes via a new setting
+    ALLAUTH_USER_CODE_FORMAT`, or, adjust the format per use case
+    via one of ACCOUNT_LOGIN_BY_CODE_FORMAT,
+    ACCOUNT_PHONE_VERIFICATION_CODE_FORMAT,
+    ACCOUNT_PASSWORD_RESET_BY_CODE_FORMAT,
+    ACCOUNT_EMAIL_VERIFICATION_BY_CODE_FORMAT,
+    IDP_OIDC_USER_CODE_FORMAT.
+  * Added optional support for requesting new login codes. See
+    ACCOUNT_LOGIN_BY_CODE_SUPPORTS_RESEND.
+  * Dropped support for Python 3.8 and 3.9. Both these Python
+    versions are end-of-life.</comment>
+    <requestid>1341714</requestid>
+  </revision>
 </revisionlist>
