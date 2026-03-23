@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Mar 23 02:08:22 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774104919.9788babf:
+  * feat: add pre-commit hooks with gitlint
+  * ci: replace GHA commit-message-checker with os-autoinst-common one
+  * refactor: replace .gitlint with identical os-autoinst-common one
+  * git subrepo pull (merge) external/os-autoinst-common
+  * fix: needlediff view alignment (regression from dc1a3709e)
+  * fix: robust group property validation and reliable UI tests
+  * test: Consider the `CacheService` directory fully covered
+  * test: Mark whole function `_kill_db_accessing_processes` as uncoverable
+  * test: Track coverage of InfluxDB route of cache service
+  * refactor: Remove CORE:: prefix from function calls
+  * fix: avoid duplicating users on provider mismatch
+  * refactor(Utils): remove unnecessary CORE:: prefix again
+  * fix: use proper Mojo::Base attribute for developer_session_running
+  * refactor: convert all remaining lib/ modules to signatures
+  * fix: use Scalar::Util::set_prototype for compatibility with Perl 5.26.1
+  * refactor(LiveHandler): convert remaining modules to signatures
+  * refactor(Scheduler): convert remaining modules to signatures
+  * refactor(Schema): convert remaining modules to signatures
+  * refactor(Shared): convert remaining modules to signatures
+  * refactor(Task): convert remaining modules to signatures
+  * refactor(WebAPI): convert remaining modules to signatures
+  * refactor(WebSockets): convert remaining modules to signatures
+  * refactor(Worker): convert remaining modules to signatures
+  * refactor(Parser): convert remaining modules to signatures
+  * refactor(CacheService): convert remaining modules to signatures
+  * refactor(t::lib::OpenQA): convert remaining modules to signatures
+  * refactor: Simplify `_handle_command_resume_test_execution`
+  * chore(t::OpenQA::Test::Utils): remove obsolete "_get_worker" mock
+  * fix: Add missing Mojo::File import in Parser::Format::Base
+  * refactor: remove unused function OpenQA::Parser::Result::write_json
+  * feat(tests): reduce wait_for_ajax default timeout from 5min to 30s
+  * Revert "feat: modernize test result styling with data attributes"
+  * refactor: Use File::stat to avoid magic numbers
+  * refactor: Use Time::Seconds to avoid magic numbers
+  * chore: adapt openQA for jQuery 4.0.0
+  * feat: improve local gitlint by picking the most recent base branch
+  * ci: ensure local gitlint checks all commits in the branch
+  * ci(check-helm-chart): try harder to download from registry.opensuse.org
+  * fix: resolve instability in cache-service rsync test
+  * feat: use localhost instead of manual IP addresses in startup message
+  * feat: modernize test result styling with data attributes
+  * fix(audit): show all audit events in the web UI
+  * docs: Add missing line break to fix Deletion section
+  * build: integrate stylelint for automated CSS/SCSS styling
+  * feat: Allow reproducing test with pinned test code via clone-job
+  * feat(webui): make rendering batch size configurable
+  * fix: resolve sporadic failure in UI test tabs loading
+  * fix(investigation): select casedir/needledir correctly when no symlink
+
+-------------------------------------------------------------------
 Fri Mar 13 22:08:20 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1773427330.0b172206:
