@@ -1,7 +1,7 @@
 #
 # spec file for package git-town
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-town
-Version:        22.6.0
+Version:        22.7.0
 Release:        0
 Summary:        Git branches made easy
 License:        MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/git-town/git-town
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.24 >= 1.24.9
+BuildRequires:  go1.26 >= 1.26.1
 BuildRequires:  zsh
 Requires:       git-core
 
