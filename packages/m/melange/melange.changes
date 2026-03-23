@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 23 06:12:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.46.0:
+  * ci: Make verify failures more obvious (#2431)
+  * fix(renovate): detect version-derived vars instead of checking
+    specific vars (#2429)
+  * sbom: Emit CPE when available (#2373)
+  * build(deps): bump github.com/in-toto/attestation in the gomod
+    group (#2428)
+  * cli: add build-qemu-initramfs command
+  * qemu: allow selection of alternate source for microvm initramfs
+  * build(deps): bump google.golang.org/grpc from 1.79.2 to 1.79.3
+    (#2427)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.21.2 to 0.21.3 in the gomod group (#2426)
+  * build(deps): bump the actions group across 1 directory with 3
+    updates (#2425)
+  * test(git-checkout-build): Remove unnecessary cat
+  * feat(build): Add clang support for package metadata injection
+  * refactor: Move GCC specfile logic into new compiler_config.go
+    module
+  * sca: do linux build in a subdirectory
+  * test(git pipeline): make ownership check use file lists
+  * pipeline: execute them with set -eo pipefail
+  * build(deps): bump the gomod group across 1 directory with 15
+    updates (#2424)
+  * Revert "feat(config): point CARGO_HOME to
+    /var/cache/melange/cargo (#2349)" (#2422)
+  * fix(build): guard against nil runner in NewTest (#2421)
+
+-------------------------------------------------------------------
 Mon Mar 16 06:08:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.45.4:
