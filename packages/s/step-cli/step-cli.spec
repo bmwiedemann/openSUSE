@@ -1,7 +1,7 @@
 #
 # spec file for package step-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define pkg_name cli
 %define pkg_version %{version}
 Name:           step-cli
-Version:        0.29.0
+Version:        0.30.2
 Release:        0
 Summary:        Zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  fish
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.23.6
+BuildRequires:  golang(API) >= 1.25.6
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(systemd)
 Conflicts:      step
@@ -116,7 +116,7 @@ install -D -d -m 0711 %{buildroot}%{configdir}/{certs,config}
 %service_del_postun %{services}
 
 %files
-%doc README.md
+%doc README.md CHANGELOG.md
 %license LICENSE
 %{_bindir}/step*
 %{_unitdir}/ssh-cert-renewer.service
