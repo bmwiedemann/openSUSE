@@ -69,7 +69,7 @@ Thu Jul 31 06:50:53 UTC 2025 - dmueller@suse.com
 -------------------------------------------------------------------
 Sun Jan 21 11:25:24 UTC 2024 - dmueller@suse.com
 
-- Update to version 20240121:
+- Update to version 20240121 (bsc#1237188):
   * update licenses
   * Fix formatting of overlong tags
   * set header_name to the spec file name

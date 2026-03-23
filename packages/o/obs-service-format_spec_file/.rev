@@ -881,4 +881,12 @@
   * A &quot;+&quot; suffix is only allowed for license-id</comment>
     <requestid>1341539</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>3d04265772a37e2296b6f680c8dccf56</srcmd5>
+    <version>20260320</version>
+    <time>1774282501</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20240121 (bsc#1237188):</comment>
+    <requestid>1341995</requestid>
+  </revision>
 </revisionlist>
