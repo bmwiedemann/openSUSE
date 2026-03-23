@@ -321,4 +321,41 @@
     <comment>switch to singlespec</comment>
     <requestid>1316776</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>77d2dc4bedf2c3fd91fcffd6f5ec6a8c</srcmd5>
+    <version>4.1.1</version>
+    <time>1774282534</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.1:
+  * Fix remaining access to [cache] memcache\_username/password
+  * Generalize common options
+  * redis: Use native interfaces to configure socket keepalive
+  * Fix type mismatch
+  * Add typing classifier
+  * Deprecate enforce\_fips\_mode
+  * Enable logging related ruff checks
+  * ruff: Enable missing E5 check
+  * Run mypy from tox
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * Rename hashclient option to reflect actual argument names
+  * Fix ignored hashclient options
+  * Add missing py.typed file
+  * ruff: Use more specific name to enable pyupgrade rule
+  * Improve usage guide
+  * reno: Update master for unmaintained/2024.1
+  * Deprecate redundant utility methods
+  * Update hints for latest dogpile.cache
+  * Drop redundant \_key\_generate\_to\_str
+  * Add mypy
+  * Add typing
+  * Remove unused logging arguments
+  * Use super() with queue.Queue
+  * Remove use of debtcollector
+  * Simplify stringify
+  * Use ruff
+  * Remove mongodb backend
+  * Bump pyupgrade target to 3.10+</comment>
+    <requestid>1342024</requestid>
+  </revision>
 </revisionlist>

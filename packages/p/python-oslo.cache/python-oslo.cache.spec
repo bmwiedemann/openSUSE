@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.cache
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.cache
-Version:        3.12.0
+Version:        4.1.1
 Release:        0
 Summary:        Cache storage for Openstack projects
 License:        Apache-2.0
@@ -32,7 +32,6 @@ BuildRequires:  %{python_module oslo.utils >= 4.2.0}
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pymemcache}
-BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module python-binary-memcached}
 BuildRequires:  %{python_module python-memcached}
 BuildRequires:  %{python_module stestr}
