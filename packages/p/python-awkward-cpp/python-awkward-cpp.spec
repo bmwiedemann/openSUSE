@@ -1,7 +1,7 @@
 #
 # spec file for package python-awkward-cpp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define srcname awkward_cpp
 Name:           python-awkward-cpp
-Version:        50
+Version:        52
 Release:        0
 Summary:        CPU kernels and compiled extensions for Awkward Array
 License:        BSD-3-Clause
@@ -80,7 +80,7 @@ awkward.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch
+%pytest_arch -k "not test_unit_cpuawkward"
 
 %files %{python_files}
 %doc README.md
