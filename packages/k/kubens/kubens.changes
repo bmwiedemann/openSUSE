@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 23 06:55:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.10.0:
+  * Release v0.10.0
+  * fix: skip fzf launch in kubens when no contexts exist in
+    kubeconfig (#481)
+  * refactor: replace testutil.WithEnvVar with t.Setenv (#479)
+  * feat: add XDG_CACHE_HOME support to Go implementations (#478)
+  * docs: simplify installation instructions into a single table
+    (#477)
+  * chore: update goreleaser config and release workflow (#475)
+  * fix: improve error handling and resource management in
+    kubeconfig (#476)
+  * refactor: modernize Go codebase for Go 1.25 (#473)
+  * ci: add workflow to warn PRs modifying frozen bash scripts
+    (#474)
+
+-------------------------------------------------------------------
 Wed Jul 19 12:12:53 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.5:
