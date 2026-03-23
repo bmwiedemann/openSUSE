@@ -1,7 +1,7 @@
 #
 # spec file for package python-bincopy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-bincopy
-Version:        20.1.0
+Version:        20.1.1
 Release:        0
 Summary:        Mangling of various file formats that conveys binary information
 License:        MIT

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 15 14:57:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20.1.1:
+  * Adds conversion to bytearray within Segment (#54)￼
+
+-------------------------------------------------------------------
 Tue Jun 17 07:57:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
