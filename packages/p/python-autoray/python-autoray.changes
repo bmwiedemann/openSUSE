@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Sun Mar 22 17:27:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.10:
+  * `tensorflow`: support for `cholesky` with `upper` arg,
+    batched svd, and `scipy.linalg.solve_triangular`
+  * **Full Changelog**:
+    https://github.com/jcmgray/autoray/compare/v0.8.9...v0.8.10
+- update to 0.8.9:
+  * add `swapaxes` function for tensorflow
+- update to 0.8.8:
+  * **Enhancements:**
+  * `autoray.lazy`: add support for `moveaxis` and `swapaxes`
+  * **Full Changelog**:
+    https://github.com/jcmgray/autoray/compare/v0.8.7...v0.8.8
+- update to 0.8.7:
+  * **Enhancements**
+  * Torch improvements:
+  * Added torch implementation for `trace` with axes specified
+    plus tests.
+  * Allowed torch `default_rng` seed to be None.
+  * Added axis kwarg support for torch `count_nonzero`.
+  * Added decorator support for registration APIs:
+  * `register_function` can now be used as a decorator.
+  * `register_custom_wrapper` can now be used as a decorator.
+  * Refactored internals to use the new decorator style for
+    function registration.
+- update to 0.8.6:
+  * add stop_gradient
+  * Add torch support for scipy.linalg.solve_triangular.
+  * Add tensorflow support for random.default_rng.
+  * Add allclose support for lazy arrays.
+  * Add Python 3.14 support.
+  * Fix and sort internal backend registration functions.
+- update to 0.8.4:
+  * **Enhancements**
+  * add `autoray.is_scalar` function
+  * `lazy.einsum`: for numpy backend set `optimize=True` by
+    default
+  * `lazy.linalg.norm`: add kwargs support
+  * `torch.random.default_rng`: add choice support
+  * move ci to pixi
+  * **Full Changelog**:
+    https://github.com/jcmgray/autoray/compare/v0.8.3...v0.8.4
+- update to 0.8.3:
+  * **Enhancements**
+  * register `array` and `asarray` as creation routines, so that
+    they pick up device by default from `like`
+  * `LazyArray.show`: show more information about call signature
+    by default
+  * lazy creation routines, support single int as 1D shape
+    specifier
+  * remove custom `torch.count_nonzero` which `torch` now
+    natively implements
+  * bump min python version to 3.10
+  * `torch.take` implementation: support vmapping over both
+    scalar and sequence indices
+  * `get_namespace`: support `scipy` as a custom submodule.
+  * custom `autograd.numpy.take` to support grad
+    (https://github.com/HIPS/autograd/issues/743).
+  * **Full Changelog**:
+    https://github.com/jcmgray/autoray/compare/v0.8.2...v0.8.3
+- update to 0.8.2:
+  * **Ehancements**
+  * Speedup creation of `get_namespace`.
+  * Reduce namespace attribute retrieval overhead to essentially
+    zero
+  * **Full Changelog**:
+    https://github.com/jcmgray/autoray/compare/v0.8.1...v0.8.2
+- update to 0.8.1:
+  * **Bug fixes**
+  * enable jax batched qr including for flat, grad inputs
+- update to 0.8.0:
+  * **Breaking changes**
+  * `LazyArray.__iter__`: now iterates over slices of array
+    rather than the computational graph nodes
+  * **Enhancements**
+  * add `xp = autoray.get_namespace(like)` as an alternative api
+  * `LazyArray`: add support for python array api via
+    `.__array_namespace__()`
+  * `LazyArray`: support broadcasted linear algebra
+  * alias `("torch" "equal")` to `torch.eq`
+  * `lazy`: support caching of more kwargs
+  * `lazy`: add `take_along_axis`
+  * `lazy`: add `equal`
+  * add `"random.default_rng"` implementation for `jax` and
+    `torch` to support random pure functions
+  * **Bug fixes**
+  * python compiler supports calls with kwargs
+  * `jax`: re wrap fat QR to support gradient
+  * `pytensor`: qr fix mode to 'economic'
+- update to 0.7.2:
+  * support axis kwargs for torch diagonal
+  * no longer wrap jax qr for 'fat' matrices
+- update to 0.7.1:
+  * optimize lazy computational graph traversal
+  * complexity tracing: support pytrees and add a couple of
+    missing functions
+  * make `get_dtype_name` default impl more robust
+  * add `paddle` support
+  * `torch`: add flip, copy, `keepdims` translation for
+    reductions.
+  * `tensorflow`, fix cast location
+
+-------------------------------------------------------------------
 Tue Nov 19 12:32:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:

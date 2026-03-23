@@ -1,7 +1,7 @@
 #
 # spec file for package python-autoray
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           python-autoray
-Version:        0.7.0
+Version:        0.8.10
 Release:        0
 Summary:        A lightweight python automatic-array library
 License:        Apache-2.0
 URL:            https://github.com/jcmgray/autoray
 Source:         https://files.pythonhosted.org/packages/source/a/autoray/autoray-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module dask-array}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module opt-einsum}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +43,6 @@ Write backend agnostic numeric code compatible with any numpy-ish array library.
 
 %prep
 %setup -q -n autoray-%{version}
-sed -i -e '/addopts/d' setup.cfg
 
 %build
 %pyproject_wheel

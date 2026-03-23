@@ -153,4 +153,41 @@
 - Restrict numpy to &lt; 2.</comment>
     <requestid>1225090</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>50b64cb027dc9dd805f84b5a07bfd785</srcmd5>
+    <version>0.8.10</version>
+    <time>1774282366</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.10:
+  * `tensorflow`: support for `cholesky` with `upper` arg,
+    batched svd, and `scipy.linalg.solve_triangular`
+  * **Full Changelog**:
+    https://github.com/jcmgray/autoray/compare/v0.8.9...v0.8.10
+- update to 0.8.9:
+  * add `swapaxes` function for tensorflow
+- update to 0.8.8:
+  * **Enhancements:**
+  * `autoray.lazy`: add support for `moveaxis` and `swapaxes`
+  * **Full Changelog**:
+    https://github.com/jcmgray/autoray/compare/v0.8.7...v0.8.8
+- update to 0.8.7:
+  * **Enhancements**
+  * Torch improvements:
+  * Added torch implementation for `trace` with axes specified
+    plus tests.
+  * Allowed torch `default_rng` seed to be None.
+  * Added axis kwarg support for torch `count_nonzero`.
+  * Added decorator support for registration APIs:
+  * `register_function` can now be used as a decorator.
+  * `register_custom_wrapper` can now be used as a decorator.
+  * Refactored internals to use the new decorator style for
+    function registration.
+- update to 0.8.6:
+  * add stop_gradient
+  * Add torch support for scipy.linalg.solve_triangular.
+  * Add tensorflow support for random.default_rng.
+  * Add allclose support for lazy arrays.
+  * Add Python 3.14 support.</comment>
+    <requestid>1341877</requestid>
+  </revision>
 </revisionlist>
