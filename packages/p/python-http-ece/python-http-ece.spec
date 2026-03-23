@@ -1,7 +1,7 @@
 #
 # spec file for package python-http-ece
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           python-http-ece
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 Summary:        Encrypted Content Encoding for HTTP
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/martinthomson/encrypted-content-encoding
 Source:         https://files.pythonhosted.org/packages/source/h/http_ece/http_ece-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/web-push-libs/encrypted-content-encoding/v%{version}/python/http_ece/tests/test_ece.py
-Source2:        https://raw.githubusercontent.com/web-push-libs/encrypted-content-encoding/master/LICENSE
+Source1:        https://raw.githubusercontent.com/web-push-libs/encrypted-content-encoding/master/LICENSE
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -44,7 +43,7 @@ Encrypted Content Encoding for HTTP.
 
 %prep
 %setup -q -n http_ece-%{version}
-cp %{SOURCE1} %{SOURCE2} .
+cp %{SOURCE1} .
 
 %build
 %pyproject_wheel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:33:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Switch to pytest
+
+-------------------------------------------------------------------
 Wed May 28 11:29:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -6,7 +12,7 @@ Wed May 28 11:29:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Tue Feb 21 04:21:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Stop test_ece.py using removed cryptography methods. 
+- Stop test_ece.py using removed cryptography methods.
 
 -------------------------------------------------------------------
 Wed Mar 23 10:13:27 UTC 2022 - pgajdos@suse.com

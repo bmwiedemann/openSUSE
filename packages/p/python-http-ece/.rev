@@ -40,4 +40,15 @@
 </comment>
     <requestid>1280839</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>de5a74dccfcf7a0bcfe0cfc23feab1ad</srcmd5>
+    <version>1.2.1</version>
+    <time>1774282524</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.1:
+  * Switch to pytest
+
+- Stop test_ece.py using removed cryptography methods.</comment>
+    <requestid>1342009</requestid>
+  </revision>
 </revisionlist>
