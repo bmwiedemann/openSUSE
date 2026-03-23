@@ -1,7 +1,7 @@
 #
 # spec file for package python-bitstring
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-bitstring
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Python module for the construction, analysis and modification of binary data
 License:        MIT
 URL:            https://github.com/scott-griffiths/bitstring
-Source:         https://github.com/scott-griffiths/bitstring/archive/bitstring-%{version}.tar.gz
+Source:         https://github.com/scott-griffiths/bitstring/archive/%{version}.tar.gz#/bitstring-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -48,7 +48,7 @@ They can also be read from, searched and replaced, and navigated in,
 similar to a file or stream.
 
 %prep
-%autosetup -p1 -n bitstring-bitstring-%{version}
+%autosetup -p1 -n bitstring-%{version}
 sed -i '1{\@^#!%{_bindir}/env python@d}' bitstring/__init__.py
 
 %build
@@ -65,6 +65,6 @@ sed -i '1{\@^#!%{_bindir}/env python@d}' bitstring/__init__.py
 %license LICENSE
 %doc README.md
 %{python_sitelib}/bitstring
-%{python_sitelib}/bitstring-4.3.1.dist-info
+%{python_sitelib}/bitstring-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:07:54 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.4.0
+  * This version adds a new optional Rust-based backend.
+  * The only other change is explicit support for Python 3.14.
+- Adjust filename for dist directory in %python_files
+- Adjust upstream source name in %autosetup call
+- Update upstream tarball URL in Source field
+
+-------------------------------------------------------------------
 Tue Apr 29 06:17:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Correct Requires, it's python-bitarray.
