@@ -218,4 +218,24 @@
 - Remove upper bound on pytest.</comment>
     <requestid>1323330</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b31be4192579f84052b251c566ab1108</srcmd5>
+    <version>0.12.50</version>
+    <time>1774282339</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.50
+  * Fix concurrent async transactions.
+- Release 0.12.49
+  * Remove use of cache for observer callbacks.
+- Release 0.12.48
+  * Fix tuple handling (convert to list).
+- Release 0.12.47
+  * Build wheels for `musllinux` platform.
+- Release 0.12.46
+  * Bump `pyo3` to v0.28.0.
+- Release 0.12.45
+  * Raise all exceptions from observer callbacks in an exception
+    group.</comment>
+    <requestid>1341871</requestid>
+  </revision>
 </revisionlist>

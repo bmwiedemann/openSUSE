@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 22 16:41:48 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.50
+  * Fix concurrent async transactions.
+- Release 0.12.49
+  * Remove use of cache for observer callbacks.
+- Release 0.12.48
+  * Fix tuple handling (convert to list).
+- Release 0.12.47
+  * Build wheels for `musllinux` platform.
+- Release 0.12.46
+  * Bump `pyo3` to v0.28.0.
+- Release 0.12.45
+  * Raise all exceptions from observer callbacks in an exception
+    group.
+
+-------------------------------------------------------------------
 Wed Dec 17 10:18:51 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.44
