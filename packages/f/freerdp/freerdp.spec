@@ -37,7 +37,7 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        3.22.0
+Version:        3.24.1
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -288,6 +288,7 @@ export CXX=g++-12
         -DWITH_OPENSSL=ON \
         -DWITH_PCSC=ON \
         -DWITH_PULSE=ON \
+        -DWITH_RDTK=ON \
         -DWITH_SERVER=ON \
         -DWITH_SERVER_INTERFACE=ON \
         -DWITH_SHADOW_X11=ON \

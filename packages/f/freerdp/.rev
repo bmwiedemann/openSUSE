@@ -826,4 +826,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>1330520</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>233fdc329487705f48b2934fed3e4e39</srcmd5>
+    <version>3.24.1</version>
+    <time>1774282580</time>
+    <user>anag_factory</user>
+    <comment>Now with only one tarball...</comment>
+    <requestid>1342059</requestid>
+  </revision>
 </revisionlist>
