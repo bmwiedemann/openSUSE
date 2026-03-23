@@ -1,0 +1,13 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -72,8 +72,8 @@
+   "hatch",
+   "ipykernel",
+   "pytest-jupyter[server]>=0.6.2",
+-  "openapi_core~=0.18.0",
+-  "openapi-spec-validator>=0.6.0,<0.8.0",
++  "openapi_core>=0.18.0",
++  "openapi-spec-validator>=0.6.0",
+   "sphinxcontrib_spelling",
+   "requests_mock",
+   "ruamel.yaml",

@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab-server
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyterlab_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_server/jupyterlab_server-%{version}.tar.gz
 Source100:      python-jupyterlab-server-rpmlintrc
+Patch1:         openapi-remove-cap.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.7}
 BuildRequires:  %{python_module pip}
@@ -93,7 +94,8 @@ Requires:       python-pytest-console-scripts
 Requires:       python-pytest-jupyter-server >= 0.6.2
 Requires:       python-pytest-timeout
 Requires:       python-requests-mock
-Requires:       (python-openapi-spec-validator >= 0.6 with python-openapi-spec-validator < 0.8)
+# upper limit removed to allow newer versions than what upstream permits
+Requires:       python-openapi-spec-validator >= 0.6
 #Requires:       python-sphinxcontrib-spelling
 Requires:       python-strict-rfc3339
 Requires:       python-jupyterlab-server = %{version}

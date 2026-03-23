@@ -429,4 +429,12 @@
 </comment>
     <requestid>1323307</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>0a10e0c1ec651dd110b352a6b1442437</srcmd5>
+    <version>2.28.0</version>
+    <time>1774282357</time>
+    <user>anag_factory</user>
+    <comment>- add openapi-remove-cap.patch</comment>
+    <requestid>1341879</requestid>
+  </revision>
 </revisionlist>
