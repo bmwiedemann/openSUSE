@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 20 06:46:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.7.6:
+  * Automatically disable MkDocs 2.0 warning for forks of MkDocs
+
+-------------------------------------------------------------------
 Wed Mar 11 06:01:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.7.5:
