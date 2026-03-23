@@ -1,9 +1,8 @@
 #
 # spec file for package flocq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Peter Trommler <ptrommler@icloud.com>
-# Copyright (c) 2024 Aaron Puchert <aaronpuchert@alice-dsl.net>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +18,7 @@
 
 
 Name:           flocq
-Version:        4.2.0
+Version:        4.2.2
 Release:        0
 Summary:        Formalization of floating point numbers for Coq
 Group:          Productivity/Scientific/Math
@@ -28,12 +27,20 @@ URL:            https://flocq.gitlabpages.inria.fr/
 #Git-Clone:     https://gitlab.inria.fr/flocq/flocq.git
 Source0:        https://flocq.gitlabpages.inria.fr/releases/%{name}-%{version}.tar.gz
 Source100:      %{name}-rpmlintrc
-BuildRequires:  coq-devel >= 8.12
 BuildRequires:  gcc-c++
 BuildRequires:  ocaml-rpm-macros
+%if %{suse_version} >= 1600
+BuildRequires:  coq-devel >= 8.15
+BuildRequires:  (rocq-stdlib-devel if rocq-devel)
+%else
+BuildRequires:  coq-devel >= 8.15
+%endif
 BuildRequires:  ocamlfind(findlib)
 # The binary format works only with the Coq version it was built with.
 Requires:       coq = %{pkg_version coq}
+%if %{pkg_vcmp coq >= 9.0}
+Requires:       rocq-stdlib = %{pkg_version rocq-stdlib}
+%endif
 Suggests:       %{name}-doc = %{version}
 
 %description
@@ -47,6 +54,9 @@ Summary:        Development files for Flocq
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 Requires:       coq-devel = %{pkg_version coq}
+%if %{pkg_vcmp coq >= 9.0}
+Requires:       rocq-stdlib-devel = %{pkg_version rocq-stdlib-devel}
+%endif
 
 %description devel
 This package contains development files for Flocq.
@@ -56,6 +66,9 @@ Summary:        Documentation for Flocq
 Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 Requires:       coq-doc = %{pkg_version coq}
+%if %{pkg_vcmp coq >= 9.0}
+Requires:       rocq-stdlib-doc = %{pkg_version rocq-stdlib-devel}
+%endif
 BuildArch:      noarch
 
 %description doc
@@ -64,20 +77,30 @@ This package contains the HTML documentation for flocq.
 %prep
 %setup -q
 
-# Make the documentation point to coq-doc if possible.
-grep "\-\-coqlib_url http://coq.inria.fr/distrib/current/stdlib" Remakefile.in &&
+# Make the documentation point to coq-doc/rocq-stdlib-doc if possible.
+grep -- "--coqlib_url https://rocq-prover.org/doc/V@COQVERSION@/corelib" Remakefile.in &&
+%if %{pkg_vcmp coq >= 9.0}
+sed -i "s|--coqlib_url https://rocq-prover.org/doc/V@COQVERSION@/corelib|--coqlib %{_libdir}/coq --coqlib_url %{_defaultdocdir}/rocq/corelib|" Remakefile.in
+%else
 %if %{pkg_vcmp coq >= 8.18}
-sed -i "s|--coqlib_url http://coq.inria.fr/distrib/current/stdlib|--coqlib %{_libdir}/coq --coqlib_url %{_defaultdocdir}/coq/stdlib|" Remakefile.in
+sed -i "s|--coqlib_url https://rocq-prover.org/doc/V@COQVERSION@/corelib|--coqlib %{_libdir}/coq --coqlib_url %{_defaultdocdir}/coq/stdlib|" Remakefile.in
 %else
-%if %{pkg_vcmp coq >= 8.14}
-sed -i "s|--coqlib_url http://coq.inria.fr/distrib/current/stdlib|--coqlib %{_libdir}/coq-core --coqlib_url %{_defaultdocdir}/coq/stdlib|" Remakefile.in
-%else
-sed -i "s|--coqlib_url http://coq.inria.fr/distrib/current/stdlib|--coqlib %{_libdir}/coq-core|" Remakefile.in
+sed -i "s|--coqlib_url https://rocq-prover.org/doc/V@COQVERSION@/corelib|--coqlib %{_libdir}/coq-core --coqlib_url %{_defaultdocdir}/coq/stdlib|" Remakefile.in
 %endif
+%endif
+
+grep -- "--external https://rocq-prover.org/doc/V@COQVERSION@/stdlib" Remakefile.in &&
+%if %{pkg_vcmp coq >= 9.0}
+sed -i "s|--external https://rocq-prover.org/doc/V@COQVERSION@/stdlib|--external %{_defaultdocdir}/rocq/stdlib|" Remakefile.in
+%else
+sed -i "\#--external https://rocq-prover.org/doc/V@COQVERSION@/stdlib#d" Remakefile.in
 %endif
 
 %build
 # This is not autotools-compatible, so we don't use the macro.
+%if %{pkg_vcmp coq >= 9.0}
+COQC="%{_bindir}/rocq compile" COQDOC="%{_bindir}/rocq doc" \
+%endif
 ./configure
 ./remake %{?_smp_mflags} all doc
 

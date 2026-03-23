@@ -84,4 +84,18 @@
 </comment>
     <requestid>1189653</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>37645c6bb76a550c19d43d957cd52ab4</srcmd5>
+    <version>4.2.2</version>
+    <time>1774282404</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.2.2.
+  * Made Coq 8.15 the minimal version and removed the `Int63Compat`
+    and `Nat2Z_compat` layers
+  * Ensured compatibility from Coq 8.15 to 9.1.0.
+  * Ensured compatibility with Coq Stdlib up to 9.1.0.
+- Fix build with Coq/Rocq &gt; 9 by requiring standard library.
+</comment>
+    <requestid>1341908</requestid>
+  </revision>
 </revisionlist>
