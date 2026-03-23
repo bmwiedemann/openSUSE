@@ -60,4 +60,15 @@
     <comment></comment>
     <requestid>1280954</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f3b445607ef27bcb6d729d5635b418bd</srcmd5>
+    <version>1.9.0</version>
+    <time>1774282330</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.0:
+  * Added support for Python 3.14
+  * Removed support for Python 3.9 and PyPy 3.10
+  * Improved linting and CI configuration</comment>
+    <requestid>1341870</requestid>
+  </revision>
 </revisionlist>

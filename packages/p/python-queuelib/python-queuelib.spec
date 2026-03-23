@@ -1,7 +1,7 @@
 #
 # spec file for package python-queuelib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-queuelib
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Collection of Persistent (Disk-Based) Queues
-License:        BSD-2-Clause
+License:        BSD-3-Clause
 URL:            https://github.com/scrapy/queuelib
 Source:         https://files.pythonhosted.org/packages/source/q/queuelib/queuelib-%{version}.tar.gz
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -55,7 +54,7 @@ Queuelib goals are speed and simplicity. It was originally part of the
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover -v
+%pytest
 
 %files %{python_files}
 %doc README.rst NEWS

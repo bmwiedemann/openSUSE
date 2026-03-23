@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 22 16:53:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * Added support for Python 3.14
+  * Removed support for Python 3.9 and PyPy 3.10
+  * Improved linting and CI configuration
+
+-------------------------------------------------------------------
 Wed May 28 08:41:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.8.0
