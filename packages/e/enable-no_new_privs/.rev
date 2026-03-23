@@ -16,4 +16,11 @@
 - Add run0-policy-wheel-auth-self</comment>
     <requestid>1341148</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fa62c3ba733d59d7537e8de9905e82a8</srcmd5>
+    <version>1.0</version>
+    <time>1774283578</time>
+    <user>dimstar_suse</user>
+    <comment>Revert; the obsoletes IS causing issues</comment>
+  </revision>
 </revisionlist>

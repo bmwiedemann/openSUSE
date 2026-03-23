@@ -16,7 +16,7 @@
 #
 
 Name:           enable-no_new_privs
-Version:        1.1
+Version:        1.0
 Release:        0
 Summary:        System configuration to enforce NoNewPrivs by default
 License:        BSD-2-Clause
@@ -26,13 +26,12 @@ Source3:        10-enable-NoNewPrivs.conf
 # Rebuild initrd since the systemd.conf changes end there
 BuildRequires:  suse-module-tools
 BuildRequires:  systemd-presets-common-SUSE-devel
-Requires:       account-utils >= 1.1
-Obsoletes:      shadow-pw-mgmt
-Requires:       polkit >= 127
+Requires:       account-utils >= 1.0
+Requires:       polkit >= 126-4.1
 Requires:       run0-wrappers >= 0.4
-Requires:       run0-policy-wheel-auth-self
-Requires:       shadow >= 4.19
+Requires:       shadow >= 4.18.0-2.1
 Requires(post): account-utils
+Obsoletes:      disable-setuid
 Conflicts:      cron
 Conflicts:      cronie
 BuildArch:      noarch
