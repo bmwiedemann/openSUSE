@@ -1,7 +1,6 @@
 #
 # spec file for package vim
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +17,7 @@
 
 
 %define pkg_version 9.2
-%define patchlevel 0110
+%define patchlevel 0219
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim92
 %define site_runtimepath %{_datadir}/vim/site

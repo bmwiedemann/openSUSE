@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Sat Mar 21 19:21:27 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to version 9.2.0219:
+ * patch 9.2.0219: call stack can be corrupted
+ * patch 9.2.0218: visual selection highlighting in X11 GUI is wrong.
+ * patch 9.2.0217: filetype: cto files are not recognized
+ * patch 9.2.0214: tests: Test_gui_system_term_scroll() is flaky
+ * patch 9.2.0213: Crash when using a partial or lambda as a clipboard provider
+ * translation(zh): Update the Simplify Chinese translation
+ * translation: align sponsor menu string spacing
+ * patch 9.2.0211: possible crash when setting 'winhighlight'
+ * runtime(fish): Add matchit support to filetype plugin
+ * patch 9.2.0210: tests: Test_xxd tests are failing
+ * runtime(doc): Update Italian xxd manpage
+ * patch 9.2.0209: freeze during wildmenu completion
+ * patch 9.2.0208: MS-Windows: excessive scroll-behaviour with go+=!
+ * patch 9.2.0207: MS-Windows: freeze on second :hardcopy
+ * patch 9.2.0206: MS-Window: stripping all CSI sequences
+ * runtime(doc): disable color codes when generating ascii man pages in Makefile
+ * patch 9.2.0205: xxd: Cannot NUL terminate the C include file style
+ * patch 9.2.0204: filetype: cps files are not recognized
+ * patch 9.2.0203: Patch v9.2.0185 was wrong
+ * patch 9.2.0202: [security]: command injection via newline in glob()
+ * patch 9.2.0201: filetype: Wireguard config files not recognized
+ * patch 9.2.0200: term: DECRQM codes are sent too early
+ * patch 9.2.0199: tests: test_startup.vim fails
+ * patch 9.2.0198: cscope: can escape from restricted mode
+ * runtime(doc): Fix typo in if_pyth.txt
+ * patch 9.2.0197: tabpanel: frame width not updated for existing tab pages
+ * runtime(yara): add ftplugin for yara filetype
+ * patch 9.2.0196: textprop: negative IDs and can cause a crash
+ * patch 9.2.0194: tests: test_startup.vim leaves temp.txt around
+ * patch 9.2.0193: using copy_option_part() can be improved
+ * patch 9.2.0192: not correctly recognizing raw key codes
+ * patch 9.2.0191: Not possible to know if Vim was compiled with Android support
+ * patch 9.2.0190: Status line height mismatch in vertical splits
+ * patch 9.2.0188: Can set environment variables in restricted mode
+ * patch 9.2.0186: heap buffer overflow with long generic function name
+ * patch 9.2.0185: buffer overflow when redrawing custom tabline
+ * runtime(doc): Fix typo in cmdline.txt
+ * patch 9.2.0183: channel: using deprecated networking APIs
+ * patch 9.2.0182: autocmds may leave windows with w_locked set
+ * patch 9.2.0181: line('w0') moves cursor in terminal-normal mode
+ * patch 9.2.0180: possible crash with winminheight=0
+ * patch 9.2.0179: MS-Windows: Compiler warning for converting from size_t to int
+ * patch 9.2.0178: DEC mode requests are sent even when not in raw mode
+ * patch 9.2.0177: Vim9: Can set environment variables in restricted mode
+ * patch 9.2.0176: external diff is allowed in restricted mode
+ * patch 9.2.0175: No tests for what v9.2.0141 and v9.2.0156 fixes
+ * patch 9.2.0174: diff: inline word-diffs can be fragmented
+ * patch 9.2.0173: tests: Test_balloon_eval_term_visual is flaky
+ * patch 9.2.0172: Missing semicolon in os_mac_conv.c
+ * patch 9.2.0171: MS-Windows: version detection is deprecated
+ * translation(zh_CN): Fix translation for 'paste' in zh_CN.UTF-8.po
+ * runtime(doc): Update help tags references
+ * patch 9.2.0170: channel: some issues in ch_listen()
+ * runtime(doc): clarify :silent usage for system()/systemlist()
+ * patch 9.2.0169: assertion failure in syn_id2attr()
+ * patch 9.2.0168: invalid pointer casting in string_convert() arguments
+ * patch 9.2.0167: terminal: setting buftype=terminal may cause a crash
+ * patch 9.2.0166: Coverity warning for potential NULL dereference
+ * patch 9.2.0165: tests: perleval fails in the sandbox
+ * patch 9.2.0164: build error when XCLIPBOARD is not defined
+ * patch 9.2.0162: tests: unnecessary CheckRunVimInTerminal in test_quickfix
+ * patch 9.2.0161: intro message disappears on startup in some terminals
+ * patch 9.2.0160: terminal DEC mode handling is overly complex
+ * patch 9.2.0159: Crash when reading quickfix line
+ * patch 9.2.0158: Visual highlighting might be incorrect
+ * patch 9.2.0157: Vim9: concatenation can be improved
+ * patch 9.2.0156: perleval() and rubyeval() ignore security settings
+ * patch 9.2.0155: filetype: ObjectScript are not recognized
+ * patch 9.2.0154: if_lua: runtime error with lua 5.5
+ * patch 9.2.0153: No support to act as a channel server
+ * patch 9.2.0152: concatenating strings is slow
+ * patch 9.2.0151: blob_from_string() is slow for long strings
+ * patch 9.2.0150: synchronized terminal update may cause display artifacts
+ * patch 9.2.0149: Vim9: segfault when unletting an imported variable
+ * patch 9.2.0148: Compile error when FEAT_DIFF is not defined
+ * runtime(ssh): ignore case in 'keywordprg', update syntax script
+ * patch 9.2.0147: blob: concatenation can be improved
+ * patch 9.2.0146: dictionary lookups can be improved
+ * patch 9.2.0145: UTF-8 decoding and length calculation can be improved
+ * patch 9.2.0144: 'statuslineopt' is a global only option
+ * patch 9.2.0143: termdebug: no support for thread and condition in :Break
+ * patch 9.2.0142: Coverity: Dead code warning
+ * patch 9.2.0141: :perl ex commands allowed in restricted mode
+ * runtime(doc): update option type of 'termresize' option (after v9.2.0139)
+ * patch 9.2.0140: file reading performance can be improved
+ * patch 9.2.0139: Cannot configure terminal resize event
+ * runtime(python): Update syntax, improve pythonNumber pattern performance
+ * patch 9.2.0138: winhighlight option handling can be improved
+ * runtime(sudoers): update filetype plugin and syntax script
+ * gitattributes: mark dump files as linguist-generated
+ * patch 9.2.0137: [security]: crash with composing char in collection range
+ * runtime(open): Use job_start() on Linux
+ * runtime(toml): update syntax script and fix highlight of dates and escapes
+ * patch 9.2.0136: memory leak in add_interface_from_super_class()
+ * patch 9.2.0135: memory leak in eval_tuple()
+ * patch 9.2.0134: memory leak in socket_server_send_reply()
+ * patch 9.2.0133: memory leak in netbeans_file_activated()
+ * patch 9.2.0132: tests: Test_recover_corrupted_swap_file1 fails on be systems
+ * patch 9.2.0131: potential buffer overflow in regdump()
+ * patch 9.2.0130: missing range flags for the :tab command
+ * patch 9.2.0129: popup: wrong handling of wide-chars and opacity:0
+ * patch 9.2.0128: Wayland: using _Boolean instead of bool type
+ * patch 9.2.0127: line('w0') and line('w$') return wrong values in a terminal
+ * patch 9.2.0126: String handling can be improved
+ * runtime(doc): Update intro.txt about Neovim
+ * patch 9.2.0125: tests: test_textformat.vim leaves swapfiles behind
+ * patch 9.2.0124: auto-format may swallow white space
+ * patch 9.2.0123: GTK: using deprecated gdk_pixbuf_new_from_xpm_data()
+ * patch 9.2.0122: Vim still supports compiling on NeXTSTEP
+ * patch memory leak in list_extend_func() in list.c
+ * patch 9.2.0120: tests: test_normal fails
+ * runtime(zip): Make ZipUpdatePS() check that shell is powershell
+ * patch 9.2.0119: incorrect highlight initialization in win_init()
+ * patch 9.2.0118: memory leak in w_hl when reusing a popup window
+ * patch 9.2.0117: tests: test_wayland.vim fails
+ * patch 9.2.0116: terminal: synchronized output sequences are buffered
+ * runtime(docs): Update CONTRIBUTING.md and mention #vim on libera
+ * patch 9.2.0115: popup: screen flickering possible during async callbacks
+ * runtime(sed): Update syntax, support more GNU address extensions
+ * runtime(doc): remove thoughts of generics for a function
+ * patch 9.2.0113: winhighlight pointer may be used uninitialized
+ * patch 9.2.0112: popup: windows flicker when updating text
+ * patch 9.2.0111: 'winhighlight' option not always applied
+ * runtime(glimmer): add syntax support for glimmer files
+ * runtime(handlebars): adds handlebars template syntax & indent support
+ * runtime(syntax-tests): regenerate dump files (after v9.2.0110)
+
+-------------------------------------------------------------------
 Thu Mar  5 09:28:12 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to version 9.2.0110:

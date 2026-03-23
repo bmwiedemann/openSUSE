@@ -8378,4 +8378,41 @@ always built-in because vim has direct perl dependencies anyway.
  * runtime(osc52): Omit paste from the osc52 provider when g:osc52_disable_paste is enabled</comment>
     <requestid>1336702</requestid>
   </revision>
+  <revision rev="398" vrev="1">
+    <srcmd5>01fb39c8430ef784b7b0f1320b82dc65</srcmd5>
+    <version>9.2.0219</version>
+    <time>1774282274</time>
+    <user>anag_factory</user>
+    <comment>- update to version 9.2.0219:
+ * patch 9.2.0219: call stack can be corrupted
+ * patch 9.2.0218: visual selection highlighting in X11 GUI is wrong.
+ * patch 9.2.0217: filetype: cto files are not recognized
+ * patch 9.2.0214: tests: Test_gui_system_term_scroll() is flaky
+ * patch 9.2.0213: Crash when using a partial or lambda as a clipboard provider
+ * translation(zh): Update the Simplify Chinese translation
+ * translation: align sponsor menu string spacing
+ * patch 9.2.0211: possible crash when setting 'winhighlight'
+ * runtime(fish): Add matchit support to filetype plugin
+ * patch 9.2.0210: tests: Test_xxd tests are failing
+ * runtime(doc): Update Italian xxd manpage
+ * patch 9.2.0209: freeze during wildmenu completion
+ * patch 9.2.0208: MS-Windows: excessive scroll-behaviour with go+=!
+ * patch 9.2.0207: MS-Windows: freeze on second :hardcopy
+ * patch 9.2.0206: MS-Window: stripping all CSI sequences
+ * runtime(doc): disable color codes when generating ascii man pages in Makefile
+ * patch 9.2.0205: xxd: Cannot NUL terminate the C include file style
+ * patch 9.2.0204: filetype: cps files are not recognized
+ * patch 9.2.0203: Patch v9.2.0185 was wrong
+ * patch 9.2.0202: [security]: command injection via newline in glob()
+ * patch 9.2.0201: filetype: Wireguard config files not recognized
+ * patch 9.2.0200: term: DECRQM codes are sent too early
+ * patch 9.2.0199: tests: test_startup.vim fails
+ * patch 9.2.0198: cscope: can escape from restricted mode
+ * runtime(doc): Fix typo in if_pyth.txt
+ * patch 9.2.0197: tabpanel: frame width not updated for existing tab pages
+ * runtime(yara): add ftplugin for yara filetype
+ * patch 9.2.0196: textprop: negative IDs and can cause a crash
+ * patch 9.2.0194: tests: test_startup.vim leaves temp.txt around</comment>
+    <requestid>1341728</requestid>
+  </revision>
 </revisionlist>
