@@ -592,4 +592,40 @@
     i686 rpms are available, but no own release package</comment>
     <requestid>1328838</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>9df23c03f2ac11e170bfdfca497d4bf4</srcmd5>
+    <version>0.9.1</version>
+    <time>1771605769</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.1
+  build options added
+  - discard_artifacts : can be used for test builds to drop
+                        the binaries, but keep meta files for
+                        inspection
+  - enable_cmssign : for post QA signing support by OBS
+
+- update to version 0.9.0
+  - Create SHA-512 instead of SHA-256 checksum files for isos.
+  - To configure in addition (or instead) SHA-256 ones extend
+    the iso section in the productcompose file like this:
+    iso:
+      checksums:
+       - sha256
+       - sha512</comment>
+    <requestid>1334057</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f0153f2f1c46e37482236a2bb7d68851</srcmd5>
+    <version>0.9.3</version>
+    <time>1774282466</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.9.3
+  * Generate SBOM files also for seperate source and debug media
+
+- update to version 0.9.2
+  - fixed SBOM generation when using iso: tree drop option
+  - use /usr/bin/sign instead of hardcoded signdummy.
+    This is no difference when using the build script.</comment>
+    <requestid>1342053</requestid>
+  </revision>
 </revisionlist>
