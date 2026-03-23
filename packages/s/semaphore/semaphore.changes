@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 23 06:22:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.28:
+  This release improves runner-to-task tracking and fixes task
+  status handling in the runner update flow.
+  A new runner_id field was added to tasks in the database, which
+  makes it possible to persist the association between a task and
+  the runner executing it. This improves internal task tracking and
+  lays the groundwork for more reliable runner state handling.
+  This release also fixes a bug in the runner update logic where
+  the current task state was checked using the wrong field. In
+  api/runners/runners.go, the status check was corrected from
+  job.Status.IsFinished() to tsk.Task.Status.IsFinished(), ensuring
+  the system evaluates the actual stored task state before applying
+  runner updates. This makes task state transitions more accurate
+  during runner execution.
+  * What's changed
+    - Added runner_id to the task record in the database for better
+      runner-to-task association. (#3712)
+    - Fixed runner task status validation to use the actual task
+      status field instead of the job status field.
+
+-------------------------------------------------------------------
 Fri Mar 20 07:06:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.27:
