@@ -1,7 +1,7 @@
 #
 # spec file for package python-mongoengine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mongoengine
-Version:        0.29.1
+Version:        0.29.3
 Release:        0
 Summary:        Python Object-Document Mapper for working with MongoDB
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://mongoengine.org/
+URL:            https://github.com/MongoEngine/mongoengine
 Source:         https://github.com/MongoEngine/mongoengine/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module pip}

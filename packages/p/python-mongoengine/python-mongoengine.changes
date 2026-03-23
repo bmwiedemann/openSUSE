@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 23 11:50:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29.3:
+  * Remove mentions of mongoengine[dot]org has we no longer own
+    it
+
+-------------------------------------------------------------------
 Thu Nov 14 08:56:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.29.1:
