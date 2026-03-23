@@ -430,4 +430,33 @@
     (see #1214)</comment>
     <requestid>1329408</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4071658c943469d157f3cd794953e4f4</srcmd5>
+    <version>6.1.6</version>
+    <time>1774282286</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.1.6:
+  * Follow-up bugfix release for 6.1.5.
+  * `os.path.realpath` did not correctly handle some absolute
+    paths under Windows
+  * `os.path.realpath` did not resolve symlinks under Windows
+  * (see #1296)
+  * Fixes incompatibility with VCCode unittest runner.
+  * expanduser now correctly handles paths besides home and
+    different separators
+  * avoid faking filesystem in VSCode unittest runner
+  * handle expanduser() and home() correctly in cross OS usage
+  * Fixes a regression caused by the introduced weakrefs.
+  * do not use weakrefs for filesystem objects in fake modules
+  * Fixes a packaging issue in latest version.
+  * fixed packaging issue: tests had not been added to sdist
+  * fixed a problem accessing `size` from a `FakeFileWrapper`
+    object
+  * fixed a problem with `readable` raising an error on a file
+    object.
+  * avoid memory accumulation in consecutive tests by using weak
+    references
+</comment>
+    <requestid>1341974</requestid>
+  </revision>
 </revisionlist>
