@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-qsessions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,30 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-django-qsessions
-Version:        1.1.4
+Version:        2.1.0
 Release:        0
 Summary:        Extended session backends for Django
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/QueraTeam/django-qsessions
-Source:         https://files.pythonhosted.org/packages/source/d/django-qsessions/django-qsessions-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-qsessions/django_qsessions-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.10
-Requires:       python-django-ipware >= 2.0.0
-Requires:       python-user-agents >= 1.1.0
-Suggests:       python-geoip2 >= 3.0.0
+Requires:       python-Django >= 4.2
+Requires:       python-ua-parser >= 1.0.1
+Suggests:       python-geoip2 >= 4.1.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 1.10}
-BuildRequires:  %{python_module django-ipware >= 2.0.0}
-BuildRequires:  %{python_module geoip2 >= 3.0.0}
+BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module geoip2 >= 4.1.0}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module user-agents >= 1.1.0}
+BuildRequires:  %{python_module ua-parser >= 1.0.1}
 # /SECTION
 %python_subpackages
 
@@ -50,7 +47,7 @@ BuildRequires:  %{python_module user-agents >= 1.1.0}
 Extended session backends for Django.
 
 %prep
-%setup -q -n django-qsessions-%{version}
+%setup -q -n django_qsessions-%{version}
 
 %build
 export LANG=en_US.UTF-8
@@ -63,12 +60,12 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-export DJANGO_SETTINGS_MODULE=tests.settings_db
+export DJANGO_SETTINGS_MODULE=tests.settings
 export PYTHONPATH=${PWD}
 %pytest
 
 %files %{python_files}
-%doc README.rst CHANGELOG.md
+%doc README.md CHANGELOG.md
 %license LICENSE.txt
 %{python_sitelib}/*qsessions*/
 

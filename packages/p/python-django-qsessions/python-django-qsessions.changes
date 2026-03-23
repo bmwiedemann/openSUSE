@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 21 15:04:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Add support for Django 5.2.
+  * Make `geoip2` an optional dependency. It can be installed
+    using the `geoip2` extra.
+  * Add support for Python 3.13 and drop support for Python 3.8.
+  * Add support for Python 3.12 and drop support for Python 3.7.
+  * Add support for Django 4.2, 5.0 and drop support for Django
+    3.2, 4.1.
+  * Fix a bug in admin ("add" and "edit" session).
+
+-------------------------------------------------------------------
 Tue Jun  3 06:48:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -9,7 +22,7 @@ Sat Jan  7 17:17:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 - update to 1.1.4:
   * Add Django 4.1 support.
   * Drop support for Python 3.6.
-  * Drop support for Django 2.2, 3.0, 3.1. 
+  * Drop support for Django 2.2, 3.0, 3.1.
 
 -------------------------------------------------------------------
 Thu Dec  1 17:15:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>

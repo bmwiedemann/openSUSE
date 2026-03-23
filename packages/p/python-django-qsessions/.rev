@@ -58,4 +58,22 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282133</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7dbbcdbb1add3f2a41a2c5da015f3eee</srcmd5>
+    <version>2.1.0</version>
+    <time>1774282494</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.0:
+  * Add support for Django 5.2.
+  * Make `geoip2` an optional dependency. It can be installed
+    using the `geoip2` extra.
+  * Add support for Python 3.13 and drop support for Python 3.8.
+  * Add support for Python 3.12 and drop support for Python 3.7.
+  * Add support for Django 4.2, 5.0 and drop support for Django
+    3.2, 4.1.
+  * Fix a bug in admin (&quot;add&quot; and &quot;edit&quot; session).
+
+  * Drop support for Django 2.2, 3.0, 3.1.</comment>
+    <requestid>1341997</requestid>
+  </revision>
 </revisionlist>
