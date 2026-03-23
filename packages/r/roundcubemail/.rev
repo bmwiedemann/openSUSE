@@ -833,4 +833,22 @@ Security Update, [bsc#1228900]  [bsc#1228901]</comment>
     <comment></comment>
     <requestid>1331861</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>21f59a4c178b864ee5145cd41920d667</srcmd5>
+    <version>1.6.14</version>
+    <time>1774282497</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.14
+  This is a security update to the stable version 1.6 of Roundcube Webmail.
+  + Fix Postgres connection using IPv6 address (#10104)
+  + Security: Fix pre-auth arbitrary file write via unsafe deserialization in redis/memcache session handler
+  + Security: Fix bug where a password could get changed without providing the old password
+  + Security: Fix IMAP Injection + CSRF bypass in mail search
+  + Security: Fix remote image blocking bypass via various SVG animate attributes
+  + Security: Fix remote image blocking bypass via a crafted body background attribute
+  + Security: Fix fixed position mitigation bypass via use of !important
+  + Security: Fix XSS issue in a HTML attachment preview
+  + Security: Fix SSRF + Information Disclosure via stylesheet links to a local network hosts</comment>
+    <requestid>1341982</requestid>
+  </revision>
 </revisionlist>
