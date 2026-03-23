@@ -1,0 +1,11 @@
+diff -rub python-proton-keyring-linux-0.2.0/setup.cfg python-proton-keyring-linux-0.2.0-patched/setup.cfg
+--- python-proton-keyring-linux-0.2.0/setup.cfg	2024-11-19 15:07:58.000000000 +0100
++++ python-proton-keyring-linux-0.2.0-patched/setup.cfg	2025-02-26 00:56:50.885566933 +0100
+@@ -3,6 +3,6 @@
+ max-line-length = 120
+ 
+ [tool:pytest]
+-addopts = --cov=proton.keyring_linux.core --cov-report html --cov-report term
++addopts = 
+ testpaths =
+     tests
