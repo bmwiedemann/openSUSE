@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sun Mar 22 17:21:23 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.1.3
+  * Add database size-based cleanup (`cleanup_when_db_size_above` option)
+  * Add `squash_history_older_than` and `squash_no_more_often_than` configurables and pruning logic
+  * Improve `SQLiteYStore` performance by storing and applying checkpoints to reduce loading time.
+- Release  0.1.2
+  * Fix in-memory database connection issue with `SQLiteYStore`.
+
+-------------------------------------------------------------------
+Wed Jul  2 14:19:53 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Remove noarch tag from package and create platlib symlink
+  gh#y-crdt/pycrdt-websocket#131
+
+-------------------------------------------------------------------
+Sun Jun 22 15:32:51 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Back to platlib and wait for upstream
+  gh#y-crdt/pycrdt-websocket#131
+
+-------------------------------------------------------------------
+Sat Jun 21 19:43:36 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v0.1.1
