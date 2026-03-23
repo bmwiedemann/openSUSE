@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-silk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-django-silk
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT
@@ -41,8 +41,8 @@ BuildRequires:  %{python_module autopep8 >= 1.2.1}
 BuildRequires:  %{python_module factory_boy >= 3.3}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gprof2dot >= 2017.09.19}
-BuildRequires:  %{python_module networkx >= 2.6}
-BuildRequires:  %{python_module pydot >= 1.4}
+BuildRequires:  %{python_module networkx >= 3.2.1}
+BuildRequires:  %{python_module pydot >= 3.0.3}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}

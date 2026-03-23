@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 23 16:38:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.2:
+  * Fix missing image from jQuery UI 1.13.2
+  * Adds updated documentation on middleware ordering
+  * Updated python dependencies
+
+-------------------------------------------------------------------
 Tue Nov 12 08:41:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.1:

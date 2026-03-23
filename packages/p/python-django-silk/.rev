@@ -200,4 +200,15 @@
   * Update python dependencies</comment>
     <requestid>1223562</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>137e43e642204c0dfa752d77efc43242</srcmd5>
+    <version>5.3.2</version>
+    <time>1774282300</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.3.2:
+  * Fix missing image from jQuery UI 1.13.2
+  * Adds updated documentation on middleware ordering
+  * Updated python dependencies</comment>
+    <requestid>1341709</requestid>
+  </revision>
 </revisionlist>
