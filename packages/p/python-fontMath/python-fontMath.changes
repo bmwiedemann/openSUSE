@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 15 18:54:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * Update fonttools to 4.60.2, drop Python 3.8 support @benkiel
+    in https://github.com/robotools/fontMath/pull/332
+  * This version drops support for Python versions less than 3.9
+  * **Full Changelog**:
+    https://github.com/robotools/fontMath/compare/0.9.4...0.10.0
+
+-------------------------------------------------------------------
 Wed Mar 26 05:17:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize metadata directory name.
@@ -27,7 +37,7 @@ Wed Dec 14 08:39:04 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Tue Dec 13 15:26:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 0.9.3 
+- Update to version 0.9.3
   * What's Changed
   Pass "strict" flag down to copies, so strict remains strict. By @justvanrossum in #305, as required to fix googlefonts/fontmake#961
 
@@ -68,7 +78,7 @@ Tue Mar 23 19:31:42 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sat Feb 13 09:51:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python36 (no FontTools as it requires scipy) 
+- skip python36 (no FontTools as it requires scipy)
 
 -------------------------------------------------------------------
 Tue May 26 07:54:19 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>

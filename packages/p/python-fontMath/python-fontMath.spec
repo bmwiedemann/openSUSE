@@ -1,7 +1,7 @@
 #
 # spec file for package python-fontMath
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fontMath
-Version:        0.9.4
+Version:        0.10.0
 Release:        0
 Summary:        A set of objects for performing math operations on font data
 License:        MIT
 URL:            https://github.com/robotools/fontMath
-Source:         https://files.pythonhosted.org/packages/source/f/fontmath/fontmath-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/f/fontmath/fontmath-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
-Requires:       python-FontTools >= 4.28.5
+Requires:       python-FontTools >= 4.60.2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module FontTools >= 4.28.5}
+BuildRequires:  %{python_module FontTools >= 4.60.2}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 # /SECTION
 %python_subpackages
