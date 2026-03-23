@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 22 17:30:34 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update dependencies
+
+-------------------------------------------------------------------
+Mon Mar 16 23:14:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1.0:
+  * 9.1.0 introduces a new task labeling feature for filtering
+    task results
+  * 9.1 requires Python >=3.10.
+  * Task label feature refined #983 (@ottointhesky, @minrk)
+  * Task label feature #979 (@ottointhesky, @minrk)
+  * handle XPUB socket type in kernel protocol #985 (@minrk)
+  * Use new serialization code for PyPy3.10+ 7.3.19+ #934
+  * ipykernel 7 support - take 2 #947 (@ianthomas23, @minrk)
+  * fix a couple of doc links #976 (@minrk)
+  * require Python 3.10 #954 (@minrk)
+  * dependabot: split major/minor js bumps #940 (@minrk)
+
+-------------------------------------------------------------------
 Mon Dec  1 21:26:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.0.2:

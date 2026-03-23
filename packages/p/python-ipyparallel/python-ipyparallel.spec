@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyparallel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 9.0.2
+%define distversion 9.1
 Name:           python-ipyparallel
-Version:        9.0.2
+Version:        9.1.0
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/i/ipyparallel/ipy
 Source99:       python-ipyparallel-rpmlintrc
 # SECTION build-system requirements
 BuildRequires:  %{python_module hatchling >= 0.25}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module jupyterlab >= 4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -46,7 +46,6 @@ BuildRequires:  %{python_module pyzmq >= 25}
 BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  %{python_module tqdm}
 BuildRequires:  %{python_module traitlets >= 5}
-Requires:       %{python_module importlib_metadata >= 3.6 if %python-base < 3.10}
 Requires:       python-decorator
 Requires:       python-ipykernel >= 6.9.1
 Requires:       python-ipython >= 5

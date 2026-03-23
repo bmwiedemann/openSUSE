@@ -778,4 +778,25 @@
 </comment>
     <requestid>1330719</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>325fef559d60dd58d3658494fdd21dba</srcmd5>
+    <version>9.1.0</version>
+    <time>1774282360</time>
+    <user>anag_factory</user>
+    <comment>- Update dependencies
+
+- update to 9.1.0:
+  * 9.1.0 introduces a new task labeling feature for filtering
+    task results
+  * 9.1 requires Python &gt;=3.10.
+  * Task label feature refined #983 (@ottointhesky, @minrk)
+  * Task label feature #979 (@ottointhesky, @minrk)
+  * handle XPUB socket type in kernel protocol #985 (@minrk)
+  * Use new serialization code for PyPy3.10+ 7.3.19+ #934
+  * ipykernel 7 support - take 2 #947 (@ianthomas23, @minrk)
+  * fix a couple of doc links #976 (@minrk)
+  * require Python 3.10 #954 (@minrk)
+  * dependabot: split major/minor js bumps #940 (@minrk)</comment>
+    <requestid>1341880</requestid>
+  </revision>
 </revisionlist>
