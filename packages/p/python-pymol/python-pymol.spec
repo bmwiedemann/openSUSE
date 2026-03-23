@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymol
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,11 @@ Version:        3.1.0
 Release:        0
 Summary:        A Molecular Viewer
 License:        Python-2.0
-Group:          Productivity/Scientific/Chemistry
 URL:            https://pymol.org/
 Source0:        https://github.com/schrodinger/pymol-open-source/archive/v%{version}/pymol-open-source-%{version}.tar.gz
 Patch0:         https://github.com/schrodinger/pymol-open-source/pull/404.patch#/reproducible.patch
+# PATCH-FIX-UPSTREAM gh#schrodinger/pymol-open-source#458
+Patch1:         support-new-biopython.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
@@ -44,11 +45,11 @@ BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+BuildRequires:  Mesa-libGL-devel
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  Mesa-libGL-devel
 BuildRequires:  mmtf-cpp-devel
 BuildRequires:  msgpack-cxx-devel
 BuildRequires:  netcdf-devel
@@ -62,8 +63,8 @@ Obsoletes:      pymol < %{version}
 Provides:       pymol = %{version}
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module PyQt6}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  Catch2-2-devel
 ## tests need recent biopython not available in Leap
 %if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
@@ -116,7 +117,7 @@ rm testing/tests/api/seqalign.py
 ## succeeds when run separately, but fails when run after ..../api/viewing.py
 rm testing/tests/api/test_editing.py
 ## pymol -ckqy testing/testing.py --run all
-PYTHONPATH=%{buildroot}%{python_sitearch} python%{python_bin_suffix} -m pymol -ckqy testing/testing.py --offline --run all
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m pymol -ckqy testing/testing.py --offline --run all
 %endif
 
 %post

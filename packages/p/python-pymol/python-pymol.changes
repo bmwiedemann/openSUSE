@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 23 04:08:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-biopython.patch:
+  * Avoid two biopython errors.
+- Run the testsuite for all versions of Python, not just the last one.
+
+-------------------------------------------------------------------
 Sun Jun  8 15:58:57 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Enable test suite for x86_64
