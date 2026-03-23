@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 22 20:27:28 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Remove release-keys.asc 
+
+-------------------------------------------------------------------
+Fri Mar 20 14:23:55 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to 2.30.1
+  * No changelog was made available
+- Update opencl_clang to 7161d7c6
+- Update spirv_llvm_translator to de396f26
+- Update vc_intrinsics v0.25.0
+- Remove the _services file and specify tarballs in specfile instead
+- Remove 0001-Include-cstdint-where-needed.patch
+  * No longer needed
+
+-------------------------------------------------------------------
 Wed Nov 12 14:33:46 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to 2.20.3

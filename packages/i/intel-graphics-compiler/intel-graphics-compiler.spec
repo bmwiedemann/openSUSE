@@ -1,7 +1,7 @@
 #
 # spec file for package intel-graphics-compiler
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,29 @@
 #
 
 
+%global llvm_ref llvmorg-16.0.6
+%global opencl_clang_ref 7161d7c6
+%global spirv_llvm_translator_ref de396f26
+%global vc_intrinsics_ref v0.25.0
+
 %global llvm_version 16.0.6
 %global llvm_major %gsub %{llvm_version} %{quote:%..+} %{quote: }
-%global so_version 2.20.3+0
-%global so_major %gsub %{so_version} %{quote:%..+} %{quote: }
 
 Name:           intel-graphics-compiler
-Version:        2.20.3
+Version:        2.30.1
 Release:        0%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://github.com/intel/intel-graphics-compiler
-Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{llvm_version}/llvm-project-%{llvm_version}.src.tar.xz
-Source1:        https://releases.llvm.org/release-keys.asc
-Patch0:         0001-Include-cstdint-where-needed.patch
-Patch1:         0001-Replace-ciso646-with-version.patch
-Patch2:         0003-Empty-check-before-vector-use.patch
-Patch3:         0001-Remove-rpath.patch
+Source0:        https://github.com/intel/intel-graphics-compiler/archive/v%{version}.tar.gz
+Source1:        https://github.com/intel/opencl-clang/archive/%{opencl_clang_ref}/opencl-clang.tar.gz
+Source2:        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/%{spirv_llvm_translator_ref}/spirv-llvm-translator.tar.gz
+Source3:        https://github.com/llvm/llvm-project/archive/%{llvm_ref}/llvm-project.tar.gz
+Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_ref}/vc-intrinsics.tar.gz
+Patch0:         0001-Replace-ciso646-with-version.patch
+Patch1:         0003-Empty-check-before-vector-use.patch
+Patch2:         0001-Remove-rpath.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -112,23 +117,25 @@ A wrapper library around clang.
 
 %prep
 mkdir llvm-project
-tar -xJf %{_sourcedir}/llvm-project-%{llvm_version}.src.tar.xz -C llvm-project --strip-components=1
+tar -xzf %{_sourcedir}/llvm-project.tar.gz -C llvm-project --strip-components=1
 pushd llvm-project
 %patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 3 -p1
+%patch -P 2 -p1
 popd
 
-mv %{_sourcedir}/vc-intrinsics*/ vc-intrinsics
+mkdir vc-intrinsics
+tar -xzf %{_sourcedir}/vc-intrinsics.tar.gz -C vc-intrinsics --strip-components=1
 
 pushd llvm-project/llvm/projects
-mv %{_sourcedir}/opencl-clang*/ opencl-clang
-mv %{_sourcedir}/SPIRV-LLVM-Translator*/ llvm-spirv
+mkdir opencl-clang llvm-spirv
+tar -xzf %{_sourcedir}/opencl-clang.tar.gz -C opencl-clang --strip-components=1
+tar -xzf %{_sourcedir}/spirv-llvm-translator.tar.gz -C llvm-spirv --strip-components=1
 popd
 
-mv %{_sourcedir}/intel-graphics-compiler*/ igc
+mkdir igc
+tar -xzf %{_sourcedir}/v%{version}.tar.gz -C igc --strip-components=1
 pushd igc
-%patch -P 2 -p1
+%patch -P 1 -p1
 popd
 
 %build
