@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 20 10:13:28 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.0.2 (CVE-2026-32711, bsc#1259973)
+  * A crafted DICOMDIR could create a path traversal by setting
+    ReferencedFileID to a path outside the File-set root.
+
+-------------------------------------------------------------------
 Thu Apr 17 05:22:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop BuildRequires on gdcm to skip tests.

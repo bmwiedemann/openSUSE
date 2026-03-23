@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydicom
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pydicom
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Pure python package for DICOM medical file reading and writing
 License:        MIT
@@ -31,9 +31,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pydicom-data}
+BuildRequires:  %{python_module pyfakefs >= 6.1.6}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
