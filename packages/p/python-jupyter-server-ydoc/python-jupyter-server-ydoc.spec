@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-server-ydoc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,9 @@
 %bcond_with test
 %endif
 
-%define distversion 2.1
+%define distversion 2.2.1
 Name:           python-jupyter-server-ydoc%{psuffix}
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Jupyter server extension integrating collaborative shared models
 License:        BSD-3-Clause
@@ -44,8 +44,8 @@ Requires:       python-jupyter_events >= 0.11.0
 Requires:       python-pycrdt
 Requires:       (python-jupyter_server >= 2.15.0 with python-jupyter_server < 3.0)
 Requires:       (python-jupyter_server_fileid >= 0.7.0 with python-jupyter_server_fileid < 1)
-Requires:       (python-jupyter_ydoc >= 2.1.2 with python-jupyter_ydoc < 4)
-Requires:       (python-pycrdt-websocket >= 0.15.0 with python-pycrdt-websocket < 0.16)
+Requires:       (python-jupyter_ydoc >= 3.0.3 with python-jupyter_ydoc < 4)
+Requires:       (python-pycrdt-websocket >= 0.16.0 with python-pycrdt-websocket < 0.17)
 Provides:       python-jupyter_server_ydoc = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}

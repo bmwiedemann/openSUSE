@@ -33,4 +33,28 @@
   * New subpackage version for jupyter-collaboration 4.1.0</comment>
     <requestid>1290006</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5c001ef77caba7ea391f870261535b8f</srcmd5>
+    <version>2.2.1</version>
+    <time>1774282352</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.2.1
+  * New subpackage version for jupyter-collaboration 4.2.1
+
+- update to 2.1.5:
+  * Backport 'Initialize and update the ydoc path property' #342
+    #357 (@brichet)
+  * \[2.x\] Support @jupyter/ydoc 2.x #316 (@fcollonval)
+- update to 2.1.4:
+  * Backport 'Update jupyter_ydoc and pycrdt_websocket
+    dependencies' #367 #376 (@brichet)
+- update to 2.1.3:
+  * Backport 'Fix model format' #368 #369 (@davidbrochart)
+  * Backport 'Fix ignoring AnyIO warnings in tests' #359 #362
+  * Backport 'Fix mypy' #358 #361 (@brichet)
+
+- update to 2.1.2:
+  * New subpackage version for jupyter-collaboration 4.1.2</comment>
+    <requestid>1341876</requestid>
+  </revision>
 </revisionlist>
