@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:29:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Drop python 3.9 support and add Python 3.14 support.
+    [gforcada]
+  * Bump pypy minimum version to 3.10.
+  * Change A005 to report errors on first line, rather than on
+    line zero. [tremblaysimon]
+  * Add support for Python 3.13. [gforcada]
+
+-------------------------------------------------------------------
 Sat Apr 20 14:06:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:

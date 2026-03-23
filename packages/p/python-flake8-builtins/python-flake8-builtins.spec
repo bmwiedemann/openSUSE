@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-builtins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-builtins
-Version:        2.5.0
+Version:        3.1.0
 Release:        0
 Summary:        Flake8 Builtins plugin
 License:        GPL-2.0-only
 URL:            https://github.com/gforcada/flake8-builtins
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-builtins/flake8_builtins-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -34,8 +34,6 @@ Requires:       python-flake8 >= 5.0.4
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flake8 >= 5.0.4}
-BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module hypothesmith}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

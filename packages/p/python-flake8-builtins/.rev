@@ -88,4 +88,18 @@
     [asfaltboy]</comment>
     <requestid>1169373</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bc28ad646a691e0f6b8a6a9a81eaf6f7</srcmd5>
+    <version>3.1.0</version>
+    <time>1774282506</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.0:
+  * Drop python 3.9 support and add Python 3.14 support.
+    [gforcada]
+  * Bump pypy minimum version to 3.10.
+  * Change A005 to report errors on first line, rather than on
+    line zero. [tremblaysimon]
+  * Add support for Python 3.13. [gforcada]</comment>
+    <requestid>1342003</requestid>
+  </revision>
 </revisionlist>
