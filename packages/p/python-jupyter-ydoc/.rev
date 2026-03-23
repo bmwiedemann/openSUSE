@@ -173,4 +173,41 @@
   * Add clearOutputs() method to ISharedCodeCell #330 (@Darshan808)</comment>
     <requestid>1289996</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a36759d1a95f88803ea673c6c4a2a1f2</srcmd5>
+    <version>3.4.0</version>
+    <time>1774282344</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.4.0
+  * Add async document get/set #380 (@davidbrochart, @krassowski)
+- Release 3.3.6
+  * Slightly optimize YNotebook.get (do not convert meta for each
+    cell) #382 (@krassowski, @davidbrochart)
+  * Deduplicate on YNotebook.get call #386 (@krassowski,
+    @davidbrochart)
+- Release 3.3.5
+  * Make ystate a property #384 (@davidbrochart, @krassowski)
+- Release 3.3.4
+  * Fix cell duplication when YStore diverges from disk #376
+    (@jordanhboxer, @davidbrochart, @dmonad, @krassowski)
+- Release 3.3.3
+  * Fix multi-byte Unicode handling in files #370 (@krassowski)
+- Release 3.3.2
+  * Perform granular updates if reloading textual files #366
+    (@krassowski)
+- Release 3.3.1
+  *  Hard-reload a cell if its outputs change and include stream
+     #362 (@krassowski)
+- Release 3.3.0
+  * Fix cell modifications causing cell output reload and shift to
+    active cell index #360 (@krassowski)
+  * Add more tests, require Python 3.10+ #359 (@davidbrochart)
+- Release 3.2.1
+  * Fix syntax highlighting regression (default metadata structure
+    not being set) #358 (@krassowski)
+
+- update to 3.2.0:
+  * Improve reloading of documents to avoid spurious side-effects</comment>
+    <requestid>1341873</requestid>
+  </revision>
 </revisionlist>

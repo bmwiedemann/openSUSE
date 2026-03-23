@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Mar 22 16:58:38 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.4.0
+  * Add async document get/set #380 (@davidbrochart, @krassowski)
+- Release 3.3.6
+  * Slightly optimize YNotebook.get (do not convert meta for each
+    cell) #382 (@krassowski, @davidbrochart)
+  * Deduplicate on YNotebook.get call #386 (@krassowski,
+    @davidbrochart)
+- Release 3.3.5
+  * Make ystate a property #384 (@davidbrochart, @krassowski)
+- Release 3.3.4
+  * Fix cell duplication when YStore diverges from disk #376
+    (@jordanhboxer, @davidbrochart, @dmonad, @krassowski)
+- Release 3.3.3
+  * Fix multi-byte Unicode handling in files #370 (@krassowski)
+- Release 3.3.2
+  * Perform granular updates if reloading textual files #366
+    (@krassowski)
+- Release 3.3.1
+  *  Hard-reload a cell if its outputs change and include stream
+     #362 (@krassowski)
+- Release 3.3.0
+  * Fix cell modifications causing cell output reload and shift to
+    active cell index #360 (@krassowski)
+  * Add more tests, require Python 3.10+ #359 (@davidbrochart)
+- Release 3.2.1
+  * Fix syntax highlighting regression (default metadata structure
+    not being set) #358 (@krassowski)
+
+-------------------------------------------------------------------
+Mon Dec  1 22:45:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Improve reloading of documents to avoid spurious side-effects
+  * Preserve `document_id` state when setting notebook source
+  * Bump actions/upload-artifact from 4 to 5 #349 (@dependabot)
+  * Bump actions/setup-python from 5 to 6 #340 (@dependabot)
+  * Test against `pycrdt-websocket` `v0.16.0` & update dev
+    dependencies #339 (@krassowski)
+  * Bump actions/checkout from 4 to 5 #337 (@dependabot)
+  * Bump actions/create-github-app-token from 1 to 2 #318
+    (@dependabot)
+
+-------------------------------------------------------------------
 Wed Jul  2 14:31:51 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.0
