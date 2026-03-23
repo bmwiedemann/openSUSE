@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:21:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.93
+  * Add Germany Stock Exchange holidays
+  * Add Japan Exchange Group (JPX) holidays
+  * Add Kosovo holidays
+  * Fix l10n tests
+  * Update CONTRIBUTORS
+  * Update Gabon holidays
+  * Update Gabon holidays: add l10n support
+  * Update India holidays: add Telugu language support
+  * Update Italy holidays: add Bolzano Half-Day holidays,
+    Easter Sunday, Thai language support
+- from version 0.92
+  * Add observed holidays substitution support
+  * Update Burkina Faso holidays: add l10n support
+  * Update China holidays: add additional substituted holidays in 2019
+  * Update India holidays: add Tamil language support
+  * Update Iran holidays: add special holidays support
+  * Update Kyrgyzstan holidays: add l10n support
+  * Update South Korea holidays: add Constitution Day back for 2026 onwards
+  * Update iCal exporter
+  * Update l10n test: check .po files for mandatory metadata fields
+
+-------------------------------------------------------------------
 Tue Feb 24 14:39:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.91
