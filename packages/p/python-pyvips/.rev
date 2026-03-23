@@ -53,4 +53,25 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284667</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>95014e2515873b937b685f0cd09232cb</srcmd5>
+    <version>3.1.1</version>
+    <time>1774282328</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.1:
+  * drop python 2.7 support
+  * fix get_gainmap arguments
+  * fix __array__ copy argument test
+  * add a test
+  * fix glib DLL name with Conan
+  * update docs for libvips 8.18
+  * add `get_gainmap()`
+  * remove redundant `revalidate` flags from docs
+  * drop support for Python 2.7, require Python &gt;= 3.7
+  * migrate to `pyproject.toml`
+  * fix a small memleak in `write_to_buffer()`
+  * add `[binary]` install option
+  * add `shutdown()`</comment>
+    <requestid>1341869</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 22 16:50:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+  * drop python 2.7 support
+  * fix get_gainmap arguments
+  * fix __array__ copy argument test
+  * add a test
+  * fix glib DLL name with Conan
+  * update docs for libvips 8.18
+  * add `get_gainmap()`
+  * remove redundant `revalidate` flags from docs
+  * drop support for Python 2.7, require Python >= 3.7
+  * migrate to `pyproject.toml`
+  * fix a small memleak in `write_to_buffer()`
+  * add `[binary]` install option
+  * add `shutdown()`
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
