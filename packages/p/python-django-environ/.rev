@@ -96,4 +96,22 @@
     lazy default objects when DEBUG logging is enabled #571.</comment>
     <requestid>1333394</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0a3ab9955c8a4c808a2b11f920ee3da1</srcmd5>
+    <version>0.13.0</version>
+    <time>1774282298</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.13.0:
+  * Added optional warnings when defaults are used #582.
+  * Added choices argument support for value validation in
+    Env.str(...) #555.
+  * Added Valkey support via valkey:// and valkeys:// cache URL
+    schemes #554.
+  * Added support for rediss:// scheme in channels URL parsing
+    #573.
+  * Added django-prometheus database backend aliases to DB URL
+    parsing schemes #559.
+  * Declared support for Python 3.14 #580.</comment>
+    <requestid>1341706</requestid>
+  </revision>
 </revisionlist>

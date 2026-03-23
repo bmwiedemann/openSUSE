@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 21 14:44:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Added optional warnings when defaults are used #582.
+  * Added choices argument support for value validation in
+    Env.str(...) #555.
+  * Added Valkey support via valkey:// and valkeys:// cache URL
+    schemes #554.
+  * Added support for rediss:// scheme in channels URL parsing
+    #573.
+  * Added django-prometheus database backend aliases to DB URL
+    parsing schemes #559.
+  * Declared support for Python 3.14 #580.
+
+-------------------------------------------------------------------
 Mon Feb 16 16:46:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.1:
