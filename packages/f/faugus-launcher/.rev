@@ -218,4 +218,17 @@
 - For .rpmlintrc, removed exclusions that are no longer required for 1.16.5</comment>
     <requestid>1339157</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f1534971ec4dfb79dd91003c4147ff08</srcmd5>
+    <version>1.16.6</version>
+    <time>1774282385</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.16.6
+- Upstream changes:
+  * Refactored and removed EA App
+  * po: Add Georgian language
+  * Updated Russian translation
+  * Updated Dutch translation</comment>
+    <requestid>1341898</requestid>
+  </revision>
 </revisionlist>

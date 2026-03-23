@@ -26,7 +26,7 @@
 %endif
 
 Name:           faugus-launcher
-Version:        1.16.5
+Version:        1.16.6
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
 License:        MIT
