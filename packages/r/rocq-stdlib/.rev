@@ -1,0 +1,17 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3eeef100cb5830e2f917bb0b8c9c6f3e</srcmd5>
+    <version>9.1.0</version>
+    <time>1774282388</time>
+    <user>anag_factory</user>
+    <comment>- Initial (separate) release based on version 9.1.0.
+  * Changed the requirement prefix of the standard library from Coq
+    to Stdlib and made it mandatory. As a temporary measure, for
+    backward compatibility with older versions, Coq, or a missing
+    From Stdlib, is translated to Stdlib with a warning.
+  * Detailed change logs are available under
+    https://rocq-prover.org/doc/v9.0/refman-stdlib/changes.html
+    and https://rocq-prover.org/doc/v9.1/refman-stdlib/changes.html.</comment>
+    <requestid>1341897</requestid>
+  </revision>
+</revisionlist>

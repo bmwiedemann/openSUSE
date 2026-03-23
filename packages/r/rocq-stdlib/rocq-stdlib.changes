@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Feb 25 22:28:07 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Initial (separate) release based on version 9.1.0.
+  * Changed the requirement prefix of the standard library from Coq
+    to Stdlib and made it mandatory. As a temporary measure, for
+    backward compatibility with older versions, Coq, or a missing
+    From Stdlib, is translated to Stdlib with a warning.
+  * Detailed change logs are available under
+    https://rocq-prover.org/doc/v9.0/refman-stdlib/changes.html
+    and https://rocq-prover.org/doc/v9.1/refman-stdlib/changes.html.
