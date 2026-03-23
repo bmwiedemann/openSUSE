@@ -873,4 +873,41 @@ update to 10.15.0</comment>
       - Validate BinaryResolution.prefix (basename) to prevent</comment>
     <requestid>1330629</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>b7165b4e922a4a3a64e2e71d10b45b58</srcmd5>
+    <version>10.32.1</version>
+    <time>1774282398</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.32.1:
+  * Patch Changes
+    - Fix a regression where pnpm-workspace.yaml without a packages
+      field caused all directories to be treated as workspace
+      projects. This broke projects that use pnpm-workspace.yaml
+      only for settings (e.g. minimumReleaseAge) without defining
+      workspace packages #10909.
+- update to 10.32.0:
+  * Minor Changes
+    - Added --all flag to pnpm approve-builds that approves all
+      pending builds without interactive prompts #10136.
+  * Patch Changes
+    - Reverted change related to setting explicitly the npm config
+      file path, which caused regressions.
+    - Reverted fix related to lockfile-include-tarball-url. Fixes
+      #10915.
+- update to 10.31.0:
+  * Minor Changes
+    - When pnpm updates the pnpm-workspace.yaml, comments, string
+      formatting, and whitespace will be preserved.
+  * Patch Changes
+    - Added -F as a short alias for the --filter option in the help
+      output.
+    - Handle undefined pkgSnapshot in pnpm why -r #10700.
+    - Fix headless install not being used when a project has an
+      injected self-referencing file: dependency that resolves to
+      link: in the lockfile.
+    - Fixed a race condition when multiple worker threads import
+      the same package to the global virtual store concurrently.
+      The rename operation now tolerates ENOTEMPTY/EEXIST errors if</comment>
+    <requestid>1341909</requestid>
+  </revision>
 </revisionlist>
