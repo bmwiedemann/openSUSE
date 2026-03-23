@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package lscsoft-glue
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,22 +33,18 @@ ExcludeArch:    %{ix86}
 
 %define modname glue
 Name:           lscsoft-glue%{psuffix}
-Version:        4.0.0
+Version:        4.1.1
 Release:        0
 Summary:        Grid LSC User Environment
 License:        GPL-2.0-only
 URL:            http://software.ligo.org/lscsoft
-Source:         https://files.pythonhosted.org/packages/source/l/lscsoft-glue/%{pname}-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+Source:         https://files.pythonhosted.org/packages/source/l/lscsoft-glue/lscsoft_glue-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-ligo-segments
-Requires:       python-numpy
-Requires:       python-pyOpenSSL
-Requires:       python-six
+Requires:       python-igwn-segments
 Provides:       lscsoft-glue-data = %{version}
 Obsoletes:      lscsoft-glue-data < %{version}
 Provides:       python-glue = %{version}-%{release}
@@ -59,14 +55,11 @@ Provides:       %{oldpython}-glue = %{version}-%{release}
 Obsoletes:      %{oldpython}-glue < %{version}-%{release}
 %if %{with test}
 BuildRequires:  %{python_module lal}
-BuildRequires:  %{python_module ligo-segments}
 BuildRequires:  %{python_module lscsoft-glue = %{version}}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -87,7 +80,7 @@ database.
 This package provides a common set of data files for %{name}.
 
 %prep
-%autosetup -p1 -n %{pname}-%{version}
+%autosetup -p1 -n lscsoft_glue-%{version}
 # Taken from bundled specfile template
 %if 0%{?suse_version} < 1650
 cat > setup.cfg <<EOF
@@ -102,9 +95,7 @@ url = %{url}
 packages = find:
 python_requires = >=3.6
 install_requires =
-	ligo-segments
-	pyOpenSSL
-	six
+	igwn-segments
 EOF
 %endif
 
@@ -136,7 +127,7 @@ rm -fr %{buildroot}%{_prefix}%{_localstatedir}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/glue/
-%{python_sitelib}/lscsoft_glue-%{version}*-info
+%{python_sitelib}/lscsoft_glue-%{version}.dist-info
 %endif
 
 %changelog

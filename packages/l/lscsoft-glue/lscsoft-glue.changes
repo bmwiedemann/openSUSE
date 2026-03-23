@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 23 01:41:07 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.1.1:
+  * Adds support for Python 3.12 and 3.13
+  * Removes all unused/unnecessary requirements
+  * Specifies minimum version of setuptools (61.0.0)
+  * Migrates from ligo.segments to igwn_segments
+  * Refactors all tests for pytest, and moves the test suite into the package
+    as glue.tests
+
+-------------------------------------------------------------------
 Tue Aug 13 05:49:09 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0.0:
