@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 20 17:48:37 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 1.9.0
+  - New Echo effect (thanks AGoldenDragon)
+  - Bugfix for Catmull-Rom spline interpolation
+  - Build fixes for Mac (thanks Jonas Holzman)
+  - Python API documentation for class constructors (thanks Andrej
+    Zhilenkov)
+  - CMake fixes (thanks Campbell Barton)
+  - Sample rate type warnings (thanks Jacques Lucke and Ray
+    Molenkamp)
+
+-------------------------------------------------------------------
 Thu Nov 13 11:02:33 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Adjust .so version
