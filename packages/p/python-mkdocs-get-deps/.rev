@@ -7,4 +7,18 @@
     <comment>required by python-mkdocs</comment>
     <requestid>1170787</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60b328c6038a60b5e17864e7ffd93dc0</srcmd5>
+    <version>0.2.2</version>
+    <time>1774374533</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.2:
+  * Drop support for Python 3.8.
+  * Add support for Python 3.13.
+  * Update project description.
+  * Use functools.cache instead of lru_cache.
+  * Modernize typing imports and code style.
+  * Extensive CI and linting configuration updates.</comment>
+    <requestid>1342112</requestid>
+  </revision>
 </revisionlist>

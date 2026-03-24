@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 23 21:44:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to 0.2.2:
+  * Drop support for Python 3.8.
+  * Add support for Python 3.13.
+  * Update project description.
+  * Use functools.cache instead of lru_cache.
+  * Modernize typing imports and code style.
+  * Extensive CI and linting configuration updates.
+
+-------------------------------------------------------------------
 Fri Apr 26 15:45:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-mkdocs-get-deps, required by python-mkdocs

@@ -1,7 +1,7 @@
 #
 # spec file for package python-mkdocs-get-deps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-get-deps
-Version:        0.2.0
+Version:        0.2.2
 Release:        0
 Summary:        MkDocs extension that lists all dependencies according to a mkdocsyml file
 License:        MIT
 URL:            https://github.com/mkdocs/get-deps
 Source:         https://files.pythonhosted.org/packages/source/m/mkdocs-get-deps/mkdocs_get_deps-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module mergedeep >= 1.3.4}
 BuildRequires:  %{python_module platformdirs >= 2.2.0}
-BuildRequires:  %{python_module PyYAML >= 5.1}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-PyYAML >= 5.1
 Requires:       python-mergedeep >= 1.3.4
 Requires:       python-platformdirs >= 2.2.0
-Requires:       python-PyYAML >= 5.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
