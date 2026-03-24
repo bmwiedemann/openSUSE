@@ -296,4 +296,13 @@
     <comment>switch to singlespec</comment>
     <requestid>1316751</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>162183dec2045d250bec1dc4b516336f</srcmd5>
+    <version>7.3.0</version>
+    <time>1774374650</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.3.0:
+  * no changelog available</comment>
+    <requestid>1342254</requestid>
+  </revision>
 </revisionlist>
