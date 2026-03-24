@@ -105,4 +105,13 @@
 - Add jupyter-sphinx-sphinx7.patch gh#jupyter/jupyter-sphinx#280</comment>
     <requestid>1201287</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>57fb5a415d6ef3009e4d86398a7905f9</srcmd5>
+    <version>0.5.3</version>
+    <time>1774374528</time>
+    <user>anag_factory</user>
+    <comment>- Ignore deprecation warnings
+</comment>
+    <requestid>1342101</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-sphinx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,7 +70,7 @@ sed -i 's/"--color=yes", //' pyproject.toml
 
 %check
 export JUPYTER_PLATFORM_DIRS=1
-%pytest -k "not test_bash_kernel"
+%pytest -W "ignore::PendingDeprecationWarning" -k "not test_bash_kernel"
 
 %files %{python_files}
 %doc README.md

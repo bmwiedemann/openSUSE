@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec  2 21:29:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Ignore deprecation warnings
+
+-------------------------------------------------------------------
 Sun Sep 15 17:45:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip failing tests due to missing bash-kernel
