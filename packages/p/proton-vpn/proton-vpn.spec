@@ -1,7 +1,7 @@
 #
 # spec file for package proton-vpn
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%{?sle15_python_module_pythons}%{!?sle15_python_module_pythons:%define pythons python3}
+%{?sle15_python_module_pythons}%{!?sle15_python_module_pythons:%define pythons %{primary_python}}
 Name:           proton-vpn
-Version:        4.12.0
+Version:        4.15.0
 Release:        0
 Summary:        Official Proton VPN client
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/Security
 URL:            https://github.com/ProtonVPN/proton-vpn-gtk-app
-Source0:        https://github.com/ProtonVPN/proton-vpn-gtk-app/archive/refs/tags/v%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module gobject}
@@ -32,7 +31,6 @@ BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module proton-core}
 BuildRequires:  %{python_module proton-vpn-api-core >= 0.42.1}
-BuildRequires:  %{python_module proton-vpn-network-manager >= 0.12.13}
 BuildRequires:  %{python_module pycairo}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
@@ -49,8 +47,8 @@ Requires:       %{pythons}-gobject
 Requires:       %{pythons}-packaging
 Requires:       %{pythons}-proton-core
 Requires:       %{pythons}-proton-vpn-api-core >= 0.42.1
-Requires:       %{pythons}-proton-vpn-network-manager >= 0.12.13
 Requires:       %{pythons}-pycairo
+Requires:       %{pythons}-pygobject
 Requires:       %{pythons}-requests
 Requires:       gtk3
 Suggests:       libappindicator-gtk3

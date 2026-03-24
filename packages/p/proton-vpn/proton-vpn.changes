@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Mar 22 18:13:18 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+= Update to version 4.15.0:
+  * fix: [VPNLINUX-1563] Accessibility improvements
+  * feat: [VPNLINUX-1571] show connect button on hover
+  * fix: [VPNLINUX-1584] tray detection
+  * fix: [VPNLINUX-1570] preserve expanded rows on server list refresh
+  * fix: [VPNLINUX-1571] show upgrade link on hover
+  * feat: [VPNLINUX-1565] show secure core servers group
+  * fix: [VPNLINUX-1576] make menu button visible on KDE
+  * fix: [VPNLINUX-1565] show paid servers first to paid users
+  * feat: [VPNLINUX-1565] add double flag icon to secure core rows
+  * fix: [VPNLINUX-1565] customize button tooltips for secure core
+  * fix: [VPNLINUX-1565] smoothen row collapse
+- Update to version 4.14.2
+  * feat: [VPNLINUX-1538] Add cities
+  * feat: [VPNLINUX-1562] add search by city
+  * [VPNLINUX-1599] Feature flag cleanup
+- Update to version 4.14.1:
+  * fix: [VPNLINUX-1524] Log failed sign in attempt
+- Update to version 4.14.0:
+  * [VPNLINUX-1488] migrate to GTK4
+  * [VPNLINUX-1520] fix memory leak
+- Update to version 4.13.1:
+  * fix: [VPNLINUX-1439] Handle desktop file parsing errors
+- Update to version 4.13.0:
+  * fix: [VPNLINUX-1427] Clear keyring on cancelled 2FA
+  * fix: [VPNLINUX-1427] Fix login stack GTK warnings
+  * fix: [VPNLINUX-1412] Show security key as default 2FA option
+  * chore: [VPNLINUX-735] Remove outdated tests
+  * chore: [VPNLINUX-1310] Switch to new versioning strategy
+  * fix: [VPNLINUX-1412] Hide security key form when no keys are registered
+  * fix: [VPNLINUX-1418] remove environment variable that limits security
+- remove deprecated group
+- remove proton-vpn-network-manager as a build and runtime dep, as
+  that got deprecated (gets replaced by proton-vpn-api-core)
+
+-------------------------------------------------------------------
 Sun Nov  2 15:09:16 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to 4.12.0:
