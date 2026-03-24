@@ -17,7 +17,7 @@
 
 
 Name:           kryoptic
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        PKCS #11 software token written in Rust
 License:        GPL-3.0-or-later

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Mar 10 08:17:47 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 1.5.0:
+  * Fix session validity check in SeedRandom/GenerateRandom by @satoqz in
+  * Improve length lookups in DecryptFinal/EncryptFinal by @satoqz in
+  * Check minimum entropy length values by @simo5 in
+  * Really update to edition 2024 by @simo5 in
+  * Ed25519ctx is not fips approved by @simo5 in
+  * Add support for C_[Get|Set]OperationState functions by @simo5 in
+  * Update to rust-cryptoki 0.11 by @Jakuje in
+  * Update constant_time_eq from 0.3.0 to 0.4.2 by @musicinmybrain in
+  * Update rusqlite to 0.38 with fallible_uint by @Jakuje in
+  * storage: Use explicit casts to avoid fallible_uint feature of rusqlite by @Jakuje in
+  * Update CI to use OpenSSL 4.0 branch by @simo5 in
+  * Mark restored hash operations as in use by @simo5 in
+  * Minor TLS improvements by @ilie-halip-nxp in
+  * Add integration test for PKCS#11 module by @simo5 in
+  * Disable SLH-DSA in FIPS builds without ossl400 by @simo5 in
+  * Update actions/checkout to v6 in workflows by @simo5 in
+  * Set CKA_PUBLIC_KEY_INFO for EC private keys by @simo5 in
+  * Add ECDH key re-import integration test by @simo5 in
+  * docs: fix misc typos in storage encryption doc by @berrange in
+  * packaging: stop duplicating the license list in comments by @berrange in
+  * Pull pyca SHA3 OIDs by @Jakuje in
+  * ossl/build.rs: support OSSL_BINDGEN_CLANG_ARGS by @numinit in
+  * Update rust-cryptoki 0.12.0 by @Jakuje in
+  * Handle hmac state saving by @simo5 in
+  * Move FIPS Known Answer Tests in a single file by @simo5 in
+  * accelerate FIPS builds by @keldonin in
+  * Use standard CKR_TOKEN_NOT_INITIALIZED error by @simo5 in
+  * Move some test from unit test to integration tests by @simo5 in
+  * R.I.P Memory backend by @simo5 in
+  * Add common EC flags to mechanism info by @simo5 in
+  * Add CKO_MECHANISM objects and add CKA_UNIQUE_ID to all objects by @simo5 in
+  * Refactor object module to split it in smaller digestible chunks by @simo5 in
+  * Fips defer tests by @simo5 in
+
+-------------------------------------------------------------------
 Mon Jan 12 14:36:18 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 1.4.0:
