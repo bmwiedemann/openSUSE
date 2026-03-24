@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 23 19:05:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.85
+  * The Karplus-Strong (E8x) effect is now disabled by default,
+    and its "DISABLE_E8X" protracker.ini setting has been
+    replaced with "ENABLE_E8X" (for more info on this, read
+    "ENABLE_E8X" comment in protracker.ini)
+  * Fixed a Karplus-Strong (E8x) effect bug (big whoop!)
+  * Removed ugly hack for removing "F00" commands if more of 7 of
+    them were detected during .MOD loading. This breaks "dirt.mod"
+    again, but I came to the conclusion that it was a bad hack
+    anyway.
+  * Updated protracker.ini
+
+-------------------------------------------------------------------
 Thu Mar 12 14:09:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.84
