@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 24 12:02:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.6:
+  * Publishing fixes
+- update to 2026.5:
+  * Publishing fixes
+- update to 2026.4:
+  * feat: enable RTL flag for brh
+  * feat: update list of RTL languages
+
+-------------------------------------------------------------------
+Thu Feb 19 10:04:05 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 2026.3
+  * drop l10n-guide from the data sources
+  * add Santali
+  * add Europe (150) variants for en and es
+  * enable two more documentation languages
+  * add oc_aranes alias for oc_ES
+
+-------------------------------------------------------------------
 Mon Jan 12 15:33:09 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 2025.10

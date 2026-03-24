@@ -125,4 +125,26 @@
     <comment></comment>
     <requestid>1326841</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>513f7d6210a36db9c2864f4e87c4a87a</srcmd5>
+    <version>2026.3</version>
+    <time>1771606007</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1334207</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1ad3a6ec99b4a90ba631db60e9700254</srcmd5>
+    <version>2026.6</version>
+    <time>1774374613</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.6:
+  * Publishing fixes
+- update to 2026.5:
+  * Publishing fixes
+- update to 2026.4:
+  * feat: enable RTL flag for brh
+  * feat: update list of RTL languages</comment>
+    <requestid>1342220</requestid>
+  </revision>
 </revisionlist>
