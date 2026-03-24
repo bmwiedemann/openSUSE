@@ -33,7 +33,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-uv
-Version:        0.10.12
+Version:        0.11.0
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 License:        Apache-2.0 OR MIT
@@ -60,6 +60,9 @@ BuildRequires:  libstdc++6-devel-gcc13
 %endif
 BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
+%ifarch %{ix86} x86_64
+BuildRequires:  nasm
+%endif
 Obsoletes:      uv < %{version}
 Provides:       uv = %{version}
 Requires:       alts
@@ -112,7 +115,6 @@ sed -i '/lto = "fat"/d' Cargo.toml
 %endif
 
 %build
-export LDFLAGS="--no-keep-memory"
 export CARGO_AUDITABLE="auditable"
 export CARGO_INCREMENTAL=0
 export CARGO_FEATURE_VENDORED=1
