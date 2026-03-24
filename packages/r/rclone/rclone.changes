@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 23 23:42:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.73.3: (CVE-2026-33186 GHSA-6g7g-w4f8-9c9x)
+  * Version v1.73.3
+  * build(deps): bump github.com/buger/jsonparser from 1.1.1 to 1.1.2
+  * docs/jottacloud: fix broken link
+  * docs: clarify Filen password change requires updating both password and API key in rclone config
+  * docs: note that Filen API key changes on password change
+  * build(deps): bump google.golang.org/grpc from 1.79.1 to 1.79.3
+  * s3: add multi tenant support for Cubbit
+  * lib/rest: fix URLPathEscapeAll breaking WebDAV servers (eg nzbdav) with strict path matching
+  * list: fix nil pointer panic in Sorter when temp file creation fails
+  * docs: update RELEASE procedure to avoid mistakes
+  * docs: added text to the label showing version-introduced info
+  * Start v1.73.3-DEV development
+  * docs: update sponsors
+
+-------------------------------------------------------------------
 Fri Mar 06 20:53:11 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.73.2:
