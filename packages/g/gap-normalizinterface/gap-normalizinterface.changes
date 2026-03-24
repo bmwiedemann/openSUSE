@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 24 15:09:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.0
+  * Remove _NmzPrintSomeConeProperties
+  * NmzCone: Accept arbitray lists, not just plists
+
+-------------------------------------------------------------------
 Fri Jun 20 12:01:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.1

@@ -1,7 +1,7 @@
 #
 # spec file for package gap-normalizinterface
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-normalizinterface
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        GAP: wrapper for Normaliz
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  gap-devel >= 4.12.1
 BuildRequires:  gap-rpm-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  normaliz-devel >= 3.5.4
+BuildRequires:  normaliz-devel >= 3.11.1
 Requires:       gap-core >= 4.12.1
 
 %description
