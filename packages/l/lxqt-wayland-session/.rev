@@ -113,4 +113,15 @@
   * Rebase patches</comment>
     <requestid>1324378</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>31709ffbf3518c1a925a3ca7662a72c3</srcmd5>
+    <version>0.3.2</version>
+    <time>1774374541</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.3.2:
+  * Configuration updates for labwc 0.9.5 and hyprland 0.54.1
+  * Enabled launch of lxqt-leave by pressing the powerbutton in
+    niri configuration</comment>
+    <requestid>1342142</requestid>
+  </revision>
 </revisionlist>

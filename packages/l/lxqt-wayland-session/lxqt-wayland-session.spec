@@ -26,7 +26,7 @@
 %endif
 
 Name:           lxqt-wayland-session
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Files needed for the LXQt Wayland Session
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-4.0
@@ -34,6 +34,7 @@ URL:            https://github.com/lxqt/lxqt-wayland-session
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Source3:        default-compositor-wayfire
 ## PATCH-CONFIGURATION-openSUSE 0001-configuration-changes-for-default-labwc-session.patch
 Patch0:         0001-configuration-changes-for-default-labwc-session.patch
 ## PATCH-CONFIGURATION-openSUSE 0002-configuration-changes-for-default-wayfire-session.patch
@@ -66,12 +67,25 @@ Requires:       layer-shell-qt6 >= 6.2.0
 Requires:       qt6-wayland >= 6.2.0
 Requires:       lxqt-session >= 2.1.0
 Requires:       xdg-user-dirs
+Requires:       %{name}-default-compositor
+Suggests:       %{name}-default-compositor-wayfire
 BuildArch:      noarch
 
 %description
 Files needed for the LXQt Wayland Session: Wayland session start script,
 its desktop entry for display managers and default configurations for
 actually supported compositors.
+
+%package -n     %{name}-default-compositor-wayfire
+Summary:        Sets default compositor to wayfire
+License:        GPL-3.0-or-later
+Requires:       %{name} = %{version}
+Requires:       lxqt-wayfire-session = %{version}
+Provides:       %{name}-default-compositor
+Conflicts:      %{name}-default-compositor
+
+%description -n %{name}-default-compositor-wayfire
+Sets the default compositor to miriway, and provides the miriway session setup
 
 %if %{with hyprland_session}
 %package -n     lxqt-hyprland-session
@@ -169,6 +183,7 @@ compositor with LXQt
 
 %prep
 %autosetup -p1 -S git_am
+cp -a %{S:3} default-compositor-wayfire
 
 %build
 %cmake
@@ -176,6 +191,7 @@ compositor with LXQt
 
 %install
 %cmake_install
+install -m0644 default-compositor-wayfire %{buildroot}%{_datadir}/lxqt/wayland/default-compositor
 
 %if ! %{with hyprland_session}
   rm -f %{buildroot}%{_datadir}/lxqt/wayland/lxqt-hyprland.conf
@@ -203,6 +219,10 @@ compositor with LXQt
 %{_datadir}/wayland-sessions/lxqt-wayland.desktop
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_mandir}/man?/startlxqtwayland.?%{?ext_man}
+
+%files -n %{name}-default-compositor-wayfire
+%license COPYING
+%{_datadir}/lxqt/wayland/default-compositor
 
 %if %{with hyprland_session}
 %files -n lxqt-hyprland-session
