@@ -2,6 +2,7 @@
 # spec file for package libxslt
 #
 # Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +19,8 @@
 
 %define libver      1
 %define libexver    0
-
 Name:           libxslt
-Version:        1.1.43
+Version:        1.1.45
 Release:        0
 Summary:        XSL Transformation Library
 License:        GPL-2.0-or-later AND MIT
@@ -29,7 +29,6 @@ URL:            https://gitlab.gnome.org/GNOME/libxslt
 Source0:        https://download.gnome.org/sources/%{name}/1.1/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Source2:        xslt-config.1
-
 # PATCH-FIX-OPENSUSE -- libxslt-1.1.24-no-net-autobuild.patch
 #   The xmlGetExternalEntityLoader() tries to fetch/parse some information via
 #   internet, which OBS's build environment does not allow it.
@@ -42,16 +41,11 @@ Patch1:         libxslt-raise-max-parameters.patch
 #   Initialize the random seed to ensure libxslt's math.random() function
 #   produces unpredictable outputs.
 Patch2:         libxslt-random-seed.patch
-# CVE-2025-7424 [bsc#1246360], Type confusion in xmlNode.psvi between stylesheet and source nodes
-Patch3:         libxslt-CVE-2025-7424.patch
-# CVE-2025-11731 [bsc#1251979], type confusion in exsltFuncResultCompfunction leading to denial of service
-Patch4:         libxslt-CVE-2025-11731.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc
-BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.12
-Obsoletes:      libxslt-python
+BuildRequires:  pkgconfig(libgcrypt) >= 1.1.42
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.15.1
 
 %description
 This C library allows you to transform XML files into other XML files
@@ -96,7 +90,6 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name}-tools = %{version}
 Requires:       glibc-devel
 Requires:       libexslt%{libexver} = %{version}
-Requires:       libgcrypt-devel
 Requires:       libxslt%{libver} = %{version}
 
 %description devel
@@ -172,10 +165,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_libdir}/cmake/libxslt/
 %{_libdir}/cmake/libxslt/FindGcrypt.cmake
 %{_libdir}/cmake/libxslt/libxslt-config.cmake
-%{_includedir}/*
+%{_includedir}/libxslt
+%{_includedir}/libexslt
 %{_bindir}/xslt-config
 %{_mandir}/man1/xslt-config.1%{?ext_man}
-%{_mandir}/man3/*
+%{_mandir}/man3/*.3%{?ext_man}
 %dir %{_datadir}/gtk-doc/
 %dir %{_datadir}/gtk-doc/html/
 %{_datadir}/gtk-doc/html/libexslt/

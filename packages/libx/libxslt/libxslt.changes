@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 15 08:55:59 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.1.45:
+  * updates for new libxml2, needs libxml2 >= 1.15.1
+  * test updates
+  * security fixes previously patched
+- drop patches now included upstream:
+  * libxslt-CVE-2025-7424.patch
+  * libxslt-CVE-2025-11731.patch
+
+-------------------------------------------------------------------
 Sat Mar 14 12:32:32 UTC 2026 - David Anes <david.anes@suse.com>
 
 - Add libxslt-raise-max-parameters.patch to raise the number 
