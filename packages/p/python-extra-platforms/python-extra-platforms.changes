@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 24 05:54:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 11.0.3 :
+  * Add type stubs for dynamically generated is_*() group detection
+    functions.
+  * Exclude windows-11-arm + Python 3.10 from test matrix (no
+    native ARM64 build).
+  * Add Windows ARM64 workaround to force native Python instead of
+    x86 emulation.
+  * Migrate Codecov integration from codecov-action to codecov-cli.
+  * Enable parallel test execution by default via
+    --numprocesses=auto in pytest addopts.
+
+-------------------------------------------------------------------
 Thu Mar  5 07:24:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 11.0.2:

@@ -23,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-extra-platforms
-Version:        11.0.2
+Version:        11.0.3
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        Apache-2.0
@@ -76,6 +76,7 @@ Detect platforms and group them by family
 # remove coverage configuration
 sed -i '/cov=/d' pyproject.toml
 sed -i '/cov-report=/d' pyproject.toml
+sed -i '/--cov/d' pyproject.toml
 sed -i '/--cov-branch/d' pyproject.toml
 sed -i '/--cov-precision=2/d' pyproject.toml
 # do not run tests that try to connect to websites
