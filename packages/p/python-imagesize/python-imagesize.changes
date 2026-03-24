@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Mar 23 12:44:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update 2.0.0:
+   * Expanded Format Support: Added support for BMP,
+     AVIF, and HEIC/HEIF image formats.
+   * Rich Metadata API: Introduced imagesize.get_info(),
+     which returns a named tuple (ImageInfo) containing:
+     * width and height
+     * rotation (EXIF orientation value)
+     * xdpi and ydpi
+     * colors (color depth/count)
+     * channels (number of color channels)
+   * URL Support: The API can now fetch and parse image
+     headers directly from http and https URLs.
+   * Type Safety: Added comprehensive PEP 484 type hints for
+     all public API functions and data structures.
+   * Enhanced File-like Support: Improved support for
+     duck-typed file-like objects that implement read() and
+     seek(), even if they do not inherit from io.IOBase.
+   * Python Version Drop: Dropped support for Python 2.7 and
+     Python 3.4 through 3.9. The **minimum required version is
+     now Python 3.10**.
+   * Automatic EXIF Rotation: imagesize.get() now applies
+     EXIF orientation metadata by default. This means the
+     returned width and height will be swapped for images marked
+     as rotated (affects JPEG, TIFF, AVIF, and HEIC/HEIF). Use
+     exif_rotation=False to restore the old behavior.
+   * Error Handling: imagesize.get() and
+     imagesize.getDPI() now return (-1, -1) on parsing
+     failures instead of raising exceptions. Code relying on
+     exceptions for error detection should be updated.
+  Improvements & Bug Fixes
+   * Precision: Migrated SVG unit conversions to use
+     Decimal for more accurate pixel calculations (e.g., for
+     mm, pt, pc units).
+   * WebP Correction: Fixed dimension parsing for VP8X WebP
+     files (correctly handles the +1 offset required by the
+     spec).
+   * Reliability: Significant internal refactoring of JPEG
+     and TIFF parsers to improve robustness against malformed
+     headers.
+
+-------------------------------------------------------------------
 Wed May 28 12:13:24 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -18,7 +61,7 @@ Sat Jul 23 11:27:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.1:
   * python 3.10 compat
-  * documentation updates 
+  * documentation updates
 
 -------------------------------------------------------------------
 Mon Nov 29 11:12:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
