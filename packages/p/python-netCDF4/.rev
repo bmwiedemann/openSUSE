@@ -494,4 +494,17 @@
     strides (issue #1408).</comment>
     <requestid>1318333</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8264e0c738a959012c2c3fbf53e4ed46</srcmd5>
+    <version>1.7.4</version>
+    <time>1774374529</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.4:
+  * Make sure automatic conversion of character arrays &lt;--&gt;
+    string arrays works for Unicode strings (issue #1440).
+  * Add netcdf plugins (blosc, zstd, bzip2) in wheels.  Blosc
+    plugin doesn't work in Windows wheels.
+  * Macos wheels now use conda provided libs. (PR #1450)</comment>
+    <requestid>1342098</requestid>
+  </revision>
 </revisionlist>

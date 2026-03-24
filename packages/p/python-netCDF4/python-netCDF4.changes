@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 20:38:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.4:
+  * Make sure automatic conversion of character arrays <-->
+    string arrays works for Unicode strings (issue #1440).
+  * Add netcdf plugins (blosc, zstd, bzip2) in wheels.  Blosc
+    plugin doesn't work in Windows wheels.
+  * Macos wheels now use conda provided libs. (PR #1450)
+
+-------------------------------------------------------------------
 Mon Nov 17 21:22:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.3:
