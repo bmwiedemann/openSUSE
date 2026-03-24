@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Mar 24 08:52:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * Add `PIPX_MAX_LOGS` environment variable to configure the
+    maximum number of log files to keep.
+  * Allow `--pip-args` to be passed to `upgrade-all`.
+  * Fix `--pip-args='-c <url>'` breaking when constraint target
+    is a URL instead of a local path.
+  * Enable keyring authentication for private package indexes by
+    setting `PIP_KEYRING_PROVIDER=subprocess`
+  * Added error handling for `pip list` command failures
+  * Use stored pip_args from install metadata when running `pipx
+    upgrade` without explicit `--pip-args`
+  * Fix `--global` flag being silently ignored when placed before
+    the subcommand
+  * Respect `--quiet` flag in `install` and suppress animations
+    and success messages
+  * Catch missing Python interpreter in `upgrade` and show
+    helpful error instead of crashing
+  * Prevent data loss by rejecting relative paths in `uninstall`,
+    `reinstall`, and other package-name arguments
+  * Add `--with` flag to `pipx run` to allow injecting
+    dependencies
+  * add more specific directions in the logs towards a resolution
+    if you have a space in the PIX_HOME path
+  * Fixed upgrade command failing when package name includes
+    extras (e.g., `pipx upgrade "coverage[toml]"`).
+  * Fix run command with bash substitution (e.g. `pipx run
+    <(pbpaste)`)
+  * Allow `pipx runpip` to split single string arguments.
+  * Fix handling of shared libraries when the original Python
+    interpreter is removed on Windows by detecting stale venv
+    references and recreating the shared libraries with the
+    current Python.
+  * Add completion choices for `pipx environment --value`.
+  * Ignore recursive symlink loops in PIPX_BIN_DIR.
+  * `pipx reinstall`: An exception will now be raised if package
+    is pinned.
+  * Stop `pipx run` from leaving bad temporary venvs when first
+    installation was unsuccessful.
+
+-------------------------------------------------------------------
 Wed Feb  4 10:58:44 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add pythons_for_pypi macro. This macro will help to build the python
@@ -79,7 +121,7 @@ Fri Aug 23 14:53:33 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
   * Fix #1492: Add PIPX_GLOBAL_(HOME|BIN_DIR|MAN_DIR) documentation
     and list them in pipx environment
   * Assorted repo-review suggestions
-  * Fixes #1509 short-circuit of installing packages when already 
+  * Fixes #1509 short-circuit of installing packages when already
     installed
 
 - Use obs-service-tar_scm instead of GitHub releases

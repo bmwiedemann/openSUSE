@@ -24,12 +24,12 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-pipx
-Version:        1.8.0
+Version:        1.11.0
 Release:        0
 Summary:        Install and Run Python Applications in Isolated Environments
 License:        MIT
 URL:            https://github.com/pypa/pipx
-Source:         pipx-%{version}.tar.gz
+Source:         https://github.com/pypa/pipx/archive/refs/tags/%{version}.tar.gz#/pipx-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-vcs >= 0.4}
 BuildRequires:  %{python_module hatchling >= 1.18}
 BuildRequires:  %{python_module pip}

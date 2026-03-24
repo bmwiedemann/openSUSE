@@ -222,4 +222,41 @@
   minimal stack for different python versions.</comment>
     <requestid>1330921</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>721f28702e5f59024f6e6a8f8db8ded2</srcmd5>
+    <version>1.11.0</version>
+    <time>1774374594</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.11.0:
+  * Add `PIPX_MAX_LOGS` environment variable to configure the
+    maximum number of log files to keep.
+  * Allow `--pip-args` to be passed to `upgrade-all`.
+  * Fix `--pip-args='-c &lt;url&gt;'` breaking when constraint target
+    is a URL instead of a local path.
+  * Enable keyring authentication for private package indexes by
+    setting `PIP_KEYRING_PROVIDER=subprocess`
+  * Added error handling for `pip list` command failures
+  * Use stored pip_args from install metadata when running `pipx
+    upgrade` without explicit `--pip-args`
+  * Fix `--global` flag being silently ignored when placed before
+    the subcommand
+  * Respect `--quiet` flag in `install` and suppress animations
+    and success messages
+  * Catch missing Python interpreter in `upgrade` and show
+    helpful error instead of crashing
+  * Prevent data loss by rejecting relative paths in `uninstall`,
+    `reinstall`, and other package-name arguments
+  * Add `--with` flag to `pipx run` to allow injecting
+    dependencies
+  * add more specific directions in the logs towards a resolution
+    if you have a space in the PIX_HOME path
+  * Fixed upgrade command failing when package name includes
+    extras (e.g., `pipx upgrade &quot;coverage[toml]&quot;`).
+  * Fix run command with bash substitution (e.g. `pipx run
+    &lt;(pbpaste)`)
+  * Allow `pipx runpip` to split single string arguments.
+  * Fix handling of shared libraries when the original Python
+    interpreter is removed on Windows by detecting stale venv</comment>
+    <requestid>1342191</requestid>
+  </revision>
 </revisionlist>
