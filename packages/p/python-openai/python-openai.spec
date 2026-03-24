@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openai
-Version:        2.26.0
+Version:        2.29.0
 Release:        0
 Summary:        OpenAI bindings for python
 License:        Apache-2.0

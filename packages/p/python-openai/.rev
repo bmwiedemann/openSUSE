@@ -167,4 +167,28 @@
   * **api:** image generation actions for responses;</comment>
     <requestid>1337517</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e97c55fc557069fdfd684fa2a91ab9f2</srcmd5>
+    <version>2.29.0</version>
+    <time>1774374527</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.29.0:
+  * **api:** 5.4 nano and mini model slugs
+  * **api:** add /v1/videos endpoint to batches create method
+  * **api:** add defer_loading field to ToolFunction
+  * **api:** add in and nin operators to ComparisonFilter type
+  * **deps:** bump minimum typing-extensions version
+  * **pydantic:** do not pass `by_alias` unless set
+  * **api:** api update
+  * **api:** manual updates
+  * **api:** manual updates
+  * **api:** sora api improvements: character api, video
+    extensions/edits, higher resolution exports.
+  * **api:** repair merged videos resource
+  * **internal:** codegen related update
+  * **internal:** codegen related update
+  * match http protocol with ws protocol instead of wss
+  * use proper capitalization for WebSockets</comment>
+    <requestid>1342107</requestid>
+  </revision>
 </revisionlist>
