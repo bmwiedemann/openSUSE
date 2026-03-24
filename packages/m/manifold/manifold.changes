@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Mar 24 10:50:41 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.4.1
+  This version reverts the lazy collider change (which causes
+  numerical issues in some cases), fixes npm publish failure, fixes
+  some minor bugs and improves ManifoldCAD.
+
+  - Notable Bug Fixes
+    - Fix integer divide-by-zero in RefineToTolerance by
+      @AnshulPatil2005 in #1547.
+    - Fix C include_pt bindings mutating temporary copies by
+      @AnshulPatil2005 in #1556.
+    - Revert lazy collider by @pca006132 in #1569.
+    - Implement manifold_cross_section_warp_context C binding by
+      @swaparup36 in #1597.
+    - Fix normals by @elalish in #1600.
+    - fix: handle empty manifolds in SplitByPlane by @swaparup36 in
+      #1604.
+  - ManifoldCAD Updates
+    - Implement human-readable units by @Divyansh200102 in #1561.
+    - Add tooltips, dynamic filenames and type fetching by
+      @Divyansh200102 in #1562.
+    - Add ImportModel example by @AnshulPatil2005 in #1573.
+    - Restore ManifoldCAD PWA Paths and manifest metadata by
+      @israrkhan921 in #1580 and #1583.
+    - Add 3MF importer and test coverage by @AnshulPatil2005 in
+      #1575.
+    - Restore minimal fetching types hint by @israrkhan921 in
+      #1587.
+    - Stabilize refresh handling and offline behavior by
+      @israrkhan921 in #1593.
+    - Draggable editor pane divider by @israrkhan921 in #1599.
+  - Documentation Changes
+    - Fix small typo in comment by @rondlh in #1546.
+    - Documentation update regarding how to deal with precision
+      issues by @AnshulPatil2005 in #1564.
+    - Document degrees vs radians in JS/TS rotation API by
+      @AnshulPatil2005 in #1565.
+
+-------------------------------------------------------------------
 Fri Feb 27 10:20:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.4.0

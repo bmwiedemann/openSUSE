@@ -8,5 +8,6 @@ rendering use-cases. Our primary goal is reliability: guaranteed manifold
 output without caveats or edge cases. Our secondary goal is performance:
 efficient algorithms that make extensive use of parallelization, or pipelining
 when only a single thread is available.</description>
+  <devel project="graphics" package="manifold"/>
   <url>https://github.com/elalish/manifold</url>
 </package>

@@ -70,4 +70,12 @@ if blender 4.5.1 is still in staging. this can be merged into the same staging.<
   https://github.com/elalish/manifold/releases/tag/v3.4.0</comment>
     <requestid>1335438</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>83042b3d3588d3e9e7e8166b4686744d</srcmd5>
+    <version>3.4.1</version>
+    <time>1774374606</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.4.1</comment>
+    <requestid>1342213</requestid>
+  </revision>
 </revisionlist>
