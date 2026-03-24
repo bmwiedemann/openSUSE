@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Tue Mar 17 03:34:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.10:
+  ## Enhancements
+  * Add compatibility with Bokeh 3.9
+  * Improve Python error messages displayed when serving apps
+  * Improve state.busy logic to avoid mismatches in busy state tracking
+  * Allow configuring the Panel CDN with the PANEL_CDN_ROOT environment
+    variable or pn.config.cdn_root
+  * Allow list handling improvements
+  * Add additional safety guards to custom models
+  * Experimental freeze support in hold()
+  * Ensure ESM model definitions can be loaded dynamically
+  * Improve widget.link() to properly support HoloViews streams
+  * Add placeholder parameter on FloatInput and IntInput
+  * Support for file extensions in FileDropper.accepted_filetypes
+  * Accept 2D arrays for stereo Audio
+  * Align CSS variables between default and dark themes
+  * Add export() method to Vega pane
+  * Add official support for Python 3.14
+  * Add render_policy="manual" option for JSComponent
+  * Disable text selection when editing in EditableTemplate
+  * Prevent full text selection when replacing input values on CodeEditor
+  * Allow custom control over Tabulator editable rows using JSCode
+  * Improve UI discoverability on EditableTemplate
+  * Set pointer cursor on "Connection Lost" toast notification
+  * Serve index.html automatically when serving a static directory
+  ## Bug Fixes
+  * Fix DateRangeSlider incorrectly modifying both values with timezone-aware
+    timestamps
+  * Preserve slider bar color when Accordion panels are collapsed or expanded
+  * Fix datetime axis type mismatch in link_axes after scroll and plot update
+  * Fix JSON serialization errors in Tabulator when using mixed NaT datetime
+    columns
+  * Fix Param widget values not updating when changed inside their own
+    callback
+  * Fix missing validation in _imgshape for image panes
+  * Fix Vega pane not updating when using inline data
+  * Fix Plotly regressions introduced in earlier 1.8 releases
+  * Ensure all ReactiveESM children render correctly
+  * Only serialize ESM model definition if session is already loaded
+  * Ensure ReactComponent children render even when view initialization is
+    slow
+  * Fix CDN resolution issues in server mode for loading.css and
+    es-module-shims
+  * Fix LaTeX rendering in Markdown pane under Pyodide
+  * Fix resource resolution when pathname changes
+  * Ensure only param value events are deduplicated
+  * Fix OAuth user data being overwritten during updates
+  * Fix pipeline "Next" button disabled state when navigating back
+  * Fix Video pane rejecting URLs with query parameters
+  * Fix Number and String indicators defaulting to black in dark theme
+  * Ensure embedding works correctly with .from_param()
+  * Rerun Tabulator page size calculation on resize
+  * Fix issues with monkey-patched versions of Plotly
+  * Ensure collapsed Card still renders components to avoid child render
+    issues
+  * Ensure PathLike is accepted for requirements in pyodide conversion calls
+  * Fix guest endpoint validation at root path
+  * Don't attempt to refresh access token if there is no active user session
+  * Ensure OAuth state for user is reset after failing to refresh access
+    token
+  * Ensure config.design value is respected by Template
+  * Improve robustness of Tabulator.page_size inference
+  * Fix error in notebook environments causing failure to run apps
+  * Prevent Tabulator from unintentionally reverting show_index=False back
+    to True
+  * Ensure transformed param values are inherited by ESM components
+  * Ensure DataFrame objects can be referenced in Vega datasets
+  * Improve handling of code highlighting in Markdown pane
+  * Allow replacing child models inside ReactiveESM components
+  * Fix FastAPI bug where pn.state.location wasn’t retained
+  * Fix Tabulator popup container rendering issues
+  * Resolve issues with pipeline next/previous buttons
+  * Ensure ESM compilation uses _esm path
+  * Fix CORS issue with turbine data URL in Pyodide
+  * Ensure ParamRef, ParamFunction, and ParamMethod do not override styling
+  * Fix toggle behavior in BootstrapTemplate sidebar
+  * Minor robustness improvements for Bokeh model interop
+  * Ensure Tabulator does not break if other components don't correctly
+    initialize
+  * Fix Pyodide jsnull value conversion in Bokeh JSON patches
+  * Fix regression causing column headers not to stretch properly across
+    layout
+  * Ensure config.npm_cdn is respected
+  * Ensure bundled pyodide resources use correct path separator
+  * Ensure pyodide resource bundle is only generated if necessary
+  * Ensure pyodide session is registered as loaded
+
+-------------------------------------------------------------------
 Thu Sep 18 07:54:38 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.8.1

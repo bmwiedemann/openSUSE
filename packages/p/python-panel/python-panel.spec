@@ -1,7 +1,7 @@
 #
 # spec file for package python-panel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,12 @@
 %bcond_with servertests
 
 # truncate trailing suffix
-%define distversion 1.8.1
+%define distversion 1.8.10
 Name:           python-panel%{psuffix}
-Version:        1.8.1
+Version:        1.8.10
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/panel
 Source0:        https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
 # package-lock.json file generated with procedure:
@@ -50,13 +49,13 @@ Source99:       python-panel-rpmlintrc
 # PATCH-FEATURE-OPENSUSE opensuse-js-fixes.patch boo#1231254 gh#openSUSE/obs-service-node_modules#41
 Patch0:         opensuse-js-fixes.patch
 BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module bokeh >= 3.7.0 with %python-bokeh < 3.9}
+BuildRequires:  %{python_module bokeh >= 3.7.0 with %python-bokeh < 3.10}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module param >= 2.1.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyviz_comms >= 0.7.4}
+BuildRequires:  %{python_module pyviz_comms >= 2.0.0}
 BuildRequires:  %{python_module requests}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
@@ -67,13 +66,14 @@ Requires:       python-bleach
 Requires:       python-linkify-it-py
 Requires:       python-markdown-it-py
 Requires:       python-mdit-py-plugins
+Requires:       python-narwhals >= 2
 Requires:       python-packaging
 Requires:       python-pandas >= 1.2
 Requires:       python-pyviz_comms >= 2.0.0
 Requires:       python-requests
 Requires:       python-tqdm
 Requires:       python-typing_extensions
-Requires:       (python-bokeh >= 3.7.0 with python-bokeh < 3.9)
+Requires:       (python-bokeh >= 3.7.0 with python-bokeh < 3.10)
 Requires:       (python-param >= 2.1 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -134,7 +134,6 @@ to all Python flavors.
 # no color for pytest
 sed -i '/addopts/ s/--color=yes//' pyproject.toml
 sed -i /asyncio_default_fixture_loop_scope/d pyproject.toml
-rm panel/.eslintrc.js
 for p in panel/tests/io/reload_module.py
 do \
     [ -f $p -a ! -s $p ] || exit 1 && echo "# Empty module" > $p
