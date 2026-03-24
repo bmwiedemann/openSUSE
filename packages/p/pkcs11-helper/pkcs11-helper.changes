@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 22 20:56:08 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Add explicit config for kryoptic during tests (bsc#1259698)
+
+-------------------------------------------------------------------
 Sat Jan 17 13:42:38 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Fix test provider path

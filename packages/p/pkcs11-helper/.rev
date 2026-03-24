@@ -219,4 +219,12 @@
     <comment>- Fix test provider path (forwarded request 1327808 from lmulling)</comment>
     <requestid>1327816</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>40ba6297d4f070cf553bbddd31277b61</srcmd5>
+    <version>1.31.0</version>
+    <time>1774374471</time>
+    <user>anag_factory</user>
+    <comment>- Add explicit config for kryoptic during tests (bsc#1259698) (forwarded request 1341902 from lmulling)</comment>
+    <requestid>1341903</requestid>
+  </revision>
 </revisionlist>

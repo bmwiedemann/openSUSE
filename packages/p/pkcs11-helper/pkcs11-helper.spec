@@ -95,6 +95,7 @@ autoreconf -fvi
 %if %{with test}
   --with-test-provider=%{_libdir}/pkcs11/libkryoptic_pkcs11.so \
   --enable-tests \
+  --enable-debug=yes \
 %endif
   --disable-static \
   --enable-doc \
@@ -117,6 +118,12 @@ find %{buildroot}%{_docdir} -type f -name "COPYING*" -delete -print
 
 %check
 %if %{with test}
+mkdir -p ~/.config/kryoptic/
+cat <<EOF > ~/.config/kryoptic/token.conf
+[[slots]]
+slot = 1
+dbtype = "sqlite"
+EOF
 %make_build check
 %endif
 
