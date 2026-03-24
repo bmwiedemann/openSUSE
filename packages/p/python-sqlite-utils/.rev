@@ -150,4 +150,22 @@
 - Correct Requires, it's python-python-dateutil.</comment>
     <requestid>1309733</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>39568d5a95b74fd0d1f11a889b8e5f33</srcmd5>
+    <version>3.39</version>
+    <time>1774374579</time>
+    <user>anag_factory</user>
+    <comment>- Remove the forgotten tarball.
+
+- update to 3.39:
+  * Fixed a bug with sqlite-utils install when the tool had been
+    installed using uv. (:issue:`687`)
+  * The `--functions` argument now optionally accepts a path to a
+    Python file as an alternative to a string full of code, and
+    can be specified multiple times - see
+    :ref:`cli_query_functions`.  (:issue:`659`)
+  * sqlite-utils now requires on Python 3.10 or higher.
+- drop support-click-8.3.0.patch (upstream)</comment>
+    <requestid>1342171</requestid>
+  </revision>
 </revisionlist>
