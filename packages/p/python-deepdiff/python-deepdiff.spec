@@ -1,7 +1,7 @@
 #
 # spec file for package python-deepdiff
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,24 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
+# No tag for last release, so we need to pick from the repository by
+# commit id.
+%define commit 0d07ec21d12b46ef4e489383b363eadc22d990fb
+
 %{?sle15_python_module_pythons}
 Name:           python-deepdiff
-Version:        8.6.1
+Version:        8.6.2
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
 URL:            https://github.com/seperman/deepdiff
-Source:         https://github.com/seperman/deepdiff/archive/%{version}.tar.gz#/deepdiff-%{version}-gh.tar.gz
+Source:         https://github.com/seperman/deepdiff/archive/%{commit}.tar.gz#/deepdiff-%{version}-gh.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module flit-core}
@@ -45,10 +55,19 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-orderly-set >= 5.4.1
+
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-PyYAML
-Recommends:     python-click
+%endif
+
+# Required for cli tool
+Requires:       python-PyYAML
+Requires:       python-click
+
 Recommends:     python-jsonpickle
 Recommends:     python-numpy
 Recommends:     python-orjson
@@ -63,8 +82,9 @@ iterables, strings and other objects. It can search for objects
 within other objects, and hash any object based on their content.
 
 %prep
-%autosetup -p1 -n deepdiff-%{version}
+%autosetup -p1 -n deepdiff-%{commit}
 sed -i '1{/env python/d}' deepdiff/deephash.py deepdiff/diff.py deepdiff/search.py
+chmod -x deepdiff/diff.py
 
 %build
 %pyproject_wheel
@@ -80,6 +100,10 @@ donttest="(TestCommands and (csv or group_by)) or (test_load_path_content and cs
 # failure on Python 3.13 https://github.com/seperman/deepdiff/issues/474
 donttest+=" or (TestCommands and test_diff_command and t1_corrupt)"
 %pytest -k "not ($donttest)"
+
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative deep
 
 %post
 %python_install_alternative deep

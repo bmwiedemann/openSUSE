@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 24 07:47:42 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 8.6.2 (bsc#1260064, CVE-2026-33155):
+  * Security fix (CVE-2026-33155): Prevent denial-of-service via
+    crafted pickle payloads that trigger massive memory allocation
+    through the REDUCE opcode. Size-sensitive callables like bytes()
+    and bytearray() are now wrapped to reject allocations exceeding
+    128 MB.
+- Use libalternatives instead of update-alternatives
+
+-------------------------------------------------------------------
 Tue Sep  9 07:26:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 8.6.1 (bsc#1249347, CVE-2025-58367):

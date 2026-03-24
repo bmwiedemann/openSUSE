@@ -262,4 +262,18 @@
 - Update BuildRequires from pyproject.toml</comment>
     <requestid>1303319</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6ad2fb8581889991bdf70e3deec2652b</srcmd5>
+    <version>8.6.2</version>
+    <time>1774374586</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.6.2 (bsc#1260064, CVE-2026-33155):
+  * Security fix (CVE-2026-33155): Prevent denial-of-service via
+    crafted pickle payloads that trigger massive memory allocation
+    through the REDUCE opcode. Size-sensitive callables like bytes()
+    and bytearray() are now wrapped to reject allocations exceeding
+    128 MB.
+- Use libalternatives instead of update-alternatives</comment>
+    <requestid>1342180</requestid>
+  </revision>
 </revisionlist>
