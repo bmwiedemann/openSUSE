@@ -1,0 +1,36 @@
+--- a/karukan-im/fcitx5-addon/karukan.conf
++++ b/karukan-im/fcitx5-addon/karukan.conf
+@@ -1,6 +1,6 @@
+ [InputMethod]
+ Name=Karukan
+-Icon=fcitx-karukan
++Icon=fcitx_karukan
+ Label=Karukan
+ LangCode=ja
+ Addon=karukan
+--- a/karukan-im/fcitx5-addon/CMakeLists.txt
++++ b/karukan-im/fcitx5-addon/CMakeLists.txt
+@@ -86,18 +86,18 @@
+ # Install icons at multiple sizes for XDG icon theme
+ install(FILES icons/fcitx-karukan-16.png
+     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/16x16/apps/"
+-    RENAME fcitx-karukan.png)
++    RENAME fcitx_karukan.png)
+ install(FILES icons/fcitx-karukan-24.png
+     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/24x24/apps/"
+-    RENAME fcitx-karukan.png)
++    RENAME fcitx_karukan.png)
+ install(FILES icons/fcitx-karukan-32.png
+     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/32x32/apps/"
+-    RENAME fcitx-karukan.png)
++    RENAME fcitx_karukan.png)
+ install(FILES icons/fcitx-karukan-48.png
+     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/48x48/apps/"
+-    RENAME fcitx-karukan.png)
++    RENAME fcitx_karukan.png)
+ install(FILES icons/fcitx-karukan-128.png
+     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/128x128/apps/"
+-    RENAME fcitx-karukan.png)
++    RENAME fcitx_karukan.png)
+ 
+ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

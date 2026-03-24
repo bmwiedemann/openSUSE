@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Mon Mar 23 15:49:42 UTC 2026 - Gakuto Furuya <g.furuya@gaato.net>
+
+- ExcludeArch armv7l: rustc runs out of memory during LTO linking
+  of llama-cpp on 32-bit ARM (670 s OOM in OBS builder)
+- Weaken karukan-tools dependency on fcitx5-karukan from Requires
+  to Suggests (tools are standalone static binaries)
+- Use wildcard globs for icon file listing in %files
+- Add cargo_audit source service
+- Add %license to tools subpackage
+- Use fcitx5 RPM macros in %files
+- Add BuildRequires: hicolor-icon-theme
+
+-------------------------------------------------------------------
+Sat Mar 21 16:59:28 UTC 2026 - Gakuto Furuya <g.furuya@gaato.net>
+
+- Widen ExclusiveArch from rust_tier1_arches to rust_arches to
+  enable builds on ppc64le, s390x, riscv64, i586, etc.
+- Export CARGO_CFG_TARGET_FEATURE workaround for llama-cpp-sys-2
+  build.rs on architectures where this env var is unset
+
+-------------------------------------------------------------------
+Sat Mar 21 15:32:19 UTC 2026 - Gakuto Furuya <g.furuya@gaato.net>
+
+- Rename icon from fcitx-karukan to fcitx_karukan (underscore) to
+  avoid KDE icon theme engine hyphen-stripping fallback to Fcitx5 icon
+- Replace in-spec sed rewrite with Patch0
+  (fcitx5-karukan-skip-cargo-build.patch) for reproducible prep stage
+- Add patch to make karukan-server load static files from
+  /usr/share/karukan/static (with ./static and env override fallback)
+- Add org.fcitx.Fcitx5 prefixed icon symlinks for system tray display
+
+-------------------------------------------------------------------
+Tue Mar  3 12:25:51 UTC 2026 - Gakuto Furuya <g.furuya@gaato.net>
+
+- Produce fcitx5-karukan binary subpackage from karukan source package
+- Remove supplements
+
+-------------------------------------------------------------------
+Wed Feb 25 14:39:21 UTC 2026 - Gakuto Furuya <g.furuya@gaato.net>
+
+- Initial package for karukan 0.1.0

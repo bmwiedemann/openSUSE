@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbd33093fa5be7db748fe0d4643ab49f</srcmd5>
+    <version>0.1.0</version>
+    <time>1774374513</time>
+    <user>anag_factory</user>
+    <comment>New package: karukan - Japanese IME with neural kana-kanji conversion for fcitx5
+
+Karukan is a Japanese Input Method Engine powered by llama.cpp for neural
+kana-kanji conversion. This submission includes:
+- fcitx5-karukan: Fcitx5 addon with romaji-to-hiragana and neural conversion
+- karukan-tools: CLI tools for dictionary building, testing, and benchmarking
+
+Builds succeed on x86_64, i586, aarch64, ppc64le, s390x, riscv64.
+armv7l is ExcludeArch'd due to OOM during LTO linking of llama-cpp.</comment>
+    <requestid>1342074</requestid>
+  </revision>
+</revisionlist>

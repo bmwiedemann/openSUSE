@@ -1,0 +1,11 @@
+--- a/karukan-im/fcitx5-addon/CMakeLists.txt
++++ b/karukan-im/fcitx5-addon/CMakeLists.txt
+@@ -29,7 +29,7 @@
+ # Build Rust library as a custom target
+ find_program(CARGO cargo REQUIRED)
+ add_custom_target(karukan_rust_lib ALL
+-    COMMAND ${CARGO} build --release -p karukan-im
++    COMMAND true
+     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/../.."
+     COMMENT "Building karukan-im Rust library"
+     BYPRODUCTS "${KARUKAN_RUST_LIB}"
