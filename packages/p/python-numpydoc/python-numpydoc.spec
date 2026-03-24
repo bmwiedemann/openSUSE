@@ -1,7 +1,7 @@
 #
 # spec file for package python-numpydoc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-numpydoc
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Sphinx extension to support docstrings in Numpy format
 License:        BSD-3-Clause
@@ -27,16 +27,16 @@ URL:            https://github.com/numpy/numpydoc
 Source:         https://files.pythonhosted.org/packages/source/n/numpydoc/numpydoc-%{version}.tar.gz
 # https://docs.python.org/3/objects.inv (changes from time to time, accessed 2024-02-29)
 Source1:        python-objects.inv
-BuildRequires:  %{python_module Sphinx >= 5}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module Sphinx >= 6}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Requires:       python-Sphinx >= 5
+Requires:       python-Sphinx >= 6
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}

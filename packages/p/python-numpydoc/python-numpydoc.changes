@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 20:44:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Added "exclude_files" option for pyproject.toml config usage.
+  * Constructor checking for AST validator
+  * FIX: account for unreleased changes to sphinx
+  * TST: A few minor test improvements
+  * MAINT: rm unused kwarg from private method.
+
+-------------------------------------------------------------------
 Thu Jul 31 18:06:59 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Need to mention:

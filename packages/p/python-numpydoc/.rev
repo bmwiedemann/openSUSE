@@ -257,4 +257,17 @@
 </comment>
     <requestid>1296857</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a2d946e3c7ae92104485d40d35e87cbc</srcmd5>
+    <version>1.10.0</version>
+    <time>1774374530</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.10.0:
+  * Added &quot;exclude_files&quot; option for pyproject.toml config usage.
+  * Constructor checking for AST validator
+  * FIX: account for unreleased changes to sphinx
+  * TST: A few minor test improvements
+  * MAINT: rm unused kwarg from private method.</comment>
+    <requestid>1342100</requestid>
+  </revision>
 </revisionlist>
