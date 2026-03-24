@@ -1,0 +1,32 @@
+From f5143d84cb463c5897b4ab6a83400350c641a35e Mon Sep 17 00:00:00 2001
+From: Rudi Heitbaum <rudi@heitbaum.com>
+Date: Sun, 1 Feb 2026 11:13:18 +1100
+Subject: [PATCH] [CONC-805] fix assignment discards 'const' qualifier
+
+For ISO C23, the functions bsearch, memchr, strchr, strpbrk, strrchr, strstr, wcschr, wcspbrk, wcsrchr, wcsstr and wmemchr that return pointers into their input arrays now have definitions as macros that return a pointer to a const-qualified type when the input argument is a pointer to a const-qualified type.
+
+Fixes:
+../libmariadb/mariadb_lib.c: In function 'mysql_real_connect':
+../libmariadb/mariadb_lib.c:1543:20: error: assignment discards 'const' qualifier from pointer target type [-Werror=discarded-qualifiers]
+ 1543 |       (host && (end= strstr(host, "://"))))
+      |                    ^
+---
+ libmariadb/mariadb_lib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libmariadb/mariadb_lib.c b/libmariadb/mariadb_lib.c
+index 471ed96f..22900acd 100644
+--- a/libmariadb/mariadb_lib.c
++++ b/libmariadb/mariadb_lib.c
+@@ -1507,7 +1507,7 @@ mysql_real_connect(MYSQL *mysql, const char *host, const char *user,
+ 		   const char *passwd, const char *db,
+ 		   uint port, const char *unix_socket,unsigned long client_flag)
+ {
+-  char *end= NULL;
++  const char *end= NULL;
+   char *connection_handler= (mysql->options.extension) ?
+                             mysql->options.extension->connection_handler : 0;
+ 
+-- 
+2.51.0
+

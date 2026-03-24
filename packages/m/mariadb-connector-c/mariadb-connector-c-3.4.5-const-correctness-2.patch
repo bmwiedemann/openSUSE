@@ -1,0 +1,11 @@
+--- mariadb-connector-c-3.4.5-src/libmariadb/mariadb_lib.c.orig	2026-03-19 10:11:57.015610445 +0100
++++ mariadb-connector-c-3.4.5-src/libmariadb/mariadb_lib.c	2026-03-19 10:14:52.905392302 +0100
+@@ -812,7 +812,7 @@
+     char *c;
+     
+     /* CONC-395: replace underscore "_" by dash "-" */
+-    while ((c= strchr(config_option, '_')))
++    while ((c= (char *)strchr(config_option, '_')))
+       *c= '-';
+ 
+     for (i=0; mariadb_defaults[i].conf_key; i++)

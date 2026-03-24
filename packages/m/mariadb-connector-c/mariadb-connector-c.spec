@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb-connector-c
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ Patch1:         mariadb-connector-c-2.3.1_unresolved_symbols.patch
 Patch4:         private_library.patch
 Patch5:         mariadb-connector-c-3.4.5-gcc15.patch
 Patch6:         mariadb-connector-c-3.4.5-gcc15-part2.patch
+Patch7:         mariadb-connector-c-3.4.5-const-correctness.patch
+Patch8:         mariadb-connector-c-3.4.5-const-correctness-2.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  pkgconfig
