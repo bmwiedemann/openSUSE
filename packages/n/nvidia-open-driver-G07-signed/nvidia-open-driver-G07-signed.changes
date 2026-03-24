@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 24 13:46:04 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update CUDA variant to 595.58.03
+
+-------------------------------------------------------------------
+Sun Mar 22 02:24:49 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA version to 595.58.03 (boo#1260044)
+
+-------------------------------------------------------------------
+Wed Mar 18 13:59:46 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- do not set ExclusiveArch in order to fix RPM description for -cuda
+  variant (bsc#1259719)
+- improved RPM description for -cuda and non-cuda variant
+
+-------------------------------------------------------------------
 Mon Mar 16 14:51:34 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - add 'Provides: open-driver-non-cuda-variant = %version' for

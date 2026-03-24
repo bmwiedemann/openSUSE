@@ -16,14 +16,14 @@
 #
 
 
-%define gfx_aarch64_version 595.45.04
+%define gfx_aarch64_version 595.58.03
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 595.45.04
+%define gfx_version 595.58.03
 %endif
-%define cuda_version 595.45.04
+%define cuda_version 595.58.03
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -34,9 +34,6 @@
 %endif
 
 %if "%{flavor}" == "cuda"
- %if 0%{?suse_version} >= 1699
-ExclusiveArch:  do_not_build
- %endif
 %{bcond_without cuda}
 %define mykind cuda
 %define otherkind gfx
@@ -122,7 +119,6 @@ BuildRequires:  kernel-syms-azure
 # build KPMs for kernel-longterm in Factory
 BuildRequires:  kernel-syms-longterm
 %endif
-ExclusiveArch:  x86_64 aarch64
 
 %if 0%{!?kmp_template_name:1}
 %define kmp_template_name /usr/lib/rpm/kernel-module-subpackage
@@ -178,6 +174,44 @@ Simply run: `zypper install cuda-tookit-<cuda_version> nvidia-compute-utils-G07 
 This package provides the open-source NVIDIA kernel module driver
 for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
 and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
+This driver variant is meant to be used when using the GFX repository
+below
+
+  https://download.nvidia.com/suse/
+  https://download.nvidia.com/opensuse/
+
+for user-space driver installation.
+
+%if %{with cuda}
+%description -n nvidia-open-driver-G07-signed-cuda-kmp-default
+This package provides the open-source NVIDIA kernel module driver
+for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
+and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
+This driver variant is meant to be used when using the CUDA repository
+below
+
+  https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/
+  https://developer.download.nvidia.com/compute/cuda/repos/sles15/
+  https://developer.download.nvidia.com/compute/cuda/repos/suse16/
+
+for user-space driver installation.
+
+%if 0%{?suse_version} >= 1699
+%description -n nvidia-open-driver-G07-signed-cuda-kmp-longterm
+This package provides the open-source NVIDIA kernel module driver
+for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
+and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
+This driver variant is meant to be used when using the CUDA repository
+below
+
+  https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/
+  https://developer.download.nvidia.com/compute/cuda/repos/sles15/
+  https://developer.download.nvidia.com/compute/cuda/repos/suse16/
+
+for user-space driver installation.
+%endif
+
+%endif
 
 %package -n %check_pkg
 Summary:        Post-build RPM inspection

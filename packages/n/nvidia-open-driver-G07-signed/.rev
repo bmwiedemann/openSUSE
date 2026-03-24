@@ -68,4 +68,18 @@
   to be used by nvidia-open-driver-G07-signed-kmp-meta for TW ...</comment>
     <requestid>1339414</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>babc91c62a29e975ae5efa82ca2c614a</srcmd5>
+    <version>595.58.03</version>
+    <time>1774374655</time>
+    <user>anag_factory</user>
+    <comment>- update CUDA variant to 595.58.03
+
+- update non-CUDA version to 595.58.03 (boo#1260044)
+
+- do not set ExclusiveArch in order to fix RPM description for -cuda
+  variant (bsc#1259719)
+- improved RPM description for -cuda and non-cuda variant</comment>
+    <requestid>1342266</requestid>
+  </revision>
 </revisionlist>
