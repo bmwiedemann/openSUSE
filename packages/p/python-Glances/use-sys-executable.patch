@@ -1,0 +1,140 @@
+From 5badf7100029627f6c130c57e66a8b3e0cea0948 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 24 Mar 2026 11:19:11 +1100
+Subject: [PATCH] Use sys.executable in the testsuite
+
+Rather than looking for a venv python executable, use the existing
+sys.executable property to execute the modules required.
+---
+ tests/conftest.py             | 6 ++----
+ tests/test_browser_restful.py | 8 +++-----
+ tests/test_mcp.py             | 8 +++-----
+ tests/test_restful.py         | 6 ++----
+ tests/test_xmlrpc.py          | 7 ++-----
+ 5 files changed, 12 insertions(+), 23 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 6ac46cc42f..d243a8ed80 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -20,6 +20,7 @@
+ import os
+ import shlex
+ import subprocess
++import sys
+ import time
+ from unittest.mock import patch
+ 
+@@ -74,10 +75,7 @@ def glances_stats_no_history():
+ 
+ @pytest.fixture(scope="session")
+ def glances_webserver():
+-    if os.path.isfile('.venv/bin/python'):
+-        cmdline = ".venv/bin/python"
+-    else:
+-        cmdline = "python"
++    cmdline = sys.executable
+     cmdline += f" -m glances -B 0.0.0.0 -w --browser -p {SERVER_PORT} -C ./conf/glances.conf"
+     args = shlex.split(cmdline)
+     pid = subprocess.Popen(args)
+diff --git a/tests/test_browser_restful.py b/tests/test_browser_restful.py
+index 8d2c286c16..6768a40fae 100755
+--- a/tests/test_browser_restful.py
++++ b/tests/test_browser_restful.py
+@@ -20,6 +20,7 @@
+ import re
+ import shlex
+ import subprocess
++import sys
+ import time
+ from pathlib import Path
+ 
+@@ -112,11 +113,8 @@ def browser_conf_path(tmp_path_factory):
+ @pytest.fixture(scope='module')
+ def glances_browser_server(browser_conf_path):
+     """Start a Glances web server in browser mode with the generated config."""
+-    if os.path.isfile('.venv/bin/python'):
+-        cmdline = '.venv/bin/python'
+-    else:
+-        cmdline = 'python'
+-    cmdline += (
++    cmdline = (
++        f'{sys.executable}'
+         f' -m glances -B 0.0.0.0 -w --browser'
+         f' -p {SERVER_PORT} --disable-webui --disable-autodiscover'
+         f' -C {browser_conf_path}'
+diff --git a/tests/test_mcp.py b/tests/test_mcp.py
+index 67a135e41f..1e4237ee26 100755
+--- a/tests/test_mcp.py
++++ b/tests/test_mcp.py
+@@ -14,6 +14,7 @@
+ import os
+ import shlex
+ import subprocess
++import sys
+ import time
+ import unittest
+ 
+@@ -61,11 +62,8 @@ def test_000_start_server(self):
+         global pid
+ 
+         print('INFO: [TEST_000] Start the Glances Web Server with MCP enabled')
+-        if os.path.isfile('.venv/bin/python'):
+-            cmdline = ".venv/bin/python"
+-        else:
+-            cmdline = "python"
+-        cmdline += (
++        cmdline = (
++            f"{sys.executable}"
+             f" -m glances -B 0.0.0.0 -w --disable-webui"
+             f" -p {SERVER_PORT} --disable-autodiscover"
+             f" --enable-mcp -C ./conf/glances.conf"
+diff --git a/tests/test_restful.py b/tests/test_restful.py
+index eb8a3c20bd..101eb97c18 100755
+--- a/tests/test_restful.py
++++ b/tests/test_restful.py
+@@ -13,6 +13,7 @@
+ import os
+ import shlex
+ import subprocess
++import sys
+ import time
+ import types
+ import unittest
+@@ -54,10 +55,7 @@ def test_000_start_server(self):
+         global pid
+ 
+         print('INFO: [TEST_000] Start the Glances Web Server API')
+-        if os.path.isfile('.venv/bin/python'):
+-            cmdline = ".venv/bin/python"
+-        else:
+-            cmdline = "python"
++        cmdline = sys.executable
+         cmdline += f" -m glances -B 0.0.0.0 -w --browser -p {SERVER_PORT} --disable-webui -C ./conf/glances.conf"
+         print(f"Run the Glances Web Server on port {SERVER_PORT}")
+         args = shlex.split(cmdline)
+diff --git a/tests/test_xmlrpc.py b/tests/test_xmlrpc.py
+index 35a6c5ffe9..7006bf1f6e 100755
+--- a/tests/test_xmlrpc.py
++++ b/tests/test_xmlrpc.py
+@@ -13,6 +13,7 @@
+ import os
+ import shlex
+ import subprocess
++import sys
+ import time
+ import unittest
+ 
+@@ -53,11 +54,7 @@ def test_000_start_server(self):
+         global pid
+ 
+         print('INFO: [TEST_000] Start the Glances Web Server')
+-        if os.path.isfile('.venv/bin/python'):
+-            cmdline = ".venv/bin/python"
+-        else:
+-            cmdline = "python"
+-        cmdline += f" -m glances -B localhost -s -p {SERVER_PORT}"
++        cmdline = f"{sys.executable} -m glances -B localhost -s -p {SERVER_PORT}"
+         print(f"Run the Glances Server on port {SERVER_PORT}")
+         args = shlex.split(cmdline)
+         pid = subprocess.Popen(args)

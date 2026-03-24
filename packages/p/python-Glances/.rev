@@ -286,4 +286,41 @@
 - Lowercase metadata directory name.</comment>
     <requestid>1269073</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>818c286564b9005edbd105e4a3d68b14</srcmd5>
+    <version>4.5.2</version>
+    <time>1774374539</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.5.2:
+  ## Security:
+  * Default CORS Configuration Allows Cross-Origin Credential Theft
+    (CVE-2026-32610, bsc#1259841)
+  * Incomplete Secrets Redaction: /api/v4/args Endpoint Leaks Password Hash
+    and SNMP Credentials (CVE-2026-32609, bsc#1259832)
+  * REST/WebUI Lacks Host Validation and Remains Exposed to DNS Rebinding
+    (CVE-2026-32632, bsc#1259839)
+  * Unauthenticated API Exposure / Add warning message on startup
+    (CVE-2026-32596, bsc#1260321)
+  * SQL Injection in DuckDB Export via Unparameterized DDL Statements
+    (CVE-2026-32611, bsc#1259840)
+  * Command Injection via Process Names in Action Command Templates
+    (CVE-2026-32608, bsc#1260320)
+  * Central Browser Autodiscovery Leaks Reusable Credentials to
+    Zeroconf-Spoofed Servers (CVE-2026-32634, bsc#1259837)
+  * Browser API Exposes Reusable Downstream Credentials
+    (CVE-2026-32633, bsc#1259838)
+  ## Enhancements:
+  * NPU Monitoring
+  * NVMe Support
+  * DuckDB Export
+  * CPU Core Assignment
+  * API Token Authentication
+  * Make a Glances API in order to use Glances as a Python lib
+  * Add a new --fetch (neofetch like) option to display a snapshot of the
+    current system status
+  * Show long command line with arrow key
+  * Do not call update if a call is done to a specific plugin through the API
+  * Make --stdout (csv and json) compliant with client/server mode</comment>
+    <requestid>1342176</requestid>
+  </revision>
 </revisionlist>

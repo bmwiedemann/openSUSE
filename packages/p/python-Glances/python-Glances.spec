@@ -1,7 +1,7 @@
 #
 # spec file for package python-Glances
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Glances
-Version:        3.4.0.5
+Version:        4.5.2
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
@@ -26,26 +26,28 @@ URL:            https://github.com/nicolargo/glances
 Source:         https://github.com/nicolargo/glances/archive/v%{version}.tar.gz
 Source2:        glances.service
 Source3:        glances.firewalld
-Patch0:         adjust-data-files.patch
-Patch2:         skip-online-tests.patch
-Patch3:         fix-tests.patch
-Patch4:         unitest-wait-for-server.patch
-BuildRequires:  %{python_module bottle}
+# PATCH-FIX-UPSTREAM gh#nicolargo/glances#3497
+Patch0:         use-sys-executable.patch
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module defusedxml}
+BuildRequires:  %{python_module fastapi}
+BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module psutil >= 5.3.0}
+BuildRequires:  %{python_module psutil >= 5.6.7}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module selenium}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module ujson}
+BuildRequires:  %{python_module uvicorn}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-bottle
 Requires:       python-defusedxml
+Requires:       python-jinja2
 Requires:       python-packaging
-Requires:       python-psutil >= 5.3.0
-Requires:       python-requests
-Requires:       python-ujson
+Requires:       python-psutil >= 5.6.7
+Requires:       python-shtab
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-curses
@@ -86,6 +88,9 @@ from systemd and a firewalld file to open the default port.
 %python_clone -a %{buildroot}%{_bindir}/glances
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+# Remove installed "data" files
+rm -r %{buildroot}/usr/share/doc/glances
+
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf service %{buildroot}%{_sbindir}/rcglances
 mkdir -p %{buildroot}%{_unitdir}
@@ -95,10 +100,11 @@ mkdir -p %{buildroot}%{_prefix}/lib/firewalld/services
 install -D -m 644 %{SOURCE3} %{buildroot}%{_prefix}/lib/firewalld/services/glances.xml
 
 %check
-export LANG=en_US.UTF-8
-%python_exec unitest.py
-%python_exec unitest-restful.py
-%python_exec unitest-xmlrpc.py
+# Don't test piped output using popen
+donttest="test_run_sanitizes_pipe_in_mustache or test_pipe"
+# Assumes network interfaces exist
+donttest+=" or test_glances_api_plugin_network"
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative glances glances.1

@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Mar 24 07:42:53 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.5.2:
+  ## Security:
+  * Default CORS Configuration Allows Cross-Origin Credential Theft
+    (CVE-2026-32610, bsc#1259841)
+  * Incomplete Secrets Redaction: /api/v4/args Endpoint Leaks Password Hash
+    and SNMP Credentials (CVE-2026-32609, bsc#1259832)
+  * REST/WebUI Lacks Host Validation and Remains Exposed to DNS Rebinding
+    (CVE-2026-32632, bsc#1259839)
+  * Unauthenticated API Exposure / Add warning message on startup
+    (CVE-2026-32596, bsc#1260321)
+  * SQL Injection in DuckDB Export via Unparameterized DDL Statements
+    (CVE-2026-32611, bsc#1259840)
+  * Command Injection via Process Names in Action Command Templates
+    (CVE-2026-32608, bsc#1260320)
+  * Central Browser Autodiscovery Leaks Reusable Credentials to
+    Zeroconf-Spoofed Servers (CVE-2026-32634, bsc#1259837)
+  * Browser API Exposes Reusable Downstream Credentials
+    (CVE-2026-32633, bsc#1259838)
+  ## Enhancements:
+  * NPU Monitoring
+  * NVMe Support
+  * DuckDB Export
+  * CPU Core Assignment
+  * API Token Authentication
+  * Make a Glances API in order to use Glances as a Python lib
+  * Add a new --fetch (neofetch like) option to display a snapshot of the
+    current system status
+  * Show long command line with arrow key
+  * Do not call update if a call is done to a specific plugin through the API
+  * Make --stdout (csv and json) compliant with client/server mode
+  * API history endpoints shows times without timezone
+  * FR: Sort Sensors my name in proper number order
+  * Top processes extended stats and processes filter in Web server mode
+  * Entry point in the API to get extended process stats
+  ## Bug fixes:
+  * DiskIO — empty args not handled in msg_curse()
+  * Filesystem — KeyError: '/etc/hostname' on get_view
+  * Glances hang when killing process with muliple CTRL-C
+  * Ignore unsupported line endings in password fil
+  * Fix matching problem when fs config has "show" value
+  * globals: Fix a race condition in namedtuple_to_dict
+  * glances: removal of iterators helpers in processes.py and
+    stats_client_snmp.py
+  * glances: amps: Removal of iterator helpers, refactor
+  * Change "Pinned thread" to "Pinned task" and "Upin" to "Unpin"
+  * default_config_dir: Fix config path to include glances/ directory
+  * Cannot set warning/critical temperature for a specific sensor needs test
+  * Try to reduce latency between stat's update and view
+  * Error on Cloud plugin initialisation make TUI crash
+- Drop patches:
+  * adjust-data-files.patch
+  * fix-tests.patch
+  * skip-online-tests.patch
+  * unitest-wait-for-server.patch
+- Add patch use-sys-executable.patch:
+  * Use sys.executable everywhere in the testsuite.
+
+-------------------------------------------------------------------
 Mon Apr 14 05:51:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.
