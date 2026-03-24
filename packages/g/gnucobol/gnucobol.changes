@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 23 14:27:04 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+-  Add Obsoletes for esql packages because of conflicts with gnucobol-esql
+
+-------------------------------------------------------------------
+Thu Mar 19 17:19:04 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove "-n" at esql and esql-devel packages because the relationship to
+the gnucobol package has been missing (boo#1259782)
+
+-------------------------------------------------------------------
 Fri Feb  6 16:42:32 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Extension of build options --with-curses and --with-json

@@ -79,19 +79,24 @@ GnuCOBOL (formerly OpenCOBOL) is a COBOL compiler.
 cobc translates COBOL to executable using intermediate C sources,
 providing full access to nearly all C libraries.
 
-%package -n esql
+%package esql
 Summary:        ESQL for GnuCOBOL
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
+Obsoletes:      esql <= %{version}-%{release}
+Provides:       esql = %{version}-%{release}
 
-%description -n esql
+%description esql
 Provides the possibility to use Cobol code in combination with databases.
 
-%package -n esql-devel
+%package esql-devel
 Summary:        Devel package for ESQL
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Requires:       unixODBC
+Requires:       esql
+Obsoletes:      esql-devel <= %{version}-%{release}
+Provides:       esql-devel = %{version}-%{release}
 
-%description -n esql-devel
+%description esql-devel
 ESQL Devel package for GnuCOBOL
 
 %prep
@@ -140,7 +145,7 @@ make -j4 test
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gnucobol.info.gz
 
 %ldconfig_scriptlets -n libcob%{sover}
-%ldconfig_scriptlets -n esql
+%ldconfig_scriptlets esql
 
 %files -f gnucobol.lang
 %license COPYING COPYING.DOC
@@ -169,13 +174,13 @@ make -j4 test
 %license COPYING.LESSER
 %{_libdir}/libcob.so.%{sover}*
 
-%files -n esql
+%files esql
 %license COPYING COPYING.LESSER
 %doc README AUTHORS NEWS ChangeLog
 %{_bindir}/esqlOC
 %{_libdir}/libocsql.so.2*
 
-%files -n esql-devel
+%files esql-devel
 %{_libdir}/libocsql.so
 
 %changelog
