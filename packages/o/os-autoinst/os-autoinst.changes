@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 23 17:02:21 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774283485.5af53fe:
+  * Revert "style: Remove local Perl::Critic::Policy::HashKeyQuotes"
+  * style: Remove local Perl::Critic::Policy::HashKeyQuotes
+  * style: Add xt/02-perlcritic.t
+  * style: Fix Community::WhileDiamondDefaultAssignment
+  * fix(ci): correct import of commit-message-checker
+  * style: Fix various no strict / no critic violations
+  * style: Fix OpenQA::HashKeyQuotes
+
+-------------------------------------------------------------------
 Mon Mar 23 02:21:40 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1774101470.e82b4cb:
