@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Mon Mar 23 18:37:29 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#47
+- de-duplicate files to reduce size (bsc#1258149)
+- update dist handling to match our official product naming more
+  closely
+- update supported architecture list
+- 2.4
+
+--------------------------------------------------------------------
 Mon Jan 12 17:22:48 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mkdud#46
