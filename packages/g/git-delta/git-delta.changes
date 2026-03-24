@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Mar 24 08:33:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.1:
+  * Fix CD: replace defunct ubuntu-20.04 runners
+
+-------------------------------------------------------------------
+Tue Mar 24 08:31:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.0:
+  * Do not double panic in FakeParentArgs::drop #1856
+  * Improve blame file type detection (#1803) #1829
+  * Use same example config in manual as README #1879
+  * Clarify grep highlighter-related code #1877
+  * Don't set colorMoved in introductory instructions #1884
+  * Recommend zdiff3 merge.conflictStyle #1260
+  * Add themes weeping-willow, mirthful-willow #1864
+  * CI: switch to macos-13, as 12 will be unsupported soon #1890
+  * Add optional capture-output writer to run_app() #1889
+  * Center-align README content #1893
+  * Redundant Option Checks, Unwrap Safety #1892
+  * Add console commands for git configuration #1896
+  * Honor pager path when checking less version #1903
+  * Rename some variables #1904
+  * Delete now-unused pricate homebrew formula step from Makefile (III) #1830
+  * Support {host} in hyperlinks #1901
+  * Allow multiple hyperlinks per line #1909
+  * Clippy 1.83 #1918
+  * Support external subcommands: rg, diff, git-show (etc.) #1769
+  * Don't keep subcommand stdout around #1920
+  * hyperlink commit hashes of length 7 as well #1924
+  * clippy 1.84 fix #1938
+  * chore(deps): update git2 to use libgit2 1.9 #1930
+  * Suggest minimum bat version in manual #1941
+  * Upgrade unicode-width to v0.1.14 (but still < 0.2.0) #1937
+  * Update terminal-colorsaurus version to 0.4.8 #1936
+  * Fix index out of bounds crash for '@@ @@' hunk header #1995
+  * Tune themes weeping-willow, mirthful-willow #2011
+  * clippy 1.88 fixes #2016
+  * Fix diff output when a diff ends with a mode change #2023
+  * fix: cargo install git-delta --locked fails on systems with GCC 15 #2007
+  * Normalize merge.conflictStyle casing #2015
+  * Styled zero lines fix #1916
+  * config: add setup instructions for Jujutsu (jj) vcs #2048
+  * all: fix clippy complaints #2038
+  * Cache the Git remote URL to speed up rendering hyperlinks #1940
+  * deps: update cc #2053
+  * rg json handling: fix line comment highlighting #2057
+  * Update dirs dependency to version 6 #2063
+  * default line number to 1 for hyperlinks #2061
+  * Fix line numbers showing filename when hyperlinks enabled #2058
+  * less hist file: look at xdg paths #2065
+  * CI: remove x86 apple/macOS #2074
+  * Update bat dependency from 0.24 to 0.26 #2115
+
+-------------------------------------------------------------------
 Tue Aug 19 06:10:21 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update vendored dependencies to fix build 
