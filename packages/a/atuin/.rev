@@ -1405,4 +1405,40 @@
     <comment>introduced nushell-completion package (forwarded request 1340729 from develop7)</comment>
     <requestid>1340730</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8541bc8b10dfe3fe1c11967c92fa63a5</srcmd5>
+    <version>18.13.4</version>
+    <time>1774374603</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 18.13.4:
+  * Bug Fixes
+    + (ai) Restore url-quote-magic for ? in zsh (#3304)
+    + Redirect tty0 when running setup (#3302)
+    + Call ensure_hub_session even if primary sync 
+      endpoint is self-hosted (#3301)
+    + Remove per-event mouse capture toggling that leaked 
+      ANSI to stdout (#3299)
+    + Clarify what data is sent when using Atuin AI during setup 
+      (only OS and shell) (#3290)
+    + Better tty check (#3313)
+    + Disable features in init when that feature is explicitly disabled (#3328)
+    + Don't run 'atuin init' in 'atuin hex init' — each must be initialized 
+      separately (#3334)
+  * Documentation
+    + Fix typo in FAQ alternatives section (#3292)
+    + Remove 'experimental' status from Atuin Daemon (#3295)
+    + Add inline_height_shell_up_key_binding (#3270)
+  * Features
+    + Report distro name with OS for distro-specific commands (#3289)
+    + Allow setting kv values from stdin
+    + Error if value not provided and no stdin
+    + Add a small atuin label to the ai box (#3309)
+    + Allow running atuin search -i as subcommand on Windows (#3250)
+    + Hex init nu (#3330)
+  * Miscellaneous Tasks
+    + (ci) Tag docker images with semantic versions on tag creation (#3316)
+    + Replace atuin-ai rendering with component-oriented system (#3288)
+    + Refactor CLI auth flows and token storage (#3317) (forwarded request 1342210 from develop7)</comment>
+    <requestid>1342211</requestid>
+  </revision>
 </revisionlist>
