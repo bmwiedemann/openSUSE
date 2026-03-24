@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 24 03:39:23 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct the version in the metadata to be 0.10.1, reported upstream.
+
+-------------------------------------------------------------------
+Mon Mar 23 22:22:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.1:
+  * Fixing extend tag nested named template handling
+
+-------------------------------------------------------------------
 Tue Jan 20 04:33:01 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not require poetry for tests.

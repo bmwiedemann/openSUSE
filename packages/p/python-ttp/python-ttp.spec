@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-ttp%{psuffix}
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Template Text Parser
 License:        MIT
@@ -58,6 +58,8 @@ TTP is a Python library for semi-structured text parsing using templates.
 
 %prep
 %autosetup -p1 -n ttp-%{version}
+# https://github.com/dmulyalin/ttp/issues/137
+sed -i 's/0.10.0/%{version}/' pyproject.toml
 
 %build
 %if !%{with test}

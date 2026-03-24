@@ -78,4 +78,15 @@
     <comment>- Do not require poetry for tests.</comment>
     <requestid>1328169</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>96387fab316fe4e48406f9d84768ccb1</srcmd5>
+    <version>0.10.1</version>
+    <time>1774374585</time>
+    <user>anag_factory</user>
+    <comment>- Correct the version in the metadata to be 0.10.1, reported upstream.
+
+- update to 0.10.1:
+  * Fixing extend tag nested named template handling</comment>
+    <requestid>1342141</requestid>
+  </revision>
 </revisionlist>
