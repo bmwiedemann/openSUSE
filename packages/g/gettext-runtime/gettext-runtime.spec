@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-runtime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,18 @@
 
 
 %define pacname gettext
-%bcond_with mini
 
-Name:           gettext-runtime
-Version:        0.26
+%define flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+%bcond_with mini
+%define spec_name gettext-runtime
+%else
+%bcond_without mini
+%define spec_name gettext-runtime-mini
+%endif
+
+Name:           %{spec_name}
+Version:        1.0
 Release:        0
 BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
@@ -73,17 +81,17 @@ Source5:        gettext-rpmlintrc
 Source6:        gettext-runtime.keyring
 Patch1:         gettext-0.19.3-fix-bashisms.patch
 Patch2:         gettext-0.12.1-gettextize.patch
-Patch4:         gettext-po-mode.diff
-Patch5:         gettext-initialize_vars.patch
+Patch3:         gettext-po-mode.diff
+Patch4:         gettext-initialize_vars.patch
 # PATCH-FIX-OPENSUSE gettext-dont-test-gnulib.patch -- coolo@suse.de
-Patch6:         gettext-dont-test-gnulib.patch
+Patch5:         gettext-dont-test-gnulib.patch
 # PATCH-FIX-UPSTREAM boo#941629 -- pth@suse.com
-Patch11:        boo941629-unnessary-rpath-on-standard-path.patch
+Patch6:         boo941629-unnessary-rpath-on-standard-path.patch
 # PATCH-FEATURE bsc#1165138
-Patch14:        0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
-Patch15:        0002-msgcat-Merge-headers-when-use-first.patch
+Patch7:         0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
+Patch8:         0002-msgcat-Merge-headers-when-use-first.patch
 # PATCH-FEATURE-FIX-SUSE boo#1227316 -- sbrabec@suse.com
-Patch16:        0003-Fix-malformed-header-processing.patch
+Patch9:         0003-Fix-malformed-header-processing.patch
 
 %description
 This package contains the intl library as well as tools that ease the
@@ -326,12 +334,16 @@ make check || {
 %_bindir/gettextize
 %_bindir/autopoint
 %_bindir/recode-sr-latin
+%_bindir/po-fetch
+%_bindir/spit
 %doc %_mandir/man1/msg[a-eg-u]*.1.gz
 %doc %_mandir/man1/msgfilter.1.gz
 %doc %_mandir/man1/xgettext.1.gz
 %doc %_mandir/man1/gettextize.1.gz
 %doc %_mandir/man1/autopoint.1.gz
 %doc %_mandir/man1/recode-sr-latin.1.gz
+%doc %_mandir/man1/po-fetch.1.gz
+%doc %_mandir/man1/spit.1.gz
 %doc %_infodir/gettext.info*
 %doc %_infodir/autosprintf.info*
 %_includedir/gettext-po.h
@@ -368,6 +380,8 @@ make check || {
 %doc %_docdir/%name/tutorial*.html
 %doc %_docdir/%name/xgettext*.html
 %doc %_docdir/%name/recode-sr-latin.1.html
+%doc %_docdir/%name/po-fetch.1.html
+%doc %_docdir/%name/spit.1.html
 
 %if %{without mini}
 %files -n libtextstyle0
@@ -376,7 +390,6 @@ make check || {
 %files -n libtextstyle-devel
 %dir %_includedir/textstyle
 %_includedir/textstyle.h
-%_includedir/textstyle/stdbool.h
 %_includedir/textstyle/version.h
 %_includedir/textstyle/woe32dll.h
 %_libdir/libtextstyle.so

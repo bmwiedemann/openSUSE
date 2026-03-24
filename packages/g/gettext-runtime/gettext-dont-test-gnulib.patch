@@ -1,25 +1,29 @@
 Subject: This is not gnulib, so don't test it
 From: Stephan Kulow <coolo@suse.de>
 
---- gettext-0.20.1.orig/gettext-tools/Makefile.am	2019-06-04 13:12:49.514030196 +0200
-+++ gettext-0.20.1/gettext-tools/Makefile.am	2019-06-04 13:13:09.778072816 +0200
+diff --git a/gettext-tools/Makefile.am b/gettext-tools/Makefile.am
+index e045161c3..2fd5b58cf 100644
+--- a/gettext-tools/Makefile.am
++++ b/gettext-tools/Makefile.am
 @@ -19,7 +19,7 @@
  AUTOMAKE_OPTIONS = 1.5 gnu
  ACLOCAL_AMFLAGS = -I m4 -I ../gettext-runtime/m4 -I ../m4 -I gnulib-m4 -I libgrep/gnulib-m4 -I libgettextpo/gnulib-m4 -I tests/gnulib-m4
  
--SUBDIRS = gnulib-lib libgrep src libgettextpo po its projects styles emacs misc man m4 tests system-tests gnulib-tests install-tests examples doc
-+SUBDIRS = gnulib-lib libgrep src libgettextpo po its projects styles emacs misc man m4 tests system-tests examples install-tests doc
+-SUBDIRS = gnulib-lib libgrep src libgettextpo po its projects styles wizard autotools misc emacs man m4 tests system-tests gnulib-tests install-tests examples doc
++SUBDIRS = gnulib-lib libgrep src libgettextpo po its projects styles wizard autotools misc emacs man m4 tests system-tests install-tests examples doc
  
- EXTRA_DIST = misc/disclaim-translations.txt
+ EXTRA_DIST =
  MOSTLYCLEANFILES = core *.stackdump
---- gettext-0.20.1.orig/gettext-tools/Makefile.in	2019-06-04 13:12:49.514030196 +0200
-+++ gettext-0.20.1/gettext-tools/Makefile.in	2019-06-04 13:14:33.546249004 +0200
-@@ -2016,7 +2016,7 @@
+diff --git a/gettext-tools/Makefile.in b/gettext-tools/Makefile.in
+index 147f88d8f..25d12771b 100644
+--- a/gettext-tools/Makefile.in
++++ b/gettext-tools/Makefile.in
+@@ -4014,7 +4014,7 @@ top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  AUTOMAKE_OPTIONS = 1.5 gnu
  ACLOCAL_AMFLAGS = -I m4 -I ../gettext-runtime/m4 -I ../m4 -I gnulib-m4 -I libgrep/gnulib-m4 -I libgettextpo/gnulib-m4 -I tests/gnulib-m4
--SUBDIRS = gnulib-lib libgrep src libgettextpo po its projects styles emacs misc man m4 tests system-tests gnulib-tests install-tests examples doc
-+SUBDIRS = gnulib-lib libgrep src libgettextpo po its projects styles emacs misc man m4 tests system-tests examples install-tests doc
+-SUBDIRS = gnulib-lib libgrep src libgettextpo po its projects styles wizard autotools misc emacs man m4 tests system-tests gnulib-tests install-tests examples doc
++SUBDIRS = gnulib-lib libgrep src libgettextpo po its projects styles wizard autotools misc emacs man m4 tests system-tests install-tests examples doc
  
  # Files imported from tree-sitter.
  

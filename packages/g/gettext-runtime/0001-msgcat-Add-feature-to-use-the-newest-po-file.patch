@@ -1,15 +1,16 @@
-From dbf95c6ed2239f4831c06d84cf1eef5890cee1c7 Mon Sep 17 00:00:00 2001
-From: Markéta Calábková <meggy.calabkova@gmail.com>
-Date: Wed, 20 Aug 2025 16:44:22 +0200
-Subject: [PATCH 1/3] msgcat: Add feature to use the newest po file.
+From b634e104d13117186d2f7d68d867273215a9cec6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mark=C3=A9ta=20Cal=C3=A1bkov=C3=A1?=
+ <meggy.calabkova@gmail.com>
+Date: Tue, 3 Feb 2026 14:49:59 +0100
+Subject: [PATCH] msgcat: Add feature to use the newest po file.
 
 When concatenating po files, it is often useful to prefer strings from
 the newest file regardless their ordering on the command line.
 
-Updated to 0.26
+Updated to 1.0
 ---
  gettext-tools/src/Makefile.am   |  3 +-
- gettext-tools/src/message.c     |  9 ++++
+ gettext-tools/src/message.c     |  8 +++
  gettext-tools/src/message.h     |  5 +-
  gettext-tools/src/msgcat.c      | 10 ++++
  gettext-tools/src/msgl-age.c    | 96 +++++++++++++++++++++++++++++++++
@@ -18,24 +19,24 @@ Updated to 0.26
  gettext-tools/src/msgl-cat.h    |  1 +
  gettext-tools/src/msgl-header.c | 46 ++++++++++++++++
  gettext-tools/src/msgl-header.h |  6 +++
- 10 files changed, 225 insertions(+), 2 deletions(-)
+ 10 files changed, 224 insertions(+), 2 deletions(-)
  create mode 100644 gettext-tools/src/msgl-age.c
  create mode 100644 gettext-tools/src/msgl-age.h
 
 diff --git a/gettext-tools/src/Makefile.am b/gettext-tools/src/Makefile.am
-index 1b7faf1..2fd7412 100644
+index 1e6ae7f..2892337 100644
 --- a/gettext-tools/src/Makefile.am
 +++ b/gettext-tools/src/Makefile.am
-@@ -53,7 +53,7 @@ noinst_HEADERS = \
+@@ -62,7 +62,7 @@ noinst_HEADERS = \
    write-catalog.h write-po.h write-properties.h write-stringtable.h \
    dir-list.h file-list.h read-po-gram.h cldr-plural.h \
    cldr-plural-exp.h locating-rules.h its.h search-path.h \
 -  msgl-charset.h msgl-equal.h msgl-iconv.h msgl-ascii.h msgl-ofn.h msgl-cat.h \
 +  msgl-age.h msgl-charset.h msgl-equal.h msgl-iconv.h msgl-ascii.h msgl-ofn.h msgl-cat.h \
-   msgl-header.h msgl-english.h msgl-check.h msgl-fsearch.h msgfmt.h msgunfmt.h \
+   msgl-header.h msgl-english.h msgl-check.h msgl-fsearch.h msgl-merge.h \
+   msgfmt.h msgunfmt.h \
    plural-count.h plural-eval.h plural-distrib.h \
-   read-mo.h write-mo.h \
-@@ -228,6 +228,7 @@ libgettextsrc_la_SOURCES = \
+@@ -241,6 +241,7 @@ libgettextsrc_la_SOURCES = \
    read-catalog-special.c \
    read-catalog.c read-catalog-file.c \
    write-catalog.c write-properties.c write-stringtable.c write-po.c \
@@ -44,10 +45,10 @@ index 1b7faf1..2fd7412 100644
    msgl-ofn.c \
    msgl-iconv.c \
 diff --git a/gettext-tools/src/message.c b/gettext-tools/src/message.c
-index 7a605b3..0dda84a 100644
+index 4b7fc8b..4ff9c0c 100644
 --- a/gettext-tools/src/message.c
 +++ b/gettext-tools/src/message.c
-@@ -371,6 +371,15 @@ message_list_append (message_list_ty *mlp, message_ty *mp)
+@@ -404,6 +404,14 @@ message_list_append (message_list_ty *mlp, message_ty *mp)
  }
  
  
@@ -59,12 +60,11 @@ index 7a605b3..0dda84a 100644
 +}
 +
 +
-+
  void
  message_list_prepend (message_list_ty *mlp, message_ty *mp)
  {
 diff --git a/gettext-tools/src/message.h b/gettext-tools/src/message.h
-index 5790295..b456edc 100644
+index b73b0fc..ae0fb0e 100644
 --- a/gettext-tools/src/message.h
 +++ b/gettext-tools/src/message.h
 @@ -24,7 +24,7 @@
@@ -76,7 +76,7 @@ index 5790295..b456edc 100644
  
  #ifdef __cplusplus
  extern "C" {
-@@ -276,6 +276,8 @@ extern void
+@@ -283,6 +283,8 @@ extern void
         message_list_free (message_list_ty *mlp, int keep_messages);
  extern void
         message_list_append (message_list_ty *mlp, message_ty *mp);
@@ -85,7 +85,7 @@ index 5790295..b456edc 100644
  extern void
         message_list_prepend (message_list_ty *mlp, message_ty *mp);
  extern void
-@@ -358,6 +360,7 @@ struct msgdomain_list_ty
+@@ -365,6 +367,7 @@ struct msgdomain_list_ty
    size_t nitems_max;
    bool use_hashtable;
    const char *encoding;         /* canonicalized encoding or NULL if unknown */
@@ -94,18 +94,18 @@ index 5790295..b456edc 100644
  
  extern msgdomain_list_ty *
 diff --git a/gettext-tools/src/msgcat.c b/gettext-tools/src/msgcat.c
-index de5b2aa..5a69050 100644
+index 6383e89..b6441e5 100644
 --- a/gettext-tools/src/msgcat.c
 +++ b/gettext-tools/src/msgcat.c
-@@ -109,6 +109,7 @@ main (int argc, char **argv)
+@@ -94,6 +94,7 @@ main (int argc, char **argv)
    more_than = 0;
    less_than = INT_MAX;
    use_first = false;
 +  use_newest = false;
- 
-   /* Parse command line options.  */
-   BEGIN_ALLOW_OMITTING_FIELD_INITIALIZERS
-@@ -139,6 +140,7 @@ main (int argc, char **argv)
+   catalog_input_format_ty input_syntax = &input_format_po;
+   catalog_output_format_ty output_syntax = &output_format_po;
+   bool sort_by_msgid = false;
+@@ -130,6 +131,7 @@ main (int argc, char **argv)
      { "to-code",            't',            required_argument },
      { "unique",             'u',            no_argument       },
      { "use-first",          CHAR_MAX + 1,   no_argument       },
@@ -113,19 +113,19 @@ index de5b2aa..5a69050 100644
      { "version",            'V',            no_argument       },
      { "width",              'w',            required_argument },
      { "more-than",          '>',            required_argument },
-@@ -282,6 +284,11 @@ main (int argc, char **argv)
-         message_print_style_filepos (filepos_comment_none);
-         break;
+@@ -271,6 +273,11 @@ main (int argc, char **argv)
+           message_print_style_filepos (filepos_comment_none);
+           break;
  
-+      case CHAR_MAX + 10: /* --use-newest */
-+        use_newest = true;
-+	use_first = true;
-+        break;
++        case CHAR_MAX + 10: /* --use-newest */
++	  use_newest = true;
++	  use_first = true;
++          break;
 +
-       default:
-         usage (EXIT_FAILURE);
-         /* NOTREACHED */
-@@ -433,6 +440,9 @@ Output details:\n"));
+         default:
+           usage (EXIT_FAILURE);
+           /* NOTREACHED */
+@@ -424,6 +431,9 @@ Output details:\n"));
        printf (_("\
        --use-first             use first available translation for each\n\
                                message, don't merge several translations\n"));
@@ -280,10 +280,10 @@ index 0000000..af12dd9
 +
 +#endif
 diff --git a/gettext-tools/src/msgl-cat.c b/gettext-tools/src/msgl-cat.c
-index a477285..76802b1 100644
+index b81f227..e338b6c 100644
 --- a/gettext-tools/src/msgl-cat.c
 +++ b/gettext-tools/src/msgl-cat.c
-@@ -36,6 +36,7 @@
+@@ -35,6 +35,7 @@
  #include "message.h"
  #include "read-catalog-file.h"
  #include "po-charset.h"
@@ -291,7 +291,7 @@ index a477285..76802b1 100644
  #include "msgl-ascii.h"
  #include "msgl-ofn.h"
  #include "msgl-equal.h"
-@@ -58,6 +59,11 @@ int less_than;
+@@ -57,6 +58,11 @@ int less_than;
     If false, merge all available translations into one and fuzzy it.  */
  bool use_first;
  
@@ -303,27 +303,27 @@ index a477285..76802b1 100644
  /* If true, merge like msgcomm.
     If false, merge like msgcat and msguniq.  */
  bool msgcomm_mode = false;
-@@ -124,6 +130,15 @@ catenate_msgdomain_list (string_list_ty *file_list,
-   for (n = 0; n < nfiles; n++)
+@@ -117,6 +123,15 @@ catenate_msgdomain_list (string_list_ty *file_list,
+   for (size_t n = 0; n < nfiles; n++)
      mdlps[n] = read_catalog_file (files[n], input_syntax);
  
 +  /* --use-newest case -- sort messages by time and then let --use-first finish the job */
 +  if (use_newest)
 +  {
-+	  for (n = 0; n < nfiles; n++)
++	  for (size_t n = 0; n < nfiles; n++)
 +		msgdomain_read_ages (mdlps[n]);
 +
 +	  msgdomain_sort_by_ages (mdlps, nfiles);
 +  }
 +
    /* Determine the canonical name of each input file's encoding.  */
-   canon_charsets = XNMALLOC (nfiles, const char **);
-   for (n = 0; n < nfiles; n++)
+   const char ***canon_charsets = XNMALLOC (nfiles, const char **);
+   for (size_t n = 0; n < nfiles; n++)
 diff --git a/gettext-tools/src/msgl-cat.h b/gettext-tools/src/msgl-cat.h
-index 098ffb3..25dd117 100644
+index d4b1d19..f43a0c2 100644
 --- a/gettext-tools/src/msgl-cat.h
 +++ b/gettext-tools/src/msgl-cat.h
-@@ -37,6 +37,7 @@ extern LIBGETTEXTSRC_DLL_VARIABLE int less_than;
+@@ -38,6 +38,7 @@ extern LIBGETTEXTSRC_DLL_VARIABLE int less_than;
  /* If true, use the first available translation.
     If false, merge all available translations into one and fuzzy it.  */
  extern LIBGETTEXTSRC_DLL_VARIABLE bool use_first;
@@ -332,10 +332,10 @@ index 098ffb3..25dd117 100644
  /* If true, merge like msgcomm.
     If false, merge like msgcat and msguniq.  */
 diff --git a/gettext-tools/src/msgl-header.c b/gettext-tools/src/msgl-header.c
-index 0e36375..611c540 100644
+index 304ef2c..352c537 100644
 --- a/gettext-tools/src/msgl-header.c
 +++ b/gettext-tools/src/msgl-header.c
-@@ -244,3 +244,49 @@ message_list_delete_header_field (message_list_ty *mlp,
+@@ -238,3 +238,49 @@ message_list_delete_header_field (message_list_ty *mlp,
            }
        }
  }
@@ -386,10 +386,10 @@ index 0e36375..611c540 100644
 +      }
 +}
 diff --git a/gettext-tools/src/msgl-header.h b/gettext-tools/src/msgl-header.h
-index 4ca5314..b441de2 100644
+index a98db95..933295b 100644
 --- a/gettext-tools/src/msgl-header.h
 +++ b/gettext-tools/src/msgl-header.h
-@@ -48,6 +48,12 @@ extern void
+@@ -49,6 +49,12 @@ extern void
         message_list_delete_header_field (message_list_ty *mlp,
                                           const char *field);
  
@@ -403,5 +403,5 @@ index 4ca5314..b441de2 100644
  #ifdef __cplusplus
  }
 -- 
-2.50.1
+2.52.0
 

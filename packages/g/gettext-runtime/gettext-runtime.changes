@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Feb  2 14:39:45 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 1.0:
+  # Improvements for maintainers and distributors:
+    - In a po/ directory, the PO files are now exactly those that
+      the translators submitted or committed in version control,
+      or a translation project's daemon committed on behalf of
+      the translators. They are no longer regularly updated
+      with respect to the POT file in the same directory.
+    - The advantage for maintainers is that the maintainer may commit
+      the PO files in version control, without getting
+      * lots of modified files shown by "git status",
+      * frequent merge conflicts when merging between branches,
+      * a voluminous version control history.
+    - The advantage for distributors is that the role of files in
+      a release tarball are clearer: The PO files are source code,
+      whereas the POT file and the *.gmo files are generated files.
+    - ATTENTION translators! Translators who work directly on a
+      package's source code (without going through a translation
+      project) now need to run "msginit" before starting work on
+      a PO file.
+    - A new program 'po-fetch' is provided, that fetches
+      the translated PO files from a translation project's site
+      on the internet, and updates the LINGUAS file accordingly.
+    - In a po/ directory, a new script 'fetch-po' is now added
+      by 'gettextize'. It provides the standard interface for
+      fetching the translated PO files. It typically either
+      invokes the 'po-fetch' program or does nothing.
+
+  # Improvements for translators:
+  * msginit:
+    - When the PO file already exists, 'msginit' now updates it
+      w.r.t. the POT file, like 'msgmerge' would do. Previously,
+      'msginit' failed with an error message in this situation.
+  * pretranslation:
+    - Two new programs, 'msgpre' and 'spit', are provided, that
+      implement machine translation through a locally installed
+      Large Language Model (LLM). 'msgpre' applies to an entire
+      PO file, 'spit' to a single message.
+    - The documentation has a new chapter "Pretranslation".
+
+  # Improvements for maintainers:
+  * xgettext:
+    - The refactoring suggestion when a translatable string contains
+      an URL or email address can now be inhibited through a
+      command-line option '--no-check=url' or '--no-check=email',
+      or through a comment in the source code of the form
+      /* xgettext: no-url-check */ or
+      /* xgettext: no-email-check */
+
+  # Programming languages support:
+  * OCaml:
+    - xgettext now supports OCaml.
+    - 'msgfmt -c' now verifies the syntax of translations of OCaml
+       format strings.
+    - A new example 'hello-ocaml' has been added.
+  * Rust:
+    - xgettext now recognizes 'gettextrs::gettext' invocations,
+      like 'gettext' invocations.
+
+  # libgettextpo library:
+    - The function 'po_message_get_format' now supports
+      distinguishing whether a negative format string mark, such as
+      'no-c-format', is set or not.
+    - The new functions po_message_has_workflow_flag,
+      po_message_set_workflow_flag,
+      po_message_workflow_flags_iterator, po_flag_next,
+      po_flag_iterator_free can be used to manipulate
+      or inspect the workflow flags of a message.
+    - The new functions po_message_has_sticky_flag,
+      po_message_set_sticky_flag, po_message_sticky_flags_iterator,
+      po_flag_next, po_flag_iterator_free can be used to manipulate
+      or inspect the sticky flags of a messsage.
+
+  # Emacs PO mode:
+    - Restore syntax highlighting in Emacs version 30 or newer.
+
+- Refresh patches.
+- Do not build support for Java and C#, there are not consumers.
+- Use a single spec file for gettext-runtime and gettext-runtime-mini,
+  remove script pre_checkin.sh
+
+-------------------------------------------------------------------
 Thu Aug 28 06:34:01 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints to avoid OOM build errors
