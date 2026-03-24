@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Mar 23 11:27:36 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.67.0:
+  - Major Networking & Proxy Enhancements
+    - Introduced Layer 4 (L4) capabilities (TLS/TCP/UDP) across
+      client, management, and proxy. #5530
+    - Added header-based authentication, access restrictions, and
+      session idle timeout for proxy services. #5587
+    - Added support for wildcard certificates and improved
+      certificate handling (read from disk if available). #5583
+      #5574
+    - Added require_subdomain capability for proxy clusters. #5628
+    - Improved proxy reliability with domain switching fixes and
+      recovery after cleanup. #5585 #5617
+    - Dashboard support and documentation update are coming soon.
+  - Client Improvements
+    - Added client metrics support and enhanced observability.
+      #5512
+    - Added health check flag and daemon status output to netbird
+      status. #5650
+    - Restart engine automatically when peer IP changes. #5614
+    - Improved DNS handling, IPv6 formatting, and probe thread
+      safety. #5603 #5576
+    - Added MTU option and DNSLabels support to embedded client.
+      #5550 #5493
+    - Refactored auto-update workflow and simplified container
+      entrypoint. #5448 #5652
+    - Fixed multiple issues including duplicate logs, firewall init
+      behavior, and container logging. #5609 #5621
+  - Management Improvements
+    - Added reverse proxy cluster APIs and domain-based targeting.
+      #5611 #5612
+    - Improved concurrency handling and proxy exclusions from peer
+      approval. #5584 #5588
+  - Proxy Enhancements
+    - Added log-level flag and usage improvements. #5594
+  - Security & Packaging
+    - Added GPG signing key support for RPM packages. #5581
+  - Miscellaneous
+    - Added image build after merge to main workflow. #5605
+    - Added netbird-tui to community projects. #5568
+
+-------------------------------------------------------------------
 Sat Mar 14 17:16:35 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Update to 0.66.4:
