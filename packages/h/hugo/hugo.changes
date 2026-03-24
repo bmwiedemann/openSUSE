@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Mar 23 18:16:59 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.159.0:
+  * releaser: Bump versions for release of 0.159.0
+  * docs: Update docs.yaml
+  * Squashed 'docs/' changes from 80dd7b067..0755fb534
+  * commands: Update docs linke to Node.js docs
+  * create: Return error instead of panic when page not found
+  * commands: Preserve non-content files in convert output
+  * npm: Use workspaces to simplify `hugo mod npm pack`
+  * build(deps): bump github.com/olekukonko/tablewriter from 1.1.3 to 1.1.4 (#14641)
+  * commands: Close cpu profile file when StartCPUProfile fails
+  * Replace deprecated site.Data with hugo.Data in tests
+  * Replace deprecated excludeFiles and includeFiles with files in tests
+  * build(deps): bump github.com/yuin/goldmark from 1.7.16 to 1.7.17
+  * build(deps): bump github.com/magefile/mage from 1.15.0 to 1.16.1
+  * build(deps): bump golang.org/x/image from 0.36.0 to 0.37.0
+  * build(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.3
+  * tpl/tplimpl: Fix Vimeo shortcode test
+  * Remove the AI Watchdog workflow for now
+  * Remove 'bep' from PR user logins skip list
+  * tpl/tplimpl: Comment out the Vimeo simple shortcode tests
+  * Replace deprecated :filename with :contentbasename in the permalinks test
+  * releaser: Prepare repository for 0.159.0-DEV
+
+-------------------------------------------------------------------
+Mon Mar 16 17:56:18 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.158.0:
+  * releaser: Bump versions for release of 0.158.0
+  * deps: Upgrade github.com/evanw/esbuild v0.27.3 => v0.27.4
+  * build(deps): bump github.com/getkin/kin-openapi from 0.133.0 to 0.134.0
+  * build(deps): bump golang.org/x/tools from 0.42.0 to 0.43.0
+  * resources: Re-publish on transformation cache hit
+  * create/skeletons: Use css.Build in theme skeleton
+  * tpl/css: Add a test case for rebuilds on CSS options changes
+  * hugolib: Allow regular pages to cascade to self
+  * build(deps): bump gocloud.dev from 0.44.0 to 0.45.0
+  * build(deps): bump golang.org/x/sync from 0.19.0 to 0.20.0
+  * tpl/css: Allow the user to override single loader entries
+  * tpl/css: Fix external source maps
+  * tpl/css: Make default loader resolution for CSS @import and url() always behave the same
+  * hugolib: Fix server no watch
+  * internal/js: Add default mainFields for CSS builds
+  * Add css.Build
+  * Upgrade to to Go 1.26.1 (#14597) (note)
+  * resources: Fix context canceled on GetRemote with per-request timeout
+  * resources: Use full path for Exif etc. decoding error/warning messages
+  * Move to new locales library and upgrade CLDR from v36.1 to v48.1
+  * tpl/tplimpl: Prefer early suffixes when media type matches
+  * tpl/strings: Add strings.ReplacePairs function
+  * all: Run go fix ./...
+  * internal/warpc: Fix SIGSEGV in Close() when dispatcher fails to start
+  * github: Remove pull_request_template.md
+  * testing: Make commands tests pass in Go 1.26.1
+  * refactor: Deprecate language configuration and template methods
+  * Replace Exif with Meta in tests
+  * build(deps): bump golang.org/x/net from 0.50.0 to 0.51.0 (#14569)
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.9 to 2.24.10 (#14585)
+  * build(deps): bump github.com/bep/imagemeta from 0.15.0 to 0.17.0 (#14584)
+  * Fix index out of range panic in fileEventsContentPaths
+  * resources: Improve getImageOps error message
+  * resources/images: Add IsImageResourceWithMeta etc. tests for bmp and gif
+  * releaser: Prepare repository for 0.158.0-DEV
+
+-------------------------------------------------------------------
 Wed Mar  4 21:24:21 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
