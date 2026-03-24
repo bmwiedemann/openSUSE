@@ -742,4 +742,29 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     lookup to prevent placeholder nodes from leaking during inference.</comment>
     <requestid>1335676</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>2815ecc32f33af4132f24e068dcd1f78</srcmd5>
+    <version>4.1.2</version>
+    <time>1774374480</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.2:
+  * Fix crash accessing property `fset` in generic classes with
+    type annotations.
+  * Fix infinite recursion caused by cyclic inference in
+    ``Constraint``.
+  * Fix ``RecursionError`` in ``_compute_mro()`` when circular
+    class hierarchies are created through runtime name rebinding.
+  * Fix ``DuplicateBasesError`` crash in dataclass transform when
+    a class has duplicate bases in its MRO (e.g., ``Protocol``
+    appearing both directly and indirectly). Catch ``MroError``
+    at ``.mro()`` call sites in ``brain_dataclasses.py``,
+    consistent with the existing pattern elsewhere.
+  * Catch ``MemoryError`` when inferring f-strings with extremely
+    large format widths (e.g. ``f'{0:11111111111}'``) so that
+    inference yields ``Uninferable`` instead of crashing.
+  * Fix ``ValueError`` in ``__str__``/``repr`` and error messages
+    when nodes have extreme values (very long identifiers or large
+    integers).</comment>
+    <requestid>1342069</requestid>
+  </revision>
 </revisionlist>

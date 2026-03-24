@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 23 15:57:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.2:
+  * Fix crash accessing property `fset` in generic classes with
+    type annotations.
+  * Fix infinite recursion caused by cyclic inference in
+    ``Constraint``.
+  * Fix ``RecursionError`` in ``_compute_mro()`` when circular
+    class hierarchies are created through runtime name rebinding.
+  * Fix ``DuplicateBasesError`` crash in dataclass transform when
+    a class has duplicate bases in its MRO (e.g., ``Protocol``
+    appearing both directly and indirectly). Catch ``MroError``
+    at ``.mro()`` call sites in ``brain_dataclasses.py``,
+    consistent with the existing pattern elsewhere.
+  * Catch ``MemoryError`` when inferring f-strings with extremely
+    large format widths (e.g. ``f'{0:11111111111}'``) so that
+    inference yields ``Uninferable`` instead of crashing.
+  * Fix ``ValueError`` in ``__str__``/``repr`` and error messages
+    when nodes have extreme values (very long identifiers or large
+    integers).
+
+-------------------------------------------------------------------
 Mon Mar  2 01:36:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Actually update to 4.1.1:
