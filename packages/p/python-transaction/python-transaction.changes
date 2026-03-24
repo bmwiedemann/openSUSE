@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 24 09:28:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1:
+  * Move package metadata from setup.py to pyproject.toml.
+  * Add support for Python 3.14.
+  * Drop support for Python 3.8, 3.9.
+
+-------------------------------------------------------------------
 Mon Oct 28 22:11:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0:

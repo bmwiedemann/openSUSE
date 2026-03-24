@@ -230,4 +230,15 @@
   * Add support for Python 3.9, 3.10, 3.11.</comment>
     <requestid>1218881</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d549e2e6163efb990b02ddee2c3df7b7</srcmd5>
+    <version>5.1</version>
+    <time>1774374600</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.1:
+  * Move package metadata from setup.py to pyproject.toml.
+  * Add support for Python 3.14.
+  * Drop support for Python 3.8, 3.9.</comment>
+    <requestid>1342194</requestid>
+  </revision>
 </revisionlist>
