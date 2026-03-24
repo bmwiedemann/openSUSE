@@ -1,7 +1,7 @@
 #
 # spec file for package python-keystoneclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-keystoneclient
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Epoch:          0
 Summary:        Client library for OpenStack Identity API
@@ -26,24 +26,33 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-keystoneclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-keystoneclient/python_keystoneclient-%{version}.tar.gz
 BuildRequires:  %{python_module debtcollector >= 1.2.0}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
+BuildRequires:  %{python_module keyring >= 5.5.1}
 BuildRequires:  %{python_module keystoneauth1 >= 3.4.0}
-BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module lxml >= 4.5.0}
+BuildRequires:  %{python_module oauthlib >= 0.6.2}
+BuildRequires:  %{python_module openstacksdk >= 0.10.0}
 BuildRequires:  %{python_module oslo.config >= 5.2.0}
 BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
 BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
 BuildRequires:  %{python_module oslo.utils >= 3.33.0}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module packaging >= 20.4}
 BuildRequires:  %{python_module pbr >= 2.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module stestr}
-BuildRequires:  %{python_module testresources}
-BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module requests >= 2.14.2}
+BuildRequires:  %{python_module requests-mock >= 1.2.0}
+BuildRequires:  %{python_module stestr >= 2.0.0}
+BuildRequires:  %{python_module stevedore >= 1.20.0}
+BuildRequires:  %{python_module testresources >= 2.0.0}
+BuildRequires:  %{python_module testscenarios >= 0.4}
+BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
 Requires:       python-debtcollector >= 1.2.0
 Requires:       python-keystoneauth1 >= 3.4.0
+Requires:       python-openstacksdk >= 0.10.0
 Requires:       python-oslo.config >= 5.2.0
 Requires:       python-oslo.i18n >= 3.15.3
 Requires:       python-oslo.serialization >= 2.18.0

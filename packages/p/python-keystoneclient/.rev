@@ -771,4 +771,14 @@
     <comment>switch to singlespec</comment>
     <requestid>1316762</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5f151256bab1d683c6f0e52c1aab7ba3</srcmd5>
+    <version>5.8.0</version>
+    <time>1774374521</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.8.0:
+  * Drop flake8-docstrings
+  * Replace os-client-config</comment>
+    <requestid>1342106</requestid>
+  </revision>
 </revisionlist>
