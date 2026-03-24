@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 11:56:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.0:
+  * Added MetadataNotFound (subclass of FileNotFoundError) and
+    updated Distribution.metadata/metadata() to raise it when the
+    metadata files are missing instead of returning None
+    (python/cpython#143387).
+  * Removed Python 3.9 compatibility.
+
+-------------------------------------------------------------------
 Mon Jan 12 11:06:18 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 8.7.1

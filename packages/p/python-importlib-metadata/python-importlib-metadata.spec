@@ -1,7 +1,7 @@
 #
 # spec file for package python-importlib-metadata
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-importlib-metadata%{psuffix}
-Version:        8.7.1
+Version:        9.0.0
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
