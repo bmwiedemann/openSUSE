@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 24 05:41:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- This is not a noarch package, install things to sitearch.
+
+-------------------------------------------------------------------
+Mon Mar 23 22:58:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 3.2.5:
+  * Increase minimum Python version to 3.10 and add support for
+    Python 3.14.
+  * Modernize build system using pyproject.toml.
+  * Refactor setup.py to improve Cython extension building and
+    handle PEP 420 namespace packages correctly.
+  * Remove explicit namespace package declarations in favor of
+    implicit ones (PEP 420).
+  * Update type hints to use built-in collection types.
+
+-------------------------------------------------------------------
 Wed Mar 26 08:05:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize metadata directory name.

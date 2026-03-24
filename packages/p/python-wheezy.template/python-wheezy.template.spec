@@ -1,7 +1,7 @@
 #
 # spec file for package python-wheezy.template
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-wheezy.template
-Version:        3.2.3
+Version:        3.2.5
 Release:        0
 Summary:        A lightweight template library
 License:        MIT
 URL:            https://github.com/akornatskyy/wheezy.template
 Source:         https://files.pythonhosted.org/packages/source/w/wheezy_template/wheezy_template-%{version}.tar.gz#/wheezy.template-%{version}.tar.gz
+BuildRequires:  %{python_module Cython >= 3.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,7 +36,6 @@ Suggests:       python-mock
 Suggests:       python-pytest
 Suggests:       python-pytest-cov
 Suggests:       python-pytest-pep8
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -51,7 +51,8 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/wheezy.template
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm %{buildroot}%{$python_sitearch}/wheezy/template/*.c
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %post
 %python_install_alternative wheezy.template
@@ -63,9 +64,8 @@ export CFLAGS="%{optflags}"
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/wheezy.template
-%dir %{python_sitelib}/wheezy
-%{python_sitelib}/wheezy/template
-%{python_sitelib}/wheezy.template-%{version}*.pth
-%{python_sitelib}/wheezy_template-%{version}.dist-info
+%dir %{python_sitearch}/wheezy
+%{python_sitearch}/wheezy/template
+%{python_sitearch}/wheezy_template-%{version}.dist-info
 
 %changelog
