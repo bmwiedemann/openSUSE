@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 03:20:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use setuptools-rust rather than Cython, since it's Rust, not C.
+- Specify directories under sitearch explicitly.
+
+-------------------------------------------------------------------
 Mon Mar 16 09:45:55 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.14.1:

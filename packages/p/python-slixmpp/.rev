@@ -133,4 +133,13 @@
     <comment></comment>
     <requestid>1340770</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>714ccc1a863dd12f317b0b6f38e915a0</srcmd5>
+    <version>1.14.1</version>
+    <time>1774374583</time>
+    <user>anag_factory</user>
+    <comment>- Use setuptools-rust rather than Cython, since it's Rust, not C.
+- Specify directories under sitearch explicitly.</comment>
+    <requestid>1342140</requestid>
+  </revision>
 </revisionlist>

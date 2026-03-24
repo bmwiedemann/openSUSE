@@ -24,13 +24,14 @@ License:        MIT
 URL:            https://slixmpp.readthedocs.io/
 Source:         https://codeberg.org/poezio/slixmpp/archive/slix-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module aiodns}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools-rust}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
@@ -42,8 +43,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libidn)
 Requires:       python-aiodns
-Requires:       python-aiohttp
-Requires:       python-cryptography
 Requires:       python-pyasn1
 Requires:       python-pyasn1-modules
 %python_subpackages
@@ -59,6 +58,7 @@ sed -i '/\#\!\/usr\/bin\/env\ python3/d' slixmpp/plugins/xep_0454/__init__.py
 
 %build
 export CFLAGS="%{optflags}"
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %pyproject_wheel
 
 %install
@@ -71,6 +71,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/slixmpp*
+%{python_sitearch}/slixmpp
+%{python_sitearch}/slixmpp-%{version}.dist-info
 
 %changelog
