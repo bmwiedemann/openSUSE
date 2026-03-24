@@ -17,4 +17,30 @@
     <comment>Update to 0.9.11</comment>
     <requestid>1319669</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8010aee75ceea80c2021ca17f4a5a5a7</srcmd5>
+    <version>0.11.0</version>
+    <time>1774374483</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.0:
+  * This release includes changes to the networking stack used by
+    uv. While we think that breakage will be rare, it is possible
+    that these changes will result in the rejection of
+    certificates previously trusted by uv so we have marked the
+    change as breaking out of an abundance of caution.
+  * The changes are largely driven by the upgrade of reqwest,
+    which powers uv's HTTP clients, to v0.13 which included some
+    breaking changes to TLS certificate verification.
+  * Enable frame pointers for improved profiling on Linux x86-64
+    and aarch64
+  * See the python-build-standalone release notes for details.
+  * Treat 'Dynamic' values as case-insensitive
+  * Use a dedicated error for invalid cache control headers
+  * Enable checksum verification in the generated installer
+    script
+  * Add CPython 3.10.20
+  * Add CPython 3.11.15
+  * Add CPython 3.12.13</comment>
+    <requestid>1342121</requestid>
+  </revision>
 </revisionlist>
