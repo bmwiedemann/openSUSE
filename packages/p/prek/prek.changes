@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 23 15:12:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.8 (.7 was not released):
+  * Enhancements
+    - Add experimental language: deno support (#1516)
+    - Add pretty-format-json as builtin hook (#915)
+    - Add check-vcs-permalinks as builtin hook (#1842)
+    - Add check-illegal-windows-names as builtin hook (#1841)
+    - Add check-shebang-scripts-are-executable builtin hook (#1847)
+    - Add destroyed-symlinks builtin hook (#1851)
+    - Add file-contents-sorter as builtin hook (#1846)
+    - Add --all flag to prek uninstall (#1817)
+    - Improve file pattern parse errors (#1829)
+    - Validate uv binary after download (#1825)
+  * Bug fixes
+    - Fix workspace-relative added file paths (#1852)
+    - Relax alias-anchor ratio check for check-yaml (#1839)
+
+-------------------------------------------------------------------
 Mon Mar 16 13:14:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.6:
