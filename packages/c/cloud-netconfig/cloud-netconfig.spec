@@ -41,14 +41,14 @@ ExclusiveArch:  do-not-build
 %define no_dist_conf 1
 %endif
 
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} >= 1600
 %define with_sysconfig 0
 %else
 %define with_sysconfig 1
 %endif
 
 Name:           %{base_name}%{flavor_suffix}
-Version:        1.18
+Version:        1.20
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Network configuration scripts for %{csp_string}

@@ -208,4 +208,21 @@
     <comment></comment>
     <requestid>1336074</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3547b3f4cf5b41f1915a3a512074805d</srcmd5>
+    <version>1.19</version>
+    <time>1773161872</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.19
+  + Make sure IPADDR variable is stripped of netmask (forwarded request 1337337 from jgleissner)</comment>
+    <requestid>1337970</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4e7fae8cd44b1f2f7cf2154feaa7566f</srcmd5>
+    <version>1.20</version>
+    <time>1774374625</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342240</requestid>
+  </revision>
 </revisionlist>
