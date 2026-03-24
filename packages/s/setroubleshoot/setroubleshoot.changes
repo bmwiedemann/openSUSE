@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 27 20:21:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Migrate from libxml2 to xml.etree.ElementTree (boo#1259023)
+  add setroubleshoot-3.3.36-libxml2_to_xml_etree_ElementTree.patch
+
+-------------------------------------------------------------------
 Mon Jan 19 17:02:00 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
 
 - Add patch sealert_add_dependency_error_handling.patch to address

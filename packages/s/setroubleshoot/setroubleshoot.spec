@@ -35,6 +35,7 @@ Patch0:         setroubleshoot-desktop.patch
 Patch1:         remove-pip-from-makefile.patch
 Patch2:         disable-send-bug-report-button.patch
 Patch3:         sealert_add_dependency_error_handling.patch
+Patch4:         setroubleshoot-3.3.36-libxml2_to_xml_etree_ElementTree.patch
 # git format-patch -N 3.3.30
 # i=1; for j in 00*patch; do printf "Patch%04d: %s\n" $i $j; i=$((i+1));done
 BuildRequires:  autoconf
@@ -181,7 +182,6 @@ Requires:       audit-libs-python3
 Requires:       policycoreutils-python-utils
 Requires:       python3-dbus-python
 Requires:       python3-gobject >= 3.11
-Requires:       python3-libxml2
 Requires:       python3-rpm
 Requires:       python3-selinux  >= 2.1.5-1
 Requires:       python3-systemd >= 206-1
