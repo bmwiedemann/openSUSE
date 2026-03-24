@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 23 15:08:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.3:
+  * Adds local file support to the `crane index` subcommand
+  * migrate to github.com/moby/moby modules
+  * Bump the go-deps group across 4 directories with 7 updates
+  * Bump goreleaser/goreleaser-action from 6.4.0 to 7.0.0 in the
+    actions group
+  * mutate: reject path traversal and symlink escape in Extract
+  * tarball: detect symlink cycles in extractFileFromTar
+  * bump golang to 1.25.7
+- update to 0.21.2:
+  * Better handle redirects to https in ping
+  * **Full Changelog**: https://github.com/google/go-
+    containerregistry/compare/v0.21.1...v0.21.2
+
+-------------------------------------------------------------------
 Tue Mar  3 20:26:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.1:
