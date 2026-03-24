@@ -58,4 +58,14 @@
     shutdown</comment>
     <requestid>1337911</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>442d1b0934b75842457763ed23eedfba</srcmd5>
+    <version>3.3.3</version>
+    <time>1774374536</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.3:
+  * updated documentation
+  * bump dependencies</comment>
+    <requestid>1342123</requestid>
+  </revision>
 </revisionlist>

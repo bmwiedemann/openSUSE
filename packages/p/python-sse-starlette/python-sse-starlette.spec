@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sse-starlette
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        SSE plugin for Starlette
 License:        BSD-3-Clause
