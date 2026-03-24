@@ -75,4 +75,22 @@
     <comment></comment>
     <requestid>1155568</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0fc9301d62fbfe19ace1e1a60862b274</srcmd5>
+    <version>1.4.2</version>
+    <time>1774374534</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.2:
+  * Remove six dependency and use standard library alternatives
+  * Add basic logging support and a logger parameter to the
+    retry decorator
+  * Accept Exception types directly for retry_on_exception
+  * Switch project metadata to pyproject.toml and simplify
+    setup.py
+  * Convert documentation (README, etc.) from RST to Markdown
+  * Minimum required Python version is now 3.6
+  * Fix performance regression
+  * Update license and notice file naming to .txt</comment>
+    <requestid>1342116</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-retrying
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-retrying
-Version:        1.3.4
+Version:        1.4.2
 Release:        0
 Summary:        Retrying library for Python
 License:        Apache-2.0
@@ -48,8 +48,8 @@ simplify the task of adding retry behavior to just about anything.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%license LICENSE
-%doc AUTHORS.rst README.rst
+%license LICENSE.txt
+%doc README.md
 %{python_sitelib}/retrying.py
 %pycache_only %{python_sitelib}/__pycache__/retrying.*.py*
 %{python_sitelib}/retrying-%{version}.dist-info
