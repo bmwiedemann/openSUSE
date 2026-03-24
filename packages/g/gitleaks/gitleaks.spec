@@ -1,7 +1,7 @@
 #
 # spec file for package gitleaks
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gitleaks
-Version:        8.30.0
+Version:        8.30.1
 Release:        0
 Summary:        Protect and discover secrets using Gitleaks
 License:        MIT
@@ -27,7 +27,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.4
+BuildRequires:  go1.24 >= 1.24.11
 BuildRequires:  zsh
 
 %description

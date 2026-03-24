@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 24 05:44:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 8.30.1:
+  * update goreleaser
+  * Removed unnecessary functions from report template (#2040)
+  * its the simple things (#2020)
+  * build: switch to Go 1.24 (#2002)
+
+-------------------------------------------------------------------
 Thu Nov 27 05:51:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 8.30.0:
