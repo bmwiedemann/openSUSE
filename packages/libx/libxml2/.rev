@@ -1419,4 +1419,12 @@
   * https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/374 (forwarded request 1333025 from david.anes)</comment>
     <requestid>1333305</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>5727e598679ac20734e8309baf2e8d91</srcmd5>
+    <version>2.15.2</version>
+    <time>1774374493</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1341979</requestid>
+  </revision>
 </revisionlist>

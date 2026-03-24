@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Mar  5 13:36:31 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.15.2:
+  * parser: Fix attribute normalization and standalone check
+  * meson: Fix install dir of man pages
+  * tree: Undeprecate several struct members
+  * io: Undeprecate xmlOutputBuffer members
+  * valid: Undeprecate xmlValidGetPotentialChildren
+- includes changes from 2.15.1:
+  * More accessors for xmlParserCtxt were added
+  * built-in HTTP client removed
+  * support for LZMA compression removed
+  * Parser option XML_PARSE_UNZIP is now required to read
+    compressed data
+  * HTML serialization and handling of character encodings is more
+    in line with the HTML5 spec now
+- drop patches included upstream or fixed differently:
+  * libxml2-CVE-2025-10911.patch
+  * libxml2-CVE-2025-8732.patch
+  * libxml2-CVE-2026-0989.patch
+  * libxml2-CVE-2026-0990.patch
+  * libxml2-CVE-2026-0992.patch
+  * libxml2-CVE-2026-1757.patch
+- drop python bindings patches:
+  * libxml2-python3-unicode-errors.patch
+  * libxml2-python3-string-null-check.patch
+- no longer build API documentation, requires doxygen
+- no longer build python bindings, scheduled for 2.16 removal
+- no longer build support for Schematron, same
+- no longer build zlib compressed file I/O, considered for removal
+
+-------------------------------------------------------------------
+Fri Feb 27 12:07:15 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.14.6:
+  * regexp: Avoid integer overflow and OOB array access
+  * tree: Guard against atype corruption
+  * valid: Don't add ids when validating entity content
+  * Fix initGenericErrorDefaultFunc(NULL)
+  * valid: Undeprecate xmlAdd*Decl
+- drop libxml2-CVE-2025-7425.patch, issue is addressed in libxslt
+
+-------------------------------------------------------------------
 Fri Feb 13 12:16:01 UTC 2026 - David Anes <david.anes@suse.com>
 
 - CVE-2026-0990: call stack overflow leading to application crash 
