@@ -1,7 +1,7 @@
 #
 # spec file for package bup
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define pythons python311
 %endif
 Name:           bup
-Version:        0.33.7
+Version:        0.33.10
 Release:        0
 Summary:        Backup program based on git
 License:        LGPL-2.0-only
