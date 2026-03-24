@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:58:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.10.0:
+  * The "v1password" plugin for keystoneauth now returns
+    v3-compatible service catalogs, fixing some issues seen when
+    using v1 auth with openstackclient.
+  * Now tested under Python 3.14.
+  * Removed support for the provider-specific SERVICENET.
+    Explicitly override your storage URLs if you were previously
+    using this feature.
+  * Various other minor improvements.
+  * The ``timeout`` parameter is now included when creating
+    Keystoneauth Sessions.
+  * Various other minor improvements.
+
+-------------------------------------------------------------------
 Sun Nov  9 16:03:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.0:

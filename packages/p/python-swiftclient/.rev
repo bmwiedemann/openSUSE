@@ -651,4 +651,23 @@
     <comment>switch to singlespec</comment>
     <requestid>1316799</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>aa663f8ff2ab0b4bc64975a3e9325381</srcmd5>
+    <version>4.10.0</version>
+    <time>1774374647</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.10.0:
+  * The &quot;v1password&quot; plugin for keystoneauth now returns
+    v3-compatible service catalogs, fixing some issues seen when
+    using v1 auth with openstackclient.
+  * Now tested under Python 3.14.
+  * Removed support for the provider-specific SERVICENET.
+    Explicitly override your storage URLs if you were previously
+    using this feature.
+  * Various other minor improvements.
+  * The ``timeout`` parameter is now included when creating
+    Keystoneauth Sessions.
+  * Various other minor improvements.</comment>
+    <requestid>1342250</requestid>
+  </revision>
 </revisionlist>
