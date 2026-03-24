@@ -3875,8 +3875,6 @@ unsorted:
   - espeak-ng-vim 
   - espeakedit 
   - espresso 
-  - esql 
-  - esql-devel 
   - etc-update 
   - etcd 
   - etcd-for-k8s1.32 
@@ -4052,6 +4050,7 @@ unsorted:
   - fcitx5-gtk3 
   - fcitx5-gtk4 
   - fcitx5-hangul 
+  - fcitx5-karukan 
   - fcitx5-kkc 
   - fcitx5-libthai 
   - fcitx5-lua 
@@ -5105,10 +5104,8 @@ unsorted:
   - geronimo-saaj-1_1-api 
   - geronimo-servlet-2_4-api 
   - geronimo-servlet-2_5-api 
-  - gettext-csharp 
   - gettext-its-gtk3 
   - gettext-its-gtk4 
-  - gettext-java 
   - gettext-runtime-32bit 
   - gettext-runtime-mini 
   - gettext-runtime-mini-tools-doc 
@@ -7485,6 +7482,8 @@ unsorted:
   - gnucash-lang 
   - gnuchess 
   - gnucobol 
+  - gnucobol-esql 
+  - gnucobol-esql-devel 
   - gnudos 
   - gnudos-devel 
   - gnugo 
@@ -9931,6 +9930,7 @@ unsorted:
   - kargo-cli-bash-completion 
   - kargo-cli-fish-completion 
   - kargo-cli-zsh-completion 
+  - karukan-tools 
   - kasts 
   - kasts-lang 
   - kasumi 
@@ -13073,7 +13073,7 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf2 
-  - libdwarfs0_14_1 
+  - libdwarfs0_15_1 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libe-book-devel 
@@ -17425,7 +17425,6 @@ unsorted:
   - libxml2-16-32bit 
   - libxml2-devel 
   - libxml2-devel-32bit 
-  - libxml2-doc 
   - libxmlb-devel 
   - libxmlbird1 
   - libxmlrpc++9 
@@ -18367,6 +18366,7 @@ unsorted:
   - lxqt-wallet-lang 
   - lxqt-wayfire-session 
   - lxqt-wayland-session 
+  - lxqt-wayland-session-default-compositor-wayfire 
   - lxqt2-build-tools-devel 
   - lxrandr 
   - lxrandr-lang 
@@ -26342,7 +26342,6 @@ unsorted:
   - python311-libvslvm 
   - python311-libvsmbr 
   - python311-libwrc 
-  - python311-libxml2 
   - python311-license-expression 
   - python311-ligo-lw 
   - python311-ligo-segments 
@@ -28185,7 +28184,6 @@ unsorted:
   - python312-doc-devhelp 
   - python312-gwpy 
   - python312-idle 
-  - python312-jupyter-sphinx 
   - python312-onnx 
   - python312-pegasus-wms.api 
   - python312-plotly 
@@ -30214,7 +30212,6 @@ unsorted:
   - python313-libvslvm 
   - python313-libvsmbr 
   - python313-libwrc 
-  - python313-libxml2 
   - python313-license-expression 
   - python313-ligo-lw 
   - python313-ligo-segments 
@@ -33791,6 +33788,8 @@ unsorted:
   - sbd-devel 
   - sbiload 
   - sbl-orca 
+  - sblg 
+  - sblg-doc 
   - sblim-sfcc-devel 
   - sbsigntools 
   - sbt-boilerplate 
