@@ -19,14 +19,13 @@
 %define sover %(echo %{version} | sed 's/\\./_/g;')
 %define __builder ninja
 Name:           dwarfs
-Version:        0.14.1
+Version:        0.15.1
 Release:        0
 Summary:        Deduplicating compressed read-only file system
 License:        GPL-3.0-or-later AND MIT
 URL:            https://github.com/mhx/dwarfs
 Source0:        https://github.com/mhx/dwarfs/releases/download/v%{version}/dwarfs-%{version}.tar.xz
 BuildRequires:  bison
-BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  libboost_chrono-devel
@@ -37,6 +36,7 @@ BuildRequires:  libboost_process-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_thread-devel
+BuildRequires:  memory-constraints
 BuildRequires:  ninja
 BuildRequires:  parallel-hashmap-devel
 BuildRequires:  pkgconfig
@@ -53,8 +53,6 @@ BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libdwarf)
 BuildRequires:  pkgconfig(libelf)
-BuildRequires:  pkgconfig(libevent)
-BuildRequires:  pkgconfig(libglog)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libmagic)
@@ -63,6 +61,13 @@ BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(nlohmann_json)
+%if 0%{?suse_version} <= 1600
+BuildRequires:  gcc15
+BuildRequires:  gcc15-c++
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%endif
 # SECTION test requirements
 BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gtest)
@@ -126,6 +131,11 @@ ZSH command line completion support for %{name}.
 %autosetup -p1
 
 %build
+%limit_build -m 1500M
+%if 0%{?suse_version} <= 1600
+export CC=gcc-15
+export CXX=g++-15
+%endif
 %cmake \
     -DCMAKE_EXE_LINKER_FLAGS="-lboost_filesystem -lboost_process" \
     -DWITH_TESTS=ON -DPREFER_SYSTEM_GTEST=ON

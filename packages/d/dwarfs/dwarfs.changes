@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Mon Mar 23 03:05:32 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.15.1:
+Bug fixes:
+  * mkdwarfs did not correctly handle inputs where hardlinks had
+    the same inode number on different devices. To run into this
+    issue, you would have to make mkdwarfs scan files from multiple
+    devices (e.g. the root of a directory tree with multiple
+    mounted filesystems) and have files with the same inode number
+    on different devices and have at least two of those files also
+    have a link count greater than 1. While this is hopefully rare
+    in practice, it is a serious bug that can lead to crashes (in
+    the best case) or even data loss (in the worst case), as only
+    the data of one of these files would be stored in the image.
+    This has been fixed and a test has been added to cover this
+    case.
+- Version 0.15.0:
+Bug fixes:
+  * Commas in the filesystem image path were not escaped when
+    passed to the FUSE driver as the fsname option. Because commas
+    are used as FUSE argument separators, this could cause mounting
+    to fail for paths containing commas.
+    gh#mhx/dwarfs#323
+  * Progress reporting in dwarfsextract was broken when extracting
+    a subset of files using patterns, because it was computed
+    relative to the total filesystem size rather than the total
+    size of the selected files. Several subtle edge cases could
+    also cause progress percentages to fail to reach 100% or even
+    exceed it. These issues have been fixed.
+    gh#mhx/dwarfs#316
+  * Fixed FUSE argument vector initialization in dwarfs_main, which
+    could trigger an assertion inside libfuse when extra arguments
+    were added after an uninitialized vector was passed to
+    FUSE_ARGS_INIT.
+  * Fixed a metadata lookup bug for parent_dir_entry in filesystems
+    with format version 2.2 and earlier (that is, DwarFS releases
+    before v0.5.0), where an additional level of indirection was
+    required but missing. Fortunately, this only affected the debug
+    output of dwarfsck: the parent= field shown with
+    -d directory_tree would display the parent inode number rather
+    than the parent entry number. The only other code path using
+    parent_dir_entry effectively compensated for the missing
+    indirection.
+  * Recompressing a filesystem image with sparse files, without
+    also rebuilding the metadata, could erroneously fail with an
+    error claiming that sparse file support could not be disabled,
+    even without --no-sparse-files. The root cause was an unchecked
+    std::optional access. This has been fixed.
+  * When rewriting a filesystem image, the bytes_in and bytes_out
+    progress counters were updated at different times, which could
+    lead to incorrect compression ratios being shown during
+    progress reporting. Both counters are now updated together
+    after compression.
+  * When using --format=newc and extracting a subset of hardlinked
+    files, dwarfsextract could crash with an "unexpected deferred
+    entry" error. This was caused by a peculiarity of libarchive's
+    newc implementation that was not handled correctly. The bug has
+    been fixed and is now covered by a test.
+  * Corrected the license information in a few headers, changing
+    them from GPL-3.0-or-later to MIT.
+Features:
+  * Major dependency reduction / de-Meta-ing the project.
+    fbthrift and folly are no longer dependencies of DwarFS, and
+    the corresponding submodules have been removed from the
+    repository. fbthrift has been replaced by a new thrift_lite
+    library that implements the subset DwarFS actually needs,
+    including the thrift compiler, compact protocol support, JSON
+    serialization, debug output, and frozen-layout support.
+    The frozen library from fbthrift has been forked and is now
+    maintained as an internal component with all folly dependencies
+    removed. DwarFS now relies on standard C++23, Boost, and a few
+    new in-repo components instead. This also removes several
+    indirect dependencies (gflags, glog, double-conversion,
+    libevent, and on macOS also libsodium). The resulting code is
+    simpler, the dependency footprint is smaller, and binary size
+    is reduced in many cases. The compact protocol remains fully
+    compatible, but the debug and JSON output formats are no longer
+    identical to fbthrift's output.
+  * mkdwarfs now automatically selects the progress display mode
+    based on whether the output is connected to a terminal and
+    whether the current locale uses UTF-8. Previously, the default
+    was always unicode, which could produce garbled output in
+    non-UTF-8 environments.
+    gh#mhx/dwarfs#326
+  * The project is now compliant with the REUSE specification.
+    All source files now carry SPDX license identifiers, a
+    REUSE.toml file has been added, and full license texts are
+    included in the LICENSES directory.
+  * New --hollow option for mkdwarfs. This allows building hollow
+    filesystem images that preserve the structure, metadata, and
+    file sizes of the input while replacing actual file contents
+    with zero-filled sparse files. This is useful for testing
+    scenarios where realistic filesystem structure matters but the
+    actual contents do not.
+    gh#mhx/dwarfs#131
+  * mkdwarfs now supports ZSTD long-distance matching (LDM) via a
+    new long algorithm option for --compression. This can improve
+    compression ratios with extremely large block sizes (typically
+    above 128 MiB), or with smaller block sizes at lower
+    compression levels.
+  * New binary file categorizer (--categorize=binary).
+    This categorizer can identify ELF (Linux/FreeBSD),
+    PE (Windows), and Mach-O (macOS) executables and shared
+    libraries and group them into separate categories by type and
+    architecture. This can dramatically improve compression ratios
+    when binaries from different platforms and architectures are
+    mixed together.
+  * dwarfsextract has a new --num-disk-writers option to run
+    multiple writer threads in parallel when extracting files to
+    disk. This can improve throughput, especially when extracting
+    large numbers of small files.
+  * dwarfsextract has new --skip-devices and --skip-specials
+    options to skip device nodes and special files (such as sockets
+    and FIFOs) during extraction.
+  * dwarfsextract now emits a warning when a pattern is provided
+    but no matching files are found.
+  * dwarfsck can now export metadata to stdout instead of to a file
+    by using --export-metadata=-.
+  * With mkdwarfs in --input-list mode, specifying --order=none now
+    preserves the exact order of entries given in the input file.
+    Previously, none was not treated as a meaningful ordering
+    guarantee in this mode.
+  * New --no-check option for mkdwarfs to skip the filesystem
+    integrity check before recompression. This can speed up
+    recompression workflows when the source image is assumed to be
+    valid. The individual checks are still performed during the
+    rewrite itself.
+    gh#mhx/dwarfs#322
+  * When recompressing a filesystem image, blocks that are
+    uncompressed in the source image are no longer unnecessarily
+    copied into memory. Instead, the mapped memory region is passed
+    directly to the compressor, saving some memory and CPU time in
+    this case.
+  * While profiling mkdwarfs, reading memory usage from
+    /proc/self/smaps_rollup turned out to be a significant hotspot.
+    DwarFS now reads /proc/self/status by default instead, trading
+    some accuracy for much lower overhead. It is still possible to
+    use /proc/self/smaps_rollup by setting
+    DWARFS_ACCURATE_MEMORY_USAGE=1. This can be combined with
+    DWARFS_LOG_MEMORY_USAGE to periodically log memory usage during
+    a mkdwarfs run. If /proc/self/smaps_rollup is inaccessible,
+    DwarFS automatically falls back to /proc/self/status.
+  * Memory usage during mkdwarfs rewrite operations is now properly
+    constrained by the -L / --memory-limit option, taking into
+    account both queued blocks and memory used by the compression
+    algorithm itself.
+    gh#mhx/dwarfs#322
+  * The similarity ordering option now uses a different hash mixing
+    function. The main goal is to improve distribution, since only
+    a small number of hash bits are actually used. This may or may
+    not improve compression ratios, but it will affect the
+    resulting image size.
+Build:
+  * The project now requires C++23 compiler support instead of
+    C++20. Care has been taken to restrict usage to widely
+    available and long-supported C++23 features.
+  * Cleaned up many compiler warnings across different platforms.
+Docs:
+  * Added documentation for the fits, hotness, and binary
+    categorizers to the mkdwarfs manual page.
+Test:
+  * Test coverage has been significantly improved from 96.4% to
+    97.1%, with more than 10,000 lines of new test code.
+
+-------------------------------------------------------------------
+Sat Mar 21 12:11:32 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap.
+
+-------------------------------------------------------------------
 Wed Nov 26 18:45:57 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to version 0.14.1:
