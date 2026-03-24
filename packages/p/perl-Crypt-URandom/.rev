@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>1296253</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2007ccbc98165e2414c91f6d39191908</srcmd5>
+    <version>0.550.0</version>
+    <time>1774374481</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.550.0 (0.55)
+   see /usr/share/doc/packages/perl-Crypt-URandom/Changes
+  0.55  Tue Feb 17 07:01:43 2026
+       - Fix for sysread/read failures.  Thanks to Miha Purg for GH#20
+       - Fix for test suite failures on STDOUT encoding.  Thanks to Lukas Mai for GH#19
+       - Fix for CVE-2026-2474 bsc#1258266</comment>
+    <requestid>1342079</requestid>
+  </revision>
 </revisionlist>

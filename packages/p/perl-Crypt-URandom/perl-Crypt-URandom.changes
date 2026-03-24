@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 23 11:10:18 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.550.0 (0.55)
+   see /usr/share/doc/packages/perl-Crypt-URandom/Changes
+
+  0.55  Tue Feb 17 07:01:43 2026
+       - Fix for sysread/read failures.  Thanks to Miha Purg for GH#20
+       - Fix for test suite failures on STDOUT encoding.  Thanks to Lukas Mai for GH#19
+       - Fix for CVE-2026-2474 bsc#1258266
+
+-------------------------------------------------------------------
 Tue Jul 22 12:27:41 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - fix build for SLE12

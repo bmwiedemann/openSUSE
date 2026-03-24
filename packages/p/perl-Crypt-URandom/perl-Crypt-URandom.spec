@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-URandom
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Crypt-URandom
 Name:           perl-Crypt-URandom
-Version:        0.540.0
+Version:        0.550.0
 Release:        0
-# 0.54 -> normalize -> 0.540.0
-%define cpan_version 0.54
+# 0.55 -> normalize -> 0.550.0
+%define cpan_version 0.55
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Provide non blocking randomness
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DD/DDICK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.26
@@ -43,7 +44,7 @@ currently supported are anything supporting getrandom(2), /dev/urandom and
 versions of Windows greater than or equal to Windows 2000.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
