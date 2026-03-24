@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  9 21:47:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.0:
+  * Drop support for Python 3.9
+  * reno: Update master for unmaintained/2024.1
+
+-------------------------------------------------------------------
 Sun Nov 30 21:59:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:

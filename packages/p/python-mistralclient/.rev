@@ -338,4 +338,14 @@
 - update to version 4.3.0 (bsc#1254289, CVE-2021-4472):</comment>
     <requestid>1320675</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>965f6540f935c43cf8db62100c1699c3</srcmd5>
+    <version>6.2.0</version>
+    <time>1774374649</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2.0:
+  * Drop support for Python 3.9
+  * reno: Update master for unmaintained/2024.1</comment>
+    <requestid>1342253</requestid>
+  </revision>
 </revisionlist>
