@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 22 18:00:40 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 4.16.0:
+  * feat: [VPNLINUX-1565] group secure core servers
+- Update to version 4.15.2:
+  *  feat: [VPNLINUX-1471] Preprocess country/city features
+  * [VPNLINUX-1599] Feature flag cleanup
+  * fix: app break clause version
+- Update to version 4.14.3:
+  * feat: [VPNLINUX-1492-1493-1494] Add composable filters to ServerList
+  * feat: [VPNLINUX-1507] add citites to country dataclass
+- Update to version 4.14.1:
+  * Create NetworkManager backend
+- be more explicit in the files section
+- remove deprecated Group
+- As this package now integrates the NetworkManager backend obsolete
+  the old package
+
+-------------------------------------------------------------------
 Sun Nov  2 15:55:40 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to 4.13.1:
