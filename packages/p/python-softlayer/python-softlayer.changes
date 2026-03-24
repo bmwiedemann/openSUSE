@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 23 23:03:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.8:
+  * Remove unused dependency prettytable
+  * Internal updates
+
+-------------------------------------------------------------------
 Thu Nov 20 03:43:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip some tests broken by Click 8.3.

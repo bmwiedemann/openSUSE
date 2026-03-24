@@ -413,4 +413,14 @@
 - Clean up {Build,}Requires.</comment>
     <requestid>1318756</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>23ec3cad5ed05e1f850d18fd9edd1f41</srcmd5>
+    <version>6.2.8</version>
+    <time>1774374537</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2.8:
+  * Remove unused dependency prettytable
+  * Internal updates</comment>
+    <requestid>1342128</requestid>
+  </revision>
 </revisionlist>
