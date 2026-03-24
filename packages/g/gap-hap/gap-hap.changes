@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 24 14:45:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.75
+  * Add functions to compute finite projective spaces
+  * Add new implementation of finite projective line
+  * Add implementation of Gamma0 for SL3
+  * Add method for non-prime n in SL2
+  * Add SL3ZSubgroupTree
+  * Add computations for the transversal in the extra methods
+  * Add ProjectiveSpace as attribute of the congruence subgroup
+  * Add CosetPosFunctions for power of primes
+
+-------------------------------------------------------------------
 Sat Jan 10 20:17:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.74
