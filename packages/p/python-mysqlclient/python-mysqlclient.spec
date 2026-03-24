@@ -1,7 +1,7 @@
 #
 # spec file for package python-mysqlclient
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-mysqlclient%{psuffix}
-Version:        2.2.7
+Version:        2.2.8
 Release:        0
 Summary:        Python interface to MySQL
 License:        GPL-2.0-or-later
