@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 22:55:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * Performance fixes for problems introduced by security fixes
+    in 1.0.5 / 1.0.6
+- update to 1.0.6:
+  * unable to pass unhashable items as kwargs introduced by
+    security fixes in 1.0.5 this morning.
+
+-------------------------------------------------------------------
 Fri Mar 13 20:34:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.5 (CVE-2026-32640, bsc#1259685):

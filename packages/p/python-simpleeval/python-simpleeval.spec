@@ -20,7 +20,7 @@
 %define modname simpleeval
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        1.0.5
+Version:        1.0.7
 Release:        0
 Summary:        A simple, safe single expression evaluator library
 License:        MIT

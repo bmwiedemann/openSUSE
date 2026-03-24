@@ -108,4 +108,17 @@
     <comment>- update to 1.0.5 (CVE-2026-32640, bsc#1259685):</comment>
     <requestid>1339290</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f7f4f57571d055ec2159ee3c73f9ce99</srcmd5>
+    <version>1.0.7</version>
+    <time>1774374537</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.7:
+  * Performance fixes for problems introduced by security fixes
+    in 1.0.5 / 1.0.6
+- update to 1.0.6:
+  * unable to pass unhashable items as kwargs introduced by
+    security fixes in 1.0.5 this morning.</comment>
+    <requestid>1342124</requestid>
+  </revision>
 </revisionlist>
