@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.context
-Version:        6.1.0
+Version:        6.1.2
 Release:        0
 Summary:        Tools to work with functools
 License:        MIT

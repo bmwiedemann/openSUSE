@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 23 12:48:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.2:
+  * No significant changes.
+
+-------------------------------------------------------------------
 Tue Jan 20 09:52:54 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 6.1.0 (fixes CVE-2026-23949, bsc#1256954)
@@ -20,7 +26,7 @@ Fri Jul 18 13:57:07 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 - update to 6.0.0
   * Fixed bug in repo_context where standard output from git would not be
     hidden (because git emits standard output on the stderr stream).
-  * Removed deprecated 'tarball_context', 'infer_compression', and 'null' 
+  * Removed deprecated 'tarball_context', 'infer_compression', and 'null'
     contexts.
 
 -------------------------------------------------------------------

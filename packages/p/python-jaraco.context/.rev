@@ -112,4 +112,15 @@
     <comment></comment>
     <requestid>1328242</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>08e9019042299957831434a9cc368960</srcmd5>
+    <version>6.1.2</version>
+    <time>1774374478</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.1.2:
+  * No significant changes.
+
+  * Removed deprecated 'tarball_context', 'infer_compression', and 'null'</comment>
+    <requestid>1342036</requestid>
+  </revision>
 </revisionlist>
