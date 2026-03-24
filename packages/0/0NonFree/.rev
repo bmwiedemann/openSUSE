@@ -6,4 +6,11 @@
     <user>adrianSuSE</user>
     <comment>osc copypac from project:openSUSE:Factory:ProductComposerTest package:0nonfree revision:9</comment>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f1d2c8bf732675015d5ef3be04be6f8e</srcmd5>
+    <version>unknown</version>
+    <time>1774338030</time>
+    <user>dimstar_suse</user>
+    <comment>Enable cmssign also for nonfree</comment>
+  </revision>
 </revisionlist>
