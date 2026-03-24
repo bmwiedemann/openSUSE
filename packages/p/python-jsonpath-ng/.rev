@@ -92,4 +92,41 @@
   * Fix a GitHub workflow schema issue</comment>
     <requestid>1219197</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e6611cc4dd6042a65c7a8e98a60c00fc</srcmd5>
+    <version>1.8.0</version>
+    <time>1774374476</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.0 (bsc#1257048, CVE-2025-56005):
+  * Support Python 3.13 and 3.14
+  * Typing for IDE autocomplete
+  * Support for EMOJI and CJK Unicode
+  * Support for `DatumInContext` in-place updating
+  * Support equality checking of `Operation` instances
+  * Support string serialization of `Union` and `Intersect`
+    instances
+  * Support comma-separated indices
+  * Add typings for IDE autocomplete
+  * Rename `ExtentedJsonPathParser`
+  * Remove ply dependency
+  * Fix `False` and `None` values
+  * Fix single constant case
+  * Update field filter to resolve wildcard path issue
+  * Vendor copy of ply and remove pickle support from the
+    vendored copy to resolve CVE-2025-56005
+  * Fix string serialization throughout the library to enforce
+    roundtrip parsing consistency.
+  * Fields are more conservatively enclosed in quotion marks
+  * This fixes serialization and re-parsing of `&quot;00&quot;`, `'%'`,
+    `'0@'` and `&quot;&amp;'&quot;`.
+  * `Operation` instances can now be serialized.
+  * This fixes serialization of `0-@` and `A -A`.
+  * `SortedThis` instances can now be serialized and re-parsed.
+  * This fixes serialization of `0[/0]`.
+  * `Child` precedence is now preserved using parentheses during
+    serialization.
+  * This ensures that serialized strings like `a..b[c]` serialize
+    and re-parse identically.</comment>
+    <requestid>1342028</requestid>
+  </revision>
 </revisionlist>
