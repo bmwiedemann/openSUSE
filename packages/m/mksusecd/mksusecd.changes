@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Mar 23 18:48:43 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#101
+- show DUD product string when applying DUD (bsc#1258149)
+- apply only DUD for matching product (bsc#1258149)
+- 5.2
+
+--------------------------------------------------------------------
 Wed Mar 18 18:18:39 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#100
