@@ -53,4 +53,25 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1276024</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>91a0e738c280845d6e54c3d1452d9df3</srcmd5>
+    <version>0.6.3</version>
+    <time>1774374618</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.3:
+  * Drop support for numpy 1.x
+  * Register the colormaps cividis, inferno, magma, plasma,
+    viridis, RdBu, coolwarm and their reversed versions as
+    *_clip, e.g. viridis_r_clip, with a dedicated max/min value
+    color clipping
+  * Use viridis_clip colormap as default for sfs.plot2d.level()
+  * Use coolwarm_clip colormap as default for
+    sfs.plot2d.amplitude()
+  * Level contour plot via sfs.plot2d.level_contour()
+  * Add Jupyter notebook for 2.5D WFS referencing scheme examples
+- drop numpy125.patch, mpl39.patch: upstream
+
+- skip python 36</comment>
+    <requestid>1342229</requestid>
+  </revision>
 </revisionlist>

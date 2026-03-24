@@ -1,7 +1,7 @@
 #
 # spec file for package python-sfs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sfs
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Sound Field Synthesis toolbox for Python
 License:        MIT
 URL:            https://github.com/sfstoolbox/
 Source:         https://files.pythonhosted.org/packages/source/s/sfs/sfs-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM https://github.com/sfstoolbox/sfs-python/pull/163 Replace inner1d bei einsum
-Patch:          numpy125.patch
-# PATCH-FIX-UPSTREAM https://github.com/sfstoolbox/sfs-python/pull/179 Update to changes in matplotlib 3.9.0
-Patch:          mpl39.patch
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
-Requires:       python-scipy
+Requires:       python-numpy >= 2
+Requires:       python-scipy >= 1.16
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module matplotlib >= 3}
+BuildRequires:  %{python_module numpy >= 2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module scipy >= 1.16}
 # /SECTION
 %python_subpackages
 
