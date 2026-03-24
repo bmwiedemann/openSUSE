@@ -1,7 +1,7 @@
 #
 # spec file for package python-simple-websocket
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-simple-websocket
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Simple WebSocket server and client for Python
 License:        MIT
 URL:            https://github.com/miguelgrinberg/simple-websocket
-Source:         https://files.pythonhosted.org/packages/source/s/simple-websocket/simple-websocket-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://files.pythonhosted.org/packages/source/s/simple-websocket/simple_websocket-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module wsproto}
 # /SECTION
@@ -40,7 +41,7 @@ BuildArch:      noarch
 Simple WebSocket server and client for Python
 
 %prep
-%autosetup -p1 -n simple-websocket-%{version}
+%autosetup -p1 -n simple_websocket-%{version}
 
 %build
 %pyproject_wheel

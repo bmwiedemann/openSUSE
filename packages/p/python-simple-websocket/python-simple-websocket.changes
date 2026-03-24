@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 24 12:29:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Added support for IPv6 in the sync client
+  * Added a top-level exception class (commit)
+  * Improve handling of immediately closed sockets with ping/pong
+    enabled #35 (commit) (thanks Łukasz Kędziora!)
+  * Unblock receive() call on timeout disconnections
+
+-------------------------------------------------------------------
 Wed Aug 14 19:43:32 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Release 1.0.0
@@ -9,4 +19,4 @@ Wed Aug 14 19:43:32 UTC 2024 - Guang Yee <gyee@suse.com>
   * Handle broken pipe errors in background thread #29 (commit)
   * Remove unused argument (commit)
   * Eliminate race conditions during testing #27 (commit)
-  * Remove python 3.7 from unit tests (commit) 
+  * Remove python 3.7 from unit tests (commit)

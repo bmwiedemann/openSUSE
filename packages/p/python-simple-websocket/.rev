@@ -7,4 +7,19 @@
     <comment>needed for dependencies of open-webui</comment>
     <requestid>1195736</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>092de40e10519c1a807d11618e13e1ca</srcmd5>
+    <version>1.1.0</version>
+    <time>1774374615</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.0:
+  * Added support for IPv6 in the sync client
+  * Added a top-level exception class (commit)
+  * Improve handling of immediately closed sockets with ping/pong
+    enabled #35 (commit) (thanks Łukasz Kędziora!)
+  * Unblock receive() call on timeout disconnections
+
+  * Remove python 3.7 from unit tests (commit)</comment>
+    <requestid>1342226</requestid>
+  </revision>
 </revisionlist>
