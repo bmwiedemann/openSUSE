@@ -82,4 +82,27 @@
     <comment></comment>
     <requestid>1240808</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9d1be5637d249b14336273dfa17407a1</srcmd5>
+    <version>1.5.0</version>
+    <time>1774374612</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.0:
+  * Add optional srvhostname argument for managesieve client
+  * Added support for environment extension.
+  * Improved get_filter_actions() method to support extra args.
+  * Python 3.14 support
+  * Python 3.9 support removed
+- update to 1.4.3:
+  * Added support for address test in factory.
+  * Dropped python 3.8 support and added python 3.12+
+  * Added missing require statement when using create arg with
+    fileinto
+  * Add Notify Extension
+  * Improve code discoverability and fix warnings
+  * Add xoauth2 auth mechanism
+  * Support implicit TLS connections
+  * Refactored SSL connection related code</comment>
+    <requestid>1342218</requestid>
+  </revision>
 </revisionlist>
