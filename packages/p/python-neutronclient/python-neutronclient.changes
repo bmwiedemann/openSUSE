@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:30:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.8.0:
+  * [FWaaS] Remove client side protocol validation
+  * Bump flake8-import-order
+  * v2\_0: Use 'bindings' when listing port bindings
+  * Revert "Add Tap-as-a-Service client code"
+  * reno: Update master for unmaintained/2024.1
+  * Add Tap-as-a-Service client code
+  * Update master for stable/2025.2
+  * Drop unused os-client-config
+
+-------------------------------------------------------------------
 Mon Nov 10 13:04:53 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - fix filelist

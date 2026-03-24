@@ -1,7 +1,7 @@
 #
 # spec file for package python-neutronclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-neutronclient
-Version:        11.6.0
+Version:        11.8.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Neutron
 License:        Apache-2.0

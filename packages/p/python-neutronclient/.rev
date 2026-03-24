@@ -643,4 +643,20 @@
     <comment>- fix filelist</comment>
     <requestid>1316992</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7da73c0d6d6ebf73f1cbc042b656da52</srcmd5>
+    <version>11.8.0</version>
+    <time>1774374649</time>
+    <user>anag_factory</user>
+    <comment>- update to 11.8.0:
+  * [FWaaS] Remove client side protocol validation
+  * Bump flake8-import-order
+  * v2\_0: Use 'bindings' when listing port bindings
+  * Revert &quot;Add Tap-as-a-Service client code&quot;
+  * reno: Update master for unmaintained/2024.1
+  * Add Tap-as-a-Service client code
+  * Update master for stable/2025.2
+  * Drop unused os-client-config</comment>
+    <requestid>1342252</requestid>
+  </revision>
 </revisionlist>
