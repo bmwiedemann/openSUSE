@@ -184,4 +184,17 @@
   * Python 3.14 support</comment>
     <requestid>1316816</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7b864e3061c97f393798c217fdc7655c</srcmd5>
+    <version>1.7.6</version>
+    <time>1774374619</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.6:
+  * Fix callgrind export producing duplicate entries for top-
+    level functions
+  * Fix various edge cases
+  * Add limit parameter to print_all
+  * Fix file reading to use UTF-8 encoding</comment>
+    <requestid>1342225</requestid>
+  </revision>
 </revisionlist>

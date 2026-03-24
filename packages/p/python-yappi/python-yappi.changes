@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 24 12:23:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.6:
+  * Fix callgrind export producing duplicate entries for top-
+    level functions
+  * Fix various edge cases
+  * Add limit parameter to print_all
+  * Fix file reading to use UTF-8 encoding
+
+-------------------------------------------------------------------
 Mon Nov 10 08:21:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.3:
