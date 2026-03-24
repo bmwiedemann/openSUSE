@@ -358,17 +358,16 @@ diff --git a/src/lexgrog.l b/src/lexgrog.l
  	{bol}\.Nd{blank}*			{
 diff --git a/src/man.c b/src/man.c
 --- a/src/man.c
-+++ b/src/man.c	2025-08-08 06:51:32.192263735 +0000
-@@ -56,6 +56,8 @@
++++ b/src/man.c	2026-03-23 15:03:01.502204984 +0000
+@@ -56,6 +56,7 @@
  #include <termios.h>
  #include <time.h>
  #include <unistd.h>
 +#include <sys/time.h>
-+#include <libalternatives.h>
+ #include <libalternatives.h>
  
  #include "argp.h"
- #include "attribute.h"
-@@ -118,6 +120,8 @@
+@@ -119,6 +120,8 @@
  #ifdef MAN_OWNER
  extern uid_t ruid;
  extern uid_t euid;
@@ -377,7 +376,7 @@ diff --git a/src/man.c b/src/man.c
  #endif /* MAN_OWNER */
  
  /* the default preprocessor sequence */
-@@ -238,10 +242,10 @@ static int first_arg;
+@@ -239,10 +242,10 @@ static int first_arg;
  #ifdef MAN_CATS
  static char *tmp_cat_file;   /* for open_cat_stream(), close_cat_stream() */
  static bool created_tmp_cat; /* dto. */
@@ -389,7 +388,7 @@ diff --git a/src/man.c b/src/man.c
  
  #ifdef TROFF_IS_GROFF
  static bool ditroff;
-@@ -1576,6 +1585,18 @@ static void setenv_less (pipecmd *cmd, c
+@@ -1577,6 +1580,18 @@ static void setenv_less (pipecmd *cmd, c
  	free (less_opts);
  }
  
@@ -408,7 +407,7 @@ diff --git a/src/man.c b/src/man.c
  static void add_output_iconv (pipeline *p, const char *source,
                                const char *target)
  {
-@@ -1704,6 +1725,8 @@ static pipeline *make_display_command (c
+@@ -1705,6 +1720,8 @@ static pipeline *make_display_command (c
  
  	if (pager_cmd) {
  		setenv_less (pager_cmd, title);
@@ -417,7 +416,7 @@ diff --git a/src/man.c b/src/man.c
  		pipeline_command (p, pager_cmd);
  	}
  	pipeline_ignore_signals (p, 1);
-@@ -1714,6 +1737,7 @@ static pipeline *make_display_command (c
+@@ -1715,6 +1732,7 @@ static pipeline *make_display_command (c
  	return p;
  }
  
@@ -425,7 +424,7 @@ diff --git a/src/man.c b/src/man.c
  /* return a (malloced) temporary name in cat_file's directory */
  static char *tmp_cat_filename (const char *cat_file)
  {
-@@ -1815,6 +1839,7 @@ static int commit_tmp_cat (const char *c
+@@ -1816,6 +1834,7 @@ static int commit_tmp_cat (const char *c
  
  	return status;
  }
@@ -433,7 +432,7 @@ diff --git a/src/man.c b/src/man.c
  
  /* TODO: This should all be refactored after work on the decompression
   * library is complete.
-@@ -1851,7 +1876,6 @@ static void cleanup_unlink (void *arg)
+@@ -1852,7 +1871,6 @@ static void cleanup_unlink (void *arg)
  }
  
  #ifdef MAN_CATS
@@ -441,7 +440,7 @@ diff --git a/src/man.c b/src/man.c
  /* Return pipeline to write formatted manual page to for saving as cat file. */
  static pipeline *open_cat_stream (const char *cat_file, const char *encoding)
  {
-@@ -2079,6 +2103,7 @@ static void format_display (decompress *
+@@ -2080,6 +2098,7 @@ static void format_display (decompress *
  	regain_effective_privs ();
  }
  
@@ -449,7 +448,7 @@ diff --git a/src/man.c b/src/man.c
  /* "Display" a page in catman mode, which amounts to saving it. */
  /* TODO: merge with format_display_and_save? */
  static void display_catman (const char *cat_file, decompress *d,
-@@ -2124,6 +2149,7 @@ static void display_catman (const char *
+@@ -2125,6 +2144,7 @@ static void display_catman (const char *
  	pop_cleanup (cleanup_unlink, tmpcat);
  	free (tmpcat);
  }
@@ -457,7 +456,7 @@ diff --git a/src/man.c b/src/man.c
  
  #ifndef TROFF_IS_GROFF
  static void disable_hyphenation (void *data MAYBE_UNUSED)
-@@ -2334,7 +2360,7 @@ static int display (const char *dir, con
+@@ -2335,7 +2355,7 @@ static int display (const char *dir, con
  		format_cmd = NULL;
  		decomp_errno = errno;
  	}
@@ -466,7 +465,7 @@ diff --git a/src/man.c b/src/man.c
  	/* Get modification time, for commit_tmp_cat(). */
  	if (man_file && *man_file) {
  		struct stat stb;
-@@ -2344,7 +2370,7 @@ static int display (const char *dir, con
+@@ -2345,7 +2365,7 @@ static int display (const char *dir, con
  		} else
  			man_modtime = get_stat_mtime (&stb);
  	}
@@ -475,7 +474,7 @@ diff --git a/src/man.c b/src/man.c
  	display_to_stdout = troff;
  #ifdef TROFF_IS_GROFF
  	if (htmlout || gxditview)
-@@ -2481,6 +2507,7 @@ static int display (const char *dir, con
+@@ -2482,6 +2502,7 @@ static int display (const char *dir, con
  			}
  			if (printed)
  				putchar ('\n');
@@ -483,7 +482,7 @@ diff --git a/src/man.c b/src/man.c
  		} else if (catman) {
  			if (format) {
  				if (!save_cat)
-@@ -2493,6 +2520,7 @@ static int display (const char *dir, con
+@@ -2494,6 +2515,7 @@ static int display (const char *dir, con
  					                format_cmd,
  					                formatted_encoding);
  			}
@@ -491,7 +490,7 @@ diff --git a/src/man.c b/src/man.c
  		} else if (format) {
  			/* no cat or out of date */
  			pipeline *disp_cmd;
-@@ -4037,17 +4065,20 @@ static int local_man_loop (const char *a
+@@ -4038,17 +4060,20 @@ static int local_man_loop (const char *a
  		/* Check that the file exists and isn't e.g. a directory */
  		if (stat (argv, &st)) {
  			error (0, errno, "%s", argv);
@@ -512,7 +511,7 @@ diff --git a/src/man.c b/src/man.c
  			return NOT_FOUND;
  		}
  
-@@ -4111,6 +4142,11 @@ executable_out:
+@@ -4112,6 +4137,11 @@ executable_out:
  					argv_abs = xstrdup (argv);
  			}
  			lang = lang_dir (argv_abs);
@@ -524,36 +523,7 @@ diff --git a/src/man.c b/src/man.c
  			free (argv_abs);
  			if (!display (NULL, argv, NULL, argv_base, NULL)) {
  				if (local_mf)
-@@ -4167,9 +4203,25 @@ static void locate_page_in_manpath (cons
- {
- 	char *mp;
- 
--	GL_LIST_FOREACH (manpathlist, mp)
--		*found +=
--		        locate_page (mp, page_section, page_name, candidates);
-+	GL_LIST_FOREACH (manpathlist, mp) {
-+		int count = locate_page (mp, page_section, page_name, candidates);
-+		if (count == 0) {
-+			/* Checking if there has been defined another manpage defined in the
-+			 * priorities of libalternatives.
-+			 */
-+			char **alternitives = libalts_get_default_manpages(page_name);
-+			for (char **alter = alternitives; *alter; alter++) {
-+				char *p_name, *p_section;
-+				split_page_name (*alter, &p_name, &p_section);
-+				if (p_name && strlen(p_name) > 0 &&
-+				    p_section && strlen(p_section) > 0)
-+					count = locate_page (mp, p_section, p_name, candidates);
-+				free(*alter);
-+			}
-+			free(alternitives);
-+		}
-+		*found += count;
-+	}
- }
- 
- /*
-@@ -4363,7 +4415,16 @@ int main (int argc, char *argv[])
+@@ -4380,7 +4410,16 @@ int main (int argc, char *argv[])
  	umask (022);
  	init_locale ();
  
@@ -571,7 +541,7 @@ diff --git a/src/man.c b/src/man.c
  	/* Use LANGUAGE only when LC_MESSAGES locale category is
  	 * neither "C" nor "POSIX". */
  	if (internal_locale && strcmp (internal_locale, "C") &&
-@@ -4408,7 +4469,16 @@ int main (int argc, char *argv[])
+@@ -4425,7 +4464,16 @@ int main (int argc, char *argv[])
  	if (external)
  		do_extern (argc, argv);
  

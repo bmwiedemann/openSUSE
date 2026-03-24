@@ -1,0 +1,46 @@
+This is a SUSE specific patch only as libalternatives is only
+used in the SUSE/OpenSUSE ecosystem.
+
+---
+ src/man.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/man.c
++++ b/src/man.c	2025-08-08 06:51:32.192263735 +0000
+@@ -56,6 +56,7 @@
+ #include <termios.h>
+ #include <time.h>
+ #include <unistd.h>
++#include <libalternatives.h>
+ 
+ #include "argp.h"
+ #include "attribute.h"
+@@ -3989,9 +3990,25 @@ static void locate_page_in_manpath (cons
+ {
+ 	char *mp;
+ 
+-	GL_LIST_FOREACH (manpathlist, mp)
+-		*found +=
+-		        locate_page (mp, page_section, page_name, candidates);
++	GL_LIST_FOREACH (manpathlist, mp) {
++		int count = locate_page (mp, page_section, page_name, candidates);
++		if (count == 0) {
++			/* Checking if there has been defined another manpage defined in the
++			 * priorities of libalternatives.
++			 */
++			char **alternitives = libalts_get_default_manpages(page_name);
++			for (char **alter = alternitives; *alter; alter++) {
++				char *p_name, *p_section;
++				split_page_name (*alter, &p_name, &p_section);
++				if (p_name && strlen(p_name) > 0 &&
++				    p_section && strlen(p_section) > 0)
++					count = locate_page (mp, p_section, p_name, candidates);
++				free(*alter);
++			}
++			free(alternitives);
++		}
++		*found += count;
++	}
+ }
+ 
+ /*

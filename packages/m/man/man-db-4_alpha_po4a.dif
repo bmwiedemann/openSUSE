@@ -1,0 +1,20 @@
+Work around broken version string to support
+alpha or beta version of Po4a as well.
+
+---
+ man/po4a/Locale/Po4a/Manext.pm |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- man/po4a/Locale/Po4a/Manext.pm
++++ man/po4a/Locale/Po4a/Manext.pm	2026-03-24 08:07:23.571218355 +0000
+@@ -70,6 +70,10 @@ sub _parse_version {
+     # directly parseable using version->parse, because they may have more
+     # than two components without a leading "v".
+     my $version = shift;
++    if ($version =~ /-/) {
++	my @varray = split(/-/, $version);
++	$version = $varray[0];
++    }
+     $version = "v$version" unless $version =~ /^v/;
+     return version->parse($version);
+ }

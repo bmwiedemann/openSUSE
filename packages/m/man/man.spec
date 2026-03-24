@@ -43,6 +43,10 @@ Source7:        man-db-create.service
 Source8:        manpath.csh
 Source9:        manpath.sh
 Patch0:         man-db-2.3.19deb4.0-groff.dif
+# PATCH-FEATURE-SUSE note that (lib)alternatives is an suse ecosystem only package
+Patch1:         man-db-2.9.4-alternatives.dif
+# PATCH-FEATURE-SUSE support alpha or beta version of Po4a as well
+Patch2:         man-db-4_alpha_po4a.dif
 # PATCH-FIX-SUSE Fix a crash if mandb is directly executed by root
 Patch3:         man-db-2.13.0-no_abort.patch
 # PATCH-FEATURE-OPENSUSE man-db-2.7.1-zio.dif -- Allow using libzio for decompression
@@ -99,7 +103,9 @@ printer (using groff).
 
 %prep
 %setup -q -n man-db-%{version}
-%patch -P 0 -b .groff
+%patch -P0 -b .groff
+%patch -P1 -p1 -b .alts
+%patch -P2 -b .alpha
 %patch -P3 -b .seteuid
 %patch -P4 -b .zio
 %patch -P5 -b .listall

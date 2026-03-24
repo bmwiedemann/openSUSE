@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 24 08:19:51 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch man-db-4_alpha_po4a.dif (boo#1260337)
+  * Support alpha and maybe beta version of Po4a as well 
+
+-------------------------------------------------------------------
+Mon Mar 23 15:06:47 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Re-add patch man-db-2.9.4-alternatives.dif
+  accidentally removed (was man-db-2.9.4-alternitive.dif).
+  Note that (lib)-alternatives is suse specific
+
+-------------------------------------------------------------------
 Tue Feb 24 13:51:11 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update man-db-2.7.1-zio.dif

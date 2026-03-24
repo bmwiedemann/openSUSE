@@ -1166,4 +1166,17 @@
   * Use fdzopen as well to make libzio used overall</comment>
     <requestid>1334927</requestid>
   </revision>
+  <revision rev="110" vrev="5">
+    <srcmd5>5827c639955b99b30bf4d124844fe465</srcmd5>
+    <version>2.13.1</version>
+    <time>1774374469</time>
+    <user>anag_factory</user>
+    <comment>- Add patch man-db-4_alpha_po4a.dif (boo#1260337)
+  * Support alpha and maybe beta version of Po4a as well 
+
+- Re-add patch man-db-2.9.4-alternatives.dif
+  accidentally removed (was man-db-2.9.4-alternitive.dif).
+  Note that (lib)-alternatives is suse specific</comment>
+    <requestid>1342186</requestid>
+  </revision>
 </revisionlist>

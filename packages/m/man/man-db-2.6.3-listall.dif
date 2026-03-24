@@ -22,7 +22,7 @@
  .B %man%
 --- src/man.c
 +++ src/man.c	2025-04-07 09:41:34.647095968 +0000
-@@ -3658,12 +3658,143 @@ static int locate_page (const char *manp
+@@ -3659,12 +3659,143 @@ static int locate_page (const char *manp
  	return found;
  }
  
@@ -166,7 +166,7 @@
  		global_manpath = is_global_mandir (candp->path);
  		if (!global_manpath)
  			drop_effective_privs ();
-@@ -3686,9 +3817,56 @@ static int display_pages (struct candida
+@@ -3687,9 +3818,56 @@ static int display_pages (struct candida
  			regain_effective_privs ();
  
  		if (found && !findall)
