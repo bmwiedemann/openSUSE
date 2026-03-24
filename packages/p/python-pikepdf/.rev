@@ -396,4 +396,18 @@
   * Test all README code blocks instead of just one.</comment>
     <requestid>1339434</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>bc8ba5ec0d8d5ca6c9329de34604fcba</srcmd5>
+    <version>10.5.1</version>
+    <time>1774374526</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.5.1:
+  * Updated lockfile to avoid a PyJWT CVE. We only depend use
+    PyJWT via pygithub for developer release tooling not in pikepdf
+    itself, so this is inconsequential for pikepdf users but does
+    silence automated security advisories.
+  * Suppressed GCC ``-Wpsabi`` note about C++17 ABI change for
+    ``std::pair`` in pybind11 headers.</comment>
+    <requestid>1342102</requestid>
+  </revision>
 </revisionlist>
