@@ -926,4 +926,25 @@
     <comment></comment>
     <requestid>1313519</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e57663c7337de8532190b31cb36d87d0</srcmd5>
+    <version>1.27.2.2</version>
+    <time>1774374607</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.27.2.2
+  * Added `Annot.__bool__()`.
+  * Use MuPDF-1.27.2.
+  * Retrospectively marked #4907 as fixed in pymupdf-1.27.1.
+  * Improved get_textpage_ocr().
+  * Added `pymupdf.TEXT_CLIP`.
+  * Removed support for mupdf &lt; 1.26.
+  * New arg `raise_on_repair` in `Document.save()`.
+  * New method `Document.repair()`.
+  * Improved safety of `pymupdf embed-extract`. This now refuses to write to
+    an existing file or outside current directory, unless `-output` or new flag
+    `-unsafe` is specified. (CVE-2026-3029, bsc#1259921)
+  * Many issues fixed, see upstream changelog.
+</comment>
+    <requestid>1342215</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMuPDF
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 # Python 2 build fails always
 %define skip_python2 1
-%define pypi_name PyMuPDF
-%define mupdf_version 1.26.10
+%define pypi_name pymupdf
+%define mupdf_version 1.27.2
 %{?sle15_python_module_pythons}
 #python3-clangxx is only available for python 3.13
 %define pythons python313
-Name:           python-%{pypi_name}
-Version:        1.26.5
+Name:           python-PyMuPDF
+Version:        1.27.2.2
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        AGPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://github.com/pymupdf/PyMuPDF
-Source:         https://files.pythonhosted.org/packages/source/P/PyMuPDF/PyMuPDF-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyMuPDF/pymupdf-%{version}.tar.gz
 Source1:        mupdf-%{mupdf_version}-source.tar.gz
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
