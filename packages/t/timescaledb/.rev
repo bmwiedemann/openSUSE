@@ -583,4 +583,12 @@ Stop storing build machine kernel version (boo#1101107)</comment>
     - #9327 Fix handling of generated columns with NOT NULL domain</comment>
     <requestid>1336056</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>930aea8d132405d05e073698ccd42623</srcmd5>
+    <version>2.26.0</version>
+    <time>1774374621</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.26.0</comment>
+    <requestid>1342234</requestid>
+  </revision>
 </revisionlist>
