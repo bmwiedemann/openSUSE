@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar  9 08:01:15 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 1.1.0:
+  * scx_cake: A new experimental gaming-oriented scheduler
+  * scx_lavd: Support partial mode with --partial
+  * scx_mitosis: Add Optional LLC Awareness and Work Stealing
+  * scx_layered: topology-aware cpumask grid display for stats
+  * scx_layered: compact monitor stats and improve visual structure
+  * scx_cosmos: Add CPU capacity awareness
+  * scx_cosmos: use PMU library for perf event handling
+  * scx_layered: Node-aware growth algorithms and per-node StickyDynamic LLC
+    trading
+  * scx_layered: Unified per-node CPU allocation
+  * scx_layered: Per-node LLC drain and fallback dispatch
+  * scxtop: Ignore missing threads during initialization
+  * scx_cosmos: Add tick hook for preemption enforcement
+  * scx_lavd: Restrict slice boosting based on CPU utilization
+  * scx_cosmos: Introduce "sticky" and dynamic PMU thresholds
+  * scx_cosmos: GPU auto-affinitization
+
+-------------------------------------------------------------------
 Tue Feb 10 20:01:41 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 1.0.20:

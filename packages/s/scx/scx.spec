@@ -20,7 +20,7 @@
 %define libbpf_min_ver 1.4
 %define llvm_min_ver 17
 Name:           scx
-Version:        1.0.20
+Version:        1.1.0
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
@@ -82,6 +82,7 @@ for path in ./tools/scxtop \
 	./scheds/rust/scx_cosmos \
 	./scheds/rust/scx_layered \
 	./scheds/rust/scx_beerland \
+	./scheds/rust/scx_cake \
 	./scheds/rust/scx_bpfland; do
 pushd "${path}"
 %{cargo_install}
