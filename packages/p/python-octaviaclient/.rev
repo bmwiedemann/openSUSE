@@ -205,4 +205,18 @@
     <comment>switch to singlespec</comment>
     <requestid>1316770</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9c9e2d3b5419ab93706250d46c28b2e8</srcmd5>
+    <version>3.13.0</version>
+    <time>1774374652</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.13.0:
+  * Revert bug links to Launchpad
+  * Replace Neutronclient with Openstack SDK
+  * Update flake8-import-order version to fix checks
+  * Update master for stable/2025.2
+
+- fix filelist</comment>
+    <requestid>1342255</requestid>
+  </revision>
 </revisionlist>

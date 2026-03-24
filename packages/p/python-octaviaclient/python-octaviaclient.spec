@@ -1,7 +1,7 @@
 #
 # spec file for package python-octaviaclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-octaviaclient
-Version:        3.12.0
+Version:        3.13.0
 Release:        0
 Summary:        Octavia Plugin for the OpenStack Command-line Client
 License:        Apache-2.0
@@ -37,8 +37,8 @@ Requires:       python-Babel
 Requires:       python-cliff >= 2.8.0
 Requires:       python-keystoneauth1 >= 3.18.0
 Requires:       python-netifaces
-Requires:       python-neutronclient >= 6.7.0
 Requires:       python-openstackclient >= 3.12.0
+Requires:       python-openstacksdk
 Requires:       python-osc-lib >= 1.14.1
 Requires:       python-oslo.serialization >= 2.18.0
 Requires:       python-oslo.utils >= 3.33.0
@@ -84,8 +84,8 @@ rm -f octaviaclient/tests/unit/test_hacking.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python3_sitelib}/octaviaclient
-%{python3_sitelib}/python_octaviaclient-%{version}.dist-info
+%{python_sitelib}/octaviaclient
+%{python_sitelib}/python_octaviaclient-%{version}.dist-info
 
 %files -n python3-octaviaclient-doc
 %license LICENSE

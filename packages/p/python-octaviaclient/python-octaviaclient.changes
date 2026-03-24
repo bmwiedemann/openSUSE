@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar  9 21:48:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.0:
+  * Revert bug links to Launchpad
+  * Replace Neutronclient with Openstack SDK
+  * Update flake8-import-order version to fix checks
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
+Mon Nov 10 13:05:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- fix filelist
+
+-------------------------------------------------------------------
 Sun Nov  9 20:42:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.12.0:
