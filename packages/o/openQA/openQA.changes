@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 23 16:26:14 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774278862.ea002efa:
+  * refactor: slightly simplify BuildResults
+  * chore(AGENTS.md): add customized file
+  * refactor: deduplicate configuration defaults and verify openqa.ini
+  * fix(ci): fix referencing commit-message-checker
+  * style: Add Test::Perl::Critic dependency
+  * docs: document "always_run" test flag
+  * feat(Makefile): add help text for missing targets
+  * fix: prevent intermittent failure in t/ui/13-admin.t
+  * fix: remove fixed container sizing in needlediff view
+
+-------------------------------------------------------------------
 Mon Mar 23 02:08:22 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1774104919.9788babf:
