@@ -1,7 +1,7 @@
 #
 # spec file for package python-novaclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-novaclient
-Version:        18.11.0
+Version:        18.12.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Nova
 License:        Apache-2.0

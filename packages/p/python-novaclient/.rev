@@ -793,4 +793,20 @@ update to version 5.1.0
     <comment>switch to singlespec</comment>
     <requestid>1316769</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>56c7d5bb549c3b1a869b9511bdd4ff33</srcmd5>
+    <version>18.12.0</version>
+    <time>1774374648</time>
+    <user>anag_factory</user>
+    <comment>- update to 18.12.0:
+  * Replace obsolete PCRE packages
+  * Install pcre packages only in doc jobs
+  * Update the Testing document
+  * reno: Update master for unmaintained/2024.1
+  * Replace remaining py39 target
+  * Update master for stable/2025.2
+  * tests: Remove use of ddt
+  * Use pre-commit for lint jobs</comment>
+    <requestid>1342251</requestid>
+  </revision>
 </revisionlist>

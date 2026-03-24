@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar  9 21:44:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.12.0:
+  * Replace obsolete PCRE packages
+  * Install pcre packages only in doc jobs
+  * Update the Testing document
+  * reno: Update master for unmaintained/2024.1
+  * Replace remaining py39 target
+  * Update master for stable/2025.2
+  * tests: Remove use of ddt
+  * Use pre-commit for lint jobs
+
+-------------------------------------------------------------------
 Sun Nov  9 21:04:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.11.0:
