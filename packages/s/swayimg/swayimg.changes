@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 17 07:09:24 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Fix build errors on Leap
+  * Add GCC version override for Leap 15
+  * Disable EXIF support on Leap 15
+  * Disable OpenEXR support on Leap 16
+
+-------------------------------------------------------------------
 Sun Mar 15 22:20:43 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 5.0:

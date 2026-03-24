@@ -18,6 +18,9 @@
 
 
 %bcond_with test
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 13
+%endif
 Name:           swayimg
 Version:        5.0
 Release:        0
@@ -28,16 +31,17 @@ Source:         %{url}/archive/v.%{version}/%{name}-v.%{version}.tar.gz
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.60.0
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(OpenEXR) >= 3.1
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(exiv2)
 %endif
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libavif)
@@ -65,11 +69,19 @@ opening the image directly in a terminal window.
 %autosetup -n %{name}-v.%{version} -p1
 
 %build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
 %meson \
 %if 0%{?suse_version} < 1600
+  -Dexif=disabled \
   -Dexr=disabled \
   -Djxl=disabled \
   -Dsvg=disabled \
+%endif
+%if 0%{?suse_version} == 1600
+  -Dexr=disabled \
 %endif
 %if %{with test}
   -Dtests=enabled \
