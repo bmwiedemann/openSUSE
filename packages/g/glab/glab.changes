@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Tue Mar 24 05:53:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.90.0:
+  * Features
+    - c33f8508: feat(auth): add --web,
+      --container-registry-domains, --ssh-hostname flags to login
+      (Ashutosh Kumar Singh ashutoshkumarsingh0x@gmail.com)
+    - ceb51ebd: feat(ci auto login): move from experimental to GA
+      (Timo Furrer tfurrer@gitlab.com)
+    - 4f7b1815: feat(mr): add note list subcommand (Tomas Vik
+      tvik@gitlab.com)
+    - e3ff3569: feat(mr): add note resolve and reopen subcommands
+      (Tomas Vik tvik@gitlab.com)
+    - 9c6e4129: feat(runner-controller): implement new get command
+      (Timo Furrer tfurrer@gitlab.com)
+    - d1ad6fd2: feat(stack): model save and amend add file behavior
+      after git commit (Casey Morris casey@philo.com)
+    - a535468c: feat(stacked-diffs): add warning when saving from
+      non-last stack entry (Gary Holtz gholtz@gitlab.com)
+    - e2dfc31c: feat: add --auto-merge flag to mr create command
+      (Kai Armstrong karmstrong@gitlab.com)
+    - d54279e5: feat: add new command for checking job status by
+      runner (kumaraayush9810 kumaraayush9810@gmail.com)
+    - 59808c96: feat: add new command for listing the manager of
+      runner (kumaraayush9810 kumaraayush9810@gmail.com)
+    - b9f1c8cc: feat: automatically notify issues when released
+      (Kai Armstrong karmstrong@gitlab.com)
+  * Bug Fixes
+    - 8e876852: fix(auth): rewrite remote repo host when SSH
+      hostname maps to config host (Carsten Hoffmann morl99@web.de)
+    - 31fa0af6: fix(mr): show all proposed changes in update
+      preview (Kai Armstrong karmstrong@gitlab.com)
+    - 4280006b: fix(style): ensure config value is used (Filip
+      Aleksic faleksic@gitlab.com)
+    - 735e6f1b: fix: add Ctrl+C signal handling to exit glab ci
+      status --live (Kai Armstrong karmstrong@gitlab.com)
+    - d14dd1dc: fix: bump CI Go version to 1.25.8 for glamour v2
+      compatibility (Tomas Vik tvik@gitlab.com)
+    - d1e1217e: fix: remove redundant SCP parsing and add smart Git
+      protocol defaults (Kai Armstrong karmstrong@gitlab.com)
+    - 5d0ba457: fix: resolve linting issues introduced by Go 1.26
+      version bump (Jay McCure jmccure@gitlab.com)
+    - 30b1d0f1: fix: restore glamour v1 auto-detection for
+      TTY/noTTY style selection (Tomas Vik tvik@gitlab.com)
+    - 799a8298: fix: return error when release notes file exists
+      but is unreadable (Ashutosh Kumar Singh
+      ashutoshkumarsingh0x@gmail.com)
+    - fa616eff: fix: sanitize git hook env vars in test helpers for
+      worktree isolation (Tomas Vik tvik@gitlab.com)
+    - 144e41c0: fix: skip TestDetectPlatform on unsupported
+      architectures (Ashutosh Kumar Singh
+      ashutoshkumarsingh0x@gmail.com)
+    - 8d9197d9: fix: update Remote.Repo hostname for SSH remotes in
+      split-host setups (Kai Armstrong karmstrong@gitlab.com)
+    - 8d404c09: fix: update glamour v2 import path and API changes
+      (Tomas Vik tvik@gitlab.com)
+  * Documentation
+    - abd3ff94: docs: Remove EOL spaces in doc files - 2026-03-06
+      (Brendan Lynch blynch@gitlab.com)
+    - 10548a1c: docs: Review and update glab note list subcommand
+      page (Brendan Lynch blynch@gitlab.com)
+    - 6b47f909: docs: renames classic chat to non-agentic chat (Uma
+      Chandran uchandran@gitlab.com)
+    - 515ab7f1: docs: wrap glab CLI commands in backticks (Evan
+      Read eread@gitlab.com)
+  * Dependencies
+    - a0241495: chore(deps): bump go version updates to v1.26.1
+      (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 67acc347: chore(deps): bump golangci-lint to v2.11.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 736b087b: chore(deps): bump golangci-lint to v2.11.1 (Ahmed
+      Hemdan ahemdan@gitlab.com)
+    - 83758be2: chore(deps): bump golangci-lint to v2.11.2 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - a6f2afa7: chore(deps): bump golangci-lint to v2.11.3 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 0e7a03e7: chore(deps): migrate fang to charm.land/fang/v2
+      (Tomas Vik tvik@gitlab.com)
+    - 47e7f706: chore(deps): replace huhtest with ugh to support
+      huh v2 (Timo Furrer tfurrer@gitlab.com)
+    - c483714b: chore(deps): update dependency @commitlint/cli to
+      ^20.4.4 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - e2168b07: chore(deps): update dependency @commitlint/cli to
+      ^20.5.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 9e0d8a41: chore(deps): update dependency @commitlint/format
+      to ^20.4.4 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 28d6a89f: chore(deps): update dependency @commitlint/format
+      to ^20.5.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - c167e385: chore(deps): update dependency @commitlint/lint to
+      ^20.5.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 0dc4ec68: chore(deps): update dependency @commitlint/read to
+      ^20.5.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - a0f4e7c3: chore(deps): update dependency markdownlint-cli2 to
+      v0.22.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 9a364b95: chore(deps): update module charm.land/lipgloss/v2
+      to v2.0.2 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - a8ceb927: chore(deps): update module
+      github.com/charmbracelet/glamour to v2 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - dc8eff1f: chore(deps): update module github.com/docker/cli to
+      v29.3.0+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - a27c93b8: chore(deps): update module
+      github.com/mattn/go-runewidth to v0.0.21 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - c2a9f2cb: chore(deps): update module
+      github.com/modelcontextprotocol/go-sdk to v1.4.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 192012ae: chore(deps): update module
+      github.com/zalando/go-keyring to v0.2.7 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 93a3e065: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.4.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 245f98e4: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.5.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 1b384b6a: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.6.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 5b744812: chore(deps): update module golang.org/x/crypto to
+      v0.49.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - cf354fb0: chore(deps): update module golang.org/x/oauth2 to
+      v0.36.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - bc5dcc57: chore(deps): update module golang.org/x/text to
+      v0.35.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - d35095ba: chore(deps): update module k8s.io/client-go to
+      v0.35.3 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 4275d2b0: chore(deps): upgrade to huh v2 (Timo Furrer
+      tfurrer@gitlab.com)
+  * Maintenance
+    - 5f37677f: chore(ai): add AGENTS.md and pre-push verification
+      (Tomas Vik tvik@gitlab.com)
+    - 699b5d18: chore(ci): ci maintenance (Filip Aleksic
+      faleksic@gitlab.com)
+    - e21faffe: chore(gen-docs): dont create empty dirs (Filip
+      Aleksic faleksic@gitlab.com)
+    - 76292112: chore(mod): regroup go.mod (Timo Furrer
+      tfurrer@gitlab.com)
+    - f7308511: chore(tests): ensure keyring test uses tmp env
+      (Filip Aleksic faleksic@gitlab.com)
+    - 009cd795: chore: final tidy up of Markdown in project (Evan
+      Read eread@gitlab.com)
+    - cfcc00f1: chore: make 'repo' and other Markdown files adhere
+      to linting standards (Evan Read eread@gitlab.com)
+    - 00a7aaf2: chore: make Markdown files for subcommands adhere
+      to linting standards (Evan Read eread@gitlab.com)
+    - d0899a30: chore: make Markdown files in 'mr' directory adhere
+      to linting standards (Evan Read eread@gitlab.com)
+    - e26db556: chore: make additional Markdown files adhere to
+      linting standards (Evan Read eread@gitlab.com)
+    - ebdf5693: chore: make even more Markdown files adhere to
+      linting standards (Evan Read eread@gitlab.com)
+    - 65a0481a: chore: make more Markdown files adhere to linting
+      standards (Evan Read eread@gitlab.com)
+    - 6620df6b: chore: make remaining 'ci' Markdown files adhere to
+      linting standards (Evan Read eread@gitlab.com)
+    - 7464b954: chore: make remaining Markdown files for
+      subcommands adhere to standards (Evan Read eread@gitlab.com)
+    - 49703916: chore: make runner-related Markdown files adhere to
+      linting standards (Evan Read eread@gitlab.com)
+    - 6dc90c5a: chore: make some Markdown files adhere to linting
+      standards (Evan Read eread@gitlab.com)
+    - c8856222: chore: use alternative method for wrapping bare
+      URLs in Markdown (Evan Read eread@gitlab.com)
+    - c761ae27: ci: add Go version consistency check (Tomas Vik
+      tvik@gitlab.com)
+    - 64c52d3c: refactor(mr): extract discussion helpers and
+      rendering to mrutils (Tomas Vik tvik@gitlab.com)
+    - f5e9828c: refactor: remove redundant signal handling in ci
+      status command (Kai Armstrong karmstrong@gitlab.com)
+    - dd04eb2f: refactor: rename glamourStyle to getGlamourStyle
+      for clarity (Tomas Vik tvik@gitlab.com)
+    - e29240c2: refactor: use EnableJSONOutput helper for 14
+      additional commands (Kai Armstrong karmstrong@gitlab.com)
+  * Others
+    - ec7b3600: build: update Go version in .tool-versions to match
+      go.mod (Tomas Vik tvik@gitlab.com)
+
+-------------------------------------------------------------------
 Fri Mar 06 06:10:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.89.0:
