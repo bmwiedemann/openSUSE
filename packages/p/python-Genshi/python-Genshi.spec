@@ -1,7 +1,7 @@
 #
 # spec file for package python-Genshi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,13 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Genshi
-Version:        0.7.9
+Version:        0.7.10
 Release:        0
 Summary:        A toolkit for generation of output for the web
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://genshi.edgewall.org/
-Source:         https://files.pythonhosted.org/packages/source/G/Genshi/Genshi-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM remove_six.patch gh#edgewall/genshi!92 mcepl@suse.com
-# remove six
-Patch0:         remove_six.patch
+Source:         https://files.pythonhosted.org/packages/source/g/genshi/genshi-%{version}.tar.gz
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -67,7 +64,7 @@ feature is a template language, which is heavily inspired by Kid.
 This package contains documentation and examples.
 
 %prep
-%autosetup -p1 -n Genshi-%{version}
+%autosetup -p1 -n genshi-%{version}
 
 %build
 %pyproject_wheel

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 20 13:52:16 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.10
+  * Remove dependency on six. (#94 by Simon Cross)
+  * Update the benchmarks to support Python 3.13 (the "cgi"
+    module was removed in 3.13) (#90 by Alexandre Detiste)
+  * Migrate documentation to Sphinx. (#89 by Simon Cross)
+  * Update GitHub Action versions. (#88 by Simon Cross)
+  * Fix HTMLParser error handling. (#87 by Simon Cross)
+  * Switch tests to pytest. (#86 by Simon Cross)
+- Adjust upstream source name in spec file
+- Drop remove_six.patch, merged upstream
+
+-------------------------------------------------------------------
 Fri May  9 06:30:01 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add remove_six.patch removing six from the package
