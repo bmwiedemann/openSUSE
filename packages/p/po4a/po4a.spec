@@ -1,7 +1,7 @@
 #
 # spec file for package po4a
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           po4a
-Version:        0.74
+Version:        0.74+git.1774221329.f4123361
 Release:        0
 Summary:        Framework to translate documentation and other materials
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ Group:          text
 Group:          Development/Tools/Other
 %endif
 URL:            https://po4a.org/
-Source:         https://github.com/mquinson/po4a/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 
 %if "%{_vendor}" == "debbuild"
 BuildRequires:  deb-perl-macros

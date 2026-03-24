@@ -318,4 +318,24 @@ pull the gettext files.
     <comment></comment>
     <requestid>1295285</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e28e5f5191786bb7604438d36c717061</srcmd5>
+    <version>0.74+git.1774221329.f4123361</version>
+    <time>1774374470</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.74+git.1774221329.f4123361:
+  * Add news entry about the msginit compatibility fix.
+  * Fix msginit compatibility with gettext &gt;= 1.0. (boo#1259063)
+  * Keep the last line of YAML front matter section.
+  * Split YAML front matter module from Text module.
+  * Define YAML separator constant.
+  * Remove debug option handling from each format modules.
+  * Use debug subroutine for format modules.
+  * Remove verbose option handling from each format modules.
+  * Tidy some format modules.
+  * Update news about the fix for the SimplePod module.
+- Swith to use _service instead of upstream tarball to have
+  the latest fixes from upstream.</comment>
+    <requestid>1342203</requestid>
+  </revision>
 </revisionlist>

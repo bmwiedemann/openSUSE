@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 23 15:37:34 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to version 0.74+git.1774221329.f4123361:
+  * Add news entry about the msginit compatibility fix.
+  * Fix msginit compatibility with gettext >= 1.0. (boo#1259063)
+  * Keep the last line of YAML front matter section.
+  * Split YAML front matter module from Text module.
+  * Define YAML separator constant.
+  * Remove debug option handling from each format modules.
+  * Use debug subroutine for format modules.
+  * Remove verbose option handling from each format modules.
+  * Tidy some format modules.
+  * Update news about the fix for the SimplePod module.
+- Swith to use _service instead of upstream tarball to have
+  the latest fixes from upstream.
+
+-------------------------------------------------------------------
 Mon Jul 21 19:12:56 UTC 2025 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - Update to version 0.74:
