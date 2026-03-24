@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 19:36:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.7.3
+  * When a SysEx message touches the timbre number of the Patch
+    Temp memory area for a part, all currently playing notes on
+    that part now start to decay instantly. This is similar to the
+    way a Program Change event is handled, and it's how the real
+    h/w does this. (#132).
+
+-------------------------------------------------------------------
 Fri May  9 03:15:51 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Update to 2.7.2

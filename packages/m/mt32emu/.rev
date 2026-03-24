@@ -199,4 +199,17 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
   * Fixed the build with cmake4.</comment>
     <requestid>1275942</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a98ecbef3dab284982547ed771106fec</srcmd5>
+    <version>2.7.3</version>
+    <time>1774374531</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.7.3
+  * When a SysEx message touches the timbre number of the Patch
+    Temp memory area for a part, all currently playing notes on
+    that part now start to decay instantly. This is similar to the
+    way a Program Change event is handled, and it's how the real
+    h/w does this. (#132).</comment>
+    <requestid>1342096</requestid>
+  </revision>
 </revisionlist>

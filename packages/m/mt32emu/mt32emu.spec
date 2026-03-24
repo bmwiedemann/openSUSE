@@ -1,7 +1,7 @@
 #
 # spec file for package mt32emu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define s_name  munt-lib%{name}_%{s_ver}
-%define s_ver   2_7_2
+%define s_ver   2_7_3
 %define sover   2
 Name:           mt32emu
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        An emulator of the Roland MT-32, CM-32L and LAPC-I synthesiser modules
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
