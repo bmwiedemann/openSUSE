@@ -163,4 +163,21 @@ VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, so
     - govulncheck reports current version not affected by this CVE (forwarded request 1333819 from jfkw)</comment>
     <requestid>1333820</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e6fbb96d6d692e7acd6fe6537b7da21f</srcmd5>
+    <version>0.4.1+git96.558125d</version>
+    <time>1774374547</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.1+git96.558125d:
+  * Bump the all group across 1 directory with 3 updates
+  * Bump the all group with 2 updates
+  * Bump chainguard-dev/actions from 1.6.5 to 1.6.6 in the all group
+  * Bump github.com/google/go-containerregistry from 0.20.7 to 0.21.0
+  * Bump actions/upload-artifact from 6.0.0 to 7.0.0
+  * Bump the all group across 1 directory with 2 updates
+  * Bump github.com/package-url/packageurl-go in the all group
+  * Bump goreleaser/goreleaser-action from 6.4.0 to 7.0.0
+  * Bump chainguard-dev/actions from 1.6.2 to 1.6.4 in the all group (forwarded request 1342138 from jfkw)</comment>
+    <requestid>1342145</requestid>
+  </revision>
 </revisionlist>
