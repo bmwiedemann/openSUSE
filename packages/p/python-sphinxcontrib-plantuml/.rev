@@ -100,4 +100,18 @@
     <comment>- Allow testsuite to fail due to Python 3.13 issues.</comment>
     <requestid>1240002</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>04ba896877268e0d64ae54ad6275ffe5</srcmd5>
+    <version>0.31</version>
+    <time>1774374616</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.31:
+  * use inspect.getdoc() to get around breaking change in Python 3.13
+  * search for ImageConverter capable of svg to pdf conversion
+    after init
+- reenable tests
+
+- Allow testsuite to fail due to Python 3.13 issues.</comment>
+    <requestid>1342227</requestid>
+  </revision>
 </revisionlist>

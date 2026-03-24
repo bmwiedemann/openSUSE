@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 24 12:27:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31:
+  * use inspect.getdoc() to get around breaking change in Python 3.13
+  * search for ImageConverter capable of svg to pdf conversion
+    after init
+- reenable tests
+
+-------------------------------------------------------------------
 Fri Jan 24 02:13:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Allow testsuite to fail due to Python 3.13 issues. 
+- Allow testsuite to fail due to Python 3.13 issues.
 
 -------------------------------------------------------------------
 Sat Jun 29 05:43:45 UTC 2024 - Dirk Müller <dmueller@suse.com>
