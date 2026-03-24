@@ -401,4 +401,12 @@
     <comment></comment>
     <requestid>1341171</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>62c494acc35df62042c5f5ba2c1ee352</srcmd5>
+    <version>0.34.0</version>
+    <time>1774374516</time>
+    <user>anag_factory</user>
+    <comment>- fix dependencies (we now have to use env -S)</comment>
+    <requestid>1342078</requestid>
+  </revision>
 </revisionlist>

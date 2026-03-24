@@ -24,8 +24,12 @@ License:        Apache-2.0
 URL:            https://github.com/google-gemini/gemini-cli
 Source0:        https://github.com/google-gemini/gemini-cli/releases/download/v%{version}/gemini.js#/%{name}-%{version}.js
 Source1:        https://raw.githubusercontent.com/google-gemini/gemini-cli/refs/tags/v%{version}/LICENSE
+Requires:       /usr/bin/node
 Requires:       git-core
 Requires:       grep
+Requires:       gzip
+Requires:       tar
+Requires:       zstd
 Recommends:     codespell
 
 %description
@@ -44,7 +48,6 @@ most direct path from your prompt to our model.
 cp -p %{SOURCE1} .
 
 %build
-sed -i -e '1s,#!/usr/bin/env node,#!/usr/bin/node,' %{SOURCE0}
 
 %install
 install -D -m 0755 %{SOURCE0} %{buildroot}%{_bindir}/gemini

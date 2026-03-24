@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 17:16:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix dependencies (we now have to use env -S)
+
+-------------------------------------------------------------------
 Wed Mar 18 07:50:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.34.0:
