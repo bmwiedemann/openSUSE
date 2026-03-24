@@ -517,4 +517,22 @@
   * skip get_main_language call if no language detected</comment>
     <requestid>1328186</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c2581bf2bb8956ec5506f60e34a62e10</srcmd5>
+    <version>2.27.1</version>
+    <time>1774374587</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.27.1:
+  * Fix CD pipeline
+
+- Update to 0.27.0:
+  New Features:
+  * add language support for Nushell #1687
+  * add language support for Slint #1710
+  Bug Fixes:
+  * fix npm manifest parsing #1693
+  * always show ascii-language when provided #1713
+  * ascii_colors should match ascii-language colors when provided by CLI when no language detected bcfca6b</comment>
+    <requestid>1342183</requestid>
+  </revision>
 </revisionlist>

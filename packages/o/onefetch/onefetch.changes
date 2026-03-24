@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 24 08:17:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.27.1:
+  * Fix CD pipeline
+
+-------------------------------------------------------------------
+Tue Mar 24 08:16:37 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.27.0:
+  New Features:
+  * add language support for Nushell #1687
+  * add language support for Slint #1710
+  Bug Fixes:
+  * fix npm manifest parsing #1693
+  * always show ascii-language when provided #1713
+  * ascii_colors should match ascii-language colors when provided by CLI when no language detected bcfca6b
+
+-------------------------------------------------------------------
 Tue Jan 20 08:05:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.26.1:
