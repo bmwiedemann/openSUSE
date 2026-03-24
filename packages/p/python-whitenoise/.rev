@@ -195,4 +195,18 @@
     <comment>- Fix build for Leap 15.7</comment>
     <requestid>1307085</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5732c4b60b822775c85226196e759eb9</srcmd5>
+    <version>6.12.0</version>
+    <time>1774374535</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.12.0:
+  * Drop Python 3.9 support.
+  * Fix potential unauthorised file access vulnerability in
+    &quot;autorefesh&quot; mode. See PR #684 for details, and a reminder
+    that autorefresh mode has always been documented as
+    unsuitable for production use. Thanks Seth Larson for
+    reporting.</comment>
+    <requestid>1342122</requestid>
+  </revision>
 </revisionlist>
