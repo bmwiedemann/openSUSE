@@ -9,5 +9,6 @@ values, and can trace user and kernel functions, library calls, and system
 events to provide a unified timeline of execution. It also offers filtering
 and visualization features such as Chrome trace viewer integration, flame
 graphs, and call-graph diagrams.</description>
+  <devel project="devel:tools" package="uftrace"/>
   <url>https://github.com/namhyung/uftrace</url>
 </package>
