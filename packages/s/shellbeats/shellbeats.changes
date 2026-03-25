@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Feb 25 13:54:44 UTC 2026 - Luis Machado <luisfelipedutra@alunos.utfpr.edu.br>
+
+- Fix source URL mismatch and re-sync tarball with upstream hash.
+
+-------------------------------------------------------------------
+Wed Feb 25 00:35:48 UTC 2026 - Luis Machado <luisfelipedutra@alunos.utfpr.edu.br>
+
+- - Update Source0 to point to a stable Git commit hash using the URL renaming trick.
+- Add %check section to validate script syntax and fix rpmlint warning (no-check-section).
+- Fix invalid-url rpmlint warning in spec file.
+
+-------------------------------------------------------------------
+Tue Feb 24 15:31:03 UTC 2026 - Luis Machado <luisfelipedutra@alunos.utfpr.edu.br>
+
+- Initial package of shellbeats v0.6
+- Cleaned up spec file to follow openSUSE standards
+- Switched to pkgconfig style BuildRequires
+- Updated comments to English as requested by reviewer
