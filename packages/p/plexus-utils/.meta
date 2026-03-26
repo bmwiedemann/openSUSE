@@ -8,6 +8,5 @@ velocity, etc. Plexus also includes an application server which
 is like a J2EE application server, without all the baggage.
 
 </description>
-  <devel project="Java:packages" package="plexus-utils"/>
   <url>https://codehaus-plexus.github.io/plexus-utils/</url>
 </package>
