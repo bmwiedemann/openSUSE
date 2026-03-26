@@ -17,7 +17,7 @@
 
 
 Name:           updatecli
-Version:        0.113.0
+Version:        0.114.0
 Release:        0
 Summary:        A Declarative Dependency Management tool
 License:        Apache-2.0
@@ -26,8 +26,9 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.4
 BuildRequires:  zsh
+# 16.0 fails with go.mod requires go >= 1.26.0 (running go 1.26rc3; GOTOOLCHAIN=local)
+BuildRequires:  go1.26 >= 1.26.0
 
 %description
 Updatecli is a tool used to apply file update strategies. Designed to be used

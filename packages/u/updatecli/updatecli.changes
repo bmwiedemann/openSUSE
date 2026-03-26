@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Wed Feb 25 10:01:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.114.0:
+  * Features
+    - feat: allow to specify depth for git clone option @olblak
+      (#7668)
+    - feat(gittag): add lsremote parameter to skip git clone
+      @olblak (#7669)
+    - chore: improve error messaging in resource execution @olblak
+      (#7691)
+    - feat(autodiscovery): bazel support @josill (#7568)
+    - feat(autodiscovery): add Woodpecker CI plugin @railgun-0402
+      (#7635)
+    - feat(core): allow to filter pipeline based on labels @olblak
+      (#7621)
+    - feat(core): rename pipeline commands @josill (#7613)
+    - feat(file): add templating file path @mallendem (#7591)
+    - feat(gittag): add the parameter tag for gittag @josill
+      (#7486)
+  * Bug Fixes
+    - chore(jsonschema): set empty console output spec @olblak
+      (#7818)
+    - fix(autodiscovery): correctly handle wrong docker image name
+      @olblak (#7659)
+    - fix(file): file condition bug with searchpattern and
+      matchpattern @olblak (#7619)
+    - fix(file): file target bug with searchpattern and
+      matchpattern @josill (#7629)
+    - fix(autodiscovery/helmfile): error on invalid ignore spec
+      @railgun-0402 (#7620)
+    - fix(github): handle error before variable assignment @olblak
+      (#7593)
+    - fix(changelog): Add semver sorting to action changelogs
+      @josill (#7569)
+    - fix(terragrunt): add missing username for token
+      authentication @eugenestarchenko (#7506)
+    - fix: remove lowercase 'l' from compiler flags pattern to fix
+      -latest false positive @josill (#7485)
+  * Maintenance
+    - deps: bump golang to 1.26.0 @olblak (#7817)
+    - test(config): add failure-case tests for helm template
+      functions @ak95asb (#7816)
+    - chore: allow to run Updatecli daily on monitored pipeline
+      @olblak (#7814)
+    - chore(deps): bump filippo.io/edwards25519 from 1.1.0 to 1.1.1
+      in the go_modules group across 1 directory @dependabot[bot]
+      (#7808)
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v1.34.0 @updateclibot[bot] (#7804)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.289.0
+      @updateclibot[bot] (#7795)
+    - deps(go): bump module helm.sh/helm/v3 to v3.20.0
+      @updateclibot[bot] (#7791)
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v1.31.0 @updateclibot[bot] (#7788)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#7671)
+    - deps(go): bump module code.gitea.io/sdk/gitea to v0.23.2
+      @updateclibot[bot] (#7772)
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v1.30.0 @updateclibot[bot] (#7773)
+    - deps(go): bump module golang.org/x/mod to v0.33.0
+      @updateclibot[bot] (#7776)
+    - deps(go): bump module golang.org/x/net to v0.50.0
+      @updateclibot[bot] (#7768)
+    - deps: bump golangci-lint to v2.9.0 @updateclibot[bot] (#7754)
+    - deps(go): bump module github.com/drone/go-scm to v1.41.1
+      @updateclibot[bot] (#7736)
+    - deps(go): bump module github.com/go-viper/mapstructure/v2 to
+      v2.5.0 @updateclibot[bot] (#7732)
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v1.29.0 @updateclibot[bot] (#7727)
+    - deps(go): bump module golang.org/x/oauth2 to v0.35.0
+      @updateclibot[bot] (#7730)
+    - deps(go): bump module github.com/sirupsen/logrus to v1.9.4
+      @updateclibot[bot] (#7734)
+    - deps(go): bump module cuelang.org/go to v0.15.4
+      @updateclibot[bot] (#7737)
+    - deps(go): bump module github.com/jferrl/go-githubauth to
+      v1.5.1 @updateclibot[bot] (#7739)
+    - deps(go): bump module helm.sh/helm/v3 to v3.19.5
+      @updateclibot[bot] (#7735)
+    - deps(go): bump module github.com/go-git/go-git/v5 to v5.16.5
+      @updateclibot[bot] (#7704)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.286.0
+      @updateclibot[bot] (#7699)
+    - deps: Bump Golang version to 1.25.7 @updateclibot[bot]
+      (#7674)
+    - Update Updatecli cronjob @olblak (#7663)
+    - fix: e2e tests related to updatecli pipeline deprecation
+      @olblak (#7636)
+    - chore(ci): Update typos action to version 1.42.0 @olblak
+      (#7445)
+    - chore: migrate gopkg.in/yaml.v3 to go.yaml.in/yaml/v3 @olblak
+      (#7592)
+    - refactor: migrate away from Golang module
+      github.com/vmware-labs/yaml-jsonpath @ErickdelaCruzCas
+      (#7527)
+    - Add daily schedule for updatecli workflow @olblak (#7586)
+    - Add jsonschema required tag to resource Name field @olblak
+      (#7576)
+    - feat: Deprecate and remove scm commit title configuration
+      @josill (#7570)
+    - deps: bump golangci-lint to v2.8.0 @updateclibot[bot] (#7571)
+    - deps(go): bump module golang.org/x/mod to v0.32.0
+      @updateclibot[bot] (#7554)
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v1.14.0 @updateclibot[bot] (#7559)
+    - deps(go): bump module golang.org/x/text to v0.33.0
+      @updateclibot[bot] (#7555)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.7 @updateclibot[bot] (#7551)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.19.7
+      @updateclibot[bot] (#7540)
+    - deps(go): bump module github.com/goccy/go-yaml to v1.19.2
+      @updateclibot[bot] (#7534)
+    - fix(e2e): remove requiredEnv github_token from test @olblak
+      (#7507)
+    - deps(go): bump module gopkg.in/ini.v1 to v1.67.1
+      @updateclibot[bot] (#7494)
+  * Documentation
+    - doc: improve dockerfile & dockerimage plugin documentation
+      @olblak (#7609)
+
+-------------------------------------------------------------------
 Mon Jan 12 08:53:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.113.0:
