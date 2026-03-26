@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 25 12:23:45 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 3.3.4:
+  * Fix trace-cmd record processing of long options
+
+-------------------------------------------------------------------
 Mon Aug 25 09:55:22 UTC 2025 - Petr Pavlu <petr.pavlu@suse.com>
 
 - Update to version 3.3.3:
