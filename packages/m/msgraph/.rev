@@ -53,4 +53,12 @@
   + doc: Update URL to libsoup (forwarded request 1327202 from iznogood)</comment>
     <requestid>1327628</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f5369a8a4745e34800f3adeb2176b19f</srcmd5>
+    <version>0.3.4</version>
+    <time>1774626547</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1343001</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@ Release:        0
 Summary:        Library for accessing online serive APIs using MS Graph protocol
 License:        LGPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/msgraph
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gi-docgen)
