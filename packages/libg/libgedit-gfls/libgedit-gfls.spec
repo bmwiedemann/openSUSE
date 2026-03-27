@@ -22,7 +22,7 @@ Release:        0
 Summary:        Gedit Technology - File loading and saving
 License:        LGPL-3.0-or-later
 URL:            https://gedit-technology.github.io/
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
