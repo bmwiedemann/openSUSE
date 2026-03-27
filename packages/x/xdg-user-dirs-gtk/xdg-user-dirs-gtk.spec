@@ -23,7 +23,7 @@ Summary:        Xdg-user-dir support for Gnome and Gtk+ applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://download.gnome.org/sources/xdg-user-dirs-gtk
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM xdg-user-dirs-gtk-XFCE-LXDE-autostart.patch fdo#33107 gber@opensuse.org -- Start xdg-user-dirs-gtk in Xfce sessions as well
 Patch1:         %{name}-XFCE-autostart.patch
 
