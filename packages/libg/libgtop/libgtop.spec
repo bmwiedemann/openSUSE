@@ -24,7 +24,7 @@ Summary:        System status information library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://developer.gnome.org/libgtop/stable/
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  libtool
