@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Mar 27 05:57:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.97.0:
+  * New Features
+    - [jfrog-cli-artifactory] XRAY-136990 - Added Dependency
+      Exlcusion Based on Scope #394 (@omerb-jfrog)
+    - [jfrog-cli-security] Add Force specific tech in static sca
+      #655 (@attiasas)
+    - [jfrog-cli-security] Add validation error if required package
+      not installed for the AM #604 (@attiasas)
+    - [jfrog-client-go] Add get evidence version api call #1325
+      (@mnsboev)
+  * Bug Fixes
+    - [jfrog-cli-artifactory] fix conan recipe not in root dir
+      issue #397 (@reshmifrog)
+    - [jfrog-cli-artifactory] Added logic for checking release
+      bundle into release-bundles-v2-jfds #396 (@naveenku-jfrog)
+    - [jfrog-cli-artifactory] Reverting the changes done in PR396
+      #399 (@naveenku-jfrog)
+    - [jfrog-cli-artifactory] Added logic for adding python script
+      by embed package #395 (@naveenku-jfrog)
+    - [jfrog-cli-artifactory] fx helm subdomain issue #400
+      (@reshmifrog)
+    - [jfrog-cli-artifactory] Addressed bughunt bugs and
+      improvements #401 (@naveenku-jfrog)
+    - [jfrog-cli-security] Fix Secret violations parsing static-sca
+      #695 (@attiasas)
+    - [jfrog-cli-security] Display partial results on parsing error
+      #696 (@attiasas)
+    - [jfrog-cli-security] Fix diff cascade removal bug #697
+      (@attiasas)
+    - [jfrog-cli-security] Fix use wrapper mvn #699 (@attiasas)
+    - [jfrog-cli-security] Fix "permission denied" issue with
+      gradlew and MavenW #700 (@eranturgeman)
+    - [jfrog-cli-security] Fix version remediation in CDX mapping
+      #698 (@eranturgeman)
+    - [jfrog-client-go] JA-19680 - Fixed flaky test - Roles should
+      match regardless of order #1323 (@ranjithkm-jfrog)
+    - [jfrog-client-go] Addressed bug for updating project key in
+      release bundle query #1322 (@naveenku-jfrog)
+    - [jfrog-client-go] Fix xray report api #1327 (@attiasas)
+  * Internal Changes
+    - [jfrog-cli] Update dependencies (except evidence) #3403
+      (@RemiBou)
+    - [jfrog-cli-security] Update dependencies #703 (@attiasas)
+  * Other Changes
+    - [build-info-go] conan-recipe-not-in-root-dir #372
+      (@reshmifrog)
+    - [jfrog-cli] respect args passed through cli conan cmds #3378
+      (@reshmifrog)
+    - [jfrog-cli] Updated config in CLI e2e Pipeline for nodepool
+      and integration used #3391 (@neha-mishraa)
+    - [jfrog-cli] Updated nodepool for CLI e2e Pipeline #3392
+      (@neha-mishraa)
+    - [jfrog-cli] Removed project key environment variable from the
+      pipeline config #3393 (@neha-mishraa)
+    - [jfrog-cli] Workflow to rewrite the release notes #3398
+      (@itsmeleela)
+    - [jfrog-cli] Addressed bugs/improvements in huggingface
+      bughunts #3395 (@naveenku-jfrog)
+    - [jfrog-cli] Workflow hardening #3401 (@barakharyati)
+    - [jfrog-cli-artifactory] use conan upload json format #392
+      (@reshmifrog)
+    - [jfrog-cli-artifactory] Skills commands improvements #405
+      (@bhanurp)
+    - [jfrog-cli-core] Get deployment view #1533 (@attiasas)
+    - [jfrog-cli-security] Remove link to platform on audit cmd
+      #706 (@attiasas)
+    - [jfrog-client-go] Change pull_request_target to pull_request
+      in workflow #1330 (@barakharyati)
+
+-------------------------------------------------------------------
 Thu Mar 12 11:47:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.96.0:
