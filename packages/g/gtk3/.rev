@@ -1849,4 +1849,12 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment> (forwarded request 1308104 from iznogood)</comment>
     <requestid>1308133</requestid>
   </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>80da371649bd6600afebe121ca0ace36</srcmd5>
+    <version>3.24.52</version>
+    <time>1774626527</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342974</requestid>
+  </revision>
 </revisionlist>

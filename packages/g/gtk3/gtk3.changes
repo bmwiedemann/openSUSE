@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Mar 23 12:47:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.52:
+  + Bugs fixed:
+    - Zlib required when broadway is enabled.
+    - Invalid a11y events when calling `gtk_tree_view_set_cursor`
+      on an unfocused GtkTreeView (Michael Weghorn)
+    - Firefox crashes at gdk_wayland_drag_context_manage_dnd() when
+      missing toplevel wl_surface
+    - gtk3 refresh_rate calculation overflows on 32-bit targets
+    - Images for recolored icons are constantly being reloaded
+    - Wild strobing in multi window mode
+    - GIMP does not focus on dialogue boxes on Mac
+    - quartz: add automagic uti<->mime conversion for clipboard
+    - Fix position of child tooltips in GTK3 custom windows
+    - a11y: Don't send focus-related events for unfocused treeview
+    - quartz: gtkwindow - fix windows fighting focus
+    - gtkmenu: Await more motion events before deactivating on
+      release      
+    - wayland: Handle XKB initialization failures gracefully
+    - gdk/win32: Add missing EGL conditional compilation guard
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 23 08:49:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Tue Sep 30 06:10:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.51:
