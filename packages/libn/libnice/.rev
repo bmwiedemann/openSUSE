@@ -417,4 +417,12 @@
 - Temp disable test-suite. (forwarded request 1330065 from iznogood)</comment>
     <requestid>1330724</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>813471c688594afc24423c3fb5ee3eaa</srcmd5>
+    <version>0.1.23</version>
+    <time>1774626538</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342990</requestid>
+  </revision>
 </revisionlist>

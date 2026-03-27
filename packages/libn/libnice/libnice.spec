@@ -23,7 +23,7 @@ Summary:        Interactive Connectivity Establishment implementation
 License:        LGPL-2.1-only OR MPL-1.1
 Group:          Development/Libraries/GNOME
 URL:            https://nice.freedesktop.org/
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM libnice-port-gupnp-igd-bump.patch -- Port to new gupnp-igd
 Patch1:         libnice-port-gupnp-igd-bump.patch
