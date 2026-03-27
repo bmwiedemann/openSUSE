@@ -23,7 +23,7 @@ Summary:        "Five or More" Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/Five_or_more
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

@@ -278,4 +278,12 @@
   + Don't create window in startup phase. (forwarded request 1268807 from iznogood)</comment>
     <requestid>1269675</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>0cd68922ae15fbf482c9ab4e0e8874f8</srcmd5>
+    <version>48.1</version>
+    <time>1774626591</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342945</requestid>
+  </revision>
 </revisionlist>
