@@ -7,5 +7,4 @@ implemented through a plug-in mechanism. Interoperability with other
 devices in the market is achieved by conformance to very strict
 requirements of DLNA and on the fly conversion of media to format that
 client devices are capable of handling.</description>
-  <devel project="GNOME:Factory" package="rygel"/>
 </package>

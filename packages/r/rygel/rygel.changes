@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:01:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Tue Jan  6 09:54:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rework rygel-set-soversion.patch to use variables instead of

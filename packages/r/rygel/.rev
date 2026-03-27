@@ -840,4 +840,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1325582</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>770b72561eba398921943912defb4780</srcmd5>
+    <version>45.1</version>
+    <time>1774626604</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1343009</requestid>
+  </revision>
 </revisionlist>

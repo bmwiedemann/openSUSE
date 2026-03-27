@@ -27,7 +27,7 @@ Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://live.gnome.org/Rygel
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Patch0:         rygel-set-soversion.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.33.4
