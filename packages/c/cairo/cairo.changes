@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:23:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Mon Aug 11 15:14:49 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add b5752618.patch:

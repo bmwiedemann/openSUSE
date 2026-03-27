@@ -811,4 +811,12 @@ Upstream: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/114 (forwa
     <comment></comment>
     <requestid>1299965</requestid>
   </revision>
+  <revision rev="101" vrev="4">
+    <srcmd5>bc7c992587af126a9c1209fab9bc9c8e</srcmd5>
+    <version>1.18.4</version>
+    <time>1774626506</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342938</requestid>
+  </revision>
 </revisionlist>
