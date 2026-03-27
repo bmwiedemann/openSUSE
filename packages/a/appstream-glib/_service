@@ -1,5 +1,6 @@
+<?xml version="1.0"?>
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/hughsie/appstream-glib.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
@@ -8,10 +9,10 @@
     <param name="changesgenerate">enable</param>
     <param name="revision">refs/tags/appstream_glib_0_8_3</param>
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

@@ -881,4 +881,12 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
     <time>1759212346</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>f56d262d1672321a63df1727bd90b33d</srcmd5>
+    <version>0.8.3</version>
+    <time>1774626505</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342936</requestid>
+  </revision>
 </revisionlist>

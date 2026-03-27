@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:35:54 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Thu Sep 18 10:28:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop gdk-pixbuf-loader-rsvg Requires: gdk-pixbuf can use
