@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:31:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Sun Mar  1 20:06:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - drop unneeded dependency on gnome-doc-utils/xml2po (boo#1259023)

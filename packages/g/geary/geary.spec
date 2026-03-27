@@ -23,7 +23,7 @@ Summary:        An email reader for the GNOME desktop
 License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Geary
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE Support-dark-theme-webview.patch -- Support dark mode for email bodies
 Patch1:         Support-dark-theme-webview.patch
 
