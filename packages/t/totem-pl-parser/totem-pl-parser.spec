@@ -25,7 +25,7 @@ Summary:        A GObject-based library to parse playlist formats
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            http://www.gnome.org/projects/totem/
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
