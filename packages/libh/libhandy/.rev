@@ -256,4 +256,12 @@
     <comment>GNOME 46 (forwarded request 1159269 from dimstar)</comment>
     <requestid>1159531</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>ded810a93a512d7ed1907d881f368ca1</srcmd5>
+    <version>1.8.3</version>
+    <time>1774626536</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342988</requestid>
+  </revision>
 </revisionlist>

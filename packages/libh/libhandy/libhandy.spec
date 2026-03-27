@@ -28,7 +28,7 @@ Summary:        A GTK+ library to develop UI for mobile devices
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/libhandy
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
