@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:31:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Sat Aug  9 10:20:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fdupes BuildRequires and macro, remove duplicate files.
