@@ -24,7 +24,7 @@ Summary:        A spell checker library for GTK+ applications
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gspell
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc >= 1.25
 BuildRequires:  meson

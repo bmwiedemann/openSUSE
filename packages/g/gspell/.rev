@@ -269,4 +269,12 @@
     <comment>New stable rel (forwarded request 1339508 from iznogood)</comment>
     <requestid>1339614</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>775623be05868f58fbe4a79282e94ecb</srcmd5>
+    <version>1.14.3</version>
+    <time>1774626522</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342972</requestid>
+  </revision>
 </revisionlist>
