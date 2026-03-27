@@ -23,7 +23,7 @@ Summary:        Program for writing an ISO file to multiple USB devices at once
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/MultiWriter
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  gobject-introspection-devel >= 0.9.8
 BuildRequires:  hicolor-icon-theme

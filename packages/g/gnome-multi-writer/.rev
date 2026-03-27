@@ -170,4 +170,12 @@
     <comment>- Drop obsolete update-desktop-files BuildRequires and macro. (forwarded request 1279644 from iznogood)</comment>
     <requestid>1280041</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>27575c38bd5ea27c58ce6e1c966c0c3f</srcmd5>
+    <version>3.35.90+26</version>
+    <time>1774626594</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342959</requestid>
+  </revision>
 </revisionlist>
