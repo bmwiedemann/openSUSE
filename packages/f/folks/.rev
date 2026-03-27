@@ -527,4 +527,12 @@
 </comment>
     <requestid>1327225</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>66f03cb43ab432c116ff267b9331a363</srcmd5>
+    <version>0.15.12</version>
+    <time>1774626508</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342947</requestid>
+  </revision>
 </revisionlist>

@@ -30,7 +30,7 @@ Summary:        Library to create metacontacts from multiple sources
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://telepathy.freedesktop.org/wiki/Folks
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel
