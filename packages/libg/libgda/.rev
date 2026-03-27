@@ -788,4 +788,13 @@ file is not available on the system.
     <comment> (forwarded request 1279614 from iznogood)</comment>
     <requestid>1280023</requestid>
   </revision>
+  <revision rev="100" vrev="11">
+    <srcmd5>d5874642373466ee90ad0dfdeb071348</srcmd5>
+    <version>6.0.0</version>
+    <time>1774626705</time>
+    <user>anag_factory</user>
+    <comment>- Drop pkgconfig(libsoup-2.4) BuildRequires and pass libsoup=false
+  to meson setup, no longer build optional libsoup support.</comment>
+    <requestid>1343197</requestid>
+  </revision>
 </revisionlist>

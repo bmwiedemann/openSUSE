@@ -76,7 +76,6 @@ BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgvc)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(mysqlclient)
@@ -394,6 +393,7 @@ javac getsp.java
   -Dldap=true \
   -Ddoc=true \
   -Dtools=true \
+  -Dlibsoup=false \
   %{nil}
 %meson_build
 

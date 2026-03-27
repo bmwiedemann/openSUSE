@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 27 11:56:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(libsoup-2.4) BuildRequires and pass libsoup=false
+  to meson setup, no longer build optional libsoup support.
+
+-------------------------------------------------------------------
 Fri May 23 14:01:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.
