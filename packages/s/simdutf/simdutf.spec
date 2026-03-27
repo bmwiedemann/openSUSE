@@ -25,7 +25,7 @@ Summary:        Unicode validation and transcoding at billions of characters per
 
 License:        Apache-2.0 AND BSD-3-Clause
 URL:            https://github.com/simdutf/simdutf
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

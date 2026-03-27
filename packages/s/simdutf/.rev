@@ -55,4 +55,12 @@
 - Bump lib_ver to 33.0.0 and so_ver to 33: follow upstream changes. (forwarded request 1338733 from iznogood)</comment>
     <requestid>1339235</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b6f1c17823b3def67cb436807bf59f74</srcmd5>
+    <version>8.2.0</version>
+    <time>1774626554</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1343012</requestid>
+  </revision>
 </revisionlist>
