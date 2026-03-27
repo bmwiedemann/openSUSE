@@ -97,4 +97,16 @@
   * Update Compute Engine v1 API to revision 20251230 (#1144) (forwarded request 1336324 from glaubitz)</comment>
     <requestid>1336407</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1c76375760ef972675cf0474176c95e2</srcmd5>
+    <version>1.46.0</version>
+    <time>1774626697</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.46.0
+  * Update Compute Engine v1 API to revision 20260227 (#1166)
+- from version 1.45.0
+  * Update Compute Engine v1 API to revision 20260213. The breaking
+    change exemption is approved in internal http://b/488396206. (forwarded request 1343187 from glaubitz)</comment>
+    <requestid>1343191</requestid>
+  </revision>
 </revisionlist>

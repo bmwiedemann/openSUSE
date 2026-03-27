@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 27 12:35:27 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.46.0
+  * Update Compute Engine v1 API to revision 20260227 (#1166)
+- from version 1.45.0
+  * Update Compute Engine v1 API to revision 20260213. The breaking
+    change exemption is approved in internal http://b/488396206.
+
+-------------------------------------------------------------------
 Wed Mar  4 10:24:19 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.44.0
