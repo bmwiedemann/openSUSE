@@ -23,7 +23,7 @@ Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://meldmerge.org/
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
