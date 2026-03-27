@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:24:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Wed Jan 14 06:55:35 UTC 2026 - gumsley_6@hotmail.com
+
+- Update to version 1.6.3:
+  * el -> 100%
+  * updated supporters
+  * history of latest search/replace patterns more recent first
+  * fixed history of latest search/replace patterns and added menu
+    item to reset the history
+  * kk_KZ, kk_LA, ru, zh_TW -> 100%
+  * Update pt.po (#2804)
+  * ko -> 100%
+  * uk -> 100%
+  * pt_BR -> 100%
+  * ja, pl, ro, sl -> 100%
+  * trying to fix issue with github workflow inno setup build
+  * cs, de, es, hy, it, tr -> 100%
+  * fixed msys2_prepare_standalone.sh
+  * fixed title of dialog to search/replace in multiple nodes
+    (#2770)
+  * added action to copy to clipboard the current document 
+    filepath (#2764)
+  * updated it.po (Vincenzo)
+  * implemented memory of the latest patterns searched
+    for / replaced with
+  * fixed closing parenthesis not included in automatically created
+    link (#2789)
+  * fix for drag and drop of text on windows behaving as copy,
+    not move (#2786)
+  * Revert "fix for drag and drop of text on windows behaving as
+    copy, not move (#2786)"
+  * fix for drag and drop of text on windows behaving as
+    copy, not move (#2786)
+  * aligning googletest to master
+  * added icons for artificial intelligence copilot, claude
+  * added icons for artificial intelligence chatgpt, gemini
+  * kk_KZ, kk_LA, ru -> 100%
+  * fr -> 100%
+  * sk -> 100%
+
+-------------------------------------------------------------------
 Sat Sep 20 00:30:10 UTC 2025 - gumsley_6@hotmail.com
 
 - Update to version 1.6.2:

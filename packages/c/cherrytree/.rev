@@ -1646,4 +1646,20 @@
     <comment>Update to version 1.6.2 (forwarded request 1307461 from xanders)</comment>
     <requestid>1307747</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a24786594e1d8a018736ba1fb9ead6f3</srcmd5>
+    <version>1.6.3</version>
+    <time>1771343718</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1333568</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>5b78e29035368a664e1ba1d157f100fa</srcmd5>
+    <version>1.6.3</version>
+    <time>1774626565</time>
+    <user>anag_factory</user>
+    <comment>Push from SCM</comment>
+    <requestid>1343022</requestid>
+  </revision>
 </revisionlist>
