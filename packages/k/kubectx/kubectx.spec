@@ -17,31 +17,97 @@
 
 
 Name:           kubectx
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Faster way to switch between clusters and namespaces in kubectl
 License:        Apache-2.0
 URL:            https://github.com/ahmetb/kubectx
-Source:         kubectx-%{version}.tar.gz
-BuildRequires:  go >= 1.13
-BuildArch:      noarch
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.25
+Requires:       (kubernetes-client-provider or kuberlr or oc)
 
 %description
 kubectx is a utility to manage and switch between kubectl(1) contexts.
 
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       fish
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
+
 %prep
-%setup -q
+%autosetup -p 1 -a 1
 
 %build
-sed -i '/^#!/ s/env\ bash/bash/' %{name}
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags="-X main.version=v%{version}" \
+   -o bin/%{name} ./cmd/%{name}
 
 %install
-# Install the script.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+# Install the binary.
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+install -D -m 0644 completion/kubectx.bash %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+install -D -m 0644 completion/kubectx.fish %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+install -D -m 0644 completion/_kubectx.zsh %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{name} --version
+%{buildroot}/%{_bindir}/%{name} --version | grep %{version}
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+
+%files -n %{name}-bash-completion
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+%files -n %{name}-zsh-completion
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog
