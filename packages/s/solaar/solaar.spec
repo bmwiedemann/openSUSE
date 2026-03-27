@@ -1,7 +1,7 @@
 #
 # spec file for package solaar
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,15 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
-%global pythons python311
-%else
 %global pythons python3
-%endif
 
 Name:           solaar
-Version:        1.1.16
+Version:        1.1.19
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
@@ -54,22 +49,22 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  typelib-1_0-Gtk-3_0
 #
-Requires:       python3-PyYAML
-Requires:       python3-dbus-python
-Requires:       python3-evdev
-Requires:       python3-gobject
-Requires:       python3-gobject-Gdk
-Requires:       python3-hid-parser
-Requires:       python3-psutil
-Requires:       python3-pyudev
-Requires:       python3-typing_extensions
+Requires:       %{python_module PyYAML}
+Requires:       %{python_module dbus-python}
+Requires:       %{python_module evdev}
+Requires:       %{python_module gobject-Gdk}
+Requires:       %{python_module gobject}
+Requires:       %{python_module hid-parser}
+Requires:       %{python_module psutil}
+Requires:       %{python_module pyudev}
+Requires:       %{python_module typing_extensions}
 #
 Requires:       solaar-udev >= %{version}
 Requires:       libappindicator-gtk3
 Requires:       typelib(AyatanaAppIndicator3)
 Requires:       typelib(Gtk) >= 3.0
 #
-Recommends:     python3-python-xlib
+Recommends:     %{python_module python-xlib}
 Recommends:     %{name}-lang = %{version}
 #
 Obsoletes:      solaar-cli < %{version}
