@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Fri Mar 27 02:01:34 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.13.0:
+  ## Breaking Changes
+  * ham_hubbard_hardcore fix description and sign convention of hopping
+    strength t.
+  * heisenberg_from_edges fix sign convention of magnetic field terms.
+  * the quimb.tensor submodule structure has been refactored with tn1d, tn2d,
+    tn3d, and tnag submodules for better organization. Imports from old
+    locations will still work, but are deprecated.
+  ## Enhancements
+  * Major updates to splitting/decomposing individual tensors/arrays
+
+-------------------------------------------------------------------
+Sun Mar 22 17:46:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * bump minimum required python version to 3.11
+  * fix `SimpleUpdateGen` mixin inheritance order.
+  * fix `insert_compressor_between_regions` for fermionic tensor
+    networks with bond signature +-.
+  * ## v1.12.0 (2026-01-09)
+  * move the experimental `operatorbuilder` module to the main
+    `quimb.operator` module.
+  * add basic introduction to the operator module -
+    {ref}`operator-basics`
+  * add new example on tracing tensor network functions
+    {ref}`ex_tracing_tn_functions`
+  * `tensor_split`: add an `info` kwarg, supplying this with an
+    empty dict or with the entry `'error'` will store the
+    truncation error when using `method in {"svd", "eig"}`.
+  * update infrastructure for TEBD and SimpleUpdate based
+    algorithms.
+  * `schematic.Drawing`: add `grid`, `grid3d`, `bezier`, `star`,
+    `cross` and `zigzag` methods.
+  * `schematic.Drawing`: add `relative` option to `arrowhead`,
+    `shorten` option to `text_between` and `text_left` and
+    `text_right` options to `line`.
+  * add `Drawing.scale_figsize` for automatically setting the
+    absolute figsize based on placed elements.
+  * refactor `TEBDGen` and `SimpleUpdateGen`
+  * update the 2d specific `SimpleUpdate` to use the new
+    infrastructure.
+  * `tn.draw()`: show abelian signature if using `symmray`
+    arrays.
+  * `tn.draw()`: add `adjust_lims` option
+  * `TNOptimizer`: allow `autodiff_backend="torch"` with
+    `jit_fn=True` to work with array backends with general pytree
+    parameters, e.g. `symmray` arrays.
+  * `tn.gen_gloops` and `tn.gen_gloops_sites`: add `join_overlap`
+    option. When building cluster by joining smaller generalized
+    loops, this option controls how many nodes they need to
+    overlap by to be joined together.
+  * all message passing routines: add `callback` option
+  * GBP: allow a message initilization function.
+  * `D1BP`: allow `messages` to be a callable initialization
+    function.
+  * `MatrixProductState.gate_nonlocal`: add `method="lazy"`
+    option for lazily applying a non-local gate as a sub-MPO
+    without contraction or compression.
+  * `LocalHamGen.apply_to_arrays`: support pytree parameter
+    arrays such as `symmray`.
+  * add `Tensor.get_namespace` and `TensorNetwork.get_namespace`
+    for getting a reusable data array namespace
+  * `TensorNetwork.isel`: use `take` where possible to better
+    support e.g. `torch.vmap` across amplitudes.
+  * `MatrixProductState.measure`, and
+    `MatrixProductState.sample`: add `backend_random` option for
+    specifying which backend to use for random number generation
+    when sampling, this can be set for example to `jax` to make
+    the whole process jittable, but by default is `numpy`,
+    regardless of the actual array backend.
+  * fix `insert_compressor_between_regions` when `insert_into is
+    None`.
+  * tensor network drawing, ensure hyper indices can be specified
+    as `output_inds`.
+  * fix `MatrixProductState.measure` when using jax arrays
+    ({issue}`340`).
+  * fix `MatrixProductState.measure` when projecting and keeping
+    a site site ({issue}`344`).
+
+-------------------------------------------------------------------
 Wed Feb 26 03:56:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.10.0:

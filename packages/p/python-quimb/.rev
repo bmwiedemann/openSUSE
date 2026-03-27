@@ -177,4 +177,41 @@
       avoid log10(norm) resulting in -inf or nan. Since it creates a data</comment>
     <requestid>1248539</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1d83932cd071e996436494aec7247ccf</srcmd5>
+    <version>1.13.0</version>
+    <time>1774626633</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.13.0:
+  ## Breaking Changes
+  * ham_hubbard_hardcore fix description and sign convention of hopping
+    strength t.
+  * heisenberg_from_edges fix sign convention of magnetic field terms.
+  * the quimb.tensor submodule structure has been refactored with tn1d, tn2d,
+    tn3d, and tnag submodules for better organization. Imports from old
+    locations will still work, but are deprecated.
+  ## Enhancements
+  * Major updates to splitting/decomposing individual tensors/arrays
+
+- update to 1.12.1:
+  * bump minimum required python version to 3.11
+  * fix `SimpleUpdateGen` mixin inheritance order.
+  * fix `insert_compressor_between_regions` for fermionic tensor
+    networks with bond signature +-.
+  * ## v1.12.0 (2026-01-09)
+  * move the experimental `operatorbuilder` module to the main
+    `quimb.operator` module.
+  * add basic introduction to the operator module -
+    {ref}`operator-basics`
+  * add new example on tracing tensor network functions
+    {ref}`ex_tracing_tn_functions`
+  * `tensor_split`: add an `info` kwarg, supplying this with an
+    empty dict or with the entry `'error'` will store the
+    truncation error when using `method in {&quot;svd&quot;, &quot;eig&quot;}`.
+  * update infrastructure for TEBD and SimpleUpdate based
+    algorithms.
+  * `schematic.Drawing`: add `grid`, `grid3d`, `bezier`, `star`,
+    `cross` and `zigzag` methods.</comment>
+    <requestid>1343078</requestid>
+  </revision>
 </revisionlist>
