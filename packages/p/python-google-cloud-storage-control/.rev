@@ -15,4 +15,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338319</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d37466c184817c5e814e3f67d1095389</srcmd5>
+    <version>1.11.0</version>
+    <time>1774626696</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.11.0
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py (forwarded request 1343177 from glaubitz)</comment>
+    <requestid>1343179</requestid>
+  </revision>
 </revisionlist>
