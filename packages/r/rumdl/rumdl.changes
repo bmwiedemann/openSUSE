@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Mar 27 06:00:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.61:
+  * Added
+    - MD018: Add tags config option to recognize #word patterns as
+      tags independently of flavor (#544)
+  * Fixed
+    - MD042: Treat bare # URL as empty link (#546)
+    - MD013: Ignore punctuation inside inline code for sentence
+      splitting (#545)
+    - MD063: Skip invalid headings like Obsidian-style tags (#544)
+
+-------------------------------------------------------------------
+Thu Mar 26 06:17:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.60:
+  * Fixed
+    - MD007: Fix start_indented not respecting text-aligned
+      indentation for unordered lists nested under ordered lists
+      (#541)
+  * Changed
+    - Normalize documentation URLs to lowercase for consistent
+      paths
+    - Fix broken links: VS Code marketplace publisher ID, Ruff docs
+      URL, deprecated rule references
+    - Add Cloudflare Pages redirects for backward compatibility
+    - Add lychee link checker to CI for pre-deploy link validation
+      (thanks @sglre6355 in #542)
+
+-------------------------------------------------------------------
+Wed Mar 25 06:04:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.59:
+  * Fixed
+    - MD053: Resolve false positive for reference links used inside
+      multi-line footnote bodies (#540)
+      - Root cause: ENABLE_OLD_FOOTNOTES parser option caused
+        footnote continuation lines to be misidentified as indented
+        code blocks, hiding reference usages from MD053
+      - Switched to ENABLE_FOOTNOTES and unified all pulldown-cmark
+        parser option sets across the codebase
+      - Added in_footnote_definition field to LineInfo for proper
+        footnote body detection
+    - MD005, MD007, MD030, MD032, MD046: Skip footnote definition
+      body content to prevent false positives on list indentation,
+      spacing, and code block style within footnotes
+    - MD045: Recognize Obsidian wikilink image alt text
+      (![[image|alt text]]) as valid
+    - Output: Suppress summary text in machine-readable output
+      formats (JSON, SARIF, etc.)
+
+-------------------------------------------------------------------
 Mon Mar 23 06:19:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.58:
