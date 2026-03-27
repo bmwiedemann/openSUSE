@@ -26,7 +26,7 @@ Summary:        Text Editor Product Line
 License:        LGPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Projects/Tepl
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc
