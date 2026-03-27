@@ -23,7 +23,7 @@ Summary:        A collection of plugins for Eye of GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            http://live.gnome.org/EyeOfGnome/Plugins
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 Source99:       eog-plugins.SUSE
 
 BuildRequires:  fdupes
