@@ -1,7 +1,7 @@
 #
 # spec file for package amberol
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,22 +23,23 @@ Release:        0
 Summary:        A small and simple sound and music player that is well integrated with GNOME
 License:        CC-BY-SA-3.0 AND CC0-1.0 AND GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/amberol
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
-BuildRequires:  m4
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
+BuildRequires:  cargo-c
+BuildRequires:  cargo-packaging >= 1.2.0+3
+BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  itstool
 BuildRequires:  libxml2-tools
+BuildRequires:  m4
 BuildRequires:  meson
+BuildRequires:  mpfrcx-devel
 BuildRequires:  pkgconfig
 BuildRequires:  reuse
-BuildRequires:  mpfrcx-devel
-BuildRequires:  cargo-c
-BuildRequires:  cargo-packaging >= 1.2.0+3
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gmp)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.16
 BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.16
 BuildRequires:  pkgconfig(gstreamer-bad-audio-1.0) >= 1.16
@@ -49,7 +50,6 @@ BuildRequires:  pkgconfig(gtk4) >= 4.6.0
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mpfr)
-BuildRequires:  pkgconfig(gmp)
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description

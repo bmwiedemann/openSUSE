@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:21:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Nov 23 12:26:21 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
+- Explicitly add desktop-file-utils to BuildRequires.
+
+-------------------------------------------------------------------
 Mon Mar 31 05:43:02 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 2025.1:
-  * Translation updates. 
+  * Translation updates.
 
 -------------------------------------------------------------------
 Sun Oct 27 18:14:48 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
@@ -17,7 +28,7 @@ Sun Oct 27 18:14:48 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
     - Translation updates.
   + Fixed:
     - UI and CSS cleanups and improvements.
-    - Rename the appdata file.  
+    - Rename the appdata file.
 
 -------------------------------------------------------------------
 Sun Sep 22 07:21:31 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -84,7 +95,7 @@ Tue Apr 25 16:10:09 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
     - Fix waveform overdrawing in RTL layout.
     - Fix waveform overdrawing.
     - Improve the readability of the drop overlay
-- Updated translations. 
+- Updated translations.
 
 -------------------------------------------------------------------
 Wed Dec 21 16:40:48 UTC 2022 - Dead Mozay <dead-mozay@opensuse.org>
@@ -100,7 +111,7 @@ Wed Dec 21 16:40:48 UTC 2022 - Dead Mozay <dead-mozay@opensuse.org>
     - Check for more file names for external covers.
     - Force the direction of the primary menu.
     - Remove toast for failed background portal requests.
-    - Fully animate waveform between tracks. 
+    - Fully animate waveform between tracks.
 
 -------------------------------------------------------------------
 Tue Aug 30 14:24:57 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
@@ -146,7 +157,7 @@ Sat Aug  6 17:27:30 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 -------------------------------------------------------------------
 Sat Jun 25 13:07:44 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Cleaning the spec from debris. 
+- Cleaning the spec from debris.
 
 -------------------------------------------------------------------
 Sat Jun 25 09:44:10 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
@@ -160,10 +171,10 @@ Sat Jun 25 09:44:10 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
   + Use the display name as the song base UUID.
   + Handle nested dist folders properly.
   + Let Amberol run in the background without a window.
-  + Sort files like Nautilus when adding a folder. 
+  + Sort files like Nautilus when adding a folder.
   + Updated translations.
 
 -------------------------------------------------------------------
 Fri May  6 08:59:50 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Initial package. 
+- Initial package.
