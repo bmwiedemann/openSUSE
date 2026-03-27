@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 27 06:14:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 22.7.1:
+  * Bug Fixes
+    - Breadcrumbs now display the proposal title for the current
+      branch when available (#6107).
+    - Fixed commit message formatting in the glab connector
+      (#6105).
+
+-------------------------------------------------------------------
 Mon Mar 23 07:04:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 22.7.0:
