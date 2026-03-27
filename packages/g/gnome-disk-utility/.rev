@@ -709,4 +709,12 @@
   Recommends: Support formatting disks to exFAT, F2FS and UDF. (forwarded request 1254920 from iznogood)</comment>
     <requestid>1254934</requestid>
   </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>a1e4254c7f2a67caf2a4b4e7e728b3a4</srcmd5>
+    <version>46.1</version>
+    <time>1774626515</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342957</requestid>
+  </revision>
 </revisionlist>

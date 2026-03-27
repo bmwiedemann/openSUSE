@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:37:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Thu Mar 20 22:32:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add (exfatprogs or exfat-utils), f2fs-tools and udftools
