@@ -28,7 +28,7 @@ Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-only
 URL:            https://gitlab.gnome.org/World/secrets
-Source0:        secrets-%{version}.tar.zst
+Source0:        secrets-%{version}.tar.xz
 Patch0:         fix-test.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
