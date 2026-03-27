@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 27 06:09:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.4:
+  * Update Rancher refs to v2.13.4 (#569)
+  * [v2.13] Prerelease dependency bumps for v2.13.4 (#561)
+
+-------------------------------------------------------------------
 Thu Feb 26 06:20:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.3:
