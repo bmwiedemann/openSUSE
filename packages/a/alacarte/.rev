@@ -625,4 +625,12 @@
   + Updated translations (forwarded request 1306678 from dimstar)</comment>
     <requestid>1306713</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>d347cdc671f288e9b8ec06ae9a7e52ab</srcmd5>
+    <version>3.58.0</version>
+    <time>1774626585</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342935</requestid>
+  </revision>
 </revisionlist>
