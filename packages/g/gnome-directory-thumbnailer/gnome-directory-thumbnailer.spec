@@ -24,7 +24,7 @@ Summary:        Directory Thumbnailer
 License:        LGPL-2.1-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/GnomeDirectoryThumbnailer
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  autoconf-archive
 BuildRequires:  intltool >= 0.40.0
