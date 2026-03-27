@@ -717,4 +717,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1236226</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>3aeede529f59951c903d91f6e156c796</srcmd5>
+    <version>2.80.1</version>
+    <time>1774626512</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342952</requestid>
+  </revision>
 </revisionlist>
