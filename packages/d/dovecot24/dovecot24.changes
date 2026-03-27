@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Fri Mar 27 10:23:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.4.3 (boo#1260893 boo#1260894 boo#1260895 boo#1260896
+  boo#1260897 boo#1260898 boo#1260899 boo#1260900 boo#1260901
+  boo#1260902)
+  There are experimental features in 2.4, one is enabled with
+  --enable-experimental-mail-utf8, and another with
+  --enable-experimental-imap4rev2, and you also need to set
+  mail_utf8_extensions=yes and imap4rev2_enabled=yes to enable them
+  in config.
+
+  Critical bug fixes
+  - CVE-2025-59028: Invalid base64 authentication can cause DoS for
+    other logins.
+  - CVE-2025-59031: decode2text.sh OOXML extraction may follow
+    symlinks and read unintended files during indexing. Fixed by
+    dropping the script.
+  - CVE-2026-24031: SQL injection possible if auth_username_chars
+    is configured empty. Fixed escaping to always happen. v2.4
+    regression.
+  - CVE-2026-27859: Excessive RFC 2231 MIME parameters in email
+    would cause excessive CPU usage. Fixed by limiting number of
+    parameters to process.
+  - CVE-2026-27860: LDAP query injection possible if
+    auth_username_chars is configured empty. Fixed escaping to
+    always happen. v2.4 regression.
+  - CVE-2026-27857: Sending excessive parenthesis causes imap-login
+    to use excessive memory.
+  - CVE-2026-27856: Doveadm credentials were not checked using
+    timing-safe checking function.
+  - CVE-2026-27855: OTP driver vulnerable to replay attack.
+  Changes
+  - Remove default
+    service/*/service_extra_groups=$SET:default_internal_group.
+    They are now replaced by default
+    mail_access_groups=$SET:default_internal_group.
+  - The version file has been renamed as version.txt to avoid clash
+    with C++ headers.
+  - auth: oauth2 - Do not export token automatically, must be
+    exported using fields.
+  - config: Don't accept 0 as meaning unlimited anymore for
+    last_valid_uid, last_valid_gid, mail_cache_max_headers_count,
+    mail_cache_max_header_name_length, mail_vsize_bg_after_count,
+    mail_sort_max_read_count, message_max_size,
+    submission_max_recipients and quota_mail_size.
+  - imap, pop3: Don't autoexpunge if Dovecot is shutting down or
+    process is killed.
+  - imap: LIST - Handle invalid mUTF-7 mailbox names as never
+    matching anything
+  - lazy-expunge: Change lazy_expunge_only_last_instance default to
+    yes.
+  - lda: Use EX_TEMPFAIL (75) if configuration is invalid instead
+    of 89. v2.4 regression.
+  - lib-master: Increase ANVIL_DEFAULT_LOOKUP_TIMEOUT_MSECS from 5s
+    to 30s
+  - lib: crc32 - Use zlib's built-in CRC32 function
+  New features
+  - Improve UTF-8 support for mail storage.
+  - auth: Add default auth-token UNIX socket for token-based
+    authentication.
+  - doc: solr-config-9.xml - Make it compatible with Solr 9.8.0
+  - doveadm: dsync - Search mails when exporting to reduce number
+    of mails exported by dsync-server.
+  - dovecot-sysreport: Add -D|--destdir support.
+  - imap, imap-hibernate: Use DOVECOT-TOKEN authentication for
+    unhibernation.
+  - Default imap-master socket permissioms have been changed due to
+    this.
+  - imap: Add APPENDLIMIT capability when configured with
+    quota_mail_size.
+  - imap: Support STATUS (DELETED) for IMAP4rev2.
+  - imapc: Add support for SEARCH MIMEPART
+  - imapc: Improve error forwarding.
+  - imapc: Support SORT and ESORT extensions.
+  - imapc: Support STATUS (DELETED) for IMAP4rev2.
+  - lib-sql: Support parameterized queries.
+  - lib-test: Add new test-dir API for better temporary test
+    directory handling.
+  - lmtp: Advertize SIZE capability when configured with
+    quota_mail_size.
+  - lmtp: Support XCLIENT DESTADDR and DESTPORT
+  - pop3-login: proxy - Add support for XCLIENT DESTIP and DESTPORT
+  - submission-login: proxy - Add support for XCLIENT DESTIP and
+    DESTPORT
+  - Various optimizations have been made to the code.
+  Bug fixes
+  - Fix building dovecot with BSD, Solaris and macOS.
+  - auth: Crash would occur if users were iterated but
+    userdb_ldap_iterate_fields was not set.
+  - auth: Fix request leak when client authenticates with
+    unsupported mechanism.
+  - auth: Some passdbs would default to PLAIN instead of CRYPT
+    scheme.
+  - config: Section and setting names could have been intermixed,
+    resulting in the setting being silently ignored.
+  - configure: Fix checking if BUILD_IMAP_HIBERNATE is set
+  - doveadm: dsync - -e parameter was handled wrong with
+    dsync-server.
+  - fts-flatcurve: Mailbox leak would occur if mailbox failed to
+    open.
+  - imap: Fix potential issues with unhibernation and process state
+    handling.
+  - imapc: SEARCH failure handling was done wrong.
+  - imapc: UID STORE commands included extra comma in uidset.
+  - lib-auth-client: auth-master - Fix panic when reconnecting
+    after handshake timeout.
+  - lib-compression: Lz4 algorithm would assert-crash with
+    malicious data.
+  - lib-dcrypt: Fix digest algorithm handling.
+  - lib-dict: Escape username paths to prevent traversal issues
+    with dict-fs.
+  - lib-http: Fix HTTP parsing edge cases and state handling.
+  - lib-iostream: Disallow empty ssl_min_protocol.
+  - lib-json: Fix incorrect character handling logic.
+  - lib-ldap: Fix various TLS related bugs.
+  - lib-mail: Fix charset translation and MIME parsing edge cases.
+  - lib-mail: Fix multiple bounds checks and parsing issues in
+    message handling.
+  - lib-var-expand: Multiple fixes and improvements for expansion
+    handling.
+  - lib: Fix punycode decoding out-of-bounds reads.
+  - lib: Fix unicode normalization edge cases causing crashes.
+  - lib-http: Chunked transfer trailer size was not limited.
+  - login-common: Improve logging and internal error handling.
+  - login-common: login_log_format_elements was split by spaces
+    naively, which could break variable expansion. Use template
+    aware splitting now.
+  - master: Dovecot would fail to start if listen directive was
+    used and dovenull or dovecot user was missing.
+  - pop3c: Connection might've hung with SSL.
+  - util: Fix handling of environment variables containing control
+    characters.
+  - Many other bugs have been fixed.
+- Update pigeonhole to 2.4.3
+  Critical bug fixes
+  - CVE-2026-27858: managesieve-login can allocate large amount of
+    memory during authentication.
+  - CVE-2025-59032: ManageSieve panic occurs with sieve-connect as a client.
+  Changes
+  - lib-sieve: Don't accept 0 as meaning unlimited anymore for
+    sieve_quota_script_count and sieve_quota_storage_size.
+  - managesieve-login: If mail_max_userip_connections is reached,
+    return LIMIT/CONNECTIONS resp-code.
+  - managesieve-login: proxy - Return unexpected backend failures
+    as TRYLATER/NORETRY resp-code.
+  - managesieve: Remove default
+    service_extra_groups=$SET:default_internal_group.
+  New features
+  - managesieve-login: proxy - Add support for XCLIENT DESTIP and
+    DESTPORT.
+  Bug fixes
+  - imapsieve: Fix panic occurring upon implicit flag changes.
+  - lib-sieve: include-extension - Fix crash occurring when
+    previous global command has no arguments.
+  - lib-sieve: Fix erroneous attempt to read active script for
+    non-personal storage.
+  - lib-sieve: ldap: Fix linking non-shared LIBDOVECOT.
+- drop patches included in update
+  0001-auth-Fix-dashes-to-underscores-in-driver-names-in-fi.patch
+  0001-lib-regex-Separate-maximum-capture-groups-and-match-.patch
+  0002-auth-Fix-crypt-CRYPT-in-passdb_passwd-passdb_ldap-de.patch
+  0002-lib-regex-Set-DREGEX_MAX_MATCHES-to-library-default.patch
+  0003-auth-Make-the-default-passdb_static-passdb_default_p.patch
+  0003-lib-regex-Limit-number-of-capture-groups-correctly.patch
+  0004-auth-Set-CRYPT-as-default-passdb_default_password_sc.patch
+  dovecot24-32bit-1.patch
+  dovecot24-32bit-2.patch
+
+-------------------------------------------------------------------
 Thu Jan 22 18:04:34 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
 
 - dovecot will not compile with older gcc's. Force a newer one.

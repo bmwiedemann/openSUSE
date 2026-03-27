@@ -17,8 +17,8 @@
 
 
 %define pkg_name dovecot
-%define dovecot_version 2.4.2
-%define dovecot_pigeonhole_version 2.4.2
+%define dovecot_version 2.4.3
+%define dovecot_pigeonhole_version 2.4.3
 %define dovecot_branch  2.4
 %define dovecot_pigeonhole_source_dir %{pkg_name}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
@@ -48,7 +48,7 @@
 %endif
 
 Name:           dovecot24
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
@@ -66,15 +66,6 @@ Patch0:         dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 Patch1:         dovecot-2.4.0-lua_json.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         dovecot-2.3.17-env_script_interpreter.patch
-Patch3:         dovecot24-32bit-1.patch
-Patch4:         dovecot24-32bit-2.patch
-Patch11:        0001-lib-regex-Separate-maximum-capture-groups-and-match-.patch
-Patch12:        0002-lib-regex-Set-DREGEX_MAX_MATCHES-to-library-default.patch
-Patch13:        0003-lib-regex-Limit-number-of-capture-groups-correctly.patch
-Patch14:        0001-auth-Fix-dashes-to-underscores-in-driver-names-in-fi.patch
-Patch15:        0002-auth-Fix-crypt-CRYPT-in-passdb_passwd-passdb_ldap-de.patch
-Patch16:        0003-auth-Make-the-default-passdb_static-passdb_default_p.patch
-Patch17:        0004-auth-Set-CRYPT-as-default-passdb_default_password_sc.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -322,6 +313,7 @@ export CXX="g++-%{?force_gcc_version}"
     --with-moduledir=%{_libdir}/%{pkg_name}/modules \
     --libexecdir=%{_prefix}/lib/                    \
     --enable-experimental-mail-utf8                 \
+    --enable-experimental-imap4rev2                 \
     --with-ioloop=best                              \
     --with-ldap=plugin                              \
     --with-sql=plugin                               \
@@ -502,7 +494,6 @@ fi
 %{_prefix}/lib/%{pkg_name}/doveadm-server
 %{_prefix}/lib/%{pkg_name}/stats
 %{_prefix}/lib/%{pkg_name}/xml2text
-%{_prefix}/lib/%{pkg_name}/decode2text.sh
 %{_prefix}/lib/%{pkg_name}/quota-status
 %{_prefix}/lib/%{pkg_name}/managesieve
 %{_prefix}/lib/%{pkg_name}/managesieve-login
@@ -591,10 +582,8 @@ fi
 %{_mandir}/man1/doveadm-acl.1%{?ext_man}
 %{_mandir}/man1/doveadm-altmove.1%{?ext_man}
 %{_mandir}/man1/doveadm-auth.1%{?ext_man}
-%{_mandir}/man1/doveadm-backup.1%{?ext_man}
 %{_mandir}/man1/doveadm-compress-connect.1%{?ext_man}
 %{_mandir}/man1/doveadm-config.1%{?ext_man}
-%{_mandir}/man1/doveadm-copy.1%{?ext_man}
 %{_mandir}/man1/doveadm-deduplicate.1%{?ext_man}
 %{_mandir}/man1/doveadm-dict.1%{?ext_man}
 %{_mandir}/man1/doveadm-dump.1%{?ext_man}
@@ -645,7 +634,6 @@ fi
 %{_mandir}/man1/sieve-test.1%{?ext_man}
 %{_mandir}/man1/sievec.1%{?ext_man}
 %{_mandir}/man1/sieved.1%{?ext_man}
-%{_mandir}/man7/doveadm-search-query.7%{?ext_man}
 %{_mandir}/man7/pigeonhole.7%{?ext_man}
 # doc
 %doc %{_docdir}/%{pkg_name}

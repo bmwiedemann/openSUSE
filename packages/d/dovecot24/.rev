@@ -200,4 +200,12 @@ bugowner: varkoly</comment>
 - dovecot will not compile with older gcc's. Force a newer one.</comment>
     <requestid>1328881</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>15572de17f2ba50e6f9313dfae2a1b0c</srcmd5>
+    <version>2.4.3</version>
+    <time>1774626700</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.3 (boo#1260893 boo#1260894 boo#1260895 boo#1260896 boo#1260897 boo#1260898 boo#1260899 boo#1260900 boo#1260901 boo#1260902)</comment>
+    <requestid>1343160</requestid>
+  </revision>
 </revisionlist>
