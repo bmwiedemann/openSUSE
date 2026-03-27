@@ -1685,4 +1685,14 @@ Administrator experience:
     <comment></comment>
     <requestid>1334448</requestid>
   </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>43e601d7ec899bbc3206785496da5ec5</srcmd5>
+    <version>1.22.2</version>
+    <time>1774626499</time>
+    <user>anag_factory</user>
+    <comment>- Add compatibility with autoconf 2.73 by adding patch
+  0011-autoconf-2.73-compatibility.patch from upstream pull
+  request https://github.com/krb5/krb5/pull/1485</comment>
+    <requestid>1342197</requestid>
+  </revision>
 </revisionlist>

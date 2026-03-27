@@ -41,6 +41,7 @@ Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
 Patch9:         0009-UsrEtc-support.patch
 Patch10:        0010-Fix-strchr-conformance-to-C23.patch
+Patch11:        0011-autoconf-2.73-compatibility.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel

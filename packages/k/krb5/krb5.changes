@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 21 10:40:16 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Add compatibility with autoconf 2.73 by adding patch
+  0011-autoconf-2.73-compatibility.patch from upstream pull
+  request https://github.com/krb5/krb5/pull/1485
+
+-------------------------------------------------------------------
 Mon Feb  2 12:16:38 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.22.2
