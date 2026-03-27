@@ -23,8 +23,8 @@ Summary:        GNOME user file sharing
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            https://gitlab.gnome.org/GNOME/gnome-user-share
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 
 BuildRequires:  cargo-packaging
 BuildRequires:  clang

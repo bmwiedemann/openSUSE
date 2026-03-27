@@ -11,5 +11,4 @@ computers on the local network using mDNS/rendezvous, so that it shows
 up in the Network location in GNOME.
 
 The program also allows to share files using ObexFTP over Bluetooth.</description>
-  <devel project="GNOME:Factory" package="gnome-user-share"/>
 </package>

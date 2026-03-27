@@ -576,4 +576,12 @@
     installations (forwarded request 1319347 from iznogood)</comment>
     <requestid>1319647</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>e6536152fea5a4c89a890c83cd2d6cd1</srcmd5>
+    <version>48.2</version>
+    <time>1774626519</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342967</requestid>
+  </revision>
 </revisionlist>
