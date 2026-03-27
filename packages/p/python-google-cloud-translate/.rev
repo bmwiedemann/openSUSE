@@ -217,4 +217,18 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1327674 from glaubitz)</comment>
     <requestid>1327701</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9fa8d09ab3b752727897490d4dec3718</srcmd5>
+    <version>3.25.0</version>
+    <time>1774626713</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.25.0
+  * Allow Protobuf 7.x
+  * Update image
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py (forwarded request 1343206 from glaubitz)</comment>
+    <requestid>1343207</requestid>
+  </revision>
 </revisionlist>
