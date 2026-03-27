@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:25:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Feature: Add XOAUTH2 authentication support
+  * BREAKING: Drop Python 3.9 support
+  * Bugfix: correct aexit signature to comply with async context
+    manager protocol (thanks @oliverlambson)
+
+-------------------------------------------------------------------
 Thu Aug  7 11:16:51 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable tests, tests doesn't work with latest pytest-asyncio

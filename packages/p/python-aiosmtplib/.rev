@@ -176,4 +176,16 @@
   gh#cole/aiosmtplib@3b4bd0d7048c</comment>
     <requestid>1298125</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ce59ecaeb6925aeffe7fee7d360ba576</srcmd5>
+    <version>5.1.0</version>
+    <time>1774626680</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.1.0:
+  * Feature: Add XOAUTH2 authentication support
+  * BREAKING: Drop Python 3.9 support
+  * Bugfix: correct aexit signature to comply with async context
+    manager protocol (thanks @oliverlambson)</comment>
+    <requestid>1343145</requestid>
+  </revision>
 </revisionlist>

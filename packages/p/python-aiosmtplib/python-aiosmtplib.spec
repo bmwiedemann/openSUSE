@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosmtplib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiosmtplib
-Version:        4.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Python asyncio SMTP client
 License:        MIT
@@ -29,16 +29,18 @@ BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module trustme}
+BuildRequires:  %{python_module trustme >= 0.9.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-aiosmtpd
+Suggests:       python-aiosmtpd >= 1.4.2
+Suggests:       python-uvloop >= 0.18
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module aiosmtpd}
-BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module aiosmtpd >= 1.4.2}
+BuildRequires:  %{python_module hypothesis >= 6.56}
+BuildRequires:  %{python_module pytest >= 7.2}
+BuildRequires:  %{python_module pytest-asyncio >= 0.20.1}
 # /SECTION
 %python_subpackages
 
