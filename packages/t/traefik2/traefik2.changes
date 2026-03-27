@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 26 09:50:46 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 1.11.42
+  * grpc
+    - Bump google.golang.org/grpc to v1.79.3
+  * middleware, authentication
+    - Prevent duplicate user headers in basic and digest auth middleware
+  * middleware
+    - Fix StripPrefix and StripPrefixRegex to slice the prefix using encoded prefix length
+
+- Version 1.11.41
+- CVEs fixed:
+  * CVE-2026-32595 (Advisory GHSA-g3hg-j4jv-cwfr) boo#1260016
+  * CVE-2026-32305 (Advisory GHSA-wvvq-wgcr-9q48) boo#1260017
+
+- Bugs fixes:
+  * http
+    - Add maxResponseBodySize configuration on HTTP provider
+  * tls
+    - Support fragmented TLS client hello
+  * middleware, authentication
+    - Make basic auth check timing constant
+
+-------------------------------------------------------------------
 Fri Mar  6 16:33:32 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 1.11.40
