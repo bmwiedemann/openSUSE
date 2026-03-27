@@ -4,6 +4,5 @@
 GNOME using GTK and libadwaita.
 
 </description>
-  <devel project="GNOME:Factory" package="libpanel"/>
   <url>https://gitlab.gnome.org/GNOME/libpanel</url>
 </package>

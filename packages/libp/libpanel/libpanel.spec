@@ -24,7 +24,7 @@ Release:        0
 Summary:        IDE paneling library for GTK
 License:        LGPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/libpanel
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 BuildRequires:  gcc13
