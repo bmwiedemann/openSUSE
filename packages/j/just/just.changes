@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 27 12:19:14 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.48.0:
+  * Dynamically complete recipes for --usage
+  * Dynamically complete groups
+  * Dynamically complete recipes and variables
+  * Complete appropriate filetypes
+  * Allow overriding variables in submodules
+  * Add --json as synonym for --dump --dump-format json
+  * Stabilize lazy evaluation
+  * Switch to dynamic completion engine
+
+-------------------------------------------------------------------
 Tue Mar 17 09:09:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.47.1:

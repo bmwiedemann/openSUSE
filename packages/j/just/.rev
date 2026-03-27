@@ -543,4 +543,20 @@
   * [private] modules are excluded from --list output (forwarded request 1339538 from rrahl0)</comment>
     <requestid>1339539</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>06f7cf4b4753050c029821045e3eaf47</srcmd5>
+    <version>1.48.0</version>
+    <time>1774626704</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.48.0:
+  * Dynamically complete recipes for --usage
+  * Dynamically complete groups
+  * Dynamically complete recipes and variables
+  * Complete appropriate filetypes
+  * Allow overriding variables in submodules
+  * Add --json as synonym for --dump --dump-format json
+  * Stabilize lazy evaluation
+  * Switch to dynamic completion engine (forwarded request 1343183 from rrahl0)</comment>
+    <requestid>1343184</requestid>
+  </revision>
 </revisionlist>
