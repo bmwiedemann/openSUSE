@@ -312,4 +312,12 @@
 - Drop gtk3-tools BuildRequires, no longer needed. (forwarded request 1254521 from iznogood)</comment>
     <requestid>1255561</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e73c177bc48776439e5a3d335f9b8af0</srcmd5>
+    <version>50.0</version>
+    <time>1774626595</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342962</requestid>
+  </revision>
 </revisionlist>

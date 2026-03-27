@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 19 09:19:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.0:
+  + Fix overspend of kill points when safe teleports are capped
+  + Allow to play with a numpad
+  + Update dependencies to Gnome SDK 49
+  + Switch to Glycin
+  + Updated translations.
+- Replace pkgconfig(librsvg-2.0) BuildRequires with
+  pkgconfig(glycin-2) and pkgconfig(glycin-gtk4-2): follow
+  upstreams move to glycin
+- Change _service to generate tar.xz sources: after we migrated to
+  git, we no longer benefit from obscpio archives.
+
+-------------------------------------------------------------------
 Wed Mar 19 20:15:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 41.2:

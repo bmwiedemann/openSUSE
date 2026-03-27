@@ -17,14 +17,14 @@
 
 
 Name:           gnome-robots
-Version:        41.2
+Version:        50.0
 Release:        0
 Summary:        Robots Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://live.gnome.org/Robots
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 
 BuildRequires:  cargo
 BuildRequires:  desktop-file-utils
@@ -32,11 +32,12 @@ BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.32
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
+BuildRequires:  pkgconfig(gio-2.0) >= 2.86
+BuildRequires:  pkgconfig(glib-2.0) >= 2.86
+BuildRequires:  pkgconfig(gtk4) >= 4.20.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
+BuildRequires:  pkgconfig(glycin-2) >= 2.0
+BuildRequires:  pkgconfig(glycin-gtk4-2) >= 2.0
 
 %description
 Robots is a graphical version of the original text based robots game,
