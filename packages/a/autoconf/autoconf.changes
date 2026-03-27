@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Mar 23 07:59:50 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 2.73
+  * autoreconf has a new option to exclude certain steps
+  * AC_PROG_GO and AC_PROG_A68 now honor GOFLAGS and A68FLAGS set by the user
+  * AC_C_FLEXIBLE_ARRAY_MEMBER and AC_PROG_LEX handle Solaris 10 better
+  * autoheader takes more care not to overwrite hand-written config.h.in
+  * AC_OUTPUT issues an error if called with more than three arguments
+- Rebase patch:
+  * autoreconf-ltdl.diff
+
+-------------------------------------------------------------------
+Thu Feb 12 16:38:41 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 2.72.90
+  * AC_PROG_CC now prefers C23 if available.
+  * AC_PROG_CC no longer checks __STDC__ or variable length arrays (VLAs).
+  * AC_PROG_CXX no longer attempts to switch to C++98 or C++11.
+  * Programs now recognize #elifdef and #elifndef.
+  * Support for the Algol 68 programming language has been added.
+  * AC_PROG_AWK now also checks for busybox awk.
+  * AC_USE_SYSTEM_EXTENSIONS now defines _COSMO_SOURCE for Cosmopolitan Libc.
+  * AC_CHECK_DECL and AC_CHECK_DECLS will, on macOS, now report "no" for
+    functions that are declared as existing in future macOS versions only.
+  * AC_DEFINE_UNQUOTED no longer mishandles double-quotes inside $(...)
+    and ${...}.
+  * AC_DEFINE and similar macros no longer emit trailing whitespace.
+    This pacifies the -Wtrailing-whitespace introduced in GCC 15.
+  * AC_FUNC_STRNLEN now detects Android 5.0's broken strnlen.
+  * AC_PROG_OBJC now finds the GNU Objective-C compiler, as packaged in
+    EPEL 9, by default, without the user having to set the OBJC variable.
+  * Autoconf no longer generates ${1+"$@"} in scripts, working around
+    a bug in AIX 7.2 ksh93.
+  * config.status now fails with a diagnostic if awk is missing,
+    rather than misbehaving.
+  * autoreconf handles projects using GNU Gettext and/or gtk-doc better.
+  * autoconf no longer installs a file named "version.m4".
+- Drop upstream patch
+  * Port-AC_SYS_LARGEFILE-to-C.patch
+- Rebase patch:
+  * autoreconf-ltdl.diff
+
+-------------------------------------------------------------------
 Thu May  2 09:47:58 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix AC_SYS_LARGEFILE doesn't honor AC_LANG setting and undo the removing of

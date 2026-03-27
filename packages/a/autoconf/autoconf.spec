@@ -1,7 +1,7 @@
 #
 # spec file for package autoconf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           autoconf%{?psuffix}
-Version:        2.72
+Version:        2.73
 Release:        0
 Summary:        A GNU Tool for Automatically Configuring Source Code
 License:        GPL-3.0-or-later
@@ -35,8 +35,6 @@ Source0:        https://ftp.gnu.org/gnu/autoconf/autoconf-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/autoconf/autoconf-%{version}.tar.xz.sig
 Source9:        autoconf.keyring
 Patch0:         autoreconf-ltdl.diff
-# PATCH-FIX-UPSTREAM: Fix problem https://savannah.gnu.org/support/?110983
-Patch1:         Port-AC_SYS_LARGEFILE-to-C.patch
 BuildRequires:  help2man
 BuildRequires:  m4 >= 1.4.16
 BuildArch:      noarch
