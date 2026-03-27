@@ -22,7 +22,7 @@
 
 %define lname   libpwaccess0
 Name:           account-utils
-Version:        1.1.0+git20260313.e9be3c9
+Version:        1.1.0+git20260327.39b8181
 Release:        0
 Summary:        Service for authentication and account management
 License:        GPL-2.0-or-later AND BSD-2-Clause AND LGPL-2.1-or-later
@@ -91,7 +91,7 @@ if [ "$1" -eq 1 ]; then
 fi
 
 %postun
-%service_del_postun pwaccessd.socket pwupdd.socket newidmapd.socket
+%service_del_postun_without_restart pwaccessd.socket pwupdd.socket newidmapd.socket
 if [ "$1" -eq 0 ]; then
     pam-config -d --unix_ng || :
 fi

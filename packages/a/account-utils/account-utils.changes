@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 27 08:53:48 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.1.0+git20260327.39b8181:
+  * pam_unix_ng: don't print authentication errors on console
+  * pwupdd@.service: add Documentation= field
+  * pam_unix_ng.8: fix typo found by Lintian
+- Use without_restart for *.socket units
+
+-------------------------------------------------------------------
 Fri Mar 13 14:21:50 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.1.0+git20260313.e9be3c9:

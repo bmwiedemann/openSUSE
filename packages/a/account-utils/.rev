@@ -84,4 +84,16 @@ Add conflicts to busybox-adduser</comment>
   * pam_unix_ng: try to start pwaccessd.socket via D-Bus if not running</comment>
     <requestid>1338750</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>32663729886b8528183e3166862a5058</srcmd5>
+    <version>1.1.0+git20260327.39b8181</version>
+    <time>1774626685</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.0+git20260327.39b8181:
+  * pam_unix_ng: don't print authentication errors on console
+  * pwupdd@.service: add Documentation= field
+  * pam_unix_ng.8: fix typo found by Lintian
+- Use without_restart for *.socket units</comment>
+    <requestid>1343150</requestid>
+  </revision>
 </revisionlist>
