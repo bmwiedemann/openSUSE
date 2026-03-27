@@ -332,4 +332,12 @@
   + Updated translations. (forwarded request 1329506 from iznogood)</comment>
     <requestid>1329619</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>c63568e7a76d83cd6bc852cf95d6d9f9</srcmd5>
+    <version>49.1.1</version>
+    <time>1774626594</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342958</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@ Summary:        Mahjong Solitaire Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/GnomeMahongg
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildSystem:    meson
 
 BuildRequires:  desktop-file-utils
