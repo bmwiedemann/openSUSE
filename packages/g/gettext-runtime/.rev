@@ -975,4 +975,12 @@ sync the changes and spec file by actually calling pre_checkin.sh - not syncing 
 </comment>
     <requestid>1335303</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>f65520715c9a2b188fe1038ac95d2bbf</srcmd5>
+    <version>1.0</version>
+    <time>1774626501</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342536</requestid>
+  </revision>
 </revisionlist>

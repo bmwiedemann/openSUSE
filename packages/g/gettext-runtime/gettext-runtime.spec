@@ -31,7 +31,6 @@
 Name:           %{spec_name}
 Version:        1.0
 Release:        0
-BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-gconv-modules-extra
 BuildRequires:  libtool
@@ -191,8 +190,6 @@ This package provides headers and static libraries for libtextstyle
 
 %build
 %define _lto_cflags %{nil}
-# expect a couple "You should update your `aclocal.m4' by running aclocal."
-autoreconf -fiv
 export CFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint"
 export CXXFLAGS="$CFLAGS -Dgcc_is_lint"
 export LDFLAGS="-lm"
