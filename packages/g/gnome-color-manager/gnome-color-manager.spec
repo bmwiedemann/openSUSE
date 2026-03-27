@@ -24,7 +24,7 @@ Summary:        Color management tools for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-color-manager
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  libtiff-devel
