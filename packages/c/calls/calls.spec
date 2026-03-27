@@ -22,7 +22,7 @@ Release:        0
 Summary:        A phone dialer and call handler
 License:        GPL-3.0-only AND MIT
 URL:            https://gitlab.gnome.org/GNOME/calls
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
