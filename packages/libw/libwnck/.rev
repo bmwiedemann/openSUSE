@@ -722,4 +722,12 @@
 - Drop libwnck-fix-compiler-error.patch: Merged upstream. (forwarded request 1301894 from iznogood)</comment>
     <requestid>1302015</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>c89b2f36ebc2a6315c0d34736f55f5ad</srcmd5>
+    <version>43.3</version>
+    <time>1774626544</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342998</requestid>
+  </revision>
 </revisionlist>
