@@ -23,7 +23,9 @@ Summary:        UPnP tools to test and debug UPnP devices and control points
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            http://www.gupnp.org/
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM Do not error on deprecated APis from e.g. libxml2
+Patch0:         gupnp-tools-ignore-deprecated.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson

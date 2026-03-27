@@ -1,0 +1,12 @@
+Index: gupnp-tools-0.12.2/meson.build
+===================================================================
+--- gupnp-tools-0.12.2.orig/meson.build
++++ gupnp-tools-0.12.2/meson.build
+@@ -44,7 +44,6 @@ conf.set('HAVE_GTK_SOURCEVIEW', gtksourc
+ conf.set('GETTEXT_PACKAGE', '"@0@"'.format(meson.project_name()))
+ conf.set('LOCALEDIR', '"@0@"'.format(localedir))
+ cc = meson.get_compiler('c')
+-add_project_arguments(cc.get_supported_arguments('-Werror=deprecated-declarations'), language: 'c')
+ conf.set('GLIB_VERSION_MIN_REQUIRED', 'GLIB_VERSION_@0@'.format(glib_version.underscorify()))
+ conf.set('GLIB_VERSION_MAX_ALLOWED', 'GLIB_VERSION_@0@'.format(glib_version.underscorify()))
+ 
