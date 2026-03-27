@@ -22,7 +22,7 @@ Release:        0
 Summary:        Some helpers for glib based environments on mobile devices
 License:        LGPL-2.1-or-later
 URL:            https://world.pages.gitlab.gnome.org/Phosh/gmobile/
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66
