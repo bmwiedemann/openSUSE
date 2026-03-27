@@ -46,4 +46,18 @@
     <comment></comment>
     <requestid>1336668</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d374a0a727be8513a06d6bd70ea3e7e</srcmd5>
+    <version>2.30.0</version>
+    <time>1774626694</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.30.0
+  * Allow Protobuf 7.x
+  * Update image
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py (forwarded request 1343159 from glaubitz)</comment>
+    <requestid>1343167</requestid>
+  </revision>
 </revisionlist>
