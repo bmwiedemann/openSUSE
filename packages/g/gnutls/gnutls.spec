@@ -68,6 +68,8 @@ Patch3:         gnutls-FIPS-jitterentropy.patch
 Patch4:         gnutls-FIPS-disable-mac-sha1.patch
 #PATCH-FIX-SUSE bsc#1207346 FIPS: Change FIPS 140-2 references to FIPS 140-3
 Patch5:         gnutls-FIPS-140-3-references.patch
+#PATCH-FIX-SUSE bsc#1260395 Fix build with autoconf 2.73
+Patch6:         gnutls-C23.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge

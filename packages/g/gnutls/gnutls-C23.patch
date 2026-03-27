@@ -1,0 +1,38 @@
+Index: gnutls-3.8.12/lib/fipshmac.c
+===================================================================
+--- gnutls-3.8.12.orig/lib/fipshmac.c
++++ gnutls-3.8.12/lib/fipshmac.c
+@@ -44,6 +44,14 @@
+ #define HMAC_ALGO GNUTLS_MAC_SHA256
+ #define HMAC_STR_SIZE (2 * HMAC_SIZE + 1)
+ 
++/* Without C99 macros these functions have to
++ * be called. This may affect performance.
++ */
++void _gnutls_null_log(void *, ...)
++{
++        return;
++}
++
+ static int get_hmac(const char *path, char *hmac, size_t hmac_size)
+ {
+ 	int ret;
+Index: gnutls-3.8.12/tests/atfork.c
+===================================================================
+--- gnutls-3.8.12.orig/tests/atfork.c
++++ gnutls-3.8.12/tests/atfork.c
+@@ -49,6 +49,14 @@ void doit(void)
+  * macros from gnulib */
+ #include "utils.h"
+ 
++/* Without C99 macros these functions have to
++ * be called. This may affect performance.
++ */
++void _gnutls_null_log(void *, ...)
++{
++        return;
++}
++
+ void doit(void)
+ {
+ 	pid_t pid;
