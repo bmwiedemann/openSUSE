@@ -69,6 +69,8 @@ Provides:       pattern-visible()
 Requires:       gsettings-backend-dconf
 Requires:       pattern() = basesystem
 Requires:       pattern() = gnome_basis
+Requires:       (ibus or fcitx) %dnl boo#1251853
+Suggests:       ibus
 Recommends:     pattern() = enhanced_base
 # bsc#1065146
 %if 0%{?sle_version} && 0%{?sle_version} < 16000

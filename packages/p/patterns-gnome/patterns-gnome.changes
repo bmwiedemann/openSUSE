@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 21 21:24:28 UTC 2026 - Heitor Moreira da Silva <heitor@opensuse.org>
+
+- Fix Gnome applications ignoring dead keys (boo#1251853).
+
+-------------------------------------------------------------------
 Mon Mar  2 08:25:52 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - SUSE now has SUSE Mono font and SLES 16.1 will use it
@@ -74,7 +79,7 @@ Mon Apr  7 15:08:11 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
   * Disable gnome_x11, gnome_multimedia and enable gnome_internet
     patterns
   * Always recommends NetworkManager and gnome_internet pattern.
-  * no longer recommends gnome-shell-classic, pidgin, planner, 
+  * no longer recommends gnome-shell-classic, pidgin, planner,
     totem packages and gnome_imaging, office and x11_yast patterns.
   * switch from gnome-terminal to GNOME Console
   * switch from gedit to GNOME Text Editor
