@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:05:52 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Sat Jun 14 17:13:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix build with gpgme >= 2.0.0 (boo#1244605)

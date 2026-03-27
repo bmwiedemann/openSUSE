@@ -952,4 +952,12 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment>Fix build with gpgme &gt;= 2.0.0 (boo#1244605) (forwarded request 1285819 from AndreasStieger)</comment>
     <requestid>1285994</requestid>
   </revision>
+  <revision rev="128" vrev="3">
+    <srcmd5>bf36a0ee8fd9e3f6e5505aa8c62fe7a4</srcmd5>
+    <version>47.0.1+6</version>
+    <time>1774626553</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1343010</requestid>
+  </revision>
 </revisionlist>

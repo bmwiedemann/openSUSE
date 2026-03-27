@@ -24,7 +24,7 @@ Summary:        GNOME interface for gnupg
 License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Patch0:         seahorse-47.0.1-gpgme-2.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
