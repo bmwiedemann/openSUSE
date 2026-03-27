@@ -37,7 +37,7 @@ License:        GFDL-1.1-or-later
 Group:          Documentation/HTML
 %endif
 URL:            http://www.gtk.org/gtk-doc/
-Source0:        gtk-doc-%{version}.tar.zst
+Source0:        gtk-doc-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxml2-tools

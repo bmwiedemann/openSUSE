@@ -4,5 +4,4 @@
 documentation in DocBook format.  It can extract documentation from
 source code comments in a manner similar to Java-doc.  It is used to
 generate the documentation for GLib, Gtk+, and GNOME.</description>
-  <devel project="GNOME:Factory" package="gtk-doc"/>
 </package>

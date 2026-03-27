@@ -402,4 +402,12 @@ Required meson version is now in Factory (forwarded request 976110 from susnux)<
 - Add python3-parameterized BuildRequires for doc flavor. (forwarded request 1337963 from dimstar)</comment>
     <requestid>1337990</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>5a2cb9257b11909b5a087909c1ee13ee</srcmd5>
+    <version>1.36.0</version>
+    <time>1774626523</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342973</requestid>
+  </revision>
 </revisionlist>
