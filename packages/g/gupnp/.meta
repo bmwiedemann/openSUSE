@@ -6,5 +6,4 @@ discovery, description, control, event notification, and presentation
 does not include helpers for construction or control of specific
 standardized resources (e.g. MediaServer); this is left for higher level
 libraries utilizing the GUPnP framework.</description>
-  <devel project="GNOME:Factory" package="gupnp"/>
 </package>

@@ -27,7 +27,7 @@ Summary:        Implementation of the UPnP specification
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 
 BuildRequires:  docbook-xsl-stylesheets

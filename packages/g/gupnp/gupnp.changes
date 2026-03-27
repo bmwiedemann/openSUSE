@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:51:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Thu Jul 17 07:39:07 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Disable test on loongarch. The test cannot be completed on
