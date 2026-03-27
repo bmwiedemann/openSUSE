@@ -25,7 +25,7 @@ Summary:        CD/DVD burning application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            http://gnome.org/projects/brasero
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # Needed, as we provide a git snapshot
