@@ -22,7 +22,7 @@ Release:        0
 Summary:        Solitaire Card Games for GNOME
 License:        GPL-3.0-or-later
 URL:            https://wiki.gnome.org/Apps/Aisleriot
-Source0:        aisleriot-%{version}.tar.zst
+Source0:        aisleriot-%{version}.tar.xz
 
 BuildRequires:  distribution-release
 BuildRequires:  fdupes
