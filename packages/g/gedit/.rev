@@ -1294,4 +1294,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1329501</requestid>
   </revision>
+  <revision rev="164" vrev="2">
+    <srcmd5>1852cc7b6ac9505112c940941d4f0f70</srcmd5>
+    <version>49.0</version>
+    <time>1774626510</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342950</requestid>
+  </revision>
 </revisionlist>
