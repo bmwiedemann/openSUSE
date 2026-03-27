@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Mar 26 10:29:57 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.6.12
+- Bugs fixes:
+  * acme
+    - Bump github.com/go-acme/lego/v4 to v4.33.0
+  * api
+    - Fix allow colons and tildes in api.basePath validation
+  * grpc
+    - Bump google.golang.org/grpc to v1.79.3
+  * k8s/ingress-nginx
+    - Fix auth-response-headers whitespace trimming in ingress-nginx provider
+  * middleware, authentication
+    - Prevent duplicate user headers in basic and digest auth middleware
+  * middleware
+    - Fix StripPrefix and StripPrefixRegex to slice the prefix using
+      encoded prefix length
+  * server
+    - Fix comment and unnecessary allocation in withRoutingPath
+  * server, tcp
+    - Fix postgres STARTTLS with TLS termination
+
+- Version 3.6.11
+- CVEs fixed:
+  * CVE-2026-32595 (Advisory GHSA-g3hg-j4jv-cwfr) boo#1260016
+  * CVE-2026-32305 (Advisory GHSA-wvvq-wgcr-9q48) boo#1260017
+  * CVE-2026-32695 (Advisory GHSA-67jx-r9pv-98rj)
+
+- Bugs fixes:
+  * http
+    - Add maxResponseBodySize configuration on HTTP provider
+  * tls
+    - Support fragmented TLS client hello
+  * middleware, authentication
+    - Make basic auth check timing constant
+  * k8s/ingress-nginx
+    - Fix proxy-ssl-verify annotation
+  * k8s/ingress
+    - Fix ingress router's rule
+  * k8s/gatewayapi
+    - Fix incorrect hostname matching between listener and route
+  * webui
+    - Remove AGPL license in code
+  * logs, otel
+    - Add OTel-conformant trace context attributes to access logs
+-------------------------------------------------------------------
 Mon Mar  9 09:58:03 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated GO to minimum version 1.25
