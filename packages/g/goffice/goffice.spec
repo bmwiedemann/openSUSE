@@ -23,7 +23,7 @@ Summary:        GLib/GTK+ Set of Document-Centric Objects and Utilities
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            http://www.gnumeric.org/
-Source:         0.10/%{name}-%{version}.tar.zst
+Source:         0.10/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-devel >= 9.06
 BuildRequires:  gtk-doc
