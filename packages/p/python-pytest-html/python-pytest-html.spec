@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-html
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        Pytest plugin for generating HTML reports
 License:        MPL-2.0
@@ -28,12 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-html/pyt
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
-# PATCH-FIX-OPENSUSE drop-assertpy-dep.patch
-Patch1:         drop-assertpy-dep.patch
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  local-npm-registry
 BuildRequires:  npm
@@ -46,6 +43,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Jinja2 >= 3.0.0}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module pytest >= 7.0.0}
+BuildRequires:  %{python_module assertpy}
 BuildRequires:  %{python_module pytest-metadata >= 3.0.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-rerunfailures}
@@ -77,6 +75,6 @@ export LANG=en_US.UTF-8
 %license LICENSE
 %doc docs/changelog.rst README.rst
 %{python_sitelib}/pytest_html
-%{python_sitelib}/pytest_html-%{version}*-info
+%{python_sitelib}/pytest_html-%{version}.dist-info
 
 %changelog

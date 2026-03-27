@@ -311,4 +311,34 @@
   CVE-2025-6545, CVE-2025-6547, bsc#1245288. bsc#1245289</comment>
     <requestid>1288509</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b3cf7ddf0f05b870cc308049412b5e7a</srcmd5>
+    <version>4.2.0</version>
+    <time>1774626641</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.2.0:
+  * fix: Extras from setup/teardown missing in report
+  * fix: Total duration when running in parallel
+  * Fix license classifier in pyproject.toml
+  * if results table order changed, hide/show details hover over broken
+  * Start tag has wrong closing tag
+  * Drop python 3.8, add support for 3.12, 3.13
+  * Chore(deps-dev): Bump elliptic from 6.5.4 to 6.6.1
+  * Chore(deps-dev): Bump browserify-sign from 4.2.1 to 4.2.3
+  * Chore(deps): Bump braces from 3.0.2 to 3.0.3
+  * Chore(deps-dev): Bump @babel/traverse from 7.21.3 to 7.25.9
+  * Chore(deps-dev): Bump word-wrap from 1.2.3 to 1.2.5
+  * Fix the pyproject.toml following concurrent merge
+  * Upgrade tool for python 3.9
+  * Fix report template
+  * Chore(deps-dev): Bump nyc from 15.1.0 to 17.1.0
+  * Chore(deps-dev): Bump browserify from 17.0.0 to 17.0.1
+  * Chore(deps-dev): Bump mocha from 10.2.0 to 11.7.5
+  * fix: support for pytest-retries
+  * Chore(deps-dev): Bump sinon from 14.0.2 to 21.0.1
+  * Chore(deps-dev): Bump chai from 4.3.7 to 6.2.2
+  * Chore(deps-dev): Bump sass from 1.58.0 to 1.97.2
+- Drop patch drop-assertpy-dep.patch, just use assertpy.</comment>
+    <requestid>1343088</requestid>
+  </revision>
 </revisionlist>
