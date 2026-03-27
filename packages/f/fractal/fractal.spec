@@ -31,8 +31,8 @@ Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://gitlab.gnome.org/World/fractal/-/tags
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 
 BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(gstreamer-base-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-play-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_version}
-BuildRequires:  pkgconfig(gtk4) >= 4.10.0
+BuildRequires:  pkgconfig(gtk4) >= 4.20.2
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.0.0
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0

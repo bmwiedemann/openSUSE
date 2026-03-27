@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 25 07:59:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Turn off updates of vendors in _service file, use what upstream
+  expects/tested with.
+
+-------------------------------------------------------------------
+Mon Mar 23 08:30:39 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Fri Oct 31 15:36:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 13:
