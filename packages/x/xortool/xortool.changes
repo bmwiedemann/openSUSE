@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 19 14:48:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * fix format string
+  * Allow easy adjustments of threshold_validity for more control
+  * Usage adjustments
+  * fix importlib metadata
+
+-------------------------------------------------------------------
 Thu Jun 22 11:17:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not use python_module macro, but rather specify python3-FOO
