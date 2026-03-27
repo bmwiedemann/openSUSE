@@ -24,7 +24,7 @@ Release:        0
 Summary:        Source code editing widget
 License:        LGPL-2.1-or-later
 URL:            https://gedit-technology.net/
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
