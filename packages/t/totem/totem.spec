@@ -23,7 +23,7 @@ Summary:        Movie Player for the GNOME Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://wiki.gnome.org/Apps/Videos
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
@@ -110,7 +110,6 @@ This package contains developer documentation.
 
 %package video-thumbnailer
 Summary:        Totem video thumbnailer
-Supplements:    (gnome-shell and nautilus)
 Provides:       totem:%{_bindir}/totem-video-thumbnailer
 
 %description video-thumbnailer
