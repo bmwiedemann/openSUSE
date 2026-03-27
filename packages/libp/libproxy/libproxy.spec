@@ -38,7 +38,7 @@ Summary:        Automatic proxy configuration management for applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://libproxy.github.io/libproxy/
-Source:         %{_name}-%{version}.tar.zst
+Source:         %{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  meson
 BuildRequires:  sysuser-tools
