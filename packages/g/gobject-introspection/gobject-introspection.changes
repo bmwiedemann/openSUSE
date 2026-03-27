@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:46:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Thu Oct  9 09:59:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - gi-find-deps: also scan binaries in %_libexecdir to possibly

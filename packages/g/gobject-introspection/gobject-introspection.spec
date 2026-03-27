@@ -25,7 +25,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 # gi-find-deps.sh is a rpm helper for Provides and Requires. Script creates typelib()-style Provides/Requires.
 Source1:        gi-find-deps.sh
 Source2:        gobjectintrospection.attr
