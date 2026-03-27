@@ -5,5 +5,6 @@
 OISF is part of and funded by the Department of Homeland Security's Directorate for Science and Technology HOST program (Homeland Open Security Technology), by the the Navy's Space and Naval Warfare Systems Command (SPAWAR), as well as through the very generous support of the members of the OISF Consortium. More information about the Consortium is available, as well as a list of our current Consortium Members.
 
 </description>
+  <devel project="server:monitoring" package="suricata"/>
   <url>http://www.openinfosecfoundation.org/</url>
 </package>

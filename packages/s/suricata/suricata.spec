@@ -17,7 +17,7 @@
 #
 
 
-%define soname 8_0_3
+%define soname 8_0_4
 
 # Handling libxdp support
 %if (0%{?suse_version} <= 1500) && (0%{?sle_version} <= 150500) && (0%{?is_opensuse})
@@ -48,7 +48,7 @@
 %endif
 
 Name:           suricata
-Version:        8.0.3
+Version:        8.0.4
 Release:        0
 Summary:        Open Source Next Generation Intrusion Detection and Prevention Engine
 License:        GPL-2.0-only
