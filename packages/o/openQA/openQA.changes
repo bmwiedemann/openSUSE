@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Mar 26 08:07:45 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774510397.efec10a7:
+  * Revert "refactor: Replace jQuery-dependent timeago with vanilla timeago.js"
+  * docs(userguide): fix position of job_templates unique id
+  * docs(amqp): cover usage examples of amqp and slack integration
+  * feat: Allow resuming asset downloads with `openqa-clone-job`
+  * feat: migrate to timeago.js for proper jquery4 compatibility
+  * style: Exclude external/ directory from 01-style.t checks
+  * style: Fix various perlcritic violations in script/
+  * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
+Wed Mar 25 01:08:28 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774384552.1377209d:
+  * test: Add Test::Perl::Critic
+  * test: Consider everything under `lib/openQA/` covered
+  * refactor: Avoid duplicate code for making test suite name unique
+  * test: Consider everything under `lib/OpenQA/Scheduler/` covered
+  * test: Cover handling missing response from ws server when assigning jobs
+  * test: Cover assigning multiple jobs to worker
+  * refactor: Extract functions to assign jobs in scheduler code
+  * refactor: Remove probably useless error handling in scheduler code
+  * test: Cover all cases of sorting criteria in scheduler
+  * test: Consider everything under `lib/OpenQA/Resource/` covered
+  * test: Cover remaining uncovered lines in `OpenQA::Resource::Locks`
+  * refactor: Simplify `unlock` function to be in-line with `lock`
+  * test: Cover restarting jobs with no job IDs specified
+  * style: Use ProhibitNegativeExpressionsInUnlessAndUntilConditions
+  * chore(deps): Dependency cron 2026-03-24
+  * chore: migrate remaining ESLint settings from legacy to flat config
+  * style: migrate all JavaScript consistently from var to let/const
+  * chore(ci): bump javascript check to node 22
+
+-------------------------------------------------------------------
 Mon Mar 23 16:26:14 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1774278862.ea002efa:
