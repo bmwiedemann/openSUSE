@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Mar 26 15:51:10 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Fix compile error in intel_rdt.c
+A Fix-new-qpos-library-call-missing-an-arguement.patch
+
+-------------------------------------------------------------------
+Thu Mar 26 15:50:33 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Update to version 5.12.0.382.g2cd055fe:
+  * mqtt plugin: review fixes
+  * mqtt plugin: add NotificationPrefix config, default to "collectd/event"
+  * mqtt plugin: add JSON format to mqtt_write
+  * mqtt plugin: format PLAIN notifications similar to notify_email
+  * mqtt plugin: add Format config, default to PLAIN
+  * mqtt plugin: add SendNotifications config, default false
+  * mqtt plugin: publish notifications as JSON to event subtopic
+  * snmp plugin: remove the deprecated DES debug info
+  * configure.ac: fix grpc build
+  * virt: Drop ATTRIBUTE_UNUSED for virt_eventloop_timeout_cb
+  * dpdk: check rte_eth_link_get_nowait return value
+  * Fix lcc_receive
+  * Run contrib/format.sh on src/libcollectdclient/client.c
+- Patch mainline:
+D collectd-fix_attr_unused.patch
+
+-------------------------------------------------------------------
 Thu Oct 16 11:19:43 UTC 2025 - Arvin Schnell <aschnell@suse.com>
 
 - Update to version 5.12.0.366.gc254dc2c:
@@ -245,6 +271,7 @@ Wed Feb 16 20:11:55 UTC 2022 - Thomas Renninger <trenn@suse.de>
 - Enable and add intel_rdt and capabilities to general plugin rpm
 - Remove an old configure paramter:
   configure: WARNING: unrecognized options: --without-included-ltdl
+- Use manual instead of local services in _service
 
 -------------------------------------------------------------------
 Thu Sep 16 09:29:07 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>

@@ -1,7 +1,7 @@
 #
 # spec file for package collectd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2005-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -60,7 +60,7 @@
 %endif
 %bcond_with epics
 Name:           collectd
-Version:        5.12.0.366.gc254dc2c
+Version:        5.12.0.382.g2cd055fe
 Release:        0
 Summary:        Statistics Collection Daemon for filling RRD Files
 License:        GPL-2.0-only AND MIT
@@ -84,7 +84,8 @@ Patch8:         9e36cd85a2bb_sigrok_Update_to_support_libsigrok_0_4.patch
 # PATCH-FIX-OPENSUSE avoid-pg-config.patch avoid pg_config if possible
 Patch11:        avoid-pg-config.patch
 Patch12:        harden_collectd.service.patch
-Patch13:        collectd-fix_attr_unused.patch
+# PATCH-FIX-UPSTREAM -- based on PR 4401
+Patch13:        Fix-new-qpos-library-call-missing-an-arguement.patch
 # for /etc/apache2/... ownership (rpmlint):
 BuildRequires:  apache2
 BuildRequires:  autoconf
