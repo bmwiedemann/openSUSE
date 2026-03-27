@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 27 11:22:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(geocode-glib-1.0) BuildRequires: Neither needed
+  nor used.
+
+-------------------------------------------------------------------
 Mon Nov  4 18:50:55 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - rename to pantheon-tasks

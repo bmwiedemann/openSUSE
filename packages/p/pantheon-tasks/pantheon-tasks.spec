@@ -33,7 +33,6 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(champlain-0.12)
 BuildRequires:  pkgconfig(clutter-1.0)
 BuildRequires:  pkgconfig(evolution-data-server-1.2)
-BuildRequires:  pkgconfig(geocode-glib-1.0)
 BuildRequires:  pkgconfig(geocode-glib-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)

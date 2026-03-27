@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1223047</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>025926052dd5727c054be5aad702c319</srcmd5>
+    <version>6.3.3</version>
+    <time>1774626692</time>
+    <user>anag_factory</user>
+    <comment>- Drop pkgconfig(geocode-glib-1.0) BuildRequires: Neither needed
+  nor used. (forwarded request 1343166 from iznogood)</comment>
+    <requestid>1343170</requestid>
+  </revision>
 </revisionlist>
