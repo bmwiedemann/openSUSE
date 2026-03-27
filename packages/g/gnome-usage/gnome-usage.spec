@@ -24,7 +24,7 @@ Summary:        System resources viewer for GNOME
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Usage
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
