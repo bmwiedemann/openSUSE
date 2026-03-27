@@ -23,7 +23,7 @@ Release:        0
 Summary:        Edit audio file tags
 License:        MIT
 URL:            https://gitlab.gnome.org/World/eartag
-Source:         %{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildArch:      noarch
 BuildRequires:  blueprint-compiler
 BuildRequires:  meson
