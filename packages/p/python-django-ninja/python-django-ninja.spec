@@ -18,7 +18,7 @@
 %define pkgname django_ninja
 
 Name:           python-django-ninja
-Version:        1.5.3
+Version:        1.6.2
 Release:        0
 Summary:        Django Ninja - Fast Django REST framework
 License:        MIT

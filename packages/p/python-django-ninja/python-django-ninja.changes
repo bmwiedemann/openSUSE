@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:44:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 1.6.2:
+  * Added CursorPagination for stable pagination.
+  * Added Status(code, body) response object; deprecated
+    the tuple response syntax.
+  * Added support for Streaming responses (SSE and JSONL).
+  * Refactored Router to allow reuse and improved
+    inheritance of auth, throttle, and tags.
+  * Added support for lazy Django model strings in Schema
+  * Added support for Python 3.14 annotations (PEP 749).
+  * Improved response validation performance for Pydantic
+     models.
+  * Updated CI to use Python 3.12.
+  * Documentation updates for new features and decorator
+    execution modes.
+
+-------------------------------------------------------------------
 Tue Mar  3 13:56:08 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
 
 - Initial package version 1.5.3

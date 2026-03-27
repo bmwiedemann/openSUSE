@@ -7,4 +7,25 @@
     <comment>for django-allauth</comment>
     <requestid>1336165</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f516e3f80beb06ccd266ff8828e0996</srcmd5>
+    <version>1.6.2</version>
+    <time>1774626682</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.6.2:
+  * Added CursorPagination for stable pagination.
+  * Added Status(code, body) response object; deprecated
+    the tuple response syntax.
+  * Added support for Streaming responses (SSE and JSONL).
+  * Refactored Router to allow reuse and improved
+    inheritance of auth, throttle, and tags.
+  * Added support for lazy Django model strings in Schema
+  * Added support for Python 3.14 annotations (PEP 749).
+  * Improved response validation performance for Pydantic
+     models.
+  * Updated CI to use Python 3.12.
+  * Documentation updates for new features and decorator
+    execution modes.</comment>
+    <requestid>1343143</requestid>
+  </revision>
 </revisionlist>
