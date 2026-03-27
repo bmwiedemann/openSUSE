@@ -23,7 +23,7 @@ Release:        0
 Summary:        ISO Code Lists and Translations
 License:        LGPL-2.1-or-later
 URL:            https://salsa.debian.org/iso-codes-team/iso-codes
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  meson
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
