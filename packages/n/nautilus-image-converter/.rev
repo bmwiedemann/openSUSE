@@ -75,4 +75,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 1304857 from dimstar)</comment>
     <requestid>1305426</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>d7acd3d1b13006af2abef8d761e02f35</srcmd5>
+    <version>0.4.0</version>
+    <time>1774626580</time>
+    <user>anag_factory</user>
+    <comment>Push from SCM</comment>
+    <requestid>1343037</requestid>
+  </revision>
 </revisionlist>

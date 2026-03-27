@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:55:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Mon Sep 15 14:53:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Set an explicit tag to package in _service
