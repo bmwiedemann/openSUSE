@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 16:27:39 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop gnome-doc-utils BuildRequires: deprecated and not actually
+  used.
+
+-------------------------------------------------------------------
 Sun Mar 31 07:38:58 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.28.0

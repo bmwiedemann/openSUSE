@@ -1,7 +1,7 @@
 #
 # spec file for package mate-user-share
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Group:          Productivity/Networking/File-Sharing
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  gnome-doc-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
