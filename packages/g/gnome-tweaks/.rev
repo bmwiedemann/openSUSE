@@ -208,4 +208,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 1304918 from dimstar)</comment>
     <requestid>1305467</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>8f6556a311575e71044a6a3acc464b68</srcmd5>
+    <version>49.0</version>
+    <time>1774626518</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342965</requestid>
+  </revision>
 </revisionlist>

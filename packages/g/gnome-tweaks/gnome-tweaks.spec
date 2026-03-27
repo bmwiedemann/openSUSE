@@ -24,7 +24,7 @@ Summary:        A tool to customize advanced GNOME 3 options
 License:        CC0-1.0 AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Tweaks
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # GI is needed to have typelib() Requires
