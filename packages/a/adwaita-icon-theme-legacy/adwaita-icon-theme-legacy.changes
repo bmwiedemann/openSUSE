@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:20:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Wed Sep 10 15:30:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop gdk-pixbuf-loader-rsvg BuildRequires: glycin-loaders comes

@@ -23,7 +23,7 @@ Summary:        GNOME Icon Theme - Legacy fallback icons
 License:        CC-BY-SA-3.0 OR LGPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/adwaita-icon-theme-legacy
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gtk3-tools >= 3.24.2
