@@ -1370,4 +1370,12 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
     <comment></comment>
     <requestid>1314018</requestid>
   </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>08eb249a771199b813e71650c33787c9</srcmd5>
+    <version>44.6</version>
+    <time>1774626591</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342944</requestid>
+  </revision>
 </revisionlist>
