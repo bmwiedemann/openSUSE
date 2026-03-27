@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1228878</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>325f68f7f6225d9dd8aab62ef15bc980</srcmd5>
+    <version>0.2.0</version>
+    <time>1774626706</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.0:
+  * v0.2.0
+  * feat: Add file browser synced to application (#3)
+  * chore: Update project to latest (#2) (forwarded request 1343194 from rrahl0)</comment>
+    <requestid>1343195</requestid>
+  </revision>
 </revisionlist>

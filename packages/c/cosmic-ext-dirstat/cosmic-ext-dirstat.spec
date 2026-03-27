@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-ext-dirstat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-ext-dirstat
-Version:        0.1.0+git20241120.bab06c8
+Version:        0.2.0
 Release:        0
 Summary:        KDirStat-esque disk usage analyzer using libcosmic
 License:        GPL-3.0-only
@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.90
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
