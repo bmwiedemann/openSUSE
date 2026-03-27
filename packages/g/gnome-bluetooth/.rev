@@ -906,4 +906,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment>Fix date format in old changelog entries (forwarded request 1277772 from dimstar)</comment>
     <requestid>1277951</requestid>
   </revision>
+  <revision rev="116" vrev="3">
+    <srcmd5>cac6580df2a7382f7e3306b3ac378ce5</srcmd5>
+    <version>47.1</version>
+    <time>1774626513</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342954</requestid>
+  </revision>
 </revisionlist>
