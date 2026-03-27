@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 26 16:06:16 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- the generated cmake files seems to remember which eigen3 version
+  was used for building. reflect this in the dependencies.
+
+-------------------------------------------------------------------
 Wed Feb  4 17:38:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Raise-minimum-required-Eigen-version-to-3.3.4.patch,

@@ -50,6 +50,7 @@ Group:          Development/Libraries/C and C++
 Requires:       glog-devel >= 0.3.1
 Requires:       libceres%{sover} = %{version}
 Requires:       suitesparse-devel >= 4.5.6
+%requires_eq    eigen3-devel
 
 %description -n libceres-devel
 Ceres Solver is a C++ library for modeling and solving large,
