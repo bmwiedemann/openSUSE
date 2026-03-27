@@ -21,6 +21,11 @@
 %bcond_with     datacenter
 %bcond_with     mininet
 %bcond_with     grpc
+%if 0%{?suse_version} > 1600
+%bcond_without  factorydir
+%else
+%bcond_with     factorydir
+%endif
 
 %define frr_user frr
 %define frr_group frr
@@ -30,7 +35,7 @@
 %define frr_home %{_localstatedir}/lib/%{name}
 # see configure: frr_runstatedir=[/var]/run/frr
 %define frr_statedir %{_rundir}/%{name}
-%define frr_daemondir %{_prefix}/lib/frr
+%define frr_daemondir %{_prefix}/lib/%{name}
 
 Name:           frr
 Version:        10.5.1
@@ -41,7 +46,6 @@ Group:          Productivity/Networking/System
 URL:            https://www.frrouting.org
 #Git-Clone:     https://github.com/FRRouting/frr.git
 Source:         https://github.com/FRRouting/frr/archive/refs/tags/%{name}-%{version}.tar.gz
-Source1:        %{name}-tmpfiles.d
 Patch0:         harden_frr.service.patch
 Patch1:         0001-disable-zmq-test.patch
 Patch2:         0002-frr-logrotate.patch
@@ -289,7 +293,6 @@ autoreconf -fiv
     --enable-grpc
 %endif
 
-echo "pwd: $(pwd)"
 make %{?_smp_mflags} MAKEINFO="makeinfo --no-split"
 
 # Create frr user/groups
@@ -301,77 +304,118 @@ m %{frr_user} %{frrvty_group}
 __EOF__
 %sysusers_generate_pre %{name}-user.conf %{name} %{name}-user.conf
 
+# Create tmpfiles.d config
+cat >  %{name}-tmpfiles.conf << __EOF__
+d %{frr_logs}                   0750 %{frr_user} %{frr_group}
+d %{frr_home}                   0750 %{frr_user} %{frr_group}
+d %{frr_statedir}               0751 %{frr_user} %{frrvty_group}
+__EOF__
+%if %{with factorydir}
+# The vtysh.conf is never written by vtysh, symlink it.
+# The daemon file is edited by the user, the frr.conf is
+# written by user or by vtysh `write`, thus copy them
+# from the factory directory.
+cat >> %{name}-tmpfiles.conf << __EOF__
+d %{_sysconfdir}/frr            0751 %{frr_user} %{frr_group}
+C %{_sysconfdir}/frr/daemons    0640 %{frr_user} %{frr_group}
+C %{_sysconfdir}/frr/frr.conf   0640 %{frr_user} %{frr_group}
+L %{_sysconfdir}/frr/vtysh.conf -    -           -
+__EOF__
+%endif
+
+# Create initial frr config
+cat > frr.conf << __EOF__
+#
+# FRR's configuration shell, vtysh, dynamically edits the live, in-memory
+# configuration while FRR is running. When instructed, vtysh will persist the
+# live configuration to this file, overwriting its contents. If you want to
+# avoid this, you can edit this file manually before starting FRR, or instruct
+# vtysh to write configuration to a different file.
+#
+
+# Log to syslog (journal) by default
+log syslog notifications
+
+# Log rotation configuration expects optional log files in the %{frr_logs}
+# directory, written by a syslog daemon or by the frr daemons directly, e.g.:
+#log file %{frr_logs}/frr.log informational
+#log daemon bgpd %{frr_logs}/frr/bgpd.log debugging
+__EOF__
+
+# Create default vtysh config
+cat > vtysh.conf << __EOF__
+! vtysh is using PAM authentication allowing root and frrvty group members to use it.
+__EOF__
+
+
 %install
 make DESTDIR=%{buildroot} INSTALL="install -p" CP="cp -p" install
+
 %python3_fix_shebang_path %{buildroot}%{frr_daemondir}/*.py
 
-find %{buildroot} -type f -name "*.la" -delete -print
-
-install -d %{buildroot}%{_sysconfdir}/frr
-install -d %{buildroot}/%{_docdir}/%{name}
-mv %{buildroot}/%{_datadir}/doc/frr/html %{buildroot}/%{_docdir}/%{name}
+install -d %{buildroot}%{_docdir}/%{name}
+mv %{buildroot}%{_datadir}/doc/frr/html %{buildroot}%{_docdir}/%{name}
 
 # remove stray buildinfo files
 find %{buildroot}/%{_docdir}/%{name} -type f -name .buildinfo -delete
 
+# remove stray libtool .la files
+find %{buildroot}%{_libdir}/ -type f -name "*.la" -delete -print
+
+# remove system-v init helper scripts & man page
+rm -f %{buildroot}%{frr_daemondir}/{frr,ssd}
+rm -f %{buildroot}%{_mandir}/man1/frr.1*
+
+# add rpki module to daemons file
+sed -e 's/^\(bgpd_options=\)\(.*\)\(".*\)/\1\2 -M rpki\3/' -i tools/etc/frr/daemons
+
+%if %{with factorydir}
+install -d -m 0755 %{buildroot}%{_datadir}/factory%{_sysconfdir}
+install -d -m 0751 %{buildroot}%{_datadir}/factory%{_sysconfdir}/%{name}
+install -D -m 0640 tools/etc/frr/daemons %{buildroot}%{_datadir}/factory%{_sysconfdir}/%{name}/
+install -D -m 0640 frr.conf              %{buildroot}%{_datadir}/factory%{_sysconfdir}/%{name}/
+install -D -m 0640 vtysh.conf            %{buildroot}%{_datadir}/factory%{_sysconfdir}/%{name}/
+%else
+install -d -m 0751 %{buildroot}%{_sysconfdir}/frr
+install -D -m 0640 tools/etc/frr/daemons %{buildroot}%{_sysconfdir}/%{name}/
+install -D -m 0640 frr.conf              %{buildroot}%{_sysconfdir}/%{name}/
+install -D -m 0640 vtysh.conf            %{buildroot}%{_sysconfdir}/%{name}/
+%endif
+
 # systemd service + daemons file
 install -D -m 0644 tools/frr.service %{buildroot}%{_unitdir}/frr.service
 sed -e "s|/var/run/frr|%{frr_statedir}|g" -i %{buildroot}%{_unitdir}/frr.service
-install -D -m 0644 tools%{_sysconfdir}/frr/daemons %{buildroot}%{_sysconfdir}/frr/daemons
 
-# add rpki module to daemon
-sed -i -e 's/^\(bgpd_options=\)\(.*\)\(".*\)/\1\2 -M rpki\3/' %{buildroot}%{_sysconfdir}/frr/daemons
-
+# pam and logrotation config
 %if 0%{?suse_version} > 1500
-mkdir -p %{buildroot}%{_pam_vendordir}
 install -D -m 0644 redhat/frr.pam %{buildroot}%{_pam_vendordir}/frr
-%else
-install -D -m 0644 redhat/frr.pam %{buildroot}%{_sysconfdir}/pam.d/frr
-%endif
-%if 0%{?suse_version} > 1500
 install -D -m 0644 tools/etc/logrotate.d/frr %{buildroot}%{_distconfdir}/logrotate.d/frr
 sed -e "s|/var/log/frr|%{frr_logs}|g" -e "s|/var/run/frr|%{frr_statedir}|g" \
     -i %{buildroot}%{_distconfdir}/logrotate.d/frr
 %else
+install -D -m 0644 redhat/frr.pam %{buildroot}%{_sysconfdir}/pam.d/frr
 install -D -m 0644 tools/etc/logrotate.d/frr %{buildroot}%{_sysconfdir}/logrotate.d/frr
 sed -e "s|/var/log/frr|%{frr_logs}|g" -e "s|/var/run/frr|%{frr_statedir}|g" \
     -i %{buildroot}%{_sysconfdir}/logrotate.d/frr
 %endif
 
-install -D -m 0644 %{SOURCE1} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
-sed -e "s|@frr_user@|%{frr_user}|g" \
-    -e "s|@frr_group@|%{frr_group}|g" \
-    -e "s|@frrvty_group@|%{frrvty_group}|g" \
-    -e "s|@frr_logs@|%{frr_logs}|g" \
-    -e "s|@frr_home@|%{frr_home}|g" \
-    -e "s|@frr_statedir@|%{frr_statedir}|g" \
-    -i %{buildroot}/%{_tmpfilesdir}/%{name}.conf
-
-rm -f %{buildroot}%{frr_daemondir}/ssd
-
-cat > %{buildroot}%{_sysconfdir}/frr/frr.conf << __EOF__
-!hostname frr
-
-!password frr
-!enable password frr
-
-log file %{frr_logs}/frr.log
-__EOF__
-cat > %{buildroot}%{_sysconfdir}/frr/vtysh.conf << __EOF__
-! vtysh is using PAM authentication allowing root to use it.
-__EOF__
-
+install -D -m 0644 %{name}-tmpfiles.conf %{buildroot}/%{_tmpfilesdir}/%{name}.conf
 install -D -m 0644 %{name}-user.conf %{buildroot}%{_sysusersdir}/%{name}-user.conf
 
 %check
 make %{?_smp_mflags} -C tests
 
 %pre -f %{name}.pre
-
 %service_add_pre %{name}.service
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
 for i in logrotate.d/frr pam.d/frr ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+%if %{with factorydir}
+# Prepare for migration to /usr/share/factory/etc/frr, save any old .rpmsave
+for i in %{name}/frr.conf %{name}/vtysh.conf %{name}/daemons ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 %endif
@@ -380,6 +424,12 @@ done
 %if 0%{?suse_version} > 1500
 # Migration to /usr/etc, restore just created .rpmsave
 for i in logrotate.d/frr pam.d/frr ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
+%if %{with factorydir}
+# Migration to /usr/share/factory/etc/frr, restore just created .rpmsave
+for i in %{name}/frr.conf %{name}/vtysh.conf %{name}/daemons ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
@@ -432,19 +482,29 @@ done
 %license COPYING
 %doc README.md
 %doc doc/mpls
-%dir %attr(0750,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}
-%config(noreplace) %attr(0640,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}/[!v]*.conf*
-%config(noreplace) %attr(0640,%{frr_user},%{frrvty_group}) %{_sysconfdir}/%{name}/vtysh.conf
-%config(noreplace) %attr(0640,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}/daemons
 %if 0%{?suse_version} > 1500
 %{_pam_vendordir}/frr
-%else
-%config(noreplace) %{_sysconfdir}/pam.d/frr
-%endif
-%if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/frr
 %else
+%config(noreplace) %{_sysconfdir}/pam.d/frr
 %config(noreplace) %{_sysconfdir}/logrotate.d/frr
+%endif
+%if %{with factorydir}
+%dir %{_datadir}/factory
+%dir %{_datadir}/factory%{_sysconfdir}
+%dir %attr(0751,%{frr_user},%{frr_group}) %{_datadir}/factory%{_sysconfdir}/%{name}
+%attr(0640,%{frr_user},%{frr_group})      %{_datadir}/factory%{_sysconfdir}/%{name}/daemons
+%attr(0640,%{frr_user},%{frr_group})      %{_datadir}/factory%{_sysconfdir}/%{name}/frr.conf
+%attr(0640,%{frr_user},%{frrvty_group})   %{_datadir}/factory%{_sysconfdir}/%{name}/vtysh.conf
+%dir %attr(0751,%{frr_user},%{frr_group})                  %ghost %{_sysconfdir}/%{name}
+%config(noreplace) %attr(0640,%{frr_user},%{frr_group})    %ghost %{_sysconfdir}/%{name}/daemons
+%config(noreplace) %attr(0640,%{frr_user},%{frr_group})    %ghost %{_sysconfdir}/%{name}/frr.conf
+%config(noreplace) %attr(0640,%{frr_user},%{frrvty_group}) %ghost %{_sysconfdir}/%{name}/vtysh.conf
+%else
+%dir %attr(0751,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}
+%config(noreplace) %attr(0640,%{frr_user},%{frr_group})           %{_sysconfdir}/%{name}/daemons
+%config(noreplace) %attr(0640,%{frr_user},%{frr_group})           %{_sysconfdir}/%{name}/frr.conf
+%config(noreplace) %attr(0640,%{frr_user},%{frrvty_group})        %{_sysconfdir}/%{name}/vtysh.conf
 %endif
 %{_infodir}/frr.info%{?ext_info}
 %{_mandir}/man?/*
@@ -452,8 +512,8 @@ done
 %{_unitdir}/%{name}.service
 %dir %{_tmpfilesdir}
 %{_tmpfilesdir}/%{name}.conf
-%dir %attr(0750,%{frr_user},%{frr_group}) %ghost %{frr_logs}
-%dir %attr(0750,%{frr_user},%{frr_group}) %ghost %{frr_home}
+%dir %attr(0750,%{frr_user},%{frr_group})    %ghost %{frr_logs}
+%dir %attr(0750,%{frr_user},%{frr_group})    %ghost %{frr_home}
 %dir %attr(0751,%{frr_user},%{frrvty_group}) %ghost %{frr_statedir}
 %dir %{_prefix}/lib/frr
 %{_prefix}/lib/frr/fabricd
@@ -465,7 +525,6 @@ done
 %{frr_daemondir}/bfdd
 %{frr_daemondir}/bgpd
 %{frr_daemondir}/eigrpd
-%{frr_daemondir}/frr
 %{frr_daemondir}/frr-reload
 %{frr_daemondir}/frr-reload.py
 %{frr_daemondir}/frr_babeltrace.py
@@ -538,16 +597,7 @@ done
 %{_libdir}/libmlag_pb.so.0*
 
 %files devel
-%dir %{_includedir}/%{name}
-%{_includedir}/%{name}/
-%dir %{_includedir}/%{name}/ospfd
-%{_includedir}/%{name}/ospfd/*.h
-%dir %{_includedir}/%{name}/ospfapi
-%{_includedir}/%{name}/ospfapi/*.h
-%dir %{_includedir}/%{name}/eigrpd
-%{_includedir}/%{name}/eigrpd/*.h
-%dir %{_includedir}/%{name}/bfdd
-%{_includedir}/%{name}/bfdd/*.h
+%{_includedir}/%{name}
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*pc
 

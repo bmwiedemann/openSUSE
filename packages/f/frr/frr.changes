@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar  5 13:17:24 UTC 2026 - Marius Tomaschewski <mt@suse.com>
+
+- Add a factorydir build conditional to install the /etc/frr files in
+  the /usr/share/factory and copy/link this initial/default config via
+  tmpfiles.conf, enabled for suse versions > 16.0 (jsc#PED-14796).
+- Create the tmpfiles.conf in the spec file instead to sed rpm source.
+- Move creation of config files from rpm install to the build section.
+- Improve to use 0751 permissions for the /etc/frr directory to avoid
+  permission denied warning for vtysh.conf in vtysh started as user.
+- Change to frr.conf to use log syslog (journal) by default
+- Do not install obsolete/unused system-v script and manual page
+- Fix (include) file listed twice rpm warning in frr-devel package.
+
+-------------------------------------------------------------------
 Sat Feb 14 18:35:06 UTC 2026 - Erico Mendonca <erico.mendonca@suse.com>
 
 - Bumping version to 10.5.1.
