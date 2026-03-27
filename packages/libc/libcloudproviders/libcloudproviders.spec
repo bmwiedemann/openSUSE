@@ -25,7 +25,7 @@ Summary:        Library/Client to integrate cloud storage providers
 License:        LGPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/World/libcloudproviders
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  meson >= 1.9.0
 BuildRequires:  pkgconfig
