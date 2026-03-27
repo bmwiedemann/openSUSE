@@ -68,4 +68,20 @@
   * add instances client library (forwarded request 1336350 from glaubitz)</comment>
     <requestid>1336383</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>86d6d99e20ebd800133e1efe6f19589a</srcmd5>
+    <version>0.16.0</version>
+    <time>1774626712</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.16.0
+  * An existing repeated string field custom_audiences is marked
+    deprecated for WorkerPools API
+  * Allow Protobuf 7.x
+  * Update image
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py (forwarded request 1343192 from glaubitz)</comment>
+    <requestid>1343202</requestid>
+  </revision>
 </revisionlist>

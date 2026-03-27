@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:03:58 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.16.0
+  * An existing repeated string field custom_audiences is marked
+    deprecated for WorkerPools API
+  * Allow Protobuf 7.x
+  * Update image
+  * Require Python 3.9
+  * Require google-api-core >= 2.11.0
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Mar  4 12:09:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.15.0
