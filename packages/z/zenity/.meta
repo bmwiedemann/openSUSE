@@ -9,5 +9,4 @@ Selection, List, Progress, Question, Text Information, Warning and
 Password.
 
 Zenity is especially useful in scripts.</description>
-  <devel project="GNOME:Factory" package="zenity"/>
 </package>
