@@ -1,7 +1,7 @@
 #
 # spec file for package racket
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012, 2013 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           racket
-Version:        9.0
+Version:        9.1
 Release:        0
 Summary:        Scheme implementation with teaching tools
 License:        Apache-2.0 OR MIT
@@ -27,7 +27,6 @@ URL:            http://racket-lang.org
 Source0:        http://download.racket-lang.org/installers/%{version}/%{name}-%{version}-src.tgz
 Source2:        racket-completion.bash
 Source3:        racket-rpmlintrc
-Patch0:         racket-doc.patch
 Patch1:         racket-fortify.patch
 BuildRequires:  ImageMagick
 BuildRequires:  ca-certificates

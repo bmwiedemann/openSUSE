@@ -325,4 +325,41 @@
 </comment>
     <requestid>1321446</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>359567300e193b60dda955f364b8442c</srcmd5>
+    <version>9.1</version>
+    <time>1774626606</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.1.
+- Delete patch, obsoleted:
+  * racket-doc.patch
+- Documentation organization and navigation can be specialized by
+  language family, to allow users to interact with documentation in a
+  way that is tailored to that language family. This is currently used
+  by Rhombus.
+- The `for` form and its variants accept an `#:on-length-mismatch`
+  specifier. 3.18 Iterations and Comprehensions: for, for/list, ...
+- DrRacket improves the GUI for choosing color schemes.
+- DrRacket has curved syntax arrows. The degree of curvature indicates
+  the relative left- or right-displacement of the arrow's target.
+- DrRacket's &quot;Insert Large Letters&quot; uses characters that match the
+  comment syntax of the buffer's language, making it useful (and fun!)
+  in Rhombus.
+- The `exn-classify-errno` maps network and filesystem error numbers
+  on various platforms to posix-standard symbols, to enable more
+  portable code. 10.2 Exceptions
+- The behavior of Racket BC on certain character operations (most
+  notably `eq?`)  is changed to match that of Racket CS, with a small
+  performance penalty for these operations for BC programs. 19
+  Performance 1.5 Implementations
+- The `make-struct-type` procedure can inherit the current inspector
+  using a `'current` flag. This is the default behavior, but there are
+  situations in which it's not possible to refer to the current
+  inspector. 5.2 Creating Structure Types
+- Bundle configurations can better control the conventions for
+  locating shared object files with the `--enable-sofind=&lt;conv&gt;`
+  flags.
+- The `system-type` function can report on platform and</comment>
+    <requestid>1343040</requestid>
+  </revision>
 </revisionlist>
