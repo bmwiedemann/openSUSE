@@ -24,7 +24,7 @@ Summary:        HTTP web service mocking library
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://gitlab.freedesktop.org/pwithnall/uhttpmock
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc

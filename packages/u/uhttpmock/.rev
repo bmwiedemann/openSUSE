@@ -119,4 +119,12 @@
   + Fix memory leak in uhm_message_finalize. (forwarded request 1181709 from dimstar)</comment>
     <requestid>1181715</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d9df5d739f0aeb6fc565ebfae94f636c</srcmd5>
+    <version>0.11.0</version>
+    <time>1774626557</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1343015</requestid>
+  </revision>
 </revisionlist>
