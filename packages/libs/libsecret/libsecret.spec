@@ -23,7 +23,7 @@ Release:        0
 Summary:        Library for accessing the Secret Service API
 License:        LGPL-2.1-or-later
 URL:            https://wiki.gnome.org/Projects/Libsecret
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 ## SLE-only patches start at 1000
