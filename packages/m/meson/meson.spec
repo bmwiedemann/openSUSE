@@ -207,7 +207,12 @@ rm -rf test\ cases/failing/85\ gtest\ dependency\ with\ version
 
 %build
 %if %{without test}
-%python_build
+%{python_expand # bootstrap with built-in pip
+$python -m venv build/env
+build/env/bin/python -m ensurepip
+export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
+%{$python_pyproject_wheel}
+}
 %else
 # Ensure we have no mesonbuild / meson in CWD, thus guaranteeing we use meson in $PATH
 rm -r meson.py mesonbuild
@@ -216,7 +221,11 @@ rm -r meson.py mesonbuild
 %install
 # If this is the test suite, we don't need anything else but the meson package
 %if %{without test}
-%python_install
+%{python_expand # use pip bootstrapped above
+export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
+%{$python_pyproject_install}
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 install -Dpm 0644 data/macros.meson \
   %{buildroot}%{_rpmconfigdir}/macros.d/macros.meson
@@ -266,7 +275,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %if !%{with test}
 %{_bindir}/meson
 %{python_sitelib}/%{_name}/
-%{python_sitelib}/meson-*
+%{python_sitelib}/meson-%{version}.dist-info
 %dir %{_datadir}/polkit-1/
 %dir %{_datadir}/polkit-1/actions/
 %{_datadir}/polkit-1/actions/com.mesonbuild.install.policy

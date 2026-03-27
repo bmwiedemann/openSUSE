@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 23 01:50:41 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros for building and installing, using a venv
+  to avoid pip.
+
+-------------------------------------------------------------------
 Mon Mar 16 08:39:30 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.10.2:
