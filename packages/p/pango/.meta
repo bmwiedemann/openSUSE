@@ -5,5 +5,4 @@ on internationalization. It can be used anywhere that text layout
 is needed.
 
 Pango forms the core of text and font handling for GTK+.</description>
-  <devel project="GNOME:Factory" package="pango"/>
 </package>

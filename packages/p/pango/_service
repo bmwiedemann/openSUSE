@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/GNOME/pango.git</param>
@@ -8,10 +9,10 @@
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">disable</param>
   </service>
-  <service mode="buildtime" name="tar" />
-  <service mode="buildtime" name="recompress">
+  <service mode="manual" name="tar"/>
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="manual" name="set_version" />
+  <service mode="manual" name="set_version"/>
 </services>
