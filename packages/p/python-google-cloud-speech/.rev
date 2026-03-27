@@ -288,4 +288,17 @@
   * fix mypy errors (#15494) (forwarded request 1336333 from glaubitz)</comment>
     <requestid>1336409</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cee6eee6cb7a66c7dbb0aaae07bfddfc</srcmd5>
+    <version>2.38.0</version>
+    <time>1774626695</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.38.0
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py (forwarded request 1343169 from glaubitz)</comment>
+    <requestid>1343174</requestid>
+  </revision>
 </revisionlist>
