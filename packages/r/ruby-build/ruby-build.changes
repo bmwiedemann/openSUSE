@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 27 03:28:12 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20260327.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260327
+  * Add 3.2.11
+  * Fix OpenSSL version requirement in `update-cruby` for Ruby 4.x by @hsbt in #2612
+  * Darwin-x86_64 is no longer supported on TruffleRuby by @eregon in #2613
+
+-------------------------------------------------------------------
+Thu Mar 26 14:11:08 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20260326.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260326
+  * Added 3.3.11
+  * Fix openssl version requirement for ruby 4.0.2 by @mitto in #2608
+
+-------------------------------------------------------------------
 Tue Mar 17 23:21:56 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20260317.
