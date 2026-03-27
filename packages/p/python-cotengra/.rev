@@ -23,4 +23,41 @@
     <comment></comment>
     <requestid>1177372</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5695fbca8832d15673041118bb5963e3</srcmd5>
+    <version>0.7.5</version>
+    <time>1774626632</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.7.5:
+  ## Enhancements
+  * Add optimize=&quot;edgesort&quot; (aliased to optimize=&quot;ncon&quot; too), which performs
+    a contraction by contracting edges in sorted order, thus can be entirely
+    specified by the graph labelling.
+  * Add edge_path_to_ssa and edge_path_to_linear for converting edge paths to
+    SSA and linear paths respectively.
+  * ContractionTree.from_path: allow an edge_path argument.
+  * Allow manual path specification as edge path
+  * ReusableHyperOptimizer and DiskDict, allow splitting key into
+    subdirectory structure for better performance
+  * High level interface functions accept the strip_exponent kwarg, which
+    eagerly strips a scaling exponent (log10) as the contraction proceeds,
+    avoiding issues to do with very large or very small numeric values.
+  * Add cmaes as an optlib method, use it by default for 'auto' preset if
+    available since ih has less overhead than optuna.
+  * Add HyperOptimizer.plot_parameters_parallel for plotting the sampled
+    parameter space of a hyper optimizer method in parallel coordinates.
+  * Add ncon interface.
+  * Add utils.save_to_json and utils.load_from_json for saving and loading
+    contractions to/from json.
+  * Add examples/benchmarks with various json benchmark contractions
+  * Add utils.networkx_graph_to_equation for converting a networkx graph to
+    cotengra style inputs, output and size_dict.
+  * Add &quot;max&quot; as a valid minimize option for optimize_optimal (also added to
+    cotengrust), which minimizes the single most expensive contraction (i.e.
+    the cost scaling)
+  * Add RandomOptimizer, a fully random optimizer for testing and
+    initialization purposes. It can be used with optimize=&quot;random&quot; but is not
+    recommended for actual optimization.</comment>
+    <requestid>1343077</requestid>
+  </revision>
 </revisionlist>

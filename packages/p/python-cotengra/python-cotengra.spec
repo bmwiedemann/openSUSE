@@ -1,7 +1,7 @@
 #
 # spec file for package python-cotengra
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           python-cotengra
-Version:        0.6.2
+Version:        0.7.5
 Release:        0
 Summary:        Hyper optimized contraction trees for large tensor networks and einsums
 License:        Apache-2.0
 URL:            https://github.com/jcmgray/cotengra
 Source:         https://files.pythonhosted.org/packages/source/c/cotengra/cotengra-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 45}
-BuildRequires:  %{python_module setuptools_scm >= 6.2}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-autoray
