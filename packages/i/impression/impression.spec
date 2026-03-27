@@ -23,8 +23,8 @@ Release:        0
 Summary:        A straight-forward and modern application to create bootable drives
 License:        GPL-3.0-only
 URL:            https://gitlab.com/adhami3310/Impression
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils

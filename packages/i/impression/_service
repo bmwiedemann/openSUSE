@@ -10,13 +10,13 @@
   </service>
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">impression</param>
-    <param name="compression">zst</param>
     <param name="update">false</param>
+    <param name="compression">xz</param>
   </service>
-  <service name="tar" mode="buildtime" />
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
-    <param name="compression">zst</param>
+    <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="manual" />
+  <service name="set_version" mode="manual"/>
 </services>
