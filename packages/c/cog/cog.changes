@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:24:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Mon Oct 13 08:50:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Do not build 32bit targets via ExcludeArch %{ix86} and %{arm}.
