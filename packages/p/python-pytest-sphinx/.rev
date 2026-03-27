@@ -81,4 +81,15 @@
 - Switch to autosetup macro.</comment>
     <requestid>1230261</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bd5238300397e9ca6bf6190d8c9f164e</srcmd5>
+    <version>0.7.1</version>
+    <time>1774626641</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.7.1:
+  * Drop support for python 3.8 and 3.9 and add support for 3.13 and 3.14
+  * Adapt to changes in doctest stdlib package
+- Drop patch support-python-313.patch, fixed upstream.</comment>
+    <requestid>1343087</requestid>
+  </revision>
 </revisionlist>

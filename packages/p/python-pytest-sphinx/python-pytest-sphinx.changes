@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 27 04:02:31 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.1:
+  * Drop support for python 3.8 and 3.9 and add support for 3.13 and 3.14
+  * Adapt to changes in doctest stdlib package
+- Drop patch support-python-313.patch, fixed upstream.
+
+-------------------------------------------------------------------
 Thu Dec 12 04:44:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-313.patch:

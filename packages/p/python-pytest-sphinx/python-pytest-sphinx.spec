@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-sphinx
-Version:        0.6.3
+Version:        0.7.1
 Release:        0
 Summary:        Doctest plugin for pytest with support for Sphinx-specific doctest-directives
 License:        BSD-3-Clause
 URL:            https://github.com/thisch/pytest-sphinx
 Source:         https://github.com/thisch/pytest-sphinx/archive/v%{version}.tar.gz#/pytest-sphinx-%{version}.tar.gz
-Patch0:         support-python-313.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
