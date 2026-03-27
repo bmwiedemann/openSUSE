@@ -6,6 +6,5 @@ various sources using a single API.
 This package provides plugins for accessing content from various media
 providers, including podcasts, UPnP/DLNA, Apple trailers, Flickr,
 Jamendo, Vimeo, YouTube.</description>
-  <devel project="GNOME:Factory" package="grilo-plugins"/>
   <url>https://live.gnome.org/Grilo</url>
 </package>

@@ -24,7 +24,7 @@ Summary:        Media and metadata plugins for the Grilo framework
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  docbook_4
 BuildRequires:  fdupes
