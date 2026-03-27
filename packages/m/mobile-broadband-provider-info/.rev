@@ -287,4 +287,12 @@
   * Providers with mccmnc 310260: add primary attributes (forwarded request 1171359 from dimstar)</comment>
     <requestid>1171405</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>534f2c6a17bb47da836faebc3bf84265</srcmd5>
+    <version>20240407</version>
+    <time>1774626545</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1343000</requestid>
+  </revision>
 </revisionlist>
