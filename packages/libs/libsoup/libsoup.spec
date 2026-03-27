@@ -24,7 +24,7 @@ Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libsoup
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-0719.patch bsc#1256399, CVE-2026-0719, glgo#GNOME/libsoup!493 alynx.zhou@suse.com -- Fix overflow for password md4sum

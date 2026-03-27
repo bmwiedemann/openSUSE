@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:11:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Thu Mar  5 19:58:46 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add libsoup-CVE-2026-0716.patch:  Fix out-of-bounds read when

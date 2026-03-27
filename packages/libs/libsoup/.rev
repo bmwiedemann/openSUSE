@@ -1404,4 +1404,12 @@
     <comment></comment>
     <requestid>1337265</requestid>
   </revision>
+  <revision rev="168" vrev="4">
+    <srcmd5>893a8e424344f11883fa1ac284dd8666</srcmd5>
+    <version>3.6.6</version>
+    <time>1774626542</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342996</requestid>
+  </revision>
 </revisionlist>

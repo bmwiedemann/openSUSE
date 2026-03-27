@@ -11,5 +11,4 @@ Features:
   * Client support for Digest, NTLM, and Basic authentication
   * Server support for Digest and Basic authentication
   * XML-RPC support</description>
-  <devel project="GNOME:Factory" package="libsoup"/>
 </package>
