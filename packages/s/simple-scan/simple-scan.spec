@@ -23,7 +23,7 @@ Summary:        Simple Scanning Utility
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/simple-scan
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
