@@ -63,4 +63,20 @@
 - Drop urllib3 BuildRequires due to boto3 disappearing.</comment>
     <requestid>1268272</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7dcfb978a8b45a1db19ecc8e7e089eed</srcmd5>
+    <version>0.13.0</version>
+    <time>1774626679</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.13.0:
+  * default hashlib.md5 may not be available in FIPS builds. We
+    now do not access it at import time on FileSystemCache``so
+    developers have time to change the default. ``hashlib.md5
+    will be lazy loaded when a new default is not provided
+  * RedisCache now supports callables as keys
+  * Added MongoDB as a cache backend
+  * Drop python 3.7 support
+  * Add python 3.11 support</comment>
+    <requestid>1343144</requestid>
+  </revision>
 </revisionlist>

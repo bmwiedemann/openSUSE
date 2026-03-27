@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:43:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * default hashlib.md5 may not be available in FIPS builds. We
+    now do not access it at import time on FileSystemCache``so
+    developers have time to change the default. ``hashlib.md5
+    will be lazy loaded when a new default is not provided
+  * RedisCache now supports callables as keys
+  * Added MongoDB as a cache backend
+  * Drop python 3.7 support
+  * Add python 3.11 support
+
+-------------------------------------------------------------------
 Thu Apr 10 04:53:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

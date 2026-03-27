@@ -7,7 +7,7 @@
 
 --- a/setup.cfg
 +++ b/setup.cfg
-@@ -34,11 +34,14 @@ python_requires = >= 3.7
+@@ -34,11 +34,14 @@ python_requires = >= 3.8
  where = src
  
  [tool:pytest]
@@ -41,3 +41,23 @@
  @pytest.mark.usefixtures("redis_server", "memcached_server")
  class TestInterfaceUniformity:
      def test_types_have_all_base_methods(self):
+--- a/tests/test_memcached_cache.py
++++ b/tests/test_memcached_cache.py
+@@ -16,6 +16,7 @@ def cache_factory(request):
+     request.cls.cache_factory = _factory
+ 
+ 
++@pytest.mark.network
+ @pytest.mark.usefixtures("memcached_server")
+ class TestMemcachedCache(CommonTests, ClearTests, HasTests):
+     pass
+--- a/tests/test_redis_cache.py
++++ b/tests/test_redis_cache.py
+@@ -42,6 +42,7 @@ def my_callable_key() -> str:
+     return "bacon"
+ 
+ 
++@pytest.mark.network
+ @pytest.mark.usefixtures("redis_server")
+ class TestRedisCache(CommonTests, ClearTests, HasTests):
+     def test_callable_key(self):

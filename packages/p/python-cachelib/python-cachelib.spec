@@ -1,7 +1,7 @@
 #
 # spec file for package python-cachelib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cachelib
-Version:        0.10.2
+Version:        0.13.0
 Release:        0
 Summary:        A collection of cache libraries in the same API interface
 License:        BSD-3-Clause
@@ -61,6 +61,8 @@ A collection of cache libraries in the same API interface.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# need running mongodb
+rm tests/test_mongodb_cache.py
 # set up working directory
 export BASETEMP=$(mktemp -d -t cachelib_test.XXXXXX)
 trap "rm -rf ${BASETEMP}" EXIT
