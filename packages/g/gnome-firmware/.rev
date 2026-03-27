@@ -112,4 +112,12 @@
   * Show devices without a firmware version.</comment>
     <requestid>1308867</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a65328645fae9992698dd9d081ea984a</srcmd5>
+    <version>49.0</version>
+    <time>1774626575</time>
+    <user>anag_factory</user>
+    <comment>Push from SCM</comment>
+    <requestid>1343030</requestid>
+  </revision>
 </revisionlist>
