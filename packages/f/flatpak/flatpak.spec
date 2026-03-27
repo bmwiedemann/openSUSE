@@ -36,7 +36,7 @@ Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
 Group:          System/Packages
 URL:            https://flatpak.github.io/
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source1:        update-system-flatpaks.service
 Source2:        update-system-flatpaks.timer
 Source3:        update-user-flatpaks.service

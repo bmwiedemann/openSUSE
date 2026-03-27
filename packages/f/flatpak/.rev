@@ -1099,4 +1099,12 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
   + Be selective about when to map font-dirs.xml in flatpak build. (forwarded request 1328489 from iznogood)</comment>
     <requestid>1328915</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>afb92e602d9a42ed541cf4b382939c9a</srcmd5>
+    <version>1.16.3</version>
+    <time>1774626507</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342946</requestid>
+  </revision>
 </revisionlist>
