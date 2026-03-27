@@ -450,4 +450,12 @@
     <comment>New stable rel (forwarded request 1339124 from iznogood)</comment>
     <requestid>1339275</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>a2201ccaa18232f1bef08c476f4d4cfa</srcmd5>
+    <version>4.5.1</version>
+    <time>1774626595</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342961</requestid>
+  </revision>
 </revisionlist>

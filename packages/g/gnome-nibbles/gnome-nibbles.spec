@@ -23,7 +23,7 @@ Summary:        Worm Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://gitlab.gnome.org/GNOME/gnome-nibbles/-/wikis/home
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildSystem:    meson
 
 BuildRequires:  desktop-file-utils
