@@ -23,7 +23,7 @@ Summary:        Framework for browsing and searching media content
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
