@@ -32,7 +32,7 @@ Release:        0
 Summary:        GObject-based Plugin Engine version 2
 License:        LGPL-2.1-or-later
 URL:            https://wiki.gnome.org/Projects/Libpeas
-Source0:        libpeas-%{version}.tar.zst
+Source0:        libpeas-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
