@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 20 12:16:30 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop packageand(polkit:gnome-session) Supplements: polkit-gnome
+  is no longer needed nor wanted in a modern GNOME desktop.
+
+-------------------------------------------------------------------
 Fri May 23 16:29:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

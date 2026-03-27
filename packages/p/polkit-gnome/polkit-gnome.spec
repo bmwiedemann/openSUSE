@@ -32,7 +32,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  polkit-devel >= 0.97
-Supplements:    packageand(polkit:gnome-session)
 Supplements:    packageand(polkit:lxsession)
 Supplements:    packageand(polkit:xfce4-session)
 

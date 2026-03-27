@@ -253,4 +253,12 @@
     <comment> (forwarded request 1279618 from iznogood)</comment>
     <requestid>1280027</requestid>
   </revision>
+  <revision rev="34" vrev="17">
+    <srcmd5>f9151f35441eb55eaad6ba47c13887e7</srcmd5>
+    <version>0.105</version>
+    <time>1774626553</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1343006</requestid>
+  </revision>
 </revisionlist>
