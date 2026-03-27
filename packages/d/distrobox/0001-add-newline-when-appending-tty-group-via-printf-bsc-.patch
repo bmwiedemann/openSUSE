@@ -1,0 +1,25 @@
+From bca2e95527ea2956c7542aa630ad544c3e2c93ee Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Fri, 20 Mar 2026 13:40:42 +0100
+Subject: [PATCH] add newline when appending tty group via printf (bsc#1259437)
+
+---
+ distrobox-init | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/distrobox-init b/distrobox-init
+index 2490878..950565d 100755
+--- a/distrobox-init
++++ b/distrobox-init
+@@ -1904,7 +1904,7 @@ printf "distrobox: Setting up devpts mounts...\n"
+ 
+ # First we need to ensure we have a tty group to assign /dev/pts to
+ if ! grep -q tty /etc/group; then
+-	printf "%s" 'tty:x:5:' >> /etc/group
++	printf "%s\n" 'tty:x:5:' >> /etc/group
+ fi
+ 
+ # Instantiate a new /dev/pts mount, this will ensure pseudoterminals are container-scoped
+-- 
+2.53.0
+

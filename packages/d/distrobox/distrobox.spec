@@ -26,6 +26,7 @@ Source:         https://github.com/89luca89/distrobox/archive/refs/tags/%{versio
 Source1:        distrobox.conf
 # https://github.com/89luca89/distrobox/pull/2007
 Patch0:         fix-distrobox-to-newer-zypper.patch
+Patch1:         0001-add-newline-when-appending-tty-group-via-printf-bsc-.patch
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep

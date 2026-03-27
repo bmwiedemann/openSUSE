@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 20 12:43:14 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- append newline after manually adding tty group (bsc#12594379)
+  add 0001-add-newline-when-appending-tty-group-via-printf-bsc-.patch
+
+-------------------------------------------------------------------
 Sat Feb 28 21:29:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Add fix-distrobox-to-newer-zypper.patch, fixing bsc#1259032
