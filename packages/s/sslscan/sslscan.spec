@@ -1,7 +1,7 @@
 #
 # spec file for package sslscan
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sslscan
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        SSL cipher scanning tool
 License:        SUSE-GPL-3.0+-with-openssl-exception

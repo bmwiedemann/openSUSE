@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 25 14:23:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * Add the "strength" field to the XML output for groups
+  * Add support for PQ hybrid key exchange groups (credit
+    malhotrag)
+  * Show Show PQ groups in cipher output (credit nuxi)
+
+-------------------------------------------------------------------
 Wed Nov 12 12:01:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
