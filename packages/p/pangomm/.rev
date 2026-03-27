@@ -449,4 +449,12 @@
     <comment>Fix date format in old changelog entries (forwarded request 1277795 from dimstar)</comment>
     <requestid>1278250</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>9d81dedb7f73cec972c8652f2de13e02</srcmd5>
+    <version>2.56.1</version>
+    <time>1774626550</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1343003</requestid>
+  </revision>
 </revisionlist>
