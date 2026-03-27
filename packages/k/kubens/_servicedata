@@ -1,6 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-                <param name="url">https://github.com/ahmetb/kubectx</param>
-              <param name="changesrevision">92e5b5f43b94b06bc38b0fbde1ee51e00079c39c</param></service><service name="tar_scm">
                 <param name="url">https://github.com/ahmetb/kubectx.git</param>
-              <param name="changesrevision">524c9b8f0db36a9e9b76828523f695f6285d024d</param></service></servicedata>
+              <param name="changesrevision">7605ca50c42eab0937bd3d4de825e0bcd120ba1f</param></service></servicedata>
