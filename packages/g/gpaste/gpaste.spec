@@ -28,7 +28,7 @@ Group:          System/GUI/GNOME
 URL:            https://github.com/Keruspe/GPaste
 # Source url disabled as we are using a git checkout
 # Source0:        http://www.imagination-land.org/files/%%{name}/%%{alt_name}-%%{version}.tar.xz
-Source0:        %{alt_name}-%{version}.tar.zst
+Source0:        %{alt_name}-%{version}.tar.xz
 Source99:       gpaste-rpmlintrc
 # PATCH-FIX-UPSTREAM
 Patch0:         https://patch-diff.githubusercontent.com/raw/Keruspe/GPaste/pull/446.patch
