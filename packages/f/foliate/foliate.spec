@@ -24,7 +24,7 @@ Summary:        A GTK eBook reader
 License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://johnfactotum.github.io/foliate/
-Source:         %{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE foliate-fix-export-of-incorrect-dep-Adw.patch -- Dependencies are not exported correctly
 Patch0:         foliate-fix-export-of-incorrect-dep-Adw.patch
 BuildRequires:  desktop-file-utils

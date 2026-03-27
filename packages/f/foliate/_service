@@ -10,9 +10,9 @@
     <param name="versionrewrite-replacement">\1</param>
   </service>
   <service mode="manual" name="set_version"/>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
-    <param name="compression">gz</param>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="compression">xz</param>
     <param name="file">*.tar</param>
   </service>
 </services>
