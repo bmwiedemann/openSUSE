@@ -25,7 +25,7 @@ Summary:        Dropbox client integrated into Nautilus
 License:        GPL-3.0-or-later AND CC-BY-ND-3.0
 Group:          Productivity/File utilities
 URL:            https://www.dropbox.com
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  gobject-introspection
