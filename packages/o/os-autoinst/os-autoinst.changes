@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Mar 27 01:51:47 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774551362.dd2a78c:
+  * feat(svirt): add "stop_vm" in consoles::sshVirtsh
+  * feat: correct isotovideo handle_shutdown log calls
+  * refactor(consoles/sshVirtsh): properly concatenate remote_vmm
+  * feat(svirt): retry disk create also in case of copy-img
+  * chore: Reduce permissions of workflows
+  * feat(VNC): Add AltGr key
+
+-------------------------------------------------------------------
+Wed Mar 25 10:46:33 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774435114.41aff24:
+  * style: Remove superfluous use of strict
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * Revert "style: Remove local Perl::Critic::Policy::HashKeyQuotes"
+  * style: Remove local Perl::Critic::Policy::HashKeyQuotes
+  * style: Add xt/02-perlcritic.t
+  * style: Fix Community::WhileDiamondDefaultAssignment
+  * style: Fix various no strict / no critic violations
+  * style: Fix OpenQA::HashKeyQuotes
+  * style: Fix OpenQA::SpaceAfterSubroutineName
+  * style: Fix ProhibitConditionalDeclarations
+  * style: Disable OpenQA::RedundantStrictWarning temporarily
+
+-------------------------------------------------------------------
 Mon Mar 23 17:02:21 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1774283485.5af53fe:
