@@ -124,4 +124,12 @@
     <comment>Tweak_url (forwarded request 1339596 from iznogood)</comment>
     <requestid>1339627</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>75bc39e8f66b0afb750c973f72a92104</srcmd5>
+    <version>0.4.10</version>
+    <time>1774626601</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342997</requestid>
+  </revision>
 </revisionlist>
