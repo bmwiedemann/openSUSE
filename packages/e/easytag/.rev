@@ -254,4 +254,12 @@ http://forums.opensuse.org/showthread.php?t=490812 (forwarded request 201415 fro
     <comment> (forwarded request 1279643 from iznogood)</comment>
     <requestid>1280007</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b3bf73b4c95cde5da39ec0406b552b99</srcmd5>
+    <version>2.4.3+173</version>
+    <time>1774626567</time>
+    <user>anag_factory</user>
+    <comment>Push from SCM</comment>
+    <requestid>1343024</requestid>
+  </revision>
 </revisionlist>

@@ -18,21 +18,17 @@
 
 %bcond_with    nautilus_extension
 Name:           easytag
-Version:        2.4.3+161
+Version:        2.4.3+173
 Release:        0
 Summary:        GTK+ tag editor for audio files
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://projects.gnome.org/easytag/
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 01_remove-pixdata.patch -- Don't use gdk-pixbuf-pixdata for image resources
 Patch0:         01_remove-pixdata.patch
 # PATCH-FIX-UPSTREAM 02_fix-ogg-corruption.patch -- Revert upstream commit which causes OGG file corruption
 Patch1:         02_fix-ogg-corruption.patch
-# PATCH-FIX-UPSTREAM 03_port-to-taglib-2.patch -- Port to taglib 2
-Patch2:         03_port-to-taglib-2.patch
-# PATCH-FIX-UPSTREAM 04_taglib-2-further-fix.patch -- Further fix compatibility with taglib 2.x on 32-bit architecture.
-Patch3:         04_taglib-2-further-fix.patch
 
 BuildRequires:  appstream-glib-devel
 BuildRequires:  gcc-c++
