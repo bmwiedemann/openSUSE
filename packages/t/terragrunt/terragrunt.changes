@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Mar 27 06:01:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.99.5:
+  * Bug Fixes
+    - --working-dir interaction with exit codes fixed
+      A bug in the logic for tracking exit codes for plan
+      -detailed-exitcode when users supply the --working-dir flag
+      has been fixed.
+    - Authentication during queue construction fixed
+      A bug in the logic for parsing configurations during
+      discovery for use-cases like --filter 'reading=*' where
+      configurations need to be parsed to determine whether or not
+      they end up in the final run queue has been fixed.
+      Configurations will now properly call any configured
+      --auth-provider-cmd authenticator before parsing
+      configurations, preventing errors for HCL functions like
+      sops_decrypt_file that require authentication.
+  * What's Changed
+    chore: Backporting #5590 by @yhakbar in #5593
+    chore: Backporting #5722 by @yhakbar in #5731
+
+-------------------------------------------------------------------
+Fri Feb 20 05:58:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.99.4:
+  * Performance Improvements
+    - Discovery performance improved
+      The way in which Terragrunt discovers and filters units and
+      stacks for runs has improved significantly.
+      Terragrunt is now better at avoiding parsing units/stacks
+      unnecessarily, based on the filter you use. Previously, the
+      logic used was more coarse, and could result in a requirement
+      to parse some configurations (e.g. presence of a dependency
+      graph expression to result in parsing all configurations.
+      Discovery has been refactored to allow for much more careful
+      opt-in parsing based on the need to support the filter used
+      by users (or lack thereof).
+      This will also result in improvements to Terragrunt’s ability
+      to ignore broken parts of infrastructure estates when
+      Terragrunt can predictably determine that it won’t impact a
+      run.
+  * Bug Fixes
+    - Invalid unit configurations cause explicit errors instead of
+      silently being excluded during runs
+      A bug in discovery logic resulted in units with invalid HCL
+      configurations being silently excluded from runs with a
+      warning. This bug has been fixed, and attempting to parse
+      invalid HCL configurations during a run will result in an
+      error.
+  * What's Changed
+    - chore: Backporting #5477 (#5567)
+
+-------------------------------------------------------------------
 Thu Feb 19 07:09:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.99.3:
