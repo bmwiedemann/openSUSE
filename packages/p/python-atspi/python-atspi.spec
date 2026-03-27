@@ -33,7 +33,7 @@ BuildArch:      noarch
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _name   pyatspi
 Name:           python-atspi%{psuffix}
-Version:        2.58.1
+Version:        2.58.2
 Release:        0
 Summary:        Python bindings for the Assistive Technology Service Provider Interface
 License:        LGPL-2.0-only

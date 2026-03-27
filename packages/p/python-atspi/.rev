@@ -607,4 +607,12 @@
     <comment>- Update to version 2.58.1 (forwarded request 1327493 from mgorse)</comment>
     <requestid>1327629</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>20178ad5d317465bcbcc43ad5beebf79</srcmd5>
+    <version>2.58.2</version>
+    <time>1774626603</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1343007</requestid>
+  </revision>
 </revisionlist>

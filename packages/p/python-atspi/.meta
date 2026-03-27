@@ -4,5 +4,4 @@
 accessibility toolkit. This version is based on dbus.
 
 This package contains the python bindings for AT-SPI.</description>
-  <devel project="GNOME:Factory" package="python-atspi"/>
 </package>
