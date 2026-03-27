@@ -22,7 +22,7 @@ Release:        0
 Summary:        Miracast implementation for GNOME
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-network-displays
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
