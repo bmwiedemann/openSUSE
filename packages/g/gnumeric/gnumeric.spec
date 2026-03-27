@@ -23,7 +23,7 @@ Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Spreadsheets
 URL:            http://www.gnumeric.org/
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source1:        gnumeric-rpmlintrc
 
 BuildRequires:  bison
