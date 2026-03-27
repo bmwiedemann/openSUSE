@@ -16,5 +16,4 @@
    you're using spaces
  * Show tabbar A very basic plugin which shows or hides the gedit tabbar
  * Terminal A simple terminal widget accessible from the bottom panel</description>
-  <devel project="GNOME:Factory" package="gedit-plugins"/>
 </package>

@@ -24,7 +24,7 @@ Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit/PluginsLists
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source1:        gedit-plugins.SUSE
 
 BuildRequires:  fdupes
