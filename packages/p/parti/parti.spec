@@ -18,7 +18,7 @@
 
 
 Name:           parti
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        Show partition table information
 License:        GPL-3.0-only
@@ -32,11 +32,7 @@ BuildRequires:  rubygem(asciidoctor)
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(uuid)
-%if 0%{?suse_version} >= 1500
-Requires:       mkisofs
-%else
-Requires:       cdrkit-cdrtools-compat
-%endif
+Requires:       (mkisofs or xorriso)
 
 %description
 Show partition table information for
