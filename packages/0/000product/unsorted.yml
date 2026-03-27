@@ -381,7 +381,6 @@ unsorted:
   - abi-monitor 
   - abi-tracker 
   - abiword 
-  - abiword-docs 
   - abook 
   - abook-lang 
   - abootimg 
@@ -8097,6 +8096,7 @@ unsorted:
   - gssntlmssp-devel 
   - gssproxy 
   - gst-siddecfp 
+  - gst-thumbnailers 
   - gst123 
   - gstreamer-32bit 
   - gstreamer-devel 
@@ -8279,8 +8279,6 @@ unsorted:
   - gtklock-lang 
   - gtklock-userinfo-module 
   - gtkmm2-devel 
-  - gtkmm2-tutorial 
-  - gtkmm2-tutorial-lang 
   - gtkmm3-devel 
   - gtkmm3-doc 
   - gtkmm4-devel 
@@ -10643,6 +10641,9 @@ unsorted:
   - kubectl-view-secret 
   - kubectl-who-can 
   - kubectx 
+  - kubectx-bash-completion 
+  - kubectx-fish-completion 
+  - kubectx-zsh-completion 
   - kubecui 
   - kubediff 
   - kubefirst 
@@ -10651,6 +10652,9 @@ unsorted:
   - kubefirst-zsh-completion 
   - kubelogin 
   - kubens 
+  - kubens-bash-completion 
+  - kubens-fish-completion 
+  - kubens-zsh-completion 
   - kubeone 
   - kubeone-bash-completion 
   - kubeone-zsh-completion 
@@ -10931,6 +10935,10 @@ unsorted:
   - lazarus-lcl-qt6 
   - lazarus-tools 
   - lazygit 
+  - lazyworktree 
+  - lazyworktree-bash-completion 
+  - lazyworktree-fish-completion 
+  - lazyworktree-zsh-completion 
   - lbdb 
   - lbreakouthd 
   - lbzip2 
@@ -12815,7 +12823,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_28 
+  - libcpp-httplib0_38 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
   - libcppunit_subunit0 
@@ -13026,7 +13034,7 @@ unsorted:
   - libdouble-conversion3-32bit 
   - libdovi-devel 
   - libdovi3-32bit 
-  - libdpdk-25 
+  - libdpdk-26 
   - libdqlite0 
   - libdraco9 
   - libdrm-devel 
@@ -13599,7 +13607,7 @@ unsorted:
   - libgensiomdns14 
   - libgensioosh14 
   - libgeocode-glib0 
-  - libgeos3_13_1 
+  - libgeos3_14_1 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -14343,9 +14351,9 @@ unsorted:
   - libkdumpfile12 
   - libkea-asiodns62 
   - libkea-asiolink88 
-  - libkea-cc82 
+  - libkea-cc83 
   - libkea-cfgrpt3 
-  - libkea-config83 
+  - libkea-config84 
   - libkea-cryptolink64 
   - libkea-d2srv63 
   - libkea-database76 
@@ -14355,17 +14363,17 @@ unsorted:
   - libkea-dns71 
   - libkea-eval84 
   - libkea-exceptions45 
-  - libkea-hooks120 
+  - libkea-hooks121 
   - libkea-http87 
   - libkea-log-interprocess3 
   - libkea-log75 
   - libkea-mysql88 
   - libkea-pgsql88 
-  - libkea-process90 
+  - libkea-process91 
   - libkea-stats53 
   - libkea-tcp33 
   - libkea-util-io12 
-  - libkea-util101 
+  - libkea-util102 
   - libkea1_6 
   - libkeccak-devel 
   - libkeccak1 
@@ -14806,12 +14814,12 @@ unsorted:
   - libminizinc-devel 
   - libminizip-ng4 
   - libminizip1-32bit 
-  - libmirage-3_2 
+  - libmirage-3_3 
   - libmirage-data 
   - libmirage-devel 
   - libmirage-lang 
   - libmirage-vala 
-  - libmirage11 
+  - libmirage12 
   - libmiral7 
   - libmircommon11 
   - libmircore2 
@@ -15273,7 +15281,7 @@ unsorted:
   - libopenvino_pytorch_frontend2600 
   - libopenvino_tensorflow_frontend2600 
   - libopenvino_tensorflow_lite_frontend2600 
-  - libopenvswitch-3_6-0 
+  - libopenvswitch-3_7-0 
   - liboping-devel 
   - liboping0 
   - libopnmidi-devel 
@@ -15377,7 +15385,7 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit 
   - libovf-glib-devel 
-  - libovn-25_03-0 
+  - libovn-26_03-0 
   - libowfat-devel 
   - libowncloudsync-devel 
   - libowncloudsync0 
@@ -15645,9 +15653,7 @@ unsorted:
   - libpurple-plugin-bot-sentry-lang 
   - libpurple-plugin-carbons 
   - libpurple-plugin-gnome-keyring 
-  - libpurple-plugin-lurch 
   - libpurple-plugin-pack 
-  - libpurple-plugin-pack-extras 
   - libpurple-plugin-pack-lang 
   - libpurple-plugin-prpltwtr 
   - libpurple-plugin-prpltwtr-lang 
@@ -16290,7 +16296,7 @@ unsorted:
   - libsfml3-3_0 
   - libsgutils-devel 
   - libsgx_dcap_gl1 
-  - libsgx_dcap_quote_verify1 
+  - libsgx_dcap_quoteverify1 
   - libsgx_default_qcnl_wrapper1 
   - libsgx_enclave_common1 
   - libsgx_quote_ex1 
@@ -16612,7 +16618,7 @@ unsorted:
   - libsuperlu7 
   - libsuperlu7-32bit 
   - libsurgescript0_6_1 
-  - libsuricata8_0_3 
+  - libsuricata8_0_4 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
@@ -16848,6 +16854,8 @@ unsorted:
   - libtwolame-devel 
   - libtwolame0-32bit 
   - libublksrv0 
+  - libubootenv-devel 
+  - libubootenv0 
   - libubsan0 
   - libubsan0-32bit 
   - libubsan1-32bit 
@@ -19382,6 +19390,7 @@ unsorted:
   - mozilla-nss-32bit 
   - mozilla-nss-certs-32bit 
   - mozilla-nss-devel 
+  - mozilla-nss-sysinit 
   - mozilla-nss-sysinit-32bit 
   - mozilla-zilla-slab-fonts 
   - mozjs115 
@@ -21088,6 +21097,7 @@ unsorted:
   - ouch 
   - ovmf-tools 
   - ovn 
+  - ovn-br-controller 
   - ovn-central 
   - ovn-devel 
   - ovn-doc 
@@ -23172,7 +23182,6 @@ unsorted:
   - pidgin-plugin-otr 
   - pidgin-plugin-otr-lang 
   - pidgin-plugin-pack 
-  - pidgin-plugin-pack-extras 
   - pidgin-plugin-privacy-please 
   - pidgin-plugin-privacy-please-lang 
   - pidgin-plugin-prpltwtr 
@@ -23806,6 +23815,7 @@ unsorted:
   - protobuf21-devel 
   - protoc-gen-go 
   - proton-vpn 
+  - proton-vpn-cli 
   - proton-vpn-local-agent 
   - protontricks 
   - proxychains-ng 
@@ -25362,6 +25372,7 @@ unsorted:
   - python311-colour 
   - python311-columnize 
   - python311-comm 
+  - python311-commented-configparser 
   - python311-compat-patcher-core 
   - python311-compileall2 
   - python311-compizconfig 
@@ -25975,6 +25986,7 @@ unsorted:
   - python311-hatch-fancy-pypi-readme 
   - python311-hatch-jupyter-builder 
   - python311-hatch-requirements-txt 
+  - python311-hatch-tryton 
   - python311-hatch_nodejs_version 
   - python311-hatch_vcs 
   - python311-hatchling 
@@ -26877,8 +26889,8 @@ unsorted:
   - python311-proton-core 
   - python311-proton-keyring-linux 
   - python311-proton-vpn-api-core 
+  - python311-proton-vpn-daemon 
   - python311-proton-vpn-local-agent 
-  - python311-proton-vpn-network-manager 
   - python311-proxmoxer 
   - python311-pscript 
   - python311-psychtoolbox 
@@ -26991,6 +27003,7 @@ unsorted:
   - python311-pydub 
   - python311-pydyf 
   - python311-pyeapi 
+  - python311-pyedbglib 
   - python311-pyee 
   - python311-pyelftools 
   - python311-pyenchant 
@@ -27061,6 +27074,7 @@ unsorted:
   - python311-pymarc 
   - python311-pymathics-graph 
   - python311-pymavlink 
+  - python311-pymcuprog 
   - python311-pymdown-extensions 
   - python311-pymediainfo 
   - python311-pymemcache 
@@ -29229,6 +29243,7 @@ unsorted:
   - python313-colour 
   - python313-columnize 
   - python313-comm 
+  - python313-commented-configparser 
   - python313-compat-patcher-core 
   - python313-compileall2 
   - python313-compizconfig 
@@ -29844,6 +29859,7 @@ unsorted:
   - python313-hatch-fancy-pypi-readme 
   - python313-hatch-jupyter-builder 
   - python313-hatch-requirements-txt 
+  - python313-hatch-tryton 
   - python313-hatch_nodejs_version 
   - python313-hatch_vcs 
   - python313-hatchling 
@@ -30768,8 +30784,8 @@ unsorted:
   - python313-proton-core 
   - python313-proton-keyring-linux 
   - python313-proton-vpn-api-core 
+  - python313-proton-vpn-daemon 
   - python313-proton-vpn-local-agent 
-  - python313-proton-vpn-network-manager 
   - python313-proxmoxer 
   - python313-pscript 
   - python313-psychtoolbox 
@@ -30882,6 +30898,7 @@ unsorted:
   - python313-pydub 
   - python313-pydyf 
   - python313-pyeapi 
+  - python313-pyedbglib 
   - python313-pyee 
   - python313-pyelftools 
   - python313-pyemd 
@@ -30952,6 +30969,7 @@ unsorted:
   - python313-pymad 
   - python313-pymarc 
   - python313-pymavlink 
+  - python313-pymcuprog 
   - python313-pymdown-extensions 
   - python313-pymediainfo 
   - python313-pymemcache 
@@ -34616,20 +34634,13 @@ unsorted:
   - suru-plus-dark-icon-theme 
   - suse-build-key 
   - suse-kabi-tools 
-  - suse-libsgx-ae-epid 
-  - suse-libsgx-ae-id-enclave 
-  - suse-libsgx-ae-le 
-  - suse-libsgx-ae-pce 
-  - suse-libsgx-ae-qe3 
-  - suse-libsgx-ae-qve 
-  - suse-libsgx-ae-tdqe 
   - suse-libsgx-aesm-ecdsa-plugin 
   - suse-libsgx-aesm-pce-plugin 
   - suse-libsgx-aesm-quote-ex-plugin 
   - suse-libsgx-dcap-default-qpl 
   - suse-libsgx-dcap-default-qpl-devel 
   - suse-libsgx-dcap-ql-devel 
-  - suse-libsgx-dcap-quote-verify-devel 
+  - suse-libsgx-dcap-quoteverify-devel 
   - suse-libsgx-enclave-common-devel 
   - suse-libsgx-headers 
   - suse-libsgx-pce-logic 
@@ -34649,7 +34660,6 @@ unsorted:
   - suse-sgx_sign 
   - suse-tdx-qgs 
   - suse-tee-appraisal-tool 
-  - suse-tee_appraisal_policy 
   - suse-xsl-stylesheets 
   - suseconnect-ng 
   - suseconnect-ruby-bindings 
@@ -34800,6 +34810,7 @@ unsorted:
   - sysstat-isag 
   - system-group-ne 
   - system-group-obsolete 
+  - system-group-sgx_prv 
   - system-group-sudo 
   - system-group-timekpr 
   - system-user-aesmd 
@@ -45408,6 +45419,7 @@ unsorted:
   - typst-bash-completion 
   - typst-fish-completion 
   - typst-zsh-completion 
+  - u-boot-fw-utils 
   - u-boot-tools 
   - u3-tool 
   - uChmViewer 
@@ -45896,7 +45908,6 @@ unsorted:
   - vlc-devel 
   - vlc-jack 
   - vm-dump-metrics 
-  - vm-install 
   - vmaf 
   - vmaf-devel 
   - vms-empire 
@@ -46809,6 +46820,7 @@ unsorted:
   - yast2-installation-control 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
+  - yast2-mail 
   - yast2-multipath 
   - yast2-rdp 
   - yast2-rear 
@@ -46818,7 +46830,6 @@ unsorted:
   - yast2-schema-collection 
   - yast2-schema-default 
   - yast2-schema-micro 
-  - yast2-slide-show 
   - yast2-squid 
   - yast2-support 
   - yast2-testsuite 

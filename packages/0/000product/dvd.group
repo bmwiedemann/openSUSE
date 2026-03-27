@@ -3065,7 +3065,6 @@
     <package name="mozilla-nspr" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozilla-nss" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozilla-nss-certs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="mozilla-nss-sysinit" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="mozilla-nss-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="mpg123-openal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mpt-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3464,8 +3463,8 @@
     <package name="policycoreutils-python-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="polkit" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="polkit-default-privs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="polkit-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="polkit-gnome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="polkit-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="polkit-gnome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="polkit-kde-agent-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="polkit-kde-agent-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="poppler-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
