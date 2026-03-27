@@ -460,4 +460,12 @@
     <comment> (forwarded request 1279635 from iznogood)</comment>
     <requestid>1280034</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>c70eaa739c0568ca3dad93d2f88f471d</srcmd5>
+    <version>4.4.0.1</version>
+    <time>1774626509</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342948</requestid>
+  </revision>
 </revisionlist>
