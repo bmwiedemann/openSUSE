@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/sophie-h/key-rack.git</param>
@@ -5,14 +6,15 @@
     <param name="revision">refs/tags/0.4.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
-  <service name="tar" mode="buildtime" />
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
-    <param name="compression">zst</param>
+    <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="manual" />
+  <service name="set_version" mode="manual"/>
   <service name="cargo_vendor" mode="manual">
     <param name="update">false</param>
     <param name="src">key-rack</param>
+    <param name="compression">xz</param>
   </service>
 </services>

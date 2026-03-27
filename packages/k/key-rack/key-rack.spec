@@ -23,8 +23,8 @@ Release:        0
 Summary:        New GNOME secrets manager
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/sophie-h/key-rack
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.57
