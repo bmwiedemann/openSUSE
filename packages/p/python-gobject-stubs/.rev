@@ -17,4 +17,12 @@
 Typing stubs for python-gobject to (typically) allow IDEs to provide helpful completion guides and documentation about python-gobject related modules.</comment>
     <requestid>1322796</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c7c260196a2476d477bb7fd394a163b</srcmd5>
+    <version>2.17.0</version>
+    <time>1774626603</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1343008</requestid>
+  </revision>
 </revisionlist>

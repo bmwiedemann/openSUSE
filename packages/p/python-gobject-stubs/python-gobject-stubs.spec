@@ -25,7 +25,7 @@
 %define psuffix %{?with_gtk3:-gtk3}%{!?with_gtk3:%{nil}}
 
 Name:           %{pname}%{psuffix}
-Version:        2.16.0
+Version:        2.17.0
 Release:        0
 Summary:        Typing stubs for PyGObject
 License:        LGPL-2.1-only
@@ -34,14 +34,14 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyGobject-stubs
 BuildRequires:  python-rpm-macros
 BuildRequires:  gobject-introspection
 BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module gobject >= 3.55.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 Requires:       python-base >= 3.9
-Requires:       python-gobject
+Requires:       python-gobject >= 3.55.0
 Requires:       python-gobject-Gdk
 Requires:       python-typing_extensions
 %if 0%{?with_gtk3}
