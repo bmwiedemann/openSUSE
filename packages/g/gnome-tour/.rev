@@ -130,4 +130,12 @@
     <comment></comment>
     <requestid>1313602</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>502f37f980c6385025149d0626a20564</srcmd5>
+    <version>49.0.openSUSE+git20251020.478f3eb</version>
+    <time>1774626518</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342964</requestid>
+  </revision>
 </revisionlist>

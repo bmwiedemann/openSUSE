@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:44:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Mon Oct 20 11:23:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace appstream-glib with AppStream BuildRequires, meson setup

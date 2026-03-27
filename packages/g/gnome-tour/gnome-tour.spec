@@ -25,8 +25,8 @@ Summary:        GNOME Tour & Greeter
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://github.com/openSUSE/gnome-tour
-Source0:        %{name}-%{version}.tar.zst
-Source2:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source2:        vendor.tar.xz
 
 BuildRequires:  AppStream
 BuildRequires:  cargo-packaging
