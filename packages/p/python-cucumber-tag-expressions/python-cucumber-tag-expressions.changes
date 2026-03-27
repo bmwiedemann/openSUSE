@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 27 10:39:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.1.0:
+  * [JavaScript] Expose named export and type
+- update to 9.0.0:
+  * [Java] Set release version to 17
+- update to 8.1.0:
+  * [.NET] Add a .NET implementation
+  * Render the empty tag expression as an empty string
+  * Improve error message for missing operands
+
+-------------------------------------------------------------------
 Wed Nov 12 09:01:54 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - change the name of spec and change files to match the Name: tag to eliminate build error
@@ -7,4 +19,4 @@ Wed Nov 12 09:01:54 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 Tue Nov 11 14:58:16 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Initial OBS packaging of python-cucumber-tag-expressions 8.0.0
- 
+

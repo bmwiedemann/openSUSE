@@ -7,4 +7,19 @@
     <comment>needed by behave</comment>
     <requestid>1317305</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>267d44f08aabceef53679d7dcc8cf423</srcmd5>
+    <version>9.1.0</version>
+    <time>1774626684</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.1.0:
+  * [JavaScript] Expose named export and type
+- update to 9.0.0:
+  * [Java] Set release version to 17
+- update to 8.1.0:
+  * [.NET] Add a .NET implementation
+  * Render the empty tag expression as an empty string
+  * Improve error message for missing operands</comment>
+    <requestid>1343153</requestid>
+  </revision>
 </revisionlist>

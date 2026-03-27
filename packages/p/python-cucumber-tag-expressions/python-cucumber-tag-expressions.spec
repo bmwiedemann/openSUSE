@@ -1,7 +1,7 @@
 #
 # spec file for package python-cucumber-tag-expressions
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           python-cucumber-tag-expressions
-Version:        8.0.0
+Version:        9.1.0
 Release:        0
 Summary:        Provides a tag-expression parser and evaluation logic for cucumber/behave
 License:        MIT
 URL:            https://github.com/cucumber/tag-expressions
 Source:         https://files.pythonhosted.org/packages/source/c/cucumber-tag-expressions/cucumber_tag_expressions-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module uv-build}
+BuildRequires:  %{python_module uv-build >= 0.10.0}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 6.0.1}
