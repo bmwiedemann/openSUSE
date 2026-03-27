@@ -427,4 +427,12 @@ No GPL-2.0+ files found in the package. The Fedora package is also licensed unde
     <comment></comment>
     <requestid>1336706</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>7dba17e9e8b7fa1d48e9ea025a33bbcd</srcmd5>
+    <version>0.8.8</version>
+    <time>1774626539</time>
+    <user>anag_factory</user>
+    <comment>Switch to tar.xz post git scm move</comment>
+    <requestid>1342991</requestid>
+  </revision>
 </revisionlist>

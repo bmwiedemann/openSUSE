@@ -23,7 +23,7 @@ Summary:        Notifications Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://galago-project.org/
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  docbook-xsl-stylesheets
