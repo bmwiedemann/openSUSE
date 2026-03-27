@@ -264,4 +264,17 @@
   * add the SingleTenantHsm functionality including the management API and resource types (forwarded request 1336345 from glaubitz)</comment>
     <requestid>1336380</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9d67789879d0f2c77412a53a99dcb8bc</srcmd5>
+    <version>3.12.0</version>
+    <time>1774626711</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.12.0
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py (forwarded request 1343200 from glaubitz)</comment>
+    <requestid>1343201</requestid>
+  </revision>
 </revisionlist>

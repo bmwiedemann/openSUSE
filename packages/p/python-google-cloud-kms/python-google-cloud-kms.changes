@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:12:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.12.0
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core >= 2.11.0
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Mar  4 11:22:22 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.11.0
