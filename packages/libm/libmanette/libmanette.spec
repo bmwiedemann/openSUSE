@@ -26,7 +26,7 @@ Summary:        A simple GObject game controller library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gnome.pages.gitlab.gnome.org/libmanette/
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  gcc
 BuildRequires:  gobject-introspection-devel >= 0.6.7
 BuildRequires:  meson >= 0.53.0
