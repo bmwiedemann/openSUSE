@@ -24,8 +24,8 @@ Release:        0
 Summary:        A Sass compiler written purely in Rust
 License:        MIT
 URL:            https://github.com/connorskees/grass
-Source:         %{_name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source:         %{_name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 ExclusiveArch:  %{rust_tier1_arches}
 
 BuildRequires:  cargo
