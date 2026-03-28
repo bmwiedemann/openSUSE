@@ -4353,4 +4353,25 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
         CVE-2026-28689 [bsc#1259452]</comment>
     <requestid>1339577</requestid>
   </revision>
+  <revision rev="329" vrev="1">
+    <srcmd5>4c6b71e41a25161d7d82bbecfc2dd055</srcmd5>
+    <version>7.1.2.18</version>
+    <time>1774725141</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.2.18
+  * Fix animated JXL frame delay handling #8622
+  * Fix off-by-one in MNG FRAM chunk delay/timeout parsing #8623
+  * Fix MNG frame disposal for transparent animations #8625
+  * Fix composite -dissolve adding random noise #8621
+  * Bump actions/download-artifact from 8.0.0 to 8.0.1 #8629
+- use %autopatch, disable ImageMagick-s390x-disable-tests.patch
+  for now
+- modified patches
+  * ImageMagick_policy_etc.patch
+
+- version update to 7.1.2.17
+- fixes CVE-2026-32636 [bsc#1259872]
+        CVE-2026-32259 [bsc#1259612]</comment>
+    <requestid>1343155</requestid>
+  </revision>
 </revisionlist>

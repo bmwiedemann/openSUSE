@@ -46,3 +46,15 @@ diff -ur ImageMagick-7.1.2-15.orig/config/policy-websafe.xml ImageMagick-7.1.2-1
    <!-- Relative paths are not permitted. -->
    <policy domain="path" rights="none" pattern="*../*"/>
    <!-- Indirect reading is not permitted. -->
+diff -ur ImageMagick-7.1.2-15.orig/config/policy-SUSE.xml ImageMagick-7.1.2-15/config/policy-secure.xml
+--- ImageMagick-7.1.2-15.orig/config/policy-SUSE.xml	2026-02-22 22:26:44.000000000 +0100
++++ ImageMagick-7.1.2-15/config/policy-SUSE.xml	2026-02-23 22:24:51.662615465 +0100
+@@ -93,6 +93,8 @@
+   <policy domain="path" rights="none" pattern="fd:*"/>
+   <!-- Sensitive paths are not permitted. -->
+   <policy domain="path" rights="none" pattern="/etc/*"/>
++  <!-- but allow to read own data. -->
++  <policy domain="path" rights="read" pattern="/etc/IM*"/>
+   <!-- Relative paths are not permitted. -->
+   <policy domain="path" rights="none" pattern="*../*"/>
+   <!-- Indirect reading is not permitted. -->

@@ -1,7 +1,6 @@
 #
 # spec file for package ImageMagick
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +21,7 @@
 %define debug_build    0
 %define asan_build     0
 %define mfr_version    7.1.2
-%define mfr_revision   17
+%define mfr_revision   18
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -53,8 +52,6 @@ Patch0:         ImageMagick_policy_etc.patch
 Patch1:         ImageMagick-configuration-SUSE.patch
 # library installation
 Patch2:         ImageMagick-library-installable-in-parallel.patch
-# disable failing tests
-Patch5:         ImageMagick-s390x-disable-tests.patch
 
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
@@ -263,14 +260,8 @@ policy plus disable few other coders for reading and/or writing.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
-%patch -P 0 -p1
-# default policy (SUSE)
 cp config/policy-secure.xml config/policy-SUSE.xml
-%patch -P 1 -p1
-%patch -P 2 -p1
-%ifarch s390x
-%patch -P 5 -p1
-%endif
+%autopatch -p1
 
 %build
 # bsc#1088463
@@ -505,7 +496,8 @@ case and security prerequisites.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
-%patch -P 0 -p1
+cp config/policy-secure.xml config/policy-SUSE.xml
+%autopatch -p1
 
 %build
 
@@ -539,7 +531,8 @@ for prevalent image formats.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
-%patch -P 0 -p1
+cp config/policy-secure.xml config/policy-SUSE.xml
+%autopatch -p1
 
 %build
 
@@ -577,7 +570,8 @@ potential vulnerabilities.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
-%patch -P 0 -p1
+cp config/policy-secure.xml config/policy-SUSE.xml
+%autopatch -p1
 
 %build
 
@@ -611,7 +605,8 @@ for potential attacks.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
-%patch -P 0 -p1
+cp config/policy-secure.xml config/policy-SUSE.xml
+%autopatch -p1
 
 %build
 

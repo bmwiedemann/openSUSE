@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:25:17 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.18
+  * Fix animated JXL frame delay handling #8622
+  * Fix off-by-one in MNG FRAM chunk delay/timeout parsing #8623
+  * Fix MNG frame disposal for transparent animations #8625
+  * Fix composite -dissolve adding random noise #8621
+  * Bump actions/download-artifact from 8.0.0 to 8.0.1 #8629
+- use %autopatch, disable ImageMagick-s390x-disable-tests.patch
+  for now
+- modified patches
+  * ImageMagick_policy_etc.patch
+
+-------------------------------------------------------------------
 Tue Mar 17 11:03:31 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
-- version lupdate to 7.1.2.17
+- version update to 7.1.2.17
   * Add cast to unsigned char helper method to check for out of band data
   * eliminate compiler warning
   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-rwgm-46rq-f86h
@@ -15,7 +29,7 @@ Tue Mar 17 11:03:31 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * Apply correct patch for GHSA-cqw9-w2m7-r2m2.
 - modified patches
   * ImageMagick-library-installable-in-parallel.patch (refreshed)
-- fixes CVE-2026-32259 [bsc#1259612]
+- fixes CVE-2026-32636 [bsc#1259872]
 
 -------------------------------------------------------------------
 Mon Mar  9 08:43:02 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -47,6 +61,7 @@ Mon Mar  9 08:43:02 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
         CVE-2026-30937 [bsc#1259463]
         CVE-2026-30935 [bsc#1259497]
         CVE-2026-31853 [bsc#1259528]
+        CVE-2026-32259 [bsc#1259612]
 
 -------------------------------------------------------------------
 Mon Mar  2 10:56:53 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
