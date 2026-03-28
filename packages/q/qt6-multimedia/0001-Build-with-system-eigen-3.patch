@@ -1,4 +1,4 @@
-From 4a5fcb1989afdbf1796571a5b85222fdf4065a1e Mon Sep 17 00:00:00 2001
+From 28d7a85cb7cee57c66480c2262bd99d4e4283cf8 Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Wed, 9 Oct 2024 14:19:49 +0200
 Subject: [PATCH] =?UTF-8?q?Build=20with=20system=20eigen=C2=A03?=
@@ -9,11 +9,10 @@ Content-Transfer-Encoding: 8bit
 ---
  src/3rdparty/resonance-audio/CMakeLists.txt | 2 +-
  src/resonance-audio/CMakeLists.txt          | 3 +--
- src/spatialaudio/CMakeLists.txt             | 2 +-
- 3 files changed, 3 insertions(+), 4 deletions(-)
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/src/3rdparty/resonance-audio/CMakeLists.txt b/src/3rdparty/resonance-audio/CMakeLists.txt
-index 6af0b3fb3..fce0280bc 100644
+index 6af0b3f..fce0280 100644
 --- a/src/3rdparty/resonance-audio/CMakeLists.txt
 +++ b/src/3rdparty/resonance-audio/CMakeLists.txt
 @@ -98,7 +98,7 @@ elseif (UNIX)
@@ -26,35 +25,25 @@ index 6af0b3fb3..fce0280bc 100644
  add_definitions(-DEIGEN_MPL2_ONLY)
  
 diff --git a/src/resonance-audio/CMakeLists.txt b/src/resonance-audio/CMakeLists.txt
-index 7690ae246..1b9762be3 100644
+index eae39b6..157b2a4 100644
 --- a/src/resonance-audio/CMakeLists.txt
 +++ b/src/resonance-audio/CMakeLists.txt
-@@ -211,11 +211,10 @@ qt_internal_add_3rdparty_library(BundledResonanceAudio
-         ${RA_SOURCE_DIR}
+@@ -210,14 +210,13 @@ qt_internal_add_3rdparty_library(BundledResonanceAudio
+         $<BUILD_INTERFACE:${RA_TOPLEVEL_DIR}>
+         $<BUILD_INTERFACE:${RA_SOURCE_DIR}>
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../3rdparty/eigen>
++        $<BUILD_INTERFACE:/usr/include/eigen3>
+     INCLUDE_DIRECTORIES
          ${PFFFT_DIR}
          ${SADIE_HRTFS_DIR}
--        ../3rdparty/eigen
-+        /usr/include/eigen3
      ATTRIBUTION_FILE_DIR_PATHS
          ${RA_TOPLEVEL_DIR}
          ${PFFFT_DIR}
 -        ../3rdparty/eigen
  )
  
- # Required by pffft on certain PowerPC archs
-diff --git a/src/spatialaudio/CMakeLists.txt b/src/spatialaudio/CMakeLists.txt
-index b03ec7fb4..dc6c99ac4 100644
---- a/src/spatialaudio/CMakeLists.txt
-+++ b/src/spatialaudio/CMakeLists.txt
-@@ -20,7 +20,7 @@ qt_internal_add_module(SpatialAudio
-         "../3rdparty/resonance-audio/resonance_audio"
-         "../3rdparty/resonance-audio"
-         "../resonance-audio"
--        "../3rdparty/eigen"
-+        "/usr/include/eigen3"
-     LIBRARIES
-         Qt::MultimediaPrivate
-         Qt::BundledResonanceAudio
+ set_target_properties(BundledResonanceAudio PROPERTIES
 -- 
-2.50.1
+2.53.0
 
