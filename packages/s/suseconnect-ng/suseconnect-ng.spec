@@ -19,7 +19,7 @@
 %global project github.com/SUSE/connect-ng
 
 Name:           suseconnect-ng
-Version:        1.20.0
+Version:        1.21.0
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-3.0-or-later
@@ -28,12 +28,10 @@ Group:          System/Management
 Source:         suseconnect-ng-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        vendor.tar.xz
-# PATCH-FIX-UPSTREAM fix-libsuseconnect-and-pci.patch
-Patch0:         fix-libsuseconnect-and-pci.patch
 
 # Build against latest golang in Tumbleweed and
 # go1.21-openssl on all other distributions
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} == 1699
 BuildRequires:  golang(API)
 %else
 BuildRequires:  go1.21-openssl
@@ -59,6 +57,7 @@ Requires:       ca-certificates
 %endif
 
 Requires:       coreutils
+Requires:       pciutils
 Requires:       util-linux
 Requires:       zypper
 Recommends:     systemd
@@ -195,6 +194,9 @@ if [ "$1" -eq 1 ]; then
   /usr/bin/systemctl is-enabled suseconnect-keepalive.timer >/dev/null 2>&1 && touch /run/suseconnect-keepalive.timer.is-enabled || :
   /usr/bin/systemctl is-active suseconnect-keepalive.timer >/dev/null 2>&1 && touch /run/suseconnect-keepalive.timer.is-active || :
 fi
+
+# Delete all files in the profile cache
+rm -f /run/suseconnect/*
 
 %post
 # Randomize schedule time for SLES12. SLES12 systemd does not support RandomizedDelaySec.

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 12 18:53:13 UTC 2026 - Felix Schnizlein <fschnizlein@suse.com>
+
+- Update version to 1.21:
+  - Add expanded metric collection for kernel modules and hardware
+    detection (jsc#TEL-226).
+  - Support new profile based metric collection
+  - Fix ignored --root parameter hanbling when reading and
+    writing configuration (bsc#1257667)
+  - Add expanded metric collection for system vendor/manfacturer
+    (jsc#TEL-260).
+  - Removed backport patch: fix-libsuseconnect-and-pci.patch
+  - Add missing product id to allow yast2-registration to not break (bsc#1257825)
+  - Fix libsuseconnect APIError detection logic (bsc#1257825)
+
+-------------------------------------------------------------------
 Wed Mar  4 16:48:14 UTC 2026 - Felix Schnizlein <fschnizlein@suse.com>
 
 - Regressions found during QA test runs:
