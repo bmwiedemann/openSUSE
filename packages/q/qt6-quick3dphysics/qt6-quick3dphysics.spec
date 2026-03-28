@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quick3dphysics
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.10.2
-%define short_version 6.10
+%define real_version 6.11.0
+%define short_version 6.11
 %define tar_name qtquick3dphysics-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3dphysics%{?pkg_suffix}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        Qt 6 Quick3D Physics Extensions
 License:        GPL-3.0-only
