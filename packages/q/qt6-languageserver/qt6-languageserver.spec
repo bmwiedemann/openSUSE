@@ -16,14 +16,14 @@
 #
 
 
-%define real_version 6.10.2
-%define short_version 6.10
+%define real_version 6.11.0
+%define short_version 6.11
 %define short_name qtlanguageserver
 %define tar_name qtlanguageserver-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-languageserver
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        Implementation of the Language Server Protocol
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
