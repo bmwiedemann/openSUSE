@@ -18,4 +18,13 @@ This Common-Lisp compiler and interpreter has a long history and is still neing 
 </comment>
     <requestid>1286372</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ec9dfa9d9815bb9b3b2456aa5ab83c63</srcmd5>
+    <version>26.3.27</version>
+    <time>1774725275</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v26.3.27
+</comment>
+    <requestid>1343312</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ecl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global major 24
-%global minor 5
-%global micro 10
+%global major 26
+%global minor 3
+%global micro 27
 Name:           ecl
 Version:        %{major}.%{minor}.%{micro}
 Release:        0
