@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 26 13:39:47 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.20.21
+  Security Fixes:
+  * Fix unbounded NSEC3 iterations when validating referrals to
+    unsigned delegations.
+    (CVE-2026-1519)
+    [bsc#1260805]
+  * Fix memory leaks in code preparing DNSSEC proofs of
+    non-existence.
+    (CVE-2026-3104)
+    [bsc#1260567]
+  * Prevent a crash in code processing queries containing a TKEY
+    record.
+    (CVE-2026-3119)
+    [bsc#1260568]
+  * Fix a stack use-after-return flaw in SIG(0) handling code.
+    (CVE-2026-3591)
+    [bsc#1260569]
+
+  Bug Fixes:
+  * Fix the handling of key statements defined inside views.
+
+-------------------------------------------------------------------
 Thu Mar 12 14:32:20 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update %suse_version checks for SLES 16.x (jsc#PED-15788)

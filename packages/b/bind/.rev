@@ -2671,4 +2671,30 @@ New Features
     <comment>- Update %suse_version checks for SLES 16.x (jsc#PED-15788)</comment>
     <requestid>1338506</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>95e654effeab83bf476c0ed340e49b3b</srcmd5>
+    <version>9.20.21</version>
+    <time>1774725194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.20.21
+  Security Fixes:
+  * Fix unbounded NSEC3 iterations when validating referrals to
+    unsigned delegations.
+    (CVE-2026-1519)
+    [bsc#1260805]
+  * Fix memory leaks in code preparing DNSSEC proofs of
+    non-existence.
+    (CVE-2026-3104)
+    [bsc#1260567]
+  * Prevent a crash in code processing queries containing a TKEY
+    record.
+    (CVE-2026-3119)
+    [bsc#1260568]
+  * Fix a stack use-after-return flaw in SIG(0) handling code.
+    (CVE-2026-3591)
+    [bsc#1260569]
+  Bug Fixes:
+  * Fix the handling of key statements defined inside views.</comment>
+    <requestid>1342855</requestid>
+  </revision>
 </revisionlist>
