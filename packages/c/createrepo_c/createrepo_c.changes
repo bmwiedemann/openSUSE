@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 25 21:44:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.3:
+  * Properly guard code with CR_DELTA_RPM_SUPPORT in missed out places
+  * Restore compatibility with RPM 4.14.3
+  * Add cr_HeaderReadingFlags flags: don't load file digests and all set
+  * package_from_rpm: accept optional header_reading_flags
+
+-------------------------------------------------------------------
 Tue Jan 27 15:27:55 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.2:

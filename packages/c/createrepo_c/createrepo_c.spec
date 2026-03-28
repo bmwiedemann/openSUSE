@@ -45,7 +45,7 @@
 %bcond_without as_createrepo
 %endif
 Name:           createrepo_c
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        RPM repository metadata generation utility
 License:        GPL-2.0-or-later
