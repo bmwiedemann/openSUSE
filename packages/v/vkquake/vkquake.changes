@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Mar 27 18:43:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.34.0
+  Improvements:
+  * Better dynamic shadow quality & dynamic enemy shadows : RT
+    shadows are now also projected from animated models, not just
+    level geometry.
+  * Animated wind cubmap skies (from Ironwail).
+  * Modern HUD inspired by Ironwail.
+  * Added Error Reporting enhancements for problems triggering
+    either assert failures, Host_Error or Sys_Error.
+  Fixes:
+  * Enable anisotropic filtering for warp textures.
+  * Fix crash on launch reading out of bounds when loading some
+    WAV files (from QS).
+  * Reset r_skyfog between maps.
+  * Fixed usage of gl_picmip high values.
+  * Stricter heuristics for non-map BSP (from Ironwail).
+  * Fix svc_clientdata weapon byte potentially not being written
+    (from QS).
+  * Do not apply priority-based image loading on sky textures.
+  * COM_FindFile only output warnings with developer > 1.
+  * Search extension from the end of map name ( from QS).
+  * Fix savegame corruption in 1.33.1 (or so we hope !).
+  * Push MAX_MODELS overflow warning to new QS limit = 4096.
+
+-------------------------------------------------------------------
 Tue Jan  6 16:31:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.33.1
