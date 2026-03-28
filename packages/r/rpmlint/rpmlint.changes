@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 26 10:15:07 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260326.abd95437:
+  * polkit-rules-whitelist: add cosmic-settings-daemon kbd layout rule (bsc#1259403)
+  * polkit-rules-whitelist: add cosmic-settings wheel/sudoers rules (bsc#1259402)
+  * SignatureCheck: Fix _check_no_signature for rpm v6
+  * Bump github/codeql-action from 4.32.6 to 4.34.1
+  * SourceCheck: update string format pyupgrade --py38-plus
+  * SourceCheck: update string format pyupgrade --py38-plus
+  * Fix: #1478: Use regex for file(1) magic matching; add .zip and .zstd support
+  * Bump github/codeql-action from 4.32.4 to 4.32.6
+  * Fix rpmdiff flags
+  * Bump github/codeql-action from 4.32.3 to 4.32.4
+  * test: Add more cases for the man page check
+  * FilesCheck: fix man_base_regex
+  * Bump github/codeql-action from 4.32.2 to 4.32.3
+  * FilesCheck: fix manpage regex to support numbers
+
+-------------------------------------------------------------------
 Wed Mar 04 09:28:42 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 2.9.0+git20260304.c77499bc:
