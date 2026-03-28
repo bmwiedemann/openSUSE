@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:37:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  https://www.qt.io/blog/qt-6.11-released
+- Add patches:
+  * 0001-QDoc-Add-LLVM-22-implementation-to-QualTypeNames-for.patch
+  * 0002-CMake-Add-LLVM-22-to-supported-QDoc-Clang-versions.patch
+
+-------------------------------------------------------------------
 Sat Jan 31 08:10:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.2:

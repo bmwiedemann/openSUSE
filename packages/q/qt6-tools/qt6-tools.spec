@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.10.2
-%define short_version 6.10
+%define real_version 6.11.0
+%define short_version 6.11
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(qtexamples.*
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # Legal:
@@ -48,6 +48,9 @@ Source13:       org.qt.assistant6.desktop
 # The 48x48 icon was removed from qttools
 Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
+# PATCH-FIX-UPSTREAM -- llvm 22 support
+Patch0:         0001-QDoc-Add-LLVM-22-implementation-to-QualTypeNames-for.patch
+Patch1:         0002-CMake-Add-LLVM-22-to-supported-QDoc-Clang-versions.patch
 # clang-devel in Leap 15 points to clang7...
 %if 0%{?suse_version} == 1500
 # Leap 15.6 has llvm 19 since 2025-02-12, we need to use it to avoid doc build issues
@@ -64,6 +67,7 @@ BuildRequires:  cmake(Qt6DBus) = %{real_version}
 BuildRequires:  cmake(Qt6DBusPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6InputSupportPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGLWidgets) = %{real_version}
@@ -301,8 +305,11 @@ This library does not have any ABI or API guarantees.
 
 %{qt6_link_executables}
 
+# TODO Check if it's really needed by linguist
+# (/usr/lib64/qt6/objects-RelWithDebInfo/QMakeParserCumulative_resources_1/.qt/rcc/qrc_proparser_init.cpp.o)
+rm -r %{buildroot}%{_qt6_archdatadir}/objects-*
+
 # CMake files are not needed for plugins (except for Qt6UiPlugin)
-rm %{buildroot}%{_qt6_cmakedir}/Qt6Designer/*Plugin{Config,Targets}*.cmake
 rm %{buildroot}%{_qt6_cmakedir}/Qt6Help/*Plugin{Config,Targets}*.cmake
 
 # This doesn't look useful
@@ -334,10 +341,12 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 
 %files
 %license LICENSES/*
+%{_bindir}/kmap2qmap6
 %{_bindir}/pixeltool6
 %{_bindir}/qdistancefieldgenerator6
 %{_bindir}/qtdiag6
 %{_bindir}/qtplugininfo6
+%{_qt6_bindir}/kmap2qmap
 %{_qt6_bindir}/pixeltool
 %{_qt6_bindir}/qdistancefieldgenerator
 %{_qt6_bindir}/qtdiag
@@ -444,18 +453,23 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 
 %files linguist
 %dir %{_qt6_datadir}/phrasebooks
+%{_bindir}/lcheck6
 %{_bindir}/lconvert6
 %{_bindir}/linguist6
+%{_bindir}/lrelease-pro6
 %{_bindir}/lrelease6
+%{_bindir}/ltext2id6
+%{_bindir}/lupdate-pro6
 %{_bindir}/lupdate6
+%{_qt6_bindir}/lcheck
 %{_qt6_bindir}/lconvert
 %{_qt6_bindir}/linguist
 %{_qt6_bindir}/lrelease
+%{_qt6_bindir}/lrelease-pro
+%{_qt6_bindir}/ltext2id
 %{_qt6_bindir}/lupdate
+%{_qt6_bindir}/lupdate-pro
 %{_qt6_datadir}/phrasebooks/*.qph
-%{_qt6_libexecdir}/lprodump
-%{_qt6_libexecdir}/lrelease-pro
-%{_qt6_libexecdir}/lupdate-pro
 %{_qt6_sharedir}/applications/org.qt.linguist6.desktop
 %{_qt6_sharedir}/icons/hicolor/48x48/apps/linguist6.png
 %{_qt6_sharedir}/icons/hicolor/128x128/apps/linguist6.png
