@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Thu Mar 26 07:05:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.6:
+  STEM file support:
+  * Add simple support for STEM files #13044
+  * Add stem controls and waveforms #13086 #14951 #14870 #15494 #14769 #15386 #15383 #15656 #15317 #15384 #15686 #15668
+  * Add analyser support for stem #13106
+  * Add quick effect support on stem #13123
+  * Add advanced stem loading COs #13268
+  * Multithreaded Rubberband #13143 #13649
+  * Add support for stem in the engine #13070 #14244
+  * Add stem files to the taglib lookup table #13612
+  * Fix: make "stem_group,mute" a powerwindow button #13751 #13749
+  * Stem control test fix #13960
+  * Solves problem with special characters in path to stems #13784
+  * Enable FFmpeg (free) on Windows. #14695
+  * FFmpeg: Use internal aac decoder. If not available give a hint. #14645
+  * Fix build with -DSTEM=OFF #13948
+  * Fix warning when building without STEM support #14551
+  * Fix: exclude stem samples for QML waveform #13655
+  * Fix: use generic way to get the group on stem waveform renderer #14291
+  * Fix: reset the STEM Quick FX on track load when enabled #15743
+  * Allow pre-mastered stream not to match stem streams properties #15246 #14572
+  * Fix: clone states when cloning a deck #15501 #15093 #15510
+  * Fix: reset stem color correctly #15494 #14769
+  * Fix: skip stem count assert on secondary decks #15655 #15593
+  * Name Stem QuickEffect chains node like deck QuickEffects in effects.xml #15530
+  Library:
+  * Add color coding for Key column #13390
+  * Add Key Color Palettes #13497
+  * Add overview column with small waveform #14140 #15368 #15366 #15431
+  * Add a rebindable keyboard shortcut for editing items as a replacement for F2 #13148
+  * DeveloperTools: restore searchbar shortcut Ctrl+F #14761
+  * CmdlineArgs: Add --rescan-library for rescanning on startup #13661
+  * Add case-insensitive parsing for Lancelot key notation #14318
+  * iTunes: Add iOS importer using the Media Player framework #12690
+  * Add Shuffle action to track table header menu #13392
+  * Library scan: log summary and show popup (opt-out) #13427 #10720 #15089 #15085
+  * Search: add BPM lock filter bpm:locked #14590 #14583
+  * Track menu, purge: allow to hide further success popups in the current session #13807
+  * Track Info dialogs: move metadata buttons below color picker #13632
+  * Track File Export: add 'Apply to all' checkbox, remove ".. All" buttons #13614
+  * Fix: restore BPM and Bitrate column width #13571
+  * Elide key text from the right #13475
+  * Playlists: add 'Unlock all' and 'Delete all unlocked' menu actions #14091 #8960
+  * Scan dialog: add progress bar, plus some improvements #15517
+  * Update to libdjinterop 0.27.0 #15958 #15696
+  * Library: enable drag'n'drop of directories #15688 #5100
+  * Search: add directory filter #15701
+  * Search: add filter shortcuts, eg. t|title, a|artist, cm|comment, y|year #15115 #15101
+  * Search: add constant BPM filter bpm:const #14642 #11064
+  * Search: fix 'not' operator #15923 #15918
+  * Library: also apply library font size(!) to tracks header #15392 #15476
+  * Rhythmbox: fix imports #15798 #15770
+  * WTrackMenu: warn before opening more than 10 tracks in file browser #15828 #15819
+  * Key delegate: apply 'played' color #15839
+  * Track Info dialog: restore column stretching #15037
+  * Computer feature: mention constraints of file view/model #14934
+  * Fix "dataChanged() called with an invalid index range" warning #15937 #14610
+  * Fix: use correct Hidden settings namespace #15120
+  * Engine DJ: add support for playlists export #14741
+  * Fix: display rediscovered tracks #15938
+  Effects:
+  * Compressor effect: Adjust Makeup Time constant calculation #13261 #13237
+  * Fix: prevent quickFX model out of bound #13668
+  * WhiteNoise: enhance leveling #15979
+  * WhiteNoise: improve ramp logic #15949
+  * QuickEffect: fix crackling noise when switching #15796 #15794
+  Waveforms:
+  * Simplify waveform combobox in preferences #13220 #6428 #13226 #15277 #14801 #15272 #15349 #15338
+  * Add minute markers on horizontal waveform overview #13401 #5843 #13648 #13489
+  * Add slip waveform to Textured/'High details' type #14039 #13422 #15837 #15834
+  * Disable textured waveforms when using OpenGL ES #13381 #13380
+  * Waveform Overview: Scale by ReplayGain #14309 #14331
+  * feat: improve screen rendering framework #13737
+  * Rendergraph: Add rendergraph library and use if for waveform rendering #14007 #14021 #14191 #14185 #14188 #14192 #14190 #14186 #14189 #14187 #13470 #14461 #14726 #14706 #14953 #14262 #14461 #14470 #14464 #14453 #14469 #14467 #15846 #15103 #15797 #15968 #15967 #15841 #15834 #15507 #14546 #14952 #14317 #15419 #15374
+  * Improve appearance of marks on the waveforms #13969
+  * ControllerRenderingEngine: Patch out unavailable APIs when using GL ES #13382
+  * Fix high details waveforms wrapping around after visual index 65K #13491
+  * Fix: support for new WaveformData struct in shaders #13474 #13472
+  * Fix: remove scaleSignal in waveform analyzer #13416
+  * Fix: prevent double free on DigitsRenderer #13859
+  * Fix: waveform overview seeking #13947 #13946
+  * Fix waveform marker image alignment #14656 #14037
+  * Fix: unify scaling of scrolling waveforms #15324 #15808 #15788
+  Auto-DJ:
+  * Add transition mode 'Skip Silence, Start with Xfader centered' #13628
+  * Add crossafder recenter option when turning off (default off) #13303 #11571
+  * Add context menu action for enabling/disabling the Auto DJ #13593
+  Controller Mappings:
+  * Behringer DDM4000 & BCR2000: remove XML input declarations from mapping #14285
+  * Hercules DJControl Inpulse 500: add new mapping #14316
+  * Hercules DJControl Starlight: add EffectChain superknob control #14126
+  * Midi Fighter Spectra: add stems layer #14932
+  * Midi Fighter Twister: add stems layer #14931
+  * Numark Mixstream Pro: add support #15732
+  * Numark Mixtrack 3: update scripts #14193 #14180
+  * Numark Mixtrack Platinum: add stems support #15768
+  * Numark NS4FX: add new mapping #15829 #15948 #15894
+  * Pioneer CDJ-350: fix incorrect name in controller mapping #15683
+  * Pioneer DDJ-FLX4: fix obsolete hotcue status keys #15555
+  * Pioneer DDJ-FLX4: implement Key Shift #15674
+  * Pioneer DDJ-FLX4: support for stems #15528
+  * Reloop Beatmix 2/4: implement shift+jog wheel seek #15575 #12334
+  * Traktor Kontrol Z1: fix crossfader cut #14451 #14450
+  * Traktor S3: small updates and fixes #14340
+  * Traktor S4Mk2: check for deck undefined #14445
+  * Traktor S4Mk3: add controller setting color #15650
+  * Traktor S4Mk3: various improvements #15216
+  Controller Backend:
+  * Add screen renderer to support controllers with a screen #11407 #13334
+  * Deprecate lodash.mixxx.js, and script.deepMerge #13460
+  * Add New CO "beats_translate_half" to move beatgrid a half beat #14279 #10811
+  * Settings: Add a file and color controller setting types #13669
+  * Allow to enable MIDI Through Port in non-developer sessions #13909
+  * Refactor: modernize softtakeover code #13553
+  * document ScriptConnection readonly properties & slight cleanup #13630
+  * Modernize Hid/Bulk Lists #13622
+  * Prevent deadlock with BULK transfer and reduce log noise #13735
+  * Expose convertCharset convenience function to controllers #13935 #14108
+  * Add HID error message upon failed open #14184
+  * Remove boilerplate and duplication in controller setting definition #13920
+  * Allow feedback on every release of a powerWindow button #14335
+  * Controller Settings: Improve click event filter #14355
+  * Controller Settings: Add a collapsible group box #14324
+  * Fix: Don't return in JogWheelBasic on deck absent in option #13425 #14106
+  * Controller engine: add convenience functions isBrakeActive(), isSpinbackActive() and isSoftStartActive() #14925
+  * ControllerRenderingEngine: fix deadlock with mappings with display controllers #15524
+  * Restore common-hid-packet-parser global symbol exceptions for eslint #15961
+  * ControllerRenderingEngine: add OpenGL ES for controller screen rendering #15566
+  * Fix changing stem group for deck in ComponentsJS #14928 #14764
+  * Fix an unused parameter warning #15313
+  Engine:
+  * Fix: sync rate using the current BPM instead of the file one #13671 #12738
+  * Sync: prefer playing inaudible decks over stopped non-sync decks #14580
+  * Fix: prevent null CO access when cloning sampler or preview #13740
+  * Use correct detected channel count on CoreAudio #14372
+  * Fix: revert to max. 36 hotcues, fix one-off issue #14753
+  * QueenMaryBeats: detection speed up #15127 #15067
+  * QueenMaryBeats: clamp the beat count value #15657
+  * QueenMaryBeats: fix offset issue #15076
+  * RateControl: initialize m_pVCEnabled with nullptr for samplers #15303 #15288
+  * Fix: document libFLAC 1.5 FLAC__STREAM_DECODER_ERROR_STATUS_MISSING_FRAME #14876
+  * Fix: soundsourceflac.cpp flac api version and missing error #15295
+  * chore: remove unused/undefined declared members from BaseTrackCache #14965
+  * Changed audio engine to switch to linear scaler upon entering scratching mode #15845
+  * AudioUnit: fix crash due to off-by-one error in parameter syncing #15919
+  Preferences:
+  * Waveforms: Group options, adjust tabstops, reorder ui file #13615
+  * Controllers: Make extended controller information available for device selection
+  * Controllers: Reorganize content into tabs
+  * Mixer: Show 'real' crossfader configuration #14124
+  * Mixer: Fix crossader graph #13848 #13896 #14006 #14354
+  * Effects: Left/Right key in effect lists trigger hide/unhide #14205
+  * Sound Hardware: Open with sprecific I/O tab selected #14346
+  * Sound Hardware: Don't set m_settingsModified in update slots #13450
+  * Library, Track Search: Fix accidental use of wrong preference controls #13592
+  * Controller: strip leading whitespaces for mapping name display #15844
+  * Interface: use main window screen to detect if skin fits #15824 #15823
+  * Stats: convert ns to ms and add spacing for readability #14978 #14908
+  * Controller: add Stem controls to control picker / menu #15158
+  * Controller: add reload button to refresh mapping list #15627
+  * Control learning: fix deck offset for stem controls #15714
+  * Controller: fix the tabs display for QML=OFF #15027
+  * Controller: add missing layout #14606
+
+-------------------------------------------------------------------
 Tue Jan 20 07:35:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.4:
