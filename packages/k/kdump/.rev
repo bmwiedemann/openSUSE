@@ -1511,4 +1511,14 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
   * dracut: update dracut hooks path from /lib/dracut to /var/lib/dracut</comment>
     <requestid>1340720</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>c35ba6c3361df4d403fa35adb5300ff1</srcmd5>
+    <version>2.1.8</version>
+    <time>1774725145</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to version 2.1.8
+  * man: fix install instructions in kdump(7)
+  * kdumptool commandline: ignore minor differencies (bsc#1260535)</comment>
+    <requestid>1343205</requestid>
+  </revision>
 </revisionlist>

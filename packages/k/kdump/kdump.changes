@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 26 10:09:05 UTC 2026 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.1.8
+  * man: fix install instructions in kdump(7)
+  * kdumptool commandline: ignore minor differencies (bsc#1260535)
+
+-------------------------------------------------------------------
 Fri Mar 13 16:27:05 UTC 2026 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.1.7
