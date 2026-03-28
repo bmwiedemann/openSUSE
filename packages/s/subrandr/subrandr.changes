@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:56:09 UTC 2026 - llyyr <llyyr@yukari.in>
+
+- Update to version 1.2.0:
+  * Replace unstable error code API with meaningful return values
+  * Simplify `ComputedStyle` implementation macro parsing code
+  * Remove some dead code from `ComputedStyle` generation macro
+  * Get rid of `subrandr::Subrandr`
+  * Make most logging go through a `LogContext`
+  * Rename `warning!` to `warn!`
+  * Split out logging module into a separate crate
+  * Make SRV3 parser pull-based
+  * Update README.md and CHANGELOG.md
+  * Implement SRV3 window style `mh` attribute support
+
+-------------------------------------------------------------------
 Mon Jan 12 22:14:45 UTC 2026 - llyyr <llyyr@yukari.in>
 
 - Update to version 1.1.0:

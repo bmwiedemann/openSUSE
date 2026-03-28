@@ -101,4 +101,22 @@ DPIs other than 72.
 * Fix UB in `blit_generic_unchecked` pointer operations </comment>
     <requestid>1326860</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2f2d18592aa9c5ed83b3a90942e7898a</srcmd5>
+    <version>1.2.0</version>
+    <time>1774725240</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0:
+  * Replace unstable error code API with meaningful return values
+  * Simplify `ComputedStyle` implementation macro parsing code
+  * Remove some dead code from `ComputedStyle` generation macro
+  * Get rid of `subrandr::Subrandr`
+  * Make most logging go through a `LogContext`
+  * Rename `warning!` to `warn!`
+  * Split out logging module into a separate crate
+  * Make SRV3 parser pull-based
+  * Update README.md and CHANGELOG.md
+  * Implement SRV3 window style `mh` attribute support</comment>
+    <requestid>1343212</requestid>
+  </revision>
 </revisionlist>
