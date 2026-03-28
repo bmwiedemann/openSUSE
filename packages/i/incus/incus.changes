@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Mar 28 15:06:37 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to Incus 6.23. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-6-23-has-been-released/26447>
+
+  Fixes the following CVEs:
+
+  - CVE-2026-33711
+  - CVE-2026-33542
+  - CVE-2026-33743
+  - CVE-2026-33898
+  - CVE-2026-33897
+  - CVE-2026-33945
+
+  + Dependent storage volumes
+  + FreeBSD VM support
+  * Reworked CLI parser
+  + Support for disabling DHCP announcement of the gateway
+  + Support for ipv4.dhcp.gateway on OVN networks
+  + Support for io.bus on OVN NICs
+  + VM agent lifecycle events
+  * Reworked incus file pull and incus storage volume file pull
+  + Project related metrics
+  + Instance low-level repair API
+
+-------------------------------------------------------------------
 Tue Mar  3 16:00:11 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
 
 - Update to Incus 6.22. See upstream changelog online at

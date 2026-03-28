@@ -31,15 +31,14 @@
 %endif
 
 Name:           incus
-Version:        6.22
-%define tag_version 6.22.0
+Version:        6.23
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://linuxcontainers.org/incus/
-Source:         https://github.com/lxc/%{name}/releases/download/v%{tag_version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/lxc/%{name}/releases/download/v%{tag_version}/%{name}-%{version}.tar.xz.asc
+Source:         https://linuxcontainers.org/downloads/incus/%{name}-%{version}.tar.xz
+Source1:        https://linuxcontainers.org/downloads/incus/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        %{name}-rpmlintrc
 Source4:        %{name}.sysusers
