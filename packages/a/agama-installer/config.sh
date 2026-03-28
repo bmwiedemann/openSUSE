@@ -116,6 +116,13 @@ sed -i 's:# event_activation = 1:event_activation = 0:' /etc/lvm/lvm.conf
 # Prevent premature assembly of MD RAIDs (bsc#1245159)
 touch /etc/udev/rules.d/64-md-raid-assembly.rules
 
+# prevent gpt automounting (bsc#1258410)
+mkdir -p /etc/systemd/system-generators
+ln -s /dev/null /etc/systemd/system-generators/systemd-gpt-auto-generator
+# sadly man page documented way to mask generator does not work for me,
+# so I also force remove executable flag to prevent run generator
+chmod -x /usr/lib/systemd/system-generators/systemd-gpt-auto-generator
+
 # the "eurlatgr" is the default font for the English locale
 echo -e "\nFONT=eurlatgr.psfu" >> /etc/vconsole.conf
 
