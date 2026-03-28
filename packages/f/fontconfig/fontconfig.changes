@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Mar 17 15:09:35 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2.17.1.
+- Remove obsoleted documentation packages.
+- Changes from 2.17.1:
+  * meson: Add 'noinstall' to default-hinting, default-sub-pixel-rendering, bitmap-conf build options
+  * Fix a heap buffer overflow
+- Changes from 2.17.0:
+  * Avoid conflict between dgettext macro and declaration in fcint.h
+  * fix: Skip empty entries in XDG_DATA_DIRS parsing
+  * Fix padding with "und" in pattern elements
+  * Fix a crash with broken cache
+  * meson: Fix additional-fonts-dirs build option that not taking effect
+  * Add default font paths for Android in configure script
+  * Fix use-after-free in FcConfigGetPrgname
+  * conf.d: Add a conf to guess a generic-family for substitution
+  * Drop FcObjectFini() from FcFini() to fix memory leaks
+  * conf.d/65-nonlatin.conf: Rename Lohit Oriya to Lohit Odia
+  * Make sure that the debugging facilities are initialized at loading config phase
+  * meson: don't force installation of a static library
+  * meson: don't try to call run_command for gperf on --wrap-mode=forcefallback
+  * Do not fallback decoding with UTF-16BE if no iconv support
+  * Trim trailing newline in string in cache
+  * Parse foundry from OS/2 for table version 0
+  * Allow dotfiles to scan for caching
+  * Increase a reference count for default FcConfig instance with FcInit()
+  * Free the mutex object only when there are no references to the default FcConfig instance
+  * Free the mutex object only when all cache objects isn't referenced
+  * Drop the configuration path migration code
+  * Drop FcDefaultFini() from FcFini() to fix memory leaks
+  * Process and append font capabilities to Pattern
+  * Add bitmap-conf build option to choose default bitmap conf
+  * Enable fc-query indexing through Fontations
+  * Add FcConfigPerferAppFont() to allow changing the order of application fonts
+  * Pattern Bindings for CharSet and LangSet
+  * Add FcPatternObjectGet* impl for CharSet and LangSet
+  * Factor out fcpat.c - add Fontations dependencies
+  * Improve performance of FcPtrListIterInitAtLast
+- Changes from 2.16.2:
+  * meson: Use Requires.private instead of Requires
+  * meson: don't force build of a shared library
+  * meson: do not require libintl if nls feature is disabled
+  * Add internal PatternBuilder abstraction
+
+-------------------------------------------------------------------
 Mon Jan 26 17:08:42 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - do not package /var/lib/fontconfig to support immutable mode

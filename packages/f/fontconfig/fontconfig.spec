@@ -1,7 +1,7 @@
 #
 # spec file for package fontconfig
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 Name:           fontconfig
 %define lname   libfontconfig1
-Version:        2.16.0
+Version:        2.17.1
 Release:        0
 Summary:        Library for Font Configuration
 License:        MIT
 Group:          System/Libraries
 URL:            https://www.freedesktop.org/wiki/Software/fontconfig/
-Source0:        https://www.freedesktop.org/software/fontconfig/release/fontconfig-%{version}.tar.xz
+Source0:        https://gitlab.freedesktop.org/fontconfig/fontconfig/-/archive/%{version}/fontconfig-%{version}.tar.bz2
 Source4:        baselibs.conf
 Source5:        local.conf
 Patch1:         skip-network-test.patch
@@ -66,6 +66,7 @@ which accepts font patterns and returns the nearest matching font.
 Summary:        Documentation for fontconfig
 Group:          Documentation/Other
 BuildArch:      noarch
+Obsoletes:      %{name}-devel-doc
 
 %description doc
 Extended documentation for the fontconfig library.
@@ -82,15 +83,6 @@ Requires:       pkgconfig(freetype2)
 This package countains all include files, libraries, configuration
 files needed for compiling applications which use the fontconfig
 library.
-
-%package devel-doc
-Summary:        Developer documentation for libfontconfig
-Group:          Documentation/Other
-BuildArch:      noarch
-
-%description devel-doc
-HTML documentation and manual pages for developers using the
-fontconfig library.
 
 %prep
 %autosetup -p1
@@ -155,8 +147,6 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 %{_datadir}/%{name}/conf.avail/*.conf
 %dir %{_datadir}/xml/%{name}
 %{_datadir}/xml/%{name}/fonts.dtd
-%{_mandir}/man5/fonts-conf.5%{ext_man}
-%{_mandir}/man1/*
 %ghost %dir %attr(755,root,root) /var/cache/fontconfig
 
 %files lang -f %{name}.lang -f %{name}-conf.lang
@@ -164,9 +154,6 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 %files doc
 %doc AUTHORS NEWS README.md
 %dir %{_docdir}/%{name}
-%{_docdir}/%{name}/fontconfig-user.html
-%{_docdir}/%{name}/fontconfig-user.pdf
-%{_docdir}/%{name}/fontconfig-user.txt
 
 %files devel
 %{_libdir}/pkgconfig/fontconfig.pc
@@ -174,12 +161,6 @@ mkdir -p %{buildroot}/%{_docdir}/%{name}
 %{_includedir}/fontconfig/
 %dir %{_datadir}/gettext/its/
 %{_datadir}/gettext/its/fontconfig.*
-
-%files devel-doc
-%{_docdir}/%{name}/fontconfig-devel.html
-%{_docdir}/%{name}/fontconfig-devel.pdf
-%{_docdir}/%{name}/fontconfig-devel.txt
-%{_mandir}/man3/*
 
 %files -n %{lname}
 %{_libdir}/libfontconfig.so.*
