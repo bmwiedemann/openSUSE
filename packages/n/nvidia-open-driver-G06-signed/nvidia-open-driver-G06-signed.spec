@@ -34,9 +34,6 @@
 %endif
 
 %if "%{flavor}" == "cuda"
- %if 0%{?suse_version} >= 1699
-ExclusiveArch:  do_not_build
- %endif
 %{bcond_without cuda}
 %define mykind cuda
 %define otherkind gfx
@@ -122,7 +119,7 @@ BuildRequires:  kernel-syms-azure
 # build KPMs for kernel-longterm in Factory
 BuildRequires:  kernel-syms-longterm
 %endif
-ExclusiveArch:  x86_64 aarch64
+ExcludeArch:    %ix86 s390x ppc64le
 
 %if 0%{!?kmp_template_name:1}
 %define kmp_template_name /usr/lib/rpm/kernel-module-subpackage
@@ -182,6 +179,44 @@ Simply run: `zypper install --no-recommends cuda-runtime-<version> nv-prefer-sig
 This package provides the open-source NVIDIA kernel module driver
 for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
 and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
+This driver variant is meant to be used when using the GFX repository
+below
+
+  https://download.nvidia.com/suse/
+  https://download.nvidia.com/opensuse/
+
+for user-space driver installation.
+
+%if %{with cuda}
+%description -n nvidia-open-driver-G06-signed-cuda-kmp-default
+This package provides the open-source NVIDIA kernel module driver
+for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
+and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
+This driver variant is meant to be used when using the CUDA repository
+below
+
+  https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/
+  https://developer.download.nvidia.com/compute/cuda/repos/sles15/
+  https://developer.download.nvidia.com/compute/cuda/repos/suse16/
+
+for user-space driver installation.
+
+%if 0%{?suse_version} >= 1699
+%description -n nvidia-open-driver-G06-signed-cuda-kmp-longterm
+This package provides the open-source NVIDIA kernel module driver
+for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
+and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
+This driver variant is meant to be used when using the CUDA repository
+below
+
+  https://developer.download.nvidia.com/compute/cuda/repos/opensuse15/
+  https://developer.download.nvidia.com/compute/cuda/repos/sles15/
+  https://developer.download.nvidia.com/compute/cuda/repos/suse16/
+
+for user-space driver installation.
+%endif
+
+%endif
 
 %package -n %check_pkg
 Summary:        Post-build RPM inspection

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Mar 25 16:09:33 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- adding 'ExcludeArch:    %ix86 s390x ppc64le' to no longer get
+  autoclines by buildservice hoping that this wont't break RPM
+  descriptions for -cuda variant again ...
+
+-------------------------------------------------------------------
+Wed Mar 18 13:59:46 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- do not set ExclusiveArch in order to fix RPM description for -cuda
+  variant (bsc#1259719)
+- improved RPM description for -cuda and non-cuda variant
+
+-------------------------------------------------------------------
 Mon Mar 16 13:03:12 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - add 'Provides: open-driver-non-cuda-variant = %version' for

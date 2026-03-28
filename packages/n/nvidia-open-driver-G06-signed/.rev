@@ -1028,4 +1028,18 @@
   (boo#1259740)</comment>
     <requestid>1339428</requestid>
   </revision>
+  <revision rev="91" vrev="4">
+    <srcmd5>f900e95ef32930ee89d8b479b4ae15ec</srcmd5>
+    <version>580.126.18</version>
+    <time>1774725196</time>
+    <user>dimstar_suse</user>
+    <comment>- adding 'ExcludeArch:    %ix86 s390x ppc64le' to no longer get
+  autoclines by buildservice hoping that this wont't break RPM
+  descriptions for -cuda variant again ...
+
+- do not set ExclusiveArch in order to fix RPM description for -cuda
+  variant (bsc#1259719)
+- improved RPM description for -cuda and non-cuda variant</comment>
+    <requestid>1342856</requestid>
+  </revision>
 </revisionlist>
