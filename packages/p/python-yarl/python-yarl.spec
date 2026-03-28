@@ -1,7 +1,7 @@
 #
 # spec file for package python-yarl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yarl
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/yarl/
 Source:         https://files.pythonhosted.org/packages/source/y/yarl/yarl-%{version}.tar.gz
-Patch1:         reproducible.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module expandvars}
@@ -59,6 +58,7 @@ rm pytest.ini
 
 %build
 export CFLAGS="%{optflags} -Wno-return-type"
+export PIP_CONFIG_SETTINGS="build-inplace=true"
 %pyproject_wheel
 
 %install

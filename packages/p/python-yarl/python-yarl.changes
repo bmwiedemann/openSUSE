@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Mar 26 10:39:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.23.0
+  * Added support for ``pydantic``, the :class:`~yarl.URL` could be
+    used as a field type in ``pydantic`` models seamlessly.
+  * The CI has been set up to notify Codecov about upload completion
+    With this, Codecov no longer needs to guess whether it received all
+    the intended coverage reports or not.
+  * The in-tree build backend allows the end-users appending
+    ``CFLAGS`` and ``LDFLAGS`` by setting respective environment
+    variables externally.
+    It additionally sets up default compiler flags to perform
+    building with maximum optimization in release mode. This
+    makes the resulting artifacts shipped to PyPI smaller.
+    When line tracing is requested, the compiler and linker
+    flags are configured to include as much information as
+    possible for debugging and coverage tracking. The
+    development builds are therefore smaller.
+  * The :pep:`517` build backend now supports a new config
+    setting for controlling whether to build the project in-tree
+    or in a temporary directory. It only affects wheels and is
+    set up to build in a temporary directory by default. It does
+    not affect editable wheel builds — they will keep being
+    built in-tree regardless.
+  * Starting this version, when building the wheels is happening
+    in an automatically created temporary directory, the build
+    backend makes an effort to normalize the respective file
+    system path to a deterministic source checkout directory.
+  * Dropped Python 3.9 support; Python 3.10 is the minimal
+    supported Python version
+  * The deprecated license classifier was removed from :file:`setup.cfg`
+  * The in-tree build backend allows the end-users appending
+    ``CFLAGS`` and ``LDFLAGS`` by setting respective environment
+    variables externally.
+    It additionally sets up default compiler flags to perform
+    building with maximum optimization in release mode. This
+    makes the resulting artifacts shipped to PyPI smaller.
+    When line tracing is requested, the compiler and linker
+    flags are configured to include as much information as
+    possible for debugging and coverage tracking. The
+    development builds are therefore smaller.
+  * The CI has been updated to consistently benchmark optimized
+    release builds -- by :user:`webknjaz`.
+    When the release workflow is triggered, the pre-built wheels
+    ready to hit PyPI are being tested. Otherwise, the job
+    builds the project from source, while the rest of the
+    workflow uses debug builds for line tracing and coverage
+    collection.
+- Drop reproducible.patch, fixed upstream
+- Set PIP_CONFIG_SETTINGS="build-inplace=true" to make build reproducible
+
+-------------------------------------------------------------------
 Mon Oct 20 14:11:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.22.0
