@@ -7,11 +7,11 @@ variable. Unfortunately, pulling in cups-devel creates a huge dependency
 loop.
 To avoid this, just hardcode the cups_serverbin value for now.
 
-Index: b/configure.ac
+Index: bluez-5.82/configure.ac
 ===================================================================
---- a/configure.ac
-+++ b/configure.ac
-@@ -252,7 +252,7 @@ AC_ARG_ENABLE(cups, AS_HELP_STRING([--di
+--- bluez-5.82.orig/configure.ac
++++ bluez-5.82/configure.ac
+@@ -270,7 +270,7 @@ AC_ARG_ENABLE(cups, AS_HELP_STRING([--di
  AM_CONDITIONAL(CUPS, test "${enable_cups}" != "no")
  if (test "${enable_cups}" != "no"); then
  	AC_MSG_CHECKING([cups directory])

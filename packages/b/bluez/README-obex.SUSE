@@ -1,0 +1,39 @@
+README-obex.SUSE
+================
+
+Enabling obexd on the D-Bus System Bus
+--------------------------------------
+
+By default, the BlueZ OBEX daemon (obexd) in openSUSE runs on the D-Bus 
+session bus. However, certain use cases (such as headless systems, 
+automotive environments, or IoT devices) may require obexd to run on 
+the D-Bus system bus instead.
+
+For security reasons, the system bus configuration file (obex.conf) 
+is not installed into the system directory by default. This prevents 
+unauthorized registration of the OBEX service before a user has 
+explicitly configured it.
+
+How to enable:
+--------------
+
+If you wish to use obexd with the system bus (e.g., by running 'obexd -s'), 
+you must manually perform the following steps as root:
+
+1. Copy the configuration file to the D-Bus system directory:
+   
+   cp /usr/share/doc/packages/bluez/obex.conf /usr/share/dbus-1/system.d/
+
+2. Reload the D-Bus configuration to apply the new permissions:
+
+   systemctl reload dbus
+
+3. (Optional) If you are using a systemd service to start obexd, ensure 
+   it is configured to use the '-s' flag.
+
+Security Note:
+--------------
+Running OBEX on the system bus allows the service to be available even 
+when no user is logged in. Ensure that your Bluetooth pairing and 
+authorization settings are correctly configured to prevent unauthorized 
+file transfers.

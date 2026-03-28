@@ -1,7 +1,7 @@
 #
 # spec file for package bluez
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2010-2020 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,7 +35,7 @@
 %endif
 
 Name:           bluez
-Version:        5.79
+Version:        5.82
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -47,6 +47,8 @@ Source:         https://www.kernel.org/pub/linux/bluetooth/bluez-%{version}.tar.
 Source5:        baselibs.conf
 Source7:        bluetooth.modprobe
 Source9:        bluez.changes.sle
+Source10:       bluez.tmpfiles
+Source11:       README-obex.SUSE
 # fix some logitech HID devices, bnc#681049, bnc#850478 --seife+obs@b1-systems.com
 Patch1:         bluez-5.11-logitech-hid2hci.patch
 Patch2:         bluez-sdp-unix-path.patch
@@ -56,16 +58,12 @@ Patch3:         bluez-no-cups-devel-buildreq.patch
 Patch4:         bluez-disable-broken-tests.diff
 # disable tests for bypass boo#1078285
 Patch12:        disable_some_obex_tests.patch
-# bsc#1013708 CVE-2016-9797
-Patch14:        hcidump-Add-assoc-dump-function-assoc-date-length-ch.patch
 # bsc#1015171 CVE-2016-9917
 Patch15:        hcidump-Fix-memory-leak-with-malformed-packet.patch
 # bsc#1013712 CVE-2016-9798
 Patch16:        hcidump-Fixed-malformed-segment-frame-length.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
 # => PATCH-FIX-OPENSUSE for those two :-)
-Patch17:        bluez-5.79-c23.patch
-Patch18:        bluez-5.79-stdarg.patch
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)
 Patch101:       CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
 Patch102:       CVE-2016-9804-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
@@ -284,8 +282,11 @@ autoreconf -fi
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 install --mode=0644 -D %{SOURCE7} %{buildroot}/%{_modprobedir}/50-bluetooth.conf
-# no idea why this is suddenly necessary...
-install --mode 0755 -d %{buildroot}%{_localstatedir}/lib/bluetooth
+# no idea why /var/lib/bluetooth is suddenly necessary...
+# Anyway, now we use systemd-tmpfiles for supporting Immutable Mode. (PED-14768)
+# install bluez.conf in tmpfiles.d
+mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/tmpfiles.d/bluez.conf
 
 ## same as in fedora...
 # "make install" fails to install gatttool, used with Bluetooth Low Energy
@@ -328,6 +329,9 @@ then reboot.
 EOF
 touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
 %endif
+# bsc#1243334 AUDIT-0: bluez: version update to 5.82
+mv %{buildroot}%{_datadir}/dbus-1/system.d/obex.conf %{buildroot}%{_defaultdocdir}/%{name}
+install -m 0644 %{SOURCE11} %{buildroot}%{_defaultdocdir}/%{name}/README-obex.SUSE
 
 %check
 %if ! 0%{?qemu_user_space_build}
@@ -365,6 +369,8 @@ for _f in %{?modprobe_d_files}; do
     [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
 	mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
 done
+# systemd-tmpfiles create directory and file
+%tmpfiles_create bluez.conf
 
 %post -n libbluetooth3 -p /sbin/ldconfig
 %postun -n libbluetooth3 -p /sbin/ldconfig
@@ -382,9 +388,11 @@ done
 %systemd_user_postun obex.service
 
 %files
-%doc AUTHORS ChangeLog README dbus-apis src/main.conf
+%doc AUTHORS ChangeLog README dbus-apis src/main.conf bluez.changes.sle
 %if %{with mesh}
-%doc %{_defaultdocdir}/%{name}/*
+%doc %{_defaultdocdir}/%{name}/bluetooth-mesh.conf
+%doc %{_defaultdocdir}/%{name}/org.bluez.mesh.service
+%doc %{_defaultdocdir}/%{name}/README-mesh.SUSE
 %endif
 %license COPYING
 %{_bindir}/bluemoon
@@ -416,23 +424,26 @@ done
 %{_mandir}/man1/l2ping.1%{?ext_man}
 %{_mandir}/man1/rctest.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl.1%{?ext_man}
-%{_mandir}/man1/bluetoothctl-mgmt.1%{?ext_man}
-%{_mandir}/man1/bluetoothctl-monitor.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-admin.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-advertise.1%{?ext_man}
+%{_mandir}/man1/bluetoothctl-assistant.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-endpoint.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-gatt.1%{?ext_man}
+%{_mandir}/man1/bluetoothctl-hci.1%{?ext_man}
+%{_mandir}/man1/bluetoothctl-mgmt.1%{?ext_man}
+%{_mandir}/man1/bluetoothctl-monitor.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-player.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-scan.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-transport.1%{?ext_man}
-%{_mandir}/man1/bluetoothctl-assistant.1%{?ext_man}
 %{_mandir}/man1/btmgmt.1%{?ext_man}
 %{_mandir}/man5/org.bluez.*.5%{?ext_man}
 %{_mandir}/man7/hci.7%{?ext_man}
+%{_mandir}/man7/sco.7%{?ext_man}
 %{_datadir}/dbus-1/system.d/bluetooth.conf
 # not packaged, boo#1151518
 ###%%{_datadir}/dbus-1/system.d/bluetooth-mesh.conf
-%dir %{_localstatedir}/lib/bluetooth
+%{_prefix}/lib/tmpfiles.d/bluez.conf
+%ghost %dir %{_localstatedir}/lib/bluetooth
 %dir %{_modprobedir}
 %{_modprobedir}/50-bluetooth.conf
 %{_unitdir}/bluetooth.service
@@ -452,6 +463,8 @@ done
 %{_datadir}/dbus-1/services/org.bluez.obex.service
 %{_userunitdir}/obex.service
 %{_userunitdir}/dbus-org.bluez.obex.service
+%doc %{_defaultdocdir}/%{name}/obex.conf
+%doc %{_defaultdocdir}/%{name}/README-obex.SUSE
 
 %if %{with bluez_deprecated}
 %files deprecated

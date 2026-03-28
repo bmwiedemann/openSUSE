@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Feb 24 05:59:22 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Add documentation for obexd system bus support:
+  * Add README-obex.SUSE to guide users on how to enable obexd 
+    on the system bus.
+  * Move obex.conf to documentation directory to avoid automatic
+    activation due to security concerns.
+ (bsc#1243334, bsc#1258146)
+
+-------------------------------------------------------------------
+Tue Feb 10 13:28:38 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Add bluez.tmpfiles, using systemd-tmpfiles to create /var/lib/bluetooth
+  folder for supporting Immutable Mode. (jsc#PED-14768)
+
+-------------------------------------------------------------------
+Sun Apr  6 22:01:02 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.82:
+  * Fix issue with handling BAP state transitions.
+  * Fix issue with handling D-Bus interface removal.
+  * Fix issue with handling MAP and supported features.
+  * Fix issue with handling SDP record for Phonebook Access Client.
+  * Fix issue with handling AVRCP PDU parameters length mismatch.
+  * Fix issue with handling AVRCP PDU for SetAbsoluteVolume.
+  * Fix issue with handling AVDTP bad media transport format.
+  * Fix issue with handling support for LL Privacy setting.
+  * Fix issue with handling address type for all types of keys.
+  * Fix issue with handling maximum number of GATT channels.
+  * Fix issue with handling MTU auto-tuning feature.
+  * Fix issue with handling AVRCP volume in reconfigured transports.
+  * Fix issue with handling VCP volume setting requests.
+  * Fix issue with handling VCP connection management.
+  * Fix issue with handling MAP qualification.
+  * Fix issue with handling PBAP qualification.
+  * Fix issue with handling BNEP qualification.
+  * Add support for PreferredBearer device property.
+  * Add support for SupportedTypes Message Access property.
+  * Add support for HFP, A2DP, AVRCP, AVCTP and MAP latest versions.
+- drop hcidump-Add-assoc-dump-function-assoc-date-length-ch.patch,
+       bluez-5.79-c23.patch,
+       bluez-5.79-stdarg.patch: obsolete
+
+-------------------------------------------------------------------
 Sun Apr  6 17:17:02 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - to fix gcc-15 compile time errors, add bluez-5.79-c23.patch
@@ -32,7 +76,7 @@ Wed Sep 18 08:35:40 UTC 2024 - pallas wept <pallaswept@proton.me>
 -------------------------------------------------------------------
 Thu Sep 12 12:46:33 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
-- Mark the configuration files as 'noreplace'. 
+- Mark the configuration files as 'noreplace'.
 
 -------------------------------------------------------------------
 Thu Sep 12 04:40:31 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
@@ -2933,7 +2977,7 @@ Mon Sep 29 18:56:15 CEST 2008 - seife@suse.de
   - Fix duplicate entries for service UUIDs.
 
 -------------------------------------------------------------------
-Mon Sep2y 09:36:31 CEST 2008 - seife@suse.de
+Mon Sep 29 09:36:31 CEST 2008 - seife@suse.de
 
 - update to bluez-4.8:
   - fix two bluetoothd crashes during device pairing
