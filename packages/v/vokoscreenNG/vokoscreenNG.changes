@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Mar 23 06:59:46 UTC 2026 - Frantisek Simorda <frantisek.simorda@suse.com>
+- Update to version 4.8.3 (also for 4.8.1 and 4.8.2, there are no separate changelogs) 
+  * Fixed the severe audio failures that caused the 4.8.0 withdrawal.
+  * Fixed a bug where the "Start" button remained active even when Cisco OpenH264 was inactive.
+  * Fixed an issue where H.264 was incorrectly offered as an option when selecting the GIF format.
+  * GStreamer received an additional bump from 1.26.10 to version 1.28.1.
+  * Codec options are now properly hidden if Cisco OpenH264 is not downloaded.
+  * Removed the package files dialog entirely on Windows (as it is only meant for Linux).
+  * Fixed a bug where the recording timer continued to run while the program was paused.
+  * Fixed the Systray and snapshot dialogs not displaying by default.
+  * Fixed the Systray displaying incorrectly after the countdown finishes.
+  * The application now automatically minimizes when a recording starts.
+  * The tool button for area reset is now properly enabled when necessary.
+  * Added a dedicated log controller.
+  * Separated the application settings into their own .ini file.
+  * Added new buttons for the snapshot tool.
+  * Changed most connects from runtime to compile time for better stability.
+  * Modified the snapshot save path settings and adjusted write permissions.
+  * Adjusted the snapshot message box info text and QMessagebox->exec behavior.
+  * Added the picture path to the application logs.
+
+- Version 4.8.0:
+  * Windows: Openh264 changed from 2.3.0 to version 2.6.0
+  * Windows: GStreamer changed from 1.22.5 to version 1.26.10
+  * Windows: Qt changed from 6.6.0 to version 6.10.1
+  * Windows: Package creation switched from Windows 10 to Windows 11
+  * Wayland: The area selection now automatically recognizes the control bars
+  * Wayland: The area selection was not saved in the settings
+  * Wayland: [Snapshot] Added button to reset SecondsWaitBeforeRecording
+  * Wayland: [Snapshot] Added button to reset HideBeforeRecording
+  * Wayland: [Snapshot] Added button to reset formats
+  * Wayland: Added to log the disk space at the end of the recording
+  * Wayland: Added a link to open the folder in the Snapshot Message Dialog
+  * Wayland: Systray added
+  * Wayland: Without a created snapshot the folder will not open
+  * Wayland: Snapshot buttons font in bold
+  * Wayland: Added push button pause
+  * Wayland: Added push button to open the video folder
+  * Wayland: The wrong class was used for the range selection
+  * Wayland: Temporary tab deleted
+  * Bug_report.md: Path for log under Flatpak added
+  * Translation: Updated
+
+-------------------------------------------------------------------
 Wed Nov 12 14:11:06 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update Feature and Bugfix-Release version 4.7.0 from Oct 01, 2025
