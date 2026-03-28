@@ -29,7 +29,7 @@
 %global psuffix %{nil}
 %endif
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %bcond_without quic
 %else
 %bcond_with quic

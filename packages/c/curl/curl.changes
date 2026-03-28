@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 26 15:01:40 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update %suse_version checks for SLES 16.x (jsc#PED-15813)
+
+-------------------------------------------------------------------
 Wed Mar 11 08:52:27 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.19.0:
