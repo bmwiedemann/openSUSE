@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 26 18:31:47 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 84 (jsc#PED-15085)
+  * util/sysfs: add hint for missing root privileges on sysfs access
+  * ndctl: add key cleanup after overwrite operation
+  * Documentation: add docs for protocol and poison injection commands
+  * cxl: add poison injection/clear commands
+  * cxl: add inject-protocol-error command
+  * cxl: add support for extended linear cache
+
+-------------------------------------------------------------------
 Thu Oct  2 11:24:08 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64
