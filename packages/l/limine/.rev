@@ -287,4 +287,12 @@
     <comment>Update to 10.8.5</comment>
     <requestid>1338403</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>63d404afcbaff2834f6e2ba8ad025b67</srcmd5>
+    <version>11.1.0</version>
+    <time>1774725283</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 11.1.0</comment>
+    <requestid>1343331</requestid>
+  </revision>
 </revisionlist>

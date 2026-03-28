@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 28 15:19:10 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 11.1.0:
+  * Implement support for base revision 6 of the Limine boot protocol
+    (see specification for details).
+  * Added support for multiprocessor startup for the loongarch64 version
+    of the Limine boot protocol.
+  * Add a new feature to the Limine boot protocol,
+    `flanterm_fb_init_params`, that passes information to the booted
+    executable about the text terminal, as used by the bootloader, in a
+    Flanterm-compatible format.
+  * Add a new boot protocol, "efi_boot_entry", which allows rebooting
+    into other EFI boot menu entries by name.
+  * Support using a formatted path as the value for the `default_entry`
+    configuration option. 
+
+-------------------------------------------------------------------
 Thu Mar 12 00:24:42 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 10.8.5:
