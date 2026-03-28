@@ -86,4 +86,49 @@
 - add disable-test-x86.patch, disable the 1 test which fails on legacy x86</comment>
     <requestid>1324409</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>035b9a919f76ff1c36e375a70c2ceb29</srcmd5>
+    <version>1.26.0</version>
+    <time>1771605774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.0:
+  * Known Issues
+    - X11 Clients can have extra scroll added
+    - The fingerprint dialog button is not always show when it
+      should be
+  * Features
+    - Korean(ko) translation
+    - Option to start in the &quot;locked to computer&quot; state
+    - Option to show the version in the windows title
+    - Clients can now use a list hostnames or ips for the server
+      address
+    - Client options are in a new client configuration dialog
+    - Provide a more accurate suggested IP, Update as network info
+      changes if needed.
+    - Add a simple search to the log
+    - Lookup host name with IP4 or IP6
+    - Replace broken scroll speed with a scroll scaling options
+  * Fixes
+    - deskflow-core crashes if hotkeys are not sent to all
+      machines.
+    - Horizontal scrolling is working again on all platforms
+    - Key repeat events are now sent as repeat not press and
+      release
+    - Deskflow-core correctly blocks new instances when run
+      without the --new-instance option
+    - Server Mode, Only use the external config path if the
+      option is enabled
+    - Allow comma and semicolon in hotkey config
+    - Gui can crash when clearing settings in debug mode
+    - Mouse Back and Forward buttons are now working (again) on</comment>
+    <requestid>1334066</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9c8fba1e17d16aa46d4ea1de0db35847</srcmd5>
+    <version>1.26.0</version>
+    <time>1774725262</time>
+    <user>dimstar_suse</user>
+    <comment>- Offer a firewalld service file (forwarded request 1343262 from rrahl0)</comment>
+    <requestid>1343263</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sat Mar 28 00:05:58 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Offer a firewalld service file
+
+-------------------------------------------------------------------
+Thu Feb 19 11:43:53 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.26.0:
+  * Known Issues
+    - X11 Clients can have extra scroll added
+    - The fingerprint dialog button is not always show when it
+      should be
+  * Features
+    - Korean(ko) translation
+    - Option to start in the "locked to computer" state
+    - Option to show the version in the windows title
+    - Clients can now use a list hostnames or ips for the server
+      address
+    - Client options are in a new client configuration dialog
+    - Provide a more accurate suggested IP, Update as network info
+      changes if needed.
+    - Add a simple search to the log
+    - Lookup host name with IP4 or IP6
+    - Replace broken scroll speed with a scroll scaling options
+  * Fixes
+    - deskflow-core crashes if hotkeys are not sent to all
+      machines.
+    - Horizontal scrolling is working again on all platforms
+    - Key repeat events are now sent as repeat not press and
+      release
+    - Deskflow-core correctly blocks new instances when run
+      without the --new-instance option
+    - Server Mode, Only use the external config path if the
+      option is enabled
+    - Allow comma and semicolon in hotkey config
+    - Gui can crash when clearing settings in debug mode
+    - Mouse Back and Forward buttons are now working (again) on
+      all platforms
+    - macOS, crash when the log is opened and the gui minimized
+    - macOS, restore Preferences menu entry when the application is
+      using non english language
+    - macOS, try icon was not showing when in Colorful mode
+    - macOS, do not allow the os to kill deskflow for memory
+      reasons
+    - macOS, possible server crash when a client disconnects
+      abruptly
+    - macOS, possible crash on screen wake / screen saver
+      activation
+    - macOS, Wrong keys send when using "RIME" input method
+    - Windows, possible crash when the daemon is started for the
+      first time
+  * General
+    - Use Computer in place of Screen to indicate we work with
+      Computers display layout and not individual screens attached
+    - Clean and update the settings when starting up.
+    - Do not show client connection error messages dialogs if the
+      gui is hidden
+    - Use Qt 6.9.3 for Intel Mac builds.
+    - Windows: Use ICU dlls from the host system
+    - Code continues to be cleaned of unused methods and updated to
+      modern C++
+    - Consolidate Debug levels to remove DEBUG3-5 levels
+- Rebase patch:
+  * disable-updater.patch
+
+-------------------------------------------------------------------
 Thu Dec 25 21:50:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - enable more tests by using the whole suite, not only legacytests

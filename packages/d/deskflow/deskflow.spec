@@ -1,7 +1,7 @@
 #
 # spec file for package deskflow
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,21 @@
 %define         qt6ver 6.7.0
 %define         appid org.deskflow.deskflow
 Name:           deskflow
-Version:        1.25.0
+Version:        1.26.0
 Release:        0
 Summary:        Share a single keyboard and mouse between multiple computers
 License:        GPL-2.0-only AND MIT AND SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.1-only
 URL:            https://github.com/deskflow/deskflow
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        %{name}.firewalld
 Patch0:         disable-updater.patch
 Patch1:         disable-test-x86.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.24
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  firewall-macros
+BuildRequires:  firewalld
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(CLI11)
@@ -76,7 +79,6 @@ BuildArch:      noarch
 %description doc
 %{summary}.
 
-
 %prep
 %autosetup -N
 %ifarch %{ix86}
@@ -91,7 +93,8 @@ BuildArch:      noarch
   -DBUILD_GUI=ON \
   -DBUILD_INSTALLER=OFF \
   -DBUILD_TESTS=ON \
-  -DBUILD_UNIFIED=OFF
+  -DBUILD_UNIFIED=OFF \
+  %{nil}
 %cmake_build
 
 %install
@@ -99,12 +102,19 @@ BuildArch:      noarch
 install -Dm0644 ./deploy/linux/%{appid}.desktop %{buildroot}%{_datadir}/applications/%{appid}.desktop
 install -Dm0644 ./deploy/linux/%{appid}.metainfo.xml %{buildroot}%{_datadir}/metainfo/%{appid}.metainfo.xml
 install -Dm0644 ./deploy/linux/%{appid}.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{appid}.png
+install -Dm0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 %fdupes %{buildroot}%{_docdir}
 
 %ifnarch %{ix86}
 %check
 %ctest
 %endif
+
+%post
+%firewalld_reload
+
+%postun
+%firewalld_reload
 
 %files
 %license LICENSE LICENSE_EXCEPTION
@@ -115,6 +125,7 @@ install -Dm0644 ./deploy/linux/%{appid}.png %{buildroot}%{_datadir}/icons/hicolo
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/512x512/apps/%{appid}.png
 %{_datadir}/metainfo/%{appid}.metainfo.xml
+%{_prefix}/lib/firewalld/services/%{name}.xml
 
 %files doc
 %{_docdir}/%{name}/html

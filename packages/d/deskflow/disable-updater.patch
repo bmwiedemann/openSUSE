@@ -10,13 +10,13 @@ diff -rubN deskflow-1.25.0/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1.25.
    Settings::setValue(Settings::Security::Certificate, ui->lineTlsCertPath->text());
    Settings::setValue(Settings::Security::KeySize, ui->comboTlsKeyLength->currentText().toInt());
 @@ -203,7 +202,6 @@
-   ui->cbScrollDirection->setChecked(Settings::value(Settings::Client::InvertScrollDirection).toBool());
+   ui->cbPreventSleep->setChecked(Settings::value(Settings::Core::PreventSleep).toBool());
    ui->cbCloseToTray->setChecked(Settings::value(Settings::Gui::CloseToTray).toBool());
    ui->cbElevateDaemon->setChecked(Settings::value(Settings::Daemon::Elevate).toBool());
 -  ui->cbAutoUpdate->setChecked(Settings::value(Settings::Gui::AutoUpdateCheck).toBool());
-   ui->sbScrollSpeed->setValue(Settings::value(Settings::Client::ScrollSpeed).toInt());
    ui->cbGuiDebug->setChecked(Settings::value(Settings::Log::GuiDebug).toBool());
    ui->cbUseWlClipboard->setChecked(Settings::value(Settings::Core::UseWlClipboard).toBool());
+   ui->cbShowVersion->setChecked(Settings::value(Settings::Gui::ShowVersionInTitle).toBool());
 @@ -295,7 +293,6 @@
    ui->comboLogLevel->setEnabled(writable);
    ui->cbLogToFile->setEnabled(writable);
@@ -39,9 +39,9 @@ diff -rubN deskflow-1.25.0/src/lib/gui/dialogs/SettingsDialog.ui deskflow-1.25.0
 -           </widget>
 -          </item>
 -          <item>
-            <widget class="QCheckBox" name="cbAutoHide">
+            <widget class="QCheckBox" name="cbShowVersion">
              <property name="text">
-              <string>Hide the window when the app starts</string>
+              <string>Include version in the window title</string>
 diff -rubN deskflow-1.25.0/src/lib/gui/MainWindow.cpp deskflow-1.25.0-patched/src/lib/gui/MainWindow.cpp
 --- deskflow-1.25.0/src/lib/gui/MainWindow.cpp	2025-11-21 15:09:53.000000000 +0000
 +++ deskflow-1.25.0-patched/src/lib/gui/MainWindow.cpp	2025-11-21 18:37:12.053894888 +0000

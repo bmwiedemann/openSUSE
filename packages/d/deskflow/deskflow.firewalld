@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>deskflow</short>
+  <description>Deskflow is a free and open source keyboard and mouse sharing app.</description>
+  <port protocol="tcp" port="24800"/>
+</service>
