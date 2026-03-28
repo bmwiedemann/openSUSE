@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar 24 04:52:17 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to commit dbf6e4dd64
+  * sanlock: add SANLK_REL_NO_DISK
+  * sanlock: add sanlock client spawn action
+- spec: Disable building fence_sanlock and reset since they have
+  been abandoned upstream. Dropped source fence_sanlockd.init, and
+  patches harden_fence_sanlockd.service.patch and
+  harden_sanlk-resetd.service.patch
+
+-------------------------------------------------------------------
+Fri Mar 13 17:13:06 UTC 2026 - jfehlig@suse.com
+
+- Update to version 5.0.0:
+  * sanlock: add SANLK_REL_NO_DISK
+  * sanlock: add sanlock client spawn action
+  * release 5.0.0
+  * sanlock: add mailing list to README
+  * sanlock: udpate README
+  * sanlock: disable rindex code
+  * sanlock: compare and write
+  * add use_aio arg to more functions
+  * diskio: pass use_aio arg to io functions
+  * use read_sector in place of read_sectors 1
+  * remove _leader_read_num and _lease_read_num functions
+  * make install /var/lib/sanlock
+
+-------------------------------------------------------------------
 Tue Mar 10 14:50:32 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Update to version 4.2.0:

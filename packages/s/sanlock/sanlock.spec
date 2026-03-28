@@ -1,7 +1,7 @@
 #
 # spec file for package sanlock
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,19 +28,13 @@
 %bcond_with python2
 %endif
 
-%define with_fence_sanlockd 0
-%define with_sanlk_reset    0
-%if 0%{?suse_version} > 1320
-%define with_fence_sanlockd 1
-%define with_sanlk_reset    1
-%endif
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 %define pname   sanlock
 Name:           %{pprefix}%{pname}
-Version:        4.2.0
+Version:        5.0.0
 Release:        0
 %if ! %{with python}
 Summary:        A shared disk lock manager
@@ -55,19 +49,17 @@ URL:            https://pagure.io/sanlock
 Source0:        %{pname}-%{version}.tar.xz
 Source1:        sysconfig.sanlock
 Source2:        sysconfig.wdmd
-Source3:        fence_sanlockd.init
 # Upstream patches
 # SUSE patches
 Patch100:       sanlock-SCHED_RESET_ON_FORK-undefined.patch
 Patch101:       sanlock-python-prefix.patch
 Patch102:       suse-systemd.patch
 Patch103:       suse-no-date-time.patch
-Patch104:       harden_fence_sanlockd.service.patch
-Patch105:       harden_sanlk-resetd.service.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  device-mapper-devel
 BuildRequires:  libaio-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -148,8 +140,6 @@ common sanlock lockspace.
 %patch -P 101
 %patch -P 102 -p1
 %patch -P 103 -p1
-%patch -P 104 -p1
-%patch -P 105 -p1
 
 %build
 %if ! %{with python}
@@ -157,12 +147,6 @@ common sanlock lockspace.
 # upstream does not support _smp_mflags
 CFLAGS="%{optflags}" make -j1 -C wdmd
 CFLAGS="%{optflags}" make -j1 -C src
-%if %{with_fence_sanlockd}
-CFLAGS="%{optflags}" make -j1 -C fence_sanlock
-%endif
-%if %{with_sanlk_reset}
-CFLAGS="%{optflags}" make -j1 -C reset
-%endif
 %else
 pushd python
 CFLAGS="%{optflags} -fno-strict-aliasing" %pyproject_wheel
@@ -173,12 +157,6 @@ popd
 %if ! %{with python}
 %make_install LIBDIR=%{_libdir} -C src
 %make_install LIBDIR=%{_libdir} -C wdmd
-%if %{with_fence_sanlockd}
-%make_install LIBDIR=%{_libdir} -C fence_sanlock
-%endif
-%if %{with_sanlk_reset}
-%make_install LIBDIR=%{_libdir} -C reset
-%endif
 
 install -D -m 644 src/sanlock.conf %{buildroot}/%{_sysconfdir}/sanlock/sanlock.conf
 install -D -m 644 %{SOURCE1} %{buildroot}/%{_fillupdir}/sysconfig.sanlock
@@ -188,15 +166,6 @@ install -D -m 644 init.d/sanlock.service %{buildroot}/%{_unitdir}/sanlock.servic
 ln -s service %{buildroot}%{_sbindir}/rcsanlock
 install -D -m 644 init.d/wdmd.service %{buildroot}/%{_unitdir}/wdmd.service
 ln -s service %{buildroot}%{_sbindir}/rcwdmd
-%if %{with_fence_sanlockd}
-install -D -m 0755 %{SOURCE3} %{buildroot}%{_prefix}/lib/systemd/systemd-fence_sanlockd
-install -D -m 0644 init.d/fence_sanlockd.service %{buildroot}/%{_unitdir}/fence_sanlockd.service
-ln -s service %{buildroot}%{_sbindir}/rcfence_sanlockd
-%endif
-%if %{with_sanlk_reset}
-install -D -m 0644 init.d/sanlk-resetd.service %{buildroot}/%{_unitdir}/sanlk-resetd.service
-ln -s service %{buildroot}%{_sbindir}/rcsanlk-resetd
-%endif
 
 install -Dm 0644 src/logrotate.sanlock \
 	%{buildroot}%{_sysconfdir}/logrotate.d/sanlock
@@ -219,12 +188,6 @@ getent passwd sanlock > /dev/null || useradd \
 %service_add_pre wdmd.service
 %service_add_pre sanlock.service
 
-%pre -n fence-sanlock
-%service_add_pre fence_sanlockd.service
-
-%pre -n sanlk-reset
-%service_add_pre sanlk-resetd.service
-
 %post -n %{pname}
 %service_add_post wdmd.service sanlock.service
 
@@ -233,33 +196,13 @@ getent passwd sanlock > /dev/null || useradd \
 
 %post -n libsanlock1 -p /sbin/ldconfig
 
-%if %{with_fence_sanlockd}
-%post -n fence-sanlock
-%service_add_post fence_sanlockd.service
-%endif
-
-%post -n sanlk-reset
-%service_add_post sanlk-resetd.service
-
 %preun -n %{pname}
 %service_del_preun wdmd.service sanlock.service
-
-%preun -n fence-sanlock
-%service_del_preun fence_sanlockd.service
-
-%preun -n sanlk-reset
-%service_del_preun sanlk-resetd.service
 
 %postun -n %{pname}
 %service_del_postun wdmd.service sanlock.service
 
 %postun -n libsanlock1 -p /sbin/ldconfig
-
-%postun -n fence-sanlock
-%service_del_postun fence_sanlockd.service
-
-%postun -n sanlk-reset
-%service_del_postun sanlk-resetd.service
 
 %files -n %{pname}
 %dir %attr(0700, root, root) %{_sysconfdir}/wdmd.d/
@@ -294,27 +237,6 @@ getent passwd sanlock > /dev/null || useradd \
 %{_includedir}/sanlock_direct.h
 %{_libdir}/pkgconfig/libsanlock.pc
 %{_libdir}/pkgconfig/libsanlock_client.pc
-
-%if %{with_fence_sanlockd}
-%files -n fence-sanlock
-%{_sbindir}/fence_sanlockd
-%{_prefix}/lib/systemd/systemd-fence_sanlockd
-%{_unitdir}/fence_sanlockd.service
-%{_sbindir}/fence_sanlock
-%{_sbindir}/fence_sanlockd
-%{_sbindir}/rcfence_sanlockd
-%{_mandir}/man8/fence_sanlock*
-%endif
-
-%if %{with_sanlk_reset}
-%files -n sanlk-reset
-%{_sbindir}/sanlk-reset
-%{_sbindir}/sanlk-resetd
-%{_sbindir}/rcsanlk-resetd
-%{_unitdir}/sanlk-resetd.service
-%{_mandir}/man8/sanlk-reset.8%{?ext_man}
-%{_mandir}/man8/sanlk-resetd.8%{?ext_man}
-%endif
 
 %else
 
