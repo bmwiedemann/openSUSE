@@ -1,10 +1,9 @@
-From 80632681335d0dbc4b801a513a78ed921bd5377c Mon Sep 17 00:00:00 2001
+From 8c63e7f4545258045c30e99409fd055d4bf9d86c Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Tue, 7 Oct 2025 14:14:43 +0200
 Subject: [PATCH] Revert "Modify headers installation for CMake builds"
 
 /usr/include/ is the correct location for include headers.
-
 ---
  build_scripts/platforms/unix.py                            | 4 ++--
  build_scripts/platforms/windows_desktop.py                 | 7 ++++---
@@ -39,10 +38,10 @@ index 59c63fd..03b814e 100644
              "{install_dir}/{cmake_package_name}/include",
              destination_dir / "include",
 diff --git a/build_scripts/platforms/windows_desktop.py b/build_scripts/platforms/windows_desktop.py
-index e023ff0..83f06c3 100644
+index 55b9287..a91105d 100644
 --- a/build_scripts/platforms/windows_desktop.py
 +++ b/build_scripts/platforms/windows_desktop.py
-@@ -94,10 +94,11 @@ def prepare_packages_win32(pyside_build, _vars):
+@@ -96,10 +96,11 @@ def prepare_packages_win32(pyside_build, _vars):
              _filter=pdbs,
              recursive=False, _vars=_vars)
  
@@ -71,10 +70,10 @@ index c1934d9..ccfa843 100644
  install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/QtAsyncio"
          DESTINATION "${PYTHON_SITE_PACKAGES}/${BINDING_NAME}${pyside6_SUFFIX}")
 diff --git a/sources/pyside6/PySide6/QtCore/CMakeLists.txt b/sources/pyside6/PySide6/QtCore/CMakeLists.txt
-index 2f49b61..6359ff4 100644
+index 997b0fe..ac6b451 100644
 --- a/sources/pyside6/PySide6/QtCore/CMakeLists.txt
 +++ b/sources/pyside6/PySide6/QtCore/CMakeLists.txt
-@@ -306,4 +306,4 @@ if (APPLE)
+@@ -307,4 +307,4 @@ if (APPLE)
  endif()
  
  install(FILES ${pyside6_SOURCE_DIR}/qtcorehelper.h ${pyside6_SOURCE_DIR}/qiopipe.h
@@ -111,30 +110,30 @@ index 570ed0f..e91532b 100644
 -install(FILES ${pyside6_SOURCE_DIR}/qpydesignerextensions.h DESTINATION PySide6/include/QtDesigner)
 +install(FILES ${pyside6_SOURCE_DIR}/qpydesignerextensions.h DESTINATION include/PySide6/QtDesigner)
 diff --git a/sources/pyside6/PySide6/QtGraphs/CMakeLists.txt b/sources/pyside6/PySide6/QtGraphs/CMakeLists.txt
-index f416078..29a7b25 100644
+index 1846f59..7689607 100644
 --- a/sources/pyside6/PySide6/QtGraphs/CMakeLists.txt
 +++ b/sources/pyside6/PySide6/QtGraphs/CMakeLists.txt
-@@ -96,4 +96,4 @@ create_pyside_module(NAME QtGraphs
+@@ -97,4 +97,4 @@ create_pyside_module(NAME QtGraphs
                       DROPPED_ENTRIES QtGraphs_DROPPED_ENTRIES)
  
  install(FILES ${pyside6_SOURCE_DIR}/qtgraphs_helper.h
 -        DESTINATION PySide6/include/QtGraphs)
 +        DESTINATION include/PySide6/QtGraphs)
 diff --git a/sources/pyside6/PySide6/QtGui/CMakeLists.txt b/sources/pyside6/PySide6/QtGui/CMakeLists.txt
-index b9e8429..1d2d411 100644
+index 778b1d6..3dd9380 100644
 --- a/sources/pyside6/PySide6/QtGui/CMakeLists.txt
 +++ b/sources/pyside6/PySide6/QtGui/CMakeLists.txt
-@@ -366,4 +366,4 @@ create_pyside_module(NAME QtGui
+@@ -367,4 +367,4 @@ create_pyside_module(NAME QtGui
  
  install(FILES ${pyside6_SOURCE_DIR}/qpytextobject.h
                ${pyside6_SOURCE_DIR}/qtguihelper.h
 -        DESTINATION PySide6/include/QtGui/)
 +        DESTINATION include/PySide6/QtGui/)
 diff --git a/sources/pyside6/cmake/Macros/PySideModules.cmake b/sources/pyside6/cmake/Macros/PySideModules.cmake
-index 86791f4..7bb7714 100644
+index c54b869..6dbc1fc 100644
 --- a/sources/pyside6/cmake/Macros/PySideModules.cmake
 +++ b/sources/pyside6/cmake/Macros/PySideModules.cmake
-@@ -378,7 +378,7 @@ macro(create_pyside_module)
+@@ -379,7 +379,7 @@ macro(create_pyside_module)
  
  
      install(FILES ${CMAKE_CURRENT_BINARY_DIR}/PySide6/${module_NAME}/pyside6_${lower_module_name}_python.h
@@ -144,10 +143,10 @@ index 86791f4..7bb7714 100644
  
  #   Copy typesystem files and remove module names from the <load-typesystem> element
 diff --git a/sources/pyside6/libpyside/CMakeLists.txt b/sources/pyside6/libpyside/CMakeLists.txt
-index 75c2328..f8b25a4 100644
+index 4f95ce0..40a7244 100644
 --- a/sources/pyside6/libpyside/CMakeLists.txt
 +++ b/sources/pyside6/libpyside/CMakeLists.txt
-@@ -101,7 +101,7 @@ append_size_optimization_flags(pyside6)
+@@ -103,7 +103,7 @@ append_size_optimization_flags(pyside6)
  
  target_include_directories(pyside6 PUBLIC
    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
@@ -156,7 +155,7 @@ index 75c2328..f8b25a4 100644
  )
  
  target_compile_definitions(pyside6 PRIVATE -DQT_LEAN_HEADERS=1 -DQT_NO_KEYWORDS=1)
-@@ -177,7 +177,7 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/PySide6ConfigVersion.cmake.in"
+@@ -179,7 +179,7 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/PySide6ConfigVersion.cmake.in"
                 "${CMAKE_CURRENT_BINARY_DIR}/PySide6ConfigVersion.cmake" @ONLY)
  
  install(FILES ${libpyside_HEADERS}
@@ -166,10 +165,10 @@ index 75c2328..f8b25a4 100644
  # build-time installation
  install(TARGETS pyside6 EXPORT PySide6Targets
 diff --git a/sources/pyside6/libpysideqml/CMakeLists.txt b/sources/pyside6/libpysideqml/CMakeLists.txt
-index 1430334..dac3cdd 100644
+index 4c6ef38..f2ebe51 100644
 --- a/sources/pyside6/libpysideqml/CMakeLists.txt
 +++ b/sources/pyside6/libpysideqml/CMakeLists.txt
-@@ -84,7 +84,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D QT_NO_CAST_FROM_ASCII -D QT_NO_CAST_T
+@@ -86,7 +86,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D QT_NO_CAST_FROM_ASCII -D QT_NO_CAST_T
  qfp_strip_library("pyside6qml")
  
  install(FILES ${libpysideqml_HEADERS}
@@ -179,7 +178,7 @@ index 1430334..dac3cdd 100644
  #built-time installation
  install(TARGETS pyside6qml EXPORT PySide6Targets
 diff --git a/sources/pyside6/libpysideremoteobjects/CMakeLists.txt b/sources/pyside6/libpysideremoteobjects/CMakeLists.txt
-index caaadc2..4669fb6 100644
+index 4196eb3..3857cd6 100644
 --- a/sources/pyside6/libpysideremoteobjects/CMakeLists.txt
 +++ b/sources/pyside6/libpysideremoteobjects/CMakeLists.txt
 @@ -80,7 +80,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D QT_NO_CAST_FROM_ASCII -D QT_NO_CAST_T
@@ -205,10 +204,10 @@ index 917b706..a82d231 100644
  python_include_dir=@Python_INCLUDE_DIRS@
  
 diff --git a/sources/shiboken6/libshiboken/CMakeLists.txt b/sources/shiboken6/libshiboken/CMakeLists.txt
-index 6136632..973d14b 100644
+index 45a967c..bc3569b 100644
 --- a/sources/shiboken6/libshiboken/CMakeLists.txt
 +++ b/sources/shiboken6/libshiboken/CMakeLists.txt
-@@ -111,7 +111,7 @@ add_library(Shiboken6::libshiboken ALIAS libshiboken)
+@@ -113,7 +113,7 @@ endif()
  target_include_directories(libshiboken PUBLIC
    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
@@ -217,7 +216,7 @@ index 6136632..973d14b 100644
  )
  
  if (NOT "${NUMPY_INCLUDE_DIR}" STREQUAL "")
-@@ -196,7 +196,7 @@ install(FILES
+@@ -200,7 +200,7 @@ install(FILES
          signature.h
          signature_p.h
  
@@ -227,5 +226,5 @@ index 6136632..973d14b 100644
                              LIBRARY DESTINATION "${LIB_INSTALL_DIR}"
                              ARCHIVE DESTINATION "${LIB_INSTALL_DIR}"
 -- 
-2.51.0
+2.53.0
 

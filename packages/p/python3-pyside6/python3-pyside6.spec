@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define tar_version 6.10.2
+%define tar_version 6.11.0
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -43,7 +43,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        (GPL-2.0-only AND (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-only WITH Qt-GPL-exception-1.0) OR LGPL-3.0-only
@@ -87,7 +87,6 @@ BuildRequires:  xvfb-run
 # /SECTION
 # SECTION essential_modules
 BuildRequires:  cmake(Qt6Concurrent) >= %{version}
-BuildRequires:  cmake(Qt6ExampleIconsPrivate) >= %{version}
 BuildRequires:  cmake(Qt6Gui) >= %{version}
 BuildRequires:  cmake(Qt6GuiPrivate) >= %{version}
 BuildRequires:  cmake(Qt6Network) >= %{version}
@@ -239,17 +238,45 @@ sed -i 's#Development.Module#Development#' sources/shiboken6/cmake/ShibokenHelpe
 %build
 _libsuffix=$(echo %{_lib} | cut -b4-)
 
+# Fix installation dir
+sed -i 's#purelib#platlib#' sources/shiboken6/cmake/ShibokenHelpers.cmake
+
+# numpy changed the include path on 2.0
+numpyinc=$(%{__mypython} -c 'import numpy; print(numpy.get_include())')
+
+%if "%{pyside_flavor}" == "shiboken6"
+
+# The shiboken generator was split in the 6.11.0 release, build and install it first
+pushd sources/shiboken6_generator
+sed -i 's#FORCE##' cmake/ShibokenGeneratorSetup.cmake
+
+_shiboken_generator_install_root=$PWD/install
+cat >> _shiboken_generator_install_root << EOF
+`echo $_shiboken_generator_install_root`
+EOF
+
+export CMAKE_PREFIX_PATH=${_shiboken_generator_install_root}%{_qt6_prefix}:%{_prefix}
+export PATH=${_shiboken_generator_install_root}%{_bindir}:$PATH
+
+%cmake_qt6 \
+  -DCMAKE_INSTALL_PREFIX:STRING=${_shiboken_generator_install_root}%{_qt6_prefix} \
+  -DLIB_INSTALL_DIR:STRING=%{_lib} \
+  -DCMAKE_SKIP_RPATH:BOOL=ON
+
+%qt6_build
+
+cmake --build %{__qt6_build_options} -v -t install
+
+# Now, to build shiboken, we temporarily hack some paths in the freshly installed CMake files
+sed -i "s#_IMPORT_PREFIX \"%{_qt6_prefix}\"#_IMPORT_PREFIX \"${_shiboken_generator_install_root}%{_qt6_prefix}\"#" ${_shiboken_generator_install_root}%{_qt6_cmakedir}/Shiboken6Tools/Shiboken6ToolsTargets-relwithdebinfo.cmake
+popd
+%endif
+
 # The python script used to set paths before running tests
 # doesn't handle build dirs called 'build'
 %global __qt6_builddir %{pyside_flavor}
 
-# Fix installation dir
-sed -i 's#purelib#platlib#' sources/shiboken6/cmake/ShibokenHelpers.cmake
-
 pushd sources/%{pyside_flavor}
-
-# numpy changed the include path on 2.0
-numpyinc=$(%{__mypython} -c 'import numpy; print(numpy.get_include())')
 
 %cmake_qt6 \
   -DBUILD_TESTS:BOOL=ON \
@@ -264,7 +291,7 @@ numpyinc=$(%{__mypython} -c 'import numpy; print(numpy.get_include())')
   -DCTEST_TESTING_TIMEOUT=120 \
   %{nil}
 
-%{qt6_build}
+%qt6_build
 
 popd
 
@@ -274,6 +301,13 @@ pushd sources/%{pyside_flavor}
 popd
 
 %if "%{pyside_flavor}" == "shiboken6"
+# Move shiboken_tools files to the right place
+_shiboken_generator_install_root=$(<sources/shiboken6_generator/_shiboken_generator_install_root)
+cp -rv ${_shiboken_generator_install_root}/* %{buildroot}
+
+# and restore paths in CMake files
+sed -i "s#\"${_shiboken_generator_install_root}\"##" %{buildroot}%{_qt6_cmakedir}/Shiboken6Tools/Shiboken6ToolsTargets-relwithdebinfo.cmake
+
 sed -i 's@^#.*env python.*$@#!%{__mypython}@' %{buildroot}%{_bindir}/shiboken_tool.py
 
 # Delete weird copies
@@ -303,7 +337,7 @@ sitearch=%{buildroot}%{mypython_sitearch}
 cp -r *.egg-info $sitearch
 %fdupes $sitearch
 
-%fdupes -s %{buildroot}%{_libdir}/cmake
+%fdupes %{buildroot}%{_libdir}/cmake
 
 %check
 # the pyside tests need to know the path to the 'qmake' executable
