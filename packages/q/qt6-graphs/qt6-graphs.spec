@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-graphs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.10.2
-%define short_version 6.10
+%define real_version 6.11.0
+%define short_version 6.11
 %define tar_name qtgraphs-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,26 +27,26 @@
 %endif
 #
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\((AxisHandlingExample|SurfaceGalleryExample)\\)
+%global __requires_exclude qt6qmlimport\\((AerospaceHubExample|AxisHandlingExample|SurfaceGalleryExample)\\)
 #
 Name:           qt6-graphs%{?pkg_suffix}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        3D visualization module
 License:        GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
-BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
-BuildRequires:  cmake(Qt6Quick3DPrivate) = %{real_version}
-BuildRequires:  cmake(Qt6Quick3DRuntimeRenderPrivate) = %{real_version}
-BuildRequires:  cmake(Qt6QuickShapesPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6PrintSupport) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6Quick3D) = %{real_version}
+BuildRequires:  cmake(Qt6Quick3DPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6Quick3DRuntimeRenderPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6QuickShapesPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
 BuildRequires:  cmake(Qt6QuickWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6Test) = %{real_version}
