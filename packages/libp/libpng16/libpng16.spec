@@ -1,8 +1,7 @@
 #
 # spec file for package libpng16
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +20,7 @@
 %define asan_build  0
 %define major   1
 %define minor   6
-%define micro   55
+%define micro   56
 %define branch  %{major}%{minor}
 %define libname libpng%{branch}-%{branch}
 %define debug_package_requires %{libname} = %{version}-%{release}
