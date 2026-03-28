@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar 25 09:19:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.0:
+  * Major version jump from 6.x to 7.x series.
+  * Introduced Pro+ icon packs including Chisel, Etch, Jelly,
+    Notdog, Slab, Thumbprint, and Whiteboard.
+  * Added "Utility" icon pack with 200 commonly used icons
+    for apps and websites.
+  * Icons now display at a fixed width by default, filling
+    the Icon Canvas.
+  * Accessibility overhaul: icons are decorative by default
+    (hidden from screen readers).
+  * Removed sr-only class; developers should use aria-label
+    for interactive icons.
+  * Dropped support for jQuery, Less CSS, Require.js, and
+    various Rails/Django integrations.
+  * SVG overhaul: removed global stylesheets and path class
+    attributes; now defaults to fill=currentColor.
+  * Dropped .ttf font files in favor of .otf for better
+    performance and modern standards.
+  * Updated "Pulled Icons" and list icons to use CSS Logical
+    Properties (e.g., margin-inline-start).
+  * Redesigned core icons for more consistent key shapes and
+    better visual alignment.
+  * Added over 3,000 new icons since the 6.x series,
+    including new brands and system icons.
+  * Improved Duotone support: dropped --fa--fa prefix; uses
+    ligatures or CSS stylistic sets.
+  * Icon Wizard now supports over 40 modifiers with corner
+    placement and Duotone support.
+
+-------------------------------------------------------------------
 Fri Apr  4 12:12:30 UTC 2025 - Dawid Adam <nyslay@gmail.com>
 
 - update to 6.7.2:
@@ -11,7 +43,7 @@ Fri Apr  4 12:12:30 UTC 2025 - Dawid Adam <nyslay@gmail.com>
 Fri Apr  4 12:12:30 UTC 2025 - Dawid Adam <nyslay@gmail.com>
 
 - update to 6.7.1:
-  * Added a square version of the Bluesky logo. Follow us on Bluesky here.. 
+  * Added a square version of the Bluesky logo. Follow us on Bluesky here..
   * Flipped the direction of the hydra to match our other animals
   * Removed alternative text from content CSS properties to fix Safari < v17.4
   * Made sure the new CSS logo is in Font Awesome Free
@@ -25,12 +57,12 @@ Fri Apr  4 12:12:30 UTC 2025 - Dawid Adam <nyslay@gmail.com>
 
 - update to 6.7.0:
   * New Duotone Styles!
-  * Tired of riding solo? A whole new highway lane just opened up to you with our new carpool icon, courtesy of Menlo School. 
+  * Tired of riding solo? A whole new highway lane just opened up to you with our new carpool icon, courtesy of Menlo School.
   * Added the new CSS logo
-  * We did a brainstorming session with ErbslandDEV and came up with a number of LLM-related icons including: chart-diagram, comment-nodes, file-fragment, file-half-dashed, hexagon-nodes, hexagon-nodes-bolt, and square-binary. 
-  * Our other chart icons got jealous, so we added new chart-fft and chart-sine icons, sponsored by Crystal Instruments. 
-  * We added circles-overlap-3 icon (with a pronoun alias), thanks to Verasoft. 
-  * Added the files.com logo to our Brand icons, courtesy of Files.com. 
+  * We did a brainstorming session with ErbslandDEV and came up with a number of LLM-related icons including: chart-diagram, comment-nodes, file-fragment, file-half-dashed, hexagon-nodes, hexagon-nodes-bolt, and square-binary.
+  * Our other chart icons got jealous, so we added new chart-fft and chart-sine icons, sponsored by Crystal Instruments.
+  * We added circles-overlap-3 icon (with a pronoun alias), thanks to Verasoft.
+  * Added the files.com logo to our Brand icons, courtesy of Files.com.
   * Refactored :before and :after Pseudo Elements to use new --fa and --fa--fa properties.
   * Files _duotone-icons.[scss|less] and _sharp-duotone-icons.[scss|less] no longer needed so we removed them.
   * Made sure the Bluesky logo was symmetrical.
