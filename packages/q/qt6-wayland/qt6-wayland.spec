@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.10.2
-%define short_version 6.10
+%define real_version 6.11.0
+%define short_version 6.11
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -33,7 +33,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -42,7 +42,6 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-wayland-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-platformsupport-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
@@ -87,8 +86,6 @@ Qt 6 Wayland integration plugins.
 %package decoration-client-adwaita
 Summary:        GNOME-like client-side decoration plugin
 # Split from qt6-wayland-integration immediately after 6.10.0 release
-# TODO: drop after 6.11 release
-Conflicts:      qt6-wayland-integration < %{version}-%{release}
 
 %description  decoration-client-adwaita
 This package provides a client-side decoration plugin implementing GNOME's
