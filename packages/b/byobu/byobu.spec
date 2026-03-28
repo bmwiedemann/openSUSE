@@ -1,7 +1,7 @@
 #
 # spec file for package byobu
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Tejas Guruswamy <tejas.guruswamy@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           byobu
-Version:        6.13
+Version:        6.15
 Release:        0
 Summary:        Enhanced profile and configuration utilities for GNU Screen and tmux
 License:        GPL-3.0-only
@@ -100,6 +100,8 @@ sed -i 's,%{_bindir}/env python3,%{_bindir}/python3,' %{buildroot}%{_prefix}/lib
 %{_mandir}/man1/*.1%{?ext_man}
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/dbus-1/services/*%{name}.service
+%dir %{_datadir}/sounds/%{name}
+%{_datadir}/sounds/%{name}/%{name}.ogg
 
 %files doc
 %doc ChangeLog

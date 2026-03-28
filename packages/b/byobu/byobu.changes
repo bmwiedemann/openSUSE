@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Mar 20 23:25:14 UTC 2026 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 6.15
+  * usr/lib/byobu/disk_io:
+    - fix stale disk_io status notifications when I/O drops below threshold
+    - fix crash on NVMe and MMC devices due to partition naming (nvme0n1p2)
+    - fix cache read failure causing incorrect statistics display
+  * usr/lib/byobu/users:
+    - fix trailing hash display for screen backend (tmux needs ##, screen needs #)
+  * usr/lib/byobu/fan_speed:
+    - fix fan speed stuck at last non-zero value when dropping to 0 RPM
+  * usr/lib/byobu/cpu_freq:
+    - add dmidecode fallback for zero bogomips CPUs (Ampere Altra processors)
+  * usr/bin/byobu-shell.in:
+    - fix infinite loop with fish shell autostart
+  * usr/bin/purge-old-kernels:
+    - note: this script was already deprecated/simplified to call apt autoremove
+  * Document bash requirement for decimal sleep values:
+    - add bash to Depends in debian/control
+    - change shebang to #!/bin/bash in scripts using decimal sleep
+    - add documentation comments explaining necessity of decimal sleeps
+    - fixes: hostname, ip_address, shutil, byobu-launch.in
+
+-------------------------------------------------------------------
+Fri Mar 20 23:20:02 UTC 2026 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 6.14
+  * Fixed critical prompt issues affecting Ubuntu 24.04 users
+  * Added systemd support for modern Linux distributions
+  * Improved Arch Linux package detection
+  * Fixed byobu -v command output
+  * Better error handling outside byobu sessions
+
+-------------------------------------------------------------------
 Sun Oct  5 00:26:54 UTC 2025 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 6.13
