@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 27 08:44:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.2:
+  * Ensure the uv installer uses the current version of Python,
+    avoiding an issue if UV_PYTHON is set, for example.
+  * Fix _has_valid_outer_pip returning True when pip is missing,
+    causing build to try using a non-existent pip instead of
+    falling back to virtualenv. (:issue:`1003`)
+  * Allow setting build constraints - by :user:`gaborbernat`
+  * Automate releases with pre-release workflow and trusted
+    publishing - by :user:`gaborbernat` (:issue:`991`)
+  * Fix documentation grammar and typos (:issue:`979`)
+  * Reorganize documentation using Diataxis framework - by
+    :user:`gaborbernat` (:issue:`988`)
+  * Document release process and workflow security practices in
+    contributing guide (:issue:`991`)
+  * Fix pip hack workaround - by :user:`gaborbernat`
+
+-------------------------------------------------------------------
 Mon Feb  9 01:43:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.0:
