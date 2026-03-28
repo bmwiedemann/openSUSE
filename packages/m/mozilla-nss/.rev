@@ -3549,4 +3549,53 @@
   * bmo#1999517 - pk11wrap selects incorrect slot for CKM_ML_KEM*.</comment>
     <requestid>1327069</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>690c3b708f76a131470597c2ea845bb9</srcmd5>
+    <version>3.120.1</version>
+    <time>1772127418</time>
+    <user>anag_factory</user>
+    <comment>- update to NSS 3.120.1
+  * no upstream releasenotes
+
+- update to NSS 3.120
+  * bmo#2008768 - Fix docs generation bug.
+  * bmo#2007908 - CID 1678226: Dereferencing null pointer plaintext.data().
+  * bmo#2004694 - Run PKCS12 fuzz target with --fuzz=tls in CI.
+  * bmo#1978603 - Allowing RT be started several times.
+  * bmo#2005751 - move linux decision and build tasks to d2g worker pools.
+- Revert back to original naming scheme of tarballs</comment>
+    <requestid>1334858</requestid>
+  </revision>
+  <revision rev="237" vrev="1">
+    <srcmd5>e307c003da39fa5455c116058348d286</srcmd5>
+    <version>3.121</version>
+    <time>1774725221</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.121
+  * bmo#2017366 - update vendored zlib to v1.3.2.
+  * bmo#2012645 - Revert the unnecessary changes to intel-gcm-wrap.gyp.
+  * bmo#2012645 - Use C fallback for AES-GCM on MinGW builds.
+  * bmo#2005669 - fix ML-KEM PCT.
+  * bmo#2017008 - Extend NSS Fuzzing docs.
+  * bmo#2009552 - avoid integer overflow in platform-independent ghash.
+  * bmo#2003189 - Fix errant whitespace in OISTE Server Root RSA G1 nickname.
+  * bmo#2012313 - fix build with glibc-2.43 assignment discards 'const'
+                  qualifier from pointer.
+  * bmo#2013188 - add gcm.gyp dependency for Solaris SPARC builds.
+  * bmo#2010389 - Set nssckbi version to 2.84.
+  * bmo#2010389 - Add e-Szigno TLS Root CA 2023 to NSS.
+  * bmo#2005516 - allow manual selection of CPU_ARCH=x86_64 and ppc64
+                  in coreconf/Darwin.mk.
+  * bmo#2009998 - Update cryptofuzz version.
+  * bmo#2001167 - Paranoia assert.
+  * bmo#2000737 - Darwin compatibility for intel-aes.S and intel-gcm.S.
+  * bmo#2000737 - rename intel-{aes,gcm}.s to .S.
+  * bmo#2000737 - rename C files for platform-specific ghash implementations.
+  * bmo#2000737 - simplify compilation of platform-specific GCM and GHASH.
+  * bmo#2007911 - FORWARD_NULL null deref of worker in p7decode.c
+                  (sec_pkcs7_decoder_abort_digests).
+  * bmo#2008112 - Out-of-Bounds Read in ML-DSA Private Key Parsing
+                  (zero-length privateKey).</comment>
+    <requestid>1343070</requestid>
+  </revision>
 </revisionlist>

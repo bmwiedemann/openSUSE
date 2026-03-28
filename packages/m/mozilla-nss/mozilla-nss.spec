@@ -2,7 +2,7 @@
 # spec file for package mozilla-nss
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2006-2025 Wolfgang Rosenauer
+# Copyright (c) 2006-2026 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 #
 
 
-%global nss_softokn_fips_version 3.119.1
-%define NSPR_min_version 4.37
+%global nss_softokn_fips_version 3.121
+%define NSPR_min_version 4.38
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %global crypto_policies_version 20210218
 Name:           mozilla-nss
-Version:        3.119.1
+Version:        3.121
 Release:        0
-%define underscore_version 3_119_1
+%define underscore_version 3_121
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
 URL:            https://www.mozilla.org/projects/security/pki/nss/
-Source:         https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_%{underscore_version}_RTM/src/nss-%{underscore_version}.tar.gz
+Source:         https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_%{underscore_version}_RTM/src/nss-%{version}.tar.gz
 # hg clone https://hg.mozilla.org/projects/nss nss-%%{version}/nss ; cd nss-%%{version}/nss ; hg up NSS_%%{underscore_version}_RTM
 #Source:         nss-%%{version}.tar.gz
 Source1:        nss.pc.in
@@ -199,7 +199,7 @@ This package contains the integrated CA root certificates from the
 Mozilla project.
 
 %prep
-%setup -q -n nss-%{underscore_version}
+%setup -q -n nss-%{version}
 cd nss
 %patch -P 1 -p1
 %patch -P 2 -p1
@@ -396,7 +396,7 @@ cp -L  bin/certutil \
        %{buildroot}%{_bindir}
 # copy man-pages
 mkdir -p %{buildroot}%{_mandir}/man1/
-cp -L  %{_builddir}/nss-%{underscore_version}/nss/doc/nroff/* %{buildroot}%{_mandir}/man1/
+cp -L  %{_builddir}/nss-%{version}/nss/doc/nroff/* %{buildroot}%{_mandir}/man1/
 # Fix conflict with perl-PAR-Packer which has a pp-exe in _bindir
 mkdir -p %{buildroot}%{_mandir}/man7/
 mv %{buildroot}%{_mandir}/man1/pp.1 %{buildroot}%{_mandir}/man7/pp.7
