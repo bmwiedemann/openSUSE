@@ -463,4 +463,13 @@
     <comment></comment>
     <requestid>1332854</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>a427553b864e5d2d87bb6dc0353798d1</srcmd5>
+    <version>46.0.6</version>
+    <time>1774725138</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 46.0.6:
+  * Update test vectors to match python-cryptography 46.0.6</comment>
+    <requestid>1343140</requestid>
+  </revision>
 </revisionlist>
