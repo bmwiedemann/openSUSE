@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 27 22:01:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260327:
+  * Add Retevis C2 driver
+  * Add Radioddity GS-10B
+  * Updated Italian Translation
+  * repeaterbook: Fix query parameters for RoW countries
+  * Squash error about "unsure if rtone is valid"
+
+-------------------------------------------------------------------
 Sat Mar 21 20:29:11 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260320:
