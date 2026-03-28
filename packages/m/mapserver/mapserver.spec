@@ -33,7 +33,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           mapserver
-Version:        8.6.0
+Version:        8.6.1
 Release:        0
 Summary:        Environment for building spatially-enabled internet applications
 License:        MIT
@@ -50,8 +50,13 @@ BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.4
 BuildRequires:  freetype2-devel
 BuildRequires:  fribidi-devel
+%if 0%{?suse_version} < 1590
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gd-devel >= 2.0.16
 BuildRequires:  giflib-devel
 BuildRequires:  harfbuzz-devel
@@ -205,14 +210,18 @@ against the C Mapserver library.
 #Pre export the PREFIX ( having it on the command line doesn't expand correctly for
 #dynamic postgresql location
 export CMAKE_PREFIX_PATH="%{_includedir}:%{_includedir}/fastcgi:%%(pg_config --includedir):%%(pg_config --includedir-server):%%(pg_config --libdir)"
+%if 0%{?suse_version} < 1590
+export CC=gcc-13 CXX=g++-13
+%endif
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 
 #specify all options and play with true/false
 #so we always know which option are included in our build.
 %{python_expand #
+origpwd="$PWD"
 mkdir b$python
-pushd b$python
+cd b$python
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_SKIP_RPATH=ON \
         -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
@@ -276,7 +285,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         ..
 
 %make_build
-popd
+cd "$origpwd"
 }
 
 %check
@@ -286,9 +295,9 @@ popd
 mkdir -p %{buildroot}/%{_cgibindir}
 
 %{python_expand #
-pushd b$python
+cd b$python
 %make_install
-popd
+cd -
 }
 
 %if 0%{with php}

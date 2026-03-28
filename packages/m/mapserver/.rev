@@ -83,4 +83,12 @@
     <comment>- Update to release 8.6.0</comment>
     <requestid>1335879</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>01bcbcd0e77b938b56c3d8bf0d3997ba</srcmd5>
+    <version>8.6.1</version>
+    <time>1774725242</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 8.6.1</comment>
+    <requestid>1343220</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 27 11:52:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.6.1
+  * msSLDParseRasterSymbolizer: fix potential heap buffer overflow
+    [boo#1260869] [CVE-2026-33721]
+  * GetFeatureInfo with IDENTIFY CLASSAUTO: take into account
+    SYMBOL.ANCHORPOINT
+  * WCS 2.0: fix issue when input raster in a rotated pole lon/lat
+    CRS with lon_0 > 180
+  * UVRaster: fix WMS-Time support on layers with TILEINDEX
+    pointing to a shapefile
+  * WMS GetCapabilities response: use group title and abstract when
+    using wms_layer_group instead of GROUP
+
+-------------------------------------------------------------------
 Mon Mar  2 16:20:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.6.0
