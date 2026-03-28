@@ -910,4 +910,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment> (forwarded request 1338484 from dimstar)</comment>
     <requestid>1338648</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>0ae914ab535a656980b2c3cce80eb4df</srcmd5>
+    <version>3.56.2</version>
+    <time>1774725197</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>1342873</requestid>
+  </revision>
 </revisionlist>

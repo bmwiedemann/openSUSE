@@ -34,14 +34,14 @@
 %define libffi_version 3.0
 %{?sle15_python_module_pythons}
 Name:           python-gobject
-Version:        3.56.1
+Version:        3.56.2
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://pygobject.gnome.org/
-Source0:        %{_name}-%{version}.tar.zst
-Source1:        pythoncapi-compat-vendored.tar.zst
+Source0:        %{_name}-%{version}.tar.xz
+Source1:        pythoncapi-compat-vendored.tar.xz
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module meson-python}
