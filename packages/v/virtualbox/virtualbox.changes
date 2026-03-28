@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 08:20:15 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- do not build vboxvideo on kernel 7.0 at all (bsc#1259536)
+  * drop 0001-Linux-host-support-kernel-7.0.patch (obsolete)
+
+-------------------------------------------------------------------
 Thu Mar 12 06:34:47 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-Linux-host-support-kernel-7.0.patch (bsc#1259536)

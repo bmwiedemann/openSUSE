@@ -134,7 +134,6 @@ Patch11:        cxx17.patch
 Patch12:        host-source.patch
 Patch20:        gentoo-C23.patch
 Patch21:        kernel-6.19.patch
-Patch22:        0001-Linux-host-support-kernel-7.0.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -1000,6 +999,13 @@ for vbox_module in kmp_host/vbox{drv,netflt,netadp} \
 	# delete old build dir for sure
 	rm -rf modules_build_dir/${module_name}_${flavor}
 
+	# do not build vboxvideo on 7.0+
+	# as per https://github.com/VirtualBox/virtualbox/issues/582#issuecomment-4056026673
+	if [ "$module_name" = "vboxvideo" ]; then
+		krel=$(make -sC %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor kernelrelease)
+		test ${krel%%%%.*} -ge 7 && continue
+	fi
+
 	if [ "$module_name" = "vboxdrv" -o \
 	     "$module_name" = "vboxguest" ] ; then
 		SYMBOLS=""
@@ -1037,6 +1043,7 @@ for module_name in vbox{drv,netflt,netadp,guest,sf,video}
 do
 	#and through all flavors
 	for flavor in %{flavors_to_build}; do
+		test -d modules_build_dir/$flavor/$module_name && \
 		make -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor modules_install M=$PWD/modules_build_dir/$flavor/$module_name
     	done
 done

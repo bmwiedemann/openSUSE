@@ -2844,4 +2844,12 @@ we must have vb7.1.10.</comment>
     <comment>- add 0001-Linux-host-support-kernel-7.0.patch (bsc#1259536)</comment>
     <requestid>1338441</requestid>
   </revision>
+  <revision rev="304" vrev="6">
+    <srcmd5>8ce8acb18c8fe8c9b5800bba81022d93</srcmd5>
+    <version>7.2.6</version>
+    <time>1774725225</time>
+    <user>dimstar_suse</user>
+    <comment>- do not build vboxvideo on kernel 7.0 at all (bsc#1259536)</comment>
+    <requestid>1343127</requestid>
+  </revision>
 </revisionlist>
