@@ -30,7 +30,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.21.0-testing
+%define xen_build_dir xen-4.21.1-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -125,12 +125,12 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.21.0_04
+Version:        4.21.1_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.21.0-testing-src.tar.bz2
+Source0:        xen-4.21.1-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source9:        xen.changes
@@ -160,8 +160,6 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         xsa477.patch
-Patch2:         xsa479.patch
 # EMBARGOED security fixes
 # Our platform specific patches
 Patch400:       xen-destdir.patch
@@ -193,7 +191,6 @@ Patch600:       xen.bug1026236.suse_vtsc_tolerance.patch
 Patch602:       xenwatchdogd-restart.patch
 Patch621:       xen.build-compare.doc_html.patch
 # Build patches
-Patch800:       glibc2.43-fixes.patch
 URL:            http://www.cl.cam.ac.uk/Research/SRG/netos/xen/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define pyver %(python3 -c "import sys; print(sys.version.rpartition('.')[0])")

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 26 14:00:19 MDT 2026 - carnold@suse.com
+
+- Update to Xen 4.21.1 bug fix release (bsc#1027519)
+  * No upstream changelog found in sources or webpage
+- Drop patches contained in new tarball
+  xsa477.patch
+  xsa479.patch
+  glibc2.43-fixes.patch
+- Includes security fixes for the following bugs
+  bsc#1259247 - VUL-0: CVE-2026-23554: xen: Use after free of
+  paging structures in EPT (XSA-480)
+  bsc#1259248 - VUL-0: CVE-2026-23555: xen: Xenstored DoS by
+  unprivileged domain (XSA-481)
+
+-------------------------------------------------------------------
 Wed Jan 28 14:20:05 MST 2026 - carnold@suse.com
 
 - bsc#1257399 - Package xen doesn't build with glibc 2.43

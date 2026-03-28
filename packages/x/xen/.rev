@@ -3150,4 +3150,12 @@
     <comment>Security and Maintenance Update. Fix for bsc#1256745 CVE-2025-58150 XSA-477 and fix for bsc#1256747 CVE-2026-23553 XSA-479. Fix for bsc#1257399 - Package xen doesn't build with glibc 2.43</comment>
     <requestid>1329731</requestid>
   </revision>
+  <revision rev="372" vrev="1">
+    <srcmd5>7f681b08528ddce11709c51805f2170b</srcmd5>
+    <version>4.21.1_02</version>
+    <time>1774725203</time>
+    <user>dimstar_suse</user>
+    <comment>Security and Maintenance Update. Update to Xen to version 4.21.1 which includes fixes for security bugs bsc#1259247 and bsc#1259248.</comment>
+    <requestid>1343059</requestid>
+  </revision>
 </revisionlist>
