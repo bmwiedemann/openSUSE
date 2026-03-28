@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-pipeline
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,27 @@
 
 
 Name:           python-django-pipeline
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        An asset packaging library for Django
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/django-pipeline
 Source:         https://files.pythonhosted.org/packages/source/d/django-pipeline/django_pipeline-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/jazzband/django-pipeline/pull/835 834 compatibility django52
-Patch:          django52.patch
-BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module Django >= 4.0}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module css-html-js-minify}
 BuildRequires:  %{python_module jsmin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module slimit}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 4.2
+Requires:       python-Django >= 4.0
 Recommends:     python-Jinja2
 BuildArch:      noarch
 %python_subpackages

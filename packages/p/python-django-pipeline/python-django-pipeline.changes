@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 27 10:29:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Add support for Python 3.13
+  * Add support for Django 5.2
+- drop django52.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Apr 17 10:30:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.0.0
