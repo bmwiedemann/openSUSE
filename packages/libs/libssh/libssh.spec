@@ -135,7 +135,7 @@ install -m644 %{SOURCE3} %{buildroot}%{_configdir}/libssh/libssh_client.config
 install -m644 %{SOURCE4} %{buildroot}%{_configdir}/libssh/libssh_server.config
 
 # Fix incorrect include path, (boo#1211718).
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 sed -i '/^Include/ s|/etc|/usr/etc|' %{buildroot}%{_configdir}/libssh/libssh_client.config
 sed -i '/^Include/ s|/etc|/usr/etc|' %{buildroot}%{_configdir}/libssh/libssh_server.config
 # Don't change the path for crypto-policies libssh.config (bsc#1222716)
