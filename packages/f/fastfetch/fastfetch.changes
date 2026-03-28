@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Mar 28 14:44:50 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.61.0:
+  * Display: rounds scaled size when calcuating
+  * GPU (Windows): silences a compiler warning [ci skip]
+  * Doc: updates changelog [ci skip]
+  * GPU (Windows/WSL): adds basic GPU type detection code
+  * Chore (OpenBSD): silences compiler warnings
+  * Display: rounds scaled size when calcuating
+  * CI: updates deps
+  * GPU (Windows): adds GPU type detection fallback with DXCore
+  * GPU (WSL): increases maximum number of GPU adapters
+
+-------------------------------------------------------------------
 Fri Mar 13 18:45:28 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.60.0:
