@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:37:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  https://www.qt.io/blog/qt-6.11-released
+- Drop patches, merged upstream:
+  * 0001-QtQml-Fix-corner-cases-around-dead-contexts-in-AOT-a.patch
+  * 0001-QtQml-Do-not-clear-objects-propertyCaches-on-last-GC.patch
+  * 0001-QtQml-Handle-the-case-of-getFallbackMethod-returning.patch
+
+-------------------------------------------------------------------
 Thu Feb 19 10:48:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes (kde#513527, QTBUG-142514):

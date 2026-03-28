@@ -21,8 +21,8 @@
 %define _lto_cflags %{nil}
 %endif
 
-%define real_version 6.10.2
-%define short_version 6.10
+%define real_version 6.11.0
+%define short_version 6.11
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -32,7 +32,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -41,10 +41,6 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-QtQml-Fix-corner-cases-around-dead-contexts-in-AOT-a.patch
-Patch2:         0001-QtQml-Do-not-clear-objects-propertyCaches-on-last-GC.patch
-Patch3:         0001-QtQml-Handle-the-case-of-getFallbackMethod-returning.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -115,6 +111,7 @@ This meta-package requires all the qt6-declarative development packages.
 
 %package private-devel
 Summary:        Qt 6 Declarative unstable ABI meta package
+Requires:       cmake(Qt6LabsStyleKit) = %{real_version}
 Requires:       cmake(Qt6QmlCompilerPrivate) = %{real_version}
 Requires:       cmake(Qt6QmlCorePrivate) = %{real_version}
 Requires:       cmake(Qt6QmlLocalStoragePrivate) = %{real_version}
@@ -859,6 +856,32 @@ Obsoletes:      qt6-quickshapes-devel < 6.2.0
 Development files for the Qt 6 QuickShapes library.
 This library does not have any ABI or API guarantees.
 
+%package -n libQt6LabsStyleKit6
+Summary:        Qt 6 LabsStyleKit library
+# Library was renamed
+Provides:       libQt6LabsStyleKit6 = %{version}
+Obsoletes:      libQt6LabsStyleKit6 = %{version}
+
+%description -n libQt6LabsStyleKit6
+The Qt 6 LabsStyleKit library.
+This library does not have any ABI or API guarantees.
+
+# FIXME
+
+%package -n qt6-labsstylekit-private-devel
+Summary:        Qt 6 LabsStyleKit library - Development files
+Requires:       libQt6LabsStyleKit6 = %{version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
+# Renamed upstream
+Provides:       qt6-quickstylekit-private-devel = %{version}
+Obsoletes:      qt6-quickstylekit-private-devel < %{version}
+
+%description -n qt6-labsstylekit-private-devel
+Development files for the Qt 6 LabsStyleKit library.
+This library does not have any ABI or API guarantees.
+
 %package -n libQt6QuickTemplates2-6
 Summary:        Qt 6 QuickTemplates2 library
 
@@ -1074,6 +1097,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %ldconfig_scriptlets -n libQt6QuickLayouts6
 %ldconfig_scriptlets -n libQt6QuickParticles6
 %ldconfig_scriptlets -n libQt6QuickShapes6
+%ldconfig_scriptlets -n libQt6LabsStyleKit6
 %ldconfig_scriptlets -n libQt6QuickTemplates2-6
 %ldconfig_scriptlets -n libQt6QuickTest6
 %ldconfig_scriptlets -n libQt6QuickVectorImage6
@@ -1102,6 +1126,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 
 %files tools
 %{_bindir}/qml6
+%{_bindir}/qmlcontextpropertydump6
 %{_bindir}/qmldom6
 %{_bindir}/qmleasing6
 %{_bindir}/qmlformat6
@@ -1116,6 +1141,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %{_bindir}/qmltime6
 %{_bindir}/svgtoqml6
 %{_qt6_bindir}/qml
+%{_qt6_bindir}/qmlcontextpropertydump
 %{_qt6_bindir}/qmldom
 %{_qt6_bindir}/qmleasing
 %{_qt6_bindir}/qmlformat
@@ -1745,20 +1771,49 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %{_qt6_libdir}/libQt6QuickShapesDesignHelpers.so.*
 
 %files -n qt6-quickshapes-private-devel
+%{_qt6_cmakedir}/Qt6QuickShapes/
 %{_qt6_cmakedir}/Qt6QuickShapesDesignHelpersPrivate/
 %{_qt6_cmakedir}/Qt6QuickShapesPrivate/
+%{_qt6_descriptionsdir}/QuickShapes.json
 %{_qt6_descriptionsdir}/QuickShapesDesignHelpersPrivate.json
-%{_qt6_descriptionsdir}/QuickShapesPrivate.json
 %{_qt6_includedir}/QtQuickShapes/
 %{_qt6_includedir}/QtQuickShapesDesignHelpers/
 %{_qt6_libdir}/libQt6QuickShapes.prl
 %{_qt6_libdir}/libQt6QuickShapes.so
 %{_qt6_libdir}/libQt6QuickShapesDesignHelpers.prl
 %{_qt6_libdir}/libQt6QuickShapesDesignHelpers.so
+%{_qt6_metatypesdir}/qt6quickshapes_metatypes.json
 %{_qt6_metatypesdir}/qt6quickshapesdesignhelpersprivate_metatypes.json
-%{_qt6_metatypesdir}/qt6quickshapesprivate_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quickshapes_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_quickshapes.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_quickshapesdesignhelpers_private.pri
+%{_qt6_pkgconfigdir}/Qt6QuickShapes.pc
+
+%files -n libQt6LabsStyleKit6
+%{_qt6_libdir}/libQt6LabsStyleKit.so.*
+%{_qt6_libdir}/libQt6LabsStyleKitImpl.so.*
+
+%files -n qt6-labsstylekit-private-devel
+%{_qt6_cmakedir}/Qt6LabsStyleKit/
+%{_qt6_cmakedir}/Qt6LabsStyleKitImpl/
+%{_qt6_cmakedir}/Qt6LabsStyleKitImplPrivate/
+%{_qt6_cmakedir}/Qt6LabsStyleKitPrivate/
+%{_qt6_descriptionsdir}/LabsStyleKit.json
+%{_qt6_descriptionsdir}/LabsStyleKitImpl.json
+%{_qt6_includedir}/QtLabsStyleKit/
+%{_qt6_includedir}/QtLabsStyleKitImpl/
+%{_qt6_libdir}/libQt6LabsStyleKit.prl
+%{_qt6_libdir}/libQt6LabsStyleKit.so
+%{_qt6_libdir}/libQt6LabsStyleKitImpl.prl
+%{_qt6_libdir}/libQt6LabsStyleKitImpl.so
+%{_qt6_metatypesdir}/qt6labsstylekit_metatypes.json
+%{_qt6_metatypesdir}/qt6labsstylekitimpl_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_labsstylekit_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_labsstylekit.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_labsstylekitimpl_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_labsstylekitimpl.pri
+%{_qt6_pkgconfigdir}/Qt6LabsStyleKit.pc
+%{_qt6_pkgconfigdir}/Qt6LabsStyleKitImpl.pc
 
 %files -n libQt6QuickTemplates2-6
 %{_qt6_libdir}/libQt6QuickTemplates2.so.*
