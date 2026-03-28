@@ -15525,6 +15525,7 @@ unsorted:
   - libpmix2 
   - libpnetcdf4-mpich 
   - libpnetcdf4-mvapich2 
+  - libpnetcdf4-openmpi4 
   - libpnetcdf4-openmpi5 
   - libpng12-0 
   - libpng12-0-32bit 
@@ -23399,6 +23400,7 @@ unsorted:
   - pmix-plugin-munge 
   - pmix-plugins 
   - pmix-test 
+  - pnetcdf-devel-data 
   - pnetcdf-doc 
   - pnetcdf-mpich 
   - pnetcdf-mpich-devel 
@@ -23406,6 +23408,9 @@ unsorted:
   - pnetcdf-mvapich2 
   - pnetcdf-mvapich2-devel 
   - pnetcdf-mvapich2-devel-static 
+  - pnetcdf-openmpi4 
+  - pnetcdf-openmpi4-devel 
+  - pnetcdf-openmpi4-devel-static 
   - pnetcdf-openmpi5 
   - pnetcdf-openmpi5-devel 
   - pnetcdf-openmpi5-devel-static 
