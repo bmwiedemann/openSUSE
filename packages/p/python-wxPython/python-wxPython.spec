@@ -214,6 +214,13 @@ sed -i -e '/check_python_version/ s@3,7,0@3,6,0@' wscript
 # Reuse locale from wxWidgets package
 %if %{with syswx}
 rm -Rf wx/locale
+# Remove ext/wxWidgets sources and vendored libs, we are not using it,
+# to make sure we don't use non security fixed libraries.
+echo "Removing ext/wxWidgets vendored libraries, using syswx"
+mv ext/wxWidgets/docs /tmp/docs
+rm -Rfv ext/wxWidgets
+mkdir -p ext/wxWidgets
+mv /tmp/docs ext/wxWidgets/docs
 %endif
 
 sed -i -e '/^#!\//, 1d' wx/py/*.py
