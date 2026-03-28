@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 26 18:44:48 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix regression for RPM macros, pkg builtin no longer glob's the
+  filename itself, so do it manually.
+
+-------------------------------------------------------------------
 Sun Mar 15 15:28:10 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to version 11.1.0:

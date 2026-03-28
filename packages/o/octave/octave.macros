@@ -40,7 +40,7 @@
     mkdir -p %{buildroot}%{octlib_dir} \
     ls -la %{octpkg}-%{version}*.tar.gz \
     echo "Using %{__octave_build_file} for installation" \
-    %octave --eval "pkg prefix %{buildroot}%{octpackages_dir} %{buildroot}%{octlib_dir}; pkg install -verbose -nodeps %{__octave_build_file}" \
+    %octave --eval "pkg prefix %{buildroot}%{octpackages_dir} %{buildroot}%{octlib_dir}; files=glob(\'%{__octave_build_file}\'); pkg(\'install\', \'-verbose\', \'-nodeps\', files{1})" \
     rm -f %{buildroot}%{octpackages_dir}/%{octpkg}-%{version}/packinfo/.autoload
 
 # Octave package tests
