@@ -1,7 +1,7 @@
 #
 # spec file for package intel-gpu-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           intel-gpu-tools
-Version:        2.1
+Version:        2.3
 Release:        0
 Summary:        Collection of tools for development and testing of the Intel DRM driver
 License:        MIT
@@ -87,7 +87,7 @@ ninja -C %{_vpath_builddir} igt-gpu-tools-doc
 %meson_install
 
 # fix env-script-interpreter
-sed -i 's#/usr/bin/env python3#/usr/bin/python3#' \
+sed -i 's#%{_bindir}/env python3#%{_bindir}/python3#' \
 	%{buildroot}%{_bindir}/{code_cov_gather_on_test,intel-gfx-fw-info}
 
 %fdupes %{buildroot}%{_includedir}

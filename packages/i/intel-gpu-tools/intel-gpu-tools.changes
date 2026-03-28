@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Mar 20 23:33:34 UTC 2026 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 2.3 ("2.03")
+  * General changes:
+    - Improved C sources to be more Coccinelle friendly. (Ville Syrjälä)
+    - Improved documentation on freedesktop GitLab pages. (Pawel Sikora and
+      Swati Sharma)
+  * Library changes:
+    - Fixes for MEM_COPY instruction. (Balasubramani Vivekanandan)
+    - Added AMDGPU LLVM assembler utility for shader compilation. (Jesse Zhang)
+    - Added GFX1200 amdgpu family. (Jesse Zhang)
+    - Added support for basic-modeset for xe driver in kms_prime. (Santhosh Reddy
+      Guddati)
+    - New Xe survivability test for Intel BMG GPU. (Sk Anirban)
+    - Added PCI ids for CRI and NovaLake-S. (Kamil Konieczny)
+    - Added Panthor driver in drmtest lib. (Daniel Almeida)
+    - Fixed device opening with IGT_FORCE_DRIVER (Kamil Konieczny)
+    - Corrected MOCS index for displayable surfaces. (Tvrtko Ursulin)
+    - Added Virtio-GPU driver in drmtest lib. (Mark Yacoub)
+  * Tools changes:
+    - Added iteration option in intel_gpu_top. (Simon Fairweather)
+    - Added Alderlake-P register definitions. (Naladala Ramanaidu)
+    - Improved devices filtering in lsgpu. (Zbigniew Kempczyński)
+    - Improved intel_vbt_decode and intel_display_poller. (Ville Syrjälä)
+  * Scripts changes:
+    - New script for converting a 3D LUT data to igt_3dlut_t array. (Alex Hung)
+
+-------------------------------------------------------------------
+Sun Oct  5 00:48:02 UTC 2025 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to version 2.2 ("2.02")
+- General changes:
+  * PNG images moved to new data/ directory. (Naladala Ramanaidu, Swati Sharma)
+  * Added default checkpatch config. (Peter Senna Tschudin)
+- Library changes:
+  * New VKMS driver in drmtest lib. (José Expósito)
+  * Added PCI ids for BMG and WildcatLake.(Ravi Kumar Vodapalli, Jani Nikula)
+  * Separation of Intel compute kernels for easy maintainance. (Zbigniew
+    Kempczyński)
+  * Reduced logs for KMS tests with IGT_CI_RUN env var. (Pranay Samala)
+  * New ASIC-aware gfx hooks for amdgpu. (Vitaly Prosyak)
+  * Added SDMA support for user queues for amdgpu. (Jesse Zhang)
+  * Improved GTs id handling in Xe. (Matt Roper)
+  * New lib for Intel WA checks. (Mohammed Thasleem)
+  * New lib for directory traversal and file handling. (Peter Senna Tschudin)
+  * Added support for the device filters during device scan. (Soham Purkait)
+- Test changes:
+  * New tests for VKMS. (José Expósito, Louis Chauvet, Jim Shargo, Marius Vlad)
+  * Added madvise subtests for Xe system allocator. (Nishit Sharma)
+  * Improved Xe configfs testing. (Lucas De Marchi)
+  * Improved KMS HDR panel testing. (Chaitanya Kumar Borah)
+  * Added subtests for engine activity accuracy. (Soham Purkait, Riana Tauro)
+  * Improved Xe OA testing. (Ashutosh Dixit, Umesh Nerlige Ramappa, Sushma
+    Venkatesh Reddy)
+  * New core and kms tests for sysfs and debugfs. (Peter Senna Tschudin)
+  * Improved Xe system allocator testing. (Matthew Brost)
+  * Improved Xe SRIOV testing. (Marcin Bernatowicz)
+  * Improved KMS async flips tests with async modifiers. (Santhosh Reddy Guddati)
+  * New multi-GPU test cases for amdgpu. (Jesse Zhang)
+  * Added subtest for async flips with DPMS. (Karthik B S)
+  * Added tests for MSM. (Rob Clark)
+- Tools changes:
+  * Improved intel_vbt_decode. (Jani Nikula)
+  * Added Xe support to intel_dp_compliance. (Disantkumar Mistry)
+- Runner changes:
+  * Relaxed timeout reduction on soft lockup. (Janusz Krzysztofik)
+  * Added a hook for kmemleak scan after the unbind operation. (Peter Senna
+    Tschudin)
+- Scripts changes:
+  * Renamed blocklist verify script. (Kamil Konieczny)
+
+-------------------------------------------------------------------
 Sun Aug  3 20:43:27 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.01.
