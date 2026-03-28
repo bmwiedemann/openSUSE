@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quick3d
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.10.2
-%define short_version 6.10
+%define real_version 6.11.0
+%define short_version 6.11
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,15 +30,13 @@
 %global __requires_exclude qt6qmlimport\\((LightmapFile|Quick3DAssets|VirtualAssistant\\.Constants|robotassistant|.*Example|xr_shared).*
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-quick3d-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-XR-fix-build-error-for-using-EGL-without-GL-ES.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
@@ -475,6 +473,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_bindir}/lightmapviewer6
 %{_bindir}/materialeditor6
 %{_bindir}/meshdebug6
+%{_bindir}/particleshadergen6
 %{_bindir}/shadergen6
 %{_bindir}/shapegen6
 %{_qt6_bindir}/balsam
@@ -483,6 +482,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %{_qt6_bindir}/lightmapviewer
 %{_qt6_bindir}/materialeditor
 %{_qt6_bindir}/meshdebug
+%{_qt6_bindir}/particleshadergen
 %{_qt6_bindir}/shadergen
 %{_qt6_bindir}/shapegen
 %{_qt6_pluginsdir}/assetimporters/libassimp.so
