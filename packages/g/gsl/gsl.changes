@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 26 13:52:55 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- CVE-2024-50610.patch: add patch for integer overflow (invalid API call) (bsc#1232453, CVE-2024-50610)
+- Use autosetup for patches
+
+-------------------------------------------------------------------
 Sun Mar 30 14:25:12 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Don't package the whole _includedir, only the gsl folder

@@ -1,5 +1,5 @@
---- integration/test.c.orig
-+++ integration/test.c
+--- a/integration/test.c
++++ b/integration/test.c
 @@ -1754,7 +1754,11 @@ int main (void)
          gsl_test_rel(w->rlist[i],r[i],1e-14,"qawc(f459) rlist") ;
  
@@ -12,8 +12,8 @@
  
      for (i = 0; i < 6 ; i++) 
          gsl_test_int((int)w->order[i],order[i]-1,"qawc(f459) order");
---- configure.ac.orig
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -87,7 +87,9 @@ AC_CANONICAL_HOST
  
  dnl Checks for programs.

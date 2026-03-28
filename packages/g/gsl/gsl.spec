@@ -29,6 +29,7 @@ URL:            https://www.gnu.org/software/%{name}/
 Source0:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gsl&download=1#/%{name}.keyring
+Patch1:         CVE-2024-50610.patch
 Patch6:         gsl-qawc-test-x86-precision.diff
 Patch7:         gsl-disable-fma.patch
 # PATCH-FIX-UPSTREAM gsl-bspline-missing-definition.patch svg#65868 badshah400@gmail.com -- Add missing definition for gsl_bspline_eval_nonzero
@@ -124,10 +125,7 @@ BuildArch:      noarch
 This package contains examples for GSL
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch -P 6
-%patch -P 7 -p1
-%patch -P 8 -p1
+%autosetup -n %{name}-%{version} -p1
 
 %build
 autoreconf -fiv
