@@ -1,7 +1,7 @@
 #
 # spec file for package symbols-only-nerd-fonts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           symbols-only-nerd-fonts
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        A glyphs-only version of Nerd Fonts
 License:        Apache-2.0 AND CC-BY-4.0 AND MIT AND OFL-1.1-no-RFN AND SUSE-Freeware
