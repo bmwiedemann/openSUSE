@@ -1357,4 +1357,18 @@
     <comment></comment>
     <requestid>1332853</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>1efc721d64da037320253cf84a191a37</srcmd5>
+    <version>46.0.6</version>
+    <time>1774725137</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 46.0.6 (CVE-2026-34073, bsc#1260876):
+  * SECURITY ISSUE: Fixed a bug where name constraints were not
+    applied to peer names during verification when the leaf
+    certificate contains a wildcard DNS SAN. Ordinary X.509
+    topologies are not affected by this bug, including those used
+    by the Web PKI. Credit to Oleh Konko (1seal) for reporting
+    the issue. CVE-2026-34073</comment>
+    <requestid>1343139</requestid>
+  </revision>
 </revisionlist>

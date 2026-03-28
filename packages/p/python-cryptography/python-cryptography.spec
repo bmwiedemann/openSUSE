@@ -28,7 +28,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
 # ALWAYS KEEP IN SYNC WITH python-cryptography-vectors!
-Version:        46.0.5
+Version:        46.0.6
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
