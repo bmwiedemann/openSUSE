@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 25 14:33:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.2:
+  * s7: more minor optimizations
+  * checked: sbcl 2.6.2
+
+-------------------------------------------------------------------
 Wed Nov 12 12:07:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.8:
