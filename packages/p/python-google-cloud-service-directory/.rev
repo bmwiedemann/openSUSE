@@ -83,4 +83,18 @@
     <comment></comment>
     <requestid>1327654</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>541cae921b97b1de5483df0942267b18</srcmd5>
+    <version>1.17.0</version>
+    <time>1774725243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.0
+  * Allow Protobuf 7.x
+  * Update image
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py (forwarded request 1343211 from glaubitz)</comment>
+    <requestid>1343221</requestid>
+  </revision>
 </revisionlist>
