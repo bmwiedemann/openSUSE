@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Mon Mar 23 12:44:14 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.9.0 ESR
+  MFSA 2026-24 (bsc#1260083)
+  * CVE-2026-3889 (bmo#2020723)
+    Spoofing issue in Thunderbird
+  * CVE-2026-4371 (bmo#2023493)
+    Out of bounds read in IMAP parsing
+  * CVE-2026-4684 (bmo#2011129)
+    Race condition, use-after-free in the Graphics: WebRender component
+  * CVE-2026-4685 (bmo#2016349)
+    Incorrect boundary conditions in the Graphics: Canvas2D component
+  * CVE-2026-4686 (bmo#2016351)
+    Incorrect boundary conditions in the Graphics: Canvas2D component
+  * CVE-2026-4687 (bmo#2016368)
+    Sandbox escape due to incorrect boundary conditions in the
+    Telemetry component
+  * CVE-2026-4688 (bmo#2016373)
+    Sandbox escape due to use-after-free in the Disability Access
+    APIs component
+  * CVE-2026-4689 (bmo#2016374)
+    Sandbox escape due to incorrect boundary conditions, integer
+    overflow in the XPCOM component
+  * CVE-2026-4690 (bmo#2016375)
+    Sandbox escape due to incorrect boundary conditions, integer
+    overflow in the XPCOM component
+  * CVE-2026-4691 (bmo#2017512)
+    Use-after-free in the CSS Parsing and Computation component
+  * CVE-2026-4692 (bmo#2017643)
+    Sandbox escape in the Responsive Design Mode component
+  * CVE-2026-4693 (bmo#2018102)
+    Incorrect boundary conditions in the Audio/Video: Playback
+    component
+  * CVE-2026-4694 (bmo#2018430)
+    Incorrect boundary conditions, integer overflow in the
+    Graphics component
+  * CVE-2026-4695 (bmo#2020030)
+    Incorrect boundary conditions in the Audio/Video: Web Codecs
+    component
+  * CVE-2026-4696 (bmo#2020190)
+    Use-after-free in the Layout: Text and Fonts component
+  * CVE-2026-4697 (bmo#2020422)
+    Incorrect boundary conditions in the Audio/Video: Web Codecs
+    component
+  * CVE-2026-4698 (bmo#2020906)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-4699 (bmo#2021863)
+    Incorrect boundary conditions in the Layout: Text and Fonts
+    component
+  * CVE-2026-4700 (bmo#2003766)
+    Mitigation bypass in the Networking: HTTP component
+  * CVE-2026-4701 (bmo#2009303)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-4702 (bmo#2013560)
+    JIT miscompilation in the JavaScript Engine component
+  * CVE-2026-4704 (bmo#2014868)
+    Denial-of-service in the WebRTC: Signaling component
+  * CVE-2026-4705 (bmo#2014873)
+    Undefined behavior in the WebRTC: Signaling component
+  * CVE-2026-4706 (bmo#2015091)
+    Incorrect boundary conditions in the Graphics: Canvas2D
+    component
+  * CVE-2026-4707 (bmo#2015267)
+    Incorrect boundary conditions in the Graphics: Canvas2D
+    component
+  * CVE-2026-4708 (bmo#2015268)
+    Incorrect boundary conditions in the Graphics component
+  * CVE-2026-4709 (bmo#2016329, bmo#2016342)
+    Incorrect boundary conditions in the Audio/Video: GMP
+    component
+  * CVE-2026-4710 (bmo#2016370)
+    Incorrect boundary conditions in the Audio/Video component
+  * CVE-2026-4711 (bmo#2017002)
+    Use-after-free in the Widget: Cocoa component
+  * CVE-2026-4712 (bmo#2017666)
+    Information disclosure in the Widget: Cocoa component
+  * CVE-2026-4713 (bmo#2018113)
+    Incorrect boundary conditions in the Graphics component
+  * CVE-2026-4714 (bmo#2018126)
+    Incorrect boundary conditions in the Audio/Video component
+  * CVE-2026-4715 (bmo#2018405)
+    Uninitialized memory in the Graphics: Canvas2D component
+  * CVE-2026-4716 (bmo#2018592)
+    Incorrect boundary conditions, uninitialized memory in the
+    JavaScript Engine component
+  * CVE-2026-4717 (bmo#2021695)
+    Privilege escalation in the Netmonitor component
+  * CVE-2025-59375 (bmo#1988467)
+    Denial-of-service in the XML component
+  * CVE-2026-4718 (bmo#2014864)
+    Undefined behavior in the WebRTC: Signaling component
+  * CVE-2026-4719 (bmo#2016367)
+    Incorrect boundary conditions in the Graphics: Text component
+  * CVE-2026-4720 (bmo#2004652, bmo#2019372, bmo#2021922,
+    bmo#2022567, bmo#2022733)
+    Memory safety bugs fixed in Firefox ESR 140.9, Thunderbird
+    ESR 140.9, Firefox 149 and Thunderbird 149
+  * CVE-2026-4721 (bmo#2013762, bmo#2015291, bmo#2016591, bmo#2016661,
+    bmo#2016664, bmo#2017303, bmo#2017894, bmo#2018090, bmo#2018196,
+    bmo#2018379, bmo#2019112, bmo#2022090, bmo#2022243, bmo#2022351,
+    bmo#2022478, bmo#2022676)
+    Memory safety bugs fixed in Firefox ESR 115.34, Firefox ESR
+    140.9, Thunderbird ESR 140.9, Firefox 149 and Thunderbird 149
+
+-------------------------------------------------------------------
 Sat Mar  7 13:29:45 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 140.8.1 ESR

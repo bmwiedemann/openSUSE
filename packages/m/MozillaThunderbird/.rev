@@ -6219,4 +6219,41 @@ I cannot test locally unfortunately.
 - drop mozilla-bmo1967121.patch because of the upstream change</comment>
     <requestid>1338240</requestid>
   </revision>
+  <revision rev="383" vrev="1">
+    <srcmd5>cedaef621c7aa799cd3dd78175d1123a</srcmd5>
+    <version>140.9.0</version>
+    <time>1774725284</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 140.9.0 ESR
+  MFSA 2026-24 (bsc#1260083)
+  * CVE-2026-3889 (bmo#2020723)
+    Spoofing issue in Thunderbird
+  * CVE-2026-4371 (bmo#2023493)
+    Out of bounds read in IMAP parsing
+  * CVE-2026-4684 (bmo#2011129)
+    Race condition, use-after-free in the Graphics: WebRender component
+  * CVE-2026-4685 (bmo#2016349)
+    Incorrect boundary conditions in the Graphics: Canvas2D component
+  * CVE-2026-4686 (bmo#2016351)
+    Incorrect boundary conditions in the Graphics: Canvas2D component
+  * CVE-2026-4687 (bmo#2016368)
+    Sandbox escape due to incorrect boundary conditions in the
+    Telemetry component
+  * CVE-2026-4688 (bmo#2016373)
+    Sandbox escape due to use-after-free in the Disability Access
+    APIs component
+  * CVE-2026-4689 (bmo#2016374)
+    Sandbox escape due to incorrect boundary conditions, integer
+    overflow in the XPCOM component
+  * CVE-2026-4690 (bmo#2016375)
+    Sandbox escape due to incorrect boundary conditions, integer
+    overflow in the XPCOM component
+  * CVE-2026-4691 (bmo#2017512)
+    Use-after-free in the CSS Parsing and Computation component
+  * CVE-2026-4692 (bmo#2017643)
+    Sandbox escape in the Responsive Design Mode component
+  * CVE-2026-4693 (bmo#2018102)
+    Incorrect boundary conditions in the Audio/Video: Playback</comment>
+    <requestid>1343336</requestid>
+  </revision>
 </revisionlist>
