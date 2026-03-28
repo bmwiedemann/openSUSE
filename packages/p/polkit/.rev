@@ -915,4 +915,17 @@ can switch the default compiler. (forwarded request 1187079 from jamborm)</comme
     <comment>- change to /var/lib/polkit-1 being tmpfiles created (jsc#PED-14794) (forwarded request 1328198 from msmeissn)</comment>
     <requestid>1328443</requestid>
   </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>8121d0b2a34ca640d9cd121e7967fe74</srcmd5>
+    <version>127</version>
+    <time>1774725146</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid reading endless amounts of memory (CVE-2026-4897 bsc#1260859)
+  polkit-fix-oom-cookie-read.patch
+
+- CVE-2025-7519: Fixed that a XML policy file with a large number of
+  nested elements may lead to crash (bsc#1246472)
+- removed 0001-Nested-.policy-files-cause-xml-parsing-overflow-lead.patch: upstream</comment>
+    <requestid>1343216</requestid>
+  </revision>
 </revisionlist>
