@@ -206,4 +206,37 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1281617</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>532b6f4b307ca57ca092b2c8f422ce4d</srcmd5>
+    <version>1.13.0</version>
+    <time>1774725185</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.0:
+  * use the `syntax` parser directive to declare the Dockerfile
+    syntax version
+  * Negative test filtering via `--negative-filter` - tests
+    matching the filter are *excluded*
+  * fail-fast flag `--abort` to stop test suite execution on
+    first failure
+  * unset `output`, `stderr`, `lines`, `stderr_lines` at the
+    start of `run` to avoid crosstalk
+  * between successive invocations
+  * XML escape fully removes ANSI sequences, e.g. color codes,
+    cursor movements
+  * fix retried tests being listed multiple times
+  * fix crash when `setup_suite` fails
+  * remove deprecated windows runner
+  * renamed `docker-compose.yml` to `compose.yaml`
+  * `bats_test_function`: don't require `--tags` to be sorted
+  * fix `BATS_TEST_TIMEOUT`
+  * not stopping processes under `run`
+  * prolonging skipped tests
+  * moved 3rd-party libraries list into wiki
+
+  * cleanup: remove unused $BATS_FILTER
+  * clarify use cases of `run` (#366)
+  * Fix infinite wait with (invalid) -j&lt;n&gt; (without space)
+  * test_tags=&lt;tag list&gt;/# bats file_tags=&lt;tag list&gt; and --filter-tags &lt;tag list&gt; for tagging tests</comment>
+    <requestid>1342630</requestid>
+  </revision>
 </revisionlist>
