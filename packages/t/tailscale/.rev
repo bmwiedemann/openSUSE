@@ -580,4 +580,16 @@
     <comment></comment>
     <requestid>1341543</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>76a9e2141252470bf0da002994aca33f</srcmd5>
+    <version>1.96.4</version>
+    <time>1774725258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to verison 1.96.4:
+  * An issue on forks of Linux caused by fallback-on-ENOSYS logic is resolved
+  * An issue that could cause a segmentation violation during startup on MIPS
+    devices is resolved
+- add patch fix-CVE-2026-33747.patch, fixing bsc#1260968 (forwarded request 1343258 from rrahl0)</comment>
+    <requestid>1343259</requestid>
+  </revision>
 </revisionlist>

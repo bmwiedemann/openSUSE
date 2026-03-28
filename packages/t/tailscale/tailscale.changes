@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 27 21:29:57 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to verison 1.96.4:
+  * An issue on forks of Linux caused by fallback-on-ENOSYS logic is resolved
+  * An issue that could cause a segmentation violation during startup on MIPS
+    devices is resolved
+- add patch fix-CVE-2026-33747.patch, fixing bsc#1260968
+
+-------------------------------------------------------------------
 Fri Mar 20 12:01:09 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.96.3:
