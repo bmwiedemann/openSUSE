@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.10.2
-%define short_version 6.10
+%define real_version 6.11.0
+%define short_version 6.11
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -33,7 +33,7 @@
 %bcond_without system_md4c
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -42,9 +42,7 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-fix-slow-scrolling-on-wayland.patch
-Patch1:         0001-wayland-Fix-crash-in-QWaylandShmBackingStore-scroll.patch
-Patch2:         0001-Do-not-persist-unicode-error-state-across-dirents.patch
+Patch0:         0001-Do-not-persist-unicode-error-state-across-dirents.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
@@ -182,7 +180,6 @@ This meta-package requires all the qt6-base development packages.
 Summary:        Qt 6 base unstable ABI meta package
 Requires:       qt6-base-devel = %{version}
 Requires:       qt6-kmssupport-private-devel = %{version}
-Requires:       qt6-platformsupport-private-devel = %{version}
 Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6DBusPrivate) = %{real_version}
 Requires:       cmake(Qt6GuiPrivate) = %{real_version}
@@ -366,6 +363,7 @@ Requires:       libQt6Core6 = %{version}
 Requires:       libQt6DBus6 = %{version}
 # Require network plugins. The library is not very useful without these
 Requires:       qt6-network-tls = %{version}
+Requires:       qt6-networkinformation-connman = %{version}
 Requires:       qt6-networkinformation-glib = %{version}
 Requires:       qt6-networkinformation-nm = %{version}
 
@@ -662,13 +660,6 @@ This library does not have any ABI or API guarantees.
 
 ### Static libraries ###
 
-%package -n qt6-exampleicons-devel-static
-Summary:        Qt ExampleIcons module
-Requires:       cmake(Qt6Core) = %{real_version}
-
-%description -n qt6-exampleicons-devel-static
-Qt icon library for examples. This private library can be used by Qt examples.
-
 %package -n qt6-kmssupport-devel-static
 Summary:        Qt KMSSupport module
 Requires:       cmake(Qt6CorePrivate) = %{real_version}
@@ -704,20 +695,21 @@ Requires:       pkgconfig(xext)
 Requires:       pkgconfig(xkbcommon) >= 0.4.1
 Requires:       pkgconfig(xkbcommon-x11) >= 0.4.1
 Requires:       pkgconfig(xrender)
+# Merged before 6.11.0 release, CMake targets require the private headers
+Provides:       qt6-platformsupport-private-devel = %{version}
+Obsoletes:      qt6-platformsupport-private-devel < %{version}
 
 %description -n qt6-platformsupport-devel-static
-Qt PlatformSupport module.
-
-%package -n qt6-platformsupport-private-devel
-Summary:        Non-ABI stable API for the  Qt6 PlatformSupport library
-Requires:       qt6-platformsupport-devel-static = %{version}
-
-%description -n qt6-platformsupport-private-devel
-This package provides private headers of libQt6PlatformSupport that do not have
-any ABI or API guarantees.
-
+Qt PlatformSupport static library. This package provides private headers and
+consequently do not have any ABI or API guarantees.
 
 ### Plugins ###
+
+%package -n qt6-networkinformation-connman
+Summary:        Network information for QNetworkInformation
+
+%description -n qt6-networkinformation-connman
+Plugin used to get network information such as the reachability, media type...
 
 %package -n qt6-networkinformation-glib
 Summary:        Network information for QNetworkInformation using GNetworkMonitor
@@ -882,7 +874,6 @@ EOF
     -DFEATURE_relocatable:BOOL=FALSE \
     -DFEATURE_system_sqlite:BOOL=TRUE \
     -DFEATURE_system_xcb_xinput:BOOL=TRUE \
-    -DFEATURE_xcb_native_painting:BOOL=TRUE \
     -DINPUT_openssl:STRING=linked \
 %if 0%{?with_gles}
     -DINPUT_opengl:STRING=es2 \
@@ -910,20 +901,10 @@ mkdir -p %{buildroot}%{_qt6_translationsdir}
 rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 
 # These files are only useful for the Qt continuous integration
-rm %{buildroot}%{_qt6_libexecdir}/ensure_pro_file.cmake
 rm %{buildroot}%{_qt6_libexecdir}/qt-android-runner.py
-rm %{buildroot}%{_qt6_libexecdir}/qt-testrunner.py
-rm %{buildroot}%{_qt6_libexecdir}/sanitizer-testrunner.py
 
 # This is only for Apple platforms and has a python2 dep
 rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
-
-# Not useful for desktop installs
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6ExamplesAssetDownloaderPrivate
-rm -r %{buildroot}%{_qt6_includedir}/QtExamplesAssetDownloader
-rm %{buildroot}%{_qt6_descriptionsdir}/ExamplesAssetDownloaderPrivate.json
-rm %{buildroot}%{_qt6_libdir}/libQt6ExamplesAssetDownloader.*
-rm %{buildroot}%{_qt6_metatypesdir}/qt6examplesassetdownloaderprivate*_metatypes.json
 
 # E: env-script-interpreter
 sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/corelib/serialization/cbordump/cbortag.py
@@ -968,6 +949,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_bindir}/qt-cmake-create6
 %{_bindir}/qt-configure-module6
 %{_bindir}/qtpaths6
+%{_bindir}/wasmdeployqt6
 %{_qt6_bindir}/androiddeployqt
 %{_qt6_bindir}/androidtestrunner
 %{_qt6_bindir}/qdbuscpp2xml
@@ -977,6 +959,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_bindir}/qt-cmake-create
 %{_qt6_bindir}/qt-configure-module
 %{_qt6_bindir}/qtpaths
+%{_qt6_bindir}/wasmdeployqt
 %{_qt6_cmakedir}/Qt6/
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfig.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/Qt6BuildInternalsConfigVersion.cmake
@@ -1005,6 +988,9 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_libexecdir}/uic
 %{_qt6_mkspecsdir}/*
 %{_qt6_pkgconfigdir}/Qt6Platform.pc
+%dir %{_qt6_sharedir}/qt6
+%dir %{_qt6_sharedir}/qt6/json_schema
+%{_qt6_sharedir}/qt6/json_schema/modules.json
 %exclude %{_qt6_mkspecsdir}/modules/*.pri
 
 %files -n libQt6Concurrent6
@@ -1339,19 +1325,6 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 
 ### Static libraries ###
 
-%files -n qt6-exampleicons-devel-static
-%doc src/assets/icons/README
-%{_qt6_cmakedir}/Qt6ExampleIconsPrivate/
-%{_qt6_descriptionsdir}/ExampleIconsPrivate.json
-%{_qt6_includedir}/QtExampleIcons/
-%{_qt6_libdir}/libQt6ExampleIcons.a
-%{_qt6_libdir}/libQt6ExampleIcons.prl
-# There's no mistake, this folder needs to be installed
-# These are CMake objects files which are not part of any library
-%dir %{_qt6_archdatadir}/objects-*
-%{_qt6_archdatadir}/objects-*/ExampleIconsPrivate_resources_1/
-%{_qt6_metatypesdir}/qt6exampleiconsprivate_metatypes.json
-
 %files -n qt6-kmssupport-devel-static
 %{_qt6_cmakedir}/Qt6KmsSupportPrivate/
 %{_qt6_descriptionsdir}/KmsSupportPrivate.json
@@ -1385,22 +1358,15 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_metatypesdir}/qt6devicediscoverysupportprivate_metatypes.json
 %{_qt6_metatypesdir}/qt6fbsupportprivate_metatypes.json
 %{_qt6_metatypesdir}/qt6inputsupportprivate_metatypes.json
-%exclude %{_qt6_includedir}/QtDeviceDiscoverySupport/%{real_version}
-%exclude %{_qt6_includedir}/QtFbSupport/%{real_version}
-%exclude %{_qt6_includedir}/QtInputSupport/%{real_version}
-
-%files -n qt6-platformsupport-private-devel
-%dir %{_qt6_includedir}/QtDeviceDiscoverySupport
-%dir %{_qt6_includedir}/QtFbSupport
-%dir %{_qt6_includedir}/QtInputSupport
-%{_qt6_includedir}/QtDeviceDiscoverySupport/%{real_version}/
-%{_qt6_includedir}/QtFbSupport/%{real_version}/
-%{_qt6_includedir}/QtInputSupport/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_devicediscovery_support_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_fb_support_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_input_support_private.pri
 
 ### Plugins ###
+
+%files -n qt6-networkinformation-connman
+%dir %{_qt6_pluginsdir}/networkinformation/
+%{_qt6_pluginsdir}/networkinformation/libqconnman.so
 
 %files -n qt6-networkinformation-glib
 %dir %{_qt6_pluginsdir}/networkinformation/

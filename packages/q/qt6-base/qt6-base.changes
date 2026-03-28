@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:37:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.11.0
+  https://www.qt.io/blog/qt-6.11-released
+- Drop patches, merged upstream:
+  * 0001-fix-slow-scrolling-on-wayland.patch
+  * 0001-wayland-Fix-crash-in-QWaylandShmBackingStore-scroll.patch
+
+-------------------------------------------------------------------
 Wed Mar 11 18:13:43 UTC 2026 - Jake Drahos <j@kedrahos.com>
 
 - Added patch to fix ignore broken unicode filenames without
@@ -54,6 +63,7 @@ Tue Oct  7 08:53:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.10.0
   * https://www.qt.io/blog/qt-6.10-released
+- Includes fix for high CPU usage (boo#1258197, kde#484323)
 - Drop patch:
   * 0001-Rename-variable-being-shadowed.patch
 - Add patches:

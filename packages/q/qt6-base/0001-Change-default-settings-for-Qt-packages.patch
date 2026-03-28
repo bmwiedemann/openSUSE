@@ -13,10 +13,10 @@ This prevents having build time dependencies on plugins needlessly
  3 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/cmake/QtBuildInternalsExtra.cmake.in b/cmake/QtBuildInternalsExtra.cmake.in
-index 8985f8178a9..b6eb03971d7 100644
+index 9c1745cdde8..75c8ba406d2 100644
 --- a/cmake/QtBuildInternalsExtra.cmake.in
 +++ b/cmake/QtBuildInternalsExtra.cmake.in
-@@ -83,6 +83,7 @@ set(QT_SOURCE_TREE "@QT_SOURCE_TREE@" CACHE PATH
+@@ -87,6 +87,7 @@ set(QT_SOURCE_TREE "@QT_SOURCE_TREE@" CACHE PATH
  # Propagate decision of building tests and examples to other repositories.
  set(QT_BUILD_TESTS @QT_BUILD_TESTS@ CACHE BOOL "Build the testing tree.")
  set(QT_BUILD_EXAMPLES @QT_BUILD_EXAMPLES@ CACHE BOOL "Build Qt examples")
@@ -25,7 +25,7 @@ index 8985f8178a9..b6eb03971d7 100644
  set(QT_BUILD_MANUAL_TESTS @QT_BUILD_MANUAL_TESTS@ CACHE BOOL "Build Qt manual tests")
  set(QT_BUILD_MINIMAL_STATIC_TESTS @QT_BUILD_MINIMAL_STATIC_TESTS@ CACHE BOOL
 diff --git a/cmake/QtPlugins.cmake.in b/cmake/QtPlugins.cmake.in
-index e668a4cbefe..d086316b4c7 100644
+index a6ca60bbd12..e45e88dd87e 100644
 --- a/cmake/QtPlugins.cmake.in
 +++ b/cmake/QtPlugins.cmake.in
 @@ -6,7 +6,7 @@ include_guard(DIRECTORY)
@@ -36,12 +36,12 @@ index e668a4cbefe..d086316b4c7 100644
 +    set(QT_SKIP_AUTO_PLUGIN_INCLUSION ON)
  endif()
  
- if(NOT QT_NO_CREATE_TARGETS AND NOT QT_SKIP_AUTO_PLUGIN_INCLUSION)
+ if(__qt_@QT_MODULE@_targets_file_included AND NOT QT_SKIP_AUTO_PLUGIN_INCLUSION)
 diff --git a/cmake/QtPublicPluginHelpers.cmake b/cmake/QtPublicPluginHelpers.cmake
-index 44ceb92e246..2a2ee1c5e92 100644
+index 749e40e3f2a..912808814fe 100644
 --- a/cmake/QtPublicPluginHelpers.cmake
 +++ b/cmake/QtPublicPluginHelpers.cmake
-@@ -649,7 +649,7 @@ macro(__qt_internal_include_qml_plugin_packages)
+@@ -607,7 +607,7 @@ macro(__qt_internal_include_qml_plugin_packages)
  
      # Distributions should probably change this default.
      if(NOT DEFINED QT_SKIP_AUTO_QML_PLUGIN_INCLUSION)
