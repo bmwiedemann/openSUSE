@@ -444,4 +444,12 @@
   * 0001-sandbox-Fix-build-with-glibc-2.43-and-above.patch</comment>
     <requestid>1334472</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>df5ef274b95a9ef12b3bdd6bffef4e3a</srcmd5>
+    <version>6.11.0</version>
+    <time>1774725173</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.11.0 (forwarded request 1342625 from krop)</comment>
+    <requestid>1342822</requestid>
+  </revision>
 </revisionlist>

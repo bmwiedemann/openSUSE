@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-webengine
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define real_version 6.10.2
-%define short_version 6.10
+
+%define real_version 6.11.0
+%define short_version 6.11
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -54,7 +55,7 @@
 %global lts_version 6.8.0
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -62,7 +63,6 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-sandbox-Fix-build-with-glibc-2.43-and-above.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
@@ -384,7 +384,7 @@ export NINJAFLAGS="%{?_smp_mflags}"
 
 %ifarch aarch64
 # Workaround for boo#1251922: force -mno-outline-atomics through the gn build for aarch64
-sed -e 's/cflags = \[\]/cflags = \[ \"-mno-outline-atomics\" \]/' -i ./src/3rdparty/chromium/build/config/linux/BUILD.gn 
+sed -e 's/cflags = \[\]/cflags = \[ \"-mno-outline-atomics\" \]/' -i ./src/3rdparty/chromium/build/config/linux/BUILD.gn
 %endif
 
 %cmake_qt6 \
@@ -436,6 +436,9 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 # This shouldn't be needed
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
+
+# Only needed internally
+rm %{buildroot}%{_qt6_cmakedir}/Qt6/Find{Bindgen,QWELibClang,Rust}.cmake
 
 # E: files-duplicated-waste
 %fdupes %{buildroot}%{_qt6_examplesdir}
