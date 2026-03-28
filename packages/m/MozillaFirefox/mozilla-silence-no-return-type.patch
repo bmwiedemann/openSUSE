@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  a05bd055f1c92d210fa44a3071a17a3bd4df3a93
+# Parent  906466659f0991bd83b096aca2f57c45f196a32b
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -340,7 +340,7 @@ diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libw
 diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
 --- a/third_party/libwebrtc/api/rtp_parameters.cc
 +++ b/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -32,16 +32,17 @@ const char* DegradationPreferenceToStrin
+@@ -75,16 +75,17 @@ const char* DegradationPreferenceToStrin
      case DegradationPreference::MAINTAIN_FRAMERATE:
        return "maintain-framerate";
      case DegradationPreference::MAINTAIN_RESOLUTION:
@@ -354,14 +354,14 @@ diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc
  
  const double kDefaultBitratePriority = 1.0;
  
- RtcpFeedback::RtcpFeedback() = default;
- RtcpFeedback::RtcpFeedback(RtcpFeedbackType type) : type(type) {}
- RtcpFeedback::RtcpFeedback(RtcpFeedbackType type,
-                            RtcpFeedbackMessageType message_type)
+ bool WriteFmtpParameters(const CodecParameterMap& parameters,
+                          StringBuilder& os) {
+   bool empty = true;
+   const char* delimiter = "";  // No delimiter before first parameter.
 diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
 --- a/third_party/libwebrtc/api/video/video_frame_buffer.cc
 +++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc
-@@ -109,16 +109,18 @@ const char* VideoFrameBufferTypeToString
+@@ -120,16 +120,18 @@ const char* VideoFrameBufferTypeToString
        return "kI210";
      case VideoFrameBuffer::Type::kI410:
        return "kI410";
@@ -383,7 +383,7 @@ diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -152,16 +152,17 @@ const char* CodecTypeToPayloadString(Vid
+@@ -154,16 +154,17 @@ const char* CodecTypeToPayloadString(Vid
      case kVideoCodecH264:
        return kPayloadNameH264;
      case kVideoCodecGeneric:
@@ -461,12 +461,12 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
                         VideoStreamInputState input_state)
      : validation_id_(validation_id),
        status_(Status::kValid),
-@@ -395,16 +396,17 @@ VideoStreamAdapter::RestrictionsOrState 
+@@ -396,16 +397,17 @@ VideoStreamAdapter::RestrictionsOrState 
      case DegradationPreference::MAINTAIN_RESOLUTION: {
        // Scale up framerate.
        return IncreaseFramerate(input_state, current_restrictions_);
      }
-     case DegradationPreference::DISABLED:
+     case DegradationPreference::MAINTAIN_FRAMERATE_AND_RESOLUTION:
        return Adaptation::Status::kAdaptationDisabled;
    }
    RTC_CHECK_NOTREACHED();
@@ -479,12 +479,12 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
    ++adaptation_validation_id_;
    RestrictionsOrState restrictions_or_state =
        GetAdaptationDownStep(input_state, current_restrictions_);
-@@ -475,16 +477,17 @@ VideoStreamAdapter::GetAdaptationDownSte
+@@ -476,16 +478,17 @@ VideoStreamAdapter::GetAdaptationDownSte
      }
      case DegradationPreference::MAINTAIN_RESOLUTION: {
        return DecreaseFramerate(input_state, current_restrictions);
      }
-     case DegradationPreference::DISABLED:
+     case DegradationPreference::MAINTAIN_FRAMERATE_AND_RESOLUTION:
        return Adaptation::Status::kAdaptationDisabled;
    }
    RTC_CHECK_NOTREACHED();
@@ -497,7 +497,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
    int target_pixels =
        GetLowerResolutionThan(input_state.frame_size_pixels().value());
    // Use single active stream if set, this stream could be lower than the input.
-@@ -628,16 +631,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
+@@ -629,16 +632,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
      case DegradationPreference::MAINTAIN_FRAMERATE:
        return GetAdaptationDown();
      case DegradationPreference::BALANCED: {
@@ -644,7 +644,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -119,16 +119,17 @@ GainControl::Mode Agc1ConfigModeToInterf
+@@ -113,16 +113,17 @@ GainControl::Mode Agc1ConfigModeToInterf
      case Agc1Config::kAdaptiveAnalog:
        return GainControl::kAdaptiveAnalog;
      case Agc1Config::kAdaptiveDigital:
@@ -662,7 +662,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  
  // Maximum lengths that frame of samples being passed from the render side to
  // the capture side can have (does not apply to AEC3).
-@@ -186,17 +187,17 @@ int AudioFormatValidityToErrorCode(Audio
+@@ -180,17 +181,17 @@ int AudioFormatValidityToErrorCode(Audio
      case AudioFormatValidity::kValidAndSupported:
        return AudioProcessing::kNoError;
      case AudioFormatValidity::kValidButUnsupportedSampleRate:  // fall-through
@@ -681,7 +681,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
      const StreamConfig& input_config,
      const StreamConfig& output_config) {
    AudioFormatValidity input_validity = ValidateAudioFormat(input_config);
-@@ -2096,16 +2097,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -2090,16 +2091,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:
@@ -1043,7 +1043,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/timer/timer.cc b/third_party/libwe
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-@@ -85,16 +85,17 @@ bool IsFramerateScalingEnabled(Degradati
+@@ -82,16 +82,17 @@ bool IsFramerateScalingEnabled(Degradati
  std::string ToString(VideoAdaptationReason reason) {
    switch (reason) {
      case VideoAdaptationReason::kQuality:
@@ -1064,7 +1064,7 @@ diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resourc
 diff --git a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
 --- a/third_party/libwebrtc/video/config/encoder_stream_factory.cc
 +++ b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
-@@ -113,16 +113,17 @@ int GetDefaultMaxQp(VideoCodecType codec
+@@ -119,16 +119,17 @@ int GetDefaultMaxQp(VideoCodecType codec
        return kDefaultVideoMaxQpH26x;
      case kVideoCodecVP8:
      case kVideoCodecVP9:
@@ -1076,12 +1076,12 @@ diff --git a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/thir
 +  return kDefaultVideoMaxQpAv1;
  }
  
- // Round size to nearest simulcast-friendly size.
- // Simulcast stream width and height must both be dividable by
- // |2 ^ (simulcast_layers - 1)|.
- int NormalizeSimulcastSize(const FieldTrialsView& field_trials,
-                            int size,
-                            size_t simulcast_layers) {
+ Resolution NormalizeResolution(const Resolution& resolution,
+                                const VideoEncoderConfig& encoder_config,
+                                int max_num_layers,
+                                const FieldTrialsView& trials) {
+   if (resolution.width < kMinLayerSize || resolution.height < kMinLayerSize) {
+     // Resolution is already too low. Avoid further adjustments.
 diff --git a/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc b/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc
 --- a/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc
 +++ b/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc
@@ -1165,3 +1165,39 @@ diff --git a/third_party/libwebrtc/video/corruption_detection/video_frame_sample
  
  std::unique_ptr<VideoFrameSampler> VideoFrameSampler::Create(
      const VideoFrame& frame) {
+diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc	2026-03-26 09:58:46.411668120 +0000
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc	2026-03-26 09:58:18.723002878 +0000
+@@ -73,6 +73,10 @@ std::unique_ptr<RtpPacketizer> RtpPacket
+                                                     rtp_video_header);
+     }
+   }
++  // The following serves only to shut up the compiler about
++  //    "control reaches end of non-void function":
++  return std::make_unique<RtpPacketizerGeneric>(payload, limits,
++					        rtp_video_header);
+ }
+ 
+ std::vector<int> RtpPacketizer::SplitAboutEqually(
+diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc	2026-03-18 18:54:03.000000000 +0000
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc	2026-03-26 09:54:09.116828584 +0000
+@@ -177,6 +177,7 @@ PacketizationFormat GetPacketizationForm
+     case kVideoCodecGeneric:
+       return PacketizationFormat::kGeneric;
+   }
++  return (PacketizationFormat) 0;
+ }
+ 
+ }  // namespace
+diff -rup a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
+--- a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc	2026-03-18 18:54:02.000000000 +0000
++++ b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc	2026-03-26 10:13:00.686833144 +0000
+@@ -88,6 +88,7 @@ const char* ToString(VideoAdaptationReas
+     case VideoAdaptationReason::kCpu:
+       return "cpu";
+   }
++  return "shut-up-the-compiler";
+ }
+ 
+ }  // namespace

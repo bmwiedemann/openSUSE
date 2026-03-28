@@ -28,16 +28,14 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          148
-%define mainver        %major.0.2
-%define orig_version   148.0.2
+%define major          149
+%define mainver        %major.0
+%define orig_version   149.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
 %define devpkg         1
-
-# PGO builds do not work in TW currently (bmo#1680306)
-%define do_profiling   0
+%define do_profiling   1
 
 # upstream default is clang (to use gcc for large parts set to 0)
 %define clang_build    0
@@ -46,6 +44,11 @@
 
 # define if ccache should be used or not
 %define useccache     1
+
+# ccache doesn't work with pgo
+%if 0%{?do_profiling}
+%define useccache     0
+%endif
 
 # SLE-12 doesn't have this macro
 %{!?_rpmmacrodir: %global _rpmmacrodir %{_rpmconfigdir}/macros.d}
@@ -103,8 +106,8 @@ BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo1.88
-BuildRequires:  rust1.88
+BuildRequires:  cargo1.93
+BuildRequires:  rust1.93
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -114,7 +117,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.38.2
-BuildRequires:  mozilla-nss-devel >= 3.120.1
+BuildRequires:  mozilla-nss-devel >= 3.121
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -154,11 +157,7 @@ BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %if 0%{?suse_version} < 1599
 BuildRequires:  clang19-devel
 %else
-%if 0%{?suse_version} < 1699
 BuildRequires:  clang-devel
-%else
-BuildRequires:  clang20-devel
-%endif
 %endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -229,7 +228,7 @@ Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch24:        mozilla-bmo1746799.patch
-Patch25:        mozilla-breakpad.patch
+Patch25:        mozilla-sandbox-lto.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
 %endif
@@ -406,6 +405,9 @@ export CXX=g++-13
 %else
 export CC=gcc
 export CXX=g++
+export AR=gcc-ar
+export NM=gcc-nm
+export RANLIB=gcc-ranlib
 %endif
 %endif
 %ifarch %arm %ix86
@@ -515,10 +517,15 @@ ac_add_options --enable-optimize="-O1"
 ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
+export CCACHE_DISABLE=1
 %endif
 %endif
 %endif
 EOF
+
+%if 0%{?do_profiling}
+export CCACHE_DISABLE=1
+%endif
 
 %if %{with only_print_mozconfig}
 cat ./.obsenv.sh
@@ -597,7 +604,7 @@ export MOZ_SOURCE_REPO=$RELEASE_REPO
 # need to remove default en-US firefox-l10n.js before it gets
 # populated into browser's omni.ja; it only contains general.useragent.locale
 # which should be loaded from each language pack (set in firefox.js)
-rm dist/bin/browser/defaults/preferences/firefox-l10n.js
+rm -f dist/bin/browser/defaults/preferences/firefox-l10n.js
 make -C browser/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
 #DEBUG (break the build if searchplugins are missing / temporary)
 grep amazondotcom dist/firefox/browser/omni.ja
