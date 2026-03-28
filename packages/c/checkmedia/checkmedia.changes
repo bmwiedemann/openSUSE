@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Fri Mar 27 12:59:08 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/checkmedia#23
+- include pre-built documentation (bsc#1260860)
+- simplify spec file
+- 6.6
+
+--------------------------------------------------------------------
+Fri Mar 27 12:27:32 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/checkmedia#22
+- Add support for GPT partitions
+
+--------------------------------------------------------------------
 Mon Aug 18 07:43:05 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/checkmedia#21

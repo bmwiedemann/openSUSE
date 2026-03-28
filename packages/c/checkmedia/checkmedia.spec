@@ -1,7 +1,7 @@
 #
 # spec file for package checkmedia
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@ Name:           checkmedia
 Summary:        Check installation or Live media
 License:        GPL-3.0-or-later
 Group:          System/Management
-Version:        6.5
+Version:        6.6
 Release:        0
 URL:            https://github.com/openSUSE/checkmedia
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  gpg
 BuildRequires:  xz
-BuildRequires:  rubygem(asciidoctor)
+BuildRequires:  (gpg2 or gnupg2)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -37,7 +36,7 @@ The program checks installation or Live media for errors.
 %package -n     libmediacheck%{libversion}
 Summary:        Library for checking installation or Live media
 Group:          System/Libraries
-Requires:       gpg
+Requires:       (gpg2 or gnupg2)
 
 %description -n libmediacheck%{libversion}
 Library for checking installation or Live media. Used by checkmedia and linuxrc.
@@ -82,7 +81,7 @@ install -D -m 644 tagmedia.1 %{buildroot}%{_mandir}/man1/tagmedia.1
 %{_libdir}/*.so.*
 %doc README.*
 %doc mediacheck.md
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} >= 1500 || 0%{?suse_version} == 0
 %license COPYING
 %else
 %doc COPYING
