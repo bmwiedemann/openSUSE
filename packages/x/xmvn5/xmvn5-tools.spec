@@ -154,6 +154,9 @@ find -name ResolverIntegrationTest.java -delete
 # Normalize slf4j version to 2
 %pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2 xmvn-parent
 
+# Normalize maven4 to version 4 (compatibility version)
+%pom_xpath_set pom:project/pom:properties/pom:mavenVersion 4 xmvn-parent
+
 %build
 mkdir -p lib
 build-jar-repository -s lib \

@@ -7,4 +7,12 @@
     <comment>Initial packaging of xmvn 5.x series (Maven 4) with version 5.1.0</comment>
     <requestid>1315767</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0f72bfa613dc6a5558d2f9c33da85ce5</srcmd5>
+    <version>5.1.0</version>
+    <time>1774725248</time>
+    <user>dimstar_suse</user>
+    <comment>Require the compatibility version of Maven (4)</comment>
+    <requestid>1343245</requestid>
+  </revision>
 </revisionlist>

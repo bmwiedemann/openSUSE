@@ -81,6 +81,12 @@ find -name ResolverIntegrationTest.java -delete
 # Don't put Class-Path attributes in manifests
 %pom_remove_plugin :maven-jar-plugin xmvn-tools
 
+# Normalize slf4j version to 2
+%pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2 xmvn-parent
+
+# Normalize maven4 to version 4 (compatibility version)
+%pom_xpath_set pom:project/pom:properties/pom:mavenVersion 4 xmvn-parent
+
 pushd %{parent}-%{subname}
   %{mvn_compat_version} : %{version_suffix} %{version}
   %{mvn_file} :{*} %{parent}/@1

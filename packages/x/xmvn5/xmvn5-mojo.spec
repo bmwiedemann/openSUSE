@@ -47,7 +47,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-surefire-plugin)
 BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
 BuildRequires:  mvn(org.apache.maven:maven-api-core)
 BuildRequires:  mvn(org.apache.maven:maven-api-model)
-BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  mvn(org.apache.maven:maven-plugin-api:4)
 BuildArch:      noarch
 
 %description
@@ -89,6 +89,12 @@ find -name ResolverIntegrationTest.java -delete
 
 # Remove all dependencies with scope test, since a raw xmvn does not hide them
 %pom_remove_dep -r :::test:
+
+# Normalize slf4j version to 2
+%pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2 xmvn-parent
+
+# Normalize maven4 to version 4 (compatibility version)
+%pom_xpath_set pom:project/pom:properties/pom:mavenVersion 4 xmvn-parent
 
 pushd %{parent}-%{subname}
   %{mvn_compat_version} : %{version_suffix} %{version}
