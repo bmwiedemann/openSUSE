@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 02:45:52 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.19.6:
+  * preload: Reinitialize mutexes after forking
+- Changes from version 0.19.5:
+  * ioctl: Forward standard termios calls to real pty (fixes tests
+    with Rust coreutils)
+  * ioctl: Implement POSIX-compliant errno handling
+
+-------------------------------------------------------------------
 Sun Nov  9 08:57:10 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.19.4:
