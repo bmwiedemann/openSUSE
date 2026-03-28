@@ -1,7 +1,7 @@
 #
 # spec file for package backintime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           backintime
-Version:        1.5.6
+Version:        1.6.1
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
 Group:          Productivity/Archiving/Backup
@@ -32,8 +32,7 @@ URL:            https://github.com/bit-team/backintime
 Source0:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # Public key mentioned in https://github.com/bit-team/backintime#archlinux
 Source2:        %{name}.keyring
-Source3:        %{name}.png
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.11}
 # TEST REQUIREMENTS (only works on real hardware)
 #BuildRequires:  %#{python_module packaging}
 #BuildRequires:  %#{python_module dbus-python}
@@ -43,20 +42,22 @@ BuildRequires:  %{python_module devel >= 3.9}
 #BuildRequires:  rsync
 #BuildRequires:  udev
 # /TEST REQUIREMENTS
-BuildConflicts: python3-devel < 3.9
+BuildConflicts: python3-devel < 3.11
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  man
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
+BuildRequires:  rubygem(asciidoctor)
 Requires:       %{python_flavor}-dbus-python
 Requires:       %{python_flavor}-keyring
 Requires:       %{python_flavor}-packaging
-Requires:       cron
 Requires:       openssh
 Requires:       pkexec
 Requires:       python3 >= 3.9
 Requires:       rsync
+Recommends:     cron
 Recommends:     encfs
+Recommends:     gocryptfs
 Recommends:     sshfs
 Conflicts:      backintime-gnome
 Conflicts:      backintime-kde
@@ -103,11 +104,9 @@ sed -i -e "s|'backintime-common'|'backintime'|g" common/config.py
 sed -i -e "s|/share/doc/|/share/doc/packages/|g" common/configure qt/configure
 sed -i -e "s|backintime-common|backintime|g" common/configure qt/configure
 
-# Fix icon name.
-sed -i 's/Icon=document-save/Icon=backintime/g' qt/backintime-qt.desktop qt/backintime-qt-root.desktop
-
 # Fix shebangs
-%python_expand sed -i "s|/usr/bin/env python|#!/usr/bin/$python|g" common/askpass.py
+%python_expand sed -i "s|#!/usr/bin/env python|#!/usr/bin/$python|g" common/askpass.py
+sed -i "s|#!/usr/bin/env bash|#!/bin/bash|g"  qt/backintime-qt_polkit
 
 pushd common
 %python_expand ./configure --python="%{_bindir}/$python"
@@ -119,20 +118,13 @@ make %{?_smp_mflags}
 popd
 
 %install
+mkdir -p %{buildroot}/%{_mandir}/man1 %{buildroot}/%{_mandir}/man5
 pushd common
 %make_install
 popd
 pushd qt
 %make_install
 popd
-
-install -D -m 644 %{SOURCE3} %{buildroot}/%{_datadir}/pixmaps/%{name}.png
-
-# Fix duplicated files.
-%fdupes %{buildroot}%{_datadir}/icons/hicolor/
-
-%suse_update_desktop_file %{name}-qt System Backup
-%suse_update_desktop_file %{name}-qt-root System Backup
 
 %find_lang %{name} --without-kde --without-gnome
 
@@ -149,12 +141,12 @@ rm -f %{_sysconfdir}/udev/rules.d/99-backintime-*.rules
 %{_bindir}/%{name}
 %{_bindir}/%{name}-askpass
 %{_datadir}/%{name}/
-%{_datadir}/icons/hicolor/*/actions/show-hidden.svg
-%{_datadir}/pixmaps/%{name}.png
 %{_datadir}/bash-completion
+%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
+%{_iconsdir}/hicolor/scalable/actions/show-hidden.svg
 %{_docdir}/%{name}/
 %{_mandir}/man1/%{name}-askpass.1%{ext_man}
-%{_mandir}/man1/%{name}-config.1%{ext_man}
+%{_mandir}/man5/%{name}-config.5%{ext_man}
 %{_mandir}/man1/%{name}.1%{ext_man}
 %config %{_sysconfdir}/xdg/autostart/backintime.desktop
 %exclude %{_docdir}/%{name}-*/

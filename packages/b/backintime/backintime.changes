@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 20 23:10:23 UTC 2026 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 1.6.1
+  * Disable EncFS for creation of new backup profiles (#2315, #1734)
+  * A "snapshot" now is a "backup" (#1929)
+  * Deprecated and removed make targets: "test", "test-v", "unittest", "unittest-v"
+  * Drop Python support for version 3.9 & 3.10 (#2129)
+  * See CHANGELOG.md
+
+-------------------------------------------------------------------
 Sun Nov  9 01:18:19 UTC 2025 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to 1.5.6
