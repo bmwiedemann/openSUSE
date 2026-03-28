@@ -1,7 +1,7 @@
 #
 # spec file for package conky
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,8 @@ BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.52
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
@@ -189,6 +191,9 @@ test -x "$(type -p g++-13)" && export CXX="$_"
 	-DBUILD_OLD_CONFIG=ON \
 	-DBUILD_WEATHER_METAR=ON \
 	-DBUILD_WEATHER_XOAP=ON \
+	-DBUILD_WAYLAND=ON \
+  -DWayland_CLIENT_INCLUDE_DIR=/usr/include/wayland/ \
+  -DWayland_SERVER_INCLUDE_DIR=/usr/include/wayland/ \
 	-DBUILD_WLAN=ON \
 	-DBUILD_X11=ON \
 	-DBUILD_XDAMAGE=ON \
