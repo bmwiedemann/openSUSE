@@ -1,8 +1,8 @@
 #
 # spec file for package nwg-dock-hyprland
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2023-2025 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2023-2026 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 
 Name:           nwg-dock-hyprland
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        Hyprland application dock
 License:        MIT
 URL:            https://github.com/nwg-piotr/nwg-dock-hyprland
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+##Note remove Source1 before running service.
 Source1:        vendor.tar.zst
+##PATCH-FIX-UPSTREAM 114.patch -- based on PR 114
+Patch0:         https://github.com/nwg-piotr/nwg-dock-hyprland/pull/114.patch
 BuildRequires:  go >= 1.22
 BuildRequires:  golang-packaging
 BuildRequires:  zstd

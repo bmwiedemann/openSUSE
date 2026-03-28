@@ -1,0 +1,64 @@
+From 6ab973b2f95df7c01a623822154837085e987a3b Mon Sep 17 00:00:00 2001
+From: Kiriko <yj-shi24@mails.tsinghua.edu.cn>
+Date: Fri, 27 Mar 2026 02:30:57 +0800
+Subject: [PATCH] fix: reap child processes to prevent zombies and fix UTF-8
+ title truncation
+
+- Add go cmd.Wait() after cmd.Start() in launch() to reap child processes,
+  preventing zombie accumulation on every app close
+- Replace byte-based title truncation with rune-based truncation in
+  clientMenu() and clientMenuContext() to avoid splitting multi-byte
+  UTF-8 characters (e.g. CJK), which caused Pango invalid UTF-8 warnings
+  and rendered as boxes in the right-click menu
+- Remove commented-out non-ASCII stripping workaround that was a previous
+  attempt to fix the truncation issue
+---
+ tools.go | 21 +++++++++------------
+ 1 file changed, 9 insertions(+), 12 deletions(-)
+
+diff --git a/tools.go b/tools.go
+index a8033dd..bf6b8e6 100644
+--- a/tools.go
++++ b/tools.go
+@@ -320,8 +320,9 @@ func clientMenu(class string, instances []client) gtk.Menu {
+ 		image := gtk.NewImageFromIconName(iconName, int(gtk.IconSizeMenu))
+ 		hbox.PackStart(image, false, false, 0)
+ 		title := instance.Title
+-		if len(title) > 25 {
+-			title = title[:25]
++		titleRunes := []rune(title)
++		if len(titleRunes) > 25 {
++			title = string(titleRunes[:25])
+ 		}
+ 		wsName := instance.Workspace.Name
+ 		var label *gtk.Label
+@@ -362,16 +363,10 @@ func clientMenuContext(class string, instances []client) gtk.Menu {
+ 		image := gtk.NewImageFromIconName(iconName, int(gtk.IconSizeMenu))
+ 		hbox.PackStart(image, false, false, 0)
+ 		title := instance.Title
+-		if len(title) > 25 {
+-			title = title[:25]
+-		}
+-		// Clean non-ASCII chars
+-		//title = strings.Map(func(r rune) rune {
+-		//	if r > unicode.MaxASCII {
+-		//		return -1
+-		//	}
+-		//	return r
+-		//}, title)
++		titleRunes := []rune(title)
++		if len(titleRunes) > 25 {
++			title = string(titleRunes[:25])
++		}
+ 		label := gtk.NewLabel(fmt.Sprintf("%s (%v)", title, instance.Workspace.Name))
+ 		hbox.PackStart(label, false, false, 0)
+ 		menuItem.Add(hbox)
+@@ -960,6 +955,8 @@ func launch(ID string) {
+ 
+ 	if err := cmd.Start(); err != nil {
+ 		log.Error("Unable to launch command!", err.Error())
++	} else {
++		go cmd.Wait() // Reap child process to prevent zombie
+ 	}
+ 
+ 	if *autohide {

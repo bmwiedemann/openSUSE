@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 27 12:40:30 UTC 2026 - malcolmlewis@opensuse.org
+
+- Updated to version 0.4.8:
+  * Fixed autohide when leaving a dock with margin,
+    (gh#nwg-piotr/nwg-dock-hyprland#96).
+- Add 114.patch: Prevent zombies and fix UTF-8 & title truncation,
+  (https://github.com/nwg-piotr/nwg-dock-hyprland/pull/114.patch).
+
+-------------------------------------------------------------------
 Wed Jul  2 00:48:57 UTC 2025 - malcolmlewis@opensuse.org
 
 - Updated to version 0.4.7:
