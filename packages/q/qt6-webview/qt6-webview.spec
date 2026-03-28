@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-webview
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.10.2
-%define short_version 6.10
+%define real_version 6.11.0
+%define short_version 6.11
 %define tar_name qtwebview-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-webview%{?pkg_suffix}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        Qt 6 WebView library
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -45,6 +45,7 @@ BuildRequires:  cmake(Qt6WebEngineCore) = %{real_version}
 BuildRequires:  cmake(Qt6WebEngineCorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6WebEngineQuick) = %{real_version}
 BuildRequires:  cmake(Qt6WebEngineQuickPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 # Only available where qtwebengine is
 ExclusiveArch:  aarch64 x86_64 %{x86_64} riscv64
 %if "%{qt6_flavor}" == "docs"
