@@ -76,4 +76,15 @@
 </comment>
     <requestid>1305270</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0ae26047ff222d1076f8245bc90609a8</srcmd5>
+    <version>0.2.0+git.20260325T160543.90a2d69</version>
+    <time>1774725238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0+git.20260325T160543.90a2d69:
+  * bump dependencies to fix build with ffmpeg 8.1
+  * fixes for vulkan encode
+</comment>
+    <requestid>1343208</requestid>
+  </revision>
 </revisionlist>

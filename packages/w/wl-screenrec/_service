@@ -1,7 +1,21 @@
 <services>
-	<service name="download_files" mode="manual" />
-	<service name="cargo_vendor" mode="manual">
-	   <param name="src">wl-screenrec-*.tar.gz</param>
-	   <param name="update">true</param>
-	</service>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/russelltg/wl-screenrec</param>
+	<param name="scm">git</param>
+	<param name="revision">main</param>
+	<param name="versionprefix">0.2.0+git</param>
+  <param name="versionformat">%ci.%h</param>
+	<param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+     <param name="srctar">wl-screenrec-*.tar.gz</param>
+     <param name="update">true</param>
+  </service>
 </services>
+
