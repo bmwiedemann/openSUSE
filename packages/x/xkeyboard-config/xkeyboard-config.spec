@@ -17,7 +17,7 @@
 
 
 Name:           xkeyboard-config
-Version:        2.46
+Version:        2.47
 Release:        0
 Summary:        The X Keyboard Extension
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -32,7 +32,6 @@ Patch110:       n_fi-kotoistus-metainfo.patch
 %if 0%{?suse_version} < 1550
 Patch0:         python-3.11.patch
 %endif
-Patch1:         U_Make-ua-winkeysenhanced-compatible-with-ckbcomp.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  meson
@@ -69,6 +68,9 @@ make keyboards more accessible to people with physical impairments.
 
 %install
 %{meson_install}
+# Reintroduce symlink (boo#1260803)
+mkdir -p %{buildroot}%{_localstatedir}/lib/xkb/compiled/
+ln -snf %{_localstatedir}/lib/xkb/compiled/ %{buildroot}%{_datadir}/xkeyboard-config-2/compiled
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_datadir}/X11/xkb
 # Immutable mode (jsc#PED-14831)
@@ -112,8 +114,13 @@ rm -rf %{_localstatedir}/lib/xkb/compiled/server*.xkm
 %doc AUTHORS docs/HOWTO.* docs/README.*
 # Immutable mode (jsc#PED-14831)
 %{_tmpfilesdir}/xkeyboard-config.conf
+%ghost %dir %{_localstatedir}/
+%ghost %dir %{_localstatedir}/lib/
+%ghost %dir %{_localstatedir}/lib/xkb/
+%ghost %dir %{_localstatedir}/lib/xkb/compiled/
 %dir %{_datadir}/X11
 %{_datadir}/xkeyboard-config-2
+%{_datadir}/xkeyboard-config-2/compiled
 %{_datadir}/X11/xkb
 %ghost %attr(0755, root, root) %dir %{_datadir}/X11/xkb.rpmmoved
 %{_datadir}/pkgconfig/*.pc

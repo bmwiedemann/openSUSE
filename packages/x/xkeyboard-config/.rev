@@ -1151,4 +1151,64 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
     <comment>- move 'compiled' symlink to tmpfiles (boo#1256912)</comment>
     <requestid>1328086</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>13b077ecfc6bb5b674e896e46bf83466</srcmd5>
+    <version>2.47</version>
+    <time>1772127402</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.47
+  * Layouts / New
+    + Added the Slavistic Phonetic Alphabet variant for Polish
+  * Miscellaneous / Breaking changes
+    + Made &lt;ZEHA&gt; behave like &lt;FK24&gt;
+      On Linux Kernel before v6.17, the scancode for F24 was bound
+      to the otherwise unused &lt;ZEHA&gt; keycode. v6.17 fixed this. To
+      have a consistent behaviour across kernel versions, make both
+      &lt;ZEHA&gt; and &lt;FK24&gt; behave the same.
+  * New
+    + Added keycodes from recent Linux kernels:
+      `&lt;I455&gt;` for `KEY_LINK_PHONE`
+      `&lt;I709&gt;` for `KEY_PERFORMANCE`
+    + inet: Added mapping to the following new keysyms:
+      `XF86LinkPhone`
+      `XF86Fn_F1`
+      `XF86Fn_F2`
+      `XF86Fn_F3`
+      `XF86Fn_F4`
+      `XF86Fn_F5`
+      `XF86Fn_F6`
+      `XF86Fn_F7`
+      `XF86Fn_F8`
+      `XF86Fn_F9`
+      `XF86Fn_F10`
+      `XF86Fn_F11`
+      `XF86Fn_F12`
+      `XF86Fn_1`
+      `XF86Fn_2`
+      `XF86Fn_D`
+      `XF86Fn_E`
+      `XF86Fn_F`
+      `XF86Fn_S`
+      `XF86Fn_B`
+      `XF86PerformanceMode`
+      `XF86AudioBassBoost`
+    + inet: Mapped `F19` for the rare occasion that it exists e.g.
+      on custom keyboards.
+    + inet: Mapped `F24`, which has a special alternative function
+      as pressing the touchpad toggle key on some notebooks
+      produces the key sequence `Super + Control + F24`.
+- supersedes U_Make-ua-winkeysenhanced-compatible-with-ckbcomp.patch</comment>
+    <requestid>1334810</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>3284608951de10df22c88ee709f54e47</srcmd5>
+    <version>2.47</version>
+    <time>1774725200</time>
+    <user>dimstar_suse</user>
+    <comment>- Reintroduce /usr/share/xkeyboard-config-2/compiled symlink and
+  remove it again from xkeyboard-config.tmpfiles; add /var dirs as
+  ghosts to avoid having a dangling symlink (boo#1260803,
+  boo#1256912, PED-14831)</comment>
+    <requestid>1342923</requestid>
+  </revision>
 </revisionlist>
