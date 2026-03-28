@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-podman%{psuffix}
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0
@@ -89,7 +89,7 @@ sed -i 's/# dynamic/dynamic/' pyproject.toml
 %doc README.md
 %license LICENSE
 %{python_sitelib}/podman/
-%{python_sitelib}/podman-%{version}.dist-info/
+%{python_sitelib}/podman-*.dist-info/
 %endif
 
 %changelog

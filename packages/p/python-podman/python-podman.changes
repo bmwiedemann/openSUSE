@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 26 05:50:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.8.0:
+  * Fix PodManager.prepare_model set manager by @inknos in #619
+  * Implement Quadlet, QuadletManager and GET calls by @inknos in
+    #622
+  * Enable renovate-bot for pre-commit by @inknos in #626
+  * Add healthcheck to create and run by @inknos in #617
+  * Fix pytest flag for rootful test by @inknos in #623
+  * Implemente delete calls for quadlets by @inknos in #629
+  * Adding timeout parameter to container.wait() and fixing
+    interval type by @mutax in #632
+  * add network_dns_servers as supported parameter to
+    network.create by @mutax in #630
+  * tests/integration: Skip test on non-x86_64 arches by
+    @ricardobranco777 in #637
+  * Implement client.quadlets.install by @inknos in #633
+  * Add release PR workflow by @inknos in #627
+  * Bump release to 5.8.0 by @inknos in #639
+
+-------------------------------------------------------------------
 Wed Jan 21 12:30:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.7.0:
