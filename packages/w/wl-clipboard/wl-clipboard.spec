@@ -1,7 +1,7 @@
 #
 # spec file for package wl-clipboard
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wl-clipboard
-Version:        2.2.1+git.20250424T164907.aaa927e
+Version:        2.3.0
 Release:        0
 License:        GPL-3.0-only
 Summary:        Wayland Clipboard Utilities
@@ -31,6 +31,7 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.22
 Recommends:     mailcap
+Recommends:     shared-mime-info
 Recommends:     xdg-utils
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

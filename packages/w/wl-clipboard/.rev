@@ -46,4 +46,17 @@
 </comment>
     <requestid>1313724</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>71b45210812c733da2cd0398cdd552b5</srcmd5>
+    <version>2.3.0</version>
+    <time>1774725239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0:
+  * fix: correct spelling issues across docs and helpers
+  * files: read shared-mime-info globs2 file for mime extensions
+  * Fix buffer overflow in infer_mime_type_from_contents
+  * Set app id/class for the popup surface
+</comment>
+    <requestid>1343210</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:45:46 UTC 2026 - llyyr <llyyr@yukari.in>
+
+- Update to version 2.3.0:
+  * fix: correct spelling issues across docs and helpers
+  * files: read shared-mime-info globs2 file for mime extensions
+  * Fix buffer overflow in infer_mime_type_from_contents
+  * Set app id/class for the popup surface
+
+-------------------------------------------------------------------
 Sun Oct 26 12:57:26 UTC 2025 - llyyr.public@gmail.com
 
 - Update to version 2.2.1+git.20250424T164907.aaa927e:
