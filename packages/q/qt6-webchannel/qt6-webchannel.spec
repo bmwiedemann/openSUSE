@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-webchannel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.10.2
-%define short_version 6.10
+%define real_version 6.11.0
+%define short_version 6.11
 %define tar_name qtwebchannel-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-webchannel%{?pkg_suffix}
-Version:        6.10.2
+Version:        6.11.0
 Release:        0
 Summary:        Qt 6 WebChannel library
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -125,6 +125,9 @@ ABI or API guarantees.
 %{qt6_install}
 
 %if !%{qt6_docs_flavor}
+
+# FIXME this file belongs to examples. It shouldn't be installed in standard prefix
+rm %{buildroot}%{_qt6_sharedir}/qt6/webchannel/qwebchannel.js
 
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
