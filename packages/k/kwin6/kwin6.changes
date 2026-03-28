@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 15:32:03 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix color issues with some AMD GPUs (kde#517556):
+  * 0001-backends-drm-disable-drm-color-pipelines-on-AMD.patch
+
+-------------------------------------------------------------------
 Wed Mar 18 11:04:36 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.3:

@@ -39,6 +39,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-backends-drm-disable-drm-color-pipelines-on-AMD.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 # GCC 13 doesn't know std::ranges::to
