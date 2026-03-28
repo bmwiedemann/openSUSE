@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 28 06:44:08 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.2.5:
+  * No release notes.
+- Build with bundled poppler as GDCM does not support poppler >=
+  26 currently.
+- Use _service file to clone scm since there is no upstream
+  release corresponding to latest tag.
+- Minor specfile cleanups.
+
+-------------------------------------------------------------------
 Thu Dec 25 08:56:35 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - apply fix for poppler 25.10 build error

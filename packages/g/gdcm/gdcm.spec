@@ -1,7 +1,7 @@
 #
 # spec file for package gdcm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,23 @@
 #
 
 
-%define         soname  3_0
+%bcond_with tests
+%if 0%{?suse_version} >= 1650
+%bcond_with system_poppler
+%else
+%bcond_without system_poppler
+%endif
+%define         series 3.2
+%define         soname %(echo "%{series}" | tr '.' '_')
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.0.24
+Version:        3.2.5
 Release:        0
 Summary:        C++ library to parse DICOM medical files
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://gdcm.sourceforge.net/wiki/index.php/Main_Page
-Source0:        https://sourceforge.net/projects/gdcm/files/gdcm%{203}.x/GDCM%{20}%{version}/%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.zst
 Patch1:         gdcm-2.4.0-usecopyright.patch
 BuildRequires:  CharLS-devel >= 2.0
 BuildRequires:  cmake
@@ -36,7 +43,6 @@ BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libjson-c-devel
-BuildRequires:  libpoppler-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
@@ -46,16 +52,13 @@ BuildRequires:  python3-devel
 BuildRequires:  swig
 BuildRequires:  cmake(DCMTK)
 BuildRequires:  pkgconfig(libopenjp2)
-#check for Leap version = 15.4
-## %if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
-## BuildRequires:  gcc11-c++
-## %else
-## BuildRequires:  gcc-c++
-## %endif
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
 BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
+%endif
+%if %{with system_poppler}
+BuildRequires:  pkgconfig(poppler)
 %endif
 
 %description
@@ -88,7 +91,6 @@ are using %{name} for DICOM processing.
 %package        applications
 Summary:        Command line programs for GDCM
 Group:          Productivity/Graphics/Other
-Requires:       libgdcm%{soname}
 
 %description    applications
 This package includes tools to convert, anonymize, manipulate,
@@ -99,7 +101,7 @@ Summary:        Libraries and headers for GDCM
 Group:          Development/Libraries/C and C++
 Requires:       %{libsocksoname}
 Requires:       %{name}-applications%{?_isa} = %{version}-%{release}
-Requires:       libgdcm%{soname}
+Requires:       libgdcm%{soname} = %{version}
 
 %description    devel
 Header files needed for developing applications that want to make use
@@ -151,14 +153,14 @@ export CC=gcc-13
 export CXX=g++-13
 %endif
 %cmake	.. \
-    -DCMAKE_CXX_FLAGS="%{optflags} -fpermissive " \
+  -DCMAKE_CXX_FLAGS="%{optflags} -fpermissive " \
 	-DCMAKE_VERBOSE_MAKEFILE=ON \
 	-DGDCM_INSTALL_PACKAGE_DIR=%{_libdir}/cmake/%{name} \
 	-DGDCM_INSTALL_INCLUDE_DIR=%{_includedir}/%{name} \
 	-DGDCM_INSTALL_DOC_DIR=%{_docdir}/%{name} \
 	-DGDCM_INSTALL_MAN_DIR=%{_mandir} \
 	-DGDCM_INSTALL_LIB_DIR=%{_libdir} \
-	-DGDCM_BUILD_TESTING:BOOL=ON \
+	-DGDCM_BUILD_TESTING:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
 	-DGDCM_DATA_ROOT=../gdcmData/ \
 	-DGDCM_BUILD_EXAMPLES:BOOL=OFF \
 	-DGDCM_DOCUMENTATION:BOOL=OFF \
@@ -178,7 +180,7 @@ export CXX=g++-13
 	-DGDCM_USE_JPEGLS:BOOL=ON \
 	-DGDCM_USE_SYSTEM_LIBXML2:BOOL=ON \
 	-DGDCM_USE_SYSTEM_JSON:BOOL=ON \
-	-DGDCM_USE_SYSTEM_POPPLER:BOOL=ON \
+	-DGDCM_USE_SYSTEM_POPPLER:BOOL=%{?with_system_poppler:ON}%{!?with_system_poppler:OFF} \
 %if 0%{?suse_version} > 1500
 	-DCMAKE_CXX_STANDARD=20
 %endif
@@ -200,21 +202,21 @@ find %{buildroot}%{_datadir}/%{name}/ -depth -name CMakeLists* | xargs rm -rf
 
 %fdupes %{buildroot}
 
-%post -n libgdcm%{soname}  -p /sbin/ldconfig
-%post -n %{libsocksoname}  -p /sbin/ldconfig
-%postun -n libgdcm%{soname} -p /sbin/ldconfig
-%postun -n %{libsocksoname}  -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgdcm%{soname}
+%ldconfig_scriptlets -n %{libsocksoname}
 
+%if %{with tests}
 %check
 # Making the tests informative only for now. Several failing tests (27/228):
 # 11,40,48,49,107-109,111-114,130-135,146,149,,151-154,157,194,216,219
 %make_build test  || exit 0
+%endif
 
 %files
 %doc AUTHORS INSTALL.txt README.md
 %license Copyright.txt README.Copyright.txt
-%dir %{_datadir}/%{name}-3.0
-%{_datadir}/%{name}-3.0/XML/
+%dir %{_datadir}/%{name}-%{series}
+%{_datadir}/%{name}-%{series}/XML/
 
 %files -n libgdcm%{soname}
 %{_libdir}/libgdcm*.so.*
@@ -224,7 +226,6 @@ find %{buildroot}%{_datadir}/%{name}/ -depth -name CMakeLists* | xargs rm -rf
 
 %files applications
 %{_bindir}/*
-%{_mandir}/man1/*.1%{?ext_man}
 
 %files devel
 %{_includedir}/%{name}/

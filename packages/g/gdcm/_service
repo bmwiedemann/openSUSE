@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<services>
+	<service name="obs_scm" mode="manual">
+		<param name="scm">git</param>
+		<param name="url">https://git.code.sf.net/p/gdcm/gdcm</param>
+		<param name="revision">v3.2.5</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">v(.*)</param>
+		<param name="versionrewrite-replacement">\1</param>
+		<param name="filename">gdcm</param>
+		<param name="exclude">Testing</param>
+		<param name="submodules">disable</param>
+	</service>
+	<service name="tar" mode="buildtime" />
+	<service name="recompress" mode="buildtime">
+		<param name="compression">zstd</param>
+		<param name="file">*.tar</param>
+	</service>
+	<service name="set_version" mode="buildtime" />
+</services>
