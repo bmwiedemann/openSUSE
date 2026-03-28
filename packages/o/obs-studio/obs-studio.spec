@@ -118,6 +118,7 @@ cmake -B build/ \
   -DENABLE_PLUGINS=ON \
   -DUNIX_STRUCTURE=1 \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+  -DAPPDATA_RELEASE_DATE=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%d) \
   -DENABLE_NATIVE_NVENC=ON \
   -DENABLE_JACK=ON \
   -DENABLE_SNDIO=ON \

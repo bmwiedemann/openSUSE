@@ -92,4 +92,12 @@ There are still minor multi-architecture adjustments to refine, but the package 
     <comment></comment>
     <requestid>1338583</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>77a0b7015484f8118f7913693f37b1fa</srcmd5>
+    <version>32.1.0</version>
+    <time>1774725245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1343224</requestid>
+  </revision>
 </revisionlist>
