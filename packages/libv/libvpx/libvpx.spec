@@ -1,7 +1,7 @@
 #
 # spec file for package libvpx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define         sover 11
+%define         sover 12
 %define use_gcc13 0%{?suse_version} < 1600
 Name:           libvpx
-Version:        1.15.1
+Version:        1.16.0
 Release:        0
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
