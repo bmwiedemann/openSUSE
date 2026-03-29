@@ -138,4 +138,17 @@
   * chore: Update end year in LICENSE.md</comment>
     <requestid>1339439</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>692d3007aa6f7176231ef665fb79efdc</srcmd5>
+    <version>2.18.1</version>
+    <time>1774807278</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.18.1:
+  * fix: fix `concat_str` for pandas backed by pyarrow large-
+    string
+  * chore: xfail test due to pandas regression
+  * chore: exception `message` attribute annotations
+  * chore: silence deprecationwarning we cannot do anything about</comment>
+    <requestid>1343456</requestid>
+  </revision>
 </revisionlist>

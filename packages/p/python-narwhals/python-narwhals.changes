@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 29 15:07:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.1:
+  * fix: fix `concat_str` for pandas backed by pyarrow large-
+    string
+  * chore: xfail test due to pandas regression
+  * chore: exception `message` attribute annotations
+  * chore: silence deprecationwarning we cannot do anything about
+
+-------------------------------------------------------------------
 Mon Mar 16 21:25:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.0:
