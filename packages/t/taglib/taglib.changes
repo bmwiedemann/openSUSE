@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Mar 24 23:10:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * Support edition, chapter and attachment UIDs in Matroska
+    simple tags.
+  * Avoid duplicates in Matroska complex property keys.
+  * Support for Matroska (MKA, MKV) and WebM files.
+  * Support for NI STEM in MP4 files.
+  * New method isDsd() in WavPack Properties.
+  * Stricter verification of ID3v2 frames.
+  * Fix setting the last header flag in Ogg FLAC files.
+  * Fix reading of the last page in Ogg streams.
+  * Avoid corrupting invalid Ogg FLAC files without Vorbis
+    comment.
+  * Windows: Support MP4 files with 64-bit atoms.
+  * Fix use of property keys with non-ASCII characters in C
+    bindings.
+  * Fix building with Android NDK 29.
+- drop
+  0001-Do-not-warn-when-seeing-FLAC-picture-block-in-Ogg-fi.patch,
+  0002-Set-last-header-flag-in-FLAC-Metadata-block-type-fie.patch,
+  0003-Avoid-corrupting-an-invalid-FLAC-Ogg-file-without-Vo.patch,
+  0004-Fix-reading-of-last-page-in-ogg-stream.patch: upstream
+
+-------------------------------------------------------------------
 Tue Jan 13 01:17:21 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix writing of Vorbis comment for FLAC in Ogg, add patches:
@@ -16,7 +41,7 @@ Thu Sep 25 05:13:20 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 - Update to version 2.1.1
   * Map ID3v2.3 IPLS frames to both ID3v2.4 TIPL and TMCL to have a consistent behavior when using MusicBrainz tags
   * Fix missing include for wchar_t when using C bindings with MinGW.
- 
+
 -------------------------------------------------------------------
 Mon Jun  2 15:34:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 

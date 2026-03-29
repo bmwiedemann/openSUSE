@@ -27,7 +27,7 @@
 %bcond_with tests
 %endif
 Name:           taglib%{psuffix}
-Version:        2.1.1
+Version:        2.2.1
 Release:        0
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later AND MPL-1.1
@@ -36,10 +36,6 @@ URL:            https://taglib.github.io/
 Source0:        https://taglib.github.io/releases/taglib-%{version}.tar.gz
 Source100:      baselibs.conf
 Patch1:         taglib-utf8cpp-include.patch
-Patch2:         0001-Do-not-warn-when-seeing-FLAC-picture-block-in-Ogg-fi.patch
-Patch3:         0002-Set-last-header-flag-in-FLAC-Metadata-block-type-fie.patch
-Patch4:         0003-Avoid-corrupting-an-invalid-FLAC-Ogg-file-without-Vo.patch
-Patch5:         0004-Fix-reading-of-last-page-in-ogg-stream.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
