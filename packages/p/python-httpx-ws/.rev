@@ -20,4 +20,23 @@
   * Fix (#76) memory leak with non-async WebSocketSession</comment>
     <requestid>1223990</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae84ab1be1c90b21c5af27f3edf3575b</srcmd5>
+    <version>0.9.0</version>
+    <time>1774807263</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * Async exceptions are now wrapped in `ExceptionGroup`. Due to
+    the switch to anyio.AsyncContextManagerMixin for cancellation
+    safety, exceptions that propagate out of the async with block
+    are now wrapped in an ExceptionGroup.
+  * Fix #136: unclosed AnyIO queues after the ASGI transport was
+    closed.
+- update to 0.8.2:
+  * ASGIWebSocketTransport: increase the initial receive timeout
+    to 1 second and
+  * make it configurable via `initial_receive_timeout` parameter.
+    Fix #123</comment>
+    <requestid>1343423</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 29 12:17:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Async exceptions are now wrapped in `ExceptionGroup`. Due to
+    the switch to anyio.AsyncContextManagerMixin for cancellation
+    safety, exceptions that propagate out of the async with block
+    are now wrapped in an ExceptionGroup.
+  * Fix #136: unclosed AnyIO queues after the ASGI transport was
+    closed.
+- update to 0.8.2:
+  * ASGIWebSocketTransport: increase the initial receive timeout
+    to 1 second and
+  * make it configurable via `initial_receive_timeout` parameter.
+    Fix #123
+
+-------------------------------------------------------------------
 Wed Nov 13 15:14:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.2:
