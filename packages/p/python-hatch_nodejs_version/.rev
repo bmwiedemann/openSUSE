@@ -43,4 +43,15 @@
     <comment></comment>
     <requestid>1238970</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6eaf2ab0599a3e075de14c4a04b633b5</srcmd5>
+    <version>0.4.0</version>
+    <time>1774807263</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0:
+  * ENH: Accept dev prerelease versions #26 (@minrk)
+  * chore: fix check-release workflow #30 (@agoose77)
+  * DOCS: drop installation link #24 (@agoose77)</comment>
+    <requestid>1343426</requestid>
+  </revision>
 </revisionlist>
