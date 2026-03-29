@@ -1,7 +1,7 @@
 #
 # spec file for package remake
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define base_version 4.3+dbg-1.5
-%define pkg_version 4.3+dbg-1.5
+%define base_version 4.3+dbg-1.6
+%define pkg_version 4.3+dbg-1.6
 Name:           remake
-Version:        4.3_1.5
+Version:        4.3_1.6
 Release:        0
 Summary:        A gnu make version including a debuger
 License:        GPL-3.0-or-later
@@ -27,6 +27,8 @@ Group:          Development/Tools/Building
 Summary(de):    Eine gnu make Version inklusive Debugger
 URL:            http://bashdb.sourceforge.net/remake/
 Source0:        https://downloads.sourceforge.net/project/bashdb/remake/%{base_version}/remake-%{pkg_version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-gcc15.patch gh#Trepan-Debuggers/remake#169 gh#Trepan-Debuggers/remake#170
+Patch0:         fix-gcc15.patch
 BuildRequires:  readline-devel
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
@@ -58,6 +60,12 @@ rm -f %{buildroot}/%{_infodir}/make* \
       %{buildroot}/%{_includedir}/gnuremake.h
 
 %find_lang remake
+
+%check
+# Random test failure in remake 4.3: output-sync deadlocks sometimes
+# https://github.com/Trepan-Debuggers/remake/issues/168
+rm -f tests/scripts/features/output-sync
+%make_build check
 
 %post
 %install_info --info-dir="%{_infodir}" "%{_infodir}"/remake.info*

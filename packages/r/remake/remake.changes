@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 25 16:35:09 UTC 2026 - munix9@googlemail.com
+
+- Update to version 4.3+dbg-1.6
+  * Allow --profile to take an argument to specify callgrind for
+    json PR #132 (Jayson Messenger)
+  * Fix bug in info var PR #113
+  * Typos in make.1 Issue #110
+  * Support gcc-10 Issue #109
+  * Document debugger commands
+  * Debugger commands are in separate .c files (not inlined, .h
+    included)
+
+- Add fix-gcc15.patch
+  * gcc-15 treats void f(); as void f(void);
+    (gh#Trepan-Debuggers/remake#169) (gh#Trepan-Debuggers/remake#170)
+- Add tests/%check section
+
+-------------------------------------------------------------------
 Tue Dec 01 08:05:06 UTC 2020 - Wang Jun <jgwang@suse.com>
 
 - Update to version 4.3+dbg-1.5
