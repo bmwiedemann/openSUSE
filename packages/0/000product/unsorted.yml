@@ -4166,7 +4166,6 @@ unsorted:
   - fence-agents-vmware-rest 
   - fence-agents-wti 
   - fence-agents-zvm 
-  - fence-sanlock 
   - feroxbuster 
   - feroxbuster-bash-completion 
   - festival 
@@ -4393,7 +4392,6 @@ unsorted:
   - fontconfig-32bit 
   - fontconfig-devel 
   - fontconfig-devel-32bit 
-  - fontconfig-devel-doc 
   - fontconfig-doc 
   - fontforge 
   - fontforge-devel 
@@ -11605,6 +11603,7 @@ unsorted:
   - libQt63DQuickScene2D6 
   - libQt63DQuickScene3D6 
   - libQt63DRender6 
+  - libQt6CanvasPainter6 
   - libQt6Charts6 
   - libQt6ChartsQml6 
   - libQt6Coap6 
@@ -11642,6 +11641,7 @@ unsorted:
   - libQt6SerialPort6 
   - libQt6StateMachine6 
   - libQt6StateMachineQml6 
+  - libQt6TaskTree6 
   - libQt6WaylandCompositor6 
   - libQt6WaylandEglCompositorHwIntegration6 
   - libQt6WebViewQuick6 
@@ -13105,7 +13105,7 @@ unsorted:
   - libecap3 
   - libecholib-devel 
   - libecholib1_3 
-  - libecl24_5 
+  - libecl26_3 
   - libecm1 
   - libeconf-devel 
   - libeconf-devel-static 
@@ -13579,7 +13579,7 @@ unsorted:
   - libgdata-devel 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
-  - libgdcm3_0 
+  - libgdcm3_2 
   - libgdiplus-devel 
   - libgdiplus0 
   - libgdk_pixbuf-2_0-0-32bit 
@@ -32373,6 +32373,11 @@ unsorted:
   - qt6-bundledembree-devel-static 
   - qt6-bundledphysx-devel-static 
   - qt6-bundledresonanceaudio-devel-static 
+  - qt6-canvaspainter-devel 
+  - qt6-canvaspainter-docs-html 
+  - qt6-canvaspainter-docs-qch 
+  - qt6-canvaspainter-examples 
+  - qt6-canvaspainter-private-devel 
   - qt6-charts-devel 
   - qt6-charts-docs-html 
   - qt6-charts-docs-qch 
@@ -32418,7 +32423,6 @@ unsorted:
   - qt6-designer-private-devel 
   - qt6-designercomponents-private-devel 
   - qt6-docs-common 
-  - qt6-exampleicons-devel-static 
   - qt6-graphs-devel 
   - qt6-graphs-docs-html 
   - qt6-graphs-docs-qch 
@@ -32453,6 +32457,7 @@ unsorted:
   - qt6-labsqmlmodels-private-devel 
   - qt6-labssettings-private-devel 
   - qt6-labssharedimage-private-devel 
+  - qt6-labsstylekit-private-devel 
   - qt6-labssynchronizer-private-devel 
   - qt6-labswavefrontmesh-private-devel 
   - qt6-languageserver-devel-static 
@@ -32511,7 +32516,6 @@ unsorted:
   - qt6-pdfwidgets-devel 
   - qt6-pdfwidgets-private-devel 
   - qt6-platformsupport-devel-static 
-  - qt6-platformsupport-private-devel 
   - qt6-platformtheme-xdgdesktopportal 
   - qt6-positioning 
   - qt6-positioning-devel 
@@ -32673,6 +32677,10 @@ unsorted:
   - qt6-svg-docs-qch 
   - qt6-svg-examples 
   - qt6-svg-private-devel 
+  - qt6-tasktree-devel 
+  - qt6-tasktree-docs-html 
+  - qt6-tasktree-docs-qch 
+  - qt6-tasktree-examples 
   - qt6-test-devel 
   - qt6-test-private-devel 
   - qt6-texttospeech-devel 
@@ -33781,7 +33789,6 @@ unsorted:
   - sane-backends-devel 
   - sane-backends-devel-32bit 
   - sane-saned 
-  - sanlk-reset 
   - sanlock 
   - sanlock-devel 
   - saphanabootstrap-formula 

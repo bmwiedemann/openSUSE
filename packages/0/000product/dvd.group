@@ -1450,6 +1450,7 @@
     <package name="libQt6LabsQmlModels6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsSettings6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsSharedImage6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libQt6LabsStyleKit6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsSynchronizer6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6LabsWavefrontMesh6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt6Location6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3731,6 +3732,7 @@
     <package name="qt6-multimedia" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-multimedia-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qt6-network-tls" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="qt6-networkinformation-connman" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-networkinformation-glib" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-networkinformation-nm" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="qt6-platformtheme-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
