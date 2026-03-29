@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Mar 26 12:20:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.16.4
+  * Switch upstream
+    http://www.underbit.com/products/mad/
+    -> https://codeberg.org/tenacityteam/libmad
+  * Switch from autotools to cmake
+- Update to version 0.16.3
+  * Disable assembly optimizations for all 64 bit CPU
+    architectures; they are only for 32 and 16 bit
+    architectures.
+  * Fix CPU architecture detection for PowerPC.
+- Update to version 0.16.2
+  * Fix building assembly file on ARM
+  * Fix pkgconfig file when CMAKE_INSTALL_{INCLUDE,LIB}DIR are
+    absolute paths.
+- Update to version 0.16.1
+  * Fix generation of mad.h broken by move to CMake.
+  * Add CMake options for CPU architecture-specific optimizations.
+- Update to version 0.16.0
+  * Add CMake build system
+  * Remove autotools build system
+  * Add pkgconfig and CMake config files
+  * Apply patches from Debian and Fedora
+- Drop not longer needed patches
+  * libmad-0.15.1b-automake.patch
+  * libmad-0.15.1b-pkgconfig.patch
+  * libmad-0.15.1b-gcc43.patch
+  * length-check.patch
+  * libmad-0.15.1b-ppc.patch
+  * libmad.thumb.diff
+  * libmad-x86.patch
+  * Provide-Thumb-2-alternative-code-for-MAD_F_MLN.diff
+- Add patch:
+  * libmad-x86.patch
+
+-------------------------------------------------------------------
 Thu Feb 29 17:19:36 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

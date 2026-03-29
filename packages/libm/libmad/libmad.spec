@@ -1,7 +1,7 @@
 #
 # spec file for package libmad
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,24 +19,18 @@
 %define sover   0
 %define libname %{name}%{sover}
 Name:           libmad
-Version:        0.15.1b
+Version:        0.16.4
 Release:        0
 Summary:        An MPEG audio decoder library
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-URL:            http://www.underbit.com/products/mad/
-Source:         https://sourceforge.net/projects/mad/files/libmad/%{version}/libmad-%{version}.tar.gz
+#Git-Clone:     https://codeberg.org/tenacityteam/libmad.git
+URL:            https://www.underbit.com/products/mad/
+Source:         https://codeberg.org/tenacityteam/libmad/releases/download/%{version}/libmad-%{version}.tar.gz
 Source1000:     baselibs.conf
-Patch0:         libmad-0.15.1b-automake.patch
-Patch1:         libmad-0.15.1b-pkgconfig.patch
-Patch2:         libmad-0.15.1b-gcc43.patch
-Patch3:         Provide-Thumb-2-alternative-code-for-MAD_F_MLN.diff
-Patch4:         libmad.thumb.diff
-Patch5:         libmad-0.15.1b-ppc.patch
-Patch6:         length-check.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+Patch0:         libmad-x86.patch
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 Provides:       mad = %{version}-%{release}
 Obsoletes:      mad < %{version}-%{release}
@@ -77,47 +71,26 @@ This package contains the header files needed to
 develop applications with libmad.
 
 %prep
-%setup -q
-%patch -P 0
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-
-# new autoconf does not support deprecated declare (10 years in deprecation)
-sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.ac
+%autosetup -p1 -n libmad
 
 %build
-autoreconf -fiv
-%configure \
-%if 0%{?__isa_bits} == 64
-  --enable-fpm=64bit \
-%endif
-%ifarch %{arm}
-  --enable-fpm=arm \
-%endif
-  --enable-accuracy \
-  --disable-static
-make %{?_smp_mflags}
+%cmake -DOPTIMIZE=ACCURACY
+%make_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-install -D -m0644 mad.pc "%{buildroot}%{_libdir}/pkgconfig/mad.pc"
+%cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
-%license COPYING
-%doc CHANGES COPYRIGHT CREDITS README TODO VERSION
+%license COPYING COPYRIGHT
+%doc CHANGES CREDITS README.md TODO
 %{_libdir}/libmad.so.%{sover}*
 
 %files devel
 %{_includedir}/mad.h
 %{_libdir}/libmad.so
 %{_libdir}/pkgconfig/mad.pc
+%{_libdir}/cmake/mad
 
 %changelog
