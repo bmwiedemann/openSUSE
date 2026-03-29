@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 24 08:10:55 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.53:
+  * Added ability to read FileCreateDate (btime) on Linux systems
+  * Added a bunch more Sony lenses (thanks Jos Roost)
+  * Added warnings for possibly malicious or corrupted LNK files (#401)
+  * Decode timed GPS from Kenwood DRV-A510W MP4 videos
+  * Decode more information from LNK files
+  * Reduced memory requirements when running on a large number of files,
+    particularly when the -U option is used
+  * Patched a potential security issue in Windows version
+  * Fixed possible "undefined value" runtime warnings when reading torrent and
+    WPG files
+  * Fixed issue which could result in an "uninitialized value" runtime error
+    when parsing corrupted CBOR information
+
+-------------------------------------------------------------------
 Wed Mar  4 09:54:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.52:
