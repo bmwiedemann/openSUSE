@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 29 14:10:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * Build system includes sortedcontainers dependency in the
+    wheel again
+  * BROKEN: missing sortedcontainers dependency from wheel
+  * Add support for Python 3.9 - 3.14
+  * `pyproject.toml`, which modernizes the build and dependency
+    system.
+  * `requirements/*.txt`: If you are not using `pyproject.toml`,
+  * use `pip install -r` on `requirements/common.txt`
+  * Use GitHub Actions for CI testing.
+  * GHA workflows include test coverage reports.
+- Update BuildRequires to use hatchling
+- Add %check section to run tests with pytest
+
+-------------------------------------------------------------------
 Fri May  9 05:11:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

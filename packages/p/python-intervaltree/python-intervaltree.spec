@@ -1,7 +1,7 @@
 #
 # spec file for package python-intervaltree
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           python-intervaltree
-Version:        3.1.0
+Version:        3.2.1
 Release:        0
 Summary:        Editable interval tree data structure for Python
 License:        Apache-2.0
 URL:            https://github.com/chaimleib/intervaltree
 Source:         https://files.pythonhosted.org/packages/source/i/intervaltree/intervaltree-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -55,6 +54,9 @@ sed -i -e '/^#!\//, 1d' intervaltree/*.py
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

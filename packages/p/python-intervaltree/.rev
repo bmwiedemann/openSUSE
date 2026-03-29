@@ -38,4 +38,24 @@
 - No more greedy globs in %files.</comment>
     <requestid>1275992</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>840ec7e2061bb623ac731f5079b01e9b</srcmd5>
+    <version>3.2.1</version>
+    <time>1774807271</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.1:
+  * Build system includes sortedcontainers dependency in the
+    wheel again
+  * BROKEN: missing sortedcontainers dependency from wheel
+  * Add support for Python 3.9 - 3.14
+  * `pyproject.toml`, which modernizes the build and dependency
+    system.
+  * `requirements/*.txt`: If you are not using `pyproject.toml`,
+  * use `pip install -r` on `requirements/common.txt`
+  * Use GitHub Actions for CI testing.
+  * GHA workflows include test coverage reports.
+- Update BuildRequires to use hatchling
+- Add %check section to run tests with pytest</comment>
+    <requestid>1343450</requestid>
+  </revision>
 </revisionlist>
