@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Migrate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Migrate
-Version:        4.0.7
+Version:        4.1.0
 Release:        0
 Summary:        SQLAlchemy database migrations for Flask applications using Alembic
 License:        MIT

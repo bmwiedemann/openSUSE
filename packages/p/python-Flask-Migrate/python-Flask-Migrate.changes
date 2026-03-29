@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 29 12:01:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Accept arguments such as `--directory` in environment
+    variables #553 (commit)
+  * Fix minor typos in documentation #552 (commit) (thanks
+    **Kevin Kirsche**!)
+
+-------------------------------------------------------------------
 Tue Apr 22 02:19:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.
