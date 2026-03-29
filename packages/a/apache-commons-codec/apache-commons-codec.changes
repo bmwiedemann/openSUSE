@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Thu Feb 12 20:00:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.21.0
+  * New features
+    + CODEC-333: Add distinct Base64 decoding for standard and
+      URL-safe formats
+  * Fixed Bugs
+    + Fix oak leaf icon references in overview.html when running
+      'mvn clean javadoc:javadoc'
+    + Fix Apache RAT plugin console warnings
+    + Fix malformed Javadoc comments
+  * Changes
+    + Bump org.apache.commons:commons-parent from 91 to 96 #415,
+      #418
+    + Bump commons-io:commons-io from 2.20.0 to 2.21.0
+    + Bump org.apache.commons:commons-lang3 from 3.19.0 to 3.20.0
+
+-------------------------------------------------------------------
+Thu Feb 12 19:57:38 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.20.0
+  * New features
+    + Add org.apache.commons.codec.digest.Crc16
+    + Add builders to org.apache.commons.codec.digest streams and
+      deprecate some old constructors
+    + Add builder to Base16 streams and deprecate some old
+      constructors
+    + Add support for SHAKE128-256 and SHAKE256-512 to 'DigestUtils'
+      and 'MessageDigestAlgorithms' on Java 25 and up
+    + Add BaseNCodec.AbstractBuilder.setDecodeTable(byte[]) and
+      refactor subclasses
+  * Changes
+    + Deprecate all but one Base32 constructor in favor of the
+      builder added in version 1.17.0
+    + Deprecate all but one Base64 constructor in favor of the
+      builder added in version 1.17.0
+    + BaseNCodecInputStream subclasses are now type-safe to match
+      its matching BaseNCodec
+    + BaseNCodecOutputStream subclasses are now type-safe to match
+      its matching BaseNCodec
+    + Bump org.apache.commons:commons-parent from 85 to 91
+    + [test] Bump org.apache.commons:commons-lang3 from 3.18.0 to
+      3.19.0
+
+-------------------------------------------------------------------
+Thu Feb 12 19:50:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.19.0
+  * New features
+    + Add HmacUtils.hmac(Path)
+    + Add HmacUtils.hmacHex(Path)
+    + Add PMD check to the default Maven goal
+    + Add SpotBugs check to the default Maven goal
+  * Fixed Bugs
+    + Remove -nouses directive from maven-bundle-plugin. OSGi
+      package imports now state 'uses' definitions for package
+      imports, this doesn't affect JPMS
+      (from org.apache.commons:commons-parent:80)
+    + Refactor DigestUtils.updateDigest(MessageDigest, File) to use
+      NIO
+    + CODEC-328:  Clarify Javadoc for
+      org.apache.commons.codec.digest.UnixCrypt.crypt(byte[],String)
+    + Precompile regular expressions in DaitchMokotoffSoundex.Rule
+    + Precompile regular expressions in
+      DaitchMokotoffSoundex.parseRules(Scanner, String, Map, Map)
+    + Precompile regular expressions in
+      Lang.loadFromResource(String, Languages)
+    + Precompile regular expressions in
+      PhoneticEngine.encode(String, LanguageSet)
+    + Precompile regular expressions in
+      org.apache.commons.codec.language.bm.Rule.parse*(*)
+    + Remove redundant checks for whitespace in
+      DaitchMokotoffSoundex.soundex(String, boolean)
+    + Javadoc typo in Base16.java #380
+    + Deprecate unused constant org.apache.commons.codec.language.bm
+      .Rule.ALL
+    + CODEC-331: org.apache.commons.codec.language.bm.Rule
+      .parsePhonemeExpr(String) adds duplicate empty phoneme when
+      input ends with |
+    + CODEC-331: org.apache.commons.codec.language
+      .DaitchMokotoffSoundex.cleanup(String) does not remove special
+      characters like punctuation
+    + Fix PMD multiple UnnecessaryFullyQualifiedName in
+      org.apache.commons.codec.binary.StringUtils
+    + Fix PMD UnusedFormalParameter in private constructor in
+      org.apache.commons.codec.binary.Base16
+    + Fix PMD multiple UnnecessaryFullyQualifiedName in
+      org.apache.commons.codec.digest.Blake3
+    + Fix PMD UnnecessaryFullyQualifiedName in
+      org.apache.commons.codec.digest.Md5Crypt
+    + Fix PMD EmptyControlStatement in
+      org.apache.commons.codec.language.Metaphone
+    + Fix SpotBugs [ERROR] Medium: org.apache.commons.codec.binary
+      .BaseNCodec$AbstractBuilder.setEncodeTable(byte[]) may expose
+      internal representation by storing an externally mutable
+      object into BaseNCodec$AbstractBuilder.encodeTable [org.apache
+      .commons.codec.binary.BaseNCodec$AbstractBuilder] At
+      BaseNCodec.java:[line 131] EI_EXPOSE_REP2
+    + The method org.apache.commons.codec.binary.BaseNCodec
+      .AbstractBuilder.setLineSeparator(byte...) now makes a
+      defensive copy
+    + Avoid unnecessary String conversion in
+      org.apache.commons.codec.language.bm.PhoneticEngine
+      .applyFinalRules(PhonemeBuilder, Map)
+    + Fix SpotBugs [ERROR] High: Potentially dangerous use of
+      non-short-circuit logic in org.apache.commons.codec.language
+      .DaitchMokotoffSoundex.cleanup(String)
+      [org.apache.commons.codec.language.DaitchMokotoffSoundex] At
+      DaitchMokotoffSoundex.java:[line 350]
+      NS_DANGEROUS_NON_SHORT_CIRCUIT
+  * Changes
+    + Bump org.apache.commons:commons-parent from 79 to 85 #375
+    + [test] Bump commons-io:commons-io from 2.18.0 to 2.20.0
+    + [test] Bump org.apache.commons:commons-lang3 from 3.17.0 to
+      3.18.0 #386
+
+-------------------------------------------------------------------
 Fri Mar 28 11:58:08 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
 
 - Update to 1.18.0
@@ -105,7 +222,7 @@ Mon Feb 19 17:47:30 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Wed Oct 18 11:30:31 UTC 2023 - David Anes <david.anes@suse.com>
 
-- Update to 1.16.0: 
+- Update to 1.16.0:
   * Minor improvements #67. Fixes CODEC-295. 	
   * Remove duplicated words from Javadocs.
   * Simplify assertion #84. Fixes CODEC-301.
@@ -136,7 +253,7 @@ Wed Oct 18 11:30:31 UTC 2023 - David Anes <david.anes@suse.com>
   * Bump maven-checkstyle-plugin from 2.17 to 3.2.0 #143.
   * Bump checkstyle from 8.45.1 to 9.3 #97, #100, #101, #103.
   * Bump taglist-maven-plugin from 2.4 to 3.0.0 #102.
-  * Bump jacoco-maven-plugin from 0.8.7 to 0.8.8. 
+  * Bump jacoco-maven-plugin from 0.8.7 to 0.8.8.
 
 -------------------------------------------------------------------
 Thu May  5 16:01:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
@@ -243,7 +360,7 @@ Fri Feb 15 15:39:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>
     + Fluent interface for HmacUtils. Fixes CODEC-222.
     + Make some DigestUtils APIs public. Fixes CODEC-208.
     + Support java.nio.ByteBuffer in DigestUtils. Fixes CODEC-193.
-    + Support java.nio.ByteBuffer in 
+    + Support java.nio.ByteBuffer in
       org.apache.commons.codec.binary.Hex. Fixes CODEC-194.
     + Support JEP 287: SHA-3 Hash Algorithms. Fixes CODEC-213.
     + Support SHA-224 in DigestUtils on Java 8. Fixes CODEC-195.
@@ -256,7 +373,7 @@ Fri Feb 15 15:39:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 	  Fixes CODEC-221.
     + Soundex should support more algorithm variants.
 	  Fixes CODEC-233.
-  * Fixed bugs:  
+  * Fixed bugs:
     + Base32.HEX_DECODE_TABLE contains the wrong value 32.
 	  Fixes CODEC-200.
     + Base64.encodeBase64String could better use newStringUsAscii
@@ -281,7 +398,7 @@ Fri Feb 15 15:39:31 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 - Generate the Ant build file and use it
 - Add an option --with tests and don't run tests by default. This
   diminshes the number of dependencies and speeds-up the build.
-  
+
 -------------------------------------------------------------------
 Tue Feb  5 12:21:12 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
@@ -297,7 +414,7 @@ Tue May 15 07:32:20 UTC 2018 - fstrba@suse.com
 -------------------------------------------------------------------
 Fri Sep 29 08:11:16 UTC 2017 - fstrba@suse.com
 
-- Don't condition the maven defines on release version, but on 
+- Don't condition the maven defines on release version, but on
   _maven_repository being defined
 
 -------------------------------------------------------------------
@@ -321,37 +438,37 @@ Fri Dec  5 11:33:52 UTC 2014 - p.drouand@gmail.com
 
 - Update to version 1.10
   New features:
-  + Add Daitch-Mokotoff Soundex  
+  + Add Daitch-Mokotoff Soundex
     Issue: CODEC-192.
   + QuotedPrintableCodec does not support soft line break per the
     'quoted-printable' example on Wikipedia
     Issue: CODEC-121.
-  + Make possible to provide padding byte to BaseNCodec in constructor  
+  + Make possible to provide padding byte to BaseNCodec in constructor
     Issue: CODEC-181.
   Fixed Bugs:
   + Added clarification to Javadoc of Base64 concerning the use of the
-    urlSafe parameter  
+    urlSafe parameter
     Issue: CODEC-185.
   + Added clarification to the Javadoc of Base[32|64]OutputStream that it
-    is mandatory to call close()  
+    is mandatory to call close()
     Issue: CODEC-191.
-  + Add support for HMAC Message Authentication Code (MAC) digests  
+  + Add support for HMAC Message Authentication Code (MAC) digests
     Issue: CODEC-188.
-  + Beider Morse Phonetic Matching producing incorrect tokens  
+  + Beider Morse Phonetic Matching producing incorrect tokens
     Issue: CODEC-187.
   + NullPointerException in DoubleMetaPhone.isDoubleMetaphoneEqual when
-    using empty strings  
-    Issue: CODEC-184. 
-  + Fix Javadoc 1.8.0 errors  
+    using empty strings
+    Issue: CODEC-184.
+  + Fix Javadoc 1.8.0 errors
     Issue: CODEC-180.
-  + Fix Java 8 build Javadoc errors  
-    Issue: CODEC-189. 
+  + Fix Java 8 build Javadoc errors
+    Issue: CODEC-189.
   Changes:
-  + Deprecate Charsets Charset constants in favor of Java 7's 
-    java.nio.charset.StandardCharsets  
-    Issue: CODEC-178. 
-  + Update from commons-parent 34 to 35  
-    Issue: CODEC-190. 
+  + Deprecate Charsets Charset constants in favor of Java 7's
+    java.nio.charset.StandardCharsets
+    Issue: CODEC-178.
+  + Update from commons-parent 34 to 35
+    Issue: CODEC-190.
 - Use javapackages-tools instead of java-devel
 - Remove gpg_verify usage; let obs handle it
 
@@ -383,11 +500,11 @@ Mon Sep  9 11:04:10 UTC 2013 - tchvatal@suse.com
 -------------------------------------------------------------------
 Mon Aug 26 14:06:06 UTC 2013 - mvyskocil@suse.com
 
-- update to 1.8 
-  * Add DigestUtils.updateDigest(MessageDigest, InputStream). Thanks to Daniel Cassidy.
+- update to 1.8
+  * Add DigestUtils.updateDigest(MessageDigest, InputStream)
   * Add JUnit to test our decode with pad character in the middle.
-  * Add Match Rating Approach (MRA) phonetic algorithm encoder. Thanks to crice.
-  * ColognePhonetic encoder unnecessarily creates many char arrays on every loop run. Thanks to leo141.
+  * Add Match Rating Approach (MRA) phonetic algorithm encoder
+  * ColognePhonetic encoder unnecessarily creates many char arrays on every loop run
   * Base64.encodeBase64URLSafeString doesn't add padding characters at the end.
 - temporary add mozilla-nss to BR: to pass tests
 - drop unecessary source files
@@ -398,12 +515,12 @@ Mon Aug 26 14:06:06 UTC 2013 - mvyskocil@suse.com
 -------------------------------------------------------------------
 Mon Apr  2 13:00:19 UTC 2012 - mvyskocil@suse.cz
 
-- add junit4 to fix a build fail 
+- add junit4 to fix a build fail
 
 -------------------------------------------------------------------
 Tue Feb 28 09:59:47 UTC 2012 - mvyskocil@suse.cz
 
-- update to 1.6, sync with Fedora 
+- update to 1.6, sync with Fedora
 
 -------------------------------------------------------------------
 Fri Sep 22 13:24:21 CEST 2006 - skh@suse.de
