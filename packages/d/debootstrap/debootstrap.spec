@@ -1,7 +1,7 @@
 #
 # spec file for package debootstrap
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Frank Lichtenheld <frank@lichtenheld.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           debootstrap
-Version:        1.0.142
+Version:        1.0.143
 Release:        0
 Summary:        Bootstrap a basic Debian system
 License:        MIT
@@ -37,7 +37,7 @@ unpacking them into a directory which can eventually be chrooted
 into.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup
 
 %build
 # Nothing to build.

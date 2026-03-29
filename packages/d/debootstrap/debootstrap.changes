@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 27 21:24:47 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.143:
+  * hurd: Add umount_on_exit for {proc,dev,servers}
+  * add ParrotOS release symlinks
+  * scripts: gutsy: Allow generation of chroot for Ubuntu releases
+    in ESM
+  * autopkgtest: do not expect deprecated tmpfiles.d directories
+    to exist
+  * Drop priority from d/control, now defaults to optional
+  * Drop Rules-Requires-Root, now defaults to no
+
+-------------------------------------------------------------------
 Wed Nov 19 16:13:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.142:
