@@ -232,4 +232,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221864</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9f945e7117b87f3d5c517db02eb86452</srcmd5>
+    <version>2.25.0</version>
+    <time>1774807267</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1338725 from darix
+
+- update to 2.25.0
+  * Extract `Loofah::HTML5::Scrub.allowed_uri?` which operates on
+    a string. Previously this logic was coupled to the parsed tree
+    in `.scrub_uri_attribute`. #300 @flavorjones
+  * Tightened up how entities and control characters are handled
+    when detecting allowed URIs. #301 @flavorjones
+
+- update to 2.24.1
+  * Import only what's needed from `cgi` for support for Ruby 3.5
+    #296 @Earlopain
+
+- update to 2.24.0
+  * Built-in scrubber `:double_breakpoint` which sees `&lt;br&gt;&lt;br&gt;`
+    and wraps the surrounding content in `&lt;p&gt;` tags. #279, #284
+    @josecolella @torihuang
+  * Built-in scrubber `:targetblank` now skips `a` tags whose
+    `href` attribute is an anchor link. Previously, all `a` tags
+    were modified to have `target='_blank'`. #291 @fnando</comment>
+    <requestid>1343433</requestid>
+  </revision>
 </revisionlist>

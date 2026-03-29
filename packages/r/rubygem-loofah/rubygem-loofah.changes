@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Mar 13 11:58:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.25.0
+  * Extract `Loofah::HTML5::Scrub.allowed_uri?` which operates on
+    a string. Previously this logic was coupled to the parsed tree
+    in `.scrub_uri_attribute`. #300 @flavorjones
+  * Tightened up how entities and control characters are handled
+    when detecting allowed URIs. #301 @flavorjones
+
+-------------------------------------------------------------------
+Fri Jul 18 00:58:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.24.1
+  * Import only what's needed from `cgi` for support for Ruby 3.5
+    #296 @Earlopain
+
+-------------------------------------------------------------------
+Wed Jan 22 02:06:03 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.24.0
+  * Built-in scrubber `:double_breakpoint` which sees `<br><br>`
+    and wraps the surrounding content in `<p>` tags. #279, #284
+    @josecolella @torihuang
+  * Built-in scrubber `:targetblank` now skips `a` tags whose
+    `href` attribute is an anchor link. Previously, all `a` tags
+    were modified to have `target='_blank'`. #291 @fnando
+
+-------------------------------------------------------------------
 Mon Nov  4 17:00:23 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - ## 2.23.1 / 2024-10-25

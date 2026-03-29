@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-loofah
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-loofah
-Version:        2.23.1
+Version:        2.25.0
 Release:        0
 %define mod_name loofah
 %define mod_full_name %{mod_name}-%{version}
@@ -50,6 +50,7 @@ which are based on HTML5lib's whitelist, so it most likely won't make your codes
 
 %install
 %gem_install \
+  --no-rdoc --no-ri \
   --doc-files="CHANGELOG.md MIT-LICENSE.txt README.md" \
   -f
 
