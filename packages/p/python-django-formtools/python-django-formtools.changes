@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:41:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  * Version 2.5 was never released on PyPi due to a
+    pyproject.toml misconfiguration.
+  * Confirmed support for Python 3.12 and Django 5.0.
+  * Replaced deprecated pkg_resources usage by
+    importlib.metadata.
+  * Applied PEP 621 (replaced setup.py with pyproject.toml).
+  * Removed Python 3.7 support.
+  * Updated translations (Galician, Portuguese, Slovenian,
+    Serbian).
+
+-------------------------------------------------------------------
 Tue Jun  3 06:56:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

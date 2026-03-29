@@ -108,4 +108,21 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282121</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e2c5301affe9914dd62bba2c2111c96a</srcmd5>
+    <version>2.5.1</version>
+    <time>1774807258</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.1:
+  * Version 2.5 was never released on PyPi due to a
+    pyproject.toml misconfiguration.
+  * Confirmed support for Python 3.12 and Django 5.0.
+  * Replaced deprecated pkg_resources usage by
+    importlib.metadata.
+  * Applied PEP 621 (replaced setup.py with pyproject.toml).
+  * Removed Python 3.7 support.
+  * Updated translations (Galician, Portuguese, Slovenian,
+    Serbian).</comment>
+    <requestid>1343414</requestid>
+  </revision>
 </revisionlist>
