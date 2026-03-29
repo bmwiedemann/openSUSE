@@ -1,7 +1,7 @@
 #
 # spec file for package python-itemloaders
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-itemloaders
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Base library for scrapy's ItemLoader
 License:        BSD-3-Clause
 URL:            https://github.com/scrapy/itemloaders
 # Use Github archive, the PyPI sdist does not bundle the tests
 Source:         https://github.com/scrapy/itemloaders/archive/refs/tags/v%{version}.tar.gz#/itemloaders-%{version}-gh.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

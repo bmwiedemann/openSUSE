@@ -84,4 +84,17 @@
     directly but is an indirect dependency via ``parsel``)</comment>
     <requestid>1218111</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>97b3b069b6568edb597483bf5df03d76</srcmd5>
+    <version>1.4.0</version>
+    <time>1774807255</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  * Dropped support for Python 3.8-3.9 and PyPy 3.9-3.10
+  * Added support for Python 3.14 and PyPy 3.11
+  * Switched the build system to ``hatchling``
+  * Documentation improvements
+  * CI improvements</comment>
+    <requestid>1343415</requestid>
+  </revision>
 </revisionlist>

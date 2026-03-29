@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:46:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Dropped support for Python 3.8-3.9 and PyPy 3.9-3.10
+  * Added support for Python 3.14 and PyPy 3.11
+  * Switched the build system to ``hatchling``
+  * Documentation improvements
+  * CI improvements
+
+-------------------------------------------------------------------
 Thu Oct 24 19:06:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.2:
