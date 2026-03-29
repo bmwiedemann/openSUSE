@@ -34,7 +34,7 @@
 %endif
 
 Name:           libavif
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -83,8 +83,8 @@ https://aomediacodec.github.io/av1-avif/
 %package -n avif-tools
 Summary:        Tools for libavif
 License:        BSD-2-Clause AND MIT
-Provides:       libavif-tools = %{version}
 Provides:       bundled(libargparse) = 20211125.ee74d1b
+Provides:       libavif-tools = %{version}
 Obsoletes:      libavif-tools < %{version}
 
 %description -n avif-tools
@@ -202,6 +202,8 @@ skip="-E avifgainmaptest"
 %if %{with man_pages}
 %{_mandir}/man1/avifdec.1%{?ext_man}
 %{_mandir}/man1/avifenc.1%{?ext_man}
+%else
+%doc doc/avifdec.1.md doc/avifenc.1.md
 %endif
 
 %files -n gdk-pixbuf-loader-libavif
