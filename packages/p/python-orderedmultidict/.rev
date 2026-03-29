@@ -43,4 +43,15 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281986</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b0842b87c44f1527b18c68d53bafcdbf</srcmd5>
+    <version>1.0.2</version>
+    <time>1774807276</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * homogenize indentation
+  * add tests for __version__ metadata
+  * remove readme linebreaks</comment>
+    <requestid>1343455</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 15 20:53:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * homogenize indentation
+  * add tests for __version__ metadata
+  * remove readme linebreaks
+
+-------------------------------------------------------------------
 Mon Jun  2 15:06:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
