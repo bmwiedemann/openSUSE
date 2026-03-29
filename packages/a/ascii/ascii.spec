@@ -2,6 +2,7 @@
 # spec file for package ascii
 #
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +18,14 @@
 
 
 Name:           ascii
-Version:        3.30
+Version:        3.32
 Release:        0
 Summary:        List ASCII idiomatic names and octal/decimal code-point form
 License:        BSD-2-Clause
 URL:            http://www.catb.org/~esr/ascii/
 Source:         http://www.catb.org/~esr/ascii/%{name}-%{version}.tar.gz
 Source2:        ascii-rpmlintrc
+BuildRequires:  ruby4.0-rubygem-asciidoctor
 
 %description
 Provides easy conversion between various byte representations and the American
@@ -47,12 +49,14 @@ mkdir -p %{buildroot}%{_mandir}/man1
 	PREFIX=%{_prefix} \
 	%{nil}
 
+chmod -x %{buildroot}%{_mandir}/man1/*
+
 %check
 %{buildroot}%{_bindir}/ascii
 
 %files
 %license COPYING
-%doc NEWS.adoc README
+%doc NEWS.adoc README.adoc
 %{_bindir}/ascii
 %{_mandir}/man1/ascii.1%{?ext_man}
 

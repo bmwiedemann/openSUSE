@@ -6,5 +6,6 @@ about a wide variety of hex, binary, octal, Teletype mnemonic, ISO/ECMA code
 point, slang names, XML entity names, and other representations. Given any one
 on the command line, it will try to display all others. Called with no
 arguments it displays a handy small ASCII chart.</description>
+  <devel project="utilities" package="ascii"/>
   <url>http://www.catb.org/~esr/ascii/</url>
 </package>

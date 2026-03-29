@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 29 15:39:56 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 3.32
+  * Allow packagers to pass in hardening flags.
+  * Allow -d/-o/-x/-b to force the output radix.
+
+- update to version 3.31
+  * ChatGPT 5.2 patches to hrden code against UB. Manual page is now spellchecked.
+
+-------------------------------------------------------------------
 Sun Oct 12 19:26:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial version, 3.30

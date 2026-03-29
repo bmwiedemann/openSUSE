@@ -7,4 +7,12 @@
     <comment>esr's ascii tool  See SR#1310942 for busybox conflict addition</comment>
     <requestid>1311243</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f85aa089defb9cbfab0d704d106ef50</srcmd5>
+    <version>3.32</version>
+    <time>1774807281</time>
+    <user>dimstar_suse</user>
+    <comment>ascii 3.32</comment>
+    <requestid>1343465</requestid>
+  </revision>
 </revisionlist>
