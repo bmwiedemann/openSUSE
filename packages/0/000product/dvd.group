@@ -2050,7 +2050,7 @@
     <package name="libgrilo-0_3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgrlnet-0_3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgrlpls-0_3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgroupsock30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libgroupsock33" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgsasl18" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libgsf-1-114" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgsf-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2283,7 +2283,7 @@
     <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblirc_client0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libliveMedia112" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libliveMedia117" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="liblmdb-0_9_35" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="liblognorm5" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
@@ -2841,7 +2841,7 @@
     <package name="libvorbisfile3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvorbisfile3-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvpl2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libvpx11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libvpx12" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvterm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

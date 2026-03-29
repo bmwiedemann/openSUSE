@@ -17125,7 +17125,7 @@ unsorted:
   - libvpl 
   - libvpl-devel 
   - libvpx-devel 
-  - libvpx11-32bit 
+  - libvpx12-32bit 
   - libvsapm-devel 
   - libvsapm-tools 
   - libvsapm1 
@@ -20528,6 +20528,7 @@ unsorted:
   - octave-forge-data-smoothing 
   - octave-forge-database 
   - octave-forge-dataframe 
+  - octave-forge-datatypes 
   - octave-forge-divand 
   - octave-forge-doctest 
   - octave-forge-econometrics 
@@ -26301,7 +26302,6 @@ unsorted:
   - python311-lhafile 
   - python311-lib4sbom 
   - python311-libarchive 
-  - python311-libarchive-c 
   - python311-libbde 
   - python311-libcaes 
   - python311-libcreg 
