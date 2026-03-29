@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Mar 29 15:07:21 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.112.1
+  * fix #22323 - error "cannot get frame pointer" with AA in struct literal
+  * fix #22354 - aa[key] ~= null discarded
+  * fix #22386 - Indexed initialization of multi dimensional const array does 
+    not compile
+  * fix #22406 - [REG 2.112] Error: function '_d_aaLen' is not callable
+  * [stable] Fix #22422 - Missing _d_cast lowering for CommaExp
+  * [stable] etc.linux.memoryerror: Adapt to dynamic SIGSTKSZ since glibc v2.34
+  * Backport PR's to fix stable
+  * fix #22480 - Regression in DMD v2.112, betterC can not work with CTFE 
+    associative array any more
+  * fix #22510 - dup of inout aa broke with 2.112
+  * fix #21976: [REG 2.112.0] Array comparison performance regression
+  * Revert "fix #21976: [REG 2.112.0] Array comparison performance regression"
+  * [stable] Fix #22544 - Cannot index AA in with block
+  * [stable] buildAAIndexRValueX(): Avoid IdentifierExp, prefer direct VarExp
+  * [stable] Fix #22543 - Cannot index AA literal in global-variable 
+    initializer
+  * [stable] Fix #22501 - GC allocation for CTFE-available static array
+  * Fix issue #22535 - [REG 2.112] Unicode symbols inside q
+  * [stable] Fix #22594 - TypeInfo_Class.m_flags wrong wrt. noPointers flag
+    when the only pointers come from tuple members
+  * Fix #22625 - undefined identifier 'addr' in core.sys.posix.netinet.in
+  * Fix Issue #22567 - alias this and nested AAs cause compiler SIGILL
+  * fix issue #22556 - shared AAs with RefCounted values don't work even after
+    removing shared
+
+-------------------------------------------------------------------
 Tue Jan 13 11:30:50 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - use embedded rdmd.d instead of dowloading from URL

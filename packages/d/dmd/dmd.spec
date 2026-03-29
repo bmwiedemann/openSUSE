@@ -29,7 +29,7 @@ BuildRequires:  dmd
 BuildRequires:  phobos-devel-static
 %endif
 Name:           dmd
-Version:        2.112.0
+Version:        2.112.1
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0
