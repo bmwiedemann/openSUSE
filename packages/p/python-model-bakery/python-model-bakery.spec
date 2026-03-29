@@ -1,7 +1,7 @@
 #
 # spec file for package python-model-bakery
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-model-bakery
-Version:        1.20.4
+Version:        1.23.4
 Release:        0
 Summary:        Smart object creation facility for Django
 License:        Apache-2.0
 URL:            https://github.com/model-bakers/model_bakery
 Source:         https://github.com/model-bakers/model_bakery/archive/refs/tags/%{version}.tar.gz#/model-bakery-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module uv-build}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

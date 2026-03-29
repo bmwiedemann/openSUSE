@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Mar 29 14:06:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.23.4:
+  * Fix AttributeError when processing models with reverse
+    ForeignKey relations (`ManyToOneRel`)
+  * Fix `_bulk_create` not setting M2M fields on FK-related
+    objects
+  * [dev] Replace mypy with ty as the primary type checker with
+    stricter type checks
+  * [dev] Fix ty 0.0.17 compatibility: update rule config, fix
+    generic TypeVar bound, pin minimum version
+  * Allow overriding `AutoField` values via iterators with
+    `_quantity` and avoid hangs
+  * Fix `_bulk_create=True` to use bulk_create even without
+    `_quantity`
+  * Fix `_bulk_create` for ManyToManyField using custom `through`
+    models
+  * Fix `related()` with FK relations creating duplicate parent
+    entities
+  * Drop EOL Django 5.0 and 5.1 support
+  * Add explicit field-specific generators for `AutoField`,
+    `BigAutoField`, and `SmallAutoField`
+  * Add dedicated generators for each integer field type that use
+    Django's actual field ranges
+  * Deprecate `gen_integer()` in favor of field-specific
+    generators that respect Django's field ranges
+  * `prepare()` with `GenericForeignKey` no longer accesses the
+    database; `content_object` attribute is unavailable in this
+    mode
+  * Add type hints to `seq()`'s `increment_by` argument
+  * docs: Update `seq()` import in basic usage
+  * Add Python 3.14 support
+  * Add Django 6.0 support
+  * The creation of generic foreign key fields now respects their
+    `for_concrete_model` configuration
+  * Refactor `gen_float()` to use `uniform()` with configurable
+    `min_float`/`max_float` bounds instead of `random() *
+    gen_integer()` which produced skewed distribution
+  * Refactor `gen_interval()` to use
+    `min_interval`/`max_interval` instead of `offset` parameter
+    which never worked as intended due to huge `MAX_INT` range
+  * Fix `gen_date_range()` and `gen_datetime_range()` to prevent
+    empty ranges by enforcing a minimum interval of 1 day
+  * Use `baker_random.randint()` directly in
+    `gen_pg_numbers_range()` instead of `gen_integer()`
+  * The `gen_from_choices` generator now ignores `None` or `""`
+    values in choices when the field doesn't allow null or blank
+    values
+  * [dev] Various improvements to CI Python/Django matrices
+  * Drop fallbacks made for Django < 4.2
+  * Drop Python 3.8 and 3.9 support (reached end of life)
+
+-------------------------------------------------------------------
 Fri Apr 11 12:46:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.4:

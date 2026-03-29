@@ -102,4 +102,41 @@
     `datetime.datetime.utcfromtimestamp`.</comment>
     <requestid>1268609</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>56e6a57d9e8a6bf23c22bde557e306c0</srcmd5>
+    <version>1.23.4</version>
+    <time>1774807270</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.23.4:
+  * Fix AttributeError when processing models with reverse
+    ForeignKey relations (`ManyToOneRel`)
+  * Fix `_bulk_create` not setting M2M fields on FK-related
+    objects
+  * [dev] Replace mypy with ty as the primary type checker with
+    stricter type checks
+  * [dev] Fix ty 0.0.17 compatibility: update rule config, fix
+    generic TypeVar bound, pin minimum version
+  * Allow overriding `AutoField` values via iterators with
+    `_quantity` and avoid hangs
+  * Fix `_bulk_create=True` to use bulk_create even without
+    `_quantity`
+  * Fix `_bulk_create` for ManyToManyField using custom `through`
+    models
+  * Fix `related()` with FK relations creating duplicate parent
+    entities
+  * Drop EOL Django 5.0 and 5.1 support
+  * Add explicit field-specific generators for `AutoField`,
+    `BigAutoField`, and `SmallAutoField`
+  * Add dedicated generators for each integer field type that use
+    Django's actual field ranges
+  * Deprecate `gen_integer()` in favor of field-specific
+    generators that respect Django's field ranges
+  * `prepare()` with `GenericForeignKey` no longer accesses the
+    database; `content_object` attribute is unavailable in this
+    mode
+  * Add type hints to `seq()`'s `increment_by` argument
+  * docs: Update `seq()` import in basic usage
+  * Add Python 3.14 support</comment>
+    <requestid>1343441</requestid>
+  </revision>
 </revisionlist>
