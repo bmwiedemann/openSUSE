@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpx-socks
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-httpx-socks%{psuffix}
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        Proxy (HTTP, SOCKS) transports for httpx
 License:        Apache-2.0
@@ -38,27 +38,30 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module anyio}
-BuildRequires:  %{python_module async-timeout}
+BuildRequires:  %{python_module anyio >= 3.3.4}
+BuildRequires:  %{python_module async-timeout >= 4.0}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module httpx-socks = %{version}}
 BuildRequires:  %{python_module hypercorn}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module sniffio >= 1.1.0}
 BuildRequires:  %{python_module starlette}
 BuildRequires:  %{python_module tiny-proxy}
-BuildRequires:  %{python_module trio}
+BuildRequires:  %{python_module trio >= 0.24}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module yarl}
 %endif
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-httpcore >= 0.17.3
-Requires:       python-httpx >= 0.21.0
-Requires:       python-python-socks >= 2.0.0
-Suggests:       python-async-timeout >= 3.0.1
-Suggests:       python-trio >= 0.16.0
+Requires:       python-httpcore >= 1.0
+Requires:       python-httpx >= 0.28.0
+Requires:       python-python-socks >= 2.4.3
+Requires:       python-sniffio >= 1.1.0
+Suggests:       python-anyio >= 3.3.4
+Suggests:       python-async-timeout >= 4.0
+Suggests:       python-trio >= 0.24
 BuildArch:      noarch
 %python_subpackages
 

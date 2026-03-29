@@ -44,4 +44,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1294586</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>530c54656ef76d39e77dc7bdd6647a82</srcmd5>
+    <version>0.11.0</version>
+    <time>1774807262</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.0:
+  * Modernize build system, use pyproject.toml
+  * Drop support for Python 3.6 and 3.7 (Requires Python &gt;= 3.8)
+  * Updated dependency versions:
+    - httpx &gt;= 0.28.0
+    - httpcore &gt;= 1.0
+    - python-socks &gt;= 2.4.3
+    - trio &gt;= 0.24
+    - async-timeout &gt;= 4.0</comment>
+    <requestid>1343422</requestid>
+  </revision>
 </revisionlist>

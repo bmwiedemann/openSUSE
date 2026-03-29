@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 29 12:16:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Modernize build system, use pyproject.toml
+  * Drop support for Python 3.6 and 3.7 (Requires Python >= 3.8)
+  * Updated dependency versions:
+    - httpx >= 0.28.0
+    - httpcore >= 1.0
+    - python-socks >= 2.4.3
+    - trio >= 0.24
+    - async-timeout >= 4.0
+
+-------------------------------------------------------------------
 Sun Jul 13 12:30:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.1:
