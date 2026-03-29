@@ -17,17 +17,18 @@
 
 
 Name:           nekobox
-Version:        5.10.27
+Version: 5.10.28
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
 URL:            https://github.com/qr243vbi/nekobox
-Source0:        https://github.com/qr243vbi/nekobox/releases/download/%{version}/nekobox-unified-source-%{version}.tar.xz
+Source0: https://github.com/qr243vbi/nekobox/releases/download/%{version}/nekobox-unified-source-%{version}.tar.xz
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  %{!?nekobox_golang_package:golang >= 1.25}%{?nekobox_golang_package}
 BuildRequires:  pkgconfig
 BuildRequires:  sed
+BuildRequires:  libacl-devel
 BuildRequires:  thrift
 BuildRequires:  (libboost-devel or boost-devel)
 BuildRequires:  (libthrift-devel or thrift-devel)
@@ -39,15 +40,19 @@ BuildRequires:  cmake(Qt6Linguist)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  gcc-c++
 Provides:       nekoray
 Conflicts:      nekoray
 
 Requires:       %{name}-core
-%if 0%{?suse_version}
+%if "%{?_vendor}" == "suse"
 BuildRequires:  libboost_filesystem-devel
 Requires:       google-noto-coloremoji-fonts
 Requires:       google-noto-sans-fonts
+%endif
+%if "%{?_vendor}" == "openEuler"
+%define cmake_opts -S . -B %__builddir -DUSE_HOTKEYS=OFF
 %endif
 
 %define core nekobox_core
@@ -90,7 +95,7 @@ VERSION_SINGBOX="$(cat SingBox.Version)"
 %endif
 
 (
-%cmake -GNinja "-DSKIP_UPDATE_BUTTON=ON" "-DNKR_DEFAULT_VERSION=%{version}"
+%cmake -GNinja "-DSKIP_UPDATE_BUTTON=ON" "-DNKR_DEFAULT_VERSION=%{version}" %{?cmake_opts}
 )
 ninja -C "$(realpath %__builddir)" -v -j %{_smp_build_ncpus}
 

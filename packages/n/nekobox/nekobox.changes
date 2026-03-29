@@ -1,31 +1,43 @@
 -------------------------------------------------------------------
-Mon Mar 16 23:23:21 UTC 2026 - bunny bn <g89156436@gmail.com>
+Sun Mar 29 15:10:37 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
-Update to 5.10.27
-Update sing-box, improve context menus, add more languages
-Fix SSH proxy
+Update to 5.10.28
+- Refract UI - Add information page - Add announcements - Add
+Juicity - Add TrustTunnel - Fix NaiveProxy (working on x64 and
+arm64 only for now) - Improve RAM usage - Add fields for HTTP and
+Socks proxy - Update sing-box - Improve RAM memory usage
 
 -------------------------------------------------------------------
-Sun Mar 15 21:17:04 UTC 2026 - bunny bn <g89156436@gmail.com>
+Mon Mar 16 23:23:21 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update NekoBox to 5.10.27
+Update sing-box
+Improve context menu
+Add more languages
+Fix SSH proxy
+Add fields for HTTP and Socks proxy
+
+-------------------------------------------------------------------
+Sun Mar 15 21:17:04 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.26
 Fix core dump issue caused by context menus, add additional
 languages
 
 -------------------------------------------------------------------
-Sat Mar 14 15:48:16 UTC 2026 - bunny bn <g89156436@gmail.com>
+Sat Mar 14 15:48:16 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.25
 Add as-link option
 
 -------------------------------------------------------------------
-Fri Mar 13 10:42:24 UTC 2026 - bunny bn <g89156436@gmail.com>
+Fri Mar 13 10:42:24 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.24
 Improve ToolBox
 
 -------------------------------------------------------------------
-Thu Mar 12 13:39:48 UTC 2026 - bunny bn <g89156436@gmail.com>
+Thu Mar 12 13:39:48 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.23
 Add support for NaiveProxy
@@ -35,30 +47,30 @@ Improve ram usage
 Update sing-box to 1.13.2
 
 -------------------------------------------------------------------
-Sat Mar  7 19:10:50 UTC 2026 - bunny bn <g89156436@gmail.com>
+Sat Mar  7 19:10:50 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.22
 Update sing-box to 1.13.0
 
 -------------------------------------------------------------------
-Fri Mar  6 08:32:42 UTC 2026 - bunny bn <g89156436@gmail.com>
+Fri Mar  6 08:32:42 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.21
 Fix context menu bug, fix toggle window button bug, add more
 translations, improve language selector
 
 -------------------------------------------------------------------
-Sun Mar  1 10:04:52 UTC 2026 - bunny bn <g89156436@gmail.com>
+Sun Mar  1 10:04:52 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.20
 Improve gvisor vpn stack, add more settings, update translations
 
 -------------------------------------------------------------------
-Sat Jan  11 23:47:27 UTC 2026 - bunny bn <g89156436@gmail.com>
+Sat Jan  11 23:47:27 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.9.32
 
 -------------------------------------------------------------------
-Wed Jan  7 20:47:27 UTC 2026 - bunny bn <g89156436@gmail.com>
+Wed Jan  7 20:47:27 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.9.29 
