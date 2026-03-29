@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 28 16:38:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.86
+  * The "BACKWD" funtion in Edit Op. #3 was broken if used on a
+    marked section.
+  * Fixed: Editing the song pos ("POS") value by clicking on its
+    digits had a bug where the new value wouldn't be applied
+    correctly.
+  * Small tweak of low-pass filter function used for Amiga filters.
+
+-------------------------------------------------------------------
 Mon Mar 23 19:05:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.85
