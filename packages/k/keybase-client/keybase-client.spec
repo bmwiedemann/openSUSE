@@ -34,8 +34,9 @@ Patch1:         ensure-mount-dir-exists.patch
 Patch2:         ensure-service-stop-unmounts-filesystem.patch
 Patch3:         update-filippo.io-edwards25519.patch
 Patch4:         downgrade-miekg-dns.patch
+Patch5:         update-go-image.patch
 BuildRequires:  fdupes
-BuildRequires:  go1.24
+BuildRequires:  go1.25
 BuildRequires:  golang-packaging
 BuildRequires:  gzip
 BuildRequires:  pkgconfig
@@ -93,9 +94,12 @@ without using a filesystem mountpoint.
 %autosetup -p1 -n client-%{version}
 cd go
 tar -xaf %{SOURCE1}
+# Avoid a duplicate function declaration
+rm vendor/golang.org/x/text/secure/bidirule/bidirule10.0.0.go
 
 %build
 cd go
+
 %{goprep} github.com/keybase/client/go
 %{gobuild} -tags production keybase
 %{gobuild} -tags production kbfs/kbfsfuse

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 26 20:07:58 UTC 2026 - Matthias Bach <marix@marix.org> - 6.6.0
+
+- Add update-go-image.patch to address bsc#1260696.
+- Switch to go1.25 as required by update go image library.
+
+-------------------------------------------------------------------
 Sat Mar  7 18:09:43 UTC 2026 - Matthias Bach <marix@marix.org> - 6.6.0
 
 - Update to version 6.6.0

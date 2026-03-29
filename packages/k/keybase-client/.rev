@@ -347,4 +347,13 @@
   upstream.</comment>
     <requestid>1337446</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>a92163ff8a60161258b112321d786a99</srcmd5>
+    <version>6.6.0</version>
+    <time>1774807234</time>
+    <user>dimstar_suse</user>
+    <comment>- Add update-go-image.patch to address bsc#1260696.
+- Switch to go1.25 as required by update go image library.</comment>
+    <requestid>1343347</requestid>
+  </revision>
 </revisionlist>
