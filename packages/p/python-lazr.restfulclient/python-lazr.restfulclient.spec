@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazr.restfulclient
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           python-lazr.restfulclient
-Version:        0.14.5
+Version:        0.14.6
 Release:        0
 Summary:        Programmable client library to provide added functionality on top of wadllib
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/lazr.restfulclient
-Source:         https://launchpad.net/lazr.restfulclient/trunk/%{version}/+download/lazr.restfulclient-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM replace obsolete readfp with read_file
-Patch1:         fix_readfp.patch
+Source:         https://files.pythonhosted.org/packages/source/l/lazr.restfulclient/lazr.restfulclient-%{version}.tar.gz
 BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module httplib2}
