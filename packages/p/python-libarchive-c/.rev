@@ -98,4 +98,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1275107</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6616227f13bff15cce2df2c5e2d2494f</srcmd5>
+    <version>5.3</version>
+    <time>1774807261</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3:
+  * The `ArchiveWrite.add_files()` method has a new
+    `symlink_mode` argument.
+  * The `ArchiveEntry` class has a new `stored_digests` property
+    and new methods `get_stored_digest` and `set_stored_digest`.</comment>
+    <requestid>1343421</requestid>
+  </revision>
 </revisionlist>

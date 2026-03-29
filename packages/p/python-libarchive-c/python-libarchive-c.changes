@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 29 12:02:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3:
+  * The `ArchiveWrite.add_files()` method has a new
+    `symlink_mode` argument.
+  * The `ArchiveEntry` class has a new `stored_digests` property
+    and new methods `get_stored_digest` and `set_stored_digest`.
+
+-------------------------------------------------------------------
 Wed Apr 30 06:22:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2:

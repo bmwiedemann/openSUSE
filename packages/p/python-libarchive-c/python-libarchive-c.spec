@@ -1,7 +1,7 @@
 #
 # spec file for package python-libarchive-c
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
+%global skip_python311 1
 Name:           python-libarchive-c
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        Python interface to libarchive
 License:        CC0-1.0
