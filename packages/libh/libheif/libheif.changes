@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 16 09:03:49 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-3949: manipulation of the argument size of a malicious frame can lead to out-of-bounds read (bsc#1259541)
+  * libheif-CVE-2026-3949.patch
+
+-------------------------------------------------------------------
 Fri Jan 16 08:12:26 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.21.2:
@@ -34,6 +41,7 @@ Sat Jan  3 17:48:42 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
   * The FFmpeg decoder plugin will now decode both H.265 and H.264.
   * Support for HEIF text items and language properties.
   * CVEs fixed: CVE-2025-68431
+- fixes [bsc#1255735]
 
 -------------------------------------------------------------------
 Thu Sep 11 12:34:56 UTC 2025 - olaf@aepfle.de

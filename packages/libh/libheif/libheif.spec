@@ -1,6 +1,7 @@
 #
 # spec file for package libheif
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,6 +55,8 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/strukturag/libheif
 Source0:        %{url}/releases/download/v%{version}/libheif-%{version}.tar.gz
 Source99:       baselibs.conf
+# CVE-2026-3949: manipulation of the argument size of a malicious frame can lead to out-of-bounds read (bsc#1259541)
+Patch0:         libheif-CVE-2026-3949.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
