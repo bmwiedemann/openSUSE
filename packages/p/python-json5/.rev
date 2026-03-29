@@ -172,4 +172,15 @@ Required by the latest version of jupyter-jupyterlab-server</comment>
     dependencies</comment>
     <requestid>1338101</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5bf0fcab547431c8a644286b85b1b699</srcmd5>
+    <version>0.14.0</version>
+    <time>1774807266</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.0:
+  * No (non-test) code changes.
+  * Dependency bump.
+  * Update BuildRequires to setuptools &gt;= 61.</comment>
+    <requestid>1343435</requestid>
+  </revision>
 </revisionlist>

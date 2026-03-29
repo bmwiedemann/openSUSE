@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 13:49:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.0:
+  * No (non-test) code changes.
+  * Dependency bump.
+  * Update BuildRequires to setuptools >= 61.
+
+-------------------------------------------------------------------
 Tue Mar 10 21:47:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.0:

@@ -25,7 +25,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-json5
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        A Python implementation of the JSON5 data format
 License:        Apache-2.0
@@ -34,6 +34,7 @@ URL:            https://github.com/dpranke/pyjson5
 Source:         https://github.com/dpranke/pyjson5/archive/v%{version}.tar.gz#/pyjson5-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
