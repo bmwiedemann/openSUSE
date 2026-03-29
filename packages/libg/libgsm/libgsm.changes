@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 23 19:41:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.24
+  * Left-shifting negative signed integers is undefined behavior as
+    per the C standard; so let's not do that.
+- Update to version 1.0.23
+  * Declare signal handlers as accepting an int; sometimes, gcc
+    cares.
+  * Also, write &"s"[x == 1] instead of "s" + (x == 1) to pluralize
+    (pointer arithmetic on arrays is so rare as to elicit compiler
+    warnings in some settings); and why didn't
+    toast_lin.c:linear_input() have a P1 proto macro like
+    linear_output()?
+
+-------------------------------------------------------------------
 Thu Feb 29 16:34:37 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

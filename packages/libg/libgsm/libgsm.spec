@@ -1,7 +1,7 @@
 #
 # spec file for package libgsm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define _name gsm
-%define _version 1.0-pl22
+%define _version 1.0-pl24
 Name:           libgsm
-Version:        1.0.22
+Version:        1.0.24
 Release:        0
 Summary:        GSM 06.10 Lossy Speech Compressor Library and Utilities
 License:        ISC
