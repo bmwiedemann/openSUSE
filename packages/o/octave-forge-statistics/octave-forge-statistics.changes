@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Mar 28 17:00:37 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.8.2:
+  * Important Notice:
+    + Incompatibility with the nan and tablicious packages
+  * News:
+    + Improved support for new data types
+    + Bug fixes in few functions
+    + Improved documentation
+- Update to version 1.8.1:
+  * News:
+    + New dummyvar and parseWilkinsonFormula functions
+    + Improved support for new data types in several functions
+    + Several bug fixes related to various issues
+- Update to version 1.8.0:
+  * News:
+    + New makima function
+    + Updated libsvm library to version 3.36
+    + Updated documentation and many new demos, especially for
+      class methods and properties
+- Update to version 1.7.6:
+  * News:
+    + There are 2 new functions (factoran and multiway) introduced
+      in this release.
+    + Updated documentation and demos for distribution objects.
+    + cvpartition and crossval are now fully MATLAB compatible.
+    + Several bug fixes related to various issues #232, #226
+    + ClassificationKNN can use either 'exhaustive' or 'kdtree'
+      search methods for prediction.
+
+-------------------------------------------------------------------
 Sat Oct 25 12:48:24 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update test exclusion after changed macros in octave package.
