@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 29 15:10:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.5:
+  * [pull #639] Fix middle-word-em interfering with strongs
+  * [pull #640] Fix code friendly extra stopping other syntax
+    being processed
+  * [pull #644] Fix a number of em/strong issues
+  * [pull #659] Fix a number of safemode issues
+  * [pull #665] Rewrite emphasis and strong processing to be more
+    GFM compliant
+  * [pull #672] Fix nested footnote references
+  * [pull #681] Forbid square brackets in reference link IDs
+
+-------------------------------------------------------------------
 Sun Sep 21 19:34:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.4:
