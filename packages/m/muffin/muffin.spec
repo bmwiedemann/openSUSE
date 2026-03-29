@@ -1,7 +1,7 @@
 #
 # spec file for package muffin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ BuildRequires:  mutter-devel
 BuildRequires:  zenity
 BuildRequires:  pkgconfig(cinnamon-desktop) >= 4.0.0
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(gnome-doc-utils)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gudev-1.0)
