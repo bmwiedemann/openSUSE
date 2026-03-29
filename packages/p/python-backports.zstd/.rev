@@ -7,4 +7,14 @@
     <comment>needed by python-hatch</comment>
     <requestid>1325728</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bd622378617e609bc346c72b25e12937</srcmd5>
+    <version>1.3.0</version>
+    <time>1774807255</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Python 3.13/3.14 compat. fixes
+- drop do-not-abort-with-python313.patch (upstream)</comment>
+    <requestid>1343408</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-backports.zstd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 # Only supported with Python <= 3.13
 %define skip_python314 1
 Name:           python-backports.zstd
-Version:        1.0.0
+Version:        1.3.0
 Release:        0
 Summary:        Backport of compressionzstd
 License:        BSD-3-Clause
 URL:            https://github.com/rogdham/backports.zstd
 Source:         https://files.pythonhosted.org/packages/source/b/backports.zstd/backports_zstd-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#Rogdham/backports.zstd#54
-Patch0:         do-not-abort-with-python313.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
