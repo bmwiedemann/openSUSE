@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Mar 28 09:16:25 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.2:
+  * I18n: Update po/LINGUAS list
+  * Fix criticals in g_file_info_get_name with trashed files
+  * I18n: Update po/LINGUAS list
+  * Fix a use-after-free crash in the icon unplace/removal code
+  * Fix column boundary check in xfdesktop_icon_view_unplace_item
+  * Mark shortcut editor group names as translatable
+  * Ensure src icon & parent are writable and can be moved more thoroughly
+  * autotools: ensure xfdesktop-settings links with libxfce4util
+  * Don't limit number of templates shown in the 'Create Document' menu
+  * Add gradient benchmarking test binary to .gitignore
+  * Add test-gradient-benchmarking to autotools build
+  * Set up for new machinery to automatically update copyright year
+  * I18n: Update po/LINGUAS list
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Oct 22 11:13:53 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Switch to using meson for building; this allows building this
