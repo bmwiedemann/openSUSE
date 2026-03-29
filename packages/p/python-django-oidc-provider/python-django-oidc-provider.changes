@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:29:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Changed: Use PyJWT+cryptography instead of
+    jwkest+Cryptodrome.
+  * Added: Translation to Russian.
+  * Changed: Ruff as a fast Python linter and code formatter.
+  * Fixed: client_id sanitization to prevent database errors.
+  * Added: test package against Python 3.12 and 3.13.
+  * Added: test package against Django 5.
+  * Added: support of max_age parameter on authorization request.
+  * Added: Passing Request Parameters as JWTs now returning
+    request_not_supported error.
+  * Added: Simplified chinese translation.
+  * Changed: ID Token JSON encoder improved using
+    DjangoJSONEncoder.
+  * Changed: Use unittest.mock in tests. Remove mock library.
+  * Changed: Improved "OpenID Connect RP-Initiated Logout"
+    implementation.
+  * Fixed: Fix ID Tokens not including standard claims when using
+    extra scope claims.
+  * Fixed: RSA server keys random ordering.
+  * Fixed: Example app working with Django 4.
+- drop python-django-oidc-provider-no-mock.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue Jun  3 06:48:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

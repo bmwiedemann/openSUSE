@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-oidc-provider
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,30 @@
 
 
 Name:           python-django-oidc-provider
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        OpenID Connect Provider implementation for Django
 License:        MIT
 URL:            https://github.com/juanifioren/django-oidc-provider
 Source:         https://github.com/juanifioren/django-oidc-provider/archive/v%{version}.tar.gz#/django-oidc-provider-%{version}.tar.gz
-# https://github.com/juanifioren/django-oidc-provider/issues/401
-Patch2:         python-django-oidc-provider-no-mock.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 3.2
-Requires:       python-pyjwkest >= 1.3.0
+Requires:       python-PyJWT >= 2.8.0
+Requires:       python-cryptography >= 3.4.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module PyJWT >= 2.8.0}
+BuildRequires:  %{python_module cryptography >= 3.4.0}
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module psycopg2}
-BuildRequires:  %{python_module pyjwkest >= 1.3.0}
 BuildRequires:  %{python_module pytest >= 3.6.4}
 BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
