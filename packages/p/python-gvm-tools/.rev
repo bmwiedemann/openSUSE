@@ -180,4 +180,14 @@
     * Fix typo by @k-schlosser in #1205</comment>
     <requestid>1339160</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6aed7695c2cb2d3452e83fa586063800</srcmd5>
+    <version>25.4.9</version>
+    <time>1774807266</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 25.4.9:
+  * Bump the python-packages group
+  * https://github.com/greenbone/gvm- ools/compare/v25.4.8..25.4.9</comment>
+    <requestid>1343438</requestid>
+  </revision>
 </revisionlist>
