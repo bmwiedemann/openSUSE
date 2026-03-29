@@ -3178,4 +3178,37 @@
   * Use PEP 639 license information</comment>
     <requestid>1341537</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>d589fe2c1103e121e606ba53d89e5f11</srcmd5>
+    <version>0.15.8</version>
+    <time>1774807228</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.8 
+ * Preview features
+  * [ruff] New rule unnecessary-if (RUF050) 
+  * [ruff] New rule useless-finally (RUF072) 
+  * [ruff] New rule f-string-percent-format (RUF073): warn when using % operator on an f-string 
+  * [pyflakes] Recognize frozendict as a builtin for Python 3.15+ 
+ * Bug fixes
+  * [flake8-async] Use fully-qualified anyio.lowlevel import in autofix (ASYNC115) 
+  * [flake8-bandit] Check tuple arguments for partial paths in S607 
+  * [pyflakes] Skip undefined-name (F821) for conditionally deleted variables 
+  * E501/W505/formatter: Exclude nested pragma comments from line width calculation 
+  * Fix %foo? parsing in IPython assignment expressions 
+  * analyze graph: resolve string imports that reference attributes, not just modules 
+ * Rule changes
+  * [eradicate] ignore ty: ignore comments in ERA001 
+  * [flake8-bandit] Treat sys.executable as trusted input in S603 
+  * [flake8-self] Recognize Self annotation and self assignment in SLF001 
+  * [pyflakes] F507: Fix false negative for non-tuple RHS in %-formatting 
+  * [refurb] Parenthesize generator arguments in FURB142 fixer 
+ * Performance
+  * Speed up diagnostic rendering 
+ * Server
+  * Warn when Markdown files are skipped due to preview being disabled 
+ * Documentation
+  * Clarify extend-ignore and extend-select settings documentation 
+  * Mention AI policy in PR template</comment>
+    <requestid>1343320</requestid>
+  </revision>
 </revisionlist>
