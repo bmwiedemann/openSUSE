@@ -1,8 +1,8 @@
 #
 # spec file for package libusrp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2018-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define build_firmware 1
 %endif
 Name:           libusrp
-Version:        3.4.10
+Version:        3.4.11
 Release:        0
 Summary:        Stand-alone libusrp for USRP1 from old gnuradio.git
 License:        GPL-3.0-or-later
