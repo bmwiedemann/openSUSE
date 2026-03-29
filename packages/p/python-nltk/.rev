@@ -291,4 +291,12 @@
   - Drop merged CVE-2025-14009.patch</comment>
     <requestid>1337382</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1edab4d51909b67c1f1abdba4dc19a8e</srcmd5>
+    <version>3.9.4</version>
+    <time>1774807248</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1343393</requestid>
+  </revision>
 </revisionlist>

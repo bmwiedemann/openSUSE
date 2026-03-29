@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 26 11:33:25 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.9.4 (CVE-2026-33230, CVE-2026-33231, CVE-2026-33236, bsc#1260066,
+  bsc#1260067, bsc#1260068)
+  * Support Python 3.14
+  * Fix bug in Levenshtein distance when substitution_cost > 2
+  * Fix bug in Treebank detokeniser re quote ordering
+  * Fix bug in Jaro similarity for empty strings
+  * Several security enhancements
+  * Fix GHSA-rf74-v2fm-23pw: unbounded recursion in JSONTaggedDecoder
+  * Implement TextTiling vocabulary introduction method (Hearst 1997)
+  * Fix ALINE feature matrix errors and add comprehensive tests
+  * Support multiple VerbNet versions, fix longid/shortid regex for VerbNet ids
+  * Let downloader fallback to md5 when sha256 is unavailable
+  * Several other minor bugfixes and code cleanups
+
+-------------------------------------------------------------------
 Thu Mar  5 10:59:50 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.9.3 (CVE-2026-0847, bsc#1259232)

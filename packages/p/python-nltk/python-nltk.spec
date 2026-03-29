@@ -19,7 +19,7 @@
 %define modname nltk
 %{?sle15_python_module_pythons}
 Name:           python-nltk
-Version:        3.9.3
+Version:        3.9.4
 Release:        0
 Summary:        Natural Language Toolkit
 License:        Apache-2.0
