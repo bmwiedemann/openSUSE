@@ -20,7 +20,7 @@
 %define pnpver 20
 %define ixmlver 11
 Name:           libupnp
-Version:        1.18.3
+Version:        1.18.4
 Release:        0
 Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause

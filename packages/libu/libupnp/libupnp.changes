@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 28 08:43:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.18.4
+  * Only use SO_REUSEPORT from Linux >= 3.9 onwards
+
+-------------------------------------------------------------------
 Mon Mar 16 12:57:57 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.18.3
