@@ -1,0 +1,98 @@
+From fd9960199976c4aaa9db91739a25e3fec95f6a50 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 28 Mar 2026 19:08:12 +0100
+Subject: [PATCH 1/2] Extend keyHash tests to cover more inputs
+
+See #38.
+---
+ inst/keyHash.m      | 12 ++++++++++++
+ src/__ckeyHash__.cc | 12 ++++++++++++
+ src/__nkeyHash__.cc | 12 ++++++++++++
+ 3 files changed, 36 insertions(+)
+
+diff --git a/inst/keyHash.m b/inst/keyHash.m
+index a5d618d..a25bd42 100644
+--- a/inst/keyHash.m
++++ b/inst/keyHash.m
+@@ -89,6 +89,18 @@ endfunction
+ %! key1 = keyHash (A);
+ %! key2 = keyHash (B);
+ %! assert (isequal (key1, key2), false);
++%!test
++%! A = '';
++%! E = uint64(15921358368119480423);
++%! key = keyHash (A);
++%! assert (isequal(key, E), sprintf("k: %lx e: %lx d: %lx", key, E, key - E));
++%! assert (key, E);
++%!test
++%! A = uint64(128);
++%! E = uint64(8038837787959150693);
++%! key = keyHash (A);
++%! assert (isequal(key, E), sprintf("k: %lx e: %lx d: %lx", key, E, key - E));
++%! assert (key, E);
+ 
+ %!error<Invalid call to keyHash.  Correct usage is:> keyHash ();
+ %!error<keyHash: BASE must be a UINT64 scalar.> keyHash (1, 1);
+diff --git a/src/__ckeyHash__.cc b/src/__ckeyHash__.cc
+index cd20272..1044061 100644
+--- a/src/__ckeyHash__.cc
++++ b/src/__ckeyHash__.cc
+@@ -19,6 +19,7 @@ this program; if not, see <http://www.gnu.org/licenses/>.
+ 
+ #define FNV1A64_PRIME 0x00000100000001b3
+ #include <octave/oct.h>
++#include <array>
+ 
+ using namespace std;
+ 
+@@ -31,6 +32,17 @@ static inline constexpr uint64_t fnv1a64 (const char* buf, size_t len, uint64_t
+ 	return out;
+ }
+ 
++namespace /* tests */ {
++constexpr std::array<char, 4> testData{0, 1, char(0x80), 0};
++static_assert(0 == fnv1a64(testData.data(), 0, 0));
++static_assert(0x123 == fnv1a64(testData.data(), 0, 0x123));
++static_assert(0 == fnv1a64(testData.data(), 1, 0));
++static_assert(FNV1A64_PRIME == fnv1a64(testData.data(), 1, 1));
++static_assert(FNV1A64_PRIME == fnv1a64(testData.data(), 2, 0));
++static_assert(18445758911290863785ull == fnv1a64(testData.data(), 3, 0));
++static_assert(17797707857304284971ull == fnv1a64(testData.data(), 4, 0));
++}
++
+ 
+ DEFUN_DLD (__ckeyHash__, args, nargout,
+            "-*- texinfo -*-\n\
+diff --git a/src/__nkeyHash__.cc b/src/__nkeyHash__.cc
+index 88a917f..74ca4df 100644
+--- a/src/__nkeyHash__.cc
++++ b/src/__nkeyHash__.cc
+@@ -19,6 +19,7 @@ this program; if not, see <http://www.gnu.org/licenses/>.
+ 
+ #define FNV1A64_PRIME 0x00000100000001b3
+ #include <octave/oct.h>
++#include <array>
+ 
+ using namespace std;
+ 
+@@ -31,6 +32,17 @@ static inline constexpr uint64_t fnv1a64 (const char* buf, size_t len, uint64_t
+ 	return out;
+ }
+ 
++namespace /* tests */ {
++constexpr std::array<char, 4> testData{0, 1, char(0x80), 0};
++static_assert(0 == fnv1a64(testData.data(), 0, 0));
++static_assert(0x123 == fnv1a64(testData.data(), 0, 0x123));
++static_assert(0 == fnv1a64(testData.data(), 1, 0));
++static_assert(FNV1A64_PRIME == fnv1a64(testData.data(), 1, 1));
++static_assert(FNV1A64_PRIME == fnv1a64(testData.data(), 2, 0));
++static_assert(18445758911290863785ull == fnv1a64(testData.data(), 3, 0));
++static_assert(17797707857304284971ull == fnv1a64(testData.data(), 4, 0));
++}
++
+ 
+ DEFUN_DLD (__nkeyHash__, args, nargout,
+            "-*- texinfo -*-\n\
+-- 
+2.53.0
+

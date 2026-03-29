@@ -1,0 +1,47 @@
+From 8691dbf508d1816655dad04dae2473ba3fa2b44f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sat, 28 Mar 2026 19:58:43 +0100
+Subject: [PATCH 2/2] keyHash: Force char signedness to fix architecture
+ dependencies
+
+Fixes #38.
+---
+ src/__ckeyHash__.cc | 5 ++++-
+ src/__nkeyHash__.cc | 5 ++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/__ckeyHash__.cc b/src/__ckeyHash__.cc
+index 1044061..e854491 100644
+--- a/src/__ckeyHash__.cc
++++ b/src/__ckeyHash__.cc
+@@ -27,7 +27,10 @@ static inline constexpr uint64_t fnv1a64 (const char* buf, size_t len, uint64_t
+ {
+ 	for (size_t i = 0; i < len; i++)
+   {
+-		out = (out ^ buf[i]) * FNV1A64_PRIME;
++    // default char signedness depends on architecture, for signed for
++    // backwards compatibility
++    const signed char b = buf[i];
++    out = (out ^ b) * FNV1A64_PRIME;
+   }
+ 	return out;
+ }
+diff --git a/src/__nkeyHash__.cc b/src/__nkeyHash__.cc
+index 74ca4df..fae7dc5 100644
+--- a/src/__nkeyHash__.cc
++++ b/src/__nkeyHash__.cc
+@@ -27,7 +27,10 @@ static inline constexpr uint64_t fnv1a64 (const char* buf, size_t len, uint64_t
+ {
+ 	for (size_t i = 0; i < len; i++)
+   {
+-		out = (out ^ buf[i]) * FNV1A64_PRIME;
++    // default char signedness depends on architecture, for signed for
++    // backwards compatibility
++    const signed char b = buf[i];
++    out = (out ^ b) * FNV1A64_PRIME;
+   }
+ 	return out;
+ }
+-- 
+2.53.0
+

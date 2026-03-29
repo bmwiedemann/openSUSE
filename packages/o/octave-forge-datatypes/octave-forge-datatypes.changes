@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sat Mar 28 19:01:44 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build on Aarch64 and PPC64LE, add:
+  * 0001-Extend-keyHash-tests-to-cover-more-inputs.patch
+  * 0002-keyHash-Force-char-signedness-to-fix-architecture-de.patch
+
+-------------------------------------------------------------------
+Sat Mar 28 17:12:33 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version (1.2.1)
