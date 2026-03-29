@@ -27,11 +27,11 @@
 %define modname proto_plus
 %{?sle15_python_module_pythons}
 Name:           python-proto-plus%{psuffix}
-Version:        1.27.1
+Version:        1.27.2
 Release:        0
 Summary:        Pythonic Protocol Buffers
 License:        Apache-2.0
-URL:            https://github.com/googleapis/proto-plus-python
+URL:            https://github.com/googleapis/google-cloud-python
 Source0:        https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 3.19.0}

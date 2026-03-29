@@ -162,4 +162,13 @@
   * remove float_precision for protobuf 7</comment>
     <requestid>1334408</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dffb83ba36953b5eff8168f07fa16cea</srcmd5>
+    <version>1.27.2</version>
+    <time>1774807275</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.27.2:
+  * moved to googlle-cloud-python</comment>
+    <requestid>1343454</requestid>
+  </revision>
 </revisionlist>
