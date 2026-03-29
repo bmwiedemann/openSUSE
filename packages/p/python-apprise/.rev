@@ -124,4 +124,37 @@
   * feat(bark): Add 'call' parameter support to NotifyBark for</comment>
     <requestid>1337352</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c9ec1cc3d8c75c1f9ca9ab345211b5b6</srcmd5>
+    <version>1.9.9</version>
+    <time>1774807253</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.9:
+  * xmpp asyncio test cases improvements in
+  * xmpp send/disconnect race condition in
+  * Resolved 'file can not be opened for read' AttachMemory issue
+  * Matrix v2 API improvements in
+  * ### :bulb: Features
+  * XMPP Multi-User Chat support in
+  * ### :heart: Life-Cycle Support
+  * Specifically URL Builder Preparration:
+  * details() can now be provided in a json response in
+    https://github.com/caronc/apprise/pull/1545
+  * cleanup to repo to reflect URL-Builder coming in
+  * Viber Bot Support in
+  * IRC Support (includes support for ZNC Bouncer) in
+  * XMPP support restored using Slixmpp in
+  * Add Mattermost icon override support
+  * GMX Email Template added in
+  * Added mattermost:// bot support in
+  * bark:// ?format=markdown support for Markdown rendering
+  * matrix:// homeserver not requred by default in
+  * ### :heart: Life-Cycle Support
+  * Standardize linting by enabling Ruff preview rules and
+    updating code base in
+  * Remove unnecessary pytest rpm dependencies in
+  * CLI test cases compatible now with Python v3.15 in
+  * Updated copyright notices to reflect 2026</comment>
+    <requestid>1343398</requestid>
+  </revision>
 </revisionlist>

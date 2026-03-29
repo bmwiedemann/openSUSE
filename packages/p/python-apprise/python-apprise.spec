@@ -25,7 +25,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apprise
-Version:        1.9.7
+Version:        1.9.9
 Release:        0
 Group:          Development/Libraries/Python
 Summary:        A simple wrapper to many popular notification services used today
@@ -61,7 +61,12 @@ Requires:       python-click >= 5.0
 Requires:       python-requests
 Requires:       python-requests-oauthlib
 Recommends:     python-paho-mqtt
+Suggests:       python-cryptography
 Suggests:       python-dbus-python
+Suggests:       python-gntp
+Suggests:       python-PGPy
+Suggests:       python-slixmpp >= 1.10.0
+Suggests:       python-smpplib
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
