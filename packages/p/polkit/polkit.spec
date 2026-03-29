@@ -48,9 +48,6 @@ Patch3:         polkit-keyinit.patch
 # PATCH-FIX-OPENSUSE polkit-adjust-libexec-path.patch -- Adjust path to polkit-agent-helper-1 (bsc#1180474)
 Patch4:         polkit-adjust-libexec-path.patch
 
-# PATCH-FIX-OPENSUSE polkit-fix-oom-cookie-read.patch -- bsc#1260859  ... use a limited getline buffer to avoid endless reads
-Patch5:         polkit-fix-oom-cookie-read.patch
-
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  gtk-doc

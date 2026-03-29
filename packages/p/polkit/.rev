@@ -928,4 +928,12 @@ can switch the default compiler. (forwarded request 1187079 from jamborm)</comme
 - removed 0001-Nested-.policy-files-cause-xml-parsing-overflow-lead.patch: upstream</comment>
     <requestid>1343216</requestid>
   </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>8077f461f3395b4894b3c83601702ddc</srcmd5>
+    <version>127</version>
+    <time>1774807243</time>
+    <user>dimstar_suse</user>
+    <comment>Revert die to https://build.opensuse.org/requests/1343216</comment>
+    <requestid>1343482</requestid>
+  </revision>
 </revisionlist>
