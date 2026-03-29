@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:32:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.0:
+  * Fix context manager for `_process_response` (#827)
+  * Fix mouse event for sql navigation (#847)
+  * Add support for Django 6.0 (#836)
+  * Add support for Python 3.14 (#834)
+  * Get paginator limit from URL params (#646)
+  * Hide pagination when there's only one page (#844)
+  * Remove official support for Python 3.9 (#834)
+  * Fix double EXPLAIN when calling explain on queryset (#654)
+  * Fix serialization issues for binary and json fields (#821)
+  * Reverts #798 which causes issues when serializing JSONFields
+  * Also reverts #798 which has a race condition when modifying
+    `execute_sql`
+  * Catch and ignore sql encoding errors (#810) @albertyw
+  * Document that context_processors.request is required (#815)
+  * Fix documentation formatting (#810) @albertyw
+  * Test refactors (#814) @albertyw
+  * Fixes curl/client values rendering in request_detail (#797)
+  * Fix serialization of non-unicode binary data, add cleanup in
+    middleware (#798) @glennmatthews
+  * Make transactions target the DB alias selected by the router
+    (#801) @OscarVanL
+  * Add support for Django 5.2 (#784) @albertyw
+  * Support opening SQL details in a new window (#788)
+  * Avoid timeouts when deserializing large jsons (#768)
+  * Make autopep8 optional (#782) @albertyw
+  * Fix masking sensitive data when an empty
+    `SILKY_SENSITIVE_KEYS` is provided (#777) @ahsanshafiq742
+  * Remove support for Django 5.0 (#783) @albertyw
+  * Fix logger deprecations (#766) @rjdebastiani
+  * Update dependencies and various autoupdate cleanups
+
+-------------------------------------------------------------------
+Sun Mar 29 10:32:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.0:
+  * ## 5.5.0 (2026-03-06)
+  * :release-by: Albert Wang (@albertyw)
+  * Full Changelog
+
+  * **Fixes:**
+  * Fix context manager for `_process_response` (#827)
+    @izabala033
+  * Fix mouse event for sql navigation (#847) @albertyw
+
+  * **Features/Enhancements:**
+
+  * Add support for Django 6.0 (#836) @albertyw
+  * Add support for Python 3.14 (#834) @albertyw
+  * Get paginator limit from URL params (#646) @strig
+  * Hide pagination when there's only one page (#844) @ShlomoCode
+
+  * **Maintenance and Cleanup:**
+  * Remove official support for Python 3.9 (#834) @albertyw
+  * Dependency updates
+
+
+  * ## 5.4.3 (2025-09-08)
+  * :release-by: Albert Wang (@albertyw)
+  * Full Changelog
+
+  * **Fixes:**
+
+  * Fix double EXPLAIN when calling explain on queryset (#654)
+    @stereodamage
+  * Fix serialization issues for binary and json fields (#821)
+    @albertyw
+
+
+  * ## 5.4.2 (2025-08-17)
+  * :release-by: Albert Wang (@albertyw)
+  * Full Changelog
+
+  * **Fixes:**
+
+  * Reverts #798 which causes issues when serializing JSONFields
+    (#807) @albertyw
+  * Also reverts #798 which has a race condition when modifying
+    `execute_sql` (#816) @albertyw
+  * Catch and ignore sql encoding errors (#810) @albertyw
+    @bpascard
+
+  * **Maintenance and Cleanup:**
+
+  * Document that context_processors.request is required (#815)
+    @albertyw
+  * Fix documentation formatting (#810) @albertyw
+  * Test refactors (#814) @albertyw
+
+
+  * ## 5.4.1 (2025-08-10)
+  * :release-by: Albert Wang (@albertyw)
+  * Full Changelog
+
+  * **Fixes:**
+
+  * Fixes curl/client values rendering in request_detail (#797)
+    @bcmyguest
+  * Fix serialization of non-unicode binary data, add cleanup in
+    middleware (#798) @glennmatthews
+  * Make transactions target the DB alias selected by the router
+    (#801) @OscarVanL
+
+  * **Maintenance and Cleanup:**
+
+  * Dependency updates
+  * Documentation updates
+
+
+  * ## 5.4.0 (2025-05-03)
+  * :release-by: Albert Wang (@albertyw)
+  * Full Changelog
+
+  * **Note: this release removes support for Django 5.0**
+  * **Note: this release removes autoformatting of python
+    snippets; continue formatting by pip installing `django-
+    silk[formatting]`**
+
+  * **Features/Enhancements:**
+
+  * Add support for Django 5.2 (#784) @albertyw
+  * Support opening SQL details in a new window (#788)
+    @joaopedroalbq
+  * Avoid timeouts when deserializing large jsons (#768)
+    @quertenmont
+  * Make autopep8 optional (#782) @albertyw
+
+  * **Fixes:**
+
+  * Fix masking sensitive data when an empty
+    `SILKY_SENSITIVE_KEYS` is provided (#777) @ahsanshafiq742
+
+  * **Maintenance and Cleanup:**
+
+  * Remove support for Django 5.0 (#783) @albertyw
+  * Fix logger deprecations (#766) @rjdebastiani
+  * Update dependencies and various autoupdate cleanups
+
+-------------------------------------------------------------------
 Sun Mar 23 16:38:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.2:
