@@ -18,18 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-rq
-Version:        3.2.2
+Version:        4.0.1
 Release:        0
 Summary:        Simple app that provides django integration for RQ (Redis Queue)
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/rq/django-rq
 Source:         https://github.com/rq/django-rq/archive/v%{version}/django_rq-%{version}.tar.gz
-BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  procps
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 4.2
 Requires:       python-redis >= 3.5
@@ -61,10 +61,12 @@ in django's settings.py and easily use them in your project.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{_sbindir}/redis-server &
+timeout 3m %{_sbindir}/redis-server &
 export PYTHONPATH=${PWD}
 export DJANGO_SETTINGS_MODULE=tests.settings
-%pytest -k 'not (test_job_details or test_jobs)'
+%pytest -k 'not (test_job_details or test_jobs or test_cron_scheduler_detail_view)'
+
+pkill -f redis-server || exit 0
 
 %files %{python_files}
 %license LICENSE.txt

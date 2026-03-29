@@ -120,4 +120,21 @@ already being maintained over a long period by https://build.opensuse.org/users/
     <comment></comment>
     <requestid>1328688</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>21681253e3900919491e52829c5c5c8c</srcmd5>
+    <version>4.0.1</version>
+    <time>1774807256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.1
+  * django-rq now automatically integrates with Django's admin
+    backend without manual URL configuration.
+  * Added new COMMIT_MODE setting to replace AUTOCOMMIT.
+  * Cron scheduler detail page now shows jobs configured in that
+    particular scheduler.
+  * Removed legacy Sentry integration.
+  * Job detail page now shows a job's dependent jobs.
+  * Added missing migration that causes Django's makemigrations
+    to complain.</comment>
+    <requestid>1343404</requestid>
+  </revision>
 </revisionlist>

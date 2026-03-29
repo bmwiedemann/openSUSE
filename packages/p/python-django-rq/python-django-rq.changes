@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 29 09:40:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to 4.0.1
+  * django-rq now automatically integrates with Django's admin
+    backend without manual URL configuration.
+  * Added new COMMIT_MODE setting to replace AUTOCOMMIT.
+  * Cron scheduler detail page now shows jobs configured in that
+    particular scheduler.
+  * Removed legacy Sentry integration.
+  * Job detail page now shows a job's dependent jobs.
+  * Added missing migration that causes Django's makemigrations
+    to complain.
+
+-------------------------------------------------------------------
 Wed Jan 21 13:55:19 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.2.2
