@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 29 12:19:56 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.30
+  * Fix the file chooser not remembering the location of last
+    opened file.
+  * Prevent the seek bar and playback buttons from becoming
+    reversed under RTL locales.
+  * Updated the shortcuts dialog to use libadwaita.
+  * Fix the timestamp popover that appears when hovering the seek
+    bar not appearing at the right location.
+  * Fix Blu-ray discs not being detected.
+  * Add Cornish translation
+  * Add Kazakh translation
+  * Add Uzbek translation
+
+-------------------------------------------------------------------
 Wed Jul 30 08:59:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace unneeded pkgconfig(appstream-glib) with appstream-glib,
