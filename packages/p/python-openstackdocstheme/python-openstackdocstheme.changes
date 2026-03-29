@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Mar 29 14:36:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * ruff: Configure hacking as external linter
+  * Replace obsolete PCRE packages
+  * README: Trivial nits
+  * Add typing
+  * Bump sphinx min version
+  * Enable more ruff rules
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Replace deprecated datetime.utcfromtimestamp
+  * Remove tags from README
+  * Removed code for IE versions below 9 and fix few urls for use
+    https
+  * refactor(js): remove unused jQuery code
+  * feat: add project-scoped search bar to sidebar
+
+-------------------------------------------------------------------
 Mon Nov 10 07:41:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.0:

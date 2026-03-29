@@ -400,4 +400,27 @@
 - fix build against python 3.10</comment>
     <requestid>1316806</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>787ad88fe02cddda180eff5965d7f173</srcmd5>
+    <version>3.6.0</version>
+    <time>1774807268</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.0:
+  * ruff: Configure hacking as external linter
+  * Replace obsolete PCRE packages
+  * README: Trivial nits
+  * Add typing
+  * Bump sphinx min version
+  * Enable more ruff rules
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Replace deprecated datetime.utcfromtimestamp
+  * Remove tags from README
+  * Removed code for IE versions below 9 and fix few urls for use
+    https
+  * refactor(js): remove unused jQuery code
+  * feat: add project-scoped search bar to sidebar</comment>
+    <requestid>1343445</requestid>
+  </revision>
 </revisionlist>
