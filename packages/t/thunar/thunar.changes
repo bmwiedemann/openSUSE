@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 29 08:00:25 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.20.8
+  * Store pending column size changes on close (#1318)
+  * Pass current dir to catfish (#1785)
+  * Ignore G_IO_ERROR_NOT_SUPPORTED (#1782)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Feb 10 16:51:52 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Fix Patch numbering.
