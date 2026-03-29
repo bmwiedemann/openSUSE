@@ -422,4 +422,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1341892</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1bb3b796ed9f16dbca0b353ae7f1cee1</srcmd5>
+    <version>5.2.0</version>
+    <time>1774807260</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.0:
+  * Fix bug in validation where a failure within a schema
+    combiner can result in failure to correctly validate a tree.
+  * Remove unused dependency asdf-transform-schemas.
+  * Drop support for python 3.9.</comment>
+    <requestid>1343410</requestid>
+  </revision>
 </revisionlist>

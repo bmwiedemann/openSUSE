@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:22:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Fix bug in validation where a failure within a schema
+    combiner can result in failure to correctly validate a tree.
+  * Remove unused dependency asdf-transform-schemas.
+  * Drop support for python 3.9.
+
+-------------------------------------------------------------------
 Sun Mar 15 15:16:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:
