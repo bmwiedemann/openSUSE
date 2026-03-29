@@ -1,0 +1,46 @@
+Index: freerdp-2.11.7/winpr/include/winpr/assert.h
+===================================================================
+--- freerdp-2.11.7.orig/winpr/include/winpr/assert.h
++++ freerdp-2.11.7/winpr/include/winpr/assert.h
+@@ -47,6 +47,41 @@
+ 	} while (0)
+ #endif
+ 
++/**
++ * @brief C++ safe cast macro
++ * @since version 3.10.1
++ */
++#ifdef __cplusplus
++#define WINPR_CXX_COMPAT_CAST(t, val) static_cast<t>(val)
++#else
++#define WINPR_CXX_COMPAT_CAST(t, val) (t)(val)
++#endif
++
++/**
++ * @brief A macro to do checked integer casts.
++ * will check if the value does change by casting to and from the target type and comparing the
++ * values. will also check if the sign of a value changes during conversion.
++ *
++ * @param type the type to cast to
++ * @param var the integer of unknown type to cast
++ * @return The casted integer
++ * @since version 3.10.1
++ */
++#if defined(__GNUC__) || defined(__clang__)
++#define WINPR_ASSERTING_INT_CAST(type, ivar)                                                    \
++	__extension__({                                                                             \
++		__typeof(ivar) var = ivar;                                                              \
++		WINPR_ASSERT((var) ==                                                                   \
++		             WINPR_CXX_COMPAT_CAST(__typeof(var), WINPR_CXX_COMPAT_CAST(type, (var)))); \
++		WINPR_ASSERT((((var) > 0) && (WINPR_CXX_COMPAT_CAST(type, (var)) > 0)) ||               \
++		             (((var) <= 0) && WINPR_CXX_COMPAT_CAST(type, (var)) <= 0));                \
++		WINPR_CXX_COMPAT_CAST(type, (var));                                                     \
++	})
++
++#else
++#define WINPR_ASSERTING_INT_CAST(type, var) WINPR_CXX_COMPAT_CAST(type, var)
++#endif
++
+ #ifdef __cplusplus
+ extern "C"
+ {

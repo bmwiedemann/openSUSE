@@ -58,40 +58,65 @@ Patch8:         0006-warnings-fix-Wincompatible-pointer-types.patch
 Patch9:         0007-server-proxy-deactivate-capture-module.patch
 # PATCH-FIX-UPSTREAM -- ffmpeg 7 compat
 Patch10:        0001-Fix-build-with-ffmpeg-7.patch
+# PATCH-FIX-UPSTREAM freerdp-3-macro.patch gh#FreeRDP/FreeRDP!10953 -- macros backport, needed for future backport from versions above 3.10
+Patch11:        freerdp-3-macro.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-22852.patch bsc#1256718 yfjiang@suse.com -- free up old audio formats
 Patch12:        freerdp-CVE-2026-22852.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-22854.patch bsc#1256720 yfjiang@suse.com -- fix constant type
-Patch13:        freerdp-CVE-2026-22854.patch
+Patch14:        freerdp-CVE-2026-22854.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-22855.patch bsc#1256721 yfjiang@suse.com -- add length validity checks
+Patch15:        freerdp-CVE-2026-22855.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-22856.patch bsc#1256722 yfjiang@suse.com -- explicitly lock serial->IrpThreads
-Patch15:        freerdp-CVE-2026-22856.patch
+Patch16:        freerdp-CVE-2026-22856.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-22857.patch bsc#1256723 yfjiang@suse.com -- fix use after free
+Patch17:        freerdp-CVE-2026-22857.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-22859.patch bsc#1256725 yfjiang@suse.com -- check interface indices before use
-Patch17:        freerdp-CVE-2026-22859.patch
+Patch18:        freerdp-CVE-2026-22859.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-23530.patch bsc#1256940 yfjiang@suse.com -- [codec,planar] fix decoder length checks
-Patch18:        freerdp-CVE-2026-23530.patch
+Patch19:        freerdp-CVE-2026-23530.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-23531.patch bsc#1256941 yfjiang@suse.com -- [codec,clear] fix missing length checks
-Patch19:        freerdp-CVE-2026-23531.patch
+Patch20:        freerdp-CVE-2026-23531.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-23532.patch bsc#1256942 yfjiang@suse.com -- [gdi,gfx] properly clamp SurfaceToSurface
-Patch20:        freerdp-CVE-2026-23532.patch
+Patch21:        freerdp-CVE-2026-23532.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-23533.patch bsc#1256943 yfjiang@suse.com -- [codec,clear] fix clear_resize_buffer checks
+Patch22:        freerdp-CVE-2026-23533.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-23534.patch bsc#1256944 yfjiang@suse.com -- [codec,clear] fix off by one length check
-Patch22:        freerdp-CVE-2026-23534.patch
+Patch23:        freerdp-CVE-2026-23534.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-23732.patch bsc#1256945 yfjiang@suse.com -- [codec,color] add freerdp_glyph_convert_ex
+Patch24:        freerdp-CVE-2026-23732.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-23883.patch bsc#1256946 yfjiang@suse.com -- [client,x11] fix double free in case of invalid pointer
+Patch25:        freerdp-CVE-2026-23883.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-23884.patch bsc#1256947 yfjiang@suse.com -- [cache,offscreen] invalidate bitmap before free
+Patch26:        freerdp-CVE-2026-23884.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-24491.patch bsc#1257981 mgorse@suse.com -- [channels,drdynvc] reset channel_callback before close
-Patch23:        freerdp-CVE-2026-24491.patch
+Patch27:        freerdp-CVE-2026-24491.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-24675.patch bsc#1257982 mgorse@suse.com -- [channels,urbdrc] do not free MsConfig on failure
-Patch24:        freerdp-CVE-2026-24675.patch
+Patch28:        freerdp-CVE-2026-24675.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-24676.patch bsc#1257983 mgorse@suse.com -- [channels,audin] reset audin->format
-Patch25:        freerdp-CVE-2026-24676.patch
+Patch29:        freerdp-CVE-2026-24676.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-24679.patch bsc#1257986 mgorse@suse.com -- [channels,urbdrc] ensure InterfaceNumber is within range
-Patch26:        freerdp-CVE-2026-24679.patch
+Patch30:        freerdp-CVE-2026-24679.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-24681.patch bsc#1257988 mgorse@suse.com -- [channels,urbdrc] cancel all usb transfers on channel close
-Patch27:        freerdp-CVE-2026-24681.patch
+Patch31:        freerdp-CVE-2026-24681.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-24682.patch bsc#1257989 mgorse@suse.com -- [channels,audin] fix audin_server_recv_formats cleanup
-Patch28:        freerdp-CVE-2026-24682.patch
+Patch32:        freerdp-CVE-2026-24682.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-24683.patch bsc#1257990 mgorse@suse.com -- [channels,ainput] lock context when updating listener
-Patch29:        freerdp-CVE-2026-24683.patch
+Patch33:        freerdp-CVE-2026-24683.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-24684.patch bsc#1257991 mgorse@suse.com -- [channels,rdpsnd] terminate thread before free
-Patch30:        freerdp-CVE-2026-24684.patch
+Patch34:        freerdp-CVE-2026-24684.patch
 # PATCH-FIX-UPSTREAM freerdp-CVE-2026-24684-2.patch bsc#1257991 mgorse@suse.com -- [channel,rdpsnd] only clean up thread before free
-Patch31:        freerdp-CVE-2026-24684-2.patch
+Patch35:        freerdp-CVE-2026-24684-2.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-26271.patch  bsc#1258979 yfjiang@suse.com -- fix buffer overread in FreeRDP Icon Processing
+Patch36:        freerdp-CVE-2026-26271.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-26955.patch bsc#1258982 yfjiang@suse.com -- fix out-of-bounds write
+Patch37:        freerdp-CVE-2026-26955.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-26965.patch bsc#1258985 yfjiang@suse.com -- fix out-of-bounds write
+Patch38:        freerdp-CVE-2026-26965.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-31806.patch bsc#1259653 yfjiang@suse.com -- fix improper validation of server messages
+Patch39:        freerdp-CVE-2026-31806.patch
+# PATCH-FIX-UPSTREAM freerdp-CVE-2026-31883_31885.patch bsc#1259679 bsc#1259686 yfjiang@suse.com -- fix array bounds check in IMA-ADPCM and MS-ADPCM audio decoders
+Patch40:        freerdp-CVE-2026-31883_31885.patch
+
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
 BuildRequires:  ed

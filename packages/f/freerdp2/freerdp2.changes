@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Mar 26 07:49:22 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Add patches to fix CVE issues:
+  + freerdp-CVE-2026-26271.patch (CVE-2026-26271, bsc#1258979)
+  + freerdp-CVE-2026-26955.patch (CVE-2026-26955, bsc#1258982)
+  + freerdp-CVE-2026-26965.patch (CVE-2026-26965, bsc#1258985)
+  + freerdp-CVE-2026-31806.patch (CVE-2026-31806, bsc#1259653)
+  + freerdp-CVE-2026-31883_31885.patch (CVE-2026-31883,
+    CVE-2026-31885, bsc#1259679 bsc#1259686)
+
+-------------------------------------------------------------------
+Wed Mar 11 12:06:22 UTC 2026 - jjindrak@suse.com
+
+- Fix for SG#71728, bsc#1259251:
+  * freerdp-CVE-2026-24491.patch: Fix use-after-free that was
+    accidentally introduced in the backport.
+
+-------------------------------------------------------------------
+Thu Feb 26 03:11:35 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Add patches to fix CVE issues:
+  + freerdp-3-macro.patch
+  + freerdp-CVE-2026-22855.patch (CVE-2026-22855, bsc#1256721)
+  + freerdp-CVE-2026-22857.patch (CVE-2026-22857, bsc#1256723)
+  + freerdp-CVE-2026-23533.patch (CVE-2026-23533, bsc#1256943)
+  + freerdp-CVE-2026-23732.patch (CVE-2026-23732, bsc#1256945)
+  + freerdp-CVE-2026-23883.patch (CVE-2026-23883, bsc#1256946)
+  + freerdp-CVE-2026-23884.patch (CVE-2026-23884, bsc#1256947)
+
+-------------------------------------------------------------------
 Wed Feb 18 22:16:47 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add more CVE fixes:
