@@ -343,4 +343,29 @@
 - remove unneded mock dependency</comment>
     <requestid>1316860</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>04338cb9ba417652e764d96ec3fa9f33</srcmd5>
+    <version>3.10.1</version>
+    <time>1774807269</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.10.1:
+  * Replace usage of undocumented logging.WARN
+  * Fix mypy errors
+
+- update to 3.10.0:
+  * Move fixture
+  * Restructure tests
+  * Add typing
+  * Add ruff
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * reno: Update master for unmaintained/2024.1
+  * Bump pyupgrade target to 3.10+
+  * Migrate bandit options to pyproject.toml
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2</comment>
+    <requestid>1343447</requestid>
+  </revision>
 </revisionlist>
