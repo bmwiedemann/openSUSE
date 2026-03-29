@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.middleware
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.middleware
-Version:        6.6.0
+Version:        8.0.0
 Release:        0
 Summary:        OpenStack oslo.middleware library
 License:        Apache-2.0
@@ -55,6 +55,11 @@ Requires:       python-oslo.utils >= 3.33.0
 Requires:       python-statsd >= 3.2.1
 Requires:       python-stevedore >= 1.20.0
 BuildArch:      noarch
+%if "python%{python_nodots_ver}" == "%{primary_python}"
+Obsoletes:      python3-oslo.middleware < %{version}
+%else
+Conflicts:      python3-oslo.middleware < %{version}
+%endif
 %python_subpackages
 
 %description

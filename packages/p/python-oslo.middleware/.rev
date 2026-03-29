@@ -411,4 +411,31 @@
     <comment>switch to singlespec</comment>
     <requestid>1316784</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9f7a80f1e687f079ecd854f6ebefe567</srcmd5>
+    <version>8.0.0</version>
+    <time>1774807272</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.0.0:
+  * Add typing classifier
+  * Drop deprecated argument type
+  * Enable logging related ruff checks
+  * ruff: Enable missing E5 check
+  * Run mypy from tox
+  * Delay string interpolations at logging calls
+  * pre-commit: Bump versions
+  * Add missing py.typed file
+  * ruff: Use more specific name to enable pyupgrade rule
+  * reno: Update master for unmaintained/2024.1
+  * cors: Remove multiple config block parsing
+  * Remove filter support of HealthCheck middleware
+  * Fix example of Healthcheck usage
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+- add obsoletes/conflicts</comment>
+    <requestid>1343461</requestid>
+  </revision>
 </revisionlist>

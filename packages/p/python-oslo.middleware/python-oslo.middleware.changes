@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Mar  9 21:30:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.0:
+  * Add typing classifier
+  * Drop deprecated argument type
+  * Enable logging related ruff checks
+  * ruff: Enable missing E5 check
+  * Run mypy from tox
+  * Delay string interpolations at logging calls
+  * pre-commit: Bump versions
+  * Add missing py.typed file
+  * ruff: Use more specific name to enable pyupgrade rule
+  * reno: Update master for unmaintained/2024.1
+  * cors: Remove multiple config block parsing
+  * Remove filter support of HealthCheck middleware
+  * Fix example of Healthcheck usage
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
+Mon Nov 10 15:49:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add obsoletes/conflicts
+
+-------------------------------------------------------------------
 Sun Nov  9 15:44:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.6.0:
