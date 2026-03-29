@@ -231,4 +231,58 @@
   * Updated Dutch translation</comment>
     <requestid>1341898</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ab0abb5a74a17b8f2ade5a40e45a2b4f</srcmd5>
+    <version>1.17.1</version>
+    <time>1774555730</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.17.1
+- Upstream changes:
+  * Updated Proton Manager screenshot in metadata
+  * Updated Proton Manager screenshot
+  * Updated Portuguese translation
+  * Add a delay while checking the game process
+  * Proton-CachyOS second
+  * Refactor and cleanup
+  * Add Italian translation to desktop file
+  * italian translation of additional strings
+  * added warning when deleting shared prefix
+  * Removed language leftover files
+  * Removed pot files
+  * Turkish translation files
+  * Message after 2 hours
+  * translated faugus-run
+  * Updated Chinese (Traditional) translation
+  * Updated Portuguese translation
+  * Fixed some splash window missing strings
+  * Fixed webbrowser import
+  * Updated Portuguese translation
+  * Refactored Splash messages
+  * Updated Portuguese translation
+  * Reduced ram usage
+  * Improved splash window closing
+  * Added support for Proton-CachyOS
+  * addad translator name
+  * updated translation</comment>
+    <requestid>1342699</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2565557fdcc22041e873ac2b97008062</srcmd5>
+    <version>1.17.2</version>
+    <time>1774807239</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.17.2
+- Upstream changes:
+  * Updated Flatpak instructions
+  * Running multiple applications instructions
+  * Run multiple apps in prefix with new umu
+  * Delay play button at the beginning
+  * update pl
+  * Block button play 1 second
+  * Added a small delay to button play
+  * Added Japanese translation
+  * More code cleanup
+  * Added support to non ascii characters in title</comment>
+    <requestid>1343359</requestid>
+  </revision>
 </revisionlist>

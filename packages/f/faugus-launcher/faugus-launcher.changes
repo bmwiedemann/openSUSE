@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Mar 28 21:28:55 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.17.2
+- Upstream changes:
+  * Updated Flatpak instructions
+  * Running multiple applications instructions
+  * Run multiple apps in prefix with new umu
+  * Delay play button at the beginning
+  * update pl
+  * Block button play 1 second
+  * Added a small delay to button play
+  * Added Japanese translation
+  * More code cleanup
+  * Added support to non ascii characters in title
+
+-------------------------------------------------------------------
+Wed Mar 25 18:18:54 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.17.1
+- Upstream changes:
+  * Updated Proton Manager screenshot in metadata
+  * Updated Proton Manager screenshot
+  * Updated Portuguese translation
+  * Add a delay while checking the game process
+  * Proton-CachyOS second
+  * Refactor and cleanup
+  * Add Italian translation to desktop file
+  * italian translation of additional strings
+  * added warning when deleting shared prefix
+  * Removed language leftover files
+  * Removed pot files
+  * Turkish translation files
+  * Message after 2 hours
+  * translated faugus-run
+  * Updated Chinese (Traditional) translation
+  * Updated Portuguese translation
+  * Fixed some splash window missing strings
+  * Fixed webbrowser import
+  * Updated Portuguese translation
+  * Refactored Splash messages
+  * Updated Portuguese translation
+  * Reduced ram usage
+  * Improved splash window closing
+  * Added support for Proton-CachyOS
+  * addad translator name
+  * updated translation
+
+-------------------------------------------------------------------
 Sat Mar 21 20:39:25 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.16.6
