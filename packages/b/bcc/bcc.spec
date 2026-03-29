@@ -72,9 +72,9 @@ added to Linux 3.15. Much of what BCC uses requires Linux 4.1 and above.
 Summary:        Shared library from the BPF Compiler Collection
 Group:          System/Libraries
 Requires:       kernel >= 4.1.0
-Requires:       kernel-devel >= 4.1.0
 Requires:       (kernel-debug-devel if kernel-debug)
 Requires:       (kernel-default-devel if (kernel-default or kernel-default-base))
+Requires:       (kernel-devel >= 4.1.0 or kernel-devel-longterm >= 4.1.0)
 Requires:       (kernel-kvmsmall-devel if kernel-kvmsmall)
 Requires:       (kernel-longterm-devel if kernel-longterm)
 Requires:       (kernel-pae-devel if kernel-pae)

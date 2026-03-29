@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 26 14:27:43 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Change libbcc0 explicit dependency onto kernel-devel.
+  Allowing for kernel-longterm only systems.
+
+-------------------------------------------------------------------
 Fri Feb 20 09:43:48 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 0.36.1
