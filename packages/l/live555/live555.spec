@@ -1,7 +1,7 @@
 #
 # spec file for package live555
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Dominique Leuenberger, Ramiswil, Switzerland
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,16 @@
 #
 
 
-%define lmdmaj 112
+%define lmdmaj 117
 
 Name:           live555
-Version:        2024.08.01
+Version:        2026.03.23
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only
 Group:          System/Libraries
 URL:            http://www.live555.com/liveMedia/
-Source:         http://www.live555.com/liveMedia/public/live.%{version}.tar.gz
+Source:         https://download.live555.com/live.%{version}.tar.gz
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch0:         %{name}-fpic.patch
 BuildRequires:  gcc-c++
@@ -56,11 +56,11 @@ This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
 can be used to build streaming applications
 
-%package -n libgroupsock30
+%package -n libgroupsock33
 Summary:        Group sock library of live555 streaming media
 Group:          System/Libraries
 
-%description -n libgroupsock30
+%description -n libgroupsock33
 This code forms a set of C++ libraries for multimedia streaming,
 using open standard protocols (RTP/RTCP, RTSP, SIP). These libraries
 can be used to build streaming applications
@@ -79,7 +79,7 @@ Summary:        LIVE555 Streaming Media
 Group:          Development/Languages/C and C++
 Requires:       libBasicUsageEnvironment2 = %{version}
 Requires:       libUsageEnvironment3 = %{version}
-Requires:       libgroupsock30 = %{version}
+Requires:       libgroupsock33 = %{version}
 Requires:       libliveMedia%{lmdmaj} = %{version}
 Requires:       pkgconfig
 Requires:       pkgconfig(openssl)
@@ -132,14 +132,10 @@ Libs: -lliveMedia -lBasicUsageEnvironment -lUsageEnvironment -lgroupsock
 Cflags: -I${includedir}/liveMedia -I${includedir}/UsageEnvironment -I${includedir}/groupsock -I${includedir}/BasicUsageEnvironment
 EOF
 
-%post -n libliveMedia%{lmdmaj} -p /sbin/ldconfig
-%post -n libBasicUsageEnvironment2 -p /sbin/ldconfig
-%post -n libgroupsock30 -p /sbin/ldconfig
-%post -n libUsageEnvironment3 -p /sbin/ldconfig
-%postun -n libliveMedia%{lmdmaj} -p /sbin/ldconfig
-%postun -n libBasicUsageEnvironment2 -p /sbin/ldconfig
-%postun -n libgroupsock30 -p /sbin/ldconfig
-%postun -n libUsageEnvironment3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libliveMedia%{lmdmaj}
+%ldconfig_scriptlets -n libBasicUsageEnvironment2
+%ldconfig_scriptlets -n libgroupsock33
+%ldconfig_scriptlets -n libUsageEnvironment3
 
 %files
 %{_bindir}/*
@@ -152,9 +148,9 @@ EOF
 %license COPYING
 %{_libdir}/libBasicUsageEnvironment.so.2*
 
-%files -n libgroupsock30
+%files -n libgroupsock33
 %license COPYING
-%{_libdir}/libgroupsock.so.30*
+%{_libdir}/libgroupsock.so.33*
 
 %files -n libUsageEnvironment3
 %license COPYING

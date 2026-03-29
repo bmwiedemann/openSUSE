@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:03:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2026.03.23:
+  + Fixed a bug in the RTSP server code that caused it to
+    improperly handle non-interleaved "SETUP"s that were sent for a
+    session where interleaving (i.e., RTP/RTCP-over-TCP) had
+    already been "SETUP".  (This could cause a 'use-after-free'
+    error.
+  - For changes between 2024.08.01 to today, please refer to
+    https://download.live555.com/changelog.txt
+
+-------------------------------------------------------------------
 Sat Aug 31 16:01:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024-08-01:
