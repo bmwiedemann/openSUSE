@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sat Mar 28 15:01:07 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add MozillaFirefox to _extra
+  we do need some browser 
+
+-------------------------------------------------------------------
+Thu Jan 29 19:33:22 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add hyprland-extra pattern 
+
+-------------------------------------------------------------------
+Thu Jan 29 16:56:39 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add hyprland-branding-openSUSE
+
+-------------------------------------------------------------------
+Thu Jan 29 16:40:44 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- foot -> kitty 
+
+-------------------------------------------------------------------
+Thu Jan 29 16:04:34 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Use greetd-gtkgreet-hyprland
+
+-------------------------------------------------------------------
+Thu Jan 29 14:44:22 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Initial version of pattern-hyprland

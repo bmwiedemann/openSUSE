@@ -1,0 +1,5 @@
+<package name="patterns-hyprland" project="openSUSE:Factory">
+  <title>Patterns for Hyprland</title>
+  <description></description>
+  <devel project="X11:Wayland" package="patterns-hyprland"/>
+</package>
