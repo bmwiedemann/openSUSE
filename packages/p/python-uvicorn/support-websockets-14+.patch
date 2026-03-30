@@ -1,12 +1,10 @@
-Index: uvicorn-0.36.0/pyproject.toml
-===================================================================
---- uvicorn-0.36.0.orig/pyproject.toml
-+++ uvicorn-0.36.0/pyproject.toml
-@@ -130,6 +130,7 @@ filterwarnings = [
+--- uvicorn-0.40.0.orig/pyproject.toml	2025-12-21 15:04:42.000000000 +0100
++++ uvicorn-0.40.0/pyproject.toml	2026-03-27 19:52:49.816239634 +0100
+@@ -127,6 +127,7 @@
      "ignore: websockets.legacy is deprecated.*:DeprecationWarning",
      "ignore: websockets.server.WebSocketServerProtocol is deprecated.*:DeprecationWarning",
      "ignore: websockets.client.connect is deprecated.*:DeprecationWarning",
 +    "ignore: websockets.exceptions.InvalidStatusCode is deprecated:DeprecationWarning",
+     # httptools in Python 3.14t needs the `PYTHON_GIL=0` environment variable, or raises a RuntimeWarning.
+     "ignore: The global interpreter lock (GIL)*:RuntimeWarning"
  ]
- 
- [tool.coverage.run]

@@ -1,7 +1,7 @@
 #
 # spec file for package python-uvicorn
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-uvicorn
-Version:        0.36.0
+Version:        0.40.0
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
@@ -31,9 +31,7 @@ URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Ignore the large amount of DeprecationWarnings that websockets 14 gave us
 Patch0:         support-websockets-14+.patch
-# PATCH-FIX-UPSTREAM small part of https://github.com/Kludex/uvicorn/pull/2548 test on 3.14
-Patch1:         py314.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -43,8 +41,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-click >= 7.0
 Requires:       python-h11 >= 0.8.0
 Recommends:     python-PyYAML >= 5.1
-Recommends:     python-httptools >= 0.4.0
-Recommends:     python-websockets >= 8.0
+Recommends:     python-httptools >= 0.6.3
+Recommends:     python-websockets >= 10.4
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -57,8 +55,8 @@ Requires(postun): update-alternatives
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module h11 >= 0.8.0}
-BuildRequires:  %{python_module httptools >= 0.4.0}
-BuildRequires:  %{python_module httpx >= 0.27}
+BuildRequires:  %{python_module httptools >= 0.6.3}
+BuildRequires:  %{python_module httpx >= 0.28}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
@@ -69,7 +67,7 @@ BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module websockets >= 10.4}
 BuildRequires:  %{python_module wsproto >= 1.2.0}
 %if 0%{?suse_version} > 1500
-BuildRequires:  %{python_module uvloop >= 0.14.0}
+BuildRequires:  %{python_module uvloop >= 0.15.1}
 %endif
 # We don't want watchfiles in Ring1
 #BuildRequires:  #{python_module watchfiles >= 0.13}
