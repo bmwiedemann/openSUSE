@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.component
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,13 +27,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.component%{psuffix}
-Version:        6.0
+Version:        7.1
 Release:        0
 Summary:        Zope Component Architecture
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/zope.component
-Source:         https://files.pythonhosted.org/packages/source/z/zope.component/zope.component-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope.component/zope_component-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -41,7 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.event
 Requires:       python-zope.hookable >= 4.2.0
-Requires:       python-zope.interface >= 5.3.0a1
+Requires:       python-zope.interface >= 5.3
 #test requirements
 %if %{with test}
 BuildRequires:  %{python_module zope.component = %{version}}
@@ -56,6 +56,7 @@ BuildRequires:  %{python_module zope.proxy}
 BuildRequires:  %{python_module zope.security}
 %endif
 %endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -70,7 +71,7 @@ Please see http://docs.zope.org/zope.component/ or doc package for the
 documentation.
 
 %prep
-%setup -q -n zope.component-%{version}
+%setup -q -n zope_component-%{version}
 rm -rf src/zope.component.egg-info
 
 %build
@@ -94,7 +95,6 @@ rm -rf src/zope.component.egg-info
 %doc CHANGES.rst README.rst
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/component
-%{python_sitelib}/zope.component-%{version}-py*-nspkg.pth
 %{python_sitelib}/zope[_.]component-%{version}.dist-info
 %endif
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 30 03:49:32 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.1:
+  * Move package metadata from setup.py to pyproject.toml.
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+  * Remove run-time dependency on setuptools.
+  * Make .testlayer.ZCMLFileLayer compatible with PEP-420 namespace packages.
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+- Convert to noarch, it doesn't build any binaries.
+
+-------------------------------------------------------------------
 Tue Apr  1 16:05:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools

@@ -129,4 +129,19 @@ New dependency of python-Pyramid</comment>
     <comment>Make it compatible with new setuptools</comment>
     <requestid>1266262</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1776fa31c8030a2b4d57ba859c358fd9</srcmd5>
+    <version>7.1</version>
+    <time>1774888324</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.1:
+  * Move package metadata from setup.py to pyproject.toml.
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+  * Remove run-time dependency on setuptools.
+  * Make .testlayer.ZCMLFileLayer compatible with PEP-420 namespace packages.
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+- Convert to noarch, it doesn't build any binaries.</comment>
+    <requestid>1343555</requestid>
+  </revision>
 </revisionlist>
