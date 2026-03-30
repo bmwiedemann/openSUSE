@@ -125,4 +125,20 @@
   * NEW Add ``enable_mouse`` configuration option.</comment>
     <requestid>1289707</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>54a1dd762bd9b80e96005c69300ebc36</srcmd5>
+    <version>0.14.0</version>
+    <time>1774888224</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.0:
+  * CHANGE the pkg_resources library is no longer required.
+  * FIX the location of caching database to $XDG_CACHE_HOME
+  * FIX color of eventcolumn when editing events in ikhal
+  * FIX added support for icalendar&gt;=7.0.0.
+  * NEW DEPENDENCY sphinxfeed-lsaffre
+  * DROPPED DEPENDENCY sphinxcontrib-newsfeed
+  * NEW support python 3.14
+  * DROPPED support for python versions &lt; 3.10.</comment>
+    <requestid>1343442</requestid>
+  </revision>
 </revisionlist>

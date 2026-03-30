@@ -1,7 +1,7 @@
 #
 # spec file for package python-khal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-khal
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        CLI calendar with CalDAV support
 License:        MIT
 URL:            https://lostpackets.de/khal/
 Source0:        https://files.pythonhosted.org/packages/source/k/khal/khal-%{version}.tar.gz
-BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module click >= 3.2}
 BuildRequires:  %{python_module click-log >= 0.2.0}
 BuildRequires:  %{python_module configobj}
@@ -37,22 +36,22 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module pyxdg}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module tzlocal >= 1.0}
-BuildRequires:  %{python_module urwid >= 2.6.15}
 BuildRequires:  %{python_module urwid >= 2.6.15}
 BuildRequires:  %{python_module vdirsyncer}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click
-Requires:       python-click-log
+Requires:       python-click >= 3.2
+Requires:       python-click-log >= 0.2.0
 Requires:       python-configobj
 Requires:       python-icalendar >= 6.0.0
 Requires:       python-python-dateutil
 Requires:       python-pytz >= 2018
 Requires:       python-pyxdg
-Requires:       python-tzlocal
-Requires:       python-urwid
+Requires:       python-tzlocal >= 1.0
+Requires:       python-urwid >= 2.6.15
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
