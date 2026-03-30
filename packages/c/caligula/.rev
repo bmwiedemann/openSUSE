@@ -7,4 +7,12 @@
     <comment>New package coming to Factory, see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/YXRRB5QOXKU6ATQJV5QFMIIWTWLNSB56/ </comment>
     <requestid>1318279</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ac8edb5ec7fcdd252b8c23ae4aab05d6</srcmd5>
+    <version>0.4.10~0</version>
+    <time>1774888314</time>
+    <user>anag_factory</user>
+    <comment>Update caligula to 0.4.10</comment>
+    <requestid>1343540</requestid>
+  </revision>
 </revisionlist>

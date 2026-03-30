@@ -17,7 +17,7 @@
 
 
 Name:           caligula
-Version:        0.4.8~0
+Version:        0.4.10~0
 Release:        0%{?dist}
 Summary:        A user-friendly, lightweight TUI for disk imaging
 License:        GPL-3.0-only

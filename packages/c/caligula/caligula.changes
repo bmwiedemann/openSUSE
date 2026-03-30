@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:33:39 UTC 2026 - emanuele@decup.is
+
+- Update to version 0.4.10~0:
+  * Improve help output a bit more (#205)
+  * bump version to v0.4.10 (#204)
+  * Auto-generate --help output in README (#203)
+  * Rewrite README (#202)
+  * cargo upgrade
+  * upgrade buildtime deps
+  * fix warnings
+  * upgrade to 2024 and cargo fmt
+  * flatten help (#200)
+  * bump version to v0.4.9
+  * improve set-version.sh
+  * Wrap UI tests into a NixOS test
+  * Add UI tests using Pexpect
+  * 2025-10-13 updates (#198)
+  * feat: detect checksum files based on file extensions (#186)
+  * Don't ask user if --hash-file explicitly provided
+  * Add flag `--hash-file`
+  * Bump tokio from 1.37.0 to 1.38.2 (#177)
+  * Replace PathBuf with Path when ownership or mutability is not needed (#173)
+  * Quit immediately when done (#185)
+  * Add homebrew tap instructions (#179)
+  * Fix typos (#178)
+  * Create a PR template
+  * use try_read_exact in verification phase
+  * refactor: apply clippy lints
+  * fix nix derivation of lint script
+  * add clippy to the lint script
+  * install clippy
+  * Add --locked to cargo build args in nix
+  * fix version setting script to cargo lock
+
+-------------------------------------------------------------------
 Mon Oct 13 12:02:14 UTC 2025 - Emanuele De Cupis <emanuele.decupis@suse.com>
 
 - Update to version 0.4.8
