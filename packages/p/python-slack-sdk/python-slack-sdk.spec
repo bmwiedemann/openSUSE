@@ -1,7 +1,7 @@
 #
 # spec file for package python-slack-sdk
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-slack-sdk
-Version:        3.37.0
+Version:        3.41.0
 Release:        0
 Summary:        Python SDKs for the Slack API
 License:        MIT
@@ -32,17 +32,18 @@ Obsoletes:      python-slackclient < %{version}
 Provides:       python-slackclient = %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module aiohttp >= 3.7.3}
 BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module boto3}
+BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module itsdangerous}
-BuildRequires:  %{python_module moto}
+BuildRequires:  %{python_module moto >= 4.0.13}
+BuildRequires:  %{python_module pytest >= 7.0.1}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module sqlalchemy}
-BuildRequires:  %{python_module websockets}
+BuildRequires:  %{python_module sqlalchemy >= 1.4}
+BuildRequires:  %{python_module websockets >= 9.1}
 # /SECTION
 %python_subpackages
 

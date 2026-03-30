@@ -226,4 +226,21 @@
     feedback blocks, and loading state</comment>
     <requestid>1316818</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a884fb1dc255996e686038e3b8bdf79d</srcmd5>
+    <version>3.41.0</version>
+    <time>1774888286</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.41.0:
+  * feat: add support for apps.user.connection.update
+  * chore: add AGENTS.md and consolidate development scripts
+  * chore(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0
+  * chore(deps): bump actions/stale from 10.1.1 to 10.2.0
+  * chore(deps): bump actions/download-artifact from 7.0.0 to
+    8.0.0
+- update to 3.40.1:
+  * fix: rely on naive datetime for sqlalchemy
+  * chore(release): version 3.40.1</comment>
+    <requestid>1343523</requestid>
+  </revision>
 </revisionlist>

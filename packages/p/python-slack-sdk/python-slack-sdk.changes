@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:19:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.41.0:
+  * feat: add support for apps.user.connection.update
+  * chore: add AGENTS.md and consolidate development scripts
+  * chore(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0
+  * chore(deps): bump actions/stale from 10.1.1 to 10.2.0
+  * chore(deps): bump actions/download-artifact from 7.0.0 to
+    8.0.0
+- update to 3.40.1:
+  * fix: rely on naive datetime for sqlalchemy
+  * chore(release): version 3.40.1
+
+-------------------------------------------------------------------
 Mon Nov 10 08:22:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.37.0:
