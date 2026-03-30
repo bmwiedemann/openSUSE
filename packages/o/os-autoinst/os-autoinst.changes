@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 30 08:21:41 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774620706.b22e21b:
+  * feat: Add option to add signatures
+  * style: Add tool to add Mojo::Base include automatically
+  * test: Add CoverageWorkaround.pm
+  * test: Use Syntax::Keyword::Try::Deparse to avoid warnings
+  * chore: Reduce permissions of remaining workflow
+  * test: skip t/ files in Test::Compile syntax check
+  * refactor: Deduplicate svirt tests in t/22-svirt.t
+
+-------------------------------------------------------------------
 Fri Mar 27 01:51:47 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1774551362.dd2a78c:
