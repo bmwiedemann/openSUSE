@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:17:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.4:
+  * docutils/io.py Ensure FileInput.read() returns a str (decode
+    if source.read returns bytes. Fixes bug #514.
+  * Ensure FileInput.read() returns a str (decode if source.read
+    returns bytes. Fixes bug #514.
+  * docutils/parsers/rst/directives/body.py,
+    docutils/parsers/rst/directives/parts.py Test a "whitelist"
+    of categories before the "blacklist" to allow auxiliary
+    elements belonging to several categories (e.g. nodes.Root and
+    nodes.BodyElements) as parents of topics or sidebars.
+  * Test a "whitelist" of categories before the "blacklist" to
+    allow auxiliary elements belonging to several categories
+    (e.g. nodes.Root and nodes.BodyElements) as parents of topics
+    or sidebars.
+  * docutils/writers/html/* New value "auto" for
+    `initial_header_level`_ configuration setting. Produces a
+    HTML document with valid "outline" for documents with
+    document title as well as documents without document title.
+  * New value "auto" for `initial_header_level`_ configuration
+    setting. Produces a HTML document with valid "outline" for
+    documents with document title as well as documents without
+    document title.
+  * docutils/writers/html5_polyglot/responsive.css Increase
+    indentation of enumerated lists to fit 2-digit numerals and
+    of bullet lists to keep them looking similar. Use "top"
+    instead of "baseline" for the vertical alignment in table
+    rows. ("Baseline" fails if one cell contains certain body
+    elements, e.g. a figure or a table with caption.)
+  * Increase indentation of enumerated lists to fit 2-digit
+    numerals and of bullet lists to keep them looking similar.
+  * Use "top" instead of "baseline" for the vertical alignment in
+    table rows. ("Baseline" fails if one cell contains certain
+    body elements, e.g. a figure or a table with caption.)
+
+-------------------------------------------------------------------
 Thu Nov  6 09:20:50 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.22.3:

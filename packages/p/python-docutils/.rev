@@ -1507,4 +1507,41 @@ this resolves build failure for python3-Sphinx (forwarded request 139388 from Hi
 </comment>
     <requestid>1315965</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5033793a21f373c1a4f65475c60b94ec</srcmd5>
+    <version>0.22.4</version>
+    <time>1774888187</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.22.4:
+  * docutils/io.py Ensure FileInput.read() returns a str (decode
+    if source.read returns bytes. Fixes bug #514.
+  * Ensure FileInput.read() returns a str (decode if source.read
+    returns bytes. Fixes bug #514.
+  * docutils/parsers/rst/directives/body.py,
+    docutils/parsers/rst/directives/parts.py Test a &quot;whitelist&quot;
+    of categories before the &quot;blacklist&quot; to allow auxiliary
+    elements belonging to several categories (e.g. nodes.Root and
+    nodes.BodyElements) as parents of topics or sidebars.
+  * Test a &quot;whitelist&quot; of categories before the &quot;blacklist&quot; to
+    allow auxiliary elements belonging to several categories
+    (e.g. nodes.Root and nodes.BodyElements) as parents of topics
+    or sidebars.
+  * docutils/writers/html/* New value &quot;auto&quot; for
+    `initial_header_level`_ configuration setting. Produces a
+    HTML document with valid &quot;outline&quot; for documents with
+    document title as well as documents without document title.
+  * New value &quot;auto&quot; for `initial_header_level`_ configuration
+    setting. Produces a HTML document with valid &quot;outline&quot; for
+    documents with document title as well as documents without
+    document title.
+  * docutils/writers/html5_polyglot/responsive.css Increase
+    indentation of enumerated lists to fit 2-digit numerals and
+    of bullet lists to keep them looking similar. Use &quot;top&quot;
+    instead of &quot;baseline&quot; for the vertical alignment in table
+    rows. (&quot;Baseline&quot; fails if one cell contains certain body
+    elements, e.g. a figure or a table with caption.)
+  * Increase indentation of enumerated lists to fit 2-digit
+    numerals and of bullet lists to keep them looking similar.</comment>
+    <requestid>1343407</requestid>
+  </revision>
 </revisionlist>
