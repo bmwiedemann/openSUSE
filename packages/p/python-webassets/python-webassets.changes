@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 30 06:09:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct Requires to not use python_module.
+
+-------------------------------------------------------------------
+Sun Mar 29 18:53:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Fix simple typo: ultimatily -> ultimately
+  * remove nose and extra mock
+  * Modernize webassets
+  * docs: Fix a few typos
+  * docstrings: Use raw to prevent literal escapes escaping
+  * Fix CI & cleanup files
+  * Fix typescript compiler crashing due to use of deprecated
+    option
+  * trim old Python2 compatibility layer
+  * remove more Python2 compatibility shims
+  * Improve cross-platform compatibility in tests (Windows
+    support)
+- remove patches:
+  * webassets-py39-threading.patch (fixed upstream)
+  * remove-nose.patch (no longer needed)
+- update requirements from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Dec  7 23:42:33 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up packaging.
@@ -52,5 +78,4 @@ Sat Jun 24 14:37:18 UTC 2017 - adrian@suse.de
 -------------------------------------------------------------------
 Sat Jul 12 21:22:06 UTC 2014 - boris@steki.net
 
-- initial packaging  
-
+- initial packaging

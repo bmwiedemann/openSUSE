@@ -47,4 +47,32 @@
     <comment></comment>
     <requestid>1132000</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>afa9b7424dac31d380523474e9103d3b</srcmd5>
+    <version>3.0.0</version>
+    <time>1774888278</time>
+    <user>anag_factory</user>
+    <comment>- Correct Requires to not use python_module.
+
+- update to 3.0.0:
+  * Fix simple typo: ultimatily -&gt; ultimately
+  * remove nose and extra mock
+  * Modernize webassets
+  * docs: Fix a few typos
+  * docstrings: Use raw to prevent literal escapes escaping
+  * Fix CI &amp; cleanup files
+  * Fix typescript compiler crashing due to use of deprecated
+    option
+  * trim old Python2 compatibility layer
+  * remove more Python2 compatibility shims
+  * Improve cross-platform compatibility in tests (Windows
+    support)
+- remove patches:
+  * webassets-py39-threading.patch (fixed upstream)
+  * remove-nose.patch (no longer needed)
+- update requirements from pyproject.toml
+
+- initial packaging</comment>
+    <requestid>1343582</requestid>
+  </revision>
 </revisionlist>
