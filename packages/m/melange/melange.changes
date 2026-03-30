@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar 30 05:18:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.47.0:
+  * Expose schema to dependents (#2443)
+  * chore(harden-runner): add more Go endpoints (#2442)
+  * build(deps): bump sigstore/cosign-installer from 4.1.0 to 4.1.1
+    in the actions group (#2440)
+  * build(deps): bump github.com/docker/cli from
+    29.3.0+incompatible to 29.3.1+incompatible in the gomod group
+    (#2439)
+  * build(deps): bump github.com/moby/moby/v2 from 2.0.0-beta.7 to
+    2.0.0-beta.8 (#2441)
+  * feat(harden-runner): move to inline block policies (#2438)
+  * chore(melange): Add OCI update monitor config and docs (#2435)
+  * chore(pipelines/python/import): Add virtual env support (#2436)
+  * build(deps): bump the gomod group across 1 directory with 3
+    updates (#2433)
+  * Source fetch from melange (#2170)
+
+-------------------------------------------------------------------
+Thu Mar 26 05:48:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.46.1:
+  * chore(melange): Add OCI update monitor config and docs (#2435)
+  * chore(pipelines/python/import): Add virtual env support (#2436)
+  * build(deps): bump the gomod group across 1 directory with 3
+    updates (#2433)
+  * Source fetch from melange (#2170)
+  * build(deps): bump github.com/buger/jsonparser from 1.1.1 to
+    1.1.2 (#2432)
+
+-------------------------------------------------------------------
 Mon Mar 23 06:12:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.46.0:
