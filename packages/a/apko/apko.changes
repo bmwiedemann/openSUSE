@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 30 05:17:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * build(deps): bump github/codeql-action from 4.35.0 to 4.35.1
+    (#2150)
+  * build(deps): bump github/codeql-action from 4.34.1 to 4.35.0
+    (#2148)
+  * chore(codeql): remove duplicate Workflow (#2149)
+  * chore(harden-runner): add more Go endpoints (#2147)
+  * build(deps): bump sigstore/cosign-installer from 4.0.0 to 4.1.1
+    (#2144)
+  * feat(harden-runner): move to inline block policies (#2146)
+  * build(deps): bump chainguard.dev/sdk from 0.1.51 to 0.1.52
+    (#2143)
+  * build(deps): bump google.golang.org/api from 0.272.0 to 0.273.0
+    (#2145)
+  * build(deps): bump chainguard-dev/actions from 1.6.9 to 1.6.10
+    (#2142)
+  * build(deps): bump github/codeql-action from 4.34.0 to 4.34.1
+    (#2141)
+
+-------------------------------------------------------------------
 Mon Mar 23 06:11:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.16:
