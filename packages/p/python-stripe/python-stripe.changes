@@ -1,4 +1,257 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:32:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 15.0.0:
+  * All `decimal_string` fields changed type from `str` to
+    `decimal.Decimal` in both request params and response
+    objects. Code that reads or writes these fields as `str` will
+    need to use `Decimal` instead. Affected fields across v1 and
+    v2 APIs:
+  * **checkout.Session**: `fx_rate`
+  * **climate.Order**: `metric_tons`; **climate.Product**:
+    `metric_tons_available`
+  * **CreditNoteLineItem**: `unit_amount_decimal`
+  * **InvoiceItem**: `quantity_decimal`, `unit_amount_decimal`
+  * **InvoiceLineItem**: `quantity_decimal`,
+    `unit_amount_decimal`
+  * **issuing.Authorization** / **issuing.Transaction** (and
+    TestHelpers): `quantity_decimal`, `unit_cost_decimal`,
+    `gross_amount_decimal`, `local_amount_decimal`,
+    `national_amount_decimal`
+  * **Plan**: `amount_decimal`, `flat_amount_decimal`,
+    `unit_amount_decimal`
+  * **Price**: `unit_amount_decimal`, `flat_amount_decimal`
+    (including `currency_options` and `tiers`)
+  * **v2.core.Account** / **v2.core.AccountPerson**:
+    `percent_ownership`
+  * Request params on **Invoice**, **Product**, **Quote**,
+    **Subscription**, **SubscriptionItem**,
+    **SubscriptionSchedule**, **PaymentLink**:
+    `unit_amount_decimal`, `flat_amount_decimal`,
+    `quantity_decimal` (where applicable)
+  * ⚠️ **Breaking change:**#1767 Throw an error when using the
+    wrong webhook parsing method
+  * ⚠️ **Breaking change:** #1764 Drop support for Python 3.7 &
+    3.8
+  * ⚠️ **Breaking change:** #1762 `StripeObject` no longer
+    inherits from `dict`
+
+  * `StripeObject` no longer inherits from `dict`, so any `dict`
+    methods will no longer exist, including `.get()`,
+    `.update()`, and notably, `.items()`.
+  * or convenience, it's still possible to check presence with
+    `'some_key' in some_obj` and check for equality between
+    stripe objects. But most key/value iteration needs an extra
+    step
+  * To access the underlying data as a `dict`, call
+    `some_obj.to_dict()`, which recursively dumps all stripe-
+    provided classes into native Python types. This is a read-
+    only view; changes to the output of `to_dict()` won't affect
+    the original object.
+  * Write operations can still be done with dot notation
+    (`some_obj.val = 123`) or bracket notation (`some_obj["val"]
+    = 123`). Do that instead of trying to interact with the
+    underlying data store, as the implementation is considered
+    private and may change without warning in the future.
+
+-------------------------------------------------------------------
+Wed Mar 25 08:43:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.4.1:
+  * #1748 Add Stripe-Request-Trigger header
+  * #1743 Add agent information to UserAgent
+  * See the changelog for more details.
+- update to 14.4.0:
+  * This release changes the pinned API version to
+    `2026-02-25.clover`.
+  * #1737 Allow AIOHTTPClient to accept user-provided session or
+    connector. Fixes #1736
+  * #1732 Update generated code
+  * Add support for new resources `reserve.Hold`, `reserve.Plan`,
+    and `reserve.Release`
+  * Add support for `location` and `reader` on
+    `Charge.PaymentMethodDetail.CardPresent`,
+    `Charge.PaymentMethodDetail.InteracPresent`, `ConfirmationTok
+    en.PaymentMethodPreview.Card.GeneratedFrom.PaymentMethodDetai
+    l.CardPresent`,
+    `PaymentAttemptRecord.PaymentMethodDetail.CardPresent`,
+    `PaymentAttemptRecord.PaymentMethodDetail.InteracPresent`, `P
+    aymentMethod.Card.GeneratedFrom.PaymentMethodDetail.CardPrese
+    nt`, `PaymentRecord.PaymentMethodDetail.CardPresent`, and
+    `PaymentRecord.PaymentMethodDetail.InteracPresent`
+  * Add support for new value `lk_vat` on enums
+    `Checkout.Session.CustomerDetail.TaxId.type`,
+    `Invoice.CustomerTaxId.type`,
+    `Tax.Calculation.CustomerDetail.TaxId.type`,
+    `Tax.Transaction.CustomerDetail.TaxId.type`, and `TaxId.type`
+  * Add support for new value `lk_vat` on enums
+    `CustomerCreateParamsTaxIdDatum.type`,
+    `CustomerCreateTaxIdParams.type`,
+    `InvoiceCreatePreviewParamsCustomerDetailTaxId.type`,
+    `TaxIdCreateParams.type`, and
+    `tax.CalculationCreateParamsCustomerDetailTaxId.type`
+  * Add support for new values `reserve.hold.created`,
+    `reserve.hold.updated`, `reserve.plan.created`,
+    `reserve.plan.disabled`, `reserve.plan.expired`,
+    `reserve.plan.updated`, and `reserve.release.created` on enum
+    `Event.type`
+  * Add support for new values `terminal_wifi_certificate` and
+    `terminal_wifi_private_key` on enums `File.purpose` and
+    `FileListParams.purpose`
+  * Add support for new values `terminal_wifi_certificate` and
+    `terminal_wifi_private_key` on enum
+    `FileCreateParams.purpose`
+  * Add support for new value `pay_by_bank` on enums
+    `Invoice.PaymentSetting.payment_method_types`,
+    `InvoiceCreateParamsPaymentSetting.payment_method_types`,
+    `InvoiceModifyParamsPaymentSetting.payment_method_types`,
+    `Subscription.PaymentSetting.payment_method_types`, `Subscrip
+    tionCreateParamsPaymentSetting.payment_method_types`, and
+    `SubscriptionModifyParamsPaymentSetting.payment_method_types`
+  * Add support for `display_name` and `service_user_number` on
+    `Mandate.PaymentMethodDetail.BacsDebit`
+  * Change type of
+    `PaymentAttemptRecord.PaymentMethodDetail.Boleto.tax_id` and
+    `PaymentRecord.PaymentMethodDetail.Boleto.tax_id` from
+    `string` to `nullable(string)`
+  * Change type of `PaymentAttemptRecord.PaymentMethodDetail.UsBa
+    nkAccount.expected_debit_date` and `PaymentRecord.PaymentMeth
+    odDetail.UsBankAccount.expected_debit_date` from
+    `nullable(string)` to `string`
+  * Add support for `transaction_purpose` on
+    `PaymentIntent.PaymentMethodOption.UsBankAccount`,
+    `PaymentIntentConfirmParamsPaymentMethodOptionUsBankAccount`,
+    `PaymentIntentCreateParamsPaymentMethodOptionUsBankAccount`,
+    and
+    `PaymentIntentModifyParamsPaymentMethodOptionUsBankAccount`
+  * Add support for `optional_items` on `PaymentLinkModifyParams`
+  * Remove support for unused `card_issuer_decline` on
+    `Radar.PaymentEvaluation.Insight`
+  * Add support for `payment_behavior` on
+    `SubscriptionItemDeleteParams`
+  * Add support for `lk` on `Tax.Registration.CountryOption` and
+    `tax.RegistrationCreateParamsCountryOption`
+  * Add support for `cellular` and `stripe_s710` on
+    `Terminal.Configuration`,
+    `terminal.ConfigurationCreateParams`, and
+    `terminal.ConfigurationModifyParams`
+  * Add support for new values `simulated_stripe_s710` and
+    `stripe_s710` on enums `Terminal.Reader.device_type` and
+    `terminal.ReaderListParams.device_type`
+  * Add support for new values `reserve.hold.created`,
+    `reserve.hold.updated`, `reserve.plan.created`,
+    `reserve.plan.disabled`, `reserve.plan.expired`,
+    `reserve.plan.updated`, and `reserve.release.created` on
+    enums `WebhookEndpointCreateParams.enabled_events` and
+    `WebhookEndpointModifyParams.enabled_events`
+  * Add support for new value `2026-02-25.clover` on enum
+    `WebhookEndpointCreateParams.api_version`
+  * Add support for snapshot events `reserve.hold.created` and
+    `reserve.hold.updated` with resource `reserve.Hold`
+  * Add support for snapshot events `reserve.plan.created`,
+    `reserve.plan.disabled`, `reserve.plan.expired`, and
+    `reserve.plan.updated` with resource `reserve.Plan`
+  * Add support for snapshot event `reserve.release.created` with
+    resource `reserve.Release`
+  * Add support for error codes `storer_capability_missing` and
+    `storer_capability_not_active` on
+    `Invoice.LastFinalizationError`,
+    `PaymentIntent.LastPaymentError`, `SetupAttempt.SetupError`,
+    `SetupIntent.LastSetupError`, and `StripeError`
+  * #1731 Added instruction to update CA certificates in README.
+  * See the changelog for more details.
+- update to 14.3.0:
+  * This release changes the pinned API version to
+    `2026-01-28.clover`.
+  * #1725 Update generated code
+  * Add support for new resource `radar.PaymentEvaluation`
+  * Add support for `create` method on resource
+    `radar.PaymentEvaluation`
+  * Add support for `adjustable_quantity` on `LineItem`
+  * Add support for new value `risk_reserved` on enum
+    `BalanceTransaction.balance_type`
+  * Add support for new values `reserve_hold` and
+    `reserve_release` on enum `BalanceTransaction.type`
+  * Add support for new values `2.3.0` and `2.3.1` on enums
+    `Charge.PaymentMethodDetail.Card.ThreeDSecure.version`, `Paym
+    entIntentConfirmParamsPaymentMethodOptionCardThreeDSecure.ver
+    sion`, `PaymentIntentCreateParamsPaymentMethodOptionCardThree
+    DSecure.version`, `PaymentIntentModifyParamsPaymentMethodOpti
+    onCardThreeDSecure.version`,
+    `SetupAttempt.PaymentMethodDetail.Card.ThreeDSecure.version`,
+    `SetupIntentConfirmParamsPaymentMethodOptionCardThreeDSecure.
+    version`, `SetupIntentCreateParamsPaymentMethodOptionCardThre
+    eDSecure.version`, and `SetupIntentModifyParamsPaymentMethodO
+    ptionCardThreeDSecure.version`
+  * Add support for new value `adyen` on enums
+    `Charge.PaymentMethodDetail.Ideal.bank`,
+    `ConfirmationToken.PaymentMethodPreview.Ideal.bank`,
+    `ConfirmationTokenCreateParamsPaymentMethodDatumIdeal.bank`,
+    `PaymentAttemptRecord.PaymentMethodDetail.Ideal.bank`,
+    `PaymentIntentConfirmParamsPaymentMethodDatumIdeal.bank`,
+    `PaymentIntentCreateParamsPaymentMethodDatumIdeal.bank`,
+    `PaymentIntentModifyParamsPaymentMethodDatumIdeal.bank`,
+    `PaymentMethod.Ideal.bank`,
+    `PaymentMethodCreateParamsIdeal.bank`,
+    `PaymentRecord.PaymentMethodDetail.Ideal.bank`,
+    `SetupAttempt.PaymentMethodDetail.Ideal.bank`,
+    `SetupIntentConfirmParamsPaymentMethodDatumIdeal.bank`,
+    `SetupIntentCreateParamsPaymentMethodDatumIdeal.bank`, and
+    `SetupIntentModifyParamsPaymentMethodDatumIdeal.bank`
+  * Add support for new value `ADYBNL2A` on enums
+    `Charge.PaymentMethodDetail.Ideal.bic`,
+    `ConfirmationToken.PaymentMethodPreview.Ideal.bic`,
+    `PaymentAttemptRecord.PaymentMethodDetail.Ideal.bic`,
+    `PaymentMethod.Ideal.bic`,
+    `PaymentRecord.PaymentMethodDetail.Ideal.bic`, and
+    `SetupAttempt.PaymentMethodDetail.Ideal.bic`
+  * Add support for new value `pl_nip` on enums
+    `Checkout.Session.CustomerDetail.TaxId.type`,
+    `Invoice.CustomerTaxId.type`,
+    `Tax.Calculation.CustomerDetail.TaxId.type`,
+    `Tax.Transaction.CustomerDetail.TaxId.type`, and `TaxId.type`
+  * Add support for new value `pl_nip` on enums
+    `CustomerCreateParamsTaxIdDatum.type`,
+    `CustomerCreateTaxIdParams.type`,
+    `InvoiceCreatePreviewParamsCustomerDetailTaxId.type`,
+    `TaxIdCreateParams.type`, and
+    `tax.CalculationCreateParamsCustomerDetailTaxId.type`
+  * Change `Invoice.PaymentSetting.PaymentMethodOption.payto` and
+    `Subscription.PaymentSetting.PaymentMethodOption.payto` to be
+    required
+  * Add support for `enforce_arithmetic_validation` on
+    `PaymentIntentCaptureParamsAmountDetail`,
+    `PaymentIntentConfirmParamsAmountDetail`,
+    `PaymentIntentCreateParamsAmountDetail`,
+    `PaymentIntentIncrementAuthorizationParamsAmountDetail`, and
+    `PaymentIntentModifyParamsAmountDetail`
+  * Add support for `error` on `PaymentIntent.AmountDetail`
+  * Remove support for `bgn` on `Terminal.Configuration.Tipping`,
+    `terminal.ConfigurationCreateParamsTipping`, and
+    `terminal.ConfigurationModifyParamsTipping`
+  * Add support for `topup` on
+    `Treasury.ReceivedDebit.LinkedFlow`
+  * Add support for `contact_phone` on `V2.Core.Account`,
+    `v2.core.AccountCreateParams`, `v2.core.AccountModifyParams`,
+    and `v2.core.AccountTokenCreateParams`
+  * Add support for `registration_date` on
+    `V2.Core.Account.Identity.BusinessDetail`,
+    `v2.core.AccountCreateParamsIdentityBusinessDetail`,
+    `v2.core.AccountModifyParamsIdentityBusinessDetail`, and
+    `v2.core.AccountTokenCreateParamsIdentityBusinessDetail`
+  * Add support for new value `gb_vat` on enums
+    `V2.Core.Account.Identity.BusinessDetail.IdNumber.type`, `v2.
+    core.AccountCreateParamsIdentityBusinessDetailIdNumber.type`,
+    `v2.core.AccountModifyParamsIdentityBusinessDetailIdNumber.ty
+    pe`, and `v2.core.AccountTokenCreateParamsIdentityBusinessDet
+    ailIdNumber.type`
+  * Add support for error code `request_blocked` on
+    `Invoice.LastFinalizationError`,
+    `PaymentIntent.LastPaymentError`, `SetupAttempt.SetupError`,
+    `SetupIntent.LastSetupError`, and `StripeError`
+  * #1722 Add documentation for undocumented API parameters
+
+-------------------------------------------------------------------
 Tue Jan 27 17:22:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 14.2.0:

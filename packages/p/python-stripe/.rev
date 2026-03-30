@@ -204,4 +204,78 @@
   * Update ci to run on Python 3.14 as well</comment>
     <requestid>1329547</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>71b9ad57594cc2c5e91259a0e61962da</srcmd5>
+    <version>14.4.1</version>
+    <time>1774470006</time>
+    <user>anag_factory</user>
+    <comment>- update to 14.4.1:
+  * #1748 Add Stripe-Request-Trigger header
+  * #1743 Add agent information to UserAgent
+  * See the changelog for more details.
+- update to 14.4.0:
+  * This release changes the pinned API version to
+    `2026-02-25.clover`.
+  * #1737 Allow AIOHTTPClient to accept user-provided session or
+    connector. Fixes #1736
+  * #1732 Update generated code
+  * Add support for new resources `reserve.Hold`, `reserve.Plan`,
+    and `reserve.Release`
+  * Add support for `location` and `reader` on
+    `Charge.PaymentMethodDetail.CardPresent`,
+    `Charge.PaymentMethodDetail.InteracPresent`, `ConfirmationTok
+    en.PaymentMethodPreview.Card.GeneratedFrom.PaymentMethodDetai
+    l.CardPresent`,
+    `PaymentAttemptRecord.PaymentMethodDetail.CardPresent`,
+    `PaymentAttemptRecord.PaymentMethodDetail.InteracPresent`, `P
+    aymentMethod.Card.GeneratedFrom.PaymentMethodDetail.CardPrese
+    nt`, `PaymentRecord.PaymentMethodDetail.CardPresent`, and
+    `PaymentRecord.PaymentMethodDetail.InteracPresent`
+  * Add support for new value `lk_vat` on enums
+    `Checkout.Session.CustomerDetail.TaxId.type`,
+    `Invoice.CustomerTaxId.type`,
+    `Tax.Calculation.CustomerDetail.TaxId.type`,
+    `Tax.Transaction.CustomerDetail.TaxId.type`, and `TaxId.type`
+  * Add support for new value `lk_vat` on enums
+    `CustomerCreateParamsTaxIdDatum.type`,
+    `CustomerCreateTaxIdParams.type`,</comment>
+    <requestid>1342404</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>34f40f8e2e114be0e3b8161460c1c981</srcmd5>
+    <version>15.0.0</version>
+    <time>1774888263</time>
+    <user>anag_factory</user>
+    <comment>- update to 15.0.0:
+  * All `decimal_string` fields changed type from `str` to
+    `decimal.Decimal` in both request params and response
+    objects. Code that reads or writes these fields as `str` will
+    need to use `Decimal` instead. Affected fields across v1 and
+    v2 APIs:
+  * **checkout.Session**: `fx_rate`
+  * **climate.Order**: `metric_tons`; **climate.Product**:
+    `metric_tons_available`
+  * **CreditNoteLineItem**: `unit_amount_decimal`
+  * **InvoiceItem**: `quantity_decimal`, `unit_amount_decimal`
+  * **InvoiceLineItem**: `quantity_decimal`,
+    `unit_amount_decimal`
+  * **issuing.Authorization** / **issuing.Transaction** (and
+    TestHelpers): `quantity_decimal`, `unit_cost_decimal`,
+    `gross_amount_decimal`, `local_amount_decimal`,
+    `national_amount_decimal`
+  * **Plan**: `amount_decimal`, `flat_amount_decimal`,
+    `unit_amount_decimal`
+  * **Price**: `unit_amount_decimal`, `flat_amount_decimal`
+    (including `currency_options` and `tiers`)
+  * **v2.core.Account** / **v2.core.AccountPerson**:
+    `percent_ownership`
+  * Request params on **Invoice**, **Product**, **Quote**,
+    **Subscription**, **SubscriptionItem**,
+    **SubscriptionSchedule**, **PaymentLink**:
+    `unit_amount_decimal`, `flat_amount_decimal`,
+    `quantity_decimal` (where applicable)
+  * ⚠️ **Breaking change:**#1767 Throw an error when using the
+    wrong webhook parsing method</comment>
+    <requestid>1343506</requestid>
+  </revision>
 </revisionlist>

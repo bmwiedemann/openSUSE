@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-stripe
-Version:        14.2.0
+Version:        15.0.0
 Release:        0
 Summary:        Python bindings for the Stripe API
 License:        MIT
