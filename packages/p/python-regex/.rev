@@ -313,4 +313,15 @@
   * Added prefixmatch as alias of match, like in re module.</comment>
     <requestid>1337895</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2fbbc69f61b3deb5c1437dc545c8f551</srcmd5>
+    <version>2026.3.32</version>
+    <time>1774888202</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.3.32:
+  * Fixed segfault.
+  * Various fixes, including ones to improve free-threading
+    support.</comment>
+    <requestid>1343499</requestid>
+  </revision>
 </revisionlist>

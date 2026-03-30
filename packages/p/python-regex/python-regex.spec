@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-regex
-Version:        2026.2.28
+Version:        2026.3.32
 Release:        0
 Summary:        Alternative regular expression module for Python
 License:        Apache-2.0

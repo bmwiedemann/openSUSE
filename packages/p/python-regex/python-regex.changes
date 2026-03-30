@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:23:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3.32:
+  * Fixed segfault.
+  * Various fixes, including ones to improve free-threading
+    support.
+
+-------------------------------------------------------------------
 Tue Mar 10 08:15:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.2.28:
