@@ -21,7 +21,7 @@
 %endif
 
 Name:           FreeFileSync
-Version:        14.8
+Version:        14.9
 Release:        0
 Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later

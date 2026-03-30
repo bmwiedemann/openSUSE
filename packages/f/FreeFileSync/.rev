@@ -359,4 +359,22 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1334643</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>43f313c1bd3c73f4368b3a00ba2bbc3c</srcmd5>
+    <version>14.9</version>
+    <time>1774888344</time>
+    <user>anag_factory</user>
+    <comment>- Update to 14.9:
+  * Support 200% display scaling for high-DPI monitors (Linux)
+  * Trimmed text-to-image bounding box
+  * Improved center grid tooltip (macOS, Linux)
+  * Work around &quot;getcwd() failed&quot; for console execute (Linux)
+  * Fixed calculating main window size and position on exit
+  * Fixed multi-folder-pair horizontal sizing glitch
+  * Fixed Donation Edition incorrect activation count (Linux)
+  * Fixed error during log file cleanup when running multiple FFS instances
+- Update FreeFileSync-gui.patch to remove a non available feature
+</comment>
+    <requestid>1343593</requestid>
+  </revision>
 </revisionlist>

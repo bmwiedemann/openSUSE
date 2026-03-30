@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 30 06:52:27 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.9:
+  * Support 200% display scaling for high-DPI monitors (Linux)
+  * Trimmed text-to-image bounding box
+  * Improved center grid tooltip (macOS, Linux)
+  * Work around "getcwd() failed" for console execute (Linux)
+  * Fixed calculating main window size and position on exit
+  * Fixed multi-folder-pair horizontal sizing glitch
+  * Fixed Donation Edition incorrect activation count (Linux)
+  * Fixed error during log file cleanup when running multiple FFS instances
+- Update FreeFileSync-gui.patch to remove a non available feature
+
+-------------------------------------------------------------------
 Tue Feb 24 07:48:09 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 14.8:

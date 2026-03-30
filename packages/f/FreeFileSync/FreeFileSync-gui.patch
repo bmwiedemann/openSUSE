@@ -1,7 +1,32 @@
-Index: FreeFileSync-14.8/FreeFileSync/Source/ui/gui_status_handler.cpp
+Index: FreeFileSync-14.9/wx+/dc.h
 ===================================================================
---- FreeFileSync-14.8.orig/FreeFileSync/Source/ui/gui_status_handler.cpp
-+++ FreeFileSync-14.8/FreeFileSync/Source/ui/gui_status_handler.cpp
+--- FreeFileSync-14.9.orig/wx+/dc.h
++++ FreeFileSync-14.9/wx+/dc.h
+@@ -333,7 +333,6 @@ public:
+     {
+         assert(wnd.IsDoubleBuffered());
+         dc_.emplace<wxPaintDC>(&wnd);
+-        static_cast<wxDC&>(*this).DisableAutomaticBoundingBoxUpdates(); //MOOOAAAR perf!?
+     }
+
+     operator wxDC& ()
+Index: FreeFileSync-14.9/wx+/grid.cpp
+===================================================================
+--- FreeFileSync-14.9.orig/wx+/grid.cpp
++++ FreeFileSync-14.9/wx+/grid.cpp
+@@ -172,7 +172,7 @@
+
+ wxRect GridData::drawCellBorder(wxDC& dc, const wxRect& rect) //returns remaining rectangle
+ {
+-    drawRectangleBorder(dc, rect, wxSystemSettings::GetColour(wxSYS_COLOUR_GRIDLINES), dipToWxsize(1), wxRIGHT | wxBOTTOM);
++    drawRectangleBorder(dc, rect, wxSystemSettings::GetColour(wxSYS_COLOUR_3DLIGHT), dipToWxsize(1), wxRIGHT | wxBOTTOM);
+
+     return {rect.x, rect.y, rect.width - dipToWxsize(1), rect.height - dipToWxsize(1)};
+ }
+Index: FreeFileSync-14.9/FreeFileSync/Source/ui/gui_status_handler.cpp
+===================================================================
+--- FreeFileSync-14.9.orig/FreeFileSync/Source/ui/gui_status_handler.cpp
++++ FreeFileSync-14.9/FreeFileSync/Source/ui/gui_status_handler.cpp
 @@ -70,27 +70,33 @@ void StatusHandlerTemporaryPanel::showSt
                  //case wxAUI_DOCK_CENTRE:
          }
@@ -39,10 +64,10 @@ Index: FreeFileSync-14.8/FreeFileSync/Source/ui/gui_status_handler.cpp
          //------------------------------------------------------------------
  
          statusPanel.Show();
-Index: FreeFileSync-14.8/wx+/darkmode.cpp
+Index: FreeFileSync-14.9/wx+/darkmode.cpp
 ===================================================================
---- FreeFileSync-14.8.orig/wx+/darkmode.cpp
-+++ FreeFileSync-14.8/wx+/darkmode.cpp
+--- FreeFileSync-14.9.orig/wx+/darkmode.cpp
++++ FreeFileSync-14.9/wx+/darkmode.cpp
 @@ -53,7 +53,7 @@ void zen::colorThemeInit(wxApp& app, Col
  {
      assert(!refGlobalColorHook());
@@ -63,10 +88,10 @@ Index: FreeFileSync-14.8/wx+/darkmode.cpp
      }
      catch (const SysError& e) { throw FileError(_("Failed to update the color theme."), e.toString()); }
  }
-Index: FreeFileSync-14.8/wx+/darkmode.h
+Index: FreeFileSync-14.9/wx+/darkmode.h
 ===================================================================
---- FreeFileSync-14.8.orig/wx+/darkmode.h
-+++ FreeFileSync-14.8/wx+/darkmode.h
+--- FreeFileSync-14.9.orig/wx+/darkmode.h
++++ FreeFileSync-14.9/wx+/darkmode.h
 @@ -9,14 +9,16 @@
  
  #include <zen/file_error.h>
@@ -114,11 +139,11 @@ Index: FreeFileSync-14.8/wx+/darkmode.h
 +};
 +
  #endif //DARKMODE_H_754298057018
-Index: FreeFileSync-14.8/FreeFileSync/Source/ui/main_dlg.cpp
+Index: FreeFileSync-14.9/FreeFileSync/Source/ui/main_dlg.cpp
 ===================================================================
---- FreeFileSync-14.8.orig/FreeFileSync/Source/ui/main_dlg.cpp
-+++ FreeFileSync-14.8/FreeFileSync/Source/ui/main_dlg.cpp
-@@ -1277,11 +1277,11 @@ void MainDialog::setGlobalCfgOnInit(cons
+--- FreeFileSync-14.9.orig/FreeFileSync/Source/ui/main_dlg.cpp
++++ FreeFileSync-14.9/FreeFileSync/Source/ui/main_dlg.cpp
+@@ -1276,11 +1276,11 @@ void MainDialog::setGlobalCfgOnInit(cons
  
      //--------------------------------------------------------------------------------
      m_checkBoxMatchCase->SetValue(globalCfg_.mainDlg.textSearchRespectCase);
@@ -133,7 +158,7 @@ Index: FreeFileSync-14.8/FreeFileSync/Source/ui/main_dlg.cpp
  
      //compare progress dialog minimum sizes are layout-dependent + can't be changed by user => don't load stale values from config
      std::vector<std::tuple<wxAuiPaneInfo*, wxSize /*min size*/, wxSize /*best size*/>> paneConstraints;
-@@ -3145,8 +3145,8 @@ void MainDialog::onSetLayoutContext(wxMo
+@@ -3144,8 +3144,8 @@ void MainDialog::onSetLayoutContext(wxMo
      //----------------------------------------------------------------------------------------
  
      bool addedSeparator = false;
@@ -144,7 +169,7 @@ Index: FreeFileSync-14.8/FreeFileSync/Source/ui/main_dlg.cpp
          if (!paneInfo.IsShown() &&
              paneInfo.window != compareStatus_->getAsWindow() &&
              paneInfo.window != m_panelLog                    &&
-@@ -3164,7 +3164,7 @@ void MainDialog::onSetLayoutContext(wxMo
+@@ -3163,7 +3163,7 @@ void MainDialog::onSetLayoutContext(wxMo
                  this->auiMgr_.Update();
              });
          }
