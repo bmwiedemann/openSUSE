@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Mar 30 08:07:50 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774854217.24dbd811:
+  * style: Fix TestingAndDebugging::RequireUseStrict violations
+  * style: Fix TestingAndDebugging::ProhibitNoStrict violations
+  * style: Fix BuiltinFunctions::RequireBlockMap violations
+  * style: Use only positive conditions for unless
+  * style: Fix OpenQA::RedundantStrictWarning violations
+  * style: Fix BuiltinFunctions::ProhibitStringySplit violations
+  * style: Fix ProhibitInterpolationOfLiterals violations
+  * style: Fix CodeLayout::ProhibitParensWithBuiltins violations
+  * style: Run perlcritic also for t/
+  * chore(deps): Dependency cron 2026-03-28
+  * feat: complete shim-less migration to Font Awesome 6
+  * chore: Add dependency for extending `t/11-commands.t`
+  * chore: Reduce permissions of workflows
+  * feat: support "always_run" test flag in web UI and API
+  * feat(Makefile): enable heavy and fullstack tests by default locally
+  * feat: Retry API calls in `clone-job` like already `openqa-cli` does
+  * feat: migrate to timeago.js for proper jquery4 compatibility
+  * feat(clone-job): Retry asset downloads on transient errors
+  * feat(scheduler): provide visual indication of limited disk space
+  * feat(scheduler): provide visual indication of limited disk space
+  * feat(scheduler): prevent openQA depleting storage with new openQA jobs
+  * refactor(tests): consolidate page loads in 01-list.t
+  * feat: replace deprecated fork-awesome with Font Awesome 6 Free
+  * fix(influxdb): prevent empty tags populated to telegraf
+  * feat(MCP): Add MCP tool annotations
+
+-------------------------------------------------------------------
 Thu Mar 26 08:07:45 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1774510397.efec10a7:
