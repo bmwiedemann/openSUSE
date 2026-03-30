@@ -5829,4 +5829,21 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.4 release</comment>
     <requestid>1337621</requestid>
   </revision>
+  <revision rev="488" vrev="1">
+    <srcmd5>31a9776e4127a16ec8fe0bc74230953e</srcmd5>
+    <version>11.5</version>
+    <time>1774888353</time>
+    <user>anag_factory</user>
+    <comment>- Conditionally recommend selinux-policy-targeted-gaming on
+  SELinux enabled systems (boo#1257456).
+
+- updated to 11.5 release
+  - C++ support in the build system.
+  - Bundled ICU libraries.
+  - Support for Syscall User Dispatch on Linux.
+  - A number of VBScript compatibility fixes.
+  - Various bug fixes.
+- update staging to 11.5 release</comment>
+    <requestid>1343610</requestid>
+  </revision>
 </revisionlist>

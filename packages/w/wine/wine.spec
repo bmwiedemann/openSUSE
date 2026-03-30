@@ -68,8 +68,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  11.4
-Version:        11.4
+%define downloadver  11.5
+Version:        11.5
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
@@ -87,6 +87,7 @@ Source99:       get-sources.sh
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  pkgconfig(OpenCL)
@@ -156,14 +157,17 @@ BuildRequires:  llvm
 #!BuildIgnore: mingw32-cross-pkgconf-utils
 %ifarch %{ix86}
 BuildRequires:  mingw32-cross-gcc
+BuildRequires:  mingw32-cross-gcc-c++
 BuildRequires:  mingw32-filesystem >= 20250822
 %endif
 %ifarch x86_64
 BuildRequires:  mingw64-cross-gcc
+BuildRequires:  mingw64-cross-gcc-c++
 BuildRequires:  mingw64-filesystem >= 20250822
 #BuildRequires:  pkgconfig(valgrind)
 %if %{wow64}
 BuildRequires:  mingw32-cross-gcc
+BuildRequires:  mingw32-cross-gcc-c++
 BuildRequires:  mingw32-filesystem >= 20250822
 %endif
 %endif
@@ -205,6 +209,7 @@ Recommends:     ntsync-autoload
 Recommends:     wine-gecko >= 2.47.4
 Recommends:     wine-mono >= 11.0.0
 Recommends:     winetricks
+Recommends:     (selinux-policy-targeted-gaming if selinux-policy-targeted)
 Conflicts:      wine
 Conflicts:      wine-gecko < 2.47.4
 Conflicts:      wine-mono < 10.1.0
