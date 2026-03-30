@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:35:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.75 Final
+  * No formal changelog present
+  * Needed by netty >= 4.2.11
+
+-------------------------------------------------------------------
 Thu Oct 16 08:49:26 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.0.74 Final
