@@ -604,4 +604,13 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     - [Amazon EC2] Update pricing and sizing data.</comment>
     <requestid>1333659</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>4a443fe1928984656e1b544ccae2876c</srcmd5>
+    <version>3.9.0</version>
+    <time>1774888215</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-paramiko-4.patch:
+  * Support paramiko 4 changes.</comment>
+    <requestid>1343570</requestid>
+  </revision>
 </revisionlist>

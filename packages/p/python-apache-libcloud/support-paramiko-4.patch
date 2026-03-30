@@ -1,0 +1,95 @@
+From 6d309dc90ae89157736ad54ce6de354c1987be1e Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 30 Mar 2026 16:20:36 +1100
+Subject: [PATCH] Support paramiko 4 changes
+
+RSA key support has been removed as of paramiko 4, so only import it and
+check if the version number is less than 4.
+---
+ libcloud/compute/ssh.py                  |  4 ++-
+ libcloud/test/compute/test_ssh_client.py | 42 +++++++++++++-----------
+ 2 files changed, 26 insertions(+), 20 deletions(-)
+
+diff --git a/libcloud/compute/ssh.py b/libcloud/compute/ssh.py
+index cd64b6e9e0..83b2c1eea0 100644
+--- a/libcloud/compute/ssh.py
++++ b/libcloud/compute/ssh.py
+@@ -660,13 +660,15 @@ def _get_pkey_object(self, key, password=None):
+         """
+         key_types = [
+             (paramiko.RSAKey, "RSA"),
+-            (paramiko.DSSKey, "DSA"),
+             (paramiko.ECDSAKey, "EC"),
+         ]
+ 
+         paramiko_version = getattr(paramiko, "__version__", "0.0.0")
+         paramiko_version = tuple(int(c) for c in paramiko_version.split("."))
+ 
++        if paramiko_version < (4, 0, 0):
++            # DSSKey removed in paramiko 4.0.0
++            key_types.append((paramiko.DSSKey, "DSA"))
+         if paramiko_version >= (2, 2, 0):
+             # Ed25519 is only supported in paramiko >= 2.2.0
+             key_types.append((paramiko.ed25519key.Ed25519Key, "Ed25519"))
+diff --git a/libcloud/test/compute/test_ssh_client.py b/libcloud/test/compute/test_ssh_client.py
+index 2f7c0cde4c..0d1d6e9366 100644
+--- a/libcloud/test/compute/test_ssh_client.py
++++ b/libcloud/test/compute/test_ssh_client.py
+@@ -317,19 +317,21 @@ def test_key_material_valid_pem_keys_invalid_header_auto_conversion(self):
+         self.assertTrue(isinstance(pkey, paramiko.RSAKey))
+ 
+         # 2. DSA key type with header which is not supported by paramiko
+-        path = os.path.join(
+-            os.path.dirname(__file__),
+-            "fixtures",
+-            "misc",
+-            "test_dsa_non_paramiko_recognized_header.key",
+-        )
+-
+-        with open(path) as fp:
+-            private_key = fp.read()
+-
+-        pkey = client._get_pkey_object(key=private_key)
+-        self.assertTrue(pkey)
+-        self.assertTrue(isinstance(pkey, paramiko.DSSKey))
++        # ... and only for paramiko < 4
++        if paramiko_version < (4, 0, 0):
++            path = os.path.join(
++                os.path.dirname(__file__),
++                "fixtures",
++                "misc",
++                "test_dsa_non_paramiko_recognized_header.key",
++            )
++
++            with open(path) as fp:
++                private_key = fp.read()
++
++            pkey = client._get_pkey_object(key=private_key)
++            self.assertTrue(pkey)
++            self.assertTrue(isinstance(pkey, paramiko.DSSKey))
+ 
+         # 3. ECDSA key type with header which is not supported by paramiko
+         path = os.path.join(
+@@ -361,14 +363,16 @@ def test_key_material_valid_pem_keys(self):
+         self.assertTrue(isinstance(pkey, paramiko.RSAKey))
+ 
+         # 2. DSA key type with header which is not supported by paramiko
+-        path = os.path.join(os.path.dirname(__file__), "fixtures", "misc", "test_dsa.key")
++        # ... and only for paramiko < 4
++        if paramiko_version < (4, 0, 0):
++            path = os.path.join(os.path.dirname(__file__), "fixtures", "misc", "test_dsa.key")
+ 
+-        with open(path) as fp:
+-            private_key = fp.read()
++            with open(path) as fp:
++                private_key = fp.read()
+ 
+-        pkey = client._get_pkey_object(key=private_key)
+-        self.assertTrue(pkey)
+-        self.assertTrue(isinstance(pkey, paramiko.DSSKey))
++            pkey = client._get_pkey_object(key=private_key)
++            self.assertTrue(pkey)
++            self.assertTrue(isinstance(pkey, paramiko.DSSKey))
+ 
+         # 3. ECDSA key type with header which is not supported by paramiko
+         path = os.path.join(os.path.dirname(__file__), "fixtures", "misc", "test_ecdsa.key")

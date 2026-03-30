@@ -31,6 +31,8 @@ Patch1:         gce_image_projects.patch
 Patch2:         ec2_create_node.patch
 # PATCH-FIX-UPSTREAM gh#apache/libcloud#2121
 Patch3:         fix-tests-python313.patch
+# PATCH-FIX-UPSTREAM gh#apache/libcloud#2135
+Patch4:         support-paramiko-4.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module fasteners}
 BuildRequires:  %{python_module libvirt-python}
