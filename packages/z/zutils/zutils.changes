@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 17 11:57:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16:
+  * zcmp now accepts large numbers in option arguments with
+    underscore separators (zcmp -n 123_456_789).
+  * zgrep now accepts the short option name '-?' as equivalent to
+    '--help'.
+  * 'EXIT STATUS' now has its own section in the man pages.
+  * 'make install' now warns of unmerged changes in
+    /etc/zutils.conf.
+- update keyring from https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=zutils
+
+-------------------------------------------------------------------
 Mon Nov 10 06:53:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.15:
@@ -37,7 +50,7 @@ Sat Feb 10 16:37:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 Sun Jan 22 11:39:46 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.12:
-  * 'zutilsrc' has been renamed to 'zutils.conf', and is loog for in 
+  * 'zutilsrc' has been renamed to 'zutils.conf', and is loog for in
     $XDG_CONFIG_HOME/zutils.conf instead of $HOME/.zutilsrc.
     (XDG_CONFIG_HOME defaults to $HOME/.config).
   * In zcat, zcmp, zdiff, and zgrep, the option '-O, --force-format'
@@ -46,7 +59,7 @@ Sun Jan 22 11:39:46 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
     values in hexadecimal instead of octal.
   * zcmp: option '-s' changed to '--script'
   * zcmp: '-q' has been assigned to options '--quiet' and '--silent'
-  * zcmp: '-q' now only suppresses diagnostic messages written to 
+  * zcmp: '-q' now only suppresses diagnostic messages written to
     stderr
   * zcmp: '-s' now only suppresses messages about file differences
     written to stdout or stderr.
@@ -64,7 +77,7 @@ Sun Jan 22 11:39:46 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
     '-U, --binary', and
     '-Z, --null'.
   * ztest now exits with status 2 if an uncompressed file has a
-    compressed file name extension, or if a compressed file has a 
+    compressed file name extension, or if a compressed file has a
     wrong compressed extension.
   * zudate now accepts option '-d, --destdir' to write recompressed
     files to another directory.
