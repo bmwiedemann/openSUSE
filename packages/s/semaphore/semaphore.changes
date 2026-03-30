@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 29 16:20:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.31:
+  * Fix Devolutions icon
+
+-------------------------------------------------------------------
+Wed Mar 25 13:02:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.30:
+  * fix(env): allow empty secret prefix
+  * fix: windows abs path support (#3720)
+  * Fix branch names with slashes truncated in GetRemoteBranches
+    (#3717)
+  * fix: branch validation and stop all tasks for ha mode
+
+-------------------------------------------------------------------
 Mon Mar 23 06:22:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.28:
