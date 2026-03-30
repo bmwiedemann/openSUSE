@@ -447,4 +447,25 @@ https://build.opensuse.org/request/show/1126958
     <comment></comment>
     <requestid>1314383</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>dbbac3d1d23023cc085ee62aacf9d0a9</srcmd5>
+    <version>1.0.0</version>
+    <time>1774888208</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.0:
+  * Check out the full release notes at
+    https://www.starlette.io/release-
+    notes/#100rc1-february-23-2026
+- update to 0.52.1:
+  * Only use `typing_extensions` in older Python versions
+- update to 0.52.0:
+  * Add `allow_private_network` in `CORSMiddleware` #3065.
+  * Increase warning stacklevel on `DeprecationWarning` for wsgi
+    module #3082.
+  * Drop Python 3.9 support #3061.
+  * Relax strictness on `Middleware` type #3059.
+  * Ignore `if-modified-since` header if `if-none-match` is
+    present in `StaticFiles` #3044.</comment>
+    <requestid>1343519</requestid>
+  </revision>
 </revisionlist>

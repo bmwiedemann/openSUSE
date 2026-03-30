@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:13:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Check out the full release notes at
+    https://www.starlette.io/release-
+    notes/#100rc1-february-23-2026
+- update to 0.52.1:
+  * Only use `typing_extensions` in older Python versions
+- update to 0.52.0:
+  * Add `allow_private_network` in `CORSMiddleware` #3065.
+  * Increase warning stacklevel on `DeprecationWarning` for wsgi
+    module #3082.
+  * Drop Python 3.9 support #3061.
+  * Relax strictness on `Middleware` type #3059.
+  * Ignore `if-modified-since` header if `if-none-match` is
+    present in `StaticFiles` #3044.
+
+-------------------------------------------------------------------
 Wed Oct 29 09:14:32 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.49.1 (fixes CVE-2025-62727, bsc#1252805)
