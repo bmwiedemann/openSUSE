@@ -1,7 +1,7 @@
 #
 # spec file for package python-cssselect
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-cssselect%{psuffix}
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        CSS3 selectors for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/cssselect
 Source:         https://github.com/scrapy/cssselect/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

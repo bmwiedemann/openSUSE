@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:19:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Dropped support for Python 3.9 and PyPy 3.10.
+  * Added support for Python 3.14 and PyPy 3.11.
+  * Switched the build system to ``hatchling``.
+  * CI fixes and improvements.
+
+-------------------------------------------------------------------
 Sat Mar 22 14:24:18 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Remove superfluous %python_module definition
@@ -31,7 +40,7 @@ Thu Apr 13 22:40:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Mon Nov  7 21:05:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 1.2.0 
+- Update to 1.2.0
   *   Drop support for Python 2.7, 3.4-3.6, add support for Python 3.7-3.11.
   *   Add type annotations (PEP 484 and PEP 561).
   *   More features from the CSS Selectors Level 4:
@@ -121,7 +130,7 @@ Sat Nov 23 18:09:44 UTC 2013 - p.drouand@gmail.com
 Tue Jul  9 17:09:42 UTC 2013 - arun@gmx.de
 
 - Packaged LICENSE file
-  fixes bnc#828513 
+  fixes bnc#828513
   Bug 828513 - LICENSE not packaged in python3-cssselect 0.8
 
 -------------------------------------------------------------------
@@ -137,7 +146,7 @@ Thu Mar 28 20:18:04 UTC 2013 - arun@gmx.de
     Bug fixes:
         #14 Fix non-ASCII pseudo-classes. (Invalid selector instead of crash.)
         #20 As per the spec, elements containing only whitespace are not considered empty for the :empty pseudo-class.
- 
+
 
 -------------------------------------------------------------------
 Mon Jan 14 10:17:27 UTC 2013 - saschpe@suse.de

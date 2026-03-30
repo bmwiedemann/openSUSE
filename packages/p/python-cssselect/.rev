@@ -135,4 +135,19 @@
 </comment>
     <requestid>1255267</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4783431f5414678d849d36f3a06a7f07</srcmd5>
+    <version>1.4.0</version>
+    <time>1774888185</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.0:
+  * Dropped support for Python 3.9 and PyPy 3.10.
+  * Added support for Python 3.14 and PyPy 3.11.
+  * Switched the build system to ``hatchling``.
+  * CI fixes and improvements.
+
+- Update to 1.2.0
+  fixes bnc#828513</comment>
+    <requestid>1343406</requestid>
+  </revision>
 </revisionlist>
