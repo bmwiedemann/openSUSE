@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-api
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-api%{?psuffix}
-Version:        1.39.1
+Version:        1.40.0
 Release:        0
 Summary:        OpenTelemetry Python API
 License:        Apache-2.0
@@ -51,7 +51,7 @@ Requires:       python-aiocontextvars
 %endif
 %if %{with test}
 BuildRequires:  %{python_module opentelemetry-api = %{version}}
-BuildRequires:  %{python_module opentelemetry-test-utils = 0.60b0}
+BuildRequires:  %{python_module opentelemetry-test-utils = 0.61b0}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages

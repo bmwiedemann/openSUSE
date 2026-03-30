@@ -370,4 +370,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1325293</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>118e939894d278f55f639af8e5d2e897</srcmd5>
+    <version>1.40.0</version>
+    <time>1774888217</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.40.0:
+  * bump semantic-conventions to v1.40.0
+  * Add stale PR GitHub Action
+  * Allow loading all resource detectors by setting
+    `OTEL_EXPERIMENTAL_RESOURCE_DETECTORS` to `*`
+  * Regenerate opentelemetry-proto code with v1.9.0 release
+  * Add python 3.14 support
+  * Silence events API warnings for internal users
+  * opentelemetry-sdk: make it possible to override the default
+    processors in the SDK configurator
+  * Prevent possible endless recursion from happening in
+    `SimpleLogRecordProcessor.on_emit`, (#4799) and (#4867).
+  * Implement span start/end metrics
+  * Add environment variable carriers to API
+  * Add experimental composable rule based sampler
+  * Make ConcurrentMultiSpanProcessor fork safe
+</comment>
+    <requestid>1343630</requestid>
+  </revision>
 </revisionlist>
