@@ -1,7 +1,7 @@
 #
 # spec file for package python-notebook
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,10 +32,10 @@ BuildArch:      noarch
 %bcond_with libalternatives
 %endif
 
-%define distversion 7.5.1
+%define distversion 7.5.5
 
 Name:           python-notebook%{psuffix}
-Version:        7.5.1
+Version:        7.5.5
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause

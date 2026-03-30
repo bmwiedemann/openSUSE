@@ -441,4 +441,23 @@
 - Change BuildRequires: and Requires: to use jupyterlab-4.5.x</comment>
     <requestid>1323390</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>73d042c41e05a83929fa73f472ed74d8</srcmd5>
+    <version>7.5.5</version>
+    <time>1774888228</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.5.5:
+  * Update to JupyterLab v4.5.6 #7861 (@jtpio)
+  * [7.5.x] Drop Python 3.9 on CI #7860 (@jtpio)
+  * Fix check links #7857 (@jtpio)
+  * Update to JupyterLab v4.5.5 #7842 (@jtpio)
+  * Fix PyO3 CI failure with Python 3.15 #7836 (@jtpio)
+  * The following people contributed discussions, new ideas, code
+    and documentation contributions, and review.
+  * See our definition of contributors.
+  * Update to JupyterLab v4.5.3 #7816 (@jtpio)
+  * Rename the token env variable #7802 (@brichet)
+  * Clean up node 24 install #7803 (@jtpio)</comment>
+    <requestid>1343628</requestid>
+  </revision>
 </revisionlist>

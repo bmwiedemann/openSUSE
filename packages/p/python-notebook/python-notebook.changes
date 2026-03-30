@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 29 14:08:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.5.5:
+  * Update to JupyterLab v4.5.6 #7861 (@jtpio)
+  * [7.5.x] Drop Python 3.9 on CI #7860 (@jtpio)
+  * Fix check links #7857 (@jtpio)
+  * Update to JupyterLab v4.5.5 #7842 (@jtpio)
+  * Fix PyO3 CI failure with Python 3.15 #7836 (@jtpio)
+  * The following people contributed discussions, new ideas, code
+    and documentation contributions, and review.
+  * See our definition of contributors.
+  * Update to JupyterLab v4.5.3 #7816 (@jtpio)
+  * Rename the token env variable #7802 (@brichet)
+  * Clean up node 24 install #7803 (@jtpio)
+
+-------------------------------------------------------------------
 Wed Dec 17 15:57:35 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.5.1
