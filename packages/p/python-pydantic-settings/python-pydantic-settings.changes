@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Mar 25 03:11:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to using python3 -m pytest for running the testsuite. 
+
+-------------------------------------------------------------------
+Tue Mar 24 16:27:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.1:
+  * fix: Deterministic alias selection when using
+    validate_by_name
+  * add deep merge functionality to config file sources
+  * Add support for AWS Secrets Manager VersionId parameter
+  * bugfix: Return `None` for inaccessible GCP Secret Manager
+    secrets
+  * Bugfix for cli_kebab_case="all" and CliImplicitFlag[bool]
+  * Unpack type alisases when looking for `NoDecode`
+  * CliToggleFlag and CliDualFlag
+  * Fix for CLI duplicate enum field values.
+  * fixed load nested config from env
+  * Add non-Path files support (for example Traversable) and open
+    files using Path.open method
+  * add one more traversable test
+  * CLI fix fox external list args.
+  * fix: handle case-insensitive retrieval in
+    GoogleSecretManagerSettingsSource
+  * CLI test fixes for help text formatting.
+  * Avoid conflicts with the `NAME` environment variable in WSL
+  * fix: When restoring init kwargs, use deterministic order
+  * Add env_prefix_target
+  * Remove `(default: …)` in the help message for `CliToggleFlag`
+  * Add support for CLI serialize styles.
+  * Add support for overriding default help on CLI internal
+    parser.
+  * CLI format_help method support
+  * feat(gcp): support SecretVersion annotation for per-field
+    secret versioning
+  * Allow `snake_case_conversion` with `env_prefix` for Azure Key
+    Vault source
+  * fix: Only override preferred_key when no value was found
+  * Update deps
+  * CLI coerce numeric types.
+  * CLI Union Discriminator Choices in Help
+  * Add nested path support for yaml_config_section (fixes #772)
+
+-------------------------------------------------------------------
 Sun Dec 28 20:23:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12.0:

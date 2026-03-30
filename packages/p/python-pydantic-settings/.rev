@@ -143,4 +143,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1325320</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f924accaac9912cf1c850b1837005f60</srcmd5>
+    <version>2.13.1</version>
+    <time>1774888225</time>
+    <user>anag_factory</user>
+    <comment>- Switch to using python3 -m pytest for running the testsuite. 
+
+- update to 2.13.1:
+  * fix: Deterministic alias selection when using
+    validate_by_name
+  * add deep merge functionality to config file sources
+  * Add support for AWS Secrets Manager VersionId parameter
+  * bugfix: Return `None` for inaccessible GCP Secret Manager
+    secrets
+  * Bugfix for cli_kebab_case=&quot;all&quot; and CliImplicitFlag[bool]
+  * Unpack type alisases when looking for `NoDecode`
+  * CliToggleFlag and CliDualFlag
+  * Fix for CLI duplicate enum field values.
+  * fixed load nested config from env
+  * Add non-Path files support (for example Traversable) and open
+    files using Path.open method
+  * add one more traversable test
+  * CLI fix fox external list args.
+  * fix: handle case-insensitive retrieval in
+    GoogleSecretManagerSettingsSource
+  * CLI test fixes for help text formatting.
+  * Avoid conflicts with the `NAME` environment variable in WSL
+  * fix: When restoring init kwargs, use deterministic order
+  * Add env_prefix_target
+  * Remove `(default: …)` in the help message for `CliToggleFlag`
+  * Add support for CLI serialize styles.
+  * Add support for overriding default help on CLI internal
+    parser.
+  * CLI format_help method support
+  * feat(gcp): support SecretVersion annotation for per-field</comment>
+    <requestid>1343448</requestid>
+  </revision>
 </revisionlist>
