@@ -119,4 +119,16 @@
   * The doctest parser no longer expand tabs to spaces (forwarded request 1309266 from glaubitz)</comment>
     <requestid>1309271</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>90df967bd70be6e5e1d9f33963ce1058</srcmd5>
+    <version>1.3.2</version>
+    <time>1774888262</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.2:
+  * Correctly find line numbers for decorated `async def`
+    functions (without crashing).
+  * Static discovery now includes doctests defined in `async def`
+    functions.</comment>
+    <requestid>1343497</requestid>
+  </revision>
 </revisionlist>

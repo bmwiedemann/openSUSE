@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:18:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * Correctly find line numbers for decorated `async def`
+    functions (without crashing).
+  * Static discovery now includes doctests defined in `async def`
+    functions.
+
+-------------------------------------------------------------------
 Mon Oct  6 12:14:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.3.0
