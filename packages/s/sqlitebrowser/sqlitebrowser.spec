@@ -21,7 +21,6 @@ Version:        3.13.99
 Release:        0
 Summary:        Spreadsheet-like interface to SQLite databases
 License:        GPL-3.0-or-later AND MPL-2.0
-Group:          Productivity/Office/Organizers
 URL:            https://sqlitebrowser.org
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz
 Source1:        sqlitebrowser.1
@@ -67,8 +66,7 @@ Controls and guided dialogs are available for users to:
 	* Examine a log of all SQL commands issued by the application
 
 %prep
-%setup -qn %{name}-%{version}
-%patch -P 0 -p1
+%autosetup -p1
 
 %build
 %cmake \

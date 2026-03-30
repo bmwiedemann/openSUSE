@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jan 10 19:57:59 UTC 2026 - Patrick Ziegler <zipat@proton.me>
+
+- Update spec file to latest standards
+  * Use %autosetup
+  * Remove Group tag
+
+-------------------------------------------------------------------
 Tue Jan  6 18:50:14 UTC 2026 - Patrick Ziegler <zipat@proton.me>
 
 - Update to 3.13.99 (master)
