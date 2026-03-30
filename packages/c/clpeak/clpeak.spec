@@ -18,7 +18,7 @@
 
 
 Name:           clpeak
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
 License:        SUSE-Public-Domain
