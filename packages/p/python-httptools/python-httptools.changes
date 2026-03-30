@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:52:03 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to 0.7.1:
+  * Drop Python 3.8, add Python 3.14
+  * Bump llhttp to 9.3.0 (by @ngoldbaum @Carreau @fantix in
+    59bf94f for #129)
+  * Static Type-checking for httptools (#100) (by @Vizonex
+    @KRRT7 in b55f5fe for #100)
+- Update vendored llhttp to 9.3.0
+- Remove test conditionals for obsolete distributions
+
+-------------------------------------------------------------------
 Sat Jan  6 20:48:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.1:
