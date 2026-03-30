@@ -259,4 +259,41 @@
     <comment></comment>
     <requestid>1324864</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2d2176a59962e5ad608585f65d02909b</srcmd5>
+    <version>4.2.3</version>
+    <time>1774888203</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.3:
+  * Make marshmallow.fields.Number and marshmallow.fields.Mapping
+    abstract base classes to prevent using them within Schemas
+    (:issue:`2924`). Thanks :user:`MartingaleCoda` for reporting.
+  * Allow required to be set on marshmallow.fields.Contant
+    (:issue:`2900`). Thanks :user:`nosnickid` for the report and
+    :user:`worksbyfriday` for the PR.
+  * Fix marshmallow.validate.OneOf emitting extra pairs when
+    labels outnumber choices (:issue:`2869`). Thanks:
+    user:T90REAL for the report and :user:`rstar327` for the PR.
+  * Fix behavior when passing a dot-delited attribute name to
+    partial for a key with data_key set (:pr:`2903`). Thanks
+    :user:`bysiber` for the PR.
+  * Fix Enum field by-name lookup to only return actual members
+    (:pr:`2902`). Thanks :user:`bysiber` for the PR.
+  * marshmallow.fields.DateTime with format=&quot;timestamp_ms&quot;
+    properly rejects bool values (:pr:`2904`). Thanks
+    :user:`bysiber` for the PR.
+  * Fix typing of error_essages argument to
+    marshmallow.fields.Field (:pr:`1636`). Thanks :user:`repole`
+    for reporting and :user:`dhruvildarji` for the PR.
+  * Add ipaddress.* to marshmallow.Schema.TYPE_MAPPING
+    (:issue:`1695`). Thanks :user:`liberforce` for the suggestion
+    and :user:`dhruvildarji` for the PR.
+  * Fix behavior of fields.Contant(None) (:issue:`2868`). Thanks
+    :user:`T90REAL` for reporting and emmanuel-ferdman for the
+    fix.
+  * Fix validation of URLs beginning with uppercare FILE
+    (:issue:`2891`). Thanks :user:`thanhlecongg` for reporting
+    and fixing.</comment>
+    <requestid>1343505</requestid>
+  </revision>
 </revisionlist>

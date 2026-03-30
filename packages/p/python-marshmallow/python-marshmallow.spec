@@ -1,7 +1,7 @@
 #
 # spec file for package python-marshmallow
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-marshmallow
-Version:        3.26.2
+Version:        4.2.3
 Release:        0
 Summary:        ORM/ODM/framework-agnostic library to convert datatypes from/to Python types
 License:        BSD-3-Clause AND MIT
@@ -34,15 +34,17 @@ Group:          Development/Languages/Python
 URL:            https://marshmallow.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/m/marshmallow/marshmallow-%{version}.tar.gz
 BuildRequires:  %{python_module autodocsumm}
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module flit-core >= 3.12}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-packaging >= 17.0
+%if %{python_version_nodots} < 311
+Requires:       python-backports-datetime-fromisoformat
+Requires:       python-typing-extensions
+%endif
 Suggests:       %{name}-doc
-Suggests:       python-python-dateutil
 Suggests:       python-simplejson
 BuildArch:      noarch
 %if %{with doc}
@@ -69,6 +71,10 @@ BuildRequires:  python3-sphinxext-opengraph
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module simplejson}
+%if %{python_version_nodots} < 311
+BuildRequires:  %{python_module backports-datetime-fromisoformat}
+BuildRequires:  %{python_module typing-extensions}
+%endif
 # /SECTION
 %python_subpackages
 
