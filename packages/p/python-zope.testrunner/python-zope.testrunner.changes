@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 24 12:24:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2:
+  * Remove support for Python 3.9.
+  * Add support for Python 3.14.
+
+-------------------------------------------------------------------
 Tue Jan  6 02:46:39 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 8.1:

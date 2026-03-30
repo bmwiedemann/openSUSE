@@ -288,4 +288,14 @@
 - Clean up BuildRequires.</comment>
     <requestid>1325513</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>50e4fd3584a45174ff47d03717730b81</srcmd5>
+    <version>8.2</version>
+    <time>1774888289</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.2:
+  * Remove support for Python 3.9.
+  * Add support for Python 3.14.</comment>
+    <requestid>1343525</requestid>
+  </revision>
 </revisionlist>

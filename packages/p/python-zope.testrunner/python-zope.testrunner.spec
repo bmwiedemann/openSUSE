@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.testrunner%{psuffix}
-Version:        8.1
+Version:        8.2
 Release:        0
 Summary:        Zope testrunner script
 License:        ZPL-2.1
