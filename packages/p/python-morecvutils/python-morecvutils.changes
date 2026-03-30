@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:02:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * modernized package
+  * typing
+
+-------------------------------------------------------------------
 Fri May  9 05:11:27 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -12,7 +19,7 @@ Sun Jan 16 16:32:59 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Apr 28 02:40:29 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Convert to singlespec, due to opencv doing the same. 
+- Convert to singlespec, due to opencv doing the same.
 
 -------------------------------------------------------------------
 Tue Jun  9 08:05:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>

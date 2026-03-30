@@ -39,4 +39,16 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275994</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>51988fe2eb504f51ad00d9bc42cca4c3</srcmd5>
+    <version>1.1.0</version>
+    <time>1774888280</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.0:
+  * modernized package
+  * typing
+
+- Convert to singlespec, due to opencv doing the same.</comment>
+    <requestid>1343496</requestid>
+  </revision>
 </revisionlist>
