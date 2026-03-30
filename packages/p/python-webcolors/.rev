@@ -142,4 +142,20 @@
     conversion function.</comment>
     <requestid>1194656</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c146bd0834925c2f81e4e8863adfea44</srcmd5>
+    <version>25.10.0</version>
+    <time>1774888205</time>
+    <user>anag_factory</user>
+    <comment>- update to 25.10.0:
+  * Supported Python versions are now 3.10, 3.11, 3.12, 3.13, and
+    3.14.
+  * The package's tests now run with pytest.
+  * Correct an error with specifying the version in the 24.11.0
+    package. The version number of the package was accidentally
+    defined in two places, and they were out of sync. The extra
+    definition has been removed. The 24.11.0 package has been
+    yanked from PyPI to prevent problems.</comment>
+    <requestid>1343507</requestid>
+  </revision>
 </revisionlist>

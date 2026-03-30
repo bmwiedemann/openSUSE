@@ -1,7 +1,7 @@
 #
 # spec file for package python-webcolors
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-webcolors
-Version:        24.8.0
+Version:        25.10.0
 Release:        0
 Summary:        Support for color names and value formats defined by the HTML
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ubernostrum/webcolors
 Source:         https://files.pythonhosted.org/packages/source/w/webcolors/webcolors-%{version}.tar.gz
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -64,8 +65,7 @@ Full documentation is `available online <http://webcolors.readthedocs.org/>`_.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test only the standard testsuite (python3 setup.py test launched two extra tests, one of them was unable to access the internet)
-%pytest tests
+%pytest
 
 %files %{python_files}
 %license LICENSE

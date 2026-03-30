@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:33:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.10.0:
+  * Supported Python versions are now 3.10, 3.11, 3.12, 3.13, and
+    3.14.
+  * The package's tests now run with pytest.
+  * Correct an error with specifying the version in the 24.11.0
+    package. The version number of the package was accidentally
+    defined in two places, and they were out of sync. The extra
+    definition has been removed. The 24.11.0 package has been
+    yanked from PyPI to prevent problems.
+
+-------------------------------------------------------------------
 Mon Aug 19 07:42:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.8.0:
