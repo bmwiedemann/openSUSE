@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 30 06:51:38 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.5:
+  * update CMake to prioritize OpenEXR v3 over OpenEXR v2 by @michaeldsmith in #189
+  * Feature/preserve exr standard attributes (data window, display window, etc) by @michaeldsmith in #192
+  * Codeql/replace alloca in a loop by @michaeldsmith in #193
+  * Feature/add openexr v2.2 and v3.4 new compression types by @michaeldsmith in #196
+
+-------------------------------------------------------------------
 Fri Oct 17 07:46:59 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.5.4:
