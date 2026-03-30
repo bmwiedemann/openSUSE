@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 10:47:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1:
+  * Add Python versions 3.13 and 3.14 to workflow
+  * Fix flake8 issue
+  * testsuite fixes
+
+-------------------------------------------------------------------
 Fri Jun 20 06:03:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

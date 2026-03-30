@@ -194,4 +194,15 @@
 - No more greedy globs in %files.</comment>
     <requestid>1287120</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>88050157a4ea6a754d477e398e248911</srcmd5>
+    <version>3.1.1</version>
+    <time>1774888188</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.1:
+  * Add Python versions 3.13 and 3.14 to workflow
+  * Fix flake8 issue
+  * testsuite fixes</comment>
+    <requestid>1343416</requestid>
+  </revision>
 </revisionlist>
