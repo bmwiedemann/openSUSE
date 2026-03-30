@@ -1,7 +1,7 @@
 #
 # spec file for package python-charset-normalizer
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-charset-normalizer
-Version:        3.4.4
+Version:        3.4.6
 Release:        0
 Summary:        Python Universal Charset detector
 License:        MIT
@@ -32,7 +32,7 @@ URL:            https://github.com/ousret/charset_normalizer
 Source:         https://github.com/Ousret/charset_normalizer/archive/refs/tags/%{version}.tar.gz#/charset_normalizer-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 68}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

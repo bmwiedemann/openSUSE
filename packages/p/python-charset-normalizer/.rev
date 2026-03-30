@@ -402,4 +402,34 @@
     <comment></comment>
     <requestid>1315251</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>67e1ce93315033f3f30a38f57f15844b</srcmd5>
+    <version>3.4.6</version>
+    <time>1774888185</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.6:
+  * Flattened the logic in `charset_normalizer.md` for higher
+    performance. Removed `eligible(..)` and `feed(...)`
+    in favor of `feed_info(...)`.
+  * Updated `UNICODE_RANGES_COMBINED` using Unicode blocks v17.
+  * Edge case where noise difference between two candidates can
+    be almost insignificant.
+  * CLI `--normalize` writing to wrong path when passing multiple
+    files in.
+  * Freethreaded pre-built wheels now shipped in PyPI starting
+    with 3.14t.
+  * Update `setuptools` constraint to `setuptools&gt;=68,&lt;=82`.
+  * Raised upper bound of mypyc for the optional pre-built
+    extension to v1.19.1
+  * Add explicit link to lib math in our optimized build.
+  * Logger level not restored correctly for empty byte sequences.
+  * TypeError when passing bytearray to from_bytes.
+  * Applied safe micro-optimizations in both our noise detector
+    and language detector.
+  * Rewrote the `query_yes_no` function (inside CLI) to avoid
+    using ambiguous licensed code.
+  * Added `cd.py` submodule into mypyc optional compilation to
+    reduce further the performance impact.</comment>
+    <requestid>1343405</requestid>
+  </revision>
 </revisionlist>
