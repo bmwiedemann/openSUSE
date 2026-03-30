@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 29 09:11:15 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update mozc.spec:
+  Adjust %suse_version judgement to fit %suse_version bump.
+  (jsc#PED-15819)
+
+-------------------------------------------------------------------
 Mon Feb 16 10:24:12 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Drop _multibuild for Fcitx4;

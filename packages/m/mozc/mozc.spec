@@ -65,7 +65,7 @@ Summary:        Mozc - Japanese Input Method for Chromium OS, Mac and Linux
 License:        Apache-2.0 AND BSD-3-Clause AND SUSE-Public-Domain AND Zlib
 Group:          System/I18n/Japanese
 ExcludeArch:    ppc ppc64 s390 s390x %{ix86}
-%if %{with_fcitx4} && 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+%if %{with_fcitx4} && 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
 ExclusiveArch:  donotbuild
 %endif
 URL:            https://github.com/google/mozc
