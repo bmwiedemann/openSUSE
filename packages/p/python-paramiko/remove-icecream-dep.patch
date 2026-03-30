@@ -1,8 +1,6 @@
-Index: paramiko-3.3.1/tests/conftest.py
-===================================================================
---- paramiko-3.3.1.orig/tests/conftest.py
-+++ paramiko-3.3.1/tests/conftest.py
-@@ -4,7 +4,7 @@ import shutil
+--- paramiko-4.0.0.orig/tests/conftest.py	2025-08-04 01:21:13.000000000 +0200
++++ paramiko-4.0.0/tests/conftest.py	2026-03-27 12:28:15.432058168 +0100
+@@ -4,7 +4,7 @@
  import threading
  from pathlib import Path
  
@@ -11,7 +9,7 @@ Index: paramiko-3.3.1/tests/conftest.py
  
  import pytest
  from paramiko import (
-@@ -22,13 +22,6 @@ from ._loop import LoopSocket
+@@ -21,13 +21,6 @@
  from ._stub_sftp import StubServer, StubSFTPServer
  from ._util import _support
  

@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 27 11:31:39 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to 4.0.0:
+  * [Support] #973: Removed support for the DSA (aka DSS) key algorithm
+  * [Support]: Administrivia updates
+- Refresh remove-icecream-dep.patch
+
+-------------------------------------------------------------------
 Tue Feb 17 15:04:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Split the test execution because pytest on 32-bit python 3.14 opens
-  too many threds when executing in one run
+  too many threads when executing all the tests in one run
 
 -------------------------------------------------------------------
 Wed Jun 11 05:49:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
