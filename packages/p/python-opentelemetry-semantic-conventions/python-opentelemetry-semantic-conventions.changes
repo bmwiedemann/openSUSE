@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 23 22:04:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.61b0.
+   * Add support for Python 3.14.
+   * Update opentelemetry-api dependency to 1.40.0.
+   * Promote service.instance.id and service.namespace to stable.
+   * Add Model Context Protocol (MCP) attributes and metrics.
+   * Add JSON-RPC protocol attributes.
+   * Add Oracle database and Oracle Cloud attributes.
+   * Add new GenAI attributes for agents, retrieval, and cache
+    usage.
+   * Add Kubernetes service metrics and attributes.
+   * Add Unix file descriptor and Windows handle count metrics.
+   * Add Akamai, Hetzner, and Vultr to cloud providers.
+   * Deprecate rpc.client.duration and rpc.server.duration in
+    favor of rpc.client.call.duration and rpc.server.call.duration.
+   * Deprecate several linux-specific memory metrics in favor of
+    system.memory.linux.* attributes.
+
+-------------------------------------------------------------------
 Sun Dec 28 15:17:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.39.1:
