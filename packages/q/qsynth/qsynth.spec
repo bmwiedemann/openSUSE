@@ -1,7 +1,7 @@
 #
 # spec file for package qsynth
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           qsynth
-Version:        1.0.3
+Version:        1.0.5
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
