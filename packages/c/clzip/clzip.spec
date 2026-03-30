@@ -1,7 +1,7 @@
 #
 # spec file for package clzip
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           clzip
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        Lossless Data Compressor based on LZMA
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ Source:         http://download.savannah.gnu.org/releases/lzip/clzip/%name-%vers
 Source2:        http://download.savannah.gnu.org/releases/lzip/clzip/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 Requires(post): info
-Requires(preun):info
+Requires(preun): info
 
 %description
 Clzip is a lossless data compressor based on the LZMA algorithm, with
