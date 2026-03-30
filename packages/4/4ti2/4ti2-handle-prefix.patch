@@ -7,31 +7,13 @@ but in doing so, we also get the final script name (zsolve), which is
 undesired. FUNCTION needs to be derived from the initial unresolved $0 value.
 
 ---
- src/groebner/script.template    |    5 +++--
  src/groebner/script.template.in |    5 +++--
- 2 files changed, 6 insertions(+), 4 deletions(-)
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Index: 4ti2-1.6.12/src/groebner/script.template
+Index: 4ti2-1.6.15/src/groebner/script.template.in
 ===================================================================
---- 4ti2-1.6.12.orig/src/groebner/script.template
-+++ 4ti2-1.6.12/src/groebner/script.template
-@@ -21,9 +21,10 @@
- # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. 
- 
- # We locate where this script is so we can call the executables.
--SCRIPT=$(realpath $(which "$0"))
-+FUNCTION="${0##*/}"
-+FUNCTION="${FUNCTION#4ti2_}"
-+SCRIPT=$(realpath "$(which "$0")")
- DIR=`dirname "$SCRIPT"`
--FUNCTION=`basename "$SCRIPT"`
- 
- # The default executable.
- EXECUTABLE=4ti2int64
-Index: 4ti2-1.6.12/src/groebner/script.template.in
-===================================================================
---- 4ti2-1.6.12.orig/src/groebner/script.template.in
-+++ 4ti2-1.6.12/src/groebner/script.template.in
+--- 4ti2-1.6.15.orig/src/groebner/script.template.in
++++ 4ti2-1.6.15/src/groebner/script.template.in
 @@ -21,9 +21,10 @@
  # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. 
  

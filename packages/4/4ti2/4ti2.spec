@@ -1,7 +1,7 @@
 #
 # spec file for package 4ti2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           4ti2
-Version:        1.6.14
+Version:        1.6.15
 Release:        0
 Summary:        Package for algebraic, geometric and combinatorial problems on linear spaces
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://4ti2.github.io/
-Source:         https://github.com/4ti2/4ti2/releases/download/Release_1_6_14/4ti2-1.6.14.tar.gz
+Source:         https://github.com/4ti2/4ti2/releases/download/Release_1_6_15/4ti2-1.6.15.tar.gz
 Patch2:         4ti2-handle-prefix.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.3
