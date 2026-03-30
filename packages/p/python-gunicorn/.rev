@@ -313,4 +313,12 @@
     <comment>- Convert to libalternatives on SLE-16+ only</comment>
     <requestid>1300448</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ad0bcafcbbd6edc33e9e95c47d91ca39</srcmd5>
+    <version>25.3.0</version>
+    <time>1774888183</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1343388</requestid>
+  </revision>
 </revisionlist>

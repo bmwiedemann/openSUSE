@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Fri Mar 27 11:39:22 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Package gunicornc
+
+-------------------------------------------------------------------
+Fri Mar 27 10:53:01 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to 25.3.0:
+  * HTTP/2 ASGI Body Duplication: Fix request body being received twice in HTTP/2
+    ASGI requests, causing JSON parsing errors with "Extra data" messages (#3558)
+  * ASGI Chunked EOF Handling: Add finish() method to callback parser to handle
+    chunked encoding edge case where connection closes before final CRLF after zero-chunk
+  * HTTP/2 Documentation: Fix http_protocols examples to use comma-separated string
+    instead of list syntax (#3561)
+  * Chunked Encoding: Reject chunk extensions containing bare CR bytes per RFC 9112 (#3556)
+  * Request Line Limit: Fix --limit-request-line 0 to mean unlimited as documented,
+    instead of using default maximum. Works with both Python and fast C parser. (#3563)
+  * ASGI Parser Header Validation: Add security checks per RFC 9110/9112
+  * Fast HTTP Parser: Update to gunicorn_h1c >= 0.6.3 for asgi_headers property and
+    InvalidChunkExtension validation for bare CR rejection
+  * ASGI PROXY Protocol: Add PROXY protocol v1/v2 support to callback parser
+- From 25.2.0:
+  * Fast HTTP Parser (gunicorn_h1c 0.4.1): Integrate new exception types and limit parameters
+    from gunicorn_h1c 0.4.1 for both WSGI and ASGI workers 
+  * uWSGI Async Workers: Fix InvalidUWSGIHeader: incomplete header error when using gevent or
+    gthread workers with uwsgi protocol behind nginx. (#3552, PR #3554)
+  * FileWrapper Iterator Protocol: Add __iter__ and __next__ methods to FileWrapper for full
+    PEP 3333 compliance. (#3396, PR #3550)
+  * ASGI HTTP Parser Optimizations: Improve ASGI worker HTTP parsing performance
+- From 25.1.0:
+  * Control Interface (gunicornc): Add interactive control interface for managing
+    running Gunicorn instances, similar to birdc for BIRD routing daemon (PR #3505)
+  * Dirty Stash: Add global shared state between workers via dirty.stash (PR #3503)
+  * Dirty Binary Protocol: Implement efficient binary protocol for dirty arbiter IPC
+    using TLV (Type-Length-Value) encoding (PR #3500)
+  * Dirty TTIN/TTOU Signals: Add dynamic worker scaling for dirty arbiters (PR #3504)
+  * ASGI Worker: Promoted from beta to stable
+  * Dirty Arbiters: Now marked as beta feature
+- From 25.0.3:
+  * Fix RuntimeError when StopIteration raised in ASGI coroutine (#3484)
+  * Fix passing maxsplit in re.split() as positional argument (deprecated in Python 3.13)
+- From 25.0.2:
+  * Fix ASGI concurrent request failures through nginx proxy
+  * Graceful disconnect handling for ASGI worker
+  * Lazy import dirty module for gevent compatibility
+- From 25.0.1:
+  * Fix ASGI streaming responses (SSE) hanging: add chunked transfer encoding for
+    HTTP/1.1 responses without Content-Length header. Without chunked encoding,
+    clients wait for connection close to determine end-of-response.
+  * Update celery_alternative example to use FastAPI with native ASGI worker and
+    uvloop for async task execution
+- From 25.0.0:
+  * Dirty Arbiters: Separate process pool for executing long-running, blocking
+    operations (AI model loading, heavy computation) without blocking HTTP workers
+    (PR #3460)
+  * Per-App Worker Allocation for Dirty Arbiters: Control how many dirty workers
+    load each app for memory optimization with heavy models (PR #3473)
+  * HTTP/2 Support (Beta): Native HTTP/2 (RFC 7540) support for improved performance
+    with modern clients (PR #3468)
+  * HTTP 103 Early Hints: Support for RFC 8297 Early Hints to enable browsers to
+    preload resources before the final response (PR #3468)
+  * uWSGI Protocol for ASGI Worker: The ASGI worker now supports receiving requests
+    via the uWSGI binary protocol from nginx (PR #3467)
+  * Fix HTTP/2 ALPN negotiation for gevent and eventlet workers when do_handshake_on_connect
+    is False (the default). The TLS handshake is now explicitly performed before checking
+    selected_alpn_protocol().
+  * Fix setproctitle initialization with systemd socket activation (#3465)
+  * Fix Expect: 100-continue handling: ignore the header for HTTP/1.0 requests
+    since 100-continue is only valid for HTTP/1.1+ (PR #3463)
+  * Fix missing _expected_100_continue attribute in UWSGIRequest
+  * Disable setproctitle on macOS to prevent segfaults during process title updates
+  * Publish full exception traceback when the application fails to load (#3462)
+  * Fix ASGI: quick shutdown on SIGINT/SIGQUIT, graceful on SIGTERM
+  * Eventlet Worker: The eventlet worker is deprecated and will be removed in
+    Gunicorn 26.0. Eventlet itself is no longer actively maintained.
+- From 24.1.1:
+  * Fix forwarded_allow_ips and proxy_allow_ips to remain as strings for backward
+    compatibility with external tools like uvicorn. Network validation now uses strict
+    mode to detect invalid CIDR notation (e.g., 192.168.1.1/24 where host bits are set)
+    (#3458, PR #3459)
+- From 24.1.0:
+  * PROXY Protocol v2 Support: Extended PROXY protocol implementation to support the binary
+    v2 format in addition to the existing text-based v1 format (PR #3451)
+  * CIDR Network Support: --forwarded-allow-ips and --proxy-allow-from now accept CIDR notation
+    (e.g., 192.168.0.0/16) for specifying trusted networks (PR #3449)
+  * Socket Backlog Metric: New gunicorn.socket.backlog gauge metric reports the current socket
+    backlog size on Linux systems (PR #3450)
+  * InotifyReloader Enhancement: The inotify-based reloader now watches newly imported modules,
+    not just those loaded at startup (PR #3447)
+  * Fix signal handling regression where SIGCLD alias caused "Unhandled signal: cld" errors on
+    Linux when workers fail during boot (#3453)
+  * Fix socket blocking mode on keepalive connections preventing SSL handshake failures with async
+    workers (PR #3452)
+  * Use smaller buffer size in finish_body() for faster timeout detection on slow or abandoned
+    connections (PR #3453)
+  * Handle SSLWantReadError in finish_body() to prevent worker hangs during SSL renegotiation (PR #3448)
+  * Log SIGTERM as info level instead of warning to reduce noise in orchestrated environments (PR #3446)
+  * Print exception details to stderr when worker fails to boot (PR #3443)
+  * Fix unreader.unread() to prepend data to buffer instead of appending (PR #3442)
+  * Prevent RecursionError when pickling Config objects (PR #3441)
+  * Use proper exception chaining with raise from in glogging.py (PR #3440)
+- From 24.0.0:
+  * ASGI Worker (Beta): Native asyncio-based ASGI support for running async Python frameworks like
+    FastAPI, Starlette, and Quart without external dependencies
+  * uWSGI Binary Protocol: Support for receiving requests from nginx via uwsgi_pass directive
+
+-------------------------------------------------------------------
 Wed Aug 20 08:51:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16+ only
