@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tomli
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        A lil' TOML parser
 License:        MIT
@@ -30,10 +30,9 @@ BuildRequires:  %{python_module pip}
 # Avoid build cycles
 # https://flit.readthedocs.io/en/latest/bootstrap.html
 #!BuildIgnore:  python3-tomli
-#!BuildIgnore:  python36-tomli
-#!BuildIgnore:  python38-tomli
-#!BuildIgnore:  python39-tomli
-#!BuildIgnore:  python310-tomli
+#!BuildIgnore:  python311-tomli
+#!BuildIgnore:  python313-tomli
+#!BuildIgnore:  python314-tomli
 #!BuildIgnore:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

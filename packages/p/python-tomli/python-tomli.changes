@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:02:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Limit number of parts of a TOML key to address quadratic time
+    complexity
+
+-------------------------------------------------------------------
 Tue Jan 27 16:26:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:

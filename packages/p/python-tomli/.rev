@@ -94,4 +94,14 @@
   * Binary wheels for Windows arm64</comment>
     <requestid>1329534</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ad6ce8ca65720d7d0695c53544675eb0</srcmd5>
+    <version>2.4.1</version>
+    <time>1774888206</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.1:
+  * Limit number of parts of a TOML key to address quadratic time
+    complexity</comment>
+    <requestid>1343517</requestid>
+  </revision>
 </revisionlist>
