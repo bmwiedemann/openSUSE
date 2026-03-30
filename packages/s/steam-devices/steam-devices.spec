@@ -1,7 +1,7 @@
 #
 # spec file for package steam-devices
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Obsoletes:      steam-controller <= 1.0.0.78
 Obsoletes:      steam-vr <= 1.0.0.78
 Provides:       steam-controller = 1.0.0.78
 Provides:       steam-vr = 1.0.0.78
+Requires:       (selinux-policy-targeted-gaming if selinux-policy-targeted)
 
 %description
 The Steam Controller features dual trackpads, HD haptic feedback, dual-stage

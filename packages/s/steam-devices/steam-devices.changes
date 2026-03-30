@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 09:48:26 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Conditionally require selinux-policy-targeted-gaming on
+  SELinux enabled systems (boo#1257456).
+
+-------------------------------------------------------------------
 Mon Dec 08 15:41:50 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 20251018+git.4d7e6c1:
