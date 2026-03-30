@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 13 12:34:11 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to runc v1.4.1. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.4.1>.
+- runc.keyring has been updated to match the new version from upstream.
+
+-------------------------------------------------------------------
 Fri Nov 28 00:40:42 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Add libpathrs build option to allow builds to switch to libpathrs. In future
@@ -8,7 +15,7 @@ Fri Nov 28 00:40:42 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 Fri Nov 28 00:20:15 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.4.0. Upstream changelog is available from
-  <https://github.com/opencontainers/runc/releases/tag/v1.4.0>.
+  <https://github.com/opencontainers/runc/releases/tag/v1.4.0>. bsc#1254362
 
 -------------------------------------------------------------------
 Wed Nov  5 10:05:32 UTC 2025 - Aleksa Sarai <asarai@suse.com>
