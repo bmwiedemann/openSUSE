@@ -44,7 +44,7 @@
  	INT i;
  	PNODE argvar = builtin_args(node);
  	PVALUE val = eval_and_coerce(PINT, argvar, stab, eflg);
-@@ -3453,7 +3453,7 @@ llrpt_copyfile (PNODE node, SYMTAB stab,
+@@ -3454,7 +3454,7 @@ llrpt_copyfile (PNODE node, SYMTAB stab,
  	PNODE argvar = builtin_args(node);
  	PVALUE val = eval_and_coerce(PSTRING, argvar, stab, eflg);
  	char buffer[1024];
@@ -64,7 +64,7 @@
  		if (!rptui_ask_for_program(LLREADTEXT, _(qSwhatrpt), &fname, &fullpath
  			, programsdir, ".ll", picklist)) {
  			if (fname)  {
-@@ -454,7 +454,7 @@ remove_tables (HINT_PARAM_UNUSED PACTX p
+@@ -455,7 +455,7 @@ remove_tables (HINT_PARAM_UNUSED PACTX p
  static BOOLEAN
  find_program (CNSTRING fname, STRING localdir, STRING *pfull,BOOLEAN include)
  {
@@ -75,7 +75,7 @@
  	BOOLEAN rtn=FALSE;
 --- src/liflines/screen.c
 +++ src/liflines/screen.c	2024-02-22 09:12:50.130767749 +0000
-@@ -1633,7 +1633,7 @@ invoke_cset_display (void)
+@@ -1621,7 +1621,7 @@ invoke_cset_display (void)
  		enqueue_list(list, strsave(zs_str(zstr)));
  	}
  
@@ -84,7 +84,7 @@
  	enqueue_list(list, strsave(zs_str(zstr)));
  
  	if (charprops_is_loaded()) {
-@@ -1784,7 +1784,7 @@ load_tt_action (void)
+@@ -1772,7 +1772,7 @@ load_tt_action (void)
  	}
  
  	/* Ask whence to load it */

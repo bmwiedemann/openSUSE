@@ -272,4 +272,30 @@
   * lifelines-3ad4571-array.dif becomes lifelines-4f417309-array.dif</comment>
     <requestid>1149125</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>64617810c438f8c0cb842aad976ab463</srcmd5>
+    <version>3.1.1+42ce4bda</version>
+    <time>1774888361</time>
+    <user>anag_factory</user>
+    <comment>- Update to lifelines git version 42ce4bda
+  - Merge pull request #495 from lifelines/issue494
+  - Fix assertions in free_xlat
+  - Merge pull request #496 from str255/patch-1
+  - Create onthisday.ll
+  - births, deaths, marriages on this day
+  - Fix assertions in free_xlat
+  - Merge pull request #491 from lifelines/macm1-testing
+  - Resolve warnings from clang15 / macos17 / darwin23
+  - Add NULL protection to FORINDISEQ
+  - Avoid null derefs in indiseq routines
+  - Code cleanup from sonarqube
+  - Try to fix duplicate cast warning from sonarqube
+  - Update NEWS, AUTHORS
+  - Minor tweaks to INSTALL for MacOS
+- Port patches
+  * lifelines-4f417309.dif
+  * lifelines-4f417309-array.dif
+- Make it build with latest autoconf</comment>
+    <requestid>1343608</requestid>
+  </revision>
 </revisionlist>

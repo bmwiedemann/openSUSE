@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 30 08:30:55 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to lifelines git version 42ce4bda
+  - Merge pull request #495 from lifelines/issue494
+  - Fix assertions in free_xlat
+  - Merge pull request #496 from str255/patch-1
+  - Create onthisday.ll
+  - births, deaths, marriages on this day
+  - Fix assertions in free_xlat
+  - Merge pull request #491 from lifelines/macm1-testing
+  - Resolve warnings from clang15 / macos17 / darwin23
+  - Add NULL protection to FORINDISEQ
+  - Avoid null derefs in indiseq routines
+  - Code cleanup from sonarqube
+  - Try to fix duplicate cast warning from sonarqube
+  - Update NEWS, AUTHORS
+  - Minor tweaks to INSTALL for MacOS
+- Port patches
+  * lifelines-4f417309.dif
+  * lifelines-4f417309-array.dif
+- Make it build with latest autoconf
+
+-------------------------------------------------------------------
 Thu Feb 22 09:26:27 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to lifelines git version 4f417309
@@ -200,4 +223,3 @@ Tue Jun 14 13:56:15 CEST 2005 - werner@suse.de
 
 - New package: lifelines, a genealogy program
 
--------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #
 # spec file for package lifelines
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,7 @@
 
 
 Name:           lifelines
-%global commit      4f417309
-%global longcommit  4f417309c1f1c188f5c67b099b4686ab8ff572ff
+%global commit  42ce4bda
 Version:        3.1.1+%{commit}
 Release:        0
 Summary:        The Lifelines Genealogy Program
@@ -28,9 +27,9 @@ URL:            https://github.com/lifelines/lifelines
 Source0:        https://github.com/%{name}/%{name}/archive/%{commit}.tar.gz#/%{name}-%{commit}.tar.gz
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-SUSE mainly to get paths correct if installed as system package
-Patch0:         lifelines-%{commit}.dif
+Patch0:         lifelines-4f417309.dif
 # PATCH-FIX-SUSE avoid memory leak as well as no initialized array
-Patch1:         lifelines-%{commit}-array.dif
+Patch1:         lifelines-4f417309-array.dif
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  dblatex
@@ -81,6 +80,8 @@ CPPFLAGS="-D_GNU_SOURCE -D_XOPEN_CURSES"
 LIBS="$(pkg-config ncursesw --libs)"
 CC=gcc
 export CC CFLAGS CPPFLAGS LIBS
+mkdir m4
+rm build/autotools/*.m4
 autoreconf -fi
 %configure  --disable-rpath			\
 	    --with-gnu-ld			\
