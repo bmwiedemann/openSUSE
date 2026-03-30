@@ -1439,4 +1439,24 @@ build with uclibc</comment>
   * 0001-include-cstdint-when-required.patch</comment>
     <requestid>1288466</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5be35ade07de6d6e27f5dc5093c5a638</srcmd5>
+    <version>3.2+20260221</version>
+    <time>1774888346</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2+20260221:
+  * InstructionInfoTable: add missing cstdint include
+  * find_z3.cmake: Remove old unused code
+  * Set KLEE version to 3.3-pre
+  * Release notes for KLEE 3.2
+  * Update KLEE version
+  * Added test case where an array &gt; 2^32 becomes symbolic
+  * Disallow arrays &gt; 2^32 bytes to become symbolic at a symbolic read or write
+  * Added test where klee_make_symbolic is called on an object &gt; 4 GiB
+  * Improve the warning message for large allocations.
+  * Terminate the state if an object &gt; 4 GiB is made symbolic
+  * Fixed the types dealing with object sizes and offsets
+- switch to tar_scm, given we are on git</comment>
+    <requestid>1343596</requestid>
+  </revision>
 </revisionlist>

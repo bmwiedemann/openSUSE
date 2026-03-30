@@ -17,27 +17,14 @@ once we bump -- if ever.
 
 Signed-off-by: Jiri Slaby <jslaby@suse.cz>
 ---
- include/klee/Module/InstructionInfoTable.h | 1 +
- include/klee/Support/CompressionStream.h   | 1 +
- include/klee/Support/FileHandling.h        | 2 ++
- include/klee/Support/PrintVersion.h        | 2 ++
- include/klee/System/Time.h                 | 1 +
- lib/Module/Passes.h                        | 1 +
- lib/Support/TreeStream.cpp                 | 1 +
- 7 files changed, 9 insertions(+)
+ include/klee/Support/CompressionStream.h | 1 +
+ include/klee/Support/FileHandling.h      | 2 ++
+ include/klee/Support/PrintVersion.h      | 2 ++
+ include/klee/System/Time.h               | 1 +
+ lib/Module/Passes.h                      | 1 +
+ lib/Support/TreeStream.cpp               | 1 +
+ 6 files changed, 8 insertions(+)
 
-diff --git a/include/klee/Module/InstructionInfoTable.h b/include/klee/Module/InstructionInfoTable.h
-index 3ba9528ce6f8..b6d05de58e17 100644
---- a/include/klee/Module/InstructionInfoTable.h
-+++ b/include/klee/Module/InstructionInfoTable.h
-@@ -10,6 +10,7 @@
- #ifndef KLEE_INSTRUCTIONINFOTABLE_H
- #define KLEE_INSTRUCTIONINFOTABLE_H
- 
-+#include <cstdint>
- #include <memory>
- #include <string>
- #include <unordered_map>
 diff --git a/include/klee/Support/CompressionStream.h b/include/klee/Support/CompressionStream.h
 index bc9119dd1578..330490f4bc65 100644
 --- a/include/klee/Support/CompressionStream.h
@@ -89,7 +76,7 @@ index 14d9ab4b7637..9ca1c512ffe1 100644
  DISABLE_WARNING_PUSH
  DISABLE_WARNING_DEPRECATED_DECLARATIONS
 diff --git a/lib/Module/Passes.h b/lib/Module/Passes.h
-index 6878a8b6d482..bbe9ecd4c916 100644
+index c7bd22524f2c..6cc26bc511ac 100644
 --- a/lib/Module/Passes.h
 +++ b/lib/Module/Passes.h
 @@ -12,6 +12,7 @@
@@ -113,5 +100,5 @@ index 4571861d3e9d..70620b74d967 100644
  #include <string.h>
  
 -- 
-2.50.0
+2.53.0
 
