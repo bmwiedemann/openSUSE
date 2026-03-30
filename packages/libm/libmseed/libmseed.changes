@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 29 20:14:47 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.3.0:
+  * Add ms3_msfp_init() to initialized MS3FileParam with start/end
+    offsets
+  * Avoid closing I/O streams not opened by the library when
+    reading or writing miniSEED, specifically stdin and stdout or a
+    provided descriptor. Behavior change: I/O streams provided by
+    the caller, such as stdin and stdout, are no longer closed by
+    the library.
+
+-------------------------------------------------------------------
 Sun Jan 25 17:25:08 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.2.4:
