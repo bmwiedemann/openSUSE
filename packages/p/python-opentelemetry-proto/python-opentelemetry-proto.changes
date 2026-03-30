@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 23 21:43:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.40.0:
+  * Regenerate code using opentelemetry-proto v1.9.0.
+  * Add support for Python 3.14.
+  * Breaking changes in profiles (v1development) proto:
+    + Added Stack and KeyValueAndUnit messages.
+    + Replaced location indices with stack index in Sample.
+    + Changed Profile.sample_type to a singular field.
+    + Renamed fields (e.g. time_nanos to time_unix_nano).
+    + Removed legacy resolution flags from Mapping.
+  * Clarify schema_url scope in logs, metrics, and traces.
+  * Documentation improvements and duplicate key warnings.
+
+-------------------------------------------------------------------
 Sun Dec 28 15:17:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.39.1:

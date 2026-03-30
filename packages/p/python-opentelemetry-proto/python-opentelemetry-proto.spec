@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-proto
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,18 @@
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-proto
 # Please keep in sync with python-opentelemetry-exporter-otlp-*
-Version:        1.39.1
+Version:        1.40.0
 Release:        0
 Summary:        OpenTelemetry Python Proto
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-proto/opentelemetry_proto-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module protobuf >= 5.0}
+BuildRequires:  %{python_module protobuf >= 5.0 with %python-protobuf < 7.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
@@ -40,7 +40,7 @@ BuildArch:      noarch
 
 %description
 This library contains the generated code for OpenTelemetry protobuf data model.
-The code in the current package was generated using the v0.17.0 release_ of
+The code in the current package was generated using the v1.9.0 release_ of
 opentelemetry-proto.
 
 %prep

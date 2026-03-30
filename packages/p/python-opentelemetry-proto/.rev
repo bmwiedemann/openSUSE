@@ -203,4 +203,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1325299</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7604b82b8daae1f4ebe631f267abe35b</srcmd5>
+    <version>1.40.0</version>
+    <time>1774888241</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.40.0:
+  * Regenerate code using opentelemetry-proto v1.9.0.
+  * Add support for Python 3.14.
+  * Breaking changes in profiles (v1development) proto:
+    + Added Stack and KeyValueAndUnit messages.
+    + Replaced location indices with stack index in Sample.
+    + Changed Profile.sample_type to a singular field.
+    + Renamed fields (e.g. time_nanos to time_unix_nano).
+    + Removed legacy resolution flags from Mapping.
+  * Clarify schema_url scope in logs, metrics, and traces.
+  * Documentation improvements and duplicate key warnings.</comment>
+    <requestid>1343478</requestid>
+  </revision>
 </revisionlist>
