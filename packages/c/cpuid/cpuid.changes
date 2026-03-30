@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 30 14:22:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260220
+  * Support for Panther Lake Cougar Cove/Darkmont,
+    Intel Core Ultra 300 series.
+  * APX EGPR descriptions
+  * Differentiate EPYC 4000 <-> Ryzen 7000 (both Raphael)
+  * Differentiate EPYC 4005 <-> Ryzen 9000 (Granite Ridge)
+  * Report EPYC 6th Gen (Venice)
+
+-------------------------------------------------------------------
 Thu Jun  5 19:32:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20250513
