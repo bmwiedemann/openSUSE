@@ -1,0 +1,33 @@
+From c2608f51ca16a5aae587c51ffb1c5ed5fdc694df Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Tue, 27 Jan 2026 12:18:25 +0000
+Subject: [PATCH] Make tests compatible with pymongo >= 4.16
+
+`InvalidDocument` now requires a `message` argument; it was previously
+optional.
+---
+ t/unit/backends/test_mongodb.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/t/unit/backends/test_mongodb.py b/t/unit/backends/test_mongodb.py
+index 0c29111654b..075ce3d4862 100644
+--- a/t/unit/backends/test_mongodb.py
++++ b/t/unit/backends/test_mongodb.py
+@@ -390,7 +390,7 @@ def test_store_result(self, mock_get_database):
+                                                             upsert=True)
+         assert sentinel.result == ret_val
+ 
+-        mock_collection.replace_one.side_effect = InvalidDocument()
++        mock_collection.replace_one.side_effect = InvalidDocument("bad")
+         with pytest.raises(EncodeError):
+             self.backend._store_result(
+                 sentinel.task_id, sentinel.result, sentinel.status)
+@@ -417,7 +417,7 @@ def test_store_result_with_request(self, mock_get_database):
+         assert parameters['parent_id'] == sentinel.parent_id
+         assert sentinel.result == ret_val
+ 
+-        mock_collection.replace_one.side_effect = InvalidDocument()
++        mock_collection.replace_one.side_effect = InvalidDocument("bad")
+         with pytest.raises(EncodeError):
+             self.backend._store_result(
+                 sentinel.task_id, sentinel.result, sentinel.status)

@@ -581,4 +581,12 @@
   * fix: restrict disable-prefetch feature to Redis brokers only</comment>
     <requestid>1326865</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>f5e5d2a617603024cf9bd39d672b8f7f</srcmd5>
+    <version>5.6.2</version>
+    <time>1774888325</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1343556</requestid>
+  </revision>
 </revisionlist>

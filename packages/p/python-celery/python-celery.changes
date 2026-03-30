@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 23 03:19:32 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pymongo-4.16.patch:
+  * Support pymongo 4.16+ changes.
+
+-------------------------------------------------------------------
 Mon Jan 12 23:44:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.6.2:

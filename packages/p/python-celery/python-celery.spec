@@ -35,6 +35,8 @@ License:        BSD-3-Clause
 URL:            https://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
+# PATCH-FIX-UPSTREAM gh#celery/celery#10074
+Patch1:         support-pymongo-4.16.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
