@@ -1,7 +1,7 @@
 #
 # spec file for package quotatool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           quotatool
-Version:        1.6.5
+Version:        1.8.0
 Release:        0
 Summary:        A utility for setting and manipulating filesystem quotas from the command line
 License:        GPL-2.0-only
@@ -25,9 +25,9 @@ URL:            https://quotatool.ekenberg.se
 Source0:        https://github.com/ekenberg/quotatool/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
-quotatool is a utility for setting and manipulating filesystem quotas from
-the command line. It supports quota on Linux (versions 2.6, 2.4, and 2.2,
-with ext2, ext3, ReiserFS, and XFS), Solaris, and AIX.
+quotatool is a utility for setting and manipulating filesystem quotas from the
+command line. It supports quota on Linux (versions 2.6, 2.4, and 2.2, with
+ext2, ext3, ReiserFS, and XFS), Solaris, and AIX.
 
 %prep
 %autosetup

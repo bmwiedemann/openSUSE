@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 29 20:02:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Fixed: expired grace period display (#36)
+  * Fixed: grace period -t writes to wrong uid (#37)
+  * Fixed: 5 bugs found by code audit (uninitialized struct,
+    memory leaks, pointer arithmetic, incorrect casts)
+  * Uninitialized grace flags (malloc → calloc)
+  * Simplified BSD quotactl path handling
+
+-------------------------------------------------------------------
 Thu Aug  1 05:46:32 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.5:

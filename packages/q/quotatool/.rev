@@ -32,4 +32,18 @@
   * Fix issue #28: 'fix missing __P definition for musl compile'</comment>
     <requestid>1190860</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>70fff444795a2feb423a0bbb1bf2ece8</srcmd5>
+    <version>1.8.0</version>
+    <time>1774888298</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.0:
+  * Fixed: expired grace period display (#36)
+  * Fixed: grace period -t writes to wrong uid (#37)
+  * Fixed: 5 bugs found by code audit (uninitialized struct,
+    memory leaks, pointer arithmetic, incorrect casts)
+  * Uninitialized grace flags (malloc → calloc)
+  * Simplified BSD quotactl path handling</comment>
+    <requestid>1343528</requestid>
+  </revision>
 </revisionlist>
