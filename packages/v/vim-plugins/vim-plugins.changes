@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 30 07:28:07 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update
+  * neomutt.vim         20260305
+  * vim-markdown        2.0.0+20251022
+- being in git, switch to tar_scm
+- drop local cscope_maps.vim, we distribute that from the cscope-maps tar
+
+-------------------------------------------------------------------
 Tue Apr 15 06:21:19 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - update

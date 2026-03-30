@@ -489,4 +489,16 @@
   * markdown       2.0.0+20240920</comment>
     <requestid>1269467</requestid>
   </revision>
+  <revision rev="56" vrev="63">
+    <srcmd5>374bf4ecc0fb30d27aced0949d066e86</srcmd5>
+    <version>unknown</version>
+    <time>1774888350</time>
+    <user>anag_factory</user>
+    <comment>- update
+  * neomutt.vim         20260305
+  * vim-markdown        2.0.0+20251022
+- being in git, switch to tar_scm
+- drop local cscope_maps.vim, we distribute that from the cscope-maps tar</comment>
+    <requestid>1343599</requestid>
+  </revision>
 </revisionlist>

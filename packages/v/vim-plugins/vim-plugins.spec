@@ -37,11 +37,11 @@
 %define gnupg_version		2.7.1
 %define latex_version		1.10.0+20250111
 %define locateopen_version	1.3
-%define markdown_version	2.0.0+20240920
+%define markdown_version	2.0.0+20251022
 %define matrix_version		1.10
 %define minibufexpl_version	6.3.2
 %define multiplesearch_version	1.3
-%define neomutt_version		20241013
+%define neomutt_version		20260305
 %define NERDcommenter_version	2.7.0
 %define NERDtree_version	7.1.3
 %define project_version		1.4.1
@@ -779,6 +779,7 @@ EOF
 
 cat > neomutt.vim-%{neomutt_version}/.rsync-filter <<EOF
 - /tests/
+- /UPDATE.md
 EOF
 
 cat > nerdtree-%{NERDtree_version}/.rsync-filter <<EOF
