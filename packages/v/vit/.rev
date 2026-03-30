@@ -151,4 +151,22 @@ their configuration.
     <comment></comment>
     <requestid>1252812</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>741481e5b8edbffaad657d4d493aa1de</srcmd5>
+    <version>2.3.4</version>
+    <time>1774888369</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.4
+  * Support Taskwarrior 'grey' color aliases
+  * Guard empty autocomplete tab options
+  * default to string type for UDA if no type configured
+    gh#vit-project/vit#368
+  * Use 'is not None' for None checks
+  * Fix UDA string sorting (after reset)
+  * don't strip trailing commas from UDA values, they are valid
+  * add uda_config attribute to TaskParser instance
+  * modernize build script
+  * vit-watchdog: fix signal include</comment>
+    <requestid>1343634</requestid>
+  </revision>
 </revisionlist>

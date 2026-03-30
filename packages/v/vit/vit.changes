@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 29 22:51:53 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.3.4
+  * Support Taskwarrior 'grey' color aliases
+  * Guard empty autocomplete tab options
+  * default to string type for UDA if no type configured
+    gh#vit-project/vit#368
+  * Use 'is not None' for None checks
+  * Fix UDA string sorting (after reset)
+  * don't strip trailing commas from UDA values, they are valid
+  * add uda_config attribute to TaskParser instance
+  * modernize build script
+  * vit-watchdog: fix signal include
+
+-------------------------------------------------------------------
 Thu Mar 13 15:31:50 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.3.3

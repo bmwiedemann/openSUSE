@@ -1,7 +1,7 @@
 #
 # spec file for package vit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           vit
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        Visual Interactive Taskwarrior full-screen terminal interface
 License:        MIT
-Group:          Productivity/Office/Organizers
 URL:            https://github.com/scottkosty/vit
 Source:         https://files.pythonhosted.org/packages/source/v/vit/vit-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tasklib
 BuildRequires:  python3-typing_extensions
@@ -55,21 +55,22 @@ Features:
 %setup -q -n vit-%{version}
 
 %build
-%python3_build
+%python3_pyproject_wheel
 
 %install
-%python3_install
+%python3_pyproject_install
 install -Dm644 scripts/bash/vit.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/vit
 %fdupes %{buildroot}%{python3_sitelib}
 
 %check
-python3 -m unittest
+%python3_pyunittest
 
 %files
 %doc COLOR.md CUSTOMIZE.md README.md
 %license LICENSE
 %{_bindir}/vit
 %{_datadir}/bash-completion/completions/vit
-%{python3_sitelib}/*
+%{python3_sitelib}/vit
+%{python3_sitelib}/vit-%{version}*-info
 
 %changelog
