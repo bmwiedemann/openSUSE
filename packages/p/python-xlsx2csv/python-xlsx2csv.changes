@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 27 17:29:02 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Reverting previous name changes and handling everything via a
+  Conflicts directive
+
+-------------------------------------------------------------------
 Mon Mar 23 10:25:20 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Rename binary from xlsx2csv to xlsx2csv.py to remove conflict with

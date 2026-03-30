@@ -51,13 +51,9 @@ popd
 
 %install
 %pyproject_install
-# Rename binary to xlsx2csv to solve conflict with binary provided by
-# perl-Spreadsheet-Read-scripts package
-install -Dm0644 man/xlsx2csv.1 %{buildroot}%{_mandir}/man1/xlsx2csv.py.1
-mv %{buildroot}%{_bindir}/xlsx2csv %{buildroot}%{_bindir}/xlsx2csv.py
-
-%python_clone -a %{buildroot}%{_bindir}/xlsx2csv.py
-%python_clone -a %{buildroot}%{_mandir}/man1/xlsx2csv.py.1
+install -Dm0644 man/xlsx2csv.1 %{buildroot}%{_mandir}/man1/xlsx2csv.1
+%python_clone -a %{buildroot}%{_bindir}/xlsx2csv
+%python_clone -a %{buildroot}%{_mandir}/man1/xlsx2csv.1
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,8 +62,8 @@ mv %{buildroot}%{_bindir}/xlsx2csv %{buildroot}%{_bindir}/xlsx2csv.py
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGELOG README.md
-%python_alternative %{_bindir}/xlsx2csv.py
-%python_alternative %{_mandir}/man1/xlsx2csv.py.1%{?ext_man}
+%python_alternative %{_bindir}/xlsx2csv
+%python_alternative %{_mandir}/man1/xlsx2csv.1%{?ext_man}
 %pycache_only %{python_sitelib}/__pycache__/xlsx2csv.cpython-*.pyc
 %{python_sitelib}/xlsx2csv.py
 %{python_sitelib}/xlsx2csv-%{version}.dist-info

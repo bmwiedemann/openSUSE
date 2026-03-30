@@ -7,4 +7,13 @@
     <comment>New package, python tool to convert from xlsx to csv</comment>
     <requestid>1342000</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5eeb5312fd005697332d1a0f0d84fe41</srcmd5>
+    <version>0.8.6</version>
+    <time>1774888389</time>
+    <user>anag_factory</user>
+    <comment>- Reverting previous name changes and handling everything via a
+  Conflicts directive</comment>
+    <requestid>1343655</requestid>
+  </revision>
 </revisionlist>
