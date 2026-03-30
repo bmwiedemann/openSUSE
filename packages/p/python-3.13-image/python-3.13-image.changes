@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:33:32 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- order package installation alphabetically
+
+-------------------------------------------------------------------
 Tue Mar 10 21:46:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove move files that make containers unreproducible
