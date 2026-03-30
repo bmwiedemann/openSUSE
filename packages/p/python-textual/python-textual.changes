@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:06:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.1:
+  * Fixes a crash when a selected widget is removed while
+    selecting
+  * Fix crash when a widget disapears between selections
+- update to 8.2.0:
+  * This release enhances text selection, with auto-scrolling,
+    and the ability to select across container widgets.
+  * Auto-scrolling on select
+  * Selecting over containers
+  * Added `App.ENABLE_SELECT_AUTO_SCROLL`,
+    `App.SELECT_AUTO_SCROLL_LINES`,
+    `App.SELECT_AUTO_SCROLL_SPEED` to tweak auto scrolling
+    behavior
+
+-------------------------------------------------------------------
+Tue Mar 24 16:45:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Allow `test_compute_wrap_offsets` tests, upstream claims it was
+  fixed in `rich` module (gh#Textualize/textual#6404).
+
+-------------------------------------------------------------------
 Sat Mar 14 19:11:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.1.1:

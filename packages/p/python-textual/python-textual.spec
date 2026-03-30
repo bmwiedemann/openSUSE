@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-textual%{psuffix}
-Version:        8.1.1
+Version:        8.2.1
 Release:        0
 Summary:        TUI framework for Python
 License:        MIT
@@ -53,9 +53,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 #
 Requires:       python-markdown-it-py >= 2.1.0
+Requires:       python-Pygments >= 2.19.2
 Requires:       python-rich >= 13.3.3
 Requires:       (python-platformdirs >= 3.6.0 with python-platformdirs < 5)
-Requires:       (python-pygments >= 2.19.2 with python-pygments < 2.20)
 Requires:       (python-typing-extensions >= 4.4.0 with python-typing-extensions < 5)
 Suggests:       python-jinja2
 Suggests:       python-tree-sitter
@@ -118,8 +118,6 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_default_theme"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_builtin_themes"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_unknown_theme_raises_exception"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_registering_and_setting_theme"
-# gh#Textualize/textual#6404
-IGNORED_CHECKS="${IGNORED_CHECKS} or test_compute_wrap_offsets"
 %pytest -k "not (${IGNORED_CHECKS})"
 %endif
 
