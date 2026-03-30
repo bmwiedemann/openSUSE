@@ -1,8 +1,7 @@
 #
 # spec file for package python-xmlsec
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xmlsec
-Version:        1.3.16
+Version:        1.3.17
 Release:        0
 Summary:        Python bindings for the XML Security Library
 License:        MIT
@@ -72,7 +71,7 @@ donttest="test_sign_case5"
 %pytest_arch -n 1 -k "not (${donttest})" tests/
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitearch}/xmlsec
 %{python_sitearch}/xmlsec-%{version}.dist-info
