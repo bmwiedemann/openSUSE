@@ -967,4 +967,20 @@
     some of its data over DBus.</comment>
     <requestid>1328013</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>177e05d5c8d45f3fcd04cf221dba74bd</srcmd5>
+    <version>1.14.0</version>
+    <time>1774888367</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.14.0:
+  * warn for deprecated guile (use scm)
+  * a number of code-cleanups since we can use C++20 now
+  * indexing: substantial speed-up of the clean-up phase
+  * scm: support the --eval command-line option
+  * mu4e: improve message rendering; get rid of some the unnecessary
+    body-part mime indication noise
+  * mu4e: allow including received patches when replying, see
+  * mu4e-compose-reply-include-mime-types</comment>
+    <requestid>1343635</requestid>
+  </revision>
 </revisionlist>

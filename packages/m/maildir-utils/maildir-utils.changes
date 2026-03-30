@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 30 10:45:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.14.0:
+  * warn for deprecated guile (use scm)
+  * a number of code-cleanups since we can use C++20 now
+  * indexing: substantial speed-up of the clean-up phase
+  * scm: support the --eval command-line option
+  * mu4e: improve message rendering; get rid of some the unnecessary
+    body-part mime indication noise
+  * mu4e: allow including received patches when replying, see
+  * mu4e-compose-reply-include-mime-types
+
+-------------------------------------------------------------------
 Mon Jan 19 08:03:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.15:

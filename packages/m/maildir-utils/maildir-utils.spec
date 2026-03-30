@@ -17,7 +17,7 @@
 
 
 Name:           maildir-utils
-Version:        1.12.15
+Version:        1.14.0
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later
@@ -25,16 +25,17 @@ Group:          Productivity/Networking/Email/Utilities
 URL:            https://www.djcbsoftware.nl/code/mu/
 Source:         https://github.com/djcb/mu/releases/download/v%{version}/mu-%{version}.tar.xz
 BuildRequires:  cld2-devel
-BuildRequires:  emacs-nox >= 26.3
+BuildRequires:  emacs-nox >= 28.1
+BuildRequires:  glib2-devel >= 2.80
 BuildRequires:  libtool
 BuildRequires:  makeinfo
-BuildRequires:  meson
+BuildRequires:  meson >= 1.3.2
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gmime-3.0) >= 3.0
 BuildRequires:  pkgconfig(guile-3.0)
 # Optional: for outputting of messages in json
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(xapian-core)
+BuildRequires:  pkgconfig(xapian-core) >= 1.4.22
 
 %description
 Set of utilities to index and search Maildirs. Upstream name is mu.
@@ -78,7 +79,11 @@ mu4e is an emacs-based e-mail client. It is based on the mu e-mail indexer/searc
 %files -n mu4e
 %doc %{_datadir}/doc/mu/mu4e-about.org
 %dir %{_datadir}/emacs/site-lisp/mu4e/
+%dir %{_datadir}/mu/
+%dir %{_datadir}/mu/scm
 %{_datadir}/emacs/site-lisp/mu4e/*.{el,elc}
+%{_datadir}/mu/scm/*.scm
 %{_infodir}/mu4e.info%{?ext_info}
+%{_infodir}/mu-scm.info%{?ext_info}
 
 %changelog
