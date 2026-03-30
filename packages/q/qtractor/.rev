@@ -570,4 +570,24 @@ Fixes build against latest qt5 with qtractor-QAction.patch.</comment>
   * respective target output bus mixer strip.</comment>
     <requestid>1339009</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>3f35e4a2b1a36d144fcdad3e6a9c2ef6</srcmd5>
+    <version>1.5.12</version>
+    <time>1774888300</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.12:
+  * New audio clip capture/recording latency compensation options
+  * are now in effect (cf.  View/Options.../Audio/Capture/Latency).
+  * Filter out zero-duration note events when importing MIDI
+    files.
+  * Fixed step input on offsetted MIDI clips.
+  * Fixed audio Aux-Sends inserted on audio input buses to not
+  * affect output buses processing order anymore.
+  * Clip/Merge, Export... now allowed on simple highlighted
+    clips.
+  * Make sure to ask whether to replace already existing files on
+  * Clip/Merge, Export...
+  * Make sure all LV2 plug-in state paths are stored as relative.</comment>
+    <requestid>1343529</requestid>
+  </revision>
 </revisionlist>

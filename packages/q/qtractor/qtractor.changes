@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 29 20:03:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.12:
+  * New audio clip capture/recording latency compensation options
+  * are now in effect (cf.  View/Options.../Audio/Capture/Latency).
+  * Filter out zero-duration note events when importing MIDI
+    files.
+  * Fixed step input on offsetted MIDI clips.
+  * Fixed audio Aux-Sends inserted on audio input buses to not
+  * affect output buses processing order anymore.
+  * Clip/Merge, Export... now allowed on simple highlighted
+    clips.
+  * Make sure to ask whether to replace already existing files on
+  * Clip/Merge, Export...
+  * Make sure all LV2 plug-in state paths are stored as relative.
+
+-------------------------------------------------------------------
 Sat Mar 14 20:24:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.11:
