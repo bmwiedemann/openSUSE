@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>1335817</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>405b9739380d90691f6b7408e7f2048e</srcmd5>
+    <version>0.0.26</version>
+    <time>1774888274</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.26:
+  * Prevent &quot;too many cycle iteration&quot; panics in more situations
+  * Fix false positives and false negatives when unpacking a
+    union of tuples into a function call
+  * Add support for `typing.Concatenate`
+  * Validate the return type of generator functions
+  * Support dataclass field `converter`s
+  * Disallow `Self` in metaclass and static methods
+  * Improve call inference for keyword-only `dict()`
+  * Respect non-explicitly defined `dataclass_transform` params
+  * Unconditionally silence diagnostics in unreachable code
+  * Respect terminal-function-call narrowing in global scope
+  * Fix performance regression for narrowing on a larger
+    `Literal` type
+- update to 0.0.25:
+  * Support `type:ignore[ty:code]` suppressions
+  * Avoid eager TypedDict diagnostics in `TypedDict | dict`
+    unions
+  * Fix Salsa panic propagation
+  * Fix folding ranges of comments separated by statements
+  * Fix loop-header reachability cycles in conditional unpacking
+  * Fix subtyping of intersections containing `NewType`s of
+    unions vs. unions
+  * Fix untracked reads in Salsa queries that can lead to
+    backdating panics
+  * Prevent tainted loop bindings in cycle normalization
+  * Simplify an intersection of `N &amp; ~T` to `Never` if `B &amp; ~T`
+    would simplify to `Never`, where `B` is the concrete base
+    type of a `NewType` `N`
+- update to 0.0.24:</comment>
+    <requestid>1343515</requestid>
+  </revision>
 </revisionlist>

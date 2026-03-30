@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:55:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.26:
+  * Prevent "too many cycle iteration" panics in more situations
+  * Fix false positives and false negatives when unpacking a
+    union of tuples into a function call
+  * Add support for `typing.Concatenate`
+  * Validate the return type of generator functions
+  * Support dataclass field `converter`s
+  * Disallow `Self` in metaclass and static methods
+  * Improve call inference for keyword-only `dict()`
+  * Respect non-explicitly defined `dataclass_transform` params
+  * Unconditionally silence diagnostics in unreachable code
+  * Respect terminal-function-call narrowing in global scope
+  * Fix performance regression for narrowing on a larger
+    `Literal` type
+- update to 0.0.25:
+  * Support `type:ignore[ty:code]` suppressions
+  * Avoid eager TypedDict diagnostics in `TypedDict | dict`
+    unions
+  * Fix Salsa panic propagation
+  * Fix folding ranges of comments separated by statements
+  * Fix loop-header reachability cycles in conditional unpacking
+  * Fix subtyping of intersections containing `NewType`s of
+    unions vs. unions
+  * Fix untracked reads in Salsa queries that can lead to
+    backdating panics
+  * Prevent tainted loop bindings in cycle normalization
+  * Simplify an intersection of `N & ~T` to `Never` if `B & ~T`
+    would simplify to `Never`, where `B` is the concrete base
+    type of a `NewType` `N`
+- update to 0.0.24:
+  * Ensure `TypedDict` subscripts for unknown keys return
+    `Unknown`
+  * Fix overflow with recursive `TypeIs`
+  * Fix variance of frozen dataclass-transform models
+  * Improve semantic token classification for attribute access on
+    union types
+- update to 0.0.23:
+  * Fix false-positive diagnostics for PEP-604 union annotations
+    on attribute targets on Python 3.9 when `from __future__
+    import annotations` is active
+  * `dataclass_transform`: Respect `kw_only` overwrites in
+    dataclasses
+  * Fix too-many-cycle panics when inferring loop variables with
+    `Literal` types
+  * Fix folding range classification of lines starting with `#`
+  * Fix folding ranges for notebooks
+  * ### Core type checking
+  * Split errors for possibly missing submodules into a new
+    `possibly-missing-submodule` error code (enabled by default),
+    and make `possibly-missing-attribute` ignored by default
+  * Improve handling of bidirectional inference when
+  * Fix inference of conditionally defined properties
+- update to 0.0.21:
+  * Avoid stack overflow with recursive typevar
+  * Fix panic on incomplete except handlers
+  * Allow unions of different-length iterables in `*args`
+    unpacking into optional positional parameters
+  * Don't replace `Any` attributes with `object` after
+    `isinstance` narrowing
+  * Exclude decorators from class/def code folding
+  * Fix handling of non-Python text documents
+- update to 0.0.20:
+  * Disallow negative narrowing for `isinstance()` or
+    `issubclass()` checks involving `type[]` types
+  * Fix binary operations between an instance of a `NewType` of
+    `float` and an instance of `Any`/`Unknown`
+  * Fix bug where ty would think that a `Callable` with a
+    variadic positional parameter could be a subtype of a
+    `Callable` with a positional-or-keyword parameter
+  * Fix inference of `t.__mro__` if `t` is an instance of
+    `type[Any]`
+  * Fix overloaded callable assignability for unary `Callable`
+    targets
+  * Limit recursion depth when displaying self-referential
+    function types
+  * Ensure that `python -m ty` works even when ty was installed
+    into an ephemeral virtual environment
+
+-------------------------------------------------------------------
 Thu Feb 26 14:21:46 UTC 2026 - Oliver Kurz <okurz@suse.com>
 
 - Add support to build for Leap 16.0 with rust1.90
