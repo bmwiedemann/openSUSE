@@ -1,7 +1,7 @@
 #
 # spec file for package python-APScheduler
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,7 +88,7 @@ sed -i 's/--cov//' pyproject.toml || true
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -p asyncio -k "not (redis or mongodb or rethinkdb or zookeeper)"
+%pytest -p asyncio -k "not (redis or mongodb or rethinkdb or zookeeper or test_broken_pool)"
 
 %files %{python_files}
 %license LICENSE.txt

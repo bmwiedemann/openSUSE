@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 29 17:58:01 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
+
+- Skip test_broken_pool in %check: the test is flaky due to PID reuse
+  and has been removed in upstream master
+  (gh#agronholm/apscheduler#601)
+
+-------------------------------------------------------------------
 Thu Jan  8 08:23:04 UTC 2026 - Anton Smorodskyi <anton.smorodskyi@suse.com>
 
 - Update to 3.11.2:
