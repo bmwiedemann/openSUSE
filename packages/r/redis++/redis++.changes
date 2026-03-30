@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 29 22:06:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.15:
+  * Support cmake FetchContent feature
+  * Support more hash commands
+  * Make variant parser more efficient
+  * Fix event loop crash: avoid closing handle opened by hiredis
+
+-------------------------------------------------------------------
 Sun May 18 07:15:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.3.14:
