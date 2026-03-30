@@ -12273,7 +12273,7 @@ unsorted:
   - libbacktrace-devel 
   - libbamf3-2 
   - libbandicoot3 
-  - libbaresip22 
+  - libbaresip26 
   - libbarvinok23 
   - libbase 
   - libbase-javadoc 
@@ -13010,9 +13010,7 @@ unsorted:
   - libdlm 
   - libdlm-devel 
   - libdlm3 
-  - libdmapsharing-3_0-2 
   - libdmapsharing-devel 
-  - libdmapsharing3-devel 
   - libdmmp-devel 
   - libdmmp0_2_0 
   - libdmtx-devel 
@@ -23880,7 +23878,6 @@ unsorted:
   - ptcpdump 
   - pthread-stubs-devel 
   - ptl-devel 
-  - ptpd 
   - ptscotch-mpich 
   - ptscotch-mpich-devel 
   - ptscotch-mvapich2 
@@ -28179,6 +28176,7 @@ unsorted:
   - python311-zope.copy 
   - python311-zope.deferredimport 
   - python311-zope.deprecation 
+  - python311-zope.dottedname 
   - python311-zope.exceptions 
   - python311-zope.hookable 
   - python311-zope.i18nmessageid 
@@ -32078,6 +32076,7 @@ unsorted:
   - python313-zope.copy 
   - python313-zope.deferredimport 
   - python313-zope.deprecation 
+  - python313-zope.dottedname 
   - python313-zope.event 
   - python313-zope.exceptions 
   - python313-zope.hookable 
@@ -33971,7 +33970,6 @@ unsorted:
   - selinux-policy-doc 
   - selinux-policy-minimum 
   - selinux-policy-sandbox 
-  - selinux-policy-targeted-gaming 
   - selinux-targeted-setup 
   - semantik 
   - semaphore 
@@ -46833,7 +46831,6 @@ unsorted:
   - yast2-installation-control 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
-  - yast2-mail 
   - yast2-multipath 
   - yast2-rdp 
   - yast2-rear 
