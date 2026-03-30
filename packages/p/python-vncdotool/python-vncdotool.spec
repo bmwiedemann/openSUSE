@@ -1,7 +1,7 @@
 #
 # spec file for package python-vncdotool
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,12 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-vncdotool
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        Command line VNC client
 License:        MIT
 URL:            https://github.com/sibson/vncdotool
 Source:         https://files.pythonhosted.org/packages/source/v/vncdotool/vncdotool-%{version}.tar.gz
-Patch0:         remove-nose.patch
-Patch1:         fix-mocking.patch
-# https://github.com/sibson/vncdotool/issues/218
-Patch2:         python-vncdotool-no-mock.patch
-# gh#python/cpython#88852
-Patch3:         py311-compat.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -40,11 +34,13 @@ BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-Pillow
 Requires:       python-Twisted
+Requires:       python-pycryptodomex
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pexpect}
+BuildRequires:  %{python_module pycryptodomex}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -72,6 +68,7 @@ Command line VNC client.
 %python_libalternatives_reset_alternative vnclog
 
 %check
+rm -rf tests/functional
 %pytest -k 'not functional'
 
 %files %{python_files}

@@ -61,4 +61,35 @@
     <comment>- Convert to pip-based build and libalternatives</comment>
     <requestid>1285492</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>49b25df57f08276e931e2181c290ceea</srcmd5>
+    <version>1.2.0</version>
+    <time>1774888269</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.0:
+  * fixes for api.shutdown and disconnect raise exceptions, #256
+- update to 1.1.0:
+  * Huge thanks to @pmhahn for single handedly driving conversion
+    to modern Python3, as well
+  * as cleaning up a ton of outstanding issues.
+  * [BREAKING] drop python 2.x support, thanks @pmhahn
+  * Use built-in Unittest and mock for testing
+  * PEP-484 type hinting
+  * Doc improvements
+  * Test for byte handling
+  * Internal implementation of DES replaced by PyCrotodomeX
+  * Support for Apple Remote Desktop (ARD)
+  * Support for pseudo-encoding LastRec
+  * Support for Extended QEMU Key Events
+  * Support IPv6 addresses for server connection
+  * Bugfix, use configured log outputs over stdout
+  * Bugfix, handle invalid password
+  * Bugfixes for loggingproxy
+- remove obsolete patches:
+  * remove-nose.patch
+  * fix-mocking.patch
+  * python-vncdotool-no-mock.patch
+  * py311-compat.patch</comment>
+    <requestid>1343510</requestid>
+  </revision>
 </revisionlist>
