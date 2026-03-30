@@ -108,4 +108,30 @@
     <comment></comment>
     <requestid>1239308</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a74190a27da5c1b13021f10380ad8358</srcmd5>
+    <version>2.8.0</version>
+    <time>1774888321</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.8.0:
+  * Pass `request` to the template rendered in TemplateColumn
+    (#1014) Fixes: #1008
+  * Do not generate error when table data model is subclass of
+    table model (#1015) Fixes #1010 by @sjoerdjob
+  * Update supported Python and Django versions (#1011) by @dyve
+  * Supported Django versions: 4.1, 5.1, 5.2, 6.0
+  * Supported Python versions: 3.10, 3.11, 3.12, 3.13, 3.14
+  * Correct packaging mistakes:
+  * Add python_requires to setup.py (#982) Fixes: #980
+  * Add TimeColumn to built-in columns (#937) by @philipphanemann
+  * Add support to pass args/kwargs to callables from Accessor
+    (#940), fixes: #939
+  * Drop support for Django 3.2, 4.1 and python 3.8
+  * Add support for Django 5.1 and python 3.12
+  * Explicitly set `Column.accessor` when binding a column to
+    allow column methods like `order_by` to use its value
+
+- Initial checkin</comment>
+    <requestid>1343439</requestid>
+  </revision>
 </revisionlist>
