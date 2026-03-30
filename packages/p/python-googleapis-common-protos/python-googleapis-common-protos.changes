@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 30 08:04:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.73.1
+  * Update changelog entry for release (#16093)
+  * Allow Protobuf 7.x, require Python 3.9 (#16102)
+  * Require Python 3.9
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Mar 17 13:10:12 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.73.0
