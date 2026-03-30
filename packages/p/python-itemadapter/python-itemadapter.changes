@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 23 12:00:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Added support for Python 3.14 and removed support for PyPy
+  * `get_json_schema()` no longer reports all `scrapy.Item`
+    fields as required.
+  * The return value of `get_json_schema()` is now deterministic
+    (deterministic order of dict keys and list items).
+  * `get_json_schema()` now supports inherited field docstrings.
+  * Added support for PyPy 3.11
+  * Added a new `get_json_schema()` class method to `ItemAdapter`
+    and all built-in adapters to output a JSON Schema for a given
+    item class (#101).
+  * Modernized the code base, now making full use of
+  * pyproject.toml and using ruff
+
+-------------------------------------------------------------------
 Fri Feb  7 15:04:35 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.11.0

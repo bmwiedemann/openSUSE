@@ -1,7 +1,7 @@
 #
 # spec file for package python-itemadapter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,22 +27,22 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-itemadapter%{psuffix}
-Version:        0.11.0
+Version:        0.13.0
 Release:        0
 Summary:        Wrapper for data container objects
 License:        BSD-3-Clause
 URL:            https://github.com/scrapy/itemadapter
 Source:         https://github.com/scrapy/itemadapter/archive/v%{version}.tar.gz#/itemadapter-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 40.5.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module Scrapy >= 2.0}
-BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module Scrapy >= 2.2}
+BuildRequires:  %{python_module attrs >= 20.1.0}
 BuildRequires:  %{python_module itemadapter >= %{version}}
-BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pydantic >= 1.8}
 BuildRequires:  %{python_module pytest >= 5.4}
 %endif
 BuildArch:      noarch
