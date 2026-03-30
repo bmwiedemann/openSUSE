@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 13:12:57 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add opensm-osm_port_info_rcv.c-Re-query-PortInfo-with-extended-speeds-enabled.patch to fix
+  issue with NDR switches (bsc#1258143)
+
+-------------------------------------------------------------------
 Mon Feb 26 12:49:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

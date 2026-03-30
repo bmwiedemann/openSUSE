@@ -1,0 +1,49 @@
+commit a58c675e4e6cd47d4c29a9a8ddcd5793e0e7b3de
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Wed Mar 4 14:10:55 2026 +0100
+
+    opensm/osm_port_info_rcv.c: Re-query PortInfo with extended speeds enabled
+    
+    Currently, OpenSM's initial SubnGet(PortInfo) request might not set
+    Attribute Modifier bit 31 (SMSupportExtendedSpeeds). If the switch
+    responds with extended speeds capability without the actual extended
+    speeds data, subsequent operations that rely on the true hardware speeds
+    might fail.
+    
+    This patch implements a "Two-Stage Get" in the PortInfo response handler.
+    If the initial Get() omitted AM bit 31 but the port's capability mask
+    advertises extended speed support, OpenSM now explicitly requeries
+    the port with AM bit 31 ON to obtain the correct extended speeds data
+    before proceeding with the async state machine.
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git opensm/osm_port_info_rcv.c opensm/osm_port_info_rcv.c
+index d3eca8c88381..32052a929f64 100644
+--- opensm/osm_port_info_rcv.c
++++ opensm/osm_port_info_rcv.c
+@@ -762,6 +762,24 @@ void osm_pi_rcv_process(IN void *context, IN void *data)
+ 
+ 		CL_ASSERT(p_physp);
+ 
++		if (!p_context->set_method &&
++			!(cl_ntoh32(p_smp->attr_mod) & (1 << 31)) &&
++			(p_pi->capability_mask & IB_PORT_CAP_HAS_EXT_SPEEDS)) {
++
++			OSM_LOG(sm->p_log, OSM_LOG_DEBUG,
++				"Re-querying PortInfo to unlock extended speeds\n");
++
++			p_smp->attr_mod |= cl_hton32(1 << 31);
++
++			osm_req_get(sm, osm_physp_get_dr_path_ptr(p_physp),
++				IB_MAD_ATTR_PORT_INFO, p_smp->attr_mod,
++				FALSE, p_smp->m_key, 0, CL_DISP_MSGID_NONE,
++				&p_madw->context);
++			CL_PLOCK_RELEASE(sm->p_lock);
++
++			goto Exit;
++		}
++
+ 		/* Update the directed route path to this port
+ 		   in case the old path is no longer usable. */
+ 		p_dr_path = osm_physp_get_dr_path_ptr(p_physp);

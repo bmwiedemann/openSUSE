@@ -6,5 +6,4 @@ Administration. Such a software entity is required to run for in order
 to initialize the InfiniBand hardware (at least one per each InfiniBand
 subnet).
 </description>
-  <devel project="science:HPC" package="opensm"/>
 </package>

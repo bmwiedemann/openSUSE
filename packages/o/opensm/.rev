@@ -155,4 +155,13 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1151422 from dimstar)</comment>
     <requestid>1151433</requestid>
   </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>b6c937128c2af29e86d8f8b6339e4717</srcmd5>
+    <version>3.3.24</version>
+    <time>1774888374</time>
+    <user>anag_factory</user>
+    <comment>- Add opensm-osm_port_info_rcv.c-Re-query-PortInfo-with-extended-speeds-enabled.patch to fix
+  issue with NDR switches (bsc#1258143)</comment>
+    <requestid>1343642</requestid>
+  </revision>
 </revisionlist>

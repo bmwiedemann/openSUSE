@@ -37,7 +37,9 @@ Source1:        conf.sysconfig
 Source2:        %{name}.launch
 Source3:        opensm.service
 Source4:        baselibs.conf
+Source100:      README.md
 Patch1:         opensm-remove-date-time.patch
+Patch2:         opensm-osm_port_info_rcv.c-Re-query-PortInfo-with-extended-speeds-enabled.patch
 URL:            https://github.com/linux-rdma/opensm
 BuildRequires:  autoconf
 BuildRequires:  automake
