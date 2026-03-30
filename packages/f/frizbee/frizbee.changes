@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:21:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.10:
+  * chore(deps): update github/codeql-action digest to c10b806
+    (#388)
+  * chore(deps): update github/codeql-action digest to b8bb9f2
+    (#378)
+  * chore(deps): consolidate all pending dependency updates (#387)
+  * chore: migrate from Trivy to Grype for vulnerability scanning
+    (#381)
+
+-------------------------------------------------------------------
 Tue Mar 10 12:03:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.9:
@@ -136,8 +148,8 @@ Mon Jun 02 17:21:21 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 - Update to version 0.1.7:
   * Bump dependencies
   * feat: implement --error
-  * chore: fix typos 
-  * Resolve commit ref correctly. 
+  * chore: fix typos
+  * Resolve commit ref correctly.
 
 -------------------------------------------------------------------
 Tue Sep 10 08:37:57 UTC 2024 - opensuse_buildservice@ojkastl.de
