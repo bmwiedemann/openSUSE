@@ -136,4 +136,14 @@
     <comment></comment>
     <requestid>1325384</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e4d63d145c47b1bd9e4e2bb1278da81f</srcmd5>
+    <version>0.61b0</version>
+    <time>1774888250</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.61b0:
+  * Add Python 3.14 support
+</comment>
+    <requestid>1343637</requestid>
+  </revision>
 </revisionlist>
