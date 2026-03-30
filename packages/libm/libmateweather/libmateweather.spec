@@ -1,7 +1,7 @@
 #
 # spec file for package libmateweather
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,15 @@
 %define _version 1.28
 
 Name:           libmateweather
-Version:        1.28.0
+Version:        1.28.2
 Release:        0
 Summary:        MATE Weather
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
-Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source:         https://github.com/mate-desktop/libmateweather/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
@@ -76,7 +77,7 @@ libmateweather is a library to access weather information from
 online services for numerous locations.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 mate-autogen
@@ -90,9 +91,7 @@ NOCONFIGURE=1 mate-autogen
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files lang -f %{name}.lang
 
