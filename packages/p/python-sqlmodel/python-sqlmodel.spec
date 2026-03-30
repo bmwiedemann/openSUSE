@@ -26,13 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sqlmodel%{psuffix}
-Version:        0.0.34
+Version:        0.0.37
 Release:        0
 Summary:        SQL databases in Python, designed for simplicity, compatibility, and robustness
 License:        MIT
 URL:            https://github.com/fastapi/sqlmodel
 Source:         https://files.pythonhosted.org/packages/source/s/sqlmodel/sqlmodel-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -42,14 +42,15 @@ Requires:       python-pydantic >= 2.11.0
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module black}
-BuildRequires:  %{python_module dirty-equals}
-BuildRequires:  %{python_module fastapi}
-BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module Jinja2 >= 3.1.6}
+BuildRequires:  %{python_module black >= 24.1.0}
+BuildRequires:  %{python_module dirty-equals >= 0.10.0}
+BuildRequires:  %{python_module fastapi >= 0.128.0}
+BuildRequires:  %{python_module httpx >= 0.28.1}
+BuildRequires:  %{python_module pytest >= 7.0.1}
+BuildRequires:  %{python_module pytest-cov >= 6.2}
 BuildRequires:  %{python_module sqlmodel = %{version}}
+BuildRequires:  %{python_module typing_extensions >= 4.15.0}
 %endif
 # /SECTION
 %python_subpackages

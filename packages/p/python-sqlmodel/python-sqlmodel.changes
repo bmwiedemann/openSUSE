@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 22:33:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.37:
+  * Drop support for Python 3.9. PR #1766 by @tiangolo.
+  * Add script to remove Python 3.9 files, migrate to Python
+    3.10.
+  * Bump prek from 0.3.2 to 0.3.3.
+  * Bump typer from 0.23.1 to 0.23.2.
+
+-------------------------------------------------------------------
 Thu Feb 19 04:13:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.0.34:
