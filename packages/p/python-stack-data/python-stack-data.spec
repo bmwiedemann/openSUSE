@@ -1,7 +1,7 @@
 #
 # spec file for package python-stack-data
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,7 @@ Extract data from python stack frames and tracebacks for informative displays
 
 %check
 # incompatibility with even older Pygments
+export FIX_STACK_DATA_TESTS=1
 %pytest -k 'not ((test_core and test_pygments_example) or (test_serializer and test_example))'
 
 %files %{python_files}

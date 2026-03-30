@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 29 22:20:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- pygments.patch: refresh with the patch that was merged upstream
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.

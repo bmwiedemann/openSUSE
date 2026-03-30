@@ -109,4 +109,12 @@
     <comment>- Switch to pyroject macros.</comment>
     <requestid>1285976</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>2ca0b95332cc4a8f76519a4b3253f155</srcmd5>
+    <version>0.6.3</version>
+    <time>1774888209</time>
+    <user>anag_factory</user>
+    <comment>- pygments.patch: refresh with the patch that was merged upstream</comment>
+    <requestid>1343550</requestid>
+  </revision>
 </revisionlist>
