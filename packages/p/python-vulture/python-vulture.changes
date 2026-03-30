@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:48:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16:
+  * Fix false positives for dead code after while loops (#412,
+    #413, Jendrik Seipp).
+  * Use `ty` instead of `pytype` for testing type annotations
+    (Jendrik Seipp).
+
+-------------------------------------------------------------------
 Sat Mar 14 19:32:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15:

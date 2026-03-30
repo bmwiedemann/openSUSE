@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-vulture
-Version:        2.15
+Version:        2.16
 Release:        0
 Summary:        Python module for finding dead code
 License:        MIT

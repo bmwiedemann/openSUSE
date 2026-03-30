@@ -153,4 +153,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1341733</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>09df6b75508ca7934a2a13a5c65a4ef6</srcmd5>
+    <version>2.16</version>
+    <time>1774888271</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.16:
+  * Fix false positives for dead code after while loops (#412,
+    #413, Jendrik Seipp).
+  * Use `ty` instead of `pytype` for testing type annotations
+    (Jendrik Seipp).</comment>
+    <requestid>1343511</requestid>
+  </revision>
 </revisionlist>
