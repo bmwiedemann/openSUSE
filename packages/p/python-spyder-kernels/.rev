@@ -739,4 +739,15 @@
     systems, by @ccordoba12</comment>
     <requestid>1336293</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>4601d564e199194da104724df37ea0bb</srcmd5>
+    <version>3.1.4</version>
+    <time>1774888282</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.4:
+  * Issue 584 - `FileNotFoundError` when connecting from Spyder
+    to a kernel running on a WSL instance (PR 585 by @ccordoba12)
+  * In this release 1 issue was closed.</comment>
+    <requestid>1343504</requestid>
+  </revision>
 </revisionlist>

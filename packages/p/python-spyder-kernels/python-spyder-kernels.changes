@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:26:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.4:
+  * Issue 584 - `FileNotFoundError` when connecting from Spyder
+    to a kernel running on a WSL instance (PR 585 by @ccordoba12)
+  * In this release 1 issue was closed.
+
+-------------------------------------------------------------------
 Wed Mar  4 08:40:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.3:
