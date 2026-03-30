@@ -518,4 +518,20 @@
 </comment>
     <requestid>1325661</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>95e7a3c3a308767a8db7fad2d131dbc7</srcmd5>
+    <version>0.24.1</version>
+    <time>1774888174</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.24.1
+  * Make typer-slim a shallow wrapper around typer. Rich and
+    shellingham is now always required.
+  * When printing error tracebacks with Rich, default to not
+    showing locals, which are sometimes verbose.
+  * Fix TYPER_USE_RICH parsing to allow disabling Rich completely.
+  * Drop support for Python 3.9.
+- Add set-proper-pythonpath-for-tutorial-script-tests.patch.
+  This was carried over from python-typer-slim.</comment>
+    <requestid>1343348</requestid>
+  </revision>
 </revisionlist>

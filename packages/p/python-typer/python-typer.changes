@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar  6 21:04:34 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- Update to 0.24.1
+  * Make typer-slim a shallow wrapper around typer. Rich and
+    shellingham is now always required.
+  * When printing error tracebacks with Rich, default to not
+    showing locals, which are sometimes verbose.
+  * Fix TYPER_USE_RICH parsing to allow disabling Rich completely.
+  * Drop support for Python 3.9.
+- Add set-proper-pythonpath-for-tutorial-script-tests.patch.
+  This was carried over from python-typer-slim.
+
+-------------------------------------------------------------------
 Tue Jan  6 18:20:15 UTC 2026 - Matthias Bach <marix@marix.org> - 0.21.1
 
 - Update to 0.21.1
