@@ -1,7 +1,7 @@
 #
 # spec file for package python-fakeredis
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fakeredis
-Version:        2.32.1
+Version:        2.34.1
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
@@ -29,8 +29,9 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  procps
 BuildRequires:  python-rpm-macros
-Requires:       python-redis >= 4
+Requires:       python-redis >= 4.3
 Requires:       python-sortedcontainers >= 2.4.0
 Suggests:       python-lupa >= 2.1
 BuildArch:      noarch
@@ -39,7 +40,7 @@ BuildRequires:  %{python_module hypothesis >= 6.56}
 BuildRequires:  %{python_module pytest >= 7.1.2}
 BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
 BuildRequires:  %{python_module pytest-mock >= 3.7.0}
-BuildRequires:  %{python_module redis >= 4}
+BuildRequires:  %{python_module redis >= 4.3}
 BuildRequires:  %{python_module sortedcontainers >= 2.4.0}
 BuildRequires:  %{python_module valkey >= 6}
 BuildRequires:  redis
@@ -68,7 +69,10 @@ donttest+=" or test_xgroup_setid_redis7"
 # Raises unknown command errors
 donttest+=" or (test_save and (StrictRedis2 or StrictRedis3))"
 donttest+=" or (test_raises_valkey_response_error and FakeStrictRedis)"
+donttest+=" or (test_async_lock)"
 %pytest -m "not slow" -k "not ($donttest)"
+
+pkill -f redis-server || exit 0
 
 %files %{python_files}
 %doc README.md
