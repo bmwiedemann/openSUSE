@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:48:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * Fixes issue 86.  This issue was probably introduced in version 3.10.6 with
+    support for multiple convention leaders.  The latter changes affected the
+    representation of addresses in a way that broke the determination of the
+    local IP address when not explicitly provided.  This diagnosis and fix was
+    kindly contributed by Grzegorz Banasiak.
+   * Updates core multiprocX scheduling to use ~selectors~ Python library to
+     manage waiting on asynchronous socket readiness.  This is more flexible
+     because it adapts to the optimal support method for each OS and allows a
+     larger number of active sockets on MacOS (where select is limited to 1024
+     descriptors).  Unfortunately, this does have a small performance penalty.
+   * Fixes Windows support by reverting issue 70.
+   * Adds ~ENOTCONN~ as a send in-progress status for backoff.
+   * Updates to test_runcommand.py to support Windows and skip
+     test_actorSignals on the same platform since it does not
+    support POSIX signals.
+   * Added support for ~THESPIAN_MAX_PENDING_TRANSMITS~,
+     ~THESPIAN_MAX_QUEUED_TRANSMITS~,
+     ~THESPIAN_QUEUED_TRANSMIT_UNBLOCK_THRESHOLD~,
+     ~THESPIAN_DROP_TRANSMITS_LEVEL~, and ~THESPIAN_TRANSMIT_TIMEOUT_MINUTES~
+     environment variables on ~ActorSystem~ startup.
+     Environment Variables]] in "Using Thespian" for details.
+   * Updates to ~diagnose.py~ for better Windows support and
+     additional TCP socket information.
+
+-------------------------------------------------------------------
 Wed Jun  4 06:07:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

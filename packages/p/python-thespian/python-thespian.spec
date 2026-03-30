@@ -1,7 +1,7 @@
 #
 # spec file for package python-thespian
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           python-thespian
-Version:        3.10.7
+Version:        4.0.1
 Release:        0
 Summary:        Python Actor concurrency library
 License:        MIT
 URL:            https://thespianpy.com
-Source0:        https://files.pythonhosted.org/packages/source/t/thespian/thespian-%{version}.zip
+Source0:        https://files.pythonhosted.org/packages/source/t/thespian/thespian-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setproctitle}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-setproctitle
 BuildArch:      noarch
 %python_subpackages
