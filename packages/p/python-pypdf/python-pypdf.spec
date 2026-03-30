@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pypdf
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        PDF toolkit
 License:        BSD-3-Clause
@@ -26,11 +26,16 @@ URL:            https://github.com/py-pdf/pypdf
 Source0:        https://github.com/py-pdf/pypdf/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 Provides:       python3-PyPDF2 = %version-%release
 Obsoletes:      python3-PyPDF2 < %version-%release
+# SECTION test requirements
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pytest-socket}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 BuildArch:      noarch
 
 %python_subpackages
@@ -60,9 +65,9 @@ It is therefore a useful tool for websites that manage or manipulate PDFs.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# no checks possible as large pdf downloaded from the internet are necessary
 %check
-exit 0
+# Skip network tests, or tests that require large sample files
+%pytest -m "not (enable_socket or samples)"
 
 %files %{python_files}
 %license LICENSE

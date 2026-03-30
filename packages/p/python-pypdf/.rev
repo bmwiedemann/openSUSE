@@ -181,4 +181,16 @@
     <comment></comment>
     <requestid>1341570</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4adb143ce77270d7ea9988d918e24ab9</srcmd5>
+    <version>6.9.2</version>
+    <time>1774888322</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.9.2 (bsc#1260882, CVE-2026-33699)
+  * Avoid infinite loop in read_from_stream for broken files
+  * Resolve UnboundLocalError for xobjs in _get_image
+- Remove unneeded BuildRequires on setuptools/wheel.
+- Run the testsuite.</comment>
+    <requestid>1343553</requestid>
+  </revision>
 </revisionlist>
