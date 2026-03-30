@@ -240,4 +240,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1325297</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>20a62547fb0b81fc467f87fbddcca5ca</srcmd5>
+    <version>1.40.0</version>
+    <time>1774888247</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.40.0:
+  * Add support for Python 3.14.
+  * Improve error handling and retry logic for connection errors in
+    OTLP/HTTP exporters (logs, metrics, and traces).
+  * Catch RequestException during export and handle ConnectionError
+    as a retryable transient failure.
+  * Update internal OpenTelemetry dependencies to 1.40.0.</comment>
+    <requestid>1343484</requestid>
+  </revision>
 </revisionlist>

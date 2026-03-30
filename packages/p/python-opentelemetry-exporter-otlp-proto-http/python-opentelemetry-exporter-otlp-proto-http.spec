@@ -1,7 +1,7 @@
 #
 # spec file for package python-opentelemetry-exporter-otlp-proto-http
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-opentelemetry-exporter-otlp-proto-http
-Version:        1.39.1
+Version:        1.40.0
 Release:        0
 Summary:        OpenTelemetry Collector Protobuf over HTTP Exporter
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module opentelemetry-api >= 1.15}
 BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-common = %{version}}
 BuildRequires:  %{python_module opentelemetry-proto = %{version}}
 BuildRequires:  %{python_module opentelemetry-sdk >= 1.23.0}
-BuildRequires:  %{python_module opentelemetry-test-utils = 0.60b0}
+BuildRequires:  %{python_module opentelemetry-test-utils = 0.61b0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.7}
 BuildRequires:  %{python_module responses >= 0.22.0}

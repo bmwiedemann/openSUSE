@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 23 22:00:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.40.0:
+  * Add support for Python 3.14.
+  * Improve error handling and retry logic for connection errors in
+    OTLP/HTTP exporters (logs, metrics, and traces).
+  * Catch RequestException during export and handle ConnectionError
+    as a retryable transient failure.
+  * Update internal OpenTelemetry dependencies to 1.40.0.
+
+-------------------------------------------------------------------
 Sun Dec 28 15:17:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.39.1:
