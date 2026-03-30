@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sse-starlette
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        SSE plugin for Starlette
 License:        BSD-3-Clause
@@ -34,15 +34,15 @@ BuildRequires:  %{python_module asgi-lifespan}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module starlette >= 0.41.3}
+BuildRequires:  %{python_module starlette >= 0.49.1}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-anyio >= 4.7.0
-Requires:       python-starlette >= 0.41.3
+Requires:       python-starlette >= 0.49.1
 Suggests:       python-uvicorn >= 0.34.0
 Suggests:       python-fastapi >= 0.115.12
 Suggests:       python-sqlalchemy >= 2.0.41
-Suggests:       python-starlette >= 0.41.3
+Suggests:       python-starlette >= 0.49.1
 Suggests:       python-aiosqlite >= 0.21.0
 Suggests:       python-uvicorn >= 0.34.0
 Suggests:       python-granian >= 2.3.1

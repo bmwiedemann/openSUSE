@@ -68,4 +68,14 @@
   * bump dependencies</comment>
     <requestid>1342123</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c16db93c55bf7b3c3aa3e96f9bdc83f0</srcmd5>
+    <version>3.3.4</version>
+    <time>1774888266</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.4:
+  * **Full Changelog**: https://github.com/sysid/sse-
+    starlette/compare/v3.3.3...v3.3.4</comment>
+    <requestid>1343508</requestid>
+  </revision>
 </revisionlist>
