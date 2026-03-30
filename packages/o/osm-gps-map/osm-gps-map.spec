@@ -1,7 +1,7 @@
 #
 # spec file for package osm-gps-map
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,23 @@
 
 
 Name:           osm-gps-map
-Version:        1.2.0
+Version:        1.2.0+38
 Release:        0
 Summary:        A Gtk+ Widget for Displaying OpenStreetMap tiles
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            http://nzjrs.github.io/osm-gps-map/
-Source:         https://github.com/nzjrs/osm-gps-map/releases/download/1.2.0/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
+BuildRequires:  gtk-doc
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 
 %description
 A Gtk+ widget (and Python bindings) that when given GPS co-ordinates, draws a GPS track,
@@ -78,12 +83,15 @@ The library has excellent performance and is currently used in a number of
 Gtk+ and Maemo applications.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
-    --disable-static
-make %{?_smp_mflags}
+    --disable-static \
+    --enable-gtk-doc \
+    %{nil}
+%make_build
 
 %install
 %make_install
@@ -91,8 +99,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # We package those files as %%doc, resulting in a different location
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
-%post -n libosmgpsmap-1_0-1 -p /sbin/ldconfig
-%postun -n libosmgpsmap-1_0-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libosmgpsmap-1_0-1
 
 %files -n libosmgpsmap-1_0-1
 %license COPYING

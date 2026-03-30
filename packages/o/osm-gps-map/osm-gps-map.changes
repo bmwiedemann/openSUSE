@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 27 14:54:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.0+38:
+  + Port to libsoup-3.0: Replace pkgconfig(libsoup-2.4) with
+  pkgconfig(libsoup-3.0) BuildRequires.
+  + Add upstream patches:
+    - a7965751821d5bb55f8fb37b4045295d0c44dd9b.patch
+    - 31b1faffb86516376b979f1724ce74082e4990b2.patch
+  + Add autoconf, autoconf-archive, automake, gtk-doc and libtool
+    BuildRequires, needed now that we are using a git checkout,
+    bootstrap build.
+- Modernize spec to current standard.
+- Switch to source service for tarball.
+
+-------------------------------------------------------------------
 Sun May  4 13:09:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete and unused gnome-common BuildRequires. Dropped
