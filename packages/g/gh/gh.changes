@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Mar 26 13:38:19 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.89.0:
+  * Ensure huh prompter cleans up
+  * fix(huh prompter): remove unused fields and imports
+  * go mod tidy
+  * feat(huh prompter): clear search input after submitting query
+  * refactor(huh prompter): custom Field for MultiSelectWithSearch
+  * feat(huh prompter): add placeholder to search input
+  * fix(huh prompter): use synchronized accessors to eliminate data race
+  * fix(accessible prompter): update test expectations for huh v2
+  * refactor(huh prompter): pipe-based test harness with full coverage
+  * test(huh prompter): add table-driven tests for all prompt types
+  * Upgrade to huh/v2 and fix selection persistence in MultiSelectWithSearch
+  * Fix gofmt alignment for prompter-enabled fields in IOStreams
+  * Use LayoutStack for huhPrompter MultiSelectWithSearch
+  * Add experimental huh-only prompter gated by GH_EXPERIMENTAL_PROMPTER
+  * Add nameWithOwner to necessary tests
+  * fix(pr view): fetch nameWithOwner in headRepository GraphQL query
+  * test(acceptance): remove run-download-traversal test
+  * fix(acceptance): set git identity in testscript sandbox
+  * internal/codespaces/portforwarder: define err in go func instead of use err defined in outer scope
+  * chore(deps): bump github.com/zalando/go-keyring from 0.2.6 to 0.2.8
+  * Update docs/triage.md
+  * Update docs/triage.md
+  * Align triage.md with unified triage process
+  * Fix typo: remove extra space in README.md link
+  * fix(survey): use useReviewerSearch consistently in prompt path
+  * fix(pr create): wire up @copilot assignee replacement and [bot] suffix
+  * refactor(survey): simplify ApiActorsSupported in RepoMetadataInput
+  * docs(featuredetection): document GHES removal criteria for ApiActorsSupported
+  * refactor(featuredetection): rename ActorIsAssignable to ApiActorsSupported
+  * refactor(pr shared): consolidate ActorAssignees and ActorReviewers into ApiActorsSupported
+  * refactor(pr shared): extract SpecialAssigneeReplacer for @me and Copilot expansion
+  * chore(deps): bump github.com/google/go-containerregistry
+  * Record agentic invocations in User-Agent header
+  * Address review: table tests, godocs, code style
+  * Add AGENTS.md optimized for AI agent token efficiency
+  * docs: simplify flag text
+  * docs(pr edit): improve command examples with grouped sections
+  * docs: clarify that --add-reviewer can re-request reviews
+  * feat(pr create, issue create): search-based assignee selection in MetadataSurvey
+  * review: address code review feedback
+  * refactor(issue edit): wire up search-based assignee selection
+  * refactor(pr edit): remove actor accumulation hack from assignee search
+  * refactor(pr edit, issue edit): use login-based assignee mutation for flag flows
+  * fix(pr create): use login-based assignee mutation on github.com
+  * chore(deps): bump microsoft/setup-msbuild from 2.0.0 to 3.0.0
+  * chore(deps): bump mislav/bump-homebrew-formula-action from 3.6 to 4.1
+  * Remove auto-labels from issue templates
+  * fix(agent-task): resolve Copilot API URL dynamically (#12956)
+  * chore(deps): bump google.golang.org/grpc from 1.79.2 to 1.79.3
+  * chore(deps): bump azure/login from 2.3.0 to 3.0.0
+  * fix: improve docs around IssueRepoInfo
+  * test(issue transfer): update stub for IssueRepositoryInfo query
+  * fix(issue transfer): use IssueRepoInfo to fetch minimal fields for issues
+  * test(issue create): update stubs for IssueRepositoryInfo query
+  * fix(issue create): use IssueRepoInfo to avoid requiring Contents:Read permission
+  * test(api): add tests for GitHubRepo and IssueRepoInfo
+  * refactor(api): add IssueRepoInfo for minimal issue repo queries
+- Packaging improvements:
+  * Drop lower-go-version.patch since go1.26.1 is now available.
+    Patches to go.mod are brittle with fuzz=0 as adjacent lines
+    containing dependency versions will change frequently.
+  * Tests: skip two upstream tests TestPendingOperationDisallowsSSH
+    and TestSelectSSHKeys which currently fail in the limited
+    rpmbuild environment. These could probably be addressed with
+    additional BuildRequires to provide a more complete system
+    analog.
+
+-------------------------------------------------------------------
+Thu Mar 12 12:06:18 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.88.1:
+  * Revert "fix: clarify scope error while creating issues for projects"
+  * Revert "refactor: deduplicate scope error handling between api/client.go and project queries"
+  * Switch deployment signing to OIDC authentication
+
+-------------------------------------------------------------------
 Wed Mar 11 07:47:51 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Lower the golang build dependency from >= 1.26.1 to >= 1.26

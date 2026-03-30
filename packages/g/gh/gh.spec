@@ -20,14 +20,13 @@
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 %define sname cli
 Name:           gh
-Version:        2.88.0
+Version:        2.89.0
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
 URL:            https://cli.github.com/
 Source0:        %{sname}-%{version}.tar.zst
 Source1:        vendor.tar.gz
-Patch0:         lower-go-version.patch
 BuildRequires:  fish
 BuildRequires:  git-core
 BuildRequires:  zstd
@@ -92,8 +91,7 @@ install -d %{buildroot}%{_mandir}/man1/
 cp share/man/man1/* %{buildroot}%{_mandir}/man1
 
 %check
-# GOFLAGS=%{goflags} go test ./... -skip "TestNewInspectCmd"
-GOFLAGS=%{goflags} go test ./...
+GOFLAGS=%{goflags} go test ./... -skip "TestPendingOperationDisallowsSSH|TestSelectSSHKeys"
 
 %files
 %doc README.md
