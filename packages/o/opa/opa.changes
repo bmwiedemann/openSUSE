@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:00:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.15.1:
+  * Miscellaneous
+    - logging: make WithContext() optional (authored by @srenatus)
+
+-------------------------------------------------------------------
 Fri Mar 27 06:16:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.15.0:
