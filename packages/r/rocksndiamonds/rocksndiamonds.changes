@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Mar 14 20:20:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.4.1.3:
+  * Patch release for Windows.
+- Update to version 4.4.1.2:
+  * fixed snapping when using zigzag diagonal movement with BD
+    game engine.
+  * added expanding tabs to spaces when drawing text buffers to
+    the screen.
+  * added ignoring carriage return characters when pasting from
+    clipboard.
+  * fixed configurable menu texts when using “override level
+    graphics”.
+- Update to version 4.4.1.1:
+  * fixed BDX game element file codes broken in version 4.4.1.0
+  * fixed support for zigzag diagonal movement for BD game engine.
+  * fixed support for zigzag diagonal movement for SP game engine.
+  * fixed showing active brush after updating playfield in editor.
+- Update to version 4.4.1.0:
+  * added “Krissz Engine” support to the native Boulder Dash game
+    engine.
+  * added support for infinite scrolling for native BD game engine.
+  * added support for caves without time for BD game engine.
+  * added support for playing music in level editor.
+  * added support for fast/slow speed keys also for fast forward
+    tape mode.
+  * added showing initial title screens if graphics set has changed
+  * added configurable menu screen texts.
+  * added setup options for sticky movement input for BD and EM
+    game engines.
+  * added support for zigzag diagonal movement for BD and SP game
+    engines.
+  * added using Shift key to toggle between normal and steel text
+    input in editor.
+  * added using Shift+click to toggle between normal and steel text
+    elements in editor.
+  * added Ctrl-Shift-z and Ctrl-y as key shortcut for “redo”
+    operation in level editor.
+  * added support for cursor keys when drawing text elements in
+    editor.
+  * added pasting from clipboard to text gadgets and to playfield
+    (using Ctrl-v).
+  * added copying/cutting from text gadgets to clipboard (using
+    Ctrl-c/Ctrl-x).
+  * added support to copy/paste using element names in level editor
+    (using Ctrl-Alt-c).
+  * added support for reading more cave formats from BD cave files.
+  * added new “Help” page for settings in level editor.
+  * fixed (not) rotating brush in editor if Ctrl-z pressed (used
+    for “undo”).
+  * fixed broken use of random cave colors if selected for BD
+    levels.
+  * fixed various other bugs.
+- Drop not longer needed patch:
+  * rocksndiamonds-src_libgame_setup.c-CVE-2011-4606.patch
+
+-------------------------------------------------------------------
 Sat Nov  8 10:26:12 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 4.4.0.6:

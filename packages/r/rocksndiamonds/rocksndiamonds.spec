@@ -1,7 +1,7 @@
 #
 # spec file for package rocksndiamonds
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           rocksndiamonds
-Version:        4.4.0.6
+Version:        4.4.1.3
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://www.artsoft.org/rocksndiamonds/
+#Git-Clone:     https://git.artsoft.org/rocksndiamonds.git
 Source0:        https://www.artsoft.org/RELEASES/linux/%{name}/%{name}-%{version}-linux.tar.gz
 Source1:        %{name}-icons.tar.gz
 Source2:        %{name}.desktop
-# PATCH-FIX-UPSTREAM Permissions
-Patch0:         %{name}-src_libgame_setup.c-CVE-2011-4606.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -48,7 +47,7 @@ If you know the game Boulder Dash (Commodore C64) or Emerald Mine (Amiga),
 you know what Rocks'n'Diamonds is about.
 
 %prep
-%autosetup -p1 -b1
+%autosetup -p1
 
 # Remove not needed files
 find levels -name '*.orig' -delete
@@ -71,11 +70,8 @@ for d in graphics levels music sounds ; do
     cp -a $d %{buildroot}%{_datadir}/%{name}
 done
 
-# install icons
-for i in 32 48 64 72 96 ; do
-    install -Dm 0644 ../icons/%{name}_${i}x${i}.png \
-            %{buildroot}/%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png
-done
+# install icon
+install -Dm 0644 graphics/gfx_classic/icons/icon.png %{buildroot}/%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
 
 # install desktop file
 install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/%{name}.desktop
