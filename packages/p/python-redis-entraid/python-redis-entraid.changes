@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:04:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * **Full Changelog**: https://github.com/redis/redis-py-
+    entraid/compare/v1.1.0...v1.1.2
+
+-------------------------------------------------------------------
+Wed Mar 25 08:30:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Update supported and tested Python versions
+  * Update msal, PyJWT, azure-identity dependencies
+  * Fixed bug with missing tenant
+
+-------------------------------------------------------------------
 Wed Jun  4 17:15:13 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Initial packaging of version 1.0.0

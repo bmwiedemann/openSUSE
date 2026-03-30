@@ -1,7 +1,7 @@
 #
 # spec file for package python-redis-entraid
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,21 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           python-redis-entraid
-Version:        1.0.0
+Version:        1.1.2
 Release:        0
 Summary:        Entra ID credentials provider implementation for Redis-py client
 License:        MIT
 URL:            https://github.com/redis/redis-py-entraid
 Source:         https://files.pythonhosted.org/packages/source/r/redis-entraid/redis_entraid-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-azure-identity >= 1.20.0
-Requires:       python-msal >= 1.31.0
-Requires:       python-PyJWT >= 2.9.0
+BuildRequires:  python-rpm-macros
+Requires:       python-PyJWT >= 2.12.0
+Requires:       python-azure-identity >= 1.24.0
+Requires:       python-msal >= 1.33.0
 Requires:       python-redis >= 5.3.0
 Requires:       python-requests >= 2.32.3
 BuildArch:      noarch

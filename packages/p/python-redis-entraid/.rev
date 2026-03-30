@@ -7,4 +7,25 @@
     <comment>New package, needed for python-redis 6.2.0</comment>
     <requestid>1284902</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7c8766800f8c0387b08e20b5e80cf6ec</srcmd5>
+    <version>1.1.0</version>
+    <time>1774469856</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.0:
+  * Update supported and tested Python versions
+  * Update msal, PyJWT, azure-identity dependencies
+  * Fixed bug with missing tenant</comment>
+    <requestid>1342399</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8f30963b996bc0cabcb5843d121829a6</srcmd5>
+    <version>1.1.2</version>
+    <time>1774888207</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.2:
+  * **Full Changelog**: https://github.com/redis/redis-py-
+    entraid/compare/v1.1.0...v1.1.2</comment>
+    <requestid>1343518</requestid>
+  </revision>
 </revisionlist>
