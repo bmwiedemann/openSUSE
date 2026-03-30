@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 29 12:14:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Disable CGI support for Python 3.15+ and fix deprecation
+    warnings
+  * Replace HTTP links by HTTPS ones
+  * Configured repo to be usable with uv/ruff
+  * Target Python 3.15 in CI
+  * Convert documentation to Markdown
+  * Added basic support for Pydantic
+- update to 0.4.3.4:
+  * Add orjson support
+  * CI configuration update
+
+-------------------------------------------------------------------
 Fri Jun 27 02:48:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -18,7 +33,7 @@ Thu Sep 29 14:18:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Reordered PooledJSONRPCServer inheritance definition (#55)
   * Migration of Continuous Integration:
   * Use PyTest instead of Nose
-  * Run CI with GitHub Actions instead of Travis-CI 
+  * Run CI with GitHub Actions instead of Travis-CI
 
 - Update to v0.4.3.1
   * Removed remaining print statements (#52)

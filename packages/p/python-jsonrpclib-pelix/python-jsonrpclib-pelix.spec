@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonrpclib-pelix
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           python-jsonrpclib-pelix
-Version:        0.4.3.3
+Version:        1.0.0
 Release:        0
 Summary:        JSPN-RPC over HTTP Library for Pelix Remote Services
 License:        Apache-2.0
 URL:            https://github.com/tcalmant/jsonrpclib/
 Source:         https://github.com/tcalmant/jsonrpclib/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
