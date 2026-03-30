@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 29 20:18:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2:
+  * Move all supported package metadata into pyproject.toml.
+  * Remove unnecessary setuptools runtime dependency.
+  * Drop support for Python 3.9.
+  * Add support for Python 3.14.
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.
+  * Drop support for Python 3.8.
+  * Add preliminary support for Python 3.14.
+
+-------------------------------------------------------------------
 Tue Apr  1 16:05:37 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools

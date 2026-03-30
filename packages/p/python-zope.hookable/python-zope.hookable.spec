@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.hookable
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,26 +27,27 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.hookable%{psuffix}
-Version:        7.0
+Version:        8.2
 Release:        0
 Summary:        Zope hookable
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.hookable
 Source:         https://files.pythonhosted.org/packages/source/z/zope.hookable/zope_hookable-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION documentation requirements
+BuildRequires:  %{python_module furo}
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-sphinx_rtd_theme
 # /SECTION
 # SECTION testing requirements
 %if %{with test}
 BuildRequires:  %{python_module zope.hookable}
 BuildRequires:  %{python_module zope.testing}
+BuildRequires:  %{python_module zope.testrunner >= 6.4}
 %endif
 # /SECTION
 %python_subpackages
@@ -72,7 +73,7 @@ This package contains documentation files for %{name}.
 
 %prep
 %autosetup -p1 -n zope_hookable-%{version}
-rm -rf zope.hookable.egg-info
+rm -rf src/zope.hookable.egg-info
 
 %build
 %if !%{with test}
@@ -91,6 +92,7 @@ sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildin
 %check
 %if %{with test}
 pushd src
+export PURE_PYTHON=1
 %pyunittest 'zope.hookable.tests.test_hookable.test_suite'
 %endif
 
@@ -101,7 +103,6 @@ pushd src
 %dir %{python_sitearch}/zope
 %{python_sitearch}/zope/hookable
 %{python_sitearch}/zope[_.]hookable-%{version}.dist-info
-%{python_sitearch}/zope.hookable-%{version}*-nspkg.pth
 %endif
 
 %if !%{with test}
