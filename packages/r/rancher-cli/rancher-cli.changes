@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Mar 29 16:20:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.0:
+  * Update Rancher refs to v2.14.0 (#571)
+  * [v2.14] Prerelease dependency bumps for v2.14.0 (#560)
+  * Auth code flow: validate URL before attempting to open browser
+    (#556)
+  * Implement authorization code flow for AzureAD (#550)
+  * Add fallback from /v1-public to /v3-public endpoints (#546)
+  * Fix release workflow (#545)
+  * Migrate to /v1-public endpoints (#544)
+  * Update module github.com/urfave/cli to v1.22.17 (#501)
+  * Update module github.com/sirupsen/logrus to v1.9.4 (#531)
+  * Update Kubernetes to v1.34.3 (#518)
+  * Update dependency go to v1.25.6 (#532)
+  * Bump dependencies pre v2.14.0 (#529)
+  * Fix login command (#522)
+  * Use staticcheck linter (#511)
+  * Bump Go to 1.25 (#510)
+  * Pin dependencies (#497)
+  * Migrate config .github/renovate.json (#499)
+  * Add initial Renovate configuration (#496)
+
+-------------------------------------------------------------------
 Fri Mar 27 06:09:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.4:
