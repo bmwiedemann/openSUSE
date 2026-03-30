@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 09:26:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.26.1
+  - #9455 Fix memory leak in ColumnarScan
+
+-------------------------------------------------------------------
 Tue Mar 24 13:12:18 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.26.0

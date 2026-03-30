@@ -591,4 +591,13 @@ Stop storing build machine kernel version (boo#1101107)</comment>
     <comment>- Update to 2.26.0</comment>
     <requestid>1342234</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>11ae6c7bc7629f6934f3158b6c4bee55</srcmd5>
+    <version>2.26.1</version>
+    <time>1774888363</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.26.1
+  - #9455 Fix memory leak in ColumnarScan</comment>
+    <requestid>1343618</requestid>
+  </revision>
 </revisionlist>
