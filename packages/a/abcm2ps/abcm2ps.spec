@@ -1,7 +1,7 @@
 #
 # spec file for package abcm2ps
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2007 by Edgar Aichinger
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           abcm2ps
-Version:        8.14.15
+Version:        8.14.18
 Release:        0
 Summary:        A program to typeset abc tunes into Postscript
 License:        LGPL-3.0-or-later
@@ -32,15 +32,14 @@ Source3:        deco-marks.fmt
 Source4:        renaissance.fmt
 Source5:        thinlines.fmt
 # PATCH-FIX-OPENSUSE compiler_flags.patch -- aloisio@gmx.com
-Patch0:         compiler_flags.patch
-# build with gcc15
-Patch1:         abcm2ps-gcc15.patch
+# Patch0:         compiler_flags.patch
 BuildRequires:  pkgconfig
 # for rst2man
 BuildRequires:  python3-docutils
 # for rendering non-latin characters in Postscript output
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(pangocairo)
 
 %description
@@ -56,7 +55,24 @@ mv config.h.in config.h.sed
 sed "s/\/\/#define A4_FORMAT/#define A4_FORMAT/" config.h.sed > config.h.in
 
 %build
-%configure
+LDLIBS="$LDLIBS `pkg-config pangocairo pangoft2 gobject-2.0 freetype2 libpcre2-8 --libs`" \
+./configure \
+        --prefix=/usr \
+        --bindir=/usr/bin \
+        --sbindir=/usr/sbin \
+        --sysconfdir=/etc \
+        --datadir=/usr/share \
+        --includedir=/usr/include \
+        --libdir=/usr/lib64 \
+        --libexecdir=/usr/libexec \
+        --localstatedir=/var \
+        --sharedstatedir=/var/lib \
+        --mandir=/usr/share/man \
+        --infodir=/usr/share/info
+
+CFLAGS="$RPM_OPT_FLAGS -pipe" \
+CPPFLAGS="$CPPFLAGS -DHAVE_PANGO=1 `pkg-config pango cairo gobject-2.0 freetype2 --cflags`" \
+LDLIBS="$LDLIBS `pkg-config pangocairo pangoft2 gobject-2.0 freetype2 libpcre2-8 --libs`" \
 make %{?_smp_mflags}
 
 %install
@@ -67,7 +83,7 @@ rm -rf %{buildroot}/%{_datadir}/doc
 %files
 %license COPYING
 %doc README.md *.abc sample3.eps
-%{_bindir}/*
+%{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/%{name}*
 

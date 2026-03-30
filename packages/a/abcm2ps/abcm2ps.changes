@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 29 12:16:33 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to 8.14.18
+- removed abcm2ps-gcc15.patch (fixed upstream)
+- removed compiler_flags.patch (handled in specfile)
+
+-------------------------------------------------------------------
 Mon May  5 14:04:42 UTC 2025 - pgajdos@suse.com
 
 - added patches
