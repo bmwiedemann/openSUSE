@@ -490,4 +490,39 @@
     type:Enhancements (#7767).</comment>
     <requestid>1290788</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1ce72c384aa1c381979e2fb702c90d81</srcmd5>
+    <version>3.6.1</version>
+    <time>1774888195</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.1:
+  * Add spectral bipartition community finding and greedy
+    bipartition using node swaps (#8347).
+  * Nodelists for `from_biadjacency_matrix` (#7993).
+  * Add spectral bipartition community finding and greedy
+    bipartition using node swaps (#8347).
+  * Fix draw_networkx_nodes with list node_shape and add
+    regression test (#8363).
+  * Fix: allow graph subclasses to have additional arguments
+    (#8369).
+  * DOC: Improve benchmarking readme (#8358).
+  * DOC: More details re: RC releases in the release process
+    devdocs (#8346).
+  * DOC: clarify difference between G.nodes/G.nodes() and
+    G.edges/G.edges() in tutorial (#8300).
+  * DOC: Add blurb to contributor guide about drawing tests
+    (#8370).
+  * DOC: Fix underline lens in docstrings (#8371).
+  * Rolling back shortest paths links (#8373).
+  * MAINT: Replace string literal with comment (#8359).
+  * Bump actions/checkout from 5 to 6 in the actions group
+    (#8360).
+  * pin python 3.14 to be version 3.14.0 until dataclasses are
+    fixed (#8365).
+  * Blocklist Python 3.14.1 (#8372).
+  * TST: add tests for unsupported graph types in MST algorithms
+    (#8353).
+  * TST: clean up isomorphism tests (#8364).</comment>
+    <requestid>1343470</requestid>
+  </revision>
 </revisionlist>

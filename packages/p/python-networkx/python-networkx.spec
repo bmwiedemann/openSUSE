@@ -1,7 +1,7 @@
 #
 # spec file for package python-networkx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,39 +18,40 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-networkx
-Version:        3.5
+Version:        3.6.1
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
 URL:            https://github.com/networkx/networkx
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-matplotlib >= 3.4
-Requires:       python-numpy >= 1.19
-Requires:       python-pandas >= 1.3
-Requires:       python-scipy >= 1.8
+Requires:       python-matplotlib >= 3.8
+Requires:       python-numpy >= 1.25
+Requires:       python-pandas >= 2.0
+Requires:       python-scipy >= 1.11.2
 Recommends:     python-PyYAML
 Recommends:     python-pydot >= 3.0.1
-Recommends:     python-pygraphviz
+Recommends:     python-pygraphviz >= 1.14
 Recommends:     python-pyparsing
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module lxml >= 4.6}
-BuildRequires:  %{python_module matplotlib >= 3.4}
-BuildRequires:  %{python_module numpy >= 1.19}
-BuildRequires:  %{python_module pandas >= 1.3}
+BuildRequires:  %{python_module matplotlib >= 3.8}
+BuildRequires:  %{python_module numpy >= 1.25}
+BuildRequires:  %{python_module pandas >= 2.0}
 BuildRequires:  %{python_module pydot >= 3.0.1}
-BuildRequires:  %{python_module pygraphviz >= 1.9}
+BuildRequires:  %{python_module pygraphviz >= 1.14}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.8}
+BuildRequires:  %{python_module scipy >= 1.11.2}
 # /SECTION
 %python_subpackages
 
