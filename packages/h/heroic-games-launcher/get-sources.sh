@@ -49,7 +49,7 @@ jq --indent 2 \
       "electron-builder": .devDependencies["electron-builder"]
     }
 
-  | .packageManager = "pnpm@10.28.2"
+  | .packageManager = "pnpm@10.32.1"
 
   | .scripts.build = "electron-vite build"
   | .scripts["dist:linux"] =
@@ -92,15 +92,16 @@ jq --indent 2 \
         "react-router-dom": "^7.12.0",
         "fast-xml-parser": "5.3.6",
         "rollup": "4.59.0",
-        "@tootallnate/once": "3.0.1"
+        "@tootallnate/once": "3.0.1",
+        "simple-git": "^3.32.3"
       }
   )
 
-  # === CVE-2026-28292: simple-git fix ===
+  # === CVE-2026-33036: fast-xml-parser fixes ===
   | .pnpm.overrides = (
       (.pnpm.overrides // {})
       + {
-          "simple-git": "^3.32.3"
+          "fast-xml-parser": "5.5.6"
         }
     )
 ' package.json > temp.json && mv temp.json package.json

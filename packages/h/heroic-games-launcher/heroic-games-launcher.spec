@@ -49,7 +49,7 @@ BuildRequires:  nodejs-electron
 BuildRequires:  nodejs-electron-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pnpm >= 10.17.1
+BuildRequires:  pnpm = 10.32.1
 BuildRequires:  protobuf-devel
 BuildRequires:  vulkan-devel
 BuildRequires:  vulkan-helper

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Mar 27 22:37:58 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Reversing recent test changes that blocked pnpm downloads.
+  * Reinforcing that this update is to fix CVE-2026-33036: fast-xml-parser allows 
+    users to process XML from JS object without C/C++ based libraries or callbacks. 
+
+-------------------------------------------------------------------
+Wed Mar 25 01:04:06 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix pnpm usage in build environment
+  * Force usage of system pnpm binary instead of Corepack shim
+  * Disable Corepack self-bootstrap to avoid network access
+  * Fix build failure in OBS staging (pnpm attempted to download itself) 
+
+-------------------------------------------------------------------
+Tue Mar 24 22:57:36 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Remove packageManager explicit pnpm version 10.28.2 field from package.json
+  * Avoid pnpm self-bootstrap via Corepack, which attempted to fetch
+    pnpm from the network during build
+  * Fix build failure in OBS staging environment (no network access)
+  * Ensure system-provided pnpm is used instead 
+
+-------------------------------------------------------------------
+Mon Mar 23 03:47:49 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Security: fix CVE-2026-33036 fast-xml-parser DoS bypass
+  * Force fast-xml-parser to 5.5.6 via pnpm override to fix
+    entity expansion DoS bypass where numeric entities were
+    not counted against expansion limits.
+
+-------------------------------------------------------------------
 Thu Mar 12 03:06:06 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Security: Fix CVE-2026-28292 in simple-git

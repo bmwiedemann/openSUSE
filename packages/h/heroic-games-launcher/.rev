@@ -130,4 +130,12 @@ via pnpm overrides to fix embedded dependency.</comment>
     <comment></comment>
     <requestid>1338568</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>7cfeb1cb36c38149d90c54706d132f7f</srcmd5>
+    <version>2.20.1</version>
+    <time>1774888218</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1343257</requestid>
+  </revision>
 </revisionlist>
