@@ -65,4 +65,13 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266238</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4563aa3e3f5a344d8be55a3304c6bbd5</srcmd5>
+    <version>5.6.0</version>
+    <time>1774888192</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.6.0:
+  * Add ensure_git fixture.</comment>
+    <requestid>1343436</requestid>
+  </revision>
 </revisionlist>
