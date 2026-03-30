@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyfuse3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define pname   pyfuse3
 %{?sle15_python_module_pythons}
 Name:           python-%{pname}
-Version:        3.4.0
+Version:        3.4.2
 Release:        0
 Summary:        Python Bindings for the low-level FUSE3 API
 License:        LGPL-2.1-or-later
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module pytest >= 3.4.0}
 # upstream use: pytest-trio >= 0.15
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module wheel}
@@ -49,7 +50,6 @@ pyfuse3 is a set of Python 3 bindings for libfuse 3. It provides an asynchronous
 %autosetup -p1 -n %{pname}-%{version}
 
 %build
-%python_expand $python setup.py build_cython
 %pyproject_wheel
 
 %install
@@ -66,10 +66,6 @@ pyfuse3 is a set of Python 3 bindings for libfuse 3. It provides an asynchronous
 %doc Changes.rst README.rst
 %license LICENSE
 %{python_sitearch}/pyfuse3
-%{python_sitearch}/pyfuse3_asyncio.py
-%{python_sitearch}/_pyfuse3.py
-%{python_sitearch}/__pycache__/pyfuse3_asyncio.*.pyc
-%{python_sitearch}/__pycache__/_pyfuse3.*.pyc
 %{python_sitearch}/pyfuse3-%{version}.dist-info
 
 %changelog

@@ -152,4 +152,27 @@
 - Explicitly list files and directories in %files.</comment>
     <requestid>1284635</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ddcffd04af3ea3d714942ce08d37612c</srcmd5>
+    <version>3.4.2</version>
+    <time>1774888232</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.2:
+  * Removed the pyfuse3_asyncio module. This has been renamed to
+    pyfuse3.asyncio for quite some time.
+  * Fixed a test failure in test_examples.py
+  * Many internal changes, modernizing build process and adding
+    more type annotations.
+  * Cythonized with latest Cython 3.2.3.
+  * CI: also test on Python 3.14, on Ubuntu 24.04.
+  * asyncio: use .run and .get_running_loop, #106. replace
+    deprecated Future() with create_future; fix lazy trio.Lock
+    init.
+  * use .run and .get_running_loop, #106.
+  * replace deprecated Future() with create_future; fix lazy
+    trio.Lock init.
+  * use SPDX license identifier, #107
+  * fix LICENSE text: LGPL v2.1, #102</comment>
+    <requestid>1343469</requestid>
+  </revision>
 </revisionlist>
