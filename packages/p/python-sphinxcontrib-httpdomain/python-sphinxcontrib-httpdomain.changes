@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Mar 23 22:30:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Dropped support for Python 3.9 and older.
+  * Switched to implicit (native) namespace for sphinxcontrib.
+  * Added support for Python 3.10 up to 3.14.
+  * Adjusted a unit test regular expression for
+    :file:`bottle_test.py`.
+  * Use MDN documentation for information about HTTP status codes
+    instead of w3.org.
+  * Added :addtoc: option for http directives to register HTTP
+    API endpoints and display them in the page-level table of
+    contents.
+  * Added Dependabot configuration.
+  * Replaced Travis CI with GitHub workflows for continuous
+    integration checks.
+  * Dropped dependency on six libary.
+  * Updated translations for FR and ES languages.
+  * Reorganized the repository structure to modern standards.
+    This included moving source files into a src directory,
+    renaming doc to docs, and other refinements.
+  * Replaced setuptools with :file:`pyproject.toml` configuration
+    for modern project management.
+  * Changed to use uv for development and continuous integration.
+  * Moved the Makefile from the documentation directory to the
+    root of the repository, and added a suite of commands for
+    development and testing the package.
+  * Simplified and updated documentation requirements in
+    :file:`rtd-requires.txt`.
+  * Added a :file:`.readthedocs.yaml` configuration for Read the
+  * Added omitted change log entries for v1.8.1.
+  * Adjusted Sphinx configuration and example regex usage in
+    :file:`conf.py`.
+  * Added :file:`CONTRIBUTING.md` to encourage contributions.
+  * Fixed broken links and redirecting links.
+- drop python-sphinxcontrib-httpdomain-fix-version.patch,
+  python-sphinxcontrib-httpdomain-pyupgrade3.patch: upstream
+
+-------------------------------------------------------------------
 Fri Jul 18 21:42:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add missing wheel buildrequires

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-httpdomain
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-httpdomain
-Version:        1.8.1
+Version:        2.0.0
 Release:        0
 Summary:        Sphinx domain for HTTP APIs
 License:        BSD-2-Clause
 URL:            https://github.com/sphinx-contrib/httpdomain
 Source:         https://github.com/sphinx-contrib/httpdomain/archive/%{version}.tar.gz
-# https://github.com/sphinx-contrib/httpdomain/issues/70
-Patch0:         python-sphinxcontrib-httpdomain-fix-version.patch
-# https://github.com/sphinx-contrib/httpdomain/issues/69
-Patch1:         python-sphinxcontrib-httpdomain-pyupgrade3.patch
-BuildRequires:  %{python_module Flask >= 0.11}
-BuildRequires:  %{python_module Sphinx >= 1.5}
-BuildRequires:  %{python_module bottle >= 0.11.0}
+BuildRequires:  %{python_module Flask >= 3.1.2}
+BuildRequires:  %{python_module Sphinx >= 6.0}
+BuildRequires:  %{python_module bottle >= 0.13.4}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module pytest >= 9.0.2}
+BuildRequires:  %{python_module tornado >= 6.5.4}
+BuildRequires:  %{python_module uv-build >= 0.9.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 1.5
-Requires:       python-six
+Requires:       python-Sphinx >= 6.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -69,9 +64,7 @@ https://sphinxcontrib-httpdomain.readthedocs.io/en/stable/
 %doc README.rst
 %{python_sitelib}/sphinxcontrib/autohttp/
 %{python_sitelib}/sphinxcontrib/locale/
-%{python_sitelib}/sphinxcontrib/httpdomain.py*
-%pycache_only %{python_sitelib}/sphinxcontrib/__pycache__
-%{python_sitelib}/sphinxcontrib_httpdomain-%{version}-py*-nspkg.pth
+%{python_sitelib}/sphinxcontrib/httpdomain/
 %{python_sitelib}/sphinxcontrib_httpdomain-%{version}.dist-info
 
 %changelog
