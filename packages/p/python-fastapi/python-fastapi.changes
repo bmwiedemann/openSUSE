@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 30 02:02:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.135.2:
+  ## Breaking Changes
+  * Add strict_content_type checking for JSON requests
+  * Deprecate ORJSONResponse and UJSONResponse
+  ## Features
+  * Add support for Server Sent Events.
+  * Add support for streaming JSON Lines and binary data with yield
+  * Add FastAPI Agent Skill
+  * Serialize JSON response with Pydantic (in Rust), when there's a Pydantic
+    return type or response model.
+  ## Upgrades
+  * Increase lower bound to pydantic >=2.9.0. and fix the test suite
+  * Add support for Starlette 1.0.0+
+  ## Fixes
+  * Fix, avoid yield from a TaskGroup, only as an async context manager,
+    closed in the request async exit stack.
+  * Fix JSON Schema for bytes, use "contentMediaType":
+    "application/octet-stream" instead of "format": "binary".
+- Remove unneeded BuildRequires on hatchling.
+
+-------------------------------------------------------------------
 Tue Feb 17 04:24:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing Requires on typing-inspection.

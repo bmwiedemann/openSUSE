@@ -31,22 +31,21 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-fastapi%{psuffix}
-Version:        0.129.0
+Version:        0.135.2
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
 URL:            https://github.com/fastapi/fastapi
 Source:         https://files.pythonhosted.org/packages/source/f/fastapi/fastapi-%{version}.tar.gz
-BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-annotated-doc >= 0.0.2
-Requires:       python-pydantic >= 1.8.2
+Requires:       python-pydantic >= 2.9.0
+Requires:       python-starlette >= 0.46.0
 Requires:       python-typing-inspection >= 0.4.2
 Requires:       python-typing_extensions >= 4.8.0
-Requires:       (python-starlette >= 0.40.0 with python-starlette < 1.0.0)
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -76,6 +75,8 @@ BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module peewee >= 3.13.0}
 BuildRequires:  %{python_module pwdlib >= 0.2.1}
 BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-jose >= 3.3}
 BuildRequires:  %{python_module python-multipart >= 0.0.18}
