@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>1240301</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a70165016038df80e7c370baf29cb856</srcmd5>
+    <version>1.6.1</version>
+    <time>1774888193</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.1:
+  * Fixed an issue where the correct audience was not being
+    requested for GitHub identities
+  * CircleCI: default to --root-issuer when generating OIDC Token
+  * Drop dependency on `requests` in favor of underlying
+    `urllib3`</comment>
+    <requestid>1343437</requestid>
+  </revision>
 </revisionlist>

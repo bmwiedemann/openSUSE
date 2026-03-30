@@ -1,7 +1,7 @@
 #
 # spec file for package python-id
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-id
-Version:        1.5.0
+Version:        1.6.1
 Release:        0
 Summary:        A tool for generating OIDC identities
 License:        Apache-2.0
 URL:            https://github.com/di/id
 Source:         https://github.com/di/id/archive/v%{version}.tar.gz#/id-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pretend}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-requests
+Requires:       python-urllib3
 BuildArch:      noarch
 %python_subpackages
 

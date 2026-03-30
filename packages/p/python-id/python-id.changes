@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 29 13:50:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * Fixed an issue where the correct audience was not being
+    requested for GitHub identities
+  * CircleCI: default to --root-issuer when generating OIDC Token
+  * Drop dependency on `requests` in favor of underlying
+    `urllib3`
+
+-------------------------------------------------------------------
 Fri Jan 24 15:43:43 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
