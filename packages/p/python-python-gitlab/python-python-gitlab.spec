@@ -17,7 +17,7 @@
 
 
 Name:           python-python-gitlab
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:21:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.2.0:
+  * Documentation
+    - testing: Document passing pytest options during local
+      development (e6669f9)
+  * Features
+    - api: Add support for project feature flags and feature flag
+      user lists (be68285)
+    - projects: Add optional parameter to set approval rule on all
+      protected branches. (8d76028)
+
+-------------------------------------------------------------------
 Mon Mar  2 06:20:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.1.0:
