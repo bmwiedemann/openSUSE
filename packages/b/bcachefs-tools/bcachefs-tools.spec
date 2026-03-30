@@ -17,7 +17,7 @@
 
 
 Name:           bcachefs-tools
-Version:        1.36.1
+Version:        1.37.4
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND MIT AND MPL-2.0 AND (MIT OR Unlicense) AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only
@@ -86,8 +86,8 @@ export EXTRA_CFLAGS="$CFLAGS"
 %make_build PREFIX="%_prefix" ROOT_SBINDIR="%_sbindir"
 
 %if 0%{?suse_version} >= 1690
-%make_build install_dkms DKMSDIR="/tmp/kb"
-cd /tmp/kb
+%make_build install_dkms DKMSDIR="$HOME/kb"
+cd "$HOME/kb/"
 for kmp_flavor in %{?flavors_to_build}; do
         rm -Rf "../obj-$kmp_flavor"
         cp -a . "../obj-$kmp_flavor"
@@ -104,7 +104,7 @@ rm -Rf "%buildroot/tmpdel"
 rm -Rf "%buildroot/etc/initramfs-tools" "%buildroot/%_datadir/initramfs-tools"
 
 %if 0%{?suse_version} >= 1690
-cd /tmp/kb
+cd "$HOME/kb/"
 for kmp_flavor in %{?flavors_to_build}; do
 	cd "../obj-$kmp_flavor/"
         %make_build -C "/usr/src/linux-obj/%_target_cpu/$kmp_flavor" \
@@ -119,5 +119,6 @@ done
 %_mandir/man8/*.8*
 %license COPYING
 %doc doc/bcachefs-principles-of-operation.tex Changelog.mdwn Documentation/*
+%_datadir/bash-completion/
 
 %changelog

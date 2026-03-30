@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:51:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.37.4
+  * bcachefs: don't reuse stripes when live data would overflow
+    into parity
+- Remove 0001-bcachefs-fix-linking-error-on-i586.patch (merged)
+
+-------------------------------------------------------------------
+Wed Mar 25 13:27:38 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.37.3
+  * kmp: Zero out btree ptr mem_ptr field in
+    bch2_journal_keys_sort()
+  * kmp: Delete bogus BUG() in bch2_stripe_repair()
+  * kmp: Fix max extent/btree pointer size for durability=0
+    replicas
+
+-------------------------------------------------------------------
+Mon Mar 16 22:19:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.37.1
+  * Erasure coding is now considered stable
+  * bcachefs is now able to handle automatic recovery from devices
+    with bad flush/FUA support
+  * Faster recovery from unclean shutdowns
+
+-------------------------------------------------------------------
 Sat Feb  7 21:14:00 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Update to release v1.36.1
