@@ -285,4 +285,18 @@
   * Added support to non ascii characters in title</comment>
     <requestid>1343359</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dc001c96e96550ea8b4052ca30db9f14</srcmd5>
+    <version>1.17.3</version>
+    <time>1774888340</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.17.3
+- Upstream changes:
+  * Updated metadata
+  * Proton-CachyOS default and settings not saving
+  * Changed faugus_temp location
+  * Flatpak game stuck running
+  * Updated Dutch translation</comment>
+    <requestid>1343589</requestid>
+  </revision>
 </revisionlist>
