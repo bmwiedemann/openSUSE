@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar 30 04:14:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.7:
+  * api.facts: fix requires_command shell operator precedence with compound
+    commands
+  * operations.docker: add support for env files
+  * operations.docker: add support for dns
+  * operations.files.sync: support symlinks
+  * facts.server.Port: add UDP support and multi-platform backends
+  * facts.hardware.Memory: use LANG=C while calling vmstat
+  * facts.hardware: add CpuInfo fact
+  * facts.server.Sysctl: fix non-zero exit code causing empty result
+  * facts.runit.RunitManaged: handle missing service directory gracefully
+  * facts.hardware.Memory: fix FreeBSD support by summing page categories
+  * facts.server.SecurityLimits: handle missing limits.conf
+  * facts.server.Port: fix ss command for Alpine/BusyBox compatibility
+  * facts.iptables: add requires_command to all iptables facts
+  * facts.opkg: add requires_command and stop hardcoding /bin/opkg
+  * facts.choco: add requires_command to ChocoPackages and ChocoVersion
+  * connectors: @podmanssh connector for remote Podman container operations
+  * connectors.ssh: exclude _chdir from global arguments used when removing
+    temporary file
+  * connectors.ssh: don't include password in SSH exception authentication
+    data
+  * cli: use gevent for the progress spinner
+  * cli: add --ssh-password-prompt flag for interactive SSH password input
+  * global arguments: _su_password argument for su password authentication
+  * operations+facts: server.timezone and server.Timezone fact
+- Add patch support-paramiko-4.patch:
+  * Support paramiko 4 changes.
+
+-------------------------------------------------------------------
 Thu Mar  5 08:09:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.1:

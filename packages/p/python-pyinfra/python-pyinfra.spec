@@ -24,16 +24,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyinfra
-Version:        3.6.1
+Version:        3.7
 Release:        0
 Summary:        Infrastructure automation, provisioning and deployment
 License:        MIT
 URL:            https://pyinfra.com
 Source:         https://files.pythonhosted.org/packages/source/p/pyinfra/pyinfra-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/pyinfra-dev/testgen/ad6673/testgen/__init__.py#/testgen.py
+# PATCH-FIX-UPSTREAM gh#pyinfra-dev/pyinfra#1525
+Patch0:         support-paramiko-4.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click > 2
