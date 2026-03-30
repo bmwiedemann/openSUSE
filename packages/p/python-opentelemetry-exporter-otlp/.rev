@@ -238,4 +238,35 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1325294</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e125748832c8e434ca606e201a2db9c4</srcmd5>
+    <version>1.40.0</version>
+    <time>1774888242</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.40.0:
+  * bump semantic-conventions to v1.40.0
+  * Add stale PR GitHub Action
+  * `opentelemetry-exporter-otlp-proto-grpc`: Fix re-
+    initialization of gRPC channel on UNAVAILABLE error
+  * `opentelemetry-exporter-prometheus`: Fix duplicate HELP/TYPE
+    declarations for metrics with different label sets
+  * Allow loading all resource detectors by setting
+    `OTEL_EXPERIMENTAL_RESOURCE_DETECTORS` to `*`
+  * `opentelemetry-sdk`: Fix the type hint of the `_metrics_data`
+    property to allow `None` (#4837).
+  * Regenerate opentelemetry-proto code with v1.9.0 release
+  * Add python 3.14 support
+  * Silence events API warnings for internal users
+  * Prevent possible endless recursion from happening in
+    `SimpleLogRecordProcessor.on_emit`, (#4799) and (#4867).
+  * Implement span start/end metrics
+  * Add environment variable carriers to API
+  * Add experimental composable rule based sampler
+  * Make ConcurrentMultiSpanProcessor fork safe
+  * `opentelemetry-exporter-otlp-proto-http`: fix retry logic and
+    error handling for connection failures in trace, metric, and
+    log exporters
+  * bump semantic-conventions to v1.39.0</comment>
+    <requestid>1343480</requestid>
+  </revision>
 </revisionlist>
