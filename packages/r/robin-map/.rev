@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>1311161</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f54cf4418073b73f70eaaf72d2554f59</srcmd5>
+    <version>1.4.1</version>
+    <time>1774888317</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.1:
+  * Update cmake_minimum_required to 3.10</comment>
+    <requestid>1343548</requestid>
+  </revision>
 </revisionlist>
