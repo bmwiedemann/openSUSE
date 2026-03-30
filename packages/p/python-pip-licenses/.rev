@@ -308,4 +308,40 @@
     #269</comment>
     <requestid>1334409</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>84b2c7e9aef26bddd334cc53522772ae</srcmd5>
+    <version>5.5.5</version>
+    <time>1774888226</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.5.5:
+  * Updated cc lines and officially made note of change in
+    maintainers
+  * Expanded typing annotations through-out codebase
+  * Configured `prek`/`pre-commit` for CI linting and local
+    developer workflows
+  * Additional configuration following v5.5.2's migration of
+    linters
+  * Fine tune ruff to enforce typing and black style opinions
+    (Code style remains PEP-8 aligned)
+  * Cleanup/gitignore for ruff
+  * Fixed a typo in previous changelog
+  * Aligned parsing logic with PEP 753
+  * Refactored to better leverage f-strings to improve
+    performance slightly
+  * Fixed various warnings in tests
+  * Got rid of historical Python 3.5 left-overs
+  * Added support for multi-line allow-only and fail-on arguments
+  * Relaxed parsing of most whitespace around semicolon delimiter
+  * Added simple `SECURITY.md` policy document
+  * Fixed a duplication behavior in output when a package was
+    found at multiple paths (e.g., symlinks)
+  * Fixed issue where lowercase license filenames were ignored
+  * Improved project `Makefile` stability for developers
+  * Migrated from the linters black and isort to ruff
+  * Code style remains PEP-8 aligned, but should be slightly more
+    readable.
+  * Linting configuration remains in `pyproject.toml`
+  * Updated `CONTRIBUTORS.md` guide with related changes</comment>
+    <requestid>1343449</requestid>
+  </revision>
 </revisionlist>
