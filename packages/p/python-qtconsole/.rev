@@ -352,4 +352,13 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
 </comment>
     <requestid>1338961</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>eb483616b2d3340031cf1b94c21ee50f</srcmd5>
+    <version>5.7.2</version>
+    <time>1774888287</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.7.2:
+  * Handle ANSI codes to show/hide cursor.</comment>
+    <requestid>1343524</requestid>
+  </revision>
 </revisionlist>

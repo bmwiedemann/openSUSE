@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:46:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.2:
+  * Handle ANSI codes to show/hide cursor.
+
+-------------------------------------------------------------------
 Mon Mar  2 17:44:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.7.1:
