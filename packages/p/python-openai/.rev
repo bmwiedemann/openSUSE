@@ -191,4 +191,17 @@
   * use proper capitalization for WebSockets</comment>
     <requestid>1342107</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>41282e299fb817e597119340f2c62dc3</srcmd5>
+    <version>2.30.0</version>
+    <time>1774888231</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.30.0:
+  * **api:** add keys field to Click/DoubleClick/Drag/Move/Scroll
+    computer actions
+  * **api:** align SDK response types with expanded item schemas
+  * sanitize endpoint path params
+  * **types:** make type required in ResponseInputMessageItem</comment>
+    <requestid>1343467</requestid>
+  </revision>
 </revisionlist>
