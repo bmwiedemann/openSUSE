@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 30 10:09:56 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 8.1.8
+  * Bug fixes:
+    - Better handling of the occasions where pipewire sends us null
+      port pointers. This should avoid noises in some situations
+    - Fixed small mistakes in the spectrum frequency axis calculation
+    - Added a workaround to avoid graphical artifacts when the
+      spectrum is using area mode.
+
+-------------------------------------------------------------------
 Fri Mar 27 01:53:18 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 8.1.7
