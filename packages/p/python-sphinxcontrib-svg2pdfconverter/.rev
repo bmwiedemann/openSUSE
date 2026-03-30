@@ -76,4 +76,15 @@
   * Use errno symbols from standard library</comment>
     <requestid>1223206</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d837c17147c73ff96996b6a995edccd5</srcmd5>
+    <version>2.1.0</version>
+    <time>1774888267</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.0:
+  * support for sphinx 8.2
+  * port to pyproject.toml
+  * migrate to PEP-0420</comment>
+    <requestid>1343509</requestid>
+  </revision>
 </revisionlist>

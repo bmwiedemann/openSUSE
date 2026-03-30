@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:42:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * support for sphinx 8.2
+  * port to pyproject.toml
+  * migrate to PEP-0420
+
+-------------------------------------------------------------------
 Sun Nov 10 21:45:29 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.3:
