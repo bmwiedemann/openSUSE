@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 27 12:56:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.10.1
+  * Raise ValueError if api_endpoint is unset when using AnonymousCredentials
+    in AsyncGrpcClient. (#1778)
+- from version 3.10.0
+  * [Bucket Encryption Enforcement] add support for bucket encryption enforcement config (#1742)
+  * [Rapid Buckets Reads] Use raw proto access for read resumption strategy (#1764)
+  * [Rapid Buckets Benchmarks] init mp pool & grpc client once, use os.sched_setaffinity (#1751)
+  * [Rapid Buckets Writes] don't flush at every append, results in bad perf (#1746)
+  * [Windows] skip downloading blobs whose name contain `":" ` eg: `C:` `D:` etc
+    when application runs in Windows. (#1774)
+  * [Path Traversal] Prevent path traversal in `download_many_to_path` (#1768)
+  * [Rapid Buckets] pass token correctly, '&' instead of ',' (#1756)
+
+-------------------------------------------------------------------
 Wed Mar  4 10:17:25 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.9.0
