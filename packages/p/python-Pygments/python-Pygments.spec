@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pygments
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Pygments%{psuffix}
-Version:        2.19.2
+Version:        2.20.0
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
@@ -42,8 +42,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pygments/pygmen
 # PATCH-FIX-UPSTREAM skip-wcag-contrast-ratio.patch gh#pygments/pygments!2564 mcepl@suse.com
 # Don't make wcag-contrast-ratio mandatory for testing
 Patch0:         skip-wcag-contrast-ratio.patch
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatchling >= 1.27}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 %if %{with test}

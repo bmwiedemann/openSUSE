@@ -612,4 +612,41 @@
     <comment>- Build tests with _multibuild to avoid cycles with pytest dependency.</comment>
     <requestid>1313838</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d09d879569502c9e7f1f4b44178a24f7</srcmd5>
+    <version>2.20.0</version>
+    <time>1774888196</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.20.0:
+  * archetype: Fix catastrophic backtracking in GUID and ID
+    patterns (#3064)
+  * ASN.1: Recognize minus sign and fix range operator (#3014,
+    #3060)
+  * C++: Add C++26 keywords (#2955), add integer literal suffixes
+    (#2966)
+  * ComponentPascal: Fix ``analyse_text`` (#3028, #3032)
+  * Coq renamed to Rocq (#2883, #2908)
+  * Cython: Various improvements (#2932, #2933)
+  * Debian control: Improve architecture parsing (#3052)
+  * Devicetree: Add support for overlay/fragments (#3021), add
+    bytestring support (#3022), fix catastrophic backtracking
+    (#3057)
+  * Fennel: Various improvements (#2911)
+  * Haskell: Handle escape sequences in character literals
+    (#3069, #1795)
+  * Java: Add module keywords (#2955)
+  * Lean4: Add operators ``]'``, ``]?``, ``]!``  (#2946)
+  * LESS: Support single-line comments (#3005)
+  * LilyPond: Update to 2.25.29 (#2974)
+  * LLVM: Support C-style comments (#3023, #2978)
+  * Lua(u): Fix catastrophic backtracking (#3047)
+  * Macaulay2: Update to 1.25.05 (#2893), 1.25.11 (#2988)
+  * Mathematica: Various improvements (#2957)
+  * meson: Add additional operators (#2919)
+  * MySQL: Update keywords (#2970)
+  * org-Mode: Support both schedule and deadline (#2899)
+  * PHP: Add ``__PROPERTY__`` magic constant (#2924), add
+    reserved keywords (#3002)</comment>
+    <requestid>1343479</requestid>
+  </revision>
 </revisionlist>
