@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 23 22:06:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.40.0:
+  * Fix re-initialization of gRPC channel on UNAVAILABLE error
+  * Allow loading all resource detectors by setting
+    `OTEL_EXPERIMENTAL_RESOURCE_DETECTORS` to `*`
+  * Regenerate opentelemetry-proto code with v1.9.0 release
+  * Add python 3.14 support
+  * Silence events API warnings for internal users
+
+-------------------------------------------------------------------
 Sun Dec 28 15:17:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.39.1:
