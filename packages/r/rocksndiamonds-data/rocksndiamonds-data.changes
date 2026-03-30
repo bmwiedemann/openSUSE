@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 16 17:26:49 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update Boulder_Dash to 1.1.0
+- Update Emerald_Mine_Club to 3.2.0
+  - added a new level set "Emerald Caves" which was newly created
+    in 2023
+  - fixed graphics for gray door elements in level editor for all
+    level sets
+  - fixed (disabled) loop mode for sound definitions for some
+    game elements
+
+-------------------------------------------------------------------
 Sun Jul 13 19:06:22 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update Boulder_Dash to 1.0.5

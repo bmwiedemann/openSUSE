@@ -1,7 +1,7 @@
 #
 # spec file for package rocksndiamonds-data
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define oname   rocksndiamonds
 Name:           %{oname}-data
-Version:        20250223
+Version:        20260316
 Release:        0
 Summary:        Data files for Rocks'n'Diamonds
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ Group:          Amusements/Games/Action/Arcade
 URL:            https://www.artsoft.org/rocksndiamonds/
 Source0:        https://www.artsoft.org/RELEASES/%{oname}/levels/ZeldaII-1.0.0.zip
 Source1:        https://www.artsoft.org/RELEASES/%{oname}/levels/Zelda-1.0.0.zip
-Source2:        https://www.artsoft.org/RELEASES/%{oname}/levels/Emerald_Mine_Club-3.1.3.7z
+Source2:        https://www.artsoft.org/RELEASES/%{oname}/levels/Emerald_Mine_Club-3.2.0.7z
 Source3:        https://www.artsoft.org/RELEASES/%{oname}/levels/Sokoban-1.0.0.zip
 # Use supplied tarbal, fixed with fdupes -l sym -r -m .
 # and packed than rockslevels, repacked as tar.bz2
@@ -37,7 +37,7 @@ Source7:        https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash_Dr
 Source8:        https://www.artsoft.org/RELEASES/%{oname}/levels/Supaplex-2.0.0.7z
 Source9:        https://www.artsoft.org/RELEASES/unix/%{oname}/levels/rockslevels-dx-1.0.tar.gz
 Source68:       https://www.artsoft.org/RELEASES/%{oname}/levels/Better_Together-1.0.0.7z
-Source69:       https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash-1.0.5.zip
+Source69:       https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash-1.1.0.zip
 # Downloaded from http://www.jb-line.de/rnd/rnd_jue-3.3.0.0.tar.gz
 # Deleted directory rnd_jue/jue_sobigo and other which are not level
 # and packed than rockslevels, repacked as tar.gz
