@@ -1,7 +1,7 @@
 #
 # spec file for package static-initrd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -258,7 +258,7 @@ openssl x509 -in ./%{certs_name}.crt -outform DER -out ./%{certs_name}.der
 %build
 omit_modules="iscsi lunmask multipath memstrack"
 %ifnarch x86_64 aarch64
-omit_modules="$omit_modules connman biosdevname systemd-pcrphase"
+omit_modules="$omit_modules connman biosdevname systemd-pcrextend"
 %endif
 %ifarch s390x s390
 omit_modules="$omit_modules rngd"
@@ -291,7 +291,7 @@ for k_flavor in $flavors; do
       done <"$list_packages"
   else
       echo "add_dracutmodules+=\" \\" > "$conf_file"
-      echo "systemd-pcrphase \\" >> "$conf_file"
+      echo "systemd-pcrextend \\" >> "$conf_file"
       echo "tpm2-tss \\" >> "$conf_file"
   fi
   echo "\"" >> "$conf_file"

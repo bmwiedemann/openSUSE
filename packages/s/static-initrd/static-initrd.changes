@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 30 07:14:29 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- module name "systemd-pcrphase" moved in "systemd-pcrextend"
+
+-------------------------------------------------------------------
 Fri Jan 16 18:46:00 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Remove dependency on dmraid.
