@@ -1,7 +1,7 @@
 #
 # spec file for package baresip
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%global sover   22
+%global sover   26
 %global libname lib%{name}%{sover}
 Name:           baresip
-Version:        4.2.0
+Version:        4.6.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
@@ -52,8 +52,7 @@ BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libre) >= 2.10.0
-BuildRequires:  pkgconfig(librem) >= 2.10.0
+BuildRequires:  pkgconfig(libre) >= 3.15.0
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(portaudio-2.0)
@@ -176,7 +175,6 @@ sed 's|%{_prefix}/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/evdev.so
 %{_libdir}/baresip/modules/g711.so
 %{_libdir}/baresip/modules/g722.so
-%{_libdir}/baresip/modules/g726.so
 %{_libdir}/baresip/modules/gtk.so
 %{_libdir}/baresip/modules/httpd.so
 %{_libdir}/baresip/modules/httpreq.so
