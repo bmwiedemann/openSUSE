@@ -96,4 +96,16 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1276000</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>74c6cf2d9c0ebfa517a244ef77dce001</srcmd5>
+    <version>1.10.0</version>
+    <time>1774888252</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.10.0:
+  * Fix tests for numpy 2
+  * Update supported Python versions
+  * Fix overflow when computing seek position
+  * Drastic performance improvements for reads</comment>
+    <requestid>1343491</requestid>
+  </revision>
 </revisionlist>

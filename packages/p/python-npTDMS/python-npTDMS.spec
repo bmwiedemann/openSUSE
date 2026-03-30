@@ -1,7 +1,7 @@
 #
 # spec file for package python-npTDMS
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-npTDMS
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Python module for reading TDMS files produced by LabView
 License:        LGPL-3.0-only
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
 # /SECTION
 %python_subpackages
 

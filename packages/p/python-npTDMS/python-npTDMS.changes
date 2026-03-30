@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 29 17:43:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Fix tests for numpy 2
+  * Update supported Python versions
+  * Fix overflow when computing seek position
+  * Drastic performance improvements for reads
+
+-------------------------------------------------------------------
 Fri May  9 05:12:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
