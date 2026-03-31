@@ -115,4 +115,14 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282976</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>40bcf3f2d9f4163e2310dfd079965797</srcmd5>
+    <version>0.5.1</version>
+    <time>1774963394</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.1:
+  * Support Python 3.13
+  * Support Python 3.14</comment>
+    <requestid>1343857</requestid>
+  </revision>
 </revisionlist>
