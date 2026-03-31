@@ -17,28 +17,23 @@
 
 
 Name:           mkdud
-%if 0%?suse_version >= 1500 || 0%?sle_version >= 120400
-BuildRequires:  rubygem(asciidoctor)
-%else
-BuildRequires:  asciidoc
-%if 0%?suse_version >= 1310 || 0%?sle_version >= 120000
-BuildRequires:  libxslt-tools
-%endif
-%endif
-%if %suse_version >= 1500
-Requires:       mkisofs
-%else
-Requires:       genisoimage
-%endif
+Version:        2.6
+Release:        0
+Summary:        Create driver update disks (DUD).
+License:        GPL-3.0-or-later
+Group:          Hardware/Other
+Source:         %{name}-%{version}.tar.xz
+URL:            https://github.com/openSUSE/mkdud
 Requires:       binutils
 Requires:       coreutils
 Requires:       cpio
 Requires:       file
 Requires:       findutils
-Requires:       gpg2
+Requires:       (gpg2 or gnupg2)
 Requires:       grep
 Requires:       gzip
 Requires:       kmod
+Requires:       (mkisofs or xorriso)
 Recommends:     osc
 Requires:       rpm
 Requires:       rpm-build
@@ -46,18 +41,11 @@ Requires:       tar
 Requires:       util-linux
 Requires:       xz
 Requires:       zstd
-Summary:        Create driver update from rpms
-License:        GPL-3.0-or-later
-Group:          Hardware/Other
-Version:        2.4
-Release:        0
-Source:         %{name}-%{version}.tar.xz
-Url:            https://github.com/openSUSE/mkdud
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
-Create a driver update from rpms.
+Create driver update disks (DUD).
 
 Authors:
 --------
@@ -81,7 +69,7 @@ rm -rf %{buildroot}
 /usr/share/bash-completion
 %doc %{_mandir}/man1/mkdud.*
 %doc *.md
-%if %suse_version >= 1500
+%if 0%{?suse_version} >= 1500 || 0%{?suse_version} == 0
 %license COPYING
 %else
 %doc COPYING
