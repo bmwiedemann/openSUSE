@@ -108,4 +108,34 @@
     <comment></comment>
     <requestid>1269959</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2d4d1795223a64e70a9295f75919c641</srcmd5>
+    <version>8.3.1</version>
+    <time>1774967203</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.3.1:
+  * Fix configuration JSON serialization errors for Celery.
+  * Remove deprecated pkg_resources in favour of new importlib.
+  * Fix AttributeError when optional settings are undefined.
+  * Fix circular import with custom user models.
+  * Add unit tests for security check W006. [shayanTaki]
+  * Add Persion (fa) translations for django-axes.
+  * Add individual attempt expiry support. [kuldeepkhatke]
+  * Add checks for missing ip_address in lockout params.
+  * Add missing settings.AXES_IPWARE_PROXY_ORDER documentation.
+  * Enhance get_lockout_response to receive original response as
+    parameter. [mounirmesselmeni]
+  * Update documentation.
+  * Add Python 3.14 support.
+  * Add Django 6.0 support.
+  * Remove Python 3.9 support (EOL).
+  * Remove Django 5.1 support (EOL).
+  * Move all database related logic to the default
+    axes.handlers.database.AxesDatabaseHandler. [nefrob]
+  * Provide credentials to expired credentials cleanup method.
+    [parul-aro]
+  * Update support matrix for Django 5.2. [mkniewallner]
+  * Fix documentation. [chango-goat]</comment>
+    <requestid>1343775</requestid>
+  </revision>
 </revisionlist>
