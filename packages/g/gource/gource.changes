@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar  6 18:14:04 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.56:
+  - Added --author-time option (onlyJakob).
+  - Fixed build with Boost 1.89.0 by no longer linking boost system.
+  - Increased minimum required version of Boost to 1.69.
+  - Request compatibility profile when creating OpenGL context.
+- Drop boost-system.patch, because no more need.
+
+-------------------------------------------------------------------
 Sat Oct 11 13:40:34 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Boost.System is headers only since 1.69

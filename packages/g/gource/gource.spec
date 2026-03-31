@@ -1,7 +1,7 @@
 #
 # spec file for package gource
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,21 @@
 
 
 Name:           gource
-Version:        0.55
+Version:        0.56
 Release:        0
 Summary:        Software version control visualization tool
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Visualization/Graph
 URL:            https://gource.io/
 Source:         https://github.com/acaudwell/Gource/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE = Boost.System is headers only since 1.69
-Patch1:         boost-system.patch
-BuildRequires:  boost-devel
+BuildRequires:  boost-devel >= 1.69
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel >= 0.9.3
 BuildRequires:  libboost_filesystem-devel
-BuildRequires:  (libboost_system-devel if boost-devel < 1.69)
 BuildRequires:  pkgconfig
 BuildRequires:  tinyxml-devel
+BuildRequires:  (libboost_system-devel if boost-devel < 1.69)
 BuildRequires:  pkgconfig(SDL2_image) >= 2.0
 BuildRequires:  pkgconfig(freetype2) >= 9.0.3
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -58,9 +56,6 @@ and third party (using additional steps) for CVS and SVN.
 
 %prep
 %setup -q
-%if 0%{?suse_version} >= 1600
-%patch -p1 -P 1
-%endif
 
 %build
 %if 0%{?suse_version} >= 1600
