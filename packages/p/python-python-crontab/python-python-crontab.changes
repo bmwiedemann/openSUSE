@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:33:30 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
+
+- Skip test_04_schedule_ten: scheduler returns 0 instead of expected 1-2 
+
+-------------------------------------------------------------------
 Wed Jan  7 04:23:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.3.0:

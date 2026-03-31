@@ -132,4 +132,12 @@ Binary file python-crontab-3.0.0.tar.gz (revision 8) deleted</comment>
   * Move specials setting to global.</comment>
     <requestid>1325693</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>cd01b6c6c6d65110b13324bd22f9320a</srcmd5>
+    <version>3.3.0</version>
+    <time>1774966876</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1343878</requestid>
+  </revision>
 </revisionlist>
