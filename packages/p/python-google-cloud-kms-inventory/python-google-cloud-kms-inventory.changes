@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 31 09:42:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core >= 2.11.0
+  * Improve type checking
+
+-------------------------------------------------------------------
 Thu Jan 15 14:21:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.4.0
