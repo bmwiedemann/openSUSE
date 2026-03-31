@@ -18,31 +18,31 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-oras
-Version:        0.2.38
+Version:        0.2.42
 Release:        0
 Summary:        OCI Registry as Storage Python SDK
 License:        Apache-2.0
 URL:            https://github.com/oras-project/oras-py
 Source:         https://files.pythonhosted.org/packages/source/o/oras/oras-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-boto3 >= 1.33.0
+Requires:       python-jsonschema
+Requires:       python-requests
+Suggests:       python-docker = 5.0.1
+BuildArch:      noarch
 #
 # SECTION runtime requirements
-BuildRequires:  %{python_module boto3}
+BuildRequires:  %{python_module boto3 >= 1.33.0}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module requests}
 # /SECTION
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 4.6.2}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-jsonschema
-Requires:       python-requests
-Requires:       python-boto3 >= 1.33.0
-Suggests:       python-docker == 5.0.1
-BuildArch:      noarch
 %python_subpackages
 
 %description

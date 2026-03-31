@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 23 12:51:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.42:
+  * feat: add Layout `copy` for pull_from_registry capability
+- update to 0.2.41:
+  * Use optional schema validation for `get_manifest`
+- update to 0.2.40:
+  * Fix preemptive exit in `auths` lookup when `credsStore` is in
+    use
+- update to 0.2.39:
+  * fix Python 3.7+ compatibility by avoiding union syntax and
+    rely on typing
+  * Fix: runtime error can not be emitted successfully
+
+-------------------------------------------------------------------
 Thu Feb 12 06:55:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.2.38:
