@@ -197,4 +197,21 @@
     * Re-introduce bulk_create on supported databases</comment>
     <requestid>1223464</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4f6128545d909009edd53e46b047a7a9</srcmd5>
+    <version>6.1.0</version>
+    <time>1774967196</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.1.0:
+  * Added history_order_by_date and get_version_ordering to
+    VersionAdmin (@micmarc).
+  * Prevent Django signals firing when viewing historical
+    versions in admin. Django model signals (pre_save, post_save,
+    pre_delete, post_delete, m2m_changed) are now muted during
+    GET requests to revision views, preventing unintended side
+    effects from signal handlers when users view historical data.
+    (@romanek-adam-b2c2)
+- refresh only-sqlite-test-db.patch</comment>
+    <requestid>1343784</requestid>
+  </revision>
 </revisionlist>

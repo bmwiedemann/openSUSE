@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-reversion
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-reversion
-Version:        5.1.0
+Version:        6.1.0
 Release:        0
 Summary:        A Django extension that provides version control for model instances
 License:        BSD-3-Clause
 URL:            https://github.com/etianen/django-reversion
 Source:         https://files.pythonhosted.org/packages/source/d/django_reversion/django_reversion-%{version}.tar.gz
-Patch0:         only-sqlite-test-db.patch
-BuildRequires:  %{python_module Django > 2.0}
-BuildRequires:  %{python_module base > 3.7}
+Patch:          only-sqlite-test-db.patch
+BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django > 2.0
+Requires:       python-Django >= 4.2
 Obsoletes:      python-django-reversion-doc
 Obsoletes:      python-django-reversion-lang
 BuildArch:      noarch

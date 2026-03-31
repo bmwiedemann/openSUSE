@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:57:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * Added history_order_by_date and get_version_ordering to
+    VersionAdmin (@micmarc).
+  * Prevent Django signals firing when viewing historical
+    versions in admin. Django model signals (pre_save, post_save,
+    pre_delete, post_delete, m2m_changed) are now muted during
+    GET requests to revision views, preventing unintended side
+    effects from signal handlers when users view historical data.
+    (@romanek-adam-b2c2)
+- refresh only-sqlite-test-db.patch
+
+-------------------------------------------------------------------
 Mon Nov 11 16:25:51 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.1.0
