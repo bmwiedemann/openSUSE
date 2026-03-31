@@ -183,4 +183,22 @@
   * Translations</comment>
     <requestid>1328065</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b25533673b89e950a534e2fb05daa665</srcmd5>
+    <version>3.3.2</version>
+    <time>1774967200</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.3.2:
+  * fix editorconfig for glade files #834
+  * typing: fix incorrect typing for locale #833
+  * Automatically push to AUR on release #842
+  * trayicon: watch SNI watcher bus name and reregister if needed #844
+  * CTRL + C: try to quit gracefully #835
+  * refactor: move Config to a separate module #836
+  * feature: disable postpone and skip buttons while shortcuts are disabled #731
+  * add star history chart to README #851
+  * update version #852
+  * Create release v3.3.2 #853</comment>
+    <requestid>1343839</requestid>
+  </revision>
 </revisionlist>
