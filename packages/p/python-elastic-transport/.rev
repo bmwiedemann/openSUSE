@@ -177,4 +177,18 @@
     <comment>- Add missing BuildRequires on requests.</comment>
     <requestid>1325510</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e0c628c502c52a556207c0be961da7ec</srcmd5>
+    <version>9.2.1</version>
+    <time>1774964804</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.2.1:
+  * Use `path_prefix` to compute the base URL in the httpx node
+    class
+
+- 8.17.0:
+  problems
+- Skip some failing tests with pytest 8.x.</comment>
+    <requestid>1343856</requestid>
+  </revision>
 </revisionlist>

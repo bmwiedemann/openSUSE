@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-elastic-transport
-Version:        9.2.0
+Version:        9.2.1
 Release:        0
 Summary:        Transport classes and utilities shared among Python Elastic client libraries
 License:        Apache-2.0
