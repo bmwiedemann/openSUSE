@@ -135,4 +135,14 @@
     <comment></comment>
     <requestid>1286301</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8a9316804b6c34ed77747c7f027f8760</srcmd5>
+    <version>1.25.1</version>
+    <time>1774963404</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.25.1:
+  * Stop adding uuid= in keyfiles
+  * Ensure files are created with 0600 perms</comment>
+    <requestid>1343864</requestid>
+  </revision>
 </revisionlist>
