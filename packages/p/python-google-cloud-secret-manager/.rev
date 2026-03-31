@@ -85,4 +85,16 @@
     <comment></comment>
     <requestid>1327653</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fdb4669faec1fbe84838571e427a8fc5</srcmd5>
+    <version>2.27.0</version>
+    <time>1774963399</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.27.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking</comment>
+    <requestid>1343865</requestid>
+  </revision>
 </revisionlist>
