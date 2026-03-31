@@ -150,4 +150,14 @@
     <comment></comment>
     <requestid>1218088</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>353df8cf43c75653b7df799dfa7d5a21</srcmd5>
+    <version>0.2.15</version>
+    <time>1774964792</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.2.15:
+  * add tests for python 3.13
+  * Add support for Sphinx 9</comment>
+    <requestid>1343768</requestid>
+  </revision>
 </revisionlist>

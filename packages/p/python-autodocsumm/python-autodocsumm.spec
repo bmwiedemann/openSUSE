@@ -1,7 +1,7 @@
 #
 # spec file for package python-autodocsumm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-autodocsumm
-Version:        0.2.14
+Version:        0.2.15
 Release:        0
 Summary:        Extended sphinx autodoc including automatic autosummaries
 License:        Apache-2.0

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 20:54:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.15:
+  * add tests for python 3.13
+  * Add support for Sphinx 9
+
+-------------------------------------------------------------------
 Thu Oct 24 11:58:10 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.2.14
