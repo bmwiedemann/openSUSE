@@ -64,4 +64,17 @@
 </comment>
     <requestid>1045177</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>25c7e743d68a69f11ad3989fe4d25cf6</srcmd5>
+    <version>5.0.5</version>
+    <time>1774967195</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.0.5:
+  * Added support for Django 5.2 and 6.0.
+  * Dropped support for Django 4.1 and lower.
+  * Requires Python 3.10 or newer.
+  * Tests moved to top-level 'tests/' directory.
+- drop update-tests.patch (merged upstream)</comment>
+    <requestid>1343782</requestid>
+  </revision>
 </revisionlist>

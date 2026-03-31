@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:47:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.5:
+  * Added support for Django 5.2 and 6.0.
+  * Dropped support for Django 4.1 and lower.
+  * Requires Python 3.10 or newer.
+  * Tests moved to top-level 'tests/' directory.
+- drop update-tests.patch (merged upstream)
+
+-------------------------------------------------------------------
 Sat Dec 24 08:35:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add update-tests.patch to fix
