@@ -1,7 +1,7 @@
 #
 # spec file for package ktls-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ktls-utils
-Version:        0.10+33.g311d943
+Version:        0.10+186.ge65f3b6
 Release:        0
 Summary:        Agent for performing handshakes for kernel TLS sockets
 License:        GPL-2.0-only
@@ -70,8 +70,10 @@ passed back to the kernel via standard kTLS socket options.
 %license LICENSE.txt
 %{_sbindir}/tlshd
 %{_unitdir}/tlshd.service
-%config(noreplace) %{_sysconfdir}/tlshd.conf
+%config(noreplace) %{_sysconfdir}/tlshd/
+%config(noreplace) %{_sysconfdir}/tlshd/config
 %{_mandir}/man8/tlshd.8*
 %{_mandir}/man5/tlshd.conf.5*
+%{_mandir}/man7/tls-session-tags.7*
 
 %changelog
