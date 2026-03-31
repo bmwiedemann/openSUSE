@@ -17,7 +17,7 @@
 
 
 Name:           astroterm
-Version:        1.0.10
+Version:        1.1.0
 Release:        0
 Summary:        Terminal-based planetarium
 License:        MIT
