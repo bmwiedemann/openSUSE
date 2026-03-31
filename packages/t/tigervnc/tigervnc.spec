@@ -38,7 +38,7 @@
 %bcond_with selinux
 %endif
 Name:           tigervnc
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        An implementation of VNC
 License:        GPL-2.0-only AND MIT
@@ -75,6 +75,7 @@ Patch7:         n_tigervnc-Dont-sign-java-client.patch
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
 Patch8:         n_tigervnc-reproducible-jar-mtime.patch
 %endif
+Patch1260871:   U_Prevent-other-users-reading-x0vncserver-screen.patch
 Provides:       tightvnc = 1.5.0
 Obsoletes:      tightvnc < 1.5.0
 Provides:       vnc

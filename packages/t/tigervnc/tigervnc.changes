@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 28 00:48:43 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Prevent-other-users-reading-x0vncserver-screen.patch
+  * Prevent other users from observing the screen, or modifying
+    what is sent to the client. Malicious attackers could even
+    crash x0vncserver if they timed the modifications right.
+    (CVE-2026-34352, bsc#1260871)
+
+-------------------------------------------------------------------
+Tue Mar 24 22:03:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.1:
+  * updated translations
+  * Fix for PAM support with w0vncserver
+
+-------------------------------------------------------------------
 Wed Feb  4 17:48:46 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - enabled build of w0vncserver by enabling wayland support
@@ -91,7 +107,7 @@ Fri Jan 24 15:39:03 UTC 2025 - Joan Torres <joan.torres@suse.com>
 
 - Fix and clarify suse_version macros.
   * %suse_version only defines major versions, e.g. 1500, 1600...
-    using %suse_version < 1550 might look like for version 15.4 
+    using %suse_version < 1550 might look like for version 15.4
     is true but it isn't.
   * Use %sle_version when targeting minor releases.
 
@@ -173,8 +189,8 @@ Wed Feb 21 09:15:27 UTC 2024 - Joan Torres <joan.torres@suse.com>
 -------------------------------------------------------------------
 Tue Feb 20 16:12:44 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
-- patches have been renamed 
-  * u_build_libXvnc_as_separate_library.patch --> 
+- patches have been renamed
+  * u_build_libXvnc_as_separate_library.patch -->
     u_tigervnc-Build-libXvnc-as-separate-library.patch
  * n_vncserver.patch -->
    n_tigervnc-Vncserver.patch
@@ -183,9 +199,9 @@ Tue Feb 20 16:12:44 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
  * n_tigervnc-date-time.patch -->
    n_tigervnc-Date-time.patch
  * u_change-button-layout-in-ServerDialog.patch -->
-   u_tigervnc-Change-button-layout-in-ServerDialog.patch   
+   u_tigervnc-Change-button-layout-in-ServerDialog.patch
  * n_dont_sign_java_client.patch -->
-   n_tigervnc-Dont-sign-java-client.patch 
+   n_tigervnc-Dont-sign-java-client.patch
  * u_tigervnc-add-autoaccept-parameter.patch -->
    u_tigervnc-Add-autoaccept-parameter.patch
  * u_tigervnc-ignore-epipe-on-write.patch
@@ -214,9 +230,9 @@ Tue Nov 21 15:10:39 UTC 2023 - Joan Torres <joan.torres@suse.com>
   (bsc#1208478):
   * Dont sign the Java client so the jar file won't contain a
     signed file with a variable timestamp.
-  * The signing was necessary for accessing the system clipboard 
+  * The signing was necessary for accessing the system clipboard
     when the Java client runs as an applet.
-    (This shouldn't harm due to the deprecation of Java applets 
+    (This shouldn't harm due to the deprecation of Java applets
      was done in version 9).
 
 -------------------------------------------------------------------
@@ -235,7 +251,7 @@ Mon Apr  3 08:57:25 UTC 2023 - Joan Torres <joan.torres@suse.com>
 Sun Mar 19 09:33:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.1:
-  * x0vncserver can either crash itself, or crash the X server 
+  * x0vncserver can either crash itself, or crash the X server
     it is connected to
   * The servers might crash if the clipboard is updated just as
     a client is connected
@@ -273,7 +289,7 @@ Wed Feb 15 15:01:13 UTC 2023 - Joan Torres <joan.torres@suse.com>
 -------------------------------------------------------------------
 Wed Jan  4 09:32:50 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
-- Migration of PAM settings to /usr/lib/pam.d. 
+- Migration of PAM settings to /usr/lib/pam.d.
 
 -------------------------------------------------------------------
 Mon Nov  7 14:58:46 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
@@ -298,12 +314,12 @@ Thu Apr 28 21:10:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - fix homepage url
 - move license to licensedir
-- a few of the trivial spec-cleaner cleanups 
+- a few of the trivial spec-cleaner cleanups
 
 -------------------------------------------------------------------
 Fri Apr 15 00:35:02 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- nasm is not needed for build, remove from buildrequires 
+- nasm is not needed for build, remove from buildrequires
 
 -------------------------------------------------------------------
 Wed Mar  2 13:23:00 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
@@ -319,7 +335,7 @@ Wed Mar  2 08:12:41 UTC 2022 - Joan Torres <joan.torres@suse.com>
 -------------------------------------------------------------------
 Mon Feb 21 16:18:49 UTC 2022 - Joan Torres <joan.torres@suse.com>
 
-- Remove patch: tigervnc-clean-pressed-key-on-exit.patch 
+- Remove patch: tigervnc-clean-pressed-key-on-exit.patch
   * fixed bsc#670448 wich can no longer be reproduced
   * removing the patch fixes bsc#1196214
   * related: https://github.com/TigerVNC/tigervnc/pull/14
@@ -329,8 +345,8 @@ Thu Feb 17 14:14:13 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_vncserver.patch
   * fix location of Xsession script
-- vncserver usage has radically changed; please check this: 
-  https://github.com/TigerVNC/tigervnc/blob/master/unix/vncserver/HOWTO.md 
+- vncserver usage has radically changed; please check this:
+  https://github.com/TigerVNC/tigervnc/blob/master/unix/vncserver/HOWTO.md
 
 -------------------------------------------------------------------
 Thu Feb 17 09:22:52 UTC 2022 - Joan Torres <joan.torres@suse.com>
@@ -385,7 +401,7 @@ Thu Feb 10 12:17:07 UTC 2022 - Joan Torres <joan.torres@suse.com>
 
 - u_Fix-non-functional-MaxDisconnectionTime.patch
   * Backport patch that fixes issue with MaxDisconnetionTime
-    (bsc#1195661). 
+    (bsc#1195661).
 
 -------------------------------------------------------------------
 Mon Nov 15 17:22:13 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
@@ -438,7 +454,7 @@ Mon Aug 23 13:49:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Mon Aug  2 15:21:39 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- no longer require libXfont(1) 
+- no longer require libXfont(1)
 
 -------------------------------------------------------------------
 Sat Jun 19 00:07:23 UTC 2021 - Jason Sikes <jsikes@suse.com>
@@ -503,13 +519,13 @@ Mon Dec  7 12:01:22 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 Wed Nov 25 16:28:09 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_tigervnc_update_default_vncxstartup.patch
-  * check first for /usr/libexec/xinit/xinitrc, then 
+  * check first for /usr/libexec/xinit/xinitrc, then
     /etc/X11/xinit/xinitrc (reported by aschnell @SUSE)
 
 -------------------------------------------------------------------
 Thu Nov 19 13:43:27 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
-- xvnc@.service: fixed path for %libexecdir (boo#1178601) 
+- xvnc@.service: fixed path for %libexecdir (boo#1178601)
 
 -------------------------------------------------------------------
 Fri Sep 25 10:38:58 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
@@ -556,7 +572,7 @@ Fri Apr 10 10:33:53 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
   CVE-2019-15692, bsc#1160250
   CVE-2019-15693, bsc#1159858
   CVE-2019-15694, bsc#1160251
-  CVE-2019-15695, bsc#1159860 
+  CVE-2019-15695, bsc#1159860
   dropping the following patches:
   * 0001-Make-ZlibInStream-more-robust-against-failures.patch
   * 0002-Encapsulate-PixelBuffer-internal-details.patch
@@ -617,7 +633,7 @@ Tue Jan  7 15:43:09 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
   * improper error handling in processing MemOutStream may lead
     to heap buffer overflow (CVE-2019-15694, bsc#1160251
   * stack buffer overflow, which could be triggered from
-    CMsgReader::readSetCurso (CVE-2019-15695, bsc#1159860) 
+    CMsgReader::readSetCurso (CVE-2019-15695, bsc#1159860)
 
 -------------------------------------------------------------------
 Tue Dec 31 09:53:30 UTC 2019 - Loic Devulder <ldevulder@suse.com>
@@ -1135,7 +1151,7 @@ Fri Jan  9 12:50:45 UTC 2015 - msrb@suse.com
 -------------------------------------------------------------------
 Sun Nov 16 09:33:04 UTC 2014 - oscar@naiandei.net
 
-- add -fPIC to CFLAGS and CXXFLAGS to compile correctly on armv7l 
+- add -fPIC to CFLAGS and CXXFLAGS to compile correctly on armv7l
 
 -------------------------------------------------------------------
 Thu Oct 30 13:33:27 UTC 2014 - msrb@suse.com
@@ -1205,12 +1221,12 @@ Fri May 16 13:52:19 UTC 2014 - msrb@suse.com
 -------------------------------------------------------------------
 Mon Apr 28 01:00:39 UTC 2014 - sndirsch@suse.com
 
-- added missing pkgconfig(xorg-macros) >= 1.14 
+- added missing pkgconfig(xorg-macros) >= 1.14
 
 -------------------------------------------------------------------
 Sat Apr 26 12:04:30 UTC 2014 - sndirsch@suse.com
 
-- xorg-x11-Xvnc: require xkeyboard-config (bnc#875329) 
+- xorg-x11-Xvnc: require xkeyboard-config (bnc#875329)
 
 -------------------------------------------------------------------
 Fri Apr 25 11:55:11 UTC 2014 - msrb@suse.com
@@ -1283,7 +1299,7 @@ Mon Nov 18 14:05:44 UTC 2013 - msrb@suse.com
 -------------------------------------------------------------------
 Wed Sep 19 08:08:53 UTC 2012 - werner@suse.de
 
-- Make it build with latest TeXLive 2012 and use pdf engine 
+- Make it build with latest TeXLive 2012 and use pdf engine
 
 -------------------------------------------------------------------
 Wed Mar 21 23:30:32 UTC 2012 - jengelh@medozas.de
@@ -1304,7 +1320,7 @@ Fri Feb 24 20:47:33 UTC 2012 - giecrilj@stegny.2a.pl
 -------------------------------------------------------------------
 Wed Feb  9 15:07:34 UTC 2011 - sndirsch@novell.com
 
-- added jpeg-devel to BuildRequires 
+- added jpeg-devel to BuildRequires
 
 -------------------------------------------------------------------
 Wed Feb  9 14:00:16 UTC 2011 - sndirsch@novell.com
@@ -1316,14 +1332,14 @@ Wed Feb  9 14:00:16 UTC 2011 - sndirsch@novell.com
 -------------------------------------------------------------------
 Wed Feb  9 08:57:06 UTC 2011 - sndirsch@novell.com
 
-- added Reinhard's xdmcp fix (bnc #625593) 
+- added Reinhard's xdmcp fix (bnc #625593)
 
 -------------------------------------------------------------------
 Wed Feb  9 08:50:10 UTC 2011 - sndirsch@novell.com
 
 - TigerVNC build
   * fix fontpatch
-  * cleanup 
+  * cleanup
 
 -------------------------------------------------------------------
 Wed Feb  9 04:41:24 UTC 2011 - sndirsch@novell.com
@@ -1344,15 +1360,15 @@ Thu Feb  3 17:41:02 UTC 2011 - sndirsch@novell.com
 -------------------------------------------------------------------
 Thu Feb  3 17:26:04 UTC 2011 - sndirsch@novell.com
 
-- rewritten wrapper script in Perl 
+- rewritten wrapper script in Perl
 
 -------------------------------------------------------------------
 Wed Jan 26 10:07:10 UTC 2011 - sndirsch@novell.com
 
-- added services file for SuSEfirewall2 
+- added services file for SuSEfirewall2
 
 -------------------------------------------------------------------
 Wed Jan 26 00:43:01 UTC 2011 - sndirsch@novell.com
 
-- created package 
+- created package
 

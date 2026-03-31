@@ -1183,4 +1183,24 @@
   * n_tigervnc-reproducible-jar-mtime.patch</comment>
     <requestid>1331048</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>838379042f5fc21e9dd9c9db0a12a35d</srcmd5>
+    <version>1.16.1</version>
+    <time>1774555655</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342415</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>acefc80dcd8422a5e2bfda5cd46da50b</srcmd5>
+    <version>1.16.1</version>
+    <time>1774963330</time>
+    <user>anag_factory</user>
+    <comment>- U_Prevent-other-users-reading-x0vncserver-screen.patch
+  * Prevent other users from observing the screen, or modifying
+    what is sent to the client. Malicious attackers could even
+    crash x0vncserver if they timed the modifications right.
+    (CVE-2026-34352, bsc#1260871)</comment>
+    <requestid>1343639</requestid>
+  </revision>
 </revisionlist>
