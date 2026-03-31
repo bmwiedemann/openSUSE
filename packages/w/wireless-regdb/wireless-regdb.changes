@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 26 08:41:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2026-03-18:
+  * db2bin.py: Switch from M2Crypto to python-cryptography.
+  * Update regulatory rules for Australia (AU), Canada (CA),
+    Greece (GR), Malaysia (MY), and Tunisia (TN).
+  * Update documentation URL in regulatory.bin.5.
+
+-------------------------------------------------------------------
+Thu Mar 26 08:40:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 20260318:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Update regulatory rules for India (IN) on 6GHz
+  * wireless-regdb: Replace M2Crypto with cryptography package
+  * wireless-regdb: Fix regulatory.bin signing with new M2Crypto
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Update regulatory info for Canada (CA) for 2025
+  * wireless-regdb: Update regulatory info for Tunisia (TN) on 6GHz for 2025
+  * wireless-regdb: Update regulatory info for Malaysia (MY) for 2025
+  * wireless-regdb: Update regulatory info for Malaysia (MY) for 2024
+  * wireless-regdb: Update broken link in regulatory.bin(5) manpage
+
+-------------------------------------------------------------------
 Wed Nov 05 19:35:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20251007:
@@ -260,7 +284,7 @@ Thu Jun 13 14:05:22 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
   * update source of information for CU
   * Update regulatory rules for South Korea
   * Update regulatory rules for Japan (JP) on 5GHz
-  * update source of information for ES	
+  * update source of information for ES
 
 -------------------------------------------------------------------
 Mon May  6 14:17:28 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
@@ -271,7 +295,7 @@ Mon May  6 14:17:28 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
   * update 60ghz band rules for us
   * Add 5725-5875 MHz rule for Portugal (PT)
   * add URLs in README
-  * delete outdated comment for DE	
+  * delete outdated comment for DE
 
 -------------------------------------------------------------------
 Thu Jan 10 14:29:14 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
@@ -398,12 +422,12 @@ Sat Mar 28 23:23:51 UTC 2015 - mpluskal@suse.com
 -------------------------------------------------------------------
 Sun Nov 16 14:22:05 UTC 2014 - crrodriguez@opensuse.org
 
-- Update 2014.10.07 
+- Update 2014.10.07
 
 -------------------------------------------------------------------
 Sun Sep  7 20:03:18 UTC 2014 - crrodriguez@opensuse.org
 
-- Update to 2014.06.13 
+- Update to 2014.06.13
 
 -------------------------------------------------------------------
 Wed Nov 27 19:57:12 UTC 2013 - crrodriguez@opensuse.org
@@ -415,7 +439,7 @@ Wed Nov 27 19:57:12 UTC 2013 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Sat Nov 23 05:25:02 UTC 2013 - crrodriguez@opensuse.org
 
-- update to 2013.10.11 
+- update to 2013.10.11
 - remove bogus Requires
 
 -------------------------------------------------------------------
@@ -428,7 +452,7 @@ Fri Apr  5 09:48:15 UTC 2013 - idonmez@suse.com
 -------------------------------------------------------------------
 Mon Dec 31 03:15:22 UTC 2012 - crrodriguez@opensuse.org
 
-- Update database to the most recent 2012.06.08 
+- Update database to the most recent 2012.06.08
 
 -------------------------------------------------------------------
 Wed Jul 11 07:17:47 UTC 2012 - cfarrell@suse.com
@@ -446,7 +470,7 @@ Fri Jul  6 15:22:21 UTC 2012 - cfarrell@suse.com
 -------------------------------------------------------------------
 Fri Mar  5 01:33:24 CET 2010 - ro@suse.de
 
-- update to 2009.11.25 
+- update to 2009.11.25
 
 -------------------------------------------------------------------
 Wed Sep  9 10:27:08 CEST 2009 - vlado@suse.cz
@@ -469,5 +493,5 @@ Mon Feb  9 15:14:30 CET 2009 - hschaa@suse.de
 -------------------------------------------------------------------
 Sat Jan 24 13:00:00 CET 2009 - helmut.schaa@googlemail.com
 
-- Initial package 
- 
+- Initial package
+

@@ -1,7 +1,7 @@
 #
 # spec file for package wireless-regdb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!_firmwaredir:%define _firmwaredir /lib/firmware}
 
 Name:           wireless-regdb
-Version:        20251007
+Version:        20260318
 Release:        0
 Summary:        802.11 regulatory domain database
 License:        ISC
