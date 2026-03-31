@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pdm%{psuffix}
-Version:        2.26.6
+Version:        2.26.7
 Release:        0
 Summary:        Python Development Master
 License:        MIT

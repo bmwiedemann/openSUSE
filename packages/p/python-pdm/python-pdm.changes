@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 30 16:33:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.26.7:
+  * Speed up dependency resolution when there are complex
+    conflicts.
+  * Switch to Zensical as docs generator.
+  * Add comprehensive tests for completion, show, search, and
+    info commands to improve test coverage
+
+-------------------------------------------------------------------
 Thu Feb 12 09:09:04 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.26.6:
@@ -256,14 +266,14 @@ Mon Feb  3 11:11:24 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 Wed Nov 27 12:46:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.21.0
-  * Support dependency groups as standardized by PEP 735. By default, dev 
+  * Support dependency groups as standardized by PEP 735. By default, dev
     dependencies will be written to [dependency-groups] table.
-  * Fix a bug that strategy.inherit_metadata config is not honored when using 
-    --lockfile option. 
+  * Fix a bug that strategy.inherit_metadata config is not honored when using
+    --lockfile option.
   * Update resolvelib to 1.1.0.
   * Add a fixer to remove the deprecated cross_platform strategy from lock file.
   * Pass original working directory as env variable to pdm scripts.
-  * Output similar commands or script command when the input command is not 
+  * Output similar commands or script command when the input command is not
     correct.
   * Print task name by default when using pdm run
   * Make OrderedSet.__contains__ run in O(1)
@@ -272,7 +282,7 @@ Wed Nov 27 12:46:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Fri Sep 27 04:52:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 2.19.1: 
+- Update to 2.19.1:
   * Features & Improvements:
     + Respect certificates in env vars REQUESTS_CA_BUNDLE and CURL_CA_BUNDLE
       when verifying SSL certificates.
@@ -525,19 +535,19 @@ Wed Feb 28 13:23:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
   * Officially drop the support for Python 3.7.
   * Allow exporting current project as editable dependency with pdm export.
   * Use ==major.minor.* as default requires python for application projects.
-  * We now use the package-type field in the tool.pdm table to differentiate 
+  * We now use the package-type field in the tool.pdm table to differentiate
     between library and application projects.
-  * pdm lock now supports --update-reuse option to keep the pinned versions 
+  * pdm lock now supports --update-reuse option to keep the pinned versions
     in the lockfile if possible.
-  * Introduce a new lock strategy inherit_metadata to inherit and merge 
-    markers from parent requirements. This is enabled by default when 
+  * Introduce a new lock strategy inherit_metadata to inherit and merge
+    markers from parent requirements. This is enabled by default when
     creating a new lockfile.
-  * Allow excluding packages from the lockfile via tool.pdm.resolution.excludes 
+  * Allow excluding packages from the lockfile via tool.pdm.resolution.excludes
     setting, the dependencies will also be skipped.
   * Rename --no-lock option to --frozen-lockfile.
   * Add --no-markers to export command to exclude markers from the output.
   * Change the warning category emitted by deprecated_warning() to PDMDeprecationWarning.
-  * Rename the preferred_pins argument of provider classes to locked_candidates, 
+  * Rename the preferred_pins argument of provider classes to locked_candidates,
     and deprecate the old name.
   * Use env PDM_NO_EDITABLE as the default value for --no-editable option.
 

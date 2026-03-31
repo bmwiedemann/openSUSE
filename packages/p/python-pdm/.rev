@@ -554,4 +554,29 @@
     checksum verification.</comment>
     <requestid>1332679</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5510246d67bbe31e611d3c1f7e9a1f58</srcmd5>
+    <version>2.26.7</version>
+    <time>1774963369</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.26.7:
+  * Speed up dependency resolution when there are complex
+    conflicts.
+  * Switch to Zensical as docs generator.
+  * Add comprehensive tests for completion, show, search, and
+    info commands to improve test coverage
+
+  * Support dependency groups as standardized by PEP 735. By default, dev
+  * Fix a bug that strategy.inherit_metadata config is not honored when using
+    --lockfile option.
+  * Output similar commands or script command when the input command is not
+- Update to 2.19.1:
+  * We now use the package-type field in the tool.pdm table to differentiate
+  * pdm lock now supports --update-reuse option to keep the pinned versions
+  * Introduce a new lock strategy inherit_metadata to inherit and merge
+    markers from parent requirements. This is enabled by default when
+  * Allow excluding packages from the lockfile via tool.pdm.resolution.excludes
+  * Rename the preferred_pins argument of provider classes to locked_candidates,</comment>
+    <requestid>1343756</requestid>
+  </revision>
 </revisionlist>
