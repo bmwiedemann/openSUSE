@@ -1371,4 +1371,14 @@
     the issue. CVE-2026-34073</comment>
     <requestid>1343139</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>77a8692c24024ce7dc1897626f82981a</srcmd5>
+    <version>46.0.6</version>
+    <time>1774964796</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-maturin-1.12.patch:
+  * Correctly deal with maturin bugfix that installs tests and
+    docs under sitearch.</comment>
+    <requestid>1343812</requestid>
+  </revision>
 </revisionlist>

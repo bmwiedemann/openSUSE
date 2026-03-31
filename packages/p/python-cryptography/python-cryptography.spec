@@ -32,7 +32,6 @@ Version:        46.0.6
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://cryptography.io/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/c/cryptography/cryptography-%{version}.tar.gz
 # use `osc service manualrun` to regenerate
@@ -43,6 +42,8 @@ Source4:        python-cryptography.keyring
 Patch4:         no-pytest_benchmark.patch
 # PATCH-FIX-OPENSUSE Make-unsafe-subinterpreter-support-available-via-cfg.patch boo#1248987
 Patch5:         Make-unsafe-subinterpreter-support-available-via-cfg.patch
+# PATCH-FIX-UPSTREAM gh#pyca/cryptography#14319
+Patch6:         support-maturin-1.12.patch
 BuildRequires:  %{python_module cffi >= 1.12}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module exceptiongroup}

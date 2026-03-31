@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 03:34:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-maturin-1.12.patch:
+  * Correctly deal with maturin bugfix that installs tests and
+    docs under sitearch.
+
+-------------------------------------------------------------------
 Fri Mar 27 09:11:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 46.0.6 (CVE-2026-34073, bsc#1260876):
