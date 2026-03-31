@@ -19,4 +19,13 @@
 - Release notes can be found externally: https://github.com/rust-lang/rust/releases/tag/1.94.0</comment>
     <requestid>1339477</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1ba711ac976f0b37db5efa9366116c35</srcmd5>
+    <version>1.94.1</version>
+    <time>1774964795</time>
+    <user>anag_factory</user>
+    <comment>- Update to rust1.94.1
+- Release notes can be found externally: https://github.com/rust-lang/rust/releases/tag/1.94.1</comment>
+    <requestid>1343803</requestid>
+  </revision>
 </revisionlist>

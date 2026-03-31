@@ -18,7 +18,7 @@
 
 
 %global version_suffix 1.94
-%global version_current 1.94.0
+%global version_current 1.94.1
 %global version_previous 1.93.0
 
 %if 0%{?gcc_version} < 15
