@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 30 20:17:41 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774895777.6c2911d1:
+  * feat: Customizable time_limit_days
+  * fix: arrow navigation not working in Chrome-based browsers
+  * style: Remove various magic numbers
+  * fix: ensure cache sync creates parent directory
+  * feat: Improve log message when sending command to ws server fails
+  * refactor: Use `any` instead of `grep` in worker schema
+  * refactor: Avoid repeated access to `$args{command}` in worker schema
+  * fix(clone-job): Restore authorized asset downloads after 06bc5193d25b
+  * fix: restore broken label and flag icons in comments
+  * feat: support parallel Perl tests with PROVE_JOBS in Makefile
+  * fix(ui): Prevent build tag labels from rendering in all caps
+  * feat: replace Test::Strict with Test::Compile in compilation check
+
+-------------------------------------------------------------------
 Mon Mar 30 08:07:50 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1774854217.24dbd811:
