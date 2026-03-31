@@ -829,4 +829,41 @@
   * chore(deps): update go-github@v84 (forwarded request 1337925 from ph03nix)</comment>
     <requestid>1338016</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ccdb626e7042601178ce6061df249c9b</srcmd5>
+    <version>2.15.0</version>
+    <time>1774963351</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.15.0:
+  * docs: semver docs improvements
+  * docs: sponsors.md update
+  * docs: update
+  * chore: auto-update generated files
+  * feat: source rpm support (#6493)
+  * fix(archive): use current binary for ExtraReplaces in skip (#6499)
+  * fix(snapcraft): correct channel template args in fmt.Errorf (#6498)
+  * docs: sponsor links utm
+  * chore: auto-update generated files
+  * ci(deps): bump the actions group with 3 updates (#6497)
+  * chore(deps): bump the gomod group with 2 updates (#6496)
+  * chore: auto-update generated files
+  * fix(rust): cargo zigbuild targets with custom glibc version (#6492)
+  * docs: update
+  * refactor: add UploadableTypes canonical var and use it across pipes (#6490)
+  * chore: remove todo
+  * test(go): windows/arm now invalid
+  * feat(cask): add generate_completions_from_executable stanza support (#6485)
+  * fix(go): remove windows/arm from valid build targets
+  * fixup! fixup! docs: language icons
+  * fixup! docs: language icons
+  * docs: language icons
+  * docs: add lang icons
+  * docs: fix build
+  * docs: update
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * fix: add flatpak to checksums and sign
+  * ci(deps): bump the actions group with 4 updates (#6477) (forwarded request 1343717 from ph03nix)</comment>
+    <requestid>1343724</requestid>
+  </revision>
 </revisionlist>

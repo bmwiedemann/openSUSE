@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:18:26 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.15.0:
+  * docs: semver docs improvements
+  * docs: sponsors.md update
+  * docs: update
+  * chore: auto-update generated files
+  * feat: source rpm support (#6493)
+  * fix(archive): use current binary for ExtraReplaces in skip (#6499)
+  * fix(snapcraft): correct channel template args in fmt.Errorf (#6498)
+  * docs: sponsor links utm
+  * chore: auto-update generated files
+  * ci(deps): bump the actions group with 3 updates (#6497)
+  * chore(deps): bump the gomod group with 2 updates (#6496)
+  * chore: auto-update generated files
+  * fix(rust): cargo zigbuild targets with custom glibc version (#6492)
+  * docs: update
+  * refactor: add UploadableTypes canonical var and use it across pipes (#6490)
+  * chore: remove todo
+  * test(go): windows/arm now invalid
+  * feat(cask): add generate_completions_from_executable stanza support (#6485)
+  * fix(go): remove windows/arm from valid build targets
+  * fixup! fixup! docs: language icons
+  * fixup! docs: language icons
+  * docs: language icons
+  * docs: add lang icons
+  * docs: fix build
+  * docs: update
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * fix: add flatpak to checksums and sign
+  * ci(deps): bump the actions group with 4 updates (#6477)
+  * docs: update
+  * docs: fix favicons
+  * docs: hide screenshot on mobile
+  * docs: new sponsors tool
+  * docs: sponsor aliases
+  * chore(deps): bump the gomod group with 2 updates (#6476)
+  * chore: auto-update generated files
+  * docs: less stars on mobile
+  * docs: better homepage
+  * docs: clarify .Binary
+  * docs: fix nsis typo
+  * chore: note
+  * docs: fix static url (#6478)
+  * docs: button style
+  * docs: meta tags
+  * docs: fix 404
+  * docs: new docs using hugo and hextra (#6474)
+  * fix: better logs
+  * ci: single hook for completions and manpages (#6473)
+  * chore(deps): bump github.com/buger/jsonparser from 1.1.1 to 1.1.2 (#6472)
+  * chore(deps): bump squidfunk/mkdocs-material from `c373999` to `868ad4d` in /www in the docker group across 1 directory (#6471)
+  * chore(deps): bump the gomod group with 3 updates (#6468)
+  * docs(deps): bump mkdocs-material from 9.7.5 to 9.7.6 in /www in the docs group (#6469)
+  * ci(deps): bump the actions group with 7 updates (#6470)
+  * fix(homebrew_cask): stanza order (#6466)
+  * chore(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.3 (#6464)
+  * chore: auto-update generated files
+  * ci: flatpak on nightly oss
+  * docs: update
+  * feat(builders/go): build ./..., better defaults (#6457)
+  * fix(flatpak): singular
+  * fix: lint
+  * fix: filterOut returns excluded tag when multiple ignore_tags are set (#6462)
+  * chore: auto-update generated files
+  * fix(docker): check if --provenance and --sbom flags are available (#6458)
+  * fix(homebrew_casks): use heredoc for cask caveats to handle shell metacharacters (#6460)
+  * docs: udpate
+  * feat: flatpak (#6448)
+  * ci(deps): bump the actions group with 5 updates (#6453)
+  * docs(deps): bump mkdocs-material from 9.7.4 to 9.7.5 in /www in the docs group (#6454)
+  * chore(deps): bump squidfunk/mkdocs-material from `f4332a8` to `c373999` in /www in the docker group across 1 directory (#6455)
+  * chore(deps): bump the gomod group with 11 updates (#6452)
+  * chore: go mod tidy
+  * chore: auto-update generated files
+  * fix: lint
+  * chore: schema
+  * fix(telegram): message thread id is not required
+  * docs: update
+  * feat: added blake3 checksumming support (#6412)
+  * feat(telegram): message thread id (#6442)
+  * feat: retry go mod proxy on 404 with exponential backoff (#6440)
+  * docs: improve Contributing
+  * fix: consistent error outputs across all pipes  (#6441)
+  * fix(telegram): make sure to close resp.body
+  * test: add no previous tag tests for gitlab and gitea changelogers
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Tue Mar 10 09:10:50 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.14.3:
