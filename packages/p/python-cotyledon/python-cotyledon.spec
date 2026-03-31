@@ -1,7 +1,7 @@
 #
 # spec file for package python-cotyledon
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-cotyledon
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        A framework for defining long-running services
 License:        Apache-2.0

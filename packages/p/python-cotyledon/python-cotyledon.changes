@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar  9 16:02:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * chore: simplier signal handling
+  * chore: add typing and drop 3.9
+  * feat: new API for oslo.config
+  * Add support for custom multiprocessing contexts (spawn-safe).
+
+-------------------------------------------------------------------
 Sun Nov  9 18:04:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
