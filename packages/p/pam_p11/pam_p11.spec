@@ -1,7 +1,7 @@
 #
 # spec file for package pam_p11
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pam_p11
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        PAM Authentication Module for Using Cryptographic Tokens
 License:        LGPL-2.1-or-later

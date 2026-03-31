@@ -212,4 +212,13 @@
     <comment></comment>
     <requestid>1232816</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4cca0854e533f8c3224cb8322918ddda</srcmd5>
+    <version>0.6.1</version>
+    <time>1774967198</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.1:
+  * Add Georgian translation (forwarded request 1343765 from dirkmueller)</comment>
+    <requestid>1343772</requestid>
+  </revision>
 </revisionlist>
