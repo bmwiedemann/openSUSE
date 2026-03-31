@@ -23,4 +23,13 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1284376</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>de5bc75c3c7d2178204d04318a73829d</srcmd5>
+    <version>1.2.2</version>
+    <time>1774967298</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.2:
+  * relicense to MIT</comment>
+    <requestid>1343486</requestid>
+  </revision>
 </revisionlist>
