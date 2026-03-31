@@ -1462,4 +1462,41 @@
     <comment></comment>
     <requestid>1332281</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>97cd4c1dd9734e036124384ef679eed8</srcmd5>
+    <version>1.12.6</version>
+    <time>1774964786</time>
+    <user>anag_factory</user>
+    <comment>- Drop CVE-2026-25727.patch (handled in _service)
+- Update to 1.12.6
+  * Sync legacy_py.rs with upstream PyPI warehouse legacy.py
+    gh#PyO3/maturin#3053
+  * Keep cargo build artifact at original path after staging
+    gh#PyO3/maturin#3054
+- Update to 1.12.5
+  * feat: include debug info files (.pdb, .dSYM, .dwp) in wheels
+    gh#PyO3/maturin#3024
+  * Fix wrong abi3 tag for conditional cargo features enabled pyo3
+    abi3 feature
+    gh#PyO3/maturin#3029
+  * fix: maturin build --sdist wheel name/layout for excluded
+    workspace crates
+    gh#PyO3/maturin#3031
+  * fix: preserve wheel output dir when building from unpacked
+    sdist
+    gh#PyO3/maturin#3036
+  * feat: add python-implementation condition to conditional
+    features
+    gh#PyO3/maturin#3038
+  * Fix non-existent comment tag
+    gh#PyO3/maturin#3044
+  * Use mmap for faster warn_missing_py_init, to be safe we now
+    move the cargo built artifact to target/maturin so this may
+    cause breakage if you rely on it in standard cargo target/
+    location
+    gh#PyO3/maturin#2950
+- Update to 1.12.4
+  * Upgrade memmap2 version</comment>
+    <requestid>1343551</requestid>
+  </revision>
 </revisionlist>

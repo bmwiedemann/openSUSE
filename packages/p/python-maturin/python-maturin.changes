@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Sun Mar 29 21:41:56 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Drop CVE-2026-25727.patch (handled in _service)
+- Update to 1.12.6
+  * Sync legacy_py.rs with upstream PyPI warehouse legacy.py
+    gh#PyO3/maturin#3053
+  * Keep cargo build artifact at original path after staging
+    gh#PyO3/maturin#3054
+- Update to 1.12.5
+  * feat: include debug info files (.pdb, .dSYM, .dwp) in wheels
+    gh#PyO3/maturin#3024
+  * Fix wrong abi3 tag for conditional cargo features enabled pyo3
+    abi3 feature
+    gh#PyO3/maturin#3029
+  * fix: maturin build --sdist wheel name/layout for excluded
+    workspace crates
+    gh#PyO3/maturin#3031
+  * fix: preserve wheel output dir when building from unpacked
+    sdist
+    gh#PyO3/maturin#3036
+  * feat: add python-implementation condition to conditional
+    features
+    gh#PyO3/maturin#3038
+  * Fix non-existent comment tag
+    gh#PyO3/maturin#3044
+  * Use mmap for faster warn_missing_py_init, to be safe we now
+    move the cargo built artifact to target/maturin so this may
+    cause breakage if you rely on it in standard cargo target/
+    location
+    gh#PyO3/maturin#2950
+- Update to 1.12.4
+  * Upgrade memmap2 version
+    gh#PyO3/maturin#3021
+  * fix: platform tag detection for Android targets
+    gh#PyO3/maturin#3023
+  * fix: only ignore maturin-generated native libraries on all
+    platforms
+    gh#PyO3/maturin#3025
+  * fix: ignore develop artifacts for all binding types during
+    build
+    gh#PyO3/maturin#3026
+  * feat: support conditional cargo features based on Python
+    version
+    gh#PyO3/maturin#3027
+- Update to 1.12.3
+  * docs(config): minor fixes
+    gh#PyO3/maturin#3008
+  * fix: support maturin develop on Windows ARM with x86 Python
+    gh#PyO3/maturin#3011
+  * fix: exclude external_packages bindings from uniffi wheels
+    gh#PyO3/maturin#3013
+  * Update cargo-zigbuild to 0.22.1
+    gh#PyO3/maturin#3015
+  * feat: build wheels from sdist with --sdist flag
+    gh#PyO3/maturin#3014
+  * feat: add include-import-lib option to bundle Windows import
+    libraries in wheels
+    gh#PyO3/maturin#3017
+  * fix: auditwheel external lib check respects musllinux and
+    reports symbol versions
+    gh#PyO3/maturin#3019
+
+-------------------------------------------------------------------
+Wed Feb 18 06:14:08 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.12.2
+* fix: allow absolute paths for --sbom-include
+    gh#PyO3/maturin#3004
+- Update to 1.12.1
+  * Add --sbom-include CLI argument for additional SBOM files
+    gh#PyO3/maturin#2999
+  * fix: resolve include patterns relative to python-source for
+    sdist and wheel
+    gh#PyO3/maturin#3000
+  * feat: support including OUT_DIR assets in wheel builds
+    gh#PyO3/maturin#3001
+  * add test case for uniffi with multiple crates
+    gh#PyO3/maturin#2839
+- Update to 1.12.0
+  * Update toml crates for toml 1.1 support
+    gh#PyO3/maturin#2934
+  * Use a single location for MSRV
+    gh#PyO3/maturin#2936
+  * Fix editable install for binary projects with Python modules
+    gh#PyO3/maturin#2938
+  * Filter linked_paths by KIND and linked_libs
+    gh#PyO3/maturin#2949
+  * Update bytes to 1.11.1
+    gh#PyO3/maturin#2960
+  * Normalize wheel distribution names to match the PyPA spec
+    gh#PyO3/maturin#2954
+  * Allow build loongarch64 and riscv64 for musllinux
+    gh#PyO3/maturin#2963
+  * Strip excluded cargo targets in sdist
+    gh#PyO3/maturin#2964
+  * Normalize wheel RECORD paths (on Windows)
+    gh#PyO3/maturin#2965
+  * Bump MSRV to 1.88.0
+    gh#PyO3/maturin#2966
+  * Support MATURIN_STRIP env var and --strip true/false to
+    override pyproject.toml
+    gh#PyO3/maturin#2968
+  * fix: copy bin artifacts before auditwheel repair to avoid rerun
+    failures
+    gh#PyO3/maturin#2969
+  * fix: rewrite python-source in pyproject.toml when building
+    sdist
+    gh#PyO3/maturin#2972
+  * fix: resolve wheel include patterns relative to project root
+    gh#PyO3/maturin#2973
+  * fix: always include workspace Cargo.toml in sdist
+    gh#PyO3/maturin#2974
+  * refactor: simplify source_distribution.rs
+    gh#PyO3/maturin#2976
+  * feat: support PEP 735 dependency groups in develop command
+    gh#PyO3/maturin#2978
+  * Fix license file handling for workspace-level license files
+    gh#PyO3/maturin#2970
+  * Support PEP 739 build-details.json when cross compiling
+    gh#PyO3/maturin#2979
+  * Fix .libs directory name for namespace packages
+    gh#PyO3/maturin#2981
+  * fix: exclude duplicate python source files from sdist for
+    workspace members
+    gh#PyO3/maturin#2982
+  * fix: remove default-members from workspace Cargo.toml in sdist
+    gh#PyO3/maturin#2983
+  * fix: correctly filter workspace members in sdist by directory
+    path
+    gh#PyO3/maturin#2984
+  * feat: Add PEP 770 SBOM support
+    gh#PyO3/maturin#2980
+  * Error when python-source is set but Python module is missing
+    gh#PyO3/maturin#2986
+  * feat: add auditwheel SBOM for grafted shared libraries
+    gh#PyO3/maturin#2985
+  * Fix sdist duplicate README error when readme is in both
+    Cargo.toml and pyproject.toml
+    gh#PyO3/maturin#2987
+  * fix: support python-source pointing outside Rust source
+    directory
+    gh#PyO3/maturin#2988
+  * Relax ziglang dependency version requirement
+    gh#PyO3/maturin#2990
+  * Stop adding link-native-libraries flag by default in Emscripten
+    platform in latest Rust
+    gh#PyO3/maturin#2991
+  * fix: platform.system() on Android for Python 3.13+
+    gh#PyO3/maturin#2992
+  * fix: check external libs for glibc version when determining
+    platform tag
+    gh#PyO3/maturin#2993
+  * Update cargo-zigbuild to 0.22.0
+    gh#PyO3/maturin#2994
+  * sbom: filter to bindings crate only and upgrade to CycloneDX
+    v1.5
+    gh#PyO3/maturin#2995
+  * Upgrade ureq to 3.2.0 and migrate to built-in multipart
+    gh#PyO3/maturin#2997
+
+-------------------------------------------------------------------
 Mon Feb  9 13:16:25 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.11.5

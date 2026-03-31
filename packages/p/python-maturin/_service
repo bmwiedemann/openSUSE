@@ -3,7 +3,8 @@
   <service name="cargo_vendor" mode="manual">
     <param name="srctar">maturin-*.tar.gz</param>
     <param name="compression">xz</param>
-    <param name="update">true</param>
+    <!-- CVE 2026-25727 bsc#1257918 -->
+    <param name="update-crate">time@0.3.47</param>
   </service>
   <service name="cargo_audit" mode="manual"></service>
 </services>
