@@ -936,4 +936,19 @@ can switch the default compiler. (forwarded request 1187079 from jamborm)</comme
     <comment>Revert die to https://build.opensuse.org/requests/1343216</comment>
     <requestid>1343482</requestid>
   </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>eaa9ccf5a0c5946e5dfcd082ef42d656</srcmd5>
+    <version>127</version>
+    <time>1774963324</time>
+    <user>anag_factory</user>
+    <comment>Now using upstream patch, mine was buggy.
+
+- avoid reading endless amounts of memory (CVE-2026-4897 bsc#1260859)
+  0001-CVE-2026-4897-getline-string-overflow.patch
+
+- CVE-2025-7519: Fixed that a XML policy file with a large number of
+  nested elements may lead to crash (bsc#1246472)
+- removed 0001-Nested-.policy-files-cause-xml-parsing-overflow-lead.patch: upstream</comment>
+    <requestid>1343588</requestid>
+  </revision>
 </revisionlist>

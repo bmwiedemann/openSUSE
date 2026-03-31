@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 27 14:19:04 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- avoid reading endless amounts of memory (CVE-2026-4897 bsc#1260859)
+  0001-CVE-2026-4897-getline-string-overflow.patch
+
+-------------------------------------------------------------------
 Tue Jan 20 08:46:38 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - change to /var/lib/polkit-1 being tmpfiles created (jsc#PED-14794)
@@ -16,10 +22,13 @@ Thu Jan  8 12:28:03 UTC 2026 - Marcus Meissner <meissner@suse.com>
   - pkexec: use realpath when comparing org.freedesktop.policykit.exec.path (Walter Doekes)
   - memory limits added to systemd unit to mitigate memory leaks (Alexander Meshcheryakov)
   - new translations: Bulgarian (twlvnn kraftwerk), Occitan (Mejans)
+- CVE-2025-7519: Fixed that a XML policy file with a large number of
+  nested elements may lead to crash (bsc#1246472)
 - systemd-socket-activation.patch: upstream, removed
 - auth_keep.patch: upstream, removed
 - sudo_uid.patch: upstream, removed
 - added polkitd.conf.5 manpage, added polkitd.conf
+- removed 0001-Nested-.policy-files-cause-xml-parsing-overflow-lead.patch: upstream
 
 -------------------------------------------------------------------
 Mon Oct 13 08:31:45 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
