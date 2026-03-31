@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 15:37:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.29:
+  * psc_misc: Add function to get PDC firmware version
+  * ipl: Fix mfg mode on C8000, rp34x0 and rp44x0
+
+-------------------------------------------------------------------
 Fri Sep 12 07:29:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.28:

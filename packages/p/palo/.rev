@@ -24,4 +24,12 @@
   * Fix various build warnings reported by Debian</comment>
     <requestid>1304226</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a84e3215ac0f618712c398e7fedd074a</srcmd5>
+    <version>2.29</version>
+    <time>1774963356</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1343736</requestid>
+  </revision>
 </revisionlist>
