@@ -1,7 +1,7 @@
 #
 # spec file for package pagemon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pagemon
-Version:        0.02.01
+Version:        0.02.06
 Release:        0
 Summary:        Interactive memory/page monitoring tool
 License:        GPL-2.0-or-later
