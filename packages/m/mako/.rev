@@ -126,4 +126,15 @@
   * A new Modes D-Bus property can be used to be notified when the current modes change.</comment>
     <requestid>1253599</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5d079f46aac57a71b2d7fcb89a046265</srcmd5>
+    <version>1.11.0</version>
+    <time>1774963364</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.11.0:
+  * JSON output for makoctl list and makoctl history.
+  * A new Notifications D-Bus property can be used to be notified when the
+    notification list changes.</comment>
+    <requestid>1343746</requestid>
+  </revision>
 </revisionlist>

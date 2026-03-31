@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 30 17:39:42 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.0:
+  * JSON output for makoctl list and makoctl history.
+  * A new Notifications D-Bus property can be used to be notified when the
+    notification list changes.
+
+-------------------------------------------------------------------
 Mon Mar 17 06:11:04 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.0:
