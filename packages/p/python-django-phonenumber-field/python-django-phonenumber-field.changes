@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:54:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.4.0:
+  * Handle empty values in `SplitPhoneNumberField` with
+    `max_length`
+  * Update supported Python and Django versions
+
+-------------------------------------------------------------------
 Mon Oct 13 09:13:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.3.0:

@@ -90,4 +90,16 @@
   * Remove PhoneNumberInternationalFallbackWidget. Use</comment>
     <requestid>1311037</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>054d7c9b2844585cf0ce8c1dd3aa9f2a</srcmd5>
+    <version>8.4.0</version>
+    <time>1774967205</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.4.0:
+  * Handle empty values in `SplitPhoneNumberField` with
+    `max_length`
+  * Update supported Python and Django versions
+</comment>
+    <requestid>1343927</requestid>
+  </revision>
 </revisionlist>

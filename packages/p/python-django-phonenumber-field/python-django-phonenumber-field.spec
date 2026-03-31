@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-phonenumber-field
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-django-phonenumber-field
-Version:        8.3.0
+Version:        8.4.0
 Release:        0
 Summary:        International phone number field for django models
 License:        MIT
@@ -29,13 +29,13 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Babel
-Requires:       python-Django >= 4.2
+Requires:       python-Django >= 5.2
+Recommends:     python-Babel
 Recommends:     python-phonenumbers >= 7.0.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Babel}
-BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module Django >= 5.2}
 BuildRequires:  %{python_module django-rest-framework}
 BuildRequires:  %{python_module phonenumbers >= 7.0.2}
 BuildRequires:  %{python_module pytest}
