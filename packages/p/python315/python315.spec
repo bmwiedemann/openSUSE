@@ -237,6 +237,18 @@ Patch45:        gh-145802-atomic-profile-update-for-PGO.patch
 # PATCH-FIX-UPSTREAM gh-144741-frame_pointer_unwind.patch gh#python/cpython#144741 mcepl@suse.com
 # Fix test_frame_pointer_unwind for libpython
 Patch46:        gh-144741-frame_pointer_unwind.patch
+# PATCH-FIX-UPSTREAM CVE-2026-3644-cookies-Morsel-update-II.patch bsc#1259734 mcepl@suse.com
+# Reject control characters in http.cookies.Morsel.update() and http.cookies.BaseCookie.js_output
+Patch47:        CVE-2026-3644-cookies-Morsel-update-II.patch
+# PATCH-FIX-UPSTREAM CVE-2026-4224-expat-unbound-C-recursion.patch bsc#1259735 mcepl@suse.com
+# Avoid unbound C recursion in conv_content_model
+Patch48:        CVE-2026-4224-expat-unbound-C-recursion.patch
+# PATCH-FIX-UPSTREAM CVE-2025-13462-tarinfo-header-parse.patch bsc#1259611 mcepl@suse.com
+# Skip TarInfo DIRTYPE normalization during GNU long name handling
+Patch49:        CVE-2025-13462-tarinfo-header-parse.patch
+# PATCH-FIX-UPSTREAM CVE-2026-4519-webbrowser-open-dashes.patch bsc#1260026 mcepl@suse.com
+# reject leading dashes in webbrowser URLs
+Patch50:        CVE-2026-4519-webbrowser-open-dashes.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

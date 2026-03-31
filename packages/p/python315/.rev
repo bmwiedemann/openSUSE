@@ -180,4 +180,26 @@ covered).</comment>
   (gh#python/cpython#144741).</comment>
     <requestid>1341615</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7e650581a8194266662d6c1222139b38</srcmd5>
+    <version>3.15.0~a7</version>
+    <time>1774963361</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-4519-webbrowser-open-dashes.patch to reject
+  leading dashes in webbrowser URLs (bsc#1260026, CVE-2026-4519,
+  gh#python/cpython#143930).
+
+- Add CVE-2025-13462-tarinfo-header-parse.patch which skips
+  TarInfo DIRTYPE normalization during GNU long name handling
+  (bsc#1259611, CVE-2025-13462).
+
+- Add CVE-2026-4224-expat-unbound-C-recursion.patch avoiding
+  unbound C recursion in conv_content_model in pyexpat.c
+  (bsc#1259735, CVE-2026-4224).
+
+- Add CVE-2026-3644-cookies-Morsel-update-II.patch to reject
+  control characters in http.cookies.Morsel.update() and
+  http.cookies.BaseCookie.js_output (bsc#1259734, CVE-2026-3644).</comment>
+    <requestid>1343740</requestid>
+  </revision>
 </revisionlist>
