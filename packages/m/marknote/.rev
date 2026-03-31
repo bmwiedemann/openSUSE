@@ -65,4 +65,12 @@ Depends on sr#1164320</comment>
     <comment>Update to 1.5.1</comment>
     <requestid>1341700</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>470860a6350fb95612bcd6fe521b6368</srcmd5>
+    <version>1.5.2</version>
+    <time>1774967202</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1343901</requestid>
+  </revision>
 </revisionlist>

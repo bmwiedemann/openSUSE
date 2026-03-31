@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 24 11:29:27 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.5.2
+  * Resolved a crash that occurred when creating your first
+    notebook
+  * Fixed an issue that prevented notebooks from being removed
+  * Corrected a glitch allowing notes to be drag-and-dropped
+    through quick sketches.
+  * Note sorting is functioning as intended now.
+  * Restored the undo and redo buttons when a single note is open
+  * Added the "Clear" button to allow removing content from the
+    quick sketches
+  * Added several minor background improvements for better
+    overall stability
+
+-------------------------------------------------------------------
 Sat Mar 21 14:07:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.5.1
