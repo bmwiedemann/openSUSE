@@ -19,7 +19,7 @@
 %define skip_python2 1
 
 Name:           python-pyowm
-Version:        2.10.0
+Version:        3.5.0
 Release:        0
 Summary:        A Python wrapper around the OpenWeatherMap web API
 License:        MIT
@@ -33,8 +33,9 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-geojson >= 2.3.0
-Requires:       python-requests >= 2.18.2
+Requires:       %{python_module geojson >= 2.3.0}
+Requires:       %{python_module requests >= 2.18.2}
+Requires:       %{python_module PySocks}
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,11 +48,8 @@ applications via a simple object model and in a human-friendly fashion.
 %setup -q -n pyowm-%{version}
 cp %{SOURCE99} .
 
-# Remove shebang line:
-sed -i '1d' pyowm/__init__.py
-
-# pyowm/weatherapi25/cityids/__init__.py not null
-cp -a pyowm/weatherapi25/__init__.py pyowm/weatherapi25/cityids/
+# Disable shebang line:
+sed -i 's_^#!_#_' pyowm/*.py pyowm/*/*.py
 
 %build
 %pyproject_wheel
@@ -59,6 +57,8 @@ cp -a pyowm/weatherapi25/__init__.py pyowm/weatherapi25/cityids/
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
 
 %files %{python_files}
 %doc README.md

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 31 12:19:14 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update to 3.5.0
+  See changes for the releases
+  https://github.com/csparpa/pyowm/releases/tag/3.5.0
+  https://github.com/csparpa/pyowm/releases/tag/3.4.0
+  https://github.com/csparpa/pyowm/releases/tag/3.3.0
+  https://github.com/csparpa/pyowm/releases/tag/3.2.0
+  https://github.com/csparpa/pyowm/releases/tag/3.1.1bis
+  https://github.com/csparpa/pyowm/releases/tag/3.1.0
+  https://github.com/csparpa/pyowm/releases/tag/3.0.0
+
+-------------------------------------------------------------------
 Tue Jun 17 04:37:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
