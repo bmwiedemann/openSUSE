@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 18 14:42:24 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Add subpackage for files common to library and binary
+- Modify dependencies to allow installation of library without binary
+
+-------------------------------------------------------------------
 Wed Jan  7 08:22:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 5.5.2:

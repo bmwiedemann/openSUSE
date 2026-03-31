@@ -48,7 +48,7 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(pango) >= 1.38.0
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pangoft2)
-Recommends:     tesseract-ocr-traineddata-english
+Requires:       tesseract-ocr-common
 %{?suse_build_hwcaps_libs}
 %if 0%{?suse_version} > 1550
 BuildRequires:  gcc-c++
@@ -60,6 +60,17 @@ BuildRequires:  gcc13-c++
 A commercial quality OCR engine originally developed at HP between 1985 and
 1995. In 1995, this engine was among the top 3 evaluated by UNLV. It was
 open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
+
+%package common
+Summary:        Tesseract Open Source OCR Engine Common files
+Requires:       tesseract-ocr-traineddata-provider
+Requires:       (%{name} = %{version} or %{lname} = %{version})
+Recommends:     tesseract-ocr-traineddata-eng
+BuildArch:      noarch
+
+%description common
+This package contains files common to the Tesseract Open Source OCR
+Engine binaries and library.
 
 %package devel
 Summary:        Tesseract Open Source OCR Engine Development files
@@ -73,6 +84,7 @@ Engine.
 
 %package -n %{lname}
 Summary:        Open Source OCR Engine
+Requires:       tesseract-ocr-common
 
 %description -n %{lname}
 A commercial quality OCR engine originally developed at HP between 1985 and
@@ -114,12 +126,14 @@ cp -a tessdata/pdf.ttf %{buildroot}/%{_datadir}/tessdata/
 %doc AUTHORS ChangeLog README.md
 %license LICENSE
 %{_bindir}/*
+%{_mandir}/man1/*.1%{?ext_man}
+%{_mandir}/man5/*.5%{?ext_man}
+
+%files common
 %dir %{_datadir}/tessdata
 %{_datadir}/tessdata/configs/
 %{_datadir}/tessdata/tessconfigs/
 %{_datadir}/tessdata/pdf.ttf
-%{_mandir}/man1/*.1%{?ext_man}
-%{_mandir}/man5/*.5%{?ext_man}
 
 %files devel
 %{_includedir}/tesseract

@@ -311,4 +311,12 @@
   * Use links to the git history and online release notes instead of local ChangeLog by @stweil in #4423</comment>
     <requestid>1325726</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9156d8ceb015708584639203db5e5ec9</srcmd5>
+    <version>5.5.2</version>
+    <time>1774963335</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1343675</requestid>
+  </revision>
 </revisionlist>
