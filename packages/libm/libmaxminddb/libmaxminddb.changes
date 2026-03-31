@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 29 14:19:09 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.13.3:
+  * Fix validation of empty maps and arrays at the end of the
+    metadata section
+  * MMDB_open would incorrectly reject databases where a 0-element
+    map or array was the last field in metadata
+- includes changes from 1.13.2:
+  * fixes for other platforms
+- includes changes from 1.13.1:
+  * No code changes
+- includes changes from 1.13.0:
+  * improved data validation
+  * Fixes for integer overflow, undefined behavior, buffer overflow
+    and other code correctness issues what could be triggered by
+    large or malicously crafted database
+  * Prevent stack overflow via unbounded recursion
+
+-------------------------------------------------------------------
 Tue Feb 11 20:04:53 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.12.2:

@@ -2,7 +2,7 @@
 # spec file for package libmaxminddb
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define lname	libmaxminddb0
 Name:           libmaxminddb
-Version:        1.12.2
+Version:        1.13.3
 Release:        0
 Summary:        C library for the MaxMind DB file format
 License:        Apache-2.0
@@ -91,7 +91,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{lname}
 %license LICENSE
-%{_libdir}/%{name}.so.*
+%{_libdir}/%{name}.so.0{,.*}
 
 %files -n mmdblookup
 %license LICENSE
@@ -102,7 +102,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files devel
 %doc Changes.md NOTICE README.md doc/mmdblookup.md doc/libmaxminddb.md
 %license LICENSE
-%{_includedir}/*
+%{_includedir}/maxminddb.h
+%{_includedir}/maxminddb_config.h
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_mandir}/man3/*.3%{?ext_man}
