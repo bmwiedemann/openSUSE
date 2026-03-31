@@ -96,4 +96,19 @@
     <comment></comment>
     <requestid>1280567</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>261b680ede0cdfaf59dc6aaa76365c73</srcmd5>
+    <version>0.99.11</version>
+    <time>1774963407</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.99.11:
+  * no upstream changelog available
+  * miscellaneous bug fixes and improvements
+
+- Update to version 0.99.2
+  * fix memo block size changing to default when copying
+-specfile add line to fix build for Leap
+  * Fix eol by sed</comment>
+    <requestid>1343874</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-dbf
-Version:        0.99.3
+Version:        0.99.11
 Release:        0
 Summary:        Pure python package for reading/writing dBase, FoxPro, and Visual FoxPro .dbf
 License:        BSD-3-Clause
@@ -55,7 +55,7 @@ chmod -x dbf/LICENSE dbf/README.md dbf/WHATSNEW
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python dbf/test.py
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -m dbf.test
 
 %files %{python_files}
 %license dbf/LICENSE
