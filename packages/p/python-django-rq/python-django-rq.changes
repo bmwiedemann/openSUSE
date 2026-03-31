@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 30 11:20:40 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Don't kill redis-server prematurely during test run
+
+-------------------------------------------------------------------
 Sun Mar 29 09:40:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to 4.0.1

@@ -61,12 +61,11 @@ in django's settings.py and easily use them in your project.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-timeout 3m %{_sbindir}/redis-server &
+%{_sbindir}/redis-server &
+trap 'pkill -f redis-server || :' EXIT
 export PYTHONPATH=${PWD}
 export DJANGO_SETTINGS_MODULE=tests.settings
 %pytest -k 'not (test_job_details or test_jobs or test_cron_scheduler_detail_view)'
-
-pkill -f redis-server || exit 0
 
 %files %{python_files}
 %license LICENSE.txt
