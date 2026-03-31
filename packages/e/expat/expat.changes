@@ -1,20 +1,41 @@
 -------------------------------------------------------------------
+Thu Mar 26 14:09:21 UTC 2026 - David Anes <david.anes@suse.com>
+
+- version update to 2.7.5 (bsc#1259711, bsc#1259729, bsc#1259726)
+  * CVE-2026-32776 -- Fix NULL function pointer dereference for
+    empty external parameter entities; it takes use of both
+    functions XML_ExternalEntityParserCreate and
+    XML_SetParamEntityParsing for an application to be
+    vulnerable.
+  * CVE-2026-32777 -- Protect from XML_TOK_INSTANCE_START
+                    infinite loop in function entityValueProcessor; it takes
+                    use of both functions XML_ExternalEntityParserCreate and
+                    XML_SetParamEntityParsing for an application to be
+                    vulnerable.
+  * CVE-2026-32778 -- Fix NULL dereference in function setContext
+    on retry after an earlier ouf-of-memory condition; it takes
+    use of function XML_ParserCreateNS or XML_ParserCreate_MM
+    for an application to be vulnerable.
+  * See full changelog here:
+    https://github.com/libexpat/libexpat/blob/R_2_7_5/expat/Changes
+
+-------------------------------------------------------------------
 Tue Feb  3 08:17:21 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 2.7.4
   * CVE-2026-24515 -- Function XML_ExternalEntityParserCreate
-            failed to copy the encoding handler data passed to
-            XML_SetUnknownEncodingHandler from the parent to the new
-            subparser. This can cause a NULL dereference (CWE-476) from
-            external entities that declare use of an unknown encoding.
-            The expected impact is denial of service. It takes use of
-            both functions XML_ExternalEntityParserCreate and
-            XML_SetUnknownEncodingHandler for an application to be
-            vulnerable.
+    failed to copy the encoding handler data passed to
+    XML_SetUnknownEncodingHandler from the parent to the new
+    subparser. This can cause a NULL dereference (CWE-476) from
+    external entities that declare use of an unknown encoding.
+    The expected impact is denial of service. It takes use of
+    both functions XML_ExternalEntityParserCreate and
+    XML_SetUnknownEncodingHandler for an application to be
+    vulnerable.
   * CVE-2026-25210 -- Add missing check for integer overflow
-            related to buffer size determination in function doContent
+    related to buffer size determination in function doContent
   * lib: Fix missing undoing of group size expansion in doProlog
-            failure cases
+    failure cases
   * xmlwf: Fix a memory leak
   * WASI: Fix format specifiers for 32bit WASI SDK
 - fixes [bsc#1257144] and [bsc#1257496]

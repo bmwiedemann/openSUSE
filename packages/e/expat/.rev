@@ -790,4 +790,12 @@
 - fixes [bsc#1257144] and [bsc#1257496]</comment>
     <requestid>1330687</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>a2adec9bd4715d72bb50207f8fb12b16</srcmd5>
+    <version>2.7.5</version>
+    <time>1774963309</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1343391</requestid>
+  </revision>
 </revisionlist>
