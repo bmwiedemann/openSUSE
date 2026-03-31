@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 31 08:22:59 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.0:
+  * More log tags for all commands in preparation for the upcoming SnapRAID Daemon
+  * New 'extra' config option to define additional disks to monitor with the 'probe' and 'smart' commands. This replaces the previous autodetection.
+  * Introduced the 'relocated' file state to unify the previous 'copied/removed' logic.
+    This new status specifically identifies files moved to a different path or disk with a new inode where the original has disappeared.
+  * Added support for local exclusion rules via .snapraidignore files placed directly within the array directory tree. This allows for granular,
+    directory-level control over which files and folders are excluded from parity, mirroring the workflow of .gitignore.
+  * Added support for the ** globbing character to allow recursive pattern matching across multiple directory levels.
+  * Added new option -W, --force-realloc-tail SIZE for the sync command. This option works like --force-realloc but applies only to the
+    specified tail portion (last SIZE bytes) of the parity file.
+
+-------------------------------------------------------------------
 Fri Feb  6 10:01:31 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 13.0:

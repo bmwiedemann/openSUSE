@@ -17,7 +17,7 @@
 
 
 Name:           snapraid
-Version:        13.0
+Version:        14.0
 Release:        0
 Summary:        Disk array backup for many large rarely-changed files
 License:        GPL-3.0-or-later
@@ -48,9 +48,11 @@ install -Dm 0644 snapraid.conf.example %{buildroot}%{_sysconfdir}/snapraid.conf
 
 %files
 %license COPYING
-%doc HISTORY README AUTHORS %{name}.txt
+%doc HISTORY README AUTHORS
 %config %{_sysconfdir}/snapraid.conf
 %{_bindir}/snapraid
 %{_mandir}/man1/snapraid.1%{?ext_man}
+%{_mandir}/man1/snapraid_log.1%{?ext_man}
+%{_mandir}/*/man1/snapraid.1%{?ext_man}
 
 %changelog
