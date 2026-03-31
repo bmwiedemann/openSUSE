@@ -780,4 +780,40 @@
   * Allow dulwich&gt;=1.0 (bsc#1258092)</comment>
     <requestid>1332600</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>78c3ce149a0917d7b4f4ad480acbf6f5</srcmd5>
+    <version>2.3.3</version>
+    <time>1774963391</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.3:
+  * **Fix a path traversal vulnerability in the wheel installer
+    that could allow malicious wheel files to write files outside
+    the intended installation directory** (#10792).
+  * Fix an issue where `git` dependencies from annotated tags
+    could not be updated (#10719).
+  * Fix an issue where empty `VIRTUAL_ENV` or `CONDA_PREFIX`
+    environment variables (e.g., after `conda deactivate`) would
+    cause Poetry to incorrectly detect an active virtualenv
+    (#10784).
+  * Fix an issue where an incomprehensible error message was
+    printed when `.venv` was a file instead of a directory
+    (#10777).
+  * Fix an issue where HTTP Basic Authentication credentials
+    could be corrupted during request preparation, causing
+    authentication failures with long tokens (#10748).
+  * Fix an issue where `poetry publish --no-interaction --build`
+    requested user interaction (#10769).
+  * Fix an issue where `poetry init` and `poetry new` created a
+    deprecated `project.license` format (#10787).
+  * Clarify the differences between `poetry install` and `poetry
+    update` (#10713).
+  * Clarify the section of fields in the `pyproject.toml`
+    examples (#10753).
+  * Add a note about the different installation location when
+    Python from the Microsoft Store is used (#10759).
+  * Fix the system requirements for Poetry (#10739).
+  * Fix the `poetry cache clear` example (#10749).
+  * Fix the link to `pipx` installation instructions (#10783).</comment>
+    <requestid>1343788</requestid>
+  </revision>
 </revisionlist>
