@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 30 19:40:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13
+  * Use 2-point cosine interpolation for scopes instead of 4-point
+    cubic B-spline. This is favorable as it doesn't lower the
+    waveform amplitude for samples containing very high frequency
+    data. The whole point of interpolating the scopes is to prevent
+    the staircase effect at very low pitches, and this does the job
+
+-------------------------------------------------------------------
 Sun Mar 15 17:51:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12
