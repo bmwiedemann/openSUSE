@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 30 13:17:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.26
+  * '-dvv' and '-tvv' now print (de)compressed sizes instead of
+    compression ratio. (Sizes are more informative than compression
+    ratio).
+  * Large numbers in option arguments are now accepted with
+    underscore separators (-s 123_456_789).
+  * Large numbers are now printed with underscore separators
+    (123_456_789).
+  * '--list' now can safely skip any trailing data added to a lzip
+    file by the option '--append' of lziprecover.
+  * '--list' now prints '+t' after the number of members to
+    indicate the presence of trailing data, and prints the size of
+    the trailing data below the size of the last member.
+  * '-lvv' now prints a blank line between the list of members of
+    each multimember file and the next file.
+
+-------------------------------------------------------------------
 Sun Jan 19 14:42:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.25
