@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 30 06:57:43 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Update to version 110+suse.23.g5d9502c7:
+
+  NVMeoF boot: avoid network interface renaming (jsc#PED-14341):
+  * feat(nvmf): set rd.nvmf.nm=1 if NetworkManager 1.54 is detected
+  * feat(nvmf): allow using system interface naming policy
+  * feat(nvmf): add dracut.conf option nvmf_nbft_mode
+  * feat(nvmf): enable adapting to NBFT reconfiguration
+  * fix(dracut.conf.5): move fstab/chroot warning to hostonly_mode section
+
+-------------------------------------------------------------------
+Wed Mar 25 13:35:48 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Update to version 110+suse.18.g5a7a17b3:
+  * fix(zipl): repair parsing of rd.zipl=LABEL|UUID|...= (bsc#1259587)
+  * fix(dracut): avoid calling log functions before dracut-logger is sourced
+
+-------------------------------------------------------------------
 Fri Mar 20 08:49:48 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Update to version 110+suse.16.g47bca564:
