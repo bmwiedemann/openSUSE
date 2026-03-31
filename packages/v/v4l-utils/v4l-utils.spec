@@ -1,7 +1,7 @@
 #
 # spec file for package v4l-utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,6 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "qv4l2"
 %global psuffix -%{flavor}
-
 %ifarch armv7l armv7hl aarch64
 # Qt6 doesn't have gl support in these archs
 %bcond_with qvidcap
@@ -31,13 +30,12 @@
 %bcond_without qvidcap
 %endif
 %endif
-
 %endif
 %define _udevdir %(pkg-config --variable udevdir udev)
 %define so_ver 0
 %define sname v4l-utils
 Name:           v4l-utils%{?psuffix}
-Version:        1.28.1
+Version:        1.32.0
 Release:        0
 Summary:        Utilities for video4linux
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -49,11 +47,6 @@ Source100:      baselibs.conf
 Patch0:         use_system_v4l_for_qv4l.patch
 Patch1:         v4l-utils-32bitfix.patch
 BuildRequires:  alsa-devel
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -62,6 +55,11 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires:       libv4l = %{version}
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 %if "%{flavor}" == ""
 BuildRequires:  doxygen
 BuildRequires:  kernel-headers
@@ -282,6 +280,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/cec-compliance
 %{_bindir}/cec-ctl
 %{_bindir}/cec-follower
+%{_bindir}/edid-decode
 %{_bindir}/ir-ctl
 %{_bindir}/ir-keytable
 %{_bindir}/ivtv-ctl
@@ -295,6 +294,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/cec-compliance.1%{?ext_man}
 %{_mandir}/man1/cec-ctl.1%{?ext_man}
 %{_mandir}/man1/cec-follower.1%{?ext_man}
+%{_mandir}/man1/edid-decode.1%{?ext_man}
 %{_mandir}/man1/ir-ctl.1%{?ext_man}
 
 %files lang -f "%{name}.lang"

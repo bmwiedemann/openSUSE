@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Mar 24 21:45:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.32.0:
+  * v4l-utils: Add is_compressed_format helper to centralize
+    compressed format checks
+  * edid-decode: be more relaxed on InfoFrames format
+  * edid-decode: allow using stdin for InfoFrame decoding
+  * v4l2-compliance: run testBlockingWait when streaming
+  * v4l2-ctl: fix string in hdmi-4k-600mhz-with-displayid-eeodb
+  * v4l2-compliance: report unsupported devices as such
+  * cobalt-ctl: fix search for the mtd device
+  * v4l2-ctl: log bitmask control value has hex number
+  * edid-decode: add sanity checks for DTD image size
+  * v4l2-compliance: fix pix_array control test
+  * test-media: add 'date' commands to the vicodec tests
+  * test-media: speed up stateful decoder compliance tests
+  * v4l-utils: sync with v6.17-rc1
+  * v4l-utils: update Hans Verkuil's email addresses
+  * cec-ctl: --show-raw should show raw transmit data as well
+  * v4l-utils: sync with latest media kernel tree
+  * cec-compliance: fix Vendor Command With ID vivid tests
+  * v4l2-tracer: fix out of date comment
+  * v4l2-ctl: use strtoul instead of strtol where appropriate
+  * rds-ctl: use strtoul instead of strtol where appropriate
+  * ivtv-ctl: use strtoul instead of strtol where appropriate
+  * cx18-ctl: use strtoul instead of strtol where appropriate
+  * cec-ctl: use strtoul instead of strtol where appropriate
+  * libv4lconvert: use strtoul instead of strtol where
+    appropriate
+  * capture-example.c: use strtoul instead of strtol for -c
+  * libv4l2: prefix HAVE_POSIX_IOCTL with LIBV4L_ for public
+    header
+  * qv4l2: Fix video capture being transparent on Wayland
+  * qvidcap: Fix video capture being transparent on Wayland
+  * ir-ctl: remove quirky -rmw command line parsing
+  * libv4l2: zero v4l2_buffer
+  * media-ctl: libv4l2subdev: Add Y16 format
+  * v4l2-ctl: process events before queues in stateful_m2m()
+  * v4l2-compliance: Add test for V4L2_FMTDESC_FLAG_ENUM_ALL flag
+  * v4l2-ctl-vidcap: Add options to enumerate all pixel formats
+  * edid-decode: support parsing EDID-Like Data
+  * qvidcap: fix core dump
+  * qv4l2: fix crash when disabling openGL
+
+-------------------------------------------------------------------
 Tue Jun 10 08:41:45 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Filter out GLIBC_PRIVATE dependencies
@@ -536,7 +581,7 @@ Sun Dec  5 19:57:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * v4l-utils: sync with upstream media_tree master
   * v4l-utils: update v4l2-tpg.patch
   * v4l-utils: use V4L2_TYPE_IS_CAPTURE
-- remove sysmacros.patch: obsolete 
+- remove sysmacros.patch: obsolete
 
 -------------------------------------------------------------------
 Sun Feb 21 22:22:50 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
@@ -998,7 +1043,7 @@ Thu Jan  2 10:02:04 UTC 2014 - dmueller@suse.com
 Sat Mar 16 21:59:51 UTC 2013 - dmueller@suse.com
 
 - add use-openat-if-available.patch:
-  * prefer openat over deprecated open syscall (fixes aarch64) 
+  * prefer openat over deprecated open syscall (fixes aarch64)
 
 -------------------------------------------------------------------
 Fri Nov  2 21:30:16 UTC 2012 - asterios.dramis@gmail.com
@@ -1162,12 +1207,12 @@ Mon May 17 10:07:34 UTC 2010 - coolo@novell.com
 -------------------------------------------------------------------
 Mon Feb 22 15:53:02 CET 2010 - ro@suse.de
 
-- buildfix: "control reaches end of non-void function" 
+- buildfix: "control reaches end of non-void function"
 
 -------------------------------------------------------------------
 Mon Feb 22 09:39:16 UTC 2010 - bphilips@novell.com
 
-- Upstream doesn't provide bz2. Change back to gz in URL. 
+- Upstream doesn't provide bz2. Change back to gz in URL.
 
 -------------------------------------------------------------------
 Mon Feb 22 09:35:32 UTC 2010 - bphilips@novell.com
@@ -1191,7 +1236,7 @@ Mon Feb 22 09:35:32 UTC 2010 - bphilips@novell.com
   - Put usb id in controls shm segment name for USB devices, to better
     distuingish between devices plugged into the same port
   - Enable software whitebalance and autogain for mr97310a cameras
-  - Improvements / tweaks to software autogain algorithm 
+  - Improvements / tweaks to software autogain algorithm
 
 -------------------------------------------------------------------
 Fri Jan 15 13:15:18 UTC 2010 - chris@computersalat.de
@@ -1330,9 +1375,9 @@ Wed Dec  3 22:16:58 PST 2008 - bphilips@suse.de
   * Add support for Pixart custom JPEG format
   * Hide non public symbols (Gregor Jasny)
   * Fix and enable x86_64 asm jpeg decompress helper functions (Gregor Jasny)
-  
+
 -------------------------------------------------------------------
 Fri Aug 15 19:52:59 CEST 2008 - bphilips@suse.de
 
-- Initial SuSE package 
+- Initial SuSE package
 
