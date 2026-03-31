@@ -19,7 +19,7 @@
 
 %define lname liblz1
 Name:           lzlib
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        LZMA Compression and Decompression Library
 License:        BSD-2-Clause AND GPL-2.0-or-later
