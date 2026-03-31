@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 24 10:39:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.5:
+  * Add support for Python 3.14.
+  * Update benchmarks to include results for Python 3.14.
+  * Re-add the CHANGES file with full version history to the source
+    distribution (previously removed in version 1.2.4).
+  * Update project infrastructure and requirements, including new
+    configuration files for development and compatibility
+    (compat-requirements.txt, development.txt, debug.unix.cflags).
+  * Update documentation and project metadata for the new release.
+  * Refactor and update internal build and benchmark tasks.
+
+-------------------------------------------------------------------
 Wed Apr 16 11:05:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.2.4
