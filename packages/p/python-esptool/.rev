@@ -259,4 +259,40 @@
   * logging: Added collapsible output stages and ASCII progress bars</comment>
     <requestid>1321875</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>98fe371448a41ee2a6b22eed2857c99b</srcmd5>
+    <version>5.2.0</version>
+    <time>1774963406</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.2.0:
+  * stub_flasher: Adopt new flasher stub
+  * espefuse: Add ESP32-E22 support
+  * esptool: Add ESP32-E22 support
+  * python: Support Python v3.14
+  * espefuse: Enable ecdsa keys burning support for ESP32-H4
+  * write_flash: Add fast reflashing option to update changed
+    flash sectors only
+  * esp32-s31: Add dedicated UF2 family ID
+  * spi_flash: add flash reset when detecting chip
+  * efuse: Adds eFuse for ESP32-H2 revision 1.2
+  * espsecure: Added --skip-padding flag to sign-data and
+    verify-signature API
+  * esp32p4: Add ECO6 stub flasher support
+  * esp32p4: Power on SPI flash chip during the attaching
+    process
+  * write-flash: apply compression only if it reduces the
+    file size
+  * esptool: Update chip description for ESP32-C2/ESP8684H
+  * espfuse: Add eFuse flash fields for ESP32-C2/ESP8684H
+  * espefuse: Set postpone flag by default
+  * esp_hsm_sign: Use primitive HSM signing mechanisms
+  * esp32c5: Add ECO3 stub flasher support
+  * write_flash: Allow encrypted writes using key from the
+    Key Manager
+  * Added autocomplete for port and baud rate
+  * enable compress and encryption together
+  * Add new target esp32s31
+  * Improve ports sorting when autodetection is used</comment>
+    <requestid>1343873</requestid>
+  </revision>
 </revisionlist>
