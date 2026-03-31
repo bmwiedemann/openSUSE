@@ -136,4 +136,18 @@
     <comment></comment>
     <requestid>1315308</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8a433d17fd451a3bbf44000bc7a8db27</srcmd5>
+    <version>4.2.1</version>
+    <time>1774963403</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.1:
+  * The star database now makes the star ‘Albereo’ also available
+    under its more official spelling ‘Albireo’.
+  * Classes like Sun and Mercury are now defined using plain
+    literal class statements, instead of being built dynamically
+    in a for loop.  This should make the classes visible to tools
+    like editors, debuggers, and type checkers.</comment>
+    <requestid>1343863</requestid>
+  </revision>
 </revisionlist>

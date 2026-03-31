@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 31 08:58:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.1:
+  * The star database now makes the star ‘Albereo’ also available
+    under its more official spelling ‘Albireo’.
+  * Classes like Sun and Mercury are now defined using plain
+    literal class statements, instead of being built dynamically
+    in a for loop.  This should make the classes visible to tools
+    like editors, debuggers, and type checkers.
+
+-------------------------------------------------------------------
 Fri Oct 31 12:40:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.2

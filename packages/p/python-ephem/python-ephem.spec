@@ -1,7 +1,7 @@
 #
 # spec file for package python-ephem
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-ephem
-Version:        4.2
+Version:        4.2.1
 Release:        0
 Summary:        Scientific-grade astronomy routines for Python
 License:        MIT
