@@ -28,6 +28,7 @@ URL:            https://www.nlnetlabs.nl/projects/ldns/
 Source:         https://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz
 Source1:        https://www.nlnetlabs.nl/downloads/ldns/ldns-%{version}.tar.gz.asc
 Source2:        ldns.keyring
+Patch1:         0001-Fix-illegal-redefinition-of-_Bool.patch
 Patch2:         ldns-1.8.4-swig-3.4.0.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes

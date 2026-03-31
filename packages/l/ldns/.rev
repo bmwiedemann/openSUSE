@@ -417,4 +417,13 @@ Index: ldns-1.7.1.tar.gz.asc
     <comment></comment>
     <requestid>1254768</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>7437bac382c9c8106d061c207043db56</srcmd5>
+    <version>1.8.4</version>
+    <time>1774963326</time>
+    <user>anag_factory</user>
+    <comment>- Add 0001-Fix-illegal-redefinition-of-_Bool.patch to fix
+  build failure with glibc-2.43 [boo#1257250, boo#1257259]</comment>
+    <requestid>1343612</requestid>
+  </revision>
 </revisionlist>

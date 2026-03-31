@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 27 21:40:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Fix-illegal-redefinition-of-_Bool.patch to fix
+  build failure with glibc-2.43 [boo#1257250, boo#1257259]
+
+-------------------------------------------------------------------
 Mon Mar  3 00:36:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Allow libressl to satisfy ldns-devel as well

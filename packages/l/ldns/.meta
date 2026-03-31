@@ -7,5 +7,4 @@ Drafts. A secondary benefit of using ldns is speed; ldns is written in C it
 should be a lot faster than Perl.
 
 This package holds the tools/examples from ldns.</description>
-  <devel project="server:dns" package="ldns"/>
 </package>
