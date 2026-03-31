@@ -1,0 +1,95 @@
+From 4b8a74db220266ac37fba70b5fb55d3c95fab7b4 Mon Sep 17 00:00:00 2001
+From: Pablo de Lara <pablo.de.lara.guarch@intel.com>
+Date: Fri, 20 Mar 2026 09:11:11 +0000
+Subject: [PATCH] crc: fix x86 CRC dispatcher
+
+rbx register was being clobbered by a function pointer
+before being used to decide on the AVX512+VPCLMUL implementation
+to be used, based on its content from CPUID instruction.
+
+Signed-off-by: Pablo de Lara <pablo.de.lara.guarch@intel.com>
+Reported-by: Maodi Ma <mamaodi@hygon.cn>
+---
+ Release_notes.txt       |  5 +++++
+ include/multibinary.asm | 27 ++++++++++++++-------------
+ 2 files changed, 19 insertions(+), 13 deletions(-)
+
+diff --git a/Release_notes.txt b/Release_notes.txt
+index 96032dd..b7ca581 100644
+--- a/Release_notes.txt
++++ b/Release_notes.txt
+@@ -11,6 +11,11 @@ RELEASE NOTE CONTENTS
+ 
+ 2. FIXED ISSUES
+ ---------------
++Unreleased
++
++* Fixed x86 CRC dispatcher (AVX512+VPLCMUL implementation could not be always reached
++  when the ISA was available).
++
+ v2.32
+ 
+ * Fixed RAID performance application for MacOS.
+diff --git a/include/multibinary.asm b/include/multibinary.asm
+index 6de280b..f6630a1 100644
+--- a/include/multibinary.asm
++++ b/include/multibinary.asm
+@@ -131,7 +131,6 @@
+ 	section .text
+ 	%1_dispatch_init:
+ 		push	rsi
+-		push	rax
+ 		push	rbx
+ 		push	rcx
+ 		push	rdx
+@@ -164,33 +163,35 @@
+ 		;; Test for AVX2
+ 		xor	ecx, ecx
+ 		mov	eax, 7
+-		cpuid
++		cpuid ; ebx, ecx returned to be checked
+ 		test	ebx, FLAG_CPUID7_EBX_AVX2
+ 		je	_%1_init_done		; No AVX2 possible
+-		and	ecx, FLAGS_CPUID7_ECX_AVX2_G2
+-		cmp	ecx, FLAGS_CPUID7_ECX_AVX2_G2
+-		lea	rbx, [%5 WRT_OPT]
+-		cmove	rsi, rbx
++		mov     eax, ecx
++		and	eax, FLAGS_CPUID7_ECX_AVX2_G2
++		cmp	eax, FLAGS_CPUID7_ECX_AVX2_G2
++		lea	rax, [%5 WRT_OPT]
++		cmove	rsi, rax
+ 
+ 		;; Test for AVX512
+ 		and	edi, FLAG_XGETBV_EAX_ZMM_OPM
+ 		cmp	edi, FLAG_XGETBV_EAX_ZMM_OPM
+ 		jne	_%1_init_done	  ; No AVX512 possible
+-		and	ebx, FLAGS_CPUID7_EBX_AVX512_G1
+-		cmp	ebx, FLAGS_CPUID7_EBX_AVX512_G1
++		mov     eax, ebx
++		and	eax, FLAGS_CPUID7_EBX_AVX512_G1
++		cmp	eax, FLAGS_CPUID7_EBX_AVX512_G1
+ 		jne	_%1_init_done
+ 
+-		and	ecx, FLAGS_CPUID7_ECX_AVX512_G2
+-		cmp	ecx, FLAGS_CPUID7_ECX_AVX512_G2
+-		lea	rbx, [%6 WRT_OPT] ; AVX512/10 opt
+-		cmove	rsi, rbx
++		mov     eax, ecx
++		and	eax, FLAGS_CPUID7_ECX_AVX512_G2
++		cmp	eax, FLAGS_CPUID7_ECX_AVX512_G2
++		lea	rax, [%6 WRT_OPT] ; AVX512/10 opt
++		cmove	rsi, rax
+ 
+ 	_%1_init_done:
+ 		pop	rdi
+ 		pop	rdx
+ 		pop	rcx
+ 		pop	rbx
+-		pop	rax
+ 		mov	[%1_dispatched], rsi
+ 		pop	rsi
+ 		ret
+-- 
+2.43.0
+

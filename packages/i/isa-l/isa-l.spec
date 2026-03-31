@@ -30,6 +30,8 @@ BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  nasm >= 2.14.01
 
+Patch0:         0001-crc-fix-x86-CRC-dispatcher.patch
+
 %description
 Optimized low-level functions targeting storage applications.
 
@@ -77,7 +79,8 @@ This package contains the development headers for the library found
 in libisal2.
 
 %prep
-%autosetup
+%setup -q -n isa-l-2.32.0
+%patch 0 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

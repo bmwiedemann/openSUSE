@@ -68,4 +68,16 @@
   - Fixed RAID performance application for MacOS.</comment>
     <requestid>1339386</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b634aca075fbf2b9f108101ed1091e48</srcmd5>
+    <version>2.32.0</version>
+    <time>1774963353</time>
+    <user>anag_factory</user>
+    <comment>- Add 0001-crc-fix-x86-CRC-dispatcher.patch to fix dispatcher issue
+
+- Removed unnecessary debug lines in spec file.
+
+- Added patch fixing CRC x86 dispatcher.</comment>
+    <requestid>1343722</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 30 15:36:42 UTC 2026 - Pablo de Lara Guarch <pablo.de.lara.guarch@intel.com>
+
+- Add 0001-crc-fix-x86-CRC-dispatcher.patch to fix dispatcher issue
+
+-------------------------------------------------------------------
+Mon Mar 30 15:25:40 UTC 2026 - Pablo de Lara Guarch <pablo.de.lara.guarch@intel.com>
+
+- Removed unnecessary debug lines in spec file.
+
+-------------------------------------------------------------------
+Mon Mar 30 15:17:31 UTC 2026 - Pablo de Lara Guarch <pablo.de.lara.guarch@intel.com>
+
+- Added patch fixing CRC x86 dispatcher. 
+
+-------------------------------------------------------------------
 Mon Mar 16 14:41:32 UTC 2026 - Pablo de Lara Guarch <pablo.de.lara.guarch@intel.com>
 
 - v2.32.0: Update
