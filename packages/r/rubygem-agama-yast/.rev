@@ -649,4 +649,12 @@
   reusing a pre-existing LVM or RAID (bsc#1248504).</comment>
     <requestid>1340719</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7bb93e50d5da4c558be7725636143f20</srcmd5>
+    <version>19.devel66.92b663e76</version>
+    <time>1774963345</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1343733</requestid>
+  </revision>
 </revisionlist>
