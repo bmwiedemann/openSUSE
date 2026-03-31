@@ -1,33 +1,69 @@
-From d084b8c42a167881119e4abb9fdc6dad5509e273 Mon Sep 17 00:00:00 2001
-From: Su Yue <glass.su@suse.com>
-Date: Tue, 17 Jun 2025 13:38:26 +0800
-Subject: [PATCH] drbd: fix build error against kernel v6.15
+From a7cf5c765bc31c2656b5f96e4630e06ce975121b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20B=C3=B6hmwalder?=
+ <christoph.boehmwalder@linbit.com>
+Date: Tue, 6 May 2025 16:19:14 +0200
+Subject: [PATCH] drbd: Switch/rename to timer_delete[_sync]()
 
-Upstream commit 8fa7292fee5c ("treewide: Switch/rename to timer_delete[_sync]()")
-renamed del_timer[_sync] to timer_delete[_sync]. Convert them all.
-Otherwise build fails like:
-
-[   85s] /home/abuild/rpmbuild/BUILD/drbd-9.1.23-build/drbd-9.1.23/default/./drbd_receiver.c:7128:25: error: implicit declaration of function del_timer; did you mean add_timer? [-Wimplicit-function-declaration]
-[   85s]  7128 |                         del_timer(&resource->twopc_timer);
-[   85s]       |                         ^~~~~~~~~
-[   85s]       |                         add_timer
-[   85s] /home/abuild/rpmbuild/BUILD/drbd-9.1.23-build/drbd-9.1.23/default/./drbd_receiver.c: In function cleanup_resync_leftovers:
-[   85s] /home/abuild/rpmbuild/BUILD/drbd-9.1.23-build/drbd-9.1.23/default/./drbd_receiver.c:8551:9: error: implicit declaration of function del_timer_sync; did you mean dev_mc_sync? [-Wimplicit-function-declaration]
-[   85s]  8551 |         del_timer_sync(&peer_device->resync_timer);
-[   85s]       |         ^~~~~~~~~~~~~~
-[   85s]       |         dev_mc_sync
-[   86s] make[3]: *** [/usr/src/linux-6.15.2-1/scripts/Makefile.build:204: drbd_receiver.o] Error 1
-
-Signed-off-by: Su Yue <glass.su@suse.com>
+Following upstream commit 8fa7292f ("treewide: Switch/rename to timer_delete[_sync]()").
 ---
- drbd/drbd_main.c     | 4 ++--
- drbd/drbd_nl.c       | 2 +-
- drbd/drbd_receiver.c | 8 ++++----
- drbd/drbd_state.c    | 2 +-
- 4 files changed, 8 insertions(+), 8 deletions(-)
+ .../cocci/timer_delete__no_present.cocci              | 11 +++++++++++
+ drbd/drbd-kernel-compat/gen_patch_names.c             |  3 +++
+ drbd/drbd-kernel-compat/tests/have_timer_delete.c     |  8 ++++++++
+ drbd/drbd_main.c                                      |  4 ++--
+ drbd/drbd_nl.c                                        |  2 +-
+ drbd/drbd_receiver.c                                  |  8 ++++----
+ drbd/drbd_state.c                                     |  2 +-
+ 7 files changed, 30 insertions(+), 8 deletions(-)
+ create mode 100644 drbd/drbd-kernel-compat/cocci/timer_delete__no_present.cocci
+ create mode 100644 drbd/drbd-kernel-compat/tests/have_timer_delete.c
 
+diff --git a/drbd/drbd-kernel-compat/cocci/timer_delete__no_present.cocci b/drbd/drbd-kernel-compat/cocci/timer_delete__no_present.cocci
+new file mode 100644
+index 000000000..7488fceac
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/cocci/timer_delete__no_present.cocci
+@@ -0,0 +1,11 @@
++@@
++@@
++(
++- timer_delete
+++ del_timer
++ (...)
++|
++- timer_delete_sync
+++ del_timer_sync
++ (...)
++)
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index 1362ed390..e702b2ba5 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -623,6 +623,9 @@ int main(int argc, char **argv)
+ 	patch(1, "struct_sockaddr_unsized", true, false,
+ 	      COMPAT_HAVE_STRUCT_SOCKADDR_UNSIZED, "present");
+ 
++	patch(1, "timer_delete", true, false,
++	      COMPAT_HAVE_TIMER_DELETE, "present");
++
+ /* #define BLKDEV_ISSUE_ZEROOUT_EXPORTED */
+ /* #define BLKDEV_ZERO_NOUNMAP */
+ 
+diff --git a/drbd/drbd-kernel-compat/tests/have_timer_delete.c b/drbd/drbd-kernel-compat/tests/have_timer_delete.c
+new file mode 100644
+index 000000000..4cb5074bd
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/tests/have_timer_delete.c
+@@ -0,0 +1,8 @@
++/* { "version": "v6.15", "commit": "8fa7292fee5c5240402371ea89ab285ec856c916", "comment": "timer_delete introduced", "author": "Thomas Gleixner <tglx@linutronix.de>", "date": "Sat Apr 5 10:17:26 2025 +0200" } */
++
++#include <linux/timer.h>
++
++int foo(struct timer_list *t)
++{
++	return timer_delete(t);
++}
 diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
-index edb1877074e1..44247e020390 100644
+index edb187707..44247e020 100644
 --- a/drbd/drbd_main.c
 +++ b/drbd/drbd_main.c
 @@ -4198,7 +4198,7 @@ static void shutdown_connect_timer(struct drbd_connection *connection)
@@ -49,7 +85,7 @@ index edb1877074e1..44247e020390 100644
  
  	if (test_and_clear_bit(MD_DIRTY, &device->flags) || !maybe) {
 diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
-index baa32e4152ab..2b4ef3749867 100644
+index baa32e415..2b4ef3749 100644
 --- a/drbd/drbd_nl.c
 +++ b/drbd/drbd_nl.c
 @@ -1715,7 +1715,7 @@ drbd_determine_dev_size(struct drbd_device *device, sector_t peer_current_size,
@@ -62,7 +98,7 @@ index baa32e4152ab..2b4ef3749867 100644
  		/* We won't change the "al-extents" setting, we just may need
  		 * to move the on-disk location of the activity log ringbuffer.
 diff --git a/drbd/drbd_receiver.c b/drbd/drbd_receiver.c
-index 0264adee9014..6604e95054dc 100644
+index 6736b5194..4981a1d03 100644
 --- a/drbd/drbd_receiver.c
 +++ b/drbd/drbd_receiver.c
 @@ -7125,7 +7125,7 @@ retry:
@@ -74,7 +110,7 @@ index 0264adee9014..6604e95054dc 100644
  		}
  
  		nested_twopc_request(resource, &request);
-@@ -8547,9 +8547,9 @@ static void cleanup_resync_leftovers(struct drbd_peer_device *peer_device)
+@@ -8548,9 +8548,9 @@ static void cleanup_resync_leftovers(struct drbd_peer_device *peer_device)
  	atomic_set(&peer_device->rs_pending_cnt, 0);
  	wake_up(&peer_device->device->misc_wait);
  
@@ -86,7 +122,7 @@ index 0264adee9014..6604e95054dc 100644
  }
  
  static void drain_resync_activity(struct drbd_connection *connection)
-@@ -8664,7 +8664,7 @@ static void cleanup_remote_state_change(struct drbd_connection *connection)
+@@ -8665,7 +8665,7 @@ static void cleanup_remote_state_change(struct drbd_connection *connection)
  		drbd_info(connection, "Aborting %s state change %u commit not possible\n",
  			  remote ? "remote" : "local", reply->tid);
  		if (remote) {
@@ -96,7 +132,7 @@ index 0264adee9014..6604e95054dc 100644
  		} else {
  			enum alt_rv alt_rv = abort_local_transaction(connection, 0);
 diff --git a/drbd/drbd_state.c b/drbd/drbd_state.c
-index 0e693c8e3af0..9ecc713d5d61 100644
+index 0e693c8e3..9ecc713d5 100644
 --- a/drbd/drbd_state.c
 +++ b/drbd/drbd_state.c
 @@ -4171,7 +4171,7 @@ static int w_after_state_change(struct drbd_work *w, int unused)
@@ -109,5 +145,5 @@ index 0e693c8e3af0..9ecc713d5d61 100644
  			if (have_ldev)
  				send_new_state_to_all_peer_devices(state_change, n_device);
 -- 
-2.39.5 (Apple Git-154)
+2.51.0
 

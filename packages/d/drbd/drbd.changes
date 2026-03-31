@@ -1,3 +1,15 @@
+Tue Mar 31 08:16:33 UTC 2026 - Glass Su <glass.su@suse.com>
+
+- drbd: replace suse special patches with upstream patches (boo#1261192)
+  * add upstream patches
+    + 0001-drbd-Switch-rename-to-timer_delete-_sync.patch
+    + 0001-compat-Rename-from_timer-to-timer_container_of.patch
+    + 0001-compat-test-for-pfn_t.patch
+  * remove suse special patches
+    - boo1244669-fix_build_error_against_kernel_v6.15.patch
+    - boo1248426-fix_build_error_against_kernel_v6.16.1.patch
+    - boo1251834-fix_build_error_against_kernel_v6.17.0.patch
+
 -------------------------------------------------------------------
 Thu Feb 26 07:05:00 UTC 2026 - heming zhao <heming.zhao@suse.com>
 

@@ -40,13 +40,13 @@ Patch0001:  0001-drbd-Fix-memory-leak.patch
 Patch0002:  0001-drbd-build-deal-with-potentially-relative-paths-in-p.patch
 Patch0003:  0001-compat-follow-Linux-6.14-debugfs_change_name.patch
 Patch0004:  drbd-convert-bind-and-connect-callbacks-to-use-socka.patch
+Patch0005:  0001-drbd-Switch-rename-to-timer_delete-_sync.patch
+Patch0006:  0001-compat-Rename-from_timer-to-timer_container_of.patch
+Patch0007:  0001-compat-test-for-pfn_t.patch
 
 # suse special patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:  suse-coccinelle.patch
-Patch1003:  boo1244669-fix_build_error_against_kernel_v6.15.patch
-Patch1004:  boo1248426-fix_build_error_against_kernel_v6.16.1.patch
-Patch1005:  boo1251834-fix_build_error_against_kernel_v6.17.0.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
