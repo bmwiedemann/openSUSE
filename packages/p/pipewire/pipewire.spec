@@ -1,6 +1,7 @@
 #
 # spec file for package pipewire
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
@@ -83,6 +84,8 @@ Source99:       baselibs.conf
 Patch0:         reduce-meson-dependency.patch
 Patch1:         0001-pulse-server-add-client-props-to-sink_input_source_output.patch
 Patch3:         0003-modules-improve-error-reporting.patch
+Patch4:         pipewire-const-correctness-1.patch
+Patch5:         pipewire-const-correctness-2.patch
 
 BuildRequires:  docutils
 %if 0%{suse_version} > 1500

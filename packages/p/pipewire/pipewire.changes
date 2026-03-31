@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 25 10:09:52 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add pipewire-const-correctness-1.patch and pipewire-const-correctness-2.patch 
+  picking upstream changes to fix build with glibc 2.43
+
+-------------------------------------------------------------------
 Mon Mar 16 17:19:24 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.6.2:
