@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:42:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * Add warning for default timeout usage
+  * Ensure parity with `webpack-bundle-tracker`
+  * Update examples to always perform integrity calculation
+  * Update supported versions on Trove classifiers
+  * Automatically add `crossorigin` attributes to tags with
+    `integrity` attributes when necessary
+  * Use `request.csp_nonce` from django-csp if available and
+    configured
+  * Remove support for Django 3.x (LTS is EOL)
+
+-------------------------------------------------------------------
 Tue Jun  3 07:03:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

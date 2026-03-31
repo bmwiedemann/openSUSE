@@ -158,4 +158,22 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282144</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5b019d12f06a85e99dc56e9ead597ef2</srcmd5>
+    <version>3.2.3</version>
+    <time>1774967207</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.3:
+  * Add warning for default timeout usage
+  * Ensure parity with `webpack-bundle-tracker`
+  * Update examples to always perform integrity calculation
+  * Update supported versions on Trove classifiers
+  * Automatically add `crossorigin` attributes to tags with
+    `integrity` attributes when necessary
+  * Use `request.csp_nonce` from django-csp if available and
+    configured
+  * Remove support for Django 3.x (LTS is EOL)
+</comment>
+    <requestid>1343928</requestid>
+  </revision>
 </revisionlist>

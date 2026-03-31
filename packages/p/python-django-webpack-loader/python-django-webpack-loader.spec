@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-webpack-loader
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-webpack-loader
-Version:        3.1.1
+Version:        3.2.3
 Release:        0
 Summary:        Django plugin to transparently use webpack
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/owais/django-webpack-loader
 Source:         https://github.com/owais/django-webpack-loader/archive/%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 1.10}
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module django-jinja}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module wheel}
 #BuildRequires:  %%{python_module unittest2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.10
+Requires:       python-Django >= 4.2
 Recommends:     python-django-jinja
 BuildArch:      noarch
 %python_subpackages
