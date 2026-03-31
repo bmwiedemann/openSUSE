@@ -21,9 +21,10 @@
 # keep in sync with #ngx_conditionals
 %bcond_with    ngx_cpp_test
 %bcond_with    ngx_google_perftools
+%bcond_with    awslc
 #
 Name:           nginx
-Version:        1.29.6
+Version:        1.29.7
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -60,7 +61,11 @@ BuildRequires:  vim
 BuildRequires:  pkgconfig(gdlib)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libxslt)
+%if %{with awslc}
+BuildRequires:  aws-lc-devel
+%else
 BuildRequires:  pkgconfig(openssl)
+%endif
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 %requires_eq    perl
@@ -90,7 +95,11 @@ Requires:       vim
 Requires:       pkgconfig(gdlib)
 Requires:       pkgconfig(libpcre2-8)
 Requires:       pkgconfig(libxslt)
+%if %{with awslc}
+Requires:       aws-lc-devel
+%else
 Requires:       pkgconfig(openssl)
+%endif
 Requires:       pkgconfig(zlib)
 %requires_ge    %{name}-macros
 BuildArch:      noarch

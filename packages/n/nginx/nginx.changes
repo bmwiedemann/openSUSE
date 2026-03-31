@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Mar 26 01:49:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Enable support to build with aws-lc instead of openssl to ship
+  the http3/quic support
+
+-------------------------------------------------------------------
+Tue Mar 24 20:59:49 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.29.7
+  * https://nginx.org/en/CHANGES
+  * Fixed a buffer overflow might occur while handling a COPY or MOVE
+    request in a location with "alias", allowing an attacker to modify
+    the source or destination path outside of the document root
+    (CVE-2026-27654) (boo#1260416).
+  * Fixed processing of a specially crafted mp4 file by the
+    ngx_http_mp4_module on 32-bit platforms might cause a worker process
+    crash, or might have potential other impact (CVE-2026-27784) (boo#1260417).
+  * Fixed processing of a specially crafted mp4 file by the
+    ngx_http_mp4_module might cause a worker process crash, or might have
+    potential other impact (CVE-2026-32647) (boo#1260420).
+  * Fixed a segmentation fault might occur in a worker process if the
+    CRAM-MD5 or APOP authentication methods were used and authentication
+    retry was enabled (CVE-2026-27651) (boo#1260415).
+  * Fixed an attacker might use PTR DNS records to inject data in
+    auth_http requests, as well as in the XCLIENT command in the backend
+    SMTP connection (CVE-2026-28753) (boo#1260418).
+  * Fixed SSL handshake might succeed despite OCSP rejecting a client
+    certificate in the stream module (CVE-2026-28755) (boo#1260419).
+  * Fixed an invalid HTTP/2 request might be sent after switching to the
+    next upstream if buffered body was used in the ngx_http_grpc_module.
+  * Changed now the "keepalive" directive in the "upstream" block is enabled by default.
+  * Changed now ngx_http_proxy_module supports keepalive by default; the
+    default value for "proxy_http_version" is "1.1"; the "Connection"
+    proxy header is not sent by default anymore.
+  * Added the "multipath" parameter of the "listen" directive.
+  * Added the "local" parameter of the "keepalive" directive in the "upstream" block.
+
+-------------------------------------------------------------------
 Tue Mar 10 23:15:31 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.29.6
@@ -23,7 +61,8 @@ Fri Feb  6 08:01:41 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.29.5
   * https://nginx.org/en/CHANGES
-  * Fixed an attacker might inject plain text data in the response from an SSL backend (CVE-2026-1642).
+  * Fixed an attacker might inject plain text data in the response from an SSL backend
+    (CVE-2026-1642) (boo#1257675).
   * Fixed use-after-free might occur after switching to the next gRPC or HTTP/2 backend.
   * Fixed an invalid HTTP/2 request might be sent after switching to the next upstream.
   * Fixed a response with multiple ranges might be larger than the source response.
@@ -89,7 +128,7 @@ Thu Aug 14 08:19:23 UTC 2025 - Илья Индиго <ilya@ilya.top>
   * Fixed processing of a specially crafted login/password when using
     the "none" authentication method in the ngx_mail_smtp_module might
     cause worker process memory disclosure to the authentication server
-    (CVE-2025-53859).
+    (CVE-2025-53859) (boo#1248070).
   * Changed TLSv1.3 certificate compression is disabled by default.
   * Added the "ssl_certificate_compression" directive.
   * Added support for 0-RTT in QUIC when using OpenSSL 3.5.1 or newer.
@@ -170,7 +209,7 @@ Thu Feb  6 04:45:46 UTC 2025 - Илья Индиго <ilya@ilya.top>
   * https://nginx.org/en/CHANGES
   * Fixed insufficient check in virtual servers handling with TLSv1.3
     SNI allowed to reuse SSL sessions in a different virtual server, to
-    bypass client SSL certificates verification (CVE-2025-23419).
+    bypass client SSL certificates verification (CVE-2025-23419) (boo#1236851).
   * Added the "ssl_object_cache_inheritable", "ssl_certificate_cache",
     "proxy_ssl_certificate_cache", "grpc_ssl_certificate_cache", and
     "uwsgi_ssl_certificate_cache", "keepalive_min_timeout" directives.
@@ -221,7 +260,8 @@ Fri Aug 16 02:21:19 UTC 2024 - Илья Индиго <ilya@ilya.top>
 - Added %check section with gpg signature source verification.
 - Updated to 1.27.1
   * https://nginx.org/en/CHANGES
-  * Fixed crash in ngx_http_mp4_module via specially crafted mp4 file (CVE-2024-7347).
+  * Fixed crash in ngx_http_mp4_module via specially crafted mp4 file
+    (CVE-2024-7347) (boo#1229155).
   * Now the stream module handler is not mandatory.
   * Fixed new HTTP/2 connections might ignore graceful shutdown of old worker processes.
 
@@ -276,7 +316,8 @@ Sun Feb 18 16:23:59 UTC 2024 - Илья Индиго <ilya@ilya.top>
   * Changed nginx.keyring to Sergey Kandaurov’s PGP public key.
   * https://nginx.org/en/CHANGES
   * Fixed segmentation fault might occur in a worker process while
-    processing a specially crafted QUIC session (CVE-2024-24989, CVE-2024-24990).
+    processing a specially crafted QUIC session
+    (CVE-2024-24989 CVE-2024-24990) (boo#1219951 boo#1219952).
   * Fixed connections with pending AIO operations might be closed
     prematurely during graceful shutdown of old worker processes.
   * Fixed socket leak alerts no longer logged when fast shutdown was
@@ -361,7 +402,7 @@ Wed Oct 19 14:06:29 UTC 2022 - Michael Ströder <michael@stroeder.com>
   * Security: processing of a specially crafted mp4 file by the
     ngx_http_mp4_module might cause a worker process crash, worker
     process memory disclosure, or might have potential other impact
-    (CVE-2022-41741, CVE-2022-41742).
+    (CVE-2022-41741 CVE-2022-41742) (boo#1204526 boo#1204527).
   * Feature: the "$proxy_protocol_tlv_..." variables.
   * Feature: TLS session tickets encryption keys are now automatically
     rotated when using shared memory in the "ssl_session_cache"

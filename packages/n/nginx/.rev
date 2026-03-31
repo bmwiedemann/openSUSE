@@ -1396,4 +1396,48 @@
   * Fixed in IMAP command literal argument parsing.</comment>
     <requestid>1338107</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>6856b8a90a913264376058bd3a020d63</srcmd5>
+    <version>1.29.7</version>
+    <time>1774469842</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 1.29.7
+  * https://nginx.org/en/CHANGES
+  * Fixed a buffer overflow might occur while handling a COPY or MOVE
+    request in a location with &quot;alias&quot;, allowing an attacker to modify
+    the source or destination path outside of the document root
+    (CVE-2026-27654) (boo#1260416).
+  * Fixed processing of a specially crafted mp4 file by the
+    ngx_http_mp4_module on 32-bit platforms might cause a worker process
+    crash, or might have potential other impact (CVE-2026-27784) (boo#1260417).
+  * Fixed processing of a specially crafted mp4 file by the
+    ngx_http_mp4_module might cause a worker process crash, or might have
+    potential other impact (CVE-2026-32647) (boo#1260420).
+  * Fixed a segmentation fault might occur in a worker process if the
+    CRAM-MD5 or APOP authentication methods were used and authentication
+    retry was enabled (CVE-2026-27651) (boo#1260415).
+  * Fixed an attacker might use PTR DNS records to inject data in
+    auth_http requests, as well as in the XCLIENT command in the backend
+    SMTP connection (CVE-2026-28753) (boo#1260418).
+  * Fixed SSL handshake might succeed despite OCSP rejecting a client
+    certificate in the stream module (CVE-2026-28755) (boo#1260419).
+  * Fixed an invalid HTTP/2 request might be sent after switching to the
+    next upstream if buffered body was used in the ngx_http_grpc_module.
+  * Changed now the &quot;keepalive&quot; directive in the &quot;upstream&quot; block is enabled by default.
+  * Changed now ngx_http_proxy_module supports keepalive by default; the
+    default value for &quot;proxy_http_version&quot; is &quot;1.1&quot;; the &quot;Connection&quot;
+    proxy header is not sent by default anymore.
+  * Added the &quot;multipath&quot; parameter of the &quot;listen&quot; directive.
+  * Added the &quot;local&quot; parameter of the &quot;keepalive&quot; directive in the &quot;upstream&quot; block.</comment>
+    <requestid>1342309</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>f54e0028a3624d46c97a3e4cd82c80f7</srcmd5>
+    <version>1.29.7</version>
+    <time>1774963343</time>
+    <user>anag_factory</user>
+    <comment>- Enable support to build with aws-lc instead of openssl to ship
+  the http3/quic support</comment>
+    <requestid>1343729</requestid>
+  </revision>
 </revisionlist>
