@@ -1,0 +1,60 @@
+diff --git a/libdb/db.c b/libdb/db.c
+index d6734a1..5c9eb4e 100644
+--- a/libdb/db.c
++++ b/libdb/db.c
+@@ -75,7 +75,37 @@ dbopen(const char *fname, int flags, int mode, DBTYPE type, const void *openinfo
+ }
+ 
+ static int
+-__dberr(void)
++__dberr_del(const DB *, const DBT *, u_int)
++{
++	return (RET_ERROR);
++}
++
++static int
++__dberr_fd(const DB *)
++{
++	return (RET_ERROR);
++}
++
++static int
++__dberr_get(const DB *, const DBT *, DBT *, u_int)
++{
++	return (RET_ERROR);
++}
++
++static int
++__dberr_put(const DB *, DBT *, const DBT *, u_int)
++{
++	return (RET_ERROR);
++}
++
++static int
++__dberr_seq(const DB *, DBT *, DBT *, u_int)
++{
++	return (RET_ERROR);
++}
++
++static int
++__dberr_sync(const DB *, u_int)
+ {
+ 	return (RET_ERROR);
+ }
+@@ -89,10 +119,10 @@ void
+ __dbpanic(DB *dbp)
+ {
+ 	/* The only thing that can succeed is a close. */
+-	dbp->del = (int (*)())__dberr;
+-	dbp->fd = (int (*)())__dberr;
+-	dbp->get = (int (*)())__dberr;
+-	dbp->put = (int (*)())__dberr;
+-	dbp->seq = (int (*)())__dberr;
+-	dbp->sync = (int (*)())__dberr;
++	dbp->del = __dberr_del;
++	dbp->fd = __dberr_fd;
++	dbp->get = __dberr_get;
++	dbp->put = __dberr_put;
++	dbp->seq = __dberr_seq;
++	dbp->sync = __dberr_sync;
+ }

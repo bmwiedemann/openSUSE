@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 29 17:46:14 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.6.14:
+  * gtags: Added support for 'record' (java).
+- global-6.6.14-libdb-dbpanic-function-pointers.patch from Fedora
+
+-------------------------------------------------------------------
 Sun Jul  7 06:42:21 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.6.13:

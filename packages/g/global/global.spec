@@ -2,7 +2,7 @@
 # spec file for package global
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           global
-Version:        6.6.13
+Version:        6.6.14
 Release:        0
 Summary:        Common source code tag system
 License:        GPL-3.0-only
@@ -30,6 +30,7 @@ Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=250#/%{name}
 Patch0:         global-5.7.diff
 # PATCH-FIX-UPSTREAM fix_paths.patch bnc#977967
 Patch1:         fix_paths.patch
+Patch2:         global-6.6.14-libdb-dbpanic-function-pointers.patch
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 BuildRequires:  emacs-nox
