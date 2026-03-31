@@ -1,7 +1,7 @@
 #
 # spec file for package ovmf
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,6 +88,11 @@ Patch17:        %{name}-Revert-UefiCpuPkg-ArmMmuLib-Add-support-for-LPA2.patch
 Patch18:        %{name}-Revert-UefiCpuPkg-BaseRiscV64CpuTimerLib-Add-constru.patch
 # https://github.com/tianocore/edk2/pull/12248
 Patch19:        %{name}-OvmfPkg-RiscVVirt-PlatformPei-Do-not-set-PcdTpmBaseA.patch
+# Bug 1259640 - OVMF crashes when exiting from aarch64 GRUB
+Patch20:        %{name}-ArmPkg-CpuDxe-Support-multiple-entries-in-RegionIsSy.patch
+# Bug 1260358 - [SLES][16.1][Build33.1][x86_64][kvm] Fail to install uefi 15-SP7 vm
+# Bug 1259826 - latest version of ovmf package dont support -kernel -initrd options
+Patch21:        %{name}-Revert-OvmfPkg-X86QemuLoadImageLib-flip-default-for-.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}

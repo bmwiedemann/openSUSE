@@ -1,0 +1,74 @@
+From 11d4c6633ae00b1dc25fd288f5452a955c21bc97 Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Mon, 30 Mar 2026 16:33:38 +0800
+Subject: [PATCH] ArmPkg/CpuDxe: Support multiple entries in
+ RegionIsSystemMemory check
+
+The check performed by RegionIsSystemMemory is not necessarily limited to
+a single entry of type EfiGcdSystemMemory in the GCD memory map. For
+example, when a memory region spans multiple contiguous GCD entries, the
+current implementation returns False even though the entire range is system
+memory.
+
+Therefore, this modification expands the RegionIsSystemMemory check to
+support multiple contiguous entries.
+
+Signed-off-by: Richard Lyu <richard.lyu@suse.com>
+---
+ ArmPkg/Drivers/CpuDxe/MemoryAttribute.c | 29 ++++++++++++++-----------
+ 1 file changed, 16 insertions(+), 13 deletions(-)
+
+diff --git a/ArmPkg/Drivers/CpuDxe/MemoryAttribute.c b/ArmPkg/Drivers/CpuDxe/MemoryAttribute.c
+index c77feb848c45..927f0d2b7ee9 100644
+--- a/ArmPkg/Drivers/CpuDxe/MemoryAttribute.c
++++ b/ArmPkg/Drivers/CpuDxe/MemoryAttribute.c
+@@ -9,7 +9,7 @@
+ #include "CpuDxe.h"
+ 
+ /**
+-  Check whether the provided memory range is covered by a single entry of type
++  Check whether the provided memory range is covered by one or more entries of type
+   EfiGcdSystemMemory in the GCD memory map.
+ 
+   @param  BaseAddress       The physical address that is the start address of
+@@ -26,22 +26,25 @@ RegionIsSystemMemory (
+   )
+ {
+   EFI_GCD_MEMORY_SPACE_DESCRIPTOR  GcdDescriptor;
+-  EFI_PHYSICAL_ADDRESS             GcdEndAddress;
++  EFI_PHYSICAL_ADDRESS             CurrentAddress;
++  EFI_PHYSICAL_ADDRESS             EndAddress;
+   EFI_STATUS                       Status;
+ 
+-  Status = gDS->GetMemorySpaceDescriptor (BaseAddress, &GcdDescriptor);
+-  if (EFI_ERROR (Status) ||
+-      (GcdDescriptor.GcdMemoryType != EfiGcdMemoryTypeSystemMemory))
+-  {
+-    return FALSE;
+-  }
++  CurrentAddress = BaseAddress;
++  EndAddress     = BaseAddress + Length;
+ 
+-  GcdEndAddress = GcdDescriptor.BaseAddress + GcdDescriptor.Length;
++  while (CurrentAddress < EndAddress) {
++    Status = gDS->GetMemorySpaceDescriptor (CurrentAddress, &GcdDescriptor);
++    if (EFI_ERROR (Status) ||
++        (GcdDescriptor.GcdMemoryType != EfiGcdMemoryTypeSystemMemory))
++    {
++      return FALSE;
++    }
++
++    CurrentAddress = GcdDescriptor.BaseAddress + GcdDescriptor.Length;
++  }
+ 
+-  //
+-  // Return TRUE if the GCD descriptor covers the range entirely
+-  //
+-  return GcdEndAddress >= (BaseAddress + Length);
++  return TRUE;
+ }
+ 
+ /**
+-- 
+2.51.0
+

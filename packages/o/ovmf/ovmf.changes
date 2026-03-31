@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 31 06:41:39 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Add ovmf-Revert-OvmfPkg-X86QemuLoadImageLib-flip-default-for-.patch (bsc#1260358, bsc#1259826)
+  - Since d2cbaefc0822 (flip EnableLegacyLoader to false), shim is
+  required for direct kernel boot with Secure Boot to avoid CVE-2025-2296.
+  - While libvirt >= v11.2.0 and qemu >= 10.0 support the shim option, 
+  the latest version of virt-install remains incompatible.
+  - Upstream plans to remove the legacy loader in 1-2 years (dropping
+  X86QemuLoadImageLib in favor of GenericQemuLoadImageLib).
+  - Revert this patch as a workaround.
+
+-------------------------------------------------------------------
+Tue Mar 31 06:26:14 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Add ovmf-ArmPkg-CpuDxe-Support-multiple-entries-in-RegionIsSy.patch (bsc#1259640)
+  - The check performed by RegionIsSystemMemory is not necessarily limited to a single entry
+  of type EfiGcdSystemMemory in the GCD memory map. For example, when a memory region spans 
+  multiple contiguous GCD entries, the current implementation returns False even though the 
+  entire range is system memory.
+  - Therefore, this modification expands the RegionIsSystemMemory check to support multiple
+  contiguous entries.
+
+-------------------------------------------------------------------
 Tue Mar 17 02:47:54 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
 
 - Update mbedtls to 3.6.5 to fix CVE-2025-59438 (bsc#1252441)
