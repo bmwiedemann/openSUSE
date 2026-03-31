@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 30 20:31:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20260107:
+  * Support cmap types 6, 10 and 12
+  * Encapsulate error when failing to get attribute or data from
+    stream
+  * Validate maximum size of xref start
+  * Use lazy %-style formatting for logging
+  * Unused methods close, tell and poll on PSBaseParser
+
+-------------------------------------------------------------------
 Fri Jan  2 14:02:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 20251230:

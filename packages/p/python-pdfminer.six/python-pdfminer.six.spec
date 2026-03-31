@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pdfminer.six
-Version:        20251230
+Version:        20260107
 Release:        0
 Summary:        PDF parser and analyzer
 License:        MIT

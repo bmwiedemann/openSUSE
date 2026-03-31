@@ -172,4 +172,18 @@
   * Support for Python 3.9</comment>
     <requestid>1325126</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d7d18aef3a5069c442c36a0c93602c6e</srcmd5>
+    <version>20260107</version>
+    <time>1774963370</time>
+    <user>anag_factory</user>
+    <comment>- update to 20260107:
+  * Support cmap types 6, 10 and 12
+  * Encapsulate error when failing to get attribute or data from
+    stream
+  * Validate maximum size of xref start
+  * Use lazy %-style formatting for logging
+  * Unused methods close, tell and poll on PSBaseParser</comment>
+    <requestid>1343763</requestid>
+  </revision>
 </revisionlist>
