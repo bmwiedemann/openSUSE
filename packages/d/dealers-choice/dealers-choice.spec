@@ -1,7 +1,7 @@
 #
 # spec file for package dealers-choice
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dealers-choice
-Version:        0.0.9
+Version:        0.0.10
 Release:        0
 Summary:        Online Multiplayer Stud and Draw Poker
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(libprotobuf-c)
+BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(sdl2)
 Requires:       hicolor-icon-theme
 
@@ -61,7 +62,6 @@ choose the variant.
 %find_lang %{name}
 
 rm -f %{buildroot}%{_docdir}/%{name}/LICENSE
-rm -f %{buildroot}/%{_libdir}/libminiaudio*.a
 
 %check
 %meson_test
