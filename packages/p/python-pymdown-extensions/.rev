@@ -228,4 +228,14 @@ update to version 10.17.2</comment>
     <comment></comment>
     <requestid>1333694</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>526f3921622819ea8e579f11d8517e41</srcmd5>
+    <version>10.21.2</version>
+    <time>1774963390</time>
+    <user>anag_factory</user>
+    <comment>- update to version 10.21.2:
+  * FIX: Highlight: Latest Pygments versions cannot handle
+    a &quot;filename&quot; for code block titles of None.</comment>
+    <requestid>1343813</requestid>
+  </revision>
 </revisionlist>

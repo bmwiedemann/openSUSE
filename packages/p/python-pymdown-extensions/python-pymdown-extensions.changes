@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 20:14:46 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 10.21.2:
+  * FIX: Highlight: Latest Pygments versions cannot handle
+    a "filename" for code block titles of None.
+
+-------------------------------------------------------------------
 Mon Feb 16 21:32:50 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 10.21:
