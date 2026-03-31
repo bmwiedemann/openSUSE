@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 06:29:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Clean up the spec file
+- The aspell-mail.txt not needed anymore since the mentioned file
+  has now the right Apache-2.0 header
+
+-------------------------------------------------------------------
 Thu Feb 12 20:00:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 1.21.0

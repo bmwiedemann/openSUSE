@@ -29,9 +29,6 @@ URL:            https://commons.apache.org/codec/
 Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
 Source2:        %{name}-build.xml
-# Data in DoubleMetaphoneTest.java originally has an inadmissible license.
-# The author gives MIT in e-mail communication.
-Source100:      aspell-mail.txt
 BuildRequires:  ant
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -62,12 +59,6 @@ Javadoc for %{name}.
 %prep
 %setup -q -n %{short_name}-%{version}-src
 cp %{SOURCE2} build.xml
-cp %{SOURCE100} aspell-mail.txt
-
-#fixes eof encoding
-dos2unix RELEASE-NOTES*.txt LICENSE.txt NOTICE.txt
-
-%pom_remove_parent .
 
 %build
 mkdir -p lib
