@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 22:01:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.14:
+  * Do not return response from an exception handler, do it
+    after. Fixed #137
+
+-------------------------------------------------------------------
 Tue Jun  3 06:48:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
