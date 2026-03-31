@@ -16,7 +16,7 @@
 #
 
 
-%define ver     286
+%define ver     287
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -59,7 +59,7 @@ BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(pugixml)
-BuildRequires:  pkgconfig(sdl2) >= 2.0.14
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)

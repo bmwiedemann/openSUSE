@@ -360,4 +360,13 @@
   * /usr/share/doc/packages/mame/whatsnew-0.286.txt</comment>
     <requestid>1335159</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>bac530bb6002d75acff947dc3c991ab2</srcmd5>
+    <version>0.287</version>
+    <time>1774963373</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 0.287
+  * /usr/share/doc/packages/mame/whatsnew-0.287.txt</comment>
+    <requestid>1343792</requestid>
+  </revision>
 </revisionlist>
