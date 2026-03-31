@@ -430,4 +430,27 @@
     types of validators.</comment>
     <requestid>1318118</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5243ec2b92055abbae4967b060560122</srcmd5>
+    <version>26.1.0</version>
+    <time>1774964794</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.1.0:
+  * Field aliases are now resolved *before* calling
+    `field_transformer`, so transformers receive fully populated
+    `Attribute` objects with usable `alias` values instead of
+    `None`.
+  * The new `Attribute.alias_is_default` flag indicates whether
+    the alias was auto-generated (`True`) or explicitly set by
+    the user (`False`).
+  * Fix type annotations for `attrs.validators.optional()`, so it
+    no longer rejects tuples with more than one validator.
+  * The `attrs.validators.disabled()` contextmanager can now be
+    nested.
+  * Frozen classes can set `on_setattr=attrs.setters.NO_OP` in
+    addition to `None`.
+  * It's now possible to pass *attrs* **instances** in addition
+    to *attrs* **classes** to `attrs.fields()`.</comment>
+    <requestid>1343785</requestid>
+  </revision>
 </revisionlist>

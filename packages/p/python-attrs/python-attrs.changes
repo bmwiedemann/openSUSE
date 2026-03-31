@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 30 22:00:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.1.0:
+  * Field aliases are now resolved *before* calling
+    `field_transformer`, so transformers receive fully populated
+    `Attribute` objects with usable `alias` values instead of
+    `None`.
+  * The new `Attribute.alias_is_default` flag indicates whether
+    the alias was auto-generated (`True`) or explicitly set by
+    the user (`False`).
+  * Fix type annotations for `attrs.validators.optional()`, so it
+    no longer rejects tuples with more than one validator.
+  * The `attrs.validators.disabled()` contextmanager can now be
+    nested.
+  * Frozen classes can set `on_setattr=attrs.setters.NO_OP` in
+    addition to `None`.
+  * It's now possible to pass *attrs* **instances** in addition
+    to *attrs* **classes** to `attrs.fields()`.
+
+-------------------------------------------------------------------
 Mon Nov 17 02:10:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 25.4.0:
