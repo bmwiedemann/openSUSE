@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 28 22:57:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.4.70:
+  - Core:
+    - GeglPath: avoid overflows when serializing paths with large
+      coordinates
+    - GeglPath: avoid hang on parsing malformed paths.
+  - Ops:
+    - png-save: avoid integer overflow when computing row_size
+    - exr-save: avoid integer overflow when computing width*height
+  - Build:
+    - Improvements to defcheck,
+    - More efforts to get rid of compiler warnings.
+
+-------------------------------------------------------------------
 Fri Mar 20 18:57:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.68:
