@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:27:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Issue #58: monthcalendar makes 6-day week
+  * Remove trailing commas in some month names
+
+-------------------------------------------------------------------
 Tue Aug 12 08:17:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the libalternatives transition conditional

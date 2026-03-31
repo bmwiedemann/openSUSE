@@ -1,7 +1,7 @@
 #
 # spec file for package python-convertdate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,9 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
 %{?sle15_python_module_pythons}
 Name:           python-convertdate
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Module for date conversions from and to Gregorian calendar
 License:        MIT
@@ -35,13 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyMeeus >= 0.3.6
 BuildArch:      noarch
-%if %{with libalternatives}
-BuildRequires:  alts
-Requires:       alts
-%else
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%endif
 # SECTION test requirements
 BuildRequires:  %{python_module PyMeeus >= 0.3.6}
 BuildRequires:  %{python_module pytest-xdist}
@@ -56,7 +44,6 @@ Hebrew, Indian Civil, Islamic, ISO, Julian, Mayan and Persian.
 
 %prep
 %setup -q -n convertdate-%{version}
-sed -i -e 's:, < 2020::g' setup.py
 
 %build
 export LC_ALL="en_US.UTF8"
@@ -66,25 +53,14 @@ export LC_ALL="en_US.UTF8"
 export LC_ALL="en_US.UTF8"
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone -a %{buildroot}%{_bindir}/censusgeocode
 
 %check
 export LC_ALL="en_US.UTF8"
 %pytest -n $(echo %{?_smp_mflags} | cut -c 3-)
 
-%pre
-%python_libalternatives_reset_alternative censusgeocode
-
-%post
-%python_install_alternative censusgeocode
-
-%postun
-%python_uninstall_alternative censusgeocode
-
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python_alternative %{_bindir}/censusgeocode
 %{python_sitelib}/convertdate
 %{python_sitelib}/convertdate-%{version}.dist-info
 

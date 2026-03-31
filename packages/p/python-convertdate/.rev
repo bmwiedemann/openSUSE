@@ -110,4 +110,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1300246</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ad5a01b564b19ed59be562779cd49cb1</srcmd5>
+    <version>2.4.1</version>
+    <time>1774964793</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.1:
+  * Issue #58: monthcalendar makes 6-day week
+  * Remove trailing commas in some month names</comment>
+    <requestid>1343774</requestid>
+  </revision>
 </revisionlist>
