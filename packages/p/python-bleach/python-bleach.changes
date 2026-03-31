@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:00:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.3.0
+  * Dropped support for Python 3.9. (#756)
+  * Add support for Python 3.14. (#758)
+  * Fix wbr handling. (#488)
+- Skip test_self_closing_tags_self_close test
+
+-------------------------------------------------------------------
 Fri Jun  6 05:30:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

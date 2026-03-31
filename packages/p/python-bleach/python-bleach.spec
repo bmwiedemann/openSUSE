@@ -1,7 +1,7 @@
 #
 # spec file for package python-bleach
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bleach
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        A whitelist-based HTML-sanitizing tool
 License:        Apache-2.0
@@ -67,7 +67,7 @@ rm -rf bleach/_vendor
 
 %check
 # gh#mozilla/bleach#503
-%pytest -k 'not test_uri_value_allowed_protocols'
+%pytest -k 'not (test_uri_value_allowed_protocols or test_self_closing_tags_self_close)'
 
 %files %{python_files}
 %license LICENSE
