@@ -461,4 +461,35 @@
   * Prevent WSGI Server usage with threading backend</comment>
     <requestid>1318335</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8754bf282484789039aa179d6292c4d8</srcmd5>
+    <version>4.5.1</version>
+    <time>1774963392</time>
+    <user>anag_factory</user>
+    <comment>- update dependency versions
+
+- update to 4.5.1:
+  * Threading mode: check conf object picklable before 'spawn'
+  * Run neutron-ovs-tempest-with-oslo-master job in check
+    pipeline
+  * Fix service multiple workers launching different service
+    instance
+  * Add register and set method to override the default value for
+    service opts
+  * Fix ServiceManager singleton race condition in tests
+  * Fix race condition in EventletServerServiceLauncherTest
+  * Fix unbounded growth of thread list in threading backend
+  * Fix the followup comment from signalhander change
+  * Add signal handler for ProcessLauncher with no\_fork
+  * Refactor threading launchers to prefer spawn-safe
+    multiprocessing
+  * Fix race condition while creating the
+    cotyledon.ServiceManager
+  * Fix signal handler for threading mode
+  * Delay string interpolations at logging calls
+  * Add multiprocessing utilities with spawn start method
+  * Remove reference to tag framework
+  * Restore ThreadGroup.max\_threads for backward compatibility</comment>
+    <requestid>1343867</requestid>
+  </revision>
 </revisionlist>

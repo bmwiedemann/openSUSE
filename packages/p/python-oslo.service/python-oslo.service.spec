@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.service
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.service
-Version:        4.4.0
+Version:        4.5.1
 Release:        0
 Summary:        OpenStack oslo.service library
 License:        Apache-2.0
@@ -28,40 +28,42 @@ BuildRequires:  %{python_module Paste >= 2.0.2}
 BuildRequires:  %{python_module PasteDeploy >= 1.5.0}
 BuildRequires:  %{python_module Routes >= 2.3.1}
 BuildRequires:  %{python_module WebOb >= 1.7.1}
-BuildRequires:  %{python_module cotyledon}
+BuildRequires:  %{python_module cotyledon >= 2.2.0}
+BuildRequires:  %{python_module debtcollector >= 1.2.0}
 BuildRequires:  %{python_module eventlet >= 0.27.0}
-BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module futurist}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
+BuildRequires:  %{python_module futurist >= 3.1.1}
 BuildRequires:  %{python_module greenlet >= 0.4.15}
 BuildRequires:  %{python_module oslo.concurrency >= 3.25.0}
 BuildRequires:  %{python_module oslo.config >= 5.1.0}
 BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
 BuildRequires:  %{python_module oslo.log >= 3.36.0}
 BuildRequires:  %{python_module oslo.utils >= 3.40.2}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module requests >= 2.14.2}
+BuildRequires:  %{python_module stestr >= 2.0.0}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module yappi}
+BuildRequires:  %{python_module yappi >= 1.0}
 BuildRequires:  openstack-macros
 BuildRequires:  procps
 Requires:       python-Paste >= 2.0.2
 Requires:       python-PasteDeploy >= 1.5.0
 Requires:       python-Routes >= 2.3.1
 Requires:       python-WebOb >= 1.7.1
-Requires:       python-cotyledon
+Requires:       python-cotyledon >= 2.2.0
 Requires:       python-debtcollector >= 1.2.0
 Requires:       python-eventlet >= 0.27.0
-Requires:       python-fixtures
-Requires:       python-futurist
+Requires:       python-fixtures >= 3.0.0
+Requires:       python-futurist >= 3.1.1
 Requires:       python-greenlet >= 0.4.15
 Requires:       python-oslo.concurrency >= 3.25.0
 Requires:       python-oslo.config >= 5.1.0
 Requires:       python-oslo.i18n >= 3.15.3
 Requires:       python-oslo.log >= 3.36.0
 Requires:       python-oslo.utils >= 3.40.2
-Requires:       python-yappi
+Requires:       python-yappi >= 1.0
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-oslo.service < %{version}
 %endif
