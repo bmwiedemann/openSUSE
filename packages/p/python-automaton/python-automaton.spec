@@ -17,7 +17,7 @@
 
 
 Name:           python-automaton
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Friendly state machines for python
 License:        Apache-2.0
@@ -26,14 +26,17 @@ URL:            https://docs.openstack.org/automaton
 Source0:        https://files.pythonhosted.org/packages/source/a/automaton/automaton-%{version}.tar.gz
 BuildRequires:  %{python_module PrettyTable >= 0.7.2}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module testtools >= 2.2.0}
+BuildRequires:  %{python_module typing-extensions >= 4.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-PrettyTable >= 0.7.2
-Requires:       python-pbr >= 2.0.0
+Requires:       python-pbr >= 6.1.1
+Requires:       python-typing-extensions >= 4.0.0
 BuildArch:      noarch
 %python_subpackages
 

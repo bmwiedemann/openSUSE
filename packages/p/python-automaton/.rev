@@ -298,4 +298,26 @@
   * Update master for stable/2023.2</comment>
     <requestid>1328627</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c86f64f9cbbc2fa07703c2e3584a8c36</srcmd5>
+    <version>3.4.0</version>
+    <time>1774963372</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.0:
+  * ruff: Configure hacking as external linter
+  * typing: Provide hint for reaction type
+  * Add typing
+  * trivial: Remove use of OrderedDict
+  * trivial: Rewrap strings
+  * Add ruff
+  * docs: Remove cruft from conf files
+  * Drop workaround for python &lt; 3.10
+  * Drop code for Python &lt; 3
+  * Bump pyupgrade target to 3.10+
+  * tox: Drop basepython
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support</comment>
+    <requestid>1343787</requestid>
+  </revision>
 </revisionlist>

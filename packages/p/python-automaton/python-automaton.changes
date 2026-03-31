@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:59:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * ruff: Configure hacking as external linter
+  * typing: Provide hint for reaction type
+  * Add typing
+  * trivial: Remove use of OrderedDict
+  * trivial: Rewrap strings
+  * Add ruff
+  * docs: Remove cruft from conf files
+  * Drop workaround for python < 3.10
+  * Drop code for Python < 3
+  * Bump pyupgrade target to 3.10+
+  * tox: Drop basepython
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+
+-------------------------------------------------------------------
 Thu Jan 22 08:45:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:
