@@ -4374,4 +4374,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
         CVE-2026-32259 [bsc#1259612]</comment>
     <requestid>1343155</requestid>
   </revision>
+  <revision rev="330" vrev="2">
+    <srcmd5>6a740ee8f350e77ddb2ef024290092d2</srcmd5>
+    <version>7.1.2.18</version>
+    <time>1774963333</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-33535, [bsc#1260874], CVE-2026-33536, [bsc#1260879]</comment>
+    <requestid>1343665</requestid>
+  </revision>
 </revisionlist>

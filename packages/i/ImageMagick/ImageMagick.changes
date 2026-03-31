@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:36:54 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- modified patches
+  * ImageMagick-configuration-SUSE.patch (refreshed)
+- readd still usefull ImageMagick-s390x-disable-tests.patch
+
+-------------------------------------------------------------------
 Mon Mar 23 10:25:17 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 7.1.2.18
@@ -11,6 +18,8 @@ Mon Mar 23 10:25:17 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   for now
 - modified patches
   * ImageMagick_policy_etc.patch
+- fixes CVE-2026-33535 [bsc#1260874]
+        CVE-2026-33536 [bsc#1260879]
 
 -------------------------------------------------------------------
 Tue Mar 17 11:03:31 UTC 2026 - Petr Gajdos <pgajdos@suse.com>

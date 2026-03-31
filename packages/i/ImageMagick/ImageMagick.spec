@@ -52,6 +52,7 @@ Patch0:         ImageMagick_policy_etc.patch
 Patch1:         ImageMagick-configuration-SUSE.patch
 # library installation
 Patch2:         ImageMagick-library-installable-in-parallel.patch
+Patch1000:      ImageMagick-s390x-disable-tests.patch
 
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
@@ -261,7 +262,10 @@ policy plus disable few other coders for reading and/or writing.
 %prep
 %setup -q -n ImageMagick-%{source_version}
 cp config/policy-secure.xml config/policy-SUSE.xml
-%autopatch -p1
+%autopatch -p1 -M 999
+%ifarch s390x
+%patch -P 1000 -p1
+%endif
 
 %build
 # bsc#1088463
