@@ -1,7 +1,7 @@
 #
 # spec file for package rspamd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,7 @@
 
 %if 0%{?suse_version} >= 1500 && ! 0%{?sle_version}
   %bcond_without ext_hiredis
+  %bcond_without jemalloc
 %endif
 
 %if 0%{?suse_version} >= 1500
@@ -67,7 +68,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.14.2
+Version:        4.0.0
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -77,6 +78,7 @@ Source0:        https://github.com/rspamd/rspamd/archive/%{version}/%{name}-%{ve
 Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
+Provides:       bundled(fmt) = 11.0.0
 %if !0%{?is_opensuse}
 # because 80-check-malware-scan-clamav triggered in SLE-15-SP2
 BuildRequires:  -post-build-checks-malwarescan
@@ -86,7 +88,6 @@ BuildRequires:  curl-devel
 BuildRequires:  db-devel
 BuildRequires:  file-devel
 BuildRequires:  gcc%{?force_gcc_version}-c++
-BuildRequires:  gd-devel
 %if %{with hyperscan}
 BuildRequires:  pkgconfig(libhs)
 %endif
@@ -107,17 +108,6 @@ BuildRequires:  openblas-devel
 %endif
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
-%if %{with system_fmt}
-BuildRequires:  pkgconfig(fmt)
-%global with_system_fmt 1
-%if !%{pkg_vcmp fmt-devel > 11}
-Provides:       bundled(fmt) = 11.0.0
-%global with_system_fmt 0
-%endif
-%else
-Provides:       bundled(fmt) = 11.0.0
-%global with_system_fmt 0
-%endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 %if %{with ext_hiredis}
 BuildRequires:  pkgconfig(hiredis)
@@ -136,7 +126,6 @@ BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %endif
 BuildRequires:  lapack-devel
-BuildRequires:  pkgconfig(libunwind)
 BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(openblas)
@@ -225,7 +214,6 @@ export CXX="g++-%{?force_gcc_version}"
   -DDBDIR=%{_localstatedir}/lib/rspamd      \
   -DRUNDIR=%{_localstatedir}/run/rspamd     \
   -DLOGDIR=%{_localstatedir}/log/rspamd     \
-  -DEXAMPLESDIR=%{_datadir}/examples/rspamd \
   -DPLUGINSDIR=%{_datadir}/rspamd/plugins   \
   -DLIBDIR=%{_libdir}/rspamd                \
   -DINCLUDEDIR=%{_includedir}               \
@@ -233,8 +221,6 @@ export CXX="g++-%{?force_gcc_version}"
   %if 0%{suse_version} > 1315
   -DENABLE_OPTIMIZATION=ON                  \
   %endif
-  -DENABLE_REDIRECTOR=ON                    \
-  -DENABLE_LIBUNWIND:BOOL=ON                \
   -DENABLE_BLAS:BOOL=ON                     \
   -DSYSTEM_XXHASH:BOOL=ON                   \
   -DCMAKE_SKIP_INSTALL_RPATH=ON             \
@@ -244,9 +230,6 @@ export CXX="g++-%{?force_gcc_version}"
   %else
   -DENABLE_LUAJIT=OFF                       \
   %endif
-  -DENABLE_DB=ON                            \
-  -DENABLE_SQLITE=ON                        \
-  -DENABLE_HIREDIS=ON                       \
   -DENABLE_URL_INCLUDE=ON                   \
   -DNO_SHARED=ON                            \
   -DINSTALL_EXAMPLES=ON                     \
@@ -260,7 +243,6 @@ export CXX="g++-%{?force_gcc_version}"
   %if %{with hyperscan}
   -DENABLE_HYPERSCAN=ON                     \
   %endif
-  -DENABLE_GD=ON                            \
   -DENABLE_FANN=ON                          \
   %if %{with utils}
   -DENABLE_UTILS=ON                         \
@@ -269,16 +251,9 @@ export CXX="g++-%{?force_gcc_version}"
   %if %{with jemalloc}
   -DENABLE_JEMALLOC=ON                      \
   %endif
-  %if 0%{?with_system_fmt}
-  -DSYSTEM_FMT=ON                           \
-  %else
-  -DSYSTEM_FMT=OFF                          \
-  %endif
   -DSYSTEM_ZSTD=ON                          \
-  -DDEBIAN_BUILD=1                          \
-  -DRSPAMD_GROUP=%{rspamd_group}            \
   -DRSPAMD_USER=%{rspamd_user}
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -365,6 +340,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_bindir}/rspamd
 %{_bindir}/rspamd-%{version}
 %{_bindir}/rspamd_stats
+%{_bindir}/mapstats
 %{_libdir}/librspamd-actrie.so
 %{_libdir}/librspamd-server.so
 %{_libdir}/librspamd-ev.so
@@ -395,6 +371,10 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config %{_sysconfdir}/rspamd/worker-normal.inc
 %config %{_sysconfdir}/rspamd/worker-proxy.inc
 %config %{_sysconfdir}/rspamd/lang_detection.inc
+%if %{with hyperscan}
+%config %{_sysconfdir}/rspamd/worker-hs_helper.conf
+%config %{_sysconfdir}/rspamd/worker-hs_helper.inc
+%endif
 
 %dir %{_sysconfdir}/rspamd/local.d
 %config(noreplace) %{_sysconfdir}/rspamd/local.d/worker-controller.inc
@@ -431,6 +411,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/redirectors.inc
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/spf_dkim_whitelist.inc
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/surbl-whitelist.inc
+%config(noreplace) %{_sysconfdir}/rspamd/maps.d/suspicious_tlds.inc
 
 %dir %{_sysconfdir}/rspamd/modules.d
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/antivirus.conf
@@ -467,6 +448,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/multimap.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/mx_check.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/neural.conf
+%config(noreplace) %{_sysconfdir}/rspamd/modules.d/neural_autolearn.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/once_received.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/p0f.conf
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/phishing.conf
@@ -558,6 +540,11 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/plugins/url_suspect.lua
 
 %dir %{_datadir}/rspamd/lualib
+%{_datadir}/rspamd/lualib/lua_fuzzy_redis.lua
+%{_datadir}/rspamd/lualib/lua_hs_cache.lua
+%{_datadir}/rspamd/lualib/lua_log_utils.lua
+%{_datadir}/rspamd/lualib/lua_neural_external.lua
+%{_datadir}/rspamd/lualib/lua_neural_learn.lua
 %{_datadir}/rspamd/lualib/ansicolors.lua
 %{_datadir}/rspamd/lualib/argparse.lua
 %{_datadir}/rspamd/lualib/fun.lua
@@ -677,6 +664,10 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/rspamadm/secretbox.lua
 %{_datadir}/rspamd/lualib/rspamadm/ratelimit.lua
 %{_datadir}/rspamd/lualib/rspamadm/confighelp_plugins.lua
+%{_datadir}/rspamd/lualib/rspamadm/autolearnstats.lua
+%{_datadir}/rspamd/lualib/rspamadm/logstats.lua
+%{_datadir}/rspamd/lualib/rspamadm/mapstats.lua
+%{_datadir}/rspamd/lualib/rspamadm/neural_export.lua
 
 %dir %{_datadir}/rspamd/lualib/plugins
 %{_datadir}/rspamd/lualib/plugins/dmarc.lua
@@ -698,6 +689,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/redis_scripts/bayes_classify.lua
 %{_datadir}/rspamd/lualib/redis_scripts/bayes_learn.lua
 %{_datadir}/rspamd/lualib/redis_scripts/bayes_stat.lua
+%{_datadir}/rspamd/lualib/redis_scripts/fuzzy_update.lua
 
 %dir %{_datadir}/rspamd/rules
 %{_datadir}/rspamd/rules/archives.lua
@@ -734,6 +726,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %dir %{_wwwdir}/%{name}
 %{_wwwdir}/%{name}/apple-touch-icon.png
 %{_wwwdir}/%{name}/browserconfig.xml
+%{_wwwdir}/%{name}/ARCHITECTURE.md
 %{_wwwdir}/%{name}/README.md
 %{_wwwdir}/%{name}/favicon.ico
 %{_wwwdir}/%{name}/favicon-16x16.png

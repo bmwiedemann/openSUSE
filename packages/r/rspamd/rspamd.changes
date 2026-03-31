@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Mon Mar 30 13:04:02 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.0
+  Upgrade Notes
+  Action required for per-user Bayes with Redis sharding: Jump Hash
+  has been replaced with Ring Hash (Ketama). Run rspamadm
+  statistics_dump migrate after upgrading or accept temporary
+  accuracy loss as data is re-learned. Single Redis server setups
+  are not affected.
+
+  Other breaking changes
+  - Content URLs included by default — URLs from PDF and other
+    computed parts are now returned by task:get_urls(). Set
+    include_content_urls = false in local.d/options.inc to restore
+    old behavior.
+  - SSL auto-detection — ssl = true worker option removed; SSL is
+    now auto-detected from bind socket flags.
+  - libfasttext removed — Replaced with built-in mmap-based shim.
+    ENABLE_FASTTEXT cmake option no longer exists. Existing models
+    still work with massive memory savings.
+  - SenderScore RBLs disabled — Requires MyValidity account
+    registration; was non-functional without it.
+  - Suspicious TLDs now map-based — Hardcoded list replaced with
+    conf/maps.d/suspicious_tlds.inc, customizable via local.d/.
+  - Neural autolearn options renamed — Now match RBL module naming
+    conventions.
+  - Token bucket load balancing — Enabled by default for proxy
+    upstreams, replacing simple round-robin.
+  - DKIM RFC conformance — Unknown and broken DKIM keys now handled
+    per RFC.
+  Key Features
+  - /checkv3 Multipart Protocol New /checkv3 endpoint using
+    multipart/form-data requests and multipart/mixed responses.
+    Metadata sent as structured JSON/msgpack instead of HTTP
+    headers. Per-part zstd compression, zero-copy writev responses,
+    and proxy support. Client-side: rspamc --protocol-v3 / rspamc
+    --msgpack.
+  - Pluggable Async Hyperscan Cache Hyperscan compilation and
+    caching moved to an async Lua backend with Redis storage
+    support. Shared hyperscan databases across workers and hosts.
+    Self-healing cache auto-detects stale blobs and triggers
+    recompile. Small databases compiled in-memory without file
+    caching.
+  - Multi-Flag Fuzzy Hashes Single fuzzy hash can carry up to 8
+    flags simultaneously (epoch 12). Multiple rules match the same
+    digest with independent flag/value pairs. Redis update path
+    rewritten in Lua with EVALSHA + NOSCRIPT recovery. Fully
+    backward-compatible.
+  - HTML Fuzzy Phishing Detection Dual-mode fuzzy: template
+    matching + domain-sensitive matching. New FUZZY_HTML_PHISHING
+    symbol fires when an HTML template matches but link domains
+    differ — detecting reused phishing templates with swapped
+    links.
+  - HTTPS Server Support Workers can now serve HTTPS natively,
+    enabling secure WebUI and API without a reverse proxy. SSL
+    auto-detected from bind socket configuration.
+  - Built-in Fasttext Shim External C++ library replaced with
+    zero-dependency mmap-based reader. Shared memory across workers
+    (MAP_SHARED) eliminates per-worker heap copies (~500MB-7GB
+    savings). Hot-reloadable via maps infrastructure.
+  - UUID v7 Per Task Native UUID v7 generation per task, synced
+    with Log-Tag header. New ClickHouse UUID v7 column support for
+    correlation across systems.
+  - Neural / LLM Embeddings External pretrained neural model
+    support. Multi-layer funnel architecture with language-based
+    model/URL selection. Multi-model fasttext embedding with SIF
+    word weighting. Expression-based autolearn for LLM providers.
+  - Multi-Class Bayes Classifiers support arbitrary classes beyond
+    binary spam/ham. WebUI learning UI, /stat and
+    /bayes/classifiers endpoints updated. Shard migration tool for
+    the Jump Hash to Ring Hash transition.
+  - Legacy Protocol Enhancements Milter add/remove headers and
+    extended symbol info now exposed in RSPAMC/SPAMC text protocol.
+    Enables Exim and other legacy clients to access milter headers.
+  Other Notable Features
+  - Token bucket load balancing for proxy upstreams with
+    configurable burst parameters
+  - Ring Hash (Ketama) consistent hashing with true minimal
+    disruption and recovery
+  - Structured metadata exporter with zstd compression and detected
+    MIME types
+  - ARC trusted_authserv_id for reusing upstream
+    Authentication-Results headers
+  - Reply-To validity checks in headers_checks
+  - Fuzzy hashes in Redis history for matched hash tracking
+  - HTTP content negotiation framework with zstd compression for
+    /stat endpoint
+  - Attachment filename sub-tokens for improved Bayes classifier
+    accuracy
+  - GPT module — configurable consensus thresholds and
+    context_augment hook
+  - New rspamadm subcommands — autolearnstats, logstats, mapstats
+  - ASCII85 decode and PDF object padding evasion fixes for PDF
+    extraction
+  Critical Fixes
+  - Stop ev_io watcher in fuzzy UDP session destroy
+    (use-after-free)
+  - Fix CPU busy-loop in fuzzy TCP client
+  - RHEL/CentOS 10+ SHA-1 DKIM crypto-policy bypass
+  - DKIM RSA signing memory leak fix
+  - Self-healing hyperscan cache for stale blobs
+  - Multiple use-after-free fixes on config reload (regexp maps,
+    multipatterns)
+  - PCRE2 complexity checks before JIT compilation
+  - Rework alternative parts detection (R_PARTS_DIFFER)
+  - SPF address family flag inheritance fix
+  - Ratelimit compatibility with old records
+  - Default map URL path to "/" when no path component (crash fix)
+
+  https://docs.rspamd.com/changelog/4.0.0
+
+-------------------------------------------------------------------
 Thu Dec 11 14:43:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.14.2
