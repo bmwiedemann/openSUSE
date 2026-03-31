@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 29 19:51:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.11:
+  * rquota_server: Fix group presence checking (Jan Kara)
+  * Drop support for V0 and V1 kernel interfaces (Jan Kara)
+  * Drop support for old quotactl(2) syscall (Jan Kara)
+  * Provide quotactl_mnt() helper and use it where possible (Jan
+    Kara)
+  * quotaon: Fix handling of filesystems without single device
+    (Jan Kara)
+  * setproject: Fix openWRT build (Jan Kara)
+  * setproject: fix openat() call (Konstantin Demin)
+
+-------------------------------------------------------------------
 Tue Dec  9 11:04:12 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Remove `PrivateDevices` systemd hardening from quotad.service because it
@@ -144,7 +158,7 @@ Sat Mar 10 10:22:03 UTC 2018 - tchvatal@suse.com
 -------------------------------------------------------------------
 Thu Nov 23 13:41:35 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -289,7 +303,7 @@ Mon Jun  4 09:42:56 UTC 2012 - sweet_f_a@gmx.de
   * fixup typos in manpages (Michael Meskes)
   * added german translation (Michael Bunk)
   * added --enable-static-link configure option (Jan Kara)
- 
+
 
 -------------------------------------------------------------------
 Thu May 31 19:36:13 UTC 2012 - sweet_f_a@gmx.de
@@ -349,7 +363,7 @@ Thu Aug 18 14:08:07 UTC 2011 - vcizek@novell.com
 -------------------------------------------------------------------
 Fri Feb 18 10:46:04 UTC 2011 - vcizek@novell.com
 
-- disabled autostart of quota-nfs service after installation, 
+- disabled autostart of quota-nfs service after installation,
   as stated in documentation
 
 -------------------------------------------------------------------
@@ -360,7 +374,7 @@ Thu Feb 17 12:52:33 UTC 2011 - vcizek@novell.com
 -------------------------------------------------------------------
 Thu Sep  9 16:59:51 CEST 2010 - anicka@suse.cz
 
-- add port settings to sysconfig (bnc#637382) 
+- add port settings to sysconfig (bnc#637382)
 
 -------------------------------------------------------------------
 Wed Jun 23 08:15:39 UTC 2010 - mseben@novell.com
@@ -405,7 +419,7 @@ Tue Nov 11 13:42:23 CET 2008 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Mon Oct 20 17:35:35 CEST 2008 - nadvornik@suse.cz
 
-- added support for quota formats with hidden quota files 
+- added support for quota formats with hidden quota files
   (Jan Kara) [fate#302681]
 
 -------------------------------------------------------------------
@@ -426,7 +440,7 @@ Mon Aug 18 12:21:55 CEST 2008 - lmichnovic@suse.cz
 -------------------------------------------------------------------
 Mon May  5 17:50:36 CEST 2008 - lmichnovic@suse.cz
 
-- installing missing quota_nld binary (*install_nld.patch) 
+- installing missing quota_nld binary (*install_nld.patch)
   [bnc#386754]
 
 -------------------------------------------------------------------
@@ -437,7 +451,7 @@ Tue Apr 15 15:43:10 CEST 2008 - lmichnovic@suse.cz
 -------------------------------------------------------------------
 Mon Apr 14 17:50:39 CEST 2008 - lmichnovic@suse.cz
 
-- enabled compilation with netlink 
+- enabled compilation with netlink
 - needed rewrite of configure check (*dbus_header_check.patch)
 - added pkg-config into BuildReq
 
@@ -455,12 +469,12 @@ Thu Mar 13 16:36:56 CET 2008 - lmichnovic@suse.cz
  + 2.6.24 and newer) and currently supports printing of these
  + messages to console and/or system DBUS. If someone wanted to
  + write support for GNOME/KDE/other desktop which would show a
- + dialog in case message comes over DBUS, he is most welcome. 
+ + dialog in case message comes over DBUS, he is most welcome.
 - Changes:
  * added information message about journaled quota to quotacheck
  * added pointers to quota_nld and warnquota to some manpages
  * ported quota_nld to libnl-1.1
- * let setquota batch mode accept comments and blank lines, 
+ * let setquota batch mode accept comments and blank lines,
    add -c option
  * print more verbose list of compile options when --version
    specified
@@ -468,7 +482,7 @@ Thu Mar 13 16:36:56 CET 2008 - lmichnovic@suse.cz
  * made possible to use quota rpc in mixed NFSv3 and NFSv4
    environments
  * fixed compilation with openLDAP library versions 2.1 and 2.2
- * always define allow_severity and deny_severity for older 
+ * always define allow_severity and deny_severity for older
    versions of libwrap
  * cleaned up host_access() handling
  * configure script now correctly reports checking of libwrap
@@ -484,14 +498,14 @@ Fri Dec  7 16:35:16 CET 2007 - lmichnovic@suse.cz
 - quotad service is not enabled during installation any more
   [#346541]
 - split off quota-nfs which contains only quotad related files
-- added Requires on packages with services needed to start 
+- added Requires on packages with services needed to start
   quotad service
 - updated README.SUSE and created README.quotad.SUSE
 
 -------------------------------------------------------------------
 Wed Nov 14 16:18:48 CET 2007 - lmichnovic@suse.cz
 
-- fixed typo in SUSE/README [#341453] and written additional info 
+- fixed typo in SUSE/README [#341453] and written additional info
   regarding managing quota support within YaST since openSUSE 10.3
 
 -------------------------------------------------------------------
@@ -511,8 +525,8 @@ Thu Aug  9 11:40:26 CEST 2007 - lmichnovic@suse.cz
 Tue Jul 17 14:15:05 CEST 2007 - lmichnovic@suse.cz
 
 - update to 3.15 final. Changes since 3.15 beta:
-  * added a wrapper script around setquota which also updates LDAP 
-- installing ldap-scripts 
+  * added a wrapper script around setquota which also updates LDAP
+- installing ldap-scripts
 
 -------------------------------------------------------------------
 Mon Jul  2 16:22:45 CEST 2007 - lmichnovic@suse.cz
@@ -522,20 +536,20 @@ Mon Jul  2 16:22:45 CEST 2007 - lmichnovic@suse.cz
 -------------------------------------------------------------------
 Thu Jun 21 18:48:24 CEST 2007 - lmichnovic@suse.cz
 
-- rewritten headers of init scripts to fulfill LSB 
+- rewritten headers of init scripts to fulfill LSB
   (quota-SUSE.tar.bz2); obsoletes patch lsb
 - now starting boot.quota script during boot automatically
   FATE #120106
-- update to version 3.15 beta 
+- update to version 3.15 beta
   - obsoletes patches: cflags, pie
   - netlink feature is disabled now (needs kernel patch)
-* implemented quota netlink daemon to listen to kernel netlink 
+* implemented quota netlink daemon to listen to kernel netlink
   messages and send them to DBUS or write them to the console
 * modified configure scripts and warnquota to check for new LDAP
-  library and allow use of URI                               
+  library and allow use of URI
 * fix LDAP scripts to set VISUAL instead of EDITOR
 * added ext4 filesystem to the list of supported filesystems
-* pot.o is now compiled with CFLAGS 
+* pot.o is now compiled with CFLAGS
 * use -fPIE for compilation when available
 * fixed some more problems XFS quotaon
 * fixed two mistakes in quotaon(8) manpage
@@ -544,20 +558,20 @@ Thu Jun 21 18:48:24 CEST 2007 - lmichnovic@suse.cz
 * fixed mountpoints scanning to make XFS -x delete command work
 * fixes of signed vs unsigned int issues
 * fixed a format string bug in reporting of raw grace times in repquota
-* added repquota(8) and quota(1) option for better parsable output 
+* added repquota(8) and quota(1) option for better parsable output
 * fixed error handling in edquota(8) when creating tmp file
 
 -------------------------------------------------------------------
 Tue Apr 24 13:07:11 CEST 2007 - lmichnovic@suse.cz
 
-- added Short-Description into quotad script to fulfill LSB 
+- added Short-Description into quotad script to fulfill LSB
   specification (lsb.diff)
 
 -------------------------------------------------------------------
 Mon Mar 19 17:32:32 CET 2007 - lmichnovic@suse.cz
 
 - fixed compiling some files without RPM_OPT_FLAGS and -fPIE
-  (cflags.diff) 
+  (cflags.diff)
 - patch quota-%{version}.diff renamed to quota-%{version}-mode.diff
 
 -------------------------------------------------------------------
@@ -584,7 +598,7 @@ Thu Oct  5 18:38:28 CEST 2006 - mjancar@suse.cz
 -------------------------------------------------------------------
 Fri Jul 28 13:28:16 CEST 2006 - olh@suse.de
 
-- boot.swap, boot.clock and boot.localfs are optional for boot.quota (#181972) 
+- boot.swap, boot.clock and boot.localfs are optional for boot.quota (#181972)
 
 -------------------------------------------------------------------
 Fri Apr  7 11:29:35 CEST 2006 - mjancar@suse.cz
@@ -614,7 +628,7 @@ Fri Jan 20 17:06:45 CET 2006 - schwab@suse.de
 -------------------------------------------------------------------
 Wed Nov  2 21:55:23 CET 2005 - dmueller@suse.de
 
-- don't build as root 
+- don't build as root
 
 -------------------------------------------------------------------
 Wed Jul 13 20:30:17 CEST 2005 - mjancar@suse.cz
@@ -713,7 +727,7 @@ Wed Oct 02 09:37:50 CEST 2002 - tcrhak@suse.cz
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Fri Sep 06 14:12:04 CEST 2002 - tcrhak@suse.cz
@@ -749,12 +763,12 @@ Wed Jul 24 10:48:56 CEST 2002 - kukuk@suse.de
 -------------------------------------------------------------------
 Mon Jun 24 00:44:55 CEST 2002 - ro@suse.de
 
-- fixed directory permissions 
+- fixed directory permissions
 
 -------------------------------------------------------------------
 Wed May 29 01:47:18 CEST 2002 - ro@suse.de
 
-- define FIOSIZE ioctl for x86_64 
+- define FIOSIZE ioctl for x86_64
 
 -------------------------------------------------------------------
 Wed Mar 20 18:19:43 CET 2002 - tcrhak@suse.cz
@@ -814,7 +828,7 @@ Wed Jul  4 16:32:00 CEST 2001 - olh@suse.de
 -------------------------------------------------------------------
 Fri Jun 29 13:12:09 CEST 2001 - pblaha@suse.cz
 
-- rewrite init script to LSB  
+- rewrite init script to LSB
 
 -------------------------------------------------------------------
 Mon Jun 18 14:33:01 CEST 2001 - poeml@suse.de
@@ -825,7 +839,7 @@ Mon Jun 18 14:33:01 CEST 2001 - poeml@suse.de
 -------------------------------------------------------------------
 Wed May  2 16:57:48 CEST 2001 - pblaha@suse.cz
 
-- update for better quota support in reiser fs 
+- update for better quota support in reiser fs
 
 -------------------------------------------------------------------
 Sun Apr 15 20:55:46 CEST 2001 - schwab@suse.de
@@ -835,7 +849,7 @@ Sun Apr 15 20:55:46 CEST 2001 - schwab@suse.de
 -------------------------------------------------------------------
 Thu Mar 29 12:21:52 CEST 2001 - pblaha@suse.cz
 
-- add quotatool utility for set qouta from command line 
+- add quotatool utility for set qouta from command line
 
 -------------------------------------------------------------------
 Wed Mar 21 14:24:52 CET 2001 - schwab@suse.de
@@ -850,7 +864,7 @@ Mon Jan 29 16:06:46 CET 2001 - pblaha@suse.cz
 -------------------------------------------------------------------
 Thu Jan 11 18:14:22 CET 2001 - ro@suse.de
 
-- replace linux/quota.h by sys/quota.h to make it compile 
+- replace linux/quota.h by sys/quota.h to make it compile
 
 -------------------------------------------------------------------
 Tue Jan  2 00:16:34 CET 2001 - olh@suse.de
@@ -860,7 +874,7 @@ Tue Jan  2 00:16:34 CET 2001 - olh@suse.de
 -------------------------------------------------------------------
 Fri Dec 15 11:07:16 CET 2000 - pblaha@suse.cz
 
-- applied patch for support upport multiple NFS servers 
+- applied patch for support upport multiple NFS servers
 
 -------------------------------------------------------------------
 Sun Dec 10 19:27:07 CET 2000 - schwab@suse.de
@@ -899,7 +913,7 @@ Wed Jun  7 09:39:53 MEST 2000 - dipa@suse.de
 
 - fix for 4 GB limit in quota.c, repquota.c, edquota.c and warnquota.c
   from Debian Bug report logs - #39249:
-                          "quota programs overflow at about 3GB" 
+                          "quota programs overflow at about 3GB"
 
 -------------------------------------------------------------------
 Fri Apr 28 18:02:45 CEST 2000 - kukuk@suse.de
@@ -915,7 +929,7 @@ Tue Apr 11 13:29:04 CEST 2000 - smid@suse.cz
 -------------------------------------------------------------------
 Wed Feb 16 15:50:49 CET 2000 - kukuk@suse.de
 
-- Fill in the Group tag. 
+- Fill in the Group tag.
 
 -------------------------------------------------------------------
 Thu Jan 27 18:06:00 CET 2000 - kukuk@suse.de
@@ -926,7 +940,7 @@ Thu Jan 27 18:06:00 CET 2000 - kukuk@suse.de
 Mon Jan 24 17:00:10 CET 2000 - kukuk@suse.de
 
 - Add patch for SPARC
-- Fix 4GB limit 
+- Fix 4GB limit
 
 -------------------------------------------------------------------
 Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de

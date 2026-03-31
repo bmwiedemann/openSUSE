@@ -508,4 +508,41 @@ and
     <comment></comment>
     <requestid>1323014</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>edbe379eb8c987a553132ed619b49f85</srcmd5>
+    <version>4.11</version>
+    <time>1774963317</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.11:
+  * rquota_server: Fix group presence checking (Jan Kara)
+  * Drop support for V0 and V1 kernel interfaces (Jan Kara)
+  * Drop support for old quotactl(2) syscall (Jan Kara)
+  * Provide quotactl_mnt() helper and use it where possible (Jan
+    Kara)
+  * quotaon: Fix handling of filesystems without single device
+    (Jan Kara)
+  * setproject: Fix openWRT build (Jan Kara)
+  * setproject: fix openat() call (Konstantin Demin)
+
+- Replace references to /var/adm/fillup-templates with new
+- disabled autostart of quota-nfs service after installation,
+- add port settings to sysconfig (bnc#637382)
+- added support for quota formats with hidden quota files
+- installing missing quota_nld binary (*install_nld.patch)
+- enabled compilation with netlink
+ + dialog in case message comes over DBUS, he is most welcome.
+ * let setquota batch mode accept comments and blank lines,
+ * always define allow_severity and deny_severity for older
+- added Requires on packages with services needed to start
+- fixed typo in SUSE/README [#341453] and written additional info
+  * added a wrapper script around setquota which also updates LDAP
+- installing ldap-scripts
+- rewritten headers of init scripts to fulfill LSB
+- update to version 3.15 beta
+* implemented quota netlink daemon to listen to kernel netlink
+  library and allow use of URI
+* pot.o is now compiled with CFLAGS
+* added repquota(8) and quota(1) option for better parsable output</comment>
+    <requestid>1343526</requestid>
+  </revision>
 </revisionlist>
