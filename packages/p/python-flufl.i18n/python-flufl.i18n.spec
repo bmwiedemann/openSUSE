@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.i18n
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flufl.i18n
-Version:        5.0.2
+Version:        6.0.0
 Release:        0
 Summary:        High level API for internationalizing Python libraries and applications
 License:        Apache-2.0
 URL:            https://gitlab.com/warsaw/flufl.i18n
 Source:         https://files.pythonhosted.org/packages/source/f/flufl.i18n/flufl_i18n-%{version}.tar.gz
-BuildRequires:  %{python_module pdm-backend}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
@@ -33,11 +33,9 @@ BuildRequires:  %{python_module atpublic}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil}
-BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-atpublic
-Suggests:       python-typing_extensions
 BuildArch:      noarch
 %python_subpackages
 

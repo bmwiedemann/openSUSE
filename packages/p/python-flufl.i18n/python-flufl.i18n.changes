@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 31 08:24:07 UTC 2026 - Gemini CLI <gemini-cli@suse.com>
+
+- update to 6.0.0:
+  * Drop Python 3.9.
+  * Drop Python 3.8, add support for Python 3.13 and 3.14.
+  * Modernize type hinting.
+  * Add support for Python 3.12.
+  * Switch to hatch, replacing pdm and tox.
+  * Switch to ruff from blue and isort.
+  * Other code improvements and modernizations.
+
+-------------------------------------------------------------------
 Tue Jan 16 15:53:36 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Drop unneeded pdm dependency
