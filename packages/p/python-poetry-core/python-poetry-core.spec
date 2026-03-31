@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-core
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Poetry PEP 517 Build Backend
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module build >= 0.10.0}
 BuildRequires:  %{python_module pytest >= 7.1.2}
 BuildRequires:  %{python_module pytest-mock >= 3.10}
+BuildRequires:  %{python_module setuptools >= 60}
 BuildRequires:  %{python_module tomli-w >= 1.0.0}
 BuildRequires:  %{python_module trove-classifiers >= 2022.5.19}
 BuildRequires:  %{python_module virtualenv >= 20.21}
