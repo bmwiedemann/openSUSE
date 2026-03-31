@@ -26,7 +26,7 @@ Summary:        Desktop GUI client for browsing Geminispace
 License:        BSD-2-Clause
 URL:            https://gmi.skyjake.fi/lagrange
 Source0:        https://git.skyjake.fi/skyjake/lagrange/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  libunistring-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -39,7 +39,8 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(ncursesw) >= 6
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(sdl2)
+# https://github.com/skyjake/lagrange/issues/768
+BuildRequires:  pkgconfig(sdl2) >= 2.0.12
 BuildRequires:  pkgconfig(zlib)
 
 %description
