@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 30 09:57:34 UTC 2026 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- update to 7.13.5:
+  * Fix: issue 2138 describes a memory leak that happened when
+    repeatedly using the Coverage API with in-memory data. This is now fixed.
+  * Fix: the markdown-formatted coverage report didn’t fully escape special
+    characters in file paths (issue 2141). This would be very unlikely to
+    cause a problem, but now it’s done properly, thanks to Ellie Ayla.
+  * Fix: the C extension wouldn’t build on VS2019, but now it does (issue 2145).
+
+-------------------------------------------------------------------
 Sun Mar 15 15:14:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.13.4:
