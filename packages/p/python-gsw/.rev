@@ -230,4 +230,17 @@
   * bump cibuildwheel and manylinux</comment>
     <requestid>1307764</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>86038991ce9cdabb16aae1371ab4f4ed</srcmd5>
+    <version>3.6.21</version>
+    <time>1774963405</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.21:
+  * Fix indentation
+  * Add geo_strf_steric_height function
+  * Removed deprecated macos-13 runner
+  * Implement ABI3 wheels
+  * Fix grid generation for geostrophic streamfunction</comment>
+    <requestid>1343872</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-gsw
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-gsw
-Version:        3.6.20
+Version:        3.6.21
 Release:        0
 Summary:        Gibbs Seawater Oceanographic Package of TEOS-10
 # Note: Python code is MIT licensed
@@ -27,14 +27,14 @@ License:        BSD-3-Clause AND MIT
 URL:            https://github.com/TEOS-10/GSW-python
 # gh#TEOS-10/GSW-Python#39 -- Tests are not included in the source tarball
 Source0:        https://github.com/TEOS-10/GSW-Python/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.5}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module devel >= 3.11}
+BuildRequires:  %{python_module numpy-devel >= 2.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-numpy
+Requires:       python-numpy >= 2.0
 # SECTION tests
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pandas}
