@@ -17,14 +17,13 @@
 
 
 Name:           git-delta
-Version:        0.19.1
+Version:        0.19.2
 Release:        0
 Summary:        A syntax-highlighter for git and diff output
 License:        MIT
 URL:            https://github.com/dandavison/delta
 Source0:        https://github.com/dandavison/delta/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  git-core
@@ -36,8 +35,6 @@ Delta provides language syntax-highlighting, within-line insertion/deletion dete
 
 %prep
 %autosetup -a1 -n delta-%{version}
-mkdir -p .cargo
-cp %{SOURCE2} .cargo/config
 
 %build
 CFLAGS+=' -ffat-lto-objects'

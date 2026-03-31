@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 17:43:31 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Updaet to 0.10.2:
+  * CD: pin GNU Linux builds to ubuntu-22.04 for Debian 12 compat #2135
+
+-------------------------------------------------------------------
 Tue Mar 24 08:33:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.1:

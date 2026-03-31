@@ -148,4 +148,13 @@
   * Update terminal-colorsaurus version to 0.4.8 #1936</comment>
     <requestid>1342189</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>695f9ed66de047d7f9b9e6b217607df6</srcmd5>
+    <version>0.19.2</version>
+    <time>1774963365</time>
+    <user>anag_factory</user>
+    <comment>- Updaet to 0.10.2:
+  * CD: pin GNU Linux builds to ubuntu-22.04 for Debian 12 compat #2135</comment>
+    <requestid>1343747</requestid>
+  </revision>
 </revisionlist>
