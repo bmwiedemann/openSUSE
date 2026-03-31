@@ -1,0 +1,26 @@
+From bb7edc4778041b3bc8ad7fca448b67d98039cc7d Mon Sep 17 00:00:00 2001
+From: rofl0r <rofl0r@users.noreply.github.com>
+Date: Sun, 29 Mar 2026 16:48:54 +0200
+Subject: [PATCH] reqs: prevent potential int overflow when parsing chunked
+ data (#603)
+References: https://bugzilla.suse.com/show_bug.cgi?id=1261024
+References: CVE-2026-3945
+
+closes #602
+---
+ src/reqs.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: tinyproxy-1.11.3/src/reqs.c
+===================================================================
+--- tinyproxy-1.11.3.orig/src/reqs.c
++++ tinyproxy-1.11.3/src/reqs.c
+@@ -613,6 +613,8 @@ static int pull_client_data_chunked (str
+                 }
+ 
+                 chunklen = strtol (buffer, (char**)0, 16);
++                /* prevent negative or huge values causing overflow */
++                if (chunklen < 0 || chunklen > 0x0fffffff) goto ERROR_EXIT;
+ 
+                 if (pull_client_data (connptr, chunklen+2, 0) < 0)
+                         goto ERROR_EXIT;

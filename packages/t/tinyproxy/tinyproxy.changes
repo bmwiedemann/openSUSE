@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 11:04:38 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-reqs-prevent-potential-int-overflow-when-parsing-chu.patch
+  [boo#1261024] [CVE-2026-3945]
+
+-------------------------------------------------------------------
 Sat Mar  7 18:17:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.11.3

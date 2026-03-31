@@ -1,7 +1,7 @@
 #
 # spec file for package tinyproxy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Productivity/Networking/Web/Proxy
 URL:            https://tinyproxy.github.io/
 Source:         https://github.com/tinyproxy/tinyproxy/releases/download/%version/%name-%version.tar.xz
 Source1:        %name.logrotate
+Patch1:         0001-reqs-prevent-potential-int-overflow-when-parsing-chu.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  xz
