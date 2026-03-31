@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-macros
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nginx-macros
-Version:        0.0.1
+Version:        0.0.2
 Release:        0
 Summary:        Just some macros to make packaging nginx and modules easier
 License:        BSD-2-Clause

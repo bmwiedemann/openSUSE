@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 26 01:41:37 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.0.2
+  * Enabled http_v3 module when building with aws-lc.
+  * Dropped unused ipv6 option.
+
+-------------------------------------------------------------------
 Tue Feb 16 23:31:02 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Since we only target sle 12 and above we can skip all

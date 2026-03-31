@@ -29,4 +29,14 @@
   (pid and lock path)</comment>
     <requestid>875590</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0310d48fd37134df06d2a95485134154</srcmd5>
+    <version>0.0.2</version>
+    <time>1774963342</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.0.2
+  * Enabled http_v3 module when building with aws-lc.
+  * Dropped unused ipv6 option.</comment>
+    <requestid>1343728</requestid>
+  </revision>
 </revisionlist>

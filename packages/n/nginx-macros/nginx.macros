@@ -42,9 +42,11 @@
   --without-poll_module                           \\\
   --with-threads                                  \\\
   --with-file-aio                                 \\\
-  --with-ipv6                                     \\\
   --with-http_ssl_module                          \\\
   --with-http_v2_module                           \\\
+  %if %{with awslc}                                 \
+  --with-http_v3_module                           \\\
+  %endif                                            \
   --with-http_realip_module                       \\\
   --with-http_addition_module                     \\\
   --with-http_xslt_module=dynamic                 \\\
