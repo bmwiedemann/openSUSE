@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 20:32:21 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
+
+- Fix test_propagation test failure with Werkzeug >= 3.1.7 which no
+  longer allows empty host values; set server to ("localhost", 80) in
+  test fixtures (gh#pallets/quart#461)
+  * Add python-Quart-fix-test-propagation-werkzeug317.patch 
+
+-------------------------------------------------------------------
 Mon Aug 25 11:42:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
