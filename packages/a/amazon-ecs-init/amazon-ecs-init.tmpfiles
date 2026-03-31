@@ -1,0 +1,3 @@
+d /var/cache/amazon/ecs         0755    root    root    -
+C /var/cache/amazon/ecs/ecs-agent.tar    0644 root root - /usr/share/amazon-ecs-init/cache/ecs-agent.tar
+C /var/cache/amazon/ecs/state   0644 root root - /usr/share/amazon-ecs-init/cache/state

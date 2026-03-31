@@ -140,4 +140,27 @@
 - from version 1.59.0-1 (forwarded request 1269180 from glaubitz)</comment>
     <requestid>1269696</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eab2ec1b1198679eebbc69ef8f138492</srcmd5>
+    <version>1.102.1</version>
+    <time>1774967401</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.102.1
+  * Enhancement - Improve ENI watcher udev logging (#4887)
+  * Enhancement - Update go version to 1.25.7,
+    Update unit test coverage logic (#4886)
+  * Enhancement - Upgrade prometheus deps (#4883)
+  * Enhancement - Use static IP for daemon tasks for Managed Instances,
+    also updates amazon-ecs-cni-plugins (#4881)
+  * Bugfix - Fix IMDS client rate limiting to prevent
+    token refresh failures after 401 responses (#4870)
+- For the changes between 1.64.0 and 1.102.0, see CHANGELOG.md
+- Fix permissions of systemd service file
+- Include CHANGELOG.md in %doc section
+- Refresh reproducible.patch
+- Refresh use-agent-container-built-in-certs.patch
+- Switch upstream source to amazon-ecs-agent
+- Switch to systemd-tmpfiles to store runtime data (jsc#PED-14842) (forwarded request 1343899 from glaubitz)</comment>
+    <requestid>1343906</requestid>
+  </revision>
 </revisionlist>

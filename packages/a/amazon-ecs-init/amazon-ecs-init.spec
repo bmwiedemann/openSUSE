@@ -1,7 +1,7 @@
 #
 # spec file for package amazon-ecs-init
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %define short_name amazon-ecs
 Name:           amazon-ecs-init
-Version:        1.64.0
+Version:        1.102.1
 Release:        0
 Summary:        Amazon EC2 Container Service Initialization
 License:        Apache-2.0
 Group:          System Environment/Base
-URL:            https://github.com/aws/amazon-ecs-init
-Source0:        https://github.com/aws/amazon-ecs-init/archive/refs/tags/v%{version}-1.tar.gz#/%{name}-%{version}-1.tar.gz
+URL:            https://github.com/aws/amazon-ecs-agent
+Source0:        https://github.com/aws/amazon-ecs-agent/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{short_name}.service
+Source2:        amazon-ecs-init.tmpfiles
 Patch0:         reproducible.patch
 Patch1:         use-agent-container-built-in-certs.patch
 BuildRequires:  go  >= 1.7
@@ -138,9 +139,9 @@ between the aws-cli ecs command line tool and an instance running in
 Amazon EC2.
 
 %prep
-%setup -q -n %{name}-%{version}-1
-%patch -P 0 -p1
-%patch -P 1
+%setup -q -n amazon-ecs-agent-%{version}
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
 export GO111MODULE="auto"
@@ -160,23 +161,34 @@ install -m 755 %SOURCE1 %{buildroot}/%{_unitdir}
 touch %{buildroot}/%{_sysconfdir}/ecs/ecs.config
 touch %{buildroot}/%{_sysconfdir}/ecs/ecs.config.json
 
-mkdir -p %{buildroot}/%{_localstatedir}/cache/ecs
-touch %{buildroot}/%{_localstatedir}/cache/ecs/ecs-agent.tar
-echo 0 > %{buildroot}/%{_localstatedir}/cache/ecs/state
+mkdir -p %{buildroot}%{_datadir}/amazon-ecs-init/cache
+touch %{buildroot}%{_datadir}/amazon-ecs-init/cache/ecs-agent.tar
+echo 0 > %{buildroot}%{_datadir}/amazon-ecs-init/cache/state
+
+mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 %{SOURCE2} %{buildroot}%{_prefix}/lib/tmpfiles.d/amazon-ecs-init.conf
+
+# Fix permissions for systemd unit file
+chmod 644 %{buildroot}%{_unitdir}/%{short_name}.service
+
+%posttrans
+%tmpfiles_create amazon-ecs-init.conf
 
 %files
 %defattr(-,root,root,-)
 %dir %{_sysconfdir}/ecs
-%dir %{_localstatedir}/cache/ecs
+%dir %{_datadir}/amazon-ecs-init
+%dir %{_datadir}/amazon-ecs-init/cache
 %license LICENSE
-%doc CONTRIBUTING.md NOTICE README.md
+%doc CHANGELOG.md CONTRIBUTING.md NOTICE README.md
+%{_datadir}/amazon-ecs-init/cache/ecs-agent.tar
+%{_datadir}/amazon-ecs-init/cache/state
 %config(noreplace) %{_sysconfdir}/ecs/ecs.config
 %config(noreplace) %{_sysconfdir}/ecs/ecs.config.json
 %{_mandir}/man*/*
-%{_sbindir}/*
+%{_sbindir}/amazon-ecs-init
 %{_unitdir}/%{short_name}.service
-%{_localstatedir}/cache/ecs/ecs-agent.tar
-%{_localstatedir}/cache/ecs/state
+%{_tmpfilesdir}/amazon-ecs-init.conf
 
 %pre
 %service_add_pre %{short_name}.service
