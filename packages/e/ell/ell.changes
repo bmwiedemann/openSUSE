@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 14:10:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.83
+  * Fix compilation issues with -std=c23 mode.
+  * Add additional test vectors for AES-CCM.
+
+-------------------------------------------------------------------
 Tue Feb 10 09:05:56 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.81
