@@ -61,4 +61,29 @@
 - Update BuildRequires from setup.py (forwarded request 1327418 from glaubitz)</comment>
     <requestid>1327431</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f447f8d1f483d47b957e3368b431f0bc</srcmd5>
+    <version>2.36.0</version>
+    <time>1774963400</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.36.0:
+  * Add AIInference MessageTransform type (PiperOrigin-RevId:
+    853856321)
+  * A comment for field `analytics_hub_subscription_info` in
+    message `.google.pubsub.v1.Subscription` is updated
+    (PiperOrigin-RevId: 853856321)
+  * Add the IDENTIFIER field behavior annotation to fields of
+    Cloud Pub/Sub methods that represent a specific identity and
+    need to be sourced with additional care (PiperOrigin-RevId:
+    840763233)
+  * A comment for field `topic` in message
+    `.google.pubsub.v1.Subscription` is updated (PiperOrigin-
+    RevId: 853856321)
+  * A comment for field `subscription` in message
+    `.google.pubsub.v1.CreateSnapshotRequest` is updated
+    (PiperOrigin-RevId: 853856321)
+  * add tags documentation links to Pub/Sub resource tags fields
+    (PiperOrigin-RevId: 845891076)</comment>
+    <requestid>1343870</requestid>
+  </revision>
 </revisionlist>

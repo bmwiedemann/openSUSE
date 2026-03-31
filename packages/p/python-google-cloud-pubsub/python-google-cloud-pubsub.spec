@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-pubsub
-Version:        2.34.0
+Version:        2.36.0
 Release:        0
 Summary:        Google Cloud Pub/Sub API client library
 License:        Apache-2.0
@@ -32,15 +32,13 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module google-api-core >= 1.34.0}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
-BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
+BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.14.0}
 BuildRequires:  %{python_module grpcio >= 1.51.3 if %python-base < 3.14}
 BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module grpcio-status >= 1.33.2}
 BuildRequires:  %{python_module opentelemetry-api >= 1.27.0}
 BuildRequires:  %{python_module opentelemetry-sdk >= 1.27.0}
-BuildRequires:  %{python_module proto-plus >= 1.22.0}
-BuildRequires:  %{python_module proto-plus >= 1.22.2}
-BuildRequires:  %{python_module proto-plus >= 1.25.0}
+BuildRequires:  %{python_module proto-plus >= 1.22.3}
 BuildRequires:  %{python_module protobuf >= 3.20.2}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
@@ -48,14 +46,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.0
 Requires:       python-google-auth >= 2.14.1
-Requires:       python-grpc-google-iam-v1 >= 0.12.4
+Requires:       python-grpc-google-iam-v1 >= 0.14.0
 Requires:       python-grpcio >= 1.51.3
 Requires:       python-grpcio-status >= 1.33.2
 Requires:       python-opentelemetry-api >= 1.27.0
 Requires:       python-opentelemetry-sdk >= 1.27.0
-Requires:       python-proto-plus >= 1.22.0
-Requires:       python-proto-plus >= 1.22.2
-Requires:       python-proto-plus >= 1.25.0
+Requires:       python-proto-plus >= 1.22.3
 Requires:       python-protobuf >= 3.20.2
 Suggests:       python-libcst >= 0.3.10
 BuildArch:      noarch
