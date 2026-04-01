@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 31 18:31:11 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.3.6:
+  * Change the design of the keyboard layout frame
+  * Realign the labels next to the sliders
+  * Fix function argument for C23 (fixes build for Tumbleweed)
+  * translations updates
+
+-------------------------------------------------------------------
 Sun Dec 25 13:07:05 UTC 2016 - trcs@gmx.com
 
 - new upstream version 0.3.5

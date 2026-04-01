@@ -2,6 +2,7 @@
 # spec file for package lxinput
 #
 # Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lxinput
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        Keyboard and mouse configuration tool
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/GUI/LXDE
-Url:            http://www.lxde.org/
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://www.lxde.org/
+Source0:        https://github.com/lxde/releases/raw/refs/heads/master/releases/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -34,45 +35,39 @@ BuildRequires:  intltool
 BuildRequires:  make
 BuildRequires:  perl
 BuildRequires:  perl-XML-Parser
-BuildRequires:  pkg-config
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig
 Recommends:     %{name}-lang
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %lang_package
 
 %description
 LXinput is just the LXDE Keyboard and mouse config tool
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-%suse_update_desktop_file %{name}
+%make_install
 %find_lang %{name}
 %fdupes -s %{buildroot}
 
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
+%check
+%make_build check
 
 %files
-%defattr(-,root,root)
+%license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/%{name}.ui
 %{_datadir}/%{name}/input-keyboard.png
 %{_datadir}/%{name}/input-mouse.png
-%{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
+%license COPYING
 
 %changelog

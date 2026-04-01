@@ -174,4 +174,16 @@
     <comment>1</comment>
     <requestid>448640</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a8fa9600bcdf2a2a17158f61d7304d65</srcmd5>
+    <version>0.3.6</version>
+    <time>1775065904</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.3.6:
+  * Change the design of the keyboard layout frame
+  * Realign the labels next to the sliders
+  * Fix function argument for C23 (fixes build for Tumbleweed)
+  * translations updates</comment>
+    <requestid>1343963</requestid>
+  </revision>
 </revisionlist>
