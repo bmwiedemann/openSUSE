@@ -10,4 +10,12 @@
    * Drop obsolete Buildroot: tag</comment>
     <requestid>1075548</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>506b7df7c52fd71471d40aeedf6713c4</srcmd5>
+    <version>1.2.1</version>
+    <time>1775065944</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1344083</requestid>
+  </revision>
 </revisionlist>
