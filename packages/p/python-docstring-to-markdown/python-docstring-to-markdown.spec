@@ -1,7 +1,7 @@
 #
 # spec file for package python-docstring-to-markdown
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,31 @@
 
 
 %{?sle15_python_module_pythons}
-
 Name:           python-docstring-to-markdown
-Version:        0.15
+Version:        0.17
 Release:        0
 Summary:        On the fly conversion of Python docstrings to markdown
-License:        LGPL-2.1-only
+License:        LGPL-2.1-or-later
 URL:            https://github.com/python-lsp/docstring-to-markdown
 Source:         https://github.com/python-lsp/docstring-to-markdown/archive/refs/tags/v%{version}.tar.gz#/docstring-to-markdown-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module importlib_metadata >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions >= 4.6}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-importlib_metadata >= 3.6
+Requires:       python-typing_extensions >= 4.6
 Provides:       python-docstring_to_markdown = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
 %description
 On the fly conversion of Python docstrings to markdown
-  - Python 3.6+
+  - Python 3.7+
   - currently can recognise reStructuredText and convert
     multiple of its features to Markdown
   - in the future will be able to convert Google docstrings too

@@ -55,4 +55,19 @@
   * Add plain text and cPython docstring support</comment>
     <requestid>1165868</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3b9a29f24b46dc0ef961a2fb85eb93f</srcmd5>
+    <version>0.17</version>
+    <time>1775065933</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.17:
+  * Fix test failures with `importlib-metadata` 8.7.0
+  * Fix reStructuredText edge cases to better support `polars`
+  * Use trusted publishing for package uploads
+- update to 0.16:
+  * Implement entry points to allow extension/customization
+  * Drop Python 3.7 from testing, add 3.12 and 3.13, update
+    actions</comment>
+    <requestid>1344057</requestid>
+  </revision>
 </revisionlist>
