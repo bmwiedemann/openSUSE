@@ -270,4 +270,23 @@
     functions</comment>
     <requestid>1307738</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0a6d16dbfc875d34de1778719332c72f</srcmd5>
+    <version>25.11.29</version>
+    <time>1775065933</time>
+    <user>anag_factory</user>
+    <comment>- update to 25.11.29:
+  * B043: Add new check to state don't call delattr with constant
+  * B042: ignore overloaded init, ignore if str+pickle dunder,
+  * B042: New check for reminding to call super().__init__ in
+    custom exceptions
+  * B028: Skip if skip_file_prefixes is used
+  * B912: New check for `map()` without an explicit `strict=`
+    parameter.
+  * Add python3.14 Support / CI
+  * Remove python3.9 support / CI
+  * flake8-bugbear now requires at least Python 3.10, like the
+    next release of flake8</comment>
+    <requestid>1344053</requestid>
+  </revision>
 </revisionlist>
