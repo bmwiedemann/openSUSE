@@ -146,7 +146,8 @@ popd
 
 %files -n %{name}%{soname} -f %{name}.lang
 %defattr(-,root,root)
-%doc README COPYING
+%doc README
+%license COPYING
 %{_bindir}/kkc
 %{_libdir}/libkkc.so.%{soname}
 %{_libdir}/libkkc.so.%{soname}.0.0
