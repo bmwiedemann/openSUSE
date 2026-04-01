@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="commons-digester3" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property file="maven-build.properties"/>
+
+  <property name="project.groupId" value="org.apache.commons"/>
+  <property name="project.artifactId" value="commons-digester3"/>
+  <property name="project.version" value="3.2"/>
+  <property name="project.name" value="Apache Commons Digester"/>
+  <property name="project.description" value="The Apache Commons Digester package
+lets you configure an XML to Java object mapping module which triggers certain actions
+called rules whenever a particular pattern of nested XML elements is recognized."/>
+  <property name="project.organization.name" value="The Apache Software Foundation"/>
+
+  <property name="bundle.symbolicName" value="${project.groupId}.${project.artifactId}"/>
+
+  <property name="spec.version" value="${project.version}"/>
+  <property name="bundle.version" value="${project.version}.0"/>
+
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir.0" value="."/>
+  <property name="build.resourceDir.1" value="src/main/resources"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}" 
+           encoding="UTF-8" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="${compiler.target}" 
+           release="${compiler.release}"
+           verbose="false" 
+           fork="false" 
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <mkdir dir="${build.outputDir}/META-INF"/>
+    <copy todir="${build.outputDir}/META-INF">
+      <fileset dir="${build.resourceDir.0}">
+        <include name="NOTICE.txt"/>
+        <include name="LICENSE.txt"/>
+      </fileset>
+    </copy>
+    <copy todir="${build.outputDir}">
+      <fileset dir="${build.resourceDir.1}">
+        <include name="**/*.dtd"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}" 
+             packagenames="*" 
+             destdir="${reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             verbose="false" 
+             encoding="UTF-8" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             docencoding="UTF-8" 
+             source="${compiler.source}" 
+             linksource="true" 
+             breakiterator="false">
+      <classpath refid="build.classpath"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+         excludes="**/package.html">
+      <manifest>
+		<attribute name="Bundle-Description" value="${project.description}"/>
+		<attribute name="Bundle-License" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
+		<attribute name="Bundle-ManifestVersion" value="2"/>
+		<attribute name="Bundle-Name" value="${project.name}"/>
+		<attribute name="Bundle-SymbolicName" value="${bundle.symbolicName}"/>
+		<attribute name="Bundle-Vendor" value="${project.organization.name}"/>
+		<attribute name="Bundle-Version" value="${bundle.version}"/>
+		<attribute name="Export-Package" value="org.apache.commons.digester3.annotations.handlers;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.digester3.annotations,org.apache.commons.digester3.annotations.reflect,org.apache.commons.digester3.annotations.rules,org.apache.commons.digester3.binder&quot;,org.apache.commons.digester3.annotations.reflect;version=&quot;${project.version}&quot;,org.apache.commons.digester3.annotations.rules;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.digester3,org.apache.commons.digester3.annotations,org.apache.commons.digester3.annotations.handlers,org.xml.sax&quot;,org.apache.commons.digester3.annotations.utils;version=&quot;${project.version}&quot;,org.apache.commons.digester3.annotations;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.digester3,org.apache.commons.digester3.binder&quot;,org.apache.commons.digester3.binder;version=&quot;${project.version}&quot;;uses:=&quot;javax.xml.parsers,javax.xml.validation,org.apache.commons.digester3,org.apache.commons.digester3.plugins,org.xml.sax&quot;,org.apache.commons.digester3.plugins.strategies;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.digester3,org.apache.commons.digester3.plugins&quot;,org.apache.commons.digester3.plugins;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.digester3,org.xml.sax&quot;,org.apache.commons.digester3.substitution;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.digester3,org.xml.sax&quot;,org.apache.commons.digester3.xmlrules;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.digester3.binder,org.xml.sax&quot;,org.apache.commons.digester3;version=&quot;${project.version}&quot;;uses:=&quot;javax.xml.parsers,javax.xml.validation,org.apache.commons.logging,org.xml.sax,org.xml.sax.helpers&quot;"/>
+		<attribute name="Implementation-Title" value="${project.name}"/>
+		<attribute name="Implementation-Vendor-Id" value="org.apache"/>
+		<attribute name="Implementation-Vendor" value="${project.organization.name}"/>
+		<attribute name="Implementation-Version" value="${project.version}"/>
+		<attribute name="Import-Package" value="javax.xml.parsers,javax.xml.validation,net.sf.cglib.proxy,org.apache.commons.beanutils,org.apache.commons.logging,org.apache.commons.logging.impl,org.w3c.dom,org.xml.sax,org.xml.sax.helpers"/>
+		<attribute name="Include-Resource" value="META-INF/LICENSE.txt=LICENSE.txt,META-INF/NOTICE.txt=NOTICE.txt,org/apache/commons/digester3/xmlrules/digester-rules.dtd=src/main/resources/org/apache/commons/digester3/xmlrules/digester-rules.dtd"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+		<attribute name="Specification-Title" value="${project.name}"/>
+		<attribute name="Specification-Vendor" value="${project.organization.name}"/>
+		<attribute name="Specification-Version" value="${spec.version}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-digester3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,17 +25,15 @@ Summary:        Apache Commons Digester
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-digester/
-Source:         https://mirror.linux-ia64.org/apache/commons/digester/source/%{short_name}-%{version}-src.tar.gz
+Source0:        https://archive.apache.org/dist/commons/digester/source/%{short_name}-%{version}-src.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
+BuildRequires:  apache-commons-beanutils
+BuildRequires:  apache-commons-logging
+BuildRequires:  cglib
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  maven-local
-BuildRequires:  mvn(cglib:cglib)
-BuildRequires:  mvn(commons-beanutils:commons-beanutils)
-BuildRequires:  mvn(commons-logging:commons-logging)
-BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
-BuildRequires:  mvn(org.apache.maven.wagon:wagon-ssh)
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -52,26 +50,38 @@ This package provides %{summary}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
+cp %{SOURCE1} build.xml
 %pom_remove_plugin org.sonatype.plugins:jarjar-maven-plugin
 %pom_remove_plugin :maven-jar-plugin
-%{mvn_file} : %{name} %{short_name}
 
 %build
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dmaven.compiler.{source,target}=8
+mkdir -p lib
+build-jar-repository -s lib \
+    apache-commons-logging-api \
+    cglib/cglib \
+    commons-beanutils
+ant jar javadoc
 
 %install
-%mvn_install
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{short_name}.jar
+ln -sf %{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
+# pom
+install -d -m 755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{short_name}.pom
+%add_maven_depmap %{short_name}.pom %{short_name}.jar
+# javadoc
+install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
+%{_javadir}/%{name}.jar
 %license LICENSE.txt NOTICE.txt
 %doc RELEASE-NOTES.txt
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE.txt NOTICE.txt
 
 %changelog

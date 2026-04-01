@@ -15,4 +15,12 @@
     <comment>Fix build with the upcoming maven-jar-plugin 3.5.0</comment>
     <requestid>1317307</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>70624fca78ce391eaaefd5f4e5715b23</srcmd5>
+    <version>3.2</version>
+    <time>1775065917</time>
+    <user>anag_factory</user>
+    <comment>Rewrite to use ant to avoid build cycles</comment>
+    <requestid>1344000</requestid>
+  </revision>
 </revisionlist>
