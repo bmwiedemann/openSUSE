@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 30 13:53:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7.0
+  * INI: make 'ini_*_serialize' API private
+  * INI: don't expose "ini_valueobj.h" API
+
+-------------------------------------------------------------------
 Tue Jun 20 09:07:05 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to 0.6.2:
