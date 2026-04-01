@@ -18,7 +18,7 @@
 
 
 Name:           xpadneo
-Version:        0.10
+Version:        0.10.1
 Release:        0
 Summary:        Driver for Xbox Wireless Controller
 License:        GPL-3.0-only
