@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 30 17:46:48 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Using gcc-15 since Leap 16.0 doesn't offer up gcc-14
+- Adding patch e92a166.diff to account for errors which manifest as part
+  of autoconf update to v 2.73
+  * Concept taken from udda/multiload-ng#86
+
+-------------------------------------------------------------------
 Fri Jun 20 21:54:13 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Specifying gcc-14 usage since build errors out with >= gcc-15 (default)

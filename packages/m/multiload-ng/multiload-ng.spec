@@ -1,7 +1,7 @@
 #
 # spec file for package multiload-ng
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,11 @@ License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            https://github.com/udda/multiload-ng
 Source0:        %{name}-%{version}.tar.gz
+Patch0:         e92a166.diff
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gcc14
-BuildRequires:  gcc14-c++
+BuildRequires:  gcc15
+BuildRequires:  gcc15-c++
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -58,16 +59,16 @@ It supports the following panels:
 Multiload-ng can be built with GTK2 and GTK3, so can be embedded within GTK2/GTK3 builds of all the panels above.
 
 %prep base
-%setup -q
+%autosetup -p1
 
 %build base
-export CC=gcc-14 CFLAGS="%{optflags} -fPIE -pie" LDFLAGS="-pie"
+export CC=gcc-15 CFLAGS="%{optflags} -fPIE -pie" LDFLAGS="-pie"
 ./autogen.sh
 %configure --disable-autostart --with-systray --with-xfce4
 %make_build
 
 %install base
-export CC=gcc-14
+export CC=gcc-15
 %make_install
 
 %find_lang multiload-ng %{?no_lang_C}

@@ -1,0 +1,26 @@
+--- a/common/preferences.c.smb	2026-02-26 16:20:20.384813226 -0500
++++ b/common/preferences.c	2026-02-26 16:22:26.665643899 -0500
+@@ -1566,7 +1566,11 @@
+ 	multiload_preferences_update_dynamic_widgets(ma);
+ 
+ 	// other stuff
+-	multiload_developer_buttons(ma);
++	#ifdef MULTILOAD_DEVELOPER_MODE
++		multiload_developer_buttons(ma);
++	#else
++		multiload_developer_buttons();
++	#endif
+ 
+ 	#if GTK_API == 3 && GTK_CHECK_VERSION(3,16,0)
+ 	if (gtk_check_version(3,16,0) == NULL)
+--- a/common/util.h.smb	2026-02-26 16:22:46.298548799 -0500
++++ b/common/util.h	2026-02-26 16:23:19.623705245 -0500
+@@ -49,7 +49,7 @@
+ G_GNUC_INTERNAL gchar*
+ get_system_monitor_executable();
+ G_GNUC_INTERNAL void
+-xdg_open_url();
++xdg_open_url(const gchar* url);
+ 
+ G_GNUC_INTERNAL GdkPixbuf*
+ cairo_surface_to_gdk_pixbuf(cairo_surface_t *surface, guint width, guint height);

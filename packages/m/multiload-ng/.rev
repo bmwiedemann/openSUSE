@@ -15,4 +15,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1291316</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3d25a67bf71a43a30079ec1c6768c3b7</srcmd5>
+    <version>git20210103.743885d</version>
+    <time>1775065982</time>
+    <user>anag_factory</user>
+    <comment>- Using gcc-15 since Leap 16.0 doesn't offer up gcc-14
+- Adding patch e92a166.diff to account for errors which manifest as part
+  of autoconf update to v 2.73
+  * Concept taken from udda/multiload-ng#86</comment>
+    <requestid>1344172</requestid>
+  </revision>
 </revisionlist>
