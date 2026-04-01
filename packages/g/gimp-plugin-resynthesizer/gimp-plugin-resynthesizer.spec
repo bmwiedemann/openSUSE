@@ -17,13 +17,15 @@
 
 
 Name:           gimp-plugin-resynthesizer
-Version:        3.0+git.1749847142.32e3962
+Version:        3.0.1+git0.bddb1df
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Suite of gimp plugins for texture synthesis
 URL:            https://github.com/bootchk/resynthesizer
 Group:          Productivity/Graphics/Bitmap Editors
-Source:         resynthesizer-%{version}.tar.xz
+Source0:         resynthesizer-%{version}.tar.xz
+Source1:        gimp-plugin-resynthesizer-rpmlintrc
+Patch0:         fix-po-meson.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gimp-devel >= 3.0
@@ -39,8 +41,6 @@ The package includes:
 - resynthesizer-gui plugin control panel for the engine
 - various plugins (in Python language) that call the resynthesizer engine
 
-%lang_package
-
 %prep
 %autosetup -p1 -n resynthesizer-%{version}
 
@@ -54,16 +54,14 @@ sed -i -e 's^#!%{_bindir}/env python^#!%{_bindir}/python^' test/testResynth.py
 
 %install
 %meson_install
-# %%find_lang resynthesizer3
+rm -f %{buildroot}%{_datadir}/locale/*/LC_MESSAGES/resynthesizer3.mo
 
 %check
-# %%meson_test ../test
+%meson_test ../test
 
 %files
 %doc README.md
 %license COPYING
 %{_libdir}/gimp/3.0/plug-ins/*
-
-# %%files lang -f resynthesizer3.lang
 
 %changelog

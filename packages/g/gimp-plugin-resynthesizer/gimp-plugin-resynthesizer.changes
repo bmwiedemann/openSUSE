@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 01 06:47:49 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.0.1+git0.bddb1df: 
+  * Update ChangeLog and NEWS for 3.0.1
+  * Resynthesizer controls plugin: revert widget labels
+  * Partial fix Portugese translation
+  * Partial fix Russion translation
+  * Partial fix French translation
+  * Fix engine declares uses the shared i18n domain "resynthesizer3"
+  * Partial fix to Czech translation
+  * Partial fix to Turkish translation
+  * Partial fix to Polish translation
+  * Build install turkish and polish i18n cherry picked from master
+  * added Polish translation
+  * Add Turkish translation
+  * Outer plugins declare i18n
+  * Simplify build install i18n: not rename resynthesizer3.mo
+  * Build install i18n data as declared by plugins.
+  * Engine plugin declare i18n data names and location to GIMP
+  * Clarify in build summary: outer plugins
+  * Build option to nstall  i18n default to true.
+  * Delete i18n cruft from engine plugin.
+  * Fix #167: change function declarations to be complete for stricter compilers e.g. gcc15
+  * Fix Windows console window for resynthesizer plugin
+- Add fix-po-meson.patch
+
+-------------------------------------------------------------------
 Fri Oct 17 06:52:39 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 2.0.3+git.1749847142.32e3962:

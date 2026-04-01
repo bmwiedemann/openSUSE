@@ -6,4 +6,5 @@ The package includes:
 - resynthesizer plugin engine (without a GUI)
 - resynthesizer-gui plugin control panel for the engine
 - various plugins (in Python language) that call the resynthesizer engine</description>
+  <devel project="graphics" package="gimp-plugin-resynthesizer"/>
 </package>

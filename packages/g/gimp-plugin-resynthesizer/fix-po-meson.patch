@@ -1,0 +1,48 @@
+--- resynthesizer/po/meson.build.orig	2026-04-01 08:57:45.365366707 +0200
++++ resynthesizer/po/meson.build	2026-04-01 09:00:56.908132899 +0200
+@@ -51,7 +51,7 @@
+ # to be shared by the group of resynthesizer plugins,
+ # but instead installs the same catalog in many places (in a locale subdirectory of each plugin.)
+ # I.E. copy and fan out shared group resynthesizer.mo file to each plugin's locale directory
+-# 
++#
+ # This seems clunky, wasteful, and fragile.
+ # But probably the best we can do given how GIMP does i18n.
+ 
+@@ -60,14 +60,16 @@
+ 
+   # for each outer plugin filename and also the engine plugin filename 'resynthesizer'
+   foreach plugin_name : resynthesizer_plugin_names + 'resynthesizer'
+-    
++
+     # The source of the copy was previously installed by meson to the platform's shared locale dir.
+     # We copy from the installed file.
+     # Typical full path to source_file is /usr/local/share/locale/es/LC_MESSAGES/resynthesizer3.mo
+     #                                     prefix    localedir    language_tag    group name
+ 
+-    # get_option('localedir') == 'share/locale' and MUST be prefixed
+-    source_file = get_option('prefix') / get_option('localedir') / language_tag / 'LC_MESSAGES' / 'resynthesizer3.mo'
++    # get_option('localedir') == 'share/locale'
++    # During "meson install --destdir=...", the file is staged below
++    # MESON_INSTALL_DESTDIR_PREFIX.
++    source_rel = get_option('localedir') / language_tag / 'LC_MESSAGES' / 'resynthesizer3.mo'
+ 
+     # When copying, distribute or fan out the group file
+     # to a subdirectory "locale/" under each plugin's root directory
+@@ -82,7 +84,8 @@
+     # cp does not have option to create destination dirs, so create directory first.
+     meson.add_install_script(
+       'sh', '-c',
+-      'mkdir -p "@0@" && cp -f "@1@" "@2@"'.format(dest_dir, source_file, dest_file ))
++      'mkdir -p "$DESTDIR@0@" && cp -f "$MESON_INSTALL_DESTDIR_PREFIX/@1@" "$DESTDIR@2@"'
++      .format(dest_dir, source_rel, dest_file ))
+ 
+   endforeach
+ endforeach
+@@ -91,4 +94,4 @@
+ # and could be deleted.
+ 
+ summary('Installing i18n for plugins:', resynthesizer_plugin_names + 'resynthesizer')
+-summary('Installing i18n for languages:', resynthesizer_i18n_languages)
+\ No newline at end of file
++summary('Installing i18n for languages:', resynthesizer_i18n_languages)
