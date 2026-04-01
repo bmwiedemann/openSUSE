@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 31 13:34:02 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
+
+- Update to 4.1.0:
+  * Add debounce prop to Dropdown
+  * Fix date pickers in hidden containers
+  * Finalize redesigned dash core components (4.0.0)
+  * Add new plotly CLI entry point
+  For full changelog see:
+  https://github.com/plotly/dash/blob/dev/CHANGELOG.md
+- Add new plotly binary to alternatives handling
+
+-------------------------------------------------------------------
 Thu Sep 18 08:40:17 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.2.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 # We can't test currenty, see below.
 %bcond_with test
-%define distver 3.2
+%define distver 4.1
 %{?sle15_python_module_pythons}
 Name:           python-dash
-Version:        3.2.0
+Version:        4.1.0
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
@@ -115,6 +115,7 @@ find . -name .gitkeep -delete
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/plotly
 %python_clone -a %{buildroot}%{_bindir}/renderer
 %python_clone -a %{buildroot}%{_bindir}/dash-generate-components
 %python_clone -a %{buildroot}%{_bindir}/dash-update-components
@@ -127,11 +128,13 @@ find . -name .gitkeep -delete
 %endif
 
 %post
+%python_install_alternative plotly
 %python_install_alternative renderer
 %python_install_alternative dash-generate-components
 %python_install_alternative dash-update-components
 
 %postun
+%python_uninstall_alternative plotly
 %python_uninstall_alternative renderer
 %python_uninstall_alternative dash-generate-components
 %python_uninstall_alternative dash-update-components
@@ -146,6 +149,7 @@ find . -name .gitkeep -delete
 %files %{python_files}
 %doc README.md
 %license LICENSE
+%python_alternative %{_bindir}/plotly
 %python_alternative %{_bindir}/dash-generate-components
 %python_alternative %{_bindir}/dash-update-components
 %python_alternative %{_bindir}/renderer
