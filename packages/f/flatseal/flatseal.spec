@@ -25,6 +25,7 @@ URL:            https://github.com/tchx84/flatseal
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  desktop-file-utils
+BuildRequires:  gobject-introspection
 BuildRequires:  pkgconfig(gjs-1.0)
 BuildRequires:  pkgconfig(webkitgtk-6.0)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5

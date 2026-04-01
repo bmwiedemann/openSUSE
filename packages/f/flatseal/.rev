@@ -15,4 +15,13 @@
     <comment>Push from SCM</comment>
     <requestid>1343026</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d52adb3a3f5c1fd68a61ecdf454235e3</srcmd5>
+    <version>2.4.0</version>
+    <time>1775065888</time>
+    <user>anag_factory</user>
+    <comment>- Add gobject-introspection BuildRequires: enable
+  typelib()-dependency scanner (boo#1260408).</comment>
+    <requestid>1343933</requestid>
+  </revision>
 </revisionlist>

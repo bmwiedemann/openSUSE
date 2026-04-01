@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 12:50:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gobject-introspection BuildRequires: enable
+  typelib()-dependency scanner (boo#1260408).
+
+-------------------------------------------------------------------
 Mon Mar 23 08:28:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
