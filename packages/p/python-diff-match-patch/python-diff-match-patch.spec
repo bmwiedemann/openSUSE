@@ -1,7 +1,7 @@
 #
 # spec file for package python-diff-match-patch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-diff-match-patch
-Version:        20230430
+Version:        20241021
 Release:        0
 Summary:        Repackaging of Google's Diff Match and Patch libraries
 License:        Apache-2.0
 URL:            https://github.com/diff-match-patch-python/diff-match-patch
-Source:         https://files.pythonhosted.org/packages/source/d/diff-match-patch/diff-match-patch-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/diff-match-patch/diff_match_patch-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE make-tests-runable.patch -- running tests is too complicated to put that into the specfile
 Patch0:         make-tests-runable.patch
 BuildRequires:  %{python_module flit-core}
@@ -38,7 +38,7 @@ BuildArch:      noarch
 Offers algorithms to perform the operations required for synchronizing plain text
 
 %prep
-%autosetup -p1 -n diff-match-patch-%{version}
+%autosetup -p1 -n diff_match_patch-%{version}
 find . -name "*.py" -type f -exec sed -i '1s/^#!.*//' {} \+
 
 %build

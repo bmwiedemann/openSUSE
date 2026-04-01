@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:55:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20241021:
+  * Stop breaking surrogate pairs in `toDelta()`
+  * Start tracking new upstream https://github.com/dmsnell/diff-match-patch (#17)
+  * Removed `imp` usage in speedtest
+  * Updated dev dependencies, use uv for dev workflows when
+    available (#22)
+  * Tested on Python 3.8-3.13
+  * Untested on Python 3.7, will be unsupported in future release
+
+-------------------------------------------------------------------
 Wed Dec 20 02:07:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 20230430:

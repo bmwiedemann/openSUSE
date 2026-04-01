@@ -30,4 +30,19 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1134117</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0096e6dbdde71eb68a5626c49933c196</srcmd5>
+    <version>20241021</version>
+    <time>1775065937</time>
+    <user>anag_factory</user>
+    <comment>- update to 20241021:
+  * Stop breaking surrogate pairs in `toDelta()`
+  * Start tracking new upstream https://github.com/dmsnell/diff-match-patch (#17)
+  * Removed `imp` usage in speedtest
+  * Updated dev dependencies, use uv for dev workflows when
+    available (#22)
+  * Tested on Python 3.8-3.13
+  * Untested on Python 3.7, will be unsupported in future release</comment>
+    <requestid>1344059</requestid>
+  </revision>
 </revisionlist>
