@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 31 19:00:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Major internal overhaul: switch from Cython to nanobind.
+  * Switch build system from setuptools to scikit-build-core.
+  * Add support for free-threaded Python.
+  * Internal:
+    * Fix function signature mismatches for WebAssembly.
+    * Add tests for array slicing, int resample_chunk(),
+      external libsoxr, Python 3.14.
+    * AVX SIMD64 support (faster VHQ for x86_64).
+    * Python Stable ABI support.
+    * Use split channel I/O when appropriate.
+  * New features:
+    * Add more bindings: clear(), delay(), num_clips().
+    * Speed improvements: ~100% faster LQ, MQ, HQ on ARM;
+      ~100% faster VHQ on x86_64.
+
+-------------------------------------------------------------------
 Wed Dec 13 10:46:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.7:
