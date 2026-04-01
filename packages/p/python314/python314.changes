@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Mar 28 18:07:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add bsc1260884-llvm21-support.patch which updates the
+  interpreter to use LLVM 21 for building JIT builds
+  (bsc#1260884).
+
+-------------------------------------------------------------------
+Fri Mar 27 17:51:07 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2026-4519-webbrowser-open-dashes.patch to reject
+  leading dashes in webbrowser URLs (bsc#1260026, CVE-2026-4519,
+  gh#python/cpython#143930).
+
+-------------------------------------------------------------------
+Wed Mar 25 16:40:18 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-13462-tarinfo-header-parse.patch which skips
+  TarInfo DIRTYPE normalization during GNU long name handling
+  (bsc#1259611, CVE-2025-13462).
+
+-------------------------------------------------------------------
+Mon Mar 23 22:16:01 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2026-4224-expat-unbound-C-recursion.patch avoiding
+  unbound C recursion in conv_content_model in pyexpat.c
+  (bsc#1259735, CVE-2026-4224).
+
+-------------------------------------------------------------------
+Mon Mar 23 17:15:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2026-3644-cookies-Morsel-update-II.patch to reject
+  control characters in http.cookies.Morsel.update() and
+  http.cookies.BaseCookie.js_output (bsc#1259734, CVE-2026-3644).
+
+-------------------------------------------------------------------
 Fri Mar 13 18:20:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2026-2297-SourcelessFileLoader-io_open_code.patch

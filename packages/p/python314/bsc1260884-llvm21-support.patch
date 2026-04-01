@@ -1,0 +1,403 @@
+From adb272130fdad3e8d86cfff2630eeb57b39a2c4e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Sat, 28 Mar 2026 19:02:56 +0100
+Subject: [PATCH] GH-136895: Update JIT builds to use LLVM 21
+
+Upgrade the JIT toolchain from LLVM 19 to LLVM 21 (21.1.4), covering
+CI workflows, build-time scripts, documentation, and the runtime code
+generator.
+
+LLVM version bump:
+- Update LLVM_VERSION in jit.yml and tail-call.yml CI workflows to 21.
+- Bump _LLVM_VERSION and _EXTERNALS_LLVM_TAG in Tools/jit/_llvm.py.
+- Update all install instructions in Tools/jit/README.md (Ubuntu/Debian,
+  Fedora, macOS Homebrew, Windows chocolatey, Dev Containers).
+
+JIT runtime changes (Python/jit.c):
+- Add x86_64 trampoline support for out-of-range GOT entries. LLVM 20+
+  can produce GOT references exceeding the +/-2GB PC-relative range on
+  macOS x86_64 debug builds; trampolines use a 14-byte jmp *(%rip) stub
+  with an embedded 64-bit absolute address, padded to 16 bytes.
+- Refactor trampoline slot lookup into a shared get_trampoline_slot()
+  helper, used by both AArch64 and x86_64 trampoline patchers.
+- Enable x86_64 trampoline infrastructure on all x86_64 platforms
+  (not just macOS) as a defensive measure against future LLVM changes.
+- Introduce DATA_ALIGN macro and add alignment padding between the
+  code+trampoline region and the data section for correct data alignment.
+
+JIT build-time changes (Tools/jit/):
+- Handle X86_64_RELOC_BRANCH Mach-O relocations in _stencils.py,
+  routing external symbol references through patch_x86_64_trampoline.
+- Move -fno-plt from global compiler flags to Linux-only targets
+  (aarch64-linux-gnu and x86_64-linux-gnu) in _targets.py. Remove the
+  now-unnecessary -fplt counterweight from aarch64-pc-windows-msvc.
+- Improve LLVM tool discovery on Windows in _llvm.py by trying both
+  bare tool names and .exe-suffixed variants at every search stage.
+
+This commit excludes Windows-specific PCbuild changes (get_external.py,
+get_externals.bat) which require separate handling for the LLVM release
+tarball download infrastructure.
+---
+ Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst |    1 
+ Python/jit.c                                                                      |   90 ++++++++--
+ Tools/jit/README.md                                                               |   22 +-
+ Tools/jit/_llvm.py                                                                |   37 ++--
+ Tools/jit/_stencils.py                                                            |   17 +
+ Tools/jit/_targets.py                                                             |    9 -
+ 6 files changed, 129 insertions(+), 47 deletions(-)
+ create mode 100644 Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst
+
+Index: Python-3.14.3/Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ Python-3.14.3/Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst	2026-03-28 19:07:08.905250841 +0100
+@@ -0,0 +1 @@
++Update JIT compilation to use LLVM 21 at build time.
+Index: Python-3.14.3/Python/jit.c
+===================================================================
+--- Python-3.14.3.orig/Python/jit.c	2026-02-03 16:32:20.000000000 +0100
++++ Python-3.14.3/Python/jit.c	2026-03-28 19:07:08.905586532 +0100
+@@ -419,15 +419,43 @@
+ }
+ 
+ void patch_aarch64_trampoline(unsigned char *location, int ordinal, jit_state *state);
++void patch_x86_64_trampoline(unsigned char *location, int ordinal, jit_state *state);
+ 
+ #include "jit_stencils.h"
+ 
+ #if defined(__aarch64__) || defined(_M_ARM64)
+     #define TRAMPOLINE_SIZE 16
++    #define DATA_ALIGN 8
++#elif defined(__x86_64__) || defined(_M_X64)
++    // x86_64 trampolines: 14 bytes (jmp *(%rip) + 8-byte addr) + 2 bytes padding.
++    // Currently used on macOS where LLVM 21 GOT entries may exceed ±2GB
++    // PC-relative range, but enabled on all x86_64 platforms defensively.
++    #define TRAMPOLINE_SIZE 16
++    #define DATA_ALIGN 8
+ #else
+     #define TRAMPOLINE_SIZE 0
++    #define DATA_ALIGN 1
+ #endif
+ 
++// Get the trampoline memory location for a given symbol ordinal.
++static unsigned char *
++get_trampoline_slot(int ordinal, jit_state *state)
++{
++    const uint32_t symbol_mask = 1 << (ordinal % 32);
++    const uint32_t trampoline_mask = state->trampolines.mask[ordinal / 32];
++    assert(symbol_mask & trampoline_mask);
++
++    // Count the number of set bits in the trampoline mask lower than ordinal.
++    int index = _Py_popcount32(trampoline_mask & (symbol_mask - 1));
++    for (int i = 0; i < ordinal / 32; i++) {
++        index += _Py_popcount32(state->trampolines.mask[i]);
++    }
++
++    unsigned char *trampoline = state->trampolines.mem + index * TRAMPOLINE_SIZE;
++    assert((size_t)(index + 1) * TRAMPOLINE_SIZE <= state->trampolines.size);
++    return trampoline;
++}
++
+ // Generate and patch AArch64 trampolines. The symbols to jump to are stored
+ // in the jit_stencils.h in the symbols_map.
+ void
+@@ -444,20 +472,8 @@
+         return;
+     }
+ 
+-    // Masking is done modulo 32 as the mask is stored as an array of uint32_t
+-    const uint32_t symbol_mask = 1 << (ordinal % 32);
+-    const uint32_t trampoline_mask = state->trampolines.mask[ordinal / 32];
+-    assert(symbol_mask & trampoline_mask);
+-
+-    // Count the number of set bits in the trampoline mask lower than ordinal,
+-    // this gives the index into the array of trampolines.
+-    int index = _Py_popcount32(trampoline_mask & (symbol_mask - 1));
+-    for (int i = 0; i < ordinal / 32; i++) {
+-        index += _Py_popcount32(state->trampolines.mask[i]);
+-    }
+-
+-    uint32_t *p = (uint32_t*)(state->trampolines.mem + index * TRAMPOLINE_SIZE);
+-    assert((size_t)(index + 1) * TRAMPOLINE_SIZE <= state->trampolines.size);
++    // Out of range - need a trampoline
++    uint32_t *p = (uint32_t *)get_trampoline_slot(ordinal, state);
+ 
+ 
+     /* Generate the trampoline
+@@ -474,6 +490,37 @@
+     patch_aarch64_26r(location, (uintptr_t)p);
+ }
+ 
++// Generate and patch x86_64 trampolines.
++void
++patch_x86_64_trampoline(unsigned char *location, int ordinal, jit_state *state)
++{
++    uint64_t value = (uintptr_t)symbols_map[ordinal];
++    int64_t range = (int64_t)value - 4 - (int64_t)location;
++
++    // If we are in range of 32 signed bits, we can patch directly
++    if (range >= -(1LL << 31) && range < (1LL << 31)) {
++        patch_32r(location, value - 4);
++        return;
++    }
++
++    // Out of range - need a trampoline
++    unsigned char *trampoline = get_trampoline_slot(ordinal, state);
++
++    /* Generate the trampoline (14 bytes, padded to 16):
++       0: ff 25 00 00 00 00    jmp *(%rip)
++       6: XX XX XX XX XX XX XX XX   (64-bit target address)
++
++       Reference: https://wiki.osdev.org/X86-64_Instruction_Encoding#FF (JMP r/m64)
++    */
++    trampoline[0] = 0xFF;
++    trampoline[1] = 0x25;
++    memset(trampoline + 2, 0, 4);
++    memcpy(trampoline + 6, &value, 8);
++
++    // Patch the call site to call the trampoline instead
++    patch_32r(location, (uintptr_t)trampoline - 4);
++}
++
+ static void
+ combine_symbol_mask(const symbol_mask src, symbol_mask dest)
+ {
+@@ -515,8 +562,13 @@
+     // Round up to the nearest page:
+     size_t page_size = get_page_size();
+     assert((page_size & (page_size - 1)) == 0);
+-    size_t padding = page_size - ((code_size + state.trampolines.size + data_size) & (page_size - 1));
+-    size_t total_size = code_size + state.trampolines.size + data_size  + padding;
++    size_t code_padding =
++        DATA_ALIGN - ((code_size + state.trampolines.size) & (DATA_ALIGN - 1));
++    size_t padding = page_size -
++        ((code_size + state.trampolines.size + code_padding + data_size) &
++         (page_size - 1));
++    size_t total_size =
++        code_size + state.trampolines.size + code_padding + data_size + padding;
+     unsigned char *memory = jit_alloc(total_size);
+     if (memory == NULL) {
+         return -1;
+@@ -535,7 +587,7 @@
+     // Loop again to emit the code:
+     unsigned char *code = memory;
+     state.trampolines.mem = memory + code_size;
+-    unsigned char *data = memory + code_size + state.trampolines.size;
++    unsigned char *data = memory + code_size + state.trampolines.size + code_padding;
+     // Compile the shim, which handles converting between the native
+     // calling convention and the calling convention used by jitted code
+     // (which may be different for efficiency reasons).
+@@ -557,7 +609,9 @@
+     code += group->code_size;
+     data += group->data_size;
+     assert(code == memory + code_size);
+-    assert(data == memory + code_size + state.trampolines.size + data_size);
++    assert(
++        data ==
++        memory + code_size + state.trampolines.size + code_padding + data_size);
+     if (mark_executable(memory, total_size)) {
+         jit_free(memory, total_size);
+         return -1;
+Index: Python-3.14.3/Tools/jit/README.md
+===================================================================
+--- Python-3.14.3.orig/Tools/jit/README.md	2026-02-03 16:32:20.000000000 +0100
++++ Python-3.14.3/Tools/jit/README.md	2026-03-28 19:07:08.905766140 +0100
+@@ -9,32 +9,32 @@
+ 
+ The JIT compiler does not require end users to install any third-party dependencies, but part of it must be *built* using LLVM[^why-llvm]. You are *not* required to build the rest of CPython using LLVM, or even the same version of LLVM (in fact, this is uncommon).
+ 
+-LLVM version 19 is required. Both `clang` and `llvm-readobj` need to be installed and discoverable (version suffixes, like `clang-19`, are okay). It's highly recommended that you also have `llvm-objdump` available, since this allows the build script to dump human-readable assembly for the generated code.
++LLVM version 21 is the officially supported version. You can modify if needed using the `LLVM_VERSION` env var during configure. Both `clang` and `llvm-readobj` need to be installed and discoverable (version suffixes, like `clang-21`, are okay). It's highly recommended that you also have `llvm-objdump` available, since this allows the build script to dump human-readable assembly for the generated code.
+ 
+ It's easy to install all of the required tools:
+ 
+ ### Linux
+ 
+-Install LLVM 19 on Ubuntu/Debian:
++Install LLVM 21 on Ubuntu/Debian:
+ 
+ ```sh
+ wget https://apt.llvm.org/llvm.sh
+ chmod +x llvm.sh
+-sudo ./llvm.sh 19
++sudo ./llvm.sh 21
+ ```
+ 
+-Install LLVM 19 on Fedora Linux 40 or newer:
++Install LLVM 21 on Fedora Linux 40 or newer:
+ 
+ ```sh
+-sudo dnf install 'clang(major) = 19' 'llvm(major) = 19'
++sudo dnf install 'clang(major) = 21' 'llvm(major) = 21'
+ ```
+ 
+ ### macOS
+ 
+-Install LLVM 19 with [Homebrew](https://brew.sh):
++Install LLVM 21 with [Homebrew](https://brew.sh):
+ 
+ ```sh
+-brew install llvm@19
++brew install llvm@21
+ ```
+ 
+ Homebrew won't add any of the tools to your `$PATH`. That's okay; the build script knows how to find them.
+@@ -43,14 +43,18 @@
+ 
+ LLVM is downloaded automatically (along with other external binary dependencies) by `PCbuild\build.bat`.
+ 
+-Otherwise, you can install LLVM 19 [by searching for it on LLVM's GitHub releases page](https://github.com/llvm/llvm-project/releases?q=19), clicking on "Assets", downloading the appropriate Windows installer for your platform (likely the file ending with `-win64.exe`), and running it. **When installing, be sure to select the option labeled "Add LLVM to the system PATH".**
++Otherwise, you can install LLVM 21 [by searching for it on LLVM's GitHub releases page](https://github.com/llvm/llvm-project/releases?q=21), clicking on "Assets", downloading the appropriate Windows installer for your platform (likely the file ending with `-win64.exe`), and running it. **When installing, be sure to select the option labeled "Add LLVM to the system PATH".**
+ 
+ Alternatively, you can use [chocolatey](https://chocolatey.org):
+ 
+ ```sh
+-choco install llvm --version=19.1.0
++choco install llvm --version=21.1.8
+ ```
+ 
++### Dev Containers
++
++If you are working on CPython in a [Codespaces instance](https://devguide.python.org/getting-started/setup-building/#using-codespaces), there's no
++need to install LLVM as the Fedora 42 base image includes LLVM 21 out of the box.
+ 
+ ## Building
+ 
+Index: Python-3.14.3/Tools/jit/_llvm.py
+===================================================================
+--- Python-3.14.3.orig/Tools/jit/_llvm.py	2026-03-28 19:07:01.506684972 +0100
++++ Python-3.14.3/Tools/jit/_llvm.py	2026-03-28 19:07:08.905859205 +0100
+@@ -10,9 +10,9 @@
+ 
+ import _targets
+ 
+-_LLVM_VERSION = 19
++_LLVM_VERSION = 21
+ _LLVM_VERSION_PATTERN = re.compile(rf"version\s+{_LLVM_VERSION}\.\d+\.\d+\S*\s+")
+-_EXTERNALS_LLVM_TAG = "llvm-19.1.7.0"
++_EXTERNALS_LLVM_TAG = "llvm-21.1.4.0"
+ 
+ _P = typing.ParamSpec("_P")
+ _R = typing.TypeVar("_R")
+@@ -38,6 +38,13 @@
+ _CORES = asyncio.BoundedSemaphore(os.cpu_count() or 1)
+ 
+ 
++def _candidate_names(tool: str) -> list[str]:
++    candidates = [tool]
++    if os.name == "nt":
++        candidates.append(f"{tool}.exe")
++    return candidates
++
++
+ async def _run(tool: str, args: typing.Iterable[str], echo: bool = False) -> str | None:
+     command = [tool, *args]
+     async with _CORES:
+@@ -70,24 +77,26 @@
+ @_async_cache
+ async def _find_tool(tool: str, *, echo: bool = False) -> str | None:
+     # Unversioned executables:
+-    path = tool
+-    if await _check_tool_version(path, echo=echo):
+-        return path
++    for path in _candidate_names(tool):
++        if await _check_tool_version(path, echo=echo):
++            return path
+     # Versioned executables:
+-    path = f"{tool}-{_LLVM_VERSION}"
+-    if await _check_tool_version(path, echo=echo):
+-        return path
++    for path in _candidate_names(f"{tool}-{_LLVM_VERSION}"):
++        if await _check_tool_version(path, echo=echo):
++            return path
+     # PCbuild externals:
+     externals = os.environ.get("EXTERNALS_DIR", _targets.EXTERNALS)
+-    path = os.path.join(externals, _EXTERNALS_LLVM_TAG, "bin", tool)
+-    if await _check_tool_version(path, echo=echo):
+-        return path
++    for name in _candidate_names(tool):
++        path = os.path.join(externals, _EXTERNALS_LLVM_TAG, "bin", name)
++        if await _check_tool_version(path, echo=echo):
++            return path
+     # Homebrew-installed executables:
+     prefix = await _get_brew_llvm_prefix(echo=echo)
+     if prefix is not None:
+-        path = os.path.join(prefix, "bin", tool)
+-        if await _check_tool_version(path, echo=echo):
+-            return path
++        for name in _candidate_names(tool):
++            path = os.path.join(prefix, "bin", name)
++            if await _check_tool_version(path, echo=echo):
++                return path
+     # Nothing found:
+     return None
+ 
+Index: Python-3.14.3/Tools/jit/_stencils.py
+===================================================================
+--- Python-3.14.3.orig/Tools/jit/_stencils.py	2026-03-28 19:07:01.511197803 +0100
++++ Python-3.14.3/Tools/jit/_stencils.py	2026-03-28 19:07:08.905962259 +0100
+@@ -302,6 +302,23 @@
+                 self._trampolines.add(ordinal)
+                 hole.addend = ordinal
+                 hole.symbol = None
++            # x86_64 Darwin trampolines for external symbols
++            elif (
++                hole.kind == "X86_64_RELOC_BRANCH"
++                and hole.value is HoleValue.ZERO
++                and hole.symbol not in self.symbols
++            ):
++                hole.func = "patch_x86_64_trampoline"
++                hole.need_state = True
++                assert hole.symbol is not None
++                if hole.symbol in known_symbols:
++                    ordinal = known_symbols[hole.symbol]
++                else:
++                    ordinal = len(known_symbols)
++                    known_symbols[hole.symbol] = ordinal
++                self._trampolines.add(ordinal)
++                hole.addend = ordinal
++                hole.symbol = None
+         self.code.remove_jump()
+         self.code.add_nops(nop=nop, alignment=alignment)
+         self.data.pad(8)
+Index: Python-3.14.3/Tools/jit/_targets.py
+===================================================================
+--- Python-3.14.3.orig/Tools/jit/_targets.py	2026-03-28 19:07:01.513403213 +0100
++++ Python-3.14.3/Tools/jit/_targets.py	2026-03-28 19:07:08.906085812 +0100
+@@ -150,10 +150,6 @@
+             "-fno-asynchronous-unwind-tables",
+             # Don't call built-in functions that we can't find or patch:
+             "-fno-builtin",
+-            # Emit relaxable 64-bit calls/jumps, so we don't have to worry about
+-            # about emitting in-range trampolines for out-of-range targets.
+-            # We can probably remove this and emit trampolines in the future:
+-            "-fno-plt",
+             # Don't call stack-smashing canaries that we can't find or patch:
+             "-fno-stack-protector",
+             "-std=c11",
+@@ -523,7 +519,7 @@
+         condition = "defined(__aarch64__) && defined(__APPLE__)"
+         target = _MachO(host, condition, alignment=8, prefix="_")
+     elif re.fullmatch(r"aarch64-pc-windows-msvc", host):
+-        args = ["-fms-runtime-lib=dll", "-fplt"]
++        args = ["-fms-runtime-lib=dll"]
+         condition = "defined(_M_ARM64)"
+         target = _COFF(host, condition, alignment=8, args=args)
+     elif re.fullmatch(r"aarch64-.*-linux-gnu", host):
+@@ -532,6 +528,7 @@
+             # On aarch64 Linux, intrinsics were being emitted and this flag
+             # was required to disable them.
+             "-mno-outline-atomics",
++            "-fno-plt",
+         ]
+         condition = "defined(__aarch64__) && defined(__linux__)"
+         target = _ELF(host, condition, alignment=8, args=args)
+@@ -551,7 +548,7 @@
+         condition = "defined(_M_X64)"
+         target = _COFF(host, condition, args=args)
+     elif re.fullmatch(r"x86_64-.*-linux-gnu", host):
+-        args = ["-fno-pic", "-mcmodel=medium", "-mlarge-data-threshold=0"]
++        args = ["-fno-pic", "-mcmodel=medium", "-mlarge-data-threshold=0", "-fno-plt"]
+         condition = "defined(__x86_64__) && defined(__linux__)"
+         target = _ELF(host, condition, args=args)
+     else:

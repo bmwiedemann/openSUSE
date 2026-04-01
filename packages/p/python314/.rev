@@ -2802,4 +2802,30 @@ jsc#PED-15851</comment>
   opening `.pyc` files (bsc#1259240, CVE-2026-2297).</comment>
     <requestid>1341600</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>9809a2dbee1cd4afe91353c734f8bcfc</srcmd5>
+    <version>3.14.3</version>
+    <time>1775065820</time>
+    <user>anag_factory</user>
+    <comment>- Add bsc1260884-llvm21-support.patch which updates the
+  interpreter to use LLVM 21 for building JIT builds
+  (bsc#1260884).
+
+- Add CVE-2026-4519-webbrowser-open-dashes.patch to reject
+  leading dashes in webbrowser URLs (bsc#1260026, CVE-2026-4519,
+  gh#python/cpython#143930).
+
+- Add CVE-2025-13462-tarinfo-header-parse.patch which skips
+  TarInfo DIRTYPE normalization during GNU long name handling
+  (bsc#1259611, CVE-2025-13462).
+
+- Add CVE-2026-4224-expat-unbound-C-recursion.patch avoiding
+  unbound C recursion in conv_content_model in pyexpat.c
+  (bsc#1259735, CVE-2026-4224).
+
+- Add CVE-2026-3644-cookies-Morsel-update-II.patch to reject
+  control characters in http.cookies.Morsel.update() and
+  http.cookies.BaseCookie.js_output (bsc#1259734, CVE-2026-3644).</comment>
+    <requestid>1343741</requestid>
+  </revision>
 </revisionlist>
