@@ -734,4 +734,41 @@
     <comment></comment>
     <requestid>1328960</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3015a3fe0896fdec3e2432795ad6420c</srcmd5>
+    <version>20260330.00</version>
+    <time>1775065979</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260330.00
+  * bump timeouts for all workflows (#940)
+- from version 20260326.00
+  * Cover exec_resource.go by unit tests (#934)
+- from version 20260318.00
+  * Integrate OSConfig agent with ReportVmInventory (#923)
+- from version 20260313.02
+  * remove cacheonly flag from yum upgrade (#924)
+- from version 20260313.01
+  * conditions python version override (#927)
+- from version 20260313.00
+  * Fix presubmits by explicitly set python version for rpm based systems (#926)
+- from version 20260311.00
+  * Bump osconfig version (#922)
+- from version 20260309.02
+  * Extend OSV scalibr extractor (#921)
+- from version 20260309.01
+  * upgrade golang.org/x/crypto and it's transitive deps (#918)
+- from version 20260309.00
+  * Add purl to pkg info (#920)
+- from version 20260306.00
+  * Add 'Type' field to PkgInfo (#919)
+- from version 20260303.01
+  * Upgrade go.opentelemetry.io/otel/sdk (#913)
+- from version 20260303.00
+  * Bump github.com/vbatts/tar-split from 0.11.5 to 0.12.2 (#908)
+- from version 20260302.00
+  * Bump github.com/spdx/tools-golang from 0.5.3 to 0.5.7 (#906)
+- from version 20260126.00
+  * Bump go.opentelemetry.io/otel/sdk from 1.38.0 to 1.39.0 (#905) (forwarded request 1344163 from glaubitz)</comment>
+    <requestid>1344176</requestid>
+  </revision>
 </revisionlist>
