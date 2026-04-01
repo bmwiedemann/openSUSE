@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        9.0.8
+Version:        10.0.0
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
@@ -54,35 +54,7 @@ BuildRequires:  po4a >= 0.45
 BuildRequires:  source-highlight
 BuildRequires:  perl(Unicode::LineBreak)
 %if %{with pdf}
-BuildRequires:  dblatex >= 0.3.4
-BuildRequires:  texlive-babel-catalan
-BuildRequires:  texlive-babel-dutch
-BuildRequires:  texlive-babel-french
-BuildRequires:  texlive-babel-german
-BuildRequires:  texlive-babel-italian
-BuildRequires:  texlive-babel-polish
-BuildRequires:  texlive-babel-russian
-BuildRequires:  texlive-babel-spanish
-BuildRequires:  texlive-fandol
-BuildRequires:  texlive-gnu-freefont
-BuildRequires:  texlive-xetex
-BuildRequires:  vlgothic-fonts
-BuildRequires:  tex(8r.enc)
-BuildRequires:  tex(bahasa.ldf)
-BuildRequires:  tex(cmap.sty)
-BuildRequires:  tex(eu1enc.def)
-BuildRequires:  tex(fancybox.sty)
-BuildRequires:  tex(japanese.ldf)
-BuildRequires:  tex(mathptmx.sty)
-BuildRequires:  tex(mathrsfs.sty)
-BuildRequires:  tex(pcrr8t.tfm)
-BuildRequires:  tex(phvb8t.tfm)
-BuildRequires:  tex(psyr.tfm)
-BuildRequires:  tex(ptmr8t.tfm)
-BuildRequires:  tex(pzdr.tfm)
-BuildRequires:  tex(upquote.sty)
-BuildRequires:  tex(xeCJK.sty)
-BuildRequires:  tex(xltxtra.sty)
+BuildRequires:  asciidoctor-web-pdf
 # kicad-doc owns the directories
 BuildRequires:  kicad-doc
 %endif
@@ -200,35 +172,24 @@ This package contains Chinese documentation and tutorials for KiCad
 
 # asciidoc errors out if the `[code]` style is used with an unknown language
 # https://gitlab.com/kicad/services/kicad-doc/-/issues/851
-find . -iname \*adoc -exec sed -i -e 's/\[code/\[source/' '{}' \;
+%dnl find . -iname \*adoc -exec sed -i -e 's/\[code/\[source/' '{}' \;
 # Fix incorrect column with specifiers
 # https://gitlab.com/kicad/services/kicad-doc/-/issues/852
 find . -iname \*adoc -exec sed -i -e '/\[.*cols=/ { :m s/\(cols=.*\)\([0-9]\)%/\1\2/g ; t m }' '{}' \;
 # asciidoc interprets the '[--...]' on a new line as a style name
-find . -iname cli.adoc -exec sed -i -e 's/^\[--/ \[--/' '{}' \;
-
-# These files are actually GIFs, https://gitlab.com/kicad/services/kicad-doc/-/issues/822
-mv src/gerbview/images/zh/gerbview_x2_attribute.{png,gif}
-mv src/gerbview/images/zh/gerbview_x2_component.{png,gif}
-mv src/gerbview/images/zh/gerbview_x2_net.{png,gif}
-
-%if %{with pdf}
-# Workaround for dblatex bug #117 - randomly selected warning symbol
-cp /usr/share/dblatex/latex/graphics/warning.pdf CMakeSupport/
-%endif
+%dnl find . -iname cli.adoc -exec sed -i -e 's/^\[--/ \[--/' '{}' \;
 
 %build
 # Supported output formats: html;pdf;epub;
 %if %{with pdf}
-# SOURCE_DATE_EPOCH affirmation variable used by TeX
-export FORCE_SOURCE_DATE=1
 # Do not build PL translations, bad interaction of po4a, asciidoc and xetex (gh#KiCad/kicad-doc#697)
 # RU also fails, "Undefined control sequence \cyrchar."
-%cmake -DKICAD_DOC_PATH=%{_docdir}/kicad/help -DADOC_TOOLCHAIN=asciidoc -DPDF_GENERATOR=dblatex -DBUILD_FORMATS='pdf;' -DLANGUAGES='ca;de;en;es;fr;id;it;ja;zh'
+%cmake -DKICAD_DOC_PATH=%{_docdir}/kicad/help -DADOC_TOOLCHAIN=asciidoc -DPDF_GENERATOR=asciidoctorpdf -DBUILD_FORMATS='pdf;' -DLANGUAGES='ca;de;en;es;fr;id;it;ja;zh'
 %else
 %cmake -DKICAD_DOC_PATH=%{_docdir}/kicad/help -DADOC_TOOLCHAIN=asciidoc -DBUILD_FORMATS='html;'
 %endif
-%{make_jobs}
+# Parallel build is broken ...
+%cmake_build -j1
 
 %install
 %cmake_install
@@ -241,7 +202,7 @@ done
 %files
 %dir %{_docdir}/kicad/
 %dir %{_docdir}/kicad/help/
-%doc AUTHORS_README.adoc CHEATSHEET.adoc README.adoc
+%doc README.adoc
 %license LICENSE.adoc
 %endif
 
