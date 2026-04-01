@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-billingbenefits
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%define realversion 1.0.0b1
+%define realversion 1.0.0b2
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-billingbenefits
-Version:        1.0.0~b1
+Version:        1.0.0~b2
 Release:        0
 Summary:        Microsoft Azure Billingbenefits Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-billingbenefits/azure-mgmt-billingbenefits-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_billingbenefits/azure_mgmt_billingbenefits-%{realversion}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -34,13 +34,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
-Requires:       (python-azure-mgmt-core >= 1.3.2 with python-azure-mgmt-core < 2.0.0)
-Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
-Requires:       python-msrest >= 0.7.1
+Requires:       (python-azure-mgmt-core >= 1.6.0 with python-azure-mgmt-core < 2.0.0)
+Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
+Requires:       python-typing_extensions >= 4.6.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 
@@ -52,7 +51,7 @@ This is the Microsoft Azure Billingbenefits Management Client Library.
 This package has been tested with Python 3.7+.
 
 %prep
-%setup -q -n azure-mgmt-billingbenefits-%{realversion}
+%setup -q -n azure_mgmt_billingbenefits-%{realversion}
 
 %build
 %pyproject_wheel
