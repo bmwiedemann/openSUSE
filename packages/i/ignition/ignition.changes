@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 11:41:47 UTC 2026 - Ignaz Forster <iforster@suse.com>
+
+- Add CVE-2026-33186.patch
+  * Fixes [bsc#1260251]
+
+-------------------------------------------------------------------
 Mon Mar  9 15:33:37 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Do not hardcode path to dracut hooks. Since dracut-102, hooks were
