@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-bootstrap3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-bootstrap3
-Version:        24.3
+Version:        26.1
 Release:        0
 Summary:        Bootstrap support for Django projects
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/zostera/django-bootstrap3
 Source0:        https://files.pythonhosted.org/packages/source/d/django_bootstrap3/django_bootstrap3-%{version}.tar.gz
-BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module uv-build >= 0.9.6}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django
+Requires:       python-Django >= 4.2
 BuildArch:      noarch
 %python_subpackages
 

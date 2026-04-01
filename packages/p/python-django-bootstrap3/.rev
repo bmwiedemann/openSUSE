@@ -39,4 +39,33 @@
     <comment></comment>
     <requestid>1230569</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ccca7d027db55970a766a1d01941355</srcmd5>
+    <version>26.1</version>
+    <time>1775065939</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.1:
+  * Refactor release workflow to tag-based publishing via GitHub
+    Actions (#1102).
+  * Remove tests folder from coverage source (#1100).
+  * Add smoke test (#1101).
+  * Remove support for Django 5.1 (#1098).
+  * Fix tox and CI (#1098).
+  * Remove support for Python 3.9 (EOL) (#1091, #1093).
+  * Add support for Python 3.14 (#1089).
+  * Add support for Django 6.0 (#1088).
+  * Add support for Django 5.2 (#).
+  * Symlink CHANGELOG.md into docs for Sphinx (#1076).
+  * Drop support for Django 5.0 (EOL) (#1075).
+  * Use `astral-sh/setup-uv` in GitHub Actions (#1080).
+  * Use `uv build` and setup-uv (#1081).
+  * Use `uv.lock` in GitHub Actions (#1082).
+  * Add support for Python 3.13 (#1064, #1065).
+  * Use uv and just for package management (#1064).
+  * Drop support for Python 3.8 (EOL) (#1061).
+
+- include the templatetags
+- initial build</comment>
+    <requestid>1344064</requestid>
+  </revision>
 </revisionlist>

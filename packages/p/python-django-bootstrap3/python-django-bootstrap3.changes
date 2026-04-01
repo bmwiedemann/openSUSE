@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr  1 08:00:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.1:
+  * Refactor release workflow to tag-based publishing via GitHub
+    Actions (#1102).
+  * Remove tests folder from coverage source (#1100).
+  * Add smoke test (#1101).
+  * Remove support for Django 5.1 (#1098).
+  * Fix tox and CI (#1098).
+  * Remove support for Python 3.9 (EOL) (#1091, #1093).
+  * Add support for Python 3.14 (#1089).
+  * Add support for Django 6.0 (#1088).
+  * Add support for Django 5.2 (#).
+  * Symlink CHANGELOG.md into docs for Sphinx (#1076).
+  * Drop support for Django 5.0 (EOL) (#1075).
+  * Use `astral-sh/setup-uv` in GitHub Actions (#1080).
+  * Use `uv build` and setup-uv (#1081).
+  * Use `uv.lock` in GitHub Actions (#1082).
+  * Add support for Python 3.13 (#1064, #1065).
+  * Use uv and just for package management (#1064).
+  * Drop support for Python 3.8 (EOL) (#1061).
+
+-------------------------------------------------------------------
 Thu Dec 12 10:39:13 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 24.3
@@ -37,10 +60,10 @@ Thu Jul 23 08:23:30 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 -------------------------------------------------------------------
 Thu Jan 22 13:42:51 UTC 2015 - oliver.bengs@opensuse.org
 
-- include the templatetags 
+- include the templatetags
 
 -------------------------------------------------------------------
 Thu Jan 22 13:27:03 UTC 2015 - oliver.bengs@opensuse.org
 
-- initial build 
+- initial build
 
