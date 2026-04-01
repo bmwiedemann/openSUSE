@@ -1,6 +1,6 @@
-From b78c219b2441d6a9738ac56ba6aae74c177ea851 Mon Sep 17 00:00:00 2001
+From 4dbc1bd54ef9c5a2f91ca4c537df3d70a014a06c Mon Sep 17 00:00:00 2001
 From: Ralf Habacker <ralf.habacker@freenet.de>
-Date: Thu, 10 Oct 2024 13:46:03 +0200
+Date: Wed, 1 Apr 2026 12:26:04 +0200
 Subject: [PATCH] Fix using local vdf module
 
 ---
@@ -12,13 +12,13 @@ Subject: [PATCH] Fix using local vdf module
  5 files changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/setup.cfg b/setup.cfg
-index 7168136..44c9d3a 100644
+index 45185c6..44d60c2 100644
 --- a/setup.cfg
 +++ b/setup.cfg
-@@ -30,7 +30,6 @@ package_dir =
+@@ -29,7 +29,6 @@ package_dir =
+     = src
  include_package_data = True
  install_requires =
-     setuptools  # Required for pkg_resources
 -    vdf>=3.2
      Pillow
  setup_requires =
@@ -37,10 +37,10 @@ index e79136b..722e6f5 100644
  # Py2 & Py3 compatibility
  if sys.version_info[0] >= 3:
 diff --git a/src/protontricks/steam.py b/src/protontricks/steam.py
-index 98793e3..c8307ff 100644
+index 5f13206..888f53d 100644
 --- a/src/protontricks/steam.py
 +++ b/src/protontricks/steam.py
-@@ -6,7 +6,7 @@ import zlib
+@@ -8,7 +8,7 @@ import glob
  from collections import OrderedDict
  from pathlib import Path
  
@@ -50,7 +50,7 @@ index 98793e3..c8307ff 100644
  from ._vdf import binary_loads as vendored_binary_loads
  from .util import is_steam_deck, lower_dict
 diff --git a/tests/conftest.py b/tests/conftest.py
-index 3553a94..c6d3706 100644
+index e604326..17fb338 100644
 --- a/tests/conftest.py
 +++ b/tests/conftest.py
 @@ -8,7 +8,7 @@ from pathlib import Path
@@ -63,7 +63,7 @@ index 3553a94..c6d3706 100644
  from protontricks.cli.desktop_install import \
      cli as desktop_install_cli_entrypoint
 diff --git a/tests/test_steam.py b/tests/test_steam.py
-index 347a034..6cb255f 100644
+index 81c3dc0..4a2c5bd 100644
 --- a/tests/test_steam.py
 +++ b/tests/test_steam.py
 @@ -4,7 +4,7 @@ import time
@@ -76,5 +76,5 @@ index 347a034..6cb255f 100644
  from protontricks.steam import (SteamApp, _get_steamapps_subdirs,
                                  find_appid_proton_prefix,
 -- 
-2.46.0
+2.51.0
 

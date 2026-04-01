@@ -1,7 +1,7 @@
 #
 # spec file for package protontricks
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           protontricks
-Version:        1.12.0
+Version:        1.14.1
 Release:        0
 Summary:        Winetricks for Proton-enabled Games
 License:        GPL-3.0-only
@@ -28,11 +28,8 @@ Patch1:         0001-Fix-using-local-vdf-module.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Pillow
 BuildRequires:  python3-setuptools_scm
-BuildRequires:  update-desktop-files
 Requires:       python3-Pillow
-Requires:       python3-setuptools
 Requires:       winetricks
 Requires:       (yad or zenity)
 BuildArch:      noarch
@@ -51,7 +48,6 @@ chmod +x src/protontricks/data/scripts/*.sh
 
 %install
 %python3_install
-%suse_update_desktop_file %{name}
 %fdupes -s %{buildroot}
 
 %files
