@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:28:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * New exit code of 2 for input file parse errors
+  * Drop Bionic testing
+  * Fix authors/maintainers format in pyproject.toml
+  * Comment reminding to replace extras with depgroups
+
+-------------------------------------------------------------------
 Wed Mar 11 17:21:03 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
-- Use distribution-release instead of openSUSE-release for 
+- Use distribution-release instead of openSUSE-release for
   portability
 
 -------------------------------------------------------------------
@@ -49,7 +58,7 @@ Mon Mar 27 06:49:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 - Add patch remove-mock.patch:
   * Remove use of external mock module, try unittest.mock first.
 - Switch to pyproject macros.
-- Actually run the testsuite using pytest. 
+- Actually run the testsuite using pytest.
 - Stop using %python_sitelib/*
 
 -------------------------------------------------------------------

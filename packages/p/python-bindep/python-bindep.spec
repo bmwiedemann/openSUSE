@@ -28,7 +28,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-bindep%{psuffix}
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        Binary dependency utility
 License:        Apache-2.0

@@ -119,4 +119,19 @@
     <comment></comment>
     <requestid>1338474</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>84d31ad0b88ac9e6c128eb385e5e7aa7</srcmd5>
+    <version>2.14.0</version>
+    <time>1775065870</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.14.0:
+  * New exit code of 2 for input file parse errors
+  * Drop Bionic testing
+  * Fix authors/maintainers format in pyproject.toml
+  * Comment reminding to replace extras with depgroups
+
+- Use distribution-release instead of openSUSE-release for
+- Actually run the testsuite using pytest.</comment>
+    <requestid>1343776</requestid>
+  </revision>
 </revisionlist>
