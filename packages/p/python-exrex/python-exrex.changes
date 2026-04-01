@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:31:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.0:
+  * fix invalid escape sequence in regex
+
+-------------------------------------------------------------------
 Mon Jun  9 13:26:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
@@ -12,7 +18,7 @@ Tue May 27 10:23:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
 Sun Mar 12 08:36:45 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 0.11.0:
- - Add support for \w and \W 
+ - Add support for \w and \W
  - fix utf-8
  - Fix: Import error sre_parse: sre_parse module was moved in py3.11
 - remove obsolete fix-setup-encoding.patch

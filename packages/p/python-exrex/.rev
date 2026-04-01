@@ -81,4 +81,15 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1284197</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6197645cae6b100cf70e1f14579bdd1b</srcmd5>
+    <version>0.12.0</version>
+    <time>1775065932</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.0:
+  * fix invalid escape sequence in regex
+
+ - Add support for \w and \W</comment>
+    <requestid>1344050</requestid>
+  </revision>
 </revisionlist>

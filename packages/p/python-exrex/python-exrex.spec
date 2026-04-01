@@ -1,7 +1,7 @@
 #
 # spec file for package python-exrex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-exrex
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Irregular methods for regular expressions
 License:        AGPL-3.0-or-later
