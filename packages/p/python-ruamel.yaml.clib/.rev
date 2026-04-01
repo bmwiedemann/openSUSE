@@ -93,4 +93,16 @@
     <comment></comment>
     <requestid>1304078</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3f2a832edd146f152cd036346f2d7e16</srcmd5>
+    <version>0.2.15</version>
+    <time>1775066099</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.2.15:
+  * Support python 3.14
+  * README fixes
+
+- Update to 0.2.7:</comment>
+    <requestid>1343985</requestid>
+  </revision>
 </revisionlist>
