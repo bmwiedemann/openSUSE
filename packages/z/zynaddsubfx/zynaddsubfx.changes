@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  1 12:25:13 UTC 2026 - Dave Plater <davejplater@gmail.com>
+
+- Fix gcc16 build with 0001-Bump-C-version-to-C-20.patch.
+
+-------------------------------------------------------------------
 Sat Apr  1 17:09:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix-missing-include.patch: Add missing #include <cstdint>
