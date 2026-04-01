@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 31 12:46:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.33.1:
+  * Fixed test cleanup for CVE-2026-25645 to avoid leaving
+    unnecessary files in the tmp directory.
+  * Fixed Content-Type header parsing for malformed values.
+  * Improved error consistency for malformed header values.
+
+-------------------------------------------------------------------
 Fri Mar 27 07:05:22 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.33.0 (bsc#1260589, CVE-2026-25645):

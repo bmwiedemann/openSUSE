@@ -1013,4 +1013,16 @@
 - Drop uneeded patch fix-chardet-RequestsDependencyWarning.patch</comment>
     <requestid>1343119</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>bb31a8783470689552b3a9456e94cfa6</srcmd5>
+    <version>2.33.1</version>
+    <time>1775066096</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.33.1:
+  * Fixed test cleanup for CVE-2026-25645 to avoid leaving
+    unnecessary files in the tmp directory.
+  * Fixed Content-Type header parsing for malformed values.
+  * Improved error consistency for malformed header values.</comment>
+    <requestid>1343939</requestid>
+  </revision>
 </revisionlist>
