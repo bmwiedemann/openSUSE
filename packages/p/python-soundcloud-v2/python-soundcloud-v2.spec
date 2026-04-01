@@ -1,7 +1,7 @@
 #
 # spec file for package python-soundcloud-v2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-soundcloud-v2
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        Python wrapper for the internal v2 SoundCloud API
 License:        MIT
 URL:            https://github.com/7x11x13/soundcloud.py
-Source:         https://files.pythonhosted.org/packages/source/s/soundcloud-v2/soundcloud-v2-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/soundcloud-v2/soundcloud_v2-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  %{python_module wheel}
@@ -41,7 +41,7 @@ BuildArch:      noarch
 Python wrapper for the internal v2 SoundCloud API. Does not require an API key.
 
 %prep
-%autosetup -p1 -n soundcloud-v2-%{version}
+%autosetup -p1 -n soundcloud_v2-%{version}
 
 %build
 %pyproject_wheel

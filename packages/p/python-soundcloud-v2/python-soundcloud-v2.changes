@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 19:30:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.2:
+  * fix client_id retrieval
+  * fix: user created_at may not be present in response
+
+-------------------------------------------------------------------
 Wed Sep 18 06:14:10 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 1.6.0. 
+- Initial release of 1.6.0.
