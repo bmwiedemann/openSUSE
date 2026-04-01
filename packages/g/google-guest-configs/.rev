@@ -475,4 +475,21 @@
     <comment></comment>
     <requestid>1330969</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d4e332d6d650984c8761d6ab034f466b</srcmd5>
+    <version>20260306.00</version>
+    <time>1775065969</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260306.00
+  * gce-nic-naming: fix divide-by-zero error
+- from version 20260305.00
+  * set_multiqueue: detect IRDMA devices using their `infiniband/` directory
+- from version 20260303.00
+  * set_multiqueue: Special tunes for x4 machine family
+- from version 20260223.00
+  * gce-nic-naming: restore fallback to hardcoded `ip` paths
+- from version 20260121.00
+  * set_multiqueue: set a4x-max ring len before irq affinity (forwarded request 1344108 from glaubitz)</comment>
+    <requestid>1344117</requestid>
+  </revision>
 </revisionlist>
