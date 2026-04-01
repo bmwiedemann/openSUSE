@@ -932,4 +932,21 @@
   * Updated Dockerfile to use openssl-dev for compatibility with SSL_CIPHER_standard_name(3ssl).</comment>
     <requestid>1333279</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>21d1db5ac883689231066c555f045472</srcmd5>
+    <version>1.10.2</version>
+    <time>1775065971</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.10.2:
+  * Added detection for Arc and Zen browsers in the HTML report.
+  * Added Georgian translation.
+  * Fixed a crash caused by invalid country/city parsing from the GeoIP database.
+  * Fixed empty string data field crashing the HTML report on initial page load
+    when entries contain no Referer, unknown UA strings, missing Host headers,
+    or unresolvable GeoIP locations.
+  * Fixed relative paths not being resolved to absolute paths while ingesting data.
+  * Fixed old local stored preference objects not being validated on load,
+    preventing corrupted localStorage from breaking the UI.</comment>
+    <requestid>1344124</requestid>
+  </revision>
 </revisionlist>

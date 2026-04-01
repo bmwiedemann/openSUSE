@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  1 13:26:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.2:
+  * Added detection for Arc and Zen browsers in the HTML report.
+  * Added Georgian translation.
+  * Fixed a crash caused by invalid country/city parsing from the GeoIP database.
+  * Fixed empty string data field crashing the HTML report on initial page load
+    when entries contain no Referer, unknown UA strings, missing Host headers,
+    or unresolvable GeoIP locations.
+  * Fixed relative paths not being resolved to absolute paths while ingesting data.
+  * Fixed old local stored preference objects not being validated on load,
+    preventing corrupted localStorage from breaking the UI.
+
+-------------------------------------------------------------------
 Mon Feb 16 08:40:28 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.1:
