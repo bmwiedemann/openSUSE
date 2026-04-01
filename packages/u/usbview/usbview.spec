@@ -1,7 +1,7 @@
 #
 # spec file for package usbview
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,20 @@ Version:        3.1
 Release:        0
 Summary:        USB Topology and Device Viewer
 License:        GPL-2.0-only
-Group:          Hardware/Other
 URL:            https://github.com/gregkh/usbview
-Source:         https://github.com/gregkh/usbview/archive/refs/tags/v%{version}.tar.gz
-Source1:        %{name}.desktop
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-make-PNG_XPM-transparent.patch gh#gregkh/usbview#30
+Patch0:         fix-make-PNG_XPM-transparent.patch
+# PATCH-FIX-UPSTREAM fix-support-for-SuperSpeed+20Gb_s.patch gh#gregkh/usbview#34
+Patch1:         fix-support-for-SuperSpeed+20Gb_s.patch
 BuildRequires:  ImageMagick
+BuildRequires:  ImageMagick-config-7-upstream-open
+BuildRequires:  appstream-glib
 BuildRequires:  automake
-BuildRequires:  gtk3-devel
-BuildRequires:  update-desktop-files
+BuildRequires:  desktop-file-utils
+BuildRequires:  gcc
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gtk+-3.0)
 
 %description
 USBView is a GTK program that displays the topography of the devices
@@ -37,23 +43,30 @@ information on each of the devices. This can be useful to determine if
 a device is working properly.
 
 %prep
-%setup -q
+%autosetup -p1
+desktop-file-edit --remove-key=Categories \
+	--add-category=System --add-category=Monitor %{name}.desktop
 
 %build
 ./autogen.sh
 %configure
+%make_build
 
 %install
 %make_install
-%suse_update_desktop_file -i %{name} System Monitor
+
+%check
+appstream-util validate-relax --nonet \
+	%{buildroot}%{_datadir}/metainfo/com.kroah.%{name}.metainfo.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %license LICENSES/GPL-2.0-only.txt
 %doc ChangeLog README
-%{_bindir}/usbview
-%{_datadir}/applications/*.desktop
-%{_datadir}/icons/hicolor/*/apps/usbview.*
-%{_datadir}/metainfo/com.kroah.usbview.metainfo.xml
-%{_mandir}/man?/*.*
+%{_bindir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/usbview.{png,svg}
+%{_datadir}/metainfo/com.kroah.%{name}.metainfo.xml
+%{_mandir}/man8/%{name}.8%{?ext_man}
 
 %changelog

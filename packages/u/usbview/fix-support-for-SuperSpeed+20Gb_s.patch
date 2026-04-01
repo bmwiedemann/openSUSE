@@ -1,0 +1,22 @@
+From b72c9a350e887ac691332f46a66b2108ef3a7ed8 Mon Sep 17 00:00:00 2001
+From: Philip Langdale <philipl@overt.org>
+Date: Fri, 14 Apr 2023 11:21:57 -0700
+Subject: [PATCH] Add support for SuperSpeed+ (20Gb/s) in the speed field
+
+Signed-off-by: Philip Langdale <philipl@overt.org>
+---
+ usbtree.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/usbtree.c b/usbtree.c
+index 24ff74e..86c15d7 100644
+--- a/usbtree.c
++++ b/usbtree.c
+@@ -95,6 +95,7 @@ static void PopulateListBox (int deviceId)
+ 		case 480 :      tempString = "480Mb/s (high)";  break;
+ 		case 5000 :     tempString = "5Gb/s (super)";   break;
+ 		case 10000 :    tempString = "10Gb/s (super+)"; break;
++		case 20000 :    tempString = "20Gb/s (super+)"; break;
+ 		default :       tempString = "unknown";         break;
+ 	}
+ 	sprintf (string, "\nSpeed: %s", tempString);

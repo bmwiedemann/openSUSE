@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 31 06:25:39 UTC 2026 - munix9@googlemail.com
+
+- Fix build error "convert: attempt to perform an operation not
+  allowed by the security policy `SVG' @ 
+  error/constitute.c/IsCoderAuthorized/461."
+  * Add "BuildRequires:  ImageMagick-config-7-upstream-open"
+- Add fix-make-PNG_XPM-transparent.patch (gh#gregkh/usbview#30)
+- Add fix-support-for-SuperSpeed+20Gb_s.patch
+  * Add support for SuperSpeed+ (20Gb/s) in the speed field
+    (gh#gregkh/usbview#34)
+- Add %check section (appstream-util/desktop-file-validate)
+- Remove usbview.desktop (use the upstream version instead)
+- Remove %suse_update_desktop_file
+- Clean up spec file
+
+-------------------------------------------------------------------
 Sat Mar 23 07:22:22 UTC 2024 - munix9@googlemail.com
 
 - Update to version 3.1:

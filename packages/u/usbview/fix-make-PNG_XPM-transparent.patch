@@ -1,0 +1,77 @@
+From 7d59e2b2c1c96988a6f04d4bf3c601e882f00efd Mon Sep 17 00:00:00 2001
+From: "FeRD (Frank Dana)" <ferdnyc@gmail.com>
+Date: Wed, 22 May 2024 04:54:49 -0400
+Subject: [PATCH] Icons: Make PNG/XPM transparent, hi-res
+
+Extend the ImageMagick `convert` commands for generating icon bitmaps:
+- Add `-background none`, to render with background transparency.
+- Add `-density 300x300`, to render larger sizes at full resolution.
+
+Because the SVG's internal coordinate system is only sized for
+64x64 pixels, ImageMagick will render at that size and then scale
+the _bitmap_ up, when outputting larger image sizes. Increasing
+the DPI using `-density` allows it to upscale the SVG vectors at
+full resolution.
+
+Signed-off-by: FeRD (Frank Dana) <ferdnyc@gmail.com>
+---
+ Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 36f2e11..586db9c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -57,7 +57,7 @@ endif
+ $(icon_bitmaps_png): usbview_icon.svg
+ 	mkdir -p $$(dirname $@)
+ if HAVE_CONVERT
+-	$(CONVERT) -geometry $$(basename $$(dirname $$(dirname $@))) $< $@
++	$(CONVERT) -background none -density 300x300 -geometry $$(basename $$(dirname $$(dirname $@))) $< $@
+ else
+ 	echo "error: unable to generate $@ from $<"
+ 	exit 1
+@@ -66,7 +66,7 @@ endif
+ $(icon_bitmaps_xpm): usbview_icon.svg
+ 	mkdir -p $$(dirname $@)
+ if HAVE_CONVERT
+-	$(CONVERT) -geometry $$(basename $$(dirname $$(dirname $@))) $< $@
++	$(CONVERT) -background none -density 300x300 -geometry $$(basename $$(dirname $$(dirname $@))) $< $@
+ else
+ 	echo "error: unable to generate $@ from $<"
+ 	exit 1
+From d1184132784f2bd431fbb4c426ac82a607c99d34 Mon Sep 17 00:00:00 2001
+From: "FeRD (Frank Dana)" <ferdnyc@gmail.com>
+Date: Wed, 22 May 2024 05:25:25 -0400
+Subject: [PATCH] Reset icon DPI to 96x96 (screen-res)
+
+Output the icon bitmap images at standard 96 DPI, not the 300 DPI we
+temporarily scaled the coordinate system to when rasterizing the SVG.
+
+Signed-off-by: FeRD (Frank Dana) <ferdnyc@gmail.com>
+---
+ Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 586db9c..96fdef6 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -57,7 +57,7 @@ endif
+ $(icon_bitmaps_png): usbview_icon.svg
+ 	mkdir -p $$(dirname $@)
+ if HAVE_CONVERT
+-	$(CONVERT) -background none -density 300x300 -geometry $$(basename $$(dirname $$(dirname $@))) $< $@
++	$(CONVERT) -background none -density 300x300 -geometry $$(basename $$(dirname $$(dirname $@))) -density 96x96 $< $@
+ else
+ 	echo "error: unable to generate $@ from $<"
+ 	exit 1
+@@ -66,7 +66,7 @@ endif
+ $(icon_bitmaps_xpm): usbview_icon.svg
+ 	mkdir -p $$(dirname $@)
+ if HAVE_CONVERT
+-	$(CONVERT) -background none -density 300x300 -geometry $$(basename $$(dirname $$(dirname $@))) $< $@
++	$(CONVERT) -background none -density 300x300 -geometry $$(basename $$(dirname $$(dirname $@))) -density 96x96 $< $@
+ else
+ 	echo "error: unable to generate $@ from $<"
+ 	exit 1
