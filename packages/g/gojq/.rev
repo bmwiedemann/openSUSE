@@ -127,4 +127,25 @@
   * Improve performance and reduce memory allocation of long-running queries</comment>
     <requestid>1320791</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5bbffd27842252ca8bb023465e17bf82</srcmd5>
+    <version>0.12.19</version>
+    <time>1775065985</time>
+    <user>anag_factory</user>
+    <comment>- Update to v0.12.19
+  * Fix `gsub` and `sub` when the replacement emits multiple values
+  * Fix `fmax`, `fmin`, `modf` functions against NaN and infinities
+  * Fix `join/1` to use `add/0` implementation and handle null separator
+  * Fix `del` and `delpaths` on null to emit null
+  * Fix arithmetic operations on the minimum integer
+  * Fix `significand` function against subnormal numbers
+  * Fix handling of `--` in cli flag parsing for jq compatibility
+  * Fix `flatten/1` to emit error when the depth is NaN
+  * Fix array slice update to validate index types
+  * Fix string repetition boundary check to match jq behavior
+  * Implement `splits/2` using `match/2` for better jq compatibility
+  * Implement `to_entries` and `from_entries` in jq for simplicity
+  * Improve performance of regexp functions by caching compiled regexps</comment>
+    <requestid>1344179</requestid>
+  </revision>
 </revisionlist>

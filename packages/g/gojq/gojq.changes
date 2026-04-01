@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr  1 14:32:35 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v0.12.19
+  * Fix `gsub` and `sub` when the replacement emits multiple values
+  * Fix `fmax`, `fmin`, `modf` functions against NaN and infinities
+  * Fix `join/1` to use `add/0` implementation and handle null separator
+  * Fix `del` and `delpaths` on null to emit null
+  * Fix arithmetic operations on the minimum integer
+  * Fix `significand` function against subnormal numbers
+  * Fix handling of `--` in cli flag parsing for jq compatibility
+  * Fix `flatten/1` to emit error when the depth is NaN
+  * Fix array slice update to validate index types
+  * Fix string repetition boundary check to match jq behavior
+  * Implement `splits/2` using `match/2` for better jq compatibility
+  * Implement `to_entries` and `from_entries` in jq for simplicity
+  * Improve performance of regexp functions by caching compiled regexps
+
+-------------------------------------------------------------------
 Tue Dec  2 01:52:01 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v0.12.18

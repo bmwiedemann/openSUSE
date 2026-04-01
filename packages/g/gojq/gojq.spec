@@ -1,7 +1,7 @@
 #
 # spec file for package gojq
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gojq
-Version:        0.12.18
+Version:        0.12.19
 Release:        0
 Summary:        Pure Go implementation of jq
 License:        MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/itchyny/gojq
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        gojq.rpmlintrc
-BuildRequires:  go >= 1.21
+BuildRequires:  go >= 1.24
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
 
