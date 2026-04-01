@@ -1,7 +1,7 @@
 #
 # spec file for package zim
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Matthias Propst.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://zim-wiki.org
 Source:         https://zim-wiki.org/downloads/%{name}-%{version}.tar.gz
+Patch1:         0001-Fix-bug-with-_object_widgets-weakset.patch
 BuildRequires:  fdupes
 # For directory ownership
 BuildRequires:  %{python_module gobject >= 3.2}
@@ -59,7 +60,7 @@ version control.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %python3_build
