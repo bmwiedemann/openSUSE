@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr  1 10:08:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Added DeepWiki to README
+  * refactor: use in operator instead of regex operator in
+    crontab query to fix mssql regression
+  * refactor: tzaware crontab is due method
+  * feat: enable translation to PeriodicTaskInline verbose name
+  * Remove Python2 'next' assignment in scheduler
+  * Avoid the breaking change in dependency cron_descriptor v2
+  * GitHub Actions: Test on Python 3.14 release candidate 2
+  * Remove upper bound on Django version
+  * Add Django 6.0 support
+
+-------------------------------------------------------------------
 Mon Jan  5 11:44:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.8.1
@@ -19,7 +34,7 @@ Wed Apr 16 08:56:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
 - update to 2.8.0
   * Remove usages of deprecated setuptools API setuptools.command.test
   * Clean up running of setup.py as it's deprecated
-  * Add PeriodicTaskInline to the schedule admin to showing tasks 
+  * Add PeriodicTaskInline to the schedule admin to showing tasks
     using the schedule
   * Add official support for Django 5.2.
   * Issue 796: remove days of the week from human readable description

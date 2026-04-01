@@ -17,7 +17,7 @@
 
 
 Name:           python-django-celery-beat
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 Summary:        Database-backed Periodic Tasks
 License:        BSD-3-Clause

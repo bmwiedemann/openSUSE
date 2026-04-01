@@ -81,4 +81,24 @@
 - Add pytest9.patch to allow pytest 9</comment>
     <requestid>1325391</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>06d66d01b2c404399b07001c015ac18b</srcmd5>
+    <version>2.9.0</version>
+    <time>1775065956</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.9.0:
+  * Added DeepWiki to README
+  * refactor: use in operator instead of regex operator in
+    crontab query to fix mssql regression
+  * refactor: tzaware crontab is due method
+  * feat: enable translation to PeriodicTaskInline verbose name
+  * Remove Python2 'next' assignment in scheduler
+  * Avoid the breaking change in dependency cron_descriptor v2
+  * GitHub Actions: Test on Python 3.14 release candidate 2
+  * Remove upper bound on Django version
+  * Add Django 6.0 support
+
+  * Add PeriodicTaskInline to the schedule admin to showing tasks</comment>
+    <requestid>1344087</requestid>
+  </revision>
 </revisionlist>
