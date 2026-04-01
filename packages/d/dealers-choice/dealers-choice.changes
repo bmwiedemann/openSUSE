@@ -1,6 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 01 09:20:16 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- dealers-choice 0.0.11:
+
+  * bugfix: uninitialize miniaudio engine on sound load failure
+    Previously called exit() without ma_engine_uninit(), locking the audio
+    device and blocking other applications until it was replugged or the
+    system was restarted (#198)
+  * Change dealer rotation timeout from 60 seconds to 30
+  * Add version line to changes entry for v0.0.10
+
+-------------------------------------------------------------------
 Mon Mar 29 14:46:16 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
   
+- dealers-choice 0.0.10:
   + Add Texas Hold'em
   * bugfix: Client freezes (infinite loop in layout_cards) when slot-0
   + Connection screen: cancel button, per-attempt timeout, configurable
