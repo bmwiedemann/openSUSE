@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:27:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.26.0:
+  * Add Rand and Trunc expressions
+  * support array_agg(), array_agg_distinct(), first(), last()
+  * expose the variable definition in the Cloud Firestore API
+  * Expose the Database.firestore_data_access_mode parameter
+  * Expose the Database.mongodb_compatible_data_access_mode parameter
+  * Expose the Database.realtime_updates_mode parameter
+  * Expose the Index.unique parameter
+  * use cryptographically secure random for new document ids
+  * improve pipeline create_from (#1158)
+
+-------------------------------------------------------------------
 Thu Jan 15 12:50:18 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.23.0

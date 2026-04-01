@@ -43,4 +43,21 @@
 - Stop installing fixup scripts which have been removed upstream (forwarded request 1327380 from glaubitz)</comment>
     <requestid>1327388</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40003137019c072a5e2eb35267eea41c</srcmd5>
+    <version>2.26.0</version>
+    <time>1775065930</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.26.0:
+  * Add Rand and Trunc expressions
+  * support array_agg(), array_agg_distinct(), first(), last()
+  * expose the variable definition in the Cloud Firestore API
+  * Expose the Database.firestore_data_access_mode parameter
+  * Expose the Database.mongodb_compatible_data_access_mode parameter
+  * Expose the Database.realtime_updates_mode parameter
+  * Expose the Index.unique parameter
+  * use cryptographically secure random for new document ids
+  * improve pipeline create_from (#1158)</comment>
+    <requestid>1344048</requestid>
+  </revision>
 </revisionlist>
