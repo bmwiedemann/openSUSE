@@ -1,7 +1,7 @@
 #
 # spec file for package certmonger
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ Source0:        https://pagure.io/certmonger/archive/%{version}/certmonger-%{ver
 Patch01:        cm_dont_restart_external.patch
 Patch02:        add_some_missing_tests.patch
 Patch03:        disable_some_tests.patch
+Patch04:        tmpfiles_var_lib_certmonger.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -93,7 +94,6 @@ autoreconf -i -f
 
 %install
 %make_install
-mkdir -p %{buildroot}/%{_localstatedir}/lib/certmonger/{cas,requests}
 %{find_lang} %{name}
 
 %check
@@ -126,7 +126,10 @@ fi
 %{_sbindir}/certmonger
 %{_mandir}/man*/*
 %{_libexecdir}/%{name}
-%{_localstatedir}/lib/certmonger
+%ghost %dir %{_localstatedir}/lib/certmonger
+%ghost %dir %{_localstatedir}/lib/certmonger/cas
+%ghost %dir %{_localstatedir}/lib/certmonger/local
+%ghost %dir %{_localstatedir}/lib/certmonger/requests
 %{_unitdir}/certmonger.service
 %{_tmpfilesdir}/certmonger.conf
 %{_datadir}/dbus-1/system-services/*

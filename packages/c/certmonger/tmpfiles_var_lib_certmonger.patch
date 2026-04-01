@@ -1,0 +1,10 @@
+--- a/systemd/certmonger.conf.in
++++ b/systemd/certmonger.conf.in
+@@ -1,3 +1,7 @@
+ # certmonger uses libraries which may want to put temporary files in $TMPDIR,
+ # but SELinux policy won't let anything running as certmonger_t do that
+ d @CM_TMPDIR@ 0755 root root
++d /var/lib/certmonger 0755 root root
++d /var/lib/certmonger/cas 0755 root root
++d /var/lib/certmonger/local 0755 root root
++d /var/lib/certmonger/requests 0755 root root

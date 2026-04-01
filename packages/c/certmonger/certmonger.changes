@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar  4 16:31:55 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Fix immutable mode support issues; (jsc#PED-14766).
+  * patch tmpfiles_var_lib_certmonger.patch
+
+-------------------------------------------------------------------
 Thu Nov 13 09:26:01 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Cleanup dbus dependencies: dbus-send is part of dbus-1-tools
