@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1246418</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5042eccf496e47f2e3dc57c649617cdb</srcmd5>
+    <version>2.3.0</version>
+    <time>1775066105</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.0:
+  * drop python 3.6 support
+  * avoid tomli dependency on python 3.11+
+  * updated docs</comment>
+    <requestid>1344054</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-dom-toml
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-dom-toml%{psuffix}
-Version:        2.0.1
+Version:        2.3.0
 Release:        0
 Summary:        Dom's tools for Tom's Obvious, Minimal Language
 License:        MIT
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
+BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module coincidence}
 BuildRequires:  %{python_module dom-toml = %{version}}
 BuildRequires:  %{python_module pytest-timeout}
@@ -45,7 +46,7 @@ BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-domdf-python-tools >= 2.8.0
-Requires:       python-tomli >= 1.2.3
+Requires:       python-tomli-w >= 1.0.0
 BuildArch:      noarch
 %python_subpackages
 

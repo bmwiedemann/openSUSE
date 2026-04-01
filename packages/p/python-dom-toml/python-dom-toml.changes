@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:34:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * drop python 3.6 support
+  * avoid tomli dependency on python 3.11+
+  * updated docs
+
+-------------------------------------------------------------------
 Mon Feb 17 11:57:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.0.1
