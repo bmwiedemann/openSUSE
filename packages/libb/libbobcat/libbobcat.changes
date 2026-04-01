@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr  1 08:15:08 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix the build for gcc16
+  [+ 0001-Fix-build-with-gcc16.patch] (bsc#1260618)
+
+-------------------------------------------------------------------
+Wed Apr 01 08:08:44 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 6.11.00:
+  * Following a suggestion by Olivier Gelling the singleton classes Arg,
+    ArgConfig, ReadLineHistory, ReadLineBuf, and Signal no longer use
+    static std::unique_ptr members to handle the destruction of their objects
+    but local static objects defined in their initialize() members.
+
+-------------------------------------------------------------------
+Mon Oct 27 14:55:03 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 6.10.00:
+  * fixed a typo in the MemoryBridge manpage
+  * added 'flock' to CLASSES
+  * Fixing a bug in MemoryAccess
+
+-------------------------------------------------------------------
 Mon Oct 20 13:04:50 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to version 6.09.00:

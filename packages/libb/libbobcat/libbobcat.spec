@@ -1,7 +1,7 @@
 #
 # spec file for package libbobcat
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 
 Name:           %{_lib_name}%{?psuffix}
-Version:        6.09.00
+Version:        6.11.00
 Release:        0
 Summary:        Shared library implementing C++ classes that are frequently used
 License:        GPL-3.0-only
@@ -36,6 +36,7 @@ Group:          Development/Tools/Building
 URL:            https://gitlab.com/fbb-git/bobcat
 Source0:        https://gitlab.com/fbb-git/bobcat/-/archive/%{version}/bobcat-%{version}.tar.gz
 Source1:        initialbobcatlib
+Patch:          0001-Fix-build-with-gcc16.patch
 %if "%{name}" == "%{_lib_name}"
 BuildRequires:  icmake >= 12.03.00
 %endif
@@ -93,6 +94,9 @@ Bobcat static library
 export ICMAKE_CPPSTD="--std=c++2b"
 export CXXFLAGS="%{optflags} ${ICMAKE_CPPSTD} -Werror -fdiagnostics-color=never -ffat-lto-objects"
 export CXX="g++"
+# Workaround dealing with uninitlized temp dir content
+unset MALLOC_PERTURB_
+unset MALLOC_CHECK_
 sed -i 's/^#define CXX/\/\/ #define CXX/g' %{_name}/INSTALL.im
 sed -i 's/^#define CXXFLAGS/\/\/ #define CXXFLAGS/g' %{_name}/INSTALL.im
 sed -i 's/^#define DOC/\/\/ #define DOC/g' %{_name}/INSTALL.im
@@ -113,6 +117,9 @@ popd
 
 %install
 pushd %{_name}
+# Workaround dealing with uninitlized temp dir content
+unset MALLOC_PERTURB_
+unset MALLOC_CHECK_
 ./build install hl %{buildroot}
 popd
 

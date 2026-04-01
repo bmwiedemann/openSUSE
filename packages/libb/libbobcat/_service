@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://gitlab.com/fbb-git/bobcat.git</param>
-    <param name="revision">6.09.00</param>
+    <param name="revision">6.11.00</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>

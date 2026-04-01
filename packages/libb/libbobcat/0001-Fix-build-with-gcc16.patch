@@ -1,0 +1,81 @@
+From edcf503ecf467a649d6c22a6119db1eab24ae7e6 Mon Sep 17 00:00:00 2001
+From: vlefebvre <valentin.lefebvre@suse.com>
+Date: Wed, 1 Apr 2026 09:57:13 +0200
+Subject: [PATCH] Fix build with gcc16
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Add the iomanip include that gives the std::put_time method
+  * GCC16 will complains with:
+    `error: ‘put_time’ is not a member of ‘std’`
+* make the method countAddresses and countAliases in static from
+  Hostent.
+  They didn't use any member variables from the class. And as instance
+  method (non-static), it forces the compiler to pass the this pointer.
+  * GCC16 will complains with:
+    `this_9(D)’ may be used uninitialized`
+---
+ bobcat/highsysclock/highsysclock | 1 +
+ bobcat/hostent/countaddresses.cc | 2 +-
+ bobcat/hostent/countaliases.cc   | 2 +-
+ bobcat/hostent/hostent           | 6 +++---
+ 4 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/bobcat/highsysclock/highsysclock b/bobcat/highsysclock/highsysclock
+index afff9be2..64b1888f 100644
+--- a/bobcat/highsysclock/highsysclock
++++ b/bobcat/highsysclock/highsysclock
+@@ -2,6 +2,7 @@
+ #define INCLUDED_BOBCAT_HIGHSYSCLOCK_
+ 
+ #include <bobcat/clockbase>
++#include <iomanip>
+ 
+ namespace FBB
+ {
+diff --git a/bobcat/hostent/countaddresses.cc b/bobcat/hostent/countaddresses.cc
+index 2226019d..a3aba70c 100644
+--- a/bobcat/hostent/countaddresses.cc
++++ b/bobcat/hostent/countaddresses.cc
+@@ -1,7 +1,7 @@
+ #include "hostent.ih"
+ 
+ size_t Hostent::countAddresses(char const * const *addresses,
+-                                                    size_t length) const
++                                                    size_t length)
+ {
+     PTR  p = {addresses};
+     size_t n = 1;                 // counts the final 0-address
+diff --git a/bobcat/hostent/countaliases.cc b/bobcat/hostent/countaliases.cc
+index 8b04627e..68f4dd48 100644
+--- a/bobcat/hostent/countaliases.cc
++++ b/bobcat/hostent/countaliases.cc
+@@ -1,6 +1,6 @@
+ #include "hostent.ih"
+ 
+-size_t Hostent::countAliases(char const * const *alias) const
++size_t Hostent::countAliases(char const * const *alias)
+ {
+     size_t idx = 1;   // counts the final 0-ptr.
+ 
+diff --git a/bobcat/hostent/hostent b/bobcat/hostent/hostent
+index 621b9d75..dafaa917 100644
+--- a/bobcat/hostent/hostent
++++ b/bobcat/hostent/hostent
+@@ -52,9 +52,9 @@ class Hostent: private hostent
+         void destroy();
+                                             // the count functions also count
+                                             // the final 0-values.
+-        size_t countAliases(char const * const *alias) const;
+-        size_t countAddresses(char const * const *addresses,
+-                                            size_t length) const;
++        static size_t countAliases(char const * const *alias);
++        static size_t countAddresses(char const * const *addresses,
++                                            size_t length);
+ };
+ 
+ #include "addresslength.f"
+-- 
+2.52.0
+
