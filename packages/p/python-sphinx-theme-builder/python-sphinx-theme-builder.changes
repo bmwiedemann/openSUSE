@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 31 20:05:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.2:
+  * Fix bug in license file handling for PEP 639, related to
+    transforming legacy
+  * `license = { file = "..." }` metadata into `license-files`
+    automatically.
+  * Drop support for Python 3.9 and below.
+  * Update classifiers to reflect support for Python 3.10-3.14.
+  * Move to non-beta versioning!
+  * Support newer `pyproject.toml` metadata for import names and
+    licenses.
+  * Migrate to diagnostic for errors.
+  * Add `--re-ignore` to `stb serve`.
+- Remove support-python314.patch, support-click-8.2.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Nov 12 01:52:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:

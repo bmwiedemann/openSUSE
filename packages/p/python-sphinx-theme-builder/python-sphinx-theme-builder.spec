@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-theme-builder
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-theme-builder
-Version:        0.2.0b2
+Version:        0.3.2
 Release:        0
 Summary:        A tool for authoring Sphinx themes with a simple (opinionated) workflow
 License:        MIT
 URL:            https://github.com/pradyunsg/sphinx-theme-builder
 Source:         https://github.com/pradyunsg/sphinx-theme-builder/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support click 8.2 changes
-Patch0:         support-click-8.2.patch
-# PATCH-FIX-UPSTREAM gh#pradyunsg/sphinx-theme-builder#51
-Patch1:         support-python314.patch
 BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module diagnostic >= 2}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyproject-metadata}
+BuildRequires:  %{python_module pyproject-metadata >= 0.10.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module setuptools}
@@ -43,9 +40,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-build
 Requires:       python-click
+Requires:       python-diagnostic >= 2
 Requires:       python-nodeenv
 Requires:       python-packaging
-Requires:       python-pyproject-metadata
+Requires:       python-pyproject-metadata >= 0.10.0
 Requires:       python-rich
 Requires:       python-setuptools
 Requires:       python-sphinx-autobuild
@@ -53,7 +51,6 @@ Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-
 %python_subpackages
 
 %description

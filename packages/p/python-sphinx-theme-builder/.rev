@@ -40,4 +40,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1318535</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c959088e33262ac39c8bc40e3802442e</srcmd5>
+    <version>0.3.2</version>
+    <time>1775065944</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.3.2:
+  * Fix bug in license file handling for PEP 639, related to
+    transforming legacy
+  * `license = { file = &quot;...&quot; }` metadata into `license-files`
+    automatically.
+  * Drop support for Python 3.9 and below.
+  * Update classifiers to reflect support for Python 3.10-3.14.
+  * Move to non-beta versioning!
+  * Support newer `pyproject.toml` metadata for import names and
+    licenses.
+  * Migrate to diagnostic for errors.
+  * Add `--re-ignore` to `stb serve`.
+- Remove support-python314.patch, support-click-8.2.patch (upstream)</comment>
+    <requestid>1343987</requestid>
+  </revision>
 </revisionlist>
