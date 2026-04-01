@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr  1 06:24:06 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.33
+
+- Update 2.95.33
+  * 5-star rating: Add defer attribute for Qualtrics (#794)
+
+-------------------------------------------------------------------
+Wed Mar 25 06:49:17 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.32
+
+- Update 2.95.32
+  * Prevent empty <script/> (#792)
+
+-------------------------------------------------------------------
+Wed Mar 11 08:39:10 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.31
+
+- Update 2.95.31
+  Added height prop for .side-toc in #790 
+
+-------------------------------------------------------------------
 Mon Mar  2 10:44:22 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.30
 
 - Update 2.95.30
