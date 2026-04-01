@@ -16,9 +16,9 @@
 #
 
 
-%global ver_suffix 0.19
-%global sover      0_19
-%global patch_ver  3
+%global ver_suffix 0.20
+%global sover      0_20
+%global patch_ver  0
 %global libname libwlroots-%{sover}
 %bcond_without  drm_backend
 %bcond_without  libinput_backend
@@ -33,8 +33,8 @@ Summary:        Modular Wayland compositor library
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://gitlab.freedesktop.org/wlroots/wlroots
-Source0:        https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/%{version}/downloads/%{name}-%{version}.tar.gz
-Source1:        https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/%{version}/downloads/%{name}-%{version}.tar.gz.sig
+Source0:        https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/%{version}/downloads/wlroots-%{version}.tar.gz
+Source1:        https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/%{version}/downloads/wlroots-%{version}.tar.gz.sig
 Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19#/%{name}.keyring
 BuildRequires:  glslang-devel
 BuildRequires:  meson >= 0.59.0

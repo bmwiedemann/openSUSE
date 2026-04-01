@@ -1,4 +1,304 @@
 -------------------------------------------------------------------
+Mon Mar 30 05:03:39 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to 0.20.0:
+ * backend/libinput: fix build with libinput 1.31
+ * backend/libinput: add support for LIBINPUT_SWITCH_KEYPAD_SLIDE
+ * wlr_scene: Make restack_xwayland_surface_below generic
+ * wlr_scene: Don't recurse when disabling scene node if a child is already disabled
+ * wlr_scene: Update outputs when node is disabled
+ * wlr_scene: Only do disable cleanup when explicit damage is given
+ * wlr_scene: Add documentation to scene_node_update()
+ * ext-image-capture-source: output: Apply transform to cursor
+ * image_capture_source/output: Update constraints on enable
+ * color_management_v1: set output color properties
+ * color-representation-v1: Fix missing destroy signal init
+ * scene: fix color format compare
+ * wlr_text_input_v3: remove event arguments from header
+ * transient_seat: initialize seat destroy listener
+ * Add "const" to eliminate "error: initialization discards ‘const’ qualifier from pointer target type"
+ * Change all timespec pointers in events to owned
+ * xwayland: Remove has_utf8_title field
+ * scene: Block damage on single-pixel buffer textures
+ * util/mem: Move memdup to new util/mem.c file
+ * color-representation-v1: new protocol
+ * color-representation-v1: Add wlr enums + converters
+ * color-representation-v1: Actually set supported_*_len
+ * xwm: Fix double-close
+ * wlr_virtual_pointer: Set axis source on all axis
+ * treewide: fix typos
+ * wlr-export-dmabuf-unstable-v1: fix typo
+ * render/pass: Ensure the precision is consistent during comparison
+ * input-method-v2: Destroy keyboard grab before input method
+ * backend/session: use device `boot_display`
+ * scene: fix output transfer functions
+ * render: introduce Gamma 2.2 color transform
+ * scene, render: use Gamma 2.2 TF as default
+ * drm: save edid color characteristics in wlr_output
+ * cursor: apply output image description when preparing texture
+ * output/state: add missing unref for color_transform
+ * render/vulkan: fix single-pass linear path
+ * render/color: add wlr_color_primaries_transform_absolute_colorimetric
+ * render/vulkan: apply "matrix" color transforms in shader
+ * scene: always apply user gamma after scene color transform
+ * render: remove buffer primaries from pass options
+ * scene: don't rebuild color transforms each frame
+ * output: don't rebuild cursor color transform for each update
+ * render/color: make wlr_color_primaries_from_named public
+ * render/color: introduce color_transform_compose
+ * render/color: assert that wlr_color_transform_pipeline contains no NULLs
+ * meson: bump minimum wayland-protocols version
+ * color_management_v1: relax restrictions on maxCLL and maxFALL
+ * color_management_v1: use 64bit image description identities
+ * color_management_v1: new enum value for 'srgb' transfer function
+ * render: don't infer luminance multipliers from color TF
+ * render/drm_syncobj: add wlr_drm_syncobj_timeline_signal()
+ * scene: add buffer release point to 'sample' event
+ * drm/syncobj: add timeline point merger utility
+ * linux_drm_syncobj_v1: add release point accumulation
+ * scene: transfer sample syncobj to client timeline
+ * backend/drm: properly delay syncobj signalling
+ * output/drm: don't use OUT_FENCE_PTR
+ * linux_drm_syncobj_v1: fix handling of empty first commit
+ * text-input-v3: Name new text input event correctly
+ * text-input-v3: Use `NULL` when emitting signals
+ * input-method-unstable-v2: There are no enable / disable events
+ * input-method-unstable-v2: surrounding text sends surrounding text
+ * drag: destroy data source on touch_up
+ * seat: add wlr_seat_touch_notify_clear_focus
+ * util/box: set dest to empty if boxes don't intersect
+ * xwayland: add set_size_hints signal
+ * backend/x11: reject shm buffers with non-min strides
+ * scene: avoid redundant wl_surface.enter/leave events
+ * virtual-keyboard: add wlr_virtual_keyboard_v1_from_resource()
+ * virtual-keyboard: handle seat destroy
+ * backend/libinput: expose libinput_tablet_tool
+ * output/cursor: Fix double cursor bug
+ * xwayland: fix assertion failure in wlr_xwayland_shell_v1
+ * render/allocator: add missing wlr_buffer_finish() in destroy impls
+ * backend/x11: ignore DestroyNotify events
+ * render/vulkan: Handle multi-descriptor sets
+ * output-swapchain-manager: Reject zero resolution
+ * ext_image_copy_capture_v1: Only render scene source on damage
+ * backend/drm: Close non-master drm fd on failure
+ * scene/layer_shell_v1: Add support for exclusive_edge
+ * util/box: Use integer min/max for intersection
+ * cursor-shape-v1: use generated enum validator
+ * cursor-shape-v1: bump to version 2
+ * xdg-shell: add support for v7
+ * fixes: add implementation
+ * Avoid including generated headers publicly where possible
+ * compositor: use wl_resource_post_error_vargs()
+ * Add support for XKB_LED_NAME_COMPOSE and XKB_LED_NAME_KANA USB HID LEDs Requires xkbcommon 1.8.0
+ * wlr_ext_image_copy_capture_v1: new_session event
+ * image_capture_source: wlr_output_try_from_ext_image_capture_source_v1()
+ * wlr_ext_image_copy_capture_v1: Fix segmentation fault when using cursor session
+ * xwayland: Create a dummy no_focus_window to use for non-X window focus
+ * xwayland: Activate no_focus_window when a Wayland window is activated
+ * wlr_ext_image_copy_capture_v1: Fix crash when client creates a cursor session not implemented server side
+ * build: bump version to 0.20.0-dev
+ * output: don't send make/model
+ * idle_notify_v1: drop trailing spaces
+ * xwayland: require xcb-xfixes 1.15
+ * render/allocator/gbm: require GBM 21.1
+ * swapchain: assert that size is not empty at creation time
+ * ext_image_capture_source_v1: add support for foreign toplevels
+ * ext_image_capture_source_v1: add helper to capture scene nodes
+ * scene: ignore outputs with too small intersection with nodes
+ * scene: configure clients with the highest output scale
+ * scene: filter frame_done primary output in surface handler
+ * scene: use output with highest refresh rate for frame pacing
+ * scene: send surface preferred transform alongside DMA-BUF feedback
+ * render/color: add wlr_color_transform_init()
+ * render/color: use variable instead of type in sizeof()
+ * render/color: replace COLOR_TRANSFORM_LUT_3D with COLOR_TRANSFORM_LCMS2
+ * render/color: introduce COLOR_TRANSFORM_LUT_3X1D
+ * output: add color transform to state
+ * backend/drm: add support for color transforms
+ * wlr_gamma_control_v1: use color transforms
+ * output: drop gamma LUT from state
+ * render/vulkan: add color transformation matrix
+ * render/vulkan: use output_pipe_srgb for non-NULL sRGB color transform
+ * render/vulkan: rename mat3_to_mat4() to encode_proj_matrix()
+ * render/vulkan: use array declaration in encode_proj_matrix()
+ * render, render/vulkan: add primaries to wlr_buffer_pass_options
+ * output: add color primaries to output state
+ * backend/drm: add support for color primaries
+ * render/vulkan: add PQ inverse EOTF to output shader
+ * render/color, render/vulkan: add support for PQ transfer function
+ * output: add transfer function to image description
+ * backend/drm: add support for image description transfer function
+ * render/vulkan: add luminance multipler for output shader
+ * render/vulkan: fix multiplication order for output color matrix
+ * render/color, render/vulkan: add EXT_LINEAR to enum wlr_color_transfer_function
+ * color-management-v1: add EXT_LINEAR
+ * render/pass: add wlr_render_texture_options.transfer_function
+ * render/vulkan: fix typo in wlr_vk_texture.views comment
+ * render/vulkan: add support for texture transfer functions
+ * scene: add transfer function support for wlr_scene_buffer
+ * scene: add support for color-management-v1 transfer functions
+ * render/vulkan: prepare texture shader for new transforms
+ * render/vulkan: introduce wlr_vk_frag_texture_pcr_data
+ * render/vulkan: add texture color transformation matrix
+ * render/vulkan: add support for PQ for textures
+ * render, render/vulkan: add primaries to wlr_render_texture_options
+ * render/vulkan: add luminance multiplier for texture shader
+ * scene: add primaries support to wlr_scene_buffer
+ * scene: add support for color-management-v1 primaries
+ * output: shorten output enabled checks
+ * output: add wlr_output.image_description
+ * output: add output_pending_image_description()
+ * scene: grab image description from output state
+ * output: add full HDR metadata to wlr_output_image_description
+ * backend/drm: relay full HDR metadata
+ * render/egl: fix software rendering check
+ * xdg-toplevel-tag-v1: new protocol
+ * color_management_v1: add helpers to convert TF/primaries enums
+ * scene: use helpers to convert TF/primaries enums
+ * ext_image_capture_source_v1: advertise fallback {A,X}RGB8888 formats
+ * backend, output: send commit events after applying all in wlr_backend_commit()
+ * color-management-v1: handle inert outputs in get_output
+ * tinywl: stop generating xdg-shell header
+ * render/vulkan: fix VkPushConstantRange for wlr_vk_frag_texture_pcr_data
+ * render/vulkan: remove hardcoded counts
+ * build: add wayland-protocols to dependencies array
+ * output/cursor: fix missing second cursor
+ * scene/surface: simplify single-pixel-buffer check in surface_reconfigure()
+ * scene/surface: fix NULL deref when source buffer is destroyed
+ * cursor: use source buffer to signal release timeline point
+ * render/vulkan: rename plain to two_pass
+ * render/vulkan: use sRGB image view when color transform is set
+ * render/vulkan: rename vulkan_setup_srgb_framebuffer() for linear
+ * render/vulkan: introduce wlr_vk_render_buffer_out
+ * render/vulkan: add wlr_vk_render_pass.render_setup
+ * render/vulkan: add wlr_vk_render_pass.render_buffer_out
+ * render/vulkan: replace wlr_vk_render_pass.srgb_pathway with two_pass
+ * render/vulkan: add linear single-subpass
+ * Add release script
+ * color_management_v1: drop duplicated enum converters
+ * color_management_v1: make from_wlr enum converters public
+ * color_management_v1: add destroy event to manager
+ * scene: send color_management_v1 surface feedback
+ * render/color: fix bounds check in lut_1d_get()
+ * backend/wayland: log when getting disconnected from remote display
+ * backend/wayland: continue reading on hangup
+ * backend/drm: avoid error message when EDID is missing
+ * backend/session: fix crash on udev device remove event
+ * Revert "wlr_scene: fix tf/prim comparison for scanout attempt"
+ * ci: fix VKMS lookup after faux bus migration
+ * linux_drm_syncobj_v1: fix use-after-free in surface_commit_destroy()
+ * render/color: add wlr_color_transform_eval()
+ * render/color: add wlr_color_transform_pipeline
+ * output: check for color transform no-op changes
+ * gamma_control_v1: add wlr_gamma_control_v1_get_color_transform()
+ * gamma_control_v1: introduce fallback_gamma_size
+ * scene: add software fallback for gamma LUT
+ * render/color: turn enum wlr_color_encoding into a bitfield
+ * render: add color encoding and range to wlr_render_texture_options
+ * render/vulkan: add suport for color encoding and range
+ * color_representation_v1: make supported_alpha_modes const
+ * scene: add support for color encoding and range
+ * scene: add support for color-representation-v1 coeffs and range
+ * color_representation_v1: add helper to create global from renderer
+ * render/color: introduce wlr_color_transform_matrix
+ * color_management_v1: add helpers to get supported TFs/primaries
+ * tinywl: fix duplicate object files passed to linker
+ * render/pixman: add support for ABGR16161616
+ * color_management_v1: add BT.1886 to TF-from-renderer helper
+ * scene: don't assign outputs to invisible nodes
+ * scene: constify pixman_region32_t
+ * render: add new 16- and 32-bits-per-component pixel formats
+ * render/gles2: add BGR161616F and BGR161616
+ * render/vulkan: add new 16- and 32-bits-per-component pixel formats
+ * scene: keep last preferred configuration when leaving last output
+ * render: drop <linux/dma-buf.h> compat defines
+ * ext_image_capture_source_v1/scene: fix stop for parallel captures
+ * scene/surface: don't cache frame pacing output
+ * scene: add knob to turn off Xwayland surface restacking
+ * render/gles2: skip glslang check when shaders are unchanged
+ * xcursor: add shared helper to create a wlr_xcursor_image
+ * xcursor: introduce wlr_xcursor_image_get_buffer()
+ * cursor: use wlr_xcursor_image_get_buffer()
+ * xwayland: take wlr_buffer in wlr_xwayland_set_cursor()
+ * ext_image_copy_capture_v1: replace schedule_frame with request_frame
+ * ext_image_capture_source_v1: wait for capture client before sending frame event
+ * color_representation_v1: send chroma_location protocol error
+ * build: bump version to 0.20.0-rc1
+ * xwayland: try flushing immediately in xwm_schedule_flush()
+ * build: bump version to 0.20.0-rc2
+ * backend/libinput: guard against new enum entries
+ * build: bump version to 0.20.0-rc3
+ * render/vulkan: introduce buffer_import_sync_file()
+ * render/vulkan: take render pass in vulkan_sync_render_buffer()
+ * render/vulkan: fix missing DMA-BUF implicit read fence for textures
+ * render/vulkan: introduce buffer_export_sync_file()
+ * render/vulkan: add "acquire" to vulkan_sync_foreign_texture()
+ * render/vulkan: fix missing DMA-BUF implicit write fence for render buffer
+ * build: bump version to 0.20.0-rc4
+ * build: bump version to 0.20.0-rc5
+ * color_management_v1: use early continue in surface loop
+ * color_management_v1: ignore surface update if no-op
+ * build: bump version to 0.20.0
+ * types: deprecate wlr-screencopy-unstable-v1
+ * drm-lease-v1: remove connector active_lease & lease connectors
+ * ci: update dalligi upstream repo
+ * render/vulkan: compile against vulkan 1.2 header
+ * xwm: don't leak msg in case of realloc failure
+ * render/pixel-format: add function to determine YCbCr from drm fourcc
+ * vulkan: make use of new pixel_format_is_ycbcr function
+ * color_representation: ensure encoding/range/drm formats compatibility
+ * color-representation: add support for identity+full
+ * types/wlr_buffer: add buffer_get_drm_format helper function
+ * color-representation-v1: fix condition in surface commit
+ * xwayland: fix memory leak on pipe() failure
+ * render/vulkan: destroy vulkan instance when drm phdev mismatch
+ * xwayland: fix wl_array rollback when adding selection targets
+ * output/cursor: fix missing newline at end of file
+ * render/gles: use optimized clears for unblended rects
+ * types/color_representation: correctly cleanup in manager create
+ * types/color_management: check on invalid image description
+ * CONTRIBUTING.md: update git host
+ * cursor: update output cursor even if output is disabled
+ * drm_lease_v1: initialize device resource link during abnormal exit
+ * backend/session: respond to event hangup or error
+ * render/drm_syncobj: drop unnecessary drmSyncobjTimelineWait() arg
+ * render/drm_syncobj: fix function name in drmSyncobjTimelineWait() error log
+ * screencopy: simplify capture error handling
+ * meson: bump minimum wayland-protocols version
+ * wlr_scene: fix tf/prim comparison for scanout attempt
+ * wlr_scene: return scene_direct_scanout_result instead of bool
+ * render: introduce bt.1886 transfer function
+ * wlr_scene: fix direct scanout for gamma2.2 buffers
+ * render/vulkan: clip negative values before applying transfer function
+ * color_representation_v1: don't leak supported_* on display destroy
+ * render/vulkan: normalize luminance range in bt.1886 formula
+ * xwayland: lock new buffer instead of the old one
+ * scene: use wl_list_for_each_safe to iterate outputs
+ * tinywl: fix cursor disappears when focused window is closed
+ * ext_image_capture_source_v1: remove unused struct definition
+ * wlr_ext_data_control_v1: Make all listeners private
+ * docs: deprecate legacy wlr_data_control_v1 interface
+ * protocols: sync with wlr-protocols, apply non-breaking updates and doc improvements
+ * types: Simplify wlr_keyboard_group_destroy
+ * wlr_cursor: add comments for signal parameters
+ * wlr_cursor: fix event type in handle_tablet_tool_button
+ * ext_image_capture_source_v1: remove unused variable
+ * session: simplify libudev unref handling
+ * backend/libinput: don't leak udev_device
+ * xwm: add support for _NET_WM_ICON
+ * input-method: rename input_method event to new_input_method
+ * input-method: use `NULL` when emitting signals
+ * util/box.c: use 1/256 instead of 1/65536 in wlr_box_closest_point()
+ * wlr-foreign-toplevel: avoid wl_resource_find_for_client()
+ * Add wlr_version_get_{major,minor,micro}()
+ * ext-workspace-v1: add implementation
+ * render/allocator/gbm: insert buffer after export gbm bo
+ * wlr_xdg_toplevel_icon_v1: check the correct resource
+ * wlr_drag: drag motion signal also needs to be sent
+ * types/wlr_input_device: name maybe NULL
+ * xwayland/selection/dnd: fix parameter type
+
+-------------------------------------------------------------------
 Fri Mar 20 22:13:53 UTC 2026 - zeus <dunning1kruger@mailfence.com>
 
 - Update to 0.19.3
