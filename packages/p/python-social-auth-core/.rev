@@ -495,4 +495,41 @@
   * https://github.com/python-social-auth/social-core/pull/1063</comment>
     <requestid>1308114</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>80ae5f4ecd88c936420a1fb6ee576d98</srcmd5>
+    <version>4.8.5</version>
+    <time>1775065903</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.8.5:
+  * Fixed partial pipeline handling for unauthenticated users
+  * Improved type annotations
+  * Code cleanups
+  * Improved error handling in SAML
+  * Add Azure AD(Entra ID) federated client assertion support
+  * Added registry to configured default strategy
+  * The timeout parameter can be again configured
+  * Refactored HTTP authentication code
+  * Loosened some type checks for better downstream compatibility
+  * `ID_KEY` is now configurable
+  * Improved token expiry validation
+  * Additional OIDC parameters are now supported
+  * Improved refresh token logic
+  * Extended type annotations
+  * String RelayState in SAML is again supported
+  * Better handle OpenID exceptions
+  * itembase backend
+  * nk backend
+  * OAuth1 backend for Yahoo
+  * Fixed `extra_data()` invocation from `refresh_token()`
+  * Replaced jose with PyJWT in Ping backend
+  * Dropped OAuth1 backend for OpenStreetMap
+  * OAuth2 URLs can now be overridden in the configuration
+  * Fixed Gitea backend API authentication headers
+  * Improved `RelayState` and attributes handling in the SAML
+    backend
+  * Changed domains for VK backend
+  * All API calls now include User-Agent header
+  * OIDC uses info from `id_token` when not present in the</comment>
+    <requestid>1343962</requestid>
+  </revision>
 </revisionlist>
