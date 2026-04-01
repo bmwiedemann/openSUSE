@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-setuptools-rust
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        Setuptools plugin for Rust extensions
 License:        MIT

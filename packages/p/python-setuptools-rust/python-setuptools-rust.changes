@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 20:00:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * Migrate to trusted publishing. #581
+  * Strip target suffix for cargo-zigbuild compatibility. #534
+
+-------------------------------------------------------------------
 Tue Jan 27 16:04:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.0:

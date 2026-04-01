@@ -162,4 +162,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1330812</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8f55516f7b08c2c58847043490700c42</srcmd5>
+    <version>1.12.1</version>
+    <time>1775066098</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.12.1:
+  * Migrate to trusted publishing. #581
+  * Strip target suffix for cargo-zigbuild compatibility. #534</comment>
+    <requestid>1343975</requestid>
+  </revision>
 </revisionlist>
