@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 13 05:30:43 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.9.2~git0.6a2bb66bd:
+  * Release 1.9.2
+  * Allow urlencoded client_id in basic auth (#4141)
+  * Update ldap3 to 0.7.0 to resolve config filter issue (#4205)
+  * Remove thread local storage (#4204)
+  * Disable multithreading on RADIUS when DEBUG is False. (#4177)
+  * Fix bug where DEBUG is always true in RADIUS entrypoint. (#4169)
+
+-------------------------------------------------------------------
 Tue Feb 24 03:08:03 UTC 2026 - william.brown@suse.com
 
 - Update to version 1.9.1~git0.36055feca:
