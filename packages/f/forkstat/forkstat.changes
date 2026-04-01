@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 31 13:33:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.04.00
+  * Manual: minor tweaks for lintian clean builds.
+  * Manual: rework table headings.
+  * Add support for PROC_EVENT_NONZERO_EXIT events.
+
+-------------------------------------------------------------------
 Thu May  9 18:48:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.03.02:
