@@ -217,4 +217,18 @@
 - update to 2.0.1 (bsc#1253852, CVE-2025-8671, bsc#1250054, CVE-2025-30187)</comment>
     <requestid>1336801</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4f8fba061fc26d2d7158503f0dfda085</srcmd5>
+    <version>2.0.3</version>
+    <time>1775065899</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.3
+  https://www.dnsdist.org/changelog.html#change-2.0.3
+  (CVE-2026-0396, bsc#1261236, CVE-2026-0397, bsc#1261237,
+   CVE-2026-24028, bsc#1261238, CVE-2026-24029, bsc#1261239,
+   CVE-2026-24030, bsc#1261240, CVE-2026-27853, bsc#1261241,
+   CVE-2026-27854, bsc#1261243)
+- fix_compilation.patch: removed, upstreamed</comment>
+    <requestid>1343959</requestid>
+  </revision>
 </revisionlist>

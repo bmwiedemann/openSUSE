@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 31 13:06:20 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- update to 2.0.3
+  https://www.dnsdist.org/changelog.html#change-2.0.3
+  (CVE-2026-0396, bsc#1261236, CVE-2026-0397, bsc#1261237,
+   CVE-2026-24028, bsc#1261238, CVE-2026-24029, bsc#1261239,
+   CVE-2026-24030, bsc#1261240, CVE-2026-27853, bsc#1261241,
+   CVE-2026-27854, bsc#1261243)
+- fix_compilation.patch: removed, upstreamed
+
+-------------------------------------------------------------------
 Tue Feb 17 17:19:59 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Allow installation on immutable systems (jsc#PED-14730)

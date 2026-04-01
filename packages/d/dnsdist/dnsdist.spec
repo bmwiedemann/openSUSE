@@ -46,7 +46,7 @@
 %bcond_with     dnsdist_quiche
 %bcond_with     dnsdist_xdp
 Name:           dnsdist
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
 License:        GPL-2.0-only
@@ -62,7 +62,6 @@ Source12:       usr.sbin.dnsdist
 Source13:       local.usr.sbin.dnsdist
 Source99:       series
 Source100:      README.md
-Patch1:         fix_compilation.patch
 BuildRequires:  gcc%{?force_gcc_version}
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libboost_headers-devel
