@@ -728,4 +728,25 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * Fixed tool calling parsing and rendering for Qwen 3.5 models</comment>
     <requestid>1338547</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>ce768c96fe774c0b257e97f8e7f7b52c</srcmd5>
+    <version>0.19.0</version>
+    <time>1775065896</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.19.0
+  * Ollama's app will now no longer incorrectly show &quot;model is out of date&quot;
+  * ollama launch pi now includes web search plugin that uses Ollama's web search
+  * Improved KV cache hit rate when using the Anthropic-compatible API
+  * Fixed tool call parsing issue with Qwen3.5 where tool calls would be output in thinking
+  * MLX runner will now create periodic snapshots during prompt processing
+  * Fixed KV cache snapshot memory leak in MLX runner
+  * Fixed issue where flash attention would be incorrectly enabled for grok models
+  * Fixed qwen3-next:80b not loading in Ollama
+- Important 0.18.x updates
+  * Improved OpenClaw performance with Kimi-K2.5
+  * Nemotron-3-Super support
+  * openclaw support
+  * ROCm 7 support and requirement (forwarded request 1343955 from adrianSuSE)</comment>
+    <requestid>1343958</requestid>
+  </revision>
 </revisionlist>

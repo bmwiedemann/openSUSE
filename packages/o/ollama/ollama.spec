@@ -35,7 +35,7 @@
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.17.7
+Version:        0.19.0
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -70,6 +70,7 @@ BuildRequires:  cuda-nvcc-%{cuda_version}
 BuildRequires:  libcublas-devel-%{cuda_version}
 %endif
 %if %{with rocm}
+BuildRequires:  hipblas-common-devel
 BuildRequires:  hipblas-devel
 BuildRequires:  rocblas-devel
 BuildRequires:  rocm-comgr-devel
