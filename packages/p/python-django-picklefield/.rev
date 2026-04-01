@@ -185,4 +185,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1166575</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>835bd2eca0dcbbc682ed92d281402975</srcmd5>
+    <version>3.4.0</version>
+    <time>1775065936</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.0:
+  * Added tested support for Django 6.0.
+  * Added tested support for Python 3.14.
+  * Dropped support for Python 3.9.
+
+- No more greedy globs in %files.</comment>
+    <requestid>1344055</requestid>
+  </revision>
 </revisionlist>

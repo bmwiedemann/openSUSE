@@ -1,9 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:44:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * Added tested support for Django 6.0.
+  * Added tested support for Python 3.14.
+  * Dropped support for Python 3.9.
+
+-------------------------------------------------------------------
 Wed Apr  3 02:57:40 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
 - Sprinkle in fdupes.
-- No more greedy globs in %files. 
+- No more greedy globs in %files.
 
 -------------------------------------------------------------------
 Mon Jun 26 07:03:41 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
