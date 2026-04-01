@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 31 20:46:50 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1.0
+  * Once again allow using this package without its kernel
+    extension (this was accidentally broken in version 4.9.1)
+  * Add hash functions for non-compressed finite-field vectors and
+    matrices
+
+-------------------------------------------------------------------
 Fri Jun 20 12:35:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.0.1
