@@ -210,4 +210,22 @@
     <comment>switch to singlespec</comment>
     <requestid>1316757</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e5f90932ea513c97c8cd295ae022bd0f</srcmd5>
+    <version>3.3.0</version>
+    <time>1775065931</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.0:
+  * Remove MANIFEST.in
+  * Add typing
+  * Use &quot;real&quot; \*args, \*\*kwargs
+  * trivial: Remove redundant args, kwargs
+  * Add ruff
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support</comment>
+    <requestid>1344049</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:29:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * Remove MANIFEST.in
+  * Add typing
+  * Use "real" \*args, \*\*kwargs
+  * trivial: Remove redundant args, kwargs
+  * Add ruff
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+
+-------------------------------------------------------------------
 Sun Nov  9 14:34:13 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:

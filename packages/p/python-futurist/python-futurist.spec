@@ -1,7 +1,7 @@
 #
 # spec file for package python-futurist
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,22 @@
 
 
 Name:           python-futurist
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Useful additions to futures, from the future.
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/futurist
 Source0:        https://files.pythonhosted.org/packages/source/f/futurist/futurist-%{version}.tar.gz
-BuildRequires:  %{python_module PrettyTable}
+BuildRequires:  %{python_module PrettyTable >= 0.7.1}
 BuildRequires:  %{python_module debtcollector >= 3.0.0}
-BuildRequires:  %{python_module eventlet}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module eventlet >= 0.18.2}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module stestr}
-BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module stestr >= 2.0.0}
+BuildRequires:  %{python_module testscenarios >= 0.4}
+BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Sphinx
