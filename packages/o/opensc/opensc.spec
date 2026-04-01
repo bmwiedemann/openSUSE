@@ -1,7 +1,7 @@
 #
 # spec file for package opensc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 12
+%define sover 13
 %define completionsdir %(pkg-config --variable completionsdir bash-completion)
 Name:           opensc
-Version:        0.26.1
+Version:        0.27.1
 Release:        0
 Summary:        Smart Card Utilities
 License:        LGPL-2.1-or-later
@@ -33,8 +33,6 @@ Source2:        %{name}-rpmlintrc
 Source3:        opensc.module
 Patch0:         opensc-gcc11.patch
 Patch1:         opensc-docbook-xsl-fix.patch
-# PATCH-FIX-UPSTREAM Fix error found when compiling with gcc 15 #3316
-Patch2:         opensc-gcc15.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt

@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Mar 31 14:05:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.27.1
+  * Bugfix release to fix up infrastructure issues.
+- Update to version 0.27.0
+  Security
+  * Fix CVE-2025-13763: Several uses of potentially uninitialized
+    memory detected by fuzzers.
+  * Fix CVE-2025-49010: Possible write beyond buffer bounds during
+    processing of GET RESPONSE APDU (bsc#1261214)
+  * Fix CVE-2025-66215: Possible write beyond buffer bounds in
+    oberthur driver (bsc#1261220)
+  * Fix CVE-2025-66038: Possible read beyond buffer bounds when
+    parsing historical bytes in PIV driver (bsc#1261219)
+  * Fix CVE-2025-66037: Possible buffer overrun while parsing SPKI
+    (bsc#1261218)
+  * More low-severity data handling issues when parsing profile
+    configuration
+  General improvements
+  * Added support for PKCS#11 3.2 in tools and pkcs11-spy and
+    p11test.
+  * Added support for Ed448, X448 mechanisms and improve support
+    for.
+  * Edwards and montgomery keys in general.
+  * Support CKA_PUBKEY_KEY_INFO PKCS#11 attribute.
+  * Various refactoring of autotools build system.
+  * Remove obsolete tokend support.
+  * Run tests against different software PKCS#11 tokens kryoptic
+    and NSS softokn.
+  * Removed internal caching for current EF/DF.
+  * Correctly detect OS-level FIPS mode in OpenSSL automatically
+    or through custom configuration file.
+  * Added support for Brainpool twisted curves to pkcs11-tool and
+    SC-HSM.
+  PC/SC
+  * Handle case when smart card is removed and inserted between
+    two subsequent calls to refresh_attributes().
+  EsteID
+  * Add support for EstEID 2025.
+  * Implement FinEID 4.0/4.1 support.
+  * Add Latvian IDEMIA Cosmo X card support.
+  * Check if PIN is locked and hint CKF_USER_PIN_TO_BE_CHANGED.
+  * Remove obsolete FinEID cards.
+  * Add Latvian Cosmo 8.2 card support.
+  D-Trust
+  * Prevent unncecessary pin prompts on pinpad readers.
+  * Support for D-Trust Card 5.1 & 5.4.
+  * Implement PIN change and unblock in dtrust-tool.
+  Belpic
+  * Add supports for belpic applet version 1.8.
+  OpenPGP
+  * Implement key derived PIN format (KDF-DO) as per OpenPGP card
+    spec v3.3.
+  IDPrime
+  * Implement 5110+ FIPS and 5110 CC (940) derive support.
+  pkcs11-tool
+  * Added support for ML-DSA, ML-KEM, SLH-DSA keys from PKCS#11
+    3.2.
+  * Improve support for Edwards and montgomery keys and.
+  * add derive key support for CKK_MONTGOMERY.
+  * Add support for ChaCha20 and Poly1305.
+  * Add support for AES CTR in decrypt_data() and encrypt_data().
+  * Add initial support for PKCS#11 URIs.
+  * Print more information about RSA keys.
+- Drop patch:
+  * opensc-gcc15.patch (not longer needed)
+
+-------------------------------------------------------------------
 Wed Jul  9 09:42:07 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix error found when compiling with gcc 15

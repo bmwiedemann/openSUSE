@@ -473,4 +473,41 @@
     <comment></comment>
     <requestid>1291458</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b99814575f7d00b8dae72e4827044587</srcmd5>
+    <version>0.27.1</version>
+    <time>1775065911</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.27.1
+  * Bugfix release to fix up infrastructure issues.
+- Update to version 0.27.0
+  Security
+  * Fix CVE-2025-13763: Several uses of potentially uninitialized
+    memory detected by fuzzers.
+  * Fix CVE-2025-49010: Possible write beyond buffer bounds during
+    processing of GET RESPONSE APDU (bsc#1261214)
+  * Fix CVE-2025-66215: Possible write beyond buffer bounds in
+    oberthur driver (bsc#1261220)
+  * Fix CVE-2025-66038: Possible read beyond buffer bounds when
+    parsing historical bytes in PIV driver (bsc#1261219)
+  * Fix CVE-2025-66037: Possible buffer overrun while parsing SPKI
+    (bsc#1261218)
+  * More low-severity data handling issues when parsing profile
+    configuration
+  General improvements
+  * Added support for PKCS#11 3.2 in tools and pkcs11-spy and
+    p11test.
+  * Added support for Ed448, X448 mechanisms and improve support
+    for.
+  * Edwards and montgomery keys in general.
+  * Support CKA_PUBKEY_KEY_INFO PKCS#11 attribute.
+  * Various refactoring of autotools build system.
+  * Remove obsolete tokend support.
+  * Run tests against different software PKCS#11 tokens kryoptic
+    and NSS softokn.
+  * Removed internal caching for current EF/DF.
+  * Correctly detect OS-level FIPS mode in OpenSSL automatically
+    or through custom configuration file. (forwarded request 1343964 from mnhauke)</comment>
+    <requestid>1343965</requestid>
+  </revision>
 </revisionlist>
