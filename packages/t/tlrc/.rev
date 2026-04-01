@@ -125,4 +125,15 @@
     <comment></comment>
     <requestid>1310912</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c45bbc9d32d8cf851272420554b58cfa</srcmd5>
+    <version>1.13.0</version>
+    <time>1775065875</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.13.0:
+  * New command-line option: --edit
+  * New config option: output.edit_link
+  * New command-line option: -s, --search (#160)</comment>
+    <requestid>1343838</requestid>
+  </revision>
 </revisionlist>

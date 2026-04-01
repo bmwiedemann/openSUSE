@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 31 07:19:10 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.13.0:
+  * New command-line option: --edit
+  * New config option: output.edit_link
+  * New command-line option: -s, --search (#160)
+
+-------------------------------------------------------------------
 Sat Oct 11 02:40:24 UTC 2025 - pallas wept <pallaswept@proton.me>
 
 - Add shell completion
