@@ -347,4 +347,12 @@
     <comment>- Make Leap 16 build succeed again</comment>
     <requestid>1341054</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e1570548fa46d5c6f94a8169a3960322</srcmd5>
+    <version>3.5.4</version>
+    <time>1775065886</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.5.4</comment>
+    <requestid>1343913</requestid>
+  </revision>
 </revisionlist>

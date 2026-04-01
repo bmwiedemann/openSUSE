@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 13:14:38 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.5.4
+  * Row dimension checking for compile-time matrices
+  * Add missing destructors
+
+-------------------------------------------------------------------
 Wed Mar 18 23:06:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Make Leap 16 build succeed again
