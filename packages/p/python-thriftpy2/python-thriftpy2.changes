@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 31 19:15:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * remove abandoned toml dependency
+  * Update changelog and readme
+  * Fix dev dependencies
+  * Deprecated tornado
+  * Skil run the build workflow with normal push or pull-request
+  * Fix tests on macOS
+  * qaci: add Python 3.14 in unittest
+  * Test set fields in json protocol tests
+  * Better error handling when ttype is unknown in json protocol
+  * Add annotation support
+  * Introduce TTransportFactory and TProtocolFactory protocol for
+    typing
+  * Support aiohttp as asyncio http transport
+  * Bump version 0.6.0beta1
+  * Fix asyncio loop parameter handling
+  * Update cibuildwheel and remove build on macos-13
+  * Update readme
+  * Add type annotations to top level functions and fix exist
+    type error
+  * Add more type annotations on public functions
+  * Bump version 0.6.0
+
+-------------------------------------------------------------------
 Tue Aug  5 12:06:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.5.3
@@ -67,7 +93,7 @@ Tue Mar 12 01:03:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Sun Aug 13 19:26:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- restrict to older cython 
+- restrict to older cython
 
 -------------------------------------------------------------------
 Mon Feb 20 10:09:40 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>

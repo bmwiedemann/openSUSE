@@ -1,7 +1,7 @@
 #
 # spec file for package python-thriftpy2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,30 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-thriftpy2
-Version:        0.5.3
+Version:        0.6.0
 Release:        0
 Summary:        Pure python implementation of Apache Thrift
 License:        MIT
 URL:            https://github.com/Thriftpy/thriftpy2
 Source0:        https://github.com/Thriftpy/thriftpy2/archive/v%{version}.tar.gz
 Source1:        new_certs.tar.xz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython >= 0.28.4}
+BuildRequires:  %{python_module aiohttp >= 3.8.0}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply >= 3.4}
-BuildRequires:  %{python_module pytest >= 2.8}
+BuildRequires:  %{python_module pytest >= 6.1.1}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module setuptools >= 68}
+BuildRequires:  %{python_module six >= 1.15}
+BuildRequires:  %{python_module tomli}
 BuildRequires:  %{python_module tornado >= 5.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply >= 3.4
-Requires:       python-six
+Requires:       python-six >= 1.15
 Recommends:     python-tornado >= 5.0
 Recommends:     python-toro >= 0.6
 %python_subpackages
