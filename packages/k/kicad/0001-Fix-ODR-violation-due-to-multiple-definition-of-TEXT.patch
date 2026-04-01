@@ -1,0 +1,54 @@
+From 4849600afe39ae11f3d5b1d1e057379eb0e1138f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 20 Mar 2026 15:47:10 +0100
+Subject: [PATCH 1/2] Fix ODR violation due to multiple definition of
+ TEXT_VAR_GRID_COLUMNS
+
+The enum is used only locally in the TU, and thus can and should have
+internal linkage, put each one in an anonymous namespace.
+---
+ common/dialogs/dialog_configure_paths.cpp | 2 ++
+ common/dialogs/panel_text_variables.cpp   | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/common/dialogs/dialog_configure_paths.cpp b/common/dialogs/dialog_configure_paths.cpp
+index ac91306546..068108baef 100644
+--- a/common/dialogs/dialog_configure_paths.cpp
++++ b/common/dialogs/dialog_configure_paths.cpp
+@@ -47,6 +47,7 @@
+ #include <wx/regex.h>
+ 
+ 
++namespace {
+ enum TEXT_VAR_GRID_COLUMNS
+ {
+     TV_NAME_COL = 0,
+@@ -60,6 +61,7 @@ enum SEARCH_PATH_GRID_COLUMNS
+     SP_PATH_COL,
+     SP_DESC_COL
+ };
++} // namespace
+ 
+ 
+ DIALOG_CONFIGURE_PATHS::DIALOG_CONFIGURE_PATHS( wxWindow* aParent ) :
+diff --git a/common/dialogs/panel_text_variables.cpp b/common/dialogs/panel_text_variables.cpp
+index a58f29767f..e65c1f0566 100644
+--- a/common/dialogs/panel_text_variables.cpp
++++ b/common/dialogs/panel_text_variables.cpp
+@@ -34,11 +34,13 @@
+ #include <widgets/grid_text_helpers.h>
+ 
+ 
++namespace {
+ enum TEXT_VAR_GRID_COLUMNS
+ {
+     TV_NAME_COL = 0,
+     TV_VALUE_COL
+ };
++} // namespace
+ 
+ 
+ PANEL_TEXT_VARIABLES::PANEL_TEXT_VARIABLES( wxWindow* aParent, PROJECT* aProject ) :
+-- 
+2.53.0
+

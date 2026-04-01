@@ -16,33 +16,20 @@
 #
 
 
-%if 0%{?suse_version} >= 1600
-# EGL preferred, as required for wayland
-%bcond_without use_egl
-%if 0%{?suse_version} > 1600
-#
-%bcond_with    bundled_glew
-%else
-# Currently no GLEW with EGL available
-%bcond_without bundled_glew
-%endif
-%else
-%bcond_with    use_egl
-%bcond_with    bundled_glew
-%endif
-
-# According to upstream, kicad 9.x.y can be used with the footprint and
-# symbol libraries from version 9.0.0
-%define compatversion 9.0.0
+# According to upstream, kicad 10.x.y can be used with the footprint and
+# symbol libraries from version 10.0.0
+%define compatversion 10.0.0
 Name:           kicad
-Version:        9.0.8
-%define file_version 9.0.8
+Version:        10.0.0
+%define file_version 10.0.0
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://www.kicad.org
 Source:         https://gitlab.com/kicad/code/kicad/-/archive/%{file_version}/kicad-%{file_version}.tar.bz2
+Patch0:         0001-Fix-ODR-violation-due-to-multiple-definition-of-TEXT.patch
+Patch1:         0002-Fix-ODR-violation-due-to-multiple-definition-of-COL_.patch
 
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
@@ -54,14 +41,12 @@ BuildRequires:  gcc11-PIE
 BuildRequires:  gcc11-c++ >= 8
 %endif
 BuildRequires:  gettext
-%if %{without bundled_glew}
-BuildRequires:  glew%{?with_use_egl:_EGL}-devel
-%endif
 BuildRequires:  glm-devel >= 0.9.8
 BuildRequires:  libboost_filesystem-devel-impl
 BuildRequires:  libboost_locale-devel-impl
 BuildRequires:  libboost_test-devel-impl
 BuildRequires:  libngspice-devel
+BuildRequires:  libspnav-devel
 BuildRequires:  memory-constraints
 BuildRequires:  occt-devel
 BuildRequires:  pkg-config
@@ -78,6 +63,7 @@ BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(python3) >= 3.6
 BuildRequires:  pkgconfig(zlib)
 # Fix directory owner
@@ -155,12 +141,6 @@ sed -i -e '/SWIG/ s/4.0/3.0/' CMakeLists.txt
 sed -i -e '/SWIG_OPTS/ { s/ -O/ -py3/ ; s/ -fastdispatch//}' pcbnew/CMakeLists.txt
 %endif
 
-# Fix detection of system GLEW, and use the proper CMake targets
-%if %{without bundled_glew}
-rm cmake/FindGLEW.cmake
-sed -i -e 's/${GLEW_LIBRARIES}/GLEW::GLEW/' common/gal/CMakeLists.txt
-%endif
-
 %build
 %if 0%{?suse_version} < 1550
 export CXX=g++-11 CC=gcc-11
@@ -175,8 +155,6 @@ export CXX=g++-11 CC=gcc-11
     -DKICAD_BUILD_I18N=ON \
     -DKICAD_I18N_UNIX_STRICT_PATH:BOOL=ON \
     -DKICAD_SCRIPTING_WXPYTHON=ON \
-    -DKICAD_USE_EGL:BOOL=%{?with_use_egl:ON}%{!?with_use_egl:OFF} \
-    -DKICAD_USE_BUNDLED_GLEW:BOOL=%{?with_bundled_glew:ON}%{!?with_bundled_glew:OFF} \
     -DKICAD_PCM=ON \
     -DKICAD_SPICE=ON
 
@@ -184,15 +162,6 @@ export CXX=g++-11 CC=gcc-11
 
 %install
 %cmake_install
-
-%if 0%{?suse_version} < 1550
-%suse_update_desktop_file -r org.kicad.bitmap2component "Education;Engineering"
-%suse_update_desktop_file -r org.kicad.eeschema "Education;Engineering"
-%suse_update_desktop_file -r org.kicad.gerbview "Education;Engineering"
-%suse_update_desktop_file -r org.kicad.kicad "Education;Engineering"
-%suse_update_desktop_file -r org.kicad.pcbcalculator "Education;Engineering"
-%suse_update_desktop_file -r org.kicad.pcbnew "Education;Engineering"
-%endif
 
 # Remove development symlinks, pointless without any headers etc.
 rm %{buildroot}%{_libdir}/libki{cad_3dsg,common,gal}.so
@@ -243,6 +212,8 @@ chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
 %{_datadir}/mime/packages/kicad-*.xml
 %{_datadir}/icons/hicolor/*/mimetypes/application-x-*
 %{_datadir}/icons/hicolor/*/apps/*.*
+%{_datadir}/bash-completion/completions/kicad-cli
+%{_datadir}/zsh/site-functions/_kicad-cli
 
 %files lang -f %{name}.lang
 

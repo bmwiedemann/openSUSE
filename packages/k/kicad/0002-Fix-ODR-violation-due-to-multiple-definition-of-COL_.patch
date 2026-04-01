@@ -1,0 +1,60 @@
+From 860b99d5d05ca71e431109448d40598a82708b62 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 20 Mar 2026 16:06:34 +0100
+Subject: [PATCH 2/2] Fix ODR violation due to multiple definition of COL_ORDR
+ enum
+
+In dialog_pin_proverties the enum is used only locally in the TU, and thus
+can and should have internal linkage, put it in an anonymous namespace.
+---
+ eeschema/dialogs/dialog_pin_properties.cpp | 12 ++++++++++++
+ eeschema/dialogs/dialog_pin_properties.h   | 10 ----------
+ 2 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/eeschema/dialogs/dialog_pin_properties.cpp b/eeschema/dialogs/dialog_pin_properties.cpp
+index 36dc830221..87bdb9a74e 100644
+--- a/eeschema/dialogs/dialog_pin_properties.cpp
++++ b/eeschema/dialogs/dialog_pin_properties.cpp
+@@ -38,6 +38,18 @@
+ #include <wx/hyperlink.h>
+ #include <symbol_preview_widget.h>
+ 
++namespace {
++enum COL_ORDER
++{
++    COL_NAME,
++    COL_TYPE,
++    COL_SHAPE,
++
++    COL_COUNT       // keep as last
++};
++} // namespace
++
++
+ class ALT_PIN_DATA_MODEL : public WX_GRID_TABLE_BASE, public std::vector<SCH_PIN::ALT>
+ {
+ public:
+diff --git a/eeschema/dialogs/dialog_pin_properties.h b/eeschema/dialogs/dialog_pin_properties.h
+index b439635f4d..3ed94638d6 100644
+--- a/eeschema/dialogs/dialog_pin_properties.h
++++ b/eeschema/dialogs/dialog_pin_properties.h
+@@ -37,16 +37,6 @@
+ #include <symbol_edit_frame.h>
+ 
+ 
+-enum COL_ORDER
+-{
+-    COL_NAME,
+-    COL_TYPE,
+-    COL_SHAPE,
+-
+-    COL_COUNT       // keep as last
+-};
+-
+-
+ class ALT_PIN_DATA_MODEL;
+ class SYMBOL_PREVIEW_WIDGET;
+ 
+-- 
+2.53.0
+

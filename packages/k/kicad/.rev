@@ -707,4 +707,18 @@
     <comment></comment>
     <requestid>1341443</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>bbe4ba42e5de6eda290ace3e2b232425</srcmd5>
+    <version>10.0.0</version>
+    <time>1775065860</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.0.0:
+  See https://www.kicad.org/blog/2026/03/Version-10.0.0-Released/
+  for details
+- Removed GLEW conditionals, GLEW has been replaced with GLAD.
+- Add patches:
+   0001-Fix-ODR-violation-due-to-multiple-definition-of-TEXT.patch
+   0002-Fix-ODR-violation-due-to-multiple-definition-of-COL_.patch</comment>
+    <requestid>1343877</requestid>
+  </revision>
 </revisionlist>
