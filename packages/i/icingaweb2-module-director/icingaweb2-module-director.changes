@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  1 13:06:12 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.11.8
+
+- Update to 1.11.8
+  - Fix: SQLERROR when Displaying Services of a Host (#3058)
+  - Fix: Zend Error when modifying Objects (#3056)
+
+-------------------------------------------------------------------
+Thu Mar 26 14:32:44 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.11.7
+
+- Update to 1.11.7
+  * Fixes
+    - Fix: Creating services named identical to template name prevented by cyclic inheritance check (#3036)
+    - Fix: Choosing templates prevented for new templates prevented by cyclic inheritance check (#3039)
+    - Fix: Inherited service not shown in service list of host (#3041)
+    - Fix: An Icinga 2 log-level below 'information' breaks Director's active deployment indicator (#3044)
+
+-------------------------------------------------------------------
 Fri Feb 20 16:07:22 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.11.6
