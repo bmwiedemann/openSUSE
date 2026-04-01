@@ -7,28 +7,38 @@ Index: virt-manager-5.1.0/ui/details.ui
 ===================================================================
 --- virt-manager-5.1.0.orig/ui/details.ui
 +++ virt-manager-5.1.0/ui/details.ui
-@@ -2908,7 +2908,20 @@
+@@ -1936,7 +1936,20 @@
+                                           </packing>
+                                         </child>
+                                         <child>
+-                                          <placeholder/>
++                                          <object class="GtkCheckButton" id="launch-security">
++                                            <property name="label" translatable="yes">Enable launch security</property>
++                                            <property name="visible">True</property>
++                                            <property name="can-focus">True</property>
++                                            <property name="receives-default">False</property>
++                                            <property name="halign">start</property>
++                                            <property name="use-underline">True</property>
++                                            <property name="draw-indicator">True</property>
++                                            <signal name="toggled" handler="on_mem_launch_security_toggled" swapped="no"/>
++                                          </object>
++                                          <packing>
++                                            <property name="left-attach">1</property>
++                                            <property name="top-attach">4</property>
++                                          </packing>
+                                         </child>
+                                       </object>
+                                       <packing>
+@@ -2904,9 +2917,6 @@
+                                 <child>
                                    <placeholder/>
                                  </child>
-                                 <child>
+-                                <child>
 -                                  <placeholder/>
-+                                  <object class="GtkCheckButton" id="launch-security">
-+                                    <property name="label" translatable="yes">Enable launch security</property>
-+                                    <property name="visible">True</property>
-+                                    <property name="can-focus">True</property>
-+                                    <property name="receives-default">False</property>
-+                                    <property name="halign">start</property>
-+                                    <property name="use-underline">True</property>
-+                                    <property name="draw-indicator">True</property>
-+                                    <signal name="toggled" handler="on_mem_launch_security_toggled" swapped="no"/>
-+                                  </object>
-+                                  <packing>
-+                                    <property name="left-attach">1</property>
-+                                    <property name="top-attach">4</property>
-+                                  </packing>
+-                                </child>
+                                 <child>
+                                   <placeholder/>
                                  </child>
-                               </object>
-                               <packing>
 Index: virt-manager-5.1.0/virtManager/details/details.py
 ===================================================================
 --- virt-manager-5.1.0.orig/virtManager/details/details.py

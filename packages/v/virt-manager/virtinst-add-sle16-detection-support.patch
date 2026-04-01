@@ -59,7 +59,7 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 +                    sle_version = (sle_version + '.' + product_name[5][2])
                  else:
 -                    sle_version = (sle_version + '.' + self.product_name.strip().rsplit(' ')[5][2])
-+                    if len(product_name) > 1 and int(product_name[2]) is not 0:
++                    if len(product_name) > 1 and int(product_name[2]) != 0:
 +                        sle_version = (sle_version + '.' + product_name[2])
              distro_version = sle_version
  

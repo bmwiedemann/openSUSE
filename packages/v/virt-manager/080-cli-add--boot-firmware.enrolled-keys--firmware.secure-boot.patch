@@ -1,0 +1,88 @@
+Subject: cli: add --boot firmware.enrolled-keys=,firmware.secure-boot=
+From: Cole Robinson crobinso@redhat.com Wed Feb 25 05:35:43 2026 -0500
+Date: Wed Feb 25 09:44:04 2026 -0500:
+Git: 19f18e9f559496433b25448cb17164e2c378d635
+
+These are convenience options for just setting the XML features.
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+--- a/man/virt-install.rst
++++ b/man/virt-install.rst
+@@ -981,14 +981,10 @@ Some examples:
+     with 'Access Denied', you may need to set ``secure-boot=off`` to
+     install your VM.
+ 
+-``--boot uefi,firmware.feature0.name=secure-boot,firmware.feature0.enabled=yes,firmware.feature1.name=enrolled-keys,firmware.feature1.enabled=yes``
+-    Configure the VM to boot from UEFI with Secure Boot support enabled.
+-    Only signed operating systems will be able to boot with this configuration.
+-
+-``--boot uefi,firmware.feature0.name=secure-boot,firmware.feature0.enabled=no``
+-    Configure the VM to boot from UEFI with Secure Boot support disabled.
+-    This configuration allows both signed and unsigned operating systems to
+-    run.
++``--boot uefi,firmware.secure-boot=yes|no``
++    Convenience option for toggling individual firmware features on or
++    off in domain XML. If you don't know you need this, just use
++    ``--boot uefi,secure-boot=`` instead.
+ 
+     Additional information about the ``secure-boot`` and
+     ``enrolled-keys`` firmware features and how they can be used to
+--- a/tests/data/cli/compare/virt-install-singleton-config-1.xml
++++ b/tests/data/cli/compare/virt-install-singleton-config-1.xml
+@@ -12,6 +12,10 @@
+   <vcpu cpuset="1,3-5">4</vcpu>
+   <os firmware="efi">
+     <type arch="x86_64" machine="q35">hvm</type>
++    <firmware>
++      <feature enabled="yes" name="secure-boot"/>
++      <feature enabled="no" name="enrolled-keys"/>
++    </firmware>
+     <boot dev="cdrom"/>
+     <boot dev="fd"/>
+     <boot dev="hd"/>
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -916,7 +916,7 @@ c.add_compare(
+     "--seclabel relabel=yes "  # lets libvirt fill in type and model
+     "--sysinfo host "  # special `--sysinfo host` handling
+     "--noapic --noacpi "  # feature backcompat
+-    "--boot uefi,cdrom,fd,hd,network,menu=on "  # uefi for default devices, + old style bootorder
++    "--boot uefi,cdrom,fd,hd,network,menu=on,firmware.secure-boot=yes,firmware.enrolled-keys=no "  # uefi for default devices, + old style bootorder, + firmware features
+     "--launchSecurity sev "  # sev defaults
+     # Disabling all the default device setup
+     """
+--- a/virtinst/cli.py
++++ b/virtinst/cli.py
+@@ -3209,6 +3209,10 @@ class ParserBoot(VirtCLIParser):
+         cb = self._make_find_inst_cb(cliarg, list_propname)
+         return cb(*args, **kwargs)
+ 
++    def set_firmware_feature_cb(self, inst, val, virtarg):
++        feature_name = virtarg.cliname.split(".", 1)[1]
++        inst.set_firmware_feature(feature_name, val)
++
+     @classmethod
+     def _virtcli_class_init(cls):
+         VirtCLIParser._virtcli_class_init_common(cls)
+@@ -3255,6 +3259,20 @@ class ParserBoot(VirtCLIParser):
+             is_onoff=True,
+         )
+         cls.add_arg("firmware.feature[0-9]*.name", "name", find_inst_cb=cls.feature_find_inst_cb)
++        cls.add_arg(
++            "firmware.secure-boot",
++            None,
++            lookup_cb=None,
++            cb=cls.set_firmware_feature_cb,
++            is_onoff=True,
++        )
++        cls.add_arg(
++            "firmware.enrolled-keys",
++            None,
++            lookup_cb=None,
++            cb=cls.set_firmware_feature_cb,
++            is_onoff=True,
++        )
+         cls.add_arg("nvram", "nvram")
+         cls.add_arg("nvram.template", "nvram_template")
+         cls.add_arg("boot[0-9]*.dev", "dev", find_inst_cb=cls.boot_find_inst_cb)

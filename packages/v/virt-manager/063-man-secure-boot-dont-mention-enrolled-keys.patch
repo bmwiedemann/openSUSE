@@ -1,0 +1,21 @@
+Subject: man: secure-boot: don't mention entrolled-keys
+From: Pavel Hrdina phrdina@redhat.com Mon Feb 9 20:38:59 2026 +0100
+Date: Mon Feb 9 20:56:22 2026 +0100:
+Git: 5d7c66378be3d6a73b01fe9ddf5265f00b4eb767
+
+Keep the description generic without implementation details.
+
+Signed-off-by: Pavel Hrdina <phrdina@redhat.com>
+
+diff --git a/man/virt-install.rst b/man/virt-install.rst
+index 8ccac382d..d3462172a 100644
+--- a/man/virt-install.rst
++++ b/man/virt-install.rst
+@@ -977,7 +977,6 @@ Some examples:
+     Configure the VM to boot from UEFI with secure-boot enabled and enforced.
+     This requires libvirt with firmware auto-selection. Setting ``secure-boot``
+     to off ensures the firmware can boot unsigned binaries.
+-    This is a convenience option to control the enrolled-keys firmware feature.
+ 
+ ``--boot uefi,firmware.feature0.name=secure-boot,firmware.feature0.enabled=yes,firmware.feature1.name=enrolled-keys,firmware.feature1.enabled=yes``
+     Configure the VM to boot from UEFI with Secure Boot support enabled.

@@ -2294,4 +2294,20 @@
     <comment>Simplify how we detect if an OS recommends efi as the preferred firmware. No functional change.</comment>
     <requestid>1338392</requestid>
   </revision>
+  <revision rev="290" vrev="12">
+    <srcmd5>01c5474e01348dc3d12014da8b3d20b5</srcmd5>
+    <version>5.1.0</version>
+    <time>1774555636</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1342614</requestid>
+  </revision>
+  <revision rev="291" vrev="13">
+    <srcmd5>6d6a0639a6e3889f04efe38bb8e7d701</srcmd5>
+    <version>5.1.0</version>
+    <time>1775066106</time>
+    <user>anag_factory</user>
+    <comment>A few upstream features and fixes and one downstream fix.</comment>
+    <requestid>1344191</requestid>
+  </revision>
 </revisionlist>

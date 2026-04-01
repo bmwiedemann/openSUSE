@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 31 14:50:13 MDT 2026 - carnold@suse.com
+
+- Upstream features and bug fixes (bsc#1027942) (jsc#PED-14625)
+  008-Fix-typo-in-virt-clone-documentation.patch
+  062-cli-add--boot-secure-boot-option.patch
+  063-man-secure-boot-dont-mention-enrolled-keys.patch
+  077-man-virt-install-change--boot-secure-boot--docs.patch
+  079-domain-os-add-set_firmware_feature-helper.patch
+  080-cli-add--boot-firmware.enrolled-keys--firmware.secure-boot.patch
+- Fix the UI Enable Launch Security checkbox
+  virtman-add-launch-security-support.patch
+
+-------------------------------------------------------------------
+Wed Mar 18 11:33:25 MDT 2026 - carnold@suse.com
+
+- Fix a python syntax warning
+  virtinst-query-recommended-firmware.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 14:51:39 MDT 2026 - carnold@suse.com
 
 - Simplify how we detect if an OS recommends efi as the preferred

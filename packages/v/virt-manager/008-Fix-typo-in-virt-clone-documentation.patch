@@ -1,0 +1,19 @@
+Subject: Fix typo in virt-clone documentation
+From: Adrian Vollmer AdrianVollmer@users.noreply.github.com Fri Oct 10 13:39:50 2025 +0200
+Date: Fri Oct 10 14:08:00 2025 +0200:
+Git: 6fe47feca692ad8cff7b88fa4eb8bd328e0a9584
+
+
+diff --git a/man/virt-clone.rst b/man/virt-clone.rst
+index 5b2b82972..e8fe73483 100644
+--- a/man/virt-clone.rst
++++ b/man/virt-clone.rst
+@@ -129,7 +129,7 @@ storage options via -file.
+ ``--reflink``
+     Perform a lightweight copy. This is much faster if source images and destination
+     images are all on the same btrfs filesystem. This only works for raw format disk
+-    images, any non-raw images will not attempt to use refink
++    images, any non-raw images will not attempt to use reflink.
+ 
+ 
+ ``-m``, ``--mac`` MAC

@@ -1,0 +1,41 @@
+Subject: domain: os: add set_firmware_feature helper
+From: Cole Robinson crobinso@redhat.com Wed Feb 25 05:35:22 2026 -0500
+Date: Wed Feb 25 09:44:04 2026 -0500:
+Git: e5c7317874cf3ffade8839d9995b1bc36d94100d
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+diff --git a/virtinst/domain/os.py b/virtinst/domain/os.py
+index a797f141b..9f4140316 100644
+--- a/virtinst/domain/os.py
++++ b/virtinst/domain/os.py
+@@ -240,9 +240,26 @@ class DomainOs(XMLBuilder):
+         self._xmlstate.xmlapi.node_force_remove("./os/loader")
+         self._xmlstate.xmlapi.node_force_remove("./os/nvram")
+ 
+-        enrolled_keys = self.firmware_features.add_new()
+-        enrolled_keys.name = "enrolled-keys"
+-        enrolled_keys.enabled = val
++        self.set_firmware_feature("enrolled-keys", val)
++
++    def set_firmware_feature(self, feature_name, enabled):
++        """
++        Helper for setting firmware feature XML, creating it if it doesn't exist.
++
++        :param feature_name: Name of the firmware feature (e.g., "enrolled-keys")
++        :param enabled: Boolean value for the enabled attribute
++        """
++        feature = None
++        for f in self.firmware_features:
++            if f.name == feature_name:
++                feature = f
++                break
++
++        if feature is None:
++            feature = self.firmware_features.add_new()
++            feature.name = feature_name
++
++        feature.enabled = enabled
+ 
+     ##################
+     # Default config #

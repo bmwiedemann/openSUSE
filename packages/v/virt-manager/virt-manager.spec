@@ -54,6 +54,7 @@ Patch4:         004-xmlapi-split-out-xmlbase.py-and-xmllibxml2.py.patch
 Patch5:         005-xmlbase-fix-parentnode-None-check.patch
 Patch6:         006-xmllibxml2-lazily-import-libxml2.patch
 Patch7:         007-xmlapi-add-xmletree.py-backend.patch
+Patch8:         008-Fix-typo-in-virt-clone-documentation.patch
 Patch9:         009-avoid-NoneType-pixbuf.patch
 Patch12:        012-virtManager-wrapped-details-hw-panel-with-GtkScrolledWindow.patch
 Patch13:        013-virtinst-interface-add-support-for-backend.hostname-and-backend.fqdn.patch
@@ -73,6 +74,11 @@ Patch58:        058-virtManager-Add-NVMe-disk-type.patch
 Patch59:        059-ui-Show-NVMe-Controller-details.patch
 Patch60:        060-virtinst-fix-locale-when-running-in-flatpak.patch
 Patch61:        061-virtinst-add-support-for-iommufd.patch
+Patch62:        062-cli-add--boot-secure-boot-option.patch
+Patch63:        063-man-secure-boot-dont-mention-enrolled-keys.patch
+Patch77:        077-man-virt-install-change--boot-secure-boot--docs.patch
+Patch79:        079-domain-os-add-set_firmware_feature-helper.patch
+Patch80:        080-cli-add--boot-firmware.enrolled-keys--firmware.secure-boot.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
 Patch151:       virtman-kvm.patch
