@@ -47,7 +47,7 @@ This is part of Octave-Forge project.
 %octave_pkg_install
 
 %check
-%global octskiptests imaqhwinfo|__imaq_handler__.cc-tst
+%global octskiptests imaqhwinfo|__imaq_handler__.cc-tst|@videoinput/.*
 echo "Skip tests requiring a camera device: %{octskiptests}"
 %octave_pkg_test
 
