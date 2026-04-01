@@ -1,7 +1,7 @@
 #
 # spec file for package setools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@
 # Disable debuginfo generation in the test flavor to avoid these issues.
 # Since the test flavor does not produce any RPMs, this is not a problem.
 %define debug_package %{nil}
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
 # Test dependencies such as python-PyQt6, python-NetworkX, python-pytest-qt
 # are not found in other distributions.
 # Do not build test flavor for distributions which cannot run tests.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  1 06:29:21 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Adjust %suse_version to ne scheme (jsc#PED-15790)
+
+-------------------------------------------------------------------
 Thu Sep 25 14:47:35 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Fix test multibuild flavor
