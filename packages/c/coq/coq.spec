@@ -28,7 +28,7 @@
 %endif
 
 Name:           coq
-Version:        9.1.1
+Version:        9.2.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -126,7 +126,6 @@ export CFLAGS='%{optflags}'
 ./configure                \
    -prefix %{_prefix}      \
    -libdir %{_libdir}/coq  \
-   -mandir %{_mandir}      \
    -datadir %{_datadir}/%{_name} \
    -docdir %{_docdir}/%{_name} \
    -configdir %{_sysconfdir}/xdg/%{_name} \
@@ -191,10 +190,10 @@ find %{buildroot}%{_libdir} -name '*.a' \
 # cd V%{version}
 # tar --sort=name --owner=0 --group=0 --mtime="@${SOURCE_DATE_EPOCH}" \
 #     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
-#     -cJf ../../coq-refman-%{version}.tar.xz refman
+#     -cJf ../../rocq-refman-%{version}.tar.xz refman
 # tar --sort=name --owner=0 --group=0 --mtime="@${SOURCE_DATE_EPOCH}" \
 #     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
-#     -cJf ../../coq-corelib-doc-%{version}.tar.xz corelib
+#     -cJf ../../rocq-corelib-doc-%{version}.tar.xz corelib
 # popd
 
 # Slim down documentation pages, add some margin directly.
