@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 08:04:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (QTCREATORBUG-34297):
+  * 0001-Utils-Static-assert-on-unknown-binaryArchitecture-on.patch
+
+-------------------------------------------------------------------
 Thu Mar 12 14:56:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 19.0.0

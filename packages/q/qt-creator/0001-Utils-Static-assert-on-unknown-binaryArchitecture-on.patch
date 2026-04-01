@@ -1,0 +1,34 @@
+From 275beff6e92e32291be8db22bae489d5d2116bc3 Mon Sep 17 00:00:00 2001
+From: Eike Ziller <eike.ziller@qt.io>
+Date: Fri, 27 Mar 2026 10:23:44 +0100
+Subject: [PATCH] Utils: Static assert on unknown "binaryArchitecture" only in
+ debug
+
+We introduced this limitation in QtC 19 for a feature that is very
+limited in use, so relax that a bit for people who build Qt Creator on
+under-the-radar platforms.
+
+Fixes: QTCREATORBUG-34297
+Change-Id: I1a40a23193134a60ecaef01da30249b44dd14dfe
+Reviewed-by: Christian Kandeler <christian.kandeler@qt.io>
+---
+ src/libs/utils/hostosinfo.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/libs/utils/hostosinfo.cpp b/src/libs/utils/hostosinfo.cpp
+index 64d4244c38c..cff843000ba 100644
+--- a/src/libs/utils/hostosinfo.cpp
++++ b/src/libs/utils/hostosinfo.cpp
+@@ -114,7 +114,9 @@ OsArch binaryArchitecture()
+ #elif defined(Q_PROCESSOR_IA64)
+     return OsArchItanium;
+ #else
++#  if !defined(QT_NO_DEBUG) || defined(QT_FORCE_ASSERTS)
+     static_assert(false, "Unknown architecture, please add detection.");
++#  endif
+     return OsArchUnknown;
+ #endif
+ }
+-- 
+2.53.0
+

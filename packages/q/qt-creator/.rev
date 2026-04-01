@@ -463,4 +463,13 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment>Update to 19.0.0</comment>
     <requestid>1338624</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>d5d8fa82b7b86152a736f6ea8e85c4bb</srcmd5>
+    <version>19.0.0</version>
+    <time>1775065879</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (QTCREATORBUG-34297):
+  * 0001-Utils-Static-assert-on-unknown-binaryArchitecture-on.patch</comment>
+    <requestid>1343882</requestid>
+  </revision>
 </revisionlist>

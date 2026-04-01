@@ -59,6 +59,8 @@ License:        BSD-3-Clause AND GPL-3.0-only AND GPL-3.0-with-Qt-Company-Qt-exc
 URL:            https://www.qt.io/product/development-tools
 Source:         https://download.qt.io/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt-creator-rpmlintrc
+# PATCH-FIX-UPSTREAM -- Fixes build on PPC, riscv64, s390x
+Patch0:         0001-Utils-Static-assert-on-unknown-binaryArchitecture-on.patch
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
