@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  1 06:02:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.0:
+  * Fix SIGFPE when drawing grid
+
+-------------------------------------------------------------------
 Mon Mar 30 16:12:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.1.0:
