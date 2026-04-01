@@ -31,6 +31,9 @@ Source3:        baselibs.conf
 Source5:        %name.keyring
 Source6:        %name-rpmlintrc
 Patch1:         0001-TOOL-Fix-build-parameter-name-omitted.patch
+Patch2:         0001-Fix-libini_config-related-includes.patch
+Patch3:         0001-INI-get-rid-of-useless-macros.patch
+Patch4:         0001-INI-use-proper-deallocators.patch
 Patch11:        krb-noversion.diff
 Patch12:        harden_sssd-ifp.service.patch
 Patch13:        harden_sssd-kcm.service.patch
@@ -63,7 +66,6 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  uid_wrapper
 BuildRequires:  pkgconfig(augeas) >= 1.0.0
-BuildRequires:  pkgconfig(collection) >= 0.5.1
 BuildRequires:  pkgconfig(dbus-1) >= 1.0.0
 BuildRequires:  pkgconfig(dhash) >= 0.4.2
 BuildRequires:  pkgconfig(glib-2.0)

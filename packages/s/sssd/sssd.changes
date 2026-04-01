@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 30 14:19:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Fix-libini_config-related-includes.patch,
+  0001-INI-get-rid-of-useless-macros.patch,
+  0001-INI-use-proper-deallocators.patch to
+  allow build with newer ding-libs >= 0.7.0.
+
+-------------------------------------------------------------------
 Thu Jan 15 16:47:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.12.0

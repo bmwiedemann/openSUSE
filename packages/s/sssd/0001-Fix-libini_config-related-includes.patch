@@ -1,0 +1,65 @@
+From 29a8731d23d67b2e9641ff4e97fa9be15f4a8fe3 Mon Sep 17 00:00:00 2001
+From: Alexey Tikhonov <atikhono@redhat.com>
+Date: Wed, 28 Jan 2026 14:25:42 +0100
+Subject: [PATCH] Fix libini_config related includes.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Reviewed-by: Tomáš Halman <thalman@redhat.com>
+---
+ src/tools/sssctl/sssctl_config.c | 1 -
+ src/util/sss_ini.c               | 5 ++---
+ src/util/sss_ini.h               | 1 +
+ 3 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/tools/sssctl/sssctl_config.c b/src/tools/sssctl/sssctl_config.c
+index dcd37863e..b29cef2a5 100644
+--- a/src/tools/sssctl/sssctl_config.c
++++ b/src/tools/sssctl/sssctl_config.c
+@@ -22,7 +22,6 @@
+ 
+ #include <popt.h>
+ #include <stdio.h>
+-#include <ini_configobj.h>
+ 
+ #include "util/util.h"
+ #include "util/sss_ini.h"
+diff --git a/src/util/sss_ini.c b/src/util/sss_ini.c
+index 61f8cd786..f3157d022 100644
+--- a/src/util/sss_ini.c
++++ b/src/util/sss_ini.c
+@@ -28,6 +28,8 @@
+ #include <errno.h>
+ #include <sys/stat.h>
+ #include <talloc.h>
++#include <ini_configobj.h>
++#include <ini_config.h>
+ 
+ #include "config.h"
+ #include "util/util.h"
+@@ -35,9 +37,6 @@
+ #include "confdb/confdb_setup.h"
+ #include "confdb/confdb_private.h"
+ 
+-#include "ini_configobj.h"
+-#include "ini_config.h"
+-
+ struct sss_ini {
+     char **error_list;
+     struct ref_array *ra_success_list;
+diff --git a/src/util/sss_ini.h b/src/util/sss_ini.h
+index 45ede2759..e2197f374 100644
+--- a/src/util/sss_ini.h
++++ b/src/util/sss_ini.h
+@@ -28,6 +28,7 @@
+ #define __SSS_INI_H__
+ 
+ #include <stdbool.h>
++#include <ref_array.h>
+ 
+ /**
+  * @brief INI data structure
+-- 
+2.53.0
+
