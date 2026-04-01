@@ -1,7 +1,7 @@
 #
 # spec file for package subfinder
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           subfinder
-Version:        2.9.0
+Version:        2.13.0
 Release:        0
 Summary:        Fast passive subdomain enumeration tool
 License:        MIT
@@ -31,11 +31,14 @@ BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.24
 
 %description
-subfinder is a subdomain discovery tool that returns valid subdomains for websites, using passive online sources.
-It has a simple, modular architecture and is optimized for speed.
-subfinder is built for doing one thing only - passive subdomain enumeration, and it does that very well.
-We have made it to comply with all the used passive source licenses and usage restrictions.
-The passive model guarantees speed and stealthiness that can be leveraged by both penetration testers and bug bounty hunters alike.
+subfinder is a subdomain discovery tool that returns valid subdomains for
+websites, using passive online sources.  It has a simple, modular architecture
+and is optimized for speed.
+subfinder is built for doing one thing only - passive subdomain enumeration,
+and it does that very well.  We have made it to comply with all the used
+passive source licenses and usage restrictions.
+The passive model guarantees speed and stealthiness that can be leveraged by
+both penetration testers and bug bounty hunters alike.
 
 %prep
 %autosetup -p1 -a1

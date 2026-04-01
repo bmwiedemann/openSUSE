@@ -117,4 +117,12 @@ for bsc#1241187 / CVE-2024-0406 / GHSA-rhh4-rh7c-7r5v (forwarded request 1269571
     - Renamed variables to prevent potential nil pointer dereference in netlas source by @tekkamanendless in #1630 (forwarded request 1312357 from dheidler)</comment>
     <requestid>1312578</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>967d4cc6941a9059e59f5d709b2047c7</srcmd5>
+    <version>2.13.0</version>
+    <time>1775065983</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344178</requestid>
+  </revision>
 </revisionlist>

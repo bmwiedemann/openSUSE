@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar 25 14:43:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.0:
+  * Added URLScan.io as passive subdomain source
+  * Fixed timeout issue for Crtsh source
+  * Changed working directory path for Dependabot
+  * Added PR template
+  * Sorted sources alphabetically
+  * Marked LeakIX as requiring an API key
+- update to 2.12.0:
+  * Added API key support for HackerTarget
+  * Added Reconeer
+  * Added optional API key support for sources
+  * Added request tracking to -stats flag
+- update to 2.11.0:
+  * Added Profundis source
+  * Added MerkleMap source
+  * Added THC source
+  * Improved context cancellation sources
+- update to 2.10.0:
+  * Added Windvane source
+  * Added OnHype
+  * Added API key support
+  * Added DomainsProject source
+  * Added wildcard certificate detection in JSON output
+  * Added real-time result support to ResultCallback for
+    enumerated subdomains
+  * Removed hunter
+  * Refactored to use strings.Builder for string manipulation to
+    improve performance
+
+-------------------------------------------------------------------
 Mon Oct 20 09:45:23 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.9.0
