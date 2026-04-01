@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 10:40:14 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- CVE-2026-33747: Malicious frontend can cause file escape outside of storage root
+  use github.com/moby/buildkit 0.28.1 for vendor.tar.gz (boo#1260970)
+
+-------------------------------------------------------------------
 Tue Mar 24 05:59:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.67.1:

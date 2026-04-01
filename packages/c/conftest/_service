@@ -14,5 +14,8 @@
     <param name="file">conftest-*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="go_modules" mode="manual"/>
+  <service name="go_modules" mode="manual">
+    <!-- CVE-2026-33747, remove once https://github.com/open-policy-agent/conftest/pull/1300 is merged -->
+    <param name="replace">github.com/moby/buildkit=github.com/moby/buildkit@v0.28.1</param>
+  </service>
 </services>
