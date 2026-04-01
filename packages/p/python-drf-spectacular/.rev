@@ -40,4 +40,41 @@
   * Support djangorestframework 3.16.1 changes.</comment>
     <requestid>1309429</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dffccb559008f2451094594313bdcc23</srcmd5>
+    <version>0.29.0</version>
+    <time>1775065870</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.29.0:
+  * Add l18n handling for Decimal field #1466
+  * Fix LogoutSerializer for JWT/dj_rest_auth #1392
+  * fix: support token blacklist feature in rest_auth [Bart van
+    Andel]
+  * [django-filter] Add null_label if set in ChoiceFilter (#1450)
+    [Enric Pou]
+  * fix: camelize tuples/fixed length array (#1432) [Chris
+    Wesseling]
+  * Fix items:False case in enum hook #1432
+  * Add option to overwrite serializer description #1463
+  * Fix OpenApiViewExtension not providing view instance under
+    self.target (#1405) [astro-stan]
+  * Move list default fix to source of the problem #1436
+  * Improve confusing doc #1461
+  * Add assert to pagination test #1459
+  * fix SafeString handling for picky CDumper
+  * Remove EOL 3.7 from suite; pydantic not updated for &lt;=3.8
+  * Fix DecimalField with decimal_places and max_digits equal.
+    [keter2002]
+  * fix test for i18n changes on DRF
+  * Improve to_filter_name support for django_filter [Matwey V.
+    Kornilov]
+  * fixes prefix estimation on windows [Luis Nell]
+  * Fix default for array types [Stanislav Khlud]
+  * fix: use CSafeDumper for render yaml if available [florian]
+  * fix: sort list to produce same hash [florian]
+  * Add typing.Generic to default lib_doc_excludes [Max Howald]
+  * Add get_doc test for class that inherits from Generic [Max
+    Howald]</comment>
+    <requestid>1343778</requestid>
+  </revision>
 </revisionlist>
