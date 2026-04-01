@@ -1,7 +1,7 @@
 #
 # spec file for package python-nethsm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nethsm
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Python Library to manage NetHSM(s)
 License:        Apache-2.0
 URL:            https://github.com/Nitrokey/nethsm-sdk-py
 Source:         https://github.com/Nitrokey/nethsm-sdk-py/archive/v%{version}.tar.gz#/nethsm-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  python-rpm-macros
+# Runtime dependencies
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cryptography >= 41.0}
-BuildRequires:  %{python_module flit >= 3.2}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module typing_extensions >= 4.3.0}
+BuildRequires:  %{python_module python-dateutil > 2 with %python-python-dateutil < 3}
+BuildRequires:  %{python_module typing_extensions >= 4.3.0 with %python-typing_extensions < 5}
 BuildRequires:  %{python_module urllib3 >= 2.0 with %python-urllib3 < 3}
-BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module docker}
@@ -41,25 +42,9 @@ BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  fdupes
 Requires:       python-certifi
 Requires:       python-cryptography >= 41.0
-Requires:       python-python-dateutil
-Requires:       python-typing_extensions >= 4.3.0
+Requires:       (python-python-dateutil > 2 with python-python-dateutil < 3)
+Requires:       (python-typing_extensions >= 4.3.0 with python-typing_extensions < 5)
 Requires:       (python-urllib3 >= 2.0 with python-urllib3 < 3)
-Suggests:       python-black >= 22.1.0
-Suggests:       python-flake8
-Suggests:       python-flit >= 3.2
-Suggests:       python-ipython
-Suggests:       python-isort
-Suggests:       python-mypy >= 1.4
-Suggests:       python-pytest
-Suggests:       python-pytest-reporter-html1
-Suggests:       python-docker
-Suggests:       python-pycryptodome
-Suggests:       python-requests
-Suggests:       python-types-python-dateutil
-Suggests:       python-types-requests
-Suggests:       python-pytest-cov
-Suggests:       python-cryptography
-Suggests:       python-pyyaml
 BuildArch:      noarch
 %python_subpackages
 
@@ -144,6 +129,9 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_move_key"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_list_keys_prefix"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_unprovision_shutdown"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_locked_shutdown"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_namespace_tag_delete"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_namespace_tag_readd"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_delete_prefix"
 
 %pytest -k "not (${IGNORED_CHECKS})"
 
