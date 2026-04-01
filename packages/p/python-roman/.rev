@@ -131,4 +131,16 @@
     <comment></comment>
     <requestid>1301756</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a098e0cdf88cd49db16474da609de4af</srcmd5>
+    <version>5.2</version>
+    <time>1775065907</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.2:
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+  * Hide undocumented special behavior for N behind method
+    parameter.</comment>
+    <requestid>1343966</requestid>
+  </revision>
 </revisionlist>

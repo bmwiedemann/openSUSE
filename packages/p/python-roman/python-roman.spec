@@ -1,7 +1,7 @@
 #
 # spec file for package python-roman
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,15 +24,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-roman
-Version:        5.0
+Version:        5.2
 Release:        0
 Summary:        Integer to Roman numerals converter
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/roman
 Source:         https://files.pythonhosted.org/packages/source/r/roman/%{packagename}-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 78.1.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -77,13 +77,8 @@ This module converts from and to Roman numerals. It can convert numbers from
 %files %{python_files}
 %doc README.rst CHANGES.rst
 %license LICENSE.txt
-%pycache_only %{python_sitelib}/__pycache__/%{packagename}*pyc
-%{python_sitelib}/%{packagename}-%{version}.dist-info
-%{python_sitelib}/%{packagename}.py
 %python_alternative %{_bindir}/roman
-
-%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150200
-%{_prefix}/lib/python2.7/site-packages/%{packagename}.py*
-%endif
+%{python_sitelib}/%{packagename}/
+%{python_sitelib}/%{packagename}-%{version}.dist-info
 
 %changelog

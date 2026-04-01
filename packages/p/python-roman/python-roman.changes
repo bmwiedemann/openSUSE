@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 31 19:06:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2:
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+  * Hide undocumented special behavior for N behind method
+    parameter.
+
+-------------------------------------------------------------------
 Mon Aug 25 12:11:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
