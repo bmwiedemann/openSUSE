@@ -1,7 +1,7 @@
 #
 # spec file for package python-gherkin-official
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,18 @@
 
 # PyPi name
 Name:           python-gherkin-official
-Version:        33.0.0
+Version:        39.0.0
 Release:        0
 Summary:        Gherkin parser (official, by Cucumber team)
 License:        MIT
 URL:            https://github.com/cucumber/gherkin
 Source:         https://github.com/cucumber/gherkin/archive/refs/tags/v%{version}.tar.gz#/gherkin-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 61.0}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module uv-build >= 0.10.0}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module typing_extensions >= 4}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6.1}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-typing_extensions >= 4
@@ -65,6 +64,6 @@ popd
 %doc python/README.md
 %license LICENSE
 %{python_sitelib}/gherkin
-%{python_sitelib}/gherkin_official-%{version}.dist-info
+%{python_sitelib}/gherkin_official-%{version}*-info
 
 %changelog

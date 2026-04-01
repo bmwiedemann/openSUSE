@@ -7,4 +7,19 @@
     <comment>- Initial release of 33.0.0.</comment>
     <requestid>1302131</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6fd14ae1d2b93599852ddec3ca92cef0</srcmd5>
+    <version>39.0.0</version>
+    <time>1775065938</time>
+    <user>anag_factory</user>
+    <comment>- update to 39.0.0:
+  * (i18n) Added Korean translation of &quot;Rule&quot;
+  * [Python] Fixed hidden file reading behavior in `Parser.parse`
+    (#541).
+  * BREAKING CHANGE: Require messages v31 or greater
+  * [Python] Dropped legacy input-output processor
+  * [Python] Dropped legacy `.egg-info` metadata distribution
+    artifacts</comment>
+    <requestid>1344060</requestid>
+  </revision>
 </revisionlist>

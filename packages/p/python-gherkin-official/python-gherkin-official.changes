@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:52:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 39.0.0:
+  * (i18n) Added Korean translation of "Rule"
+  * [Python] Fixed hidden file reading behavior in `Parser.parse`
+    (#541).
+  * BREAKING CHANGE: Require messages v31 or greater
+  * [Python] Dropped legacy input-output processor
+  * [Python] Dropped legacy `.egg-info` metadata distribution
+    artifacts
+
+-------------------------------------------------------------------
 Fri Jul 18 06:19:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 33.0.0.
