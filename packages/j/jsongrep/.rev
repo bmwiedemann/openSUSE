@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fdbd480d7867396497ff66a55faf6661</srcmd5>
+    <version>0.8.0</version>
+    <time>1775065884</time>
+    <user>anag_factory</user>
+    <comment>new package jsongrep aka jg: command-line tool for fast querying of JSON, YAML, TOML, JSONL, CBOR, and MessagePack documents using regular path expressions</comment>
+    <requestid>1343903</requestid>
+  </revision>
+</revisionlist>

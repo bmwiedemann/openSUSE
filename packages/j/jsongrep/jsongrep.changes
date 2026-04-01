@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Mar 29 18:36:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package jsongrep aka jg: command-line tool for fast querying
+  of JSON, YAML, TOML, JSONL, CBOR, and MessagePack documents using
+  regular path expressions
