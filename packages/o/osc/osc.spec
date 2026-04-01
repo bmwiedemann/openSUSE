@@ -80,7 +80,7 @@
 %endif
 
 Name:           osc
-Version:        1.25.0
+Version:        1.26.0
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -103,9 +103,11 @@ BuildRequires:  %{sphinx_pkg}
 %endif
 BuildRequires:  %{use_python_pkg}-cryptography
 BuildRequires:  %{use_python_pkg}-devel >= 3.6
+BuildRequires:  %{use_python_pkg}-pip
 BuildRequires:  %{use_python_pkg}-rpm
 BuildRequires:  %{use_python_pkg}-setuptools
 BuildRequires:  %{use_python_pkg}-urllib3
+BuildRequires:  %{use_python_pkg}-wheel
 BuildRequires:  %{yaml_pkg}
 BuildRequires:  diffstat
 %if %{with fdupes}
@@ -195,7 +197,11 @@ for a general introduction.
     sed -i 's/ruamel\.yaml/PyYAML/g' setup.cfg
 %endif
 
-%{use_python} setup.py build
+%{use_python} -mpip wheel \
+  --verbose --progress-bar off --disable-pip-version-check \
+  --use-pep517 --no-build-isolation \
+  --no-deps \
+  --wheel-dir ./build .
 
 # write rpm macros
 cat << EOF > macros.osc
@@ -230,7 +236,12 @@ sphinx-build -b man doc .
 %endif
 
 %install
-%{use_python} setup.py install -O1 --skip-build --force --root %{buildroot} --prefix %{_prefix}
+%{use_python} -mpip install \
+  --verbose --progress-bar off --disable-pip-version-check \
+  --root %{buildroot} \
+  --no-compile \
+  --ignore-installed --no-deps \
+  --no-index --find-links ./build osc
 
 # symlink /usr/bin/git-obs to /usr/libexec/git/obs
 mkdir -p %{buildroot}%{_libexecdir}/git
