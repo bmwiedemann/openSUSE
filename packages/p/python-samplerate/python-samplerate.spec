@@ -1,7 +1,7 @@
 #
 # spec file for package python-samplerate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-samplerate
-Version:        0.2.1
+Version:        0.2.4
 Release:        0
 License:        MIT
 Summary:        Python bindings for libsamplerate
@@ -28,8 +28,8 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

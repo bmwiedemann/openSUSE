@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:28:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.4
+  * Updated pybind11 to 3.0.1.
+  * Updated GitHub Actions CI to use cibuildwheel, adding support
+    for Linux (x86_64, aarch64) wheels.
+  * Fixed array resizing in C++ extension by returning new array
+    views to avoid potential issues.
+  * Added cmake to build-system requirements in pyproject.toml.
+  * Switched to Python_EXECUTABLE for pybind11 compatibility in
+    CMake.
+  * Set CMAKE_POSITION_INDEPENDENT_CODE to ON and -fPIC in
+    CMakeLists.txt.
+  * Added support for MACOSX_DEPLOYMENT_TARGET in setup.py.
+  * Updated metadata to use License-Expression: MIT.
+
+-------------------------------------------------------------------
 Fri Feb 16 15:50:56 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.2.1
