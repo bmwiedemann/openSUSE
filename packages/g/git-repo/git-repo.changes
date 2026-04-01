@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar 25 13:50:24 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.62:
+  * docs: windows: mention Developer Mode for symlinks
+  * project: don't re-shallow manually unshallowed repos during sync
+  * Use git_superproject.UseSuperproject() everywhere
+  * pydev: drop Python 2 reference
+  * isort: merge config into pyproject.toml
+  * tests: switch some test modules to pytest
+  * git_superproject: avoid re-initing bare repo
+  * project: resolve unborn HEAD robustly in reftable repos
+  * project: support reftable anchors in worktree .git migration
+  * project: avoid direct packed-refs writes during fetch
+  * git_refs: read refs via git plumbing for files/reftable
+  * tests: add a util module for sharing code
+  * man: refresh after recent changes
+  * docs: Document support for child elements in extend-project
+  * tests: Add extend-project test for additional annotations
+  * sync: Remove dependency on ssh if not needed
+  * gc: fix untargeted projects being deleted
+  * manifest: Introduce `sync-j-max` attribute to cap sync jobs
+  * Make git trace2 logging errors conditional on verbose mode.
+  * run_tests: log tool versions
+
+-------------------------------------------------------------------
 Thu Jan 29 21:10:29 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.61.1:
