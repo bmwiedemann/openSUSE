@@ -14,4 +14,14 @@
     and https://rocq-prover.org/doc/v9.1/refman-stdlib/changes.html.</comment>
     <requestid>1341897</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>64474e5a3bdb1a6eb5a539b02743aa50</srcmd5>
+    <version>9.1.0</version>
+    <time>1775065914</time>
+    <user>anag_factory</user>
+    <comment>- Require ocaml-rpm-macros in build for generation of dependencies.
+- Now we no longer need the explicit rocq-devel runtime dependency.
+</comment>
+    <requestid>1343992</requestid>
+  </revision>
 </revisionlist>

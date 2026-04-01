@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 21:19:48 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Require ocaml-rpm-macros in build for generation of dependencies.
+- Now we no longer need the explicit rocq-devel runtime dependency.
+
+-------------------------------------------------------------------
 Wed Feb 25 22:28:07 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Initial (separate) release based on version 9.1.0.

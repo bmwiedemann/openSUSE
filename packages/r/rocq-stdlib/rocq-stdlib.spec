@@ -1,5 +1,5 @@
 #
-# spec file for package roqc-stdlib
+# spec file for package rocq-stdlib
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 #
@@ -29,9 +29,10 @@ Source:         https://github.com/rocq-prover/stdlib/archive/V%{version}.tar.gz
 Source50:       rocq-refman-stdlib-%{version}.tar.xz
 Source51:       rocq-stdlib-doc-%{version}.tar.xz
 Source100:      %{name}-rpmlintrc
+BuildRequires:  fdupes
+BuildRequires:  ocaml-rpm-macros
 BuildRequires:  rocq >= %{rocq_minver}
 BuildRequires:  rocq-devel >= %{rocq_minver}
-BuildRequires:  fdupes
 # The binary format works only with the Rocq version it was built with.
 Requires:       rocq = %{pkg_version rocq}
 Provides:       coq:%{_libdir}/coq/theories/Logic/Classical.vo
@@ -46,7 +47,6 @@ like lists, sets and relations.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
-Requires:       rocq-devel = %{pkg_version rocq-devel}
 Provides:       coq-devel:%{_libdir}/coq/theories/Logic/Classical.v
 
 %description devel
