@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 20:25:14 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.5.5:
+  * fix(squash): keep author when squashed commits have same author
+
+-------------------------------------------------------------------
 Tue Oct 14 02:12:08 UTC 2025 - Mikhail Terekhov <termim@gmail.com>
 
 - Update to version 2.5.4:
