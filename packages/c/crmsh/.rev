@@ -3769,4 +3769,20 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1338590</requestid>
   </revision>
+  <revision rev="400" vrev="1">
+    <srcmd5>16ea42024d2323a7717a189d1151d35a</srcmd5>
+    <version>5.0.0+20260325.30415311</version>
+    <time>1774469948</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342355</requestid>
+  </revision>
+  <revision rev="401" vrev="1">
+    <srcmd5>3aba2da6080f33a83b152ccecd70cf49</srcmd5>
+    <version>5.0.0+20260401.827507a4</version>
+    <time>1775065927</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1344045</requestid>
+  </revision>
 </revisionlist>

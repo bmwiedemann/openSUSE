@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Apr 01 07:06:29 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260401.827507a4:
+  * Fix: crm.8.adoc: Use cluster inside KVM guest as example instead of Xen
+
+-------------------------------------------------------------------
+Tue Mar 31 02:59:18 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260331.778ade0d:
+  * Dev: unittests: Adjust unit test for previous commits
+  * Dev: behave: Adjust functional test for previous commits
+  * Dev: qdevice: Remove unused codes
+  * Fix: bootstrap: On join node, retrieve qdevice certification files before starting qdevice (bsc#1254243)
+
+-------------------------------------------------------------------
+Wed Mar 25 05:12:55 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260325.30415311:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: behave: Add new feature file deprecated_term.feature
+  * Dev: sbd: Check and fix based on the current property term
+  * Dev: utils: Use class DeprecatedTermTranslator
+  * Dev: utils: Get deprecated cluster options dynamically
+  * Dev: ui_configure: Hide deprecated name while running get_property/property
+  * Dev: testcases: Adjust original test cases for previous commit
+  * Dev: Check deprecated properties for multiple commands
+  * Dev: Check deprecated property name and give warning
+  * Dev: doc: Replace terminology 'stonith' with 'fencing' in crm.8.adoc
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: xmlutil: Consider both 'stonith' and 'fencing' terms when checking watchdog timeout
+  * Dev: Replace terminology 'stonith' with 'fencing' (jsc#PED-14631)
+
+-------------------------------------------------------------------
 Fri Mar 13 04:23:58 UTC 2026 - nicholas.yang@suse.com
 
 - Update to version 5.0.0+20260313.6235a908:
