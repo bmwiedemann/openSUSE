@@ -849,4 +849,12 @@
 - Refreshed patch fix-vendoring.patch</comment>
     <requestid>1326279</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>43b56511646217889e3f2dc08ecb189a</srcmd5>
+    <version>3.13.5</version>
+    <time>1775065823</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1344074</requestid>
+  </revision>
 </revisionlist>

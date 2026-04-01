@@ -19,7 +19,7 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.13.3
+Version:        3.13.5
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
@@ -153,6 +153,8 @@ rm -v tests/autobahn/test_autobahn.py
 rm -v tests/test_proxy_functional.py
 # Requires python-pytest-codspeed
 rm -v tests/test_benchmarks_*
+# Helpers, now obsolete: https://github.com/aio-libs/aiohttp/issues/11400
+rm -v tests/test_cookie_helpers.py
 
 # randomly fails on xdist splits
 single_runs="(test_run_app or test_web_runner)"
