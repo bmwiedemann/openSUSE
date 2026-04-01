@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  1 03:01:38 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Update ovmf descriptors
+  - Remove 2MB OVMF descriptor.
+  - Remove IA32 and AArch32 OVMF descriptors.
+  - Align feature tags for libvirt parsing.
+
+-------------------------------------------------------------------
 Tue Mar 31 06:41:39 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
 
 - Add ovmf-Revert-OvmfPkg-X86QemuLoadImageLib-flip-default-for-.patch (bsc#1260358, bsc#1259826)
