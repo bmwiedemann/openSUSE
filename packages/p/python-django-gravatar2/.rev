@@ -52,4 +52,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282122</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6196dc7ff76366166ba12ddea11d2033</srcmd5>
+    <version>1.4.5</version>
+    <time>1775065936</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.5:
+  * escape alt text in templating before marking safe</comment>
+    <requestid>1344056</requestid>
+  </revision>
 </revisionlist>

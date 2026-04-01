@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  1 07:46:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.5:
+  * escape alt text in templating before marking safe
+
+-------------------------------------------------------------------
 Tue Jun  3 06:56:53 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
