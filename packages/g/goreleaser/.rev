@@ -866,4 +866,23 @@
   * ci(deps): bump the actions group with 4 updates (#6477) (forwarded request 1343717 from ph03nix)</comment>
     <requestid>1343724</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>07a743f41efa25176d51427986d80c2f</srcmd5>
+    <version>2.15.1</version>
+    <time>1775065891</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.15.1:
+  * refactor: fix modernize lint issues (#6507)
+  * fix: exclude signatures and certificates from sign pipe &quot;all&quot; filter (#6509)
+  * fix: retry git clone/push on transient network errors, clean up partial clones (#6506)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.16.5 to 5.17.1 (#6510)
+  * fix: retry snapcraft upload on 5xx error (#6504)
+  * ci: always trigger generate
+  * chore: auto-update generated files
+  * docs: update
+  * docs: announce v2.15
+  * docs: v2.15
+  * chore: auto-update generated files (forwarded request 1343861 from ph03nix)</comment>
+    <requestid>1343938</requestid>
+  </revision>
 </revisionlist>
