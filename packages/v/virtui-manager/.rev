@@ -260,4 +260,15 @@ version 2.4.3:
 </comment>
     <requestid>1341092</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6b7f93d6ba915e820f30df853c60f918</srcmd5>
+    <version>2.5.0</version>
+    <time>1775065980</time>
+    <user>anag_factory</user>
+    <comment>- version 2.5.0:
+  * Add direct boot kernel support (+ovmf debug file)
+  * Fix freezing issue: cancel all worker if Edit mode on VM config
+</comment>
+    <requestid>1344173</requestid>
+  </revision>
 </revisionlist>

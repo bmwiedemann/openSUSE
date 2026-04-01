@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           virtui-manager
-Version:        2.4.8
+Version:        2.5.0
 Release:        0
 Summary:        Terminal-based interface to manage virtual machines using libvirt
 License:        GPL-3.0-or-later
@@ -28,17 +28,28 @@ Source:         %{name}-%{version}.tar.gz
 Group: 		System/Monitoring
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
+%if 0%{?fedora} || 0%{?rhel}
+BuildRequires:  python3-devel
+BuildRequires:  pyproject-rpm-macros
+%else
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+%endif
 # Runtime dependencies
+%if 0%{?fedora} || 0%{?rhel}
+Requires:       python3-libvirt
+Requires:       python3-pyyaml
+Requires:       p7zip
+%else
 Requires:       python3-libvirt-python
-Requires:       python3-textual >= 0.40.0
 Requires:       python3-PyYAML
+Requires:       7zip
+%endif
+Requires:       python3-textual >= 0.40.0
 Requires:       python3-markdown-it-py
-Requires: 	tmux
-Requires: 	7zip
+Requires:       tmux
 BuildArch:      noarch
 
 %description
@@ -56,9 +67,14 @@ This package contains the HTML documentation for virtui-manager.
 Summary:        Simple remote viewer for virtui-manager
 Requires:       %{name} = %{version}
 Requires:       python3-gobject
-Requires:       python3-libvirt-python
 Requires:       gtk3
+%if 0%{?fedora} || 0%{?rhel}
+Requires:       python3-libvirt
+Requires:       vte291
+%else
+Requires:       python3-libvirt-python
 Requires:       vte
+%endif
 #Requires:       libgtk-vnc-2_0-0
 #Requires:       libvirt-glib-1_0-0
 # Spice support (optional but good to have)
@@ -68,7 +84,9 @@ Recommends:     typelib(SpiceClientGtk) = 3.0
 A simple remote viewer application bundled with virtui-manager.
 It supports VNC and SPICE protocols.
 
+%if 0%{?suse_version}
 %lang_package
+%endif
 
 %prep
 %setup -q
@@ -76,10 +94,19 @@ It supports VNC and SPICE protocols.
 %build
 # Compile translations
 bash src/vmanager/manage_translation.sh compile-mo
+%if 0%{?fedora} || 0%{?rhel}
+%pyproject_build
+%else
 %python3_pyproject_wheel
+%endif
 
 %install
+%if 0%{?fedora} || 0%{?rhel}
+%pyproject_install
+%pyproject_save_files vmanager
+%else
 %python3_pyproject_install
+%endif
 chmod 755 %{buildroot}%{python3_sitelib}/vmanager/gui_wrapper.py
 chmod 755 %{buildroot}%{python3_sitelib}/vmanager/virtui_dev.py
 
@@ -92,10 +119,14 @@ fi
 cp README.md %{buildroot}%{_docdir}/%{name}/
 
 # Deduplicate files
+%if 0%{?suse_version}
 %fdupes %{buildroot}%{python3_sitelib}
 %fdupes %{buildroot}%{_docdir}/%{name}
+%endif
 
+%if 0%{?suse_version}
 %find_lang %{name}
+%endif
 
 %files
 %license LICENSE
@@ -103,15 +134,24 @@ cp README.md %{buildroot}%{_docdir}/%{name}/
 %{_bindir}/virtui-manager
 %{_bindir}/virtui-manager-cmd
 %{_bindir}/virtui-gui
+%if 0%{?fedora} || 0%{?rhel}
+%{python3_sitelib}/vmanager/
+%exclude %{python3_sitelib}/vmanager/gui_wrapper.py
+%exclude %{python3_sitelib}/vmanager/viewer/
+%{python3_sitelib}/virtui_manager-*.dist-info/
+%else
 %{python3_sitelib}/vmanager
-%exclude %{python3_sitelib}/vmanager/locale
 %exclude %{python3_sitelib}/vmanager/gui_wrapper.py
 %exclude %{python3_sitelib}/vmanager/viewer
+%exclude %{python3_sitelib}/vmanager/locale
 %{python3_sitelib}/virtui_manager-*-info
+%endif
 
+%if 0%{?suse_version}
 %files lang -f %{name}.lang
 %defattr(-,root,root,-)
 %{python3_sitelib}/vmanager/locale
+%endif
 
 %files doc
 %dir %{_docdir}/%{name}
