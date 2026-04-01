@@ -649,4 +649,12 @@
     reserved keywords (#3002)</comment>
     <requestid>1343479</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>f0b2da12872d2f5f49780012ea1ce639</srcmd5>
+    <version>2.20.0</version>
+    <time>1775066095</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.20.0 (bsc#1260796, CVE-2026-4539):</comment>
+    <requestid>1343910</requestid>
+  </revision>
 </revisionlist>

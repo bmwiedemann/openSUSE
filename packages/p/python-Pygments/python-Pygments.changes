@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Mar 29 17:36:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 2.20.0:
+- update to 2.20.0 (bsc#1260796, CVE-2026-4539):
   * archetype: Fix catastrophic backtracking in GUID and ID
     patterns (#3064)
   * ASN.1: Recognize minus sign and fix range operator (#3014,
