@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 31 19:46:34 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to release 3.4.2
+  * Added SDL_HINT_OPENGL_FORCE_SRGB_FRAMEBUFFER to force specific
+    sRGB behavior for OpenGL and OpenGL ES
+  * Fixed long startup time on Windows when some non-compliant input
+    devices are present
+  * Added support for the Razer Raiju V5 Pro
+  * Fixed a divide by zero when using Nintendo Switch 2 controllers
+  * Fixed handling GameCube adapters in PC mode
+
+-------------------------------------------------------------------
 Thu Jan  1 16:54:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.0
