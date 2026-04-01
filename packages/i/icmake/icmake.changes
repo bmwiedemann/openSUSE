@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Apr 01 09:23:31 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 13.05.01
+  * Fixed version 13.05.00's bobcat classes Signal and Arg accidentally
+    including <bobcat/exception> instead of "../exception/exception".
+- Update to 13.05.00
+  * Repaired an error in /usr/bin/icmstart because of which it couldn't call
+    the icmstart.bim compiled icmake binary.
+  * The classes Arg and Signal in support/bobcat.tgz now uses the bobcat
+    6.11.00 implementation.
+- Update to 13.04.02
+  * Following Tony Mancill's advice 'ag' is replaced by 'grep' as 'ag' is not
+    a standard tool.
+  * Repaired flaws in the ./install script, 'tar' is used instead of 'cp'.
+- icmake is now independant of libbobcat
+
+-------------------------------------------------------------------
+Mon Oct 27 14:22:08 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 13.04.01:
+  * processed some gitlab merge request
+  * updated the man-pages
+  * icmake -s also shows the script name as argv[0]
+  * moved setTmp from scriptopts to stbase
+  * repaired optbase/optbase1.cc; icmake -c shows icm-comp usage
+  * icmake -t shows the script name in error messages
+  * updated icmstart.rc.yo
+  * scripts/icmstart.in optionally adds parser/scanner defines to icmconf
+  * the flaw in icmodmap was a bug, now fixed
+  * repaired a flaw in icmodmap
+- upgrade to 13.03.00
+  * modmap: checked in modified files
+  * modmap: modified --quiet and no args/options handling
+  * modmap: when chdir fails the failing name is written to cerr
+  * modmap usage change: dropped -f, arg can also be - or a filename
+  * modmap: all Support members are static
+  * modmap: --mark fully operational
+  * modmap: dependent units are compiled with -m +
+  * modmap: initial cercular test and compilation after redesiging OK
+  * icmodmap: sources using modules are registered in ModData
+  * icmodmap: todo -m ++ and -m filename
+  * icmodmap: added class Options
+- upgrade to 13.01.00
+  * repaired a bug in icmake/icmcomp/docompile.cc
+  * module directories can have subdirs for partitions
+  * simplified the icmodmap usage
+  * emsg when unknown modules remain -> no compilation
+  * repaired the regex recognizing names in scanner/lexer
+  * scanner/lexer NAME regex accepts names > 1 char.
+  * added --verbose output
+  * passed a basic test handling partitions
+  * demo using external module OK
+  * modmap compilation now handled by the class Compiler
+  * scanning sources now by class Scan, also added ModData
+  * activated the compile command
+  * ready to activate compilation
+  * reactivated option --clean
+  * wip handling circular dependencies
+  * 1st implementation of required modules inspection operational
+  * external modules are linked, not yet inspected
+  * next: inspecting unknown modules
+  * initial scan for modules OK
+  * Modules scans all source files
+  * last modifications before Modules reimplementation
+  * added modules ./connectexternal.cc and ./symlink.cc
+  * mdules/external uses recursive_directory_iterator
+  * raw implementation of modules/external
+  * added option --extern, to do: modules/external operational
+  * icmodmap: option --clean operational
+  * added modules/external.cc skeleton
+  * added option --clean to icmodmap
+  * fixed the bug in spch/process/spch.cc, ready for 13.00.03
+  * Repaired CLASSES file handling by icmake -S
+    Changed the handling of temp. files
+    Icmake -t's option supports keeping the compiled .bim file
+- removed patch fixed upstream
+  [- fix-lib-path-for-builds-file.patch]
+  [- fix-spch-process.patch]
+
+-------------------------------------------------------------------
 Mon Oct 20 13:29:02 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Remove fixed patches

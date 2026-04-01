@@ -1,7 +1,7 @@
 #
 # spec file for package icmake
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,16 @@
 
 
 Name:           icmake
-Version:        13.00.01
+Version:        13.05.01
 Release:        0
 Summary:        A program maintenance (make) utility using a C-like grammar
 License:        GPL-3.0-only
 Group:          Development/Tools/Building
 URL:            https://gitlab.com/fbb-git/icmake
 Source:         %{URL}/-/archive/%{version}/icmake-%{version}.tar.bz2
-Patch:          fix-lib-path-for-builds-file.patch
-# FIXED-UPSTREAM
-Patch:          fix-spch-process.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
-BuildRequires:  libbobcat-light-devel-static
 
 %description
 Icmake allows the programmer to use a program language (closely
@@ -45,24 +41,18 @@ that have proven to be useful in program maintenance.
 %build
 export CXXFLAGS="%{optflags} -std=c++2b -g"
 export ICMAKE_CPPSTD="${CXXFLAGS}"
-_bindir=%{_bindir}
-_datadir=%{_datadir}
-_mandir=%{_mandir}
-_libdir=%{_libdir}
-_sysdir=%{_sysconfdir}
-_docdir=%{_docdir}
 {
     echo "/* created during rpmbuild */"
-    echo "#define BINDIR      \"${_bindir:1}\""
-    echo "#define SKELDIR     \"${_datadir:1}/%{name}\""
-    echo "#define MANDIR      \"${_mandir:1}\""
-    echo "#define LIBDIR      \"${_libdir:1}/%{name}\""
-    echo "#define CONFDIR     \"${_sysdir:1}/%{name}\""
-    echo "#define DOCDIR      \"${_docdir:1}/%{name}\""
+    echo "#define BINDIR      \"%{_bindir}\""
+    echo "#define SKELDIR     \"%{_datadir}/%{name}\""
+    echo "#define MANDIR      \"%{_mandir}\""
+    echo "#define LIBDIR      \"%{_libdir}/%{name}\""
+    echo "#define CONFDIR     \"%{_sysconfdir}/%{name}\""
+    echo "#define DOCDIR      \"%{_docdir}/%{name}\""
 } > %{name}/INSTALL.im
 pushd %{name}
 ./prepare "/"
-./buildlib "/"
+./buildlib x
 ./build all
 popd
 
