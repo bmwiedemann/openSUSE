@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>1342246</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1f57217142a2b3e15d03fddb8807650a</srcmd5>
+    <version>4.16.0</version>
+    <time>1775065958</time>
+    <user>anag_factory</user>
+    <comment>- Add missing requirements, bsc#1260991 (forwarded request 1343616 from dgarcia)</comment>
+    <requestid>1344097</requestid>
+  </revision>
 </revisionlist>

@@ -42,10 +42,15 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+Requires:       python-Jinja2
 Requires:       python-PyNaCl
 Requires:       python-cryptography
 Requires:       python-distro
 Requires:       python-proton-core >= 0.4.0
+Requires:       python-packaging
+Requires:       python-gobject
+Requires:       python-pycairo
+Requires:       python-proton-vpn-local-agent
 # sentry-sdk is not mandatory and only available in TW
 %if 0%{?suse_version} > 1600
 Requires:       python-sentry-sdk
