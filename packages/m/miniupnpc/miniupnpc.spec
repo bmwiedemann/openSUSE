@@ -1,7 +1,7 @@
 #
 # spec file for package miniupnpc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define soname 17
+%define soname 21
 Name:           miniupnpc
-Version:        2.2.6
+Version:        2.3.3
 Release:        0
 Summary:        Universal Plug'n'Play (UPnP) Client
 License:        BSD-3-Clause
@@ -31,7 +31,10 @@ Source99:       baselibs.conf
 # PATCH-FIX-SUSE: do not hardcode kernel version in headers
 Patch0:         miniupnpc-kernelversion.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -42,7 +45,7 @@ Requires:       libminiupnpc%{soname} = %{version}-%{release}
 %define python_subpackage_only 1
 %python_subpackages
 %else
-# same "defaults" for all distributions, used in %files below
+# same "defaults" for all distributions, used in %%files below
 %define python_files() -n python3-%{**}
 %define python_sitearch %{python3_sitearch}
 %endif
@@ -95,28 +98,35 @@ Device (IGD) specifications.
 
 %build
 export CFLAGS="%{optflags}"
-%make_build \
-     CC="gcc" BUILD=$PWD/build \
-     OPTFLAGS="%{optflags}" \
-     PYTHON="python3"
-
-%python_build
+%cmake \
+  -DUPNPC_BUILD_STATIC=OFF \
+  -DUPNPC_BUILD_SHARED=ON \
+  -DUPNPC_BUILD_SAMPLE=ON
+cd ..
+mv build build_cmake
+%pyproject_wheel
+mv build build_python
 
 %install
-%make_install INSTALLDIRLIB=%{_libdir} LIBDIR=%{_lib}
+mv build_cmake build
+%cmake_install
+mv build build_cmake
+mv build_python build
 
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-# Remove static libs
-rm -f %{buildroot}%{_libdir}/*.a
-# The man page should be non executable
-chmod -x %{buildroot}%{_mandir}/man3/miniupnpc.3.gz
 
-%post   -n libminiupnpc%{soname} -p /sbin/ldconfig
-%postun -n libminiupnpc%{soname} -p /sbin/ldconfig
+mv %{buildroot}%{_bindir}/external-ip.sh %{buildroot}%{_bindir}/external-ip
+chmod +x %{buildroot}%{_bindir}/external-ip
+mv %{buildroot}%{_bindir}/upnp-listdevices-shared %{buildroot}%{_bindir}/upnp-listdevices
+mv %{buildroot}%{_bindir}/upnpc-shared %{buildroot}%{_bindir}/upnpc
+
+%ldconfig_scriptlets -n libminiupnpc%{soname}
 
 %check
-%make_build test
+mv build build_python
+mv build_cmake build
+%ctest
 
 %files
 %{_bindir}/upnpc
@@ -128,11 +138,13 @@ chmod -x %{buildroot}%{_mandir}/man3/miniupnpc.3.gz
 %doc Changelog.txt README
 %license LICENSE
 %{_libdir}/libminiupnpc.so.%{soname}
+%{_libdir}/libminiupnpc.so.%{version}
 
 %files -n libminiupnpc-devel
 %{_includedir}/miniupnpc/
 %{_libdir}/libminiupnpc.so
 %{_libdir}/pkgconfig/miniupnpc.pc
+%{_libdir}/cmake/miniupnpc
 
 %files %{python_files miniupnpc}
 %doc Changelog.txt README

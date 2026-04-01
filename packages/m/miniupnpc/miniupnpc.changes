@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Mar 22 11:32:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Use cmake instead of autotools
+
+-------------------------------------------------------------------
+Sun Mar 22 10:13:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.3
+  * fix a bug in ssdpDiscoverDevices() that has been there since
+    2010/04/05 and the use of getaddrinfo().
+  * more argument checks in UPNP_AddAnyPortMapping() and
+    UPNP_GetGenericPortMappingEntryExt().
+  * Add UPNP_GetSpecificPortMappingEntryExt() and
+    UPNP_GetGenericPortMappingEntryExt() functions to support
+  * retrieving arbitrary long descriptions.
+  * Increments API_VERSION to 21
+- Update to version 2.3.2
+  * remove STRTOUI from public headers.
+  * remove parseURL() from public headers.
+  * remove struct NameValue from upnpreplyparse.h and use flexible
+    array member.
+  * Increments API_VERSION to 20.
+- Update to version 2.3.1
+  * allocate argument arrays on stack instead of heap in
+    upnpcommand.c.
+  * doxygen documentation of the public headers.
+- Update to version 2.3.0
+  * Change simpleUPnPcommand() prototype to remove unused first
+    argument.
+  * Increments API_VERSION to 19
+  * Add #define for UPNP_GetValidIGD() return values.
+- Update to version 2.2.8
+  * IPv6: try site-local before link-local
+  * upnpc.c: Add -f option to upnpc program (delete multiple port
+    redirections).
+  * UPNP_GetValidIGD(): distinguish between not connected and
+    connected to a "private" network (with a reserved IP address).
+  * Increments API_VERSION to 18
+- Update to version 2.2.7
+  * listdevices.c: exit with status code 1 if no UPNP device is
+    found.
+- Use pyproject_* macros
+- Use ldconfig_scriptlets macro
+
+-------------------------------------------------------------------
 Sun Apr  7 20:49:20 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.2.6:
@@ -296,5 +341,3 @@ Wed Mar  9 00:00:00 UTC 2011 - pascal.bleser@opensuse.org
 Sun Mar  7 00:00:00 UTC 2010 - pascal@links2linux.de
 
 - initial package
-
--------------------------------------------------------------------
