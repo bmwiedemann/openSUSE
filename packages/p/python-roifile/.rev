@@ -110,4 +110,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1330813</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>770320397131fdd578c3783493864354</srcmd5>
+    <version>2026.2.10</version>
+    <time>1775065909</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.2.10:
+  * Revise wrapping of integer coordinates again (breaking).
+  * Bump file version to 229.
+  * Support groups &gt; 255 (untested).
+  * Support IMAGE subtype (requires imagecodecs).
+  * Add point_type and point_size properties for point ROIs.
+  * Do not return empty paths in path2coords.
+  * Improve documentation.
+  * Fix code review issues.</comment>
+    <requestid>1343969</requestid>
+  </revision>
 </revisionlist>
