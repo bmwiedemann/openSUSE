@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Mar 31 19:40:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.6:
+  * Bump the actions group with 2 updates
+  * fix: clearer description of `array.target_shard_size_bytes`
+  * chore/pin pytest asyncio
+  * fix tests for stand-alone example scripts
+  * fix: auto-chunking when auto-sharding 1MiB number
+  * Some minor linter \ type-hint fixes for my own sanity
+  * remove pytest pin
+  * use the result of the broadcasted array to check the contents
+  * docs: Correct grammar issues in a/an usage
+  * Bump the actions group across 1 directory with 5 updates
+  * ci: align pre-commit Python with tooling config
+  * chore: update pre-commit hooks
+  * adjust docstrings for `_iter_shard` methods / functions
+  * Add experimental section to the API docs
+  * Add instructions to contributing guide about executable docs
+  * Fix deprecation of setting shape on a numpy array in 2.5+
+  * Bump astral-sh/setup-uv from 7.1.6 to 7.2.0 in the actions
+    group
+  * Set copy=False in reshape operation
+  * Bump mimimum supported version of numpy
+  * add benchmarks using pytest-benchmark and codspeed
+  * Simplify testing of different numpy versions
+  * Clean up test extra dependencies
+  * docs: Correct some typos in documentation
+  * Bump actions/checkout from 5 to 6 in the actions group
+  * chore/use prek
+  * Add benchmarks for sharded + local store indexing
+  * Add methods for getting bytes + json to store abc
+  * Bump astral-sh/setup-uv from 5 to 7 in the actions group
+  * only run codspeed benchmarks on PRs labelled 'benchmark'
+  * Improve the usability of array runtime config
+  * Fix HTML syntax errors in README.md table
+  * Fix grammar, typos, and clarity issues in documentation
+  * fix: raise error when encountering nullable string dtype
+  * lift async array methods to stand-alone functions
+  * don't use depdendabot for the support/v2 branch
+  * Support with read only in wrappers
+  * perf:improve performance of morton order iter
+  * allow numpy ints in shapelike
+  * Fix obstore listdir method using _relativize_path
+  * perf:remove isinstance check
+  * Skip chunk coordinate enumeration in resize when array is
+    only growing
+  * perf:Add additional sharding benchmarks
+  * perf: Optimize Morton order with hypercube and vectorization
+  * fix/nested shard reads
+  * perf: Vectorize get_chunk_slice for faster sharded writes
+  * TEST: fix group selection for delete
+  * Add non-power-of-2 shapes for Morton coding to benchmarks
+  * perf: Fix near-miss penalty in _morton_order with hybrid
+    ceiling+argsort strategy
+  * chore/update hatch + use dependency groups
+  * perf: add sync methods to codecs
+  * fix: implement separate cache for byte-range-requests
+  * chore: update ruff and fix new ruff issues
+  * chore: update pre-commit hooks
+  * Use the prek GitHub Action
+  * Limit privilege escalation and token theft in workflows
+  * chore: no need to check reST files
+  * chore: Pre-commit hook for multi-character lstrip/rstrip
+  * docs: use dark text color on light mode search bar
+  * docs: add example of creating uncompressed arrays
+  * fix: BaseFloat._check_scalar rejects invalid string values
+  * docs: fix docstring for Array.cdata_shape
+  * fix: apply drop_axes squeeze in partial decode path for
+    sharding
+  * docs: add favicon
+  * fix: validate that dask-style chunks have regular shapes
+  * docs: add glossary
+  * docs: fix search color
+  * perf/store sync
+  * Remove `rich` as required for `tree()`
+  * chore: less frequent codspeed runs
+  * Add missing slash character to towncrier issue format
+  * doc: add ai use policy to contributing guide
+  * chore/towncrier header
+  * chore: Use OIDC for publishing
+  * chore/3.1.6 release notes
+
+-------------------------------------------------------------------
 Mon Dec 22 12:39:00 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.5

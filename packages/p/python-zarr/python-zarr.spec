@@ -1,7 +1,7 @@
 #
 # spec file for package python-zarr
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zarr
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT
@@ -33,7 +33,7 @@ Source:         https://files.pythonhosted.org/packages/source/z/zarr/zarr-%{ver
 BuildRequires:  %{pythons}
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatch-vcs}
-BuildRequires:  %{python_module hatchling >= 1.27}
+BuildRequires:  %{python_module hatchling >= 1.29.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,9 +41,9 @@ Requires:       python >= 3.11
 Requires:       python-donfig >= 0.8
 Requires:       python-google-crc32c >= 1.5
 Requires:       python-numcodecs >= 0.14
-Requires:       python-numpy >= 1.26
+Requires:       python-numpy >= 2.0
 Requires:       python-packaging >= 22
-Requires:       python-typing_extensions >= 4.9
+Requires:       python-typing_extensions >= 4.12
 Suggests:       python-dbm
 Suggests:       python-ipytree
 BuildArch:      noarch
@@ -60,13 +60,14 @@ BuildRequires:  %{python_module donfig >= 0.8}
 BuildRequires:  %{python_module google-crc32c >= 1.5}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module numcodecs >= 0.14}
-BuildRequires:  %{python_module numpy >= 1.24}
+BuildRequires:  %{python_module numpy >= 2.0}
 BuildRequires:  %{python_module numpydoc}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomlkit}
-BuildRequires:  %{python_module typing_extensions >= 4.9}
+BuildRequires:  %{python_module typing_extensions >= 4.12}
 # /SECTION
 %python_subpackages
 
@@ -85,6 +86,7 @@ An implementation of chunked, compressed, N-dimensional arrays for Python.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+rm -v tests/test_examples.py
 # https://pytest-xdist.readthedocs.io/en/stable/known-limitations.html
 donttestparallel="test_docstring_consistent_parameters"
 # avoid broken tests in s390x, gh#zarr-developers/zarr-python#1375

@@ -328,4 +328,41 @@
 </comment>
     <requestid>1324297</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c8b831f40b8f3e3c08ae140550805b5b</srcmd5>
+    <version>3.1.6</version>
+    <time>1775065910</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.6:
+  * Bump the actions group with 2 updates
+  * fix: clearer description of `array.target_shard_size_bytes`
+  * chore/pin pytest asyncio
+  * fix tests for stand-alone example scripts
+  * fix: auto-chunking when auto-sharding 1MiB number
+  * Some minor linter \ type-hint fixes for my own sanity
+  * remove pytest pin
+  * use the result of the broadcasted array to check the contents
+  * docs: Correct grammar issues in a/an usage
+  * Bump the actions group across 1 directory with 5 updates
+  * ci: align pre-commit Python with tooling config
+  * chore: update pre-commit hooks
+  * adjust docstrings for `_iter_shard` methods / functions
+  * Add experimental section to the API docs
+  * Add instructions to contributing guide about executable docs
+  * Fix deprecation of setting shape on a numpy array in 2.5+
+  * Bump astral-sh/setup-uv from 7.1.6 to 7.2.0 in the actions
+    group
+  * Set copy=False in reshape operation
+  * Bump mimimum supported version of numpy
+  * add benchmarks using pytest-benchmark and codspeed
+  * Simplify testing of different numpy versions
+  * Clean up test extra dependencies
+  * docs: Correct some typos in documentation
+  * Bump actions/checkout from 5 to 6 in the actions group
+  * chore/use prek
+  * Add benchmarks for sharded + local store indexing
+  * Add methods for getting bytes + json to store abc
+  * Bump astral-sh/setup-uv from 5 to 7 in the actions group</comment>
+    <requestid>1343974</requestid>
+  </revision>
 </revisionlist>
