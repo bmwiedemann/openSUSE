@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  1 23:45:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.3:
+  * Ensure shared rx inputs are reused (#1117)
+
+-------------------------------------------------------------------
 Thu Mar  5 08:08:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.2:
