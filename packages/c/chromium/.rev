@@ -6342,4 +6342,31 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>changelog update only for Chromium 146.0.7680.153 (boo#1259964)</comment>
     <requestid>1341518</requestid>
   </revision>
+  <revision rev="510" vrev="1">
+    <srcmd5>e844ddc78c292b934d3595c1e7cd0fe8</srcmd5>
+    <version>146.0.7680.164</version>
+    <time>1774469863</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 146.0.7680.164 (boo#1260376)
+  * CVE-2026-4673: Heap buffer overflow in WebAudio
+  * CVE-2026-4674: Out of bounds read in CSS
+  * CVE-2026-4675: Heap buffer overflow in WebGL
+  * CVE-2026-4676: Use after free in Dawn
+  * CVE-2026-4677: Out of bounds read in WebAudio
+  * CVE-2026-4678: Use after free in WebGPU
+  * CVE-2026-4679: Integer overflow in Fonts
+  * CVE-2026-4680: Use after free in FedCM
+- added patches:
+  * chromium-3bccbdead3efa7e91f7c9d4078106dedaed84fb8.patch
+    (upstream compile fix for blink on non-x86,non-arm)</comment>
+    <requestid>1342207</requestid>
+  </revision>
+  <revision rev="511" vrev="1">
+    <srcmd5>2a38b20cd9bc3d8b861a6781fb55f05b</srcmd5>
+    <version>146.0.7680.177</version>
+    <time>1775144446</time>
+    <user>anag_factory</user>
+    <comment>chromium 146.0.7680.177 (boo#1261249)</comment>
+    <requestid>1344023</requestid>
+  </revision>
 </revisionlist>

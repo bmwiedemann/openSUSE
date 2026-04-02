@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Mar 31 19:58:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 146.0.7680.177 (boo#1261249)
+  * CVE-2026-5273: Use after free in CSS
+  * CVE-2026-5272: Heap buffer overflow in GPU
+  * CVE-2026-5274: Integer overflow in Codecs
+  * CVE-2026-5275: Heap buffer overflow in ANGLE
+  * CVE-2026-5276: Insufficient policy enforcement in WebUSB
+  * CVE-2026-5277: Integer overflow in ANGLE
+  * CVE-2026-5278: Use after free in Web MIDI
+  * CVE-2026-5279: Object corruption in V8
+  * CVE-2026-5280: Use after free in WebCodecs
+  * CVE-2026-5281: Use after free in Dawn
+  * CVE-2026-5282: Out of bounds read in WebCodecs
+  * CVE-2026-5283: Inappropriate implementation in ANGLE
+  * CVE-2026-5284: Use after free in Dawn
+  * CVE-2026-5285: Use after free in WebGL
+  * CVE-2026-5286: Use after free in Dawn
+  * CVE-2026-5287: Use after free in PDF
+  * CVE-2026-5288: Use after free in WebView
+  * CVE-2026-5289: Use after free in Navigation
+  * CVE-2026-5290: Use after free in Compositing
+  * CVE-2026-5291: Inappropriate implementation in WebGL
+  * CVE-2026-5292: Out of bounds read in WebCodecs
+- drop chromium-3bccbdead3efa7e91f7c9d4078106dedaed84fb8.patch
+  (included)
+
+-------------------------------------------------------------------
+Mon Mar 23 23:11:40 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Chromium 146.0.7680.164 (boo#1260376)
+  * CVE-2026-4673: Heap buffer overflow in WebAudio
+  * CVE-2026-4674: Out of bounds read in CSS
+  * CVE-2026-4675: Heap buffer overflow in WebGL
+  * CVE-2026-4676: Use after free in Dawn
+  * CVE-2026-4677: Out of bounds read in WebAudio
+  * CVE-2026-4678: Use after free in WebGPU
+  * CVE-2026-4679: Integer overflow in Fonts
+  * CVE-2026-4680: Use after free in FedCM
+- added patches:
+  * chromium-3bccbdead3efa7e91f7c9d4078106dedaed84fb8.patch
+    (upstream compile fix for blink on non-x86,non-arm)
+
+-------------------------------------------------------------------
 Wed Mar 18 18:12:44 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 146.0.7680.153 (boo#1259964):
