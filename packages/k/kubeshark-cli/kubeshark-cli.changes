@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Wed Apr 01 04:25:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 53.2.0:
+  * Release Highlights
+    Kubeshark 53.2.0 introduces open-source AI skills for network
+    root cause analysis and traffic filtering, making Kubeshark's
+    MCP-powered workflows reusable and shareable. Snapshot
+    capabilities have been significantly expanded with GCS cloud
+    storage, local .tar upload, snapshot renaming, PCAP export
+    filters, and disk usage visibility. TLS-decrypted traffic is
+    now included in snapshots, and gRPC streaming has been
+    rearchitected for improved reliability and real-time
+    responsiveness. The eBPF tracer now supports stripped Go
+    binaries via offset table lookups, improving TLS hooking
+    reliability in production environments.
+  * New Features
+    - Add KFL and Network RCA open-source AI skills for MCP-powered
+      network analysis workflows
+    - Add GCS (Google Cloud Storage) support for snapshot cloud
+      storage
+    - Add snapshot PCAP export filters dialog for targeted traffic
+      extraction
+    - Add ability to rename snapshots
+    - Add ability to upload local .tar snapshot files for analysis
+    - Add snapshot creation from custom time windows with enhanced
+      time selection and auto-dissection
+    - Add snapshot disk space usage and available space metrics in
+      the Snapshots tab
+    - Add ability to recreate dissection by deleting old and
+      creating new one
+    - Add get_api_call_details MCP tool with hub proxy routing
+    - Add snapshot support to list_api_calls and
+      get_api_call_details MCP tools
+    - Add cloud storage MCP tools for upload/download operations
+    - Add Demo Portal readonly mode with no authentication required
+    - Add configurable L4 map visibility via Helm value
+    - Add IP/workload resolution database for snapshots, enabling
+      workload-to-IP and IP-to-workload lookups
+    - Add BaseEntry history support for tracking entry changes over
+      time
+    - Add KFL support for DNS resolution names (dst.dns)
+    - Add TLS (eBPF) indication in the UI with fixed KFL filtering
+    - Add explicit cloud storage configuration options
+    - Add Go offset table support for stripped binaries in eBPF
+      tracer, with Build ID content hash matching and targetCgroup
+      retry fallback
+  * Improvements
+    - Include decrypted TLS traffic in snapshots via decrypted_pcap
+      directory support
+    - Implement TCP segments coalescing to reflect real-time
+      connection behaviour
+    - Rearchitect gRPC streaming with heartbeat/data event
+      separation for improved reliability
+    - Send initial heartbeat ahead once gRPC client is ready to
+      reduce UI load time
+    - Verify hub/front pods are ready by conditions before
+      proceeding
+    - Use last modification time as snapshot data boundary end for
+      accuracy
+    - Persist selected db query parameter across navigation
+    - Use more deterministic status indicators for loading L4/L7
+      entries
+    - Map legend: worker-node switching with no node legend item
+    - Use current time for new-snapshot end time by default
+    - Split TCP reader into two parts for delayed dissection;
+      cancel request/response matcher goroutines in DD mode
+    - Skip applying KFL2 K8s expressions on worker side (hub-only)
+    - Exclude TCP-CONNs and UDP-CONNs from selected base entries
+      fetch
+    - Skip capacity check for community edition within node/pod
+      limits
+    - Download/export snapshots over direct HTTP for improved
+      performance
+    - Use OIDC auth instead of interactive OAuth for MCP Registry
+      publish
+    - Poll script logs when scripting is enabled
+    - Add ENTERPRISE2 license type support
+    - Delete worker from health report when not running
+    - Add BaseEntry ID and nodeID KFL2 filter expressions
+    - Add KFL2 filters for DNS resolution fields
+    - Add PCAP streaming bytes metric for monitoring
+  * Bug Fixes
+    - Fix memory leak in flow tracer
+    - Fix DNS resolution for TLS entries in delayed dissection
+    - Fix TLS hooking in tracer (eBPF)
+    - Fix derived entries processing
+    - Fix dissection-control front environment variable logic
+    - Fix GraphQL entry view rendering
+    - Fix PCAP fetching for entries from dissection DB
+    - Fix snapshots local storage size calculation
+    - Fix snapshot data boundary detection using last modification
+      time
+    - Fix handling of missing PCAPs in export and snapshot
+      operations
+    - Fix dissection progress reporting and error handling
+    - Fix race condition between resolving DB query and stream
+      start
+    - Fix L7 map for delayed-dissection entries when realtime
+      dissection is stopped
+    - Fix streaming-cancelled error handling in the UI
+    - Fix entry details panel edge cases
+    - Fix entries-list z-index layering
+    - Restore cloud storage MCP tools accidentally dropped in prior
+      PR
+    - Restore dissection telemetry on hub restart
+    - Use pending cgroups when container ID is not yet known
+      (tracer)
+  * Security
+    - Update compromised Trivy action across worker and hub CI
+      pipelines
+    - Update tracer to fix gRPC vulnerability
+    - Upgrade trivy-action from 0.28.0 to 0.34.2
+    - Rename KubeHQ to Kubeshark, Inc. in LICENSE across all repos
+
+-------------------------------------------------------------------
 Fri Mar 06 06:15:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 53.1.0 (no version 53.0.0):
