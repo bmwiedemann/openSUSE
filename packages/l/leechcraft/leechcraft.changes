@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  1 12:54:43 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-18450-gabe19ee3b0 snapshot:
+  * C++26: either clang>=21 or gcc>=16 is required,
+  * New plugins: azoth-sarin & kovkogruz,
+  * Obsoleted plugins: azoth-adiumstyles, azoth-murm;
+- Added leechcraft-0.6.70-18450-gabe19ee3b0_68abb98.diff
+  from upstream gh#68abb98 to resolve bnc#1261205.
+
+-------------------------------------------------------------------
 Mon Dec  8 07:14:09 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Updated to 0.6.70-17793-g6e56308e78 snapshot:

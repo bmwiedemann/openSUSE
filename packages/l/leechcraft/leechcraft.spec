@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,9 @@
 %define qml_dir %{_datadir}/leechcraft/qml6
 
 %define so_ver -qt6-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-17793-g6e56308e78
+%define LEECHCRAFT_VERSION 0.6.70-18450-gabe19ee3b0
 
+%define azoth_postfix %{so_ver}
 %define db_postfix %{so_ver}
 %define gui_postfix %{so_ver}
 %define lmp_postfix %{so_ver}
@@ -49,7 +50,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.17793.g6e56308e78
+Version:        0.6.70+git.18450.gabe19ee3b0
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -59,13 +60,18 @@ Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECH
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
 
+# PATCH-FIX-UPSTREAM to resolve bnc#1261205 from
+# https://github.com/0xd34df00d/leechcraft/commit/68abb98d2f83f41d820fcd35901ff1a21972a65f
+Patch0:         leechcraft-0.6.70-18450-gabe19ee3b0_68abb98.diff
+
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 %if 0%{?suse_version} > 1600
-BuildRequires:  gcc-c++ >= 14
+BuildRequires:  clang21
+BuildRequires:  llvm-gold-provider >= 21
 %else
-BuildRequires:  gcc15-c++
+BuildRequires:  gcc16-c++
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_atomic-devel
@@ -122,7 +128,7 @@ BuildRequires:  pkgconfig(libpostproc)
 %endif
 %ifarch %ix86 x86_64 ppc64 ppc64le
 %if %{with ProjectM-Qt6}
-BuildRequires:  projectM-qt6-devel
+BuildRequires:  projectM-qt6-devel >= 4
 %endif
 %endif
 BuildRequires:  pkgconfig(libqrencode)
@@ -143,6 +149,7 @@ BuildRequires:  pkgconfig(qtermwidget6)
 BuildRequires:  pkgconfig(quazip1-qt6)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(taglib) >= 1.6
+BuildRequires:  pkgconfig(toxcore)
 BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
@@ -282,14 +289,15 @@ Summary:        LeechCraft Instant messenger Module
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
-Requires:       %{name}-azoth-chatstyler = %{version}
+Requires:       %{name}-azoth-standardstyles
 Requires:       %{name}-azoth-protocolplugin
 Requires:       %{name}-securestorage = %{version}
-Suggests:       %{name}-azoth-standardstyles
 Obsoletes:      %{name}-azoth-juick
 %if 0%{?suse_version} <= 1600
 Obsoletes:      %{name}-azoth-velvetbird
 %endif
+Obsoletes:      %{name}-azoth-adiumstyles
+Obsoletes:      %{name}-azoth-murm
 
 %description azoth
 This package provides a modular, multi-protocol IM client for LeechCraft.
@@ -329,16 +337,6 @@ Features:
  * Channel bookmarks.
  * Automatic password entry.
  * Automatic login.
-
-%package azoth-adiumstyles
-Summary:        LeechCraft Azoth Adium Styles Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-azoth = %{version}
-Provides:       %{name}-azoth-chatstyler
-
-%description azoth-adiumstyles
-This package provides an Adium styles support plugin for LeechCraft Azoth.
 
 %package azoth-autoidler
 Summary:        LeechCraft Azoth Module for automatic status change
@@ -491,17 +489,6 @@ Recommends:     %{name}-xoox
 This package provides some common conference-oriented commands like
 /vcard, /time, /last, /subject, /kick, /ban and so on for LeechCraft Azoth.
 
-%package azoth-murm
-Summary:        LeechCraft Azoth - VKontakte Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-azoth = %{version}
-Provides:       %{name}-azoth-protocolplugin
-
-%description azoth-murm
-This package provides a special protocol subplugin for extensive VKontakte
-messaging support for LeechCraft Azoth.
-
 %package azoth-nativeemoticons
 Summary:        LeechCraft Azoth Emoticon pack support
 License:        BSL-1.0
@@ -534,6 +521,16 @@ This package provides a spell checker plugin for LeechCraft Azoth.
 
 It is based on Hunspell or Myspell dictionaries.
 
+%package azoth-sarin
+Summary:        LeechCraft Azoth Tox Module
+License:        BSL-1.0
+Group:          Productivity/Networking/Other
+Requires:       %{name}-azoth = %{version}
+Provides:       %{name}-azoth-protocolplugin
+
+%description azoth-sarin
+This package provides Tox support plugin for LeechCraft Azoth.
+
 %package azoth-shx
 Summary:        LeechCraft Azoth Shell command runner Module
 License:        BSL-1.0
@@ -548,7 +545,6 @@ Summary:        LeechCraft Azoth Standard chat styles Module
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name}-azoth = %{version}
-Provides:       %{name}-azoth-chatstyler
 
 %description azoth-standardstyles
 This package provides a standard styles support plugin for LeechCraft Azoth.
@@ -801,6 +797,9 @@ License:        BSL-1.0
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
 Requires:       cmake >= 3.8
+%ifarch x86_64 aarch64
+Requires:       libleechcraft-util-azoth%{azoth_postfix}         = %{version}
+%endif
 Requires:       libleechcraft-util-db%{db_postfix}               = %{version}
 Requires:       libleechcraft-util-gui%{gui_postfix}             = %{version}
 Requires:       libleechcraft-util-lmp%{lmp_postfix}             = %{version}
@@ -1078,6 +1077,16 @@ Requires:       %{name} = %{version}
 This package provides a tips plugin for LeechCraft which
 displays a "tip of the day" window after launching LeechCraft.
 
+%package kovrogruz
+Summary:        LeechCraft Album art Module
+License:        BSL-1.0
+Group:          Productivity/Networking/Other
+Requires:       %{name}-lmp = %{version}
+
+%description kovrogruz
+This package provides a plugin for LeechCraft
+for fetching album art from various services.
+
 %package lackman
 Summary:        LeechCraft Package manager Module
 License:        BSL-1.0
@@ -1199,6 +1208,7 @@ License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Recommends:     %{name}-gacts = %{version}
+Recommends:     %{name}-kovrogruz
 Recommends:     %{name}-lyricsprovider
 Recommends:     %{name}-scrobbler
 Suggests:       %{name}-lastfmscrobble
@@ -1914,6 +1924,17 @@ Requires:       %{name} = %{version}
 This package provides a file uploader plugin for LeechCraft
 with which files can be uploaded to accountless filebin services.
 
+%ifarch x86_64 aarch64
+%package -n libleechcraft-util-azoth%{azoth_postfix}
+Summary:        Messenger utility library for LeechCraft
+License:        BSL-1.0
+Group:          Productivity/Networking/Other
+
+%description -n libleechcraft-util-azoth%{azoth_postfix}
+A library providing some commonly used messenger-related
+classes and functions.
+%endif
+
 %package -n libleechcraft-util-db%{db_postfix}
 Summary:        Database utility library for LeechCraft
 License:        BSL-1.0
@@ -2074,9 +2095,6 @@ XmlSettingsDialog LeechCraft subsystem.
 #removing non-free icons
 rm -r src/plugins/azoth/share/azoth/iconsets/clients/default
 
-#removing hidden files
-find src/plugins/azoth/plugins/adiumstyles/share/azoth/styles/adium/ -name ".?*" -delete
-
 #setup permissions correctly to avoid false duplicates reported by rpmlint (bnc#784670)
 find src -name '*.png' -or -name '*.css' -or -name '*.gif' -exec chmod 0644 {} +
 
@@ -2086,17 +2104,17 @@ mkdir build && cd build
 # bypass bug 927268 for PowerPC if clang is used above in place of gcc
 tmpflags="%{optflags}"
 %ifarch ppc64 ppc64le
-# tmpflags=${tmpflags/-strong}
+tmpflags=${tmpflags/-strong}
 %endif
-
-#        -DCMAKE_C_COMPILER=/usr/bin/clang \
-#        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
 
 # NOTE that %%cmake macro breaks compiler configuring.
 cmake ../src \
 %if 0%{?suse_version} <= 1600
-        -DCMAKE_C_COMPILER=/usr/bin/gcc-15 \
-        -DCMAKE_CXX_COMPILER=/usr/bin/g++-15 \
+        -DCMAKE_C_COMPILER=/usr/bin/gcc-16 \
+        -DCMAKE_CXX_COMPILER=/usr/bin/g++-16 \
+%else
+        -DCMAKE_C_COMPILER=/usr/bin/clang \
+        -DCMAKE_CXX_COMPILER=/usr/bin/clang++ \
 %endif
         -Wno-dev \
 %if "%{_lib}" == "lib64"
@@ -2122,8 +2140,6 @@ cmake ../src \
         -DENABLE_AZOTH=True \
                 -DENABLE_AZOTH_ABBREV=True \
                 -DENABLE_AZOTH_ACETAMIDE=True \
-                -DENABLE_AZOTH_ADIUMSTYLES=True \
-                -DENABLE_AZOTH_ASTRALITY=False \
                 -DENABLE_AZOTH_AUTOIDLER=True \
                 -DENABLE_AZOTH_AUTOPASTE=True \
                 -DENABLE_AZOTH_BIRTHDAYNOTIFIER=True \
@@ -2139,11 +2155,10 @@ cmake ../src \
                 -DENABLE_AZOTH_MODNOK=True \
                 -DENABLE_AZOTH_MUCOMMANDS=True \
                 -DENABLE_AZOTH_MUCOMMANDS_TESTS=True \
-                -DENABLE_AZOTH_MURM=True \
                 -DENABLE_AZOTH_NATIVEEMOTICONS=True \
                 -DENABLE_AZOTH_OTROID=True \
                 -DENABLE_AZOTH_ROSENTHAL=True \
-                -DENABLE_AZOTH_SARIN=False \
+                -DENABLE_AZOTH_SARIN=True \
                 -DENABLE_AZOTH_STANDARDSTYLES=True \
                 -DENABLE_AZOTH_SHX=True \
                 -DENABLE_AZOTH_TRACOLOR=True \
@@ -2186,6 +2201,7 @@ cmake ../src \
         -DENABLE_INTERMUTKO=True \
         -DENABLE_KBSWITCH=True \
         -DENABLE_KNOWHOW=True \
+        -DENABLE_KOVROGRUZ=True \
         -DENABLE_KRIGSTASK=False \
         -DENABLE_LACKMAN=True \
                 -DTESTS_LACKMAN=True \
@@ -2308,6 +2324,10 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+%ifarch x86_64 aarch64
+%post   -n libleechcraft-util-azoth%{azoth_postfix} -p /sbin/ldconfig
+%postun -n libleechcraft-util-azoth%{azoth_postfix} -p /sbin/ldconfig
+%endif
 %post   -n libleechcraft-util-db%{db_postfix} -p /sbin/ldconfig
 %postun -n libleechcraft-util-db%{db_postfix} -p /sbin/ldconfig
 %post   -n libleechcraft-util-gui%{gui_postfix} -p /sbin/ldconfig
@@ -2428,12 +2448,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_azoth_acetamide.so
 %{_datadir}/applications/%{name}-azoth-acetamide-qt6.desktop
 
-%files azoth-adiumstyles
-%defattr(644,root,root,755)
-%{plugin_dir}/*craft_azoth_adiumstyles*
-%{_datadir}/leechcraft/azoth/styles/adium
-%{translations_dir}/*craft_azoth_adiumstyles_*.qm
-
 %files azoth-autoidler
 %{plugin_dir}/*craft_azoth_autoidler*
 %{settings_dir}/azothautoidlersettings.xml
@@ -2499,12 +2513,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_azoth_mucommands_??.qm
 %{translations_dir}/*craft_azoth_mucommands_??_??.qm
 
-%files azoth-murm
-%{plugin_dir}/*craft_azoth_murm.so
-%{translations_dir}/*craft_azoth_murm*.qm
-%{settings_dir}/azothmurmsettings.xml
-%{_datadir}/leechcraft/azoth/murm
-
 %files azoth-nativeemoticons
 %{plugin_dir}/*craft_azoth_nativeemoticons.so
 %{translations_dir}/*craft_azoth_nativeemoticons_*.qm
@@ -2517,6 +2525,9 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %files azoth-rosenthal
 %{plugin_dir}/*craft_azoth_rosenthal.so
 %{translations_dir}/*craft_azoth_rosenthal*
+
+%files azoth-sarin
+%{plugin_dir}/*craft_azoth_sarin.so
 
 %files azoth-shx
 %{plugin_dir}/*craft_azoth_shx.so
@@ -2739,6 +2750,10 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_knowhow.so
 %{settings_dir}/knowhowsettings.xml
 
+%files kovrogruz
+%{plugin_dir}/*craft_kovrogruz.so
+%{translations_dir}/*craft_kovrogruz_*.qm
+
 %files lackman
 %{plugin_dir}/*craft_lackman.so
 %{settings_dir}/lackmansettings.xml
@@ -2824,6 +2839,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 
 %files lmp-mtpsync
 %{plugin_dir}/*craft_lmp_mtpsync.so
+%{translations_dir}/*craft_lmp_mtpsync_*.qm
 
 %ifarch %ix86 x86_64 ppc64 ppc64le
 %if %{with ProjectM-Qt6}
@@ -3069,6 +3085,11 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_zalil.so
 %{translations_dir}/*craft_zalil_??.qm
 %{translations_dir}/*craft_zalil_??_??.qm
+
+%ifarch x86_64 aarch64
+%files -n libleechcraft-util-azoth%{azoth_postfix}
+%{_libdir}/*azoth-util*.so.*
+%endif
 
 %files -n libleechcraft-util-db%{db_postfix}
 %{_libdir}/*-util-db*.so.*
