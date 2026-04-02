@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Mar 26 08:31:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.8:
+  * **ptk:** make `tempfile_suffix` ".xsh" for `open_in_editor`
+  * Clean tests output
+  * Fix test_indir stability
+  * Fix unstable tests (test_trace_in_script,
+    test_callable_alias_no_bad_file_descriptor)
+  * Use `python -m xonsh` to run integration tests
+  * Using dummy history by default in tests
+  * **alias_return_command:** Better error message in case of
+    wrong return
+  * Fix tests that fail on NixOS
+  * **test_environ:** Fix test_environ failing in case of
+    UPDATE_OS_ENVIRON=True globally
+  * Additional fix of coreutils support for NixOS
+  * Added useful command decorators: `@lines`, `@json`, `@jsonl`,
+    `@yaml`
+  * **completion:** Fix os.path.commonprefix deprecation warning
+    in python3.15
+  * Increase `@$()` stability and now it is also working in case
+    of `$THREAD_SUBPROCS=False`
+  * **predictor:** Fix predict_threadable to properly handle
+    symlinks, especially on NixOS
+  * **prompt:** Keep original key_bindings in prompt-toolkit
+    shell to easy add new key bindings during session
+  * replace 12 bare except clauses with except Exception
+  * **executor:** Fixed issue with running script without ext and
+    shebang
+  * **xontrib:** Fix xontrib list iter_paths to handle None spec
+    and locations
+  * **builtin:** Added `@.history` as a shortcut to
+    `__xonsh__.history`
+  * **environ:** Ability to run xonsh from existing xonsh session
+    but with origin environment
+  * **environ:** Added shortcut `xonsh -DVAR` to inherit `VAR` as
+    alternative to `xonsh -DVAR=$VAR`
+  * **events:** Now `on_envvar_change` event is working for
+    EnvPath variables e.g. PATH.
+  * **prompt:** Added $XONSH_PROMPT_NEXT_CMD_SUGGESTION to set
+    the text of the next command suggestion
+  * **xcontext:** Report current xonsh session executable in
+    `xcontext`
+  * **docs:** Update ErrorString import handling in cmdhelp.py
+  * Fixed `xcontext` error in case `xpip` has complex command
+  * **mamba-installer:** Rename xmamba to xmamba.xsh
+  * prevent stripping r except leading ones of r-strings
+  * **procs:** Fix ioctl windowsize buffer size to reduce issues
+    in the future python 3.14
+  * Raise an error in case of redirect without command
+  * Revert "Fix for completer issue with file name containing
+    backslash" because of a regress
+  * **startup:** Fix crash on built-in readline, print
+    compatibility message on uv pythons
+
+-------------------------------------------------------------------
 Sun Jan 18 12:23:46 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 0.22.1:
