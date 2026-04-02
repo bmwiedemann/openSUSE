@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Apr 01 04:24:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.6:
+  * build(deps): bump the github-dependencies group across 1
+    directory with 2 updates
+  * csi: add custom pod execution for subvolume and snapshot
+    commands
+  * test: add integration test for subvolume delete with custom SVG
+  * test: add integration tests for --consumer-context flag
+  * core: add --rados-namespace flag to subvolume commands
+  * core: add --consumer-context flag for cross-cluster PVC/Snap
+    lookups
+  * ci: add CI for snapshot commands
+  * csi: add snapshot commands to manage CephFS snapshots
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build(deps): bump rajatjindal/krew-release-bot from 0.0.50 to
+    0.0.51
+  * csi: rename subvolume package to filesystem
+  * csi: use text/tabwriter for aligned subvolume list output
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build(deps): bump goreleaser/goreleaser-action from 6 to 7
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build(deps): bump rajatjindal/krew-release-bot from 0.0.47 to
+    0.0.50
+  * ci: fix osd issue with new runner
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build: update go version to 1.25
+  * core: add new command for multus validation
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build(deps): bump the github-dependencies group with 2 updates
+  * doc: add missing bracket
+  * mds: unhide subvolume delete command
+  * csi: set default svg as "csi"
+  * build(deps): bump github.com/spf13/pflag
+  * ci: use v0.0.47 krew-release-bot version
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build(deps): bump actions/checkout from 5 to 6
+  * build(deps): bump codespell-project/actions-codespell from 2.1
+    to 2.2
+
+-------------------------------------------------------------------
 Fri Nov 21 12:20:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.5:
