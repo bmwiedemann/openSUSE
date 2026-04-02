@@ -24,12 +24,12 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        25.12.1
+Version:        26.3.0
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
-URL:            https://github.com/ansible-community/ansible-compat
-Source:         https://github.com/ansible-community/ansible-compat/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/ansible/ansible-compat
+Source:         https://github.com/ansible/ansible-compat/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
 BuildRequires:  %{python_module setuptools >= 65.3.0}
@@ -46,7 +46,6 @@ BuildRequires:  %{python_module subprocess-tee >= 0.4.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-instafail}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-plus}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators

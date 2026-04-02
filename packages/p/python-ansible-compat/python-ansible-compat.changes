@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  1 04:24:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.3.0:
+  * Fixes
+    - fix: avoid permissions errors with use of tmp folders (#571)
+      @ssbarnea
+    - fix(security): update dependencies [SECURITY] (#566)
+      @renovate[bot]
+  * Maintenance
+    - chore(deps): update pep621 (#568) @renovate[bot]
+    - chore(deps): update all dependencies (#567) @renovate[bot]
+    - chore(deps): update all dependencies (#564) @renovate[bot]
+    - chore: remove use of pytest-sugar and pytest-plus (#563)
+      @ssbarnea
+
+-------------------------------------------------------------------
 Fri Feb 27 07:06:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.12.1:
