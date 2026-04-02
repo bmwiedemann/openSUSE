@@ -1,7 +1,7 @@
 #
 # spec file for package python-icalendar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2009 - 7/2011 Sascha Manns <saigkill@opensuse.org>
 #
@@ -21,7 +21,7 @@
 %define	modname icalendar
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        6.3.2
+Version:        7.0.3
 Release:        0
 Summary:        Python parser/generator of iCalendar files package
 License:        BSD-2-Clause
@@ -63,6 +63,7 @@ with Python. It follows the RFC 2445 (iCalendar) specification.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+rm -v src/icalendar/tests/test_funding_json.py
 # some dependencies are too old in Leap
 %if 0%{?suse_version} >= 1550
 donttest="(test_timezone_names_are_known and tzp_0-America/Coyhaique)"
@@ -78,7 +79,7 @@ donttest+=" or (test_timezone_names_are_known and tzp_0-Asia/Beijing)"
 
 %files %{python_files}
 %license LICENSE.rst
-%doc README.rst docs/changelog.rst
+%doc README.rst docs/reference/changelog.rst
 %python_alternative %{_bindir}/icalendar
 %{python_sitelib}/%{modname}
 %{python_sitelib}/%{modname}-%{version}.dist-info

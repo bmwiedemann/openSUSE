@@ -463,4 +463,32 @@
     <comment></comment>
     <requestid>1317043</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>04b35435a6908c7012a8aad081629245</srcmd5>
+    <version>7.0.3</version>
+    <time>1775144450</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0.3:
+  * Added Event.RECURRENCE_ID, Todo.RECURRENCE_ID, and
+    Journal.RECURRENCE_ID properties, including support in their
+    new() constructors. #1231
+  * Enabled Calendar.from_ical to read calendars from files. #756
+  * Added Calendar.journals property to retrieve all journal
+    components. #1230
+  * Setting calendar_name now also writes X-WR-CALNAME, and
+    setting description now also writes X-WR-CALDESC, for
+    improved client compatibility. #918
+  * Drop support for Python 3.8 and 3.9. #977
+  * DURATION_REGEX moved from icalendar.prop to
+    icalendar.prop.dt.duration. #987
+  * WEEKDAY_RULE moved from icalendar.prop to
+    icalendar.prop.recur.weekday. #987
+  * Removed tzid_from_dt and tzid_from_tzinfo from icalendar.prop
+    as they exist in icalendar.timezone. #987
+  * Component.decoded() now returns a string instead of bytes
+    for text properties.
+  * Remove constants FOLD, NAME, NEWLINE, QUNSAFE_CHAR, QUOTABLE,
+    UFOLD, and UNSAFE_CHAR from icalendar.parser's export. #987</comment>
+    <requestid>1344193</requestid>
+  </revision>
 </revisionlist>
