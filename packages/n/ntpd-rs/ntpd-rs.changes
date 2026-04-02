@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  2 13:23:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.2
+  Changed
+  * Allow configuration of pps and sock source accuracy in addition
+    to precision.
+  * Updated dependencies.
+  Fixed
+  * Fixed some more network-triggerable log spam.
+  * Fixed metrics exporter http endpoint not handling client
+    EOFs properly.
+
+-------------------------------------------------------------------
 Thu Feb 12 19:30:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.1
