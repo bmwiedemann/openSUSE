@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 01 04:45:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.59.0:
+  * bump github.com/stackitcloud/stackit-sdk-go/services/ske
+    (#1352)
+  * feat(intake): add subcommands to manage users (#1293)
+
+-------------------------------------------------------------------
 Fri Mar 27 11:46:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.58.0:
