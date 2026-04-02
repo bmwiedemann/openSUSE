@@ -1577,4 +1577,15 @@
   * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.6.3</comment>
     <requestid>1338615</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>69f0e235cbfb365150c6317490d88858</srcmd5>
+    <version>6.7.1</version>
+    <time>1775144486</time>
+    <user>anag_factory</user>
+    <comment>- Updated ada to 3.4.4.
+- Updated td to git20260317.
+- Updated telegram-desktop to 6.7.1
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.7.1</comment>
+    <requestid>1344244</requestid>
+  </revision>
 </revisionlist>
