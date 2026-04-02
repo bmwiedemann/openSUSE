@@ -236,4 +236,64 @@
     blocked while msync/fsync runs on large writemap databases.</comment>
     <requestid>1340815</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>be35c486053e1b1a6719e2fe16617bb8</srcmd5>
+    <version>2.1.1</version>
+    <time>1774469883</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.1:
+  * Fix false `MDB_CORRUPTED` error when overwriting values
+    larger than the page
+  * size (overflow/bigdata values) with `txn.put(key, value,
+    overwrite=True)`.
+  * Two hardening checks from 2.1.0 did not account for
+    `F_BIGDATA` nodes where
+  * `NODEDSZ()` returns the logical data size, not the on-page
+    size. (#431)
+  * **Security release.** All users who open LMDB databases from
+    untrusted or potentially-tampered sources should upgrade
+    immediately.
+  * **CVE-2019-16224**: heap buffer overflow via `MDB_DUPFIXED`
+    without `MDB_DUPSORT` in on-disk `md_flags`. (#429)
+  * **CVE-2019-16225**: `SIGSEGV` from `P_DIRTY` flag set on
+    mmap'd disk pages, causing `mdb_page_touch()` to skip
+    copy-on-write. (#429)
+  * **CVE-2019-16226**: out-of-bounds `memmove` in `mdb_node_del`
+    via corrupt `mn_hi` making `NODEDSZ()` huge. (#429)
+  * **CVE-2019-16227**: NULL pointer dereference of `mc_xcursor`
+    when `F_DUPDATA` is set on a node in a non-DUPSORT database.
+  * **CVE-2019-16228**: divide-by-zero from zero `mm_psize` in
+    meta page header. (#429)
+  * Cross-thread write transactions now block instead of raising
+  * `lmdb.Error(&quot;Attempt to operate on closed/deleted/dropped
+    object.&quot;)`.
+  * The check added in 1.8.0 was overly strict: it rejected all
+
+- Add the relax_assertion.patch: relax PreloadTest assertion, preserving test intent and fixing openSUSE builds
+  (gh#jnwatson/py-lmdb#400)</comment>
+    <requestid>1342277</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b6cfcf61888288d568a6f074ccd420f9</srcmd5>
+    <version>2.2.0</version>
+    <time>1775144449</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2.0:
+  * New ``lmdb.aio`` module providing asyncio support with
+  * ``AsyncEnvironment`` and ``AsyncTransaction``. (#434)
+  * ``Environment.dbs()`` lists all named databases in an
+    environment.
+  * ``Cursor.getmulti()`` accepts ``values=False`` for batch key-
+    existence checks without fetching values. (#435)
+  * ``Transaction.stat()`` now defaults to the main database when
+    no ``db`` argument is given. (#366, #439)
+  * ``Environment.set_mapsize()`` now safely invalidates open
+    transactions and cursors before remapping, preventing
+    use-after-free crashes. (#443)
+  * Enable sparse files on Windows so NTFS does not preallocate
+    the full ``map_size`` on disk. (#444)
+  * Add LMDB data layout validation tests and patched/pure
+    equivalence checks. (#433)</comment>
+    <requestid>1344187</requestid>
+  </revision>
 </revisionlist>

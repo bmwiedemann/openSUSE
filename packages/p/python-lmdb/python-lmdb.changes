@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Apr  1 16:50:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * New ``lmdb.aio`` module providing asyncio support with
+  * ``AsyncEnvironment`` and ``AsyncTransaction``. (#434)
+  * ``Environment.dbs()`` lists all named databases in an
+    environment.
+  * ``Cursor.getmulti()`` accepts ``values=False`` for batch key-
+    existence checks without fetching values. (#435)
+  * ``Transaction.stat()`` now defaults to the main database when
+    no ``db`` argument is given. (#366, #439)
+  * ``Environment.set_mapsize()`` now safely invalidates open
+    transactions and cursors before remapping, preventing
+    use-after-free crashes. (#443)
+  * Enable sparse files on Windows so NTFS does not preallocate
+    the full ``map_size`` on disk. (#444)
+  * Add LMDB data layout validation tests and patched/pure
+    equivalence checks. (#433)
+
+-------------------------------------------------------------------
+Tue Mar 24 17:14:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fix false `MDB_CORRUPTED` error when overwriting values
+    larger than the page
+  * size (overflow/bigdata values) with `txn.put(key, value,
+    overwrite=True)`.
+  * Two hardening checks from 2.1.0 did not account for
+    `F_BIGDATA` nodes where
+  * `NODEDSZ()` returns the logical data size, not the on-page
+    size. (#431)
+  * **Security release.** All users who open LMDB databases from
+    untrusted or potentially-tampered sources should upgrade
+    immediately.
+  * **CVE-2019-16224**: heap buffer overflow via `MDB_DUPFIXED`
+    without `MDB_DUPSORT` in on-disk `md_flags`. (#429)
+  * **CVE-2019-16225**: `SIGSEGV` from `P_DIRTY` flag set on
+    mmap'd disk pages, causing `mdb_page_touch()` to skip
+    copy-on-write. (#429)
+  * **CVE-2019-16226**: out-of-bounds `memmove` in `mdb_node_del`
+    via corrupt `mn_hi` making `NODEDSZ()` huge. (#429)
+  * **CVE-2019-16227**: NULL pointer dereference of `mc_xcursor`
+    when `F_DUPDATA` is set on a node in a non-DUPSORT database.
+  * **CVE-2019-16228**: divide-by-zero from zero `mm_psize` in
+    meta page header. (#429)
+  * Cross-thread write transactions now block instead of raising
+  * `lmdb.Error("Attempt to operate on closed/deleted/dropped
+    object.")`.
+  * The check added in 1.8.0 was overly strict: it rejected all
+
+-------------------------------------------------------------------
 Wed Mar 18 04:46:35 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.0.0:
@@ -54,8 +105,8 @@ Sun Mar 15 17:33:56 UTC 2026 - Mia Herkt <mia@0x0.st>
 -------------------------------------------------------------------
 Tue Jan 20 13:51:50 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
-- Add the relax_assertion.patch: relax PreloadTest assertion, preserving test intent and fixing openSUSE builds  
-  (gh#jnwatson/py-lmdb#400) 
+- Add the relax_assertion.patch: relax PreloadTest assertion, preserving test intent and fixing openSUSE builds
+  (gh#jnwatson/py-lmdb#400)
 
 -------------------------------------------------------------------
 Fri Nov 21 12:30:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
