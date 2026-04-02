@@ -82,4 +82,21 @@
 - Use modern RPM macros to express version dependencies (forwarded request 1164735 from glaubitz)</comment>
     <requestid>1165134</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8e5274e05fe425ccaac87a4479da8ad8</srcmd5>
+    <version>8.0.0</version>
+    <time>1775144665</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Remove unzip package from BuildRequires
+- Rename LICENSE.txt to LICENSE in %files section
+- Switch source archive format to TAR.GZ
+- Update Requires from pyproject.toml (forwarded request 1344306 from glaubitz)</comment>
+    <requestid>1344343</requestid>
+  </revision>
 </revisionlist>
