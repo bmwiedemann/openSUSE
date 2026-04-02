@@ -1,6 +1,7 @@
 .ONESHELL:
 
 NAME = terragrunt
+GOLANG_EXECUTABLE_VERSION = 1.26
 
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 mkfile_dir := $(dir $(mkfile_path))
@@ -17,9 +18,6 @@ default: clean mockgen osc_service tar
 clean:
 	# deleting the tmpdir requires root permissions
 	sudo rm -rf $(NAME) $(NAME)-*.obscpio vendor.tar.gz ./tmpdir
-
-# Due to issues with the go-x-tools on go1.25,
-# we use 1.24 to install mockgen
 
 mockgen:
 	echo "Installing mockgen"
@@ -38,9 +36,9 @@ tar:
 	cd ./tmpdir/src/$(NAME)/
 	ls -lah
 	echo "Starting go generate"
-	/usr/lib64/go/1.25/bin/go generate ./...
-	/usr/lib64/go/1.25/bin/go mod download
-	/usr/lib64/go/1.25/bin/go mod vendor
+	/usr/lib64/go/$(GOLANG_EXECUTABLE_VERSION)/bin/go generate ./...
+	/usr/lib64/go/$(GOLANG_EXECUTABLE_VERSION)/bin/go mod download
+	/usr/lib64/go/$(GOLANG_EXECUTABLE_VERSION)/bin/go mod vendor
 	echo "Creating tarball vendor.tar.gz"
 	tar czf ../../../vendor.tar.gz ./vendor
 	ls -lh ../../../vendor.tar.gz
