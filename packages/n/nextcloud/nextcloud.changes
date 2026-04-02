@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  2 08:55:24 UTC 2026 - ecsos <ecsos@opensuse.org> - 32.0.8
+
+- Update to 32.0.8
+  * server
+    - Feat(recent-files): add recent_files_limit config on files settings (server#59215)
+    - Feat(userList): Allow to list all users (server#59257)
+    - Fix(files_sharing): do not prevent share creation if password is
+      enabled but not supported by the current share type (server#59262)
+    - Fix(sharing): Don't redirect when accepting a share failed (server#59304)
+  * files_downloadlimit
+    - Chore(branchoff): Set version on stable32 to a stable one (files_downloadlimit#757)
+  * text
+    - Fix(menu): fix labels for new file actions (text#8415)
+
+-------------------------------------------------------------------
 Thu Mar 26 17:40:02 UTC 2026 - ecsos <ecsos@opensuse.org> - 32.0.7
 
 - Update to 32.0.7
