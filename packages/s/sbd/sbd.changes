@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 26 08:55:30 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 1.5.2+20260320.2c43532:
+  * Fix: sbd-testbed: compile with musl
+  * Fix: sbd-watchdog: compile with musl
+  * Fix: sbd-pacemaker: remove unused update counter
+
+-------------------------------------------------------------------
 Fri Nov 14 08:49:54 UTC 2025 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.5.2+20250909.68bc946:

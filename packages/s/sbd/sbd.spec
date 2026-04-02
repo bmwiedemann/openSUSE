@@ -1,7 +1,7 @@
 #
 # spec file for package sbd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 Lars Marowsky-Bree
 #
 # All modifications and additions to the file contributed by third parties
@@ -55,7 +55,7 @@
 %endif
 
 Name:           sbd
-Version:        1.5.2+20250909.68bc946
+Version:        1.5.2+20260320.2c43532
 Release:        0
 Summary:        Shared-storage based death
 License:        GPL-2.0-or-later

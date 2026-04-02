@@ -578,4 +578,12 @@ the sources.</comment>
 - sbd-cluster: cleanly include &lt;crm/crm.h&gt; for crm_system_name and others (forwarded request 1317744 from yan_gao)</comment>
     <requestid>1317745</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>271669e4a9a33704965507e1f1bfc788</srcmd5>
+    <version>1.5.2+20260320.2c43532</version>
+    <time>1775144640</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344320</requestid>
+  </revision>
 </revisionlist>
