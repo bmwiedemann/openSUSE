@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Apr  2 04:40:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.4.0:
+  * Fixes
+    - fix: remove deprecated apt_key module from examples and
+      builtins (#5000) @cidrblock
+    - fix(security): update dependencies [SECURITY] (#5010)
+      @renovate[bot]
+    - fix: avoid permission error when linting /tmp files (#5009)
+      @ssbarnea
+    - fix: reapply false positive patch for no-changed-when rule
+      (#4989) @Red-GV
+    - docs: fix inaccuracies found during documentation audit
+      (#4999) @cidrblock
+    - fix: support collection format in mock_roles (#4980)
+      @emmanuel-ferdman
+    - fix(security): update dependencies [SECURITY] (#4993)
+      @renovate[bot]
+  * Maintenance
+    - chore: update hooks (#5008) @ssbarnea
+    - chore: implement workaround for coverage merging failure
+      (#5006) @ssbarnea
+    - Add support for upcoming Ubuntu 26.04 (#4995) @Andiroid
+    - chore(deps): update all dependencies pep621 (#4994)
+      @renovate[bot]
+    - chore(deps): bump black from 26.1.0 to 26.3.1 in /.config
+      (#4991) @dependabot[bot]
+
+-------------------------------------------------------------------
 Fri Mar  6 06:10:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.3.0:
