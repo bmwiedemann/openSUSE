@@ -409,4 +409,41 @@
     <comment>- fix dependencies (we now have to use env -S)</comment>
     <requestid>1342078</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>34b326c7a06ad77dc24c559c34dcafef</srcmd5>
+    <version>0.36.0</version>
+    <time>1775144478</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.36.0:
+  * Multi-Registry Architecture: Introduced a new architecture for
+    subagents with tool filtering and local execution isolation.
+  * Agent Evolution: Introduced AgentSession and a new experimental
+    Memory Manager Agent to replace the legacy save_memory tool.
+  * Git Integration: Added support for Git worktrees, allowing for
+    isolated parallel sessions.
+  * Plan Mode Enhancements: Plan mode now supports non-interactive
+    environments.
+  * Browser Agent Updates: Added sensitive action controls,
+    read-only noise reduction, and a dedicated security prompt.
+  * Task Tracking: Integrated the task tracker protocol into the
+    core system prompt and added a &quot;blocked&quot; status for tasks.
+  * Model Management: Added support for dynamic model resolution
+    and &quot;Model Chains&quot; in the ModelConfigService.
+  * Refreshed UX: Implemented a new layout for the Composer and a
+    full &quot;GEMINI CLI&quot; logo for logged-out states.
+  * Robustness: Improved session resume stability and fixed
+    flickering issues in small terminal heights.
+  * Performance: Parallelized background startup tasks and
+    optimized --version startup time.
+  * Bug Fixes: Fixed tilde expansion in policy paths, resolved
+    sandbox path resolution issues, upgraded ACP SDK, and patched
+    various npm vulnerabilities.
+
+- Update to 0.35.3:
+  * fix(patch): cherry-pick 765fb67 to release/v0.35.2-pr-24055 [CONFLICTS] by @gemini-cli-robot in #24063
+
+- update to 0.35.0:
+  * feat(cli): customizable keyboard shortcuts</comment>
+    <requestid>1344232</requestid>
+  </revision>
 </revisionlist>

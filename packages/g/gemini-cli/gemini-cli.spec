@@ -17,13 +17,15 @@
 
 
 Name:           gemini-cli
-Version:        0.34.0
+Version:        0.36.0
 Release:        0
 Summary:        An AI agent that brings the power of Gemini directly into your terminal
 License:        Apache-2.0
 URL:            https://github.com/google-gemini/gemini-cli
-Source0:        https://github.com/google-gemini/gemini-cli/releases/download/v%{version}/gemini.js#/%{name}-%{version}.js
+Source0:        https://github.com/google-gemini/gemini-cli/releases/download/v%{version}/gemini-cli-bundle.zip#/%{name}-%{version}-cli-bundle.zip
 Source1:        https://raw.githubusercontent.com/google-gemini/gemini-cli/refs/tags/v%{version}/LICENSE
+BuildRequires:  unzip
+BuildArch:      noarch
 Requires:       /usr/bin/node
 Requires:       git-core
 Requires:       grep
@@ -45,16 +47,24 @@ most direct path from your prompt to our model.
 * Open source: Apache 2.0 licensed.
 
 %prep
+%setup -c
 cp -p %{SOURCE1} .
 
 %build
 
 %install
-install -D -m 0755 %{SOURCE0} %{buildroot}%{_bindir}/gemini
+install -d -m 0755 %{buildroot}%{_defaultdocdir}/gemini-cli
+cp -pr docs/* %{buildroot}%{_defaultdocdir}/gemini-cli/
+rm -rf docs
+install -d %{buildroot}%{_libexecdir}/gemini-cli
+cp -pr *.js builtin policies bundled node_modules %{buildroot}%{_libexecdir}/gemini-cli
+install -d -m 0755 %{buildroot}%{_bindir}
+ln -s %{_libexecdir}/gemini-cli/gemini.js %{buildroot}%{_bindir}/gemini
 
 %files
-%defattr(-,root,root)
 %license LICENSE
+%doc %{_defaultdocdir}/gemini-cli/
 %{_bindir}/gemini
+%{_libexecdir}/gemini-cli
 
 %changelog

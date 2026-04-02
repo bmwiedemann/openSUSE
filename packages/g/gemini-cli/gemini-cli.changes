@@ -1,4 +1,257 @@
 -------------------------------------------------------------------
+Wed Apr  1 22:19:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to 0.36.0:
+  * Multi-Registry Architecture: Introduced a new architecture for
+    subagents with tool filtering and local execution isolation.
+  * Agent Evolution: Introduced AgentSession and a new experimental
+    Memory Manager Agent to replace the legacy save_memory tool.
+  * Git Integration: Added support for Git worktrees, allowing for
+    isolated parallel sessions.
+  * Plan Mode Enhancements: Plan mode now supports non-interactive
+    environments.
+  * Browser Agent Updates: Added sensitive action controls,
+    read-only noise reduction, and a dedicated security prompt.
+  * Task Tracking: Integrated the task tracker protocol into the
+    core system prompt and added a "blocked" status for tasks.
+  * Model Management: Added support for dynamic model resolution
+    and "Model Chains" in the ModelConfigService.
+  * Refreshed UX: Implemented a new layout for the Composer and a
+    full "GEMINI CLI" logo for logged-out states.
+  * Robustness: Improved session resume stability and fixed
+    flickering issues in small terminal heights.
+  * Performance: Parallelized background startup tasks and
+    optimized --version startup time.
+  * Bug Fixes: Fixed tilde expansion in policy paths, resolved
+    sandbox path resolution issues, upgraded ACP SDK, and patched
+    various npm vulnerabilities.
+
+-------------------------------------------------------------------
+Tue Mar 31 07:15:21 UTC 2026 - Sjir Elderwood <sjir@valkyoth.com>
+
+- Update to 0.35.3:
+  * fix(patch): cherry-pick 765fb67 to release/v0.35.2-pr-24055 [CONFLICTS] by @gemini-cli-robot in #24063
+
+-------------------------------------------------------------------
+Wed Mar 25 07:52:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.35.0:
+  * feat(cli): customizable keyboard shortcuts
+  * feat(core): Thread `AgentLoopContext` through core.
+  * chore(release): bump version to
+    0.35.0-nightly.20260311.657f19c1f
+  * refactor(a2a): remove legacy CoreToolScheduler
+  * feat(ui): add missing vim mode motions (X, ~, r, f/F/t/T,
+    df/dt and friends)
+  * Feat/retry fetch notifications
+  * fix(core): remove OAuth check from handleFallback and clean
+    up stray file
+  * feat(cli): support literal character keybindings and extended
+    Kitty protocol keys
+  * fix(ui): clamp cursor to last char after all NORMAL mode
+    deletes
+  * test(core): add missing tests for prompts/utils.ts
+  * fix(cli): allow scrolling keys in copy mode (Ctrl+S selection
+    mode)
+  * docs(cli): add custom keybinding documentation
+  * docs: fix misleading YOLO mode description in
+    defaultApprovalMode
+  * fix: clean up /clear and /resume
+  * fix(core)#20941: reap orphaned descendant processes on PTY
+    abort
+  * fix(core): update language detection to use LSP 3.18
+    identifiers
+  * feat(cli): support removing keybindings via '-' prefix
+  * feat(policy): add --admin-policy flag for supplemental admin
+    policies
+  * merge duplicate imports packages/cli/src subtask1
+  * perf(core): parallelize user quota and experiments fetching
+    in refreshAuth
+  * Changelog for v0.34.0-preview.0
+  * Changelog for v0.33.0
+  * fix(core): handle EISDIR in robustRealpath on Windows
+  * feat(core): include initiationMethod in conversation
+    interaction telemetry
+  * feat(ui): add vim yank/paste (y/p/P) with unnamed register
+  * fix(core): enable numerical routing for api key users
+  * feat(telemetry): implement retry attempt telemetry for
+    network related retries
+  * fix(policy): remove unnecessary escapeRegex from pattern
+    builders
+  * fix(core): preserve dynamic tool descriptions on session
+    resume
+  * chore: allow 'gemini-3.1' in sensitive keyword linter
+  * feat(core): support custom base URL via env vars
+  * merge duplicate imports packages/cli/src subtask2
+  * fix(core): silently retry API errors up to 3 times before
+    halting session
+  * feat(core): simplify subagent success UI and improve early
+    termination display
+  * merge duplicate imports packages/cli/src subtask3
+  * fix(hooks): fix BeforeAgent/AfterAgent inconsistencies
+  * feat(core): implement SandboxManager interface and config
+    schema
+  * docs: document npm deprecation warnings as safe to ignore
+  * fix: remove status/need-triage from maintainer-only issues
+  * fix(core): propagate subagent context to policy engine
+  * fix(cli): resolve skill uninstall failure when skill name is
+    updated
+  * docs(plan): clarify interactive plan editing with Ctrl+X
+  * fix(policy): ensure user policies are loaded when policyPaths
+    is empty
+  * Docs: Add documentation for model steering (experimental).
+  * Add issue for automated changelogs
+  * fix(core): secure argsPattern and revert WEB_FETCH_TOOL_NAME
+    escalation
+  * feat(core): differentiate User-Agent for a2a-server and ACP
+    clients
+  * refactor(core): extract ExecutionLifecycleService for tool
+    backgrounding
+  * feat: Display pending and confirming tool calls
+  * feat(browser): implement input blocker overlay during
+    automation
+  * fix: register themes on extension load not start
+  * feat(ui): Do not show Ultra users /upgrade hint
+  * chore: remove unnecessary log for themes
+  * fix(core): resolve MCP tool FQN validation, schema export,
+    and wildcards in subagents
+  * fix(cli): validate --model argument at startup
+  * fix(core): handle policy ALLOW for exit_plan_mode
+  * feat(telemetry): add Clearcut instrumentation for AI credits
+    billing events
+  * feat(core): add google credentials provider for remote agents
+  * test(cli): add integration test for node deprecation warnings
+  * feat(cli): allow safe tools to execute concurrently while
+    agent is busy
+  * feat(core): implement model-driven parallel tool scheduler
+  * update vulnerable deps
+  * fix(core): fix startup stats to use int values for timestamps
+    and durations
+  * fix(core): prevent duplicate tool schemas for instantiated
+    tools
+  * fix(core): add proxy routing support for remote A2A subagents
+  * fix(core/ide): add Antigravity CLI fallbacks
+  * fix(browser): fix duplicate function declaration error in
+    browser agent
+  * feat(core): implement Stage 1 improvements for webfetch tool
+  * Changelog for v0.34.0-preview.1
+  * perf(cli): enable code splitting and deferred UI loading
+  * fix: remove unused img.png from project root
+  * docs(local model routing): add docs on how to use Gemma for
+    local model routing
+  * feat(a2a): enable native gRPC support and protocol routing
+  * fix(cli): escape @ symbols on paste to prevent unintended
+    file expansion
+  * feat(core): add trajectoryId to ConversationOffered telemetry
+  * docs: clarify that tools.core is an allowlist for ALL built-
+    in tools
+  * docs(plan): document hooks with plan mode
+  * Changelog for v0.33.1
+  * build(ci): fix false positive evals trigger on merge commits
+  * fix(core): explicitly pass messageBus to policy engine for
+    MCP tool saves
+  * feat(core): Fully migrate packages/core to AgentLoopContext.
+  * feat(core): increase sub-agent turn and time limits
+  * feat(core): instrument file system tools for JIT context
+    discovery
+  * refactor(ui): extract pure session browser utilities
+  * fix(plan): Fix AskUser evals
+  * fix(settings): prevent j/k navigation keys from intercepting
+    edit buffer input
+  * feat(skills): improve async-pr-review workflow and logging
+  * refactor(cli): consolidate getErrorMessage utility to core
+  * fix(core): show descriptive error messages when saving
+    settings fails
+  * docs(core): add authentication guide for remote subagents
+  * docs: overhaul subagents documentation and add /agents
+    command
+  * refactor(ui): extract SessionBrowser static ui components
+  * test: add Object.create context regression test and tool
+    confirmation integration test
+  * feat(tracker): return TodoList display for tracker tools
+  * feat(agent): add allowed domain restrictions for browser
+    agent
+  * chore/release: bump version to
+    0.35.0-nightly.20260313.bb060d7a9
+  * Move keychain fallback to keychain service
+  * feat(core): integrate SandboxManager to sandbox all process-
+    spawning tools
+  * fix(cli): support CJK input and full Unicode scalar values in
+    terminal protocols
+  * Promote stable tests.
+  * feat(tracker): add tracker policy
+  * feat(security): add disableAlwaysAllow setting to disable
+    auto-approvals
+  * Revert "fix(cli): validate --model argument at startup"
+  * fix(mcp): handle equivalent root resource URLs in OAuth
+    validation
+  * fix(core): use session-specific temp directory for task
+    tracker
+  * Fix issue where config was undefined.
+  * fix(core): deduplicate project memory when JIT context is
+    enabled
+  * feat(prompts): implement Topic-Action-Summary model for
+    verbosity reduction
+  * fix(core): fix manual deletion of subagent histories
+  * Add registry var
+  * Add ModelDefinitions to ModelConfigService
+  * fix(cli): improve command conflict handling for skills
+  * fix(core): merge user settings with extension-provided MCP
+    servers
+  * fix(core): skip discovery for incomplete MCP configs and
+    resolve merge race condition
+  * fix(automation): harden stale PR closer permissions and
+    maintainer detection
+  * fix(automation): evaluate staleness before checking protected
+    labels
+  * feat(agent): replace the runtime npx for browser agent chrome
+    devtool mcp with pre-built bundle
+  * perf: optimize TrackerService dependency checks
+  * docs(policy): remove trailing space from commandPrefix
+    examples
+  * fix(a2a-server): resolve unsafe assignment lint errors
+  * fix: Adjust ToolGroupMessage filtering to hide Confirming and
+    show Canceled tool calls.
+  * Disallow Object.create() and reflect.
+  * Guard pro model usage
+  * refactor(core): Creates AgentSession abstraction for
+    consolidated agent interface.
+  * docs(changelog): remove internal commands from release notes
+  * feat: enable subagents
+  * feat(extensions): implement cryptographic integrity
+    verification for extension updates
+  * feat(tracker): polish UI sorting and formatting
+  * Changelog for v0.34.0-preview.2
+  * fix(core): fix three JIT context bugs in read_file,
+    read_many_files, and memoryDiscovery
+  * refactor(core): introduce InjectionService with source-aware
+    injection and backend-native background completions
+  * Linux sandbox bubblewrap
+  * feat(core): increase thought signature retry resilience
+  * feat(core): implement Stage 2 security and consistency
+    improvements for web_fetch
+  * refactor(core): replace positional execute params with
+    ExecuteOptions bag
+  * feat(config): enable JIT context loading by default
+  * fix(config): ensure discoveryMaxDirs is passed to global
+    config during initialization
+  * fix(plan): allowlist get_internal_docs in Plan Mode
+  * Changelog for v0.34.0-preview.3
+  * feat(core): add foundation for subagent tool isolation
+  * fix(core): handle surrogate pairs in truncateString
+  * fix(cli): override j/k navigation in settings dialog to fix
+    search input conflict
+  * feat(plan): add 'All the above' option to multi-select
+    AskUser questions
+  * docs: distribute package-specific GEMINI.md context to each
+    package
+  * fix(cli): clean up stale pasted placeholder metadata after
+    word/line deletions
+  * refactor(core): align JIT memory placement with tiered
+    context model
+  * Linux sandbox seccomp
+
+-------------------------------------------------------------------
 Mon Mar 23 17:16:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix dependencies (we now have to use env -S)
