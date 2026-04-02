@@ -1,7 +1,7 @@
 #
 # spec file for package osslsigncode
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           osslsigncode
-Version:        2.10
+Version:        2.13
 Release:        0
 Summary:        Platform-independent tool for Authenticode signing of EXE/CAB files
 License:        GPL-3.0-only
 Group:          Productivity/Security
 URL:            https://github.com/mtrojnar/osslsigncode
-Source0:        https://github.com/mtrojnar/osslsigncode/archive/%{version}/osslsigncode-%{version}.tar.gz
+Source0:        https://github.com/mtrojnar/osslsigncode/archive/%{version}.tar.gz#/osslsigncode-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto) >= 1.1

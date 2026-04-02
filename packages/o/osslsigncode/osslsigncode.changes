@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr  2 07:34:46 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 2.13 (bsc#1260680, CVE-2025-70888):
+  * fixed integer overflows when processing APPX compressed data
+    streams
+  * fixed double-free vulnerabilities in APPX file processing
+  * fixed multiple memory corruption issues in PE page hash
+    computation
+- Changes from 2.12:
+  * fixed a buffer overflow while extracting message digests
+- Changes from 2.11:
+  * added keyUsage validation for signer certificate
+  * added printing CRL details during signature verification
+  * implemented a workaround for CRL servers returning the
+    HTTP Content-Type header other than application/pkix-crl
+  * fixed HTTP keep-alive handling
+  * fixed macOS compiler and linker flags
+  * fixed undefined BIO_get_fp() behavior with
+    BIO_FLAGS_UPLINK_INTERNAL
+
+-------------------------------------------------------------------
 Sat Jul 12 08:24:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10:
@@ -153,4 +174,3 @@ Sun Mar  8 17:33:10 UTC 2015 - p.drouand@gmail.com
 Wed Jan 23 10:16:39 UTC 2013 - fcrozat@suse.com
 
 - Initial package for openSUSE (based on James Bottomley package).
-
