@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr  2 08:01:29 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to 0.21.00:
+  * New stressors
+      * filehole - exercise randomized file holes/extents
+      * crc - cyclic redundancy check using gcc builtins and non-gcc CRC builtin alternatives
+  * New options
+      * --schedpolicy-cpumix - move shedpolicy stressors to a randomly chosen CPUs
+      * --filehole-defrag - reduce file hole fragmentation
+      * --cachehammer-method - select between permuted or randomized cache operations
+  * New build options
+      * BUILD_SMALL=1 option to build small unoptimized executable
+  * Notable bugfixes
+      * lsm stressor now works on S390x systems
+      * fix builds where termio.h does not exist
+      * fix fsize stressor false positives on 32 bit systems (don't set _LARGEFILE_SOURCE)
+      * lockmix: add timer to interrupt any blocked file locks
+      * pthread: fix racy SIGSEGV during interrupted stressor termination
+      * stress-af-alg: handle ENOSYS errno on setsockopt ALG_SET_KEY
+  * Notable improvements
+      * timerfd: also use CLOCK_MONOTONIC and CLOCK_BOOTTIME
+      * clock: use CLOCK_AUX
+      * sockabuse: add more exercising of socket and getsockopt calls
+      * workload: add vecint workload method (for x86 CPU frequency changing)
+      * loop: use random enabled/disabled O_DIRECT on backing file
+      * easy-opcode: add some more x86 simple ops
+      * tree: rework tree nodes, speed improvement of ~10-17%
+      * tree: add treap (tree/heap) method
+      * vm: make walk-flush stride through memory with cacheline sized gaps
+
+-------------------------------------------------------------------
 Mon Feb 23 09:35:49 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to 0.20.01:

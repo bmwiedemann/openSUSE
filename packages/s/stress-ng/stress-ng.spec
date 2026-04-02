@@ -20,7 +20,7 @@
 %bcond_without  apparmor
 
 Name:           stress-ng
-Version:        0.20.01
+Version:        0.21.00
 Release:        0
 Summary:        Tool to load and stress a computer
 License:        GPL-2.0-only
