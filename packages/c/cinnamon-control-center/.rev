@@ -349,4 +349,12 @@
   * l10n: Update files</comment>
     <requestid>1304219</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>687f986898fa27774cafc0fce5b6245c</srcmd5>
+    <version>6.6.0</version>
+    <time>1775144480</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344239</requestid>
+  </revision>
 </revisionlist>

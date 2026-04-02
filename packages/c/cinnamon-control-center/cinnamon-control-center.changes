@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Mar 25 23:07:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.0:
+  * cinnamon-control-center (6.6.0) zena; urgency=medium
+  * debian/control: Update dependencies.
+  * wacom: Make 'no support' icon and text look similar to other
+    pages in cinnamon-settings.
+  * wacom: Don't use bold for secondary text in detection
+    messages.
+  * Fixed Segmentation fault that sometimes occurs when starting
+    a hotspot. (#351)
+  * Remove region panel, misc related code. (#355)
+  * cc-display-panel.c: Always try to use cinnamon's native
+    display labeler.
+  * Switch to xapp-symbolic-icons (XSI)
+  * Add iso-codes as debian build dependecy
+  * iso-codes: Remove unused build dependency (#369)
+  * l10n: Update POT
+  * l10: Update files
+  * Remove datetime panel (long-unused).
+  * Clean up some obsolete dependencies.
+  * color-panel: Replace broken package-kit installation of
+    gnome- color-manager with apturl (if available).
+  * Fix build from gnome_installer removal from cinnamon-desktop.
+  * network: Could not load editor VPN plugin warning (#346)
+  * l10n: Update POT
+
+-------------------------------------------------------------------
 Fri Sep 12 07:05:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.2:
