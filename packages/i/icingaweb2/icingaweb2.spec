@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define php_major_version 8
 Name:           icingaweb2
-Version:        2.12.6
+Version:        2.13.0
 Release:        0
 Summary:        Icinga Web
 License:        GPL-2.0-or-later
@@ -35,10 +35,11 @@ Requires:       apache2
 Requires:       icinga-l10n >= 1.1.0
 Requires:       icingacli = %{version}
 Requires:       icingaweb2-common = %{version}
+Requires:       icingaweb2-module-monitoring >= 2.12.6
 Requires:       php-icinga = %{version}
 Requires:       (mod_php_any or php-fpm)
 Provides:       group(%icinga_command_group)
-Recommends:     icingaweb2-module-pdfexport >= 0.10
+Recommends:     icingaweb2-module-pdfexport >= 0.13.0
 BuildArch:      noarch
 
 %description
@@ -77,8 +78,8 @@ This package contains the PHP FPM configuration file to run %{name} with php-fpm
 %package -n php-icinga
 Summary:        Icinga Web PHP library
 Group:          Development/Libraries/Other
-Requires:       icinga-php-library >= 0.13.2
-Requires:       icinga-php-thirdparty >= 0.12.0
+Requires:       icinga-php-library >= 0.19.0
+Requires:       icinga-php-thirdparty >= 0.15.0
 Requires:       php-curl
 Requires:       php-dom
 Requires:       php-fileinfo
@@ -164,7 +165,7 @@ getent group %icinga_webgroup  >/dev/null || groupadd -r %icinga_webgroup
 %doc CHANGELOG.md
 %doc README.md
 %docdir %{_datadir}/%{name}/doc
-%license LICENSE
+%license LICENSE.md
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/application
 %{_datadir}/%{name}/application/controllers
@@ -189,7 +190,7 @@ getent group %icinga_webgroup  >/dev/null || groupadd -r %icinga_webgroup
 %attr(2770, root, %icinga_webgroup) %dir %{_sysconfdir}/%{name}/enabledModules
 
 %files -n icingacli
-%license LICENSE
+%license LICENSE.md
 %{_datadir}/%{name}/application/clicommands
 %{_datadir}/bash-completion/completions/icingacli
 %{_bindir}/icingacli
@@ -198,7 +199,7 @@ getent group %icinga_webgroup  >/dev/null || groupadd -r %icinga_webgroup
 %config(noreplace) %{_sysconfdir}/php%{php_major_version}/fpm/php-fpm.d/%{name}.conf
 
 %files -n php-icinga
-%license LICENSE
+%license LICENSE.md
 %{_datadir}/php/Icinga
 
 %changelog

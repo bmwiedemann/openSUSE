@@ -1176,4 +1176,30 @@ sorry. Now it is.</comment>
     <comment></comment>
     <requestid>1319029</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e9c1ced97f0897dad22da971cd0c72b8</srcmd5>
+    <version>2.13.0</version>
+    <time>1775144469</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.13.0
+  * Monitoring Module Moves On
+    - Remove monitoring module #5458
+  * PHP 8.2 Required, PHP 8.5 Supported
+    - Require PHP 8.2 #5444
+    - Support PHP 8.5 #5454
+  * Navigation Polish
+    - Show title in level-2 flyouts #5360
+    - Improve flyout transition #5367
+  * UI Improvements
+    - Add disabled style to textareas #5476
+    - Tactical Overview: Add opacity on hover #5400
+    - Apply fixed height to input elements #5401
+    - Improve title and label of user menu item in collapsed mode #5412
+    - Normalize &quot;Confirm Removal&quot; and cancel icon usage #5429
+  * Fixes
+    - Fix browser timezone information being lost #5357
+    - Log user roles #5311
+</comment>
+    <requestid>1344218</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr  1 16:47:39 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.13.0
+
+- Update to 2.13.0
+  * Monitoring Module Moves On
+    - Remove monitoring module #5458
+  * PHP 8.2 Required, PHP 8.5 Supported
+    - Require PHP 8.2 #5444
+    - Support PHP 8.5 #5454
+  * Navigation Polish
+    - Show title in level-2 flyouts #5360
+    - Improve flyout transition #5367
+  * UI Improvements
+    - Add disabled style to textareas #5476
+    - Tactical Overview: Add opacity on hover #5400
+    - Apply fixed height to input elements #5401
+    - Improve title and label of user menu item in collapsed mode #5412
+    - Normalize "Confirm Removal" and cancel icon usage #5429
+  * Fixes
+    - Fix browser timezone information being lost #5357
+    - Log user roles #5311
+
+-------------------------------------------------------------------
 Fri Nov 21 09:57:52 UTC 2025 - ecsos <ecsos@opensuse.org> - 2.12.6
 
 - Update to 2.12.6
