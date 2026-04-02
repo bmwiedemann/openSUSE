@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Apr 02 04:49:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.33:
+  * 629fc09 fix(repo): use *_internal directory to store
+    requirements hash file
+- Update to version 2.17.32:
+  This release focuses on runner reliability, security
+  improvements, and overall stability, along with several bug fixes
+  and translation updates.
+  * Improvements
+    - Smarter runner distribution
+    - Runners are now selected randomly, improving load balancing
+      and avoiding uneven task distribution across runners.
+  * Security & Safety
+    - Config validation at startup
+    - The access_key_encryption setting is now validated during
+      startup to prevent misconfiguration issues early.
+    - Stronger permission checks
+    - Restoring projects from backup now requires admin
+      permissions, improving security around sensitive operations.
+  * Bug Fixes
+    - Fixed nil pointer crash in runner updates when tasks are not
+      part of a pool
+    - Fixed incorrect handling of Git branch names containing
+      slashes
+    - Improved runner shutdown logic to ensure progress is uploaded
+      before termination
+    - Fixed inconsistencies in task status updates
+    - Minor fix for a missed import
+  * Localization
+    - Improved Traditional Chinese (zh_TW) translations and
+      consistency
+  * What's Changed
+    - fix(i18n): improve Traditional Chinese (zh_TW) translations
+      by @tan9 in #3701
+    - fix(config): validate access_key_encryption at startup by
+      @abh in #3710
+    - fix(i18n): improve zh_TW translation consistency by @tan9 in
+      #3705
+    - Fix branch names with slashes truncated in GetRemoteBranches
+      by @Copilot in #3717
+    - Add admin permission check for project restore from backup by
+      @JulianKap in #3695
+    - chore(deps): update dependency axios to v1.13.6 by
+      @renovate[bot] in #3692
+    - fix: nil pointer dereference in UpdateRunner when task not in
+      pool by @cursor[bot] in #3727
+    - feat: randomize runner selection by @agrrh in #3722
+    - fix(runners): gate one-off shutdown on acknowledged progress
+      upload by @fiftin in #3738
+    - fix/status updating by @fiftin in #3737
+
+-------------------------------------------------------------------
 Sun Mar 29 16:20:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.31:
