@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 02 04:36:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.2:
+  * registry: strip desktop labels (#403)
+  * test: don't pin e2e golang (#402)
+  * Update version numbers: 0.9.1
+
+-------------------------------------------------------------------
+Wed Apr 01 04:47:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.1:
+  * mod: update go-m1cpu to fix crash on M5 Pro/Max (#401)
+  * build(deps): bump google.golang.org/grpc from 1.72.1 to 1.79.3
+    (#400)
+  * build(deps): bump github.com/docker/cli (#399)
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.35.0 to
+    1.40.0 (#398)
+  * vendor: update k8s deps (#397)
+  * Update version numbers: 0.9.0
+
+-------------------------------------------------------------------
 Mon Jan 19 06:35:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.0:

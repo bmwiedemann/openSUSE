@@ -17,7 +17,7 @@
 
 
 Name:           ctlptl
-Version:        0.9.0
+Version:        0.9.2
 Release:        0
 Summary:        CLI for declaratively setting up local Kubernetes clusters
 License:        Apache-2.0
