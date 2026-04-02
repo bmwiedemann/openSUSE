@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Apr 02 11:03:14 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 4.4.1:
+  * ci: Remove cmake-presets system and refactor workflows
+  * Added PTL support to release notes
+  * Updated documentation to 4.4.1
+  * Updated version to 4.4.1
+  * Updating CI workflows: (#585)
+  * Updated TinyEXR to fix resource leaks
+  * Fixed potentially uninitialized variables
+  * Initializing HitList in next hit tutorial before use
+  * Checking for potential divide by zero
+  * Fixed integer over/underflows
+  * Reduced copies, using move semantics in more places
+  * Fix Win32/ARM build
+  * Added specialization constants for curves and motion blur (#563)
+  * Fixed a typo in verifyHit() (#581)
+  * Bump CMake minimum required version to 3.10 (#568)
+  * AVX512 flags in GCC are now closer to clang's
+  * ci: refactor release workflow
+  * Updated TinyEXR, fixing resource leaks
+  * Workaround GCC AVX512 movemask truncation issue (#574)
+  * Fixed asserts, simplified bounds check
+  * Added bounds check for grid dimensions
+  * Fixed bounds checks to allow 0 offset, 0 buffer size
+  * More size checks for buffers
+  * Added size limit check for buffer stride
+  * ci: add more GPU tests (BMG, LNL) & cleanup
+  * ci: switch to intel-llvm/v6.2.0 SYCL compiler
+  * ci: add PVC testing to continuous & nightly workflows
+  * rthwif_embree_builder: apply WA for PVC device memory allocation bug
+  * ci: multiple fixes for internal CI workflows
+  * fix coverity static analysis
+  * added gpu debug build to ci
+  * SYCL fix:
+  * Fixed compilation with internal task scheduler
+  * Explicit lambda captures to silence warnings
+  * Fixed gcc warnings when casting to reference types
+  * Add missing RTC_NAMESPACE definition to rtcore_config
+  * Added specialization constants for motion blurred instances
+  * Enabled AVX512 support with MSVC. Fixes #206
+  * Fix gcc warnings/errors when compiling with C++26. Fixes #397
+  * Fixed signature of ISPC memory monitor in forest tutorial
+  * Fix manpage section: rename *.4embree4 to *.3embree4, update Makefile rule, and remove obsolete *.4embree4 files. Section 3 is for library calls, not section 4.
+  * Fixed morton builder for instance arrays - arguments were mismatched
+  * Fixed double/float conversion warnings
+  * Fixed signed/unsigned mismatches
+  * Removed duplicate device release in voronoi tutorial
+  * Removed unused DeviceEnterLeave class.
+  * Removed superfluous device enter/leave
+  * fix rare hang in rtcNewDevice with start_threads=1
+  * fix update doc
+
+-------------------------------------------------------------------
 Sat Apr 05 21:41:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 4.4.0:

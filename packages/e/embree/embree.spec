@@ -1,7 +1,7 @@
 #
 # spec file for package embree
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define libname libembree4-4
 
 Name:           embree
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        Ray Tracing Kernels
 License:        Apache-2.0
