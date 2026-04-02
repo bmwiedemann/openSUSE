@@ -14,5 +14,6 @@
     📱 Multi-device sync with offline access across all your devices
     and many more ...
 </description>
+  <devel project="isv:OpenCloud" package="opencloud-server"/>
   <url>https://opencloud.eu</url>
 </package>

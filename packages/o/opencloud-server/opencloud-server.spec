@@ -17,10 +17,10 @@
 
 
 %define executable_name opencloud-server
-%define web_assets_version v6.0.0
+%define web_assets_version v6.1.0
 
 Name:           opencloud-server
-Version:        5.2.0
+Version:        6.0.0
 Release:        0
 Summary:        Secure and private way to store, access, and share your files
 License:        Apache-2.0
@@ -35,6 +35,7 @@ Source12:       environment-file
 Source21:       system-user-%{name}.conf
 Source31:       Makefile
 Source32:       PACKAGING_README.md
+Source33:       prepare_webassets.sh
 BuildRequires:  golang(API) >= 1.25
 BuildRequires:  make
 BuildRequires:  pnpm
