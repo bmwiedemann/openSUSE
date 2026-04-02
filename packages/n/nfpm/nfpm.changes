@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr 01 04:26:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.46.0:
+  * New Features
+    - 432fb67: feat: add alpha msix support (#1051) (@djgilcrease)
+  * Bug fixes
+    - 5389e8c: fix(rpm): correctly convert fs.FileMode to POSIX
+      mode bits (#1060) (@iAklis)
+    - 3aba25c: fix: semgrep warn (@caarlos0)
+  * Other work
+    - d6b9dfe: docs: sponsors (@caarlos0)
+    - 36683c2: docs: sponsors update (@caarlos0)
+    - 28602db: docs: update cmd docs (@caarlos0)
+    - c0882e2: docs: update cmd docs (@caarlos0)
+  * Dependencies
+    - chore(deps): bump github.com/buger/jsonparser from 1.1.1 to
+      1.1.2 (#1055)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.16.5 to
+      5.17.1 (#1063)
+    - chore(deps): bump the go group with 2 updates (#1056)
+
+-------------------------------------------------------------------
 Thu Mar 19 06:22:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.45.2:
