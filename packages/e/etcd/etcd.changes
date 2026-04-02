@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 01 19:40:42 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.6.10:
+  * etcdserver: allow non-admin to fetch member list and alarms
+  * Bump golang.org/x/image to v0.38.0 to resolve GO-2026-4815
+  * Fix etcdctl endpoint command with option --cluster when auth is enabled
+
+-------------------------------------------------------------------
 Fri Mar 20 18:59:47 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.6.9:
