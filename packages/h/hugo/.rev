@@ -1840,4 +1840,25 @@
   * create/skeletons: Use css.Build in theme skeleton (forwarded request 1342094 from jfkw)</comment>
     <requestid>1342095</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>6baf83893843097ca4525997ca1c66b0</srcmd5>
+    <version>0.159.2</version>
+    <time>1775144459</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.159.2:
+  * releaser: Bump versions for release of 0.159.2
+  * Fix potential content XSS by escaping dangerous URLs in links and images
+  * releaser: Add standard withdeploy release assets
+  * resources/page: Fix shared reader in Source.ValueAsOpenReadSeekCloser
+  * testing: Simplify line ending handling in tests
+  * readme: Update Go version to 1.25.0
+  * releaser: Prepare repository for 0.160.0-DEV
+
+- Update to version 0.159.1:
+  * releaser: Bump versions for release of 0.159.1
+  * minifiers: Keep x-bind and blank namespace in SVG minification
+  * Adjust depreceated syntax in tests
+  * releaser: Prepare repository for 0.160.0-DEV (forwarded request 1344202 from jfkw)</comment>
+    <requestid>1344203</requestid>
+  </revision>
 </revisionlist>
