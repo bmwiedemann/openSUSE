@@ -1,7 +1,7 @@
 #
 # spec file for package gearlever
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define appid it.mijorus.gearlever
 Name:           gearlever
-Version:        4.1.1
+Version:        4.4.8
 Release:        0
 Summary:        Manage AppImages
 License:        GPL-3.0-or-later
 URL:            https://gearlever.mijorus.it/
-Source:         https://github.com/mijorus/gearlever/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Source:         https://github.com/mijorus/gearlever/archive/refs/tags/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Group:          System/X11/Utilities
 BuildArch:      noarch
 BuildRequires:  fdupes
@@ -35,11 +36,11 @@ BuildRequires:  pkgconfig(gio-2.0)
 Requires:       7zip
 Requires:       dwarfs
 Requires:       flatpak-spawn
-Requires:       python3-dbus-python
-Requires:       python3-desktop-entry-lib
-Requires:       python3-ftputil
+Requires:       python3-dbus-python >= 1.2.18
+Requires:       python3-desktop-entry-lib >= 5.0
+Requires:       python3-ftputil >= 5.1.0
 Requires:       python3-gobject
-Requires:       python3-pyxdg
+Requires:       python3-pyxdg >= 0.28
 Requires:       python3-requests >= 2.25.1
 Requires:       squashfs
 Requires:       typelib(Adw) = 1
@@ -79,7 +80,7 @@ find %{buildroot} -iname 'meson.build' -delete
 %{_datadir}/%{name}
 %pycache_only %{_datadir}/%{name}/%{name}/__pycache__
 %pycache_only %{_datadir}/%{name}/%{name}/**/__pycache__
-%{_datadir}/appdata/%{appid}.appdata.xml
+%{_datadir}/metainfo/it.mijorus.gearlever.metainfo.xml
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/scalable/actions

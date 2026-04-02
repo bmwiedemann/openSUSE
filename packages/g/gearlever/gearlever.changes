@@ -1,4 +1,154 @@
 -------------------------------------------------------------------
+Sat Mar 21 11:51:51 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.4.8:
+  * version bump
+  * use http version of the fedore site to check connectivity
+  * fixed wrong import
+  * use fedora's website to check for internet connection
+  * added info log
+
+-------------------------------------------------------------------
+Sat Mar 21 11:51:43 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.4.7:
+  * fixed an issue with some zsync updates
+  * allow download when URL in zsync file is absent
+  * removed zsync dep
+  * version bump
+  * indentation
+  * removed old code
+  * updated zsync logic for static file url
+  * wip
+  * Don't mark entire translations as fuzzy
+  * po: Add Georgian translation
+  * po: Add Georgian translation
+
+-------------------------------------------------------------------
+Sat Mar 21 11:51:34 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.4.6:
+  * version bump
+  * small ui tweaks
+  * added new mime type for appimage
+
+-------------------------------------------------------------------
+Sat Mar 21 11:51:27 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.4.5:
+  * Bump project version from 4.4.4 to 4.4.5
+
+-------------------------------------------------------------------
+Sat Mar 21 11:51:19 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.4.4:
+  * ui improvements
+
+-------------------------------------------------------------------
+Sat Mar 21 11:51:10 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.4.3:
+  * removed check on content type header
+  * github updater: check if file exists
+
+-------------------------------------------------------------------
+Sat Mar 21 11:51:03 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.4.2:
+  * improved support for offline usage
+
+-------------------------------------------------------------------
+Sat Mar 21 11:50:55 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.4.1:
+  * small refactoring and ui improvements
+
+-------------------------------------------------------------------
+Sat Mar 21 11:50:38 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.4.0:
+  * version bump
+  * added code for minimal ui
+  * added task json
+  * add info about file size in app list
+
+-------------------------------------------------------------------
+Sat Mar 21 11:47:46 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.3.2:
+  * version bump
+  * fixed app website not showing
+  * added support for x-appimage-name
+  * Update file
+  * Add Arabic language support to LINGUAS
+  * Add Arabic translation (ar.po)
+
+-------------------------------------------------------------------
+Sat Mar 21 11:47:38 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.3.1:
+  * version bump
+  * version bump
+  * added support for pre-releases embedded in github update url
+  * docs(metainfo): Add link to source repo
+  * Added missing pt-PT translations.
+
+-------------------------------------------------------------------
+Sat Mar 21 11:47:30 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.3.0:
+  * check if an app is running before update
+  * Add documentation section to README
+
+-------------------------------------------------------------------
+Sat Mar 21 11:44:09 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.2.2:
+  * version bump
+  * version bump
+  * try proceeding if 7zz command fails
+  * updated error handling
+  * removed useless file
+  * Rename appstream file to use metainfo extension
+  * background update fetcher: added translations
+  * test cli: added tests for static file updater
+  * add "Open Gear Lever" button to update notification
+  * add "Open Gear Lever" button to update notification
+  * update es.po
+  * Fix Vietnamese translation typo
+  * Reapply "Update empty-list-placeholder.ui"
+  * Revert "Ellipsis typography for all languages"
+  * Revert "Update empty-list-placeholder.ui"
+  * Revert "Update empty-list-placeholder.ui"
+  * Revert "Ellipsis typography in original English code"
+  * Update fr.po
+  * Update empty-list-placeholder.ui
+  * Ellipsis typography for all languages
+  * Ellipsis typography in original English code
+  * Update Fr translation
+
+-------------------------------------------------------------------
+Sat Mar 21 11:43:59 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.2.1:
+  * fix issues with integrated update urls
+  * fix update management detection on appimages with static urls
+
+-------------------------------------------------------------------
+Sat Mar 21 11:42:51 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 4.2.0:
+  * version bump
+  * update UpdateModels classes
+  * fixed spinner not always visible
+  * added block-unsafe-extractor
+  * updated tests
+  * updated release yml
+  * version bump
+  * fixed shutter encoder
+  * wip
+
+-------------------------------------------------------------------
 Tue Dec 23 22:02:52 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 4.1.1:
