@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  1 14:48:09 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Add patch fix-gcc16-build-in-libdeflate-boo1260948.patch to fix
+  build with gcc16 (boo#1260948) 
+
+-------------------------------------------------------------------
 Mon Dec 15 11:42:53 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 0.14.2

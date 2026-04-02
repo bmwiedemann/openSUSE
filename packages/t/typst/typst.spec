@@ -1,7 +1,7 @@
 #
 # spec file for package typst
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ URL:            https://github.com/typst/typst
 Source0:        https://github.com/typst/typst/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Patch0:         hayagriva-bump-strum-version.patch
+Patch1:         fix-gcc16-build-in-libdeflate-boo1260948.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  gcc%{?force_gcc_version}-c++

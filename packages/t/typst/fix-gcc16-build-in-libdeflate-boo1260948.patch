@@ -1,0 +1,41 @@
+commit d97ed10f93f4fc2e11f2088589c0c5c73e2357b0
+Author: Martin Sirringhaus <martin.sirringhaus@suse.com>
+Date:   Wed Apr 1 16:30:22 2026 +0200
+
+    patch libdeflate
+
+diff --git a/Cargo.lock b/Cargo.lock
+index bb4dbaaf..4b4a2f23 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1511,8 +1511,6 @@ checksum = "b5aba8db14291edd000dfcc4d620c7ebfb122c613afb886ca8803fa4e128a20a"
+ [[package]]
+ name = "libdeflate-sys"
+ version = "1.23.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "413b667c8a795fcbe6287a75a8ce92b1dae928172c716fe95044cb2ec7877941"
+ dependencies = [
+  "cc",
+ ]
+diff --git a/Cargo.toml b/Cargo.toml
+index c08c2f25..677f22f3 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -170,3 +170,4 @@ wildcard_in_or_patterns = "allow"
+ 
+ [patch.crates-io]
+ hayagriva = { path="vendor/hayagriva-0.9.1" }
++libdeflate-sys = { path="vendor/libdeflate-sys-1.23.0" }
+diff --git a/vendor/libdeflate-sys-1.23.0/libdeflate/lib/x86/cpu_features.h b/vendor/libdeflate-sys-1.23.0/libdeflate/lib/x86/cpu_features.h
+index 385e5a30..120d166e 100644
+--- a/vendor/libdeflate-sys-1.23.0/libdeflate/lib/x86/cpu_features.h
++++ b/vendor/libdeflate-sys-1.23.0/libdeflate/lib/x86/cpu_features.h
+@@ -165,7 +165,7 @@ static inline u32 get_x86_cpu_features(void) { return 0; }
+ #  define HAVE_AVXVNNI(features)	((features) & X86_CPU_FEATURE_AVXVNNI)
+ #endif
+ 
+-#if (GCC_PREREQ(14, 0) || CLANG_PREREQ(18, 0, 18000000)) \
++#if ((GCC_PREREQ(14, 0) && !(GCC_PREREQ(16, 0))) || CLANG_PREREQ(18, 0, 18000000)) \
+ 	&& !defined(__EVEX512__) /* avoid subtracting the evex512 feature */
+ #  define EVEX512	",evex512"	/* needed to override potential -mno-evex512 */
+ #  define NO_EVEX512	",no-evex512"	/* needed for AVX10/256 compatibility */
