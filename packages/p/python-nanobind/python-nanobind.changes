@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar  7 12:00:49 UTC 2026 - Friedrich Haubensak <hsk17@mail.de>
+
+- update to release 2.12.0
+  * for details about changes see 
+    github.com/wjakob/nanobind/blob/master/docs/changelog.rst
+- adapt nanobind-installationpath.patch to fit 2.12.0
+
+-------------------------------------------------------------------
 Fri Feb  6 11:05:08 UTC 2026 - Friedrich Haubensak <hsk17@mail.de>
 
 - update to release 2.11.0
