@@ -1,7 +1,7 @@
 #
 # spec file for package Crystalcursors
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           Crystalcursors
-BuildRequires:  libpng
-BuildRequires:  xcursorgen
-URL:            https://digilander.libero.it/m4rt/html/crystalcursors.html
+Version:        0.9
+Release:        0
 Summary:        Mouse Cursors in Crystal Icon Style
 License:        LGPL-2.1-or-later
 Group:          System/X11/Icons
-Version:        0.9
-Release:        0
+URL:            https://digilander.libero.it/m4rt/html/crystalcursors.html
 Source:         https://digilander.libero.it/m4rt/files/Crystalcursors.tar.bz2
 Patch0:         root-installation.diff
 BuildRequires:  ImageMagick
+BuildRequires:  libpng
+BuildRequires:  xcursorgen
 BuildArch:      noarch
 
 %description
@@ -36,10 +36,10 @@ white, gray, blue, and green versions. They can be selected from KDE
 Control Center, in the mouse configuration.
 
 %prep
-%autosetup -p1 -n %name
+%autosetup -p1 -n %{name}
 
 %build
-make
+%make_build
 
 %install
 %make_install
@@ -47,6 +47,6 @@ make
 %files
 %license LICENSE
 %doc CHANGELOG CREDITS README
-/usr/share/icons/*
+%{_datadir}/icons/*
 
 %changelog
