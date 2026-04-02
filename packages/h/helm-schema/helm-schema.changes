@@ -1,4 +1,318 @@
 -------------------------------------------------------------------
+Tue Mar 31 05:03:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.0:
+  * Bug Fixes
+    - adjust pre-commit-hooks by @dadav
+    - use better name for pre-commit task by @dadav
+    - adjust pre-commit-hooks by @dadav
+    - use latest version by @dadav
+    - map also contains arrays by @dadav
+    - move version into separate file by @dadav
+    - adjust version in pre-commit hooks by @dadav
+    - make exit code working by @dadav
+    - add global property if not present by @dadav
+    - use structs to parse the schema by @dadav
+    - make it working by @dadav
+    - make it working by @dadav
+    - remove required fields on dependencies by @dadav
+    - set to nil by @dadav
+    - clarify warning by @dadav
+    - use pointers by @dadav
+    - adjust pre-commit hook to only run on Chart.yaml and
+      values.yaml changes by @dadav
+    - move sorting to util package by @dadav
+    - adjust error message by @dadav
+    - make sure this matches nested files by @dadav
+    - use draft 7 by @dadav
+    - clarify help by @dadav
+    - Adjust linting hints by @dadav
+    - Adjust structs field alignment by @dadav
+    - Make required field working for properties by @dadav
+    - Set type to object if properties are used by @dadav
+    - Be sure to only start on valid yaml by @dadav
+    - convert upper to lower case in help for consistency + typo by
+      @Grraahaam
+    - improve troubleshooting by @Grraahaam
+    - omit topology sorting when --no-dependencies by @Grraahaam
+    - Update dependencies by @dadav
+    - Make it possible to sort charts with same name by @dadav
+    - Update dependencies by @dadav
+    - Update deps by @dadav
+    - Adjust version and options by @dadav
+    - Should run in the end by @dadav
+    - Use alias if defined by @dadav
+    - Make newline optional by @dadav
+    - Should consider all possible types by @dadav
+    - put schema reference below document start
+    - adding empty line after yaml-language-server, keeping
+      distance from other content
+    - also remove helm-docs tags when not running with
+      dontRemoveHelmDocsPrefix
+    - remove left over #\n lines from description
+    - Use TrimPrefix instead of TrimLeft by @dadav
+    - Fail test if helm-schema fails by @dadav
+    - Adjust changed url by @dadav
+    - Add example to e2e tests by @dadav
+    - Adjust lint hints by @dadav
+    - Dupplicate charts are ok by @dadav
+    - Do not set type on items by @dadav
+    - Adjust test by @dadav
+    - Ghcr login by @dadav
+    - Permissions by @dadav
+    - Adjust workdir to /home/helm-schema by @dadav
+    - Format code by @dadav
+    - Use single lines by @dadav
+    - update module github.com/masterminds/semver/v3 to v3.3.1 by
+      @renovate[bot]
+    - update module github.com/deckarep/golang-set/v2 to v2.7.0 by
+      @renovate[bot]
+    - update module github.com/santhosh-tekuri/jsonschema/v5 to v6
+      by @renovate[bot]
+    - Use latest jsonschema version by @dadav
+    - update module github.com/magiconair/properties to v1.8.8 by
+      @renovate[bot]
+    - Check custom annotations more dynamically by @dadav
+    - update module github.com/magiconair/properties to v1.8.9 by
+      @renovate[bot]
+    - Fix some bugs, add comments by @dadav
+    - Split validation in smaller ones by @dadav
+    - update module github.com/stretchr/testify to v1.10.0 by
+      @renovate[bot]
+    - Make it work again by @dadav
+    - Decrease verbosity by @dadav
+    - Add type if not set by user by @dadav
+    - update module github.com/spf13/viper to v1.21.0 by
+      @renovate[bot]
+    - update module github.com/santhosh-tekuri/jsonschema/v6 to
+      v6.0.2 by @renovate[bot]
+    - update module github.com/magiconair/properties to v1.8.10 by
+      @renovate[bot]
+    - uniqueItems test case, must be bool by @alexwiedermann
+    - update module github.com/spf13/cobra to v1.10.1 by
+      @renovate[bot]
+    - Omit required field for non-object schema by @giovanism
+    - bug in path when using absolute by @nomalord
+    - changed naming of chart searching + archive opening by
+      @nomalord
+    - warning message for dependencies by @nomalord
+    - Claude fixed some bugs by @dadav
+    - Use buildx action by @dadav
+    - Remove deprecated goreleaser functions by @dadav
+    - Add missing steps in build workflow by @dadav
+    - update module github.com/spf13/cobra to v1.10.2 (#163) by
+      @renovate[bot]
+    - resolve deadlock issues causing 5-hour test hangs by @dadav
+    - Action secret issue fixed by @dadav
+    - Signing issue by @dadav
+    - resolve race conditions, type assertions, and convert
+      log.Fatal to error returns by @dadav
+    - Fixes #139 by @dadav
+    - update module github.com/sirupsen/logrus to v1.9.4 (#171) by
+      @renovate[bot]
+    - update PGP signing method to use clearsign format (#172) by
+      @eranor
+    - correct provenance file format by @eranor
+    - preserve indentation and flush buffer on uncommented lines
+      (#179) by @damemi
+    - Fixed various bugs and improved docs by @dadav
+    - respect @schema.root when separated from first key by blank
+      lines by @TvdW
+    - Add missing required in root schema by @dadav
+  * Chores
+    - Add cliff support by @dadav
+    - Add release notes to gitignore by @dadav
+    - Adjust goreleaser includes by @dadav
+    - Adjust renovate config by @dadav
+    - Update dependencies by @dadav
+    - Use latest version by @dadav
+    - Version++ by @dadav
+    - add github workflows by @dadav
+    - add goreleaser config by @dadav
+    - add license file by @dadav
+    - adjust comments by @dadav
+    - adjust go version in github action by @dadav
+    - adjust release tarball name by @dadav
+    - adjust workflow name by @dadav
+    - bump golang.org/x/crypto from 0.21.0 to 0.31.0 by
+      @dependabot[bot]
+    - bump versions by @dadav
+    - don't ignore values.yaml example by @Grraahaam
+    - exclude chore commits by @dadav
+    - go mod tidy by @dadav
+    - ignoring vscode files by @Grraahaam
+    - keeping original singular eol available
+    - limit arch support by @dadav
+    - pin dependencies (#168) by @renovate[bot]
+    - pin dependencies by @renovate[bot]
+    - pin orhun/git-cliff-action action to c93ef52 (#199) by
+      @renovate[bot]
+    - remove old comment by @dadav
+    - update actions/checkout action to v4 by @renovate[bot]
+    - update actions/checkout action to v5 by @renovate[bot]
+    - update actions/checkout action to v6 (#160) by @renovate[bot]
+    - update actions/checkout digest to 08eba0b by @renovate[bot]
+    - update actions/checkout digest to 93cb6ef (#158) by
+      @renovate[bot]
+    - update actions/checkout digest to de0fac2 (#180) by
+      @renovate[bot]
+    - update actions/download-artifact digest to 3e5f45b (#200) by
+      @renovate[bot]
+    - update actions/download-artifact digest to d3f86a1 by
+      @renovate[bot]
+    - update actions/setup-go action to v5 by @renovate[bot]
+    - update actions/setup-go action to v6 by @renovate[bot]
+    - update actions/setup-go digest to 3041bf5 by @renovate[bot]
+    - update actions/setup-go digest to 4b73464 (#184) by
+      @renovate[bot]
+    - update actions/setup-go digest to 4dc6199 (#159) by
+      @renovate[bot]
+    - update actions/setup-go digest to 7a3fe6c (#170) by
+      @renovate[bot]
+    - update actions/setup-go digest to d35c59a by @renovate[bot]
+    - update actions/setup-go digest to f111f33 by @renovate[bot]
+    - update actions/upload-artifact digest to 65c4c4a by
+      @renovate[bot]
+    - update actions/upload-artifact digest to 6f51ac0 by
+      @renovate[bot]
+    - update actions/upload-artifact digest to ea165f8 by
+      @renovate[bot]
+    - update alpine docker tag to v3.21 by @renovate[bot]
+    - update alpine docker tag to v3.22 by @renovate[bot]
+    - update alpine docker tag to v3.23 (#164) by @renovate[bot]
+    - update alpine:3.21 docker digest to 5405e8f by @renovate[bot]
+    - update alpine:3.21 docker digest to 56fa17d by @renovate[bot]
+    - update alpine:3.23 docker digest to 2510918 (#175) by
+      @renovate[bot]
+    - update azure/setup-helm action to v5 (#203) by @renovate[bot]
+    - update azure/setup-helm digest to 1a275c3 (#176) by
+      @renovate[bot]
+    - update crazy-max/ghaction-import-gpg action to v7 (#192) by
+      @renovate[bot]
+    - update docker/login-action action to v4 (#193) by
+      @renovate[bot]
+    - update docker/login-action digest to 5e57cd1 by
+      @renovate[bot]
+    - update docker/login-action digest to c94ce9f (#177) by
+      @renovate[bot]
+    - update docker/setup-buildx-action action to v4 (#194) by
+      @renovate[bot]
+    - update docker/setup-qemu-action action to v4 (#195) by
+      @renovate[bot]
+    - update github artifact actions (#165) by @renovate[bot]
+    - update github artifact actions (#185) by @renovate[bot]
+    - update github artifact actions by @renovate[bot]
+    - update goreleaser/goreleaser-action action to v6 by
+      @renovate[bot]
+    - update goreleaser/goreleaser-action action to v7 (#183) by
+      @renovate[bot]
+    - update goreleaser/goreleaser-action digest to e435ccd by
+      @renovate[bot]
+    - update softprops/action-gh-release digest to 153bb8e (#201)
+      by @renovate[bot]
+  * Documentation
+    - clarify how helm-schema behaves by @dadav
+    - add logo by @dadav
+    - add license info to readme by @dadav
+    - make readme prettier by @dadav
+    - add info that you need to copy the config first by @dadav
+    - add deprecated annotation by @dadav
+    - add pre-commit badget by @dadav
+    - adjust badges by @dadav
+    - add go report badge by @dadav
+    - typo by @dadav
+    - adjust flags by @dadav
+    - add aur install method by @dadav
+    - adjust readme by @dadav
+    - add missing params by @dadav
+    - update help by @dadav
+    - add limitations by @dadav
+    - improve README by @Grraahaam
+    - improve README by @Grraahaam
+    - Add missing char by @dadav
+    - Adjust description and examples by @dadav
+    - add examples to README.md by @Grraahaam
+    - add values.yaml example by @Grraahaam
+    - add pre-commit config args by @Grraahaam
+    - improve examples by @Grraahaam
+    - Add missing docs for not and required by @dadav
+    - Typo by @dadav
+    - Adjust helm plugin install comand by @dadav
+    - Add comments by @dadav
+    - Improve wording (#154) by @dadav
+    - Add comment about tpl mapping by @dadav
+    - Clarify the key must be saved in gpg format by @dadav
+  * Features
+    - add additional option by @dadav
+    - add schema embeding by @dadav
+    - patch condition property into dependency chart by @dadav
+    - use topological sort by @dadav
+    - use another jsonschema library by @dadav
+    - add SchemaOrBool type by @dadav
+    - add patternProperties and use SchemaOrBool type for
+      additionalProperies by @dadav
+    - use SchemaOrBool by @dadav
+    - add prefixedItems by @dadav
+    - add option to disable removal of helm-docs prefix by @dadav
+    - ignore sorting error by @dadav
+    - Add possibility to skip the auto-generation of fields by
+      @ubergesundheit
+    - Also make it possible to skip required field by @dadav
+    - Also make it possible to skip additionalProperties field by
+      @dadav
+    - Make $ref from external source usable (#11) by @dadav
+    - Add possibility to parse comments by @dadav
+    - Add flag to insert schema reference to values file by @dadav
+    - Support semver in dependencies by @dadav
+    - Add support for not keyword by @dadav
+    - Add readOnly and writeOnly by @dadav
+    - Support array for required field by @dadav
+    - Add e2e tests by @dadav
+    - Add e2e test for default helm values by @dadav
+    - Add container image by @dadav
+    - Add MinLength and MaxLength by @dadav
+    - Support relative files in ref by @dadav
+    - Distribute as helm plugin by @amine7536
+    - Support minItems and maxItems by @dadav
+    - Add helm-docs compatibility mode by @dadav
+    - Support yaml anchors by @dadav
+    - Add dependency filter functionality by @dadav
+    - Add tests for worker file by @dadav
+    - Add tests for errs.go by @dadav
+    - Add dont-add-global flag by @dadav
+    - Support ref in patternProperties by @dadav
+    - Support skipping of type generation by @dadav
+    - Support skipping of type generation by @dadav
+    - add support to uniqueitems by @alexwiedermann
+    - add tests; bump version by @alexwiedermann
+    - bump as minor by @alexwiedermann
+    - subchart auto-open archives by @nomalord
+    - Create arm64 image by @dadav
+    - Add signing by @dadav
+    - Add missing features by @dadav
+    - Add annotate functionality by @dadav
+    - add system pre-commit hook (#182) by @sergei-ivanov
+    - support patternProperties, definitions, and composition
+      keywords in @schema.root (#187) by @TvdW
+    - support Helm's import-values directive (#188) by @TvdW
+    - Merge found values file by @dadav
+    - Add const-from-value support by @dadav
+    - adopt pre-existing values.schema.json for dependency charts
+      (#202) by @TvdW
+  * Refactoring
+    - move test chart files into charts/ subdirectory by @TvdW
+  * Testing
+    - add tests by @dadav
+    - add test command to goreleaser config by @dadav
+    - add test of anyOf and if,then,else by @dadav
+    - use StringLoader by @dadav
+    - add test to validate the plugin signing script by @eranor
+    - add verification for signed plugin tarballs in release
+      workflow by @eranor
+    - improve verification process for plugin tarballs and
+      provenance files (#173) by @eranor
+
+-------------------------------------------------------------------
 Wed Mar 11 06:04:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.22.0:
