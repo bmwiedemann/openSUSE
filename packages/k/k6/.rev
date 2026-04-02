@@ -87,4 +87,20 @@
     <comment>update to 1.6.1</comment>
     <requestid>1333654</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6d0cdd47a9746c7828612e29720b74cf</srcmd5>
+    <version>1.7.0</version>
+    <time>1774470088</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342477</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a6aba10da5a22bbccf6c8f797ccb219c</srcmd5>
+    <version>1.7.1</version>
+    <time>1775144582</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1344285</requestid>
+  </revision>
 </revisionlist>
