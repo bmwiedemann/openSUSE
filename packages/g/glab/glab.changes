@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Apr 02 04:47:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.91.0:
+  * Features
+    - 7347ec5d: feat(duo): lock Duo CLI auto-updates to compatible
+      major version (Kai Armstrong karmstrong@gitlab.com)
+    - e60b4a84: feat: add multipart/form-data support to glab api
+      via --form flag (Kai Armstrong karmstrong@gitlab.com)
+  * Bug Fixes
+    - 2ce57436: fix: URL-encode filename in release asset
+      DirectAssetPath (Kai Armstrong karmstrong@gitlab.com)
+    - bdda0f84: fix: improve diagnostics when env-based token fails
+      auth (Kai Armstrong karmstrong@gitlab.com)
+    - 6d4c9d43: fix: improve duo cli confirm prompt UX (Kai
+      Armstrong karmstrong@gitlab.com)
+    - 44d7c10f: fix: nil pointer dereference in DisplayIssueList
+      and DisplayIssue when CreatedAt is null (Kai Armstrong
+      karmstrong@gitlab.com)
+    - dc75f9f3: fix: use /bin/sh shebang in
+      notify-issues-on-release script (Kai Armstrong
+      karmstrong@gitlab.com)
+  * Documentation
+    - 1892d844: docs: make Markdown for 'glab runner' command
+      adhere to standards (Evan Read eread@gitlab.com)
+    - 3f03c08c: docs: update command docs for Duo CLI beta release
+      (Uma Chandran uchandran@gitlab.com)
+  * Dependencies
+    - 71b960c7: chore(deps): bump golangci-lint to v2.11.4 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - d8ee4806: chore(deps): update module
+      github.com/zalando/go-keyring to v0.2.8 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 874b483b: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.11.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - a6031009: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.7.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 8bd1ac64: chore(deps): update ruby docker tag to v3.4 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 879dce24: chore: Apply 1 suggestion(s) to 1 file(s) (Evan
+      Read eread@gitlab.com)
+    - ba5fb25b: chore: add documentation review apps to project
+      (Evan Read eread@gitlab.com)
+    - b0df7324: chore: add jq to Docker image (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 8401888f: chore: adds beta string and applies it to duo cli
+      (Uma Chandran uchandran@gitlab.com)
+  * Others
+    - 0e917e36: test: reduce unit test runtime by fixing slow
+      polling and real HTTP calls (Kai Armstrong
+      karmstrong@gitlab.com)
+
+-------------------------------------------------------------------
 Tue Mar 24 05:53:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.90.0:
