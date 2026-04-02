@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Apr 02 04:48:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.98.0:
+  * New Features
+    - [jfrog-cli] Support pnpm command for jfrog-cli #3390
+      (@fluxxBot)
+    - [jfrog-cli-artifactory] Support pnpm command #393 (@fluxxBot)
+    - [jfrog-cli-artifactory] Feat: Make skills zip produce
+      deteriministic checksum #408 (@bhanurp)
+    - [jfrog-cli-artifactory] New Feat: Malicious detection &
+      deletion #411 (@bhanurp)
+    - [jfrog-cli-security] Add entitlment snippet #711 (@attiasas)
+    - [jfrog-cli-security] Malicious Code scan command #704
+      (@attiasas)
+    - [jfrog-client-go] New Feat: Detect malicious skills packages
+      #1332 (@bhanurp)
+  * Bug Fixes
+    - [build-info-go] Addressed multiples # #375 (@naveenku-jfrog)
+    - [jfrog-cli] JGC-459 - Fix environment in Frogbot workflow
+      #3405 (@cyrilc-pro)
+    - [jfrog-cli] RTECO-977 - Fix docker build skip-login #3404
+      (@fluxxBot)
+    - [jfrog-cli] fix pnpm test #3411 (@fluxxBot)
+    - [jfrog-cli-artifactory] RTECO-976 - fixed docker oom issue
+      #410 (@fluxxBot)
+    - [jfrog-cli-core] JGC-459 - Fix environment in Frogbot
+      workflow #1534 (@cyrilc-pro)
+    - [jfrog-cli-security] Fixed concurrent-map-issue #710
+      (@basel1322)
+    - [jfrog-client-go] JGC-459 - Fix environment in Frogbot
+      workflow #1331 (@cyrilc-pro)
+    - [jfrog-client-go] fix: regex parsing #1321 (@tim-goto)
+    - [jfrog-client-go] Fix: Don't treat literal dots in directory
+      names as regex metacharacters #1335 (@agrasth)
+  * Internal Changes
+    - [jfrog-cli] Update jfrog client go #3414 (@agrasth)
+    - [jfrog-cli-artifactory] Bump jfrog-cli-evidence to v0.9.0 and
+      update evidence create call #409 (@mnsboev)
+    - [jfrog-cli-core] Bump github.com/buger/jsonparser from 1.1.1
+      to 1.1.2 #1535 (@dependabot[bot])
+    - [jfrog-cli-core] Bump the github-actions group across 1
+      directory with 3 updates #1537 (@dependabot[bot])
+    - [jfrog-cli-core] Bump github.com/go-git/go-git/v5 from 5.16.5
+      to 5.17.1 #1538 (@dependabot[bot])
+    - [jfrog-cli-security] Update Xray lib to 1.3.0 #707
+      (@attiasas)
+  * Other Changes
+    - [jfrog-cli] Updated build-info-go version and huggingface
+      hidden flag as false #3408 (@naveenku-jfrog)
+    - [jfrog-cli-artifactory] Improved error message when user
+      tries to install SKILL blocked by xray #414 (@bhanurp)
+
+-------------------------------------------------------------------
 Fri Mar 27 05:57:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.97.0:
