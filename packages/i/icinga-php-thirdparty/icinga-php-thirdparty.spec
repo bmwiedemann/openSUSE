@@ -1,7 +1,7 @@
 #
 # spec file for package icinga-php-thirdparty
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global module_name icinga-php-thirdparty
 %global basedir %{_datadir}/icinga-php/vendor
 Name:           %{module_name}
-Version:        0.13.1
+Version:        0.15.2
 Release:        %{revision}%{?dist}
 Summary:        Icinga PHP Thirdparty for Icinga Web 2
 License:        MIT
@@ -29,6 +29,7 @@ URL:            https://icinga.com
 Source0:        https://github.com/Icinga/%{module_name}/archive/v%{version}/%{module_name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
+Requires:       icingaweb2 >= 2.9
 Requires:       php >= 8.2
 Requires:       php-curl
 Requires:       php-iconv
@@ -49,11 +50,8 @@ which can be integrated as library into Icinga Web 2.
 %prep
 %setup -q
 # rpmlintrc
-find vendor/shardj -type f -name "*.php" -exec chmod -x {} \;
 find vendor/predis -type f -name "*.sh" -exec chmod +x {} \;
 chmod -x vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/README
-chmod -x vendor/shardj/zf1-future/README-GIT.md
-chmod -x vendor/shardj/zf1-future/library/Zend/Locale/Data/fy.xml
 
 %build
 # noting to build
@@ -70,7 +68,7 @@ cp -vr VERSION %{buildroot}%{basedir}
 
 %files
 %doc README.md
-%license LICENSE
+%license LICENSE.md
 %dir %{_datadir}/icinga-php
 %{basedir}
 
