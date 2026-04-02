@@ -1,5 +1,6 @@
 <package name="feathernotes" project="openSUSE:Factory">
   <title>feathernotes</title>
   <description>FeatherNotes is a lightweight Qt hierarchical notes-manager for Linux.</description>
+  <devel project="X11:LXQt" package="feathernotes"/>
   <url>https://github.com/tsujan/FeatherNotes</url>
 </package>

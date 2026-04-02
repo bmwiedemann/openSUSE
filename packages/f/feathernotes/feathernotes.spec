@@ -18,7 +18,7 @@
 %global rname FeatherNotes
 
 Name:           feathernotes
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Qt-based plaintext editor
 License:        GPL-3.0-only
@@ -33,7 +33,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 
-BuildRequires:  cmake(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core) >= 6.5.0
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
@@ -64,8 +64,6 @@ Linux. It is independent of any desktop environment and has:
 * Password protection
 * Auto-saving
 * Optional spell checking with Hunspell
-
-%lang_package
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}

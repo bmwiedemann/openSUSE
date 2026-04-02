@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 28 16:42:39 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 1.4.0:
+  * Made the password protection stronger (previously it just
+    obfuscated the document).
+  * Allowed theme icons as node icons.
+  * Removed C0 control characters from the document on loading it. (Qt6
+    rejects them in a backward-incompatible way.)
+  * Fixed an asymmetry between the forward and backward
+    searches/replacements if some text was selected.
+  * Made replacing after searching easier (without needing to clear the
+    selection first).
+  * Fixed showing of ampersand in the recent files menu.
+  * Bumped the minimum version of Qt to 6.5.
+
+-------------------------------------------------------------------
 Sat Jan 24 16:18:51 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
 
 - Remove Recommends for lang package, not needed

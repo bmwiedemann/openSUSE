@@ -7,4 +7,23 @@
     <comment>New Package, compliments the LXQt desktop</comment>
     <requestid>1329009</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>73f82b9ca9bee11f3c579954a7a099fc</srcmd5>
+    <version>1.4.0</version>
+    <time>1775144483</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.0:
+  * Made the password protection stronger (previously it just
+    obfuscated the document).
+  * Allowed theme icons as node icons.
+  * Removed C0 control characters from the document on loading it. (Qt6
+    rejects them in a backward-incompatible way.)
+  * Fixed an asymmetry between the forward and backward
+    searches/replacements if some text was selected.
+  * Made replacing after searching easier (without needing to clear the
+    selection first).
+  * Fixed showing of ampersand in the recent files menu.
+  * Bumped the minimum version of Qt to 6.5.</comment>
+    <requestid>1344240</requestid>
+  </revision>
 </revisionlist>
