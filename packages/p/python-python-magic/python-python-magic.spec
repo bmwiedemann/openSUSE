@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-magic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ URL:            https://github.com/ahupp/python-magic
 Source:         https://github.com/ahupp/python-magic/archive/%{version}.tar.gz
 Patch0:         https://github.com/ahupp/python-magic/commit/4ffcd591.patch
 Patch1:         magic-file-5.45.patch
+# PATCH-FIX-OPENSUSE fix-tests-5.47 bsc#1261199
+Patch2:         fix-tests-5.47.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 12:44:57 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests-5.47.patch: fix test suite with file 5.47
+  bsc#1261199
+
+-------------------------------------------------------------------
 Tue Jun 10 13:11:58 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

@@ -156,4 +156,16 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1284474</requestid>
   </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>cdf68bfe63fb8ddf4f13883d7493b6a2</srcmd5>
+    <version>0.4.27</version>
+    <time>1775144442</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-tests-5.47.patch: fix test suite with file 5.47
+  bsc#1261199
+
+Fix tests with new file version in https://build.opensuse.org/requests/1344081
+This patch just adds the new Apache parquet file changes to tests.</comment>
+    <requestid>1344092</requestid>
+  </revision>
 </revisionlist>
