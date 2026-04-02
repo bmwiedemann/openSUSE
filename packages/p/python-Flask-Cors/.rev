@@ -120,4 +120,29 @@
 - Patch version number, issue filed upstream.</comment>
     <requestid>1274316</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cf0c3b687b947c7b2100743bc034796f</srcmd5>
+    <version>6.0.2</version>
+    <time>1775144477</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.2 (bsc#1239846, CVE-2024-6839,
+      bsc#1239847, CVE-2024-6844,
+      bsc#1239848, CVE-2024-6866):
+  * Invert regex sorting to make it correctly match the intent
+    (sorting by specificity descending) #391
+  * Path specificity ordering has changed to improve specificity.
+    This may break users who expected the previous incorrect
+    ordering.
+  * [CVE-2024-6839] Sort Paths by Regex Specificity
+  * [CVE-2024-6844] Replace use of (urllib) unquote_plus with
+    unquote
+  * [CVE-2024-6866] Case Sensitive Request Path Matching
+
+  * Breaking: Change default to disable private network access by
+    @corydolphin in #368. This effectively resolves
+    GHSA-hxwh-jpp2-84pm https://osv.dev/vulnerability/PYSEC-2024-71
+- Use pytest to run the testsuite.
+- Add patch 0001-Disable-ACL_ORIGIN-check.patch to disable failing</comment>
+    <requestid>1344234</requestid>
+  </revision>
 </revisionlist>

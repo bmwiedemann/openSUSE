@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  1 22:28:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.2 (bsc#1239846, CVE-2024-6839,
+      bsc#1239847, CVE-2024-6844,
+      bsc#1239848, CVE-2024-6866):
+  * Invert regex sorting to make it correctly match the intent
+    (sorting by specificity descending) #391
+  * Path specificity ordering has changed to improve specificity.
+    This may break users who expected the previous incorrect
+    ordering.
+  * [CVE-2024-6839] Sort Paths by Regex Specificity
+  * [CVE-2024-6844] Replace use of (urllib) unquote_plus with
+    unquote
+  * [CVE-2024-6866] Case Sensitive Request Path Matching
+
+-------------------------------------------------------------------
 Mon May  5 05:39:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0.1:
@@ -17,9 +33,9 @@ Mon May  5 05:39:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 Wed Sep 25 17:41:21 UTC 2024 - Caroline Sena <caroline.sena@suse.com>
 
 - version update to 5.0.0:
-  * Breaking: Change default to disable private network access by 
-    @corydolphin in #368. This effectively resolves 
-    GHSA-hxwh-jpp2-84pm https://osv.dev/vulnerability/PYSEC-2024-71 
+  * Breaking: Change default to disable private network access by
+    @corydolphin in #368. This effectively resolves
+    GHSA-hxwh-jpp2-84pm https://osv.dev/vulnerability/PYSEC-2024-71
 
 -------------------------------------------------------------------
 Tue Aug 13 17:14:40 UTC 2024 - Guang Yee <gyee@suse.com>
@@ -48,7 +64,7 @@ Thu Jan  6 19:06:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Nov  3 04:02:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Use pytest to run the testsuite. 
+- Use pytest to run the testsuite.
 
 -------------------------------------------------------------------
 Sun Apr  4 23:24:30 UTC 2021 - Arun Persaud <arun@gmx.de>
@@ -76,7 +92,7 @@ Tue Sep  1 09:23:10 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 -------------------------------------------------------------------
 Tue Oct 22 12:20:25 UTC 2019 - Petr Cervinka <petr@cervinka.net>
 
-- Add patch 0001-Disable-ACL_ORIGIN-check.patch to disable failing 
+- Add patch 0001-Disable-ACL_ORIGIN-check.patch to disable failing
   ACL_ORIGIN check in test (boo#1154808)
 
 -------------------------------------------------------------------
