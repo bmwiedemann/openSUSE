@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Wed Apr 01 04:40:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.149.0:
+  * [chore] update dependency (#47273)
+  * fix(deps): update module golang.org/x/sync to v0.20.0 (#47266)
+  * fix(deps): update module github.com/hetznercloud/hcloud-go/v2
+    to v2.37.0 (#47262)
+  * fix(deps): update module github.com/stretchr/testify to v1.11.1
+    (#47263)
+  * fix(deps): update module github.com/googleapis/gax-go/v2 to
+    v2.20.0 (#47260)
+  * fix(deps): update module github.com/hashicorp/go-version to
+    v1.9.0 (#47261)
+  * fix(deps): update all github.com/aws packages (#47252)
+  * fix(deps): update module github.com/elastic/go-docappender/v2
+    to v2.14.0 (#47256)
+  * fix(deps): update module cloud.google.com/go/spanner to v1.89.0
+    (#47254)
+  * fix(deps): update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.68 (#47253)
+  * chore(deps): update module github.com/rhysd/actionlint to
+    v1.7.12 (#47250)
+  * chore(deps): update actions/setup-go digest to 4a36011 (#47249)
+  * [chore] Update core dependencies (#47245)
+  * Bump github.com/go-git/go-git/v5 from 5.16.5 to 5.17.1 in
+    /internal/tools (#47240)
+  * fix(deps): update module go.opentelemetry.io/ebpf-profiler to
+    v0.0.202613 (#47153)
+  * fix(deps): update module github.com/knadh/koanf/v2 to v2.3.4
+    (#47139)
+  * fix(deps): update module github.com/klauspost/compress to
+    v1.18.5 (#47138)
+  * fix(deps): update module github.com/jackc/pgx/v5 to v5.9.1
+    (#47146)
+  * fix(deps): update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.63 (#47140)
+  * fix(deps): update all github.com/aws packages (#47143)
+  * Bump google.golang.org/grpc from 1.76.0 to 1.79.3 in
+    /internal/docker (#47111)
+  * Bump github.com/buger/jsonparser from 1.1.1 to 1.1.2 in
+    /receiver/purefbreceiver (#47112)
+  * fix(deps): update module github.com/getsentry/sentry-go to
+    v0.44.1 (#47155)
+  * Bump github.com/buger/jsonparser from 1.1.1 to 1.1.2 in
+    /exporter/prometheusexporter (#47169)
+  * Update All golang.org/x packages (#47072)
+  * fix(deps): update module github.com/antchfx/xmlquery to v1.5.1
+    (#47136)
+  * [chore] Update core dependencies (#47205)
+  * Update module github.com/goccy/go-json to v0.10.6 (#47070)
+  * Update module modernc.org/sqlite to v1.47.0 (#47080)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.7.0
+    (#47079)
+  * Update module github.com/SAP/go-hdb to v1.16.2 (#47078)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.61 (#47071)
+  * Update All github.com/aws packages (#47067)
+  * Update module github.com/elastic/go-docappender/v2 to v2.13.0
+    (#47076)
+  * Update module github.com/DeRuina/timberjack to v1.4.0 (#47075)
+  * Update module github.com/DataDog/agent-payload/v5 to v5.0.185
+    (#47069)
+  * Update module cloud.google.com/go/pubsub/v2 to v2.5.0 (#47074)
+  * Update kubernetes monorepo to v0.35.3 (#47068)
+  * Update docker-compose deps to v0.148.0 (#47073)
+  * Update dockerfile deps (#47065)
+  * Update github-actions deps (#47066)
+  * [chore] Update core dependencies (#47064)
+  * Bump google.golang.org/grpc from 1.76.0 to 1.79.3 in
+    /internal/metadataproviders (#47060)
+  * Bump github.com/buger/jsonparser from 1.1.1 to 1.1.2 in
+    /pkg/translator/faro (#47057)
+  * Bump github.com/buger/jsonparser from 1.1.1 to 1.1.2 in
+    /exporter/faroexporter (#47056)
+  * Bump github.com/buger/jsonparser from 1.1.1 to 1.1.2 in
+    /testbed (#47051)
+  * Bump github.com/buger/jsonparser from 1.1.1 to 1.1.2 in
+    /receiver/purefareceiver (#47053)
+  * Bump github.com/buger/jsonparser from 1.1.1 to 1.1.2 in
+    /internal/datadog/e2e (#47052)
+  * Update module github.com/buger/jsonparser to v1.1.2 [SECURITY]
+    (#47049)
+  * [chore] Update core dependencies (#47044)
+  * Update semconv for skywalking to latest (#45130)
+  * Bump google.golang.org/grpc from 1.76.0 to 1.79.3 in
+    /pkg/xk8stest (#47014)
+  * [chore] update github.com/edsrzf/mmap-go to support AIX
+    (#47031)
+  * [chore] update grpc to 1.79.3 (#47028)
+  * Bump google.golang.org/grpc from 1.79.2 to 1.79.3 in
+    /receiver/jmxreceiver (#47027)
+  * Bump google.golang.org/grpc from 1.79.2 to 1.79.3 in
+    /receiver/wavefrontreceiver (#47012)
+
+-------------------------------------------------------------------
 Wed Mar 18 07:11:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.148.0:
