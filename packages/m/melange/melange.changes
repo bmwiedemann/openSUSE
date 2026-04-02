@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 01 04:27:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.48.0:
+  * sca: Adjust generate{Perl,Ruby}Deps to account for non-usrmerge
+    (#2454)
+  * build(deps): bump the actions group across 1 directory with 2
+    updates (#2452)
+  * build(deps): bump the gomod group across 1 directory with 4
+    updates (#2451)
+  * sca: Generate Perl dependency (#2453)
+  * feat(qemu): optional build observability event logging (#2394)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.17.0 to
+    5.17.1 (#2449)
+  * qemu: resolve vmlinuz symlinks and try to fix them (#2445)
+
+-------------------------------------------------------------------
 Mon Mar 30 05:18:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.47.0:
