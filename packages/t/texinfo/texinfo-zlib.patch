@@ -1,24 +1,21 @@
-From 91e8a3ccdccebe95aa9ed8af39609f5c28420f6c Mon Sep 17 00:00:00 2001
-From: Jan Fooken <jan.fooken@suse.com>
-Date: Fri, 5 Sep 2025 17:08:36 +0200
-Subject: [PATCH] Fix and update internal compression patch
+From: Werner Fink <werner@suse.de>
+Date: 2004-04-21 13:02:06 +0200
+Subject: Use libzio to avoid spawning external programs in install-info
+References:
+Upstream: never
 
-This commit adds compression logic to texinfo, to handle the
-decompression of info files via zio instead of shelling out to external
-programs.  This was a previously existing patch, which was updated to
-7.2.  The previous patch contained error handling of the wrong file and
-potentially leaked the memory of the variable command.  This addresses
-these shortcomings
+This commit adds compression logic to texinfo, to handle the decompression
+of info files via zio instead of spawning external programs.
 ---
  install-info/Makefile.in    |  2 +-
  install-info/install-info.c | 43 ++++++++++++++++++++++++++-----------
  2 files changed, 32 insertions(+), 13 deletions(-)
 
-diff --git a/install-info/Makefile.in b/install-info/Makefile.in
-index cb419f9..ab81869 100644
---- a/install-info/Makefile.in
-+++ b/install-info/Makefile.in
-@@ -276,7 +276,7 @@ am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(bindir)"
+Index: texinfo-7.3/install-info/Makefile.in
+===================================================================
+--- texinfo-7.3.orig/install-info/Makefile.in
++++ texinfo-7.3/install-info/Makefile.in
+@@ -284,7 +284,7 @@ am__installdirs = "$(DESTDIR)$(bindir)"
  PROGRAMS = $(bin_PROGRAMS)
  am_ginstall_info_OBJECTS = install-info.$(OBJEXT)
  ginstall_info_OBJECTS = $(am_ginstall_info_OBJECTS)
@@ -27,19 +24,19 @@ index cb419f9..ab81869 100644
  am__DEPENDENCIES_1 =
  ginstall_info_DEPENDENCIES = $(top_builddir)/gnulib/lib/libgnu.a \
  	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
-diff --git a/install-info/install-info.c b/install-info/install-info.c
-index 3ea11fb..ee077d9 100644
---- a/install-info/install-info.c
-+++ b/install-info/install-info.c
-@@ -19,6 +19,7 @@
- #include <getopt.h>
- #include <regex.h>
- #include <argz.h>
+Index: texinfo-7.3/install-info/install-info.c
+===================================================================
+--- texinfo-7.3.orig/install-info/install-info.c
++++ texinfo-7.3/install-info/install-info.c
+@@ -26,6 +26,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
 +#include <zio.h>
  
- #define TAB_WIDTH 8
  
-@@ -827,23 +828,41 @@ determine_file_type:
+ /* From gnulib */
+@@ -838,23 +839,42 @@ determine_file_type:
  
    if (*compression_program)
      {
@@ -73,6 +70,7 @@ index 3ea11fb..ee077d9 100644
 -          return 0;
 +          /* Redirect stdin to the file and fork the decompression process
 +             reading from stdin.  This allows shell metacharacters in filenames. */
++
 +          FILE *f2 = freopen (*opened_filename, FOPEN_RBIN, stdin);
 +          if (!f2)
 +            return 0;
@@ -93,6 +91,3 @@ index 3ea11fb..ee077d9 100644
      }
    else
      {
--- 
-2.51.0
-

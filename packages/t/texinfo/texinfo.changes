@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Tue Mar 31 15:09:54 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
+
+- Update to version 7.3 (02 March 2026):
+  * Language
+    . new commands for title page creation: @documentinfo, @publication,
+      and @maketitle.  you can use these instead of explicit formatting
+      inside @titlepage.
+    . you can use heading commands such as @heading after @node.  nodes
+      defined this way are not part of the chapter structure of the document
+      (unlike if @section etc. were used).
+    . new command @xrefname can follow @node in place of a heading command.
+      this is for when you do not want any heading at all to be displayed.
+    . new command @namedanchor for defining text to be used for a cross-
+      reference to an anchor (with @xrefautomaticsectiontitle on)
+    . new command @thispart to print part name in headings or footings
+    . deprecate @clickstyle
+    . if there is no @documentlanguage, the language is unspecified, rather
+      than en_US.  (texi2any will still use English strings by default,
+      but will not put en_US in the output, depending on output format.)
+
+  * texi2any
+    . texi2any uses the Perl extensions in C for converters when possible,
+      which results in a large speed-up for HTML output.
+      set the `TEXINFO_XS_CONVERT' environment variable to 0 for pure Perl.
+    . optional experimental texi2any program implementation in C embedding Perl.
+      use --enable-using-c-texi2any to prefer the C implementation.
+    . report leading directory components of input file names in messages
+      (this reverses 6.8 release change, 2021).
+    . when CHECK_NORMAL_MENU_STRUCTURE is on, give the line number of the
+      problem menu entry
+    . DUMP_TREE should now be a file name, or - to output to standard error
+    . remove USE_REL_REV variable; former effect is now always on
+    . (API only) rename LINKS_BUTTONS customization variable to LINKS_DIRECTIONS
+    . (API only) rename space direction ' ' to 'Space'
+    . HTML output:
+        . the HIGHLIGHT_SYNTAX variable can be used for syntax highlighting
+          of code samples.  this feature was present in earlier releases but
+          is no longer marked as experimental.
+        . do not wrap the contents of <style> elements in an HTML comment,
+          as this is no longer needed for browser compatibility
+        . the --transliterate-file-names option (which sets the
+          TRANSLITERATE_FILE_NAMES variable) is now off by default.
+        . when creating redirection files with --node-files (the default),
+          ignore the settings of TRANSLITERATE_FILE_NAMES, BASEFILENAME_LENGTH,
+          and EXTENSION.
+        . likewise, ignore these variables for links to external manuals
+          (they are still used for the file names generated for the
+          converted manual content).
+        . the default setting of WORDS_IN_PAGE has changed from 300 to 200.
+          this means that a navigation panel is more likely to be output at
+          the bottom of fairly short nodes.
+        . use the last @printindex in the input file for the Index direction
+        . only output 'accesskey' attributes when splitting by node
+        . for locations of external manuals, use files ending with the
+          .cnf extension in the htmlxref.d directories (in addition to files
+          called htmlxref.cnf).  this should make it easier to combine
+          information on HTML cross-references from different sources.
+        . in an htmlxref file, you can explicity trigger a link to a local
+          manual by using an empty URL
+        . you can set FORMAT_MENU to 'menu_no_detailmenu' to omit an
+          automatically generated @detailmenu from the Top node
+        . info.js (with INFO_JS_DIR) fixes and improvements:
+            . avoid pop-up over Top node and display the correct title
+        . --internal-links outputs more types of internal link, including
+          anchors, sections and floats.  the possible type names reported
+          in the second column have changed.
+        . USE_NEXT_HEADING_FOR_LONE_NODE removed.  former effect is now
+          always on.
+        . (API only) remove the buttons specifications with scalar references,
+          direction text or functions references should be used instead
+        . (API only) remove the Texinfo::TeX4HT customization package
+    . Info output:
+        . new experimental variable INFO_MATH_IMAGES allows outputting
+          images for mathematics notation
+    . LaTeX output:
+        . use UTF-8 encoding for output by default, regardless of input
+          encoding.  override with OUTPUT_ENCODING_NAME.
+    . XML output:
+        . use HTML entities names for @H and @dotaccent accents types
+
+  * texinfo.tex
+    . add entries in PDF outline for index initials
+    . use Unicode in PDF outline for input documents encoded in UTF-8
+    . '@set xrefautomaticsectiontitle on' does not affect cross-references
+       to anchors, matching the HTML output
+    . separate adjacent footnote markers with commas, e.g. '1, 2' not '1 2'
+
+  * info
+    . you can use hook scripts to handle an info manual not being found.
+      these hooks can provide a message to the user with information on
+      how to install the manual.
+    . when run as 'info TOPIC INDEX-ENTRY', prefer index entries that
+      refer to the node that would be loaded by 'info TOPIC'.  this aids
+      in retrieving documentation of command-line options when multiple
+      programs are documented in the same manual.
+      for example, 'info cp -- -s' goes to the documentation of the -s
+      option for the cp program in the coreutils manual, rather than the
+      -s option of any other program.
+    . list all customizable variables in help buffer including how they
+      got their values
+    . reuse introductory text in dir file rather than supplying our own text,
+      as was the case in older version of info and is the case in Emacs
+    . removed fallback if a node is not found in a cross-reference to
+      searching for a file of the same name.  e.g. "* Foo::" in a menu
+      would go to a file called "Foo", if no node called "Foo" was found.
+      now only the node is looked for.
+    . new variable 'raw-utf8-output' supports viewing UTF-8 Info files
+      on MS-Windows
+
+  * Distribution
+    . automake 1.18.1, autoconf 2.72, gettext 0.26, libtool 2.5.4
+    . support for DJGPP removed
+- Rebase and correct the header of texinfo-zlib.patch
+- Recommend the Perl module Archive::Zip for makeinfo
+- Recommend a man implementation, as it can be used by makeinfo
+- Require at least gawk 4.0 during build
+- Require at least Perl 5.8.1 during build and runtime
+- Remove perl modules included in Perl's standard distribution
+- Explicitly require a POSIX shell
+- Replace the %requires_eq macro with the %perl_requires macro, as
+  the former is removed from upstream RPM
+- Remove patch texinfo-perl-5.42.patch, which is now upstream
+
+-------------------------------------------------------------------
 Wed Sep 17 09:13:21 UTC 2025 - Jan Fooken <jan.fooken@suse.com>
 
 - Move htmlxref.cnf to makeinfo package, as it is used by texi2any

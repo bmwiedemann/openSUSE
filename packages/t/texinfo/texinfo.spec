@@ -1,7 +1,7 @@
 #
 # spec file for package texinfo
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,40 +19,49 @@
 # perl modules are not installed in global path
 %global __provides_exclude ^perl\\(
 Name:           texinfo
-Version:        7.2
+Version:        7.3
 Release:        0
 Summary:        Tools for creating documentation from texinfo sources
 License:        GPL-3.0-or-later
 URL:            https://www.gnu.org/software/texinfo/
 Source0:        https://ftp.gnu.org/pub/gnu/texinfo/texinfo-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/pub/gnu/texinfo/texinfo-%{version}.tar.xz.sig
+# All GPG keys from the maintainers are available at https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=texinfo&download=1
 Source2:        %{name}.keyring
 Source42:       %{name}-rpmlintrc
 Patch0:         texinfo-zlib.patch
 Patch1:         install-info_exitcode.patch
-Patch2:         texinfo-perl-5.42.patch
-BuildRequires:  gawk
+BuildRequires:  gawk >= 4.0
 BuildRequires:  glibc-locale
 BuildRequires:  help2man
 BuildRequires:  libbz2-devel
 BuildRequires:  libzio-devel >= 1.09
 BuildRequires:  ncurses-devel
-BuildRequires:  perl
+BuildRequires:  perl >= 5.8.1
 BuildRequires:  perl-macros
 BuildRequires:  zlib-devel
+BuildRequires:  perl(Archive::Zip)
+# Testing dependencies
 BuildRequires:  perl(Data::Compare)
-BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(Test::Deep)
-BuildRequires:  perl(Unicode::Normalize)
+# Proxy for {,busybox-}gawk
 Requires:       /usr/bin/awk
+# Proxies for {,busybox-}coreutils
+Requires:       /usr/bin/cat
+Requires:       /usr/bin/uniq
+# Proxies for {,busybox-}diffutils
 Requires:       /usr/bin/cmp
 Requires:       /usr/bin/diff
+# Proxy for {,busybox-}grep
 Requires:       /usr/bin/grep
+# Proxy for {,busybox-}sed
 Requires:       /usr/bin/sed
+# Proxy for {bash,busybox}-sh
+Requires:       /usr/bin/sh
+# Proxy for {,busybox-}tar
 Requires:       /usr/bin/tar
-Requires:       /usr/bin/uniq
 Requires:       makeinfo = %{version}
-Requires:       perl
+Requires:       perl >= 5.8.1
 Requires:       texlive-biber
 Requires:       texlive-bibtex
 Requires:       texlive-dvipdfmx
@@ -62,9 +71,9 @@ Requires:       texlive-makeindex
 Requires:       texlive-pdftex
 Requires:       texlive-tex
 Requires:       texlive-texinfo
-Requires:       perl(Encode)
-Requires:       perl(File::Spec)
+# Recommended as users are used to them being installed
 Recommends:     texi2html
+# Recommended as users are used to them being installed
 Recommends:     texi2roff
 Recommends:     texlive-thumbpdf
 
@@ -81,6 +90,7 @@ makeinfo tool.
 Summary:        A Stand-Alone Terminal-Based Info Browser
 Requires:       /usr/bin/gunzip
 Requires:       /usr/bin/gzip
+Recommends:     /usr/bin/man
 Recommends:     info-lang = %{version}
 
 %description -n info
@@ -102,12 +112,12 @@ reader" to read the manuals.
 
 %package     -n makeinfo
 Summary:        Translator for converting texinfo documents to info format
+# Keep in sync with perl-libintl-perl
 Requires:       gettext-runtime >= 0.12.2
-Requires:       perl(Encode)
-Requires:       perl(File::Spec)
-Requires:       perl(Unicode::Normalize)
+Recommends:     perl(Archive::Zip)
 Recommends:     perl(File::ShareDir)
-%requires_eq    perl
+Requires:       perl
+%perl_requires
 Suggests:       texinfo
 Provides:       texinfo:%{_bindir}/makeinfo
 Recommends:     info-lang = %{version}
@@ -126,7 +136,9 @@ or standalone GNU Info.
 
 %build
 %configure \
-	--enable-perl-xs
+	--enable-additional-checks \
+	--enable-perl-xs \
+	--enable-t2a-tests
 %make_build
 
 %install
@@ -134,13 +146,13 @@ or standalone GNU Info.
 rm -f %{buildroot}%{_libdir}/texi2any/*.a
 if cmp  %{buildroot}%{_bindir}/pdftexi2dvi %{buildroot}%{_bindir}/texi2pdf
 then
-    rm -vf %{buildroot}%{_bindir}/pdftexi2dvi
-    ln -sf texi2pdf %{buildroot}%{_bindir}/pdftexi2dvi
+	rm -vf %{buildroot}%{_bindir}/pdftexi2dvi
+	ln -sf texi2pdf %{buildroot}%{_bindir}/pdftexi2dvi
 fi
 if cmp  %{buildroot}%{_mandir}/man1/pdftexi2dvi.1 %{buildroot}%{_mandir}/man1/texi2pdf.1
 then
-    rm -vf %{buildroot}%{_mandir}/man1/pdftexi2dvi.1
-    ln -sf texi2pdf.1%{?ext_man} %{buildroot}%{_mandir}/man1/pdftexi2dvi.1%{?ext_man}
+	rm -vf %{buildroot}%{_mandir}/man1/pdftexi2dvi.1
+	ln -sf texi2pdf.1%{?ext_man} %{buildroot}%{_mandir}/man1/pdftexi2dvi.1%{?ext_man}
 fi
 
 # For SUSE systems pre 15.5, install to /sbin, otherwise install to /usr/sbin
@@ -160,21 +172,25 @@ ln -sf ../sbin/install-info %{buildroot}%{_bindir}/install-info
 %check
 make %{?_smp_mflags} check
 
+%post -n makeinfo -p /sbin/ldconfig
+
+%postun -n makeinfo -p /sbin/ldconfig
+
 %global trigger_functions %{expand:
 -- Check if rpm.execute() as function call is given
 if type(rpm.execute) == "function" then
-   execute = rpm.execute
+	   execute = rpm.execute
 else
-  function execute(path, ...)
-    local pid = posix.fork()
-    if not pid then
-       error(path .. ": fork failed: " .. posix.errno() .. "\n")
-    elseif pid == 0 then
-       assert(posix.exec(path, ...))
-    else
-       posix.wait(pid)
-    end
-  end
+	function execute(path, ...)
+		local pid = posix.fork()
+		if not pid then
+			error(path .. ": fork failed: " .. posix.errno() .. "\n")
+		elseif pid == 0 then
+			assert(posix.exec(path, ...))
+		else
+			posix.wait(pid)
+		end
+	end
 end
 --
 }
@@ -187,13 +203,13 @@ end
 %trigger_functions
 file = rpm.next_file()
 while file do
-    if string.match(file, "%%.info%%%{ext_info}$") then
-	stat = posix.stat(file)
-	if stat then
-	    execute("%{_bindir}/install-info", "--info-dir=%{_infodir}", file)
+	if string.match(file, "%%.info%%%{ext_info}$") then
+		stat = posix.stat(file)
+		if stat then
+		    execute("%{_bindir}/install-info", "--info-dir=%{_infodir}", file)
+		end
 	end
-    end
-    file = rpm.next_file()
+	file = rpm.next_file()
 end
 
 %if 0%{?suse_version} >= 1699
@@ -204,13 +220,13 @@ end
 %trigger_functions
 file = rpm.next_file()
 while file do
-    if string.match(file, "%%.info%%%{ext_info}$") then
-	stat = posix.stat(file)
-	if not stat then
-	    execute("%{_bindir}/install-info", "--quiet", "--delete", "--info-dir=%{_infodir}", file)
+	if string.match(file, "%%.info%%%{ext_info}$") then
+		stat = posix.stat(file)
+		if not stat then
+		    execute("%{_bindir}/install-info", "--quiet", "--delete", "--info-dir=%{_infodir}", file)
+		end
 	end
-    end
-    file = rpm.next_file()
+	file = rpm.next_file()
 end
 
 %files
@@ -240,6 +256,8 @@ end
 %{_bindir}/texi2any
 %{_infodir}/texi2any_api.info%{ext_info}
 %{_infodir}/texi2any_internals.info%{ext_info}
+%{_infodir}/texi2any_internals.info-1%{ext_info}
+%{_infodir}/texi2any_internals.info-2%{ext_info}
 %{_mandir}/man1/makeinfo.1%{?ext_man}
 %{_mandir}/man1/texi2any.1%{?ext_man}
 %{_libdir}/texi2any
