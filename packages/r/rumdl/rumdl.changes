@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Apr 02 10:34:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.65:
+  * Added
+    - config: add extends field for config inheritance (abc0971)
+    - lsp: add enableLinkNavigation config option (7384ff0)
+  * Fixed
+    - lint_context: detect math blocks inside blockquotes (b72158f)
+    - lint_context: suppress list detection inside math blocks
+      (30f4ae0)
+    - md063: capitalize words following period-terminated tokens in
+      title case (4d03cc9)
+
+-------------------------------------------------------------------
+Wed Apr 01 04:41:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.64:
+  * Added
+    - lsp: add enableLinkNavigation config option (3056d7c)
+  * Fixed
+    - md063: capitalize words following period-terminated tokens in
+      title case (0adc21f)
+- Update to version 0.1.63:
+  * Added
+    - md013: treat parentheticals as semantic units in
+      semantic-line-breaks reflow (c250d34)
+  * Fixed
+    - md013: protect parenthetical groups from break-word splits
+      and premature merging (48e32aa)
+    - md013: attach trailing clause punctuation to closing paren in
+      slb reflow (4dc60fd)
+    - make empty CHANGELOG entry a hard error in release
+      verification (875bff7)
+
+-------------------------------------------------------------------
+Fri Mar 27 11:47:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.62:
+  * Added
+    - config: Support markdownlint-cli2 configuration format — the
+      config: wrapper key is automatically detected and unwrapped
+      (#547)
+    - config: Auto-discover .markdownlint-cli2.jsonc,
+      .markdownlint-cli2.yaml, and .markdownlint-cli2.yml config
+      files with correct precedence over plain .markdownlint.*
+      files
+  * Fixed
+    - MD057: Reset file existence cache in cross_file_check() to
+      prevent stale LSP diagnostics after fixing broken links
+      (#548)
+
+-------------------------------------------------------------------
 Fri Mar 27 06:00:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.61:
