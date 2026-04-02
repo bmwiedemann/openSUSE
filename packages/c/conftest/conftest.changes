@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 02 04:35:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.68.0:
+  * New Features
+    - a604f55: feat(parser): Add nginx parser (#1289) (@jalseth)
+  * Bug Fixes
+    - 487a2e1: fix: Skip extensionless files that are not
+      recognized types (#1302) (@ricardbejarano)
+  * OPA Changes
+    - 472e4e3: build(deps): bump github.com/open-policy-agent/opa
+      from 1.14.1 to 1.15.1 (#1303) (@dependabot[bot])
+  * Other Changes
+    - 6d521ef: build(deps): bump github.com/google/go-jsonnet from
+      0.21.0 to 0.22.0 (#1299) (@dependabot[bot])
+    - 2d5f1c2: build(deps): bump github.com/moby/buildkit from
+      0.28.0 to 0.29.0 (#1306) (@dependabot[bot])
+
+-------------------------------------------------------------------
 Tue Mar 31 10:40:14 UTC 2026 - Robert Munteanu <rombert@apache.org>
 
 - CVE-2026-33747: Malicious frontend can cause file escape outside of storage root
