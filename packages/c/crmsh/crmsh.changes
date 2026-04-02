@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr 02 09:48:36 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260402.90d08295:
+  * Dev: behave: Add functional test case for previous commit
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: And check and fix methods for fence_sbd pcmk_delay_max and crashdump parameter
+
+-------------------------------------------------------------------
+Thu Apr 02 09:04:04 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260402.f2dfba7d:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: bootstrap: Reject setup sbd stage if cluster is not quorate
+  * Dev: ui_sbd: Rename SBD.check_timeout_configurations to SBD.check_sbd_health
+  * Dev: sbd: Add diskless SBD warning while doing sbd health check
+
+-------------------------------------------------------------------
+Thu Apr 02 06:45:43 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260402.66548890:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: doc: Update the formular to calculate the expected fencing-watchdog-timeout
+  * Fix: sbd: Update the formular to calculate the expected fencing-watchdog-timeout
+
+-------------------------------------------------------------------
 Wed Apr 01 07:06:29 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.0.0+20260401.827507a4:
