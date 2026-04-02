@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Apr  1 19:56:59 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.67.2:
+  - Client Improvements
+    - Added Expose support to embed library. #5695
+    - Persisted service install parameters across reinstalls. #5732
+    - Fixed Exit Node submenu separator accumulation on Windows.
+      #5691
+    - Fixed Android DNS routes lost after TUN rebuild. #5739
+    - Fixed flaky TestUpdateOldManagementURL in CI. #5703
+    - Fixed path join issue in Windows tests. #5762
+    - Fixed IPv6 address handling in QUIC server. #5763
+    - Refactored Android PeerInfo to use ConnStatus enum. #5644
+    - Added support for embed.Client on Android with netstack mode.
+      #5623
+  - Management Improvements
+    - Added notification endpoints. #5590
+    - Added terminated field to services. #5700
+    - Extended blackbox tests. #5699
+    - Updated to latest gRPC version. #5716
+    - Prevented events for temporary peers. #5719
+    - Persisted proxy capabilities to database. #5720
+    - Added FleetDM API spec support. #5597
+    - Added target user account validation. #5741
+    - Improved permission validation for posture check delete.
+      #5742
+    - Removed client secret from gRPC auth flow. #5751
+    - Fixed panic on management reboot. #5759
+    - Added legacy to embedded IdP migration tool. #5586
+    - Fixed race condition in setup flow allowing multiple owners.
+      #5754
+  - Proxy Enhancements
+    - Added pprof support for proxy debugging. #5764
+  - Security & Stability
+    - Added path traversal and file size protections. #5755
+  - Self-Hosted Improvements
+    - Added self-hosted scaling note. #5769
+  - Miscellaneous
+    - Added missing OpenAPI definitions. #5690
+    - Updated Contributor License Agreement document. #5131
+    - Set permissions on env file for getting started scripts.
+      #5761
+- refresh service-install-cli-change.patch
+
+-------------------------------------------------------------------
 Sun Mar 29 18:42:52 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Update to 0.67.1:

@@ -1,8 +1,8 @@
-Index: netbird/client/cmd/login.go
-===================================================================
---- netbird.orig/client/cmd/login.go
-+++ netbird/client/cmd/login.go
-@@ -82,9 +82,16 @@ func doDaemonLogin(ctx context.Context,
+diff --git a/client/cmd/login.go b/client/cmd/login.go
+index 4521a67c..fe28f34a 100644
+--- a/client/cmd/login.go
++++ b/client/cmd/login.go
+@@ -81,9 +81,16 @@ func doDaemonLogin(ctx context.Context, cmd *cobra.Command, providedSetupKey str
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
  		//nolint
@@ -22,11 +22,11 @@ Index: netbird/client/cmd/login.go
  	}
  	defer conn.Close()
  
-Index: netbird/client/cmd/root.go
-===================================================================
---- netbird.orig/client/cmd/root.go
-+++ netbird/client/cmd/root.go
-@@ -391,9 +391,16 @@ func getClient(cmd *cobra.Command) (*grp
+diff --git a/client/cmd/root.go b/client/cmd/root.go
+index aa5b98df..19aa1e57 100644
+--- a/client/cmd/root.go
++++ b/client/cmd/root.go
+@@ -401,9 +401,16 @@ func getClient(cmd *cobra.Command) (*grpc.ClientConn, error) {
  	conn, err := DialClientGRPCServer(cmd.Context(), daemonAddr)
  	if err != nil {
  		//nolint
@@ -46,10 +46,10 @@ Index: netbird/client/cmd/root.go
  	}
  
  	return conn, nil
-Index: netbird/client/cmd/service_installer.go
-===================================================================
---- netbird.orig/client/cmd/service_installer.go
-+++ netbird/client/cmd/service_installer.go
+diff --git a/client/cmd/service_installer.go b/client/cmd/service_installer.go
+index 28770ea1..004f9176 100644
+--- a/client/cmd/service_installer.go
++++ b/client/cmd/service_installer.go
 @@ -4,7 +4,7 @@ package cmd
  
  import (
@@ -74,12 +74,16 @@ Index: netbird/client/cmd/service_installer.go
  // Common service command setup
  func setupServiceCommand(cmd *cobra.Command) error {
  	SetFlagsFromEnvVars(rootCmd)
-@@ -115,29 +123,7 @@ var installCmd = &cobra.Command{
+@@ -115,37 +123,7 @@ var installCmd = &cobra.Command{
  	Use:   "install",
  	Short: "Install NetBird service",
  	RunE: func(cmd *cobra.Command, args []string) error {
 -		if err := setupServiceCommand(cmd); err != nil {
 -			return err
+-		}
+-
+-		if err := loadAndApplyServiceParams(cmd); err != nil {
+-			cmd.PrintErrf("Warning: failed to load saved service params: %v\n", err)
 -		}
 -
 -		svcConfig, err := createServiceConfigForInstall()
@@ -99,13 +103,17 @@ Index: netbird/client/cmd/service_installer.go
 -			return fmt.Errorf("install service: %w", err)
 -		}
 -
+-		if err := saveServiceParams(currentServiceParams()); err != nil {
+-			cmd.PrintErrf("Warning: failed to save service params: %v\n", err)
+-		}
+-
 -		cmd.Println("NetBird service has been installed")
 -		return nil
 +		return fmt.Errorf("%s", disabledMessage)
  	},
  }
  
-@@ -145,35 +131,7 @@ var uninstallCmd = &cobra.Command{
+@@ -153,35 +131,7 @@ var uninstallCmd = &cobra.Command{
  	Use:   "uninstall",
  	Short: "uninstalls NetBird service from system",
  	RunE: func(cmd *cobra.Command, args []string) error {
@@ -142,12 +150,16 @@ Index: netbird/client/cmd/service_installer.go
  	},
  }
  
-@@ -183,56 +141,7 @@ var reconfigureCmd = &cobra.Command{
+@@ -191,64 +141,7 @@ var reconfigureCmd = &cobra.Command{
  	Long: `Reconfigures the NetBird service with new settings without manual uninstall/install.
  This command will temporarily stop the service, update its configuration, and restart it if it was running.`,
  	RunE: func(cmd *cobra.Command, args []string) error {
 -		if err := setupServiceCommand(cmd); err != nil {
 -			return err
+-		}
+-
+-		if err := loadAndApplyServiceParams(cmd); err != nil {
+-			cmd.PrintErrf("Warning: failed to load saved service params: %v\n", err)
 -		}
 -
 -		wasRunning, err := isServiceRunning()
@@ -185,6 +197,10 @@ Index: netbird/client/cmd/service_installer.go
 -			return fmt.Errorf("install service with new config: %w", err)
 -		}
 -
+-		if err := saveServiceParams(currentServiceParams()); err != nil {
+-			cmd.PrintErrf("Warning: failed to save service params: %v\n", err)
+-		}
+-
 -		if wasRunning {
 -			cmd.Println("Starting NetBird service...")
 -			if err := s.Start(); err != nil {
@@ -200,11 +216,11 @@ Index: netbird/client/cmd/service_installer.go
  	},
  }
  
-Index: netbird/client/cmd/status.go
-===================================================================
---- netbird.orig/client/cmd/status.go
-+++ netbird/client/cmd/status.go
-@@ -125,9 +125,16 @@ func getStatus(ctx context.Context, shou
+diff --git a/client/cmd/status.go b/client/cmd/status.go
+index c35a06eb..b5d6196b 100644
+--- a/client/cmd/status.go
++++ b/client/cmd/status.go
+@@ -143,9 +143,16 @@ func getStatus(ctx context.Context, fullPeerStatus bool, shouldRunProbes bool) (
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
  		//nolint
@@ -224,11 +240,11 @@ Index: netbird/client/cmd/status.go
  	}
  	defer conn.Close()
  
-Index: netbird/client/cmd/up.go
-===================================================================
---- netbird.orig/client/cmd/up.go
-+++ netbird/client/cmd/up.go
-@@ -217,9 +217,16 @@ func runInDaemonMode(ctx context.Context
+diff --git a/client/cmd/up.go b/client/cmd/up.go
+index f5766522..fbf7cdc5 100644
+--- a/client/cmd/up.go
++++ b/client/cmd/up.go
+@@ -217,9 +217,16 @@ func runInDaemonMode(ctx context.Context, cmd *cobra.Command, pm *profilemanager
  	conn, err := DialClientGRPCServer(ctx, daemonAddr)
  	if err != nil {
  		//nolint
