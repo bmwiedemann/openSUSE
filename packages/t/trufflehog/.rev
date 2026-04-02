@@ -2687,4 +2687,20 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
     <comment>update to 3.94.0 (forwarded request 1341659 from ojkastl_buildservice)</comment>
     <requestid>1341745</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>81105ff11c98984400f921cd20171163</srcmd5>
+    <version>3.94.1</version>
+    <time>1774555925</time>
+    <user>anag_factory</user>
+    <comment>update to 3.94.1 (forwarded request 1342669 from ojkastl_buildservice)</comment>
+    <requestid>1342924</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>b29ee4e827aab6a1805e9d69c24ffa55</srcmd5>
+    <version>3.94.2</version>
+    <time>1775144661</time>
+    <user>anag_factory</user>
+    <comment>update to 3.94.2 (forwarded request 1344255 from ojkastl_buildservice)</comment>
+    <requestid>1344350</requestid>
+  </revision>
 </revisionlist>

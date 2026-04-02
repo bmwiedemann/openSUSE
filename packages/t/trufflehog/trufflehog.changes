@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 02 04:45:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.94.2:
+  * Re-enabled TestAPKHandler test and updated artifact url (#4856)
+  * Updated google.golang.org/grpc v1.78.0 --> v1.79.3 (#4852)
+  * Add Shopify OAuth Detector (#4738)
+  * todoist: replace deprecated verification endpoint (#4828)
+  * updated detectors.proto and made protos (#4853)
+  * fix: replace release-guard workflow with revert-latest job (#4838)
+  * skipping TestAPKHandler because the apk file being used in this test is unavailable (#4841)
+
+-------------------------------------------------------------------
+Thu Mar 26 05:47:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.94.1:
+  * use struct-based SourceMetadataFunc signature across git sources (#4813)
+
+-------------------------------------------------------------------
 Sat Mar 21 07:34:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.94.0:
