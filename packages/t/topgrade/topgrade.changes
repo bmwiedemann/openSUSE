@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Apr 02 11:48:36 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.2.1:
+  * chore: release v17.2.1 (#1900)
+  * ci(release): do not publish immutable release with partial assets (#1901)
+  * docs: remove note about 'no asset found' errors (#1899)
+
+-------------------------------------------------------------------
+Thu Apr 02 11:38:14 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.2.0:
+  * chore: release v17.2.0 (#1847)
+  * chore(deps): update github/codeql-action action to v4.35.1 (#1891)
+  * chore(deps): update dtolnay/rust-toolchain digest to 3c5f7ea (#1893)
+  * chore(deps): lock file maintenance (#1894)
+  * chore(deps): update rust crate clap_mangen to 0.3 (#1892)
+  * chore(deps): update dependency rust to v1.94.1 (#1887)
+  * chore(pyproject): remove deprecated license classifier (#1889)
+  * docs(pr template): ask to test steps explicitly (#1886)
+  * feat(claude code): add plugin updates (#1879)
+  * feat(step): add getnf (#1874)
+  * chore(pre-commit): autoupdate (#1878)
+  * feat: don't set TOPGRADE_YES and TOPGRADE_CLEANUP at all instead of setting to 0 (#1876)
+  * chore(deps): lock file maintenance (#1873)
+  * chore(deps): update github/codeql-action action to v4.34.1 (#1867)
+  * feat: expose TOPGRADE_YES and TOPGRADE_CLEANUP env vars for custom commands (#1869)
+  * feat(step): add Microsoft Office auto update on macOS (#1865)
+  * chore(pre-commit): autoupdate (#1864)
+  * chore(deps): lock file maintenance (#1861)
+  * chore(deps): update github/codeql-action action to v4.33.0 (#1863)
+  * chore(deps): update swatinem/rust-cache action to v2.9.1 (#1854)
+  * chore(deps): update vmactions/openbsd-vm action to v1.3.7 (#1858)
+  * fix(deb-get): skip redundant apt operations (#1855)
+  * feat(step): add windsurf (#1859)
+  * ci(release): enable immutable releases (#1857)
+  * docs(installation): add Alpine (#1853)
+  * chore(deps): update actions/download-artifact action to v8.0.1 (#1848)
+  * chore(deps): update swatinem/rust-cache action to v2.9.0 (#1850)
+  * docs: update pull request template (#1851)
+  * fix(protonplus): fix display name capitalization (#1846)
+- Update to version 17.1.0:
+  * chore: release v17.1.0 (#1831)
+  * fix(gearlever): skip update prompt when no updates exist (#1844)
+  * feat(step): add skills for skills.sh (#1843)
+  * chore(deps): lock file maintenance (#1836)
+  * feat(step): add Colima (#1840)
+  * chore(deps): update rust crate self_update_crate to 0.43 (#1837)
+  * chore(deps): partial lock file update (#1839)
+  * refactor(build.rs): add descriptive error when current version is missing from changelog (#1834)
+  * chore(deps): update rust crate jetbrains-toolbox-updater to v6 (#1833)
+  * refactor: replace matches! with if let where possible (#1832)
+  * chore(deps): update release-plz/action action to v0.5.128 (#1829)
+
+-------------------------------------------------------------------
 Sat Mar 07 10:14:45 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.0.0:
