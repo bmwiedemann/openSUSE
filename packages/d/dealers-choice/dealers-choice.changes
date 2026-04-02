@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  2 09:05:02 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+  * Drop cmake build dependency (no longer needed for miniaudio) 
+
+-------------------------------------------------------------------
 Wed Apr 01 09:20:16 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
 
 - dealers-choice 0.0.11:
