@@ -1,0 +1,678 @@
+-------------------------------------------------------------------
+Tue Mar 31 05:04:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.45.0:
+  This release introduces support for agent tool approval states
+  and includes significant internal architectural refactoring to
+  improve code maintainability across the Git service and
+  application handlers.
+  * Features
+    - Added support for agent tool approval states to better track
+      when agents are waiting for tool execution results.
+    - Improved Claude CLI process matching and recursive session
+      discovery for nested file structures.
+  * Bug Fixes
+    - Fixed an issue where tmux session commands could target
+      similarly named sessions by implementing exact matching for
+      session lookups. (#33)
+  * Maintenance / Refactoring
+    - Reorganized Git service logic by splitting GitHub, GitLab,
+      CI, and worktree-specific code into dedicated modules.
+    - Refactored monolithic application handlers into focused files
+      based on features such as navigation, filtering, search, and
+      operations.
+    - Modularized configuration loading by separating custom
+      commands, themes, and keybinding logic.
+    - Extracted release notes generation into a standalone script
+      for better local testing and updated the underlying AI model
+      integration.
+    - Restructured the test suite to match the new modular
+      architecture, improving test navigation and coverage
+      tracking.
+  * Dependencies
+    - Updated Brew cask distribution to version 1.44.0.
+
+-------------------------------------------------------------------
+Fri Mar 20 06:46:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.44.0:
+  This release introduces a unified worktree metadata menu,
+  comprehensive JSON output support for CLI commands to aid
+  automation, and improved browser integrations. It also includes
+  an important breaking change to action IDs for keybinding
+  configurations to prevent pane collisions and make configurations
+  self-documenting.
+  * Features
+    - Unified Metadata Menu: Added a new worktree metadata menu
+      (press e in the worktree pane) to easily edit a worktree's
+      description, colour, notes, icon, and tags from a single
+      interface.
+    - CLI Introspection: Introduced the describe command to output
+      the CLI command structure as machine-readable JSON, enabling
+      coding agents and external scripts to discover available
+      commands programmatically.
+    - CLI JSON Support: Added the --json flag to create, delete,
+      rename, exec, and note show commands for structured,
+      machine-readable output.
+    - Enhanced list Command: The list --json output now includes
+      worktree notes and agent session metadata. Added a --no-agent
+      flag to omit agent data for faster script execution.
+    - Configurable Execution Modes: Added an --exec-mode flag for
+      create --exec to control shell invocation (login-shell,
+      shell, or direct).
+    - Enhanced Browser Navigation: Pressing o in the logs pane now
+      opens the selected commit in the browser. When opening a
+      worktree in the browser without an active Pull Request, the
+      application now smartly falls back to opening the current
+      branch page on GitHub or GitLab.
+  * Bug Fixes
+    - Worktree Creation Flow: Fixed the issue-to-worktree flow to
+      ensure that branch name script error notifications preserve
+      the correct context and include worktree note script
+      execution.
+  * Performance Improvements
+    - Action Registry: Replaced an O(n) inner loop with an O(1) map
+      lookup for updating action shortcuts, improving keybinding
+      initialization performance.
+  * Maintenance / Refactoring
+    - Namespaced Action IDs: Prefixed every command-palette action
+      ID with its section (e.g., worktree-create, git-diff,
+      nav-filter) to eliminate cross-pane collisions.
+    - Code Quality: Extracted test helpers and deduplicated AST
+      parsing logic to reduce boilerplate across the codebase.
+    - Documentation: Updated documentation to clearly explain
+      pane-scoped keybindings and custom commands. Cleaned up the
+      README by refining the features list and removing outdated
+      development sections.
+    - Project Structure: Renamed the Claude skill directory from
+      worktree-manage to worktree-manager for consistency.
+  * Dependencies
+    - Updated Homebrew cask to v1.43.0.
+    - Updated project coverage badges.
+  * Breaking Changes
+    - Custom Keybindings Update Required: All action IDs have been
+      namespaced by their pane/section to prevent ambiguity. If you
+      have configured custom keybindings in your config.yaml using
+      the old bare action IDs (e.g., create, diff, lazygit), you
+      must update them to use the new prefixed names (e.g.,
+      worktree-create, git-diff, git-lazygit). Please refer to the
+      Action IDs Reference documentation for the complete list of
+      new names.
+
+-------------------------------------------------------------------
+Thu Mar 12 07:25:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.43.0:
+  This release introduces a powerful new Agent Sessions pane to
+  monitor AI assistant activity (Claude and Pi) directly within
+  your worktrees. It also brings extensive organizational tools
+  including worktree tagging, descriptions, curated icons, and a
+  highly customizable pane-scoped keybinding system.
+  * Features
+    - Agent Sessions Pane: Added a dedicated pane to track active
+      and historical Claude and Pi coding assistant sessions tied
+      to worktrees. Includes visibility into agent status
+      (thinking, writing, etc.) and support for custom transcript
+      discovery paths.
+    - Worktree Tags: Implement robust tagging capabilities. You can
+      now assign labels via an interactive tag editor, view them as
+      colored badges in the worktree list and Info pane, and easily
+      browse or filter worktrees using exact exact matches (e.g.,
+      tag:<name>).
+    - Worktree Descriptions: Assign human-readable descriptions to
+      worktrees. These descriptions replace raw directory names in
+      the list view, significantly improving clarity and
+      searchability.
+    - Pane-Scoped Keybindings & Commands: Rebuilt the custom
+      command and keybinding configuration. You can now scope
+      shortcuts to specific panes (e.g., worktrees, status, log) or
+      apply them globally using the universal key.
+    - Ranked Filtering: Overhauled the search/filter logic across
+      all screens. The new ranking system prioritizes exact word
+      matches, prefixes, and specific fields, ensuring the most
+      relevant items rise to the top.
+    - Curated Worktree Icons: Expanded the worktree icon picker
+      with specialized icons for common task types, such as bug
+      fixes, refactors, reviews, and releases.
+  * Bug Fixes
+    - Note View Wrapping: Prevented ANSI escape sequences from
+      leaking and causing visual artifacts when soft-wrapping
+      styled text in the Note View.
+    - Tag Rendering on Selection: Fixed an issue where ANSI color
+      codes on tag pills conflicted with table row selection
+      styling by rendering plain text tags for the currently
+      focused row.
+    - Tag Normalization: Improved tag handling to automatically
+      trim whitespace and strip empty entries during load and save
+      operations.
+    - Tag Contrast: Updated the tag pill color palette to use text
+      foreground colors instead of dim accents, ensuring better
+      readability.
+  * Maintenance / Refactoring
+    - Automated Documentation: Added a docs-sync pre-commit check
+      to automatically parse the command registry and keep
+      docs/action-ids.md up to date.
+    - UI Component Reuse: Consolidated PR and Issue selection
+      modals to utilize a single, abstract list selection screen,
+      reducing code duplication.
+    - Code Health: Centralized default file and directory
+      permission constants and simplified hex digit validation
+      logic.
+    - Build Process: Refactored the Makefile image optimization
+      script to overwrite files in place directly and improve
+      verbose output.
+    - Documentation: Updated the project README, About page
+      philosophy, and agent contribution guidelines.
+
+-------------------------------------------------------------------
+Mon Mar 09 07:32:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.42.0:
+  This release introduces a powerful new interactive commit screen,
+  extensive enhancements to worktree notes (including a new CLI
+  command and split markdown storage), custom worktree coloring,
+  and major improvements to the command palette's search relevance.
+  * Features
+    - Interactive Commit Screen: Added a dedicated modal for
+      staging and committing changes, accessible via Ctrl+G. It
+      features separate fields for subject and body, support for
+      external editors (Ctrl+X), and an option to auto-generate
+      commit messages from staged diffs (Ctrl+O).
+    - Worktree Color Customization: You can now visually organize
+      your workspace by assigning colors (hex, named, or 256-index)
+      to worktrees via the command palette. Colors are seamlessly
+      persisted in the worktree's YAML frontmatter.
+    - CLI Note Command: Introduced lazyworktree note show and note
+      edit CLI commands, allowing you to view, pipe, or modify
+      worktree notes directly from the terminal without opening the
+      TUI.
+    - Splitted Note Storage: Added worktree_note_type: splitted
+      configuration. Instead of a single JSON file, notes can now
+      be stored as individual markdown files with YAML frontmatter,
+      utilizing customizable template paths for better
+      interoperability with external tools.
+    - Advanced Command Palette Search: Completely overhauled the
+      command palette's scoring system. It now ranks results using
+      a tiered approach (exact word, prefix, and fuzzy matching),
+      prioritizing label matches over descriptions, ensuring faster
+      and more accurate command discovery.
+    - Palette-Only Custom Commands: Custom commands can now be
+      configured to appear exclusively in the command palette by
+      prefixing their key with '_', keeping your keyboard shortcuts
+      and footer hints clutter-free.
+    - Commit Log Indicators: The log pane now features distinct
+      visual indicators for commit states (↑ for unpushed, ★ for
+      unmerged) and assigns deterministic, color-coded highlights
+      to different commit authors.
+    - Container Execution Enhancements: Custom container command
+      mounts now support an options field, allowing for arbitrary
+      volume flags such as z or Z for SELinux relabeling.
+    - GitLab MR Improvements: Added support for GitLab Draft MR
+      statuses and improved MR head commit resolution using native
+      API endpoints and diff_refs.head_sha fallbacks.
+    - Contextual Footer Hints: The footer now intuitively displays
+      a Ctrl+G (Commit) shortcut hint whenever the active worktree
+      contains local changes.
+  * Bug Fixes
+    - UI Pane Switching: Fixed an issue where the Git Status pane
+      would fail to refresh and display stale content when cycling
+      through panes using the Tab key. Restored proper focus-driven
+      auto-resizing behavior.
+  * Maintenance / Refactoring
+    - UI Simplification: Refined the command palette selection UI
+      by removing cluttered left-accent borders and shortcut badges
+      in favor of a cleaner, full-width background highlight.
+    - Documentation Overhaul: Reorganized internal project
+      architecture documentation, refreshed AI and container
+      execution examples, and updated the README with a clearer
+      outline of core features and workflows.
+    - Development Tooling: Added a hack/sample-repo.sh script to
+      automatically scaffold a rich Git repository with branches,
+      commits, and worktrees to accelerate local testing.
+    - Asset Optimization: Integrated automated image compression
+      (pngquant and jpegoptim) into the build pipeline to shrink
+      website assets.
+  * Dependencies
+    - Added github.com/google/shlex to safely parse user-defined
+      shell commands for the new auto-generated commit message
+      feature.
+    - Incremented system dependencies for rendering and UI
+      components.
+
+-------------------------------------------------------------------
+Fri Mar 06 06:31:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.41.0:
+  This release introduces powerful OCI container execution for
+  custom commands, custom worktree icons via the command palette, a
+  new --main flag for listing worktrees, and significant
+  improvements to PR branch tracking and worktree checkout logic.
+  * Features
+    - OCI Container Support: Execute custom commands inside Docker
+      or Podman containers directly from the TUI. Supports
+      automatic worktree mounting to /workspace, custom args,
+      entrypoint overrides, interactive mode (-it flags),
+      environment variable forwarding, and seamless integration
+      with tmux and zellij.
+    - Custom Worktree Icons: Personalize and easily distinguish
+      worktrees by setting custom icons using the command palette
+      or the new I keybinding.
+    - Improved PR Worktree Creation: Streamlined PR worktree
+      checkouts to consistently use the PR's head branch name
+      locally. Enhanced upstream tracking to correctly configure
+      remotes and merge refs, including robust support for forks
+      across GitHub and GitLab.
+    - List Main Worktree: Added a --main (-m) flag to lazyworktree
+      list to filter and output only the primary worktree. Returns
+      a single, clean object when combined with the --json flag.
+    - Smarter Branch Name Suggestions: Branch name suggestions for
+      new worktrees now intelligently generate a random name
+      prefixed with the base branch (if branching off a non-default
+      branch), providing more distinct and recognizable default
+      names.
+    - Shell Integration: Added a new worktree_go_main zsh/shell
+      helper function to quickly jump to the main repository
+      directory.
+  * Bug Fixes
+    - PR Pane Visibility: Reduced visual clutter by automatically
+      hiding the Pull Request information section when on the main
+      branch before a fetch completes, or when it is confirmed no
+      PR exists for the branch.
+  * Maintenance
+    - Documentation Overhaul: Updated the website theme with new
+      typography, colors, and layout adjustments. Added
+      comprehensive guides for Container Execution (including
+      Anthropic API / Vertex AI backend examples) and updated the
+      Worktree Notes guide with an LLM automation script example.
+    - Link Verification: Added a new verification step to the docs
+      synchronization script to automatically detect and prevent
+      broken local asset links within raw HTML tags.
+    - Gitignore: Added .worktrees/ to the ignore file to prevent
+      tracking local git worktree metadata.
+
+-------------------------------------------------------------------
+Tue Mar 03 05:47:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.40.0:
+  This release brings major performance optimizations to PR
+  fetching and UI rendering, introduces highly customizable pane
+  layouts, and launches a completely overhauled documentation
+  website.
+  * Features
+    - Layout Customization & Resizing: Added a new layout_sizes
+      configuration option to define relative size weights for
+      individual panes (worktrees, info, git status, commit,
+      notes). You can now also dynamically shrink or grow the
+      worktree pane at runtime using the h and l keys.
+    - Log Table Highlighting: Unpushed and unmerged commits in the
+      log pane are now visually distinct, making it easier to track
+      local-only changes at a glance.
+    - Mouse Controls: Double-clicking on a pane now toggles its
+      zoom state (matching the = keybinding behavior).
+    - UI Enhancements: Polished the interface by adding rounded
+      pane borders, organizing footer key hints into logical
+      groups, and introducing section dividers in the info pane.
+  * Bug Fixes
+    - Theme Colors: Fixed an issue where PR state indicator symbols
+      in the worktree list ignored active theme colors and fell
+      back to terminal defaults.
+    - Branch Naming: Corrected the default branch name generation
+      during worktree creation so it no longer erroneously prepends
+      the current branch name.
+    - Pager Output: Updated the default less pager flags (-swMQcR)
+      to ensure better word wrapping and a cleaner, quieter output
+      experience.
+    - Claude Skill Syntax: Removed incompatible shell operators
+      from the SKILL.md dynamic commands that were causing
+      permission check failures.
+  * Performance Improvements
+    - Concurrent Git Operations: Dramatically sped up application
+      responsiveness by fetching PR data and executing git detail
+      checks (status, logs, unpushed/unmerged SHAs) concurrently.
+    - Diff Rendering Optimization: Accelerated the diff view by
+      utilizing ls-files for untracked file enumeration instead of
+      parsing the heavier git status --porcelain output.
+    - Render Style Caching: Implemented a global style cache to
+      eliminate redundant lipgloss style computations on every
+      frame.
+    - Targeted UI Updates: Optimized worktree table navigation to
+      only re-render the specifically changed rows rather than
+      rebuilding the entire table on cursor movement.
+  * Maintenance
+    - Complete Documentation Overhaul: Migrated and expanded the
+      documentation into a new MkDocs Material website. It now
+      features comprehensive guides for shell setup, multiplexer
+      integration (tmux/zellij), AI naming scripts, and structured
+      troubleshooting.
+    - Automated Doc Synchronization: Introduced a docsync tool to
+      automatically guarantee that CLI flags, command arguments,
+      and YAML configuration references remain perfectly synced
+      between the Go source code and the documentation site.
+    - Website Improvements: Added interactive feature modals to the
+      project homepage and refreshed all documentation screenshots.
+    - Codebase Refactoring: Simplified styling and layout
+      calculations inside the command palette to reduce code
+      complexity.
+
+-------------------------------------------------------------------
+Fri Feb 27 06:51:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.39.1:
+  This release introduces a new feature to edit worktree notes in
+  an external editor and includes a crucial bug fix for child
+  process execution on macOS.
+  * Features
+    - External Editor Support: Added the ability to open worktree
+      notes in an external editor using the Ctrl+X keybinding. The
+      UI, help screens, and documentation have been updated to
+      reflect this new capability.
+  * Bug Fixes
+    - Process Execution: Restored standard input (os.Stdin)
+      behavior for bubbletea v2. This resolves an issue where child
+      processes (such as shell commands, lazygit, and editors)
+      would fail with a /dev/tty error on macOS (#25).
+  * Maintenance
+    - Automated Brew cask updates for version 1.39.0.
+    - Updated the test coverage badge in the README.
+- Update to version 1.39.0:
+  This release introduces major layout enhancements, including new
+  dedicated panes for Worktree Notes, Repository Info, and Git
+  Status. It also brings significant UI and UX improvements with an
+  underlying migration to Bubble Tea v2, context-aware clipboard
+  support, dynamic Zellij multiplexer workflows, and interactive
+  query filtering.
+  * Features
+    - New Panes & Layouts: Expanded the interface with a new
+      dedicated Notes pane (dynamically shown when a worktree has
+      notes) and split the right layout into three distinct panes:
+      Info, Git Status, and Commit, allowing for a much cleaner and
+      more granular display of information.
+    - Info Pane Enhancements: The new Info pane is now
+      viewport-backed, supporting direct scrolling and explicit CI
+      checks navigation using n and p.
+    - Zellij Multiplexer Integration: Greatly improved Zellij
+      workflows by adopting a new-pane flow. Users can now
+      interactively pick target sessions and split directions
+      (right/down) when opening sessions inside or outside of
+      Zellij. Exited sessions are also now correctly filtered out.
+    - Context-Aware Clipboard: Added OSC52 clipboard support. Press
+      y to copy the context-relevant worktree path, file path, or
+      commit SHA. Press Y to copy the selected worktree's branch
+      name.
+    - Interactive Query Filtering: Added a -q / --query flag to the
+      create command to pre-filter interactive Pull Request (-P)
+      and Issue (-I) selection lists.
+    - Native Terminal Integration: The app now sets the terminal
+      window title to reflect the active repository and branch. It
+      also triggers a native indeterminate progress bar in the
+      terminal during background loading operations.
+    - Smart Resource Usage: The auto-refresh cycle is now paused
+      when the terminal loses focus, saving background CPU cycles,
+      and refreshes immediately upon refocus.
+    - UI Refresh: Introduced Powerline-style pill badges for CI
+      check conclusions and PR states, and improved header
+      rendering with stylized repository keys and conditional
+      icons.
+    - PR State Persistence: Correctly stores and assigns Pull
+      Request metadata immediately after generating a new worktree
+      from a PR.
+  * Bug Fixes
+    - Smart Git Status Visibility: The Git Status pane is now
+      automatically hidden when the working tree is clean,
+      streamlining the interface.
+    - Pane Layout Scaling: Corrected pane layout math to properly
+      cap the Commit pane's maximum height against the Notes pane
+      to prevent visual clipping.
+    - Textarea Responsiveness: Adjusted textarea modal sizing and
+      simplified blurred state styling to prevent visual artifacts
+      on smaller terminals.
+    - Terminal Tab Flow: Removed an intrusive popup message that
+      interrupted the workflow when launching commands in new
+      terminal tabs.
+    - Documentation: Updated README.md to fix broken screenshot
+      links and reflect the new layout and keybindings.
+  * Maintenance / Refactoring
+    - Bubble Tea v2 Migration: Upgraded the core TUI framework to
+      Bubble Tea v2 (charm.land/bubbletea/v2,
+      charm.land/bubbles/v2, charm.land/lipgloss/v2).
+    - Event Handling: Refactored mouse event detection into
+      distinct MouseClickMsg and MouseWheelMsg handlers and updated
+      keypress detection to align with Bubble Tea v2 standards.
+    - Rendering Optimization: Consolidated repetitive pane
+      rendering logic into a unified renderPaneBlock function.
+    - Diagnostics: Added diagnostic logging for detected terminal
+      color profiles (ColorProfileMsg) to assist in debugging
+      display issues on constrained terminals.
+    - Code Cleanup: Applied gofumpt formatting and removed unused
+      constants.
+  * Dependencies
+    - Bumped goreleaser/goreleaser-action from v6 to v7.
+    - Updated the Charm ecosystem dependencies (e.g., x/ansi,
+      x/term, lipgloss) to complement the Bubble Tea v2 upgrade.
+    - Automatic brew cask updates for the latest versions.
+
+-------------------------------------------------------------------
+Wed Feb 25 12:16:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.38.1:
+  This release fixes worktree directory creation to properly use
+  the org/repo layout and introduces several UI rendering
+  improvements to preserve box borders during modal popups. It also
+  includes routine repository maintenance and an update to the
+  Homebrew cask.
+  * Bug Fixes
+    - Worktrees: Use the expected
+      <worktree-dir>/<org>/<repo>/<name> directory layout for
+      worktrees created via the TUI, replacing the previous flat
+      path structure (#17).
+    - UI: Preserve underlying base view borders when rendering
+      modal popups by utilizing ANSI-aware truncation and properly
+      padding overlay lines to the base view width.
+  * Maintenance / Refactoring
+    - UI: Refactor overlay popup padding to use idiomatic lipgloss
+      styling instead of manual string repetition.
+    - Housekeeping: Clean up repository tracking by removing
+      accidentally committed .omc/ internal state files and adding
+      them to .gitignore.
+    - Release: Automatically update the Homebrew cask to version
+      v1.38.0 and update the test coverage badge in the README.
+- Update to version 1.38.0:
+  This release introduces the ability to quickly rename the current
+  worktree with a single command argument and adds support for
+  opening multiplexer sessions in new terminal tabs. It also
+  includes UI refinements and improvements to the internal test
+  suite.
+  * Features
+    - Custom Commands: Added support for combining new_tab: true
+      with tmux or zellij custom commands. This allows users to
+      launch multiplexer sessions in new terminal tabs (Kitty,
+      WezTerm, or iTerm) rather than suspending the TUI.
+    - CLI Enhancements: The rename command now supports a
+      single-argument mode (lazyworktree rename <new-name>). When
+      provided with only one argument, it will automatically detect
+      and rename the worktree associated with the current working
+      directory.
+  * Bug Fixes
+    - UI Refinements: Removed the worktree note badge/icon from the
+      worktree names in the navigation table to ensure a cleaner
+      interface.
+  * Maintenance
+    - Testing: Refactored tests in the internal/app package to use
+      a mocked git worktree list --porcelain command, eliminating
+      the need for a real Git repository setup and improving test
+      reliability.
+    - CI/CD: Updated the GitHub Actions releaser workflow to
+      utilize the newer gemini-3.1-pro-preview model.
+  * Dependencies
+    - Automated Brew cask formula update for version v1.37.1.
+- Update to version 1.37.1:
+  This release introduces contextual tips to the loading screen to
+  assist users during long-running operations and stabilizes the
+  worktree list sorting behavior. It also includes improvements to
+  search navigation and updates to shell integration documentation
+  for better dynamic path resolution.
+  * Features
+    - Contextual Loading Tips: The loading screen now displays
+      useful tips relevant to the current operation (e.g.,
+      refreshing, fetching, syncing, or pushing). Additionally, a
+      curated list of tips has been added to the Help screen under
+      "Tips & Shortcuts".
+  * Bug Fixes
+    - Stable Sorting: Implemented stable sorting for the worktree
+      list to prevent items from reordering unexpectedly during
+      keyboard navigation.
+    - Search Navigation: Moved n/N search traversal to built-in
+      keys. This allows the letter 'n' to be typed normally into
+      search queries, while still enabling next/previous match
+      navigation after confirming a search with Enter.
+    - Refactoring: Simplified control flow in search handlers by
+      replacing single-case switches.
+  * Documentation
+    - Dynamic Shell Integration: Updated README and shell scripts
+      to use git rev-parse --show-toplevel. This allows for dynamic
+      repository path resolution in aliases (Bash, Zsh, Fish)
+      rather than relying on hardcoded paths.
+    - Branding: Added the project logo and favicon to the website
+      and updated the README assets.
+
+-------------------------------------------------------------------
+Thu Feb 19 12:03:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.37.0:
+  This release introduces a powerful new Taskboard for managing
+  worktree-specific to-dos, a dedicated note viewer with external
+  editor support, and significant CLI enhancements including exec
+  and rename commands.
+  * Features
+    - Taskboard (T): Introduced a Kanban-lite view to manage tasks
+      across all worktrees.
+      - Aggregates Markdown checkbox items (e.g., - [ ] task) and
+        TODO/DONE keywords from worktree notes.
+      - Support for adding new tasks directly via a.
+      - Toggle task completion with Space or Enter.
+      - Filter tasks with f.
+    - Notes System Enhancements:
+      - Note Viewer: Pressing i now opens a read-only viewer if a
+        note exists (supporting vim-like navigation), or the editor
+        if empty.
+      - External Editor: Added ability to edit notes in your
+        preferred terminal editor ($EDITOR) by pressing E in the
+        viewer.
+      - Shared Storage: Introduced worktree_notes_path
+        configuration to store all notes in a single JSON file
+        using repo-relative keys, facilitating synchronization
+        across machines. Includes automatic migration for existing
+        per-repo notes.
+    - CLI Operations:
+      - exec command: Run arbitrary commands inside a specific
+        worktree from the CLI (e.g., lazyworktree exec -w feature
+        "npm test"). Supports auto-detection of the worktree from
+        the current directory.
+      - rename command: Added a dedicated rename subcommand to
+        rename worktrees (and their branches if names match) from
+        the CLI.
+      - Post-create hooks: Added --exec flag to the create command
+        to run setup scripts immediately after worktree creation.
+      - Shell Completion: Added completion for worktree names to
+        rename and delete subcommands.
+  * Bug Fixes
+    - PR Rendering: Improved the formatting of Pull Request
+      information in the info panel, including better author
+      display and state coloring.
+    - Hyperlinks: PR URLs in the info panel are now rendered as
+      clickable OSC-8 hyperlinks.
+    - Help Screen: Simplified help content to focus on essential
+      keybindings and remove redundancy.
+  * Maintenance / Refactoring
+    - Legacy Aliases: Removed deprecated CLI aliases wt-create,
+      wt-rename, and wt-delete.
+    - Internal Architecture: Refactored shell and multiplexer logic
+      into dedicated packages for better maintainability.
+    - CLI Bootstrap: Centralized CLI setup and build information
+      handling.
+
+-------------------------------------------------------------------
+Tue Feb 17 05:59:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.36.0:
+  This release brings a significant overhaul to worktree notes with
+  Markdown rendering, keyword highlighting, and automation hooks,
+  alongside improvements to PR worktree naming and the command
+  palette UI.
+  * Features
+    - Rich Text Notes: Worktree notes now support Markdown
+      rendering. You can use headings, bold text, lists,
+      blockquotes, links, and fenced code blocks within the note
+      editor and info pane.
+    - Note Keyword Highlighting: Added syntax highlighting for
+      common tags in worktree notes. Keywords like TODO, FIXME,
+      WARN, NOTE, and TEST are now emphasized with icons and colors
+      in the Info pane.
+    - Automated Note Generation: Introduced worktree_note_script
+      configuration. This allows you to hook into tools (like LLMs)
+      to automatically generate implementation notes based on the
+      PR or Issue content when creating a worktree.
+    - Enhanced PR Worktree Naming:
+      - Introduced pr_branch_name_template to customize how
+        worktree directories are named when creating from Pull
+        Requests.
+      - Improved naming logic: When you are the author of a PR, the
+        original branch name is preserved. If you are reviewing
+        (not the author), a local branch name is generated to avoid
+        conflicts.
+      - Extended branch_name_script to support generating titles
+        for PRs.
+  * Bug Fixes
+    - PR Info Display: Refined the information shown in the details
+      pane. The "Press 'p' to fetch" hint is now suppressed on the
+      main branch where it is rarely relevant, and status messages
+      are improved for branches without upstreams.
+    - Command Palette: Fixed filtering logic to hide empty sections
+      when no items match the search query.
+    - UI Tweaks: Updated the command palette selection pointer to ▶
+      and adjusted its coloring for better visibility.
+  * Maintenance / Refactoring
+    - Terminology Update: The "Annotation" feature has been renamed
+      to "Notes" throughout the application (UI, documentation, and
+      configuration) to better reflect its purpose.
+    - Simplified Logic: Refactored PR worktree creation logic to be
+      more robust and removed unused legacy code.
+  * Documentation
+    - Added screenshots demonstrating the new rendered notes
+      feature.
+    - Added aichat to the list of recommended tools in the README
+      for generating branch names and notes.
+    - Updated documentation to reference the project website.
+
+-------------------------------------------------------------------
+Mon Feb 16 09:41:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to version 1.35.0:
+  * feat: Add screenshots and update website content (@chmouel)
+  * feat: Add toggleable top layout for panes (@chmouel)
+  * feat: Add website with GitHub Actions deployment (@chmouel)
+  * feat: Add worktree annotations (@chmouel)
+  * feat: Make PR number clickable in info panel (@chmouel)
+  * fix: Display note marker for annotated worktrees (@chmouel)
+  * fix: Remove pinned status from worktree notes (@chmouel)
+  * fix: Use commit range for lumen diff commands (@chmouel)
+- update to version 1.34.0:
+  * feat: Add interactive PR selection for worktree creation
+    (@chmouel)
+  * feat: Add interactive issue selection for worktree creation
+    (@chmouel)
+  * feat: Add support for command-based diff pagers (@chmouel)
+  * feat: Add support for creating worktrees from issues (@chmouel)
+  * feat: Allow branching without creating worktrees (@chmouel)
+  * feat: Simplify PR worktree creation and branch handling
+    (@chmouel)
+  * fix: Constrain pane heights to prevent overflow (@chmouel)
+  * fix: Improve CLI flag validation and fetch logic (@chmouel)
+  * fix: Simplify incompatibility flag validation (@chmouel)
+  * fix: resolve SA5011 staticcheck warnings in tests (@chmouel)
+
+-------------------------------------------------------------------
+Mon Feb  9 06:58:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package lazyworktree: easy Git worktree management for the
+  terminal
