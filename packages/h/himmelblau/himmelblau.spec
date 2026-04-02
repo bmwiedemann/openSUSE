@@ -30,7 +30,7 @@
 %endif
 
 Name:           himmelblau
-Version:        2.3.8+git0.dec3693
+Version:        2.3.9+git0.a9fd29b
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -162,6 +162,9 @@ when a MS DAG URL is detected.
 
 %build
 make rpm-servicefiles
+# The generated hsm-pin-init unit hardcodes /usr/libexec, but `%{_libexecdir}`
+# differs across SUSE releases (for example SLE15SP7 uses /usr/lib).
+sed -i 's|^ExecStart=/usr/libexec/himmelblau-init-hsm-pin$|ExecStart=%{_libexecdir}/himmelblau-init-hsm-pin|' platform/opensuse/himmelblau-hsm-pin-init.service
 %if !(0%{?suse_version} >= 1600)
 export HIMMELBLAU_ALLOW_MISSING_SELINUX=1
 %endif
@@ -293,192 +296,19 @@ install -m 0644 target/release/qr-greeter-build/qr-greeter@himmelblau-idm.org/ms
 %post -n libnss_himmelblau2
 /sbin/ldconfig
 
-handle_nsswitch_conf() {
-  conf=$1
-  sed -i '/^passwd:/ {/himmelblau/! s/$/ himmelblau/}' $conf
-  sed -i '/^group:/ {/himmelblau/! s/$/ himmelblau/}' $conf
-  sed -i '/^shadow:/ {/himmelblau/! s/$/ himmelblau/}' $conf
-}
-
-etc_nsswitch_conf="/etc/nsswitch.conf"
-usr_etc_nsswitch_conf="/usr/etc/nsswitch.conf"
-if [ -f $etc_nsswitch_conf ]; then
-  handle_nsswitch_conf $etc_nsswitch_conf
-elif [ -f $usr_etc_nsswitch_conf ]; then
-  cp $usr_etc_nsswitch_conf $etc_nsswitch_conf
-  handle_nsswitch_conf $etc_nsswitch_conf
-fi
-
 # Ensure cache directory is created immediately after installation, ignoring failures
 systemd-tmpfiles --create /usr/lib/tmpfiles.d/nss-himmelblau.conf 2>/dev/null || systemd-tmpfiles --create /usr/lib/x86_64-linux-gnu/tmpfiles.d/nss-himmelblau.conf 2>/dev/null || true
 
 %postun -n libnss_himmelblau2 -p /sbin/ldconfig
 
-%post -n pam-himmelblau
-# Only create a symlink if it doesn't already exist
-if [ ! -e /lib64/security/pam_himmelblau.so ]; then
-    mkdir -p /lib64/security
-    ln -s /usr/lib64/security/pam_himmelblau.so /lib64/security/pam_himmelblau.so
-fi
-
-# 1) authselect first (if available)
-if command -v authselect >/dev/null 2>&1; then
-    feats="$(authselect current 2>/dev/null | awk '"'"'/Enabled features:/{f=1;next} f && /^-/{print $2}'"'"')"
-    authselect select himmelblau $feats --force >/dev/null 2>&1 || :
-    authselect apply-changes >/dev/null 2>&1 || :
-fi
-
-# Helper: validate/fix pam-config account line for pam_himmelblau
-fix_pam_config_account_line() {
-    local pc="/etc/pam.d/common-account-pc"
-    local plain="/etc/pam.d/common-account"
-
-    [ -f "$pc" ] || return 1
-
-    # Detect the known-bad pam-config output:
-    #   account required pam_himmelblau.so ignore_unknown_user
-    if ! grep -Eq '^[[:space:]]*account[[:space:]]+required[[:space:]]+pam_himmelblau\.so([[:space:]]+|$).*ignore_unknown_user' "$pc"; then
-        return 0
-    fi
-
-    # Ensure we have a self-managed common-account
-    if [ ! -f "$plain" ]; then
-        sed '/^[[:space:]]*#/d' "$pc" >"$plain" || return 1
-        chmod --reference="$pc" "$plain" || :
-    fi
-
-    # Fix required -> sufficient in the self-managed file
-    sed -i -E \
-        's/^([[:space:]]*account[[:space:]]+)required([[:space:]]+pam_himmelblau\.so([[:space:]]+|$).*ignore_unknown_user)/\1sufficient\2/' \
-        "$plain" || return 1
-
-    return 0
-}
-
-# 2) pam-config second (if available)
-pam_config_ok=0
-if command -v pam-config >/dev/null 2>&1; then
-    # Attempt to add himmelblau via pam-config. Older pam-config may not recognize --himmelblau at all.
-    if pam-config --add --himmelblau >/dev/null 2>&1; then
-        pam_config_ok=1
-
-        # Validate/fix the known-bad older behavior (account required)
-        fix_pam_config_account_line >/dev/null 2>&1 || :
-    fi
-fi
-
-pamconfig_optout_self_managed_common() {
-    # Convert pam-config-generated common-*-pc into self-managed common-*
-    # per pam-config’s own header instructions.
-    local i pc plain
-
-    for i in account auth password session; do
-        pc="/etc/pam.d/common-${i}-pc"
-        plain="/etc/pam.d/common-${i}"
-
-        [ -f "$pc" ] || continue
-
-        # Only create/refresh common-* if it doesn't exist yet.
-        # (If it already exists, assume admin/system is already self-managed.)
-        if [ ! -f "$plain" ]; then
-            # Strip comment lines (pam-config’s suggestion)
-            sed '/^[[:space:]]*#/d' "$pc" >"$plain" || return 1
-            chmod --reference="$pc" "$plain" 2>/dev/null || :
-        fi
-    done
-
-    return 0
-}
-
-# 3) Final fallback: aad-tool configure-pam --really
-# Only do this if pam-config wasn't used successfully.
-if [ "$pam_config_ok" -ne 1 ]; then
-    if command -v aad-tool >/dev/null 2>&1; then
-        # Opt out of pam-config-managed common-*-pc so future pam-config runs
-        # don’t overwrite the configuration we’re about to install.
-        pamconfig_optout_self_managed_common >/dev/null 2>&1 || :
-
-        aad-tool configure-pam --really >/dev/null 2>&1 || :
-    fi
-fi
-
-%postun -n pam-himmelblau
-# Only remove a symlink if it exists and is a symlink
-if [ -L /lib64/security/pam_himmelblau.so ]; then
-    rm -f /lib64/security/pam_himmelblau.so
-fi
-
-%preun -n pam-himmelblau
-# $1 is set by RPM: 0=uninstall, 1=upgrade. If your packager doesn’t pass it, we default to 0.
-if [ "${1:-0}" -ne 0 ]; then exit 0; fi   # don’t switch on upgrade
-if command -v authselect >/dev/null 2>&1; then
-    if authselect current 2>/dev/null | grep -qE "^Profile ID:\s+himmelblau$"; then
-        if   [ -d /usr/share/authselect/default/local   ]; then base=local
-        elif [ -d /usr/share/authselect/default/minimal ]; then base=minimal
-        else base=sssd; fi
-        feats="$(authselect current 2>/dev/null | awk '"'"'/Enabled features:/{f=1;next} f && /^-/{print $2}'"'"')"
-        authselect select "$base" $feats --force >/dev/null 2>&1 || :
-        authselect apply-changes >/dev/null 2>&1 || :
-    fi
-fi
-
 %post
 %service_add_post himmelblaud.service himmelblaud-tasks.service
-
-# Detect if running on a Live system where service start should be skipped
-is_live_system() {
-    # Check common Live system indicators
-    grep -q 'boot=live' /proc/cmdline 2>/dev/null && return 0
-    grep -q 'rd.live' /proc/cmdline 2>/dev/null && return 0
-    [ -d /run/live ] && return 0
-    [ -f /.live-installer ] && return 0
-    # Check if running in a container (dracut/systemd-nspawn)
-    systemd-detect-virt -c -q 2>/dev/null && return 0
-    return 1
-}
 
 # Ensure cache directory is created with correct permissions
 systemd-tmpfiles --create /usr/lib/tmpfiles.d/himmelblau-policies.conf 2>/dev/null || true
 
 # Ensure private data directory is created with correct permissions
 systemd-tmpfiles --create /usr/lib/tmpfiles.d/himmelblaud.conf 2>/dev/null || true
-
-# Remove old service files from /etc/systemd/system/ that were installed by v1.4.x
-# These take precedence over the new files in /usr/lib/systemd/system/ and lack
-# the LoadCredentialEncrypted directive needed for HSM pin handling.
-for OLD_FILE in \
-    "/etc/systemd/system/himmelblaud.service" \
-    "/etc/systemd/system/himmelblaud-tasks.service" \
-    "/etc/systemd/system/gdm3.service.d/override.conf"; do
-    if [ -f "$OLD_FILE" ]; then
-        echo "Removing old service file: $OLD_FILE"
-        rm -f "$OLD_FILE"
-    fi
-done
-
-# Reload systemd to pick up the new service files from /usr/lib/systemd/system/
-if command -v systemctl >/dev/null 2>&1; then
-    systemctl daemon-reload || true
-fi
-
-# Enable and start Himmelblau daemons if systemd is available
-# On Live systems, skip service start - the HSM PIN will be generated at first boot
-# via the himmelblau-hsm-pin-init.service oneshot when deployed to real hardware.
-if command -v systemctl >/dev/null 2>&1; then
-    if is_live_system; then
-        echo "Live system detected - skipping service start (HSM PIN will be initialized at first boot)"
-        # Only enable services so they start on first real boot
-        systemctl enable himmelblaud.service himmelblaud-tasks.service 2>/dev/null || true
-        # Enable HSM PIN init service separately (may not exist on older systemd)
-        systemctl enable himmelblau-hsm-pin-init.service 2>/dev/null || true
-    else
-        echo "Enabling and starting Himmelblau services..."
-        systemctl enable himmelblaud.service himmelblaud-tasks.service 2>/dev/null || true
-        # Enable HSM PIN init service separately (may not exist on older systemd)
-        systemctl enable himmelblau-hsm-pin-init.service 2>/dev/null || true
-        systemctl restart himmelblaud.service himmelblaud-tasks.service 2>/dev/null || true
-    fi
-fi
 
 %postun
 %service_del_postun himmelblaud.service himmelblaud-tasks.service
@@ -511,19 +341,6 @@ if command -v selinuxenabled >/dev/null 2>&1 && selinuxenabled && command -v res
 fi
 %endif
 
-%post -n himmelblau-sshd-config
-# Comment out the `KbdInteractiveAuthentication no` line if present
-CONF="/etc/ssh/sshd_config"
-if [ -f "$CONF" ]; then
-    sed -i 's/^KbdInteractiveAuthentication[[:space:]]\+no/#KbdInteractiveAuthentication no/' "$CONF"
-fi
-
-# Restart sshd if systemd is available, to make the config change take effect
-if command -v systemctl >/dev/null 2>&1; then
-    echo "Restarting sshd service..."
-    systemctl restart ssh 2>/dev/null || systemctl restart sshd 2>/dev/null || true
-fi
-
 %post -n himmelblau-sso
 if command -v update-desktop-database >/dev/null 2>&1; then update-desktop-database -q || true; fi
 if [ -d /usr/share/icons/hicolor ] && command -v gtk-update-icon-cache >/dev/null 2>&1; then gtk-update-icon-cache -q /usr/share/icons/hicolor || true; fi
@@ -531,19 +348,6 @@ if [ -d /usr/share/icons/hicolor ] && command -v gtk-update-icon-cache >/dev/nul
 %postun -n himmelblau-sso
 if command -v update-desktop-database >/dev/null 2>&1; then update-desktop-database -q || true; fi
 if [ -d /usr/share/icons/hicolor ] && command -v gtk-update-icon-cache >/dev/null 2>&1; then gtk-update-icon-cache -q /usr/share/icons/hicolor || true; fi
-
-%post -n himmelblau-qr-greeter
-if command -v machinectl >/dev/null 2>&1 && getent passwd gdm >/dev/null 2>&1; then
-    echo "Enabling Himmelblau QR Greeter GNOME Shell extension for GDM user..."
-
-    # Run the gsettings command inside a non-interactive gdm shell.
-    machinectl --quiet shell gdm@ /bin/bash -lc \
-        "gsettings set org.gnome.shell enabled-extensions \"['qr-greeter@himmelblau-idm.org']\"" \
-        || echo 'Warning: unable to enable QR Greeter extension for gdm user' >&2
-    echo "Himmelblau QR Greeter GNOME Shell extension enabled for GDM user. You must restart for the changes to take effect."
-else
-    echo 'Info: machinectl or gdm user not available; skipping automatic extension enable.' >&2
-fi
 
 %files
 %dir %{_sysconfdir}/himmelblau

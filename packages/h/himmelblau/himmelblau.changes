@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 01 16:32:53 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 2.3.9+git0.a9fd29b:
+  * cargo vet
+  * nss: block local group-name collisions on getgrnam (CVE-2026-34397).
+  * update aws-lc-sys to 0.39.0 for security fixes
+  * update rustls-webpki to 0.103.10 for CRL revocation fix
+  * Version 2.3.9
+  * cargo vet
+  * packaging: fix if/else block for debian's postrm
+  * Update apparmor.unix-chkpwd.local (Issue #1252)
+  * When Hello user encounters SSPR demand, be permissive
+  * add tests for sudo_groups functionality
+
+-------------------------------------------------------------------
 Wed Mar 11 16:20:00 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Fix SELinux module packaging to use standard policy macros (bsc#1258236):
