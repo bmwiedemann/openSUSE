@@ -1760,4 +1760,41 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
   on all architectures</comment>
     <requestid>1302713</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>22f1a8e921cff2d74578cd76cf5d5db5</srcmd5>
+    <version>5.47</version>
+    <time>1775144440</time>
+    <user>anag_factory</user>
+    <comment>- Add patch file-5.47-regression.dif (boo#1261199)
+  * Fix regression in detection of magics in a buffer
+
+- Add patch file-5.47-fdf.dif
+  * Use tabs instead of normal white spaces in description of %FDF
+
+- Port patches
+  * file-4.20-ssd.dif
+  * file-4.21-xcursor.dif
+  * file-5.19-clicfs.dif
+  * file-5.19-solv.dif
+  * file-5.19-zip2.0.dif
+  * file-5.28-btrfs-image.dif
+- Remove patches now upstream or solved by upstream
+  * file-4.20-xen.dif
+  * file-4.21-scribus.dif
+  * file-5.14-tex.dif
+  * file-5.19-cromfs.dif
+
+- Update to 5.47:
+  * Better multi-compound document identification by following the
+    order of the directories entries. (Thomas Ledoux)
+  * if stat fails, don't attempt to restore times (Steven Grubb)
+  * PR/622: Odd_Bloke: Handle negative offsets in file_buffer(),
+    when fd is not available.
+  * PR/655: jsummers: Obey str_flags in strings like we do for search
+    and regex
+  * PR/659: Pitzl: Apply MAGIC_CONTINUE to annotations; i.e. print
+    only the first, unless -k is specified.
+  * PR/592: allow + in format strings</comment>
+    <requestid>1344081</requestid>
+  </revision>
 </revisionlist>

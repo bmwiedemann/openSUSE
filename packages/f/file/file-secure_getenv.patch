@@ -15,9 +15,9 @@
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_TYPE_OFF_T
  AC_TYPE_SIZE_T
---- file-5.42/src/file.h
-+++ file-5.42/src/file.h	2022-06-13 08:34:50.347521415 +0000
-@@ -735,4 +735,12 @@ static const char *rcsid(const char *p)
+--- file-5.47/src/file.h
++++ file-5.47/src/file.h	2026-02-27 10:50:37.160814338 +0000
+@@ -739,6 +739,14 @@ static const char *rcsid(const char *p)
  #define __RCSID(a)
  #endif
  
@@ -29,7 +29,9 @@
 +#  endif
 +#endif
 +
- #endif /* __file_h__ */
+ #define file_no_overflow \
+     __attribute__((__no_sanitize__("signed-integer-overflow")))
+ 
 --- file-5.42/src/magic.c
 +++ file-5.42/src/magic.c	2022-06-13 08:36:49.997304349 +0000
 @@ -185,7 +185,7 @@ get_default_magic(void)

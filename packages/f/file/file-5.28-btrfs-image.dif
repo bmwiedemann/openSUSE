@@ -17,7 +17,7 @@ Index: file-5.43/magic/Magdir/filesystems
 ===================================================================
 --- file-5.43.orig/magic/Magdir/filesystems
 +++ file-5.43/magic/Magdir/filesystems
-@@ -2277,20 +2277,29 @@
+@@ -2292,20 +2292,29 @@
  >>0x10060        string          >\0             lockproto %s)
  
  # Russell Coker <russell@coker.com.au>

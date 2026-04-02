@@ -1,0 +1,21 @@
+commit 3d9fe77de69d7c2fba4cffac7bb5ee5e53d2f058
+Author: Werner Fink <werner@suse.de>
+Date:   Wed Apr 1 11:08:52 2026 +0200
+
+    Fix regression in buffer handling
+    
+    Signed-off-by: Werner Fink <werner@suse.de>
+
+diff --git src/softmagic.c src/softmagic.c
+index 9aaf8b3e..2e886a4f 100644
+--- src/softmagic.c
++++ src/softmagic.c
+@@ -1582,6 +1582,8 @@ normal:
+ 		} else {
+ 			if (b->fd != -1)
+ 				ms->offset = ms->eoffset + offset;
++			else
++				ms->offset = offset;
+ 		}
+ 	}
+ 	if ((ms->flags & MAGIC_DEBUG) != 0) {

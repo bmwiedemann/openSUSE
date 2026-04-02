@@ -1,16 +1,15 @@
 ---
  magic/Magdir/elf   |    2 
- magic/Magdir/linux |   36 +++++----
  magic/Magdir/msad  |    5 +
  magic/Magdir/msdos |    6 -
  magic/Makefile.am  |   63 +++++++++-------
  magic/Makefile.in  |   60 +++++++++------
  src/Makefile.am    |    2 
  src/dcore.c        |  207 +++++++++++++++++++++++++++++++++++++++++++++++++++++
- 8 files changed, 313 insertions(+), 68 deletions(-)
+ 7 files changed, 293 insertions(+), 52 deletions(-)
 
 --- magic/Magdir/elf
-+++ magic/Magdir/elf	2023-07-28 09:42:01.845813939 +0000
++++ magic/Magdir/elf	2026-02-27 10:51:00.596392215 +0000
 @@ -154,7 +154,7 @@
  >18	leshort		47		Renesas H8/300H,
  >18	leshort		48		Renesas H8S,
@@ -20,59 +19,8 @@
  >18	leshort		51		Stanford MIPS-X,
  >18	leshort		52		Motorola Coldfire,
  >18	leshort		53		Motorola M68HC12,
-! Does not fit anymore !!
-!--- magic/Magdir/linux
-!+++ magic/Magdir/linux	2023-07-28 09:42:01.845813939 +0000
-!@@ -140,27 +140,31 @@
-! # All known start with: b8 c0 07 8e d8 b8 00 90 8e c0 b9 00 01 29 f6 29
-! # Linux kernel boot images (i386 arch) (Wolfram Kleff)
-! # URL: https://www.kernel.org/doc/Documentation/x86/boot.txt
-!-514	string		HdrS		Linux kernel
-!+514	string		HdrS		Linux
-! !:strength + 55
-! # often no extension like in linux, vmlinuz, bzimage or memdisk but sometimes
-! # Acronis Recovery kernel64.dat and Plop Boot Manager plpbtrom.bin
-! # DamnSmallLinux 1.5 damnsmll.lnx 
-! !:ext	/dat/bin/lnx
-!->510	leshort		0xAA55		x86 boot executable
-!->>518	leshort		>0x1ff
-!->>>529	byte		0		zImage,
-!->>>529	byte		1		bzImage,
-!->>>526	lelong		>0
-!->>>>(526.s+0x200) string	>\0	version %s,
-!->>498	leshort		1		RO-rootFS,
-!->>498	leshort		0		RW-rootFS,
-!->>508	leshort		>0		root_dev %#X,
-!->>502	leshort		>0		swap_dev %#X,
-!->>504	leshort		>0		RAMdisksize %u KB,
-!->>506	leshort		0xFFFF		Normal VGA
-!->>506	leshort		0xFFFE		Extended VGA
-!->>506	leshort		0xFFFD		Prompt for Videomode
-!->>506	leshort		>0		Video mode %d
-!+>510	leshort		0xAA55		\b/x86 Kernel
-!+>510	leshort		<0xAA55		Kernel
-!+>510	leshort		>0xAA55		Kernel
-!+>518	leshort		0x0105		\b, Setup Version 0x105, zImage
-!+>518	leshort		>0x0105		\b, Setup Version %#x
-!+>518	leshort		>0x1ff
-!+>>529	byte		0		\b, zImage
-!+>>529	byte		1		\b, bzImage
-!+>>526	lelong		>0
-!+>>>(526.s+0x200)	string	>\0	\b, Version %s
-!+>>498	leshort		1		\b, RO-rootFS
-!+>>498	leshort		0		\b, RW-rootFS
-!+>>508	leshort		>0		\b, root_dev %#X
-!+>>502	leshort		>0		\b, swap_dev %#X
-!+>>504	leshort		>0		\b, RAMdisksize %u KB
-!+>>506	leshort		0xFFFF		\b, Normal VGA
-!+>>506	leshort		0xFFFE		\b, Extended VGA
-!+>>506	leshort		0xFFFD		\b, Prompt for Videomode
-!+>>506	leshort		>0		\b, Video mode %d
-! # This also matches new kernels, which were caught above by "HdrS".
-! 0		belong	0xb8c0078e	Linux kernel
-! >0x1e3		string	Loading		version 1.3.79 or older
 --- magic/Magdir/msad
-+++ magic/Magdir/msad	2023-07-28 09:42:01.845813939 +0000
++++ magic/Magdir/msad	2026-02-27 10:51:00.596392215 +0000
 @@ -0,0 +1,5 @@
 +#------------------------------------------------------------------------------
 +# msad:  file(1) magic for msad
@@ -80,7 +28,7 @@
 +# This must precede the heuristic for raw G3 data
 +4	string	Standard\ Jet\ DB	Microsoft Access Database
 --- magic/Magdir/msdos
-+++ magic/Magdir/msdos	2024-11-28 10:44:09.616373881 +0000
++++ magic/Magdir/msdos	2026-02-27 10:51:00.600392145 +0000
 @@ -331,10 +331,10 @@
  # Check for presence of COM Runtime descriptor
  >>(0x3c.l+24)	leshort		0x010b
@@ -94,7 +42,7 @@
  
  # hooray, there's a DOS extender using the PE format, with a valid PE
  # executable inside (which just prints a message and exits if run in win)
-@@ -1499,7 +1499,7 @@
+@@ -1506,7 +1506,7 @@
  >1		leshort	<-259
  # that offset must be accessible
  # add 10000h to jump at end of 64 KiB segment, add 1 for jump instruction and 2 for 16-bit offset
@@ -104,7 +52,7 @@
  #>>>&-1		ubelong	x	\b, NEXT instruction %#8.8x
  >>>0        use msdos-com
 --- magic/Makefile.am
-+++ magic/Makefile.am	2023-07-28 09:42:01.849813866 +0000
++++ magic/Makefile.am	2026-02-27 10:51:00.600392145 +0000
 @@ -5,7 +5,7 @@ MAGIC_FRAGMENT_BASE = Magdir
  MAGIC_DIR = $(top_srcdir)/magic
  MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
@@ -122,7 +70,7 @@
  $(MAGIC_FRAGMENT_DIR)/application \
  $(MAGIC_FRAGMENT_DIR)/applix \
  $(MAGIC_FRAGMENT_DIR)/apt \
-@@ -106,7 +105,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
+@@ -108,7 +107,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
  $(MAGIC_FRAGMENT_DIR)/espressif \
  $(MAGIC_FRAGMENT_DIR)/esri \
  $(MAGIC_FRAGMENT_DIR)/fcs \
@@ -130,7 +78,7 @@
  $(MAGIC_FRAGMENT_DIR)/finger \
  $(MAGIC_FRAGMENT_DIR)/firmware \
  $(MAGIC_FRAGMENT_DIR)/flash \
-@@ -153,6 +151,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
+@@ -156,6 +154,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
  $(MAGIC_FRAGMENT_DIR)/java \
  $(MAGIC_FRAGMENT_DIR)/javascript \
  $(MAGIC_FRAGMENT_DIR)/jpeg \
@@ -139,7 +87,7 @@
  $(MAGIC_FRAGMENT_DIR)/karma \
  $(MAGIC_FRAGMENT_DIR)/kde \
  $(MAGIC_FRAGMENT_DIR)/keepass \
-@@ -165,7 +165,6 @@ $(MAGIC_FRAGMENT_DIR)/lammps \
+@@ -168,7 +168,6 @@ $(MAGIC_FRAGMENT_DIR)/lauterbach \
  $(MAGIC_FRAGMENT_DIR)/lecter \
  $(MAGIC_FRAGMENT_DIR)/lex \
  $(MAGIC_FRAGMENT_DIR)/lif \
@@ -147,7 +95,7 @@
  $(MAGIC_FRAGMENT_DIR)/lisp \
  $(MAGIC_FRAGMENT_DIR)/llvm \
  $(MAGIC_FRAGMENT_DIR)/locoscript \
-@@ -173,7 +172,6 @@ $(MAGIC_FRAGMENT_DIR)/lua \
+@@ -176,7 +175,6 @@ $(MAGIC_FRAGMENT_DIR)/lua \
  $(MAGIC_FRAGMENT_DIR)/luks \
  $(MAGIC_FRAGMENT_DIR)/m4 \
  $(MAGIC_FRAGMENT_DIR)/mach \
@@ -155,7 +103,7 @@
  $(MAGIC_FRAGMENT_DIR)/macos \
  $(MAGIC_FRAGMENT_DIR)/magic \
  $(MAGIC_FRAGMENT_DIR)/mail.news \
-@@ -197,11 +195,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
+@@ -200,11 +198,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
  $(MAGIC_FRAGMENT_DIR)/mkid \
  $(MAGIC_FRAGMENT_DIR)/mlssa \
  $(MAGIC_FRAGMENT_DIR)/mmdf \
@@ -168,7 +116,7 @@
  $(MAGIC_FRAGMENT_DIR)/msooxml \
  $(MAGIC_FRAGMENT_DIR)/msvc \
  $(MAGIC_FRAGMENT_DIR)/msx \
-@@ -265,6 +263,8 @@ $(MAGIC_FRAGMENT_DIR)/qt \
+@@ -269,6 +267,8 @@ $(MAGIC_FRAGMENT_DIR)/r \
  $(MAGIC_FRAGMENT_DIR)/revision \
  $(MAGIC_FRAGMENT_DIR)/ringdove \
  $(MAGIC_FRAGMENT_DIR)/riff \
@@ -177,7 +125,7 @@
  $(MAGIC_FRAGMENT_DIR)/rpi \
  $(MAGIC_FRAGMENT_DIR)/rpm \
  $(MAGIC_FRAGMENT_DIR)/rpmsg \
-@@ -358,9 +358,21 @@ EXTRA_DIST = \
+@@ -365,9 +365,21 @@ EXTRA_DIST = \
  $(MAGIC_DIR)/scripts/create_filemagic_flac \
  $(MAGIC_FRAGMENTS)
  
@@ -201,7 +149,7 @@
  
  # FIXME: Build file natively as well so that it can be used to compile
  # the target's magic file; for now we bail if the local version does not match
-@@ -372,19 +384,22 @@ FILE_COMPILE = $(top_builddir)/src/file$
+@@ -379,19 +391,22 @@ FILE_COMPILE = $(top_builddir)/src/file$
  FILE_COMPILE_DEP = $(FILE_COMPILE)
  endif
  
@@ -241,7 +189,7 @@
 +#	$(FILE_COMPILE) -C -m magic
 +#	@rm -fr magic
 --- magic/Makefile.in
-+++ magic/Makefile.in	2023-07-28 09:42:01.849813866 +0000
++++ magic/Makefile.in	2026-02-27 10:51:00.600392145 +0000
 @@ -284,7 +284,7 @@ top_srcdir = @top_srcdir@
  MAGIC_FRAGMENT_BASE = Magdir
  MAGIC_DIR = $(top_srcdir)/magic
@@ -251,70 +199,70 @@
  MAGIC_FRAGMENTS = \
  $(MAGIC_DIR)/Header \
  $(MAGIC_DIR)/Localstuff \
-@@ -302,7 +302,6 @@ $(MAGIC_FRAGMENT_DIR)/animation \
- $(MAGIC_FRAGMENT_DIR)/aout \
- $(MAGIC_FRAGMENT_DIR)/apache \
- $(MAGIC_FRAGMENT_DIR)/apl \
--$(MAGIC_FRAGMENT_DIR)/apple \
- $(MAGIC_FRAGMENT_DIR)/application \
- $(MAGIC_FRAGMENT_DIR)/applix \
- $(MAGIC_FRAGMENT_DIR)/apt \
-@@ -384,7 +383,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
- $(MAGIC_FRAGMENT_DIR)/espressif \
- $(MAGIC_FRAGMENT_DIR)/esri \
- $(MAGIC_FRAGMENT_DIR)/fcs \
--$(MAGIC_FRAGMENT_DIR)/filesystems \
- $(MAGIC_FRAGMENT_DIR)/finger \
- $(MAGIC_FRAGMENT_DIR)/firmware \
- $(MAGIC_FRAGMENT_DIR)/flash \
-@@ -431,6 +429,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
- $(MAGIC_FRAGMENT_DIR)/java \
- $(MAGIC_FRAGMENT_DIR)/javascript \
- $(MAGIC_FRAGMENT_DIR)/jpeg \
-+$(MAGIC_FRAGMENT_DIR)/linux \
-+$(MAGIC_FRAGMENT_DIR)/filesystems \
- $(MAGIC_FRAGMENT_DIR)/karma \
- $(MAGIC_FRAGMENT_DIR)/kde \
- $(MAGIC_FRAGMENT_DIR)/keepass \
-@@ -443,7 +443,6 @@ $(MAGIC_FRAGMENT_DIR)/lammps \
- $(MAGIC_FRAGMENT_DIR)/lecter \
- $(MAGIC_FRAGMENT_DIR)/lex \
- $(MAGIC_FRAGMENT_DIR)/lif \
--$(MAGIC_FRAGMENT_DIR)/linux \
- $(MAGIC_FRAGMENT_DIR)/lisp \
- $(MAGIC_FRAGMENT_DIR)/llvm \
- $(MAGIC_FRAGMENT_DIR)/locoscript \
-@@ -451,7 +450,6 @@ $(MAGIC_FRAGMENT_DIR)/lua \
- $(MAGIC_FRAGMENT_DIR)/luks \
- $(MAGIC_FRAGMENT_DIR)/m4 \
- $(MAGIC_FRAGMENT_DIR)/mach \
--$(MAGIC_FRAGMENT_DIR)/macintosh \
- $(MAGIC_FRAGMENT_DIR)/macos \
- $(MAGIC_FRAGMENT_DIR)/magic \
- $(MAGIC_FRAGMENT_DIR)/mail.news \
-@@ -475,11 +473,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
- $(MAGIC_FRAGMENT_DIR)/mkid \
- $(MAGIC_FRAGMENT_DIR)/mlssa \
- $(MAGIC_FRAGMENT_DIR)/mmdf \
--$(MAGIC_FRAGMENT_DIR)/modem \
- $(MAGIC_FRAGMENT_DIR)/modulefile \
- $(MAGIC_FRAGMENT_DIR)/motorola \
- $(MAGIC_FRAGMENT_DIR)/mozilla \
- $(MAGIC_FRAGMENT_DIR)/msdos \
-+$(MAGIC_FRAGMENT_DIR)/modem \
- $(MAGIC_FRAGMENT_DIR)/msooxml \
- $(MAGIC_FRAGMENT_DIR)/msvc \
- $(MAGIC_FRAGMENT_DIR)/msx \
-@@ -543,6 +541,8 @@ $(MAGIC_FRAGMENT_DIR)/qt \
- $(MAGIC_FRAGMENT_DIR)/revision \
- $(MAGIC_FRAGMENT_DIR)/ringdove \
- $(MAGIC_FRAGMENT_DIR)/riff \
-+$(MAGIC_FRAGMENT_DIR)/apple \
-+$(MAGIC_FRAGMENT_DIR)/macintosh \
- $(MAGIC_FRAGMENT_DIR)/rpi \
- $(MAGIC_FRAGMENT_DIR)/rpm \
- $(MAGIC_FRAGMENT_DIR)/rpmsg \
-@@ -636,10 +636,22 @@ EXTRA_DIST = \
+|@@ -302,7 +302,6 @@ $(MAGIC_FRAGMENT_DIR)/animation \
+| $(MAGIC_FRAGMENT_DIR)/aout \
+| $(MAGIC_FRAGMENT_DIR)/apache \
+| $(MAGIC_FRAGMENT_DIR)/apl \
+|-$(MAGIC_FRAGMENT_DIR)/apple \
+| $(MAGIC_FRAGMENT_DIR)/application \
+| $(MAGIC_FRAGMENT_DIR)/applix \
+| $(MAGIC_FRAGMENT_DIR)/apt \
+|@@ -386,7 +385,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
+| $(MAGIC_FRAGMENT_DIR)/espressif \
+| $(MAGIC_FRAGMENT_DIR)/esri \
+| $(MAGIC_FRAGMENT_DIR)/fcs \
+|-$(MAGIC_FRAGMENT_DIR)/filesystems \
+| $(MAGIC_FRAGMENT_DIR)/finger \
+| $(MAGIC_FRAGMENT_DIR)/firmware \
+| $(MAGIC_FRAGMENT_DIR)/flash \
+|@@ -434,6 +432,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
+| $(MAGIC_FRAGMENT_DIR)/java \
+| $(MAGIC_FRAGMENT_DIR)/javascript \
+| $(MAGIC_FRAGMENT_DIR)/jpeg \
+|+$(MAGIC_FRAGMENT_DIR)/linux \
+|+$(MAGIC_FRAGMENT_DIR)/filesystems \
+| $(MAGIC_FRAGMENT_DIR)/karma \
+| $(MAGIC_FRAGMENT_DIR)/kde \
+| $(MAGIC_FRAGMENT_DIR)/keepass \
+|@@ -446,7 +446,6 @@ $(MAGIC_FRAGMENT_DIR)/lauterbach \
+| $(MAGIC_FRAGMENT_DIR)/lecter \
+| $(MAGIC_FRAGMENT_DIR)/lex \
+| $(MAGIC_FRAGMENT_DIR)/lif \
+|-$(MAGIC_FRAGMENT_DIR)/linux \
+| $(MAGIC_FRAGMENT_DIR)/lisp \
+| $(MAGIC_FRAGMENT_DIR)/llvm \
+| $(MAGIC_FRAGMENT_DIR)/locoscript \
+|@@ -454,7 +453,6 @@ $(MAGIC_FRAGMENT_DIR)/lua \
+| $(MAGIC_FRAGMENT_DIR)/luks \
+| $(MAGIC_FRAGMENT_DIR)/m4 \
+| $(MAGIC_FRAGMENT_DIR)/mach \
+|-$(MAGIC_FRAGMENT_DIR)/macintosh \
+| $(MAGIC_FRAGMENT_DIR)/macos \
+| $(MAGIC_FRAGMENT_DIR)/magic \
+| $(MAGIC_FRAGMENT_DIR)/mail.news \
+|@@ -478,11 +476,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
+| $(MAGIC_FRAGMENT_DIR)/mkid \
+| $(MAGIC_FRAGMENT_DIR)/mlssa \
+| $(MAGIC_FRAGMENT_DIR)/mmdf \
+|-$(MAGIC_FRAGMENT_DIR)/modem \
+| $(MAGIC_FRAGMENT_DIR)/modulefile \
+| $(MAGIC_FRAGMENT_DIR)/motorola \
+| $(MAGIC_FRAGMENT_DIR)/mozilla \
+| $(MAGIC_FRAGMENT_DIR)/msdos \
+|+$(MAGIC_FRAGMENT_DIR)/modem \
+| $(MAGIC_FRAGMENT_DIR)/msooxml \
+| $(MAGIC_FRAGMENT_DIR)/msvc \
+| $(MAGIC_FRAGMENT_DIR)/msx \
+|@@ -547,6 +545,8 @@ $(MAGIC_FRAGMENT_DIR)/r \
+| $(MAGIC_FRAGMENT_DIR)/revision \
+| $(MAGIC_FRAGMENT_DIR)/ringdove \
+| $(MAGIC_FRAGMENT_DIR)/riff \
+|+$(MAGIC_FRAGMENT_DIR)/apple \
+|+$(MAGIC_FRAGMENT_DIR)/macintosh \
+| $(MAGIC_FRAGMENT_DIR)/rpi \
+| $(MAGIC_FRAGMENT_DIR)/rpm \
+| $(MAGIC_FRAGMENT_DIR)/rpmsg \
+@@ -643,10 +643,22 @@ EXTRA_DIST = \
  $(MAGIC_DIR)/scripts/create_filemagic_flac \
  $(MAGIC_FRAGMENTS)
  
@@ -338,7 +286,7 @@
  # FIXME: Build file natively as well so that it can be used to compile
  # the target's magic file; for now we bail if the local version does not match
  @IS_CROSS_COMPILE_TRUE@FILE_COMPILE = file${EXEEXT}
-@@ -863,23 +875,25 @@ uninstall-am: uninstall-pkgdataDATA
+@@ -870,23 +882,25 @@ uninstall-am: uninstall-pkgdataDATA
  
  .PRECIOUS: Makefile
  
@@ -381,7 +329,7 @@
  # Tell versions [3.59,3.63) of GNU make to not export all variables.
  # Otherwise a system limit (for SysV at least) may be exceeded.
 --- src/Makefile.am
-+++ src/Makefile.am	2023-07-28 09:42:01.849813866 +0000
++++ src/Makefile.am	2026-02-27 10:51:00.600392145 +0000
 @@ -1,4 +1,4 @@
 -MAGIC = $(pkgdatadir)/magic
 +MAGIC = $(sysconfdir)/magic:$(pkgdatadir)/magic
@@ -389,7 +337,7 @@
  nodist_include_HEADERS = magic.h
  
 --- src/dcore.c
-+++ src/dcore.c	2023-07-28 09:42:01.865813574 +0000
++++ src/dcore.c	2026-02-27 10:51:00.600392145 +0000
 @@ -0,0 +1,207 @@
 +/*
 + * Show goo about ELF core files

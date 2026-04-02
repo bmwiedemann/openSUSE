@@ -1,9 +1,15 @@
---- magic/Localstuff
-+++ magic/Localstuff	2013-09-30 00:00:00.000000000 +0000
-@@ -33,3 +33,6 @@
- # File magic for Scribus, an Open Source Desktop Publishing system
- 0	string		\<SCRIBUSUTF8\ Version		Scribus Document
- 0	string		\<SCRIBUSUTF8NEW\ Version	Scribus Document
-+
-+# File magic for X11 cursor data files
+---
+ magic/Magdir/images |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- magic/Magdir/images
++++ magic/Magdir/images	2026-03-27 12:41:45.618155685 +0000
+@@ -2739,7 +2739,7 @@
+ # Type:	X11 cursor
+ # URL:	http://webcvs.freedesktop.org/mime/shared-mime-info/freedesktop.org.xml.in?view=markup
+ # From:	Mathias Brodala <info@noctus.net>
+-0	string	Xcur			X11 cursor
 +0	string		Xcur\020\000	X11 cursor data
+ 
+ # Type:	Olympus ORF raw images.
+ # URL:	https://libopenraw.freedesktop.org/wiki/Olympus_ORF

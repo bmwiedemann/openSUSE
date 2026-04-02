@@ -1,11 +1,15 @@
+---
+ magic/Localstuff |    9 +++++++++
+ 1 file changed, 9 insertions(+)
+
 --- magic/Localstuff
-+++ magic/Localstuff	2013-09-30 00:00:00.000000000 +0000
-@@ -14,3 +14,12 @@
- >33	string		>\0		(%s)
- 2	string		\000\022	TeX font metric data
- >33	string		>\0		(%s)
++++ magic/Localstuff	2026-03-27 12:53:52.840746350 +0000
+@@ -5,3 +5,12 @@
+ # $File: Localstuff,v 1.5 2007/01/12 17:38:27 christos Exp $
+ # Add any locally observed files here.  Remember:
+ # text if readable, executable if runnable binary, data if unreadable.
 +
-+# XXX some MS Structured Storage Documents such as Adobe PageMaker[tm]
++# Some MS Structured Storage Documents such as Adobe PageMaker[tm]
 +# files interfere with the Microsoft Office Document and the SSD starting
 +# sequence \320\317\021\340\241\261\032\341. Anyone who knows
 +# more details about the scheme of such SSDs and can help to extend this to all

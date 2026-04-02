@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Apr  1 09:10:47 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch file-5.47-regression.dif (boo#1261199)
+  * Fix regression in detection of magics in a buffer
+
+-------------------------------------------------------------------
+Tue Mar 31 11:06:20 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch file-5.47-fdf.dif
+  * Use tabs instead of normal white spaces in description of %FDF
+
+-------------------------------------------------------------------
+Fri Mar 27 12:59:36 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Port patches
+  * file-4.20-ssd.dif
+  * file-4.21-xcursor.dif
+  * file-5.19-clicfs.dif
+  * file-5.19-solv.dif
+  * file-5.19-zip2.0.dif
+  * file-5.28-btrfs-image.dif
+- Remove patches now upstream or solved by upstream
+  * file-4.20-xen.dif
+  * file-4.21-scribus.dif
+  * file-5.14-tex.dif
+  * file-5.19-cromfs.dif
+
+-------------------------------------------------------------------
+Fri Mar 27 11:38:17 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 5.47:
+  * Better multi-compound document identification by following the
+    order of the directories entries. (Thomas Ledoux)
+  * if stat fails, don't attempt to restore times (Steven Grubb)
+  * PR/622: Odd_Bloke: Handle negative offsets in file_buffer(),
+    when fd is not available.
+  * PR/655: jsummers: Obey str_flags in strings like we do for search
+    and regex
+  * PR/659: Pitzl: Apply MAGIC_CONTINUE to annotations; i.e. print
+    only the first, unless -k is specified.
+  * PR/592: allow + in format strings
+  * PR/592: signed operations should be done in signed context
+  * PR/578: jsummers: Don't crash on cygwin when tm_mon == -1
+  * PR/579: net147: Fix stack overrun.
+- Remove patches now upstream
+  * file-zipdata.patch
+  * boo1237209.patch
+  * file-seccomp.patch
+  * file-seccomp-ppc.patch
+  * file-5.46-tcgets2.patch
+- Port and rename patch file-5.46.dif which becomes now file-5.47.dif
+
+-------------------------------------------------------------------
 Thu Sep  4 09:29:33 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch file-5.46-tcgets2.patch from https://bugs.astron.com/view.php?id=678

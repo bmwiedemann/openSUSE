@@ -1,10 +1,10 @@
 ---
- magic/Magdir/archive |    6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ magic/Magdir/archive |    9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
 --- magic/Magdir/archive
-+++ magic/Magdir/archive	2024-11-28 08:59:31.099299217 +0000
-@@ -1793,7 +1793,11 @@
++++ magic/Magdir/archive	2026-03-27 12:57:19.380922795 +0000
+@@ -1797,7 +1797,11 @@
  0	string		PK\x07\x08PK\x03\x04	Zip multi-volume archive data, at least PKZIP v2.50 to extract
  !:mime	application/zip
  !:ext zip/cbz
@@ -15,5 +15,5 @@
 +!:mime application/unknown+zip
 +!:ext zip/cbz
  
- 0	string		PK\003\004
- !:strength +1
+ # Generic zip archives (Greg Roelofs, c/o zip-bugs@wkuvx1.wku.edu)
+ #   Next line excludes specialized formats:

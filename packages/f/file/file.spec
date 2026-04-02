@@ -1,7 +1,7 @@
 #
 # spec file for package file
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %define somajor 1
 %define libname libmagic%{somajor}
+%bcond_without  debugmagic
 
 Name:           file
 BuildRequires:  bash >= 4.0
@@ -36,7 +37,7 @@ Obsoletes:      file-64bit
 %endif
 #
 # Set Version also in python-magic.spec
-Version:        5.46
+Version:        5.47
 Release:        0
 Summary:        A Tool to Determine File Types
 License:        BSD-2-Clause
@@ -45,18 +46,16 @@ Source0:        https://www.astron.com/pub/file/file-%{version}.tar.gz
 Source3:        file-rpmlintrc
 Source4:        https://www.astron.com/pub/file/file-%{version}.tar.gz.asc
 Source5:        file.keyring
-Patch0:         file-5.46.dif
+Patch0:         file-5.47.dif
 Patch1:         file-5.19-misc.dif
+Patch2:         file-5.47-fdf.dif
+Patch3:         file-5.47-regression.dif
 Patch4:         file-4.24-autoconf.dif
-Patch5:         file-5.14-tex.dif
 Patch7:         file-4.20-ssd.dif
-Patch8:         file-4.20-xen.dif
 Patch9:         file-5.22-elf.dif
 Patch10:        file-5.19-printf.dif
 Patch12:        file-5.17-option.dif
-Patch13:        file-4.21-scribus.dif
 Patch15:        file-4.21-xcursor.dif
-Patch22:        file-5.19-cromfs.dif
 Patch25:        file-5.18-javacheck.dif
 Patch26:        file-5.19-solv.dif
 Patch27:        file-5.19-zip2.0.dif
@@ -64,11 +63,6 @@ Patch31:        file-5.19-biorad.dif
 Patch32:        file-5.19-clicfs.dif
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
-Patch42:        boo1237209.patch
-Patch43:        file-seccomp.patch
-Patch44:        file-seccomp-ppc.patch
-Patch45:        file-zipdata.patch
-Patch46:        file-5.46-tcgets2.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         magicdir    %{_datadir}/file
@@ -113,30 +107,33 @@ to develop applications that require the magic "file" interface.
 
 %prep
 %setup -q -n file-%{version}
+# f'cking python
+sed -ri 's/	/        /' python/magic.py
+%if %{with debugmagic}
 %patch -P 1  -p0 -b .misc
+%patch -P 2  -p0 -b .fdf
+%patch -P 3  -p0 -b .regress
+%endif
 %patch -P 4  -p0 -b .conf
-%patch -P 5  -p0 -b .tex
+%if %{with debugmagic}
 %patch -P 7  -p0 -b .ssd
-%patch -P 8  -p0 -b .xen
+%endif
 %patch -P 9  -p0 -b .elf
 %patch -P 10 -p0 -b .prtf
 %patch -P 12 -p1 -b .opt
-%patch -P 13 -p0 -b .scri
+%if %{with debugmagic}
 %patch -P 15 -p0 -b .xcur
-%patch -P 22 -p0 -b .cromfs
 %patch -P 25 -p0 -b .javacheck
 %patch -P 26 -p0 -b .solv
 %patch -P 27 -p0 -b .zip2.0
 %patch -P 31 -p0 -b .biorad
 %patch -P 32 -p0 -b .clicfs
+%endif
 %patch -P 37 -p1 -b .getenv
+%if %{with debugmagic}
 %patch -P 39 -p1 -b .btrfs
+%endif
 %patch -P 0 -b .0
-%patch -P 42 -p1
-%patch -P 43 -p1 -b .seccomp
-%patch -P 44 -p1 -b .ppc
-%patch -P 45 -p1 -b .zipdata
-%patch -P 46 -p1 -b .tcgets2
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
 
@@ -172,6 +169,9 @@ rm -f %{buildroot}%{_libdir}/*.la
 %check
 # Test if prctl is still allowed by the seccomp filter.
 export GLIBC_TUNABLES=glibc.mem.decorate_maps=1
+# Seek for duplets
+rm -v magic/magic.mgc
+make V=1 -C magic magic.mgc
 # Standard checks
 make check
 # Check out that the binary does not bail out:

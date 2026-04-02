@@ -6,12 +6,12 @@ Index: src/apprentice.c
 ===================================================================
 --- src/apprentice.c.orig
 +++ src/apprentice.c
-@@ -2647,7 +2647,7 @@ check_format_type(const char *ptr, int t
+@@ -2676,7 +2676,7 @@ check_format_type(const char *ptr, int t
  			}
  		} else
  			h = 0;
--		while (*ptr && strchr("-.#", *ptr) != NULL)
-+		while (*ptr && strchr("-.# +'", *ptr) != NULL)
+-		while (*ptr && strchr("+-.#", *ptr) != NULL)
++		while (*ptr && strchr("+-.# '", *ptr) != NULL)
  			ptr++;
  #define CHECKLEN() do { \
  	for (len = cnt = 0; isdigit(CAST(unsigned char, *ptr)); ptr++, cnt++) \

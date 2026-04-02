@@ -1,7 +1,11 @@
+---
+ magic/Localstuff |    8 ++++++++
+ 1 file changed, 8 insertions(+)
+
 --- magic/Localstuff
-+++ magic/Localstuff	2013-09-30 00:00:00.000000000 +0000
-@@ -53,3 +53,11 @@
- 
++++ magic/Localstuff	2026-03-27 12:58:19.727806973 +0000
+@@ -18,3 +18,11 @@
+ # libsatsolver solv file
  0	string		SOLV		Sat-solver solv file,
  >4	belong		x		version %d
 +
