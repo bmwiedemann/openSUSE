@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 02 09:42:35 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.15.2:
+  * chore: fmt
+  * fix(checksum): exclude signature and certificates
+  * ci: remove ci(deps) commits from changelog
+  * docs: add Telegram channel alongside Twitter/social links
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Tue Mar 31 08:02:56 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.15.1:

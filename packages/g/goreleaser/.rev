@@ -885,4 +885,18 @@
   * chore: auto-update generated files (forwarded request 1343861 from ph03nix)</comment>
     <requestid>1343938</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f73ab752e035c36516f9a1cbd8deb108</srcmd5>
+    <version>2.15.2</version>
+    <time>1775144665</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.15.2:
+  * chore: fmt
+  * fix(checksum): exclude signature and certificates
+  * ci: remove ci(deps) commits from changelog
+  * docs: add Telegram channel alongside Twitter/social links
+  * chore: auto-update generated files
+  * chore: auto-update generated files (forwarded request 1344331 from ph03nix)</comment>
+    <requestid>1344352</requestid>
+  </revision>
 </revisionlist>
