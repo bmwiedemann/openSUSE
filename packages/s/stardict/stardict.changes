@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  3 12:31:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add porting-yelp-tools-help-docs.patch: Stop using deprecated and
+  dropped gnome-docs-utils. Following this, drop
+  pkgconfig(gnome-doc-utils) BuildRequires.
+- Add mate-common.patch and replace gnome-common with mate-common
+  BuildRequires.
+- Fixup .changes file with fix_changelog.
+
+-------------------------------------------------------------------
 Fri Mar 21 18:12:36 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop man file for not installed stardict-editor binary.
@@ -44,7 +54,7 @@ Fri Jun 12 00:26:48 UTC 2020 - andy great <andythe_great@pm.me>
   * Update stardict_powerword_parsedata.cpp
   * Small text changes. 
 - Clean up spec file.
-  
+
 -------------------------------------------------------------------
 Thu Mar 22 18:44:53 UTC 2018 - jengelh@inai.de
 
@@ -216,7 +226,6 @@ Tue Jan 22 23:58:45 MSK 2008 kirill.kirillov@gmail.com
   (--disable-advertisement)
 
 -------------------------------------------------------------------
-
 Sat Jan 12 23:00:00 MSK 2008 kirill.kirillov@gmail.com
 - update to 3.0.1
   + dictdotcn plugin was added

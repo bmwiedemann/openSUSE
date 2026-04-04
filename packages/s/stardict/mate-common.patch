@@ -1,0 +1,27 @@
+Index: stardict-3.0.7/dict/autogen.sh
+===================================================================
+--- stardict-3.0.7.orig/dict/autogen.sh
++++ stardict-3.0.7/dict/autogen.sh
+@@ -24,14 +24,14 @@ if test -z $GNOMEDOC; then
+     exit 1
+ fi
+ 
+-#which mate-autogen || {
+-#    echo "You need to install mate-common package"
+-#    exit 1
+-#}
+-
+-which gnome-autogen.sh || {
+-    echo "You need to install gnome-common package"
++which mate-autogen || {
++    echo "You need to install mate-common package"
+     exit 1
+ }
++
++#which gnome-autogen.sh || {
++#    echo "You need to install gnome-common package"
++#    exit 1
++#}
+ # USE_GNOME2_MACROS=1
+-NOCONFIGURE=yes . gnome-autogen.sh "$@"
++NOCONFIGURE=yes . mate-autogen "$@"

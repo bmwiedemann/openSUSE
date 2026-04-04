@@ -1,7 +1,7 @@
 #
 # spec file for package stardict
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,20 +30,23 @@ Patch0:         stardict-3.0.3-fix-path-for-sounds.patch
 Patch1:         stardict-3.0.3-improve-desktop-file.patch
 # PATCH-FIX-UPSTREAM stardict-drop-autotools-gconf.patch badshah400@gmail.com -- Drop unnecessary and no longer supported autotools gconf macro
 Patch2:         stardict-drop-autotools-gconf.patch
+# PATCH-FIX-UPSTREAM porting-yelp-tools-help-docs.patch -- Stop using deprecated and dropped gnome-docs-utils
+Patch3:         porting-yelp-tools-help-docs.patch
+# PATCH-FIX-OPENSUSE mate-common.patch -- Use mate-common instead of deprecated gnome-common
+Patch4:         mate-common.patch
 BuildRequires:  7zip
 BuildRequires:  espeak-ng-compat-devel
 BuildRequires:  fdupes
 BuildRequires:  flite-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  libtool
+BuildRequires:  mate-common
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  sgml-skel
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(enchant)
-BuildRequires:  pkgconfig(gnome-doc-utils)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra)

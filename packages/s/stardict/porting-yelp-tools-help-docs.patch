@@ -1,0 +1,27 @@
+From: xiao sheng wen <atzlinux@sina.com>
+Date: Sat, 25 Dec 2021 20:14:24 +0800
+Subject: Port To New Documentation Infrastructure
+
+not use deprecated package gnome-doc-utils to generate docs
+port to use the new tools: yelp-tools
+refer:
+https://wiki.gnome.org/Initiatives/GnomeGoals/NewDocumentationInfrastructure
+.
+Author: xiao sheng wen <atzlinux@sina.com>
+Bug-Debian: https://bugs.debian.org/947540
+Forwarded: not-needed
+---
+diff --git a/dict/Makefile.am b/dict/Makefile.am
+index 24f7612..a227726 100644
+--- a/dict/Makefile.am
++++ b/dict/Makefile.am
+@@ -16,8 +16,7 @@ EXTRA_DIST = \
+ 	autogen.sh		\
+ 	stardict-installer.nsi stardict-prepare-installer.js \
+ 	omf.make		\
+-	$(INTLTOOL)	\
+-	gnome-doc-utils.make
++	$(INTLTOOL)
+ 
+ DISTCHECK_CONFIGURE_FLAGS = --disable-scrollkeeper --disable-schemas-install
+ DISTCLEANFILES = intltool-extract intltool-merge intltool-update
