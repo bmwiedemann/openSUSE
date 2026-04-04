@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  2 06:32:26 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Add a patch to fix CVE-2026-35091 and CVE-2026-35092 (bsc#1261299)(bsc#1261300)
+  * 820.patch
+
+-------------------------------------------------------------------
 Mon Jan 12 09:19:23 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Update corosync.spec:

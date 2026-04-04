@@ -40,6 +40,7 @@ URL:            http://corosync.github.io/corosync/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.tmpfiles.d.conf
 Patch0:         0001-harden-services-with-systemd-sandboxing.patch
+Patch1:         820.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
