@@ -1,0 +1,148 @@
+From 7987d0e0655b36295447e67d3825a7b2e8abe35b Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Sat, 18 Oct 2025 16:07:57 +0200
+Subject: [PATCH] chore: add appdata metainfo
+
+- add metainfo.xml file
+- add screenshot files
+- update CMakeLists.txt to update and install metainfo
+- note: screenshot URLs should be changed once this PR is merged
+  and images are available in the github repository
+
+Signed-off-by: letsfindaway <me@letsfindaway.de>
+---
+ CMakeLists.txt                                |   7 +-
+ cmake/Version.cmake                           |   3 +
+ .../ch.openboard.OpenBoard.metainfo.xml.in    |  64 ++++++++++++++++++
+ ...Board-227c6881013a1d904aca1a358400f3bd.png | Bin 0 -> 155967 bytes
+ ...Board-5d3ef7e025a1a382c1ed92fba185087a.png | Bin 0 -> 176792 bytes
+ ...Board-b93e95fc23edb6b9f70e571bc3e17b87.png | Bin 0 -> 293557 bytes
+ 6 files changed, 72 insertions(+), 2 deletions(-)
+ create mode 100644 resources/linux/ch.openboard.OpenBoard.metainfo.xml.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 33a5599b2..38a2a977a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.16)
+ # OpenBoard cmake build file
+ #
+ # Most important configuration variables:
+-#   CMAKE_INSTALL_PREFIX   
++#   CMAKE_INSTALL_PREFIX
+ #       Path to install prefix, defaults to /usr/local (see cmake documentation)
+ #       Typically set to /usr or /opt
+ #   QT_VERSION
+@@ -74,7 +74,9 @@ set(OPENBOARD_ICON_FILE     resources/images/ch.openboard.OpenBoard.svg)
+ set(OPENBOARD_DESKTOP_FILE  resources/linux/ch.openboard.OpenBoard.desktop)
+ set(OPENBOARD_MIMETYPE_FILE resources/linux/ch.openboard.openboard-ubz.xml)
+ set(OPENBOARD_MIMEICON_FILE resources/linux/ch.openboard.application-ubz.svg)
++set(OPENBOARD_METAINFO_FILE resources/linux/ch.openboard.OpenBoard.metainfo.xml)
+ 
++configure_file("${OPENBOARD_METAINFO_FILE}.in" ${OPENBOARD_METAINFO_FILE})
+ 
+ # ==========================================================================
+ # Basic compiler settings
+@@ -85,7 +87,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_AUTOUIC ON)
+ 
+-list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS 
++list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS
+     ${OPENBOARD_FORMS_DIR}
+ )
+ 
+@@ -224,6 +226,7 @@ install(FILES     ${OPENBOARD_ICON_FILE}        DESTINATION ${CMAKE_INSTALL_DATA
+ install(FILES     ${OPENBOARD_DESKTOP_FILE}     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+ install(FILES     ${OPENBOARD_MIMETYPE_FILE}    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/mime/packages)
+ install(FILES     ${OPENBOARD_MIMEICON_FILE}    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/mimetypes)
++install(FILES     ${CMAKE_BINARY_DIR}/${OPENBOARD_METAINFO_FILE}    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo)
+ 
+ 
+ # ==========================================================================
+diff --git a/cmake/Version.cmake b/cmake/Version.cmake
+index 27129a342..2c6775155 100644
+--- a/cmake/Version.cmake
++++ b/cmake/Version.cmake
+@@ -30,6 +30,9 @@ endif()
+ 
+ if(version MATCHES "VERSION_BUILD *= *([0-9]+)")
+     set(VERSION_BUILD ${CMAKE_MATCH_1})
++    string(SUBSTRING ${VERSION_BUILD} 0 2 RELEASE_YEAR)
++    string(SUBSTRING ${VERSION_BUILD} 2 2 RELEASE_MONTH)
++    string(SUBSTRING ${VERSION_BUILD} 4 2 RELEASE_DAY)
+ elseif(NOT VERSION_TYPE STREQUAL "r")
+     set(VERSION_ERROR "VERSION_BUILD")
+ endif()
+diff --git a/resources/linux/ch.openboard.OpenBoard.metainfo.xml.in b/resources/linux/ch.openboard.OpenBoard.metainfo.xml.in
+new file mode 100644
+index 000000000..b6b4d3016
+--- /dev/null
++++ b/resources/linux/ch.openboard.OpenBoard.metainfo.xml.in
+@@ -0,0 +1,64 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!-- Copyright 2019 Jonah Brüchert -->
++<component type="desktop-application">
++  <id>ch.openboard.OpenBoard</id>
++  <name>OpenBoard</name>
++  <summary>Interactive whiteboard for schools and universities</summary>
++  <summary xml:lang="es">Cuadro blanco interactivo para escuelas y universidades</summary>
++  <summary xml:lang="nb">Interaktiv tavle for skoler og universiteter</summary>
++  <summary xml:lang="pt_BR">Quadro branco interativo para escolas e universidades</summary>
++  <summary xml:lang="de">Interaktives Whiteboard für Schulen und Universitäten</summary>
++  <summary xml:lang="fr">Tableau blanc interactif pour écoles et universités</summary>
++  <summary xml:lang="it">Lavagna interattiva per la scuola e l'università</summary>
++  <project_license>GPL-3.0-only</project_license>
++  <metadata_license>CC0-1.0</metadata_license>
++  <developer id="ch.ge.edu">
++    <name>Département de l'Instruction Publique (DIP-SEM)</name>
++  </developer>
++  <description>
++    <p>OpenBoard is an open source cross-platform teaching software for interactive whiteboard designed primarily for use in schools and universities. It can be used both with interactive whiteboards or in a dual-screen setup with a pen-tablet display and a projector. It can also be used on your computer without any additional hardware.</p>
++    <p xml:lang="es">OpenBoard es un software de enseñanza de plataforma cruzada de código abierto para cuadros interactivos diseñado principalmente para uso en escuelas y universidades. Se puede utilizar con marcos interactivos o en una configuración de pantalla dual con un monitor de escritorio gráfico y un proyector.</p>
++    <p xml:lang="nb">OpenBoard er et kryssplattform og åpen kildekode undervisningsprogram for interaktive tavler, spesielt designet for bruk i skoler og universiteter. Det kan brukes både med interaktive tavler eller i et dobbelt skjermoppsett med tegnebrett med skjerm og projektor.</p>
++    <p xml:lang="pt_BR">O OpenBoard é um software de ensino de plataforma cruzada de código aberto para quadros interativos projetado principalmente para uso em escolas e universidades. Ele pode ser usado com quadros interativos ou em uma configuração de tela dupla com um monitor de mesa gráfica e um projetor.</p>
++    <p xml:lang="de">OpenBoard ist ein interaktives Open-Source-Whiteboard für den Einsatz in Schulen oder Universitäten. Es kann entweder mit einem interaktiven Whiteboard oder in einer Dual-Screen-Konfiguration mit einem digitalen Tablet und einem Beamer verwendet werden. Auch der Einsatz ohne zusätzliche externe Hardware ist möglich.</p>
++    <p xml:lang="fr">OpenBoard est un logiciel d’enseignement interactif pour TNI open source conçu pour être utilisé dans les écoles ou universités. Il peut être utilisé indifféremment avec un tableau blanc interactif ou dans une configuration à double écran avec tablette numérique et un beamer. Il peut aussi être utilisé sur votre ordinateur, sans aucun matériel supplémentaire.</p>
++    <p xml:lang="it">OpenBoard è un'applicazione di lavagna interattiva open source e multipiattaforma progettata principalmente per l'uso nelle scuole e nelle università. Può essere usata sia con lavagne interattive che con uno schermo tavoletta a penna, con o senza un'impostazione a doppio schermo, ed un proiettore.</p>
++  </description>
++  <url type="homepage">https://www.openboard.ch</url>
++  <url type="bugtracker">https://github.com/OpenBoard-org/OpenBoard/issues</url>
++  <url type="help">https://openboard.ch/support.en.html</url>
++  <url type="translate">https://github.com/OpenBoard-org/openboard/pulls</url>
++  <content_rating type="oars-1.0"/>
++  <translation type="qt">OpenBoard</translation>
++  <launchable type="desktop-id">ch.openboard.OpenBoard.desktop</launchable>
++  <supports>
++    <control>pointing</control>
++    <control>keyboard</control>
++    <control>touch</control>
++    <control>tablet</control>
++  </supports>
++  <screenshots>
++    <screenshot type="default">
++      <caption>Board mode</caption>
++      <image type="source">https://github.com/flathub/ch.openboard.OpenBoard/blob/fix-screenshots/screenshots/ch.openboard.OpenBoard-227c6881013a1d904aca1a358400f3bd.png?raw=true</image>
++    </screenshot>
++    <screenshot>
++      <caption>Web browser</caption>
++      <image type="source">https://github.com/flathub/ch.openboard.OpenBoard/blob/fix-screenshots/screenshots/ch.openboard.OpenBoard-b93e95fc23edb6b9f70e571bc3e17b87.png?raw=true</image>
++    </screenshot>
++    <screenshot>
++      <caption>File browser</caption>
++      <image type="source">https://github.com/flathub/ch.openboard.OpenBoard/blob/fix-screenshots/screenshots/ch.openboard.OpenBoard-5d3ef7e025a1a382c1ed92fba185087a.png?raw=true</image>
++    </screenshot>
++  </screenshots>
++  <releases>
++    <release version="${VERSION}" date="20${RELEASE_YEAR}-${RELEASE_MONTH}-${RELEASE_DAY}">
++      <description>
++        <p>See <a href="https://github.com/OpenBoard-org/OpenBoard/releases/tag/v${VERSION}">Release notes</a> for details about this version.</p>
++      </description>
++    </release>
++  </releases>
++  <provides>
++    <binary>openboard</binary>
++  </provides>
++</component>
+
+
