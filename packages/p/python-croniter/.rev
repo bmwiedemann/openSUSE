@@ -398,4 +398,38 @@
   * Test: use isoformat() to compare dates with timezone information.</comment>
     <requestid>1339015</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1f82ca5756af45dcd8c1441d9e3ea005</srcmd5>
+    <version>6.2.2</version>
+    <time>1775322452</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.2:
+  * Switch build backend from flit_core to hatchling with pinned
+    dependencies. [4cce160]
+  * Add PEP 639 license expression (license = &quot;MIT&quot;) to project
+    metadata. [4cce160]
+  * Pin all GitHub Actions to SHA hashes across CI workflows.
+    [4cce160]
+  * Add dependabot for automated dependency updates. [4cce160]
+  * Add zizmor workflow for CI security scanning. [4cce160]
+  * Fix get_prev skipping Feb 29 on leap years for day-of-month
+    expressions. [441a0b5, #203, @Souls-R]
+  * Add License :: OSI Approved :: MIT License classifier.
+    [270cbbc, @cdheiser]
+  * Add support for W (nearest weekday) in the day-of-month
+    field. [c79d88a]
+  * Add precision_in_seconds parameter to match() and
+    match_range() to allow overriding the default matching
+    precision. [7415d1e, #58]
+  * Add strict parameter to is_valid() and expand() for cross-
+    field validation of impossible day/month combinations.
+    [0352d48, #199]
+  * Fix memory leak by removing EXPRESSIONS global dict cache.
+    [6ebfe56, @Souls-R]
+  * Document day_or and implement_cron_bug parameters for day-of-
+    month/day-of-week interaction. [289bf73, #75]
+  * Document precision_in_seconds parameter and default precision
+    behavior for match(). [7415d1e, #58]</comment>
+    <requestid>1344506</requestid>
+  </revision>
 </revisionlist>

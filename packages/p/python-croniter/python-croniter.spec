@@ -18,18 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-croniter
-Version:        6.1.0
+Version:        6.2.2
 Release:        0
 Summary:        Python iterators for datetime objects with cron-like format
 License:        MIT
 URL:            https://github.com/kiorky/croniter
 Source:         https://files.pythonhosted.org/packages/source/c/croniter/croniter-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core >= 3.2}
+BuildRequires:  %{python_module hatchling >= 1.29.0}
+BuildRequires:  %{python_module packaging >= 26.0}
+BuildRequires:  %{python_module pathspec >= 1.0.4}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pluggy >= 1.6.0}
 BuildRequires:  %{python_module pytest >= 8.3.3}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz > 2021.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module trove-classifiers >= 2026.1.14.14}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
