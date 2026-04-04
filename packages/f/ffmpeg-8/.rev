@@ -54,4 +54,12 @@
     <comment>- Update to release 8.1</comment>
     <requestid>1340756</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4e5dc96b84e51266f8f2dd33fe1f8701</srcmd5>
+    <version>8.1</version>
+    <time>1775322331</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable VVC decoders/encoders by default.</comment>
+    <requestid>1344452</requestid>
+  </revision>
 </revisionlist>
