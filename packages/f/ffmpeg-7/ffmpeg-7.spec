@@ -680,11 +680,11 @@ LDFLAGS="%_lto_cflags" \
 	--enable-demuxers \
 	--disable-encoders \
 	--disable-decoders \
-	--disable-decoder=h264,hevc,vc1 \
+	--disable-decoder=h264,hevc,vc1,vvc \
 	--enable-encoder="$(perl -pe 's{^(\w*).*}{$1,}gs' <%_sourcedir/enable_encoders)" \
 	--enable-decoder="$(perl -pe 's{^(\w*).*}{$1,}gs' <%_sourcedir/enable_decoders)" \
 
-for i in H264 HEVC VC1; do
+for i in H264 HEVC VC1 VVC; do
 	grep -q "#define CONFIG_${i}_DECODER 0" config_components.h
 done
 %endif

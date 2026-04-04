@@ -191,4 +191,12 @@ retry submit due to git-&gt;obs autosync delays</comment>
     <comment>- Update to release 7.1.3</comment>
     <requestid>1326557</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>6e02b9ebf9b63f85ebcd7fcd8620cfd5</srcmd5>
+    <version>7.1.3</version>
+    <time>1775322391</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable VVC decoders/encoders by default.</comment>
+    <requestid>1344459</requestid>
+  </revision>
 </revisionlist>
