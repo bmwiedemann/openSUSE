@@ -1,7 +1,7 @@
 #
 # spec file for package python-colorcet
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,18 @@
 
 
 Name:           python-colorcet
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Collection of perceptually uniform colormaps
 License:        CC-BY-4.0
 URL:            https://github.com/bokeh/colorcet
 Source:         https://files.pythonhosted.org/packages/source/c/colorcet/colorcet-%{version}.tar.gz
-BuildRequires:  %{python_module param >= 1.7.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module setuptools >= 30.3.0}
+BuildRequires:  %{python_module setuptools_scm >= 6}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-param >= 1.7.0
-Requires:       python-pyct >= 0.4.4
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -53,22 +48,14 @@ holoviews, and datashader.
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/colorcet
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
-%post
-%python_install_alternative colorcet
-
-%postun
-%python_uninstall_alternative colorcet
-
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%python_alternative %{_bindir}/colorcet
 %{python_sitelib}/colorcet
 %{python_sitelib}/colorcet-%{version}.dist-info
 

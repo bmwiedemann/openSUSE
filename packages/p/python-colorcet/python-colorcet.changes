@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  3 15:36:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Minor release to remove the colorcet examples CLI and drop
+    support for Python 2.7, 3.6 and add support for 3.11, 3.12.
+  * Only register if cmap not in colormaps
+  * Drop Python 2.7 and 3.6 and add 3.11, 3.12
+  * Fix license description in about page. Issue #100.
+
+-------------------------------------------------------------------
 Fri May  9 04:41:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
