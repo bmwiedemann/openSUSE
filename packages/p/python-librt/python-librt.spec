@@ -17,7 +17,7 @@
 
 
 Name:           python-librt
-Version:        0.7.8
+Version:        0.8.1
 Release:        0
 Summary:        Mypyc runtime library
 License:        MIT
@@ -26,6 +26,7 @@ Source:         https://files.pythonhosted.org/packages/source/l/librt/librt-%{v
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module mypy_extensions}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 10:14:48 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.8.1:
+  - base64 is non-experimental now
+  - add tests for base64
+
+-------------------------------------------------------------------
 Tue Feb  3 03:45:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.7.8.
