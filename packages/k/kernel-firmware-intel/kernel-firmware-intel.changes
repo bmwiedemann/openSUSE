@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr  1 13:38:17 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260331 (git commit 441bcf2eaa2a):
+  * WHENCE: Move Dell remoteproc firmware to correct section
+
+-------------------------------------------------------------------
+Sun Mar 29 08:39:05 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260327 (git commit 85786b4413fd):
+  * linux-firmware: update firmware for qat_4xxx devices
+  * linux-firmware: update firmware for qat_402xx devices
+  * linux-firmware: update firmware for qat_420xx devices
+  * linux-firmware: qcom: Add FW blobs for DELL XPS13 9345
+
+-------------------------------------------------------------------
 Wed Mar 18 09:36:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260317 (git commit 66ca9a5b63a5):
