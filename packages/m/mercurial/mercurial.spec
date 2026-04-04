@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 # Tumbleweed
 %define pythons python3
 %global pprefix python3
@@ -37,7 +37,7 @@
 %endif
 
 Name:           mercurial
-Version:        7.2
+Version:        7.2.1
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr  1 23:17:29 UTC 2026 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.2.1
+
+  A normal bugfix release, fashionably late.
+
+  * A bunch of fixes and improvements to the test runner and CI stability
+  * Fixed a corruption and crash in branchmap v3 (8471e18f1619)
+  * Backed out making parallel streaming bundle processing the default (64053b131c0b)
+  * Fixed dirstate backup files being forgotten about (f80ad355012d)
+  * has-meta-flag: ignore censored revision when importing older bundles (1afb8f260d18)
+  * Fixed a crash in quickaccess logic when it races with commit (5104190c6e4d)
+  * Improved support for Python 3.15's alpha
+
+-------------------------------------------------------------------
+Wed Feb 25 17:56:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't use %{suse_version} > 1600, when you mean Tumbleweed. It
+  should be >= 1699 (jsc#PED-15793).
+
+-------------------------------------------------------------------
 Thu Jan 29 22:16:18 UTC 2026 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 7.2

@@ -1954,4 +1954,22 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
     <comment>- Mercurial 7.2</comment>
     <requestid>1329898</requestid>
   </revision>
+  <revision rev="221" vrev="2">
+    <srcmd5>f00549c3738dd92847a7fb101ca60456</srcmd5>
+    <version>7.2</version>
+    <time>1772127398</time>
+    <user>anag_factory</user>
+    <comment>- Don't use %{suse_version} &gt; 1600, when you mean Tumbleweed. It
+  should be &gt;= 1699 (jsc#PED-15793).
+</comment>
+    <requestid>1335162</requestid>
+  </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>afffad583eca334d99f7ac3a843e3bca</srcmd5>
+    <version>7.2.1</version>
+    <time>1775322321</time>
+    <user>dimstar_suse</user>
+    <comment>- Mercurial 7.2.1</comment>
+    <requestid>1344238</requestid>
+  </revision>
 </revisionlist>
