@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  1 17:04:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.6:
+  * Update pyproject.toml for 3.14t
+  * Update PyO3 to 0.26
+  * Make CodemodCommand's supported_transforms order
+    deterministic
+
+-------------------------------------------------------------------
 Fri Oct 24 01:47:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.5:
@@ -350,7 +359,7 @@ Sun Mar 21 15:05:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update ot 0.3.17
   Updated
-  * Optimization: reduce the number of unused parallel processes 
+  * Optimization: reduce the number of unused parallel processes
     #440
   Fixed
   * Walrus operator's left hand side now has STORE expression
@@ -371,14 +380,14 @@ Sun Jan  3 21:02:37 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
   * Don't allow out of order accesses in the global scope #431
   * Handle scope ordering in For statements #430
   * Fix for not parsing subscripts such as cast()["from"] #428
-  * Walrus operator's left hand side now has STORE expression 
+  * Walrus operator's left hand side now has STORE expression
     context #433
 - Changes in 0.3.15
   Added
   * Support Named Unicode Characters and yield in f-strings #424
   Fixed
   * Assignment/access ordering in comprehensions #423
-  * Referencing of remaining objects in cast() #422 
+  * Referencing of remaining objects in cast() #422
 - refresh skip_failing_test.patch
 
 -------------------------------------------------------------------
@@ -400,7 +409,7 @@ Sat Nov 21 00:16:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Allow generator expressions in f-strings [#419]
   * Keep track of assignment/access ordering during scope analysis
     [#413]
-  * Handle string type references in cast() during scope analysis 
+  * Handle string type references in cast() during scope analysis
     [#418]
 - 0.3.13
   Fixed
@@ -408,9 +417,9 @@ Sat Nov 21 00:16:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Support string annotations for type aliases [#401]
 - 0.3.12
   Fixed
-  * fix RemoveImportsVisitor crash when ImportAlias is 
+  * fix RemoveImportsVisitor crash when ImportAlias is
     inserted without comma [#397]
-  * Provide STORE for {Class,Function}Def.name in 
+  * Provide STORE for {Class,Function}Def.name in
     ExpressionContextProvider [#394]
 - 0.3.11
   Added
@@ -419,7 +428,7 @@ Sat Nov 21 00:16:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Update return type of ParentNodeProvider to be CSTNode [#377]
   * Add source code links to each class/function [#378]
   Fixed
-  * Removing an import alias with a trailing standalone 
+  * Removing an import alias with a trailing standalone
     comment should preserve the comment [#392]
 
 -------------------------------------------------------------------
@@ -466,7 +475,7 @@ Sat Aug  8 04:41:45 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 Thu Aug  6 09:47:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Enhance codegen to support varied versions of isort
-- Update to v0.3.8 
+- Update to v0.3.8
   * Handle type subscripts when applying annotations
   * Added FullRepoManager cache property
   * Added optional args for tox commands

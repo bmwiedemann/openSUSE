@@ -175,4 +175,25 @@
 - Reinstate running the testsuite.</comment>
     <requestid>1313292</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5ca44e896929aba2f7480ea4e6bc5b4f</srcmd5>
+    <version>1.8.6</version>
+    <time>1775322315</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.6:
+  * Update pyproject.toml for 3.14t
+  * Update PyO3 to 0.26
+  * Make CodemodCommand's supported_transforms order
+    deterministic
+
+  * Optimization: reduce the number of unused parallel processes
+  * Walrus operator's left hand side now has STORE expression
+  * Referencing of remaining objects in cast() #422
+  * Handle string type references in cast() during scope analysis
+  * fix RemoveImportsVisitor crash when ImportAlias is
+  * Provide STORE for {Class,Function}Def.name in
+  * Removing an import alias with a trailing standalone
+- Update to v0.3.8</comment>
+    <requestid>1344189</requestid>
+  </revision>
 </revisionlist>
