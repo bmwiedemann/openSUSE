@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 20:15:52 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to 12.2.0
+  - Add all new APIs and constants in libvirt 12.2.0
+  - jsc#PED-14623
+
+-------------------------------------------------------------------
 Mon Mar  2 21:52:57 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Update to 12.1.0

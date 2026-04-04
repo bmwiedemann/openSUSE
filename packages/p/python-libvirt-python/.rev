@@ -1105,4 +1105,16 @@ fix a jira reference in the changelog.
   - Add all new APIs and constants in libvirt 12.1.0</comment>
     <requestid>1337397</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>37ea27bba3bc7c827f2bedb659a181ac</srcmd5>
+    <version>12.2.0</version>
+    <time>1775322318</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 12.2.0
+
+- Update to 12.2.0
+  - Add all new APIs and constants in libvirt 12.2.0
+  - jsc#PED-14623</comment>
+    <requestid>1344220</requestid>
+  </revision>
 </revisionlist>
