@@ -36,7 +36,6 @@ BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
-BuildRequires:  python3-libxml2
 BuildRequires:  texlive-devel
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(ddjvuapi)
