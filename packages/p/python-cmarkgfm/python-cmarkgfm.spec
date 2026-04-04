@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmarkgfm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cmarkgfm
-Version:        2022.10.27
+Version:        2025.10.22
 Release:        0
 Summary:        Minimal bindings to GitHub's fork of cmark
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jonparrott/cmarkgfm
 Source:         https://files.pythonhosted.org/packages/source/c/cmarkgfm/cmarkgfm-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM cmark-gfm-13.patch gh#theacodes/cmarkgfm#63
-Patch0:         cmark-gfm-13.patch
-BuildRequires:  %{python_module cffi >= 1.0.0}
+BuildRequires:  %{python_module cffi >= 2.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 80.9.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cffi >= 1.0.0
+Requires:       python-cffi >= 2.0.0
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr  3 13:30:00 UTC 2026 - Gemini CLI <gemini@suse.com>
+
+- Update dependencies to match pyproject.toml:
+  * cffi >= 2.0.0
+  * setuptools >= 80.9.0
+
+-------------------------------------------------------------------
+Fri Apr  3 13:26:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.10.22:
+  * Use unique names for artifact uploads
+  * fix: restore inclusion of header files in sdist
+  * Added support for Python 3.14
+  * Added support for Python 3.14t (free threaded)
+  * Dropped support for Python 3.6, 3.7, and 3.8
+  * Syntax cleanup
+  * Moved move most config to `pyproject.toml`
+  * update cmark-gfm (0.29.0.gfm.6 -> 0.29.0.gfm.13)
+- drop cmark-gfm-13.patch (upstream)
+
+-------------------------------------------------------------------
 Fri May 16 09:17:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -22,11 +43,11 @@ Thu Apr 13 22:40:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Mon Nov  7 21:00:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2022.10.27: 
+- Update to 2022.10.27:
   * Build wheels for Python 3.11
   * Update cmark-gfm from 0.29.0.gfm.3 to 0.29.0.gfm.6
 
-- Update to 2022.10.26: 
+- Update to 2022.10.26:
   * Create wheels for Python 3.11
 
 -------------------------------------------------------------------
