@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 03 05:29:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.66:
+  * Added
+    - vscode: implement multiline warning range support in VS Code
+      fix simulation (7e4e70b)
+  * Fixed
+    - md075: skip pipes inside math spans to prevent false
+      positives (0420515)
+
+-------------------------------------------------------------------
 Thu Apr 02 10:34:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.65:
