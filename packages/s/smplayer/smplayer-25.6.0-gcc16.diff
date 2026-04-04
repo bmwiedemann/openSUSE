@@ -1,0 +1,37 @@
+diff -upr smplayer-25.6.0.orig/webserver/mongoose.c smplayer-25.6.0/webserver/mongoose.c
+--- smplayer-25.6.0.orig/webserver/mongoose.c   2026-02-18 10:39:07.926076884 +0000
++++ smplayer-25.6.0/webserver/mongoose.c        2026-02-18 10:44:07.148857949 +0000
+@@ -3762,7 +3762,7 @@ time_t mg_socket_if_poll(struct mg_iface
+   struct timeval tv;
+   fd_set read_set, write_set, err_set;
+   sock_t max_fd = INVALID_SOCKET;
+-  int num_fds, num_ev, num_timers = 0;
++  int num_ev, num_timers = 0;
+ #ifdef __unix__
+   int try_dup = 1;
+ #endif
+@@ -3779,12 +3779,10 @@ time_t mg_socket_if_poll(struct mg_iface
+    * e.g. timer-only "connections".
+    */
+   min_timer = 0;
+-  for (nc = mgr->active_connections, num_fds = 0; nc != NULL; nc = tmp) {
++  for (nc = mgr->active_connections; nc != NULL; nc = tmp) {
+     tmp = nc->next;
+
+     if (nc->sock != INVALID_SOCKET) {
+-      num_fds++;
+-
+ #ifdef __unix__
+       /* A hack to make sure all our file descriptos fit into FD_SETSIZE. */
+       if (nc->sock >= (sock_t) FD_SETSIZE && try_dup) {
+@@ -3843,10 +3841,6 @@ time_t mg_socket_if_poll(struct mg_iface
+
+   num_ev = select((int) max_fd + 1, &read_set, &write_set, &err_set, &tv);
+   now = mg_time();
+-#if 0
+-  DBG(("select @ %ld num_ev=%d of %d, timeout=%d", (long) now, num_ev, num_fds,
+-       timeout_ms));
+-#endif
+
+ #if MG_ENABLE_BROADCAST
+   if (num_ev > 0 && mgr->ctl[1] != INVALID_SOCKET &&
