@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  2 12:42:22 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Added patch to fix qdbus segfaults (QTBUG-145359)
+  * 0001-Ensure-custom-types-are-normalized.patch
+
+-------------------------------------------------------------------
 Mon Mar 23 10:37:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0
