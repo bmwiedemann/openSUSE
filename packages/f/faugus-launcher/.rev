@@ -299,4 +299,26 @@
   * Updated Dutch translation</comment>
     <requestid>1343589</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5dfb8393fc77f48edaddb25c31313d3f</srcmd5>
+    <version>1.17.4</version>
+    <time>1775322455</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.17.4
+- Upstream changes:
+  * Updated screenshots
+  * Updated Proton Manager screenshot
+  * Updated Portuguese translation
+  * Working directory for &quot;Run in prefix&quot; too
+  * Added working directory for buttons run
+  * Renamed GE-Proton
+  * Proton-CachyOS first
+  * Fixed path with spaces
+  * Reworked game execution
+  * Attempt to fix splash window race condition
+  * remove unused argument start_process function
+  * Remove unused imports
+  * Add Serbian Latin translations</comment>
+    <requestid>1344508</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 01 04:11:35 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.17.4
+- Upstream changes:
+  * Updated screenshots
+  * Updated Proton Manager screenshot
+  * Updated Portuguese translation
+  * Working directory for "Run in prefix" too
+  * Added working directory for buttons run
+  * Renamed GE-Proton
+  * Proton-CachyOS first
+  * Fixed path with spaces
+  * Reworked game execution
+  * Attempt to fix splash window race condition
+  * remove unused argument start_process function
+  * Remove unused imports
+  * Add Serbian Latin translations
+
+-------------------------------------------------------------------
 Sun Mar 29 18:27:02 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.17.3
