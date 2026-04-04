@@ -1,7 +1,7 @@
 #
 # spec file for package xvfb-run
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source0:        http://svn.exactcode.de/t2/trunk/package/xorg/xorg-server/xvfb-r
 Source1:        https://manpages.debian.org/testing/xvfb/xvfb-run.1.en.gz#/xvfb-run.1.gz
 # PATCH-FIX-OPENSUSE https://bugzilla.redhat.com/show_bug.cgi?id=508739#c6
 Patch0:         xvfb-run-mktemp.patch
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1261252#c2
+Patch1:         xvfb-run-boo1261252.patch
 Requires:       coreutils
 Requires:       util-linux
 Requires:       which
@@ -44,6 +46,7 @@ value of the command becomes the return value of this script.
 %prep
 cp %{SOURCE0} .
 %patch -P 0 -p0
+%patch -P 1 -p0
 
 %build
 

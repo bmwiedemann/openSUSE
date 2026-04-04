@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 09:26:44 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- xvfb-run-boo1261252.patch (boo#1261252)
+  * let Xvfb no longer ignore authority file
+  * fix syntax to parse for long options --error-file and --auth-file
+
+-------------------------------------------------------------------
 Mon Feb 26 12:26:40 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

@@ -1,0 +1,20 @@
+--- xvfb-run.sh.orig	2026-04-01 11:21:11.854748000 +0200
++++ xvfb-run.sh	2026-04-01 11:23:37.862590000 +0200
+@@ -98,7 +98,7 @@ find_free_servernum() {
+ 
+ # Parse the command line.
+ ARGS=$(getopt --options +ae:f:hn:lp:s:w: \
+-       --long auto-servernum,error-file:auth-file:,help,server-num:,listen-tcp,xauth-protocol:,server-args:,wait: \
++       --long auto-servernum,error-file:,auth-file:,help,server-num:,listen-tcp,xauth-protocol:,server-args:,wait: \
+        --name "$PROGNAME" -- "$@")
+ GETOPT_STATUS=$?
+ 
+@@ -158,7 +158,7 @@ fi
+ MCOOKIE=$(mcookie)
+ XAUTHORITY=$AUTHFILE xauth add ":$SERVERNUM" "$XAUTHPROTO" "$MCOOKIE" \
+   >"$ERRORFILE" 2>&1
+-XAUTHORITY=$AUTHFILE Xvfb ":$SERVERNUM" $XVFBARGS $LISTENTCP >"$ERRORFILE" \
++Xvfb ":$SERVERNUM" $XVFBARGS $LISTENTCP -auth $AUTHFILE >"$ERRORFILE" \
+   2>&1 &
+ XVFBPID=$!
+ sleep "$STARTWAIT"
