@@ -190,4 +190,13 @@
   * Replace pre-commit with prek in CI</comment>
     <requestid>1336182</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9bad4ce9fb65879327ff0f3b0831ed6a</srcmd5>
+    <version>2026.3</version>
+    <time>1775322320</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.3:
+  * Add colors for new thread-safety levels</comment>
+    <requestid>1344236</requestid>
+  </revision>
 </revisionlist>
