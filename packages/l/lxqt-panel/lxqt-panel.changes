@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr  3 18:14:58 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.3.3:
+  * Fixed too strict parsing of icon themes with Qt-6.11
+  * Prioritize starting strings of titles with Fancy Menu's
+    filtering
+  * Disabled shortcutselector in panel menus on Wayland and show
+    tooltip info
+  * Version check for 6.10 for filterstring
+  * Removed obselete Qt5 version check
+  * Fixed auto-hiding on dragging over Task Manager and Show
+    Desktop
+  * KeyboardInteractivityNone also for labwc >= 0.9.4
+  * Added tooltip to opacity slider to communicate value
+  * ui file cleanup
+  * Updated translations
+- Update lxqt-panel.keyring
+
+-------------------------------------------------------------------
 Wed Dec 24 16:31:22 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to version 2.3.2:

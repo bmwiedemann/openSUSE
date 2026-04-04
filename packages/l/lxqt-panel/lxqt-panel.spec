@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        LXQt desktop panel
 License:        LGPL-2.1-or-later
@@ -32,7 +32,9 @@ Patch1:         0002-panel-conf-branding.patch
 #PATCH-FIX-UPSTREAM 0003-use-wlroots-backend-with-unknown-compositors.patch
 #https://github.com/lxqt/lxqt-panel/pull/2161
 Patch2:         0003-use-wlroots-backend-with-unknown-compositors.patch
+
 BuildRequires:  cmake >= 3.5.0
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
@@ -116,25 +118,28 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 
 %install
 %{qt6_install}
-%fdupes -s %{buildroot}%{_datadir}
+%fdupes %{buildroot}%{_datadir}
 
 %find_lang %{name} --with-qt --all-name
 
 %check
-%ctest
+for i in %{buildroot}%{_datadir}/lxqt/%{name}/*.desktop; do
+  desktop-file-validate "$i"
+done
+desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}.desktop
 
 %files
 %doc AUTHORS CHANGELOG README.md
+%license LICENSE
 %dir %{_datadir}/lxqt
+%dir %{_datadir}/lxqt/panel
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_datadir}/applications/lxqt-panel.desktop
-%{_datadir}/lxqt/%{name}
-%dir %{_datadir}/lxqt/panel
 %{_datadir}/lxqt/panel/qeyes-types/
+%{_datadir}/lxqt/%{name}/
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %config %{_sysconfdir}/xdg/autostart/%{name}.desktop
-%license LICENSE
 
 %files devel
 %{_includedir}/lxqt

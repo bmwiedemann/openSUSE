@@ -1390,4 +1390,26 @@
     hyprland could make the panel crash)</comment>
     <requestid>1324377</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>6ac3df1a0c41111b443507af69d7624f</srcmd5>
+    <version>2.3.3</version>
+    <time>1775322486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.3:
+  * Fixed too strict parsing of icon themes with Qt-6.11
+  * Prioritize starting strings of titles with Fancy Menu's
+    filtering
+  * Disabled shortcutselector in panel menus on Wayland and show
+    tooltip info
+  * Version check for 6.10 for filterstring
+  * Removed obselete Qt5 version check
+  * Fixed auto-hiding on dragging over Task Manager and Show
+    Desktop
+  * KeyboardInteractivityNone also for labwc &gt;= 0.9.4
+  * Added tooltip to opacity slider to communicate value
+  * ui file cleanup
+  * Updated translations
+- Update lxqt-panel.keyring</comment>
+    <requestid>1344582</requestid>
+  </revision>
 </revisionlist>
