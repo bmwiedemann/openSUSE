@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 02 19:33:20 UTC 2026 - Lee Duncan <lduncan@suse.com>
+
+- Update to version v1.1+110.f16f944:
+  * fix lldpad netlink heap access overrun
+  * Protect uses of select() from crash on too many file descriptors
+  * Release 1.1.1 branch
+
+-------------------------------------------------------------------
 Sun Jan 14 19:16:32 UTC 2024 - lduncan@suse.com
 
 - Update to version v1.1+106.74c0600a8692 (from upstream/branch-1.1):

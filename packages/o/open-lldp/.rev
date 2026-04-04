@@ -219,4 +219,15 @@
     <comment></comment>
     <requestid>1138726</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f9f1c79384456e2416bd81507ead11ea</srcmd5>
+    <version>1.1.1+87.f16f944</version>
+    <time>1775322265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v1.1+110.f16f944:
+  * fix lldpad netlink heap access overrun
+  * Protect uses of select() from crash on too many file descriptors
+  * Release 1.1.1 branch</comment>
+    <requestid>1344492</requestid>
+  </revision>
 </revisionlist>
