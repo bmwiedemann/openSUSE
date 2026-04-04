@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Feb 21 16:58:18 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+* Update to 0.21.0.
+* Changes from 0.21.0:
+  * When importing an XML document via `orcus_xml`, import_factory's
+    `finalize()` method was previously not called which violates the
+    interface contract. This version fixes it.
+  * Added static method `has_range(std::string_view stream)` to both
+    `orcus_xml` and `orcus_json` to detect whether a given XML and JSON
+    document has at least one linkable range, respectively.
+  * Added a variant of `orcus::detect()` function that takes a document
+    content and the format type to check against. This variant only
+    checks whether the document is of the specified type, and returns
+    the result as a boolean value.
+  * The following functions now take a binary stream containing file
+    content as `std::string_view` as opposed to the previous
+    `const char*` and `size_t` pair:
+    * `orcus_ods::detect(std::string_view strm)`
+    * `orcus_xlsx::detect(std::string_view strm)`
+    * `orcus_gnumeric::detect(std::string_view strm)`
+    * `orcus_xls_xml::detect(std::string_view strm)`
+    * `orcus_parquet::detect(std::string_view strm)`
+    * `orcus_json::detect(std::string_view strm)`
+    * `orcus_xml::detect(std::string_view strm)`
+
+-------------------------------------------------------------------
 Mon Sep 22 11:34:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Don't require the libboost_system-devel stub removed in boost 1.89

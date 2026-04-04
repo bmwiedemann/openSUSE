@@ -1,7 +1,7 @@
 #
 # spec file for package liborcus
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%define libname liborcus-0_20-0
+%define libname liborcus-0_21-0
 %if 0%{?gcc_version} < 13
 %define with_gcc 13
 %endif
 %bcond_without tests
 Name:           liborcus
-Version:        0.20.2
+Version:        0.21.0
 Release:        0
 Summary:        Spreadsheet file processing library
 License:        MPL-2.0
