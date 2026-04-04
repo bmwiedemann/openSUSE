@@ -252,4 +252,12 @@
     <comment>- Enable testsuite for s390x</comment>
     <requestid>1333188</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e54346e18cd23de2c807913deae2814d</srcmd5>
+    <version>1.10.5</version>
+    <time>1775322264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.10.5</comment>
+    <requestid>1344486</requestid>
+  </revision>
 </revisionlist>

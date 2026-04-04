@@ -1,7 +1,7 @@
 #
 # spec file for package pv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pv
-Version:        1.10.3
+Version:        1.10.5
 Release:        0
 Summary:        Tool for monitor the progress of data through pipes
 License:        GPL-3.0-or-later

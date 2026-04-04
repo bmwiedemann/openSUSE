@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  3 14:15:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.10.5
+  * When using --size @PATH, PATH can be a directory, and the
+    total size of all files within it will be used.
+  * When using --bits with --gauge, do not incorrectly multiply
+    the rate twice.
+
+-------------------------------------------------------------------
 Sun Feb 15 11:46:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable testsuite for s390x
