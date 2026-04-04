@@ -1,0 +1,30 @@
+Do not include impidevice number in pid file
+
+ipmievd can only handle one device interface at a time.
+It can be started only once via systemd.
+
+Which device can be configured via:
+/etc/ipmievd
+Passing e.g. -d 1 for:
+/dev/ipmi/1 or /dev/ipmidev/1
+
+Cut off the device interface number from the pidfile
+to always be unique.
+
+Signed-off-by: Thomas Renninger <trenn@suse.de>
+
+---
+ src/ipmievd.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/ipmievd.c
++++ b/src/ipmievd.c
+@@ -703,7 +703,7 @@
+ 	mode_t oldumask;
+ 
+ 	memset(pidfile, 0, 64);
+-	sprintf(pidfile, "%s%d", DEFAULT_PIDFILE, eintf->intf->devnum);
++	sprintf(pidfile, "%s", DEFAULT_PIDFILE);
+ 
+ 	for (i = 0; i < argc; i++) {
+ 		if (strcasecmp(argv[i], "help") == 0) {

@@ -420,4 +420,12 @@ soonish so that we can switch the default compiler. (forwarded request 1186610 f
     <comment></comment>
     <requestid>1219793</requestid>
   </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>eb0e9f222ab4bce843d6b465fe7339b1</srcmd5>
+    <version>1.8.19.13.gbe11d94</version>
+    <time>1775322304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344121</requestid>
+  </revision>
 </revisionlist>

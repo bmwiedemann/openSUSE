@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 30 09:03:26 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- Fix bad pid file creation in ipmievd by removing the interface
+  number from the file name (bsc#1259310)
+A fix_pid_file.patch
+- Use manual service instead of localonly
+
+-------------------------------------------------------------------
 Wed Oct 30 12:32:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks (PED-266).
