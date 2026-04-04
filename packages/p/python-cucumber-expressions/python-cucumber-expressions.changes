@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  3 13:35:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 19.0.0:
+  * [Python] PEP 639 licence metadata specification
+  * [Python] Remove support for end-of-life Python 3.8 and 3.9
+
+-------------------------------------------------------------------
 Thu Nov 20 08:32:54 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Initial version, 18.0.1, needed for python-behave

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cucumber-expressions
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           python-cucumber-expressions
-Version:        18.0.1
+Version:        19.0.0
 Release:        0
 Summary:        Cucumber Expressions - a simpler alternative to Regular Expressions
 License:        MIT
 URL:            https://github.com/cucumber/cucumber-expressions
 Source:         https://github.com/cucumber/cucumber-expressions/archive/refs/tags/v%{version}.tar.gz#/cucumber-expressions-%{version}.tar.gz
-BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module PyYAML >= 6.0.3}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 8.4.2}
+BuildRequires:  %{python_module uv-build >= 0.9.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
