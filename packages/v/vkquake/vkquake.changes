@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  3 08:44:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.34.0
+  * This is a fix release for a blocking bug where AMD RT-capable
+    cards were unable to start the game at all.
+
+-------------------------------------------------------------------
 Fri Mar 27 18:43:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.34.0
