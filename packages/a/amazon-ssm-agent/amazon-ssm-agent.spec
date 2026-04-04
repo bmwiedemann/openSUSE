@@ -17,18 +17,15 @@
 
 
 Name:           amazon-ssm-agent
-Version:        3.3.3598.0
+Version:        3.3.4121.0
 Release:        0
 Summary:        Amazon Remote System Config Management
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aws/amazon-ssm-agent
 Source0:        https://github.com/aws/amazon-ssm-agent/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - Fix an SSH client process terminating when receiving an unexpected
-# message type in response to a key listing or signing request (CVE-2025-47913)
-# Partial patch taken from https://cs.opensource.google/go/x/crypto/+/559e062ce8bfd6a39925294620b50906ca2a6f95
-Patch0:         CVE-2025-47913.patch
-BuildRequires:  go >= 1.24
+Source1:        amazon-ssm-agent.tmpfiles
+BuildRequires:  golang(API) >= 1.25.8
 BuildRequires:  pkgconfig(systemd)
 Requires:       systemd
 Provides:       bundled(golang(github.com/Microsoft/go-winio))
@@ -99,9 +96,6 @@ environment that are configured for Systems Manager.
 
 %prep
 %setup -q
-pushd vendor/golang.org/x/crypto
-%patch -P0 -p1
-popd
 sed -i -e 's#const[ \s]*Version.*#const Version = "%{version}"#g' agent/version/version.go
 sed -i 's#/bin/#/sbin/#' packaging/linux/amazon-ssm-agent.service
 sed -i 's#var defaultWorkerPath = "/usr/bin/"#var defaultWorkerPath = "/usr/sbin/"#' agent/appconfig/constants_unix.go
@@ -125,8 +119,6 @@ CGO_ENABLED=0 go build -ldflags "-s -w -extldflags=-Wl,-z,now,-z,relro,-z,defs" 
 %install
 install -d -m 755 %{buildroot}%{_sbindir}
 install -d -m 755 %{buildroot}%{_sysconfdir}/amazon/ssm
-install -d -m 755 %{buildroot}%{_localstatedir}/log/amazon/ssm
-install -d -m 755 %{buildroot}%{_localstatedir}/lib/amazon/ssm
 install -m 755 bin/amazon-ssm-agent %{buildroot}%{_sbindir}
 install -m 755 bin/ssm-agent-worker %{buildroot}%{_sbindir}
 install -m 755 bin/ssm-cli %{buildroot}%{_sbindir}
@@ -139,20 +131,23 @@ cp seelog_unix.xml %{buildroot}%{_sysconfdir}/amazon/ssm/seelog.xml.template
 cp amazon-ssm-agent.json.template %{buildroot}%{_sysconfdir}/amazon/ssm/
 install -m 644 packaging/linux/amazon-ssm-agent.service %{buildroot}%{_unitdir}
 
+mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/tmpfiles.d/amazon-ssm-agent.conf
+
+%posttrans
+%tmpfiles_create amazon-ssm-agent.conf
+
 %files
 %defattr(-,root,root,-)
 %dir %{_sysconfdir}/amazon
 %dir %{_sysconfdir}/amazon/ssm
-%dir %{_localstatedir}/log/amazon
-%dir %{_localstatedir}/lib/amazon
 %license LICENSE
 %doc CONTRIBUTING.md NOTICE.md README.md RELEASENOTES.md
 %config(noreplace) %{_sysconfdir}/amazon/ssm/amazon-ssm-agent.json.template
 %config(noreplace) %{_sysconfdir}/amazon/ssm/seelog.xml.template
 %{_sbindir}/*
 %{_unitdir}/%{name}.service
-%{_localstatedir}/lib/amazon/ssm
-%ghost %{_localstatedir}/log/amazon/ssm/
+%{_tmpfilesdir}/amazon-ssm-agent.conf
 
 %pre
 %service_add_pre %{name}.service

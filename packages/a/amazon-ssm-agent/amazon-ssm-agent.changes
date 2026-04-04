@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Mar 31 09:11:38 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.4121.0
+  * Add read-only version check prior to install and uninstall
+    in case of occupied package manager locks
+  * Add ANSI processing for CloudWatch and S3 log
+  * Upgrade go-git to v5.17.0 and cloudflare/circl to v1.6.3
+    to fix CVE-2026-1229
+- Switch to systemd-tmpfiles to store runtime data (jsc#PED-14843)
+
+-------------------------------------------------------------------
+Thu Mar 26 09:50:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.4108.0
+  * Disable Go 1.25 container-aware GOMAXPROCS to prevent holding
+    cgroup file descriptors open
+  * Upgrade Go version to 1.25.8
+- from version 3.3.3883.0
+  * Document CommandWorkerBufferLimit config
+  * Include package update in Dockerfile
+  * Reduce CloudWatch event message length threshold
+  * Upgrade Go version to 1.25.7
+  * Update github.com/go-git/go-git/v5 to 5.16.5
+  * Update greengrass version
+- from version 3.3.3797.0
+  * Update Golang version to 1.24.12
+  * Updating golang.org/x/crypto from v0.37.0 to v0.47.0, golang.org/x/net
+    from v0.39.0 to v0.48.0 and golang.org/x/sys from v0.32.0 to v0.40.0
+  * Categorize integration tests by adding new tags to split fast and slow ones
+  * Fix bug where IP field being empty string and causing UII API failure
+- Drop CVE-2025-47913.patch, merged upstream
+- Raise minimum Go version to 1.25.8 in BuildRequires
+
+-------------------------------------------------------------------
 Mon Jan  5 12:39:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.3598.0

@@ -562,4 +562,38 @@
   * Upgrade Go version to 1.24.11 (forwarded request 1325409 from glaubitz)</comment>
     <requestid>1325414</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f0a0ca2caf06281e99b8d94b22a15322</srcmd5>
+    <version>3.3.4108.0</version>
+    <time>1774555798</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.4108.0
+  * Disable Go 1.25 container-aware GOMAXPROCS to prevent holding
+    cgroup file descriptors open
+  * Upgrade Go version to 1.25.8
+- from version 3.3.3883.0
+  * Document CommandWorkerBufferLimit config
+  * Include package update in Dockerfile
+  * Reduce CloudWatch event message length threshold
+  * Upgrade Go version to 1.25.7
+  * Update github.com/go-git/go-git/v5 to 5.16.5
+  * Update greengrass version
+- from version 3.3.3797.0
+  * Update Golang version to 1.24.12
+  * Updating golang.org/x/crypto from v0.37.0 to v0.47.0, golang.org/x/net
+    from v0.39.0 to v0.48.0 and golang.org/x/sys from v0.32.0 to v0.40.0
+  * Categorize integration tests by adding new tags to split fast and slow ones
+  * Fix bug where IP field being empty string and causing UII API failure
+- Drop CVE-2025-47913.patch, merged upstream
+- Raise minimum Go version to 1.25.8 in BuildRequires (forwarded request 1342746 from glaubitz)</comment>
+    <requestid>1342766</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1b0a3d255132c61f14efeda1705157dc</srcmd5>
+    <version>3.3.4121.0</version>
+    <time>1775322404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344470</requestid>
+  </revision>
 </revisionlist>
