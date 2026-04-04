@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Apr  3 15:21:10 UTC 2026 - munix9@googlemail.com
+
+- Update to v0.9.9
+  * Playlist shuffle now visibly reorders the items
+  * New option to quit when playback is finished
+  * Fix: dragging volume slider did not adjust volume
+  * Fix: AppImage failed to run if Qt Bearer plugin is installed
+  * Other minor bug fixes
+
+- Update to v0.9.8.7
+  * Cannot play after stopped fix
+  * Start in paused state fix
+  * Random crash on startup fix
+  * Other minor bug fixes
+
+- Update to v0.9.8
+  * %L for playlist duration tag
+  * Qt style selector in preferences
+  * Many other bug fixes
+
+- Update to v0.9.7.1
+  * Paused state lock fix
+
+- Fix build error "convert: attempt to perform an operation not
+  allowed by the security policy `SVG' @ 
+  error/constitute.c/IsCoderAuthorized/461."
+  * Add "BuildRequires:  ImageMagick-config-7-upstream-open"
+- Remove 0001-playbackEngineVlc-build-fix.patch (solved upstream)
+- Remove 0001-taglib-2.0-compatibility.patch (solved upstream)
+- Clean up spec file
+
+-------------------------------------------------------------------
 Wed Feb  7 08:31:49 UTC 2024 - Dave Plater <davejplater@gmail.com>
 
 - Update to v0.9.7

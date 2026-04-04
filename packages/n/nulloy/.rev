@@ -99,4 +99,12 @@ Fixed plugin directory (problem mentioned in SR 342476).</comment>
 - Fix taglib plugin build with 0001-taglib-2.0-compatibility.patch</comment>
     <requestid>1145591</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5e82341228f4dd5a9e4e0ceb1540f745</srcmd5>
+    <version>0.9.9</version>
+    <time>1775322469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344538</requestid>
+  </revision>
 </revisionlist>

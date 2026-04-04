@@ -1,7 +1,7 @@
 #
 # spec file for package nulloy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,24 +19,19 @@
 %bcond_without vlc
 %bcond_without taglib
 
-#https://github.com/nulloy/nulloy/archive/refs/tags/0.9.5.tar.gz
-
 Name:           nulloy
-Version:        0.9.7
+Version:        0.9.9
 Release:        0
 Summary:        Music player with a Waveform Progress Bar
 License:        GPL-3.0-only
-Group:          Productivity/Multimedia/Sound/Players
-URL:            http://nulloy.com
-Source:         https://github.com/nulloy/nulloy/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-taglib-2.0-compatibility.patch
-Patch1:         0001-playbackEngineVlc-build-fix.patch
-BuildRequires:  clang
+URL:            https://nulloy.com/
+Source:         https://github.com/nulloy/nulloy/releases/download/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  ImageMagick-config-7-upstream-open
+BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  zip
 BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.6
@@ -57,7 +52,6 @@ BuildRequires:  pkgconfig(taglib)
 Recommends:     %{name}-taglib
 %endif
 Recommends:     %{name}-gstreamer
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Nulloy is a opensource, simple and clean music player with a Waveform
@@ -66,7 +60,6 @@ Progressbar. It is written in C++ using QT.
 %if %{with taglib}
 %package taglib
 Summary:        Taglib plugin for %{name}
-Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}
 
 %description taglib
@@ -76,7 +69,6 @@ with a Waveform Progressbar.
 
 %package gstreamer
 Summary:        Gstreamer plugin for %{name}
-Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}
 Recommends:     gstreamer-plugins-good
 
@@ -87,7 +79,6 @@ music player with a Waveform Progressbar.
 %if %{with vlc}
 %package vlc
 Summary:        VLC plugin for %{name}
-Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}
 
 %description vlc
@@ -96,8 +87,7 @@ music player with a Waveform Progressbar.
 %endif
 
 %prep
-%setup -qn %{name}-%{version}
-%autopatch -p1
+%autosetup -p1
 
 %build
 # -Wno-error=return-type
@@ -119,55 +109,36 @@ LRELEASE=lrelease-qt5 \
 	--no-taglib \
 %endif
 	--libdir "%{_lib}"
-
-make %{?_smp_mflags}
+%make_build
 
 %install
-CFLAGS="%{optflags}" \
-CXXFLAGS="%{optflags}" \
-QMAKE=qmake-qt5 \
-LRELEASE=lrelease-qt5 \
-./configure \
-	--no-update-check \
-	--prefix %{buildroot}%{_prefix} \
-%if %{with vlc}
-	--vlc \
-%endif
-%if %{with taglib}
-	--gstreamer-tagreader \
-%else
-	--no-taglib \
-%endif
-	--libdir "%{_lib}"
+%make_install INSTALL_ROOT="%{buildroot}"
 
-%makeinstall
-#cp -v .tmp/nulloy.svg %{buildroot}%{_datadir}/icons/hicolor/*/apps/
-%suse_update_desktop_file %{name}
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog THANKS
+%doc AUTHORS ChangeLog README.md THANKS
 %license LICENSE.GPL3
 %{_bindir}/nulloy
 %{_datadir}/applications/nulloy.desktop
-%{_datadir}/icons/hicolor/*/apps/nulloy.svg
-%{_datadir}/nulloy
+%{_datadir}/icons/hicolor/scalable/apps/nulloy.svg
+%dir %{_datadir}/nulloy
+%{_datadir}/nulloy/i18n
+%{_datadir}/nulloy/skins
 %dir %{_libdir}/nulloy
 %dir %{_libdir}/nulloy/plugins
 
 %if %{with taglib}
 %files taglib
-%defattr(-,root,root)
 %{_libdir}/nulloy/plugins/libplugin_taglib.so
 %endif
 
 %files gstreamer
-%defattr(-,root,root)
 %{_libdir}/nulloy/plugins/libplugin_gstreamer.so
 
 %if %{with vlc}
 %files vlc
-%defattr(-,root,root)
 %{_libdir}/nulloy/plugins/libplugin_vlc.so
 %endif
 
