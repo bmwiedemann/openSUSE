@@ -1,7 +1,7 @@
 #
 # spec file for package libreoffice
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%ifarch %{ix86}
+# zstd payload compression OOMs on 32-bit during package creation
+# use gzip level 1 (streaming, minimal memory footprint)
+%define _binary_payload w1.gzdio
+%endif
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 # Urls
@@ -85,11 +91,8 @@
 %bcond_with system_gpgme
 %bcond_with system_curl
 %endif
-%if 0%{?gcc_version} < 12
-%global with_gcc 12
-%endif
 Name:           libreoffice
-Version:        25.8.3.2
+Version:        26.2.2.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -109,6 +112,9 @@ Source99:       %{name}-rpmlintrc
 Source100:      %{name}.changes
 # prebuilt extensions
 Source402:      %{external_url}/b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_0.9.5.oxt
+# external sources we always need
+Source403:      %{external_url}/afdko-4.0.3.tar.gz
+Source404:      %{external_url}/antlr4-cpp-runtime-4.13.2-source.zip
 # hsqldb simply does not work with new system version, but luckily we migrate to firebird
 Source2002:     %{external_url}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip
 Provides:       bundled(hsqldb) = 1.8.0
@@ -118,11 +124,11 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-7012.tar.bz2
+Source2008:     %{external_url}/pdfium-7471.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz
+Source2010:     %{external_url}/skia-m142-f4ed99d2443962782cf5f8b4dd27179f131e7cbe.tar.xz
 # The following dependencies are for building JFreeReport, this fixes bsc#1195634
 Source2011:     %{external_url}/39bb3fcea1514f1369fcfc87542390fd-sacjava-1.3.zip
 Source2012:     %{external_url}/eeb2c7ddf0d302fba4bfc6e97eac9624-libbase-1.1.6.zip
@@ -150,12 +156,6 @@ Patch10:        fix_gtk_popover_on_3.20.patch
 Patch11:        fix_webp_on_sle12_sp5.patch
 # PATCH-FIX-SUSE Fix make distro-pack-install
 Patch15:        fix-sdk-idl.patch
-# PATCH-FIX-UPSTREAM
-Patch16:        boost-1_89_0.patch
-# PATCH-FIX-UPSTREAM
-Patch17:        fix_poppler_26.01.0.patch
-# PATCH-FIX-UPSTREAM
-Patch18:        fix_poppler_26.02.0.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -173,8 +173,10 @@ BuildRequires:  awk
 BuildRequires:  bison
 BuildRequires:  bsh2
 BuildRequires:  cups-devel
+BuildRequires:  fast_float-devel
 BuildRequires:  fixmath-devel
 BuildRequires:  libwebp-devel
+BuildRequires:  md4c-devel
 %if 0%{?suse_version} > 1500
 BuildRequires:  strip-nondeterminism
 %endif
@@ -280,7 +282,7 @@ BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
 BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.21
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
-BuildRequires:  pkgconfig(liborcus-0.20) >= 0.20.0
+BuildRequires:  pkgconfig(liborcus-0.21) >= 0.21.0
 BuildRequires:  pkgconfig(libpagemaker-0.0)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpq)
@@ -378,8 +380,8 @@ BuildRequires:  libmariadb-devel
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(libopenjp2)
 %endif
-BuildRequires:  gcc%{?with_gcc}
-BuildRequires:  gcc%{?with_gcc}-c++
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  java-devel >= 1.8
 %if 0%{?suse_version}
 # needed by python3_sitelib
@@ -1127,9 +1129,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch -P 11 -p1
 %endif
 %patch -P 15 -p1
-%patch -P 16 -p1
-%patch -P 17 -p1
-%patch -P 18 -p1
 %patch -P 990 -p1
 %patch -P 991 -p1
 %if 0%{?suse_version} < 1550
@@ -1182,19 +1181,15 @@ elif [ -f %{_distconfdir}/profile.d/alljava.sh ]; then
 fi
 # use RPM_OPT_FLAGS, ...
 # remove big debugsymbols as we simply consume too much space
-%if %{with lto}
-ARCH_FLAGS="`echo %{optflags} -flifetime-dse=1 | sed -e 's/^-g /-g1 /g' -e 's/ -g / -g1 /g' -e 's/ -g$/ -g1/g'`"
-%else
-ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g /-g1 /g' -e 's/ -g / -g1 /g' -e 's/ -g$/ -g1/g'`"
-%endif
-CFLAGS="$ARCH_FLAGS -fPIC -fstack-protector-all -D_FORTIFY_SOURCE=1"
-CXXFLAGS="-std=c++20 $ARCH_FLAGS"
-export ARCH_FLAGS CFLAGS CXXFLAGS
 
-%if 0%{?with_gcc}
-export CC=gcc-%{with_gcc}
-export CXX=g++-%{with_gcc}
-%endif
+### %if %{with lto}
+### ARCH_FLAGS="`echo %{optflags} -flifetime-dse=1 | sed -e 's/^-g /-g1 /g' -e 's/ -g / -g1 /g' -e 's/ -g$/ -g1/g'`"
+### %else
+### ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g /-g1 /g' -e 's/ -g / -g1 /g' -e 's/ -g$/ -g1/g'`"
+### %endif
+### CFLAGS="$ARCH_FLAGS -fPIC -fstack-protector-all -D_FORTIFY_SOURCE=1"
+### CXXFLAGS="-std=c++20 $ARCH_FLAGS"
+### export ARCH_FLAGS CFLAGS CXXFLAGS
 
 # Fake the epoch stuff in generated zip files
 export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/%{name}.changes | tail -n 1 | cut -d- -f1 )" +%%s)
@@ -1275,6 +1270,7 @@ export NOCONFIGURE=yes
         --without-myspell-dicts \
         --with-jdk-home=$JAVA_HOME \
         --without-system-java-websocket \
+        --without-system-afdko \
         --with-webdav=curl \
         --with-beanshell-jar=%{_datadir}/java/bsh2/bsh.jar \
         --with-ant-home=%{_datadir}/ant \
@@ -1337,7 +1333,7 @@ export NOCONFIGURE=yes
         --enable-symbols \
         --with-gdrive-client-secret="${google_default_client_secret}" \
         --with-gdrive-client-id="${google_default_client_id}" \
-%ifnarch s390x ppc64 ppc
+%ifnarch s390x ppc64 ppc %{ix86}
         --enable-skia \
 %else
         --disable-skia \

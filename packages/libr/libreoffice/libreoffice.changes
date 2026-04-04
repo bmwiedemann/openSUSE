@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Mar 31 23:24:22 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix i586 build by lowering the memory requirements for RPM compression. 
+
+-------------------------------------------------------------------
+Mon Mar 30 20:45:59 UTC 2026 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 26.2.2.2:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/26.2.2/RC1
+    https://wiki.documentfoundation.org/Releases/26.2.2/RC2 
+- Remove fix_poppler_26.02.0.patch (no longer needed)
+
+-------------------------------------------------------------------
+Sun Feb 22 19:59:20 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 26.2.1.1:
+  * Release notes from 26.2.0:
+    https://wiki.documentfoundation.org/Releases/26.2.0/Beta1
+    https://wiki.documentfoundation.org/Releases/26.2.0/RC1
+    https://wiki.documentfoundation.org/Releases/26.2.0/RC2
+    https://wiki.documentfoundation.org/Releases/26.2.0/RC3
+- Refresh fix-sdk-idl.patch
+- Remove boost-1_89_0.patch (no longer needed)
+- Remove fix_poppler_26.01.0.patch (no longer needed)
+- Update pdfium from 7012 to 7471
+- Update skia
+  from m136-28685d899b0a35894743e2cedad4c9f525e90e1e
+  to m142-f4ed99d2443962782cf5f8b4dd27179f131e7cbe
+- Add afdko-4.0.3.tar.gz
+- Add antlr4-cpp-runtime-4.13.2-source.zip
+
+-------------------------------------------------------------------
 Tue Feb 17 22:07:01 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Poppler 26.01.0/26.02.0 (boo#1257664):

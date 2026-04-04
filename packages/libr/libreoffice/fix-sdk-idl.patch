@@ -1,7 +1,7 @@
-Index: libreoffice-7.5.1.2/bin/distro-install-sdk
+Index: libreoffice-26.2.1.1/bin/distro-install-sdk
 ===================================================================
---- libreoffice-7.5.1.2.orig/bin/distro-install-sdk
-+++ libreoffice-7.5.1.2/bin/distro-install-sdk
+--- libreoffice-26.2.1.1.orig/bin/distro-install-sdk
++++ libreoffice-26.2.1.1/bin/distro-install-sdk
 @@ -17,14 +17,12 @@ if test -d $DESTDIR$INSTALLDIR/sdk ; the
      # relative paths to $DESTDIR$INSTALLDIR/sdk/setting and it does not work via
      # a symlink
