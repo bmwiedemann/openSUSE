@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  2 06:17:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.16.1
+  * Fix create_context offset when opening a dir/file.
+  * Fix Memory Leaks in Structure and Structure Subclasses.
+  * Fix copyfile fallback when server-side SMB copy is unsupported.
+  * Handle ECONNABORTED and avoid joining the current thread.
+
+-------------------------------------------------------------------
 Mon Feb  9 12:03:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.16.0
