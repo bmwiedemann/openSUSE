@@ -500,4 +500,16 @@
     <comment></comment>
     <requestid>1318259</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>abd5acb9570be47d42f97164bb5904b1</srcmd5>
+    <version>3.8.1</version>
+    <time>1775322413</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.1:
+  * fixed critial findings in C Extension Analysis Report, see
+  * add tests, in particular devel/test_capi.py
+
+- Enable sle15_python_module_pythons.</comment>
+    <requestid>1344479</requestid>
+  </revision>
 </revisionlist>

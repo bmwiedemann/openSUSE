@@ -1,7 +1,7 @@
 #
 # spec file for package python-bitarray
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bitarray
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        Efficient Arrays of Booleans
 License:        Python-2.0
@@ -26,7 +26,7 @@ URL:            https://github.com/ilanschnell/bitarray
 Source:         https://github.com/ilanschnell/bitarray/archive/%{version}.tar.gz#/bitarray-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 42.0.0}
 BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 BuildRequires:  %{python_module dbm}

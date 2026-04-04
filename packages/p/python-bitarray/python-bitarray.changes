@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  3 13:41:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.1:
+  * fixed critial findings in C Extension Analysis Report, see
+  * add tests, in particular devel/test_capi.py
+
+-------------------------------------------------------------------
 Mon Nov 17 09:31:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.8.0
@@ -195,7 +202,7 @@ Mon Oct 28 11:36:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Sep 30 19:41:46 UTC 2024 - Guang Yee <gyee@suse.com>
 
-- Enable sle15_python_module_pythons. 
+- Enable sle15_python_module_pythons.
 
 -------------------------------------------------------------------
 Mon Jan  8 20:42:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
