@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  3 17:13:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.1:
+  * Work around missing support for metadata 2.4 in pkginfo with
+    Python 3.7.
+  * The stored basic authentication credentials are now correctly
+    applied to HTTP API URLs containing a query string.
+- drop fix-tests.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Feb  4 14:04:07 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix tests, add fix-tests.patch upstream patch,
@@ -20,7 +30,7 @@ Thu Oct  3 10:50:15 UTC 2024 - Markéta Machová <mmachova@suse.com>
 - update to 7.1.0
   * Require build>=0.7.0 to prevent import error with older versions.
   * Provide proper error message if the API request for devpi use fails.
-  * Fix #1011: change HTTP status codes >=400 to use self.fatal instead 
+  * Fix #1011: change HTTP status codes >=400 to use self.fatal instead
     of raw SystemExit, protect 403 and 404 errors from SystemExit
   * Support using various kinds of devpi tools with pyproject.toml.
 

@@ -26,14 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-devpi-client%{psuffix}
-Version:        7.2.0
+Version:        7.2.1
 Release:        0
 Summary:        Client for devpi
 License:        MIT
 URL:            https://github.com/devpi/devpi
-Source:         https://files.pythonhosted.org/packages/source/d/devpi-client/devpi-client-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-tests.patch -- gh#devpi/devpi@408273fb7755
-Patch0:         fix-tests.patch
+Source:         https://files.pythonhosted.org/packages/source/d/devpi-client/devpi_client-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -46,8 +44,12 @@ Requires:       python-iniconfig
 Requires:       python-pkginfo >= 1.10.0
 Requires:       python-platformdirs
 Requires:       python-pluggy >= 0.6.0
+Requires:       python-requests >= 2.3.0
 Requires:       python-tox >= 3.1.0
 Requires:       python-virtualenv
+%if %{python_version_nodots} < 311
+Requires:       python-tomli
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     git-core
@@ -62,6 +64,10 @@ BuildRequires:  %{python_module devpi-common >= 4}
 BuildRequires:  %{python_module devpi-server}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.3.0}
+%if %{python_version_nodots} < 311
+BuildRequires:  %{python_module tomli}
+%endif
 BuildRequires:  git-core
 %endif
 # /SECTION
@@ -73,7 +79,7 @@ indexes, uploading to and installing from indexes, as well as a "test" command
 for invoking tox.
 
 %prep
-%autosetup -p1 -n devpi-client-%{version}
+%autosetup -p1 -n devpi_client-%{version}
 rm tox.ini
 
 sed -i 's/"python \(setup.py[^"]*\)"/(sys.executable + " \1")/' testing/test_upload.py

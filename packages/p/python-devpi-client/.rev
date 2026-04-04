@@ -265,4 +265,19 @@
   gh#devpi/devpi@408273fb7755</comment>
     <requestid>1330975</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ba45b5fec989a7b542186ad5e91ad581</srcmd5>
+    <version>7.2.1</version>
+    <time>1775322460</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.2.1:
+  * Work around missing support for metadata 2.4 in pkginfo with
+    Python 3.7.
+  * The stored basic authentication credentials are now correctly
+    applied to HTTP API URLs containing a query string.
+- drop fix-tests.patch (upstream)
+
+  * Fix #1011: change HTTP status codes &gt;=400 to use self.fatal instead</comment>
+    <requestid>1344512</requestid>
+  </revision>
 </revisionlist>
