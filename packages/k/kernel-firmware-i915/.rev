@@ -212,4 +212,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * xe: Update GUC to v70.58.0 for LNL, BMG, PTL</comment>
     <requestid>1333334</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4bae773af83568fa4b5980bc9ece2b37</srcmd5>
+    <version>20260402</version>
+    <time>1775322253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260402 (git commit 583d336ee7c2):
+  * xe: Update GUC to v70.60.0 for LNL, BMG, PTL
+
+- Update to version 20260327 (git commit 85786b4413fd):
+  * xe: Update PTL GSC to v105.0.2.1397</comment>
+    <requestid>1344439</requestid>
+  </revision>
 </revisionlist>

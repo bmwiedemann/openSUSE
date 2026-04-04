@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  3 06:44:49 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260402 (git commit 583d336ee7c2):
+  * xe: Update GUC to v70.60.0 for LNL, BMG, PTL
+
+-------------------------------------------------------------------
+Sun Mar 29 08:38:57 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260327 (git commit 85786b4413fd):
+  * xe: Update PTL GSC to v105.0.2.1397
+
+-------------------------------------------------------------------
 Mon Feb 16 08:29:18 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260214 (git commit 3a0e2a540dca):
