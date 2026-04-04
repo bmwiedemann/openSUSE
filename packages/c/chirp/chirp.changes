@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  3 12:28:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260403:
+  * Add common KenwoodToneModel and move a number of supported
+    modeels to it
+  * Add Baofeng UV-5RM Plus
+
+-------------------------------------------------------------------
 Fri Mar 27 22:01:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260327:
