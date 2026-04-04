@@ -1119,4 +1119,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.31.0</comment>
     <requestid>1332895</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>fb3f123ea9d4b37c31be7701446a0396</srcmd5>
+    <version>1.31.1</version>
+    <time>1775322327</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.31.1</comment>
+    <requestid>1344309</requestid>
+  </revision>
 </revisionlist>

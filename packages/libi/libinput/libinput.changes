@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  2 07:22:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.31.1
+  * Fixed sandbox escape in libinput plugins [CVE-2026-35093]
+  * Use after free allowing information leak in libinput plugins
+    [CVE-2026-35094]
+
+-------------------------------------------------------------------
 Wed Feb  4 21:46:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.31.0
