@@ -100,4 +100,41 @@
   * Drop deprecated DEFAULT_FILE_STORAGE setting usage</comment>
     <requestid>1223572</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7d02930c5744148c29502a6bf1edebd7</srcmd5>
+    <version>4.2.1</version>
+    <time>1775322418</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.1:
+  * Resolve #688 -- Add a cookbook to the documentation
+  * Round out the table corners on large screens
+  * Add extra dependencies to migration guide
+  * Fix #659 - Add port to distinguish redis instances
+  * Add Hetzner RSS status check
+  * Fix RSS/Atom feed errors appearing as new entries on every
+    poll
+  * Make Redis connection arguments in repr optional
+  * Add funding link to PyPi project
+  * Fix RSS/Atom feed: include status in description, strip
+    format param from links
+  * Add graceful error message to wrongly configured aliases
+  * Show host and db in Redis check __repr__
+  * Fix #643 -- Add client_fractory to Redis check
+  * Fix git-blame-ignore-revs
+  * Test contrib against lowest supported Python version
+  * Fix RSS/Atom feeds using static epoch for healthy checks
+  * Fix #631 -- Add `task_default_queue` fallback if
+    `task_queues` is None
+  * Fix Redis documentation errors: remove obsolete redis_url
+    references
+  * Add migration step to drop obsolete table
+  * Version 4
+  * Add DNS health check as core check
+  * Add RSS/Atom feeds for health check monitoring
+  * Remove duplicated pyupgrade setup
+  * Add Vary on Accept header
+  * Add Kafka health check
+  * Add OpenMetrics endpoint for Prometheus monitoring</comment>
+    <requestid>1344475</requestid>
+  </revision>
 </revisionlist>

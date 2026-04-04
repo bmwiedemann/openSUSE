@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Apr  3 13:02:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.1:
+  * Resolve #688 -- Add a cookbook to the documentation
+  * Round out the table corners on large screens
+  * Add extra dependencies to migration guide
+  * Fix #659 - Add port to distinguish redis instances
+  * Add Hetzner RSS status check
+  * Fix RSS/Atom feed errors appearing as new entries on every
+    poll
+  * Make Redis connection arguments in repr optional
+  * Add funding link to PyPi project
+  * Fix RSS/Atom feed: include status in description, strip
+    format param from links
+  * Add graceful error message to wrongly configured aliases
+  * Show host and db in Redis check __repr__
+  * Fix #643 -- Add client_fractory to Redis check
+  * Fix git-blame-ignore-revs
+  * Test contrib against lowest supported Python version
+  * Fix RSS/Atom feeds using static epoch for healthy checks
+  * Fix #631 -- Add `task_default_queue` fallback if
+    `task_queues` is None
+  * Fix Redis documentation errors: remove obsolete redis_url
+    references
+  * Add migration step to drop obsolete table
+  * Version 4
+  * Add DNS health check as core check
+  * Add RSS/Atom feeds for health check monitoring
+  * Remove duplicated pyupgrade setup
+  * Add Vary on Accept header
+  * Add Kafka health check
+  * Add OpenMetrics endpoint for Prometheus monitoring
+    integration
+  * Add agent instructions
+  * Add RSS check for AWS
+  * Add Redis Sentinel and Cluster support via unified client-
+    based health check
+  * Remove deprecated redis_url and options
+  * Fix RSS/Atom endpoints to return 200 status on health check
+    failures
+  * Add text/plain response format and simplify management
+    command
+  * Fix migration command in migration guide
+  * Switch to asyncio
+  * Drop obsolete documentation about warnings and threading
+  * Ref #519 -- Extend CLI HTTPS support and verbosity
+  * Add word weasel checks
+  * Fix #606 -- Assign unique cache key to avoid race conditions
+  * Add cloud provider health checks via RSS/Atom feeds and
+    Atlassian Status Page API
+  * Add --no-http flag to run health checks without HTTP server
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add optional `limit` parameter to CeleryPingHealthCheck
+  * Add GitHub and Sentry status pages
+  * Add Slack & Matrix documentation
+  * Clarify GitHub enterprise region support
+  * Add more psutil checks and move them to contrib
+  * Skip documentation builds for pre-releases
+  * Use sequence not iterable for HealthCheckView.checks
+
+-------------------------------------------------------------------
 Tue Nov 12 08:59:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.18.3:
