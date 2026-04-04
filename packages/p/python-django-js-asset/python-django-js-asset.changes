@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr  3 13:05:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.2:
+  * Made the ``id`` argument to ``JSON`` keyword-only. Also made
+    the ``inline`` argument to ``CSS`` keyword-only.
+  * Added the ``media`` attribute to ``CSS`` classes.
+  * Added experimental support for shipping importmaps.
+  * Rewrite the internals using dataclasses, drop compatibility
+    with Django < 4.2 and Python < 3.10.
+  * Added a ``CSS`` and ``JSON`` class which can also be used with
+    ``forms.Media``. It's recommended to pass them as JavaScript entries to
+    ``forms.Media(js=[])`` because the ``js`` list doesn't use a media
+    dictionary.
+  * Added Django 5.1, Python 3.1
+
+-------------------------------------------------------------------
 Thu Mar 28 05:44:27 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}
@@ -6,7 +22,7 @@ Thu Mar 28 05:44:27 UTC 2024 - Max Lin <mlin@suse.com>
 -------------------------------------------------------------------
 Mon Dec 18 01:34:37 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update to 2.2: 
+- Update to 2.2:
   * Added Django 5.0, Python 3.12.
   * Fixed building with hatchling 1.19.
 - Stop using globs in %files, specify the path directly

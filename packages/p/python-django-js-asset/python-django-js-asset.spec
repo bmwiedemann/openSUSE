@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-js-asset
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-django-js-asset
-Version:        2.2
-%define intversion %{version}.0
+Version:        3.1.2
 Release:        0
 Summary:        Script tag with additional attributes for django.formsMedia
 License:        BSD-3-Clause
@@ -57,6 +57,6 @@ injection.)
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/js_asset/
-%{python_sitelib}/django_js_asset-%{intversion}.dist-info
+%{python_sitelib}/django_js_asset-%{version}.dist-info
 
 %changelog
