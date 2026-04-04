@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 03 10:53:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.48.2:
+  * build(deps): bump chainguard.dev/apko from 1.2.0 to 1.2.1 in
+    the gomod group (#2459)
+  * renovate/bump: always update branch-only git-checkout nodes
+    (#2457)
+
+-------------------------------------------------------------------
+Thu Apr 02 15:58:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.48.1:
+  * fix: remove moby/moby/v2 dependency for compatibility (#2456)
+  * pipelines/git-am: use xargs and quote patches input (#2455)
+
+-------------------------------------------------------------------
 Wed Apr 01 04:27:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.48.0:
