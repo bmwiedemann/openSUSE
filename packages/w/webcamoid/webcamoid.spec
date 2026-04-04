@@ -1,7 +1,7 @@
 #
 # spec file for package webcamoid
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,6 @@ BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  perl-Text-Markdown
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-tools-linguist
 BuildRequires:  cmake(Qt6Concurrent)
@@ -112,9 +111,6 @@ test -x "$(type -p g++-13)" && export CXX=g++-13
  -DNOCHECKUPDATES=TRUE
 %qt6_build
 
-# generate help file
-Markdown.pl --html4 README.md > README.html
-
 %install
 %qt6_install
 
@@ -125,7 +121,7 @@ rm %{buildroot}%{_libdir}/libavkys.so
 %postun -p /sbin/ldconfig
 
 %files
-%doc AUTHORS ChangeLog README.html THANKS
+%doc AUTHORS ChangeLog README.md THANKS
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop

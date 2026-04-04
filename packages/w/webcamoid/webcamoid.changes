@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  2 13:05:52 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- do not depend on this old perl-Text-Markdown (to be dropped from
+  Factory)
+
+-------------------------------------------------------------------
 Fri Aug 15 06:10:31 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Use ffmpeg 7 on Leap 15.6
