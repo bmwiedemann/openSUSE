@@ -1,7 +1,7 @@
 #
 # spec file for package spectacle
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Source0:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 %if %{with released}
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
+# PATCH-FIX-UPSTREAM -- incorrect libtesseract name
+Patch0:         0001-libtesseract.patch
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  kquickimageeditor6-devel >= 0.6.0
@@ -82,6 +84,7 @@ BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-randr)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes)
+Recommends:     libtesseract5
 Requires:       kquickimageeditor6-imports
 Requires:       qt6-imageformats >= %{qt6_version}
 

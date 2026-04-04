@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  3 00:04:20 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Added patch to fix libtesseract filename (kde#516162)
+  * 0001-libtesseract.patch
+
+-------------------------------------------------------------------
+Sat Mar 25 14:42:24 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Recommend dependency for OCR
+
+-------------------------------------------------------------------
 Wed Mar 18 11:06:22 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.3:

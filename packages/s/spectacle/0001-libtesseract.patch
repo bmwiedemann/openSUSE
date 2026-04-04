@@ -1,0 +1,14 @@
+Subject: Fix libtesseract search strings
+From: Pallas Wept
+References: kde#516162
+
+diff -urN spectacle-6.6.3/src/TesseractRuntimeLoader.cpp spectacle-6.6.3b/src/TesseractRuntimeLoader.cpp
+--- spectacle-6.6.3/src/TesseractRuntimeLoader.cpp	2026-03-17 22:11:19.000000000 +1100
++++ spectacle-6.6.3b/src/TesseractRuntimeLoader.cpp	2026-04-03 11:10:30.476261132 +1100
+@@ -185,5 +185,5 @@
+ 
+ QStringList TesseractRuntimeLoader::candidateLibraryNames() const
+ {
+-    return {QStringLiteral("tesseract")};
++    return {QStringLiteral("tesseract.so.5.5"), QStringLiteral("tesseract.so.5"), QStringLiteral("tesseract.so.4"), QStringLiteral("tesseract")};
+ }
