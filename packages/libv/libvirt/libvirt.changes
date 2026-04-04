@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  1 17:15:22 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 12.2.0
+  - jsc#PED-14623
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-2-0-2026-04-01
+
+-------------------------------------------------------------------
 Fri Mar  6 21:48:34 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Fix test driver regression causing virt-manager test suite failures
