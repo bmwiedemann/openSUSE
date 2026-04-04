@@ -1,7 +1,7 @@
 #
 # spec file for package json-simple
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,11 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://code.google.com/p/json-simple/
 Source0:        https://github.com/cliftonlabs/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  maven-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -51,31 +54,29 @@ This package contains %{summary}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-
-# Remove hard-coded compiler settings
-%pom_remove_plugin :maven-compiler-plugin
-# Do not regenerate the files
-%pom_remove_plugin :maven-jflex-plugin
-%pom_remove_plugin :nexus-staging-maven-plugin
-%pom_remove_plugin :maven-javadoc-plugin
-
-%{mvn_file} : %{name}
-%{mvn_alias} com.github.cliftonlabs: com.googlecode.json-simple:
+cp %{SOURCE1} build.xml
 
 %build
-%{mvn_build} -f -- \
-    -Dmaven.compiler.source=1.8 -Dmaven.compiler.target=1.8
+ant jar javadoc
 
 %install
-%mvn_install
-
-%fdupes %{buildroot}%{datadir}/javadoc
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+# pom
+install -d -m 755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar -a com.googlecode.json-simple:%{name}
+# javadoc
+install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE
 %doc CHANGELOG README
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE
 
 %changelog

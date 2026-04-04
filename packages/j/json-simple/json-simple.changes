@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  3 20:14:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- In order to avoid build cycles, rewrite to use ant for build.
+
+-------------------------------------------------------------------
 Sun Oct  5 14:40:12 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to cliftonlabs fork 2.3.1, backward compatible with 1.1.1

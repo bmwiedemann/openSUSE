@@ -15,4 +15,12 @@
     <comment>2.3.1</comment>
     <requestid>1309074</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>13b8d5614f4f1d027ab96f8c77954c66</srcmd5>
+    <version>2.3.1</version>
+    <time>1775322464</time>
+    <user>dimstar_suse</user>
+    <comment>Rewrite to use ant and avoid build cycles</comment>
+    <requestid>1344525</requestid>
+  </revision>
 </revisionlist>
