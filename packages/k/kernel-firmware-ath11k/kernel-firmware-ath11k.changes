@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 29 08:38:35 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260327 (git commit 85786b4413fd):
+  * ath11k: WCN6855 hw2.0@nfa765: update to WLAN.HSP.1.1-04866.5-QCAHSPSWPL_V1_V2_SILICONZ_IOE-1
+  * ath11k: QCA6698AQ hw2.1: update to WLAN.HSP.1.1-04866.5-QCAHSPSWPL_V1_V2_SILICONZ_IOE-1
+
+-------------------------------------------------------------------
+Thu Feb 12 16:31:06 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260211 (git commit e72747d3ca7b):
+  * ath11k: WCN6855 hw2.0: update board-2.bin
+  * ath11k: QCA6390 hw2.0: update board-2.bin
+
+-------------------------------------------------------------------
 Mon Feb  2 10:20:56 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260202 (git commit 40c017e718f9):
