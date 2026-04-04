@@ -2278,6 +2278,7 @@
     <package name="libleancrypto1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libleancrypto1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="liblensfun1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libleptonica6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="liblhasa0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="liblilv-0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2437,7 +2438,7 @@
     <package name="libopenssl3-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libopus0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liborc-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="liborcus-0_20-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="liborcus-0_21-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libosinfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libosinfo-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libosinfo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2724,6 +2725,8 @@
     <package name="libtbb12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libtdb1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtdb1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libtesseract5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libtesseract5-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtevent0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtevent0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtextstyle0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -3983,6 +3986,25 @@
     <package name="terminfo-iterm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="terminfo-screen" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="terminus-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="tesseract-ocr-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-ces" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-chi_sim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-chi_sim_vert" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-chi_tra" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-chi_tra_vert" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-dan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-deu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-ell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-eng" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-fra" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-hun" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-ita" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-jpn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-jpn_vert" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-pol" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-por" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-rus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="tesseract-ocr-traineddata-spa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="thai-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="thessalonica-oldstandard-otf-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

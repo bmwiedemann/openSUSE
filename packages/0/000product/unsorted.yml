@@ -3641,6 +3641,7 @@ unsorted:
   - edge-addition-planarity-suite-devel 
   - edict 
   - edict2 
+  - edid-decode 
   - editorconfig 
   - editorconfig-checker 
   - editres 
@@ -7320,9 +7321,6 @@ unsorted:
   - gnome-autoar-devel 
   - gnome-autoar-gtk-devel 
   - gnome-backgrounds 
-  - gnome-bluetooth-1 
-  - gnome-bluetooth-1-devel 
-  - gnome-bluetooth-1-lang 
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
@@ -13700,7 +13698,6 @@ unsorted:
   - libgmsh4_14 
   - libgmxapi0 
   - libgmxapi_mpi0 
-  - libgnome-bluetooth13 
   - libgnome-desktop-3-devel 
   - libgnome-desktop-4-devel 
   - libgnome-games-support-1-3 
@@ -14510,7 +14507,6 @@ unsorted:
   - libleechcraft-util-xdg-qt6-0_6_75 
   - libleechcraft-util-xpc-qt6-0_6_75 
   - libleechcraft-util-xsd-qt6-0_6_75 
-  - libleptonica6 
   - libleveldb1 
   - libleveldb1-x86-64-v3 
   - liblevmar2 
@@ -16711,8 +16707,6 @@ unsorted:
   - libtermcap2 
   - libtermkey-devel 
   - libtermkey1 
-  - libtesseract5 
-  - libtesseract5-x86-64-v3 
   - libtestshade1_14 
   - libtestsweeper2 
   - libtevent-devel 
@@ -19190,7 +19184,6 @@ unsorted:
   - mkosi-addon 
   - mkosi-initrd 
   - mksh 
-  - mksusecd 
   - mktorrent 
   - mkvtoolnix 
   - mkvtoolnix-gui 
@@ -28020,7 +28013,6 @@ unsorted:
   - python311-vcrpy 
   - python311-vcver 
   - python311-vcversioner 
-  - python311-vdf 
   - python311-vdirsyncer 
   - python311-vega 
   - python311-vega_datasets 
@@ -35697,7 +35689,6 @@ unsorted:
   - python314-vcrpy 
   - python314-vcver 
   - python314-vcversioner 
-  - python314-vdf 
   - python314-vdirsyncer 
   - python314-vega 
   - python314-vega_datasets 
@@ -38817,7 +38808,6 @@ unsorted:
   - tesseract 
   - tesseract-data 
   - tesseract-ocr 
-  - tesseract-ocr-common 
   - tesseract-ocr-devel 
   - tesseract-ocr-traineddata-afr 
   - tesseract-ocr-traineddata-amh 
@@ -38833,22 +38823,13 @@ unsorted:
   - tesseract-ocr-traineddata-bul 
   - tesseract-ocr-traineddata-cat 
   - tesseract-ocr-traineddata-ceb 
-  - tesseract-ocr-traineddata-ces 
-  - tesseract-ocr-traineddata-chi_sim 
-  - tesseract-ocr-traineddata-chi_sim_vert 
-  - tesseract-ocr-traineddata-chi_tra 
-  - tesseract-ocr-traineddata-chi_tra_vert 
   - tesseract-ocr-traineddata-chr 
   - tesseract-ocr-traineddata-cos 
   - tesseract-ocr-traineddata-cym 
-  - tesseract-ocr-traineddata-dan 
-  - tesseract-ocr-traineddata-deu 
   - tesseract-ocr-traineddata-deu_latf 
   - tesseract-ocr-traineddata-div 
   - tesseract-ocr-traineddata-doc 
   - tesseract-ocr-traineddata-dzo 
-  - tesseract-ocr-traineddata-ell 
-  - tesseract-ocr-traineddata-eng 
   - tesseract-ocr-traineddata-enm 
   - tesseract-ocr-traineddata-epo 
   - tesseract-ocr-traineddata-equ 
@@ -38858,7 +38839,6 @@ unsorted:
   - tesseract-ocr-traineddata-fas 
   - tesseract-ocr-traineddata-fil 
   - tesseract-ocr-traineddata-fin 
-  - tesseract-ocr-traineddata-fra 
   - tesseract-ocr-traineddata-frk 
   - tesseract-ocr-traineddata-frm 
   - tesseract-ocr-traineddata-fry 
@@ -38871,16 +38851,12 @@ unsorted:
   - tesseract-ocr-traineddata-heb 
   - tesseract-ocr-traineddata-hin 
   - tesseract-ocr-traineddata-hrv 
-  - tesseract-ocr-traineddata-hun 
   - tesseract-ocr-traineddata-hye 
   - tesseract-ocr-traineddata-iku 
   - tesseract-ocr-traineddata-ind 
   - tesseract-ocr-traineddata-isl 
-  - tesseract-ocr-traineddata-ita 
   - tesseract-ocr-traineddata-ita_old 
   - tesseract-ocr-traineddata-jav 
-  - tesseract-ocr-traineddata-jpn 
-  - tesseract-ocr-traineddata-jpn_vert 
   - tesseract-ocr-traineddata-kan 
   - tesseract-ocr-traineddata-kat 
   - tesseract-ocr-traineddata-kat_old 
@@ -38910,12 +38886,9 @@ unsorted:
   - tesseract-ocr-traineddata-ori 
   - tesseract-ocr-traineddata-osd 
   - tesseract-ocr-traineddata-pan 
-  - tesseract-ocr-traineddata-pol 
-  - tesseract-ocr-traineddata-por 
   - tesseract-ocr-traineddata-pus 
   - tesseract-ocr-traineddata-que 
   - tesseract-ocr-traineddata-ron 
-  - tesseract-ocr-traineddata-rus 
   - tesseract-ocr-traineddata-san 
   - tesseract-ocr-traineddata-script-arabic 
   - tesseract-ocr-traineddata-script-armenian 
@@ -38958,7 +38931,6 @@ unsorted:
   - tesseract-ocr-traineddata-slk 
   - tesseract-ocr-traineddata-slv 
   - tesseract-ocr-traineddata-snd 
-  - tesseract-ocr-traineddata-spa 
   - tesseract-ocr-traineddata-spa_old 
   - tesseract-ocr-traineddata-sqi 
   - tesseract-ocr-traineddata-srp 
@@ -49026,7 +48998,6 @@ unsorted:
   - typelib-1_0-Gm-0 
   - typelib-1_0-GnomeAutoar-0_1 
   - typelib-1_0-GnomeAutoarGtk-0_1 
-  - typelib-1_0-GnomeBluetooth-1_0 
   - typelib-1_0-GnomeDesktop-3_0 
   - typelib-1_0-GnomeKeyring-1_0 
   - typelib-1_0-GnomeRR-4_0 
