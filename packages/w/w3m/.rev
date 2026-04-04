@@ -365,4 +365,12 @@ w3m permissive license much more akin to ISC (spdx.org/licenses/ISC) than to eit
     <comment></comment>
     <requestid>1266560</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e7a1a6a48e39f82ff788df7627972a91</srcmd5>
+    <version>0.5.6</version>
+    <time>1775322267</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1343990</requestid>
+  </revision>
 </revisionlist>

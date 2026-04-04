@@ -1,7 +1,7 @@
 #
 # spec file for package w3m
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,118 +17,101 @@
 
 
 Name:           w3m
-URL:            http://w3m.sourceforge.net/
-Version:        0.5.3+git20230121
+Version:        0.5.6
 Release:        0
 Summary:        A text-based WWW browser
 License:        ISC
 Group:          Productivity/Networking/Web/Browsers
-
-Source0:        https://salsa.debian.org/debian/w3m/-/archive/v%{version}/w3m-v%{version}.tar.bz2
-Patch0:         0001-Update-German-message-catalogue.patch
-Patch1:         0001-Fix-OOB-access-due-to-multiple-backspaces.patch
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://git.sr.ht/~rkta/w3m
+Source0:        https://git.sr.ht/~rkta/w3m/archive/v%{version}.tar.gz
+Patch:          po-install.patch
+BuildRequires:  compface
 BuildRequires:  gc-devel
 BuildRequires:  gcc-c++
+BuildRequires:  gettext-devel
 BuildRequires:  gpm
-BuildRequires:  imlib2-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-Provides:       w3m_ssl = %version
+Provides:       w3m_ssl = %{version}
 Provides:       web_browser
-Obsoletes:      w3m_ssl < %version
+Obsoletes:      w3m_ssl < %{version}
 
 %package inline-image
 Summary:        An inline image extension for w3m
 Group:          Productivity/Networking/Web/Browsers
+BuildRequires:  imlib2-devel
 Requires:       imlib2-loaders
 Requires:       w3m
-Provides:       w3m:/usr/%_lib/w3m/w3mimgdisplay
+Provides:       w3m:%{_libdir}/w3m/w3mimgdisplay
 
 %description
-W3m is a pager and text-based WWW browser. It has a number of useful
-features:
+W3m is a pager and text-based WWW browser. It has a number of useful features:
 
 * w3m can render tables
-
 * w3m can render frames (it converts the frames into a table)
-
 * SSL support
-
 * w3m can easily display documents from standard input
-
 * w3m can handle cookies
-
 * w3m is small
-
 * w3m has mouse support
 
-If w3m-inline-image is installed it can display graphics inside
-terminals, even on the console on some platforms.
+If w3m-inline-image is installed it can display graphics inside terminals, even
+on the console on some platforms.
 
 %description inline-image
 Inline image extension for w3m, the text-based WWW browser.
 
-When this package is installed w3m can display images inline in an X
-terminal (if it runs in a graphical X Window System environment).
+When this package is installed w3m can display images inline in an X terminal
+(if it runs in a graphical X Window System environment).
 
 %prep
-%setup -q -n w3m-v%{version}
-find -name CVS -exec rm -Rf "{}" "+"
-%autopatch -p1
+%autosetup -p1 -n w3m-v%{version}
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS -DUSE_BUFINFO -DOPENSSL_NO_SSL_INTERN -D_GNU_SOURCE $(getconf LFS_CFLAGS) -fno-strict-aliasing `ncursesw6-config --cflags` -fPIE -std=gnu11"
+export CFLAGS="%{optflags} -DUSE_BUFINFO -DOPENSSL_NO_SSL_INTERN -D_GNU_SOURCE $(getconf LFS_CFLAGS) -fno-strict-aliasing `ncursesw6-config --cflags` -fPIE -std=gnu11"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="`ncursesw6-config --libs` -pie"
-./configure	--bindir=/usr/bin \
-        --with-termlib=ncursesw \
-		--mandir=%_mandir \
-		--libdir=%_libdir \
-		--libexecdir=%_libdir \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--enable-ipv6 \
-		--enable-alarm \
-		--enable-ansi-color \
-		--enable-digest-auth \
-		--enable-external-uri-loader \
-		--enable-gopher \
-		--enable-history \
-		--enable-image=x11,fb \
-		--enable-keymap=lynx \
-		--enable-m17n \
-		--enable-mouse \
-		--enable-nls \
-		--enable-nntp \
-		--enable-sslverify \
-		--enable-unicode \
-		--disable-w3mmailer
-make %{?_smp_mflags}
+%configure --with-termlib=ncursesw \
+        --enable-ipv6 \
+        --enable-alarm \
+	--enable-ansi-color \
+	--enable-digest-auth \
+	--enable-external-uri-loader \
+	--enable-gopher \
+	--enable-history \
+        --with-imagelib=imlib2 \
+	--enable-keymap=lynx \
+	--enable-m17n \
+	--enable-mouse \
+        --enable-nls \
+	--enable-nntp \
+	--enable-sslverify \
+	--enable-unicode \
+	--disable-w3mmailer
+%make_build
 
 %install
-make install install-helpfile DESTDIR=$RPM_BUILD_ROOT
-install -m 755 Bonus/*.cgi $RPM_BUILD_ROOT/usr/%_lib/w3m/cgi-bin
+make install install-helpfile DESTDIR=%{buildroot}
+install -d -m 0755 %{buildroot}%{_libdir}/w3m/cgi-bin
+install -m 755 Bonus/*.cgi %{buildroot}%{_libdir}/w3m/cgi-bin
 %find_lang %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
-/usr/bin/w3m
-/usr/bin/w3mman
+%{_bindir}/w3m
+%{_bindir}/w3mman
 %doc doc/*
 %doc ChangeLog
-%_mandir/de/man1/w3m*
-%_libdir/w3m
-%exclude %_libdir/w3m/w3mimgdisplay
-%lang(ja)%doc %_mandir/ja
-%doc %_mandir/man*/*
-%_datadir/%name
+%{_mandir}/de/man1/w3m*
+%{_libdir}/w3m
+%{_libexecdir}/w3m
+%exclude %{_libexecdir}/w3m/w3mimgdisplay
+%lang(ja)%{_mandir}/ja
+%{_mandir}/man*/*
+%{_datadir}/%{name}
 
 %files inline-image
-%defattr(-,root,root)
-%dir %_libdir/w3m
-/usr/%_lib/w3m/w3mimgdisplay
+%dir %{_libexecdir}/w3m
+%{_libexecdir}/w3m/w3mimgdisplay
 
 %changelog

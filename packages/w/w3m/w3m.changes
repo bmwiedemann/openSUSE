@@ -1,15 +1,40 @@
 -------------------------------------------------------------------
+Tue Mar 24 22:51:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 0.5.6:
+  * new features
+    - Add commands to scroll current line to top/bottom
+    - Add command to change directory (CD)
+    - Add vim-like smartcase option for search
+    - Recognize aria-label for buttons
+    - Use gettext everywhere for better localization
+    - Add gopher support
+    - Add session store and restore (experimental)
+  * bug fixes
+    - Fix version number in some places
+    - Fix key press handling when inserting text
+    - Fix display of images in kitty terminal
+    - Security fixes for buffer overflows and underruns
+    - Fix slow backward search in long lines
+  * Other changes:
+    - version 0.5.6 includes fixes for CVE-2023-38252 and
+      CVE-2023-38253 (bsc#1213324 and bsc#1213323)
+- Drop 0001-Fix-OOB-access-due-to-multiple-backspaces.patch and
+  0001-Update-German-message-catalogue.patch (upstream)
+- Add po-install.patch: ensure MKDIR_P is set correctly.
+
+-------------------------------------------------------------------
 Wed Apr  2 13:25:14 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
   still allow build on Leap 15.6
- 
+
 -------------------------------------------------------------------
 Tue Jul 25 14:31:42 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
 
 - CVE-2023-38253: out-of-bounds read in growbuf_to_Str() at w3m/indep.c
   (bsc#1213323)
-- CVE-2023-38252 out-of-bounds read in Strnew_size() at w3m/Str.c 
+- CVE-2023-38252 out-of-bounds read in Strnew_size() at w3m/Str.c
   (bsc#1213324)
 - add 0001-Fix-OOB-access-due-to-multiple-backspaces.patch
 
@@ -17,8 +42,8 @@ Tue Jul 25 14:31:42 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
 Fri Apr 28 09:05:26 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - update to version 0.5.3+git20230121
-- add 0001-Update-German-message-catalogue.patch 
-- dropped patches: 
+- add 0001-Update-German-message-catalogue.patch
+- dropped patches:
     0001-allow-to-configure-the-accept-option-for-bad-cookies.patch
     0001-implements-simple-session-management.patch
     0001-handle-EXDEV-during-history-file-rename.patch
@@ -42,13 +67,13 @@ Thu Jan 25 10:26:25 UTC 2018 - Thomas.Blume@suse.com
 
 - update to version 0.5.3+git20180125
   addressed security issue:
-         CVE-2018-6196: w3m: an infinite recursion flaw in HTMLlineproc0 
-           because the feed_table_block_tag function in table.c does not 
+         CVE-2018-6196: w3m: an infinite recursion flaw in HTMLlineproc0
+           because the feed_table_block_tag function in table.c does not
            prevent a negative indent value allows for (bsc#1077559)
-         CVE-2018-6197: w3m: NULL pointer dereference flaw in formUpdateBuffer 
+         CVE-2018-6197: w3m: NULL pointer dereference flaw in formUpdateBuffer
            in form.c (bsc#1077568)
-         CVE-2018-6198: w3m: does not properly handle temporary files when 
-           the ~/.w3m directory is unwritable, which allows a local attacker to 
+         CVE-2018-6198: w3m: does not properly handle temporary files when
+           the ~/.w3m directory is unwritable, which allows a local attacker to
            craft a symlink attack to overwrite arbitrary files (bsc#1077572)
   other changes, bugfixes see: /usr/share/doc/w3m/ChangeLog
 
@@ -97,15 +122,15 @@ Thu Nov 24 11:18:22 UTC 2016 - Thomas.Blume@suse.com
          w3m-uninitialized.patch
          w3m-inline-image.patch
          w3m-0.4.1-textarea-segfault.dif
-        
+
    ported patches:
          w3m-disable-cookie-special-domain-check.patch to
          0001-allow-to-configure-the-accept-option-for-bad-cookies.patch
          w3m-0.4.1-session-mgmt.dif to
-         0001-implements-simple-session-management.patch         
+         0001-implements-simple-session-management.patch
          w3m-history-crossdev.patch to
          0001-handle-EXDEV-during-history-file-rename.patch
-         w3mman-formatting.patch to 
+         w3mman-formatting.patch to
          0001-w3mman-don-t-show-invalid-characters-bsc-950800.patch
 
 -------------------------------------------------------------------
@@ -144,7 +169,7 @@ Tue Aug 20 12:04:52 UTC 2013 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Jun 21 06:46:21 UTC 2013 - crrodriguez@opensuse.org
 
-- attempting to download a large file will end in total fail 
+- attempting to download a large file will end in total fail
   on 32bit archs, use LFS_CFLAGS to fix that problem.
 
 -------------------------------------------------------------------
@@ -158,7 +183,7 @@ Mon Nov 12 18:26:45 UTC 2012 - crrodriguez@opensuse.org
 
 - Due to the "CRIME attack" (CVE-2012-4929) HTTPS clients
   that negotiate TLS-level compression can be abused for
-  MITM attacks. (w3m-openssl.patch) 
+  MITM attacks. (w3m-openssl.patch)
 
 - Use SSL_MODE_RELEASE_BUFFERS if available .
 
@@ -176,7 +201,7 @@ Thu Sep 27 14:05:50 UTC 2012 - crrodriguez@opensuse.org
   to avoid ABI breaks between different openssl version.
 
 - Also define _GNU_SOURCE to allow some extra optimizations
-  with recent GCC versions. 
+  with recent GCC versions.
 
 -------------------------------------------------------------------
 Fri Mar 23 11:16:03 UTC 2012 - max@suse.com
@@ -188,7 +213,7 @@ Fri Mar 23 11:16:03 UTC 2012 - max@suse.com
 -------------------------------------------------------------------
 Tue Aug 30 17:59:53 UTC 2011 - crrodriguez@opensuse.org
 
-- Fix build error: redefinition of 'struct file_handle' 
+- Fix build error: redefinition of 'struct file_handle'
 
 -------------------------------------------------------------------
 Sat Jul 30 23:09:55 UTC 2011 - crrodriguez@opensuse.org
@@ -266,7 +291,7 @@ Tue Oct 28 20:30:46 CET 2008 - max@suse.de
 -------------------------------------------------------------------
 Mon Feb 25 14:34:04 CET 2008 - crrodriguez@suse.de
 
-- use find_lang macro 
+- use find_lang macro
 
 -------------------------------------------------------------------
 Wed Sep  5 14:31:00 CEST 2007 - olh@suse.de
@@ -300,7 +325,7 @@ Fri Jun  1 17:41:33 CEST 2007 - max@suse.de
 -------------------------------------------------------------------
 Mon Apr  2 01:11:30 CEST 2007 - ro@suse.de
 
-- added ncurses-devel to buildreq 
+- added ncurses-devel to buildreq
 
 -------------------------------------------------------------------
 Fri Feb 16 15:45:41 CET 2007 - od@suse.de
@@ -513,7 +538,7 @@ Mon Jul 15 23:21:41 CEST 2002 - poeml@suse.de
   don't allowing domain= values with 2 periods in a Set-Cookie
   header (why should a cookie from .ebay.de be invalid, while the
   same cookie from .ebay.com is not?)
-- allow to configure the "accept" option for bad cookies 
+- allow to configure the "accept" option for bad cookies
 - define mozilla instead of netscape as default external browser
 - show configuration in build log
 - don't explicitely -I/usr/include, avoid nasty compiler warnings
@@ -527,7 +552,7 @@ Sun Jul  7 22:32:58 CEST 2002 - schwab@suse.de
 -------------------------------------------------------------------
 Wed May 29 01:30:18 CEST 2002 - ro@suse.de
 
-- first hack to work on x86_64 
+- first hack to work on x86_64
 
 -------------------------------------------------------------------
 Tue May 21 19:05:32 CEST 2002 - poeml@suse.de
@@ -621,7 +646,7 @@ Thu Jun 28 14:29:11 CEST 2001 - poeml@suse.de
 -------------------------------------------------------------------
 Wed Apr  4 21:42:29 CEST 2001 - poeml@suse.de
 
-- add patch to help with pages containing javascript 
+- add patch to help with pages containing javascript
 
 -------------------------------------------------------------------
 Wed Apr  4 13:29:12 CEST 2001 - poeml@suse.de
@@ -630,7 +655,7 @@ Wed Apr  4 13:29:12 CEST 2001 - poeml@suse.de
 - as before, use a newer gc on ia64 and sparc
 - fix include path for gc on ia64 and sparc
 - undefine INET6 on sparc: struct sockaddr_storage seems to have no
-  member ss_family 
+  member ss_family
 - fix double declaration of CMT_SSL_FORBID_METHOD
 - add patch for problems caused by misunderstanding of relative
   URLs
@@ -642,7 +667,7 @@ Mon Feb 19 00:25:56 CET 2001 - poeml@suse.de
 - update to 0.1.11-pre (which is actually more stable than 0.1.10)
 - apply massive kokb23 patch collection
 - add patch for lynx-like pauth option
-- drop norman.patch 
+- drop norman.patch
 - add newer gc (6.0alpha6) for ia64 and sparc that works with
   glibc-2.2.1
 - update autoconf and libtool on these archs
@@ -696,7 +721,7 @@ Mon May 15 11:45:30 CEST 2000 - kukuk@suse.de
 
 - Update to 0.1.9 (works on SPARC)
 - Use /bin/vi for 7.0
-- Fix defines on SPARC 
+- Fix defines on SPARC
 - Fix spec file
 - Add installed scripts to filelist
 
