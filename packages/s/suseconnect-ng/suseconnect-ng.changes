@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  1 16:43:26 UTC 2026 - Fergal Mc Carthy <fmccarthy@suse.com>
+
+- Update version to 1.21.1:
+  - Fix nil token handling (bsc#1261155)
+  - Switch to using go1.24-openssl as the default Go version to
+    install to support building the package (jsc#SCC-585).
+
+-------------------------------------------------------------------
 Thu Mar 12 18:53:13 UTC 2026 - Felix Schnizlein <fschnizlein@suse.com>
 
 - Update version to 1.21:

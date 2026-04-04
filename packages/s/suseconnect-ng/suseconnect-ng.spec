@@ -19,7 +19,7 @@
 %global project github.com/SUSE/connect-ng
 
 Name:           suseconnect-ng
-Version:        1.21.0
+Version:        1.21.1
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-3.0-or-later
@@ -30,11 +30,11 @@ Source1:        %{name}-rpmlintrc
 Source2:        vendor.tar.xz
 
 # Build against latest golang in Tumbleweed and
-# go1.21-openssl on all other distributions
+# go1.24-openssl on all other distributions
 %if 0%{?suse_version} == 1699
 BuildRequires:  golang(API)
 %else
-BuildRequires:  go1.21-openssl
+BuildRequires:  go1.24-openssl
 %endif
 
 BuildRequires:  ruby-devel

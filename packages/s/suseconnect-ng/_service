@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/SUSE/connect-ng.git</param>
-    <param name="revision">v1.21.0</param>
+    <param name="revision">v1.21.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
