@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-barcode
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,17 +21,17 @@
 
 %define base_name python-barcode
 Name:           python-%{base_name}
-Version:        0.15.1
+Version:        0.16.1
 Release:        0
 Summary:        Library to create Barcodes with Python
 License:        MIT
 URL:            https://github.com/WhyNotHugo/python-barcode
-Source:         https://files.pythonhosted.org/packages/source/p/%{base_name}/%{base_name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/%{base_name}/python_barcode-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -48,7 +48,7 @@ BuildArch:      noarch
 Library to create standard barcodes with Python. No external modules needed (optional PIL support included).
 
 %prep
-%setup -q -n %{base_name}-%{version}
+%setup -q -n python_barcode-%{version}
 # Fix rpmlint warning about too many +x perms when these files get installed later.
 find . -type f -exec chmod a-x {} +
 # doc buildscripts we don't wanna ship
@@ -60,6 +60,8 @@ rm docs/Makefile
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/python-barcode
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/docs
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 find %{buildroot} -type f -name "*.ttf" | while read i; do
 	ln -fs "%{_datadir}/fonts/truetype/${i##*/}" "$i"
