@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 29 08:39:16 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260327 (git commit 85786b4413fd):
+  * linux-firmware: update firmware for an8811hb 2.5G ethernet phy
+
+-------------------------------------------------------------------
 Sat Jan 31 09:36:38 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260130 (git commit 4b3f8c411f17):
