@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr  4 11:40:27 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 4.56.0:
+  - Add Reject URLs: Accept story URLs drag/drop & paste like Add
+    Stories by URL
+  - Add top menu items for Add/Edit Reject URLs.
+  - Remove fanficfare_macmenuhack.
+  - Epub Update: Don't cache cover image with others, trips
+    dedup.
+  - adapter_literotica: Fix for site change (#1318), collect tags
+    on one-shots.
+  - Make seriesUrl mutable again.
+
+-------------------------------------------------------------------
 Mon Mar  2 07:35:06 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the version 4.55.0:

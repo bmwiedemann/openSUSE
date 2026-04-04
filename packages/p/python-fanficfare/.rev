@@ -1785,4 +1785,21 @@ Update to 4.43.0:
     of cover image size fall back #1306</comment>
     <requestid>1335720</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>1d976544efc9da7e16f003fa8c8c643d</srcmd5>
+    <version>4.56.0</version>
+    <time>1775322482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to the version 4.56.0:
+  - Add Reject URLs: Accept story URLs drag/drop &amp; paste like Add
+    Stories by URL
+  - Add top menu items for Add/Edit Reject URLs.
+  - Remove fanficfare_macmenuhack.
+  - Epub Update: Don't cache cover image with others, trips
+    dedup.
+  - adapter_literotica: Fix for site change (#1318), collect tags
+    on one-shots.
+  - Make seriesUrl mutable again.</comment>
+    <requestid>1344572</requestid>
+  </revision>
 </revisionlist>
