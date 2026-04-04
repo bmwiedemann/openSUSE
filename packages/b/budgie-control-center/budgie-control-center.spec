@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-control-center
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,9 @@
 %else
 %bcond_with cheese
 %endif
+%define org org.buddiesofbudgie.controlcenter
 Name:           budgie-control-center
-Version:        1.4.1+0
+Version:        2.1.0+0
 Release:        0
 Summary:        Fork of GNOME Control Center for Budgie 10
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -46,7 +47,6 @@ BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(colord-gtk)
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(goa-1.0)
@@ -60,7 +60,6 @@ BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnma)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libwacom)
 BuildRequires:  pkgconfig(malcontent-0)
 BuildRequires:  pkgconfig(mm-glib)
@@ -69,7 +68,7 @@ BuildRequires:  pkgconfig(pwquality)
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(upower-glib)
-Requires:       gnome-bluetooth = 3.34.5
+Requires:       wdisplays
 
 %description
 Fork of GNOME Control Center for Budgie 10
@@ -90,7 +89,7 @@ This package contains the Bash Completion for Budgie Control Center
 %autosetup -p1
 
 %build
-%meson -Ddocumentation=true -Dmalcontent=true %{!?with_cheese:-Dcheese=false}
+%meson -Ddocumentation=true -Dmalcontent=true -Dbluetooth=false %{!?with_cheese:-Dcheese=false}
 %meson_build
 
 %install
@@ -101,7 +100,7 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/budgie-control-center.rules
 %files
 %doc README.md
 %{_bindir}/*
-%{_datadir}/metainfo/budgie-control-center.appdata.xml
+%{_datadir}/metainfo/%{org}.metainfo.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.buddiesofbudgie.ControlCenter.service
 %{_datadir}/glib-2.0/schemas/org.buddiesofbudgie.ControlCenter.gschema.xml
@@ -109,9 +108,9 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/budgie-control-center.rules
 %{_datadir}/icons/hicolor/*/*/*.svg
 %{_datadir}/pixmaps/budgie-faces
 %{_datadir}/pixmaps/budgie-logo.png
-%{_datadir}/polkit-1/actions/org.buddiesofbudgie.controlcenter.datetime.policy
-%{_datadir}/polkit-1/actions/org.buddiesofbudgie.controlcenter.remote-login-helper.policy
-%{_datadir}/polkit-1/actions/org.buddiesofbudgie.controlcenter.user-accounts.policy
+%{_datadir}/polkit-1/actions/%{org}.datetime.policy
+%{_datadir}/polkit-1/actions/%{org}.remote-login-helper.policy
+%{_datadir}/polkit-1/actions/%{org}.user-accounts.policy
 # We do not package gnome-control-center.rules
 #{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_datadir}/sounds/budgie

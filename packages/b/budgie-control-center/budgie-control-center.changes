@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Mar 27 17:20:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(libsoup-2.4) BuildRequires: Neither used nor
+  needed.
+
+-------------------------------------------------------------------
+Sat Jan 24 21:36:31 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 2.1.0+0:
+  * Bump version for the release
+  * Latest translations
+  * We forgot to be defensive when trying to remove widgets that have been created - this resolves a crash when navigating to introduction from another panel
+  * Revert "Support dark mode"
+  * Update latest translation POT
+  * Add Style button to set the background picture-options key
+  * Update the pot file for revised translations
+  * Add introduction panel for quickstart and distro additional setting lists (#109)
+  * Bump the release version to stable
+  * feat: move night light to being a toplevel panel, drop displays panel
+  * feat: move screen blank and suspend back to power, lock into Privacy
+  * Use g_set_prgname to provide Wayland the app_id
+  * Bump meson version for preview 1
+  * metainfo: Update and modernize the AppStream data
+  * Support dark mode
+  * Bump version
+  * Remove obsolete libhandy submodule - v1 of libhandy has now reached api/abi stability.
+  * Resolve GNOME49 toolchain issues / use of budgie schema for media-keys
+  * Resolve incompatible pointer types errors on chroot based builds
+  * Cleanup after review
+  * Cleanup search function - remove unnecessary elements
+  * Add configuration for the access panel
+  * Trim Access panel
+  * Fix hiding of multitasking multi-monitor section
+  * Hide diagnostics since we don't show gnome-shell search
+  * Hide location services
+  * Make multimonitor section of multi-tasking a configurable section
+  * Add visibility checks around edge and 2 finger scrolling checks
+  * Add visibility checks for various keyboard shortcuts
+  * Add a couple of functions to search for a keyfile
+  * Hide the color panel
+  * Make building with bluetooth optional - closes #83
+  * Merge pull request #90 from zacikpa/tuned-compat
+  * fix: FTBFS with incompatible-pointer-types
+
+-------------------------------------------------------------------
 Fri Oct 24 15:30:28 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 1.4.1+0:
