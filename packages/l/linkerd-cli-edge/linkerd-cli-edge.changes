@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Apr 03 05:55:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.4.1:
+  * build(deps): bump cc from 1.2.57 to 1.2.58 (#15105)
+  * build(deps): bump zerocopy from 0.8.42 to 0.8.48 (#15106)
+  * build(deps): bump mio from 1.1.1 to 1.2.0 (#15104)
+  * build(deps): bump aws-lc-sys from 0.39.0 to 0.39.1 (#15103)
+  * build(deps): bump github.com/fatih/color from 1.18.0 to 1.19.0
+    (#15085)
+  * build(deps): bump node-forge from 1.3.2 to 1.4.0 in /web/app
+    (#15100)
+  * build(deps-dev): bump @babel/runtime from 7.28.6 to 7.29.2 in
+    /web/app (#15084)
+  * build(deps): bump core-js from 3.48.0 to 3.49.0 in /web/app
+    (#15083)
+  * build(deps-dev): bump webpack-cli from 6.0.1 to 7.0.2 in
+    /web/app (#15082)
+  * build(deps-dev): bump @babel/preset-env in /web/app (#15081)
+  * build(deps): bump flatted from 3.2.2 to 3.4.2 in /web/app
+    (#15072)
+  * build(deps): bump actions/setup-go from 6.3.0 to 6.4.0 (#15107)
+  * build(deps): bump codecov/codecov-action from 5.5.3 to 6.0.0
+    (#15099)
+  * build(deps): bump DavidAnson/markdownlint-cli2-action (#15098)
+  * build(deps): bump cmake from 0.1.57 to 0.1.58 (#15097)
+  * build(deps): bump linkerd2-proxy-init from 2.4.6 to 2.4.7
+    (#15094)
+  * build(deps): bump linkerd-network-validator from 0.1.7 to 0.1.8
+    (#15092)
+  * build(deps): bump linkerd-extension-init from 0.1.9 to 0.1.10
+    (#15091)
+  * build(deps): bump aws-lc-rs from 1.16.1 to 1.16.2 (#15087)
+  * build(deps): bump rustls-webpki from 0.103.9 to 0.103.10
+    (#15079)
+  * build(deps): bump itoa from 1.0.17 to 1.0.18 (#15078)
+  * build(deps): bump slab from 0.4.11 to 0.4.12 (#15076)
+  * build(deps): bump openssl from 0.10.75 to 0.10.76 (#15075)
+  * build(deps): bump the kube group with 7 updates (#15073)
+
+-------------------------------------------------------------------
 Fri Mar 20 07:00:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.3.3:
