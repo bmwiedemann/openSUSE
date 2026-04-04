@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  2 23:01:24 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.67.3:
+  - [management] Allow updating embedded IdP user name and email by
+    @bcmmbaga in #5721
+  - [management] Fix L4 service creation deadlock on
+    single-connection databases by @lixmal in #5779
+  - [management,client] Revert gRPC client secret removal by
+    @bcmmbaga in #5781
+
+-------------------------------------------------------------------
 Wed Apr  1 19:56:59 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.67.2:
