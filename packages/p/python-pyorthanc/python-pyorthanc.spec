@@ -1,6 +1,7 @@
 #
-# spec file
+# spec file for package python-pyorthanc
 #
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,28 +16,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?sle15_python_module_pythons}
 
 %define modname pyorthanc
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        1.20.0
+Version:        1.22.1
 Release:        0
 Summary:        A comprehensive Python client for Orthanc
 License:        MIT
 URL:            https://github.com/gacou54/pyorthanc
 Source0:        https://files.pythonhosted.org/packages/source/p/pyorthanc/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core >= 1.0.0}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-httpx >= 0.24.1
+Requires:       python-pydicom >= 2.3.0
 BuildArch:      noarch
-
-Requires:        python-pydicom
-Requires:        python-httpx
-
 %python_subpackages
 
 %description

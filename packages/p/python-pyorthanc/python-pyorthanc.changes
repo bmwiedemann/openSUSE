@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr  4 08:13:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.1:
+  * Remove warning when importing pyorthanc
+- update to 1.22.0:
+  * `upload()` now returns a list the uploaded instances
+    `list[pyorthanc.Instance]`
+  * Add `get_internal_client()` to retrieve an Orthanc client
+    inside an orthanc script
+  * `upload()` now allows uploading DICOM files from a zip or
+    directory
+  * Add check_before_upload option
+- update to 1.21.0:
+  * Add URL properties
+- update to 1.20.1:
+  * Allows pydicom=3.x.x versions
+  * Add kwargs to find_patient/study/series/instance
+
+-------------------------------------------------------------------
 Wed May  7 14:16:21 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.20.0

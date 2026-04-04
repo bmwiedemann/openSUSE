@@ -7,4 +7,5 @@
 - Asynchronous client support
 - Helper functions for working with DICOM data
 - Integration with the Orthanc Python plugin</description>
+  <devel project="devel:languages:python" package="python-pyorthanc"/>
 </package>
