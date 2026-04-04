@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  3 05:38:44 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.8.3:
+  * CVE-2026-34743: buffer overflow in lzma_index_append() (boo#1261280)
+  * Add "License: 0BSD" to liblzma.pc.
+  * xz: Fix invalid memory access in --files and --files0
+  * Translations: Add Arabic man page translations
+
+-------------------------------------------------------------------
 Fri Jan  2 09:21:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.8.2:

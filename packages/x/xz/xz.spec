@@ -2,7 +2,7 @@
 # spec file for package xz
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_with static
 %endif
 Name:           xz
-Version:        5.8.2
+Version:        5.8.3
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        0BSD AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -33,7 +33,8 @@ URL:            https://tukaani.org/xz/
 Source0:        https://github.com/tukaani-project/xz/releases/download/v%{version}/xz-%{version}.tar.xz
 Source1:        https://github.com/tukaani-project/xz/releases/download/v%{version}/xz-%{version}.tar.xz.sig
 Source2:        baselibs.conf
-Source3:        https://tukaani.org/misc/lasse_collin_pubkey.txt#/xz.keyring
+# https://tukaani.org/misc/lasse_collin_pubkey.txt#/xz.keyring
+Source3:        %{name}.keyring
 Source4:        xznew
 Source5:        xznew.1
 BuildRequires:  pkgconfig
@@ -81,7 +82,7 @@ compiling programs using the LZMA library.
 %if %{with static}
 %package static-devel
 Summary:        Static version of LZMA library
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 Requires:       xz-devel = %{version}
 
@@ -190,8 +191,9 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 
 %files lang -f %{name}.lang
 %license COPYING COPYING.GPLv2
-%dir %{_mandir}/fr
+%dir %{_mandir}/ar
 %dir %{_mandir}/de
+%dir %{_mandir}/fr
 %dir %{_mandir}/ko
 %if 0%{?suse_version} == 1500
 %dir %{_mandir}/ro
@@ -200,7 +202,7 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 
 %files -n liblzma5
 %license COPYING COPYING.GPLv2
-%{_libdir}/liblzma.so.5*
+%{_libdir}/liblzma.so.5{,.*}
 
 %files devel
 %license COPYING COPYING.GPLv2
