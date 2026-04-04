@@ -929,4 +929,20 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>update longterm</comment>
     <requestid>1341671</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>8a9734e1cd0b3708b15032e06904d655</srcmd5>
+    <version>6.18.20</version>
+    <time>1774555640</time>
+    <user>anag_factory</user>
+    <comment>update longterm</comment>
+    <requestid>1342728</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>567480e17b86988fa7166a0ee0a16915</srcmd5>
+    <version>6.18.21</version>
+    <time>1775322250</time>
+    <user>dimstar_suse</user>
+    <comment>update longterm</comment>
+    <requestid>1344429</requestid>
+  </revision>
 </revisionlist>
