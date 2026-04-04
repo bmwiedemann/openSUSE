@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 20:22:32 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- The build without tests does not need the full junit5; the
+  junit5-minimal (built with ant) is enough
+
+-------------------------------------------------------------------
 Fri Feb  6 04:38:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.1.0

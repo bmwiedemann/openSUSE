@@ -31,7 +31,7 @@ BuildRequires:  apiguardian
 BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  junit5
+BuildRequires:  junit5-minimal
 BuildRequires:  sisu-plexus
 BuildRequires:  xz
 BuildArch:      noarch
@@ -39,6 +39,7 @@ BuildArch:      noarch
 BuildRequires:  ant-junit5
 BuildRequires:  atinject
 BuildRequires:  guava
+BuildRequires:  junit5
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-utils
