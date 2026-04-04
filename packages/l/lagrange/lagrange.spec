@@ -20,7 +20,7 @@
 %define tui_app_id fi.skyjake.clagrange
 
 Name:           lagrange
-Version:        1.20.2
+Version:        1.20.3
 Release:        0
 Summary:        Desktop GUI client for browsing Geminispace
 License:        BSD-2-Clause
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(ncursesw) >= 6
 BuildRequires:  pkgconfig(openssl)
 # https://github.com/skyjake/lagrange/issues/768
-BuildRequires:  pkgconfig(sdl2) >= 2.0.12
+BuildRequires:  pkgconfig(sdl2) >= 2.0.22
 BuildRequires:  pkgconfig(zlib)
 
 %description
