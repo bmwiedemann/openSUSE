@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 30 16:13:47 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.3.4:
+  * Fixed a crash when invoking the floating toolbox with the
+    Laser pointer on.
+  * Fixed sometimes missing page numbers in sidebar.
+  * Improved scrolling/zooming performances.
+  * Make default Plugins compatible with Lua 5.5.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar  2 08:20:58 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.3.3:
