@@ -1,7 +1,7 @@
 #
 # spec file for package python-ddg3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define baseversion 0.6.6
 Name:           python-ddg3
-Version:        %{baseversion}git~20170824T092521~0ef6b2f
+Version:        0.6.8
+%define baseversion %{version}
 Release:        0
 Summary:        Library for querying the Duck Duck Go API
 License:        BSD-3-Clause
 URL:            https://github.com/jpetrucciani/python-duckduckgo
-Source:         ddg3-%{version}.tar.xz
+Source:         https://github.com/jpetrucciani/python-duckduckgo/archive/refs/tags/%{version}.tar.gz#/ddg3-%{version}-gh.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -39,7 +39,8 @@ BuildArch:      noarch
 A Python3 library for querying the Duck Duck Go API.
 
 %prep
-%setup -q -n ddg3-%{version}
+%setup -q -n python-duckduckgo-%{version}
+sed -i -E "s#VERSION#%{version}#g" setup.py ddg3.py
 
 %build
 %pyproject_wheel
