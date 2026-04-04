@@ -1,7 +1,7 @@
 #
 # spec file for package python-binaryornot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 # Tests run too slowly on some architectures
 %ifarch %{ix86} x86_64  ppc64 ppc64le
@@ -24,29 +29,34 @@
 %bcond_with     test
 %endif
 Name:           python-binaryornot
-Version:        0.4.4
+Version:        0.6.0
 Release:        0
 Summary:        Python package to check if a file is binary or text
-License:        BSD-3-Clause
+License:        MIT
 URL:            https://github.com/audreyr/binaryornot
 Source:         https://files.pythonhosted.org/packages/source/b/binaryornot/binaryornot-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE remove_hypothesis_tests.patch -- remove hypothesis-based tests
-Patch0:         remove_hypothesis_tests.patch
-BuildRequires:  %{python_module chardet >= 3.0.2}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-chardet >= 3.0.2
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
-Pure Python package to guess whether a file is binary or text,
-using a heuristic similar to Perl's pp_fttext and its analysis
-by eliben.
+Pure Python package to guess whether a file is binary or text.
+It uses three layers of detection:
+1. Extension check: Recognizes 131 file types by name for instant classification.
+2. File signatures: Checks headers against known magic-byte signatures.
+3. Content analysis: Uses a trained decision tree for statistical classification.
 
 %prep
 %autosetup -p1 -n binaryornot-%{version}
@@ -56,6 +66,7 @@ by eliben.
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/binaryornot
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -65,9 +76,16 @@ $python tests/test_check.py
 }
 %endif
 
+%post
+%python_install_alternative binaryornot
+
+%postun
+%python_uninstall_alternative binaryornot
+
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS.rst HISTORY.rst README.rst
+%doc README.md
+%python_alternative %{_bindir}/binaryornot
 %{python_sitelib}/binaryornot
 %{python_sitelib}/binaryornot-%{version}.dist-info
 

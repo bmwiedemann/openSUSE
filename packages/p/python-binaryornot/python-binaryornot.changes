@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr  3 14:57:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * **Three-Layer Detection:**
+    - Extension check: Recognizes 131 file types by name for
+      instant classification.
+    - File signatures: Checks headers against known magic-byte
+      signatures.
+    - Content analysis: Uses a trained decision tree for
+      statistical classification.
+  * **Zero Dependencies:** The library no longer requires `chardet`.
+  * **License:** Changed from BSD-3-Clause to MIT.
+  * **Requirements:** Now requires Python 3.10 or higher.
+  * **Packaging:** Switched to hatchling and PEP 621.
+- drop remove_hypothesis_tests.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Feb 28 06:02:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.
