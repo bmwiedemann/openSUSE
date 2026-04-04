@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 03 05:32:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.4.0 (26.3.0 was not released):
+  * chore: update deps (#563)
+  * fix(security): update dependencies [SECURITY] (#560)
+  * chore(deps): bump requests from 2.32.5 to 2.33.0 (#559)
+  * chore(deps): bump cairosvg from 2.7.1 to 2.9.0 (#557)
+  * chore(deps): update all dependencies (#554)
+  * chore: replace pre-commit with prek (#553)
+
+-------------------------------------------------------------------
 Thu Feb 26 07:22:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.2.0:
