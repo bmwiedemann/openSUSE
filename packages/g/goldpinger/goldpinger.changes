@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 04 05:57:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.0:
+  * Bump the version to 3.11.0
+  * Rename PathLength to HopCount in swagger model and UI
+  * Address PR #164 review feedback
+  * Add UDP probe metrics: packet loss, hop count, and RTT
+
+-------------------------------------------------------------------
 Fri Jan 30 06:50:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.10.3:
