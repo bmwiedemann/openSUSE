@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Apr  3 09:55:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.48
+  * xdg-session-management-v1: disallow adding a toplevel twice
+  * xdg-session-management-v1: add invalid_reason protocol error
+  * text-input: Add preedit text hints
+  * text-input: Add show/hide_input_panel requests
+  * unstable/text-input: Add language hint from IME to clients
+  * text-input: Add actions
+  * text-input: Reword and clarify cursor syncing
+  * text-input: Synchronize set_cursor_rectangle with the
+    wl_surface
+  * text-input: Add preedit_shown flag
+  * text-input: Add no Emoji input
+  * text-input: Add on_screen_input_provided hint
+  * staging: Add xdg-session-management protocol
+  * tablet: Fix number of modes docs typo
+  * treewide: fix typos
+  * xx-text-input: Add missing action.none
+  * pointer-gestures: Add `<copyright>` section
+  * toplevel-icon: Minor style fixes
+  * xx-keyboard-filter: Clarify destruction
+  * xx-text-input, xx-input-method: Fix sync: relax serial, relax
+    applying changes
+  * xx-input-method: Clarify deleting selection
+  * experimental: Add xx-zones protocol for window positioning
+    in zones
+  * xdg-decoration: allow get_toplevel_decoration with a mapped
+    toplevel
+  * experimental: Add xx-cutouts protocol
+  * staging/color-management: target_primaries unconditional
+  * README: Add expectations for unmerged protocol compatibility
+  * README: Do not special case experimental protocol compatibility
+    rules
+  * README: Make backwards compatibility requirements more obvious
+  * README: Document each protocol phase
+  * README: Refer to protocol in specific phases instead of
+    directories
+  * README: Get rid of the `protocol extension`/`extension`
+    terminology
+  * README: Protocols in experimentla are in the experimental phase
+  * README: Protocols in staging are in the staging phase
+  * pointer-gestures: fix versions of some interfaces
+  * build: use Meson pkgconfig module
+  * Add xx-keyboard-filter to build
+  * Add xx-keyboard-filter protocol
+  * xx-input-method-v2: Add actions including selection finishing
+  * experimental/text-input: Add actions
+
+-------------------------------------------------------------------
 Mon Dec 15 15:26:01 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Update wayland-protocols.keyring
