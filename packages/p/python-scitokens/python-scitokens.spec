@@ -1,7 +1,7 @@
 #
 # spec file for package python-scitokens
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,12 @@ Summary:        SciToken reference implementation library
 License:        Apache-2.0
 URL:            https://scitokens.org
 Source:         https://github.com/scitokens/scitokens/archive/refs/tags/v%{version}.tar.gz#/%{bname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM CVE-2026-32714.patch bsc#1261203
+Patch0:         CVE-2026-32714.patch
+# PATCH-FIX-UPSTREAM CVE-2026-32716.patch bsc#1261202
+Patch1:         CVE-2026-32716.patch
+# PATCH-FIX-UPSTREAM CVE-2026-32727.patch bsc#1261201
+Patch2:         CVE-2026-32727.patch
 BuildRequires:  %{python_module PyJWT >= 2.2}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pip}

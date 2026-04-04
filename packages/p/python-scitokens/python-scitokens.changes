@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  2 15:09:31 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- CVE-2026-32714: usage of str.format() to construct SQL queries
+  can lead to SQL Injection (bsc#1261203)
+  * CVE-2026-32714.patch
+- CVE-2026-32716: incorrectly validates scope paths can allow
+  access sibling paths (bsc#1261202)
+  * CVE-2026-32716.patch
+- CVE-2026-32727: normalizing path before check can lead to path
+  traversal (bsc#1261201)
+  * CVE-2026-32727.patch
+
+-------------------------------------------------------------------
 Thu Oct 10 03:11:39 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.1:
