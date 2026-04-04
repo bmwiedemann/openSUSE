@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  3 13:37:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2:
+  * llms.txt added
+  * Python 3.14 support
+  * use ruff instead of flake8/isort/black
+  * use pyproject.toml instead of setup.cfg
+- drop support-python314.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Nov 21 02:43:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:

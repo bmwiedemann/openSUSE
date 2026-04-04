@@ -88,4 +88,17 @@
   * Do not support now-removed ast.{Num,Str}.</comment>
     <requestid>1318946</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>db77f940630784ca8f6f63780aaa70a4</srcmd5>
+    <version>6.2</version>
+    <time>1775322411</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2:
+  * llms.txt added
+  * Python 3.14 support
+  * use ruff instead of flake8/isort/black
+  * use pyproject.toml instead of setup.cfg
+- drop support-python314.patch (upstream)</comment>
+    <requestid>1344478</requestid>
+  </revision>
 </revisionlist>
