@@ -210,4 +210,20 @@
     versions are end-of-life.</comment>
     <requestid>1341714</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>24588caa4b6f8b4bb44de8b9d3ac182b</srcmd5>
+    <version>65.15.1</version>
+    <time>1775322415</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 65.15.1:
+  * The context data for the various entrance views was
+    inconsistent, e.g. some where missing site or login_url.
+    Ensured all entrance views are now handed over the same base
+    context.
+  * MFA: accessing the WebAuthn login view while already being
+    authenticated resulted in a 500, fixed.
+  * OAuth 1.0: Fixed an argument call order issue when performing
+    requests.</comment>
+    <requestid>1344468</requestid>
+  </revision>
 </revisionlist>

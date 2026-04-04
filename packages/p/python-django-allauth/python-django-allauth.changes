@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  3 12:50:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 65.15.1:
+  * The context data for the various entrance views was
+    inconsistent, e.g. some where missing site or login_url.
+    Ensured all entrance views are now handed over the same base
+    context.
+  * MFA: accessing the WebAuthn login view while already being
+    authenticated resulted in a 500, fixed.
+  * OAuth 1.0: Fixed an argument call order issue when performing
+    requests.
+
+-------------------------------------------------------------------
 Sat Mar 21 15:10:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 65.15.0:
