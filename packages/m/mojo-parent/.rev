@@ -31,4 +31,12 @@
     <comment>82</comment>
     <requestid>1180177</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8966d6aab7a4e01287f612d36ee4961e</srcmd5>
+    <version>82</version>
+    <time>1775322466</time>
+    <user>dimstar_suse</user>
+    <comment>Do not import junit-bom and avoid build cycles</comment>
+    <requestid>1344527</requestid>
+  </revision>
 </revisionlist>

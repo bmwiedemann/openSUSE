@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 21:01:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not import junit-bom in the parent. This creates unnecessary
+  build cycles with junit5.
+
+-------------------------------------------------------------------
 Wed Jun 12 09:38:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 82:
