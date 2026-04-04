@@ -172,4 +172,17 @@
 - Version 0.6.1</comment>
     <requestid>1248073</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5e9bca8bad26d48fe4547c1d049b3fbe</srcmd5>
+    <version>0.12.0</version>
+    <time>1775322476</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.0:
+  * Bug fixes (see mercurial logs for details)
+  * Remove support for Python older than 3.9
+  * Upgrade to pyproject
+  * Add support for Python 3.14
+  * Add support for Python 3.13</comment>
+    <requestid>1344563</requestid>
+  </revision>
 </revisionlist>

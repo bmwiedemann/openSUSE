@@ -1,7 +1,7 @@
 #
 # spec file for package python-relatorio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,31 +17,30 @@
 #
 
 
-%{?sle15allpythons}
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         mod_name relatorio
+%{?sle15_python_module_pythons}
 Name:           python-relatorio
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        Python module to create reports from Python objects
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 URL:            https://pypi.python.org/pypi/relatorio
 Source:         https://pypi.io/packages/source/r/%{mod_name}/%{mod_name}-%{version}.tar.gz
-BuildRequires:  %{python_module Genshi}
+BuildRequires:  %{python_module Genshi >= 0.5}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module hatch-tryton}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module lxml >= 2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-magic}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-
-Requires:       python-Genshi
-Requires:       python-PyYAML
-Requires:       python-lxml
-Requires:       python-pycha
+Requires:       python-Genshi >= 0.5
+Requires:       python-PyYAML >= 5.3
+Requires:       python-lxml >= 2.0
+Requires:       python-pycha >= 0.4.0
 Requires:       python-python-magic
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
@@ -65,8 +64,6 @@ as documents (odt, ods, pdf) or images (png, svg).
 %python_clone -a %{buildroot}%{_bindir}/relatorio-render
 
 %check
-# https://relatorio.tryton.org/bug65
-sed -i 's:iteritems:items:' relatorio/tests/test_api.py
 mv relatorio relatorio_hide
 %pyunittest discover -v
 
