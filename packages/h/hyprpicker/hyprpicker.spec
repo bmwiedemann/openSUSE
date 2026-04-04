@@ -1,7 +1,7 @@
 #
 # spec file for package hyprpicker
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           hyprpicker
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        A wlroots-compatible Wayland color picker
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprpicker
 Source:         %{name}-%{version}.tar.gz
+Patch:          https://github.com/hyprwm/hyprpicker/commit/089dd8a448c12e1066486892de096590cddb4195.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -39,7 +40,7 @@ A wlroots-compatible Wayland color picker with magnifying lens. It
 supports a few different output forms, e.g. RGB, CMYK, HSL, HSV.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake

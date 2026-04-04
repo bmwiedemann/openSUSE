@@ -1,0 +1,33 @@
+From 089dd8a448c12e1066486892de096590cddb4195 Mon Sep 17 00:00:00 2001
+From: Stephen Degler <stephen@degler.net>
+Date: Tue, 10 Feb 2026 14:17:44 -0500
+Subject: [PATCH] core: Include <mutex> to make pickier compilers happy. (#148)
+
+---
+ src/hyprpicker.cpp | 1 +
+ src/hyprpicker.hpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/hyprpicker.cpp b/src/hyprpicker.cpp
+index 90f0228..d46959d 100644
+--- a/src/hyprpicker.cpp
++++ b/src/hyprpicker.cpp
+@@ -5,6 +5,7 @@
+ #include <cstddef>
+ #include <cstdio>
+ #include <format>
++#include <mutex>
+ #include <hyprutils/math/Vector2D.hpp>
+ #include <wayland-client-protocol.h>
+ #include <xkbcommon/xkbcommon-keysyms.h>
+diff --git a/src/hyprpicker.hpp b/src/hyprpicker.hpp
+index 77ab060..cad8f02 100644
+--- a/src/hyprpicker.hpp
++++ b/src/hyprpicker.hpp
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <mutex>
+ #include "defines.hpp"
+ #include "helpers/LayerSurface.hpp"
+ #include "helpers/PoolBuffer.hpp"

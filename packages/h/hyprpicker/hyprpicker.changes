@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr  1 18:12:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.6:
+  + Exit with a specific code when the user has cancelled picking a
+    color
+  + Update README.md
+  + Made preview format match output format
+  + nix: use gcc15
+  + Notifications Support
+  + Fix flickering at top-left
+  + More flexible positioning and scaling
+  + Change css example in man page to use hsl
+  + feat: add custom format decoration
+  + Add null check for cursor shape device
+  + Feat: added keyboard movement
+- Add 089dd8a448c12e1066486892de096590cddb4195.patch: core: Include
+  <mutex> to make pickier compilers happy. Fixes (boo#1260616).
+
+-------------------------------------------------------------------
 Sun Aug  3 09:16:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.5:
