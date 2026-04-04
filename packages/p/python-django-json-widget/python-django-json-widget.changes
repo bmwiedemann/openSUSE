@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr  3 16:36:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Issue #108: respect Django admin color scheme setting for
+    JSON editor.
+  * Issue #114: expose editor instance to window object and DOM
+    element.
+  * Fix dark mode CSS support #107
+  * Fix Version 2.0.1 causes rendering HTML scripts issue #80
+  * Fixed Version 2.0.0 causes issues with Django 4.x due to
+    missing sourcemaps issue #83
+  * Fix default paths for static files #53
+  * Stop declaring support for Django versions before 3.2 #65
+  * Avoid HTML injection via unsafe JSON injection #64
+  * Remove source map reference from JS bundle #70
+  * Add dark mode CSS support #82
+  * Updated documentation
+- drop remove-future-requirement.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue Sep  5 04:09:15 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject and autosetup macros.
