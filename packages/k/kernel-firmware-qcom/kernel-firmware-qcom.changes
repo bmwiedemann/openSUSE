@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  3 06:44:58 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260402 (git commit 583d336ee7c2):
+  * qcom: update ADSP firmware for sm8750 platform
+  * qcom: update CDSP firmware for glymur platform
+
+-------------------------------------------------------------------
+Wed Apr  1 13:38:44 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260331 (git commit 441bcf2eaa2a):
+  * WHENCE: Move Dell remoteproc firmware to correct section
+
+-------------------------------------------------------------------
 Wed Mar 11 05:59:01 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260310 (git commit d13cd498318b):

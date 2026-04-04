@@ -413,4 +413,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: update ADSP dtb.mbn for glymur platform</comment>
     <requestid>1340884</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c2b3ceb662f5708cea05f58ece0a15f9</srcmd5>
+    <version>20260402</version>
+    <time>1775322258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260402 (git commit 583d336ee7c2):
+  * qcom: update ADSP firmware for sm8750 platform
+  * qcom: update CDSP firmware for glymur platform
+
+- Update to version 20260331 (git commit 441bcf2eaa2a):
+  * WHENCE: Move Dell remoteproc firmware to correct section</comment>
+    <requestid>1344444</requestid>
+  </revision>
 </revisionlist>
