@@ -3,7 +3,7 @@
     <param name="url">https://github.com/lima-vm/lima.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v2.0.3</param>
+    <param name="revision">v2.1.0</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -16,6 +16,6 @@
   </service>
   <service mode="disabled" name="set_version"/>
   <service name="go_modules" mode="disabled">
-     <param name="archive">lima-2.0.3.tar.zst</param>
+     <param name="archive">lima-2.1.0.tar.zst</param>
   </service>
 </services>
