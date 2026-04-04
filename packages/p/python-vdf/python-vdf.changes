@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  3 18:15:52 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Drop macros from EOL SUSE versions
+- Added macros to only build for the primary python version
+- Minor .spec fixes
+
+-------------------------------------------------------------------
 Sun Feb  8 00:19:22 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Minor .spec fixes 

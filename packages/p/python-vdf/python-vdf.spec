@@ -16,7 +16,7 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%define pythons %{primary_python}
 
 Name:           python-vdf
 Version:        4.0
@@ -41,6 +41,9 @@ BuildRequires:  %{python_module wheel}
 # To remove duplicated files
 BuildRequires:  fdupes
 
+Obsoletes:      python-vdf < %{version}
+
+# Build python subpackages
 %python_subpackages
 
 %description

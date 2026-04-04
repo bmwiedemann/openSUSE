@@ -16,4 +16,14 @@
 - Updated URL on package overview</comment>
     <requestid>1331802</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a1a4e7e404d78396f5020820fa94bd04</srcmd5>
+    <version>4.0</version>
+    <time>1775322463</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop macros from EOL SUSE versions
+- Added macros to only build for the primary python version
+- Minor .spec fixes</comment>
+    <requestid>1344520</requestid>
+  </revision>
 </revisionlist>
