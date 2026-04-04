@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 08:38:45 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260327 (git commit 85786b4413fd):
+  * rtl_bt: Update RTL8852B BT USB FW to 0x127C_FD78
+  * linux-firmware: Add firmware file for Intel BlazarIW
+  * linux-firmware: Add firmware file for Intel BlazarIGfp2 core
+
+-------------------------------------------------------------------
 Sun Mar 15 08:32:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260313 (git commit 57303edc4101):

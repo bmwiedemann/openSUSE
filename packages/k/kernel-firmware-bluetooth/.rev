@@ -354,4 +354,15 @@ After this PR, there will be a delete request for kernel-firmware.
   *  QCA: Update Bluetooth WCN6856 firmware 2.1.0-00659 to 2.1.0-00665</comment>
     <requestid>1340879</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f039d2bd86193434db070d1dd6a44405</srcmd5>
+    <version>20260327</version>
+    <time>1775322252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260327 (git commit 85786b4413fd):
+  * rtl_bt: Update RTL8852B BT USB FW to 0x127C_FD78
+  * linux-firmware: Add firmware file for Intel BlazarIW
+  * linux-firmware: Add firmware file for Intel BlazarIGfp2 core</comment>
+    <requestid>1344438</requestid>
+  </revision>
 </revisionlist>
