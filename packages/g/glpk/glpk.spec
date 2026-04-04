@@ -30,13 +30,11 @@ Source1:        https://ftp.gnu.org/gnu/glpk/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
 Patch0:         glpk-no_random_return.patch
 Patch1:         bool.patch
-BuildRequires:  ghostscript
 BuildRequires:  gmp-devel
 BuildRequires:  libiodbc-devel
 BuildRequires:  libmariadb-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  texlive
 
 %description
 The GLPK package is intended for solving large-scale linear
@@ -102,17 +100,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 # creates support file for pkg-config
 mkdir -p %{buildroot}/%{_libdir}/pkgconfig
-cat >%{buildroot}/%{_libdir}/pkgconfig/%{name}.pc <<-EOF
+tee %{buildroot}/%{_libdir}/pkgconfig/%{name}.pc <<EOF
 prefix=%{_prefix}
-exec_prefix=${prefix}
-libdir=${exec_prefix}/%{_lib}
-includedir=${prefix}/include
+exec_prefix=\${prefix}
+libdir=\${exec_prefix}/%{_lib}
+includedir=\${prefix}/include
 
 Name:           %{name}
 Description: GNU Linear Programming Kit
 Version:        %{version}
 Libs: -lglpk
-Cflags: -I${includedir}
+Cflags: -I\${includedir}
 EOF
 
 %check

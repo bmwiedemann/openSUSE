@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 31 22:19:32 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix pkgconfig file to contain valid paths/variables, broken
+  previously due to unescaped special characters.
+- Remove unused texlive and ghostscript build dependencies
+  (documentation is prebuilt).
+
+-------------------------------------------------------------------
 Mon Jan  5 12:43:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add bool.patch to fix compile error with gcc15/16 and C23 mode.
