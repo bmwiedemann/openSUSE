@@ -159,4 +159,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * iwlwifi: add Bz/Wh FW for core102-56 release</comment>
     <requestid>1340881</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>947b0ac44a104bee5adc7b281819821c</srcmd5>
+    <version>20260331</version>
+    <time>1775322255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260331 (git commit 441bcf2eaa2a):
+  * iwlwifi: add Bz/Sc FW for core103-40 release
+  * iwlwifi: Add Hr/Gf firmware for core103-40 release
+  * iwlwifi: update ty/So/Ma firmwares for core103-40 release</comment>
+    <requestid>1344441</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  1 13:38:25 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260331 (git commit 441bcf2eaa2a):
+  * iwlwifi: add Bz/Sc FW for core103-40 release
+  * iwlwifi: Add Hr/Gf firmware for core103-40 release
+  * iwlwifi: update ty/So/Ma firmwares for core103-40 release
+
+-------------------------------------------------------------------
 Wed Mar 18 09:36:35 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260317 (git commit 66ca9a5b63a5):

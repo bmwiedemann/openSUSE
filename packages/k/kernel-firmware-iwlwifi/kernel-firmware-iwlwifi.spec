@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 66ca9a5b63a5b7ee14ca382f6b5a21a72e0a3698
+%define git_version 441bcf2eaa2a2dd6edbab83181a66a2db537c470
 
 Name:           kernel-firmware-iwlwifi
-Version:        20260317
+Version:        20260331
 Release:        0
 Summary:        Kernel firmware files for Intel wireless drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
