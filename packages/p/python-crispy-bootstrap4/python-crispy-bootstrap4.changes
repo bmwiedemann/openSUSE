@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  3 16:30:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.2:
+  * Removed support for Django 4.2, 5.0 and 5.1.
+  * Confirmed support for Python 3.14.
+  * Confirmed support for Django 6.0.
+  * Added support for Python 3.13.
+  * Added support for Django 5.2.
+  * Changed `id` for help text to align with aria-describedby
+    attribute added by Django 5.0+.
+- drop django52.patch (obsolete)
+
+-------------------------------------------------------------------
 Tue Apr 15 08:21:58 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add (huge) django52.patch to fix compatibility with Django 5.2

@@ -44,4 +44,20 @@
     <comment></comment>
     <requestid>1269573</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>689ff53ab5bf87b0e378e3ea2a25f457</srcmd5>
+    <version>2026.2</version>
+    <time>1775322444</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.2:
+  * Removed support for Django 4.2, 5.0 and 5.1.
+  * Confirmed support for Python 3.14.
+  * Confirmed support for Django 6.0.
+  * Added support for Python 3.13.
+  * Added support for Django 5.2.
+  * Changed `id` for help text to align with aria-describedby
+    attribute added by Django 5.0+.
+- drop django52.patch (obsolete)</comment>
+    <requestid>1344499</requestid>
+  </revision>
 </revisionlist>
