@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  1 15:06:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- split edid-decode into its own subpackage again to fix upgrade
+
+-------------------------------------------------------------------
+Wed Apr  1 12:22:22 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Fix conflict with edid-decode (bsc#1261301)
+
+-------------------------------------------------------------------
 Tue Mar 24 21:45:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.32.0:

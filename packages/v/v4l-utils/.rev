@@ -722,4 +722,14 @@
     header</comment>
     <requestid>1343530</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>9d5b52d7e80c16dec04e90b528e3905f</srcmd5>
+    <version>1.32.0</version>
+    <time>1775322311</time>
+    <user>dimstar_suse</user>
+    <comment>- split edid-decode into its own subpackage again to fix upgrade
+
+- Fix conflict with edid-decode (bsc#1261301)</comment>
+    <requestid>1344184</requestid>
+  </revision>
 </revisionlist>

@@ -102,6 +102,15 @@ Recommends:     dtv-scan-tables-v5
 %description -n dvb-utils
 dvb-utils is a collection of various DVB utilities.
 
+%package -n edid-decode
+Summary:        EDID decoder and conformance tester
+
+%description -n edid-decode
+Decodes to text the binary EDID information from monitors.  EDID is binary data
+encoded in the monitor firmware, which the kernel exposes via
+/sys/devices/.../drm/card*/card*/edid. edid-decode renders this binary data
+into a human-readable text form.
+
 %package -n libdvbv5-%{so_ver}
 Summary:        Library that provides access to DVB adapter cards
 License:        GPL-2.0-only
@@ -280,7 +289,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/cec-compliance
 %{_bindir}/cec-ctl
 %{_bindir}/cec-follower
-%{_bindir}/edid-decode
 %{_bindir}/ir-ctl
 %{_bindir}/ir-keytable
 %{_bindir}/ivtv-ctl
@@ -294,8 +302,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/cec-compliance.1%{?ext_man}
 %{_mandir}/man1/cec-ctl.1%{?ext_man}
 %{_mandir}/man1/cec-follower.1%{?ext_man}
-%{_mandir}/man1/edid-decode.1%{?ext_man}
 %{_mandir}/man1/ir-ctl.1%{?ext_man}
+
+%files -n edid-decode
+%license COPYING
+%{_bindir}/edid-decode
+%{_mandir}/man1/edid-decode.1%{?ext_man}
 
 %files lang -f "%{name}.lang"
 
