@@ -18,7 +18,7 @@
 
 %define executable_name jg
 Name:           jsongrep
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        CLI for fast querying of JSON, YAML, TOML, JSONL, CBOR, and MessagePack documents
 License:        MIT

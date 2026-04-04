@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 03 06:58:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.1:
+  * chore: prepare for v0.8.1 release
+  * docs: add `winget` instructions
+  * fix(range): use separate `range_start`/`range_end` atoms to
+    resolve ambiguity
+  * fix(README): clarify that range bounds are half-open
+  * chore(meta): add `documentation` and `keywords` entries
+  * fix(example): missing Kleene star in QueryBuilder example
+  * chore: exclude justfile from package
+  * docs: add library quick start, re-export `Value`
+  * docs(usage): update README with practical multiformat examples
+  * docs: add link to blog post
+  * docs(install): add package repository badge
+
+-------------------------------------------------------------------
 Sun Mar 29 18:36:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package jsongrep aka jg: command-line tool for fast querying
