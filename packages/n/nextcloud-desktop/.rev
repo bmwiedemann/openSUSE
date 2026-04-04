@@ -791,4 +791,20 @@
     <comment>Update to version 4.0.8</comment>
     <requestid>1341627</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>d87faff4235da87fb796f5cc45538c95</srcmd5>
+    <version>33.0.0</version>
+    <time>1774555802</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342772</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>77d91c26d6afeff50567cabffa9b2b6a</srcmd5>
+    <version>33.0.2</version>
+    <time>1775322339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344369</requestid>
+  </revision>
 </revisionlist>

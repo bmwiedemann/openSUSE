@@ -1,4 +1,440 @@
 -------------------------------------------------------------------
+Thu Apr  2 04:40:54 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to version 33.0.2 with minor updates for macOS and Windows:
+  * fix(macOS): Sparkle Sandboxing (gh#nextcloud/desktop#9752)
+  * fix(macOS): Fix background update check incorrectly calling 
+    Sparkle when automaticallyChecksForUpdates is NO 
+    (gh#nextcloud/desktop#9744)
+  * fix(windows/vfs): automated test for Windows VFS case clash 
+    items (gh#nextcloud/desktop#9741)
+
+-------------------------------------------------------------------
+Tue Mar 31 05:10:40 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to 33.0.1:
+  * Enhance check for received SVG responses
+    (gh#nextcloud/desktop#9697)
+  * Use a different palette colour for settings backgrounds
+    (gh#nextcloud/desktop#9703)
+  * Only call parseEndpoints when the fileId is not empty
+    (gh#nextcloud/desktop#9701)
+  * Add missing endGroup() when removing a folder from settings
+    (gh#nextcloud/desktop#9607)
+  * Correct text case in an error message label
+    (gh#nextcloud/desktop#9672)
+  * Update QLabel text property to avoid translation
+    (gh#nextcloud/desktop#9673)
+  * Update copyright year
+    (gh#nextcloud/desktop#9717) 
+
+-------------------------------------------------------------------
+Tue Mar 24 12:46:04 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to 33.0.0:
+* Bugfix/unbreak syncing public share links
+  (gh#nextcloud/desktop#8836)
+* Allow Maximizing Settings Window
+  (gh#nextcloud/desktop#8834)
+* Use upstream Extra CMake Modules
+  (gh#nextcloud/desktop#6810)
+* Run Developer Build from Xcode
+  (gh#nextcloud/desktop#8838)
+* fix: folder delete/new conflict will be "delete"
+  (gh#nextcloud/desktop#8671)
+* Branded file provider extension SF Symbol
+  (gh#nextcloud/desktop#8818)
+* Updated File Provider Translations
+  (gh#nextcloud/desktop#8842)
+* chore(deps): Bump fsfe/reuse-action from 5.0.0 to 6.0.0
+  (gh#nextcloud/desktop#8839)
+* chore(deps): Bump actions/stale from 10.0.0 to 10.1.0
+  (gh#nextcloud/desktop#8841)
+* chore(deps): Bump cpp-linter/cpp-linter-action from 2.16.4 to
+  2.16.5 (gh#nextcloud/desktop#8840)
+* fix(asyncimageresponse): fetch remote resources in the same
+  thread as Account (gh#nextcloud/desktop#8848)
+* chore(chunk-upload): always sent the total size header
+  (gh#nextcloud/desktop#8849)
+* Bugfix/allign plus icon
+  (gh#nextcloud/desktop#8851)
+* fix: HTML-escape file URLs to handle special characters in
+  conflict and case clash dialogs (gh#nextcloud/desktop#8847)
+* fix(filesystembase): log correct ACL errors
+  (gh#nextcloud/desktop#8863)
+* fix: Adding elide to menuitems
+  (gh#nextcloud/desktop#8862)
+* fix(i18n): Fixed grammar
+  (gh#nextcloud/desktop#8870)
+* Fix Token Locks
+  (gh#nextcloud/desktop#8872)
+* fix(NextcloudDev): add missing template file
+  (gh#nextcloud/desktop#8876)
+* fix(tray): use native tooltips when available
+  (gh#nextcloud/desktop#8883)
+* fix(file-provider): report a different error if database is not
+  ready (gh#nextcloud/desktop#8885)
+* fix(quota): return unlimited quota if server query is invalid or
+  file is in folder root (gh#nextcloud/desktop#8714)
+* chore: set xcode target to Debug only for dev builds
+  (gh#nextcloud/desktop#8889)
+* fix: remove "nextcloud" from debug log filenames
+  (gh#nextcloud/desktop#8899)
+* chore(ci): use Xcode 16.3
+  (gh#nextcloud/desktop#8902)
+* Logging NSFileProviderRequest
+  (gh#nextcloud/desktop#8890)
+* fix: Neutral sync icon in VFS sync status
+  (gh#nextcloud/desktop#8900)
+* Fix some of the accounts menu visual issues
+  (gh#nextcloud/desktop#8894)
+* fix: Update minimum supported Nextcloud server version to 20
+  (gh#nextcloud/desktop#8910)
+* fix: ignore directory listing entry for the iterated directory
+  (gh#nextcloud/desktop#8921)
+* Removed obsolete settings features in main app
+  (gh#nextcloud/desktop#8924)
+* fix(account): do not consider URLs with a trailing slash as
+  public links (gh#nextcloud/desktop#8932)
+* fix(network): fall back to unlimited bandwidth in case the
+  legacy global limit is still set (gh#nextcloud/desktop#8925)
+* Fix Crash on File Provider Deactivation for Account with UUID
+  Name (gh#nextcloud/desktop#8941)
+* Fix #8914
+  (gh#nextcloud/desktop#8943)
+* File Provider Fix: Translated Some Texts
+  (gh#nextcloud/desktop#8966)
+* fix: make sure migration is skipped when setting
+  DISABLE_ACCOUNT_MIGRATION (gh#nextcloud/desktop#8973)
+* style(file-provider): improve text displayed when user resets
+  virtual files setup (gh#nextcloud/desktop#8892)
+* Fix (File Provider): Share Permissions
+  (gh#nextcloud/desktop#8981)
+* fix: Add official PPA as an option of the package type
+  (gh#nextcloud/desktop#8975)
+* chore(deps): Bump actions/upload-artifact from 4.6.2 to 5.0.0
+  (gh#nextcloud/desktop#8971)
+* refactor: Use correct string overload
+  (gh#nextcloud/desktop#8992)
+* Bugfix/edit locally server custom path
+  (gh#nextcloud/desktop#8867)
+* fix(typo): Fix typo in debug log message for original file
+  (gh#nextcloud/desktop#9014)
+* Include Realm Databases in Debug Archives
+  (gh#nextcloud/desktop#9016)
+* chore(deps): Bump cpp-linter/cpp-linter-action from 2.16.5 to
+  2.16.6 (gh#nextcloud/desktop#9011)
+* fix(file-provider): use correct FP domain identifier for sync
+  status check (gh#nextcloud/desktop#9008)
+* fix(tests): ensure we compare remote state against local state
+  (gh#nextcloud/desktop#9009)
+* feat(update): allow to manually skip a pending update
+  (gh#nextcloud/desktop#9006)
+* fix(vfs/cfapi): avoid creating invalid db entries when using a
+  different sync root (gh#nextcloud/desktop#8947)
+* bugfix: Tweak status icons further
+  (gh#nextcloud/desktop#9028)
+* fix: activity tray is not refreshed
+  (gh#nextcloud/desktop#9043)
+* fix(log): Re-establish connection for systray mono icons
+  (gh#nextcloud/desktop#9050)
+* fix: align qml value type registration with lowercase names
+  (gh#nextcloud/desktop#9053)
+* fix(log): Improve log messages for client status reporting
+  (gh#nextcloud/desktop#9052)
+* fix(file-provider): Fix button title in item locking user
+  interface (gh#nextcloud/desktop#9058)
+* fix(log): QML warnings
+  (gh#nextcloud/desktop#9054)
+* Improved File Provider Locking Overlay Layout in Finder
+  (gh#nextcloud/desktop#9059)
+* fix(discovery): display more user friendly message when data is
+  missing from server response (gh#nextcloud/desktop#8982)
+* fix(file-provider): Existing Lock Comparison
+  (gh#nextcloud/desktop#9062)
+* File Provider Legacy Database Cleanup
+  (gh#nextcloud/desktop#9067)
+* fix: use /usr/bin/open to show a file/folder in finder
+  (gh#nextcloud/desktop#9076)
+* fix(checksums): avoid crash on aborted checksum calculation job
+  (gh#nextcloud/desktop#9039)
+* fix(gui): initialise e2e()->account() from Account
+  (gh#nextcloud/desktop#9031)
+* fix(migration): set all settings and keychain keys from the
+  previous version of the client (gh#nextcloud/desktop#8969)
+* chore(deps): Bump actions/checkout from 5.0.0 to 5.0.1
+  (gh#nextcloud/desktop#9095)
+* fix: migration of icon and user network settings
+  (gh#nextcloud/desktop#9106)
+* fix(file-provider): Root container enumeration to process remote
+  updates correctly (gh#nextcloud/desktop#9102)
+* avoid detecting permissions to be invalid on linux NTFS file
+  system (gh#nextcloud/desktop#7745)
+* feat: preserve the last selected account between runs
+  (gh#nextcloud/desktop#9061)
+* chore(deps): Bump actions/checkout from 5.0.1 to 6.0.0
+  (gh#nextcloud/desktop#9132)
+* fix: do not fetch user info twice during start of the client
+  (gh#nextcloud/desktop#9141)
+* fix(encryption): allow encrypting a new folder if it was synced
+  (gh#nextcloud/desktop#9144)
+* fix(download): allow highly compressed responses up to a known
+  file size (gh#nextcloud/desktop#9146)
+* fix: initialize user list when the first acc is added
+  (gh#nextcloud/desktop#9156)
+* Fix: Resolving file provider services based on security-scoped
+  URL access (gh#nextcloud/desktop#9159)
+* Signal enumerator for working set after file (un)lock
+  (gh#nextcloud/desktop#9166)
+* chore(deps): Bump actions/setup-python from 6.0.0 to 6.1.0
+  (gh#nextcloud/desktop#9163)
+* chore: remove undocumented socketapi commands
+  (gh#nextcloud/desktop#9169)
+* Bugfix/enforce enterprise update channel
+  (gh#nextcloud/desktop#9139)
+* fix(file-provider): Sync state for excluded lock files
+  (gh#nextcloud/desktop#9173)
+* fix(linux/crash): fix crash in cloud provider integration
+  (gh#nextcloud/desktop#9183)
+* fix(AppImage): include an extra library for nss3 to prevent a
+  crash (gh#nextcloud/desktop#9171)
+* chore(log): try to print the file name of the crash log
+  (gh#nextcloud/desktop#9187)
+* fix(upgrade): set the previous client version after the upgrade
+  check (gh#nextcloud/desktop#9204)
+* chore(tests): remove obsolete source files
+  (gh#nextcloud/desktop#9210)
+* Bugfix/mgallien/noid/clazy fixes
+  (gh#nextcloud/desktop#9203)
+* fix(migration): return correct migration state if no accounts
+  were found (gh#nextcloud/desktop#9190)
+* chore(deps): Bump actions/checkout from 6.0.0 to 6.0.1
+  (gh#nextcloud/desktop#9205)
+* chore(deps): Bump actions/stale from 10.1.0 to 10.1.1
+  (gh#nextcloud/desktop#9206)
+* fix(checksums): wait for the checksum to be calculated before
+  deletion (gh#nextcloud/desktop#9221)
+* fix: dismiss notifications
+  (gh#nextcloud/desktop#9222)
+* Bugfix/secure drop link
+  (gh#nextcloud/desktop#9195)
+* feat: support notify_file_id push notifications
+  (gh#nextcloud/desktop#8502)
+* fix: Handle server maintenance error in flow2auth
+  (gh#nextcloud/desktop#9226)
+* chore: remove unused build scripts
+  (gh#nextcloud/desktop#9245)
+* fix(accessmanager): manually handle redirects
+  (gh#nextcloud/desktop#9247)
+* fix(logs): reduce verbosity when deleting a folder content
+  (gh#nextcloud/desktop#9243)
+* chore(deps): Bump actions/cache from 4.3.0 to 5.0.1
+  (gh#nextcloud/desktop#9253)
+* chore(usermodel): remove redundant checks for nonexistent files
+  (gh#nextcloud/desktop#9251)
+* chore(deps): Bump actions/upload-artifact from 5.0.0 to 6.0.0
+  (gh#nextcloud/desktop#9252)
+* fix(usermodel): create a copy of the original notification
+  errors list (gh#nextcloud/desktop#9258)
+* Integrated NextcloudFileProviderKit Repository
+  (gh#nextcloud/desktop#9176)
+* Check for existence of a directory to remove before attempting
+  to do so (gh#nextcloud/desktop#9288)
+* Feat/new craft cache
+  (gh#nextcloud/desktop#9287)
+* Implement signing for Sparkle Installer and Autoupdate
+  (gh#nextcloud/desktop#9298)
+* fix: detect upgrade only scenario
+  (gh#nextcloud/desktop#9296)
+* fix: Restore server subscription per account from config
+  (gh#nextcloud/desktop#9262)
+* chore: use newer build image with Qt 6.9.3 release as expected
+  (gh#nextcloud/desktop#9305)
+* chore(deps): Bump actions/checkout from 4 to 6
+  (gh#nextcloud/desktop#9272)
+* chore(deps): Bump cpp-linter/cpp-linter-action from 2.16.6 to
+  2.16.7 (gh#nextcloud/desktop#9282)
+* Bugfix/string escaping
+  (gh#nextcloud/desktop#9329)
+* ci: Remove Ubuntu Plucky, add Resolute
+  (gh#nextcloud/desktop#9342)
+* File Provider Trash Changes
+  (gh#nextcloud/desktop#9323)
+* fix(accessmanager): only handle manual redirects unless
+  specified otherwise (gh#nextcloud/desktop#9350)
+* fix(debugArchive): ensure proper path for destination file name
+  (gh#nextcloud/desktop#9311)
+* fix(appimage): ensure more libraries are bundled in the AppImage
+  (gh#nextcloud/desktop#9353)
+* Handle remote paths with special characters correctly
+  (gh#nextcloud/desktop#9341)
+* fix: Change destination encoding to percent encoding
+  (gh#nextcloud/desktop#9334)
+* fix(AppImage): bundle OpenGL drivers in the AppImage
+  (gh#nextcloud/desktop#9364)
+* Escape dots in file provider domain display names
+  (gh#nextcloud/desktop#9369)
+* fix(AppImage): fix broken empty web engine rendering
+  (gh#nextcloud/desktop#9368)
+* chore: add platform name in about information
+  (gh#nextcloud/desktop#9381)
+* chore: pin correctly some github actions still using the old
+  way (gh#nextcloud/desktop#9382)
+* Fix: File Provider Synchronization Status
+  (gh#nextcloud/desktop#9335)
+* fix(AppImage): bundle less libraries to improve compatibility
+  (gh#nextcloud/desktop#9380)
+* chore(deps): Bump actions/setup-python from 6.1.0 to 6.2.0
+  (gh#nextcloud/desktop#9383)
+* chore(deps): Bump actions/checkout from 6.0.1 to 6.0.2
+  (gh#nextcloud/desktop#9384)
+* chore(deps): Bump webiny/action-conventional-commits from 1.3.0
+  to 1.3.1 (gh#nextcloud/desktop#9385)
+* chore(deps): Bump actions/cache from 5.0.1 to 5.0.2
+  (gh#nextcloud/desktop#9386)
+* fix(whiteIcons): fix state icons for white monochrome theme
+  (gh#nextcloud/desktop#9390)
+* Added first test case documentation
+  (gh#nextcloud/desktop#9321)
+* fix(application): Correcting the loading of translation files
+  (gh#nextcloud/desktop#9108)
+* fix: Enhance update status message for valid subscriptions
+  (gh#nextcloud/desktop#9354)
+* fix(cmd): don't open the database twice with --unsyncedfolders
+  (gh#nextcloud/desktop#9410)
+* fix(networksettings): get rid of uic warning
+  (gh#nextcloud/desktop#9401)
+* fix(activitydata): use parameter validation regex from server
+  (gh#nextcloud/desktop#9398)
+* fix: prevent crash when changing proxy settings with logged out
+  account (gh#nextcloud/desktop#9194)
+* chore(deps): Bump actions/cache from 5.0.2 to 5.0.3
+  (gh#nextcloud/desktop#9416)
+* refactor: drop automatic bandwidth calculations and normalize
+  deprecated AutoLimit (gh#nextcloud/desktop#9400)
+* fix: Client side TLS with Strict-Transport-Security
+  (gh#nextcloud/desktop#9284)
+* File Provider Remote Change Discovery Fix
+  (gh#nextcloud/desktop#9424)
+* Updated File Provider Extension Localization
+  (gh#nextcloud/desktop#9412)
+* Also set up signals for legacy push support
+  (gh#nextcloud/desktop#9429)
+* feat(tray): sync status warning banner for errored accounts
+  (gh#nextcloud/desktop#9418)
+* Persistent access to security scoped synchronization folders
+  (gh#nextcloud/desktop#9438)
+* Preserve dirty user data on domain removal
+  (gh#nextcloud/desktop#9436)
+* Added file, function and line information to logging in debug
+  builds (gh#nextcloud/desktop#9437)
+* Instructions for Agents about Breaking Changes
+  (gh#nextcloud/desktop#9446)
+* fix: use branded user agent for Flow v2 login request
+  (gh#nextcloud/desktop#9444)
+* chore: use std::make_unique to improve memory management
+  (gh#nextcloud/desktop#9162)
+* feat(tray): sync status indicator in account menu
+  (gh#nextcloud/desktop#9427)
+* feat(singleInstance): switch to use KDSingleApplication
+  (gh#nextcloud/desktop#9402)
+* feat: Nextcloud Assistant integration
+  (gh#nextcloud/desktop#9431)
+* fix(utility): allow creation of fav links with paths containing
+  spaces (gh#nextcloud/desktop#9462)
+* feat: client integration with server features
+  (gh#nextcloud/desktop#9403)
+* Consolidated Xcode Workspace
+  (gh#nextcloud/desktop#9484)
+* Server Actions Integration for File Provider Extension
+  (gh#nextcloud/desktop#9486)
+* chore: update Craft and craft cache
+  (gh#nextcloud/desktop#9496)
+* chore(i18n): Add context for translators
+  (gh#nextcloud/desktop#9511)
+* fix(e2ee): ensure PIN input dialog is top most window
+  (gh#nextcloud/desktop#9512)
+* fix: remove hard-coded app name from sync folder path
+  (gh#nextcloud/desktop#9516)
+* fix: disable server version check (<7.0)
+  (gh#nextcloud/desktop#9521)
+* Fix #7009: Remove leftover .msi and msi.log after update
+  (gh#nextcloud/desktop#9522)
+* fix: enhanced detail in "Stale DB entry" log entry
+  (gh#nextcloud/desktop#9526)
+* fix: show paused status when account has no sync sources
+  (gh#nextcloud/desktop#9527)
+* Fix FinderSync Extension
+  (gh#nextcloud/desktop#9529)
+* chore(i18n): id -> ID
+  (gh#nextcloud/desktop#9530)
+* chore: test upload of a locked file inside a remote deleted
+  folder (gh#nextcloud/desktop#9533)
+* feature: new settings UI
+  (gh#nextcloud/desktop#9534)
+* Bugfix/e2ee fixes for hardware certificate end to end
+  encryption (gh#nextcloud/desktop#9535)
+* test(integration): add tests for FileActionsModel
+  (gh#nextcloud/desktop#9538)
+* fix: load app icons for external sites app
+  (gh#nextcloud/desktop#9545)
+* fix: suppress duplicate "The log output cannot be saved" popups
+  (gh#nextcloud/desktop#9546)
+* Regain Synchronization Folder Access
+  (gh#nextcloud/desktop#9560)
+* Note about missing End-to-End Encryption Support in File
+  Provider Extension (gh#nextcloud/desktop#9563)
+* fix(accountmanager): check existing account proxy type setting
+  (gh#nextcloud/desktop#9577)
+* fix(file-provider): Fetch share options by user ID not user name
+  (#9074) (gh#nextcloud/desktop#9580)
+* Improve error handling and clean menu texts
+  (gh#nextcloud/desktop#9586)
+* fix(e2ee/vfs): disable on-demand population of encrypted folders
+  (gh#nextcloud/desktop#9589)
+* feat(e2ee): add basic support for e2ee metadata format 2.1
+  (gh#nextcloud/desktop#9590)
+* Bugfix/migrate user encryption certificate
+  (gh#nextcloud/desktop#9591)
+* Bugfix/better handling of locked files during upload
+  (gh#nextcloud/desktop#9592)
+* fix(e2ee): allow read of metadata 1.2 again
+  (gh#nextcloud/desktop#9593)
+* Sync Status on App Launch
+  (gh#nextcloud/desktop#9597)
+* Updated File Provider Extension Translations
+  (gh#nextcloud/desktop#9600)
+* fix: Robustly parse file action responses and handle tooltip/URL
+  children (gh#nextcloud/desktop#9603)
+* fix(propagateuploadng): do not encode davUrl
+  (gh#nextcloud/desktop#9604)
+* Refactored change enumeration completion
+  (gh#nextcloud/desktop#9606)
+* Bugfix/use display name for e2ee shares
+  (gh#nextcloud/desktop#9609)
+* Refine new settings dialog
+  (gh#nextcloud/desktop#9616)
+* Improve integration
+  (gh#nextcloud/desktop#9618)
+* fix(i18n): let Qt handle plural forms
+  (gh#nextcloud/desktop#9626)
+* fix(file-provider): Working Set Change Enumeration
+  (gh#nextcloud/desktop#9628)
+* Sanitized file provider UI extension string catalog
+  (gh#nextcloud/desktop#9635)
+* Set folders writable if remote perms require it, recurse into
+  subdirs if etag and remoteperms differ
+  (gh#nextcloud/desktop#9643)
+* feat(syncengine): fail and restart the sync if discovery is
+  suspicious (gh#nextcloud/desktop#9645)
+* chore(network): enable again our request timeout feature
+  (gh#nextcloud/desktop#9651)
+* fix(read-only): make the parent folder writable before deleting
+  a file (gh#nextcloud/desktop#9656)
+* feature(icon/ai): improved Nextcloud Assistant icon
+  (gh#nextcloud/desktop#9659) 
+
+-------------------------------------------------------------------
 Fri Mar 20 08:00:50 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
 
 - Update to version 4.0.8:
