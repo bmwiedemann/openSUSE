@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 02 15:58:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.1:
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.17.1 to
+    5.17.2 (#2156)
+  * build(deps): bump step-security/harden-runner from 2.16.0 to
+    2.16.1 (#2157)
+  * build(deps): bump google.golang.org/api from 0.273.0 to 0.273.1
+    (#2158)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.12.3 to
+    0.12.4 (#2154)
+  * build(deps): bump go.step.sm/crypto from 0.77.1 to 0.77.2
+    (#2155)
+  * build(deps): bump actions/setup-go from 6.3.0 to 6.4.0 (#2151)
+  * build(deps): bump chainguard-dev/actions from 1.6.10 to 1.6.11
+    (#2152)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.17.0 to
+    5.17.1 (#2153)
+
+-------------------------------------------------------------------
 Mon Mar 30 05:17:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.0:
