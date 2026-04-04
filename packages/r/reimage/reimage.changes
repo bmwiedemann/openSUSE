@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Apr 02 15:58:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.12.0:
+  * Features
+    - 5555012 feat(vulncheck): include the description in the log,
+      makes it easier to cut and paste
+    - deeebbb feat(vulncheck): switch default to grype, support
+      grype of trivy output formats
+  * Bug fixes
+    - f1c5546 fix(build): remove unused update-mtime
+    - 5d73003 fix(lint): fix some lint warnings
+    - 05747e1 fix(log): fix incorrect log line
+    - fe0f1b4 fix(vulncheck): fix the handling of per-image CVEs
+    - 554a3d1 fix(vulncheck): make it easier to copy/paste vuln
+      info
+  * Chores
+    - c16a4f4 chore(actions): update checkout action
+    - 1f345b3 chore(actions): update github actions
+    - 9fd7659 chore(deps): bump github.com/anchore/quill from 0.5.1
+      to 0.7.1
+    - 27cbe7e chore(deps): bump github.com/buger/jsonparser from
+      1.1.1 to 1.1.2
+    - 4ebc799 chore(deps): bump google.golang.org/grpc from 1.79.1
+      to 1.79.3
+    - 7b10afa chore(deps): general deps update
+    - 3b36c4a chore(deps): include org wide rennovate setup
+    - a321109 chore(deps): update deps
+
+-------------------------------------------------------------------
 Fri Mar 06 06:09:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.0:

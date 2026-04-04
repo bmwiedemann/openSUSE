@@ -17,7 +17,7 @@
 
 
 Name:           reimage
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Tool for mass update of images for kubernetes manifests
 License:        Apache-2.0
