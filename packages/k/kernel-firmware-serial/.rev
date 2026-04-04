@@ -56,4 +56,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: extract multitech license text</comment>
     <requestid>1311178</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>503ed20beeb921c56b2bcf0296ce75c4</srcmd5>
+    <version>20260327</version>
+    <time>1775322259</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260327 (git commit 85786b4413fd):
+  * linux-firmware: add firmware for Moxa mux50u devices</comment>
+    <requestid>1344445</requestid>
+  </revision>
 </revisionlist>
