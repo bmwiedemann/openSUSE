@@ -1,7 +1,7 @@
 #
 # spec file for package python-async-lru
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-async-lru
-Version:        2.0.5
+Version:        2.3.0
 Release:        0
 Summary:        Simple LRU cache for asyncio
 License:        MIT
 URL:            https://github.com/aio-libs/async-lru
 Source:         https://files.pythonhosted.org/packages/source/a/async_lru/async_lru-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#aio-libs/async-lru#637
-Patch0:         support-python-314.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions >= 4.0.0 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

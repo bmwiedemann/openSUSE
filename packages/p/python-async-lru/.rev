@@ -45,4 +45,24 @@
   * Support Python 3.14 removals.</comment>
     <requestid>1314616</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6c233a95f27b76fda6f0fd0712b8392d</srcmd5>
+    <version>2.3.0</version>
+    <time>1775322450</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * Added ``cache_contains()`` for read-only key lookup.
+  * Changed cross-loop cache access to auto-reset and rebind to
+    the current event loop.
+  * Added ``AlruCacheLoopResetWarning`` when an auto-reset
+    happens due to event loop change.
+  * Forwarded ``cache_close(wait=...)`` for bound methods.
+  * Added a ``jitter`` parameter to randomise TTL.
+  * Raise ``RuntimeError`` when cache is used by different loop.
+  * Fixed cancelling of task when all tasks waiting on it have
+    been cancelled.
+  * Fixed DeprecationWarning from asyncio.iscoroutinefunction.
+- Remove support-python-314.patch: fixed upstream.</comment>
+    <requestid>1344505</requestid>
+  </revision>
 </revisionlist>
