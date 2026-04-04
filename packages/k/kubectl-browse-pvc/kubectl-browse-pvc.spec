@@ -19,7 +19,7 @@
 %define executable_name kubectl-browse_pvc
 
 Name:           kubectl-browse-pvc
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Kubectl plugin for browsing PVCs on the command line
 License:        MIT
