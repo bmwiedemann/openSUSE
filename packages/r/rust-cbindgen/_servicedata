@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/eqrion/cbindgen.git</param>
-              <param name="changesrevision">76f41c090c0587d940a0ef81a41c8b995f074926</param></service></servicedata>
+              <param name="changesrevision">76f41c090c0587d940a0ef81a41c8b995f074926</param></service><service name="tar_scm">
+                <param name="url">https://github.com/mozilla/cbindgen.git</param>
+              <param name="changesrevision">d4586349557ec4dbb34c7d19e133374e3cc8994d</param></service></servicedata>
