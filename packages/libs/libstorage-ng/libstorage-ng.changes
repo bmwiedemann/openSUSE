@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed Apr 1 14:09:25 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1063
+- use json output of blkid if available
+- use consistent class names
+- 4.5.308
+
+--------------------------------------------------------------------
 Fri Mar 13 13:03:23 UTC 2026 - aschnell@suse.com
 
 - Translated using Weblate (Spanish) (bsc#1149754)
