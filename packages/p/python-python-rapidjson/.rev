@@ -132,4 +132,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1319860</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d28d86f8c014de0c7dba99d65fa1c8df</srcmd5>
+    <version>1.23</version>
+    <time>1775322461</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.23:
+  * Fix serialization bug when using MM_COERCE_KEYS_TO_STRINGS
+    together with sort_keys=True (issue #229)</comment>
+    <requestid>1344515</requestid>
+  </revision>
 </revisionlist>

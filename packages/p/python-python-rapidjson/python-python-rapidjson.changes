@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  3 17:58:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.23:
+  * Fix serialization bug when using MM_COERCE_KEYS_TO_STRINGS
+    together with sort_keys=True (issue #229)
+
+-------------------------------------------------------------------
 Tue Nov 18 04:18:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.22:

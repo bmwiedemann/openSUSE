@@ -1,7 +1,7 @@
-Index: python-rapidjson-1.22/setup.py
+Index: python-rapidjson-1.23/setup.py
 ===================================================================
---- python-rapidjson-1.22.orig/setup.py
-+++ python-rapidjson-1.22/setup.py
+--- python-rapidjson-1.23.orig/setup.py
++++ python-rapidjson-1.23/setup.py
 @@ -29,19 +29,7 @@ if sys.version_info < (3, 6):
  
  ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -22,4 +22,4 @@ Index: python-rapidjson-1.22/setup.py
 +rj_include_dir = '/usr/include/rapidjson'
  
  # Automatically updated by bump-my-version at release time
- VERSION = '1.22'
+ VERSION = '1.23'
