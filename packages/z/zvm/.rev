@@ -64,4 +64,29 @@
     traversal and insecure archive extraction. (forwarded request 1321392 from amanzini)</comment>
     <requestid>1321579</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b80547805e6be54928d0d4e22de4ffa6</srcmd5>
+    <version>0.8.13</version>
+    <time>1774555784</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.13:
+  * Fix listing versions without color
+- update to 0.8.12:
+  * Update LS Print
+  * Fix links on Windows requires elevation</comment>
+    <requestid>1342714</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>980938e7909640930b2cfd1b5ed9ce94</srcmd5>
+    <version>0.8.14</version>
+    <time>1775322335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.14:
+  * feat: add build tag to disable automatic updates
+  * Remove patch disable-auto-upgrade.patch
+
+- Update to 0.8.13:
+- Update to 0.8.12:</comment>
+    <requestid>1344365</requestid>
+  </revision>
 </revisionlist>

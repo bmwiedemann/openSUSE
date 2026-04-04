@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 27 13:35:55 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.8.14:
+  * feat: add build tag to disable automatic updates
+  * Remove patch disable-auto-upgrade.patch
+
+-------------------------------------------------------------------
+Thu Mar 26 07:57:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to 0.8.13:
+  * Fix listing versions without color
+- Update to 0.8.12:
+  * Update LS Print
+  * Fix links on Windows requires elevation
+
+-------------------------------------------------------------------
 Sat Dec  6 20:01:07 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.8.11:

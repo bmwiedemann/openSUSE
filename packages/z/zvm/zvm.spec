@@ -1,7 +1,7 @@
 #
 # spec file for package zvm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           zvm
-Version:        0.8.11
+Version:        0.8.14
 Release:        0
 Summary:        Easily install/upgrade between different versions of Zig
 License:        MIT
 URL:            https://github.com/tristanisham/zvm
-Source:         https://github.com/tristanisham/zvm/archive/refs/tags/v%{version}.tar.gz
+Source:         https://github.com/tristanisham/zvm/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
-# PATCH-FIX-UPSTREAM: Disable auto upgrade features
-Patch0:         disable-auto-upgrade.patch
 BuildRequires:  golang(API) >= 1.22
 Requires:       tar
 
@@ -45,6 +43,7 @@ go build \
    -ldflags="-s -w" \
    -mod=vendor \
    -buildmode=pie \
+   -tags noAutoUpgrades \
    -v
 
 %install
