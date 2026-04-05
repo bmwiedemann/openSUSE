@@ -37,4 +37,12 @@
   * Use yaml for dashboard interactions instead of json More user friendly and matches the behavior we have for the `settings` command.</comment>
     <requestid>1327770</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0ef746c17e4cea5b700f7cdcc6670c95</srcmd5>
+    <version>3.3.3</version>
+    <time>1775406270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344640</requestid>
+  </revision>
 </revisionlist>

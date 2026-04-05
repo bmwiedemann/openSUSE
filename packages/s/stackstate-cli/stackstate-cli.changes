@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Apr 05 08:41:53 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 3.3.3:
+  * STAC-24282: support log-based otel mappings (#141)
+  * STAC-24504: remove _type property from snapshot request (#140)
+  * STAC-0: Fix openapi-revision (#139)
+  * Remove stql option
+  * Ignore magic timestamps
+  * Removed test fixture duplication
+  * Query Topology Health states
+  * STAC-24174: add stackpack validate command (#137)
+  * STAC-24007: small fix
+  * STAC-24007: Clean up after a test function
+  * STAC-24007: Remove repetitions from Usage
+  * STAC-0: build images not manifests
+  * STAC-23918: move settings to top-level in stackpacks
+  * STAC-23918: include icons and includes folders
+  * STAC-24149: ensure snapshot api compatibility (#132)
+  * STAC-24149: bump openapi version
+  * STAC-24149: process feedback
+  * STAC-24149: add topology inspect cmd
+  * STAC-24232 Rename stackpack `test` command to `test-deploy`
+  * STAC-24049: process feedback
+  * STAC-24049: process feedback
+  * STAC-24049: remove test stackpack
+  * STAC-24049: fix dashboard describe json output
+  * STAC-24049: resolve conflicts
+  * STAC-24049: annotate generate models to preserve field shape for yaml output
+  * STAC-24049: add crud commands for otel component|relation mappings
+  * STAC-24007: Update the help descriptions of the CLI (#128)
+  * STAC-24194: Fix linting
+  * STAC-24194: Add cli options to distinguish subjects and permissions by source
+
+-------------------------------------------------------------------
 Sat Jan 17 07:15:38 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 3.2.0:
