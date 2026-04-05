@@ -20,7 +20,7 @@
 typeface family, designed for writing code, using in terminals, and\
 preparing technical documents.
 Name:           iosevka-fonts
-Version:        34.2.1
+Version:        34.3.0
 Release:        0
 Summary:        Slender typeface for source code
 License:        OFL-1.1
@@ -55,29 +55,29 @@ Source101:      https://github.com/be5invis/Iosevka/raw/v%{version}/README.md
 Source102:      https://github.com/be5invis/Iosevka/raw/v%{version}/CHANGELOG.md
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-Recommends:     iosevka-aile-fonts
-Recommends:     iosevka-curly-fonts
-Recommends:     iosevka-curly-slab-fonts
-Recommends:     iosevka-etoile-fonts
-Recommends:     iosevka-slab-fonts
-Recommends:     iosevka-ss01-fonts
-Recommends:     iosevka-ss02-fonts
-Recommends:     iosevka-ss03-fonts
-Recommends:     iosevka-ss04-fonts
-Recommends:     iosevka-ss05-fonts
-Recommends:     iosevka-ss06-fonts
-Recommends:     iosevka-ss07-fonts
-Recommends:     iosevka-ss08-fonts
-Recommends:     iosevka-ss09-fonts
-Recommends:     iosevka-ss10-fonts
-Recommends:     iosevka-ss11-fonts
-Recommends:     iosevka-ss12-fonts
-Recommends:     iosevka-ss13-fonts
-Recommends:     iosevka-ss14-fonts
-Recommends:     iosevka-ss15-fonts
-Recommends:     iosevka-ss16-fonts
-Recommends:     iosevka-ss17-fonts
-Recommends:     iosevka-ss18-fonts
+Suggests:       iosevka-aile-fonts
+Suggests:       iosevka-curly-fonts
+Suggests:       iosevka-curly-slab-fonts
+Suggests:       iosevka-etoile-fonts
+Suggests:       iosevka-slab-fonts
+Suggests:       iosevka-ss01-fonts
+Suggests:       iosevka-ss02-fonts
+Suggests:       iosevka-ss03-fonts
+Suggests:       iosevka-ss04-fonts
+Suggests:       iosevka-ss05-fonts
+Suggests:       iosevka-ss06-fonts
+Suggests:       iosevka-ss07-fonts
+Suggests:       iosevka-ss08-fonts
+Suggests:       iosevka-ss09-fonts
+Suggests:       iosevka-ss10-fonts
+Suggests:       iosevka-ss11-fonts
+Suggests:       iosevka-ss12-fonts
+Suggests:       iosevka-ss13-fonts
+Suggests:       iosevka-ss14-fonts
+Suggests:       iosevka-ss15-fonts
+Suggests:       iosevka-ss16-fonts
+Suggests:       iosevka-ss17-fonts
+Suggests:       iosevka-ss18-fonts
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
