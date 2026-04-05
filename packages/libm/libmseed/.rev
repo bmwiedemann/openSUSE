@@ -103,4 +103,12 @@
     <comment>libmseed 3.3.0 (forwarded request 1343538 from AndreasStieger)</comment>
     <requestid>1343539</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>23612fc8caa63ff5283be7c8cf891b03</srcmd5>
+    <version>3.4.0</version>
+    <time>1775406268</time>
+    <user>dimstar_suse</user>
+    <comment>libmseed 3.4.0 (forwarded request 1344635 from AndreasStieger)</comment>
+    <requestid>1344636</requestid>
+  </revision>
 </revisionlist>
