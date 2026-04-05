@@ -1,7 +1,7 @@
 #
 # spec file for package shadowsocks-libev
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,11 +40,13 @@ Source11:       %{name}-nat@.service
 Source12:       %{name}-redir@.service
 Source13:       %{name}.tmpfiles
 Patch0:         shadowsocks-libev-3.3.5-pcre2.patch
+Patch1:         001-migrate-to-mbedtls-3.patch
+Patch2:         002-migrate-to-mbedtls-3.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  mbedtls-devel < 3
+BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto

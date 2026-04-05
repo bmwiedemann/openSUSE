@@ -210,4 +210,14 @@
     <comment>Addressed review from https://build.opensuse.org/requests/1291266 (forwarded request 1291334 from robert_munteanu)</comment>
     <requestid>1291637</requestid>
   </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>5fcd0be58768c3bd9d6477244b50735b</srcmd5>
+    <version>3.3.5</version>
+    <time>1775406283</time>
+    <user>dimstar_suse</user>
+    <comment>- Migrate to mbedtls 3(boo#1261529)
+  * Add 001-migrate-to-mbedtls-3.patch
+  * Add 002-migrate-to-mbedtls-3.patch (forwarded request 1344656 from hillwood)</comment>
+    <requestid>1344657</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  5 12:46:17 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Migrate to mbedtls 3(boo#1261529)
+  * Add 001-migrate-to-mbedtls-3.patch
+  * Add 002-migrate-to-mbedtls-3.patch
+
+-------------------------------------------------------------------
 Sun Jul  6 20:32:54 UTC 2025 - Robert Munteanu <rombert@apache.org>
 
 - Create /run/shadowsocks using tmpfiles, otherwise systemd services
