@@ -4939,24 +4939,11 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/crypto/fipsmodule/aes/gc
  }
  #endif  // SUPPORTS_ABI_TEST && !OPENSSL_NO_ASM
  
-Index: chromium-146.0.7680.65/third_party/boringssl/src/crypto/rand/getrandom_fillin.h
-===================================================================
---- chromium-146.0.7680.65.orig/third_party/boringssl/src/crypto/rand/getrandom_fillin.h
-+++ chromium-146.0.7680.65/third_party/boringssl/src/crypto/rand/getrandom_fillin.h
-@@ -30,6 +30,8 @@
- #define EXPECTED_NR_getrandom 278
- #elif defined(OPENSSL_ARM)
- #define EXPECTED_NR_getrandom 384
-+#elif defined(OPENSSL_PPC64LE)
-+#define EXPECTED_NR_getrandom 359
- #elif defined(OPENSSL_RISCV64)
- #define EXPECTED_NR_getrandom 278
- #endif
 Index: chromium-146.0.7680.65/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
 ===================================================================
 --- chromium-146.0.7680.65.orig/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
 +++ chromium-146.0.7680.65/third_party/boringssl/src/crypto/fipsmodule/rand/rand.cc.inc
-@@ -429,6 +429,11 @@ bcm_infallible bssl::BCM_rand_bytes_with
+@@ -423,6 +423,11 @@
      // Take a read lock around accesses to |state->drbg|. This is needed to
      // avoid returning bad entropy if we race with
      // |rand_thread_state_clear_all|.
@@ -4965,7 +4952,7 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/crypto/fipsmodule/rand/r
 +    // bug on ppc64le. glibc may implement pthread locks by wrapping user code
 +    // in a hardware transaction, but, on some older versions of glibc and the
 +    // kernel, syscalls made with |syscall| did not abort the transaction.
-     CRYPTO_MUTEX_lock_read(&state->clear_drbg_lock);
+     state->clear_drbg_lock.LockRead();
  #endif
      if (!CTR_DRBG_reseed_ex(&state->drbg, seed, sizeof(seed),
 Index: chromium-146.0.7680.65/third_party/boringssl/src/crypto/fipsmodule/sha/internal.h
@@ -6753,9 +6740,9 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/util/fipstools/delocate/
 ===================================================================
 --- chromium-146.0.7680.65.orig/third_party/boringssl/src/util/fipstools/delocate/delocate_test.go
 +++ chromium-146.0.7680.65/third_party/boringssl/src/util/fipstools/delocate/delocate_test.go
-@@ -39,6 +39,11 @@ func (test *delocateTest) Path(file stri
- 
+@@ -40,6 +40,11 @@
  var delocateTests = []delocateTest{
+ 	{"generic-AddrSig", []string{"in.s"}, "out.s"},
  	{"generic-FileDirectives", []string{"in.s"}, "out.s"},
 +	{"ppc64le-GlobalEntry", []string{"in.s"}, "out.s"},
 +	{"ppc64le-LoadToR0", []string{"in.s"}, "out.s"},

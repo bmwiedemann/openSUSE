@@ -1,0 +1,13 @@
+--- chromium-147.0.7727.3/v8/BUILD.gn	2026/03/15 13:36:13	1.1
++++ chromium-147.0.7727.3/v8/BUILD.gn	2026/03/15 13:36:50
+@@ -788,8 +788,8 @@
+ assert(!v8_enable_sandbox || v8_enable_external_code_space,
+        "The sandbox requires the external code space")
+ 
+-assert(!v8_enable_sandbox || use_safe_libcxx,
+-       "The sandbox requires libc++ hardening")
++#assert(!v8_enable_sandbox || use_safe_libcxx,
++#       "The sandbox requires libc++ hardening")
+ 
+ assert(!v8_enable_memory_corruption_api || v8_enable_sandbox,
+        "The Memory Corruption API requires the sandbox")

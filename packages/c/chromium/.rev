@@ -6369,4 +6369,15 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>chromium 146.0.7680.177 (boo#1261249)</comment>
     <requestid>1344023</requestid>
   </revision>
+  <revision rev="512" vrev="1">
+    <srcmd5>762774af565aac77c7391c11dba20bd8</srcmd5>
+    <version>147.0.7727.49</version>
+    <time>1775406264</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 147.0.7727.49 early stable
+
+changes to the past changelong is due to remove unicode lookalikes:
+https://src.opensuse.org/chromium/chromium/commit/865f270c0c9ba77f4a37d6fc6210f70529a641fe0d5adf0871e939f85518dcee</comment>
+    <requestid>1344632</requestid>
+  </revision>
 </revisionlist>

@@ -42,7 +42,7 @@ index cd8c7593f911b..28e5914c7035c 100644
    return huffman_table;
  }
 @@ -131,7 +131,7 @@ media::JpegParseResult ConvertToJpegParseResult(
-     base::span(parse_result.q_table[i].value)
+     base::span(UNSAFE_TODO(parse_result.q_table[i]).value)
          .first(value_min_size)
          .copy_from_nonoverlapping(
 -            base::span(input_q_table.value()).first(value_min_size));

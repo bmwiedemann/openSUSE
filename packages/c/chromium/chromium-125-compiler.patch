@@ -12,8 +12,8 @@ Index: chromium-144.0.7524.0/build/config/compiler/BUILD.gn
      ":compiler_codegen",
      ":compiler_deterministic",
      ":clang_warning_suppression",
-@@ -669,61 +667,6 @@ config("compiler") {
-     ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
+@@ -602,68 +602,6 @@
+     }
    }
  
 -  if (is_clang) {
@@ -23,6 +23,13 @@ Index: chromium-144.0.7524.0/build/config/compiler/BUILD.gn
 -        "-fcrash-diagnostics=all",
 -        "-fcrash-diagnostics-dir=" + clang_diagnostic_dir,
 -      ]
+-    }
+-
+-    # The performance improvement does not seem worth the risk. See
+-    # https://crbug.com/484082200 for background and https://crrev.com/c/7593035
+-    # for discussion.
+-    if (!is_wasm) {
+-      cflags += [ "-fno-lifetime-dse" ]
 -    }
 -
 -    # TODO(hans): Remove this once Clang generates better optimized debug info
@@ -218,7 +225,7 @@ Index: chromium-144.0.7524.0/build/config/compiler/BUILD.gn
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -2350,24 +2170,6 @@ config("chromium_code") {
+@@ -2250,32 +2191,6 @@
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -235,6 +242,14 @@ Index: chromium-144.0.7524.0/build/config/compiler/BUILD.gn
 -      # implementation with a few custom glibc patches. Use that if it's
 -      # available.
 -      if (is_chromeos_device) {
+-        fortify_level = "3"
+-      }
+-
+-      # _FORTIFY_SOURCE=3 is available in glibc 2.34+. Enable it when building
+-      # with the sysroot where support is guaranteed. Clang is also required since
+-      # the system gcc is often patched to add _FORTIFY_SOURCE=2 which would conflict
+-      # with our definition.
+-      if (use_sysroot && is_clang) {
 -        fortify_level = "3"
 -      }
 -      defines += [ "_FORTIFY_SOURCE=" + fortify_level ]

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr  2 17:13:30 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 147.0.7727.49 (early stable released 2026-04-01)
+- added patches:
+  * chromium-147-comment_safe_assert.patch
+    (ignore requirement for local libc++ for now, system copy
+     has to be good enough) 
+  * chromium-147-ffmpeg_includes.patch
+  * chromium-bafd7d217b9e26edf3be8d20b1ff56bcea4b16ee.patch
+    (revert spanification for llvm-19 for now)
+  * chromium-147-blink_renderer_need_ffmpeg.patch
+    (only seen with using system ffmpeg)
+- modified patches:
+  * chromium-24264eefbfd3464161764f31a2752c5327719452.patch
+  * ppc-fedora-0001-Add-PPC64-support-for-boringssl.patch
+  * ppc-fedora-0002-regenerate-xnn-buildgn.patch
+  * ppc-fedora-0002-third_party-libvpx-Remove-bad-ppc64-config.patch
+- removed patches:
+  * chromium-145-use_unrar.patch
+
+-------------------------------------------------------------------
+Thu Apr  2 14:44:16 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ccache experiement: show stats
+
+-------------------------------------------------------------------
 Tue Mar 31 19:58:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 146.0.7680.177 (boo#1261249)
@@ -1094,10 +1120,10 @@ Fri May  2 16:40:19 CEST 2025 - ro@suse.de
 
 - Chromium 136.0.7103.48
   (stable release 2025-04-29) (boo#1242153)
-  * CVE-2025-4096: Heap buffer overflow in HTML. Reported by Anonymous on 2025-04-11
-  * CVE-2025-4050: Out of bounds memory access in DevTools. Reported by Anonymous on 2025-04-09
-  * CVE-2025-4051: Insufficient data validation in DevTools. Reported by Daniel Fröjdendahl on 2025-03-1
-  * CVE-2025-4052: Inappropriate implementation in DevTools. Reported by vanillawebdev on 2025-03-10
+  * CVE-2025-4096: Heap buffer overflow in HTML
+  * CVE-2025-4050: Out of bounds memory access in DevTools
+  * CVE-2025-4051: Insufficient data validation in DevTools
+  * CVE-2025-4052: Inappropriate implementation in DevTools
 
 - added patches:
   chromium-warning-suppression-mappings.patch
@@ -1748,7 +1774,7 @@ Thu Aug  1 18:40:59 CEST 2024 - ro@suse.de
   * CVE-2024-6997: Use after free in Tabs
   * CVE-2024-6998: Use after free in User Education
   * CVE-2024-6999: Inappropriate implementation in FedCM
-  * CVE-2024-7000: Use after free in CSS. Reported by Anonymous
+  * CVE-2024-7000: Use after free in CSS
   * CVE-2024-7001: Inappropriate implementation in HTML
   * CVE-2024-7003: Inappropriate implementation in FedCM
   * CVE-2024-7004: Insufficient validation of untrusted input
@@ -2032,7 +2058,7 @@ Wed Apr 17 17:38:12 CEST 2024 - ro@suse.de
 - Chromium 124.0.6367.60 (boo#1222958)
   * CVE-2024-3832: Object corruption in V8.
   * CVE-2024-3833: Object corruption in WebAssembly.
-  * CVE-2024-3834: Use after free in Downloads. Reported by ChaobinZhang
+  * CVE-2024-3834: Use after free in Downloads
   * CVE-2024-3837: Use after free in QUIC.
   * CVE-2024-3838: Inappropriate implementation in Autofill.
   * CVE-2024-3839: Out of bounds read in Fonts.
@@ -5171,33 +5197,33 @@ Wed May 20 16:35:28 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 Wed May 20 09:35:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 83.0.4103.61 bsc#1171910:
-  * CVE-2020-6465: Use after free in reader mode. Reported by Woojin Oh(@pwn_expoit) of STEALIEN on 2020-04-21
-  * CVE-2020-6466: Use after free in media. Reported by Zhe Jin from cdsrc of Qihoo 360 on 2020-04-26
-  * CVE-2020-6467: Use after free in WebRTC. Reported by ZhanJia Song on 2020-04-06
-  * CVE-2020-6468: Type Confusion in V8. Reported by Chris Salls and Jake Corina of Seaside Security, Chani Jindal of Shellphish on 2020-04-30
-  * CVE-2020-6469: Insufficient policy enforcement in developer tools. Reported by David Erceg on 2020-04-02
-  * CVE-2020-6470: Insufficient validation of untrusted input in clipboard. Reported by Michał Bentkowski of Securitum on 2020-03-30
-  * CVE-2020-6471: Insufficient policy enforcement in developer tools. Reported by David Erceg on 2020-03-08
-  * CVE-2020-6472: Insufficient policy enforcement in developer tools. Reported by David Erceg on 2020-03-25
-  * CVE-2020-6473: Insufficient policy enforcement in Blink. Reported by Soroush Karami and Panagiotis Ilia on 2020-02-06
-  * CVE-2020-6474: Use after free in Blink. Reported by Zhe Jin from cdsrc of Qihoo 360 on 2020-03-07
-  * CVE-2020-6475: Incorrect security UI in full screen. Reported by Khalil Zhani on 2019-10-31
-  * CVE-2020-6476: Insufficient policy enforcement in tab strip. Reported by Alexandre Le Borgne on 2019-12-18
-  * CVE-2020-6477: Inappropriate implementation in installer. Reported by RACK911 Labs on 2019-03-26
-  * CVE-2020-6478: Inappropriate implementation in full screen. Reported by Khalil Zhani on 2019-12-24
-  * CVE-2020-6479: Inappropriate implementation in sharing. Reported by Zhong Zhaochen of andsecurity.cn on 2020-01-14
-  * CVE-2020-6480: Insufficient policy enforcement in enterprise. Reported by Marvin Witt on 2020-02-21
-  * CVE-2020-6481: Insufficient policy enforcement in URL formatting. Reported by Rayyan Bijoora on 2020-04-07
-  * CVE-2020-6482: Insufficient policy enforcement in developer tools. Reported by Abdulrahman Alqabandi (@qab) on 2017-12-17
-  * CVE-2020-6483: Insufficient policy enforcement in payments. Reported by Jun Kokatsu, Microsoft Browser Vulnerability Research on 2019-05-23
-  * CVE-2020-6484: Insufficient data validation in ChromeDriver. Reported by Artem Zinenko on 2020-01-26
-  * CVE-2020-6485: Insufficient data validation in media router. Reported by Sergei Glazunov of Google Project Zero on 2020-01-30
-  * CVE-2020-6486: Insufficient policy enforcement in navigations. Reported by David Erceg on 2020-02-24
-  * CVE-2020-6487: Insufficient policy enforcement in downloads. Reported by Jun Kokatsu (@shhnjk) on 2015-10-06
-  * CVE-2020-6488: Insufficient policy enforcement in downloads. Reported by David Erceg on 2020-01-21
-  * CVE-2020-6489: Inappropriate implementation in developer tools. Reported by @lovasoa (Ophir LOJKINE) on 2020-02-10
-  * CVE-2020-6490: Insufficient data validation in loader. Reported by Twitter on 2019-12-19
-  * CVE-2020-6491: Incorrect security UI in site information. Reported by Sultan Haikal M.A on 2020-02-07
+  * CVE-2020-6465: Use after free in reader mode
+  * CVE-2020-6466: Use after free in media
+  * CVE-2020-6467: Use after free in WebRTC
+  * CVE-2020-6468: Type Confusion in V8
+  * CVE-2020-6469: Insufficient policy enforcement in developer tools
+  * CVE-2020-6470: Insufficient validation of untrusted input in clipboard
+  * CVE-2020-6471: Insufficient policy enforcement in developer tools
+  * CVE-2020-6472: Insufficient policy enforcement in developer tools
+  * CVE-2020-6473: Insufficient policy enforcement in Blink
+  * CVE-2020-6474: Use after free in Blink
+  * CVE-2020-6475: Incorrect security UI in full screen
+  * CVE-2020-6476: Insufficient policy enforcement in tab strip
+  * CVE-2020-6477: Inappropriate implementation in installer
+  * CVE-2020-6478: Inappropriate implementation in full screen
+  * CVE-2020-6479: Inappropriate implementation in sharing
+  * CVE-2020-6480: Insufficient policy enforcement in enterprise
+  * CVE-2020-6481: Insufficient policy enforcement in URL formatting
+  * CVE-2020-6482: Insufficient policy enforcement in developer tools
+  * CVE-2020-6483: Insufficient policy enforcement in payments
+  * CVE-2020-6484: Insufficient data validation in ChromeDriver
+  * CVE-2020-6485: Insufficient data validation in media router
+  * CVE-2020-6486: Insufficient policy enforcement in navigations
+  * CVE-2020-6487: Insufficient policy enforcement in downloads
+  * CVE-2020-6488: Insufficient policy enforcement in downloads
+  * CVE-2020-6489: Inappropriate implementation in developer tools
+  * CVE-2020-6490: Insufficient data validation in loader
+  * CVE-2020-6491: Incorrect security UI in site information
 - Rebase patch:
   * chromium-vaapi.patch
 - Remove merged patches:
@@ -6157,35 +6183,35 @@ Mon Feb 11 04:35:53 UTC 2019 - Simon Lees <sflees@suse.de>
 Wed Jan 30 08:58:19 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 72.0.3626.81 bsc#1123641:
-  * CVE-2019-5754: Inappropriate implementation in QUIC Networking. Reported by Klzgrad on 2018-12-12
-  * CVE-2019-5782:  Inappropriate implementation in V8. Reported by Qixun Zhao of Qihoo 360 Vulcan Team via Tianfu Cup on 2018-11-16
-  * CVE-2019-5755: Inappropriate implementation in V8. Reported by Jay Bosamiya on 2018-12-10
-  * CVE-2019-5756: Use after free in PDFium. Reported by Anonymous on 2018-10-14   
-  * CVE-2019-5757: Type Confusion in SVG. Reported by Alexandru Pitis, Microsoft Browser Vulnerability Research on 2018-12-15
-  * CVE-2019-5758: Use after free in Blink. Reported by Zhe Jin（金哲），Luyao Liu(刘路遥) from Chengdu Security Response Center of Qihoo 360 Technology Co. Ltd on 2018-12-11
-  * CVE-2019-5759: Use after free in HTML select elements. Reported by Almog Benin on 2018-12-05
-  * CVE-2019-5760: Use after free in WebRTC. Reported by Zhe Jin（金哲），Luyao Liu(刘路遥) from Chengdu Security Response Center of Qihoo 360 Technology Co. Ltd on 2018-12-05
-  * CVE-2019-5761: Use after free in SwiftShader. Reported by Zhe Jin（金哲），Luyao Liu(刘路遥) from Chengdu Security Response Center of Qihoo 360 Technology Co. Ltd on 2018-11-13
-  * CVE-2019-5762: Use after free in PDFium. Reported by Anonymous on 2018-10-31   
-  * CVE-2019-5763: Insufficient validation of untrusted input in V8. Reported by Guang Gong of Alpha Team, Qihoo 360 on 2018-12-13
-  * CVE-2019-5764: Use after free in WebRTC. Reported by Eyal Itkin from Check Point Software Technologies on 2018-12-09
-  * CVE-2019-5765: Insufficient policy enforcement in the browser. Reported by Sergey Toshin (@bagipro) on 2019-01-16
-  * CVE-2019-5766: Insufficient policy enforcement in Canvas. Reported by David Erceg on 2018-11-20
-  * CVE-2019-5767: Incorrect security UI in WebAPKs. Reported by Haoran Lu, Yifan Zhang, Luyi Xing, and Xiaojing Liao from Indiana University Bloomington on 2018-11-06
-  * CVE-2019-5768: Insufficient policy enforcement in DevTools. Reported by Rob Wu on 2018-01-24
-  * CVE-2019-5769: Insufficient validation of untrusted input in Blink. Reported by Guy Eshel on 2018-12-11
-  * CVE-2019-5770: Heap buffer overflow in WebGL. Reported by  hemidallt@ on 2018-11-27
-  * CVE-2019-5771: Heap buffer overflow in SwiftShader. Reported by Zhe Jin（金哲），Luyao Liu(刘路遥) from Chengdu Security Response Center of Qihoo 360 Technology Co. Ltd on 2018-11-12
-  * CVE-2019-5772: Use after free in PDFium. Reported by Zhen Zhou of NSFOCUS Security Team on 2018-11-26
-  * CVE-2019-5773: Insufficient data validation in IndexedDB. Reported by Yongke Wang of Tencent's Xuanwu Lab (xlab.tencent.com) on 2018-12-24
-  * CVE-2019-5774: Insufficient validation of untrusted input in SafeBrowsing. Reported by Junghwan Kang (ultract) and Juno Im on 2018-11-11
-  * CVE-2019-5775: Insufficient policy enforcement in Omnibox. Reported by evi1m0 of Bilibili Security Team on 2018-10-18
-  * CVE-2019-5776: Insufficient policy enforcement in Omnibox. Reported by Lnyas Zhang on 2018-07-14
-  * CVE-2019-5777: Insufficient policy enforcement in Omnibox. Reported by Khalil Zhani on 2018-06-04
-  * CVE-2019-5778: Insufficient policy enforcement in Extensions. Reported by David Erceg on 2019-01-02
-  * CVE-2019-5779: Insufficient policy enforcement in ServiceWorker. Reported by David Erceg on 2018-11-11
-  * CVE-2019-5780: Insufficient policy enforcement. Reported by Andreas Hegenberg (folivora.AI GmbH) on 2018-10-03
-  * CVE-2019-5781: Insufficient policy enforcement in Omnibox. Reported by evi1m0 of Bilibili Security Team on 2018-10-18
+  * CVE-2019-5754: Inappropriate implementation in QUIC Networking
+  * CVE-2019-5782:  Inappropriate implementation in V8
+  * CVE-2019-5755: Inappropriate implementation in V8
+  * CVE-2019-5756: Use after free in PDFium
+  * CVE-2019-5757: Type Confusion in SVG
+  * CVE-2019-5758: Use after free in Blink
+  * CVE-2019-5759: Use after free in HTML select elements
+  * CVE-2019-5760: Use after free in WebRTC
+  * CVE-2019-5761: Use after free in SwiftShader
+  * CVE-2019-5762: Use after free in PDFium
+  * CVE-2019-5763: Insufficient validation of untrusted input in V8
+  * CVE-2019-5764: Use after free in WebRTC
+  * CVE-2019-5765: Insufficient policy enforcement in the browser
+  * CVE-2019-5766: Insufficient policy enforcement in Canvas
+  * CVE-2019-5767: Incorrect security UI in WebAPKs
+  * CVE-2019-5768: Insufficient policy enforcement in DevTools
+  * CVE-2019-5769: Insufficient validation of untrusted input in Blink
+  * CVE-2019-5770: Heap buffer overflow in WebGL
+  * CVE-2019-5771: Heap buffer overflow in SwiftShader
+  * CVE-2019-5772: Use after free in PDFium
+  * CVE-2019-5773: Insufficient data validation in IndexedDB
+  * CVE-2019-5774: Insufficient validation of untrusted input in SafeBrowsing
+  * CVE-2019-5775: Insufficient policy enforcement in Omnibox
+  * CVE-2019-5776: Insufficient policy enforcement in Omnibox
+  * CVE-2019-5777: Insufficient policy enforcement in Omnibox
+  * CVE-2019-5778: Insufficient policy enforcement in Extensions
+  * CVE-2019-5779: Insufficient policy enforcement in ServiceWorker
+  * CVE-2019-5780: Insufficient policy enforcement
+  * CVE-2019-5781: Insufficient policy enforcement in Omnibox
 - Added patches:
   * chromium-crashpad-fix_aarch64.patch
   * chromium-fix_swiftshader.patch
@@ -6853,30 +6879,30 @@ Thu Jan 25 09:51:59 UTC 2018 - tchvatal@suse.com
 Thu Jan 25 09:42:51 UTC 2018 - tchvatal@suse.com
 
 - Version update to 64.0.3282.119 bsc#1077571:
-  * High CVE-2018-6031: Use after free in PDFium. Reported by Anonymous on 2017-11-01
-  * High CVE-2018-6032: Same origin bypass in Shared Worker. Reported by Jun Kokatsu (@shhnjk) on 2017-11-20
-  * High CVE-2018-6033: Race when opening downloaded files. Reported by Juho Nurminen on 2017-12-09
-  * Medium CVE-2018-6034: Integer overflow in Blink. Reported by Tobias Klein (www.trapkit.de) on 2017-11-12
-  * Medium CVE-2018-6035: Insufficient isolation of devtools from extensions. Reported by Rob Wu on 2017-12-23
-  * Medium CVE-2018-6036: Integer underflow in WebAssembly. Reported by The UK's National Cyber Security Centre (NCSC) on 2017-11-30
-  * Medium CVE-2018-6037: Insufficient user gesture requirements in autofill. Reported by Paul Stone of Context Information Security on 2017-08-09
-  * Medium CVE-2018-6038: Heap buffer overflow in WebGL. Reported by cloudfuzzer on 2017-10-12
-  * Medium CVE-2018-6039: XSS in DevTools. Reported by Juho Nurminen on 2017-10-17
-  * Medium CVE-2018-6040: Content security policy bypass. Reported by WenXu Wu of Tencent's Xuanwu Lab on 2017-10-26
-  * Medium CVE-2018-6041: URL spoof in Navigation. Reported by Luan Herrera on 2017-08-29
-  * Medium CVE-2018-6042: URL spoof in OmniBox. Reported by Khalil Zhani on 2017-10-12
-  * Medium CVE-2018-6043: Insufficient escaping with external URL handlers. Reported by 0x09AL on 2017-11-16
-  * Medium CVE-2018-6045: Insufficient isolation of devtools from extensions. Reported by Rob Wu on 2017-12-23
-  * Medium CVE-2018-6046: Insufficient isolation of devtools from extensions. Reported by Rob Wu on 2017-12-31
-  * Medium CVE-2018-6047: Cross origin URL leak in WebGL. Reported by Masato Kinugawa on 2018-01-08
-  * Low CVE-2018-6048: Referrer policy bypass in Blink. Reported by Jun Kokatsu (@shhnjk) on 2017-09-08
-  * Low CVE-2017-15420: URL spoofing in Omnibox. Reported by Drew Springall (@_aaspring_) on 2017-10-05
-  * Low CVE-2018-6049: UI spoof in Permissions. Reported by WenXu Wu of Tencent's Xuanwu Lab on 2017-10-13
-  * Low CVE-2018-6050: URL spoof in OmniBox. Reported by Jonathan Kew on 2017-10-15
-  * Low CVE-2018-6051: Referrer leak in XSS Auditor. Reported by Antonio Sanso (@asanso) on 2014-12-11
-  * Low CVE-2018-6052: Incomplete no-referrer policy implementation. Reported by Tanner Emek on 2016-05-28
-  * Low CVE-2018-6053: Leak of page thumbnails in New Tab Page. Reported by Asset Kabdenov on 2017-08-23
-  * Low CVE-2018-6054: Use after free in WebUI. Reported by Rob Wu on 2017-12-24
+  * High CVE-2018-6031: Use after free in PDFium
+  * High CVE-2018-6032: Same origin bypass in Shared Worker
+  * High CVE-2018-6033: Race when opening downloaded files
+  * Medium CVE-2018-6034: Integer overflow in Blink
+  * Medium CVE-2018-6035: Insufficient isolation of devtools from extensions
+  * Medium CVE-2018-6036: Integer underflow in WebAssembly
+  * Medium CVE-2018-6037: Insufficient user gesture requirements in autofill
+  * Medium CVE-2018-6038: Heap buffer overflow in WebGL
+  * Medium CVE-2018-6039: XSS in DevTools
+  * Medium CVE-2018-6040: Content security policy bypass
+  * Medium CVE-2018-6041: URL spoof in Navigation
+  * Medium CVE-2018-6042: URL spoof in OmniBox
+  * Medium CVE-2018-6043: Insufficient escaping with external URL handlers
+  * Medium CVE-2018-6045: Insufficient isolation of devtools from extensions
+  * Medium CVE-2018-6046: Insufficient isolation of devtools from extensions
+  * Medium CVE-2018-6047: Cross origin URL leak in WebGL
+  * Low CVE-2018-6048: Referrer policy bypass in Blink
+  * Low CVE-2017-15420: URL spoofing in Omnibox
+  * Low CVE-2018-6049: UI spoof in Permissions
+  * Low CVE-2018-6050: URL spoof in OmniBox
+  * Low CVE-2018-6051: Referrer leak in XSS Auditor
+  * Low CVE-2018-6052: Incomplete no-referrer policy implementation
+  * Low CVE-2018-6053: Leak of page thumbnails in New Tab Page
+  * Low CVE-2018-6054: Use after free in WebUI
 - Add patches:
   * chromium-angle.patch
   * chromium-memcpy.patch
@@ -7162,22 +7188,22 @@ Thu Jun  8 14:56:42 UTC 2017 - tchvatal@suse.com
 Tue Jun  6 07:53:53 UTC 2017 - tchvatal@suse.com
 
 - Update to 59.0.3071.86 bsc#1042833:
-  * CVE-2017-5070: Type confusion in V8. Reported by Zhao Qixun(@S0rryMybad) of Qihoo 360 Vulcan Team on 2017-05-16
-  * CVE-2017-5071: Out of bounds read in V8. Reported by Choongwoo Han on 2017-04-26
-  * CVE-2017-5072: Address spoofing in Omnibox. Reported by Rayyan Bijoora on 2017-04-07
-  * CVE-2017-5073: Use after free in print preview. Reported by Khalil Zhani on 2017-04-28
-  * CVE-2017-5074: Use after free in Apps Bluetooth. Reported by anonymous on 2017-03-09
-  * CVE-2017-5075: Information leak in CSP reporting. Reported by Emmanuel Gil Peyrot on 2017-01-05
-  * CVE-2017-5086: Address spoofing in Omnibox. Reported by Rayyan Bijoora on 2017-05-16
-  * CVE-2017-5076: Address spoofing in Omnibox. Reported by Samuel Erb on 2017-05-06
-  * CVE-2017-5077: Heap buffer overflow in Skia. Reported by Sweetchip on 2017-04-28
-  * CVE-2017-5078: Possible command injection in mailto handling. Reported by Jose Carlos Exposito Bueno on 2017-04-12
-  * CVE-2017-5079: UI spoofing in Blink. Reported by Khalil Zhani on 2017-04-20
-  * CVE-2017-5080: Use after free in credit card autofill. Reported by Khalil Zhani on 2017-04-05
-  * CVE-2017-5081: Extension verification bypass. Reported by Andrey Kovalev (@L1kvID) Yandex Security Team on 2016-12-07
-  * CVE-2017-5082: Insufficient hardening in credit card editor. Reported by Nightwatch Cybersecurity Research on 2017-05-11
-  * CVE-2017-5083: UI spoofing in Blink. Reported by Khalil Zhani on 2017-04-24
-  * CVE-2017-5085: Inappropriate javascript execution on WebUI pages. Reported by Zhiyang Zeng of Tencent security platform department on 2017-02-15
+  * CVE-2017-5070: Type confusion in V8
+  * CVE-2017-5071: Out of bounds read in V8
+  * CVE-2017-5072: Address spoofing in Omnibox
+  * CVE-2017-5073: Use after free in print preview
+  * CVE-2017-5074: Use after free in Apps Bluetooth
+  * CVE-2017-5075: Information leak in CSP reporting
+  * CVE-2017-5086: Address spoofing in Omnibox
+  * CVE-2017-5076: Address spoofing in Omnibox
+  * CVE-2017-5077: Heap buffer overflow in Skia
+  * CVE-2017-5078: Possible command injection in mailto handling
+  * CVE-2017-5079: UI spoofing in Blink
+  * CVE-2017-5080: Use after free in credit card autofill
+  * CVE-2017-5081: Extension verification bypass
+  * CVE-2017-5082: Insufficient hardening in credit card editor
+  * CVE-2017-5083: UI spoofing in Blink
+  * CVE-2017-5085: Inappropriate javascript execution on WebUI pages
 - Add patch to fix build with system dma:
   * chromium-dma-buf.patch
 - Drop no longer needed patches:
@@ -7743,7 +7769,7 @@ Fri Apr 29 13:45:18 UTC 2016 - astieger@suse.com
     - CVE-2016-1660: Out-of-bounds write in Blink
     - CVE-2016-1661: Memory corruption in cross-process frames
     - CVE-2016-1662: Use-after-free in extensions
-    - CVE-2016-1663: Use-after-free in Blink’s V8 bindings
+    - CVE-2016-1663: Use-after-free in Blink's V8 bindings
     - CVE-2016-1664: Address bar spoofing
     - CVE-2016-1665: Information leak in V8
     - CVE-2016-1666: Various fixes from internal audits, fuzzing and other initiatives
@@ -8794,7 +8820,7 @@ Thu Jan 16 20:58:04 UTC 2014 - tittiatcoke@gmail.com
   - Security fixes:
     * CVE-2013-6646: Use-after-free in web workers
     * CVE-2013-6641: Use-after-free related to forms
-    * CVE-2013-6643: Unprompted sync with an attacker’s 
+    * CVE-2013-6643: Unprompted sync with an attacker's 
                      Google account
     * CVE-2013-6645: Use-after-free related to speech input 
                      elements
@@ -9897,7 +9923,7 @@ Wed Feb 15 07:40:59 UTC 2012 - tittiatcoke@gmail.com
     [Issue: 112194]
   * Fixed stability issues 
     [Issues:  113531, 113492, 113654, 113546, 113847, 114011]
-  * Use Google’s online spellchecker to identify misspelled words 
+  * Use Google's online spellchecker to identify misspelled words 
     as well as provide suggestions, for pasted text only.
   * Fix: open incognito windows at exit created extra normal 
     windows when the session was restored

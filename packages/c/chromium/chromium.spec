@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        146.0.7680.177
+Version:        147.0.7727.49
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -192,13 +192,15 @@ Patch385:       chromium-142-rust_no_sanitize.patch
 Patch386:       chromium-143-libpng-unbundle.patch
 Patch387:       chromium-143-cookie_string_view.patch
 Patch389:       chromium-143-revert_rust_is_multiple_of.patch
+Patch390:       chromium-147-blink_renderer_need_ffmpeg.patch
 Patch391:       chromium-145-blink_missing_include.patch
-Patch392:       chromium-145-use_unrar.patch
 Patch393:       force-rust-nightly.patch
 Patch394:       chromium-145-swiftshader-missing-include.patch
 Patch395:       chromium-146-mojo_chmod_mode.patch
 Patch396:       chromium-146-value_or.patch
 Patch397:       chromium-146-has_no_clone.patch
+Patch398:       chromium-147-comment_safe_assert.patch
+Patch399:       chromium-147-ffmpeg_includes.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch400:       chromium-141-glibc-2.42-SYS_SECCOMP.patch
@@ -282,8 +284,12 @@ Patch1061:       chromium-146-static-assert.patch
 # llvm19 segfaults in
 # ../services/network/public/cpp/permissions_policy/origin_with_possible_wildcards.cc:99:1: current parser token 'std'
 Patch1062:       chromium-146-clang-19-crash.patch
+# error in llvm19
+# ./device/fido/cable/v2_handshake.cc:221:17: error: static assertion expression is not an integral constant expression
+# revert spanification for now
+Patch1063:       chromium-bafd7d217b9e26edf3be8d20b1ff56bcea4b16ee.patch
 # error:  [44980s] ../components/enterprise/client_certificates/core/private_key_factory.cc:126:14: error: expression is not assignable
-Patch1063:       chromium-146-keyfactory.patch
+Patch1064:       chromium-146-keyfactory.patch
 # error with llvm < 23
 # clang++: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-bounds'
 Patch1066:       chromium-146-ignore-for-ubsan.patch
@@ -507,7 +513,9 @@ BuildRequires:  libc++abi1 = %{llvm_version_long}
 %endif
 BuildRequires:  lld%{llvm_version}
 BuildRequires:  llvm%{llvm_version}
+%ifnarch ppc64le
 #!BuildIgnore:  gcc
+%endif
 %else
 # gcc case
 BuildRequires:  binutils-gold
@@ -564,8 +572,9 @@ if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
 %patch -p1 -R -P 1060
 %patch -p1 -P 1061
 %patch -p1 -P 1062
+%patch -p1 -R -P 1063
 fi
-%patch -p1 -P 1063
+%patch -p1 -P 1064
 
 if [[ $(echo ${clang_version} | cut -d. -f1) -lt 23 ]]; then
 %patch -p1 -P 1066
@@ -580,7 +589,29 @@ rm -rf third_party/node/node_modules/rollup
 tar xf %{SOURCE4} && mv package third_party/node/node_modules/rollup
 %patch -p1 -P 1080
 
+%ifarch ppc64le
+pushd third_party/libaom
+git init
+sed -i -e "s@reset_dirs linux/ia32@if false ; then\nreset_dirs linux/ia32@" \
+       -e "s@reset_dirs linux/ppc64@fi\nreset_dirs linux/ppc64@" \
+       -e "s@reset_dirs win/x64@if false ; then\nreset_dirs win/x64@" \
+       -e "s@convert_to_windows.*arm64.*@convert_to_windows foo_arm64\nfi@" cmake_update.sh
+sed -i -e "s@CROSS powerpc64le-linux-gnu-@CROSS \"\"@" source/libaom/build/cmake/toolchains/ppc-linux-gcc.cmake
+./cmake_update.sh
+for i in source/config/linux/ppc64/config/* ; do
+echo $i
+cat $i
+done
+popd
+%endif
+
 %build
+# ccache experiment
+# Zero out the hit/miss stats from previous runs to have data from this build
+ccache --zero-stats
+# show how much cache we are starting with
+ccache --show-stats
+
 # esbuild
 rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
 tar -xf %{SOURCE1}
@@ -1227,6 +1258,10 @@ install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/app
 ln -sf chromium-browser.1%{?ext_man} %{buildroot}%{_mandir}/man1/chromium.1%{?ext_man}
 
 %fdupes -s %{buildroot}
+
+# ccache experiment
+# show the ccache hit/miss stats
+ccache --show-stats
 
 %files
 %license LICENSE
