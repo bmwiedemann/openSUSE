@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Apr  3 17:43:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * KIP-768 Extend SASL/OAUTHBEARER to support OIDC claim mapping
+    beyond the default `sub` claim (#5336).
+  * Remove CPU usage regression when a subscription matches no
+    topics (#5324).
+  * Fix `rd_kafka_consume_batch_queue` incorrectly updating the
+    application position on EOF or error messages (#5213).
+  * Fix compilation without `getentropy` (@olegrok, @lpsinger,
+    #5288).
+  * Use a truly random seed for pseudo-random number generation
+    whenever available (#5288).
+  * Fix rd_list destroy callback type mismatch by changing
+    rd_kafka_assignor_destroy to take a void * argument, as
+    expected by rd_list_init() destroy callbacks, and casting
+    internally to rd_kafka_assignor_t * (#5195) (#5278).
+  * KIP-482 Upgrade CreateAcls, DescribeAcls, DeleteAcls to the
+    first version supporting this KIP (#5081).
+  * KIP-482 Upgrade DescribeGroups, DeleteTopics, DeleteRecords,
+    CreatePartitions, DeleteGroups to the first version
+    supporting this KIP (#5083).
+  * Strip trailing dot of hostname to fix SSL certificate
+    verification issue (#5253).
+  * Fix memory management for interceptors in rd_kafka_conf to
+    prevent double-free errors (#5240).
+  * Fix for the pseudo-random generator seed on Windows involving
+    as well the uniqueness of the new consumer group protocol
+    member id
+  * Add secure random generation functionality used for UUID
+    uniqueness and secure salt generation in
+    `rd_kafka_UserScramCredentialUpsertion` using OpenSSL or the
+    POSIX or WIN32 equivalent calls when it isn't available (#5265).
+
+-------------------------------------------------------------------
 Sun Dec 28 23:33:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12.1:

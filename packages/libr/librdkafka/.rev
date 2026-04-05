@@ -372,4 +372,41 @@
     documentation says it's needed for socket buffers to take</comment>
     <requestid>1324618</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d4745fdef2e3357a1c3dbd50df3460aa</srcmd5>
+    <version>2.14.0</version>
+    <time>1775406217</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.14.0:
+  * KIP-768 Extend SASL/OAUTHBEARER to support OIDC claim mapping
+    beyond the default `sub` claim (#5336).
+  * Remove CPU usage regression when a subscription matches no
+    topics (#5324).
+  * Fix `rd_kafka_consume_batch_queue` incorrectly updating the
+    application position on EOF or error messages (#5213).
+  * Fix compilation without `getentropy` (@olegrok, @lpsinger,
+    #5288).
+  * Use a truly random seed for pseudo-random number generation
+    whenever available (#5288).
+  * Fix rd_list destroy callback type mismatch by changing
+    rd_kafka_assignor_destroy to take a void * argument, as
+    expected by rd_list_init() destroy callbacks, and casting
+    internally to rd_kafka_assignor_t * (#5195) (#5278).
+  * KIP-482 Upgrade CreateAcls, DescribeAcls, DeleteAcls to the
+    first version supporting this KIP (#5081).
+  * KIP-482 Upgrade DescribeGroups, DeleteTopics, DeleteRecords,
+    CreatePartitions, DeleteGroups to the first version
+    supporting this KIP (#5083).
+  * Strip trailing dot of hostname to fix SSL certificate
+    verification issue (#5253).
+  * Fix memory management for interceptors in rd_kafka_conf to
+    prevent double-free errors (#5240).
+  * Fix for the pseudo-random generator seed on Windows involving
+    as well the uniqueness of the new consumer group protocol
+    member id
+  * Add secure random generation functionality used for UUID
+    uniqueness and secure salt generation in
+    `rd_kafka_UserScramCredentialUpsertion` using OpenSSL or the</comment>
+    <requestid>1344511</requestid>
+  </revision>
 </revisionlist>
