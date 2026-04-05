@@ -208,4 +208,12 @@
     <comment>- Update to release 3.4.2</comment>
     <requestid>1343984</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f110c085aa93d145885df42171282f80</srcmd5>
+    <version>3.4.4</version>
+    <time>1775406226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.4.4</comment>
+    <requestid>1344531</requestid>
+  </revision>
 </revisionlist>

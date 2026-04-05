@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Apr  4 00:47:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.4
+  * Fixes a crash when calling SDL_RenderGeometryRaw() with both
+    texture and uv set to NULL
+  * Default SDL_GL_FRAMEBUFFER_SRGB_CAPABLE back to zero, to fix
+    brightness issues with existing applications
+  * Prevent the window from growing when scale to display is used
+    on Wayland
+  * Scale custom cursors with the pointer scale on Wayland
+  * Fixed missing mouse cursor on KMSDRM
+  * Fixed sending duplicate key down events when reconciling X11
+    modifier state
+  * Fixed Print Screen key capture during keyboard grab
+  * Fixed pipewire audio output hanging under heavy load
+  * Fixed an out of memory issue opening a V4L2 camera with
+    FRMIVAL_TYPE_CONTINUOUS
+  * Added battery status for newer FlyDigi controllers
+  * Added support for the Flydigi Vader 5 Pro in Xbox 360 mode
+  * Added support for battery status on third-party DualSense
+    controllers
+  * Added support for accelerometers on third-party PS3 controllers
+  * Added support for the ZUIKI EVOTOP controller
+  * Fixed several issues with globbing directories
+
+-------------------------------------------------------------------
 Tue Mar 31 19:46:34 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to release 3.4.2
