@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  3 17:53:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 12.2.0:
+  * Prevent FITS decompression bomb
+  * Fix OOB write with invalid tile extents
+  * Prevent PDF parsing trailer infinite loop
+  * Integer overflow when processing fonts
+
+-------------------------------------------------------------------
 Mon Mar  9 21:01:58 UTC 2026 - munix9@googlemail.com
 
 - Reactivate tests 'test_stroke' and 'test_stroke_multiline'

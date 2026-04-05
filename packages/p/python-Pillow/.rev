@@ -941,4 +941,16 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>1338020</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>bd98b847420bb4adadddb48274b4a831</srcmd5>
+    <version>12.2.0</version>
+    <time>1775406222</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 12.2.0:
+  * Prevent FITS decompression bomb
+  * Fix OOB write with invalid tile extents
+  * Prevent PDF parsing trailer infinite loop
+  * Integer overflow when processing fonts</comment>
+    <requestid>1344514</requestid>
+  </revision>
 </revisionlist>

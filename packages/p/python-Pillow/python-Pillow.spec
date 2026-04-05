@@ -18,18 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pillow
-Version:        12.1.1
+Version:        12.2.0
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
 URL:            https://python-pillow.github.io
 Source:         https://files.pythonhosted.org/packages/source/p/pillow/pillow-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module olefile}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11}
 BuildRequires:  %{python_module pytest >= 4.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module tk}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
