@@ -1,7 +1,7 @@
 #
 # spec file for package python-pecan
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pecan
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        A WSGI object-dispatching web framework
 License:        BSD-3-Clause
@@ -36,6 +36,7 @@ BuildRequires:  %{python_module Mako >= 0.4.0}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module WebOb >= 1.8}
 BuildRequires:  %{python_module WebTest >= 1.3.1}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  4 08:07:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * replaced deprecated pkg_resources with importlib.metadata and
+    importlib.resources
+  * minimum Python version is now 3.10; removed support for
+    Python 3.8 and 3.9
+
+-------------------------------------------------------------------
 Sun Jul 27 12:36:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.7.0
@@ -36,7 +45,7 @@ Mon May 22 11:27:36 UTC 2023 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Sat Jan 28 12:35:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- restore webtest dependency, needed by pecan.testing 
+- restore webtest dependency, needed by pecan.testing
 
 -------------------------------------------------------------------
 Tue Jul 19 11:55:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -57,7 +66,7 @@ Sat Dec 11 22:31:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * added trove classifiers for Python 3.6 - 3.9
   * fixed a bug related to setuptools as a dependency
   * fixed a bug that broke pecan when used with certain
-   versions of SQLAlchemy 
+   versions of SQLAlchemy
 - drop 0001-Support-SQLAlchemy-1.4.x.patch,
   0002-Fix-typo-from-bad-copy-paste.patch: obsolete (upstream)
 
@@ -69,7 +78,7 @@ Tue Oct  5 14:24:02 UTC 2021 - Stefan Schubert <schubi@suse.de>
 -------------------------------------------------------------------
 Fri Oct  1 09:26:15 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
-- Use libalternatives instead of update-alternatives. 
+- Use libalternatives instead of update-alternatives.
 
 -------------------------------------------------------------------
 Thu May 27 06:49:51 UTC 2021 - pgajdos@suse.com
@@ -258,7 +267,7 @@ Tue Feb 24 12:49:00 UTC 2015 - tbechtold@suse.com
 -------------------------------------------------------------------
 Mon Nov 10 19:31:21 UTC 2014 - dmueller@suse.com
 
-- skip tests on SLE_12 (the depending packages are not there) 
+- skip tests on SLE_12 (the depending packages are not there)
 
 -------------------------------------------------------------------
 Tue Sep 23 18:56:49 UTC 2014 - dmueller@suse.com
@@ -272,7 +281,7 @@ Tue Sep 23 18:56:49 UTC 2014 - dmueller@suse.com
   * Added pecan.state.arguments, a new feature for inspecting
   controller call arguments.
   * Fixed an infinite recursion error in PecanHook application.
-  Subclassing both rest.RestController and hooks.HookController 
+  Subclassing both rest.RestController and hooks.HookController
   resulted in an infinite recursion error in hook application
   (which prevented applications from starting).
   * Pecan’s tests are now included in its source distribution.
@@ -369,7 +378,7 @@ Thu Dec  5 20:36:43 UTC 2013 - p.drouand@gmail.com
 -------------------------------------------------------------------
 Thu Nov 28 15:07:14 UTC 2013 - dmueller@suse.com
 
-- package LICENSE and README.rst 
+- package LICENSE and README.rst
 
 -------------------------------------------------------------------
 Wed Sep 18 14:19:59 UTC 2013 - dmueller@suse.com

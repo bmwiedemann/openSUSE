@@ -347,4 +347,23 @@
     <comment></comment>
     <requestid>1296594</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>38dfa480cf4d77f596e34df23d7c749e</srcmd5>
+    <version>1.8.0</version>
+    <time>1775406230</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0:
+  * replaced deprecated pkg_resources with importlib.metadata and
+    importlib.resources
+  * minimum Python version is now 3.10; removed support for
+    Python 3.8 and 3.9
+
+- restore webtest dependency, needed by pecan.testing
+   versions of SQLAlchemy
+- Use libalternatives instead of update-alternatives.
+- skip tests on SLE_12 (the depending packages are not there)
+  Subclassing both rest.RestController and hooks.HookController
+- package LICENSE and README.rst</comment>
+    <requestid>1344557</requestid>
+  </revision>
 </revisionlist>
