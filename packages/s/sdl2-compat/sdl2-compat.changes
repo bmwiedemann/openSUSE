@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  4 00:56:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.66
+  * Fixed video flicker in Domino-Chain
+  * Fixed window size being delivered to windows created in
+    fullscreen mode
+  * Fixed double scaling when setting a logical presentation size
+  * Fixed SDL_LoadBMP() and SDL_LoadBMP_RW() returning < 8bpp
+    surfaces in some cases
+
+-------------------------------------------------------------------
 Wed Feb  4 19:41:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to relesae 2.32.64

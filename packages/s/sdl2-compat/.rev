@@ -185,4 +185,12 @@ Binary file sdl2-compat-2.32.54.tar.gz.sig (revision 2) deleted</comment>
     <comment>- Update to relesae 2.32.64</comment>
     <requestid>1331058</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bbd336456a18b14b8ac96e1a9e2653d5</srcmd5>
+    <version>2.32.66</version>
+    <time>1775406228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.32.66</comment>
+    <requestid>1344532</requestid>
+  </revision>
 </revisionlist>
