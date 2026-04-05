@@ -26,7 +26,8 @@ URL:            https://github.com/%{name}/%{name}
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.firewalld
 Patch0:         ru.ts.patch
-Patch1:         eiskaltdcpp-2.4.2-pcre2.patch
+Patch1:         %{name}-2.4.2-pcre2.patch
+Patch2:         %{name}-miniupnpc18.patch
 BuildRequires:  aspell-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
