@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  4 17:25:12 CEST 2026 - tumic@gpxsee.org
+
+- Update to version 16.1
+  * Added support for DJI mp4 videos and SRT files.
+  * Fixed multiple video parsing and seeking issues.
+
+-------------------------------------------------------------------
 Sat Mar 14 19:00:50 CET 2026 - tumic@gpxsee.org
 
 - Update to version 16.0

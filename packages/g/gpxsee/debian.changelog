@@ -1,3 +1,10 @@
+gpxsee (16.1) stable; urgency=low
+
+  * Added support for DJI mp4 videos and SRT files.
+  * Fixed multiple video parsing and seeking issues.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 04 Apr 2026 17:27:18 +0200
+
 gpxsee (16.0) stable; urgency=low
 
   * Added video previews.
