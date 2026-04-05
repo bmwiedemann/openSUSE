@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  5 08:53:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.2
+  * Non-animated images can now be loaded as single frame
+    animations
+  * Fixed animated WebP frame composition
+  * Fixed potential buffer overflow in tRNS handling
+  * Fixed out of bounds read in XCF image loader [CVE-2026-35444]
+
+-------------------------------------------------------------------
 Thu Jan 22 01:22:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.0
