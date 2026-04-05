@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  4 00:57:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relase 1.2.76
+  * Handle applications manually freeing surface pixels
+
+-------------------------------------------------------------------
 Tue Feb 10 21:05:21 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Update license tag to Zlib AND (Unlicense OR MIT-0) AND MIT:

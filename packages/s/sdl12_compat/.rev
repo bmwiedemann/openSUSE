@@ -100,4 +100,12 @@
     <comment>- Update license tag to Zlib AND (Unlicense OR MIT-0) AND MIT:</comment>
     <requestid>1332442</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ab05a22eb644440585efe87b0a3abec2</srcmd5>
+    <version>1.2.76</version>
+    <time>1775406229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to relase 1.2.76</comment>
+    <requestid>1344533</requestid>
+  </revision>
 </revisionlist>

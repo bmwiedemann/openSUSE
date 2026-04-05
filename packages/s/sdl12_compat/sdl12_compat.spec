@@ -19,13 +19,13 @@
 Name:           sdl12_compat
 %define lname libSDL-1_2-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
-Version:        1.2.74
+Version:        1.2.76
 Release:        0
 Summary:        SDL-1.2 Compatibility Layer for Simple DirectMedia Layer 2.0
 # Main project is licensed as Zlib
 # include/SDL/SDL_opengl.h is licensed as Zlib and MIT
 # src/dr_mp3.h is Unlicense OR MIT-0
-License:        Zlib AND (Unlicense OR MIT-0) AND MIT
+License:        (MIT-0 OR Unlicense) AND Zlib AND MIT
 Group:          Development/Libraries/X11
 URL:            https://github.com/libsdl-org/sdl12-compat
 Source:         https://github.com/libsdl-org/sdl12-compat/releases/download/release-%version/sdl12-compat-%version.tar.gz
