@@ -7424,4 +7424,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.19.10; bugs: bsc#1012628</comment>
     <requestid>1342445</requestid>
   </revision>
+  <revision rev="834" vrev="1">
+    <srcmd5>b0f3eae3e943f5615c4062beb5c69733</srcmd5>
+    <version>6.19.11</version>
+    <time>1775406215</time>
+    <user>dimstar_suse</user>
+    <comment>6.19.11 &amp; other fixes; bugs: bsc#1012628 bsc#1259358 bsc#1259925</comment>
+    <requestid>1344382</requestid>
+  </revision>
 </revisionlist>

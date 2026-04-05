@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.19
-%define patchversion 6.19.10
-%define git_commit a439317d8db0e8fd14574f9aa0c94d7d346ef509
+%define patchversion 6.19.11
+%define git_commit b4a2f1cd357933360e85f345421a3a8e5011786a
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-pae
-Version:        6.19.10
+Version:        6.19.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ga439317
+Release:        <RELEASE>.gb4a2f1c
 %else
 Release:        0
 %endif
