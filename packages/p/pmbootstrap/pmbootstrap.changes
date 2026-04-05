@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr  4 15:48:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.10.0
+  Highlights
+  * the install command prompting for user password and "pmOS is
+    already installed on this medium" much earlier so you don't
+    have to babysit it
+  * run0 support if sudo and doas aren't installed
+  * UEFI boot by default for QEMU.
+  Bugfixes
+  * lots of smaller bug fixes and enhancements as well as technical
+    debt being cleaned up.
+
+-------------------------------------------------------------------
 Mon Feb 16 20:50:40 UTC 2026 - Tomas Cech <sleep_walker@opensuse.org>
 
 - Update to version 3.9.0

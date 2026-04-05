@@ -3,5 +3,6 @@
   <description>Sophisticated chroot/build/flash tool to develop and install postmarketOS
 
 </description>
+  <devel project="devel:tools" package="pmbootstrap"/>
   <url>https://postmarketos.org</url>
 </package>

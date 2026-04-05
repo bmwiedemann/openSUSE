@@ -5,7 +5,7 @@
 # Copyright (c) 2024 Jianhua Lu <lujianhua000@gmail.com>
 # Copyright (c) 2024 Zhang Bingwu <xtexchooser@duck.com>
 # Copyright (c) 2023, Tomáš Čech <sleep_walker@opensuse.org>
-# Copyright (c) 2021-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,9 @@
 
 
 %define         pythons %{primary_python}
-%define         commit 888d8b4a2733af411e81d3c36b2a5945ed1e3467
+%define         commit 6ccc1cb9b134ea5c2751ac60a3319328cc76f348
 Name:           pmbootstrap
-Version:        3.9.0
+Version:        3.10.0
 Release:        0
 Summary:        Sophisticated chroot/build/flash tool to develop and install postmarketOS
 License:        GPL-3.0-or-later
