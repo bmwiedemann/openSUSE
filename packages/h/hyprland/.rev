@@ -399,4 +399,20 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1329024</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>5511b3360ba915ab6f80858bf3d95283</srcmd5>
+    <version>0.53.3</version>
+    <time>1771605780</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1334019</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3d5940426f9847e422157368b7f760f1</srcmd5>
+    <version>0.54.3</version>
+    <time>1775406275</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344650</requestid>
+  </revision>
 </revisionlist>

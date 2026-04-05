@@ -1,4 +1,4 @@
-From 9af8b97f52bd35ae3cd911f4d8c18b70a38babe0 Mon Sep 17 00:00:00 2001
+From c85ac283a39d90b452f4358a04772732f579bde5 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Florian=20=22sp1rit=22=E2=80=8B?= <sp1rit@disroot.org>
 Date: Fri, 23 Jan 2026 16:42:37 +0100
 Subject: [PATCH] start: drop support for nix-gl handling
@@ -11,11 +11,11 @@ we do not need it and it breaks with our libglaze
 Signed-off-by: Florian "sp1rit"​ <sp1rit@disroot.org>
 ---
  start/src/core/Instance.cpp |   8 +--
- start/src/core/State.hpp    |   1 -
- start/src/helpers/Nix.cpp   | 110 ------------------------------------
+ start/src/core/State.hpp    |   4 +-
+ start/src/helpers/Nix.cpp   | 125 ------------------------------------
  start/src/helpers/Nix.hpp   |   9 ---
- start/src/main.cpp          |  12 ----
- 5 files changed, 1 insertion(+), 139 deletions(-)
+ start/src/main.cpp          |  14 ----
+ 5 files changed, 2 insertions(+), 158 deletions(-)
  delete mode 100644 start/src/helpers/Nix.cpp
  delete mode 100644 start/src/helpers/Nix.hpp
 
@@ -46,24 +46,26 @@ index 2f5007bd..ec56cc75 100644
          g_logger->log(Hyprutils::CLI::LOG_ERR, "fork(): execvp failed: {}", strerror(errno));
          std::fflush(stdout);
 diff --git a/start/src/core/State.hpp b/start/src/core/State.hpp
-index d00a1757..6cf73a96 100644
+index 6a44c8d0..d56868ad 100644
 --- a/start/src/core/State.hpp
 +++ b/start/src/core/State.hpp
-@@ -8,7 +8,6 @@
+@@ -8,8 +8,6 @@
  struct SState {
      std::span<const char*>     rawArgvNoBinPath;
      std::optional<std::string> customPath;
--    bool                       noNixGl = false;
+-    bool                       noNixGl    = false;
+-    bool                       forceNixGl = false;
  };
  
- inline UP<SState> g_state = makeUnique<SState>();
+-inline UP<SState> g_state = makeUnique<SState>();
 \ No newline at end of file
++inline UP<SState> g_state = makeUnique<SState>();
 diff --git a/start/src/helpers/Nix.cpp b/start/src/helpers/Nix.cpp
 deleted file mode 100644
-index 07cd2a4a..00000000
+index da66183e..00000000
 --- a/start/src/helpers/Nix.cpp
 +++ /dev/null
-@@ -1,110 +0,0 @@
+@@ -1,125 +0,0 @@
 -#include "Nix.hpp"
 -
 -#include "Logger.hpp"
@@ -148,6 +150,9 @@ index 07cd2a4a..00000000
 -}
 -
 -bool Nix::shouldUseNixGL() {
+-    if (g_state->forceNixGl)
+-        return true;
+-
 -    if (g_state->noNixGl)
 -        return false;
 -
@@ -169,7 +174,19 @@ index 07cd2a4a..00000000
 -
 -    if (IS_NIX) {
 -        const auto NAME = getFromEtcOsRelease("NAME");
--        return !NAME || *NAME != "NixOS";
+-
+-        // Hyprland is nix: recommend nixGL iff !NIX && !NIX-OPENGL
+-
+-        if (*NAME == "NixOS")
+-            return false;
+-
+-        std::error_code ec;
+-
+-        if (std::filesystem::exists("/run/opengl-driver", ec) && !ec) // NOLINTNEXTLINE
+-            return false;
+-
+-        // we are not on nix / no nix opengl driver
+-        return true;
 -    }
 -
 -    return false;
@@ -191,7 +208,7 @@ index edc01b19..00000000
 -};
 \ No newline at end of file
 diff --git a/start/src/main.cpp b/start/src/main.cpp
-index e73fcfa5..8a408b2b 100644
+index 45a78357..9ca84119 100644
 --- a/start/src/main.cpp
 +++ b/start/src/main.cpp
 @@ -3,7 +3,6 @@
@@ -202,23 +219,28 @@ index e73fcfa5..8a408b2b 100644
  #include "core/State.hpp"
  #include "core/Instance.hpp"
  
-@@ -21,7 +20,6 @@ Any arguments after -- are passed to Hyprland. For Hyprland help, run start-hypr
+@@ -21,8 +20,6 @@ Any arguments after -- are passed to Hyprland. For Hyprland help, run start-hypr
  
  Additional arguments for start-hyprland:
   --path [path]       -> Override Hyprland path
 - --no-nixgl          -> Force disable nixGL
+- --force-nixgl       -> Force enable nixGL
  )#";
  
  //
-@@ -76,7 +74,6 @@ int main(int argc, const char** argv, const char** envp) {
+@@ -77,11 +74,9 @@ int main(int argc, const char** argv, const char** envp) {
              continue;
          }
          if (arg == "--no-nixgl") {
 -            g_state->noNixGl = true;
              continue;
          }
+         if (arg == "--force-nixgl") {
+-            g_state->forceNixGl = true;
+             continue;
+         }
      }
-@@ -87,15 +84,6 @@ int main(int argc, const char** argv, const char** envp) {
+@@ -92,15 +87,6 @@ int main(int argc, const char** argv, const char** envp) {
      if (!g_state->rawArgvNoBinPath.empty())
          g_logger->log(Hyprutils::CLI::LOG_WARN, "Arguments after -- are passed to Hyprland");
  
@@ -235,5 +257,5 @@ index e73fcfa5..8a408b2b 100644
      while (true) {
          g_instance     = makeUnique<CHyprlandInstance>();
 -- 
-2.50.1
+2.51.1
 

@@ -20,17 +20,22 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.53.3
+Version:        0.54.3
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
 URL:            https://hyprland.org/
 Source0:        %{name}-%{version}.tar.xz
+Source10:       Splashes.hpp.opensuse
 Source99:       %{name}.rpmlintrc
 Patch0:         disable-donation-nag-popup.patch
 Patch1:         start_hyprland_no_nixgl.patch
 BuildRequires:  cmake
+%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+BuildRequires:  gcc-c++ >= 13
+%else
 BuildRequires:  gcc-c++ >= 14
+%endif
 BuildRequires:  git
 BuildRequires:  glaze-devel
 BuildRequires:  glslang-devel
@@ -47,7 +52,7 @@ BuildRequires:  pkgconfig(hyprgraphics) >= 0.1.6
 BuildRequires:  pkgconfig(hyprlang) >= 0.6.7
 BuildRequires:  pkgconfig(hyprutils) >= 0.11.0
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.10
-BuildRequires:  pkgconfig(hyprwire) >= 0.2.1
+BuildRequires:  pkgconfig(hyprwire) >= 0.3.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libinput) >= 1.28.0
 BuildRequires:  pkgconfig(libudev)
@@ -63,7 +68,7 @@ BuildRequires:  pkgconfig(vulkan) >= 1.2.182
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.45
 BuildRequires:  pkgconfig(wayland-scanner)
-BuildRequires:  pkgconfig(wayland-server) >= 1.22.90
+BuildRequires:  pkgconfig(wayland-server) >= 1.22.91
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-errors)
 BuildRequires:  pkgconfig(xcb-icccm)
@@ -142,6 +147,11 @@ The official zsh completion script for %{name}.
 
 %prep
 %autosetup -p1
+
+# Replace Hyprland splash strings with openSUSE-only set (maintained downstream)
+# Let's make it very easy to contribute quotes and use our copy instead of a patch
+# Upstream rejected https://github.com/hyprwm/Hyprland/pull/13139
+install -m 0644 %{SOURCE10} src/helpers/Splashes.hpp
 
 # compatability with previous versions
 sed \
