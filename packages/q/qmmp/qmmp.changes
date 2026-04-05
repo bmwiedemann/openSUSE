@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr  4 07:57:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.2
+  * fixed preset path in the projectm plugin.
+  * fixed determination of FLAC files with ID3v2 tags.
+  * fixed DSD support in the ffmpeg plugin.
+  * fixed some issues with CUE support.
+  * fixed possible crash.
+  * fixed build warnings.
+  * fixed hotkey plugin.
+  * improved pipewire plugin:
+    + fixed delay calculation.
+    + increased buffer size.
+  * updated German translation.
+
+-------------------------------------------------------------------
 Fri Mar 13 19:17:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.1
