@@ -1,7 +1,7 @@
 #
 # spec file for package python-dist-meta
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,22 +26,25 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-dist-meta%{psuffix}
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        Parse and create Python distribution metadata
 License:        MIT
 URL:            https://github.com/repo-helper/dist-meta
 Source:         https://github.com/repo-helper/dist-meta/archive/refs/tags/v%{version}.tar.gz#/dist-meta-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-requirements-txt}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 40.6.0}
-BuildRequires:  %{python_module wheel >= 0.34.2}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module apeye}
 BuildRequires:  %{python_module coincidence}
 BuildRequires:  %{python_module dist-meta = %{version}}
+BuildRequires:  %{python_module domdf-python-tools >= 3.1.0}
 BuildRequires:  %{python_module first}
+BuildRequires:  %{python_module handy-archives >= 0.1.0}
+BuildRequires:  %{python_module packaging >= 20.9}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module shippinglabel}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  3 17:12:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Switch to hatchling build backend.
+  * Added support for Python 3.13.
+  * Internal cleanups and test suite updates.
+- update build dependencies for hatchling.
+
+-------------------------------------------------------------------
 Thu Feb 27 10:06:54 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
