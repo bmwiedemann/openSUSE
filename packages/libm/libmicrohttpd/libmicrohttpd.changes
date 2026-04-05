@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  2 20:47:04 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmicrohttpd 1.0.3:
+  * Fix a list traversal issue that could cause connection handling
+    issues when other connections were suspended
+
+-------------------------------------------------------------------
 Fri Sep 12 11:27:32 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Follow the system-wide crypto-policies [bsc#1211301]

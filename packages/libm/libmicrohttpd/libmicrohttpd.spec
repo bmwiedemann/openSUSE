@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2010,2011,2012  Stephan Kleine
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global sover   12
 %global libname %{name}%{sover}
 Name:           libmicrohttpd
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Small Embeddable HTTP Server Library
 # Some internal tests are licenced as GPL-3.0+ - they are only used in
