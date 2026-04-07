@@ -1,7 +1,7 @@
 #
 # spec file for package zpaq
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           zpaq
 Version:        7.15
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
-License:        SUSE-Public-Domain AND MIT
+License:        MIT AND SUSE-Public-Domain
 Group:          Productivity/Archiving/Compression
 URL:            http://mattmahoney.net/dc/zpaq.html
 Source0:        http://mattmahoney.net/dc/zpaq%{dversion}.zip
@@ -45,7 +45,11 @@ stored only once to save time and space.
 dos2unix readme.txt COPYING
 
 %build
+%ifarch x86_64 %{ix86}
 %make_build CXXFLAGS="%{optflags}"
+%else
+%make_build CXXFLAGS="%{optflags} -DNOJIT"
+%endif
 
 %install
 %make_install \
@@ -54,6 +58,9 @@ dos2unix readme.txt COPYING
   BINDIR="%{_bindir}" \
   MANDIR="%{_mandir}" \
   INCLUDEDIR="%{_includedir}"
+
+%check
+%make_build check
 
 %files
 %doc readme.txt

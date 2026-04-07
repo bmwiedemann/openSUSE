@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 20 05:31:11 UTC 2026 - Ilgaz Öcal <ilgaz@ilgaz.gen.tr>
+
+- Add -DNOJIT to CXXFLAGS for non-x86 architectures to fix Illegal instruction crashes on aarch64.
+
+-------------------------------------------------------------------
 Wed Apr 14 07:01:10 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec file cleanup 
