@@ -18,17 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth-oauthlib
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Google authentication library
 License:        Apache-2.0
-URL:            https://github.com/googleapis/google-auth-library-python-oauthlib
+URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-auth-oauthlib
 Source:         https://files.pythonhosted.org/packages/source/g/google_auth_oauthlib/google_auth_oauthlib-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-auth >= 2.14.0
+Requires:       python-google-auth >= 2.15.0
 Requires:       python-requests-oauthlib >= 0.7.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -36,7 +36,7 @@ Recommends:     python-click
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 6.0.0}
-BuildRequires:  %{python_module google-auth >= 1.0.0}
+BuildRequires:  %{python_module google-auth >= 2.15.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-oauthlib >= 0.7.0}
 # /SECTION
