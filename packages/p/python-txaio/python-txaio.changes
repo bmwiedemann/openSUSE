@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:35:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.12.2:
+  * Modernized documentation infrastructure with Furo theme, MyST
+    Markdown support, and sphinx-autoapi for automatic API
+    documentation generation
+  * Switch from setuptools to Hatchling
+  * Added standardized project badges (PyPI, Python versions, CI,
+    Docs, License, Downloads) to README.md and docs/index.rst
+  * Added comprehensive documentation sections: Installation,
+    Getting Started, Programming Guide, Contributing, and
+    Releases
+  * Added AI assistance documentation under docs/ai/ with
+    acknowledgement and audit files
+  * Fixed RST badge rendering by setting
+    override_image_directive=False in sphinxcontrib-images
+    configuration
+  * Fixed F841 linting error in sphinx_auto_section_anchors.py
+    (unused variable)
+  * Fixed Incomplete source distribution in 25.12.1: missing
+    tests/util.py
+  * Updated Sphinx requirement to >=8.2.3 for docs optional
+    dependency
+  * Updated .cicd submodule to latest with linting fix
+  * Standardized conf.py configuration across WAMP ecosystem
+    projects
+  * Phase 1.3: CI/CD Modernization - align workflows with wamp-
+    cicd patterns
+  * Phase 1.2: Build Tooling Modernization - migrate to src
+    layout, Furo/MyST/AutoAPI docs
+  * Phase 1.1: Update infrastructure submodules to latest Phase 0
+    versions
+  * Migrate from mypy to ty (Astral type checker) for faster type
+    checking
+  * Enable tests and coverage in GitHub Actions
+  * Add coverage report artifact upload
+  * Modernize docs/conf.py with Furo theme, MyST Markdown,
+    sphinx-autoapi
+  * ci: fix publish-github-releases to skip on PRs
+  * ci: align release.yml with autobahn-python model to prevent
+    accidental releases
+
+-------------------------------------------------------------------
 Thu Oct 30 01:17:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 25.9.2:
@@ -43,7 +86,7 @@ Mon Jan 18 00:21:11 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 - update to 20.12.1
   * new: CI/CD migrated to GitHub Actions
   * new: support Python 3.9 (CI / testing added)
-  * new: minimum Python version is now 3.6 
+  * new: minimum Python version is now 3.6
 - add remove-mock.patch gh#crossbario/txaio#169
 
 -------------------------------------------------------------------

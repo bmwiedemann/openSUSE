@@ -1,7 +1,7 @@
 #
 # spec file for package python-txaio
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,24 @@
 
 
 Name:           python-txaio
-Version:        25.9.2
+Version:        25.12.2
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
 URL:            https://github.com/crossbario/txaio
 Source:         https://files.pythonhosted.org/packages/source/t/txaio/txaio-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-Twisted >= 22.10.0
-Recommends:     python-zope.interface >= 5.2
+Recommends:     python-zope.interface >= 5.2.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Twisted >= 22.10.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module zope.interface >= 5.2}
+BuildRequires:  %{python_module zope.interface >= 5.2.0}
 # /SECTION
 %python_subpackages
 
