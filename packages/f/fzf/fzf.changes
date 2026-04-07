@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  5 04:42:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 0.71.0
+  * Added --popup as a new name for --tmux with Zellij support
+  * Cross-reload item identity with --id-nth
+  * Performance improvements
+  * Shell integration improvements
+  * GET / HTTP endpoint now includes positions field in each match entry, 
+    providing the indices of matched characters for external highlighting
+  * Allow adaptive height with negative value (--height=~-HEIGHT)
+  * Bug fixes 
+
+-------------------------------------------------------------------
 Mon Mar  2 21:33:40 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.70.0:
