@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar 31 06:05:12 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.0.17:
+  * Add _unblock_doctest() helper for programmatic re-enabling of built-in
+    doctest plugin
+  * Autouse fixtures from conftest.py are now properly discovered for doctest
+    files
+  * Doctest directive comments with leading whitespace
+    (e.g.,   # doctest: +SKIP) are now properly matched
+  * Ensure docutils/myst doctest directives auto-register
+  * Type annotation and linting fixes
+  * Fix for pytest-asyncio compatibility
+  * chore: Implement PEP 563 deferred annotation resolution
+  * Drop Python 3.8 and 3.9
+  * Build system moved from poetry to hatchling.
+
+-------------------------------------------------------------------
 Tue Oct 29 21:46:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.8:

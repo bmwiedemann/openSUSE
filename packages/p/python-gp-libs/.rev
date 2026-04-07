@@ -45,4 +45,12 @@
   * Final Python 3.8 release, as it has reached end-of-life status</comment>
     <requestid>1219204</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e1c2ab7494c5ba578d668cb97ce738c1</srcmd5>
+    <version>0.0.17</version>
+    <time>1775572435</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344872</requestid>
+  </revision>
 </revisionlist>

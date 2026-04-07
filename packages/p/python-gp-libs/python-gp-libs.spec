@@ -1,7 +1,7 @@
 #
 # spec file for package python-gp-libs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gp-libs
-Version:        0.0.8
+Version:        0.0.17
 Release:        0
 Summary:        Internal utilities for projects following git-pull python package spec
 License:        MIT
 URL:            https://gp-libs.git-pull.com
 Source:         https://files.pythonhosted.org/packages/source/g/gp-libs/gp_libs-%{version}.tar.gz
 BuildRequires:  %{python_module docutils >= 0.20.1}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module myst-parser >= 2.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test
 BuildRequires:  %{python_module pytest}
@@ -59,6 +58,7 @@ mv src src.bak
 
 ignore="--ignore=tests/test_doctest_docutils.py"
 ignore+=" --ignore=tests/test_linkify_issues.py"
+ignore+=" --ignore=src.bak"
 %pytest $ignore
 
 mv src.bak src
