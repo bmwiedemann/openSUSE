@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2025
-%define texlive_previous 2022
-%define texlive_release  20250308
-%define texlive_noarch   221
-%define biber_version    2.20
+%define texlive_version  2026
+%define texlive_previous 2025
+%define texlive_release  20260301
+%define texlive_noarch   222
+%define biber_version    2.21
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-c
-Version:        2025
+Version:        2026
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -87,7 +87,7 @@ Source0:        texlive-specs-c-rpmlintrc
 Meta package to build tons of noarch texlive packages.
 
 %package -n texlive-bbding
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn17186
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A symbol (dingbat) font and LaTeX macros for its use
@@ -118,7 +118,7 @@ Provides:       tex(Uding.fd)
 Provides:       tex(bbding.sty)
 Provides:       tex(bbding10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source1:        bbding.tar.xz
 Source2:        bbding.doc.tar.xz
 
@@ -129,7 +129,7 @@ NFSS interface for using the font. An Adobe Type 1 version of
 the fonts is available in the niceframe fonts bundle.
 
 %package -n texlive-bbding-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn17186
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn77682
 Release:        0
 Summary:        Documentation for texlive-bbding
 License:        LPPL-1.0
@@ -169,7 +169,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bbding/bbding.sty
 
 %package -n texlive-bbm
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        "Blackboard-style" cm fonts
@@ -239,7 +239,7 @@ Provides:       tex(bbmtt12.tfm)
 Provides:       tex(bbmtt8.tfm)
 Provides:       tex(bbmtt9.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source3:        bbm.tar.xz
 Source4:        bbm.doc.tar.xz
 
@@ -252,7 +252,7 @@ more sizes than you could reasonably imagine. A sample of these
 fonts appears in the blackboard bold sampler.
 
 %package -n texlive-bbm-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-bbm
 License:        LPPL-1.0
@@ -413,7 +413,7 @@ Provides:       tex(ubbm.fd)
 Provides:       tex(ubbmss.fd)
 Provides:       tex(ubbmtt.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source5:        bbm-macros.tar.xz
 Source6:        bbm-macros.doc.tar.xz
 
@@ -463,7 +463,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bbm-macros/ubbmtt.fd
 
 %package -n texlive-bbold
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn17187
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn77682
 Release:        0
 License:        BSD-3-Clause
 Summary:        Sans serif blackboard bold
@@ -501,7 +501,7 @@ Provides:       tex(bbold7.tfm)
 Provides:       tex(bbold8.tfm)
 Provides:       tex(bbold9.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source7:        bbold.tar.xz
 Source8:        bbold.doc.tar.xz
 Source9:        bbold_bbold11.dif
@@ -515,7 +515,7 @@ than you could reasonably imagine. See the blackboard sampler
 for a feel for the font's appearance.
 
 %package -n texlive-bbold-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn17187
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn77682
 Release:        0
 Summary:        Documentation for texlive-bbold
 License:        BSD-3-Clause
@@ -621,7 +621,7 @@ Requires:       texlive-bbold-type1-fonts >= %{texlive_version}
 Suggests:       texlive-bbold-type1-doc >= %{texlive_version}
 Provides:       tex(bbold.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source10:       bbold-type1.tar.xz
 Source11:       bbold-type1.doc.tar.xz
 
@@ -708,7 +708,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-bbold-type1/bbold7.pfb
 
 %package -n texlive-bboldx
-Version:        %{texlive_version}.%{texlive_noarch}.1.032svn65424
+Version:        %{texlive_version}.%{texlive_noarch}.1.032svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Extension of the bbold package with a Blackboard Bold alphabet
@@ -756,7 +756,7 @@ Provides:       tex(bboldx.map)
 Provides:       tex(bboldx.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source12:       bboldx.tar.xz
 Source13:       bboldx.doc.tar.xz
 
@@ -766,7 +766,7 @@ the original is considered as light and the additions as
 regular and bold.
 
 %package -n texlive-bboldx-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.032svn65424
+Version:        %{texlive_version}.%{texlive_noarch}.1.032svn77682
 Release:        0
 Summary:        Documentation for texlive-bboldx
 License:        LPPL-1.0
@@ -778,7 +778,7 @@ Supplements:    (texlive-bboldx and texlive-alldocumentation)
 This package includes the documentation for texlive-bboldx
 
 %package -n texlive-bboldx-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.032svn65424
+Version:        %{texlive_version}.%{texlive_noarch}.1.032svn77682
 Release:        0
 Summary:        Severed fonts for texlive-bboldx
 License:        LPPL-1.0
@@ -875,7 +875,7 @@ Provides:       tex(bchart.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source14:       bchart.tar.xz
 Source15:       bchart.doc.tar.xz
 
@@ -924,7 +924,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bchart/bchart.sty
 
 %package -n texlive-bclogo
-Version:        %{texlive_version}.%{texlive_noarch}.3.15svn69578
+Version:        %{texlive_version}.%{texlive_noarch}.3.15svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Creating colourful boxes with logos
@@ -964,7 +964,7 @@ Requires:       tex(pstricks.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source16:       bclogo.tar.xz
 Source17:       bclogo.doc.tar.xz
 
@@ -974,7 +974,7 @@ title and logo. It may use either TikZ or PSTricks as graphics
 engine.
 
 %package -n texlive-bclogo-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.15svn69578
+Version:        %{texlive_version}.%{texlive_noarch}.3.15svn77682
 Release:        0
 Summary:        Documentation for texlive-bclogo
 License:        LPPL-1.0
@@ -1151,7 +1151,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bclogo/bclogo.sty
 
 %package -n texlive-beamer
-Version:        %{texlive_version}.%{texlive_noarch}.3.72svn73735
+Version:        %{texlive_version}.%{texlive_noarch}.3.77svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX class for producing presentations and slides
@@ -1339,7 +1339,7 @@ Requires:       tex(ucs.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xxcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source18:       beamer.tar.xz
 Source19:       beamer.doc.tar.xz
 
@@ -1362,7 +1362,7 @@ following other packages: atbegshi, etoolbox, hyperref, ifpdf,
 pgf, and translator.
 
 %package -n texlive-beamer-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.72svn73735
+Version:        %{texlive_version}.%{texlive_noarch}.3.77svn78101
 Release:        0
 Summary:        Documentation for texlive-beamer
 License:        LPPL-1.0
@@ -1636,7 +1636,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(helvet.sty)
 Requires:       tex(tabularx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source20:       beamer-fuberlin.tar.xz
 Source21:       beamer-fuberlin.doc.tar.xz
 
@@ -1694,8 +1694,101 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beamer-fuberlin/beamerouterthemeBerlinFU.sty
 %{_texmfdistdir}/tex/latex/beamer-fuberlin/beamerthemeBerlinFU.sty
 
+%package -n texlive-beamer-reveal
+Version:        %{texlive_version}.%{texlive_noarch}.1.09svn77675
+Release:        0
+License:        LPPL-1.0
+Summary:        Convert beamer slides to reveal.js HTML presentations
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-beamer-reveal-doc >= %{texlive_version}
+Provides:       tex(beamer-reveal.sty)
+Requires:       tex(currfile.sty)
+Requires:       tex(expl3.sty)
+Requires:       tex(l3keys2e.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source22:       beamer-reveal.tar.xz
+Source23:       beamer-reveal.doc.tar.xz
+
+%description -n texlive-beamer-reveal
+Beamer is a very powerful and convenient document class to
+create presentations and slides. However, integrating
+multimedia in it, is still a bit of a faff. The (limited)
+functionality heavily relies on the availability of acroread.
+This package allows you to convert your beamer presentation to
+the reveal.js framework, rendering your presentation as an HTML
+website in your browser. This allows for easy incorporation of
+videos, audio fragments, iframe chunks, images and LaTeX
+animations.
+
+%package -n texlive-beamer-reveal-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.09svn77675
+Release:        0
+Summary:        Documentation for texlive-beamer-reveal
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-beamer-reveal and texlive-alldocumentation)
+
+%description -n texlive-beamer-reveal-doc
+This package includes the documentation for texlive-beamer-reveal
+
+%post -n texlive-beamer-reveal
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-beamer-reveal
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-beamer-reveal
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-beamer-reveal-doc
+%{_texmfdistdir}/doc/latex/beamer-reveal/Media/beamer-reveal-AnimatedPendulum.gif
+%{_texmfdistdir}/doc/latex/beamer-reveal/Media/beamer-reveal-AudioSample.ogg
+%{_texmfdistdir}/doc/latex/beamer-reveal/Media/beamer-reveal-PCB.html
+%{_texmfdistdir}/doc/latex/beamer-reveal/Media/beamer-reveal-WiresTp.png
+%{_texmfdistdir}/doc/latex/beamer-reveal/Media/beamer-reveal-testvideo.mp4
+%{_texmfdistdir}/doc/latex/beamer-reveal/README.md
+%{_texmfdistdir}/doc/latex/beamer-reveal/beamer-reveal-example.pdf
+%{_texmfdistdir}/doc/latex/beamer-reveal/beamer-reveal-example.tex
+%{_texmfdistdir}/doc/latex/beamer-reveal/beamer-reveal.pdf
+
+%files -n texlive-beamer-reveal
+%{_texmfdistdir}/tex/latex/beamer-reveal/beamer-reveal.sty
+
 %package -n texlive-beamer-rl
-Version:        %{texlive_version}.%{texlive_noarch}.1.9svn69254
+Version:        %{texlive_version}.%{texlive_noarch}.2svn76587
 Release:        0
 License:        LPPL-1.0
 Summary:        Right to left presentation with beamer and babel
@@ -1729,9 +1822,9 @@ Requires:       tex(beamer.cls)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(pgfpages.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source22:       beamer-rl.tar.xz
-Source23:       beamer-rl.doc.tar.xz
+# from 20260301
+Source24:       beamer-rl.tar.xz
+Source25:       beamer-rl.doc.tar.xz
 
 %description -n texlive-beamer-rl
 This class provides patches of some beamer templates and
@@ -1739,7 +1832,7 @@ commands for presentation from right to left. It requires Babel
 with the LuaTeX engine.
 
 %package -n texlive-beamer-rl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.9svn69254
+Version:        %{texlive_version}.%{texlive_noarch}.2svn76587
 Release:        0
 Summary:        Documentation for texlive-beamer-rl
 License:        LPPL-1.0
@@ -1784,6 +1877,83 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/beamer-rl/translator-numbers-dictionary-Arabic.dict
 %{_texmfdistdir}/tex/lualatex/beamer-rl/translator-theorem-dictionary-Arabic.dict
 
+%package -n texlive-beamer-theme-albi
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn74899
+Release:        0
+License:        LPPL-1.0
+Summary:        The Albi beamer theme
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-beamer-theme-albi-doc >= %{texlive_version}
+Provides:       tex(beamerthemeAlbi.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(pgfopts.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source26:       beamer-theme-albi.tar.xz
+Source27:       beamer-theme-albi.doc.tar.xz
+
+%description -n texlive-beamer-theme-albi
+The Albi beamer theme features a colorful triangular design.
+
+%package -n texlive-beamer-theme-albi-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn74899
+Release:        0
+Summary:        Documentation for texlive-beamer-theme-albi
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-beamer-theme-albi and texlive-alldocumentation)
+
+%description -n texlive-beamer-theme-albi-doc
+This package includes the documentation for texlive-beamer-theme-albi
+
+%post -n texlive-beamer-theme-albi
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-beamer-theme-albi
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-beamer-theme-albi
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-beamer-theme-albi-doc
+%{_texmfdistdir}/doc/latex/beamer-theme-albi/README.md
+%{_texmfdistdir}/doc/latex/beamer-theme-albi/beamer-theme-albi-doc.pdf
+%{_texmfdistdir}/doc/latex/beamer-theme-albi/beamer-theme-albi-doc.tex
+
+%files -n texlive-beamer-theme-albi
+%{_texmfdistdir}/tex/latex/beamer-theme-albi/beamerthemeAlbi.sty
+
 %package -n texlive-beamer-tut-pt
 Version:        %{texlive_version}.%{texlive_noarch}.svn15878
 Release:        0
@@ -1812,8 +1982,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source24:       beamer-tut-pt.doc.tar.xz
+# from 20260301
+Source28:       beamer-tut-pt.doc.tar.xz
 
 %description -n texlive-beamer-tut-pt
 The beamer-tut-pt package
@@ -1865,6 +2035,83 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamer-tut-pt/tutorialbeamer.tex
 %{_texmfdistdir}/doc/latex/beamer-tut-pt/ufpellogo.jpg
 
+%package -n texlive-beamer-varbox
+Version:        %{texlive_version}.%{texlive_noarch}.svn76296
+Release:        0
+License:        LPPL-1.0
+Summary:        Provide beamer boxes with variable size corners
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-beamer-varbox-doc >= %{texlive_version}
+Provides:       tex(beamer-varbox.sty)
+Requires:       tex(xkeyval.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source29:       beamer-varbox.tar.xz
+Source30:       beamer-varbox.doc.tar.xz
+
+%description -n texlive-beamer-varbox
+This package provides beamer boxes with variable size corners.
+It scales the corner arc of a beamer block relative to the
+standard rounded predefined option provided by the beamer
+class. The package depends on beamer and xkeyval.
+
+%package -n texlive-beamer-varbox-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn76296
+Release:        0
+Summary:        Documentation for texlive-beamer-varbox
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-beamer-varbox and texlive-alldocumentation)
+
+%description -n texlive-beamer-varbox-doc
+This package includes the documentation for texlive-beamer-varbox
+
+%post -n texlive-beamer-varbox
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-beamer-varbox
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-beamer-varbox
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-beamer-varbox-doc
+%{_texmfdistdir}/doc/latex/beamer-varbox/README.md
+%{_texmfdistdir}/doc/latex/beamer-varbox/beamer-varbox.pdf
+
+%files -n texlive-beamer-varbox
+%{_texmfdistdir}/tex/latex/beamer-varbox/beamer-varbox.sty
+
 %package -n texlive-beamer-verona
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn39180
 Release:        0
@@ -1897,9 +2144,9 @@ Provides:       tex(beamerthemeVerona.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source25:       beamer-verona.tar.xz
-Source26:       beamer-verona.doc.tar.xz
+# from 20260301
+Source31:       beamer-verona.tar.xz
+Source32:       beamer-verona.doc.tar.xz
 
 %description -n texlive-beamer-verona
 This package provides the 'Verona' theme for the beamer class
@@ -1990,9 +2237,9 @@ Requires:       tex(xkeyval.sty)
 Requires:       tex(xltxtra.sty)
 Requires:       tex(xunicode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source27:       beamer2thesis.tar.xz
-Source28:       beamer2thesis.doc.tar.xz
+# from 20260301
+Source33:       beamer2thesis.tar.xz
+Source34:       beamer2thesis.doc.tar.xz
 
 %description -n texlive-beamer2thesis
 The package specifies a beamer theme for presenting a thesis.
@@ -2081,9 +2328,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source29:       beamerappendixnote.tar.xz
-Source30:       beamerappendixnote.doc.tar.xz
+# from 20260301
+Source35:       beamerappendixnote.tar.xz
+Source36:       beamerappendixnote.doc.tar.xz
 
 %description -n texlive-beamerappendixnote
 This package introduces the \appxnote command, which puts the
@@ -2167,9 +2414,9 @@ Requires:       tex(cprotect.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source31:       beameraudience.tar.xz
-Source32:       beameraudience.doc.tar.xz
+# from 20260301
+Source37:       beameraudience.tar.xz
+Source38:       beameraudience.doc.tar.xz
 
 %description -n texlive-beameraudience
 The Beamer Audience package provides macros to easily assemble
@@ -2245,9 +2492,9 @@ Provides:       tex(beamerouterthemesidebarwithminiframes.sty)
 Provides:       tex(beamerouterthemesplitwithminiframes.sty)
 Provides:       tex(beamerouterthemetwolines.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source33:       beamerauxtheme.tar.xz
-Source34:       beamerauxtheme.doc.tar.xz
+# from 20260301
+Source39:       beamerauxtheme.tar.xz
+Source40:       beamerauxtheme.doc.tar.xz
 
 %description -n texlive-beamerauxtheme
 This bundle provides a collection of inner and outer themes as
@@ -2335,9 +2582,9 @@ Provides:       tex(beamercolorthemeowl.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source35:       beamercolorthemeowl.tar.xz
-Source36:       beamercolorthemeowl.doc.tar.xz
+# from 20260301
+Source41:       beamercolorthemeowl.tar.xz
+Source42:       beamercolorthemeowl.doc.tar.xz
 
 %description -n texlive-beamercolorthemeowl
 This package provides a flexible dark or light colour theme
@@ -2434,9 +2681,9 @@ Provides:       tex(beamercolorthemecormorant.sty)
 Provides:       tex(beamercolorthemefrigatebird.sty)
 Provides:       tex(beamercolorthememagpie.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source37:       beamerdarkthemes.tar.xz
-Source38:       beamerdarkthemes.doc.tar.xz
+# from 20260301
+Source43:       beamerdarkthemes.tar.xz
+Source44:       beamerdarkthemes.doc.tar.xz
 
 %description -n texlive-beamerdarkthemes
 A package with three dark color themes for beamer, designed for
@@ -2504,7 +2751,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beamerdarkthemes/beamercolorthememagpie.sty
 
 %package -n texlive-beamerposter
-Version:        %{texlive_version}.%{texlive_noarch}.1.13svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.13svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Extend beamer and a0poster for custom sized posters
@@ -2543,9 +2790,9 @@ Requires:       tex(tangocolors.sty)
 Requires:       tex(type1cm.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source39:       beamerposter.tar.xz
-Source40:       beamerposter.doc.tar.xz
+# from 20260301
+Source45:       beamerposter.tar.xz
+Source46:       beamerposter.doc.tar.xz
 
 %description -n texlive-beamerposter
 The package enables the user to use beamer style operations on
@@ -2562,7 +2809,7 @@ wide-screen (i.e. 1.78 aspect ratio); orientation may be
 portrait or landscape; a 'debug mode' is provided.
 
 %package -n texlive-beamerposter-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.13svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.13svn77682
 Release:        0
 Summary:        Documentation for texlive-beamerposter
 License:        LPPL-1.0
@@ -2636,9 +2883,9 @@ Suggests:       texlive-beamersubframe-doc >= %{texlive_version}
 Provides:       tex(beamersubframe.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source41:       beamersubframe.tar.xz
-Source42:       beamersubframe.doc.tar.xz
+# from 20260301
+Source47:       beamersubframe.tar.xz
+Source48:       beamersubframe.doc.tar.xz
 
 %description -n texlive-beamersubframe
 The package provides a method to reorder frames in the PDF file
@@ -2729,9 +2976,9 @@ Requires:       tex(xkvltxp.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source43:       beamerswitch.tar.xz
-Source44:       beamerswitch.doc.tar.xz
+# from 20260301
+Source49:       beamerswitch.tar.xz
+Source50:       beamerswitch.doc.tar.xz
 
 %description -n texlive-beamerswitch
 This class is a wrapper around the beamer class to make it
@@ -2786,7 +3033,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beamerswitch/beamerswitch.cls
 
 %package -n texlive-beamertheme-arguelles
-Version:        %{texlive_version}.%{texlive_noarch}.2.4.2svn71485
+Version:        %{texlive_version}.%{texlive_noarch}.2.5.0svn76524
 Release:        0
 License:        LPPL-1.0
 Summary:        Simple, typographic beamer theme
@@ -2825,6 +3072,8 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(eulervm.sty)
 Requires:       tex(fontawesome5.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(ifluatex.sty)
+Requires:       tex(ifxetex.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(mathalpha.sty)
 Requires:       tex(microtype.sty)
@@ -2833,9 +3082,9 @@ Requires:       tex(parskip.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source45:       beamertheme-arguelles.tar.xz
-Source46:       beamertheme-arguelles.doc.tar.xz
+# from 20260301
+Source51:       beamertheme-arguelles.tar.xz
+Source52:       beamertheme-arguelles.doc.tar.xz
 
 %description -n texlive-beamertheme-arguelles
 Arguelles is a beamer theme that helps you create beautiful
@@ -2847,7 +3096,7 @@ your content. This is brought to life by Alegreya, one of the
 Typographique Internationale (2011).
 
 %package -n texlive-beamertheme-arguelles-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.4.2svn71485
+Version:        %{texlive_version}.%{texlive_noarch}.2.5.0svn76524
 Release:        0
 Summary:        Documentation for texlive-beamertheme-arguelles
 License:        LPPL-1.0
@@ -2889,6 +3138,278 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beamertheme-arguelles/beamerinnerthemeArguelles.sty
 %{_texmfdistdir}/tex/latex/beamertheme-arguelles/beamerouterthemeArguelles.sty
 %{_texmfdistdir}/tex/latex/beamertheme-arguelles/beamerthemeArguelles.sty
+
+%package -n texlive-beamertheme-bilkent-econ
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn76561
+Release:        0
+License:        LPPL-1.0
+Summary:        LaTeX Beamer theme for the Department of Economics at Bilkent University
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-beamertheme-bilkent-econ-doc >= %{texlive_version}
+Provides:       tex(beamertheme-bilkent-econ.sty)
+Requires:       tex(array.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(xcolor.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source53:       beamertheme-bilkent-econ.tar.xz
+Source54:       beamertheme-bilkent-econ.doc.tar.xz
+
+%description -n texlive-beamertheme-bilkent-econ
+This is a LaTeX Beamer theme designed for the Department of
+Economics at Bilkent University. It provides a clean,
+professional presentation style with department-specific
+colors, custom title pages, and consistent slide formatting for
+lectures, seminars, and research talks.
+
+%package -n texlive-beamertheme-bilkent-econ-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn76561
+Release:        0
+Summary:        Documentation for texlive-beamertheme-bilkent-econ
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-beamertheme-bilkent-econ and texlive-alldocumentation)
+
+%description -n texlive-beamertheme-bilkent-econ-doc
+This package includes the documentation for texlive-beamertheme-bilkent-econ
+
+%post -n texlive-beamertheme-bilkent-econ
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-beamertheme-bilkent-econ
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-beamertheme-bilkent-econ
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-beamertheme-bilkent-econ-doc
+%{_texmfdistdir}/doc/latex/beamertheme-bilkent-econ/BilkentEconTemplateGuide.pdf
+%{_texmfdistdir}/doc/latex/beamertheme-bilkent-econ/BilkentEconTemplateGuide.tex
+%{_texmfdistdir}/doc/latex/beamertheme-bilkent-econ/LICENSE
+%{_texmfdistdir}/doc/latex/beamertheme-bilkent-econ/README
+%{_texmfdistdir}/doc/latex/beamertheme-bilkent-econ/beamertheme-bilkent-econ-example.pdf
+%{_texmfdistdir}/doc/latex/beamertheme-bilkent-econ/beamertheme-bilkent-econ-example.tex
+
+%files -n texlive-beamertheme-bilkent-econ
+%{_texmfdistdir}/tex/latex/beamertheme-bilkent-econ/beamertheme-bilkent-econ.sty
+%{_texmfdistdir}/tex/latex/beamertheme-bilkent-econ/bilkent_logo.png
+
+%package -n texlive-beamertheme-cleaneasy
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn74971
+Release:        0
+License:        SUSE-Public-Domain
+Summary:        A clean and minimalist Beamer theme
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-beamertheme-cleaneasy-doc >= %{texlive_version}
+Provides:       tex(beamercolorthemeCleanEasy.sty)
+Provides:       tex(beamerfontthemeCleanEasy.sty)
+Provides:       tex(beamerinnerthemeCleanEasy.sty)
+Provides:       tex(beamerouterthemeCleanEasy.sty)
+Provides:       tex(beamerthemeCleanEasy.sty)
+Requires:       tex(cmbright.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source55:       beamertheme-cleaneasy.tar.xz
+Source56:       beamertheme-cleaneasy.doc.tar.xz
+
+%description -n texlive-beamertheme-cleaneasy
+This package provides a clean and minimalist Beamer theme
+designed for professional and academic presentations. It
+separates style components into modular .sty files for
+flexibility and clarity.
+
+%package -n texlive-beamertheme-cleaneasy-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn74971
+Release:        0
+Summary:        Documentation for texlive-beamertheme-cleaneasy
+License:        SUSE-Public-Domain
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-beamertheme-cleaneasy and texlive-alldocumentation)
+
+%description -n texlive-beamertheme-cleaneasy-doc
+This package includes the documentation for texlive-beamertheme-cleaneasy
+
+%post -n texlive-beamertheme-cleaneasy
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-beamertheme-cleaneasy
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-beamertheme-cleaneasy
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-beamertheme-cleaneasy-doc
+%{_texmfdistdir}/doc/latex/beamertheme-cleaneasy/CleanEasy.pdf
+%{_texmfdistdir}/doc/latex/beamertheme-cleaneasy/CleanEasy.tex
+%{_texmfdistdir}/doc/latex/beamertheme-cleaneasy/LICENSE
+%{_texmfdistdir}/doc/latex/beamertheme-cleaneasy/README.md
+%{_texmfdistdir}/doc/latex/beamertheme-cleaneasy/configs/configs.tex
+%{_texmfdistdir}/doc/latex/beamertheme-cleaneasy/configs/title_page.tex
+%{_texmfdistdir}/doc/latex/beamertheme-cleaneasy/reference.bib
+
+%files -n texlive-beamertheme-cleaneasy
+%{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/beamercolorthemeCleanEasy.sty
+%{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/beamerfontthemeCleanEasy.sty
+%{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/beamerinnerthemeCleanEasy.sty
+%{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/beamerouterthemeCleanEasy.sty
+%{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/beamerthemeCleanEasy.sty
+%{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/logos/CleanEasy-logo1.png
+%{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/logos/CleanEasy-logo2.png
+%{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/logos/CleanEasy-logo3.png
+%{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/logos/CleanEasy-logo4.png
+
+%package -n texlive-beamertheme-csh
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76967
+Release:        0
+License:        LPPL-1.0
+Summary:        A Beamer presentation theme for the Complexity Science Hub Vienna
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-beamertheme-csh-doc >= %{texlive_version}
+Provides:       tex(beamercolorthemecsh.sty)
+Provides:       tex(beamerinnerthemecsh.sty)
+Provides:       tex(beamerouterthemecsh.sty)
+Provides:       tex(beamerthemecsh.sty)
+Requires:       tex(lastpage.sty)
+Requires:       tex(qrcode.sty)
+Requires:       tex(tgheros.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(totcount.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source57:       beamertheme-csh.tar.xz
+Source58:       beamertheme-csh.doc.tar.xz
+
+%description -n texlive-beamertheme-csh
+This package provides a Beamer theme following the corporate
+design of the Complexity Science Hub (CSH) Vienna. It includes
+a title page, automatic section slides, source citation
+commands, and a closing slide with QR code. The theme uses TeX
+Gyre Heros as the default font.
+
+%package -n texlive-beamertheme-csh-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76967
+Release:        0
+Summary:        Documentation for texlive-beamertheme-csh
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-beamertheme-csh and texlive-alldocumentation)
+
+%description -n texlive-beamertheme-csh-doc
+This package includes the documentation for texlive-beamertheme-csh
+
+%post -n texlive-beamertheme-csh
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-beamertheme-csh
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-beamertheme-csh
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-beamertheme-csh-doc
+%{_texmfdistdir}/doc/latex/beamertheme-csh/LICENSE
+%{_texmfdistdir}/doc/latex/beamertheme-csh/README.md
+%{_texmfdistdir}/doc/latex/beamertheme-csh/example-csh.pdf
+%{_texmfdistdir}/doc/latex/beamertheme-csh/example-csh.tex
+
+%files -n texlive-beamertheme-csh
+%{_texmfdistdir}/tex/latex/beamertheme-csh/beamercolorthemecsh.sty
+%{_texmfdistdir}/tex/latex/beamertheme-csh/beamerinnerthemecsh.sty
+%{_texmfdistdir}/tex/latex/beamertheme-csh/beamerouterthemecsh.sty
+%{_texmfdistdir}/tex/latex/beamertheme-csh/beamerthemecsh.sty
+%{_texmfdistdir}/tex/latex/beamertheme-csh/csh-logo-star-crop.pdf
+%{_texmfdistdir}/tex/latex/beamertheme-csh/csh-logo-web.pdf
 
 %package -n texlive-beamertheme-cuerna
 Version:        %{texlive_version}.%{texlive_noarch}.svn42161
@@ -2932,9 +3453,9 @@ Requires:       tex(textpos.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source47:       beamertheme-cuerna.tar.xz
-Source48:       beamertheme-cuerna.doc.tar.xz
+# from 20260301
+Source59:       beamertheme-cuerna.tar.xz
+Source60:       beamertheme-cuerna.doc.tar.xz
 
 %description -n texlive-beamertheme-cuerna
 The package contains a theme for Beamer which is referenced as
@@ -3025,9 +3546,9 @@ Provides:       tex(beamerfontthemeDetlevCM.sty)
 Provides:       tex(beamerouterthemeDetlevCM.sty)
 Provides:       tex(beamerthemeDetlevCM.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source49:       beamertheme-detlevcm.tar.xz
-Source50:       beamertheme-detlevcm.doc.tar.xz
+# from 20260301
+Source61:       beamertheme-detlevcm.tar.xz
+Source62:       beamertheme-detlevcm.doc.tar.xz
 
 %description -n texlive-beamertheme-detlevcm
 The bundle provides a simple theme that has been used in the
@@ -3077,6 +3598,108 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beamertheme-detlevcm/beamerouterthemeDetlevCM.sty
 %{_texmfdistdir}/tex/latex/beamertheme-detlevcm/beamerthemeDetlevCM.sty
 
+%package -n texlive-beamertheme-durham
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn78101
+Release:        0
+License:        LPPL-1.0
+Summary:        A content-first Beamer theme for teaching, research, and long-form academic presentations
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-beamertheme-durham-doc >= %{texlive_version}
+Provides:       tex(beamerthemedurham.sty)
+Requires:       tex(FiraMono.sty)
+Requires:       tex(FiraSans.sty)
+Requires:       tex(appendixnumberbeamer.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source63:       beamertheme-durham.tar.xz
+Source64:       beamertheme-durham.doc.tar.xz
+
+%description -n texlive-beamertheme-durham
+This package provides the Durham Beamer Theme, a content-first
+presentation theme for LaTeX Beamer designed for teaching,
+research, and long-form academic presentations. The theme
+emphasizes structural clarity, pacing awareness, and layout
+stability under dense textual and mathematical content. It is
+implemented entirely from first principles and not derived from
+any existing Beamer theme. Conceptual inspiration from
+established themes such as Metropolis is acknowledged; no
+external code is reused. The color palette is inspired by the
+visual identity of Durham University. This package is an
+independent academic contribution and not an official or
+endorsed Durham University template. The package includes a
+modular theme implementation, a demo document with compiled
+PDF, and a user manual.
+
+%package -n texlive-beamertheme-durham-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn78101
+Release:        0
+Summary:        Documentation for texlive-beamertheme-durham
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-beamertheme-durham and texlive-alldocumentation)
+
+%description -n texlive-beamertheme-durham-doc
+This package includes the documentation for texlive-beamertheme-durham
+
+%post -n texlive-beamertheme-durham
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-beamertheme-durham
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-beamertheme-durham
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-beamertheme-durham-doc
+%{_texmfdistdir}/doc/latex/beamertheme-durham/CHANGELOG.md
+%{_texmfdistdir}/doc/latex/beamertheme-durham/LICENSE.txt
+%{_texmfdistdir}/doc/latex/beamertheme-durham/README.md
+%{_texmfdistdir}/doc/latex/beamertheme-durham/accessibility.png
+%{_texmfdistdir}/doc/latex/beamertheme-durham/durham-demo.pdf
+%{_texmfdistdir}/doc/latex/beamertheme-durham/durham-demo.tex
+%{_texmfdistdir}/doc/latex/beamertheme-durham/durham-manual.pdf
+%{_texmfdistdir}/doc/latex/beamertheme-durham/durham-manual.tex
+%{_texmfdistdir}/doc/latex/beamertheme-durham/plain.png
+%{_texmfdistdir}/doc/latex/beamertheme-durham/plain_accessibility.png
+%{_texmfdistdir}/doc/latex/beamertheme-durham/plain_accessibility_invert.png
+
+%files -n texlive-beamertheme-durham
+%{_texmfdistdir}/tex/latex/beamertheme-durham/beamerthemedurham.sty
+
 %package -n texlive-beamertheme-epyt
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn41404
 Release:        0
@@ -3109,9 +3732,9 @@ Provides:       tex(beamerthemeepyt.sty)
 Requires:       tex(arev.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source51:       beamertheme-epyt.tar.xz
-Source52:       beamertheme-epyt.doc.tar.xz
+# from 20260301
+Source65:       beamertheme-epyt.tar.xz
+Source66:       beamertheme-epyt.doc.tar.xz
 
 %description -n texlive-beamertheme-epyt
 This package provides a simple but nice theme for Beamer, with
@@ -3202,9 +3825,9 @@ Requires:       tex(firamath-otf.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source53:       beamertheme-focus.tar.xz
-Source54:       beamertheme-focus.doc.tar.xz
+# from 20260301
+Source67:       beamertheme-focus.tar.xz
+Source68:       beamertheme-focus.doc.tar.xz
 
 %description -n texlive-beamertheme-focus
 A presentation theme for LaTeX Beamer that aims at a clean and
@@ -3264,10 +3887,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beamertheme-focus/beamerthemefocus.sty
 
 %package -n texlive-beamertheme-gotham
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.1.csvn73931
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.4.asvn77201
 Release:        0
 License:        LPPL-1.0
-Summary:        A versatile and extendable beamer theme based on Metropolis
+Summary:        A modern, minimal-ish, versatile and extendable yet robust theme for Beamer
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -3305,21 +3928,21 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xfp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source55:       beamertheme-gotham.tar.xz
-Source56:       beamertheme-gotham.doc.tar.xz
+# from 20260301
+Source69:       beamertheme-gotham.tar.xz
+Source70:       beamertheme-gotham.doc.tar.xz
 
 %description -n texlive-beamertheme-gotham
-This package provides a modern, minimal-ish, versatile and
-extendable yet robust Beamer theme using LaTeX3 with some
-gathered or borrowed lines of code. It uses the l3build system
-to both build and verify (Test-Driven Development) the
+This package provides a modern, minimal-ish, versatile, LaTeX3
+and extendable yet robust Beamer theme with some lines of code
+gathered or borrowed from other themes. It uses the l3build
+system to both build and verify (Test-Driven Development) the
 delivered code. "Gotham" tries to bring higher flexibility
 thanks to LaTeX3 implementation on top of the good-looking
 Metropolis theme.
 
 %package -n texlive-beamertheme-gotham-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.1.csvn73931
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.4.asvn77201
 Release:        0
 Summary:        Documentation for texlive-beamertheme-gotham
 License:        LPPL-1.0
@@ -3351,7 +3974,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamertheme-gotham/MANIFEST.md
 %{_texmfdistdir}/doc/latex/beamertheme-gotham/README.md
 %{_texmfdistdir}/doc/latex/beamertheme-gotham/ctan.ann
-%{_texmfdistdir}/doc/latex/beamertheme-gotham/ctan.note
 %{_texmfdistdir}/doc/latex/beamertheme-gotham/gotham-blueprint.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-gotham/gotham-dev-impl.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-gotham/gotham-dev-impl.tex
@@ -3411,9 +4033,9 @@ Suggests:       texlive-beamertheme-light-doc >= %{texlive_version}
 Provides:       tex(beamertheme-light.sty)
 Provides:       tex(beamerthemelight.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source57:       beamertheme-light.tar.xz
-Source58:       beamertheme-light.doc.tar.xz
+# from 20260301
+Source71:       beamertheme-light.tar.xz
+Source72:       beamertheme-light.doc.tar.xz
 
 %description -n texlive-beamertheme-light
 The LaTeX package beamertheme-light provides an aesthetic and
@@ -3501,9 +4123,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source59:       beamertheme-metropolis.tar.xz
-Source60:       beamertheme-metropolis.doc.tar.xz
+# from 20260301
+Source73:       beamertheme-metropolis.tar.xz
+Source74:       beamertheme-metropolis.doc.tar.xz
 
 %description -n texlive-beamertheme-metropolis
 The package provides a simple, modern Beamer theme for anyone
@@ -3590,9 +4212,9 @@ Requires:       tex(regexpatch.sty)
 Requires:       tex(relsize.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source61:       beamertheme-mirage.tar.xz
-Source62:       beamertheme-mirage.doc.tar.xz
+# from 20260301
+Source75:       beamertheme-mirage.tar.xz
+Source76:       beamertheme-mirage.doc.tar.xz
 
 %description -n texlive-beamertheme-mirage
 A beamer theme inspired by the album art of Zhou Shen's song
@@ -3697,9 +4319,9 @@ Requires:       tex(xltxtra.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source63:       beamertheme-npbt.tar.xz
-Source64:       beamertheme-npbt.doc.tar.xz
+# from 20260301
+Source77:       beamertheme-npbt.tar.xz
+Source78:       beamertheme-npbt.doc.tar.xz
 
 %description -n texlive-beamertheme-npbt
 "NPBT" stands for "Norman's Pandoc Beamer Themes". Currently
@@ -3799,9 +4421,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-beamertheme-phnompenh-doc >= %{texlive_version}
 Provides:       tex(beamerthemePhnomPenh.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source65:       beamertheme-phnompenh.tar.xz
-Source66:       beamertheme-phnompenh.doc.tar.xz
+# from 20260301
+Source79:       beamertheme-phnompenh.tar.xz
+Source80:       beamertheme-phnompenh.doc.tar.xz
 
 %description -n texlive-beamertheme-phnompenh
 The package provides a simple theme, similar to some others,
@@ -3887,9 +4509,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(noto.sty)
 Requires:       tex(silence.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source67:       beamertheme-pure-minimalistic.tar.xz
-Source68:       beamertheme-pure-minimalistic.doc.tar.xz
+# from 20260301
+Source81:       beamertheme-pure-minimalistic.tar.xz
+Source82:       beamertheme-pure-minimalistic.doc.tar.xz
 
 %description -n texlive-beamertheme-pure-minimalistic
 The main features of this minimalistic Beamer theme are: Easily
@@ -3980,9 +4602,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-beamertheme-rainbow-doc >= %{texlive_version}
 Provides:       tex(beamercolorthemerainbow.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source69:       beamertheme-rainbow.tar.xz
-Source70:       beamertheme-rainbow.doc.tar.xz
+# from 20260301
+Source83:       beamertheme-rainbow.tar.xz
+Source84:       beamertheme-rainbow.doc.tar.xz
 
 %description -n texlive-beamertheme-rainbow
 This package provides a beamer colour theme which alternates
@@ -4065,9 +4687,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(opensans.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source71:       beamertheme-saintpetersburg.tar.xz
-Source72:       beamertheme-saintpetersburg.doc.tar.xz
+# from 20260301
+Source85:       beamertheme-saintpetersburg.tar.xz
+Source86:       beamertheme-saintpetersburg.doc.tar.xz
 
 %description -n texlive-beamertheme-saintpetersburg
 This minimalistic beamer theme incorporates Saint Petersburg
@@ -4155,9 +4777,9 @@ Provides:       tex(beamerfontthemeSimpleDarkBlue.sty)
 Provides:       tex(beamerinnerthemeSimpleDarkBlue.sty)
 Provides:       tex(beamerthemeSimpleDarkBlue.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source73:       beamertheme-simpledarkblue.tar.xz
-Source74:       beamertheme-simpledarkblue.doc.tar.xz
+# from 20260301
+Source87:       beamertheme-simpledarkblue.tar.xz
+Source88:       beamertheme-simpledarkblue.doc.tar.xz
 
 %description -n texlive-beamertheme-simpledarkblue
 This package provides a simple and clear LaTeX template for
@@ -4241,9 +4863,9 @@ Provides:       tex(beamerfontthemeSimplePlus.sty)
 Provides:       tex(beamerinnerthemeSimplePlus.sty)
 Provides:       tex(beamerthemeSimplePlus.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source75:       beamertheme-simpleplus.tar.xz
-Source76:       beamertheme-simpleplus.doc.tar.xz
+# from 20260301
+Source89:       beamertheme-simpleplus.tar.xz
+Source90:       beamertheme-simpleplus.doc.tar.xz
 
 %description -n texlive-beamertheme-simpleplus
 This package provides a simple and clean theme for LaTeX
@@ -4292,11 +4914,101 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beamertheme-simpleplus/beamerinnerthemeSimplePlus.sty
 %{_texmfdistdir}/tex/latex/beamertheme-simpleplus/beamerthemeSimplePlus.sty
 
-%package -n texlive-beamertheme-tcolorbox
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn73705
+%package -n texlive-beamertheme-spectrum
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn77770
 Release:        0
 License:        LPPL-1.0
-Summary:        A beamer inner theme which reproduces standard beamer blocks using tcolorboxes
+Summary:        A clean beamer/ltx-talk theme with a big title graphic
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires:       texlive-beamer >= %{texlive_version}
+#!BuildIgnore: texlive-beamer
+Requires:       texlive-pgf >= %{texlive_version}
+#!BuildIgnore: texlive-pgf
+Requires:       texlive-tools >= %{texlive_version}
+#!BuildIgnore: texlive-tools
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-beamertheme-spectrum-doc >= %{texlive_version}
+Provides:       tex(beamerthemespectrum.sty)
+Provides:       tex(talkthemespectrum.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source91:       beamertheme-spectrum.tar.xz
+Source92:       beamertheme-spectrum.doc.tar.xz
+
+%description -n texlive-beamertheme-spectrum
+This package provides a clean beamer/ltx-talk theme with a big
+title graphic. The theme is deliberately fairly clean and
+simple in order to not distract too much from the content. The
+one vanity are the big graphics on the title, section, and
+standout slides.
+
+%package -n texlive-beamertheme-spectrum-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn77770
+Release:        0
+Summary:        Documentation for texlive-beamertheme-spectrum
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-beamertheme-spectrum and texlive-alldocumentation)
+
+%description -n texlive-beamertheme-spectrum-doc
+This package includes the documentation for texlive-beamertheme-spectrum
+
+%post -n texlive-beamertheme-spectrum
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-beamertheme-spectrum
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-beamertheme-spectrum
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-beamertheme-spectrum-doc
+%{_texmfdistdir}/doc/latex/beamertheme-spectrum/DEPENDS.txt
+%{_texmfdistdir}/doc/latex/beamertheme-spectrum/README.md
+%{_texmfdistdir}/doc/latex/beamertheme-spectrum/beamertheme-spectrum-doc-settings.sty
+%{_texmfdistdir}/doc/latex/beamertheme-spectrum/beamertheme-spectrum-doc.pdf
+%{_texmfdistdir}/doc/latex/beamertheme-spectrum/beamertheme-spectrum-doc.tex
+
+%files -n texlive-beamertheme-spectrum
+%{_texmfdistdir}/tex/latex/beamertheme-spectrum/beamertheme-spectrum-bg.jpg
+%{_texmfdistdir}/tex/latex/beamertheme-spectrum/beamerthemespectrum.sty
+%{_texmfdistdir}/tex/latex/beamertheme-spectrum/talkthemespectrum.sty
+
+%package -n texlive-beamertheme-tcolorbox
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn77380
+Release:        0
+License:        LPPL-1.0
+Summary:        A beamer/ltx-talk inner theme to reproduce standard beamer blocks using tcolorboxes
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires:       texlive-beamer >= %{texlive_version}
@@ -4329,20 +5041,21 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-beamertheme-tcolorbox-doc >= %{texlive_version}
 Provides:       tex(beamerinnerthemetcolorbox.sty)
+Provides:       tex(talkthemetcolorbox.sty)
 Requires:       tex(tcolorbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source77:       beamertheme-tcolorbox.tar.xz
-Source78:       beamertheme-tcolorbox.doc.tar.xz
+# from 20260301
+Source93:       beamertheme-tcolorbox.tar.xz
+Source94:       beamertheme-tcolorbox.doc.tar.xz
 
 %description -n texlive-beamertheme-tcolorbox
-This package provides an inner theme for beamer which
-reproduces standard beamer blocks using tcolorboxes. The look
-and feel (rounded/sharp corners, shadows and colours) will
+This package provides an inner theme for beamer or ltx-talk
+which reproduces standard beamer blocks using tcolorboxes. The
+look and feel (rounded/sharp corners, shadows and colours) will
 automatically adapt to which other themes are loaded.
 
 %package -n texlive-beamertheme-tcolorbox-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn73705
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn77380
 Release:        0
 Summary:        Documentation for texlive-beamertheme-tcolorbox
 License:        LPPL-1.0
@@ -4379,6 +5092,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-tcolorbox
 %{_texmfdistdir}/tex/latex/beamertheme-tcolorbox/beamerinnerthemetcolorbox.sty
+%{_texmfdistdir}/tex/latex/beamertheme-tcolorbox/talkthemetcolorbox.sty
 
 %package -n texlive-beamertheme-trigon
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.7.0svn65985
@@ -4417,9 +5131,9 @@ Requires:       tex(pgfopts.sty)
 Requires:       tex(sourcesanspro.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source79:       beamertheme-trigon.tar.xz
-Source80:       beamertheme-trigon.doc.tar.xz
+# from 20260301
+Source95:       beamertheme-trigon.tar.xz
+Source96:       beamertheme-trigon.doc.tar.xz
 
 %description -n texlive-beamertheme-trigon
 This package provides a modern, elegant and versatile theme for
@@ -4517,9 +5231,9 @@ Suggests:       texlive-beamertheme-upenn-bc-doc >= %{texlive_version}
 Provides:       tex(beamercolorthemegoeagles.sty)
 Provides:       tex(beamercolorthemepenn.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source81:       beamertheme-upenn-bc.tar.xz
-Source82:       beamertheme-upenn-bc.doc.tar.xz
+# from 20260301
+Source97:       beamertheme-upenn-bc.tar.xz
+Source98:       beamertheme-upenn-bc.doc.tar.xz
 
 %description -n texlive-beamertheme-upenn-bc
 Beamer themes in the colors of the University of Pennsylvania,
@@ -4610,9 +5324,9 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(xfp.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source83:       beamerthemeamurmaple.tar.xz
-Source84:       beamerthemeamurmaple.doc.tar.xz
+# from 20260301
+Source99:       beamerthemeamurmaple.tar.xz
+Source100:      beamerthemeamurmaple.doc.tar.xz
 
 %description -n texlive-beamerthemeamurmaple
 This Beamer theme is a suitable theme for my use of Beamer in
@@ -4666,7 +5380,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beamerthemeamurmaple/beamerthemeAmurmaple.sty
 
 %package -n texlive-beamerthemecelestia
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn73370
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn78057
 Release:        0
 License:        LPPL-1.0
 Summary:        A modern and elegant Beamer theme
@@ -4694,27 +5408,39 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-beamerthemecelestia-doc >= %{texlive_version}
 Provides:       tex(beamerthemeCelestia.sty)
-Requires:       tex(arev.sty)
+Requires:       tex(XCharter.sty)
 Requires:       tex(babel.sty)
+Requires:       tex(caption.sty)
+Requires:       tex(courier.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
+Requires:       tex(helvet.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(inputenc.sty)
+Requires:       tex(inter.sty)
 Requires:       tex(kvoptions.sty)
+Requires:       tex(libertinust1math.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(mathpazo.sty)
+Requires:       tex(minted.sty)
 Requires:       tex(multicol.sty)
-Requires:       tex(roboto-mono.sty)
+Requires:       tex(newtxmath.sty)
+Requires:       tex(notomath.sty)
+Requires:       tex(plex-mono.sty)
+Requires:       tex(scalefnt.sty)
 Requires:       tex(silence.sty)
-Requires:       tex(sourcesanspro.sty)
-Requires:       tex(sourceserifpro.sty)
+Requires:       tex(stix2.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(tikz.sty)
+Requires:       tex(unicode-math.sty)
+Requires:       tex(xparse.sty)
+Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source85:       beamerthemecelestia.tar.xz
-Source86:       beamerthemecelestia.doc.tar.xz
+# from 20260301
+Source101:      beamerthemecelestia.tar.xz
+Source102:      beamerthemecelestia.doc.tar.xz
 
 %description -n texlive-beamerthemecelestia
 A modern and elegant Beamer theme designed for academic and
@@ -4731,14 +5457,14 @@ appeal, Celestia offers a clean and professional look for
 presentations.
 
 %package -n texlive-beamerthemecelestia-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn73370
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn78057
 Release:        0
 Summary:        Documentation for texlive-beamerthemecelestia
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Supplements:    (texlive-beamerthemecelestia and texlive-alldocumentation)
-Provides:       locale(texlive-beamerthemecelestia-doc:fr)
+Provides:       locale(texlive-beamerthemecelestia-doc:fr;en)
 
 %description -n texlive-beamerthemecelestia-doc
 This package includes the documentation for texlive-beamerthemecelestia
@@ -4761,15 +5487,27 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerthemecelestia-doc
-%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-fr.pdf
-%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-fr.tex
-%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia.pdf
-%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia.tex
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-academic.pdf
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-academic.tex
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-creative.pdf
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-creative.tex
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-default.pdf
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-default.tex
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-light.pdf
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-light.tex
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-simple.pdf
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-simple.tex
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-zen.pdf
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/Celestia-demo-zen.tex
 %{_texmfdistdir}/doc/latex/beamerthemecelestia/README.md
 %{_texmfdistdir}/doc/latex/beamerthemecelestia/beamerthemeCelestia-fr.pdf
 %{_texmfdistdir}/doc/latex/beamerthemecelestia/beamerthemeCelestia-fr.tex
 %{_texmfdistdir}/doc/latex/beamerthemecelestia/beamerthemeCelestia.pdf
 %{_texmfdistdir}/doc/latex/beamerthemecelestia/beamerthemeCelestia.tex
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/celestia-demo-en.pdf
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/celestia-demo-en.tex
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/celestia-demo-fr.pdf
+%{_texmfdistdir}/doc/latex/beamerthemecelestia/celestia-demo-fr.tex
 
 %files -n texlive-beamerthemecelestia
 %{_texmfdistdir}/tex/latex/beamerthemecelestia/beamerthemeCelestia.sty
@@ -4818,9 +5556,9 @@ Requires:       tex(multicol.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(varwidth.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source87:       beamerthemeconcrete.tar.xz
-Source88:       beamerthemeconcrete.doc.tar.xz
+# from 20260301
+Source103:      beamerthemeconcrete.tar.xz
+Source104:      beamerthemeconcrete.doc.tar.xz
 
 %description -n texlive-beamerthemeconcrete
 The concrete bundle provides a collection of flat beamer themes
@@ -4911,8 +5649,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(beamerthemeJLTree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source89:       beamerthemejltree.tar.xz
+# from 20260301
+Source105:      beamerthemejltree.tar.xz
 
 %description -n texlive-beamerthemejltree
 A theme for beamer presentations.
@@ -4974,9 +5712,9 @@ Requires:       tex(calculator.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source90:       beamerthemelalic.tar.xz
-Source91:       beamerthemelalic.doc.tar.xz
+# from 20260301
+Source106:      beamerthemelalic.tar.xz
+Source107:      beamerthemelalic.doc.tar.xz
 
 %description -n texlive-beamerthemelalic
 This package provides the beamer theme for LALIC (Laboratorio
@@ -5057,9 +5795,9 @@ Provides:       tex(beamerthemenirma.sty)
 Requires:       tex(beamerbasethemes.sty)
 Requires:       tex(pgf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source92:       beamerthemenirma.tar.xz
-Source93:       beamerthemenirma.doc.tar.xz
+# from 20260301
+Source108:      beamerthemenirma.tar.xz
+Source109:      beamerthemenirma.doc.tar.xz
 
 %description -n texlive-beamerthemenirma
 The package developed for academic purposes. The distribution
@@ -5134,9 +5872,9 @@ Provides:       tex(beamerfontthemeNord.sty)
 Provides:       tex(beamerthemeNord.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source94:       beamerthemenord.tar.xz
-Source95:       beamerthemenord.doc.tar.xz
+# from 20260301
+Source110:      beamerthemenord.tar.xz
+Source111:      beamerthemenord.doc.tar.xz
 
 %description -n texlive-beamerthemenord
 This package provides a simple beamer theme using the Nord
@@ -5194,7 +5932,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beamerthemenord/beamerthemeNord.sty
 
 %package -n texlive-beamertools
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73371
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn76639
 Release:        0
 License:        LPPL-1.0
 Summary:        A collection of programming tools for beamer
@@ -5223,9 +5961,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-beamertools-doc >= %{texlive_version}
 Provides:       tex(beamertools.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source96:       beamertools.tar.xz
-Source97:       beamertools.doc.tar.xz
+# from 20260301
+Source112:      beamertools.tar.xz
+Source113:      beamertools.doc.tar.xz
 
 %description -n texlive-beamertools
 This packages provides a collection of programming tools for
@@ -5234,7 +5972,7 @@ beamer. Currently, it provides the control sequence
 template.
 
 %package -n texlive-beamertools-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73371
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn76639
 Release:        0
 Summary:        Documentation for texlive-beamertools
 License:        LPPL-1.0
@@ -5301,9 +6039,9 @@ Provides:       tex(bearwear.sty)
 Requires:       tex(tikzlings-bears.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source98:       bearwear.tar.xz
-Source99:       bearwear.doc.tar.xz
+# from 20260301
+Source114:      bearwear.tar.xz
+Source115:      bearwear.doc.tar.xz
 
 %description -n texlive-bearwear
 The package offers tools to create shirts for TikZbears from
@@ -5353,7 +6091,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bearwear/bearwear.sty
 
 %package -n texlive-beaulivre
-Version:        %{texlive_version}.%{texlive_noarch}.svn70049
+Version:        %{texlive_version}.%{texlive_noarch}.svn78004
 Release:        0
 License:        LPPL-1.0
 Summary:        Write your books in a colorful way
@@ -5402,11 +6140,11 @@ Requires:       tex(regexpatch.sty)
 Requires:       tex(silence.sty)
 Requires:       tex(tikz-cd.sty)
 Requires:       tex(unicode-math.sty)
-Requires:       tex(wrapfig.sty)
+Requires:       tex(wrapfig2.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source100:      beaulivre.tar.xz
-Source101:      beaulivre.doc.tar.xz
+# from 20260301
+Source116:      beaulivre.tar.xz
+Source117:      beaulivre.doc.tar.xz
 
 %description -n texlive-beaulivre
 This package provides a LaTeX class for typesetting books with
@@ -5420,7 +6158,7 @@ on colorist.sty from the colorist package. The package name
 "beautiful") and "livre" (= "book").
 
 %package -n texlive-beaulivre-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70049
+Version:        %{texlive_version}.%{texlive_noarch}.svn78004
 Release:        0
 Summary:        Documentation for texlive-beaulivre
 License:        LPPL-1.0
@@ -5457,7 +6195,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beaulivre/beaulivre.cls
 
 %package -n texlive-beautybook
-Version:        %{texlive_version}.%{texlive_noarch}.svn71693
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        A beautiful book template for maths and science
@@ -5527,16 +6265,16 @@ Requires:       tex(varwidth.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source102:      beautybook.tar.xz
-Source103:      beautybook.doc.tar.xz
+# from 20260301
+Source118:      beautybook.tar.xz
+Source119:      beautybook.doc.tar.xz
 
 %description -n texlive-beautybook
 The package contains a LaTeX class as well as style files for
 creating beautiful science books.
 
 %package -n texlive-beautybook-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn71693
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 Summary:        Documentation for texlive-beautybook
 License:        LPPL-1.0
@@ -5620,7 +6358,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beautybook/stys/beautybook-cover-enfig.sty
 
 %package -n texlive-beautynote
-Version:        %{texlive_version}.%{texlive_noarch}.svn70155
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        A package designed to meet the publication of books and the production of LaTeX templates, with elegant chapter
@@ -5692,9 +6430,9 @@ Requires:       tex(varwidth.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source104:      beautynote.tar.xz
-Source105:      beautynote.doc.tar.xz
+# from 20260301
+Source120:      beautynote.tar.xz
+Source121:      beautynote.doc.tar.xz
 
 %description -n texlive-beautynote
 The package is a specially designed to meet the publication of
@@ -5702,7 +6440,7 @@ books and the production of LaTeX templates, with elegant
 chapter styles and unique page styles.
 
 %package -n texlive-beautynote-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70155
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 Summary:        Documentation for texlive-beautynote
 License:        LPPL-1.0
@@ -5741,7 +6479,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beautynote/beautynote.cls
 
 %package -n texlive-beebe
-Version:        %{texlive_version}.%{texlive_noarch}.svn72450
+Version:        %{texlive_version}.%{texlive_noarch}.svn77590
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        A collection of bibliographies
@@ -5771,8 +6509,8 @@ Provides:       tex(bibnames.sty)
 Provides:       tex(texnames.sty)
 Provides:       tex(tugboat.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source106:      beebe.tar.xz
+# from 20260301
+Source122:      beebe.tar.xz
 
 %description -n texlive-beebe
 A collection of BibTeX bibliographies on TeX-related topics
@@ -5799,8 +6537,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-beebe
 %{_texmfdistdir}/bibtex/bib/beebe/epodd.bib
 %{_texmfdistdir}/bibtex/bib/beebe/font.bib
+%{_texmfdistdir}/bibtex/bib/beebe/litprog.bib
 %{_texmfdistdir}/bibtex/bib/beebe/printing-history.bib
 %{_texmfdistdir}/bibtex/bib/beebe/serif.bib
+%{_texmfdistdir}/bibtex/bib/beebe/stanford-cstr.bib
 %{_texmfdistdir}/bibtex/bib/beebe/texbook1.bib
 %{_texmfdistdir}/bibtex/bib/beebe/texbook2.bib
 %{_texmfdistdir}/bibtex/bib/beebe/texbook3.bib
@@ -5845,9 +6585,9 @@ Suggests:       texlive-begingreek-doc >= %{texlive_version}
 Provides:       tex(begingreek.sty)
 Requires:       tex(iftex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source107:      begingreek.tar.xz
-Source108:      begingreek.doc.tar.xz
+# from 20260301
+Source123:      begingreek.tar.xz
+Source124:      begingreek.doc.tar.xz
 
 %description -n texlive-begingreek
 This simple package defines a greek environment to be used with
@@ -5921,9 +6661,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-begriff-doc >= %{texlive_version}
 Provides:       tex(begriff.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source109:      begriff.tar.xz
-Source110:      begriff.doc.tar.xz
+# from 20260301
+Source125:      begriff.tar.xz
+Source126:      begriff.doc.tar.xz
 
 %description -n texlive-begriff
 The package defines maths mode commands for typesetting Frege's
@@ -6024,9 +6764,9 @@ Requires:       tex(tgheros.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source111:      beilstein.tar.xz
-Source112:      beilstein.doc.tar.xz
+# from 20260301
+Source127:      beilstein.tar.xz
+Source128:      beilstein.doc.tar.xz
 
 %description -n texlive-beilstein
 The package provides a LaTeX class file and a BibTeX style file
@@ -6121,9 +6861,9 @@ Requires:       texlive-belleek-fonts >= %{texlive_version}
 Suggests:       texlive-belleek-doc >= %{texlive_version}
 Provides:       tex(belleek.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source113:      belleek.tar.xz
-Source114:      belleek.doc.tar.xz
+# from 20260301
+Source129:      belleek.tar.xz
+Source130:      belleek.doc.tar.xz
 
 %description -n texlive-belleek
 This package replaces the original MathTime fonts, not
@@ -6241,9 +6981,9 @@ Provides:       tex(ubnx.fd)
 Provides:       tex(xbnr10.tfm)
 Provides:       tex(xbnsl10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source115:      bengali.tar.xz
-Source116:      bengali.doc.tar.xz
+# from 20260301
+Source131:      bengali.tar.xz
+Source132:      bengali.doc.tar.xz
 
 %description -n texlive-bengali
 The package is based on Velthuis' transliteration scheme, with
@@ -6313,7 +7053,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bengali/ubnx.fd
 
 %package -n texlive-bera
-Version:        %{texlive_version}.%{texlive_noarch}.svn20031
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Bera fonts
@@ -6437,9 +7177,9 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source117:      bera.tar.xz
-Source118:      bera.doc.tar.xz
+# from 20260301
+Source133:      bera.tar.xz
+Source134:      bera.doc.tar.xz
 
 %description -n texlive-bera
 The package contains the Bera Type 1 fonts, and a zip archive
@@ -6450,7 +7190,7 @@ Support for use in LaTeX is also provided. The Bera family is a
 repackaging, for use with TeX, of the Bitstream Vera family.
 
 %package -n texlive-bera-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn20031
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-bera
 License:        LPPL-1.0
@@ -6462,7 +7202,7 @@ Supplements:    (texlive-bera and texlive-alldocumentation)
 This package includes the documentation for texlive-bera
 
 %package -n texlive-bera-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn20031
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-bera
 License:        LPPL-1.0
@@ -6624,7 +7364,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-bera/fvsro8a.pfb
 
 %package -n texlive-berenisadf
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn72484
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Berenis ADF fonts and TeX/LaTeX support
@@ -6894,9 +7634,9 @@ Requires:       tex(nfssext-cfr.sty)
 Requires:       tex(svn-prov.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source119:      berenisadf.tar.xz
-Source120:      berenisadf.doc.tar.xz
+# from 20260301
+Source135:      berenisadf.tar.xz
+Source136:      berenisadf.doc.tar.xz
 
 %description -n texlive-berenisadf
 The bundle provides the BerenisADF Pro font collection, in
@@ -6905,7 +7645,7 @@ files to use the fonts in TeXnANSI (LY1) and LaTeX standard T1
 and TS1 encodings.
 
 %package -n texlive-berenisadf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn72484
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn77682
 Release:        0
 Summary:        Documentation for texlive-berenisadf
 License:        LPPL-1.0
@@ -6917,7 +7657,7 @@ Supplements:    (texlive-berenisadf and texlive-alldocumentation)
 This package includes the documentation for texlive-berenisadf
 
 %package -n texlive-berenisadf-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn72484
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn77682
 Release:        0
 Summary:        Severed fonts for texlive-berenisadf
 License:        LPPL-1.0
@@ -7258,7 +7998,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-berenisadf/yrdriw8a.pfb
 
 %package -n texlive-besjournals
-Version:        %{texlive_version}.%{texlive_noarch}.svn45662
+Version:        %{texlive_version}.%{texlive_noarch}.svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        Bibliographies suitable for British Ecological Society journals
@@ -7286,9 +8026,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-besjournals-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source121:      besjournals.tar.xz
-Source122:      besjournals.doc.tar.xz
+# from 20260301
+Source137:      besjournals.tar.xz
+Source138:      besjournals.doc.tar.xz
 
 %description -n texlive-besjournals
 The package provides a BibTeX style for use with journals
@@ -7297,7 +8037,7 @@ produced independently of the Society, and has no formal
 approval by the BES.
 
 %package -n texlive-besjournals-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn45662
+Version:        %{texlive_version}.%{texlive_noarch}.svn76790
 Release:        0
 Summary:        Documentation for texlive-besjournals
 License:        LPPL-1.0
@@ -7333,7 +8073,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/bibtex/bst/besjournals/besjournals.bst
 
 %package -n texlive-bestpapers
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn38708
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn76790
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        A BibTeX package to produce lists of authors' best papers
@@ -7361,9 +8101,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bestpapers-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source123:      bestpapers.tar.xz
-Source124:      bestpapers.doc.tar.xz
+# from 20260301
+Source139:      bestpapers.tar.xz
+Source140:      bestpapers.doc.tar.xz
 
 %description -n texlive-bestpapers
 Many people preparing their resumes find the requirement
@@ -7380,7 +8120,7 @@ the Consumer Financial Protection Bureau, United States
 Treasury. This package is in the public domain.
 
 %package -n texlive-bestpapers-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn38708
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn76790
 Release:        0
 Summary:        Documentation for texlive-bestpapers
 License:        SUSE-Public-Domain
@@ -7452,9 +8192,9 @@ Provides:       tex(betababel.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(teubner.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source125:      betababel.tar.xz
-Source126:      betababel.doc.tar.xz
+# from 20260301
+Source141:      betababel.tar.xz
+Source142:      betababel.doc.tar.xz
 
 %description -n texlive-betababel
 The betababel package extends the babel polutonikogreek option
@@ -7501,7 +8241,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/betababel/betababel.sty
 
 %package -n texlive-beton
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Use Concrete fonts
@@ -7530,16 +8270,16 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-beton-doc >= %{texlive_version}
 Provides:       tex(beton.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source127:      beton.tar.xz
-Source128:      beton.doc.tar.xz
+# from 20260301
+Source143:      beton.tar.xz
+Source144:      beton.doc.tar.xz
 
 %description -n texlive-beton
 Typeset a LaTeX2e document with the Concrete fonts designed by
 Don Knuth and used in his book "Concrete Mathematics".
 
 %package -n texlive-beton-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-beton
 License:        LPPL-1.0
@@ -7624,9 +8364,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source129:      beuron.tar.xz
-Source130:      beuron.doc.tar.xz
+# from 20260301
+Source145:      beuron.tar.xz
+Source146:      beuron.doc.tar.xz
 
 %description -n texlive-beuron
 This package provides the script used in the works of the
@@ -7784,9 +8524,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source131:      bewerbung.tar.xz
-Source132:      bewerbung.doc.tar.xz
+# from 20260301
+Source147:      bewerbung.tar.xz
+Source148:      bewerbung.doc.tar.xz
 
 %description -n texlive-bewerbung
 The package provides packages and classes for typesetting
@@ -7850,7 +8590,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bewerbung/bewerbung.sty
 
 %package -n texlive-bez123
-Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for Bezier curves
@@ -7880,9 +8620,9 @@ Suggests:       texlive-bez123-doc >= %{texlive_version}
 Provides:       tex(bez123.sty)
 Provides:       tex(multiply.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source133:      bez123.tar.xz
-Source134:      bez123.doc.tar.xz
+# from 20260301
+Source149:      bez123.tar.xz
+Source150:      bez123.doc.tar.xz
 
 %description -n texlive-bez123
 Provides additional facilities in a picture environment for
@@ -7892,7 +8632,7 @@ Provides a package multiply that provides a command for
 multiplication of a length without numerical overflow.
 
 %package -n texlive-bez123-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn77682
 Release:        0
 Summary:        Documentation for texlive-bez123
 License:        LPPL-1.0
@@ -7960,9 +8700,9 @@ Provides:       tex(bezierplot.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source135:      bezierplot.tar.xz
-Source136:      bezierplot.doc.tar.xz
+# from 20260301
+Source151:      bezierplot.tar.xz
+Source152:      bezierplot.doc.tar.xz
 
 %description -n texlive-bezierplot
 This package consists of a Lua program as well as a (Lua)LaTeX
@@ -8013,7 +8753,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/bezierplot/bezierplot.sty
 
 %package -n texlive-bfh-ci
-Version:        %{texlive_version}.%{texlive_noarch}.2.2.1svn70623
+Version:        %{texlive_version}.%{texlive_noarch}.2.2.6svn77879
 Release:        0
 License:        LPPL-1.0
 Summary:        Corporate Design for Bern University of Applied Sciences
@@ -8133,6 +8873,7 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(handoutWithNotes.sty)
+Requires:       tex(hyperref.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(nunito.sty)
@@ -8149,9 +8890,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(zref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source137:      bfh-ci.tar.xz
-Source138:      bfh-ci.doc.tar.xz
+# from 20260301
+Source153:      bfh-ci.tar.xz
+Source154:      bfh-ci.doc.tar.xz
 
 %description -n texlive-bfh-ci
 This bundle provides possibilities to use the Corporate Design
@@ -8160,7 +8901,7 @@ this end it contains classes as well as some helper packages
 and config files together with some demo files.
 
 %package -n texlive-bfh-ci-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.2.1svn70623
+Version:        %{texlive_version}.%{texlive_noarch}.2.2.6svn77879
 Release:        0
 Summary:        Documentation for texlive-bfh-ci
 License:        LPPL-1.0
@@ -8195,7 +8936,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bfh-ci/DEMO-BFHBeamer.tex
 %{_texmfdistdir}/doc/latex/bfh-ci/DEMO-BFHFactsheet.pdf
 %{_texmfdistdir}/doc/latex/bfh-ci/DEMO-BFHFactsheet.tex
-%{_texmfdistdir}/doc/latex/bfh-ci/DEMO-BFHFromaddress.lco
 %{_texmfdistdir}/doc/latex/bfh-ci/DEMO-BFHLetter.pdf
 %{_texmfdistdir}/doc/latex/bfh-ci/DEMO-BFHLetter.tex
 %{_texmfdistdir}/doc/latex/bfh-ci/DEMO-BFHProjektProposal.pdf
@@ -8321,9 +9061,9 @@ Requires:       tex(verbatim.sty)
 Requires:       tex(warning.sty)
 Requires:       tex(wasysym.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source139:      bgteubner.tar.xz
-Source140:      bgteubner.doc.tar.xz
+# from 20260301
+Source155:      bgteubner.tar.xz
+Source156:      bgteubner.doc.tar.xz
 
 %description -n texlive-bgteubner
 The bgteubner document class has been programmed by order of
@@ -8545,9 +9285,9 @@ Provides:       tex(bguq10t11.tfm)
 Provides:       tex(bguq10t12.tfm)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source141:      bguq.tar.xz
-Source142:      bguq.doc.tar.xz
+# from 20260301
+Source157:      bguq.tar.xz
+Source158:      bguq.doc.tar.xz
 
 %description -n texlive-bguq
 The font contains a single character: the Begriffsschrift
@@ -8719,9 +9459,9 @@ Requires:       tex(tabularx.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source143:      bhcexam.tar.xz
-Source144:      bhcexam.doc.tar.xz
+# from 20260301
+Source159:      bhcexam.tar.xz
+Source160:      bhcexam.doc.tar.xz
 
 %description -n texlive-bhcexam
 BHCexam.cls is a LaTeX document class designed for typesetting
@@ -8781,7 +9521,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/bhcexam/BHCexam.cls
 
 %package -n texlive-bib-fr
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        French translation of classical BibTeX styles
@@ -8809,9 +9549,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bib-fr-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source145:      bib-fr.tar.xz
-Source146:      bib-fr.doc.tar.xz
+# from 20260301
+Source161:      bib-fr.tar.xz
+Source162:      bib-fr.doc.tar.xz
 
 %description -n texlive-bib-fr
 These files are French translations of the classical BibTeX
@@ -8820,7 +9560,7 @@ redefining FUNCTIONs named fr.*, at the beginning (lines
 50-150) of each file.
 
 %package -n texlive-bib-fr-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn76790
 Release:        0
 Summary:        Documentation for texlive-bib-fr
 License:        LPPL-1.0
@@ -8865,7 +9605,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/bibtex/bst/bib-fr/unsrtnat-fr.bst
 
 %package -n texlive-bib2gls
-Version:        %{texlive_version}.%{texlive_noarch}.4.4svn73766
+Version:        %{texlive_version}.%{texlive_noarch}.4.7svn76845
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Command line application to convert .bib files to glossaries-extra.sty resource files
@@ -8903,9 +9643,9 @@ Provides:       tex(datatool2bib.jar)
 Provides:       tex(texparserlib.jar)
 Requires:       java
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source147:      bib2gls.tar.xz
-Source148:      bib2gls.doc.tar.xz
+# from 20260301
+Source163:      bib2gls.tar.xz
+Source164:      bib2gls.doc.tar.xz
 
 %description -n texlive-bib2gls
 This Java command line application may be used to extract
@@ -8924,7 +9664,7 @@ containing definitions (\newglossaryentry etc.) to the .bib
 format required by bib2gls.
 
 %package -n texlive-bib2gls-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.4svn73766
+Version:        %{texlive_version}.%{texlive_noarch}.4.7svn76845
 Release:        0
 Summary:        Documentation for texlive-bib2gls
 License:        GPL-2.0-or-later
@@ -9078,9 +9818,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(qrcode.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source149:      bib2qr.tar.xz
-Source150:      bib2qr.doc.tar.xz
+# from 20260301
+Source165:      bib2qr.tar.xz
+Source166:      bib2qr.doc.tar.xz
 
 %description -n texlive-bib2qr
 This package provides functionality to cite BibTeX entries with
@@ -9155,9 +9895,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bibarts-doc >= %{texlive_version}
 Provides:       tex(bibarts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source151:      bibarts.tar.xz
-Source152:      bibarts.doc.tar.xz
+# from 20260301
+Source167:      bibarts.tar.xz
+Source168:      bibarts.doc.tar.xz
 
 %description -n texlive-bibarts
 BibArts is a LaTeX package to assist in making bibliographical
@@ -9220,8 +9960,90 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-bibarts
 %{_texmfdistdir}/tex/latex/bibarts/bibarts.sty
 
+%package -n texlive-bibbreeze
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76924
+Release:        0
+License:        LPPL-1.0
+Summary:        A referencing package for automatically reconstructing bibliography data
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-bibbreeze-doc >= %{texlive_version}
+Provides:       tex(BibBreeze.bbx)
+Requires:       tex(numeric.bbx)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source169:      bibbreeze.tar.xz
+Source170:      bibbreeze.doc.tar.xz
+
+%description -n texlive-bibbreeze
+This LaTeX package, called BibBreeze written using LaTeX3, is a
+referencing package that automates bibliography reconstruction,
+eliminating manual effort in reference handling. It reorders
+disorganized fields for bibliography entries, fills in missing
+fields, and produces polished, referencing style-compliant
+bibliographies--optimized for researchers, academics, and
+writers. Currently, the package's referencing style is designed
+for APA (with both numeric and author-year in-text citations)
+with more styles (Harvard, Chicago, AMA, etc.) to come.
+
+%package -n texlive-bibbreeze-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76924
+Release:        0
+Summary:        Documentation for texlive-bibbreeze
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-bibbreeze and texlive-alldocumentation)
+
+%description -n texlive-bibbreeze-doc
+This package includes the documentation for texlive-bibbreeze
+
+%post -n texlive-bibbreeze
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-bibbreeze
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-bibbreeze
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-bibbreeze-doc
+%{_texmfdistdir}/doc/latex/bibbreeze/BibBreeze.tex
+%{_texmfdistdir}/doc/latex/bibbreeze/README.md
+
+%files -n texlive-bibbreeze
+%{_texmfdistdir}/tex/latex/bibbreeze/BibBreeze.bbx
+
 %package -n texlive-bibcop
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.25svn73562
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.32svn75042
 Release:        0
 License:        LPPL-1.0
 Summary:        Style checker for .bib files
@@ -9267,9 +10089,9 @@ Requires:       tex(iexec.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(shellesc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source153:      bibcop.tar.xz
-Source154:      bibcop.doc.tar.xz
+# from 20260301
+Source171:      bibcop.tar.xz
+Source172:      bibcop.doc.tar.xz
 
 %description -n texlive-bibcop
 This LaTeX package checks the quality of your .bib file and
@@ -9280,7 +10102,7 @@ standalone command line tool. The package does not work on
 Windows.
 
 %package -n texlive-bibcop-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.25svn73562
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.32svn75042
 Release:        0
 Summary:        Documentation for texlive-bibcop
 License:        LPPL-1.0
@@ -9322,7 +10144,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bibcop/bibcop.sty
 
 %package -n texlive-biber
-Version:        %{texlive_version}.%{texlive_noarch}.2.20svn70724
+Version:        %{texlive_version}.%{texlive_noarch}.2.21svn75738
 Release:        0
 License:        Artistic-2.0 AND GPL-2.0-or-later
 Summary:        A BibTeX replacement for users of BibLaTeX
@@ -9351,8 +10173,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source155:      biber.doc.tar.xz
+# from 20260301
+Source173:      biber.doc.tar.xz
 
 %description -n texlive-biber
 Biber is a BibTeX replacement for users of BibLaTeX. Biber
@@ -9416,9 +10238,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-biber-ms-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source156:      biber-ms.source.tar.xz
-Source157:      biber-ms.doc.tar.xz
+# from 20260301
+Source174:      biber-ms.source.tar.xz
+Source175:      biber-ms.doc.tar.xz
 
 %description -n texlive-biber-ms
 This is the multiscript version of biber (biber-ms) and must be
@@ -9496,9 +10318,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bibexport-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source158:      bibexport.tar.xz
-Source159:      bibexport.doc.tar.xz
+# from 20260301
+Source176:      bibexport.tar.xz
+Source177:      bibexport.doc.tar.xz
 
 %description -n texlive-bibexport
 A Bourne shell script that uses BibTeX to extract bibliography
@@ -9575,9 +10397,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bibhtml-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source160:      bibhtml.tar.xz
-Source161:      bibhtml.doc.tar.xz
+# from 20260301
+Source178:      bibhtml.tar.xz
+Source179:      bibhtml.doc.tar.xz
 
 %description -n texlive-bibhtml
 Bibhtml consists of a Perl script and a set of BibTeX style
@@ -9641,7 +10463,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/bibtex/bst/bibhtml/unsrthtml.bst
 
 %package -n texlive-biblatex
-Version:        %{texlive_version}.%{texlive_noarch}.3.20svn70725
+Version:        %{texlive_version}.%{texlive_noarch}.3.21svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Sophisticated Bibliographies in LaTeX
@@ -9803,9 +10625,9 @@ Requires:       tex(pdftexcmds.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source162:      biblatex.tar.xz
-Source163:      biblatex.doc.tar.xz
+# from 20260301
+Source180:      biblatex.tar.xz
+Source181:      biblatex.doc.tar.xz
 
 %description -n texlive-biblatex
 BibLaTeX is a complete reimplementation of the bibliographic
@@ -9823,14 +10645,14 @@ changing your data sources A tool mode for transforming
 bibliographic data sources Multiple bibliographies and lists of
 bibliographic information in the same document with different
 sorting Highly customisable data source inheritance rules
-Polyglossia and babel suppport for automatic language switching
+Polyglossia and babel support for automatic language switching
 for bibliographic entries and citations Automatic bibliography
 data recoding (UTF-8 -> latin1, LaTeX macros -> UTF-8 etc)
 Remote data sources Highly sophisticated automatic name and
 name list disambiguation system Highly customisable data model
 so users can define their own bibliographic data types
 Validation of bibliographic data against a data model
-Subdivided and/or filtered bibligraphies, bibliographies per
+Subdivided and/or filtered bibliographies, bibliographies per
 chapter, section etc. Apart from the features unique to
 BibLaTeX, the package also incorporates core features of the
 following packages: babelbib, bibtopic, bibunits, chapterbib,
@@ -9841,7 +10663,7 @@ ifthen url Biber, babel / polyglossia, and csquotes 4.4 or
 later are strongly recommended.
 
 %package -n texlive-biblatex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.20svn70725
+Version:        %{texlive_version}.%{texlive_noarch}.3.21svn77682
 Release:        0
 Summary:        Documentation for texlive-biblatex
 License:        LPPL-1.0
@@ -10210,9 +11032,9 @@ Requires:       tex(standard.bbx)
 Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source164:      biblatex-abnt.tar.xz
-Source165:      biblatex-abnt.doc.tar.xz
+# from 20260301
+Source182:      biblatex-abnt.tar.xz
+Source183:      biblatex-abnt.doc.tar.xz
 
 %description -n texlive-biblatex-abnt
 This package offers a BibLaTeX style for Brazil's ABNT
@@ -10328,9 +11150,9 @@ Provides:       tex(italian-accursius.lbx)
 Requires:       tex(ext-verbose-trad1.bbx)
 Requires:       tex(verbose-trad1.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source166:      biblatex-accursius.tar.xz
-Source167:      biblatex-accursius.doc.tar.xz
+# from 20260301
+Source184:      biblatex-accursius.tar.xz
+Source185:      biblatex-accursius.doc.tar.xz
 
 %description -n texlive-biblatex-accursius
 This style is primarily aimed at Italian legal jurists and
@@ -10432,9 +11254,9 @@ Requires:       tex(numeric.cbx)
 Requires:       tex(shortmathj.sty)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source168:      biblatex-ajc2020unofficial.tar.xz
-Source169:      biblatex-ajc2020unofficial.doc.tar.xz
+# from 20260301
+Source186:      biblatex-ajc2020unofficial.tar.xz
+Source187:      biblatex-ajc2020unofficial.doc.tar.xz
 
 %description -n texlive-biblatex-ajc2020unofficial
 This is an unofficial BibLaTeX style for the Australasian
@@ -10508,9 +11330,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-biblatex-anonymous-doc >= %{texlive_version}
 Provides:       tex(biblatex-anonymous.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source170:      biblatex-anonymous.tar.xz
-Source171:      biblatex-anonymous.doc.tar.xz
+# from 20260301
+Source188:      biblatex-anonymous.tar.xz
+Source189:      biblatex-anonymous.doc.tar.xz
 
 %description -n texlive-biblatex-anonymous
 The package provides tools to help manage anonymous work with
@@ -10557,7 +11379,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-anonymous/biblatex-anonymous.sty
 
 %package -n texlive-biblatex-apa
-Version:        %{texlive_version}.%{texlive_noarch}.9.17svn66605
+Version:        %{texlive_version}.%{texlive_noarch}.9.20svn76158
 Release:        0
 License:        LPPL-1.0
 Summary:        BibLaTeX citation and reference style for APA
@@ -10591,9 +11413,11 @@ Provides:       tex(austrian-apa.lbx)
 Provides:       tex(brazilian-apa.lbx)
 Provides:       tex(british-apa.lbx)
 Provides:       tex(catalan-apa.lbx)
+Provides:       tex(czech-apa.lbx)
 Provides:       tex(danish-apa.lbx)
 Provides:       tex(dutch-apa.lbx)
 Provides:       tex(english-apa.lbx)
+Provides:       tex(estonian-apa.lbx)
 Provides:       tex(finnish-apa.lbx)
 Provides:       tex(french-apa.lbx)
 Provides:       tex(galician-apa.lbx)
@@ -10608,6 +11432,7 @@ Provides:       tex(norwegian-apa.lbx)
 Provides:       tex(nswissgerman-apa.lbx)
 Provides:       tex(nynorsk-apa.lbx)
 Provides:       tex(portuguese-apa.lbx)
+Provides:       tex(romanian-apa.lbx)
 Provides:       tex(russian-apa.lbx)
 Provides:       tex(slovene-apa.lbx)
 Provides:       tex(spanish-apa.lbx)
@@ -10616,9 +11441,9 @@ Provides:       tex(swissgerman-apa.lbx)
 Provides:       tex(turkish-apa.lbx)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source172:      biblatex-apa.tar.xz
-Source173:      biblatex-apa.doc.tar.xz
+# from 20260301
+Source190:      biblatex-apa.tar.xz
+Source191:      biblatex-apa.doc.tar.xz
 
 %description -n texlive-biblatex-apa
 This is a fairly complete BibLaTeX style (citations and
@@ -10632,7 +11457,7 @@ csquotes [?]4.3, BibLaTeX [?]3.4, and the biber backend for
 BibLaTeX [?]2.5.
 
 %package -n texlive-biblatex-apa-doc
-Version:        %{texlive_version}.%{texlive_noarch}.9.17svn66605
+Version:        %{texlive_version}.%{texlive_noarch}.9.20svn76158
 Release:        0
 Summary:        Documentation for texlive-biblatex-apa
 License:        LPPL-1.0
@@ -10680,9 +11505,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-apa/brazilian-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/british-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/catalan-apa.lbx
+%{_texmfdistdir}/tex/latex/biblatex-apa/czech-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/danish-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/dutch-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/english-apa.lbx
+%{_texmfdistdir}/tex/latex/biblatex-apa/estonian-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/finnish-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/french-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/galician-apa.lbx
@@ -10697,6 +11524,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-apa/nswissgerman-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/nynorsk-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/portuguese-apa.lbx
+%{_texmfdistdir}/tex/latex/biblatex-apa/romanian-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/russian-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/slovene-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/spanish-apa.lbx
@@ -10760,9 +11588,9 @@ Provides:       tex(swedish-apa6.lbx)
 Provides:       tex(swissgerman-apa6.lbx)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source174:      biblatex-apa6.tar.xz
-Source175:      biblatex-apa6.doc.tar.xz
+# from 20260301
+Source192:      biblatex-apa6.tar.xz
+Source193:      biblatex-apa6.doc.tar.xz
 
 %description -n texlive-biblatex-apa6
 This is a fairly complete BibLaTeX style (citations and
@@ -11231,9 +12059,9 @@ Requires:       tex(verbose.cbx)
 Requires:       tex(xpatch.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source176:      biblatex-archaeology.tar.xz
-Source177:      biblatex-archaeology.doc.tar.xz
+# from 20260301
+Source194:      biblatex-archaeology.tar.xz
+Source195:      biblatex-archaeology.doc.tar.xz
 
 %description -n texlive-biblatex-archaeology
 This package provides additional BibLaTeX styles for German
@@ -11753,9 +12581,9 @@ Requires:       tex(authoryear.bbx)
 Requires:       tex(csquotes.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source178:      biblatex-arthistory-bonn.tar.xz
-Source179:      biblatex-arthistory-bonn.doc.tar.xz
+# from 20260301
+Source196:      biblatex-arthistory-bonn.tar.xz
+Source197:      biblatex-arthistory-bonn.doc.tar.xz
 
 %description -n texlive-biblatex-arthistory-bonn
 This citation style covers the citation and bibliography
@@ -11809,7 +12637,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-arthistory-bonn/arthistory-bonn.dbx
 
 %package -n texlive-biblatex-bath
-Version:        %{texlive_version}.%{texlive_noarch}.6.0svn63401
+Version:        %{texlive_version}.%{texlive_noarch}.7.2svn77530
 Release:        0
 License:        LPPL-1.0
 Summary:        Harvard referencing style as recommended by the University of Bath Library
@@ -11845,17 +12673,18 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(xpatch.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source180:      biblatex-bath.tar.xz
-Source181:      biblatex-bath.doc.tar.xz
+# from 20260301
+Source198:      biblatex-bath.tar.xz
+Source199:      biblatex-bath.doc.tar.xz
 
 %description -n texlive-biblatex-bath
-This package provides a BibLaTeX style to format reference
-lists in the Harvard style recommended by the University of
-Bath Library.
+This package provides a BibTeX style to format reference lists
+in the Harvard style recommended by the University of Bath
+Library. It should be used in conjunction with natbib for
+citations.
 
 %package -n texlive-biblatex-bath-doc
-Version:        %{texlive_version}.%{texlive_noarch}.6.0svn63401
+Version:        %{texlive_version}.%{texlive_noarch}.7.2svn77530
 Release:        0
 Summary:        Documentation for texlive-biblatex-bath
 License:        LPPL-1.0
@@ -11925,9 +12754,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-biblatex-bookinarticle-doc >= %{texlive_version}
 Provides:       tex(biblatex-bookinarticle.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source182:      biblatex-bookinarticle.tar.xz
-Source183:      biblatex-bookinarticle.doc.tar.xz
+# from 20260301
+Source200:      biblatex-bookinarticle.tar.xz
+Source201:      biblatex-bookinarticle.doc.tar.xz
 
 %description -n texlive-biblatex-bookinarticle
 This package provides three new BibLaTeX entry types -
@@ -11981,7 +12810,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-bookinarticle/biblatex-bookinarticle.sty
 
 %package -n texlive-biblatex-bookinother
-Version:        %{texlive_version}.%{texlive_noarch}.2.3.3svn54015
+Version:        %{texlive_version}.%{texlive_noarch}.2.3.3svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Manage book edited in other entry type
@@ -12011,18 +12840,18 @@ Suggests:       texlive-biblatex-bookinother-doc >= %{texlive_version}
 Provides:       tex(bookinother.bbx)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source184:      biblatex-bookinother.tar.xz
-Source185:      biblatex-bookinother.doc.tar.xz
+# from 20260301
+Source202:      biblatex-bookinother.tar.xz
+Source203:      biblatex-bookinother.doc.tar.xz
 
 %description -n texlive-biblatex-bookinother
 This package provides new BibLaTeX entry types and fields for
 book edited in other types, like for instance @bookinarticle.
 It offers more types than the older package
-biblatex-bookinarticle which it superseeds.
+biblatex-bookinarticle which it supersedes.
 
 %package -n texlive-biblatex-bookinother-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3.3svn54015
+Version:        %{texlive_version}.%{texlive_noarch}.2.3.3svn76924
 Release:        0
 Summary:        Documentation for texlive-biblatex-bookinother
 License:        LPPL-1.0
@@ -12119,9 +12948,9 @@ Provides:       tex(bwl-FU.cbx)
 Requires:       tex(authoryear.bbx)
 Requires:       tex(authoryear.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source186:      biblatex-bwl.tar.xz
-Source187:      biblatex-bwl.doc.tar.xz
+# from 20260301
+Source204:      biblatex-bwl.tar.xz
+Source205:      biblatex-bwl.doc.tar.xz
 
 %description -n texlive-biblatex-bwl
 The bundle provides a set of BibLaTeX implementations of
@@ -12168,7 +12997,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-bwl/bwl-FU.cbx
 
 %package -n texlive-biblatex-caspervector
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.7svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.7svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        A simple citation style for Chinese users
@@ -12207,17 +13036,17 @@ Requires:       tex(authoryear-comp.cbx)
 Requires:       tex(numeric-comp.bbx)
 Requires:       tex(numeric-comp.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source188:      biblatex-caspervector.tar.xz
-Source189:      biblatex-caspervector.doc.tar.xz
+# from 20260301
+Source206:      biblatex-caspervector.tar.xz
+Source207:      biblatex-caspervector.doc.tar.xz
 
 %description -n texlive-biblatex-caspervector
 The package provides a simple and easily extensible
-biblography/citation style for Chinese LaTeX users, using
+bibliography/citation style for Chinese LaTeX users, using
 BibLaTeX.
 
 %package -n texlive-biblatex-caspervector-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.7svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.7svn76790
 Release:        0
 Summary:        Documentation for texlive-biblatex-caspervector
 License:        LPPL-1.0
@@ -12293,8 +13122,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source190:      biblatex-cheatsheet.doc.tar.xz
+# from 20260301
+Source208:      biblatex-cheatsheet.doc.tar.xz
 
 %description -n texlive-biblatex-cheatsheet
 A BibLaTeX/Biber 'cheat sheet' which I wrote because I wanted
@@ -12324,7 +13153,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-cheatsheet/biblatex-cheatsheet.tex
 
 %package -n texlive-biblatex-chem
-Version:        %{texlive_version}.%{texlive_noarch}.1.1zsvn57904
+Version:        %{texlive_version}.%{texlive_noarch}.1.2asvn76236
 Release:        0
 License:        LPPL-1.0
 Summary:        A set of BibLaTeX implementations of chemistry-related bibliography styles
@@ -12362,9 +13191,9 @@ Provides:       tex(chem-rsc.cbx)
 Requires:       tex(numeric-comp.bbx)
 Requires:       tex(numeric-comp.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source191:      biblatex-chem.tar.xz
-Source192:      biblatex-chem.doc.tar.xz
+# from 20260301
+Source209:      biblatex-chem.tar.xz
+Source210:      biblatex-chem.doc.tar.xz
 
 %description -n texlive-biblatex-chem
 The bundle offers a set of styles to allow chemists to use
@@ -12374,7 +13203,7 @@ and Angewandte Chem. style, (thus covering a wide range of
 journals). A comprehensive set of examples of use is included.
 
 %package -n texlive-biblatex-chem-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1zsvn57904
+Version:        %{texlive_version}.%{texlive_noarch}.1.2asvn76236
 Release:        0
 Summary:        Documentation for texlive-biblatex-chem
 License:        LPPL-1.0
@@ -12427,7 +13256,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-chem/chem-rsc.cbx
 
 %package -n texlive-biblatex-chicago
-Version:        %{texlive_version}.%{texlive_noarch}.2.3bsvn70955
+Version:        %{texlive_version}.%{texlive_noarch}.2.3bsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Chicago style files for BibLaTeX
@@ -12499,9 +13328,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source193:      biblatex-chicago.tar.xz
-Source194:      biblatex-chicago.doc.tar.xz
+# from 20260301
+Source211:      biblatex-chicago.tar.xz
+Source212:      biblatex-chicago.doc.tar.xz
 
 %description -n texlive-biblatex-chicago
 This is a BibLaTeX style that implements the Chicago
@@ -12513,7 +13342,7 @@ materials, among many others. The package was previously known
 as biblatex-chicago-notes-df.
 
 %package -n texlive-biblatex-chicago-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3bsvn70955
+Version:        %{texlive_version}.%{texlive_noarch}.2.3bsvn77682
 Release:        0
 Summary:        Documentation for texlive-biblatex-chicago
 License:        LPPL-1.0
@@ -12602,10 +13431,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-chicago/cmsendnotes.sty
 
 %package -n texlive-biblatex-claves
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn43723
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn76924
 Release:        0
 License:        LPPL-1.0
-Summary:        A tool to manage claves of old litterature with BibLaTeX
+Summary:        A tool to manage claves of old literature with BibLaTeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -12632,12 +13461,12 @@ Suggests:       texlive-biblatex-claves-doc >= %{texlive_version}
 Provides:       tex(claves.bbx)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source195:      biblatex-claves.tar.xz
-Source196:      biblatex-claves.doc.tar.xz
+# from 20260301
+Source213:      biblatex-claves.tar.xz
+Source214:      biblatex-claves.doc.tar.xz
 
 %description -n texlive-biblatex-claves
-When studying antic and medieval literature, we may find many
+When studying antique and medieval literature, we may find many
 different texts published with the same title, or, in contrary,
 the same text published with different titles. To avoid
 confusion, scholars have published claves, which are books
@@ -12651,7 +13480,7 @@ field for different claves, and to present all these fields in
 a consistent way.
 
 %package -n texlive-biblatex-claves-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn43723
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn76924
 Release:        0
 Summary:        Documentation for texlive-biblatex-claves
 License:        LPPL-1.0
@@ -12694,7 +13523,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-claves/claves.dbx
 
 %package -n texlive-biblatex-cse
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn73262
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.0svn76777
 Release:        0
 License:        LPPL-1.0
 Summary:        Council of Science Editors (CSE) style file for BibLaTeX
@@ -12723,12 +13552,12 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-biblatex-cse-doc >= %{texlive_version}
 Provides:       tex(biblatex-cse.bbx)
 Provides:       tex(biblatex-cse.cbx)
-Requires:       tex(authoryear.bbx)
 Requires:       tex(authoryear.cbx)
+Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source197:      biblatex-cse.tar.xz
-Source198:      biblatex-cse.doc.tar.xz
+# from 20260301
+Source215:      biblatex-cse.tar.xz
+Source216:      biblatex-cse.doc.tar.xz
 
 %description -n texlive-biblatex-cse
 This is a BibLaTeX style that implements the bibliography style
@@ -12744,7 +13573,7 @@ an issue in the project's page on GitHub or, even better,
 submit a pull request.
 
 %package -n texlive-biblatex-cse-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn73262
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.0svn76777
 Release:        0
 Summary:        Documentation for texlive-biblatex-cse
 License:        LPPL-1.0
@@ -12825,9 +13654,9 @@ Requires:       tex(totcount.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source199:      biblatex-cv.tar.xz
-Source200:      biblatex-cv.doc.tar.xz
+# from 20260301
+Source217:      biblatex-cv.tar.xz
+Source218:      biblatex-cv.doc.tar.xz
 
 %description -n texlive-biblatex-cv
 This package creates an academic curriculum vitae (CV) from a
@@ -12879,7 +13708,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-cv/biblatex-cv.sty
 
 %package -n texlive-biblatex-dw
-Version:        %{texlive_version}.%{texlive_noarch}.1.7bsvn66579
+Version:        %{texlive_version}.%{texlive_noarch}.1.7bsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Humanities styles for BibLaTeX
@@ -12916,9 +13745,9 @@ Provides:       tex(standard-dw.bbx)
 Provides:       tex(standard-dw.cbx)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source201:      biblatex-dw.tar.xz
-Source202:      biblatex-dw.doc.tar.xz
+# from 20260301
+Source219:      biblatex-dw.tar.xz
+Source220:      biblatex-dw.doc.tar.xz
 
 %description -n texlive-biblatex-dw
 A small collection of styles for the BibLaTeX package. It was
@@ -12934,7 +13763,7 @@ nicht ohne BibLaTeX (mindestens in der Version 0.9b) verwendet
 werden.
 
 %package -n texlive-biblatex-dw-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.7bsvn66579
+Version:        %{texlive_version}.%{texlive_noarch}.1.7bsvn77682
 Release:        0
 Summary:        Documentation for texlive-biblatex-dw
 License:        LPPL-1.0
@@ -13026,9 +13855,9 @@ Suggests:       texlive-biblatex-enc-doc >= %{texlive_version}
 Provides:       tex(enc.bbx)
 Provides:       tex(enc.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source203:      biblatex-enc.tar.xz
-Source204:      biblatex-enc.doc.tar.xz
+# from 20260301
+Source221:      biblatex-enc.tar.xz
+Source222:      biblatex-enc.doc.tar.xz
 
 %description -n texlive-biblatex-enc
 This package provides a citation and bibliography style for use
@@ -13075,7 +13904,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-enc/enc.cbx
 
 %package -n texlive-biblatex-ext
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.18svn70744
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.20svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Extended BibLaTeX standard styles
@@ -13241,10 +14070,11 @@ Requires:       tex(verbose.bbx)
 Requires:       tex(verbose.cbx)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
+Requires:       tex(xsavebox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source205:      biblatex-ext.tar.xz
-Source206:      biblatex-ext.doc.tar.xz
+# from 20260301
+Source223:      biblatex-ext.tar.xz
+Source224:      biblatex-ext.doc.tar.xz
 
 %description -n texlive-biblatex-ext
 The BibLaTeX-ext bundle provides styles that slightly extend
@@ -13256,7 +14086,7 @@ possible, so that most customisation methods can be applied
 here as well.
 
 %package -n texlive-biblatex-ext-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.18svn70744
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.20svn77682
 Release:        0
 Summary:        Documentation for texlive-biblatex-ext
 License:        LPPL-1.0
@@ -13415,9 +14245,9 @@ Provides:       tex(fiwi2.cbx)
 Requires:       tex(ragged2e.sty)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source207:      biblatex-fiwi.tar.xz
-Source208:      biblatex-fiwi.doc.tar.xz
+# from 20260301
+Source225:      biblatex-fiwi.tar.xz
+Source226:      biblatex-fiwi.doc.tar.xz
 
 %description -n texlive-biblatex-fiwi
 The package provides a collection of styles for BibLaTeX
@@ -13484,7 +14314,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-fiwi/fiwi2.dbx
 
 %package -n texlive-biblatex-gb7714-2015
-Version:        %{texlive_version}.%{texlive_noarch}.1.1tsvn74417
+Version:        %{texlive_version}.%{texlive_noarch}.1.1vsvn75481
 Release:        0
 License:        LPPL-1.0
 Summary:        A BibLaTeX implementation of the GBT7714-2015 bibliography style for Chinese users
@@ -13521,6 +14351,8 @@ Provides:       tex(chinese-erj.bbx)
 Provides:       tex(chinese-erj.cbx)
 Provides:       tex(chinese-jmw.bbx)
 Provides:       tex(chinese-jmw.cbx)
+Provides:       tex(chinese-molc.bbx)
+Provides:       tex(chinese-molc.cbx)
 Provides:       tex(gb7714-1987.bbx)
 Provides:       tex(gb7714-1987.cbx)
 Provides:       tex(gb7714-1987ay.bbx)
@@ -13538,12 +14370,22 @@ Provides:       tex(gb7714-2015ms.bbx)
 Provides:       tex(gb7714-2015ms.cbx)
 Provides:       tex(gb7714-2015mx.bbx)
 Provides:       tex(gb7714-2015mx.cbx)
+Provides:       tex(gb7714-2025.bbx)
+Provides:       tex(gb7714-2025.cbx)
+Provides:       tex(gb7714-2025ay.bbx)
+Provides:       tex(gb7714-2025ay.cbx)
 Provides:       tex(gb7714-CCNU.bbx)
 Provides:       tex(gb7714-CCNU.cbx)
+Provides:       tex(gb7714-CCNUay.bbx)
+Provides:       tex(gb7714-CCNUay.cbx)
 Provides:       tex(gb7714-NWAFU.bbx)
 Provides:       tex(gb7714-NWAFU.cbx)
 Provides:       tex(gb7714-SEU.bbx)
 Provides:       tex(gb7714-SEU.cbx)
+Provides:       tex(gb7714.bbx)
+Provides:       tex(gb7714.cbx)
+Provides:       tex(gb7714ay.bbx)
+Provides:       tex(gb7714ay.cbx)
 Requires:       tex(authoryear-comp.cbx)
 Requires:       tex(authoryear.bbx)
 Requires:       tex(mfirstuc.sty)
@@ -13551,9 +14393,9 @@ Requires:       tex(numeric-comp.bbx)
 Requires:       tex(numeric-comp.cbx)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source209:      biblatex-gb7714-2015.tar.xz
-Source210:      biblatex-gb7714-2015.doc.tar.xz
+# from 20260301
+Source227:      biblatex-gb7714-2015.tar.xz
+Source228:      biblatex-gb7714-2015.doc.tar.xz
 
 %description -n texlive-biblatex-gb7714-2015
 This package provides an implementation of the GBT7714-2015
@@ -13563,7 +14405,7 @@ BibLaTeX with the appropriate option. A demonstration database
 is provided to show how to format input for the style.
 
 %package -n texlive-biblatex-gb7714-2015-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1tsvn74417
+Version:        %{texlive_version}.%{texlive_noarch}.1.1vsvn75481
 Release:        0
 Summary:        Documentation for texlive-biblatex-gb7714-2015
 License:        LPPL-1.0
@@ -13599,8 +14441,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/biblatex-gb7714-2015.tex
 %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/example.bib
 %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/gb7714texttobib.pl
-%{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeall.py
-%{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeupdateversion.py
 
 %files -n texlive-biblatex-gb7714-2015
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/chinese-cajhss.bbx
@@ -13613,6 +14453,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/chinese-erj.cbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/chinese-jmw.bbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/chinese-jmw.cbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/chinese-molc.bbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/chinese-molc.cbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-1987.bbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-1987.cbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-1987ay.bbx
@@ -13630,12 +14472,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-2015ms.cbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-2015mx.bbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-2015mx.cbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-2025.bbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-2025.cbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-2025ay.bbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-2025ay.cbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-CCNU.bbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-CCNU.cbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-CCNUay.bbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-CCNUay.cbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-NWAFU.bbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-NWAFU.cbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-SEU.bbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-SEU.cbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714.bbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714.cbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714ay.bbx
+%{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714ay.cbx
 
 %package -n texlive-biblatex-german-legal
 Version:        %{texlive_version}.%{texlive_noarch}.003svn66461
@@ -13671,9 +14523,9 @@ Requires:       tex(ext-authortitle.bbx)
 Requires:       tex(ext-authortitle.cbx)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source211:      biblatex-german-legal.tar.xz
-Source212:      biblatex-german-legal.doc.tar.xz
+# from 20260301
+Source229:      biblatex-german-legal.tar.xz
+Source230:      biblatex-german-legal.doc.tar.xz
 
 %description -n texlive-biblatex-german-legal
 This package aims to provide citation styles (for footnotes and
@@ -13808,9 +14660,9 @@ Requires:       tex(portuguese.lbx)
 Requires:       tex(slovene.lbx)
 Requires:       tex(spanish.lbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source213:      biblatex-gost.tar.xz
-Source214:      biblatex-gost.doc.tar.xz
+# from 20260301
+Source231:      biblatex-gost.tar.xz
+Source232:      biblatex-gost.doc.tar.xz
 
 %description -n texlive-biblatex-gost
 The package provides BibLaTeX support for Russian bibliography
@@ -13940,9 +14792,9 @@ Provides:       tex(historian.cbx)
 Provides:       tex(historian.lbx)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source215:      biblatex-historian.tar.xz
-Source216:      biblatex-historian.doc.tar.xz
+# from 20260301
+Source233:      biblatex-historian.tar.xz
+Source234:      biblatex-historian.doc.tar.xz
 
 %description -n texlive-biblatex-historian
 A BibLaTeX style, based on the Turabian Manual (a version of
@@ -13988,7 +14840,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-historian/historian.lbx
 
 %package -n texlive-biblatex-ieee
-Version:        %{texlive_version}.%{texlive_noarch}.1.4csvn73468
+Version:        %{texlive_version}.%{texlive_noarch}.1.4fsvn75952
 Release:        0
 License:        LPPL-1.0
 Summary:        IEEE style files for BibLaTeX
@@ -14026,9 +14878,9 @@ Requires:       tex(numeric-comp.bbx)
 Requires:       tex(numeric-comp.cbx)
 Requires:       tex(numeric-verb.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source217:      biblatex-ieee.tar.xz
-Source218:      biblatex-ieee.doc.tar.xz
+# from 20260301
+Source235:      biblatex-ieee.tar.xz
+Source236:      biblatex-ieee.doc.tar.xz
 
 %description -n texlive-biblatex-ieee
 This is a BibLaTeX style that implements the bibliography style
@@ -14041,7 +14893,7 @@ biblatex-ieee requires BibLaTeX 2.7 or later, and works with
 both BibTeX and Biber as the database back-end.
 
 %package -n texlive-biblatex-ieee-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4csvn73468
+Version:        %{texlive_version}.%{texlive_noarch}.1.4fsvn75952
 Release:        0
 Summary:        Documentation for texlive-biblatex-ieee
 License:        LPPL-1.0
@@ -14086,7 +14938,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-ieee/magyar-ieee.lbx
 
 %package -n texlive-biblatex-ijsra
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn41634
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        BibLaTeX style for the International Journal of Student Research in Archaeology
@@ -14119,16 +14971,16 @@ Requires:       tex(authoryear.bbx)
 Requires:       tex(authoryear.cbx)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source219:      biblatex-ijsra.tar.xz
-Source220:      biblatex-ijsra.doc.tar.xz
+# from 20260301
+Source237:      biblatex-ijsra.tar.xz
+Source238:      biblatex-ijsra.doc.tar.xz
 
 %description -n texlive-biblatex-ijsra
 BibLaTeX style used for the journal International Journal of
 Student Research in Archaeology.
 
 %package -n texlive-biblatex-ijsra-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn41634
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn76790
 Release:        0
 Summary:        Documentation for texlive-biblatex-ijsra
 License:        LPPL-1.0
@@ -14226,9 +15078,9 @@ Requires:       tex(polish.lbx)
 Requires:       tex(slovak.lbx)
 Requires:       tex(spanish.lbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source221:      biblatex-iso690.tar.xz
-Source222:      biblatex-iso690.doc.tar.xz
+# from 20260301
+Source239:      biblatex-iso690.tar.xz
+Source240:      biblatex-iso690.doc.tar.xz
 
 %description -n texlive-biblatex-iso690
 The package provides a bibliography and citation style which
@@ -14329,9 +15181,9 @@ Provides:       tex(jura2.cbx)
 Requires:       tex(ext-authortitle-ibid.bbx)
 Requires:       tex(ext-authortitle-ibid.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source223:      biblatex-jura2.tar.xz
-Source224:      biblatex-jura2.doc.tar.xz
+# from 20260301
+Source241:      biblatex-jura2.tar.xz
+Source242:      biblatex-jura2.doc.tar.xz
 
 %description -n texlive-biblatex-jura2
 The package offers BibLaTeX support for citations in German
@@ -14378,7 +15230,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-jura2/jura2.cbx
 
 %package -n texlive-biblatex-juradiss
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.23svn56502
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.23svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        BibLaTeX stylefiles for German law theses
@@ -14410,9 +15262,9 @@ Provides:       tex(biblatex-juradiss.cbx)
 Requires:       tex(authortitle-dw.bbx)
 Requires:       tex(authortitle-dw.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source225:      biblatex-juradiss.tar.xz
-Source226:      biblatex-juradiss.doc.tar.xz
+# from 20260301
+Source243:      biblatex-juradiss.tar.xz
+Source244:      biblatex-juradiss.doc.tar.xz
 
 %description -n texlive-biblatex-juradiss
 The package provides a custom citation-style for typesetting a
@@ -14420,7 +15272,7 @@ German law thesis with LaTeX. The package (using BibLaTeX) is
 based on biblatex-dw and uses biber.
 
 %package -n texlive-biblatex-juradiss-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.23svn56502
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.23svn77682
 Release:        0
 Summary:        Documentation for texlive-biblatex-juradiss
 License:        LPPL-1.0
@@ -14492,9 +15344,9 @@ Requires:       tex(biblatex.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source227:      biblatex-license.tar.xz
-Source228:      biblatex-license.doc.tar.xz
+# from 20260301
+Source245:      biblatex-license.tar.xz
+Source246:      biblatex-license.doc.tar.xz
 
 %description -n texlive-biblatex-license
 This package is for adding license data to bibliography entries
@@ -14572,9 +15424,9 @@ Provides:       tex(lncs.cbx)
 Requires:       tex(numeric.bbx)
 Requires:       tex(numeric.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source229:      biblatex-lncs.tar.xz
-Source230:      biblatex-lncs.doc.tar.xz
+# from 20260301
+Source247:      biblatex-lncs.tar.xz
+Source248:      biblatex-lncs.doc.tar.xz
 
 %description -n texlive-biblatex-lncs
 This is a BibLaTeX style for Springer Lecture Notes in Computer
@@ -14656,9 +15508,9 @@ Provides:       tex(LNI.cbx)
 Requires:       tex(alphabetic.bbx)
 Requires:       tex(alphabetic.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source231:      biblatex-lni.tar.xz
-Source232:      biblatex-lni.doc.tar.xz
+# from 20260301
+Source249:      biblatex-lni.tar.xz
+Source250:      biblatex-lni.doc.tar.xz
 
 %description -n texlive-biblatex-lni
 BibLaTeX style for the Lecture Notes in Informatics, which is
@@ -14750,9 +15602,9 @@ Requires:       tex(authoryear-icomp.cbx)
 Requires:       tex(verbose-inote.bbx)
 Requires:       tex(verbose-inote.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source233:      biblatex-luh-ipw.tar.xz
-Source234:      biblatex-luh-ipw.doc.tar.xz
+# from 20260301
+Source251:      biblatex-luh-ipw.tar.xz
+Source252:      biblatex-luh-ipw.doc.tar.xz
 
 %description -n texlive-biblatex-luh-ipw
 The bundle is a small collection of styles for BibLaTeX. It was
@@ -14851,9 +15703,9 @@ Requires:       tex(french.lbx)
 Requires:       tex(italian.lbx)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source235:      biblatex-manuscripts-philology.tar.xz
-Source236:      biblatex-manuscripts-philology.doc.tar.xz
+# from 20260301
+Source253:      biblatex-manuscripts-philology.tar.xz
+Source254:      biblatex-manuscripts-philology.doc.tar.xz
 
 %description -n texlive-biblatex-manuscripts-philology
 The package adds a new entry type: @manuscript to manage
@@ -14956,9 +15808,9 @@ Provides:       tex(portuguese-mla.lbx)
 Provides:       tex(spanish-mla.lbx)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source237:      biblatex-mla.tar.xz
-Source238:      biblatex-mla.doc.tar.xz
+# from 20260301
+Source255:      biblatex-mla.tar.xz
+Source256:      biblatex-mla.doc.tar.xz
 
 %description -n texlive-biblatex-mla
 The package provides BibLaTeX support for citations in the
@@ -15053,9 +15905,9 @@ Suggests:       texlive-biblatex-morenames-doc >= %{texlive_version}
 Provides:       tex(morenames.bbx)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source239:      biblatex-morenames.tar.xz
-Source240:      biblatex-morenames.doc.tar.xz
+# from 20260301
+Source257:      biblatex-morenames.tar.xz
+Source258:      biblatex-morenames.doc.tar.xz
 
 %description -n texlive-biblatex-morenames
 This package adds new fields of "name" type to the standard
@@ -15114,7 +15966,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-morenames/morenames.dbx
 
 %package -n texlive-biblatex-ms
-Version:        %{texlive_version}.%{texlive_noarch}.4.0_1svn66480
+Version:        %{texlive_version}.%{texlive_noarch}.4.0_1svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Sophisticated Bibliographies in LaTeX (multiscript version)
@@ -15291,14 +16143,14 @@ Requires:       tex(standard.bbx)
 Requires:       tex(url.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source241:      biblatex-ms.tar.xz
-Source242:      biblatex-ms.doc.tar.xz
+# from 20260301
+Source259:      biblatex-ms.tar.xz
+Source260:      biblatex-ms.doc.tar.xz
 
 %description -n texlive-biblatex-ms
 This package is the "multiscript" version of the BibLaTeX
 package intended to solve the issues faced by those wishing to
-create multiligual bibliographies. It is intended to be
+create multilingual bibliographies. It is intended to be
 backwards-compatible with the standard BibLaTeX package and
 includes significantly enhanced optional functionality: Fields
 in data files can have different form/language alternates in
@@ -15313,7 +16165,7 @@ package name is biblatex-ms. It requires the use of the
 multiscript version of biber (biber-ms).
 
 %package -n texlive-biblatex-ms-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.0_1svn66480
+Version:        %{texlive_version}.%{texlive_noarch}.4.0_1svn76924
 Release:        0
 Summary:        Documentation for texlive-biblatex-ms
 License:        LPPL-1.0
@@ -15658,9 +16510,9 @@ Provides:       tex(multiple-dm.bbx)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source243:      biblatex-multiple-dm.tar.xz
-Source244:      biblatex-multiple-dm.doc.tar.xz
+# from 20260301
+Source261:      biblatex-multiple-dm.tar.xz
+Source262:      biblatex-multiple-dm.doc.tar.xz
 
 %description -n texlive-biblatex-multiple-dm
 The package adds the possibility to BibLaTeX to load data
@@ -15741,9 +16593,9 @@ Provides:       tex(musuos.cbx)
 Requires:       tex(authortitle.bbx)
 Requires:       tex(verbose-ibid.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source245:      biblatex-musuos.tar.xz
-Source246:      biblatex-musuos.doc.tar.xz
+# from 20260301
+Source263:      biblatex-musuos.tar.xz
+Source264:      biblatex-musuos.doc.tar.xz
 
 %description -n texlive-biblatex-musuos
 The style is designed for use with the musuos class, but it
@@ -15822,9 +16674,9 @@ Provides:       tex(nature.cbx)
 Requires:       tex(numeric-comp.bbx)
 Requires:       tex(numeric-comp.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source247:      biblatex-nature.tar.xz
-Source248:      biblatex-nature.doc.tar.xz
+# from 20260301
+Source265:      biblatex-nature.tar.xz
+Source266:      biblatex-nature.doc.tar.xz
 
 %description -n texlive-biblatex-nature
 The bundle offers styles that allow authors to use BibLaTeX
@@ -15902,9 +16754,9 @@ Provides:       tex(nejm.cbx)
 Requires:       tex(numeric-comp.cbx)
 Requires:       tex(numeric.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source249:      biblatex-nejm.tar.xz
-Source250:      biblatex-nejm.doc.tar.xz
+# from 20260301
+Source267:      biblatex-nejm.tar.xz
+Source268:      biblatex-nejm.doc.tar.xz
 
 %description -n texlive-biblatex-nejm
 This is a BibLaTeX numeric style based on the design of the New
@@ -15983,9 +16835,9 @@ Requires:       tex(authoryear.bbx)
 Requires:       tex(british.sty)
 Requires:       tex(csquotes.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source251:      biblatex-nottsclassic.tar.xz
-Source252:      biblatex-nottsclassic.doc.tar.xz
+# from 20260301
+Source269:      biblatex-nottsclassic.tar.xz
+Source270:      biblatex-nottsclassic.doc.tar.xz
 
 %description -n texlive-biblatex-nottsclassic
 This citation-style covers the citation and bibliography rules
@@ -16031,7 +16883,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-nottsclassic/nottsclassic.cbx
 
 %package -n texlive-biblatex-opcit-booktitle
-Version:        %{texlive_version}.%{texlive_noarch}.1.9.0svn48983
+Version:        %{texlive_version}.%{texlive_noarch}.1.9.0svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        Use op. cit. for the booktitle of a subentry
@@ -16063,9 +16915,9 @@ Requires:       tex(ltxcmds.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source253:      biblatex-opcit-booktitle.tar.xz
-Source254:      biblatex-opcit-booktitle.doc.tar.xz
+# from 20260301
+Source271:      biblatex-opcit-booktitle.tar.xz
+Source272:      biblatex-opcit-booktitle.doc.tar.xz
 
 %description -n texlive-biblatex-opcit-booktitle
 The default citation styles verbose-trad1+; verbose-trad2 ;
@@ -16078,7 +16930,7 @@ Booktitle, Location, Publisher, Year, pages xxx Author2,
 Title2, in Booktitle, op. cit, pages.
 
 %package -n texlive-biblatex-opcit-booktitle-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.9.0svn48983
+Version:        %{texlive_version}.%{texlive_noarch}.1.9.0svn76790
 Release:        0
 Summary:        Documentation for texlive-biblatex-opcit-booktitle
 License:        LPPL-1.0
@@ -16191,9 +17043,9 @@ Requires:       tex(verbose.cbx)
 Requires:       tex(xpatch.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source255:      biblatex-oxref.tar.xz
-Source256:      biblatex-oxref.doc.tar.xz
+# from 20260301
+Source273:      biblatex-oxref.tar.xz
+Source274:      biblatex-oxref.doc.tar.xz
 
 %description -n texlive-biblatex-oxref
 This bundle provides four BibLaTeX styles that implement (many
@@ -16335,9 +17187,9 @@ Requires:       tex(authoryear-comp.cbx)
 Requires:       tex(standard.bbx)
 Requires:       tex(verbose-trad2.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source257:      biblatex-philosophy.tar.xz
-Source258:      biblatex-philosophy.doc.tar.xz
+# from 20260301
+Source275:      biblatex-philosophy.tar.xz
+Source276:      biblatex-philosophy.doc.tar.xz
 
 %description -n texlive-biblatex-philosophy
 The bundle offers two styles - philosophy-classic and
@@ -16398,7 +17250,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-philosophy/spanish-philosophy.lbx
 
 %package -n texlive-biblatex-phys
-Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn71905
+Version:        %{texlive_version}.%{texlive_noarch}.1.1esvn74898
 Release:        0
 License:        LPPL-1.0
 Summary:        A BibLaTeX implementation of the AIP and APS bibliography style
@@ -16430,9 +17282,9 @@ Provides:       tex(phys.cbx)
 Requires:       tex(numeric-comp.bbx)
 Requires:       tex(numeric-comp.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source259:      biblatex-phys.tar.xz
-Source260:      biblatex-phys.doc.tar.xz
+# from 20260301
+Source277:      biblatex-phys.tar.xz
+Source278:      biblatex-phys.doc.tar.xz
 
 %description -n texlive-biblatex-phys
 The package provides an implementation of the bibliography
@@ -16445,7 +17297,7 @@ options are provided to cover the minor formatting variations
 between the AIP and APS bibliography styles.
 
 %package -n texlive-biblatex-phys-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn71905
+Version:        %{texlive_version}.%{texlive_noarch}.1.1esvn74898
 Release:        0
 Summary:        Documentation for texlive-biblatex-phys
 License:        LPPL-1.0
@@ -16485,7 +17337,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-phys/phys.dbx
 
 %package -n texlive-biblatex-publist
-Version:        %{texlive_version}.%{texlive_noarch}.2.13svn72079
+Version:        %{texlive_version}.%{texlive_noarch}.2.16svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        BibLaTeX bibliography support for publication lists
@@ -16522,6 +17374,7 @@ Provides:       tex(canadian-publist.lbx)
 Provides:       tex(english-publist.lbx)
 Provides:       tex(french-publist.lbx)
 Provides:       tex(german-publist.lbx)
+Provides:       tex(greek-publist.lbx)
 Provides:       tex(naustrian-publist.lbx)
 Provides:       tex(newzealand-publist.lbx)
 Provides:       tex(ngerman-publist.lbx)
@@ -16534,11 +17387,13 @@ Requires:       tex(british.lbx)
 Requires:       tex(english.lbx)
 Requires:       tex(german.lbx)
 Requires:       tex(numeric.cbx)
+Requires:       tex(pict2e.sty)
 Requires:       tex(swissgerman.lbx)
+Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source261:      biblatex-publist.tar.xz
-Source262:      biblatex-publist.doc.tar.xz
+# from 20260301
+Source279:      biblatex-publist.tar.xz
+Source280:      biblatex-publist.doc.tar.xz
 
 %description -n texlive-biblatex-publist
 The package provides a BibLaTeX bibliography style file (*.bbx)
@@ -16549,7 +17404,7 @@ author's own name from author or editor data. At least version
 3.4 of biblatex is required.
 
 %package -n texlive-biblatex-publist-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.13svn72079
+Version:        %{texlive_version}.%{texlive_noarch}.2.16svn77682
 Release:        0
 Summary:        Documentation for texlive-biblatex-publist
 License:        LPPL-1.0
@@ -16593,6 +17448,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-publist/lbx/english-publist.lbx
 %{_texmfdistdir}/tex/latex/biblatex-publist/lbx/french-publist.lbx
 %{_texmfdistdir}/tex/latex/biblatex-publist/lbx/german-publist.lbx
+%{_texmfdistdir}/tex/latex/biblatex-publist/lbx/greek-publist.lbx
 %{_texmfdistdir}/tex/latex/biblatex-publist/lbx/naustrian-publist.lbx
 %{_texmfdistdir}/tex/latex/biblatex-publist/lbx/newzealand-publist.lbx
 %{_texmfdistdir}/tex/latex/biblatex-publist/lbx/ngerman-publist.lbx
@@ -16633,9 +17489,9 @@ Suggests:       texlive-biblatex-readbbl-doc >= %{texlive_version}
 Provides:       tex(biblatex-readbbl.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source263:      biblatex-readbbl.tar.xz
-Source264:      biblatex-readbbl.doc.tar.xz
+# from 20260301
+Source281:      biblatex-readbbl.tar.xz
+Source282:      biblatex-readbbl.doc.tar.xz
 
 %description -n texlive-biblatex-readbbl
 This small package modifies the biblatex macro which reads a
@@ -16714,9 +17570,9 @@ Suggests:       texlive-biblatex-realauthor-doc >= %{texlive_version}
 Provides:       tex(realauthor.bbx)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source265:      biblatex-realauthor.tar.xz
-Source266:      biblatex-realauthor.doc.tar.xz
+# from 20260301
+Source283:      biblatex-realauthor.tar.xz
+Source284:      biblatex-realauthor.doc.tar.xz
 
 %description -n texlive-biblatex-realauthor
 This package allows to use a new field "realauthor", which
@@ -16817,9 +17673,9 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(titletoc.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source267:      biblatex-sbl.tar.xz
-Source268:      biblatex-sbl.doc.tar.xz
+# from 20260301
+Source285:      biblatex-sbl.tar.xz
+Source286:      biblatex-sbl.doc.tar.xz
 
 %description -n texlive-biblatex-sbl
 The package provides BibLaTeX support for citations in the
@@ -16915,9 +17771,9 @@ Provides:       tex(science.cbx)
 Requires:       tex(numeric-comp.bbx)
 Requires:       tex(numeric-comp.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source269:      biblatex-science.tar.xz
-Source270:      biblatex-science.doc.tar.xz
+# from 20260301
+Source287:      biblatex-science.tar.xz
+Source288:      biblatex-science.doc.tar.xz
 
 %description -n texlive-biblatex-science
 The bundle offers styles that allow authors to use BibLaTeX
@@ -16993,9 +17849,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-biblatex-shortfields-doc >= %{texlive_version}
 Provides:       tex(biblatex-shortfields.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source271:      biblatex-shortfields.tar.xz
-Source272:      biblatex-shortfields.doc.tar.xz
+# from 20260301
+Source289:      biblatex-shortfields.tar.xz
+Source290:      biblatex-shortfields.doc.tar.xz
 
 %description -n texlive-biblatex-shortfields
 The BibLaTeX package provides shortseries and shortjournal
@@ -17056,7 +17912,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-shortfields/biblatex-shortfields.sty
 
 %package -n texlive-biblatex-socialscienceshuberlin
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.1svn47839
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.1svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        BibLaTeX-style for the social sciences at HU Berlin
@@ -17090,16 +17946,16 @@ Requires:       tex(ext-authoryear.bbx)
 Requires:       tex(ext-authoryear.cbx)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source273:      biblatex-socialscienceshuberlin.tar.xz
-Source274:      biblatex-socialscienceshuberlin.doc.tar.xz
+# from 20260301
+Source291:      biblatex-socialscienceshuberlin.tar.xz
+Source292:      biblatex-socialscienceshuberlin.doc.tar.xz
 
 %description -n texlive-biblatex-socialscienceshuberlin
 This is a BibLaTeX style for the social sciences at the
 Humboldt-Universitat zu Berlin.
 
 %package -n texlive-biblatex-socialscienceshuberlin-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.1svn47839
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.1svn76790
 Release:        0
 Summary:        Documentation for texlive-biblatex-socialscienceshuberlin
 License:        LPPL-1.0
@@ -17139,7 +17995,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-socialscienceshuberlin/socialscienceshuberlin.cbx
 
 %package -n texlive-biblatex-software
-Version:        %{texlive_version}.%{texlive_noarch}.1.2_6svn73321
+Version:        %{texlive_version}.%{texlive_noarch}.1.2_8svn77180
 Release:        0
 License:        LPPL-1.0
 Summary:        BibLaTeX stylefiles for software products
@@ -17174,9 +18030,9 @@ Requires:       tex(english.lbx)
 Requires:       tex(french.lbx)
 Requires:       tex(xurl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source275:      biblatex-software.tar.xz
-Source276:      biblatex-software.doc.tar.xz
+# from 20260301
+Source293:      biblatex-software.tar.xz
+Source294:      biblatex-software.doc.tar.xz
 
 %description -n texlive-biblatex-software
 This package implements software entry types for BibLaTeX in
@@ -17184,7 +18040,7 @@ the form of a bibliography style extension. It requires the
 Biber backend.
 
 %package -n texlive-biblatex-software-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2_6svn73321
+Version:        %{texlive_version}.%{texlive_noarch}.1.2_8svn77180
 Release:        0
 Summary:        Documentation for texlive-biblatex-software
 License:        LPPL-1.0
@@ -17213,6 +18069,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-software-doc
+%{_texmfdistdir}/doc/latex/biblatex-software/Changes
 %{_texmfdistdir}/doc/latex/biblatex-software/LICENSE
 %{_texmfdistdir}/doc/latex/biblatex-software/README.md
 %{_texmfdistdir}/doc/latex/biblatex-software/biblio.bib
@@ -17223,6 +18080,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-software/sample-use-sty.pdf
 %{_texmfdistdir}/doc/latex/biblatex-software/sample-use-sty.tex
 %{_texmfdistdir}/doc/latex/biblatex-software/sample.tex
+%{_texmfdistdir}/doc/latex/biblatex-software/showcase-crossref.bib
+%{_texmfdistdir}/doc/latex/biblatex-software/showcase-crossref.pdf
+%{_texmfdistdir}/doc/latex/biblatex-software/showcase-crossref.tex
 %{_texmfdistdir}/doc/latex/biblatex-software/software-biblatex.pdf
 %{_texmfdistdir}/doc/latex/biblatex-software/software-biblatex.tex
 %{_texmfdistdir}/doc/latex/biblatex-software/stublist
@@ -17236,7 +18096,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-software/software.dbx
 
 %package -n texlive-biblatex-source-division
-Version:        %{texlive_version}.%{texlive_noarch}.2.4.2svn45379
+Version:        %{texlive_version}.%{texlive_noarch}.2.4.2svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        References by "division" in classical sources
@@ -17267,9 +18127,9 @@ Provides:       tex(biblatex-source-division.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source277:      biblatex-source-division.tar.xz
-Source278:      biblatex-source-division.doc.tar.xz
+# from 20260301
+Source295:      biblatex-source-division.tar.xz
+Source296:      biblatex-source-division.doc.tar.xz
 
 %description -n texlive-biblatex-source-division
 The package enables the user to make reference to "division
@@ -17281,7 +18141,7 @@ square brackets may include the "division" specification, as in
 \cite[(<division spec.>)<page number>]{<document>}
 
 %package -n texlive-biblatex-source-division-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.4.2svn45379
+Version:        %{texlive_version}.%{texlive_noarch}.2.4.2svn76790
 Release:        0
 Summary:        Documentation for texlive-biblatex-source-division
 License:        LPPL-1.0
@@ -17354,9 +18214,9 @@ Provides:       tex(biblatex-spbasic.lbx)
 Requires:       tex(authoryear.bbx)
 Requires:       tex(authoryear.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source279:      biblatex-spbasic.tar.xz
-Source280:      biblatex-spbasic.doc.tar.xz
+# from 20260301
+Source297:      biblatex-spbasic.tar.xz
+Source298:      biblatex-spbasic.doc.tar.xz
 
 %description -n texlive-biblatex-spbasic
 This package provides a bibliography and citation style for
@@ -17405,7 +18265,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-spbasic/biblatex-spbasic.lbx
 
 %package -n texlive-biblatex-subseries
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn43330
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        Manages subseries with BibLaTeX
@@ -17435,9 +18295,9 @@ Suggests:       texlive-biblatex-subseries-doc >= %{texlive_version}
 Provides:       tex(subseries.bbx)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source281:      biblatex-subseries.tar.xz
-Source282:      biblatex-subseries.doc.tar.xz
+# from 20260301
+Source299:      biblatex-subseries.tar.xz
+Source300:      biblatex-subseries.doc.tar.xz
 
 %description -n texlive-biblatex-subseries
 Some publishers organize book series with subseries. In this
@@ -17448,7 +18308,7 @@ Orientalium published by Peeters. This package provides new
 fields to manage such system.
 
 %package -n texlive-biblatex-subseries-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn43330
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn76790
 Release:        0
 Summary:        Documentation for texlive-biblatex-subseries
 License:        LPPL-1.0
@@ -17491,7 +18351,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-subseries/subseries.dbx
 
 %package -n texlive-biblatex-swiss-legal
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.2asvn64491
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.2asvn78219
 Release:        0
 License:        LPPL-1.0
 Summary:        Bibliography and citation styles following Swiss legal practice
@@ -17535,9 +18395,9 @@ Requires:       tex(french.lbx)
 Requires:       tex(ngerman.lbx)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source283:      biblatex-swiss-legal.tar.xz
-Source284:      biblatex-swiss-legal.doc.tar.xz
+# from 20260301
+Source301:      biblatex-swiss-legal.tar.xz
+Source302:      biblatex-swiss-legal.doc.tar.xz
 
 %description -n texlive-biblatex-swiss-legal
 The package provides BibLaTeX bibliography and citation styles
@@ -17549,7 +18409,7 @@ at present outdated and does not work properly with newer
 versions of BibLaTeX.
 
 %package -n texlive-biblatex-swiss-legal-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.2asvn64491
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.2asvn78219
 Release:        0
 Summary:        Documentation for texlive-biblatex-swiss-legal
 License:        LPPL-1.0
@@ -17599,7 +18459,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-swiss-legal/biblatex-swiss-legal-shortarticle.cbx
 
 %package -n texlive-biblatex-trad
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn58169
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        "Traditional" BibTeX styles with BibLaTeX
@@ -17640,16 +18500,16 @@ Requires:       tex(alphabetic.cbx)
 Requires:       tex(numeric.cbx)
 Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source285:      biblatex-trad.tar.xz
-Source286:      biblatex-trad.doc.tar.xz
+# from 20260301
+Source303:      biblatex-trad.tar.xz
+Source304:      biblatex-trad.doc.tar.xz
 
 %description -n texlive-biblatex-trad
 The bundle provides implementations of the "traditional" BibTeX
 styles (plain, abbrev, unsrt and alpha) with BibLaTeX.
 
 %package -n texlive-biblatex-trad-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn58169
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn77682
 Release:        0
 Summary:        Documentation for texlive-biblatex-trad
 License:        LPPL-1.0
@@ -17695,7 +18555,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-trad/trad-unsrt.cbx
 
 %package -n texlive-biblatex-true-citepages-omit
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.0svn44653
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.0svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        Correction of some limitation of the citepages=omit option of BibLaTeX styles
@@ -17725,9 +18585,9 @@ Suggests:       texlive-biblatex-true-citepages-omit-doc >= %{texlive_version}
 Provides:       tex(biblatex-true-citepages-omit.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source287:      biblatex-true-citepages-omit.tar.xz
-Source288:      biblatex-true-citepages-omit.doc.tar.xz
+# from 20260301
+Source305:      biblatex-true-citepages-omit.tar.xz
+Source306:      biblatex-true-citepages-omit.doc.tar.xz
 
 %description -n texlive-biblatex-true-citepages-omit
 This package deals with a limitation of the citepages=omit
@@ -17736,7 +18596,7 @@ works when you \cite[xx]{key}, but not when you \cite[\pno~xx,
 some text]{key}. The package corrects this problem.
 
 %package -n texlive-biblatex-true-citepages-omit-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.0svn44653
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.0svn76790
 Release:        0
 Summary:        Documentation for texlive-biblatex-true-citepages-omit
 License:        LPPL-1.0
@@ -17812,9 +18672,9 @@ Requires:       tex(authoryear-comp.cbx)
 Requires:       tex(authoryear.bbx)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source289:      biblatex-unified.tar.xz
-Source290:      biblatex-unified.doc.tar.xz
+# from 20260301
+Source307:      biblatex-unified.tar.xz
+Source308:      biblatex-unified.doc.tar.xz
 
 %description -n texlive-biblatex-unified
 BibLaTeX-unified is an opinionated BibLaTeX implementation of
@@ -17865,7 +18725,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-unified/unified.cbx
 
 %package -n texlive-biblatex-vancouver
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn55339
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn75301
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Vancouver style for BibLaTeX
@@ -17898,16 +18758,16 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(numeric.bbx)
 Requires:       tex(numeric.cbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source291:      biblatex-vancouver.tar.xz
-Source292:      biblatex-vancouver.doc.tar.xz
+# from 20260301
+Source309:      biblatex-vancouver.tar.xz
+Source310:      biblatex-vancouver.doc.tar.xz
 
 %description -n texlive-biblatex-vancouver
 This package provides the Vancouver reference style for
 BibLaTeX. It is based on the numeric style and requires biber.
 
 %package -n texlive-biblatex-vancouver-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn55339
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn75301
 Release:        0
 Summary:        Documentation for texlive-biblatex-vancouver
 License:        GPL-2.0-or-later
@@ -17944,7 +18804,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex-vancouver/vancouver.cbx
 
 %package -n texlive-biblatex2bibitem
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.2svn67201
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Convert BibLaTeX-generated bibliography to bibitems
@@ -17974,9 +18834,9 @@ Suggests:       texlive-biblatex2bibitem-doc >= %{texlive_version}
 Provides:       tex(biblatex2bibitem.sty)
 Requires:       tex(biblatex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source293:      biblatex2bibitem.tar.xz
-Source294:      biblatex2bibitem.doc.tar.xz
+# from 20260301
+Source311:      biblatex2bibitem.tar.xz
+Source312:      biblatex2bibitem.doc.tar.xz
 
 %description -n texlive-biblatex2bibitem
 Some journals accept the reference list only as \bibitems. If
@@ -17988,7 +18848,7 @@ your reference list by hand, or something like that. Using the
 workaround provided by this package solves the problem.
 
 %package -n texlive-biblatex2bibitem-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.2svn67201
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.2svn77682
 Release:        0
 Summary:        Documentation for texlive-biblatex2bibitem
 License:        LPPL-1.0
@@ -18035,7 +18895,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblatex2bibitem/biblatex2bibitem.sty
 
 %package -n texlive-bibleref
-Version:        %{texlive_version}.%{texlive_noarch}.1.25svn55626
+Version:        %{texlive_version}.%{texlive_noarch}.1.26.0svn75257
 Release:        0
 License:        LPPL-1.0
 Summary:        Format bible citations
@@ -18068,10 +18928,11 @@ Requires:       tex(amsgen.sty)
 Requires:       tex(fmtcount.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
+Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source295:      bibleref.tar.xz
-Source296:      bibleref.doc.tar.xz
+# from 20260301
+Source313:      bibleref.tar.xz
+Source314:      bibleref.doc.tar.xz
 
 %description -n texlive-bibleref
 The bibleref package offers consistent formatting of references
@@ -18079,7 +18940,7 @@ to parts of the Christian bible, in a number of well-defined
 formats. It depends on ifthen, fmtcount, and amsgen.
 
 %package -n texlive-bibleref-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.25svn55626
+Version:        %{texlive_version}.%{texlive_noarch}.1.26.0svn75257
 Release:        0
 Summary:        Documentation for texlive-bibleref
 License:        LPPL-1.0
@@ -18108,8 +18969,8 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibleref-doc
-%{_texmfdistdir}/doc/latex/bibleref/CHANGES
-%{_texmfdistdir}/doc/latex/bibleref/README
+%{_texmfdistdir}/doc/latex/bibleref/CHANGELOG-bibleref.md
+%{_texmfdistdir}/doc/latex/bibleref/README.md
 %{_texmfdistdir}/doc/latex/bibleref/bibleref.pdf
 %{_texmfdistdir}/doc/latex/bibleref/makefile
 %{_texmfdistdir}/doc/latex/bibleref/sample.ist
@@ -18123,7 +18984,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bibleref/bibleref.sty
 
 %package -n texlive-bibleref-french
-Version:        %{texlive_version}.%{texlive_noarch}.2.3.3svn53138
+Version:        %{texlive_version}.%{texlive_noarch}.2.4.0svn75246
 Release:        0
 License:        LPPL-1.0
 Summary:        French translations for bibleref
@@ -18154,23 +19015,23 @@ Provides:       tex(bibleref-french.sty)
 Requires:       tex(bibleref.sty)
 Requires:       tex(etoolbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source297:      bibleref-french.tar.xz
-Source298:      bibleref-french.doc.tar.xz
+# from 20260301
+Source315:      bibleref-french.tar.xz
+Source316:      bibleref-french.doc.tar.xz
 
 %description -n texlive-bibleref-french
 The package provides translations and alternative typesetting
 conventions for use of bibleref in French.
 
 %package -n texlive-bibleref-french-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3.3svn53138
+Version:        %{texlive_version}.%{texlive_noarch}.2.4.0svn75246
 Release:        0
 Summary:        Documentation for texlive-bibleref-french
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Supplements:    (texlive-bibleref-french and texlive-alldocumentation)
-Provides:       locale(texlive-bibleref-french-doc:fr;en)
+Provides:       locale(texlive-bibleref-french-doc:fr)
 
 %description -n texlive-bibleref-french-doc
 This package includes the documentation for texlive-bibleref-french
@@ -18194,7 +19055,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibleref-french-doc
 %{_texmfdistdir}/doc/latex/bibleref-french/Lacroux-Bible.pdf
-%{_texmfdistdir}/doc/latex/bibleref-french/README
+%{_texmfdistdir}/doc/latex/bibleref-french/README.md
 %{_texmfdistdir}/doc/latex/bibleref-french/bible.bib
 %{_texmfdistdir}/doc/latex/bibleref-french/bibleref-french-francais.pdf
 %{_texmfdistdir}/doc/latex/bibleref-french/bibleref-french-francais.tex
@@ -18239,9 +19100,9 @@ Provides:       tex(bibleref-german.sty)
 Requires:       tex(bibleref.sty)
 Requires:       tex(etoolbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source299:      bibleref-german.tar.xz
-Source300:      bibleref-german.doc.tar.xz
+# from 20260301
+Source317:      bibleref-german.tar.xz
+Source318:      bibleref-german.doc.tar.xz
 
 %description -n texlive-bibleref-german
 The package provides translations and various formats for the
@@ -18328,9 +19189,9 @@ Requires:       tex(bibleref-mouth.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source301:      bibleref-lds.tar.xz
-Source302:      bibleref-lds.doc.tar.xz
+# from 20260301
+Source319:      bibleref-lds.tar.xz
+Source320:      bibleref-lds.doc.tar.xz
 
 %description -n texlive-bibleref-lds
 The package extends the bibleref-mouth package to support
@@ -18407,9 +19268,9 @@ Provides:       tex(bibleref-mouth.sty)
 Requires:       tex(fmtcount.sty)
 Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source303:      bibleref-mouth.tar.xz
-Source304:      bibleref-mouth.doc.tar.xz
+# from 20260301
+Source321:      bibleref-mouth.tar.xz
+Source322:      bibleref-mouth.doc.tar.xz
 
 %description -n texlive-bibleref-mouth
 The package allows Bible references to be formatted in a
@@ -18488,9 +19349,9 @@ Requires:       tex(bibleref.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(scrlfile.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source305:      bibleref-parse.tar.xz
-Source306:      bibleref-parse.doc.tar.xz
+# from 20260301
+Source323:      bibleref-parse.tar.xz
+Source324:      bibleref-parse.doc.tar.xz
 
 %description -n texlive-bibleref-parse
 The package parses Bible passages that are given in human
@@ -18567,9 +19428,9 @@ Provides:       tex(bibletext.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source307:      bibletext.tar.xz
-Source308:      bibletext.doc.tar.xz
+# from 20260301
+Source325:      bibletext.tar.xz
+Source326:      bibletext.doc.tar.xz
 
 %description -n texlive-bibletext
 The package allows to insert Bible texts in a document by
@@ -18614,7 +19475,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bibletext/bibletext.sty
 
 %package -n texlive-biblist
-Version:        %{texlive_version}.%{texlive_noarch}.svn17116
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Print a BibTeX database
@@ -18643,9 +19504,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-biblist-doc >= %{texlive_version}
 Provides:       tex(biblist.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source309:      biblist.tar.xz
-Source310:      biblist.doc.tar.xz
+# from 20260301
+Source327:      biblist.tar.xz
+Source328:      biblist.doc.tar.xz
 
 %description -n texlive-biblist
 The package provides the means of listing an entire BibTeX
@@ -18653,7 +19514,7 @@ database, avoiding the potentially large (macro) impact
 associated with \nocite{*}.
 
 %package -n texlive-biblist-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn17116
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-biblist
 License:        GPL-2.0-or-later
@@ -18692,7 +19553,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/biblist/biblist.sty
 
 %package -n texlive-bibtex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.99dsvn73848
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.99esvn77830
 Release:        0
 License:        SUSE-TeX
 Summary:        Process bibliographies (bib files) for LaTeX or other formats
@@ -18726,9 +19587,9 @@ Suggests:       texlive-bibtex-doc >= %{texlive_version}
 Provides:       tex(apalike.sty)
 Provides:       tex(apalike.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source311:      bibtex.tar.xz
-Source312:      bibtex.doc.tar.xz
+# from 20260301
+Source329:      bibtex.tar.xz
+Source330:      bibtex.doc.tar.xz
 
 %description -n texlive-bibtex
 BibTeX allows the user to store his citation data in generic
@@ -18744,7 +19605,7 @@ character sets. Another Unicode-aware alternative is the
 package to typeset its output.
 
 %package -n texlive-bibtex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.99dsvn73848
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.99esvn77830
 Release:        0
 Summary:        Documentation for texlive-bibtex
 License:        SUSE-TeX
@@ -18797,7 +19658,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/bibtex/apalike.tex
 
 %package -n texlive-bibtex8
-Version:        %{texlive_version}.%{texlive_noarch}.3.72svn66186
+Version:        %{texlive_version}.%{texlive_noarch}.svn75712
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        BibTeX variant supporting 8-bit encodings
@@ -18827,9 +19688,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bibtex8-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source313:      bibtex8.tar.xz
-Source314:      bibtex8.doc.tar.xz
+# from 20260301
+Source331:      bibtex8.tar.xz
+Source332:      bibtex8.doc.tar.xz
 
 %description -n texlive-bibtex8
 An enhanced, portable C version of BibTeX. Enhanced by
@@ -18841,7 +19702,7 @@ written by Niel Kempson and Alejandro Aguilar-Sierra, it is now
 maintained as part of TeX Live.
 
 %package -n texlive-bibtex8-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.72svn66186
+Version:        %{texlive_version}.%{texlive_noarch}.svn75712
 Release:        0
 Summary:        Documentation for texlive-bibtex8
 License:        GPL-2.0-or-later
@@ -18893,7 +19754,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/bibtex/csf/polish-csf/iso8859-7.csf
 
 %package -n texlive-bibtexperllibs
-Version:        %{texlive_version}.%{texlive_noarch}.1.91svn72184
+Version:        %{texlive_version}.%{texlive_noarch}.1.93svn76255
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        BibTeX Perl Libraries
@@ -18951,9 +19812,9 @@ Requires:       perl(utf8)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source315:      bibtexperllibs.tar.xz
-Source316:      bibtexperllibs.doc.tar.xz
+# from 20260301
+Source333:      bibtexperllibs.tar.xz
+Source334:      bibtexperllibs.doc.tar.xz
 
 %description -n texlive-bibtexperllibs
 This package provides BibTeX related Perl libraries by Gerhard
@@ -18964,7 +19825,7 @@ have been packaged here mostly for Boris Veytsman's BibTeX
 suite, but can be used in any other Perl script.
 
 %package -n texlive-bibtexperllibs-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.91svn72184
+Version:        %{texlive_version}.%{texlive_noarch}.1.93svn76255
 Release:        0
 Summary:        Documentation for texlive-bibtexperllibs
 License:        GPL-2.0-or-later
@@ -19035,8 +19896,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(bibtexu.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source317:      bibtexu.doc.tar.xz
+# from 20260301
+Source335:      bibtexu.doc.tar.xz
 
 %description -n texlive-bibtexu
 An enhanced, portable C version of BibTeX. Unicode is supported
@@ -19071,7 +19932,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/bibtexu.1*
 
 %package -n texlive-bibtools
-Version:        %{texlive_version}.%{texlive_noarch}.svn67386
+Version:        %{texlive_version}.%{texlive_noarch}.svn75712
 Release:        0
 License:        LPPL-1.0
 Summary:        Bib management tools
@@ -19098,14 +19959,14 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source318:      bibtools.tar.xz
+# from 20260301
+Source336:      bibtools.tar.xz
 
 %description -n texlive-bibtools
 A set of bibliography tools. Includes: aux2bib, a perl script
 which will take an .aux file and make a portable .bib file to
 go with it; bibify, a shell script that will optimise away one
-pass of the LaTeX/BibTeX cycle, in some cases bibkey, a shell
+pass of the LaTeX/BibTeX cycle, in some cases; bibkey, a shell
 script that finds entries whose "keyword" field matches the
 given keys (uses sed and awk); cleantex, a shell script to tidy
 up after a LaTeX run; looktex, a shell script to list entries
@@ -19139,7 +20000,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/bibtex/bst/bibtools/abstract.bst
 
 %package -n texlive-bibtopic
-Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Include multiple bibliographies in a document
@@ -19169,9 +20030,9 @@ Suggests:       texlive-bibtopic-doc >= %{texlive_version}
 Provides:       tex(bibtopic.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source319:      bibtopic.tar.xz
-Source320:      bibtopic.doc.tar.xz
+# from 20260301
+Source337:      bibtopic.tar.xz
+Source338:      bibtopic.doc.tar.xz
 
 %description -n texlive-bibtopic
 The package allows the user to include several bibliographies
@@ -19187,7 +20048,7 @@ specific to one part of a document, see the packages bibunits
 or chapterbib.
 
 %package -n texlive-bibtopic-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn77682
 Release:        0
 Summary:        Documentation for texlive-bibtopic
 License:        GPL-2.0-or-later
@@ -19257,9 +20118,9 @@ Provides:       tex(bibtopicprefix.sty)
 Requires:       tex(bibtopic.sty)
 Requires:       tex(scrlfile.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source321:      bibtopicprefix.tar.xz
-Source322:      bibtopicprefix.doc.tar.xz
+# from 20260301
+Source339:      bibtopicprefix.tar.xz
+Source340:      bibtopicprefix.doc.tar.xz
 
 %description -n texlive-bibtopicprefix
 The package permits users to apply prefixes (fixed strings) to
@@ -19304,7 +20165,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bibtopicprefix/bibtopicprefix.sty
 
 %package -n texlive-bibunits
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Multiple bibliographies in one document
@@ -19333,9 +20194,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bibunits-doc >= %{texlive_version}
 Provides:       tex(bibunits.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source323:      bibunits.tar.xz
-Source324:      bibunits.doc.tar.xz
+# from 20260301
+Source341:      bibunits.tar.xz
+Source342:      bibunits.doc.tar.xz
 
 %description -n texlive-bibunits
 The package provide a mechanism to generate separate
@@ -19349,7 +20210,7 @@ the same time. The package is compatible with koma-script and
 with the babel French option frenchb.
 
 %package -n texlive-bibunits-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn77682
 Release:        0
 Summary:        Documentation for texlive-bibunits
 License:        LPPL-1.0
@@ -19386,10 +20247,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bibunits/bibunits.sty
 
 %package -n texlive-bidi
-Version:        %{texlive_version}.%{texlive_noarch}.25.2.2svn73698
+Version:        %{texlive_version}.%{texlive_noarch}.26.01.08svn77682
 Release:        0
 License:        LPPL-1.0
-Summary:        Bidirectional typesetting in plain TeX and LaTeX, using XeTeX
+Summary:        Bidirectional typesetting in plain TeX and LaTeX, using XeTeX or LuaTeX
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -19508,12 +20369,14 @@ Provides:       tex(fleqn-xetex-bidi.def)
 Provides:       tex(float-xetex-bidi.def)
 Provides:       tex(floatrow-xetex-bidi.def)
 Provides:       tex(flowfram-xetex-bidi.def)
+Provides:       tex(fnpct-xetex-bidi.def)
 Provides:       tex(footnote-xetex-bidi.def)
 Provides:       tex(footnotebackref-xetex-bidi.def)
 Provides:       tex(framed-xetex-bidi.def)
 Provides:       tex(ftnright-xetex-bidi.def)
 Provides:       tex(geometry-xetex-bidi.def)
 Provides:       tex(graphicx-xetex-bidi.def)
+Provides:       tex(hgeneric-testphase-xetex-bidi.def)
 Provides:       tex(hvfloat-xetex-bidi.def)
 Provides:       tex(hyperref-xetex-bidi.def)
 Provides:       tex(imsproc-xetex-bidi.def)
@@ -19541,7 +20404,6 @@ Provides:       tex(ntheorem-xetex-bidi.def)
 Provides:       tex(overpic-xetex-bidi.def)
 Provides:       tex(pdfbase-xetex-bidi.def)
 Provides:       tex(pdflscape-xetex-bidi.def)
-Provides:       tex(pdfpages-xetex-bidi.def)
 Provides:       tex(pgfcorescopes.code-xetex-bidi.def)
 Provides:       tex(pgfsys-xetex-bidi.def)
 Provides:       tex(picinpar-xetex-bidi.def)
@@ -19566,6 +20428,7 @@ Provides:       tex(tabularx-xetex-bidi.def)
 Provides:       tex(tabulary-xetex-bidi.def)
 Provides:       tex(tc-xetex-xetex-bidi.def)
 Provides:       tex(tcolorbox-xetex-bidi.def)
+Provides:       tex(thmbox-xetex-bidi.def)
 Provides:       tex(titlesec-xetex-bidi.def)
 Provides:       tex(titletoc-xetex-bidi.def)
 Provides:       tex(tocbasic-xetex-bidi.def)
@@ -19605,17 +20468,18 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(zref-abspage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source325:      bidi.tar.xz
-Source326:      bidi.doc.tar.xz
+# from 20260301
+Source343:      bidi.tar.xz
+Source344:      bidi.doc.tar.xz
 
 %description -n texlive-bidi
 A convenient interface for typesetting bidirectional texts with
-plain TeX and LaTeX. The package includes adaptations for use
-with many other commonly-used packages.
+plain TeX and LaTeX, using XeTeX or LuaTeX. The package
+includes adaptations for use with many other commonly-used
+packages.
 
 %package -n texlive-bidi-doc
-Version:        %{texlive_version}.%{texlive_noarch}.25.2.2svn73698
+Version:        %{texlive_version}.%{texlive_noarch}.26.01.08svn77682
 Release:        0
 Summary:        Documentation for texlive-bidi
 License:        LPPL-1.0
@@ -19644,196 +20508,198 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bidi-doc
-%{_texmfdistdir}/doc/xelatex/bidi/README
-%{_texmfdistdir}/doc/xelatex/bidi/bidi-doc.pdf
-%{_texmfdistdir}/doc/xelatex/bidi/bidi-logo.tex
-%{_texmfdistdir}/doc/xelatex/bidi/bidi.pdf
-%{_texmfdistdir}/doc/xelatex/bidi/bidisample2e.tex
-%{_texmfdistdir}/doc/xelatex/bidi/bidismall2e.tex
-%{_texmfdistdir}/doc/xelatex/bidi/gull.jpg
-%{_texmfdistdir}/doc/xelatex/bidi/picture.jpg
-%{_texmfdistdir}/doc/xelatex/bidi/test-arydshln.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test-bidi.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test-brochure.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test-casualcv.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test-classiccv.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test-color.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test-supertabular.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test-tabular.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test-tabularx.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test-tabulary.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test1-colortbl.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test1-wrapfig.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test2-colortbl.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test2-wrapfig.tex
-%{_texmfdistdir}/doc/xelatex/bidi/test3-wrapfig.tex
+%{_texmfdistdir}/doc/latex/bidi/README
+%{_texmfdistdir}/doc/latex/bidi/bidi-doc.pdf
+%{_texmfdistdir}/doc/latex/bidi/bidi-logo.tex
+%{_texmfdistdir}/doc/latex/bidi/bidi.pdf
+%{_texmfdistdir}/doc/latex/bidi/bidisample2e.tex
+%{_texmfdistdir}/doc/latex/bidi/bidismall2e.tex
+%{_texmfdistdir}/doc/latex/bidi/gull.jpg
+%{_texmfdistdir}/doc/latex/bidi/picture.jpg
+%{_texmfdistdir}/doc/latex/bidi/test-arydshln.tex
+%{_texmfdistdir}/doc/latex/bidi/test-bidi.tex
+%{_texmfdistdir}/doc/latex/bidi/test-brochure.tex
+%{_texmfdistdir}/doc/latex/bidi/test-casualcv.tex
+%{_texmfdistdir}/doc/latex/bidi/test-classiccv.tex
+%{_texmfdistdir}/doc/latex/bidi/test-color.tex
+%{_texmfdistdir}/doc/latex/bidi/test-supertabular.tex
+%{_texmfdistdir}/doc/latex/bidi/test-tabular.tex
+%{_texmfdistdir}/doc/latex/bidi/test-tabularx.tex
+%{_texmfdistdir}/doc/latex/bidi/test-tabulary.tex
+%{_texmfdistdir}/doc/latex/bidi/test1-colortbl.tex
+%{_texmfdistdir}/doc/latex/bidi/test1-wrapfig.tex
+%{_texmfdistdir}/doc/latex/bidi/test2-colortbl.tex
+%{_texmfdistdir}/doc/latex/bidi/test2-wrapfig.tex
+%{_texmfdistdir}/doc/latex/bidi/test3-wrapfig.tex
 
 %files -n texlive-bidi
-%{_texmfdistdir}/tex/xelatex/bidi/adjmulticol-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/algorithm2e-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/amsart-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/amsbook-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/amsmath-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/amstext-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/amsthm-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/array-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/article-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/artikel1-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/artikel2-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/artikel3-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/arydshln-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamer-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerbaseauxtemplates-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerbaseboxes-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerbasecolor-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerbasecompatibility-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerbaseframecomponents-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerbaseframesize-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerbaselocalstructure-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerbasemisc-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerbasenavigation-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerbaseoverlay-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerinnerthemecircles-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerinnerthemedefault-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerinnerthemefocus-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerinnerthemeinmargin-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerinnerthememetropolis-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerinnerthemerectangles-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerinnerthemerounded-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthemedefault-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthemefocus-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthemeinfolines-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthememetropolis-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthememiniframes-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthemeshadow-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthemesidebar-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthemesmoothbars-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthemesmoothtree-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthemesplit-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerouterthemetree-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerthemeHannover-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/beamerthemeSingapore-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/bidi-bibitem.pdf
-%{_texmfdistdir}/tex/xelatex/bidi/bidi-logo.pdf
-%{_texmfdistdir}/tex/xelatex/bidi/bidi-media9.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidi-perpage.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidi.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidi.tex
-%{_texmfdistdir}/tex/xelatex/bidi/bidi2in1.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidicode.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidiftnxtra.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidimoderncv.cls
-%{_texmfdistdir}/tex/xelatex/bidi/bidipoem.sty
-%{_texmfdistdir}/tex/xelatex/bidi/biditools.sty
-%{_texmfdistdir}/tex/xelatex/bidi/biditufte-book.cls
-%{_texmfdistdir}/tex/xelatex/bidi/biditufte-handout.cls
-%{_texmfdistdir}/tex/xelatex/bidi/bidituftefloat.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidituftegeneralstructure.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidituftehyperref.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidituftesidenote.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidituftetitle.sty
-%{_texmfdistdir}/tex/xelatex/bidi/bidituftetoc.sty
-%{_texmfdistdir}/tex/xelatex/bidi/boek-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/boek3-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/book-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/bookest-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/breqn-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/cals-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/caption-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/caption3-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/color-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/colortbl-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/combine-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/crop-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/cuted-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/cutwin-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/cvthemebidicasual.sty
-%{_texmfdistdir}/tex/xelatex/bidi/cvthemebidiclassic.sty
-%{_texmfdistdir}/tex/xelatex/bidi/dblfnote-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/diagbox-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/draftwatermark-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/empheq-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/eso-pic-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/extarticle-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/extbook-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/extletter-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/extrafootnotefeatures-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/extreport-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/fancybox-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/fancyhdr-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/fix2col-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/fleqn-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/float-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/floatrow-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/flowfram-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/footnote-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/footnotebackref-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/framed-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/ftnright-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/geometry-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/graphicx-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/hvfloat-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/hyperref-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/imsproc-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/latex-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/leqno-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/letter-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/lettrine-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/lineno-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/listings-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/longtable-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/lscape-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/mathtools-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/mdframed-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/media9-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/memoir-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/midfloat-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/minitoc-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/multicol-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/multienum-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/natbib-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/newfloat-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/nicematrix-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/ntheorem-hyper-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/ntheorem-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/overpic-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/pdfbase-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/pdflscape-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/pdfpages-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/pgfcorescopes.code-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/pgfsys-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/picinpar-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/plain-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/pstricks-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/quotchap-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/ragged2e-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/rapport1-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/rapport3-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/refrep-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/report-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/rotating-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/scrartcl-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/scrbook-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/scrreprt-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/sidecap-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/soul-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/stabular-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/subfigure-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/tabls-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/tabularx-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/tabulary-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/tc-xetex-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/tcolorbox-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/titlesec-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/titletoc-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/tocbasic-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/tocbibind-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/tocloft-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/tocstyle-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/todonotes-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/wrapfig-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/xcolor-xetex-bidi.def
-%{_texmfdistdir}/tex/xelatex/bidi/xltxtra-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/adjmulticol-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/algorithm2e-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/amsart-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/amsbook-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/amsmath-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/amstext-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/amsthm-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/array-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/article-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/artikel1-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/artikel2-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/artikel3-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/arydshln-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamer-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerbaseauxtemplates-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerbaseboxes-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerbasecolor-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerbasecompatibility-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerbaseframecomponents-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerbaseframesize-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerbaselocalstructure-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerbasemisc-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerbasenavigation-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerbaseoverlay-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerinnerthemecircles-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerinnerthemedefault-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerinnerthemefocus-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerinnerthemeinmargin-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerinnerthememetropolis-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerinnerthemerectangles-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerinnerthemerounded-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthemedefault-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthemefocus-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthemeinfolines-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthememetropolis-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthememiniframes-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthemeshadow-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthemesidebar-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthemesmoothbars-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthemesmoothtree-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthemesplit-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerouterthemetree-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerthemeHannover-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/beamerthemeSingapore-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/bidi-bibitem.pdf
+%{_texmfdistdir}/tex/latex/bidi/bidi-logo.pdf
+%{_texmfdistdir}/tex/latex/bidi/bidi-media9.sty
+%{_texmfdistdir}/tex/latex/bidi/bidi-perpage.sty
+%{_texmfdistdir}/tex/latex/bidi/bidi.sty
+%{_texmfdistdir}/tex/latex/bidi/bidi.tex
+%{_texmfdistdir}/tex/latex/bidi/bidi2in1.sty
+%{_texmfdistdir}/tex/latex/bidi/bidicode.sty
+%{_texmfdistdir}/tex/latex/bidi/bidiftnxtra.sty
+%{_texmfdistdir}/tex/latex/bidi/bidimoderncv.cls
+%{_texmfdistdir}/tex/latex/bidi/bidipoem.sty
+%{_texmfdistdir}/tex/latex/bidi/biditools.sty
+%{_texmfdistdir}/tex/latex/bidi/biditufte-book.cls
+%{_texmfdistdir}/tex/latex/bidi/biditufte-handout.cls
+%{_texmfdistdir}/tex/latex/bidi/bidituftefloat.sty
+%{_texmfdistdir}/tex/latex/bidi/bidituftegeneralstructure.sty
+%{_texmfdistdir}/tex/latex/bidi/bidituftehyperref.sty
+%{_texmfdistdir}/tex/latex/bidi/bidituftesidenote.sty
+%{_texmfdistdir}/tex/latex/bidi/bidituftetitle.sty
+%{_texmfdistdir}/tex/latex/bidi/bidituftetoc.sty
+%{_texmfdistdir}/tex/latex/bidi/boek-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/boek3-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/book-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/bookest-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/breqn-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/cals-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/caption-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/caption3-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/color-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/colortbl-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/combine-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/crop-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/cuted-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/cutwin-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/cvthemebidicasual.sty
+%{_texmfdistdir}/tex/latex/bidi/cvthemebidiclassic.sty
+%{_texmfdistdir}/tex/latex/bidi/dblfnote-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/diagbox-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/draftwatermark-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/empheq-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/eso-pic-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/extarticle-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/extbook-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/extletter-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/extrafootnotefeatures-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/extreport-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/fancybox-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/fancyhdr-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/fix2col-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/fleqn-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/float-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/floatrow-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/flowfram-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/fnpct-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/footnote-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/footnotebackref-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/framed-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/ftnright-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/geometry-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/graphicx-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/hgeneric-testphase-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/hvfloat-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/hyperref-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/imsproc-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/latex-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/leqno-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/letter-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/lettrine-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/lineno-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/listings-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/longtable-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/lscape-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/mathtools-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/mdframed-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/media9-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/memoir-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/midfloat-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/minitoc-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/multicol-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/multienum-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/natbib-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/newfloat-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/nicematrix-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/ntheorem-hyper-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/ntheorem-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/overpic-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/pdfbase-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/pdflscape-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/pgfcorescopes.code-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/pgfsys-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/picinpar-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/plain-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/pstricks-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/quotchap-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/ragged2e-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/rapport1-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/rapport3-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/refrep-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/report-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/rotating-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/scrartcl-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/scrbook-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/scrreprt-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/sidecap-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/soul-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/stabular-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/subfigure-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/tabls-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/tabularx-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/tabulary-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/tc-xetex-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/tcolorbox-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/thmbox-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/titlesec-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/titletoc-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/tocbasic-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/tocbibind-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/tocloft-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/tocstyle-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/todonotes-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/wrapfig-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/xcolor-xetex-bidi.def
+%{_texmfdistdir}/tex/latex/bidi/xltxtra-xetex-bidi.def
 
 %package -n texlive-bidi-atbegshi
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn62009
@@ -19866,9 +20732,9 @@ Suggests:       texlive-bidi-atbegshi-doc >= %{texlive_version}
 Provides:       tex(bidi-atbegshi.sty)
 Requires:       tex(atbegshi-ltx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source327:      bidi-atbegshi.tar.xz
-Source328:      bidi-atbegshi.doc.tar.xz
+# from 20260301
+Source345:      bidi-atbegshi.tar.xz
+Source346:      bidi-atbegshi.doc.tar.xz
 
 %description -n texlive-bidi-atbegshi
 The package adds some commands to the atbegshi package for
@@ -19923,7 +20789,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/bidi-atbegshi/bidi-atbegshi.sty
 
 %package -n texlive-bidicontour
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn34631
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Bidi-aware coloured contour around text
@@ -19954,9 +20820,9 @@ Provides:       tex(bidicontour.sty)
 Requires:       tex(color.sty)
 Requires:       tex(trig.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source329:      bidicontour.tar.xz
-Source330:      bidicontour.doc.tar.xz
+# from 20260301
+Source347:      bidicontour.tar.xz
+Source348:      bidicontour.doc.tar.xz
 
 %description -n texlive-bidicontour
 The package is a re-implementation of the contour package,
@@ -19964,7 +20830,7 @@ making it bidi-aware, and adding support of the xdvipdfmx (when
 the outline option of the package is used).
 
 %package -n texlive-bidicontour-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn34631
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn77682
 Release:        0
 Summary:        Documentation for texlive-bidicontour
 License:        LPPL-1.0
@@ -20005,7 +20871,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/bidicontour/bidicontour.sty
 
 %package -n texlive-bidihl
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn37795
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Experimental bidi-aware text highlighting
@@ -20035,15 +20901,15 @@ Suggests:       texlive-bidihl-doc >= %{texlive_version}
 Provides:       tex(bidihl.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source331:      bidihl.tar.xz
-Source332:      bidihl.doc.tar.xz
+# from 20260301
+Source349:      bidihl.tar.xz
+Source350:      bidihl.doc.tar.xz
 
 %description -n texlive-bidihl
 Experimental bidi-aware text highlighting.
 
 %package -n texlive-bidihl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn37795
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn77682
 Release:        0
 Summary:        Documentation for texlive-bidihl
 License:        LPPL-1.0
@@ -20082,7 +20948,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/bidihl/bidihl.sty
 
 %package -n texlive-bidipagegrid
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn34632
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Bidi-aware page grid in background
@@ -20114,15 +20980,15 @@ Requires:       tex(atbegshi.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source333:      bidipagegrid.tar.xz
-Source334:      bidipagegrid.doc.tar.xz
+# from 20260301
+Source351:      bidipagegrid.tar.xz
+Source352:      bidipagegrid.doc.tar.xz
 
 %description -n texlive-bidipagegrid
 The package is based on pagegrid.
 
 %package -n texlive-bidipagegrid-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn34632
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn77682
 Release:        0
 Summary:        Documentation for texlive-bidipagegrid
 License:        LPPL-1.0
@@ -20199,9 +21065,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(scrlfile.sty)
 Requires:       tex(xecolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source335:      bidipresentation.tar.xz
-Source336:      bidipresentation.doc.tar.xz
+# from 20260301
+Source353:      bidipresentation.tar.xz
+Source354:      bidipresentation.doc.tar.xz
 
 %description -n texlive-bidipresentation
 A great portion of the code is borrowed from the texpower
@@ -20248,7 +21114,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/bidipresentation/bidipresentation.cls
 
 %package -n texlive-bidishadowtext
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn34633
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Bidi-aware shadow text
@@ -20278,9 +21144,9 @@ Suggests:       texlive-bidishadowtext-doc >= %{texlive_version}
 Provides:       tex(bidishadowtext.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source337:      bidishadowtext.tar.xz
-Source338:      bidishadowtext.doc.tar.xz
+# from 20260301
+Source355:      bidishadowtext.tar.xz
+Source356:      bidishadowtext.doc.tar.xz
 
 %description -n texlive-bidishadowtext
 This package allows you to typeset bidi-aware shadow text. It
@@ -20288,7 +21154,7 @@ is a re-implementation of the shadowtext package adding bidi
 support.
 
 %package -n texlive-bidishadowtext-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn34633
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn77682
 Release:        0
 Summary:        Documentation for texlive-bidishadowtext
 License:        LPPL-1.0
@@ -20326,7 +21192,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/bidishadowtext/bidishadowtext.sty
 
 %package -n texlive-bigfoot
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn38248
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Footnotes for critical editions
@@ -20359,9 +21225,9 @@ Provides:       tex(suffix.sty)
 Requires:       tex(etex.sty)
 Requires:       tex(manyfoot.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source339:      bigfoot.tar.xz
-Source340:      bigfoot.doc.tar.xz
+# from 20260301
+Source357:      bigfoot.tar.xz
+Source358:      bigfoot.doc.tar.xz
 
 %description -n texlive-bigfoot
 The package aims to provide a 'one-stop' solution to
@@ -20377,7 +21243,7 @@ from that package's documentation. The bigfoot bundle also
 provides the perpage and suffix packages.
 
 %package -n texlive-bigfoot-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn38248
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn77682
 Release:        0
 Summary:        Documentation for texlive-bigfoot
 License:        GPL-2.0-or-later
@@ -20419,7 +21285,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bigfoot/suffix.sty
 
 %package -n texlive-bigintcalc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn53172
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Integer calculations on very large numbers
@@ -20449,16 +21315,16 @@ Suggests:       texlive-bigintcalc-doc >= %{texlive_version}
 Provides:       tex(bigintcalc.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source341:      bigintcalc.tar.xz
-Source342:      bigintcalc.doc.tar.xz
+# from 20260301
+Source359:      bigintcalc.tar.xz
+Source360:      bigintcalc.doc.tar.xz
 
 %description -n texlive-bigintcalc
 This package provides expandable arithmetic operations with big
 integers that can exceed TeX's number limits.
 
 %package -n texlive-bigintcalc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn53172
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 Summary:        Documentation for texlive-bigintcalc
 License:        LPPL-1.0
@@ -20494,7 +21360,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/bigintcalc/bigintcalc.sty
 
 %package -n texlive-bigints
-Version:        %{texlive_version}.%{texlive_noarch}.svn29803
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Writing big integrals
@@ -20524,9 +21390,9 @@ Suggests:       texlive-bigints-doc >= %{texlive_version}
 Provides:       tex(bigints.sty)
 Requires:       tex(amsmath.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source343:      bigints.tar.xz
-Source344:      bigints.doc.tar.xz
+# from 20260301
+Source361:      bigints.tar.xz
+Source362:      bigints.doc.tar.xz
 
 %description -n texlive-bigints
 The package provides facilities for drawing big integral signs
@@ -20534,7 +21400,7 @@ when needed. An example would be when the integrand is a
 matrix.
 
 %package -n texlive-bigints-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn29803
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-bigints
 License:        LPPL-1.0
@@ -20604,9 +21470,9 @@ Suggests:       texlive-bilingualpages-doc >= %{texlive_version}
 Provides:       tex(bilingualpages.sty)
 Requires:       tex(paracol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source345:      bilingualpages.tar.xz
-Source346:      bilingualpages.doc.tar.xz
+# from 20260301
+Source363:      bilingualpages.tar.xz
+Source364:      bilingualpages.doc.tar.xz
 
 %description -n texlive-bilingualpages
 This is a simple wrapper for the paracol package for setting
@@ -20678,9 +21544,9 @@ Suggests:       texlive-binarytree-doc >= %{texlive_version}
 Provides:       tex(binarytree.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source347:      binarytree.tar.xz
-Source348:      binarytree.doc.tar.xz
+# from 20260301
+Source365:      binarytree.tar.xz
+Source366:      binarytree.doc.tar.xz
 
 %description -n texlive-binarytree
 This package provides an easy but flexible way to draw binary
@@ -20768,9 +21634,9 @@ Provides:       tex(binomexp.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source349:      binomexp.tar.xz
-Source350:      binomexp.doc.tar.xz
+# from 20260301
+Source367:      binomexp.tar.xz
+Source368:      binomexp.doc.tar.xz
 
 %description -n texlive-binomexp
 The package calculates and prints rows of Pascal's triangle. It
@@ -20844,9 +21710,9 @@ Suggests:       texlive-biochemistry-colors-doc >= %{texlive_version}
 Provides:       tex(Biochemistry-colors.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source351:      biochemistry-colors.tar.xz
-Source352:      biochemistry-colors.doc.tar.xz
+# from 20260301
+Source369:      biochemistry-colors.tar.xz
+Source370:      biochemistry-colors.doc.tar.xz
 
 %description -n texlive-biochemistry-colors
 Biochemistry-colors.sty defines the standard colors of
@@ -20927,9 +21793,9 @@ Provides:       tex(biocon.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source353:      biocon.tar.xz
-Source354:      biocon.doc.tar.xz
+# from 20260301
+Source371:      biocon.tar.xz
+Source372:      biocon.doc.tar.xz
 
 %description -n texlive-biocon
 The biocon--biological conventions--package aids the
@@ -21177,6 +22043,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-belleek
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/belleek/*.{pf[ab],[ot]tf} \
@@ -21227,10 +22109,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-belleek.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-belleek.conf
-    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-bera
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/bera/*.{pf[ab],[ot]tf}
@@ -21260,8 +22142,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-berenisadf
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/arkandis/berenisadf/*.{pf[ab],[ot]tf} \
@@ -21312,16 +22194,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-berenisadf.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-berenisadf.conf
-    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-beuron
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/beuron/*.{pf[ab],[ot]tf} \
@@ -21372,12 +22254,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-beuron.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-beuron.conf
-    tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/tex/lualatex/bezierplot/bezierplot.lua
     do
@@ -21390,12 +22272,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-bguq
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/bguq/*.{pf[ab],[ot]tf}
@@ -21425,12 +22307,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive
     # Strip executable bit from non-scripts
     for txt in %{_texmfdistdir}/scripts/bib2gls/bib2gls.jar \
 	       %{_texmfdistdir}/scripts/bib2gls/bibglscommon.jar \
@@ -21441,19 +22323,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$txt || continue
 	chmod 0644 %{buildroot}/$txt
     done
-    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/bibtex/bibhtml/bibhtml
     do
@@ -21472,35 +22356,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Remove files
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/generate-crossref-graphs.py
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/latexmkrc
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/makefile
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/makefile
     tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21519,6 +22380,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Remove files
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/generate-crossref-graphs.py
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/latexmkrc
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/makefile
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-bookinother/makefile
     tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21526,39 +22392,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Make possible scripts usable if any
-    for scr in %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeall.py \
-	       %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeupdateversion.py
-    do
-	test -e %{buildroot}/$scr || continue
-	chmod 0755 %{buildroot}/$scr
-    done
-    # Extend python3 scripts with major version only if any
-    for scr in %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeall.py \
-	       %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeupdateversion.py
-    do
-	test -e %{buildroot}/$scr || continue
-	ed %{buildroot}/${scr} <<-'EOF'
-		1
-		s@python3@python%python3_bin_suffix@
-		.
-		w
-		q
-	EOF
-    done
-    # Avoid /usr/bin/env <prog>
-    for scr in %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeall.py \
-	       %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeupdateversion.py
-    do
-	test -e %{buildroot}/$scr || continue
-	ed %{buildroot}/${scr} <<-'EOF'
-		1
-		s@/env[[:blank:]]\+@/@
-		.
-		w
-		q
-	EOF
-    done
     tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21589,11 +22422,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Remove files
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/generate-crossref-graphs.py
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/latexmkrc
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/makefile
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/makefile
     tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21612,6 +22440,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Remove files
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/generate-crossref-graphs.py
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/latexmkrc
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/makefile
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-morenames/makefile
     tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21664,12 +22497,30 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:324} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:325} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/bibtexperllibs/ltx2unitxt
     do
@@ -21682,25 +22533,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:324} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:325} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -21720,6 +22553,24 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:352} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:353} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:354} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:355} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:356} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:357} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:358} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:359} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:360} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:361} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:362} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:363} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:364} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:365} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:366} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:367} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:368} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:369} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:370} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:371} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:372} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
