@@ -53,4 +53,41 @@
   Build / Tests:</comment>
     <requestid>1343837</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>25a55cc9d1dbe8d206e14c41ead1504d</srcmd5>
+    <version>0.8.0</version>
+    <time>1775572477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  New Features:
+  * Add JPH file format decoding with automatic colorspace detection. The decoder
+    now accepts .jph input files, parses the JP2 box structure (signature →
+    ftyp → jp2h → jp2c), extracts the embedded J2K codestream, and reads the
+    colr box EnumCS field. When EnumCS is 18 (YCbCr) and the output is PPM,
+    YCbCr→RGB conversion (BT.601) is applied automatically — no -ycbcr flag
+    needed. The explicit -ycbcr bt601|bt709 flag still overrides the
+    auto-detected standard.
+  * Move JPH box parsing (parse_jph_boxes, get_color_space) into the library
+    (jph.hpp / jph.cpp) and expose it via decoder.hpp; the app-layer
+    now calls the library API instead of duplicating box-parsing logic.
+  Performance:
+  * AVX-512 IDWT: add 9 new functions (idwt_avx512.cpp) covering horizontal
+    lifting (irrev 9/7 and rev 5/3) and vertical deinterleave / lifting steps;
+    dispatched when OPENHTJ2K_TRY_AVX2 &amp;&amp; __AVX512F__ — falls back to AVX2
+    on non-AVX-512 x86-64 CPUs with no code change required
+  * NEON: vextq+carry optimization for horizontal IDWT eliminates per-row
+    boundary-extension copies; irrev 9/7 lossy: batch −8 %, streaming −34 %;
+    rev 5/3 lossless: −10 %
+  * AVX2: widen HT cleanup decode MagSgn path to full 256-bit in
+    ht_cleanup_decode, processing 8 coefficients per iteration instead of 4
+  * FDWT: optimize streaming cascade and adv_step_f to reduce per-row
+    overhead; add SIMD dispatch (AVX2/NEON) for the reversible 5/3 adv_step_f
+    vertical lifting step
+  Bug Fixes:
+  * Fix segfault on truncated JPH/J2K codestreams: guard box and marker
+    parsers against premature end-of-stream
+  * Fix streaming decoder vertical upsampling for subsampled components
+    (e.g. 4:2:0 / 4:2:2): chroma rows are now correctly replicated when the</comment>
+    <requestid>1344937</requestid>
+  </revision>
 </revisionlist>

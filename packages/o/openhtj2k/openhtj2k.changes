@@ -1,4 +1,200 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:23:08 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  New Features:
+  * Add JPH file format decoding with automatic colorspace detection. The decoder
+    now accepts .jph input files, parses the JP2 box structure (signature →
+    ftyp → jp2h → jp2c), extracts the embedded J2K codestream, and reads the
+    colr box EnumCS field. When EnumCS is 18 (YCbCr) and the output is PPM,
+    YCbCr→RGB conversion (BT.601) is applied automatically — no -ycbcr flag
+    needed. The explicit -ycbcr bt601|bt709 flag still overrides the
+    auto-detected standard.
+  * Move JPH box parsing (parse_jph_boxes, get_color_space) into the library
+    (jph.hpp / jph.cpp) and expose it via decoder.hpp; the app-layer
+    now calls the library API instead of duplicating box-parsing logic.
+  Performance:
+  * AVX-512 IDWT: add 9 new functions (idwt_avx512.cpp) covering horizontal
+    lifting (irrev 9/7 and rev 5/3) and vertical deinterleave / lifting steps;
+    dispatched when OPENHTJ2K_TRY_AVX2 && __AVX512F__ — falls back to AVX2
+    on non-AVX-512 x86-64 CPUs with no code change required
+  * NEON: vextq+carry optimization for horizontal IDWT eliminates per-row
+    boundary-extension copies; irrev 9/7 lossy: batch −8 %, streaming −34 %;
+    rev 5/3 lossless: −10 %
+  * AVX2: widen HT cleanup decode MagSgn path to full 256-bit in
+    ht_cleanup_decode, processing 8 coefficients per iteration instead of 4
+  * FDWT: optimize streaming cascade and adv_step_f to reduce per-row
+    overhead; add SIMD dispatch (AVX2/NEON) for the reversible 5/3 adv_step_f
+    vertical lifting step
+  Bug Fixes:
+  * Fix segfault on truncated JPH/J2K codestreams: guard box and marker
+    parsers against premature end-of-stream
+  * Fix streaming decoder vertical upsampling for subsampled components
+    (e.g. 4:2:0 / 4:2:2): chroma rows are now correctly replicated when the
+    output stride does not match the subsampled component height
+  * Fix scalar color transform fallback guard: condition now matches the
+    dispatch table order, preventing wrong-path selection on non-AVX2 / non-NEON
+    builds
+  WASM:
+  * Vectorize fused YCbCr→RGB color transforms and interleave step in
+    color_wasm.cpp using WASM SIMD 128-bit intrinsics; add
+    OPENHTJ2K_ENABLE_WASM_SIMD build flags for the new translation unit
+  * Add YCbCr→RGB conversion (BT.601 / BT.709) to the Node.js decoder CLI
+    (open_htj2k_dec.mjs)
+  * Auto-detect YCbCr colorspace from JPH inputs in index.html; update
+    dropzone UI with JPH support note and local-decode privacy text; promote
+    privacy notice to a standalone banner
+
+-------------------------------------------------------------------
+Tue Apr  7 09:22:02 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  * Fix undefined behaviour in ht_magref_decode (scalar and NEON paths):
+    left-shifting a negative int32_t value is UB in C++; combined into a single
+    unsigned-arithmetic shift (static_cast<int32_t>((0xFFFFFFFEU | ...) <<
+    pLSB))
+  * Work around clang-18 code-generation bug: clang 18 miscompiles certain
+    inline functions in coding_units.cpp when building for AArch64 NEON,
+    producing wrong decoder output. Add -fno-inline to coding_units.cpp when
+    CMAKE_CXX_COMPILER_VERSION < 19 and the compiler is Clang.  Clang 19+, GCC,
+    and MSVC are unaffected. All 445 conformance tests pass on both clang-18 and clang-20.
+  * Fix streaming encoder (-i file.pgx,...) rejecting subsampled (4:2:2, 4:2:0,
+    etc.) PGX inputs. PgxStreamReader now accepts component files whose
+    dimensions are integer sub-multiples of the luma component, computes the
+    correct XRsiz/YRsiz factors for the SIZ marker, seeks each chroma file to
+    the correct row (y / YRsiz), and skips redundant push_line_enc calls for
+    chroma on luma rows that carry no new chroma data.
+
+-------------------------------------------------------------------
+Tue Apr  7 09:21:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  JPEG 2000 Part 2: DFS and ATK kernel support:
+  * Add encoder and decoder support for Part 2 Downsampling Factor Structures
+    (DFS) markers
+  * Add decoder support for arbitrary ATK (Arbitrary Transform Kernel) DWT
+    kernels: irreversible 9/7-based and reversible 5/3-based ATK
+  * Add scalar FDWT and AVX2 IDWT implementations for ATK kernels
+  * Add 5 conformance test cases for Part 2 DFS+ATK bitstreams (all pass)
+  * Fix AVX2 dequantize: use transformation == 1 (not truthy) to distinguish
+    lossless from ATK kernels (transformation >= 2 is lossy but truthy)
+  * Fix ATK finalize downshift: (transformation==1)?0:FRACBITS-bitdepth
+  * Fix bounds-safe color transform dispatch for ATK (transformation >= 2)
+  * Fix LL0 subband dimensions for DFS codestreams in streaming decode
+  * Fix ATK encode OOB color dispatch; add line-based DFS/ATK tests
+  Decoder:
+  * -reduce now respects DFS markers: the maximum reduce level is clamped to
+    the number of consecutive bidirectional DWT levels, preventing nonsensical
+    HONLY/VONLY reduced-resolution outputs
+  * Fix PPM output for subsampled (4:2:2) codestreams: the streaming path
+    correctly upsamples chroma with nearest-neighbour interpolation; the batch
+    write_ppm path uses a scalar fallback for mismatched component dimensions
+  * Add experimental -ycbcr bt601|bt709 flag: converts YCbCr to RGB during
+    PPM output using full-range ITU-R BT.601 or BT.709 coefficients
+    (fixed-point 2^14); handles 4:2:2 nearest-neighbour chroma upsampling;
+    applies to PPM output only
+  Encoder:
+  * Fix streaming (line-based) path for PGX input: a new PgxStreamReader
+    opens one file per component and reads rows on demand; previously PGX input
+    always triggered "Failed to open input file for streaming"
+  WASM:
+  * Fix 4:2:2 chroma subsampling in invoke_decoder_to_rgba() WASM wrapper
+  * Add YCbCr→RGB conversion buttons (BT.601 / BT.709) to the web demo at
+    https://htj2k-demo.pages.dev/
+  * Modernize button styling in the web demo
+
+-------------------------------------------------------------------
+Tue Apr  7 09:20:05 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  WASM:
+  * Add invoke_decoder_stream() C export: streaming line-based decode via
+    callback, eliminating the 96 MB W×H×C int32 output buffer entirely
+  * Add invoke_decoder_to_rgba() C export: converts decoded samples to a
+    packed uint8/uint16 big-endian buffer inside WASM, eliminating the JS
+    per-sample pixel loop
+  * Add open_htj2k_dec.mjs: Node.js CLI decoder built on the WASM library;
+    supports J2C / J2K / JPH input, PGM / PPM / PGX output, --reduce,
+    --num_threads, and --iter options
+  * Fix WASM SIMD build: add -O3 -flto to SIMD object compilation
+  * Fix open_htj2k_dec.mjs: compute correct output dimensions when --reduce > 0
+  * Update index.html to use the new streaming and RGBA export APIs
+  Performance (native):
+  * Fused MCT + finalize: color inverse transform and int32 output writeback
+    combined into a single pass, eliminating an intermediate float buffer
+  * In-place horizontal IDWT: eliminates ext_buf memcpy per row
+  * NEON: port lossy dequantize fast path; fix color_neon build failure
+  * NEON: 2× unroll idwt_level_src_fn interleave loop
+  * IDWT cascade: eliminate redundant get_dl / is_lp calls in hot loop
+  * AlignedLargePool: extend macOS support; route file I/O buffers through pool
+    Stack-allocate Eline / rholine scratch arrays; route large buffers through
+  * AlignedLargePool to reduce heap fragmentation
+  * Use aligned AVX2 loads (_mm256_load_ps) where 32-byte alignment is
+    guaranteed, replacing unaligned variants in hot DWT paths
+  Portability:
+  * Lower minimum compiler requirement from C++17 to C++11
+  * Replace all [[nodiscard]] / [[maybe_unused]] raw attributes with
+    OPENHTJ2K_NODISCARD / OPENHTJ2K_MAYBE_UNUSED macros that expand
+    to the real attributes under C++17 and to nothing under C++14/11
+  * Replace if constexpr with plain if in HT block decoding (all four
+    variants: generic, AVX2, NEON, WASM)
+  * ThreadPool: split pre-C++17 enqueue() into separate C++14 and C++11
+    branches using std::decay_t and typename std::decay<T>::type
+    respectively
+  * Remove pre-existing malformed #define[[maybe_unsed]] line in utils.hpp
+  * All three standard levels (C++11, C++14, C++17) verified
+
+-------------------------------------------------------------------
+Tue Apr  7 09:19:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.1:
+  WASM SIMD:
+  * Add color transform vectorization: new color_wasm.cpp with all 8
+    color transform functions (forward/inverse RCT and ICT, integer and
+    float-domain variants) implemented using WASM SIMD 128-bit intrinsics,
+    processing 4 elements per iteration
+
+-------------------------------------------------------------------
+Tue Apr  7 09:18:14 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  WASM SIMD:
+  * Complete separation of WASM-SIMD from NEON: dedicated source files
+    (fdwt_wasm.cpp, idwt_wasm.cpp, ht_block_encoding_wasm.cpp,
+    ht_block_decoding_wasm.cpp) guarded solely by
+    OPENHTJ2K_ENABLE_WASM_SIMD; no NEON flag is used in WASM builds
+  * Translate HT block encoding and decoding to native WASM-SIMD intrinsics
+    (v128_t); encoder state classes in ht_block_encoding_wasm.hpp
+  * Add dedicated WASM fwd_buf implementation in ht_block_decoding.hpp
+    subprojects/CMakeLists.txt: compile library twice — scalar build
+    linked to libopen_htj2k.js, SIMD build linked to libopen_htj2k_simd.js
+  Performance:
+  * IDWT: eliminate redundant memcpy in idwt_level_src_fn; remove hp_tmp
+    scratch buffer; reduce streaming ring buffer depth from 12 to 8
+  * IDWT: vectorize LP/HP interleave with AVX2 (unpacklo/hi + permute2f128)
+    and NEON; vectorize 5/3 reversible vertical lifting steps with AVX2
+  * FDWT/IDWT: AVX2 and NEON odd-width interleave/deinterleave fixes
+  * Decoder finalization: AVX2 and NEON paths for float→int32 conversion
+    in decode_line_based_stream; NEON ds==0 fast path; 16-element/iter loop
+  * NEON: 2× unroll reversible vertical lifting steps and FDWT deinterleave
+  * DWT cascade: specialize 5/3 path; fix O(n²) scan-window growth
+  * HT block decoding: skip sigma stores for single-pass codeblocks;
+    skip redundant memset for single-pass codeblocks
+  * Allocation: eliminate per-codeblock allocation storm in
+    j2k_precinct_subband; replace per-strip and per-resolution allocation;
+    hoist tree_path vector out of per-codeblock loop; replace per-block
+    all_segments std::vector with stack array in htj2k_decode()
+  * ThreadPool: batch-push tasks, reserve marker list, combine ring buffer
+    and predecoded pool; pre-fault ring/prefetch buffers; reduce
+    task-queue thundering herd
+  * LB encoder: overlap DWT computation with HT block encoding
+  * Eliminate bulk ring_buf/prefetch_buf zeroing; zero only empty regions
+  * Replace scratch array memset with per-row 8-byte guard zeros
+  Fixes:
+  * Fix O(n²) scan window growth in DWT cascade 5/3 specialization
+  * Add include for std::swap in fdwt.cpp and idwt.cpp
+
+-------------------------------------------------------------------
 Tue Mar 31 07:14:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.1:
