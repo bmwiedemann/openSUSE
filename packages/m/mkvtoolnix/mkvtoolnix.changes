@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr  6 12:28:43 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 98.0
+  New features and enhancements:
+  * all: huge update to the Japanese translations which had been
+    not worked on for several years. The program translation is
+    now complete again, the man page translation has been extended
+    as well. Both were reworked in most places.
+  * GUI: chapter editor: added an option in the "additional
+    modifications" dialog that toggles applying the selected
+    modifications to all currently open chapter editor tabs.
+  Bug fixes:
+  * GUI: chapter editor: when renumbering chapters limiting the
+    number of chapters to renumber did not work.
+  * GUI: macOS: fixed refreshing widgets after system switches
+    between dark & light modes.
+  Build system changes:
+  * The bundled `fmt` library was updated to v12.1.0.
+
+-------------------------------------------------------------------
 Fri Jan  2 14:17:12 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 97.0

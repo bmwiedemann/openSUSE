@@ -1612,4 +1612,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>1325138</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>b0bb97bf0f7e2406079997aab36feb4d</srcmd5>
+    <version>98.0</version>
+    <time>1775572394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344762</requestid>
+  </revision>
 </revisionlist>
