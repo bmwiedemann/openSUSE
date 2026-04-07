@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sat Apr  4 04:51:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.6.6:
+  * The automatic computation of MBEDTLS_PSA_STATIC_KEY_SLOT_BUFFER_SIZE has
+    been improved to take into account the following key types:
+    asymmetric keys, ciphers, AEADs, CMAC and HMAC.
+  * The device for reading entropy on platforms without a dedicated system
+    call can now be configured with MBEDTLS_PLATFORM_DEV_RANDOM or
+    mbedtls_platform_dev_random.
+  * Applications can use the new functions psa_random_reseed() to
+    request an immediate reseed of the PSA random generator, or
+    psa_random_deplete() to force a reseed on the next random generator call.
+  * Applications can call psa_random_set_prediction_resistance() to toggle
+    prediction resistance in the PSA random generator.
+  * The documentation of mbedtls_ssl_session_save(),
+    mbedtls_ssl_session_load(), mbedtls_ssl_context_save(), and
+    mbedtls_ssl_context_load() has been updated to clarify the responsibility
+    of the application to preserve the confidentiality and integrity of
+    serialized data, mitigating the risk of misuse of these APIs.
+    CVE-2026-34877 (boo#1261457)
+  * The default device for reading entropy on platforms without a dedicated
+    system call is now /dev/random instead of /dev/urandom. This is safer
+    on Linux in case the application runs early after the kernel boots,
+    but may block needlessly on linux <= 5.6. CVE-2026-34871 (boo#1261448)
+  * Fix missing validation of the peer's key in key agreement operations using
+    PSA_ALG_FFDH: low-order elements were not rejected as they should be. This
+    is a problem for protocols using FFDH that expect contributory behaviour,
+    that is, where neither party should be able to force the shared secret
+    into a small set. CVE-2026-34872 (boo#1261449)
+  * Add tag length validation in mbedtls_ccm_finish() to prevent
+    out-of-bounds reads and mitigate potential application buffer
+    overflows where applications relied on the library to enforce
+    tag length constraints. CVE-2026-34876 (boo#1261452)
+  * Fix a NULL pointer dereference in mbedtls_x509_string_to_names() when
+    mbedtls_calloc() fails to allocate memory. This was caused by failing to
+    check whether mbedtls_calloc() returned NULL. CVE-2026-34874 (boo#1261527)
+  * Fix a buffer overflow in psa_export_public_key() for FFDH keys when the
+    output buffer is too small. CVE-2026-34875 (boo#1261451)
+  * Fix a limited buffer underflow in x509_inet_pton_ipv6(). In rare cases
+    (e.g. on platforms with memory protection when the overread crosses page
+    boundary) this could lead to DoS. CVE-2026-25833 (boo#1261524)
+  * If an application called psa_crypto_init() then fork() and continued to
+    use cryptography APIs (possibly indirectly, e.g. for TLS), the random
+    generator states were duplicated. Fix this by forcing a RNG reseed in
+    the child process. CVE-2026-25835 (boo#1261525)
+  * Applications running in environments where the application state is
+    cloned (for example due to resuming a frozen system state multiple
+    times, or due to cloning a virtual machine image) should arrange to
+    reseed the random generator using one of the new functions
+    psa_random_reseed() or psa_random_deplete(). CVE-2026-25835 (boo#1261525)
+  * Fix a bug in the TLS 1.2 client's signature algorithm check, which caused
+    the client to accept server key exchange messages signed with a signature
+    algorithm explicitly disallowed by the client. CVE-2026-25834 (boo#1261526)
+  * Fixed an issue in TLS 1.3 server handling of the second ClientHello, after
+    sending a HelloRetryRequest message. A man-in-the-middle attacker could
+    force a TLS 1.3 session resumption using a ticket to fall back to an
+    unintended TLS 1.2 session resumption with an all-zero master secret.
+    This could result in client authentication being bypassed and allow client
+    impersonation. CVE-2026-34873 (boo#1261450)
+  * Fixes for compiler warnings
+  * Fix a performance regressions from 3.6.5
+  * Support re-assembly of fragmented DTLS 1.2 ClientHello in Mbed TLS server.
+    itself is not using the heap). Fixes Mbed-TLS/TF-PSA-Crypto#476.
+  * If the handshake has not yet been attempted, return -1u to indicate
+    that the result is not available. Previously the result of verification
+    was zero-initialized so the function would return 0 (indicating success).
+
+-------------------------------------------------------------------
 Sun Nov 09 14:54:59 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 3.6.5:
