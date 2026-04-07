@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Apr  7 11:09:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.14
+  * Changes of 2.0.14
+    + Code: Refactor access to ASN1_OCTET_STRING to use setters to
+      fix errors when building against the latest OpenSSL 4.0.x code
+    + Fix: Fix the handling of OCSP requests with multiple responder
+      URIs
+    + Fix: Fix the handling of TRY_AGAIN responses to OCSP requests
+      when soft fail is disabled.
+  * Changes of 2.0.13
+    + Code: Due to various refactorings, the 2.0.x code no longer
+      compiles with LibreSSL. Without a volunteer to maintain
+      LibreSSL support, the LibreSSL code will be removed no earlier
+      than 30 September 2026
+    + Fix: Remove group write permissions from the files in the
+      tar.gz source archive
+    + Code: Refactor the SSL_CONF_CTX clean-up to align it with SSL
+      and SSL_CTX clean-up
+    + Fix: Fix unnecessarily large buffer allocation when filtering
+      out NULL and export ciphers. Pull requests #35 and #37
+      provided by chenjp
+    + Fix: Fix a potential memory leak if an invalid OpenSSLConf is
+      provided. Pull request #36 provided by chenjp. (markt)
+    + Fix: Refactor setting of OCSP configuration defaults as they
+      were only applied if the SSL_CONF_CTX was used. While one was
+      always used with Tomcat versions aware of the OCSP
+      configuration options, one was not always used with Tomcat
+      versions unaware of the OCSP configuration options leading to
+      OCSP verification being enabled by default when the expected
+      behaviour was disabled by default
+    + Code: Improve performance for the rare case of handling large
+      OCSP responses
+    + Fix: 69939: Fix the cause of a crash with OpenSSL 3.0.x when a
+      certificate PEM file does not contain explicit DH parameters
+    + Fix: Refactor extraction of ECDH curve name from the
+      Certificate to avoid deprecated OpenSSL methods.
+    + Fix: Refactor the native implementation of SSL.getTime() to
+      avoid the Y2038 problem in SSL_SESSION_get_time() when running
+      on a version of OpenSSL that includes the new
+      SSL_SESSION_get_time_ex() method.
+- Build against libopenssl-3-devel and not against the meta-package
+  libopenssl-devel. This allows buiding on distributions where the
+  openssl-3 exists, but is not default
+- Added patch:
+  * apr163.patch
+    + Allow building and running against libapr-1 1.6.3
+
+-------------------------------------------------------------------
 Mon Feb  9 12:16:17 UTC 2026 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Add conflict to previous devel version 

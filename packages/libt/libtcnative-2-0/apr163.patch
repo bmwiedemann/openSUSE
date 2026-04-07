@@ -1,0 +1,41 @@
+--- tomcat-native-2.0.12-src/native/build/tcnative.m4	2026-04-07 12:40:54.611849110 +0200
++++ tomcat-native-2.0.12-src/native/build/tcnative.m4	2026-04-07 12:43:50.867607459 +0200
+@@ -38,9 +38,9 @@
+   set $sapr_version
+   IFS=$tc_save_IFS
+   decimal_apr_version=`printf %02d%02d%03d ${1} ${2} ${3}`
+-  if test "${decimal_apr_version}" -lt "0107000"
++  if test "${decimal_apr_version}" -lt "0106003"
+   then
+-    AC_MSG_ERROR(Found APR $sapr_version. You need version 1.7.0 or newer installed.)
++    AC_MSG_ERROR(Found APR $sapr_version. You need version 1.6.3 or newer installed.)
+   fi
+   AC_MSG_NOTICE(APR $sapr_version detected.)
+ 
+--- tomcat-native-2.0.12-src/native/configure	2026-04-07 12:40:54.610583326 +0200
++++ tomcat-native-2.0.12-src/native/configure	2026-04-07 12:43:33.856315133 +0200
+@@ -12469,9 +12469,9 @@
+   set $sapr_version
+   IFS=$tc_save_IFS
+   decimal_apr_version=`printf %02d%02d%03d ${1} ${2} ${3}`
+-  if test "${decimal_apr_version}" -lt "0107000"
++  if test "${decimal_apr_version}" -lt "0106003"
+   then
+-    as_fn_error $? "Found APR $sapr_version. You need version 1.7.0 or newer installed." "$LINENO" 5
++    as_fn_error $? "Found APR $sapr_version. You need version 1.6.3 or newer installed." "$LINENO" 5
+   fi
+   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: APR $sapr_version detected." >&5
+ printf "%s\n" "$as_me: APR $sapr_version detected." >&6;}
+--- tomcat-native-2.0.12-src/native/src/jnilib.c	2026-04-07 12:40:54.608429654 +0200
++++ tomcat-native-2.0.12-src/native/src/jnilib.c	2026-04-07 12:44:21.004117648 +0200
+@@ -66,8 +66,8 @@
+      */
+     apr_version(&apv);
+     apvn = apv.major * 1000 + apv.minor * 100 + apv.patch;
+-    if (apvn < 1700) {
+-        tcn_Throw(env, "Unsupported APR version %s: this tcnative requires at least 1.7.0",
++    if (apvn < 1603) {
++        tcn_Throw(env, "Unsupported APR version %s: this tcnative requires at least 1.6.3",
+                   apr_version_string());
+         return JNI_ERR;
+     }
