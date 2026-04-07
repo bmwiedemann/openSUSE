@@ -1,7 +1,7 @@
 #
 # spec file for package python-discid
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 Johannes Dewender <novell@JonnyJD.net>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15allpythons}
 Name:           python-discid
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Python binding of Libdiscid
 License:        LGPL-3.0-or-later

@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Mon Mar 30 20:47:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Added type hints to the public API for better IDE support and
+    type checking.
+  * Added :attr:`Disc.pregap` property.
+  * Fixed: mutable default arguments in function signatures.
+  * Accept any Sequence[int] for offsets in :func:`put`.
+  * Removed Python 2 specific code and comments.
+  * Improved code consistency with ruff formatting and linting.
+  * Minimum supported Python version is now 3.10 (previously
+    3.9).
+  * Enhanced documentation with type hints using sphinx-autodoc-
+    typehints.
+  * Fixed typos and broken links in documentation.
+  * Modernized, PEP 518 compatible, build system using
+    pyproject.toml.
+  * Minimum supported Python version is now 3.9.
+  * :issue:`51` tests requiring a physical disc are not run by
+    default anymore. Set the environment variable
+    PYTHON_DISCID_TEST_DEVICE to enable them or run make
+    disccheck.
+  * Fixed :func:`put` to work with first track number greater
+    than 1.
+  * Add :attr:`Disc.cddb_query_string` property.
+  * improve install with pip
+  * add Makefile
+  * workaround :issue:`43` for py2app problems
+  * :issue:`41` improve windows example
+  * feature :issue:`36` add :attr:`Disc.toc_string`
+  * :issue:`38` remove :class:`DiscId` (deprecated since 0.5.0)
+  * fix: :issue:`37` test_emptyness: Assertion disc->success
+    failed
+  * revert code to version 1.0.0 (see :issue:`35`)
+  * fix: :issue:`35` deprecation warning for DEFAULT_DEVICE shows
+    always
+  * renamed a api documentation page, a redirect was created
+  * fix: :issue:`34` bring back :data:`DEFAULT_DEVICE` as
+    deprecated
+  * :issue:`30` :data:`DEFAULT_DEVICE` is now
+    :func:`get_default_device()`
+  * :issue:`32` :attr:`Disc.submission_url` doesn't point to a
+    redirect now
+  * fix: seconds are now rounded the same as on MB server
+    (0.5->up)
+  * feature: :issue:`10` add :attr:`Disc.mcn` and
+    :attr:`Track.isrc`
+  * feature: add :data:`LIBDISCID_VERSION_STRING`
+  * feature: :issue:`28` add :attr:`Disc.seconds`,
+    :attr:`Track.seconds` and aliases :attr:`Disc.length` and
+    :attr:`Track.sectors`
+  * :issue:`22` move :func:`read` and :func:`put` to module level
+  * :issue:`25` provide a package discid rather than a module
+  * :issue:`29` changed parameters for :func:`put` to include
+    extra sectors and add :exc:`TOCError`
+  * rename :class:`DiscId` to :class:`Disc`
+  * fix: :issue:`27` move track attributes to :class:`Track`
+  * fix: :issue:`24` only have "real" tracks in the list(s) (0
+    not special)
+  * fix: :issue:`19` only read the requested features from disc
+    (sparse)
+  * fix: :issue:`26` remove :attr:`DiscId.webservice_url`
+    (deprecated)
+  * fix: detect the version of libdiscid 0.3.0 also in lib64
+    installations
+  * feature: added :data:`FEATURES_IMPLEMENTED`,
+    :attr:`DiscId.track_lengths`, :attr:`DiscId.webservice_url`
+    and :attr:`DiscId.freedb_id`
+  * feature :issue:`18`: disc access test suite
+  * fix :issue:`21`: uninformative error on Windows
+  * feature :issue:`20`: add :data:`FEATURES` list
+  * feature: :func:`DiscId.put`, :attr:`DiscId.track_offsets`,
+    :attr:`DiscId.sectors`, :attr:`DiscId.first_track_num`,
+    :attr:`DiscId.last_track_num`
+  * fix :issue:`17`: test fails on Mac OS X for default_device
+  * fix :issue:`16`: prefer libdiscid in current directory
+  * fix :issue:`15`: import can now raise :exc:`OSError`
+  * fix :issue:`14`: find libdiscid in current folder
+    (Linux/Unix)
+  * fix :issue:`9`: test fails on Python 3.2 because of unicode
+    literals
+  * API change from :func:`DiscId.get_id` to :attr:`DiscId.id`
+  * added :data:`DEFAULT_DEVICE` as a module constant
+  * added :attr:`DiscId.submission_url`
+  * added an actual documentation and links to linux packages
+  * add tests and continuous integration configuration
+  * add changelog
+  * initial version with :func:`DiscId.read` and
+    :func:`DiscId.get_id`
+
+-------------------------------------------------------------------
 Fri Aug  8 11:15:12 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.3.0
