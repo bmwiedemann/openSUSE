@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Apr 07 08:47:46 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 1.9+git.20260403:
+  * syscalls: add missing .rettype annotations
+  * net/ipv6: fix port off-by-one — rand() % 65535 never generates 65535
+  * net/icmpv6: set so->level to SOL_ICMPV6 for ICMPV6_FILTER
+  * select: fix divide error and use nfds to bound FD_SET values
+  * setsockopt: fix memory leak in SO_ATTACH_FILTER path
+  * child: move no_pidns flag to shared memory
+  * cmp_hints: use atomic load for pool->count in cmp_hints_get()
+  * kcov: handle KCOV_DISABLE failure during remote capability probe
+  * spinlock: add generation counter to prevent PID-recycling TOCTOU
+  * edgepair: fix half-initialized entry visible to readers
+  * and many more...
+- add 0001-fix-build-on-aarch-s390x.patch
+
+-------------------------------------------------------------------
+Mon Mar 30 08:40:37 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 1.9+git.20260329:
+  * child: add munge_process() to diversify child startup context
+  * ioctls: register ATM ioctl group via REG_IOCTL_GROUP
+  * fds: extract /sys fd provider into sysfs.c
+  * fds: extract /proc fd provider into procfs.c
+  * fds: extract /dev fd provider into devfs.c
+  * Move random setsockopt from lazy init to child_ops
+  * Add per-child FD leak instrumentation
+  * rt_sigqueueinfo: constrain signal to safe/realtime signals
+  * get_mempolicy: use ARG_MMAP for addr argument
+  * kcmp: zero idx1/idx2 for non-KCMP_FILE types
+  * and many more...
+
+-------------------------------------------------------------------
 Wed Sep 04 06:23:07 UTC 2024 - jslaby@suse.cz
 
 - Update to version 1.9+git.20240830:

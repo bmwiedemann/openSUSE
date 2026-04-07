@@ -1,0 +1,56 @@
+From: Jiri Slaby <jirislaby@gmail.com>
+Date: Tue, 7 Apr 2026 10:46:37 +0200
+Subject: fix build on aarch + s390x
+References: build-fix
+Patch-mainline: no
+
+ syscalls/ptrace.c:115:9: error: duplicate case value
+   115 |         case PTRACE_GETFPREGS:
+       |         ^~~~
+ syscalls/ptrace.c:114:9: note: previously used here
+   114 |         case PTRACE_GETREGS:
+       |         ^~~~
+
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ include/arch-aarch64.h | 8 ++++----
+ include/arch-s390.h    | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/include/arch-aarch64.h b/include/arch-aarch64.h
+index baab2a7925dc..65b3a30746d0 100644
+--- a/include/arch-aarch64.h
++++ b/include/arch-aarch64.h
+@@ -9,9 +9,9 @@
+ #define PAGE_SHIFT		12
+ #define PTE_FILE_MAX_BITS	60
+ 
+-#define PTRACE_GETREGS		0
+-#define PTRACE_GETFPREGS	0
+-#define PTRACE_SETREGS		0
+-#define PTRACE_SETFPREGS	0
++#define PTRACE_GETREGS		12
++#define PTRACE_SETREGS		13
++#define PTRACE_GETFPREGS	14
++#define PTRACE_SETFPREGS	15
+ 
+ #define SYSCALLS syscalls_aarch64
+diff --git a/include/arch-s390.h b/include/arch-s390.h
+index c3220308cfd9..34f5cd7b89ba 100644
+--- a/include/arch-s390.h
++++ b/include/arch-s390.h
+@@ -22,7 +22,7 @@
+ #endif /* __s390x__ */
+ 
+ #define PAGE_OFFSET		0x0UL
+-#define PTRACE_GETREGS		0
+-#define PTRACE_GETFPREGS	0
+-#define PTRACE_SETREGS		0
+-#define PTRACE_SETFPREGS	0
++#define PTRACE_GETREGS		12
++#define PTRACE_SETREGS		13
++#define PTRACE_GETFPREGS	14
++#define PTRACE_SETFPREGS	15
+-- 
+2.53.0
+

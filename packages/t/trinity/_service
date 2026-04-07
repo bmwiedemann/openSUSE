@@ -1,5 +1,5 @@
 <services>
-  <service mode="manual" name="obs_scm">
+  <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/kernelslacker/trinity</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
@@ -7,9 +7,8 @@
     <param name="versionformat">1.9+git.%cd</param>
   </service>
   <service mode="manual" name="set_version"/>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
-    <param name="compression">gz</param>
+    <param name="compression">xz</param>
   </service>
 </services>

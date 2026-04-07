@@ -819,4 +819,37 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1200266</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>59c35c1b66530a3db4e73b3509be4c97</srcmd5>
+    <version>1.9+git.20260403</version>
+    <time>1775572451</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20260403:
+  * syscalls: add missing .rettype annotations
+  * net/ipv6: fix port off-by-one — rand() % 65535 never generates 65535
+  * net/icmpv6: set so-&gt;level to SOL_ICMPV6 for ICMPV6_FILTER
+  * select: fix divide error and use nfds to bound FD_SET values
+  * setsockopt: fix memory leak in SO_ATTACH_FILTER path
+  * child: move no_pidns flag to shared memory
+  * cmp_hints: use atomic load for pool-&gt;count in cmp_hints_get()
+  * kcov: handle KCOV_DISABLE failure during remote capability probe
+  * spinlock: add generation counter to prevent PID-recycling TOCTOU
+  * edgepair: fix half-initialized entry visible to readers
+  * and many more...
+- add 0001-fix-build-on-aarch-s390x.patch
+
+- Update to version 1.9+git.20260329:
+  * child: add munge_process() to diversify child startup context
+  * ioctls: register ATM ioctl group via REG_IOCTL_GROUP
+  * fds: extract /sys fd provider into sysfs.c
+  * fds: extract /proc fd provider into procfs.c
+  * fds: extract /dev fd provider into devfs.c
+  * Move random setsockopt from lazy init to child_ops
+  * Add per-child FD leak instrumentation
+  * rt_sigqueueinfo: constrain signal to safe/realtime signals
+  * get_mempolicy: use ARG_MMAP for addr argument
+  * kcmp: zero idx1/idx2 for non-KCMP_FILE types
+  * and many more...</comment>
+    <requestid>1344918</requestid>
+  </revision>
 </revisionlist>
