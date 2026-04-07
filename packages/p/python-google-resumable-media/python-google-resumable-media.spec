@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-resumable-media
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-google-resumable-media
-Version:        2.8.0
+Version:        2.8.2
 Release:        0
 Summary:        Utilities for Google Media Downloads and Resumable Uploads
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/google-resumable-media-python
 Source:         https://files.pythonhosted.org/packages/source/g/google_resumable_media/google_resumable_media-%{version}.tar.gz
-BuildRequires:  %{python_module google-auth}
-BuildRequires:  %{python_module google-crc32c}
+BuildRequires:  %{python_module google-auth >= 1.22.0}
+BuildRequires:  %{python_module google-crc32c >= 1.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.18.0}
@@ -35,8 +34,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-crc32c
-Recommends:     python-aiohttp
+Requires:       python-google-crc32c >= 1.0.0
+Recommends:     python-aiohttp >= 3.6.2
 Recommends:     python-requests >= 2.18.0
 BuildArch:      noarch
 %if 0%{?sle_version} >= 150400

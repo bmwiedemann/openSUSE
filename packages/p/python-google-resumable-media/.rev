@@ -287,4 +287,20 @@
   * Resolve issue where pre-release versions of dependencies are installed (#481) (forwarded request 1319650 from glaubitz)</comment>
     <requestid>1319693</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8d87d6a1f4da25ab30d7619f5dcabccb</srcmd5>
+    <version>2.8.2</version>
+    <time>1775572408</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.2
+  * Drop support for Python 3.7 and 3.8 (#500)
+  * Minimum supported Python version is now 3.9
+  * Add max_length support to decompress methods (#499)
+  * Update checksumming for Gzip/Brotli decoders (#491)
+
+  * Include ConnectionError and urllib3 exception as retriable
+- Remove aiohttp from BuildRequires, and add it to Recommends.
+  now ships.</comment>
+    <requestid>1344790</requestid>
+  </revision>
 </revisionlist>

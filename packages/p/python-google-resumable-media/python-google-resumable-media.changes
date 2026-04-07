@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  6 20:32:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.2
+  * Drop support for Python 3.7 and 3.8 (#500)
+  * Minimum supported Python version is now 3.9
+  * Add max_length support to decompress methods (#499)
+  * Update checksumming for Gzip/Brotli decoders (#491)
+
+-------------------------------------------------------------------
 Mon Nov 24 07:52:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.8.0
@@ -119,7 +128,7 @@ Sun Jan 23 15:54:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
   * add support for Python 3.10
-  * Include ConnectionError and urllib3 exception as retriable 
+  * Include ConnectionError and urllib3 exception as retriable
 
 -------------------------------------------------------------------
 Thu Sep 30 06:30:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -151,14 +160,14 @@ Tue Aug 31 09:04:07 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 Mon Aug  2 04:05:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add Requires on python-google-crc32c.
-- Remove aiohttp from BuildRequires, and add it to Recommends. 
+- Remove aiohttp from BuildRequires, and add it to Recommends.
 
 -------------------------------------------------------------------
 Tue Jun 22 06:36:43 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Be more specific about included filepaths in %files
 - Add Requires on python-google-filesystem, and stop including a file it
-  now ships. 
+  now ships.
 
 -------------------------------------------------------------------
 Fri Jun  4 08:37:34 UTC 2021 - Matej Cepl <mcepl@suse.com>
