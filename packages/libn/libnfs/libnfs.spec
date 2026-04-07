@@ -1,7 +1,7 @@
 #
 # spec file for package libnfs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -28,6 +28,7 @@ Group:          Productivity/Networking/NFS
 URL:            https://github.com/sahlberg/libnfs
 Source0:        %{url}/archive/libnfs-%{version}.tar.gz
 Patch0:         libnfs-5.0.3-glibc-2_43.patch
+Patch1:         libnfs-5.0.3-glibc-2_43-2.patch
 BuildRequires:  autoconf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

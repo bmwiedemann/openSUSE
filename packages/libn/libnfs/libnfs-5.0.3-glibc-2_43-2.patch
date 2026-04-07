@@ -1,0 +1,22 @@
+--- libnfs-libnfs-5.0.3/lib/nfs_v3.c.orig	2026-03-19 10:27:08.202807530 +0100
++++ libnfs-libnfs-5.0.3/lib/nfs_v3.c	2026-03-19 10:28:11.410808483 +0100
+@@ -3586,7 +3586,7 @@
+                   int mode, nfs_cb cb, void *private_data)
+ {
+ 	struct create_cb_data *cb_data;
+-	char *ptr;
++	const char *ptr;
+ 
+ 	cb_data = malloc(sizeof(struct create_cb_data));
+ 	if (cb_data == NULL) {
+@@ -3603,8 +3603,8 @@
+                                       "buffer for creat path");
+                         return -1;
+                 }
+-                ptr = strrchr(cb_data->path, '/');
+-                *ptr = 0;
++                char *ptr2 = strrchr(cb_data->path, '/');
++                *ptr2 = 0;
+         } else {
+                 cb_data->path = malloc(strlen(path) + 2);
+                 if (cb_data->path == NULL) {
