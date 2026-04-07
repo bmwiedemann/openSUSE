@@ -6,7 +6,7 @@
       <param name="exclude">.git</param>
       <param name="versionformat">@PARENT_TAG@</param>
       <param name="versionrewrite-pattern">v(.*)</param>
-      <param name="revision">4.4.8</param>
+      <param name="revision">4.4.10</param>
       <param name="changesgenerate">enable</param>
       </service>
    <service name="recompress" mode="manual">
