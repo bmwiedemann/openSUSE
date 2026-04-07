@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr  4 21:56:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.3.1/6.0.1
+  https://krita.org/en/posts/2026/krita-5.3.1-released/
+
+-------------------------------------------------------------------
+Tue Mar 24 22:49:38 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.3.0/6.0.0
+  https://krita.org/en/posts/2026/krita-5.3.0-released/
+  Since we ship it with the Qt5 build it will announce it self as
+  5.3.0.
+- Drop 0004-Fix-build-with-sip6.8.patch
+
+-------------------------------------------------------------------
 Fri Mar  6 09:43:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.2.16

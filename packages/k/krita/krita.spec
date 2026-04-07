@@ -28,43 +28,27 @@
 %else
 %define pyver python311
 %endif
+
+# Ignore internal and broken imports
+%global __requires_exclude qt5qmlimport\\((org\\.krita\\.*|QtQuick)
+
 Name:           krita
-Version:        5.2.16
+Version:        5.3.1
 Release:        0
+%global pkg_version 6.0.1
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
 URL:            https://www.krita.org/
-Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/krita/%{pkg_version}/krita-%{pkg_version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/krita/%{pkg_version}/krita-%{pkg_version}.tar.xz.sig
 Source2:        krita.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0004-Fix-build-with-sip6.8.patch
 BuildRequires:  %{pyver}-devel
 BuildRequires:  %{pyver}-qt5-devel
 BuildRequires:  %{pyver}-sip-devel
-BuildRequires:  OpenEXR-devel
-BuildRequires:  boost-devel
-BuildRequires:  extra-cmake-modules
-BuildRequires:  fftw3-devel
-BuildRequires:  giflib-devel
-BuildRequires:  gsl-devel
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libeigen3-devel
-BuildRequires:  libexiv2-devel
-BuildRequires:  libheif-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  liblcms2-devel
-BuildRequires:  libpng-devel
 BuildRequires:  libpoppler-qt5-devel
-BuildRequires:  libraw-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  openjpeg2-devel
-BuildRequires:  perl
-BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
-BuildRequires:  cmake(Immer)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -76,8 +60,6 @@ BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KDcraw)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Lager)
-BuildRequires:  cmake(Mlt7)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -86,6 +68,7 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
@@ -94,6 +77,28 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(QuaZip-Qt5)
+Recommends:     %{pyver}-qt5
+BuildRequires:  OpenEXR-devel
+BuildRequires:  boost-devel
+BuildRequires:  extra-cmake-modules
+BuildRequires:  fftw3-devel
+BuildRequires:  giflib-devel
+BuildRequires:  gsl-devel
+BuildRequires:  libeigen3-devel
+BuildRequires:  libexiv2-devel
+BuildRequires:  libheif-devel
+BuildRequires:  libjpeg-devel
+BuildRequires:  liblcms2-devel
+BuildRequires:  libpng-devel
+BuildRequires:  libraw-devel
+BuildRequires:  libtiff-devel
+BuildRequires:  openjpeg2-devel
+BuildRequires:  perl
+BuildRequires:  pkgconfig
+BuildRequires:  zlib-devel
+BuildRequires:  cmake(Immer)
+BuildRequires:  cmake(Lager)
+BuildRequires:  cmake(Mlt7)
 BuildRequires:  cmake(Zug)
 BuildRequires:  cmake(kseexpr)
 BuildRequires:  cmake(sdl2)
@@ -112,7 +117,6 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(xcb-atom)
 BuildRequires:  pkgconfig(xcb-xinput)
 BuildRequires:  pkgconfig(xi) >= 1.4.99.1
-Recommends:     %{pyver}-qt5
 Recommends:     krita-plugin-gmic
 Obsoletes:      calligra-krita < %{version}
 Provides:       calligra-krita = %{version}
@@ -132,7 +136,7 @@ Development headers and libraries for Krita.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{pkg_version}
 
 sed -i 's#COMPONENTS system##' CMakeLists.txt
 
@@ -179,7 +183,8 @@ sed -i "/#!\/usr\/bin\/env/d" %{buildroot}%{_kf5_libdir}/krita-python-libs/krita
 %dir %{_kf5_iconsdir}/hicolor/512x512
 %dir %{_kf5_iconsdir}/hicolor/512x512/apps
 %dir %{_kf5_iconsdir}/hicolor/512x512/mimetypes
-%config %{_kf5_configdir}/krita*
+%dir %{_kf5_qmldir}/org/
+%{_kf5_qmldir}/org/krita/
 
 %files devel
 %{_kf5_libdir}/libkrita*.so
