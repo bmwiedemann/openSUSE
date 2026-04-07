@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  7 06:57:57 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.1:
+  * Fixed include/exclude specification for directories. This is a regression
+    bug in version 14.0. It is highly recommended to update.
+    If you are using version 14.0 with include/exclude directives, simply run
+    a new sync with this version to automatically resolve any potential issues.
+  * Fixed a build issue in Alpine distribution.
+  * Fixed abort condition if the Windows volume name cannot be converted to
+    UTF-8.
+
+-------------------------------------------------------------------
 Tue Mar 31 08:22:59 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 14.0:

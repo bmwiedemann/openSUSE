@@ -51,4 +51,20 @@
 </comment>
     <requestid>1343860</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>61c0541d894d19464356edf562d91042</srcmd5>
+    <version>14.1</version>
+    <time>1775572433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 14.1:
+  * Fixed include/exclude specification for directories. This is a regression
+    bug in version 14.0. It is highly recommended to update.
+    If you are using version 14.0 with include/exclude directives, simply run
+    a new sync with this version to automatically resolve any potential issues.
+  * Fixed a build issue in Alpine distribution.
+  * Fixed abort condition if the Windows volume name cannot be converted to
+    UTF-8.
+</comment>
+    <requestid>1344871</requestid>
+  </revision>
 </revisionlist>
