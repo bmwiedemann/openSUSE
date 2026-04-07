@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr  5 22:07:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.0.8:
+  * Fixed issue with rendering node text when themes are changed
+- Update to version 2.0.7:
+  * Added Georgian translation
+  * Removed markup characters from nodes when nodes are not being edited to
+    improve display
+  * Improved coloring of URLs when node is selected
+  * Fixed issue resetting application shortcuts to the Minder defaults
+  * Fixed issues with RTL language display
+  * Fixed issue with selecting the first root node via keyboard shortcut when
+    no other nodes are selected
+  * Fixed issue with drag and drop of tags on nodes
+  * Fixed issue with copying nodes with tags
+
+-------------------------------------------------------------------
 Mon Feb  2 13:42:08 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 2.0.5:
