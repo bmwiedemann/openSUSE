@@ -25,6 +25,11 @@
 %global psuffix %{nil}
 %endif
 
+%if 0%{?suse_version} < 1699
+%define llvm_version 22
+%define clang_version 22
+%endif
+
 %if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
 %define meson_build /usr/bin/meson compile -C %{_vpath_builddir} %{_smp_mflags} --verbose
 %define meson_install /usr/bin/meson install -C %{_vpath_builddir} --no-rebuild --destdir=%{buildroot}
@@ -131,9 +136,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.0.2
+Version:        26.0.4
 Release:        0
-%define pkg_version 26.0.2
+%define pkg_version 26.0.4
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
@@ -279,17 +284,11 @@ BuildRequires:  pkgconfig(wayland-client) >= 1.18
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.41
 BuildRequires:  pkgconfig(wayland-server) >= 1.18
 %if 0%{with_llvm}
-BuildRequires:  llvm21-devel
+BuildRequires:  llvm%{?llvm_version}-devel
 %endif
 
 %if 0%{with_opencl}
-%if 0%{?suse_version} >= 1550
-BuildRequires:  clang-devel
-%else
-%if 0%{?sle_version} >= 150600
-BuildRequires:  clang21-devel
-%endif
-%endif
+BuildRequires:  clang%{?clang_version}-devel
 BuildRequires:  libclc
 BuildRequires:  pkgconfig(LLVMSPIRVLib)
 BuildRequires:  pkgconfig(SPIRV-Tools)

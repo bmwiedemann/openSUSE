@@ -6719,4 +6719,29 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - adjusted logic for %suse_version bump with SLE16.1 Beta2 (jsc#PED-15825)</comment>
     <requestid>1338491</requestid>
   </revision>
+  <revision rev="572" vrev="1">
+    <srcmd5>1a2deb48e6bcdf0e501475168292ffc8</srcmd5>
+    <version>26.0.4</version>
+    <time>1775572339</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 26.0.4 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.0.4
+  * This out-of-schedule release contains important raytracing
+    fixes for an upcoming game.
+
+- Update to 26.0.3 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.0.3
+  * This out-of-schedule release contains important raytracing
+    fixes for an upcoming game.
+
+- use llvm22/clang22 also for Leap/SLE
+
+- BuildRequires changes:
+  * use llvm-devel/clang-devel for TW and llvm{version}-devel/
+    clang{version}-devel for Leap/SLE (version = 21 for now)
+
+- make sure to buildrequire the same version of llvm and clang
+  devel package</comment>
+    <requestid>1344206</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Apr  1 18:15:30 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.0.4 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.0.4
+  * This out-of-schedule release contains important raytracing
+    fixes for an upcoming game.
+
+-------------------------------------------------------------------
+Wed Mar 18 17:00:32 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.0.3 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.0.3
+  * This out-of-schedule release contains important raytracing
+    fixes for an upcoming game.
+
+-------------------------------------------------------------------
+Wed Mar 18 16:56:49 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- use llvm22/clang22 also for Leap/SLE
+
+-------------------------------------------------------------------
+Tue Mar 17 15:00:23 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- BuildRequires changes:
+  * use llvm-devel/clang-devel for TW and llvm{version}-devel/
+    clang{version}-devel for Leap/SLE (version = 21 for now)
+
+-------------------------------------------------------------------
+Mon Mar 16 09:06:51 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- make sure to buildrequire the same version of llvm and clang
+  devel package
+
+-------------------------------------------------------------------
 Thu Mar 12 12:37:20 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 26.0.2 bugfix release
