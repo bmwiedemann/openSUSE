@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 30 13:21:34 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2026 (20260301)
+  * UTF-8 Encoding: The distribution now exclusively uses UTF-8
+    input encoding.
+  * Font Support: Minimal support for OpenType and TrueType fonts
+    (without ligatures or math) has been added.
+  * New Primitives: $\backslash$Uchar and $\backslash$Ucharcat
+    primitives have been added.
+- Remove eolang_pl.dif now upstream
+- Remove luatex_cnf.dif and add content to context_cnf.dif
+  as texmfcnf.lua has moved from luatex.tar.xz to context.tar.xz
+- Port patches
+  * kpathsea_cnf.dif
+  * latex2man_tmphandling.dif
+  * latexmk_conf.dif
+  * pdftex_pdflatex.dif
+  * texlive-scripts_scripts.dif
+  * texlive-scripts-extra_scripts.dif
+
+-------------------------------------------------------------------
 Thu Jan 15 11:33:50 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Support Immutable Mode (jsc#PED-14907)

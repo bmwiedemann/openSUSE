@@ -1,11 +1,12 @@
 ---
  texmf-dist/scripts/context/lua/mtxrun.lua     |    5 ++---
  texmf-dist/tex/context/base/mkiv/data-res.lua |    5 ++---
- 2 files changed, 4 insertions(+), 6 deletions(-)
+ texmf-dist/web2c/texmfcnf.lua                 |   18 +++++++++---------
+ 3 files changed, 13 insertions(+), 15 deletions(-)
 
 --- texmf-dist/scripts/context/lua/mtxrun.lua
 +++ texmf-dist/scripts/context/lua/mtxrun.lua	2024-03-18 08:53:56.333347801 +0000
-@@ -22505,9 +22505,8 @@ do
+@@ -22670,9 +22670,8 @@ do
   local texroot=environment.texroot
   resolvers.luacnfspec={
    "home:texmf/web2c",
@@ -31,3 +32,50 @@
      }
  
      if environment.default_texmfcnf then
+--- texmf-dist/web2c/texmfcnf.lua
++++ texmf-dist/web2c/texmfcnf.lua	2026-03-31 07:41:10.754415782 +0000
+@@ -42,7 +42,7 @@ local package_revision = "A"
+ -- The location of the distribution's TEXMF tree. The contents stored in this
+ -- path should not be modified by users, and are solely managed by the
+ -- distribution itself.
+-local distribution_path = "selfautoparent:texmf-dist"
++local distribution_path = "/usr/share/texmf"
+ 
+ -- Where ConTeXt should store any caches. There is a single "system" folder for
+ -- the entire computer, and this folder is typically only writable by
+@@ -51,8 +51,8 @@ local distribution_path = "selfautoparen
+ -- must be writable by ConTeXt at runtime, or else ConTeXt will refuse to run.
+ -- These folders should be persistent (so not in a temporary directory);
+ -- however, it is generally safe to delete them at any time.
+-local system_cache = "selfautoparent:"
+-local user_cache   = "home:.texlive2026"
++local system_cache = "/var/cache/texmf"
++local user_cache   = "home:.cache/texmf"
+ 
+ -- Where ConTeXt should search for custom files. "system" and "user" have the
+ -- same meaning as above. ConTeXt will never write to or otherwise modify these
+@@ -156,18 +156,18 @@ return {
+             -- System trees
+             TEXMFDIST      = distribution_path,
+             TEXMFLOCAL     = system_data,
+-            TEXMFSYSCONFIG = system_cache .. "/texmf-config",
+-            TEXMFSYSVAR    = system_cache .. "/texmf-var",
++            TEXMFSYSCONFIG = "/etc/texmf",
++            TEXMFSYSVAR    = "/var/lib/texmf",
+ 
+             -- User trees
+-            TEXMFCONFIG = user_cache .. "/texmf-config",
+-            TEXMFVAR    = user_cache .. "/texmf-var",
++            TEXMFCONFIG = "$TEXMFSYSCONFIG",
++            TEXMFVAR    = "$TEXMFSYSVAR",
+             TEXMFHOME   = user_data,
++            HOMECACHE   = "home:.cache/texmf/fonts",
+ 
+             -- Search paths
+-            TEXMFCACHE = "$TEXMFSYSVAR;$TEXMFVAR",
++            TEXMFCACHE = "$TEXMFSYSVAR;$TEXMFVAR;$HOMECACHE",
+             TEXMF      = "{\z
+-                              $TEXMFCONFIG,\z
+                               $TEXMFHOME,\z
+                               !!$TEXMFSYSCONFIG,\z
+                               !!$TEXMFSYSVAR,\z
