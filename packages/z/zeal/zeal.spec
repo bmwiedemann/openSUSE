@@ -19,7 +19,7 @@
 %global optflags %{optflags} -Wno-unused-variable
 
 Name:           zeal
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Offline API documentation browser
 License:        GPL-3.0-or-later

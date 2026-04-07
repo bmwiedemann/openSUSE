@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Sun Apr 05 07:34:08 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 0.8.1:
+  * ci(github): fix release artifact upload patterns
+  * chore: release v0.8.1 (#1798)
+  * fix: normalize docset keywords to lowercase
+  * refactor(ui): restrict QxtGlobalShortcutPrivate access
+  * chore(tools): add include-cleaner runner
+  * chore(tools): fix clang-tidy runner
+  * refactor: add explicit ctors and special members
+  * refactor: clean up includes (#1805)
+  * build(contrib): update cpp-httplib to v0.41.0
+  * chore(tools): improve run-clang-tidy script
+  * style: use auto* for pointer types
+  * fix(registry): remove virtual from final class dtor
+  * fix(ui): fix completion label position (#1804)
+  * build(cmake): add option to disable update check
+  * fix(registry,ui): fix compiler warnings
+  * chore: use permissive license for build metadata
+  * ci(github): publish snap weekly
+  * cmake(build): fix unused variable warning
+  * build(snap): set icon
+  * build(snap): add snap packaging (#1800)
+  * fix(core): improve singleton crash recovery (#1799)
+  * ci(github): fix workflow permissions warning
+  * ci(github): configure release-please
+  * ci(github): improve release-please security
+  * ci(github): automate release workflow (#1797)
+  * build(cmake): add clang-tidy integration (#1796)
+  * build(cmake): simplify preset configuration (#1795)
+  * style: use nested namespaces (#1794)
+  * fix(registry): initialize std::atomic
+  * build(chocolatey): improve error handling
+  * build(chocolatey): remove version specific metadata
+  * fix(registry): validate row/column in SearchModel::index
+  * fix(registry): clear keyword state on empty input
+  * ci(github): add clang-format check
+  * style: enable include grouping
+  * style: always require block braces
+  * style: add initial clang-format rules
+  * fix(browser): respect WebWindowType in createWindow
+  * feat(ui): add browser-style sidebar navigation (#1792)
+  * fix(ui): hard-code exit and preferences shortcuts
+  * build(cmake): use new SQLite3 target name
+  * fix(ui): repolish toolbar on theme switch
+  * fix(core): recover from stale shared memory on Unix (#1789)
+  * fix(ui): enable mouse tracking in sidebar
+  * build(vcpkg): update to 2026.03.18 (#1790)
+  * chore(gitignore): add local Claude Code file
+  * fix(core): log config file path
+  * build(cmake): use UTC time in AppStream metadata
+  * style(cmake): fix line length issues
+  * chore(pkg/wix): fix copyright headers
+  * ci(github): add REUSE compliance check (#1778)
+  * build(cmake): deploy Qt deps to build dir (#1787)
+  * ci(github): add explicit permissions to workflows (#1788)
+  * fix(core): fix false send failure on local socket
+  * fix(app): avoid graphics init for CLI parser (#1786)
+  * fix(ui): use Qt keysym table for X11 shortcuts (#1785)
+  * fix(ui): allow Tab to cycle focus in shortcut edit
+  * fix(ui): unregister global shortcut on disable (#1783)
+  * fix(ui): add Escape to revert shortcut edit (#1782)
+  * fix(ui): handle implicit Shift in global hotkeys (#1781)
+  * fix(ui): use bold text for search match highlight (#1780)
+  * fix(browser): fix find-in-page highlight disappearing
+  * fix(app): prevent white flash on startup (#1779)
+  * fix(ui): set web page backdrop color
+  * fix(ui): restore Ctrl+, shortcut on Windows
+  * fix(ui): use requestActivate for window raising
+  * ci(build): fix vcpkg binary cache (again) (#1776)
+  * build(cmake): do not build tests by default
+  * chore(editorconfig): update to 120 characters
+  * chore(app): add missing copyright in windows manifest
+  * build(chocolatey): remove all bom related logic
+  * build(chocolatey): fix missing bom
+  * build(chocolatey): fix checksum check
+  * build(chocolatey): add metadata and workflow (#1777)
+  * fix(core): case-insensitive file lookup on 404 (#1773)
+  * build(appimage): switch to linuxdeploy (#1775)
+  * chore(assets): set vcs-browser in appstream metadata
+  * fix(cmake): handle missing git tags in forks
+  * fix(core): create parent dirs during extraction
+  * fix(util): protect SQLite access with mutex (#1772)
+  * fix(core): preserve existing Chromium flags
+  * build(cmake): add sccache/ccache support
+  * fix(ui): use actual path for docset removal
+  * fix(registry): remove broken cheats suffix
+  * fix(core): fix prefix stripping in local server
+  * fix(ui): prevent crash when updating docsets
+  * build(app): add Windows 10/11 compatibility manifest (#1770)
+  * fix(registry): parse <name> from Dash feed
+  * fix(ui): restore window geometry after un-hiding on Windows
+  * fix(registry): handle search queries starting with ::
+  * fix(ui): restore Ctrl+Q shortcut on Windows
+  * chore: bump version to 0.8.1
+
+-------------------------------------------------------------------
 Sat Mar 07 21:20:55 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 0.8.0:
