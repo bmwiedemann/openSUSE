@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2025
-%define texlive_previous 2022
-%define texlive_release  20250308
-%define texlive_noarch   221
-%define biber_version    2.20
+%define texlive_version  2026
+%define texlive_previous 2025
+%define texlive_release  20260301
+%define texlive_noarch   222
+%define biber_version    2.21
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-s
-Version:        2025
+Version:        2026
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -117,7 +117,7 @@ Suggests:       texlive-plari-doc >= %{texlive_version}
 Provides:       tex(plari.cls)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source1:        plari.tar.xz
 Source2:        plari.doc.tar.xz
 
@@ -196,7 +196,7 @@ Provides:       tex(endplate.sty)
 Provides:       tex(plates.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source3:        plates.tar.xz
 Source4:        plates.doc.tar.xz
 
@@ -246,7 +246,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/plates/plates.sty
 
 %package -n texlive-platex
-Version:        %{texlive_version}.%{texlive_noarch}.svn73848
+Version:        %{texlive_version}.%{texlive_noarch}.svn77830
 Release:        0
 License:        BSD-3-Clause
 Summary:        PLaTeX2e and miscellaneous macros for pTeX
@@ -378,7 +378,7 @@ Requires:       tex(plautopatch.sty)
 Requires:       tex(shortvrb.sty)
 Requires:       tex(tracefnt.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source5:        platex.tar.xz
 Source6:        platex.doc.tar.xz
 
@@ -388,7 +388,7 @@ and e-pTeX. This is a community edition forked from the
 original ASCII edition (ptex-texmf-2.5).
 
 %package -n texlive-platex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn73848
+Version:        %{texlive_version}.%{texlive_noarch}.svn77830
 Release:        0
 Summary:        Documentation for texlive-platex
 License:        BSD-3-Clause
@@ -633,7 +633,7 @@ Requires:       tex(ptrace.sty)
 Requires:       tex(uptrace.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source7:        platex-tools.tar.xz
 Source8:        platex-tools.doc.tar.xz
 
@@ -740,7 +740,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source9:        platexcheat.doc.tar.xz
 
 %description -n texlive-platexcheat
@@ -780,7 +780,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/platexcheat/sample.tex
 
 %package -n texlive-plautopatch
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9qsvn64072
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9qsvn77682
 Release:        0
 License:        BSD-3-Clause
 Summary:        Automated patches for pLaTeX/upLaTeX
@@ -830,7 +830,7 @@ Requires:       tex(pxeveryshi.sty)
 Requires:       tex(siunitx.sty)
 Requires:       tex(stfloats.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source10:       plautopatch.tar.xz
 Source11:       plautopatch.doc.tar.xz
 
@@ -846,7 +846,7 @@ also to make the appearance of working pLaTeX/upLaTeX sources
 similar to those of ordinary LaTeX ones.
 
 %package -n texlive-plautopatch-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9qsvn64072
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9qsvn77682
 Release:        0
 Summary:        Documentation for texlive-plautopatch
 License:        BSD-3-Clause
@@ -924,7 +924,7 @@ Provides:       tex(play.cls)
 Provides:       tex(play.sty)
 Requires:       tex(book.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source12:       play.tar.xz
 Source13:       play.doc.tar.xz
 
@@ -1002,7 +1002,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(simplekv.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source14:       playcards.tar.xz
 Source15:       playcards.doc.tar.xz
 
@@ -1052,7 +1052,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/playcards/playcards.sty
 
 %package -n texlive-playfair
-Version:        %{texlive_version}.%{texlive_noarch}.svn64857
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Playfair Display fonts with LaTeX support
@@ -1403,7 +1403,7 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source16:       playfair.tar.xz
 Source17:       playfair.doc.tar.xz
 
@@ -1420,7 +1420,7 @@ more even typographical colour when typesetting proper nouns
 and initialisms.
 
 %package -n texlive-playfair-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64857
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-playfair
 License:        OFL-1.1
@@ -1432,7 +1432,7 @@ Supplements:    (texlive-playfair and texlive-alldocumentation)
 This package includes the documentation for texlive-playfair
 
 %package -n texlive-playfair-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64857
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-playfair
 License:        OFL-1.1
@@ -1813,7 +1813,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-playfair/PlyfrDisplay-Regular.pfb
 
 %package -n texlive-plex
-Version:        %{texlive_version}.%{texlive_noarch}.svn73028
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Support for IBM Plex fonts
@@ -1852,1459 +1852,1532 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-plex-fonts >= %{texlive_version}
 Suggests:       texlive-plex-doc >= %{texlive_version}
-Provides:       tex(IBMPlexMono-Bold-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Bold-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-Bold-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-Bold-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-Bold-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Bold-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-Bold-sup-t1.vf)
-Provides:       tex(IBMPlexMono-Bold-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Bold-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-Bold-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-Bold-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-Bold-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Bold-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-Bold-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-Bold-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-Bold-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-Bold-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-BoldItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-BoldItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-sup-t1.vf)
-Provides:       tex(IBMPlexMono-BoldItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-BoldItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-BoldItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-BoldItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-ExtLt-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-ExtLt-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-sup-t1.vf)
-Provides:       tex(IBMPlexMono-ExtLt-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-ExtLt-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-ExtLt-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-ExtLt-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-ExtLtItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-ExtLtItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-sup-t1.vf)
-Provides:       tex(IBMPlexMono-ExtLtItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-ExtLtItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-ExtLtItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-ExtLtItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-Italic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Italic-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-Italic-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-Italic-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-Italic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Italic-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-Italic-sup-t1.vf)
-Provides:       tex(IBMPlexMono-Italic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Italic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-Italic-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-Italic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-Italic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Italic-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-Italic-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-Italic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-Italic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-Italic-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-Light-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Light-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-Light-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-Light-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-Light-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Light-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-Light-sup-t1.vf)
-Provides:       tex(IBMPlexMono-Light-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Light-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-Light-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-Light-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-Light-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Light-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-Light-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-Light-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-Light-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-Light-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-LightItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-LightItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-sup-t1.vf)
-Provides:       tex(IBMPlexMono-LightItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-LightItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-LightItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-LightItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-Medm-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Medm-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-Medm-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-Medm-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-Medm-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Medm-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-Medm-sup-t1.vf)
-Provides:       tex(IBMPlexMono-Medm-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Medm-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-Medm-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-Medm-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-Medm-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Medm-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-Medm-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-Medm-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-Medm-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-Medm-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-MedmItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-MedmItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-sup-t1.vf)
-Provides:       tex(IBMPlexMono-MedmItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-MedmItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-MedmItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-MedmItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-SmBld-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-SmBld-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-SmBld-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-SmBld-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-SmBld-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-SmBld-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-SmBld-sup-t1.vf)
-Provides:       tex(IBMPlexMono-SmBld-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-SmBld-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-SmBld-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-SmBld-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-SmBld-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-SmBld-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-SmBld-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-SmBld-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-SmBld-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-SmBld-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-SmBldItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-SmBldItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-sup-t1.vf)
-Provides:       tex(IBMPlexMono-SmBldItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-SmBldItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-SmBldItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-SmBldItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-Text-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Text-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-Text-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-Text-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-Text-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Text-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-Text-sup-t1.vf)
-Provides:       tex(IBMPlexMono-Text-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Text-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-Text-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-Text-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-Text-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Text-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-Text-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-Text-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-Text-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-Text-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-TextItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-TextItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-sup-t1.vf)
-Provides:       tex(IBMPlexMono-TextItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-TextItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-TextItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-TextItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-Thin-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Thin-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-Thin-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-Thin-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-Thin-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Thin-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-Thin-sup-t1.vf)
-Provides:       tex(IBMPlexMono-Thin-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-Thin-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-Thin-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-Thin-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-Thin-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-Thin-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-Thin-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-Thin-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-Thin-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-Thin-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-ThinItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-ThinItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-sup-t1.vf)
-Provides:       tex(IBMPlexMono-ThinItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-ThinItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-ThinItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-ThinItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexMono-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-sup-ly1.tfm)
-Provides:       tex(IBMPlexMono-sup-ly1.vf)
-Provides:       tex(IBMPlexMono-sup-ot1.tfm)
-Provides:       tex(IBMPlexMono-sup-t1--base.tfm)
-Provides:       tex(IBMPlexMono-sup-t1.tfm)
-Provides:       tex(IBMPlexMono-sup-t1.vf)
-Provides:       tex(IBMPlexMono-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexMono-tlf-ly1.tfm)
-Provides:       tex(IBMPlexMono-tlf-ly1.vf)
-Provides:       tex(IBMPlexMono-tlf-ot1.tfm)
-Provides:       tex(IBMPlexMono-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexMono-tlf-t1.tfm)
-Provides:       tex(IBMPlexMono-tlf-t1.vf)
-Provides:       tex(IBMPlexMono-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexMono-tlf-ts1.tfm)
-Provides:       tex(IBMPlexMono-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-Bold-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-Bold-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-Bold-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-Bold-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Bold-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-Bold-sup-t1.vf)
-Provides:       tex(IBMPlexSans-Bold-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Bold-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Bold-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Bold-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Bold-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-Bold-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-Bold-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Bold-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Bold-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-Bold-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Bold-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Bold-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Bold-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Bold-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-Bold-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-Bold-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Bold-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Bold-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-BoldItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSans-BoldItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-BoldItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-BoldItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-BoldItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-BoldItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-ExtLt-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-sup-t1.vf)
-Provides:       tex(IBMPlexSans-ExtLt-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-ExtLt-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-ExtLt-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-ExtLt-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-ExtLt-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-ExtLtItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-ExtLtItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-Italic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-Italic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-Italic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-Italic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Italic-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-Italic-sup-t1.vf)
-Provides:       tex(IBMPlexSans-Italic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Italic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Italic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Italic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Italic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-Italic-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-Italic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Italic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Italic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-Italic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Italic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Italic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Italic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Italic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-Italic-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-Italic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Italic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Italic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-Light-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-Light-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-Light-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-Light-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Light-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-Light-sup-t1.vf)
-Provides:       tex(IBMPlexSans-Light-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Light-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Light-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Light-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Light-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-Light-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-Light-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Light-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Light-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-Light-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Light-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Light-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Light-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Light-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-Light-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-Light-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Light-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Light-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-LightItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSans-LightItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-LightItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-LightItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-LightItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-LightItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-Medm-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-Medm-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-Medm-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-Medm-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Medm-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-Medm-sup-t1.vf)
-Provides:       tex(IBMPlexSans-Medm-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Medm-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Medm-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Medm-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Medm-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-Medm-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-Medm-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Medm-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Medm-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-Medm-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Medm-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Medm-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Medm-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Medm-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-Medm-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-Medm-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Medm-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Medm-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-MedmItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSans-MedmItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-MedmItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-MedmItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-MedmItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-MedmItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-SmBld-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-SmBld-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-SmBld-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-sup-t1.vf)
-Provides:       tex(IBMPlexSans-SmBld-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-SmBld-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-SmBld-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-SmBld-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-SmBld-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-SmBldItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSans-SmBldItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-SmBldItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-SmBldItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-SmBldItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-SmBldItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-Text-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-Text-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-Text-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-Text-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Text-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-Text-sup-t1.vf)
-Provides:       tex(IBMPlexSans-Text-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Text-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Text-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Text-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Text-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-Text-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-Text-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Text-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Text-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-Text-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Text-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Text-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Text-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Text-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-Text-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-Text-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Text-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Text-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-TextItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSans-TextItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-TextItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-TextItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-TextItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-TextItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-Thin-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-Thin-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-Thin-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-Thin-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Thin-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-Thin-sup-t1.vf)
-Provides:       tex(IBMPlexSans-Thin-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Thin-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Thin-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Thin-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Thin-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-Thin-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-Thin-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Thin-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Thin-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-Thin-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-Thin-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-Thin-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-Thin-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-Thin-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-Thin-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-Thin-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-Thin-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-Thin-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-ThinItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSans-ThinItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-ThinItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-ThinItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-ThinItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-ThinItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSans-sup-lgr.tfm)
-Provides:       tex(IBMPlexSans-sup-ly1.tfm)
-Provides:       tex(IBMPlexSans-sup-ot1.tfm)
-Provides:       tex(IBMPlexSans-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSans-sup-t1.tfm)
-Provides:       tex(IBMPlexSans-sup-t1.vf)
-Provides:       tex(IBMPlexSans-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSans-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSans-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSans-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-tlf-t1.tfm)
-Provides:       tex(IBMPlexSans-tlf-t1.vf)
-Provides:       tex(IBMPlexSans-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSans-tlf-ts1.vf)
-Provides:       tex(IBMPlexSans-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSans-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSans-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSans-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSans-tosf-t1.tfm)
-Provides:       tex(IBMPlexSans-tosf-t1.vf)
-Provides:       tex(IBMPlexSans-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSans-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSans-tosf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-Bold-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Bold-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Bold-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-Bold-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-BoldItalic-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-BoldItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-BoldItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-BoldItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-ExtLt-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-ExtLt-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-ExtLt-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLt-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-ExtLtItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-Italic-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Italic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Italic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-Italic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-Light-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Light-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Light-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Light-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Light-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Light-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Light-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Light-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Light-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Light-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-Light-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Light-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Light-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Light-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Light-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Light-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Light-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Light-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Light-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Light-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-Light-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Light-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-Light-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-LightItalic-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-LightItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-LightItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-LightItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-Medm-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Medm-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Medm-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-Medm-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-MedmItalic-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-MedmItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-MedmItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-MedmItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-SmBld-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-SmBld-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-SmBld-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBld-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-SmBldItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-Text-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Text-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Text-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Text-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Text-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Text-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Text-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Text-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Text-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Text-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-Text-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Text-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Text-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Text-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Text-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Text-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Text-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Text-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Text-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Text-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-Text-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Text-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-Text-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-TextItalic-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-TextItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-TextItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-TextItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-Thin-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Thin-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Thin-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-Thin-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-ThinItalic-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-ThinItalic-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-ThinItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-ThinItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSansCond-sup-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-sup-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-sup-lgr.vf)
-Provides:       tex(IBMPlexSansCond-sup-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-sup-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-sup-ly1.vf)
-Provides:       tex(IBMPlexSansCond-sup-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-sup-t1.tfm)
-Provides:       tex(IBMPlexSansCond-sup-t1.vf)
-Provides:       tex(IBMPlexSansCond-tlf-lgr--base.tfm)
-Provides:       tex(IBMPlexSansCond-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSansCond-tlf-lgr.vf)
-Provides:       tex(IBMPlexSansCond-tlf-ly1--base.tfm)
-Provides:       tex(IBMPlexSansCond-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSansCond-tlf-ly1.vf)
-Provides:       tex(IBMPlexSansCond-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSansCond-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSansCond-tlf-t1.tfm)
-Provides:       tex(IBMPlexSansCond-tlf-t1.vf)
-Provides:       tex(IBMPlexSansCond-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSansCond-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSansCond-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Bold-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Bold-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Bold-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-Bold-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-Bold-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Bold-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-Bold-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Bold-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-BoldItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-BoldItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-BoldItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-BoldItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-BoldItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-BoldItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-ExtraLight-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-ExtraLight-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-ExtraLight-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-ExtraLight-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-ExtraLight-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLight-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-ExtraLightItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Italic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Italic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Italic-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-Italic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-Italic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Italic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-Italic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Italic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Light-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Light-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Light-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Light-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Light-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-Light-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-Light-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Light-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Light-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Light-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Light-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Light-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-Light-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Light-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Light-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Light-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Light-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Light-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Light-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Light-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Light-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-Light-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Light-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Light-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-LightItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-LightItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-LightItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-LightItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-LightItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-LightItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Medium-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Medium-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Medium-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-Medium-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-Medium-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Medium-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-Medium-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Medium-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-MediumItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-MediumItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-MediumItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-MediumItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-MediumItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-MediumItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Regular-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Regular-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Regular-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-Regular-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-Regular-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Regular-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-Regular-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Regular-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-SemiBold-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-SemiBold-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-SemiBold-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-SemiBold-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-SemiBold-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBold-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-SemiBoldItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Text-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Text-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Text-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Text-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Text-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-Text-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-Text-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Text-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Text-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Text-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Text-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Text-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-Text-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Text-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Text-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Text-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Text-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Text-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Text-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Text-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Text-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-Text-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Text-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Text-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-TextItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-TextItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-TextItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-TextItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-TextItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-TextItalic-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Thin-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Thin-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Thin-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-Thin-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-Thin-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-Thin-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-Thin-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-Thin-tosf-ts1.vf)
-Provides:       tex(IBMPlexSerif-ThinItalic-sup-lgr.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-sup-ly1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-sup-ot1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-sup-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-sup-t1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-sup-t1.vf)
-Provides:       tex(IBMPlexSerif-ThinItalic-tlf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tlf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tlf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tlf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tlf-t1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tlf-t1.vf)
-Provides:       tex(IBMPlexSerif-ThinItalic-tlf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tlf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tlf-ts1.vf)
-Provides:       tex(IBMPlexSerif-ThinItalic-tosf-lgr.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tosf-ly1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tosf-ot1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tosf-t1--base.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tosf-t1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tosf-t1.vf)
-Provides:       tex(IBMPlexSerif-ThinItalic-tosf-ts1--base.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tosf-ts1.tfm)
-Provides:       tex(IBMPlexSerif-ThinItalic-tosf-ts1.vf)
-Provides:       tex(LGRIBMPlexSans-Sup.fd)
-Provides:       tex(LGRIBMPlexSans-TLF.fd)
-Provides:       tex(LGRIBMPlexSans-TOsF.fd)
-Provides:       tex(LGRIBMPlexSerif-Sup.fd)
-Provides:       tex(LGRIBMPlexSerif-TLF.fd)
-Provides:       tex(LGRIBMPlexSerif-TOsF.fd)
-Provides:       tex(LY1IBMPlexMono-Sup.fd)
-Provides:       tex(LY1IBMPlexMono-TLF.fd)
-Provides:       tex(LY1IBMPlexSans-Sup.fd)
-Provides:       tex(LY1IBMPlexSans-TLF.fd)
-Provides:       tex(LY1IBMPlexSans-TOsF.fd)
-Provides:       tex(LY1IBMPlexSerif-Sup.fd)
-Provides:       tex(LY1IBMPlexSerif-TLF.fd)
-Provides:       tex(LY1IBMPlexSerif-TOsF.fd)
-Provides:       tex(OT1IBMPlexMono-Sup.fd)
-Provides:       tex(OT1IBMPlexMono-TLF.fd)
-Provides:       tex(OT1IBMPlexSans-Sup.fd)
-Provides:       tex(OT1IBMPlexSans-TLF.fd)
-Provides:       tex(OT1IBMPlexSans-TOsF.fd)
-Provides:       tex(OT1IBMPlexSerif-Sup.fd)
-Provides:       tex(OT1IBMPlexSerif-TLF.fd)
-Provides:       tex(OT1IBMPlexSerif-TOsF.fd)
-Provides:       tex(T1IBMPlexMono-Sup.fd)
-Provides:       tex(T1IBMPlexMono-TLF.fd)
-Provides:       tex(T1IBMPlexSans-Sup.fd)
-Provides:       tex(T1IBMPlexSans-TLF.fd)
-Provides:       tex(T1IBMPlexSans-TOsF.fd)
-Provides:       tex(T1IBMPlexSerif-Sup.fd)
-Provides:       tex(T1IBMPlexSerif-TLF.fd)
-Provides:       tex(T1IBMPlexSerif-TOsF.fd)
-Provides:       tex(TS1IBMPlexMono-TLF.fd)
-Provides:       tex(TS1IBMPlexSans-TLF.fd)
-Provides:       tex(TS1IBMPlexSans-TOsF.fd)
-Provides:       tex(TS1IBMPlexSerif-TLF.fd)
-Provides:       tex(TS1IBMPlexSerif-TOsF.fd)
+Provides:       tex(LGRplxSans-Sup.fd)
+Provides:       tex(LGRplxSans-TLF.fd)
+Provides:       tex(LGRplxSans-TOsF.fd)
+Provides:       tex(LGRplxSerif-Sup.fd)
+Provides:       tex(LGRplxSerif-TLF.fd)
+Provides:       tex(LGRplxSerif-TOsF.fd)
+Provides:       tex(LY1plxMono-Sup.fd)
+Provides:       tex(LY1plxMono-TLF.fd)
+Provides:       tex(LY1plxMono-TOsF.fd)
+Provides:       tex(LY1plxSans-Sup.fd)
+Provides:       tex(LY1plxSans-TLF.fd)
+Provides:       tex(LY1plxSans-TOsF.fd)
+Provides:       tex(LY1plxSerif-Sup.fd)
+Provides:       tex(LY1plxSerif-TLF.fd)
+Provides:       tex(LY1plxSerif-TOsF.fd)
+Provides:       tex(OT1plxMono-Sup.fd)
+Provides:       tex(OT1plxMono-TLF.fd)
+Provides:       tex(OT1plxMono-TOsF.fd)
+Provides:       tex(OT1plxSans-Sup.fd)
+Provides:       tex(OT1plxSans-TLF.fd)
+Provides:       tex(OT1plxSans-TOsF.fd)
+Provides:       tex(OT1plxSerif-Sup.fd)
+Provides:       tex(OT1plxSerif-TLF.fd)
+Provides:       tex(OT1plxSerif-TOsF.fd)
+Provides:       tex(T1plxMono-Sup.fd)
+Provides:       tex(T1plxMono-TLF.fd)
+Provides:       tex(T1plxMono-TOsF.fd)
+Provides:       tex(T1plxSans-Sup.fd)
+Provides:       tex(T1plxSans-TLF.fd)
+Provides:       tex(T1plxSans-TOsF.fd)
+Provides:       tex(T1plxSerif-Sup.fd)
+Provides:       tex(T1plxSerif-TLF.fd)
+Provides:       tex(T1plxSerif-TOsF.fd)
+Provides:       tex(TS1plxMono-TLF.fd)
+Provides:       tex(TS1plxMono-TOsF.fd)
+Provides:       tex(TS1plxSans-TLF.fd)
+Provides:       tex(TS1plxSans-TOsF.fd)
+Provides:       tex(TS1plxSerif-TLF.fd)
+Provides:       tex(TS1plxSerif-TOsF.fd)
 Provides:       tex(plex-mono.sty)
 Provides:       tex(plex-sans.sty)
 Provides:       tex(plex-serif.sty)
 Provides:       tex(plex.map)
-Provides:       tex(plx_3xjvyq.enc)
-Provides:       tex(plx_4rpw27.enc)
+Provides:       tex(plxMono-Bold-sup-ly1.tfm)
+Provides:       tex(plxMono-Bold-sup-ot1.tfm)
+Provides:       tex(plxMono-Bold-sup-t1--base.tfm)
+Provides:       tex(plxMono-Bold-sup-t1.tfm)
+Provides:       tex(plxMono-Bold-sup-t1.vf)
+Provides:       tex(plxMono-Bold-tlf-ly1.tfm)
+Provides:       tex(plxMono-Bold-tlf-ot1.tfm)
+Provides:       tex(plxMono-Bold-tlf-t1--base.tfm)
+Provides:       tex(plxMono-Bold-tlf-t1.tfm)
+Provides:       tex(plxMono-Bold-tlf-t1.vf)
+Provides:       tex(plxMono-Bold-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-Bold-tlf-ts1.tfm)
+Provides:       tex(plxMono-Bold-tlf-ts1.vf)
+Provides:       tex(plxMono-Bold-tosf-ly1.tfm)
+Provides:       tex(plxMono-Bold-tosf-ot1.tfm)
+Provides:       tex(plxMono-Bold-tosf-t1--base.tfm)
+Provides:       tex(plxMono-Bold-tosf-t1.tfm)
+Provides:       tex(plxMono-Bold-tosf-t1.vf)
+Provides:       tex(plxMono-Bold-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-Bold-tosf-ts1.tfm)
+Provides:       tex(plxMono-Bold-tosf-ts1.vf)
+Provides:       tex(plxMono-BoldItalic-sup-ly1.tfm)
+Provides:       tex(plxMono-BoldItalic-sup-ot1.tfm)
+Provides:       tex(plxMono-BoldItalic-sup-t1--base.tfm)
+Provides:       tex(plxMono-BoldItalic-sup-t1.tfm)
+Provides:       tex(plxMono-BoldItalic-sup-t1.vf)
+Provides:       tex(plxMono-BoldItalic-tlf-ly1.tfm)
+Provides:       tex(plxMono-BoldItalic-tlf-ot1.tfm)
+Provides:       tex(plxMono-BoldItalic-tlf-t1--base.tfm)
+Provides:       tex(plxMono-BoldItalic-tlf-t1.tfm)
+Provides:       tex(plxMono-BoldItalic-tlf-t1.vf)
+Provides:       tex(plxMono-BoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-BoldItalic-tlf-ts1.tfm)
+Provides:       tex(plxMono-BoldItalic-tlf-ts1.vf)
+Provides:       tex(plxMono-BoldItalic-tosf-ly1.tfm)
+Provides:       tex(plxMono-BoldItalic-tosf-ot1.tfm)
+Provides:       tex(plxMono-BoldItalic-tosf-t1--base.tfm)
+Provides:       tex(plxMono-BoldItalic-tosf-t1.tfm)
+Provides:       tex(plxMono-BoldItalic-tosf-t1.vf)
+Provides:       tex(plxMono-BoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-BoldItalic-tosf-ts1.tfm)
+Provides:       tex(plxMono-BoldItalic-tosf-ts1.vf)
+Provides:       tex(plxMono-ExtLt-sup-ly1.tfm)
+Provides:       tex(plxMono-ExtLt-sup-ot1.tfm)
+Provides:       tex(plxMono-ExtLt-sup-t1--base.tfm)
+Provides:       tex(plxMono-ExtLt-sup-t1.tfm)
+Provides:       tex(plxMono-ExtLt-sup-t1.vf)
+Provides:       tex(plxMono-ExtLt-tlf-ly1.tfm)
+Provides:       tex(plxMono-ExtLt-tlf-ot1.tfm)
+Provides:       tex(plxMono-ExtLt-tlf-t1--base.tfm)
+Provides:       tex(plxMono-ExtLt-tlf-t1.tfm)
+Provides:       tex(plxMono-ExtLt-tlf-t1.vf)
+Provides:       tex(plxMono-ExtLt-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-ExtLt-tlf-ts1.tfm)
+Provides:       tex(plxMono-ExtLt-tlf-ts1.vf)
+Provides:       tex(plxMono-ExtLt-tosf-ly1.tfm)
+Provides:       tex(plxMono-ExtLt-tosf-ot1.tfm)
+Provides:       tex(plxMono-ExtLt-tosf-t1--base.tfm)
+Provides:       tex(plxMono-ExtLt-tosf-t1.tfm)
+Provides:       tex(plxMono-ExtLt-tosf-t1.vf)
+Provides:       tex(plxMono-ExtLt-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-ExtLt-tosf-ts1.tfm)
+Provides:       tex(plxMono-ExtLt-tosf-ts1.vf)
+Provides:       tex(plxMono-ExtLtItalic-sup-ly1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-sup-ot1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-sup-t1--base.tfm)
+Provides:       tex(plxMono-ExtLtItalic-sup-t1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-sup-t1.vf)
+Provides:       tex(plxMono-ExtLtItalic-tlf-ly1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tlf-ot1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tlf-t1--base.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tlf-t1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tlf-t1.vf)
+Provides:       tex(plxMono-ExtLtItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tlf-ts1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tlf-ts1.vf)
+Provides:       tex(plxMono-ExtLtItalic-tosf-ly1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tosf-ot1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tosf-t1--base.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tosf-t1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tosf-t1.vf)
+Provides:       tex(plxMono-ExtLtItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tosf-ts1.tfm)
+Provides:       tex(plxMono-ExtLtItalic-tosf-ts1.vf)
+Provides:       tex(plxMono-Italic-sup-ly1.tfm)
+Provides:       tex(plxMono-Italic-sup-ot1.tfm)
+Provides:       tex(plxMono-Italic-sup-t1--base.tfm)
+Provides:       tex(plxMono-Italic-sup-t1.tfm)
+Provides:       tex(plxMono-Italic-sup-t1.vf)
+Provides:       tex(plxMono-Italic-tlf-ly1.tfm)
+Provides:       tex(plxMono-Italic-tlf-ot1.tfm)
+Provides:       tex(plxMono-Italic-tlf-t1--base.tfm)
+Provides:       tex(plxMono-Italic-tlf-t1.tfm)
+Provides:       tex(plxMono-Italic-tlf-t1.vf)
+Provides:       tex(plxMono-Italic-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-Italic-tlf-ts1.tfm)
+Provides:       tex(plxMono-Italic-tlf-ts1.vf)
+Provides:       tex(plxMono-Italic-tosf-ly1.tfm)
+Provides:       tex(plxMono-Italic-tosf-ot1.tfm)
+Provides:       tex(plxMono-Italic-tosf-t1--base.tfm)
+Provides:       tex(plxMono-Italic-tosf-t1.tfm)
+Provides:       tex(plxMono-Italic-tosf-t1.vf)
+Provides:       tex(plxMono-Italic-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-Italic-tosf-ts1.tfm)
+Provides:       tex(plxMono-Italic-tosf-ts1.vf)
+Provides:       tex(plxMono-Light-sup-ly1.tfm)
+Provides:       tex(plxMono-Light-sup-ot1.tfm)
+Provides:       tex(plxMono-Light-sup-t1--base.tfm)
+Provides:       tex(plxMono-Light-sup-t1.tfm)
+Provides:       tex(plxMono-Light-sup-t1.vf)
+Provides:       tex(plxMono-Light-tlf-ly1.tfm)
+Provides:       tex(plxMono-Light-tlf-ot1.tfm)
+Provides:       tex(plxMono-Light-tlf-t1--base.tfm)
+Provides:       tex(plxMono-Light-tlf-t1.tfm)
+Provides:       tex(plxMono-Light-tlf-t1.vf)
+Provides:       tex(plxMono-Light-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-Light-tlf-ts1.tfm)
+Provides:       tex(plxMono-Light-tlf-ts1.vf)
+Provides:       tex(plxMono-Light-tosf-ly1.tfm)
+Provides:       tex(plxMono-Light-tosf-ot1.tfm)
+Provides:       tex(plxMono-Light-tosf-t1--base.tfm)
+Provides:       tex(plxMono-Light-tosf-t1.tfm)
+Provides:       tex(plxMono-Light-tosf-t1.vf)
+Provides:       tex(plxMono-Light-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-Light-tosf-ts1.tfm)
+Provides:       tex(plxMono-Light-tosf-ts1.vf)
+Provides:       tex(plxMono-LightItalic-sup-ly1.tfm)
+Provides:       tex(plxMono-LightItalic-sup-ot1.tfm)
+Provides:       tex(plxMono-LightItalic-sup-t1--base.tfm)
+Provides:       tex(plxMono-LightItalic-sup-t1.tfm)
+Provides:       tex(plxMono-LightItalic-sup-t1.vf)
+Provides:       tex(plxMono-LightItalic-tlf-ly1.tfm)
+Provides:       tex(plxMono-LightItalic-tlf-ot1.tfm)
+Provides:       tex(plxMono-LightItalic-tlf-t1--base.tfm)
+Provides:       tex(plxMono-LightItalic-tlf-t1.tfm)
+Provides:       tex(plxMono-LightItalic-tlf-t1.vf)
+Provides:       tex(plxMono-LightItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-LightItalic-tlf-ts1.tfm)
+Provides:       tex(plxMono-LightItalic-tlf-ts1.vf)
+Provides:       tex(plxMono-LightItalic-tosf-ly1.tfm)
+Provides:       tex(plxMono-LightItalic-tosf-ot1.tfm)
+Provides:       tex(plxMono-LightItalic-tosf-t1--base.tfm)
+Provides:       tex(plxMono-LightItalic-tosf-t1.tfm)
+Provides:       tex(plxMono-LightItalic-tosf-t1.vf)
+Provides:       tex(plxMono-LightItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-LightItalic-tosf-ts1.tfm)
+Provides:       tex(plxMono-LightItalic-tosf-ts1.vf)
+Provides:       tex(plxMono-Medm-sup-ly1.tfm)
+Provides:       tex(plxMono-Medm-sup-ot1.tfm)
+Provides:       tex(plxMono-Medm-sup-t1--base.tfm)
+Provides:       tex(plxMono-Medm-sup-t1.tfm)
+Provides:       tex(plxMono-Medm-sup-t1.vf)
+Provides:       tex(plxMono-Medm-tlf-ly1.tfm)
+Provides:       tex(plxMono-Medm-tlf-ot1.tfm)
+Provides:       tex(plxMono-Medm-tlf-t1--base.tfm)
+Provides:       tex(plxMono-Medm-tlf-t1.tfm)
+Provides:       tex(plxMono-Medm-tlf-t1.vf)
+Provides:       tex(plxMono-Medm-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-Medm-tlf-ts1.tfm)
+Provides:       tex(plxMono-Medm-tlf-ts1.vf)
+Provides:       tex(plxMono-Medm-tosf-ly1.tfm)
+Provides:       tex(plxMono-Medm-tosf-ot1.tfm)
+Provides:       tex(plxMono-Medm-tosf-t1--base.tfm)
+Provides:       tex(plxMono-Medm-tosf-t1.tfm)
+Provides:       tex(plxMono-Medm-tosf-t1.vf)
+Provides:       tex(plxMono-Medm-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-Medm-tosf-ts1.tfm)
+Provides:       tex(plxMono-Medm-tosf-ts1.vf)
+Provides:       tex(plxMono-MedmItalic-sup-ly1.tfm)
+Provides:       tex(plxMono-MedmItalic-sup-ot1.tfm)
+Provides:       tex(plxMono-MedmItalic-sup-t1--base.tfm)
+Provides:       tex(plxMono-MedmItalic-sup-t1.tfm)
+Provides:       tex(plxMono-MedmItalic-sup-t1.vf)
+Provides:       tex(plxMono-MedmItalic-tlf-ly1.tfm)
+Provides:       tex(plxMono-MedmItalic-tlf-ot1.tfm)
+Provides:       tex(plxMono-MedmItalic-tlf-t1--base.tfm)
+Provides:       tex(plxMono-MedmItalic-tlf-t1.tfm)
+Provides:       tex(plxMono-MedmItalic-tlf-t1.vf)
+Provides:       tex(plxMono-MedmItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-MedmItalic-tlf-ts1.tfm)
+Provides:       tex(plxMono-MedmItalic-tlf-ts1.vf)
+Provides:       tex(plxMono-MedmItalic-tosf-ly1.tfm)
+Provides:       tex(plxMono-MedmItalic-tosf-ot1.tfm)
+Provides:       tex(plxMono-MedmItalic-tosf-t1--base.tfm)
+Provides:       tex(plxMono-MedmItalic-tosf-t1.tfm)
+Provides:       tex(plxMono-MedmItalic-tosf-t1.vf)
+Provides:       tex(plxMono-MedmItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-MedmItalic-tosf-ts1.tfm)
+Provides:       tex(plxMono-MedmItalic-tosf-ts1.vf)
+Provides:       tex(plxMono-SmBld-sup-ly1.tfm)
+Provides:       tex(plxMono-SmBld-sup-ot1.tfm)
+Provides:       tex(plxMono-SmBld-sup-t1--base.tfm)
+Provides:       tex(plxMono-SmBld-sup-t1.tfm)
+Provides:       tex(plxMono-SmBld-sup-t1.vf)
+Provides:       tex(plxMono-SmBld-tlf-ly1.tfm)
+Provides:       tex(plxMono-SmBld-tlf-ot1.tfm)
+Provides:       tex(plxMono-SmBld-tlf-t1--base.tfm)
+Provides:       tex(plxMono-SmBld-tlf-t1.tfm)
+Provides:       tex(plxMono-SmBld-tlf-t1.vf)
+Provides:       tex(plxMono-SmBld-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-SmBld-tlf-ts1.tfm)
+Provides:       tex(plxMono-SmBld-tlf-ts1.vf)
+Provides:       tex(plxMono-SmBld-tosf-ly1.tfm)
+Provides:       tex(plxMono-SmBld-tosf-ot1.tfm)
+Provides:       tex(plxMono-SmBld-tosf-t1--base.tfm)
+Provides:       tex(plxMono-SmBld-tosf-t1.tfm)
+Provides:       tex(plxMono-SmBld-tosf-t1.vf)
+Provides:       tex(plxMono-SmBld-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-SmBld-tosf-ts1.tfm)
+Provides:       tex(plxMono-SmBld-tosf-ts1.vf)
+Provides:       tex(plxMono-SmBldItalic-sup-ly1.tfm)
+Provides:       tex(plxMono-SmBldItalic-sup-ot1.tfm)
+Provides:       tex(plxMono-SmBldItalic-sup-t1--base.tfm)
+Provides:       tex(plxMono-SmBldItalic-sup-t1.tfm)
+Provides:       tex(plxMono-SmBldItalic-sup-t1.vf)
+Provides:       tex(plxMono-SmBldItalic-tlf-ly1.tfm)
+Provides:       tex(plxMono-SmBldItalic-tlf-ot1.tfm)
+Provides:       tex(plxMono-SmBldItalic-tlf-t1--base.tfm)
+Provides:       tex(plxMono-SmBldItalic-tlf-t1.tfm)
+Provides:       tex(plxMono-SmBldItalic-tlf-t1.vf)
+Provides:       tex(plxMono-SmBldItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-SmBldItalic-tlf-ts1.tfm)
+Provides:       tex(plxMono-SmBldItalic-tlf-ts1.vf)
+Provides:       tex(plxMono-SmBldItalic-tosf-ly1.tfm)
+Provides:       tex(plxMono-SmBldItalic-tosf-ot1.tfm)
+Provides:       tex(plxMono-SmBldItalic-tosf-t1--base.tfm)
+Provides:       tex(plxMono-SmBldItalic-tosf-t1.tfm)
+Provides:       tex(plxMono-SmBldItalic-tosf-t1.vf)
+Provides:       tex(plxMono-SmBldItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-SmBldItalic-tosf-ts1.tfm)
+Provides:       tex(plxMono-SmBldItalic-tosf-ts1.vf)
+Provides:       tex(plxMono-Text-sup-ly1.tfm)
+Provides:       tex(plxMono-Text-sup-ot1.tfm)
+Provides:       tex(plxMono-Text-sup-t1--base.tfm)
+Provides:       tex(plxMono-Text-sup-t1.tfm)
+Provides:       tex(plxMono-Text-sup-t1.vf)
+Provides:       tex(plxMono-Text-tlf-ly1.tfm)
+Provides:       tex(plxMono-Text-tlf-ot1.tfm)
+Provides:       tex(plxMono-Text-tlf-t1--base.tfm)
+Provides:       tex(plxMono-Text-tlf-t1.tfm)
+Provides:       tex(plxMono-Text-tlf-t1.vf)
+Provides:       tex(plxMono-Text-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-Text-tlf-ts1.tfm)
+Provides:       tex(plxMono-Text-tlf-ts1.vf)
+Provides:       tex(plxMono-Text-tosf-ly1.tfm)
+Provides:       tex(plxMono-Text-tosf-ot1.tfm)
+Provides:       tex(plxMono-Text-tosf-t1--base.tfm)
+Provides:       tex(plxMono-Text-tosf-t1.tfm)
+Provides:       tex(plxMono-Text-tosf-t1.vf)
+Provides:       tex(plxMono-Text-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-Text-tosf-ts1.tfm)
+Provides:       tex(plxMono-Text-tosf-ts1.vf)
+Provides:       tex(plxMono-TextItalic-sup-ly1.tfm)
+Provides:       tex(plxMono-TextItalic-sup-ot1.tfm)
+Provides:       tex(plxMono-TextItalic-sup-t1--base.tfm)
+Provides:       tex(plxMono-TextItalic-sup-t1.tfm)
+Provides:       tex(plxMono-TextItalic-sup-t1.vf)
+Provides:       tex(plxMono-TextItalic-tlf-ly1.tfm)
+Provides:       tex(plxMono-TextItalic-tlf-ot1.tfm)
+Provides:       tex(plxMono-TextItalic-tlf-t1--base.tfm)
+Provides:       tex(plxMono-TextItalic-tlf-t1.tfm)
+Provides:       tex(plxMono-TextItalic-tlf-t1.vf)
+Provides:       tex(plxMono-TextItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-TextItalic-tlf-ts1.tfm)
+Provides:       tex(plxMono-TextItalic-tlf-ts1.vf)
+Provides:       tex(plxMono-TextItalic-tosf-ly1.tfm)
+Provides:       tex(plxMono-TextItalic-tosf-ot1.tfm)
+Provides:       tex(plxMono-TextItalic-tosf-t1--base.tfm)
+Provides:       tex(plxMono-TextItalic-tosf-t1.tfm)
+Provides:       tex(plxMono-TextItalic-tosf-t1.vf)
+Provides:       tex(plxMono-TextItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-TextItalic-tosf-ts1.tfm)
+Provides:       tex(plxMono-TextItalic-tosf-ts1.vf)
+Provides:       tex(plxMono-Thin-sup-ly1.tfm)
+Provides:       tex(plxMono-Thin-sup-ot1.tfm)
+Provides:       tex(plxMono-Thin-sup-t1--base.tfm)
+Provides:       tex(plxMono-Thin-sup-t1.tfm)
+Provides:       tex(plxMono-Thin-sup-t1.vf)
+Provides:       tex(plxMono-Thin-tlf-ly1.tfm)
+Provides:       tex(plxMono-Thin-tlf-ot1.tfm)
+Provides:       tex(plxMono-Thin-tlf-t1--base.tfm)
+Provides:       tex(plxMono-Thin-tlf-t1.tfm)
+Provides:       tex(plxMono-Thin-tlf-t1.vf)
+Provides:       tex(plxMono-Thin-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-Thin-tlf-ts1.tfm)
+Provides:       tex(plxMono-Thin-tlf-ts1.vf)
+Provides:       tex(plxMono-Thin-tosf-ly1.tfm)
+Provides:       tex(plxMono-Thin-tosf-ot1.tfm)
+Provides:       tex(plxMono-Thin-tosf-t1--base.tfm)
+Provides:       tex(plxMono-Thin-tosf-t1.tfm)
+Provides:       tex(plxMono-Thin-tosf-t1.vf)
+Provides:       tex(plxMono-Thin-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-Thin-tosf-ts1.tfm)
+Provides:       tex(plxMono-Thin-tosf-ts1.vf)
+Provides:       tex(plxMono-ThinItalic-sup-ly1.tfm)
+Provides:       tex(plxMono-ThinItalic-sup-ot1.tfm)
+Provides:       tex(plxMono-ThinItalic-sup-t1--base.tfm)
+Provides:       tex(plxMono-ThinItalic-sup-t1.tfm)
+Provides:       tex(plxMono-ThinItalic-sup-t1.vf)
+Provides:       tex(plxMono-ThinItalic-tlf-ly1.tfm)
+Provides:       tex(plxMono-ThinItalic-tlf-ot1.tfm)
+Provides:       tex(plxMono-ThinItalic-tlf-t1--base.tfm)
+Provides:       tex(plxMono-ThinItalic-tlf-t1.tfm)
+Provides:       tex(plxMono-ThinItalic-tlf-t1.vf)
+Provides:       tex(plxMono-ThinItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-ThinItalic-tlf-ts1.tfm)
+Provides:       tex(plxMono-ThinItalic-tlf-ts1.vf)
+Provides:       tex(plxMono-ThinItalic-tosf-ly1.tfm)
+Provides:       tex(plxMono-ThinItalic-tosf-ot1.tfm)
+Provides:       tex(plxMono-ThinItalic-tosf-t1--base.tfm)
+Provides:       tex(plxMono-ThinItalic-tosf-t1.tfm)
+Provides:       tex(plxMono-ThinItalic-tosf-t1.vf)
+Provides:       tex(plxMono-ThinItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-ThinItalic-tosf-ts1.tfm)
+Provides:       tex(plxMono-ThinItalic-tosf-ts1.vf)
+Provides:       tex(plxMono-sup-ly1.tfm)
+Provides:       tex(plxMono-sup-ot1.tfm)
+Provides:       tex(plxMono-sup-t1--base.tfm)
+Provides:       tex(plxMono-sup-t1.tfm)
+Provides:       tex(plxMono-sup-t1.vf)
+Provides:       tex(plxMono-tlf-ly1.tfm)
+Provides:       tex(plxMono-tlf-ot1.tfm)
+Provides:       tex(plxMono-tlf-t1--base.tfm)
+Provides:       tex(plxMono-tlf-t1.tfm)
+Provides:       tex(plxMono-tlf-t1.vf)
+Provides:       tex(plxMono-tlf-ts1--base.tfm)
+Provides:       tex(plxMono-tlf-ts1.tfm)
+Provides:       tex(plxMono-tlf-ts1.vf)
+Provides:       tex(plxMono-tosf-ly1.tfm)
+Provides:       tex(plxMono-tosf-ot1.tfm)
+Provides:       tex(plxMono-tosf-t1--base.tfm)
+Provides:       tex(plxMono-tosf-t1.tfm)
+Provides:       tex(plxMono-tosf-t1.vf)
+Provides:       tex(plxMono-tosf-ts1--base.tfm)
+Provides:       tex(plxMono-tosf-ts1.tfm)
+Provides:       tex(plxMono-tosf-ts1.vf)
+Provides:       tex(plxMono.map)
+Provides:       tex(plxSans-Bold-sup-lgr.tfm)
+Provides:       tex(plxSans-Bold-sup-ly1.tfm)
+Provides:       tex(plxSans-Bold-sup-ot1.tfm)
+Provides:       tex(plxSans-Bold-sup-t1--base.tfm)
+Provides:       tex(plxSans-Bold-sup-t1.tfm)
+Provides:       tex(plxSans-Bold-sup-t1.vf)
+Provides:       tex(plxSans-Bold-tlf-lgr.tfm)
+Provides:       tex(plxSans-Bold-tlf-ly1.tfm)
+Provides:       tex(plxSans-Bold-tlf-ot1.tfm)
+Provides:       tex(plxSans-Bold-tlf-t1--base.tfm)
+Provides:       tex(plxSans-Bold-tlf-t1.tfm)
+Provides:       tex(plxSans-Bold-tlf-t1.vf)
+Provides:       tex(plxSans-Bold-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-Bold-tlf-ts1.tfm)
+Provides:       tex(plxSans-Bold-tlf-ts1.vf)
+Provides:       tex(plxSans-Bold-tosf-lgr.tfm)
+Provides:       tex(plxSans-Bold-tosf-ly1.tfm)
+Provides:       tex(plxSans-Bold-tosf-ot1.tfm)
+Provides:       tex(plxSans-Bold-tosf-t1--base.tfm)
+Provides:       tex(plxSans-Bold-tosf-t1.tfm)
+Provides:       tex(plxSans-Bold-tosf-t1.vf)
+Provides:       tex(plxSans-Bold-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-Bold-tosf-ts1.tfm)
+Provides:       tex(plxSans-Bold-tosf-ts1.vf)
+Provides:       tex(plxSans-BoldItalic-sup-lgr.tfm)
+Provides:       tex(plxSans-BoldItalic-sup-ly1.tfm)
+Provides:       tex(plxSans-BoldItalic-sup-ot1.tfm)
+Provides:       tex(plxSans-BoldItalic-sup-t1--base.tfm)
+Provides:       tex(plxSans-BoldItalic-sup-t1.tfm)
+Provides:       tex(plxSans-BoldItalic-sup-t1.vf)
+Provides:       tex(plxSans-BoldItalic-tlf-lgr.tfm)
+Provides:       tex(plxSans-BoldItalic-tlf-ly1.tfm)
+Provides:       tex(plxSans-BoldItalic-tlf-ot1.tfm)
+Provides:       tex(plxSans-BoldItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSans-BoldItalic-tlf-t1.tfm)
+Provides:       tex(plxSans-BoldItalic-tlf-t1.vf)
+Provides:       tex(plxSans-BoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-BoldItalic-tlf-ts1.tfm)
+Provides:       tex(plxSans-BoldItalic-tlf-ts1.vf)
+Provides:       tex(plxSans-BoldItalic-tosf-lgr.tfm)
+Provides:       tex(plxSans-BoldItalic-tosf-ly1.tfm)
+Provides:       tex(plxSans-BoldItalic-tosf-ot1.tfm)
+Provides:       tex(plxSans-BoldItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSans-BoldItalic-tosf-t1.tfm)
+Provides:       tex(plxSans-BoldItalic-tosf-t1.vf)
+Provides:       tex(plxSans-BoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-BoldItalic-tosf-ts1.tfm)
+Provides:       tex(plxSans-BoldItalic-tosf-ts1.vf)
+Provides:       tex(plxSans-ExtLt-sup-lgr.tfm)
+Provides:       tex(plxSans-ExtLt-sup-ly1.tfm)
+Provides:       tex(plxSans-ExtLt-sup-ot1.tfm)
+Provides:       tex(plxSans-ExtLt-sup-t1--base.tfm)
+Provides:       tex(plxSans-ExtLt-sup-t1.tfm)
+Provides:       tex(plxSans-ExtLt-sup-t1.vf)
+Provides:       tex(plxSans-ExtLt-tlf-lgr.tfm)
+Provides:       tex(plxSans-ExtLt-tlf-ly1.tfm)
+Provides:       tex(plxSans-ExtLt-tlf-ot1.tfm)
+Provides:       tex(plxSans-ExtLt-tlf-t1--base.tfm)
+Provides:       tex(plxSans-ExtLt-tlf-t1.tfm)
+Provides:       tex(plxSans-ExtLt-tlf-t1.vf)
+Provides:       tex(plxSans-ExtLt-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-ExtLt-tlf-ts1.tfm)
+Provides:       tex(plxSans-ExtLt-tlf-ts1.vf)
+Provides:       tex(plxSans-ExtLt-tosf-lgr.tfm)
+Provides:       tex(plxSans-ExtLt-tosf-ly1.tfm)
+Provides:       tex(plxSans-ExtLt-tosf-ot1.tfm)
+Provides:       tex(plxSans-ExtLt-tosf-t1--base.tfm)
+Provides:       tex(plxSans-ExtLt-tosf-t1.tfm)
+Provides:       tex(plxSans-ExtLt-tosf-t1.vf)
+Provides:       tex(plxSans-ExtLt-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-ExtLt-tosf-ts1.tfm)
+Provides:       tex(plxSans-ExtLt-tosf-ts1.vf)
+Provides:       tex(plxSans-ExtLtItalic-sup-lgr.tfm)
+Provides:       tex(plxSans-ExtLtItalic-sup-ly1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-sup-ot1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-sup-t1--base.tfm)
+Provides:       tex(plxSans-ExtLtItalic-sup-t1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-sup-t1.vf)
+Provides:       tex(plxSans-ExtLtItalic-tlf-lgr.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tlf-ly1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tlf-ot1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tlf-t1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tlf-t1.vf)
+Provides:       tex(plxSans-ExtLtItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tlf-ts1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tlf-ts1.vf)
+Provides:       tex(plxSans-ExtLtItalic-tosf-lgr.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tosf-ly1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tosf-ot1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tosf-t1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tosf-t1.vf)
+Provides:       tex(plxSans-ExtLtItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tosf-ts1.tfm)
+Provides:       tex(plxSans-ExtLtItalic-tosf-ts1.vf)
+Provides:       tex(plxSans-Italic-sup-lgr.tfm)
+Provides:       tex(plxSans-Italic-sup-ly1.tfm)
+Provides:       tex(plxSans-Italic-sup-ot1.tfm)
+Provides:       tex(plxSans-Italic-sup-t1--base.tfm)
+Provides:       tex(plxSans-Italic-sup-t1.tfm)
+Provides:       tex(plxSans-Italic-sup-t1.vf)
+Provides:       tex(plxSans-Italic-tlf-lgr.tfm)
+Provides:       tex(plxSans-Italic-tlf-ly1.tfm)
+Provides:       tex(plxSans-Italic-tlf-ot1.tfm)
+Provides:       tex(plxSans-Italic-tlf-t1--base.tfm)
+Provides:       tex(plxSans-Italic-tlf-t1.tfm)
+Provides:       tex(plxSans-Italic-tlf-t1.vf)
+Provides:       tex(plxSans-Italic-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-Italic-tlf-ts1.tfm)
+Provides:       tex(plxSans-Italic-tlf-ts1.vf)
+Provides:       tex(plxSans-Italic-tosf-lgr.tfm)
+Provides:       tex(plxSans-Italic-tosf-ly1.tfm)
+Provides:       tex(plxSans-Italic-tosf-ot1.tfm)
+Provides:       tex(plxSans-Italic-tosf-t1--base.tfm)
+Provides:       tex(plxSans-Italic-tosf-t1.tfm)
+Provides:       tex(plxSans-Italic-tosf-t1.vf)
+Provides:       tex(plxSans-Italic-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-Italic-tosf-ts1.tfm)
+Provides:       tex(plxSans-Italic-tosf-ts1.vf)
+Provides:       tex(plxSans-Light-sup-lgr.tfm)
+Provides:       tex(plxSans-Light-sup-ly1.tfm)
+Provides:       tex(plxSans-Light-sup-ot1.tfm)
+Provides:       tex(plxSans-Light-sup-t1--base.tfm)
+Provides:       tex(plxSans-Light-sup-t1.tfm)
+Provides:       tex(plxSans-Light-sup-t1.vf)
+Provides:       tex(plxSans-Light-tlf-lgr.tfm)
+Provides:       tex(plxSans-Light-tlf-ly1.tfm)
+Provides:       tex(plxSans-Light-tlf-ot1.tfm)
+Provides:       tex(plxSans-Light-tlf-t1--base.tfm)
+Provides:       tex(plxSans-Light-tlf-t1.tfm)
+Provides:       tex(plxSans-Light-tlf-t1.vf)
+Provides:       tex(plxSans-Light-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-Light-tlf-ts1.tfm)
+Provides:       tex(plxSans-Light-tlf-ts1.vf)
+Provides:       tex(plxSans-Light-tosf-lgr.tfm)
+Provides:       tex(plxSans-Light-tosf-ly1.tfm)
+Provides:       tex(plxSans-Light-tosf-ot1.tfm)
+Provides:       tex(plxSans-Light-tosf-t1--base.tfm)
+Provides:       tex(plxSans-Light-tosf-t1.tfm)
+Provides:       tex(plxSans-Light-tosf-t1.vf)
+Provides:       tex(plxSans-Light-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-Light-tosf-ts1.tfm)
+Provides:       tex(plxSans-Light-tosf-ts1.vf)
+Provides:       tex(plxSans-LightItalic-sup-lgr.tfm)
+Provides:       tex(plxSans-LightItalic-sup-ly1.tfm)
+Provides:       tex(plxSans-LightItalic-sup-ot1.tfm)
+Provides:       tex(plxSans-LightItalic-sup-t1--base.tfm)
+Provides:       tex(plxSans-LightItalic-sup-t1.tfm)
+Provides:       tex(plxSans-LightItalic-sup-t1.vf)
+Provides:       tex(plxSans-LightItalic-tlf-lgr.tfm)
+Provides:       tex(plxSans-LightItalic-tlf-ly1.tfm)
+Provides:       tex(plxSans-LightItalic-tlf-ot1.tfm)
+Provides:       tex(plxSans-LightItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSans-LightItalic-tlf-t1.tfm)
+Provides:       tex(plxSans-LightItalic-tlf-t1.vf)
+Provides:       tex(plxSans-LightItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-LightItalic-tlf-ts1.tfm)
+Provides:       tex(plxSans-LightItalic-tlf-ts1.vf)
+Provides:       tex(plxSans-LightItalic-tosf-lgr.tfm)
+Provides:       tex(plxSans-LightItalic-tosf-ly1.tfm)
+Provides:       tex(plxSans-LightItalic-tosf-ot1.tfm)
+Provides:       tex(plxSans-LightItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSans-LightItalic-tosf-t1.tfm)
+Provides:       tex(plxSans-LightItalic-tosf-t1.vf)
+Provides:       tex(plxSans-LightItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-LightItalic-tosf-ts1.tfm)
+Provides:       tex(plxSans-LightItalic-tosf-ts1.vf)
+Provides:       tex(plxSans-Medm-sup-lgr.tfm)
+Provides:       tex(plxSans-Medm-sup-ly1.tfm)
+Provides:       tex(plxSans-Medm-sup-ot1.tfm)
+Provides:       tex(plxSans-Medm-sup-t1--base.tfm)
+Provides:       tex(plxSans-Medm-sup-t1.tfm)
+Provides:       tex(plxSans-Medm-sup-t1.vf)
+Provides:       tex(plxSans-Medm-tlf-lgr.tfm)
+Provides:       tex(plxSans-Medm-tlf-ly1.tfm)
+Provides:       tex(plxSans-Medm-tlf-ot1.tfm)
+Provides:       tex(plxSans-Medm-tlf-t1--base.tfm)
+Provides:       tex(plxSans-Medm-tlf-t1.tfm)
+Provides:       tex(plxSans-Medm-tlf-t1.vf)
+Provides:       tex(plxSans-Medm-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-Medm-tlf-ts1.tfm)
+Provides:       tex(plxSans-Medm-tlf-ts1.vf)
+Provides:       tex(plxSans-Medm-tosf-lgr.tfm)
+Provides:       tex(plxSans-Medm-tosf-ly1.tfm)
+Provides:       tex(plxSans-Medm-tosf-ot1.tfm)
+Provides:       tex(plxSans-Medm-tosf-t1--base.tfm)
+Provides:       tex(plxSans-Medm-tosf-t1.tfm)
+Provides:       tex(plxSans-Medm-tosf-t1.vf)
+Provides:       tex(plxSans-Medm-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-Medm-tosf-ts1.tfm)
+Provides:       tex(plxSans-Medm-tosf-ts1.vf)
+Provides:       tex(plxSans-MedmItalic-sup-lgr.tfm)
+Provides:       tex(plxSans-MedmItalic-sup-ly1.tfm)
+Provides:       tex(plxSans-MedmItalic-sup-ot1.tfm)
+Provides:       tex(plxSans-MedmItalic-sup-t1--base.tfm)
+Provides:       tex(plxSans-MedmItalic-sup-t1.tfm)
+Provides:       tex(plxSans-MedmItalic-sup-t1.vf)
+Provides:       tex(plxSans-MedmItalic-tlf-lgr.tfm)
+Provides:       tex(plxSans-MedmItalic-tlf-ly1.tfm)
+Provides:       tex(plxSans-MedmItalic-tlf-ot1.tfm)
+Provides:       tex(plxSans-MedmItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSans-MedmItalic-tlf-t1.tfm)
+Provides:       tex(plxSans-MedmItalic-tlf-t1.vf)
+Provides:       tex(plxSans-MedmItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-MedmItalic-tlf-ts1.tfm)
+Provides:       tex(plxSans-MedmItalic-tlf-ts1.vf)
+Provides:       tex(plxSans-MedmItalic-tosf-lgr.tfm)
+Provides:       tex(plxSans-MedmItalic-tosf-ly1.tfm)
+Provides:       tex(plxSans-MedmItalic-tosf-ot1.tfm)
+Provides:       tex(plxSans-MedmItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSans-MedmItalic-tosf-t1.tfm)
+Provides:       tex(plxSans-MedmItalic-tosf-t1.vf)
+Provides:       tex(plxSans-MedmItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-MedmItalic-tosf-ts1.tfm)
+Provides:       tex(plxSans-MedmItalic-tosf-ts1.vf)
+Provides:       tex(plxSans-SmBld-sup-lgr.tfm)
+Provides:       tex(plxSans-SmBld-sup-ly1.tfm)
+Provides:       tex(plxSans-SmBld-sup-ot1.tfm)
+Provides:       tex(plxSans-SmBld-sup-t1--base.tfm)
+Provides:       tex(plxSans-SmBld-sup-t1.tfm)
+Provides:       tex(plxSans-SmBld-sup-t1.vf)
+Provides:       tex(plxSans-SmBld-tlf-lgr.tfm)
+Provides:       tex(plxSans-SmBld-tlf-ly1.tfm)
+Provides:       tex(plxSans-SmBld-tlf-ot1.tfm)
+Provides:       tex(plxSans-SmBld-tlf-t1--base.tfm)
+Provides:       tex(plxSans-SmBld-tlf-t1.tfm)
+Provides:       tex(plxSans-SmBld-tlf-t1.vf)
+Provides:       tex(plxSans-SmBld-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-SmBld-tlf-ts1.tfm)
+Provides:       tex(plxSans-SmBld-tlf-ts1.vf)
+Provides:       tex(plxSans-SmBld-tosf-lgr.tfm)
+Provides:       tex(plxSans-SmBld-tosf-ly1.tfm)
+Provides:       tex(plxSans-SmBld-tosf-ot1.tfm)
+Provides:       tex(plxSans-SmBld-tosf-t1--base.tfm)
+Provides:       tex(plxSans-SmBld-tosf-t1.tfm)
+Provides:       tex(plxSans-SmBld-tosf-t1.vf)
+Provides:       tex(plxSans-SmBld-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-SmBld-tosf-ts1.tfm)
+Provides:       tex(plxSans-SmBld-tosf-ts1.vf)
+Provides:       tex(plxSans-SmBldItalic-sup-lgr.tfm)
+Provides:       tex(plxSans-SmBldItalic-sup-ly1.tfm)
+Provides:       tex(plxSans-SmBldItalic-sup-ot1.tfm)
+Provides:       tex(plxSans-SmBldItalic-sup-t1--base.tfm)
+Provides:       tex(plxSans-SmBldItalic-sup-t1.tfm)
+Provides:       tex(plxSans-SmBldItalic-sup-t1.vf)
+Provides:       tex(plxSans-SmBldItalic-tlf-lgr.tfm)
+Provides:       tex(plxSans-SmBldItalic-tlf-ly1.tfm)
+Provides:       tex(plxSans-SmBldItalic-tlf-ot1.tfm)
+Provides:       tex(plxSans-SmBldItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSans-SmBldItalic-tlf-t1.tfm)
+Provides:       tex(plxSans-SmBldItalic-tlf-t1.vf)
+Provides:       tex(plxSans-SmBldItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-SmBldItalic-tlf-ts1.tfm)
+Provides:       tex(plxSans-SmBldItalic-tlf-ts1.vf)
+Provides:       tex(plxSans-SmBldItalic-tosf-lgr.tfm)
+Provides:       tex(plxSans-SmBldItalic-tosf-ly1.tfm)
+Provides:       tex(plxSans-SmBldItalic-tosf-ot1.tfm)
+Provides:       tex(plxSans-SmBldItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSans-SmBldItalic-tosf-t1.tfm)
+Provides:       tex(plxSans-SmBldItalic-tosf-t1.vf)
+Provides:       tex(plxSans-SmBldItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-SmBldItalic-tosf-ts1.tfm)
+Provides:       tex(plxSans-SmBldItalic-tosf-ts1.vf)
+Provides:       tex(plxSans-Text-sup-lgr.tfm)
+Provides:       tex(plxSans-Text-sup-ly1.tfm)
+Provides:       tex(plxSans-Text-sup-ot1.tfm)
+Provides:       tex(plxSans-Text-sup-t1--base.tfm)
+Provides:       tex(plxSans-Text-sup-t1.tfm)
+Provides:       tex(plxSans-Text-sup-t1.vf)
+Provides:       tex(plxSans-Text-tlf-lgr.tfm)
+Provides:       tex(plxSans-Text-tlf-ly1.tfm)
+Provides:       tex(plxSans-Text-tlf-ot1.tfm)
+Provides:       tex(plxSans-Text-tlf-t1--base.tfm)
+Provides:       tex(plxSans-Text-tlf-t1.tfm)
+Provides:       tex(plxSans-Text-tlf-t1.vf)
+Provides:       tex(plxSans-Text-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-Text-tlf-ts1.tfm)
+Provides:       tex(plxSans-Text-tlf-ts1.vf)
+Provides:       tex(plxSans-Text-tosf-lgr.tfm)
+Provides:       tex(plxSans-Text-tosf-ly1.tfm)
+Provides:       tex(plxSans-Text-tosf-ot1.tfm)
+Provides:       tex(plxSans-Text-tosf-t1--base.tfm)
+Provides:       tex(plxSans-Text-tosf-t1.tfm)
+Provides:       tex(plxSans-Text-tosf-t1.vf)
+Provides:       tex(plxSans-Text-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-Text-tosf-ts1.tfm)
+Provides:       tex(plxSans-Text-tosf-ts1.vf)
+Provides:       tex(plxSans-TextItalic-sup-lgr.tfm)
+Provides:       tex(plxSans-TextItalic-sup-ly1.tfm)
+Provides:       tex(plxSans-TextItalic-sup-ot1.tfm)
+Provides:       tex(plxSans-TextItalic-sup-t1--base.tfm)
+Provides:       tex(plxSans-TextItalic-sup-t1.tfm)
+Provides:       tex(plxSans-TextItalic-sup-t1.vf)
+Provides:       tex(plxSans-TextItalic-tlf-lgr.tfm)
+Provides:       tex(plxSans-TextItalic-tlf-ly1.tfm)
+Provides:       tex(plxSans-TextItalic-tlf-ot1.tfm)
+Provides:       tex(plxSans-TextItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSans-TextItalic-tlf-t1.tfm)
+Provides:       tex(plxSans-TextItalic-tlf-t1.vf)
+Provides:       tex(plxSans-TextItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-TextItalic-tlf-ts1.tfm)
+Provides:       tex(plxSans-TextItalic-tlf-ts1.vf)
+Provides:       tex(plxSans-TextItalic-tosf-lgr.tfm)
+Provides:       tex(plxSans-TextItalic-tosf-ly1.tfm)
+Provides:       tex(plxSans-TextItalic-tosf-ot1.tfm)
+Provides:       tex(plxSans-TextItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSans-TextItalic-tosf-t1.tfm)
+Provides:       tex(plxSans-TextItalic-tosf-t1.vf)
+Provides:       tex(plxSans-TextItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-TextItalic-tosf-ts1.tfm)
+Provides:       tex(plxSans-TextItalic-tosf-ts1.vf)
+Provides:       tex(plxSans-Thin-sup-lgr.tfm)
+Provides:       tex(plxSans-Thin-sup-ly1.tfm)
+Provides:       tex(plxSans-Thin-sup-ot1.tfm)
+Provides:       tex(plxSans-Thin-sup-t1--base.tfm)
+Provides:       tex(plxSans-Thin-sup-t1.tfm)
+Provides:       tex(plxSans-Thin-sup-t1.vf)
+Provides:       tex(plxSans-Thin-tlf-lgr.tfm)
+Provides:       tex(plxSans-Thin-tlf-ly1.tfm)
+Provides:       tex(plxSans-Thin-tlf-ot1.tfm)
+Provides:       tex(plxSans-Thin-tlf-t1--base.tfm)
+Provides:       tex(plxSans-Thin-tlf-t1.tfm)
+Provides:       tex(plxSans-Thin-tlf-t1.vf)
+Provides:       tex(plxSans-Thin-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-Thin-tlf-ts1.tfm)
+Provides:       tex(plxSans-Thin-tlf-ts1.vf)
+Provides:       tex(plxSans-Thin-tosf-lgr.tfm)
+Provides:       tex(plxSans-Thin-tosf-ly1.tfm)
+Provides:       tex(plxSans-Thin-tosf-ot1.tfm)
+Provides:       tex(plxSans-Thin-tosf-t1--base.tfm)
+Provides:       tex(plxSans-Thin-tosf-t1.tfm)
+Provides:       tex(plxSans-Thin-tosf-t1.vf)
+Provides:       tex(plxSans-Thin-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-Thin-tosf-ts1.tfm)
+Provides:       tex(plxSans-Thin-tosf-ts1.vf)
+Provides:       tex(plxSans-ThinItalic-sup-lgr.tfm)
+Provides:       tex(plxSans-ThinItalic-sup-ly1.tfm)
+Provides:       tex(plxSans-ThinItalic-sup-ot1.tfm)
+Provides:       tex(plxSans-ThinItalic-sup-t1--base.tfm)
+Provides:       tex(plxSans-ThinItalic-sup-t1.tfm)
+Provides:       tex(plxSans-ThinItalic-sup-t1.vf)
+Provides:       tex(plxSans-ThinItalic-tlf-lgr.tfm)
+Provides:       tex(plxSans-ThinItalic-tlf-ly1.tfm)
+Provides:       tex(plxSans-ThinItalic-tlf-ot1.tfm)
+Provides:       tex(plxSans-ThinItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSans-ThinItalic-tlf-t1.tfm)
+Provides:       tex(plxSans-ThinItalic-tlf-t1.vf)
+Provides:       tex(plxSans-ThinItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-ThinItalic-tlf-ts1.tfm)
+Provides:       tex(plxSans-ThinItalic-tlf-ts1.vf)
+Provides:       tex(plxSans-ThinItalic-tosf-lgr.tfm)
+Provides:       tex(plxSans-ThinItalic-tosf-ly1.tfm)
+Provides:       tex(plxSans-ThinItalic-tosf-ot1.tfm)
+Provides:       tex(plxSans-ThinItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSans-ThinItalic-tosf-t1.tfm)
+Provides:       tex(plxSans-ThinItalic-tosf-t1.vf)
+Provides:       tex(plxSans-ThinItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-ThinItalic-tosf-ts1.tfm)
+Provides:       tex(plxSans-ThinItalic-tosf-ts1.vf)
+Provides:       tex(plxSans-sup-lgr.tfm)
+Provides:       tex(plxSans-sup-ly1.tfm)
+Provides:       tex(plxSans-sup-ot1.tfm)
+Provides:       tex(plxSans-sup-t1--base.tfm)
+Provides:       tex(plxSans-sup-t1.tfm)
+Provides:       tex(plxSans-sup-t1.vf)
+Provides:       tex(plxSans-tlf-lgr.tfm)
+Provides:       tex(plxSans-tlf-ly1.tfm)
+Provides:       tex(plxSans-tlf-ot1.tfm)
+Provides:       tex(plxSans-tlf-t1--base.tfm)
+Provides:       tex(plxSans-tlf-t1.tfm)
+Provides:       tex(plxSans-tlf-t1.vf)
+Provides:       tex(plxSans-tlf-ts1--base.tfm)
+Provides:       tex(plxSans-tlf-ts1.tfm)
+Provides:       tex(plxSans-tlf-ts1.vf)
+Provides:       tex(plxSans-tosf-lgr.tfm)
+Provides:       tex(plxSans-tosf-ly1.tfm)
+Provides:       tex(plxSans-tosf-ot1.tfm)
+Provides:       tex(plxSans-tosf-t1--base.tfm)
+Provides:       tex(plxSans-tosf-t1.tfm)
+Provides:       tex(plxSans-tosf-t1.vf)
+Provides:       tex(plxSans-tosf-ts1--base.tfm)
+Provides:       tex(plxSans-tosf-ts1.tfm)
+Provides:       tex(plxSans-tosf-ts1.vf)
+Provides:       tex(plxSans.map)
+Provides:       tex(plxSansCond-Bold-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-Bold-sup-lgr.tfm)
+Provides:       tex(plxSansCond-Bold-sup-lgr.vf)
+Provides:       tex(plxSansCond-Bold-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-Bold-sup-ly1.tfm)
+Provides:       tex(plxSansCond-Bold-sup-ly1.vf)
+Provides:       tex(plxSansCond-Bold-sup-ot1.tfm)
+Provides:       tex(plxSansCond-Bold-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-Bold-sup-t1.tfm)
+Provides:       tex(plxSansCond-Bold-sup-t1.vf)
+Provides:       tex(plxSansCond-Bold-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-Bold-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-Bold-tlf-lgr.vf)
+Provides:       tex(plxSansCond-Bold-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-Bold-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-Bold-tlf-ly1.vf)
+Provides:       tex(plxSansCond-Bold-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-Bold-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-Bold-tlf-t1.tfm)
+Provides:       tex(plxSansCond-Bold-tlf-t1.vf)
+Provides:       tex(plxSansCond-Bold-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-Bold-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-Bold-tlf-ts1.vf)
+Provides:       tex(plxSansCond-BoldItalic-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-BoldItalic-sup-lgr.tfm)
+Provides:       tex(plxSansCond-BoldItalic-sup-lgr.vf)
+Provides:       tex(plxSansCond-BoldItalic-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-BoldItalic-sup-ly1.tfm)
+Provides:       tex(plxSansCond-BoldItalic-sup-ly1.vf)
+Provides:       tex(plxSansCond-BoldItalic-sup-ot1.tfm)
+Provides:       tex(plxSansCond-BoldItalic-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-BoldItalic-sup-t1.tfm)
+Provides:       tex(plxSansCond-BoldItalic-sup-t1.vf)
+Provides:       tex(plxSansCond-BoldItalic-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-BoldItalic-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-BoldItalic-tlf-lgr.vf)
+Provides:       tex(plxSansCond-BoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-BoldItalic-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-BoldItalic-tlf-ly1.vf)
+Provides:       tex(plxSansCond-BoldItalic-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-BoldItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-BoldItalic-tlf-t1.tfm)
+Provides:       tex(plxSansCond-BoldItalic-tlf-t1.vf)
+Provides:       tex(plxSansCond-BoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-BoldItalic-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-BoldItalic-tlf-ts1.vf)
+Provides:       tex(plxSansCond-ExtLt-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-ExtLt-sup-lgr.tfm)
+Provides:       tex(plxSansCond-ExtLt-sup-lgr.vf)
+Provides:       tex(plxSansCond-ExtLt-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-ExtLt-sup-ly1.tfm)
+Provides:       tex(plxSansCond-ExtLt-sup-ly1.vf)
+Provides:       tex(plxSansCond-ExtLt-sup-ot1.tfm)
+Provides:       tex(plxSansCond-ExtLt-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-ExtLt-sup-t1.tfm)
+Provides:       tex(plxSansCond-ExtLt-sup-t1.vf)
+Provides:       tex(plxSansCond-ExtLt-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-ExtLt-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-ExtLt-tlf-lgr.vf)
+Provides:       tex(plxSansCond-ExtLt-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-ExtLt-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-ExtLt-tlf-ly1.vf)
+Provides:       tex(plxSansCond-ExtLt-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-ExtLt-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-ExtLt-tlf-t1.tfm)
+Provides:       tex(plxSansCond-ExtLt-tlf-t1.vf)
+Provides:       tex(plxSansCond-ExtLt-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-ExtLt-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-ExtLt-tlf-ts1.vf)
+Provides:       tex(plxSansCond-ExtLtItalic-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-sup-lgr.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-sup-lgr.vf)
+Provides:       tex(plxSansCond-ExtLtItalic-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-sup-ly1.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-sup-ly1.vf)
+Provides:       tex(plxSansCond-ExtLtItalic-sup-ot1.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-sup-t1.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-sup-t1.vf)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-lgr.vf)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-ly1.vf)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-t1.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-t1.vf)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-ExtLtItalic-tlf-ts1.vf)
+Provides:       tex(plxSansCond-Italic-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-Italic-sup-lgr.tfm)
+Provides:       tex(plxSansCond-Italic-sup-lgr.vf)
+Provides:       tex(plxSansCond-Italic-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-Italic-sup-ly1.tfm)
+Provides:       tex(plxSansCond-Italic-sup-ly1.vf)
+Provides:       tex(plxSansCond-Italic-sup-ot1.tfm)
+Provides:       tex(plxSansCond-Italic-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-Italic-sup-t1.tfm)
+Provides:       tex(plxSansCond-Italic-sup-t1.vf)
+Provides:       tex(plxSansCond-Italic-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-Italic-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-Italic-tlf-lgr.vf)
+Provides:       tex(plxSansCond-Italic-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-Italic-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-Italic-tlf-ly1.vf)
+Provides:       tex(plxSansCond-Italic-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-Italic-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-Italic-tlf-t1.tfm)
+Provides:       tex(plxSansCond-Italic-tlf-t1.vf)
+Provides:       tex(plxSansCond-Italic-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-Italic-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-Italic-tlf-ts1.vf)
+Provides:       tex(plxSansCond-Light-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-Light-sup-lgr.tfm)
+Provides:       tex(plxSansCond-Light-sup-lgr.vf)
+Provides:       tex(plxSansCond-Light-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-Light-sup-ly1.tfm)
+Provides:       tex(plxSansCond-Light-sup-ly1.vf)
+Provides:       tex(plxSansCond-Light-sup-ot1.tfm)
+Provides:       tex(plxSansCond-Light-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-Light-sup-t1.tfm)
+Provides:       tex(plxSansCond-Light-sup-t1.vf)
+Provides:       tex(plxSansCond-Light-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-Light-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-Light-tlf-lgr.vf)
+Provides:       tex(plxSansCond-Light-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-Light-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-Light-tlf-ly1.vf)
+Provides:       tex(plxSansCond-Light-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-Light-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-Light-tlf-t1.tfm)
+Provides:       tex(plxSansCond-Light-tlf-t1.vf)
+Provides:       tex(plxSansCond-Light-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-Light-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-Light-tlf-ts1.vf)
+Provides:       tex(plxSansCond-LightItalic-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-LightItalic-sup-lgr.tfm)
+Provides:       tex(plxSansCond-LightItalic-sup-lgr.vf)
+Provides:       tex(plxSansCond-LightItalic-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-LightItalic-sup-ly1.tfm)
+Provides:       tex(plxSansCond-LightItalic-sup-ly1.vf)
+Provides:       tex(plxSansCond-LightItalic-sup-ot1.tfm)
+Provides:       tex(plxSansCond-LightItalic-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-LightItalic-sup-t1.tfm)
+Provides:       tex(plxSansCond-LightItalic-sup-t1.vf)
+Provides:       tex(plxSansCond-LightItalic-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-LightItalic-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-LightItalic-tlf-lgr.vf)
+Provides:       tex(plxSansCond-LightItalic-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-LightItalic-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-LightItalic-tlf-ly1.vf)
+Provides:       tex(plxSansCond-LightItalic-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-LightItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-LightItalic-tlf-t1.tfm)
+Provides:       tex(plxSansCond-LightItalic-tlf-t1.vf)
+Provides:       tex(plxSansCond-LightItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-LightItalic-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-LightItalic-tlf-ts1.vf)
+Provides:       tex(plxSansCond-Medm-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-Medm-sup-lgr.tfm)
+Provides:       tex(plxSansCond-Medm-sup-lgr.vf)
+Provides:       tex(plxSansCond-Medm-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-Medm-sup-ly1.tfm)
+Provides:       tex(plxSansCond-Medm-sup-ly1.vf)
+Provides:       tex(plxSansCond-Medm-sup-ot1.tfm)
+Provides:       tex(plxSansCond-Medm-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-Medm-sup-t1.tfm)
+Provides:       tex(plxSansCond-Medm-sup-t1.vf)
+Provides:       tex(plxSansCond-Medm-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-Medm-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-Medm-tlf-lgr.vf)
+Provides:       tex(plxSansCond-Medm-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-Medm-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-Medm-tlf-ly1.vf)
+Provides:       tex(plxSansCond-Medm-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-Medm-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-Medm-tlf-t1.tfm)
+Provides:       tex(plxSansCond-Medm-tlf-t1.vf)
+Provides:       tex(plxSansCond-Medm-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-Medm-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-Medm-tlf-ts1.vf)
+Provides:       tex(plxSansCond-MedmItalic-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-MedmItalic-sup-lgr.tfm)
+Provides:       tex(plxSansCond-MedmItalic-sup-lgr.vf)
+Provides:       tex(plxSansCond-MedmItalic-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-MedmItalic-sup-ly1.tfm)
+Provides:       tex(plxSansCond-MedmItalic-sup-ly1.vf)
+Provides:       tex(plxSansCond-MedmItalic-sup-ot1.tfm)
+Provides:       tex(plxSansCond-MedmItalic-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-MedmItalic-sup-t1.tfm)
+Provides:       tex(plxSansCond-MedmItalic-sup-t1.vf)
+Provides:       tex(plxSansCond-MedmItalic-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-MedmItalic-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-MedmItalic-tlf-lgr.vf)
+Provides:       tex(plxSansCond-MedmItalic-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-MedmItalic-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-MedmItalic-tlf-ly1.vf)
+Provides:       tex(plxSansCond-MedmItalic-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-MedmItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-MedmItalic-tlf-t1.tfm)
+Provides:       tex(plxSansCond-MedmItalic-tlf-t1.vf)
+Provides:       tex(plxSansCond-MedmItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-MedmItalic-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-MedmItalic-tlf-ts1.vf)
+Provides:       tex(plxSansCond-SmBld-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-SmBld-sup-lgr.tfm)
+Provides:       tex(plxSansCond-SmBld-sup-lgr.vf)
+Provides:       tex(plxSansCond-SmBld-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-SmBld-sup-ly1.tfm)
+Provides:       tex(plxSansCond-SmBld-sup-ly1.vf)
+Provides:       tex(plxSansCond-SmBld-sup-ot1.tfm)
+Provides:       tex(plxSansCond-SmBld-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-SmBld-sup-t1.tfm)
+Provides:       tex(plxSansCond-SmBld-sup-t1.vf)
+Provides:       tex(plxSansCond-SmBld-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-SmBld-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-SmBld-tlf-lgr.vf)
+Provides:       tex(plxSansCond-SmBld-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-SmBld-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-SmBld-tlf-ly1.vf)
+Provides:       tex(plxSansCond-SmBld-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-SmBld-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-SmBld-tlf-t1.tfm)
+Provides:       tex(plxSansCond-SmBld-tlf-t1.vf)
+Provides:       tex(plxSansCond-SmBld-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-SmBld-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-SmBld-tlf-ts1.vf)
+Provides:       tex(plxSansCond-SmBldItalic-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-sup-lgr.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-sup-lgr.vf)
+Provides:       tex(plxSansCond-SmBldItalic-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-sup-ly1.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-sup-ly1.vf)
+Provides:       tex(plxSansCond-SmBldItalic-sup-ot1.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-sup-t1.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-sup-t1.vf)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-lgr.vf)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-ly1.vf)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-t1.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-t1.vf)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-SmBldItalic-tlf-ts1.vf)
+Provides:       tex(plxSansCond-Text-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-Text-sup-lgr.tfm)
+Provides:       tex(plxSansCond-Text-sup-lgr.vf)
+Provides:       tex(plxSansCond-Text-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-Text-sup-ly1.tfm)
+Provides:       tex(plxSansCond-Text-sup-ly1.vf)
+Provides:       tex(plxSansCond-Text-sup-ot1.tfm)
+Provides:       tex(plxSansCond-Text-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-Text-sup-t1.tfm)
+Provides:       tex(plxSansCond-Text-sup-t1.vf)
+Provides:       tex(plxSansCond-Text-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-Text-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-Text-tlf-lgr.vf)
+Provides:       tex(plxSansCond-Text-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-Text-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-Text-tlf-ly1.vf)
+Provides:       tex(plxSansCond-Text-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-Text-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-Text-tlf-t1.tfm)
+Provides:       tex(plxSansCond-Text-tlf-t1.vf)
+Provides:       tex(plxSansCond-Text-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-Text-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-Text-tlf-ts1.vf)
+Provides:       tex(plxSansCond-TextItalic-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-TextItalic-sup-lgr.tfm)
+Provides:       tex(plxSansCond-TextItalic-sup-lgr.vf)
+Provides:       tex(plxSansCond-TextItalic-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-TextItalic-sup-ly1.tfm)
+Provides:       tex(plxSansCond-TextItalic-sup-ly1.vf)
+Provides:       tex(plxSansCond-TextItalic-sup-ot1.tfm)
+Provides:       tex(plxSansCond-TextItalic-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-TextItalic-sup-t1.tfm)
+Provides:       tex(plxSansCond-TextItalic-sup-t1.vf)
+Provides:       tex(plxSansCond-TextItalic-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-TextItalic-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-TextItalic-tlf-lgr.vf)
+Provides:       tex(plxSansCond-TextItalic-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-TextItalic-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-TextItalic-tlf-ly1.vf)
+Provides:       tex(plxSansCond-TextItalic-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-TextItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-TextItalic-tlf-t1.tfm)
+Provides:       tex(plxSansCond-TextItalic-tlf-t1.vf)
+Provides:       tex(plxSansCond-TextItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-TextItalic-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-TextItalic-tlf-ts1.vf)
+Provides:       tex(plxSansCond-Thin-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-Thin-sup-lgr.tfm)
+Provides:       tex(plxSansCond-Thin-sup-lgr.vf)
+Provides:       tex(plxSansCond-Thin-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-Thin-sup-ly1.tfm)
+Provides:       tex(plxSansCond-Thin-sup-ly1.vf)
+Provides:       tex(plxSansCond-Thin-sup-ot1.tfm)
+Provides:       tex(plxSansCond-Thin-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-Thin-sup-t1.tfm)
+Provides:       tex(plxSansCond-Thin-sup-t1.vf)
+Provides:       tex(plxSansCond-Thin-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-Thin-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-Thin-tlf-lgr.vf)
+Provides:       tex(plxSansCond-Thin-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-Thin-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-Thin-tlf-ly1.vf)
+Provides:       tex(plxSansCond-Thin-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-Thin-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-Thin-tlf-t1.tfm)
+Provides:       tex(plxSansCond-Thin-tlf-t1.vf)
+Provides:       tex(plxSansCond-Thin-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-Thin-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-Thin-tlf-ts1.vf)
+Provides:       tex(plxSansCond-ThinItalic-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-ThinItalic-sup-lgr.tfm)
+Provides:       tex(plxSansCond-ThinItalic-sup-lgr.vf)
+Provides:       tex(plxSansCond-ThinItalic-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-ThinItalic-sup-ly1.tfm)
+Provides:       tex(plxSansCond-ThinItalic-sup-ly1.vf)
+Provides:       tex(plxSansCond-ThinItalic-sup-ot1.tfm)
+Provides:       tex(plxSansCond-ThinItalic-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-ThinItalic-sup-t1.tfm)
+Provides:       tex(plxSansCond-ThinItalic-sup-t1.vf)
+Provides:       tex(plxSansCond-ThinItalic-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-ThinItalic-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-ThinItalic-tlf-lgr.vf)
+Provides:       tex(plxSansCond-ThinItalic-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-ThinItalic-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-ThinItalic-tlf-ly1.vf)
+Provides:       tex(plxSansCond-ThinItalic-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-ThinItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-ThinItalic-tlf-t1.tfm)
+Provides:       tex(plxSansCond-ThinItalic-tlf-t1.vf)
+Provides:       tex(plxSansCond-ThinItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-ThinItalic-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-ThinItalic-tlf-ts1.vf)
+Provides:       tex(plxSansCond-sup-lgr--base.tfm)
+Provides:       tex(plxSansCond-sup-lgr.tfm)
+Provides:       tex(plxSansCond-sup-lgr.vf)
+Provides:       tex(plxSansCond-sup-ly1--base.tfm)
+Provides:       tex(plxSansCond-sup-ly1.tfm)
+Provides:       tex(plxSansCond-sup-ly1.vf)
+Provides:       tex(plxSansCond-sup-ot1.tfm)
+Provides:       tex(plxSansCond-sup-t1--base.tfm)
+Provides:       tex(plxSansCond-sup-t1.tfm)
+Provides:       tex(plxSansCond-sup-t1.vf)
+Provides:       tex(plxSansCond-tlf-lgr--base.tfm)
+Provides:       tex(plxSansCond-tlf-lgr.tfm)
+Provides:       tex(plxSansCond-tlf-lgr.vf)
+Provides:       tex(plxSansCond-tlf-ly1--base.tfm)
+Provides:       tex(plxSansCond-tlf-ly1.tfm)
+Provides:       tex(plxSansCond-tlf-ly1.vf)
+Provides:       tex(plxSansCond-tlf-ot1.tfm)
+Provides:       tex(plxSansCond-tlf-t1--base.tfm)
+Provides:       tex(plxSansCond-tlf-t1.tfm)
+Provides:       tex(plxSansCond-tlf-t1.vf)
+Provides:       tex(plxSansCond-tlf-ts1--base.tfm)
+Provides:       tex(plxSansCond-tlf-ts1.tfm)
+Provides:       tex(plxSansCond-tlf-ts1.vf)
+Provides:       tex(plxSerif-Bold-sup-lgr.tfm)
+Provides:       tex(plxSerif-Bold-sup-ly1.tfm)
+Provides:       tex(plxSerif-Bold-sup-ot1.tfm)
+Provides:       tex(plxSerif-Bold-sup-t1--base.tfm)
+Provides:       tex(plxSerif-Bold-sup-t1.tfm)
+Provides:       tex(plxSerif-Bold-sup-t1.vf)
+Provides:       tex(plxSerif-Bold-tlf-lgr.tfm)
+Provides:       tex(plxSerif-Bold-tlf-ly1.tfm)
+Provides:       tex(plxSerif-Bold-tlf-ot1.tfm)
+Provides:       tex(plxSerif-Bold-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-Bold-tlf-t1.tfm)
+Provides:       tex(plxSerif-Bold-tlf-t1.vf)
+Provides:       tex(plxSerif-Bold-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-Bold-tlf-ts1.tfm)
+Provides:       tex(plxSerif-Bold-tlf-ts1.vf)
+Provides:       tex(plxSerif-Bold-tosf-lgr.tfm)
+Provides:       tex(plxSerif-Bold-tosf-ly1.tfm)
+Provides:       tex(plxSerif-Bold-tosf-ot1.tfm)
+Provides:       tex(plxSerif-Bold-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-Bold-tosf-t1.tfm)
+Provides:       tex(plxSerif-Bold-tosf-t1.vf)
+Provides:       tex(plxSerif-Bold-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-Bold-tosf-ts1.tfm)
+Provides:       tex(plxSerif-Bold-tosf-ts1.vf)
+Provides:       tex(plxSerif-BoldItalic-sup-lgr.tfm)
+Provides:       tex(plxSerif-BoldItalic-sup-ly1.tfm)
+Provides:       tex(plxSerif-BoldItalic-sup-ot1.tfm)
+Provides:       tex(plxSerif-BoldItalic-sup-t1--base.tfm)
+Provides:       tex(plxSerif-BoldItalic-sup-t1.tfm)
+Provides:       tex(plxSerif-BoldItalic-sup-t1.vf)
+Provides:       tex(plxSerif-BoldItalic-tlf-lgr.tfm)
+Provides:       tex(plxSerif-BoldItalic-tlf-ly1.tfm)
+Provides:       tex(plxSerif-BoldItalic-tlf-ot1.tfm)
+Provides:       tex(plxSerif-BoldItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-BoldItalic-tlf-t1.tfm)
+Provides:       tex(plxSerif-BoldItalic-tlf-t1.vf)
+Provides:       tex(plxSerif-BoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-BoldItalic-tlf-ts1.tfm)
+Provides:       tex(plxSerif-BoldItalic-tlf-ts1.vf)
+Provides:       tex(plxSerif-BoldItalic-tosf-lgr.tfm)
+Provides:       tex(plxSerif-BoldItalic-tosf-ly1.tfm)
+Provides:       tex(plxSerif-BoldItalic-tosf-ot1.tfm)
+Provides:       tex(plxSerif-BoldItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-BoldItalic-tosf-t1.tfm)
+Provides:       tex(plxSerif-BoldItalic-tosf-t1.vf)
+Provides:       tex(plxSerif-BoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-BoldItalic-tosf-ts1.tfm)
+Provides:       tex(plxSerif-BoldItalic-tosf-ts1.vf)
+Provides:       tex(plxSerif-ExtraLight-sup-lgr.tfm)
+Provides:       tex(plxSerif-ExtraLight-sup-ly1.tfm)
+Provides:       tex(plxSerif-ExtraLight-sup-ot1.tfm)
+Provides:       tex(plxSerif-ExtraLight-sup-t1--base.tfm)
+Provides:       tex(plxSerif-ExtraLight-sup-t1.tfm)
+Provides:       tex(plxSerif-ExtraLight-sup-t1.vf)
+Provides:       tex(plxSerif-ExtraLight-tlf-lgr.tfm)
+Provides:       tex(plxSerif-ExtraLight-tlf-ly1.tfm)
+Provides:       tex(plxSerif-ExtraLight-tlf-ot1.tfm)
+Provides:       tex(plxSerif-ExtraLight-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-ExtraLight-tlf-t1.tfm)
+Provides:       tex(plxSerif-ExtraLight-tlf-t1.vf)
+Provides:       tex(plxSerif-ExtraLight-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-ExtraLight-tlf-ts1.tfm)
+Provides:       tex(plxSerif-ExtraLight-tlf-ts1.vf)
+Provides:       tex(plxSerif-ExtraLight-tosf-lgr.tfm)
+Provides:       tex(plxSerif-ExtraLight-tosf-ly1.tfm)
+Provides:       tex(plxSerif-ExtraLight-tosf-ot1.tfm)
+Provides:       tex(plxSerif-ExtraLight-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-ExtraLight-tosf-t1.tfm)
+Provides:       tex(plxSerif-ExtraLight-tosf-t1.vf)
+Provides:       tex(plxSerif-ExtraLight-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-ExtraLight-tosf-ts1.tfm)
+Provides:       tex(plxSerif-ExtraLight-tosf-ts1.vf)
+Provides:       tex(plxSerif-ExtraLightItalic-sup-lgr.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-sup-ly1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-sup-ot1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-sup-t1--base.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-sup-t1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-sup-t1.vf)
+Provides:       tex(plxSerif-ExtraLightItalic-tlf-lgr.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tlf-ly1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tlf-ot1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tlf-t1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tlf-t1.vf)
+Provides:       tex(plxSerif-ExtraLightItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tlf-ts1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tlf-ts1.vf)
+Provides:       tex(plxSerif-ExtraLightItalic-tosf-lgr.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tosf-ly1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tosf-ot1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tosf-t1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tosf-t1.vf)
+Provides:       tex(plxSerif-ExtraLightItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tosf-ts1.tfm)
+Provides:       tex(plxSerif-ExtraLightItalic-tosf-ts1.vf)
+Provides:       tex(plxSerif-Italic-sup-lgr.tfm)
+Provides:       tex(plxSerif-Italic-sup-ly1.tfm)
+Provides:       tex(plxSerif-Italic-sup-ot1.tfm)
+Provides:       tex(plxSerif-Italic-sup-t1--base.tfm)
+Provides:       tex(plxSerif-Italic-sup-t1.tfm)
+Provides:       tex(plxSerif-Italic-sup-t1.vf)
+Provides:       tex(plxSerif-Italic-tlf-lgr.tfm)
+Provides:       tex(plxSerif-Italic-tlf-ly1.tfm)
+Provides:       tex(plxSerif-Italic-tlf-ot1.tfm)
+Provides:       tex(plxSerif-Italic-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-Italic-tlf-t1.tfm)
+Provides:       tex(plxSerif-Italic-tlf-t1.vf)
+Provides:       tex(plxSerif-Italic-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-Italic-tlf-ts1.tfm)
+Provides:       tex(plxSerif-Italic-tlf-ts1.vf)
+Provides:       tex(plxSerif-Italic-tosf-lgr.tfm)
+Provides:       tex(plxSerif-Italic-tosf-ly1.tfm)
+Provides:       tex(plxSerif-Italic-tosf-ot1.tfm)
+Provides:       tex(plxSerif-Italic-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-Italic-tosf-t1.tfm)
+Provides:       tex(plxSerif-Italic-tosf-t1.vf)
+Provides:       tex(plxSerif-Italic-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-Italic-tosf-ts1.tfm)
+Provides:       tex(plxSerif-Italic-tosf-ts1.vf)
+Provides:       tex(plxSerif-Light-sup-lgr.tfm)
+Provides:       tex(plxSerif-Light-sup-ly1.tfm)
+Provides:       tex(plxSerif-Light-sup-ot1.tfm)
+Provides:       tex(plxSerif-Light-sup-t1--base.tfm)
+Provides:       tex(plxSerif-Light-sup-t1.tfm)
+Provides:       tex(plxSerif-Light-sup-t1.vf)
+Provides:       tex(plxSerif-Light-tlf-lgr.tfm)
+Provides:       tex(plxSerif-Light-tlf-ly1.tfm)
+Provides:       tex(plxSerif-Light-tlf-ot1.tfm)
+Provides:       tex(plxSerif-Light-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-Light-tlf-t1.tfm)
+Provides:       tex(plxSerif-Light-tlf-t1.vf)
+Provides:       tex(plxSerif-Light-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-Light-tlf-ts1.tfm)
+Provides:       tex(plxSerif-Light-tlf-ts1.vf)
+Provides:       tex(plxSerif-Light-tosf-lgr.tfm)
+Provides:       tex(plxSerif-Light-tosf-ly1.tfm)
+Provides:       tex(plxSerif-Light-tosf-ot1.tfm)
+Provides:       tex(plxSerif-Light-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-Light-tosf-t1.tfm)
+Provides:       tex(plxSerif-Light-tosf-t1.vf)
+Provides:       tex(plxSerif-Light-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-Light-tosf-ts1.tfm)
+Provides:       tex(plxSerif-Light-tosf-ts1.vf)
+Provides:       tex(plxSerif-LightItalic-sup-lgr.tfm)
+Provides:       tex(plxSerif-LightItalic-sup-ly1.tfm)
+Provides:       tex(plxSerif-LightItalic-sup-ot1.tfm)
+Provides:       tex(plxSerif-LightItalic-sup-t1--base.tfm)
+Provides:       tex(plxSerif-LightItalic-sup-t1.tfm)
+Provides:       tex(plxSerif-LightItalic-sup-t1.vf)
+Provides:       tex(plxSerif-LightItalic-tlf-lgr.tfm)
+Provides:       tex(plxSerif-LightItalic-tlf-ly1.tfm)
+Provides:       tex(plxSerif-LightItalic-tlf-ot1.tfm)
+Provides:       tex(plxSerif-LightItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-LightItalic-tlf-t1.tfm)
+Provides:       tex(plxSerif-LightItalic-tlf-t1.vf)
+Provides:       tex(plxSerif-LightItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-LightItalic-tlf-ts1.tfm)
+Provides:       tex(plxSerif-LightItalic-tlf-ts1.vf)
+Provides:       tex(plxSerif-LightItalic-tosf-lgr.tfm)
+Provides:       tex(plxSerif-LightItalic-tosf-ly1.tfm)
+Provides:       tex(plxSerif-LightItalic-tosf-ot1.tfm)
+Provides:       tex(plxSerif-LightItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-LightItalic-tosf-t1.tfm)
+Provides:       tex(plxSerif-LightItalic-tosf-t1.vf)
+Provides:       tex(plxSerif-LightItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-LightItalic-tosf-ts1.tfm)
+Provides:       tex(plxSerif-LightItalic-tosf-ts1.vf)
+Provides:       tex(plxSerif-Medium-sup-lgr.tfm)
+Provides:       tex(plxSerif-Medium-sup-ly1.tfm)
+Provides:       tex(plxSerif-Medium-sup-ot1.tfm)
+Provides:       tex(plxSerif-Medium-sup-t1--base.tfm)
+Provides:       tex(plxSerif-Medium-sup-t1.tfm)
+Provides:       tex(plxSerif-Medium-sup-t1.vf)
+Provides:       tex(plxSerif-Medium-tlf-lgr.tfm)
+Provides:       tex(plxSerif-Medium-tlf-ly1.tfm)
+Provides:       tex(plxSerif-Medium-tlf-ot1.tfm)
+Provides:       tex(plxSerif-Medium-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-Medium-tlf-t1.tfm)
+Provides:       tex(plxSerif-Medium-tlf-t1.vf)
+Provides:       tex(plxSerif-Medium-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-Medium-tlf-ts1.tfm)
+Provides:       tex(plxSerif-Medium-tlf-ts1.vf)
+Provides:       tex(plxSerif-Medium-tosf-lgr.tfm)
+Provides:       tex(plxSerif-Medium-tosf-ly1.tfm)
+Provides:       tex(plxSerif-Medium-tosf-ot1.tfm)
+Provides:       tex(plxSerif-Medium-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-Medium-tosf-t1.tfm)
+Provides:       tex(plxSerif-Medium-tosf-t1.vf)
+Provides:       tex(plxSerif-Medium-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-Medium-tosf-ts1.tfm)
+Provides:       tex(plxSerif-Medium-tosf-ts1.vf)
+Provides:       tex(plxSerif-MediumItalic-sup-lgr.tfm)
+Provides:       tex(plxSerif-MediumItalic-sup-ly1.tfm)
+Provides:       tex(plxSerif-MediumItalic-sup-ot1.tfm)
+Provides:       tex(plxSerif-MediumItalic-sup-t1--base.tfm)
+Provides:       tex(plxSerif-MediumItalic-sup-t1.tfm)
+Provides:       tex(plxSerif-MediumItalic-sup-t1.vf)
+Provides:       tex(plxSerif-MediumItalic-tlf-lgr.tfm)
+Provides:       tex(plxSerif-MediumItalic-tlf-ly1.tfm)
+Provides:       tex(plxSerif-MediumItalic-tlf-ot1.tfm)
+Provides:       tex(plxSerif-MediumItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-MediumItalic-tlf-t1.tfm)
+Provides:       tex(plxSerif-MediumItalic-tlf-t1.vf)
+Provides:       tex(plxSerif-MediumItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-MediumItalic-tlf-ts1.tfm)
+Provides:       tex(plxSerif-MediumItalic-tlf-ts1.vf)
+Provides:       tex(plxSerif-MediumItalic-tosf-lgr.tfm)
+Provides:       tex(plxSerif-MediumItalic-tosf-ly1.tfm)
+Provides:       tex(plxSerif-MediumItalic-tosf-ot1.tfm)
+Provides:       tex(plxSerif-MediumItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-MediumItalic-tosf-t1.tfm)
+Provides:       tex(plxSerif-MediumItalic-tosf-t1.vf)
+Provides:       tex(plxSerif-MediumItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-MediumItalic-tosf-ts1.tfm)
+Provides:       tex(plxSerif-MediumItalic-tosf-ts1.vf)
+Provides:       tex(plxSerif-Regular-sup-lgr.tfm)
+Provides:       tex(plxSerif-Regular-sup-ly1.tfm)
+Provides:       tex(plxSerif-Regular-sup-ot1.tfm)
+Provides:       tex(plxSerif-Regular-sup-t1--base.tfm)
+Provides:       tex(plxSerif-Regular-sup-t1.tfm)
+Provides:       tex(plxSerif-Regular-sup-t1.vf)
+Provides:       tex(plxSerif-Regular-tlf-lgr.tfm)
+Provides:       tex(plxSerif-Regular-tlf-ly1.tfm)
+Provides:       tex(plxSerif-Regular-tlf-ot1.tfm)
+Provides:       tex(plxSerif-Regular-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-Regular-tlf-t1.tfm)
+Provides:       tex(plxSerif-Regular-tlf-t1.vf)
+Provides:       tex(plxSerif-Regular-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-Regular-tlf-ts1.tfm)
+Provides:       tex(plxSerif-Regular-tlf-ts1.vf)
+Provides:       tex(plxSerif-Regular-tosf-lgr.tfm)
+Provides:       tex(plxSerif-Regular-tosf-ly1.tfm)
+Provides:       tex(plxSerif-Regular-tosf-ot1.tfm)
+Provides:       tex(plxSerif-Regular-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-Regular-tosf-t1.tfm)
+Provides:       tex(plxSerif-Regular-tosf-t1.vf)
+Provides:       tex(plxSerif-Regular-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-Regular-tosf-ts1.tfm)
+Provides:       tex(plxSerif-Regular-tosf-ts1.vf)
+Provides:       tex(plxSerif-SemiBold-sup-lgr.tfm)
+Provides:       tex(plxSerif-SemiBold-sup-ly1.tfm)
+Provides:       tex(plxSerif-SemiBold-sup-ot1.tfm)
+Provides:       tex(plxSerif-SemiBold-sup-t1--base.tfm)
+Provides:       tex(plxSerif-SemiBold-sup-t1.tfm)
+Provides:       tex(plxSerif-SemiBold-sup-t1.vf)
+Provides:       tex(plxSerif-SemiBold-tlf-lgr.tfm)
+Provides:       tex(plxSerif-SemiBold-tlf-ly1.tfm)
+Provides:       tex(plxSerif-SemiBold-tlf-ot1.tfm)
+Provides:       tex(plxSerif-SemiBold-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-SemiBold-tlf-t1.tfm)
+Provides:       tex(plxSerif-SemiBold-tlf-t1.vf)
+Provides:       tex(plxSerif-SemiBold-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-SemiBold-tlf-ts1.tfm)
+Provides:       tex(plxSerif-SemiBold-tlf-ts1.vf)
+Provides:       tex(plxSerif-SemiBold-tosf-lgr.tfm)
+Provides:       tex(plxSerif-SemiBold-tosf-ly1.tfm)
+Provides:       tex(plxSerif-SemiBold-tosf-ot1.tfm)
+Provides:       tex(plxSerif-SemiBold-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-SemiBold-tosf-t1.tfm)
+Provides:       tex(plxSerif-SemiBold-tosf-t1.vf)
+Provides:       tex(plxSerif-SemiBold-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-SemiBold-tosf-ts1.tfm)
+Provides:       tex(plxSerif-SemiBold-tosf-ts1.vf)
+Provides:       tex(plxSerif-SemiBoldItalic-sup-lgr.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-sup-ly1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-sup-ot1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-sup-t1--base.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-sup-t1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-sup-t1.vf)
+Provides:       tex(plxSerif-SemiBoldItalic-tlf-lgr.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tlf-ly1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tlf-ot1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tlf-t1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tlf-t1.vf)
+Provides:       tex(plxSerif-SemiBoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tlf-ts1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tlf-ts1.vf)
+Provides:       tex(plxSerif-SemiBoldItalic-tosf-lgr.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tosf-ly1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tosf-ot1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tosf-t1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tosf-t1.vf)
+Provides:       tex(plxSerif-SemiBoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tosf-ts1.tfm)
+Provides:       tex(plxSerif-SemiBoldItalic-tosf-ts1.vf)
+Provides:       tex(plxSerif-Text-sup-lgr.tfm)
+Provides:       tex(plxSerif-Text-sup-ly1.tfm)
+Provides:       tex(plxSerif-Text-sup-ot1.tfm)
+Provides:       tex(plxSerif-Text-sup-t1--base.tfm)
+Provides:       tex(plxSerif-Text-sup-t1.tfm)
+Provides:       tex(plxSerif-Text-sup-t1.vf)
+Provides:       tex(plxSerif-Text-tlf-lgr.tfm)
+Provides:       tex(plxSerif-Text-tlf-ly1.tfm)
+Provides:       tex(plxSerif-Text-tlf-ot1.tfm)
+Provides:       tex(plxSerif-Text-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-Text-tlf-t1.tfm)
+Provides:       tex(plxSerif-Text-tlf-t1.vf)
+Provides:       tex(plxSerif-Text-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-Text-tlf-ts1.tfm)
+Provides:       tex(plxSerif-Text-tlf-ts1.vf)
+Provides:       tex(plxSerif-Text-tosf-lgr.tfm)
+Provides:       tex(plxSerif-Text-tosf-ly1.tfm)
+Provides:       tex(plxSerif-Text-tosf-ot1.tfm)
+Provides:       tex(plxSerif-Text-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-Text-tosf-t1.tfm)
+Provides:       tex(plxSerif-Text-tosf-t1.vf)
+Provides:       tex(plxSerif-Text-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-Text-tosf-ts1.tfm)
+Provides:       tex(plxSerif-Text-tosf-ts1.vf)
+Provides:       tex(plxSerif-TextItalic-sup-lgr.tfm)
+Provides:       tex(plxSerif-TextItalic-sup-ly1.tfm)
+Provides:       tex(plxSerif-TextItalic-sup-ot1.tfm)
+Provides:       tex(plxSerif-TextItalic-sup-t1--base.tfm)
+Provides:       tex(plxSerif-TextItalic-sup-t1.tfm)
+Provides:       tex(plxSerif-TextItalic-sup-t1.vf)
+Provides:       tex(plxSerif-TextItalic-tlf-lgr.tfm)
+Provides:       tex(plxSerif-TextItalic-tlf-ly1.tfm)
+Provides:       tex(plxSerif-TextItalic-tlf-ot1.tfm)
+Provides:       tex(plxSerif-TextItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-TextItalic-tlf-t1.tfm)
+Provides:       tex(plxSerif-TextItalic-tlf-t1.vf)
+Provides:       tex(plxSerif-TextItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-TextItalic-tlf-ts1.tfm)
+Provides:       tex(plxSerif-TextItalic-tlf-ts1.vf)
+Provides:       tex(plxSerif-TextItalic-tosf-lgr.tfm)
+Provides:       tex(plxSerif-TextItalic-tosf-ly1.tfm)
+Provides:       tex(plxSerif-TextItalic-tosf-ot1.tfm)
+Provides:       tex(plxSerif-TextItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-TextItalic-tosf-t1.tfm)
+Provides:       tex(plxSerif-TextItalic-tosf-t1.vf)
+Provides:       tex(plxSerif-TextItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-TextItalic-tosf-ts1.tfm)
+Provides:       tex(plxSerif-TextItalic-tosf-ts1.vf)
+Provides:       tex(plxSerif-Thin-sup-lgr.tfm)
+Provides:       tex(plxSerif-Thin-sup-ly1.tfm)
+Provides:       tex(plxSerif-Thin-sup-ot1.tfm)
+Provides:       tex(plxSerif-Thin-sup-t1--base.tfm)
+Provides:       tex(plxSerif-Thin-sup-t1.tfm)
+Provides:       tex(plxSerif-Thin-sup-t1.vf)
+Provides:       tex(plxSerif-Thin-tlf-lgr.tfm)
+Provides:       tex(plxSerif-Thin-tlf-ly1.tfm)
+Provides:       tex(plxSerif-Thin-tlf-ot1.tfm)
+Provides:       tex(plxSerif-Thin-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-Thin-tlf-t1.tfm)
+Provides:       tex(plxSerif-Thin-tlf-t1.vf)
+Provides:       tex(plxSerif-Thin-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-Thin-tlf-ts1.tfm)
+Provides:       tex(plxSerif-Thin-tlf-ts1.vf)
+Provides:       tex(plxSerif-Thin-tosf-lgr.tfm)
+Provides:       tex(plxSerif-Thin-tosf-ly1.tfm)
+Provides:       tex(plxSerif-Thin-tosf-ot1.tfm)
+Provides:       tex(plxSerif-Thin-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-Thin-tosf-t1.tfm)
+Provides:       tex(plxSerif-Thin-tosf-t1.vf)
+Provides:       tex(plxSerif-Thin-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-Thin-tosf-ts1.tfm)
+Provides:       tex(plxSerif-Thin-tosf-ts1.vf)
+Provides:       tex(plxSerif-ThinItalic-sup-lgr.tfm)
+Provides:       tex(plxSerif-ThinItalic-sup-ly1.tfm)
+Provides:       tex(plxSerif-ThinItalic-sup-ot1.tfm)
+Provides:       tex(plxSerif-ThinItalic-sup-t1--base.tfm)
+Provides:       tex(plxSerif-ThinItalic-sup-t1.tfm)
+Provides:       tex(plxSerif-ThinItalic-sup-t1.vf)
+Provides:       tex(plxSerif-ThinItalic-tlf-lgr.tfm)
+Provides:       tex(plxSerif-ThinItalic-tlf-ly1.tfm)
+Provides:       tex(plxSerif-ThinItalic-tlf-ot1.tfm)
+Provides:       tex(plxSerif-ThinItalic-tlf-t1--base.tfm)
+Provides:       tex(plxSerif-ThinItalic-tlf-t1.tfm)
+Provides:       tex(plxSerif-ThinItalic-tlf-t1.vf)
+Provides:       tex(plxSerif-ThinItalic-tlf-ts1--base.tfm)
+Provides:       tex(plxSerif-ThinItalic-tlf-ts1.tfm)
+Provides:       tex(plxSerif-ThinItalic-tlf-ts1.vf)
+Provides:       tex(plxSerif-ThinItalic-tosf-lgr.tfm)
+Provides:       tex(plxSerif-ThinItalic-tosf-ly1.tfm)
+Provides:       tex(plxSerif-ThinItalic-tosf-ot1.tfm)
+Provides:       tex(plxSerif-ThinItalic-tosf-t1--base.tfm)
+Provides:       tex(plxSerif-ThinItalic-tosf-t1.tfm)
+Provides:       tex(plxSerif-ThinItalic-tosf-t1.vf)
+Provides:       tex(plxSerif-ThinItalic-tosf-ts1--base.tfm)
+Provides:       tex(plxSerif-ThinItalic-tosf-ts1.tfm)
+Provides:       tex(plxSerif-ThinItalic-tosf-ts1.vf)
+Provides:       tex(plxSerif.map)
+Provides:       tex(plx_2jqefy.enc)
+Provides:       tex(plx_2lh64x.enc)
 Provides:       tex(plx_5wdxh7.enc)
 Provides:       tex(plx_6tuc4c.enc)
 Provides:       tex(plx_abnabb.enc)
+Provides:       tex(plx_arhv23.enc)
 Provides:       tex(plx_aytvzj.enc)
+Provides:       tex(plx_bb73my.enc)
 Provides:       tex(plx_be3ach.enc)
 Provides:       tex(plx_bigt6c.enc)
 Provides:       tex(plx_bw3vxo.enc)
@@ -3314,8 +3387,8 @@ Provides:       tex(plx_errukl.enc)
 Provides:       tex(plx_gc6afx.enc)
 Provides:       tex(plx_gmchnq.enc)
 Provides:       tex(plx_h3p6bl.enc)
-Provides:       tex(plx_i3ioen.enc)
 Provides:       tex(plx_jbbrju.enc)
+Provides:       tex(plx_koxhod.enc)
 Provides:       tex(plx_lfnaaq.enc)
 Provides:       tex(plx_lxmhqh.enc)
 Provides:       tex(plx_mr3nck.enc)
@@ -3326,6 +3399,7 @@ Provides:       tex(plx_qtqx7y.enc)
 Provides:       tex(plx_rusc4d.enc)
 Provides:       tex(plx_sebx3h.enc)
 Provides:       tex(plx_umrhwx.enc)
+Provides:       tex(plx_zg2afo.enc)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
@@ -3335,7 +3409,7 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source18:       plex.tar.xz
 Source19:       plex.doc.tar.xz
 
@@ -3347,7 +3421,7 @@ ExtraLight, Thin, Bold, Text, Medium and SemiBold (with
 corresponding italics).
 
 %package -n texlive-plex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn73028
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-plex
 License:        OFL-1.1
@@ -3359,7 +3433,7 @@ Supplements:    (texlive-plex and texlive-alldocumentation)
 This package includes the documentation for texlive-plex
 
 %package -n texlive-plex-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn73028
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-plex
 License:        OFL-1.1
@@ -3401,12 +3475,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/plex/plex-samples.tex
 
 %files -n texlive-plex
-%{_texmfdistdir}/fonts/enc/dvips/plex/plx_3xjvyq.enc
-%{_texmfdistdir}/fonts/enc/dvips/plex/plx_4rpw27.enc
+%{_texmfdistdir}/fonts/enc/dvips/plex/plx_2jqefy.enc
+%{_texmfdistdir}/fonts/enc/dvips/plex/plx_2lh64x.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_5wdxh7.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_6tuc4c.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_abnabb.enc
+%{_texmfdistdir}/fonts/enc/dvips/plex/plx_arhv23.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_aytvzj.enc
+%{_texmfdistdir}/fonts/enc/dvips/plex/plx_bb73my.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_be3ach.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_bigt6c.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_bw3vxo.enc
@@ -3416,8 +3492,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_gc6afx.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_gmchnq.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_h3p6bl.enc
-%{_texmfdistdir}/fonts/enc/dvips/plex/plx_i3ioen.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_jbbrju.enc
+%{_texmfdistdir}/fonts/enc/dvips/plex/plx_koxhod.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_lfnaaq.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_lxmhqh.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_mr3nck.enc
@@ -3428,7 +3504,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_rusc4d.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_sebx3h.enc
 %{_texmfdistdir}/fonts/enc/dvips/plex/plx_umrhwx.enc
+%{_texmfdistdir}/fonts/enc/dvips/plex/plx_zg2afo.enc
 %{_texmfdistdir}/fonts/map/dvips/plex/plex.map
+%{_texmfdistdir}/fonts/map/dvips/plex/plxMono.map
+%{_texmfdistdir}/fonts/map/dvips/plex/plxSans.map
+%{_texmfdistdir}/fonts/map/dvips/plex/plxSerif.map
 %verify(link) %{_texmfdistdir}/fonts/opentype/ibm/plex/IBMPlexMath-Regular.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/ibm/plex/IBMPlexMono-Bold.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/ibm/plex/IBMPlexMono-BoldItalic.otf
@@ -3494,1062 +3574,1126 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/opentype/ibm/plex/IBMPlexSerif-TextItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/ibm/plex/IBMPlexSerif-Thin.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/ibm/plex/IBMPlexSerif-ThinItalic.otf
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Bold-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-BoldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLt-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ExtLtItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Italic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Light-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-LightItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Medm-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-MedmItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBld-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-SmBldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Text-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-TextItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-Thin-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-ThinItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexMono-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Bold-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-BoldItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLt-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ExtLtItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Italic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Light-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-LightItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Medm-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-MedmItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBld-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-SmBldItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Text-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-TextItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-Thin-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-ThinItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSans-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Bold-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLt-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Italic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Light-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-LightItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Medm-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBld-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Text-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-TextItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-Thin-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-sup-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-tlf-lgr--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSansCond-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Bold-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-BoldItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLight-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ExtraLightItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Italic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Light-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-LightItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Medium-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-MediumItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Regular-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBold-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-SemiBoldItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Text-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-TextItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-Thin-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-sup-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tlf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tosf-lgr.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/ibm/plex/IBMPlexSerif-ThinItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Bold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-BoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLt-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ExtLtItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Italic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Light-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-LightItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Medm-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-MedmItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBld-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-SmBldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Text-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-TextItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-Thin-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-ThinItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxMono-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Bold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-BoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLt-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ExtLtItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Italic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Light-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-LightItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Medm-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-MedmItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBld-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-SmBldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Text-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-TextItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-Thin-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-ThinItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSans-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Bold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-BoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLt-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ExtLtItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Light-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-LightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Medm-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-MedmItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBld-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-SmBldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Text-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-TextItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-Thin-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-ThinItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-sup-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-tlf-lgr--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSansCond-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Bold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-BoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLight-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ExtraLightItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Italic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Light-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-LightItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Medium-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-MediumItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Regular-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-SemiBoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Text-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-TextItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-Thin-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-sup-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tlf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tosf-lgr.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/ibm/plex/plxSerif-ThinItalic-tosf-ts1.tfm
 %verify(link) %{_texmfdistdir}/fonts/type1/ibm/plex/plxMono-Bold.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/ibm/plex/plxMono-BoldItalic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/ibm/plex/plxMono-ExtLt.pfb
@@ -4614,393 +4758,397 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/ibm/plex/plxSerif-TextItalic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/ibm/plex/plxSerif-Thin.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/ibm/plex/plxSerif-ThinItalic.pfb
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Bold-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Bold-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Bold-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Bold-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Bold-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-BoldItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-BoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-BoldItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-BoldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-BoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ExtLt-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ExtLt-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ExtLt-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ExtLt-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ExtLt-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ExtLtItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ExtLtItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ExtLtItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ExtLtItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ExtLtItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Italic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Italic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Italic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Italic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Italic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Light-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Light-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Light-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Light-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Light-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-LightItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-LightItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-LightItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-LightItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-LightItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Medm-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Medm-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Medm-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Medm-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Medm-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-MedmItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-MedmItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-MedmItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-MedmItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-MedmItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-SmBld-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-SmBld-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-SmBld-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-SmBld-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-SmBld-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-SmBldItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-SmBldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-SmBldItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-SmBldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-SmBldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Text-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Text-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Text-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Text-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Text-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-TextItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-TextItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-TextItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-TextItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-TextItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Thin-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Thin-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Thin-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Thin-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-Thin-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ThinItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ThinItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ThinItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ThinItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-ThinItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexMono-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Bold-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Bold-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Bold-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Bold-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Bold-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-BoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-BoldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-BoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-BoldItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-BoldItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ExtLt-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ExtLt-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ExtLt-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ExtLt-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ExtLt-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ExtLtItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ExtLtItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ExtLtItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ExtLtItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ExtLtItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Italic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Italic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Italic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Italic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Italic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Light-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Light-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Light-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Light-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Light-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-LightItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-LightItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-LightItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-LightItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-LightItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Medm-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Medm-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Medm-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Medm-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Medm-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-MedmItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-MedmItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-MedmItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-MedmItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-MedmItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-SmBld-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-SmBld-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-SmBld-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-SmBld-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-SmBld-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-SmBldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-SmBldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-SmBldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-SmBldItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-SmBldItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Text-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Text-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Text-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Text-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Text-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-TextItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-TextItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-TextItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-TextItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-TextItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Thin-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Thin-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Thin-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Thin-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-Thin-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ThinItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ThinItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ThinItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ThinItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-ThinItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSans-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Bold-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Bold-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Bold-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Bold-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Bold-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Bold-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Bold-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-BoldItalic-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-BoldItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-BoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-BoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLt-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLt-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLt-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLt-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLt-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLt-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLt-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLtItalic-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLtItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLtItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ExtLtItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Italic-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Italic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Italic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Italic-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Italic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Italic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Italic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Light-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Light-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Light-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Light-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Light-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Light-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Light-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-LightItalic-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-LightItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-LightItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-LightItalic-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-LightItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-LightItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-LightItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Medm-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Medm-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Medm-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Medm-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Medm-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Medm-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Medm-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-MedmItalic-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-MedmItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-MedmItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-MedmItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBld-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBld-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBld-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBld-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBld-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBld-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBld-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBldItalic-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBldItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-SmBldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Text-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Text-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Text-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Text-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Text-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Text-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Text-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-TextItalic-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-TextItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-TextItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-TextItalic-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-TextItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-TextItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-TextItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Thin-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Thin-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Thin-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Thin-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Thin-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Thin-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-Thin-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ThinItalic-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ThinItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ThinItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-ThinItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-sup-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-tlf-lgr.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSansCond-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Bold-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Bold-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Bold-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Bold-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Bold-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-BoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-BoldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-BoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-BoldItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-BoldItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ExtraLight-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ExtraLight-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ExtraLight-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ExtraLight-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ExtraLight-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ExtraLightItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ExtraLightItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ExtraLightItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ExtraLightItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ExtraLightItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Italic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Italic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Italic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Italic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Italic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Light-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Light-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Light-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Light-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Light-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-LightItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-LightItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-LightItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-LightItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-LightItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Medium-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Medium-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Medium-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Medium-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Medium-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-MediumItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-MediumItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-MediumItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-MediumItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-MediumItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Regular-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Regular-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Regular-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Regular-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Regular-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-SemiBold-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-SemiBold-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-SemiBold-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-SemiBold-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-SemiBold-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-SemiBoldItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-SemiBoldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-SemiBoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-SemiBoldItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-SemiBoldItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Text-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Text-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Text-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Text-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Text-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-TextItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-TextItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-TextItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-TextItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-TextItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Thin-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Thin-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Thin-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Thin-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-Thin-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ThinItalic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ThinItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ThinItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ThinItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/ibm/plex/IBMPlexSerif-ThinItalic-tosf-ts1.vf
-%{_texmfdistdir}/tex/latex/plex/LGRIBMPlexSans-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/LGRIBMPlexSans-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/LGRIBMPlexSans-TOsF.fd
-%{_texmfdistdir}/tex/latex/plex/LGRIBMPlexSerif-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/LGRIBMPlexSerif-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/LGRIBMPlexSerif-TOsF.fd
-%{_texmfdistdir}/tex/latex/plex/LY1IBMPlexMono-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/LY1IBMPlexMono-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/LY1IBMPlexSans-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/LY1IBMPlexSans-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/LY1IBMPlexSans-TOsF.fd
-%{_texmfdistdir}/tex/latex/plex/LY1IBMPlexSerif-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/LY1IBMPlexSerif-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/LY1IBMPlexSerif-TOsF.fd
-%{_texmfdistdir}/tex/latex/plex/OT1IBMPlexMono-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/OT1IBMPlexMono-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/OT1IBMPlexSans-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/OT1IBMPlexSans-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/OT1IBMPlexSans-TOsF.fd
-%{_texmfdistdir}/tex/latex/plex/OT1IBMPlexSerif-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/OT1IBMPlexSerif-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/OT1IBMPlexSerif-TOsF.fd
-%{_texmfdistdir}/tex/latex/plex/T1IBMPlexMono-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/T1IBMPlexMono-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/T1IBMPlexSans-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/T1IBMPlexSans-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/T1IBMPlexSans-TOsF.fd
-%{_texmfdistdir}/tex/latex/plex/T1IBMPlexSerif-Sup.fd
-%{_texmfdistdir}/tex/latex/plex/T1IBMPlexSerif-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/T1IBMPlexSerif-TOsF.fd
-%{_texmfdistdir}/tex/latex/plex/TS1IBMPlexMono-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/TS1IBMPlexSans-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/TS1IBMPlexSans-TOsF.fd
-%{_texmfdistdir}/tex/latex/plex/TS1IBMPlexSerif-TLF.fd
-%{_texmfdistdir}/tex/latex/plex/TS1IBMPlexSerif-TOsF.fd
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Bold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Bold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Bold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Bold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Bold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-BoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-BoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-BoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-BoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-BoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ExtLt-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ExtLt-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ExtLt-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ExtLt-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ExtLt-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ExtLtItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ExtLtItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ExtLtItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ExtLtItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ExtLtItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Italic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Italic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Italic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Italic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Light-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Light-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Light-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Light-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Light-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-LightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-LightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-LightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-LightItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-LightItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Medm-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Medm-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Medm-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Medm-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Medm-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-MedmItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-MedmItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-MedmItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-MedmItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-MedmItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-SmBld-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-SmBld-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-SmBld-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-SmBld-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-SmBld-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-SmBldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-SmBldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-SmBldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-SmBldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-SmBldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Text-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Text-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Text-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Text-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Text-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-TextItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-TextItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-TextItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-TextItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-TextItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Thin-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Thin-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Thin-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Thin-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-Thin-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ThinItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ThinItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ThinItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ThinItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-ThinItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxMono-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Bold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Bold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Bold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Bold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Bold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-BoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-BoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-BoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-BoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-BoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ExtLt-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ExtLt-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ExtLt-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ExtLt-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ExtLt-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ExtLtItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ExtLtItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ExtLtItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ExtLtItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ExtLtItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Italic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Italic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Italic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Italic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Light-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Light-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Light-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Light-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Light-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-LightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-LightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-LightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-LightItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-LightItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Medm-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Medm-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Medm-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Medm-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Medm-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-MedmItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-MedmItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-MedmItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-MedmItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-MedmItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-SmBld-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-SmBld-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-SmBld-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-SmBld-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-SmBld-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-SmBldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-SmBldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-SmBldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-SmBldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-SmBldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Text-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Text-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Text-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Text-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Text-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-TextItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-TextItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-TextItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-TextItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-TextItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Thin-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Thin-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Thin-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Thin-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-Thin-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ThinItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ThinItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ThinItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ThinItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-ThinItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSans-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Bold-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Bold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Bold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Bold-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Bold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Bold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Bold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-BoldItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-BoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-BoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-BoldItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-BoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-BoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-BoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLt-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLt-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLt-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLt-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLt-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLt-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLt-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLtItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLtItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLtItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLtItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLtItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLtItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ExtLtItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Italic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Italic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Italic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Italic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Italic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Italic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Light-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Light-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Light-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Light-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Light-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Light-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Light-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-LightItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-LightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-LightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-LightItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-LightItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-LightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-LightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Medm-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Medm-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Medm-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Medm-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Medm-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Medm-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Medm-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-MedmItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-MedmItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-MedmItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-MedmItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-MedmItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-MedmItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-MedmItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBld-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBld-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBld-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBld-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBld-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBld-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBld-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBldItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBldItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-SmBldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Text-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Text-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Text-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Text-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Text-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Text-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Text-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-TextItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-TextItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-TextItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-TextItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-TextItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-TextItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-TextItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Thin-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Thin-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Thin-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Thin-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Thin-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Thin-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-Thin-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ThinItalic-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ThinItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ThinItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ThinItalic-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ThinItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ThinItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-ThinItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-sup-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-tlf-lgr.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSansCond-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Bold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Bold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Bold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Bold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Bold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-BoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-BoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-BoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-BoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-BoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ExtraLight-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ExtraLight-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ExtraLight-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ExtraLight-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ExtraLight-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ExtraLightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ExtraLightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ExtraLightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ExtraLightItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ExtraLightItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Italic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Italic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Italic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Italic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Light-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Light-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Light-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Light-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Light-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-LightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-LightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-LightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-LightItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-LightItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Medium-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Medium-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Medium-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Medium-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Medium-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-MediumItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-MediumItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-MediumItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-MediumItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-MediumItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Regular-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Regular-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Regular-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Regular-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Regular-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-SemiBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-SemiBold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-SemiBold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-SemiBold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-SemiBold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-SemiBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-SemiBoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-SemiBoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-SemiBoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-SemiBoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Text-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Text-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Text-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Text-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Text-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-TextItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-TextItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-TextItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-TextItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-TextItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Thin-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Thin-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Thin-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Thin-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-Thin-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ThinItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ThinItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ThinItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ThinItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/ibm/plex/plxSerif-ThinItalic-tosf-ts1.vf
+%{_texmfdistdir}/tex/latex/plex/LGRplxSans-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/LGRplxSans-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/LGRplxSans-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/LGRplxSerif-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/LGRplxSerif-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/LGRplxSerif-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/LY1plxMono-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/LY1plxMono-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/LY1plxMono-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/LY1plxSans-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/LY1plxSans-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/LY1plxSans-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/LY1plxSerif-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/LY1plxSerif-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/LY1plxSerif-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/OT1plxMono-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/OT1plxMono-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/OT1plxMono-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/OT1plxSans-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/OT1plxSans-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/OT1plxSans-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/OT1plxSerif-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/OT1plxSerif-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/OT1plxSerif-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/T1plxMono-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/T1plxMono-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/T1plxMono-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/T1plxSans-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/T1plxSans-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/T1plxSans-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/T1plxSerif-Sup.fd
+%{_texmfdistdir}/tex/latex/plex/T1plxSerif-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/T1plxSerif-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/TS1plxMono-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/TS1plxMono-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/TS1plxSans-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/TS1plxSans-TOsF.fd
+%{_texmfdistdir}/tex/latex/plex/TS1plxSerif-TLF.fd
+%{_texmfdistdir}/tex/latex/plex/TS1plxSerif-TOsF.fd
 %{_texmfdistdir}/tex/latex/plex/plex-mono.sty
 %{_texmfdistdir}/tex/latex/plex/plex-sans.sty
 %{_texmfdistdir}/tex/latex/plex/plex-serif.sty
@@ -5144,7 +5292,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-plex/plxSerif-ThinItalic.pfb
 
 %package -n texlive-plex-otf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn73766
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11asvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for the OpenType font IBM Plex
@@ -5177,7 +5325,7 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source20:       plex-otf.tar.xz
 Source21:       plex-otf.doc.tar.xz
 
@@ -5189,7 +5337,7 @@ or LuaLaTeX; for pdfLaTeX use plex-mono.sty, plex-sans.sty,
 and/or plex-serif.sty from the plex package.
 
 %package -n texlive-plex-otf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn73766
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11asvn77682
 Release:        0
 Summary:        Documentation for texlive-plex-otf
 License:        LPPL-1.0
@@ -5274,7 +5422,7 @@ Provides:       tex(plimsoll.map)
 Provides:       tex(plimsoll.sty)
 Provides:       tex(plimsoll.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source22:       plimsoll.tar.xz
 Source23:       plimsoll.doc.tar.xz
 
@@ -5391,7 +5539,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-plipsum-doc >= %{texlive_version}
 Provides:       tex(plipsum.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source24:       plipsum.tar.xz
 Source25:       plipsum.doc.tar.xz
 
@@ -5472,7 +5620,7 @@ Suggests:       texlive-plnfss-doc >= %{texlive_version}
 Provides:       tex(MIKmathf.tex)
 Provides:       tex(plnfss.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source26:       plnfss.tar.xz
 Source27:       plnfss.doc.tar.xz
 
@@ -5567,7 +5715,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-plstmary-doc >= %{texlive_version}
 Provides:       tex(stmary.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source28:       plstmary.tar.xz
 Source29:       plstmary.doc.tar.xz
 
@@ -5644,7 +5792,7 @@ Provides:       tex(pcode.sty)
 Provides:       tex(pl.cfg)
 Provides:       tex(pl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source30:       plweb.tar.xz
 Source31:       plweb.doc.tar.xz
 
@@ -5696,7 +5844,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/plweb/pl.sty
 
 %package -n texlive-pm-isomath
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.00svn60368
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.00svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Poor man ISO math for pdfLaTeX users
@@ -5730,7 +5878,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source32:       pm-isomath.tar.xz
 Source33:       pm-isomath.doc.tar.xz
 
@@ -5739,11 +5887,12 @@ This small package realizes a poor man approximation of the ISO
 regulations for physical sciences and technology. Contrary to
 other more elegant solutions, it does not load any math
 alphabet, since pdfLaTeX can use only a maximum of such
-alphabets. The necessary user macros are defined for typsetting
-common math symbols that require special ISO treatment.
+alphabets. The necessary user macros are defined for
+typesetting common math symbols that require special ISO
+treatment.
 
 %package -n texlive-pm-isomath-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.00svn60368
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.00svn76924
 Release:        0
 Summary:        Documentation for texlive-pm-isomath
 License:        LPPL-1.0
@@ -5779,7 +5928,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pm-isomath/pm-isomath.sty
 
 %package -n texlive-pmboxdraw
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn53046
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Poor man's box drawing characters
@@ -5809,7 +5958,7 @@ Suggests:       texlive-pmboxdraw-doc >= %{texlive_version}
 Provides:       tex(pmboxdraw.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source34:       pmboxdraw.tar.xz
 Source35:       pmboxdraw.doc.tar.xz
 
@@ -5818,7 +5967,7 @@ This package declares box drawing characters of old code pages,
 e.g. cp437. It uses rules instead of using a font.
 
 %package -n texlive-pmboxdraw-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn53046
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn77682
 Release:        0
 Summary:        Documentation for texlive-pmboxdraw
 License:        LPPL-1.0
@@ -5855,7 +6004,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pmboxdraw/pmboxdrawenc.dfu
 
 %package -n texlive-pmdraw
-Version:        %{texlive_version}.%{texlive_noarch}.1.7svn73626
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn77509
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw elements of the diagram monoids
@@ -5886,7 +6035,7 @@ Provides:       tex(pmdraw.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source36:       pmdraw.tar.xz
 Source37:       pmdraw.doc.tar.xz
 
@@ -5898,7 +6047,7 @@ customised as needed. It makes use of the TikZ and keyval
 packages.
 
 %package -n texlive-pmdraw-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.7svn73626
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn77509
 Release:        0
 Summary:        Documentation for texlive-pmdraw
 License:        LPPL-1.0
@@ -5989,7 +6138,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pmgraph-doc >= %{texlive_version}
 Provides:       tex(pmgraph.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source38:       pmgraph.tar.xz
 Source39:       pmgraph.doc.tar.xz
 
@@ -6036,7 +6185,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pmgraph/pmgraph.sty
 
 %package -n texlive-pmhanguljamo
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.2svn73884
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn78114
 Release:        0
 License:        LPPL-1.0
 Summary:        Poor man's Hangul Jamo input method
@@ -6071,7 +6220,7 @@ Provides:       tex(pmhanguljamo.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source40:       pmhanguljamo.tar.xz
 Source41:       pmhanguljamo.doc.tar.xz
 
@@ -6083,7 +6232,7 @@ Method". The use of XeLaTeX is recommended. pdfTeX is not
 supported.
 
 %package -n texlive-pmhanguljamo-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.2svn73884
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn78114
 Release:        0
 Summary:        Documentation for texlive-pmhanguljamo
 License:        LPPL-1.0
@@ -6114,11 +6263,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-pmhanguljamo-doc
 %{_texmfdistdir}/doc/latex/pmhanguljamo/README.md
-%{_texmfdistdir}/doc/latex/pmhanguljamo/munjangganghwa.jpg
 %{_texmfdistdir}/doc/latex/pmhanguljamo/pmhanguljamo-doc.pdf
-%{_texmfdistdir}/doc/latex/pmhanguljamo/pmhanguljamo-doc.tex
 %{_texmfdistdir}/doc/latex/pmhanguljamo/pmhanguljamo-kdoc.pdf
-%{_texmfdistdir}/doc/latex/pmhanguljamo/pmhanguljamo-kdoc.tex
+%{_texmfdistdir}/doc/latex/pmhanguljamo/pmhanguljamo_doc_src.zip
 
 %files -n texlive-pmhanguljamo
 %{_texmfdistdir}/tex/latex/pmhanguljamo/frkjamofull.data.tex
@@ -6128,7 +6275,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pmhanguljamo/pmhanguljamo.sty
 
 %package -n texlive-pmx
-Version:        %{texlive_version}.%{texlive_noarch}.3.00svn65926
+Version:        %{texlive_version}.%{texlive_noarch}.3.00svn75301
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Preprocessor for MusiXTeX
@@ -6159,7 +6306,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pmx-doc >= %{texlive_version}
 Provides:       tex(pmx.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source42:       pmx.tar.xz
 Source43:       pmx.doc.tar.xz
 
@@ -6173,7 +6320,7 @@ proof-listening, pmxab will make a MIDI file of your score.
 scor2prt is an auxiliary program that makes parts from a score.
 
 %package -n texlive-pmx-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.00svn65926
+Version:        %{texlive_version}.%{texlive_noarch}.3.00svn75301
 Release:        0
 Summary:        Documentation for texlive-pmx
 License:        GPL-2.0-or-later
@@ -6266,7 +6413,7 @@ Suggests:       texlive-pmxchords-doc >= %{texlive_version}
 Provides:       tex(chords.tex)
 Provides:       tex(chordsCZ.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source44:       pmxchords.tar.xz
 Source45:       pmxchords.doc.tar.xz
 
@@ -6337,7 +6484,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/pmxchords/chordsCZ.tex
 
 %package -n texlive-pnas2009
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn16287
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        BibTeX style for PNAS (newer version)
@@ -6364,7 +6511,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source46:       pnas2009.tar.xz
 
 %description -n texlive-pnas2009
@@ -6423,7 +6570,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-poemscol-doc >= %{texlive_version}
 Provides:       tex(poemscol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source47:       poemscol.tar.xz
 Source48:       poemscol.doc.tar.xz
 
@@ -6476,7 +6623,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/poemscol/poemscol.sty
 
 %package -n texlive-poetry
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn53129
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Facilities for typesetting poetry and poetical structure
@@ -6507,7 +6654,7 @@ Provides:       tex(poetry.sty)
 Requires:       tex(imakeidx.sty)
 Requires:       tex(modulus.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source49:       poetry.tar.xz
 Source50:       poetry.doc.tar.xz
 
@@ -6521,7 +6668,7 @@ additional abilities, such as facilities for a list of poems,
 an index of first lines, and some structural commands.
 
 %package -n texlive-poetry-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn53129
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn77682
 Release:        0
 Summary:        Documentation for texlive-poetry
 License:        LPPL-1.0
@@ -6559,7 +6706,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/poetry/poetry.sty
 
 %package -n texlive-poetrytex
-Version:        %{texlive_version}.%{texlive_noarch}.3.0.1svn68353
+Version:        %{texlive_version}.%{texlive_noarch}.3.0.1svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset anthologies of poetry
@@ -6590,17 +6737,17 @@ Provides:       tex(poetrytex.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(tocloft.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source51:       poetrytex.tar.xz
 Source52:       poetrytex.doc.tar.xz
 
 %description -n texlive-poetrytex
 The package is designed to aid in the management and formatting
 of anthologies of poetry and other writings; it does not
-concern itself with actually typesettinig the verse itself.
+concern itself with actually typesetting the verse itself.
 
 %package -n texlive-poetrytex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.0.1svn68353
+Version:        %{texlive_version}.%{texlive_noarch}.3.0.1svn76924
 Release:        0
 Summary:        Documentation for texlive-poetrytex
 License:        LPPL-1.0
@@ -6715,7 +6862,7 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source53:       poiretone.tar.xz
 Source54:       poiretone.doc.tar.xz
 
@@ -6830,7 +6977,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-poiretone/PoiretOne-Regular.pfb
 
 %package -n texlive-polexpr
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.7asvn63337
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.7asvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A parser for polynomial expressions
@@ -6864,7 +7011,7 @@ Provides:       tex(polexprexpr.tex)
 Provides:       tex(polexprsturm.tex)
 Requires:       tex(xintexpr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source55:       polexpr.tar.xz
 Source56:       polexpr.doc.tar.xz
 
@@ -6885,7 +7032,7 @@ is now available directly in \xintexpr, \xinteval or \poldef
 via infix or functional syntax.
 
 %package -n texlive-polexpr-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.7asvn63337
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.7asvn77682
 Release:        0
 Summary:        Documentation for texlive-polexpr
 License:        LPPL-1.0
@@ -6932,7 +7079,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/polexpr/polexprsturm.tex
 
 %package -n texlive-polski
-Version:        %{texlive_version}.%{texlive_noarch}.1.3.6svn60322
+Version:        %{texlive_version}.%{texlive_noarch}.1.3.6svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset Polish documents with LaTeX and Polish fonts
@@ -6982,7 +7129,7 @@ Provides:       tex(polski.sty)
 Provides:       tex(qxenc.def)
 Requires:       tex(ot4enc.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source57:       polski.tar.xz
 Source58:       polski.doc.tar.xz
 
@@ -7001,7 +7148,7 @@ Unicode aware variants. (This package was previously known as
 platex, but has been renamed to resolve a name clash.)
 
 %package -n texlive-polski-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3.6svn60322
+Version:        %{texlive_version}.%{texlive_noarch}.1.3.6svn78101
 Release:        0
 Summary:        Documentation for texlive-polski
 License:        LPPL-1.0
@@ -7060,7 +7207,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polski/qxenc.def
 
 %package -n texlive-poltawski
-Version:        %{texlive_version}.%{texlive_noarch}.1.101svn67718
+Version:        %{texlive_version}.%{texlive_noarch}.1.101svn77682
 Release:        0
 License:        LPPL-1.3c
 Summary:        Antykwa Poltawskiego Family of Fonts
@@ -7743,7 +7890,7 @@ Provides:       tex(ts1-antpri8.tfm)
 Provides:       tex(ts1antp.fd)
 Provides:       tex(ts1antpl.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source59:       poltawski.tar.xz
 Source60:       poltawski.doc.tar.xz
 
@@ -7771,7 +7918,7 @@ The preliminary version of Antykwa Poltawskiego (antp package)
 released in 2000 is rendered obsolete by this package.
 
 %package -n texlive-poltawski-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.101svn67718
+Version:        %{texlive_version}.%{texlive_noarch}.1.101svn77682
 Release:        0
 Summary:        Documentation for texlive-poltawski
 License:        LPPL-1.3c
@@ -7783,7 +7930,7 @@ Supplements:    (texlive-poltawski and texlive-alldocumentation)
 This package includes the documentation for texlive-poltawski
 
 %package -n texlive-poltawski-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.101svn67718
+Version:        %{texlive_version}.%{texlive_noarch}.1.101svn77682
 Release:        0
 Summary:        Severed fonts for texlive-poltawski
 License:        LPPL-1.3c
@@ -8772,7 +8919,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-poltawski/antpri8.pfb
 
 %package -n texlive-polyglossia
-Version:        %{texlive_version}.%{texlive_noarch}.2.4svn73666
+Version:        %{texlive_version}.%{texlive_noarch}.2.9svn76990
 Release:        0
 License:        LPPL-1.0
 Summary:        An alternative to babel for XeLaTeX and LuaLaTeX
@@ -8876,6 +9023,7 @@ Provides:       tex(gloss-chinese.ldf)
 Provides:       tex(gloss-ckb-Arab.ldf)
 Provides:       tex(gloss-ckb-Latn.ldf)
 Provides:       tex(gloss-ckb.ldf)
+Provides:       tex(gloss-classicallatin.ldf)
 Provides:       tex(gloss-classiclatin.ldf)
 Provides:       tex(gloss-cop.ldf)
 Provides:       tex(gloss-coptic.ldf)
@@ -8909,6 +9057,7 @@ Provides:       tex(gloss-divehi.ldf)
 Provides:       tex(gloss-dsb.ldf)
 Provides:       tex(gloss-dutch.ldf)
 Provides:       tex(gloss-dv.ldf)
+Provides:       tex(gloss-ecclesiasticallatin.ldf)
 Provides:       tex(gloss-ecclesiasticlatin.ldf)
 Provides:       tex(gloss-el-monoton.ldf)
 Provides:       tex(gloss-el-polyton.ldf)
@@ -9082,7 +9231,7 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(luabidi.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source61:       polyglossia.tar.xz
 Source62:       polyglossia.doc.tar.xz
 
@@ -9092,7 +9241,7 @@ LuaLaTeX and XeLaTeX; it relies on the fontspec package,
 version 2.0 at least.
 
 %package -n texlive-polyglossia-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.4svn73666
+Version:        %{texlive_version}.%{texlive_noarch}.2.9svn76990
 Release:        0
 Summary:        Documentation for texlive-polyglossia
 License:        LPPL-1.0
@@ -9202,6 +9351,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-ckb-Arab.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-ckb-Latn.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-ckb.ldf
+%{_texmfdistdir}/tex/latex/polyglossia/gloss-classicallatin.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-classiclatin.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-cop.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-coptic.ldf
@@ -9235,6 +9385,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-dsb.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-dutch.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-dv.ldf
+%{_texmfdistdir}/tex/latex/polyglossia/gloss-ecclesiasticallatin.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-ecclesiasticlatin.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-el-monoton.ldf
 %{_texmfdistdir}/tex/latex/polyglossia/gloss-el-polyton.ldf
@@ -9442,7 +9593,7 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source63:       polyhedra.tar.xz
 Source64:       polyhedra.doc.tar.xz
 
@@ -9490,7 +9641,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polyhedra/polyhedra.sty
 
 %package -n texlive-polynom
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn44832
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Macros for manipulating polynomials
@@ -9520,7 +9671,7 @@ Suggests:       texlive-polynom-doc >= %{texlive_version}
 Provides:       tex(polynom.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source65:       polynom.tar.xz
 Source66:       polynom.doc.tar.xz
 
@@ -9531,7 +9682,7 @@ divisions. The main test case and application is the polynomial
 ring in one variable with rational coefficients.
 
 %package -n texlive-polynom-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn44832
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn77682
 Release:        0
 Summary:        Documentation for texlive-polynom
 License:        LPPL-1.0
@@ -9599,7 +9750,7 @@ Suggests:       texlive-polynomial-doc >= %{texlive_version}
 Provides:       tex(polynomial.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source67:       polynomial.tar.xz
 Source68:       polynomial.doc.tar.xz
 
@@ -9648,7 +9799,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polynomial/polynomial.sty
 
 %package -n texlive-polyomino
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71991
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Polyominoes using TikZ and LaTeX3
@@ -9678,7 +9829,7 @@ Suggests:       texlive-polyomino-doc >= %{texlive_version}
 Provides:       tex(polyomino.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source69:       polyomino.tar.xz
 Source70:       polyomino.doc.tar.xz
 
@@ -9688,7 +9839,7 @@ draw polyominoes. It is possible to define custom styles, pics
 and grids.
 
 %package -n texlive-polyomino-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn71991
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn76924
 Release:        0
 Summary:        Documentation for texlive-polyomino
 License:        LPPL-1.0
@@ -9725,7 +9876,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polyomino/polyomino.sty
 
 %package -n texlive-polytable
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.6svn55837
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.6svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Tabular-like environments with named columns
@@ -9756,7 +9907,7 @@ Provides:       tex(polytable.sty)
 Requires:       tex(array.sty)
 Requires:       tex(lazylist.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source71:       polytable.tar.xz
 Source72:       polytable.doc.tar.xz
 
@@ -9768,7 +9919,7 @@ layouts, for example for program code, are possible. The
 package depends on lazylist.
 
 %package -n texlive-polytable-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.6svn55837
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8.6svn77682
 Release:        0
 Summary:        Documentation for texlive-polytable
 License:        LPPL-1.0
@@ -9804,7 +9955,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/polytable/polytable.sty
 
 %package -n texlive-poormanlog
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.07svn63400
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.07svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Logarithms and powers with (almost) 9 digits
@@ -9834,7 +9985,7 @@ Suggests:       texlive-poormanlog-doc >= %{texlive_version}
 Provides:       tex(poormanlog.sty)
 Provides:       tex(poormanlog.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source73:       poormanlog.tar.xz
 Source74:       poormanlog.doc.tar.xz
 
@@ -9852,7 +10003,7 @@ macros as core constituents of its log10(), pow10(), log(),
 exp() and pow() functions.
 
 %package -n texlive-poormanlog-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.07svn63400
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.07svn77682
 Release:        0
 Summary:        Documentation for texlive-poormanlog
 License:        LPPL-1.0
@@ -9921,7 +10072,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source75:       postage.tar.xz
 Source76:       postage.doc.tar.xz
 
@@ -9970,7 +10121,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/postage/postage.sty
 
 %package -n texlive-postcards
-Version:        %{texlive_version}.%{texlive_noarch}.svn21641
+Version:        %{texlive_version}.%{texlive_noarch}.svn75878
 Release:        0
 License:        LPPL-1.0
 Summary:        Facilitates mass-mailing of postcards (junkmail)
@@ -10001,20 +10152,20 @@ Provides:       tex(postcards.cls)
 Requires:       tex(letter.cls)
 Requires:       tex(mailing.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source77:       postcards.tar.xz
 Source78:       postcards.doc.tar.xz
 
 %description -n texlive-postcards
 A modification of the standard LaTeX letter class which prints
-multiple, pre-stamped, 5.5" by 3.5" postcards (a US standard
+multiple, pre-stamped, 5.5'' by 3.5'' postcards (a US standard
 size) via the envlab and mailing packages. An address database
 is employed to address the front side of each postcard and a
 message is printed on the back side of all. An illustrative
 example is provided.
 
 %package -n texlive-postcards-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn21641
+Version:        %{texlive_version}.%{texlive_noarch}.svn75878
 Release:        0
 Summary:        Documentation for texlive-postcards
 License:        LPPL-1.0
@@ -10081,7 +10232,7 @@ Suggests:       texlive-poster-mac-doc >= %{texlive_version}
 Provides:       tex(poster.sty)
 Provides:       tex(poster.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source79:       poster-mac.tar.xz
 Source80:       poster-mac.doc.tar.xz
 
@@ -10138,7 +10289,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/poster-mac/poster.tex
 
 %package -n texlive-postit
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.4svn74286
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.5svn75925
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX package for displaying Post-it notes
@@ -10172,7 +10323,7 @@ Requires:       tex(tcolorbox.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source81:       postit.tar.xz
 Source82:       postit.doc.tar.xz
 
@@ -10183,7 +10334,7 @@ customizations; a command \MiniPostIt to display a simple
 Post-It.
 
 %package -n texlive-postit-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.4svn74286
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.5svn75925
 Release:        0
 Summary:        Documentation for texlive-postit
 License:        LPPL-1.0
@@ -10223,7 +10374,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/postit/postit.sty
 
 %package -n texlive-postnotes
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn73045
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Endnotes for LaTeX
@@ -10252,7 +10403,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-postnotes-doc >= %{texlive_version}
 Provides:       tex(postnotes.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source83:       postnotes.tar.xz
 Source84:       postnotes.doc.tar.xz
 
@@ -10269,7 +10420,7 @@ more elaborate ones can be built. When hyperref is loaded,
 postnotes provides hyperlinked notes, including back links.
 
 %package -n texlive-postnotes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn73045
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.1svn77682
 Release:        0
 Summary:        Documentation for texlive-postnotes
 License:        LPPL-1.0
@@ -10310,7 +10461,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/postnotes/postnotes.sty
 
 %package -n texlive-powerdot
-Version:        %{texlive_version}.%{texlive_noarch}.1.7svn59272
+Version:        %{texlive_version}.%{texlive_noarch}.1.7svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A presentation class
@@ -10376,7 +10527,7 @@ Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source85:       powerdot.tar.xz
 Source86:       powerdot.doc.tar.xz
 
@@ -10390,7 +10541,7 @@ can be used. A powerful template system is available to easily
 develop new styles. A LyX layout file is provided.
 
 %package -n texlive-powerdot-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.7svn59272
+Version:        %{texlive_version}.%{texlive_noarch}.1.7svn77682
 Release:        0
 Summary:        Documentation for texlive-powerdot
 License:        LPPL-1.0
@@ -10498,7 +10649,7 @@ Requires:       tex(powerdot.cls)
 Requires:       tex(ragged2e.sty)
 Requires:       tex(tabularx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source87:       powerdot-fuberlin.tar.xz
 Source88:       powerdot-fuberlin.doc.tar.xz
 
@@ -10586,7 +10737,7 @@ Suggests:       texlive-powerdot-tuliplab-doc >= %{texlive_version}
 Provides:       tex(powerdot-tuliplab.sty)
 Requires:       tex(pifont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source89:       powerdot-tuliplab.tar.xz
 Source90:       powerdot-tuliplab.doc.tar.xz
 
@@ -10673,7 +10824,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ppmcheckpdf-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source91:       ppmcheckpdf.tar.xz
 Source92:       ppmcheckpdf.doc.tar.xz
 
@@ -10767,7 +10918,7 @@ Requires:       tex(keyval.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source93:       ppr-prv.tar.xz
 Source94:       ppr-prv.doc.tar.xz
 
@@ -10815,18 +10966,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ppr-prv/ppr-prv.cls
 
 %package -n texlive-ppt-slides
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn72584
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.0svn76559
 Release:        0
 License:        LPPL-1.0
 Summary:        Good-looking slide decks a la PowerPoint (PPT)
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Requires:       texlive-anyfontsize >= %{texlive_version}
+#!BuildIgnore: texlive-anyfontsize
+Requires:       texlive-changepage >= %{texlive_version}
+#!BuildIgnore: texlive-changepage
 Requires:       texlive-crumbs >= %{texlive_version}
 #!BuildIgnore: texlive-crumbs
 Requires:       texlive-enumitem >= %{texlive_version}
 #!BuildIgnore: texlive-enumitem
-Requires:       texlive-hyperref >= %{texlive_version}
-#!BuildIgnore: texlive-hyperref
+Requires:       texlive-fontsize >= %{texlive_version}
+#!BuildIgnore: texlive-fontsize
+Requires:       texlive-hardwrap >= %{texlive_version}
+#!BuildIgnore: texlive-hardwrap
+Requires:       texlive-href-ul >= %{texlive_version}
+#!BuildIgnore: texlive-href-ul
+Requires:       texlive-ifoddpage >= %{texlive_version}
+#!BuildIgnore: texlive-ifoddpage
+Requires:       texlive-lastpage >= %{texlive_version}
+#!BuildIgnore: texlive-lastpage
+Requires:       texlive-listings >= %{texlive_version}
+#!BuildIgnore: texlive-listings
 Requires:       texlive-pagecolor >= %{texlive_version}
 #!BuildIgnore: texlive-pagecolor
 Requires:       texlive-pgf >= %{texlive_version}
@@ -10837,10 +11002,14 @@ Requires:       texlive-qrcode >= %{texlive_version}
 #!BuildIgnore: texlive-qrcode
 Requires:       texlive-seqsplit >= %{texlive_version}
 #!BuildIgnore: texlive-seqsplit
+Requires:       texlive-soul >= %{texlive_version}
+#!BuildIgnore: texlive-soul
+Requires:       texlive-textpos >= %{texlive_version}
+#!BuildIgnore: texlive-textpos
 Requires:       texlive-tikzpagenodes >= %{texlive_version}
 #!BuildIgnore: texlive-tikzpagenodes
-Requires:       texlive-tools >= %{texlive_version}
-#!BuildIgnore: texlive-tools
+Requires:       texlive-titling >= %{texlive_version}
+#!BuildIgnore: texlive-titling
 Requires:       texlive-varwidth >= %{texlive_version}
 #!BuildIgnore: texlive-varwidth
 Requires:       texlive-xcolor >= %{texlive_version}
@@ -10874,6 +11043,7 @@ Provides:       tex(ppt-light.tex)
 Provides:       tex(ppt-slides.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(crumbs.sty)
+Requires:       tex(csquotes.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(href-ul.sty)
 Requires:       tex(ifthen.sty)
@@ -10887,7 +11057,7 @@ Requires:       tex(tikzpagenodes.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source95:       ppt-slides.tar.xz
 Source96:       ppt-slides.doc.tar.xz
 
@@ -10898,7 +11068,7 @@ strict. Check this series of lectures fully designed with the
 use of this package.
 
 %package -n texlive-ppt-slides-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn72584
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.0svn76559
 Release:        0
 Summary:        Documentation for texlive-ppt-slides
 License:        LPPL-1.0
@@ -10979,7 +11149,7 @@ Requires:       tex(mathpazo.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source97:       pracjourn.tar.xz
 Source98:       pracjourn.doc.tar.xz
 
@@ -11067,7 +11237,7 @@ Requires:       tex(pgffor.sty)
 Requires:       tex(scrextend.sty)
 Requires:       tex(tikzducks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source99:       practicalreports.tar.xz
 Source100:      practicalreports.doc.tar.xz
 
@@ -11119,7 +11289,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/practicalreports/practicalreports.sty
 
 %package -n texlive-precattl
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.0svn63967
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Prepare special catcodes from token list
@@ -11148,7 +11318,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-precattl-doc >= %{texlive_version}
 Provides:       tex(precattl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source101:      precattl.tar.xz
 Source102:      precattl.doc.tar.xz
 
@@ -11157,7 +11327,7 @@ Allow users to write code that contains tokens with unusual
 catcodes.
 
 %package -n texlive-precattl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.0svn63967
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.0svn76924
 Release:        0
 Summary:        Documentation for texlive-precattl
 License:        LPPL-1.0
@@ -11194,7 +11364,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/precattl/precattl.sty
 
 %package -n texlive-prelim2e
-Version:        %{texlive_version}.%{texlive_noarch}.2.00svn57000
+Version:        %{texlive_version}.%{texlive_noarch}.2.00svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Allows the marking of preliminary versions of a document
@@ -11224,7 +11394,7 @@ Suggests:       texlive-prelim2e-doc >= %{texlive_version}
 Provides:       tex(prelim2e.sty)
 Requires:       tex(scrtime.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source103:      prelim2e.tar.xz
 Source104:      prelim2e.doc.tar.xz
 
@@ -11236,7 +11406,7 @@ the everyshi package and can use the scrtime package from the
 koma-script bundle.
 
 %package -n texlive-prelim2e-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.00svn57000
+Version:        %{texlive_version}.%{texlive_noarch}.2.00svn77682
 Release:        0
 Summary:        Documentation for texlive-prelim2e
 License:        LPPL-1.0
@@ -11305,7 +11475,7 @@ Provides:       tex(figcaps.sty)
 Provides:       tex(fullpage.sty)
 Provides:       tex(sublabel.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source105:      preprint.tar.xz
 Source106:      preprint.doc.tar.xz
 
@@ -11398,7 +11568,7 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source107:      prerex.tar.xz
 Source108:      prerex.doc.tar.xz
 
@@ -11494,7 +11664,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-present-doc >= %{texlive_version}
 Provides:       tex(present.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source109:      present.tar.xz
 Source110:      present.doc.tar.xz
 
@@ -11594,7 +11764,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source111:      pressrelease.tar.xz
 Source112:      pressrelease.doc.tar.xz
 
@@ -11654,7 +11824,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pressrelease/pressrelease.cls
 
 %package -n texlive-prettyref
-Version:        %{texlive_version}.%{texlive_noarch}.3.0svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.3.0svn77682
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Make label references "self-identify"
@@ -11683,7 +11853,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-prettyref-doc >= %{texlive_version}
 Provides:       tex(prettyref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source113:      prettyref.tar.xz
 Source114:      prettyref.doc.tar.xz
 
@@ -11697,7 +11867,7 @@ prettyref interprets the "sec:" part. The package is compatible
 with hyperref and with other packages.
 
 %package -n texlive-prettyref-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.0svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.3.0svn77682
 Release:        0
 Summary:        Documentation for texlive-prettyref
 License:        SUSE-Public-Domain
@@ -11733,7 +11903,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/prettyref/prettyref.sty
 
 %package -n texlive-prettytok
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.0svn66884
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Pretty-print token lists
@@ -11770,7 +11940,7 @@ Provides:       tex(prettytok.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(precattl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source115:      prettytok.tar.xz
 Source116:      prettytok.doc.tar.xz
 Source117:      prettytok_pyatusrbin.dif
@@ -11781,7 +11951,7 @@ Open the file in any browser to view the result. Can be used to
 replace \tl_analysis_show:n.
 
 %package -n texlive-prettytok-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.0svn66884
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.0svn76924
 Release:        0
 Summary:        Documentation for texlive-prettytok
 License:        LPPL-1.0
@@ -11862,7 +12032,7 @@ Provides:       tex(prtightpage.def)
 Provides:       tex(prtracingall.def)
 Requires:       tex(luatex85.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source118:      preview.tar.xz
 Source119:      preview.doc.tar.xz
 
@@ -11919,7 +12089,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/preview/prtracingall.def
 
 %package -n texlive-prftree
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn54080
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Macros for building proof trees
@@ -11948,7 +12118,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-prftree-doc >= %{texlive_version}
 Provides:       tex(prftree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source120:      prftree.tar.xz
 Source121:      prftree.doc.tar.xz
 
@@ -11957,7 +12127,7 @@ A package to typeset proof trees for natural deduction calculi,
 sequent-like calculi, and similar.
 
 %package -n texlive-prftree-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn54080
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 Summary:        Documentation for texlive-prftree
 License:        GPL-2.0-or-later
@@ -11994,7 +12164,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/prftree/prftree.sty
 
 %package -n texlive-principia
-Version:        %{texlive_version}.%{texlive_noarch}.3.2svn73662
+Version:        %{texlive_version}.%{texlive_noarch}.3.4svn74710
 Release:        0
 License:        LPPL-1.0
 Summary:        Notations for typesetting the "Principia Mathematica"
@@ -12027,7 +12197,7 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(pifont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source122:      principia.tar.xz
 Source123:      principia.doc.tar.xz
 
@@ -12037,7 +12207,7 @@ Volumes I-III of Whitehead and Russell's 1910 "Principia
 Mathematica".
 
 %package -n texlive-principia-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.2svn73662
+Version:        %{texlive_version}.%{texlive_noarch}.3.4svn74710
 Release:        0
 Summary:        Documentation for texlive-principia
 License:        LPPL-1.0
@@ -12076,7 +12246,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/principia/principia.sty
 
 %package -n texlive-printlen
-Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn19847
+Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Print lengths using specified units
@@ -12105,7 +12275,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-printlen-doc >= %{texlive_version}
 Provides:       tex(printlen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source124:      printlen.tar.xz
 Source125:      printlen.doc.tar.xz
 
@@ -12120,7 +12290,7 @@ length values will be printed in point units but without any
 stretch or shrink values.
 
 %package -n texlive-printlen-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn19847
+Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn77682
 Release:        0
 Summary:        Documentation for texlive-printlen
 License:        LPPL-1.0
@@ -12156,10 +12326,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/printlen/printlen.sty
 
 %package -n texlive-prisma-flow-diagram
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn73530
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn74874
 Release:        0
 License:        LPPL-1.0
-Summary:        This package provides an abstraction for creating PRISMA 2009 flow diagrams in LaTeX
+Summary:        An abstraction for creating PRISMA 2009 flow diagrams with TikZ
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -12188,7 +12358,7 @@ Requires:       tex(float.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source126:      prisma-flow-diagram.tar.xz
 Source127:      prisma-flow-diagram.doc.tar.xz
 
@@ -12199,7 +12369,7 @@ these diagrams by providing intuitive commands while
 maintaining full compatibility with TikZ.
 
 %package -n texlive-prisma-flow-diagram-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn73530
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn74874
 Release:        0
 Summary:        Documentation for texlive-prisma-flow-diagram
 License:        LPPL-1.0
@@ -12268,7 +12438,7 @@ Suggests:       texlive-proba-doc >= %{texlive_version}
 Provides:       tex(proba.sty)
 Requires:       tex(amsfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source128:      proba.tar.xz
 Source129:      proba.doc.tar.xz
 
@@ -12349,7 +12519,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source130:      probsoln.tar.xz
 Source131:      probsoln.doc.tar.xz
 
@@ -12468,7 +12638,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-prociagssymp-doc >= %{texlive_version}
 Provides:       tex(procIAGssymp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source132:      prociagssymp.tar.xz
 Source133:      prociagssymp.doc.tar.xz
 
@@ -12559,7 +12729,7 @@ Provides:       tex(prodint.map)
 Provides:       tex(prodint.sty)
 Provides:       tex(prodint.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source134:      prodint.tar.xz
 Source135:      prodint.doc.tar.xz
 
@@ -12676,7 +12846,7 @@ Provides:       tex(productbox.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source136:      productbox.tar.xz
 Source137:      productbox.doc.tar.xz
 
@@ -12727,7 +12897,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/productbox/productbox.sty
 
 %package -n texlive-profcollege
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_a_jsvn72198
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_a_osvn77090
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX package for French maths teachers in college
@@ -12754,15 +12924,19 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-profcollege-doc >= %{texlive_version}
+Provides:       tex(PfCAireSimple.tex)
 Provides:       tex(PfCAllumettes.tex)
 Provides:       tex(PfCArbreCalcul.tex)
 Provides:       tex(PfCArbreChiffre.tex)
 Provides:       tex(PfCAssemblagesSolides.tex)
 Provides:       tex(PfCAutomatismes.tex)
 Provides:       tex(PfCAutonomie.tex)
+Provides:       tex(PfCBalance.tex)
+Provides:       tex(PfCBandeNumerique.tex)
 Provides:       tex(PfCBarreNiveaux.tex)
 Provides:       tex(PfCBarresCalculs.tex)
 Provides:       tex(PfCBillard.tex)
+Provides:       tex(PfCBoiteADix.tex)
 Provides:       tex(PfCBonSortie.tex)
 Provides:       tex(PfCBonbon.tex)
 Provides:       tex(PfCCAN.tex)
@@ -12790,7 +12964,9 @@ Provides:       tex(PfCCompteBon.tex)
 Provides:       tex(PfCConversion.tex)
 Provides:       tex(PfCCritere.tex)
 Provides:       tex(PfCCryptarithme.tex)
+Provides:       tex(PfCDeAJouer.tex)
 Provides:       tex(PfCDecDeci.tex)
+Provides:       tex(PfCDecompFrac.tex)
 Provides:       tex(PfCDecompFracDeci.tex)
 Provides:       tex(PfCDecomposerNombrePremier.tex)
 Provides:       tex(PfCDefiCalc.tex)
@@ -12809,6 +12985,7 @@ Provides:       tex(PfCEcritureUnites.tex)
 Provides:       tex(PfCEngrenagesBase.tex)
 Provides:       tex(PfCEnigmeAire.tex)
 Provides:       tex(PfCEnquete.tex)
+Provides:       tex(PfCEquationBalance.tex)
 Provides:       tex(PfCEquationComposition2.tex)
 Provides:       tex(PfCEquationLaurent1.tex)
 Provides:       tex(PfCEquationModeleBarre.tex)
@@ -12833,6 +13010,7 @@ Provides:       tex(PfCHiddenMessage.tex)
 Provides:       tex(PfCHorloge.tex)
 Provides:       tex(PfCIle.dat)
 Provides:       tex(PfCInfixRPN.sty)
+Provides:       tex(PfCIteration.tex)
 Provides:       tex(PfCJeton.tex)
 Provides:       tex(PfCJeuRangement.tex)
 Provides:       tex(PfCKakurasu.tex)
@@ -12841,14 +13019,17 @@ Provides:       tex(PfCKenKen.tex)
 Provides:       tex(PfCLabyrintheJeu.tex)
 Provides:       tex(PfCLabyrintheNombre.tex)
 Provides:       tex(PfCLego.tex)
+Provides:       tex(PfCLignesBrisees.tex)
 Provides:       tex(PfCMentalo.tex)
 Provides:       tex(PfCMidpoint.tex)
 Provides:       tex(PfCModeleBarre.tex)
+Provides:       tex(PfCMonnaieEuro.tex)
 Provides:       tex(PfCMosaique.tex)
 Provides:       tex(PfCMotsCodes.tex)
 Provides:       tex(PfCMotsCroises.tex)
 Provides:       tex(PfCMotsEmpiles.tex)
 Provides:       tex(PfCMulArt.tex)
+Provides:       tex(PfCMulEthiopie.tex)
 Provides:       tex(PfCMulJal.tex)
 Provides:       tex(PfCMulJap.tex)
 Provides:       tex(PfCMulPiecesPuzzle.tex)
@@ -12857,13 +13038,17 @@ Provides:       tex(PfCNonogramme.tex)
 Provides:       tex(PfCNotionFonction.tex)
 Provides:       tex(PfCNumberHive.tex)
 Provides:       tex(PfCNumerationsAnciennes.tex)
+Provides:       tex(PfCOpCroisees.tex)
 Provides:       tex(PfCOperationsTrou.tex)
+Provides:       tex(PfCPanneauxRoutiers.tex)
 Provides:       tex(PfCPapiers.tex)
 Provides:       tex(PfCPatronPaves.tex)
 Provides:       tex(PfCPattern.tex)
+Provides:       tex(PfCPatternJeton.tex)
 Provides:       tex(PfCPavage.tex)
 Provides:       tex(PfCPavageAvecMotifImage.tex)
 Provides:       tex(PfCPixelArt.tex)
+Provides:       tex(PfCPointsBlancs.tex)
 Provides:       tex(PfCPourcentage.tex)
 Provides:       tex(PfCProbaFrequence.tex)
 Provides:       tex(PfCProbabilites.tex)
@@ -12892,6 +13077,8 @@ Provides:       tex(PfCReseauxSociaux.tex)
 Provides:       tex(PfCResoudreEquation.tex)
 Provides:       tex(PfCRondeInfernale.tex)
 Provides:       tex(PfCRose.tex)
+Provides:       tex(PfCRullo.tex)
+Provides:       tex(PfCScrabble.tex)
 Provides:       tex(PfCScratch.tex)
 Provides:       tex(PfCSerpent.tex)
 Provides:       tex(PfCShikaku.tex)
@@ -12900,6 +13087,7 @@ Provides:       tex(PfCSolides.tex)
 Provides:       tex(PfCSommeAngles.tex)
 Provides:       tex(PfCSquaro.tex)
 Provides:       tex(PfCStatistiques.tex)
+Provides:       tex(PfCSystemeImage.tex)
 Provides:       tex(PfCTableauDoubleEntree.tex)
 Provides:       tex(PfCTableauxUnites.tex)
 Provides:       tex(PfCTablesOperations.tex)
@@ -13130,6 +13318,7 @@ Requires:       tex(pifont.sty)
 Requires:       tex(simplekv.sty)
 Requires:       tex(siunitx.sty)
 Requires:       tex(stackengine.sty)
+Requires:       tex(stringstrings.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(verbatim.sty)
@@ -13139,7 +13328,7 @@ Requires:       tex(xinttools.sty)
 Requires:       tex(xlop.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source138:      profcollege.tar.xz
 Source139:      profcollege.doc.tar.xz
 
@@ -13153,7 +13342,7 @@ write the entire calculation of AC with cosine, ... and some
 others.
 
 %package -n texlive-profcollege-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_a_jsvn72198
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_a_osvn77090
 Release:        0
 Summary:        Documentation for texlive-profcollege
 License:        LPPL-1.0
@@ -13183,7 +13372,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-profcollege-doc
-%{_texmfdistdir}/doc/latex/profcollege/PfCLogoNumberHive.png
 %{_texmfdistdir}/doc/latex/profcollege/README
 %{_texmfdistdir}/doc/latex/profcollege/profcollege-doc.pdf
 %{_texmfdistdir}/doc/latex/profcollege/profcollege-doc.zip
@@ -13193,234 +13381,244 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/profcollege/PfCAllumettes.mp
 %{_texmfdistdir}/metapost/profcollege/PfCArithmetique.mp
 %{_texmfdistdir}/metapost/profcollege/PfCArithmetiquePDF.mp
-%{_texmfdistdir}/metapost/profcollege/PfCCafrique.dat
 %{_texmfdistdir}/metapost/profcollege/PfCCalculatrice.mp
-%{_texmfdistdir}/metapost/profcollege/PfCCameriquecentrale.dat
-%{_texmfdistdir}/metapost/profcollege/PfCCameriquenord.dat
-%{_texmfdistdir}/metapost/profcollege/PfCCameriquesud.dat
-%{_texmfdistdir}/metapost/profcollege/PfCCasia.dat
-%{_texmfdistdir}/metapost/profcollege/PfCCasie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCCcaraibes.dat
-%{_texmfdistdir}/metapost/profcollege/PfCCeurope.dat
 %{_texmfdistdir}/metapost/profcollege/PfCConstantes.mp
 %{_texmfdistdir}/metapost/profcollege/PfCEngrenages.mp
 %{_texmfdistdir}/metapost/profcollege/PfCGeometrie.mp
-%{_texmfdistdir}/metapost/profcollege/PfCIle.dat
 %{_texmfdistdir}/metapost/profcollege/PfCLaTeX.mp
 %{_texmfdistdir}/metapost/profcollege/PfCLabyNombre.mp
 %{_texmfdistdir}/metapost/profcollege/PfCLego.mp
 %{_texmfdistdir}/metapost/profcollege/PfCMonde.mp
+%{_texmfdistdir}/metapost/profcollege/PfCMondegood.mp
+%{_texmfdistdir}/metapost/profcollege/PfCMonstre.mp
 %{_texmfdistdir}/metapost/profcollege/PfCMosaique.mp
 %{_texmfdistdir}/metapost/profcollege/PfCObjets.mp
+%{_texmfdistdir}/metapost/profcollege/PfCPattern.mp
+%{_texmfdistdir}/metapost/profcollege/PfCPeople.mp
 %{_texmfdistdir}/metapost/profcollege/PfCPseudo.mp
+%{_texmfdistdir}/metapost/profcollege/PfCScrabble.mp
 %{_texmfdistdir}/metapost/profcollege/PfCScratch.mp
 %{_texmfdistdir}/metapost/profcollege/PfCScratchpdf.mp
 %{_texmfdistdir}/metapost/profcollege/PfCSketch.mp
 %{_texmfdistdir}/metapost/profcollege/PfCSolid.mp
 %{_texmfdistdir}/metapost/profcollege/PfCSvgnames.mp
 %{_texmfdistdir}/metapost/profcollege/PfCTurtleTestRemplis.mp
-%{_texmfdistdir}/metapost/profcollege/PfCafganistan.dat
-%{_texmfdistdir}/metapost/profcollege/PfCafriquesud1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCafriquesud2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCalbanie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCalgerie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCallemagne1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCallemagne2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCandorre.dat
-%{_texmfdistdir}/metapost/profcollege/PfCangleterre.dat
-%{_texmfdistdir}/metapost/profcollege/PfCangola.dat
-%{_texmfdistdir}/metapost/profcollege/PfCarabiesaoudite.dat
-%{_texmfdistdir}/metapost/profcollege/PfCargentine1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCargentine2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCarmenie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCautriche.dat
-%{_texmfdistdir}/metapost/profcollege/PfCazerbaijan1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCazerbaijan2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbangladesh.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbelarussie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbelgique.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbelize.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbenin.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbhutan.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbirmanie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbolivie1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbolivie2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbosnie1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbosnie2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbotswana.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbresil.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbrunei.dat
-%{_texmfdistdir}/metapost/profcollege/PfCbulgarie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCburkinafaso.dat
-%{_texmfdistdir}/metapost/profcollege/PfCburundi.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcabinda.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcambodge.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcameroun.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcanada.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcapitales.dat
-%{_texmfdistdir}/metapost/profcollege/PfCchili1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCchili2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCchine.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcolombie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcongo.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcoreenord.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcoreesud.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcostarica.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcoteivoire.dat
-%{_texmfdistdir}/metapost/profcollege/PfCcroatie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCdanemark.dat
-%{_texmfdistdir}/metapost/profcollege/PfCdjibouti.dat
-%{_texmfdistdir}/metapost/profcollege/PfCecosse.dat
-%{_texmfdistdir}/metapost/profcollege/PfCegypte.dat
-%{_texmfdistdir}/metapost/profcollege/PfCemirats.dat
-%{_texmfdistdir}/metapost/profcollege/PfCequateur.dat
-%{_texmfdistdir}/metapost/profcollege/PfCeritre.dat
-%{_texmfdistdir}/metapost/profcollege/PfCespagne.dat
-%{_texmfdistdir}/metapost/profcollege/PfCestonie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCethiopie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCfinlande.dat
-%{_texmfdistdir}/metapost/profcollege/PfCfleuveseurope.dat
-%{_texmfdistdir}/metapost/profcollege/PfCfleuvessup.dat
-%{_texmfdistdir}/metapost/profcollege/PfCfrance.dat
-%{_texmfdistdir}/metapost/profcollege/PfCgabon.dat
-%{_texmfdistdir}/metapost/profcollege/PfCgambie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCgaza.dat
-%{_texmfdistdir}/metapost/profcollege/PfCgeorgie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCghana.dat
-%{_texmfdistdir}/metapost/profcollege/PfCgibraltar.dat
-%{_texmfdistdir}/metapost/profcollege/PfCgrece.dat
-%{_texmfdistdir}/metapost/profcollege/PfCguatemala.dat
-%{_texmfdistdir}/metapost/profcollege/PfCguinee.dat
-%{_texmfdistdir}/metapost/profcollege/PfCguineebissau.dat
-%{_texmfdistdir}/metapost/profcollege/PfCguineef.dat
-%{_texmfdistdir}/metapost/profcollege/PfCguyane.dat
-%{_texmfdistdir}/metapost/profcollege/PfChaiti.dat
-%{_texmfdistdir}/metapost/profcollege/PfChonduras.dat
-%{_texmfdistdir}/metapost/profcollege/PfChongrie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCiles.dat
-%{_texmfdistdir}/metapost/profcollege/PfCiles1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCinde.dat
-%{_texmfdistdir}/metapost/profcollege/PfCindonesie1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCindonesie2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCirak.dat
-%{_texmfdistdir}/metapost/profcollege/PfCiran.dat
-%{_texmfdistdir}/metapost/profcollege/PfCirelande.dat
-%{_texmfdistdir}/metapost/profcollege/PfCirelandenord.dat
-%{_texmfdistdir}/metapost/profcollege/PfCisrael.dat
-%{_texmfdistdir}/metapost/profcollege/PfCitalie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCjordanie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCkazakhstan.dat
-%{_texmfdistdir}/metapost/profcollege/PfCkenya.dat
-%{_texmfdistdir}/metapost/profcollege/PfCkoweit.dat
-%{_texmfdistdir}/metapost/profcollege/PfCkyrgyzstan.dat
-%{_texmfdistdir}/metapost/profcollege/PfClacs.dat
-%{_texmfdistdir}/metapost/profcollege/PfClacssup.dat
-%{_texmfdistdir}/metapost/profcollege/PfClaos.dat
-%{_texmfdistdir}/metapost/profcollege/PfClesotho.dat
-%{_texmfdistdir}/metapost/profcollege/PfClettonie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCliban.dat
-%{_texmfdistdir}/metapost/profcollege/PfCliberia.dat
-%{_texmfdistdir}/metapost/profcollege/PfClibye.dat
-%{_texmfdistdir}/metapost/profcollege/PfCliechtenstein.dat
-%{_texmfdistdir}/metapost/profcollege/PfClithuanie1.dat
-%{_texmfdistdir}/metapost/profcollege/PfClithuanie2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCluxembourg.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmacedoine.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmalaisie1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmalaisie2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmalawi.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmali.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmaroc.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmauritanie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmexique.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmoldavie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmonaco.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmongolie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCmozambique.dat
-%{_texmfdistdir}/metapost/profcollege/PfCnamibie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCnepal.dat
-%{_texmfdistdir}/metapost/profcollege/PfCnicaragua.dat
-%{_texmfdistdir}/metapost/profcollege/PfCniger.dat
-%{_texmfdistdir}/metapost/profcollege/PfCnigeria.dat
-%{_texmfdistdir}/metapost/profcollege/PfCnorvege.dat
-%{_texmfdistdir}/metapost/profcollege/PfCnvelleguinne.dat
-%{_texmfdistdir}/metapost/profcollege/PfComan1.dat
-%{_texmfdistdir}/metapost/profcollege/PfComan2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCouganda.dat
-%{_texmfdistdir}/metapost/profcollege/PfCouzbekistan.dat
-%{_texmfdistdir}/metapost/profcollege/PfCpakistan.dat
-%{_texmfdistdir}/metapost/profcollege/PfCpanama1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCpanama2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCparaguay.dat
-%{_texmfdistdir}/metapost/profcollege/PfCpaysbas.dat
-%{_texmfdistdir}/metapost/profcollege/PfCpaysdegalles.dat
-%{_texmfdistdir}/metapost/profcollege/PfCperou.dat
-%{_texmfdistdir}/metapost/profcollege/PfCpolesud.dat
-%{_texmfdistdir}/metapost/profcollege/PfCpologne.dat
-%{_texmfdistdir}/metapost/profcollege/PfCportugal.dat
-%{_texmfdistdir}/metapost/profcollege/PfCquatar.dat
-%{_texmfdistdir}/metapost/profcollege/PfCrepcentreafrique.dat
-%{_texmfdistdir}/metapost/profcollege/PfCrepdominicaine.dat
-%{_texmfdistdir}/metapost/profcollege/PfCriomuni.dat
-%{_texmfdistdir}/metapost/profcollege/PfCrivieres.dat
-%{_texmfdistdir}/metapost/profcollege/PfCroumanie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCrussie1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCrussie1bis.dat
-%{_texmfdistdir}/metapost/profcollege/PfCrussie2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCrussie3.dat
-%{_texmfdistdir}/metapost/profcollege/PfCrussie3bis.dat
-%{_texmfdistdir}/metapost/profcollege/PfCrwanda.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsaharaouest.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsalvador.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsanmarin.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsenegal.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsierraleone.dat
-%{_texmfdistdir}/metapost/profcollege/PfCslovaquie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCslovenie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsomalie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsoudan.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsuede.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsuisse.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsurinam.dat
-%{_texmfdistdir}/metapost/profcollege/PfCswaziland.dat
-%{_texmfdistdir}/metapost/profcollege/PfCsyrie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCtajikistan.dat
-%{_texmfdistdir}/metapost/profcollege/PfCtanzanie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCtchad.dat
-%{_texmfdistdir}/metapost/profcollege/PfCtcheque.dat
-%{_texmfdistdir}/metapost/profcollege/PfCthailande.dat
-%{_texmfdistdir}/metapost/profcollege/PfCtogo.dat
-%{_texmfdistdir}/metapost/profcollege/PfCtunisie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCturkmenistan.dat
-%{_texmfdistdir}/metapost/profcollege/PfCturquie1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCturquie2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCukraine.dat
-%{_texmfdistdir}/metapost/profcollege/PfCuruguay.dat
-%{_texmfdistdir}/metapost/profcollege/PfCusa1.dat
-%{_texmfdistdir}/metapost/profcollege/PfCusa2.dat
-%{_texmfdistdir}/metapost/profcollege/PfCvenezuela.dat
-%{_texmfdistdir}/metapost/profcollege/PfCvietnam.dat
-%{_texmfdistdir}/metapost/profcollege/PfCvillesFrance.dat
-%{_texmfdistdir}/metapost/profcollege/PfCvillesFranceCycle4.dat
-%{_texmfdistdir}/metapost/profcollege/PfCvillesFranceNord.dat
-%{_texmfdistdir}/metapost/profcollege/PfCvillesFrancesimp.dat
-%{_texmfdistdir}/metapost/profcollege/PfCvillesItalie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCvolcans.dat
-%{_texmfdistdir}/metapost/profcollege/PfCwestbank.dat
-%{_texmfdistdir}/metapost/profcollege/PfCyemen.dat
-%{_texmfdistdir}/metapost/profcollege/PfCyougoslavie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCzaire.dat
-%{_texmfdistdir}/metapost/profcollege/PfCzambie.dat
-%{_texmfdistdir}/metapost/profcollege/PfCzimbabwe.dat
+%{_texmfdistdir}/metapost/profcollege/README.md
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCCafrique.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCCameriquecentrale.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCCameriquenord.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCCameriquesud.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCCasia.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCCasie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCCcaraibes.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCCeurope.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCIle.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCafganistan.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCafriquesud1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCafriquesud2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCalbanie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCalgerie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCallemagne1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCallemagne2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCandorre.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCangleterre.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCangola.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCarabiesaoudite.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCargentine1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCargentine2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCarmenie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCautriche.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCazerbaijan1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCazerbaijan2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbangladesh.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbelarussie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbelgique.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbelize.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbenin.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbhutan.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbirmanie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbolivie1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbolivie2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbosnie1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbosnie2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbotswana.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbresil.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbrunei.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCbulgarie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCburkinafaso.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCburundi.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcabinda.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcambodge.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcameroun.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcanada.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcapitales.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCchili1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCchili2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCchine.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcolombie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcongo.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcoreenord.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcoreesud.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcostarica.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcoteivoire.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCcroatie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCdanemark.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCdjibouti.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCecosse.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCegypte.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCemirats.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCequateur.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCeritre.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCespagne.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCestonie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCethiopie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCfinlande.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCfleuveseurope.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCfleuvessup.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCfrance.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCgabon.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCgambie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCgaza.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCgeorgie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCghana.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCgibraltar.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCgrece.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCguatemala.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCguinee.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCguineebissau.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCguineef.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCguyane.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfChaiti.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfChonduras.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfChongrie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCiles.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCiles1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCinde.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCindonesie1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCindonesie2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCirak.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCiran.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCirelande.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCirelandenord.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCisrael.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCitalie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCjordanie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCkazakhstan.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCkenya.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCkoweit.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCkyrgyzstan.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfClacs.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfClacssup.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfClaos.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfClesotho.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfClettonie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCliban.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCliberia.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfClibye.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCliechtenstein.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfClithuanie1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfClithuanie2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCluxembourg.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmacedoine.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmalaisie1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmalaisie2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmalawi.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmali.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmaroc.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmauritanie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmexique.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmoldavie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmonaco.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmongolie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCmozambique.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCnamibie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCnepal.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCnicaragua.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCniger.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCnigeria.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCnorvege.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCnvelleguinne.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfComan1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfComan2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCouganda.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCouzbekistan.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCpakistan.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCpanama1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCpanama2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCparaguay.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCpaysbas.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCpaysdegalles.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCperou.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCpolesud.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCpologne.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCportugal.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCquatar.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCrepcentreafrique.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCrepdominicaine.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCriomuni.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCrivieres.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCroumanie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCrussie1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCrussie1bis.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCrussie2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCrussie3.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCrussie3bis.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCrwanda.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsaharaouest.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsalvador.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsanmarin.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsenegal.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsierraleone.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCslovaquie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCslovenie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsomalie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsoudan.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsuede.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsuisse.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsurinam.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCswaziland.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCsyrie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCtajikistan.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCtanzanie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCtchad.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCtcheque.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCthailande.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCtogo.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCtunisie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCturkmenistan.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCturquie1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCturquie2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCukraine.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCuruguay.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCusa1.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCusa2.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCvenezuela.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCvietnam.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCvillesFrance.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCvillesFranceCycle4.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCvillesFranceNord.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCvillesFrancesimp.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCvillesItalie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCvolcans.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCwestbank.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCyemen.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCyougoslavie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCzaire.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCzambie.dat
+%{_texmfdistdir}/metapost/profcollege/datastest/PfCzimbabwe.dat
+%{_texmfdistdir}/tex/latex/profcollege/PfCAireSimple.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCAllumettes.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCArbreCalcul.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCArbreChiffre.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCAssemblagesSolides.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCAutomatismes.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCAutonomie.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCBalance.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCBandeNumerique.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCBarreNiveaux.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCBarresCalculs.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCBillard.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCBoiteADix.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCBonSortie.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCBonbon.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCAN.tex
@@ -13440,7 +13638,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCConversion.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCritere.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCCryptarithme.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCDeAJouer.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCDecDeci.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCDecompFrac.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCDecompFracDeci.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCDecomposerNombrePremier.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCDefiCalc.tex
@@ -13459,6 +13659,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCEngrenagesBase.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCEnigmeAire.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCEnquete.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCEquationBalance.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCEquationComposition2.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCEquationLaurent1.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCEquationModeleBarre.tex
@@ -13482,6 +13683,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCHiddenMessage.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCHorloge.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCInfixRPN.sty
+%{_texmfdistdir}/tex/latex/profcollege/PfCIteration.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCJeton.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCJeuRangement.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCKakurasu.tex
@@ -13490,14 +13692,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCLabyrintheJeu.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCLabyrintheNombre.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCLego.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCLignesBrisees.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCLogoNumberHive.png
 %{_texmfdistdir}/tex/latex/profcollege/PfCMentalo.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCMidpoint.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCModeleBarre.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCMonnaieEuro.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCMosaique.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCMotsCodes.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCMotsCroises.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCMotsEmpiles.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCMulArt.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCMulEthiopie.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCMulJal.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCMulJap.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCMulPiecesPuzzle.tex
@@ -13506,13 +13712,33 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCNotionFonction.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCNumberHive.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCNumerationsAnciennes.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCOpCroisees.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCOperationsTrou.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCPanneauxRoutiers.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCPapiers.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCPatronPaves.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCPattern.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCPatternJeton.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCPavage.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCPavageAvecMotifImage.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCPiece10c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPiece1c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPiece1e.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPiece20c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPiece2c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPiece2e.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPiece50c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPiece5c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPieceCoul10c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPieceCoul1c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPieceCoul1e.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPieceCoul20c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPieceCoul2c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPieceCoul2e.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPieceCoul50c.pdf
+%{_texmfdistdir}/tex/latex/profcollege/PfCPieceCoul5c.pdf
 %{_texmfdistdir}/tex/latex/profcollege/PfCPixelArt.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCPointsBlancs.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCPourcentage.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCProbaFrequence.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCProbabilites.tex
@@ -13541,6 +13767,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCResoudreEquation.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCRondeInfernale.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCRose.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCRullo.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCScrabble.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCScratch.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCSerpent.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCShikaku.tex
@@ -13549,6 +13777,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profcollege/PfCSommeAngles.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCSquaro.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCStatistiques.tex
+%{_texmfdistdir}/tex/latex/profcollege/PfCSystemeImage.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCTableauDoubleEntree.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCTableauxUnites.tex
 %{_texmfdistdir}/tex/latex/profcollege/PfCTablesOperations.tex
@@ -13601,7 +13830,7 @@ Requires:       tex(pgf.sty)
 Requires:       tex(simplekv.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source140:      proflabo.tar.xz
 Source141:      proflabo.doc.tar.xz
 
@@ -13647,7 +13876,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/proflabo/ProfLabo.sty
 
 %package -n texlive-proflycee
-Version:        %{texlive_version}.%{texlive_noarch}.3.11asvn73852
+Version:        %{texlive_version}.%{texlive_noarch}.4.00dsvn77895
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX package for French maths teachers in high school
@@ -13675,6 +13904,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-proflycee-doc >= %{texlive_version}
 Provides:       tex(ProfLycee-Light.sty)
+Provides:       tex(ProfLycee-Macros.sty)
+Provides:       tex(ProfLycee-Pictosbac.sty)
 Provides:       tex(ProfLycee.sty)
 Provides:       tex(proflycee-tools-aleatoire.tex)
 Provides:       tex(proflycee-tools-analyse.tex)
@@ -13696,9 +13927,13 @@ Provides:       tex(proflycee-tools-recreat.tex)
 Provides:       tex(proflycee-tools-stats.tex)
 Provides:       tex(proflycee-tools-suites.tex)
 Provides:       tex(proflycee-tools-trigo.tex)
+Requires:       tex(FenetreCas.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(fancyvrb.sty)
 Requires:       tex(fontawesome5.sty)
+Requires:       tex(fontawesome6.sty)
+Requires:       tex(fontawesome7.sty)
+Requires:       tex(graphicx.sty)
 Requires:       tex(hologo.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(ifthen.sty)
@@ -13715,6 +13950,8 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(tabularray.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(tikz.sty)
+Requires:       tex(tikz2d-fr.sty)
+Requires:       tex(tikz3d-fr.sty)
 Requires:       tex(tkz-tab.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xintbinhex.sty)
@@ -13723,7 +13960,7 @@ Requires:       tex(xinttools.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source142:      proflycee.tar.xz
 Source143:      proflycee.doc.tar.xz
 
@@ -13737,7 +13974,7 @@ display and use a trigonometric circle ; display a small
 diagram for the sign of an affine function or a trinomial ; ...
 
 %package -n texlive-proflycee-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.11asvn73852
+Version:        %{texlive_version}.%{texlive_noarch}.4.00dsvn77895
 Release:        0
 Summary:        Documentation for texlive-proflycee
 License:        LPPL-1.0
@@ -13767,6 +14004,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-proflycee-doc
+%{_texmfdistdir}/doc/latex/proflycee/ProfLycee-doc-simple.pdf
 %{_texmfdistdir}/doc/latex/proflycee/ProfLycee-doc.pdf
 %{_texmfdistdir}/doc/latex/proflycee/ProfLycee-docctan.zip
 %{_texmfdistdir}/doc/latex/proflycee/ProfLycee-exemples-pyluatex.pdf
@@ -13776,12 +14014,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-proflycee
 %{_texmfdistdir}/metapost/proflycee/PfLEspace.mp
 %{_texmfdistdir}/tex/latex/proflycee/ProfLycee-Light.sty
+%{_texmfdistdir}/tex/latex/proflycee/ProfLycee-Macros.sty
+%{_texmfdistdir}/tex/latex/proflycee/ProfLycee-Pictosbac.sty
 %{_texmfdistdir}/tex/latex/proflycee/ProfLycee.sty
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-bronze-cup.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-bronze-medal-flat.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-bronze-medal.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-bullseye-3d.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-bullseye-dart.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-checked.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-crossed.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-flatpictosbac.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-gold-cup.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-gold-medal-flat.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-gold-medal.pdf
@@ -13791,6 +14034,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-mouse.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-notok.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-ok.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-pictosbac.pdf
+%{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-ring.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-silver-cup.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-silver-medal-flat.pdf
 %{_texmfdistdir}/tex/latex/proflycee/pflcliparts/pfl-silver-medal.pdf
@@ -13816,7 +14061,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/proflycee/proflycee-tools-trigo.tex
 
 %package -n texlive-profmaquette
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_osvn73826
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_qsvn77282
 Release:        0
 License:        LPPL-1.0
 Summary:        Use exercises in different types of documents
@@ -13862,7 +14107,7 @@ Requires:       tex(xintexpr.sty)
 Requires:       tex(xinttools.sty)
 Requires:       tex(xlop.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source144:      profmaquette.tar.xz
 Source145:      profmaquette.doc.tar.xz
 
@@ -13871,7 +14116,7 @@ This LaTeX package can help French maths teachers to put one
 and the same exercise into different sorts of documents.
 
 %package -n texlive-profmaquette-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_osvn73826
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.99_qsvn77282
 Release:        0
 Summary:        Documentation for texlive-profmaquette
 License:        LPPL-1.0
@@ -13909,7 +14154,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/profmaquette/ProfMaquette.sty
 
 %package -n texlive-profsio
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn73718
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.5svn76398
 Release:        0
 License:        LPPL-1.0
 Summary:        Commands (with TikZ) to work with French "BTS SIO" maths themes
@@ -13955,7 +14200,7 @@ Requires:       tex(xintexpr.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source146:      profsio.tar.xz
 Source147:      profsio.doc.tar.xz
 
@@ -13964,7 +14209,7 @@ This package provides some commands (in French) to work with:
 tables of Karnaugh ; MPM graphs ; simple graphs.
 
 %package -n texlive-profsio-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn73718
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.5svn76398
 Release:        0
 Summary:        Documentation for texlive-profsio
 License:        LPPL-1.0
@@ -14037,7 +14282,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-program-doc >= %{texlive_version}
 Provides:       tex(program.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source148:      program.tar.xz
 Source149:      program.doc.tar.xz
 
@@ -14116,7 +14361,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-progress-doc >= %{texlive_version}
 Provides:       tex(progress.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source150:      progress.tar.xz
 Source151:      progress.doc.tar.xz
 
@@ -14199,7 +14444,7 @@ Requires:       tex(kvoptions.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source152:      progressbar.tar.xz
 Source153:      progressbar.doc.tar.xz
 
@@ -14249,7 +14494,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/progressbar/progressbar.sty
 
 %package -n texlive-projlib
-Version:        %{texlive_version}.%{texlive_noarch}.svn72789
+Version:        %{texlive_version}.%{texlive_noarch}.svn78004
 Release:        0
 License:        LPPL-1.0
 Summary:        A collection of facilitative tools
@@ -14329,7 +14574,7 @@ Requires:       tex(unicode-math.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(zi4.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source154:      projlib.tar.xz
 Source155:      projlib.doc.tar.xz
 
@@ -14341,7 +14586,7 @@ configure the appropriate multilingual settings. In addition, a
 series of auxiliary functionalities are introduced.
 
 %package -n texlive-projlib-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn72789
+Version:        %{texlive_version}.%{texlive_noarch}.svn78004
 Release:        0
 Summary:        Documentation for texlive-projlib
 License:        LPPL-1.0
@@ -14424,7 +14669,7 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(tipa.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source156:      pronunciation.tar.xz
 Source157:      pronunciation.doc.tar.xz
 
@@ -14475,7 +14720,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pronunciation/pronunciation.sty
 
 %package -n texlive-proof-at-the-end
-Version:        %{texlive_version}.%{texlive_noarch}.svn69602
+Version:        %{texlive_version}.%{texlive_noarch}.svn77355
 Release:        0
 License:        LPPL-1.0
 Summary:        A package to move proofs to appendix
@@ -14512,7 +14757,7 @@ Requires:       tex(thm-restate.sty)
 Requires:       tex(thmtools.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source158:      proof-at-the-end.tar.xz
 Source159:      proof-at-the-end.doc.tar.xz
 
@@ -14523,7 +14768,7 @@ places/sections, create links from theorems to proofs, restate
 theorems, add comments in appendix...
 
 %package -n texlive-proof-at-the-end-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69602
+Version:        %{texlive_version}.%{texlive_noarch}.svn77355
 Release:        0
 Summary:        Documentation for texlive-proof-at-the-end
 License:        LPPL-1.0
@@ -14594,7 +14839,7 @@ Requires:       tex(setspace.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source160:      proofread.tar.xz
 Source161:      proofread.doc.tar.xz
 
@@ -14656,7 +14901,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/proofread/proofread.sty
 
 %package -n texlive-prooftrees
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn72665
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.3svn78038
 Release:        0
 License:        LPPL-1.0
 Summary:        Forest-based proof trees (symbolic logic)
@@ -14683,13 +14928,14 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-prooftrees-doc >= %{texlive_version}
+Provides:       tex(prooftrees-debug.sty)
 Provides:       tex(prooftrees.sty)
-Requires:       tex(amssymb.sty)
-Requires:       tex(amstext.sty)
 Requires:       tex(forest.sty)
+Requires:       tex(memoize-ext-debug.sty)
+Requires:       tex(memoize-ext.sty)
 Requires:       tex(svn-prov.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source162:      prooftrees.tar.xz
 Source163:      prooftrees.doc.tar.xz
 
@@ -14705,11 +14951,11 @@ and a variety of tools for annotating, customising and
 highlighting such trees. A cross-referencing system is provided
 for trees which cite line numbers in justifications for proof
 lines or branch closures. prooftrees is based on forest and,
-hence, TikZ. The package requires version 2.0.2 of Forest for
-expected results and will not work with version 1.
+hence, TikZ. The package requires version 2.1+ of forest for
+expected results. It will not work with versions prior to 2.1.
 
 %package -n texlive-prooftrees-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn72665
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.3svn78038
 Release:        0
 Summary:        Documentation for texlive-prooftrees
 License:        LPPL-1.0
@@ -14740,11 +14986,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-prooftrees-doc
 %{_texmfdistdir}/doc/latex/prooftrees/README.md
 %{_texmfdistdir}/doc/latex/prooftrees/manifest.txt
-%{_texmfdistdir}/doc/latex/prooftrees/prooftrees.pdf
-%{_texmfdistdir}/doc/latex/prooftrees/prooftrees.tex
+%{_texmfdistdir}/doc/latex/prooftrees/prooftrees-code.pdf
+%{_texmfdistdir}/doc/latex/prooftrees/prooftrees-code.tex
+%{_texmfdistdir}/doc/latex/prooftrees/prooftrees-doc.pdf
+%{_texmfdistdir}/doc/latex/prooftrees/prooftrees-doc.tex
 %{_texmfdistdir}/doc/latex/prooftrees/prooftrees_biber.bib
 
 %files -n texlive-prooftrees
+%{_texmfdistdir}/tex/latex/prooftrees/prooftrees-debug.sty
 %{_texmfdistdir}/tex/latex/prooftrees/prooftrees.sty
 
 %package -n texlive-properties
@@ -14778,7 +15027,7 @@ Suggests:       texlive-properties-doc >= %{texlive_version}
 Provides:       tex(properties.sty)
 Requires:       tex(datatool.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source164:      properties.tar.xz
 Source165:      properties.doc.tar.xz
 
@@ -14888,7 +15137,7 @@ Requires:       tex(wrapfig.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source166:      proposal.tar.xz
 Source167:      proposal.doc.tar.xz
 
@@ -15003,7 +15252,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/proposal/eu/eureporting.cls
 
 %package -n texlive-prosper
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn33033
+Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX class for high quality slides
@@ -15068,7 +15317,7 @@ Requires:       tex(semhelv.sty)
 Requires:       tex(seminar.cls)
 Requires:       tex(times.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source168:      prosper.tar.xz
 Source169:      prosper.doc.tar.xz
 Source170:      prosper_utf8.dif
@@ -15085,7 +15334,7 @@ supported (including some that mimic PowerPoint) and others are
 being contributed.
 
 %package -n texlive-prosper-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn33033
+Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn77682
 Release:        0
 Summary:        Documentation for texlive-prosper
 License:        LPPL-1.0
@@ -15244,7 +15493,7 @@ Suggests:       texlive-protex-doc >= %{texlive_version}
 Provides:       tex(AlProTex.sty)
 Provides:       tex(ProTex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source171:      protex.tar.xz
 Source172:      protex.doc.tar.xz
 
@@ -15321,7 +15570,7 @@ Suggests:       texlive-protocol-doc >= %{texlive_version}
 Provides:       tex(protocol.cls)
 Requires:       tex(scrartcl.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source173:      protocol.tar.xz
 Source174:      protocol.doc.tar.xz
 
@@ -15370,7 +15619,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/protocol/protocol.cls
 
 %package -n texlive-prtec
-Version:        %{texlive_version}.%{texlive_noarch}.1.07svn71883
+Version:        %{texlive_version}.%{texlive_noarch}.1.07svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        A template for PRTEC conference papers
@@ -15426,7 +15675,7 @@ Requires:       tex(xcoffins.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source175:      prtec.tar.xz
 Source176:      prtec.doc.tar.xz
 
@@ -15438,7 +15687,7 @@ are commented and should be self-explanatory. The package
 depends on newtx.
 
 %package -n texlive-prtec-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.07svn71883
+Version:        %{texlive_version}.%{texlive_noarch}.1.07svn76790
 Release:        0
 Summary:        Documentation for texlive-prtec
 License:        LPPL-1.0
@@ -15513,7 +15762,7 @@ Requires:       tex(polski.sty)
 Requires:       tex(prelim2e.sty)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source177:      przechlewski-book.tar.xz
 Source178:      przechlewski-book.doc.tar.xz
 
@@ -15597,7 +15846,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/przechlewski-book/wkmgr.cls
 
 %package -n texlive-ps2eps
-Version:        %{texlive_version}.%{texlive_noarch}.1.70svn62856
+Version:        %{texlive_version}.%{texlive_noarch}.1.70svn76924
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Produce Encapsulated PostScript from PostScript
@@ -15633,7 +15882,7 @@ Requires:       perl(Getopt::Long)
 Requires:       perl(POSIX)
 #!BuildIgnore:  perl(POSIX)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source179:      ps2eps.tar.xz
 Source180:      ps2eps.doc.tar.xz
 
@@ -15641,24 +15890,24 @@ Source180:      ps2eps.doc.tar.xz
 Produce Encapsulated PostScript Files (EPS/EPSF) from a
 one-page PostScript document, or any PostScript document. A
 correct Bounding Box is calculated for the EPS files and some
-PostScript command sequences that can produce errorneous
-results on printers are filtered. The input is cropped to
-include just the image contained in the PostScript file. The
-EPS files can then be included into TeX documents. Other
-programs like ps2epsi (a script distributed with ghostscript)
-don't always calculate the correct bounding box (because the
-values are put on the PostScript stack which may get corrupted
-by bad PostScript code) or they round it off, resulting in
-clipping the image. Therefore ps2eps uses a resolution of 144
-dpi to get the correct bounding box. The bundle includes
-binaries for Linux, Solaris, Digital Unix or Windows
-2000/9x/NT; for other platforms, the user needs perl,
-ghostscript and an ANSI-C compiler. Included in the
-distribution is the bbox program, an application to produce
-Bounding Box values for rawppm or rawpbm format files.
+PostScript command sequences that can produce erroneous results
+on printers are filtered. The input is cropped to include just
+the image contained in the PostScript file. The EPS files can
+then be included into TeX documents. Other programs like
+ps2epsi (a script distributed with ghostscript) don't always
+calculate the correct bounding box (because the values are put
+on the PostScript stack which may get corrupted by bad
+PostScript code) or they round it off, resulting in clipping
+the image. Therefore ps2eps uses a resolution of 144 dpi to get
+the correct bounding box. The bundle includes binaries for
+Linux, Solaris, Digital Unix or Windows 2000/9x/NT; for other
+platforms, the user needs perl, ghostscript and an ANSI-C
+compiler. Included in the distribution is the bbox program, an
+application to produce Bounding Box values for rawppm or rawpbm
+format files.
 
 %package -n texlive-ps2eps-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.70svn62856
+Version:        %{texlive_version}.%{texlive_noarch}.1.70svn76924
 Release:        0
 Summary:        Documentation for texlive-ps2eps
 License:        GPL-2.0-or-later
@@ -15699,7 +15948,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/ps2eps/ps2eps.pl
 
 %package -n texlive-ps2pk
-Version:        %{texlive_version}.%{texlive_noarch}.svn66186
+Version:        %{texlive_version}.%{texlive_noarch}.svn75712
 Release:        0
 License:        LPPL-1.0
 Summary:        Generate a PK font from an Adobe Type 1 font
@@ -15733,14 +15982,15 @@ Provides:       man(pfb2pfa.1)
 Provides:       man(pk2bm.1)
 Provides:       man(ps2pk.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source181:      ps2pk.doc.tar.xz
 
 %description -n texlive-ps2pk
 Generates a PK file from an Adobe Type 1 font. PK fonts are (or
 used to be) valuable in enabling previewers to view documents
 generated that use Type 1 fonts. The program makes use of code
-donated to the X consortium by IBM.
+donated to the X consortium by IBM. It is now maintained as
+part of TeX Live.
 
 %post -n texlive-ps2pk
 mkdir -p /var/run/texlive
@@ -15800,7 +16050,7 @@ Requires:       tex(etex.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source182:      psbao.tar.xz
 Source183:      psbao.doc.tar.xz
 
@@ -15846,7 +16096,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/psbao/psbao.sty
 
 %package -n texlive-pseudo
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.3svn66638
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.3svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Straightforward pseudocode
@@ -15884,7 +16134,7 @@ Requires:       tex(pgfkeys.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source184:      pseudo.tar.xz
 Source185:      pseudo.doc.tar.xz
 
@@ -15899,7 +16149,7 @@ package relies on aliascnt, array, colortbl, expl3, l3keys2e,
 xcolor, and xparse.
 
 %package -n texlive-pseudo-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.3svn66638
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.3svn76924
 Release:        0
 Summary:        Documentation for texlive-pseudo
 License:        LPPL-1.0
@@ -15979,7 +16229,7 @@ Provides:       tex(pseudocode.sty)
 Requires:       tex(fancybox.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source186:      pseudocode.tar.xz
 Source187:      pseudocode.doc.tar.xz
 
@@ -16055,7 +16305,7 @@ Suggests:       texlive-psfrag-doc >= %{texlive_version}
 Provides:       tex(psfrag.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source188:      psfrag.tar.xz
 Source189:      psfrag.doc.tar.xz
 
@@ -16138,7 +16388,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source190:      psfrag-italian.doc.tar.xz
 
 %description -n texlive-psfrag-italian
@@ -16200,7 +16450,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(overpic.sty)
 Requires:       tex(psfrag.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source191:      psfragx.tar.xz
 Source192:      psfragx.doc.tar.xz
 
@@ -16268,7 +16518,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/psfragx/psfragx.sty
 
 %package -n texlive-psgo
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.17svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.17svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset go diagrams with PSTricks
@@ -16301,7 +16551,7 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source193:      psgo.tar.xz
 Source194:      psgo.doc.tar.xz
 
@@ -16309,7 +16559,7 @@ Source194:      psgo.doc.tar.xz
 The psgo package
 
 %package -n texlive-psgo-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.17svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.17svn78101
 Release:        0
 Summary:        Documentation for texlive-psgo
 License:        LPPL-1.0
@@ -16377,7 +16627,7 @@ Suggests:       texlive-psizzl-doc >= %{texlive_version}
 Provides:       tex(mypsizzl.tex)
 Provides:       tex(psizzl.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source195:      psizzl.tar.xz
 Source196:      psizzl.doc.tar.xz
 
@@ -16476,7 +16726,7 @@ Provides:       tex(pcrr8tn.vf)
 Provides:       tex(pslatex.sty)
 Requires:       tex(psyr.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source197:      pslatex.tar.xz
 
 %description -n texlive-pslatex
@@ -16523,7 +16773,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pslatex/pslatex.sty
 
 %package -n texlive-psnfss
-Version:        %{texlive_version}.%{texlive_noarch}.9.3svn54694
+Version:        %{texlive_version}.%{texlive_noarch}.9.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Font support for common PostScript fonts
@@ -16675,7 +16925,7 @@ Provides:       tex(utopia.map)
 Provides:       tex(utopia.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source198:      psnfss.tar.xz
 Source199:      psnfss.doc.tar.xz
 
@@ -16710,7 +16960,7 @@ bundle as a whole is part of the LaTeX 'required' set of
 packages.
 
 %package -n texlive-psnfss-doc
-Version:        %{texlive_version}.%{texlive_noarch}.9.3svn54694
+Version:        %{texlive_version}.%{texlive_noarch}.9.3svn77682
 Release:        0
 Summary:        Documentation for texlive-psnfss
 License:        LPPL-1.0
@@ -16897,7 +17147,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pspicture-doc >= %{texlive_version}
 Provides:       tex(pspicture.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source200:      pspicture.tar.xz
 Source201:      pspicture.doc.tar.xz
 
@@ -16973,7 +17223,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pst-2dplot-doc >= %{texlive_version}
 Provides:       tex(pst-2dplot.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source202:      pst-2dplot.tar.xz
 Source203:      pst-2dplot.doc.tar.xz
 
@@ -17023,7 +17273,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-2dplot/pst-2dplot.sty
 
 %package -n texlive-pst-3d
-Version:        %{texlive_version}.%{texlive_noarch}.1.10svn17257
+Version:        %{texlive_version}.%{texlive_noarch}.1.10svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A PSTricks package for tilting and other pseudo-3D tricks
@@ -17054,7 +17304,7 @@ Provides:       tex(pst-3d.sty)
 Provides:       tex(pst-3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source204:      pst-3d.tar.xz
 Source205:      pst-3d.doc.tar.xz
 
@@ -17064,7 +17314,7 @@ shadows, tilting and three dimensional representations of text
 or graphical objects.
 
 %package -n texlive-pst-3d-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.10svn17257
+Version:        %{texlive_version}.%{texlive_noarch}.1.10svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-3d
 License:        LPPL-1.0
@@ -17140,7 +17390,7 @@ Requires:       tex(pst-node.sty)
 Requires:       tex(pst-plot.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source206:      pst-3dplot.tar.xz
 Source207:      pst-3dplot.doc.tar.xz
 
@@ -17224,7 +17474,7 @@ Provides:       tex(pst-abspos.sty)
 Provides:       tex(pst-abspos.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source208:      pst-abspos.tar.xz
 Source209:      pst-abspos.doc.tar.xz
 
@@ -17309,7 +17559,7 @@ Requires:       tex(pst-plot.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source210:      pst-am.tar.xz
 Source211:      pst-am.doc.tar.xz
 
@@ -17392,7 +17642,7 @@ Provides:       tex(pst-antiprism.tex)
 Requires:       tex(pst-solides3d.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source212:      pst-antiprism.tar.xz
 Source213:      pst-antiprism.doc.tar.xz
 
@@ -17474,7 +17724,7 @@ Provides:       tex(pst-arrow.sty)
 Provides:       tex(pst-arrow.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source214:      pst-arrow.tar.xz
 Source215:      pst-arrow.doc.tar.xz
 
@@ -17555,7 +17805,7 @@ Provides:       tex(pst-asr.tex)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source216:      pst-asr.tar.xz
 Source217:      pst-asr.doc.tar.xz
 
@@ -17635,7 +17885,7 @@ Provides:       tex(pst-bar.sty)
 Provides:       tex(pst-bar.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source218:      pst-bar.tar.xz
 Source219:      pst-bar.doc.tar.xz
 
@@ -17688,7 +17938,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-bar/pst-bar.sty
 
 %package -n texlive-pst-barcode
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn64182
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.20svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Print barcodes using PostScript
@@ -17719,7 +17969,7 @@ Provides:       tex(pst-barcode.sty)
 Provides:       tex(pst-barcode.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source220:      pst-barcode.tar.xz
 Source221:      pst-barcode.doc.tar.xz
 
@@ -17728,11 +17978,11 @@ The pst-barcode package allows printing of barcodes, in a huge
 variety of formats, including quick-response (qr) codes (see
 documentation for details). As a PSTricks package, the package
 requires pstricks. The package uses PostScript for calculating
-the bars. For PDF output use a multi-pass mechansism such as
+the bars. For PDF output use a multi-pass mechanism such as
 pst-pdf.
 
 %package -n texlive-pst-barcode-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn64182
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.20svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-barcode
 License:        LPPL-1.0
@@ -17763,187 +18013,181 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-pst-barcode-doc
 %{_texmfdistdir}/doc/generic/pst-barcode/Changes
 %{_texmfdistdir}/doc/generic/pst-barcode/README.md
-%{_texmfdistdir}/doc/generic/pst-barcode/images/auspost-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/auspost-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-4.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-5.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-6.eps
+%{_texmfdistdir}/doc/generic/pst-barcode/images/auspost-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/auspost-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-4.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-5.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/aztec-6.pdf
 %{_texmfdistdir}/doc/generic/pst-barcode/images/barcode.jpg
-%{_texmfdistdir}/doc/generic/pst-barcode/images/bc412-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/bc412-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/bc412-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/channelcode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/channelcode-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/channelcode-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/channelcode-4.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/codabar-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/codablockf-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/codablockf-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/codablockf-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code11-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code128-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code16k-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code16k-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code16k-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code25-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code25-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code32-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code39-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code39-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code39-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code39ext-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code39ext-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code49-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code49-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code49-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code93-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code93-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code93ext-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/code93ext-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/codeone-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/codeone-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/codeone-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/codeone-4.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/daft-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databarexpanded-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databarexpandedcomposite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databarexpandedstacked-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databarexpandedstackedcomposite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databarlimited-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databarlimitedcomposite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databaromni-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databaromnicomposite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databarstacked-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databarstackedcomposite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databarstackedomni-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databarstackedomnicomposite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databartruncated-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/databartruncatedcomposite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/datamatrix-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/datamatrix-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/datamatrix-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/datamatrix-4.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/dotcode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean128-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean128-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean128composite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean128composite-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean13-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean13-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean13composite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean14-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean2-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean5-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean8-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean8-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ean8composite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/fima-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/fimb-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/fimc-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/fimd-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/flattermarken-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1composite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1composite-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1composite-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1datamatrix-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1dotcode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1northamericancoupon-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1qrcode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1qrcode-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/hanxin-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/hibccodablockf-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/hibccode128-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/hibccode39-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/hibcdatamatrix-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/hibcmicropdf417-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/hibcpdf417-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/hibcqrcode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/identcode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/isbn-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/isbn-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/isbn-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/isbn-4.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ismn-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ismn-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ismn-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/issn-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/issn-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/itf-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/itf-14-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/itf-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/japanpost-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/kix-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/leitcode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/maxicode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/maxicode-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/maxicode-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/maxicode-4.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/micropdf417-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/micropdf417-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/msi-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/msi-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/msi-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/onecode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optborder.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optcolorcmyk.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optcolorrgb.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optguardpos.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optguardsize.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optheight.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optincludecheck.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optincludecheckintext.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optincludetext.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optinkspread.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optparse.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optparsefnc.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optraw.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/opttextfont.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/optwidth.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/pdf417-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/pdf417-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/pdf417-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/pdf417-4.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/pdf417-5.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/pharmacode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/pharmacode2-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/planet-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/plessey-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/plessey-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/plessey-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-4.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-5.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-6.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/postnet-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/pzn-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/pzn-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/qrcode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/qrcode-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/qrcode-5.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/raw-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/resize1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/resize2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/resize3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/rm4scc-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/sscc18-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/swissqrcode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/telepen-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/telepen-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/telepen-3.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/telepen-4.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/telepen-5.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/ultracode-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/upca-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/upca-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/upcacomposite-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/upce-1.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/upce-2.eps
-%{_texmfdistdir}/doc/generic/pst-barcode/images/upcecomposite-1.eps
+%{_texmfdistdir}/doc/generic/pst-barcode/images/bc412-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/bc412-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/bc412-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/channelcode-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/channelcode-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/channelcode-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/channelcode-4.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/codabar-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/codablockf-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/codablockf-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/codablockf-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code11-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code128-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code16k-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code16k-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code16k-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code25-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code25-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code32-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code39-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code39-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code39-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code39ext-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code39ext-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code49-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code49-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code49-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code93-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code93-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code93ext-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/code93ext-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/codeone-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/codeone-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/codeone-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/codeone-4.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/daft-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databarexpanded-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databarexpandedcomposite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databarexpandedstacked-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databarexpandedstackedcomposite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databarlimited-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databarlimitedcomposite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databaromni-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databaromnicomposite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databarstacked-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databarstackedcomposite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databarstackedomni-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databarstackedomnicomposite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databartruncated-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/databartruncatedcomposite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/datamatrix-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/datamatrix-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/datamatrix-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean128-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean128-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean128composite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean128composite-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean13-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean13-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean13composite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean14-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean2-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean5-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean8-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean8-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ean8composite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/fima-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/fimb-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/fimc-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/fimd-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/flattermarken-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1composite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1composite-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1composite-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1datamatrix-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1qrcode-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/gs1qrcode-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/hanxin-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/hibccodablockf-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/hibccode128-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/hibccode39-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/hibcdatamatrix-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/hibcmicropdf417-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/hibcpdf417-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/hibcqrcode-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/identcode-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/isbn-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/isbn-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/isbn-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/isbn-4.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ismn-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ismn-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/ismn-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/issn-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/issn-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/itf-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/itf-14-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/itf-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/japanpost-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/kix-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/leitcode-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/maxicode-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/maxicode-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/maxicode-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/maxicode-4.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/micropdf417-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/micropdf417-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/msi-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/msi-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/msi-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/onecode-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optborder.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optcolorcmyk.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optcolorrgb.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optguardpos.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optguardsize.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optheight.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optincludecheck.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optincludecheckintext.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optincludetext.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optinkspread.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optparse.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optparsefnc.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optraw.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/opttextfont.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/optwidth.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/pdf417-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/pdf417-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/pdf417-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/pdf417-4.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/pdf417-5.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/pharmacode-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/pharmacode2-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/planet-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/plessey-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/plessey-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/plessey-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-4.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-5.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/posicode-6.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/postnet-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/pzn-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/pzn-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/qrcode-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/qrcode-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/qrcode-5.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/raw-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/resize1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/resize2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/resize3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/rm4scc-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/sscc18-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/telepen-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/telepen-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/telepen-3.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/telepen-4.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/telepen-5.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/upca-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/upca-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/upcacomposite-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/upce-1.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/upce-2.pdf
+%{_texmfdistdir}/doc/generic/pst-barcode/images/upcecomposite-1.pdf
 %{_texmfdistdir}/doc/generic/pst-barcode/pst-barcode-doc.bib
 %{_texmfdistdir}/doc/generic/pst-barcode/pst-barcode-doc.ltx
 %{_texmfdistdir}/doc/generic/pst-barcode/pst-barcode-doc.pdf
@@ -17987,7 +18231,7 @@ Provides:       tex(pst-bezier.tex)
 Requires:       tex(expl3.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source222:      pst-bezier.tar.xz
 Source223:      pst-bezier.doc.tar.xz
 
@@ -18069,7 +18313,7 @@ Provides:       tex(pst-blur.sty)
 Provides:       tex(pst-blur.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source224:      pst-blur.tar.xz
 Source225:      pst-blur.doc.tar.xz
 
@@ -18149,7 +18393,7 @@ Provides:       tex(pst-bspline.sty)
 Provides:       tex(pst-bspline.tex)
 Requires:       tex(multido.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source226:      pst-bspline.tar.xz
 Source227:      pst-bspline.doc.tar.xz
 
@@ -18200,7 +18444,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-bspline/pst-bspline.sty
 
 %package -n texlive-pst-calculate
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn49817
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for floating point operations at LaTeX level
@@ -18232,7 +18476,7 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source228:      pst-calculate.tar.xz
 Source229:      pst-calculate.doc.tar.xz
 
@@ -18244,7 +18488,7 @@ formatting the calculated number. The package also depends on
 xkeyval and xparse.
 
 %package -n texlive-pst-calculate-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn49817
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-calculate
 License:        LPPL-1.0
@@ -18317,7 +18561,7 @@ Requires:       tex(pst-3d.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source230:      pst-calendar.tar.xz
 Source231:      pst-calendar.doc.tar.xz
 
@@ -18399,7 +18643,7 @@ Provides:       tex(pst-cie.sty)
 Provides:       tex(pst-cie.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source232:      pst-cie.tar.xz
 Source233:      pst-cie.doc.tar.xz
 
@@ -18481,7 +18725,7 @@ Provides:       tex(pst-circ.sty)
 Provides:       tex(pst-circ.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source234:      pst-circ.tar.xz
 Source235:      pst-circ.doc.tar.xz
 
@@ -18536,7 +18780,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-circ/pst-circ.sty
 
 %package -n texlive-pst-coil
-Version:        %{texlive_version}.%{texlive_noarch}.1.08svn72030
+Version:        %{texlive_version}.%{texlive_noarch}.1.08svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A PSTricks package for coils, etcetera
@@ -18567,7 +18811,7 @@ Provides:       tex(pst-coil.sty)
 Provides:       tex(pst-coil.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source236:      pst-coil.tar.xz
 Source237:      pst-coil.doc.tar.xz
 
@@ -18576,7 +18820,7 @@ Pst-coil is a PSTricks based package for coils and zigzags and
 for coil and zigzag node connections.
 
 %package -n texlive-pst-coil-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.08svn72030
+Version:        %{texlive_version}.%{texlive_noarch}.1.08svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-coil
 License:        LPPL-1.0
@@ -18648,7 +18892,7 @@ Provides:       tex(pst-contourplot.sty)
 Provides:       tex(pst-contourplot.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source238:      pst-contourplot.tar.xz
 Source239:      pst-contourplot.doc.tar.xz
 
@@ -18753,7 +18997,7 @@ Provides:       tex(pst-coxeterp.sty)
 Provides:       tex(pst-coxeterp.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source240:      pst-cox.tar.xz
 Source241:      pst-cox.doc.tar.xz
 
@@ -18856,7 +19100,7 @@ Requires:       tex(multido.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source242:      pst-dart.tar.xz
 Source243:      pst-dart.doc.tar.xz
 
@@ -18934,7 +19178,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pst-dbicons-doc >= %{texlive_version}
 Provides:       tex(pst-dbicons.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source244:      pst-dbicons.tar.xz
 Source245:      pst-dbicons.doc.tar.xz
 
@@ -19019,7 +19263,7 @@ Requires:       tex(pst-3dplot.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source246:      pst-diffraction.tar.xz
 Source247:      pst-diffraction.doc.tar.xz
 
@@ -19107,7 +19351,7 @@ Provides:       tex(pst-electricfield.sty)
 Provides:       tex(pst-electricfield.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source248:      pst-electricfield.tar.xz
 Source249:      pst-electricfield.doc.tar.xz
 
@@ -19164,7 +19408,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-electricfield/pst-electricfield.sty
 
 %package -n texlive-pst-eps
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Create EPS files from PSTricks figures
@@ -19195,7 +19439,7 @@ Provides:       tex(pst-eps.sty)
 Provides:       tex(pst-eps.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source250:      pst-eps.tar.xz
 Source251:      pst-eps.doc.tar.xz
 
@@ -19205,7 +19449,7 @@ images 'on the fly' to encapsulated PostScript (EPS) image
 files, which can then be read into a document in the usual way.
 
 %package -n texlive-pst-eps-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-eps
 License:        LPPL-1.0
@@ -19246,10 +19490,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-eps/pst-eps.sty
 
 %package -n texlive-pst-eucl
-Version:        %{texlive_version}.%{texlive_noarch}.1.77svn66924
+Version:        %{texlive_version}.%{texlive_noarch}.1.77svn77682
 Release:        0
 License:        LPPL-1.0
-Summary:        Euclidian geometry with PSTricks
+Summary:        Euclidean geometry with PSTricks
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -19280,7 +19524,7 @@ Requires:       tex(pst-node.sty)
 Requires:       tex(pst-tools.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source252:      pst-eucl.tar.xz
 Source253:      pst-eucl.doc.tar.xz
 
@@ -19292,7 +19536,7 @@ transformations or intersections. The use of coordinates is
 limited to points which controlled the figure.
 
 %package -n texlive-pst-eucl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.77svn66924
+Version:        %{texlive_version}.%{texlive_noarch}.1.77svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-eucl
 License:        LPPL-1.0
@@ -19361,7 +19605,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source254:      pst-eucl-translation-bg.doc.tar.xz
 
 %description -n texlive-pst-eucl-translation-bg
@@ -19528,7 +19772,7 @@ Requires:       tex(showexpl.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source255:      pst-exa.tar.xz
 Source256:      pst-exa.doc.tar.xz
 
@@ -19609,7 +19853,7 @@ Provides:       tex(pst-feyn.sty)
 Provides:       tex(pst-feyn.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source257:      pst-feyn.tar.xz
 Source258:      pst-feyn.doc.tar.xz
 
@@ -19662,7 +19906,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-feyn/pst-feyn.sty
 
 %package -n texlive-pst-fill
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn60671
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Fill or tile areas with PSTricks
@@ -19693,7 +19937,7 @@ Provides:       tex(pst-fill.sty)
 Provides:       tex(pst-fill.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source259:      pst-fill.tar.xz
 Source260:      pst-fill.doc.tar.xz
 
@@ -19702,7 +19946,7 @@ Pst-fill is a PSTricks-based package for filling and tiling
 areas or characters.
 
 %package -n texlive-pst-fill-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn60671
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-fill
 License:        LPPL-1.0
@@ -19775,7 +20019,7 @@ Requires:       tex(pst-tools.sty)
 Requires:       tex(pstricks-add.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source261:      pst-fit.tar.xz
 Source262:      pst-fit.doc.tar.xz
 
@@ -19826,7 +20070,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-fit/pst-fit.sty
 
 %package -n texlive-pst-flags
-Version:        %{texlive_version}.%{texlive_noarch}.svn65501
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw flags of countries using PSTricks
@@ -19882,7 +20126,7 @@ Requires:       tex(pstricks.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xfp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source263:      pst-flags.tar.xz
 Source264:      pst-flags.doc.tar.xz
 
@@ -19899,7 +20143,7 @@ the documentation for examples. This package requires expl3,
 fp, xfp, xcolor, pstricks and pst-all.
 
 %package -n texlive-pst-flags-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn65501
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 Summary:        Documentation for texlive-pst-flags
 License:        LPPL-1.0
@@ -19994,6 +20238,147 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-flags/pst-flags-colors-html.sty
 %{_texmfdistdir}/tex/latex/pst-flags/pst-flags.sty
 
+%package -n texlive-pst-fourbarlinkage
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77161
+Release:        0
+License:        LPPL-1.0
+Summary:        Draw articulated quadrilaterals
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-pst-fourbarlinkage-doc >= %{texlive_version}
+Provides:       tex(pst-fourbarlinkage.sty)
+Provides:       tex(pst-fourbarlinkage.tex)
+Requires:       tex(pstricks.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source265:      pst-fourbarlinkage.tar.xz
+Source266:      pst-fourbarlinkage.doc.tar.xz
+
+%description -n texlive-pst-fourbarlinkage
+An Articulated Quadrilateral is a four-bar linkage mechanism
+(four rods connected by hinges) that changes shape as its
+joints move, creating complex, predictable motions used in
+machines like pedal cranks, lamps, and even for generating
+curves, functioning as a simple, one-degree-of-freedom system
+with fascinating, non-intuitive movements and applications in
+engineering.
+
+%package -n texlive-pst-fourbarlinkage-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77161
+Release:        0
+Summary:        Documentation for texlive-pst-fourbarlinkage
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-fourbarlinkage and texlive-alldocumentation)
+
+%description -n texlive-pst-fourbarlinkage-doc
+This package includes the documentation for texlive-pst-fourbarlinkage
+
+%post -n texlive-pst-fourbarlinkage
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-pst-fourbarlinkage
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-pst-fourbarlinkage
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-pst-fourbarlinkage-doc
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/Changes
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/README.md
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage--19-2.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage--19-2.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-1.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-1.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-10c.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-10c.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-11c.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-11c.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-12.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-12.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-13.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-13.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-13c-bis.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-13c-bis.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-14c.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-14c.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-15-bis.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-15-bis.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-15.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-15.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-16.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-16.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-17.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-17.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-18.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-18.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-19-3.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-19-3.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-1c.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-1c.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-2.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-2.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-2c.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-2c.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-3.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-3.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-4.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-4.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-5c.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-5c.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-6.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-6.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-7.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-7.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-8.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-8.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-8c.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-8c.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-9c.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-9c.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-lemniscate-19.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-lemniscate-19.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-nc-18.gif
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/fourbarlinkage-nc-18.tex
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples/tex2gif.sh
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/pst-fourbarlinkage-doc.bib
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/pst-fourbarlinkage-doc.pdf
+%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/pst-fourbarlinkage-doc.tex
+
+%files -n texlive-pst-fourbarlinkage
+%{_texmfdistdir}/dvips/pst-fourbarlinkage/pst-fourbarlinkage.pro
+%{_texmfdistdir}/tex/generic/pst-fourbarlinkage/pst-fourbarlinkage.tex
+%{_texmfdistdir}/tex/latex/pst-fourbarlinkage/pst-fourbarlinkage.sty
+
 %package -n texlive-pst-fr3d
 Version:        %{texlive_version}.%{texlive_noarch}.1.10svn15878
 Release:        0
@@ -20025,9 +20410,9 @@ Suggests:       texlive-pst-fr3d-doc >= %{texlive_version}
 Provides:       tex(pst-fr3d.sty)
 Provides:       tex(pst-fr3d.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source265:      pst-fr3d.tar.xz
-Source266:      pst-fr3d.doc.tar.xz
+# from 20260301
+Source267:      pst-fr3d.tar.xz
+Source268:      pst-fr3d.doc.tar.xz
 
 %description -n texlive-pst-fr3d
 A package using PSTricks to draw three dimensional framed boxes
@@ -20104,9 +20489,9 @@ Provides:       tex(pst-fractal.sty)
 Provides:       tex(pst-fractal.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source267:      pst-fractal.tar.xz
-Source268:      pst-fractal.doc.tar.xz
+# from 20260301
+Source269:      pst-fractal.tar.xz
+Source270:      pst-fractal.doc.tar.xz
 
 %description -n texlive-pst-fractal
 The package uses PSTricks to draw the Julia and Mandelbrot
@@ -20192,9 +20577,9 @@ Requires:       tex(pst-grad.sty)
 Requires:       tex(pst-slpe.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source269:      pst-fun.tar.xz
-Source270:      pst-fun.doc.tar.xz
+# from 20260301
+Source271:      pst-fun.tar.xz
+Source272:      pst-fun.doc.tar.xz
 
 %description -n texlive-pst-fun
 This is a PSTricks related package for drawing funny objects,
@@ -20244,7 +20629,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-fun/pst-fun.sty
 
 %package -n texlive-pst-func
-Version:        %{texlive_version}.%{texlive_noarch}.1.02asvn70822
+Version:        %{texlive_version}.%{texlive_noarch}.1.02asvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        PSTricks package for plotting mathematical functions
@@ -20282,9 +20667,9 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks-add.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source271:      pst-func.tar.xz
-Source272:      pst-func.doc.tar.xz
+# from 20260301
+Source273:      pst-func.tar.xz
+Source274:      pst-func.doc.tar.xz
 
 %description -n texlive-pst-func
 The package is built for use with PSTricks. It provides macros
@@ -20308,7 +20693,7 @@ rates; and implicit functions. The plots may be generated as
 volumes of rotation about the X-axis, as well.
 
 %package -n texlive-pst-func-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.02asvn70822
+Version:        %{texlive_version}.%{texlive_noarch}.1.02asvn77682
 Release:        0
 Summary:        Documentation for texlive-pst-func
 License:        LPPL-1.0
@@ -20381,9 +20766,9 @@ Provides:       tex(pst-gantt.sty)
 Provides:       tex(pst-gantt.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source273:      pst-gantt.tar.xz
-Source274:      pst-gantt.doc.tar.xz
+# from 20260301
+Source275:      pst-gantt.tar.xz
+Source276:      pst-gantt.doc.tar.xz
 
 %description -n texlive-pst-gantt
 The package uses PSTricks to draw GANTT charts, which are a
@@ -20429,6 +20814,88 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-pst-gantt
 %{_texmfdistdir}/tex/generic/pst-gantt/pst-gantt.tex
 %{_texmfdistdir}/tex/latex/pst-gantt/pst-gantt.sty
+
+%package -n texlive-pst-gears
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.61svn77113
+Release:        0
+License:        LPPL-1.0
+Summary:        Drawing internal and external gears
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-pst-gears-doc >= %{texlive_version}
+Provides:       tex(pst-gears.sty)
+Provides:       tex(pst-gears.tex)
+Requires:       tex(pst-xkey.sty)
+Requires:       tex(pstricks.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source277:      pst-gears.tar.xz
+Source278:      pst-gears.doc.tar.xz
+
+%description -n texlive-pst-gears
+The macro \pstgears[options](x,y) allows, among other things,
+the drawing of a gear consisting of two or more external gears
+whose profile is an involute arc.
+
+%package -n texlive-pst-gears-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.61svn77113
+Release:        0
+Summary:        Documentation for texlive-pst-gears
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-gears and texlive-alldocumentation)
+
+%description -n texlive-pst-gears-doc
+This package includes the documentation for texlive-pst-gears
+
+%post -n texlive-pst-gears
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-pst-gears
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-pst-gears
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-pst-gears-doc
+%{_texmfdistdir}/doc/generic/pst-gears/Changes
+%{_texmfdistdir}/doc/generic/pst-gears/README.md
+%{_texmfdistdir}/doc/generic/pst-gears/pst-gears-doc.bib
+%{_texmfdistdir}/doc/generic/pst-gears/pst-gears-doc.pdf
+%{_texmfdistdir}/doc/generic/pst-gears/pst-gears-doc.tex
+
+%files -n texlive-pst-gears
+%{_texmfdistdir}/tex/generic/pst-gears/pst-gears.tex
+%{_texmfdistdir}/tex/latex/pst-gears/pst-gears.sty
 
 %package -n texlive-pst-geo
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.09svn74247
@@ -20512,9 +20979,9 @@ Provides:       tex(wfraczon.dat)
 Provides:       tex(wmaglin.dat)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source275:      pst-geo.tar.xz
-Source276:      pst-geo.doc.tar.xz
+# from 20260301
+Source279:      pst-geo.tar.xz
+Source280:      pst-geo.doc.tar.xz
 
 %description -n texlive-pst-geo
 The package offers a set of PSTricks related packages for
@@ -20672,9 +21139,9 @@ Provides:       tex(pst-geometrictools.sty)
 Provides:       tex(pst-geometrictools.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source277:      pst-geometrictools.tar.xz
-Source278:      pst-geometrictools.doc.tar.xz
+# from 20260301
+Source281:      pst-geometrictools.tar.xz
+Source282:      pst-geometrictools.doc.tar.xz
 
 %description -n texlive-pst-geometrictools
 This PSTricks package facilitates the drawing of protractors,
@@ -20751,9 +21218,9 @@ Provides:       tex(pst-gr3d.sty)
 Provides:       tex(pst-gr3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source279:      pst-gr3d.tar.xz
-Source280:      pst-gr3d.doc.tar.xz
+# from 20260301
+Source283:      pst-gr3d.tar.xz
+Source284:      pst-gr3d.doc.tar.xz
 
 %description -n texlive-pst-gr3d
 This PSTricks package provides a command \PstGridThreeD that
@@ -20799,7 +21266,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-gr3d/pst-gr3d.sty
 
 %package -n texlive-pst-grad
-Version:        %{texlive_version}.%{texlive_noarch}.1.06svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.06svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Filling with colour gradients, using PSTricks
@@ -20830,9 +21297,9 @@ Provides:       tex(pst-grad.sty)
 Provides:       tex(pst-grad.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source281:      pst-grad.tar.xz
-Source282:      pst-grad.doc.tar.xz
+# from 20260301
+Source285:      pst-grad.tar.xz
+Source286:      pst-grad.doc.tar.xz
 
 %description -n texlive-pst-grad
 The package fills with colour gradients, using PSTricks. The
@@ -20840,7 +21307,7 @@ RGB, CMYK and HSB models are supported. Other colour gradient
 mechanisms are to be found in package pst-slpe.
 
 %package -n texlive-pst-grad-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.06svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.06svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-grad
 License:        LPPL-1.0
@@ -20909,9 +21376,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pst-graphicx-doc >= %{texlive_version}
 Provides:       tex(pst-graphicx.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source283:      pst-graphicx.tar.xz
-Source284:      pst-graphicx.doc.tar.xz
+# from 20260301
+Source287:      pst-graphicx.tar.xz
+Source288:      pst-graphicx.doc.tar.xz
 
 %description -n texlive-pst-graphicx
 The package provides a version of graphicx that avoids loading
@@ -20988,9 +21455,9 @@ Provides:       tex(pst-hsb.sty)
 Provides:       tex(pst-hsb.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source285:      pst-hsb.tar.xz
-Source286:      pst-hsb.doc.tar.xz
+# from 20260301
+Source289:      pst-hsb.tar.xz
+Source290:      pst-hsb.doc.tar.xz
 
 %description -n texlive-pst-hsb
 This is a PSTricks-related package. It can plot lines and/or
@@ -21071,9 +21538,9 @@ Provides:       tex(infix-RPN.tex)
 Provides:       tex(pst-infixplot.sty)
 Provides:       tex(pst-infixplot.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source287:      pst-infixplot.tar.xz
-Source288:      pst-infixplot.doc.tar.xz
+# from 20260301
+Source291:      pst-infixplot.tar.xz
+Source292:      pst-infixplot.doc.tar.xz
 
 %description -n texlive-pst-infixplot
 Plotting functions with pst-plot is very powerful but sometimes
@@ -21159,9 +21626,9 @@ Requires:       tex(pst-node.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source289:      pst-intersect.tar.xz
-Source290:      pst-intersect.doc.tar.xz
+# from 20260301
+Source293:      pst-intersect.tar.xz
+Source294:      pst-intersect.doc.tar.xz
 
 %description -n texlive-pst-intersect
 The package computes the intersections between arbitrary
@@ -21240,9 +21707,9 @@ Suggests:       texlive-pst-jtree-doc >= %{texlive_version}
 Provides:       tex(pst-jtree.sty)
 Provides:       tex(pst-jtree.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source291:      pst-jtree.tar.xz
-Source292:      pst-jtree.doc.tar.xz
+# from 20260301
+Source295:      pst-jtree.tar.xz
+Source296:      pst-jtree.doc.tar.xz
 
 %description -n texlive-pst-jtree
 jTree uses PSTricks to enable linguists to typeset complex
@@ -21290,6 +21757,132 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/pst-jtree/pst-jtree.tex
 %{_texmfdistdir}/tex/latex/pst-jtree/pst-jtree.sty
 
+%package -n texlive-pst-kepler
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77232
+Release:        0
+License:        LPPL-1.0
+Summary:        Models for Johannes Kepler's view of the world
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-pst-kepler-doc >= %{texlive_version}
+Provides:       tex(pst-kepler.sty)
+Provides:       tex(pst-kepler.tex)
+Requires:       tex(animate.sty)
+Requires:       tex(hvextern.sty)
+Requires:       tex(pst-eucl.sty)
+Requires:       tex(pstricks.sty)
+Requires:       tex(xint.sty)
+Requires:       tex(xintexpr.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source297:      pst-kepler.tar.xz
+Source298:      pst-kepler.doc.tar.xz
+
+%description -n texlive-pst-kepler
+This package is dedicated to Jurgen Gilg (8.2.1966-6.5.2022).
+It defines macros which show Johannes Kepler's view of the
+world.
+
+%package -n texlive-pst-kepler-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77232
+Release:        0
+Summary:        Documentation for texlive-pst-kepler
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-kepler and texlive-alldocumentation)
+
+%description -n texlive-pst-kepler-doc
+This package includes the documentation for texlive-pst-kepler
+
+%post -n texlive-pst-kepler
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-pst-kepler
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-pst-kepler
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-pst-kepler-doc
+%{_texmfdistdir}/doc/generic/pst-kepler/Changes
+%{_texmfdistdir}/doc/generic/pst-kepler/README.md
+%{_texmfdistdir}/doc/generic/pst-kepler/images/Brahe.jpg
+%{_texmfdistdir}/doc/generic/pst-kepler/images/Kepler2ndLaw-gif.gif
+%{_texmfdistdir}/doc/generic/pst-kepler/images/Kepler2ndLaw-gif.tex
+%{_texmfdistdir}/doc/generic/pst-kepler/images/Keplerienne3.pdf
+%{_texmfdistdir}/doc/generic/pst-kepler/images/Keplerienne3.tex
+%{_texmfdistdir}/doc/generic/pst-kepler/images/astronomia_nova.jpg
+%{_texmfdistdir}/doc/generic/pst-kepler/images/cube.pdf
+%{_texmfdistdir}/doc/generic/pst-kepler/images/cube.tex
+%{_texmfdistdir}/doc/generic/pst-kepler/images/dioptrice.jpg
+%{_texmfdistdir}/doc/generic/pst-kepler/images/dode.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/dodekaeder.pdf
+%{_texmfdistdir}/doc/generic/pst-kepler/images/dodekaeder.tex
+%{_texmfdistdir}/doc/generic/pst-kepler/images/earth-sun.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/earth.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/harmony.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/hexa.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/ikosa.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/ikosaeder.pdf
+%{_texmfdistdir}/doc/generic/pst-kepler/images/ikosaeder.tex
+%{_texmfdistdir}/doc/generic/pst-kepler/images/image0.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/jupiter.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/kepler_model.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/kepler_picture.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/mars.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/mercury.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/model.pdf
+%{_texmfdistdir}/doc/generic/pst-kepler/images/model.tex
+%{_texmfdistdir}/doc/generic/pst-kepler/images/mystery.jpg
+%{_texmfdistdir}/doc/generic/pst-kepler/images/octa.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/octaedre.pdf
+%{_texmfdistdir}/doc/generic/pst-kepler/images/octaedre.tex
+%{_texmfdistdir}/doc/generic/pst-kepler/images/perihelion.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/rudolphine.jpg
+%{_texmfdistdir}/doc/generic/pst-kepler/images/saturn.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/tet.pdf
+%{_texmfdistdir}/doc/generic/pst-kepler/images/tet.tex
+%{_texmfdistdir}/doc/generic/pst-kepler/images/tetra.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/tex2gif.sh
+%{_texmfdistdir}/doc/generic/pst-kepler/images/universe.png
+%{_texmfdistdir}/doc/generic/pst-kepler/images/venus.png
+%{_texmfdistdir}/doc/generic/pst-kepler/pst-kepler-doc.bib
+%{_texmfdistdir}/doc/generic/pst-kepler/pst-kepler-doc.pdf
+%{_texmfdistdir}/doc/generic/pst-kepler/pst-kepler-doc.tex
+
+%files -n texlive-pst-kepler
+%{_texmfdistdir}/tex/generic/pst-kepler/pst-kepler.tex
+%{_texmfdistdir}/tex/latex/pst-kepler/pst-kepler.sty
+
 %package -n texlive-pst-knot
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn16033
 Release:        0
@@ -21322,9 +21915,9 @@ Provides:       tex(pst-knot.sty)
 Provides:       tex(pst-knot.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source293:      pst-knot.tar.xz
-Source294:      pst-knot.doc.tar.xz
+# from 20260301
+Source299:      pst-knot.tar.xz
+Source300:      pst-knot.doc.tar.xz
 
 %description -n texlive-pst-knot
 The package can produce a fair range of knot shapes, with all
@@ -21371,7 +21964,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-knot/pst-knot.sty
 
 %package -n texlive-pst-labo
-Version:        %{texlive_version}.%{texlive_noarch}.2.06svn67147
+Version:        %{texlive_version}.%{texlive_noarch}.2.07svn74874
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw objects for Chemistry laboratories
@@ -21403,9 +21996,9 @@ Provides:       tex(pst-labo.tex)
 Provides:       tex(pst-laboObj.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source295:      pst-labo.tar.xz
-Source296:      pst-labo.doc.tar.xz
+# from 20260301
+Source301:      pst-labo.tar.xz
+Source302:      pst-labo.doc.tar.xz
 
 %description -n texlive-pst-labo
 Pst-labo is a PSTricks related package for drawing basic and
@@ -21414,7 +22007,7 @@ illuminated with plenty of illustrations together with their
 source code, making it an easy read.
 
 %package -n texlive-pst-labo-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.06svn67147
+Version:        %{texlive_version}.%{texlive_noarch}.2.07svn74874
 Release:        0
 Summary:        Documentation for texlive-pst-labo
 License:        LPPL-1.0
@@ -21488,9 +22081,9 @@ Requires:       tex(arrayjobx.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source297:      pst-layout.tar.xz
-Source298:      pst-layout.doc.tar.xz
+# from 20260301
+Source303:      pst-layout.tar.xz
+Source304:      pst-layout.doc.tar.xz
 
 %description -n texlive-pst-layout
 The package provides a means of creating elaborate
@@ -21568,9 +22161,9 @@ Provides:       tex(pst-lens.sty)
 Provides:       tex(pst-lens.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source299:      pst-lens.tar.xz
-Source300:      pst-lens.doc.tar.xz
+# from 20260301
+Source305:      pst-lens.tar.xz
+Source306:      pst-lens.doc.tar.xz
 
 %description -n texlive-pst-lens
 This PSTricks package provides a really rather simple command
@@ -21647,9 +22240,9 @@ Provides:       tex(pst-light3d.sty)
 Provides:       tex(pst-light3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source301:      pst-light3d.tar.xz
-Source302:      pst-light3d.doc.tar.xz
+# from 20260301
+Source307:      pst-light3d.tar.xz
+Source308:      pst-light3d.doc.tar.xz
 
 %description -n texlive-pst-light3d
 A PSTricks package for three dimensional lighting effects on
@@ -21729,9 +22322,9 @@ Provides:       tex(pst-lsystem.sty)
 Provides:       tex(pst-lsystem.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source303:      pst-lsystem.tar.xz
-Source304:      pst-lsystem.doc.tar.xz
+# from 20260301
+Source309:      pst-lsystem.tar.xz
+Source310:      pst-lsystem.doc.tar.xz
 
 %description -n texlive-pst-lsystem
 pst-lsystem is a PSTricks based package for creating images
@@ -21814,9 +22407,9 @@ Requires:       tex(multido.sty)
 Requires:       tex(pst-3d.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source305:      pst-magneticfield.tar.xz
-Source306:      pst-magneticfield.doc.tar.xz
+# from 20260301
+Source311:      pst-magneticfield.tar.xz
+Source312:      pst-magneticfield.doc.tar.xz
 
 %description -n texlive-pst-magneticfield
 pst-magneticfield is a PSTricks related package to draw the
@@ -21898,9 +22491,9 @@ Provides:       tex(pst-marble.sty)
 Provides:       tex(pst-marble.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source307:      pst-marble.tar.xz
-Source308:      pst-marble.doc.tar.xz
+# from 20260301
+Source313:      pst-marble.tar.xz
+Source314:      pst-marble.doc.tar.xz
 
 %description -n texlive-pst-marble
 This is a PSTricks package to draw marble-like patterns.
@@ -21982,8 +22575,93 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/pst-marble/pst-marble.tex
 %{_texmfdistdir}/tex/latex/pst-marble/pst-marble.sty
 
+%package -n texlive-pst-massspring
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77131
+Release:        0
+License:        LPPL-1.0
+Summary:        Create animations for two masses connected by a spring
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-pst-massspring-doc >= %{texlive_version}
+Provides:       tex(pst-massspring.sty)
+Provides:       tex(pst-massspring.tex)
+Requires:       tex(pstricks.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source315:      pst-massspring.tar.xz
+Source316:      pst-massspring.doc.tar.xz
+
+%description -n texlive-pst-massspring
+This package can create animations (gif or pdf) for two masses
+connected by a spring in a free fall.
+
+%package -n texlive-pst-massspring-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77131
+Release:        0
+Summary:        Documentation for texlive-pst-massspring
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-massspring and texlive-alldocumentation)
+
+%description -n texlive-pst-massspring-doc
+This package includes the documentation for texlive-pst-massspring
+
+%post -n texlive-pst-massspring
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-pst-massspring
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-pst-massspring
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-pst-massspring-doc
+%{_texmfdistdir}/doc/generic/pst-massspring/Changes
+%{_texmfdistdir}/doc/generic/pst-massspring/README.md
+%{_texmfdistdir}/doc/generic/pst-massspring/images/image0.pdf
+%{_texmfdistdir}/doc/generic/pst-massspring/images/image0.tex
+%{_texmfdistdir}/doc/generic/pst-massspring/images/image1.pdf
+%{_texmfdistdir}/doc/generic/pst-massspring/images/image1.tex
+%{_texmfdistdir}/doc/generic/pst-massspring/images/image3.png
+%{_texmfdistdir}/doc/generic/pst-massspring/pst-massspring-doc.bib
+%{_texmfdistdir}/doc/generic/pst-massspring/pst-massspring-doc.pdf
+%{_texmfdistdir}/doc/generic/pst-massspring/pst-massspring-doc.tex
+
+%files -n texlive-pst-massspring
+%{_texmfdistdir}/tex/generic/pst-massspring/pst-massspring.tex
+%{_texmfdistdir}/tex/latex/pst-massspring/pst-massspring.sty
+
 %package -n texlive-pst-math
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.67svn67535
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.67svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Enhancement of PostScript math operators to use with PSTricks
@@ -22018,9 +22696,9 @@ Requires:       tex(pst-calculate.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source309:      pst-math.tar.xz
-Source310:      pst-math.doc.tar.xz
+# from 20260301
+Source317:      pst-math.tar.xz
+Source318:      pst-math.doc.tar.xz
 
 %description -n texlive-pst-math
 PostScript lacks a lot of basic operators such as tan, acos,
@@ -22036,7 +22714,7 @@ package also provides a routine SIMPSON for numerical
 integration and a solver of linear equation systems.
 
 %package -n texlive-pst-math-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.67svn67535
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.67svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-math
 License:        LPPL-1.0
@@ -22108,9 +22786,9 @@ Provides:       tex(pst-mirror.sty)
 Provides:       tex(pst-mirror.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source311:      pst-mirror.tar.xz
-Source312:      pst-mirror.doc.tar.xz
+# from 20260301
+Source319:      pst-mirror.tar.xz
+Source320:      pst-mirror.doc.tar.xz
 
 %description -n texlive-pst-mirror
 The package provides commands and supporting PostScript
@@ -22207,9 +22885,9 @@ Provides:       tex(pst-moire.sty)
 Provides:       tex(pst-moire.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source313:      pst-moire.tar.xz
-Source314:      pst-moire.doc.tar.xz
+# from 20260301
+Source321:      pst-moire.tar.xz
+Source322:      pst-moire.doc.tar.xz
 
 %description -n texlive-pst-moire
 This is a PSTricks package to draw moire patterns.
@@ -22266,7 +22944,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-moire/pst-moire.sty
 
 %package -n texlive-pst-node
-Version:        %{texlive_version}.%{texlive_noarch}.1.45svn71773
+Version:        %{texlive_version}.%{texlive_noarch}.1.45svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Nodes and node connections in PSTricks
@@ -22298,9 +22976,9 @@ Provides:       tex(pst-node.tex)
 Provides:       tex(pst-node97.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source315:      pst-node.tar.xz
-Source316:      pst-node.doc.tar.xz
+# from 20260301
+Source323:      pst-node.tar.xz
+Source324:      pst-node.doc.tar.xz
 
 %description -n texlive-pst-node
 The package enables the user to connect information, and to
@@ -22313,7 +22991,7 @@ the pstricks base distribution; the package serves as an
 extension to PSTricks.
 
 %package -n texlive-pst-node-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.45svn71773
+Version:        %{texlive_version}.%{texlive_noarch}.1.45svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-node
 License:        LPPL-1.0
@@ -22359,6 +23037,100 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/pst-node/pst-node97.tex
 %{_texmfdistdir}/tex/latex/pst-node/pst-node.sty
 
+%package -n texlive-pst-nutation
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77145
+Release:        0
+License:        LPPL-1.0
+Summary:        Rotation, precession, nutation of the earth
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-pst-nutation-doc >= %{texlive_version}
+Provides:       tex(pst-nutation.sty)
+Provides:       tex(pst-nutation.tex)
+Requires:       tex(pstricks.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source325:      pst-nutation.tar.xz
+Source326:      pst-nutation.doc.tar.xz
+
+%description -n texlive-pst-nutation
+This package illustrates the concepts of rotation, precession,
+and nutation of the earth. pst-nutation defines the command
+\psNutation[options] to simulate the behaviour of the earth.
+
+%package -n texlive-pst-nutation-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77145
+Release:        0
+Summary:        Documentation for texlive-pst-nutation
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-nutation and texlive-alldocumentation)
+
+%description -n texlive-pst-nutation-doc
+This package includes the documentation for texlive-pst-nutation
+
+%post -n texlive-pst-nutation
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-pst-nutation
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-pst-nutation
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-pst-nutation-doc
+%{_texmfdistdir}/doc/generic/pst-nutation/Changes
+%{_texmfdistdir}/doc/generic/pst-nutation/README.md
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/pst-nutation-doc-anim1.gif
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/pst-nutation-doc-anim1.tex
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/pst-nutation-doc-anim2.gif
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/pst-nutation-doc-anim2.tex
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/pst-nutation-doc-anim3.gif
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/pst-nutation-doc-anim3.tex
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/pst-nutation-doc-anim4.gif
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/pst-nutation-doc-anim4.tex
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/pst-nutation-doc-anim5.gif
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/pst-nutation-doc-anim5.tex
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/readme
+%{_texmfdistdir}/doc/generic/pst-nutation/animations/tex2gif.sh
+%{_texmfdistdir}/doc/generic/pst-nutation/pst-nutation-doc.bib
+%{_texmfdistdir}/doc/generic/pst-nutation/pst-nutation-doc.pdf
+%{_texmfdistdir}/doc/generic/pst-nutation/pst-nutation-doc.tex
+
+%files -n texlive-pst-nutation
+%{_texmfdistdir}/dvips/pst-nutation/pst-nutation.pro
+%{_texmfdistdir}/tex/generic/pst-nutation/pst-nutation.tex
+%{_texmfdistdir}/tex/latex/pst-nutation/pst-nutation.sty
+
 %package -n texlive-pst-ob3d
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.22svn54514
 Release:        0
@@ -22391,9 +23163,9 @@ Provides:       tex(pst-ob3d.sty)
 Provides:       tex(pst-ob3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source317:      pst-ob3d.tar.xz
-Source318:      pst-ob3d.doc.tar.xz
+# from 20260301
+Source327:      pst-ob3d.tar.xz
+Source328:      pst-ob3d.doc.tar.xz
 
 %description -n texlive-pst-ob3d
 The package uses PSTricks to provide basic three-dimensional
@@ -22471,9 +23243,9 @@ Provides:       tex(pst-ode.sty)
 Provides:       tex(pst-ode.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source319:      pst-ode.tar.xz
-Source320:      pst-ode.doc.tar.xz
+# from 20260301
+Source329:      pst-ode.tar.xz
+Source330:      pst-ode.doc.tar.xz
 
 %description -n texlive-pst-ode
 The package defines \pstODEsolve for solving initial value
@@ -22570,9 +23342,9 @@ Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks-add.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source321:      pst-optexp.tar.xz
-Source322:      pst-optexp.doc.tar.xz
+# from 20260301
+Source331:      pst-optexp.tar.xz
+Source332:      pst-optexp.doc.tar.xz
 
 %description -n texlive-pst-optexp
 The package is a collection of optical components that
@@ -22657,9 +23429,9 @@ Provides:       tex(pst-optic.sty)
 Provides:       tex(pst-optic.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source323:      pst-optic.tar.xz
-Source324:      pst-optic.doc.tar.xz
+# from 20260301
+Source333:      pst-optic.tar.xz
+Source334:      pst-optic.doc.tar.xz
 
 %description -n texlive-pst-optic
 A package for drawing both reflective and refractive optics
@@ -22738,9 +23510,9 @@ Provides:       tex(pst-osci.sty)
 Provides:       tex(pst-osci.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source325:      pst-osci.tar.xz
-Source326:      pst-osci.doc.tar.xz
+# from 20260301
+Source335:      pst-osci.tar.xz
+Source336:      pst-osci.doc.tar.xz
 
 %description -n texlive-pst-osci
 This PSTricks package enables you to produce oscilloscope
@@ -22791,7 +23563,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-osci/pst-osci.sty
 
 %package -n texlive-pst-ovl
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.07bsvn54963
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.07bsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Create and manage graphical overlays
@@ -22822,9 +23594,9 @@ Provides:       tex(pst-ovl.sty)
 Provides:       tex(pst-ovl.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source327:      pst-ovl.tar.xz
-Source328:      pst-ovl.doc.tar.xz
+# from 20260301
+Source337:      pst-ovl.tar.xz
+Source338:      pst-ovl.doc.tar.xz
 
 %description -n texlive-pst-ovl
 The package is useful when building an image from assorted
@@ -22833,7 +23605,7 @@ package requires pstricks, and shares that package's
 restrictions on usage when generating PDF output.
 
 %package -n texlive-pst-ovl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.07bsvn54963
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.07bsvn77682
 Release:        0
 Summary:        Documentation for texlive-pst-ovl
 License:        LPPL-1.0
@@ -22905,9 +23677,9 @@ Provides:       tex(pst-pad.sty)
 Provides:       tex(pst-pad.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source329:      pst-pad.tar.xz
-Source330:      pst-pad.doc.tar.xz
+# from 20260301
+Source339:      pst-pad.tar.xz
+Source340:      pst-pad.doc.tar.xz
 
 %description -n texlive-pst-pad
 The package collects a set of graphical elements based on
@@ -23564,6 +24336,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/generic/pst-geo/pst-geo-compress.pl \
 	       %{_texmfdistdir}/doc/generic/pst-geo/pst-geo-decompress.pl
@@ -23584,10 +24360,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23620,6 +24392,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Add shebang e.g. correct perl wrapper scripts if any
     for scr in %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/make.sh \
 	       %{_texmfdistdir}/doc/generic/pst-mirror/createEPS/make2.sh \
@@ -23635,14 +24415,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:322} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:323} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23653,6 +24425,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:339} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:340} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
