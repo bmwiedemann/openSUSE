@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 30 09:12:16 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.18.0rc1+git0.36fef17a:
+  * build: update ChangeLog for 4.18.0-rc1
+  * aws-vpc-move-ip: Add awscli_timeout option (#2140) (bsc#1260984)
+  * OCPBUGS-76538: podman-etcd: monitor/stop hardening (#2130)
+  * OCPBUGS-78482: podman-etcd: fix "Peer URLs already exists" in add_member_as_learner (#2136)
+  * Modify the return code when a mismatch between mount state and configuration is detected in monitor operation.
+  * podman-etcd: Preserve standalone voter identity during restart
+  * pgsql: use monitor_user for monitor-calls and use .pgpass when monitor_password is not specified
+  * sfex_lib: dont discard 'const' qualifier
+  * OCPBUGS-76538: podman-etcd: Removed unneeded ETCDCTL_API environment variable
+  * db2: set reintegration when promotion is successful
+
+-------------------------------------------------------------------
+Fri Feb 27 17:56:25 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.17.0+git43.ea0932c3:
+  * portblock: monitor needs to also check state file of inverse action (#2108)
+
+-------------------------------------------------------------------
 Wed Feb 25 10:46:27 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.17.0+git42.a607c299:
