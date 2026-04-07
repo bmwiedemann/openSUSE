@@ -2177,4 +2177,41 @@ Fixed:
     gh#qutebrowser/qutebrowser#8797</comment>
     <requestid>1320775</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>a69ba8f0b3068c64ab99386e80fd78c4</srcmd5>
+    <version>3.7.0</version>
+    <time>1775572374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.7.0:
+Added:
+  * New `:quickmark-reload` and `:bookmark-reload` commands to
+    reload quick-/bookmarks from disk.
+    gh#qutebrowser/qutebrowser#8845
+Deprecated:
+  * Support for Python 3.9 is not tested anymore, and will be
+    fully removed in the next release.
+    gh#qutebrowser/qutebrowser#8731
+Fixed:
+  * Added a workaround for graphic/flickering issues with
+    Qt 6.11.0, AMD graphics and Wayland.
+    gh#qutebrowser/qutebrowser#8908
+  * Compatibility with PDF.js &gt;= 5.5.207.
+    gh#qutebrowser/qutebrowser#8885
+  * datalist dropdowns not opening correctly on Wayland/Sway.
+    This was caused by an old workaround for a different
+    QtWebEngine issue, which is now disabled for
+    QtWebEngine 6.6.3 and newer.
+    gh#qutebrowser/qutebrowser#8831
+  * The workaround avoiding Google blocking sign ins from
+    qutebrowser was updated, although it's unclear if this will
+    fix the issue as the behavior is wildly inconsistent.
+  * Added a workaround for QtWebEngine 6.11 crashing on
+    Google Mail / Meet (#8914).
+    gh#qutebrowser/qutebrowser#8914
+  * The workaround avoiding crashes with Qt 6.10.1 and
+    `qt.workarounds.disable_hangouts_extension` (or `--version`)
+    has now been extended to Qt 6.10.2 as well.
+    gh#qutebrowser/qutebrowser#8785</comment>
+    <requestid>1344702</requestid>
+  </revision>
 </revisionlist>
