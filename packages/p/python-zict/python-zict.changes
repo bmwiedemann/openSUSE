@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  7 12:21:13 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Skip (previously invalidated) test failing on Python 3.14
+
+-------------------------------------------------------------------
 Wed Nov 20 15:56:31 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove lmdb test requirement: the tests have been disabled anyway
