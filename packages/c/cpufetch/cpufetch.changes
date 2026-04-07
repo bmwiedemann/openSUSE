@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 22 16:39:15 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.07:
+  * [Apple] Implement fallback frequency calculation
+  * [X86] Add old Intel and AMD CPUs
+  * [X86] Fix 2 bugs in --accurate-pp
+  * [ARM] Add (experimental) Windows on Arm support 
+  * [ARM] Add support for a lot of new SoCs
+  * [ARM] Add automatic SoC inferring from device tree (**)
+  * [RISCV] Significantly improved support for RISC-V, specially uarch 
+    detection and multi-letter extension support.
+  * This was a response for the large number of ARM SoCs out there. 
+    It's not realistic to detect one by one manually so we needed some 
+    automatic approach to make the SoC detection a bit more scalable.
+  * This release also fixes some bugs, adds small features and adds support
+    for some new hardware. See the commit list for more details.
+
+- dropped patch cpufetch-aa94389.patch
+- dropped patch fix-Makefile.patch
+
+-------------------------------------------------------------------
 Thu Mar 13 12:55:07 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - fix-Makefile.patch: installing a man page with the suffix
