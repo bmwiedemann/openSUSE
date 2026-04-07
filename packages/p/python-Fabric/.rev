@@ -446,4 +446,16 @@
 </comment>
     <requestid>1300021</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>89adef6924ec9254047ef3f9bf5cf689</srcmd5>
+    <version>3.2.3</version>
+    <time>1775572407</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.3:
+  * :release:`3.2.3 &lt;2026-04-05&gt;`
+  * :support:`- backported` Tweak packaging metadata to reflect
+    that Invoke 3.0 has a backwards incompatible API change that
+    we can't use yet.</comment>
+    <requestid>1344782</requestid>
+  </revision>
 </revisionlist>

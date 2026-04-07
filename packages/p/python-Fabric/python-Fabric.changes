@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  6 20:12:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * :release:`3.2.3 <2026-04-05>`
+  * :support:`- backported` Tweak packaging metadata to reflect
+    that Invoke 3.0 has a backwards incompatible API change that
+    we can't use yet.
+
+-------------------------------------------------------------------
 Thu Aug 14 13:29:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

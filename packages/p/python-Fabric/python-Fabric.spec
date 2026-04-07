@@ -1,7 +1,7 @@
 #
 # spec file for package python-Fabric
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Fabric
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        A Pythonic tool for remote execution and deployment
 License:        BSD-2-Clause
@@ -35,9 +35,9 @@ Patch0:         fix-executable.patch
 Patch1:         fix-test-deps.patch
 # PATCH-FIX-UPSTREAM gh#fabric/fabric#2249
 Patch2:         support-pytest-8.patch
-BuildRequires:  %{python_module Deprecated}
-BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module invoke >= 2.0}
+BuildRequires:  %{python_module Deprecated >= 1.2}
+BuildRequires:  %{python_module decorator >= 5}
+BuildRequires:  %{python_module invoke >= 2.0 with %python-invoke < 3.0}
 BuildRequires:  %{python_module lexicon}
 BuildRequires:  %{python_module paramiko >= 3.2}
 BuildRequires:  %{python_module pip}
@@ -46,10 +46,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Deprecated
-Requires:       python-decorator
-Requires:       python-invoke >= 2.0
+Requires:       python-Deprecated >= 1.2
+Requires:       python-decorator >= 5
 Requires:       python-paramiko >= 3.2
+Requires:       (python-invoke >= 2.0 with python-invoke < 3.0)
 Conflicts:      python-Fabric3
 Provides:       python-Fabric2 = %{version}
 Provides:       python-Fabric3 = %{version}
