@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  3 10:51:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 11.0.5:
+  * Add project logo and banner. Closes {gh}522
+  * Fix broken pipx documentation link. Closes {gh}386
+  * Enable check_untyped_defs in mypy configuration. Fix all
+    resulting type errors.
+
+-------------------------------------------------------------------
 Tue Mar 31 01:30:07 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 11.0.4:

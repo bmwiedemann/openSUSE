@@ -306,4 +306,12 @@ update to 4.1.1</comment>
   * Add Void Linux platform detection.</comment>
     <requestid>1343804</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a8d25fb6ea1d74e1de9a5074094c91ae</srcmd5>
+    <version>11.0.5</version>
+    <time>1775572407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344780</requestid>
+  </revision>
 </revisionlist>
