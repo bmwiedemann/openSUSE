@@ -35,4 +35,14 @@
     <comment></comment>
     <requestid>1301601</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b80b966dbc7a35dddb485856ecf9d127</srcmd5>
+    <version>2.4.1</version>
+    <time>1775572387</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with pyside + qt 6.11
+  * Add fix-pyside-for-qt-6.11.patch
+</comment>
+    <requestid>1344726</requestid>
+  </revision>
 </revisionlist>

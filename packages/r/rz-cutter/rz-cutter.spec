@@ -1,8 +1,7 @@
 #
 # spec file for package rz-cutter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +25,7 @@ Summary:        GUI for Rizin reverse engineering framework
 License:        GPL-3.0-only
 URL:            https://github.com/rizinorg/cutter
 Source0:        https://github.com/rizinorg/cutter/releases/download/v%{version}/Cutter-v%{version}-src.tar.gz
+Patch0:         fix-pyside-for-qt-6.11.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
