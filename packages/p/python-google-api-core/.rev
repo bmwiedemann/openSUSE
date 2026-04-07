@@ -486,4 +486,12 @@
 - Update BuildRequires from pyproject.toml (forwarded request 1334753 from glaubitz)</comment>
     <requestid>1334762</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9a75447c5f6d22e82725f5dafb07d3eb</srcmd5>
+    <version>2.30.2</version>
+    <time>1775572468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344930</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  4 10:40:45 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.30.2
+  * Bug Fixes
+    - allow Protobuf 7.x (#16532) (ffb4b712121d04a38399e0bd3dc9773e96798564)
+- Changes from 2.30.1
+  * Bug Fixes
+    - Allow Protobuf 7.x, require Python 3.9 (#16102) (ec9262c45055d3d2b596cdde1649d3ce90b4347d)
+    - Require Python 3.9 (ec9262c45055d3d2b596cdde1649d3ce90b4347d)
+
+-------------------------------------------------------------------
 Tue Feb 24 13:53:15 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.30.0
