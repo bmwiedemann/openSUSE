@@ -32,7 +32,7 @@
 %bcond_with stub_config
 
 Name:           netbird
-Version:        0.67.3
+Version:        0.67.4
 Release:        0
 Summary:        Mesh VPN based on WireGuard
 License:        AGPL-3.0-only AND BSD-3-Clause

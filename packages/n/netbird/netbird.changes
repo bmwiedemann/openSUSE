@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  5 15:57:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.67.4:
+  - [client] Fix flaky TestServiceLifecycle/Restart on FreeBSD by
+    @lixmal in #5786
+  - [client] Add GetSelectedClientRoutes to route manager and
+    update DNS route check by @mlsmaycon in #5802
+
+-------------------------------------------------------------------
 Thu Apr  2 23:01:24 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.67.3:
