@@ -1,83 +1,123 @@
 -------------------------------------------------------------------
+Tue Apr  7 10:16:08 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.10.34
+Fix unicode paths
+
+-------------------------------------------------------------------
+Tue Apr  7 06:42:53 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.10.33
+- Fix core on windows
+- Improve UI
+- Update sing-box to 1.13.6
+
+-------------------------------------------------------------------
+Sat Apr  4 19:57:49 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.10.32
+- Tweak UI
+- Improve TUN mode
+- Fix network field
+- Fix mieru links
+- Fix Socks proxy
+
+-------------------------------------------------------------------
+Thu Apr  2 18:08:01 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.10.30
+- Improve UI 
+- Fix Total Downloads and Total Uploads statistic on info page
+- Update sing-box to 1.13.5
+
+-------------------------------------------------------------------
 Sun Mar 29 21:06:05 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.29
-- Fix TUN mode - Fix usage duration display - Fix DateTime
-display - Update Links
+- Fix TUN mode 
+- Fix usage duration display 
+- Fix DateTime display 
+- Update Links
 
 -------------------------------------------------------------------
 Sun Mar 29 15:10:37 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.28
-- Refract UI - Add information page - Add announcements - Add
-Juicity - Add TrustTunnel - Fix NaiveProxy (working on x64 and
-arm64 only for now) - Improve RAM usage - Add fields for HTTP and
-Socks proxy - Update sing-box - Improve RAM memory usage
+- Refract UI 
+- Add information page 
+- Add announcements 
+- Add Juicity protocol
+- Add TrustTunnel protocol
+- Fix NaiveProxy protocol (working on x64 and arm64 only for now) 
+- Add fields for HTTP and Socks proxy 
+- Update sing-box 
+- Improve RAM memory usage
 
 -------------------------------------------------------------------
 Mon Mar 16 23:23:21 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update NekoBox to 5.10.27
-Update sing-box
-Improve context menu
-Add more languages
-Fix SSH proxy
-Add fields for HTTP and Socks proxy
+- Update sing-box
+- Improve context menu
+- Add more languages
+- Fix SSH proxy
 
 -------------------------------------------------------------------
 Sun Mar 15 21:17:04 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.26
-Fix core dump issue caused by context menus, add additional
-languages
+- Fix core dump issue caused by context menus
+- Add additional languages
 
 -------------------------------------------------------------------
 Sat Mar 14 15:48:16 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.25
-Add as-link option
+- Add as-link option
 
 -------------------------------------------------------------------
 Fri Mar 13 10:42:24 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.24
-Improve ToolBox
+- Improve ToolBox
 
 -------------------------------------------------------------------
 Thu Mar 12 13:39:48 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.23
-Add support for NaiveProxy
-Add more Qt visual styles
-Add button 'move to group'
-Improve ram usage
-Update sing-box to 1.13.2
+- Add support for NaiveProxy
+- Add more Qt visual styles
+- Add button 'move to group'
+- Improve ram usage
+- Update sing-box to 1.13.2
 
 -------------------------------------------------------------------
 Sat Mar  7 19:10:50 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.22
-Update sing-box to 1.13.0
+- Update sing-box to 1.13.0
 
 -------------------------------------------------------------------
 Fri Mar  6 08:32:42 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.21
-Fix context menu bug, fix toggle window button bug, add more
-translations, improve language selector
+- Fix context menu bug
+- Fix toggle window button bug
+- Add more translations
+- Improve language selector
 
 -------------------------------------------------------------------
 Sun Mar  1 10:04:52 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.20
-Improve gvisor vpn stack, add more settings, update translations
+- Improve gvisor vpn stack, add more settings, update translations
 
 -------------------------------------------------------------------
 Sat Jan  11 23:47:27 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
-Update to 5.9.32
+- Update to 5.9.32
 
 -------------------------------------------------------------------
 Wed Jan  7 20:47:27 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
-Update to 5.9.29 
+- Update to 5.9.29 

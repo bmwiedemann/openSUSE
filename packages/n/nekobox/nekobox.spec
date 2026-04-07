@@ -15,15 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%define core nekobox_core
 Name:           nekobox
-Version: 5.10.29
+Version:        5.10.34
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
 URL:            https://github.com/qr243vbi/nekobox
-Source0: https://github.com/qr243vbi/nekobox/releases/download/%{version}/nekobox-unified-source-%{version}.tar.xz
-BuildRequires:  chrpath
+Source0:        %{url}/releases/download/%{version}/nekobox-unified-source-%{version}.tar.xz
+Source1:        nekobox-qt.spec.in
+Source2:        nekobox-core.spec.in
+
+%if 0%{?suse_version} > 0
+BuildRequires:  patchelf
+%else
+BuildRequires:  (chrpath or patchelf)
+%endif
 BuildRequires:  cmake
 BuildRequires:  %{!?nekobox_golang_package:golang >= 1.25}%{?nekobox_golang_package}
 BuildRequires:  pkgconfig
@@ -42,72 +49,29 @@ BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  gcc-c++
-Provides:       nekoray
-Conflicts:      nekoray
 
 Requires:       %{name}-core
-%if "%{?_vendor}" == "suse"
+Requires:       %{name}-qt
+
+
+%ifarch x86_64 aarch64 arm32 %arm32 %arm64 %x86_64 ppc64le %power64 %riscv riscv32 riscv64 riscv128 %ix86 i386 i486 i586 i686 pentium3 pentium4 athlon geode
+%if 0%{?suse_version}%{?fedora} > 0
+
+%bcond_without upx
+
+%endif
+%endif
+
+%if %{with upx}
+BuildRequires: upx
+%endif
+
+%if 0%{?suse_version} > 0
+BuildRequires:  ccache
 BuildRequires:  libboost_filesystem-devel
-Requires:       google-noto-coloremoji-fonts
-Requires:       google-noto-sans-fonts
 %endif
-%if "%{?_vendor}" == "openEuler"
-%define cmake_opts -S . -B %__builddir -DUSE_HOTKEYS=OFF
-%endif
-
-%define core nekobox_core
-
-%package core
-Summary:        %{summary}
-Provides:  sing-box
-Conflicts: sing-box
-
-%package lang
-Summary:        %{summary}
-
-%description
-%{summary}.
-
-%description core
-%{summary}.
-
-%description lang
-%{summary}.
-
-%prep
-%autosetup -p1 -n nekobox-unified-source-%{version}
-
-%{?!%__builddir:%define __builddir %__cmake_builddir}
-%{?!%__cmake_builddir:%define __cmake_builddir build}
-
-%build
-
-(
-DEST=$PWD/build
-SKIP_UPDATER=y
-GOFLAGS='-mod=vendor %{?gobuildflags}'
-VERSION_SINGBOX="$(cat SingBox.Version)"
-. script/build_go.sh
-)
-
-%if %{undefined optflags}
-%define optflags -O2 -g -m64 -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables
-%endif
-
-(
-%cmake -GNinja "-DSKIP_UPDATE_BUTTON=ON" "-DNKR_DEFAULT_VERSION=%{version}" %{?cmake_opts}
-)
-ninja -C "$(realpath %__builddir)" -v -j %{_smp_build_ncpus}
-
-
-%install
-install -Dm755 $PWD/build/%{core} %{buildroot}%{_libexecdir}/%{name}/%{core}
-DESTDIR="%{buildroot}" ninja -C "$(realpath %__builddir)" -v  install
-chrpath -d                  %{buildroot}%{_libexecdir}/%{name}/%{name}
 
 %files
-%attr(0755, -, -) %{_bindir}/%{name}
-%attr(0755, -, -) %{_libexecdir}/%{name}/%{name}
 %dir %{_libexecdir}/%{name}/public
 %attr(0644, -, -) %{_libexecdir}/%{name}/public/*.*
 %exclude %{_libexecdir}/%{name}/public/*.qm
@@ -118,13 +82,86 @@ chrpath -d                  %{buildroot}%{_libexecdir}/%{name}/%{name}
 %attr(0644, -, -) %{_datadir}/applications/%{name}.desktop
 %license LICENSE
 
+%if "%{?_vendor}" == "openEuler"
+%define cmake_opts -S . -B %__builddir -DUSE_HOTKEYS=OFF
+%endif
+
+%package lang
+Summary:        %{summary}
+
+%description
+%{summary}.
+
+%description lang
+%{summary}.
+
 %files lang
 %attr(0644, -, -) %{_libexecdir}/%{name}/public/*.qm
 
-%files core
-%attr(0755, -, -) %{_bindir}/sing-box
-%dir %{_libexecdir}/%{name}
-%attr(0755, -, -) %{_libexecdir}/%{name}/%{core}
+%prep
+%autosetup -p1 -n nekobox-unified-source-%{version}
+%if 0%{?suse_version} > 0
+rm res/public/emoji.ttf
+%endif
+
+%{?!%__builddir:%define __builddir %__cmake_builddir}
+%{?!%__cmake_builddir:%define __cmake_builddir build}
+%if %{undefined optflags}
+%define optflags -O2 -g -m64 -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables
+%endif
+
+%build
+GOFLAGS='-mod=vendor %{?gobuildflags}'
+
+(
+%cmake -GNinja "-DPROGRAMPREFIX=%{_libexecdir}/%{name}" "-DNKR_DEFAULT_VERSION=%{version}" %{?cmake_opts}
+)
+
+ninja -C "$(realpath %__builddir)" -v -j %{_smp_build_ncpus}
+
+%if %{with upx}
+(
+echo '%%define nekobox_qt_reqs %%{expand:'
+echo %__builddir/nekobox | %_rpmconfigdir/find-requires | sed 's@^@Requires: @g'
+echo '}'
+echo '%%define nekobox_core_reqs %%{expand:'
+echo %__builddir/nekobox_core | %_rpmconfigdir/find-requires | sed 's@^@Requires: @g'
+echo '}'
+) > %{specpartsdir}/nekobox.specpart
+
+cat %{SOURCE1} >> %{specpartsdir}/nekobox.specpart
+cat %{SOURCE2} >> %{specpartsdir}/nekobox.specpart
+
+%else
+%{lua:
+
+function print_source(source)
+local file = io.open(rpm.expand(source), "r")
+if file then
+    local content = file:read("*a")  -- read entire file
+    file:close()
+    print(rpm.expand(content))
+end
+end
+
+print_source('%{SOURCE1}')
+print_source('%{SOURCE2}')
+
+}
+%endif
+
+%install
+DESTDIR="%{buildroot}" ninja -C "$(realpath %__builddir)" -v  install
+
+%if %{with upx}
+for i in nekobox nekobox_core
+do
+u='%{buildroot}%{_libexecdir}/%{name}/'"${i}"
+strip "${u}"
+upx "${u}"
+done
+%endif
 
 %changelog
+
 

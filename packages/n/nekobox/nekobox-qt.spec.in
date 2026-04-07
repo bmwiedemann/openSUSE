@@ -1,0 +1,15 @@
+%package qt
+Summary: Qt GUI binary for NekoBox
+Provides:       nekoray
+Conflicts:      nekoray
+%{?suse_version:Requires:       google-noto-coloremoji-fonts}
+%{?suse_version:Requires:       google-noto-sans-fonts}
+
+%{?nekobox_qt_reqs}
+
+%description qt
+Qt GUI binary for NekoBox
+
+%files qt
+%attr(0755, -, -) %{_bindir}/nekobox
+%attr(0755, -, -) %{_libexecdir}/nekobox/nekobox

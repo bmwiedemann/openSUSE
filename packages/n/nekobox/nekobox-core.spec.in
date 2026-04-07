@@ -1,0 +1,14 @@
+%package core
+Summary: NekoBox core (sing-box with enchancements)
+Provides:       sing-box
+Conflicts:      sing-box
+
+%{?nekobox_core_reqs}
+
+%description core
+NekoBox core (sing-box with enchancements)
+
+%files core
+%attr(0755, -, -) %{_bindir}/sing-box
+%dir %{_libexecdir}/nekobox
+%attr(0755, -, -) %{_libexecdir}/nekobox/nekobox_core
