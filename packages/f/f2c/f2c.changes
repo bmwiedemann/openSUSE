@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct  6 10:52:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 20240504
+  * proc.c: fix another allocation glitch in proc.c
+  * New command-line options -I8 and -cf
+  * Minor updates to makefile.u and addition of fio.h0 in libf2c.zip
+  * Tweaks for pedants who compile with -Werror=strict-aliasing
+  * Tweak sysdep.c to work with newer versions of mingw
+- use tarball from the GitHub mirror to simplify packaging
+- Drop no-longer-needed patches:
+  * f2c-20110801.patch
+  * libf2c-20110801-format-security.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 08:16:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
