@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-trio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           python-sphinxcontrib-trio
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Sphinx extension for documenting Python functions and methods
 License:        Apache-2.0 OR MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/python-trio/sphinxcontrib-trio
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-trio/sphinxcontrib-trio-%{version}.tar.gz
-BuildRequires:  %{python_module Sphinx >= 1.7}
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-trio/sphinxcontrib_trio-%{version}.tar.gz
+BuildRequires:  %{python_module Sphinx >= 2.2}
 BuildRequires:  %{python_module async_generator}
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module cssselect}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module urllib3 >= 1.21.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 1.6
+Requires:       python-Sphinx >= 2.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,8 +47,7 @@ It works by making sphinx's regular directives
 for documenting Python functions and methods smarter.
 
 %prep
-%setup -q -n sphinxcontrib-trio-%{version}
-%autopatch -p1
+%autosetup -p1 -n sphinxcontrib_trio-%{version}
 
 %build
 %pyproject_wheel

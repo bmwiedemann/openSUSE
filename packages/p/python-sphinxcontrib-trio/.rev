@@ -67,4 +67,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285404</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6798fba0339db28a38694300ec29fc4d</srcmd5>
+    <version>1.2.0</version>
+    <time>1775572434</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344865</requestid>
+  </revision>
 </revisionlist>

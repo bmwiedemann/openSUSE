@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 31 05:38:52 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.0:
+  * Fix sphinxcontrib-trio for Sphinx 9.0
+  * Drop support for Sphinx 2.1 and earlier. Drop support for Python 3.5.
+- Use autosetup macro.
+
+-------------------------------------------------------------------
 Fri Jun 13 10:08:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
