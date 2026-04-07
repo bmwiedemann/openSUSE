@@ -69,4 +69,13 @@
   * Refactor process detection (neovim/neovim#23122)</comment>
     <requestid>1175435</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>327bd610e6beb66277739a02dd2d7816</srcmd5>
+    <version>0.14.0</version>
+    <time>1775572487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0:
+  * Expose toggle_follow function for user mappings (#104)</comment>
+    <requestid>1344932</requestid>
+  </revision>
 </revisionlist>

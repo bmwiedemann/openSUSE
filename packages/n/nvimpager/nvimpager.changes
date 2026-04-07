@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:15:53 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Expose toggle_follow function for user mappings (#104)
+
+-------------------------------------------------------------------
 Tue May 21 06:06:01 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.0:
