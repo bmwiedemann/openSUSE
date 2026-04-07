@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2025
-%define texlive_previous 2022
-%define texlive_release  20250308
-%define texlive_noarch   221
-%define biber_version    2.20
+%define texlive_version  2026
+%define texlive_previous 2025
+%define texlive_release  20260301
+%define texlive_noarch   222
+%define biber_version    2.21
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-t
-Version:        2025
+Version:        2026
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -87,7 +87,7 @@ Source0:        texlive-specs-t-rpmlintrc
 Meta package to build tons of noarch texlive packages.
 
 %package -n texlive-pst-pdf
-Version:        %{texlive_version}.%{texlive_noarch}.1.2fsvn56622
+Version:        %{texlive_version}.%{texlive_noarch}.1.2fsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Make PDF versions of graphics by processing between runs
@@ -126,7 +126,7 @@ Requires:       tex(luatex85.sty)
 Requires:       tex(preview.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source1:        pst-pdf.tar.xz
 Source2:        pst-pdf.doc.tar.xz
 
@@ -141,7 +141,7 @@ instead of the original PostScript code. The package works with
 pstricks and requires a recent version of the preview package.
 
 %package -n texlive-pst-pdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2fsvn56622
+Version:        %{texlive_version}.%{texlive_noarch}.1.2fsvn77682
 Release:        0
 Summary:        Documentation for texlive-pst-pdf
 License:        LPPL-1.0
@@ -218,7 +218,7 @@ Provides:       tex(pst-pdgr.sty)
 Provides:       tex(pst-pdgr.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source3:        pst-pdgr.tar.xz
 Source4:        pst-pdgr.doc.tar.xz
 
@@ -304,7 +304,7 @@ Provides:       tex(pst-perspective.tex)
 Requires:       tex(pst-grad.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source5:        pst-perspective.tar.xz
 Source6:        pst-perspective.doc.tar.xz
 
@@ -389,7 +389,7 @@ Requires:       tex(pst-3d.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source7:        pst-platon.tar.xz
 Source8:        pst-platon.doc.tar.xz
 
@@ -437,7 +437,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-platon/pst-platon.sty
 
 %package -n texlive-pst-plot
-Version:        %{texlive_version}.%{texlive_noarch}.1.94svn65346
+Version:        %{texlive_version}.%{texlive_noarch}.1.94svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Plot data using PSTricks
@@ -471,7 +471,7 @@ Requires:       tex(multido.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source9:        pst-plot.tar.xz
 Source10:       pst-plot.doc.tar.xz
 
@@ -481,7 +481,7 @@ files), using PSTricks. Plots may be configured using a wide
 variety of parameters.
 
 %package -n texlive-pst-plot-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.94svn65346
+Version:        %{texlive_version}.%{texlive_noarch}.1.94svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-plot
 License:        LPPL-1.0
@@ -540,7 +540,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-plot/pst-plot.sty
 
 %package -n texlive-pst-poker
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.03bsvn65818
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.04asvn75726
 Release:        0
 License:        LGPL-2.1-or-later
 Summary:        Drawing poker cards
@@ -574,7 +574,7 @@ Requires:       tex(pst-blur.sty)
 Requires:       tex(pst-fill.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source11:       pst-poker.tar.xz
 Source12:       pst-poker.doc.tar.xz
 
@@ -583,7 +583,7 @@ This PSTricks related package can create poker cards in various
 manners.
 
 %package -n texlive-pst-poker-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.03bsvn65818
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.04asvn75726
 Release:        0
 Summary:        Documentation for texlive-pst-poker
 License:        LGPL-2.1-or-later
@@ -701,7 +701,7 @@ Provides:       tex(pst-poly.sty)
 Provides:       tex(pst-poly.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source13:       pst-poly.tar.xz
 Source14:       pst-poly.doc.tar.xz
 
@@ -785,7 +785,7 @@ Provides:       tex(pst-pulley.sty)
 Provides:       tex(pst-pulley.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source15:       pst-pulley.tar.xz
 Source16:       pst-pulley.doc.tar.xz
 
@@ -868,7 +868,7 @@ Provides:       tex(pst-qtree.tex)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pst-tree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source17:       pst-qtree.tar.xz
 Source18:       pst-qtree.doc.tar.xz
 
@@ -947,7 +947,7 @@ Provides:       tex(pst-rputover.tex)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source19:       pst-rputover.tar.xz
 Source20:       pst-rputover.doc.tar.xz
 
@@ -1026,7 +1026,7 @@ Provides:       tex(pst-rubans.sty)
 Provides:       tex(pst-rubans.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source21:       pst-rubans.tar.xz
 Source22:       pst-rubans.doc.tar.xz
 
@@ -1110,7 +1110,7 @@ Provides:       tex(pst-shell.sty)
 Provides:       tex(pst-shell.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source23:       pst-shell.tar.xz
 Source24:       pst-shell.doc.tar.xz
 
@@ -1219,7 +1219,7 @@ Provides:       tex(pst-sigsys.sty)
 Provides:       tex(pst-sigsys.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source25:       pst-sigsys.tar.xz
 Source26:       pst-sigsys.doc.tar.xz
 
@@ -1306,7 +1306,7 @@ Provides:       tex(pst-slpe.sty)
 Provides:       tex(pst-slpe.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source27:       pst-slpe.tar.xz
 Source28:       pst-slpe.doc.tar.xz
 
@@ -1392,7 +1392,7 @@ Provides:       tex(pst-solarsystem.sty)
 Provides:       tex(pst-solarsystem.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source29:       pst-solarsystem.tar.xz
 Source30:       pst-solarsystem.doc.tar.xz
 
@@ -1478,7 +1478,7 @@ Provides:       tex(pst-solides3d.sty)
 Provides:       tex(pst-solides3d.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source31:       pst-solides3d.tar.xz
 Source32:       pst-solides3d.doc.tar.xz
 
@@ -1697,7 +1697,7 @@ Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(pstricks-add.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source33:       pst-soroban.tar.xz
 Source34:       pst-soroban.doc.tar.xz
 
@@ -1778,7 +1778,7 @@ Requires:       tex(multido.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source35:       pst-spectra.tar.xz
 Source36:       pst-spectra.doc.tar.xz
 
@@ -1829,6 +1829,100 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/pst-spectra/pst-spectra.tex
 %{_texmfdistdir}/tex/latex/pst-spectra/pst-spectra.sty
 
+%package -n texlive-pst-sphericaltrochoid
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77173
+Release:        0
+License:        LPPL-1.0
+Summary:        Create animations of a spherical trochoid
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-pst-sphericaltrochoid-doc >= %{texlive_version}
+Provides:       tex(pst-sphericaltrochoid.sty)
+Provides:       tex(pst-sphericaltrochoid.tex)
+Requires:       tex(pstricks.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source37:       pst-sphericaltrochoid.tar.xz
+Source38:       pst-sphericaltrochoid.doc.tar.xz
+
+%description -n texlive-pst-sphericaltrochoid
+This package simulates the generation of a spherical trochoid
+by a point on a circle rolling without sliding along the edge
+of another circle, but on the same sphere. (See
+https://demonstrations.wolfram.com/SphericalTrochoid/)
+
+%package -n texlive-pst-sphericaltrochoid-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77173
+Release:        0
+Summary:        Documentation for texlive-pst-sphericaltrochoid
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-pst-sphericaltrochoid and texlive-alldocumentation)
+
+%description -n texlive-pst-sphericaltrochoid-doc
+This package includes the documentation for texlive-pst-sphericaltrochoid
+
+%post -n texlive-pst-sphericaltrochoid
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-pst-sphericaltrochoid
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-pst-sphericaltrochoid
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-pst-sphericaltrochoid-doc
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/Changes
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/README.md
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/READ.me
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/pst-sphericaltrochoid-doc-anim1.gif
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/pst-sphericaltrochoid-doc-anim1.tex
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/pst-sphericaltrochoid-doc-anim2.gif
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/pst-sphericaltrochoid-doc-anim2.tex
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/pst-sphericaltrochoid-doc-anim3.gif
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/pst-sphericaltrochoid-doc-anim3.tex
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/pst-sphericaltrochoid-doc-anim4.gif
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/pst-sphericaltrochoid-doc-anim4.tex
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/pst-sphericaltrochoid-doc-anim5.gif
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/pst-sphericaltrochoid-doc-anim5.tex
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations/tex2gif.sh
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/pst-sphericaltrochoid-doc.bib
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/pst-sphericaltrochoid-doc.pdf
+%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/pst-sphericaltrochoid-doc.tex
+
+%files -n texlive-pst-sphericaltrochoid
+%{_texmfdistdir}/tex/generic/pst-sphericaltrochoid/pst-sphericaltrochoid.tex
+%{_texmfdistdir}/tex/latex/pst-sphericaltrochoid/pst-sphericaltrochoid.sty
+
 %package -n texlive-pst-spinner
 Version:        %{texlive_version}.%{texlive_noarch}.1.02svn66115
 Release:        0
@@ -1862,9 +1956,9 @@ Provides:       tex(pst-spinner.tex)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source37:       pst-spinner.tar.xz
-Source38:       pst-spinner.doc.tar.xz
+# from 20260301
+Source39:       pst-spinner.tar.xz
+Source40:       pst-spinner.doc.tar.xz
 
 %description -n texlive-pst-spinner
 This package aims to propose a model of the fidget spinner
@@ -1949,9 +2043,9 @@ Provides:       tex(pst-stru.tex)
 Requires:       tex(multido.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source39:       pst-stru.tar.xz
-Source40:       pst-stru.doc.tar.xz
+# from 20260301
+Source41:       pst-stru.tar.xz
+Source42:       pst-stru.doc.tar.xz
 
 %description -n texlive-pst-stru
 This PSTricks-based package provides facilities to draw
@@ -2026,8 +2120,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source41:       pst-support.doc.tar.xz
+# from 20260301
+Source43:       pst-support.doc.tar.xz
 
 %description -n texlive-pst-support
 An appropriate set of job options, together with process
@@ -2058,7 +2152,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/pst-support/pdflatex-autopstpdf.tco
 
 %package -n texlive-pst-text
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn49542
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Text and character manipulation in PSTricks
@@ -2090,9 +2184,9 @@ Provides:       tex(pst-text.sty)
 Provides:       tex(pst-text.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source42:       pst-text.tar.xz
-Source43:       pst-text.doc.tar.xz
+# from 20260301
+Source44:       pst-text.tar.xz
+Source45:       pst-text.doc.tar.xz
 
 %description -n texlive-pst-text
 Pst-text is a PSTricks based package for plotting text along a
@@ -2100,7 +2194,7 @@ different path and manipulating characters. It includes the
 functionality of the old package pst-char.
 
 %package -n texlive-pst-text-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn49542
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-text
 License:        LPPL-1.0
@@ -2173,9 +2267,9 @@ Provides:       tex(pst-thick.sty)
 Provides:       tex(pst-thick.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source44:       pst-thick.tar.xz
-Source45:       pst-thick.doc.tar.xz
+# from 20260301
+Source46:       pst-thick.tar.xz
+Source47:       pst-thick.doc.tar.xz
 
 %description -n texlive-pst-thick
 The package supports drawing of very thick lines and curves in
@@ -2254,9 +2348,9 @@ Provides:       tex(pst-tools.sty)
 Provides:       tex(pst-tools.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source46:       pst-tools.tar.xz
-Source47:       pst-tools.doc.tar.xz
+# from 20260301
+Source48:       pst-tools.tar.xz
+Source49:       pst-tools.doc.tar.xz
 
 %description -n texlive-pst-tools
 The package provides helper functions for other PSTricks
@@ -2304,7 +2398,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-tools/pst-tools.sty
 
 %package -n texlive-pst-tree
-Version:        %{texlive_version}.%{texlive_noarch}.1.14svn60421
+Version:        %{texlive_version}.%{texlive_noarch}.1.14svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Trees, using PSTricks
@@ -2335,9 +2429,9 @@ Provides:       tex(pst-tree.sty)
 Provides:       tex(pst-tree.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source48:       pst-tree.tar.xz
-Source49:       pst-tree.doc.tar.xz
+# from 20260301
+Source50:       pst-tree.tar.xz
+Source51:       pst-tree.doc.tar.xz
 
 %description -n texlive-pst-tree
 pst-tree is a pstricks package that defines a macro \pstree
@@ -2345,7 +2439,7 @@ which offers a structured way of joining nodes created using
 pst-node in order to draw trees.
 
 %package -n texlive-pst-tree-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.14svn60421
+Version:        %{texlive_version}.%{texlive_noarch}.1.14svn77682
 Release:        0
 Summary:        Documentation for texlive-pst-tree
 License:        LPPL-1.0
@@ -2418,9 +2512,9 @@ Provides:       tex(pst-turtle.tex)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source50:       pst-turtle.tar.xz
-Source51:       pst-turtle.doc.tar.xz
+# from 20260301
+Source52:       pst-turtle.tar.xz
+Source53:       pst-turtle.doc.tar.xz
 
 %description -n texlive-pst-turtle
 This is a PSTricks related package for creating "Turtle"
@@ -2469,7 +2563,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-turtle/pst-turtle.sty
 
 %package -n texlive-pst-tvz
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn23451
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn77256
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw trees with more than one root node, using PSTricks
@@ -2500,9 +2594,9 @@ Provides:       tex(pst-tvz.sty)
 Provides:       tex(pst-tvz.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source52:       pst-tvz.tar.xz
-Source53:       pst-tvz.doc.tar.xz
+# from 20260301
+Source54:       pst-tvz.tar.xz
+Source55:       pst-tvz.doc.tar.xz
 
 %description -n texlive-pst-tvz
 The package uses PSTricks to draw trees with more than one root
@@ -2510,7 +2604,7 @@ node. It is similar to pst-tree, though it uses a different
 placement algorithm.
 
 %package -n texlive-pst-tvz-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn23451
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn77256
 Release:        0
 Summary:        Documentation for texlive-pst-tvz
 License:        LPPL-1.0
@@ -2589,9 +2683,9 @@ Requires:       tex(pst-tree.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source54:       pst-uml.tar.xz
-Source55:       pst-uml.doc.tar.xz
+# from 20260301
+Source56:       pst-uml.tar.xz
+Source57:       pst-uml.doc.tar.xz
 
 %description -n texlive-pst-uml
 This a PSTricks package that provides support for drawing
@@ -2647,7 +2741,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pst-uml/pst-uml.sty
 
 %package -n texlive-pst-vectorian
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.41svn60488
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.42svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Printing ornaments
@@ -2678,16 +2772,16 @@ Provides:       tex(psvectorian.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source56:       pst-vectorian.tar.xz
-Source57:       pst-vectorian.doc.tar.xz
+# from 20260301
+Source58:       pst-vectorian.tar.xz
+Source59:       pst-vectorian.doc.tar.xz
 
 %description -n texlive-pst-vectorian
 The package uses PSTricks to draw ornaments (a substantial
 repertoire of ornaments is provided).
 
 %package -n texlive-pst-vectorian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.41svn60488
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.42svn78101
 Release:        0
 Summary:        Documentation for texlive-pst-vectorian
 License:        LPPL-1.0
@@ -2758,9 +2852,9 @@ Provides:       tex(pst-vehicle.sty)
 Provides:       tex(pst-vehicle.tex)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source58:       pst-vehicle.tar.xz
-Source59:       pst-vehicle.doc.tar.xz
+# from 20260301
+Source60:       pst-vehicle.tar.xz
+Source61:       pst-vehicle.doc.tar.xz
 
 %description -n texlive-pst-vehicle
 This package permits to represent vehicles rolling without
@@ -2843,9 +2937,9 @@ Provides:       tex(pst-venn.sty)
 Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source60:       pst-venn.tar.xz
-Source61:       pst-venn.doc.tar.xz
+# from 20260301
+Source62:       pst-venn.tar.xz
+Source63:       pst-venn.doc.tar.xz
 
 %description -n texlive-pst-venn
 This is a PSTricks related package for drawing Venn diagrams
@@ -2922,9 +3016,9 @@ Provides:       tex(pst-vowel.sty)
 Requires:       tex(pst-node.sty)
 Requires:       tex(vowel.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source62:       pst-vowel.tar.xz
-Source63:       pst-vowel.doc.tar.xz
+# from 20260301
+Source64:       pst-vowel.tar.xz
+Source65:       pst-vowel.doc.tar.xz
 
 %description -n texlive-pst-vowel
 The package extends the vowel package (distributed as part of
@@ -3036,9 +3130,9 @@ Requires:       perl(autodie)
 Requires:       perl(if)
 #!BuildIgnore:  perl(if)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source64:       pst2pdf.tar.xz
-Source65:       pst2pdf.doc.tar.xz
+# from 20260301
+Source66:       pst2pdf.tar.xz
+Source67:       pst2pdf.doc.tar.xz
 
 %description -n texlive-pst2pdf
 The script extracts the preamble of the document and runs all
@@ -3129,9 +3223,9 @@ Suggests:       texlive-pstool-doc >= %{texlive_version}
 Provides:       tex(pstool.sty)
 Requires:       tex(preview.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source66:       pstool.tar.xz
-Source67:       pstool.doc.tar.xz
+# from 20260301
+Source68:       pstool.tar.xz
+Source69:       pstool.doc.tar.xz
 
 %description -n texlive-pstool
 The package works in the same sort of way as pst-pdf, but it
@@ -3184,7 +3278,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pstool/pstool.sty
 
 %package -n texlive-pstricks
-Version:        %{texlive_version}.%{texlive_noarch}.3.21svn72868
+Version:        %{texlive_version}.%{texlive_noarch}.3.22asvn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        PostScript macros for TeX
@@ -3217,6 +3311,13 @@ Provides:       tex(dvips.cfg)
 Provides:       tex(dvipsone.cfg)
 Provides:       tex(gastex.cfg)
 Provides:       tex(pst-all.sty)
+Provides:       tex(pst-code-arc.tex)
+Provides:       tex(pst-code-box.tex)
+Provides:       tex(pst-code-circle_ellipse.tex)
+Provides:       tex(pst-code-grid.tex)
+Provides:       tex(pst-code-pspicture.tex)
+Provides:       tex(pst-code-put.tex)
+Provides:       tex(pst-code-ref_rot.tex)
 Provides:       tex(pst-doc.cls)
 Provides:       tex(pst-fp.tex)
 Provides:       tex(pst-key.sty)
@@ -3226,6 +3327,7 @@ Provides:       tex(pstricks-arrows.tex)
 Provides:       tex(pstricks-color.tex)
 Provides:       tex(pstricks-dots.tex)
 Provides:       tex(pstricks-pdf.sty)
+Provides:       tex(pstricks-plain.tex)
 Provides:       tex(pstricks-tex.def)
 Provides:       tex(pstricks-xetex.def)
 Provides:       tex(pstricks.sty)
@@ -3242,20 +3344,24 @@ Requires:       tex(biblatex.sty)
 Requires:       tex(booktabs.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(caption.sty)
+Requires:       tex(csquotes.sty)
 Requires:       tex(eso-pic.sty)
 Requires:       tex(everyshi.sty)
 Requires:       tex(fancyvrb.sty)
 Requires:       tex(fontenc.sty)
+Requires:       tex(fontspec.sty)
 Requires:       tex(footmisc.sty)
-Requires:       tex(geometry.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifplatform.sty)
 Requires:       tex(iftex.sty)
+Requires:       tex(juliamono.sty)
 Requires:       tex(libertinus-otf.sty)
 Requires:       tex(lscape.sty)
+Requires:       tex(lua-unicode-math.sty)
 Requires:       tex(makeidx.sty)
 Requires:       tex(manfnt.sty)
+Requires:       tex(minted-code.sty)
 Requires:       tex(multido.sty)
 Requires:       tex(nameref.sty)
 Requires:       tex(paralist.sty)
@@ -3270,17 +3376,14 @@ Requires:       tex(pst-pdf.sty)
 Requires:       tex(pst-plot.sty)
 Requires:       tex(pst-text.sty)
 Requires:       tex(pst-tree.sty)
-Requires:       tex(pst-xkey.sty)
 Requires:       tex(pstricks-add.sty)
 Requires:       tex(ragged2e.sty)
-Requires:       tex(scrartcl.cls)
 Requires:       tex(scrlayer-scrpage.sty)
 Requires:       tex(setspace.sty)
 Requires:       tex(showexpl.sty)
 Requires:       tex(subfig.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(textcomp.sty)
-Requires:       tex(unicode-math.sty)
 Requires:       tex(varioref.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
@@ -3288,9 +3391,9 @@ Requires:       tex(xkvview.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xurl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source68:       pstricks.tar.xz
-Source69:       pstricks.doc.tar.xz
+# from 20260301
+Source70:       pstricks.tar.xz
+Source71:       pstricks.doc.tar.xz
 
 %description -n texlive-pstricks
 PSTricks offers an extensive collection of macros for
@@ -3311,7 +3414,7 @@ document is processed XeTeX, without the need for other
 supporting packages.
 
 %package -n texlive-pstricks-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.21svn72868
+Version:        %{texlive_version}.%{texlive_noarch}.3.22asvn78101
 Release:        0
 Summary:        Documentation for texlive-pstricks
 License:        LPPL-1.0
@@ -3342,13 +3445,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-pstricks-doc
 %{_texmfdistdir}/doc/generic/pstricks/PSTricks.bib
 %{_texmfdistdir}/doc/generic/pstricks/README
-%{_texmfdistdir}/doc/generic/pstricks/ctandir.sty
 %{_texmfdistdir}/doc/generic/pstricks/images/flowers.eps
 %{_texmfdistdir}/doc/generic/pstricks/images/tiger.eps
 %{_texmfdistdir}/doc/generic/pstricks/images/tiger.pdf
 %{_texmfdistdir}/doc/generic/pstricks/pst-doc.bst
 %{_texmfdistdir}/doc/generic/pstricks/pst-doc.ist
 %{_texmfdistdir}/doc/generic/pstricks/pst-doc.pdf
+%{_texmfdistdir}/doc/generic/pstricks/pst-docfull.pdf
 %{_texmfdistdir}/doc/generic/pstricks/pst-news.sty
 %{_texmfdistdir}/doc/generic/pstricks/pst-news.tex
 %{_texmfdistdir}/doc/generic/pstricks/pst-news05.pdf
@@ -3389,8 +3492,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/pstricks/pst-news23.tex
 %{_texmfdistdir}/doc/generic/pstricks/pst-news24.pdf
 %{_texmfdistdir}/doc/generic/pstricks/pst-news24.tex
+%{_texmfdistdir}/doc/generic/pstricks/pst-news25.pdf
+%{_texmfdistdir}/doc/generic/pstricks/pst-news25.tex
+%{_texmfdistdir}/doc/generic/pstricks/pst-quickref.pdf
 %{_texmfdistdir}/doc/generic/pstricks/pst-user.pdf
 %{_texmfdistdir}/doc/generic/pstricks/pst-user.tgz
+%{_texmfdistdir}/doc/generic/pstricks/pst-usrfull.pdf
+%{_texmfdistdir}/doc/generic/pstricks/pstnews1-10.pdf
+%{_texmfdistdir}/doc/generic/pstricks/pstnews1-10.tex
+%{_texmfdistdir}/doc/generic/pstricks/pstnews1-11.pdf
+%{_texmfdistdir}/doc/generic/pstricks/pstnews1-11.tex
+%{_texmfdistdir}/doc/generic/pstricks/pstnews1-12.pdf
+%{_texmfdistdir}/doc/generic/pstricks/pstnews1-12.tex
+%{_texmfdistdir}/doc/generic/pstricks/pstnews97-15.pdf
+%{_texmfdistdir}/doc/generic/pstricks/pstnews97-15.tex
 %{_texmfdistdir}/doc/generic/pstricks/pstricks-bug.tex
 %{_texmfdistdir}/doc/generic/pstricks/pstricks-doc.pdf
 
@@ -3408,11 +3523,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/pstricks/config/textures.cfg
 %{_texmfdistdir}/tex/generic/pstricks/config/vtex.cfg
 %{_texmfdistdir}/tex/generic/pstricks/config/xdvipdfmx.cfg
+%{_texmfdistdir}/tex/generic/pstricks/pst-code-arc.tex
+%{_texmfdistdir}/tex/generic/pstricks/pst-code-box.tex
+%{_texmfdistdir}/tex/generic/pstricks/pst-code-circle_ellipse.tex
+%{_texmfdistdir}/tex/generic/pstricks/pst-code-grid.tex
+%{_texmfdistdir}/tex/generic/pstricks/pst-code-pspicture.tex
+%{_texmfdistdir}/tex/generic/pstricks/pst-code-put.tex
+%{_texmfdistdir}/tex/generic/pstricks/pst-code-ref_rot.tex
 %{_texmfdistdir}/tex/generic/pstricks/pst-fp.tex
 %{_texmfdistdir}/tex/generic/pstricks/pst-key.tex
 %{_texmfdistdir}/tex/generic/pstricks/pstricks-arrows.tex
 %{_texmfdistdir}/tex/generic/pstricks/pstricks-color.tex
 %{_texmfdistdir}/tex/generic/pstricks/pstricks-dots.tex
+%{_texmfdistdir}/tex/generic/pstricks/pstricks-plain.tex
 %{_texmfdistdir}/tex/generic/pstricks/pstricks-tex.def
 %{_texmfdistdir}/tex/generic/pstricks/pstricks-xetex.def
 %{_texmfdistdir}/tex/generic/pstricks/pstricks.con
@@ -3426,7 +3549,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pstricks/pstricks.sty
 
 %package -n texlive-pstricks-add
-Version:        %{texlive_version}.%{texlive_noarch}.3.94svn66887
+Version:        %{texlive_version}.%{texlive_noarch}.3.94svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A collection of add-ons and bugfixes for PSTricks
@@ -3463,9 +3586,9 @@ Requires:       tex(pst-node.sty)
 Requires:       tex(pst-plot.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source70:       pstricks-add.tar.xz
-Source71:       pstricks-add.doc.tar.xz
+# from 20260301
+Source72:       pstricks-add.tar.xz
+Source73:       pstricks-add.doc.tar.xz
 
 %description -n texlive-pstricks-add
 Collects together examples that have been posted to the
@@ -3479,7 +3602,7 @@ equations; box plots; matrix plots; and pie charts. The package
 makes use of PostScript routines provided by pst-math.
 
 %package -n texlive-pstricks-add-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.94svn66887
+Version:        %{texlive_version}.%{texlive_noarch}.3.94svn77682
 Release:        0
 Summary:        Documentation for texlive-pstricks-add
 License:        LPPL-1.0
@@ -3564,8 +3687,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source72:       pstricks_calcnotes.doc.tar.xz
+# from 20260301
+Source74:       pstricks_calcnotes.doc.tar.xz
 
 %description -n texlive-pstricks_calcnotes
 The bundle shows the construction of PSTricks macros to draw
@@ -3685,9 +3808,9 @@ Requires:       tex(pgfcore.sty)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source73:       pstring.tar.xz
-Source74:       pstring.doc.tar.xz
+# from 20260301
+Source75:       pstring.tar.xz
+Source76:       pstring.doc.tar.xz
 
 %description -n texlive-pstring
 This package lets you typeset justified sequences, also called
@@ -3737,7 +3860,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pstring/pstring.sty
 
 %package -n texlive-ptex
-Version:        %{texlive_version}.%{texlive_noarch}.svn73848
+Version:        %{texlive_version}.%{texlive_noarch}.svn77830
 Release:        0
 License:        BSD-3-Clause
 Summary:        A TeX system for publishing in Japanese
@@ -3821,8 +3944,8 @@ Provides:       man(ptekf.1)
 Provides:       man(ptex.1)
 Provides:       man(ptftopl.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source75:       ptex.doc.tar.xz
+# from 20260301
+Source77:       ptex.doc.tar.xz
 
 %description -n texlive-ptex
 pTeX adds features related to vertical writing, and deals with
@@ -3946,9 +4069,9 @@ Provides:       tex(ascii-jplain.tex)
 Provides:       tex(kinsoku.tex)
 Provides:       tex(ptex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source76:       ptex-base.tar.xz
-Source77:       ptex-base.doc.tar.xz
+# from 20260301
+Source78:       ptex-base.tar.xz
+Source79:       ptex-base.doc.tar.xz
 
 %description -n texlive-ptex-base
 The bundle contains the plain TeX format for pTeX and e-pTeX.
@@ -4257,9 +4380,9 @@ Provides:       tex(uptex-yu-osx.map)
 Provides:       tex(uptex-yu-win.map)
 Provides:       tex(uptex-yu-win10.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source78:       ptex-fontmaps.tar.xz
-Source79:       ptex-fontmaps.doc.tar.xz
+# from 20260301
+Source80:       ptex-fontmaps.tar.xz
+Source81:       ptex-fontmaps.doc.tar.xz
 
 %description -n texlive-ptex-fontmaps
 This package provides font maps and setup tools for Japanese,
@@ -4652,9 +4775,9 @@ Provides:       tex(tmin8.vf)
 Provides:       tex(tmin9.tfm)
 Provides:       tex(tmin9.vf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source80:       ptex-fonts.tar.xz
-Source81:       ptex-fonts.doc.tar.xz
+# from 20260301
+Source82:       ptex-fonts.tar.xz
+Source83:       ptex-fonts.doc.tar.xz
 
 %description -n texlive-ptex-fonts
 The bundle contains fonts for use with pTeX and the documents
@@ -4829,7 +4952,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/ptex-fonts/standard/tmin9.vf
 
 %package -n texlive-ptex-manual
-Version:        %{texlive_version}.%{texlive_noarch}.svn71534
+Version:        %{texlive_version}.%{texlive_noarch}.svn75173
 Release:        0
 License:        BSD-3-Clause
 Summary:        Japanese pTeX manual
@@ -4856,8 +4979,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source82:       ptex-manual.doc.tar.xz
+# from 20260301
+Source84:       ptex-manual.doc.tar.xz
 
 %description -n texlive-ptex-manual
 This package contains the Japanese pTeX manual. Feedback is
@@ -4942,9 +5065,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ptex2pdf-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source83:       ptex2pdf.tar.xz
-Source84:       ptex2pdf.doc.tar.xz
+# from 20260301
+Source85:       ptex2pdf.tar.xz
+Source86:       ptex2pdf.doc.tar.xz
 
 %description -n texlive-ptex2pdf
 The Lua script provides system-independent support of Japanese
@@ -4995,7 +5118,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfmaindir}/tlpkg/tlpostcode/ptex2pdf-tlpost.pl
 
 %package -n texlive-ptext
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn30171
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A 'lipsum' for Persian
@@ -5025,9 +5148,9 @@ Suggests:       texlive-ptext-doc >= %{texlive_version}
 Provides:       tex(ptext.sty)
 Requires:       tex(biditools.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source85:       ptext.tar.xz
-Source86:       ptext.doc.tar.xz
+# from 20260301
+Source87:       ptext.tar.xz
+Source88:       ptext.doc.tar.xz
 
 %description -n texlive-ptext
 The package provides lipsum-like facilities for the Persian
@@ -5036,7 +5159,7 @@ language. The source of the filling text is the Persian epic
 be run under XeLaTeX.
 
 %package -n texlive-ptext-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn30171
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Documentation for texlive-ptext
 License:        LPPL-1.0
@@ -5108,9 +5231,9 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(biblatex.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source87:       ptlatexcommands.tar.xz
-Source88:       ptlatexcommands.doc.tar.xz
+# from 20260301
+Source89:       ptlatexcommands.tar.xz
+Source90:       ptlatexcommands.doc.tar.xz
 
 %description -n texlive-ptlatexcommands
 This package transforms common commands used in LaTeX to
@@ -5183,9 +5306,9 @@ Suggests:       texlive-ptolemaicastronomy-doc >= %{texlive_version}
 Provides:       tex(ptolemaicastronomy.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source89:       ptolemaicastronomy.tar.xz
-Source90:       ptolemaicastronomy.doc.tar.xz
+# from 20260301
+Source91:       ptolemaicastronomy.tar.xz
+Source92:       ptolemaicastronomy.doc.tar.xz
 
 %description -n texlive-ptolemaicastronomy
 David K. Lewis (Counterfactuals, Blackwell 1973) introduced a
@@ -5269,9 +5392,9 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(overcite.sty)
 Requires:       tex(wrapfig.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source91:       ptptex.tar.xz
-Source92:       ptptex.doc.tar.xz
+# from 20260301
+Source93:       ptptex.tar.xz
+Source94:       ptptex.doc.tar.xz
 
 %description -n texlive-ptptex
 The distribution contains the class (which offers an option
@@ -5353,9 +5476,9 @@ Provides:       tex(punk20.tfm)
 Provides:       tex(punkbx20.tfm)
 Provides:       tex(punksl20.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source93:       punk.tar.xz
-Source94:       punk.doc.tar.xz
+# from 20260301
+Source95:       punk.tar.xz
+Source96:       punk.doc.tar.xz
 
 %description -n texlive-punk
 A response to the assertion in a lecture that "typography tends
@@ -5452,9 +5575,9 @@ Suggests:       texlive-punk-latex-doc >= %{texlive_version}
 Provides:       tex(ot1pnk.fd)
 Provides:       tex(punk.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source95:       punk-latex.tar.xz
-Source96:       punk-latex.doc.tar.xz
+# from 20260301
+Source97:       punk-latex.tar.xz
+Source98:       punk-latex.doc.tar.xz
 
 %description -n texlive-punk-latex
 The package and .fd file provide support for Knuth's punk
@@ -5529,10 +5652,10 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-punknova-fonts >= %{texlive_version}
 Suggests:       texlive-punknova-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source97:       punknova.tar.xz
-Source98:       punknova.doc.tar.xz
-Source99:       punknova_p2top3.dif
+# from 20260301
+Source99:       punknova.tar.xz
+Source100:      punknova.doc.tar.xz
+Source101:      punknova_p2top3.dif
 
 %description -n texlive-punknova
 The font was generated from a MetaPost version of the sources
@@ -5674,9 +5797,9 @@ Requires:       perl(strict)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source100:      purifyeps.tar.xz
-Source101:      purifyeps.doc.tar.xz
+# from 20260301
+Source102:      purifyeps.tar.xz
+Source103:      purifyeps.doc.tar.xz
 
 %description -n texlive-purifyeps
 While pdfLaTeX has a number of nice features, its primary
@@ -5759,9 +5882,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(pythontex.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source102:      puyotikz.tar.xz
-Source103:      puyotikz.doc.tar.xz
+# from 20260301
+Source104:      puyotikz.tar.xz
+Source105:      puyotikz.doc.tar.xz
 
 %description -n texlive-puyotikz
 This LaTeX package permits to quickly typeset board states of
@@ -5810,7 +5933,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/puyotikz/puyotikz.sty
 
 %package -n texlive-pwebmac
-Version:        %{texlive_version}.%{texlive_noarch}.5.0svn72015
+Version:        %{texlive_version}.%{texlive_noarch}.5.1svn74648
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Consolidated WEB macros for DVI and PDF output
@@ -5839,9 +5962,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pwebmac-doc >= %{texlive_version}
 Provides:       tex(pwebmac.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source104:      pwebmac.tar.xz
-Source105:      pwebmac.doc.tar.xz
+# from 20260301
+Source106:      pwebmac.tar.xz
+Source107:      pwebmac.doc.tar.xz
 
 %description -n texlive-pwebmac
 The original WEB system by Donald Knuth has the macros
@@ -5865,7 +5988,7 @@ change the first line in the TeX file created by weave. From
 there, all depends on the "TeX engine" you use.
 
 %package -n texlive-pwebmac-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.0svn72015
+Version:        %{texlive_version}.%{texlive_noarch}.5.1svn74648
 Release:        0
 Summary:        Documentation for texlive-pwebmac
 License:        SUSE-Public-Domain
@@ -5900,13 +6023,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/plain/pwebmac/index.md
 %{_texmfdistdir}/doc/plain/pwebmac/makeall
 %{_texmfdistdir}/doc/plain/pwebmac/trapman.ch
-%{_texmfdistdir}/doc/plain/pwebmac/webman.ch
+%{_texmfdistdir}/doc/plain/pwebmac/webman-changes.ch
+%{_texmfdistdir}/doc/plain/pwebmac/webman-outlines.ch
 
 %files -n texlive-pwebmac
 %{_texmfdistdir}/tex/plain/pwebmac/pwebmac.tex
 
 %package -n texlive-pxbase
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn66187
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Tools for use with (u)pLaTeX
@@ -5947,9 +6071,9 @@ Requires:       tex(ifptex.sty)
 Requires:       tex(ifuptex.sty)
 Requires:       tex(rlbabel.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source106:      pxbase.tar.xz
-Source107:      pxbase.doc.tar.xz
+# from 20260301
+Source108:      pxbase.tar.xz
+Source109:      pxbase.doc.tar.xz
 
 %description -n texlive-pxbase
 The main purpose of this package is to provide auxiliary
@@ -5958,7 +6082,7 @@ same author. It also provides a few user commands to assist in
 creating Japanese documents using (u)pLaTeX.
 
 %package -n texlive-pxbase-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn66187
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn77682
 Release:        0
 Summary:        Documentation for texlive-pxbase
 License:        LPPL-1.0
@@ -6005,7 +6129,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/pxbase/upkcat.sty
 
 %package -n texlive-pxchfon
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn72097
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Japanese font setup for pLaTeX and upLaTeX
@@ -6124,9 +6248,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(pxufont-ruby.sty)
 Requires:       tex(pxufont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source108:      pxchfon.tar.xz
-Source109:      pxchfon.doc.tar.xz
+# from 20260301
+Source110:      pxchfon.tar.xz
+Source111:      pxchfon.doc.tar.xz
 
 %description -n texlive-pxchfon
 This package enables users to declare in their document which
@@ -6141,7 +6265,7 @@ TeX format: LaTeX. TeX engine: pTeX or upTeX. DVIware:
 dvipdfmx. Prerequisite packages: atbegshi.
 
 %package -n texlive-pxchfon-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn72097
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn77682
 Release:        0
 Summary:        Documentation for texlive-pxchfon
 License:        LPPL-1.0
@@ -6273,7 +6397,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/pxchfon/pxchfon0.def
 
 %package -n texlive-pxcjkcat
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn74144
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX interface for the CJK category codes of upTeX
@@ -6303,9 +6427,9 @@ Suggests:       texlive-pxcjkcat-doc >= %{texlive_version}
 Provides:       tex(pxcjkcat.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source110:      pxcjkcat.tar.xz
-Source111:      pxcjkcat.doc.tar.xz
+# from 20260301
+Source112:      pxcjkcat.tar.xz
+Source113:      pxcjkcat.doc.tar.xz
 
 %description -n texlive-pxcjkcat
 The package provides management of the CJK category code
@@ -6315,7 +6439,7 @@ documents that are principally written in Japanese, or
 principally written in English or other Western languages.
 
 %package -n texlive-pxcjkcat-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn74144
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 Summary:        Documentation for texlive-pxcjkcat
 License:        LPPL-1.0
@@ -6355,7 +6479,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pxcjkcat/pxcjkcat.sty
 
 %package -n texlive-pxfonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Palatino-like fonts in support of mathematics
@@ -6511,9 +6635,9 @@ Provides:       tex(upxsyb.fd)
 Provides:       tex(upxsyc.fd)
 Provides:       tex(upxtt.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source112:      pxfonts.tar.xz
-Source113:      pxfonts.doc.tar.xz
+# from 20260301
+Source114:      pxfonts.tar.xz
+Source115:      pxfonts.doc.tar.xz
 
 %description -n texlive-pxfonts
 Pxfonts supplies virtual text roman fonts using Adobe Palatino
@@ -6529,7 +6653,7 @@ Type 1 format (AFM and PFB files), and are supported by TeX
 metrics (VF and TFM files) and macros for use with LaTeX.
 
 %package -n texlive-pxfonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-pxfonts
 License:        GPL-2.0-or-later
@@ -6541,7 +6665,7 @@ Supplements:    (texlive-pxfonts and texlive-alldocumentation)
 This package includes the documentation for texlive-pxfonts
 
 %package -n texlive-pxfonts-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-pxfonts
 License:        GPL-2.0-or-later
@@ -6818,9 +6942,9 @@ Suggests:       texlive-pxgreeks-doc >= %{texlive_version}
 Provides:       tex(pxgreeks.sty)
 Requires:       tex(pxfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source114:      pxgreeks.tar.xz
-Source115:      pxgreeks.doc.tar.xz
+# from 20260301
+Source116:      pxgreeks.tar.xz
+Source117:      pxgreeks.doc.tar.xz
 
 %description -n texlive-pxgreeks
 The package allows LaTeX maths users of the PX fonts to select
@@ -6868,7 +6992,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pxgreeks/pxgreeks.sty
 
 %package -n texlive-pxjahyper
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn72114
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Hyperref support for pLaTeX
@@ -6905,9 +7029,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source116:      pxjahyper.tar.xz
-Source117:      pxjahyper.doc.tar.xz
+# from 20260301
+Source118:      pxjahyper.tar.xz
+Source119:      pxjahyper.doc.tar.xz
 
 %description -n texlive-pxjahyper
 This package adjusts the behavior of hyperref on (u)pLaTeX so
@@ -6915,7 +7039,7 @@ that authors can properly create PDF documents that contain
 document information in Japanese.
 
 %package -n texlive-pxjahyper-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn72114
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 Summary:        Documentation for texlive-pxjahyper
 License:        LPPL-1.0
@@ -6958,7 +7082,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/pxjahyper/pxjahyper.sty
 
 %package -n texlive-pxjodel
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn64072
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3asvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Help change metrics of fonts from japanese-otf
@@ -7003,12 +7127,12 @@ Provides:       tex(jodhgothrn-h.tfm)
 Provides:       tex(jodhgothrn-h.vf)
 Provides:       tex(jodhgothrn-v.tfm)
 Provides:       tex(jodhgothrn-v.vf)
-Provides:       tex(jodhmgothe-hq.tfm)
-Provides:       tex(jodhmgothe-hq.vf)
-Provides:       tex(jodhmgothen-h.tfm)
-Provides:       tex(jodhmgothen-h.vf)
-Provides:       tex(jodhmgothen-v.tfm)
-Provides:       tex(jodhmgothen-v.vf)
+Provides:       tex(jodhmgothr-hq.tfm)
+Provides:       tex(jodhmgothr-hq.vf)
+Provides:       tex(jodhmgothrn-h.tfm)
+Provides:       tex(jodhmgothrn-h.vf)
+Provides:       tex(jodhmgothrn-v.tfm)
+Provides:       tex(jodhmgothrn-v.vf)
 Provides:       tex(jodhminb-hq.tfm)
 Provides:       tex(jodhminb-hq.vf)
 Provides:       tex(jodhminbn-h.tfm)
@@ -7034,8 +7158,8 @@ Provides:       tex(zu-jodhgotheb-hq.tfm)
 Provides:       tex(zu-jodhgotheb-hq.vf)
 Provides:       tex(zu-jodhgothr-hq.tfm)
 Provides:       tex(zu-jodhgothr-hq.vf)
-Provides:       tex(zu-jodhmgothe-hq.tfm)
-Provides:       tex(zu-jodhmgothe-hq.vf)
+Provides:       tex(zu-jodhmgothr-hq.tfm)
+Provides:       tex(zu-jodhmgothr-hq.vf)
 Provides:       tex(zu-jodhminb-hq.tfm)
 Provides:       tex(zu-jodhminb-hq.vf)
 Provides:       tex(zu-jodhminl-hq.tfm)
@@ -7048,6 +7172,8 @@ Requires:       tex(hgothebn-h.tfm)
 Requires:       tex(hgothebn-v.tfm)
 Requires:       tex(hgothrn-h.tfm)
 Requires:       tex(hgothrn-v.tfm)
+Requires:       tex(hmgothrn-h.tfm)
+Requires:       tex(hmgothrn-v.tfm)
 Requires:       tex(hminbn-h.tfm)
 Requires:       tex(hminbn-v.tfm)
 Requires:       tex(hminln-h.tfm)
@@ -7077,9 +7203,9 @@ Requires:       tex(otf-ujmr-h.tfm)
 Requires:       tex(otf.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source118:      pxjodel.tar.xz
-Source119:      pxjodel.doc.tar.xz
+# from 20260301
+Source120:      pxjodel.tar.xz
+Source121:      pxjodel.doc.tar.xz
 
 %description -n texlive-pxjodel
 This package changes the setup of the japanese-otf package so
@@ -7097,7 +7223,7 @@ using japanese-otf. So pxjodel is really about japanese-otf's
 singing, although some sense of word-play is intended.
 
 %package -n texlive-pxjodel-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn64072
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3asvn77682
 Release:        0
 Summary:        Documentation for texlive-pxjodel
 License:        LPPL-1.0
@@ -7141,9 +7267,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhgothr-hq.tfm
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhgothrn-h.tfm
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhgothrn-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhmgothe-hq.tfm
-%{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhmgothen-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhmgothen-v.tfm
+%{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhmgothr-hq.tfm
+%{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhmgothrn-h.tfm
+%{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhmgothrn-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhminb-hq.tfm
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhminbn-h.tfm
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/jodhminbn-v.tfm
@@ -7156,7 +7282,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/zu-jodhgothb-hq.tfm
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/zu-jodhgotheb-hq.tfm
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/zu-jodhgothr-hq.tfm
-%{_texmfdistdir}/fonts/tfm/public/pxjodel/zu-jodhmgothe-hq.tfm
+%{_texmfdistdir}/fonts/tfm/public/pxjodel/zu-jodhmgothr-hq.tfm
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/zu-jodhminb-hq.tfm
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/zu-jodhminl-hq.tfm
 %{_texmfdistdir}/fonts/tfm/public/pxjodel/zu-jodhminr-hq.tfm
@@ -7169,9 +7295,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/pxjodel/jodhgothr-hq.vf
 %{_texmfdistdir}/fonts/vf/public/pxjodel/jodhgothrn-h.vf
 %{_texmfdistdir}/fonts/vf/public/pxjodel/jodhgothrn-v.vf
-%{_texmfdistdir}/fonts/vf/public/pxjodel/jodhmgothe-hq.vf
-%{_texmfdistdir}/fonts/vf/public/pxjodel/jodhmgothen-h.vf
-%{_texmfdistdir}/fonts/vf/public/pxjodel/jodhmgothen-v.vf
+%{_texmfdistdir}/fonts/vf/public/pxjodel/jodhmgothr-hq.vf
+%{_texmfdistdir}/fonts/vf/public/pxjodel/jodhmgothrn-h.vf
+%{_texmfdistdir}/fonts/vf/public/pxjodel/jodhmgothrn-v.vf
 %{_texmfdistdir}/fonts/vf/public/pxjodel/jodhminb-hq.vf
 %{_texmfdistdir}/fonts/vf/public/pxjodel/jodhminbn-h.vf
 %{_texmfdistdir}/fonts/vf/public/pxjodel/jodhminbn-v.vf
@@ -7184,14 +7310,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/pxjodel/zu-jodhgothb-hq.vf
 %{_texmfdistdir}/fonts/vf/public/pxjodel/zu-jodhgotheb-hq.vf
 %{_texmfdistdir}/fonts/vf/public/pxjodel/zu-jodhgothr-hq.vf
-%{_texmfdistdir}/fonts/vf/public/pxjodel/zu-jodhmgothe-hq.vf
+%{_texmfdistdir}/fonts/vf/public/pxjodel/zu-jodhmgothr-hq.vf
 %{_texmfdistdir}/fonts/vf/public/pxjodel/zu-jodhminb-hq.vf
 %{_texmfdistdir}/fonts/vf/public/pxjodel/zu-jodhminl-hq.vf
 %{_texmfdistdir}/fonts/vf/public/pxjodel/zu-jodhminr-hq.vf
 %{_texmfdistdir}/tex/latex/pxjodel/pxjodel.sty
 
 %package -n texlive-pxpgfmark
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn30212
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        E-pTeX driver for PGF inter-picture connections
@@ -7220,9 +7346,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pxpgfmark-doc >= %{texlive_version}
 Provides:       tex(pxpgfmark.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source120:      pxpgfmark.tar.xz
-Source121:      pxpgfmark.doc.tar.xz
+# from 20260301
+Source122:      pxpgfmark.tar.xz
+Source123:      pxpgfmark.doc.tar.xz
 
 %description -n texlive-pxpgfmark
 The distributed drivers do not support the PGF feature of
@@ -7230,7 +7356,7 @@ The distributed drivers do not support the PGF feature of
 package uses existing features of dvipdfmx to fix this problem
 
 %package -n texlive-pxpgfmark-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn30212
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn77682
 Release:        0
 Summary:        Documentation for texlive-pxpgfmark
 License:        LPPL-1.0
@@ -7266,7 +7392,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pxpgfmark/pxpgfmark.sty
 
 %package -n texlive-pxpic
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn67955
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw pixel pictures
@@ -7297,9 +7423,9 @@ Provides:       tex(pxpic.sty)
 Requires:       tex(expkv.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source122:      pxpic.tar.xz
-Source123:      pxpic.doc.tar.xz
+# from 20260301
+Source124:      pxpic.tar.xz
+Source125:      pxpic.doc.tar.xz
 
 %description -n texlive-pxpic
 With pxpic you draw pictures pixel by pixel. It was inspired by
@@ -7308,7 +7434,7 @@ a beautiful duck) showcasing the use of characters from the
 Mario video games by Nintendo in LaTeX.
 
 %package -n texlive-pxpic-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn67955
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 Summary:        Documentation for texlive-pxpic
 License:        LPPL-1.0
@@ -7375,9 +7501,9 @@ Suggests:       texlive-pxrubrica-doc >= %{texlive_version}
 Provides:       tex(pxrubrica.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source124:      pxrubrica.tar.xz
-Source125:      pxrubrica.doc.tar.xz
+# from 20260301
+Source126:      pxrubrica.tar.xz
+Source127:      pxrubrica.doc.tar.xz
 
 %description -n texlive-pxrubrica
 This package provides a function to add ruby annotations
@@ -7438,7 +7564,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/pxrubrica/pxrubrica.sty
 
 %package -n texlive-pxtatescale
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn63967
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Patch to graphics driver for scaling in vertical direction of pTeX
@@ -7467,16 +7593,16 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-pxtatescale-doc >= %{texlive_version}
 Provides:       tex(pxtatescale.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source126:      pxtatescale.tar.xz
-Source127:      pxtatescale.doc.tar.xz
+# from 20260301
+Source128:      pxtatescale.tar.xz
+Source129:      pxtatescale.doc.tar.xz
 
 %description -n texlive-pxtatescale
 Patch for graphics driver 'dvipdfmx' to support correct scaling
 in vertical direction of Japanese pTeX/upTeX.
 
 %package -n texlive-pxtatescale-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn63967
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4svn77682
 Release:        0
 Summary:        Documentation for texlive-pxtatescale
 License:        LPPL-1.0
@@ -7512,7 +7638,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pxtatescale/pxtatescale.sty
 
 %package -n texlive-pxtxalfa
-Version:        %{texlive_version}.%{texlive_noarch}.2svn60847
+Version:        %{texlive_version}.%{texlive_noarch}.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Virtual maths alphabets based on pxfonts and txfonts
@@ -7580,9 +7706,9 @@ Requires:       tex(txsy.tfm)
 Requires:       tex(txsyb.tfm)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source128:      pxtxalfa.tar.xz
-Source129:      pxtxalfa.doc.tar.xz
+# from 20260301
+Source130:      pxtxalfa.tar.xz
+Source131:      pxtxalfa.doc.tar.xz
 
 %description -n texlive-pxtxalfa
 The package provides virtual math alphabets based on pxfonts
@@ -7590,7 +7716,7 @@ and txfonts, with LaTeX support files and adjusted metrics. The
 mathalpha package offers support for this collection.
 
 %package -n texlive-pxtxalfa-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2svn60847
+Version:        %{texlive_version}.%{texlive_noarch}.2svn77682
 Release:        0
 Summary:        Documentation for texlive-pxtxalfa
 License:        LPPL-1.0
@@ -7655,7 +7781,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pxtxalfa/utx-of.fd
 
 %package -n texlive-pxufont
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn67573
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Emulate non-Unicode Japanese fonts using Unicode fonts
@@ -8268,9 +8394,9 @@ Requires:       tex(uprml-h.tfm)
 Requires:       tex(uprml-hq.tfm)
 Requires:       tex(uprml-v.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source130:      pxufont.tar.xz
-Source131:      pxufont.doc.tar.xz
+# from 20260301
+Source132:      pxufont.tar.xz
+Source133:      pxufont.doc.tar.xz
 
 %description -n texlive-pxufont
 The set of the Japanese logical fonts (JFMs) that are used as
@@ -8288,7 +8414,7 @@ from Adobe-Japan1, because mapping setups from non-Unicode JFMs
 to such physical fonts are difficult to prepare.
 
 %package -n texlive-pxufont-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn67573
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn77682
 Release:        0
 Summary:        Documentation for texlive-pxufont
 License:        LPPL-1.0
@@ -8884,9 +9010,9 @@ Requires:       tex(mdframed.sty)
 Requires:       tex(pgfkeys.sty)
 Requires:       tex(shellesc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source132:      pygmentex.tar.xz
-Source133:      pygmentex.doc.tar.xz
+# from 20260301
+Source134:      pygmentex.tar.xz
+Source135:      pygmentex.doc.tar.xz
 
 %description -n texlive-pygmentex
 PygmenTeX is a Python-based LaTeX package that can be used for
@@ -8944,7 +9070,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pygmentex/pygmentex.sty
 
 %package -n texlive-pyluatex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.3svn69372
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Execute Python code on the fly in your LaTeX documents
@@ -8975,9 +9101,9 @@ Provides:       tex(pyluatex.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source134:      pyluatex.tar.xz
-Source135:      pyluatex.doc.tar.xz
+# from 20260301
+Source136:      pyluatex.tar.xz
+Source137:      pyluatex.doc.tar.xz
 
 %description -n texlive-pyluatex
 PyLuaTeX allows you to execute Python code and to include the
@@ -8994,7 +9120,7 @@ intermediate files have to be written. No placeholders have to
 be inserted.
 
 %package -n texlive-pyluatex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.3svn69372
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.3svn77682
 Release:        0
 Summary:        Documentation for texlive-pyluatex
 License:        LPPL-1.0
@@ -9045,7 +9171,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/pyluatex/pyluatex.sty
 
 %package -n texlive-pynotebook
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn73069
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.4svn75593
 Release:        0
 License:        LPPL-1.0
 Summary:        Pynotebook presents (raw, Markdown or Python) codes (and execution with LuaLaTeX) as in a Jupyter Notebook
@@ -9079,9 +9205,9 @@ Requires:       tex(piton.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source136:      pynotebook.tar.xz
-Source137:      pynotebook.doc.tar.xz
+# from 20260301
+Source138:      pynotebook.tar.xz
+Source139:      pynotebook.doc.tar.xz
 
 %description -n texlive-pynotebook
 This package provides environments to (re)create a jupyter
@@ -9090,7 +9216,7 @@ support) code blocks (python) with execution thanks to piton
 and PyLuaTeX
 
 %package -n texlive-pynotebook-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn73069
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.4svn75593
 Release:        0
 Summary:        Documentation for texlive-pynotebook
 License:        LPPL-1.0
@@ -9158,9 +9284,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-python-doc >= %{texlive_version}
 Provides:       tex(python.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source138:      python.tar.xz
-Source139:      python.doc.tar.xz
+# from 20260301
+Source140:      python.tar.xz
+Source141:      python.doc.tar.xz
 
 %description -n texlive-python
 The package enables you to embed Python code in LaTeX, and
@@ -9234,9 +9360,9 @@ Requires:       tex(listings.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source140:      pythonhighlight.tar.xz
-Source141:      pythonhighlight.doc.tar.xz
+# from 20260301
+Source142:      pythonhighlight.tar.xz
+Source143:      pythonhighlight.doc.tar.xz
 
 %description -n texlive-pythonhighlight
 Highlighting of Python code, based on the listings package.
@@ -9278,7 +9404,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pythonhighlight/pythonhighlight.sty
 
 %package -n texlive-pythonimmediate
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn69487
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Library to run Python code
@@ -9319,9 +9445,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(precattl.sty)
 Requires:       tex(saveenv.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source142:      pythonimmediate.tar.xz
-Source143:      pythonimmediate.doc.tar.xz
+# from 20260301
+Source144:      pythonimmediate.tar.xz
+Source145:      pythonimmediate.doc.tar.xz
 
 %description -n texlive-pythonimmediate
 Just like PerlTeX or PyLuaTeX (and unlike PythonTeX or
@@ -9340,7 +9466,7 @@ pythonimmediate-tex package, which can be obtained from
 https://pypi.org/project/pythonimmediate-tex/.
 
 %package -n texlive-pythonimmediate-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn69487
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6.0svn76924
 Release:        0
 Summary:        Documentation for texlive-pythonimmediate
 License:        LPPL-1.0
@@ -9379,7 +9505,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pythonimmediate/pythonimmediate_helper.lua
 
 %package -n texlive-pythontex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.18svn59514
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn77873
 Release:        0
 License:        LPPL-1.0
 Summary:        Run Python from within a document, typesetting the results
@@ -9418,10 +9544,10 @@ Requires:       tex(upquote.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source144:      pythontex.tar.xz
-Source145:      pythontex.doc.tar.xz
-Source146:      pythontex_p2top3.dif
+# from 20260301
+Source146:      pythontex.tar.xz
+Source147:      pythontex.doc.tar.xz
+Source148:      pythontex_p2top3.dif
 
 %description -n texlive-pythontex
 The package allows you to enter Python code within a LaTeX
@@ -9443,7 +9569,7 @@ journal submissions, sharing documents, and conversion to other
 formats.
 
 %package -n texlive-pythontex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.18svn59514
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn77873
 Release:        0
 Summary:        Documentation for texlive-pythontex
 License:        LPPL-1.0
@@ -9491,7 +9617,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/pythontex/pythontex.sty
 
 %package -n texlive-q-and-a
-Version:        %{texlive_version}.%{texlive_noarch}.svn69164
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Typesetting Q&A-style conversation made easier
@@ -9525,9 +9651,9 @@ Requires:       tex(ProjLib.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(tcolorbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source147:      q-and-a.tar.xz
-Source148:      q-and-a.doc.tar.xz
+# from 20260301
+Source149:      q-and-a.tar.xz
+Source150:      q-and-a.doc.tar.xz
 
 %description -n texlive-q-and-a
 Q-and-A is a LaTeX document class for you to typeset Q&A-style
@@ -9538,7 +9664,7 @@ dialog in a way that closely resembles the interface of
 ChatGPT.
 
 %package -n texlive-q-and-a-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn69164
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 Summary:        Documentation for texlive-q-and-a
 License:        LPPL-1.0
@@ -9654,9 +9780,9 @@ Provides:       tex(qcircuit.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(xy.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source149:      qcircuit.tar.xz
-Source150:      qcircuit.doc.tar.xz
+# from 20260301
+Source151:      qcircuit.tar.xz
+Source152:      qcircuit.doc.tar.xz
 
 %description -n texlive-qcircuit
 The package supports those within the quantum information
@@ -9734,9 +9860,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source151:      qcm.tar.xz
-Source152:      qcm.doc.tar.xz
+# from 20260301
+Source153:      qcm.tar.xz
+Source154:      qcm.doc.tar.xz
 
 %description -n texlive-qcm
 QCM is a package for making multiple choices questionnaires
@@ -9821,9 +9947,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-qobitree-doc >= %{texlive_version}
 Provides:       tex(qobitree.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source153:      qobitree.tar.xz
-Source154:      qobitree.doc.tar.xz
+# from 20260301
+Source155:      qobitree.tar.xz
+Source156:      qobitree.doc.tar.xz
 
 %description -n texlive-qobitree
 Provides commands \branch and \leaf for specifying the elements
@@ -9951,9 +10077,9 @@ Requires:       tex(ts1-qtmr.tfm)
 Requires:       tex(txbsya.tfm)
 Requires:       tex(txsya.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source155:      qpxqtx.tar.xz
-Source156:      qpxqtx.doc.tar.xz
+# from 20260301
+Source157:      qpxqtx.tar.xz
+Source158:      qpxqtx.doc.tar.xz
 
 %description -n texlive-qpxqtx
 The qpxqtx package
@@ -10027,7 +10153,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/qpxqtx/qtxmath.tex
 
 %package -n texlive-qrbill
-Version:        %{texlive_version}.%{texlive_noarch}.2.01svn67724
+Version:        %{texlive_version}.%{texlive_noarch}.2.01svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Create QR bills using LaTeX
@@ -10068,9 +10194,9 @@ Requires:       tex(numprint.sty)
 Requires:       tex(qrcode.sty)
 Requires:       tex(scrbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source157:      qrbill.tar.xz
-Source158:      qrbill.doc.tar.xz
+# from 20260301
+Source159:      qrbill.tar.xz
+Source160:      qrbill.doc.tar.xz
 
 %description -n texlive-qrbill
 This LaTeX package provides support for creating QR-bills for
@@ -10082,7 +10208,7 @@ using a custom font setup), graphicx, scrbase, qrcode, iftex,
 l3keys2e, and numprint.
 
 %package -n texlive-qrbill-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.01svn67724
+Version:        %{texlive_version}.%{texlive_noarch}.2.01svn76924
 Release:        0
 Summary:        Documentation for texlive-qrbill
 License:        LPPL-1.0
@@ -10128,7 +10254,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/qrbill/swiss.qrbill-cfg.tex
 
 %package -n texlive-qrcode
-Version:        %{texlive_version}.%{texlive_noarch}.1.51svn36065
+Version:        %{texlive_version}.%{texlive_noarch}.1.51svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Generate QR codes in LaTeX
@@ -10159,16 +10285,16 @@ Provides:       tex(qrcode.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source159:      qrcode.tar.xz
-Source160:      qrcode.doc.tar.xz
+# from 20260301
+Source161:      qrcode.tar.xz
+Source162:      qrcode.doc.tar.xz
 
 %description -n texlive-qrcode
 The package generates QR (Quick Response) codes in LaTeX,
 without the need for PSTricks or any other graphical package.
 
 %package -n texlive-qrcode-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.51svn36065
+Version:        %{texlive_version}.%{texlive_noarch}.1.51svn77682
 Release:        0
 Summary:        Documentation for texlive-qrcode
 License:        LPPL-1.0
@@ -10203,6 +10329,90 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-qrcode
 %{_texmfdistdir}/tex/latex/qrcode/qrcode.sty
 
+%package -n texlive-qrcodetikz
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn76924
+Release:        0
+License:        LPPL-1.0
+Summary:        Prettier QR codes
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-qrcodetikz-doc >= %{texlive_version}
+Provides:       tex(qrcodetikz.sty)
+Requires:       tex(qrcode.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source163:      qrcodetikz.tar.xz
+Source164:      qrcodetikz.doc.tar.xz
+
+%description -n texlive-qrcodetikz
+This package improves the display of QR codes provided by
+qrcode. The Quick Response (QR) codes provided by package
+qrcode show white borders on each square (from little to very
+prominent, depending on the pdf viewer). This is because the QR
+code is printed square by square, not the connected regions of
+squares as such, and pdf screen viewers show these undesired
+borders. This package overwrites the qrcode printing functions
+to fill connected regions of the QR code using TikZ, allowing
+prettier qrcodes on screen visualization, with possibility of
+customization.
+
+%package -n texlive-qrcodetikz-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn76924
+Release:        0
+Summary:        Documentation for texlive-qrcodetikz
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qrcodetikz and texlive-alldocumentation)
+
+%description -n texlive-qrcodetikz-doc
+This package includes the documentation for texlive-qrcodetikz
+
+%post -n texlive-qrcodetikz
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-qrcodetikz
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-qrcodetikz
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-qrcodetikz-doc
+%{_texmfdistdir}/doc/latex/qrcodetikz/README
+%{_texmfdistdir}/doc/latex/qrcodetikz/qrcodetikz.pdf
+
+%files -n texlive-qrcodetikz
+%{_texmfdistdir}/tex/latex/qrcodetikz/qrcodetikz.sty
+
 %package -n texlive-qsharp
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.1901.1401svn49722
 Release:        0
@@ -10235,9 +10445,9 @@ Provides:       tex(qsharp.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source161:      qsharp.tar.xz
-Source162:      qsharp.doc.tar.xz
+# from 20260301
+Source165:      qsharp.tar.xz
+Source166:      qsharp.doc.tar.xz
 
 %description -n texlive-qsharp
 The package provides syntax highlighting for the Q# language, a
@@ -10312,9 +10522,9 @@ Provides:       tex(makematch.sty)
 Provides:       tex(qstest.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source163:      qstest.tar.xz
-Source164:      qstest.doc.tar.xz
+# from 20260301
+Source167:      qstest.tar.xz
+Source168:      qstest.doc.tar.xz
 
 %description -n texlive-qstest
 This is the public release of the qstest bundle (written for
@@ -10403,9 +10613,9 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(stmaryrd.sty)
 Requires:       tex(xy.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source165:      qsymbols.tar.xz
-Source166:      qsymbols.doc.tar.xz
+# from 20260301
+Source169:      qsymbols.tar.xz
+Source170:      qsymbols.doc.tar.xz
 
 %description -n texlive-qsymbols
 Provides macros for defining systematic mnemonic abbreviations,
@@ -10484,9 +10694,9 @@ Suggests:       texlive-qtree-doc >= %{texlive_version}
 Provides:       tex(qtree.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source167:      qtree.tar.xz
-Source168:      qtree.doc.tar.xz
+# from 20260301
+Source171:      qtree.tar.xz
+Source172:      qtree.doc.tar.xz
 
 %description -n texlive-qtree
 The package offers support for drawing tree diagrams, and is
@@ -10567,9 +10777,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-qualitype-fonts >= %{texlive_version}
 Suggests:       texlive-qualitype-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source169:      qualitype.tar.xz
-Source170:      qualitype.doc.tar.xz
+# from 20260301
+Source173:      qualitype.tar.xz
+Source174:      qualitype.doc.tar.xz
 
 %description -n texlive-qualitype
 These 45 fonts were created by QualiType. With the kind
@@ -10972,9 +11182,9 @@ Provides:       tex(tikzlibraryquantikz.code.tex)
 Provides:       tex(tikzlibraryquantikz2.code.tex)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source171:      quantikz.tar.xz
-Source172:      quantikz.doc.tar.xz
+# from 20260301
+Source175:      quantikz.tar.xz
+Source176:      quantikz.doc.tar.xz
 
 %description -n texlive-quantikz
 The purpose of this package is to extend TikZ with the
@@ -11018,6 +11228,93 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quantikz/quantikz.sty
 %{_texmfdistdir}/tex/latex/quantikz/tikzlibraryquantikz.code.tex
 %{_texmfdistdir}/tex/latex/quantikz/tikzlibraryquantikz2.code.tex
+
+%package -n texlive-quantum-chemistry-bonn
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn76924
+Release:        0
+License:        LPPL-1.0
+Summary:        Use consistent typesetting for quantum chemistry related software
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-quantum-chemistry-bonn-doc >= %{texlive_version}
+Provides:       tex(quantum-chemistry-bonn.sty)
+Requires:       tex(expl3.sty)
+Requires:       tex(siunitx.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source177:      quantum-chemistry-bonn.tar.xz
+Source178:      quantum-chemistry-bonn.doc.tar.xz
+
+%description -n texlive-quantum-chemistry-bonn
+This package gives access to several commands related to
+quantum chemistry. This includes consistent formatting of names
+of QC programs, as well as methods such as density functionals.
+Furthermore, units of energy are set, and easy-to-use commands
+are provided. Lastly, the corporate design colors of the
+University of Bonn are defined.
+
+%package -n texlive-quantum-chemistry-bonn-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn76924
+Release:        0
+Summary:        Documentation for texlive-quantum-chemistry-bonn
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quantum-chemistry-bonn and texlive-alldocumentation)
+
+%description -n texlive-quantum-chemistry-bonn-doc
+This package includes the documentation for texlive-quantum-chemistry-bonn
+
+%post -n texlive-quantum-chemistry-bonn
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-quantum-chemistry-bonn
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-quantum-chemistry-bonn
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-quantum-chemistry-bonn-doc
+%{_texmfdistdir}/doc/latex/quantum-chemistry-bonn/CONTRIBUTING.md
+%{_texmfdistdir}/doc/latex/quantum-chemistry-bonn/LICENSE.txt
+%{_texmfdistdir}/doc/latex/quantum-chemistry-bonn/README.md
+%{_texmfdistdir}/doc/latex/quantum-chemistry-bonn/quantum-chemistry-bonn-doc.pdf
+%{_texmfdistdir}/doc/latex/quantum-chemistry-bonn/quantum-chemistry-bonn-doc.tex
+%{_texmfdistdir}/doc/latex/quantum-chemistry-bonn/quantum-chemistry-bonn-example.pdf
+%{_texmfdistdir}/doc/latex/quantum-chemistry-bonn/quantum-chemistry-bonn-example.tex
+
+%files -n texlive-quantum-chemistry-bonn
+%{_texmfdistdir}/tex/latex/quantum-chemistry-bonn/quantum-chemistry-bonn.sty
 
 %package -n texlive-quantumarticle
 Version:        %{texlive_version}.%{texlive_noarch}.6.1svn65242
@@ -11071,9 +11368,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source173:      quantumarticle.tar.xz
-Source174:      quantumarticle.doc.tar.xz
+# from 20260301
+Source179:      quantumarticle.tar.xz
+Source180:      quantumarticle.doc.tar.xz
 
 %description -n texlive-quantumarticle
 This package provides the preferred document class for papers
@@ -11140,8 +11437,125 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quantumarticle/quantumarticle.cls
 %{_texmfdistdir}/tex/latex/quantumarticle/quantumview.cls
 
+%package -n texlive-quantumcubemodel
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.0svn77308
+Release:        0
+License:        LPPL-1.0
+Summary:        Representation of quantum states in the quantum cube model
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-quantumcubemodel-doc >= %{texlive_version}
+Provides:       tex(quantumcubemodel.sty)
+Requires:       tex(braket.sty)
+Requires:       tex(kvoptions.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xcolor.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source181:      quantumcubemodel.tar.xz
+Source182:      quantumcubemodel.doc.tar.xz
+
+%description -n texlive-quantumcubemodel
+This package provides simple LaTeX commands to draw intuitive
+cube-based diagrams for quantum states of one, two, or three
+qubits. Inspired by Prof. B. Just's educational framework, it
+supports amplitude-phase notation, gate transition
+visualizations (Hadamard, Pauli, CNOT, Toffoli). The package is
+ideal for teaching and documenting small quantum circuits.
+
+%package -n texlive-quantumcubemodel-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.0svn77308
+Release:        0
+Summary:        Documentation for texlive-quantumcubemodel
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-quantumcubemodel and texlive-alldocumentation)
+
+%description -n texlive-quantumcubemodel-doc
+This package includes the documentation for texlive-quantumcubemodel
+
+%post -n texlive-quantumcubemodel
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-quantumcubemodel
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-quantumcubemodel
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-quantumcubemodel-doc
+%{_texmfdistdir}/doc/latex/quantumcubemodel/LICENSE.md
+%{_texmfdistdir}/doc/latex/quantumcubemodel/README.md
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/cnot-on-three-qubits.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/example-change-main-color.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/example-rendering-phi-times-psi-equals-phipsi.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/measure-one-of-two-qubits.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/measure-qubit.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/multi-qubit-transformation-hadamard.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/one-qubit-ket-+.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/one-qubit-ket-0.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/one-qubit-ket-1.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/one-qubit-ket-amplitudes.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/one-qubit-ket-phase.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/one-qubit-transformations.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/orientation-of-qubits.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/cnot-on-three-qubits.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/example-change-main-color.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/example-rendering-phi-times-psi-equals-phipsi.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/measure-one-of-two-qubits.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/measure-qubit.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/multi-qubit-transformation-hadamard.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/one-qubit-ket-+.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/one-qubit-ket-0.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/one-qubit-ket-1.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/one-qubit-ket-amplitudes.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/one-qubit-ket-phase.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/one-qubit-transformations.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/orientation-of-qubits.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/teleportation.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/three-qubit-state.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out/two-qubit-state.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/teleportation.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/three-qubit-state.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/two-qubit-state.tex
+%{_texmfdistdir}/doc/latex/quantumcubemodel/quantumcubemodel-bib.bib
+%{_texmfdistdir}/doc/latex/quantumcubemodel/quantumcubemodel-doc.pdf
+%{_texmfdistdir}/doc/latex/quantumcubemodel/quantumcubemodel-doc.tex
+
+%files -n texlive-quantumcubemodel
+%{_texmfdistdir}/tex/latex/quantumcubemodel/quantumcubemodel.sty
+
 %package -n texlive-quattrocento
-Version:        %{texlive_version}.%{texlive_noarch}.svn64372
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Quattrocento and Quattrocento Sans fonts with LaTeX support
@@ -11365,9 +11779,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source175:      quattrocento.tar.xz
-Source176:      quattrocento.doc.tar.xz
+# from 20260301
+Source183:      quattrocento.tar.xz
+Source184:      quattrocento.doc.tar.xz
 
 %description -n texlive-quattrocento
 The package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -11381,7 +11795,7 @@ also great for display use. Quattrocento Sans is the perfect
 sans-serif companion for Quattrocento.
 
 %package -n texlive-quattrocento-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64372
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-quattrocento
 License:        OFL-1.1
@@ -11393,7 +11807,7 @@ Supplements:    (texlive-quattrocento and texlive-alldocumentation)
 This package includes the documentation for texlive-quattrocento
 
 %package -n texlive-quattrocento-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64372
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-quattrocento
 License:        OFL-1.1
@@ -11686,9 +12100,9 @@ Provides:       tex(quickreaction.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source177:      quickreaction.tar.xz
-Source178:      quickreaction.doc.tar.xz
+# from 20260301
+Source185:      quickreaction.tar.xz
+Source186:      quickreaction.doc.tar.xz
 
 %description -n texlive-quickreaction
 This package provides the quickreaction environment and the
@@ -11765,9 +12179,9 @@ Suggests:       texlive-quicktype-doc >= %{texlive_version}
 Provides:       tex(quicktype.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source179:      quicktype.tar.xz
-Source180:      quicktype.doc.tar.xz
+# from 20260301
+Source187:      quicktype.tar.xz
+Source188:      quicktype.doc.tar.xz
 
 %description -n texlive-quicktype
 Intended for the quick typesetting of basic documents using
@@ -11814,7 +12228,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quicktype/quicktype.sty
 
 %package -n texlive-quiver
-Version:        %{texlive_version}.%{texlive_noarch}.1.3.0svn67779
+Version:        %{texlive_version}.%{texlive_noarch}.1.6.0svn77816
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw commutative diagrams exported from https://q.uiver.app
@@ -11845,12 +12259,12 @@ Provides:       tex(quiver.sty)
 Requires:       tex(amssymb.sty)
 Requires:       tex(tikz-cd.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source181:      quiver.tar.xz
-Source182:      quiver.doc.tar.xz
+# from 20260301
+Source189:      quiver.tar.xz
+Source190:      quiver.doc.tar.xz
 
 %description -n texlive-quiver
-Quiver is a modern graphical editor for commutative and pasting
+quiver is a modern graphical editor for commutative and pasting
 diagrams, capable of rendering high-quality diagrams for screen
 viewing, and exporting to LaTeX. This LaTeX package is intended
 to be used in conjunction with the editor, and provides the
@@ -11858,7 +12272,7 @@ packages and styles that are used by diagrams exported from the
 editor.
 
 %package -n texlive-quiver-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3.0svn67779
+Version:        %{texlive_version}.%{texlive_noarch}.1.6.0svn77816
 Release:        0
 Summary:        Documentation for texlive-quiver
 License:        LPPL-1.0
@@ -11934,9 +12348,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source183:      quiz2socrative.tar.xz
-Source184:      quiz2socrative.doc.tar.xz
+# from 20260301
+Source191:      quiz2socrative.tar.xz
+Source192:      quiz2socrative.doc.tar.xz
 
 %description -n texlive-quiz2socrative
 This is a LaTeX package for preparing multiple choice,
@@ -11990,7 +12404,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quiz2socrative/quiz2socrative.sty
 
 %package -n texlive-quizztex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.4svn73069
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.6svn75977
 Release:        0
 License:        LPPL-1.0
 Summary:        Create quizzes like in TV shows
@@ -12020,6 +12434,8 @@ Suggests:       texlive-quizztex-doc >= %{texlive_version}
 Provides:       tex(quizztex.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(fontawesome5.sty)
+Requires:       tex(fontawesome6.sty)
+Requires:       tex(fontawesome7.sty)
 Requires:       tex(pgf.sty)
 Requires:       tex(pgffor.sty)
 Requires:       tex(settobox.sty)
@@ -12028,9 +12444,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source185:      quizztex.tar.xz
-Source186:      quizztex.doc.tar.xz
+# from 20260301
+Source193:      quizztex.tar.xz
+Source194:      quizztex.doc.tar.xz
 
 %description -n texlive-quizztex
 This LaTeX package permits to create quizzes in the style of
@@ -12039,7 +12455,7 @@ to Be a Millionaire?") or << Tout le monde veut prendre sa
 place ! >>.
 
 %package -n texlive-quizztex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.4svn73069
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.6svn75977
 Release:        0
 Summary:        Documentation for texlive-quizztex
 License:        LPPL-1.0
@@ -12077,7 +12493,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quizztex/quizztex.sty
 
 %package -n texlive-quotchap
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn56926
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Decorative chapter headings
@@ -12107,9 +12523,9 @@ Suggests:       texlive-quotchap-doc >= %{texlive_version}
 Provides:       tex(quotchap.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source187:      quotchap.tar.xz
-Source188:      quotchap.doc.tar.xz
+# from 20260301
+Source195:      quotchap.tar.xz
+Source196:      quotchap.doc.tar.xz
 
 %description -n texlive-quotchap
 A package for creating decorative chapter headings with
@@ -12117,7 +12533,7 @@ quotations. Uses graphical and coloured output and by default
 needs the "Adobe standard font set" (as supported by psnfss).
 
 %package -n texlive-quotchap-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn56926
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 Summary:        Documentation for texlive-quotchap
 License:        GPL-2.0-or-later
@@ -12155,7 +12571,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quotchap/quotchap.sty
 
 %package -n texlive-quoting
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn32818
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Consolidated environment for displayed text
@@ -12186,9 +12602,9 @@ Provides:       tex(quoting.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source189:      quoting.tar.xz
-Source190:      quoting.doc.tar.xz
+# from 20260301
+Source197:      quoting.tar.xz
+Source198:      quoting.doc.tar.xz
 
 %description -n texlive-quoting
 As an alternative to the LaTeX standard environments quotation
@@ -12200,7 +12616,7 @@ properties and spacing and to control orphans within and after
 the environment.
 
 %package -n texlive-quoting-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn32818
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn77682
 Release:        0
 Summary:        Documentation for texlive-quoting
 License:        LPPL-1.0
@@ -12301,9 +12717,9 @@ Provides:       tex(quotmark-ukraineb.def)
 Provides:       tex(quotmark-welsh.def)
 Provides:       tex(quotmark.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source191:      quotmark.tar.xz
-Source192:      quotmark.doc.tar.xz
+# from 20260301
+Source199:      quotmark.tar.xz
+Source200:      quotmark.doc.tar.xz
 
 %description -n texlive-quotmark
 The package provides a means of ensuring consistent quote marks
@@ -12389,7 +12805,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quotmark/quotmark.sty
 
 %package -n texlive-quran
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn72223
+Version:        %{texlive_version}.%{texlive_noarch}.2.41svn75029
 Release:        0
 License:        LPPL-1.0
 Summary:        An easy way to typeset any part of The Holy Quran
@@ -12438,9 +12854,9 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source193:      quran.tar.xz
-Source194:      quran.doc.tar.xz
+# from 20260301
+Source201:      quran.tar.xz
+Source202:      quran.doc.tar.xz
 
 %description -n texlive-quran
 This package offers the user an easy way to typeset The Holy
@@ -12452,7 +12868,7 @@ original, translations to English, German, French, and Persian
 are provided, as well as an English transliteration.
 
 %package -n texlive-quran-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn72223
+Version:        %{texlive_version}.%{texlive_noarch}.2.41svn75029
 Release:        0
 Summary:        Documentation for texlive-quran
 License:        LPPL-1.0
@@ -12509,7 +12925,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quran/qurantext-uthmani.def
 
 %package -n texlive-quran-bn
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn68345
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.21svn74830
 Release:        0
 License:        LPPL-1.0
 Summary:        Bengali translations to the quran package
@@ -12544,9 +12960,9 @@ Requires:       tex(quran.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source195:      quran-bn.tar.xz
-Source196:      quran-bn.doc.tar.xz
+# from 20260301
+Source203:      quran-bn.tar.xz
+Source204:      quran-bn.doc.tar.xz
 
 %description -n texlive-quran-bn
 The package is prepared for typesetting some Bengali
@@ -12554,7 +12970,7 @@ translations of the Holy Quran. It adds two Bengali
 translations to the quran package.
 
 %package -n texlive-quran-bn-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn68345
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.21svn74830
 Release:        0
 Summary:        Documentation for texlive-quran-bn
 License:        LPPL-1.0
@@ -12596,7 +13012,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quran-bn/qurantext-bnii.translation.def
 
 %package -n texlive-quran-de
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn54191
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.21svn74874
 Release:        0
 License:        LPPL-1.0
 Summary:        German translations to the quran package
@@ -12632,9 +13048,9 @@ Requires:       tex(qurantext-de.translation.def)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source197:      quran-de.tar.xz
-Source198:      quran-de.doc.tar.xz
+# from 20260301
+Source205:      quran-de.tar.xz
+Source206:      quran-de.doc.tar.xz
 
 %description -n texlive-quran-de
 The package is prepared for typesetting some German
@@ -12642,7 +13058,7 @@ translations of the Holy Quran. It adds three more German
 translations to the quran package.
 
 %package -n texlive-quran-de-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn54191
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.21svn74874
 Release:        0
 Summary:        Documentation for texlive-quran-de
 License:        LPPL-1.0
@@ -12685,7 +13101,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/quran-de/qurantext-deiv.translation.def
 
 %package -n texlive-quran-en
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn68790
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn74874
 Release:        0
 License:        LPPL-1.0
 Summary:        English translation extension to the quran package
@@ -12733,9 +13149,9 @@ Requires:       tex(qurantext-en.translation.def)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source199:      quran-en.tar.xz
-Source200:      quran-en.doc.tar.xz
+# from 20260301
+Source207:      quran-en.tar.xz
+Source208:      quran-en.doc.tar.xz
 
 %description -n texlive-quran-en
 This package is designed for typesetting multiple English
@@ -12743,7 +13159,7 @@ translations of the Holy Quran. It adds 15 additional English
 translations to the quran package.
 
 %package -n texlive-quran-en-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn68790
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn74874
 Release:        0
 Summary:        Documentation for texlive-quran-en
 License:        LPPL-1.0
@@ -12798,7 +13214,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/quran-en/qurantext-enxvi.translation.def
 
 %package -n texlive-quran-es
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn72203
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn74874
 Release:        0
 License:        LPPL-1.0
 Summary:        Spanish Translations for the quran package
@@ -12834,9 +13250,9 @@ Requires:       tex(quran.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source201:      quran-es.tar.xz
-Source202:      quran-es.doc.tar.xz
+# from 20260301
+Source209:      quran-es.tar.xz
+Source210:      quran-es.doc.tar.xz
 
 %description -n texlive-quran-es
 The package is designed for typesetting several Spanish
@@ -12844,7 +13260,7 @@ translations of the Holy Quran. It extends the quran package by
 adding three additional Spanish translations.
 
 %package -n texlive-quran-es-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn72203
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn74874
 Release:        0
 Summary:        Documentation for texlive-quran-es
 License:        LPPL-1.0
@@ -12887,7 +13303,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/quran-es/qurantext-esiii.translation.def
 
 %package -n texlive-quran-id
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn68747
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn74874
 Release:        0
 License:        LPPL-1.0
 Summary:        Indonesian translation extension to the quran package
@@ -12921,9 +13337,9 @@ Requires:       tex(quran.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source203:      quran-id.tar.xz
-Source204:      quran-id.doc.tar.xz
+# from 20260301
+Source211:      quran-id.tar.xz
+Source212:      quran-id.doc.tar.xz
 
 %description -n texlive-quran-id
 The package is prepared for typesetting some Indonesian
@@ -12931,7 +13347,7 @@ translations of the Holy Quran. It adds two Indonesian
 translations to the quran package.
 
 %package -n texlive-quran-id-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn68747
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.11svn74874
 Release:        0
 Summary:        Documentation for texlive-quran-id
 License:        LPPL-1.0
@@ -12973,7 +13389,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/quran-id/qurantext-idii.translation.def
 
 %package -n texlive-quran-ur
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.22svn68314
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.23svn74829
 Release:        0
 License:        LPPL-1.0
 Summary:        Urdu translations to the quran package
@@ -13014,9 +13430,9 @@ Requires:       tex(quran.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source205:      quran-ur.tar.xz
-Source206:      quran-ur.doc.tar.xz
+# from 20260301
+Source213:      quran-ur.tar.xz
+Source214:      quran-ur.doc.tar.xz
 
 %description -n texlive-quran-ur
 The package is prepared for typesetting some Urdu translations
@@ -13024,7 +13440,7 @@ of the Holy Quran. It adds eight Urdu translations to the quran
 package.
 
 %package -n texlive-quran-ur-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.22svn68314
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.23svn74829
 Release:        0
 Summary:        Documentation for texlive-quran-ur
 License:        LPPL-1.0
@@ -13071,8 +13487,112 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/quran-ur/qurantext-urvii.translation.def
 %{_texmfdistdir}/tex/latex/quran-ur/qurantext-urviii.translation.def
 
+%package -n texlive-qworld
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.2svn75910
+Release:        0
+License:        LPPL-1.0
+Summary:        Drawing string diagrams for monoidal categories and quantum theory in TeX
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-qworld-doc >= %{texlive_version}
+Provides:       tex(qworld.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(pgffor.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xfp.sty)
+Requires:       tex(xparse.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source215:      qworld.tar.xz
+Source216:      qworld.doc.tar.xz
+
+%description -n texlive-qworld
+This LaTeX package has been designed for the typesetting of
+graphical languages grounded in monoidal category theory and
+its extensions. It provides a declarative, LaTeX-native
+interface for rendering string diagrams, eliminating the need
+for any external graphics software or manual image management.
+The package supports a wide spectrum of categorical structures
+frequently encountered in categorical quantum mechanics,
+algebraic structures, and diagrammatic reasoning, including but
+not limited to: Monoidal and symmetric monoidal categories Dual
+objects and pivotal / rigid categories Dagger categories
+Frobenius algebras and Hopf algebras Braided, balanced, and
+ribbon categories Internally, QWorld builds upon the TikZ
+graphics framework, but introduces a domain-specific layer of
+abstraction that aligns diagram syntax closely with categorical
+semantics. This design facilitates accurate and transparent
+visual representations of morphisms, tensor products, and
+composition, thereby supporting both formal exposition and
+pedagogical use. QWorld is intended for researchers and
+educators working in categorical logic, quantum foundations,
+topological quantum field theory (TQFT), and related domains
+where graphical calculi constitute an essential mode of
+reasoning.
+
+%package -n texlive-qworld-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.2svn75910
+Release:        0
+Summary:        Documentation for texlive-qworld
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-qworld and texlive-alldocumentation)
+Provides:       locale(texlive-qworld-doc:ja)
+
+%description -n texlive-qworld-doc
+This package includes the documentation for texlive-qworld
+
+%post -n texlive-qworld
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-qworld
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-qworld
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-qworld-doc
+%{_texmfdistdir}/doc/latex/qworld/README.md
+%{_texmfdistdir}/doc/latex/qworld/qworld.pdf
+%{_texmfdistdir}/doc/latex/qworld/qworld.tex
+%{_texmfdistdir}/doc/latex/qworld/qworld_en.pdf
+%{_texmfdistdir}/doc/latex/qworld/qworld_en.tex
+
+%files -n texlive-qworld
+%{_texmfdistdir}/tex/latex/qworld/qworld.sty
+
 %package -n texlive-qyxf-book
-Version:        %{texlive_version}.%{texlive_noarch}.3.1.0svn56319
+Version:        %{texlive_version}.%{texlive_noarch}.3.1.0svn75712
 Release:        0
 License:        LPPL-1.0
 Summary:        Book Template for Qian Yuan Xue Fu
@@ -13125,29 +13645,25 @@ Requires:       tex(ulem.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source207:      qyxf-book.tar.xz
-Source208:      qyxf-book.doc.tar.xz
+# from 20260301
+Source217:      qyxf-book.tar.xz
+Source218:      qyxf-book.doc.tar.xz
 
 %description -n texlive-qyxf-book
 qyxf-book is a LaTeX document class (template) developed by
 Qian Yuan Xue Fu (QYXF), a student club of Xi'an Jiaotong
 University (XJTU). Up to now, this template has been applied to
 academic counselling material ("course helpers") written by
-members of QYXF, including Solutions to University Physics:
-https://qyxf.site/latest/Da Wu Ti Jie (Shang ).pdf Notes on
-Computing Methods: https://qyxf.site/latest/Ji Suan Fang Fa Xie
-Ying -v1.1.pdf Guide to Computer Programming:
-https://qyxf.site/latest/Ji Suan Ji She Ji Cheng Xu Zhi Nan
-.pdf Features of the template: Minimalistic document style, as
-preferred for "course helpers". Several color schemes are
-offered, and it is easy to customize your own scheme. Simple
-interfaces for users to customize the style of preface, main
-part and so on. Currently the template is only designed for
-Chinese typesetting.
+members of QYXF, including Solutions to University Physics
+Notes on Computing Methods Features of the template:
+Minimalistic document style, as preferred for "course helpers".
+Several color schemes are offered, and it is easy to customize
+your own scheme. Simple interfaces for users to customize the
+style of preface, main part and so on. Currently the template
+is only designed for Chinese typesetting.
 
 %package -n texlive-qyxf-book-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1.0svn56319
+Version:        %{texlive_version}.%{texlive_noarch}.3.1.0svn75712
 Release:        0
 Summary:        Documentation for texlive-qyxf-book
 License:        LPPL-1.0
@@ -13227,9 +13743,9 @@ Provides:       tex(nl_rs.tex)
 Provides:       tex(r_und_s.sty)
 Provides:       tex(r_und_s.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source209:      r_und_s.tar.xz
-Source210:      r_und_s.doc.tar.xz
+# from 20260301
+Source219:      r_und_s.tar.xz
+Source220:      r_und_s.doc.tar.xz
 
 %description -n texlive-r_und_s
 The r_und_s package decodes the german 'R- und S-Satze', which
@@ -13282,7 +13798,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/r_und_s/r_und_s.tex
 
 %package -n texlive-ragged2e
-Version:        %{texlive_version}.%{texlive_noarch}.3.6svn67441
+Version:        %{texlive_version}.%{texlive_noarch}.3.6svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Alternative versions of "ragged"-type commands
@@ -13313,9 +13829,9 @@ Provides:       tex(ragged2e.sty)
 Requires:       tex(everysel.sty)
 Requires:       tex(footmisc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source211:      ragged2e.tar.xz
-Source212:      ragged2e.doc.tar.xz
+# from 20260301
+Source221:      ragged2e.tar.xz
+Source222:      ragged2e.doc.tar.xz
 
 %description -n texlive-ragged2e
 The package defines new commands \Centering, \RaggedLeft, and
@@ -13325,7 +13841,7 @@ to allow hyphenation (the corresponding commands in LaTeX, all
 of whose names are lower-case, prevent hyphenation altogether).
 
 %package -n texlive-ragged2e-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.6svn67441
+Version:        %{texlive_version}.%{texlive_noarch}.3.6svn77682
 Release:        0
 Summary:        Documentation for texlive-ragged2e
 License:        LPPL-1.0
@@ -13367,8 +13883,93 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-ragged2e
 %{_texmfdistdir}/tex/latex/ragged2e/ragged2e.sty
 
+%package -n texlive-rainbowbrackets
+Version:        %{texlive_version}.%{texlive_noarch}.1.3.2svn75976
+Release:        0
+License:        LPPL-1.0
+Summary:        Automatic coloring of nested parentheses
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-rainbowbrackets-doc >= %{texlive_version}
+Provides:       tex(rainbowbrackets.sty)
+Requires:       tex(expl3.sty)
+Requires:       tex(kvoptions.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xparse.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source223:      rainbowbrackets.tar.xz
+Source224:      rainbowbrackets.doc.tar.xz
+
+%description -n texlive-rainbowbrackets
+The primary function of this package is to replicate a common
+feature found in many integrated development environments
+(IDEs), wherein matching parentheses at the same nesting level
+are assigned corresponding colors. This visual aid facilitates
+improved readability and cognitive parsing of complex
+expressions.
+
+%package -n texlive-rainbowbrackets-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.3.2svn75976
+Release:        0
+Summary:        Documentation for texlive-rainbowbrackets
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-rainbowbrackets and texlive-alldocumentation)
+
+%description -n texlive-rainbowbrackets-doc
+This package includes the documentation for texlive-rainbowbrackets
+
+%post -n texlive-rainbowbrackets
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-rainbowbrackets
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-rainbowbrackets
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-rainbowbrackets-doc
+%{_texmfdistdir}/doc/latex/rainbowbrackets/README.md
+%{_texmfdistdir}/doc/latex/rainbowbrackets/TODO.md
+%{_texmfdistdir}/doc/latex/rainbowbrackets/rainbowbrackets_doc.pdf
+%{_texmfdistdir}/doc/latex/rainbowbrackets/rainbowbrackets_doc.tex
+
+%files -n texlive-rainbowbrackets
+%{_texmfdistdir}/tex/latex/rainbowbrackets/rainbowbrackets.sty
+
 %package -n texlive-raleway
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn42629
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Use Raleway with TeX(-alike) systems
@@ -13407,727 +14008,1085 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-raleway-fonts >= %{texlive_version}
 Suggests:       texlive-raleway-doc >= %{texlive_version}
-Provides:       tex(LY1Raleway-TLF.fd)
-Provides:       tex(LY1Raleway-TOsF.fd)
-Provides:       tex(OT1Raleway-TLF.fd)
-Provides:       tex(OT1Raleway-TOsF.fd)
-Provides:       tex(Raleway-Black-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-Black-tlf-ly1.tfm)
-Provides:       tex(Raleway-Black-tlf-ly1.vf)
-Provides:       tex(Raleway-Black-tlf-ot1.tfm)
-Provides:       tex(Raleway-Black-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Black-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-Black-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-Black-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Black-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-Black-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-Black-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Black-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-Black-tlf-sc-t1.vf)
-Provides:       tex(Raleway-Black-tlf-t1--base.tfm)
-Provides:       tex(Raleway-Black-tlf-t1.tfm)
-Provides:       tex(Raleway-Black-tlf-t1.vf)
-Provides:       tex(Raleway-Black-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-Black-tlf-ts1.tfm)
-Provides:       tex(Raleway-Black-tlf-ts1.vf)
-Provides:       tex(Raleway-Black-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-Black-tosf-ly1.tfm)
-Provides:       tex(Raleway-Black-tosf-ly1.vf)
-Provides:       tex(Raleway-Black-tosf-ot1.tfm)
-Provides:       tex(Raleway-Black-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Black-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-Black-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-Black-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Black-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-Black-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-Black-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Black-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-Black-tosf-sc-t1.vf)
-Provides:       tex(Raleway-Black-tosf-t1--base.tfm)
-Provides:       tex(Raleway-Black-tosf-t1.tfm)
-Provides:       tex(Raleway-Black-tosf-t1.vf)
-Provides:       tex(Raleway-Black-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-Black-tosf-ts1.tfm)
-Provides:       tex(Raleway-Black-tosf-ts1.vf)
-Provides:       tex(Raleway-BlackItalic-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-ly1.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-ly1.vf)
-Provides:       tex(Raleway-BlackItalic-tlf-ot1.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-BlackItalic-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-BlackItalic-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-sc-t1.vf)
-Provides:       tex(Raleway-BlackItalic-tlf-t1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-t1.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-t1.vf)
-Provides:       tex(Raleway-BlackItalic-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-ts1.tfm)
-Provides:       tex(Raleway-BlackItalic-tlf-ts1.vf)
-Provides:       tex(Raleway-BlackItalic-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-ly1.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-ly1.vf)
-Provides:       tex(Raleway-BlackItalic-tosf-ot1.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-BlackItalic-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-BlackItalic-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-sc-t1.vf)
-Provides:       tex(Raleway-BlackItalic-tosf-t1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-t1.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-t1.vf)
-Provides:       tex(Raleway-BlackItalic-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-ts1.tfm)
-Provides:       tex(Raleway-BlackItalic-tosf-ts1.vf)
-Provides:       tex(Raleway-Bold-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-Bold-tlf-ly1.tfm)
-Provides:       tex(Raleway-Bold-tlf-ly1.vf)
-Provides:       tex(Raleway-Bold-tlf-ot1.tfm)
-Provides:       tex(Raleway-Bold-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Bold-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-Bold-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-Bold-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Bold-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-Bold-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-Bold-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Bold-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-Bold-tlf-sc-t1.vf)
-Provides:       tex(Raleway-Bold-tlf-t1--base.tfm)
-Provides:       tex(Raleway-Bold-tlf-t1.tfm)
-Provides:       tex(Raleway-Bold-tlf-t1.vf)
-Provides:       tex(Raleway-Bold-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-Bold-tlf-ts1.tfm)
-Provides:       tex(Raleway-Bold-tlf-ts1.vf)
-Provides:       tex(Raleway-Bold-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-Bold-tosf-ly1.tfm)
-Provides:       tex(Raleway-Bold-tosf-ly1.vf)
-Provides:       tex(Raleway-Bold-tosf-ot1.tfm)
-Provides:       tex(Raleway-Bold-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Bold-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-Bold-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-Bold-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Bold-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-Bold-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-Bold-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Bold-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-Bold-tosf-sc-t1.vf)
-Provides:       tex(Raleway-Bold-tosf-t1--base.tfm)
-Provides:       tex(Raleway-Bold-tosf-t1.tfm)
-Provides:       tex(Raleway-Bold-tosf-t1.vf)
-Provides:       tex(Raleway-Bold-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-Bold-tosf-ts1.tfm)
-Provides:       tex(Raleway-Bold-tosf-ts1.vf)
-Provides:       tex(Raleway-BoldItalic-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-ly1.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-ly1.vf)
-Provides:       tex(Raleway-BoldItalic-tlf-ot1.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-BoldItalic-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-BoldItalic-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-sc-t1.vf)
-Provides:       tex(Raleway-BoldItalic-tlf-t1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-t1.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-t1.vf)
-Provides:       tex(Raleway-BoldItalic-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-ts1.tfm)
-Provides:       tex(Raleway-BoldItalic-tlf-ts1.vf)
-Provides:       tex(Raleway-BoldItalic-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-ly1.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-ly1.vf)
-Provides:       tex(Raleway-BoldItalic-tosf-ot1.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-BoldItalic-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-BoldItalic-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-sc-t1.vf)
-Provides:       tex(Raleway-BoldItalic-tosf-t1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-t1.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-t1.vf)
-Provides:       tex(Raleway-BoldItalic-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-ts1.tfm)
-Provides:       tex(Raleway-BoldItalic-tosf-ts1.vf)
-Provides:       tex(Raleway-ExtraBold-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-ly1.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-ly1.vf)
-Provides:       tex(Raleway-ExtraBold-tlf-ot1.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-ExtraBold-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-ExtraBold-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-sc-t1.vf)
-Provides:       tex(Raleway-ExtraBold-tlf-t1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-t1.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-t1.vf)
-Provides:       tex(Raleway-ExtraBold-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-ts1.tfm)
-Provides:       tex(Raleway-ExtraBold-tlf-ts1.vf)
-Provides:       tex(Raleway-ExtraBold-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-ly1.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-ly1.vf)
-Provides:       tex(Raleway-ExtraBold-tosf-ot1.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-ExtraBold-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-ExtraBold-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-sc-t1.vf)
-Provides:       tex(Raleway-ExtraBold-tosf-t1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-t1.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-t1.vf)
-Provides:       tex(Raleway-ExtraBold-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-ts1.tfm)
-Provides:       tex(Raleway-ExtraBold-tosf-ts1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-ly1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-ly1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-ot1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-sc-t1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-t1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-t1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-t1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-ts1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tlf-ts1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-ly1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-ly1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-ot1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-sc-t1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-t1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-t1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-t1.vf)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-ts1.tfm)
-Provides:       tex(Raleway-ExtraBoldItalic-tosf-ts1.vf)
-Provides:       tex(Raleway-ExtraLight-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-ly1.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-ly1.vf)
-Provides:       tex(Raleway-ExtraLight-tlf-ot1.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-ExtraLight-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-ExtraLight-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-sc-t1.vf)
-Provides:       tex(Raleway-ExtraLight-tlf-t1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-t1.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-t1.vf)
-Provides:       tex(Raleway-ExtraLight-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-ts1.tfm)
-Provides:       tex(Raleway-ExtraLight-tlf-ts1.vf)
-Provides:       tex(Raleway-ExtraLight-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-ly1.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-ly1.vf)
-Provides:       tex(Raleway-ExtraLight-tosf-ot1.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-ExtraLight-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-ExtraLight-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-sc-t1.vf)
-Provides:       tex(Raleway-ExtraLight-tosf-t1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-t1.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-t1.vf)
-Provides:       tex(Raleway-ExtraLight-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-ts1.tfm)
-Provides:       tex(Raleway-ExtraLight-tosf-ts1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-ly1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-ly1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-ot1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-sc-t1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-t1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-t1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-t1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-ts1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tlf-ts1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-ly1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-ly1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-ot1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-sc-t1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-t1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-t1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-t1.vf)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-ts1.tfm)
-Provides:       tex(Raleway-ExtraLightItalic-tosf-ts1.vf)
-Provides:       tex(Raleway-Italic-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-Italic-tlf-ly1.tfm)
-Provides:       tex(Raleway-Italic-tlf-ly1.vf)
-Provides:       tex(Raleway-Italic-tlf-ot1.tfm)
-Provides:       tex(Raleway-Italic-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Italic-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-Italic-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-Italic-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Italic-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-Italic-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-Italic-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Italic-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-Italic-tlf-sc-t1.vf)
-Provides:       tex(Raleway-Italic-tlf-t1--base.tfm)
-Provides:       tex(Raleway-Italic-tlf-t1.tfm)
-Provides:       tex(Raleway-Italic-tlf-t1.vf)
-Provides:       tex(Raleway-Italic-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-Italic-tlf-ts1.tfm)
-Provides:       tex(Raleway-Italic-tlf-ts1.vf)
-Provides:       tex(Raleway-Italic-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-Italic-tosf-ly1.tfm)
-Provides:       tex(Raleway-Italic-tosf-ly1.vf)
-Provides:       tex(Raleway-Italic-tosf-ot1.tfm)
-Provides:       tex(Raleway-Italic-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Italic-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-Italic-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-Italic-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Italic-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-Italic-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-Italic-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Italic-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-Italic-tosf-sc-t1.vf)
-Provides:       tex(Raleway-Italic-tosf-t1--base.tfm)
-Provides:       tex(Raleway-Italic-tosf-t1.tfm)
-Provides:       tex(Raleway-Italic-tosf-t1.vf)
-Provides:       tex(Raleway-Italic-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-Italic-tosf-ts1.tfm)
-Provides:       tex(Raleway-Italic-tosf-ts1.vf)
-Provides:       tex(Raleway-Light-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-Light-tlf-ly1.tfm)
-Provides:       tex(Raleway-Light-tlf-ly1.vf)
-Provides:       tex(Raleway-Light-tlf-ot1.tfm)
-Provides:       tex(Raleway-Light-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Light-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-Light-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-Light-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Light-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-Light-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-Light-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Light-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-Light-tlf-sc-t1.vf)
-Provides:       tex(Raleway-Light-tlf-t1--base.tfm)
-Provides:       tex(Raleway-Light-tlf-t1.tfm)
-Provides:       tex(Raleway-Light-tlf-t1.vf)
-Provides:       tex(Raleway-Light-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-Light-tlf-ts1.tfm)
-Provides:       tex(Raleway-Light-tlf-ts1.vf)
-Provides:       tex(Raleway-Light-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-Light-tosf-ly1.tfm)
-Provides:       tex(Raleway-Light-tosf-ly1.vf)
-Provides:       tex(Raleway-Light-tosf-ot1.tfm)
-Provides:       tex(Raleway-Light-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Light-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-Light-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-Light-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Light-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-Light-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-Light-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Light-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-Light-tosf-sc-t1.vf)
-Provides:       tex(Raleway-Light-tosf-t1--base.tfm)
-Provides:       tex(Raleway-Light-tosf-t1.tfm)
-Provides:       tex(Raleway-Light-tosf-t1.vf)
-Provides:       tex(Raleway-Light-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-Light-tosf-ts1.tfm)
-Provides:       tex(Raleway-Light-tosf-ts1.vf)
-Provides:       tex(Raleway-LightItalic-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-ly1.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-ly1.vf)
-Provides:       tex(Raleway-LightItalic-tlf-ot1.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-LightItalic-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-LightItalic-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-sc-t1.vf)
-Provides:       tex(Raleway-LightItalic-tlf-t1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-t1.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-t1.vf)
-Provides:       tex(Raleway-LightItalic-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-ts1.tfm)
-Provides:       tex(Raleway-LightItalic-tlf-ts1.vf)
-Provides:       tex(Raleway-LightItalic-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-ly1.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-ly1.vf)
-Provides:       tex(Raleway-LightItalic-tosf-ot1.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-LightItalic-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-LightItalic-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-sc-t1.vf)
-Provides:       tex(Raleway-LightItalic-tosf-t1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-t1.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-t1.vf)
-Provides:       tex(Raleway-LightItalic-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-ts1.tfm)
-Provides:       tex(Raleway-LightItalic-tosf-ts1.vf)
-Provides:       tex(Raleway-Medium-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-Medium-tlf-ly1.tfm)
-Provides:       tex(Raleway-Medium-tlf-ly1.vf)
-Provides:       tex(Raleway-Medium-tlf-ot1.tfm)
-Provides:       tex(Raleway-Medium-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Medium-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-Medium-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-Medium-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Medium-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-Medium-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-Medium-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Medium-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-Medium-tlf-sc-t1.vf)
-Provides:       tex(Raleway-Medium-tlf-t1--base.tfm)
-Provides:       tex(Raleway-Medium-tlf-t1.tfm)
-Provides:       tex(Raleway-Medium-tlf-t1.vf)
-Provides:       tex(Raleway-Medium-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-Medium-tlf-ts1.tfm)
-Provides:       tex(Raleway-Medium-tlf-ts1.vf)
-Provides:       tex(Raleway-Medium-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-Medium-tosf-ly1.tfm)
-Provides:       tex(Raleway-Medium-tosf-ly1.vf)
-Provides:       tex(Raleway-Medium-tosf-ot1.tfm)
-Provides:       tex(Raleway-Medium-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Medium-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-Medium-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-Medium-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Medium-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-Medium-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-Medium-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Medium-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-Medium-tosf-sc-t1.vf)
-Provides:       tex(Raleway-Medium-tosf-t1--base.tfm)
-Provides:       tex(Raleway-Medium-tosf-t1.tfm)
-Provides:       tex(Raleway-Medium-tosf-t1.vf)
-Provides:       tex(Raleway-Medium-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-Medium-tosf-ts1.tfm)
-Provides:       tex(Raleway-Medium-tosf-ts1.vf)
-Provides:       tex(Raleway-MediumItalic-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-ly1.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-ly1.vf)
-Provides:       tex(Raleway-MediumItalic-tlf-ot1.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-MediumItalic-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-MediumItalic-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-sc-t1.vf)
-Provides:       tex(Raleway-MediumItalic-tlf-t1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-t1.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-t1.vf)
-Provides:       tex(Raleway-MediumItalic-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-ts1.tfm)
-Provides:       tex(Raleway-MediumItalic-tlf-ts1.vf)
-Provides:       tex(Raleway-MediumItalic-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-ly1.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-ly1.vf)
-Provides:       tex(Raleway-MediumItalic-tosf-ot1.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-MediumItalic-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-MediumItalic-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-sc-t1.vf)
-Provides:       tex(Raleway-MediumItalic-tosf-t1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-t1.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-t1.vf)
-Provides:       tex(Raleway-MediumItalic-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-ts1.tfm)
-Provides:       tex(Raleway-MediumItalic-tosf-ts1.vf)
-Provides:       tex(Raleway-Regular-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-Regular-tlf-ly1.tfm)
-Provides:       tex(Raleway-Regular-tlf-ly1.vf)
-Provides:       tex(Raleway-Regular-tlf-ot1.tfm)
-Provides:       tex(Raleway-Regular-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Regular-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-Regular-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-Regular-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Regular-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-Regular-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-Regular-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Regular-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-Regular-tlf-sc-t1.vf)
-Provides:       tex(Raleway-Regular-tlf-t1--base.tfm)
-Provides:       tex(Raleway-Regular-tlf-t1.tfm)
-Provides:       tex(Raleway-Regular-tlf-t1.vf)
-Provides:       tex(Raleway-Regular-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-Regular-tlf-ts1.tfm)
-Provides:       tex(Raleway-Regular-tlf-ts1.vf)
-Provides:       tex(Raleway-Regular-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-Regular-tosf-ly1.tfm)
-Provides:       tex(Raleway-Regular-tosf-ly1.vf)
-Provides:       tex(Raleway-Regular-tosf-ot1.tfm)
-Provides:       tex(Raleway-Regular-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Regular-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-Regular-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-Regular-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Regular-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-Regular-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-Regular-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Regular-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-Regular-tosf-sc-t1.vf)
-Provides:       tex(Raleway-Regular-tosf-t1--base.tfm)
-Provides:       tex(Raleway-Regular-tosf-t1.tfm)
-Provides:       tex(Raleway-Regular-tosf-t1.vf)
-Provides:       tex(Raleway-Regular-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-Regular-tosf-ts1.tfm)
-Provides:       tex(Raleway-Regular-tosf-ts1.vf)
-Provides:       tex(Raleway-SemiBold-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-ly1.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-ly1.vf)
-Provides:       tex(Raleway-SemiBold-tlf-ot1.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-SemiBold-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-SemiBold-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-sc-t1.vf)
-Provides:       tex(Raleway-SemiBold-tlf-t1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-t1.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-t1.vf)
-Provides:       tex(Raleway-SemiBold-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-ts1.tfm)
-Provides:       tex(Raleway-SemiBold-tlf-ts1.vf)
-Provides:       tex(Raleway-SemiBold-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-ly1.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-ly1.vf)
-Provides:       tex(Raleway-SemiBold-tosf-ot1.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-SemiBold-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-SemiBold-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-sc-t1.vf)
-Provides:       tex(Raleway-SemiBold-tosf-t1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-t1.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-t1.vf)
-Provides:       tex(Raleway-SemiBold-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-ts1.tfm)
-Provides:       tex(Raleway-SemiBold-tosf-ts1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-ly1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-ly1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-ot1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-sc-t1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-t1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-t1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-t1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-ts1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tlf-ts1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-ly1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-ly1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-ot1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-sc-t1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-t1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-t1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-t1.vf)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-ts1.tfm)
-Provides:       tex(Raleway-SemiBoldItalic-tosf-ts1.vf)
-Provides:       tex(Raleway-Thin-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-Thin-tlf-ly1.tfm)
-Provides:       tex(Raleway-Thin-tlf-ly1.vf)
-Provides:       tex(Raleway-Thin-tlf-ot1.tfm)
-Provides:       tex(Raleway-Thin-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Thin-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-Thin-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-Thin-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Thin-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-Thin-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-Thin-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Thin-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-Thin-tlf-sc-t1.vf)
-Provides:       tex(Raleway-Thin-tlf-t1--base.tfm)
-Provides:       tex(Raleway-Thin-tlf-t1.tfm)
-Provides:       tex(Raleway-Thin-tlf-t1.vf)
-Provides:       tex(Raleway-Thin-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-Thin-tlf-ts1.tfm)
-Provides:       tex(Raleway-Thin-tlf-ts1.vf)
-Provides:       tex(Raleway-Thin-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-Thin-tosf-ly1.tfm)
-Provides:       tex(Raleway-Thin-tosf-ly1.vf)
-Provides:       tex(Raleway-Thin-tosf-ot1.tfm)
-Provides:       tex(Raleway-Thin-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-Thin-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-Thin-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-Thin-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-Thin-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-Thin-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-Thin-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-Thin-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-Thin-tosf-sc-t1.vf)
-Provides:       tex(Raleway-Thin-tosf-t1--base.tfm)
-Provides:       tex(Raleway-Thin-tosf-t1.tfm)
-Provides:       tex(Raleway-Thin-tosf-t1.vf)
-Provides:       tex(Raleway-Thin-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-Thin-tosf-ts1.tfm)
-Provides:       tex(Raleway-Thin-tosf-ts1.vf)
-Provides:       tex(Raleway-ThinItalic-tlf-ly1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-ly1.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-ly1.vf)
-Provides:       tex(Raleway-ThinItalic-tlf-ot1.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-sc-ly1.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-sc-ly1.vf)
-Provides:       tex(Raleway-ThinItalic-tlf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-sc-ot1.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-sc-ot1.vf)
-Provides:       tex(Raleway-ThinItalic-tlf-sc-t1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-sc-t1.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-sc-t1.vf)
-Provides:       tex(Raleway-ThinItalic-tlf-t1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-t1.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-t1.vf)
-Provides:       tex(Raleway-ThinItalic-tlf-ts1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-ts1.tfm)
-Provides:       tex(Raleway-ThinItalic-tlf-ts1.vf)
-Provides:       tex(Raleway-ThinItalic-tosf-ly1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-ly1.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-ly1.vf)
-Provides:       tex(Raleway-ThinItalic-tosf-ot1.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-sc-ly1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-sc-ly1.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-sc-ly1.vf)
-Provides:       tex(Raleway-ThinItalic-tosf-sc-ot1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-sc-ot1.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-sc-ot1.vf)
-Provides:       tex(Raleway-ThinItalic-tosf-sc-t1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-sc-t1.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-sc-t1.vf)
-Provides:       tex(Raleway-ThinItalic-tosf-t1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-t1.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-t1.vf)
-Provides:       tex(Raleway-ThinItalic-tosf-ts1--base.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-ts1.tfm)
-Provides:       tex(Raleway-ThinItalic-tosf-ts1.vf)
+Provides:       tex(LY1Raleway-Dnom.fd)
+Provides:       tex(LY1Raleway-Inf.fd)
+Provides:       tex(LY1Raleway-LF.fd)
+Provides:       tex(LY1Raleway-Numr.fd)
+Provides:       tex(LY1Raleway-OsF.fd)
+Provides:       tex(LY1Raleway-Sup.fd)
+Provides:       tex(OT1Raleway-Dnom.fd)
+Provides:       tex(OT1Raleway-Inf.fd)
+Provides:       tex(OT1Raleway-LF.fd)
+Provides:       tex(OT1Raleway-Numr.fd)
+Provides:       tex(OT1Raleway-OsF.fd)
+Provides:       tex(OT1Raleway-Sup.fd)
+Provides:       tex(Raleway-Black-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-Black-dnom-ly1.tfm)
+Provides:       tex(Raleway-Black-dnom-ly1.vf)
+Provides:       tex(Raleway-Black-dnom-ot1.tfm)
+Provides:       tex(Raleway-Black-dnom-t1--base.tfm)
+Provides:       tex(Raleway-Black-dnom-t1.tfm)
+Provides:       tex(Raleway-Black-dnom-t1.vf)
+Provides:       tex(Raleway-Black-inf-ly1--base.tfm)
+Provides:       tex(Raleway-Black-inf-ly1.tfm)
+Provides:       tex(Raleway-Black-inf-ly1.vf)
+Provides:       tex(Raleway-Black-inf-ot1.tfm)
+Provides:       tex(Raleway-Black-inf-t1--base.tfm)
+Provides:       tex(Raleway-Black-inf-t1.tfm)
+Provides:       tex(Raleway-Black-inf-t1.vf)
+Provides:       tex(Raleway-Black-lf-ly1--base.tfm)
+Provides:       tex(Raleway-Black-lf-ly1.tfm)
+Provides:       tex(Raleway-Black-lf-ly1.vf)
+Provides:       tex(Raleway-Black-lf-ot1.tfm)
+Provides:       tex(Raleway-Black-lf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Black-lf-sc-ly1.tfm)
+Provides:       tex(Raleway-Black-lf-sc-ly1.vf)
+Provides:       tex(Raleway-Black-lf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Black-lf-sc-ot1.tfm)
+Provides:       tex(Raleway-Black-lf-sc-ot1.vf)
+Provides:       tex(Raleway-Black-lf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Black-lf-sc-t1.tfm)
+Provides:       tex(Raleway-Black-lf-sc-t1.vf)
+Provides:       tex(Raleway-Black-lf-t1--base.tfm)
+Provides:       tex(Raleway-Black-lf-t1.tfm)
+Provides:       tex(Raleway-Black-lf-t1.vf)
+Provides:       tex(Raleway-Black-lf-ts1--base.tfm)
+Provides:       tex(Raleway-Black-lf-ts1.tfm)
+Provides:       tex(Raleway-Black-lf-ts1.vf)
+Provides:       tex(Raleway-Black-numr-ly1--base.tfm)
+Provides:       tex(Raleway-Black-numr-ly1.tfm)
+Provides:       tex(Raleway-Black-numr-ly1.vf)
+Provides:       tex(Raleway-Black-numr-ot1.tfm)
+Provides:       tex(Raleway-Black-numr-t1--base.tfm)
+Provides:       tex(Raleway-Black-numr-t1.tfm)
+Provides:       tex(Raleway-Black-numr-t1.vf)
+Provides:       tex(Raleway-Black-osf-ly1--base.tfm)
+Provides:       tex(Raleway-Black-osf-ly1.tfm)
+Provides:       tex(Raleway-Black-osf-ly1.vf)
+Provides:       tex(Raleway-Black-osf-ot1.tfm)
+Provides:       tex(Raleway-Black-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Black-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-Black-osf-sc-ly1.vf)
+Provides:       tex(Raleway-Black-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Black-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-Black-osf-sc-ot1.vf)
+Provides:       tex(Raleway-Black-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Black-osf-sc-t1.tfm)
+Provides:       tex(Raleway-Black-osf-sc-t1.vf)
+Provides:       tex(Raleway-Black-osf-t1--base.tfm)
+Provides:       tex(Raleway-Black-osf-t1.tfm)
+Provides:       tex(Raleway-Black-osf-t1.vf)
+Provides:       tex(Raleway-Black-osf-ts1--base.tfm)
+Provides:       tex(Raleway-Black-osf-ts1.tfm)
+Provides:       tex(Raleway-Black-osf-ts1.vf)
+Provides:       tex(Raleway-Black-sup-ly1--base.tfm)
+Provides:       tex(Raleway-Black-sup-ly1.tfm)
+Provides:       tex(Raleway-Black-sup-ly1.vf)
+Provides:       tex(Raleway-Black-sup-ot1.tfm)
+Provides:       tex(Raleway-Black-sup-t1--base.tfm)
+Provides:       tex(Raleway-Black-sup-t1.tfm)
+Provides:       tex(Raleway-Black-sup-t1.vf)
+Provides:       tex(Raleway-BlackItalic-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-dnom-ly1.tfm)
+Provides:       tex(Raleway-BlackItalic-dnom-ly1.vf)
+Provides:       tex(Raleway-BlackItalic-dnom-ot1.tfm)
+Provides:       tex(Raleway-BlackItalic-dnom-t1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-dnom-t1.tfm)
+Provides:       tex(Raleway-BlackItalic-dnom-t1.vf)
+Provides:       tex(Raleway-BlackItalic-inf-ly1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-inf-ly1.tfm)
+Provides:       tex(Raleway-BlackItalic-inf-ly1.vf)
+Provides:       tex(Raleway-BlackItalic-inf-ot1.tfm)
+Provides:       tex(Raleway-BlackItalic-inf-t1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-inf-t1.tfm)
+Provides:       tex(Raleway-BlackItalic-inf-t1.vf)
+Provides:       tex(Raleway-BlackItalic-numr-ly1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-numr-ly1.tfm)
+Provides:       tex(Raleway-BlackItalic-numr-ly1.vf)
+Provides:       tex(Raleway-BlackItalic-numr-ot1.tfm)
+Provides:       tex(Raleway-BlackItalic-numr-t1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-numr-t1.tfm)
+Provides:       tex(Raleway-BlackItalic-numr-t1.vf)
+Provides:       tex(Raleway-BlackItalic-osf-ly1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-ly1.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-ly1.vf)
+Provides:       tex(Raleway-BlackItalic-osf-ot1.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-sc-ly1.vf)
+Provides:       tex(Raleway-BlackItalic-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-sc-ot1.vf)
+Provides:       tex(Raleway-BlackItalic-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-sc-t1.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-sc-t1.vf)
+Provides:       tex(Raleway-BlackItalic-osf-t1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-t1.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-t1.vf)
+Provides:       tex(Raleway-BlackItalic-osf-ts1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-ts1.tfm)
+Provides:       tex(Raleway-BlackItalic-osf-ts1.vf)
+Provides:       tex(Raleway-BlackItalic-sup-ly1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-sup-ly1.tfm)
+Provides:       tex(Raleway-BlackItalic-sup-ly1.vf)
+Provides:       tex(Raleway-BlackItalic-sup-ot1.tfm)
+Provides:       tex(Raleway-BlackItalic-sup-t1--base.tfm)
+Provides:       tex(Raleway-BlackItalic-sup-t1.tfm)
+Provides:       tex(Raleway-BlackItalic-sup-t1.vf)
+Provides:       tex(Raleway-Bold-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-Bold-dnom-ly1.tfm)
+Provides:       tex(Raleway-Bold-dnom-ly1.vf)
+Provides:       tex(Raleway-Bold-dnom-ot1.tfm)
+Provides:       tex(Raleway-Bold-dnom-t1--base.tfm)
+Provides:       tex(Raleway-Bold-dnom-t1.tfm)
+Provides:       tex(Raleway-Bold-dnom-t1.vf)
+Provides:       tex(Raleway-Bold-inf-ly1--base.tfm)
+Provides:       tex(Raleway-Bold-inf-ly1.tfm)
+Provides:       tex(Raleway-Bold-inf-ly1.vf)
+Provides:       tex(Raleway-Bold-inf-ot1.tfm)
+Provides:       tex(Raleway-Bold-inf-t1--base.tfm)
+Provides:       tex(Raleway-Bold-inf-t1.tfm)
+Provides:       tex(Raleway-Bold-inf-t1.vf)
+Provides:       tex(Raleway-Bold-lf-ly1--base.tfm)
+Provides:       tex(Raleway-Bold-lf-ly1.tfm)
+Provides:       tex(Raleway-Bold-lf-ly1.vf)
+Provides:       tex(Raleway-Bold-lf-ot1.tfm)
+Provides:       tex(Raleway-Bold-lf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Bold-lf-sc-ly1.tfm)
+Provides:       tex(Raleway-Bold-lf-sc-ly1.vf)
+Provides:       tex(Raleway-Bold-lf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Bold-lf-sc-ot1.tfm)
+Provides:       tex(Raleway-Bold-lf-sc-ot1.vf)
+Provides:       tex(Raleway-Bold-lf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Bold-lf-sc-t1.tfm)
+Provides:       tex(Raleway-Bold-lf-sc-t1.vf)
+Provides:       tex(Raleway-Bold-lf-t1--base.tfm)
+Provides:       tex(Raleway-Bold-lf-t1.tfm)
+Provides:       tex(Raleway-Bold-lf-t1.vf)
+Provides:       tex(Raleway-Bold-lf-ts1--base.tfm)
+Provides:       tex(Raleway-Bold-lf-ts1.tfm)
+Provides:       tex(Raleway-Bold-lf-ts1.vf)
+Provides:       tex(Raleway-Bold-numr-ly1--base.tfm)
+Provides:       tex(Raleway-Bold-numr-ly1.tfm)
+Provides:       tex(Raleway-Bold-numr-ly1.vf)
+Provides:       tex(Raleway-Bold-numr-ot1.tfm)
+Provides:       tex(Raleway-Bold-numr-t1--base.tfm)
+Provides:       tex(Raleway-Bold-numr-t1.tfm)
+Provides:       tex(Raleway-Bold-numr-t1.vf)
+Provides:       tex(Raleway-Bold-osf-ly1--base.tfm)
+Provides:       tex(Raleway-Bold-osf-ly1.tfm)
+Provides:       tex(Raleway-Bold-osf-ly1.vf)
+Provides:       tex(Raleway-Bold-osf-ot1.tfm)
+Provides:       tex(Raleway-Bold-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Bold-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-Bold-osf-sc-ly1.vf)
+Provides:       tex(Raleway-Bold-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Bold-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-Bold-osf-sc-ot1.vf)
+Provides:       tex(Raleway-Bold-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Bold-osf-sc-t1.tfm)
+Provides:       tex(Raleway-Bold-osf-sc-t1.vf)
+Provides:       tex(Raleway-Bold-osf-t1--base.tfm)
+Provides:       tex(Raleway-Bold-osf-t1.tfm)
+Provides:       tex(Raleway-Bold-osf-t1.vf)
+Provides:       tex(Raleway-Bold-osf-ts1--base.tfm)
+Provides:       tex(Raleway-Bold-osf-ts1.tfm)
+Provides:       tex(Raleway-Bold-osf-ts1.vf)
+Provides:       tex(Raleway-Bold-sup-ly1--base.tfm)
+Provides:       tex(Raleway-Bold-sup-ly1.tfm)
+Provides:       tex(Raleway-Bold-sup-ly1.vf)
+Provides:       tex(Raleway-Bold-sup-ot1.tfm)
+Provides:       tex(Raleway-Bold-sup-t1--base.tfm)
+Provides:       tex(Raleway-Bold-sup-t1.tfm)
+Provides:       tex(Raleway-Bold-sup-t1.vf)
+Provides:       tex(Raleway-BoldItalic-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-dnom-ly1.tfm)
+Provides:       tex(Raleway-BoldItalic-dnom-ly1.vf)
+Provides:       tex(Raleway-BoldItalic-dnom-ot1.tfm)
+Provides:       tex(Raleway-BoldItalic-dnom-t1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-dnom-t1.tfm)
+Provides:       tex(Raleway-BoldItalic-dnom-t1.vf)
+Provides:       tex(Raleway-BoldItalic-inf-ly1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-inf-ly1.tfm)
+Provides:       tex(Raleway-BoldItalic-inf-ly1.vf)
+Provides:       tex(Raleway-BoldItalic-inf-ot1.tfm)
+Provides:       tex(Raleway-BoldItalic-inf-t1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-inf-t1.tfm)
+Provides:       tex(Raleway-BoldItalic-inf-t1.vf)
+Provides:       tex(Raleway-BoldItalic-numr-ly1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-numr-ly1.tfm)
+Provides:       tex(Raleway-BoldItalic-numr-ly1.vf)
+Provides:       tex(Raleway-BoldItalic-numr-ot1.tfm)
+Provides:       tex(Raleway-BoldItalic-numr-t1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-numr-t1.tfm)
+Provides:       tex(Raleway-BoldItalic-numr-t1.vf)
+Provides:       tex(Raleway-BoldItalic-osf-ly1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-ly1.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-ly1.vf)
+Provides:       tex(Raleway-BoldItalic-osf-ot1.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-sc-ly1.vf)
+Provides:       tex(Raleway-BoldItalic-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-sc-ot1.vf)
+Provides:       tex(Raleway-BoldItalic-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-sc-t1.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-sc-t1.vf)
+Provides:       tex(Raleway-BoldItalic-osf-t1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-t1.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-t1.vf)
+Provides:       tex(Raleway-BoldItalic-osf-ts1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-ts1.tfm)
+Provides:       tex(Raleway-BoldItalic-osf-ts1.vf)
+Provides:       tex(Raleway-BoldItalic-sup-ly1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-sup-ly1.tfm)
+Provides:       tex(Raleway-BoldItalic-sup-ly1.vf)
+Provides:       tex(Raleway-BoldItalic-sup-ot1.tfm)
+Provides:       tex(Raleway-BoldItalic-sup-t1--base.tfm)
+Provides:       tex(Raleway-BoldItalic-sup-t1.tfm)
+Provides:       tex(Raleway-BoldItalic-sup-t1.vf)
+Provides:       tex(Raleway-ExtraBold-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-dnom-ly1.tfm)
+Provides:       tex(Raleway-ExtraBold-dnom-ly1.vf)
+Provides:       tex(Raleway-ExtraBold-dnom-ot1.tfm)
+Provides:       tex(Raleway-ExtraBold-dnom-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-dnom-t1.tfm)
+Provides:       tex(Raleway-ExtraBold-dnom-t1.vf)
+Provides:       tex(Raleway-ExtraBold-inf-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-inf-ly1.tfm)
+Provides:       tex(Raleway-ExtraBold-inf-ly1.vf)
+Provides:       tex(Raleway-ExtraBold-inf-ot1.tfm)
+Provides:       tex(Raleway-ExtraBold-inf-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-inf-t1.tfm)
+Provides:       tex(Raleway-ExtraBold-inf-t1.vf)
+Provides:       tex(Raleway-ExtraBold-lf-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-ly1.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-ly1.vf)
+Provides:       tex(Raleway-ExtraBold-lf-ot1.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-sc-ly1.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-sc-ly1.vf)
+Provides:       tex(Raleway-ExtraBold-lf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-sc-ot1.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-sc-ot1.vf)
+Provides:       tex(Raleway-ExtraBold-lf-sc-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-sc-t1.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-sc-t1.vf)
+Provides:       tex(Raleway-ExtraBold-lf-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-t1.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-t1.vf)
+Provides:       tex(Raleway-ExtraBold-lf-ts1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-ts1.tfm)
+Provides:       tex(Raleway-ExtraBold-lf-ts1.vf)
+Provides:       tex(Raleway-ExtraBold-numr-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-numr-ly1.tfm)
+Provides:       tex(Raleway-ExtraBold-numr-ly1.vf)
+Provides:       tex(Raleway-ExtraBold-numr-ot1.tfm)
+Provides:       tex(Raleway-ExtraBold-numr-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-numr-t1.tfm)
+Provides:       tex(Raleway-ExtraBold-numr-t1.vf)
+Provides:       tex(Raleway-ExtraBold-osf-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-ly1.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-ly1.vf)
+Provides:       tex(Raleway-ExtraBold-osf-ot1.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-sc-ly1.vf)
+Provides:       tex(Raleway-ExtraBold-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-sc-ot1.vf)
+Provides:       tex(Raleway-ExtraBold-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-sc-t1.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-sc-t1.vf)
+Provides:       tex(Raleway-ExtraBold-osf-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-t1.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-t1.vf)
+Provides:       tex(Raleway-ExtraBold-osf-ts1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-ts1.tfm)
+Provides:       tex(Raleway-ExtraBold-osf-ts1.vf)
+Provides:       tex(Raleway-ExtraBold-sup-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-sup-ly1.tfm)
+Provides:       tex(Raleway-ExtraBold-sup-ly1.vf)
+Provides:       tex(Raleway-ExtraBold-sup-ot1.tfm)
+Provides:       tex(Raleway-ExtraBold-sup-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBold-sup-t1.tfm)
+Provides:       tex(Raleway-ExtraBold-sup-t1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-dnom-ly1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-dnom-ly1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-dnom-ot1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-dnom-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-dnom-t1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-dnom-t1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-inf-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-inf-ly1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-inf-ly1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-inf-ot1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-inf-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-inf-t1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-inf-t1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-numr-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-numr-ly1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-numr-ly1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-numr-ot1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-numr-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-numr-t1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-numr-t1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-ly1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-ly1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-ot1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-sc-ly1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-sc-ot1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-sc-t1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-sc-t1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-t1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-t1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-ts1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-ts1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-osf-ts1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-sup-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-sup-ly1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-sup-ly1.vf)
+Provides:       tex(Raleway-ExtraBoldItalic-sup-ot1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-sup-t1--base.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-sup-t1.tfm)
+Provides:       tex(Raleway-ExtraBoldItalic-sup-t1.vf)
+Provides:       tex(Raleway-ExtraLight-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-dnom-ly1.tfm)
+Provides:       tex(Raleway-ExtraLight-dnom-ly1.vf)
+Provides:       tex(Raleway-ExtraLight-dnom-ot1.tfm)
+Provides:       tex(Raleway-ExtraLight-dnom-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-dnom-t1.tfm)
+Provides:       tex(Raleway-ExtraLight-dnom-t1.vf)
+Provides:       tex(Raleway-ExtraLight-inf-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-inf-ly1.tfm)
+Provides:       tex(Raleway-ExtraLight-inf-ly1.vf)
+Provides:       tex(Raleway-ExtraLight-inf-ot1.tfm)
+Provides:       tex(Raleway-ExtraLight-inf-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-inf-t1.tfm)
+Provides:       tex(Raleway-ExtraLight-inf-t1.vf)
+Provides:       tex(Raleway-ExtraLight-lf-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-ly1.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-ly1.vf)
+Provides:       tex(Raleway-ExtraLight-lf-ot1.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-sc-ly1.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-sc-ly1.vf)
+Provides:       tex(Raleway-ExtraLight-lf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-sc-ot1.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-sc-ot1.vf)
+Provides:       tex(Raleway-ExtraLight-lf-sc-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-sc-t1.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-sc-t1.vf)
+Provides:       tex(Raleway-ExtraLight-lf-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-t1.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-t1.vf)
+Provides:       tex(Raleway-ExtraLight-lf-ts1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-ts1.tfm)
+Provides:       tex(Raleway-ExtraLight-lf-ts1.vf)
+Provides:       tex(Raleway-ExtraLight-numr-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-numr-ly1.tfm)
+Provides:       tex(Raleway-ExtraLight-numr-ly1.vf)
+Provides:       tex(Raleway-ExtraLight-numr-ot1.tfm)
+Provides:       tex(Raleway-ExtraLight-numr-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-numr-t1.tfm)
+Provides:       tex(Raleway-ExtraLight-numr-t1.vf)
+Provides:       tex(Raleway-ExtraLight-osf-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-ly1.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-ly1.vf)
+Provides:       tex(Raleway-ExtraLight-osf-ot1.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-sc-ly1.vf)
+Provides:       tex(Raleway-ExtraLight-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-sc-ot1.vf)
+Provides:       tex(Raleway-ExtraLight-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-sc-t1.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-sc-t1.vf)
+Provides:       tex(Raleway-ExtraLight-osf-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-t1.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-t1.vf)
+Provides:       tex(Raleway-ExtraLight-osf-ts1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-ts1.tfm)
+Provides:       tex(Raleway-ExtraLight-osf-ts1.vf)
+Provides:       tex(Raleway-ExtraLight-sup-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-sup-ly1.tfm)
+Provides:       tex(Raleway-ExtraLight-sup-ly1.vf)
+Provides:       tex(Raleway-ExtraLight-sup-ot1.tfm)
+Provides:       tex(Raleway-ExtraLight-sup-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLight-sup-t1.tfm)
+Provides:       tex(Raleway-ExtraLight-sup-t1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-dnom-ly1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-dnom-ly1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-dnom-ot1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-dnom-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-dnom-t1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-dnom-t1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-inf-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-inf-ly1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-inf-ly1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-inf-ot1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-inf-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-inf-t1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-inf-t1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-numr-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-numr-ly1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-numr-ly1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-numr-ot1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-numr-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-numr-t1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-numr-t1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-osf-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-ly1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-ly1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-osf-ot1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-sc-ly1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-sc-ot1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-sc-t1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-sc-t1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-osf-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-t1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-t1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-osf-ts1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-ts1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-osf-ts1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-sup-ly1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-sup-ly1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-sup-ly1.vf)
+Provides:       tex(Raleway-ExtraLightItalic-sup-ot1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-sup-t1--base.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-sup-t1.tfm)
+Provides:       tex(Raleway-ExtraLightItalic-sup-t1.vf)
+Provides:       tex(Raleway-Italic-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-Italic-dnom-ly1.tfm)
+Provides:       tex(Raleway-Italic-dnom-ly1.vf)
+Provides:       tex(Raleway-Italic-dnom-ot1.tfm)
+Provides:       tex(Raleway-Italic-dnom-t1--base.tfm)
+Provides:       tex(Raleway-Italic-dnom-t1.tfm)
+Provides:       tex(Raleway-Italic-dnom-t1.vf)
+Provides:       tex(Raleway-Italic-inf-ly1--base.tfm)
+Provides:       tex(Raleway-Italic-inf-ly1.tfm)
+Provides:       tex(Raleway-Italic-inf-ly1.vf)
+Provides:       tex(Raleway-Italic-inf-ot1.tfm)
+Provides:       tex(Raleway-Italic-inf-t1--base.tfm)
+Provides:       tex(Raleway-Italic-inf-t1.tfm)
+Provides:       tex(Raleway-Italic-inf-t1.vf)
+Provides:       tex(Raleway-Italic-numr-ly1--base.tfm)
+Provides:       tex(Raleway-Italic-numr-ly1.tfm)
+Provides:       tex(Raleway-Italic-numr-ly1.vf)
+Provides:       tex(Raleway-Italic-numr-ot1.tfm)
+Provides:       tex(Raleway-Italic-numr-t1--base.tfm)
+Provides:       tex(Raleway-Italic-numr-t1.tfm)
+Provides:       tex(Raleway-Italic-numr-t1.vf)
+Provides:       tex(Raleway-Italic-osf-ly1--base.tfm)
+Provides:       tex(Raleway-Italic-osf-ly1.tfm)
+Provides:       tex(Raleway-Italic-osf-ly1.vf)
+Provides:       tex(Raleway-Italic-osf-ot1.tfm)
+Provides:       tex(Raleway-Italic-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Italic-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-Italic-osf-sc-ly1.vf)
+Provides:       tex(Raleway-Italic-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Italic-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-Italic-osf-sc-ot1.vf)
+Provides:       tex(Raleway-Italic-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Italic-osf-sc-t1.tfm)
+Provides:       tex(Raleway-Italic-osf-sc-t1.vf)
+Provides:       tex(Raleway-Italic-osf-t1--base.tfm)
+Provides:       tex(Raleway-Italic-osf-t1.tfm)
+Provides:       tex(Raleway-Italic-osf-t1.vf)
+Provides:       tex(Raleway-Italic-osf-ts1--base.tfm)
+Provides:       tex(Raleway-Italic-osf-ts1.tfm)
+Provides:       tex(Raleway-Italic-osf-ts1.vf)
+Provides:       tex(Raleway-Italic-sup-ly1--base.tfm)
+Provides:       tex(Raleway-Italic-sup-ly1.tfm)
+Provides:       tex(Raleway-Italic-sup-ly1.vf)
+Provides:       tex(Raleway-Italic-sup-ot1.tfm)
+Provides:       tex(Raleway-Italic-sup-t1--base.tfm)
+Provides:       tex(Raleway-Italic-sup-t1.tfm)
+Provides:       tex(Raleway-Italic-sup-t1.vf)
+Provides:       tex(Raleway-Light-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-Light-dnom-ly1.tfm)
+Provides:       tex(Raleway-Light-dnom-ly1.vf)
+Provides:       tex(Raleway-Light-dnom-ot1.tfm)
+Provides:       tex(Raleway-Light-dnom-t1--base.tfm)
+Provides:       tex(Raleway-Light-dnom-t1.tfm)
+Provides:       tex(Raleway-Light-dnom-t1.vf)
+Provides:       tex(Raleway-Light-inf-ly1--base.tfm)
+Provides:       tex(Raleway-Light-inf-ly1.tfm)
+Provides:       tex(Raleway-Light-inf-ly1.vf)
+Provides:       tex(Raleway-Light-inf-ot1.tfm)
+Provides:       tex(Raleway-Light-inf-t1--base.tfm)
+Provides:       tex(Raleway-Light-inf-t1.tfm)
+Provides:       tex(Raleway-Light-inf-t1.vf)
+Provides:       tex(Raleway-Light-lf-ly1--base.tfm)
+Provides:       tex(Raleway-Light-lf-ly1.tfm)
+Provides:       tex(Raleway-Light-lf-ly1.vf)
+Provides:       tex(Raleway-Light-lf-ot1.tfm)
+Provides:       tex(Raleway-Light-lf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Light-lf-sc-ly1.tfm)
+Provides:       tex(Raleway-Light-lf-sc-ly1.vf)
+Provides:       tex(Raleway-Light-lf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Light-lf-sc-ot1.tfm)
+Provides:       tex(Raleway-Light-lf-sc-ot1.vf)
+Provides:       tex(Raleway-Light-lf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Light-lf-sc-t1.tfm)
+Provides:       tex(Raleway-Light-lf-sc-t1.vf)
+Provides:       tex(Raleway-Light-lf-t1--base.tfm)
+Provides:       tex(Raleway-Light-lf-t1.tfm)
+Provides:       tex(Raleway-Light-lf-t1.vf)
+Provides:       tex(Raleway-Light-lf-ts1--base.tfm)
+Provides:       tex(Raleway-Light-lf-ts1.tfm)
+Provides:       tex(Raleway-Light-lf-ts1.vf)
+Provides:       tex(Raleway-Light-numr-ly1--base.tfm)
+Provides:       tex(Raleway-Light-numr-ly1.tfm)
+Provides:       tex(Raleway-Light-numr-ly1.vf)
+Provides:       tex(Raleway-Light-numr-ot1.tfm)
+Provides:       tex(Raleway-Light-numr-t1--base.tfm)
+Provides:       tex(Raleway-Light-numr-t1.tfm)
+Provides:       tex(Raleway-Light-numr-t1.vf)
+Provides:       tex(Raleway-Light-osf-ly1--base.tfm)
+Provides:       tex(Raleway-Light-osf-ly1.tfm)
+Provides:       tex(Raleway-Light-osf-ly1.vf)
+Provides:       tex(Raleway-Light-osf-ot1.tfm)
+Provides:       tex(Raleway-Light-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Light-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-Light-osf-sc-ly1.vf)
+Provides:       tex(Raleway-Light-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Light-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-Light-osf-sc-ot1.vf)
+Provides:       tex(Raleway-Light-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Light-osf-sc-t1.tfm)
+Provides:       tex(Raleway-Light-osf-sc-t1.vf)
+Provides:       tex(Raleway-Light-osf-t1--base.tfm)
+Provides:       tex(Raleway-Light-osf-t1.tfm)
+Provides:       tex(Raleway-Light-osf-t1.vf)
+Provides:       tex(Raleway-Light-osf-ts1--base.tfm)
+Provides:       tex(Raleway-Light-osf-ts1.tfm)
+Provides:       tex(Raleway-Light-osf-ts1.vf)
+Provides:       tex(Raleway-Light-sup-ly1--base.tfm)
+Provides:       tex(Raleway-Light-sup-ly1.tfm)
+Provides:       tex(Raleway-Light-sup-ly1.vf)
+Provides:       tex(Raleway-Light-sup-ot1.tfm)
+Provides:       tex(Raleway-Light-sup-t1--base.tfm)
+Provides:       tex(Raleway-Light-sup-t1.tfm)
+Provides:       tex(Raleway-Light-sup-t1.vf)
+Provides:       tex(Raleway-LightItalic-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-LightItalic-dnom-ly1.tfm)
+Provides:       tex(Raleway-LightItalic-dnom-ly1.vf)
+Provides:       tex(Raleway-LightItalic-dnom-ot1.tfm)
+Provides:       tex(Raleway-LightItalic-dnom-t1--base.tfm)
+Provides:       tex(Raleway-LightItalic-dnom-t1.tfm)
+Provides:       tex(Raleway-LightItalic-dnom-t1.vf)
+Provides:       tex(Raleway-LightItalic-inf-ly1--base.tfm)
+Provides:       tex(Raleway-LightItalic-inf-ly1.tfm)
+Provides:       tex(Raleway-LightItalic-inf-ly1.vf)
+Provides:       tex(Raleway-LightItalic-inf-ot1.tfm)
+Provides:       tex(Raleway-LightItalic-inf-t1--base.tfm)
+Provides:       tex(Raleway-LightItalic-inf-t1.tfm)
+Provides:       tex(Raleway-LightItalic-inf-t1.vf)
+Provides:       tex(Raleway-LightItalic-numr-ly1--base.tfm)
+Provides:       tex(Raleway-LightItalic-numr-ly1.tfm)
+Provides:       tex(Raleway-LightItalic-numr-ly1.vf)
+Provides:       tex(Raleway-LightItalic-numr-ot1.tfm)
+Provides:       tex(Raleway-LightItalic-numr-t1--base.tfm)
+Provides:       tex(Raleway-LightItalic-numr-t1.tfm)
+Provides:       tex(Raleway-LightItalic-numr-t1.vf)
+Provides:       tex(Raleway-LightItalic-osf-ly1--base.tfm)
+Provides:       tex(Raleway-LightItalic-osf-ly1.tfm)
+Provides:       tex(Raleway-LightItalic-osf-ly1.vf)
+Provides:       tex(Raleway-LightItalic-osf-ot1.tfm)
+Provides:       tex(Raleway-LightItalic-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-LightItalic-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-LightItalic-osf-sc-ly1.vf)
+Provides:       tex(Raleway-LightItalic-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-LightItalic-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-LightItalic-osf-sc-ot1.vf)
+Provides:       tex(Raleway-LightItalic-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-LightItalic-osf-sc-t1.tfm)
+Provides:       tex(Raleway-LightItalic-osf-sc-t1.vf)
+Provides:       tex(Raleway-LightItalic-osf-t1--base.tfm)
+Provides:       tex(Raleway-LightItalic-osf-t1.tfm)
+Provides:       tex(Raleway-LightItalic-osf-t1.vf)
+Provides:       tex(Raleway-LightItalic-osf-ts1--base.tfm)
+Provides:       tex(Raleway-LightItalic-osf-ts1.tfm)
+Provides:       tex(Raleway-LightItalic-osf-ts1.vf)
+Provides:       tex(Raleway-LightItalic-sup-ly1--base.tfm)
+Provides:       tex(Raleway-LightItalic-sup-ly1.tfm)
+Provides:       tex(Raleway-LightItalic-sup-ly1.vf)
+Provides:       tex(Raleway-LightItalic-sup-ot1.tfm)
+Provides:       tex(Raleway-LightItalic-sup-t1--base.tfm)
+Provides:       tex(Raleway-LightItalic-sup-t1.tfm)
+Provides:       tex(Raleway-LightItalic-sup-t1.vf)
+Provides:       tex(Raleway-Medium-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-Medium-dnom-ly1.tfm)
+Provides:       tex(Raleway-Medium-dnom-ly1.vf)
+Provides:       tex(Raleway-Medium-dnom-ot1.tfm)
+Provides:       tex(Raleway-Medium-dnom-t1--base.tfm)
+Provides:       tex(Raleway-Medium-dnom-t1.tfm)
+Provides:       tex(Raleway-Medium-dnom-t1.vf)
+Provides:       tex(Raleway-Medium-inf-ly1--base.tfm)
+Provides:       tex(Raleway-Medium-inf-ly1.tfm)
+Provides:       tex(Raleway-Medium-inf-ly1.vf)
+Provides:       tex(Raleway-Medium-inf-ot1.tfm)
+Provides:       tex(Raleway-Medium-inf-t1--base.tfm)
+Provides:       tex(Raleway-Medium-inf-t1.tfm)
+Provides:       tex(Raleway-Medium-inf-t1.vf)
+Provides:       tex(Raleway-Medium-lf-ly1--base.tfm)
+Provides:       tex(Raleway-Medium-lf-ly1.tfm)
+Provides:       tex(Raleway-Medium-lf-ly1.vf)
+Provides:       tex(Raleway-Medium-lf-ot1.tfm)
+Provides:       tex(Raleway-Medium-lf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Medium-lf-sc-ly1.tfm)
+Provides:       tex(Raleway-Medium-lf-sc-ly1.vf)
+Provides:       tex(Raleway-Medium-lf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Medium-lf-sc-ot1.tfm)
+Provides:       tex(Raleway-Medium-lf-sc-ot1.vf)
+Provides:       tex(Raleway-Medium-lf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Medium-lf-sc-t1.tfm)
+Provides:       tex(Raleway-Medium-lf-sc-t1.vf)
+Provides:       tex(Raleway-Medium-lf-t1--base.tfm)
+Provides:       tex(Raleway-Medium-lf-t1.tfm)
+Provides:       tex(Raleway-Medium-lf-t1.vf)
+Provides:       tex(Raleway-Medium-lf-ts1--base.tfm)
+Provides:       tex(Raleway-Medium-lf-ts1.tfm)
+Provides:       tex(Raleway-Medium-lf-ts1.vf)
+Provides:       tex(Raleway-Medium-numr-ly1--base.tfm)
+Provides:       tex(Raleway-Medium-numr-ly1.tfm)
+Provides:       tex(Raleway-Medium-numr-ly1.vf)
+Provides:       tex(Raleway-Medium-numr-ot1.tfm)
+Provides:       tex(Raleway-Medium-numr-t1--base.tfm)
+Provides:       tex(Raleway-Medium-numr-t1.tfm)
+Provides:       tex(Raleway-Medium-numr-t1.vf)
+Provides:       tex(Raleway-Medium-osf-ly1--base.tfm)
+Provides:       tex(Raleway-Medium-osf-ly1.tfm)
+Provides:       tex(Raleway-Medium-osf-ly1.vf)
+Provides:       tex(Raleway-Medium-osf-ot1.tfm)
+Provides:       tex(Raleway-Medium-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Medium-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-Medium-osf-sc-ly1.vf)
+Provides:       tex(Raleway-Medium-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Medium-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-Medium-osf-sc-ot1.vf)
+Provides:       tex(Raleway-Medium-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Medium-osf-sc-t1.tfm)
+Provides:       tex(Raleway-Medium-osf-sc-t1.vf)
+Provides:       tex(Raleway-Medium-osf-t1--base.tfm)
+Provides:       tex(Raleway-Medium-osf-t1.tfm)
+Provides:       tex(Raleway-Medium-osf-t1.vf)
+Provides:       tex(Raleway-Medium-osf-ts1--base.tfm)
+Provides:       tex(Raleway-Medium-osf-ts1.tfm)
+Provides:       tex(Raleway-Medium-osf-ts1.vf)
+Provides:       tex(Raleway-Medium-sup-ly1--base.tfm)
+Provides:       tex(Raleway-Medium-sup-ly1.tfm)
+Provides:       tex(Raleway-Medium-sup-ly1.vf)
+Provides:       tex(Raleway-Medium-sup-ot1.tfm)
+Provides:       tex(Raleway-Medium-sup-t1--base.tfm)
+Provides:       tex(Raleway-Medium-sup-t1.tfm)
+Provides:       tex(Raleway-Medium-sup-t1.vf)
+Provides:       tex(Raleway-MediumItalic-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-dnom-ly1.tfm)
+Provides:       tex(Raleway-MediumItalic-dnom-ly1.vf)
+Provides:       tex(Raleway-MediumItalic-dnom-ot1.tfm)
+Provides:       tex(Raleway-MediumItalic-dnom-t1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-dnom-t1.tfm)
+Provides:       tex(Raleway-MediumItalic-dnom-t1.vf)
+Provides:       tex(Raleway-MediumItalic-inf-ly1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-inf-ly1.tfm)
+Provides:       tex(Raleway-MediumItalic-inf-ly1.vf)
+Provides:       tex(Raleway-MediumItalic-inf-ot1.tfm)
+Provides:       tex(Raleway-MediumItalic-inf-t1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-inf-t1.tfm)
+Provides:       tex(Raleway-MediumItalic-inf-t1.vf)
+Provides:       tex(Raleway-MediumItalic-numr-ly1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-numr-ly1.tfm)
+Provides:       tex(Raleway-MediumItalic-numr-ly1.vf)
+Provides:       tex(Raleway-MediumItalic-numr-ot1.tfm)
+Provides:       tex(Raleway-MediumItalic-numr-t1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-numr-t1.tfm)
+Provides:       tex(Raleway-MediumItalic-numr-t1.vf)
+Provides:       tex(Raleway-MediumItalic-osf-ly1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-ly1.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-ly1.vf)
+Provides:       tex(Raleway-MediumItalic-osf-ot1.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-sc-ly1.vf)
+Provides:       tex(Raleway-MediumItalic-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-sc-ot1.vf)
+Provides:       tex(Raleway-MediumItalic-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-sc-t1.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-sc-t1.vf)
+Provides:       tex(Raleway-MediumItalic-osf-t1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-t1.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-t1.vf)
+Provides:       tex(Raleway-MediumItalic-osf-ts1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-ts1.tfm)
+Provides:       tex(Raleway-MediumItalic-osf-ts1.vf)
+Provides:       tex(Raleway-MediumItalic-sup-ly1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-sup-ly1.tfm)
+Provides:       tex(Raleway-MediumItalic-sup-ly1.vf)
+Provides:       tex(Raleway-MediumItalic-sup-ot1.tfm)
+Provides:       tex(Raleway-MediumItalic-sup-t1--base.tfm)
+Provides:       tex(Raleway-MediumItalic-sup-t1.tfm)
+Provides:       tex(Raleway-MediumItalic-sup-t1.vf)
+Provides:       tex(Raleway-Regular-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-Regular-dnom-ly1.tfm)
+Provides:       tex(Raleway-Regular-dnom-ly1.vf)
+Provides:       tex(Raleway-Regular-dnom-ot1.tfm)
+Provides:       tex(Raleway-Regular-dnom-t1--base.tfm)
+Provides:       tex(Raleway-Regular-dnom-t1.tfm)
+Provides:       tex(Raleway-Regular-dnom-t1.vf)
+Provides:       tex(Raleway-Regular-inf-ly1--base.tfm)
+Provides:       tex(Raleway-Regular-inf-ly1.tfm)
+Provides:       tex(Raleway-Regular-inf-ly1.vf)
+Provides:       tex(Raleway-Regular-inf-ot1.tfm)
+Provides:       tex(Raleway-Regular-inf-t1--base.tfm)
+Provides:       tex(Raleway-Regular-inf-t1.tfm)
+Provides:       tex(Raleway-Regular-inf-t1.vf)
+Provides:       tex(Raleway-Regular-lf-ly1--base.tfm)
+Provides:       tex(Raleway-Regular-lf-ly1.tfm)
+Provides:       tex(Raleway-Regular-lf-ly1.vf)
+Provides:       tex(Raleway-Regular-lf-ot1.tfm)
+Provides:       tex(Raleway-Regular-lf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Regular-lf-sc-ly1.tfm)
+Provides:       tex(Raleway-Regular-lf-sc-ly1.vf)
+Provides:       tex(Raleway-Regular-lf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Regular-lf-sc-ot1.tfm)
+Provides:       tex(Raleway-Regular-lf-sc-ot1.vf)
+Provides:       tex(Raleway-Regular-lf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Regular-lf-sc-t1.tfm)
+Provides:       tex(Raleway-Regular-lf-sc-t1.vf)
+Provides:       tex(Raleway-Regular-lf-t1--base.tfm)
+Provides:       tex(Raleway-Regular-lf-t1.tfm)
+Provides:       tex(Raleway-Regular-lf-t1.vf)
+Provides:       tex(Raleway-Regular-lf-ts1--base.tfm)
+Provides:       tex(Raleway-Regular-lf-ts1.tfm)
+Provides:       tex(Raleway-Regular-lf-ts1.vf)
+Provides:       tex(Raleway-Regular-numr-ly1--base.tfm)
+Provides:       tex(Raleway-Regular-numr-ly1.tfm)
+Provides:       tex(Raleway-Regular-numr-ly1.vf)
+Provides:       tex(Raleway-Regular-numr-ot1.tfm)
+Provides:       tex(Raleway-Regular-numr-t1--base.tfm)
+Provides:       tex(Raleway-Regular-numr-t1.tfm)
+Provides:       tex(Raleway-Regular-numr-t1.vf)
+Provides:       tex(Raleway-Regular-osf-ly1--base.tfm)
+Provides:       tex(Raleway-Regular-osf-ly1.tfm)
+Provides:       tex(Raleway-Regular-osf-ly1.vf)
+Provides:       tex(Raleway-Regular-osf-ot1.tfm)
+Provides:       tex(Raleway-Regular-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Regular-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-Regular-osf-sc-ly1.vf)
+Provides:       tex(Raleway-Regular-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Regular-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-Regular-osf-sc-ot1.vf)
+Provides:       tex(Raleway-Regular-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Regular-osf-sc-t1.tfm)
+Provides:       tex(Raleway-Regular-osf-sc-t1.vf)
+Provides:       tex(Raleway-Regular-osf-t1--base.tfm)
+Provides:       tex(Raleway-Regular-osf-t1.tfm)
+Provides:       tex(Raleway-Regular-osf-t1.vf)
+Provides:       tex(Raleway-Regular-osf-ts1--base.tfm)
+Provides:       tex(Raleway-Regular-osf-ts1.tfm)
+Provides:       tex(Raleway-Regular-osf-ts1.vf)
+Provides:       tex(Raleway-Regular-sup-ly1--base.tfm)
+Provides:       tex(Raleway-Regular-sup-ly1.tfm)
+Provides:       tex(Raleway-Regular-sup-ly1.vf)
+Provides:       tex(Raleway-Regular-sup-ot1.tfm)
+Provides:       tex(Raleway-Regular-sup-t1--base.tfm)
+Provides:       tex(Raleway-Regular-sup-t1.tfm)
+Provides:       tex(Raleway-Regular-sup-t1.vf)
+Provides:       tex(Raleway-SemiBold-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBold-dnom-ly1.tfm)
+Provides:       tex(Raleway-SemiBold-dnom-ly1.vf)
+Provides:       tex(Raleway-SemiBold-dnom-ot1.tfm)
+Provides:       tex(Raleway-SemiBold-dnom-t1--base.tfm)
+Provides:       tex(Raleway-SemiBold-dnom-t1.tfm)
+Provides:       tex(Raleway-SemiBold-dnom-t1.vf)
+Provides:       tex(Raleway-SemiBold-inf-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBold-inf-ly1.tfm)
+Provides:       tex(Raleway-SemiBold-inf-ly1.vf)
+Provides:       tex(Raleway-SemiBold-inf-ot1.tfm)
+Provides:       tex(Raleway-SemiBold-inf-t1--base.tfm)
+Provides:       tex(Raleway-SemiBold-inf-t1.tfm)
+Provides:       tex(Raleway-SemiBold-inf-t1.vf)
+Provides:       tex(Raleway-SemiBold-lf-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBold-lf-ly1.tfm)
+Provides:       tex(Raleway-SemiBold-lf-ly1.vf)
+Provides:       tex(Raleway-SemiBold-lf-ot1.tfm)
+Provides:       tex(Raleway-SemiBold-lf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBold-lf-sc-ly1.tfm)
+Provides:       tex(Raleway-SemiBold-lf-sc-ly1.vf)
+Provides:       tex(Raleway-SemiBold-lf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-SemiBold-lf-sc-ot1.tfm)
+Provides:       tex(Raleway-SemiBold-lf-sc-ot1.vf)
+Provides:       tex(Raleway-SemiBold-lf-sc-t1--base.tfm)
+Provides:       tex(Raleway-SemiBold-lf-sc-t1.tfm)
+Provides:       tex(Raleway-SemiBold-lf-sc-t1.vf)
+Provides:       tex(Raleway-SemiBold-lf-t1--base.tfm)
+Provides:       tex(Raleway-SemiBold-lf-t1.tfm)
+Provides:       tex(Raleway-SemiBold-lf-t1.vf)
+Provides:       tex(Raleway-SemiBold-lf-ts1--base.tfm)
+Provides:       tex(Raleway-SemiBold-lf-ts1.tfm)
+Provides:       tex(Raleway-SemiBold-lf-ts1.vf)
+Provides:       tex(Raleway-SemiBold-numr-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBold-numr-ly1.tfm)
+Provides:       tex(Raleway-SemiBold-numr-ly1.vf)
+Provides:       tex(Raleway-SemiBold-numr-ot1.tfm)
+Provides:       tex(Raleway-SemiBold-numr-t1--base.tfm)
+Provides:       tex(Raleway-SemiBold-numr-t1.tfm)
+Provides:       tex(Raleway-SemiBold-numr-t1.vf)
+Provides:       tex(Raleway-SemiBold-osf-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBold-osf-ly1.tfm)
+Provides:       tex(Raleway-SemiBold-osf-ly1.vf)
+Provides:       tex(Raleway-SemiBold-osf-ot1.tfm)
+Provides:       tex(Raleway-SemiBold-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBold-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-SemiBold-osf-sc-ly1.vf)
+Provides:       tex(Raleway-SemiBold-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-SemiBold-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-SemiBold-osf-sc-ot1.vf)
+Provides:       tex(Raleway-SemiBold-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-SemiBold-osf-sc-t1.tfm)
+Provides:       tex(Raleway-SemiBold-osf-sc-t1.vf)
+Provides:       tex(Raleway-SemiBold-osf-t1--base.tfm)
+Provides:       tex(Raleway-SemiBold-osf-t1.tfm)
+Provides:       tex(Raleway-SemiBold-osf-t1.vf)
+Provides:       tex(Raleway-SemiBold-osf-ts1--base.tfm)
+Provides:       tex(Raleway-SemiBold-osf-ts1.tfm)
+Provides:       tex(Raleway-SemiBold-osf-ts1.vf)
+Provides:       tex(Raleway-SemiBold-sup-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBold-sup-ly1.tfm)
+Provides:       tex(Raleway-SemiBold-sup-ly1.vf)
+Provides:       tex(Raleway-SemiBold-sup-ot1.tfm)
+Provides:       tex(Raleway-SemiBold-sup-t1--base.tfm)
+Provides:       tex(Raleway-SemiBold-sup-t1.tfm)
+Provides:       tex(Raleway-SemiBold-sup-t1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-dnom-ly1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-dnom-ly1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-dnom-ot1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-dnom-t1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-dnom-t1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-dnom-t1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-inf-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-inf-ly1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-inf-ly1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-inf-ot1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-inf-t1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-inf-t1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-inf-t1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-numr-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-numr-ly1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-numr-ly1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-numr-ot1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-numr-t1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-numr-t1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-numr-t1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-osf-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-ly1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-ly1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-osf-ot1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-sc-ly1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-sc-ot1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-sc-t1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-sc-t1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-osf-t1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-t1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-t1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-osf-ts1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-ts1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-osf-ts1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-sup-ly1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-sup-ly1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-sup-ly1.vf)
+Provides:       tex(Raleway-SemiBoldItalic-sup-ot1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-sup-t1--base.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-sup-t1.tfm)
+Provides:       tex(Raleway-SemiBoldItalic-sup-t1.vf)
+Provides:       tex(Raleway-Thin-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-Thin-dnom-ly1.tfm)
+Provides:       tex(Raleway-Thin-dnom-ly1.vf)
+Provides:       tex(Raleway-Thin-dnom-ot1.tfm)
+Provides:       tex(Raleway-Thin-dnom-t1--base.tfm)
+Provides:       tex(Raleway-Thin-dnom-t1.tfm)
+Provides:       tex(Raleway-Thin-dnom-t1.vf)
+Provides:       tex(Raleway-Thin-inf-ly1--base.tfm)
+Provides:       tex(Raleway-Thin-inf-ly1.tfm)
+Provides:       tex(Raleway-Thin-inf-ly1.vf)
+Provides:       tex(Raleway-Thin-inf-ot1.tfm)
+Provides:       tex(Raleway-Thin-inf-t1--base.tfm)
+Provides:       tex(Raleway-Thin-inf-t1.tfm)
+Provides:       tex(Raleway-Thin-inf-t1.vf)
+Provides:       tex(Raleway-Thin-lf-ly1--base.tfm)
+Provides:       tex(Raleway-Thin-lf-ly1.tfm)
+Provides:       tex(Raleway-Thin-lf-ly1.vf)
+Provides:       tex(Raleway-Thin-lf-ot1.tfm)
+Provides:       tex(Raleway-Thin-lf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Thin-lf-sc-ly1.tfm)
+Provides:       tex(Raleway-Thin-lf-sc-ly1.vf)
+Provides:       tex(Raleway-Thin-lf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Thin-lf-sc-ot1.tfm)
+Provides:       tex(Raleway-Thin-lf-sc-ot1.vf)
+Provides:       tex(Raleway-Thin-lf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Thin-lf-sc-t1.tfm)
+Provides:       tex(Raleway-Thin-lf-sc-t1.vf)
+Provides:       tex(Raleway-Thin-lf-t1--base.tfm)
+Provides:       tex(Raleway-Thin-lf-t1.tfm)
+Provides:       tex(Raleway-Thin-lf-t1.vf)
+Provides:       tex(Raleway-Thin-lf-ts1--base.tfm)
+Provides:       tex(Raleway-Thin-lf-ts1.tfm)
+Provides:       tex(Raleway-Thin-lf-ts1.vf)
+Provides:       tex(Raleway-Thin-numr-ly1--base.tfm)
+Provides:       tex(Raleway-Thin-numr-ly1.tfm)
+Provides:       tex(Raleway-Thin-numr-ly1.vf)
+Provides:       tex(Raleway-Thin-numr-ot1.tfm)
+Provides:       tex(Raleway-Thin-numr-t1--base.tfm)
+Provides:       tex(Raleway-Thin-numr-t1.tfm)
+Provides:       tex(Raleway-Thin-numr-t1.vf)
+Provides:       tex(Raleway-Thin-osf-ly1--base.tfm)
+Provides:       tex(Raleway-Thin-osf-ly1.tfm)
+Provides:       tex(Raleway-Thin-osf-ly1.vf)
+Provides:       tex(Raleway-Thin-osf-ot1.tfm)
+Provides:       tex(Raleway-Thin-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-Thin-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-Thin-osf-sc-ly1.vf)
+Provides:       tex(Raleway-Thin-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-Thin-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-Thin-osf-sc-ot1.vf)
+Provides:       tex(Raleway-Thin-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-Thin-osf-sc-t1.tfm)
+Provides:       tex(Raleway-Thin-osf-sc-t1.vf)
+Provides:       tex(Raleway-Thin-osf-t1--base.tfm)
+Provides:       tex(Raleway-Thin-osf-t1.tfm)
+Provides:       tex(Raleway-Thin-osf-t1.vf)
+Provides:       tex(Raleway-Thin-osf-ts1--base.tfm)
+Provides:       tex(Raleway-Thin-osf-ts1.tfm)
+Provides:       tex(Raleway-Thin-osf-ts1.vf)
+Provides:       tex(Raleway-Thin-sup-ly1--base.tfm)
+Provides:       tex(Raleway-Thin-sup-ly1.tfm)
+Provides:       tex(Raleway-Thin-sup-ly1.vf)
+Provides:       tex(Raleway-Thin-sup-ot1.tfm)
+Provides:       tex(Raleway-Thin-sup-t1--base.tfm)
+Provides:       tex(Raleway-Thin-sup-t1.tfm)
+Provides:       tex(Raleway-Thin-sup-t1.vf)
+Provides:       tex(Raleway-ThinItalic-dnom-ly1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-dnom-ly1.tfm)
+Provides:       tex(Raleway-ThinItalic-dnom-ly1.vf)
+Provides:       tex(Raleway-ThinItalic-dnom-ot1.tfm)
+Provides:       tex(Raleway-ThinItalic-dnom-t1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-dnom-t1.tfm)
+Provides:       tex(Raleway-ThinItalic-dnom-t1.vf)
+Provides:       tex(Raleway-ThinItalic-inf-ly1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-inf-ly1.tfm)
+Provides:       tex(Raleway-ThinItalic-inf-ly1.vf)
+Provides:       tex(Raleway-ThinItalic-inf-ot1.tfm)
+Provides:       tex(Raleway-ThinItalic-inf-t1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-inf-t1.tfm)
+Provides:       tex(Raleway-ThinItalic-inf-t1.vf)
+Provides:       tex(Raleway-ThinItalic-numr-ly1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-numr-ly1.tfm)
+Provides:       tex(Raleway-ThinItalic-numr-ly1.vf)
+Provides:       tex(Raleway-ThinItalic-numr-ot1.tfm)
+Provides:       tex(Raleway-ThinItalic-numr-t1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-numr-t1.tfm)
+Provides:       tex(Raleway-ThinItalic-numr-t1.vf)
+Provides:       tex(Raleway-ThinItalic-osf-ly1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-ly1.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-ly1.vf)
+Provides:       tex(Raleway-ThinItalic-osf-ot1.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-sc-ly1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-sc-ly1.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-sc-ly1.vf)
+Provides:       tex(Raleway-ThinItalic-osf-sc-ot1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-sc-ot1.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-sc-ot1.vf)
+Provides:       tex(Raleway-ThinItalic-osf-sc-t1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-sc-t1.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-sc-t1.vf)
+Provides:       tex(Raleway-ThinItalic-osf-t1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-t1.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-t1.vf)
+Provides:       tex(Raleway-ThinItalic-osf-ts1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-ts1.tfm)
+Provides:       tex(Raleway-ThinItalic-osf-ts1.vf)
+Provides:       tex(Raleway-ThinItalic-sup-ly1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-sup-ly1.tfm)
+Provides:       tex(Raleway-ThinItalic-sup-ly1.vf)
+Provides:       tex(Raleway-ThinItalic-sup-ot1.tfm)
+Provides:       tex(Raleway-ThinItalic-sup-t1--base.tfm)
+Provides:       tex(Raleway-ThinItalic-sup-t1.tfm)
+Provides:       tex(Raleway-ThinItalic-sup-t1.vf)
 Provides:       tex(Raleway.map)
-Provides:       tex(T1Raleway-TLF.fd)
-Provides:       tex(T1Raleway-TOsF.fd)
-Provides:       tex(TS1Raleway-TLF.fd)
-Provides:       tex(TS1Raleway-TOsF.fd)
-Provides:       tex(a_2bcjq6.enc)
-Provides:       tex(a_biciir.enc)
-Provides:       tex(a_bzmckq.enc)
-Provides:       tex(a_f3uqdf.enc)
-Provides:       tex(a_gvxmk7.enc)
-Provides:       tex(a_ioname.enc)
-Provides:       tex(a_k2dfwc.enc)
-Provides:       tex(a_mgzrni.enc)
-Provides:       tex(a_mzuigi.enc)
-Provides:       tex(a_oaf34p.enc)
-Provides:       tex(a_pcwse4.enc)
-Provides:       tex(a_sor5xn.enc)
-Provides:       tex(a_u6n666.enc)
-Provides:       tex(a_yqxcf3.enc)
+Provides:       tex(T1Raleway-Dnom.fd)
+Provides:       tex(T1Raleway-Inf.fd)
+Provides:       tex(T1Raleway-LF.fd)
+Provides:       tex(T1Raleway-Numr.fd)
+Provides:       tex(T1Raleway-OsF.fd)
+Provides:       tex(T1Raleway-Sup.fd)
+Provides:       tex(TS1Raleway-LF.fd)
+Provides:       tex(TS1Raleway-OsF.fd)
+Provides:       tex(a_2drkug.enc)
+Provides:       tex(a_3r74if.enc)
+Provides:       tex(a_3whmy5.enc)
+Provides:       tex(a_42iwzn.enc)
+Provides:       tex(a_4k4mmc.enc)
+Provides:       tex(a_7e5ed6.enc)
+Provides:       tex(a_amwcv2.enc)
+Provides:       tex(a_bo5gfl.enc)
+Provides:       tex(a_cbkfo7.enc)
+Provides:       tex(a_fcy5xz.enc)
+Provides:       tex(a_ifnzwv.enc)
+Provides:       tex(a_ij42cm.enc)
+Provides:       tex(a_itoun2.enc)
+Provides:       tex(a_jqcpay.enc)
+Provides:       tex(a_k7iqhv.enc)
+Provides:       tex(a_lzhlbi.enc)
+Provides:       tex(a_or44gx.enc)
+Provides:       tex(a_phsv7w.enc)
+Provides:       tex(a_pxhins.enc)
+Provides:       tex(a_qgc4kz.enc)
+Provides:       tex(a_rdowpq.enc)
+Provides:       tex(a_rkhchd.enc)
+Provides:       tex(a_su2n5p.enc)
+Provides:       tex(a_tq4ocg.enc)
+Provides:       tex(a_yhzmyq.enc)
+Provides:       tex(a_zx7ckg.enc)
 Provides:       tex(raleway-type1-autoinst.sty)
 Provides:       tex(raleway.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(ifluatex.sty)
+Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source213:      raleway.tar.xz
-Source214:      raleway.doc.tar.xz
+# from 20260301
+Source225:      raleway.tar.xz
+Source226:      raleway.doc.tar.xz
 
 %description -n texlive-raleway
 The package provides the Raleway family in an easy to use way.
@@ -14135,7 +15094,7 @@ For XeLaTeX and LuaLaTeX users the original OpenType fonts are
 used. The entire font family is included.
 
 %package -n texlive-raleway-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn42629
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 Summary:        Documentation for texlive-raleway
 License:        OFL-1.1
@@ -14147,7 +15106,7 @@ Supplements:    (texlive-raleway and texlive-alldocumentation)
 This package includes the documentation for texlive-raleway
 
 %package -n texlive-raleway-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn42629
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 Summary:        Severed fonts for texlive-raleway
 License:        OFL-1.1
@@ -14185,6 +15144,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-raleway-doc
 %{_texmfdistdir}/doc/latex/raleway/LPPL.txt
 %{_texmfdistdir}/doc/latex/raleway/OFL.txt
+%{_texmfdistdir}/doc/latex/raleway/README.md
 %{_texmfdistdir}/doc/latex/raleway/raleway-otf-specimen.pdf
 %{_texmfdistdir}/doc/latex/raleway/raleway-otf-specimen.tex
 %{_texmfdistdir}/doc/latex/raleway/raleway-type1-specimen.pdf
@@ -14193,507 +15153,762 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/raleway/raleway.tex
 
 %files -n texlive-raleway
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_2bcjq6.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_biciir.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_bzmckq.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_f3uqdf.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_gvxmk7.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_ioname.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_k2dfwc.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_mgzrni.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_mzuigi.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_oaf34p.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_pcwse4.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_sor5xn.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_u6n666.enc
-%{_texmfdistdir}/fonts/enc/dvips/raleway/a_yqxcf3.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_2drkug.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_3r74if.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_3whmy5.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_42iwzn.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_4k4mmc.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_7e5ed6.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_amwcv2.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_bo5gfl.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_cbkfo7.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_fcy5xz.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_ifnzwv.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_ij42cm.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_itoun2.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_jqcpay.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_k7iqhv.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_lzhlbi.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_or44gx.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_phsv7w.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_pxhins.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_qgc4kz.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_rdowpq.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_rkhchd.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_su2n5p.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_tq4ocg.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_yhzmyq.enc
+%{_texmfdistdir}/fonts/enc/dvips/raleway/a_zx7ckg.enc
 %{_texmfdistdir}/fonts/map/dvips/raleway/Raleway.map
-%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Black-Italic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Black.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Bold-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-BlackItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Bold.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-ExtraBold-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-BoldItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-ExtraBold.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-ExtraLight-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-ExtraBoldItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-ExtraLight.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Light-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-ExtraLightItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Light.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Medium-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-LightItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Medium.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Regular-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-MediumItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Regular.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-SemiBold-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-RegularItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-SemiBold.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Thin-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-SemiBoldItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-Thin.otf
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-tosf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-sc-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-sc-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-sc-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-sc-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-sc-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-sc-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-tosf-ts1.tfm
+%verify(link) %{_texmfdistdir}/fonts/opentype/impallari/raleway/Raleway-ThinItalic.otf
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Black-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BlackItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Bold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-BoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLight-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ExtraLightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Italic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Light-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-LightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Medium-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-MediumItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Regular-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-SemiBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-Thin-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-dnom-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-dnom-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-dnom-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-dnom-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-inf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-inf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-inf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-inf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-inf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-numr-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-numr-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-numr-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-numr-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/impallari/raleway/Raleway-ThinItalic-sup-t1.tfm
 %verify(link) %{_texmfdistdir}/fonts/type1/impallari/raleway/Raleway-Black.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/impallari/raleway/Raleway-BlackItalic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/impallari/raleway/Raleway-Bold.pfb
@@ -14712,230 +15927,332 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/impallari/raleway/Raleway-SemiBoldItalic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/impallari/raleway/Raleway-Thin.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/impallari/raleway/Raleway-ThinItalic.pfb
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-tosf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tlf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tlf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tlf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tosf-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tosf-sc-ly1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tosf-sc-ot1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tosf-sc-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tosf-t1.vf
-%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-tosf-ts1.vf
-%{_texmfdistdir}/tex/latex/raleway/LY1Raleway-TLF.fd
-%{_texmfdistdir}/tex/latex/raleway/LY1Raleway-TOsF.fd
-%{_texmfdistdir}/tex/latex/raleway/OT1Raleway-TLF.fd
-%{_texmfdistdir}/tex/latex/raleway/OT1Raleway-TOsF.fd
-%{_texmfdistdir}/tex/latex/raleway/T1Raleway-TLF.fd
-%{_texmfdistdir}/tex/latex/raleway/T1Raleway-TOsF.fd
-%{_texmfdistdir}/tex/latex/raleway/TS1Raleway-TLF.fd
-%{_texmfdistdir}/tex/latex/raleway/TS1Raleway-TOsF.fd
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Black-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BlackItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Bold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-BoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLight-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ExtraLightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Italic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Light-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-LightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Medium-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-MediumItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Regular-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-SemiBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-Thin-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-dnom-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-inf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-inf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-numr-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/impallari/raleway/Raleway-ThinItalic-sup-t1.vf
+%{_texmfdistdir}/tex/latex/raleway/LY1Raleway-Dnom.fd
+%{_texmfdistdir}/tex/latex/raleway/LY1Raleway-Inf.fd
+%{_texmfdistdir}/tex/latex/raleway/LY1Raleway-LF.fd
+%{_texmfdistdir}/tex/latex/raleway/LY1Raleway-Numr.fd
+%{_texmfdistdir}/tex/latex/raleway/LY1Raleway-OsF.fd
+%{_texmfdistdir}/tex/latex/raleway/LY1Raleway-Sup.fd
+%{_texmfdistdir}/tex/latex/raleway/OT1Raleway-Dnom.fd
+%{_texmfdistdir}/tex/latex/raleway/OT1Raleway-Inf.fd
+%{_texmfdistdir}/tex/latex/raleway/OT1Raleway-LF.fd
+%{_texmfdistdir}/tex/latex/raleway/OT1Raleway-Numr.fd
+%{_texmfdistdir}/tex/latex/raleway/OT1Raleway-OsF.fd
+%{_texmfdistdir}/tex/latex/raleway/OT1Raleway-Sup.fd
+%{_texmfdistdir}/tex/latex/raleway/T1Raleway-Dnom.fd
+%{_texmfdistdir}/tex/latex/raleway/T1Raleway-Inf.fd
+%{_texmfdistdir}/tex/latex/raleway/T1Raleway-LF.fd
+%{_texmfdistdir}/tex/latex/raleway/T1Raleway-Numr.fd
+%{_texmfdistdir}/tex/latex/raleway/T1Raleway-OsF.fd
+%{_texmfdistdir}/tex/latex/raleway/T1Raleway-Sup.fd
+%{_texmfdistdir}/tex/latex/raleway/TS1Raleway-LF.fd
+%{_texmfdistdir}/tex/latex/raleway/TS1Raleway-OsF.fd
 %{_texmfdistdir}/tex/latex/raleway/raleway-type1-autoinst.sty
 %{_texmfdistdir}/tex/latex/raleway/raleway.sty
 
@@ -14947,24 +16264,24 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-raleway/encodings.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-raleway/fonts.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-raleway/fonts.scale
-%{_datadir}/fonts/texlive-raleway/Raleway-Black-Italic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-Black.otf
-%{_datadir}/fonts/texlive-raleway/Raleway-Bold-Italic.otf
+%{_datadir}/fonts/texlive-raleway/Raleway-BlackItalic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-Bold.otf
-%{_datadir}/fonts/texlive-raleway/Raleway-ExtraBold-Italic.otf
+%{_datadir}/fonts/texlive-raleway/Raleway-BoldItalic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-ExtraBold.otf
-%{_datadir}/fonts/texlive-raleway/Raleway-ExtraLight-Italic.otf
+%{_datadir}/fonts/texlive-raleway/Raleway-ExtraBoldItalic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-ExtraLight.otf
-%{_datadir}/fonts/texlive-raleway/Raleway-Light-Italic.otf
+%{_datadir}/fonts/texlive-raleway/Raleway-ExtraLightItalic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-Light.otf
-%{_datadir}/fonts/texlive-raleway/Raleway-Medium-Italic.otf
+%{_datadir}/fonts/texlive-raleway/Raleway-LightItalic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-Medium.otf
-%{_datadir}/fonts/texlive-raleway/Raleway-Regular-Italic.otf
+%{_datadir}/fonts/texlive-raleway/Raleway-MediumItalic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-Regular.otf
-%{_datadir}/fonts/texlive-raleway/Raleway-SemiBold-Italic.otf
+%{_datadir}/fonts/texlive-raleway/Raleway-RegularItalic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-SemiBold.otf
-%{_datadir}/fonts/texlive-raleway/Raleway-Thin-Italic.otf
+%{_datadir}/fonts/texlive-raleway/Raleway-SemiBoldItalic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-Thin.otf
+%{_datadir}/fonts/texlive-raleway/Raleway-ThinItalic.otf
 %{_datadir}/fonts/texlive-raleway/Raleway-Black.pfb
 %{_datadir}/fonts/texlive-raleway/Raleway-BlackItalic.pfb
 %{_datadir}/fonts/texlive-raleway/Raleway-Bold.pfb
@@ -15017,9 +16334,9 @@ Provides:       tex(ran_toks.sty)
 Provides:       tex(rt-dbapp.def)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source215:      ran_toks.tar.xz
-Source216:      ran_toks.doc.tar.xz
+# from 20260301
+Source227:      ran_toks.tar.xz
+Source228:      ran_toks.doc.tar.xz
 
 %description -n texlive-ran_toks
 The package provides means of randomising lists of tokens, or
@@ -15116,9 +16433,9 @@ Suggests:       texlive-randbild-doc >= %{texlive_version}
 Provides:       tex(randbild.sty)
 Requires:       tex(pst-plot.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source217:      randbild.tar.xz
-Source218:      randbild.doc.tar.xz
+# from 20260301
+Source229:      randbild.tar.xz
+Source230:      randbild.doc.tar.xz
 
 %description -n texlive-randbild
 Provides environments randbild to draw small marginal plots
@@ -15224,9 +16541,9 @@ Requires:       tex(xeCJKfntef.sty)
 Requires:       tex(zref-lastpage.sty)
 Requires:       tex(zref-user.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source219:      randexam.tar.xz
-Source220:      randexam.doc.tar.xz
+# from 20260301
+Source231:      randexam.tar.xz
+Source232:      randexam.doc.tar.xz
 
 %description -n texlive-randexam
 This class helps you make an exam paper and its randomized
@@ -15279,10 +16596,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/randexam/randexam.cls
 
 %package -n texlive-randintlist
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn73304
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.20asvn78007
 Release:        0
 License:        LPPL-1.0
-Summary:        Creating random integer number lists , with repeating and sorting options
+Summary:        Creating random integer number lists, with repeating and sorting options
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -15306,6 +16623,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-randintlist-doc >= %{texlive_version}
+Provides:       tex(randintlist-l3.sty)
 Provides:       tex(randintlist.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(listofitems.sty)
@@ -15314,9 +16632,9 @@ Requires:       tex(simplekv.sty)
 Requires:       tex(xintexpr.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source221:      randintlist.tar.xz
-Source222:      randintlist.doc.tar.xz
+# from 20260301
+Source233:      randintlist.tar.xz
+Source234:      randintlist.doc.tar.xz
 
 %description -n texlive-randintlist
 This package (like luarandom, but without the obligation to use
@@ -15325,7 +16643,7 @@ number lists between a and b. This list can have multiple
 numbers or not, and this list can be sorted or not.
 
 %package -n texlive-randintlist-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn73304
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.20asvn78007
 Release:        0
 Summary:        Documentation for texlive-randintlist
 License:        LPPL-1.0
@@ -15357,8 +16675,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/randintlist/README.md
 %{_texmfdistdir}/doc/latex/randintlist/randintlist-doc.pdf
 %{_texmfdistdir}/doc/latex/randintlist/randintlist-doc.tex
+%{_texmfdistdir}/doc/latex/randintlist/randintlist-l3-doc.pdf
+%{_texmfdistdir}/doc/latex/randintlist/randintlist-l3-doc.tex
 
 %files -n texlive-randintlist
+%{_texmfdistdir}/tex/latex/randintlist/randintlist-l3.sty
 %{_texmfdistdir}/tex/latex/randintlist/randintlist.sty
 
 %package -n texlive-random
@@ -15391,9 +16712,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-random-doc >= %{texlive_version}
 Provides:       tex(random.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source223:      random.tar.xz
-Source224:      random.doc.tar.xz
+# from 20260301
+Source235:      random.tar.xz
+Source236:      random.doc.tar.xz
 
 %description -n texlive-random
 Generates pseudo-random integers in the range 1 to 2^{31}.
@@ -15439,7 +16760,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/random/random.tex
 
 %package -n texlive-randomlist
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn45281
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Deal with database, loop, and random in order to build personalized exercises
@@ -15470,17 +16791,17 @@ Provides:       tex(randomlist.sty)
 Provides:       tex(randomlist.tex)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source225:      randomlist.tar.xz
-Source226:      randomlist.doc.tar.xz
+# from 20260301
+Source237:      randomlist.tar.xz
+Source238:      randomlist.doc.tar.xz
 
 %description -n texlive-randomlist
 The main aim of this package is to work on lists, especially
-with random operations. The hidden aim is to build a personnal
+with random operations. The hidden aim is to build a personal
 collection of exercises with different data for each pupil.
 
 %package -n texlive-randomlist-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn45281
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn76924
 Release:        0
 Summary:        Documentation for texlive-randomlist
 License:        LPPL-1.0
@@ -15527,7 +16848,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/randomlist/randomlist.tex
 
 %package -n texlive-randomwalk
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn49513
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Random walks using TikZ
@@ -15559,9 +16880,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(pgfcore.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source227:      randomwalk.tar.xz
-Source228:      randomwalk.doc.tar.xz
+# from 20260301
+Source239:      randomwalk.tar.xz
+Source240:      randomwalk.doc.tar.xz
 
 %description -n texlive-randomwalk
 The randomwalk package provides a user command, \RandomWalk, to
@@ -15571,7 +16892,7 @@ package uses lcg for its 'random' numbers and PGF/TikZ for its
 graphical output.
 
 %package -n texlive-randomwalk-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn49513
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn76924
 Release:        0
 Summary:        Documentation for texlive-randomwalk
 License:        LPPL-1.0
@@ -15636,9 +16957,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-randtext-doc >= %{texlive_version}
 Provides:       tex(randtext.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source229:      randtext.tar.xz
-Source230:      randtext.doc.tar.xz
+# from 20260301
+Source241:      randtext.tar.xz
+Source242:      randtext.doc.tar.xz
 
 %description -n texlive-randtext
 The package provides a single macro \randomize{TEXT} that
@@ -15685,7 +17006,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/randtext/randtext.sty
 
 %package -n texlive-rank-2-roots
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn68161
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn75301
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw (mathematical) rank 2 root systems
@@ -15721,9 +17042,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source231:      rank-2-roots.tar.xz
-Source232:      rank-2-roots.doc.tar.xz
+# from 20260301
+Source243:      rank-2-roots.tar.xz
+Source244:      rank-2-roots.doc.tar.xz
 
 %description -n texlive-rank-2-roots
 This package concerns mathematical drawings arising in
@@ -15733,7 +17054,7 @@ lattices, and parabolic subgroups. Required packages are tikz,
 etoolbox, expl3, pgfkeys, pgfopts, xparse, and xstring.
 
 %package -n texlive-rank-2-roots-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn68161
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn75301
 Release:        0
 Summary:        Documentation for texlive-rank-2-roots
 License:        LPPL-1.0
@@ -15771,7 +17092,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/rank-2-roots/rank-2-roots.sty
 
 %package -n texlive-rbt-mathnotes
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn61193
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Rebecca Turner's personal macros and styles for typesetting mathematics notes
@@ -15830,9 +17151,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source233:      rbt-mathnotes.tar.xz
-Source234:      rbt-mathnotes.doc.tar.xz
+# from 20260301
+Source245:      rbt-mathnotes.tar.xz
+Source246:      rbt-mathnotes.doc.tar.xz
 
 %description -n texlive-rbt-mathnotes
 Styles for typesetting mathematics notes. Includes document
@@ -15841,7 +17162,7 @@ sheets" for exams. Several examples are included, along with
 rendered PDFs.
 
 %package -n texlive-rbt-mathnotes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn61193
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn76924
 Release:        0
 Summary:        Documentation for texlive-rbt-mathnotes
 License:        LPPL-1.0
@@ -15890,7 +17211,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/rbt-mathnotes/rbt-mathnotes.sty
 
 %package -n texlive-rccol
-Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Decimal-centered optionally rounded numbers in tabular
@@ -15921,9 +17242,9 @@ Provides:       tex(rccol.sty)
 Requires:       tex(array.sty)
 Requires:       tex(fltpoint.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source235:      rccol.tar.xz
-Source236:      rccol.doc.tar.xz
+# from 20260301
+Source247:      rccol.tar.xz
+Source248:      rccol.doc.tar.xz
 
 %description -n texlive-rccol
 The rccol package provides decimal-centered numbers:
@@ -15933,7 +17254,7 @@ package makes use of the fltpoint package (as well as the LaTeX
 required array package).
 
 %package -n texlive-rccol-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn77682
 Release:        0
 Summary:        Documentation for texlive-rccol
 License:        LPPL-1.0
@@ -15998,9 +17319,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-rcs-doc >= %{texlive_version}
 Provides:       tex(rcs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source237:      rcs.tar.xz
-Source238:      rcs.doc.tar.xz
+# from 20260301
+Source249:      rcs.tar.xz
+Source250:      rcs.doc.tar.xz
 
 %description -n texlive-rcs
 The rcs package utilizes the inclusion of RCS supplied data in
@@ -16088,9 +17409,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-rcs-multi-doc >= %{texlive_version}
 Provides:       tex(rcs-multi.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source239:      rcs-multi.tar.xz
-Source240:      rcs-multi.doc.tar.xz
+# from 20260301
+Source251:      rcs-multi.tar.xz
+Source252:      rcs-multi.doc.tar.xz
 
 %description -n texlive-rcs-multi
 The package enables the user to typeset version control
@@ -16167,9 +17488,9 @@ Provides:       tex(rcsinfo.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(fancyheadings.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source241:      rcsinfo.tar.xz
-Source242:      rcsinfo.doc.tar.xz
+# from 20260301
+Source253:      rcsinfo.tar.xz
+Source254:      rcsinfo.doc.tar.xz
 
 %description -n texlive-rcsinfo
 A package to extract RCS (Revision Control System) information
@@ -16218,7 +17539,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/rcsinfo/rcsinfo.sty
 
 %package -n texlive-readablecv
-Version:        %{texlive_version}.%{texlive_noarch}.4.0svn67986
+Version:        %{texlive_version}.%{texlive_noarch}.4.0svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        A highly readable and good looking CV and letter class
@@ -16258,17 +17579,17 @@ Requires:       tex(roboto.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source243:      readablecv.tar.xz
-Source244:      readablecv.doc.tar.xz
+# from 20260301
+Source255:      readablecv.tar.xz
+Source256:      readablecv.doc.tar.xz
 
 %description -n texlive-readablecv
 This class provides, what I have found, to be an extremely
 attractive and highly readable CV which will lead to your CV
-being read rather than disgarded.
+being read rather than disregarded.
 
 %package -n texlive-readablecv-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.0svn67986
+Version:        %{texlive_version}.%{texlive_noarch}.4.0svn76790
 Release:        0
 Summary:        Documentation for texlive-readablecv
 License:        LPPL-1.0
@@ -16339,9 +17660,9 @@ Requires:       tex(forloop.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(listofitems.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source245:      readarray.tar.xz
-Source246:      readarray.doc.tar.xz
+# from 20260301
+Source257:      readarray.tar.xz
+Source258:      readarray.doc.tar.xz
 
 %description -n texlive-readarray
 The package allows the user to input formatted data into
@@ -16391,7 +17712,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/readarray/readarray.sty
 
 %package -n texlive-realboxes
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn64967
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Variants of common box-commands that read their content as real box and not as macro argument
@@ -16429,9 +17750,9 @@ Requires:       tex(graphics.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source247:      realboxes.tar.xz
-Source248:      realboxes.doc.tar.xz
+# from 20260301
+Source259:      realboxes.tar.xz
+Source260:      realboxes.doc.tar.xz
 
 %description -n texlive-realboxes
 The package uses the author's package collectbox to define
@@ -16446,7 +17767,7 @@ long form uses the short form anyway when no optional arguments
 are used.
 
 %package -n texlive-realboxes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn64967
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn77682
 Release:        0
 Summary:        Documentation for texlive-realboxes
 License:        LPPL-1.0
@@ -16517,9 +17838,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(lcg.sty)
 Requires:       tex(stackengine.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source249:      realhats.tar.xz
-Source250:      realhats.doc.tar.xz
+# from 20260301
+Source261:      realhats.tar.xz
+Source262:      realhats.doc.tar.xz
 
 %description -n texlive-realhats
 This LaTeX package makes \hat put real hats on symbols. The
@@ -16582,7 +17903,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/realhats/realhats.sty
 
 %package -n texlive-realscripts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3dsvn56594
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3dsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Access OpenType subscript and superscript glyphs
@@ -16612,9 +17933,9 @@ Suggests:       texlive-realscripts-doc >= %{texlive_version}
 Provides:       tex(realscripts.sty)
 Requires:       tex(fontspec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source251:      realscripts.tar.xz
-Source252:      realscripts.doc.tar.xz
+# from 20260301
+Source263:      realscripts.tar.xz
+Source264:      realscripts.doc.tar.xz
 
 %description -n texlive-realscripts
 This small package replaces \textsuperscript and \textsubscript
@@ -16627,7 +17948,7 @@ holds functions that were once parts of the xltxtra package,
 which now loads realscripts by default.
 
 %package -n texlive-realscripts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3dsvn56594
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3dsvn77682
 Release:        0
 Summary:        Documentation for texlive-realscripts
 License:        LPPL-1.0
@@ -16663,7 +17984,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/realscripts/realscripts.sty
 
 %package -n texlive-realtranspose
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn56623
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        The "real" way to transpose a Matrix
@@ -16693,17 +18014,17 @@ Suggests:       texlive-realtranspose-doc >= %{texlive_version}
 Provides:       tex(realtranspose.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source253:      realtranspose.tar.xz
-Source254:      realtranspose.doc.tar.xz
+# from 20260301
+Source265:      realtranspose.tar.xz
+Source266:      realtranspose.doc.tar.xz
 
 %description -n texlive-realtranspose
 With realtranspose you can notate the transposition of a matrix
-by rotating the symbols 90 degrees. This is a hommage to the
+by rotating the symbols 90 degrees. This is an homage to the
 realhats package.
 
 %package -n texlive-realtranspose-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn56623
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76924
 Release:        0
 Summary:        Documentation for texlive-realtranspose
 License:        LPPL-1.0
@@ -16781,9 +18102,9 @@ Requires:       tex(ulem.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source255:      rebuttal.tar.xz
-Source256:      rebuttal.doc.tar.xz
+# from 20260301
+Source267:      rebuttal.tar.xz
+Source268:      rebuttal.doc.tar.xz
 
 %description -n texlive-rebuttal
 This package provides means for writing structured journal and
@@ -16831,7 +18152,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/rebuttal/rebuttal.sty
 
 %package -n texlive-rec-thy
-Version:        %{texlive_version}.%{texlive_noarch}.4.0svn70806
+Version:        %{texlive_version}.%{texlive_noarch}.4.5svn76924
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Commands to typeset recursion theory papers
@@ -16877,9 +18198,9 @@ Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source257:      rec-thy.tar.xz
-Source258:      rec-thy.doc.tar.xz
+# from 20260301
+Source269:      rec-thy.tar.xz
+Source270:      rec-thy.doc.tar.xz
 
 %description -n texlive-rec-thy
 This package is designed to help mathematicians publishing
@@ -16889,7 +18210,7 @@ commands to denote Turing reductions, Turing functionals, c.e.
 sets, stagewise computations, forcing and syntactic classes.
 
 %package -n texlive-rec-thy-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.0svn70806
+Version:        %{texlive_version}.%{texlive_noarch}.4.5svn76924
 Release:        0
 Summary:        Documentation for texlive-rec-thy
 License:        SUSE-Public-Domain
@@ -16956,9 +18277,9 @@ Suggests:       texlive-recipe-doc >= %{texlive_version}
 Provides:       tex(recipe.cls)
 Requires:       tex(book.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source259:      recipe.tar.xz
-Source260:      recipe.doc.tar.xz
+# from 20260301
+Source271:      recipe.tar.xz
+Source272:      recipe.doc.tar.xz
 
 %description -n texlive-recipe
 The layout design is relatively straightforward (and
@@ -17004,10 +18325,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/recipe/recipe.cls
 
 %package -n texlive-recipebook
-Version:        %{texlive_version}.%{texlive_noarch}.svn37026
+Version:        %{texlive_version}.%{texlive_noarch}.svn75878
 Release:        0
 License:        LPPL-1.0
-Summary:        Typeset 5.5" x 8" recipes for browsing or printing
+Summary:        Typeset 5.5'' x 8'' recipes for browsing or printing
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -17063,21 +18384,21 @@ Requires:       tex(wrapfig.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source261:      recipebook.tar.xz
-Source262:      recipebook.doc.tar.xz
+# from 20260301
+Source273:      recipebook.tar.xz
+Source274:      recipebook.doc.tar.xz
 
 %description -n texlive-recipebook
 This is a LaTeX2e class for typesetting recipes. It is designed
 for typesetting one or two recipes per page, with dimensions of
-5.5" x 8.5". The hyperlinked table of contents (ToC) and page
+5.5'' x 8.5''. The hyperlinked table of contents (ToC) and page
 numbers make browsing recipes convenient, and the pages can be
 joined together or printed two per sheet to normal letterpaper
 easily. The size was chosen to work in half-page 3-ring binder
 cover sheets.
 
 %package -n texlive-recipebook-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn37026
+Version:        %{texlive_version}.%{texlive_noarch}.svn75878
 Release:        0
 Summary:        Documentation for texlive-recipebook
 License:        LPPL-1.0
@@ -17156,9 +18477,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source263:      recipecard.tar.xz
-Source264:      recipecard.doc.tar.xz
+# from 20260301
+Source275:      recipecard.tar.xz
+Source276:      recipecard.doc.tar.xz
 
 %description -n texlive-recipecard
 The recipecard class typesets recipes into note card sized
@@ -17204,7 +18525,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/recipecard/recipecard.cls
 
 %package -n texlive-recorder-fingering
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn73711
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Package to display recorder fingering diagrams
@@ -17235,9 +18556,9 @@ Provides:       tex(recorder-fingering.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source265:      recorder-fingering.tar.xz
-Source266:      recorder-fingering.doc.tar.xz
+# from 20260301
+Source277:      recorder-fingering.tar.xz
+Source278:      recorder-fingering.doc.tar.xz
 
 %description -n texlive-recorder-fingering
 This package provides support for generating and displaying
@@ -17247,7 +18568,7 @@ C and F, and the tin whistle in D, along with methods to create
 and display alternate fingerings for trills, etc.
 
 %package -n texlive-recorder-fingering-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn73711
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn76924
 Release:        0
 Summary:        Documentation for texlive-recorder-fingering
 License:        LPPL-1.0
@@ -17315,9 +18636,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-rectopma-doc >= %{texlive_version}
 Provides:       tex(rectopma.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source267:      rectopma.tar.xz
-Source268:      rectopma.doc.tar.xz
+# from 20260301
+Source279:      rectopma.tar.xz
+Source280:      rectopma.doc.tar.xz
 
 %description -n texlive-rectopma
 Saves the arguments of \author and \title for reference (after
@@ -17406,9 +18727,9 @@ Provides:       tex(recycle.map)
 Provides:       tex(recycle.sty)
 Provides:       tex(recycle.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source269:      recycle.tar.xz
-Source270:      recycle.doc.tar.xz
+# from 20260301
+Source281:      recycle.tar.xz
+Source282:      recycle.doc.tar.xz
 
 %description -n texlive-recycle
 This single-character font is provided as Metafont source, and
@@ -17482,7 +18803,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-recycle/recycle.pfb
 
 %package -n texlive-refcheck
-Version:        %{texlive_version}.%{texlive_noarch}.1.9.1svn29128
+Version:        %{texlive_version}.%{texlive_noarch}.1.9.2svn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Check references (in figures, table, equations, etc)
@@ -17511,9 +18832,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-refcheck-doc >= %{texlive_version}
 Provides:       tex(refcheck.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source271:      refcheck.tar.xz
-Source272:      refcheck.doc.tar.xz
+# from 20260301
+Source283:      refcheck.tar.xz
+Source284:      refcheck.doc.tar.xz
 
 %description -n texlive-refcheck
 The package checks references in a document, looking for
@@ -17523,7 +18844,7 @@ also display label names in text near corresponding numbers of
 equations and/or bibliography references.
 
 %package -n texlive-refcheck-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.9.1svn29128
+Version:        %{texlive_version}.%{texlive_noarch}.1.9.2svn77682
 Release:        0
 Summary:        Documentation for texlive-refcheck
 License:        GPL-2.0-or-later
@@ -17560,7 +18881,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/refcheck/refcheck.sty
 
 %package -n texlive-refcount
-Version:        %{texlive_version}.%{texlive_noarch}.3.6svn53164
+Version:        %{texlive_version}.%{texlive_noarch}.3.6svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Counter operations with label references
@@ -17591,9 +18912,9 @@ Provides:       tex(refcount.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source273:      refcount.tar.xz
-Source274:      refcount.doc.tar.xz
+# from 20260301
+Source285:      refcount.tar.xz
+Source286:      refcount.doc.tar.xz
 
 %description -n texlive-refcount
 Provides commands \setcounterref and \addtocounterref which use
@@ -17605,7 +18926,7 @@ reference of the label. No .ins file is distributed; process
 the .dtx with plain TeX to create one.
 
 %package -n texlive-refcount-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.6svn53164
+Version:        %{texlive_version}.%{texlive_noarch}.3.6svn77682
 Release:        0
 Summary:        Documentation for texlive-refcount
 License:        LPPL-1.0
@@ -17674,9 +18995,9 @@ Requires:       tex(csquotes.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source275:      refenums.tar.xz
-Source276:      refenums.doc.tar.xz
+# from 20260301
+Source287:      refenums.tar.xz
+Source288:      refenums.doc.tar.xz
 
 %description -n texlive-refenums
 The package provides commands to define enumerable items with a
@@ -17763,9 +19084,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source277:      reflectgraphics.tar.xz
-Source278:      reflectgraphics.doc.tar.xz
+# from 20260301
+Source289:      reflectgraphics.tar.xz
+Source290:      reflectgraphics.doc.tar.xz
 
 %description -n texlive-reflectgraphics
 The package provides a macro for reflecting images, in a number
@@ -17841,9 +19162,9 @@ Provides:       tex(pagepc.sty)
 Provides:       tex(refart.cls)
 Provides:       tex(refrep.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source279:      refman.tar.xz
-Source280:      refman.doc.tar.xz
+# from 20260301
+Source291:      refman.tar.xz
+Source292:      refman.doc.tar.xz
 
 %description -n texlive-refman
 Document classes (report- and article-style) for writing
@@ -17898,7 +19219,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/refman/refrep.cls
 
 %package -n texlive-refstyle
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6bsvn69680
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6bsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Advanced formatting of cross references
@@ -17929,9 +19250,9 @@ Provides:       tex(refstyle.cfg)
 Provides:       tex(refstyle.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source281:      refstyle.tar.xz
-Source282:      refstyle.doc.tar.xz
+# from 20260301
+Source293:      refstyle.tar.xz
+Source294:      refstyle.doc.tar.xz
 
 %description -n texlive-refstyle
 The package provides a consistent way of producing references
@@ -17947,7 +19268,7 @@ documents, a facility is provided to interface to the xr
 package for external document references.
 
 %package -n texlive-refstyle-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6bsvn69680
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6bsvn77682
 Release:        0
 Summary:        Documentation for texlive-refstyle
 License:        LPPL-1.0
@@ -18014,9 +19335,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-regcount-doc >= %{texlive_version}
 Provides:       tex(regcount.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source283:      regcount.tar.xz
-Source284:      regcount.doc.tar.xz
+# from 20260301
+Source295:      regcount.tar.xz
+Source296:      regcount.doc.tar.xz
 
 %description -n texlive-regcount
 Adds a macro \rgcounts which displays the allocation status of
@@ -18061,7 +19382,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/regcount/regcount.sty
 
 %package -n texlive-regexpatch
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2fsvn58668
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2fsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        High level patching of commands
@@ -18092,9 +19413,9 @@ Provides:       tex(regexpatch.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source285:      regexpatch.tar.xz
-Source286:      regexpatch.doc.tar.xz
+# from 20260301
+Source297:      regexpatch.tar.xz
+Source298:      regexpatch.doc.tar.xz
 
 %description -n texlive-regexpatch
 The package generalises the macro patching commands provided by
@@ -18104,7 +19425,7 @@ its sibling xpatch is that this package sports a very powerful
 experimental packages.
 
 %package -n texlive-regexpatch-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2fsvn58668
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2fsvn77682
 Release:        0
 Summary:        Documentation for texlive-regexpatch
 License:        LPPL-1.0
@@ -18174,9 +19495,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source287:      register.tar.xz
-Source288:      register.doc.tar.xz
+# from 20260301
+Source299:      register.tar.xz
+Source300:      register.doc.tar.xz
 
 %description -n texlive-register
 This package is designed for typesetting the programmable
@@ -18230,7 +19551,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/register/register.sty
 
 %package -n texlive-regstats
-Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn73635
+Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Information about register use
@@ -18267,9 +19588,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(intcalc.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source289:      regstats.tar.xz
-Source290:      regstats.doc.tar.xz
+# from 20260301
+Source301:      regstats.tar.xz
+Source302:      regstats.doc.tar.xz
 
 %description -n texlive-regstats
 The package will report number of used registers (counter,
@@ -18278,7 +19599,7 @@ languages, insertions), and will compare the number to the
 maximum available number of such registers.
 
 %package -n texlive-regstats-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn73635
+Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn78101
 Release:        0
 Summary:        Documentation for texlive-regstats
 License:        LPPL-1.0
@@ -18371,9 +19692,9 @@ Requires:       tex(zref-user.sty)
 Requires:       tex(zref-xr.sty)
 Requires:       tex(zref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source291:      regulatory.tar.xz
-Source292:      regulatory.doc.tar.xz
+# from 20260301
+Source303:      regulatory.tar.xz
+Source304:      regulatory.doc.tar.xz
 
 %description -n texlive-regulatory
 This package aims to simplify the writing process, especially
@@ -18439,7 +19760,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/regulatory/regulatory.sty
 
 %package -n texlive-reledmac
-Version:        %{texlive_version}.%{texlive_noarch}.2.40.1svn73810
+Version:        %{texlive_version}.%{texlive_noarch}.2.44.3svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset scholarly editions
@@ -18480,9 +19801,9 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source293:      reledmac.tar.xz
-Source294:      reledmac.doc.tar.xz
+# from 20260301
+Source305:      reledmac.tar.xz
+Source306:      reledmac.doc.tar.xz
 
 %description -n texlive-reledmac
 A package for typesetting scholarly critical editions,
@@ -18493,7 +19814,7 @@ simple tabular- and array-style environments. The package is
 distributed with the related reledpar package.
 
 %package -n texlive-reledmac-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.40.1svn73810
+Version:        %{texlive_version}.%{texlive_noarch}.2.44.3svn78101
 Release:        0
 Summary:        Documentation for texlive-reledmac
 License:        LPPL-1.0
@@ -18679,9 +20000,9 @@ Requires:       tex(cmu10.tfm)
 Requires:       tex(lasy10.tfm)
 Requires:       tex(lcircle10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source295:      relenc.tar.xz
-Source296:      relenc.doc.tar.xz
+# from 20260301
+Source307:      relenc.tar.xz
+Source308:      relenc.doc.tar.xz
 
 %description -n texlive-relenc
 LaTeX package providing a relaxed font encoding to make
@@ -18738,7 +20059,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/relenc/t1rzcm.fd
 
 %package -n texlive-relsize
-Version:        %{texlive_version}.%{texlive_noarch}.4.1svn30707
+Version:        %{texlive_version}.%{texlive_noarch}.4.1svn77682
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Set the font size relative to the current font size
@@ -18768,9 +20089,9 @@ Suggests:       texlive-relsize-doc >= %{texlive_version}
 Provides:       tex(relsize.sty)
 Requires:       tex(type1cm.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source297:      relsize.tar.xz
-Source298:      relsize.doc.tar.xz
+# from 20260301
+Source309:      relsize.tar.xz
+Source310:      relsize.doc.tar.xz
 
 %description -n texlive-relsize
 The basic command of the package is \relsize, whose argument is
@@ -18778,7 +20099,7 @@ a number of \magsteps to change size; from this are defined
 commands \larger, \smaller, \textlarger, etc.
 
 %package -n texlive-relsize-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.1svn30707
+Version:        %{texlive_version}.%{texlive_noarch}.4.1svn77682
 Release:        0
 Summary:        Documentation for texlive-relsize
 License:        SUSE-Public-Domain
@@ -18847,9 +20168,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source299:      reotex.tar.xz
-Source300:      reotex.doc.tar.xz
+# from 20260301
+Source311:      reotex.tar.xz
+Source312:      reotex.doc.tar.xz
 
 %description -n texlive-reotex
 The package defines macros and other utilities to design Reo
@@ -18893,7 +20214,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/reotex/reotex.sty
 
 %package -n texlive-repeatindex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn24305
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Repeat items in an index after a page or column break
@@ -18924,9 +20245,9 @@ Provides:       tex(repeatindex.sty)
 Requires:       tex(afterpage.sty)
 Requires:       tex(makeidx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source301:      repeatindex.tar.xz
-Source302:      repeatindex.doc.tar.xz
+# from 20260301
+Source313:      repeatindex.tar.xz
+Source314:      repeatindex.doc.tar.xz
 
 %description -n texlive-repeatindex
 This Package repeats item of an index if a page or column break
@@ -18934,7 +20255,7 @@ occurs within a list of subitems. This helps to find out to
 which main item a subitem belongs.
 
 %package -n texlive-repeatindex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn24305
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.01svn77682
 Release:        0
 Summary:        Documentation for texlive-repeatindex
 License:        LPPL-1.0
@@ -18999,9 +20320,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-repere-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source303:      repere.tar.xz
-Source304:      repere.doc.tar.xz
+# from 20260301
+Source315:      repere.tar.xz
+Source316:      repere.doc.tar.xz
 
 %description -n texlive-repere
 This package provides MetaPost macros for drawing secondary
@@ -19049,7 +20370,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/repere/repere.mp
 
 %package -n texlive-repltext
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn56433
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Control how text gets copied from a PDF file
@@ -19081,9 +20402,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source305:      repltext.tar.xz
-Source306:      repltext.doc.tar.xz
+# from 20260301
+Source317:      repltext.tar.xz
+Source318:      repltext.doc.tar.xz
 
 %description -n texlive-repltext
 The repltext package exposes to LaTeX a relatively obscure PDF
@@ -19092,7 +20413,7 @@ for a piece of text, it is the replacement text, not the
 typeset text that is copied and pasted.
 
 %package -n texlive-repltext-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn56433
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Documentation for texlive-repltext
 License:        LPPL-1.0
@@ -19128,7 +20449,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/repltext/repltext.sty
 
 %package -n texlive-reptheorem
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn72495
+Version:        %{texlive_version}.%{texlive_noarch}.1.4.1svn76224
 Release:        0
 License:        LPPL-1.0
 Summary:        Repetition of theorem environments
@@ -19157,9 +20478,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-reptheorem-doc >= %{texlive_version}
 Provides:       tex(reptheorem.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source307:      reptheorem.tar.xz
-Source308:      reptheorem.doc.tar.xz
+# from 20260301
+Source319:      reptheorem.tar.xz
+Source320:      reptheorem.doc.tar.xz
 
 %description -n texlive-reptheorem
 When writing a large manuscript, it is sometimes beneficial to
@@ -19172,7 +20493,7 @@ its own file extension, .thm, to replicate theorems in other
 files.
 
 %package -n texlive-reptheorem-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn72495
+Version:        %{texlive_version}.%{texlive_noarch}.1.4.1svn76224
 Release:        0
 Summary:        Documentation for texlive-reptheorem
 License:        LPPL-1.0
@@ -19208,7 +20529,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/reptheorem/reptheorem.sty
 
 %package -n texlive-rerunfilecheck
-Version:        %{texlive_version}.%{texlive_noarch}.1.10svn63869
+Version:        %{texlive_version}.%{texlive_noarch}.1.11svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Checksum based rerun checks on auxiliary files
@@ -19240,15 +20561,14 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-rerunfilecheck-doc >= %{texlive_version}
 Provides:       tex(rerunfilecheck.sty)
-Requires:       tex(atveryend.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(uniquecounter.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source309:      rerunfilecheck.tar.xz
-Source310:      rerunfilecheck.doc.tar.xz
+# from 20260301
+Source321:      rerunfilecheck.tar.xz
+Source322:      rerunfilecheck.doc.tar.xz
 
 %description -n texlive-rerunfilecheck
 The package provides additional rerun warnings if some
@@ -19256,7 +20576,7 @@ auxiliary files have changed. It is based on MD5 checksum
 provided by pdfTeX, LuaTeX, XeTeX.
 
 %package -n texlive-rerunfilecheck-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.10svn63869
+Version:        %{texlive_version}.%{texlive_noarch}.1.11svn77682
 Release:        0
 Summary:        Documentation for texlive-rerunfilecheck
 License:        LPPL-1.0
@@ -19293,7 +20613,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/rerunfilecheck/rerunfilecheck.sty
 
 %package -n texlive-rescansync
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.0svn63856
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Re-scan tokens with synctex information
@@ -19322,16 +20642,16 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-rescansync-doc >= %{texlive_version}
 Provides:       tex(rescansync.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source311:      rescansync.tar.xz
-Source312:      rescansync.doc.tar.xz
+# from 20260301
+Source323:      rescansync.tar.xz
+Source324:      rescansync.doc.tar.xz
 
 %description -n texlive-rescansync
 Allow users to execute saved code to typeset text while
 preserving SyncTeX information.
 
 %package -n texlive-rescansync-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.0svn63856
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.0svn76924
 Release:        0
 Summary:        Documentation for texlive-rescansync
 License:        LPPL-1.0
@@ -19399,9 +20719,9 @@ Provides:       tex(resmes.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source313:      resmes.tar.xz
-Source314:      resmes.doc.tar.xz
+# from 20260301
+Source325:      resmes.tar.xz
+Source326:      resmes.doc.tar.xz
 
 %description -n texlive-resmes
 This package provides a simple macro \resmes that prints the
@@ -19481,9 +20801,9 @@ Requires:       tex(xintexpr.sty)
 Requires:       tex(xinttools.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source315:      resolsysteme.tar.xz
-Source316:      resolsysteme.doc.tar.xz
+# from 20260301
+Source327:      resolsysteme.tar.xz
+Source328:      resolsysteme.doc.tar.xz
 
 %description -n texlive-resolsysteme
 This package provides some commands (in French) to perform
@@ -19538,7 +20858,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/resolsysteme/ResolSysteme.sty
 
 %package -n texlive-resphilosophica
-Version:        %{texlive_version}.%{texlive_noarch}.1.35svn50935
+Version:        %{texlive_version}.%{texlive_noarch}.1.39svn76471
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset articles for the journal Res Philosophica
@@ -19571,16 +20891,15 @@ Requires:       tex(collect.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(footmisc.sty)
 Requires:       tex(hyperref.sty)
-Requires:       tex(lastpage.sty)
 Requires:       tex(mathdesign.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source317:      resphilosophica.tar.xz
-Source318:      resphilosophica.doc.tar.xz
+# from 20260301
+Source329:      resphilosophica.tar.xz
+Source330:      resphilosophica.doc.tar.xz
 
 %description -n texlive-resphilosophica
 The bundle provides a class for typesetting articles for the
@@ -19588,7 +20907,7 @@ journal Res Philosophica. This work was commissioned by the
 Saint Louis University.
 
 %package -n texlive-resphilosophica-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.35svn50935
+Version:        %{texlive_version}.%{texlive_noarch}.1.39svn76471
 Release:        0
 Summary:        Documentation for texlive-resphilosophica
 License:        LPPL-1.0
@@ -19629,7 +20948,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/resphilosophica/resphilosophica.cls
 
 %package -n texlive-responsive
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn71800
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Responsive design methods for LaTeX
@@ -19661,9 +20980,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(l3keys2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source319:      responsive.tar.xz
-Source320:      responsive.doc.tar.xz
+# from 20260301
+Source331:      responsive.tar.xz
+Source332:      responsive.doc.tar.xz
 
 %description -n texlive-responsive
 Responsive design aims to display text and other design
@@ -19677,7 +20996,7 @@ produced PDF, from smartphones or e-ink readers to printed A4
 pages.
 
 %package -n texlive-responsive-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn71800
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn76924
 Release:        0
 Summary:        Documentation for texlive-responsive
 License:        LPPL-1.0
@@ -19757,9 +21076,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source321:      rest-api.tar.xz
-Source322:      rest-api.doc.tar.xz
+# from 20260301
+Source333:      rest-api.tar.xz
+Source334:      rest-api.doc.tar.xz
 
 %description -n texlive-rest-api
 This LaTeX package provides macros to describe rest apis for
@@ -19840,9 +21159,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(tabularx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source323:      resumecls.tar.xz
-Source324:      resumecls.doc.tar.xz
+# from 20260301
+Source335:      resumecls.tar.xz
+Source336:      resumecls.doc.tar.xz
 
 %description -n texlive-resumecls
 A LaTeX document class to typeset a resume or CV both in
@@ -19922,9 +21241,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-resumemac-doc >= %{texlive_version}
 Provides:       tex(resumemac.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source325:      resumemac.tar.xz
-Source326:      resumemac.doc.tar.xz
+# from 20260301
+Source337:      resumemac.tar.xz
+Source338:      resumemac.doc.tar.xz
 
 %description -n texlive-resumemac
 A set of macros is provided, together with an file that offers
@@ -19966,6 +21285,147 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-resumemac
 %{_texmfdistdir}/tex/plain/resumemac/resumemac.tex
 
+%package -n texlive-retosmatematicos
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn76358
+Release:        0
+License:        LPPL-1.0
+Summary:        LaTeX template for the Telegram group "Retos Matematicos"
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-retosmatematicos-doc >= %{texlive_version}
+Provides:       tex(RetoExtra.sty)
+Provides:       tex(RetoMatematico.cls)
+Provides:       tex(RetoPSTricks.cls)
+Provides:       tex(RetoTikZ.cls)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(article.cls)
+Requires:       tex(auto-pst-pdf.sty)
+Requires:       tex(avant.sty)
+Requires:       tex(babel.sty)
+Requires:       tex(cancel.sty)
+Requires:       tex(ccicons.sty)
+Requires:       tex(cleveref.sty)
+Requires:       tex(colortbl.sty)
+Requires:       tex(empheq.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(esvect.sty)
+Requires:       tex(eurosym.sty)
+Requires:       tex(fancyvrb.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(inputenc.sty)
+Requires:       tex(lipsum.sty)
+Requires:       tex(mathpazo.sty)
+Requires:       tex(mathrsfs.sty)
+Requires:       tex(mathtools.sty)
+Requires:       tex(minted.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(natbib.sty)
+Requires:       tex(pgf.sty)
+Requires:       tex(pgfplots.sty)
+Requires:       tex(polynom.sty)
+Requires:       tex(pst-eucl.sty)
+Requires:       tex(pstricks-add.sty)
+Requires:       tex(qrcode.sty)
+Requires:       tex(scalerel.sty)
+Requires:       tex(setspace.sty)
+Requires:       tex(siunitx.sty)
+Requires:       tex(standalone.cls)
+Requires:       tex(systeme.sty)
+Requires:       tex(tcolorbox.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(titlesec.sty)
+Requires:       tex(titling.sty)
+Requires:       tex(upgreek.sty)
+Requires:       tex(wrapfig.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xfrac.sty)
+Requires:       tex(xkeyval.sty)
+Requires:       tex(xparse.sty)
+Requires:       tex(yhmath.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source339:      retosmatematicos.tar.xz
+Source340:      retosmatematicos.doc.tar.xz
+
+%description -n texlive-retosmatematicos
+This package provides the class RetoMatematico.cls, which is
+used to typeset the final solutions of the mathematical
+challenges published in the Telegram group Retos Matematicos
+(by Jose Manuel Sanchez Munoz). Among its features, the class
+sets the document size to letter paper, switches the font to
+Palatino Linotype (via the mathpazo package), and places
+information such as the group's ISSN and link in the page
+margins. Further details and usage examples are available in
+the package documentation.
+
+%package -n texlive-retosmatematicos-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.1svn76358
+Release:        0
+Summary:        Documentation for texlive-retosmatematicos
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-retosmatematicos and texlive-alldocumentation)
+Provides:       locale(texlive-retosmatematicos-doc:es)
+
+%description -n texlive-retosmatematicos-doc
+This package includes the documentation for texlive-retosmatematicos
+
+%post -n texlive-retosmatematicos
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-retosmatematicos
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-retosmatematicos
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-retosmatematicos-doc
+%{_texmfdistdir}/doc/latex/retosmatematicos/README
+%{_texmfdistdir}/doc/latex/retosmatematicos/README.espanol
+%{_texmfdistdir}/doc/latex/retosmatematicos/retomatematico-ejemplo.pdf
+%{_texmfdistdir}/doc/latex/retosmatematicos/retomatematico-ejemplo.tex
+%{_texmfdistdir}/doc/latex/retosmatematicos/retopstricks-ejemplo.pdf
+%{_texmfdistdir}/doc/latex/retosmatematicos/retopstricks-ejemplo.tex
+
+%files -n texlive-retosmatematicos
+%{_texmfdistdir}/tex/latex/retosmatematicos/RetoExtra.sty
+%{_texmfdistdir}/tex/latex/retosmatematicos/RetoMatematico.cls
+%{_texmfdistdir}/tex/latex/retosmatematicos/RetoPSTricks.cls
+%{_texmfdistdir}/tex/latex/retosmatematicos/RetoTikZ.cls
+
 %package -n texlive-returntogrid
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn48485
 Release:        0
@@ -20000,9 +21460,9 @@ Requires:       tex(xparse.sty)
 Requires:       tex(zref-abspage.sty)
 Requires:       tex(zref-savepos.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source327:      returntogrid.tar.xz
-Source328:      returntogrid.doc.tar.xz
+# from 20260301
+Source341:      returntogrid.tar.xz
+Source342:      returntogrid.doc.tar.xz
 
 %description -n texlive-returntogrid
 returntogrid offers a few commands to get something like an
@@ -20080,9 +21540,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-reverxii-doc >= %{texlive_version}
 Provides:       tex(reverxii.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source329:      reverxii.tar.xz
-Source330:      reverxii.doc.tar.xz
+# from 20260301
+Source343:      reverxii.tar.xz
+Source344:      reverxii.doc.tar.xz
 
 %description -n texlive-reverxii
 Following the lead of xii.tex, this little (938 characters)
@@ -20178,9 +21638,9 @@ Requires:       tex(stmaryrd.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source331:      revquantum.tar.xz
-Source332:      revquantum.doc.tar.xz
+# from 20260301
+Source345:      revquantum.tar.xz
+Source346:      revquantum.doc.tar.xz
 
 %description -n texlive-revquantum
 This package provides a number of useful hacks to solve common
@@ -20281,9 +21741,9 @@ Requires:       tex(textcase.sty)
 Requires:       tex(url.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source333:      revtex.tar.xz
-Source334:      revtex.doc.tar.xz
+# from 20260301
+Source347:      revtex.tar.xz
+Source348:      revtex.doc.tar.xz
 
 %description -n texlive-revtex
 Includes styles for American Physical Society, American
@@ -20424,9 +21884,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source335:      revtex4.tar.xz
-Source336:      revtex4.doc.tar.xz
+# from 20260301
+Source349:      revtex4.tar.xz
+Source350:      revtex4.doc.tar.xz
 
 %description -n texlive-revtex4
 This is an old version of revtex, and is kept as a courtesy to
@@ -20533,9 +21993,9 @@ Requires:       tex(natbib.sty)
 Requires:       tex(textcase.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source337:      revtex4-1.tar.xz
-Source338:      revtex4-1.doc.tar.xz
+# from 20260301
+Source351:      revtex4-1.tar.xz
+Source352:      revtex4-1.doc.tar.xz
 
 %description -n texlive-revtex4-1
 This is an old version of revtex, and is kept as a courtesy to
@@ -20684,9 +22144,9 @@ Requires:       tex(typearea.sty)
 Requires:       tex(varioref.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source339:      rgltxdoc.tar.xz
-Source340:      rgltxdoc.doc.tar.xz
+# from 20260301
+Source353:      rgltxdoc.tar.xz
+Source354:      rgltxdoc.doc.tar.xz
 
 %description -n texlive-rgltxdoc
 This package combines several other packages and defines
@@ -20766,9 +22226,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source341:      ribbonproofs.tar.xz
-Source342:      ribbonproofs.doc.tar.xz
+# from 20260301
+Source355:      ribbonproofs.tar.xz
+Source356:      ribbonproofs.doc.tar.xz
 
 %description -n texlive-ribbonproofs
 The package provides a way to draw "ribbon proofs" in LaTeX. A
@@ -20850,9 +22310,9 @@ Provides:       tex(rigidnotation.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source343:      rigidnotation.tar.xz
-Source344:      rigidnotation.doc.tar.xz
+# from 20260301
+Source357:      rigidnotation.tar.xz
+Source358:      rigidnotation.doc.tar.xz
 
 %description -n texlive-rigidnotation
 This package provides LaTeX macros to easily and concisely
@@ -20901,7 +22361,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/rigidnotation/rigidnotation.sty
 
 %package -n texlive-rit-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn67659
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn74984
 Release:        0
 License:        OFL-1.1
 Summary:        Malayalam fonts by Rachana Institute of Typography (RIT)
@@ -20936,22 +22396,23 @@ Requires:       tex(polyglossia.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source345:      rit-fonts.tar.xz
-Source346:      rit-fonts.doc.tar.xz
+# from 20260301
+Source359:      rit-fonts.tar.xz
+Source360:      rit-fonts.doc.tar.xz
 
 %description -n texlive-rit-fonts
-The RIT font collection provides versions of ten font families
+The RIT font collection provides versions of 17 font families
 in Malayalam (the language spoken in the southern Indian state
 of Kerala) script in TrueType and WOFF2 formats. The fonts are:
-RIT Rachana RIT Panmana RIT MeeraNew RIT TN Joy RIT Karuna RIT
-Keralayeeam RIT Sundar RIT Uroob RIT Ezhuthu RIT Kutty A LaTeX
-package rit-fonts.sty that will help users to make use of these
-Unicode-compliant fonts in LaTeX documents with XeTeX or LuaTeX
-is also provided.
+RIT Ala RIT Chingam RIT Ezhuthu RIT Indira RIT Karuna RIT
+Keralayeeam RIT Keram RIT Kutty RIT Lasya RIT Lekha RIT
+MeeraNew RIT Panmana RIT Rachana RIT Sundar RIT TN Joy RIT
+Thaara RIT Uroob A LaTeX package rit-fonts.sty that will help
+users to make use of these Unicode-compliant fonts in LaTeX
+documents with XeTeX or LuaTeX is also provided.
 
 %package -n texlive-rit-fonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn67659
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn74984
 Release:        0
 Summary:        Documentation for texlive-rit-fonts
 License:        OFL-1.1
@@ -20963,7 +22424,7 @@ Supplements:    (texlive-rit-fonts and texlive-alldocumentation)
 This package includes the documentation for texlive-rit-fonts
 
 %package -n texlive-rit-fonts-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn67659
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn74984
 Release:        0
 Summary:        Severed fonts for texlive-rit-fonts
 License:        OFL-1.1
@@ -21006,11 +22467,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/rit-fonts/rit-fonts-doc.tex
 
 %files -n texlive-rit-fonts
+%{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Ala.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Ezhuthu-Regular.woff2
+%{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Indira-Bold.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Karuna-Bold.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Keraleeyam-Italic.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Keraleeyam-Regular.woff2
+%{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Keram-Bold.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Kutty-Bold.woff2
+%{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Lasya.woff2
+%{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Lekha.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-MeeraNew.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Panmana-Regular.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Rachana-Bold.woff2
@@ -21018,15 +22484,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Rachana-Italic.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Rachana-Regular.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Sundar.woff2
+%{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Thaara.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-Uroob.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-tnjoy-bold.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-tnjoy-extrabold.woff2
 %{_texmfdistdir}/fonts/opentype/public/rit-fonts/RIT-tnjoy-regular.woff2
+%{_texmfdistdir}/fonts/opentype/public/rit-fonts/RITChingam.woff2
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Ala.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Ezhuthu-Regular.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Indira-Bold.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Karuna-Bold.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Keraleeyam-Italic.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Keraleeyam-Regular.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Keram-Bold.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Kutty-Bold.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Lasya.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Lekha.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-MeeraNew.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Panmana-Regular.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Rachana-Bold.ttf
@@ -21034,10 +22507,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Rachana-Italic.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Rachana-Regular.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Sundar.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Thaara.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-Uroob.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-tnjoy-bold.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-tnjoy-extrabold.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RIT-tnjoy-regular.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/rit-fonts/RITChingam.ttf
 %{_texmfdistdir}/tex/latex/rit-fonts/rit-fonts.sty
 
 %files -n texlive-rit-fonts-fonts
@@ -21046,11 +22521,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-rit-fonts/encodings.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-rit-fonts/fonts.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-rit-fonts/fonts.scale
+%{_datadir}/fonts/texlive-rit-fonts/RIT-Ala.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Ezhuthu-Regular.ttf
+%{_datadir}/fonts/texlive-rit-fonts/RIT-Indira-Bold.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Karuna-Bold.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Keraleeyam-Italic.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Keraleeyam-Regular.ttf
+%{_datadir}/fonts/texlive-rit-fonts/RIT-Keram-Bold.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Kutty-Bold.ttf
+%{_datadir}/fonts/texlive-rit-fonts/RIT-Lasya.ttf
+%{_datadir}/fonts/texlive-rit-fonts/RIT-Lekha.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-MeeraNew.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Panmana-Regular.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Rachana-Bold.ttf
@@ -21058,10 +22538,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Rachana-Italic.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Rachana-Regular.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Sundar.ttf
+%{_datadir}/fonts/texlive-rit-fonts/RIT-Thaara.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-Uroob.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-tnjoy-bold.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-tnjoy-extrabold.ttf
 %{_datadir}/fonts/texlive-rit-fonts/RIT-tnjoy-regular.ttf
+%{_datadir}/fonts/texlive-rit-fonts/RITChingam.ttf
 
 %package -n texlive-rjlparshap
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
@@ -21095,9 +22577,9 @@ Provides:       tex(rjlpshap.sty)
 Requires:       tex(arrayjob.sty)
 Requires:       tex(forloop.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source347:      rjlparshap.tar.xz
-Source348:      rjlparshap.doc.tar.xz
+# from 20260301
+Source361:      rjlparshap.tar.xz
+Source362:      rjlparshap.doc.tar.xz
 
 %description -n texlive-rjlparshap
 The package provides macros and environments that relieve the
@@ -21171,9 +22653,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-rlepsf-doc >= %{texlive_version}
 Provides:       tex(rlepsf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source349:      rlepsf.tar.xz
-Source350:      rlepsf.doc.tar.xz
+# from 20260301
+Source363:      rlepsf.tar.xz
+Source364:      rlepsf.doc.tar.xz
 
 %description -n texlive-rlepsf
 A macro package for use with epsf.tex which allows PostScript
@@ -21255,9 +22737,9 @@ Requires:       tex(ifetex.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source351:      rmathbr.tar.xz
-Source352:      rmathbr.doc.tar.xz
+# from 20260301
+Source365:      rmathbr.tar.xz
+Source366:      rmathbr.doc.tar.xz
 
 %description -n texlive-rmathbr
 Repeating of math operators at the broken line and the new line
@@ -21344,9 +22826,9 @@ Requires:       tex(palatino.sty)
 Requires:       tex(times.sty)
 Requires:       tex(utopia.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source353:      rmpage.tar.xz
-Source354:      rmpage.doc.tar.xz
+# from 20260301
+Source367:      rmpage.tar.xz
+Source368:      rmpage.doc.tar.xz
 
 %description -n texlive-rmpage
 The package lets you change page layout parameters in small
@@ -21431,9 +22913,9 @@ Suggests:       texlive-robotarm-doc >= %{texlive_version}
 Provides:       tex(robotarm.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source355:      robotarm.tar.xz
-Source356:      robotarm.doc.tar.xz
+# from 20260301
+Source369:      robotarm.tar.xz
+Source370:      robotarm.doc.tar.xz
 
 %description -n texlive-robotarm
 This LaTeX package uses TikZ to draw parameterized 2D robot
@@ -21476,7 +22958,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/robotarm/robotarm.sty
 
 %package -n texlive-roboto
-Version:        %{texlive_version}.%{texlive_noarch}.svn64350
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        Apache-1.0
 Summary:        Support for the Roboto family of fonts
@@ -26181,9 +27663,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source357:      roboto.tar.xz
-Source358:      roboto.doc.tar.xz
+# from 20260301
+Source371:      roboto.tar.xz
+Source372:      roboto.doc.tar.xz
 
 %description -n texlive-roboto
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -26192,7 +27674,7 @@ Roboto Slab and Roboto Serif families of fonts, designed by
 Christian Robertson and Greg Gazdowicz for Google.
 
 %package -n texlive-roboto-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64350
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-roboto
 License:        Apache-1.0
@@ -26204,7 +27686,7 @@ Supplements:    (texlive-roboto and texlive-alldocumentation)
 This package includes the documentation for texlive-roboto
 
 %package -n texlive-roboto-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64350
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-roboto
 License:        Apache-1.0
@@ -31191,7 +32673,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-roboto/RobotoSlab-Thin.pfb
 
 %package -n texlive-robust-externalize
-Version:        %{texlive_version}.%{texlive_noarch}.2.9svn70653
+Version:        %{texlive_version}.%{texlive_noarch}.3.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Cache anything (TikZ, python, ...) in a robust, efficient and pure way
@@ -31230,9 +32712,9 @@ Requires:       tex(verbatim.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xsimverb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source359:      robust-externalize.tar.xz
-Source360:      robust-externalize.doc.tar.xz
+# from 20260301
+Source373:      robust-externalize.tar.xz
+Source374:      robust-externalize.doc.tar.xz
 
 %description -n texlive-robust-externalize
 This package provides a LaTeX library to cache anything (TikZ,
@@ -31242,7 +32724,7 @@ configurable templates. For more information, see the
 documentation and the github repository.
 
 %package -n texlive-robust-externalize-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.9svn70653
+Version:        %{texlive_version}.%{texlive_noarch}.3.0svn76924
 Release:        0
 Summary:        Documentation for texlive-robust-externalize
 License:        LPPL-1.0
@@ -31308,9 +32790,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-robustcommand-doc >= %{texlive_version}
 Provides:       tex(robustcommand.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source361:      robustcommand.tar.xz
-Source362:      robustcommand.doc.tar.xz
+# from 20260301
+Source375:      robustcommand.tar.xz
+Source376:      robustcommand.doc.tar.xz
 
 %description -n texlive-robustcommand
 The package merely provides a variation of
@@ -31435,8 +32917,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/pst2pdf/pst2pdf.pl
     do
@@ -31449,8 +32933,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -31458,11 +32940,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:72} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:73} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/ptex-fontmaps/kanji-config-updmap.pl \
 	       %{_texmfdistdir}/scripts/ptex-fontmaps/kanji-fontmap-creator.pl
@@ -31476,11 +32960,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/ptex2pdf/ptex2pdf.lua
     do
@@ -31493,8 +32977,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -31507,8 +32989,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:99}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:101}
     popd
     # Correct shebang of python3 scripts if any
     for scr in %{_texmfdistdir}/doc/fonts/punknova/tools/build.py
@@ -31558,8 +33042,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/purifyeps/purifyeps
     do
@@ -31572,8 +33056,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Correct wrong python scripts if any
     for scr in %{_texmfdistdir}/scripts/puyotikz/puyotikz.py
     do
@@ -31588,22 +33072,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/plain/pwebmac/makeall
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-pxfonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/pxfonts/*.{pf[ab],[ot]tf}
@@ -31633,8 +33117,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -31651,8 +33133,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive
     # Extend python3 scripts with major version only if any
     for scr in %{_texmfdistdir}/scripts/pygmentex/pygmentex.py
     do
@@ -31677,8 +33161,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -31687,10 +33169,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:146}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:148}
     popd
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/scripts/pythontex/depythontex2.py
@@ -31762,8 +33246,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -31786,6 +33268,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-qualitype
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/qualitype/*.{pf[ab],[ot]tf}
@@ -31815,12 +33301,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-quattrocento
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/impallari/quattrocento/*.{pf[ab],[ot]tf} \
@@ -31871,14 +33361,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-quattrocento.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-quattrocento.conf
-    tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:179} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:180} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:181} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:182} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -31909,6 +33391,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-raleway
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/raleway/*.{pf[ab],[ot]tf} \
@@ -31959,18 +33453,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-raleway.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-raleway.conf
-    tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:217} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:218} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:219} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:220} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:221} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:222} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32015,6 +33497,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-recycle
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/recycle/*.{pf[ab],[ot]tf}
@@ -32044,36 +33538,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Avoid /usr/bin/env <prog>
-    for scr in %{_texmfdistdir}/doc/latex/register/reg_list.pl
-    do
-	test -e %{buildroot}/$scr || continue
-	ed %{buildroot}/${scr} <<-'EOF'
-		1
-		s@/env[[:blank:]]\+@/@
-		.
-		w
-		q
-	EOF
-    done
     tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32086,6 +33556,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Avoid /usr/bin/env <prog>
+    for scr in %{_texmfdistdir}/doc/latex/register/reg_list.pl
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@/env[[:blank:]]\+@/@
+		.
+		w
+		q
+	EOF
+    done
     tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32132,6 +33614,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:344} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:345} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:346} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:347} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:348} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:349} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:350} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:351} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:352} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:353} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:354} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:355} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:356} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:357} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:358} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:359} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:360} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-rit-fonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/rit-fonts/*.{pf[ab],[ot]tf}
@@ -32161,18 +33657,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:347} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:348} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:349} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:350} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:351} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:352} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:353} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:354} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:355} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:356} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:357} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:358} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:361} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:362} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:363} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:364} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:365} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:366} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:367} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:368} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:369} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:370} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:371} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:372} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-roboto
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/google/roboto/*.{pf[ab],[ot]tf} \
@@ -32223,10 +33719,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-roboto.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-roboto.conf
-    tar --use-compress-program=xz -xf %{S:359} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:360} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:361} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:362} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:373} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:374} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:375} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:376} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
