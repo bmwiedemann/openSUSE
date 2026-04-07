@@ -28,6 +28,8 @@ Patch0:         gcc4.diff
 Patch1:         asclock-C99.diff
 # fix build with gcc15
 Patch2:         asclock-gcc15.patch
+# https://github.com/apritzel/asclock/pull/1
+Patch3:         time_t.patch
 BuildRequires:  fdupes
 BuildRequires:  imake
 BuildRequires:  pkgconfig

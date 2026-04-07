@@ -1,0 +1,32 @@
+From 7c6d7c8f6eb72ee332bc742a063d4fa138dcee78 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 23 Feb 2026 13:40:34 +0100
+Subject: [PATCH] Use time_t to handle timestamps
+
+so that it keeps working after 2038-01-19
+---
+ asclock.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/asclock.c b/asclock.c
+index 28cb014..7e2504a 100644
+--- a/asclock.c
++++ ./asclock.c
+@@ -60,7 +60,7 @@ void InsertTime();
+ void swatch_beats(int beats_cnt);
+ 
+ static Atom wm_delete_window;
+-int mytime();
++time_t mytime();
+ 
+ int main(int argc,char *argv[])
+ {
+@@ -524,7 +524,7 @@ void TwentyFour()
+ }
+ /****************************************************************************/
+ 
+-int mytime()
++time_t mytime()
+ {
+   struct timeval tv;
+   struct timezone tz;
