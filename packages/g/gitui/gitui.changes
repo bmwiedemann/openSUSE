@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 25 06:05:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.28.1:
+  * Changed
+    - support proper pre-push hook (#2809)
+    - improve gitui --version message [@hlsxx] (#2838)
+    - rust msrv bumped to 1.88
+  * Fixed
+    - fix extremely slow status loading in large repositories by
+      replacing time-based cache invalidation with generation
+      counter [@DannyStoll1] (#2823)
+    - fix panic when renaming or updating remote URL with no
+      remotes configured [@xvchris] (#2868)
+
+-------------------------------------------------------------------
 Thu Jan  1 17:14:38 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to 0.28.0
