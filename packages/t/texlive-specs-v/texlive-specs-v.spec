@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2025
-%define texlive_previous 2022
-%define texlive_release  20250308
-%define texlive_noarch   221
-%define biber_version    2.20
+%define texlive_version  2026
+%define texlive_previous 2025
+%define texlive_release  20260301
+%define texlive_noarch   222
+%define biber_version    2.21
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-v
-Version:        2025
+Version:        2026
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -114,7 +114,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source1:        simplified-latex.doc.tar.xz
 
 %description -n texlive-simplified-latex
@@ -143,7 +143,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/simplified-latex/source.zip
 
 %package -n texlive-simplivre
-Version:        %{texlive_version}.%{texlive_noarch}.svn70314
+Version:        %{texlive_version}.%{texlive_noarch}.svn78004
 Release:        0
 License:        LPPL-1.0
 Summary:        Write your books in a simple and clear way
@@ -195,7 +195,7 @@ Requires:       tex(tikz-cd.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(wrapfig2.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source2:        simplivre.tar.xz
 Source3:        simplivre.doc.tar.xz
 
@@ -211,7 +211,7 @@ package name "simplivre" is taken from the French words
 "simple" and "livre" (= "book").
 
 %package -n texlive-simplivre-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70314
+Version:        %{texlive_version}.%{texlive_noarch}.svn78004
 Release:        0
 Summary:        Documentation for texlive-simplivre
 License:        LPPL-1.0
@@ -387,7 +387,7 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(zref-abspage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source4:        simurgh.tar.xz
 Source5:        simurgh.doc.tar.xz
 
@@ -538,7 +538,7 @@ Suggests:       texlive-sistyle-doc >= %{texlive_version}
 Provides:       tex(sistyle.sty)
 Requires:       tex(amstext.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source6:        sistyle.tar.xz
 Source7:        sistyle.doc.tar.xz
 
@@ -621,7 +621,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-sitem-doc >= %{texlive_version}
 Provides:       tex(sitem.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source8:        sitem.tar.xz
 Source9:        sitem.doc.tar.xz
 
@@ -698,7 +698,7 @@ Provides:       tex(SIunits.sty)
 Provides:       tex(binary.sty)
 Requires:       tex(amstext.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source10:       siunits.tar.xz
 Source11:       siunits.doc.tar.xz
 
@@ -749,7 +749,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/siunits/binary.sty
 
 %package -n texlive-siunitx
-Version:        %{texlive_version}.%{texlive_noarch}.3.4.6svn74326
+Version:        %{texlive_version}.%{texlive_noarch}.3.4.14svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A comprehensive (SI) units package
@@ -792,7 +792,7 @@ Requires:       tex(translator.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source12:       siunitx.tar.xz
 Source13:       siunitx.doc.tar.xz
 
@@ -814,7 +814,7 @@ processing of numbers and units, and the ability to control
 tabular alignment of numbers.
 
 %package -n texlive-siunitx-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.4.6svn74326
+Version:        %{texlive_version}.%{texlive_noarch}.3.4.14svn77682
 Release:        0
 Summary:        Documentation for texlive-siunitx
 License:        LPPL-1.0
@@ -856,7 +856,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/siunitx/siunitx.sty
 
 %package -n texlive-sjtutex
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn73925
+Version:        %{texlive_version}.%{texlive_noarch}.2.3.1svn78164
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX classes for Shanghai Jiao Tong University
@@ -883,6 +883,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-sjtutex-doc >= %{texlive_version}
+Provides:       tex(sjtu-article-preset-base.def)
 Provides:       tex(sjtu-cjk-font-adobe.def)
 Provides:       tex(sjtu-cjk-font-fandol.def)
 Provides:       tex(sjtu-cjk-font-founder.def)
@@ -903,6 +904,7 @@ Provides:       tex(sjtu-math-font-newtx.def)
 Provides:       tex(sjtu-math-font-stixtwo.def)
 Provides:       tex(sjtu-math-font-times.def)
 Provides:       tex(sjtu-math-font-xits.def)
+Provides:       tex(sjtu-report-preset-base.def)
 Provides:       tex(sjtu-scheme-de.def)
 Provides:       tex(sjtu-scheme-en.def)
 Provides:       tex(sjtu-scheme-ja.def)
@@ -916,10 +918,7 @@ Provides:       tex(sjtu-text-font-newtx.def)
 Provides:       tex(sjtu-text-font-stixtwo.def)
 Provides:       tex(sjtu-text-font-times.def)
 Provides:       tex(sjtu-text-font-xits.def)
-Provides:       tex(sjtu-thesis-de.def)
-Provides:       tex(sjtu-thesis-en.def)
-Provides:       tex(sjtu-thesis-ja.def)
-Provides:       tex(sjtu-thesis-zh.def)
+Provides:       tex(sjtu-thesis-preset-base.def)
 Provides:       tex(sjtuarticle.cls)
 Provides:       tex(sjtureport.cls)
 Provides:       tex(sjtuthesis.cls)
@@ -940,7 +939,7 @@ Requires:       tex(translations.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(upgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source14:       sjtutex.tar.xz
 Source15:       sjtutex.doc.tar.xz
 
@@ -951,7 +950,7 @@ including the thesis document class sjtuthesis, as well as the
 regular document classes sjtuarticle and sjtureport.
 
 %package -n texlive-sjtutex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn73925
+Version:        %{texlive_version}.%{texlive_noarch}.2.3.1svn78164
 Release:        0
 Summary:        Documentation for texlive-sjtutex
 License:        LPPL-1.0
@@ -981,6 +980,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-sjtutex-doc
+%{_texmfdistdir}/doc/latex/sjtutex/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/sjtutex/README.md
 %{_texmfdistdir}/doc/latex/sjtutex/sjtutex.pdf
 
@@ -1014,6 +1014,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/sjtutex/lang/sjtu-lang-en.def
 %{_texmfdistdir}/tex/latex/sjtutex/lang/sjtu-lang-ja.def
 %{_texmfdistdir}/tex/latex/sjtutex/lang/sjtu-lang-zh.def
+%{_texmfdistdir}/tex/latex/sjtutex/preset/sjtu-article-preset-base.def
+%{_texmfdistdir}/tex/latex/sjtutex/preset/sjtu-report-preset-base.def
+%{_texmfdistdir}/tex/latex/sjtutex/preset/sjtu-thesis-preset-base.def
 %{_texmfdistdir}/tex/latex/sjtutex/scheme/sjtu-scheme-de.def
 %{_texmfdistdir}/tex/latex/sjtutex/scheme/sjtu-scheme-en.def
 %{_texmfdistdir}/tex/latex/sjtutex/scheme/sjtu-scheme-ja.def
@@ -1021,10 +1024,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/sjtutex/sjtuarticle.cls
 %{_texmfdistdir}/tex/latex/sjtutex/sjtureport.cls
 %{_texmfdistdir}/tex/latex/sjtutex/sjtuthesis.cls
-%{_texmfdistdir}/tex/latex/sjtutex/thesis/sjtu-thesis-de.def
-%{_texmfdistdir}/tex/latex/sjtutex/thesis/sjtu-thesis-en.def
-%{_texmfdistdir}/tex/latex/sjtutex/thesis/sjtu-thesis-ja.def
-%{_texmfdistdir}/tex/latex/sjtutex/thesis/sjtu-thesis-zh.def
 %{_texmfdistdir}/tex/latex/sjtutex/vi/sjtu-vi-badge-cor-red.pdf
 %{_texmfdistdir}/tex/latex/sjtutex/vi/sjtu-vi-badge-reg-red.pdf
 %{_texmfdistdir}/tex/latex/sjtutex/vi/sjtu-vi-logo-eng-h-cor-red.pdf
@@ -1037,7 +1036,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/sjtutex/vi/sjtu-vi-logo-std-v-reg-red.pdf
 
 %package -n texlive-skak
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.3svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.3svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Fonts and macros for typesetting chess games
@@ -1080,7 +1079,7 @@ Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source16:       skak.tar.xz
 Source17:       skak.doc.tar.xz
 
@@ -1097,7 +1096,7 @@ texmate, and a general mechanism for selecting chess fonts is
 provided in chessfss.
 
 %package -n texlive-skak-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.3svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.3svn78101
 Release:        0
 Summary:        Documentation for texlive-skak
 License:        LPPL-1.0
@@ -1174,7 +1173,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/skak/skak.sty
 
 %package -n texlive-skaknew
-Version:        %{texlive_version}.%{texlive_noarch}.svn20031
+Version:        %{texlive_version}.%{texlive_noarch}.svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        The skak chess fonts redone in Adobe Type 1
@@ -1220,7 +1219,7 @@ Provides:       tex(SkakNew-Figurine.tfm)
 Provides:       tex(SkakNew-FigurineBold.tfm)
 Provides:       tex(SkakNew.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source18:       skaknew.tar.xz
 Source19:       skaknew.doc.tar.xz
 
@@ -1229,7 +1228,7 @@ This package offers Adobe Type 1 versions of the fonts provided
 as Metafont source by the skak bundle.
 
 %package -n texlive-skaknew-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn20031
+Version:        %{texlive_version}.%{texlive_noarch}.svn78101
 Release:        0
 Summary:        Documentation for texlive-skaknew
 License:        LPPL-1.0
@@ -1241,7 +1240,7 @@ Supplements:    (texlive-skaknew and texlive-alldocumentation)
 This package includes the documentation for texlive-skaknew
 
 %package -n texlive-skaknew-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn20031
+Version:        %{texlive_version}.%{texlive_noarch}.svn78101
 Release:        0
 Summary:        Severed fonts for texlive-skaknew
 License:        LPPL-1.0
@@ -1400,7 +1399,7 @@ Requires:       tex(wasysym.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xmpmulti.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source20:       skb.tar.xz
 Source21:       skb.doc.tar.xz
 
@@ -1607,7 +1606,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/skb/skbmoderncv.cls
 
 %package -n texlive-skdoc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5esvn73385
+Version:        %{texlive_version}.%{texlive_noarch}.1.5esvn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Documentation and extraction for packages and document classes
@@ -1662,7 +1661,7 @@ Requires:       tex(xstring.sty)
 Requires:       tex(ydoc-code.sty)
 Requires:       tex(ydoc-desc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source22:       skdoc.tar.xz
 Source23:       skdoc.doc.tar.xz
 
@@ -1676,7 +1675,7 @@ installing packages. It has the ability to generate both
 documentation and code in a single run of a single file.
 
 %package -n texlive-skdoc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5esvn73385
+Version:        %{texlive_version}.%{texlive_noarch}.1.5esvn76924
 Release:        0
 Summary:        Documentation for texlive-skdoc
 License:        LPPL-1.0
@@ -1712,7 +1711,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/skdoc/skdoc.cls
 
 %package -n texlive-skeldoc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn73465
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Placeholders for unfinished documents
@@ -1750,7 +1749,7 @@ Requires:       tex(tabularx.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source24:       skeldoc.tar.xz
 Source25:       skeldoc.doc.tar.xz
 
@@ -1764,7 +1763,7 @@ same note mechanism can also be used with ordinary content,
 e.g., as a to-do mechanism.
 
 %package -n texlive-skeldoc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn73465
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn76924
 Release:        0
 Summary:        Documentation for texlive-skeldoc
 License:        LPPL-1.0
@@ -1832,7 +1831,7 @@ Suggests:       texlive-skeycommand-doc >= %{texlive_version}
 Provides:       tex(skeycommand.sty)
 Requires:       tex(catoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source26:       skeycommand.tar.xz
 Source27:       skeycommand.doc.tar.xz
 
@@ -1928,7 +1927,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source28:       skeyval.tar.xz
 Source29:       skeyval.doc.tar.xz
 
@@ -2028,7 +2027,7 @@ Requires:       tex(marginnote.sty)
 Requires:       tex(tabularx.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source30:       skills.tar.xz
 Source31:       skills.doc.tar.xz
 
@@ -2118,7 +2117,7 @@ Requires:       tex(mathtools.sty)
 Requires:       tex(xfrac.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source32:       skmath.tar.xz
 Source33:       skmath.doc.tar.xz
 
@@ -2233,7 +2232,7 @@ Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source34:       skrapport.tar.xz
 Source35:       skrapport.doc.tar.xz
 
@@ -2318,7 +2317,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(skull.sty)
 Provides:       tex(skull.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source36:       skull.tar.xz
 
 %description -n texlive-skull
@@ -2349,7 +2348,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/skull/skull.sty
 
 %package -n texlive-slantsc
-Version:        %{texlive_version}.%{texlive_noarch}.2.11svn25007
+Version:        %{texlive_version}.%{texlive_noarch}.2.11svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Access different-shaped small-caps fonts
@@ -2379,7 +2378,7 @@ Suggests:       texlive-slantsc-doc >= %{texlive_version}
 Provides:       tex(slantsc.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source37:       slantsc.tar.xz
 Source38:       slantsc.doc.tar.xz
 
@@ -2390,7 +2389,7 @@ provide appropriate font shapes. (Note that a separate .fd file
 is needed to define font shapes such as 'scsl' or 'scit'.)
 
 %package -n texlive-slantsc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.11svn25007
+Version:        %{texlive_version}.%{texlive_noarch}.2.11svn77682
 Release:        0
 Summary:        Documentation for texlive-slantsc
 License:        LPPL-1.0
@@ -2458,7 +2457,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-slideshow-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source39:       slideshow.tar.xz
 Source40:       slideshow.doc.tar.xz
 
@@ -2512,6 +2511,101 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/slideshow/sshowex3.mp
 %{_texmfdistdir}/metapost/slideshow/sshowintro.mp
 
+%package -n texlive-slixte
+Version:        %{texlive_version}.%{texlive_noarch}.svn76913
+Release:        0
+License:        LPPL-1.0
+Summary:        A customizable class for creating slides
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-slixte-doc >= %{texlive_version}
+Provides:       tex(slixte.cls)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(bbm.sty)
+Requires:       tex(beamer.cls)
+Requires:       tex(contour.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(fontawesome.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(lmodern.sty)
+Requires:       tex(refcount.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xfp.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source41:       slixte.tar.xz
+Source42:       slixte.doc.tar.xz
+
+%description -n texlive-slixte
+This class creates customizable slides and is mostly powered by
+the beamer class and the tikz package.
+
+%package -n texlive-slixte-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn76913
+Release:        0
+Summary:        Documentation for texlive-slixte
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-slixte and texlive-alldocumentation)
+
+%description -n texlive-slixte-doc
+This package includes the documentation for texlive-slixte
+
+%post -n texlive-slixte
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-slixte
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-slixte
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-slixte-doc
+%{_texmfdistdir}/doc/latex/slixte/README.md
+%{_texmfdistdir}/doc/latex/slixte/background.png
+%{_texmfdistdir}/doc/latex/slixte/logo.png
+%{_texmfdistdir}/doc/latex/slixte/slixte-doc.pdf
+%{_texmfdistdir}/doc/latex/slixte/slixte-doc.tex
+%{_texmfdistdir}/doc/latex/slixte/slixte-example.tex
+%{_texmfdistdir}/doc/latex/slixte/slixte-template.tex
+
+%files -n texlive-slixte
+%{_texmfdistdir}/tex/latex/slixte/slixte.cls
+
 %package -n texlive-smalltableof
 Version:        %{texlive_version}.%{texlive_noarch}.svn20333
 Release:        0
@@ -2542,9 +2636,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-smalltableof-doc >= %{texlive_version}
 Provides:       tex(smalltableof.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source41:       smalltableof.tar.xz
-Source42:       smalltableof.doc.tar.xz
+# from 20260301
+Source43:       smalltableof.tar.xz
+Source44:       smalltableof.doc.tar.xz
 
 %description -n texlive-smalltableof
 The package allows you to create a list of figures and list of
@@ -2590,7 +2684,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/smalltableof/smalltableof.sty
 
 %package -n texlive-smart-eqn
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Automatic math symbol styling for LaTeX documents
@@ -2622,9 +2716,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(fancyvrb.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source43:       smart-eqn.tar.xz
-Source44:       smart-eqn.doc.tar.xz
+# from 20260301
+Source45:       smart-eqn.tar.xz
+Source46:       smart-eqn.doc.tar.xz
 
 %description -n texlive-smart-eqn
 In LaTeX typesetting, one usually needs to use different
@@ -2638,7 +2732,7 @@ styling which eliminates the need to enter style commands
 repeatedly.
 
 %package -n texlive-smart-eqn-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn76924
 Release:        0
 Summary:        Documentation for texlive-smart-eqn
 License:        LPPL-1.0
@@ -2711,9 +2805,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source45:       smartdiagram.tar.xz
-Source46:       smartdiagram.doc.tar.xz
+# from 20260301
+Source47:       smartdiagram.tar.xz
+Source48:       smartdiagram.doc.tar.xz
 
 %description -n texlive-smartdiagram
 The package will create 'smart' diagrams from lists of items,
@@ -2760,7 +2854,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/smartdiagram/smartdiagramlibrarycore.styles.code.tex
 
 %package -n texlive-smartref
-Version:        %{texlive_version}.%{texlive_noarch}.1.9svn20311
+Version:        %{texlive_version}.%{texlive_noarch}.1.9svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Extend LaTeX's \ref capability
@@ -2790,9 +2884,9 @@ Suggests:       texlive-smartref-doc >= %{texlive_version}
 Provides:       tex(byname.sty)
 Provides:       tex(smartref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source47:       smartref.tar.xz
-Source48:       smartref.doc.tar.xz
+# from 20260301
+Source49:       smartref.tar.xz
+Source50:       smartref.doc.tar.xz
 
 %description -n texlive-smartref
 The package extends the LaTeX labelling system: whenever a
@@ -2806,7 +2900,7 @@ label was set. Many commands are provided to serve as a macro
 programming environment for using the extended labels.
 
 %package -n texlive-smartref-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.9svn20311
+Version:        %{texlive_version}.%{texlive_noarch}.1.9svn77682
 Release:        0
 Summary:        Documentation for texlive-smartref
 License:        LPPL-1.0
@@ -2876,9 +2970,9 @@ Requires:       tex(pgfkeys.sty)
 Requires:       tex(pgfmath.sty)
 Requires:       tex(siunitx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source49:       smartunits.tar.xz
-Source50:       smartunits.doc.tar.xz
+# from 20260301
+Source51:       smartunits.tar.xz
+Source52:       smartunits.doc.tar.xz
 
 %description -n texlive-smartunits
 This LaTeX package implements a \SmartUnit macro for converting
@@ -2975,9 +3069,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source51:       smflatex.tar.xz
-Source52:       smflatex.doc.tar.xz
+# from 20260301
+Source53:       smflatex.tar.xz
+Source54:       smflatex.doc.tar.xz
 
 %description -n texlive-smflatex
 The Societe mathematique de France provides a set of classes,
@@ -3042,7 +3136,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/smflatex/smfthm.sty
 
 %package -n texlive-snapshot
-Version:        %{texlive_version}.%{texlive_noarch}.2.14svn56735
+Version:        %{texlive_version}.%{texlive_noarch}.2.14svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        List the external dependencies of a LaTeX document
@@ -3071,9 +3165,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-snapshot-doc >= %{texlive_version}
 Provides:       tex(snapshot.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source53:       snapshot.tar.xz
-Source54:       snapshot.doc.tar.xz
+# from 20260301
+Source55:       snapshot.tar.xz
+Source56:       snapshot.doc.tar.xz
 
 %description -n texlive-snapshot
 The snapshot package helps the owner of a LaTeX document obtain
@@ -3091,7 +3185,7 @@ a document during the final stages of its production cycle from
 unexpected side effects of routine upgrades to the TeX system.
 
 %package -n texlive-snapshot-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.14svn56735
+Version:        %{texlive_version}.%{texlive_noarch}.2.14svn77682
 Release:        0
 Summary:        Documentation for texlive-snapshot
 License:        LPPL-1.0
@@ -3157,9 +3251,9 @@ Suggests:       texlive-snaptodo-doc >= %{texlive_version}
 Provides:       tex(snaptodo.sty)
 Requires:       tex(tikzpagenodes.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source55:       snaptodo.tar.xz
-Source56:       snaptodo.doc.tar.xz
+# from 20260301
+Source57:       snaptodo.tar.xz
+Source58:       snaptodo.doc.tar.xz
 
 %description -n texlive-snaptodo
 This package is an alternative to todonotes, from which it
@@ -3211,7 +3305,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/snaptodo/snaptodo.sty
 
 %package -n texlive-snotez
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn61992
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset notes, in the margin
@@ -3244,9 +3338,9 @@ Requires:       tex(marginnote.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(zref-perpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source57:       snotez.tar.xz
-Source58:       snotez.doc.tar.xz
+# from 20260301
+Source59:       snotez.tar.xz
+Source60:       snotez.doc.tar.xz
 
 %description -n texlive-snotez
 The package provides a macro \sidenote, that places a note in
@@ -3256,7 +3350,7 @@ numbered (both in the text, and on the notes themselves). The
 package loads the package etoolbox, pgfopts and marginnote.
 
 %package -n texlive-snotez-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn61992
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn77682
 Release:        0
 Summary:        Documentation for texlive-snotez
 License:        LPPL-1.0
@@ -3327,9 +3421,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(multicol.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source59:       songbook.tar.xz
-Source60:       songbook.doc.tar.xz
+# from 20260301
+Source61:       songbook.tar.xz
+Source62:       songbook.doc.tar.xz
 
 %description -n texlive-songbook
 The package provides an all purpose songbook style. Three types
@@ -3408,7 +3502,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/songbook/songbook.sty
 
 %package -n texlive-songproj
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn66704
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn76924
 Release:        0
 License:        BSD-3-Clause
 Summary:        Generate Beamer slideshows with song lyrics
@@ -3440,9 +3534,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(verse.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source61:       songproj.tar.xz
-Source62:       songproj.doc.tar.xz
+# from 20260301
+Source63:       songproj.tar.xz
+Source64:       songproj.doc.tar.xz
 
 %description -n texlive-songproj
 This package, together with the Beamer class, is used to
@@ -3456,7 +3550,7 @@ script that can be used to convert plain-text song lyrics to
 the expected LaTeX markup.
 
 %package -n texlive-songproj-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn66704
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn76924
 Release:        0
 Summary:        Documentation for texlive-songproj
 License:        BSD-3-Clause
@@ -3528,9 +3622,9 @@ Requires:       tex(etex.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source63:       songs.tar.xz
-Source64:       songs.doc.tar.xz
+# from 20260301
+Source65:       songs.tar.xz
+Source66:       songs.doc.tar.xz
 
 %description -n texlive-songs
 The package provides a means of producing beautiful song books
@@ -3593,7 +3687,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/songs/songs.sty
 
 %package -n texlive-sort-by-letters
-Version:        %{texlive_version}.%{texlive_noarch}.svn27128
+Version:        %{texlive_version}.%{texlive_noarch}.svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        Bibliography styles for alphabetic sorting
@@ -3621,9 +3715,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-sort-by-letters-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source65:       sort-by-letters.tar.xz
-Source66:       sort-by-letters.doc.tar.xz
+# from 20260301
+Source67:       sort-by-letters.tar.xz
+Source68:       sort-by-letters.doc.tar.xz
 
 %description -n texlive-sort-by-letters
 This bundle contains several bibliography styles for separating
@@ -3632,7 +3726,7 @@ author/editor in the bibliography entry. The styles are adapted
 from standard ones or from natbib ones.
 
 %package -n texlive-sort-by-letters-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn27128
+Version:        %{texlive_version}.%{texlive_noarch}.svn76790
 Release:        0
 Summary:        Documentation for texlive-sort-by-letters
 License:        LPPL-1.0
@@ -3704,9 +3798,9 @@ Provides:       tex(soton-beamer.sty)
 Provides:       tex(soton-palette.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source67:       soton.tar.xz
-Source68:       soton.doc.tar.xz
+# from 20260301
+Source69:       soton.tar.xz
+Source70:       soton.doc.tar.xz
 
 %description -n texlive-soton
 The bundle contains two packages: soton-palette which defines
@@ -3750,7 +3844,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/soton/soton-palette.sty
 
 %package -n texlive-soul
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn67365
+Version:        %{texlive_version}.%{texlive_noarch}.3.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Hyphenation for letterspacing, underlining, and more
@@ -3783,9 +3877,9 @@ Provides:       tex(soulutf8.sty)
 Requires:       tex(etexcmds.sty)
 Requires:       tex(infwarerr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source69:       soul.tar.xz
-Source70:       soul.doc.tar.xz
+# from 20260301
+Source71:       soul.tar.xz
+Source72:       soul.doc.tar.xz
 
 %description -n texlive-soul
 The package provides hyphenable spacing out (letterspacing),
@@ -3798,7 +3892,7 @@ soul package from Melchior Franz and the soulutf8 package from
 Heiko Oberdiek and supports also UTF8.
 
 %package -n texlive-soul-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1svn67365
+Version:        %{texlive_version}.%{texlive_noarch}.3.1svn77682
 Release:        0
 Summary:        Documentation for texlive-soul
 License:        LPPL-1.0
@@ -3837,7 +3931,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/soul/soulutf8.sty
 
 %package -n texlive-soulpos
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn60772
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A fancy means of underlining
@@ -3872,9 +3966,9 @@ Provides:       tex(soulpos.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(soulutf8.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source71:       soulpos.tar.xz
-Source72:       soulpos.doc.tar.xz
+# from 20260301
+Source73:       soulpos.tar.xz
+Source74:       soulpos.doc.tar.xz
 
 %description -n texlive-soulpos
 The package combines the use of soul with the savepos mechanism
@@ -3885,7 +3979,7 @@ soul underlines, which are built by repeating small elements,
 here each chunk of text to be underlined is a single element.
 
 %package -n texlive-soulpos-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn60772
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn77682
 Release:        0
 Summary:        Documentation for texlive-soulpos
 License:        LPPL-1.0
@@ -3955,9 +4049,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source73:       soup.tar.xz
-Source74:       soup.doc.tar.xz
+# from 20260301
+Source75:       soup.tar.xz
+Source76:       soup.doc.tar.xz
 
 %description -n texlive-soup
 Generate alphabet soup puzzles (aka word search puzzles), and
@@ -4003,7 +4097,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/soup/soup.sty
 
 %package -n texlive-sourcecodepro
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.2.8svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Use SourceCodePro with TeX(-alike) systems
@@ -4059,7 +4153,9 @@ Provides:       tex(SourceCodePro-Black-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-Black-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-Black-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-Black-dnom-t1.vf)
+Provides:       tex(SourceCodePro-Black-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Black-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-Black-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-Black-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Black-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-Black-numr-ly1.vf)
@@ -4067,7 +4163,9 @@ Provides:       tex(SourceCodePro-Black-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-Black-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-Black-numr-t1.tfm)
 Provides:       tex(SourceCodePro-Black-numr-t1.vf)
+Provides:       tex(SourceCodePro-Black-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Black-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-Black-numr-t2a.vf)
 Provides:       tex(SourceCodePro-Black-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Black-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-Black-sup-ly1.vf)
@@ -4075,7 +4173,9 @@ Provides:       tex(SourceCodePro-Black-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-Black-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-Black-sup-t1.tfm)
 Provides:       tex(SourceCodePro-Black-sup-t1.vf)
+Provides:       tex(SourceCodePro-Black-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Black-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-Black-sup-t2a.vf)
 Provides:       tex(SourceCodePro-Black-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Black-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-Black-tlf-ly1.vf)
@@ -4083,7 +4183,9 @@ Provides:       tex(SourceCodePro-Black-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-Black-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Black-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-Black-tlf-t1.vf)
+Provides:       tex(SourceCodePro-Black-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Black-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-Black-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-Black-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Black-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-Black-tlf-ts1.vf)
@@ -4094,7 +4196,9 @@ Provides:       tex(SourceCodePro-Black-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-Black-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Black-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-Black-tosf-t1.vf)
+Provides:       tex(SourceCodePro-Black-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Black-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-Black-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-Black-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Black-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-Black-tosf-ts1.vf)
@@ -4105,7 +4209,9 @@ Provides:       tex(SourceCodePro-BlackIt-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-dnom-t1.vf)
+Provides:       tex(SourceCodePro-BlackIt-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-BlackIt-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-BlackIt-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-numr-ly1.vf)
@@ -4113,7 +4219,9 @@ Provides:       tex(SourceCodePro-BlackIt-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-numr-t1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-numr-t1.vf)
+Provides:       tex(SourceCodePro-BlackIt-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-BlackIt-numr-t2a.vf)
 Provides:       tex(SourceCodePro-BlackIt-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-sup-ly1.vf)
@@ -4121,7 +4229,9 @@ Provides:       tex(SourceCodePro-BlackIt-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-sup-t1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-sup-t1.vf)
+Provides:       tex(SourceCodePro-BlackIt-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-BlackIt-sup-t2a.vf)
 Provides:       tex(SourceCodePro-BlackIt-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tlf-ly1.vf)
@@ -4129,7 +4239,9 @@ Provides:       tex(SourceCodePro-BlackIt-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tlf-t1.vf)
+Provides:       tex(SourceCodePro-BlackIt-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-BlackIt-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-BlackIt-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tlf-ts1.vf)
@@ -4140,7 +4252,9 @@ Provides:       tex(SourceCodePro-BlackIt-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tosf-t1.vf)
+Provides:       tex(SourceCodePro-BlackIt-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-BlackIt-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-BlackIt-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-BlackIt-tosf-ts1.vf)
@@ -4151,7 +4265,9 @@ Provides:       tex(SourceCodePro-Bold-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-Bold-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-Bold-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-Bold-dnom-t1.vf)
+Provides:       tex(SourceCodePro-Bold-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Bold-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-Bold-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-Bold-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Bold-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-Bold-numr-ly1.vf)
@@ -4159,7 +4275,9 @@ Provides:       tex(SourceCodePro-Bold-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-Bold-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-Bold-numr-t1.tfm)
 Provides:       tex(SourceCodePro-Bold-numr-t1.vf)
+Provides:       tex(SourceCodePro-Bold-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Bold-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-Bold-numr-t2a.vf)
 Provides:       tex(SourceCodePro-Bold-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Bold-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-Bold-sup-ly1.vf)
@@ -4167,7 +4285,9 @@ Provides:       tex(SourceCodePro-Bold-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-Bold-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-Bold-sup-t1.tfm)
 Provides:       tex(SourceCodePro-Bold-sup-t1.vf)
+Provides:       tex(SourceCodePro-Bold-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Bold-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-Bold-sup-t2a.vf)
 Provides:       tex(SourceCodePro-Bold-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Bold-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-Bold-tlf-ly1.vf)
@@ -4175,7 +4295,9 @@ Provides:       tex(SourceCodePro-Bold-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-Bold-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Bold-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-Bold-tlf-t1.vf)
+Provides:       tex(SourceCodePro-Bold-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Bold-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-Bold-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-Bold-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Bold-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-Bold-tlf-ts1.vf)
@@ -4186,7 +4308,9 @@ Provides:       tex(SourceCodePro-Bold-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-Bold-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Bold-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-Bold-tosf-t1.vf)
+Provides:       tex(SourceCodePro-Bold-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Bold-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-Bold-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-Bold-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Bold-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-Bold-tosf-ts1.vf)
@@ -4197,7 +4321,9 @@ Provides:       tex(SourceCodePro-BoldIt-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-dnom-t1.vf)
+Provides:       tex(SourceCodePro-BoldIt-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-BoldIt-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-BoldIt-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-numr-ly1.vf)
@@ -4205,7 +4331,9 @@ Provides:       tex(SourceCodePro-BoldIt-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-numr-t1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-numr-t1.vf)
+Provides:       tex(SourceCodePro-BoldIt-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-BoldIt-numr-t2a.vf)
 Provides:       tex(SourceCodePro-BoldIt-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-sup-ly1.vf)
@@ -4213,7 +4341,9 @@ Provides:       tex(SourceCodePro-BoldIt-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-sup-t1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-sup-t1.vf)
+Provides:       tex(SourceCodePro-BoldIt-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-BoldIt-sup-t2a.vf)
 Provides:       tex(SourceCodePro-BoldIt-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tlf-ly1.vf)
@@ -4221,7 +4351,9 @@ Provides:       tex(SourceCodePro-BoldIt-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tlf-t1.vf)
+Provides:       tex(SourceCodePro-BoldIt-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-BoldIt-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-BoldIt-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tlf-ts1.vf)
@@ -4232,7 +4364,9 @@ Provides:       tex(SourceCodePro-BoldIt-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tosf-t1.vf)
+Provides:       tex(SourceCodePro-BoldIt-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-BoldIt-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-BoldIt-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-BoldIt-tosf-ts1.vf)
@@ -4243,7 +4377,9 @@ Provides:       tex(SourceCodePro-ExtraLight-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-dnom-t1.vf)
+Provides:       tex(SourceCodePro-ExtraLight-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-ExtraLight-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-ExtraLight-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-numr-ly1.vf)
@@ -4251,7 +4387,9 @@ Provides:       tex(SourceCodePro-ExtraLight-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-numr-t1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-numr-t1.vf)
+Provides:       tex(SourceCodePro-ExtraLight-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-ExtraLight-numr-t2a.vf)
 Provides:       tex(SourceCodePro-ExtraLight-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-sup-ly1.vf)
@@ -4259,7 +4397,9 @@ Provides:       tex(SourceCodePro-ExtraLight-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-sup-t1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-sup-t1.vf)
+Provides:       tex(SourceCodePro-ExtraLight-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-ExtraLight-sup-t2a.vf)
 Provides:       tex(SourceCodePro-ExtraLight-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tlf-ly1.vf)
@@ -4267,7 +4407,9 @@ Provides:       tex(SourceCodePro-ExtraLight-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tlf-t1.vf)
+Provides:       tex(SourceCodePro-ExtraLight-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-ExtraLight-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-ExtraLight-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tlf-ts1.vf)
@@ -4278,7 +4420,9 @@ Provides:       tex(SourceCodePro-ExtraLight-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tosf-t1.vf)
+Provides:       tex(SourceCodePro-ExtraLight-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-ExtraLight-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-ExtraLight-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-ExtraLight-tosf-ts1.vf)
@@ -4289,7 +4433,9 @@ Provides:       tex(SourceCodePro-ExtraLightIt-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-dnom-t1.vf)
+Provides:       tex(SourceCodePro-ExtraLightIt-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-ExtraLightIt-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-ExtraLightIt-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-numr-ly1.vf)
@@ -4297,7 +4443,9 @@ Provides:       tex(SourceCodePro-ExtraLightIt-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-numr-t1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-numr-t1.vf)
+Provides:       tex(SourceCodePro-ExtraLightIt-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-ExtraLightIt-numr-t2a.vf)
 Provides:       tex(SourceCodePro-ExtraLightIt-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-sup-ly1.vf)
@@ -4305,7 +4453,9 @@ Provides:       tex(SourceCodePro-ExtraLightIt-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-sup-t1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-sup-t1.vf)
+Provides:       tex(SourceCodePro-ExtraLightIt-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-ExtraLightIt-sup-t2a.vf)
 Provides:       tex(SourceCodePro-ExtraLightIt-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tlf-ly1.vf)
@@ -4313,7 +4463,9 @@ Provides:       tex(SourceCodePro-ExtraLightIt-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tlf-t1.vf)
+Provides:       tex(SourceCodePro-ExtraLightIt-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-ExtraLightIt-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-ExtraLightIt-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tlf-ts1.vf)
@@ -4324,7 +4476,9 @@ Provides:       tex(SourceCodePro-ExtraLightIt-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tosf-t1.vf)
+Provides:       tex(SourceCodePro-ExtraLightIt-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-ExtraLightIt-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-ExtraLightIt-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-ExtraLightIt-tosf-ts1.vf)
@@ -4335,7 +4489,9 @@ Provides:       tex(SourceCodePro-It-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-It-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-It-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-It-dnom-t1.vf)
+Provides:       tex(SourceCodePro-It-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-It-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-It-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-It-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-It-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-It-numr-ly1.vf)
@@ -4343,7 +4499,9 @@ Provides:       tex(SourceCodePro-It-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-It-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-It-numr-t1.tfm)
 Provides:       tex(SourceCodePro-It-numr-t1.vf)
+Provides:       tex(SourceCodePro-It-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-It-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-It-numr-t2a.vf)
 Provides:       tex(SourceCodePro-It-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-It-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-It-sup-ly1.vf)
@@ -4351,7 +4509,9 @@ Provides:       tex(SourceCodePro-It-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-It-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-It-sup-t1.tfm)
 Provides:       tex(SourceCodePro-It-sup-t1.vf)
+Provides:       tex(SourceCodePro-It-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-It-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-It-sup-t2a.vf)
 Provides:       tex(SourceCodePro-It-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-It-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-It-tlf-ly1.vf)
@@ -4359,7 +4519,9 @@ Provides:       tex(SourceCodePro-It-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-It-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-It-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-It-tlf-t1.vf)
+Provides:       tex(SourceCodePro-It-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-It-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-It-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-It-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-It-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-It-tlf-ts1.vf)
@@ -4370,7 +4532,9 @@ Provides:       tex(SourceCodePro-It-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-It-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-It-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-It-tosf-t1.vf)
+Provides:       tex(SourceCodePro-It-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-It-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-It-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-It-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-It-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-It-tosf-ts1.vf)
@@ -4381,7 +4545,9 @@ Provides:       tex(SourceCodePro-Light-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-Light-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-Light-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-Light-dnom-t1.vf)
+Provides:       tex(SourceCodePro-Light-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Light-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-Light-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-Light-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Light-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-Light-numr-ly1.vf)
@@ -4389,7 +4555,9 @@ Provides:       tex(SourceCodePro-Light-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-Light-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-Light-numr-t1.tfm)
 Provides:       tex(SourceCodePro-Light-numr-t1.vf)
+Provides:       tex(SourceCodePro-Light-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Light-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-Light-numr-t2a.vf)
 Provides:       tex(SourceCodePro-Light-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Light-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-Light-sup-ly1.vf)
@@ -4397,7 +4565,9 @@ Provides:       tex(SourceCodePro-Light-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-Light-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-Light-sup-t1.tfm)
 Provides:       tex(SourceCodePro-Light-sup-t1.vf)
+Provides:       tex(SourceCodePro-Light-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Light-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-Light-sup-t2a.vf)
 Provides:       tex(SourceCodePro-Light-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Light-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-Light-tlf-ly1.vf)
@@ -4405,7 +4575,9 @@ Provides:       tex(SourceCodePro-Light-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-Light-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Light-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-Light-tlf-t1.vf)
+Provides:       tex(SourceCodePro-Light-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Light-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-Light-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-Light-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Light-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-Light-tlf-ts1.vf)
@@ -4416,7 +4588,9 @@ Provides:       tex(SourceCodePro-Light-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-Light-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Light-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-Light-tosf-t1.vf)
+Provides:       tex(SourceCodePro-Light-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Light-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-Light-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-Light-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Light-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-Light-tosf-ts1.vf)
@@ -4427,7 +4601,9 @@ Provides:       tex(SourceCodePro-LightIt-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-LightIt-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-LightIt-dnom-t1.vf)
+Provides:       tex(SourceCodePro-LightIt-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-LightIt-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-LightIt-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-LightIt-numr-ly1.vf)
@@ -4435,7 +4611,9 @@ Provides:       tex(SourceCodePro-LightIt-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-LightIt-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-numr-t1.tfm)
 Provides:       tex(SourceCodePro-LightIt-numr-t1.vf)
+Provides:       tex(SourceCodePro-LightIt-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-LightIt-numr-t2a.vf)
 Provides:       tex(SourceCodePro-LightIt-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-LightIt-sup-ly1.vf)
@@ -4443,7 +4621,9 @@ Provides:       tex(SourceCodePro-LightIt-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-LightIt-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-sup-t1.tfm)
 Provides:       tex(SourceCodePro-LightIt-sup-t1.vf)
+Provides:       tex(SourceCodePro-LightIt-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-LightIt-sup-t2a.vf)
 Provides:       tex(SourceCodePro-LightIt-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-LightIt-tlf-ly1.vf)
@@ -4451,7 +4631,9 @@ Provides:       tex(SourceCodePro-LightIt-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-LightIt-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-LightIt-tlf-t1.vf)
+Provides:       tex(SourceCodePro-LightIt-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-LightIt-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-LightIt-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-LightIt-tlf-ts1.vf)
@@ -4462,7 +4644,9 @@ Provides:       tex(SourceCodePro-LightIt-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-LightIt-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-LightIt-tosf-t1.vf)
+Provides:       tex(SourceCodePro-LightIt-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-LightIt-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-LightIt-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-LightIt-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-LightIt-tosf-ts1.vf)
@@ -4473,7 +4657,9 @@ Provides:       tex(SourceCodePro-Medium-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-Medium-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-Medium-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-Medium-dnom-t1.vf)
+Provides:       tex(SourceCodePro-Medium-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Medium-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-Medium-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-Medium-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Medium-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-Medium-numr-ly1.vf)
@@ -4481,7 +4667,9 @@ Provides:       tex(SourceCodePro-Medium-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-Medium-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-Medium-numr-t1.tfm)
 Provides:       tex(SourceCodePro-Medium-numr-t1.vf)
+Provides:       tex(SourceCodePro-Medium-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Medium-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-Medium-numr-t2a.vf)
 Provides:       tex(SourceCodePro-Medium-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Medium-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-Medium-sup-ly1.vf)
@@ -4489,7 +4677,9 @@ Provides:       tex(SourceCodePro-Medium-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-Medium-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-Medium-sup-t1.tfm)
 Provides:       tex(SourceCodePro-Medium-sup-t1.vf)
+Provides:       tex(SourceCodePro-Medium-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Medium-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-Medium-sup-t2a.vf)
 Provides:       tex(SourceCodePro-Medium-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Medium-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-Medium-tlf-ly1.vf)
@@ -4497,7 +4687,9 @@ Provides:       tex(SourceCodePro-Medium-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-Medium-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Medium-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-Medium-tlf-t1.vf)
+Provides:       tex(SourceCodePro-Medium-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Medium-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-Medium-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-Medium-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Medium-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-Medium-tlf-ts1.vf)
@@ -4508,7 +4700,9 @@ Provides:       tex(SourceCodePro-Medium-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-Medium-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Medium-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-Medium-tosf-t1.vf)
+Provides:       tex(SourceCodePro-Medium-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Medium-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-Medium-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-Medium-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Medium-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-Medium-tosf-ts1.vf)
@@ -4519,7 +4713,9 @@ Provides:       tex(SourceCodePro-MediumIt-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-dnom-t1.vf)
+Provides:       tex(SourceCodePro-MediumIt-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-MediumIt-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-MediumIt-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-numr-ly1.vf)
@@ -4527,7 +4723,9 @@ Provides:       tex(SourceCodePro-MediumIt-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-numr-t1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-numr-t1.vf)
+Provides:       tex(SourceCodePro-MediumIt-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-MediumIt-numr-t2a.vf)
 Provides:       tex(SourceCodePro-MediumIt-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-sup-ly1.vf)
@@ -4535,7 +4733,9 @@ Provides:       tex(SourceCodePro-MediumIt-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-sup-t1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-sup-t1.vf)
+Provides:       tex(SourceCodePro-MediumIt-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-MediumIt-sup-t2a.vf)
 Provides:       tex(SourceCodePro-MediumIt-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tlf-ly1.vf)
@@ -4543,7 +4743,9 @@ Provides:       tex(SourceCodePro-MediumIt-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tlf-t1.vf)
+Provides:       tex(SourceCodePro-MediumIt-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-MediumIt-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-MediumIt-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tlf-ts1.vf)
@@ -4554,7 +4756,9 @@ Provides:       tex(SourceCodePro-MediumIt-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tosf-t1.vf)
+Provides:       tex(SourceCodePro-MediumIt-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-MediumIt-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-MediumIt-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-MediumIt-tosf-ts1.vf)
@@ -4565,7 +4769,9 @@ Provides:       tex(SourceCodePro-Regular-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-Regular-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-Regular-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-Regular-dnom-t1.vf)
+Provides:       tex(SourceCodePro-Regular-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Regular-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-Regular-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-Regular-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Regular-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-Regular-numr-ly1.vf)
@@ -4573,7 +4779,9 @@ Provides:       tex(SourceCodePro-Regular-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-Regular-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-Regular-numr-t1.tfm)
 Provides:       tex(SourceCodePro-Regular-numr-t1.vf)
+Provides:       tex(SourceCodePro-Regular-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Regular-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-Regular-numr-t2a.vf)
 Provides:       tex(SourceCodePro-Regular-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Regular-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-Regular-sup-ly1.vf)
@@ -4581,7 +4789,9 @@ Provides:       tex(SourceCodePro-Regular-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-Regular-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-Regular-sup-t1.tfm)
 Provides:       tex(SourceCodePro-Regular-sup-t1.vf)
+Provides:       tex(SourceCodePro-Regular-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Regular-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-Regular-sup-t2a.vf)
 Provides:       tex(SourceCodePro-Regular-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Regular-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-Regular-tlf-ly1.vf)
@@ -4589,7 +4799,9 @@ Provides:       tex(SourceCodePro-Regular-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-Regular-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Regular-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-Regular-tlf-t1.vf)
+Provides:       tex(SourceCodePro-Regular-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Regular-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-Regular-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-Regular-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Regular-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-Regular-tlf-ts1.vf)
@@ -4600,7 +4812,9 @@ Provides:       tex(SourceCodePro-Regular-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-Regular-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Regular-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-Regular-tosf-t1.vf)
+Provides:       tex(SourceCodePro-Regular-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Regular-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-Regular-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-Regular-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Regular-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-Regular-tosf-ts1.vf)
@@ -4611,7 +4825,9 @@ Provides:       tex(SourceCodePro-Semibold-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-Semibold-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-Semibold-dnom-t1.vf)
+Provides:       tex(SourceCodePro-Semibold-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-Semibold-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-Semibold-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-Semibold-numr-ly1.vf)
@@ -4619,7 +4835,9 @@ Provides:       tex(SourceCodePro-Semibold-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-Semibold-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-numr-t1.tfm)
 Provides:       tex(SourceCodePro-Semibold-numr-t1.vf)
+Provides:       tex(SourceCodePro-Semibold-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-Semibold-numr-t2a.vf)
 Provides:       tex(SourceCodePro-Semibold-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-Semibold-sup-ly1.vf)
@@ -4627,7 +4845,9 @@ Provides:       tex(SourceCodePro-Semibold-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-Semibold-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-sup-t1.tfm)
 Provides:       tex(SourceCodePro-Semibold-sup-t1.vf)
+Provides:       tex(SourceCodePro-Semibold-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-Semibold-sup-t2a.vf)
 Provides:       tex(SourceCodePro-Semibold-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-Semibold-tlf-ly1.vf)
@@ -4635,7 +4855,9 @@ Provides:       tex(SourceCodePro-Semibold-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-Semibold-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-Semibold-tlf-t1.vf)
+Provides:       tex(SourceCodePro-Semibold-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-Semibold-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-Semibold-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-Semibold-tlf-ts1.vf)
@@ -4646,7 +4868,9 @@ Provides:       tex(SourceCodePro-Semibold-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-Semibold-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-Semibold-tosf-t1.vf)
+Provides:       tex(SourceCodePro-Semibold-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-Semibold-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-Semibold-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-Semibold-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-Semibold-tosf-ts1.vf)
@@ -4657,7 +4881,9 @@ Provides:       tex(SourceCodePro-SemiboldIt-dnom-ot1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-dnom-t1--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-dnom-t1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-dnom-t1.vf)
+Provides:       tex(SourceCodePro-SemiboldIt-dnom-t2a--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-dnom-t2a.tfm)
+Provides:       tex(SourceCodePro-SemiboldIt-dnom-t2a.vf)
 Provides:       tex(SourceCodePro-SemiboldIt-numr-ly1--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-numr-ly1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-numr-ly1.vf)
@@ -4665,7 +4891,9 @@ Provides:       tex(SourceCodePro-SemiboldIt-numr-ot1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-numr-t1--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-numr-t1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-numr-t1.vf)
+Provides:       tex(SourceCodePro-SemiboldIt-numr-t2a--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-numr-t2a.tfm)
+Provides:       tex(SourceCodePro-SemiboldIt-numr-t2a.vf)
 Provides:       tex(SourceCodePro-SemiboldIt-sup-ly1--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-sup-ly1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-sup-ly1.vf)
@@ -4673,7 +4901,9 @@ Provides:       tex(SourceCodePro-SemiboldIt-sup-ot1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-sup-t1--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-sup-t1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-sup-t1.vf)
+Provides:       tex(SourceCodePro-SemiboldIt-sup-t2a--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-sup-t2a.tfm)
+Provides:       tex(SourceCodePro-SemiboldIt-sup-t2a.vf)
 Provides:       tex(SourceCodePro-SemiboldIt-tlf-ly1--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tlf-ly1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tlf-ly1.vf)
@@ -4681,7 +4911,9 @@ Provides:       tex(SourceCodePro-SemiboldIt-tlf-ot1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tlf-t1--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tlf-t1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tlf-t1.vf)
+Provides:       tex(SourceCodePro-SemiboldIt-tlf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tlf-t2a.tfm)
+Provides:       tex(SourceCodePro-SemiboldIt-tlf-t2a.vf)
 Provides:       tex(SourceCodePro-SemiboldIt-tlf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tlf-ts1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tlf-ts1.vf)
@@ -4692,7 +4924,9 @@ Provides:       tex(SourceCodePro-SemiboldIt-tosf-ot1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tosf-t1--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tosf-t1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tosf-t1.vf)
+Provides:       tex(SourceCodePro-SemiboldIt-tosf-t2a--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tosf-t2a.tfm)
+Provides:       tex(SourceCodePro-SemiboldIt-tosf-t2a.vf)
 Provides:       tex(SourceCodePro-SemiboldIt-tosf-ts1--base.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tosf-ts1.tfm)
 Provides:       tex(SourceCodePro-SemiboldIt-tosf-ts1.vf)
@@ -4709,51 +4943,52 @@ Provides:       tex(T2ASourceCodePro-TLF.fd)
 Provides:       tex(T2ASourceCodePro-TOsF.fd)
 Provides:       tex(TS1SourceCodePro-TLF.fd)
 Provides:       tex(TS1SourceCodePro-TOsF.fd)
-Provides:       tex(a_3iph7b.enc)
-Provides:       tex(a_4bagdb.enc)
-Provides:       tex(a_4jrrta.enc)
-Provides:       tex(a_6samag.enc)
-Provides:       tex(a_beydf2.enc)
-Provides:       tex(a_bzs6pp.enc)
-Provides:       tex(a_ciozbc.enc)
-Provides:       tex(a_cy5ftw.enc)
-Provides:       tex(a_d56bnw.enc)
-Provides:       tex(a_fhxzui.enc)
-Provides:       tex(a_fnt2zo.enc)
-Provides:       tex(a_fy4e5k.enc)
-Provides:       tex(a_gog54w.enc)
-Provides:       tex(a_gufhru.enc)
-Provides:       tex(a_h3vs4v.enc)
-Provides:       tex(a_j24bgz.enc)
-Provides:       tex(a_jjp77t.enc)
-Provides:       tex(a_ljusoa.enc)
-Provides:       tex(a_lutrty.enc)
-Provides:       tex(a_lxssho.enc)
-Provides:       tex(a_mjxvy6.enc)
-Provides:       tex(a_n5gv3r.enc)
-Provides:       tex(a_npftpj.enc)
-Provides:       tex(a_o4vjd2.enc)
-Provides:       tex(a_pyiqqv.enc)
-Provides:       tex(a_snirjt.enc)
-Provides:       tex(a_tadnvb.enc)
-Provides:       tex(a_uio74x.enc)
-Provides:       tex(a_v5qca6.enc)
-Provides:       tex(a_xmlzny.enc)
-Provides:       tex(a_yyete5.enc)
+Provides:       tex(a_4n422f.enc)
+Provides:       tex(a_53eckx.enc)
+Provides:       tex(a_5elfwb.enc)
+Provides:       tex(a_74oqva.enc)
+Provides:       tex(a_am3le5.enc)
+Provides:       tex(a_atlyei.enc)
+Provides:       tex(a_dyw6ls.enc)
+Provides:       tex(a_fcrszq.enc)
+Provides:       tex(a_ffpvff.enc)
+Provides:       tex(a_ghjoqf.enc)
+Provides:       tex(a_in7525.enc)
+Provides:       tex(a_ipe377.enc)
+Provides:       tex(a_jfbour.enc)
+Provides:       tex(a_kkpidx.enc)
+Provides:       tex(a_lamrnh.enc)
+Provides:       tex(a_lb5jxi.enc)
+Provides:       tex(a_mnnurm.enc)
+Provides:       tex(a_nph74f.enc)
+Provides:       tex(a_px64wb.enc)
+Provides:       tex(a_r3lugm.enc)
+Provides:       tex(a_r4wdr3.enc)
+Provides:       tex(a_rzhnou.enc)
+Provides:       tex(a_s6s4he.enc)
+Provides:       tex(a_sntxj4.enc)
+Provides:       tex(a_sxfixz.enc)
+Provides:       tex(a_tlyxl5.enc)
+Provides:       tex(a_tu5msk.enc)
+Provides:       tex(a_ufrhio.enc)
+Provides:       tex(a_vnxyen.enc)
+Provides:       tex(a_wenvlo.enc)
+Provides:       tex(a_zg6mmb.enc)
 Provides:       tex(sourcecodepro-type1-autoinst.sty)
 Provides:       tex(sourcecodepro.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(ifluatex.sty)
+Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source75:       sourcecodepro.tar.xz
-Source76:       sourcecodepro.doc.tar.xz
+# from 20260301
+Source77:       sourcecodepro.tar.xz
+Source78:       sourcecodepro.doc.tar.xz
 
 %description -n texlive-sourcecodepro
 The font is an open-source Monospaced development from Adobe.
@@ -4762,7 +4997,7 @@ formats) and macros supporting their use in LaTeX (Type 1) and
 XeLaTeX/LuaLaTeX (OTF).
 
 %package -n texlive-sourcecodepro-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.2.8svn77682
 Release:        0
 Summary:        Documentation for texlive-sourcecodepro
 License:        OFL-1.1
@@ -4774,7 +5009,7 @@ Supplements:    (texlive-sourcecodepro and texlive-alldocumentation)
 This package includes the documentation for texlive-sourcecodepro
 
 %package -n texlive-sourcecodepro-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.2.8svn77682
 Release:        0
 Summary:        Severed fonts for texlive-sourcecodepro
 License:        OFL-1.1
@@ -4820,37 +5055,37 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/sourcecodepro/sourcecodepro.tex
 
 %files -n texlive-sourcecodepro
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_3iph7b.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_4bagdb.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_4jrrta.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_6samag.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_beydf2.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_bzs6pp.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_ciozbc.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_cy5ftw.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_d56bnw.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_fhxzui.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_fnt2zo.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_fy4e5k.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_gog54w.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_gufhru.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_h3vs4v.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_j24bgz.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_jjp77t.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_ljusoa.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_lutrty.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_lxssho.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_mjxvy6.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_n5gv3r.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_npftpj.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_o4vjd2.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_pyiqqv.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_snirjt.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_tadnvb.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_uio74x.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_v5qca6.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_xmlzny.enc
-%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_yyete5.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_4n422f.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_53eckx.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_5elfwb.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_74oqva.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_am3le5.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_atlyei.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_dyw6ls.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_fcrszq.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_ffpvff.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_ghjoqf.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_in7525.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_ipe377.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_jfbour.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_kkpidx.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_lamrnh.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_lb5jxi.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_mnnurm.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_nph74f.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_px64wb.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_r3lugm.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_r4wdr3.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_rzhnou.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_s6s4he.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_sntxj4.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_sxfixz.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_tlyxl5.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_tu5msk.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_ufrhio.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_vnxyen.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_wenvlo.enc
+%{_texmfdistdir}/fonts/enc/dvips/sourcecodepro/a_zg6mmb.enc
 %{_texmfdistdir}/fonts/map/dvips/sourcecodepro/SourceCodePro.map
 %verify(link) %{_texmfdistdir}/fonts/opentype/adobe/sourcecodepro/SourceCodePro-Black.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/adobe/sourcecodepro/SourceCodePro-BlackIt.otf
@@ -4871,24 +5106,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tlf-ts1.tfm
@@ -4897,6 +5136,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Black-tosf-ts1.tfm
@@ -4905,24 +5145,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-ts1.tfm
@@ -4931,6 +5175,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-ts1.tfm
@@ -4939,24 +5184,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tlf-ts1.tfm
@@ -4965,6 +5214,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Bold-tosf-ts1.tfm
@@ -4973,24 +5223,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-ts1.tfm
@@ -4999,6 +5253,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-ts1.tfm
@@ -5007,24 +5262,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-ts1.tfm
@@ -5033,6 +5292,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-ts1.tfm
@@ -5041,24 +5301,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-ts1.tfm
@@ -5067,6 +5331,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-ts1.tfm
@@ -5075,24 +5340,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tlf-ts1.tfm
@@ -5101,6 +5370,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-It-tosf-ts1.tfm
@@ -5109,24 +5379,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tlf-ts1.tfm
@@ -5135,6 +5409,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Light-tosf-ts1.tfm
@@ -5143,24 +5418,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-ts1.tfm
@@ -5169,6 +5448,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-ts1.tfm
@@ -5177,24 +5457,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tlf-ts1.tfm
@@ -5203,6 +5487,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Medium-tosf-ts1.tfm
@@ -5211,24 +5496,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-ts1.tfm
@@ -5237,6 +5526,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-ts1.tfm
@@ -5245,24 +5535,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tlf-ts1.tfm
@@ -5271,6 +5565,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Regular-tosf-ts1.tfm
@@ -5279,24 +5574,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-ts1.tfm
@@ -5305,6 +5604,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-ts1.tfm
@@ -5313,24 +5613,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-dnom-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-dnom-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-dnom-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-dnom-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-dnom-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-numr-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-numr-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-numr-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-numr-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-numr-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-numr-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-numr-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-sup-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-sup-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-sup-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-sup-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-sup-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-ly1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-ly1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-ts1.tfm
@@ -5339,6 +5643,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-t1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-t2a--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-t2a.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-ts1.tfm
@@ -5358,171 +5663,241 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/adobe/sourcecodepro/SourceCodePro-SemiboldIt.pfb
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Black-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BlackIt-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Bold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-BoldIt-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLight-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-ExtraLightIt-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-It-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Light-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-LightIt-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Medium-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-MediumIt-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Regular-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-Semibold-tosf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-dnom-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-dnom-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-dnom-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-numr-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-numr-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-numr-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-sup-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-sup-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-ly1.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-t2a.vf
 %{_texmfdistdir}/fonts/vf/adobe/sourcecodepro/SourceCodePro-SemiboldIt-tosf-ts1.vf
 %{_texmfdistdir}/tex/latex/sourcecodepro/LY1SourceCodePro-Dnom.fd
 %{_texmfdistdir}/tex/latex/sourcecodepro/LY1SourceCodePro-Numr.fd
@@ -5587,7 +5962,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-sourcecodepro/SourceCodePro-SemiboldIt.pfb
 
 %package -n texlive-sourcesanspro
-Version:        %{texlive_version}.%{texlive_noarch}.2.8svn54892
+Version:        %{texlive_version}.%{texlive_noarch}.2.8svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Use SourceSansPro with TeX(-alike) systems
@@ -7115,9 +7490,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source77:       sourcesanspro.tar.xz
-Source78:       sourcesanspro.doc.tar.xz
+# from 20260301
+Source79:       sourcesanspro.tar.xz
+Source80:       sourcesanspro.doc.tar.xz
 
 %description -n texlive-sourcesanspro
 The font is an open-source Sans-Serif development from Adobe.
@@ -7126,7 +7501,7 @@ formats) and macros supporting their use in LaTeX (Type 1) and
 XeLaTeX/LuaLaTeX (OTF).
 
 %package -n texlive-sourcesanspro-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.8svn54892
+Version:        %{texlive_version}.%{texlive_noarch}.2.8svn77682
 Release:        0
 Summary:        Documentation for texlive-sourcesanspro
 License:        OFL-1.1
@@ -7138,7 +7513,7 @@ Supplements:    (texlive-sourcesanspro and texlive-alldocumentation)
 This package includes the documentation for texlive-sourcesanspro
 
 %package -n texlive-sourcesanspro-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.8svn54892
+Version:        %{texlive_version}.%{texlive_noarch}.2.8svn77682
 Release:        0
 Summary:        Severed fonts for texlive-sourcesanspro
 License:        OFL-1.1
@@ -8724,7 +9099,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-sourcesanspro/SourceSansPro-SemiboldIt.pfb
 
 %package -n texlive-sourceserifpro
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Use SourceSerifPro with TeX(-alike) systems
@@ -9793,9 +10168,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source79:       sourceserifpro.tar.xz
-Source80:       sourceserifpro.doc.tar.xz
+# from 20260301
+Source81:       sourceserifpro.tar.xz
+Source82:       sourceserifpro.doc.tar.xz
 
 %description -n texlive-sourceserifpro
 This package provides Source Serif Pro for LaTeX. It includes
@@ -9803,7 +10178,7 @@ both Type1 and OpenType fonts and selects the latter when using
 XeLaTeX or LuaLaTeX.
 
 %package -n texlive-sourceserifpro-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn77682
 Release:        0
 Summary:        Documentation for texlive-sourceserifpro
 License:        OFL-1.1
@@ -9815,7 +10190,7 @@ Supplements:    (texlive-sourceserifpro and texlive-alldocumentation)
 This package includes the documentation for texlive-sourceserifpro
 
 %package -n texlive-sourceserifpro-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.4svn77682
 Release:        0
 Summary:        Severed fonts for texlive-sourceserifpro
 License:        OFL-1.1
@@ -10971,9 +11346,9 @@ Provides:       tex(spacekern.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(luatexbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source81:       spacekern.tar.xz
-Source82:       spacekern.doc.tar.xz
+# from 20260301
+Source83:       spacekern.tar.xz
+Source84:       spacekern.doc.tar.xz
 
 %description -n texlive-spacekern
 This package provides two shorthands for typesetting breaking
@@ -11056,9 +11431,9 @@ Requires:       tex(pifont.sty)
 Requires:       tex(setspace.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source83:       spacingtricks.tar.xz
-Source84:       spacingtricks.doc.tar.xz
+# from 20260301
+Source85:       spacingtricks.tar.xz
+Source86:       spacingtricks.doc.tar.xz
 
 %description -n texlive-spacingtricks
 This package provides macros for addressing various spacing
@@ -11103,7 +11478,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/spacingtricks/spacingtricks.sty
 
 %package -n texlive-spalign
-Version:        %{texlive_version}.%{texlive_noarch}.svn42225
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset matrices and arrays with spaces and semicolons as delimiters
@@ -11133,9 +11508,9 @@ Suggests:       texlive-spalign-doc >= %{texlive_version}
 Provides:       tex(spalign.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source85:       spalign.tar.xz
-Source86:       spalign.doc.tar.xz
+# from 20260301
+Source87:       spalign.tar.xz
+Source88:       spalign.doc.tar.xz
 
 %description -n texlive-spalign
 Typeset matrices and arrays with spaces and semicolons as
@@ -11154,7 +11529,7 @@ have to typeset a large number of matrices (like linear algebra
 teachers) should find this package to be a real time saver.
 
 %package -n texlive-spalign-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn42225
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-spalign
 License:        LPPL-1.0
@@ -11190,7 +11565,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/spalign/spalign.sty
 
 %package -n texlive-spark-otf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.05asvn62481
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.05asvn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Support OpenType Spark fonts
@@ -11224,9 +11599,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(luacode.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source87:       spark-otf.tar.xz
-Source88:       spark-otf.doc.tar.xz
+# from 20260301
+Source89:       spark-otf.tar.xz
+Source90:       spark-otf.doc.tar.xz
 
 %description -n texlive-spark-otf
 The package supports the free fonts from "After the Flood"
@@ -11236,7 +11611,7 @@ supported: Spark -- Bar -- Medium Spark -- Bar -- Narrow Spark
 Medium Spark -- Dot -- Small
 
 %package -n texlive-spark-otf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.05asvn62481
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.05asvn77682
 Release:        0
 Summary:        Documentation for texlive-spark-otf
 License:        OFL-1.1
@@ -11248,7 +11623,7 @@ Supplements:    (texlive-spark-otf and texlive-alldocumentation)
 This package includes the documentation for texlive-spark-otf
 
 %package -n texlive-spark-otf-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.05asvn62481
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.05asvn77682
 Release:        0
 Summary:        Severed fonts for texlive-spark-otf
 License:        OFL-1.1
@@ -11359,9 +11734,9 @@ Suggests:       texlive-sparklines-doc >= %{texlive_version}
 Provides:       tex(sparklines.sty)
 Requires:       tex(pgf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source89:       sparklines.tar.xz
-Source90:       sparklines.doc.tar.xz
+# from 20260301
+Source91:       sparklines.tar.xz
+Source92:       sparklines.doc.tar.xz
 
 %description -n texlive-sparklines
 Sparklines are intense, simple, wordlike graphics (so named by
@@ -11412,7 +11787,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/sparklines/sparklines.sty
 
 %package -n texlive-spath3
-Version:        %{texlive_version}.%{texlive_noarch}.2.8svn71396
+Version:        %{texlive_version}.%{texlive_noarch}.2.8svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Manipulate "soft paths" in PGF
@@ -11447,9 +11822,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(pgf.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source91:       spath3.tar.xz
-Source92:       spath3.doc.tar.xz
+# from 20260301
+Source93:       spath3.tar.xz
+Source94:       spath3.doc.tar.xz
 
 %description -n texlive-spath3
 The spath3 library provides methods for manipulating the "soft
@@ -11458,7 +11833,7 @@ that make use of the methods provided. These are libraries for
 drawing calligraphic paths and for drawing knot diagrams.
 
 %package -n texlive-spath3-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.8svn71396
+Version:        %{texlive_version}.%{texlive_noarch}.2.8svn76924
 Release:        0
 Summary:        Documentation for texlive-spath3
 License:        LPPL-1.0
@@ -11503,7 +11878,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/spath3/tikzlibraryspath3.code.tex
 
 %package -n texlive-spbmark
-Version:        %{texlive_version}.%{texlive_noarch}.1.46xsvn73781
+Version:        %{texlive_version}.%{texlive_noarch}.1.46ysvn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Customize superscripts and subscripts
@@ -11534,9 +11909,9 @@ Provides:       tex(spbmark.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source93:       spbmark.tar.xz
-Source94:       spbmark.doc.tar.xz
+# from 20260301
+Source95:       spbmark.tar.xz
+Source96:       spbmark.doc.tar.xz
 
 %description -n texlive-spbmark
 This package provides three commands \super, \sub and \supersub
@@ -11545,7 +11920,7 @@ be adjusted with respect to relative position and format, and
 can be used in text and math mode.
 
 %package -n texlive-spbmark-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.46xsvn73781
+Version:        %{texlive_version}.%{texlive_noarch}.1.46ysvn76924
 Release:        0
 Summary:        Documentation for texlive-spbmark
 License:        LPPL-1.0
@@ -11582,7 +11957,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/spbmark/spbmark.sty
 
 %package -n texlive-spectral
-Version:        %{texlive_version}.%{texlive_noarch}.svn64528
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Spectral fonts with LaTeX support
@@ -12885,9 +13260,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source95:       spectral.tar.xz
-Source96:       spectral.doc.tar.xz
+# from 20260301
+Source97:       spectral.tar.xz
+Source98:       spectral.doc.tar.xz
 
 %description -n texlive-spectral
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -12897,7 +13272,7 @@ agency. Spectral is a new and versatile serif face available in
 seven weights of roman and italic, with small caps.
 
 %package -n texlive-spectral-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64528
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-spectral
 License:        OFL-1.1
@@ -12909,7 +13284,7 @@ Supplements:    (texlive-spectral and texlive-alldocumentation)
 This package includes the documentation for texlive-spectral
 
 %package -n texlive-spectral-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64528
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-spectral
 License:        OFL-1.1
@@ -14317,9 +14692,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source97:       spectralsequences.tar.xz
-Source98:       spectralsequences.doc.tar.xz
+# from 20260301
+Source99:       spectralsequences.tar.xz
+Source100:      spectralsequences.doc.tar.xz
 
 %description -n texlive-spectralsequences
 The package is a specialized tool built on top of PGF/TikZ for
@@ -14421,7 +14796,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/spectralsequences/sseqparsers.code.tex
 
 %package -n texlive-spelatex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.95svn73664
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.95svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Create PDF documents with hyperlinks to audiofragments
@@ -14461,9 +14836,9 @@ Requires:       tex(verbatim.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source99:       spelatex.tar.xz
-Source100:      spelatex.doc.tar.xz
+# from 20260301
+Source101:      spelatex.tar.xz
+Source102:      spelatex.doc.tar.xz
 
 %description -n texlive-spelatex
 This package equips the PDF that is generated with LaTeX with
@@ -14487,7 +14862,7 @@ conversion, one can use free options (festival, balabolka, ...)
 or paying services (e.g. AWS polly).
 
 %package -n texlive-spelatex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.95svn73664
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.95svn76924
 Release:        0
 Summary:        Documentation for texlive-spelatex
 License:        LPPL-1.0
@@ -14925,9 +15300,9 @@ Requires:       tex(luatexbase-attr.sty)
 Requires:       tex(luatexbase-mcb.sty)
 Requires:       tex(luatexbase-modutils.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source101:      spelling.tar.xz
-Source102:      spelling.doc.tar.xz
+# from 20260301
+Source103:      spelling.tar.xz
+Source104:      spelling.doc.tar.xz
 
 %description -n texlive-spelling
 The package aids spell-checking of TeX documents compiled with
@@ -15044,9 +15419,9 @@ Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source103:      sphdthesis.tar.xz
-Source104:      sphdthesis.doc.tar.xz
+# from 20260301
+Source105:      sphdthesis.tar.xz
+Source106:      sphdthesis.doc.tar.xz
 
 %description -n texlive-sphdthesis
 The package provides a LaTeX document class for writing a PhD
@@ -15107,7 +15482,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/sphdthesis/SPhdThesis.cls
 
 %package -n texlive-spie
-Version:        %{texlive_version}.%{texlive_noarch}.3.25svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.3.25svn75447
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for formatting SPIE Proceedings manuscripts
@@ -15138,15 +15513,15 @@ Provides:       tex(spie.cls)
 Requires:       tex(cite.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source105:      spie.tar.xz
-Source106:      spie.doc.tar.xz
+# from 20260301
+Source107:      spie.tar.xz
+Source108:      spie.doc.tar.xz
 
 %description -n texlive-spie
 A class and a BibTeX style are provided.
 
 %package -n texlive-spie-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.25svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.3.25svn75447
 Release:        0
 Summary:        Documentation for texlive-spie
 License:        LPPL-1.0
@@ -15216,9 +15591,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-spix-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source107:      spix.tar.xz
-Source108:      spix.doc.tar.xz
+# from 20260301
+Source109:      spix.tar.xz
+Source110:      spix.doc.tar.xz
 
 %description -n texlive-spix
 SpiX offers a way to store information about the compilation
@@ -15269,6 +15644,733 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-spix
 %{_texmfdistdir}/scripts/spix/spix.py
 
+%package -n texlive-splentinex
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77682
+Release:        0
+License:        OFL-1.1
+Summary:        Splentinex fonts
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(post): findutils
+Requires(post): grep
+Requires(post): sed
+Requires(post): texlive >= %{texlive_version}
+Requires(post): tex(updmap.cfg)
+#!BuildIgnore:  tex(updmap.cfg)
+Requires(postun): findutils
+Requires(postun): grep
+Requires(postun): sed
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): tex(updmap.cfg)
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Requires:       texlive-splentinex-fonts >= %{texlive_version}
+Suggests:       texlive-splentinex-doc >= %{texlive_version}
+Provides:       tex(LY1Splentinex-LF.fd)
+Provides:       tex(LY1Splentinex-OsF.fd)
+Provides:       tex(LY1Splentinex-Sup.fd)
+Provides:       tex(LY1Splentinex-TLF.fd)
+Provides:       tex(LY1Splentinex-TOsF.fd)
+Provides:       tex(OT1Splentinex-LF.fd)
+Provides:       tex(OT1Splentinex-OsF.fd)
+Provides:       tex(OT1Splentinex-Sup.fd)
+Provides:       tex(OT1Splentinex-TLF.fd)
+Provides:       tex(OT1Splentinex-TOsF.fd)
+Provides:       tex(Splentinex-Bold-lf-ly1--base.tfm)
+Provides:       tex(Splentinex-Bold-lf-ly1.tfm)
+Provides:       tex(Splentinex-Bold-lf-ly1.vf)
+Provides:       tex(Splentinex-Bold-lf-ot1.tfm)
+Provides:       tex(Splentinex-Bold-lf-t1--base.tfm)
+Provides:       tex(Splentinex-Bold-lf-t1.tfm)
+Provides:       tex(Splentinex-Bold-lf-t1.vf)
+Provides:       tex(Splentinex-Bold-lf-ts1--base.tfm)
+Provides:       tex(Splentinex-Bold-lf-ts1.tfm)
+Provides:       tex(Splentinex-Bold-lf-ts1.vf)
+Provides:       tex(Splentinex-Bold-osf-ly1--base.tfm)
+Provides:       tex(Splentinex-Bold-osf-ly1.tfm)
+Provides:       tex(Splentinex-Bold-osf-ly1.vf)
+Provides:       tex(Splentinex-Bold-osf-ot1.tfm)
+Provides:       tex(Splentinex-Bold-osf-t1--base.tfm)
+Provides:       tex(Splentinex-Bold-osf-t1.tfm)
+Provides:       tex(Splentinex-Bold-osf-t1.vf)
+Provides:       tex(Splentinex-Bold-osf-ts1--base.tfm)
+Provides:       tex(Splentinex-Bold-osf-ts1.tfm)
+Provides:       tex(Splentinex-Bold-osf-ts1.vf)
+Provides:       tex(Splentinex-Bold-tlf-ly1--base.tfm)
+Provides:       tex(Splentinex-Bold-tlf-ly1.tfm)
+Provides:       tex(Splentinex-Bold-tlf-ly1.vf)
+Provides:       tex(Splentinex-Bold-tlf-ot1.tfm)
+Provides:       tex(Splentinex-Bold-tlf-t1--base.tfm)
+Provides:       tex(Splentinex-Bold-tlf-t1.tfm)
+Provides:       tex(Splentinex-Bold-tlf-t1.vf)
+Provides:       tex(Splentinex-Bold-tlf-ts1--base.tfm)
+Provides:       tex(Splentinex-Bold-tlf-ts1.tfm)
+Provides:       tex(Splentinex-Bold-tlf-ts1.vf)
+Provides:       tex(Splentinex-Bold-tosf-ly1--base.tfm)
+Provides:       tex(Splentinex-Bold-tosf-ly1.tfm)
+Provides:       tex(Splentinex-Bold-tosf-ly1.vf)
+Provides:       tex(Splentinex-Bold-tosf-ot1.tfm)
+Provides:       tex(Splentinex-Bold-tosf-t1--base.tfm)
+Provides:       tex(Splentinex-Bold-tosf-t1.tfm)
+Provides:       tex(Splentinex-Bold-tosf-t1.vf)
+Provides:       tex(Splentinex-Bold-tosf-ts1--base.tfm)
+Provides:       tex(Splentinex-Bold-tosf-ts1.tfm)
+Provides:       tex(Splentinex-Bold-tosf-ts1.vf)
+Provides:       tex(Splentinex-BoldItalic-lf-ly1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-ly1.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-ly1.vf)
+Provides:       tex(Splentinex-BoldItalic-lf-ot1.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-swash-ly1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-swash-ly1.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-swash-ly1.vf)
+Provides:       tex(Splentinex-BoldItalic-lf-swash-ot1.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-swash-t1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-swash-t1.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-swash-t1.vf)
+Provides:       tex(Splentinex-BoldItalic-lf-t1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-t1.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-t1.vf)
+Provides:       tex(Splentinex-BoldItalic-lf-ts1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-ts1.tfm)
+Provides:       tex(Splentinex-BoldItalic-lf-ts1.vf)
+Provides:       tex(Splentinex-BoldItalic-osf-ly1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-ly1.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-ly1.vf)
+Provides:       tex(Splentinex-BoldItalic-osf-ot1.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-swash-ly1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-swash-ly1.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-swash-ly1.vf)
+Provides:       tex(Splentinex-BoldItalic-osf-swash-ot1.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-swash-t1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-swash-t1.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-swash-t1.vf)
+Provides:       tex(Splentinex-BoldItalic-osf-t1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-t1.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-t1.vf)
+Provides:       tex(Splentinex-BoldItalic-osf-ts1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-ts1.tfm)
+Provides:       tex(Splentinex-BoldItalic-osf-ts1.vf)
+Provides:       tex(Splentinex-BoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-ly1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-ly1.vf)
+Provides:       tex(Splentinex-BoldItalic-tlf-ot1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-swash-ly1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-swash-ly1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-swash-ly1.vf)
+Provides:       tex(Splentinex-BoldItalic-tlf-swash-ot1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-swash-t1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-swash-t1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-swash-t1.vf)
+Provides:       tex(Splentinex-BoldItalic-tlf-t1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-t1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-t1.vf)
+Provides:       tex(Splentinex-BoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-ts1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tlf-ts1.vf)
+Provides:       tex(Splentinex-BoldItalic-tosf-ly1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-ly1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-ly1.vf)
+Provides:       tex(Splentinex-BoldItalic-tosf-ot1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-swash-ly1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-swash-ly1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-swash-ly1.vf)
+Provides:       tex(Splentinex-BoldItalic-tosf-swash-ot1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-swash-t1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-swash-t1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-swash-t1.vf)
+Provides:       tex(Splentinex-BoldItalic-tosf-t1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-t1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-t1.vf)
+Provides:       tex(Splentinex-BoldItalic-tosf-ts1--base.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-ts1.tfm)
+Provides:       tex(Splentinex-BoldItalic-tosf-ts1.vf)
+Provides:       tex(Splentinex-Italic-lf-ly1--base.tfm)
+Provides:       tex(Splentinex-Italic-lf-ly1.tfm)
+Provides:       tex(Splentinex-Italic-lf-ly1.vf)
+Provides:       tex(Splentinex-Italic-lf-ot1.tfm)
+Provides:       tex(Splentinex-Italic-lf-t1--base.tfm)
+Provides:       tex(Splentinex-Italic-lf-t1.tfm)
+Provides:       tex(Splentinex-Italic-lf-t1.vf)
+Provides:       tex(Splentinex-Italic-lf-ts1--base.tfm)
+Provides:       tex(Splentinex-Italic-lf-ts1.tfm)
+Provides:       tex(Splentinex-Italic-lf-ts1.vf)
+Provides:       tex(Splentinex-Italic-osf-ly1--base.tfm)
+Provides:       tex(Splentinex-Italic-osf-ly1.tfm)
+Provides:       tex(Splentinex-Italic-osf-ly1.vf)
+Provides:       tex(Splentinex-Italic-osf-ot1.tfm)
+Provides:       tex(Splentinex-Italic-osf-t1--base.tfm)
+Provides:       tex(Splentinex-Italic-osf-t1.tfm)
+Provides:       tex(Splentinex-Italic-osf-t1.vf)
+Provides:       tex(Splentinex-Italic-osf-ts1--base.tfm)
+Provides:       tex(Splentinex-Italic-osf-ts1.tfm)
+Provides:       tex(Splentinex-Italic-osf-ts1.vf)
+Provides:       tex(Splentinex-Italic-tlf-ly1--base.tfm)
+Provides:       tex(Splentinex-Italic-tlf-ly1.tfm)
+Provides:       tex(Splentinex-Italic-tlf-ly1.vf)
+Provides:       tex(Splentinex-Italic-tlf-ot1.tfm)
+Provides:       tex(Splentinex-Italic-tlf-t1--base.tfm)
+Provides:       tex(Splentinex-Italic-tlf-t1.tfm)
+Provides:       tex(Splentinex-Italic-tlf-t1.vf)
+Provides:       tex(Splentinex-Italic-tlf-ts1--base.tfm)
+Provides:       tex(Splentinex-Italic-tlf-ts1.tfm)
+Provides:       tex(Splentinex-Italic-tlf-ts1.vf)
+Provides:       tex(Splentinex-Italic-tosf-ly1--base.tfm)
+Provides:       tex(Splentinex-Italic-tosf-ly1.tfm)
+Provides:       tex(Splentinex-Italic-tosf-ly1.vf)
+Provides:       tex(Splentinex-Italic-tosf-ot1.tfm)
+Provides:       tex(Splentinex-Italic-tosf-t1--base.tfm)
+Provides:       tex(Splentinex-Italic-tosf-t1.tfm)
+Provides:       tex(Splentinex-Italic-tosf-t1.vf)
+Provides:       tex(Splentinex-Italic-tosf-ts1--base.tfm)
+Provides:       tex(Splentinex-Italic-tosf-ts1.tfm)
+Provides:       tex(Splentinex-Italic-tosf-ts1.vf)
+Provides:       tex(Splentinex-Regular-lf-ly1--base.tfm)
+Provides:       tex(Splentinex-Regular-lf-ly1.tfm)
+Provides:       tex(Splentinex-Regular-lf-ly1.vf)
+Provides:       tex(Splentinex-Regular-lf-ot1.tfm)
+Provides:       tex(Splentinex-Regular-lf-sc-ly1--base.tfm)
+Provides:       tex(Splentinex-Regular-lf-sc-ly1.tfm)
+Provides:       tex(Splentinex-Regular-lf-sc-ly1.vf)
+Provides:       tex(Splentinex-Regular-lf-sc-ot1--base.tfm)
+Provides:       tex(Splentinex-Regular-lf-sc-ot1.tfm)
+Provides:       tex(Splentinex-Regular-lf-sc-ot1.vf)
+Provides:       tex(Splentinex-Regular-lf-sc-t1--base.tfm)
+Provides:       tex(Splentinex-Regular-lf-sc-t1.tfm)
+Provides:       tex(Splentinex-Regular-lf-sc-t1.vf)
+Provides:       tex(Splentinex-Regular-lf-t1--base.tfm)
+Provides:       tex(Splentinex-Regular-lf-t1.tfm)
+Provides:       tex(Splentinex-Regular-lf-t1.vf)
+Provides:       tex(Splentinex-Regular-lf-ts1--base.tfm)
+Provides:       tex(Splentinex-Regular-lf-ts1.tfm)
+Provides:       tex(Splentinex-Regular-lf-ts1.vf)
+Provides:       tex(Splentinex-Regular-osf-ly1--base.tfm)
+Provides:       tex(Splentinex-Regular-osf-ly1.tfm)
+Provides:       tex(Splentinex-Regular-osf-ly1.vf)
+Provides:       tex(Splentinex-Regular-osf-ot1.tfm)
+Provides:       tex(Splentinex-Regular-osf-sc-ly1--base.tfm)
+Provides:       tex(Splentinex-Regular-osf-sc-ly1.tfm)
+Provides:       tex(Splentinex-Regular-osf-sc-ly1.vf)
+Provides:       tex(Splentinex-Regular-osf-sc-ot1--base.tfm)
+Provides:       tex(Splentinex-Regular-osf-sc-ot1.tfm)
+Provides:       tex(Splentinex-Regular-osf-sc-ot1.vf)
+Provides:       tex(Splentinex-Regular-osf-sc-t1--base.tfm)
+Provides:       tex(Splentinex-Regular-osf-sc-t1.tfm)
+Provides:       tex(Splentinex-Regular-osf-sc-t1.vf)
+Provides:       tex(Splentinex-Regular-osf-t1--base.tfm)
+Provides:       tex(Splentinex-Regular-osf-t1.tfm)
+Provides:       tex(Splentinex-Regular-osf-t1.vf)
+Provides:       tex(Splentinex-Regular-osf-ts1--base.tfm)
+Provides:       tex(Splentinex-Regular-osf-ts1.tfm)
+Provides:       tex(Splentinex-Regular-osf-ts1.vf)
+Provides:       tex(Splentinex-Regular-sup-ly1--base.tfm)
+Provides:       tex(Splentinex-Regular-sup-ly1.tfm)
+Provides:       tex(Splentinex-Regular-sup-ly1.vf)
+Provides:       tex(Splentinex-Regular-sup-ot1.tfm)
+Provides:       tex(Splentinex-Regular-sup-t1--base.tfm)
+Provides:       tex(Splentinex-Regular-sup-t1.tfm)
+Provides:       tex(Splentinex-Regular-sup-t1.vf)
+Provides:       tex(Splentinex-Regular-tlf-ly1--base.tfm)
+Provides:       tex(Splentinex-Regular-tlf-ly1.tfm)
+Provides:       tex(Splentinex-Regular-tlf-ly1.vf)
+Provides:       tex(Splentinex-Regular-tlf-ot1.tfm)
+Provides:       tex(Splentinex-Regular-tlf-sc-ly1--base.tfm)
+Provides:       tex(Splentinex-Regular-tlf-sc-ly1.tfm)
+Provides:       tex(Splentinex-Regular-tlf-sc-ly1.vf)
+Provides:       tex(Splentinex-Regular-tlf-sc-ot1--base.tfm)
+Provides:       tex(Splentinex-Regular-tlf-sc-ot1.tfm)
+Provides:       tex(Splentinex-Regular-tlf-sc-ot1.vf)
+Provides:       tex(Splentinex-Regular-tlf-sc-t1--base.tfm)
+Provides:       tex(Splentinex-Regular-tlf-sc-t1.tfm)
+Provides:       tex(Splentinex-Regular-tlf-sc-t1.vf)
+Provides:       tex(Splentinex-Regular-tlf-t1--base.tfm)
+Provides:       tex(Splentinex-Regular-tlf-t1.tfm)
+Provides:       tex(Splentinex-Regular-tlf-t1.vf)
+Provides:       tex(Splentinex-Regular-tlf-ts1--base.tfm)
+Provides:       tex(Splentinex-Regular-tlf-ts1.tfm)
+Provides:       tex(Splentinex-Regular-tlf-ts1.vf)
+Provides:       tex(Splentinex-Regular-tosf-ly1--base.tfm)
+Provides:       tex(Splentinex-Regular-tosf-ly1.tfm)
+Provides:       tex(Splentinex-Regular-tosf-ly1.vf)
+Provides:       tex(Splentinex-Regular-tosf-ot1.tfm)
+Provides:       tex(Splentinex-Regular-tosf-sc-ly1--base.tfm)
+Provides:       tex(Splentinex-Regular-tosf-sc-ly1.tfm)
+Provides:       tex(Splentinex-Regular-tosf-sc-ly1.vf)
+Provides:       tex(Splentinex-Regular-tosf-sc-ot1--base.tfm)
+Provides:       tex(Splentinex-Regular-tosf-sc-ot1.tfm)
+Provides:       tex(Splentinex-Regular-tosf-sc-ot1.vf)
+Provides:       tex(Splentinex-Regular-tosf-sc-t1--base.tfm)
+Provides:       tex(Splentinex-Regular-tosf-sc-t1.tfm)
+Provides:       tex(Splentinex-Regular-tosf-sc-t1.vf)
+Provides:       tex(Splentinex-Regular-tosf-t1--base.tfm)
+Provides:       tex(Splentinex-Regular-tosf-t1.tfm)
+Provides:       tex(Splentinex-Regular-tosf-t1.vf)
+Provides:       tex(Splentinex-Regular-tosf-ts1--base.tfm)
+Provides:       tex(Splentinex-Regular-tosf-ts1.tfm)
+Provides:       tex(Splentinex-Regular-tosf-ts1.vf)
+Provides:       tex(Splentinex.map)
+Provides:       tex(T1Splentinex-LF.fd)
+Provides:       tex(T1Splentinex-OsF.fd)
+Provides:       tex(T1Splentinex-Sup.fd)
+Provides:       tex(T1Splentinex-TLF.fd)
+Provides:       tex(T1Splentinex-TOsF.fd)
+Provides:       tex(TS1Splentinex-LF.fd)
+Provides:       tex(TS1Splentinex-OsF.fd)
+Provides:       tex(TS1Splentinex-TLF.fd)
+Provides:       tex(TS1Splentinex-TOsF.fd)
+Provides:       tex(a_2gekco.enc)
+Provides:       tex(a_2iz2sr.enc)
+Provides:       tex(a_2p2zzs.enc)
+Provides:       tex(a_2pnyws.enc)
+Provides:       tex(a_2znksq.enc)
+Provides:       tex(a_3aazg7.enc)
+Provides:       tex(a_3kplpt.enc)
+Provides:       tex(a_4uxgok.enc)
+Provides:       tex(a_4vbjpw.enc)
+Provides:       tex(a_5xw7lp.enc)
+Provides:       tex(a_62jjtc.enc)
+Provides:       tex(a_6bbor7.enc)
+Provides:       tex(a_7ps5sb.enc)
+Provides:       tex(a_au3tcv.enc)
+Provides:       tex(a_b2rnw3.enc)
+Provides:       tex(a_bdz5es.enc)
+Provides:       tex(a_bhd4sx.enc)
+Provides:       tex(a_bi5jcg.enc)
+Provides:       tex(a_cbhkdk.enc)
+Provides:       tex(a_ciqtcf.enc)
+Provides:       tex(a_e2iuvi.enc)
+Provides:       tex(a_ety7n2.enc)
+Provides:       tex(a_fznad4.enc)
+Provides:       tex(a_g5mnx3.enc)
+Provides:       tex(a_gkjzhd.enc)
+Provides:       tex(a_hsojxt.enc)
+Provides:       tex(a_i7ugwh.enc)
+Provides:       tex(a_jd3ttb.enc)
+Provides:       tex(a_jymrki.enc)
+Provides:       tex(a_kkh65j.enc)
+Provides:       tex(a_lys2ul.enc)
+Provides:       tex(a_m4j3uc.enc)
+Provides:       tex(a_mlamai.enc)
+Provides:       tex(a_n7whle.enc)
+Provides:       tex(a_ohod5z.enc)
+Provides:       tex(a_oimab4.enc)
+Provides:       tex(a_seb2tw.enc)
+Provides:       tex(a_smjuqr.enc)
+Provides:       tex(a_tva6pz.enc)
+Provides:       tex(a_vey3m7.enc)
+Provides:       tex(a_xmjyk6.enc)
+Provides:       tex(a_zlyi4r.enc)
+Provides:       tex(splentinex.sty)
+Requires:       tex(fontaxes.sty)
+Requires:       tex(fontenc.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(textcomp.sty)
+Requires:       tex(xkeyval.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source111:      splentinex.tar.xz
+Source112:      splentinex.doc.tar.xz
+
+%description -n texlive-splentinex
+This is a serif font family designed for body text. This
+typeface design was originally crated by Frank Pierpont and
+Fritz Stelzer in 1913 and released by Monotype as Plantin. In
+2025, Ben Byram-Wigfield created Splentino, a new digitization
+of the Plantin design, for inclusion with the music software
+Dorico. Splentinex is a modified repackaging of Splentino.
+
+%package -n texlive-splentinex-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77682
+Release:        0
+Summary:        Documentation for texlive-splentinex
+License:        OFL-1.1
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-splentinex and texlive-alldocumentation)
+
+%description -n texlive-splentinex-doc
+This package includes the documentation for texlive-splentinex
+
+%package -n texlive-splentinex-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77682
+Release:        0
+Summary:        Severed fonts for texlive-splentinex
+License:        OFL-1.1
+URL:            https://www.tug.org/texlive/
+Group:          Productivity/Publishing/TeX/Fonts
+%reconfigure_fonts_prereq
+Requires(posttrans): fontconfig
+Requires(posttrans): ghostscript-fonts-std
+Suggests:       xorg-x11-fonts-core
+
+%description -n texlive-splentinex-fonts
+The  separated fonts package for texlive-splentinex
+
+%post -n texlive-splentinex
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+echo 'addMap Splentinex.map' >> /var/run/texlive/run-updmap
+
+%postun -n texlive-splentinex
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    echo 'deleteMap Splentinex.map' >> /var/run/texlive/run-updmap
+    exit 0
+fi
+
+%posttrans -n texlive-splentinex
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%reconfigure_fonts_scriptlets -n texlive-splentinex-fonts
+
+%files -n texlive-splentinex-doc
+%{_texmfdistdir}/doc/fonts/splentinex/COPYING
+%{_texmfdistdir}/doc/fonts/splentinex/README
+%{_texmfdistdir}/doc/fonts/splentinex/splentinex-doc.pdf
+%{_texmfdistdir}/doc/fonts/splentinex/splentinex-doc.tex
+
+%files -n texlive-splentinex
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_2gekco.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_2iz2sr.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_2p2zzs.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_2pnyws.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_2znksq.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_3aazg7.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_3kplpt.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_4uxgok.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_4vbjpw.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_5xw7lp.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_62jjtc.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_6bbor7.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_7ps5sb.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_au3tcv.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_b2rnw3.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_bdz5es.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_bhd4sx.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_bi5jcg.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_cbhkdk.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_ciqtcf.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_e2iuvi.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_ety7n2.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_fznad4.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_g5mnx3.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_gkjzhd.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_hsojxt.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_i7ugwh.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_jd3ttb.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_jymrki.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_kkh65j.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_lys2ul.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_m4j3uc.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_mlamai.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_n7whle.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_ohod5z.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_oimab4.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_seb2tw.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_smjuqr.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_tva6pz.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_vey3m7.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_xmjyk6.enc
+%{_texmfdistdir}/fonts/enc/dvips/splentinex/a_zlyi4r.enc
+%{_texmfdistdir}/fonts/map/dvips/splentinex/Splentinex.map
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/splentinex/Splentinex-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/splentinex/Splentinex-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/splentinex/Splentinex-Italic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/splentinex/Splentinex-Regular.otf
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Bold-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-swash-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-swash-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-swash-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-swash-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-swash-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-swash-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-swash-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-swash-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-swash-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-swash-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-swash-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-swash-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-swash-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-swash-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-swash-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-swash-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-swash-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-BoldItalic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Italic-tosf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-osf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-sc-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-sc-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-sc-ot1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-sc-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-sc-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-sc-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/splentinex/Splentinex-Regular-tosf-ts1.tfm
+%verify(link) %{_texmfdistdir}/fonts/type1/public/splentinex/Splentinex-Bold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/splentinex/Splentinex-BoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/splentinex/Splentinex-Italic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/splentinex/Splentinex-Regular.pfb
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Bold-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-lf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-lf-swash-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-osf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-osf-swash-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-tlf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-tlf-swash-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-tosf-swash-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-tosf-swash-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-BoldItalic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Italic-tosf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-lf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-lf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-lf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-osf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-osf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-osf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-osf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-osf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-osf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tlf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tlf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tlf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tosf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tosf-sc-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tosf-sc-ot1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tosf-sc-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tosf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/splentinex/Splentinex-Regular-tosf-ts1.vf
+%{_texmfdistdir}/tex/latex/splentinex/LY1Splentinex-LF.fd
+%{_texmfdistdir}/tex/latex/splentinex/LY1Splentinex-OsF.fd
+%{_texmfdistdir}/tex/latex/splentinex/LY1Splentinex-Sup.fd
+%{_texmfdistdir}/tex/latex/splentinex/LY1Splentinex-TLF.fd
+%{_texmfdistdir}/tex/latex/splentinex/LY1Splentinex-TOsF.fd
+%{_texmfdistdir}/tex/latex/splentinex/OT1Splentinex-LF.fd
+%{_texmfdistdir}/tex/latex/splentinex/OT1Splentinex-OsF.fd
+%{_texmfdistdir}/tex/latex/splentinex/OT1Splentinex-Sup.fd
+%{_texmfdistdir}/tex/latex/splentinex/OT1Splentinex-TLF.fd
+%{_texmfdistdir}/tex/latex/splentinex/OT1Splentinex-TOsF.fd
+%{_texmfdistdir}/tex/latex/splentinex/T1Splentinex-LF.fd
+%{_texmfdistdir}/tex/latex/splentinex/T1Splentinex-OsF.fd
+%{_texmfdistdir}/tex/latex/splentinex/T1Splentinex-Sup.fd
+%{_texmfdistdir}/tex/latex/splentinex/T1Splentinex-TLF.fd
+%{_texmfdistdir}/tex/latex/splentinex/T1Splentinex-TOsF.fd
+%{_texmfdistdir}/tex/latex/splentinex/TS1Splentinex-LF.fd
+%{_texmfdistdir}/tex/latex/splentinex/TS1Splentinex-OsF.fd
+%{_texmfdistdir}/tex/latex/splentinex/TS1Splentinex-TLF.fd
+%{_texmfdistdir}/tex/latex/splentinex/TS1Splentinex-TOsF.fd
+%{_texmfdistdir}/tex/latex/splentinex/splentinex.sty
+
+%files -n texlive-splentinex-fonts
+%dir %{_datadir}/fonts/texlive-splentinex
+%{_datadir}/fontconfig/conf.avail/58-texlive-splentinex.conf
+%{_datadir}/fontconfig/conf.avail/55-texlive-splentinex.conf
+%config %{_sysconfdir}/fonts/conf.d/55-texlive-splentinex.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-splentinex/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-splentinex/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-splentinex/fonts.scale
+%{_datadir}/fonts/texlive-splentinex/Splentinex-Bold.otf
+%{_datadir}/fonts/texlive-splentinex/Splentinex-BoldItalic.otf
+%{_datadir}/fonts/texlive-splentinex/Splentinex-Italic.otf
+%{_datadir}/fonts/texlive-splentinex/Splentinex-Regular.otf
+%{_datadir}/fonts/texlive-splentinex/Splentinex-Bold.pfb
+%{_datadir}/fonts/texlive-splentinex/Splentinex-BoldItalic.pfb
+%{_datadir}/fonts/texlive-splentinex/Splentinex-Italic.pfb
+%{_datadir}/fonts/texlive-splentinex/Splentinex-Regular.pfb
+
 %package -n texlive-splines
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn15878
 Release:        0
@@ -15298,9 +16400,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-splines-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source109:      splines.tar.xz
-Source110:      splines.doc.tar.xz
+# from 20260301
+Source113:      splines.tar.xz
+Source114:      splines.doc.tar.xz
 
 %description -n texlive-splines
 This is a small package of macros for creating cubic spline
@@ -15348,7 +16450,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/splines/testsplines.mp
 
 %package -n texlive-splitbib
-Version:        %{texlive_version}.%{texlive_noarch}.1.17svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.17svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Split and reorder your bibliography
@@ -15377,9 +16479,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-splitbib-doc >= %{texlive_version}
 Provides:       tex(splitbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source111:      splitbib.tar.xz
-Source112:      splitbib.doc.tar.xz
+# from 20260301
+Source115:      splitbib.tar.xz
+Source116:      splitbib.doc.tar.xz
 
 %description -n texlive-splitbib
 This package enables you to split a bibliography into several
@@ -15387,7 +16489,7 @@ categories and subcategories. It does not depend on BibTeX: any
 bibliography may be split and reordered.
 
 %package -n texlive-splitbib-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.17svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.17svn77682
 Release:        0
 Summary:        Documentation for texlive-splitbib
 License:        LPPL-1.0
@@ -15423,7 +16525,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/splitbib/splitbib.sty
 
 %package -n texlive-splitindex
-Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn39766
+Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Unlimited number of indexes
@@ -15459,9 +16561,9 @@ Requires:       perl(strict)
 Provides:       tex(splitidx.sty)
 Provides:       tex(splitindex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source113:      splitindex.tar.xz
-Source114:      splitindex.doc.tar.xz
+# from 20260301
+Source117:      splitindex.tar.xz
+Source118:      splitindex.doc.tar.xz
 
 %description -n texlive-splitindex
 SplitIndex consists of a LaTeX package, splitidx, and a small
@@ -15475,7 +16577,7 @@ several raw index files and calls your favorite index processor
 for each of the files.
 
 %package -n texlive-splitindex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn39766
+Version:        %{texlive_version}.%{texlive_noarch}.1.2csvn77682
 Release:        0
 Summary:        Documentation for texlive-splitindex
 License:        LPPL-1.0
@@ -15550,9 +16652,9 @@ Provides:       tex(spot.sty)
 Requires:       tex(afterpage.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source115:      spot.tar.xz
-Source116:      spot.doc.tar.xz
+# from 20260301
+Source119:      spot.tar.xz
+Source120:      spot.doc.tar.xz
 
 %description -n texlive-spot
 The package allows dramatic highlighting of words and phrases
@@ -15629,9 +16731,9 @@ Provides:       tex(spotcolorhks.tex)
 Provides:       tex(spotcolorpantone.tex)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source117:      spotcolor.tar.xz
-Source118:      spotcolor.doc.tar.xz
+# from 20260301
+Source121:      spotcolor.tar.xz
+Source122:      spotcolor.doc.tar.xz
 
 %description -n texlive-spotcolor
 This package provides procedures for using spot colours in
@@ -15680,7 +16782,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/spotcolor/spotcolorpantone.tex
 
 %package -n texlive-spreadtab
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn74325
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.61svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Spreadsheet features for LaTeX tabular environments
@@ -15711,9 +16813,9 @@ Provides:       tex(spreadtab.sty)
 Requires:       tex(simplekv.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source119:      spreadtab.tar.xz
-Source120:      spreadtab.doc.tar.xz
+# from 20260301
+Source123:      spreadtab.tar.xz
+Source124:      spreadtab.doc.tar.xz
 
 %description -n texlive-spreadtab
 The package allows the user to construct tables in a manner
@@ -15722,7 +16824,7 @@ column indices and these can be used in formulas to generate
 values in other cells.
 
 %package -n texlive-spreadtab-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn74325
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.61svn77682
 Release:        0
 Summary:        Documentation for texlive-spreadtab
 License:        LPPL-1.0
@@ -15762,7 +16864,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/spreadtab/spreadtab.sty
 
 %package -n texlive-spverbatim
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Allow line breaks within \verb and verbatim output
@@ -15791,9 +16893,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-spverbatim-doc >= %{texlive_version}
 Provides:       tex(spverbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source121:      spverbatim.tar.xz
-Source122:      spverbatim.doc.tar.xz
+# from 20260301
+Source125:      spverbatim.tar.xz
+Source126:      spverbatim.doc.tar.xz
 
 %description -n texlive-spverbatim
 LaTeX's \verb macro treats its argument as an unbreakable unit
@@ -15805,7 +16907,7 @@ that is analogous to verbatim with the difference being that
 characters.
 
 %package -n texlive-spverbatim-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77682
 Release:        0
 Summary:        Documentation for texlive-spverbatim
 License:        LPPL-1.0
@@ -15881,9 +16983,9 @@ Requires:       perl(feature)
 Provides:       tex(SQLTeX.cfg)
 Provides:       tex(SQLTeX_r.dat)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source123:      sqltex.tar.xz
-Source124:      sqltex.doc.tar.xz
+# from 20260301
+Source127:      sqltex.tar.xz
+Source128:      sqltex.doc.tar.xz
 
 %description -n texlive-sqltex
 SQLTeX is a preprocessor that enables the use of SQL statements
@@ -15979,9 +17081,9 @@ Requires:       tex(varwidth.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source125:      sr-vorl.tar.xz
-Source126:      sr-vorl.doc.tar.xz
+# from 20260301
+Source129:      sr-vorl.tar.xz
+Source130:      sr-vorl.doc.tar.xz
 
 %description -n texlive-sr-vorl
 This package provides a LaTeX class and templates for books to
@@ -16061,9 +17163,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-srbook-mem-doc >= %{texlive_version}
 Provides:       tex(srbook-mem.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source127:      srbook-mem.tar.xz
-Source128:      srbook-mem.doc.tar.xz
+# from 20260301
+Source131:      srbook-mem.tar.xz
+Source132:      srbook-mem.doc.tar.xz
 
 %description -n texlive-srbook-mem
 The package provides a number of commands for adjusting memoir
@@ -16176,9 +17278,9 @@ Provides:       tex(t1srbtiksy.vf)
 Provides:       tex(ts1srbtiks.fd)
 Requires:       tex(stix2.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source129:      srbtiks.tar.xz
-Source130:      srbtiks.doc.tar.xz
+# from 20260301
+Source133:      srbtiks.tar.xz
+Source134:      srbtiks.doc.tar.xz
 
 %description -n texlive-srbtiks
 The srbtiks package is the extension of the stix2-type1 package
@@ -16281,9 +17383,9 @@ Provides:       tex(srcltx.sty)
 Provides:       tex(srctex.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source131:      srcltx.tar.xz
-Source132:      srcltx.doc.tar.xz
+# from 20260301
+Source135:      srcltx.tar.xz
+Source136:      srcltx.doc.tar.xz
 
 %description -n texlive-srcltx
 Provides a \special insertion into generated .dvi files
@@ -16366,9 +17468,9 @@ Requires:       perl(Getopt::Std)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source133:      srcredact.tar.xz
-Source134:      srcredact.doc.tar.xz
+# from 20260301
+Source137:      srcredact.tar.xz
+Source138:      srcredact.doc.tar.xz
 
 %description -n texlive-srcredact
 This package provides a tool to keep a master source,
@@ -16436,7 +17538,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/srcredact/srcredact.pl
 
 %package -n texlive-srdp-mathematik
-Version:        %{texlive_version}.%{texlive_noarch}.1.13.1svn73016
+Version:        %{texlive_version}.%{texlive_noarch}.1.14.0svn76697
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset Austrian SRDP in mathematics
@@ -16481,6 +17583,7 @@ Requires:       tex(esvect.sty)
 Requires:       tex(eurosym.sty)
 Requires:       tex(float.sty)
 Requires:       tex(forloop.sty)
+Requires:       tex(fp.sty)
 Requires:       tex(framed.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hhline.sty)
@@ -16507,9 +17610,9 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(ziffer.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source135:      srdp-mathematik.tar.xz
-Source136:      srdp-mathematik.doc.tar.xz
+# from 20260301
+Source139:      srdp-mathematik.tar.xz
+Source140:      srdp-mathematik.doc.tar.xz
 
 %description -n texlive-srdp-mathematik
 This package provides basic commands for the defined formats of
@@ -16520,7 +17623,7 @@ file, and it offers a way to vary the answers in order to
 create different groups (e. g. for tests) easily.
 
 %package -n texlive-srdp-mathematik-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.13.1svn73016
+Version:        %{texlive_version}.%{texlive_noarch}.1.14.0svn76697
 Release:        0
 Summary:        Documentation for texlive-srdp-mathematik
 License:        LPPL-1.0
@@ -16593,9 +17696,9 @@ Requires:       tex(pgf.sty)
 Requires:       tex(pifont.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source137:      sseq.tar.xz
-Source138:      sseq.doc.tar.xz
+# from 20260301
+Source141:      sseq.tar.xz
+Source142:      sseq.doc.tar.xz
 
 %description -n texlive-sseq
 The package provides commands to draw spectral sequence
@@ -16642,7 +17745,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/sseq/sseq.sty
 
 %package -n texlive-sshrc-insight
-Version:        %{texlive_version}.%{texlive_noarch}.2024.1.0svn72623
+Version:        %{texlive_version}.%{texlive_noarch}.2025.0.0svn76065
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX class for SSHRC Insight Grant proposals
@@ -16669,6 +17772,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-sshrc-insight-doc >= %{texlive_version}
+Provides:       tex(sshrc-insight-2024-10-12.cls)
 Provides:       tex(sshrc-insight.cls)
 Requires:       tex(article.cls)
 Requires:       tex(biblatex-readbbl.sty)
@@ -16685,9 +17789,9 @@ Requires:       tex(translations.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source139:      sshrc-insight.tar.xz
-Source140:      sshrc-insight.doc.tar.xz
+# from 20260301
+Source143:      sshrc-insight.tar.xz
+Source144:      sshrc-insight.doc.tar.xz
 
 %description -n texlive-sshrc-insight
 The sshrc-insight LaTeX class facilitates the preparation of
@@ -16706,7 +17810,7 @@ Supports preparation of proposals in either English or French.
 Compatible with pdfLaTeX, XeLaTeX, and LuaLaTeX.
 
 %package -n texlive-sshrc-insight-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2024.1.0svn72623
+Version:        %{texlive_version}.%{texlive_noarch}.2025.0.0svn76065
 Release:        0
 Summary:        Documentation for texlive-sshrc-insight
 License:        LPPL-1.0
@@ -16755,6 +17859,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/sshrc-insight/summary.tex
 
 %files -n texlive-sshrc-insight
+%{_texmfdistdir}/tex/latex/sshrc-insight/sshrc-insight-2024-10-12.cls
 %{_texmfdistdir}/tex/latex/sshrc-insight/sshrc-insight.cls
 
 %package -n texlive-sslides
@@ -16788,9 +17893,9 @@ Suggests:       texlive-sslides-doc >= %{texlive_version}
 Provides:       tex(sslides.cls)
 Requires:       tex(slides.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source141:      sslides.tar.xz
-Source142:      sslides.doc.tar.xz
+# from 20260301
+Source145:      sslides.tar.xz
+Source146:      sslides.doc.tar.xz
 
 %description -n texlive-sslides
 The class provides a variant of the LaTeX standard slides
@@ -16865,8 +17970,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(relinput.sty)
 Provides:       tex(stack.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source143:      stack.tar.xz
+# from 20260301
+Source147:      stack.tar.xz
 
 %description -n texlive-stack
 The package provides a small set of commands to implement
@@ -16897,7 +18002,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/stack/stack.sty
 
 %package -n texlive-stackengine
-Version:        %{texlive_version}.%{texlive_noarch}.4.11svn60019
+Version:        %{texlive_version}.%{texlive_noarch}.4.11svn75878
 Release:        0
 License:        LPPL-1.0
 Summary:        Highly customised stacking of objects, insets, baseline changes, etcetera
@@ -16931,9 +18036,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(listofitems.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source144:      stackengine.tar.xz
-Source145:      stackengine.doc.tar.xz
+# from 20260301
+Source148:      stackengine.tar.xz
+Source149:      stackengine.doc.tar.xz
 
 %description -n texlive-stackengine
 The package provides a versatile way to stack objects
@@ -16942,7 +18047,7 @@ useful macros are provided, all of which make use of the
 stackengine core.
 
 %package -n texlive-stackengine-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.11svn60019
+Version:        %{texlive_version}.%{texlive_noarch}.4.11svn75878
 Release:        0
 Summary:        Documentation for texlive-stackengine
 License:        LPPL-1.0
@@ -17015,9 +18120,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(needspace.sty)
 Requires:       tex(parskip.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source146:      stage.tar.xz
-Source147:      stage.doc.tar.xz
+# from 20260301
+Source150:      stage.tar.xz
+Source151:      stage.doc.tar.xz
 
 %description -n texlive-stage
 Stage.cls is a LaTeX class for creating plays of any length in
@@ -17061,7 +18166,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/stage/stage.cls
 
 %package -n texlive-standalone
-Version:        %{texlive_version}.%{texlive_noarch}.1.5asvn74247
+Version:        %{texlive_version}.%{texlive_noarch}.1.5asvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Compile TeX pictures stand-alone or as part of a document
@@ -17121,9 +18226,9 @@ Requires:       tex(trimclip.sty)
 Requires:       tex(varwidth.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source148:      standalone.tar.xz
-Source149:      standalone.doc.tar.xz
+# from 20260301
+Source152:      standalone.tar.xz
+Source153:      standalone.doc.tar.xz
 
 %description -n texlive-standalone
 A class and package is provided which allows TeX pictures or
@@ -17138,7 +18243,7 @@ configuration file standalone.cfg to redefine the standalone
 environment.
 
 %package -n texlive-standalone-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5asvn74247
+Version:        %{texlive_version}.%{texlive_noarch}.1.5asvn77682
 Release:        0
 Summary:        Documentation for texlive-standalone
 License:        LPPL-1.0
@@ -17178,7 +18283,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/standalone/standalone.tex
 
 %package -n texlive-standardsectioning
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn71479
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.10svn76431
 Release:        0
 License:        LPPL-1.0
 Summary:        Define sectioning commands identical to the standard classes
@@ -17207,9 +18312,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-standardsectioning-doc >= %{texlive_version}
 Provides:       tex(standardsectioning.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source150:      standardsectioning.tar.xz
-Source151:      standardsectioning.doc.tar.xz
+# from 20260301
+Source154:      standardsectioning.tar.xz
+Source155:      standardsectioning.doc.tar.xz
 
 %description -n texlive-standardsectioning
 The package implements the sectioning commands fully compatible
@@ -17218,7 +18323,7 @@ KOMA-Script classes work with packages like titlesec, which
 depend on the implementation of these commands.
 
 %package -n texlive-standardsectioning-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn71479
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.10svn76431
 Release:        0
 Summary:        Documentation for texlive-standardsectioning
 License:        LPPL-1.0
@@ -17288,9 +18393,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xargs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source152:      stanli.tar.xz
-Source153:      stanli.doc.tar.xz
+# from 20260301
+Source156:      stanli.tar.xz
+Source157:      stanli.doc.tar.xz
 
 %description -n texlive-stanli
 stanli is a STructural ANalysis LIbrary based on PGF/TikZ.
@@ -17382,9 +18487,9 @@ Provides:       tex(fsts8x.tfm)
 Provides:       tex(starfont.map)
 Provides:       tex(starfont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source154:      starfont.tar.xz
-Source155:      starfont.doc.tar.xz
+# from 20260301
+Source158:      starfont.tar.xz
+Source159:      starfont.doc.tar.xz
 
 %description -n texlive-starfont
 The package contains StarFontSans and StarFontSerif, two
@@ -17471,7 +18576,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-starfont/strfnser.pfb
 
 %package -n texlive-starray
-Version:        %{texlive_version}.%{texlive_noarch}.1.9bsvn73984
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn78110
 Release:        0
 License:        LPPL-1.0
 Summary:        A structured array (of properties) based on expl3
@@ -17499,10 +18604,12 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-starray-doc >= %{texlive_version}
 Provides:       tex(starray.sty)
+Requires:       tex(pkginfograb.sty)
+Requires:       tex(tokglobalstack.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source156:      starray.tar.xz
-Source157:      starray.doc.tar.xz
+# from 20260301
+Source160:      starray.tar.xz
+Source161:      starray.doc.tar.xz
 
 %description -n texlive-starray
 This package implements vector-like 'structures', like in 'C'
@@ -17514,7 +18621,7 @@ aimed at package authors, not end users. The name "starray" is
 an abbreviation for "structured arrays".
 
 %package -n texlive-starray-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.9bsvn73984
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn78110
 Release:        0
 Summary:        Documentation for texlive-starray
 License:        LPPL-1.0
@@ -17544,6 +18651,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-starray-doc
 %{_texmfdistdir}/doc/latex/starray/README.md
+%{_texmfdistdir}/doc/latex/starray/starray.bib
 %{_texmfdistdir}/doc/latex/starray/starray.pdf
 %{_texmfdistdir}/doc/latex/starray/starray.tex
 
@@ -17580,9 +18688,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-startex-doc >= %{texlive_version}
 Provides:       tex(startex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source158:      startex.tar.xz
-Source159:      startex.doc.tar.xz
+# from 20260301
+Source162:      startex.tar.xz
+Source163:      startex.doc.tar.xz
 
 %description -n texlive-startex
 A TeX format designed to help students write short reports and
@@ -17674,9 +18782,9 @@ Requires:       tex(color.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(shortvrb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source160:      statex.tar.xz
-Source161:      statex.doc.tar.xz
+# from 20260301
+Source164:      statex.tar.xz
+Source165:      statex.doc.tar.xz
 
 %description -n texlive-statex
 A package defining many macros for items of significance in
@@ -17755,9 +18863,9 @@ Requires:       tex(color.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(shortvrb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source162:      statex2.tar.xz
-Source163:      statex2.doc.tar.xz
+# from 20260301
+Source166:      statex2.tar.xz
+Source167:      statex2.doc.tar.xz
 
 %description -n texlive-statex2
 The package defines many macros for items of significance in
@@ -17835,9 +18943,9 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source164:      statistics.tar.xz
-Source165:      statistics.doc.tar.xz
+# from 20260301
+Source168:      statistics.tar.xz
+Source169:      statistics.doc.tar.xz
 
 %description -n texlive-statistics
 The 'statistics' package can compute and typeset statistics
@@ -17922,9 +19030,9 @@ Provides:       tex(statistik.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source166:      statistik.tar.xz
-Source167:      statistik.doc.tar.xz
+# from 20260301
+Source170:      statistik.tar.xz
+Source171:      statistik.doc.tar.xz
 
 %description -n texlive-statistik
 The package counts the numbers of pages per chapter, and stores
@@ -18003,9 +19111,9 @@ Provides:       tex(statmath.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(bm.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source168:      statmath.tar.xz
-Source169:      statmath.doc.tar.xz
+# from 20260301
+Source172:      statmath.tar.xz
+Source173:      statmath.doc.tar.xz
 
 %description -n texlive-statmath
 The package offers anumber of notational conventions to be used
@@ -18095,9 +19203,9 @@ Provides:       tex(icelandic.map)
 Provides:       tex(icelandic.tfm)
 Provides:       tex(staves.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source170:      staves.tar.xz
-Source171:      staves.doc.tar.xz
+# from 20260301
+Source174:      staves.tar.xz
+Source175:      staves.doc.tar.xz
 
 %description -n texlive-staves
 This package contains all the necessary tools to typeset the
@@ -18173,7 +19281,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-staves/icelandic.pfb
 
 %package -n texlive-stdclsdv
-Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        Provide sectioning information for package writers
@@ -18202,18 +19310,18 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-stdclsdv-doc >= %{texlive_version}
 Provides:       tex(stdclsdv.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source172:      stdclsdv.tar.xz
-Source173:      stdclsdv.doc.tar.xz
+# from 20260301
+Source176:      stdclsdv.tar.xz
+Source177:      stdclsdv.doc.tar.xz
 
 %description -n texlive-stdclsdv
 The stdclsdv package is designed for package writers who need
-to know what sectioning divsions are provided by the document's
-class. It also provides a version of \CheckCommand that sets a
-flag rather than printing a warning.
+to know what sectioning divisions are provided by the
+document's class. It also provides a version of \CheckCommand
+that sets a flag rather than printing a warning.
 
 %package -n texlive-stdclsdv-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.1asvn76790
 Release:        0
 Summary:        Documentation for texlive-stdclsdv
 License:        LPPL-1.0
@@ -18280,9 +19388,9 @@ Provides:       tex(stdpage.sty)
 Requires:       tex(hyphenat.sty)
 Requires:       tex(titlesec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source174:      stdpage.tar.xz
-Source175:      stdpage.doc.tar.xz
+# from 20260301
+Source178:      stdpage.tar.xz
+Source179:      stdpage.doc.tar.xz
 
 %description -n texlive-stdpage
 For translations, proofreading, journal contributions etc.
@@ -18362,9 +19470,9 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(pgfopts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source176:      stealcaps.tar.xz
-Source177:      stealcaps.doc.tar.xz
+# from 20260301
+Source180:      stealcaps.tar.xz
+Source181:      stealcaps.doc.tar.xz
 
 %description -n texlive-stealcaps
 This little package is mainly meant to be used when there is a
@@ -18419,7 +19527,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/stealcaps/stealcaps.sty
 
 %package -n texlive-steinmetz
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Print Steinmetz notation
@@ -18449,9 +19557,9 @@ Suggests:       texlive-steinmetz-doc >= %{texlive_version}
 Provides:       tex(steinmetz.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source178:      steinmetz.tar.xz
-Source179:      steinmetz.doc.tar.xz
+# from 20260301
+Source182:      steinmetz.tar.xz
+Source183:      steinmetz.doc.tar.xz
 
 %description -n texlive-steinmetz
 The steinmetz package provides a command for typesetting
@@ -18460,7 +19568,7 @@ electrotechnics as: <modulus>;<argument or phase inside an
 angle symbol> The package makes use of pict2e.
 
 %package -n texlive-steinmetz-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77682
 Release:        0
 Summary:        Documentation for texlive-steinmetz
 License:        LPPL-1.0
@@ -18539,9 +19647,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(natbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source180:      stellenbosch.tar.xz
-Source181:      stellenbosch.doc.tar.xz
+# from 20260301
+Source184:      stellenbosch.tar.xz
+Source185:      stellenbosch.doc.tar.xz
 
 %description -n texlive-stellenbosch
 Note: This bundle should only be used for typesetting legacy
@@ -18705,9 +19813,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(natbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source182:      stellenbosch-2.tar.xz
-Source183:      stellenbosch-2.doc.tar.xz
+# from 20260301
+Source186:      stellenbosch-2.tar.xz
+Source187:      stellenbosch-2.doc.tar.xz
 
 %description -n texlive-stellenbosch-2
 Typesetting dissertations, theses and reports as well as
@@ -18779,7 +19887,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/stellenbosch-2/stb-titlepage.sty
 
 %package -n texlive-step
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.5svn57307
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.5svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        A free Times-like font
@@ -19289,9 +20397,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source184:      step.tar.xz
-Source185:      step.doc.tar.xz
+# from 20260301
+Source188:      step.tar.xz
+Source189:      step.doc.tar.xz
 
 %description -n texlive-step
 The STEP fonts are a free Times-like (i.e., Times replacement)
@@ -19302,7 +20410,7 @@ used in publishing. The fonts were forked from XITS/STIX and
 Type 1 support is provided for legacy TeX engines.
 
 %package -n texlive-step-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.5svn57307
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.5svn77682
 Release:        0
 Summary:        Documentation for texlive-step
 License:        OFL-1.1
@@ -19314,7 +20422,7 @@ Supplements:    (texlive-step and texlive-alldocumentation)
 This package includes the documentation for texlive-step
 
 %package -n texlive-step-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.5svn57307
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.5svn77682
 Release:        0
 Summary:        Severed fonts for texlive-step
 License:        OFL-1.1
@@ -19913,9 +21021,9 @@ Provides:       tex(a_uo326q.enc)
 Provides:       tex(a_voidup.enc)
 Provides:       tex(a_wkkjyg.enc)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source186:      stepgreek.tar.xz
-Source187:      stepgreek.doc.tar.xz
+# from 20260301
+Source190:      stepgreek.tar.xz
+Source191:      stepgreek.doc.tar.xz
 
 %description -n texlive-stepgreek
 This is a beta version of the STEP Greek font. Only a regular
@@ -20013,7 +21121,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-stepgreek/STEPGreekTest-Regular.pfb
 
 %package -n texlive-stex
-Version:        %{texlive_version}.%{texlive_noarch}.3.4.0svn68569
+Version:        %{texlive_version}.%{texlive_noarch}.4.0.0svn76825
 Release:        0
 License:        LPPL-1.0
 Summary:        An infrastructure for semantic preloading of LaTeX documents
@@ -20067,11 +21175,13 @@ Provides:       tex(stex-highlighting.sty)
 Provides:       tex(stex-logo.sty)
 Provides:       tex(stex.cls)
 Provides:       tex(stex.sty)
+Provides:       tex(stexthm-english.ldf)
+Provides:       tex(stexthm-finnish.ldf)
+Provides:       tex(stexthm-ngerman.ldf)
 Provides:       tex(stexthm.sty)
 Provides:       tex(tikzinput.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(article.cls)
-Requires:       tex(babel.sty)
 Requires:       tex(beamer.cls)
 Requires:       tex(beamerarticle.sty)
 Requires:       tex(expl3.sty)
@@ -20079,17 +21189,19 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(ltxcmds.sty)
+Requires:       tex(marginnote.sty)
 Requires:       tex(mdframed.sty)
 Requires:       tex(pdfcomment.sty)
+Requires:       tex(qrcode.sty)
 Requires:       tex(standalone.sty)
 Requires:       tex(thmtools.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source188:      stex.tar.xz
-Source189:      stex.doc.tar.xz
+# from 20260301
+Source192:      stex.tar.xz
+Source193:      stex.doc.tar.xz
 
 %description -n texlive-stex
 The sTeX package collection is a version of TeX/LaTeX that
@@ -20098,7 +21210,7 @@ leaving the document format, essentially turning it into a
 document format for mathematical knowledge management (MKM).
 
 %package -n texlive-stex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.4.0svn68569
+Version:        %{texlive_version}.%{texlive_noarch}.4.0.0svn76825
 Release:        0
 Summary:        Documentation for texlive-stex
 License:        LPPL-1.0
@@ -20134,12 +21246,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/stex/packages/stex-notesslides.tex
 %{_texmfdistdir}/doc/latex/stex/packages/stex-problem.tex
 %{_texmfdistdir}/doc/latex/stex/packages/stex-tikzinput.tex
-%{_texmfdistdir}/doc/latex/stex/stex-devel.tex
 %{_texmfdistdir}/doc/latex/stex/stex-doc.pdf
 %{_texmfdistdir}/doc/latex/stex/stex-doc.tex
 %{_texmfdistdir}/doc/latex/stex/stex-docheader.tex
-%{_texmfdistdir}/doc/latex/stex/stex-manual.pdf
-%{_texmfdistdir}/doc/latex/stex/stex-tutorial.pdf
 
 %files -n texlive-stex
 %{_texmfdistdir}/tex/latex/stex/etc/beamerthemesTeX.sty
@@ -20152,6 +21261,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/stex/etc/stex-backend-tex4ht.cfg
 %{_texmfdistdir}/tex/latex/stex/etc/stex-highlighting.sty
 %{_texmfdistdir}/tex/latex/stex/etc/stex-logo.sty
+%{_texmfdistdir}/tex/latex/stex/etc/stex.cls.ltxml
+%{_texmfdistdir}/tex/latex/stex/etc/stex.sty.ltxml
 %{_texmfdistdir}/tex/latex/stex/etc/stexthm.sty
 %{_texmfdistdir}/tex/latex/stex/hwexam.sty
 %{_texmfdistdir}/tex/latex/stex/img/sTeX-logo.png
@@ -20171,6 +21282,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/stex/ldf/problem-ngerman.ldf
 %{_texmfdistdir}/tex/latex/stex/ldf/problem-russian.ldf
 %{_texmfdistdir}/tex/latex/stex/ldf/stex-en.ldf
+%{_texmfdistdir}/tex/latex/stex/ldf/stexthm-english.ldf
+%{_texmfdistdir}/tex/latex/stex/ldf/stexthm-finnish.ldf
+%{_texmfdistdir}/tex/latex/stex/ldf/stexthm-ngerman.ldf
 %{_texmfdistdir}/tex/latex/stex/notesslides.cls
 %{_texmfdistdir}/tex/latex/stex/notesslides.sty
 %{_texmfdistdir}/tex/latex/stex/problem.sty
@@ -20179,7 +21293,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/stex/tikzinput.sty
 
 %package -n texlive-stickstoo
-Version:        %{texlive_version}.%{texlive_noarch}.1.036svn72368
+Version:        %{texlive_version}.%{texlive_noarch}.1.036svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        A reworking of STIX2
@@ -20787,9 +21901,9 @@ Requires:       tex(txmiaX.tfm)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source190:      stickstoo.tar.xz
-Source191:      stickstoo.doc.tar.xz
+# from 20260301
+Source194:      stickstoo.tar.xz
+Source195:      stickstoo.doc.tar.xz
 
 %description -n texlive-stickstoo
 SticksToo is a reworking of the STIX2 fonts with support files
@@ -20800,7 +21914,7 @@ package using STIX2 letters (Roman and Greek) with newtxmath
 symbols.
 
 %package -n texlive-stickstoo-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.036svn72368
+Version:        %{texlive_version}.%{texlive_noarch}.1.036svn77682
 Release:        0
 Summary:        Documentation for texlive-stickstoo
 License:        OFL-1.1
@@ -20812,7 +21926,7 @@ Supplements:    (texlive-stickstoo and texlive-alldocumentation)
 This package includes the documentation for texlive-stickstoo
 
 %package -n texlive-stickstoo-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.036svn72368
+Version:        %{texlive_version}.%{texlive_noarch}.1.036svn77682
 Release:        0
 Summary:        Severed fonts for texlive-stickstoo
 License:        OFL-1.1
@@ -21440,7 +22554,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-stickstoo/stickstooMath-Regular.pfb
 
 %package -n texlive-stix
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.3svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.3svn78101
 Release:        0
 License:        OFL-1.1
 Summary:        OpenType Unicode maths fonts
@@ -21556,9 +22670,9 @@ Provides:       tex(ts1-stixgeneral.tfm)
 Provides:       tex(ts1stix.fd)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source192:      stix.tar.xz
-Source193:      stix.doc.tar.xz
+# from 20260301
+Source196:      stix.tar.xz
+Source197:      stix.doc.tar.xz
 
 %description -n texlive-stix
 The STIX fonts are a suite of unicode OpenType fonts containing
@@ -21567,7 +22681,7 @@ package is considered obsolete. See stix2-otf and stix2-type1
 instead.
 
 %package -n texlive-stix-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.3svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.3svn78101
 Release:        0
 Summary:        Documentation for texlive-stix
 License:        OFL-1.1
@@ -21579,7 +22693,7 @@ Supplements:    (texlive-stix and texlive-alldocumentation)
 This package includes the documentation for texlive-stix
 
 %package -n texlive-stix-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.3svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.3svn78101
 Release:        0
 Summary:        Severed fonts for texlive-stix
 License:        OFL-1.1
@@ -21801,9 +22915,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-stix2-otf-fonts >= %{texlive_version}
 Suggests:       texlive-stix2-otf-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source194:      stix2-otf.tar.xz
-Source195:      stix2-otf.doc.tar.xz
+# from 20260301
+Source198:      stix2-otf.tar.xz
+Source199:      stix2-otf.doc.tar.xz
 
 %description -n texlive-stix2-otf
 The Scientific and Technical Information eXchange (STIX) fonts
@@ -21904,7 +23018,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-stix2-otf/STIXTwoText-SemiBoldItalic.otf
 
 %package -n texlive-stix2-type1
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.2svn57448
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.2svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Type1 versions of the STIX Two OpenType fonts
@@ -22023,9 +23137,9 @@ Provides:       tex(ts1-stix2text.tfm)
 Provides:       tex(ts1stix2.fd)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source196:      stix2-type1.tar.xz
-Source197:      stix2-type1.doc.tar.xz
+# from 20260301
+Source200:      stix2-type1.tar.xz
+Source201:      stix2-type1.doc.tar.xz
 
 %description -n texlive-stix2-type1
 The stix2 package provides minimal support for using the STIX
@@ -22045,7 +23159,7 @@ versions is ongoing, no further updates are planned to the Type
 1 versions of the fonts.
 
 %package -n texlive-stix2-type1-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.2svn57448
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.2svn77682
 Release:        0
 Summary:        Documentation for texlive-stix2-type1
 License:        OFL-1.1
@@ -22057,7 +23171,7 @@ Supplements:    (texlive-stix2-type1 and texlive-alldocumentation)
 This package includes the documentation for texlive-stix2-type1
 
 %package -n texlive-stix2-type1-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.2svn57448
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.2svn77682
 Release:        0
 Summary:        Severed fonts for texlive-stix2-type1
 License:        OFL-1.1
@@ -22233,7 +23347,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-stix2-type1/STIX2Text-Regular.pfb
 
 %package -n texlive-stmaryrd
-Version:        %{texlive_version}.%{texlive_noarch}.svn22027
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        St Mary Road symbols for theoretical computer science
@@ -22282,9 +23396,9 @@ Provides:       tex(stmary9.tfm)
 Provides:       tex(stmaryrd.map)
 Provides:       tex(stmaryrd.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source198:      stmaryrd.tar.xz
-Source199:      stmaryrd.doc.tar.xz
+# from 20260301
+Source202:      stmaryrd.tar.xz
+Source203:      stmaryrd.doc.tar.xz
 
 %description -n texlive-stmaryrd
 The fonts were originally distributed as Metafont sources only,
@@ -22294,7 +23408,7 @@ is provided for use under LaTeX; the package supports the
 what is loaded, for those who don't need the whole font.
 
 %package -n texlive-stmaryrd-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn22027
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-stmaryrd
 License:        LPPL-1.0
@@ -22306,7 +23420,7 @@ Supplements:    (texlive-stmaryrd and texlive-alldocumentation)
 This package includes the documentation for texlive-stmaryrd
 
 %package -n texlive-stmaryrd-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn22027
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-stmaryrd
 License:        LPPL-1.0
@@ -22401,7 +23515,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-stmaryrd/stmary9.pfb
 
 %package -n texlive-stocksize
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn72957
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.1svn77230
 Release:        0
 License:        LPPL-1.0
 Summary:        A flexible and easy interface to paper (stock) dimensions
@@ -22430,10 +23544,11 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-stocksize-doc >= %{texlive_version}
 Provides:       tex(stocksize.sty)
 Requires:       tex(geometry.sty)
+Requires:       tex(l3keys2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source200:      stocksize.tar.xz
-Source201:      stocksize.doc.tar.xz
+# from 20260301
+Source204:      stocksize.tar.xz
+Source205:      stocksize.doc.tar.xz
 
 %description -n texlive-stocksize
 The package geometry is excellent for customizing the page
@@ -22444,7 +23559,7 @@ package circumvents this situation by resizing the paper
 (stock) size to the new page layout.
 
 %package -n texlive-stocksize-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn72957
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.1svn77230
 Release:        0
 Summary:        Documentation for texlive-stocksize
 License:        LPPL-1.0
@@ -22481,7 +23596,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/stocksize/stocksize.sty
 
 %package -n texlive-storebox
-Version:        %{texlive_version}.%{texlive_noarch}.1.3asvn64967
+Version:        %{texlive_version}.%{texlive_noarch}.1.3asvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Storing information for reuse
@@ -22514,9 +23629,9 @@ Requires:       tex(collectbox.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(pgf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source202:      storebox.tar.xz
-Source203:      storebox.doc.tar.xz
+# from 20260301
+Source206:      storebox.tar.xz
+Source207:      storebox.doc.tar.xz
 
 %description -n texlive-storebox
 The package provides "store boxes" whose user interface matches
@@ -22527,7 +23642,7 @@ pdfLaTeX and LuaLaTeX; when DVI is output, store boxes behave
 the same as save boxes.
 
 %package -n texlive-storebox-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3asvn64967
+Version:        %{texlive_version}.%{texlive_noarch}.1.3asvn77682
 Release:        0
 Summary:        Documentation for texlive-storebox
 License:        LPPL-1.0
@@ -22595,9 +23710,9 @@ Provides:       tex(storecmd.sty)
 Requires:       tex(catoptions.sty)
 Requires:       tex(ltxtools.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source204:      storecmd.tar.xz
-Source205:      storecmd.doc.tar.xz
+# from 20260301
+Source208:      storecmd.tar.xz
+Source209:      storecmd.doc.tar.xz
 
 %description -n texlive-storecmd
 The package provides macros for command definition that save
@@ -22679,9 +23794,9 @@ Requires:       tex(xfp.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source206:      strands.tar.xz
-Source207:      strands.doc.tar.xz
+# from 20260301
+Source210:      strands.tar.xz
+Source211:      strands.doc.tar.xz
 
 %description -n texlive-strands
 This package permits to draw objects constructed from strands,
@@ -22724,6 +23839,95 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-strands
 %{_texmfdistdir}/tex/latex/strands/strands.sty
 
+%package -n texlive-stretchy
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn75140
+Release:        0
+License:        LPPL-1.0
+Summary:        Macros for creating stretchy TeX symbols
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-stretchy-doc >= %{texlive_version}
+Provides:       tex(stretchy.tex)
+Provides:       tex(strty-logo.tex)
+Provides:       tex(strty-repeatedsyms.tex)
+Provides:       tex(strty-stretchedsyms.tex)
+Provides:       tex(strty-utils.tex)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source212:      stretchy.tar.xz
+Source213:      stretchy.doc.tar.xz
+
+%description -n texlive-stretchy
+This package helps to create "stretchy" math symbols. It
+provides various ready-made stretchy symbols, as well as
+auxiliary macros for creating them. The package has no
+dependencies and supports both pdfTeX and LuaTeX.
+
+%package -n texlive-stretchy-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn75140
+Release:        0
+Summary:        Documentation for texlive-stretchy
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-stretchy and texlive-alldocumentation)
+
+%description -n texlive-stretchy-doc
+This package includes the documentation for texlive-stretchy
+
+%post -n texlive-stretchy
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-stretchy
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-stretchy
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-stretchy-doc
+%{_texmfdistdir}/doc/generic/stretchy/Documentation/internals.tex
+%{_texmfdistdir}/doc/generic/stretchy/Documentation/introduction.tex
+%{_texmfdistdir}/doc/generic/stretchy/Documentation/preamble.tex
+%{_texmfdistdir}/doc/generic/stretchy/Documentation/stretchy-docs.pdf
+%{_texmfdistdir}/doc/generic/stretchy/Documentation/stretchy-docs.tex
+%{_texmfdistdir}/doc/generic/stretchy/Documentation/symbols.tex
+%{_texmfdistdir}/doc/generic/stretchy/README.md
+
+%files -n texlive-stretchy
+%{_texmfdistdir}/tex/generic/stretchy/stretchy.tex
+%{_texmfdistdir}/tex/generic/stretchy/strty-logo.tex
+%{_texmfdistdir}/tex/generic/stretchy/strty-repeatedsyms.tex
+%{_texmfdistdir}/tex/generic/stretchy/strty-stretchedsyms.tex
+%{_texmfdistdir}/tex/generic/stretchy/strty-utils.tex
+
 %package -n texlive-stricttex
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2betasvn56320
 Release:        0
@@ -22754,9 +23958,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-stricttex-doc >= %{texlive_version}
 Provides:       tex(stricttex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source208:      stricttex.tar.xz
-Source209:      stricttex.doc.tar.xz
+# from 20260301
+Source214:      stricttex.tar.xz
+Source215:      stricttex.doc.tar.xz
 
 %description -n texlive-stricttex
 This is a small, LuaLaTeX-only package providing you with
@@ -22837,9 +24041,9 @@ Provides:       tex(string-diagrams.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source210:      string-diagrams.tar.xz
-Source211:      string-diagrams.doc.tar.xz
+# from 20260301
+Source216:      string-diagrams.tar.xz
+Source217:      string-diagrams.doc.tar.xz
 
 %description -n texlive-string-diagrams
 This LaTeX package has been designed for effortless and
@@ -22882,7 +24086,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/string-diagrams/string-diagrams.sty
 
 %package -n texlive-stringenc
-Version:        %{texlive_version}.%{texlive_noarch}.1.12svn52982
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Converting a string between different encodings
@@ -22954,9 +24158,9 @@ Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
 Requires:       tex(pdfescape.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source212:      stringenc.tar.xz
-Source213:      stringenc.doc.tar.xz
+# from 20260301
+Source218:      stringenc.tar.xz
+Source219:      stringenc.doc.tar.xz
 
 %description -n texlive-stringenc
 This package provides \StringEncodingConvert for converting a
@@ -22964,7 +24168,7 @@ string between different encodings. Both LaTeX and plain-TeX
 are supported.
 
 %package -n texlive-stringenc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.12svn52982
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn77682
 Release:        0
 Summary:        Documentation for texlive-stringenc
 License:        LPPL-1.0
@@ -23040,7 +24244,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/stringenc/stringenc.sty
 
 %package -n texlive-stringstrings
-Version:        %{texlive_version}.%{texlive_noarch}.1.24svn57097
+Version:        %{texlive_version}.%{texlive_noarch}.1.24svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        String manipulation for cosmetic and programming application
@@ -23070,9 +24274,9 @@ Suggests:       texlive-stringstrings-doc >= %{texlive_version}
 Provides:       tex(stringstrings.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source214:      stringstrings.tar.xz
-Source215:      stringstrings.doc.tar.xz
+# from 20260301
+Source220:      stringstrings.tar.xz
+Source221:      stringstrings.doc.tar.xz
 
 %description -n texlive-stringstrings
 The package provides a large and sundry set of macros for the
@@ -23087,7 +24291,7 @@ macros may be strung together sequentially and nested (after a
 fashion) to achieve rather complex manipulations.
 
 %package -n texlive-stringstrings-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.24svn57097
+Version:        %{texlive_version}.%{texlive_noarch}.1.24svn77682
 Release:        0
 Summary:        Documentation for texlive-stringstrings
 License:        LPPL-1.0
@@ -23158,9 +24362,9 @@ Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source216:      structmech.tar.xz
-Source217:      structmech.doc.tar.xz
+# from 20260301
+Source222:      structmech.tar.xz
+Source223:      structmech.doc.tar.xz
 
 %description -n texlive-structmech
 This package provides a collection of TikZ commands that allow
@@ -23208,7 +24412,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/structmech/structmech.sty
 
 %package -n texlive-struktex
-Version:        %{texlive_version}.%{texlive_noarch}.2.3c_0_g7d3fc5bsvn47931
+Version:        %{texlive_version}.%{texlive_noarch}.3.0asvn75565
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw Nassi-Shneiderman charts
@@ -23239,18 +24443,19 @@ Provides:       tex(strukdoc.sty)
 Provides:       tex(struktex.sty)
 Provides:       tex(struktxf.sty)
 Provides:       tex(struktxp.sty)
+Requires:       tex(cleveref.sty)
 Requires:       tex(color.sty)
 Requires:       tex(curves.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(ifthen.sty)
-Requires:       tex(nameref.sty)
 Requires:       tex(pict2e.sty)
 Requires:       tex(url.sty)
+Requires:       tex(varioref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source218:      struktex.tar.xz
-Source219:      struktex.doc.tar.xz
+# from 20260301
+Source224:      struktex.tar.xz
+Source225:      struktex.doc.tar.xz
 
 %description -n texlive-struktex
 Even in the age of OOP one must develop algorithms.
@@ -23263,7 +24468,7 @@ for alternatives, etc. The charts are drawn using the picture
 environment (using pict2e for preference).
 
 %package -n texlive-struktex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3c_0_g7d3fc5bsvn47931
+Version:        %{texlive_version}.%{texlive_noarch}.3.0asvn75565
 Release:        0
 Summary:        Documentation for texlive-struktex
 License:        LPPL-1.0
@@ -23295,16 +24500,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-struktex-doc
 %{_texmfdistdir}/doc/latex/struktex/LIESMICH.md
 %{_texmfdistdir}/doc/latex/struktex/README.md
-%{_texmfdistdir}/doc/latex/struktex/struktex-test-0.nss
+%{_texmfdistdir}/doc/latex/struktex/build-config.lua
+%{_texmfdistdir}/doc/latex/struktex/build.lua
 %{_texmfdistdir}/doc/latex/struktex/struktex-test-1.tex
 %{_texmfdistdir}/doc/latex/struktex/struktex-test-2.tex
 %{_texmfdistdir}/doc/latex/struktex/struktex-test-3.tex
-%{_texmfdistdir}/doc/latex/struktex/struktex-test-4.tex
+%{_texmfdistdir}/doc/latex/struktex/struktex-tst-00.nss
 %{_texmfdistdir}/doc/latex/struktex/struktex.de.pdf
 %{_texmfdistdir}/doc/latex/struktex/struktex.el
 %{_texmfdistdir}/doc/latex/struktex/struktex.en.pdf
-%{_texmfdistdir}/doc/latex/struktex/struktex.makemake
-%{_texmfdistdir}/doc/latex/struktex/struktex.mk
+%{_texmfdistdir}/doc/latex/struktex/struktxf-tst-00.tex
+%{_texmfdistdir}/doc/latex/struktex/struktxp-tst-00.tex
 
 %files -n texlive-struktex
 %{_texmfdistdir}/tex/latex/struktex/strukdoc.sty
@@ -23313,7 +24519,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/struktex/struktxp.sty
 
 %package -n texlive-sttools
-Version:        %{texlive_version}.%{texlive_noarch}.3.0svn60736
+Version:        %{texlive_version}.%{texlive_noarch}.3.5svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Various macros
@@ -23343,25 +24549,22 @@ Suggests:       texlive-sttools-doc >= %{texlive_version}
 Provides:       tex(cuted.sty)
 Provides:       tex(floatpag.sty)
 Provides:       tex(flushend.sty)
-Provides:       tex(midfloat.sty)
 Provides:       tex(stabular.sty)
 Provides:       tex(stfloats.sty)
-Provides:       tex(texsort.sty)
 Requires:       tex(array.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source220:      sttools.tar.xz
-Source221:      sttools.doc.tar.xz
+# from 20260301
+Source226:      sttools.tar.xz
+Source227:      sttools.doc.tar.xz
 
 %description -n texlive-sttools
 A collection of tools and macros, providing: miscellaneous
 float control, page styles for floats, multipage tabulars, even
 columns at end of twocolumn region, switching between one- and
-two-column anywhere, simulating the effect of "midfloats", a
-package to manipulate numerical lists and arrays.
+two-column anywhere,
 
 %package -n texlive-sttools-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.0svn60736
+Version:        %{texlive_version}.%{texlive_noarch}.3.5svn77682
 Release:        0
 Summary:        Documentation for texlive-sttools
 License:        LPPL-1.0
@@ -23394,23 +24597,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/sttools/cuted.pdf
 %{_texmfdistdir}/doc/latex/sttools/floatpag.pdf
 %{_texmfdistdir}/doc/latex/sttools/flushend.pdf
-%{_texmfdistdir}/doc/latex/sttools/midfloat.pdf
 %{_texmfdistdir}/doc/latex/sttools/stabular.pdf
 %{_texmfdistdir}/doc/latex/sttools/stfloats.pdf
 %{_texmfdistdir}/doc/latex/sttools/sttools.pdf
-%{_texmfdistdir}/doc/latex/sttools/texsort.pdf
 
 %files -n texlive-sttools
 %{_texmfdistdir}/tex/latex/sttools/cuted.sty
 %{_texmfdistdir}/tex/latex/sttools/floatpag.sty
 %{_texmfdistdir}/tex/latex/sttools/flushend.sty
-%{_texmfdistdir}/tex/latex/sttools/midfloat.sty
 %{_texmfdistdir}/tex/latex/sttools/stabular.sty
 %{_texmfdistdir}/tex/latex/sttools/stfloats.sty
-%{_texmfdistdir}/tex/latex/sttools/texsort.sty
 
 %package -n texlive-stubs
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn70341
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn75437
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Create tear-off stubs at the bottom of a page
@@ -23441,9 +24640,9 @@ Provides:       tex(stubs.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(textpos.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source222:      stubs.tar.xz
-Source223:      stubs.doc.tar.xz
+# from 20260301
+Source228:      stubs.tar.xz
+Source229:      stubs.doc.tar.xz
 
 %description -n texlive-stubs
 The \stubs command creates as many repetitions as possible of
@@ -23451,7 +24650,7 @@ its argument, at the bottom of the page; these stubs may be
 used (for example) for contact information.
 
 %package -n texlive-stubs-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn70341
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn75437
 Release:        0
 Summary:        Documentation for texlive-stubs
 License:        GPL-2.0-or-later
@@ -23526,9 +24725,9 @@ Requires:       tex(geometry.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tocloft.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source224:      studenthandouts.tar.xz
-Source225:      studenthandouts.doc.tar.xz
+# from 20260301
+Source230:      studenthandouts.tar.xz
+Source231:      studenthandouts.doc.tar.xz
 
 %description -n texlive-studenthandouts
 This package can be used to generate a single master document
@@ -23588,7 +24787,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/studenthandouts/studenthandouts.sty
 
 %package -n texlive-sty2dtx
-Version:        %{texlive_version}.%{texlive_noarch}.2.4svn64967
+Version:        %{texlive_version}.%{texlive_noarch}.2.4svn76924
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Create a .dtx file from a .sty file
@@ -23626,16 +24825,16 @@ Requires:       perl(strict)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source226:      sty2dtx.tar.xz
-Source227:      sty2dtx.doc.tar.xz
+# from 20260301
+Source232:      sty2dtx.tar.xz
+Source233:      sty2dtx.doc.tar.xz
 
 %description -n texlive-sty2dtx
 The package provides a Perl script that converts a .sty file
 (LaTeX package) to .dtx format (documented LaTeX source), by
 surrounding macro definitions with macro and macrocode
 environments. The macro name is automatically inserted as an
-argument to the macro environemnt. Code lines outside macro
+argument to the macro environment. Code lines outside macro
 definitions are wrapped only in macrocode environments. Empty
 lines are removed. The script should not be thought to be fool
 proof and 100% accurate but rather as a good start to the
@@ -23646,7 +24845,7 @@ automatically to the "Usage" section of the .dtx file. A
 corresponding .ins file can be generated as well.
 
 %package -n texlive-sty2dtx-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.4svn64967
+Version:        %{texlive_version}.%{texlive_noarch}.2.4svn76924
 Release:        0
 Summary:        Documentation for texlive-sty2dtx
 License:        GPL-2.0-or-later
@@ -23684,7 +24883,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/sty2dtx/sty2dtx.pl
 
 %package -n texlive-styledcmd
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.1svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.1svn76924
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Handling multiple versions of user-defined macros
@@ -23716,9 +24915,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(lt3rawobjects.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source228:      styledcmd.tar.xz
-Source229:      styledcmd.doc.tar.xz
+# from 20260301
+Source234:      styledcmd.tar.xz
+Source235:      styledcmd.doc.tar.xz
 
 %description -n texlive-styledcmd
 This package allows creating and maintaining different versions
@@ -23727,7 +24926,7 @@ every document. This includes expandable and protected
 commands.
 
 %package -n texlive-styledcmd-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.1svn70491
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.1svn76924
 Release:        0
 Summary:        Documentation for texlive-styledcmd
 License:        GPL-2.0-or-later
@@ -23791,9 +24990,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-suanpan-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source230:      suanpan.tar.xz
-Source231:      suanpan.doc.tar.xz
+# from 20260301
+Source236:      suanpan.tar.xz
+Source237:      suanpan.doc.tar.xz
 
 %description -n texlive-suanpan
 These macros are described in Denis Roegel: MetaPost macros for
@@ -23838,7 +25037,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/suanpan/suanpan.mp
 
 %package -n texlive-suanpan-l3
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.4svn72540
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.4svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Traditional Chinese 7-bids suanpan (abacus) package based on l3draw
@@ -23872,9 +25071,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source232:      suanpan-l3.tar.xz
-Source233:      suanpan-l3.doc.tar.xz
+# from 20260301
+Source238:      suanpan-l3.tar.xz
+Source239:      suanpan-l3.doc.tar.xz
 
 %description -n texlive-suanpan-l3
 This traditional Chinese 7-bids abacus drawing package utilizes
@@ -23897,7 +25096,7 @@ configured through package options, suanpan environment
 options, or the \suanpanset macro.
 
 %package -n texlive-suanpan-l3-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.4svn72540
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.4svn76924
 Release:        0
 Summary:        Documentation for texlive-suanpan-l3
 License:        LPPL-1.0
@@ -23936,7 +25135,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/suanpan-l3/suanpan-l3.sty
 
 %package -n texlive-subdepth
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Unify maths subscript height
@@ -23965,9 +25164,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-subdepth-doc >= %{texlive_version}
 Provides:       tex(subdepth.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source234:      subdepth.tar.xz
-Source235:      subdepth.doc.tar.xz
+# from 20260301
+Source240:      subdepth.tar.xz
+Source241:      subdepth.doc.tar.xz
 
 %description -n texlive-subdepth
 This package is based on code (posted long ago to comp.text.tex
@@ -23977,7 +25176,7 @@ lower when there is a superscript as well, but this can look
 odd in some situations.
 
 %package -n texlive-subdepth-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn77682
 Release:        0
 Summary:        Documentation for texlive-subdepth
 License:        LPPL-1.0
@@ -24043,9 +25242,9 @@ Suggests:       texlive-subdocs-doc >= %{texlive_version}
 Provides:       tex(subdocs.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source236:      subdocs.tar.xz
-Source237:      subdocs.doc.tar.xz
+# from 20260301
+Source242:      subdocs.tar.xz
+Source243:      subdocs.doc.tar.xz
 
 %description -n texlive-subdocs
 This is an experimental package aiming to provide a different
@@ -24092,7 +25291,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/subdocs/subdocs.sty
 
 %package -n texlive-subeqn
-Version:        %{texlive_version}.%{texlive_noarch}.2.0csvn71864
+Version:        %{texlive_version}.%{texlive_noarch}.2.0csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Package for subequation numbering
@@ -24121,23 +25320,23 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-subeqn-doc >= %{texlive_version}
 Provides:       tex(subeqn.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source238:      subeqn.tar.xz
-Source239:      subeqn.doc.tar.xz
+# from 20260301
+Source244:      subeqn.tar.xz
+Source245:      subeqn.doc.tar.xz
 
 %description -n texlive-subeqn
 Sometimes it is necessary to be able to refer to subexpressions
 of an equation. In order to do that these subexpressions should
 be numbered. In standard LaTeX there is no provision for this.
 To solve this problem Stephen Gildea once wrote subeqn.sty for
-LaTeX 2.09; Donald Arsenau rewrote the macros and Johannes
+LaTeX 2.09; Donald Arseneau rewrote the macros and Johannes
 Braams made them available for LaTeX2e. Note that this package
 is not compatible with the package subeqnarray (written by
 Johannes Braams), but it can be used together with the LaTeX
 class options leqno and fleqn.
 
 %package -n texlive-subeqn-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0csvn71864
+Version:        %{texlive_version}.%{texlive_noarch}.2.0csvn77682
 Release:        0
 Summary:        Documentation for texlive-subeqn
 License:        LPPL-1.0
@@ -24177,7 +25376,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/subeqn/subeqn.sty
 
 %package -n texlive-subeqnarray
-Version:        %{texlive_version}.%{texlive_noarch}.2.1esvn71865
+Version:        %{texlive_version}.%{texlive_noarch}.2.1fsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Equation array with sub numbering
@@ -24206,9 +25405,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-subeqnarray-doc >= %{texlive_version}
 Provides:       tex(subeqnarray.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source240:      subeqnarray.tar.xz
-Source241:      subeqnarray.doc.tar.xz
+# from 20260301
+Source246:      subeqnarray.tar.xz
+Source247:      subeqnarray.doc.tar.xz
 
 %description -n texlive-subeqnarray
 This package defines the subeqnarray and subeqnarray*
@@ -24220,7 +25419,7 @@ consider the alignment capabilities of the amsmath bundle,
 which produce better results than eqnarray-related macros.
 
 %package -n texlive-subeqnarray-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1esvn71865
+Version:        %{texlive_version}.%{texlive_noarch}.2.1fsvn77682
 Release:        0
 Summary:        Documentation for texlive-subeqnarray
 License:        LPPL-1.0
@@ -24260,7 +25459,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/subeqnarray/subeqnarray.sty
 
 %package -n texlive-subfig
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Figures broken into subfigures
@@ -24293,9 +25492,9 @@ Requires:       tex(caption.sty)
 Requires:       tex(caption3.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source242:      subfig.tar.xz
-Source243:      subfig.doc.tar.xz
+# from 20260301
+Source248:      subfig.tar.xz
+Source249:      subfig.doc.tar.xz
 
 %description -n texlive-subfig
 The package provides support for the manipulation and reference
@@ -24317,7 +25516,7 @@ functionality of the package is provided by the (more recent
 still) subcaption package.
 
 %package -n texlive-subfig-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 Summary:        Documentation for texlive-subfig
 License:        LPPL-1.0
@@ -24392,9 +25591,9 @@ Suggests:       texlive-subfigmat-doc >= %{texlive_version}
 Provides:       tex(subfigmat.sty)
 Requires:       tex(subfigure.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source244:      subfigmat.tar.xz
-Source245:      subfigmat.doc.tar.xz
+# from 20260301
+Source250:      subfigmat.tar.xz
+Source251:      subfigmat.doc.tar.xz
 
 %description -n texlive-subfigmat
 Defines an array/matrix-type environment that is used with the
@@ -24469,9 +25668,9 @@ Suggests:       texlive-subfigure-doc >= %{texlive_version}
 Provides:       tex(subfigure.cfg)
 Provides:       tex(subfigure.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source246:      subfigure.tar.xz
-Source247:      subfigure.doc.tar.xz
+# from 20260301
+Source252:      subfigure.tar.xz
+Source253:      subfigure.doc.tar.xz
 
 %description -n texlive-subfigure
 Provides support for the manipulation and reference of small or
@@ -24529,7 +25728,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/subfigure/subfigure.sty
 
 %package -n texlive-subfiles
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn56977
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Individual typesetting of subfiles of a "main" document
@@ -24563,9 +25762,9 @@ Provides:       tex(subfiles.sty)
 Requires:       tex(import.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source248:      subfiles.tar.xz
-Source249:      subfiles.doc.tar.xz
+# from 20260301
+Source254:      subfiles.tar.xz
+Source255:      subfiles.doc.tar.xz
 
 %description -n texlive-subfiles
 Using this package the user can handle multi-file projects more
@@ -24574,7 +25773,7 @@ files by themselves and to process the main file that includes
 them, without making any changes to either.
 
 %package -n texlive-subfiles-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.2svn56977
+Version:        %{texlive_version}.%{texlive_noarch}.2.2svn77682
 Release:        0
 Summary:        Documentation for texlive-subfiles
 License:        LPPL-1.0
@@ -24611,7 +25810,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/subfiles/subfiles.sty
 
 %package -n texlive-subfloat
-Version:        %{texlive_version}.%{texlive_noarch}.2.14svn29349
+Version:        %{texlive_version}.%{texlive_noarch}.2.14svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Sub-numbering for figures and tables
@@ -24640,9 +25839,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-subfloat-doc >= %{texlive_version}
 Provides:       tex(subfloat.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source250:      subfloat.tar.xz
-Source251:      subfloat.doc.tar.xz
+# from 20260301
+Source256:      subfloat.tar.xz
+Source257:      subfloat.doc.tar.xz
 
 %description -n texlive-subfloat
 This package enables sub-numbering of floats (figures and
@@ -24653,7 +25852,7 @@ figure, and manages their placement; subfloat only affects
 captions and numbering.
 
 %package -n texlive-subfloat-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.14svn29349
+Version:        %{texlive_version}.%{texlive_noarch}.2.14svn77682
 Release:        0
 Summary:        Documentation for texlive-subfloat
 License:        LPPL-1.0
@@ -24691,7 +25890,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/subfloat/subfloat.sty
 
 %package -n texlive-substances
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2asvn40989
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2asvn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        A database of chemicals
@@ -24729,9 +25928,9 @@ Requires:       tex(siunitx.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xtemplate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source252:      substances.tar.xz
-Source253:      substances.doc.tar.xz
+# from 20260301
+Source258:      substances.tar.xz
+Source259:      substances.doc.tar.xz
 
 %description -n texlive-substances
 The package provides the means to create a database-like file
@@ -24740,7 +25939,7 @@ retrieved in the document; an index of the chemicals mentioned
 in the document can be created..
 
 %package -n texlive-substances-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2asvn40989
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2asvn76924
 Release:        0
 Summary:        Documentation for texlive-substances
 License:        LPPL-1.0
@@ -24779,7 +25978,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/substances/substances.sty
 
 %package -n texlive-substr
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn16117
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Deal with substrings in strings
@@ -24808,9 +26007,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-substr-doc >= %{texlive_version}
 Provides:       tex(substr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source254:      substr.tar.xz
-Source255:      substr.doc.tar.xz
+# from 20260301
+Source260:      substr.tar.xz
+Source261:      substr.doc.tar.xz
 
 %description -n texlive-substr
 The package provides commands to deal with substrings of
@@ -24820,7 +26019,7 @@ after a substring, and count the number of occurrences of a
 substring.
 
 %package -n texlive-substr-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn16117
+Version:        %{texlive_version}.%{texlive_noarch}.1.2svn77682
 Release:        0
 Summary:        Documentation for texlive-substr
 License:        LPPL-1.0
@@ -24887,9 +26086,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-subsupscripts-doc >= %{texlive_version}
 Provides:       tex(subsupscripts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source256:      subsupscripts.tar.xz
-Source257:      subsupscripts.doc.tar.xz
+# from 20260301
+Source262:      subsupscripts.tar.xz
+Source263:      subsupscripts.doc.tar.xz
 
 %description -n texlive-subsupscripts
 The package provides a comprehensive and flexible set of
@@ -24964,9 +26163,9 @@ Suggests:       texlive-subtext-doc >= %{texlive_version}
 Provides:       tex(subtext.sty)
 Requires:       tex(amstext.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source258:      subtext.tar.xz
-Source259:      subtext.doc.tar.xz
+# from 20260301
+Source264:      subtext.tar.xz
+Source265:      subtext.doc.tar.xz
 
 %description -n texlive-subtext
 This LaTeX package gives easy access to text-style subscripts
@@ -25013,7 +26212,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/subtext/subtext.sty
 
 %package -n texlive-sudoku
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn67189
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Create sudoku grids
@@ -25042,9 +26241,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-sudoku-doc >= %{texlive_version}
 Provides:       tex(sudoku.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source260:      sudoku.tar.xz
-Source261:      sudoku.doc.tar.xz
+# from 20260301
+Source266:      sudoku.tar.xz
+Source267:      sudoku.doc.tar.xz
 
 %description -n texlive-sudoku
 The sudoku package provides an environment for typesetting
@@ -25058,7 +26257,7 @@ has blank sudoku grids (or worksheets), but you will not need
 to print them from there if you have this package installed.
 
 %package -n texlive-sudoku-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn67189
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn78101
 Release:        0
 Summary:        Documentation for texlive-sudoku
 License:        LPPL-1.0
@@ -25095,7 +26294,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/sudoku/sudoku.sty
 
 %package -n texlive-sudokubundle
-Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        A set of sudoku-related packages
@@ -25126,9 +26325,9 @@ Provides:       tex(createsudoku.sty)
 Provides:       tex(printsudoku.sty)
 Provides:       tex(solvesudoku.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source262:      sudokubundle.tar.xz
-Source263:      sudokubundle.doc.tar.xz
+# from 20260301
+Source268:      sudokubundle.tar.xz
+Source269:      sudokubundle.doc.tar.xz
 
 %description -n texlive-sudokubundle
 The bundle provides three packages: printsudoku, which provides
@@ -25141,7 +26340,7 @@ user sets via macros. The bundle comes with a set of
 ready-prepared puzzle files.
 
 %package -n texlive-sudokubundle-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn78101
 Release:        0
 Summary:        Documentation for texlive-sudokubundle
 License:        LPPL-1.0
@@ -25245,9 +26444,9 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(titletoc.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source264:      suftesi.tar.xz
-Source265:      suftesi.doc.tar.xz
+# from 20260301
+Source270:      suftesi.tar.xz
+Source271:      suftesi.doc.tar.xz
 
 %description -n texlive-suftesi
 The class can be used to typeset any kind of book (originally
@@ -25327,9 +26526,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source266:      sugconf.tar.xz
-Source267:      sugconf.doc.tar.xz
+# from 20260301
+Source272:      sugconf.tar.xz
+Source273:      sugconf.doc.tar.xz
 
 %description -n texlive-sugconf
 The class may be used to typeset articles to be published in
@@ -25409,9 +26608,9 @@ Provides:       tex(sunpath.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source268:      sunpath.tar.xz
-Source269:      sunpath.doc.tar.xz
+# from 20260301
+Source274:      sunpath.tar.xz
+Source275:      sunpath.doc.tar.xz
 
 %description -n texlive-sunpath
 This package can help to draw sun path charts using a polar
@@ -25469,7 +26668,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/sunpath/sunpath.sty
 
 %package -n texlive-superiors
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn69387
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Attach superior figures to a font family
@@ -25504,9 +26703,9 @@ Requires:       tex(trace.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source270:      superiors.tar.xz
-Source271:      superiors.doc.tar.xz
+# from 20260301
+Source276:      superiors.tar.xz
+Source277:      superiors.doc.tar.xz
 
 %description -n texlive-superiors
 The package allows the attachment of an arbitrary superior
@@ -25514,7 +26713,7 @@ figures font to a font family that lacks one. (Superior figures
 are commonly used as footnote markers.)
 
 %package -n texlive-superiors-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn69387
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn77682
 Release:        0
 Summary:        Documentation for texlive-superiors
 License:        LPPL-1.0
@@ -25563,7 +26762,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/superiors/superiors.sty
 
 %package -n texlive-supertabular
-Version:        %{texlive_version}.%{texlive_noarch}.4.2csvn71854
+Version:        %{texlive_version}.%{texlive_noarch}.4.2csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A multi-page tables package
@@ -25592,9 +26791,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-supertabular-doc >= %{texlive_version}
 Provides:       tex(supertabular.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source272:      supertabular.tar.xz
-Source273:      supertabular.doc.tar.xz
+# from 20260301
+Source278:      supertabular.tar.xz
+Source279:      supertabular.doc.tar.xz
 
 %description -n texlive-supertabular
 The package was a predecessor of longtable; the newer package
@@ -25603,7 +26802,7 @@ more flexible, in many cases, but supertabular retains its
 usefulness in a few situations where longtable has problems.
 
 %package -n texlive-supertabular-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.2csvn71854
+Version:        %{texlive_version}.%{texlive_noarch}.4.2csvn77682
 Release:        0
 Summary:        Documentation for texlive-supertabular
 License:        LPPL-1.0
@@ -25674,9 +26873,9 @@ Requires:       tex(amsmath.sty)
 Requires:       tex(euscript.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source274:      suppose.tar.xz
-Source275:      suppose.doc.tar.xz
+# from 20260301
+Source280:      suppose.tar.xz
+Source281:      suppose.doc.tar.xz
 
 %description -n texlive-suppose
 This package provides commands for abbreviating the word
@@ -25753,9 +26952,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-susy-doc >= %{texlive_version}
 Provides:       tex(susy.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source276:      susy.tar.xz
-Source277:      susy.doc.tar.xz
+# from 20260301
+Source282:      susy.tar.xz
+Source283:      susy.doc.tar.xz
 
 %description -n texlive-susy
 The package provides abbreviations of longer expressions.
@@ -25797,7 +26996,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/susy/susy.sty
 
 %package -n texlive-svg
-Version:        %{texlive_version}.%{texlive_noarch}.2.02ksvn70626
+Version:        %{texlive_version}.%{texlive_noarch}.2.02ksvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Include and extract SVG pictures in LaTeX documents
@@ -25850,9 +27049,9 @@ Requires:       tex(trimspaces.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source278:      svg.tar.xz
-Source279:      svg.doc.tar.xz
+# from 20260301
+Source284:      svg.tar.xz
+Source285:      svg.doc.tar.xz
 
 %description -n texlive-svg
 This bundle contains the two packages svg and svg-extract. The
@@ -25869,7 +27068,7 @@ in different graphic formats, exactly as it is rendered within
 the LaTeX document, using either ImageMagick or Ghostscript.
 
 %package -n texlive-svg-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.02ksvn70626
+Version:        %{texlive_version}.%{texlive_noarch}.2.02ksvn77682
 Release:        0
 Summary:        Documentation for texlive-svg
 License:        LPPL-1.0
@@ -25938,8 +27137,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source280:      svg-inkscape.doc.tar.xz
+# from 20260301
+Source286:      svg-inkscape.doc.tar.xz
 
 %description -n texlive-svg-inkscape
 The document demonstrates the use of SVG images in LaTeX
@@ -26008,9 +27207,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-svgcolor-doc >= %{texlive_version}
 Provides:       tex(svgcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source281:      svgcolor.tar.xz
-Source282:      svgcolor.doc.tar.xz
+# from 20260301
+Source287:      svgcolor.tar.xz
+Source288:      svgcolor.doc.tar.xz
 
 %description -n texlive-svgcolor
 The package defines the W3C Scalable Vector Graphics (SVG)
@@ -26081,9 +27280,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-svn-doc >= %{texlive_version}
 Provides:       tex(svn.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source283:      svn.tar.xz
-Source284:      svn.doc.tar.xz
+# from 20260301
+Source289:      svn.tar.xz
+Source290:      svn.doc.tar.xz
 
 %description -n texlive-svn
 The svn package lets you typeset (in LaTeX) the value of
@@ -26176,9 +27375,9 @@ Requires:       tex(graphics.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(pgf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source285:      svn-multi.tar.xz
-Source286:      svn-multi.doc.tar.xz
+# from 20260301
+Source291:      svn-multi.tar.xz
+Source292:      svn-multi.doc.tar.xz
 
 %description -n texlive-svn-multi
 This package lets you typeset keywords of the version control
@@ -26232,7 +27431,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/svn-multi/svnkw.sty
 
 %package -n texlive-svn-prov
-Version:        %{texlive_version}.%{texlive_noarch}.3.1862svn64967
+Version:        %{texlive_version}.%{texlive_noarch}.3.1862svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Subversion variants of \Provides... macros
@@ -26261,9 +27460,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-svn-prov-doc >= %{texlive_version}
 Provides:       tex(svn-prov.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source287:      svn-prov.tar.xz
-Source288:      svn-prov.doc.tar.xz
+# from 20260301
+Source293:      svn-prov.tar.xz
+Source294:      svn-prov.doc.tar.xz
 
 %description -n texlive-svn-prov
 The package introduces Subversion variants of the standard
@@ -26273,7 +27472,7 @@ keywords. The file name may also be given explicitly as an
 optional argument.
 
 %package -n texlive-svn-prov-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1862svn64967
+Version:        %{texlive_version}.%{texlive_noarch}.3.1862svn77682
 Release:        0
 Summary:        Documentation for texlive-svn-prov
 License:        LPPL-1.0
@@ -26342,9 +27541,9 @@ Requires:       tex(fancyhdr.sty)
 Requires:       tex(fancyheadings.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source289:      svninfo.tar.xz
-Source290:      svninfo.doc.tar.xz
+# from 20260301
+Source295:      svninfo.tar.xz
+Source296:      svninfo.doc.tar.xz
 
 %description -n texlive-svninfo
 A package for incorporating the values of Subversion keywords
@@ -26433,9 +27632,9 @@ Provides:       tex(SVRsymbols.tfm)
 Provides:       tex(svrsymbols.map)
 Provides:       tex(svrsymbols.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source291:      svrsymbols.tar.xz
-Source292:      svrsymbols.doc.tar.xz
+# from 20260301
+Source297:      svrsymbols.tar.xz
+Source298:      svrsymbols.doc.tar.xz
 
 %description -n texlive-svrsymbols
 The svrsymbols package is a LaTeX interface to the SVRsymbols
@@ -26516,7 +27715,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-svrsymbols/SVRsymbols.pfb
 
 %package -n texlive-swebib
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Swedish bibliography styles
@@ -26544,19 +27743,19 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-swebib-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source293:      swebib.tar.xz
-Source294:      swebib.doc.tar.xz
+# from 20260301
+Source299:      swebib.tar.xz
+Source300:      swebib.doc.tar.xz
 
 %description -n texlive-swebib
 The bundle contains Swedish versions of the standard
 bibliography styles, and of the style plainnat. The styles
-should be funtionally equivalent to the corresponding original
+should be functionally equivalent to the corresponding original
 styles, apart from the Swedish translations. The styles do not
 implement Swedish collation.
 
 %package -n texlive-swebib-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 Summary:        Documentation for texlive-swebib
 License:        LPPL-1.0
@@ -26630,9 +27829,9 @@ Requires:       tex(wrapfig.sty)
 Requires:       tex(wrapfig2.sty)
 Requires:       tex(xfp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source295:      swfigure.tar.xz
-Source296:      swfigure.doc.tar.xz
+# from 20260301
+Source301:      swfigure.tar.xz
+Source302:      swfigure.doc.tar.xz
 
 %description -n texlive-swfigure
 Five different display modes are defined in order to place in a
@@ -26724,9 +27923,9 @@ Requires:       tex(pst-plot.sty)
 Requires:       tex(pstcol.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source297:      swimgraf.tar.xz
-Source298:      swimgraf.doc.tar.xz
+# from 20260301
+Source303:      swimgraf.tar.xz
+Source304:      swimgraf.doc.tar.xz
 
 %description -n texlive-swimgraf
 The package provides two macros that produce representations of
@@ -26811,6 +28010,83 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/swimgraf/swimgraf.cfg
 %{_texmfdistdir}/tex/latex/swimgraf/swimgraf.sty
 
+%package -n texlive-switch
+Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn77050
+Release:        0
+License:        LPPL-1.0
+Summary:        A constant time/expandable switch/case
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-switch-doc >= %{texlive_version}
+Provides:       tex(switch.sty)
+Requires:       tex(pkginfograb.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source305:      switch.tar.xz
+Source306:      switch.doc.tar.xz
+
+%description -n texlive-switch
+This package defines two commands (and aliases) aimed at
+implementing a constant time switch/case alike command.
+
+%package -n texlive-switch-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn77050
+Release:        0
+Summary:        Documentation for texlive-switch
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-switch and texlive-alldocumentation)
+
+%description -n texlive-switch-doc
+This package includes the documentation for texlive-switch
+
+%post -n texlive-switch
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-switch
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-switch
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-switch-doc
+%{_texmfdistdir}/doc/latex/switch/README.md
+%{_texmfdistdir}/doc/latex/switch/switch.bib
+%{_texmfdistdir}/doc/latex/switch/switch.pdf
+%{_texmfdistdir}/doc/latex/switch/switch.tex
+
+%files -n texlive-switch
+%{_texmfdistdir}/tex/latex/switch/switch.sty
+
 %package -n texlive-swrule
 Version:        %{texlive_version}.%{texlive_noarch}.svn54267
 Release:        0
@@ -26840,8 +28116,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(swrule.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source299:      swrule.tar.xz
+# from 20260301
+Source307:      swrule.tar.xz
 
 %description -n texlive-swrule
 Defines commands that create rules split into a (specified)
@@ -26869,7 +28145,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/swrule/swrule.sty
 
 %package -n texlive-swungdash
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn64204
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset a swung dash in LaTeX
@@ -26901,19 +28177,19 @@ Requires:       tex(accsupp.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(iftex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source300:      swungdash.tar.xz
-Source301:      swungdash.doc.tar.xz
+# from 20260301
+Source308:      swungdash.tar.xz
+Source309:      swungdash.doc.tar.xz
 
 %description -n texlive-swungdash
 The swung dash (U+2053) is a useful character traditionally
-used in typsetting dictionaries, but not supported by most
+used in typesetting dictionaries, but not supported by most
 typefaces. This package provides one simple command to typeset
 a swung dash in XeLaTeX and LuaLaTeX, by applying
 transformations to the given font's glyph for a tilde.
 
 %package -n texlive-swungdash-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn64204
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn76924
 Release:        0
 Summary:        Documentation for texlive-swungdash
 License:        LPPL-1.0
@@ -26983,9 +28259,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source302:      syllogism.tar.xz
-Source303:      syllogism.doc.tar.xz
+# from 20260301
+Source310:      syllogism.tar.xz
+Source311:      syllogism.doc.tar.xz
 
 %description -n texlive-syllogism
 The package provides a simple, configurable, way for neatly
@@ -27063,9 +28339,9 @@ Provides:       tex(symbats3.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(fontspec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source304:      symbats3.tar.xz
-Source305:      symbats3.doc.tar.xz
+# from 20260301
+Source312:      symbats3.tar.xz
+Source313:      symbats3.doc.tar.xz
 
 %description -n texlive-symbats3
 This package makes available for LaTeX the glyphs in Feorag's
@@ -27114,7 +28390,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/symbats3/symbats3.sty
 
 %package -n texlive-symbol
-Version:        %{texlive_version}.%{texlive_noarch}.svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.svn77161
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        URW 'Base 35' font pack for LaTeX
@@ -27158,14 +28434,14 @@ Provides:       tex(usy.map)
 Provides:       tex(usyr.tfm)
 Provides:       tex(uusy.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source306:      symbol.tar.xz
+# from 20260301
+Source314:      symbol.tar.xz
 
 %description -n texlive-symbol
 A set of fonts for use as "drop-in" replacements for Adobe's
 basic set, comprising: Century Schoolbook (substituting for
 Adobe's New Century Schoolbook); Dingbats (substituting for
-Adobe's Zapf Dingbats); Nimbus Mono L (substituting for Abobe's
+Adobe's Zapf Dingbats); Nimbus Mono L (substituting for Adobe's
 Courier); Nimbus Roman No9 L (substituting for Adobe's Times);
 Nimbus Sans L (substituting for Adobe's Helvetica); Standard
 Symbols L (substituting for Adobe's Symbol); URW Bookman; URW
@@ -27174,7 +28450,7 @@ Chancery); URW Gothic L Book (substituting for Adobe's Avant
 Garde); and URW Palladio L (substituting for Adobe's Palatino).
 
 %package -n texlive-symbol-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.svn77161
 Release:        0
 Summary:        Severed fonts for texlive-symbol
 License:        GPL-2.0-or-later
@@ -27261,9 +28537,9 @@ Suggests:       texlive-sympycalc-doc >= %{texlive_version}
 Provides:       tex(SympyCalc.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source307:      sympycalc.tar.xz
-Source308:      sympycalc.doc.tar.xz
+# from 20260301
+Source315:      sympycalc.tar.xz
+Source316:      sympycalc.doc.tar.xz
 
 %description -n texlive-sympycalc
 This package provides some commands (mostly for French users)
@@ -27343,8 +28619,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(synctex.1)
 Provides:       man(synctex.5)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source309:      synctex.doc.tar.xz
+# from 20260301
+Source317:      synctex.doc.tar.xz
 
 %description -n texlive-synctex
 SyncTeX allows navigating between the TeX source and (usually
@@ -27407,9 +28683,9 @@ Requires:       tex(keyval.sty)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source310:      synproof.tar.xz
-Source311:      synproof.doc.tar.xz
+# from 20260301
+Source318:      synproof.tar.xz
+Source319:      synproof.doc.tar.xz
 
 %description -n texlive-synproof
 The package provides a set of macros based on PSTricks that
@@ -27485,9 +28761,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-syntax-doc >= %{texlive_version}
 Provides:       tex(syntax.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source312:      syntax.tar.xz
-Source313:      syntax.doc.tar.xz
+# from 20260301
+Source320:      syntax.tar.xz
+Source321:      syntax.doc.tar.xz
 
 %description -n texlive-syntax
 Create syntax diagrams using special environments and commands
@@ -27564,9 +28840,9 @@ Suggests:       texlive-syntaxdi-doc >= %{texlive_version}
 Provides:       tex(syntaxdi.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source314:      syntaxdi.tar.xz
-Source315:      syntaxdi.doc.tar.xz
+# from 20260301
+Source322:      syntaxdi.tar.xz
+Source323:      syntaxdi.doc.tar.xz
 
 %description -n texlive-syntaxdi
 This package provides TikZ styles for creating special syntax
@@ -27611,7 +28887,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/syntaxdi/syntaxdi.sty
 
 %package -n texlive-synthslant
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn71883
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn76662
 Release:        0
 License:        LPPL-1.0
 Summary:        Synthetically slant text
@@ -27647,9 +28923,9 @@ Requires:       tex(pst-3d.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source316:      synthslant.tar.xz
-Source317:      synthslant.doc.tar.xz
+# from 20260301
+Source324:      synthslant.tar.xz
+Source325:      synthslant.doc.tar.xz
 
 %description -n texlive-synthslant
 This package allows to slant ("shear") short pieces of text to
@@ -27660,7 +28936,7 @@ currently the pdfLaTeX back-end works best concerning output
 quality and processing speed.
 
 %package -n texlive-synthslant-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1asvn71883
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn76662
 Release:        0
 Summary:        Documentation for texlive-synthslant
 License:        LPPL-1.0
@@ -27737,9 +29013,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(qtree.sty)
 Requires:       tex(synttree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source318:      syntrace.tar.xz
-Source319:      syntrace.doc.tar.xz
+# from 20260301
+Source326:      syntrace.tar.xz
+Source327:      syntrace.doc.tar.xz
 
 %description -n texlive-syntrace
 This package adds support for traces in trees created using
@@ -27813,9 +29089,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-synttree-doc >= %{texlive_version}
 Provides:       tex(synttree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source320:      synttree.tar.xz
-Source321:      synttree.doc.tar.xz
+# from 20260301
+Source328:      synttree.tar.xz
+Source329:      synttree.doc.tar.xz
 
 %description -n texlive-synttree
 A package to typeset syntactic trees such as those used in
@@ -27859,7 +29135,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/synttree/synttree.sty
 
 %package -n texlive-systeme
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.35svn74047
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.51svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Format systems of equations
@@ -27888,11 +29164,12 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-systeme-doc >= %{texlive_version}
 Provides:       tex(systeme.sty)
 Provides:       tex(systeme.tex)
+Requires:       tex(simplekv.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source322:      systeme.tar.xz
-Source323:      systeme.doc.tar.xz
+# from 20260301
+Source330:      systeme.tar.xz
+Source331:      systeme.doc.tar.xz
 
 %description -n texlive-systeme
 The package allows you to enter systems of equations or
@@ -27904,7 +29181,7 @@ inequations de facon intuitive, et produit un affichage ou les
 termes et les signes sont alignes verticalement.
 
 %package -n texlive-systeme-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.35svn74047
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.51svn77682
 Release:        0
 Summary:        Documentation for texlive-systeme
 License:        LPPL-1.0
@@ -27935,12 +29212,97 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-systeme-doc
 %{_texmfdistdir}/doc/generic/systeme/README
-%{_texmfdistdir}/doc/generic/systeme/systeme_fr.pdf
-%{_texmfdistdir}/doc/generic/systeme/systeme_fr.tex
+%{_texmfdistdir}/doc/generic/systeme/systeme_doc_fr.pdf
+%{_texmfdistdir}/doc/generic/systeme/systeme_doc_fr.tex
 
 %files -n texlive-systeme
 %{_texmfdistdir}/tex/generic/systeme/systeme.sty
 %{_texmfdistdir}/tex/generic/systeme/systeme.tex
+
+%package -n texlive-sysuthesis
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn77646
+Release:        0
+License:        LPPL-1.0
+Summary:        LaTeX thesis template for Sun Yat-sen University
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-sysuthesis-doc >= %{texlive_version}
+Provides:       tex(sysuthesis.cls)
+Provides:       tex(sysuvisual.sty)
+Requires:       tex(biblatex.sty)
+Requires:       tex(emptypage.sty)
+Requires:       tex(gbt7714.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source332:      sysuthesis.tar.xz
+Source333:      sysuthesis.doc.tar.xz
+
+%description -n texlive-sysuthesis
+This class is intended for typesetting Sun Yat-sen University
+dissertations with LaTeX, providing support for bachelor,
+master, doctoral thesis. Compilation of this class requires
+either the XeLaTeX or the LuaLaTeX engine.
+
+%package -n texlive-sysuthesis-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.0svn77646
+Release:        0
+Summary:        Documentation for texlive-sysuthesis
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-sysuthesis and texlive-alldocumentation)
+Provides:       locale(texlive-sysuthesis-doc:zh)
+
+%description -n texlive-sysuthesis-doc
+This package includes the documentation for texlive-sysuthesis
+
+%post -n texlive-sysuthesis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-sysuthesis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-sysuthesis
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-sysuthesis-doc
+%{_texmfdistdir}/doc/latex/sysuthesis/LICENSE
+%{_texmfdistdir}/doc/latex/sysuthesis/README.md
+%{_texmfdistdir}/doc/latex/sysuthesis/sysuthesis.pdf
+
+%files -n texlive-sysuthesis
+%{_texmfdistdir}/tex/latex/sysuthesis/sysuthesis.cls
+%{_texmfdistdir}/tex/latex/sysuthesis/sysuvisual.sty
 
 %package -n texlive-t-angles
 Version:        %{texlive_version}.%{texlive_noarch}.svn71991
@@ -27973,9 +29335,9 @@ Suggests:       texlive-t-angles-doc >= %{texlive_version}
 Provides:       tex(t-angles.sty)
 Requires:       tex(ifpdf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source324:      t-angles.tar.xz
-Source325:      t-angles.doc.tar.xz
+# from 20260301
+Source334:      t-angles.tar.xz
+Source335:      t-angles.doc.tar.xz
 
 %description -n texlive-t-angles
 A LaTeX2e package for drawing tangles, trees, Hopf algebra
@@ -28066,9 +29428,9 @@ Provides:       tex(x2.enc)
 Requires:       tex(amssymb.sty)
 Requires:       tex(enumerate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source326:      t2.tar.xz
-Source327:      t2.doc.tar.xz
+# from 20260301
+Source336:      t2.tar.xz
+Source337:      t2.doc.tar.xz
 
 %description -n texlive-t2
 The T2 bundle provides a variety of separate support functions
@@ -28244,9 +29606,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-tabbing-doc >= %{texlive_version}
 Provides:       tex(Tabbing.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source328:      tabbing.tar.xz
-Source329:      tabbing.doc.tar.xz
+# from 20260301
+Source338:      tabbing.tar.xz
+Source339:      tabbing.doc.tar.xz
 
 %description -n texlive-tabbing
 By default, some of the tabbing environment's commands clash
@@ -28326,9 +29688,9 @@ Provides:       tex(tabfigures.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source330:      tabfigures.tar.xz
-Source331:      tabfigures.doc.tar.xz
+# from 20260301
+Source340:      tabfigures.tar.xz
+Source341:      tabfigures.doc.tar.xz
 
 %description -n texlive-tabfigures
 Knuth designed his original fonts with tabular figures (figures
@@ -28376,7 +29738,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tabfigures/tabfigures.sty
 
 %package -n texlive-table-fct
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn41849
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw a variations table of functions and a convexity table of its graph
@@ -28413,18 +29775,18 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xifthen.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source332:      table-fct.tar.xz
-Source333:      table-fct.doc.tar.xz
+# from 20260301
+Source342:      table-fct.tar.xz
+Source343:      table-fct.doc.tar.xz
 
 %description -n texlive-table-fct
 Draw a variations table of functions and a convexity table of
-its graph This version offers two environnements, to draw
+its graph This version offers two environments, to draw a
 variations table of a function and a convexity table of its
 graph.
 
 %package -n texlive-table-fct-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn41849
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76924
 Release:        0
 Summary:        Documentation for texlive-table-fct
 License:        LPPL-1.0
@@ -28502,9 +29864,9 @@ Requires:       tex(pst-plot.sty)
 Requires:       tex(pst-tree.sty)
 Requires:       tex(pstcol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source334:      tableaux.tar.xz
-Source335:      tableaux.doc.tar.xz
+# from 20260301
+Source344:      tableaux.tar.xz
+Source345:      tableaux.doc.tar.xz
 
 %description -n texlive-tableaux
 The package uses PSTricks; the user may define the width of the
@@ -28553,7 +29915,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tableaux/tableau.sty
 
 %package -n texlive-tablefootnote
-Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn32804
+Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Permit footnotes in tables
@@ -28586,9 +29948,9 @@ Requires:       tex(letltxmacro.sty)
 Requires:       tex(ltxcmds.sty)
 Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source336:      tablefootnote.tar.xz
-Source337:      tablefootnote.doc.tar.xz
+# from 20260301
+Source346:      tablefootnote.tar.xz
+Source347:      tablefootnote.doc.tar.xz
 
 %description -n texlive-tablefootnote
 The package provides the command \tablefootnote to be used in a
@@ -28597,7 +29959,7 @@ work (and when using \footnotemark and \footnotetext, and
 adjusting the counter as necessary, is too much work).
 
 %package -n texlive-tablefootnote-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn32804
+Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn77682
 Release:        0
 Summary:        Documentation for texlive-tablefootnote
 License:        LPPL-1.0
@@ -28635,7 +29997,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/tablefootnote/tablefootnote.sty
 
 %package -n texlive-tableof
-Version:        %{texlive_version}.%{texlive_noarch}.1.4dsvn72313
+Version:        %{texlive_version}.%{texlive_noarch}.1.4dsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Tagging tables of contents
@@ -28665,9 +30027,9 @@ Suggests:       texlive-tableof-doc >= %{texlive_version}
 Provides:       tex(tableof.sty)
 Requires:       tex(atveryend.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source338:      tableof.tar.xz
-Source339:      tableof.doc.tar.xz
+# from 20260301
+Source348:      tableof.tar.xz
+Source349:      tableof.doc.tar.xz
 
 %description -n texlive-tableof
 The package provides the commands to flag chapters or sections
@@ -28681,7 +30043,7 @@ used once, the command
 used to provide several tables.
 
 %package -n texlive-tableof-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4dsvn72313
+Version:        %{texlive_version}.%{texlive_noarch}.1.4dsvn77682
 Release:        0
 Summary:        Documentation for texlive-tableof
 License:        LPPL-1.0
@@ -28716,6 +30078,92 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-tableof
 %{_texmfdistdir}/tex/latex/tableof/tableof.sty
+
+%package -n texlive-tablericons
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn77184
+Release:        0
+License:        LPPL-1.0
+Summary:        Use tablerIcons through LaTeX commands
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-tablericons-doc >= %{texlive_version}
+Provides:       tex(tablericons.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(graphicx.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(simplekv.sty)
+Requires:       tex(xstring.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source350:      tablericons.tar.xz
+Source351:      tablericons.doc.tar.xz
+
+%description -n texlive-tablericons
+This package provides commands like twemojis which allow to use
+tablerIcons through LaTeX commands. This relies on images (PDF
+from SVG), so no fancy unicode-font stuff is needed and it
+should work on every installation.
+
+%package -n texlive-tablericons-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn77184
+Release:        0
+Summary:        Documentation for texlive-tablericons
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-tablericons and texlive-alldocumentation)
+
+%description -n texlive-tablericons-doc
+This package includes the documentation for texlive-tablericons
+
+%post -n texlive-tablericons
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-tablericons
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-tablericons
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-tablericons-doc
+%{_texmfdistdir}/doc/latex/tablericons/README.md
+%{_texmfdistdir}/doc/latex/tablericons/tablericons-doc.pdf
+%{_texmfdistdir}/doc/latex/tablericons/tablericons-doc.tex
+%{_texmfdistdir}/doc/latex/tablericons/tablericonsfilledbindings.tex
+%{_texmfdistdir}/doc/latex/tablericons/tablericonsoutlinebindings.tex
+
+%files -n texlive-tablericons
+%{_texmfdistdir}/tex/latex/tablericons/tablericons-filled-all.pdf
+%{_texmfdistdir}/tex/latex/tablericons/tablericons-outline-all.pdf
+%{_texmfdistdir}/tex/latex/tablericons/tablericons.sty
 
 %prep
 %setup -q -c -T
@@ -28843,6 +30291,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/songbook/contrib/crd2sb/crd2sb \
 	       %{_texmfdistdir}/doc/latex/songbook/contrib/modulate \
@@ -28865,8 +30315,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Extend python3 scripts with major version only if any
     for scr in %{_texmfdistdir}/doc/latex/songproj/song2tex.py
     do
@@ -28891,8 +30341,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -28905,6 +30353,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-sourcecodepro
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/adobe/sourcecodepro/*.{pf[ab],[ot]tf} \
@@ -28973,8 +30423,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	    mv ${pfb}.tmp $pfb
 	done
     popd
-    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-sourcesanspro
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/adobe/sourcesanspro/*.{pf[ab],[ot]tf} \
@@ -29043,8 +30493,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	    mv ${pfb}.tmp $pfb
 	done
     popd
-    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-sourceserifpro
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/adobe/sourceserifpro/*.{pf[ab],[ot]tf} \
@@ -29107,14 +30557,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	    esac
 	done
     popd
-    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-spark-otf
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/spark-otf/*.{pf[ab],[ot]tf}
@@ -29144,14 +30594,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-spectral
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/production/spectral/*.{pf[ab],[ot]tf} \
@@ -29202,12 +30652,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-spectral.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-spectral.conf
-    tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Correct wrong luaTeX scripts if any
     for scr in %{_texmfdistdir}/scripts/spelling/spelling-main.lua \
 	       %{_texmfdistdir}/scripts/spelling/spelling-recurse.lua \
@@ -29226,12 +30676,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive
     # Extend python3 scripts with major version only if any
     for scr in %{_texmfdistdir}/scripts/spix/spix.py
     do
@@ -29256,12 +30706,64 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive
+    # Move font files
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-splentinex
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/splentinex/*.{pf[ab],[ot]tf} \
+		%{buildroot}/%{_texmfdistdir}/fonts/type1/public/splentinex/*.{pf[ab],[ot]tf}
+    do
+        test -e $font || continue
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-splentinex
+        base=${font##*/}
+        ln -sf %{_datadir}/fonts/texlive-splentinex/${base} ${font}
+    done
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-splentinex/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-splentinex/
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-splentinex.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Use this to disable the TeX fonts of the package -->
+	<!--    texlive-splentinex    -->
+	<!-- Be aware that the configurations in the files    -->
+	<!-- 09-texlive*.conf will not be affected by this    -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <rejectfont>
+	    <glob>%{_datadir}/fonts/texlive-splentinex/*</glob>
+	  </rejectfont>
+	</fontconfig>
+	EOF
+
+    mkdir -p %{buildroot}%{_sysconfdir}/fonts/conf.d
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/55-texlive-splentinex.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Disable plain Type1 font to let fontconfig       -->
+	<!-- prefere the OpenType and TrueType fonts          -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <selectfont>
+	    <rejectfont>
+	      <glob>%{_datadir}/fonts/texlive-splentinex/*.pf*</glob>
+	    </rejectfont>
+	  </selectfont>
+	</fontconfig>
+	EOF
+    ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-splentinex.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-splentinex.conf
+    tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/scripts/splitindex/splitindex_main.tlu
     do
@@ -29281,16 +30783,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:117} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/sqltex/sqltex
     do
@@ -29303,16 +30805,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/srcredact/srcredact.pl
     do
@@ -29325,10 +30827,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -29346,6 +30844,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-starfont
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/starfont/*.{pf[ab],[ot]tf}
@@ -29375,10 +30877,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -29391,6 +30889,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-staves
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/staves/*.{pf[ab],[ot]tf}
@@ -29420,10 +30922,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -29434,6 +30932,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-step
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/step/*.{pf[ab],[ot]tf} \
@@ -29484,8 +30986,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-step.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-step.conf
-    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-stepgreek
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/stepgreek/*.{pf[ab],[ot]tf}
@@ -29515,10 +31017,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-stickstoo
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/stickstoo/*.{pf[ab],[ot]tf}
@@ -29548,8 +31050,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-stix
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/stix/*.{pf[ab],[ot]tf} \
@@ -29618,8 +31120,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	    esac
 	done
     popd
-    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-stix2-otf
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/stix2-otf/*.{pf[ab],[ot]tf}
@@ -29667,8 +31169,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	    esac
 	done
     popd
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-stix2-type1
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/stix2-type1/*.{pf[ab],[ot]tf}
@@ -29716,8 +31218,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	    esac
 	done
     popd
-    tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-stmaryrd
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/stmaryrd/*.{pf[ab],[ot]tf}
@@ -29747,10 +31249,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -29773,8 +31271,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive
+    # Make possible scripts usable if any
+    for scr in %{_texmfdistdir}/doc/latex/struktex/build.lua
+    do
+	test -e %{buildroot}/$scr || continue
+	chmod 0755 %{buildroot}/$scr
+    done
+    # Avoid /usr/bin/env <prog>
+    for scr in %{_texmfdistdir}/doc/latex/struktex/build.lua
+    do
+	test -e %{buildroot}/$scr || continue
+	ed %{buildroot}/${scr} <<-'EOF'
+		1
+		s@/env[[:blank:]]\+@/@
+		.
+		w
+		q
+	EOF
+    done
+    tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/sty2dtx/sty2dtx.pl
     do
@@ -29787,12 +31309,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -29844,14 +31360,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-svrsymbols
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/svrsymbols/*.{pf[ab],[ot]tf} \
@@ -29902,12 +31424,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-svrsymbols.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-svrsymbols.conf
-    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -29916,6 +31432,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-symbol
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/urw/symbol/*.{pf[ab],[ot]tf}
@@ -29945,17 +31469,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -29966,6 +31482,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:325} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:326} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/generic/t2/etc/rubibtex/rubibtex.bat
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/generic/t2/etc/rumkidx/rumkidxd.bat
@@ -29982,18 +31508,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:339} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:340} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:341} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:342} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:343} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:344} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:345} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:346} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:347} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:348} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:349} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:350} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:351} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
