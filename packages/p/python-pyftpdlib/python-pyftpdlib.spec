@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyftpdlib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,19 +24,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyftpdlib
-Version:        2.0.1
+Version:        2.2.0
 Release:        0
 Summary:        Asynchronous FTP server library for Python
 License:        MIT
 URL:            https://github.com/giampaolo/pyftpdlib/
 Source:         https://files.pythonhosted.org/packages/source/p/pyftpdlib/pyftpdlib-%{version}.tar.gz
-Source1:        keycert.pem
-# PATCH-FIX-UPSTREAM https://github.com/giampaolo/pyftpdlib/pull/656 Avoid the multiprocessing forkserver method
-Patch0:         py314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pyasynchat}
+BuildRequires:  %{python_module pyasyncore}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -60,9 +59,8 @@ The Python FTP server library provides a high-level interface to
 write very asynchronous FTP servers with Python.
 
 %prep
-%autosetup -p1 -n pyftpdlib-%{version}
-sed -i '1 {/env python/ d}' pyftpdlib/test/*.py
-cp %{SOURCE1} pyftpdlib/test
+%autosetup -n pyftpdlib-%{version}
+sed -i '1 {/env python/ d}' tests/*.py
 
 %build
 %pyproject_wheel
@@ -90,7 +88,6 @@ EOF
 export PYTHONPATH=%%{buildroot}%%{$python_sitelib}
 export PYTHONDONTWRITEBYTECODE=1
 # gh#giampaolo/pyftpdlib#540
-##export PYTEST_ADDOPTS="-k 'not (TestFtpListingCmdsTLSMixin or TestConfigurableOptions or TestFtpStoreDataTLSMixin)'"
 # gh#giampaolo/pyftpdlib#478
 export TZ=GMT+1
 $python -m pytest

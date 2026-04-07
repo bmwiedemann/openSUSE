@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  1 18:45:02 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
+
+- Update to 2.2.0:
+  * Fix 100% CPU spin in TLS connections after timeout
+  * Fix OPTS UTF8 command always returning 200
+  * Remove setup.py, use pyproject.toml
+  * Python 3.14 forkserver fix now included upstream (drop py314.patch)
+- Add BuildRequires: python-pytest-xdist 
+- Drop Source1 (keycert.pem): now included in upstream tarball
+- Drop py314.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Sep 11 12:40:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.0.1
