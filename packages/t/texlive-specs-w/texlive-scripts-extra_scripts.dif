@@ -99,15 +99,15 @@
        tcBatchHyphenFormat=$2
        formatsForHyphen=`getFormatsForHyphen`
        formatsForHyphenFmt=`echo "$formatsForHyphen" | myFmt | sed 's@^@  @'`
-@@ -1095,7 +1064,7 @@ Valid PAPER settings:
-       ;;
+@@ -1135,7 +1104,7 @@ Valid MODE settings:"
  
+     # 
      rehash)
 -      mktexlsr
 +      ( unset KPSE_DOT; mktexlsr )
        ;;
      
-     # 
+     version|--version)
 --- texmf-dist/scripts/texlive-extra/texlinks.sh
 +++ texmf-dist/scripts/texlive-extra/texlinks.sh	2018-05-03 08:15:39.979645610 +0000
 @@ -100,7 +100,7 @@ setupTmpDir()

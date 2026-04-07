@@ -1,10 +1,10 @@
 ---
  texmf-dist/scripts/texlive/fmtutil-sys.sh |    1 +
- texmf-dist/scripts/texlive/fmtutil.pl     |   20 ++++++++++++++------
+ texmf-dist/scripts/texlive/fmtutil.pl     |   29 +++++++++++++++++++++--------
  texmf-dist/scripts/texlive/mktexlsr.pl    |    9 +++++++--
  texmf-dist/scripts/texlive/updmap-sys.sh  |    1 +
- texmf-dist/scripts/texlive/updmap.pl      |   16 ++++++++++------
- 5 files changed, 33 insertions(+), 14 deletions(-)
+ texmf-dist/scripts/texlive/updmap.pl      |   18 ++++++++++--------
+ 5 files changed, 40 insertions(+), 18 deletions(-)
 
 --- texmf-dist/scripts/texlive/fmtutil-sys.sh
 +++ texmf-dist/scripts/texlive/fmtutil-sys.sh	2018-05-11 10:51:14.298775065 +0000
@@ -15,21 +15,29 @@
 +umask 022
  exec fmtutil --sys ${1+"$@"}
 --- texmf-dist/scripts/texlive/fmtutil.pl
-+++ texmf-dist/scripts/texlive/fmtutil.pl	2022-04-07 08:13:07.738444358 +0000
-@@ -10,16 +10,16 @@
- # History:
++++ texmf-dist/scripts/texlive/fmtutil.pl	2026-03-31 10:39:20.826995472 +0000
+@@ -11,7 +11,7 @@
  # Original shell script 2001 Thomas Esser, public domain
  
+ use strict; use warnings;
 -my $TEXMFROOT;
 +my $TEXMFDIST;
  
  BEGIN {
    $^W = 1;
+@@ -30,14 +30,14 @@ BEGIN {
+     $Master = "$Master/../..";
+   }
+   $ENV{"PATH"} = "$bindir:$ENV{PATH}";
 -  $TEXMFROOT = `kpsewhich -var-value=TEXMFROOT`;
+-  if ($? || ! $TEXMFROOT) {
+-    warn "$0: kpsewhich -var-value=TEXMFROOT failed, aborting early.\n";
+-    warn "$0:   got TEXMFROOT value: $TEXMFROOT" if $TEXMFROOT;
 +  $TEXMFDIST = `kpsewhich -var-value=TEXMFDIST`;
-   if ($?) {
--    die "$0: kpsewhich -var-value=TEXMFROOT failed, aborting early.\n";
-+    die "$0: kpsewhich -var-value=TEXMFDIST failed, aborting early.\n";
++  if ($? || ! $TEXMFDIST) {
++    warn "$0: kpsewhich -var-value=TEXMFDIST failed, aborting early.\n";
++    warn "$0:   got TEXMFDIST value: $TEXMFDIST" if $TEXMFDIST;
+     die  "$0:   had PATH: $ENV{PATH}\n";
    }
 -  chomp($TEXMFROOT);
 -  unshift(@INC, "$TEXMFROOT/tlpkg", "$TEXMFROOT/texmf-dist/scripts/texlive");
@@ -38,7 +46,7 @@
    require "mktexlsr.pl";
    TeX::Update->import();
  }
-@@ -76,7 +76,7 @@ TeXLive::TLUtils::prepend_own_path();
+@@ -94,7 +94,7 @@ TeXLive::TLUtils::prepend_own_path();
  # this function checks by itself whether it is running on windows or not
  reset_root_home();
  
@@ -47,13 +55,13 @@
  chomp(our $TEXMFVAR = `kpsewhich -var-value=TEXMFVAR`);
  chomp(our $TEXMFSYSVAR = `kpsewhich -var-value=TEXMFSYSVAR`);
  chomp(our $TEXMFCONFIG = `kpsewhich -var-value=TEXMFCONFIG`);
-@@ -418,7 +418,14 @@ sub callback_build_formats {
+@@ -437,7 +437,14 @@ sub callback_build_formats {
          TeXLive::TLWinGoo::maybe_make_ro ($tmpdir);
        }
      } else {
 +      my ($uid, $gid);
        $tmpdir = File::Temp::tempdir(CLEANUP => 1);
-+      if ($> == 0 && ($uid=getpwnam("nobody")) && ($gid=getgrnam("mktex"))) {
++      if ($> == 0 && ($uid=getpwnam("mktex")) && ($gid=getgrnam("mktex"))) {
 +        my $cnt = chown $uid, $gid, $tmpdir;
 +        die "could not create directory $tmpdir" if $cnt <= 0;
 +        $cnt = chmod 0770, $tmpdir;
@@ -62,7 +70,7 @@
      }
    }
    # set up destination directory
-@@ -734,6 +741,7 @@ sub rebuild_one_format {
+@@ -758,6 +765,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
@@ -70,6 +78,25 @@
      print_deferred_warning("inifile $inifile for $fmt/$eng not found.\n");
      # The original script just skipped it but in TeX Live we expect that
      # all activated formats are also buildable, thus return failure.
+@@ -825,6 +833,7 @@ sub rebuild_one_format {
+         && ",$opts{'no-error-if-no-engine'}," =~ m/,$eng,/) {
+       return $FMT_NOTAVAIL;
+     } else {
++      return $FMT_NOTAVAIL if (!$opts{'no-error-if-no-engine'});
+       print_deferred_error("not building $fmt due to missing engine: $eng\n");
+       # could be irrelevant if PATH didn't contain ., and won't find
+       # other cases like the engine being in .., but it's just a help message,
+@@ -846,6 +855,10 @@ END_ENGINE_IN_CWD
+     }
+   }
+ 
++  if ($ENV{batchmode} and $ENV{batchmode} eq "yes") {
++    $texargs="\\batchmode \\input $texargs" if $eng eq "tex" || $eng eq "ptex";
++  }
++
+   my $cmdline = "$eng -ini $tcxflag $recorderswitch $jobswitch "
+                   . "$prgswitch $texargs";
+   print_verbose("running \`$cmdline' ...\n");
 --- texmf-dist/scripts/texlive/mktexlsr.pl
 +++ texmf-dist/scripts/texlive/mktexlsr.pl	2022-04-25 10:55:36.506971390 +0000
 @@ -126,6 +126,7 @@ package TeX::LSR;
@@ -112,31 +139,38 @@
 +umask 022
  exec updmap --sys ${1+"$@"}
 --- texmf-dist/scripts/texlive/updmap.pl
-+++ texmf-dist/scripts/texlive/updmap.pl	2018-06-19 08:49:26.931648791 +0000
-@@ -15,15 +15,17 @@
++++ texmf-dist/scripts/texlive/updmap.pl	2026-03-31 10:41:55.364140784 +0000
+@@ -17,7 +17,7 @@ my $svnid = '$Id: updmap.pl 78104 2026-0
  
- my $svnid = '$Id: updmap.pl 70707 2024-03-19 22:03:22Z karl $';
+ use strict; use warnings;
  
 -my $TEXMFROOT;
 +my $TEXMFDIST;
  BEGIN {
    $^W = 1;
+   # make subprograms (including kpsewhich) have the right path:
+@@ -35,14 +35,14 @@ BEGIN {
+     $Master = "$Master/../..";
+   }
+   $ENV{"PATH"} = "$bindir:$ENV{PATH}";
 -  $TEXMFROOT = `kpsewhich -var-value=TEXMFROOT`;
+-  if ($? || ! $TEXMFROOT) {
+-    warn "$0: kpsewhich -var-value=TEXMFROOT failed, aborting early.\n";
+-    warn "$0:   got TEXMFROOT value: $TEXMFROOT" if $TEXMFROOT;
 +  $TEXMFDIST = `kpsewhich -var-value=TEXMFDIST`;
-   if ($?) {
--    die "$0: kpsewhich -var-value=TEXMFROOT failed, aborting early.\n";
-+    die "$0: kpsewhich -var-value=TEXMFDIST failed, aborting early.\n";
++  if ($? || ! $TEXMFDIST) {
++    warn "$0: kpsewhich -var-value=TEXMFDIST failed, aborting early.\n";
++    warn "$0:   got TEXMFDIST value: $TEXMFDIST" if $TEXMFDIST;
+     die  "$0:   had PATH: $ENV{PATH}\n";
    }
 -  chomp($TEXMFROOT);
 -  unshift(@INC, "$TEXMFROOT/tlpkg");
 +  chomp($TEXMFDIST);
-+  unshift(@INC, "$TEXMFDIST/tlpkg", "$TEXMFDIST/scripts/texlive");
-+  require "mktexlsr.pl";
-+  TeX::Update->import();
++  unshift(@INC, "$TEXMFDIST/tlpkg");
  }
  
- my $lastchdate = '$Date: 2024-03-19 23:03:22 +0100 (Tue, 19 Mar 2024) $';
-@@ -45,7 +47,7 @@ use TeXLive::TLUtils qw(mkdirhier mktexu
+ my $lastchdate = '$Date: 2026-02-24 17:08:16 +0100 (Tue, 24 Feb 2026) $';
+@@ -64,7 +64,7 @@ use TeXLive::TLUtils qw(mkdirhier mktexu
  # see more comments at the definition of this function.
  reset_root_home();
  
@@ -145,7 +179,7 @@
  chomp(my $TEXMFVAR = `kpsewhich -var-value=TEXMFVAR`);
  chomp(my $TEXMFSYSVAR = `kpsewhich -var-value=TEXMFSYSVAR`);
  chomp(my $TEXMFCONFIG = `kpsewhich -var-value=TEXMFCONFIG`);
-@@ -398,6 +400,8 @@ sub main {
+@@ -420,6 +420,8 @@ sub main {
        print "in $changes_config_file\n";
        print "Do you really want to continue (y/N)? ";
        my $answer = <STDIN>;

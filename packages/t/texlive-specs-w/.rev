@@ -563,4 +563,31 @@
     <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
     <requestid>1327603</requestid>
   </revision>
+  <revision rev="57" vrev="60">
+    <srcmd5>47eaa77edd240dc44c05fe476f682fb9</srcmd5>
+    <version>unknown</version>
+    <time>1775572337</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct INC path in texlive-scripts_scripts.dif for fmtutil
+  (boo#1261313, boo#1261462)
+
+- Update to TeXLive 2026 (20260301)
+  * UTF-8 Encoding: The distribution now exclusively uses UTF-8
+    input encoding.
+  * Font Support: Minimal support for OpenType and TrueType fonts
+    (without ligatures or math) has been added.
+  * New Primitives: $\backslash$Uchar and $\backslash$Ucharcat
+    primitives have been added.
+- Remove eolang_pl.dif now upstream
+- Remove luatex_cnf.dif and add content to context_cnf.dif
+  as texmfcnf.lua has moved from luatex.tar.xz to context.tar.xz
+- Port patches
+  * kpathsea_cnf.dif
+  * latex2man_tmphandling.dif
+  * latexmk_conf.dif
+  * pdftex_pdflatex.dif
+  * texlive-scripts_scripts.dif
+  * texlive-scripts-extra_scripts.dif</comment>
+    <requestid>1344875</requestid>
+  </revision>
 </revisionlist>
