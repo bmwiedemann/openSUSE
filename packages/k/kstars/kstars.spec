@@ -20,7 +20,7 @@
 # Internal QML import
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums|Qt.labs.calendar.1|QtGraphicalEffects.1|QtQuick.Controls.1|QtQuick.Controls.Private.1|QtQuick.Dialogs.1).*
 Name:           kstars
-Version:        3.8.1
+Version:        3.8.2
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the

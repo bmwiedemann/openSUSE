@@ -1310,4 +1310,12 @@
     <comment>update to 3.8.1</comment>
     <requestid>1331607</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>6af60640293209c59c6ac4ff3c120c41</srcmd5>
+    <version>3.8.2</version>
+    <time>1775572442</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.8.2</comment>
+    <requestid>1344881</requestid>
+  </revision>
 </revisionlist>
