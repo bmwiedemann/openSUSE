@@ -87,6 +87,7 @@ BuildRequires:  xmlto
 # Upstream use SDL3, but SDL3 does not exist in Leap and SDL3_ttf does not exists in Leap and Tumbleweed.
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sso-mib)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(x11)
@@ -295,6 +296,7 @@ export CXX=g++-12
         -DWITH_SHADOW_MAC=ON \
         -DWITH_SAMPLE=OFF \
         -DWITH_SOXR=%{?_with_soxr:ON}%{?!_with_soxr:OFF} \
+        -DWITH_SSO_MIB=ON \
         -DWITH_WAYLAND=ON \
         -DWITH_X11=ON \
         -DWITH_XCURSOR=ON \

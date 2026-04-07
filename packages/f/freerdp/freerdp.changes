@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  7 10:31:37 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add sso-mib library to integrate with Microsoft Azure Entra ID Conditional Access,
+  which enables /aad option
+
+-------------------------------------------------------------------
 Mon Mar 23 09:06:23 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Update to version 3.24.1:

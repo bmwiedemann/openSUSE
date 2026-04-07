@@ -834,4 +834,13 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment>Now with only one tarball...</comment>
     <requestid>1342059</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>a58e17a1316e6ee68e32337e285cace0</srcmd5>
+    <version>3.24.1</version>
+    <time>1775572492</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sso-mib library to integrate with Microsoft Azure Entra ID Conditional Access,
+  which enables /aad option</comment>
+    <requestid>1344966</requestid>
+  </revision>
 </revisionlist>
