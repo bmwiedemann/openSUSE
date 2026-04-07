@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 31 14:48:46 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Fix freerdp-CVE-2026-24684-2.patch. The previous version wrongly
+  deleted a check for an error condition (bsc#1257991).
+
+-------------------------------------------------------------------
 Thu Mar 26 07:49:22 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Add patches to fix CVE issues:

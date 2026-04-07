@@ -71,4 +71,14 @@
     <comment></comment>
     <requestid>1343389</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>e5a92f4a24fd69c085cac7eb72c53f77</srcmd5>
+    <version>2.11.7</version>
+    <time>1775572426</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix freerdp-CVE-2026-24684-2.patch. The previous version wrongly
+  deleted a check for an error condition (bsc#1257991).
+</comment>
+    <requestid>1344830</requestid>
+  </revision>
 </revisionlist>
