@@ -58,4 +58,12 @@
   * Add a simple birb_str_wipe implementation (forwarded request 1339530 from rrahl0)</comment>
     <requestid>1339531</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f3e36cb21cc31ec4ac5b1f3e56322589</srcmd5>
+    <version>0.7.1</version>
+    <time>1775572381</time>
+    <user>dimstar_suse</user>
+    <comment>- require main package for devel package (forwarded request 1344708 from rrahl0)</comment>
+    <requestid>1344709</requestid>
+  </revision>
 </revisionlist>

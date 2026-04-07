@@ -28,6 +28,7 @@ Source1:        https://downloads.sf.net/pidgin/%{name}-%{version}.tar.xz.asc
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x40de1dc7288fe3f50ab938c548f66affd9bdb729#/%{name}.keyring
 BuildRequires:  meson >= 1.1.0
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-gi-docgen >= 2025.3
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)  >= 2.76
@@ -41,6 +42,7 @@ Description is in development
 
 %package devel
 Summary:        Development files for %{name}
+Requires:       %{name} = %{version}
 Requires:       lib%{name}%{sover} = %{version}
 Requires:       typelib-1_0-Birb-1_0 = %{version}
 
@@ -77,6 +79,8 @@ BuildArch:      noarch
 
 %install
 %meson_install
+
+%python3_fix_shebang
 
 %check
 %meson_test
