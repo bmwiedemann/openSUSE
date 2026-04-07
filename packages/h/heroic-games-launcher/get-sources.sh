@@ -44,12 +44,12 @@ jq --indent 2 \
       | with_entries(select(.key != "electron" and .key != "electron-builder"))
     )
 
+  | del(.packageManager)
+
   | .devDependencies = {
       "electron": .devDependencies["electron"],
-      "electron-builder": .devDependencies["electron-builder"]
+      "electron-builder": "^26.8.2"
     }
-
-  | .packageManager = "pnpm@10.32.1"
 
   | .scripts.build = "electron-vite build"
   | .scripts["dist:linux"] =
@@ -93,15 +93,16 @@ jq --indent 2 \
         "fast-xml-parser": "5.3.6",
         "rollup": "4.59.0",
         "@tootallnate/once": "3.0.1",
-        "simple-git": "^3.32.3"
+        "simple-git": "^3.32.3",
+        "fast-xml-parser": "5.5.6"
       }
   )
 
-  # === CVE-2026-33036: fast-xml-parser fixes ===
+  # === CVE-2026-34601: xmldom CDATA injection ===
   | .pnpm.overrides = (
       (.pnpm.overrides // {})
       + {
-          "fast-xml-parser": "5.5.6"
+          "@xmldom/xmldom": "^0.9.9"
         }
     )
 ' package.json > temp.json && mv temp.json package.json

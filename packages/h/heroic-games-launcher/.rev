@@ -138,4 +138,12 @@ via pnpm overrides to fix embedded dependency.</comment>
     <comment></comment>
     <requestid>1343257</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>52d6fff6c5132a150e70f0e132b0dbd4</srcmd5>
+    <version>2.20.1</version>
+    <time>1775572430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344822</requestid>
+  </revision>
 </revisionlist>

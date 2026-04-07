@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr  7 00:20:33 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix CVE-2026-34601: update @xmldom/xmldom to >= 0.9.9
+  * Prevents XML injection via unsafe CDATA serialization
+  * Added pnpm override to enforce patched version
+- Improve build robustness in OBS:
+  * Force usage of system pnpm (disable corepack and self-bootstrap)
+  * Use fully offline pnpm workflow (--offline, --frozen-lockfile)
+  * Avoid any network access during build
+  * Drop strict pnpm version pinning from BuildRequires
+    to prevent version skew between Factory and Tumbleweed
+    (always uses system-provided pnpm) 
+
+-------------------------------------------------------------------
+Sat Apr  4 14:07:10 UTC 2026 - mhurron <mhurron@saminds.com>
+
+- Specify version of electron-builder.
+  * Updates to pnpm caused dependencies to not be handled correctly in
+    electron-builder versions <26.8.1. Issue was sovled in v26.8.1
+    Ref: https://github.com/electron-userland/electron-builder/pull/9618
+    Ref: https://github.com/pnpm/pnpm/issues/10601
+    Fixes bug #1261170
+
+-------------------------------------------------------------------
 Fri Mar 27 22:37:58 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Reversing recent test changes that blocked pnpm downloads.

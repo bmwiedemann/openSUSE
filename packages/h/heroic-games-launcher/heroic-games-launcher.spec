@@ -49,7 +49,7 @@ BuildRequires:  nodejs-electron
 BuildRequires:  nodejs-electron-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pnpm = 10.32.1
+BuildRequires:  pnpm
 BuildRequires:  protobuf-devel
 BuildRequires:  vulkan-devel
 BuildRequires:  vulkan-helper
@@ -86,6 +86,12 @@ cp %{_sourcedir}/release_tags public/bin/.release_tags
 %build
 # Remove precompiled binaries to build from source
 rm public/bin/%{bin_subdir}/linux/vulkan-helper
+rm -rf $HOME/.local/share/pnpm
+
+export PNPM_HOME=/usr
+export PNPM_SKIP_PATH_CHECK=1
+export PNPM_NO_SELF_UPDATE=1
+export PNPM_USE_RUNNING_PNPM=1
 
 # Build Heroic Games Launcher
 export HOME=%{_builddir}/%{name}-%{version}
@@ -93,9 +99,19 @@ export CI=true
 export npm_config_nodedir="/usr/include/electron"
 export ELECTRON_BUILDER_DISABLE_DOWNLOAD=true
 export ELECTRON_MIRROR="file://"
-export PATH=$PWD/node_modules/.bin:$PATH
 
-pnpm config set store-dir .pnpm-store
+# PNPM OFFLINE HARD MODE
+export COREPACK_ENABLE=0
+export COREPACK_ENABLE_STRICT=0
+export COREPACK_HOME=/dev/null
+export PNPM_DISABLE_SELF_UPDATE_CHECK=1
+export PNPM_IGNORE_NODE_VERSION=1
+export PNPM_STORE_DIR=$PWD/.pnpm-store
+
+export PATH=$PWD/node_modules/.bin:/usr/bin
+
+#pnpm config set store-dir .pnpm-store
+export PNPM_STORE_DIR=.pnpm-store
 pnpm install --store-dir .pnpm-store --frozen-lockfile --ignore-scripts --strict-peer-dependencies=false --offline
 pnpm dist:linux %{arch_flag} --dir
 
