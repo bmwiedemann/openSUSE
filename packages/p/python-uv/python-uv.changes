@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Apr  7 08:24:47 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.3 
+ * Enhancements
+  * Add progress bar for hashing phase in uv publish 
+  * Add support for ROCm 7.2 
+  * Emit abi3t tags for every abi3 version 
+  * Expand uv workspace metadata with dependency information from the lock 
+  * Implement support for PEP 803 
+  * Pretty-print platform in built wheel errors 
+  * Publish installers to /installers/uv/latest on the mirror 
+  * Show free-threaded Python in built-wheel errors 
+ * Preview features
+  * Add --ignore and --ignore-until-fixed to uv audit 
+ * Bug fixes
+  * Bump simple API cache 
+  * Don't drop blake2b hashes 
+  * Handle broken range request implementations 
+  * Remove powerpc64-unknown-linux-gnu from release build targets 
+  * Respect dependency metadata overrides in uv pip check 
+  * Support debug CPython ABI tags in environment compatibility 
+ * Documentation
+  * Document false opt-out for exclude-newer-package
+
+-------------------------------------------------------------------
 Sat Mar 28 13:25:25 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.2
