@@ -18,7 +18,7 @@
 
 %define _lto_cflags %{nil}
 Name:           amberol
-Version:        2025.1
+Version:        2026.1
 Release:        0
 Summary:        A small and simple sound and music player that is well integrated with GNOME
 License:        CC-BY-SA-3.0 AND CC0-1.0 AND GPL-3.0-or-later
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(gtk4) >= 4.6.0
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mpfr)
+BuildRequires:  pkgconfig(blueprint-compiler)
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description

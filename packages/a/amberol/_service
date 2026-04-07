@@ -5,7 +5,7 @@
     <param name="url">https://gitlab.gnome.org/World/amberol.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="revision">2025.1</param>
+    <param name="revision">2026.1</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  6 03:18:48 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2026.1:
+  * Switch to Blueprint for UI definition files.
+  * Use AdwShortcutsDialog instead of GtkShortcutsWindow.
+- Add pkgconfig(blueprint-compiler) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:21:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
