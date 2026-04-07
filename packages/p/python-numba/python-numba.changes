@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:30:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.65.0:
+  * Adds support for Python 3.14t free-threading build.
+  * Adds support for None indexing, including for 0d arrays.
+  * Fixes scalar handling in np.mean, np.min, np.max, and np.prod.
+  * Removes legacy type system configuration.
+
+-------------------------------------------------------------------
 Fri Feb 20 10:52:02 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 64.0
