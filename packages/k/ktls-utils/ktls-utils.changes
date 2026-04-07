@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 07 06:42:22 UTC 2026 - Ales Novak <alnovak@suse.com>
+
+- Update to version 0.10+188.g61787a1:
+  * tlshd: probe the attributes with correct data type (boo#1261309)
+
+-------------------------------------------------------------------
 Fri Mar 27 15:39:48 UTC 2026 - Ales Novak <alnovak@suse.com>
 
 - Update to version 0.10+186.ge65f3b6:

@@ -17,7 +17,7 @@
 
 
 Name:           ktls-utils
-Version:        0.10+186.ge65f3b6
+Version:        0.10+188.g61787a1
 Release:        0
 Summary:        Agent for performing handshakes for kernel TLS sockets
 License:        GPL-2.0-only
