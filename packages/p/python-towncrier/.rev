@@ -80,4 +80,40 @@
   * Invoke ourselves with --yes to avoid interactive prompts.</comment>
     <requestid>1294655</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2bb165b78270aaa5ebf9d865cb4046ed</srcmd5>
+    <version>25.8.0</version>
+    <time>1775572376</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 25.8.0:
+  * Support was added for Mercurial SCM.
+  * The :command:`towncrier check` command now has a --staged
+    flag to inspect the files staged for commit when checking for
+    a news fragment: useful in a pre-commit hook
+  * When used with an :file:`pyproject.toml` file, when no
+    explicit values are defined for [tool.towncrier.name|package]
+    they will now fallback to the value of [project.name].
+  * The directory configuration option is no longer required. It
+    can now be generated based on value from the name
+    configuration.
+  * Added support for Python 3.13 and removed support for Python
+    3.8.
+  * Multi-line news fragments that end with a code block will now
+    have a newline inserted before appending the link to the
+    issue, to avoid breaking formatting.
+  * Markdown header level is correctly inferred from
+    title_format.
+  * The documentation RST source files are now included in the
+    sdist package.
+  * Refactor the default markdown template to make it easier to
+    understand, extend, and customize.
+  * Support for Python 3.8 was removed.
+  * When no sections are present, the default Markdown template
+    now renders the category headers as H2. In previous versions
+    it was rendered as H3.
+- Remove upstreamed patches:
+  * support-click-8.2.patch
+  * fix-cli-test-fails-with-yes.patch</comment>
+    <requestid>1344795</requestid>
+  </revision>
 </revisionlist>

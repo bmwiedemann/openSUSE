@@ -1,7 +1,7 @@
 #
 # spec file for package python-towncrier
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-towncrier
-Version:        24.8.0
+Version:        25.8.0
 Release:        0
 Summary:        Building newsfiles for your project
 License:        MIT
 URL:            https://github.com/twisted/towncrier
 Source:         https://files.pythonhosted.org/packages/source/t/towncrier/towncrier-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#twisted/towncrier#709/commits/2fee0e7f103161175424867c9716339a196bc957
-Patch0:         support-click-8.2.patch
-# PATCH-FIX-UPSTREAM Based on gh#twisted/towncrier#709/commits/de71f131cd845ba76ae288292d7c3338716b82fd
-Patch1:         fix-cli-test-fails-with-yes.patch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module hatchling}
@@ -61,7 +57,7 @@ BuildRequires:  %{python_module pytest}
 Building newsfiles for your project.
 
 %prep
-%autosetup -p1 -n towncrier-%{version}
+%autosetup -n towncrier-%{version}
 
 %build
 %pyproject_wheel
