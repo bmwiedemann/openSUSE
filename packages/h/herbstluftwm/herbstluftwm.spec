@@ -1,7 +1,7 @@
 #
 # spec file for package herbstluftwm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           herbstluftwm
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        A manual tiling window manager
 License:        BSD-2-Clause
@@ -26,6 +26,7 @@ URL:            https://herbstluftwm.org
 Source0:        https://herbstluftwm.org/tarballs/%{name}-%{version}.tar.gz
 Source1:        https://herbstluftwm.org/tarballs/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.desktop
+Patch1:         fix-import.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.1
 BuildRequires:  freetype2-devel
@@ -96,7 +97,7 @@ Sample bash scripts for herbstluftwm and herbstclient, which give the user
 an idea of what is possible.
 
 %prep
-%setup -q
+%autosetup -p1
 # fix errors about improper shebangs due to /usr/bin/env
 find . -type f -exec sed -i "s/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/" {} +
 

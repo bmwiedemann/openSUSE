@@ -1,0 +1,12 @@
+Index: herbstluftwm-0.9.5/src/xconnection.cpp
+===================================================================
+--- herbstluftwm-0.9.5.orig/src/xconnection.cpp
++++ herbstluftwm-0.9.5/src/xconnection.cpp
+@@ -10,6 +10,7 @@
+ #include <climits>
+ #include <cstring>
+ #include <iostream>
++#include <cstdint>
+ 
+ #include "globals.h"
+ 
