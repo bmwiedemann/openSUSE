@@ -19,7 +19,7 @@
 
 %bcond_without	units_cur
 Name:           units
-Version:        2.26
+Version:        2.27
 Release:        0
 Summary:        Conversion Utility
 License:        GPL-3.0-or-later

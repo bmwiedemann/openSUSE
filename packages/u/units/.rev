@@ -372,4 +372,12 @@
     (e.g., &quot;10 m/s^2 = 10 m / s^2&quot;</comment>
     <requestid>1336726</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c934bdf27c2c4c25267277640e311f85</srcmd5>
+    <version>2.27</version>
+    <time>1775572440</time>
+    <user>dimstar_suse</user>
+    <comment>units 2.27 (forwarded request 1344394 from AndreasStieger)</comment>
+    <requestid>1344891</requestid>
+  </revision>
 </revisionlist>

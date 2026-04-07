@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  2 20:43:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.27:
+  * Fix a segmentation fault and other bugs and memory leaks
+
+-------------------------------------------------------------------
 Thu Mar  5 10:24:21 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - fix the filelist
