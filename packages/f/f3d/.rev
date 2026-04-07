@@ -254,4 +254,16 @@
   * Deprecated --anti-aliasing-mode in favor of simply --anti-aliasing</comment>
     <requestid>1328197</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4a9bdf3393ee3339a6b32208e356454a</srcmd5>
+    <version>3.5.0</version>
+    <time>1775572497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.0:
+  * Added IFC support
+  * Stream and pipe support
+  * Added support for many point cloud formats
+  * UI improvements</comment>
+    <requestid>1344955</requestid>
+  </revision>
 </revisionlist>

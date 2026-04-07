@@ -18,7 +18,7 @@
 
 %define c_lib   libf3d3
 Name:           f3d
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        Fast and minimalist 3D viewer
 License:        BSD-3-Clause
