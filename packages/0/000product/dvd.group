@@ -2692,6 +2692,7 @@
     <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libssh4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libssl-awslc0" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
+    <package name="libsso-mib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsss_certmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libsss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libstaroffice-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
