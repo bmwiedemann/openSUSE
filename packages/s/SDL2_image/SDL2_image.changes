@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  5 08:57:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.10
+  * Fixed animated WebP frame composition
+  * Fixed out of bounds read in XCF image loader [CVE-2026-35444]
+
+-------------------------------------------------------------------
 Mon Jul 14 14:45:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Use pkgconfig() to locate build requirements

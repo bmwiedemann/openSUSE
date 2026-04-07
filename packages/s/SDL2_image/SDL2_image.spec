@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_image
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL2_image
 %define lname	libSDL2_image-2_0-0
-Version:        2.8.8
+Version:        2.8.10
 Release:        0
 Summary:        Simple DirectMedia Layer 2 image loading library
 License:        Zlib
@@ -26,6 +26,7 @@ Group:          Development/Libraries/X11
 URL:            https://libsdl.org/projects/SDL_image/
 Source:         https://github.com/libsdl-org/SDL_image/releases/download/release-%version/SDL2_image-%version.tar.gz
 Source2:        https://github.com/libsdl-org/SDL_image/releases/download/release-%version/SDL2_image-%version.tar.gz.sig
+Source8:        baselibs.conf
 Source9:        %name.keyring
 BuildRequires:  automake
 BuildRequires:  dos2unix
