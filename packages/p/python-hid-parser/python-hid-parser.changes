@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  6 21:01:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 0.1.0:
+  * Complete rewrite of the library
+  * Modernized codebase with typing support
+  * Use flit-core for building
+- Remove obsolete pytest-catch-warnings.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Wed Nov 20 10:23:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add pytest-catch-warnings.patch to fix build with newer

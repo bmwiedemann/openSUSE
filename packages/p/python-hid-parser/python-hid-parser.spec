@@ -1,7 +1,7 @@
 #
 # spec file for package python-hid-parser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,24 @@
 #
 
 
-%define pkg_name hid-parser
 %{?sle15_python_module_pythons}
-Name:           python-%{pkg_name}
-Version:        0.0.3
+Name:           python-hid-parser
+Version:        0.1.0
 Release:        0
 Summary:        Parse HID report descriptors
 License:        MIT
 URL:            https://github.com/FFY00/python-hid-parser
-Source0:        https://files.pythonhosted.org/packages/source/h/hid-parser/hid-parser-%{version}.tar.gz
-Patch1:         pytest-catch-warnings.patch
+Source0:        https://files.pythonhosted.org/packages/source/h/hid-parser/hid_parser-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # TEST
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-extensions >= 4.4.0 if %python-base < 3.13}
 # /TEST
 BuildRequires:  fdupes
+Requires:       (python-typing-extensions >= 4.4.0 if python-base < 3.13)
 BuildArch:      noarch
 Conflicts:      solaar < 1.1.7
 %python_subpackages
@@ -43,7 +42,7 @@ Conflicts:      solaar < 1.1.7
 Typed pure Python library to parse HID report descriptors
 
 %prep
-%autosetup -p1 -n %{pkg_name}-%{version}
+%autosetup -n hid_parser-%{version}
 
 %build
 %pyproject_wheel

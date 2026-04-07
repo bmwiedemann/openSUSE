@@ -16,4 +16,16 @@
   pytest/python 3.13</comment>
     <requestid>1225264</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>78d9aad5122d0c035166db6b757304cc</srcmd5>
+    <version>0.1.0</version>
+    <time>1775572416</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.1.0:
+  * Complete rewrite of the library
+  * Modernized codebase with typing support
+  * Use flit-core for building
+- Remove obsolete pytest-catch-warnings.patch (fixed upstream)</comment>
+    <requestid>1344798</requestid>
+  </revision>
 </revisionlist>
