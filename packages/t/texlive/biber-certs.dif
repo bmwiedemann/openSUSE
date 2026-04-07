@@ -15,7 +15,7 @@
                   'Unicode::Collate' => '1.29',
 --- bin/biber
 +++ bin/biber	2021-04-07 10:32:14.806230488 +0000
-@@ -130,6 +130,8 @@ GetOptions(
+@@ -138,6 +138,8 @@ GetOptions(
            ) or pod2usage(-verbose => 0,
                           -exitval => EXIT_ERROR);
  

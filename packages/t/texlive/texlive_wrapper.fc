@@ -19,3 +19,7 @@
 /var/lib/texmf(/.*)?                            gen_context(system_u:object_r:tetex_data_t,s0)
 /usr/local/share/texmf(/.*)?                    gen_context(system_u:object_r:tetex_data_t,s0)
 /usr/share/texmf(/.*)?                          gen_context(system_u:object_r:tetex_data_t,s0)
+
+# 5. Users home
+HOME_DIR/.cache/texmf(/.*)?                     gen_context(system_u:object_r:texlive_home_t,s0)
+HOME_DIR/texmf(/.*)?                            gen_context(system_u:object_r:texlive_home_t,s0)

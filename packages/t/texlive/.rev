@@ -1353,4 +1353,12 @@
     <comment>- Disable SELinux as not required by most systems out there (boo#1258938)</comment>
     <requestid>1341179</requestid>
   </revision>
+  <revision rev="114" vrev="117">
+    <srcmd5>f095f7e06765a670cd3f0904310ac0c6</srcmd5>
+    <version>unknown</version>
+    <time>1775572330</time>
+    <user>dimstar_suse</user>
+    <comment>Update to TeXLive 2026</comment>
+    <requestid>1344157</requestid>
+  </revision>
 </revisionlist>

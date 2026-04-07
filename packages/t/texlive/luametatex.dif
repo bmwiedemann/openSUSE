@@ -1,7 +1,29 @@
 ---
+ CMakeLists.txt                         |    2 +-
+ cmake/luametatex.cmake                 |    2 +-
  source/libraries/decnumber/decNumber.h |    2 ++
- 1 file changed, 2 insertions(+)
+ 3 files changed, 4 insertions(+), 2 deletions(-)
 
+--- CMakeLists.txt
++++ CMakeLists.txt	2026-03-25 08:36:15.062766958 +0000
+@@ -37,7 +37,7 @@ set(LMT_HB_TOO   1) # Maybe handy for Id
+ # nice (the smaller as runner the better). After all, we don't load external (Lua) libraries 
+ # anyway. 
+ 
+-set(LMT_STRIP 1)
++#set(LMT_STRIP 1)
+ 
+ # When one wants to use Lua libraries, this is needed. But keep in mind that it's not supported, 
+ # so we won't look into issues that could result from that. Getting a matching library is upto 
+--- cmake/luametatex.cmake
++++ cmake/luametatex.cmake	2026-03-25 08:34:46.068418423 +0000
+@@ -89,5 +89,5 @@ elseif (CMAKE_C_COMPILER_ID MATCHES "GNU
+     # -g -S -d : remove all debugging symbols & sections
+     # -x       : remove all non-global symbols
+     # -X       : remove any compiler-generated symbols
+-    add_custom_command(TARGET luametatex POST_BUILD COMMAND ${CMAKE_STRIP} -g -S -d -x luametatex${CMAKE_EXECUTABLE_SUFFIX})
++    #add_custom_command(TARGET luametatex POST_BUILD COMMAND ${CMAKE_STRIP} -g -S -d -x luametatex${CMAKE_EXECUTABLE_SUFFIX})
+ endif()
 --- source/libraries/decnumber/decNumber.h
 +++ source/libraries/decnumber/decNumber.h	2023-03-28 09:48:50.820268040 +0000
 @@ -40,8 +40,10 @@

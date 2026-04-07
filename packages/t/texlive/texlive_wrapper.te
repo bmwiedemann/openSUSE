@@ -13,6 +13,7 @@ gen_require(`
     type tmpfs_t;
     type cgroup_t;
     type tetex_data_t;
+    type texlive_home_t;
     type unconfined_t;
     type user_devpts_t;
     role unconfined_r;
@@ -67,6 +68,9 @@ allow texlive_target_t gconf_home_t:dir { search getattr };
 allow texlive_target_t cache_home_t:dir { getattr search read open write add_name remove_name create rmdir };
 allow texlive_target_t cache_home_t:file { getattr read write create append open lock unlink rename setattr ioctl };
 allow texlive_target_t cache_home_t:lnk_file { read getattr };
+allow texlive_target_t texlive_home_t:dir { getattr search read open write add_name remove_name create rmdir };
+allow texlive_target_t texlive_home_t:file { getattr read write create append open lock unlink rename setattr ioctl };
+allow texlive_target_t texlive_home_t:lnk_file { read getattr };
 
 # Allow the Wrapper to change UID and GID (setuid / setgid)
 allow texlive_wrapper_t self:capability { setuid setgid };

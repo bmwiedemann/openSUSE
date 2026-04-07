@@ -98,12 +98,12 @@
  #if !defined(HAVE_STRCHR) && !defined(strchr)
  #define strchr index
  #endif
-@@ -60,4 +61,6 @@ extern char *strstr ();
+@@ -52,5 +53,6 @@
+ #if !defined(HAVE_MEMCPY) && !defined(memcpy)
+ #define memcpy(to, from, len) bcopy ((from), (to), (len))
  #endif
- #endif
- 
 +#endif /* not __GNUC__ */
-+
+ 
  #endif /* not KPATHSEA_C_MEMSTR_H */
 --- texk/kpathsea/cnf-to-paths.awk
 +++ texk/kpathsea/cnf-to-paths.awk	2021-04-07 10:14:44.206880772 +0000
@@ -190,11 +190,11 @@
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2025/texmf-var
+-TEXMFVAR = ~/.texlive2026/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2025/texmf-config
+-TEXMFCONFIG = ~/.texlive2026/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
@@ -393,7 +393,7 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -954,3 +960,37 @@ command_line_encoding.ptex = none
+@@ -980,3 +986,37 @@ command_line_encoding.ptex = none
  command_line_encoding.eptex = none
  command_line_encoding.platex = none
  command_line_encoding.platex-dev = none
@@ -496,21 +496,29 @@
 +umask 022
  exec fmtutil --sys ${1+"$@"}
 --- texk/texlive/linked_scripts/texlive/fmtutil.pl
-+++ texk/texlive/linked_scripts/texlive/fmtutil.pl	2022-04-05 13:53:52.711731787 +0000
-@@ -10,16 +10,16 @@
- # History:
++++ texk/texlive/linked_scripts/texlive/fmtutil.pl	2026-03-24 14:46:46.023347459 +0100
+@@ -11,7 +11,7 @@
  # Original shell script 2001 Thomas Esser, public domain
  
+ use strict; use warnings;
 -my $TEXMFROOT;
 +my $TEXMFDIST;
  
  BEGIN {
    $^W = 1;
+@@ -30,14 +30,14 @@ BEGIN {
+     $Master = "$Master/../..";
+   }
+   $ENV{"PATH"} = "$bindir:$ENV{PATH}";
 -  $TEXMFROOT = `kpsewhich -var-value=TEXMFROOT`;
+-  if ($? || ! $TEXMFROOT) {
+-    warn "$0: kpsewhich -var-value=TEXMFROOT failed, aborting early.\n";
+-    warn "$0:   got TEXMFROOT value: $TEXMFROOT" if $TEXMFROOT;
 +  $TEXMFDIST = `kpsewhich -var-value=TEXMFDIST`;
-   if ($?) {
--    die "$0: kpsewhich -var-value=TEXMFROOT failed, aborting early.\n";
-+    die "$0: kpsewhich -var-value=TEXMFDIST failed, aborting early.\n";
++  if ($? || ! $TEXMFDIST) {
++    warn "$0: kpsewhich -var-value=TEXMFDIST failed, aborting early.\n";
++    warn "$0:   got TEXMFDIST value: $TEXMFDIST" if $TEXMFDIST;
+     die  "$0:   had PATH: $ENV{PATH}\n";
    }
 -  chomp($TEXMFROOT);
 -  unshift(@INC, "$TEXMFROOT/tlpkg", "$TEXMFROOT/texmf-dist/scripts/texlive");
@@ -519,7 +527,7 @@
    require "mktexlsr.pl";
    TeX::Update->import();
  }
-@@ -76,7 +76,7 @@ TeXLive::TLUtils::prepend_own_path();
+@@ -94,7 +94,7 @@ TeXLive::TLUtils::prepend_own_path();
  # this function checks by itself whether it is running on windows or not
  reset_root_home();
  
@@ -528,7 +536,7 @@
  chomp(our $TEXMFVAR = `kpsewhich -var-value=TEXMFVAR`);
  chomp(our $TEXMFSYSVAR = `kpsewhich -var-value=TEXMFSYSVAR`);
  chomp(our $TEXMFCONFIG = `kpsewhich -var-value=TEXMFCONFIG`);
-@@ -418,7 +418,14 @@ sub callback_build_formats {
+@@ -437,7 +437,14 @@ sub callback_build_formats {
          TeXLive::TLWinGoo::maybe_make_ro ($tmpdir);
        }
      } else {
@@ -543,7 +551,7 @@
      }
    }
    # set up destination directory
-@@ -734,6 +741,7 @@ sub rebuild_one_format {
+@@ -758,6 +765,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
@@ -551,19 +559,22 @@
      print_deferred_warning("inifile $inifile for $fmt/$eng not found.\n");
      # The original script just skipped it but in TeX Live we expect that
      # all activated formats are also buildable, thus return failure.
-@@ -793,11 +801,15 @@ sub rebuild_one_format {
-         ",$opts{'no-error-if-no-engine'}," =~ m/,$eng,/) {
+@@ -825,6 +833,7 @@ sub rebuild_one_format {
+         && ",$opts{'no-error-if-no-engine'}," =~ m/,$eng,/) {
        return $FMT_NOTAVAIL;
      } else {
 +      return $FMT_NOTAVAIL if (!$opts{'no-error-if-no-engine'});
        print_deferred_error("not building $fmt due to missing engine: $eng\n");
-       return $FMT_FAILURE;
+       # could be irrelevant if PATH didn't contain ., and won't find
+       # other cases like the engine being in .., but it's just a help message,
+@@ -846,6 +855,10 @@ END_ENGINE_IN_CWD
      }
    }
  
 +  if ($ENV{batchmode} and $ENV{batchmode} eq "yes") {
 +    $texargs="\\batchmode \\input $texargs" if $eng eq "tex" || $eng eq "ptex";
 +  }
++
    my $cmdline = "$eng -ini $tcxflag $recorderswitch $jobswitch "
                    . "$prgswitch $texargs";
    print_verbose("running \`$cmdline' ...\n");

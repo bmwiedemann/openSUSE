@@ -23,7 +23,9 @@
  *		Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  *
  */
-
+#ifndef _GNU_SOURCE
+# define _GNU_SOURCE
+#endif
 #include <errno.h>
 #include <limits.h>
 #include <grp.h>
@@ -158,6 +160,12 @@ int main(int argc, char *argv[])
 	if (ruid != pwd->pw_uid)
 	    ruid = pwd->pw_uid;
 
+	if (pwd->pw_gid != grp->gr_gid) {
+	    fprintf(stderr, "public: The group id %d for user %s differs from group %s aka %d\n",
+		    pwd->pw_gid, TEXUSR, TEXGRP, grp->gr_gid);
+	    goto err;
+	}
+
 	if (rgid != grp->gr_gid || egid != grp->gr_gid) {
 	    initgrp = 1;
 	    rgid = grp->gr_gid;
@@ -196,14 +204,20 @@ int main(int argc, char *argv[])
 	}
 
 	if ((cwd = getcwd(NULL, 0))) {
+	    int serr = errno;
 	    if (access(cwd, X_OK) < 0) {
 		int ret = chdir(pwd->pw_dir);
 		if (ret < 0)
 		    fprintf(stderr, "public: %s: %m\n", pwd->pw_dir);
 	    }
+	    errno = serr;
 	    free(cwd);
 	}
-
+    } else if (rgid != egid && egid != grp->gr_gid) {
+	/* The binary is setgid, but to the WRONG group */
+	fprintf(stderr, "public: The setgid %d ownership of the executable does not match the %s group with %d\n",
+		egid, TEXGRP, grp->gr_gid);
+	goto err;
     } else if (rgid != grp->gr_gid && egid == grp->gr_gid) {
 	const int ngroups = getgroups(0, NULL);
 	int in_group = 0;
@@ -231,10 +245,19 @@ int main(int argc, char *argv[])
 		egid = grp->gr_gid;
 		rgid = grp->gr_gid;
 		for (ep = envp; ep->name; ep++) {
+		    if (ep->value)
+			continue;
+		    ep->value = getenv(ep->name);
+		}
+		clearenv();
+		for (ep = envp; ep->name; ep++) {
 		    if (!ep->value)
 			continue;
 		    setenv(ep->name, ep->value, 1);
 		}
+		pwd = getpwuid(getuid());
+		if (pwd && pwd->pw_dir)
+		    setenv("HOME", pwd->pw_dir, 1);
 	    } else
 		egid = rgid;
 #ifdef _GNU_SOURCE
