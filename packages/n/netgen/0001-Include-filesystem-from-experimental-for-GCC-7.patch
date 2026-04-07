@@ -20,10 +20,13 @@ diff --git a/libsrc/core/CMakeLists.txt b/libsrc/core/CMakeLists.txt
 index 39d7fd6..a85a414 100644
 --- a/libsrc/core/CMakeLists.txt
 +++ b/libsrc/core/CMakeLists.txt
-@@ -46,6 +46,9 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-       target_compile_options(ngcore PUBLIC "-fabi-version=${cxx_abi_version}")
-     endif()
-   endif(USE_PYTHON)
+@@ -47,6 +47,12 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+     message(STATUS "GNU C++ ABI version: ${cxx_abi_version}")
+     target_compile_options(ngcore PUBLIC "-fabi-version=${cxx_abi_version}")
+   endif()
++endif()
++
++if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
 +  if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 8)
 +    target_link_libraries(ngcore PRIVATE stdc++fs)
 +  endif()

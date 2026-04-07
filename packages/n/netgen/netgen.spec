@@ -1,7 +1,7 @@
 #
 # spec file for package netgen
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 
 Name:           netgen
-Version:        6.2.2406
+Version:        6.2.2602
 Release:        0
 Summary:        Automatic 3D tetrahedral mesh generator
 License:        LGPL-2.1-only
@@ -47,8 +47,6 @@ Patch9:         0001-Include-filesystem-from-experimental-for-GCC-7.patch
 # PATCH-FIX-UPSTREAM
 Patch10:        0001-Fix-netgen-executable-and-library-RUNPATHs.patch
 # PATCH-FIX-OPENSUSE
-Patch11:        0001-Fix-ODR-violation-for-struct-class-Line.patch
-# PATCH-FIX-OPENSUSE
 Patch12:        0002-Add-missing-includes-for-std-string-std-cerr-fix-nam.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/NGSolve/netgen/issues/200
 Patch13:        0001-Do-not-EXPORT-python-modules-as-CMake-targets.patch
@@ -56,6 +54,10 @@ Patch13:        0001-Do-not-EXPORT-python-modules-as-CMake-targets.patch
 Patch14:        0001-Fix-static-initialization-order-for-UserFormatRegist.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/NGSolve/netgen/issues/203
 Patch15:        0001-Fix-invalid-string-access-in-BoundaryLayerTool.patch
+# PATCH-FIX-OPENSUSE -- https://github.com/NGSolve/netgen/issues/238
+Patch16:        0001-Fix-incorrect-py-keep_alive-syntax-for-def_property.patch
+# PATCH-FIX-OPENSUSE -- https://github.com/NGSolve/netgen/issues/226
+Patch17:        0001-Fix-implicit-conversions-for-signed-unsigned-types-i.patch
 %if %{with opencascade}
 BuildRequires:  occt-devel
 BuildRequires:  (pkgconfig(catch2) >= 2.13.4 with pkgconfig(catch2) < 3)
@@ -172,6 +174,7 @@ echo "v%{version}-0-0" > ./version.txt
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SUPERBUILD=OFF \
     -DCMAKE_SHARED_LINKER_FLAGS="-flto=auto -Wl,--as-needed -Wl,--warn-unresolved-symbols -Wl,-z,now" \
+    -DNG_INSTALL_DIR_CMAKE=%{_libdir}/cmake/netgen \
     -DNG_INSTALL_DIR_INCLUDE=%{_includedir}/netgen \
     -DNG_INSTALL_DIR_LIB=%{_libdir}/netgen \
     -DCMAKE_SKIP_RPATH:BOOL=OFF \
@@ -236,7 +239,7 @@ export COLUMNS=120
 %files
 %license LICENSE
 %doc doc/*.pdf
-%{_bindir}/*
+%{_bindir}/netgen
 
 %files examples
 %{_datadir}/netgen
@@ -255,8 +258,8 @@ export COLUMNS=120
 %{python3_sitearch}/netgen_mesher-*.egg-info
 
 %files devel
-%dir %{_prefix}/lib/cmake
+%dir %{_libdir}/cmake
 %{_includedir}/netgen
-%{_prefix}/lib/cmake/netgen
+%{_libdir}/cmake/netgen
 
 %changelog

@@ -201,4 +201,20 @@
     <comment></comment>
     <requestid>1319796</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>897c31f12c3d650cad6186bb306b53c0</srcmd5>
+    <version>6.2.2602</version>
+    <time>1774555817</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342834</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>445b4ba9a50cf23e9bdb5c13b05c3412</srcmd5>
+    <version>6.2.2602</version>
+    <time>1775572430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344836</requestid>
+  </revision>
 </revisionlist>

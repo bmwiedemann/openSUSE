@@ -1,0 +1,38 @@
+From 1ec1c9139f993d422b73f74a6b555cd30b18cb39 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 27 Mar 2026 13:20:43 +0100
+Subject: [PATCH] Fix implicit conversions for signed/unsigned types in NEON
+ SIMD code
+
+The intrinsics for the compare operations on ARM always return unsigned
+types, make the conversion explicit.
+
+Fixes #226.
+---
+ libsrc/core/simd_arm64.hpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/libsrc/core/simd_arm64.hpp b/libsrc/core/simd_arm64.hpp
+index 82edaff..f7b90a7 100644
+--- a/libsrc/core/simd_arm64.hpp
++++ b/libsrc/core/simd_arm64.hpp
+@@ -158,12 +158,14 @@ namespace ngcore
+ 
+   NETGEN_INLINE SIMD<mask64,2> operator== (SIMD<int64_t> a, SIMD<int64_t> b)
+   {
+-    return vceqq_u64(a.Data(), b.Data());
++    auto res = vceqq_s64(a.Data(), b.Data());
++    return vreinterpretq_s64_u64(res);
+   }
+   
+   NETGEN_INLINE SIMD<mask64,2> operator> (SIMD<int64_t> a, SIMD<int64_t> b)
+   {
+-    return vcgtq_s64(a.Data(), b.Data());
++    auto res = vcgtq_s64(a.Data(), b.Data());
++    return vreinterpretq_s64_u64(res);
+   }
+ 
+   
+-- 
+2.53.0
+

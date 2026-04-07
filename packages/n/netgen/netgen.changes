@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar 27 12:23:59 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Properly fix ARM Neon SIMD intrinsics, instead of relaxing
+  checks during compilation. While this works for netgen itself,
+  it is hard to propagate to all users of the inlined code
+  distributed in the header files.
+- Add:
+  * 0001-Fix-implicit-conversions-for-signed-unsigned-types-i.patch
+
+-------------------------------------------------------------------
+Thu Mar 26 00:28:05 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 6.2.2406
+  * no changelog provided
+- Add:
+  * 0001-Fix-incorrect-py-keep_alive-syntax-for-def_property.patch
+- Rebase:
+  * 0001-Disable-backtrace-generation.patch
+  * 0001-Fix-invalid-string-access-in-BoundaryLayerTool.patch
+  * 0001-Include-filesystem-from-experimental-for-GCC-7.patch
+- Drop:
+  * 0001-Fix-ODR-violation-for-struct-class-Line.patch
+
+-------------------------------------------------------------------
 Mon Nov 24 14:37:02 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Workaround to fix build, do not build the stubs

@@ -1,0 +1,40 @@
+From f9c0bbcadb9254d4562cd872b2b79067bb35a9b9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 26 Mar 2026 02:21:59 +0100
+Subject: [PATCH] Fix incorrect py::keep_alive syntax for def_property
+
+The py::keep_alive must be wrapped in a py::cpp_function, otherwise
+it will be ignored.
+
+See https://github.com/pybind/pybind11/pull/5533 for details.
+---
+ libsrc/meshing/python_mesh.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/libsrc/meshing/python_mesh.cpp b/libsrc/meshing/python_mesh.cpp
+index b6adbee..042356c 100644
+--- a/libsrc/meshing/python_mesh.cpp
++++ b/libsrc/meshing/python_mesh.cpp
+@@ -970,15 +970,15 @@ DLL_HEADER void ExportNetgenMeshing(py::module &m)
+             { sizeof(self.Points()[PointIndex::BASE]), sizeof(double) } )
+            );
+       })
+-    .def_property_readonly("parentelements", [](Mesh & self) {
++    .def_property_readonly("parentelements", py::cpp_function([](Mesh & self) {
+       // return FlatArray<int>(self.mlparentelement.Size(), &self.mlparentelement[0]);
+       return FlatArray(self.mlparentelement);
+-    }, py::keep_alive<0,1>())
+-    .def_property_readonly("parentsurfaceelements", [](Mesh & self) {
++    }, py::keep_alive<0,1>()))
++    .def_property_readonly("parentsurfaceelements", py::cpp_function([](Mesh & self) {
+       // return FlatArray<int>(self.mlparentsurfaceelement.Size(),
+       // &self.mlparentsurfaceelement[0]);
+       return FlatArray(self.mlparentsurfaceelement);      
+-    }, py::keep_alive<0,1>())
++    }, py::keep_alive<0,1>()))
+     .def_property_readonly("macromesh", [](Mesh & self) {
+       auto coarsemesh = make_shared<Mesh>();
+       *coarsemesh = *self.coarsemesh;
+-- 
+2.53.0
+
