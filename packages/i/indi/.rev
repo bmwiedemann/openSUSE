@@ -237,4 +237,32 @@
 </comment>
     <requestid>1331536</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b92e2376183deecde3c7308d18250ce0</srcmd5>
+    <version>2.1.9</version>
+    <time>1771605934</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1334162</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b84bb91a3d2250ddafdce9baf094f99a</srcmd5>
+    <version>2.2.0</version>
+    <time>1775572432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Custom guide rate for LX200GPS driver by @jordisese in #2336
+  * Redefine rotation angles of ccd/guide simulator by @escribana in #2341
+  * Add Alignment Correction INDI interface and simulator driver by @jrhuerta in #2342
+  * Add Alpaca protocol drivers for telescope, focuser, and filter wheel by @gordtulloch in #2338
+  * Indi seestar ccd implementation by @gordtulloch in #2344
+  * tracking control activation for lx200gps driver by @jordisese in #2345
+  * [RFC] DefaultDevice: Add Generic Nickname support by @perfinion in #2343
+  * Hakos Roll Off Roof as system driver by @fenriques in #2346
+  * Apply custom FITS keywords for XISF by @nouspiro in #2349
+  * nicknames: Create file when saving nicknames by @perfinion in #2351
+  * alignment: add plugin test suite with Halton sky sampling by @ckemper67 in #2352
+</comment>
+    <requestid>1344870</requestid>
+  </revision>
 </revisionlist>
