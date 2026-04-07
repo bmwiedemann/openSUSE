@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  6 21:06:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * This release fixes a compatibility issue with Python 3.15:
+  * MNT: do not use deprecated load_module method
+
+-------------------------------------------------------------------
 Wed Oct 15 09:45:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.3.0

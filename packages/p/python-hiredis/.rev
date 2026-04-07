@@ -147,4 +147,14 @@
     <comment></comment>
     <requestid>1311651</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fe338a8f2e99374b6ab6962a96b98d04</srcmd5>
+    <version>3.3.1</version>
+    <time>1775572419</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.1:
+  * This release fixes a compatibility issue with Python 3.15:
+  * MNT: do not use deprecated load_module method</comment>
+    <requestid>1344804</requestid>
+  </revision>
 </revisionlist>

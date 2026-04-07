@@ -3,9 +3,11 @@ setup.py |    3 +--
  setup.py |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/setup.py
-+++ b/setup.py
-@@ -19,7 +19,7 @@ def version():
+Index: hiredis-3.3.1/setup.py
+===================================================================
+--- hiredis-3.3.1.orig/setup.py
++++ hiredis-3.3.1/setup.py
+@@ -16,7 +16,7 @@ def version():
  
  def get_sources():
      hiredis_sources = ("alloc", "async", "hiredis", "net", "read", "sds", "sockcompat")

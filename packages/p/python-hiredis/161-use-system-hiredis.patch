@@ -18,18 +18,20 @@ bundled_hiredis_sources is empty.
  setup.py |   29 ++++++++++++++++++++++++++---
  1 file changed, 26 insertions(+), 3 deletions(-)
 
---- a/setup.py
-+++ b/setup.py
+Index: hiredis-3.3.1/setup.py
+===================================================================
+--- hiredis-3.3.1.orig/setup.py
++++ hiredis-3.3.1/setup.py
 @@ -7,6 +7,7 @@ except ImportError:
- import importlib
+ import runpy
  import glob
  import io
 +import os
  import sys
  
  
-@@ -17,16 +18,38 @@ def version():
-     return module.__version__
+@@ -14,16 +15,38 @@ def version():
+     return runpy.run_path("hiredis/version.py")["__version__"]
  
  
 +def is_hiredis_bundled():
