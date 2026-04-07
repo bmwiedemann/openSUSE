@@ -201,4 +201,14 @@
   * Create release v3.3.2 #853</comment>
     <requestid>1343839</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>eaad7ed8d7e6fe1067292b77813874bc</srcmd5>
+    <version>3.3.3</version>
+    <time>1775572489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.3:
+  * Show app icon in about dialog #862
+  * Bigger image size in break screen #866</comment>
+    <requestid>1344958</requestid>
+  </revision>
 </revisionlist>
