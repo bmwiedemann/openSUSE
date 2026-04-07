@@ -132,4 +132,12 @@
   * openssl: make use of -CBC and -AESGCM keywords</comment>
     <requestid>1317102</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>aa11a672192d9b69a7dfaf91356f7d4b</srcmd5>
+    <version>20250714.cd6043a</version>
+    <time>1775572279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344746</requestid>
+  </revision>
 </revisionlist>

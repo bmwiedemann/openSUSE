@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 31 07:39:18 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Disable the use of posix_spawn() under qemu user-mode emulation.
+
+-------------------------------------------------------------------
 Tue Nov 11 07:49:33 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix the testsuite:

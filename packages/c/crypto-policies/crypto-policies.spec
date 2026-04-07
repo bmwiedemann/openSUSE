@@ -1,7 +1,7 @@
 #
 # spec file for package crypto-policies
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,6 +117,12 @@ cp -p %{SOURCE1} .
 
 %build
 export OPENSSL_CONF=''
+
+%if 0%{?qemu_user_space_build}
+# Python3.13+ when paired with glibc 2.24+ default to use posix_spawn() for subprocess.
+# This causes `Error testing config for bind` under qemu user-mode emulation.
+export _PYTHON_SUBPROCESS_USE_POSIX_SPAWN=0
+%endif
 
 # The scripts fips-mode-setup and fips-finish-install
 # have been removed upstream and we ship them as sources.
