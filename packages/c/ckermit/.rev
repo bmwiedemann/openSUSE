@@ -119,4 +119,12 @@
   * fix build with gcc15</comment>
     <requestid>1325944</requestid>
   </revision>
+  <revision rev="16" vrev="20">
+    <srcmd5>26d94babc71281f660bf97eef51f7f9e</srcmd5>
+    <version>9.0.302</version>
+    <time>1775572372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344691</requestid>
+  </revision>
 </revisionlist>

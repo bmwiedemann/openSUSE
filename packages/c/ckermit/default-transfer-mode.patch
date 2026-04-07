@@ -1,0 +1,74 @@
+Description: Disable auto transfer mode
+Author: John Goerzen <jgoerzen@complete.org>
+Last-Update: 2025-12-04
+
+Prior to this change, "show file" shows, among other things:
+
+ Transfer mode:           automatic
+ File patterns:           automatic (SHOW PATTERNS for list)
+ Default file type:       binary
+
+With this change:
+
+ Transfer mode:           manual
+ File patterns:           automatic (but disabled by TRANSFER-MODE MANUAL)
+ File type:               binary
+
+The modern assumption is a byte-accurate transfer of files.  We have had
+a proliferation of file types, extensions, and complicating
+circumstances since the earlier days of Kermit.
+
+By changing this default, we disable the heuristic for attempting to
+guess the type of files, and convert the existing binary default into a
+binary setting.
+
+This can always be changed by the user, but the idea is to not violate
+the principle of least surprise.  If the user asks to transfer a file,
+we assume the user wants an exact transfer of the file unless stated
+otherwise.
+
+Additionally, some platforms (eg, HP48 calculators) have wildly
+different behavior depending on whether a text or binary transfer is
+requested.  By defaulting to manual mode, the user is in charge and
+further surprises that may be caused by "set file type" being ignored
+can be avoided.
+
+This fixes bug #1121901.
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/ckcftp.c
++++ b/ckcftp.c
+@@ -951,7 +951,7 @@
+ int sav_log = -1;
+ int ftp_action = 0;                     /* FTP action from command line */
+ int ftp_dates = 1;                      /* Set file dates from server */
+-int ftp_xfermode = XMODE_A;		/* FTP-specific transfer mode */
++int ftp_xfermode = XMODE_M;		/* FTP-specific transfer mode */
+ 
+ char ftp_reply_str[FTP_BUFSIZ] = "";    /* Last line of previous reply */
+ char ftp_srvtyp[SRVNAMLEN] = { NUL, NUL }; /* Server's system type */
+--- a/ckcmai.c
++++ b/ckcmai.c
+@@ -1408,7 +1408,7 @@
+     cursor_save = -1,                   /* Cursor state */
+ #endif /* OS2 */
+ 
+-    xfermode = XMODE_A,                 /* Transfer mode, manual or auto */
++    xfermode = XMODE_M,                 /* Transfer mode, manual or auto */
+     xfiletype = -1,                     /* Transfer only text (or binary) */
+     recursive = 0,                      /* Recursive directory traversal */
+     nolinks   = 2,                      /* Don't follow symbolic links */
+--- a/ckuus2.c
++++ b/ckuus2.c
+@@ -9770,9 +9770,10 @@
+ "  does not agree.",
+ " ",
+ "SET TRANSFER MODE { AUTOMATIC, MANUAL }",
+-"  Automatic (the default) means Kermit should automatically go into binary",
++"  Automatic means Kermit should automatically go into binary",
+ "  file-transfer mode and use literal filenames if the other Kermit says it",
+ "  has a compatible file system, e.g. UNIX-to-UNIX, but not UNIX-to-DOS.",
++"  Manual (the default) means to always use the SET FILE TYPE setting.",
+ #ifdef PATTERNS
+ "  Also, when sending files, Kermit should switch between binary and text",
+ "  mode automatically per file based on the SET FILE BINARY-PATTERNS and SET",

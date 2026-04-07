@@ -24,10 +24,13 @@ License:        BSD-3-Clause
 Group:          Hardware/Modem
 URL:            https://www.kermitproject.org/
 Source0:        ftp://ftp.kermitproject.org/kermit/archives/cku302.tar.gz
+Source1:        ckermit-tmp.conf
 Patch0:         decl-definition-conflict.patch
 # PATCH-FIX-UPSTREAM time_and_file_failure.patch
 Patch1:         time_and_file_failure.patch
 Patch2:         gcc14.patch
+Patch3:         default-transfer-mode.patch
+Patch4:         remote-security.patch
 BuildRequires:  ncurses-devel
 Provides:       kermit
 
@@ -51,8 +54,8 @@ This package contains the documentation and manual pages for ckermit.
 %autosetup -p1 -c
 
 %build
-export KFLAGS="%{optflags} -std=gnu11"
-%make_build linux
+export CFLAGS="%{optflags} -std=gnu89 -DLOCK_DIR=\\\\\\\\\\\\\\\"/run/lock/uucp\\\\\\\\\\\\\\\""
+%make_build KFLAGS="$CFLAGS" linux
 
 %install
 install -d -m 755 %{buildroot}%{_bindir}
@@ -61,12 +64,14 @@ install -m 755 wermit %{buildroot}%{_bindir}/kermit
 install -m 644 ckuker.nr %{buildroot}%{_mandir}/man1/kermit.1
 cd %{buildroot}%{_mandir}/man1
 ln -s kermit.1 ckermit.1
+install -pD -m644 %{SOURCE1} %{buildroot}%{_tmpfilesdir}/ckermit.conf
 
 %files
 %license COPYING.TXT
 %{_bindir}/kermit
 %{_mandir}/man1/ckermit.1%{?ext_man}
 %{_mandir}/man1/kermit.1%{?ext_man}
+%{_tmpfilesdir}/ckermit.conf
 
 %files doc
 %doc *.txt
