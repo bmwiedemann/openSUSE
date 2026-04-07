@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  7 10:13:37 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.74.0
+  * update SelectiveGapicGeneration usage doc
+  * update API common type documentation
+  * update various comments
+  * update license year
+  * fix documentation formatting
+  * add origin to AttributeContext.Request
+  * publish client batch config schema
+  * publish new error reasons
+
+-------------------------------------------------------------------
 Mon Mar 30 08:04:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.73.1

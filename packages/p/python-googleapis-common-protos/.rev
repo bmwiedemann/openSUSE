@@ -332,4 +332,20 @@
     <comment></comment>
     <requestid>1343631</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4462bb1befcb71f9d0fb7d8f2453c487</srcmd5>
+    <version>1.74.0</version>
+    <time>1775572509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.74.0
+  * update SelectiveGapicGeneration usage doc
+  * update API common type documentation
+  * update various comments
+  * update license year
+  * fix documentation formatting
+  * add origin to AttributeContext.Request
+  * publish client batch config schema
+  * publish new error reasons (forwarded request 1344963 from glaubitz)</comment>
+    <requestid>1344996</requestid>
+  </revision>
 </revisionlist>
