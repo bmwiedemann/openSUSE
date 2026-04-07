@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jan 26 08:10:30 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.7.1:
+  * Update: ITM: Add in new ITM decoder to the library. Adds in
+    tests and support in snapshot read and trc_pkt_lister.
+  * Bugfix: Fix compile warning on init list order. (github #77, #80)
+
+-------------------------------------------------------------------
 Tue Jul 22 14:52:20 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update 1.6.1:
