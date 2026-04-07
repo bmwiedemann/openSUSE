@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 24 23:12:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.8:
+  * Update TLD list
+
+-------------------------------------------------------------------
 Mon May 19 08:19:55 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to urlscan 1.0.7
@@ -46,7 +52,7 @@ Mon Jun 12 12:26:37 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Mon Jun 12 11:54:29 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- Removed invalid Recommends line 
+- Removed invalid Recommends line
 
 -------------------------------------------------------------------
 Mon Jun 12 11:45:12 UTC 2023 - Dr. Werner Fink <werner@suse.de>
@@ -64,7 +70,7 @@ Mon Jun 12 11:09:31 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Fri Jun  2 13:50:51 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- Update to urlscan 1.0.0 
+- Update to urlscan 1.0.0
   * Fix search with -c flag. Fixes #131.
   * Add support for IPv6 URLs. Closes #127
   * Mark items in url queue with a *
@@ -86,7 +92,7 @@ Tue Dec  6 13:06:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Thu Aug  4 13:26:52 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Do not remove egg info anymore as the pythonm3 interpreter
-  does not work anymore without this information (boo#1202137) 
+  does not work anymore without this information (boo#1202137)
 
 -------------------------------------------------------------------
 Sun Jan 30 15:23:36 UTC 2022 - Avinesh Kumar <avinesh.kumar@suse.com>
@@ -123,12 +129,12 @@ Wed May 12 22:03:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Scan a selection of email headers for URLs. Closes #97.
   * Add option for custom regex. Closes #79.
   * Allow $ as an acceptable trailing character
-  * Fix urwid reverse error. Thanks to @pavoljuhas. Closes #99 
-  
+  * Fix urwid reverse error. Thanks to @pavoljuhas. Closes #99
+
 -------------------------------------------------------------------
 Tue Jul 28 09:44:43 UTC 2020 - Martin Rey <mrey@suse.com>
 
-- Update to version 0.9.5 
+- Update to version 0.9.5
   * Change shebang to specifically call python3
   * Add --width flag to change displayed width. Closes #92.
   * Update tlds and copyright dates
@@ -190,12 +196,12 @@ Wed Dec 12 10:15:06 UTC 2018 - Dr. Werner Fink <werner@suse.de>
   * Add g/G as top/bottom keyboard shortcuts. Fix #47
   * Update minimum urwid version
   * Type number to jump to URL
-  * Bugfix 
+  * Bugfix
 
 -------------------------------------------------------------------
 Wed Dec 12 10:02:50 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 
-- Move to python3 (boo#1119223) 
+- Move to python3 (boo#1119223)
 
 -------------------------------------------------------------------
 Tue Jul  4 06:19:46 UTC 2017 - werner@suse.de
@@ -222,5 +228,5 @@ Mon Mar 13 07:23:10 UTC 2017 - werner@suse.de
 -------------------------------------------------------------------
 Mon Feb 13 08:12:10 UTC 2017 - werner@suse.de
 
-- Inital package urlscan 0.8.3 which is an replacement for urlview 
+- Inital package urlscan 0.8.3 which is an replacement for urlview
 
