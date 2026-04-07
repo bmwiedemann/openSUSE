@@ -17,7 +17,7 @@
 
 
 Name:           udiskie
-Version:        2.5.8
+Version:        2.6.1
 Release:        0
 Summary:        Removable disk automounter for udisks
 License:        MIT

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Feb 21 14:56:51 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.6.1:
+  * fix exception due to incorrect function name for appindicator menu
+
+- update to 2.6.0:
+  * show partition label in unlocking dialog
+  * update tray menu on each device update
+  * update Turkish translations
+  * can load configuration file from .toml
+  * fix tray menu not updating on some wayland platforms
+  * fix exception being shown when using --event-hook
+
+-------------------------------------------------------------------
 Sat Jan  3 16:38:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.8:
