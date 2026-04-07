@@ -269,4 +269,12 @@
 - Actually drop BuildRequires on six.</comment>
     <requestid>1336187</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>efd279bb36bcaf8ce80b3041cd197889</srcmd5>
+    <version>2.16.2</version>
+    <time>1775572342</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344690</requestid>
+  </revision>
 </revisionlist>
