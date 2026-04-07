@@ -33,4 +33,12 @@ has 5 users maintaining it here on OBS</comment>
     <comment></comment>
     <requestid>1271279</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>757030c95b986b921145a83a891fa6fa</srcmd5>
+    <version>0.18</version>
+    <time>1775572423</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344814</requestid>
+  </revision>
 </revisionlist>

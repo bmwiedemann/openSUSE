@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-mptt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-mptt
-Version:        0.17
+Version:        0.18
 Release:        0
 Summary:        Modified Preorder Tree Traversal for Django Models
 License:        MIT
@@ -44,8 +44,6 @@ Utilities for implementing Modified Preorder Tree Traversal with your Django Mod
 
 %prep
 %setup -q -n django-mptt-%{version}
-sed -i 's/from model_mommy import mommy/from model_bakery import baker as mommy/' tests/myapp/tests.py
-sed -i 's/test_create_by_mommy_exception/_test_create_by_mommy_exception/' tests/myapp/tests.py
 
 %build
 %pyproject_wheel
@@ -62,6 +60,6 @@ export PYTHONPATH=${PWD}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/mptt/
-%{python_sitelib}/django[-_]mptt*/
+%{python_sitelib}/django[-_]mptt-%{version}.0.dist-info
 
 %changelog
