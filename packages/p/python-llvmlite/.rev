@@ -435,4 +435,14 @@ This version works with llvm 4.</comment>
   * Documentation for migrating from older llvmlite versions (&lt;0.45).</comment>
     <requestid>1324582</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b109128f3205c1b25e4b03127a10a8e7</srcmd5>
+    <version>0.47.0</version>
+    <time>1775572507</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.47.0:
+  * https://llvmlite.readthedocs.io/en/latest/release-notes.html#v0-47-0-march-31-2026
+  * Support for Python 3.14t (free-threaded) wheel builds.</comment>
+    <requestid>1344981</requestid>
+  </revision>
 </revisionlist>
