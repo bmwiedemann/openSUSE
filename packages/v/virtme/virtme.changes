@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:31:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.41:
+  * Improve the consistency and reliability of the guest init process (virtme-ng-init / virtme-init).
+  * Broader support across different distributions and architectures, including
+    better compatibility with minimal rootfs environments.
+  * Debugging capabilities have been enhanced with support for customizing the
+    GDB port for each guest session.
+  * Networking has been refined as well, with improved SSH handling and new
+    options for PCI device passthrough via --vfio-pci.
+  * Integration with AI agents has also been enhanced. In particular, vng can
+    now be used more effectively in non-interactive sessions, allowing AI
+    agents to automate fairly advanced workflows for kernel testing and patch validation.
+
+-------------------------------------------------------------------
 Mon Dec  8 09:29:40 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.40:
