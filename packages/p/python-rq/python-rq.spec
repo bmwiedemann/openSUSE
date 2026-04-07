@@ -29,7 +29,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rq%{psuffix}
-Version:        2.6.1
+Version:        2.7
 Release:        0
 Summary:        Easy Job Queues for Python
 License:        Apache-2.0

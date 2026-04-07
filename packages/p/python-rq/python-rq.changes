@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  5 14:41:23 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.7
+  - Formal support for Python 3.14.
+  - Improve CronScheduler monitoring, you can now monitor each
+    CronJob's latest and next scheduled enqueue time.
+  - job.get_status() now reports the correct final state inside
+    on_success / on_failure callbacks.
+  - Minor fixes and cleanups.
+
+-------------------------------------------------------------------
 Wed Jan 21 13:47:53 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.6.1
