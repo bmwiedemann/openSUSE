@@ -18,15 +18,8 @@
 
 %{?single_pythons_311plus}
 
-# Fixes for Leap 15.x
-%if 0%{?sle_version} == 150600
-# Force python3_sitelib to use 3.11
-%global __python3 /usr/bin/python3.11
-%global python3_sitelib /usr/lib/python3.11/site-packages
-%endif
-
 Name:           faugus-launcher
-Version:        1.17.4
+Version:        1.17.5
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
 License:        MIT
@@ -89,18 +82,13 @@ A simple and lightweight app for running Windows games using UMU-Launcher/UMU-Pr
 %prep
 %autosetup -n %{name}-%{version}
 
-# Fix for shebangs
-sed -i '1s|/usr/bin/env python3|%{__python3}|' faugus_launcher.py
-sed -i '1s|/usr/bin/env python3|%{__python3}|' faugus_run.py
-sed -i '1s|/usr/bin/env python3|%{__python3}|' faugus_proton_manager.py
-sed -i '1s|/usr/bin/env python3|%{__python3}|' faugus/proton_downloader.py
-
-# Fix for non-executable scripts on older versions than 1.14.2
-%if "%{version}" <= "1.14.1"
-sed -i '1{/^#!.*python/d}' faugus/components.py
-sed -i '1{/^#!.*python/d}' faugus/path_manager.py
-sed -i '1{/^#!.*python/d}' faugus/proton_downloader.py
-%endif
+# Fix for shebangs on current versions
+sed -i '1{/^#!.*python/d}' faugus/launcher.py
+sed -i '1{/^#!.*python/d}' faugus/proton_manager.py
+sed -i '1{/^#!.*python/d}' faugus/runner.py
+sed -i '1{/^#!.*python/d}' faugus/shortcut.py
+sed -i '1s|#!/usr/bin/env python3|#!%{__python3}|' faugus/proton_downloader.py
+sed -i '1s|#!/usr/bin/env bash|#!/usr/bin/bash|' faugus-launcher
 
 %build
 # Compile faugus-launcher
@@ -111,15 +99,9 @@ sed -i '1{/^#!.*python/d}' faugus/proton_downloader.py
 # Install faugus-launcher
 %meson_install
 
-# Fix bytecode mtime for SLE 15 / SLE 16 / Leap 15.x / Leap 16.x / Tumbleweed / Slowroll
-%if 0%{?sle_version} == 150600
-find %{buildroot}%{python3_sitelib} -name "*.pyc" -delete
-find %{buildroot}%{python3_sitelib} -name "*.py" -exec touch -d "1970-01-01 00:00:03" {} +
-%{__python3} -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/faugus/
-%else
+# Fix bytecode mtime for SLE 16 / Leap 16.x / Tumbleweed / Slowroll
 find %{buildroot}%{python3_sitelib} -name "*.pyc" -delete
 %{__python3} -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/faugus/
-%endif
 
 # Remove duplicated files
 %fdupes %{buildroot}%{_datadir}
@@ -137,20 +119,24 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
 %files
 %license LICENSE
+
 # Application data
 %dir %{_datadir}/faugus-launcher
 %{_datadir}/faugus-launcher/*
+
 # Binaries
 %{_bindir}/faugus-launcher
 %{_bindir}/faugus-run
-%{_bindir}/faugus-proton-manager
-%{_bindir}/faugus-shortcut
+
 # Icons
 %{_datadir}/icons/hicolor/*
+
 # .desktop files
 %{_datadir}/applications/*.desktop
+
 # Metainfo
 %{_datadir}/metainfo/faugus-launcher.metainfo.xml
+
 # Python modules
 %{python3_sitelib}/faugus/
 

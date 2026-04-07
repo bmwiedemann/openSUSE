@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Apr  5 23:15:12 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Removed unused code from older versions in .spec file 
+
+-------------------------------------------------------------------
+Sat Apr 04 19:40:01 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- .spec file code restructure
+- Removed support for EOL SUSE versions
+- Bump to version 1.17.5
+- Upstream changes:
+  * EA Path updated through the launcher and the runner
+  * Correctly detect EA App version
+  * Improved process detection
+  * Improved splash window
+  * Revert "Added python cache cleanup"
+  * Added python cache cleanup
+  * Some distros don't recognize just python
+  * Rename faugus run
+  * Misses file format
+  * App restructuring
+
+-------------------------------------------------------------------
 Wed Apr 01 04:11:35 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.17.4
