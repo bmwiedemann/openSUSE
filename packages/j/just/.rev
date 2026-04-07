@@ -559,4 +559,41 @@
   * Switch to dynamic completion engine (forwarded request 1343183 from rrahl0)</comment>
     <requestid>1343184</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f8688e288ca5081b6c89a895c28554b7</srcmd5>
+    <version>1.49.0</version>
+    <time>1775572382</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.49.0:
+  * Add --time to print recipe execution time
+  * Add user-defined functions
+  * Add just skill for agents
+  * Allow expressions in confirm attribute
+  * Add --complete-aliases
+  * Add --justfile-name to configure justfile filename
+  * Add runtime_directory() function
+  * Add --evaluate-format
+  * Allow passing variable and module paths to --evaluate
+  * Add --indentation
+  * Add module_file() and module_directory() to readme
+  * Allow reading .env from special files
+  * Load environment files in submodules
+  * Avoid process substitution in bash completion script
+  * Dont pass shell name to powershell
+  * Add just implementation of rule110
+  * Add instructions for skill to readme
+  * Remove comma in readme
+  * Avoid to_string_lossy in directory function tests
+  * Add installation overview
+  * Warn if invocation directory or justfile path is not Unicode
+  * Don't use make syntax highlighting in vim
+  * Fix Name Display impl to pad correctly
+  * Rename evaluate_target to evaluation_target
+  * Include recipe path in verbose output
+  * Move recipe methods onto resolved recipe
+  * Document that semver_matches() returns strings
+  * Build riscv64
+  * Include shell name in I/O error messages (forwarded request 1344715 from rrahl0)</comment>
+    <requestid>1344716</requestid>
+  </revision>
 </revisionlist>

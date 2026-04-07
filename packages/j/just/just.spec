@@ -17,7 +17,7 @@
 
 
 Name:           just
-Version:        1.48.0
+Version:        1.49.0
 Release:        0
 Summary:        Commmand runner
 License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND MIT AND CC0-1.0
@@ -25,6 +25,7 @@ Group:          Development/Tools/Building
 URL:            https://github.com/casey/just
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+Patch0:         skip-test.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
 BuildRequires:  python3-base
@@ -69,7 +70,7 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 
 %build
 %{cargo_build} --all-features

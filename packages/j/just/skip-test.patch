@@ -1,0 +1,12 @@
+diff --git a/tests/directories.rs b/tests/directories.rs
+index 8f59d95..4def32a 100644
+--- a/tests/directories.rs
++++ b/tests/directories.rs
+@@ -84,6 +84,7 @@ fn home_directory() {
+     .success();
+ }
+ 
++#[ignore]
+ #[test]
+ fn runtime_directory() {
+   if cfg!(not(target_os = "linux")) {

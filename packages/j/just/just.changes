@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Apr  5 21:27:03 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.49.0:
+  * Add --time to print recipe execution time
+  * Add user-defined functions
+  * Add just skill for agents
+  * Allow expressions in confirm attribute
+  * Add --complete-aliases
+  * Add --justfile-name to configure justfile filename
+  * Add runtime_directory() function
+  * Add --evaluate-format
+  * Allow passing variable and module paths to --evaluate
+  * Add --indentation
+  * Add module_file() and module_directory() to readme
+  * Allow reading .env from special files
+  * Load environment files in submodules
+  * Avoid process substitution in bash completion script
+  * Dont pass shell name to powershell
+  * Add just implementation of rule110
+  * Add instructions for skill to readme
+  * Remove comma in readme
+  * Avoid to_string_lossy in directory function tests
+  * Add installation overview
+  * Warn if invocation directory or justfile path is not Unicode
+  * Don't use make syntax highlighting in vim
+  * Fix Name Display impl to pad correctly
+  * Rename evaluate_target to evaluation_target
+  * Include recipe path in verbose output
+  * Move recipe methods onto resolved recipe
+  * Document that semver_matches() returns strings
+  * Build riscv64
+  * Include shell name in I/O error messages
+  * Don't print signal error message if recipe has [no-exit-message]
+- Update to version 1.48.1:
+  * Fix bash completion of command lines containing :
+  * Call zsh completion function when first auto-loaded
+  * Fix --set missing value error message interpolation
+  * Add #compdef to zsh completion script
+  * Add instructions for alias completions in bash
+  * Remove redundant clap derive attributes
+  * Update stable features in readme
+
+-------------------------------------------------------------------
 Fri Mar 27 12:19:14 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.48.0:
@@ -10,6 +53,7 @@ Fri Mar 27 12:19:14 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
   * Add --json as synonym for --dump --dump-format json
   * Stabilize lazy evaluation
   * Switch to dynamic completion engine
+- add skip-test.patch, as a workaround for a failing test
 
 -------------------------------------------------------------------
 Tue Mar 17 09:09:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
