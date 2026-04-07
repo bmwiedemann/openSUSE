@@ -1,7 +1,7 @@
 #
 # spec file for package python-social-auth-app-django
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-social-auth-app-django
-Version:        5.5.1
+Version:        5.7.0
 Release:        0
 Summary:        Python Social Authentication, Django integration
 License:        BSD-3-Clause
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/python-social-auth/social-app-django
 Source:         https://files.pythonhosted.org/packages/source/s/social_auth_app_django/social_auth_app_django-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 5.1}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module social-auth-core >= 4.4.0}

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Apr  5 14:55:01 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.7.0
+  * Changed
+    Integrated with social_core using registry instead of monkey patching it
+  * Donations
+    This project welcomes donations to make the development sustainable.
+    The following platforms are available for funding Python Social Auth:
+    GitHub Sponsors
+    Open Collective
+- Changes from 5.6.0
+  * Changed
+    - Fixed possibly unsafe account association (CVE-2025-61783, bsc#1251851)
+    - Storage now filters for active users, you might need to customize
+      SOCIAL_AUTH_ACTIVE_USERS_FILTER if your custom model does not
+      have the is_active field
+  * Added
+    - Django 6.0 and Python 3.14 compatibility
+    - Type annotations
+    - LoginRequiredMiddleware compatibility
+    - RAISE_EXCEPTIONS and LOGIN_ERROR_URL can be configured per backend
+
+-------------------------------------------------------------------
 Thu Oct  2 06:35:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 5.5.1

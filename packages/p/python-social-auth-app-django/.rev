@@ -152,4 +152,31 @@
     * Fixed authentication with OpenID based services.</comment>
     <requestid>1308667</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>33ff072fbf9fe037e43f42a541d6f7ab</srcmd5>
+    <version>5.7.0</version>
+    <time>1775572493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.7.0
+  * Changed
+    Integrated with social_core using registry instead of monkey patching it
+  * Donations
+    This project welcomes donations to make the development sustainable.
+    The following platforms are available for funding Python Social Auth:
+    GitHub Sponsors
+    Open Collective
+- Changes from 5.6.0
+  * Changed
+    - Fixed possibly unsafe account association (CVE-2025-61783, bsc#1251851)
+    - Storage now filters for active users, you might need to customize
+      SOCIAL_AUTH_ACTIVE_USERS_FILTER if your custom model does not
+      have the is_active field
+  * Added
+    - Django 6.0 and Python 3.14 compatibility
+    - Type annotations
+    - LoginRequiredMiddleware compatibility
+    - RAISE_EXCEPTIONS and LOGIN_ERROR_URL can be configured per backend
+</comment>
+    <requestid>1344945</requestid>
+  </revision>
 </revisionlist>
