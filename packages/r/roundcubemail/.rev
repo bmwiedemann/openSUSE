@@ -851,4 +851,12 @@ Security Update, [bsc#1228900]  [bsc#1228901]</comment>
   + Security: Fix SSRF + Information Disclosure via stylesheet links to a local network hosts</comment>
     <requestid>1341982</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>0eeeeb4e4a104b7091cf935bf3a8baf7</srcmd5>
+    <version>1.6.15</version>
+    <time>1775572379</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344706</requestid>
+  </revision>
 </revisionlist>

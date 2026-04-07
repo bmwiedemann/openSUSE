@@ -1,5 +1,22 @@
 -------------------------------------------------------------------
-Mon Mar 23 08:46:12 UTC 2026 - Lars Vogdt <lars@linux-schulserver.de>
+Sun Mar 29 19:44:22 UTC 2026 - Lars Vogdt <lars@linux-schulserver.de> - 1.6.15
+
+- update to 1.6.15
+  This is a security update to the stable version 1.6 of Roundcube Webmail.
+  It provides fixes to some regressions introduced in the previous release 
+  as well a recently reported security vulnerability:
+
+    SVG Animate FUNCIRI Attribute Bypass — Remote Image Loading via fill/filter/stroke, reported by class_nzm.
+
+  This version is considered stable and we recommend to update all productive
+  installations of Roundcube 1.6.x with it. Please do backup your data before updating!
+
+  + Fix regression where mail search would fail on non-ascii search criteria (#10121)
+  + Fix regression where some data url images could get ignored/lost (#10128)
+  + Fix SVG Animate FUNCIRI Attribute Bypass — Remote Image Loading via fill/filter/stroke
+
+-------------------------------------------------------------------
+Mon Mar 23 08:46:12 UTC 2026 - Lars Vogdt <lars@linux-schulserver.de> - 1.6.14
 
 - update to 1.6.14
   This is a security update to the stable version 1.6 of Roundcube Webmail.
