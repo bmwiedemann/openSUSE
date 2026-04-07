@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2025
-%define texlive_previous 2022
-%define texlive_release  20250308
-%define texlive_noarch   221
-%define biber_version    2.20
+%define texlive_version  2026
+%define texlive_previous 2025
+%define texlive_release  20260301
+%define texlive_noarch   222
+%define biber_version    2.21
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-b
-Version:        2025
+Version:        2026
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -114,7 +114,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source1:        around-the-bend.doc.tar.xz
 
 %description -n texlive-around-the-bend
@@ -941,7 +941,7 @@ Provides:       tex(gkaiu9f.tfm)
 Provides:       tex(gkaiufe.tfm)
 Provides:       tex(gkaiuff.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source2:        arphic.tar.xz
 Source3:        arphic.doc.tar.xz
 
@@ -3013,7 +3013,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-arphic-ttf-fonts >= %{texlive_version}
 Suggests:       texlive-arphic-ttf-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source4:        arphic-ttf.tar.xz
 Source5:        arphic-ttf.doc.tar.xz
 
@@ -3135,7 +3135,7 @@ Requires:       tex(cellspace.sty)
 Requires:       tex(makecell.sty)
 Requires:       tex(tabularx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source6:        arraycols.tar.xz
 Source7:        arraycols.doc.tar.xz
 
@@ -3214,7 +3214,7 @@ Suggests:       texlive-arrayjobx-doc >= %{texlive_version}
 Provides:       tex(arrayjob.sty)
 Provides:       tex(arrayjobx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source8:        arrayjobx.tar.xz
 Source9:        arrayjobx.doc.tar.xz
 
@@ -3305,7 +3305,7 @@ Requires:       tex(macroswap.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(xargs.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source10:       arraysort.tar.xz
 Source11:       arraysort.doc.tar.xz
 
@@ -3385,7 +3385,7 @@ Requires:       tex(classicthesis.sty)
 Requires:       tex(soul.sty)
 Requires:       tex(titlesec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source12:       arsclassica.tar.xz
 Source13:       arsclassica.doc.tar.xz
 
@@ -3449,7 +3449,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/arsclassica/arsclassica.sty
 
 %package -n texlive-arsenal
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn68191
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Open Type font by Andrij Shevchenko
@@ -3478,12 +3478,11 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-arsenal-fonts >= %{texlive_version}
 Suggests:       texlive-arsenal-doc >= %{texlive_version}
 Provides:       tex(arsenal.sty)
+Requires:       tex(arsenal-math.sty)
 Requires:       tex(fontspec.sty)
-Requires:       tex(iwonamath.sty)
-Requires:       tex(kpfonts-otf.sty)
 Requires:       tex(l3keys2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source14:       arsenal.tar.xz
 Source15:       arsenal.doc.tar.xz
 
@@ -3502,7 +3501,7 @@ package provides the fonts and LaTeX support for them with
 matching math. It needs LuaLaTeX or XeLaTeX.
 
 %package -n texlive-arsenal-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn68191
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Documentation for texlive-arsenal
 License:        OFL-1.1
@@ -3514,7 +3513,7 @@ Supplements:    (texlive-arsenal and texlive-alldocumentation)
 This package includes the documentation for texlive-arsenal
 
 %package -n texlive-arsenal-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn68191
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Severed fonts for texlive-arsenal
 License:        OFL-1.1
@@ -3553,20 +3552,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/arsenal/README
 %{_texmfdistdir}/doc/fonts/arsenal/arsenal.bib
 %{_texmfdistdir}/doc/fonts/arsenal/arsenal.pdf
-%{_texmfdistdir}/doc/fonts/arsenal/sample-math-arsenal+kpsans.pdf
-%{_texmfdistdir}/doc/fonts/arsenal/sample-math-arsenal+kpsans.tex
-%{_texmfdistdir}/doc/fonts/arsenal/sample-math-iwona.pdf
-%{_texmfdistdir}/doc/fonts/arsenal/sample-math-iwona.tex
-%{_texmfdistdir}/doc/fonts/arsenal/sample-math-kpsans.pdf
-%{_texmfdistdir}/doc/fonts/arsenal/sample-math-kpsans.tex
-%{_texmfdistdir}/doc/fonts/arsenal/sample-text.pdf
-%{_texmfdistdir}/doc/fonts/arsenal/sample-text.tex
+%{_texmfdistdir}/doc/fonts/arsenal/sample.pdf
+%{_texmfdistdir}/doc/fonts/arsenal/sample.tex
 
 %files -n texlive-arsenal
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/arsenal/Arsenal-Bold.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/arsenal/Arsenal-BoldItalic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/arsenal/Arsenal-Italic.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/arsenal/Arsenal-Regular.otf
+%{_texmfdistdir}/tex/latex/arsenal/Arsenal.fontspec
 %{_texmfdistdir}/tex/latex/arsenal/arsenal.sty
 
 %files -n texlive-arsenal-fonts
@@ -3579,6 +3573,121 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-arsenal/Arsenal-BoldItalic.otf
 %{_datadir}/fonts/texlive-arsenal/Arsenal-Italic.otf
 %{_datadir}/fonts/texlive-arsenal/Arsenal-Regular.otf
+
+%package -n texlive-arsenal-math
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.3svn77682
+Release:        0
+License:        OFL-1.1
+Summary:        Arsenal Math OpenType fonts
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Requires:       texlive-arsenal-math-fonts >= %{texlive_version}
+Suggests:       texlive-arsenal-math-doc >= %{texlive_version}
+Provides:       tex(arsenal-math.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(unicode-math.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source16:       arsenal-math.tar.xz
+Source17:       arsenal-math.doc.tar.xz
+
+%description -n texlive-arsenal-math
+Arsenal Math is a math companion font for the Arsenal text
+font. It is based on KpMath-Sans, with Latin characters,
+numerals and a few symbols from the Arsenal font. XeTeX or
+LuaTeX is required to use these OpenType math fonts.
+
+%package -n texlive-arsenal-math-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.3svn77682
+Release:        0
+Summary:        Documentation for texlive-arsenal-math
+License:        OFL-1.1
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-arsenal-math and texlive-alldocumentation)
+
+%description -n texlive-arsenal-math-doc
+This package includes the documentation for texlive-arsenal-math
+
+%package -n texlive-arsenal-math-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.3svn77682
+Release:        0
+Summary:        Severed fonts for texlive-arsenal-math
+License:        OFL-1.1
+URL:            https://www.tug.org/texlive/
+Group:          Productivity/Publishing/TeX/Fonts
+%reconfigure_fonts_prereq
+Requires(posttrans): fontconfig
+Requires(posttrans): ghostscript-fonts-std
+Suggests:       xorg-x11-fonts-core
+
+%description -n texlive-arsenal-math-fonts
+The  separated fonts package for texlive-arsenal-math
+
+%post -n texlive-arsenal-math
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-arsenal-math
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-arsenal-math
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%reconfigure_fonts_scriptlets -n texlive-arsenal-math-fonts
+
+%files -n texlive-arsenal-math-doc
+%{_texmfdistdir}/doc/fonts/arsenal-math/LICENSE.txt
+%{_texmfdistdir}/doc/fonts/arsenal-math/README.md
+%{_texmfdistdir}/doc/fonts/arsenal-math/sample-math.ltx
+%{_texmfdistdir}/doc/fonts/arsenal-math/sample-math.pdf
+
+%files -n texlive-arsenal-math
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/arsenal-math/ArsenalMath-Sans.otf
+%{_texmfdistdir}/fonts/opentype/public/arsenal-math/ArsenalMath-Sans.woff2
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/arsenal-math/ArsenalMath-SansBold.otf
+%{_texmfdistdir}/fonts/opentype/public/arsenal-math/ArsenalMath-SansBold.woff2
+%{_texmfdistdir}/fonts/source/public/arsenal-math/ArsenalMath-Sans.fea
+%{_texmfdistdir}/fonts/source/public/arsenal-math/ArsenalMath-Sans.sfd.zip
+%{_texmfdistdir}/fonts/source/public/arsenal-math/ArsenalMath-SansBold.sfd.zip
+%{_texmfdistdir}/tex/latex/arsenal-math/ArsenalMath-Sans.fontspec
+%{_texmfdistdir}/tex/latex/arsenal-math/arsenal-math.sty
+
+%files -n texlive-arsenal-math-fonts
+%dir %{_datadir}/fonts/texlive-arsenal-math
+%{_datadir}/fontconfig/conf.avail/58-texlive-arsenal-math.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-arsenal-math/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-arsenal-math/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-arsenal-math/fonts.scale
+%{_datadir}/fonts/texlive-arsenal-math/ArsenalMath-Sans.otf
+%{_datadir}/fonts/texlive-arsenal-math/ArsenalMath-SansBold.otf
 
 %package -n texlive-articleingud
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn38741
@@ -3611,9 +3720,9 @@ Suggests:       texlive-articleingud-doc >= %{texlive_version}
 Provides:       tex(articleingud.cls)
 Requires:       tex(article.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source16:       articleingud.tar.xz
-Source17:       articleingud.doc.tar.xz
+# from 20260301
+Source18:       articleingud.tar.xz
+Source19:       articleingud.doc.tar.xz
 
 %description -n texlive-articleingud
 The class is for articles published in INGENIERIA review. It is
@@ -3758,9 +3867,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source18:       arvo.tar.xz
-Source19:       arvo.doc.tar.xz
+# from 20260301
+Source20:       arvo.tar.xz
+Source21:       arvo.doc.tar.xz
 
 %description -n texlive-arvo
 This package provides the Arvo family of fonts designed by
@@ -3891,7 +4000,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-arvo/Arvo-Regular.ttf
 
 %package -n texlive-arydshln
-Version:        %{texlive_version}.%{texlive_noarch}.1.76svn50084
+Version:        %{texlive_version}.%{texlive_noarch}.1.76svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw dash-lines in array/tabular
@@ -3920,9 +4029,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-arydshln-doc >= %{texlive_version}
 Provides:       tex(arydshln.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source20:       arydshln.tar.xz
-Source21:       arydshln.doc.tar.xz
+# from 20260301
+Source22:       arydshln.tar.xz
+Source23:       arydshln.doc.tar.xz
 
 %description -n texlive-arydshln
 The package is to draw dash-lines in array/tabular
@@ -3934,7 +4043,7 @@ package is compatible with array, colortab, longtable, and
 colortbl.
 
 %package -n texlive-arydshln-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.76svn50084
+Version:        %{texlive_version}.%{texlive_noarch}.1.76svn77682
 Release:        0
 Summary:        Documentation for texlive-arydshln
 License:        LPPL-1.0
@@ -4003,9 +4112,9 @@ Provides:       tex(asaesub.sty)
 Provides:       tex(asaetr.cls)
 Provides:       tex(asaetr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source22:       asaetr.tar.xz
-Source23:       asaetr.doc.tar.xz
+# from 20260301
+Source24:       asaetr.tar.xz
+Source25:       asaetr.doc.tar.xz
 
 %description -n texlive-asaetr
 A class and BibTeX style for submissions to the Transactions of
@@ -4056,7 +4165,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/asaetr/asaetr.sty
 
 %package -n texlive-asana-math
-Version:        %{texlive_version}.%{texlive_noarch}.0.000.958svn59629
+Version:        %{texlive_version}.%{texlive_noarch}.0.000.962svn76895
 Release:        0
 License:        OFL-1.1
 Summary:        A font to typeset maths in Xe(La)TeX and Lua(La)TeX
@@ -4086,9 +4195,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-asana-math-fonts >= %{texlive_version}
 Suggests:       texlive-asana-math-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source24:       asana-math.tar.xz
-Source25:       asana-math.doc.tar.xz
+# from 20260301
+Source26:       asana-math.tar.xz
+Source27:       asana-math.doc.tar.xz
 
 %description -n texlive-asana-math
 The Asana-Math font is an OpenType font that includes almost
@@ -4100,7 +4209,7 @@ with LaTeX is provided by the fontspec and unicode-math
 packages.
 
 %package -n texlive-asana-math-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.000.958svn59629
+Version:        %{texlive_version}.%{texlive_noarch}.0.000.962svn76895
 Release:        0
 Summary:        Documentation for texlive-asana-math
 License:        OFL-1.1
@@ -4113,7 +4222,7 @@ Supplements:    (texlive-asana-math and texlive-alldocumentation)
 This package includes the documentation for texlive-asana-math
 
 %package -n texlive-asana-math-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.000.958svn59629
+Version:        %{texlive_version}.%{texlive_noarch}.0.000.962svn76895
 Release:        0
 Summary:        Severed fonts for texlive-asana-math
 License:        OFL-1.1
@@ -4196,9 +4305,9 @@ Provides:       tex(asapsym.code.tex)
 Provides:       tex(asapsym.sty)
 Requires:       tex(fontspec.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source26:       asapsym.tar.xz
-Source27:       asapsym.doc.tar.xz
+# from 20260301
+Source28:       asapsym.tar.xz
+Source29:       asapsym.doc.tar.xz
 
 %description -n texlive-asapsym
 The package provides macros (usable with LaTeX or Plain TeX)
@@ -4273,7 +4382,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-asapsym/Asap-Symbol.otf
 
 %package -n texlive-ascelike
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn29129
+Version:        %{texlive_version}.%{texlive_noarch}.3.0svn75662
 Release:        0
 License:        LPPL-1.0
 Summary:        Bibliography style for the ASCE
@@ -4300,16 +4409,29 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ascelike-doc >= %{texlive_version}
+Provides:       tex(ascelike.bbx)
+Provides:       tex(ascelike.cbx)
 Provides:       tex(ascelike.cls)
 Requires:       tex(article.cls)
+Requires:       tex(authblk.sty)
+Requires:       tex(authoryear-comp.bbx)
+Requires:       tex(authoryear-comp.cbx)
+Requires:       tex(babel.sty)
+Requires:       tex(caption.sty)
 Requires:       tex(endfloat.sty)
+Requires:       tex(float.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(lineno.sty)
+Requires:       tex(microtype.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(newtxmath.sty)
+Requires:       tex(newtxtext.sty)
 Requires:       tex(setspace.sty)
+Requires:       tex(standard.bbx)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source28:       ascelike.tar.xz
-Source29:       ascelike.doc.tar.xz
+# from 20260301
+Source30:       ascelike.tar.xz
+Source31:       ascelike.doc.tar.xz
 
 %description -n texlive-ascelike
 A document class and bibliographic style that prepares
@@ -4320,7 +4442,7 @@ give this caveat. Also included is a short
 documentation/example of how to use the class.
 
 %package -n texlive-ascelike-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn29129
+Version:        %{texlive_version}.%{texlive_noarch}.3.0svn75662
 Release:        0
 Summary:        Documentation for texlive-ascelike
 License:        LPPL-1.0
@@ -4349,13 +4471,15 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ascelike-doc
-%{_texmfdistdir}/doc/latex/ascelike/README
+%{_texmfdistdir}/doc/latex/ascelike/README.txt
 %{_texmfdistdir}/doc/latex/ascelike/ascexmpl.bib
 %{_texmfdistdir}/doc/latex/ascelike/ascexmpl.pdf
 %{_texmfdistdir}/doc/latex/ascelike/ascexmpl.tex
 
 %files -n texlive-ascelike
 %{_texmfdistdir}/bibtex/bst/ascelike/ascelike.bst
+%{_texmfdistdir}/tex/latex/ascelike/ascelike.bbx
+%{_texmfdistdir}/tex/latex/ascelike/ascelike.cbx
 %{_texmfdistdir}/tex/latex/ascelike/ascelike.cls
 
 %package -n texlive-ascii-chart
@@ -4386,8 +4510,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source30:       ascii-chart.doc.tar.xz
+# from 20260301
+Source32:       ascii-chart.doc.tar.xz
 
 %description -n texlive-ascii-chart
 The document may be converted between Plain TeX and LaTeX
@@ -4415,7 +4539,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/support/ascii-chart/ascii.tex
 
 %package -n texlive-ascii-font
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn29989
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Use the ASCII "font" in LaTeX
@@ -4461,9 +4585,9 @@ Provides:       tex(ascii.map)
 Provides:       tex(ascii.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source31:       ascii-font.tar.xz
-Source32:       ascii-font.doc.tar.xz
+# from 20260301
+Source33:       ascii-font.tar.xz
+Source34:       ascii-font.doc.tar.xz
 
 %description -n texlive-ascii-font
 The package provides glyph and font access commands so that
@@ -4473,7 +4597,7 @@ Graphics. This package replaces any early LaTeX 2.09 package
 and "font" by R. Ramasubramanian and R.W.D. Nickalls.
 
 %package -n texlive-ascii-font-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn29989
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn77682
 Release:        0
 Summary:        Documentation for texlive-ascii-font
 License:        LPPL-1.0
@@ -4485,7 +4609,7 @@ Supplements:    (texlive-ascii-font and texlive-alldocumentation)
 This package includes the documentation for texlive-ascii-font
 
 %package -n texlive-ascii-font-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn29989
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn77682
 Release:        0
 Summary:        Severed fonts for texlive-ascii-font
 License:        LPPL-1.0
@@ -4538,7 +4662,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-ascii-font/ASCII.pfb
 
 %package -n texlive-asciilist
-Version:        %{texlive_version}.%{texlive_noarch}.2.2bsvn49060
+Version:        %{texlive_version}.%{texlive_noarch}.2.2bsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Environments AsciiList and AsciiDocList for prototyping nested lists in LaTeX
@@ -4569,9 +4693,9 @@ Provides:       tex(asciilist.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(trimspaces.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source33:       asciilist.tar.xz
-Source34:       asciilist.doc.tar.xz
+# from 20260301
+Source35:       asciilist.tar.xz
+Source36:       asciilist.doc.tar.xz
 
 %description -n texlive-asciilist
 The asciilist provides the environments AsciiList and
@@ -4583,7 +4707,7 @@ provides macros for configuring the use of the list
 environments and the appearance of the typeset results.
 
 %package -n texlive-asciilist-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.2bsvn49060
+Version:        %{texlive_version}.%{texlive_noarch}.2.2bsvn77682
 Release:        0
 Summary:        Documentation for texlive-asciilist
 License:        LPPL-1.0
@@ -4667,9 +4791,9 @@ Provides:       tex(ascmac.map)
 Provides:       tex(ascmac.sty)
 Provides:       tex(tascmac.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source35:       ascmac.tar.xz
-Source36:       ascmac.doc.tar.xz
+# from 20260301
+Source37:       ascmac.tar.xz
+Source38:       ascmac.doc.tar.xz
 
 %description -n texlive-ascmac
 The bundle provides boxes and picture macros with Japanese
@@ -4758,7 +4882,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-ascmac/ascii36.pfb
 
 %package -n texlive-askinclude
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn54725
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Interactive use of \includeonly
@@ -4789,9 +4913,9 @@ Provides:       tex(askinclude.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(makematch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source37:       askinclude.tar.xz
-Source38:       askinclude.doc.tar.xz
+# from 20260301
+Source39:       askinclude.tar.xz
+Source40:       askinclude.doc.tar.xz
 
 %description -n texlive-askinclude
 The package asks the user which files to put in a \includeonly
@@ -4799,7 +4923,7 @@ command. There is provision for answering "same as last time"
 or "all files".
 
 %package -n texlive-askinclude-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn54725
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn77682
 Release:        0
 Summary:        Documentation for texlive-askinclude
 License:        LPPL-1.0
@@ -4866,9 +4990,9 @@ Suggests:       texlive-askmaps-doc >= %{texlive_version}
 Provides:       tex(askmaps.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source39:       askmaps.tar.xz
-Source40:       askmaps.doc.tar.xz
+# from 20260301
+Source41:       askmaps.tar.xz
+Source42:       askmaps.doc.tar.xz
 
 %description -n texlive-askmaps
 The package provides 1, 2, 3, 4 and 5 variable Karnaugh maps,
@@ -4915,7 +5039,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/askmaps/askmaps.sty
 
 %package -n texlive-asmeconf
-Version:        %{texlive_version}.%{texlive_noarch}.1.40svn73649
+Version:        %{texlive_version}.%{texlive_noarch}.1.46svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX template for ASME conference papers
@@ -4947,7 +5071,6 @@ Requires:       tex(array.sty)
 Requires:       tex(article.cls)
 Requires:       tex(babel.sty)
 Requires:       tex(bm.sty)
-Requires:       tex(bookmark.sty)
 Requires:       tex(booktabs.sty)
 Requires:       tex(caption.sty)
 Requires:       tex(dcolumn.sty)
@@ -4957,35 +5080,27 @@ Requires:       tex(fancyhdr.sty)
 Requires:       tex(flushend.sty)
 Requires:       tex(fnpos.sty)
 Requires:       tex(fontenc.sty)
-Requires:       tex(fontspec.sty)
 Requires:       tex(footmisc.sty)
 Requires:       tex(geometry.sty)
-Requires:       tex(glyphtounicode.tex)
 Requires:       tex(graphicx.sty)
-Requires:       tex(hologo.sty)
 Requires:       tex(hyperref.sty)
-Requires:       tex(hyperxmp.sty)
-Requires:       tex(hyphsubst.sty)
-Requires:       tex(iftex.sty)
-Requires:       tex(ifthen.sty)
 Requires:       tex(inconsolata.sty)
-Requires:       tex(inputenc.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(lineno.sty)
 Requires:       tex(luatexja-fontspec.sty)
-Requires:       tex(mathalfa.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(newtxmath.sty)
 Requires:       tex(newtxtext.sty)
 Requires:       tex(subcaption.sty)
 Requires:       tex(textcase.sty)
+Requires:       tex(unicode-math.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source41:       asmeconf.tar.xz
-Source42:       asmeconf.doc.tar.xz
+# from 20260301
+Source43:       asmeconf.tar.xz
+Source44:       asmeconf.doc.tar.xz
 
 %description -n texlive-asmeconf
 The asmeconf class provides a LaTeX template for ASME
@@ -5000,13 +5115,14 @@ fields. This LaTeX template enables inline author names,
 following ASME's current style, but it can also produce the
 traditional grid style. Options include line numbering, final
 column balancing, various math options, government copyright,
-archivability (PDF/A), and multilingual support. The code is
-compatible with pdfLaTeX or LuaLaTeX. This LaTeX template is
-not a publication of ASME, but it does conform to ASME's
-currently published guidelines for conference papers.
+archivability and accessibility (PDF/A), and multilingual
+support. The code is compatible with pdfLaTeX or LuaLaTeX. This
+LaTeX template is not a publication of ASME, but it does
+conform to ASME's currently published guidelines for conference
+papers.
 
 %package -n texlive-asmeconf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.40svn73649
+Version:        %{texlive_version}.%{texlive_noarch}.1.46svn77682
 Release:        0
 Summary:        Documentation for texlive-asmeconf
 License:        LPPL-1.0
@@ -5037,10 +5153,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-asmeconf-doc
 %{_texmfdistdir}/doc/latex/asmeconf/README.md
 %{_texmfdistdir}/doc/latex/asmeconf/asmeconf-sample.bib
+%{_texmfdistdir}/doc/latex/asmeconf/asmeconf-style.css
 %{_texmfdistdir}/doc/latex/asmeconf/asmeconf-template.pdf
 %{_texmfdistdir}/doc/latex/asmeconf/asmeconf-template.tex
 %{_texmfdistdir}/doc/latex/asmeconf/examples/CONTRACTOR-copyright-asmeconf-template.pdf
 %{_texmfdistdir}/doc/latex/asmeconf/examples/GOVT-copyright-asmeconf-template.pdf
+%{_texmfdistdir}/doc/latex/asmeconf/examples/asmeconf-accessible-PDF-UA-2.pdf
+%{_texmfdistdir}/doc/latex/asmeconf/examples/asmeconf-accessible-PDF-UA-2.tex
 %{_texmfdistdir}/doc/latex/asmeconf/examples/asmeconf-authorgrid-example.pdf
 %{_texmfdistdir}/doc/latex/asmeconf/examples/asmeconf-authorgrid-example.tex
 %{_texmfdistdir}/doc/latex/asmeconf/examples/asmeconf-fontspec.pdf
@@ -5061,7 +5180,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/asmeconf/asmeconf.cls
 
 %package -n texlive-asmejour
-Version:        %{texlive_version}.%{texlive_noarch}.1.24svn73602
+Version:        %{texlive_version}.%{texlive_noarch}.1.27svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A template for ASME journal papers
@@ -5092,46 +5211,34 @@ Provides:       tex(asmejour.cls)
 Requires:       tex(array.sty)
 Requires:       tex(babel.sty)
 Requires:       tex(bm.sty)
-Requires:       tex(bookmark.sty)
 Requires:       tex(booktabs.sty)
 Requires:       tex(caption.sty)
 Requires:       tex(dcolumn.sty)
 Requires:       tex(doi.sty)
-Requires:       tex(enumitem.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(extarticle.cls)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(flushend.sty)
 Requires:       tex(fnpos.sty)
 Requires:       tex(fontenc.sty)
-Requires:       tex(fontspec.sty)
 Requires:       tex(footmisc.sty)
 Requires:       tex(geometry.sty)
-Requires:       tex(glyphtounicode.tex)
 Requires:       tex(graphicx.sty)
-Requires:       tex(hologo.sty)
 Requires:       tex(hyperref.sty)
-Requires:       tex(hyperxmp.sty)
-Requires:       tex(iftex.sty)
-Requires:       tex(ifthen.sty)
 Requires:       tex(inconsolata.sty)
-Requires:       tex(inputenc.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(lineno.sty)
-Requires:       tex(mathalfa.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(newtxmath.sty)
 Requires:       tex(newtxtext.sty)
-Requires:       tex(subcaption.sty)
-Requires:       tex(titlesec.sty)
-Requires:       tex(totcount.sty)
+Requires:       tex(unicode-math.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source43:       asmejour.tar.xz
-Source44:       asmejour.doc.tar.xz
+# from 20260301
+Source45:       asmejour.tar.xz
+Source46:       asmejour.doc.tar.xz
 
 %description -n texlive-asmejour
 The asmejour class provides a template to format preprints
@@ -5143,12 +5250,12 @@ Unlike older ASME LaTeX templates, asmejour pdfs will contain
 hyperlinks, bookmarks, and metadata, and references can include
 the DOI and URL fields. Options include line numbering, final
 column balancing, various math options, government copyright,
-and archivability (PDF/A). The class is compatible with
+and accessibility (PDF/A). The class is compatible with
 pdfLaTeX or LuaLaTeX. This package is not a publication of
 ASME.
 
 %package -n texlive-asmejour-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.24svn73602
+Version:        %{texlive_version}.%{texlive_noarch}.1.27svn77682
 Release:        0
 Summary:        Documentation for texlive-asmejour
 License:        LPPL-1.0
@@ -5179,6 +5286,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-asmejour-doc
 %{_texmfdistdir}/doc/latex/asmejour/README.md
 %{_texmfdistdir}/doc/latex/asmejour/asmejour-sample.bib
+%{_texmfdistdir}/doc/latex/asmejour/asmejour-style.css
 %{_texmfdistdir}/doc/latex/asmejour/asmejour-template.pdf
 %{_texmfdistdir}/doc/latex/asmejour/asmejour-template.tex
 %{_texmfdistdir}/doc/latex/asmejour/asmewide_example/asmejour-wide-equation-examples.pdf
@@ -5258,9 +5366,9 @@ Provides:       tex(arssi10.tfm)
 Provides:       tex(artti10.tfm)
 Provides:       tex(aspectratio.map)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source45:       aspectratio.tar.xz
-Source46:       aspectratio.doc.tar.xz
+# from 20260301
+Source47:       aspectratio.tar.xz
+Source48:       aspectratio.doc.tar.xz
 
 %description -n texlive-aspectratio
 The package provides fonts (both as Adobe Type 1 format, and as
@@ -5406,6 +5514,98 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-aspectratio/arssi10.pfb
 %{_datadir}/fonts/texlive-aspectratio/artti10.pfb
 
+%package -n texlive-aspen
+Version:        %{texlive_version}.%{texlive_noarch}.1.27svn78101
+Release:        0
+License:        LPPL-1.0
+Summary:        Simple crypto notation in LaTeX
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-aspen-doc >= %{texlive_version}
+Provides:       tex(aspen.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(mathtools.sty)
+Requires:       tex(rcs.sty)
+Requires:       tex(stmaryrd.sty)
+Requires:       tex(suffix.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(xkeyval.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source49:       aspen.tar.xz
+Source50:       aspen.doc.tar.xz
+
+%description -n texlive-aspen
+The Aspen package implements LaTeX commands closely related to
+what is often called security protocol notation, standard
+protocol engineering notation, standard protocol notation, or
+protocol narrations. Optionally, the Aspen package also
+implements LaTeX commands for Burrows-Abadi-Needham logic (BAN
+logic). The name Aspen can be an abbreviation for A Security
+Protocol Engineering Notation, but another possible
+abbreviation is Anderson-inspired Standard Protocol Engineering
+Notation, in memory of the late Professor Ross J. Anderson who
+has meant so much for the fields of computer security,
+distributed systems, and, in particular, security engineering.
+
+%package -n texlive-aspen-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.27svn78101
+Release:        0
+Summary:        Documentation for texlive-aspen
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-aspen and texlive-alldocumentation)
+
+%description -n texlive-aspen-doc
+This package includes the documentation for texlive-aspen
+
+%post -n texlive-aspen
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-aspen
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-aspen
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-aspen-doc
+%{_texmfdistdir}/doc/latex/aspen/COPYRIGHT
+%{_texmfdistdir}/doc/latex/aspen/README.md
+%{_texmfdistdir}/doc/latex/aspen/aspen-doc.ltx
+%{_texmfdistdir}/doc/latex/aspen/aspen-doc.pdf
+
+%files -n texlive-aspen
+%{_texmfdistdir}/tex/latex/aspen/aspen.sty
+
 %package -n texlive-assignment
 Version:        %{texlive_version}.%{texlive_noarch}.svn20431
 Release:        0
@@ -5438,9 +5638,9 @@ Provides:       tex(assignment.cls)
 Requires:       tex(article.cls)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source47:       assignment.tar.xz
-Source48:       assignment.doc.tar.xz
+# from 20260301
+Source51:       assignment.tar.xz
+Source52:       assignment.doc.tar.xz
 
 %description -n texlive-assignment
 A class file for typesetting homework and lab assignments.
@@ -5518,9 +5718,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source49:       assoccnt.tar.xz
-Source50:       assoccnt.doc.tar.xz
+# from 20260301
+Source53:       assoccnt.tar.xz
+Source54:       assoccnt.doc.tar.xz
 
 %description -n texlive-assoccnt
 The package provides the means of declaring a set of counters
@@ -5566,7 +5766,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/assoccnt/assoccnt.sty
 
 %package -n texlive-association-matrix
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn64845
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX support for creating association matrices
@@ -5600,9 +5800,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source51:       association-matrix.tar.xz
-Source52:       association-matrix.doc.tar.xz
+# from 20260301
+Source55:       association-matrix.tar.xz
+Source56:       association-matrix.doc.tar.xz
 
 %description -n texlive-association-matrix
 This package allows the creation of association matrices in an
@@ -5616,7 +5816,7 @@ was added. The package depends on etoolbox, forloop, ifthen,
 textcomp, and xparse.
 
 %package -n texlive-association-matrix-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn64845
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76924
 Release:        0
 Summary:        Documentation for texlive-association-matrix
 License:        LPPL-1.0
@@ -5684,9 +5884,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-asternote-doc >= %{texlive_version}
 Provides:       tex(asternote.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source53:       asternote.tar.xz
-Source54:       asternote.doc.tar.xz
+# from 20260301
+Source57:       asternote.tar.xz
+Source58:       asternote.doc.tar.xz
 
 %description -n texlive-asternote
 This LaTeX package can output annotation symbols enclosed in
@@ -5760,9 +5960,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-astro-doc >= %{texlive_version}
 Provides:       tex(astrosym.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source55:       astro.tar.xz
-Source56:       astro.doc.tar.xz
+# from 20260301
+Source59:       astro.tar.xz
+Source60:       astro.doc.tar.xz
 
 %description -n texlive-astro
 Astrosym is a font containing astronomical symbols, including
@@ -5840,8 +6040,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source57:       asy-overview.doc.tar.xz
+# from 20260301
+Source61:       asy-overview.doc.tar.xz
 
 %description -n texlive-asy-overview
 Asymptote is a programming language for creating mathematical
@@ -5939,9 +6139,9 @@ Requires:       tex(ifpdf.sty)
 Requires:       tex(ifplatform.sty)
 Requires:       tex(preview.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source58:       asyfig.tar.xz
-Source59:       asyfig.doc.tar.xz
+# from 20260301
+Source62:       asyfig.tar.xz
+Source63:       asyfig.doc.tar.xz
 
 %description -n texlive-asyfig
 The package provides a means of reading Asymptote figures from
@@ -5993,7 +6193,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/asyfig/asyprocess.sty
 
 %package -n texlive-asymptote
-Version:        %{texlive_version}.%{texlive_noarch}.3.01svn74381
+Version:        %{texlive_version}.%{texlive_noarch}.3.09svn78154
 Release:        0
 License:        LGPL-3.0-or-later
 Summary:        2D and 3D TeX-Aware Vector Graphics Language
@@ -6037,9 +6237,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source60:       asymptote.tar.xz
-Source61:       asymptote.doc.tar.xz
+# from 20260301
+Source64:       asymptote.tar.xz
+Source65:       asymptote.doc.tar.xz
 
 %description -n texlive-asymptote
 Asymptote is a powerful descriptive vector graphics language
@@ -6049,7 +6249,7 @@ same high-quality level of typesetting that LaTeX does for
 scientific text.
 
 %package -n texlive-asymptote-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.01svn74381
+Version:        %{texlive_version}.%{texlive_noarch}.3.09svn78154
 Release:        0
 Summary:        Documentation for texlive-asymptote
 License:        LGPL-3.0-or-later
@@ -6271,6 +6471,7 @@ fi
 %{_texmfdistdir}/doc/asymptote/examples/lineargraph.asy
 %{_texmfdistdir}/doc/asymptote/examples/lineargraph0.asy
 %{_texmfdistdir}/doc/asymptote/examples/linearregression.asy
+%{_texmfdistdir}/doc/asymptote/examples/linearregression.dat
 %{_texmfdistdir}/doc/asymptote/examples/lines.asy
 %{_texmfdistdir}/doc/asymptote/examples/linetype.asy
 %{_texmfdistdir}/doc/asymptote/examples/lmfit1.asy
@@ -6380,6 +6581,7 @@ fi
 %{_texmfdistdir}/doc/asymptote/examples/superpath.asy
 %{_texmfdistdir}/doc/asymptote/examples/tanh.asy
 %{_texmfdistdir}/doc/asymptote/examples/teapot.asy
+%{_texmfdistdir}/doc/asymptote/examples/teapotAnimation.asy
 %{_texmfdistdir}/doc/asymptote/examples/teapotIBL.asy
 %{_texmfdistdir}/doc/asymptote/examples/tensor.asy
 %{_texmfdistdir}/doc/asymptote/examples/tetra.asy
@@ -6448,7 +6650,6 @@ fi
 %{_texmfdistdir}/asymptote/GUI/Widg_addPolyOpt.py
 %{_texmfdistdir}/asymptote/GUI/Widg_editBezier.py
 %{_texmfdistdir}/asymptote/GUI/Window1.py
-%{_texmfdistdir}/asymptote/GUI/__init__.py
 %{_texmfdistdir}/asymptote/GUI/buildtool.py
 %{_texmfdistdir}/asymptote/GUI/configs/xasyconfig.cson
 %{_texmfdistdir}/asymptote/GUI/configs/xasykeymap.cson
@@ -6497,7 +6698,7 @@ fi
 %{_texmfdistdir}/asymptote/GUI/res/icons/text.svg
 %{_texmfdistdir}/asymptote/GUI/res/icons/triangle-stroked-15.svg
 %{_texmfdistdir}/asymptote/GUI/res/icons/undo.svg
-%{_texmfdistdir}/asymptote/GUI/setup.py
+%{_texmfdistdir}/asymptote/GUI/ui_utils.py
 %{_texmfdistdir}/asymptote/GUI/xasy.py
 %{_texmfdistdir}/asymptote/GUI/xasy2asy.py
 %{_texmfdistdir}/asymptote/GUI/xasyArgs.py
@@ -6509,7 +6710,9 @@ fi
 %{_texmfdistdir}/asymptote/GUI/xasyTransform.py
 %{_texmfdistdir}/asymptote/GUI/xasyUtils.py
 %{_texmfdistdir}/asymptote/GUI/xasyValidator.py
+%{_texmfdistdir}/asymptote/GUI/xasyicons/__init__.py
 %{_texmfdistdir}/asymptote/GUI/xasyicons/icons_rc.py
+%{_texmfdistdir}/asymptote/GUI/xasyqtui/__init__.py
 %{_texmfdistdir}/asymptote/GUI/xasyqtui/custMatTransform.py
 %{_texmfdistdir}/asymptote/GUI/xasyqtui/labelTextEditor.py
 %{_texmfdistdir}/asymptote/GUI/xasyqtui/setCustomAnchor.py
@@ -6518,6 +6721,7 @@ fi
 %{_texmfdistdir}/asymptote/GUI/xasyqtui/widg_editBezier.py
 %{_texmfdistdir}/asymptote/GUI/xasyqtui/widgetPointEditor.py
 %{_texmfdistdir}/asymptote/GUI/xasyqtui/window1.py
+%{_texmfdistdir}/asymptote/GUI/xasyversion/__init__.py
 %{_texmfdistdir}/asymptote/GUI/xasyversion/version.py
 %{_texmfdistdir}/asymptote/animate.asy
 %{_texmfdistdir}/asymptote/animation.asy
@@ -6533,6 +6737,7 @@ fi
 %{_texmfdistdir}/asymptote/bezulate.asy
 %{_texmfdistdir}/asymptote/binarytree.asy
 %{_texmfdistdir}/asymptote/bsp.asy
+%{_texmfdistdir}/asymptote/checkversion.asy
 %{_texmfdistdir}/asymptote/colormap.asy
 %{_texmfdistdir}/asymptote/contour.asy
 %{_texmfdistdir}/asymptote/contour3.asy
@@ -6656,8 +6861,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source62:       asymptote-by-example-zh-cn.doc.tar.xz
+# from 20260301
+Source66:       asymptote-by-example-zh-cn.doc.tar.xz
 
 %description -n texlive-asymptote-by-example-zh-cn
 This is a tutorial written in Simplified Chinese.
@@ -6733,8 +6938,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source63:       asymptote-faq-zh-cn.doc.tar.xz
+# from 20260301
+Source67:       asymptote-faq-zh-cn.doc.tar.xz
 
 %description -n texlive-asymptote-faq-zh-cn
 This is a Chinese translation of the Asymptote FAQ
@@ -6854,8 +7059,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source64:       asymptote-manual-zh-cn.doc.tar.xz
+# from 20260301
+Source68:       asymptote-manual-zh-cn.doc.tar.xz
 
 %description -n texlive-asymptote-manual-zh-cn
 This is an (incomplete, simplified) Chinese translation of the
@@ -6959,9 +7164,9 @@ Requires:       tex(ifplatform.sty)
 Requires:       tex(pgfkeys.sty)
 Requires:       tex(verbatimcopy.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source65:       asypictureb.tar.xz
-Source66:       asypictureb.doc.tar.xz
+# from 20260301
+Source69:       asypictureb.tar.xz
+Source70:       asypictureb.doc.tar.xz
 
 %description -n texlive-asypictureb
 The package is an unofficial alternative to the package
@@ -7010,7 +7215,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/asypictureb/asypictureB.sty
 
 %package -n texlive-atableau
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.0svn73576
+Version:        %{texlive_version}.%{texlive_noarch}.2.2.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX package for symmetric group combinatorics
@@ -7039,12 +7244,11 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-atableau-doc >= %{texlive_version}
 Provides:       tex(atableau.sty)
 Requires:       tex(amsfonts.sty)
-Requires:       tex(l3keys2e.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source67:       atableau.tar.xz
-Source68:       atableau.doc.tar.xz
+# from 20260301
+Source71:       atableau.tar.xz
+Source72:       atableau.doc.tar.xz
 
 %description -n texlive-atableau
 A LaTeX package for symmetric group combinatorics, with
@@ -7058,7 +7262,7 @@ used as standalone commands or as part of tikzpicture
 environments.
 
 %package -n texlive-atableau-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.0svn73576
+Version:        %{texlive_version}.%{texlive_noarch}.2.2.0svn76924
 Release:        0
 Summary:        Documentation for texlive-atableau
 License:        LPPL-1.0
@@ -7087,17 +7291,22 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-atableau-doc
+%{_texmfdistdir}/doc/latex/atableau/CHANGES.md
 %{_texmfdistdir}/doc/latex/atableau/LICENSE
 %{_texmfdistdir}/doc/latex/atableau/README.md
+%{_texmfdistdir}/doc/latex/atableau/TODO.md
 %{_texmfdistdir}/doc/latex/atableau/atableau.ini
 %{_texmfdistdir}/doc/latex/atableau/atableau.pdf
 %{_texmfdistdir}/doc/latex/atableau/atableau.tex
+%{_texmfdistdir}/doc/latex/atableau/atableau_beamer.pdf
+%{_texmfdistdir}/doc/latex/atableau/atableau_beamer.tex
+%{_texmfdistdir}/doc/latex/atableau/atableau_readme.webp
 
 %files -n texlive-atableau
 %{_texmfdistdir}/tex/latex/atableau/atableau.sty
 
 %package -n texlive-atbegshi
-Version:        %{texlive_version}.%{texlive_noarch}.1.19svn53051
+Version:        %{texlive_version}.%{texlive_noarch}.1.19svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Execute stuff at \shipout time
@@ -7129,9 +7338,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(infwarerr.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source69:       atbegshi.tar.xz
-Source70:       atbegshi.doc.tar.xz
+# from 20260301
+Source73:       atbegshi.tar.xz
+Source74:       atbegshi.doc.tar.xz
 
 %description -n texlive-atbegshi
 This package is a modern reimplementation of package everyshi,
@@ -7141,7 +7350,7 @@ available. The package may be used either with LaTeX or with
 plain TeX.
 
 %package -n texlive-atbegshi-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.19svn53051
+Version:        %{texlive_version}.%{texlive_noarch}.1.19svn77682
 Release:        0
 Summary:        Documentation for texlive-atbegshi
 License:        LPPL-1.0
@@ -7179,7 +7388,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/atbegshi/atbegshi.sty
 
 %package -n texlive-atenddvi
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn56922
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Provides the \AtEndDvi command
@@ -7212,9 +7421,9 @@ Requires:       tex(atbegshi.sty)
 Requires:       tex(zref-abspage.sty)
 Requires:       tex(zref-lastpage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source71:       atenddvi.tar.xz
-Source72:       atenddvi.doc.tar.xz
+# from 20260301
+Source75:       atenddvi.tar.xz
+Source76:       atenddvi.doc.tar.xz
 
 %description -n texlive-atenddvi
 This package is unneeded and does nothing when used with a
@@ -7227,7 +7436,7 @@ because they are put into the last page. This is the main
 difference to \AtEndDocument.
 
 %package -n texlive-atenddvi-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn56922
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn78101
 Release:        0
 Summary:        Documentation for texlive-atenddvi
 License:        LPPL-1.0
@@ -7295,9 +7504,9 @@ Provides:       tex(atendofenv.sty)
 Requires:       tex(amsthm.sty)
 Requires:       tex(letltxmacro.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source73:       atendofenv.tar.xz
-Source74:       atendofenv.doc.tar.xz
+# from 20260301
+Source77:       atendofenv.tar.xz
+Source78:       atendofenv.doc.tar.xz
 
 %description -n texlive-atendofenv
 This package allows adding a custom symbol at the end of an
@@ -7341,7 +7550,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/atendofenv/atendofenv.sty
 
 %package -n texlive-atkinson
-Version:        %{texlive_version}.%{texlive_noarch}.svn71048
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for the Atkinson Hyperlegible family of fonts
@@ -7383,194 +7592,656 @@ Suggests:       texlive-atkinson-doc >= %{texlive_version}
 Provides:       tex(LY1atkinsn-LF.fd)
 Provides:       tex(LY1atkinsn-Sup.fd)
 Provides:       tex(LY1atkinsn-TLF.fd)
+Provides:       tex(LY1atkinsnmono-Sup.fd)
+Provides:       tex(LY1atkinsnmono-TLF.fd)
 Provides:       tex(OT1atkinsn-LF.fd)
 Provides:       tex(OT1atkinsn-Sup.fd)
 Provides:       tex(OT1atkinsn-TLF.fd)
+Provides:       tex(OT1atkinsnmono-Sup.fd)
+Provides:       tex(OT1atkinsnmono-TLF.fd)
 Provides:       tex(T1atkinsn-LF.fd)
 Provides:       tex(T1atkinsn-Sup.fd)
 Provides:       tex(T1atkinsn-TLF.fd)
+Provides:       tex(T1atkinsnmono-Sup.fd)
+Provides:       tex(T1atkinsnmono-TLF.fd)
 Provides:       tex(TS1atkinsn-LF.fd)
 Provides:       tex(TS1atkinsn-TLF.fd)
+Provides:       tex(TS1atkinsnmono-TLF.fd)
 Provides:       tex(atkinsn-Bold-lf-ly1--base.tfm)
-Provides:       tex(atkinsn-Bold-lf-ly1--lcdfj.tfm)
 Provides:       tex(atkinsn-Bold-lf-ly1.tfm)
 Provides:       tex(atkinsn-Bold-lf-ly1.vf)
-Provides:       tex(atkinsn-Bold-lf-ot1--base.tfm)
-Provides:       tex(atkinsn-Bold-lf-ot1--lcdfj.tfm)
 Provides:       tex(atkinsn-Bold-lf-ot1.tfm)
-Provides:       tex(atkinsn-Bold-lf-ot1.vf)
 Provides:       tex(atkinsn-Bold-lf-t1--base.tfm)
-Provides:       tex(atkinsn-Bold-lf-t1--lcdfj.tfm)
 Provides:       tex(atkinsn-Bold-lf-t1.tfm)
 Provides:       tex(atkinsn-Bold-lf-t1.vf)
 Provides:       tex(atkinsn-Bold-lf-ts1--base.tfm)
 Provides:       tex(atkinsn-Bold-lf-ts1.tfm)
 Provides:       tex(atkinsn-Bold-lf-ts1.vf)
 Provides:       tex(atkinsn-Bold-sup-ly1--base.tfm)
-Provides:       tex(atkinsn-Bold-sup-ly1--lcdfj.tfm)
 Provides:       tex(atkinsn-Bold-sup-ly1.tfm)
 Provides:       tex(atkinsn-Bold-sup-ly1.vf)
-Provides:       tex(atkinsn-Bold-sup-ot1--base.tfm)
-Provides:       tex(atkinsn-Bold-sup-ot1--lcdfj.tfm)
 Provides:       tex(atkinsn-Bold-sup-ot1.tfm)
-Provides:       tex(atkinsn-Bold-sup-ot1.vf)
 Provides:       tex(atkinsn-Bold-sup-t1--base.tfm)
-Provides:       tex(atkinsn-Bold-sup-t1--lcdfj.tfm)
 Provides:       tex(atkinsn-Bold-sup-t1.tfm)
 Provides:       tex(atkinsn-Bold-sup-t1.vf)
 Provides:       tex(atkinsn-Bold-tlf-ly1--base.tfm)
-Provides:       tex(atkinsn-Bold-tlf-ly1--lcdfj.tfm)
 Provides:       tex(atkinsn-Bold-tlf-ly1.tfm)
 Provides:       tex(atkinsn-Bold-tlf-ly1.vf)
-Provides:       tex(atkinsn-Bold-tlf-ot1--base.tfm)
-Provides:       tex(atkinsn-Bold-tlf-ot1--lcdfj.tfm)
 Provides:       tex(atkinsn-Bold-tlf-ot1.tfm)
-Provides:       tex(atkinsn-Bold-tlf-ot1.vf)
 Provides:       tex(atkinsn-Bold-tlf-t1--base.tfm)
-Provides:       tex(atkinsn-Bold-tlf-t1--lcdfj.tfm)
 Provides:       tex(atkinsn-Bold-tlf-t1.tfm)
 Provides:       tex(atkinsn-Bold-tlf-t1.vf)
 Provides:       tex(atkinsn-Bold-tlf-ts1--base.tfm)
 Provides:       tex(atkinsn-Bold-tlf-ts1.tfm)
 Provides:       tex(atkinsn-Bold-tlf-ts1.vf)
 Provides:       tex(atkinsn-BoldItalic-lf-ly1--base.tfm)
-Provides:       tex(atkinsn-BoldItalic-lf-ly1--lcdfj.tfm)
 Provides:       tex(atkinsn-BoldItalic-lf-ly1.tfm)
 Provides:       tex(atkinsn-BoldItalic-lf-ly1.vf)
-Provides:       tex(atkinsn-BoldItalic-lf-ot1--base.tfm)
-Provides:       tex(atkinsn-BoldItalic-lf-ot1--lcdfj.tfm)
 Provides:       tex(atkinsn-BoldItalic-lf-ot1.tfm)
-Provides:       tex(atkinsn-BoldItalic-lf-ot1.vf)
 Provides:       tex(atkinsn-BoldItalic-lf-t1--base.tfm)
-Provides:       tex(atkinsn-BoldItalic-lf-t1--lcdfj.tfm)
 Provides:       tex(atkinsn-BoldItalic-lf-t1.tfm)
 Provides:       tex(atkinsn-BoldItalic-lf-t1.vf)
 Provides:       tex(atkinsn-BoldItalic-lf-ts1--base.tfm)
 Provides:       tex(atkinsn-BoldItalic-lf-ts1.tfm)
 Provides:       tex(atkinsn-BoldItalic-lf-ts1.vf)
 Provides:       tex(atkinsn-BoldItalic-sup-ly1--base.tfm)
-Provides:       tex(atkinsn-BoldItalic-sup-ly1--lcdfj.tfm)
 Provides:       tex(atkinsn-BoldItalic-sup-ly1.tfm)
 Provides:       tex(atkinsn-BoldItalic-sup-ly1.vf)
-Provides:       tex(atkinsn-BoldItalic-sup-ot1--base.tfm)
-Provides:       tex(atkinsn-BoldItalic-sup-ot1--lcdfj.tfm)
 Provides:       tex(atkinsn-BoldItalic-sup-ot1.tfm)
-Provides:       tex(atkinsn-BoldItalic-sup-ot1.vf)
 Provides:       tex(atkinsn-BoldItalic-sup-t1--base.tfm)
-Provides:       tex(atkinsn-BoldItalic-sup-t1--lcdfj.tfm)
 Provides:       tex(atkinsn-BoldItalic-sup-t1.tfm)
 Provides:       tex(atkinsn-BoldItalic-sup-t1.vf)
 Provides:       tex(atkinsn-BoldItalic-tlf-ly1--base.tfm)
-Provides:       tex(atkinsn-BoldItalic-tlf-ly1--lcdfj.tfm)
 Provides:       tex(atkinsn-BoldItalic-tlf-ly1.tfm)
 Provides:       tex(atkinsn-BoldItalic-tlf-ly1.vf)
-Provides:       tex(atkinsn-BoldItalic-tlf-ot1--base.tfm)
-Provides:       tex(atkinsn-BoldItalic-tlf-ot1--lcdfj.tfm)
 Provides:       tex(atkinsn-BoldItalic-tlf-ot1.tfm)
-Provides:       tex(atkinsn-BoldItalic-tlf-ot1.vf)
 Provides:       tex(atkinsn-BoldItalic-tlf-t1--base.tfm)
-Provides:       tex(atkinsn-BoldItalic-tlf-t1--lcdfj.tfm)
 Provides:       tex(atkinsn-BoldItalic-tlf-t1.tfm)
 Provides:       tex(atkinsn-BoldItalic-tlf-t1.vf)
 Provides:       tex(atkinsn-BoldItalic-tlf-ts1--base.tfm)
 Provides:       tex(atkinsn-BoldItalic-tlf-ts1.tfm)
 Provides:       tex(atkinsn-BoldItalic-tlf-ts1.vf)
-Provides:       tex(atkinsn-Italic-lf-ly1--base.tfm)
-Provides:       tex(atkinsn-Italic-lf-ly1--lcdfj.tfm)
-Provides:       tex(atkinsn-Italic-lf-ly1.tfm)
-Provides:       tex(atkinsn-Italic-lf-ly1.vf)
-Provides:       tex(atkinsn-Italic-lf-ot1--base.tfm)
-Provides:       tex(atkinsn-Italic-lf-ot1--lcdfj.tfm)
-Provides:       tex(atkinsn-Italic-lf-ot1.tfm)
-Provides:       tex(atkinsn-Italic-lf-ot1.vf)
-Provides:       tex(atkinsn-Italic-lf-t1--base.tfm)
-Provides:       tex(atkinsn-Italic-lf-t1--lcdfj.tfm)
-Provides:       tex(atkinsn-Italic-lf-t1.tfm)
-Provides:       tex(atkinsn-Italic-lf-t1.vf)
-Provides:       tex(atkinsn-Italic-lf-ts1--base.tfm)
-Provides:       tex(atkinsn-Italic-lf-ts1.tfm)
-Provides:       tex(atkinsn-Italic-lf-ts1.vf)
-Provides:       tex(atkinsn-Italic-sup-ly1--base.tfm)
-Provides:       tex(atkinsn-Italic-sup-ly1--lcdfj.tfm)
-Provides:       tex(atkinsn-Italic-sup-ly1.tfm)
-Provides:       tex(atkinsn-Italic-sup-ly1.vf)
-Provides:       tex(atkinsn-Italic-sup-ot1--base.tfm)
-Provides:       tex(atkinsn-Italic-sup-ot1--lcdfj.tfm)
-Provides:       tex(atkinsn-Italic-sup-ot1.tfm)
-Provides:       tex(atkinsn-Italic-sup-ot1.vf)
-Provides:       tex(atkinsn-Italic-sup-t1--base.tfm)
-Provides:       tex(atkinsn-Italic-sup-t1--lcdfj.tfm)
-Provides:       tex(atkinsn-Italic-sup-t1.tfm)
-Provides:       tex(atkinsn-Italic-sup-t1.vf)
-Provides:       tex(atkinsn-Italic-tlf-ly1--base.tfm)
-Provides:       tex(atkinsn-Italic-tlf-ly1--lcdfj.tfm)
-Provides:       tex(atkinsn-Italic-tlf-ly1.tfm)
-Provides:       tex(atkinsn-Italic-tlf-ly1.vf)
-Provides:       tex(atkinsn-Italic-tlf-ot1--base.tfm)
-Provides:       tex(atkinsn-Italic-tlf-ot1--lcdfj.tfm)
-Provides:       tex(atkinsn-Italic-tlf-ot1.tfm)
-Provides:       tex(atkinsn-Italic-tlf-ot1.vf)
-Provides:       tex(atkinsn-Italic-tlf-t1--base.tfm)
-Provides:       tex(atkinsn-Italic-tlf-t1--lcdfj.tfm)
-Provides:       tex(atkinsn-Italic-tlf-t1.tfm)
-Provides:       tex(atkinsn-Italic-tlf-t1.vf)
-Provides:       tex(atkinsn-Italic-tlf-ts1--base.tfm)
-Provides:       tex(atkinsn-Italic-tlf-ts1.tfm)
-Provides:       tex(atkinsn-Italic-tlf-ts1.vf)
+Provides:       tex(atkinsn-ExtraBold-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraBold-lf-ly1.tfm)
+Provides:       tex(atkinsn-ExtraBold-lf-ly1.vf)
+Provides:       tex(atkinsn-ExtraBold-lf-ot1.tfm)
+Provides:       tex(atkinsn-ExtraBold-lf-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraBold-lf-t1.tfm)
+Provides:       tex(atkinsn-ExtraBold-lf-t1.vf)
+Provides:       tex(atkinsn-ExtraBold-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-ExtraBold-lf-ts1.tfm)
+Provides:       tex(atkinsn-ExtraBold-lf-ts1.vf)
+Provides:       tex(atkinsn-ExtraBold-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraBold-sup-ly1.tfm)
+Provides:       tex(atkinsn-ExtraBold-sup-ly1.vf)
+Provides:       tex(atkinsn-ExtraBold-sup-ot1.tfm)
+Provides:       tex(atkinsn-ExtraBold-sup-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraBold-sup-t1.tfm)
+Provides:       tex(atkinsn-ExtraBold-sup-t1.vf)
+Provides:       tex(atkinsn-ExtraBold-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraBold-tlf-ly1.tfm)
+Provides:       tex(atkinsn-ExtraBold-tlf-ly1.vf)
+Provides:       tex(atkinsn-ExtraBold-tlf-ot1.tfm)
+Provides:       tex(atkinsn-ExtraBold-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraBold-tlf-t1.tfm)
+Provides:       tex(atkinsn-ExtraBold-tlf-t1.vf)
+Provides:       tex(atkinsn-ExtraBold-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-ExtraBold-tlf-ts1.tfm)
+Provides:       tex(atkinsn-ExtraBold-tlf-ts1.vf)
+Provides:       tex(atkinsn-ExtraBoldItalic-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-lf-ly1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-lf-ly1.vf)
+Provides:       tex(atkinsn-ExtraBoldItalic-lf-ot1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-lf-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-lf-t1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-lf-t1.vf)
+Provides:       tex(atkinsn-ExtraBoldItalic-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-lf-ts1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-lf-ts1.vf)
+Provides:       tex(atkinsn-ExtraBoldItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-sup-ly1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-sup-ly1.vf)
+Provides:       tex(atkinsn-ExtraBoldItalic-sup-ot1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-sup-t1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-sup-t1.vf)
+Provides:       tex(atkinsn-ExtraBoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-tlf-ly1.vf)
+Provides:       tex(atkinsn-ExtraBoldItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-tlf-t1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-tlf-t1.vf)
+Provides:       tex(atkinsn-ExtraBoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsn-ExtraBoldItalic-tlf-ts1.vf)
+Provides:       tex(atkinsn-ExtraLight-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraLight-lf-ly1.tfm)
+Provides:       tex(atkinsn-ExtraLight-lf-ly1.vf)
+Provides:       tex(atkinsn-ExtraLight-lf-ot1.tfm)
+Provides:       tex(atkinsn-ExtraLight-lf-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraLight-lf-t1.tfm)
+Provides:       tex(atkinsn-ExtraLight-lf-t1.vf)
+Provides:       tex(atkinsn-ExtraLight-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-ExtraLight-lf-ts1.tfm)
+Provides:       tex(atkinsn-ExtraLight-lf-ts1.vf)
+Provides:       tex(atkinsn-ExtraLight-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraLight-sup-ly1.tfm)
+Provides:       tex(atkinsn-ExtraLight-sup-ly1.vf)
+Provides:       tex(atkinsn-ExtraLight-sup-ot1.tfm)
+Provides:       tex(atkinsn-ExtraLight-sup-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraLight-sup-t1.tfm)
+Provides:       tex(atkinsn-ExtraLight-sup-t1.vf)
+Provides:       tex(atkinsn-ExtraLight-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraLight-tlf-ly1.tfm)
+Provides:       tex(atkinsn-ExtraLight-tlf-ly1.vf)
+Provides:       tex(atkinsn-ExtraLight-tlf-ot1.tfm)
+Provides:       tex(atkinsn-ExtraLight-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraLight-tlf-t1.tfm)
+Provides:       tex(atkinsn-ExtraLight-tlf-t1.vf)
+Provides:       tex(atkinsn-ExtraLight-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-ExtraLight-tlf-ts1.tfm)
+Provides:       tex(atkinsn-ExtraLight-tlf-ts1.vf)
+Provides:       tex(atkinsn-ExtraLightItalic-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-lf-ly1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-lf-ly1.vf)
+Provides:       tex(atkinsn-ExtraLightItalic-lf-ot1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-lf-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-lf-t1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-lf-t1.vf)
+Provides:       tex(atkinsn-ExtraLightItalic-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-lf-ts1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-lf-ts1.vf)
+Provides:       tex(atkinsn-ExtraLightItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-sup-ly1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-sup-ly1.vf)
+Provides:       tex(atkinsn-ExtraLightItalic-sup-ot1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-sup-t1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-sup-t1.vf)
+Provides:       tex(atkinsn-ExtraLightItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-tlf-ly1.vf)
+Provides:       tex(atkinsn-ExtraLightItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-tlf-t1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-tlf-t1.vf)
+Provides:       tex(atkinsn-ExtraLightItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsn-ExtraLightItalic-tlf-ts1.vf)
+Provides:       tex(atkinsn-Light-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-Light-lf-ly1.tfm)
+Provides:       tex(atkinsn-Light-lf-ly1.vf)
+Provides:       tex(atkinsn-Light-lf-ot1.tfm)
+Provides:       tex(atkinsn-Light-lf-t1--base.tfm)
+Provides:       tex(atkinsn-Light-lf-t1.tfm)
+Provides:       tex(atkinsn-Light-lf-t1.vf)
+Provides:       tex(atkinsn-Light-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-Light-lf-ts1.tfm)
+Provides:       tex(atkinsn-Light-lf-ts1.vf)
+Provides:       tex(atkinsn-Light-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-Light-sup-ly1.tfm)
+Provides:       tex(atkinsn-Light-sup-ly1.vf)
+Provides:       tex(atkinsn-Light-sup-ot1.tfm)
+Provides:       tex(atkinsn-Light-sup-t1--base.tfm)
+Provides:       tex(atkinsn-Light-sup-t1.tfm)
+Provides:       tex(atkinsn-Light-sup-t1.vf)
+Provides:       tex(atkinsn-Light-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-Light-tlf-ly1.tfm)
+Provides:       tex(atkinsn-Light-tlf-ly1.vf)
+Provides:       tex(atkinsn-Light-tlf-ot1.tfm)
+Provides:       tex(atkinsn-Light-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-Light-tlf-t1.tfm)
+Provides:       tex(atkinsn-Light-tlf-t1.vf)
+Provides:       tex(atkinsn-Light-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-Light-tlf-ts1.tfm)
+Provides:       tex(atkinsn-Light-tlf-ts1.vf)
+Provides:       tex(atkinsn-LightItalic-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-LightItalic-lf-ly1.tfm)
+Provides:       tex(atkinsn-LightItalic-lf-ly1.vf)
+Provides:       tex(atkinsn-LightItalic-lf-ot1.tfm)
+Provides:       tex(atkinsn-LightItalic-lf-t1--base.tfm)
+Provides:       tex(atkinsn-LightItalic-lf-t1.tfm)
+Provides:       tex(atkinsn-LightItalic-lf-t1.vf)
+Provides:       tex(atkinsn-LightItalic-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-LightItalic-lf-ts1.tfm)
+Provides:       tex(atkinsn-LightItalic-lf-ts1.vf)
+Provides:       tex(atkinsn-LightItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-LightItalic-sup-ly1.tfm)
+Provides:       tex(atkinsn-LightItalic-sup-ly1.vf)
+Provides:       tex(atkinsn-LightItalic-sup-ot1.tfm)
+Provides:       tex(atkinsn-LightItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsn-LightItalic-sup-t1.tfm)
+Provides:       tex(atkinsn-LightItalic-sup-t1.vf)
+Provides:       tex(atkinsn-LightItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-LightItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsn-LightItalic-tlf-ly1.vf)
+Provides:       tex(atkinsn-LightItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsn-LightItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-LightItalic-tlf-t1.tfm)
+Provides:       tex(atkinsn-LightItalic-tlf-t1.vf)
+Provides:       tex(atkinsn-LightItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-LightItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsn-LightItalic-tlf-ts1.vf)
+Provides:       tex(atkinsn-Medium-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-Medium-lf-ly1.tfm)
+Provides:       tex(atkinsn-Medium-lf-ly1.vf)
+Provides:       tex(atkinsn-Medium-lf-ot1.tfm)
+Provides:       tex(atkinsn-Medium-lf-t1--base.tfm)
+Provides:       tex(atkinsn-Medium-lf-t1.tfm)
+Provides:       tex(atkinsn-Medium-lf-t1.vf)
+Provides:       tex(atkinsn-Medium-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-Medium-lf-ts1.tfm)
+Provides:       tex(atkinsn-Medium-lf-ts1.vf)
+Provides:       tex(atkinsn-Medium-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-Medium-sup-ly1.tfm)
+Provides:       tex(atkinsn-Medium-sup-ly1.vf)
+Provides:       tex(atkinsn-Medium-sup-ot1.tfm)
+Provides:       tex(atkinsn-Medium-sup-t1--base.tfm)
+Provides:       tex(atkinsn-Medium-sup-t1.tfm)
+Provides:       tex(atkinsn-Medium-sup-t1.vf)
+Provides:       tex(atkinsn-Medium-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-Medium-tlf-ly1.tfm)
+Provides:       tex(atkinsn-Medium-tlf-ly1.vf)
+Provides:       tex(atkinsn-Medium-tlf-ot1.tfm)
+Provides:       tex(atkinsn-Medium-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-Medium-tlf-t1.tfm)
+Provides:       tex(atkinsn-Medium-tlf-t1.vf)
+Provides:       tex(atkinsn-Medium-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-Medium-tlf-ts1.tfm)
+Provides:       tex(atkinsn-Medium-tlf-ts1.vf)
+Provides:       tex(atkinsn-MediumItalic-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-MediumItalic-lf-ly1.tfm)
+Provides:       tex(atkinsn-MediumItalic-lf-ly1.vf)
+Provides:       tex(atkinsn-MediumItalic-lf-ot1.tfm)
+Provides:       tex(atkinsn-MediumItalic-lf-t1--base.tfm)
+Provides:       tex(atkinsn-MediumItalic-lf-t1.tfm)
+Provides:       tex(atkinsn-MediumItalic-lf-t1.vf)
+Provides:       tex(atkinsn-MediumItalic-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-MediumItalic-lf-ts1.tfm)
+Provides:       tex(atkinsn-MediumItalic-lf-ts1.vf)
+Provides:       tex(atkinsn-MediumItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-MediumItalic-sup-ly1.tfm)
+Provides:       tex(atkinsn-MediumItalic-sup-ly1.vf)
+Provides:       tex(atkinsn-MediumItalic-sup-ot1.tfm)
+Provides:       tex(atkinsn-MediumItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsn-MediumItalic-sup-t1.tfm)
+Provides:       tex(atkinsn-MediumItalic-sup-t1.vf)
+Provides:       tex(atkinsn-MediumItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-MediumItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsn-MediumItalic-tlf-ly1.vf)
+Provides:       tex(atkinsn-MediumItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsn-MediumItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-MediumItalic-tlf-t1.tfm)
+Provides:       tex(atkinsn-MediumItalic-tlf-t1.vf)
+Provides:       tex(atkinsn-MediumItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-MediumItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsn-MediumItalic-tlf-ts1.vf)
 Provides:       tex(atkinsn-Regular-lf-ly1--base.tfm)
-Provides:       tex(atkinsn-Regular-lf-ly1--lcdfj.tfm)
 Provides:       tex(atkinsn-Regular-lf-ly1.tfm)
 Provides:       tex(atkinsn-Regular-lf-ly1.vf)
-Provides:       tex(atkinsn-Regular-lf-ot1--base.tfm)
-Provides:       tex(atkinsn-Regular-lf-ot1--lcdfj.tfm)
 Provides:       tex(atkinsn-Regular-lf-ot1.tfm)
-Provides:       tex(atkinsn-Regular-lf-ot1.vf)
 Provides:       tex(atkinsn-Regular-lf-t1--base.tfm)
-Provides:       tex(atkinsn-Regular-lf-t1--lcdfj.tfm)
 Provides:       tex(atkinsn-Regular-lf-t1.tfm)
 Provides:       tex(atkinsn-Regular-lf-t1.vf)
 Provides:       tex(atkinsn-Regular-lf-ts1--base.tfm)
 Provides:       tex(atkinsn-Regular-lf-ts1.tfm)
 Provides:       tex(atkinsn-Regular-lf-ts1.vf)
 Provides:       tex(atkinsn-Regular-sup-ly1--base.tfm)
-Provides:       tex(atkinsn-Regular-sup-ly1--lcdfj.tfm)
 Provides:       tex(atkinsn-Regular-sup-ly1.tfm)
 Provides:       tex(atkinsn-Regular-sup-ly1.vf)
-Provides:       tex(atkinsn-Regular-sup-ot1--base.tfm)
-Provides:       tex(atkinsn-Regular-sup-ot1--lcdfj.tfm)
 Provides:       tex(atkinsn-Regular-sup-ot1.tfm)
-Provides:       tex(atkinsn-Regular-sup-ot1.vf)
 Provides:       tex(atkinsn-Regular-sup-t1--base.tfm)
-Provides:       tex(atkinsn-Regular-sup-t1--lcdfj.tfm)
 Provides:       tex(atkinsn-Regular-sup-t1.tfm)
 Provides:       tex(atkinsn-Regular-sup-t1.vf)
 Provides:       tex(atkinsn-Regular-tlf-ly1--base.tfm)
-Provides:       tex(atkinsn-Regular-tlf-ly1--lcdfj.tfm)
 Provides:       tex(atkinsn-Regular-tlf-ly1.tfm)
 Provides:       tex(atkinsn-Regular-tlf-ly1.vf)
-Provides:       tex(atkinsn-Regular-tlf-ot1--base.tfm)
-Provides:       tex(atkinsn-Regular-tlf-ot1--lcdfj.tfm)
 Provides:       tex(atkinsn-Regular-tlf-ot1.tfm)
-Provides:       tex(atkinsn-Regular-tlf-ot1.vf)
 Provides:       tex(atkinsn-Regular-tlf-t1--base.tfm)
-Provides:       tex(atkinsn-Regular-tlf-t1--lcdfj.tfm)
 Provides:       tex(atkinsn-Regular-tlf-t1.tfm)
 Provides:       tex(atkinsn-Regular-tlf-t1.vf)
 Provides:       tex(atkinsn-Regular-tlf-ts1--base.tfm)
 Provides:       tex(atkinsn-Regular-tlf-ts1.tfm)
 Provides:       tex(atkinsn-Regular-tlf-ts1.vf)
+Provides:       tex(atkinsn-RegularItalic-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-RegularItalic-lf-ly1.tfm)
+Provides:       tex(atkinsn-RegularItalic-lf-ly1.vf)
+Provides:       tex(atkinsn-RegularItalic-lf-ot1.tfm)
+Provides:       tex(atkinsn-RegularItalic-lf-t1--base.tfm)
+Provides:       tex(atkinsn-RegularItalic-lf-t1.tfm)
+Provides:       tex(atkinsn-RegularItalic-lf-t1.vf)
+Provides:       tex(atkinsn-RegularItalic-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-RegularItalic-lf-ts1.tfm)
+Provides:       tex(atkinsn-RegularItalic-lf-ts1.vf)
+Provides:       tex(atkinsn-RegularItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-RegularItalic-sup-ly1.tfm)
+Provides:       tex(atkinsn-RegularItalic-sup-ly1.vf)
+Provides:       tex(atkinsn-RegularItalic-sup-ot1.tfm)
+Provides:       tex(atkinsn-RegularItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsn-RegularItalic-sup-t1.tfm)
+Provides:       tex(atkinsn-RegularItalic-sup-t1.vf)
+Provides:       tex(atkinsn-RegularItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-RegularItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsn-RegularItalic-tlf-ly1.vf)
+Provides:       tex(atkinsn-RegularItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsn-RegularItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-RegularItalic-tlf-t1.tfm)
+Provides:       tex(atkinsn-RegularItalic-tlf-t1.vf)
+Provides:       tex(atkinsn-RegularItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-RegularItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsn-RegularItalic-tlf-ts1.vf)
+Provides:       tex(atkinsn-SemiBold-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-SemiBold-lf-ly1.tfm)
+Provides:       tex(atkinsn-SemiBold-lf-ly1.vf)
+Provides:       tex(atkinsn-SemiBold-lf-ot1.tfm)
+Provides:       tex(atkinsn-SemiBold-lf-t1--base.tfm)
+Provides:       tex(atkinsn-SemiBold-lf-t1.tfm)
+Provides:       tex(atkinsn-SemiBold-lf-t1.vf)
+Provides:       tex(atkinsn-SemiBold-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-SemiBold-lf-ts1.tfm)
+Provides:       tex(atkinsn-SemiBold-lf-ts1.vf)
+Provides:       tex(atkinsn-SemiBold-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-SemiBold-sup-ly1.tfm)
+Provides:       tex(atkinsn-SemiBold-sup-ly1.vf)
+Provides:       tex(atkinsn-SemiBold-sup-ot1.tfm)
+Provides:       tex(atkinsn-SemiBold-sup-t1--base.tfm)
+Provides:       tex(atkinsn-SemiBold-sup-t1.tfm)
+Provides:       tex(atkinsn-SemiBold-sup-t1.vf)
+Provides:       tex(atkinsn-SemiBold-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-SemiBold-tlf-ly1.tfm)
+Provides:       tex(atkinsn-SemiBold-tlf-ly1.vf)
+Provides:       tex(atkinsn-SemiBold-tlf-ot1.tfm)
+Provides:       tex(atkinsn-SemiBold-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-SemiBold-tlf-t1.tfm)
+Provides:       tex(atkinsn-SemiBold-tlf-t1.vf)
+Provides:       tex(atkinsn-SemiBold-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-SemiBold-tlf-ts1.tfm)
+Provides:       tex(atkinsn-SemiBold-tlf-ts1.vf)
+Provides:       tex(atkinsn-SemiBoldItalic-lf-ly1--base.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-lf-ly1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-lf-ly1.vf)
+Provides:       tex(atkinsn-SemiBoldItalic-lf-ot1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-lf-t1--base.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-lf-t1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-lf-t1.vf)
+Provides:       tex(atkinsn-SemiBoldItalic-lf-ts1--base.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-lf-ts1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-lf-ts1.vf)
+Provides:       tex(atkinsn-SemiBoldItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-sup-ly1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-sup-ly1.vf)
+Provides:       tex(atkinsn-SemiBoldItalic-sup-ot1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-sup-t1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-sup-t1.vf)
+Provides:       tex(atkinsn-SemiBoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-tlf-ly1.vf)
+Provides:       tex(atkinsn-SemiBoldItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-tlf-t1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-tlf-t1.vf)
+Provides:       tex(atkinsn-SemiBoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsn-SemiBoldItalic-tlf-ts1.vf)
+Provides:       tex(atkinsn_2euc5w.enc)
+Provides:       tex(atkinsn_7pe33p.enc)
+Provides:       tex(atkinsn_bbsfwk.enc)
+Provides:       tex(atkinsn_bxlfxu.enc)
+Provides:       tex(atkinsn_ehsai2.enc)
+Provides:       tex(atkinsn_ghg2ik.enc)
+Provides:       tex(atkinsn_gjro6p.enc)
+Provides:       tex(atkinsn_k53f2f.enc)
+Provides:       tex(atkinsn_sxa7r4.enc)
+Provides:       tex(atkinsn_tlrdxq.enc)
+Provides:       tex(atkinsnmono-Bold-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-Bold-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-Bold-sup-ly1.vf)
+Provides:       tex(atkinsnmono-Bold-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-Bold-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-Bold-sup-t1.tfm)
+Provides:       tex(atkinsnmono-Bold-sup-t1.vf)
+Provides:       tex(atkinsnmono-Bold-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-Bold-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-Bold-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-Bold-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-Bold-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-Bold-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-Bold-tlf-t1.vf)
+Provides:       tex(atkinsnmono-Bold-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-Bold-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-Bold-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-BoldItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-sup-ly1.vf)
+Provides:       tex(atkinsnmono-BoldItalic-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-sup-t1.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-sup-t1.vf)
+Provides:       tex(atkinsnmono-BoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-BoldItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-tlf-t1.vf)
+Provides:       tex(atkinsnmono-BoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-BoldItalic-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-ExtraBold-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-sup-ly1.vf)
+Provides:       tex(atkinsnmono-ExtraBold-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-sup-t1.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-sup-t1.vf)
+Provides:       tex(atkinsnmono-ExtraBold-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-ExtraBold-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-tlf-t1.vf)
+Provides:       tex(atkinsnmono-ExtraBold-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-ExtraBold-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-sup-ly1.vf)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-sup-t1.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-sup-t1.vf)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-tlf-t1.vf)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-ExtraBoldItalic-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-ExtraLight-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-sup-ly1.vf)
+Provides:       tex(atkinsnmono-ExtraLight-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-sup-t1.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-sup-t1.vf)
+Provides:       tex(atkinsnmono-ExtraLight-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-ExtraLight-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-tlf-t1.vf)
+Provides:       tex(atkinsnmono-ExtraLight-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-ExtraLight-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-ExtraLightItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-sup-ly1.vf)
+Provides:       tex(atkinsnmono-ExtraLightItalic-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-sup-t1.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-sup-t1.vf)
+Provides:       tex(atkinsnmono-ExtraLightItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-ExtraLightItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-tlf-t1.vf)
+Provides:       tex(atkinsnmono-ExtraLightItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-ExtraLightItalic-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-Light-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-Light-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-Light-sup-ly1.vf)
+Provides:       tex(atkinsnmono-Light-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-Light-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-Light-sup-t1.tfm)
+Provides:       tex(atkinsnmono-Light-sup-t1.vf)
+Provides:       tex(atkinsnmono-Light-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-Light-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-Light-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-Light-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-Light-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-Light-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-Light-tlf-t1.vf)
+Provides:       tex(atkinsnmono-Light-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-Light-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-Light-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-LightItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-LightItalic-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-LightItalic-sup-ly1.vf)
+Provides:       tex(atkinsnmono-LightItalic-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-LightItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-LightItalic-sup-t1.tfm)
+Provides:       tex(atkinsnmono-LightItalic-sup-t1.vf)
+Provides:       tex(atkinsnmono-LightItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-LightItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-LightItalic-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-LightItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-LightItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-LightItalic-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-LightItalic-tlf-t1.vf)
+Provides:       tex(atkinsnmono-LightItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-LightItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-LightItalic-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-Medium-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-Medium-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-Medium-sup-ly1.vf)
+Provides:       tex(atkinsnmono-Medium-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-Medium-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-Medium-sup-t1.tfm)
+Provides:       tex(atkinsnmono-Medium-sup-t1.vf)
+Provides:       tex(atkinsnmono-Medium-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-Medium-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-Medium-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-Medium-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-Medium-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-Medium-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-Medium-tlf-t1.vf)
+Provides:       tex(atkinsnmono-Medium-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-Medium-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-Medium-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-MediumItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-sup-ly1.vf)
+Provides:       tex(atkinsnmono-MediumItalic-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-sup-t1.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-sup-t1.vf)
+Provides:       tex(atkinsnmono-MediumItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-MediumItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-tlf-t1.vf)
+Provides:       tex(atkinsnmono-MediumItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-MediumItalic-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-Regular-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-Regular-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-Regular-sup-ly1.vf)
+Provides:       tex(atkinsnmono-Regular-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-Regular-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-Regular-sup-t1.tfm)
+Provides:       tex(atkinsnmono-Regular-sup-t1.vf)
+Provides:       tex(atkinsnmono-Regular-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-Regular-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-Regular-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-Regular-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-Regular-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-Regular-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-Regular-tlf-t1.vf)
+Provides:       tex(atkinsnmono-Regular-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-Regular-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-Regular-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-RegularItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-sup-ly1.vf)
+Provides:       tex(atkinsnmono-RegularItalic-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-sup-t1.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-sup-t1.vf)
+Provides:       tex(atkinsnmono-RegularItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-RegularItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-tlf-t1.vf)
+Provides:       tex(atkinsnmono-RegularItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-RegularItalic-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-SemiBold-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-SemiBold-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-SemiBold-sup-ly1.vf)
+Provides:       tex(atkinsnmono-SemiBold-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-SemiBold-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-SemiBold-sup-t1.tfm)
+Provides:       tex(atkinsnmono-SemiBold-sup-t1.vf)
+Provides:       tex(atkinsnmono-SemiBold-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-SemiBold-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-SemiBold-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-SemiBold-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-SemiBold-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-SemiBold-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-SemiBold-tlf-t1.vf)
+Provides:       tex(atkinsnmono-SemiBold-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-SemiBold-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-SemiBold-tlf-ts1.vf)
+Provides:       tex(atkinsnmono-SemiBoldItalic-sup-ly1--base.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-sup-ly1.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-sup-ly1.vf)
+Provides:       tex(atkinsnmono-SemiBoldItalic-sup-ot1.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-sup-t1--base.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-sup-t1.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-sup-t1.vf)
+Provides:       tex(atkinsnmono-SemiBoldItalic-tlf-ly1--base.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-tlf-ly1.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-tlf-ly1.vf)
+Provides:       tex(atkinsnmono-SemiBoldItalic-tlf-ot1.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-tlf-t1--base.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-tlf-t1.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-tlf-t1.vf)
+Provides:       tex(atkinsnmono-SemiBoldItalic-tlf-ts1--base.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-tlf-ts1.tfm)
+Provides:       tex(atkinsnmono-SemiBoldItalic-tlf-ts1.vf)
+Provides:       tex(atkinsnmono_2euc5w.enc)
+Provides:       tex(atkinsnmono_bbsfwk.enc)
+Provides:       tex(atkinsnmono_bxlfxu.enc)
+Provides:       tex(atkinsnmono_ehsai2.enc)
+Provides:       tex(atkinsnmono_ghg2ik.enc)
+Provides:       tex(atkinsnmono_k53f2f.enc)
+Provides:       tex(atkinsnmono_sxa7r4.enc)
 Provides:       tex(atkinson.map)
 Provides:       tex(atkinson.sty)
-Provides:       tex(atksn_2covbz.enc)
-Provides:       tex(atksn_2hyoa7.enc)
-Provides:       tex(atksn_cvs3iv.enc)
-Provides:       tex(atksn_eyh74z.enc)
-Provides:       tex(atksn_g47ykb.enc)
-Provides:       tex(atksn_oy2yah.enc)
-Provides:       tex(atksn_vucprl.enc)
-Provides:       tex(atksn_w3wxei.enc)
-Provides:       tex(atksn_wy3za2.enc)
-Provides:       tex(atksn_ycy2xh.enc)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
 Requires:       tex(fontspec.sty)
@@ -7580,9 +8251,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source75:       atkinson.tar.xz
-Source76:       atkinson.doc.tar.xz
+# from 20260301
+Source79:       atkinson.tar.xz
+Source80:       atkinson.doc.tar.xz
 
 %description -n texlive-atkinson
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -7593,7 +8264,7 @@ focuses on letterform distinction to increase character
 recognition, ultimately improving readability.
 
 %package -n texlive-atkinson-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn71048
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-atkinson
 License:        LPPL-1.0
@@ -7605,7 +8276,7 @@ Supplements:    (texlive-atkinson and texlive-alldocumentation)
 This package includes the documentation for texlive-atkinson
 
 %package -n texlive-atkinson-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn71048
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-atkinson
 License:        LPPL-1.0
@@ -7648,208 +8319,714 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/atkinson/atkinson-samples.tex
 
 %files -n texlive-atkinson
-%{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_2covbz.enc
-%{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_2hyoa7.enc
-%{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_cvs3iv.enc
-%{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_eyh74z.enc
-%{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_g47ykb.enc
-%{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_oy2yah.enc
-%{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_vucprl.enc
-%{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_w3wxei.enc
-%{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_wy3za2.enc
-%{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_ycy2xh.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsn_2euc5w.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsn_7pe33p.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsn_bbsfwk.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsn_bxlfxu.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsn_ehsai2.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsn_ghg2ik.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsn_gjro6p.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsn_k53f2f.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsn_sxa7r4.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsn_tlrdxq.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsnmono_2euc5w.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsnmono_bbsfwk.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsnmono_bxlfxu.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsnmono_ehsai2.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsnmono_ghg2ik.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsnmono_k53f2f.enc
+%{_texmfdistdir}/fonts/enc/dvips/atkinson/atkinsnmono_sxa7r4.enc
 %{_texmfdistdir}/fonts/map/dvips/atkinson/atkinson.map
-%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/Atkinson-Hyperlegible-Bold-102.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/Atkinson-Hyperlegible-BoldItalic-102.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/Atkinson-Hyperlegible-Italic-102.otf
-%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/Atkinson-Hyperlegible-Regular-102.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-ExtraBold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-ExtraBoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-ExtraLight.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-ExtraLightItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-Light.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-LightItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-Medium.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-MediumItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-RegularItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-SemiBold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleMono-SemiBoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-Bold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-BoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-ExtraBold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-ExtraBoldItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-ExtraLight.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-ExtraLightItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-Light.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-LightItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-Medium.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-MediumItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-Regular.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-RegularItalic.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-SemiBold.otf
+%verify(link) %{_texmfdistdir}/fonts/opentype/public/atkinson/AtkinsonHyperlegibleNext-SemiBoldItalic.otf
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-ly1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-ot1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-t1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-sup-ly1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-sup-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-sup-ot1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-sup-t1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-ly1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-ot1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-t1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Bold-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-ly1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-ot1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-t1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-sup-ly1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-sup-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-sup-ot1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-sup-t1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-ly1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-ot1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-t1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-BoldItalic-tlf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-ly1--lcdfj.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-ot1--lcdfj.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-t1--lcdfj.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-lf-ts1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-sup-ly1--lcdfj.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-sup-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-sup-ot1--lcdfj.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-sup-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-sup-t1--lcdfj.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-sup-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-ly1--lcdfj.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-ot1--lcdfj.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-ot1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-t1--lcdfj.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-t1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-ts1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Italic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraBoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLight-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-ExtraLightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Light-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-LightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Medium-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-MediumItalic-tlf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-ly1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-ot1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-t1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-lf-ts1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-sup-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-sup-ly1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-sup-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-sup-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-sup-ot1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-sup-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-sup-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-sup-t1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-sup-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-ly1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-ly1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-ly1.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-ot1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-ot1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-ot1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-t1--base.tfm
-%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-t1--lcdfj.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-t1.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-ts1--base.tfm
 %{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-Regular-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-RegularItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-lf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-lf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-lf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-lf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-lf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-lf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-lf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsn-SemiBoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Bold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-BoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraBoldItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLight-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-ExtraLightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Light-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-LightItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Medium-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-MediumItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-Regular-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-RegularItalic-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBold-tlf-ts1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-sup-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-sup-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-sup-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-sup-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-sup-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-tlf-ly1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-tlf-ly1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-tlf-ot1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-tlf-t1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-tlf-t1.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-tlf-ts1--base.tfm
+%{_texmfdistdir}/fonts/tfm/public/atkinson/atkinsnmono-SemiBoldItalic-tlf-ts1.tfm
 %verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-Bold.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-BoldItalic.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-BoldItalicLCDFJ.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-BoldLCDFJ.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-Italic.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-ItalicLCDFJ.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-ExtraBold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-ExtraBoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-ExtraLight.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-ExtraLightItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-Light.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-LightItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-Medium.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-MediumItalic.pfb
 %verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-Regular.pfb
-%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-RegularLCDFJ.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-RegularItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-SemiBold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsn-SemiBoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-Bold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-BoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-ExtraBold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-ExtraBoldItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-ExtraLight.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-ExtraLightItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-Light.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-LightItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-Medium.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-MediumItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-Regular.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-RegularItalic.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-SemiBold.pfb
+%verify(link) %{_texmfdistdir}/fonts/type1/public/atkinson/atkinsnmono-SemiBoldItalic.pfb
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-sup-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Bold-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-sup-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-BoldItalic-tlf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-lf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-lf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-lf-ts1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-sup-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-sup-t1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-tlf-ot1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-tlf-t1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Italic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBoldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBoldItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraBoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLight-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLight-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLight-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLight-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLight-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLight-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLight-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLight-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLightItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLightItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLightItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLightItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-ExtraLightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Light-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Light-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Light-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Light-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Light-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Light-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Light-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Light-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-LightItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-LightItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-LightItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-LightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-LightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-LightItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-LightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-LightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Medium-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Medium-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Medium-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Medium-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Medium-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Medium-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Medium-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Medium-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-MediumItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-MediumItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-MediumItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-MediumItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-MediumItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-MediumItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-MediumItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-MediumItalic-tlf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-lf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-lf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-lf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-lf-ts1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-sup-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-sup-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-sup-t1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-tlf-ly1.vf
-%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-tlf-ot1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-tlf-t1.vf
 %{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-Regular-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-RegularItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-RegularItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-RegularItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-RegularItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-RegularItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-RegularItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-RegularItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-RegularItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBold-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBold-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBold-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBoldItalic-lf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBoldItalic-lf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBoldItalic-lf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsn-SemiBoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Bold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Bold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Bold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Bold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Bold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-BoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-BoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-BoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-BoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-BoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraBold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraBold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraBold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraBold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraBoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraBoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraBoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraBoldItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraLight-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraLight-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraLight-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraLight-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraLight-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraLightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraLightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraLightItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraLightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-ExtraLightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Light-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Light-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Light-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Light-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Light-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-LightItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-LightItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-LightItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-LightItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-LightItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Medium-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Medium-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Medium-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Medium-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Medium-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-MediumItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-MediumItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-MediumItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-MediumItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-MediumItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Regular-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Regular-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Regular-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Regular-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-Regular-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-RegularItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-RegularItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-RegularItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-RegularItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-RegularItalic-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-SemiBold-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-SemiBold-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-SemiBold-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-SemiBold-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-SemiBold-tlf-ts1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-SemiBoldItalic-sup-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-SemiBoldItalic-sup-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-SemiBoldItalic-tlf-ly1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-SemiBoldItalic-tlf-t1.vf
+%{_texmfdistdir}/fonts/vf/public/atkinson/atkinsnmono-SemiBoldItalic-tlf-ts1.vf
 %{_texmfdistdir}/tex/latex/atkinson/LY1atkinsn-LF.fd
 %{_texmfdistdir}/tex/latex/atkinson/LY1atkinsn-Sup.fd
 %{_texmfdistdir}/tex/latex/atkinson/LY1atkinsn-TLF.fd
+%{_texmfdistdir}/tex/latex/atkinson/LY1atkinsnmono-Sup.fd
+%{_texmfdistdir}/tex/latex/atkinson/LY1atkinsnmono-TLF.fd
 %{_texmfdistdir}/tex/latex/atkinson/OT1atkinsn-LF.fd
 %{_texmfdistdir}/tex/latex/atkinson/OT1atkinsn-Sup.fd
 %{_texmfdistdir}/tex/latex/atkinson/OT1atkinsn-TLF.fd
+%{_texmfdistdir}/tex/latex/atkinson/OT1atkinsnmono-Sup.fd
+%{_texmfdistdir}/tex/latex/atkinson/OT1atkinsnmono-TLF.fd
 %{_texmfdistdir}/tex/latex/atkinson/T1atkinsn-LF.fd
 %{_texmfdistdir}/tex/latex/atkinson/T1atkinsn-Sup.fd
 %{_texmfdistdir}/tex/latex/atkinson/T1atkinsn-TLF.fd
+%{_texmfdistdir}/tex/latex/atkinson/T1atkinsnmono-Sup.fd
+%{_texmfdistdir}/tex/latex/atkinson/T1atkinsnmono-TLF.fd
 %{_texmfdistdir}/tex/latex/atkinson/TS1atkinsn-LF.fd
 %{_texmfdistdir}/tex/latex/atkinson/TS1atkinsn-TLF.fd
+%{_texmfdistdir}/tex/latex/atkinson/TS1atkinsnmono-TLF.fd
 %{_texmfdistdir}/tex/latex/atkinson/atkinson.sty
 
 %files -n texlive-atkinson-fonts
@@ -7860,21 +9037,65 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-atkinson/encodings.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-atkinson/fonts.dir
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-atkinson/fonts.scale
-%{_datadir}/fonts/texlive-atkinson/Atkinson-Hyperlegible-Bold-102.otf
-%{_datadir}/fonts/texlive-atkinson/Atkinson-Hyperlegible-BoldItalic-102.otf
-%{_datadir}/fonts/texlive-atkinson/Atkinson-Hyperlegible-Italic-102.otf
-%{_datadir}/fonts/texlive-atkinson/Atkinson-Hyperlegible-Regular-102.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-Bold.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-BoldItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-ExtraBold.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-ExtraBoldItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-ExtraLight.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-ExtraLightItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-Light.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-LightItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-Medium.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-MediumItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-Regular.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-RegularItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-SemiBold.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleMono-SemiBoldItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-Bold.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-BoldItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-ExtraBold.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-ExtraBoldItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-ExtraLight.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-ExtraLightItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-Light.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-LightItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-Medium.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-MediumItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-Regular.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-RegularItalic.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-SemiBold.otf
+%{_datadir}/fonts/texlive-atkinson/AtkinsonHyperlegibleNext-SemiBoldItalic.otf
 %{_datadir}/fonts/texlive-atkinson/atkinsn-Bold.pfb
 %{_datadir}/fonts/texlive-atkinson/atkinsn-BoldItalic.pfb
-%{_datadir}/fonts/texlive-atkinson/atkinsn-BoldItalicLCDFJ.pfb
-%{_datadir}/fonts/texlive-atkinson/atkinsn-BoldLCDFJ.pfb
-%{_datadir}/fonts/texlive-atkinson/atkinsn-Italic.pfb
-%{_datadir}/fonts/texlive-atkinson/atkinsn-ItalicLCDFJ.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-ExtraBold.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-ExtraBoldItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-ExtraLight.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-ExtraLightItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-Light.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-LightItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-Medium.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-MediumItalic.pfb
 %{_datadir}/fonts/texlive-atkinson/atkinsn-Regular.pfb
-%{_datadir}/fonts/texlive-atkinson/atkinsn-RegularLCDFJ.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-RegularItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-SemiBold.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsn-SemiBoldItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-Bold.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-BoldItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-ExtraBold.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-ExtraBoldItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-ExtraLight.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-ExtraLightItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-Light.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-LightItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-Medium.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-MediumItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-Regular.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-RegularItalic.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-SemiBold.pfb
+%{_datadir}/fonts/texlive-atkinson/atkinsnmono-SemiBoldItalic.pfb
 
 %package -n texlive-attachfile
-Version:        %{texlive_version}.%{texlive_noarch}.1.9svn42099
+Version:        %{texlive_version}.%{texlive_noarch}.1.9svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Attach arbitrary files to a PDF document
@@ -7908,9 +9129,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(ifpdf.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source77:       attachfile.tar.xz
-Source78:       attachfile.doc.tar.xz
+# from 20260301
+Source81:       attachfile.tar.xz
+Source82:       attachfile.doc.tar.xz
 
 %description -n texlive-attachfile
 Starting with PDF 1.3 (Adobe Acrobat 4.0), PDF files can
@@ -7927,7 +9148,7 @@ package supports the Created, Modified, and Size keys in the
 EmbeddedFile's Params dictionary.
 
 %package -n texlive-attachfile-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.9svn42099
+Version:        %{texlive_version}.%{texlive_noarch}.1.9svn77682
 Release:        0
 Summary:        Documentation for texlive-attachfile
 License:        LPPL-1.0
@@ -7964,7 +9185,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/attachfile/attachfile.sty
 
 %package -n texlive-attachfile2
-Version:        %{texlive_version}.%{texlive_noarch}.2.12svn69505
+Version:        %{texlive_version}.%{texlive_noarch}.2.12svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Attach files into PDF
@@ -8017,9 +9238,9 @@ Requires:       tex(ltxcmds.sty)
 Requires:       tex(pdfescape.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source79:       attachfile2.tar.xz
-Source80:       attachfile2.doc.tar.xz
+# from 20260301
+Source83:       attachfile2.tar.xz
+Source84:       attachfile2.doc.tar.xz
 
 %description -n texlive-attachfile2
 This package can be used to attach files to a PDF document. It
@@ -8029,7 +9250,7 @@ dvips, some new options, and gets and writes meta information
 data about the attached files.
 
 %package -n texlive-attachfile2-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.12svn69505
+Version:        %{texlive_version}.%{texlive_noarch}.2.12svn77682
 Release:        0
 Summary:        Documentation for texlive-attachfile2
 License:        LPPL-1.0
@@ -8072,7 +9293,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/attachfile2/attachfile2.sty
 
 %package -n texlive-atveryend
-Version:        %{texlive_version}.%{texlive_noarch}.1.12svn72507
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Hooks at the very end of a document
@@ -8101,16 +9322,16 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-atveryend-doc >= %{texlive_version}
 Provides:       tex(atveryend.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source81:       atveryend.tar.xz
-Source82:       atveryend.doc.tar.xz
+# from 20260301
+Source85:       atveryend.tar.xz
+Source86:       atveryend.doc.tar.xz
 
 %description -n texlive-atveryend
 This LaTeX package provides some wrapper commands around LaTeX
 end document hooks.
 
 %package -n texlive-atveryend-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.12svn72507
+Version:        %{texlive_version}.%{texlive_noarch}.1.12svn77682
 Release:        0
 Summary:        Documentation for texlive-atveryend
 License:        LPPL-1.0
@@ -8176,9 +9397,9 @@ Suggests:       texlive-aucklandthesis-doc >= %{texlive_version}
 Provides:       tex(aucklandthesis.cls)
 Requires:       tex(memoir.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source83:       aucklandthesis.tar.xz
-Source84:       aucklandthesis.doc.tar.xz
+# from 20260301
+Source87:       aucklandthesis.tar.xz
+Source88:       aucklandthesis.doc.tar.xz
 
 %description -n texlive-aucklandthesis
 A memoir-based class for formatting University of Auckland
@@ -8276,9 +9497,9 @@ Provides:       tex(ot1augie.fd)
 Provides:       tex(t1augie.fd)
 Provides:       tex(ts1augie.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source85:       augie.tar.xz
-Source86:       augie.doc.tar.xz
+# from 20260301
+Source89:       augie.tar.xz
+Source90:       augie.doc.tar.xz
 
 %description -n texlive-augie
 A calligraphic font for simulating American-style informal
@@ -8410,9 +9631,9 @@ Provides:       tex(auncl10.tfm)
 Provides:       tex(aunclb10.tfm)
 Provides:       tex(b1auncl.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source87:       auncial-new.tar.xz
-Source88:       auncial-new.doc.tar.xz
+# from 20260301
+Source91:       auncial-new.tar.xz
+Source92:       auncial-new.doc.tar.xz
 
 %description -n texlive-auncial-new
 The auncial-new bundle provides packages and fonts for a script
@@ -8502,7 +9723,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-auncial-new/aunclb10.pfb
 
 %package -n texlive-aurical
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Calligraphic fonts for use with LaTeX in T1 encoding
@@ -8572,9 +9793,9 @@ Provides:       tex(T1LukasSvatba.fd)
 Provides:       tex(aurical.map)
 Provides:       tex(aurical.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source89:       aurical.tar.xz
-Source90:       aurical.doc.tar.xz
+# from 20260301
+Source93:       aurical.tar.xz
+Source94:       aurical.doc.tar.xz
 
 %description -n texlive-aurical
 The package that implements a set (AuriocusKalligraphicus) of
@@ -8586,7 +9807,7 @@ and slanted versions. A variant of Lukas Svatba offers a 'long
 s'.
 
 %package -n texlive-aurical-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 Summary:        Documentation for texlive-aurical
 License:        LPPL-1.0
@@ -8598,7 +9819,7 @@ Supplements:    (texlive-aurical and texlive-alldocumentation)
 This package includes the documentation for texlive-aurical
 
 %package -n texlive-aurical-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 Summary:        Severed fonts for texlive-aurical
 License:        LPPL-1.0
@@ -8750,7 +9971,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-aurical/LukasSvatbaSlant.pfb
 
 %package -n texlive-aurl
-Version:        %{texlive_version}.%{texlive_noarch}.svn41853
+Version:        %{texlive_version}.%{texlive_noarch}.svn75878
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Extends the hyperref package with a mechanism for hyperlinked URLs abbreviated with prefixes
@@ -8780,18 +10001,18 @@ Suggests:       texlive-aurl-doc >= %{texlive_version}
 Provides:       tex(aurl.sty)
 Requires:       tex(hyperref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source91:       aurl.tar.xz
-Source92:       aurl.doc.tar.xz
+# from 20260301
+Source95:       aurl.tar.xz
+Source96:       aurl.doc.tar.xz
 
 %description -n texlive-aurl
 Semantic Web resource URLs are often abbreviated with prefixes,
-like "owl:Class" or "rdf:type". The abbreviated URL (aurl)
-package provides the correct hyperlinks for those URLs. The
-1000 most common prefixes are predefined and more can be added.
+like owl:Class or rdf:type. The abbreviated URL (aurl) package
+provides the correct hyperlinks for those URLs. The 1000 most
+common prefixes are predefined and more can be added.
 
 %package -n texlive-aurl-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn41853
+Version:        %{texlive_version}.%{texlive_noarch}.svn75878
 Release:        0
 Summary:        Documentation for texlive-aurl
 License:        SUSE-Public-Domain
@@ -8856,9 +10077,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-authoraftertitle-doc >= %{texlive_version}
 Provides:       tex(authoraftertitle.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source93:       authoraftertitle.tar.xz
-Source94:       authoraftertitle.doc.tar.xz
+# from 20260301
+Source97:       authoraftertitle.tar.xz
+Source98:       authoraftertitle.doc.tar.xz
 
 %description -n texlive-authoraftertitle
 This jiffy package makes the author, title and date of the
@@ -8903,7 +10124,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/authoraftertitle/authoraftertitle.sty
 
 %package -n texlive-authorarchive
-Version:        %{texlive_version}.%{texlive_noarch}.1.3.0svn65777
+Version:        %{texlive_version}.%{texlive_noarch}.1.3.1svn77171
 Release:        0
 License:        LPPL-1.0
 Summary:        Adds self-archiving information to scientific papers
@@ -8935,6 +10156,7 @@ Requires:       tex(calc.sty)
 Requires:       tex(enumitem.sty)
 Requires:       tex(eso-pic.sty)
 Requires:       tex(etoolbox.sty)
+Requires:       tex(hologo.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(intopdf.sty)
@@ -8943,21 +10165,21 @@ Requires:       tex(lastpage.sty)
 Requires:       tex(orcidlink.sty)
 Requires:       tex(qrcode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source95:       authorarchive.tar.xz
-Source96:       authorarchive.doc.tar.xz
+# from 20260301
+Source99:       authorarchive.tar.xz
+Source100:      authorarchive.doc.tar.xz
 
 %description -n texlive-authorarchive
 This is a LaTeX style for producing author self-archiving
 copies of (academic) papers. The following layout-styles are
-pre-defined: ACMfor the two-column layout used by many ACM
+pre-defined: ACM for the two-column layout used by many ACM
 conferences IEEE for the two-column layout used by many IEEE
 conferences LNCS for the LNCS layout (as used by Springer) LNI
 for the Lecture Notes in Informatics, published by the GI ENTCS
 for the Elsevier ENTCS layout
 
 %package -n texlive-authorarchive-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3.0svn65777
+Version:        %{texlive_version}.%{texlive_noarch}.1.3.1svn77171
 Release:        0
 Summary:        Documentation for texlive-authorarchive
 License:        LPPL-1.0
@@ -9015,7 +10237,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/authorarchive/authorarchive.sty
 
 %package -n texlive-authordate
-Version:        %{texlive_version}.%{texlive_noarch}.svn52564
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        SUSE-TeX
 Summary:        Author/date style citation styles
@@ -9044,9 +10266,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-authordate-doc >= %{texlive_version}
 Provides:       tex(authordate1-4.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source97:       authordate.tar.xz
-Source98:       authordate.doc.tar.xz
+# from 20260301
+Source101:      authordate.tar.xz
+Source102:      authordate.doc.tar.xz
 
 %description -n texlive-authordate
 Authordate produces styles loosely based on the recommendations
@@ -9058,7 +10280,7 @@ they format names and titles; one of them is necessary for the
 LaTeX package to work.
 
 %package -n texlive-authordate-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn52564
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-authordate
 License:        SUSE-TeX
@@ -9139,9 +10361,9 @@ Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 Provides:       tex(authorindex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source99:       authorindex.tar.xz
-Source100:      authorindex.doc.tar.xz
+# from 20260301
+Source103:      authorindex.tar.xz
+Source104:      authorindex.doc.tar.xz
 
 %description -n texlive-authorindex
 This package allows the user to create an index of all authors
@@ -9193,7 +10415,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/authorindex/authorindex.sty
 
 %package -n texlive-auto-pst-pdf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn56596
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Wrapper for pst-pdf (with some psfrag features)
@@ -9232,9 +10454,9 @@ Requires:       tex(ifplatform.sty)
 Requires:       tex(pst-pdf.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source101:      auto-pst-pdf.tar.xz
-Source102:      auto-pst-pdf.doc.tar.xz
+# from 20260301
+Source105:      auto-pst-pdf.tar.xz
+Source106:      auto-pst-pdf.doc.tar.xz
 
 %description -n texlive-auto-pst-pdf
 The package uses --shell-escape to execute pst-pdf when
@@ -9246,7 +10468,7 @@ MathPSfrag, and regular psfrag figures can all be input
 consistently and easily.
 
 %package -n texlive-auto-pst-pdf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn56596
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7svn77682
 Release:        0
 Summary:        Documentation for texlive-auto-pst-pdf
 License:        LPPL-1.0
@@ -9286,7 +10508,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/auto-pst-pdf/auto-pst-pdf.sty
 
 %package -n texlive-auto-pst-pdf-lua
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.03asvn66637
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.03asvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Using LuaLaTeX together with PostScript code
@@ -9322,9 +10544,9 @@ Requires:       tex(ifplatform.sty)
 Requires:       tex(pst-pdf.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source103:      auto-pst-pdf-lua.tar.xz
-Source104:      auto-pst-pdf-lua.doc.tar.xz
+# from 20260301
+Source107:      auto-pst-pdf-lua.tar.xz
+Source108:      auto-pst-pdf-lua.doc.tar.xz
 
 %description -n texlive-auto-pst-pdf-lua
 This package is a slightly modified version of auto-pst-pdf by
@@ -9334,7 +10556,7 @@ with PostScript related code, eg. PSTricks. It depends on
 ifpdf, ifluatex, ifplatform, and xkeyval.
 
 %package -n texlive-auto-pst-pdf-lua-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.03asvn66637
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.03asvn77682
 Release:        0
 Summary:        Documentation for texlive-auto-pst-pdf-lua
 License:        LPPL-1.0
@@ -9372,7 +10594,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/auto-pst-pdf-lua/auto-pst-pdf-lua.sty
 
 %package -n texlive-autoaligne
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn66655
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Align terms and members in math expressions
@@ -9403,16 +10625,16 @@ Provides:       tex(autoaligne-fr.tex)
 Provides:       tex(autoaligne.sty)
 Provides:       tex(autoaligne.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source105:      autoaligne.tar.xz
-Source106:      autoaligne.doc.tar.xz
+# from 20260301
+Source109:      autoaligne.tar.xz
+Source110:      autoaligne.doc.tar.xz
 
 %description -n texlive-autoaligne
 This package allows to align terms and members between lines
 containing math expressions.
 
 %package -n texlive-autoaligne-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5svn66655
+Version:        %{texlive_version}.%{texlive_noarch}.1.5svn77682
 Release:        0
 Summary:        Documentation for texlive-autoaligne
 License:        LPPL-1.0
@@ -9480,9 +10702,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-autoarea-doc >= %{texlive_version}
 Provides:       tex(autoarea.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source107:      autoarea.tar.xz
-Source108:      autoarea.doc.tar.xz
+# from 20260301
+Source111:      autoarea.tar.xz
+Source112:      autoarea.doc.tar.xz
 
 %description -n texlive-autoarea
 This package makes PiCTeX recognize lines and arcs in
@@ -9534,7 +10756,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/autoarea/autoarea.sty
 
 %package -n texlive-autobreak
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn43337
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Simple line breaking of long formulae
@@ -9565,9 +10787,9 @@ Provides:       tex(autobreak.sty)
 Requires:       tex(amsmath.sty)
 Requires:       tex(catchfile.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source109:      autobreak.tar.xz
-Source110:      autobreak.doc.tar.xz
+# from 20260301
+Source113:      autobreak.tar.xz
+Source114:      autobreak.doc.tar.xz
 
 %description -n texlive-autobreak
 This package implements a simple mechanism of line/page
@@ -9578,7 +10800,7 @@ places. It is suitable for computer-generated long formulae
 with many terms.
 
 %package -n texlive-autobreak-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn43337
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn77682
 Release:        0
 Summary:        Documentation for texlive-autobreak
 License:        LPPL-1.0
@@ -9646,9 +10868,9 @@ Provides:       tex(autofancyhdr.sty)
 Requires:       tex(biditools.sty)
 Requires:       tex(fancyhdr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source111:      autofancyhdr.tar.xz
-Source112:      autofancyhdr.doc.tar.xz
+# from 20260301
+Source115:      autofancyhdr.tar.xz
+Source116:      autofancyhdr.doc.tar.xz
 
 %description -n texlive-autofancyhdr
 The package automatically computes headlength for the fancyhdr
@@ -9719,9 +10941,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-automata-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source113:      automata.tar.xz
-Source114:      automata.doc.tar.xz
+# from 20260301
+Source117:      automata.tar.xz
+Source118:      automata.doc.tar.xz
 
 %description -n texlive-automata
 The package offers a collection of macros for MetaPost to make
@@ -9770,7 +10992,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/metapost/automata/automata.mp
 
 %package -n texlive-autonum
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.11svn36084
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.11svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Automatic equation references
@@ -9804,9 +11026,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(letltxmacro.sty)
 Requires:       tex(textpos.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source115:      autonum.tar.xz
-Source116:      autonum.doc.tar.xz
+# from 20260301
+Source119:      autonum.tar.xz
+Source120:      autonum.doc.tar.xz
 
 %description -n texlive-autonum
 The package arranges that equation numbers are applied only to
@@ -9814,7 +11036,7 @@ those equations that are referenced. This operation is similar
 to the showonlyrefs option of the package mathtools.
 
 %package -n texlive-autonum-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.11svn36084
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.11svn77682
 Release:        0
 Summary:        Documentation for texlive-autonum
 License:        LPPL-1.0
@@ -9888,9 +11110,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(psfrag.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source117:      autopdf.tar.xz
-Source118:      autopdf.doc.tar.xz
+# from 20260301
+Source121:      autopdf.tar.xz
+Source122:      autopdf.doc.tar.xz
 
 %description -n texlive-autopdf
 The package facilitates the on-the-fly conversion of various
@@ -9967,9 +11189,9 @@ Requires:       tex(enumitem.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(luacode.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source119:      autopuncitems.tar.xz
-Source120:      autopuncitems.doc.tar.xz
+# from 20260301
+Source123:      autopuncitems.tar.xz
+Source124:      autopuncitems.doc.tar.xz
 
 %description -n texlive-autopuncitems
 This package provides the autopunc option in the enumitem
@@ -10016,7 +11238,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/autopuncitems/autopuncitems.sty
 
 %package -n texlive-autosp
-Version:        %{texlive_version}.%{texlive_noarch}.svn69814
+Version:        %{texlive_version}.%{texlive_noarch}.svn77851
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        A Preprocessor that generates note-spacing commands for MusiXTeX scores
@@ -10047,8 +11269,8 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(autosp.1)
 Provides:       man(tex2aspc.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source121:      autosp.doc.tar.xz
+# from 20260301
+Source125:      autosp.doc.tar.xz
 
 %description -n texlive-autosp
 This program simplifies the creation of MusiXTeX scores by
@@ -10096,7 +11318,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/tex2aspc.1*
 
 %package -n texlive-autotype
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn69309
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        A LuaLaTeX package for automatic language-specific typography
@@ -10125,9 +11347,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-autotype-doc >= %{texlive_version}
 Provides:       tex(autotype.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source122:      autotype.tar.xz
-Source123:      autotype.doc.tar.xz
+# from 20260301
+Source126:      autotype.tar.xz
+Source127:      autotype.doc.tar.xz
 
 %description -n texlive-autotype
 autotype is a LuaLaTeX package for automatic language-specific
@@ -10137,7 +11359,7 @@ weighted hyphenation, but only for German (old and new
 orthography).
 
 %package -n texlive-autotype-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn69309
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5svn76924
 Release:        0
 Summary:        Documentation for texlive-autotype
 License:        LPPL-1.0
@@ -10197,7 +11419,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/autotype/autotype.sty
 
 %package -n texlive-auxhook
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn53173
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Hooks for auxiliary files
@@ -10226,16 +11448,16 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-auxhook-doc >= %{texlive_version}
 Provides:       tex(auxhook.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source124:      auxhook.tar.xz
-Source125:      auxhook.doc.tar.xz
+# from 20260301
+Source128:      auxhook.tar.xz
+Source129:      auxhook.doc.tar.xz
 
 %description -n texlive-auxhook
 This package auxhook provides hooks for adding stuff at the
 begin of .aux files.
 
 %package -n texlive-auxhook-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn53173
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 Summary:        Documentation for texlive-auxhook
 License:        LPPL-1.0
@@ -10271,7 +11493,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/auxhook/auxhook.sty
 
 %package -n texlive-avantgar
-Version:        %{texlive_version}.%{texlive_noarch}.svn61983
+Version:        %{texlive_version}.%{texlive_noarch}.svn77161
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        URW 'Base 35' font pack for LaTeX
@@ -10451,14 +11673,14 @@ Provides:       tex(uagro8r.tfm)
 Provides:       tex(uagro8t.tfm)
 Provides:       tex(uagro8t.vf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source126:      avantgar.tar.xz
+# from 20260301
+Source130:      avantgar.tar.xz
 
 %description -n texlive-avantgar
 A set of fonts for use as "drop-in" replacements for Adobe's
 basic set, comprising: Century Schoolbook (substituting for
 Adobe's New Century Schoolbook); Dingbats (substituting for
-Adobe's Zapf Dingbats); Nimbus Mono L (substituting for Abobe's
+Adobe's Zapf Dingbats); Nimbus Mono L (substituting for Adobe's
 Courier); Nimbus Roman No9 L (substituting for Adobe's Times);
 Nimbus Sans L (substituting for Adobe's Helvetica); Standard
 Symbols L (substituting for Adobe's Symbol); URW Bookman; URW
@@ -10467,7 +11689,7 @@ Chancery); URW Gothic L Book (substituting for Adobe's Avant
 Garde); and URW Palladio L (substituting for Adobe's Palatino).
 
 %package -n texlive-avantgar-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn61983
+Version:        %{texlive_version}.%{texlive_noarch}.svn77161
 Release:        0
 Summary:        Severed fonts for texlive-avantgar
 License:        GPL-2.0-or-later
@@ -10718,9 +11940,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(kvoptions.sty)
 Requires:       tex(tabularx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source127:      avremu.tar.xz
-Source128:      avremu.doc.tar.xz
+# from 20260301
+Source131:      avremu.tar.xz
+Source132:      avremu.doc.tar.xz
 
 %description -n texlive-avremu
 A fully working package to simulate a Microprocessor in pure
@@ -10771,6 +11993,119 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/avremu/avr.testsuite.tex
 %{_texmfdistdir}/tex/latex/avremu/avremu.sty
 
+%package -n texlive-awami
+Version:        %{texlive_version}.%{texlive_noarch}.3.400svn76980
+Release:        0
+License:        OFL-1.1
+Summary:        A collection of Awami Nastaliq fonts
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Requires:       texlive-awami-fonts >= %{texlive_version}
+Suggests:       texlive-awami-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source133:      awami.tar.xz
+Source134:      awami.doc.tar.xz
+
+%description -n texlive-awami
+Awami Nastaliq is a Nastaliq-style Arabic script font
+supporting a wide variety of languages of southwest Asia,
+including but not limited to Urdu. This font is aimed at
+minority language support. This makes it unique among Nastaliq
+fonts. The font is also a Graphite-only font. It does not
+support OpenType rendering.
+
+%package -n texlive-awami-doc
+Version:        %{texlive_version}.%{texlive_noarch}.3.400svn76980
+Release:        0
+Summary:        Documentation for texlive-awami
+License:        OFL-1.1
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-awami and texlive-alldocumentation)
+
+%description -n texlive-awami-doc
+This package includes the documentation for texlive-awami
+
+%package -n texlive-awami-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.3.400svn76980
+Release:        0
+Summary:        Severed fonts for texlive-awami
+License:        OFL-1.1
+URL:            https://www.tug.org/texlive/
+Group:          Productivity/Publishing/TeX/Fonts
+%reconfigure_fonts_prereq
+Requires(posttrans): fontconfig
+Requires(posttrans): ghostscript-fonts-std
+Suggests:       xorg-x11-fonts-core
+
+%description -n texlive-awami-fonts
+The  separated fonts package for texlive-awami
+
+%post -n texlive-awami
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-awami
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-awami
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%reconfigure_fonts_scriptlets -n texlive-awami-fonts
+
+%files -n texlive-awami-doc
+%{_texmfdistdir}/doc/fonts/awami/OFL.txt
+%{_texmfdistdir}/doc/fonts/awami/README
+%{_texmfdistdir}/doc/fonts/awami/awami-sample.pdf
+%{_texmfdistdir}/doc/fonts/awami/awami-sample.tex
+
+%files -n texlive-awami
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/awami/AwamiNastaliq-Bold.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/awami/AwamiNastaliq-ExtraBold.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/awami/AwamiNastaliq-Medium.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/awami/AwamiNastaliq-Regular.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/awami/AwamiNastaliq-SemiBold.ttf
+
+%files -n texlive-awami-fonts
+%dir %{_datadir}/fonts/texlive-awami
+%{_datadir}/fontconfig/conf.avail/58-texlive-awami.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-awami/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-awami/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-awami/fonts.scale
+%{_datadir}/fonts/texlive-awami/AwamiNastaliq-Bold.ttf
+%{_datadir}/fonts/texlive-awami/AwamiNastaliq-ExtraBold.ttf
+%{_datadir}/fonts/texlive-awami/AwamiNastaliq-Medium.ttf
+%{_datadir}/fonts/texlive-awami/AwamiNastaliq-Regular.ttf
+%{_datadir}/fonts/texlive-awami/AwamiNastaliq-SemiBold.ttf
+
 %package -n texlive-awesomebox
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn57349
 Release:        0
@@ -10806,9 +12141,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source129:      awesomebox.tar.xz
-Source130:      awesomebox.doc.tar.xz
+# from 20260301
+Source135:      awesomebox.tar.xz
+Source136:      awesomebox.doc.tar.xz
 
 %description -n texlive-awesomebox
 Awesome Boxes is all about drawing admonition blocks around
@@ -10856,7 +12191,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/awesomebox/awesomebox.sty
 
 %package -n texlive-axessibility
-Version:        %{texlive_version}.%{texlive_noarch}.3.0svn57105
+Version:        %{texlive_version}.%{texlive_noarch}.3.0svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Access to formulas in PDF files by assistive technologies
@@ -10893,9 +12228,9 @@ Requires:       tex(luacode.sty)
 Requires:       tex(tagpdf.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source131:      axessibility.tar.xz
-Source132:      axessibility.doc.tar.xz
+# from 20260301
+Source137:      axessibility.tar.xz
+Source138:      axessibility.doc.tar.xz
 
 %description -n texlive-axessibility
 PDF documents containing formulas generated by LaTeX are
@@ -10909,7 +12244,7 @@ in the PDF document (by means of the /ActualText attribute
 and/or suitable tags) in correspondence to each formula.
 
 %package -n texlive-axessibility-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.0svn57105
+Version:        %{texlive_version}.%{texlive_noarch}.3.0svn77682
 Release:        0
 Summary:        Documentation for texlive-axessibility
 License:        LPPL-1.0
@@ -10950,7 +12285,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/axessibility/axessibility.sty
 
 %package -n texlive-axodraw2
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.1csvn74430
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.1csvn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Feynman diagrams in a LaTeX document
@@ -10986,9 +12321,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source133:      axodraw2.tar.xz
-Source134:      axodraw2.doc.tar.xz
+# from 20260301
+Source139:      axodraw2.tar.xz
+Source140:      axodraw2.doc.tar.xz
 
 %description -n texlive-axodraw2
 This package defines macros for drawing Feynman graphs in LaTeX
@@ -11005,7 +12340,7 @@ file. The processing involves a run of pdfLaTeX, a run of
 axohelp, and then another run of pdfLaTeX.
 
 %package -n texlive-axodraw2-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1.1csvn74430
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.1csvn77682
 Release:        0
 Summary:        Documentation for texlive-axodraw2
 License:        GPL-2.0-or-later
@@ -11080,9 +12415,9 @@ Provides:       tex(TeXB1.enc)
 Provides:       tex(b1cmr.fd)
 Provides:       tex(b1enc.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source135:      b1encoding.tar.xz
-Source136:      b1encoding.doc.tar.xz
+# from 20260301
+Source141:      b1encoding.tar.xz
+Source142:      b1encoding.doc.tar.xz
 
 %description -n texlive-b1encoding
 The package characterises and defines the author's B1 encoding
@@ -11128,7 +12463,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/b1encoding/b1enc.def
 
 %package -n texlive-babel
-Version:        %{texlive_version}.%{texlive_noarch}.25.4svn73985
+Version:        %{texlive_version}.%{texlive_noarch}.26.3svn77829
 Release:        0
 License:        LPPL-1.0
 Summary:        Multilingual support for LaTeX, LuaLaTeX, XeLaTeX, and Plain TeX
@@ -11169,12 +12504,15 @@ Provides:       tex(babel-aghem.tex)
 Provides:       tex(babel-akan.tex)
 Provides:       tex(babel-akkadian.tex)
 Provides:       tex(babel-albanian.tex)
+Provides:       tex(babel-alemannic.tex)
 Provides:       tex(babel-algerianarabic.tex)
+Provides:       tex(babel-alsatian.tex)
 Provides:       tex(babel-american.tex)
 Provides:       tex(babel-americanenglish.tex)
 Provides:       tex(babel-amharic.tex)
 Provides:       tex(babel-ancientegyptian.tex)
 Provides:       tex(babel-ancientgreek.tex)
+Provides:       tex(babel-ancienthebrew.tex)
 Provides:       tex(babel-arabic-algeria.tex)
 Provides:       tex(babel-arabic-dz.tex)
 Provides:       tex(babel-arabic-eg.tex)
@@ -11209,6 +12547,7 @@ Provides:       tex(babel-atsam.tex)
 Provides:       tex(babel-australian.tex)
 Provides:       tex(babel-australianenglish.tex)
 Provides:       tex(babel-austrian.tex)
+Provides:       tex(babel-austriangerman.tex)
 Provides:       tex(babel-avestan.tex)
 Provides:       tex(babel-awadhi.tex)
 Provides:       tex(babel-aymara.tex)
@@ -11218,6 +12557,9 @@ Provides:       tex(babel-azerbaijani-latin.tex)
 Provides:       tex(babel-azerbaijani-latn.tex)
 Provides:       tex(babel-azerbaijani.tex)
 Provides:       tex(babel-bafia.tex)
+Provides:       tex(babel-bahasa.tex)
+Provides:       tex(babel-bahasai.tex)
+Provides:       tex(babel-bahasam.tex)
 Provides:       tex(babel-balinese.tex)
 Provides:       tex(babel-baluchi.tex)
 Provides:       tex(babel-bambara.tex)
@@ -11227,6 +12569,7 @@ Provides:       tex(babel-bashkir.tex)
 Provides:       tex(babel-basque.tex)
 Provides:       tex(babel-bataktoba.tex)
 Provides:       tex(babel-bavarian.tex)
+Provides:       tex(babel-belarusian-taraskievica.tex)
 Provides:       tex(babel-belarusian.tex)
 Provides:       tex(babel-bemba.tex)
 Provides:       tex(babel-bena.tex)
@@ -11240,6 +12583,7 @@ Provides:       tex(babel-bosnian-cyrl.tex)
 Provides:       tex(babel-bosnian-latin.tex)
 Provides:       tex(babel-bosnian-latn.tex)
 Provides:       tex(babel-bosnian.tex)
+Provides:       tex(babel-brazil.tex)
 Provides:       tex(babel-brazilian.tex)
 Provides:       tex(babel-brazilianportuguese.tex)
 Provides:       tex(babel-breton.tex)
@@ -11254,6 +12598,7 @@ Provides:       tex(babel-ca-coptic.tex)
 Provides:       tex(babel-ca-ethiopic.tex)
 Provides:       tex(babel-ca-hebrew.tex)
 Provides:       tex(babel-ca-islamic.tex)
+Provides:       tex(babel-ca-julian.tex)
 Provides:       tex(babel-ca-persian.tex)
 Provides:       tex(babel-canadian.tex)
 Provides:       tex(babel-canadianenglish.tex)
@@ -11342,6 +12687,7 @@ Provides:       tex(babel-french-lu.tex)
 Provides:       tex(babel-french-luxembourg.tex)
 Provides:       tex(babel-french-switzerland.tex)
 Provides:       tex(babel-french.tex)
+Provides:       tex(babel-friulan.tex)
 Provides:       tex(babel-friulian.tex)
 Provides:       tex(babel-fulah.tex)
 Provides:       tex(babel-ga.tex)
@@ -11349,14 +12695,23 @@ Provides:       tex(babel-galician.tex)
 Provides:       tex(babel-ganda.tex)
 Provides:       tex(babel-geez.tex)
 Provides:       tex(babel-georgian.tex)
+Provides:       tex(babel-german-at-1901.tex)
 Provides:       tex(babel-german-at.tex)
+Provides:       tex(babel-german-austria-1901.tex)
 Provides:       tex(babel-german-austria-traditional.tex)
 Provides:       tex(babel-german-austria.tex)
+Provides:       tex(babel-german-ch-1901.tex)
 Provides:       tex(babel-german-ch.tex)
+Provides:       tex(babel-german-de-1901.tex)
+Provides:       tex(babel-german-de.tex)
+Provides:       tex(babel-german-germany-1901.tex)
+Provides:       tex(babel-german-germany.tex)
+Provides:       tex(babel-german-switzerland-1901.tex)
 Provides:       tex(babel-german-switzerland-traditional.tex)
 Provides:       tex(babel-german-switzerland.tex)
 Provides:       tex(babel-german-traditional.tex)
 Provides:       tex(babel-german.tex)
+Provides:       tex(babel-germanb.tex)
 Provides:       tex(babel-gothic.tex)
 Provides:       tex(babel-greek.tex)
 Provides:       tex(babel-guarani.tex)
@@ -11376,6 +12731,7 @@ Provides:       tex(babel-hungarian.tex)
 Provides:       tex(babel-icelandic.tex)
 Provides:       tex(babel-igbo.tex)
 Provides:       tex(babel-inarisami.tex)
+Provides:       tex(babel-indon.tex)
 Provides:       tex(babel-indonesian.tex)
 Provides:       tex(babel-ingush.tex)
 Provides:       tex(babel-interlingua.tex)
@@ -11408,6 +12764,8 @@ Provides:       tex(babel-korean-hani.tex)
 Provides:       tex(babel-korean.tex)
 Provides:       tex(babel-koyraborosenni.tex)
 Provides:       tex(babel-koyrachiini.tex)
+Provides:       tex(babel-kurdish-arab.tex)
+Provides:       tex(babel-kurdish-arabic.tex)
 Provides:       tex(babel-kurdish.tex)
 Provides:       tex(babel-kurmanji.tex)
 Provides:       tex(babel-kwasio.tex)
@@ -11462,6 +12820,7 @@ Provides:       tex(babel-marathi.tex)
 Provides:       tex(babel-masai.tex)
 Provides:       tex(babel-mazanderani.tex)
 Provides:       tex(babel-medievallatin.tex)
+Provides:       tex(babel-melayu.tex)
 Provides:       tex(babel-meru.tex)
 Provides:       tex(babel-meta.tex)
 Provides:       tex(babel-mexican.tex)
@@ -11479,6 +12838,7 @@ Provides:       tex(babel-nepali.tex)
 Provides:       tex(babel-newari.tex)
 Provides:       tex(babel-newzealand.tex)
 Provides:       tex(babel-ngerman.tex)
+Provides:       tex(babel-ngermanb.tex)
 Provides:       tex(babel-ngiemboon.tex)
 Provides:       tex(babel-ngomba.tex)
 Provides:       tex(babel-nheengatu.tex)
@@ -11517,7 +12877,9 @@ Provides:       tex(babel-persian.tex)
 Provides:       tex(babel-phoenician.tex)
 Provides:       tex(babel-piedmontese.tex)
 Provides:       tex(babel-polish.tex)
+Provides:       tex(babel-polutonikogreek.tex)
 Provides:       tex(babel-polytonicgreek.tex)
+Provides:       tex(babel-portuges.tex)
 Provides:       tex(babel-portuguese-br.tex)
 Provides:       tex(babel-portuguese-brazil.tex)
 Provides:       tex(babel-portuguese-portugal.tex)
@@ -11538,6 +12900,7 @@ Provides:       tex(babel-romansh.tex)
 Provides:       tex(babel-rombo.tex)
 Provides:       tex(babel-rundi.tex)
 Provides:       tex(babel-russian.tex)
+Provides:       tex(babel-russianb.tex)
 Provides:       tex(babel-rwa.tex)
 Provides:       tex(babel-sabaean.tex)
 Provides:       tex(babel-saho.tex)
@@ -11650,6 +13013,7 @@ Provides:       tex(babel-turkmen.tex)
 Provides:       tex(babel-tyap.tex)
 Provides:       tex(babel-ugaritic.tex)
 Provides:       tex(babel-ukenglish.tex)
+Provides:       tex(babel-ukraineb.tex)
 Provides:       tex(babel-ukrainian.tex)
 Provides:       tex(babel-uppersorbian.tex)
 Provides:       tex(babel-urdu.tex)
@@ -11747,27 +13111,28 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(language.def)
 Requires:       tex(load-unicode-xetex-classes.tex)
 Requires:       tex(luatexbase.sty)
-Requires:       tex(rlbabel.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source137:      babel.tar.xz
-Source138:      babel.doc.tar.xz
+# from 20260301
+Source143:      babel.tar.xz
+Source144:      babel.doc.tar.xz
 
 %description -n texlive-babel
-This package manages culturally-determined typographical (and
-other) rules for a wide range of languages. A document may
-select a single language to be supported, or it may select
-several, in which case the document may switch from one
-language to another in a variety of ways. Babel uses
-contributed configuration files that provide the detail of what
-has to be done for each language, as well as .ini files for
-about 300 languages from around the World, including many
-written in non-Latin and RTL scripts. Many of them work with
-pdfLaTeX, as well as with XeLaTeX and LuaLaTeX, out of the box.
-A few even work with plain formats.
+Babel is the multilingual environment for LaTeX (tailored for
+LuaTeX, pdfTeX and XeTeX), and sometimes Plain. Its aim is to
+provide a comprehensive localization framework for different
+languages, scripts and cultures based on the latest advances on
+international standards (Unicode, W3C, OpenType). It supports
+about 300 languages (with various levels of coverage) across
+about 45 scripts, including complex (like CJK, Indic) and RTL
+ones. Besides the traditional .ldf files, there are many
+locales built on a modern core that utilizes descriptive .ini
+files, with tools providing precise control over hyphenation
+and line breaking, captions, date formats (across various
+calendars), spacing, transliteration, numbering and other
+locale-specific typographical rules.
 
 %package -n texlive-babel-doc
-Version:        %{texlive_version}.%{texlive_noarch}.25.4svn73985
+Version:        %{texlive_version}.%{texlive_noarch}.26.3svn77829
 Release:        0
 Summary:        Documentation for texlive-babel
 License:        LPPL-1.0
@@ -11817,6 +13182,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/babel-ca-ethiopic.tex
 %{_texmfdistdir}/tex/generic/babel/babel-ca-hebrew.tex
 %{_texmfdistdir}/tex/generic/babel/babel-ca-islamic.tex
+%{_texmfdistdir}/tex/generic/babel/babel-ca-julian.tex
 %{_texmfdistdir}/tex/generic/babel/babel-ca-persian.tex
 %{_texmfdistdir}/tex/generic/babel/babel-data-bidi.lua
 %{_texmfdistdir}/tex/generic/babel/babel-data-cjk.lua
@@ -11944,7 +13310,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/bas/babel-basaa.tex
 %{_texmfdistdir}/tex/generic/babel/locale/bbc/babel-bataktoba.tex
 %{_texmfdistdir}/tex/generic/babel/locale/bbc/babel-bbc.ini
+%{_texmfdistdir}/tex/generic/babel/locale/be/babel-be-tarask.ini
 %{_texmfdistdir}/tex/generic/babel/locale/be/babel-be.ini
+%{_texmfdistdir}/tex/generic/babel/locale/be/babel-belarusian-taraskievica.tex
 %{_texmfdistdir}/tex/generic/babel/locale/be/babel-belarusian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/bem/babel-bem.ini
 %{_texmfdistdir}/tex/generic/babel/locale/bem/babel-bemba.tex
@@ -12026,6 +13394,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/dav/babel-dav.ini
 %{_texmfdistdir}/tex/generic/babel/locale/dav/babel-taita.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-austrian.tex
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-austriangerman.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-de-1901.ini
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-de-1996.ini
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-de-AT-1901.ini
@@ -12034,18 +13403,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-de-CH-1901.ini
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-de-CH-1996.ini
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-de-CH.ini
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-de-DE-1901.ini
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-de-DE-1996.ini
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-de-DE.ini
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-de.ini
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-at-1901.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-at.tex
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-austria-1901.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-austria-traditional.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-austria.tex
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-ch-1901.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-ch.tex
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-de-1901.tex
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-de.tex
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-germany-1901.tex
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-germany.tex
+%{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-switzerland-1901.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-switzerland-traditional.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-switzerland.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-german-traditional.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-german.tex
-%{_texmfdistdir}/tex/generic/babel/locale/de/babel-naustrian.tex
-%{_texmfdistdir}/tex/generic/babel/locale/de/babel-ngerman.tex
-%{_texmfdistdir}/tex/generic/babel/locale/de/babel-nswissgerman.tex
 %{_texmfdistdir}/tex/generic/babel/locale/de/babel-swisshighgerman.tex
 %{_texmfdistdir}/tex/generic/babel/locale/dje/babel-dje.ini
 %{_texmfdistdir}/tex/generic/babel/locale/dje/babel-zarma.tex
@@ -12053,7 +13430,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/doi/babel-doi.ini
 %{_texmfdistdir}/tex/generic/babel/locale/dsb/babel-dsb.ini
 %{_texmfdistdir}/tex/generic/babel/locale/dsb/babel-lowersorbian.tex
-%{_texmfdistdir}/tex/generic/babel/locale/dsb/babel-lsorbian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/dua/babel-dua.ini
 %{_texmfdistdir}/tex/generic/babel/locale/dua/babel-duala.tex
 %{_texmfdistdir}/tex/generic/babel/locale/dv/babel-divehi.tex
@@ -12068,6 +13444,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/ee/babel-ewe.tex
 %{_texmfdistdir}/tex/generic/babel/locale/egy/babel-ancientegyptian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/egy/babel-egy.ini
+%{_texmfdistdir}/tex/generic/babel/locale/el/babel-el-monoton.ini
 %{_texmfdistdir}/tex/generic/babel/locale/el/babel-el-polyton.ini
 %{_texmfdistdir}/tex/generic/babel/locale/el/babel-el.ini
 %{_texmfdistdir}/tex/generic/babel/locale/el/babel-greek.tex
@@ -12170,6 +13547,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/got/babel-gothic.tex
 %{_texmfdistdir}/tex/generic/babel/locale/grc/babel-ancientgreek.tex
 %{_texmfdistdir}/tex/generic/babel/locale/grc/babel-grc.ini
+%{_texmfdistdir}/tex/generic/babel/locale/gsw/babel-alemannic.tex
+%{_texmfdistdir}/tex/generic/babel/locale/gsw/babel-alsatian.tex
+%{_texmfdistdir}/tex/generic/babel/locale/gsw/babel-gsw-FR.ini
 %{_texmfdistdir}/tex/generic/babel/locale/gsw/babel-gsw.ini
 %{_texmfdistdir}/tex/generic/babel/locale/gsw/babel-swissgerman.tex
 %{_texmfdistdir}/tex/generic/babel/locale/gu/babel-gu.ini
@@ -12188,6 +13568,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/ha/babel-hausa.tex
 %{_texmfdistdir}/tex/generic/babel/locale/haw/babel-haw.ini
 %{_texmfdistdir}/tex/generic/babel/locale/haw/babel-hawaiian.tex
+%{_texmfdistdir}/tex/generic/babel/locale/hbo/babel-ancienthebrew.tex
+%{_texmfdistdir}/tex/generic/babel/locale/hbo/babel-hbo.ini
 %{_texmfdistdir}/tex/generic/babel/locale/he/babel-he.ini
 %{_texmfdistdir}/tex/generic/babel/locale/he/babel-hebrew.tex
 %{_texmfdistdir}/tex/generic/babel/locale/hi/babel-hi.ini
@@ -12198,7 +13580,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/hr/babel-hr.ini
 %{_texmfdistdir}/tex/generic/babel/locale/hsb/babel-hsb.ini
 %{_texmfdistdir}/tex/generic/babel/locale/hsb/babel-uppersorbian.tex
-%{_texmfdistdir}/tex/generic/babel/locale/hsb/babel-usorbian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/hu/babel-hu.ini
 %{_texmfdistdir}/tex/generic/babel/locale/hu/babel-hungarian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/hu/babel-magyar.tex
@@ -12214,6 +13595,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/ii/babel-sichuanyi.tex
 %{_texmfdistdir}/tex/generic/babel/locale/inh/babel-ingush.tex
 %{_texmfdistdir}/tex/generic/babel/locale/inh/babel-inh.ini
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-bahasa.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-bahasai.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-bahasam.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-brazil.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-classiclatin.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-ecclesiasticlatin.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-friulan.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-germanb.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-indon.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-lsorbian.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-melayu.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-naustrian.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-ngerman.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-ngermanb.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-nswissgerman.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-polutonikogreek.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-portuges.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-russianb.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-samin.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-serbianc.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-ukraineb.tex
+%{_texmfdistdir}/tex/generic/babel/locale/invalid/babel-usorbian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/is/babel-icelandic.tex
 %{_texmfdistdir}/tex/generic/babel/locale/is/babel-is.ini
 %{_texmfdistdir}/tex/generic/babel/locale/isv/babel-interslavic.tex
@@ -12262,13 +13665,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/kln/babel-kln.ini
 %{_texmfdistdir}/tex/generic/babel/locale/km/babel-khmer.tex
 %{_texmfdistdir}/tex/generic/babel/locale/km/babel-km.ini
-%{_texmfdistdir}/tex/generic/babel/locale/kmr/babel-kmr-Arab.ini
-%{_texmfdistdir}/tex/generic/babel/locale/kmr/babel-kmr-Latn.ini
-%{_texmfdistdir}/tex/generic/babel/locale/kmr/babel-kmr.ini
-%{_texmfdistdir}/tex/generic/babel/locale/kmr/babel-kurmanji.tex
-%{_texmfdistdir}/tex/generic/babel/locale/kmr/babel-northernkurdish-arab.tex
-%{_texmfdistdir}/tex/generic/babel/locale/kmr/babel-northernkurdish-arabic.tex
-%{_texmfdistdir}/tex/generic/babel/locale/kmr/babel-northernkurdish.tex
 %{_texmfdistdir}/tex/generic/babel/locale/kn/babel-kannada.tex
 %{_texmfdistdir}/tex/generic/babel/locale/kn/babel-kn.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ko/babel-ko-Hani.ini
@@ -12286,8 +13682,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/ksf/babel-ksf.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ksh/babel-colognian.tex
 %{_texmfdistdir}/tex/generic/babel/locale/ksh/babel-ksh.ini
+%{_texmfdistdir}/tex/generic/babel/locale/ku/babel-ku-Arab.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ku/babel-ku.ini
+%{_texmfdistdir}/tex/generic/babel/locale/ku/babel-kurdish-arab.tex
+%{_texmfdistdir}/tex/generic/babel/locale/ku/babel-kurdish-arabic.tex
 %{_texmfdistdir}/tex/generic/babel/locale/ku/babel-kurdish.tex
+%{_texmfdistdir}/tex/generic/babel/locale/ku/babel-kurmanji.tex
+%{_texmfdistdir}/tex/generic/babel/locale/ku/babel-northernkurdish-arab.tex
+%{_texmfdistdir}/tex/generic/babel/locale/ku/babel-northernkurdish-arabic.tex
+%{_texmfdistdir}/tex/generic/babel/locale/ku/babel-northernkurdish.tex
 %{_texmfdistdir}/tex/generic/babel/locale/kv/babel-komi.tex
 %{_texmfdistdir}/tex/generic/babel/locale/kv/babel-kv.ini
 %{_texmfdistdir}/tex/generic/babel/locale/kw/babel-cornish.tex
@@ -12295,9 +13698,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/ky/babel-ky.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ky/babel-kyrgyz.tex
 %{_texmfdistdir}/tex/generic/babel/locale/la/babel-classicallatin.tex
-%{_texmfdistdir}/tex/generic/babel/locale/la/babel-classiclatin.tex
 %{_texmfdistdir}/tex/generic/babel/locale/la/babel-ecclesiasticallatin.tex
-%{_texmfdistdir}/tex/generic/babel/locale/la/babel-ecclesiasticlatin.tex
 %{_texmfdistdir}/tex/generic/babel/locale/la/babel-la-x-classic.ini
 %{_texmfdistdir}/tex/generic/babel/locale/la/babel-la-x-ecclesia.ini
 %{_texmfdistdir}/tex/generic/babel/locale/la/babel-la-x-medieval.ini
@@ -12553,7 +13954,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/sd/babel-sindhi-sind.tex
 %{_texmfdistdir}/tex/generic/babel/locale/sd/babel-sindhi.tex
 %{_texmfdistdir}/tex/generic/babel/locale/se/babel-northernsami.tex
-%{_texmfdistdir}/tex/generic/babel/locale/se/babel-samin.tex
 %{_texmfdistdir}/tex/generic/babel/locale/se/babel-se.ini
 %{_texmfdistdir}/tex/generic/babel/locale/seh/babel-seh.ini
 %{_texmfdistdir}/tex/generic/babel/locale/seh/babel-sena.tex
@@ -12563,6 +13963,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/sg/babel-sg.ini
 %{_texmfdistdir}/tex/generic/babel/locale/sga/babel-oldirish.tex
 %{_texmfdistdir}/tex/generic/babel/locale/sga/babel-sga.ini
+%{_texmfdistdir}/tex/generic/babel/locale/shared/babel-Arab.ini
+%{_texmfdistdir}/tex/generic/babel/locale/shared/babel-Deva.ini
+%{_texmfdistdir}/tex/generic/babel/locale/shared/babel-Hani.ini
+%{_texmfdistdir}/tex/generic/babel/locale/shared/babel-Hebr.ini
 %{_texmfdistdir}/tex/generic/babel/locale/shi/babel-shi-Latn.ini
 %{_texmfdistdir}/tex/generic/babel/locale/shi/babel-shi-Tfng.ini
 %{_texmfdistdir}/tex/generic/babel/locale/shi/babel-shi.ini
@@ -12609,7 +14013,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/sr/babel-serbian-latn-xk.tex
 %{_texmfdistdir}/tex/generic/babel/locale/sr/babel-serbian-latn.tex
 %{_texmfdistdir}/tex/generic/babel/locale/sr/babel-serbian.tex
-%{_texmfdistdir}/tex/generic/babel/locale/sr/babel-serbianc.tex
 %{_texmfdistdir}/tex/generic/babel/locale/sr/babel-sr-Cyrl-BA.ini
 %{_texmfdistdir}/tex/generic/babel/locale/sr/babel-sr-Cyrl-ME.ini
 %{_texmfdistdir}/tex/generic/babel/locale/sr/babel-sr-Cyrl-XK.ini
@@ -12681,6 +14084,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/locale/uga/babel-ugaritic.tex
 %{_texmfdistdir}/tex/generic/babel/locale/uk/babel-uk.ini
 %{_texmfdistdir}/tex/generic/babel/locale/uk/babel-ukrainian.tex
+%{_texmfdistdir}/tex/generic/babel/locale/und/babel-und-x-nil.ini
+%{_texmfdistdir}/tex/generic/babel/locale/und/babel-und.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ur/babel-ur.ini
 %{_texmfdistdir}/tex/generic/babel/locale/ur/babel-urdu.tex
 %{_texmfdistdir}/tex/generic/babel/locale/uz/babel-uz-Arab.ini
@@ -12795,6 +14200,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/spanish.sty
 %{_texmfdistdir}/tex/generic/babel/swedish.sty
 %{_texmfdistdir}/tex/generic/babel/switch.def
+%{_texmfdistdir}/tex/generic/babel/tests-babel-bidi-basic.lua
 %{_texmfdistdir}/tex/generic/babel/turkish.sty
 %{_texmfdistdir}/tex/generic/babel/txtbabel.def
 %{_texmfdistdir}/tex/generic/babel/ukraineb.sty
@@ -12803,7 +14209,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel/xebabel.def
 
 %package -n texlive-babel-albanian
-Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn57005
+Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for Albanian within babel
@@ -12832,16 +14238,16 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-albanian-doc >= %{texlive_version}
 Provides:       tex(albanian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source139:      babel-albanian.tar.xz
-Source140:      babel-albanian.doc.tar.xz
+# from 20260301
+Source145:      babel-albanian.tar.xz
+Source146:      babel-albanian.doc.tar.xz
 
 %description -n texlive-babel-albanian
 The package provides support for typesetting Albanian (as part
 of the babel system).
 
 %package -n texlive-babel-albanian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn57005
+Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-albanian
 License:        LPPL-1.0
@@ -12907,9 +14313,9 @@ Suggests:       texlive-babel-azerbaijani-doc >= %{texlive_version}
 Provides:       tex(azerbaijani.ldf)
 Recommends:     texlive-hyphen-turkish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source141:      babel-azerbaijani.tar.xz
-Source142:      babel-azerbaijani.doc.tar.xz
+# from 20260301
+Source147:      babel-azerbaijani.tar.xz
+Source148:      babel-azerbaijani.doc.tar.xz
 
 %description -n texlive-babel-azerbaijani
 This is the babel style for Azerbaijani. This language poses
@@ -12956,7 +14362,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-azerbaijani/azerbaijani.ldf
 
 %package -n texlive-babel-basque
-Version:        %{texlive_version}.%{texlive_noarch}.1.0fsvn30256
+Version:        %{texlive_version}.%{texlive_noarch}.1.0fsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel contributed support for Basque
@@ -12986,15 +14392,15 @@ Suggests:       texlive-babel-basque-doc >= %{texlive_version}
 Provides:       tex(basque.ldf)
 Recommends:     texlive-hyphen-basque
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source143:      babel-basque.tar.xz
-Source144:      babel-basque.doc.tar.xz
+# from 20260301
+Source149:      babel-basque.tar.xz
+Source150:      babel-basque.doc.tar.xz
 
 %description -n texlive-babel-basque
 The package establishes Basque conventions in a document.
 
 %package -n texlive-babel-basque-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0fsvn30256
+Version:        %{texlive_version}.%{texlive_noarch}.1.0fsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-basque
 License:        LPPL-1.0
@@ -13058,9 +14464,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-belarusian-doc >= %{texlive_version}
 Provides:       tex(belarusian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source145:      babel-belarusian.tar.xz
-Source146:      babel-belarusian.doc.tar.xz
+# from 20260301
+Source151:      babel-belarusian.tar.xz
+Source152:      babel-belarusian.doc.tar.xz
 
 %description -n texlive-babel-belarusian
 The package provides support for use of Babel in documents
@@ -13103,7 +14509,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-belarusian/belarusian.ldf
 
 %package -n texlive-babel-bosnian
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn38174
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel contrib support for Bosnian
@@ -13133,16 +14539,16 @@ Suggests:       texlive-babel-bosnian-doc >= %{texlive_version}
 Provides:       tex(bosnian.ldf)
 Recommends:     texlive-hyphen-churchslavonic
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source147:      babel-bosnian.tar.xz
-Source148:      babel-bosnian.doc.tar.xz
+# from 20260301
+Source153:      babel-bosnian.tar.xz
+Source154:      babel-bosnian.doc.tar.xz
 
 %description -n texlive-babel-bosnian
 The package provides a language definition file that enables
 support of Bosnian with babel.
 
 %package -n texlive-babel-bosnian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn38174
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Documentation for texlive-babel-bosnian
 License:        LPPL-1.0
@@ -13178,7 +14584,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-bosnian/bosnian.ldf
 
 %package -n texlive-babel-breton
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn30257
+Version:        %{texlive_version}.%{texlive_noarch}.1.0isvn77470
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel contributed support for Breton
@@ -13208,9 +14614,9 @@ Suggests:       texlive-babel-breton-doc >= %{texlive_version}
 Provides:       tex(breton.ldf)
 Recommends:     texlive-hyphen-galician
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source149:      babel-breton.tar.xz
-Source150:      babel-breton.doc.tar.xz
+# from 20260301
+Source155:      babel-breton.tar.xz
+Source156:      babel-breton.doc.tar.xz
 
 %description -n texlive-babel-breton
 Breton (being, principally, a spoken language) does not have
@@ -13219,7 +14625,7 @@ typographic rules of its own; this package provides an
 rules.
 
 %package -n texlive-babel-breton-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn30257
+Version:        %{texlive_version}.%{texlive_noarch}.1.0isvn77470
 Release:        0
 Summary:        Documentation for texlive-babel-breton
 License:        LPPL-1.0
@@ -13248,6 +14654,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-breton-doc
+%{_texmfdistdir}/doc/generic/babel-breton/README.md
 %{_texmfdistdir}/doc/generic/babel-breton/breton.pdf
 
 %files -n texlive-babel-breton
@@ -13284,9 +14691,9 @@ Suggests:       texlive-babel-bulgarian-doc >= %{texlive_version}
 Provides:       tex(bulgarian.ldf)
 Recommends:     texlive-hyphen-bulgarian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source151:      babel-bulgarian.tar.xz
-Source152:      babel-bulgarian.doc.tar.xz
+# from 20260301
+Source157:      babel-bulgarian.tar.xz
+Source158:      babel-bulgarian.doc.tar.xz
 
 %description -n texlive-babel-bulgarian
 The package provides support for documents in Bulgarian (or
@@ -13359,9 +14766,9 @@ Suggests:       texlive-babel-catalan-doc >= %{texlive_version}
 Provides:       tex(catalan.ldf)
 Recommends:     texlive-hyphen-catalan
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source153:      babel-catalan.tar.xz
-Source154:      babel-catalan.doc.tar.xz
+# from 20260301
+Source159:      babel-catalan.tar.xz
+Source160:      babel-catalan.doc.tar.xz
 
 %description -n texlive-babel-catalan
 The package establishes Catalan conventions in a document (or a
@@ -13404,7 +14811,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-catalan/catalan.ldf
 
 %package -n texlive-babel-croatian
-Version:        %{texlive_version}.%{texlive_noarch}.1.3lsvn35198
+Version:        %{texlive_version}.%{texlive_noarch}.1.3lsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel contributed support for Croatian
@@ -13434,9 +14841,9 @@ Suggests:       texlive-babel-croatian-doc >= %{texlive_version}
 Provides:       tex(croatian.ldf)
 Recommends:     texlive-hyphen-croatian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source155:      babel-croatian.tar.xz
-Source156:      babel-croatian.doc.tar.xz
+# from 20260301
+Source161:      babel-croatian.tar.xz
+Source162:      babel-croatian.doc.tar.xz
 
 %description -n texlive-babel-croatian
 The package establishes Croatian conventions in a document (or
@@ -13444,7 +14851,7 @@ a subset of the conventions, if Croatian is not the main
 language of the document).
 
 %package -n texlive-babel-croatian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3lsvn35198
+Version:        %{texlive_version}.%{texlive_noarch}.1.3lsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-croatian
 License:        LPPL-1.0
@@ -13509,9 +14916,9 @@ Suggests:       texlive-babel-czech-doc >= %{texlive_version}
 Provides:       tex(czech.ldf)
 Recommends:     texlive-hyphen-czech
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source157:      babel-czech.tar.xz
-Source158:      babel-czech.doc.tar.xz
+# from 20260301
+Source163:      babel-czech.tar.xz
+Source164:      babel-czech.doc.tar.xz
 
 %description -n texlive-babel-czech
 The package provides the language definition file for support
@@ -13554,7 +14961,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-czech/czech.ldf
 
 %package -n texlive-babel-danish
-Version:        %{texlive_version}.%{texlive_noarch}.1.3ssvn57642
+Version:        %{texlive_version}.%{texlive_noarch}.1.3ssvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel contributed support for Danish
@@ -13584,9 +14991,9 @@ Suggests:       texlive-babel-danish-doc >= %{texlive_version}
 Provides:       tex(danish.ldf)
 Recommends:     texlive-hyphen-danish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source159:      babel-danish.tar.xz
-Source160:      babel-danish.doc.tar.xz
+# from 20260301
+Source165:      babel-danish.tar.xz
+Source166:      babel-danish.doc.tar.xz
 
 %description -n texlive-babel-danish
 The package provides a language definition, file for use with
@@ -13595,7 +15002,7 @@ subset of the conventions, if Danish is not the main language
 of the document).
 
 %package -n texlive-babel-danish-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3ssvn57642
+Version:        %{texlive_version}.%{texlive_noarch}.1.3ssvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-danish
 License:        LPPL-1.0
@@ -13631,7 +15038,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-danish/danish.ldf
 
 %package -n texlive-babel-dutch
-Version:        %{texlive_version}.%{texlive_noarch}.3.8lsvn60362
+Version:        %{texlive_version}.%{texlive_noarch}.3.8lsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel contributed support for Dutch
@@ -13662,9 +15069,9 @@ Provides:       tex(afrikaans.ldf)
 Provides:       tex(dutch.ldf)
 Recommends:     texlive-hyphen-dutch
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source161:      babel-dutch.tar.xz
-Source162:      babel-dutch.doc.tar.xz
+# from 20260301
+Source167:      babel-dutch.tar.xz
+Source168:      babel-dutch.doc.tar.xz
 
 %description -n texlive-babel-dutch
 The package provides a language definition, file for use with
@@ -13673,7 +15080,7 @@ subset of the conventions, if Dutch is not the main language of
 the document).
 
 %package -n texlive-babel-dutch-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.8lsvn60362
+Version:        %{texlive_version}.%{texlive_noarch}.3.8lsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-dutch
 License:        LPPL-1.0
@@ -13710,7 +15117,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-dutch/dutch.ldf
 
 %package -n texlive-babel-english
-Version:        %{texlive_version}.%{texlive_noarch}.3.3rsvn70799
+Version:        %{texlive_version}.%{texlive_noarch}.3.3rsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for English
@@ -13749,9 +15156,9 @@ Provides:       tex(english.ldf)
 Provides:       tex(newzealand.ldf)
 Recommends:     texlive-hyphen-english
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source163:      babel-english.tar.xz
-Source164:      babel-english.doc.tar.xz
+# from 20260301
+Source169:      babel-english.tar.xz
+Source170:      babel-english.doc.tar.xz
 
 %description -n texlive-babel-english
 The package provides the language definition file for support
@@ -13760,7 +15167,7 @@ hyphenation patterns for British English and Australian text,
 and default ('american') patterns for Canadian and USA text.
 
 %package -n texlive-babel-english-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.3rsvn70799
+Version:        %{texlive_version}.%{texlive_noarch}.3.3rsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-english
 License:        LPPL-1.0
@@ -13803,7 +15210,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-english/newzealand.ldf
 
 %package -n texlive-babel-esperanto
-Version:        %{texlive_version}.%{texlive_noarch}.1.4tsvn30265
+Version:        %{texlive_version}.%{texlive_noarch}.1.5asvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Esperanto
@@ -13833,9 +15240,9 @@ Suggests:       texlive-babel-esperanto-doc >= %{texlive_version}
 Provides:       tex(esperanto.ldf)
 Recommends:     texlive-hyphen-esperanto
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source165:      babel-esperanto.tar.xz
-Source166:      babel-esperanto.doc.tar.xz
+# from 20260301
+Source171:      babel-esperanto.tar.xz
+Source172:      babel-esperanto.doc.tar.xz
 
 %description -n texlive-babel-esperanto
 The package provides the language definition file for support
@@ -13843,7 +15250,7 @@ of Esperanto in babel. Some shortcuts are defined, as well as
 translations to Esperanto of standard "LaTeX names".
 
 %package -n texlive-babel-esperanto-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4tsvn30265
+Version:        %{texlive_version}.%{texlive_noarch}.1.5asvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-esperanto
 License:        LPPL-1.0
@@ -13872,6 +15279,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-esperanto-doc
+%{_texmfdistdir}/doc/generic/babel-esperanto/README.md
 %{_texmfdistdir}/doc/generic/babel-esperanto/esperanto.pdf
 
 %files -n texlive-babel-esperanto
@@ -13908,9 +15316,9 @@ Suggests:       texlive-babel-estonian-doc >= %{texlive_version}
 Provides:       tex(estonian.ldf)
 Recommends:     texlive-hyphen-estonian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source167:      babel-estonian.tar.xz
-Source168:      babel-estonian.doc.tar.xz
+# from 20260301
+Source173:      babel-estonian.tar.xz
+Source174:      babel-estonian.doc.tar.xz
 
 %description -n texlive-babel-estonian
 The package provides the language definition file for support
@@ -13954,7 +15362,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-estonian/estonian.ldf
 
 %package -n texlive-babel-finnish
-Version:        %{texlive_version}.%{texlive_noarch}.1.3ssvn57643
+Version:        %{texlive_version}.%{texlive_noarch}.1.3ssvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Finnish
@@ -13984,16 +15392,16 @@ Suggests:       texlive-babel-finnish-doc >= %{texlive_version}
 Provides:       tex(finnish.ldf)
 Recommends:     texlive-hyphen-finnish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source169:      babel-finnish.tar.xz
-Source170:      babel-finnish.doc.tar.xz
+# from 20260301
+Source175:      babel-finnish.tar.xz
+Source176:      babel-finnish.doc.tar.xz
 
 %description -n texlive-babel-finnish
 The package provides a language description file that enables
 support of Finnish with babel.
 
 %package -n texlive-babel-finnish-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3ssvn57643
+Version:        %{texlive_version}.%{texlive_noarch}.1.3ssvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-finnish
 License:        LPPL-1.0
@@ -14029,7 +15437,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-finnish/finnish.ldf
 
 %package -n texlive-babel-french
-Version:        %{texlive_version}.%{texlive_noarch}.3.6csvn71907
+Version:        %{texlive_version}.%{texlive_noarch}.4.0esvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel contributed support for French
@@ -14060,12 +15468,13 @@ Provides:       tex(acadian.ldf)
 Provides:       tex(canadien.ldf)
 Provides:       tex(francais.ldf)
 Provides:       tex(french.ldf)
+Provides:       tex(french3.ldf)
 Provides:       tex(frenchb.ldf)
 Recommends:     texlive-hyphen-french
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source171:      babel-french.tar.xz
-Source172:      babel-french.doc.tar.xz
+# from 20260301
+Source177:      babel-french.tar.xz
+Source178:      babel-french.doc.tar.xz
 
 %description -n texlive-babel-french
 The package, formerly known as frenchb, establishes French
@@ -14073,7 +15482,7 @@ conventions in a document (or a subset of the conventions, if
 French is not the main language of the document).
 
 %package -n texlive-babel-french-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.6csvn71907
+Version:        %{texlive_version}.%{texlive_noarch}.4.0esvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-french
 License:        LPPL-1.0
@@ -14107,17 +15516,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/babel-french/frenchb-doc.pdf
 %{_texmfdistdir}/doc/generic/babel-french/frenchb-doc.tex
 %{_texmfdistdir}/doc/generic/babel-french/frenchb.pdf
+%{_texmfdistdir}/doc/generic/babel-french/frenchb3-doc.pdf
+%{_texmfdistdir}/doc/generic/babel-french/frenchb3-doc.tex
+%{_texmfdistdir}/doc/generic/babel-french/frenchb3.pdf
 
 %files -n texlive-babel-french
 %{_texmfdistdir}/tex/generic/babel-french/acadian.ldf
 %{_texmfdistdir}/tex/generic/babel-french/canadien.ldf
 %{_texmfdistdir}/tex/generic/babel-french/francais.ldf
 %{_texmfdistdir}/tex/generic/babel-french/french.ldf
+%{_texmfdistdir}/tex/generic/babel-french/french3.ldf
 %{_texmfdistdir}/tex/generic/babel-french/frenchb.ldf
 %{_texmfdistdir}/tex/generic/babel-french/frenchb.lua
 
 %package -n texlive-babel-friulan
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn39861
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel/Polyglossia support for Friulan(Furlan)
@@ -14147,16 +15560,16 @@ Suggests:       texlive-babel-friulan-doc >= %{texlive_version}
 Provides:       tex(friulan.ldf)
 Recommends:     texlive-hyphen-friulan
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source173:      babel-friulan.tar.xz
-Source174:      babel-friulan.doc.tar.xz
+# from 20260301
+Source179:      babel-friulan.tar.xz
+Source180:      babel-friulan.doc.tar.xz
 
 %description -n texlive-babel-friulan
 The package provides a language description file that enables
 support of Friulan either with babel or with polyglossia.
 
 %package -n texlive-babel-friulan-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn39861
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 Summary:        Documentation for texlive-babel-friulan
 License:        LPPL-1.0
@@ -14222,9 +15635,9 @@ Suggests:       texlive-babel-galician-doc >= %{texlive_version}
 Provides:       tex(galician.ldf)
 Recommends:     texlive-hyphen-galician
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source175:      babel-galician.tar.xz
-Source176:      babel-galician.doc.tar.xz
+# from 20260301
+Source181:      babel-galician.tar.xz
+Source182:      babel-galician.doc.tar.xz
 
 %description -n texlive-babel-galician
 The package provides a language description file that enables
@@ -14300,9 +15713,9 @@ Provides:       tex(georgian.sty)
 Provides:       tex(georgiancaps.tex)
 Recommends:     texlive-hyphen-georgian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source177:      babel-georgian.tar.xz
-Source178:      babel-georgian.doc.tar.xz
+# from 20260301
+Source183:      babel-georgian.tar.xz
+Source184:      babel-georgian.doc.tar.xz
 
 %description -n texlive-babel-georgian
 The package provides support for use of Babel in documents
@@ -14347,7 +15760,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-georgian/georgiancaps.tex
 
 %package -n texlive-babel-german
-Version:        %{texlive_version}.%{texlive_noarch}.2.15svn73094
+Version:        %{texlive_version}.%{texlive_noarch}.2.99csvn77815
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for documents written in German
@@ -14375,6 +15788,19 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-german-doc >= %{texlive_version}
 Provides:       tex(austrian.ldf)
+Provides:       tex(babel-german.def)
+Provides:       tex(german-at-1901.ldf)
+Provides:       tex(german-at.ldf)
+Provides:       tex(german-austria-1901.ldf)
+Provides:       tex(german-austria.ldf)
+Provides:       tex(german-ch-1901.ldf)
+Provides:       tex(german-ch.ldf)
+Provides:       tex(german-de-1901.ldf)
+Provides:       tex(german-de.ldf)
+Provides:       tex(german-germany-1901.ldf)
+Provides:       tex(german-germany.ldf)
+Provides:       tex(german-switzerland-1901.ldf)
+Provides:       tex(german-switzerland.ldf)
 Provides:       tex(german.ldf)
 Provides:       tex(germanb.ldf)
 Provides:       tex(naustrian.ldf)
@@ -14384,9 +15810,9 @@ Provides:       tex(nswissgerman.ldf)
 Provides:       tex(swissgerman.ldf)
 Recommends:     texlive-hyphen-german
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source179:      babel-german.tar.xz
-Source180:      babel-german.doc.tar.xz
+# from 20260301
+Source185:      babel-german.tar.xz
+Source186:      babel-german.doc.tar.xz
 
 %description -n texlive-babel-german
 This bundle is an extension to the babel package for
@@ -14397,7 +15823,7 @@ orthography as well as for the Austrian and Swiss varieties of
 German.
 
 %package -n texlive-babel-german-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.15svn73094
+Version:        %{texlive_version}.%{texlive_noarch}.2.99csvn77815
 Release:        0
 Summary:        Documentation for texlive-babel-german
 License:        LPPL-1.0
@@ -14427,11 +15853,23 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-german-doc
 %{_texmfdistdir}/doc/generic/babel-german/README
-%{_texmfdistdir}/doc/generic/babel-german/germanb.pdf
-%{_texmfdistdir}/doc/generic/babel-german/ngermanb.pdf
+%{_texmfdistdir}/doc/generic/babel-german/babel-german.pdf
 
 %files -n texlive-babel-german
 %{_texmfdistdir}/tex/generic/babel-german/austrian.ldf
+%{_texmfdistdir}/tex/generic/babel-german/babel-german.def
+%{_texmfdistdir}/tex/generic/babel-german/german-at-1901.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-at.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-austria-1901.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-austria.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-ch-1901.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-ch.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-de-1901.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-de.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-germany-1901.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-germany.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-switzerland-1901.ldf
+%{_texmfdistdir}/tex/generic/babel-german/german-switzerland.ldf
 %{_texmfdistdir}/tex/generic/babel-german/german.ldf
 %{_texmfdistdir}/tex/generic/babel-german/germanb.ldf
 %{_texmfdistdir}/tex/generic/babel-german/naustrian.ldf
@@ -14441,7 +15879,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-german/swissgerman.ldf
 
 %package -n texlive-babel-greek
-Version:        %{texlive_version}.%{texlive_noarch}.1.15svn68532
+Version:        %{texlive_version}.%{texlive_noarch}.1.15svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for the Greek language and script
@@ -14473,9 +15911,9 @@ Provides:       tex(greek.ldf)
 Provides:       tex(grmath.sty)
 Recommends:     texlive-hyphen-greek
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source181:      babel-greek.tar.xz
-Source182:      babel-greek.doc.tar.xz
+# from 20260301
+Source187:      babel-greek.tar.xz
+Source188:      babel-greek.doc.tar.xz
 
 %description -n texlive-babel-greek
 The bundle provides comprehensive support for the Greek
@@ -14486,7 +15924,7 @@ language. Included are the packages grmath for Greek function
 names in mathematics, and athnum for Attic numerals.
 
 %package -n texlive-babel-greek-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.15svn68532
+Version:        %{texlive_version}.%{texlive_noarch}.1.15svn78101
 Release:        0
 Summary:        Documentation for texlive-babel-greek
 License:        LPPL-1.0
@@ -14540,7 +15978,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-greek/grmath.sty
 
 %package -n texlive-babel-hebrew
-Version:        %{texlive_version}.%{texlive_noarch}.2.4asvn68016
+Version:        %{texlive_version}.%{texlive_noarch}.2.5svn77914
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Hebrew
@@ -14576,19 +16014,28 @@ Provides:       tex(rlbabel.def)
 Requires:       tex(babel.sty)
 Requires:       tex(inputenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source183:      babel-hebrew.tar.xz
-Source184:      babel-hebrew.doc.tar.xz
+# from 20260301
+Source189:      babel-hebrew.tar.xz
+Source190:      babel-hebrew.doc.tar.xz
 
 %description -n texlive-babel-hebrew
 The package provides the language definition file for support
 of Hebrew in babel. Macros to control the use of text direction
 control of TeX--XeT and e-TeX are provided (and may be used
 elsewhere). Some shortcuts are defined, as well as translations
-to Hebrew of standard "LaTeX names".
+to Hebrew of standard "LaTeX names". For questions, bug
+reports, or support, please open an issue in the repository.
+Note: the package is in maintenance mode. Bugs will be fixed,
+but no new features will be added. The .ldf file is only
+compatible with pdfLaTeX or LaTeX. Even then, for documents
+containing more than a short text in Hebrew, it is strongly
+recommended to use LuaTeX (with babel's .ini file or
+polyglossia). For short texts with pdfTeX, use the .ini file.
+Consult the documentation of babel for better settings for
+Hebrew.
 
 %package -n texlive-babel-hebrew-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.4asvn68016
+Version:        %{texlive_version}.%{texlive_noarch}.2.5svn77914
 Release:        0
 Summary:        Documentation for texlive-babel-hebrew
 License:        LPPL-1.0
@@ -14629,10 +16076,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-hebrew/rlbabel.def
 
 %package -n texlive-babel-hungarian
-Version:        %{texlive_version}.%{texlive_noarch}.1.5csvn49701
+Version:        %{texlive_version}.%{texlive_noarch}.1.6asvn77586
 Release:        0
 License:        LPPL-1.0
-Summary:        Babel support for Hungarian (Magyar)
+Summary:        Babel support for Hungarian
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -14659,16 +16106,16 @@ Suggests:       texlive-babel-hungarian-doc >= %{texlive_version}
 Provides:       tex(magyar.ldf)
 Recommends:     texlive-hyphen-hungarian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source185:      babel-hungarian.tar.xz
-Source186:      babel-hungarian.doc.tar.xz
+# from 20260301
+Source191:      babel-hungarian.tar.xz
+Source192:      babel-hungarian.doc.tar.xz
 
 %description -n texlive-babel-hungarian
 The package provides a language definition file that enables
-support of Magyar (Hungarian) with babel.
+support of Hungarian with babel.
 
 %package -n texlive-babel-hungarian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5csvn49701
+Version:        %{texlive_version}.%{texlive_noarch}.1.6asvn77586
 Release:        0
 Summary:        Documentation for texlive-babel-hungarian
 License:        LPPL-1.0
@@ -14733,9 +16180,9 @@ Suggests:       texlive-babel-icelandic-doc >= %{texlive_version}
 Provides:       tex(icelandic.ldf)
 Recommends:     texlive-hyphen-icelandic
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source187:      babel-icelandic.tar.xz
-Source188:      babel-icelandic.doc.tar.xz
+# from 20260301
+Source193:      babel-icelandic.tar.xz
+Source194:      babel-icelandic.doc.tar.xz
 
 %description -n texlive-babel-icelandic
 The package provides the language definition file for support
@@ -14779,7 +16226,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-icelandic/icelandic.ldf
 
 %package -n texlive-babel-indonesian
-Version:        %{texlive_version}.%{texlive_noarch}.1.0msvn43235
+Version:        %{texlive_version}.%{texlive_noarch}.1.0nsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for Indonesian within babel
@@ -14812,15 +16259,15 @@ Provides:       tex(indon.ldf)
 Provides:       tex(indonesian.ldf)
 Recommends:     texlive-hyphen-indonesian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source189:      babel-indonesian.tar.xz
-Source190:      babel-indonesian.doc.tar.xz
+# from 20260301
+Source195:      babel-indonesian.tar.xz
+Source196:      babel-indonesian.doc.tar.xz
 
 %description -n texlive-babel-indonesian
 This is the babel style for Indonesian.
 
 %package -n texlive-babel-indonesian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0msvn43235
+Version:        %{texlive_version}.%{texlive_noarch}.1.0nsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-indonesian
 License:        LPPL-1.0
@@ -14849,7 +16296,7 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-indonesian-doc
-%{_texmfdistdir}/doc/generic/babel-indonesian/README
+%{_texmfdistdir}/doc/generic/babel-indonesian/README.md
 %{_texmfdistdir}/doc/generic/babel-indonesian/indonesian.pdf
 
 %files -n texlive-babel-indonesian
@@ -14859,7 +16306,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-indonesian/indonesian.ldf
 
 %package -n texlive-babel-interlingua
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn30276
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Interlingua
@@ -14889,9 +16336,9 @@ Suggests:       texlive-babel-interlingua-doc >= %{texlive_version}
 Provides:       tex(interlingua.ldf)
 Recommends:     texlive-hyphen-interlingua
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source191:      babel-interlingua.tar.xz
-Source192:      babel-interlingua.doc.tar.xz
+# from 20260301
+Source197:      babel-interlingua.tar.xz
+Source198:      babel-interlingua.doc.tar.xz
 
 %description -n texlive-babel-interlingua
 The package provides the language definition file for support
@@ -14902,7 +16349,7 @@ vocabulary of Spanish/Portuguese, English, Italian and French,
 with some normalisation of spelling.
 
 %package -n texlive-babel-interlingua-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn30276
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 Summary:        Documentation for texlive-babel-interlingua
 License:        LPPL-1.0
@@ -14937,7 +16384,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-interlingua/interlingua.ldf
 
 %package -n texlive-babel-irish
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn30277
+Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Irish
@@ -14967,9 +16414,9 @@ Suggests:       texlive-babel-irish-doc >= %{texlive_version}
 Provides:       tex(irish.ldf)
 Recommends:     texlive-hyphen-irish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source193:      babel-irish.tar.xz
-Source194:      babel-irish.doc.tar.xz
+# from 20260301
+Source199:      babel-irish.tar.xz
+Source200:      babel-irish.doc.tar.xz
 
 %description -n texlive-babel-irish
 The package provides the language definition file for support
@@ -14977,7 +16424,7 @@ of Irish Gaelic in babel. The principal content is translations
 to Irish of standard "LaTeX names". (No shortcuts are defined.)
 
 %package -n texlive-babel-irish-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn30277
+Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-irish
 License:        LPPL-1.0
@@ -15012,7 +16459,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-irish/irish.ldf
 
 %package -n texlive-babel-italian
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.01svn72520
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.02svn77371
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Italian text
@@ -15042,15 +16489,15 @@ Suggests:       texlive-babel-italian-doc >= %{texlive_version}
 Provides:       tex(italian.ldf)
 Recommends:     texlive-hyphen-italian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source195:      babel-italian.tar.xz
-Source196:      babel-italian.doc.tar.xz
+# from 20260301
+Source201:      babel-italian.tar.xz
+Source202:      babel-italian.doc.tar.xz
 
 %description -n texlive-babel-italian
 The package provides language definitions for use in babel.
 
 %package -n texlive-babel-italian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.01svn72520
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.02svn77371
 Release:        0
 Summary:        Documentation for texlive-babel-italian
 License:        LPPL-1.0
@@ -15115,9 +16562,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-japanese-doc >= %{texlive_version}
 Provides:       tex(japanese.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source197:      babel-japanese.tar.xz
-Source198:      babel-japanese.doc.tar.xz
+# from 20260301
+Source203:      babel-japanese.tar.xz
+Source204:      babel-japanese.doc.tar.xz
 
 %description -n texlive-babel-japanese
 This package provides a japanese option for the babel package.
@@ -15197,9 +16644,9 @@ Suggests:       texlive-babel-kurmanji-doc >= %{texlive_version}
 Provides:       tex(kurmanji.ldf)
 Recommends:     texlive-hyphen-kurmanji
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source199:      babel-kurmanji.tar.xz
-Source200:      babel-kurmanji.doc.tar.xz
+# from 20260301
+Source205:      babel-kurmanji.tar.xz
+Source206:      babel-kurmanji.doc.tar.xz
 
 %description -n texlive-babel-kurmanji
 The package provides the language definition file for support
@@ -15246,7 +16693,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-kurmanji/kurmanji.ldf
 
 %package -n texlive-babel-latin
-Version:        %{texlive_version}.%{texlive_noarch}.4.0svn59800
+Version:        %{texlive_version}.%{texlive_noarch}.4.3svn76176
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Latin
@@ -15273,24 +16720,26 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-latin-doc >= %{texlive_version}
+Provides:       tex(classicallatin.ldf)
 Provides:       tex(classiclatin.ldf)
+Provides:       tex(ecclesiasticallatin.ldf)
 Provides:       tex(ecclesiasticlatin.ldf)
 Provides:       tex(latin.ldf)
 Provides:       tex(medievallatin.ldf)
 Recommends:     texlive-hyphen-latin
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source201:      babel-latin.tar.xz
-Source202:      babel-latin.doc.tar.xz
+# from 20260301
+Source207:      babel-latin.tar.xz
+Source208:      babel-latin.doc.tar.xz
 
 %description -n texlive-babel-latin
 The babel-latin package provides the babel languages latin,
-classiclatin, medievallatin, and ecclesiasticlatin. It also
+classicallatin, medievallatin, and ecclesiasticallatin. It also
 defines several useful shorthands as well as some modifiers for
 typographical fine-tuning.
 
 %package -n texlive-babel-latin-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.0svn59800
+Version:        %{texlive_version}.%{texlive_noarch}.4.3svn76176
 Release:        0
 Summary:        Documentation for texlive-babel-latin
 License:        LPPL-1.0
@@ -15323,9 +16772,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/babel-latin/latin.pdf
 
 %files -n texlive-babel-latin
+%{_texmfdistdir}/tex/generic/babel-latin/classicallatin.ldf
 %{_texmfdistdir}/tex/generic/babel-latin/classiclatin.ldf
+%{_texmfdistdir}/tex/generic/babel-latin/ecclesiasticallatin.ldf
+%{_texmfdistdir}/tex/generic/babel-latin/ecclesiasticallatin.lua
 %{_texmfdistdir}/tex/generic/babel-latin/ecclesiasticlatin.ldf
-%{_texmfdistdir}/tex/generic/babel-latin/ecclesiasticlatin.lua
 %{_texmfdistdir}/tex/generic/babel-latin/latin.ldf
 %{_texmfdistdir}/tex/generic/babel-latin/medievallatin.ldf
 
@@ -15360,9 +16811,9 @@ Suggests:       texlive-babel-latvian-doc >= %{texlive_version}
 Provides:       tex(latvian.ldf)
 Recommends:     texlive-hyphen-latvian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source203:      babel-latvian.tar.xz
-Source204:      babel-latvian.doc.tar.xz
+# from 20260301
+Source209:      babel-latvian.tar.xz
+Source210:      babel-latvian.doc.tar.xz
 
 %description -n texlive-babel-latvian
 The package provides the language definition file for support
@@ -15434,9 +16885,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-lithuanian-doc >= %{texlive_version}
 Provides:       tex(lithuanian.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source205:      babel-lithuanian.tar.xz
-Source206:      babel-lithuanian.doc.tar.xz
+# from 20260301
+Source211:      babel-lithuanian.tar.xz
+Source212:      babel-lithuanian.doc.tar.xz
 
 %description -n texlive-babel-lithuanian
 Babel support material for documents written in Lithuanian
@@ -15510,9 +16961,9 @@ Suggests:       texlive-babel-macedonian-doc >= %{texlive_version}
 Provides:       tex(macedonian.ldf)
 Recommends:     texlive-hyphen-churchslavonic
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source207:      babel-macedonian.tar.xz
-Source208:      babel-macedonian.doc.tar.xz
+# from 20260301
+Source213:      babel-macedonian.tar.xz
+Source214:      babel-macedonian.doc.tar.xz
 
 %description -n texlive-babel-macedonian
 The package provides support for Macedonian documents written
@@ -15555,7 +17006,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-macedonian/macedonian.ldf
 
 %package -n texlive-babel-malay
-Version:        %{texlive_version}.%{texlive_noarch}.1.0msvn43234
+Version:        %{texlive_version}.%{texlive_noarch}.1.0msvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for Malay within babel
@@ -15588,15 +17039,15 @@ Provides:       tex(melayu.ldf)
 Provides:       tex(meyalu.ldf)
 Recommends:     texlive-hyphen-indic
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source209:      babel-malay.tar.xz
-Source210:      babel-malay.doc.tar.xz
+# from 20260301
+Source215:      babel-malay.tar.xz
+Source216:      babel-malay.doc.tar.xz
 
 %description -n texlive-babel-malay
 This is the babel style for Malay.
 
 %package -n texlive-babel-malay-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0msvn43234
+Version:        %{texlive_version}.%{texlive_noarch}.1.0msvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-malay
 License:        LPPL-1.0
@@ -15635,7 +17086,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-malay/meyalu.ldf
 
 %package -n texlive-babel-norsk
-Version:        %{texlive_version}.%{texlive_noarch}.2.0ksvn70691
+Version:        %{texlive_version}.%{texlive_noarch}.2.0ksvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Norwegian
@@ -15667,9 +17118,9 @@ Provides:       tex(norwegian.ldf)
 Provides:       tex(nynorsk.ldf)
 Recommends:     texlive-hyphen-norwegian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source211:      babel-norsk.tar.xz
-Source212:      babel-norsk.doc.tar.xz
+# from 20260301
+Source217:      babel-norsk.tar.xz
+Source218:      babel-norsk.doc.tar.xz
 
 %description -n texlive-babel-norsk
 The package provides the language definition file for support
@@ -15677,7 +17128,7 @@ of Norwegian in babel. Some shortcuts are defined, as well as
 translations to Norsk of standard "LaTeX names".
 
 %package -n texlive-babel-norsk-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0ksvn70691
+Version:        %{texlive_version}.%{texlive_noarch}.2.0ksvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-norsk
 License:        LPPL-1.0
@@ -15745,9 +17196,9 @@ Suggests:       texlive-babel-occitan-doc >= %{texlive_version}
 Provides:       tex(occitan.ldf)
 Recommends:     texlive-hyphen-occitan
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source213:      babel-occitan.tar.xz
-Source214:      babel-occitan.doc.tar.xz
+# from 20260301
+Source219:      babel-occitan.tar.xz
+Source220:      babel-occitan.doc.tar.xz
 
 %description -n texlive-babel-occitan
 Occitan language description file with usage instructions.
@@ -15819,9 +17270,9 @@ Suggests:       texlive-babel-piedmontese-doc >= %{texlive_version}
 Provides:       tex(piedmontese.ldf)
 Recommends:     texlive-hyphen-piedmontese
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source215:      babel-piedmontese.tar.xz
-Source216:      babel-piedmontese.doc.tar.xz
+# from 20260301
+Source221:      babel-piedmontese.tar.xz
+Source222:      babel-piedmontese.doc.tar.xz
 
 %description -n texlive-babel-piedmontese
 The package provides the language definition file for support
@@ -15864,7 +17315,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-piedmontese/piedmontese.ldf
 
 %package -n texlive-babel-polish
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn62680
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Polish
@@ -15895,9 +17346,9 @@ Provides:       tex(polish-compat.ldf)
 Provides:       tex(polish.ldf)
 Recommends:     texlive-hyphen-polish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source217:      babel-polish.tar.xz
-Source218:      babel-polish.doc.tar.xz
+# from 20260301
+Source223:      babel-polish.tar.xz
+Source224:      babel-polish.doc.tar.xz
 
 %description -n texlive-babel-polish
 The package provides the language definition file for support
@@ -15905,7 +17356,7 @@ of Polish in babel. Some shortcuts are defined, as well as
 translations to Polish of standard "LaTeX names".
 
 %package -n texlive-babel-polish-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn62680
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 Summary:        Documentation for texlive-babel-polish
 License:        LPPL-1.0
@@ -15942,7 +17393,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-polish/polish.ldf
 
 %package -n texlive-babel-portuges
-Version:        %{texlive_version}.%{texlive_noarch}.1.2tsvn59883
+Version:        %{texlive_version}.%{texlive_noarch}.1.2usvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Portuges
@@ -15975,9 +17426,9 @@ Provides:       tex(portuges.ldf)
 Provides:       tex(portuguese.ldf)
 Recommends:     texlive-hyphen-portuguese
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source219:      babel-portuges.tar.xz
-Source220:      babel-portuges.doc.tar.xz
+# from 20260301
+Source225:      babel-portuges.tar.xz
+Source226:      babel-portuges.doc.tar.xz
 
 %description -n texlive-babel-portuges
 The package provides the language definition file for support
@@ -15986,7 +17437,7 @@ are defined, as well as translations to Portuguese of standard
 "LaTeX names".
 
 %package -n texlive-babel-portuges-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2tsvn59883
+Version:        %{texlive_version}.%{texlive_noarch}.1.2usvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-portuges
 License:        LPPL-1.0
@@ -16025,7 +17476,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-portuges/portuguese.ldf
 
 %package -n texlive-babel-romanian
-Version:        %{texlive_version}.%{texlive_noarch}.1.2msvn58776
+Version:        %{texlive_version}.%{texlive_noarch}.1.2msvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Romanian
@@ -16055,9 +17506,9 @@ Suggests:       texlive-babel-romanian-doc >= %{texlive_version}
 Provides:       tex(romanian.ldf)
 Recommends:     texlive-hyphen-romanian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source221:      babel-romanian.tar.xz
-Source222:      babel-romanian.doc.tar.xz
+# from 20260301
+Source227:      babel-romanian.tar.xz
+Source228:      babel-romanian.doc.tar.xz
 
 %description -n texlive-babel-romanian
 The package provides the language definition file for support
@@ -16065,7 +17516,7 @@ of Romanian in babel. Translations to Romanian of standard
 "LaTeX names" are provided.
 
 %package -n texlive-babel-romanian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2msvn58776
+Version:        %{texlive_version}.%{texlive_noarch}.1.2msvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-romanian
 License:        LPPL-1.0
@@ -16101,7 +17552,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-romanian/romanian.ldf
 
 %package -n texlive-babel-romansh
-Version:        %{texlive_version}.%{texlive_noarch}.svn30286
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel/Polyglossia support for the Romansh language
@@ -16131,16 +17582,16 @@ Suggests:       texlive-babel-romansh-doc >= %{texlive_version}
 Provides:       tex(romansh.ldf)
 Recommends:     texlive-hyphen-romansh
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source223:      babel-romansh.tar.xz
-Source224:      babel-romansh.doc.tar.xz
+# from 20260301
+Source229:      babel-romansh.tar.xz
+Source230:      babel-romansh.doc.tar.xz
 
 %description -n texlive-babel-romansh
 The package provides a language description file that enables
 support of Romansh either with babel or with polyglossia.
 
 %package -n texlive-babel-romansh-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn30286
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-babel-romansh
 License:        LPPL-1.0
@@ -16205,9 +17656,9 @@ Suggests:       texlive-babel-russian-doc >= %{texlive_version}
 Provides:       tex(russianb.ldf)
 Recommends:     texlive-hyphen-russian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source225:      babel-russian.tar.xz
-Source226:      babel-russian.doc.tar.xz
+# from 20260301
+Source231:      babel-russian.tar.xz
+Source232:      babel-russian.doc.tar.xz
 
 %description -n texlive-babel-russian
 The package provides support for use of Babel in documents
@@ -16252,7 +17703,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-russian/russianb.ldf
 
 %package -n texlive-babel-samin
-Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn69604
+Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Samin
@@ -16283,9 +17734,9 @@ Provides:       tex(northernsami.ldf)
 Provides:       tex(samin.ldf)
 Recommends:     texlive-hyphen-norwegian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source227:      babel-samin.tar.xz
-Source228:      babel-samin.doc.tar.xz
+# from 20260301
+Source233:      babel-samin.tar.xz
+Source234:      babel-samin.doc.tar.xz
 
 %description -n texlive-babel-samin
 The package provides the language definition file for support
@@ -16297,7 +17748,7 @@ defined, as well as translations to Norsk of standard "LaTeX
 names".
 
 %package -n texlive-babel-samin-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn69604
+Version:        %{texlive_version}.%{texlive_noarch}.1.0dsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-samin
 License:        LPPL-1.0
@@ -16334,7 +17785,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-samin/samin.ldf
 
 %package -n texlive-babel-scottish
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn69610
+Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Scottish Gaelic
@@ -16365,9 +17816,9 @@ Provides:       tex(scottish.ldf)
 Provides:       tex(scottishgaelic.ldf)
 Recommends:     texlive-hyphen-galician
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source229:      babel-scottish.tar.xz
-Source230:      babel-scottish.doc.tar.xz
+# from 20260301
+Source235:      babel-scottish.tar.xz
+Source236:      babel-scottish.doc.tar.xz
 
 %description -n texlive-babel-scottish
 The package provides the language definition file for support
@@ -16375,7 +17826,7 @@ of Gaidhlig (Scottish Gaelic) in babel. Some shortcuts are
 defined, as well as translations of standard "LaTeX names".
 
 %package -n texlive-babel-scottish-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn69610
+Version:        %{texlive_version}.%{texlive_noarch}.1.0hsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-scottish
 License:        LPPL-1.0
@@ -16442,9 +17893,9 @@ Suggests:       texlive-babel-serbian-doc >= %{texlive_version}
 Provides:       tex(serbian.ldf)
 Recommends:     texlive-hyphen-serbian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source231:      babel-serbian.tar.xz
-Source232:      babel-serbian.doc.tar.xz
+# from 20260301
+Source237:      babel-serbian.tar.xz
+Source238:      babel-serbian.doc.tar.xz
 
 %description -n texlive-babel-serbian
 The package provides support for Serbian documents written in
@@ -16517,9 +17968,9 @@ Suggests:       texlive-babel-serbianc-doc >= %{texlive_version}
 Provides:       tex(serbianc.ldf)
 Recommends:     texlive-hyphen-serbian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source233:      babel-serbianc.tar.xz
-Source234:      babel-serbianc.doc.tar.xz
+# from 20260301
+Source239:      babel-serbianc.tar.xz
+Source240:      babel-serbianc.doc.tar.xz
 
 %description -n texlive-babel-serbianc
 The package provides support for Serbian documents written in
@@ -16592,9 +18043,9 @@ Suggests:       texlive-babel-slovak-doc >= %{texlive_version}
 Provides:       tex(slovak.ldf)
 Recommends:     texlive-hyphen-slovak
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source235:      babel-slovak.tar.xz
-Source236:      babel-slovak.doc.tar.xz
+# from 20260301
+Source241:      babel-slovak.tar.xz
+Source242:      babel-slovak.doc.tar.xz
 
 %description -n texlive-babel-slovak
 The package provides the language definition file for support
@@ -16637,7 +18088,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-slovak/slovak.ldf
 
 %package -n texlive-babel-slovenian
-Version:        %{texlive_version}.%{texlive_noarch}.1.2osvn69742
+Version:        %{texlive_version}.%{texlive_noarch}.1.2psvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for typesetting Slovenian
@@ -16665,11 +18116,12 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-slovenian-doc >= %{texlive_version}
 Provides:       tex(slovene.ldf)
+Provides:       tex(slovenian.ldf)
 Recommends:     texlive-hyphen-slovenian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source237:      babel-slovenian.tar.xz
-Source238:      babel-slovenian.doc.tar.xz
+# from 20260301
+Source243:      babel-slovenian.tar.xz
+Source244:      babel-slovenian.doc.tar.xz
 
 %description -n texlive-babel-slovenian
 The package provides the language definition file for support
@@ -16677,7 +18129,7 @@ of Slovenian in babel. Several shortcuts are defined, as well
 as translations to Slovenian of standard "LaTeX names".
 
 %package -n texlive-babel-slovenian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2osvn69742
+Version:        %{texlive_version}.%{texlive_noarch}.1.2psvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-slovenian
 License:        LPPL-1.0
@@ -16711,9 +18163,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-slovenian
 %{_texmfdistdir}/tex/generic/babel-slovenian/slovene.ldf
+%{_texmfdistdir}/tex/generic/babel-slovenian/slovenian.ldf
 
 %package -n texlive-babel-sorbian
-Version:        %{texlive_version}.%{texlive_noarch}.1.0jsvn60975
+Version:        %{texlive_version}.%{texlive_noarch}.1.0jsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Upper and Lower Sorbian
@@ -16744,9 +18197,9 @@ Provides:       tex(lsorbian.ldf)
 Provides:       tex(usorbian.ldf)
 Recommends:     texlive-hyphen-uppersorbian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source239:      babel-sorbian.tar.xz
-Source240:      babel-sorbian.doc.tar.xz
+# from 20260301
+Source245:      babel-sorbian.tar.xz
+Source246:      babel-sorbian.doc.tar.xz
 
 %description -n texlive-babel-sorbian
 The package provides language definitions file for support of
@@ -16755,7 +18208,7 @@ defined, as well as translations to the relevant language of
 standard "LaTeX names".
 
 %package -n texlive-babel-sorbian-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0jsvn60975
+Version:        %{texlive_version}.%{texlive_noarch}.1.0jsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-sorbian
 License:        LPPL-1.0
@@ -16793,7 +18246,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-sorbian/usorbian.ldf
 
 %package -n texlive-babel-spanish
-Version:        %{texlive_version}.%{texlive_noarch}.5.0qsvn59367
+Version:        %{texlive_version}.%{texlive_noarch}.5.0qsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Spanish
@@ -16824,9 +18277,9 @@ Provides:       tex(romanidx.sty)
 Provides:       tex(spanish.ldf)
 Recommends:     texlive-hyphen-spanish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source241:      babel-spanish.tar.xz
-Source242:      babel-spanish.doc.tar.xz
+# from 20260301
+Source247:      babel-spanish.tar.xz
+Source248:      babel-spanish.doc.tar.xz
 
 %description -n texlive-babel-spanish
 This bundle provides the means to typeset Spanish text, with
@@ -16835,7 +18288,7 @@ that separate support is provided for those who wish to typeset
 Spanish as written in Mexico.
 
 %package -n texlive-babel-spanish-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.0qsvn59367
+Version:        %{texlive_version}.%{texlive_noarch}.5.0qsvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-spanish
 License:        LPPL-1.0
@@ -16873,7 +18326,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-spanish/spanish.ldf
 
 %package -n texlive-babel-swedish
-Version:        %{texlive_version}.%{texlive_noarch}.2.3esvn57647
+Version:        %{texlive_version}.%{texlive_noarch}.2.3esvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for typesetting Swedish
@@ -16903,15 +18356,15 @@ Suggests:       texlive-babel-swedish-doc >= %{texlive_version}
 Provides:       tex(swedish.ldf)
 Recommends:     texlive-hyphen-swedish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source243:      babel-swedish.tar.xz
-Source244:      babel-swedish.doc.tar.xz
+# from 20260301
+Source249:      babel-swedish.tar.xz
+Source250:      babel-swedish.doc.tar.xz
 
 %description -n texlive-babel-swedish
 The package provides the language definition file for Swedish.
 
 %package -n texlive-babel-swedish-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3esvn57647
+Version:        %{texlive_version}.%{texlive_noarch}.2.3esvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-swedish
 License:        LPPL-1.0
@@ -16979,9 +18432,9 @@ Provides:       tex(thai.ldf)
 Provides:       tex(tis620.def)
 Recommends:     texlive-hyphen-thai
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source245:      babel-thai.tar.xz
-Source246:      babel-thai.doc.tar.xz
+# from 20260301
+Source251:      babel-thai.tar.xz
+Source252:      babel-thai.doc.tar.xz
 
 %description -n texlive-babel-thai
 The package provides support for typesetting Thai text. within
@@ -17055,9 +18508,9 @@ Suggests:       texlive-babel-turkish-doc >= %{texlive_version}
 Provides:       tex(turkish.ldf)
 Recommends:     texlive-hyphen-turkish
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source247:      babel-turkish.tar.xz
-Source248:      babel-turkish.doc.tar.xz
+# from 20260301
+Source253:      babel-turkish.tar.xz
+Source254:      babel-turkish.doc.tar.xz
 
 %description -n texlive-babel-turkish
 The package provides support, within babel, of the Turkish
@@ -17130,9 +18583,9 @@ Suggests:       texlive-babel-ukrainian-doc >= %{texlive_version}
 Provides:       tex(ukraineb.ldf)
 Recommends:     texlive-hyphen-ukrainian
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source249:      babel-ukrainian.tar.xz
-Source250:      babel-ukrainian.doc.tar.xz
+# from 20260301
+Source255:      babel-ukrainian.tar.xz
+Source256:      babel-ukrainian.doc.tar.xz
 
 %description -n texlive-babel-ukrainian
 The package provides support for use of babel in documents
@@ -17205,9 +18658,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-vietnamese-doc >= %{texlive_version}
 Provides:       tex(vietnamese.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source251:      babel-vietnamese.tar.xz
-Source252:      babel-vietnamese.doc.tar.xz
+# from 20260301
+Source257:      babel-vietnamese.tar.xz
+Source258:      babel-vietnamese.doc.tar.xz
 
 %description -n texlive-babel-vietnamese
 The package provides the language definition file for support
@@ -17251,7 +18704,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-vietnamese/vietnamese.ldf
 
 %package -n texlive-babel-welsh
-Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn73855
+Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Babel support for Welsh
@@ -17280,9 +18733,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-babel-welsh-doc >= %{texlive_version}
 Provides:       tex(welsh.ldf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source253:      babel-welsh.tar.xz
-Source254:      babel-welsh.doc.tar.xz
+# from 20260301
+Source259:      babel-welsh.tar.xz
+Source260:      babel-welsh.doc.tar.xz
 
 %description -n texlive-babel-welsh
 The package provides the language definition file for Welsh.
@@ -17290,7 +18743,7 @@ The package provides the language definition file for Welsh.
 LaTeX file.)
 
 %package -n texlive-babel-welsh-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn73855
+Version:        %{texlive_version}.%{texlive_noarch}.1.1csvn77682
 Release:        0
 Summary:        Documentation for texlive-babel-welsh
 License:        LPPL-1.0
@@ -17326,7 +18779,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/babel-welsh/welsh.ldf
 
 %package -n texlive-babelbib
-Version:        %{texlive_version}.%{texlive_noarch}.1.34svn57349
+Version:        %{texlive_version}.%{texlive_noarch}.1.34svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        Multilingual bibliographies
@@ -17356,9 +18809,9 @@ Suggests:       texlive-babelbib-doc >= %{texlive_version}
 Provides:       tex(babelbib.sty)
 Requires:       tex(babel.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source255:      babelbib.tar.xz
-Source256:      babelbib.doc.tar.xz
+# from 20260301
+Source261:      babelbib.tar.xz
+Source262:      babelbib.doc.tar.xz
 
 %description -n texlive-babelbib
 This package enables the user to generate multilingual
@@ -17369,7 +18822,7 @@ the user. In addition, the package supports commands to change
 the typography of the bibliographies.
 
 %package -n texlive-babelbib-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.34svn57349
+Version:        %{texlive_version}.%{texlive_noarch}.1.34svn76790
 Release:        0
 Summary:        Documentation for texlive-babelbib
 License:        LPPL-1.0
@@ -17488,9 +18941,9 @@ Requires:       tex(everypage.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source257:      background.tar.xz
-Source258:      background.doc.tar.xz
+# from 20260301
+Source263:      background.tar.xz
+Source264:      background.doc.tar.xz
 
 %description -n texlive-background
 The package offers the placement of background material on the
@@ -17566,9 +19019,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-backnaur-doc >= %{texlive_version}
 Provides:       tex(backnaur.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source259:      backnaur.tar.xz
-Source260:      backnaur.doc.tar.xz
+# from 20260301
+Source265:      backnaur.tar.xz
+Source266:      backnaur.doc.tar.xz
 
 %description -n texlive-backnaur
 The package typesets Backus-Naur Form (BNF) definitions. It
@@ -17642,9 +19095,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-baekmuk-fonts >= %{texlive_version}
 Suggests:       texlive-baekmuk-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source261:      baekmuk.tar.xz
-Source262:      baekmuk.doc.tar.xz
+# from 20260301
+Source267:      baekmuk.tar.xz
+Source268:      baekmuk.doc.tar.xz
 
 %description -n texlive-baekmuk
 This bundle consists of four Korean fonts: batang.ttf: serif
@@ -17750,9 +19203,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bagpipe-doc >= %{texlive_version}
 Provides:       tex(bagpipe.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source263:      bagpipe.tar.xz
-Source264:      bagpipe.doc.tar.xz
+# from 20260301
+Source269:      bagpipe.tar.xz
+Source270:      bagpipe.doc.tar.xz
 
 %description -n texlive-bagpipe
 Typesetting bagpipe music in MusixTeX is needlessly tedious.
@@ -17810,8 +19263,93 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/bagpipe/bagpipe.tex
 %{_texmfdistdir}/tex/generic/bagpipe/bagpipex.ini
 
+%package -n texlive-bahaistar
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn76351
+Release:        0
+License:        LPPL-1.0
+Summary:        Metafont source and macros for the Baha'i nine-pointed star
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-bahaistar-doc >= %{texlive_version}
+Provides:       tex(bahaistar.sty)
+Provides:       tex(bahaistar.tfm)
+Requires:       tex(accsupp.sty)
+Requires:       tex(newunicodechar.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source271:      bahaistar.tar.xz
+Source272:      bahaistar.doc.tar.xz
+
+%description -n texlive-bahaistar
+This package provides a Metafont-based implementation of the
+Baha'i nine-pointed star [?] for usage in LaTeX documents,
+while still providing proper copy behavior with the official
+Unicode codepoints and supporting the usage of the character
+directly.
+
+%package -n texlive-bahaistar-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn76351
+Release:        0
+Summary:        Documentation for texlive-bahaistar
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-bahaistar and texlive-alldocumentation)
+
+%description -n texlive-bahaistar-doc
+This package includes the documentation for texlive-bahaistar
+
+%post -n texlive-bahaistar
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-bahaistar
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-bahaistar
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-bahaistar-doc
+%{_texmfdistdir}/doc/fonts/bahaistar/LICENSE
+%{_texmfdistdir}/doc/fonts/bahaistar/MANIFEST
+%{_texmfdistdir}/doc/fonts/bahaistar/README
+%{_texmfdistdir}/doc/fonts/bahaistar/bahaistar-example.pdf
+%{_texmfdistdir}/doc/fonts/bahaistar/bahaistar-example.tex
+
+%files -n texlive-bahaistar
+%{_texmfdistdir}/fonts/source/public/bahaistar/bahaistar.mf
+%{_texmfdistdir}/fonts/tfm/public/bahaistar/bahaistar.tfm
+%{_texmfdistdir}/tex/latex/bahaistar/bahaistar.sty
+
 %package -n texlive-bangla
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn65786
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        A comprehensive Bangla LaTeX package
@@ -17850,16 +19388,16 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(polyglossia.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source265:      bangla.tar.xz
-Source266:      bangla.doc.tar.xz
+# from 20260301
+Source273:      bangla.tar.xz
+Source274:      bangla.doc.tar.xz
 
 %description -n texlive-bangla
 This package provides all the necessary LaTeX frontends for the
 Bangla language and comes with some fonts of its own.
 
 %package -n texlive-bangla-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn65786
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn76924
 Release:        0
 Summary:        Documentation for texlive-bangla
 License:        LPPL-1.0
@@ -17871,7 +19409,7 @@ Supplements:    (texlive-bangla and texlive-alldocumentation)
 This package includes the documentation for texlive-bangla
 
 %package -n texlive-bangla-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn65786
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn76924
 Release:        0
 Summary:        Severed fonts for texlive-bangla
 License:        LPPL-1.0
@@ -17925,7 +19463,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-bangla/fontshimanto.ttf
 
 %package -n texlive-bangorcsthesis
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.6svn73173
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.7svn75154
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset a thesis at Bangor University
@@ -17986,9 +19524,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source267:      bangorcsthesis.tar.xz
-Source268:      bangorcsthesis.doc.tar.xz
+# from 20260301
+Source275:      bangorcsthesis.tar.xz
+Source276:      bangorcsthesis.doc.tar.xz
 
 %description -n texlive-bangorcsthesis
 The class typesets thesis/dissertation documents for all levels
@@ -17997,7 +19535,7 @@ class). It also provides macros designed to optimise the
 process of producing a thesis.
 
 %package -n texlive-bangorcsthesis-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.6svn73173
+Version:        %{texlive_version}.%{texlive_noarch}.1.5.7svn75154
 Release:        0
 Summary:        Documentation for texlive-bangorcsthesis
 License:        LPPL-1.0
@@ -18033,7 +19571,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bangorcsthesis/bangorcsthesis.cls
 
 %package -n texlive-bangorexam
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.0svn65140
+Version:        %{texlive_version}.%{texlive_noarch}.1.6.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset an examination at Bangor University
@@ -18080,18 +19618,18 @@ Requires:       tex(totcount.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source269:      bangorexam.tar.xz
-Source270:      bangorexam.doc.tar.xz
+# from 20260301
+Source277:      bangorexam.tar.xz
+Source278:      bangorexam.doc.tar.xz
 
 %description -n texlive-bangorexam
-The package allows typesetting of Bangor Univesity's exam
+The package allows typesetting of Bangor University's exam
 style. It currently supports a standard A/B choice, A-only
 compulsory and 'n' from 'm' exam styles. Marks are totalled and
 checked automatically.
 
 %package -n texlive-bangorexam-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.5.0svn65140
+Version:        %{texlive_version}.%{texlive_noarch}.1.6.0svn76924
 Release:        0
 Summary:        Documentation for texlive-bangorexam
 License:        LPPL-1.0
@@ -18168,9 +19706,9 @@ Provides:       tex(bsize10.clo)
 Provides:       tex(bsize11.clo)
 Provides:       tex(bsize12.clo)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source271:      bangtex.tar.xz
-Source272:      bangtex.doc.tar.xz
+# from 20260301
+Source279:      bangtex.tar.xz
+Source280:      bangtex.doc.tar.xz
 
 %description -n texlive-bangtex
 The bundle provides class files for writing Bangla and Assamese
@@ -18242,7 +19780,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bangtex/bsize12.clo
 
 %package -n texlive-bankstatement
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.2svn38857
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.2svn75301
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX class for bank statements based on csv data
@@ -18289,9 +19827,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xkvltxp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source273:      bankstatement.tar.xz
-Source274:      bankstatement.doc.tar.xz
+# from 20260301
+Source281:      bankstatement.tar.xz
+Source282:      bankstatement.doc.tar.xz
 
 %description -n texlive-bankstatement
 More and more banks allow their customers to download posting
@@ -18307,7 +19845,7 @@ on usage in the SEPA (Single Euro Payments Area). The user may
 adjust the terminology to suit local needs.
 
 %package -n texlive-bankstatement-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.2svn38857
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.2svn75301
 Release:        0
 Summary:        Documentation for texlive-bankstatement
 License:        LPPL-1.0
@@ -18389,9 +19927,9 @@ Provides:       tex(wlc39.tfm)
 Provides:       tex(wlc93.tfm)
 Provides:       tex(wlcr39.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source275:      barcodes.tar.xz
-Source276:      barcodes.doc.tar.xz
+# from 20260301
+Source283:      barcodes.tar.xz
+Source284:      barcodes.doc.tar.xz
 
 %description -n texlive-barcodes
 The package deals with EAN barcodes; Metafont sources for fonts
@@ -18500,9 +20038,9 @@ Requires:       tex(pstricks.sty)
 Requires:       tex(subfigure.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source277:      bardiag.tar.xz
-Source278:      bardiag.doc.tar.xz
+# from 20260301
+Source285:      bardiag.tar.xz
+Source286:      bardiag.doc.tar.xz
 
 %description -n texlive-bardiag
 The main purpose of the package is to make the drawing of bar
@@ -18629,9 +20167,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-barr-doc >= %{texlive_version}
 Provides:       tex(diagxy.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source279:      barr.tar.xz
-Source280:      barr.doc.tar.xz
+# from 20260301
+Source287:      barr.tar.xz
+Source288:      barr.doc.tar.xz
 
 %description -n texlive-barr
 Diagxy is a general diagramming package, useful for diagrams in
@@ -18706,9 +20244,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-barracuda-doc >= %{texlive_version}
 Provides:       tex(barracuda.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source281:      barracuda.tar.xz
-Source282:      barracuda.doc.tar.xz
+# from 20260301
+Source289:      barracuda.tar.xz
+Source290:      barracuda.doc.tar.xz
 
 %description -n texlive-barracuda
 The barracuda library is a modular Lua package for drawing
@@ -18832,7 +20370,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/barracuda/barracuda.sty
 
 %package -n texlive-bartel-chess-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn20619
+Version:        %{texlive_version}.%{texlive_noarch}.svn78101
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        A set of fonts supporting chess diagrams
@@ -18882,15 +20420,15 @@ Provides:       tex(pkelch16.tfm)
 Provides:       tex(pkelch8.tfm)
 Provides:       tex(pkelch9.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source283:      bartel-chess-fonts.tar.xz
-Source284:      bartel-chess-fonts.doc.tar.xz
+# from 20260301
+Source291:      bartel-chess-fonts.tar.xz
+Source292:      bartel-chess-fonts.doc.tar.xz
 
 %description -n texlive-bartel-chess-fonts
 The fonts are provided as Metafont source.
 
 %package -n texlive-bartel-chess-fonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn20619
+Version:        %{texlive_version}.%{texlive_noarch}.svn78101
 Release:        0
 Summary:        Documentation for texlive-bartel-chess-fonts
 License:        GPL-2.0-or-later
@@ -19061,9 +20599,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source285:      bashful.tar.xz
-Source286:      bashful.doc.tar.xz
+# from 20260301
+Source293:      bashful.tar.xz
+Source294:      bashful.doc.tar.xz
 
 %description -n texlive-bashful
 The package makes it possible to execute Unix bash shell
@@ -19143,9 +20681,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-basicarith-doc >= %{texlive_version}
 Provides:       tex(basicarith.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source287:      basicarith.tar.xz
-Source288:      basicarith.doc.tar.xz
+# from 20260301
+Source295:      basicarith.tar.xz
+Source296:      basicarith.doc.tar.xz
 
 %description -n texlive-basicarith
 The package provides macros for typesetting basic arithmetic,
@@ -19195,7 +20733,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/basicarith/basicarith.sty
 
 %package -n texlive-baskervaldadf
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Baskervald ADF fonts collection with TeX/LaTeX support
@@ -19300,9 +20838,9 @@ Requires:       tex(nfssext-cfr.sty)
 Requires:       tex(svn-prov.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source289:      baskervaldadf.tar.xz
-Source290:      baskervaldadf.doc.tar.xz
+# from 20260301
+Source297:      baskervaldadf.tar.xz
+Source298:      baskervaldadf.doc.tar.xz
 
 %description -n texlive-baskervaldadf
 Baskervald ADF is a serif family with lining figures designed
@@ -19317,7 +20855,7 @@ additional ligatures. The included package files provide access
 to these features in LaTeX.
 
 %package -n texlive-baskervaldadf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Documentation for texlive-baskervaldadf
 License:        LPPL-1.0
@@ -19329,7 +20867,7 @@ Supplements:    (texlive-baskervaldadf and texlive-alldocumentation)
 This package includes the documentation for texlive-baskervaldadf
 
 %package -n texlive-baskervaldadf-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Severed fonts for texlive-baskervaldadf
 License:        LPPL-1.0
@@ -20077,9 +21615,9 @@ Requires:       tex(scalefnt.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source291:      baskervaldx.tar.xz
-Source292:      baskervaldx.doc.tar.xz
+# from 20260301
+Source299:      baskervaldx.tar.xz
+Source300:      baskervaldx.doc.tar.xz
 
 %description -n texlive-baskervaldx
 Extends and modifies the BaskervaldADF font (a Baskerville
@@ -20731,7 +22269,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-baskervaldx/Baskervaldx-Reg.pfb
 
 %package -n texlive-baskervillef
-Version:        %{texlive_version}.%{texlive_noarch}.1.052svn73381
+Version:        %{texlive_version}.%{texlive_noarch}.1.052svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Fry's Baskerville look-alike, with math support
@@ -21293,9 +22831,9 @@ Requires:       tex(txmia.tfm)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source293:      baskervillef.tar.xz
-Source294:      baskervillef.doc.tar.xz
+# from 20260301
+Source301:      baskervillef.tar.xz
+Source302:      baskervillef.doc.tar.xz
 
 %description -n texlive-baskervillef
 BaskervilleF is a fork from the Libre Baskerville fonts (Roman,
@@ -21307,7 +22845,7 @@ italic style was added and mathematical support is offered as
 an option to newtxmath.
 
 %package -n texlive-baskervillef-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.052svn73381
+Version:        %{texlive_version}.%{texlive_noarch}.1.052svn77682
 Release:        0
 Summary:        Documentation for texlive-baskervillef
 License:        OFL-1.1
@@ -21319,7 +22857,7 @@ Supplements:    (texlive-baskervillef and texlive-alldocumentation)
 This package includes the documentation for texlive-baskervillef
 
 %package -n texlive-baskervillef-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.052svn73381
+Version:        %{texlive_version}.%{texlive_noarch}.1.052svn77682
 Release:        0
 Summary:        Severed fonts for texlive-baskervillef
 License:        OFL-1.1
@@ -21929,9 +23467,9 @@ Suggests:       texlive-basque-book-doc >= %{texlive_version}
 Provides:       tex(basque-book.cls)
 Requires:       tex(basque-date.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source295:      basque-book.tar.xz
-Source296:      basque-book.doc.tar.xz
+# from 20260301
+Source303:      basque-book.tar.xz
+Source304:      basque-book.doc.tar.xz
 
 %description -n texlive-basque-book
 The class is derived from the LaTeX book class. The extensions
@@ -22008,9 +23546,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-basque-date-doc >= %{texlive_version}
 Provides:       tex(basque-date.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source297:      basque-date.tar.xz
-Source298:      basque-date.doc.tar.xz
+# from 20260301
+Source305:      basque-date.tar.xz
+Source306:      basque-date.doc.tar.xz
 
 %description -n texlive-basque-date
 The package provides two LaTeX commands to print the current
@@ -22056,7 +23594,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/basque-date/basque-date.sty
 
 %package -n texlive-bath-bst
-Version:        %{texlive_version}.%{texlive_noarch}.6.0svn63398
+Version:        %{texlive_version}.%{texlive_noarch}.7.2svn77532
 Release:        0
 License:        LPPL-1.0
 Summary:        Harvard referencing style as recommended by the University of Bath Library
@@ -22084,9 +23622,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bath-bst-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source299:      bath-bst.tar.xz
-Source300:      bath-bst.doc.tar.xz
+# from 20260301
+Source307:      bath-bst.tar.xz
+Source308:      bath-bst.doc.tar.xz
 
 %description -n texlive-bath-bst
 This package provides a BibTeX style to format reference lists
@@ -22095,7 +23633,7 @@ Library. It should be used in conjunction with natbib for
 citations.
 
 %package -n texlive-bath-bst-doc
-Version:        %{texlive_version}.%{texlive_noarch}.6.0svn63398
+Version:        %{texlive_version}.%{texlive_noarch}.7.2svn77532
 Release:        0
 Summary:        Documentation for texlive-bath-bst
 License:        LPPL-1.0
@@ -22164,9 +23702,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-bbcard-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source301:      bbcard.tar.xz
-Source302:      bbcard.doc.tar.xz
+# from 20260301
+Source309:      bbcard.tar.xz
+Source310:      bbcard.doc.tar.xz
 
 %description -n texlive-bbcard
 Three jiffy packages for creating cards of various sorts with
@@ -22336,8 +23874,39 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	EOF
     tar --use-compress-program=xz -xf %{S:16} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:17} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Move font files
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-arsenal-math
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/arsenal-math/*.{pf[ab],[ot]tf}
+    do
+        test -e $font || continue
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-arsenal-math
+        base=${font##*/}
+        ln -sf %{_datadir}/fonts/texlive-arsenal-math/${base} ${font}
+    done
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-arsenal-math/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-arsenal-math/
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-arsenal-math.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Use this to disable the TeX fonts of the package -->
+	<!--    texlive-arsenal-math    -->
+	<!-- Be aware that the configurations in the files    -->
+	<!-- 09-texlive*.conf will not be affected by this    -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <rejectfont>
+	    <glob>%{_datadir}/fonts/texlive-arsenal-math/*</glob>
+	  </rejectfont>
+	</fontconfig>
+	EOF
     tar --use-compress-program=xz -xf %{S:18} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:19} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:20} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:21} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-arvo
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/arvo/*.{pf[ab],[ot]tf}
@@ -22367,12 +23936,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:20} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:21} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:22} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:23} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:24} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:25} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:26} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:27} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-asana-math
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/asana-math/*.{pf[ab],[ot]tf}
@@ -22402,8 +23971,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:26} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:27} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:28} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:29} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-asapsym
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/omnibus-type/asapsym/*.{pf[ab],[ot]tf}
@@ -22433,11 +24002,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:28} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:29} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:30} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:31} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:32} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:33} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:34} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-ascii-font
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/ascii-font/*.{pf[ab],[ot]tf}
@@ -22467,10 +24036,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:33} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:34} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:35} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:36} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:37} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:38} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-ascmac
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/ascmac/*.{pf[ab],[ot]tf}
@@ -22500,8 +24069,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:37} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:38} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:39} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:40} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:41} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22510,6 +24077,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:44} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:45} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:46} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:47} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:48} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-aspectratio
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/aspectratio/*.{pf[ab],[ot]tf}
@@ -22539,8 +24108,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:47} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:48} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:49} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:50} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:51} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22552,8 +24119,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:57} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:58} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:59} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:60} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:61} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/asymptote/GUI/buildtool.py \
 	       %{_texmfdistdir}/asymptote/asy-kate.sh \
@@ -22575,10 +24146,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/asymptote/GUI/Widg_addPolyOpt.py \
 	       %{_texmfdistdir}/asymptote/GUI/Widg_editBezier.py \
 	       %{_texmfdistdir}/asymptote/GUI/Window1.py \
-	       %{_texmfdistdir}/asymptote/GUI/__init__.py \
 	       %{_texmfdistdir}/asymptote/GUI/buildtool.py \
 	       %{_texmfdistdir}/asymptote/GUI/labelEditor.py \
-	       %{_texmfdistdir}/asymptote/GUI/setup.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasy.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasy2asy.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasyArgs.py \
@@ -22614,10 +24183,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	       %{_texmfdistdir}/asymptote/GUI/Widg_addPolyOpt.py \
 	       %{_texmfdistdir}/asymptote/GUI/Widg_editBezier.py \
 	       %{_texmfdistdir}/asymptote/GUI/Window1.py \
-	       %{_texmfdistdir}/asymptote/GUI/__init__.py \
 	       %{_texmfdistdir}/asymptote/GUI/buildtool.py \
 	       %{_texmfdistdir}/asymptote/GUI/labelEditor.py \
-	       %{_texmfdistdir}/asymptote/GUI/setup.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasy.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasy2asy.py \
 	       %{_texmfdistdir}/asymptote/GUI/xasyArgs.py \
@@ -22656,7 +24223,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$txt || continue
 	chmod 0644 %{buildroot}/$txt
     done
-    tar --use-compress-program=xz -xf %{S:62} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/asymptote-by-example-zh-cn/src/CLEAN.bat
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/asymptote-by-example-zh-cn/src/MAKEPDF.bat
@@ -22667,8 +24234,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:63} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:64} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/asymptote-manual-zh-cn/src/CLEAN.bat
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/asymptote-manual-zh-cn/src/MAKEPDF.bat
@@ -22679,10 +24246,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:65} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:66} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:67} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:68} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:69} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:70} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:71} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22691,6 +24254,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:74} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:75} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:76} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-atkinson
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/atkinson/*.{pf[ab],[ot]tf} \
@@ -22741,10 +24308,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-atkinson.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-atkinson.conf
-    tar --use-compress-program=xz -xf %{S:77} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:78} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:79} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:80} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/attachfile2/pdfatfi.pl
     do
@@ -22757,12 +24324,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:81} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:82} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:83} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:84} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:85} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:86} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-augie
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/augie/*.{pf[ab],[ot]tf}
@@ -22792,8 +24359,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:87} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:88} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-auncial-new
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/auncial-new/*.{pf[ab],[ot]tf}
@@ -22823,8 +24390,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:89} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-aurical
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/aurical/*.{pf[ab],[ot]tf}
@@ -22854,16 +24421,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:100} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/authorindex/authorindex
     do
@@ -22876,10 +24443,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:101} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:102} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -22896,12 +24459,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:118} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-avantgar
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/urw/avantgar/*.{pf[ab],[ot]tf}
@@ -22931,20 +24498,45 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Move font files
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-awami
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/awami/*.{pf[ab],[ot]tf}
+    do
+        test -e $font || continue
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-awami
+        base=${font##*/}
+        ln -sf %{_datadir}/fonts/texlive-awami/${base} ${font}
+    done
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-awami/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-awami/
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-awami.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Use this to disable the TeX fonts of the package -->
+	<!--    texlive-awami    -->
+	<!-- Be aware that the configurations in the files    -->
+	<!-- 09-texlive*.conf will not be affected by this    -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <rejectfont>
+	    <glob>%{_datadir}/fonts/texlive-awami/*</glob>
+	  </rejectfont>
+	</fontconfig>
+	EOF
     tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23067,6 +24659,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-baekmuk
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/baekmuk/*.{pf[ab],[ot]tf}
@@ -23096,10 +24694,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-bangla
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/bangla/*.{pf[ab],[ot]tf}
@@ -23129,18 +24729,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Remove files
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/barcodes/install.bat
     tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -23149,12 +24739,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Remove files
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/barcodes/install.bat
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-baskervaldadf
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/baskervaldadf/*.{pf[ab],[ot]tf}
@@ -23184,8 +24784,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-baskervaldx
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/baskervaldx/*.{pf[ab],[ot]tf} \
@@ -23236,8 +24836,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-baskervaldx.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-baskervaldx.conf
-    tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-baskervillef
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/baskervillef/*.{pf[ab],[ot]tf} \
@@ -23288,14 +24888,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-baskervillef.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-baskervillef.conf
-    tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:296} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:297} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:298} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
