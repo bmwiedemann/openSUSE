@@ -4,5 +4,6 @@
 It is a general fuzzy finder that saves you time.
 
 </description>
+  <devel project="utilities" package="skim"/>
   <url>https://github.com/lotabout/skim</url>
 </package>
