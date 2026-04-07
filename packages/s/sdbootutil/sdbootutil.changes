@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Apr 07 11:32:59 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260407.f1134c1:
+  * Add missing e2fsprogs dependency
+  * Check that the efivars filesystem is writable
+
+-------------------------------------------------------------------
+Mon Apr 06 09:45:27 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260406.42f6bd8:
+  * Detect if shim is installed in the ESP
+  * Update entries for the system if no snapshot is provided
+  * Allow version values without snapshot number
+  * Detect in buildroot invocations (mkosi)
+  * Avoid cleaning entries without subvol
+  * Use more idiomatic way to refer the snapshot
+  * Drop mkmoduleinitrd
+  * Find cmdline when there is no subvolumes
+  * Change rootflags based on local information
+  * Ignore lsblk sdterr output
+
+-------------------------------------------------------------------
+Tue Mar 24 12:41:32 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260324.bd0fc60:
+  * Add CAP_LINUX_IMMUTABLE when called by snapperd
+  * get_timeout and default respect UPDATE_NVRAM (bsc#1243889)
+
+-------------------------------------------------------------------
 Thu Mar 19 19:14:26 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260319.f4cfda0:

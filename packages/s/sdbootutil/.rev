@@ -816,4 +816,20 @@
     <comment></comment>
     <requestid>1341447</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>2eb29cac89bcbba91adf666b93dde44a</srcmd5>
+    <version>1+git20260324.bd0fc60</version>
+    <time>1774555648</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342230</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>5d30e8e2026c82e8d3ddd6957e8044e6</srcmd5>
+    <version>1+git20260407.f1134c1</version>
+    <time>1775572350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344985</requestid>
+  </revision>
 </revisionlist>
