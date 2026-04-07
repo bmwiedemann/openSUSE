@@ -3793,4 +3793,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1344335</requestid>
   </revision>
+  <revision rev="403" vrev="1">
+    <srcmd5>112cf944f9d35603206c7768603325be</srcmd5>
+    <version>5.0.0+20260407.ce740ef1</version>
+    <time>1775572436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344869</requestid>
+  </revision>
 </revisionlist>
