@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  2 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 4.6.2
+  * Fix 3D collision repositioning for child nodes
+  * Add support for ""--ignore-error-breaks" to "LocalDebugger"
+  * Stop autocomplete from eating words by default
+  * Handle debug symbols with renamed executable
+  * Fix startup errors/warnings on X11 when the
+    Prefer Wayland editor setting is enabled
+  * Wayland: Improve mapping robustness and synchronization
+  * and more: https://godotengine.github.io/godot-interactive-changelog/#4.6.2
+
+-------------------------------------------------------------------
 Tue Feb 17 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to 4.6.1
