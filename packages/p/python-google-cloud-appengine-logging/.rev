@@ -44,4 +44,15 @@
     <comment></comment>
     <requestid>1327610</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>274dafca04189072ff4e780b5f1187cf</srcmd5>
+    <version>1.9.0</version>
+    <time>1775572424</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0</comment>
+    <requestid>1344807</requestid>
+  </revision>
 </revisionlist>

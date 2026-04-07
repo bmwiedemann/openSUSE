@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  6 21:22:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core >= 2.11.0
+
+-------------------------------------------------------------------
 Fri Jan 16 07:48:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.8.0
