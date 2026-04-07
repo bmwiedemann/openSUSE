@@ -1,0 +1,140 @@
+-------------------------------------------------------------------
+Tue Mar 31 09:04:00 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- Update to version 0.9.1
+  * Fix High CPU Usage For Bots and Servers (gh#netpanzer/netpanzer#279)
+
+-------------------------------------------------------------------
+Sun Jul 20 06:54:50 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Force gcc13 for Leap 15.x, netzpanzer targets c++17 now
+- Drop use of update-desktop-files (deprecated)
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jul 13 01:03:08 UTC 2025 - Andy Alt <arch_stanton5995@proton.me>
+
+- Update to version 0.9.0
+  * Core:
+    + Migrated to SDL2
+    + Added netpanzer.io to master server list
+    + Fixed C++17 compatibility issues
+    + Improved network layer and fixed potential memory issues
+    + Fixed crash when one master server is unavailable
+    + Fixed config not saving
+    + Fixed use of incorrect server name in dedicated server config
+    + Fixed random crash
+    + Memory leak fixes
+  * Gameplay:
+    + Added new map: Arena Fut
+    + Added proximity audio
+    + Added new bot modes
+    + Added new mapstyle: Desert
+    + Global destruct powerup now removes all outposts from unlucky player
+    + Added new global unit powerups
+    + Added new game modes:
+      - Mode 3: objective *and* frag limit required to win
+      - Mode 4: frag limit *or* time limit
+    + Added new respawn type: random alternative (never spawns twice consecutively)
+    + Improved mouse movement
+    + Bots now use proper flag images
+    + Improved pathfinding (fewer "node unreachable" messages)
+    + Improved movement and shooting responsiveness
+    + Fixed volume controls not affecting ambient sounds
+    + Fixed arrow keys not working if mouse is inside minimap
+    + Removed input timer that could be abused
+  * UI:
+    + Added fancy styling for units (toggle with "u")
+    + Added new map styles: SummerDay, IcyWinter, Moonlight, Scorched, Martian
+    + Added per-player mute option in chat
+    + Support for TTF font rendering (major refactor)
+    + Added dynamic-width font rendering and new font
+    + Added wrapped text support with variable speed scrolling
+    + Improved fullscreen switching
+    + Updated game background and UI
+    + Added localization support
+    + Added Lua scripting support in UI
+    + Added "starting soon" message on winner screen
+    + Added extra info bar with ping stats (toggle with F7)
+    + Added "abandon" outpost option
+    + Responsive text display in outposts
+    + SHIFT+M now toggles larger map
+    + Fixed crashes in text input fields and resolution selection
+    + Updated server list to hide old/incompatible servers
+    + Added icons in ranking tab to indicate bots/human players
+    + Improved character rendering for non-ASCII languages
+  * Server:
+    + Improved anti-cheat mechanisms (see README for new config)
+    + Added ability to disable interactive console for daemon use
+    + Network scrambling is now default (can disable with -g)
+    + Added configs:
+      - game.bots_allowed
+      - game.mapstyle
+      - game.gametype = 3 or 4
+  * Build:
+    + Switched to Meson build system
+    + Improved documentation
+- Drop all patches (applied upstream)
+
+-------------------------------------------------------------------
+Thu Jan 19 06:39:08 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
+
+- Add patch that updates most URLs in the docs and source code
+
+-------------------------------------------------------------------
+Thu Jan 18 07:03:08 UTC 2024 - Andy Alt <arch_stanton5995@proton.me>
+
+- Update for 0.8.7
+- Add Debian patches from netpanzer_0.8.7+ds-4.1.debian.tar.xz
+- Patch to write live masterserver to client.cfg
+
+-------------------------------------------------------------------
+Thu Jul 11 07:54:08 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort the file list (boo#1041090)
+
+-------------------------------------------------------------------
+Sat May 12 19:53:23 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix build with scons based on Python 3 (Leap 15, Tumbleweed):
+  * Add netpanzer-0.8.4-scons-2to3.patch.
+
+-------------------------------------------------------------------
+Fri Mar 27 09:47:45 UTC 2015 - devel.suse@gmail.com
+
+- Fix build for openSUSE > 13.1
+- Remove .svn files from source archive
+- Add netpanzer-0.8.4-fno-strict-aliasing-svn1341.patch
+  ("program is likely to break with new gcc")
+- Add netpanzer-0.8.4-optflags-svn1341.patch
+- Drop patches:
+  * netpanzer-0.8.2-MapSelectionView-memory.patch (fixed upstream)
+  * netpanzer-0.8.4-gcc47.patch (fixed upstream)
+  * netpanzer-0.8.3-optflags-580241.patch (rebased)
+
+-------------------------------------------------------------------
+Wed May 16 16:39:07 UTC 2012 - joop.boonen@opensuse.org
+
+- update to 0.8.4 based on fedora package
+- cleaned the spec file up
+
+-------------------------------------------------------------------
+Fri Mar 23 01:53:17 UTC 2012 - jengelh@medozas.de
+
+- strip redundant sections/tags
+
+-------------------------------------------------------------------
+Fri Jul 17 18:30:51 CEST 2009 - randybb@gmail.com
+
+- Fix dependency and duplicates using fdupes.
+
+-------------------------------------------------------------------
+Thu Feb 14 11:54:05 CET 2008 - claes.backstrom@fsfe.org
+
+- Added memory and algorithm patches.
+
+-------------------------------------------------------------------
+Mon Dec 10 17:50:01 CET 2007 - claes.backstrom@fsfe.org
+
+- Initial package built from Fedora package (0.8.2-2)
+
