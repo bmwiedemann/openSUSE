@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rest-framework-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,29 @@
 #
 
 
-%define skip_python39 1
 %{?sle15_python_module_pythons}
 Name:           python-django-rest-framework-client
-Version:        0.10.0
+Version:        0.13.0
 Release:        0
 Summary:        Python client for a Django REST Framework based web site
 License:        MIT
 URL:            https://github.com/dkarchmer/django-rest-framework-client
 Source:         https://github.com/dkarchmer/django-rest-framework-client/archive/v%{version}.tar.gz#/django-rest-framework-client-%{version}.tar.gz
-Patch0:         python-django-rest-framework-client-no-mock.patch
 BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module httpx >= 0.28.1}
+BuildRequires:  %{python_module pytest >= 9.0}
+BuildRequires:  %{python_module requests-mock >= 1.12.1}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module respx >= 0.22.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-Django
+Requires:       python-httpx >= 0.28.1
 Requires:       python-requests
+Requires:       python-respx >= 0.22.0
 BuildArch:      noarch
 %python_subpackages
 

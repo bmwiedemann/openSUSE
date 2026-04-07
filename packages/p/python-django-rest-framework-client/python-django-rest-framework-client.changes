@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr  6 20:16:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Support for Python 3.13+
+  * Converts the project to use uv instead of pdm
+  * Adds and improves static typing
+  * Fixes ruff configuration
+  * Cleans up unused code and files
+  * Improves the documentation
+  * Add support to coroutines
+  * Format all files with Ruff
+  * Switch to Ruff and cleanup files
+- Drop obsolete python-django-rest-framework-client-no-mock.patch
+
+
+-------------------------------------------------------------------
 Thu Mar 28 05:47:05 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}
