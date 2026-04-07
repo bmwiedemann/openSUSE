@@ -527,4 +527,41 @@
     <comment></comment>
     <requestid>1342019</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f7a587fd222e64b3e662ab8329e0c09e</srcmd5>
+    <version>0.94</version>
+    <time>1775572466</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.94:
+  * Refactor WM archiver script
+  * Add Hong Kong Stock Exchange holidays
+  * Add Shanghai Stock Exchange (SSE) holidays
+  * Add Shenzhen Stock Exchange (SZSE) holidays
+  * Update Armenia holidays: add ASCII-safe subdivision aliases
+  * Update Australia holidays: change ANZAC Day holiday in 2026
+    (ACT)
+  * Update Bangladesh holidays: add Arabic language support
+  * Update CI/CD workflows
+  * Update CONTRIBUTING.md localization section
+  * Update CONTRIBUTING.md with cross-platform command
+    equivalents for Windows
+  * Update China and Taiwan holidays: refine and standardize
+    holiday terminology
+  * Update German Exchange holidays: add Thai, Ukrainian language
+    support
+  * Update Hong Kong holidays: standardize Simplified Chinese
+    l10n with China implementation
+  * Update India holidays: add Bengali language support
+  * Update India holidays: add Kannada language support
+  * Update India holidays: add Malayalam language support
+  * Update India holidays: add Marathi language support
+  * Update India holidays: add Parsi New Year holiday (GJ, MH)
+  * Update India holidays: add Punjabi language support
+  * Update India holidays: add TG as subdivision alias for
+    Telangana
+  * Update India holidays: correct Hindi translations for some
+    holidays
+  * Update India holidays: improve Telugu translation</comment>
+    <requestid>1344927</requestid>
+  </revision>
 </revisionlist>
