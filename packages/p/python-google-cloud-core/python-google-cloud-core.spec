@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-core
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Google Cloud API client core library
 License:        Apache-2.0
-URL:            https://github.com/googleapis/python-cloud-core
+URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-core
 Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_core/google_cloud_core-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module google-api-core >= 1.31.6}
-BuildRequires:  %{python_module google-auth >= 1.25.0}
+BuildRequires:  %{python_module google-api-core >= 2.11.0}
+BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module grpcio >= 1.38.0 if %python-base < 3.14}
 BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module pip}
@@ -34,8 +34,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.31.6
-Requires:       python-google-auth >= 1.25.0
+Requires:       python-google-api-core >= 2.11.0
+Requires:       python-google-auth >= 2.14.1
 Recommends:     python-grpcio >= 1.38.0
 BuildArch:      noarch
 %if 0%{?sle_version} >= 150400
