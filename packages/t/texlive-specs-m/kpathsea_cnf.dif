@@ -1,12 +1,12 @@
 ---
  texmf-dist/web2c/fmtutil.cnf |    8 +-
- texmf-dist/web2c/mktex.opt   |   39 +++++++++--
- texmf-dist/web2c/texmf.cnf   |  141 +++++++++++++++++++++++++++----------------
- 3 files changed, 123 insertions(+), 65 deletions(-)
+ texmf-dist/web2c/mktex.opt   |   39 ++++++++---
+ texmf-dist/web2c/texmf.cnf   |  144 +++++++++++++++++++++++++++----------------
+ 3 files changed, 126 insertions(+), 65 deletions(-)
 
 --- texmf-dist/web2c/fmtutil.cnf
 +++ texmf-dist/web2c/fmtutil.cnf	2020-04-20 16:19:39.729909034 +0000
-@@ -70,8 +70,8 @@ hilatex hitex language.dat -etex -ltx hi
+@@ -69,8 +69,8 @@ eplain pdftex language.dat -translate-fi
  hitex hitex language.def -etex -ltx hitex.ini
  #
  # from jadetex:
@@ -17,7 +17,7 @@
  #
  # from latex-bin:
  dvilualatex luatex language.dat,language.dat.lua dvilualatex.ini
-@@ -155,5 +155,5 @@ xelatex xetex language.dat -etex xelatex
+@@ -154,5 +154,5 @@ xelatex xetex language.dat -etex xelatex
  xetex xetex language.def -etex xetex.ini
  #
  # from xmltex:
@@ -134,11 +134,11 @@
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2025/texmf-var
+-TEXMFVAR = ~/.texlive2026/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2025/texmf-config
+-TEXMFCONFIG = ~/.texlive2026/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
@@ -337,7 +337,7 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -954,3 +960,37 @@ command_line_encoding.ptex = none
+@@ -980,3 +986,37 @@ command_line_encoding.ptex = none
  command_line_encoding.eptex = none
  command_line_encoding.platex = none
  command_line_encoding.platex-dev = none

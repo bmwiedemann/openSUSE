@@ -18,11 +18,11 @@
 #
 
 
-%define texlive_version  2025
-%define texlive_previous 2022
-%define texlive_release  20250308
-%define texlive_noarch   221
-%define biber_version    2.20
+%define texlive_version  2026
+%define texlive_previous 2025
+%define texlive_release  20260301
+%define texlive_noarch   222
+%define biber_version    2.21
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -62,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-m
-Version:        2025
+Version:        2026
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -87,7 +87,7 @@ Source0:        texlive-specs-m-rpmlintrc
 Meta package to build tons of noarch texlive packages.
 
 %package -n texlive-ionumbers
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.3svn33457
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.3svn76924
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Restyle numbers in maths mode
@@ -117,7 +117,7 @@ Suggests:       texlive-ionumbers-doc >= %{texlive_version}
 Provides:       tex(ionumbers.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source1:        ionumbers.tar.xz
 Source2:        ionumbers.doc.tar.xz
 
@@ -132,14 +132,14 @@ table and want to include it in texts with different output
 conventions without the need to change the table. The package
 can also automatically group digits left of the decimal
 separator (thousands) and right of the decimal separator
-(thousandths) in triplets without the need of specifing commas
+(thousandths) in triplets without the need of specifying commas
 (English) or points (German) as separators. E.g., the input
 $1234.567890$ can be output as $1\,234.\,567\,890$. Finally, an
 e starts the exponent of the number. For example, $21e6$ may be
 output as $26\times10\,^{6}$.
 
 %package -n texlive-ionumbers-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.3svn33457
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.3svn76924
 Release:        0
 Summary:        Documentation for texlive-ionumbers
 License:        GPL-2.0-or-later
@@ -207,7 +207,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-iopart-num-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source3:        iopart-num.tar.xz
 Source4:        iopart-num.doc.tar.xz
 
@@ -284,7 +284,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-ipaex-fonts >= %{texlive_version}
 Suggests:       texlive-ipaex-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source5:        ipaex.tar.xz
 Source6:        ipaex.doc.tar.xz
 
@@ -1748,7 +1748,7 @@ Provides:       tex(t1ipxm.fd)
 Provides:       tex(ts1ipxg.fd)
 Provides:       tex(ts1ipxm.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source7:        ipaex-type1.tar.xz
 Source8:        ipaex-type1.doc.tar.xz
 
@@ -4233,7 +4233,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-ipaex-type1/ipxm-r-uff.pfb
 
 %package -n texlive-ipsum
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn73069
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn75788
 Release:        0
 License:        LPPL-1.0
 Summary:        Insert multilingual placeholder text
@@ -4261,11 +4261,12 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-ipsum-doc >= %{texlive_version}
 Provides:       tex(ipsum.sty)
+Requires:       tex(kvoptions.sty)
 Requires:       tex(simplekv.sty)
 Requires:       tex(xintexpr.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source9:        ipsum.tar.xz
 Source10:       ipsum.doc.tar.xz
 
@@ -4274,7 +4275,7 @@ This is a package to work with multilingual Lorem Ipsum dummy
 texts.
 
 %package -n texlive-ipsum-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.2svn73069
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.3svn75788
 Release:        0
 Summary:        Documentation for texlive-ipsum
 License:        LPPL-1.0
@@ -4311,7 +4312,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ipsum/ipsum.sty
 
 %package -n texlive-iran-bibtex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.3svn71972
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.3svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        Iran Manual of Style Citation Guide for BibTeX
@@ -4341,7 +4342,7 @@ Suggests:       texlive-iran-bibtex-doc >= %{texlive_version}
 Provides:       tex(iran-bibtex.sty)
 Requires:       tex(natbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source11:       iran-bibtex.tar.xz
 Source12:       iran-bibtex.doc.tar.xz
 
@@ -4362,7 +4363,7 @@ to note that this package relies on the natbib package, which
 is automatically loaded.
 
 %package -n texlive-iran-bibtex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.3svn71972
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.3svn76790
 Release:        0
 Summary:        Documentation for texlive-iran-bibtex
 License:        LPPL-1.0
@@ -4410,7 +4411,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/iran-bibtex/iran-bibtex.sty
 
 %package -n texlive-is-bst
-Version:        %{texlive_version}.%{texlive_noarch}.2.03svn52623
+Version:        %{texlive_version}.%{texlive_noarch}.2.03svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        Extended versions of standard BibTeX styles
@@ -4438,7 +4439,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-is-bst-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source13:       is-bst.tar.xz
 Source14:       is-bst.doc.tar.xz
 
@@ -4451,7 +4452,7 @@ PAGES fields, the PERIODICAL entry, and extended citation label
 suffixing.
 
 %package -n texlive-is-bst-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.03svn52623
+Version:        %{texlive_version}.%{texlive_noarch}.2.03svn76790
 Release:        0
 Summary:        Documentation for texlive-is-bst
 License:        LPPL-1.0
@@ -4532,7 +4533,7 @@ Requires:       tex(titlesec.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source15:       iscram.tar.xz
 Source16:       iscram.doc.tar.xz
 
@@ -4615,7 +4616,7 @@ Provides:       tex(iso9.clo)
 Provides:       tex(isov2.cls)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source17:       iso.tar.xz
 Source18:       iso.doc.tar.xz
 
@@ -4750,7 +4751,7 @@ Provides:       tex(stepman.tex)
 Provides:       tex(stepv13.sty)
 Provides:       tex(stppdlst.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source19:       iso10303.tar.xz
 Source20:       iso10303.doc.tar.xz
 
@@ -4845,7 +4846,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/iso10303/stppdlst.tex
 
 %package -n texlive-isodate
-Version:        %{texlive_version}.%{texlive_noarch}.2.28svn16613
+Version:        %{texlive_version}.%{texlive_noarch}.2.28svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Tune the output format of dates according to language
@@ -4878,7 +4879,7 @@ Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(substr.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source21:       isodate.tar.xz
 Source22:       isodate.doc.tar.xz
 
@@ -4897,7 +4898,7 @@ English, British English, French, Danish, Swedish, and
 Norwegian.
 
 %package -n texlive-isodate-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.28svn16613
+Version:        %{texlive_version}.%{texlive_noarch}.2.28svn78101
 Release:        0
 Summary:        Documentation for texlive-isodate
 License:        LPPL-1.0
@@ -4948,7 +4949,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/isodate/swedish.idf
 
 %package -n texlive-isodoc
-Version:        %{texlive_version}.%{texlive_noarch}.1.14svn59709
+Version:        %{texlive_version}.%{texlive_noarch}.1.16svn75787
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX class for typesetting letters and invoices
@@ -4977,7 +4978,6 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-isodoc-doc >= %{texlive_version}
 Provides:       tex(isodoc.cls)
 Requires:       tex(calc.sty)
-Requires:       tex(fancyhdr.sty)
 Requires:       tex(forarray.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
@@ -4989,7 +4989,7 @@ Requires:       tex(textpos.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source23:       isodoc.tar.xz
 Source24:       isodoc.doc.tar.xz
 
@@ -5002,7 +5002,7 @@ class is based on the NTG brief class by Victor Eijkhout, which
 implements the NEN1026 standard.
 
 %package -n texlive-isodoc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.14svn59709
+Version:        %{texlive_version}.%{texlive_noarch}.1.16svn75787
 Release:        0
 Summary:        Documentation for texlive-isodoc
 License:        LPPL-1.0
@@ -5069,7 +5069,7 @@ Provides:       tex(isomath.sty)
 Requires:       tex(fixmath.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source25:       isomath.tar.xz
 Source26:       isomath.doc.tar.xz
 
@@ -5155,7 +5155,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-isonums-doc >= %{texlive_version}
 Provides:       tex(isonums.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source27:       isonums.tar.xz
 Source28:       isonums.doc.tar.xz
 
@@ -5234,7 +5234,7 @@ Suggests:       texlive-isopt-doc >= %{texlive_version}
 Provides:       tex(isopt.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source29:       isopt.tar.xz
 Source30:       isopt.doc.tar.xz
 
@@ -5314,7 +5314,7 @@ Provides:       tex(isorot.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(lscape.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source31:       isorot.tar.xz
 Source32:       isorot.doc.tar.xz
 
@@ -5361,11 +5361,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-isorot
 %{_texmfdistdir}/tex/latex/isorot/isorot.sty
 
-%package -n texlive-isosafety
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn72227
+%package -n texlive-isosigns
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn76196
 Release:        0
 License:        LPPL-1.0
-Summary:        Provides ISO signs and colors according to the standards 7010 and 3864
+Summary:        ISO signs and colors according to the standards 7001, 7010 and 3864
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -5388,40 +5388,40 @@ Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
 Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
-Suggests:       texlive-isosafety-doc >= %{texlive_version}
-Provides:       tex(isosafety.sty)
+Suggests:       texlive-isosigns-doc >= %{texlive_version}
+Provides:       tex(isosigns.sty)
 Requires:       tex(graphicx.sty)
-Requires:       tex(ifthen.sty)
 Requires:       tex(xcolor.sty)
-Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source33:       isosafety.tar.xz
-Source34:       isosafety.doc.tar.xz
+# from 20260301
+Source33:       isosigns.tar.xz
+Source34:       isosigns.doc.tar.xz
 
-%description -n texlive-isosafety
-The package provides safety colors (ISO 3864) and safety signs
-(ISO 7010) from the ISO. It can be useful when creating
-instructions for chemical or physical experiments.
+%description -n texlive-isosigns
+The package provides safety colors (ISO 3864), safety signs
+(ISO 7010), and public information symbols (ISO 7001) from the
+ISO. It can be useful when creating instructions for chemical
+or physical experiments. Note: This is not an official package
+from ISO.
 
-%package -n texlive-isosafety-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.4svn72227
+%package -n texlive-isosigns-doc
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn76196
 Release:        0
-Summary:        Documentation for texlive-isosafety
+Summary:        Documentation for texlive-isosigns
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Supplements:    (texlive-isosafety and texlive-alldocumentation)
+Supplements:    (texlive-isosigns and texlive-alldocumentation)
 
-%description -n texlive-isosafety-doc
-This package includes the documentation for texlive-isosafety
+%description -n texlive-isosigns-doc
+This package includes the documentation for texlive-isosigns
 
-%post -n texlive-isosafety
+%post -n texlive-isosigns
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
 
-%postun -n texlive-isosafety
+%postun -n texlive-isosigns
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
@@ -5429,330 +5429,21 @@ if test $1 = 0; then
     exit 0
 fi
 
-%posttrans -n texlive-isosafety
+%posttrans -n texlive-isosigns
 test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
-%files -n texlive-isosafety-doc
-%{_texmfdistdir}/doc/latex/isosafety/README.md
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-docs.pdf
-%{_texmfdistdir}/doc/latex/isosafety/isosafety-docs.tex
+%files -n texlive-isosigns-doc
+%{_texmfdistdir}/doc/latex/isosigns/README.md
+%{_texmfdistdir}/doc/latex/isosigns/danger.pdf
+%{_texmfdistdir}/doc/latex/isosigns/isosigns-docs.pdf
+%{_texmfdistdir}/doc/latex/isosigns/isosigns-docs.tex
+%{_texmfdistdir}/doc/latex/isosigns/isosigns_logo.pdf
+%{_texmfdistdir}/doc/latex/isosigns/lcep.sty
 
-%files -n texlive-isosafety
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV003.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV004.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV009.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV010.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV011.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV012.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV013.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV027.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV028.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV029.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV064.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_CV067.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E001.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E002.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E003.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E004.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E007.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E008.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E009.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E010.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E011.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E012.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E013.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E014.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E015.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E016.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E017.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E018.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E019.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E020.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E021.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E022.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E023.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E024.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E025.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E026.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E027.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E028.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E029.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E030.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E031.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E032.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E033.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E034.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E035.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E036.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E037.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E038.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E039.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E040.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E041.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E042.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E043.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E044.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E045.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E046.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E047.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E048.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E049.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E050.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E051.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E052.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E053.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E054.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E055.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E056.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E057.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E058.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E059.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E060.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E061.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E062.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E063.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E064.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E065.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E067.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E068.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E069.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_E070.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F001.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F002.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F003.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F004.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F005.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F006.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F007.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F008.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F009.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F010.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F011.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F012.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F013.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F014.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F015.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F016.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F017.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F018.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_F019.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M001.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M002.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M003.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M004.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M005.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M006.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M007.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M008.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M009.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M010.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M011.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M012.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M013.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M014.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M015.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M016.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M017.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M018.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M019.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M020.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M021.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M022.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M023.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M024.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M025.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M026.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M027.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M028.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M029.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M030.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M031.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M032.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M033.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M034.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M035.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M036.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M037.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M038.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M039.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M040.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M041.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M042.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M043.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M044.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M045.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M046.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M047.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M048.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M049.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M050.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M051.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M052.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M053.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M054.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M055.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M056.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M057.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M058.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M059.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_M060.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P001.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P002.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P003.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P004.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P005.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P006.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P007.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P008.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P009.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P010.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P011.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P012.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P013.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P014.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P015.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P016.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P017.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P018.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P019.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P020.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P021.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P022.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P023.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P024.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P025.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P026.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P027.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P028.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P029.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P030.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P031.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P032.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P033.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P034.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P035.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P036.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P037.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P038.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P039.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P040.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P041.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P042.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P043.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P044.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P045.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P046.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P047.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P048.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P049.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P050.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P051.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P052.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P053.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P054.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P055.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P056.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P057.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P058.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P059.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P060.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P061.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P062.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P063.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P064.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P065.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P066.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P067.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P068.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P069.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P070.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P071.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P072.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P073.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P074.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_P075.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W001.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W002.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W003.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W004.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W005.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W006.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W007.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W008.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W009.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W010.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W011.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W012.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W013.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W014.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W015.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W016.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W017.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W018.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W019.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W020.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W021.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W022.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W023.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W024.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W025.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W026.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W027.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W028.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W029.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W030.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W031.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W032.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W033.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W034.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W035.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W036.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W037.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W038.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W039.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W040.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W041.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W042.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W043.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W044.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W045.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W046.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W047.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W048.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W049.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W050.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W051.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W052.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W053.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W054.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W055.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W056.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W057.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W058.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W059.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W060.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W061.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W062.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W063.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W064.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W065.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W066.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W067.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W068.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W069.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W070.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W071.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W072.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W073.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W074.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W075.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W076.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W077.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W078.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W079.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs/ISO_7010_W080.pdf
-%{_texmfdistdir}/tex/latex/isosafety/isosafety.sty
+%files -n texlive-isosigns
+%{_texmfdistdir}/tex/latex/isosigns/isosigns.sty
+%{_texmfdistdir}/tex/latex/isosigns/isosigns_complete.pdf
 
 %package -n texlive-isotope
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn23711
@@ -5784,7 +5475,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-isotope-doc >= %{texlive_version}
 Provides:       tex(isotope.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source35:       isotope.tar.xz
 Source36:       isotope.doc.tar.xz
 
@@ -5860,7 +5551,7 @@ Suggests:       texlive-isphysicalmath-doc >= %{texlive_version}
 Provides:       tex(isphysicalmath.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source37:       isphysicalmath.tar.xz
 Source38:       isphysicalmath.doc.tar.xz
 
@@ -5939,7 +5630,7 @@ Suggests:       texlive-issuulinks-doc >= %{texlive_version}
 Provides:       tex(issuulinks.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source39:       issuulinks.tar.xz
 Source40:       issuulinks.doc.tar.xz
 
@@ -5994,7 +5685,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/issuulinks/issuulinks.sty
 
 %package -n texlive-istgame
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn62946
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw Game Trees with TikZ
@@ -6026,7 +5717,7 @@ Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source41:       istgame.tar.xz
 Source42:       istgame.doc.tar.xz
 
@@ -6042,7 +5733,7 @@ package depends on expl3, TikZ, and xparse. The 'ist' prefix
 stands for "it's a simple tree" or "In-Sung's simple tree."
 
 %package -n texlive-istgame-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1svn62946
+Version:        %{texlive_version}.%{texlive_noarch}.2.1svn76924
 Release:        0
 Summary:        Documentation for texlive-istgame
 License:        LPPL-1.0
@@ -6110,7 +5801,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-itnumpar-doc >= %{texlive_version}
 Provides:       tex(itnumpar.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source43:       itnumpar.tar.xz
 Source44:       itnumpar.doc.tar.xz
 
@@ -6158,7 +5849,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/itnumpar/itnumpar.sty
 
 %package -n texlive-iwona
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn19611
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn77682
 Release:        0
 License:        LPPL-1.3c
 Summary:        A two-element sans-serif font
@@ -6738,7 +6429,7 @@ Provides:       tex(wncy-iwonami.tfm)
 Provides:       tex(wncy-iwonar.tfm)
 Provides:       tex(wncy-iwonari.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source45:       iwona.tar.xz
 Source46:       iwona.doc.tar.xz
 
@@ -6759,7 +6450,7 @@ Czech fonts), as well as supporting macros and files defining
 fonts for LaTeX.
 
 %package -n texlive-iwona-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn19611
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn77682
 Release:        0
 Summary:        Documentation for texlive-iwona
 License:        LPPL-1.3c
@@ -6771,7 +6462,7 @@ Supplements:    (texlive-iwona and texlive-alldocumentation)
 This package includes the documentation for texlive-iwona
 
 %package -n texlive-iwona-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn19611
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn77682
 Release:        0
 Summary:        Severed fonts for texlive-iwona
 License:        LPPL-1.3c
@@ -7473,7 +7164,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-iwona/iwonari.pfb
 
 %package -n texlive-iwonamath
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn71844
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX support for scaled Iwona math fonts
@@ -7524,7 +7215,7 @@ Provides:       tex(ot1iwonamathlm.fd)
 Provides:       tex(ot1iwonamathm.fd)
 Requires:       tex(l3keys2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source47:       iwonamath.tar.xz
 Source48:       iwonamath.doc.tar.xz
 
@@ -7536,7 +7227,7 @@ package allows font scaling, the choice of light and condensed
 versions, and the creation of multiple math versions.
 
 %package -n texlive-iwonamath-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn71844
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Documentation for texlive-iwonamath
 License:        LPPL-1.0
@@ -7624,7 +7315,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jablantile-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source49:       jablantile.tar.xz
 Source50:       jablantile.doc.tar.xz
 
@@ -7727,7 +7418,7 @@ Requires:       tex(unicode-math.sty)
 Requires:       tex(url.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source51:       jacow.tar.xz
 Source52:       jacow.doc.tar.xz
 
@@ -7953,7 +7644,7 @@ Provides:       tex(dsssl.def)
 Provides:       tex(uentities.sty)
 Provides:       tex(ut1omlgc.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source53:       jadetex.tar.xz
 Source54:       jadetex.doc.tar.xz
 Source55:       jadetex_ini.dif
@@ -8571,7 +8262,7 @@ Requires:       tex(cmsy10.tfm)
 Requires:       tex(eucal.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source56:       jamtimes.tar.xz
 Source57:       jamtimes.doc.tar.xz
 
@@ -8768,7 +8459,7 @@ Requires:       tex(mathtools.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source58:       japanese-mathformulas.tar.xz
 Source59:       japanese-mathformulas.doc.tar.xz
 
@@ -8821,7 +8512,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/japanese-mathformulas/japanese-mathformulas.sty
 
 %package -n texlive-japanese-otf
-Version:        %{texlive_version}.%{texlive_noarch}.svn74106
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        BSD-3-Clause
 Summary:        Advanced font selection for platex and its friends
@@ -8984,38 +8675,6 @@ Provides:       tex(cidcgr--h.tfm)
 Provides:       tex(cidcgr--h.vf)
 Provides:       tex(cidcgr--v.tfm)
 Provides:       tex(cidcgr--v.vf)
-Provides:       tex(cidcgr0-h.tfm)
-Provides:       tex(cidcgr0-h.vf)
-Provides:       tex(cidcgr0-v.tfm)
-Provides:       tex(cidcgr0-v.vf)
-Provides:       tex(cidcgr1-h.tfm)
-Provides:       tex(cidcgr1-h.vf)
-Provides:       tex(cidcgr1-v.tfm)
-Provides:       tex(cidcgr1-v.vf)
-Provides:       tex(cidcgr2-h.tfm)
-Provides:       tex(cidcgr2-h.vf)
-Provides:       tex(cidcgr2-v.tfm)
-Provides:       tex(cidcgr2-v.vf)
-Provides:       tex(cidcgr3-h.tfm)
-Provides:       tex(cidcgr3-h.vf)
-Provides:       tex(cidcgr3-v.tfm)
-Provides:       tex(cidcgr3-v.vf)
-Provides:       tex(cidcgr4-h.tfm)
-Provides:       tex(cidcgr4-h.vf)
-Provides:       tex(cidcgr4-v.tfm)
-Provides:       tex(cidcgr4-v.vf)
-Provides:       tex(cidcgr5-h.tfm)
-Provides:       tex(cidcgr5-h.vf)
-Provides:       tex(cidcgr5-v.tfm)
-Provides:       tex(cidcgr5-v.vf)
-Provides:       tex(cidcgr6-h.tfm)
-Provides:       tex(cidcgr6-h.vf)
-Provides:       tex(cidcgr6-v.tfm)
-Provides:       tex(cidcgr6-v.vf)
-Provides:       tex(cidcgr7-h.tfm)
-Provides:       tex(cidcgr7-h.vf)
-Provides:       tex(cidcgr7-v.tfm)
-Provides:       tex(cidcgr7-v.vf)
 Provides:       tex(cidcmb--h.tfm)
 Provides:       tex(cidcmb--h.vf)
 Provides:       tex(cidcmb--v.tfm)
@@ -9032,38 +8691,6 @@ Provides:       tex(cidcmr--h.tfm)
 Provides:       tex(cidcmr--h.vf)
 Provides:       tex(cidcmr--v.tfm)
 Provides:       tex(cidcmr--v.vf)
-Provides:       tex(cidcmr0-h.tfm)
-Provides:       tex(cidcmr0-h.vf)
-Provides:       tex(cidcmr0-v.tfm)
-Provides:       tex(cidcmr0-v.vf)
-Provides:       tex(cidcmr1-h.tfm)
-Provides:       tex(cidcmr1-h.vf)
-Provides:       tex(cidcmr1-v.tfm)
-Provides:       tex(cidcmr1-v.vf)
-Provides:       tex(cidcmr2-h.tfm)
-Provides:       tex(cidcmr2-h.vf)
-Provides:       tex(cidcmr2-v.tfm)
-Provides:       tex(cidcmr2-v.vf)
-Provides:       tex(cidcmr3-h.tfm)
-Provides:       tex(cidcmr3-h.vf)
-Provides:       tex(cidcmr3-v.tfm)
-Provides:       tex(cidcmr3-v.vf)
-Provides:       tex(cidcmr4-h.tfm)
-Provides:       tex(cidcmr4-h.vf)
-Provides:       tex(cidcmr4-v.tfm)
-Provides:       tex(cidcmr4-v.vf)
-Provides:       tex(cidcmr5-h.tfm)
-Provides:       tex(cidcmr5-h.vf)
-Provides:       tex(cidcmr5-v.tfm)
-Provides:       tex(cidcmr5-v.vf)
-Provides:       tex(cidcmr6-h.tfm)
-Provides:       tex(cidcmr6-h.vf)
-Provides:       tex(cidcmr6-v.tfm)
-Provides:       tex(cidcmr6-v.vf)
-Provides:       tex(cidcmr7-h.tfm)
-Provides:       tex(cidcmr7-h.vf)
-Provides:       tex(cidcmr7-v.tfm)
-Provides:       tex(cidcmr7-v.vf)
 Provides:       tex(cidjgb--h.tfm)
 Provides:       tex(cidjgb--h.vf)
 Provides:       tex(cidjgb--v.tfm)
@@ -9272,26 +8899,6 @@ Provides:       tex(cidkgr--h.tfm)
 Provides:       tex(cidkgr--h.vf)
 Provides:       tex(cidkgr--v.tfm)
 Provides:       tex(cidkgr--v.vf)
-Provides:       tex(cidkgr0-h.tfm)
-Provides:       tex(cidkgr0-h.vf)
-Provides:       tex(cidkgr0-v.tfm)
-Provides:       tex(cidkgr0-v.vf)
-Provides:       tex(cidkgr1-h.tfm)
-Provides:       tex(cidkgr1-h.vf)
-Provides:       tex(cidkgr1-v.tfm)
-Provides:       tex(cidkgr1-v.vf)
-Provides:       tex(cidkgr2-h.tfm)
-Provides:       tex(cidkgr2-h.vf)
-Provides:       tex(cidkgr2-v.tfm)
-Provides:       tex(cidkgr2-v.vf)
-Provides:       tex(cidkgr3-h.tfm)
-Provides:       tex(cidkgr3-h.vf)
-Provides:       tex(cidkgr3-v.tfm)
-Provides:       tex(cidkgr3-v.vf)
-Provides:       tex(cidkgr4-h.tfm)
-Provides:       tex(cidkgr4-h.vf)
-Provides:       tex(cidkgr4-v.tfm)
-Provides:       tex(cidkgr4-v.vf)
 Provides:       tex(cidkmb--h.tfm)
 Provides:       tex(cidkmb--h.vf)
 Provides:       tex(cidkmb--v.tfm)
@@ -9308,26 +8915,6 @@ Provides:       tex(cidkmr--h.tfm)
 Provides:       tex(cidkmr--h.vf)
 Provides:       tex(cidkmr--v.tfm)
 Provides:       tex(cidkmr--v.vf)
-Provides:       tex(cidkmr0-h.tfm)
-Provides:       tex(cidkmr0-h.vf)
-Provides:       tex(cidkmr0-v.tfm)
-Provides:       tex(cidkmr0-v.vf)
-Provides:       tex(cidkmr1-h.tfm)
-Provides:       tex(cidkmr1-h.vf)
-Provides:       tex(cidkmr1-v.tfm)
-Provides:       tex(cidkmr1-v.vf)
-Provides:       tex(cidkmr2-h.tfm)
-Provides:       tex(cidkmr2-h.vf)
-Provides:       tex(cidkmr2-v.tfm)
-Provides:       tex(cidkmr2-v.vf)
-Provides:       tex(cidkmr3-h.tfm)
-Provides:       tex(cidkmr3-h.vf)
-Provides:       tex(cidkmr3-v.tfm)
-Provides:       tex(cidkmr3-v.vf)
-Provides:       tex(cidkmr4-h.tfm)
-Provides:       tex(cidkmr4-h.vf)
-Provides:       tex(cidkmr4-v.tfm)
-Provides:       tex(cidkmr4-v.vf)
 Provides:       tex(cidtgb--h.tfm)
 Provides:       tex(cidtgb--h.vf)
 Provides:       tex(cidtgb--v.tfm)
@@ -9340,26 +8927,6 @@ Provides:       tex(cidtgr--h.tfm)
 Provides:       tex(cidtgr--h.vf)
 Provides:       tex(cidtgr--v.tfm)
 Provides:       tex(cidtgr--v.vf)
-Provides:       tex(cidtgr0-h.tfm)
-Provides:       tex(cidtgr0-h.vf)
-Provides:       tex(cidtgr0-v.tfm)
-Provides:       tex(cidtgr0-v.vf)
-Provides:       tex(cidtgr1-h.tfm)
-Provides:       tex(cidtgr1-h.vf)
-Provides:       tex(cidtgr1-v.tfm)
-Provides:       tex(cidtgr1-v.vf)
-Provides:       tex(cidtgr2-h.tfm)
-Provides:       tex(cidtgr2-h.vf)
-Provides:       tex(cidtgr2-v.tfm)
-Provides:       tex(cidtgr2-v.vf)
-Provides:       tex(cidtgr3-h.tfm)
-Provides:       tex(cidtgr3-h.vf)
-Provides:       tex(cidtgr3-v.tfm)
-Provides:       tex(cidtgr3-v.vf)
-Provides:       tex(cidtgr4-h.tfm)
-Provides:       tex(cidtgr4-h.vf)
-Provides:       tex(cidtgr4-v.tfm)
-Provides:       tex(cidtgr4-v.vf)
 Provides:       tex(cidtmb--h.tfm)
 Provides:       tex(cidtmb--h.vf)
 Provides:       tex(cidtmb--v.tfm)
@@ -9376,26 +8943,6 @@ Provides:       tex(cidtmr--h.tfm)
 Provides:       tex(cidtmr--h.vf)
 Provides:       tex(cidtmr--v.tfm)
 Provides:       tex(cidtmr--v.vf)
-Provides:       tex(cidtmr0-h.tfm)
-Provides:       tex(cidtmr0-h.vf)
-Provides:       tex(cidtmr0-v.tfm)
-Provides:       tex(cidtmr0-v.vf)
-Provides:       tex(cidtmr1-h.tfm)
-Provides:       tex(cidtmr1-h.vf)
-Provides:       tex(cidtmr1-v.tfm)
-Provides:       tex(cidtmr1-v.vf)
-Provides:       tex(cidtmr2-h.tfm)
-Provides:       tex(cidtmr2-h.vf)
-Provides:       tex(cidtmr2-v.tfm)
-Provides:       tex(cidtmr2-v.vf)
-Provides:       tex(cidtmr3-h.tfm)
-Provides:       tex(cidtmr3-h.vf)
-Provides:       tex(cidtmr3-v.tfm)
-Provides:       tex(cidtmr3-v.vf)
-Provides:       tex(cidtmr4-h.tfm)
-Provides:       tex(cidtmr4-h.vf)
-Provides:       tex(cidtmr4-v.tfm)
-Provides:       tex(cidtmr4-v.vf)
 Provides:       tex(expgothb-h.tfm)
 Provides:       tex(expgothb-h.vf)
 Provides:       tex(expgothb-v.tfm)
@@ -10112,122 +9659,6 @@ Provides:       tex(utfcgr--h.tfm)
 Provides:       tex(utfcgr--h.vf)
 Provides:       tex(utfcgr--v.tfm)
 Provides:       tex(utfcgr--v.vf)
-Provides:       tex(utfcgr0-h.tfm)
-Provides:       tex(utfcgr0-h.vf)
-Provides:       tex(utfcgr0-v.tfm)
-Provides:       tex(utfcgr0-v.vf)
-Provides:       tex(utfcgr1-h.tfm)
-Provides:       tex(utfcgr1-h.vf)
-Provides:       tex(utfcgr1-v.tfm)
-Provides:       tex(utfcgr1-v.vf)
-Provides:       tex(utfcgr2-h.tfm)
-Provides:       tex(utfcgr2-h.vf)
-Provides:       tex(utfcgr2-v.tfm)
-Provides:       tex(utfcgr2-v.vf)
-Provides:       tex(utfcgr3-h.tfm)
-Provides:       tex(utfcgr3-h.vf)
-Provides:       tex(utfcgr3-v.tfm)
-Provides:       tex(utfcgr3-v.vf)
-Provides:       tex(utfcgr4-h.tfm)
-Provides:       tex(utfcgr4-h.vf)
-Provides:       tex(utfcgr4-v.tfm)
-Provides:       tex(utfcgr4-v.vf)
-Provides:       tex(utfcgr5-h.tfm)
-Provides:       tex(utfcgr5-h.vf)
-Provides:       tex(utfcgr5-v.tfm)
-Provides:       tex(utfcgr5-v.vf)
-Provides:       tex(utfcgr6-h.tfm)
-Provides:       tex(utfcgr6-h.vf)
-Provides:       tex(utfcgr6-v.tfm)
-Provides:       tex(utfcgr6-v.vf)
-Provides:       tex(utfcgr7-h.tfm)
-Provides:       tex(utfcgr7-h.vf)
-Provides:       tex(utfcgr7-v.tfm)
-Provides:       tex(utfcgr7-v.vf)
-Provides:       tex(utfcgr8-h.tfm)
-Provides:       tex(utfcgr8-h.vf)
-Provides:       tex(utfcgr8-v.tfm)
-Provides:       tex(utfcgr8-v.vf)
-Provides:       tex(utfcgr9-h.tfm)
-Provides:       tex(utfcgr9-h.vf)
-Provides:       tex(utfcgr9-v.tfm)
-Provides:       tex(utfcgr9-v.vf)
-Provides:       tex(utfcgra-h.tfm)
-Provides:       tex(utfcgra-h.vf)
-Provides:       tex(utfcgra-v.tfm)
-Provides:       tex(utfcgra-v.vf)
-Provides:       tex(utfcgrb-h.tfm)
-Provides:       tex(utfcgrb-h.vf)
-Provides:       tex(utfcgrb-v.tfm)
-Provides:       tex(utfcgrb-v.vf)
-Provides:       tex(utfcgrc-h.tfm)
-Provides:       tex(utfcgrc-h.vf)
-Provides:       tex(utfcgrc-v.tfm)
-Provides:       tex(utfcgrc-v.vf)
-Provides:       tex(utfcgrd-h.tfm)
-Provides:       tex(utfcgrd-h.vf)
-Provides:       tex(utfcgrd-v.tfm)
-Provides:       tex(utfcgrd-v.vf)
-Provides:       tex(utfcgre-h.tfm)
-Provides:       tex(utfcgre-h.vf)
-Provides:       tex(utfcgre-v.tfm)
-Provides:       tex(utfcgre-v.vf)
-Provides:       tex(utfcgrf-h.tfm)
-Provides:       tex(utfcgrf-h.vf)
-Provides:       tex(utfcgrf-v.tfm)
-Provides:       tex(utfcgrf-v.vf)
-Provides:       tex(utfcgrk-h.tfm)
-Provides:       tex(utfcgrk-h.vf)
-Provides:       tex(utfcgrk-v.tfm)
-Provides:       tex(utfcgrk-v.vf)
-Provides:       tex(utfcgrl-h.tfm)
-Provides:       tex(utfcgrl-h.vf)
-Provides:       tex(utfcgrl-v.tfm)
-Provides:       tex(utfcgrl-v.vf)
-Provides:       tex(utfcgrm-h.tfm)
-Provides:       tex(utfcgrm-h.vf)
-Provides:       tex(utfcgrm-v.tfm)
-Provides:       tex(utfcgrm-v.vf)
-Provides:       tex(utfcgrn-h.tfm)
-Provides:       tex(utfcgrn-h.vf)
-Provides:       tex(utfcgrn-v.tfm)
-Provides:       tex(utfcgrn-v.vf)
-Provides:       tex(utfcgro-h.tfm)
-Provides:       tex(utfcgro-h.vf)
-Provides:       tex(utfcgro-v.tfm)
-Provides:       tex(utfcgro-v.vf)
-Provides:       tex(utfcgrp-h.tfm)
-Provides:       tex(utfcgrp-h.vf)
-Provides:       tex(utfcgrp-v.tfm)
-Provides:       tex(utfcgrp-v.vf)
-Provides:       tex(utfcgrq-h.tfm)
-Provides:       tex(utfcgrq-h.vf)
-Provides:       tex(utfcgrq-v.tfm)
-Provides:       tex(utfcgrq-v.vf)
-Provides:       tex(utfcgrr-h.tfm)
-Provides:       tex(utfcgrr-h.vf)
-Provides:       tex(utfcgrr-v.tfm)
-Provides:       tex(utfcgrr-v.vf)
-Provides:       tex(utfcgrs-h.tfm)
-Provides:       tex(utfcgrs-h.vf)
-Provides:       tex(utfcgrs-v.tfm)
-Provides:       tex(utfcgrs-v.vf)
-Provides:       tex(utfcgrt-h.tfm)
-Provides:       tex(utfcgrt-h.vf)
-Provides:       tex(utfcgrt-v.tfm)
-Provides:       tex(utfcgrt-v.vf)
-Provides:       tex(utfcgru-h.tfm)
-Provides:       tex(utfcgru-h.vf)
-Provides:       tex(utfcgru-v.tfm)
-Provides:       tex(utfcgru-v.vf)
-Provides:       tex(utfcgrv-h.tfm)
-Provides:       tex(utfcgrv-h.vf)
-Provides:       tex(utfcgrv-v.tfm)
-Provides:       tex(utfcgrv-v.vf)
-Provides:       tex(utfcgrw-h.tfm)
-Provides:       tex(utfcgrw-h.vf)
-Provides:       tex(utfcgrw-v.tfm)
-Provides:       tex(utfcgrw-v.vf)
 Provides:       tex(utfcmb--h.tfm)
 Provides:       tex(utfcmb--h.vf)
 Provides:       tex(utfcmb--v.tfm)
@@ -10244,258 +9675,18 @@ Provides:       tex(utfcmr--h.tfm)
 Provides:       tex(utfcmr--h.vf)
 Provides:       tex(utfcmr--v.tfm)
 Provides:       tex(utfcmr--v.vf)
-Provides:       tex(utfcmr0-h.tfm)
-Provides:       tex(utfcmr0-h.vf)
-Provides:       tex(utfcmr0-v.tfm)
-Provides:       tex(utfcmr0-v.vf)
-Provides:       tex(utfcmr1-h.tfm)
-Provides:       tex(utfcmr1-h.vf)
-Provides:       tex(utfcmr1-v.tfm)
-Provides:       tex(utfcmr1-v.vf)
-Provides:       tex(utfcmr2-h.tfm)
-Provides:       tex(utfcmr2-h.vf)
-Provides:       tex(utfcmr2-v.tfm)
-Provides:       tex(utfcmr2-v.vf)
-Provides:       tex(utfcmr3-h.tfm)
-Provides:       tex(utfcmr3-h.vf)
-Provides:       tex(utfcmr3-v.tfm)
-Provides:       tex(utfcmr3-v.vf)
-Provides:       tex(utfcmr4-h.tfm)
-Provides:       tex(utfcmr4-h.vf)
-Provides:       tex(utfcmr4-v.tfm)
-Provides:       tex(utfcmr4-v.vf)
-Provides:       tex(utfcmr5-h.tfm)
-Provides:       tex(utfcmr5-h.vf)
-Provides:       tex(utfcmr5-v.tfm)
-Provides:       tex(utfcmr5-v.vf)
-Provides:       tex(utfcmr6-h.tfm)
-Provides:       tex(utfcmr6-h.vf)
-Provides:       tex(utfcmr6-v.tfm)
-Provides:       tex(utfcmr6-v.vf)
-Provides:       tex(utfcmr7-h.tfm)
-Provides:       tex(utfcmr7-h.vf)
-Provides:       tex(utfcmr7-v.tfm)
-Provides:       tex(utfcmr7-v.vf)
-Provides:       tex(utfcmr8-h.tfm)
-Provides:       tex(utfcmr8-h.vf)
-Provides:       tex(utfcmr8-v.tfm)
-Provides:       tex(utfcmr8-v.vf)
-Provides:       tex(utfcmr9-h.tfm)
-Provides:       tex(utfcmr9-h.vf)
-Provides:       tex(utfcmr9-v.tfm)
-Provides:       tex(utfcmr9-v.vf)
-Provides:       tex(utfcmra-h.tfm)
-Provides:       tex(utfcmra-h.vf)
-Provides:       tex(utfcmra-v.tfm)
-Provides:       tex(utfcmra-v.vf)
-Provides:       tex(utfcmrb-h.tfm)
-Provides:       tex(utfcmrb-h.vf)
-Provides:       tex(utfcmrb-v.tfm)
-Provides:       tex(utfcmrb-v.vf)
-Provides:       tex(utfcmrc-h.tfm)
-Provides:       tex(utfcmrc-h.vf)
-Provides:       tex(utfcmrc-v.tfm)
-Provides:       tex(utfcmrc-v.vf)
-Provides:       tex(utfcmrd-h.tfm)
-Provides:       tex(utfcmrd-h.vf)
-Provides:       tex(utfcmrd-v.tfm)
-Provides:       tex(utfcmrd-v.vf)
-Provides:       tex(utfcmre-h.tfm)
-Provides:       tex(utfcmre-h.vf)
-Provides:       tex(utfcmre-v.tfm)
-Provides:       tex(utfcmre-v.vf)
-Provides:       tex(utfcmrf-h.tfm)
-Provides:       tex(utfcmrf-h.vf)
-Provides:       tex(utfcmrf-v.tfm)
-Provides:       tex(utfcmrf-v.vf)
-Provides:       tex(utfcmrk-h.tfm)
-Provides:       tex(utfcmrk-h.vf)
-Provides:       tex(utfcmrk-v.tfm)
-Provides:       tex(utfcmrk-v.vf)
-Provides:       tex(utfcmrl-h.tfm)
-Provides:       tex(utfcmrl-h.vf)
-Provides:       tex(utfcmrl-v.tfm)
-Provides:       tex(utfcmrl-v.vf)
-Provides:       tex(utfcmrm-h.tfm)
-Provides:       tex(utfcmrm-h.vf)
-Provides:       tex(utfcmrm-v.tfm)
-Provides:       tex(utfcmrm-v.vf)
-Provides:       tex(utfcmrn-h.tfm)
-Provides:       tex(utfcmrn-h.vf)
-Provides:       tex(utfcmrn-v.tfm)
-Provides:       tex(utfcmrn-v.vf)
-Provides:       tex(utfcmro-h.tfm)
-Provides:       tex(utfcmro-h.vf)
-Provides:       tex(utfcmro-v.tfm)
-Provides:       tex(utfcmro-v.vf)
-Provides:       tex(utfcmrp-h.tfm)
-Provides:       tex(utfcmrp-h.vf)
-Provides:       tex(utfcmrp-v.tfm)
-Provides:       tex(utfcmrp-v.vf)
-Provides:       tex(utfcmrq-h.tfm)
-Provides:       tex(utfcmrq-h.vf)
-Provides:       tex(utfcmrq-v.tfm)
-Provides:       tex(utfcmrq-v.vf)
-Provides:       tex(utfcmrr-h.tfm)
-Provides:       tex(utfcmrr-h.vf)
-Provides:       tex(utfcmrr-v.tfm)
-Provides:       tex(utfcmrr-v.vf)
-Provides:       tex(utfcmrs-h.tfm)
-Provides:       tex(utfcmrs-h.vf)
-Provides:       tex(utfcmrs-v.tfm)
-Provides:       tex(utfcmrs-v.vf)
-Provides:       tex(utfcmrt-h.tfm)
-Provides:       tex(utfcmrt-h.vf)
-Provides:       tex(utfcmrt-v.tfm)
-Provides:       tex(utfcmrt-v.vf)
-Provides:       tex(utfcmru-h.tfm)
-Provides:       tex(utfcmru-h.vf)
-Provides:       tex(utfcmru-v.tfm)
-Provides:       tex(utfcmru-v.vf)
-Provides:       tex(utfcmrv-h.tfm)
-Provides:       tex(utfcmrv-h.vf)
-Provides:       tex(utfcmrv-v.tfm)
-Provides:       tex(utfcmrv-v.vf)
-Provides:       tex(utfcmrw-h.tfm)
-Provides:       tex(utfcmrw-h.vf)
-Provides:       tex(utfcmrw-v.tfm)
-Provides:       tex(utfcmrw-v.vf)
-Provides:       tex(utfgr0-h.tfm)
-Provides:       tex(utfgr0-h.vf)
-Provides:       tex(utfgr0-v.tfm)
-Provides:       tex(utfgr0-v.vf)
-Provides:       tex(utfgr1-h.tfm)
-Provides:       tex(utfgr1-h.vf)
-Provides:       tex(utfgr1-v.tfm)
-Provides:       tex(utfgr1-v.vf)
-Provides:       tex(utfgr2-h.tfm)
-Provides:       tex(utfgr2-h.vf)
-Provides:       tex(utfgr2-v.tfm)
-Provides:       tex(utfgr2-v.vf)
-Provides:       tex(utfgr3-h.tfm)
-Provides:       tex(utfgr3-h.vf)
-Provides:       tex(utfgr3-v.tfm)
-Provides:       tex(utfgr3-v.vf)
-Provides:       tex(utfgr4-h.tfm)
-Provides:       tex(utfgr4-h.vf)
-Provides:       tex(utfgr4-v.tfm)
-Provides:       tex(utfgr4-v.vf)
-Provides:       tex(utfgr5-h.tfm)
-Provides:       tex(utfgr5-h.vf)
-Provides:       tex(utfgr5-v.tfm)
-Provides:       tex(utfgr5-v.vf)
-Provides:       tex(utfgr6-h.tfm)
-Provides:       tex(utfgr6-h.vf)
-Provides:       tex(utfgr6-v.tfm)
-Provides:       tex(utfgr6-v.vf)
-Provides:       tex(utfgr7-h.tfm)
-Provides:       tex(utfgr7-h.vf)
-Provides:       tex(utfgr7-v.tfm)
-Provides:       tex(utfgr7-v.vf)
-Provides:       tex(utfgr8-h.tfm)
-Provides:       tex(utfgr8-h.vf)
-Provides:       tex(utfgr8-v.tfm)
-Provides:       tex(utfgr8-v.vf)
-Provides:       tex(utfgr9-h.tfm)
-Provides:       tex(utfgr9-h.vf)
-Provides:       tex(utfgr9-v.tfm)
-Provides:       tex(utfgr9-v.vf)
-Provides:       tex(utfgra-h.tfm)
-Provides:       tex(utfgra-h.vf)
-Provides:       tex(utfgra-v.tfm)
-Provides:       tex(utfgra-v.vf)
-Provides:       tex(utfgrb-h.tfm)
-Provides:       tex(utfgrb-h.vf)
-Provides:       tex(utfgrb-v.tfm)
-Provides:       tex(utfgrb-v.vf)
-Provides:       tex(utfgrc-h.tfm)
-Provides:       tex(utfgrc-h.vf)
-Provides:       tex(utfgrc-v.tfm)
-Provides:       tex(utfgrc-v.vf)
-Provides:       tex(utfgrd-h.tfm)
-Provides:       tex(utfgrd-h.vf)
-Provides:       tex(utfgrd-v.tfm)
-Provides:       tex(utfgrd-v.vf)
-Provides:       tex(utfgre-h.tfm)
-Provides:       tex(utfgre-h.vf)
-Provides:       tex(utfgre-v.tfm)
-Provides:       tex(utfgre-v.vf)
-Provides:       tex(utfgrf-h.tfm)
-Provides:       tex(utfgrf-h.vf)
-Provides:       tex(utfgrf-v.tfm)
-Provides:       tex(utfgrf-v.vf)
-Provides:       tex(utfgrg-h.tfm)
-Provides:       tex(utfgrg-h.vf)
-Provides:       tex(utfgrg-v.tfm)
-Provides:       tex(utfgrg-v.vf)
-Provides:       tex(utfgrj-h.tfm)
-Provides:       tex(utfgrj-h.vf)
-Provides:       tex(utfgrj-v.tfm)
-Provides:       tex(utfgrj-v.vf)
-Provides:       tex(utfgrk-h.tfm)
-Provides:       tex(utfgrk-h.vf)
-Provides:       tex(utfgrk-v.tfm)
-Provides:       tex(utfgrk-v.vf)
-Provides:       tex(utfgrl-h.tfm)
-Provides:       tex(utfgrl-h.vf)
-Provides:       tex(utfgrl-v.tfm)
-Provides:       tex(utfgrl-v.vf)
-Provides:       tex(utfgrm-h.tfm)
-Provides:       tex(utfgrm-h.vf)
-Provides:       tex(utfgrm-v.tfm)
-Provides:       tex(utfgrm-v.vf)
-Provides:       tex(utfgrn-h.tfm)
-Provides:       tex(utfgrn-h.vf)
-Provides:       tex(utfgrn-v.tfm)
-Provides:       tex(utfgrn-v.vf)
-Provides:       tex(utfgro-h.tfm)
-Provides:       tex(utfgro-h.vf)
-Provides:       tex(utfgro-v.tfm)
-Provides:       tex(utfgro-v.vf)
-Provides:       tex(utfgrp-h.tfm)
-Provides:       tex(utfgrp-h.vf)
-Provides:       tex(utfgrp-v.tfm)
-Provides:       tex(utfgrp-v.vf)
-Provides:       tex(utfgrq-h.tfm)
-Provides:       tex(utfgrq-h.vf)
-Provides:       tex(utfgrq-v.tfm)
-Provides:       tex(utfgrq-v.vf)
-Provides:       tex(utfgrr-h.tfm)
-Provides:       tex(utfgrr-h.vf)
-Provides:       tex(utfgrr-v.tfm)
-Provides:       tex(utfgrr-v.vf)
-Provides:       tex(utfgrs-h.tfm)
-Provides:       tex(utfgrs-h.vf)
-Provides:       tex(utfgrs-v.tfm)
-Provides:       tex(utfgrs-v.vf)
-Provides:       tex(utfgrt-h.tfm)
-Provides:       tex(utfgrt-h.vf)
-Provides:       tex(utfgrt-v.tfm)
-Provides:       tex(utfgrt-v.vf)
-Provides:       tex(utfgru-h.tfm)
-Provides:       tex(utfgru-h.vf)
-Provides:       tex(utfgru-v.tfm)
-Provides:       tex(utfgru-v.vf)
-Provides:       tex(utfgrv-h.tfm)
-Provides:       tex(utfgrv-h.vf)
-Provides:       tex(utfgrv-v.tfm)
-Provides:       tex(utfgrv-v.vf)
-Provides:       tex(utfgrw-h.tfm)
-Provides:       tex(utfgrw-h.vf)
-Provides:       tex(utfgrw-v.tfm)
-Provides:       tex(utfgrw-v.vf)
-Provides:       tex(utfgrx-h.tfm)
-Provides:       tex(utfgrx-h.vf)
-Provides:       tex(utfgrx-v.tfm)
-Provides:       tex(utfgrx-v.vf)
-Provides:       tex(utfgry-h.tfm)
-Provides:       tex(utfgry-h.vf)
-Provides:       tex(utfgry-v.tfm)
-Provides:       tex(utfgry-v.vf)
-Provides:       tex(utfgrz-h.tfm)
-Provides:       tex(utfgrz-h.vf)
-Provides:       tex(utfgrz-v.tfm)
-Provides:       tex(utfgrz-v.vf)
+Provides:       tex(utfgb--h.tfm)
+Provides:       tex(utfgb--h.vf)
+Provides:       tex(utfgb--v.tfm)
+Provides:       tex(utfgb--v.vf)
+Provides:       tex(utfge--h.tfm)
+Provides:       tex(utfge--h.vf)
+Provides:       tex(utfge--v.tfm)
+Provides:       tex(utfge--v.vf)
+Provides:       tex(utfgr--h.tfm)
+Provides:       tex(utfgr--h.vf)
+Provides:       tex(utfgr--v.tfm)
+Provides:       tex(utfgr--v.vf)
 Provides:       tex(utfjgb--h.tfm)
 Provides:       tex(utfjgb--h.vf)
 Provides:       tex(utfjgb--v.tfm)
@@ -11936,70 +11127,6 @@ Provides:       tex(utfkgr--h.tfm)
 Provides:       tex(utfkgr--h.vf)
 Provides:       tex(utfkgr--v.tfm)
 Provides:       tex(utfkgr--v.vf)
-Provides:       tex(utfkgr0-h.tfm)
-Provides:       tex(utfkgr0-h.vf)
-Provides:       tex(utfkgr0-v.tfm)
-Provides:       tex(utfkgr0-v.vf)
-Provides:       tex(utfkgr1-h.tfm)
-Provides:       tex(utfkgr1-h.vf)
-Provides:       tex(utfkgr1-v.tfm)
-Provides:       tex(utfkgr1-v.vf)
-Provides:       tex(utfkgr2-h.tfm)
-Provides:       tex(utfkgr2-h.vf)
-Provides:       tex(utfkgr2-v.tfm)
-Provides:       tex(utfkgr2-v.vf)
-Provides:       tex(utfkgr3-h.tfm)
-Provides:       tex(utfkgr3-h.vf)
-Provides:       tex(utfkgr3-v.tfm)
-Provides:       tex(utfkgr3-v.vf)
-Provides:       tex(utfkgr4-h.tfm)
-Provides:       tex(utfkgr4-h.vf)
-Provides:       tex(utfkgr4-v.tfm)
-Provides:       tex(utfkgr4-v.vf)
-Provides:       tex(utfkgr5-h.tfm)
-Provides:       tex(utfkgr5-h.vf)
-Provides:       tex(utfkgr5-v.tfm)
-Provides:       tex(utfkgr5-v.vf)
-Provides:       tex(utfkgr6-h.tfm)
-Provides:       tex(utfkgr6-h.vf)
-Provides:       tex(utfkgr6-v.tfm)
-Provides:       tex(utfkgr6-v.vf)
-Provides:       tex(utfkgr7-h.tfm)
-Provides:       tex(utfkgr7-h.vf)
-Provides:       tex(utfkgr7-v.tfm)
-Provides:       tex(utfkgr7-v.vf)
-Provides:       tex(utfkgr8-h.tfm)
-Provides:       tex(utfkgr8-h.vf)
-Provides:       tex(utfkgr8-v.tfm)
-Provides:       tex(utfkgr8-v.vf)
-Provides:       tex(utfkgr9-h.tfm)
-Provides:       tex(utfkgr9-h.vf)
-Provides:       tex(utfkgr9-v.tfm)
-Provides:       tex(utfkgr9-v.vf)
-Provides:       tex(utfkgra-h.tfm)
-Provides:       tex(utfkgra-h.vf)
-Provides:       tex(utfkgra-v.tfm)
-Provides:       tex(utfkgra-v.vf)
-Provides:       tex(utfkgrb-h.tfm)
-Provides:       tex(utfkgrb-h.vf)
-Provides:       tex(utfkgrb-v.tfm)
-Provides:       tex(utfkgrb-v.vf)
-Provides:       tex(utfkgrc-h.tfm)
-Provides:       tex(utfkgrc-h.vf)
-Provides:       tex(utfkgrc-v.tfm)
-Provides:       tex(utfkgrc-v.vf)
-Provides:       tex(utfkgrd-h.tfm)
-Provides:       tex(utfkgrd-h.vf)
-Provides:       tex(utfkgrd-v.tfm)
-Provides:       tex(utfkgrd-v.vf)
-Provides:       tex(utfkgre-h.tfm)
-Provides:       tex(utfkgre-h.vf)
-Provides:       tex(utfkgre-v.tfm)
-Provides:       tex(utfkgre-v.vf)
-Provides:       tex(utfkgrf-h.tfm)
-Provides:       tex(utfkgrf-h.vf)
-Provides:       tex(utfkgrf-v.tfm)
-Provides:       tex(utfkgrf-v.vf)
 Provides:       tex(utfkmb--h.tfm)
 Provides:       tex(utfkmb--h.vf)
 Provides:       tex(utfkmb--v.tfm)
@@ -12016,206 +11143,22 @@ Provides:       tex(utfkmr--h.tfm)
 Provides:       tex(utfkmr--h.vf)
 Provides:       tex(utfkmr--v.tfm)
 Provides:       tex(utfkmr--v.vf)
-Provides:       tex(utfkmr0-h.tfm)
-Provides:       tex(utfkmr0-h.vf)
-Provides:       tex(utfkmr0-v.tfm)
-Provides:       tex(utfkmr0-v.vf)
-Provides:       tex(utfkmr1-h.tfm)
-Provides:       tex(utfkmr1-h.vf)
-Provides:       tex(utfkmr1-v.tfm)
-Provides:       tex(utfkmr1-v.vf)
-Provides:       tex(utfkmr2-h.tfm)
-Provides:       tex(utfkmr2-h.vf)
-Provides:       tex(utfkmr2-v.tfm)
-Provides:       tex(utfkmr2-v.vf)
-Provides:       tex(utfkmr3-h.tfm)
-Provides:       tex(utfkmr3-h.vf)
-Provides:       tex(utfkmr3-v.tfm)
-Provides:       tex(utfkmr3-v.vf)
-Provides:       tex(utfkmr4-h.tfm)
-Provides:       tex(utfkmr4-h.vf)
-Provides:       tex(utfkmr4-v.tfm)
-Provides:       tex(utfkmr4-v.vf)
-Provides:       tex(utfkmr5-h.tfm)
-Provides:       tex(utfkmr5-h.vf)
-Provides:       tex(utfkmr5-v.tfm)
-Provides:       tex(utfkmr5-v.vf)
-Provides:       tex(utfkmr6-h.tfm)
-Provides:       tex(utfkmr6-h.vf)
-Provides:       tex(utfkmr6-v.tfm)
-Provides:       tex(utfkmr6-v.vf)
-Provides:       tex(utfkmr7-h.tfm)
-Provides:       tex(utfkmr7-h.vf)
-Provides:       tex(utfkmr7-v.tfm)
-Provides:       tex(utfkmr7-v.vf)
-Provides:       tex(utfkmr8-h.tfm)
-Provides:       tex(utfkmr8-h.vf)
-Provides:       tex(utfkmr8-v.tfm)
-Provides:       tex(utfkmr8-v.vf)
-Provides:       tex(utfkmr9-h.tfm)
-Provides:       tex(utfkmr9-h.vf)
-Provides:       tex(utfkmr9-v.tfm)
-Provides:       tex(utfkmr9-v.vf)
-Provides:       tex(utfkmra-h.tfm)
-Provides:       tex(utfkmra-h.vf)
-Provides:       tex(utfkmra-v.tfm)
-Provides:       tex(utfkmra-v.vf)
-Provides:       tex(utfkmrb-h.tfm)
-Provides:       tex(utfkmrb-h.vf)
-Provides:       tex(utfkmrb-v.tfm)
-Provides:       tex(utfkmrb-v.vf)
-Provides:       tex(utfkmrc-h.tfm)
-Provides:       tex(utfkmrc-h.vf)
-Provides:       tex(utfkmrc-v.tfm)
-Provides:       tex(utfkmrc-v.vf)
-Provides:       tex(utfkmrd-h.tfm)
-Provides:       tex(utfkmrd-h.vf)
-Provides:       tex(utfkmrd-v.tfm)
-Provides:       tex(utfkmrd-v.vf)
-Provides:       tex(utfkmre-h.tfm)
-Provides:       tex(utfkmre-h.vf)
-Provides:       tex(utfkmre-v.tfm)
-Provides:       tex(utfkmre-v.vf)
-Provides:       tex(utfkmrf-h.tfm)
-Provides:       tex(utfkmrf-h.vf)
-Provides:       tex(utfkmrf-v.tfm)
-Provides:       tex(utfkmrf-v.vf)
-Provides:       tex(utfmr0-h.tfm)
-Provides:       tex(utfmr0-h.vf)
-Provides:       tex(utfmr0-v.tfm)
-Provides:       tex(utfmr0-v.vf)
-Provides:       tex(utfmr1-h.tfm)
-Provides:       tex(utfmr1-h.vf)
-Provides:       tex(utfmr1-v.tfm)
-Provides:       tex(utfmr1-v.vf)
-Provides:       tex(utfmr2-h.tfm)
-Provides:       tex(utfmr2-h.vf)
-Provides:       tex(utfmr2-v.tfm)
-Provides:       tex(utfmr2-v.vf)
-Provides:       tex(utfmr3-h.tfm)
-Provides:       tex(utfmr3-h.vf)
-Provides:       tex(utfmr3-v.tfm)
-Provides:       tex(utfmr3-v.vf)
-Provides:       tex(utfmr4-h.tfm)
-Provides:       tex(utfmr4-h.vf)
-Provides:       tex(utfmr4-v.tfm)
-Provides:       tex(utfmr4-v.vf)
-Provides:       tex(utfmr5-h.tfm)
-Provides:       tex(utfmr5-h.vf)
-Provides:       tex(utfmr5-v.tfm)
-Provides:       tex(utfmr5-v.vf)
-Provides:       tex(utfmr6-h.tfm)
-Provides:       tex(utfmr6-h.vf)
-Provides:       tex(utfmr6-v.tfm)
-Provides:       tex(utfmr6-v.vf)
-Provides:       tex(utfmr7-h.tfm)
-Provides:       tex(utfmr7-h.vf)
-Provides:       tex(utfmr7-v.tfm)
-Provides:       tex(utfmr7-v.vf)
-Provides:       tex(utfmr8-h.tfm)
-Provides:       tex(utfmr8-h.vf)
-Provides:       tex(utfmr8-v.tfm)
-Provides:       tex(utfmr8-v.vf)
-Provides:       tex(utfmr9-h.tfm)
-Provides:       tex(utfmr9-h.vf)
-Provides:       tex(utfmr9-v.tfm)
-Provides:       tex(utfmr9-v.vf)
-Provides:       tex(utfmra-h.tfm)
-Provides:       tex(utfmra-h.vf)
-Provides:       tex(utfmra-v.tfm)
-Provides:       tex(utfmra-v.vf)
-Provides:       tex(utfmrb-h.tfm)
-Provides:       tex(utfmrb-h.vf)
-Provides:       tex(utfmrb-v.tfm)
-Provides:       tex(utfmrb-v.vf)
-Provides:       tex(utfmrc-h.tfm)
-Provides:       tex(utfmrc-h.vf)
-Provides:       tex(utfmrc-v.tfm)
-Provides:       tex(utfmrc-v.vf)
-Provides:       tex(utfmrd-h.tfm)
-Provides:       tex(utfmrd-h.vf)
-Provides:       tex(utfmrd-v.tfm)
-Provides:       tex(utfmrd-v.vf)
-Provides:       tex(utfmre-h.tfm)
-Provides:       tex(utfmre-h.vf)
-Provides:       tex(utfmre-v.tfm)
-Provides:       tex(utfmre-v.vf)
-Provides:       tex(utfmrf-h.tfm)
-Provides:       tex(utfmrf-h.vf)
-Provides:       tex(utfmrf-v.tfm)
-Provides:       tex(utfmrf-v.vf)
-Provides:       tex(utfmrg-h.tfm)
-Provides:       tex(utfmrg-h.vf)
-Provides:       tex(utfmrg-v.tfm)
-Provides:       tex(utfmrg-v.vf)
-Provides:       tex(utfmrj-h.tfm)
-Provides:       tex(utfmrj-h.vf)
-Provides:       tex(utfmrj-v.tfm)
-Provides:       tex(utfmrj-v.vf)
-Provides:       tex(utfmrk-h.tfm)
-Provides:       tex(utfmrk-h.vf)
-Provides:       tex(utfmrk-v.tfm)
-Provides:       tex(utfmrk-v.vf)
-Provides:       tex(utfmrl-h.tfm)
-Provides:       tex(utfmrl-h.vf)
-Provides:       tex(utfmrl-v.tfm)
-Provides:       tex(utfmrl-v.vf)
-Provides:       tex(utfmrm-h.tfm)
-Provides:       tex(utfmrm-h.vf)
-Provides:       tex(utfmrm-v.tfm)
-Provides:       tex(utfmrm-v.vf)
-Provides:       tex(utfmrn-h.tfm)
-Provides:       tex(utfmrn-h.vf)
-Provides:       tex(utfmrn-v.tfm)
-Provides:       tex(utfmrn-v.vf)
-Provides:       tex(utfmro-h.tfm)
-Provides:       tex(utfmro-h.vf)
-Provides:       tex(utfmro-v.tfm)
-Provides:       tex(utfmro-v.vf)
-Provides:       tex(utfmrp-h.tfm)
-Provides:       tex(utfmrp-h.vf)
-Provides:       tex(utfmrp-v.tfm)
-Provides:       tex(utfmrp-v.vf)
-Provides:       tex(utfmrq-h.tfm)
-Provides:       tex(utfmrq-h.vf)
-Provides:       tex(utfmrq-v.tfm)
-Provides:       tex(utfmrq-v.vf)
-Provides:       tex(utfmrr-h.tfm)
-Provides:       tex(utfmrr-h.vf)
-Provides:       tex(utfmrr-v.tfm)
-Provides:       tex(utfmrr-v.vf)
-Provides:       tex(utfmrs-h.tfm)
-Provides:       tex(utfmrs-h.vf)
-Provides:       tex(utfmrs-v.tfm)
-Provides:       tex(utfmrs-v.vf)
-Provides:       tex(utfmrt-h.tfm)
-Provides:       tex(utfmrt-h.vf)
-Provides:       tex(utfmrt-v.tfm)
-Provides:       tex(utfmrt-v.vf)
-Provides:       tex(utfmru-h.tfm)
-Provides:       tex(utfmru-h.vf)
-Provides:       tex(utfmru-v.tfm)
-Provides:       tex(utfmru-v.vf)
-Provides:       tex(utfmrv-h.tfm)
-Provides:       tex(utfmrv-h.vf)
-Provides:       tex(utfmrv-v.tfm)
-Provides:       tex(utfmrv-v.vf)
-Provides:       tex(utfmrw-h.tfm)
-Provides:       tex(utfmrw-h.vf)
-Provides:       tex(utfmrw-v.tfm)
-Provides:       tex(utfmrw-v.vf)
-Provides:       tex(utfmrx-h.tfm)
-Provides:       tex(utfmrx-h.vf)
-Provides:       tex(utfmrx-v.tfm)
-Provides:       tex(utfmrx-v.vf)
-Provides:       tex(utfmry-h.tfm)
-Provides:       tex(utfmry-h.vf)
-Provides:       tex(utfmry-v.tfm)
-Provides:       tex(utfmry-v.vf)
-Provides:       tex(utfmrz-h.tfm)
-Provides:       tex(utfmrz-h.vf)
-Provides:       tex(utfmrz-v.tfm)
-Provides:       tex(utfmrz-v.vf)
+Provides:       tex(utfmb--h.tfm)
+Provides:       tex(utfmb--h.vf)
+Provides:       tex(utfmb--v.tfm)
+Provides:       tex(utfmb--v.vf)
+Provides:       tex(utfmgr--h.tfm)
+Provides:       tex(utfmgr--h.vf)
+Provides:       tex(utfmgr--v.tfm)
+Provides:       tex(utfmgr--v.vf)
+Provides:       tex(utfml--h.tfm)
+Provides:       tex(utfml--h.vf)
+Provides:       tex(utfml--v.tfm)
+Provides:       tex(utfml--v.vf)
+Provides:       tex(utfmr--h.tfm)
+Provides:       tex(utfmr--h.vf)
+Provides:       tex(utfmr--v.tfm)
+Provides:       tex(utfmr--v.vf)
 Provides:       tex(utftgb--h.tfm)
 Provides:       tex(utftgb--h.vf)
 Provides:       tex(utftgb--v.tfm)
@@ -12228,130 +11171,6 @@ Provides:       tex(utftgr--h.tfm)
 Provides:       tex(utftgr--h.vf)
 Provides:       tex(utftgr--v.tfm)
 Provides:       tex(utftgr--v.vf)
-Provides:       tex(utftgr0-h.tfm)
-Provides:       tex(utftgr0-h.vf)
-Provides:       tex(utftgr0-v.tfm)
-Provides:       tex(utftgr0-v.vf)
-Provides:       tex(utftgr1-h.tfm)
-Provides:       tex(utftgr1-h.vf)
-Provides:       tex(utftgr1-v.tfm)
-Provides:       tex(utftgr1-v.vf)
-Provides:       tex(utftgr2-h.tfm)
-Provides:       tex(utftgr2-h.vf)
-Provides:       tex(utftgr2-v.tfm)
-Provides:       tex(utftgr2-v.vf)
-Provides:       tex(utftgr3-h.tfm)
-Provides:       tex(utftgr3-h.vf)
-Provides:       tex(utftgr3-v.tfm)
-Provides:       tex(utftgr3-v.vf)
-Provides:       tex(utftgr4-h.tfm)
-Provides:       tex(utftgr4-h.vf)
-Provides:       tex(utftgr4-v.tfm)
-Provides:       tex(utftgr4-v.vf)
-Provides:       tex(utftgr5-h.tfm)
-Provides:       tex(utftgr5-h.vf)
-Provides:       tex(utftgr5-v.tfm)
-Provides:       tex(utftgr5-v.vf)
-Provides:       tex(utftgr6-h.tfm)
-Provides:       tex(utftgr6-h.vf)
-Provides:       tex(utftgr6-v.tfm)
-Provides:       tex(utftgr6-v.vf)
-Provides:       tex(utftgr7-h.tfm)
-Provides:       tex(utftgr7-h.vf)
-Provides:       tex(utftgr7-v.tfm)
-Provides:       tex(utftgr7-v.vf)
-Provides:       tex(utftgr8-h.tfm)
-Provides:       tex(utftgr8-h.vf)
-Provides:       tex(utftgr8-v.tfm)
-Provides:       tex(utftgr8-v.vf)
-Provides:       tex(utftgr9-h.tfm)
-Provides:       tex(utftgr9-h.vf)
-Provides:       tex(utftgr9-v.tfm)
-Provides:       tex(utftgr9-v.vf)
-Provides:       tex(utftgra-h.tfm)
-Provides:       tex(utftgra-h.vf)
-Provides:       tex(utftgra-v.tfm)
-Provides:       tex(utftgra-v.vf)
-Provides:       tex(utftgrb-h.tfm)
-Provides:       tex(utftgrb-h.vf)
-Provides:       tex(utftgrb-v.tfm)
-Provides:       tex(utftgrb-v.vf)
-Provides:       tex(utftgrc-h.tfm)
-Provides:       tex(utftgrc-h.vf)
-Provides:       tex(utftgrc-v.tfm)
-Provides:       tex(utftgrc-v.vf)
-Provides:       tex(utftgrd-h.tfm)
-Provides:       tex(utftgrd-h.vf)
-Provides:       tex(utftgrd-v.tfm)
-Provides:       tex(utftgrd-v.vf)
-Provides:       tex(utftgre-h.tfm)
-Provides:       tex(utftgre-h.vf)
-Provides:       tex(utftgre-v.tfm)
-Provides:       tex(utftgre-v.vf)
-Provides:       tex(utftgrf-h.tfm)
-Provides:       tex(utftgrf-h.vf)
-Provides:       tex(utftgrf-v.tfm)
-Provides:       tex(utftgrf-v.vf)
-Provides:       tex(utftgrk-h.tfm)
-Provides:       tex(utftgrk-h.vf)
-Provides:       tex(utftgrk-v.tfm)
-Provides:       tex(utftgrk-v.vf)
-Provides:       tex(utftgrl-h.tfm)
-Provides:       tex(utftgrl-h.vf)
-Provides:       tex(utftgrl-v.tfm)
-Provides:       tex(utftgrl-v.vf)
-Provides:       tex(utftgrm-h.tfm)
-Provides:       tex(utftgrm-h.vf)
-Provides:       tex(utftgrm-v.tfm)
-Provides:       tex(utftgrm-v.vf)
-Provides:       tex(utftgrn-h.tfm)
-Provides:       tex(utftgrn-h.vf)
-Provides:       tex(utftgrn-v.tfm)
-Provides:       tex(utftgrn-v.vf)
-Provides:       tex(utftgro-h.tfm)
-Provides:       tex(utftgro-h.vf)
-Provides:       tex(utftgro-v.tfm)
-Provides:       tex(utftgro-v.vf)
-Provides:       tex(utftgrp-h.tfm)
-Provides:       tex(utftgrp-h.vf)
-Provides:       tex(utftgrp-v.tfm)
-Provides:       tex(utftgrp-v.vf)
-Provides:       tex(utftgrq-h.tfm)
-Provides:       tex(utftgrq-h.vf)
-Provides:       tex(utftgrq-v.tfm)
-Provides:       tex(utftgrq-v.vf)
-Provides:       tex(utftgrr-h.tfm)
-Provides:       tex(utftgrr-h.vf)
-Provides:       tex(utftgrr-v.tfm)
-Provides:       tex(utftgrr-v.vf)
-Provides:       tex(utftgrs-h.tfm)
-Provides:       tex(utftgrs-h.vf)
-Provides:       tex(utftgrs-v.tfm)
-Provides:       tex(utftgrs-v.vf)
-Provides:       tex(utftgrt-h.tfm)
-Provides:       tex(utftgrt-h.vf)
-Provides:       tex(utftgrt-v.tfm)
-Provides:       tex(utftgrt-v.vf)
-Provides:       tex(utftgru-h.tfm)
-Provides:       tex(utftgru-h.vf)
-Provides:       tex(utftgru-v.tfm)
-Provides:       tex(utftgru-v.vf)
-Provides:       tex(utftgrv-h.tfm)
-Provides:       tex(utftgrv-h.vf)
-Provides:       tex(utftgrv-v.tfm)
-Provides:       tex(utftgrv-v.vf)
-Provides:       tex(utftgrw-h.tfm)
-Provides:       tex(utftgrw-h.vf)
-Provides:       tex(utftgrw-v.tfm)
-Provides:       tex(utftgrw-v.vf)
-Provides:       tex(utftgrx-h.tfm)
-Provides:       tex(utftgrx-h.vf)
-Provides:       tex(utftgrx-v.tfm)
-Provides:       tex(utftgrx-v.vf)
-Provides:       tex(utftgrz-h.tfm)
-Provides:       tex(utftgrz-h.vf)
-Provides:       tex(utftgrz-v.tfm)
-Provides:       tex(utftgrz-v.vf)
 Provides:       tex(utftmb--h.tfm)
 Provides:       tex(utftmb--h.vf)
 Provides:       tex(utftmb--v.tfm)
@@ -12368,133 +11187,9 @@ Provides:       tex(utftmr--h.tfm)
 Provides:       tex(utftmr--h.vf)
 Provides:       tex(utftmr--v.tfm)
 Provides:       tex(utftmr--v.vf)
-Provides:       tex(utftmr0-h.tfm)
-Provides:       tex(utftmr0-h.vf)
-Provides:       tex(utftmr0-v.tfm)
-Provides:       tex(utftmr0-v.vf)
-Provides:       tex(utftmr1-h.tfm)
-Provides:       tex(utftmr1-h.vf)
-Provides:       tex(utftmr1-v.tfm)
-Provides:       tex(utftmr1-v.vf)
-Provides:       tex(utftmr2-h.tfm)
-Provides:       tex(utftmr2-h.vf)
-Provides:       tex(utftmr2-v.tfm)
-Provides:       tex(utftmr2-v.vf)
-Provides:       tex(utftmr3-h.tfm)
-Provides:       tex(utftmr3-h.vf)
-Provides:       tex(utftmr3-v.tfm)
-Provides:       tex(utftmr3-v.vf)
-Provides:       tex(utftmr4-h.tfm)
-Provides:       tex(utftmr4-h.vf)
-Provides:       tex(utftmr4-v.tfm)
-Provides:       tex(utftmr4-v.vf)
-Provides:       tex(utftmr5-h.tfm)
-Provides:       tex(utftmr5-h.vf)
-Provides:       tex(utftmr5-v.tfm)
-Provides:       tex(utftmr5-v.vf)
-Provides:       tex(utftmr6-h.tfm)
-Provides:       tex(utftmr6-h.vf)
-Provides:       tex(utftmr6-v.tfm)
-Provides:       tex(utftmr6-v.vf)
-Provides:       tex(utftmr7-h.tfm)
-Provides:       tex(utftmr7-h.vf)
-Provides:       tex(utftmr7-v.tfm)
-Provides:       tex(utftmr7-v.vf)
-Provides:       tex(utftmr8-h.tfm)
-Provides:       tex(utftmr8-h.vf)
-Provides:       tex(utftmr8-v.tfm)
-Provides:       tex(utftmr8-v.vf)
-Provides:       tex(utftmr9-h.tfm)
-Provides:       tex(utftmr9-h.vf)
-Provides:       tex(utftmr9-v.tfm)
-Provides:       tex(utftmr9-v.vf)
-Provides:       tex(utftmra-h.tfm)
-Provides:       tex(utftmra-h.vf)
-Provides:       tex(utftmra-v.tfm)
-Provides:       tex(utftmra-v.vf)
-Provides:       tex(utftmrb-h.tfm)
-Provides:       tex(utftmrb-h.vf)
-Provides:       tex(utftmrb-v.tfm)
-Provides:       tex(utftmrb-v.vf)
-Provides:       tex(utftmrc-h.tfm)
-Provides:       tex(utftmrc-h.vf)
-Provides:       tex(utftmrc-v.tfm)
-Provides:       tex(utftmrc-v.vf)
-Provides:       tex(utftmrd-h.tfm)
-Provides:       tex(utftmrd-h.vf)
-Provides:       tex(utftmrd-v.tfm)
-Provides:       tex(utftmrd-v.vf)
-Provides:       tex(utftmre-h.tfm)
-Provides:       tex(utftmre-h.vf)
-Provides:       tex(utftmre-v.tfm)
-Provides:       tex(utftmre-v.vf)
-Provides:       tex(utftmrf-h.tfm)
-Provides:       tex(utftmrf-h.vf)
-Provides:       tex(utftmrf-v.tfm)
-Provides:       tex(utftmrf-v.vf)
-Provides:       tex(utftmrk-h.tfm)
-Provides:       tex(utftmrk-h.vf)
-Provides:       tex(utftmrk-v.tfm)
-Provides:       tex(utftmrk-v.vf)
-Provides:       tex(utftmrl-h.tfm)
-Provides:       tex(utftmrl-h.vf)
-Provides:       tex(utftmrl-v.tfm)
-Provides:       tex(utftmrl-v.vf)
-Provides:       tex(utftmrm-h.tfm)
-Provides:       tex(utftmrm-h.vf)
-Provides:       tex(utftmrm-v.tfm)
-Provides:       tex(utftmrm-v.vf)
-Provides:       tex(utftmrn-h.tfm)
-Provides:       tex(utftmrn-h.vf)
-Provides:       tex(utftmrn-v.tfm)
-Provides:       tex(utftmrn-v.vf)
-Provides:       tex(utftmro-h.tfm)
-Provides:       tex(utftmro-h.vf)
-Provides:       tex(utftmro-v.tfm)
-Provides:       tex(utftmro-v.vf)
-Provides:       tex(utftmrp-h.tfm)
-Provides:       tex(utftmrp-h.vf)
-Provides:       tex(utftmrp-v.tfm)
-Provides:       tex(utftmrp-v.vf)
-Provides:       tex(utftmrq-h.tfm)
-Provides:       tex(utftmrq-h.vf)
-Provides:       tex(utftmrq-v.tfm)
-Provides:       tex(utftmrq-v.vf)
-Provides:       tex(utftmrr-h.tfm)
-Provides:       tex(utftmrr-h.vf)
-Provides:       tex(utftmrr-v.tfm)
-Provides:       tex(utftmrr-v.vf)
-Provides:       tex(utftmrs-h.tfm)
-Provides:       tex(utftmrs-h.vf)
-Provides:       tex(utftmrs-v.tfm)
-Provides:       tex(utftmrs-v.vf)
-Provides:       tex(utftmrt-h.tfm)
-Provides:       tex(utftmrt-h.vf)
-Provides:       tex(utftmrt-v.tfm)
-Provides:       tex(utftmrt-v.vf)
-Provides:       tex(utftmru-h.tfm)
-Provides:       tex(utftmru-h.vf)
-Provides:       tex(utftmru-v.tfm)
-Provides:       tex(utftmru-v.vf)
-Provides:       tex(utftmrv-h.tfm)
-Provides:       tex(utftmrv-h.vf)
-Provides:       tex(utftmrv-v.tfm)
-Provides:       tex(utftmrv-v.vf)
-Provides:       tex(utftmrw-h.tfm)
-Provides:       tex(utftmrw-h.vf)
-Provides:       tex(utftmrw-v.tfm)
-Provides:       tex(utftmrw-v.vf)
-Provides:       tex(utftmrx-h.tfm)
-Provides:       tex(utftmrx-h.vf)
-Provides:       tex(utftmrx-v.tfm)
-Provides:       tex(utftmrx-v.vf)
-Provides:       tex(utftmrz-h.tfm)
-Provides:       tex(utftmrz-h.vf)
-Provides:       tex(utftmrz-v.tfm)
-Provides:       tex(utftmrz-v.vf)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source60:       japanese-otf.tar.xz
 Source61:       japanese-otf.doc.tar.xz
 
@@ -12504,7 +11199,7 @@ supporting a wide variety of fonts in LaTeX using the pTeX
 engine.
 
 %package -n texlive-japanese-otf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn74106
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-japanese-otf
 License:        BSD-3-Clause
@@ -12589,6 +11284,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_jpn.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_kor.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_min_jpn.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_min_kor.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_min_sch.tex
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_min_tch.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_sch.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/svs_list_tch.tex
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/uotf-cid-h.tex
@@ -12605,6 +11303,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/utfmacro-haranoaji.map
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/utfmacro-ibmplex.map
 %{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/utfmacro-kozuka.map
+%{_texmfdistdir}/doc/fonts/japanese-otf/doc/test/uplatex/utfmacro-noembed.map
 
 %files -n texlive-japanese-otf
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/brsgexpgothb-h.tfm
@@ -12669,22 +11368,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcge--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr4-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr5-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr5-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr6-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr6-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr7-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcgr7-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmb--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmb--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmgr--h.tfm
@@ -12693,22 +11376,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcml--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr4-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr5-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr5-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr6-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr6-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr7-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidcmr7-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidjgb--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidjgb--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidjgb0-h.tfm
@@ -12813,16 +11480,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkge--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkgr4-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmb--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmb--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmgr--h.tfm
@@ -12831,32 +11488,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkml--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidkmr4-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgb--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgb--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtge--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtge--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtgr4-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmb--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmb--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmgr--h.tfm
@@ -12865,16 +11502,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtml--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/cidtmr4-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/expgothb-h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/expgothb-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/expgothbn-h.tfm
@@ -13343,64 +11970,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcge--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr4-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr5-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr5-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr6-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr6-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr7-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr7-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr8-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr8-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr9-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgr9-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgra-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgra-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrb-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrb-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrc-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrc-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrd-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrd-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgre-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgre-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrf-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrf-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrk-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrk-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrl-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrl-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrm-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrm-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrn-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrn-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgro-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgro-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrp-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrp-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrq-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrq-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrr-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrr-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrs-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrs-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrt-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrt-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgru-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgru-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrv-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrv-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrw-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcgrw-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmb--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmb--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmgr--h.tfm
@@ -13409,132 +11978,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcml--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr4-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr5-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr5-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr6-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr6-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr7-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr7-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr8-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr8-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr9-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmr9-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmra-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmra-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrb-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrb-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrc-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrc-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrd-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrd-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmre-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmre-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrf-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrf-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrk-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrk-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrl-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrl-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrm-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrm-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrn-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrn-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmro-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmro-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrp-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrp-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrq-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrq-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrr-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrr-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrs-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrs-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrt-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrt-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmru-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmru-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrv-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrv-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrw-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfcmrw-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr4-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr5-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr5-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr6-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr6-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr7-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr7-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr8-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr8-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr9-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr9-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgra-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgra-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrb-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrb-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrc-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrc-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrd-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrd-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgre-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgre-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrf-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrf-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrg-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrg-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrj-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrj-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrk-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrk-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrl-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrl-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrm-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrm-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrn-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrn-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgro-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgro-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrp-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrp-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrq-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrq-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrr-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrr-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrs-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrs-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrt-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrt-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgru-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgru-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrv-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrv-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrw-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrw-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrx-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrx-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgry-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgry-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrz-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgrz-v.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgb--h.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgb--v.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfge--h.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfge--v.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr--h.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfgr--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfjgb--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfjgb--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfjgb0-h.tfm
@@ -14255,38 +12704,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkge--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr4-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr5-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr5-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr6-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr6-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr7-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr7-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr8-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr8-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr9-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgr9-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgra-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgra-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgrb-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgrb-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgrc-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgrc-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgrd-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgrd-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgre-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgre-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgrf-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkgrf-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmb--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmb--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmgr--h.tfm
@@ -14295,174 +12712,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkml--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr4-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr5-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr5-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr6-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr6-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr7-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr7-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr8-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr8-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr9-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmr9-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmra-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmra-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmrb-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmrb-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmrc-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmrc-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmrd-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmrd-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmre-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmre-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmrf-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfkmrf-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr4-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr5-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr5-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr6-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr6-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr7-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr7-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr8-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr8-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr9-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr9-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmra-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmra-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrb-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrb-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrc-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrc-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrd-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrd-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmre-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmre-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrf-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrf-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrg-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrg-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrj-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrj-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrk-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrk-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrl-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrl-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrm-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrm-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrn-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrn-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmro-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmro-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrp-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrp-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrq-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrq-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrr-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrr-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrs-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrs-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrt-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrt-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmru-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmru-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrv-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrv-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrw-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrw-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrx-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrx-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmry-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmry-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrz-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmrz-v.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmb--h.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmb--v.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmgr--h.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmgr--v.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfml--h.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfml--v.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr--h.tfm
+%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utfmr--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgb--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgb--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftge--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftge--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr4-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr5-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr5-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr6-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr6-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr7-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr7-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr8-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr8-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr9-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgr9-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgra-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgra-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrb-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrb-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrc-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrc-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrd-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrd-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgre-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgre-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrf-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrf-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrk-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrk-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrl-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrl-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrm-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrm-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrn-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrn-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgro-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgro-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrp-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrp-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrq-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrq-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrr-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrr-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrs-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrs-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrt-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrt-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgru-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgru-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrv-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrv-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrw-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrw-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrx-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrx-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrz-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftgrz-v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmb--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmb--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmgr--h.tfm
@@ -14471,68 +12734,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftml--v.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr--h.tfm
 %{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr--v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr0-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr0-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr1-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr1-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr2-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr2-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr3-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr3-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr4-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr4-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr5-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr5-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr6-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr6-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr7-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr7-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr8-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr8-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr9-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmr9-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmra-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmra-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrb-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrb-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrc-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrc-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrd-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrd-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmre-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmre-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrf-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrf-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrk-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrk-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrl-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrl-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrm-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrm-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrn-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrn-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmro-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmro-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrp-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrp-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrq-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrq-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrr-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrr-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrs-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrs-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrt-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrt-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmru-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmru-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrv-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrv-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrw-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrw-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrx-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrx-v.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrz-h.tfm
-%{_texmfdistdir}/fonts/tfm/public/japanese-otf/utftmrz-v.tfm
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/brsgexpgothb-h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/brsgexpgothb-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/brsgexpgothbn-h.vf
@@ -14595,22 +12796,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcge--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr4-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr5-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr5-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr6-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr6-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr7-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcgr7-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmb--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmb--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmgr--h.vf
@@ -14619,22 +12804,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcml--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr4-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr5-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr5-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr6-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr6-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr7-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidcmr7-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidjgb--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidjgb--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidjgb0-h.vf
@@ -14739,16 +12908,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkge--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkgr4-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmb--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmb--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmgr--h.vf
@@ -14757,32 +12916,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkml--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidkmr4-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgb--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgb--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtge--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtge--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtgr4-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmb--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmb--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmgr--h.vf
@@ -14791,16 +12930,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtml--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/cidtmr4-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/expgothb-h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/expgothb-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/expgothbn-h.vf
@@ -15045,64 +13174,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcge--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr4-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr5-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr5-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr6-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr6-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr7-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr7-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr8-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr8-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr9-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgr9-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgra-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgra-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrb-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrb-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrc-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrc-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrd-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrd-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgre-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgre-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrf-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrf-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrk-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrk-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrl-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrl-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrm-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrm-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrn-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrn-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgro-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgro-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrp-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrp-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrq-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrq-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrr-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrr-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrs-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrs-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrt-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrt-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgru-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgru-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrv-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrv-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrw-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcgrw-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmb--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmb--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmgr--h.vf
@@ -15111,132 +13182,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcml--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr4-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr5-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr5-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr6-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr6-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr7-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr7-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr8-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr8-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr9-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmr9-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmra-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmra-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrb-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrb-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrc-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrc-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrd-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrd-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmre-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmre-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrf-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrf-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrk-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrk-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrl-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrl-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrm-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrm-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrn-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrn-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmro-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmro-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrp-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrp-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrq-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrq-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrr-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrr-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrs-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrs-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrt-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrt-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmru-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmru-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrv-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrv-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrw-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfcmrw-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr4-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr5-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr5-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr6-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr6-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr7-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr7-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr8-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr8-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr9-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr9-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgra-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgra-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrb-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrb-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrc-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrc-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrd-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrd-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgre-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgre-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrf-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrf-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrg-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrg-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrj-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrj-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrk-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrk-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrl-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrl-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrm-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrm-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrn-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrn-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgro-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgro-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrp-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrp-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrq-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrq-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrr-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrr-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrs-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrs-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrt-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrt-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgru-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgru-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrv-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrv-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrw-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrw-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrx-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrx-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgry-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgry-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrz-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgrz-v.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgb--h.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgb--v.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfge--h.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfge--v.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr--h.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfgr--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfjgb--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfjgb--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfjgb0-h.vf
@@ -15957,38 +13908,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkge--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr4-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr5-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr5-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr6-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr6-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr7-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr7-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr8-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr8-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr9-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgr9-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgra-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgra-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgrb-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgrb-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgrc-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgrc-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgrd-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgrd-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgre-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgre-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgrf-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkgrf-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmb--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmb--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmgr--h.vf
@@ -15997,174 +13916,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkml--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr4-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr5-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr5-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr6-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr6-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr7-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr7-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr8-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr8-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr9-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmr9-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmra-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmra-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmrb-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmrb-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmrc-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmrc-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmrd-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmrd-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmre-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmre-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmrf-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfkmrf-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr4-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr5-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr5-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr6-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr6-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr7-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr7-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr8-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr8-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr9-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr9-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmra-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmra-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrb-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrb-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrc-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrc-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrd-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrd-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmre-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmre-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrf-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrf-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrg-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrg-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrj-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrj-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrk-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrk-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrl-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrl-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrm-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrm-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrn-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrn-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmro-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmro-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrp-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrp-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrq-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrq-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrr-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrr-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrs-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrs-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrt-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrt-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmru-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmru-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrv-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrv-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrw-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrw-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrx-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrx-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmry-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmry-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrz-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmrz-v.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmb--h.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmb--v.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmgr--h.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmgr--v.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfml--h.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfml--v.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr--h.vf
+%{_texmfdistdir}/fonts/vf/public/japanese-otf/utfmr--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgb--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgb--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftge--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftge--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr4-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr5-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr5-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr6-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr6-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr7-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr7-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr8-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr8-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr9-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgr9-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgra-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgra-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrb-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrb-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrc-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrc-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrd-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrd-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgre-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgre-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrf-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrf-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrk-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrk-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrl-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrl-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrm-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrm-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrn-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrn-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgro-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgro-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrp-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrp-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrq-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrq-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrr-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrr-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrs-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrs-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrt-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrt-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgru-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgru-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrv-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrv-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrw-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrw-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrx-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrx-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrz-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftgrz-v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmb--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmb--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmgr--h.vf
@@ -16173,68 +13938,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftml--v.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr--h.vf
 %{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr--v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr0-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr0-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr1-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr1-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr2-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr2-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr3-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr3-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr4-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr4-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr5-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr5-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr6-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr6-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr7-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr7-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr8-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr8-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr9-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmr9-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmra-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmra-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrb-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrb-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrc-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrc-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrd-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrd-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmre-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmre-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrf-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrf-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrk-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrk-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrl-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrl-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrm-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrm-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrn-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrn-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmro-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmro-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrp-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrp-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrq-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrq-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrr-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrr-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrs-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrs-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrt-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrt-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmru-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmru-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrv-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrv-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrw-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrw-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrx-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrx-v.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrz-h.vf
-%{_texmfdistdir}/fonts/vf/public/japanese-otf/utftmrz-v.vf
 %{_texmfdistdir}/tex/platex/japanese-otf/ajmacros.sty
 %{_texmfdistdir}/tex/platex/japanese-otf/mlcid.sty
 %{_texmfdistdir}/tex/platex/japanese-otf/mlutf.sty
@@ -16243,7 +13946,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/japanese-otf/redeffont.sty
 
 %package -n texlive-jbact
-Version:        %{texlive_version}.%{texlive_noarch}.1.30svn52717
+Version:        %{texlive_version}.%{texlive_noarch}.1.30svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        BibTeX style for biology journals
@@ -16270,7 +13973,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source62:       jbact.tar.xz
 
 %description -n texlive-jbact
@@ -16301,7 +14004,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/bibtex/bst/jbact/jbact.bst
 
 %package -n texlive-jetbrainsmono-otf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73401
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Package (or only fontspec config files) support for the OpenType font JetBrains
@@ -16333,7 +14036,7 @@ Provides:       tex(jetbrainsmono-otf.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source63:       jetbrainsmono-otf.tar.xz
 Source64:       jetbrainsmono-otf.doc.tar.xz
 
@@ -16348,7 +14051,7 @@ jetbrainscode-extralight for extralight version,
 jetbrainsmono-thin or jetbrainscode-thin for thin version.
 
 %package -n texlive-jetbrainsmono-otf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73401
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn77682
 Release:        0
 Summary:        Documentation for texlive-jetbrainsmono-otf
 License:        LPPL-1.0
@@ -16360,7 +14063,7 @@ Supplements:    (texlive-jetbrainsmono-otf and texlive-alldocumentation)
 This package includes the documentation for texlive-jetbrainsmono-otf
 
 %package -n texlive-jetbrainsmono-otf-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn73401
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn77682
 Release:        0
 Summary:        Severed fonts for texlive-jetbrainsmono-otf
 License:        LPPL-1.0
@@ -16451,7 +14154,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-jetbrainsmono-otf/JetBrainsMono-ThinItalic.otf
 
 %package -n texlive-jeuxcartes
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.1svn73958
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.5svn76966
 Release:        0
 License:        LPPL-1.0
 Summary:        Macros to insert playing cards
@@ -16489,7 +14192,7 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xinttools.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source65:       jeuxcartes.tar.xz
 Source66:       jeuxcartes.doc.tar.xz
 
@@ -16499,7 +14202,7 @@ or hand, or random-hand, Poker or French Tarot or Uno, from png
 files.
 
 %package -n texlive-jeuxcartes-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.1svn73958
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.5svn76966
 Release:        0
 Summary:        Documentation for texlive-jeuxcartes
 License:        LPPL-1.0
@@ -16928,6 +14631,116 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv5-VK.pdf
 %{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv5-VP.pdf
 %{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv5-VT.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-10C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-10K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-10P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-10T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-2C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-2K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-2P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-2T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-3C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-3K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-3P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-3T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-4C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-4K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-4P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-4T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-5C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-5K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-5P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-5T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-6C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-6K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-6P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-6T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-7C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-7K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-7P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-7T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-8C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-8K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-8P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-8T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-9C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-9K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-9P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-9T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-AC.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-AK.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-AP.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-APv2.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-AT.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-DC.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-DK.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-DP.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-DT.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-JN.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-JR.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-RC.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-RK.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-RP.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-RT.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-VC.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-VK.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-VP.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv6-VT.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-10C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-10K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-10P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-10T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-2C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-2K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-2P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-2T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-3C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-3K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-3P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-3T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-4C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-4K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-4P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-4T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-5C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-5K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-5P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-5T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-6C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-6K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-6P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-6T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-7C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-7K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-7P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-7T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-8C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-8K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-8P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-8T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-9C.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-9K.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-9P.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-9T.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-AC.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-AK.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-AP.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-AT.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-DC.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-DK.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-DP.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-DT.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-Dos.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-JN.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-JR.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-RC.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-RK.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-RP.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-RT.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-VC.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-VK.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-VP.pdf
+%{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-PokeRv7-VT.pdf
 %{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-TaroTv1-10AT.png
 %{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-TaroTv1-10C.png
 %{_texmfdistdir}/tex/latex/jeuxcartes/CaJ-TaroTv1-10K.png
@@ -17103,7 +14916,7 @@ Requires:       perl(constant)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source67:       jfmutil.tar.xz
 Source68:       jfmutil.doc.tar.xz
 
@@ -17157,10 +14970,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/jfmutil/jfmutil.pl
 
 %package -n texlive-jieeetran
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn65642
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn76924
 Release:        0
 License:        LPPL-1.0
-Summary:        UnofficiaL BibTeX style for citing Japanese articles in IEEE format
+Summary:        Unofficial BibTeX style for citing Japanese articles in IEEE format
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -17185,7 +14998,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jieeetran-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source69:       jieeetran.tar.xz
 Source70:       jieeetran.doc.tar.xz
 
@@ -17195,7 +15008,7 @@ trying to cite Japanese articles in the Institute of Electrical
 and Electronics Engineers (IEEE) format.
 
 %package -n texlive-jieeetran-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn65642
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.19svn76924
 Release:        0
 Summary:        Documentation for texlive-jieeetran
 License:        LPPL-1.0
@@ -17274,7 +15087,7 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source71:       jigsaw.tar.xz
 Source72:       jigsaw.doc.tar.xz
 
@@ -17357,7 +15170,7 @@ Requires:       tex(array.sty)
 Requires:       tex(physics.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source73:       jkmath.tar.xz
 Source74:       jkmath.doc.tar.xz
 
@@ -17452,7 +15265,7 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(inputenc.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source75:       jknapltx.tar.xz
 Source76:       jknapltx.doc.tar.xz
 
@@ -17554,7 +15367,7 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source77:       jlabels.tar.xz
 Source78:       jlabels.doc.tar.xz
 
@@ -17600,7 +15413,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jlabels/jlabels.sty
 
 %package -n texlive-jlreq
-Version:        %{texlive_version}.%{texlive_noarch}.svn72460
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        BSD-3-Clause
 Summary:        Japanese document class based on requirements for Japanese text layout
@@ -17731,7 +15544,6 @@ Provides:       tex(zjlreqg-v.tfm)
 Provides:       tex(zjlreqg-v.vf)
 Provides:       tex(zjlreqg.tfm)
 Provides:       tex(zjlreqg.vf)
-Requires:       tex(etoolbox.sty)
 Requires:       tex(everyhook.sty)
 Requires:       tex(filehook.sty)
 Requires:       tex(gbm.tfm)
@@ -17749,7 +15561,7 @@ Requires:       tex(uprml-h.tfm)
 Requires:       tex(uprml-hq.tfm)
 Requires:       tex(uprml-v.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source79:       jlreq.tar.xz
 Source80:       jlreq.doc.tar.xz
 
@@ -17760,7 +15572,7 @@ JFM (Japanese font metric) files for LuaTeX-ja / pLaTeX /
 upLaTeX are provided.
 
 %package -n texlive-jlreq-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn72460
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-jlreq
 License:        BSD-3-Clause
@@ -17913,7 +15725,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/jlreq/jfm-jlreqv.lua
 
 %package -n texlive-jlreq-deluxe
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn69961
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Multi-weight Japanese font support for the jlreq class
@@ -19135,7 +16947,7 @@ Requires:       tex(uphminr-v.tfm)
 Requires:       tex(uphminrn-h.tfm)
 Requires:       tex(uphminrn-v.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source81:       jlreq-deluxe.tar.xz
 Source82:       jlreq-deluxe.doc.tar.xz
 
@@ -19144,7 +16956,7 @@ This package provides multi-weight Japanese font support for
 the jlreq class.
 
 %package -n texlive-jlreq-deluxe-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn69961
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn76924
 Release:        0
 Summary:        Documentation for texlive-jlreq-deluxe
 License:        LPPL-1.0
@@ -20304,7 +18116,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/jlreq-deluxe/jlreq-deluxe.sty
 
 %package -n texlive-jmb
-Version:        %{texlive_version}.%{texlive_noarch}.1.21svn52718
+Version:        %{texlive_version}.%{texlive_noarch}.1.21svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        BibTeX style for the Journal of Theoretical Biology
@@ -20332,7 +18144,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(jmb.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source83:       jmb.tar.xz
 
 %description -n texlive-jmb
@@ -20421,7 +18233,7 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xmpincl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source84:       jmlr.tar.xz
 Source85:       jmlr.doc.tar.xz
 
@@ -20511,7 +18323,7 @@ Provides:       tex(hans.enc)
 Provides:       tex(hans.map)
 Provides:       tex(hans.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source86:       jmn.tar.xz
 
 %description -n texlive-jmn
@@ -20607,7 +18419,7 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(scalerel.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source87:       jmsdelim.tar.xz
 Source88:       jmsdelim.doc.tar.xz
 
@@ -20663,7 +18475,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jmsdelim/jmsdelim.sty
 
 %package -n texlive-jneurosci
-Version:        %{texlive_version}.%{texlive_noarch}.1.00svn17346
+Version:        %{texlive_version}.%{texlive_noarch}.1.00svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        BibTeX style for the Journal of Neuroscience
@@ -20692,7 +18504,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jneurosci-doc >= %{texlive_version}
 Provides:       tex(jneurosci.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source89:       jneurosci.tar.xz
 Source90:       jneurosci.doc.tar.xz
 
@@ -20703,7 +18515,7 @@ style. It should be characterised as an author-date citation
 style; a BibTeX style and a LaTeX package are provided.
 
 %package -n texlive-jneurosci-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.00svn17346
+Version:        %{texlive_version}.%{texlive_noarch}.1.00svn76790
 Release:        0
 Summary:        Documentation for texlive-jneurosci
 License:        LPPL-1.0
@@ -20774,7 +18586,7 @@ Requires:       tex(functional.sty)
 Requires:       tex(randexam.cls)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source91:       jnuexam.tar.xz
 Source92:       jnuexam.doc.tar.xz
 
@@ -20867,7 +18679,7 @@ Suggests:       texlive-jobname-suffix-doc >= %{texlive_version}
 Provides:       tex(jobname-suffix.sty)
 Requires:       tex(expl3.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source93:       jobname-suffix.tar.xz
 Source94:       jobname-suffix.doc.tar.xz
 
@@ -20916,7 +18728,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jobname-suffix/jobname-suffix.sty
 
 %package -n texlive-joinbox
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn72239
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Join boxes vertically or horizontally
@@ -20948,7 +18760,7 @@ Requires:       tex(expl3.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source95:       joinbox.tar.xz
 Source96:       joinbox.doc.tar.xz
 
@@ -20959,7 +18771,7 @@ width, while when using horizontal joined, all boxes to be
 joined keep same height.
 
 %package -n texlive-joinbox-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn72239
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn76924
 Release:        0
 Summary:        Documentation for texlive-joinbox
 License:        LPPL-1.0
@@ -21000,7 +18812,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/joinbox/joinbox.sty
 
 %package -n texlive-josefin
-Version:        %{texlive_version}.%{texlive_noarch}.svn64569
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Josefin fonts with LaTeX support
@@ -21199,7 +19011,7 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source97:       josefin.tar.xz
 Source98:       josefin.doc.tar.xz
 
@@ -21211,7 +19023,7 @@ Josefin Sans is available in seven weights, with corresponding
 italics.
 
 %package -n texlive-josefin-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64569
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-josefin
 License:        OFL-1.1
@@ -21223,7 +19035,7 @@ Supplements:    (texlive-josefin and texlive-alldocumentation)
 This package includes the documentation for texlive-josefin
 
 %package -n texlive-josefin-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64569
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-josefin
 License:        OFL-1.1
@@ -21526,7 +19338,7 @@ Requires:       tex(lipsum.sty)
 Requires:       tex(orcidlink.sty)
 Requires:       tex(parskip.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source99:       jourcl.tar.xz
 Source100:      jourcl.doc.tar.xz
 
@@ -21630,7 +19442,7 @@ Requires:       tex(parskip.sty)
 Requires:       tex(wasysym.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source101:      jourrr.tar.xz
 Source102:      jourrr.doc.tar.xz
 
@@ -21731,7 +19543,7 @@ Requires:       tex(luatexja-otf.sty)
 Requires:       tex(otf.sty)
 Requires:       tex(refcount.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source103:      jpneduenumerate.tar.xz
 Source104:      jpneduenumerate.doc.tar.xz
 
@@ -21815,7 +19627,7 @@ Requires:       tex(luatexja-otf.sty)
 Requires:       tex(otf.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source105:      jpnedumathsymbols.tar.xz
 Source106:      jpnedumathsymbols.doc.tar.xz
 
@@ -21897,7 +19709,7 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(overcite.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source107:      jpsj.tar.xz
 Source108:      jpsj.doc.tar.xz
 
@@ -21977,7 +19789,7 @@ Provides:       tex(schild.tex)
 Provides:       tex(sperr.tex)
 Provides:       tex(xfig.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source109:      js-misc.tar.xz
 Source110:      js-misc.doc.tar.xz
 
@@ -22042,7 +19854,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/plain/js-misc/xfig.tex
 
 %package -n texlive-jsclasses
-Version:        %{texlive_version}.%{texlive_noarch}.svn66093
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        BSD-3-Clause
 Summary:        Classes tailored for use with Japanese
@@ -22082,7 +19894,7 @@ Provides:       tex(okuverb.sty)
 Requires:       tex(ts1enc.def)
 Requires:       tex(type1cm.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source111:      jsclasses.tar.xz
 Source112:      jsclasses.doc.tar.xz
 
@@ -22092,7 +19904,7 @@ packages okumacro and okuverb. These classes are designed to
 work under ASCII Corporation's Japanese TeX system ptex.
 
 %package -n texlive-jsclasses-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn66093
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-jsclasses
 License:        BSD-3-Clause
@@ -22143,7 +19955,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/platex/jsclasses/okuverb.sty
 
 %package -n texlive-jslectureplanner
-Version:        %{texlive_version}.%{texlive_noarch}.1.14svn73640
+Version:        %{texlive_version}.%{texlive_noarch}.1.15svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Creation and management of university course material
@@ -22182,7 +19994,7 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source113:      jslectureplanner.tar.xz
 Source114:      jslectureplanner.doc.tar.xz
 
@@ -22199,7 +20011,7 @@ BibLaTeX. The bundle also includes a package jsmembertable.sty
 that helps in generating course member and presence lists.
 
 %package -n texlive-jslectureplanner-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.14svn73640
+Version:        %{texlive_version}.%{texlive_noarch}.1.15svn77682
 Release:        0
 Summary:        Documentation for texlive-jslectureplanner
 License:        LPPL-1.0
@@ -22288,7 +20100,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jslectureplanner/jsmembertable.sty
 
 %package -n texlive-jsonparse
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn74288
+Version:        %{texlive_version}.%{texlive_noarch}.1.7.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Parse, store and access JSON data in LaTeX documents
@@ -22317,7 +20129,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jsonparse-doc >= %{texlive_version}
 Provides:       tex(jsonparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source115:      jsonparse.tar.xz
 Source116:      jsonparse.doc.tar.xz
 
@@ -22327,7 +20139,7 @@ files or strings in LaTeX documents, parse the data and store
 it in a user-defined token variable.
 
 %package -n texlive-jsonparse-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.1svn74288
+Version:        %{texlive_version}.%{texlive_noarch}.1.7.1svn77682
 Release:        0
 Summary:        Documentation for texlive-jsonparse
 License:        LPPL-1.0
@@ -22366,6 +20178,233 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-jsonparse
 %{_texmfdistdir}/tex/latex/jsonparse/jsonparse.sty
+
+%package -n texlive-jsonresume
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn77560
+Release:        0
+License:        LPPL-1.0
+Summary:        A minimal LuaLaTeX package for rendering JSON Resume data into LaTeX documents
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-jsonresume-doc >= %{texlive_version}
+Provides:       tex(jsonresume.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(ifluatex.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source117:      jsonresume.tar.xz
+Source118:      jsonresume.doc.tar.xz
+
+%description -n texlive-jsonresume
+A minimal LuaLaTeX package for rendering JSON Resume data into
+clean, professional resumes. Features Full JSON Resume Schema
+Support All 12 sections (basics, work, volunteer, education,
+awards, certificates, publications, skills, languages,
+interests, references, projects) Load from File or URL Local
+JSON files or remote URLs Schema Validation Strict mode warns
+about schema violations Clean FAANG-style Formatting
+Professional typography with no distracting design elements
+Customizable Section Titles Override default section headers
+Requirements LuaLaTeXPart of TeX Live or MiKTeX curl For URL
+loading, pre-installed on most systems
+
+%package -n texlive-jsonresume-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.2svn77560
+Release:        0
+Summary:        Documentation for texlive-jsonresume
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-jsonresume and texlive-alldocumentation)
+
+%description -n texlive-jsonresume-doc
+This package includes the documentation for texlive-jsonresume
+
+%post -n texlive-jsonresume
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-jsonresume
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-jsonresume
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-jsonresume-doc
+%{_texmfdistdir}/doc/lualatex/jsonresume/LICENSE
+%{_texmfdistdir}/doc/lualatex/jsonresume/README.md
+%{_texmfdistdir}/doc/lualatex/jsonresume/example/example.pdf
+%{_texmfdistdir}/doc/lualatex/jsonresume/example/example.tex
+%{_texmfdistdir}/doc/lualatex/jsonresume/jsonresume-doc.pdf
+%{_texmfdistdir}/doc/lualatex/jsonresume/jsonresume-doc.tex
+
+%files -n texlive-jsonresume
+%{_texmfdistdir}/tex/lualatex/jsonresume/jsonresume.lua
+%{_texmfdistdir}/tex/lualatex/jsonresume/jsonresume.sty
+
+%package -n texlive-juliamono
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.06svn77682
+Release:        0
+License:        LPPL-1.0
+Summary:        Support for the TrueType font JuliaMono
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Requires:       texlive-juliamono-fonts >= %{texlive_version}
+Suggests:       texlive-juliamono-doc >= %{texlive_version}
+Provides:       tex(juliamono.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(xkeyval.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source119:      juliamono.tar.xz
+Source120:      juliamono.doc.tar.xz
+
+%description -n texlive-juliamono
+JuliaMono is a monospaced font for scientific and technical
+computing. There are font files for Regular, Italic, Bold and
+BoldItalic in light, medium, black and extra bold version.
+There are more than 12 thousand glyphs in every font file.
+
+%package -n texlive-juliamono-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.06svn77682
+Release:        0
+Summary:        Documentation for texlive-juliamono
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-juliamono and texlive-alldocumentation)
+
+%description -n texlive-juliamono-doc
+This package includes the documentation for texlive-juliamono
+
+%package -n texlive-juliamono-fonts
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.06svn77682
+Release:        0
+Summary:        Severed fonts for texlive-juliamono
+License:        LPPL-1.0
+URL:            https://www.tug.org/texlive/
+Group:          Productivity/Publishing/TeX/Fonts
+%reconfigure_fonts_prereq
+Requires(posttrans): fontconfig
+Requires(posttrans): ghostscript-fonts-std
+Suggests:       xorg-x11-fonts-core
+
+%description -n texlive-juliamono-fonts
+The  separated fonts package for texlive-juliamono
+
+%post -n texlive-juliamono
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-juliamono
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-juliamono
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%reconfigure_fonts_scriptlets -n texlive-juliamono-fonts
+
+%files -n texlive-juliamono-doc
+%{_texmfdistdir}/doc/fonts/juliamono/Changes
+%{_texmfdistdir}/doc/fonts/juliamono/README.md
+%{_texmfdistdir}/doc/fonts/juliamono/juliamono-doc.bib
+%{_texmfdistdir}/doc/fonts/juliamono/juliamono-doc.pdf
+%{_texmfdistdir}/doc/fonts/juliamono/juliamono-doc.tex
+
+%files -n texlive-juliamono
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-Black.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-BlackItalic.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-Bold.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-BoldItalic.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-ExtraBold.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-ExtraBoldItalic.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-Light.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-LightItalic.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-Medium.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-MediumItalic.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-Regular.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-RegularItalic.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-SemiBold.ttf
+%verify(link) %{_texmfdistdir}/fonts/truetype/public/juliamono/JuliaMono-SemiBoldItalic.ttf
+%{_texmfdistdir}/tex/latex/juliamono/juliamono.sty
+
+%files -n texlive-juliamono-fonts
+%dir %{_datadir}/fonts/texlive-juliamono
+%{_datadir}/fontconfig/conf.avail/58-texlive-juliamono.conf
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-juliamono/encodings.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-juliamono/fonts.dir
+%verify(not md5 size mtime) %{_datadir}/fonts/texlive-juliamono/fonts.scale
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-Black.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-BlackItalic.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-Bold.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-BoldItalic.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-ExtraBold.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-ExtraBoldItalic.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-Light.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-LightItalic.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-Medium.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-MediumItalic.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-Regular.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-RegularItalic.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-SemiBold.ttf
+%{_datadir}/fonts/texlive-juliamono/JuliaMono-SemiBoldItalic.ttf
 
 %package -n texlive-jumplines
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn37553
@@ -22408,9 +20447,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source117:      jumplines.tar.xz
-Source118:      jumplines.doc.tar.xz
+# from 20260301
+Source121:      jumplines.tar.xz
+Source122:      jumplines.doc.tar.xz
 
 %description -n texlive-jumplines
 Jumplines is a package for typesetting (newspaper) articles
@@ -22459,7 +20498,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jumplines/jumplines.sty
 
 %package -n texlive-junicode
-Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71871
+Version:        %{texlive_version}.%{texlive_noarch}.2.218svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        A TrueType and OpenType font family for mediaevalists
@@ -25871,76 +23910,79 @@ Provides:       tex(TS1Junicode-LF.fd)
 Provides:       tex(TS1Junicode-OsF.fd)
 Provides:       tex(TS1Junicode-TLF.fd)
 Provides:       tex(TS1Junicode-TOsF.fd)
-Provides:       tex(jncd_2eszu7.enc)
-Provides:       tex(jncd_2hbdle.enc)
-Provides:       tex(jncd_2j6faw.enc)
-Provides:       tex(jncd_2qiiap.enc)
-Provides:       tex(jncd_3erjze.enc)
-Provides:       tex(jncd_4er2ou.enc)
+Provides:       tex(jncd_27di5y.enc)
+Provides:       tex(jncd_2aq47o.enc)
+Provides:       tex(jncd_3unpvd.enc)
+Provides:       tex(jncd_4jweaq.enc)
 Provides:       tex(jncd_4nafnj.enc)
-Provides:       tex(jncd_4vrfuq.enc)
-Provides:       tex(jncd_4vsefk.enc)
 Provides:       tex(jncd_535mcm.enc)
-Provides:       tex(jncd_5eobdx.enc)
-Provides:       tex(jncd_5g5vl7.enc)
-Provides:       tex(jncd_5nplrd.enc)
+Provides:       tex(jncd_5maokn.enc)
+Provides:       tex(jncd_6gzl7p.enc)
 Provides:       tex(jncd_6kirfz.enc)
-Provides:       tex(jncd_6mzsut.enc)
-Provides:       tex(jncd_7lzoym.enc)
-Provides:       tex(jncd_7sifzs.enc)
-Provides:       tex(jncd_7wd7je.enc)
-Provides:       tex(jncd_alnhow.enc)
+Provides:       tex(jncd_6rba5y.enc)
+Provides:       tex(jncd_7vqqnw.enc)
+Provides:       tex(jncd_a5ibfp.enc)
+Provides:       tex(jncd_a7t5q2.enc)
 Provides:       tex(jncd_atb2gm.enc)
+Provides:       tex(jncd_b56ouc.enc)
+Provides:       tex(jncd_bfrhni.enc)
+Provides:       tex(jncd_bv2bzh.enc)
 Provides:       tex(jncd_c4gqgp.enc)
-Provides:       tex(jncd_d7xkyr.enc)
+Provides:       tex(jncd_cqfg4n.enc)
+Provides:       tex(jncd_d4fdw6.enc)
 Provides:       tex(jncd_dbackh.enc)
+Provides:       tex(jncd_dujor5.enc)
 Provides:       tex(jncd_dw56zz.enc)
-Provides:       tex(jncd_dxxiiy.enc)
 Provides:       tex(jncd_dydq3d.enc)
 Provides:       tex(jncd_e2angy.enc)
-Provides:       tex(jncd_eb524t.enc)
-Provides:       tex(jncd_fhg7wq.enc)
+Provides:       tex(jncd_emnsm7.enc)
+Provides:       tex(jncd_feq2lu.enc)
+Provides:       tex(jncd_ffg555.enc)
 Provides:       tex(jncd_fjcuys.enc)
-Provides:       tex(jncd_gktvs3.enc)
+Provides:       tex(jncd_h6pbdf.enc)
 Provides:       tex(jncd_hwfs67.enc)
-Provides:       tex(jncd_ifhpre.enc)
 Provides:       tex(jncd_ilb24p.enc)
+Provides:       tex(jncd_ippaj2.enc)
 Provides:       tex(jncd_jp6lmu.enc)
-Provides:       tex(jncd_la6rhc.enc)
+Provides:       tex(jncd_jzgsbc.enc)
+Provides:       tex(jncd_k3ujjp.enc)
+Provides:       tex(jncd_ki56qe.enc)
+Provides:       tex(jncd_kkgraz.enc)
+Provides:       tex(jncd_kp7hrt.enc)
+Provides:       tex(jncd_ks4jez.enc)
+Provides:       tex(jncd_kw5ar3.enc)
 Provides:       tex(jncd_ldcvmr.enc)
-Provides:       tex(jncd_m67s2q.enc)
+Provides:       tex(jncd_ldhven.enc)
+Provides:       tex(jncd_m6dmed.enc)
+Provides:       tex(jncd_mgrjl5.enc)
 Provides:       tex(jncd_ncilqg.enc)
 Provides:       tex(jncd_nghkwv.enc)
-Provides:       tex(jncd_nqur7h.enc)
+Provides:       tex(jncd_ocpawb.enc)
+Provides:       tex(jncd_ooeuag.enc)
 Provides:       tex(jncd_p7ome7.enc)
-Provides:       tex(jncd_pm4uzf.enc)
-Provides:       tex(jncd_qigq3r.enc)
-Provides:       tex(jncd_qrjy3o.enc)
-Provides:       tex(jncd_qs7fbx.enc)
-Provides:       tex(jncd_r7dcdh.enc)
-Provides:       tex(jncd_rhm4ae.enc)
+Provides:       tex(jncd_pkcvuk.enc)
+Provides:       tex(jncd_pnqwzk.enc)
+Provides:       tex(jncd_puklei.enc)
+Provides:       tex(jncd_qgnsub.enc)
+Provides:       tex(jncd_qnurlo.enc)
+Provides:       tex(jncd_rewzl7.enc)
 Provides:       tex(jncd_rvrggq.enc)
 Provides:       tex(jncd_rx5biu.enc)
-Provides:       tex(jncd_sa5d62.enc)
-Provides:       tex(jncd_sct77m.enc)
 Provides:       tex(jncd_soeko7.enc)
 Provides:       tex(jncd_t7d4ag.enc)
 Provides:       tex(jncd_tbdiwj.enc)
-Provides:       tex(jncd_tugio2.enc)
-Provides:       tex(jncd_u6d4hm.enc)
-Provides:       tex(jncd_uqxpwn.enc)
-Provides:       tex(jncd_vai6ks.enc)
-Provides:       tex(jncd_vv455d.enc)
-Provides:       tex(jncd_wkwe3q.enc)
+Provides:       tex(jncd_tcp3yr.enc)
+Provides:       tex(jncd_w7viv7.enc)
+Provides:       tex(jncd_wozfbb.enc)
 Provides:       tex(jncd_wusj3d.enc)
-Provides:       tex(jncd_wwi77p.enc)
 Provides:       tex(jncd_wydlop.enc)
+Provides:       tex(jncd_x4ubxh.enc)
 Provides:       tex(jncd_y2gbot.enc)
-Provides:       tex(jncd_y74d4a.enc)
-Provides:       tex(jncd_yql4fv.enc)
-Provides:       tex(jncd_yur7kb.enc)
-Provides:       tex(jncd_z4lkq6.enc)
-Provides:       tex(jncd_zbxsaf.enc)
+Provides:       tex(jncd_y7uwzw.enc)
+Provides:       tex(jncd_yojtrq.enc)
+Provides:       tex(jncd_ypv3zg.enc)
+Provides:       tex(jncd_yyvuk6.enc)
+Provides:       tex(jncd_zbyjbp.enc)
 Provides:       tex(junicode.sty)
 Requires:       tex(fontaxes.sty)
 Requires:       tex(fontenc.sty)
@@ -25950,9 +23992,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source119:      junicode.tar.xz
-Source120:      junicode.doc.tar.xz
+# from 20260301
+Source123:      junicode.tar.xz
+Source124:      junicode.doc.tar.xz
 
 %description -n texlive-junicode
 Junicode is a TrueType/OpenType font family with many features
@@ -25962,7 +24004,7 @@ centuries. It works well with Lua(La)TeX or Xe(La)TeX, but the
 basic textual features are also available with (pdf)LaTeX.
 
 %package -n texlive-junicode-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71871
+Version:        %{texlive_version}.%{texlive_noarch}.2.218svn77682
 Release:        0
 Summary:        Documentation for texlive-junicode
 License:        OFL-1.1
@@ -25974,7 +24016,7 @@ Supplements:    (texlive-junicode and texlive-alldocumentation)
 This package includes the documentation for texlive-junicode
 
 %package -n texlive-junicode-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71871
+Version:        %{texlive_version}.%{texlive_noarch}.2.218svn77682
 Release:        0
 Summary:        Severed fonts for texlive-junicode
 License:        OFL-1.1
@@ -26033,76 +24075,79 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/junicode/upperpua.tex
 
 %files -n texlive-junicode
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_2eszu7.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_2hbdle.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_2j6faw.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_2qiiap.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_3erjze.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_4er2ou.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_27di5y.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_2aq47o.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_3unpvd.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_4jweaq.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_4nafnj.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_4vrfuq.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_4vsefk.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_535mcm.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_5eobdx.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_5g5vl7.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_5nplrd.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_5maokn.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_6gzl7p.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_6kirfz.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_6mzsut.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_7lzoym.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_7sifzs.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_7wd7je.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_alnhow.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_6rba5y.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_7vqqnw.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_a5ibfp.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_a7t5q2.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_atb2gm.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_b56ouc.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_bfrhni.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_bv2bzh.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_c4gqgp.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_d7xkyr.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_cqfg4n.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_d4fdw6.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_dbackh.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_dujor5.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_dw56zz.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_dxxiiy.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_dydq3d.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_e2angy.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_eb524t.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_fhg7wq.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_emnsm7.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_feq2lu.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ffg555.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_fjcuys.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_gktvs3.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_h6pbdf.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_hwfs67.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ifhpre.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ilb24p.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ippaj2.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_jp6lmu.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_la6rhc.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_jzgsbc.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_k3ujjp.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ki56qe.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_kkgraz.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_kp7hrt.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ks4jez.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_kw5ar3.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ldcvmr.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_m67s2q.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ldhven.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_m6dmed.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_mgrjl5.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ncilqg.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_nghkwv.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_nqur7h.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ocpawb.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ooeuag.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_p7ome7.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_pm4uzf.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_qigq3r.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_qrjy3o.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_qs7fbx.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_r7dcdh.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_rhm4ae.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_pkcvuk.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_pnqwzk.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_puklei.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_qgnsub.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_qnurlo.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_rewzl7.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_rvrggq.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_rx5biu.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_sa5d62.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_sct77m.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_soeko7.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_t7d4ag.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_tbdiwj.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_tugio2.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_u6d4hm.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_uqxpwn.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_vai6ks.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_vv455d.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_wkwe3q.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_tcp3yr.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_w7viv7.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_wozfbb.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_wusj3d.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_wwi77p.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_wydlop.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_x4ubxh.enc
 %{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_y2gbot.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_y74d4a.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_yql4fv.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_yur7kb.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_z4lkq6.enc
-%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_zbxsaf.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_y7uwzw.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_yojtrq.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_ypv3zg.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_yyvuk6.enc
+%{_texmfdistdir}/fonts/enc/dvips/junicode/jncd_zbyjbp.enc
 %{_texmfdistdir}/fonts/map/dvips/junicode/Junicode.map
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/junicode/Junicode-Bold.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/junicode/Junicode-BoldItalic.otf
@@ -29640,7 +27685,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-junicode/Junicode-SmExpSmBoldItalic.pfb
 
 %package -n texlive-junicodevf
-Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71920
+Version:        %{texlive_version}.%{texlive_noarch}.2.218svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        A TrueType variable font family for mediaevalists
@@ -29673,9 +27718,9 @@ Requires:       tex(fontspec.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source121:      junicodevf.tar.xz
-Source122:      junicodevf.doc.tar.xz
+# from 20260301
+Source125:      junicodevf.tar.xz
+Source126:      junicodevf.doc.tar.xz
 
 %description -n texlive-junicodevf
 This package supports the Junicode variable fonts for LuaLaTeX.
@@ -29687,7 +27732,7 @@ characters, but it also provides many OpenType features that
 allow users to access MUFI characters in accessible ways.
 
 %package -n texlive-junicodevf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71920
+Version:        %{texlive_version}.%{texlive_noarch}.2.218svn77682
 Release:        0
 Summary:        Documentation for texlive-junicodevf
 License:        OFL-1.1
@@ -29699,7 +27744,7 @@ Supplements:    (texlive-junicodevf and texlive-alldocumentation)
 This package includes the documentation for texlive-junicodevf
 
 %package -n texlive-junicodevf-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.209svn71920
+Version:        %{texlive_version}.%{texlive_noarch}.2.218svn77682
 Release:        0
 Summary:        Severed fonts for texlive-junicodevf
 License:        OFL-1.1
@@ -29769,7 +27814,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-junicodevf/JunicodeVF-Roman.ttf
 
 %package -n texlive-jupynotex
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn72373
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn75037
 Release:        0
 License:        Apache-1.0
 Summary:        Include whole or partial Jupyter notebooks in LaTeX documents
@@ -29800,9 +27845,9 @@ Provides:       tex(jupynotex.sty)
 Requires:       tex(pgfopts.sty)
 Requires:       tex(tcolorbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source123:      jupynotex.tar.xz
-Source124:      jupynotex.doc.tar.xz
+# from 20260301
+Source127:      jupynotex.tar.xz
+Source128:      jupynotex.doc.tar.xz
 
 %description -n texlive-jupynotex
 This package provides a python3 script and a LaTeX .sty file
@@ -29812,7 +27857,7 @@ will convert the Jupyter Notebook format to proper LaTeX so it
 gets included seamlessly, supporting text, LaTeX, images, etc.
 
 %package -n texlive-jupynotex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn72373
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn75037
 Release:        0
 Summary:        Documentation for texlive-jupynotex
 License:        Apache-1.0
@@ -29880,9 +27925,9 @@ Provides:       tex(alphanum.sty)
 Provides:       tex(jura.cls)
 Requires:       tex(report.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source125:      jura.tar.xz
-Source126:      jura.doc.tar.xz
+# from 20260301
+Source129:      jura.tar.xz
+Source130:      jura.doc.tar.xz
 
 %description -n texlive-jura
 Implements the standard layout for German term papers in law
@@ -29961,9 +28006,9 @@ Suggests:       texlive-juraabbrev-doc >= %{texlive_version}
 Provides:       tex(juraabbrev.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source127:      juraabbrev.tar.xz
-Source128:      juraabbrev.doc.tar.xz
+# from 20260301
+Source131:      juraabbrev.tar.xz
+Source132:      juraabbrev.doc.tar.xz
 
 %description -n texlive-juraabbrev
 This package should be helpful for people working on (German)
@@ -30012,7 +28057,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/juraabbrev/juraabbrev.sty
 
 %package -n texlive-jurabib
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Extended BibTeX citation support for the humanities and legal texts
@@ -30060,9 +28105,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source129:      jurabib.tar.xz
-Source130:      jurabib.doc.tar.xz
+# from 20260301
+Source133:      jurabib.tar.xz
+Source134:      jurabib.doc.tar.xz
 
 %description -n texlive-jurabib
 This package enables automated citation with BibTeX for legal
@@ -30081,7 +28126,7 @@ other footnotes are possible. Language dependent handling of
 bibliography entries is possible by the special language field.
 
 %package -n texlive-jurabib-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.6svn77682
 Release:        0
 Summary:        Documentation for texlive-jurabib
 License:        GPL-2.0-or-later
@@ -30200,9 +28245,9 @@ Requires:       tex(remreset.sty)
 Requires:       tex(scrartcl.cls)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source131:      juramisc.tar.xz
-Source132:      juramisc.doc.tar.xz
+# from 20260301
+Source135:      juramisc.tar.xz
+Source136:      juramisc.doc.tar.xz
 
 %description -n texlive-juramisc
 A collection of classes for typesetting court sentences, legal
@@ -30291,9 +28336,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source133:      jurarsp.tar.xz
-Source134:      jurarsp.doc.tar.xz
+# from 20260301
+Source137:      jurarsp.tar.xz
+Source138:      jurarsp.doc.tar.xz
 
 %description -n texlive-jurarsp
 This package should be helpful for people working on (German)
@@ -30372,9 +28417,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-jvlisting-doc >= %{texlive_version}
 Provides:       tex(jvlisting.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source135:      jvlisting.tar.xz
-Source136:      jvlisting.doc.tar.xz
+# from 20260301
+Source139:      jvlisting.tar.xz
+Source140:      jvlisting.doc.tar.xz
 
 %description -n texlive-jvlisting
 This package provides a LaTeX environment listing, an
@@ -30426,7 +28471,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/jvlisting/jvlisting.sty
 
 %package -n texlive-jwjournal
-Version:        %{texlive_version}.%{texlive_noarch}.svn72788
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        A personal class for writing journals
@@ -30461,16 +28506,16 @@ Requires:       tex(enumitem.sty)
 Requires:       tex(needspace.sty)
 Requires:       tex(tcolorbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source137:      jwjournal.tar.xz
-Source138:      jwjournal.doc.tar.xz
+# from 20260301
+Source141:      jwjournal.tar.xz
+Source142:      jwjournal.doc.tar.xz
 
 %description -n texlive-jwjournal
 This LaTeX document class enables the user to turn simple pure
 text entries into a colorful and nicely formatted journal.
 
 %package -n texlive-jwjournal-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn72788
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 Summary:        Documentation for texlive-jwjournal
 License:        LPPL-1.0
@@ -30514,6 +28559,90 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-jwjournal
 %{_texmfdistdir}/tex/latex/jwjournal/jwjournal.cls
 
+%package -n texlive-jyu-chem-thesis
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77876
+Release:        0
+License:        LPPL-1.0
+Summary:        Template for theses at the Department of Chemistry, University of Jyvaskyla
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-jyu-chem-thesis-doc >= %{texlive_version}
+Provides:       tex(jyu-chem-thesis.bbx)
+Provides:       tex(jyu-chem-thesis.cbx)
+Requires:       tex(numeric-comp.cbx)
+Requires:       tex(numeric.bbx)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source143:      jyu-chem-thesis.tar.xz
+Source144:      jyu-chem-thesis.doc.tar.xz
+
+%description -n texlive-jyu-chem-thesis
+This is a template for producing Bachelor and Master theses
+according to the guidelines by the Department of Chemistry,
+University of Jyvaskyla. The formatting follows the guide
+"Tieteellisen opinnaytetyon kirjoitusohje".
+
+%package -n texlive-jyu-chem-thesis-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77876
+Release:        0
+Summary:        Documentation for texlive-jyu-chem-thesis
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-jyu-chem-thesis and texlive-alldocumentation)
+Provides:       locale(texlive-jyu-chem-thesis-doc:fi)
+
+%description -n texlive-jyu-chem-thesis-doc
+This package includes the documentation for texlive-jyu-chem-thesis
+
+%post -n texlive-jyu-chem-thesis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-jyu-chem-thesis
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-jyu-chem-thesis
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-jyu-chem-thesis-doc
+%{_texmfdistdir}/doc/latex/jyu-chem-thesis/README
+%{_texmfdistdir}/doc/latex/jyu-chem-thesis/jyu-chem-thesis-background.pdf
+%{_texmfdistdir}/doc/latex/jyu-chem-thesis/jyu-chem-thesis-example.pdf
+%{_texmfdistdir}/doc/latex/jyu-chem-thesis/jyu-chem-thesis-template.tex
+%{_texmfdistdir}/doc/latex/jyu-chem-thesis/jyu-chem-thesis.bib
+
+%files -n texlive-jyu-chem-thesis
+%{_texmfdistdir}/tex/latex/jyu-chem-thesis/jyu-chem-thesis.bbx
+%{_texmfdistdir}/tex/latex/jyu-chem-thesis/jyu-chem-thesis.cbx
+
 %package -n texlive-kalendarium
 Version:        %{texlive_version}.%{texlive_noarch}.1.0svn48744
 Release:        0
@@ -30546,9 +28675,9 @@ Provides:       tex(kalendarium.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source139:      kalendarium.tar.xz
-Source140:      kalendarium.doc.tar.xz
+# from 20260301
+Source145:      kalendarium.tar.xz
+Source146:      kalendarium.doc.tar.xz
 
 %description -n texlive-kalendarium
 kalendarium is a LaTeX3 package that provides several macros
@@ -30625,9 +28754,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kanaparser-doc >= %{texlive_version}
 Provides:       tex(kanaparser.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source141:      kanaparser.tar.xz
-Source142:      kanaparser.doc.tar.xz
+# from 20260301
+Source147:      kanaparser.tar.xz
+Source148:      kanaparser.doc.tar.xz
 
 %description -n texlive-kanaparser
 The package provides a kana parser for LuaTeX. It is a set of 4
@@ -30679,7 +28808,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/luatex/kanaparser/kanaparser.tex
 
 %package -n texlive-kanbun
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn62026
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset kanbun-kundoku with support for kanbun annotation
@@ -30712,9 +28841,9 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source143:      kanbun.tar.xz
-Source144:      kanbun.doc.tar.xz
+# from 20260301
+Source149:      kanbun.tar.xz
+Source150:      kanbun.doc.tar.xz
 
 %description -n texlive-kanbun
 This package allows users to manually input macros for elements
@@ -30724,7 +28853,7 @@ annotation" form when used with LuaLaTeX, which allows
 typesetting kanbun-kundoku paragraphs efficiently.
 
 %package -n texlive-kanbun-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2svn62026
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 Summary:        Documentation for texlive-kanbun
 License:        LPPL-1.0
@@ -30768,7 +28897,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/kanbun/kanbun.sty
 
 %package -n texlive-kantlipsum
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8csvn68983
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Generate sentences in Kant's style
@@ -30797,9 +28926,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kantlipsum-doc >= %{texlive_version}
 Provides:       tex(kantlipsum.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source145:      kantlipsum.tar.xz
-Source146:      kantlipsum.doc.tar.xz
+# from 20260301
+Source151:      kantlipsum.tar.xz
+Source152:      kantlipsum.doc.tar.xz
 
 %description -n texlive-kantlipsum
 The package spits out sentences in Kantian style; the text is
@@ -30808,7 +28937,7 @@ described in the book "Dive into Python". The package is
 modelled on lipsum, and may be used for similar purposes.
 
 %package -n texlive-kantlipsum-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.8csvn68983
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8csvn77682
 Release:        0
 Summary:        Documentation for texlive-kantlipsum
 License:        LPPL-1.0
@@ -30873,9 +29002,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-karnaugh-doc >= %{texlive_version}
 Provides:       tex(kvmacros.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source147:      karnaugh.tar.xz
-Source148:      karnaugh.doc.tar.xz
+# from 20260301
+Source153:      karnaugh.tar.xz
+Source154:      karnaugh.doc.tar.xz
 
 %description -n texlive-karnaugh
 The package provides macros for typesetting Karnaugh-Maps and
@@ -30955,9 +29084,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source149:      karnaugh-map.tar.xz
-Source150:      karnaugh-map.doc.tar.xz
+# from 20260301
+Source155:      karnaugh-map.tar.xz
+Source156:      karnaugh-map.doc.tar.xz
 
 %description -n texlive-karnaugh-map
 This package draws karnaugh maps with 2, 3, 4, 5, and 6
@@ -31037,9 +29166,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source151:      karnaughmap.tar.xz
-Source152:      karnaughmap.doc.tar.xz
+# from 20260301
+Source157:      karnaughmap.tar.xz
+Source158:      karnaughmap.doc.tar.xz
 
 %description -n texlive-karnaughmap
 This package provides an easy to use interface to typeset
@@ -31113,9 +29242,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kastrup-doc >= %{texlive_version}
 Provides:       tex(binhex.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source153:      kastrup.tar.xz
-Source154:      kastrup.doc.tar.xz
+# from 20260301
+Source159:      kastrup.tar.xz
+Source160:      kastrup.doc.tar.xz
 
 %description -n texlive-kastrup
 Provides expandable macros for both fixed-width and
@@ -31157,7 +29286,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/kastrup/binhex.tex
 
 %package -n texlive-kaytannollista-latexia
-Version:        %{texlive_version}.%{texlive_noarch}.2025svn73292
+Version:        %{texlive_version}.%{texlive_noarch}.2026svn77555
 Release:        0
 License:        LPPL-1.0
 Summary:        Practical manual for LaTeX (Finnish)
@@ -31184,8 +29313,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source155:      kaytannollista-latexia.doc.tar.xz
+# from 20260301
+Source161:      kaytannollista-latexia.doc.tar.xz
 
 %description -n texlive-kaytannollista-latexia
 "Kaytannollista Latexia" is a practical manual for LaTeX
@@ -31258,9 +29387,9 @@ Provides:       tex(kblocks.sty)
 Requires:       tex(circuitikz.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source156:      kblocks.tar.xz
-Source157:      kblocks.doc.tar.xz
+# from 20260301
+Source162:      kblocks.tar.xz
+Source163:      kblocks.doc.tar.xz
 
 %description -n texlive-kblocks
 Kblocks defines a number of commands to make drawing control
@@ -31348,9 +29477,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source158:      kdgdocs.tar.xz
-Source159:      kdgdocs.doc.tar.xz
+# from 20260301
+Source164:      kdgdocs.tar.xz
+Source165:      kdgdocs.doc.tar.xz
 
 %description -n texlive-kdgdocs
 The bundle provides two classes for usage by KdG professors and
@@ -31467,9 +29596,9 @@ Requires:       tex(textpos.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source160:      kdpcover.tar.xz
-Source161:      kdpcover.doc.tar.xz
+# from 20260301
+Source166:      kdpcover.tar.xz
+Source167:      kdpcover.doc.tar.xz
 
 %description -n texlive-kdpcover
 The problem this class solves is the necessity to change the
@@ -31524,6 +29653,91 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/kdpcover/kdpcover-vol-3.pdf
 %{_texmfdistdir}/tex/latex/kdpcover/kdpcover-vol-4.pdf
 %{_texmfdistdir}/tex/latex/kdpcover/kdpcover.cls
+
+%package -n texlive-keisennote
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn77255
+Release:        0
+License:        LPPL-1.0
+Summary:        TikZ-based Japanese-style notebook ruled lines for LaTeX
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-keisennote-doc >= %{texlive_version}
+Provides:       tex(keisennote.sty)
+Requires:       tex(fp.sty)
+Requires:       tex(kvoptions.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xcolor.sty)
+Requires:       tex(zref-savepos.sty)
+Requires:       tex(zref.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source168:      keisennote.tar.xz
+Source169:      keisennote.doc.tar.xz
+
+%description -n texlive-keisennote
+Typeset Japanese-style ruled notebook lines in LaTeX. It
+supports full-page (\notefill) and short (\note) blocks.
+Spacing, dot size, and color are adjustable. The package is
+compatible with multicols.
+
+%package -n texlive-keisennote-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.0svn77255
+Release:        0
+Summary:        Documentation for texlive-keisennote
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-keisennote and texlive-alldocumentation)
+
+%description -n texlive-keisennote-doc
+This package includes the documentation for texlive-keisennote
+
+%post -n texlive-keisennote
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-keisennote
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-keisennote
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-keisennote-doc
+%{_texmfdistdir}/doc/latex/keisennote/LICENSE.md
+%{_texmfdistdir}/doc/latex/keisennote/README.md
+%{_texmfdistdir}/doc/latex/keisennote/keisennote-doc.pdf
+%{_texmfdistdir}/doc/latex/keisennote/keisennote-doc.tex
+%{_texmfdistdir}/doc/latex/keisennote/test.tex
+
+%files -n texlive-keisennote
+%{_texmfdistdir}/tex/latex/keisennote/keisennote.sty
 
 %package -n texlive-kerkis
 Version:        %{texlive_version}.%{texlive_noarch}.1.11svn56271
@@ -31795,9 +30009,9 @@ Provides:       tex(t1mak.fd)
 Provides:       tex(t1maksf.fd)
 Requires:       tex(txfonts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source162:      kerkis.tar.xz
-Source163:      kerkis.doc.tar.xz
+# from 20260301
+Source170:      kerkis.tar.xz
+Source171:      kerkis.doc.tar.xz
 
 %description -n texlive-kerkis
 Sans-serif Greek fonts to match the URW Bookman set (which are
@@ -32220,9 +30434,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(longtable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source164:      kerntest.tar.xz
-Source165:      kerntest.doc.tar.xz
+# from 20260301
+Source172:      kerntest.tar.xz
+Source173:      kerntest.doc.tar.xz
 
 %description -n texlive-kerntest
 This class makes it easy to generate tables that show many
@@ -32344,9 +30558,9 @@ Requires:       tex(amssymb.sty)
 Requires:       tex(color.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source166:      ketcindy.tar.xz
-Source167:      ketcindy.doc.tar.xz
+# from 20260301
+Source174:      ketcindy.tar.xz
+Source175:      ketcindy.doc.tar.xz
 
 %description -n texlive-ketcindy
 KETpic is a macro package designed for computer algebra systems
@@ -33135,7 +31349,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ketcindy/ketslide2.sty
 
 %package -n texlive-keycommand
-Version:        %{texlive_version}.%{texlive_noarch}.3.1415svn18042
+Version:        %{texlive_version}.%{texlive_noarch}.3.1415svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Simple creation of commands with key-value arguments
@@ -33168,9 +31382,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source168:      keycommand.tar.xz
-Source169:      keycommand.doc.tar.xz
+# from 20260301
+Source176:      keycommand.tar.xz
+Source177:      keycommand.doc.tar.xz
 
 %description -n texlive-keycommand
 The package (which requires e-TeX) provides a natural way to
@@ -33181,7 +31395,7 @@ define commands with optional keys. The package provides
 kvsetkeys by Heiko Oberdiek.
 
 %package -n texlive-keycommand-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.1415svn18042
+Version:        %{texlive_version}.%{texlive_noarch}.3.1415svn78101
 Release:        0
 Summary:        Documentation for texlive-keycommand
 License:        LPPL-1.0
@@ -33219,7 +31433,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/keycommand/keycommand.sty
 
 %package -n texlive-keyfloat
-Version:        %{texlive_version}.%{texlive_noarch}.2.09svn69399
+Version:        %{texlive_version}.%{texlive_noarch}.2.09svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Provides a key/value interface for generating floats
@@ -33258,9 +31472,9 @@ Requires:       tex(wrapfig.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source170:      keyfloat.tar.xz
-Source171:      keyfloat.doc.tar.xz
+# from 20260301
+Source178:      keyfloat.tar.xz
+Source179:      keyfloat.doc.tar.xz
 
 %description -n texlive-keyfloat
 The keyfloat package provides a key/value user interface for
@@ -33281,7 +31495,7 @@ figures placed vertically next to one larger figure. Subfloats
 are supported by two environments.
 
 %package -n texlive-keyfloat-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.09svn69399
+Version:        %{texlive_version}.%{texlive_noarch}.2.09svn77682
 Release:        0
 Summary:        Documentation for texlive-keyfloat
 License:        LPPL-1.0
@@ -33349,9 +31563,9 @@ Suggests:       texlive-keyindex-doc >= %{texlive_version}
 Provides:       tex(keyindex.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source172:      keyindex.tar.xz
-Source173:      keyindex.doc.tar.xz
+# from 20260301
+Source180:      keyindex.tar.xz
+Source181:      keyindex.doc.tar.xz
 
 %description -n texlive-keyindex
 The package provides functionality for producing an index
@@ -33399,7 +31613,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/keyindex/keyindex.sty
 
 %package -n texlive-keyparse
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn60277
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Key based parser
@@ -33431,9 +31645,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source174:      keyparse.tar.xz
-Source175:      keyparse.doc.tar.xz
+# from 20260301
+Source182:      keyparse.tar.xz
+Source183:      keyparse.doc.tar.xz
 
 %description -n texlive-keyparse
 This LaTeX package provides an interface to define and evaluate
@@ -33441,7 +31655,7 @@ key-based replacement rules. It can be used to parse the
 argument specification of a document command.
 
 %package -n texlive-keyparse-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn60277
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76924
 Release:        0
 Summary:        Documentation for texlive-keyparse
 License:        LPPL-1.0
@@ -33507,9 +31721,9 @@ Suggests:       texlive-keyreader-doc >= %{texlive_version}
 Provides:       tex(keyreader.sty)
 Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source176:      keyreader.tar.xz
-Source177:      keyreader.doc.tar.xz
+# from 20260301
+Source184:      keyreader.tar.xz
+Source185:      keyreader.doc.tar.xz
 
 %description -n texlive-keyreader
 The package provides a robust interface to controlling keys in
@@ -33558,7 +31772,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/keyreader/keyreader.sty
 
 %package -n texlive-keystroke
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn17992
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Graphical representation of keys on keyboard
@@ -33588,16 +31802,16 @@ Suggests:       texlive-keystroke-doc >= %{texlive_version}
 Provides:       tex(keystroke.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source178:      keystroke.tar.xz
-Source179:      keystroke.doc.tar.xz
+# from 20260301
+Source186:      keystroke.tar.xz
+Source187:      keystroke.doc.tar.xz
 
 %description -n texlive-keystroke
 A LaTeX package which provides macros for the graphical
 representation of the keys on a computer keyboard.
 
 %package -n texlive-keystroke-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn17992
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 Summary:        Documentation for texlive-keystroke
 License:        GPL-2.0-or-later
@@ -33640,7 +31854,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/keystroke/keystroke_right.pdf
 
 %package -n texlive-keytheorems
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.5svn74002
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.5svn78035
 Release:        0
 License:        LPPL-1.0
 Summary:        An l3keys interface to amsthm
@@ -33674,19 +31888,19 @@ Provides:       tex(keythms-amsbook-support.tex)
 Provides:       tex(keythms-amsproc-support.tex)
 Provides:       tex(keythms-beamer-support.tex)
 Provides:       tex(keythms-jlreq-support.tex)
+Provides:       tex(keythms-ltx-talk-support.tex)
 Provides:       tex(keythms-memoir-support.tex)
 Requires:       tex(aliascnt.sty)
 Requires:       tex(amsthm.sty)
-Requires:       tex(nameref.sty)
 Requires:       tex(refcount.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(thmtools.sty)
 Requires:       tex(translations.sty)
 Requires:       tex(unique.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source180:      keytheorems.tar.xz
-Source181:      keytheorems.doc.tar.xz
+# from 20260301
+Source188:      keytheorems.tar.xz
+Source189:      keytheorems.doc.tar.xz
 
 %description -n texlive-keytheorems
 An expl3-implementation of a key-value interface to amsthm,
@@ -33695,7 +31909,7 @@ Several issues encountered with thmtools are avoided (see the
 README for a list) and a few new features are added.
 
 %package -n texlive-keytheorems-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2.5svn74002
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.5svn78035
 Release:        0
 Summary:        Documentation for texlive-keytheorems
 License:        LPPL-1.0
@@ -33736,6 +31950,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-amsproc-support.tex
 %{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-beamer-support.tex
 %{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-jlreq-support.tex
+%{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-ltx-talk-support.tex
 %{_texmfdistdir}/tex/latex/keytheorems/class-support/keythms-memoir-support.tex
 %{_texmfdistdir}/tex/latex/keytheorems/keytheorems.sty
 
@@ -33770,9 +31985,9 @@ Suggests:       texlive-keyval2e-doc >= %{texlive_version}
 Provides:       tex(keyval2e.sty)
 Requires:       tex(catoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source182:      keyval2e.tar.xz
-Source183:      keyval2e.doc.tar.xz
+# from 20260301
+Source190:      keyval2e.tar.xz
+Source191:      keyval2e.doc.tar.xz
 
 %description -n texlive-keyval2e
 The package provides lightweight and robust facilities for
@@ -33821,7 +32036,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/keyval2e/keyval2e.sty
 
 %package -n texlive-keyvaltable
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn65416
+Version:        %{texlive_version}.%{texlive_noarch}.2.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Re-usable table layouts separating content and presentation
@@ -33856,9 +32071,9 @@ Requires:       tex(trimspaces.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source184:      keyvaltable.tar.xz
-Source185:      keyvaltable.doc.tar.xz
+# from 20260301
+Source192:      keyvaltable.tar.xz
+Source193:      keyvaltable.doc.tar.xz
 
 %description -n texlive-keyvaltable
 The main goal of this package is to offer means for typesetting
@@ -33870,7 +32085,7 @@ typeset tables that have a previously defined column layout and
 whose rows can be produced in a key-value fashion.
 
 %package -n texlive-keyvaltable-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.3svn65416
+Version:        %{texlive_version}.%{texlive_noarch}.2.3svn77682
 Release:        0
 Summary:        Documentation for texlive-keyvaltable
 License:        LPPL-1.0
@@ -33953,9 +32168,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source186:      kfupm-math-exam.tar.xz
-Source187:      kfupm-math-exam.doc.tar.xz
+# from 20260301
+Source194:      kfupm-math-exam.tar.xz
+Source195:      kfupm-math-exam.doc.tar.xz
 
 %description -n texlive-kfupm-math-exam
 The package provides commands and environments that simplify
@@ -34033,9 +32248,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-khatalmaqala-fonts >= %{texlive_version}
 Suggests:       texlive-khatalmaqala-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source188:      khatalmaqala.tar.xz
-Source189:      khatalmaqala.doc.tar.xz
+# from 20260301
+Source196:      khatalmaqala.tar.xz
+Source197:      khatalmaqala.doc.tar.xz
 
 %description -n texlive-khatalmaqala
 This font family is a modification of "cm-unicode" fonts, with
@@ -34152,9 +32367,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(xpatch.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source190:      kinematikz.tar.xz
-Source191:      kinematikz.doc.tar.xz
+# from 20260301
+Source198:      kinematikz.tar.xz
+Source199:      kinematikz.doc.tar.xz
 
 %description -n texlive-kinematikz
 This package provides functionalities to draw kinematic
@@ -34233,9 +32448,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kix-doc >= %{texlive_version}
 Provides:       tex(kix.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source192:      kix.tar.xz
-Source193:      kix.doc.tar.xz
+# from 20260301
+Source200:      kix.tar.xz
+Source201:      kix.doc.tar.xz
 
 %description -n texlive-kix
 Implements KIX codes as used by the Dutch PTT for bulk mail
@@ -34308,9 +32523,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kixfont-doc >= %{texlive_version}
 Provides:       tex(kix.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source194:      kixfont.tar.xz
-Source195:      kixfont.doc.tar.xz
+# from 20260301
+Source202:      kixfont.tar.xz
+Source203:      kixfont.doc.tar.xz
 
 %description -n texlive-kixfont
 The KIX code is a barcode-like format used by the Dutch PTT to
@@ -34357,6 +32572,273 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-kixfont
 %{_texmfdistdir}/fonts/source/public/kixfont/kix.mf
 %{_texmfdistdir}/fonts/tfm/public/kixfont/kix.tfm
+
+%package -n texlive-kkluaverb
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.2svn77516
+Release:        0
+License:        LPPL-1.0
+Summary:        Provides a Lua-enhanced versatile \verb command
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-kkluaverb-doc >= %{texlive_version}
+Provides:       tex(KKluaverb.sty)
+Requires:       tex(luacode.sty)
+Requires:       tex(luatexbase.sty)
+Requires:       tex(pgfkeys.sty)
+Requires:       tex(xcolor.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source204:      kkluaverb.tar.xz
+Source205:      kkluaverb.doc.tar.xz
+
+%description -n texlive-kkluaverb
+This package provides a Lua-enhanced command similar to \verb,
+as well as an environment similar to lstlisting. These can be
+safely used in the arguments of arbitrary commands without
+breaking, and they work correctly in the table of contents and
+indexes. The package also allows the creation of an arbitrary
+number of text-replacement rules and color presets.
+
+%package -n texlive-kkluaverb-doc
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.2svn77516
+Release:        0
+Summary:        Documentation for texlive-kkluaverb
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-kkluaverb and texlive-alldocumentation)
+
+%description -n texlive-kkluaverb-doc
+This package includes the documentation for texlive-kkluaverb
+
+%post -n texlive-kkluaverb
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-kkluaverb
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-kkluaverb
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-kkluaverb-doc
+%{_texmfdistdir}/doc/lualatex/kkluaverb/LICENSE.md
+%{_texmfdistdir}/doc/lualatex/kkluaverb/README.md
+%{_texmfdistdir}/doc/lualatex/kkluaverb/kkluaverb-doc.pdf
+%{_texmfdistdir}/doc/lualatex/kkluaverb/kkluaverb-doc.tex
+
+%files -n texlive-kkluaverb
+%{_texmfdistdir}/tex/lualatex/kkluaverb/KKluaverb.lua
+%{_texmfdistdir}/tex/lualatex/kkluaverb/KKluaverb.sty
+
+%package -n texlive-kkran
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.6svn78190
+Release:        0
+License:        LPPL-1.0
+Summary:        Generate answer fields in tests and exams
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-kkran-doc >= %{texlive_version}
+Provides:       tex(KKran.sty)
+Requires:       tex(KKsymbols.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(etoolbox.sty)
+Requires:       tex(kvoptions.sty)
+Requires:       tex(luacode.sty)
+Requires:       tex(luatexja-fontspec.sty)
+Requires:       tex(luatexja-preset.sty)
+Requires:       tex(pgfkeys.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(xcolor.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source206:      kkran.tar.xz
+Source207:      kkran.doc.tar.xz
+
+%description -n texlive-kkran
+A Lua- and TikZ-based package created for the Japanese
+education sector. It enables the arrangement of box-shaped
+answer fields in any desired combination using simple commands.
+It also facilitates the easy creation of multiple-choice answer
+sheets (mark sheets). Furthermore, it covers the functionality
+of toggling the display of model answers (solutions) via an
+option, and even the creation of grid-style answer fields
+(graph paper-like cells). The package name originates from "Lan
+(:ran)", which means "a small piece of area", or "a small
+space".
+
+%package -n texlive-kkran-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.6svn78190
+Release:        0
+Summary:        Documentation for texlive-kkran
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-kkran and texlive-alldocumentation)
+Provides:       locale(texlive-kkran-doc:ja)
+
+%description -n texlive-kkran-doc
+This package includes the documentation for texlive-kkran
+
+%post -n texlive-kkran
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-kkran
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-kkran
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-kkran-doc
+%{_texmfdistdir}/doc/latex/kkran/LICENSE.md
+%{_texmfdistdir}/doc/latex/kkran/README.md
+%{_texmfdistdir}/doc/latex/kkran/kkran-doc.pdf
+%{_texmfdistdir}/doc/latex/kkran/kkran-doc.tex
+%{_texmfdistdir}/doc/latex/kkran/kkran-sample.pdf
+%{_texmfdistdir}/doc/latex/kkran/kkran-sample.tex
+
+%files -n texlive-kkran
+%{_texmfdistdir}/tex/latex/kkran/KKran.sty
+
+%package -n texlive-kksymbols
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.2svn78140
+Release:        0
+License:        LPPL-1.0
+Summary:        LaTeX commands for enclosing characters in circles, squares, diamonds, or brackets
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-kksymbols-doc >= %{texlive_version}
+Provides:       tex(KKsymbols.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(kvoptions.sty)
+Requires:       tex(luacode.sty)
+Requires:       tex(luatexja-adjust.sty)
+Requires:       tex(tikz.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source208:      kksymbols.tar.xz
+Source209:      kksymbols.doc.tar.xz
+
+%description -n texlive-kksymbols
+This package offers LaTeX commands for enclosing characters in
+circles, squares, diamonds, or brackets, with automatic scaling
+and baseline correction to ensure correct appearance in both
+horizontal and vertical writing modes. The package relies on
+TikZ and works only with LuaLaTeX.
+
+%package -n texlive-kksymbols-doc
+Version:        %{texlive_version}.%{texlive_noarch}.2.1.2svn78140
+Release:        0
+Summary:        Documentation for texlive-kksymbols
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-kksymbols and texlive-alldocumentation)
+
+%description -n texlive-kksymbols-doc
+This package includes the documentation for texlive-kksymbols
+
+%post -n texlive-kksymbols
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-kksymbols
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-kksymbols
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-kksymbols-doc
+%{_texmfdistdir}/doc/latex/kksymbols/LICENSE.md
+%{_texmfdistdir}/doc/latex/kksymbols/README.md
+%{_texmfdistdir}/doc/latex/kksymbols/kksymbols-doc.pdf
+%{_texmfdistdir}/doc/latex/kksymbols/kksymbols-doc.tex
+
+%files -n texlive-kksymbols
+%{_texmfdistdir}/tex/latex/kksymbols/KKsymbols.lua
+%{_texmfdistdir}/tex/latex/kksymbols/KKsymbols.sty
 
 %package -n texlive-kluwer
 Version:        %{texlive_version}.%{texlive_noarch}.svn54074
@@ -34416,9 +32898,9 @@ Requires:       tex(mathptm.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(wasysym.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source196:      kluwer.tar.xz
-Source197:      kluwer.doc.tar.xz
+# from 20260301
+Source210:      kluwer.tar.xz
+Source211:      kluwer.doc.tar.xz
 
 %description -n texlive-kluwer
 Most likely long obsolete, unfortunately.
@@ -34556,9 +33038,9 @@ Provides:       tex(knitwp.tfm)
 Provides:       tex(uknit.fd)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source198:      knitting.tar.xz
-Source199:      knitting.doc.tar.xz
+# from 20260301
+Source212:      knitting.tar.xz
+Source213:      knitting.doc.tar.xz
 
 %description -n texlive-knitting
 The package provides symbol fonts and commands to write charted
@@ -34772,9 +33254,9 @@ Requires:       tex(graphicx.sty)
 Requires:       tex(longtable.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source200:      knittingpattern.tar.xz
-Source201:      knittingpattern.doc.tar.xz
+# from 20260301
+Source214:      knittingpattern.tar.xz
+Source215:      knittingpattern.doc.tar.xz
 
 %description -n texlive-knittingpattern
 The class provides a simple, effective method for knitters to
@@ -34824,7 +33306,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/knittingpattern/knittingpattern.cls
 
 %package -n texlive-knowledge
-Version:        %{texlive_version}.%{texlive_noarch}.1.30svn74186
+Version:        %{texlive_version}.%{texlive_noarch}.1.31svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Displaying, hyperlinking, and indexing notions in a document
@@ -34858,9 +33340,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source202:      knowledge.tar.xz
-Source203:      knowledge.doc.tar.xz
+# from 20260301
+Source216:      knowledge.tar.xz
+Source217:      knowledge.doc.tar.xz
 
 %description -n texlive-knowledge
 The package offers a systematic way to handle
@@ -34870,7 +33352,7 @@ every reference of a concept linked to its introduction. It
 also offers simple notations.
 
 %package -n texlive-knowledge-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.30svn74186
+Version:        %{texlive_version}.%{texlive_noarch}.1.31svn76924
 Release:        0
 Summary:        Documentation for texlive-knowledge
 License:        LPPL-1.0
@@ -34936,8 +33418,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source204:      knuth-errata.doc.tar.xz
+# from 20260301
+Source218:      knuth-errata.doc.tar.xz
 
 %description -n texlive-knuth-errata
 These files record details of problems reported in Knuth's
@@ -34982,7 +33464,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/knuth-errata/tex82.bug
 
 %package -n texlive-knuth-hint
-Version:        %{texlive_version}.%{texlive_noarch}.2.5svn72019
+Version:        %{texlive_version}.%{texlive_noarch}.2.6svn74654
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        HINT collection of typeset C/WEB sources in TeX Live
@@ -35009,8 +33491,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source205:      knuth-hint.doc.tar.xz
+# from 20260301
+Source219:      knuth-hint.doc.tar.xz
 
 %description -n texlive-knuth-hint
 The knuth-hint package contains the large collection of HINT
@@ -35125,9 +33607,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/knuth-hint/web/twill.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/web/weave-changes.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/web/weave.hnt
+%{_texmfdistdir}/doc/generic/knuth-hint/web/webman-changes.hnt
 %{_texmfdistdir}/doc/generic/knuth-hint/web/webman.hnt
-%{_texmfdistdir}/doc/generic/knuth-hint/xetex/xetex-changes.pdf
-%{_texmfdistdir}/doc/generic/knuth-hint/xetex/xetex.pdf
 
 %package -n texlive-knuth-lib
 Version:        %{texlive_version}.%{texlive_noarch}.svn57963
@@ -35171,8 +33652,8 @@ Provides:       tex(story.tex)
 Provides:       tex(testfont.tex)
 Provides:       tex(webmac.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source206:      knuth-lib.tar.xz
+# from 20260301
+Source220:      knuth-lib.tar.xz
 
 %description -n texlive-knuth-lib
 A collection of core TeX and Metafont macro files from DEK,
@@ -35262,8 +33743,8 @@ Provides:       tex(random.tfm)
 Provides:       tex(snfont.tfm)
 Provides:       tex(xepsf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source207:      knuth-local.tar.xz
+# from 20260301
+Source221:      knuth-local.tar.xz
 
 %description -n texlive-knuth-local
 A collection of experimental programs and developments based
@@ -35321,7 +33802,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/plain/knuth-local/xepsf.tex
 
 %package -n texlive-knuth-pdf
-Version:        %{texlive_version}.%{texlive_noarch}.2.5svn72018
+Version:        %{texlive_version}.%{texlive_noarch}.2.6svn74653
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        PDF collection of typeset C/WEB sources in TeX Live
@@ -35348,8 +33829,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source208:      knuth-pdf.doc.tar.xz
+# from 20260301
+Source222:      knuth-pdf.doc.tar.xz
 
 %description -n texlive-knuth-pdf
 Here you find a large collection of PDF documents for many
@@ -35464,6 +33945,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/knuth-pdf/web/twill.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/web/weave-changes.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/web/weave.pdf
+%{_texmfdistdir}/doc/generic/knuth-pdf/web/webman-changes.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/web/webman.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/xetex/xetex-changes.pdf
 %{_texmfdistdir}/doc/generic/knuth-pdf/xetex/xetex.pdf
@@ -35498,9 +33980,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-koma-moderncvclassic-doc >= %{texlive_version}
 Provides:       tex(koma-moderncvclassic.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source209:      koma-moderncvclassic.tar.xz
-Source210:      koma-moderncvclassic.doc.tar.xz
+# from 20260301
+Source223:      koma-moderncvclassic.tar.xz
+Source224:      koma-moderncvclassic.doc.tar.xz
 
 %description -n texlive-koma-moderncvclassic
 This package provides an imitation of the moderncv class with
@@ -35549,7 +34031,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/koma-moderncvclassic/koma-moderncvclassic.sty
 
 %package -n texlive-koma-script
-Version:        %{texlive_version}.%{texlive_noarch}.3.43svn72643
+Version:        %{texlive_version}.%{texlive_noarch}.3.49.2svn77575
 Release:        0
 License:        LPPL-1.0
 Summary:        A bundle of versatile classes and packages
@@ -35793,8 +34275,8 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source211:      koma-script.tar.xz
+# from 20260301
+Source225:      koma-script.tar.xz
 
 %description -n texlive-koma-script
 The KOMA-Script bundle provides replacements for the article,
@@ -35812,7 +34294,7 @@ version of scrbook, scrreprt, scrartcl, scrlttr2 and typearea
 (which are the main parts of the bundle).
 
 %package -n texlive-koma-script-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.43svn72643
+Version:        %{texlive_version}.%{texlive_noarch}.3.49.2svn77575
 Release:        0
 Summary:        Documentation for texlive-koma-script
 License:        LPPL-1.0
@@ -35841,8 +34323,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-koma-script-doc
+%{_texmfdistdir}/doc/latex/koma-script/CONTRIBUTING.md
 %{_texmfdistdir}/doc/latex/koma-script/MANIFEST.md
 %{_texmfdistdir}/doc/latex/koma-script/README.md
+%{_texmfdistdir}/doc/latex/koma-script/authors.txt
 %{_texmfdistdir}/doc/latex/koma-script/book-remarkbox-nopatch-de.pdf
 %{_texmfdistdir}/doc/latex/koma-script/book-remarkbox-nopatch-en.pdf
 %{_texmfdistdir}/doc/latex/koma-script/book-remarkbox-patch-de.pdf
@@ -36208,8 +34692,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source212:      koma-script-examples.doc.tar.xz
+# from 20260301
+Source226:      koma-script-examples.doc.tar.xz
 
 %description -n texlive-koma-script-examples
 This package contains some examples from the 6th edition of the
@@ -36333,10 +34817,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/koma-script-examples/README.txt
 
 %package -n texlive-koma-script-sfs
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn26137
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77050
 Release:        0
 License:        LPPL-1.0
-Summary:        Koma-script letter class option for Finnish
+Summary:        KOMA-Script letter class option for Finnish
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -36361,9 +34845,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-koma-script-sfs-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source213:      koma-script-sfs.tar.xz
-Source214:      koma-script-sfs.doc.tar.xz
+# from 20260301
+Source227:      koma-script-sfs.tar.xz
+Source228:      koma-script-sfs.doc.tar.xz
 
 %description -n texlive-koma-script-sfs
 A koma-script parameter set for letters on A4 paper, complying
@@ -36374,7 +34858,7 @@ smaller, for sizes E5 and E65 the address may not fit within
 the window, but ordinary 3-line address should fit).
 
 %package -n texlive-koma-script-sfs-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0svn26137
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn77050
 Release:        0
 Summary:        Documentation for texlive-koma-script-sfs
 License:        LPPL-1.0
@@ -36457,9 +34941,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source215:      komacv.tar.xz
-Source216:      komacv.doc.tar.xz
+# from 20260301
+Source229:      komacv.tar.xz
+Source230:      komacv.doc.tar.xz
 
 %description -n texlive-komacv
 The class simplifies the creation of beautiful CV. The user may
@@ -36554,9 +35038,9 @@ Requires:       tex(multilang.sty)
 Requires:       tex(scrkbase.sty)
 Requires:       tex(translations.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source217:      komacv-rg.tar.xz
-Source218:      komacv-rg.doc.tar.xz
+# from 20260301
+Source231:      komacv-rg.tar.xz
+Source232:      komacv-rg.doc.tar.xz
 
 %description -n texlive-komacv-rg
 The komacv-rg bundle provides packages that aid in creating CVs
@@ -36653,9 +35137,9 @@ Requires:       tex(microtype.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source219:      korigamik.tar.xz
-Source220:      korigamik.doc.tar.xz
+# from 20260301
+Source233:      korigamik.tar.xz
+Source234:      korigamik.doc.tar.xz
 
 %description -n texlive-korigamik
 The KorigamiK class is used for typesetting documents for
@@ -36702,7 +35186,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/korigamik/korigamik.cls
 
 %package -n texlive-kotex-oblivoir
-Version:        %{texlive_version}.%{texlive_noarch}.3.4svn73766
+Version:        %{texlive_version}.%{texlive_noarch}.3.5svn78115
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX document class for typesetting Korean documents
@@ -36806,9 +35290,9 @@ Requires:       tex(xetexko.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source221:      kotex-oblivoir.tar.xz
-Source222:      kotex-oblivoir.doc.tar.xz
+# from 20260301
+Source235:      kotex-oblivoir.tar.xz
+Source236:      kotex-oblivoir.doc.tar.xz
 
 %description -n texlive-kotex-oblivoir
 The class is based on memoir, and is adapted to typesetting
@@ -36817,7 +35301,7 @@ belongs to the ko.TeX bundle. It depends on memoir and
 kotex-utf to function.
 
 %package -n texlive-kotex-oblivoir-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.4svn73766
+Version:        %{texlive_version}.%{texlive_noarch}.3.5svn78115
 Release:        0
 Summary:        Documentation for texlive-kotex-oblivoir
 License:        LPPL-1.0
@@ -36930,9 +35414,9 @@ Provides:       tex(kotexplain.tex)
 Provides:       tex(kotexutf-core.tex)
 Provides:       tex(kotexutf.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source223:      kotex-plain.tar.xz
-Source224:      kotex-plain.doc.tar.xz
+# from 20260301
+Source237:      kotex-plain.tar.xz
+Source238:      kotex-plain.doc.tar.xz
 
 %description -n texlive-kotex-plain
 The package provides macros for typesetting Hangul, the native
@@ -37051,9 +35535,9 @@ Requires:       tex(verbatim.sty)
 Requires:       tex(xetexko.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source225:      kotex-utf.tar.xz
-Source226:      kotex-utf.doc.tar.xz
+# from 20260301
+Source239:      kotex-utf.tar.xz
+Source240:      kotex-utf.doc.tar.xz
 
 %description -n texlive-kotex-utf
 The package typesets Hangul, which is the native alphabet of
@@ -37173,9 +35657,9 @@ Requires:       perl(File::Path)
 Requires:       perl(Getopt::Std)
 #!BuildIgnore:  perl(Getopt::Std)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source227:      kotex-utils.tar.xz
-Source228:      kotex-utils.doc.tar.xz
+# from 20260301
+Source241:      kotex-utils.tar.xz
+Source242:      kotex-utils.doc.tar.xz
 
 %description -n texlive-kotex-utils
 The bundle provides scripts and support files for index
@@ -37227,7 +35711,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %package -n texlive-kpathsea
 #!BuildIgnore:   texlive-scripts
 #!BuildIgnore:   texlive-kpathsea
-Version:        %{texlive_version}.%{texlive_noarch}.svn73918
+Version:        %{texlive_version}.%{texlive_noarch}.svn77861
 Release:        0
 License:        LGPL-2.1-or-later
 Summary:        Path searching library for TeX-related files
@@ -37258,10 +35742,10 @@ Provides:       tex(fmtutil.cnf)
 Provides:       tex(mktex.cnf)
 Provides:       tex(texmf.cnf)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source229:      kpathsea.tar.xz
-Source230:      kpathsea.doc.tar.xz
-Source231:      kpathsea_cnf.dif
+# from 20260301
+Source243:      kpathsea.tar.xz
+Source244:      kpathsea.doc.tar.xz
+Source245:      kpathsea_cnf.dif
 
 %description -n texlive-kpathsea
 Kpathsea is a library and utility programs which provide path
@@ -37272,7 +35756,7 @@ distributed separately, but rather is released and maintained
 as part of the TeX Live sources.
 
 %package -n texlive-kpathsea-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn73918
+Version:        %{texlive_version}.%{texlive_noarch}.svn77861
 Release:        0
 Summary:        Documentation for texlive-kpathsea
 License:        LGPL-2.1-or-later
@@ -37386,7 +35870,7 @@ fi
 %config(noreplace) %verify(not md5 mtime size) %{_texmfconfdir}/web2c/texmf.cnf
 
 %package -n texlive-kpfonts
-Version:        %{texlive_version}.%{texlive_noarch}.3.36svn72680
+Version:        %{texlive_version}.%{texlive_noarch}.3.36svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A complete set of fonts for text and mathematics
@@ -39197,9 +37681,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(kpfonts-otf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source232:      kpfonts.tar.xz
-Source233:      kpfonts.doc.tar.xz
+# from 20260301
+Source246:      kpfonts.tar.xz
+Source247:      kpfonts.doc.tar.xz
 
 %description -n texlive-kpfonts
 The family contains text fonts in roman, sans-serif and
@@ -39219,7 +37703,7 @@ though the fonts are very clearly different in appearance from
 their parent.
 
 %package -n texlive-kpfonts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.36svn72680
+Version:        %{texlive_version}.%{texlive_noarch}.3.36svn77682
 Release:        0
 Summary:        Documentation for texlive-kpfonts
 License:        LPPL-1.0
@@ -39232,7 +37716,7 @@ Provides:       locale(texlive-kpfonts-doc:en)
 This package includes the documentation for texlive-kpfonts
 
 %package -n texlive-kpfonts-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.3.36svn72680
+Version:        %{texlive_version}.%{texlive_noarch}.3.36svn77682
 Release:        0
 Summary:        Severed fonts for texlive-kpfonts
 License:        LPPL-1.0
@@ -41284,10 +39768,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-kpfonts/jkpttmne.pfb
 
 %package -n texlive-kpfonts-otf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.66svn74008
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.72svn77917
 Release:        0
 License:        OFL-1.1
-Summary:        OTF version of the Kp-fonts
+Summary:        OpenType versions of the kpfonts (Type1) designed by Christophe Caignaert
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -41318,9 +39802,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(realscripts.sty)
 Requires:       tex(unicode-math.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source234:      kpfonts-otf.tar.xz
-Source235:      kpfonts-otf.doc.tar.xz
+# from 20260301
+Source248:      kpfonts-otf.tar.xz
+Source249:      kpfonts-otf.doc.tar.xz
 
 %description -n texlive-kpfonts-otf
 This bundle provides OpenType versions of the Type1 Kp-fonts
@@ -41336,7 +39820,7 @@ AMS'; a full list of available symbols is provided, see the
 'List of glyphs'.
 
 %package -n texlive-kpfonts-otf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.66svn74008
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.72svn77917
 Release:        0
 Summary:        Documentation for texlive-kpfonts-otf
 License:        OFL-1.1
@@ -41349,7 +39833,7 @@ Provides:       locale(texlive-kpfonts-otf-doc:en;fr)
 This package includes the documentation for texlive-kpfonts-otf
 
 %package -n texlive-kpfonts-otf-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.66svn74008
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.72svn77917
 Release:        0
 Summary:        Severed fonts for texlive-kpfonts-otf
 License:        OFL-1.1
@@ -41453,7 +39937,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-kpfonts-otf/KpSans-Regular.otf
 
 %package -n texlive-ksfh_nat
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn24825
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn76790
 Release:        0
 License:        LPPL-1.0
 Summary:        BibTeX style for KSFH Munich
@@ -41480,8 +39964,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source236:      ksfh_nat.tar.xz
+# from 20260301
+Source250:      ksfh_nat.tar.xz
 
 %description -n texlive-ksfh_nat
 The package supports bibliographies as standard for KSFH
@@ -41547,9 +40031,9 @@ Requires:       tex(scrbook.cls)
 Requires:       tex(scrlayer-scrpage.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source237:      ksp-thesis.tar.xz
-Source238:      ksp-thesis.doc.tar.xz
+# from 20260301
+Source251:      ksp-thesis.tar.xz
+Source252:      ksp-thesis.doc.tar.xz
 
 %description -n texlive-ksp-thesis
 This package provides a LaTeX class intended for authors who
@@ -41615,6 +40099,107 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-ksp-thesis
 %{_texmfdistdir}/tex/latex/ksp-thesis/ksp-thesis.cls
 
+%package -n texlive-ktbox
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.1svn76524
+Release:        0
+License:        Apache-1.0
+Summary:        Framework for semantic color, structured highlighting, and scholarly communication
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-ktbox-doc >= %{texlive_version}
+Provides:       tex(ktbox.sty)
+Provides:       tex(ktcolor.sty)
+Provides:       tex(ktorcid.sty)
+Requires:       tex(enumitem.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(orcidlink.sty)
+Requires:       tex(tcolorbox.sty)
+Requires:       tex(xcolor.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source253:      ktbox.tar.xz
+Source254:      ktbox.doc.tar.xz
+
+%description -n texlive-ktbox
+KTBox is a modular LaTeX framework that introduces semantic
+color palettes, structured highlight boxes, and ORCID-linked
+author utilities for scholarly writing. The package is composed
+of three lightweight and independent style files: ktbox.sty -
+defines highlight boxes (standard, numbered, wide) with
+semantic theming. ktcolor.sty - provides semantic color
+palettes with light and dark modes. ktorcid.sty - adds
+ORCID-linked author commands and icons. The framework separates
+structure from style, ensuring compatibility with major classes
+such as IEEEtran, acmart, article, beamer, and ICLR. Features
+include numbered key-takeaway boxes, wide-format environments
+for emphasis, multi-column layouts, and dual light/dark themes.
+KTBox aims to improve clarity, portability, and reproducibility
+in academic publishing across articles, posters, and
+presentations.
+
+%package -n texlive-ktbox-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.1svn76524
+Release:        0
+Summary:        Documentation for texlive-ktbox
+License:        Apache-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-ktbox and texlive-alldocumentation)
+
+%description -n texlive-ktbox-doc
+This package includes the documentation for texlive-ktbox
+
+%post -n texlive-ktbox
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-ktbox
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-ktbox
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-ktbox-doc
+%{_texmfdistdir}/doc/latex/ktbox/LICENSE
+%{_texmfdistdir}/doc/latex/ktbox/NOTICE
+%{_texmfdistdir}/doc/latex/ktbox/README.md
+%{_texmfdistdir}/doc/latex/ktbox/data/LatexMk
+%{_texmfdistdir}/doc/latex/ktbox/doc/ktbox.pdf
+%{_texmfdistdir}/doc/latex/ktbox/ktbox.build.sh
+%{_texmfdistdir}/doc/latex/ktbox/ktbox.tex
+
+%files -n texlive-ktbox
+%{_texmfdistdir}/tex/latex/ktbox/ktbox.sty
+%{_texmfdistdir}/tex/latex/ktbox/ktcolor.sty
+%{_texmfdistdir}/tex/latex/ktbox/ktorcid.sty
+
 %package -n texlive-ktv-texdata
 Version:        %{texlive_version}.%{texlive_noarch}.05.34svn27369
 Release:        0
@@ -41647,9 +40232,9 @@ Provides:       tex(ktv-buildnum.sty)
 Provides:       tex(ktv-texdata.sty)
 Requires:       tex(verbatim.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source239:      ktv-texdata.tar.xz
-Source240:      ktv-texdata.doc.tar.xz
+# from 20260301
+Source255:      ktv-texdata.tar.xz
+Source256:      ktv-texdata.doc.tar.xz
 
 %description -n texlive-ktv-texdata
 The package defines an exercice environment which numbers every
@@ -41732,9 +40317,9 @@ Provides:       tex(ku-template.sty)
 Requires:       tex(titling.sty)
 Requires:       tex(wallpaper.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source241:      ku-template.tar.xz
-Source242:      ku-template.doc.tar.xz
+# from 20260301
+Source257:      ku-template.tar.xz
+Source258:      ku-template.doc.tar.xz
 
 %description -n texlive-ku-template
 A comprehensive package for adding University of Copenhagen or
@@ -41791,7 +40376,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ku-template/ku-template.sty
 
 %package -n texlive-kurdishlipsum
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn47518
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        A 'lipsum' package for the Kurdish language
@@ -41821,9 +40406,9 @@ Suggests:       texlive-kurdishlipsum-doc >= %{texlive_version}
 Provides:       tex(kurdishlipsum.sty)
 Requires:       tex(biditools.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source243:      kurdishlipsum.tar.xz
-Source244:      kurdishlipsum.doc.tar.xz
+# from 20260301
+Source259:      kurdishlipsum.tar.xz
+Source260:      kurdishlipsum.doc.tar.xz
 
 %description -n texlive-kurdishlipsum
 This package provides lipsum-like facilities for the Kurdish
@@ -41832,7 +40417,7 @@ poetry and balladry texts of the Diwany Vafaiy, Ahmedy Xani,
 Naly, Mahwy,.... The package needs to be run under XeLaTeX.
 
 %package -n texlive-kurdishlipsum-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn47518
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Documentation for texlive-kurdishlipsum
 License:        LPPL-1.0
@@ -41869,7 +40454,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/kurdishlipsum/kurdishlipsum.sty
 
 %package -n texlive-kurier
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn19612
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn77682
 Release:        0
 License:        LPPL-1.3c
 Summary:        A two-element sans-serif typeface
@@ -42449,9 +41034,9 @@ Provides:       tex(wncy-kuriermi.tfm)
 Provides:       tex(wncy-kurierr.tfm)
 Provides:       tex(wncy-kurierri.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source245:      kurier.tar.xz
-Source246:      kurier.doc.tar.xz
+# from 20260301
+Source261:      kurier.tar.xz
+Source262:      kurier.doc.tar.xz
 
 %description -n texlive-kurier
 Kurier is a two-element sans-serif typeface. It was designed
@@ -42468,7 +41053,7 @@ and--nonstandard (IL2 for the Czech fonts), as well as
 supporting macros and files defining fonts for LaTeX.
 
 %package -n texlive-kurier-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn19612
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn77682
 Release:        0
 Summary:        Documentation for texlive-kurier
 License:        LPPL-1.3c
@@ -42481,7 +41066,7 @@ Provides:       locale(texlive-kurier-doc:en;pl)
 This package includes the documentation for texlive-kurier
 
 %package -n texlive-kurier-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn19612
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.995bsvn77682
 Release:        0
 Summary:        Severed fonts for texlive-kurier
 License:        LPPL-1.3c
@@ -43183,7 +41768,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-kurier/kurierri.pfb
 
 %package -n texlive-kvdefinekeys
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn53193
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Define keys for use in the kvsetkeys package
@@ -43212,16 +41797,16 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kvdefinekeys-doc >= %{texlive_version}
 Provides:       tex(kvdefinekeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source247:      kvdefinekeys.tar.xz
-Source248:      kvdefinekeys.doc.tar.xz
+# from 20260301
+Source263:      kvdefinekeys.tar.xz
+Source264:      kvdefinekeys.doc.tar.xz
 
 %description -n texlive-kvdefinekeys
 The package provides a macro \kv@define@key (analogous to
 keyval's \define@key, to define keys for use by kvsetkeys.
 
 %package -n texlive-kvdefinekeys-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn53193
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 Summary:        Documentation for texlive-kvdefinekeys
 License:        LPPL-1.0
@@ -43296,9 +41881,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source249:      kvmap.tar.xz
-Source250:      kvmap.doc.tar.xz
+# from 20260301
+Source265:      kvmap.tar.xz
+Source266:      kvmap.doc.tar.xz
 
 %description -n texlive-kvmap
 This LaTeX package allows the creation of (even large) Karnaugh
@@ -43344,7 +41929,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/kvmap/kvmap.sty
 
 %package -n texlive-kvoptions
-Version:        %{texlive_version}.%{texlive_noarch}.3.15svn63622
+Version:        %{texlive_version}.%{texlive_noarch}.3.15svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Key value format for package options
@@ -43378,16 +41963,16 @@ Requires:       tex(keyval.sty)
 Requires:       tex(kvsetkeys.sty)
 Requires:       tex(ltxcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source251:      kvoptions.tar.xz
-Source252:      kvoptions.doc.tar.xz
+# from 20260301
+Source267:      kvoptions.tar.xz
+Source268:      kvoptions.doc.tar.xz
 
 %description -n texlive-kvoptions
 This package offers support for package authors who want to use
 options in key-value format for their package options.
 
 %package -n texlive-kvoptions-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.15svn63622
+Version:        %{texlive_version}.%{texlive_noarch}.3.15svn77682
 Release:        0
 Summary:        Documentation for texlive-kvoptions
 License:        LPPL-1.0
@@ -43426,7 +42011,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/kvoptions/kvoptions.sty
 
 %package -n texlive-kvsetkeys
-Version:        %{texlive_version}.%{texlive_noarch}.1.19svn64632
+Version:        %{texlive_version}.%{texlive_noarch}.1.19svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Key value parser with default handler support
@@ -43455,9 +42040,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-kvsetkeys-doc >= %{texlive_version}
 Provides:       tex(kvsetkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source253:      kvsetkeys.tar.xz
-Source254:      kvsetkeys.doc.tar.xz
+# from 20260301
+Source269:      kvsetkeys.tar.xz
+Source270:      kvsetkeys.doc.tar.xz
 
 %description -n texlive-kvsetkeys
 This package provides \kvsetkeys, a variant of package keyval's
@@ -43467,7 +42052,7 @@ with unknown options. Active commas and equal signs may be used
 braces are removed from the values.
 
 %package -n texlive-kvsetkeys-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.19svn64632
+Version:        %{texlive_version}.%{texlive_noarch}.1.19svn77682
 Release:        0
 Summary:        Documentation for texlive-kvsetkeys
 License:        LPPL-1.0
@@ -43532,8 +42117,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source255:      l2picfaq.doc.tar.xz
+# from 20260301
+Source271:      l2picfaq.doc.tar.xz
 
 %description -n texlive-l2picfaq
 The document (in German) is a collection of "how-to" notes
@@ -43592,8 +42177,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source256:      l2tabu.doc.tar.xz
+# from 20260301
+Source272:      l2tabu.doc.tar.xz
 
 %description -n texlive-l2tabu
 The "sins" of LaTeX users, and how to correct them. The
@@ -43652,8 +42237,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source257:      l2tabu-english.doc.tar.xz
+# from 20260301
+Source273:      l2tabu-english.doc.tar.xz
 
 %description -n texlive-l2tabu-english
 English translation of the l2tabu practical guide to LaTeX2e by
@@ -43708,8 +42293,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source258:      l2tabu-french.doc.tar.xz
+# from 20260301
+Source274:      l2tabu-french.doc.tar.xz
 
 %description -n texlive-l2tabu-french
 French translation of l2tabu.
@@ -43764,8 +42349,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source259:      l2tabu-italian.doc.tar.xz
+# from 20260301
+Source275:      l2tabu-italian.doc.tar.xz
 
 %description -n texlive-l2tabu-italian
 Italian translation of the l2tabu practical guide to LaTeX2e (a
@@ -43820,8 +42405,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source260:      l2tabu-spanish.doc.tar.xz
+# from 20260301
+Source276:      l2tabu-spanish.doc.tar.xz
 
 %description -n texlive-l2tabu-spanish
 A Spanish translation of the l2tabu practical guide to LaTeX2e
@@ -43851,7 +42436,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/l2tabu-spanish/l2tabues.tex
 
 %package -n texlive-l3backend
-Version:        %{texlive_version}.%{texlive_noarch}.svn71991
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX3 backend drivers
@@ -43885,9 +42470,9 @@ Provides:       tex(l3backend-luatex.def)
 Provides:       tex(l3backend-pdftex.def)
 Provides:       tex(l3backend-xetex.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source261:      l3backend.tar.xz
-Source262:      l3backend.doc.tar.xz
+# from 20260301
+Source277:      l3backend.tar.xz
+Source278:      l3backend.doc.tar.xz
 
 %description -n texlive-l3backend
 This package forms parts of expl3, and contains the code used
@@ -43898,7 +42483,7 @@ l3kernel to allow this code to be updated on an independent
 schedule.
 
 %package -n texlive-l3backend-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn71991
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 Summary:        Documentation for texlive-l3backend
 License:        LPPL-1.0
@@ -43943,7 +42528,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/l3backend/l3backend-xetex.def
 
 %package -n texlive-l3backend-dev
-Version:        %{texlive_version}.%{texlive_noarch}.svn71211
+Version:        %{texlive_version}.%{texlive_noarch}.svn77954
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX3 backend drivers (dev)
@@ -43977,9 +42562,9 @@ Provides:       texdev(l3backend-luatex.def)
 Provides:       texdev(l3backend-pdftex.def)
 Provides:       texdev(l3backend-xetex.def)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source263:      l3backend-dev.tar.xz
-Source264:      l3backend-dev.doc.tar.xz
+# from 20260301
+Source279:      l3backend-dev.tar.xz
+Source280:      l3backend-dev.doc.tar.xz
 
 %description -n texlive-l3backend-dev
 This is a pre-release version of the l3backend package. It
@@ -43987,7 +42572,7 @@ accompanies the pre-testing kernel code (latex-base-dev), and
 is intended for testing by knowledgeable users.
 
 %package -n texlive-l3backend-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn71211
+Version:        %{texlive_version}.%{texlive_noarch}.svn77954
 Release:        0
 Summary:        Documentation for texlive-l3backend-dev
 License:        LPPL-1.0
@@ -44032,7 +42617,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/l3backend/l3backend-xetex.def
 
 %package -n texlive-l3build
-Version:        %{texlive_version}.%{texlive_noarch}.svn74229
+Version:        %{texlive_version}.%{texlive_noarch}.svn77170
 Release:        0
 License:        LPPL-1.0
 Summary:        A testing and building system for (La)TeX
@@ -44065,9 +42650,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-l3build-doc >= %{texlive_version}
 Provides:       tex(regression-test.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source265:      l3build.tar.xz
-Source266:      l3build.doc.tar.xz
+# from 20260301
+Source281:      l3build.tar.xz
+Source282:      l3build.doc.tar.xz
 
 %description -n texlive-l3build
 The build system supports testing and building LaTeX3 code, on
@@ -44080,7 +42665,7 @@ material released by the LaTeX3 team, and may be updated on a
 different schedule.
 
 %package -n texlive-l3build-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn74229
+Version:        %{texlive_version}.%{texlive_noarch}.svn77170
 Release:        0
 Summary:        Documentation for texlive-l3build
 License:        LPPL-1.0
@@ -44137,7 +42722,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/l3build/regression-test.tex
 
 %package -n texlive-l3experimental
-Version:        %{texlive_version}.%{texlive_noarch}.svn71991
+Version:        %{texlive_version}.%{texlive_noarch}.svn76637
 Release:        0
 License:        LPPL-1.0
 Summary:        Experimental LaTeX3 concepts
@@ -44166,20 +42751,16 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-l3experimental-doc >= %{texlive_version}
-Provides:       tex(l3benchmark.sty)
 Provides:       tex(l3draw.sty)
 Provides:       tex(l3galley.sty)
-Provides:       tex(l3graphics.sty)
-Provides:       tex(l3opacity.sty)
-Provides:       tex(l3str-format.sty)
 Provides:       tex(xcoffins.sty)
 Provides:       tex(xgalley.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xtemplate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source267:      l3experimental.tar.xz
-Source268:      l3experimental.doc.tar.xz
+# from 20260301
+Source283:      l3experimental.tar.xz
+Source284:      l3experimental.doc.tar.xz
 
 %description -n texlive-l3experimental
 The l3experimental packages are a collection of experimental
@@ -44187,18 +42768,14 @@ implementations for aspects of the LaTeX3 kernel, dealing with
 higher-level ideas such as the Designer Interface. Some of them
 work as stand alone packages, providing new functionality, and
 can be used on top of LaTeX2e with no changes to the existing
-kernel. The present release includes: l3benchmark for measuring
-the time taken by TeX to run certain code; l3draw, a code-level
-interface for constructing drawings; l3graphics, an interfaces
-for the inclusion of graphics files; l3opacity, support for
-opacity in PDF output; l3str, support for string manipulation;
-xcoffins, which allows the alignment of boxes using a series of
-'handle' positions, supplementing the simple TeX reference
-point; xgalley, which controls boxes receiving text for
-typesetting.
+kernel. The present release includes: l3draw, a code-level
+interface for constructing drawings; xcoffins, which allows the
+alignment of boxes using a series of 'handle' positions,
+supplementing the simple TeX reference point; xgalley, which
+controls boxes receiving text for typesetting.
 
 %package -n texlive-l3experimental-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn71991
+Version:        %{texlive_version}.%{texlive_noarch}.svn76637
 Release:        0
 Summary:        Documentation for texlive-l3experimental
 License:        LPPL-1.0
@@ -44229,29 +42806,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-l3experimental-doc
 %{_texmfdistdir}/doc/latex/l3experimental/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/l3experimental/README.md
-%{_texmfdistdir}/doc/latex/l3experimental/l3benchmark/l3benchmark.pdf
 %{_texmfdistdir}/doc/latex/l3experimental/l3draw/l3draw-code.pdf
 %{_texmfdistdir}/doc/latex/l3experimental/l3draw/l3draw-code.tex
 %{_texmfdistdir}/doc/latex/l3experimental/l3draw/l3draw.pdf
-%{_texmfdistdir}/doc/latex/l3experimental/l3graphics/l3graphics.pdf
-%{_texmfdistdir}/doc/latex/l3experimental/l3opacity/l3opacity.pdf
-%{_texmfdistdir}/doc/latex/l3experimental/l3str/l3str-format.pdf
 %{_texmfdistdir}/doc/latex/l3experimental/xcoffins/xcoffins.pdf
 %{_texmfdistdir}/doc/latex/l3experimental/xgalley/l3galley.pdf
 %{_texmfdistdir}/doc/latex/l3experimental/xgalley/xgalley.pdf
 
 %files -n texlive-l3experimental
-%{_texmfdistdir}/tex/latex/l3experimental/l3benchmark/l3benchmark.sty
 %{_texmfdistdir}/tex/latex/l3experimental/l3draw/l3draw.sty
-%{_texmfdistdir}/tex/latex/l3experimental/l3graphics/l3graphics.sty
-%{_texmfdistdir}/tex/latex/l3experimental/l3opacity/l3opacity.sty
-%{_texmfdistdir}/tex/latex/l3experimental/l3str/l3str-format.sty
 %{_texmfdistdir}/tex/latex/l3experimental/xcoffins/xcoffins.sty
 %{_texmfdistdir}/tex/latex/l3experimental/xgalley/l3galley.sty
 %{_texmfdistdir}/tex/latex/l3experimental/xgalley/xgalley.sty
 
 %package -n texlive-l3kernel
-Version:        %{texlive_version}.%{texlive_noarch}.svn73651
+Version:        %{texlive_version}.%{texlive_noarch}.svn77438
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX3 programming conventions
@@ -44259,6 +42828,8 @@ Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires:       texlive-l3backend >= %{texlive_version}
 #!BuildIgnore: texlive-l3backend
+Requires:       texlive-lua-uni-algos >= %{texlive_version}
+#!BuildIgnore: texlive-lua-uni-algos
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -44308,9 +42879,9 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(hypdoc.sty)
 Requires:       tex(lmodern.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source269:      l3kernel.tar.xz
-Source270:      l3kernel.doc.tar.xz
+# from 20260301
+Source285:      l3kernel.tar.xz
+Source286:      l3kernel.doc.tar.xz
 
 %description -n texlive-l3kernel
 The l3kernel bundle provides an implementation of the LaTeX3
@@ -44321,7 +42892,7 @@ TeX programmers. The packages are set up so that the LaTeX3
 conventions can be used with regular LaTeX2e packages.
 
 %package -n texlive-l3kernel-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn73651
+Version:        %{texlive_version}.%{texlive_noarch}.svn77438
 Release:        0
 Summary:        Documentation for texlive-l3kernel
 License:        LPPL-1.0
@@ -44423,7 +42994,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/l3kernel/l3str-enc-iso88599.def
 
 %package -n texlive-l3kernel-dev
-Version:        %{texlive_version}.%{texlive_noarch}.svn73508
+Version:        %{texlive_version}.%{texlive_noarch}.svn77953
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of l3kernel
@@ -44431,6 +43002,8 @@ Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires:       texlive-l3backend-dev >= %{texlive_version}
 #!BuildIgnore: texlive-l3backend-dev
+Requires:       texlive-lua-uni-algos >= %{texlive_version}
+#!BuildIgnore: texlive-lua-uni-algos
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -44480,9 +43053,9 @@ Requires:       texdev(calc.sty)
 Requires:       texdev(doc.sty)
 Requires:       texdev(fontenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source271:      l3kernel-dev.tar.xz
-Source272:      l3kernel-dev.doc.tar.xz
+# from 20260301
+Source287:      l3kernel-dev.tar.xz
+Source288:      l3kernel-dev.doc.tar.xz
 
 %description -n texlive-l3kernel-dev
 This is a pre-release version of the l3kernel package. It
@@ -44490,7 +43063,7 @@ accompanies the pre-testing kernel code (latex-base-dev), and
 is intended for testing by knowledgeable users.
 
 %package -n texlive-l3kernel-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn73508
+Version:        %{texlive_version}.%{texlive_noarch}.svn77953
 Release:        0
 Summary:        Documentation for texlive-l3kernel-dev
 License:        LPPL-1.0
@@ -44592,7 +43165,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/l3kernel/l3str-enc-iso88599.def
 
 %package -n texlive-l3packages
-Version:        %{texlive_version}.%{texlive_noarch}.svn72128
+Version:        %{texlive_version}.%{texlive_noarch}.svn76637
 Release:        0
 License:        LPPL-1.0
 Summary:        High-level LaTeX3 concepts
@@ -44631,9 +43204,9 @@ Provides:       tex(xtemplate-2023-10-10.sty)
 Provides:       tex(xtemplate.sty)
 Requires:       tex(expl3.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source273:      l3packages.tar.xz
-Source274:      l3packages.doc.tar.xz
+# from 20260301
+Source289:      l3packages.tar.xz
+Source290:      l3packages.doc.tar.xz
 
 %description -n texlive-l3packages
 This collection deals with higher-level ideas such as the
@@ -44645,7 +43218,7 @@ the packages here are l3keys2e 2022-06-01 xfp 2022-06-01 xparse
 2020-10-01 xtemplate 2024-06-01
 
 %package -n texlive-l3packages-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn72128
+Version:        %{texlive_version}.%{texlive_noarch}.svn76637
 Release:        0
 Summary:        Documentation for texlive-l3packages
 License:        LPPL-1.0
@@ -44694,7 +43267,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/l3packages/xtemplate/xtemplate.sty
 
 %package -n texlive-l3sys-query
-Version:        %{texlive_version}.%{texlive_noarch}.svn70889
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        System queries for LaTeX using Lua
@@ -44726,9 +43299,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-l3sys-query-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source275:      l3sys-query.tar.xz
-Source276:      l3sys-query.doc.tar.xz
+# from 20260301
+Source291:      l3sys-query.tar.xz
+Source292:      l3sys-query.doc.tar.xz
 
 %description -n texlive-l3sys-query
 The l3sys-query script provides a method for TeX runs to obtain
@@ -44743,7 +43316,7 @@ listing supporting a range of options pwdObtaining details of
 the current working directory
 
 %package -n texlive-l3sys-query-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70889
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-l3sys-query
 License:        LPPL-1.0
@@ -44815,9 +43388,9 @@ Provides:       tex(labbook.cls)
 Requires:       tex(makeidx.sty)
 Requires:       tex(scrbook.cls)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source277:      labbook.tar.xz
-Source278:      labbook.doc.tar.xz
+# from 20260301
+Source293:      labbook.tar.xz
+Source294:      labbook.doc.tar.xz
 
 %description -n texlive-labbook
 This class is designed to typeset laboratory journals that
@@ -44900,9 +43473,9 @@ Suggests:       texlive-labels-doc >= %{texlive_version}
 Provides:       tex(labels.sty)
 Provides:       tex(olabels.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source279:      labels.tar.xz
-Source280:      labels.doc.tar.xz
+# from 20260301
+Source295:      labels.tar.xz
+Source296:      labels.doc.tar.xz
 
 %description -n texlive-labels
 A LaTeX package to print a regular grid of ragged-right labels
@@ -45018,9 +43591,9 @@ Provides:       tex(labels4easylist.sty)
 Requires:       tex(easylist.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source281:      labels4easylist.tar.xz
-Source282:      labels4easylist.doc.tar.xz
+# from 20260301
+Source297:      labels4easylist.tar.xz
+Source298:      labels4easylist.doc.tar.xz
 
 %description -n texlive-labels4easylist
 This package provides the \itemLabel macro for adding
@@ -45064,7 +43637,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/labels4easylist/labels4easylist.sty
 
 %package -n texlive-labelschanged
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn69400
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn77682
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Identify labels which cause endless "may have changed" warnings
@@ -45093,9 +43666,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-labelschanged-doc >= %{texlive_version}
 Provides:       tex(labelschanged.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source283:      labelschanged.tar.xz
-Source284:      labelschanged.doc.tar.xz
+# from 20260301
+Source299:      labelschanged.tar.xz
+Source300:      labelschanged.doc.tar.xz
 
 %description -n texlive-labelschanged
 Several conditions can cause LaTeX labels to keep changing, no
@@ -45106,7 +43679,7 @@ changing labels are printed at the end of each compile.
 Multiply-defined labels are printed as well.
 
 %package -n texlive-labelschanged-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.01svn69400
+Version:        %{texlive_version}.%{texlive_noarch}.1.01svn77682
 Release:        0
 Summary:        Documentation for texlive-labelschanged
 License:        SUSE-Public-Domain
@@ -45174,9 +43747,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(picture.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source285:      labyrinth.tar.xz
-Source286:      labyrinth.doc.tar.xz
+# from 20260301
+Source301:      labyrinth.tar.xz
+Source302:      labyrinth.doc.tar.xz
 
 %description -n texlive-labyrinth
 The labyrinth package provides code and an environment for
@@ -45223,7 +43796,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/labyrinth/labyrinth.sty
 
 %package -n texlive-lacheck
-Version:        %{texlive_version}.%{texlive_noarch}.svn66186
+Version:        %{texlive_version}.%{texlive_noarch}.svn75712
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        LaTeX checker
@@ -45253,13 +43826,14 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       man(lacheck.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source287:      lacheck.doc.tar.xz
+# from 20260301
+Source303:      lacheck.doc.tar.xz
 
 %description -n texlive-lacheck
 Lacheck is a tool for finding common mistakes in LaTeX
 documents. The distribution includes sources, and executables
-for OS/2 and Win32 environments.
+for OS/2 and Win32 environments. It is maintained as part of
+TeX Live.
 
 %post -n texlive-lacheck
 mkdir -p /var/run/texlive
@@ -45314,9 +43888,9 @@ Requires:       tex(calc.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(tikz.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source288:      ladder.tar.xz
-Source289:      ladder.doc.tar.xz
+# from 20260301
+Source304:      ladder.tar.xz
+Source305:      ladder.doc.tar.xz
 
 %description -n texlive-ladder
 This package permits the creation of simple ladder diagrams
@@ -45408,8 +43982,8 @@ Provides:       tex(ot1uctt.fd)
 Provides:       tex(ut1enc.def)
 Requires:       tex(grlccode.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source290:      lambda.tar.xz
+# from 20260301
+Source306:      lambda.tar.xz
 
 %description -n texlive-lambda
 The lambda package
@@ -45491,9 +44065,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lambda-lists-doc >= %{texlive_version}
 Provides:       tex(lambda.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source291:      lambda-lists.tar.xz
-Source292:      lambda-lists.doc.tar.xz
+# from 20260301
+Source307:      lambda-lists.tar.xz
+Source308:      lambda-lists.doc.tar.xz
 
 %description -n texlive-lambda-lists
 These list-processing macros avoid the reassignments employed
@@ -45573,9 +44147,9 @@ Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xtemplate.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source293:      lambdax.tar.xz
-Source294:      lambdax.doc.tar.xz
+# from 20260301
+Source309:      lambdax.tar.xz
+Source310:      lambdax.doc.tar.xz
 
 %description -n texlive-lambdax
 This package provides Lambda expressions. It is an interface to
@@ -45621,7 +44195,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lambdax/lambdax.sty
 
 %package -n texlive-langcode
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn27764
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Simple language-dependent settings based on language codes
@@ -45651,9 +44225,9 @@ Suggests:       texlive-langcode-doc >= %{texlive_version}
 Provides:       tex(langcode.sty)
 Requires:       tex(dowith.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source295:      langcode.tar.xz
-Source296:      langcode.doc.tar.xz
+# from 20260301
+Source311:      langcode.tar.xz
+Source312:      langcode.doc.tar.xz
 
 %description -n texlive-langcode
 The package provides a command \uselangcode{<code>} to adjust
@@ -45661,12 +44235,12 @@ language-dependent settings such as key words, typographical
 conventions and language codes (ISO 639-1). The package
 provides a means of selecting macros according to the specified
 code, for preparing a document that is to be separately typeset
-in different laguages. The package is dependent on the plainpkg
-package, and is already in use in the morehype and catcodes
-packages.
+in different languages. The package is dependent on the
+plainpkg package, and is already in use in the morehype and
+catcodes packages.
 
 %package -n texlive-langcode-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn27764
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn76924
 Release:        0
 Summary:        Documentation for texlive-langcode
 License:        LPPL-1.0
@@ -45738,9 +44312,9 @@ Provides:       tex(ln_langs_glot_native.tex)
 Provides:       tex(ln_langs_wals.tex)
 Provides:       tex(ln_langs_wals_native.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source297:      langnames.tar.xz
-Source298:      langnames.doc.tar.xz
+# from 20260301
+Source313:      langnames.tar.xz
+Source314:      langnames.doc.tar.xz
 
 %description -n texlive-langnames
 This package attempts to make the typing of language names,
@@ -45881,9 +44455,9 @@ Requires:       tex(xparse.sty)
 Requires:       tex(xspace.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source299:      langsci.tar.xz
-Source300:      langsci.doc.tar.xz
+# from 20260301
+Source315:      langsci.tar.xz
+Source316:      langsci.doc.tar.xz
 
 %description -n texlive-langsci
 This package allows you to typeset monographs and edited
@@ -45972,7 +44546,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/xelatex/langsci/tbls-tree.pdf
 
 %package -n texlive-langsci-avm
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn66016
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Feature structures and attribute-value matrices (AVM)
@@ -46006,9 +44580,9 @@ Requires:       tex(tikz.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source301:      langsci-avm.tar.xz
-Source302:      langsci-avm.doc.tar.xz
+# from 20260301
+Source317:      langsci-avm.tar.xz
+Source318:      langsci-avm.doc.tar.xz
 
 %description -n texlive-langsci-avm
 A package for typesetting feature structures, also known as
@@ -46020,7 +44594,7 @@ package serves the same purpose as, Christopher Manning's avm
 package, but shares no code base with that package.
 
 %package -n texlive-langsci-avm-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn66016
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.4.0svn76924
 Release:        0
 Summary:        Documentation for texlive-langsci-avm
 License:        LPPL-1.0
@@ -46086,9 +44660,9 @@ Suggests:       texlive-lapdf-doc >= %{texlive_version}
 Provides:       tex(lapdf.sty)
 Requires:       tex(calc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source303:      lapdf.tar.xz
-Source304:      lapdf.doc.tar.xz
+# from 20260301
+Source319:      lapdf.tar.xz
+Source320:      lapdf.doc.tar.xz
 
 %description -n texlive-lapdf
 The package provides the means to use PDF drawing primitives to
@@ -46243,9 +44817,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lastbib-doc >= %{texlive_version}
 Provides:       tex(lastbib.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source305:      lastbib.tar.xz
-Source306:      lastbib.doc.tar.xz
+# from 20260301
+Source321:      lastbib.tar.xz
+Source322:      lastbib.doc.tar.xz
 
 %description -n texlive-lastbib
 The package records the number of citations in a document, and
@@ -46316,9 +44890,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lastpackage-doc >= %{texlive_version}
 Provides:       tex(lastpackage.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source307:      lastpackage.tar.xz
-Source308:      lastpackage.doc.tar.xz
+# from 20260301
+Source323:      lastpackage.tar.xz
+Source324:      lastpackage.doc.tar.xz
 
 %description -n texlive-lastpackage
 This package may be used to define the last point where some
@@ -46363,7 +44937,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lastpackage/lastpackage.sty
 
 %package -n texlive-lastpage
-Version:        %{texlive_version}.%{texlive_noarch}.2.1esvn73639
+Version:        %{texlive_version}.%{texlive_noarch}.2.1hsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Reference last page for Page N of M type footers
@@ -46396,9 +44970,9 @@ Provides:       tex(lastpage2e.sty)
 Provides:       tex(lastpageclassic.sty)
 Provides:       tex(lastpagemodern.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source309:      lastpage.tar.xz
-Source310:      lastpage.doc.tar.xz
+# from 20260301
+Source325:      lastpage.tar.xz
+Source326:      lastpage.doc.tar.xz
 
 %description -n texlive-lastpage
 Reference the number of pages in your LaTeX document through
@@ -46408,7 +44982,7 @@ document. It is particularly useful in the page footer that
 says: Page N of M.
 
 %package -n texlive-lastpage-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1esvn73639
+Version:        %{texlive_version}.%{texlive_noarch}.2.1hsvn77682
 Release:        0
 Summary:        Documentation for texlive-lastpage
 License:        LPPL-1.0
@@ -46450,7 +45024,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lastpage/lastpagemodern.sty
 
 %package -n texlive-latex
-Version:        %{texlive_version}.%{texlive_noarch}.svn73643
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        A TeX macro package that defines LaTeX
@@ -46632,29 +45206,30 @@ Requires:       tex(l3doc.cls)
 Requires:       tex(multicol.sty)
 Requires:       tex(url.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source311:      latex.tar.xz
-Source312:      latex.doc.tar.xz
+# from 20260301
+Source327:      latex.tar.xz
+Source328:      latex.doc.tar.xz
 
 %description -n texlive-latex
-LaTeX is a widely-used macro package for TeX, providing many
-basic document formating commands extended by a wide range of
-packages. It is a development of Leslie Lamport's LaTeX 2.09,
-and superseded the older system in June 1994. The basic
-distribution is catalogued separately, at latex-base; apart
-from a large set of contributed packages and third-party
-documentation (elsewhere on the archive), the distribution
-includes: - a bunch of required packages, which LaTeX authors
-are "entitled to assume" will be present on any system running
-LaTeX; and - a minimal set of documentation detailing
-differences from the 'old' version of LaTeX in the areas of
-user commands, font selection and control, class and package
-writing, font encodings, configuration options and modification
-of LaTeX. For downloading details, see the linked catalogue
-entries above.
+LaTeX is a widely-used macro package (format) for TeX,
+providing many basic document formatting commands extended by a
+wide range of packages. It was originally created by Leslie
+Lamport, whose last release was LaTeX 2.09. The current LaTeX
+superseded that release in June 1994. The basic distribution is
+catalogued separately, at latex-base. Apart from a large set of
+contributed packages and third-party documentation (elsewhere
+on the archive), the distribution includes: a number of
+required packages, which LaTeX authors may assume will be
+present on any system running LaTeX; and a minimal set of
+documentation detailing differences from the 'old' version of
+LaTeX in the areas of user commands, font selection and
+control, class and package writing, font encodings,
+configuration options and modification of LaTeX. For
+downloading details, documentation links, etc., see the linked
+catalogue entries above.
 
 %package -n texlive-latex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn73643
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 Summary:        Documentation for texlive-latex
 License:        LPPL-1.0
@@ -46825,6 +45400,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/base/ltnews39.tex
 %{_texmfdistdir}/doc/latex/base/ltnews40.pdf
 %{_texmfdistdir}/doc/latex/base/ltnews40.tex
+%{_texmfdistdir}/doc/latex/base/ltnews41.pdf
+%{_texmfdistdir}/doc/latex/base/ltnews41.tex
+%{_texmfdistdir}/doc/latex/base/ltnews42.pdf
+%{_texmfdistdir}/doc/latex/base/ltnews42.tex
 %{_texmfdistdir}/doc/latex/base/ltpara-code.pdf
 %{_texmfdistdir}/doc/latex/base/ltpara-code.tex
 %{_texmfdistdir}/doc/latex/base/ltpara-doc.pdf
@@ -47043,7 +45622,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/base/x2enc.dfu
 
 %package -n texlive-latex-bin
-Version:        %{texlive_version}.%{texlive_noarch}.svn73848
+Version:        %{texlive_version}.%{texlive_noarch}.svn77830
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX executables and man pages
@@ -47082,6 +45661,8 @@ Requires:       texlive-latexconfig >= %{texlive_version}
 #!BuildIgnore: texlive-latexconfig
 Requires:       texlive-lm >= %{texlive_version}
 #!BuildIgnore: texlive-lm
+Requires:       texlive-lua-uni-algos >= %{texlive_version}
+#!BuildIgnore: texlive-lua-uni-algos
 Requires:       texlive-luahbtex >= %{texlive_version}
 #!BuildIgnore: texlive-luahbtex
 Requires:       texlive-luaotfload >= %{texlive_version}
@@ -47151,8 +45732,8 @@ Provides:       man(lualatex.1)
 Provides:       man(pdflatex.1)
 Suggests:       man(pdftex.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source313:      latex-bin.doc.tar.xz
+# from 20260301
+Source329:      latex-bin.doc.tar.xz
 
 %description -n texlive-latex-bin
 The latex-bin package
@@ -47353,7 +45934,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/pdflatex.1*
 
 %package -n texlive-latex-amsmath-dev
-Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_1svn77483
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of the LaTeX amsmath bundle
@@ -47390,9 +45971,9 @@ Provides:       texdev(amstex.sty)
 Provides:       texdev(amstext.sty)
 Provides:       texdev(amsxtra.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source314:      latex-amsmath-dev.tar.xz
-Source315:      latex-amsmath-dev.doc.tar.xz
+# from 20260301
+Source330:      latex-amsmath-dev.tar.xz
+Source331:      latex-amsmath-dev.doc.tar.xz
 
 %description -n texlive-latex-amsmath-dev
 This is a pre-release version of the standard LaTeX amsmath
@@ -47401,7 +45982,7 @@ bundle. It accompanies the pre-testing kernel code
 users.
 
 %package -n texlive-latex-amsmath-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_1svn77483
 Release:        0
 Summary:        Documentation for texlive-latex-amsmath-dev
 License:        LPPL-1.0
@@ -47465,7 +46046,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/amsmath/amsxtra.sty
 
 %package -n texlive-latex-base-dev
-Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_1svn77483
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of the LaTeX kernel
@@ -47535,6 +46116,7 @@ Provides:       texdev(graphpap.sty)
 Provides:       texdev(idx.tex)
 Provides:       texdev(ifthen.sty)
 Provides:       texdev(inputenc.sty)
+Provides:       texdev(l3in2edoc.cls)
 Provides:       texdev(lablst.tex)
 Provides:       texdev(latex209.def)
 Provides:       texdev(latexrelease.sty)
@@ -47644,23 +46226,24 @@ Requires:       tex(hypdoc.sty)
 Requires:       tex(hyperref.sty)
 Requires:       tex(url.sty)
 Requires:       texdev(l3doc.cls)
+Requires:       texdev(latex-lab-testphase-l3doc.sty)
 Requires:       texdev(multicol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source316:      latex-base-dev.tar.xz
-Source317:      latex-base-dev.doc.tar.xz
+# from 20260301
+Source332:      latex-base-dev.tar.xz
+Source333:      latex-base-dev.doc.tar.xz
 
 %description -n texlive-latex-base-dev
-This package provides a testing release for upcoming LaTeX2e
+This package provides a test release for upcoming LaTeX2e
 kernel changes. Testing by the LaTeX team itself suggests that
 the code is stable and usable, but wider use by knowledgeable
-users is required by adding these changes to the release LaTeX
-kernel. Typically, the code here will be used by a TeX system
-to create dedicated formats, for example pdflatex-dev, which
-can then be used explicitly for testing.
+users is desired. The code here is used by TeX systems to
+create dedicated formats, for example pdflatex-dev and
+lualatex-dev, which can then be used explicitly for testing,
+simply by changing your program invocation.
 
 %package -n texlive-latex-base-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_1svn77483
 Release:        0
 Summary:        Documentation for texlive-latex-base-dev
 License:        LPPL-1.0
@@ -47719,6 +46302,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex-dev/base/inputenc.pdf
 %{_texmfdistdir}/doc/latex-dev/base/lamport-manual.err
 %{_texmfdistdir}/doc/latex-dev/base/lamport-manual.pdf
+%{_texmfdistdir}/doc/latex-dev/base/latex-cmds.pdf
+%{_texmfdistdir}/doc/latex-dev/base/latex-cmds.tex
 %{_texmfdistdir}/doc/latex-dev/base/latexrelease.pdf
 %{_texmfdistdir}/doc/latex-dev/base/latexsym.pdf
 %{_texmfdistdir}/doc/latex-dev/base/lb2.err
@@ -47833,6 +46418,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex-dev/base/ltnews40.tex
 %{_texmfdistdir}/doc/latex-dev/base/ltnews41.pdf
 %{_texmfdistdir}/doc/latex-dev/base/ltnews41.tex
+%{_texmfdistdir}/doc/latex-dev/base/ltnews42.pdf
+%{_texmfdistdir}/doc/latex-dev/base/ltnews42.tex
+%{_texmfdistdir}/doc/latex-dev/base/ltnews43.pdf
+%{_texmfdistdir}/doc/latex-dev/base/ltnews43.tex
 %{_texmfdistdir}/doc/latex-dev/base/ltpara-code.pdf
 %{_texmfdistdir}/doc/latex-dev/base/ltpara-code.tex
 %{_texmfdistdir}/doc/latex-dev/base/ltpara-doc.pdf
@@ -47927,6 +46516,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/base/idx.tex
 %{_texmfdistdir}/tex/latex-dev/base/ifthen.sty
 %{_texmfdistdir}/tex/latex-dev/base/inputenc.sty
+%{_texmfdistdir}/tex/latex-dev/base/l3in2edoc.cls
 %{_texmfdistdir}/tex/latex-dev/base/lablst.tex
 %{_texmfdistdir}/tex/latex-dev/base/latex.ltx
 %{_texmfdistdir}/tex/latex-dev/base/latex209.def
@@ -47949,6 +46539,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/base/ltluatex.tex
 %{_texmfdistdir}/tex/latex-dev/base/ltnews.cls
 %{_texmfdistdir}/tex/latex-dev/base/ltxcheck.tex
+%{_texmfdistdir}/tex/latex-dev/base/ltxdoc-extra.ltx
 %{_texmfdistdir}/tex/latex-dev/base/ltxdoc.cfg
 %{_texmfdistdir}/tex/latex-dev/base/ltxdoc.cls
 %{_texmfdistdir}/tex/latex-dev/base/ltxguide.cls
@@ -48049,7 +46640,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/base/x2enc.dfu
 
 %package -n texlive-latex-bin-dev
-Version:        %{texlive_version}.%{texlive_noarch}.svn73848
+Version:        %{texlive_version}.%{texlive_noarch}.svn77830
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX pre-release executables and formats
@@ -48142,8 +46733,8 @@ Provides:       man(platex-dev.1)
 Provides:       man(uplatex-dev.1)
 Provides:       man(xelatex-dev.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source318:      latex-bin-dev.doc.tar.xz
+# from 20260301
+Source334:      latex-bin-dev.doc.tar.xz
 
 %description -n texlive-latex-bin-dev
 See the latex-base-dev package for information.
@@ -48386,8 +46977,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source319:      latex-brochure.doc.tar.xz
+# from 20260301
+Source335:      latex-brochure.doc.tar.xz
 
 %description -n texlive-latex-brochure
 The document is designed as a publicity flyer for LaTeX, but
@@ -48467,9 +47058,9 @@ Suggests:       texlive-latex-context-ppchtex-doc >= %{texlive_version}
 Provides:       tex(m-pictex.sty)
 Requires:       tex(pictex.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source320:      latex-context-ppchtex.tar.xz
-Source321:      latex-context-ppchtex.doc.tar.xz
+# from 20260301
+Source336:      latex-context-ppchtex.tar.xz
+Source337:      latex-context-ppchtex.doc.tar.xz
 
 %description -n texlive-latex-context-ppchtex
 m-pictex.sty was a wrapper for a ConTeXt module making picTeX
@@ -48541,8 +47132,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source322:      latex-course.doc.tar.xz
+# from 20260301
+Source338:      latex-course.doc.tar.xz
 
 %description -n texlive-latex-course
 A brief Beamer-based slide presentation on LaTeX, based on
@@ -48577,7 +47168,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-course/beamercolorthemeross.sty
 
 %package -n texlive-latex-doc-ptr
-Version:        %{texlive_version}.%{texlive_noarch}.svn72417
+Version:        %{texlive_version}.%{texlive_noarch}.svn77050
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        A direction-finder for LaTeX resources available online
@@ -48604,8 +47195,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source323:      latex-doc-ptr.doc.tar.xz
+# from 20260301
+Source339:      latex-doc-ptr.doc.tar.xz
 
 %description -n texlive-latex-doc-ptr
 A brief set of recommendations for users who need online
@@ -48644,7 +47235,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-doc-ptr/massage_html.awk
 
 %package -n texlive-latex-firstaid-dev
-Version:        %{texlive_version}.%{texlive_noarch}.1.1msvn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_1svn77483
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of the LaTeX firstaid package
@@ -48674,9 +47265,9 @@ Suggests:       texlive-latex-firstaid-dev-doc >= %{texlive_version}
 Provides:       texdev(filehook-ltx.sty)
 Provides:       texdev(underscore-ltx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source324:      latex-firstaid-dev.tar.xz
-Source325:      latex-firstaid-dev.doc.tar.xz
+# from 20260301
+Source340:      latex-firstaid-dev.tar.xz
+Source341:      latex-firstaid-dev.doc.tar.xz
 
 %description -n texlive-latex-firstaid-dev
 This is a pre-release version of the standard LaTeX firstaid
@@ -48685,7 +47276,7 @@ package. It accompanies the pre-testing kernel code
 users.
 
 %package -n texlive-latex-firstaid-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1msvn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_1svn77483
 Release:        0
 Summary:        Documentation for texlive-latex-firstaid-dev
 License:        LPPL-1.0
@@ -48775,9 +47366,9 @@ Provides:       tex(lcmssi8.tfm)
 Provides:       tex(line10.tfm)
 Provides:       tex(linew10.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source326:      latex-fonts.tar.xz
-Source327:      latex-fonts.doc.tar.xz
+# from 20260301
+Source342:      latex-fonts.tar.xz
+Source343:      latex-fonts.doc.tar.xz
 
 %description -n texlive-latex-fonts
 This is a collection of fonts for use with standard LaTeX
@@ -48905,8 +47496,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source328:      latex-for-undergraduates.doc.tar.xz
+# from 20260301
+Source344:      latex-for-undergraduates.doc.tar.xz
 
 %description -n texlive-latex-for-undergraduates
 A tutorial aimed at introducing undergraduate students to
@@ -49005,9 +47596,9 @@ Requires:       perl(utf8)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source329:      latex-git-log.tar.xz
-Source330:      latex-git-log.doc.tar.xz
+# from 20260301
+Source345:      latex-git-log.tar.xz
+Source346:      latex-git-log.doc.tar.xz
 
 %description -n texlive-latex-git-log
 The program is run within a git repository, and outputs the
@@ -49084,8 +47675,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source331:      latex-graphics-companion.doc.tar.xz
+# from 20260301
+Source347:      latex-graphics-companion.doc.tar.xz
 
 %description -n texlive-latex-graphics-companion
 The source of the examples printed in the book, together with
@@ -49548,7 +48139,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-graphics-companion/yearw.dat
 
 %package -n texlive-latex-graphics-dev
-Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_0svn76722
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of the LaTeX graphics bundle
@@ -49599,9 +48190,9 @@ Provides:       texdev(trig.sty)
 Provides:       texdev(truetex.def)
 Requires:       texdev(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source332:      latex-graphics-dev.tar.xz
-Source333:      latex-graphics-dev.doc.tar.xz
+# from 20260301
+Source348:      latex-graphics-dev.tar.xz
+Source349:      latex-graphics-dev.doc.tar.xz
 
 %description -n texlive-latex-graphics-dev
 This is a pre-release version of the standard LaTeX graphics
@@ -49610,7 +48201,7 @@ bundle. It accompanies the pre-testing kernel code
 users.
 
 %package -n texlive-latex-graphics-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_0svn76722
 Release:        0
 Summary:        Documentation for texlive-latex-graphics-dev
 License:        LPPL-1.0
@@ -49681,7 +48272,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/graphics/truetex.def
 
 %package -n texlive-latex-lab
-Version:        %{texlive_version}.%{texlive_noarch}.20241101_pl2svn73665
+Version:        %{texlive_version}.%{texlive_noarch}.20251101asvn76739
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX laboratory
@@ -49712,28 +48303,32 @@ Provides:       tex(glyphtounicode-cmex.tex)
 Provides:       tex(latex-lab-kernel-changes.sty)
 Provides:       tex(latex-lab-testphase-bib.sty)
 Provides:       tex(latex-lab-testphase-block.sty)
+Provides:       tex(latex-lab-testphase-context.sty)
 Provides:       tex(latex-lab-testphase-firstaid.sty)
 Provides:       tex(latex-lab-testphase-float.sty)
 Provides:       tex(latex-lab-testphase-graphic.sty)
+Provides:       tex(latex-lab-testphase-l3doc.sty)
+Provides:       tex(latex-lab-testphase-latest.sty)
 Provides:       tex(latex-lab-testphase-marginpar.sty)
 Provides:       tex(latex-lab-testphase-math.sty)
 Provides:       tex(latex-lab-testphase-minipage.sty)
+Provides:       tex(latex-lab-testphase-names.sty)
 Provides:       tex(latex-lab-testphase-new-or-1.sty)
 Provides:       tex(latex-lab-testphase-new-or-2.sty)
 Provides:       tex(latex-lab-testphase-sec.sty)
 Provides:       tex(latex-lab-testphase-table.sty)
 Provides:       tex(latex-lab-testphase-text.sty)
+Provides:       tex(latex-lab-testphase-tikz.sty)
 Provides:       tex(latex-lab-testphase-title.sty)
 Provides:       tex(latex-lab-testphase-toc.sty)
 Provides:       tex(tagpdf-ns-latex-lab.def)
 Requires:       tex(array.sty)
-Requires:       tex(etoolbox.sty)
 Requires:       tex(graphicx.sty)
-Requires:       tex(l3opacity.sty)
+Requires:       tex(tagpdf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source334:      latex-lab.tar.xz
-Source335:      latex-lab.doc.tar.xz
+# from 20260301
+Source350:      latex-lab.tar.xz
+Source351:      latex-lab.doc.tar.xz
 
 %description -n texlive-latex-lab
 This bundle holds optional files that are loaded in certain
@@ -49748,7 +48343,7 @@ documents (i.e., they aren't packages), so the process is
 transparent to documents already using the new functionality.
 
 %package -n texlive-latex-lab-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20241101_pl2svn73665
+Version:        %{texlive_version}.%{texlive_noarch}.20251101asvn76739
 Release:        0
 Summary:        Documentation for texlive-latex-lab
 License:        LPPL-1.0
@@ -49789,13 +48384,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-lab/documentmetadata-support-doc.tex
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-amsmath.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-bib.pdf
-%{_texmfdistdir}/doc/latex/latex-lab/latex-lab-block.pdf
+%{_texmfdistdir}/doc/latex/latex-lab/latex-lab-context.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-firstaid.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-float.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-footnotes.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-graphic.pdf
+%{_texmfdistdir}/doc/latex/latex-lab/latex-lab-l3doc-tagging.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-marginpar.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-math.pdf
+%{_texmfdistdir}/doc/latex/latex-lab/latex-lab-mathintent.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-mathpkg.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-mathtools.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-minipage.pdf
@@ -49806,14 +48403,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-table.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-testphase.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-text.pdf
+%{_texmfdistdir}/doc/latex/latex-lab/latex-lab-tikz.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-title.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-toc-hyperref-changes.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-toc-kernel-changes.pdf
 %{_texmfdistdir}/doc/latex/latex-lab/latex-lab-toc.pdf
+%{_texmfdistdir}/doc/latex/latex-lab/latex-lab-unicode-math.pdf
 
 %files -n texlive-latex-lab
 %{_texmfdistdir}/tex/latex/latex-lab/bib-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/block-latex-lab-testphase.ltx
+%{_texmfdistdir}/tex/latex/latex-lab/context-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/documentmetadata-support.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/firstaid-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/float-latex-lab-testphase.ltx
@@ -49824,23 +48424,30 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-footnotes.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-kernel-changes.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-math.ltx
+%{_texmfdistdir}/tex/latex/latex-lab/latex-lab-mathintent.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-mathpkg.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-mathtools.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-bib.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-block.sty
+%{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-context.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-firstaid.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-float.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-graphic.sty
+%{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-l3doc.sty
+%{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-latest.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-marginpar.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-math.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-minipage.sty
+%{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-names.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-new-or-1.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-new-or-2.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-sec.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-table.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-text.sty
+%{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-tikz.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-title.sty
 %{_texmfdistdir}/tex/latex/latex-lab/latex-lab-testphase-toc.sty
+%{_texmfdistdir}/tex/latex/latex-lab/latex-lab-unicode-math.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/marginpar-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/math-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/minipage-latex-lab-testphase.ltx
@@ -49855,11 +48462,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latex-lab/tagpdf-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/tagpdf-ns-latex-lab.def
 %{_texmfdistdir}/tex/latex/latex-lab/text-latex-lab-testphase.ltx
+%{_texmfdistdir}/tex/latex/latex-lab/tikz-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/title-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex/latex-lab/toc-latex-lab-testphase.ltx
 
 %package -n texlive-latex-lab-dev
-Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_1asvn77531
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX laboratory: Development pre-release
@@ -49887,40 +48495,47 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latex-lab-dev-doc >= %{texlive_version}
 Provides:       texdev(glyphtounicode-cmex.tex)
+Provides:       texdev(latex-lab-enumitem.sty)
 Provides:       texdev(latex-lab-kernel-changes.sty)
 Provides:       texdev(latex-lab-testphase-bib.sty)
 Provides:       texdev(latex-lab-testphase-block.sty)
+Provides:       texdev(latex-lab-testphase-context.sty)
 Provides:       texdev(latex-lab-testphase-firstaid.sty)
 Provides:       texdev(latex-lab-testphase-float.sty)
 Provides:       texdev(latex-lab-testphase-graphic.sty)
+Provides:       texdev(latex-lab-testphase-l3doc.sty)
+Provides:       texdev(latex-lab-testphase-latest.sty)
 Provides:       texdev(latex-lab-testphase-marginpar.sty)
 Provides:       texdev(latex-lab-testphase-math.sty)
 Provides:       texdev(latex-lab-testphase-minipage.sty)
+Provides:       texdev(latex-lab-testphase-names.sty)
 Provides:       texdev(latex-lab-testphase-new-or-1.sty)
 Provides:       texdev(latex-lab-testphase-new-or-2.sty)
+Provides:       texdev(latex-lab-testphase-sec-template.sty)
 Provides:       texdev(latex-lab-testphase-sec.sty)
 Provides:       texdev(latex-lab-testphase-table.sty)
 Provides:       texdev(latex-lab-testphase-text.sty)
+Provides:       texdev(latex-lab-testphase-tikz.sty)
 Provides:       texdev(latex-lab-testphase-title.sty)
 Provides:       texdev(latex-lab-testphase-toc.sty)
 Provides:       texdev(tagpdf-ns-latex-lab.def)
-Requires:       tex(l3opacity.sty)
+Requires:       tex(tagpdf.sty)
 Requires:       texdev(array.sty)
 Requires:       texdev(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source336:      latex-lab-dev.tar.xz
-Source337:      latex-lab-dev.doc.tar.xz
+# from 20260301
+Source352:      latex-lab-dev.tar.xz
+Source353:      latex-lab-dev.doc.tar.xz
 
 %description -n texlive-latex-lab-dev
 This package provides a testing release for upcoming changes to
 the latex-lab bundle, which provides a route for additions to
-the LaTeX kernel to be stablised. It accompanies the
+the LaTeX kernel to be stabilised. It accompanies the
 pre-testing kernel code (latex-base-dev), and is intended for
 testing by knowledgeable users.
 
 %package -n texlive-latex-lab-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_1asvn77531
 Release:        0
 Summary:        Documentation for texlive-latex-lab-dev
 License:        LPPL-1.0
@@ -49961,11 +48576,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex-dev/latex-lab/documentmetadata-support-doc.tex
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-amsmath.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-bib.pdf
-%{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-block.pdf
+%{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-context.pdf
+%{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-enumitem.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-firstaid.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-float.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-footnotes.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-graphic.pdf
+%{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-l3doc-tagging.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-marginpar.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-math.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-mathintent.pdf
@@ -49975,10 +48592,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-namespace.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-new-or-1.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-new-or-2.pdf
+%{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-sec-template.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-sec.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-table.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-testphase.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-text.pdf
+%{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-tikz.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-title.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-toc-hyperref-changes.pdf
 %{_texmfdistdir}/doc/latex-dev/latex-lab/latex-lab-toc-kernel-changes.pdf
@@ -49988,12 +48607,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-latex-lab-dev
 %{_texmfdistdir}/tex/latex-dev/latex-lab/bib-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/block-latex-lab-testphase.ltx
+%{_texmfdistdir}/tex/latex-dev/latex-lab/context-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/documentmetadata-support.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/firstaid-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/float-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/glyphtounicode-cmex.tex
 %{_texmfdistdir}/tex/latex-dev/latex-lab/graphic-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-amsmath.ltx
+%{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-enumitem.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-footmisc.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-footnotes.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-kernel-changes.sty
@@ -50003,17 +48624,23 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-mathtools.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-bib.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-block.sty
+%{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-context.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-firstaid.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-float.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-graphic.sty
+%{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-l3doc.sty
+%{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-latest.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-marginpar.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-math.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-minipage.sty
+%{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-names.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-new-or-1.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-new-or-2.sty
+%{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-sec-template.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-sec.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-table.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-text.sty
+%{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-tikz.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-title.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-testphase-toc.sty
 %{_texmfdistdir}/tex/latex-dev/latex-lab/latex-lab-unicode-math.ltx
@@ -50026,11 +48653,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/latex-lab/phase-II-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/phase-III-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/sec-latex-lab-testphase.ltx
+%{_texmfdistdir}/tex/latex-dev/latex-lab/sec-template-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/table-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/tabular-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/tagpdf-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/tagpdf-ns-latex-lab.def
 %{_texmfdistdir}/tex/latex-dev/latex-lab/text-latex-lab-testphase.ltx
+%{_texmfdistdir}/tex/latex-dev/latex-lab/tikz-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/title-latex-lab-testphase.ltx
 %{_texmfdistdir}/tex/latex-dev/latex-lab/toc-latex-lab-testphase.ltx
 
@@ -50081,9 +48710,9 @@ Requires:       tex(thumbpdf.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source338:      latex-make.tar.xz
-Source339:      latex-make.doc.tar.xz
+# from 20260301
+Source354:      latex-make.tar.xz
+Source355:      latex-make.doc.tar.xz
 
 %description -n texlive-latex-make
 This package provides several tools that aim to simplify the
@@ -50175,8 +48804,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source340:      latex-mr.doc.tar.xz
+# from 20260301
+Source356:      latex-mr.doc.tar.xz
 
 %description -n texlive-latex-mr
 The package provides a short guide to LaTeX and specifically to
@@ -50239,8 +48868,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source341:      latex-notes-zh-cn.doc.tar.xz
+# from 20260301
+Source357:      latex-notes-zh-cn.doc.tar.xz
 
 %description -n texlive-latex-notes-zh-cn
 The document is an introduction to TeX/LaTeX, in Chinese. It
@@ -50352,9 +48981,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latex-papersize-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source342:      latex-papersize.tar.xz
-Source343:      latex-papersize.doc.tar.xz
+# from 20260301
+Source358:      latex-papersize.tar.xz
+Source359:      latex-papersize.doc.tar.xz
 
 %description -n texlive-latex-papersize
 The package is a Python script, whose typical use is when
@@ -50427,8 +49056,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source344:      latex-refsheet.doc.tar.xz
+# from 20260301
+Source360:      latex-refsheet.doc.tar.xz
 
 %description -n texlive-latex-refsheet
 This LaTeX Reference Sheet is for writing a thesis using the
@@ -50466,8 +49095,82 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-refsheet/thesis.pdf
 %{_texmfdistdir}/doc/latex/latex-refsheet/thesis.tex
 
+%package -n texlive-latex-tagging-status
+Version:        %{texlive_version}.%{texlive_noarch}.svn77788
+Release:        0
+License:        LPPL-1.0
+Summary:        The LaTeX Tagging Status data
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-latex-tagging-status-doc >= %{texlive_version}
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source361:      latex-tagging-status.tar.xz
+Source362:      latex-tagging-status.doc.tar.xz
+
+%description -n texlive-latex-tagging-status
+TeX data of the tagging status derived from
+https://latex3.github.io/tagging-project/tagging-status/full.
+This will allow latex-lab to provide interfaces to check the
+status of packages used in a document.
+
+%package -n texlive-latex-tagging-status-doc
+Version:        %{texlive_version}.%{texlive_noarch}.svn77788
+Release:        0
+Summary:        Documentation for texlive-latex-tagging-status
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-latex-tagging-status and texlive-alldocumentation)
+
+%description -n texlive-latex-tagging-status-doc
+This package includes the documentation for texlive-latex-tagging-status
+
+%post -n texlive-latex-tagging-status
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-latex-tagging-status
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-latex-tagging-status
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-latex-tagging-status-doc
+%{_texmfdistdir}/doc/latex/latex-tagging-status/README.md
+
+%files -n texlive-latex-tagging-status
+%{_texmfdistdir}/tex/latex/latex-tagging-status/latex-tagging-status.ltx
+
 %package -n texlive-latex-tools-dev
-Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_1svn77483
 Release:        0
 License:        LPPL-1.0
 Summary:        Development pre-release of the LaTeX tools bundle
@@ -50498,6 +49201,7 @@ Provides:       texdev(afterpage.sty)
 Provides:       texdev(array-2016-10-06.sty)
 Provides:       texdev(array-2020-02-10.sty)
 Provides:       texdev(array-2023-11-01.sty)
+Provides:       texdev(array-2024-06-01.sty)
 Provides:       texdev(array.sty)
 Provides:       texdev(bm.sty)
 Provides:       texdev(calc.sty)
@@ -50537,6 +49241,7 @@ Provides:       texdev(thmb.sty)
 Provides:       texdev(thp.sty)
 Provides:       texdev(trace.sty)
 Provides:       texdev(varioref-2016-02-16.sty)
+Provides:       texdev(varioref-2019-10-01.sty)
 Provides:       texdev(varioref.sty)
 Provides:       texdev(verbatim.sty)
 Provides:       texdev(verbtest.tex)
@@ -50546,9 +49251,9 @@ Provides:       texdev(xr.sty)
 Provides:       texdev(xspace.sty)
 Requires:       texdev(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source345:      latex-tools-dev.tar.xz
-Source346:      latex-tools-dev.doc.tar.xz
+# from 20260301
+Source363:      latex-tools-dev.tar.xz
+Source364:      latex-tools-dev.doc.tar.xz
 
 %description -n texlive-latex-tools-dev
 This is a pre-release version of the standard LaTeX tools
@@ -50557,7 +49262,7 @@ bundle. It accompanies the pre-testing kernel code
 users.
 
 %package -n texlive-latex-tools-dev-doc
-Version:        %{texlive_version}.%{texlive_noarch}.20250601_pre_release_2svn74211
+Version:        %{texlive_version}.%{texlive_noarch}.pre_release_1svn77483
 Release:        0
 Summary:        Documentation for texlive-latex-tools-dev
 License:        LPPL-1.0
@@ -50625,6 +49330,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/tools/array-2016-10-06.sty
 %{_texmfdistdir}/tex/latex-dev/tools/array-2020-02-10.sty
 %{_texmfdistdir}/tex/latex-dev/tools/array-2023-11-01.sty
+%{_texmfdistdir}/tex/latex-dev/tools/array-2024-06-01.sty
 %{_texmfdistdir}/tex/latex-dev/tools/array.sty
 %{_texmfdistdir}/tex/latex-dev/tools/bm.sty
 %{_texmfdistdir}/tex/latex-dev/tools/calc.sty
@@ -50664,6 +49370,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex-dev/tools/thp.sty
 %{_texmfdistdir}/tex/latex-dev/tools/trace.sty
 %{_texmfdistdir}/tex/latex-dev/tools/varioref-2016-02-16.sty
+%{_texmfdistdir}/tex/latex-dev/tools/varioref-2019-10-01.sty
 %{_texmfdistdir}/tex/latex-dev/tools/varioref.sty
 %{_texmfdistdir}/tex/latex-dev/tools/verbatim.sty
 %{_texmfdistdir}/tex/latex-dev/tools/verbtest.tex
@@ -50712,9 +49419,9 @@ Requires:       tex(tgheros.sty)
 Requires:       tex(tgtermes.sty)
 Requires:       tex(unicode-math.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source347:      latex-uni8.tar.xz
-Source348:      latex-uni8.doc.tar.xz
+# from 20260301
+Source365:      latex-uni8.tar.xz
+Source366:      latex-uni8.doc.tar.xz
 
 %description -n texlive-latex-uni8
 This package provides a LaTeX style file which makes it easy to
@@ -50802,8 +49509,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source349:      latex-veryshortguide.doc.tar.xz
+# from 20260301
+Source367:      latex-veryshortguide.doc.tar.xz
 
 %description -n texlive-latex-veryshortguide
 This is a 4-page reminder of what LaTeX does. It is designed
@@ -50843,10 +49550,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-veryshortguide/vsg.tex
 
 %package -n texlive-latex-via-exemplos
-Version:        %{texlive_version}.%{texlive_noarch}.svn73369
+Version:        %{texlive_version}.%{texlive_noarch}.svn77105
 Release:        0
 License:        LPPL-1.0
-Summary:        A LaTeX course written in brazilian portuguese language
+Summary:        A LaTeX course written in Brazilian Portuguese language
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -50870,11 +49577,11 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source350:      latex-via-exemplos.doc.tar.xz
+# from 20260301
+Source368:      latex-via-exemplos.doc.tar.xz
 
 %description -n texlive-latex-via-exemplos
-This is a LaTeX2e course written in brazilian portuguese
+This is a LaTeX2e course written in Brazilian Portuguese
 language.
 
 %post -n texlive-latex-via-exemplos
@@ -50909,7 +49616,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-slides.tex
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-todonotes.tex
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos-twoside.tex
-%{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos.bib
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos.pdf
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/latex-via-exemplos.tex
 %{_texmfdistdir}/doc/latex/latex-via-exemplos/makedoc.sh
@@ -51281,6 +49987,39 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:119} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:120} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
+    mkdir -p %{buildroot}%{_datadir}/fonts/texlive-juliamono
+    for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/juliamono/*.{pf[ab],[ot]tf}
+    do
+        test -e $font || continue
+        mv -f $font %{buildroot}%{_datadir}/fonts/texlive-juliamono
+        base=${font##*/}
+        ln -sf %{_datadir}/fonts/texlive-juliamono/${base} ${font}
+    done
+    /usr/bin/mkfontscale %{buildroot}%{_datadir}/fonts/texlive-juliamono/
+    /usr/bin/mkfontdir -e /usr/share/fonts/encodings/ %{buildroot}%{_datadir}/fonts/texlive-juliamono/
+    mkdir -p %{buildroot}%{_datadir}/fontconfig/conf.avail
+    (cat > %{buildroot}%{_datadir}/fontconfig/conf.avail/58-texlive-juliamono.conf)<<-'EOF'
+	<?xml version="1.0"?>
+	<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+
+	<!-- ************************************************ -->
+	<!-- Use this to disable the TeX fonts of the package -->
+	<!--    texlive-juliamono    -->
+	<!-- Be aware that the configurations in the files    -->
+	<!-- 09-texlive*.conf will not be affected by this    -->
+	<!-- ************************************************ -->
+
+	<fontconfig>
+	  <rejectfont>
+	    <glob>%{_datadir}/fonts/texlive-juliamono/*</glob>
+	  </rejectfont>
+	</fontconfig>
+	EOF
+    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-junicode
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/junicode/*.{pf[ab],[ot]tf} \
 		%{buildroot}/%{_texmfdistdir}/fonts/type1/public/junicode/*.{pf[ab],[ot]tf}
@@ -51330,8 +50069,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-junicode.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-junicode.conf
-    tar --use-compress-program=xz -xf %{S:121} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:122} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-junicodevf
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/junicodevf/*.{pf[ab],[ot]tf}
@@ -51361,20 +50100,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:123} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/jura/jura2html
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51408,6 +50143,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-kerkis
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/kerkis/*.{pf[ab],[ot]tf} \
@@ -51458,10 +50201,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-kerkis.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-kerkis.conf
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive
     # Remove files
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/ketcindy/forWindows/setketcindykettex.bat
     rm -vf  %{buildroot}%{_texmfdistdir}/doc/support/ketcindy/forWindows/setketcindyothertex.bat
@@ -51502,14 +50245,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$txt || continue
 	chmod 0644 %{buildroot}/$txt
     done
-    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51524,6 +50259,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-khatalmaqala
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/khatalmaqala/*.{pf[ab],[ot]tf}
@@ -51553,16 +50296,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-knitting
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/knitting/*.{pf[ab],[ot]tf}
@@ -51592,25 +50341,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script
-    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc
-    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/bin
-    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/english
-    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/ngerman
-    tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:213} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:214} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:215} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:216} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51623,9 +50353,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:223} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:224} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script
+    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc
+    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/bin
+    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/english
+    mkdir -p %{buildroot}%{_texmfdistdir}/source/latex/koma-script/doc/ngerman
     tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/kotex-utils/jamo-normalize.pl \
 	       %{_texmfdistdir}/scripts/kotex-utils/komkindex.pl \
@@ -51640,10 +50389,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:231}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:245}
     popd
     # Move configuration files
     mkdir -p %{buildroot}%{_texmfconfdir}/web2c
@@ -51656,8 +50405,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     mv -f  %{buildroot}%{_texmfdistdir}/web2c/texmf.cnf %{buildroot}%{_texmfconfdir}/web2c/
     rm -f  %{buildroot}%{_texmfdistdir}/web2c/texmf.cnf
     ln -sf %{_texmfconfdir}/web2c/texmf.cnf %{buildroot}%{_texmfdistdir}/web2c/texmf.cnf
-    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-kpfonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/kpfonts/*.{pf[ab],[ot]tf}
@@ -51687,8 +50436,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-kpfonts-otf
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/kpfonts-otf/*.{pf[ab],[ot]tf}
@@ -51718,17 +50467,19 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-kurier
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/nowacki/kurier/*.{pf[ab],[ot]tf} \
@@ -51779,26 +50530,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-kurier.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-kurier.conf
-    tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/l3build/l3build.lua
     do
@@ -51811,16 +50562,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:273} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:274} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:275} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:276} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/l3sys-query/l3sys-query.lua
     do
@@ -51833,27 +50584,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:277} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:278} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:279} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:280} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:281} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:282} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:283} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:284} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Move configuration files
-    mkdir -p %{buildroot}%{_texmfconfdir}/tex/lambda/config
-    mv -f  %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat %{buildroot}%{_texmfconfdir}/tex/lambda/config/
-    rm -f  %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat
-    ln -sf %{_texmfconfdir}/tex/lambda/config/language.dat %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat
-    tar --use-compress-program=xz -xf %{S:291} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:292} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:293} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:294} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:295} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51864,22 +50594,27 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Move configuration files
+    mkdir -p %{buildroot}%{_texmfconfdir}/tex/lambda/config
+    mv -f  %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat %{buildroot}%{_texmfconfdir}/tex/lambda/config/
+    rm -f  %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat
+    ln -sf %{_texmfconfdir}/tex/lambda/config/language.dat %{buildroot}%{_texmfdistdir}/tex/lambda/config/language.dat
     tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:317} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:318} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:319} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:320} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:321} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -51891,7 +50626,23 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:327} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:328} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:329} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:330} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:339} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:340} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:341} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:342} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:343} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:344} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:345} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:346} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/latex-git-log/latex-git-log
     do
@@ -51904,15 +50655,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:331} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:332} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:333} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:334} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:335} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:336} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:337} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:338} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:339} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:347} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:348} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:349} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:350} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:351} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:352} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:353} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:354} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:355} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Extend python3 scripts with major version only if any
     for scr in %{_texmfdistdir}/scripts/latex-make/figdepth.py \
 	       %{_texmfdistdir}/scripts/latex-make/gensubfig.py \
@@ -51945,10 +50696,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:340} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:341} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:342} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:343} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:356} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:357} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:358} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:359} -C %{buildroot}%{_datadir}/texlive
     # Correct shebang of python3 scripts if any
     for scr in %{_texmfdistdir}/scripts/latex-papersize/latex-papersize.py
     do
@@ -51974,13 +50725,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:344} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:345} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:346} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:347} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:348} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:349} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:350} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:360} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:361} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:362} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:363} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:364} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:365} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:366} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:367} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:368} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj
