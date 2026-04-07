@@ -121,4 +121,41 @@
   * Support time.time_ns changes in Python 3.13+.</comment>
     <requestid>1224339</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ad62c5ea8e1591dee38188848a89420f</srcmd5>
+    <version>4.1.0</version>
+    <time>1775572409</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.0:
+  * Add support for Python 3.14, PyPy 3.11
+  * Remove support for Python 3.8, 3.9 (includes PyPy versions).
+- update to 4.0.0:
+  * Support `DictConfigurator` prefixes for `rename_fields` and
+    `static_fields`. #45
+  * Allows using values like `ext://sys.stderr` in
+    `fileConfig`/`dictConfig` value fields.
+  * Support comma seperated lists for Formatter `fmt`
+    (`style=&quot;,&quot;`) e.g. `&quot;asctime,message,levelname&quot;` #15
+  * Note that this style is specific to `python-json-logger` and
+    thus care should be taken not to pass this format to other
+    logging Formatter implementations.
+  * Supports sequences of strings (e.g. lists and tuples) of
+    field names for Formatter `fmt`. #16
+  * Rename `pythonjsonlogger.core.LogRecord` and `log_record`
+    arguments to avoid confusion / overlapping with
+    `logging.LogRecord`. #38
+- update to 3.3.0:
+  * `exc_info_as_array` and `stack_info_as_array` options are
+    added to `pythonjsonlogger.core.BaseJsonFormatter` allowing
+    both to be encoded as list of lines instead of a single
+    multi-line string. #35
+  * Remove `msgspec-python313-pre` from `dev` dependencies
+    preventing potential RCE. Details: GHSA-wmxh-pxcx-9w24
+- update to 3.2.1:
+  * Import error on `import pythonjsonlogger.jsonlogger` #29
+- update to 3.2.0:
+  * `pythonjsonlogger.[ORJSON,MSGSPEC]_AVAILABLE` no longer
+    imports the respective package when determining availability.</comment>
+    <requestid>1344791</requestid>
+  </revision>
 </revisionlist>

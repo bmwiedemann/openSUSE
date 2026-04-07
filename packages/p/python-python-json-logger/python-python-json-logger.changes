@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Apr  6 20:39:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Add support for Python 3.14, PyPy 3.11
+  * Remove support for Python 3.8, 3.9 (includes PyPy versions).
+- update to 4.0.0:
+  * Support `DictConfigurator` prefixes for `rename_fields` and
+    `static_fields`. #45
+  * Allows using values like `ext://sys.stderr` in
+    `fileConfig`/`dictConfig` value fields.
+  * Support comma seperated lists for Formatter `fmt`
+    (`style=","`) e.g. `"asctime,message,levelname"` #15
+  * Note that this style is specific to `python-json-logger` and
+    thus care should be taken not to pass this format to other
+    logging Formatter implementations.
+  * Supports sequences of strings (e.g. lists and tuples) of
+    field names for Formatter `fmt`. #16
+  * Rename `pythonjsonlogger.core.LogRecord` and `log_record`
+    arguments to avoid confusion / overlapping with
+    `logging.LogRecord`. #38
+- update to 3.3.0:
+  * `exc_info_as_array` and `stack_info_as_array` options are
+    added to `pythonjsonlogger.core.BaseJsonFormatter` allowing
+    both to be encoded as list of lines instead of a single
+    multi-line string. #35
+  * Remove `msgspec-python313-pre` from `dev` dependencies
+    preventing potential RCE. Details: GHSA-wmxh-pxcx-9w24
+- update to 3.2.1:
+  * Import error on `import pythonjsonlogger.jsonlogger` #29
+- update to 3.2.0:
+  * `pythonjsonlogger.[ORJSON,MSGSPEC]_AVAILABLE` no longer
+    imports the respective package when determining availability.
+  * `pythonjsonlogger.[orjson,msgspec]` now throws a
+    `pythonjsonlogger.exception.MissingPackageError` when
+    required libraries are not available. These contain more
+    information about what is missing whilst still being an
+    `ImportError`.
+  * `defaults` parameter is no longer ignored and now conforms to
+    the standard library. Setting a defaults dictionary will add
+    the specified keys if the those keys do not exist in a record
+    or weren't passed by the `extra` parameter when logging a
+    message.
+  * `typing_extensions` is only installed on Python version <
+    3.10.
+  * Support Python 3.13
+  * `msgspec` has only been tested against pre-release versions.
+  * Thanks @cjwatson and @bharel
+- update to 3.1.0:
+  * This splits common funcitonality out to allow supporting
+    other JSON encoders. Although this is a large refactor,
+    backwards compatibility has been maintained.
+  * `pythonjsonlogger.core` - more details below.
+  * `pythonjsonlogger.defaults` module that provides many
+    functions for handling unsupported types.
+  * Orjson encoder support via
+    `pythonjsonlogger.orjson.OrjsonFormatter` with the following
+    additions:
+  * bytes are URL safe base64 encoded.
+  * Exceptions are "pretty printed" using the exception name and
+    message e.g. `"ValueError: bad value passed"`
+  * Enum values use their value, Enum classes now return all
+    values as a list.
+  * Tracebacks are supported
+  * Classes (aka types) are support
+  * Will fallback on `__str__` if available, else `__repr__` if
+    available, else will use `__could_not_encode__`
+  * MsgSpec encoder support via
+    `pythonjsonlogger.msgspec.MsgspecFormatter` with the
+    following additions:
+  * Exceptions are "pretty printed" using the exception name and
+    message e.g. `"ValueError: bad value passed"`
+  * Enum classes now return all values as a list.
+  * Tracebacks are supported
+  * Classes (aka types) are support
+  * Will fallback on `__str__` if available, else `__repr__` if
+    available, else will use `__could_not_encode__`
+  * Note: msgspec only supprts enum values of type `int` or `str`
+    jcrist/msgspec#680
+ - Remove obsolete patches:
+  * support-python312.patch
+  * support-python313.patch
+
+-------------------------------------------------------------------
 Fri Nov 15 01:44:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python313.patch:

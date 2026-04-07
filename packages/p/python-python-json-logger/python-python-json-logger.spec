@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-json-logger
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-json-logger
-Version:        2.0.7
+Version:        4.1.0
 Release:        0
 Summary:        A python library adding a json log formatter
 License:        BSD-2-Clause
-URL:            https://github.com/madzak/python-json-logger
-Source:         https://files.pythonhosted.org/packages/source/p/python-json-logger/python-json-logger-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#madzak/python-json-logger#183
-Patch0:         support-python312.patch
-# PATCH-FIX-UPSTREAM gh#madzak/python-json-logger#192
-Patch1:         support-python313.patch
+URL:            https://github.com/nhairs/python-json-logger
+Source:         https://files.pythonhosted.org/packages/source/p/python-json-logger/python_json_logger-%{version}.tar.gz
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,7 +39,7 @@ BuildArch:      noarch
 A python library adding a json log formatter.
 
 %prep
-%autosetup -p1 -n python-json-logger-%{version}
+%autosetup -p1 -n python_json_logger-%{version}
 
 %build
 %pyproject_wheel
@@ -50,7 +49,7 @@ A python library adding a json log formatter.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover -v
+%pytest
 
 %files %{python_files}
 %doc README.md
