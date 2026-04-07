@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:05:13 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.64.0:
+  * Update Lua plugin integration to support Lua 5.5.
+  * Add "Find all occurences" option to search dialogs (#18).
+  * Add support for "PRIMARY" selections on Linux/BSD (#20).
+  * Fix unchanged bytes being highlighted as changed (#274).
+  * Correctly annotate template variables repeated using a loop (#269).
+  * Fix display of AT&T disassembly syntax menu option.
+  * Fix crash when backspace is pressed at start of file (#282).
+  * Fix cursor jumping to the wrong position when inserting data at the end of the file.
+  * Fix backspace inserting characters into the file when editing text.
+  * Fix cursor jumping to the wrong position when using backspace to delete the
+    last byte of the file in insert mode.
+  * Fix potential crash when calculating CRC checksums.
+  * Add more predefined colours to the value colour map palette.
+  * Replace default value colour maps for improved readability.
+  * Fix cursor being drawn in value colour maps preferences.
+  * Add reset to defaults button to preferences dialog.
+
+-------------------------------------------------------------------
 Sat Dec 13 16:30:54 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.63.4:
