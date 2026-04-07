@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-widget-tweaks
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           python-django-widget-tweaks
-Version:        1.4.8
+Version:        1.5.1
 Release:        0
 Summary:        Django form field rendering in templates
 License:        MIT
 URL:            https://github.com/jazzband/django-widget-tweaks
-Source:         https://files.pythonhosted.org/packages/source/d/django-widget-tweaks/django-widget-tweaks-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/jazzband/django-widget-tweaks/master/runtests.py
-BuildRequires:  %{python_module Django}
+Source:         https://files.pythonhosted.org/packages/source/d/django-widget-tweaks/django_widget_tweaks-%{version}.tar.gz
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django
+Requires:       python-Django >= 4.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -38,8 +38,7 @@ BuildArch:      noarch
 Tweak the form field rendering in templates, not in python-level form definitions.
 
 %prep
-%setup -q -n django-widget-tweaks-%{version}
-cp %{SOURCE1} .
+%setup -q -n django_widget_tweaks-%{version}
 
 %build
 %pyproject_wheel
@@ -49,7 +48,7 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec runtests.py
+%python_exec -m django test -v2 --settings=tests.settings
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

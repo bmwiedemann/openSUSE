@@ -16,4 +16,19 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282146</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>46a5025558a4312c0c56de0551bc5567</srcmd5>
+    <version>1.5.1</version>
+    <time>1775572422</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.1:
+  * Drop support for Django 4.1
+  * Drop support for Python 3.8
+  * Add Django 5.0 support
+  * Add Django 5.1 support
+  * Add Python 3.12 support
+  * Add Python 3.13 support
+  * Add PyPy 3.11 support</comment>
+    <requestid>1344805</requestid>
+  </revision>
 </revisionlist>

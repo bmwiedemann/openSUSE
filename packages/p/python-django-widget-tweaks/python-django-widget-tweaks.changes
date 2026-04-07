@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  6 21:13:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Drop support for Django 4.1
+  * Drop support for Python 3.8
+  * Add Django 5.0 support
+  * Add Django 5.1 support
+  * Add Python 3.12 support
+  * Add Python 3.13 support
+  * Add PyPy 3.11 support
+
+-------------------------------------------------------------------
 Tue Jun  3 07:03:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
