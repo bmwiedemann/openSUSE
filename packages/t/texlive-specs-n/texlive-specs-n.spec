@@ -14,13 +14,15 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+##### WARNING: Please do not edit this auto generated spec file.
+#
 
 
-%define texlive_version  2025
-%define texlive_previous 2022
-%define texlive_release  20250308
+%define texlive_version  2026
+%define texlive_previous 2025
+%define texlive_release  20260301
 %define texlive_noarch   222
-%define biber_version    2.20
+%define biber_version    2.21
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -60,7 +62,7 @@
 %endif
 
 Name:           texlive-specs-n
-Version:        2025
+Version:        2026
 Release:        0
 BuildRequires:  ed
 BuildRequires:  fontconfig
@@ -76,7 +78,7 @@ BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for n
-License:        BSD-3-Clause AND GFDL-1.3-or-later AND GPL-2.0-or-later AND LPPL-1.0 AND LPPL-1.3c AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        BSD-3-Clause and GFDL-1.3-or-later and GPL-2.0-or-later and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-n-rpmlintrc
@@ -112,7 +114,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source1:        latex-web-companion.doc.tar.xz
 
 %description -n texlive-latex-web-companion
@@ -321,7 +323,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source2:        latex2e-help-texinfo.doc.tar.xz
 
 %description -n texlive-latex2e-help-texinfo
@@ -408,7 +410,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source3:        latex2e-help-texinfo-fr.doc.tar.xz
 
 %description -n texlive-latex2e-help-texinfo-fr
@@ -455,7 +457,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex2e-help-texinfo-fr/ltx-help.el
 
 %package -n texlive-latex2e-help-texinfo-spanish
-Version:        %{texlive_version}.%{texlive_noarch}.svn65614
+Version:        %{texlive_version}.%{texlive_noarch}.svn75712
 Release:        0
 License:        LPPL-1.0
 Summary:        Unofficial reference manual covering LaTeX2e
@@ -482,7 +484,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source4:        latex2e-help-texinfo-spanish.doc.tar.xz
 
 %description -n texlive-latex2e-help-texinfo-spanish
@@ -490,9 +492,10 @@ The manual is provided as Texinfo source (which was originally
 derived from the VMS help file in the DECUS TeX distribution of
 1990, with many subsequent changes). This is a collaborative
 development, and details of getting involved are to be found on
-the package home page. A French translation is available as a
-separate package. All the other formats in the distribution are
-derived from the Texinfo source, as usual.
+the package home page. A Spanish translation is included here,
+and a French translation is available as a separate package.
+All the other formats in the distribution are derived from the
+Texinfo source, as usual.
 
 %preun -n texlive-latex2e-help-texinfo-spanish
 if test $1 = 0; then
@@ -526,7 +529,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/latex2e-help-texinfo-spanish/latex2e-es.xml
 
 %package -n texlive-latex2man
-Version:        %{texlive_version}.%{texlive_noarch}.1.29svn64477
+Version:        %{texlive_version}.%{texlive_noarch}.1.30svn77377
 Release:        0
 License:        LPPL-1.0
 Summary:        Translate LaTeX-based manual pages into Unix man format
@@ -565,7 +568,7 @@ Requires:       tex(fancyhdr.sty)
 Requires:       tex(fancyheadings.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source5:        latex2man.tar.xz
 Source6:        latex2man.doc.tar.xz
 Source7:        latex2man_tmphandling.dif
@@ -573,15 +576,15 @@ Source7:        latex2man_tmphandling.dif
 %description -n texlive-latex2man
 Latex2man is a tool to translate UNIX manual pages written with
 LaTeX into the troff format understood by the UNIX man(1)
-command. Alternatively HTML, TexInfo, or LaTeX code can be
-produced too. Output of parts of the text may be supressed
+command. Alternatively HTML, Texinfo, or LaTeX code can be
+produced too. Output of parts of the text may be suppressed
 using the conditional text feature (for this, LaTeX generation
 may be used). There is a LaTeX package (latex2man.sty) for
 writing the man page and a Perl script (latex2man) that does
 the actual translation.
 
 %package -n texlive-latex2man-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.29svn64477
+Version:        %{texlive_version}.%{texlive_noarch}.1.30svn77377
 Release:        0
 Summary:        Documentation for texlive-latex2man
 License:        LPPL-1.0
@@ -627,7 +630,7 @@ fi
 %{_texmfdistdir}/doc/support/latex2man/INSTALL
 %{_texmfdistdir}/doc/support/latex2man/Makefile
 %{_texmfdistdir}/doc/support/latex2man/README
-%{_texmfdistdir}/doc/support/latex2man/THIS-IS-VERSION-1.29
+%{_texmfdistdir}/doc/support/latex2man/THIS-IS-VERSION-1.30
 %{_texmfdistdir}/doc/support/latex2man/latex2man-CHANGES.html
 %{_texmfdistdir}/doc/support/latex2man/latex2man.css
 %{_texmfdistdir}/doc/support/latex2man/latex2man.html
@@ -644,7 +647,7 @@ fi
 %{_texmfdistdir}/tex/latex/latex2man/latex2man.sty
 
 %package -n texlive-latex2nemeth
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.3svn65269
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.3svn76924
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Convert LaTeX source to Braille with math in Nemeth
@@ -676,7 +679,7 @@ Suggests:       texlive-latex2nemeth-doc >= %{texlive_version}
 Provides:       tex(latex2nemeth.jar)
 Requires:       java
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source8:        latex2nemeth.tar.xz
 Source9:        latex2nemeth.doc.tar.xz
 
@@ -694,14 +697,15 @@ does not deal with embossers' drivers. What's new in version
 1.1 In this version, the support of the user level commands of
 the amsmath package was added, as described in its user guide,
 with the exception of commutative diagrams (amscd package) as
-well as structures that are irrelevant to visually impared
+well as structures that are irrelevant to visually impaired
 persons. Also, the Unicode mathematics symbols of the
 unicode-math package that are represented by the Nemeth code
 are now supported by latex2nemeth. We would like to acknowledge
-support by the TUGfund for this project (TUGfund project 33).
+support by TUG's TeX development fund for this project
+(development fund project 33).
 
 %package -n texlive-latex2nemeth-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.3svn65269
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.3svn76924
 Release:        0
 Summary:        Documentation for texlive-latex2nemeth
 License:        GPL-2.0-or-later
@@ -746,7 +750,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/latex2nemeth/latex2nemeth.jar
 
 %package -n texlive-latex2pydata
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn74439
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7.0svn78166
 Release:        0
 License:        LPPL-1.0
 Summary:        Write data to file in Python literal format
@@ -776,9 +780,8 @@ Suggests:       texlive-latex2pydata-doc >= %{texlive_version}
 Provides:       tex(latex2pydata.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(fvextra.sty)
-Requires:       tex(pdftexcmds.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source10:       latex2pydata.tar.xz
 Source11:       latex2pydata.doc.tar.xz
 
@@ -791,7 +794,7 @@ is possible to check for the existence of external cached
 content generated with the data.
 
 %package -n texlive-latex2pydata-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.5.0svn74439
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.7.0svn78166
 Release:        0
 Summary:        Documentation for texlive-latex2pydata
 License:        LPPL-1.0
@@ -855,7 +858,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source12:       latex4musicians.doc.tar.xz
 
 %description -n texlive-latex4musicians
@@ -1026,7 +1029,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source13:       latex4wp.doc.tar.xz
 
 %description -n texlive-latex4wp
@@ -1099,7 +1102,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source14:       latex4wp-it.doc.tar.xz
 
 %description -n texlive-latex4wp-it
@@ -1182,7 +1185,7 @@ Requires:       tex(ucharclasses.sty)
 Requires:       tex(xkeyval.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source15:       latexbangla.tar.xz
 Source16:       latexbangla.doc.tar.xz
 
@@ -1235,10 +1238,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latexbangla/latexbangla.sty
 
 %package -n texlive-latexbug
-Version:        %{texlive_version}.%{texlive_noarch}.1.0psvn72762
+Version:        %{texlive_version}.%{texlive_noarch}.1.0qsvn78101
 Release:        0
 License:        LPPL-1.0
-Summary:        Bug-classification for LaTeX related bugs
+Summary:        Bug classification for LaTeX related bugs
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -1264,7 +1267,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latexbug-doc >= %{texlive_version}
 Provides:       tex(latexbug.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source17:       latexbug.tar.xz
 Source18:       latexbug.doc.tar.xz
 
@@ -1275,7 +1278,7 @@ it will be loaded in any test file that is intended to be sent
 to the LaTeX bug database as part of a bug report.
 
 %package -n texlive-latexbug-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0psvn72762
+Version:        %{texlive_version}.%{texlive_noarch}.1.0qsvn78101
 Release:        0
 Summary:        Documentation for texlive-latexbug
 License:        LPPL-1.0
@@ -1339,7 +1342,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source19:       latexcheat.doc.tar.xz
 
 %description -n texlive-latexcheat
@@ -1397,7 +1400,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source20:       latexcheat-de.doc.tar.xz
 
 %description -n texlive-latexcheat-de
@@ -1456,7 +1459,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source21:       latexcheat-esmx.doc.tar.xz
 
 %description -n texlive-latexcheat-esmx
@@ -1514,7 +1517,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source22:       latexcheat-ptbr.doc.tar.xz
 
 %description -n texlive-latexcheat-ptbr
@@ -1574,7 +1577,7 @@ Suggests:       texlive-latexcolors-doc >= %{texlive_version}
 Provides:       tex(latexcolors.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source23:       latexcolors.tar.xz
 Source24:       latexcolors.doc.tar.xz
 
@@ -1649,7 +1652,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(epstopdf-sys.cfg)
 Provides:       tex(lualatexiniconfig.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source25:       latexconfig.tar.xz
 
 %description -n texlive-latexconfig
@@ -1704,7 +1707,7 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source26:       latexcourse-rug.doc.tar.xz
 
 %description -n texlive-latexcourse-rug
@@ -1774,7 +1777,7 @@ Requires:       tex(pdftexcmds.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source27:       latexdemo.tar.xz
 Source28:       latexdemo.doc.tar.xz
 
@@ -1821,7 +1824,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latexdemo/latexdemo.sty
 
 %package -n texlive-latexdiff
-Version:        %{texlive_version}.%{texlive_noarch}.1.3.4svn72099
+Version:        %{texlive_version}.%{texlive_noarch}.svn77278
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Determine and mark up significant differences between LaTeX files
@@ -1883,7 +1886,7 @@ Requires:       perl(vars)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source29:       latexdiff.tar.xz
 Source30:       latexdiff.doc.tar.xz
 Source31:       latexdiff_p2top3.dif
@@ -1894,14 +1897,14 @@ significant differences between two LaTeX files. Various
 options are available for visual markup using standard LaTeX
 packages such as color. Changes not directly affecting visible
 text, for example in formatting commands, are still marked in
-the LaTeX source. A rudimentary revision facilility is provided
+the LaTeX source. A rudimentary revision facility is provided
 by another Perl script, latexrevise, which accepts or rejects
 all changes. Manual editing of the difference file can be used
 to override this default behaviour and accept or reject
 selected changes only.
 
 %package -n texlive-latexdiff-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3.4svn72099
+Version:        %{texlive_version}.%{texlive_noarch}.svn77278
 Release:        0
 Summary:        Documentation for texlive-latexdiff
 License:        GPL-2.0-or-later
@@ -1985,7 +1988,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latexfileinfo-pkgs-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source32:       latexfileinfo-pkgs.tar.xz
 Source33:       latexfileinfo-pkgs.doc.tar.xz
 
@@ -2064,7 +2067,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latexfileversion-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source34:       latexfileversion.tar.xz
 Source35:       latexfileversion.doc.tar.xz
 
@@ -2143,7 +2146,7 @@ Provides:       tex(latexgit.sty)
 Requires:       tex(datetime.sty)
 Requires:       tex(pgfkeys.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source36:       latexgit.tar.xz
 Source37:       latexgit.doc.tar.xz
 
@@ -2191,7 +2194,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latexgit/latexgit.sty
 
 %package -n texlive-latexindent
-Version:        %{texlive_version}.%{texlive_noarch}.3.24.4svn71840
+Version:        %{texlive_version}.%{texlive_noarch}.3.24.7svn76064
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Indent a LaTeX document, highlighting the programming structure
@@ -2267,7 +2270,7 @@ Requires:       perl(utf8)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source38:       latexindent.tar.xz
 Source39:       latexindent.doc.tar.xz
 
@@ -2277,7 +2280,7 @@ to highlight the structure for the reader. Included are also
 binary (executable) files for Windows, Ubuntu Linux, and macOS.
 
 %package -n texlive-latexindent-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.24.4svn71840
+Version:        %{texlive_version}.%{texlive_noarch}.3.24.7svn76064
 Release:        0
 Summary:        Documentation for texlive-latexindent
 License:        GPL-2.0-or-later
@@ -2362,7 +2365,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/scripts/latexindent/latexindent.pl
 
 %package -n texlive-latexmk
-Version:        %{texlive_version}.%{texlive_noarch}.4.86asvn73224
+Version:        %{texlive_version}.%{texlive_noarch}.4.87svn75540
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Fully automated LaTeX document generation
@@ -2430,7 +2433,7 @@ Requires:       perl(utf8)
 Requires:       perl(warnings)
 #!BuildIgnore:  perl(warnings)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source40:       latexmk.tar.xz
 Source41:       latexmk.doc.tar.xz
 Source42:       latexmk_conf.dif
@@ -2447,7 +2450,7 @@ changed. Thus a previewer can offer a display of the document's
 latest state.
 
 %package -n texlive-latexmk-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.86asvn73224
+Version:        %{texlive_version}.%{texlive_noarch}.4.87svn75540
 Release:        0
 Summary:        Documentation for texlive-latexmk
 License:        GPL-2.0-or-later
@@ -2565,7 +2568,7 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-latexmp-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source43:       latexmp.tar.xz
 Source44:       latexmp.doc.tar.xz
 
@@ -2658,7 +2661,7 @@ Requires:       perl(open)
 Requires:       perl(strict)
 #!BuildIgnore:  perl(strict)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source45:       latexpand.tar.xz
 Source46:       latexpand.doc.tar.xz
 Source47:       latexpand_perl.dif
@@ -2737,7 +2740,7 @@ Provides:       tex(latino-sine-flexione.sty)
 Requires:       tex(datetime.sty)
 Requires:       tex(fontenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source48:       latino-sine-flexione.tar.xz
 Source49:       latino-sine-flexione.doc.tar.xz
 
@@ -2793,7 +2796,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/latino-sine-flexione/latino-sine-flexione.sty
 
 %package -n texlive-lato
-Version:        %{texlive_version}.%{texlive_noarch}.3.3svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.3.3svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Lato font family and LaTeX support
@@ -4636,7 +4639,7 @@ Requires:       tex(ifluatex.sty)
 Requires:       tex(ifxetex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source50:       lato.tar.xz
 Source51:       lato.doc.tar.xz
 
@@ -4652,7 +4655,7 @@ LaTeX. It includes the original TrueType fonts, as well as Type
 support with Dvips.
 
 %package -n texlive-lato-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.3svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.3.3svn77682
 Release:        0
 Summary:        Documentation for texlive-lato
 License:        OFL-1.1
@@ -4664,7 +4667,7 @@ Supplements:    (texlive-lato and texlive-alldocumentation)
 This package includes the documentation for texlive-lato
 
 %package -n texlive-lato-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.3.3svn54512
+Version:        %{texlive_version}.%{texlive_noarch}.3.3svn77682
 Release:        0
 Summary:        Severed fonts for texlive-lato
 License:        OFL-1.1
@@ -6619,7 +6622,7 @@ Requires:       tex(calc.sty)
 Requires:       tex(geometry.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source52:       layaureo.tar.xz
 Source53:       layaureo.doc.tar.xz
 
@@ -6668,7 +6671,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/layaureo/layaureo.sty
 
 %package -n texlive-layouts
-Version:        %{texlive_version}.%{texlive_noarch}.2.6dsvn42428
+Version:        %{texlive_version}.%{texlive_noarch}.2.6dsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Display various elements of a document's layout
@@ -6697,7 +6700,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-layouts-doc >= %{texlive_version}
 Provides:       tex(layouts.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source54:       layouts.tar.xz
 Source55:       layouts.doc.tar.xz
 
@@ -6709,7 +6712,7 @@ headings; font boxes. Facilities are provided for a document
 designer to experiment with the layout parameters.
 
 %package -n texlive-layouts-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.6dsvn42428
+Version:        %{texlive_version}.%{texlive_noarch}.2.6dsvn77682
 Release:        0
 Summary:        Documentation for texlive-layouts
 License:        LPPL-1.0
@@ -6775,7 +6778,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lazylist-doc >= %{texlive_version}
 Provides:       tex(lazylist.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source56:       lazylist.tar.xz
 Source57:       lazylist.doc.tar.xz
 
@@ -6857,7 +6860,7 @@ Requires:       tex(iftex.sty)
 Requires:       tex(microtype.sty)
 Requires:       tex(textcase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source58:       lccaps.tar.xz
 Source59:       lccaps.doc.tar.xz
 
@@ -6937,7 +6940,7 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lcd-doc >= %{texlive_version}
 Provides:       tex(lcd.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source60:       lcd.tar.xz
 Source61:       lcd.doc.tar.xz
 
@@ -7034,7 +7037,7 @@ Provides:       man(t1reencode.1)
 Provides:       man(t1testpage.1)
 Provides:       man(ttftotype42.1)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source62:       lcdftypetools.doc.tar.xz
 
 %description -n texlive-lcdftypetools
@@ -7090,7 +7093,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %endif
 
 %package -n texlive-lcg
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn31474
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Generate random integers
@@ -7120,7 +7123,7 @@ Suggests:       texlive-lcg-doc >= %{texlive_version}
 Provides:       tex(lcg.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source63:       lcg.tar.xz
 Source64:       lcg.doc.tar.xz
 
@@ -7132,7 +7135,7 @@ for the user to provide values for the range and a seed, and
 for the name of the counter to be used.
 
 %package -n texlive-lcg-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.3svn31474
+Version:        %{texlive_version}.%{texlive_noarch}.1.3svn77682
 Release:        0
 Summary:        Documentation for texlive-lcg
 License:        LPPL-1.0
@@ -7202,7 +7205,7 @@ Provides:       tex(lcywcmtt.fd)
 Provides:       tex(lcywenc.def)
 Requires:       tex(ifpdf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source65:       lcyw.tar.xz
 Source66:       lcyw.doc.tar.xz
 
@@ -7255,7 +7258,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lcyw/lcywenc.def
 
 %package -n texlive-leading
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Define leading with a length
@@ -7285,7 +7288,7 @@ Suggests:       texlive-leading-doc >= %{texlive_version}
 Provides:       tex(leading.sty)
 Requires:       tex(calc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source67:       leading.tar.xz
 Source68:       leading.doc.tar.xz
 
@@ -7297,7 +7300,7 @@ rather more difficult LaTeX command \linespread{<ratio>}, where
 the leading is specified by reference to the font size.
 
 %package -n texlive-leading-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn77682
 Release:        0
 Summary:        Documentation for texlive-leading
 License:        LPPL-1.0
@@ -7381,7 +7384,7 @@ Requires:       tex(translations.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(zref-totpages.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source69:       leadsheets.tar.xz
 Source70:       leadsheets.doc.tar.xz
 
@@ -7440,7 +7443,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/leadsheets/leadsheets.sty
 
 %package -n texlive-leaflet
-Version:        %{texlive_version}.%{texlive_noarch}.2.1csvn70652
+Version:        %{texlive_version}.%{texlive_noarch}.2.1csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Create small handouts (flyers)
@@ -7473,7 +7476,7 @@ Requires:       tex(etex.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(pifont.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source71:       leaflet.tar.xz
 Source72:       leaflet.doc.tar.xz
 
@@ -7486,7 +7489,7 @@ PostScript and PDF.) This is a complete reimplementation with
 permission of the original author Jurgen Schlegelmilch.
 
 %package -n texlive-leaflet-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.1csvn70652
+Version:        %{texlive_version}.%{texlive_noarch}.2.1csvn77682
 Release:        0
 Summary:        Documentation for texlive-leaflet
 License:        LPPL-1.0
@@ -7524,7 +7527,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/leaflet/leaflet.cls
 
 %package -n texlive-lebhart
-Version:        %{texlive_version}.%{texlive_noarch}.svn70049
+Version:        %{texlive_version}.%{texlive_noarch}.svn78004
 Release:        0
 License:        LPPL-1.0
 Summary:        Write your articles in a colorful way
@@ -7573,9 +7576,9 @@ Requires:       tex(regexpatch.sty)
 Requires:       tex(silence.sty)
 Requires:       tex(tikz-cd.sty)
 Requires:       tex(unicode-math.sty)
-Requires:       tex(wrapfig.sty)
+Requires:       tex(wrapfig2.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source73:       lebhart.tar.xz
 Source74:       lebhart.doc.tar.xz
 
@@ -7591,7 +7594,7 @@ on colorist.sty from the colorist package. The package name
 combined with the first three letters of "Artikel" ("article").
 
 %package -n texlive-lebhart-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn70049
+Version:        %{texlive_version}.%{texlive_noarch}.svn78004
 Release:        0
 Summary:        Documentation for texlive-lebhart
 License:        LPPL-1.0
@@ -7626,6 +7629,120 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-lebhart
 %{_texmfdistdir}/tex/latex/lebhart/lebhart.cls
+
+%package -n texlive-lecturenotes
+Version:        %{texlive_version}.%{texlive_noarch}.3.2svn74699
+Release:        0
+License:        LPPL-1.0
+Summary:        A LaTeX document class for lecture notes
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-lecturenotes-doc >= %{texlive_version}
+Provides:       tex(lecturenotes.cls)
+Requires:       tex(amsfonts.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(amssymb.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(amsxtra.sty)
+Requires:       tex(article.cls)
+Requires:       tex(babel.sty)
+Requires:       tex(babelbib.sty)
+Requires:       tex(booktabs.sty)
+Requires:       tex(cancel.sty)
+Requires:       tex(csquotes.sty)
+Requires:       tex(datetime.sty)
+Requires:       tex(faktor.sty)
+Requires:       tex(fancyhdr.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(ifthen.sty)
+Requires:       tex(kpfonts-otf.sty)
+Requires:       tex(mathdots.sty)
+Requires:       tex(mathrsfs.sty)
+Requires:       tex(mathtools.sty)
+Requires:       tex(microtype.sty)
+Requires:       tex(mparhack.sty)
+Requires:       tex(multirow.sty)
+Requires:       tex(setspace.sty)
+Requires:       tex(stmaryrd.sty)
+Requires:       tex(textcase.sty)
+Requires:       tex(tikz.sty)
+Requires:       tex(titlesec.sty)
+Requires:       tex(tocloft.sty)
+Requires:       tex(unicode-math.sty)
+Requires:       tex(xfrac.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source75:       lecturenotes.tar.xz
+Source76:       lecturenotes.doc.tar.xz
+
+%description -n texlive-lecturenotes
+A LaTeX document class for lecture notes -- for a seminar, for
+an entire course with several lectures, or for brief talks.
+Provides an elegant template with support for sidenotes and
+detailed title section along with several other options.
+Requires compilation with LuaLaTeX and typesets with the
+kpfonts-otf package.
+
+%package -n texlive-lecturenotes-doc
+Version:        %{texlive_version}.%{texlive_noarch}.3.2svn74699
+Release:        0
+Summary:        Documentation for texlive-lecturenotes
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-lecturenotes and texlive-alldocumentation)
+
+%description -n texlive-lecturenotes-doc
+This package includes the documentation for texlive-lecturenotes
+
+%post -n texlive-lecturenotes
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-lecturenotes
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-lecturenotes
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-lecturenotes-doc
+%{_texmfdistdir}/doc/lualatex/lecturenotes/LICENSE
+%{_texmfdistdir}/doc/lualatex/lecturenotes/README.md
+%{_texmfdistdir}/doc/lualatex/lecturenotes/doc/lecturenotes-doc.pdf
+%{_texmfdistdir}/doc/lualatex/lecturenotes/doc/lecturenotes-doc.tex
+%{_texmfdistdir}/doc/lualatex/lecturenotes/sample/lecturenotes-sample.pdf
+%{_texmfdistdir}/doc/lualatex/lecturenotes/sample/lecturenotes-sample.tex
+
+%files -n texlive-lecturenotes
+%{_texmfdistdir}/tex/lualatex/lecturenotes/lecturenotes.cls
 
 %package -n texlive-lecturer
 Version:        %{texlive_version}.%{texlive_noarch}.svn23916
@@ -7665,9 +7782,9 @@ Provides:       tex(ltr-slides.tex)
 Provides:       tex(ltr-steps.tex)
 Provides:       tex(t-lecturer.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source75:       lecturer.tar.xz
-Source76:       lecturer.doc.tar.xz
+# from 20260301
+Source77:       lecturer.tar.xz
+Source78:       lecturer.doc.tar.xz
 
 %description -n texlive-lecturer
 The package creates slides for on-screen presentations based on
@@ -7752,7 +7869,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/lecturer/t-lecturer.tex
 
 %package -n texlive-lectures
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.6svn73727
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.7svn74632
 Release:        0
 License:        LPPL-1.0
 Summary:        A document class for quickly drafting nice looking lecture notes
@@ -7790,6 +7907,7 @@ Requires:       tex(array.sty)
 Requires:       tex(biblatex.sty)
 Requires:       tex(bm.sty)
 Requires:       tex(bodegraph.sty)
+Requires:       tex(cancel.sty)
 Requires:       tex(caption.sty)
 Requires:       tex(centernot.sty)
 Requires:       tex(circuitikz.sty)
@@ -7834,9 +7952,9 @@ Requires:       tex(xcolor.sty)
 Requires:       tex(xfrac.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source77:       lectures.tar.xz
-Source78:       lectures.doc.tar.xz
+# from 20260301
+Source79:       lectures.tar.xz
+Source80:       lectures.doc.tar.xz
 
 %description -n texlive-lectures
 This LaTeX documentclass provides a number of gimmicks to draft
@@ -7845,7 +7963,7 @@ environments, automatic spacing and alignment of figures and
 much more. More information is available in the package readme.
 
 %package -n texlive-lectures-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0.6svn73727
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.7svn74632
 Release:        0
 Summary:        Documentation for texlive-lectures
 License:        LPPL-1.0
@@ -7876,6 +7994,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-lectures-doc
 %{_texmfdistdir}/doc/latex/lectures/LICENSE
 %{_texmfdistdir}/doc/latex/lectures/README.md
+%{_texmfdistdir}/doc/latex/lectures/example.pdf
 %{_texmfdistdir}/doc/latex/lectures/example.tex
 
 %files -n texlive-lectures
@@ -7912,9 +8031,9 @@ Suggests:       texlive-lectureslides-doc >= %{texlive_version}
 Provides:       tex(lectureslides.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source79:       lectureslides.tar.xz
-Source80:       lectureslides.doc.tar.xz
+# from 20260301
+Source81:       lectureslides.tar.xz
+Source82:       lectureslides.doc.tar.xz
 
 %description -n texlive-lectureslides
 This package makes it easy to combine and index individual PDF
@@ -7990,9 +8109,9 @@ Provides:       tex(ledarab.sty)
 Provides:       tex(ledmac.sty)
 Provides:       tex(ledpar.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source81:       ledmac.tar.xz
-Source82:       ledmac.doc.tar.xz
+# from 20260301
+Source83:       ledmac.tar.xz
+Source84:       ledmac.doc.tar.xz
 
 %description -n texlive-ledmac
 A macro package for typesetting scholarly critical editions.
@@ -8073,7 +8192,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ledmac/ledpar.sty
 
 %package -n texlive-leftidx
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Left and right subscripts and superscripts in math mode
@@ -8102,16 +8221,16 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-leftidx-doc >= %{texlive_version}
 Provides:       tex(leftidx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source83:       leftidx.tar.xz
-Source84:       leftidx.doc.tar.xz
+# from 20260301
+Source85:       leftidx.tar.xz
+Source86:       leftidx.doc.tar.xz
 
 %description -n texlive-leftidx
 Left and right subscripts and superscripts are automatically
 raised for better fitting to the symbol they belong to.
 
 %package -n texlive-leftidx-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-leftidx
 License:        LPPL-1.0
@@ -8147,7 +8266,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/leftidx/leftidx.sty
 
 %package -n texlive-leftindex
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2betasvn69660
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2betasvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Left indices with better spacing
@@ -8178,9 +8297,9 @@ Provides:       tex(leftindex.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source85:       leftindex.tar.xz
-Source86:       leftindex.doc.tar.xz
+# from 20260301
+Source87:       leftindex.tar.xz
+Source88:       leftindex.doc.tar.xz
 
 %description -n texlive-leftindex
 This package provides commands for typesetting left indices.
@@ -8188,7 +8307,7 @@ Unlike other similar packages, leftindex also indents the left
 superscript, providing much better spacing in general.
 
 %package -n texlive-leftindex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2betasvn69660
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2betasvn77682
 Release:        0
 Summary:        Documentation for texlive-leftindex
 License:        LPPL-1.0
@@ -8259,9 +8378,9 @@ Requires:       tex(glossary-inline.sty)
 Requires:       tex(glossary-mcols.sty)
 Requires:       tex(glossary-tree.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source87:       leipzig.tar.xz
-Source88:       leipzig.doc.tar.xz
+# from 20260301
+Source89:       leipzig.tar.xz
+Source90:       leipzig.doc.tar.xz
 
 %description -n texlive-leipzig
 The leipzig package provides a set of macros for standard
@@ -8311,7 +8430,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/leipzig/leipzig.tex
 
 %package -n texlive-lengthconvert
-Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn55064
+Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Express lengths in arbitrary units
@@ -8343,9 +8462,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source89:       lengthconvert.tar.xz
-Source90:       lengthconvert.doc.tar.xz
+# from 20260301
+Source91:       lengthconvert.tar.xz
+Source92:       lengthconvert.doc.tar.xz
 
 %description -n texlive-lengthconvert
 The package provides a command to convert a length to any of a
@@ -8353,7 +8472,7 @@ large selection of units. The package relies on the LaTeX3
 programming environment.
 
 %package -n texlive-lengthconvert-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn55064
+Version:        %{texlive_version}.%{texlive_noarch}.1.0asvn76924
 Release:        0
 Summary:        Documentation for texlive-lengthconvert
 License:        LPPL-1.0
@@ -8387,8 +8506,101 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-lengthconvert
 %{_texmfdistdir}/tex/latex/lengthconvert/lengthconvert.sty
 
+%package -n texlive-leporello
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn76924
+Release:        0
+License:        LPPL-1.0
+Summary:        A simple LaTeX document class to create folded leaflets using columns and boxes
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-leporello-doc >= %{texlive_version}
+Provides:       tex(leporello.cls)
+Requires:       tex(graphicx.sty)
+Requires:       tex(l3draw.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source93:       leporello.tar.xz
+Source94:       leporello.doc.tar.xz
+
+%description -n texlive-leporello
+A simple LaTeX document class to create folded leaflets with
+the following key features: The document layout consists of a
+specific number of pages that can have varying widths and are
+placed next to each other. Each page contains one frame to
+contain typeset material. Material is typeset in boxes, and
+boxes are positioned in columns which in turn are placed into
+the frames on the pages of the document. Columns are predefined
+and then placed into the frame of a page in the document
+layout. This way, columns can be used on pages with varying
+widths. Boxes can have padding (including bleed) and a
+background and are positioned inside a column.
+
+%package -n texlive-leporello-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0.3svn76924
+Release:        0
+Summary:        Documentation for texlive-leporello
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-leporello and texlive-alldocumentation)
+
+%description -n texlive-leporello-doc
+This package includes the documentation for texlive-leporello
+
+%post -n texlive-leporello
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-leporello
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-leporello
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-leporello-doc
+%{_texmfdistdir}/doc/latex/leporello/LICENCE
+%{_texmfdistdir}/doc/latex/leporello/README.md
+%{_texmfdistdir}/doc/latex/leporello/doc/flow.pdf
+%{_texmfdistdir}/doc/latex/leporello/doc/flow.tex
+%{_texmfdistdir}/doc/latex/leporello/doc/layout.pdf
+%{_texmfdistdir}/doc/latex/leporello/doc/layout.tex
+%{_texmfdistdir}/doc/latex/leporello/doc/leporello.pdf
+%{_texmfdistdir}/doc/latex/leporello/doc/leporello.svg
+%{_texmfdistdir}/doc/latex/leporello/leporello-doc.pdf
+%{_texmfdistdir}/doc/latex/leporello/leporello-doc.tex
+
+%files -n texlive-leporello
+%{_texmfdistdir}/tex/latex/leporello/leporello.cls
+
 %package -n texlive-lete-sans-math
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.45svn73129
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.50svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Lato-based OpenType Math font for LuaTeX and XeTeX
@@ -8420,9 +8632,9 @@ Provides:       tex(lete-sans-math.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(unicode-math.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source91:       lete-sans-math.tar.xz
-Source92:       lete-sans-math.doc.tar.xz
+# from 20260301
+Source95:       lete-sans-math.tar.xz
+Source96:       lete-sans-math.doc.tar.xz
 
 %description -n texlive-lete-sans-math
 This package provides a Unicode Math font LeteSansMath.otf
@@ -8431,7 +8643,7 @@ fonts in LuaLaTeX or XeLaTeX documents. Note: "Lato" means
 "Summer" in Polish, same as "l'ete" in French.
 
 %package -n texlive-lete-sans-math-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.45svn73129
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.50svn77682
 Release:        0
 Summary:        Documentation for texlive-lete-sans-math
 License:        OFL-1.1
@@ -8443,7 +8655,7 @@ Supplements:    (texlive-lete-sans-math and texlive-alldocumentation)
 This package includes the documentation for texlive-lete-sans-math
 
 %package -n texlive-lete-sans-math-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.45svn73129
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.50svn77682
 Release:        0
 Summary:        Severed fonts for texlive-lete-sans-math
 License:        OFL-1.1
@@ -8498,7 +8710,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-lete-sans-math/LeteSansMath.otf
 
 %package -n texlive-letgut
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.12svn72713
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.14svn77945
 Release:        0
 License:        LPPL-1.0
 Summary:        Class for the newsletter "La Lettre GUTenberg" of the French TeX User Group GUTenberg
@@ -8529,9 +8741,7 @@ Provides:       tex(informations-gut.tex)
 Provides:       tex(letgut-acronyms.tex)
 Provides:       tex(letgut-banner.sty)
 Provides:       tex(letgut-lstlang.sty)
-Provides:       tex(letgut.cbx)
 Provides:       tex(letgut.cls)
-Provides:       tex(letgut.lbx)
 Requires:       tex(accsupp.sty)
 Requires:       tex(acro.sty)
 Requires:       tex(array.sty)
@@ -8558,7 +8768,6 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(ninecolors.sty)
-Requires:       tex(numeric.cbx)
 Requires:       tex(parskip.sty)
 Requires:       tex(pgfornament.sty)
 Requires:       tex(placeins.sty)
@@ -8568,13 +8777,14 @@ Requires:       tex(standalone.sty)
 Requires:       tex(tabularray.sty)
 Requires:       tex(tcolorbox.sty)
 Requires:       tex(titlesec.sty)
+Requires:       tex(typicons.sty)
 Requires:       tex(varioref.sty)
 Requires:       tex(xcolor.sty)
 Requires:       tex(xurl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source93:       letgut.tar.xz
-Source94:       letgut.doc.tar.xz
+# from 20260301
+Source97:       letgut.tar.xz
+Source98:       letgut.doc.tar.xz
 
 %description -n texlive-letgut
 The French TeX User Group GUTenberg has been publishing "The
@@ -8602,7 +8812,7 @@ et documentee, a meme d'etre publiee sur le CTAN. C'est
 desormais chose faite avec la presente classe letgut.
 
 %package -n texlive-letgut-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.12svn72713
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9.14svn77945
 Release:        0
 Summary:        Documentation for texlive-letgut
 License:        LPPL-1.0
@@ -8633,8 +8843,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-letgut-doc
 %{_texmfdistdir}/doc/lualatex/letgut/CHANGELOG.md
 %{_texmfdistdir}/doc/lualatex/letgut/README.md
-%{_texmfdistdir}/doc/lualatex/letgut/exemple-nouveautes.pdf
-%{_texmfdistdir}/doc/lualatex/letgut/exemple-nouveautes.tex
+%{_texmfdistdir}/doc/lualatex/letgut/exemple-nouveautes-crop.pdf
 %{_texmfdistdir}/doc/lualatex/letgut/latexmkrc
 %{_texmfdistdir}/doc/lualatex/letgut/letgut-banner-code.pdf
 %{_texmfdistdir}/doc/lualatex/letgut/letgut-banner-code.tex
@@ -8651,16 +8860,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/letgut/informations-gut.tex
 %{_texmfdistdir}/tex/lualatex/letgut/letgut-acronyms.tex
 %{_texmfdistdir}/tex/lualatex/letgut/letgut-banner.sty
-%{_texmfdistdir}/tex/lualatex/letgut/letgut-francophony-icon.pdf
 %{_texmfdistdir}/tex/lualatex/letgut/letgut-lstlang.sty
-%{_texmfdistdir}/tex/lualatex/letgut/letgut.cbx
 %{_texmfdistdir}/tex/lualatex/letgut/letgut.cls
-%{_texmfdistdir}/tex/lualatex/letgut/letgut.dbx
-%{_texmfdistdir}/tex/lualatex/letgut/letgut.lbx
-%{_texmfdistdir}/tex/lualatex/letgut/logo-gut.pdf
+%{_texmfdistdir}/tex/lualatex/letgut/logos/letgut-francophony-icon.pdf
+%{_texmfdistdir}/tex/lualatex/letgut/logos/logo-gut.pdf
 
 %package -n texlive-letltxmacro
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn53022
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Let assignment for LaTeX macros
@@ -8689,9 +8895,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-letltxmacro-doc >= %{texlive_version}
 Provides:       tex(letltxmacro.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source95:       letltxmacro.tar.xz
-Source96:       letltxmacro.doc.tar.xz
+# from 20260301
+Source99:       letltxmacro.tar.xz
+Source100:      letltxmacro.doc.tar.xz
 
 %description -n texlive-letltxmacro
 TeX's \let assignment does not work for LaTeX macros with
@@ -8701,7 +8907,7 @@ macros by \DeclareRobustCommand. This package defines
 macros.
 
 %package -n texlive-letltxmacro-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.6svn53022
+Version:        %{texlive_version}.%{texlive_noarch}.1.6svn77682
 Release:        0
 Summary:        Documentation for texlive-letltxmacro
 License:        LPPL-1.0
@@ -8767,8 +8973,8 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(letterspacing.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source97:       letterspacing.tar.xz
+# from 20260301
+Source101:      letterspacing.tar.xz
 
 %description -n texlive-letterspacing
 Space out the letters of text; the command is
@@ -8799,7 +9005,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/letterspacing/letterspacing.tex
 
 %package -n texlive-letterswitharrows
-Version:        %{texlive_version}.%{texlive_noarch}.svn72723
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw arrows over math letters
@@ -8833,9 +9039,9 @@ Requires:       tex(mathtools.sty)
 Requires:       tex(pgf.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source98:       letterswitharrows.tar.xz
-Source99:       letterswitharrows.doc.tar.xz
+# from 20260301
+Source102:      letterswitharrows.tar.xz
+Source103:      letterswitharrows.doc.tar.xz
 
 %description -n texlive-letterswitharrows
 This package provides LaTeX math-mode commands for setting left
@@ -8845,7 +9051,7 @@ arrows over longer strings of symbols, the focus lies on single
 characters.
 
 %package -n texlive-letterswitharrows-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn72723
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-letterswitharrows
 License:        LPPL-1.0
@@ -8920,9 +9126,9 @@ Provides:       tex(lettre.cls)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(graphicx.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source100:      lettre.tar.xz
-Source101:      lettre.doc.tar.xz
+# from 20260301
+Source104:      lettre.tar.xz
+Source105:      lettre.doc.tar.xz
 
 %description -n texlive-lettre
 Developed from the ancestor of the standard letter class, at
@@ -8998,7 +9204,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lettre/lettre.tpl
 
 %package -n texlive-lettrine
-Version:        %{texlive_version}.%{texlive_noarch}.2.80svn73660
+Version:        %{texlive_version}.%{texlive_noarch}.2.83svn77053
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset dropped capitals
@@ -9037,9 +9243,9 @@ Requires:       tex(minifp.sty)
 Requires:       tex(xfp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source102:      lettrine.tar.xz
-Source103:      lettrine.doc.tar.xz
+# from 20260301
+Source106:      lettrine.tar.xz
+Source107:      lettrine.doc.tar.xz
 
 %description -n texlive-lettrine
 The lettrine package supports various dropped capitals styles,
@@ -9049,7 +9255,7 @@ edge to follow the outline of capitals that have a regular
 shape (such as "A" and "V").
 
 %package -n texlive-lettrine-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.80svn73660
+Version:        %{texlive_version}.%{texlive_noarch}.2.83svn77053
 Release:        0
 Summary:        Documentation for texlive-lettrine
 License:        LPPL-1.0
@@ -9106,7 +9312,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lettrine/lettrine.sty
 
 %package -n texlive-levy
-Version:        %{texlive_version}.%{texlive_noarch}.svn21750
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Fonts for typesetting classical greek
@@ -9142,18 +9348,18 @@ Provides:       tex(grreg8.tfm)
 Provides:       tex(grreg9.tfm)
 Provides:       tex(slgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source104:      levy.tar.xz
-Source105:      levy.doc.tar.xz
+# from 20260301
+Source108:      levy.tar.xz
+Source109:      levy.doc.tar.xz
 
 %description -n texlive-levy
-These fonts are derivatives of Kunth's CM fonts. Macros for use
+These fonts are derivatives of Knuth's CM fonts. Macros for use
 with Plain TeX are included in the package; for use with LaTeX,
 see lgreek (with English documentation) or levy (with German
 documentation).
 
 %package -n texlive-levy-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn21750
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 Summary:        Documentation for texlive-levy
 License:        GPL-2.0-or-later
@@ -9274,9 +9480,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lewis-doc >= %{texlive_version}
 Provides:       tex(lewis.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source106:      lewis.tar.xz
-Source107:      lewis.doc.tar.xz
+# from 20260301
+Source110:      lewis.tar.xz
+Source111:      lewis.doc.tar.xz
 
 %description -n texlive-lewis
 The package provides rudimentary support for drawing Lewis
@@ -9320,7 +9526,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lewis/lewis.sty
 
 %package -n texlive-lexend
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0.70svn57564
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0.70svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        The Lexend fonts for XeLaTeX and LuaLaTeX through fontspec
@@ -9353,9 +9559,9 @@ Requires:       tex(expl3.sty)
 Requires:       tex(fontspec.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source108:      lexend.tar.xz
-Source109:      lexend.doc.tar.xz
+# from 20260301
+Source112:      lexend.tar.xz
+Source113:      lexend.doc.tar.xz
 
 %description -n texlive-lexend
 The purpose of this package is pretty straightforward: The
@@ -9365,7 +9571,7 @@ everyone. Now my goal is to bring this wonderful collection to
 the world of LaTeX.
 
 %package -n texlive-lexend-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0.70svn57564
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0.70svn77682
 Release:        0
 Summary:        Documentation for texlive-lexend
 License:        LPPL-1.0
@@ -9377,7 +9583,7 @@ Supplements:    (texlive-lexend and texlive-alldocumentation)
 This package includes the documentation for texlive-lexend
 
 %package -n texlive-lexend-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0.70svn57564
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0.70svn77682
 Release:        0
 Summary:        Severed fonts for texlive-lexend
 License:        LPPL-1.0
@@ -9478,9 +9684,9 @@ Suggests:       texlive-lexikon-doc >= %{texlive_version}
 Provides:       tex(lexikon.sty)
 Requires:       tex(ipa.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source110:      lexikon.tar.xz
-Source111:      lexikon.doc.tar.xz
+# from 20260301
+Source114:      lexikon.tar.xz
+Source115:      lexikon.doc.tar.xz
 
 %description -n texlive-lexikon
 The lexikon package
@@ -9560,9 +9766,9 @@ Requires:       tex(stringstrings.sty)
 Requires:       tex(xargs.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source112:      lexref.tar.xz
-Source113:      lexref.doc.tar.xz
+# from 20260301
+Source116:      lexref.tar.xz
+Source117:      lexref.doc.tar.xz
 
 %description -n texlive-lexref
 The package is aimed at continental lawyers (especially those
@@ -9655,9 +9861,9 @@ Provides:       tex(lfbb7.tfm)
 Provides:       tex(lfbb8.tfm)
 Provides:       tex(lfbb9.tfm)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source114:      lfb.tar.xz
-Source115:      lfb.doc.tar.xz
+# from 20260301
+Source118:      lfb.tar.xz
+Source119:      lfb.doc.tar.xz
 
 %description -n texlive-lfb
 This is a Greek font written in Metafont, with inspiration from
@@ -9806,9 +10012,9 @@ Provides:       tex(LGcmtt.fd)
 Provides:       tex(LGenc.def)
 Provides:       tex(lgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source116:      lgreek.tar.xz
-Source117:      lgreek.doc.tar.xz
+# from 20260301
+Source120:      lgreek.tar.xz
+Source121:      lgreek.doc.tar.xz
 
 %description -n texlive-lgreek
 A conversion of Silvio Levy's Plain TeX macros for use with
@@ -9885,9 +10091,9 @@ Suggests:       texlive-lgrmath-doc >= %{texlive_version}
 Provides:       tex(lgrmath.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source118:      lgrmath.tar.xz
-Source119:      lgrmath.doc.tar.xz
+# from 20260301
+Source122:      lgrmath.tar.xz
+Source123:      lgrmath.doc.tar.xz
 
 %description -n texlive-lgrmath
 The lgrmath package is a LaTeX package which sets the Greek
@@ -9934,7 +10140,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lgrmath/lgrmath.sty
 
 %package -n texlive-lh
-Version:        %{texlive_version}.%{texlive_noarch}.3.5gsvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.3.5gsvn77838
 Release:        0
 License:        LPPL-1.0
 Summary:        Cyrillic fonts that support LaTeX standard encodings
@@ -9963,6 +10169,15 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lh-doc >= %{texlive_version}
+Provides:       tex(labx1095.tfm)
+Provides:       tex(labx1200.tfm)
+Provides:       tex(labx1728.tfm)
+Provides:       tex(larm0600.tfm)
+Provides:       tex(larm0800.tfm)
+Provides:       tex(larm1095.tfm)
+Provides:       tex(larm1200.tfm)
+Provides:       tex(larm1728.tfm)
+Provides:       tex(lati1200.tfm)
 Provides:       tex(lh-lcy.sty)
 Provides:       tex(lh-lcyccr.sty)
 Provides:       tex(lh-lcyxccr.sty)
@@ -9981,9 +10196,9 @@ Provides:       tex(nfssfox.tex)
 Provides:       tex(testfox.tex)
 Provides:       tex(testkern.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source120:      lh.tar.xz
-Source121:      lh.doc.tar.xz
+# from 20260301
+Source124:      lh.tar.xz
+Source125:      lh.doc.tar.xz
 
 %description -n texlive-lh
 The LH fonts address the problem of the wide variety of
@@ -9999,7 +10214,7 @@ package also offers its own LaTeX support for OT2 encoded
 fonts, CM bright shaped fonts and Concrete shaped fonts.
 
 %package -n texlive-lh-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.5gsvn15878
+Version:        %{texlive_version}.%{texlive_noarch}.3.5gsvn77838
 Release:        0
 Summary:        Documentation for texlive-lh
 License:        LPPL-1.0
@@ -10096,6 +10311,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/lh/samples/lh-t2atext.tex
 
 %files -n texlive-lh
+%{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a/labx1095.600pk
+%{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a/labx1200.600pk
+%{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a/labx1728.600pk
+%{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a/larm0600.600pk
+%{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a/larm0800.600pk
+%{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a/larm1095.600pk
+%{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a/larm1200.600pk
+%{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a/larm1728.600pk
+%{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a/lati1200.600pk
 %{_texmfdistdir}/fonts/source/lh/base/fikparm.mf
 %{_texmfdistdir}/fonts/source/lh/base/lcyrbeg.mf
 %{_texmfdistdir}/fonts/source/lh/base/lcyrdefs.mf
@@ -10347,6 +10571,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/labsr9.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/labtl10.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/labto10.mf
+%{_texmfdistdir}/fonts/source/lh/lh-t2a/labx1095.mf
+%{_texmfdistdir}/fonts/source/lh/lh-t2a/labx1200.mf
+%{_texmfdistdir}/fonts/source/lh/lh-t2a/labx1728.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/lacodes.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/lalb8.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/lali8.mf
@@ -10379,8 +10606,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/laoslc9.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/laoti10.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/laqi8.mf
+%{_texmfdistdir}/fonts/source/lh/lh-t2a/larm0600.mf
+%{_texmfdistdir}/fonts/source/lh/lh-t2a/larm0800.mf
+%{_texmfdistdir}/fonts/source/lh/lh-t2a/larm1095.mf
+%{_texmfdistdir}/fonts/source/lh/lh-t2a/larm1200.mf
+%{_texmfdistdir}/fonts/source/lh/lh-t2a/larm1728.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/lasq8.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2a/lassdc10.mf
+%{_texmfdistdir}/fonts/source/lh/lh-t2a/lati1200.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2b/ilblb8.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2b/ilbli8.mf
 %{_texmfdistdir}/fonts/source/lh/lh-t2b/ilblo8.mf
@@ -10639,6 +10872,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/source/lh/specific/lgnoncu.mf
 %{_texmfdistdir}/fonts/source/lh/specific/lgrucl.mf
 %{_texmfdistdir}/fonts/source/lh/specific/lgrucu.mf
+%{_texmfdistdir}/fonts/tfm/lh/lh-t2a/labx1095.tfm
+%{_texmfdistdir}/fonts/tfm/lh/lh-t2a/labx1200.tfm
+%{_texmfdistdir}/fonts/tfm/lh/lh-t2a/labx1728.tfm
+%{_texmfdistdir}/fonts/tfm/lh/lh-t2a/larm0600.tfm
+%{_texmfdistdir}/fonts/tfm/lh/lh-t2a/larm0800.tfm
+%{_texmfdistdir}/fonts/tfm/lh/lh-t2a/larm1095.tfm
+%{_texmfdistdir}/fonts/tfm/lh/lh-t2a/larm1200.tfm
+%{_texmfdistdir}/fonts/tfm/lh/lh-t2a/larm1728.tfm
+%{_texmfdistdir}/fonts/tfm/lh/lh-t2a/lati1200.tfm
 %{_texmfdistdir}/tex/latex/lh/lh-lcy.sty
 %{_texmfdistdir}/tex/latex/lh/lh-lcyccr.sty
 %{_texmfdistdir}/tex/latex/lh/lh-lcyxccr.sty
@@ -10658,7 +10900,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/plain/lh/testkern.tex
 
 %package -n texlive-lhcyr
-Version:        %{texlive_version}.%{texlive_noarch}.svn31795
+Version:        %{texlive_version}.%{texlive_noarch}.svn77838
 Release:        0
 License:        LPPL-1.0
 Summary:        A non-standard Cyrillic input scheme
@@ -10686,6 +10928,39 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Provides:       tex(karabas.tex)
 Provides:       tex(kniga.tex)
+Provides:       tex(labx0700.tfm)
+Provides:       tex(labx0900.tfm)
+Provides:       tex(labx1000.tfm)
+Provides:       tex(lacc1000.tfm)
+Provides:       tex(larm0700.tfm)
+Provides:       tex(larm0900.tfm)
+Provides:       tex(larm1000.tfm)
+Provides:       tex(lasl0900.tfm)
+Provides:       tex(lasl1000.tfm)
+Provides:       tex(lass1000.tfm)
+Provides:       tex(lasx1000.tfm)
+Provides:       tex(lati0900.tfm)
+Provides:       tex(lati1000.tfm)
+Provides:       tex(latt0800.tfm)
+Provides:       tex(latt0900.tfm)
+Provides:       tex(latt1000.tfm)
+Provides:       tex(lbbi1440.tfm)
+Provides:       tex(lbbx0500.tfm)
+Provides:       tex(lbbx0700.tfm)
+Provides:       tex(lbbx0800.tfm)
+Provides:       tex(lbbx1000.tfm)
+Provides:       tex(lbbx1440.tfm)
+Provides:       tex(lbcc0800.tfm)
+Provides:       tex(lbcc1000.tfm)
+Provides:       tex(lbrm0500.tfm)
+Provides:       tex(lbrm0600.tfm)
+Provides:       tex(lbrm0700.tfm)
+Provides:       tex(lbrm0800.tfm)
+Provides:       tex(lbrm1000.tfm)
+Provides:       tex(lbti0500.tfm)
+Provides:       tex(lbti0700.tfm)
+Provides:       tex(lbti1000.tfm)
+Provides:       tex(lbtt1000.tfm)
 Provides:       tex(lhcyralt-hyphen.cfg)
 Provides:       tex(lhcyralt-rhyphen.tex)
 Provides:       tex(lhcyralt.sty)
@@ -10721,11 +10996,11 @@ Provides:       tex(pismo.tex)
 Provides:       tex(rusfonts.tex)
 Provides:       tex(statya.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source122:      lhcyr.tar.xz
+# from 20260301
+Source126:      lhcyr.tar.xz
 
 %description -n texlive-lhcyr
-A collection of three LaTeX 2e styles intended for typesetting
+A collection of three LaTeX2e styles intended for typesetting
 Russian and bilingual English-Russian documents, using the lh
 fonts and without the benefit of babel's language-switching
 mechanisms. The packages (lhcyralt and lhcyrwin for use under
@@ -10753,6 +11028,39 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-lhcyr
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/labx0700.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/labx0900.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/labx1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/lacc1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/larm0700.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/larm0900.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/larm1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/lasl0900.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/lasl1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/lass1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/lasx1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/lati0900.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/lati1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/latt0800.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/latt0900.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a/latt1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbbi1440.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbbx0500.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbbx0700.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbbx0800.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbbx1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbbx1440.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbcc0800.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbcc1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbrm0500.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbrm0600.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbrm0700.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbrm0800.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbrm1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbti0500.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbti0700.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbti1000.tfm
+%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b/lbtt1000.tfm
 %{_texmfdistdir}/tex/latex/lhcyr/karabas.tex
 %{_texmfdistdir}/tex/latex/lhcyr/kniga.tex
 %{_texmfdistdir}/tex/latex/lhcyr/lhcyralt/README
@@ -10797,7 +11105,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lhcyr/statya.tex
 
 %package -n texlive-lhelp
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn23638
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn76924
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Miscellaneous helper packages
@@ -10828,23 +11136,23 @@ Provides:       tex(lhelp.sty)
 Requires:       tex(color.sty)
 Requires:       tex(graphics.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source123:      lhelp.tar.xz
-Source124:      lhelp.doc.tar.xz
+# from 20260301
+Source127:      lhelp.tar.xz
+Source128:      lhelp.doc.tar.xz
 
 %description -n texlive-lhelp
 This package defines macros which are useful for many
 documents. It is a large collection of simple 'little helpers'
 which do not really warrant a separate package on their own.
 Included are, among other things, definitions of common units
-with preceeding thinspaces, framed boxes where both width and
+with preceding thinspaces, framed boxes where both width and
 height can be specified, starting new odd or even pages, draft
 markers, notes, conditional includes, including EPS files, and
 versions of enumerate and itemize which allow the horizontal
 and vertical spacing to be changed.
 
 %package -n texlive-lhelp-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn23638
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn76924
 Release:        0
 Summary:        Documentation for texlive-lhelp
 License:        GPL-2.0-or-later
@@ -10880,7 +11188,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lhelp/lhelp.sty
 
 %package -n texlive-libertine
-Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn73037
+Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn77682
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Use of Linux Libertine and Biolinum fonts with LaTeX
@@ -12410,9 +12718,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source125:      libertine.tar.xz
-Source126:      libertine.doc.tar.xz
+# from 20260301
+Source129:      libertine.tar.xz
+Source130:      libertine.doc.tar.xz
 
 %description -n texlive-libertine
 The package provides the Libertine and Biolinum fonts in both
@@ -12423,7 +12731,7 @@ to manage the selection of font weights. The package supersedes
 both the libertineotf and the libertine-legacy packages.
 
 %package -n texlive-libertine-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn73037
+Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn77682
 Release:        0
 Summary:        Documentation for texlive-libertine
 License:        GPL-2.0-or-later
@@ -12435,7 +12743,7 @@ Supplements:    (texlive-libertine and texlive-alldocumentation)
 This package includes the documentation for texlive-libertine
 
 %package -n texlive-libertine-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn73037
+Version:        %{texlive_version}.%{texlive_noarch}.5.3.0svn77682
 Release:        0
 Summary:        Severed fonts for texlive-libertine
 License:        GPL-2.0-or-later
@@ -14181,9 +14489,9 @@ Requires:       tex(fontenc.sty)
 Requires:       tex(libertine.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source127:      libertinegc.tar.xz
-Source128:      libertinegc.doc.tar.xz
+# from 20260301
+Source131:      libertinegc.tar.xz
+Source132:      libertinegc.doc.tar.xz
 
 %description -n texlive-libertinegc
 The package provides LaTeX support files to access the Greek
@@ -14320,7 +14628,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinegc/libertinegc.sty
 
 %package -n texlive-libertinus
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Wrapper to use the correct libertinus package according to the used TeX engine
@@ -14351,18 +14659,18 @@ Provides:       tex(libertinus.sty)
 Requires:       tex(iftex.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source129:      libertinus.tar.xz
-Source130:      libertinus.doc.tar.xz
+# from 20260301
+Source133:      libertinus.tar.xz
+Source134:      libertinus.doc.tar.xz
 
 %description -n texlive-libertinus
 This package is only a wrapper for the two packages
 libertinus-type1 (pdfLaTeX) and libertinus-otf
-(LuaLaTeX/XeLaTeX). The Libertinus fonts are similiar to
+(LuaLaTeX/XeLaTeX). The Libertinus fonts are similar to
 Libertine and Biolinum, but come with math symbols.
 
 %package -n texlive-libertinus-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn61719
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.02svn77682
 Release:        0
 Summary:        Documentation for texlive-libertinus
 License:        LPPL-1.0
@@ -14429,9 +14737,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-libertinus-fonts-fonts >= %{texlive_version}
 Suggests:       texlive-libertinus-fonts-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source131:      libertinus-fonts.tar.xz
-Source132:      libertinus-fonts.doc.tar.xz
+# from 20260301
+Source135:      libertinus-fonts.tar.xz
+Source136:      libertinus-fonts.doc.tar.xz
 
 %description -n texlive-libertinus-fonts
 This is a fork of the Linux Libertine and Linux Biolinum fonts
@@ -14543,7 +14851,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-libertinus-fonts/LibertinusSerifInitials-Regular.otf
 
 %package -n texlive-libertinus-otf
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.32svn68333
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.34svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Support for Libertinus OpenType
@@ -14572,26 +14880,25 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-libertinus-otf-doc >= %{texlive_version}
 Provides:       tex(libertinus-otf.sty)
 Requires:       tex(fontspec.sty)
-Requires:       tex(ifluatex.sty)
-Requires:       tex(ifxetex.sty)
+Requires:       tex(iftex.sty)
+Requires:       tex(lua-unicode-math.sty)
 Requires:       tex(newunicodechar.sty)
-Requires:       tex(textcomp.sty)
 Requires:       tex(unicode-math.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source133:      libertinus-otf.tar.xz
-Source134:      libertinus-otf.doc.tar.xz
+# from 20260301
+Source137:      libertinus-otf.tar.xz
+Source138:      libertinus-otf.doc.tar.xz
 
 %description -n texlive-libertinus-otf
 This package offers LuaLaTeX/XeLaTeX support for the Libertinus
 OpenType fonts maintained by Khaled Hosny. Missing fonts are
 defined via several font feature settings. The Libertinus fonts
-are similiar to Libertine and Biolinum, but come with math
+are similar to Libertine and Biolinum, but come with math
 symbols.
 
 %package -n texlive-libertinus-otf-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.32svn68333
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.34svn77682
 Release:        0
 Summary:        Documentation for texlive-libertinus-otf
 License:        LPPL-1.0
@@ -14629,7 +14936,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/libertinus-otf/libertinus-otf.sty
 
 %package -n texlive-libertinus-type1
-Version:        %{texlive_version}.%{texlive_noarch}.svn73445
+Version:        %{texlive_version}.%{texlive_noarch}.svn76891
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Support for using Libertinus fonts with LaTeX/pdfLaTeX
@@ -16504,9 +16811,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source135:      libertinus-type1.tar.xz
-Source136:      libertinus-type1.doc.tar.xz
+# from 20260301
+Source139:      libertinus-type1.tar.xz
+Source140:      libertinus-type1.doc.tar.xz
 
 %description -n texlive-libertinus-type1
 This package provides support for use of Libertinus fonts with
@@ -16514,7 +16821,7 @@ traditional processing engines (LaTeX with dvips or dvipdfmx,
 or pdfLaTeX).
 
 %package -n texlive-libertinus-type1-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn73445
+Version:        %{texlive_version}.%{texlive_noarch}.svn76891
 Release:        0
 Summary:        Documentation for texlive-libertinus-type1
 License:        GPL-2.0-or-later
@@ -16526,7 +16833,7 @@ Supplements:    (texlive-libertinus-type1 and texlive-alldocumentation)
 This package includes the documentation for texlive-libertinus-type1
 
 %package -n texlive-libertinus-type1-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn73445
+Version:        %{texlive_version}.%{texlive_noarch}.svn76891
 Release:        0
 Summary:        Severed fonts for texlive-libertinus-type1
 License:        GPL-2.0-or-later
@@ -18437,7 +18744,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-libertinus-type1/LibertinusSerifDisplay-Regular.pfb
 
 %package -n texlive-libertinust1math
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.6svn71428
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.6svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        A Type 1 font and LaTeX support for Libertinus Math
@@ -18533,9 +18840,9 @@ Requires:       tex(amsthm.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source137:      libertinust1math.tar.xz
-Source138:      libertinust1math.doc.tar.xz
+# from 20260301
+Source141:      libertinust1math.tar.xz
+Source142:      libertinust1math.doc.tar.xz
 
 %description -n texlive-libertinust1math
 The package provides a Type1 version of Libertinus Math, with a
@@ -18545,7 +18852,7 @@ LaTeX. In addition, with option sansmath, it can function as a
 standalone math font with sans serif Roman and Greek letters.
 
 %package -n texlive-libertinust1math-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.6svn71428
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.6svn77682
 Release:        0
 Summary:        Documentation for texlive-libertinust1math
 License:        OFL-1.1
@@ -18557,7 +18864,7 @@ Supplements:    (texlive-libertinust1math and texlive-alldocumentation)
 This package includes the documentation for texlive-libertinust1math
 
 %package -n texlive-libertinust1math-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.0.6svn71428
+Version:        %{texlive_version}.%{texlive_noarch}.2.0.6svn77682
 Release:        0
 Summary:        Severed fonts for texlive-libertinust1math
 License:        OFL-1.1
@@ -18707,7 +19014,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-libertinust1math/LibertinusT1Math.pfb
 
 %package -n texlive-libgreek
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn65004
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn75712
 Release:        0
 License:        LPPL-1.0
 Summary:        Greek letters in math mode from Libertinus or Linux Libertine/Biolinum
@@ -18738,25 +19045,25 @@ Provides:       tex(libgreek-legacy.sty)
 Provides:       tex(libgreek.sty)
 Requires:       tex(kvoptions.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source139:      libgreek.tar.xz
-Source140:      libgreek.doc.tar.xz
+# from 20260301
+Source143:      libgreek.tar.xz
+Source144:      libgreek.doc.tar.xz
 
 %description -n texlive-libgreek
 This package allows LaTeX users (especially if using
 traditional LaTeX/pdfLaTeX) to set the Greek letters in math
-mode to use the glyphs from the Libertinus Serif or Sans font,
-via the font support files provided by the libertinus-type1
-package of Bob Tennent. All Greek letters are defined both in
-\...up and \...it variants. The style (ISO, TeX, or French i.
-e. upright) can be modified midway in the document. A "legacy"
-mode uses font support from the (obsolete) package
-https://ctan.org/pkg/libertine-legacy which map to the Linux
-Libertine or Biolinum fonts. This package is for users which
-only want to customize Greek letters in math mode.
+mode using the glyphs from the Libertinus Serif or Sans font
+via the font support files provided by Bob Tennent's
+libertinus-type1 package. All Greek letters are defined both in
+\...up and \...it variants. The style (ISO, TeX, or French i.e.
+upright) can be modified midway in the document. A "legacy"
+mode uses font support from the (obsolete) libertine-legacy
+package which maps to the Linux Libertine or Biolinum fonts.
+This package is for users who only want to customize Greek
+letters in math mode.
 
 %package -n texlive-libgreek-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn65004
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn75712
 Release:        0
 Summary:        Documentation for texlive-libgreek
 License:        LPPL-1.0
@@ -18825,9 +19132,9 @@ Provides:       tex(librarian.sty)
 Provides:       tex(librarian.tex)
 Provides:       tex(t-librarian.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source141:      librarian.tar.xz
-Source142:      librarian.doc.tar.xz
+# from 20260301
+Source145:      librarian.tar.xz
+Source146:      librarian.doc.tar.xz
 
 %description -n texlive-librarian
 The package extracts information in bib files, makes it
@@ -18884,7 +19191,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/generic/librarian/t-librarian.tex
 
 %package -n texlive-librebaskerville
-Version:        %{texlive_version}.%{texlive_noarch}.svn64421
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        The Libre Baskerville family of fonts with LaTeX support
@@ -19017,9 +19324,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source143:      librebaskerville.tar.xz
-Source144:      librebaskerville.doc.tar.xz
+# from 20260301
+Source147:      librebaskerville.tar.xz
+Source148:      librebaskerville.doc.tar.xz
 
 %description -n texlive-librebaskerville
 This package provides the Libre Baskerville family of fonts,
@@ -19029,7 +19336,7 @@ but is also attractive as a text font. A BoldItalic variant has
 been artificially generated.
 
 %package -n texlive-librebaskerville-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64421
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-librebaskerville
 License:        OFL-1.1
@@ -19041,7 +19348,7 @@ Supplements:    (texlive-librebaskerville and texlive-alldocumentation)
 This package includes the documentation for texlive-librebaskerville
 
 %package -n texlive-librebaskerville-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64421
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-librebaskerville
 License:        OFL-1.1
@@ -19362,9 +19669,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source145:      librebodoni.tar.xz
-Source146:      librebodoni.doc.tar.xz
+# from 20260301
+Source149:      librebodoni.tar.xz
+Source150:      librebodoni.doc.tar.xz
 
 %description -n texlive-librebodoni
 The Libre Bodoni fonts are designed by Pablo Impallari and
@@ -19571,7 +19878,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-librebodoni/LibreBodoni-Regular.pfb
 
 %package -n texlive-librecaslon
-Version:        %{texlive_version}.%{texlive_noarch}.svn64432
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Libre Caslon fonts, with LaTeX support
@@ -19875,9 +20182,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source147:      librecaslon.tar.xz
-Source148:      librecaslon.doc.tar.xz
+# from 20260301
+Source151:      librecaslon.tar.xz
+Source152:      librecaslon.doc.tar.xz
 
 %description -n texlive-librecaslon
 The Libre Caslon fonts are designed by Pablo Impallari.
@@ -19886,7 +20193,7 @@ work well as conventional text fonts. An artificially generated
 BoldItalic variant has been added.
 
 %package -n texlive-librecaslon-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64432
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-librecaslon
 License:        OFL-1.1
@@ -19898,7 +20205,7 @@ Supplements:    (texlive-librecaslon and texlive-alldocumentation)
 This package includes the documentation for texlive-librecaslon
 
 %package -n texlive-librecaslon-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64432
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-librecaslon
 License:        OFL-1.1
@@ -20224,7 +20531,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-librecaslon/LibreCsln-Regular.pfb
 
 %package -n texlive-librefranklin
-Version:        %{texlive_version}.%{texlive_noarch}.svn64441
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX support for the Libre-Franklin family of fonts
@@ -20706,9 +21013,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source149:      librefranklin.tar.xz
-Source150:      librefranklin.doc.tar.xz
+# from 20260301
+Source153:      librefranklin.tar.xz
+Source154:      librefranklin.doc.tar.xz
 
 %description -n texlive-librefranklin
 Libre Franklin is an interpretation and expansion based on the
@@ -20716,7 +21023,7 @@ Libre Franklin is an interpretation and expansion based on the
 Impallari, Rodrigo Fuenzalida and Nhung Nguyen.
 
 %package -n texlive-librefranklin-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64441
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-librefranklin
 License:        LPPL-1.0
@@ -20728,7 +21035,7 @@ Supplements:    (texlive-librefranklin and texlive-alldocumentation)
 This package includes the documentation for texlive-librefranklin
 
 %package -n texlive-librefranklin-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64441
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-librefranklin
 License:        LPPL-1.0
@@ -21287,7 +21594,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-librefranklin/LibreFranklin-ThinItalic.pfb
 
 %package -n texlive-libris
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Libris ADF fonts, with LaTeX support
@@ -21376,9 +21683,9 @@ Requires:       tex(nfssext-cfr.sty)
 Requires:       tex(svn-prov.sty)
 Requires:       tex(textcomp.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source151:      libris.tar.xz
-Source152:      libris.doc.tar.xz
+# from 20260301
+Source155:      libris.tar.xz
+Source156:      libris.doc.tar.xz
 
 %description -n texlive-libris
 LibrisADF is a sans-serif family designed to mimic Lydian. The
@@ -21389,7 +21696,7 @@ nfssext-cfr bundle. GPL licensing applies the fonts themselves;
 the support macros are distributed under LPPL licensing.
 
 %package -n texlive-libris-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Documentation for texlive-libris
 License:        LPPL-1.0
@@ -21401,7 +21708,7 @@ Supplements:    (texlive-libris and texlive-alldocumentation)
 This package includes the documentation for texlive-libris
 
 %package -n texlive-libris-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.1.1svn72484
+Version:        %{texlive_version}.%{texlive_noarch}.1.1svn77682
 Release:        0
 Summary:        Severed fonts for texlive-libris
 License:        LPPL-1.0
@@ -21522,7 +21829,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-libris/ylyri8a.pfb
 
 %package -n texlive-lie-hasse
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn73069
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn75301
 Release:        0
 License:        LPPL-1.0
 Summary:        Draw Hasse diagrams
@@ -21554,9 +21861,9 @@ Requires:       tex(contour.sty)
 Requires:       tex(dynkin-diagrams.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source153:      lie-hasse.tar.xz
-Source154:      lie-hasse.doc.tar.xz
+# from 20260301
+Source157:      lie-hasse.tar.xz
+Source158:      lie-hasse.doc.tar.xz
 
 %description -n texlive-lie-hasse
 This package draws Hasse diagrams of the partially ordered sets
@@ -21564,7 +21871,7 @@ of the simple roots of any complex simple Lie algebra. It uses
 the Dynkin diagrams package dynkin-diagrams.
 
 %package -n texlive-lie-hasse-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.02svn73069
+Version:        %{texlive_version}.%{texlive_noarch}.1.02svn75301
 Release:        0
 Summary:        Documentation for texlive-lie-hasse
 License:        LPPL-1.0
@@ -21602,7 +21909,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lie-hasse/lie-hasse.sty
 
 %package -n texlive-liederbuch
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn73548
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX package for storing songs or other content, and repeated reuse in documents
@@ -21639,9 +21946,9 @@ Requires:       tex(hyperref.sty)
 Requires:       tex(pgfmath.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source155:      liederbuch.tar.xz
-Source156:      liederbuch.doc.tar.xz
+# from 20260301
+Source159:      liederbuch.tar.xz
+Source160:      liederbuch.doc.tar.xz
 
 %description -n texlive-liederbuch
 This package is meant for content which you reuse regularly,
@@ -21660,7 +21967,7 @@ that you can combine any stave image with LaTeX fonts. You can
 find resources and inspiration in a demo project.
 
 %package -n texlive-liederbuch-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn73548
+Version:        %{texlive_version}.%{texlive_noarch}.1.1.0svn76924
 Release:        0
 Summary:        Documentation for texlive-liederbuch
 License:        LPPL-1.0
@@ -21710,7 +22017,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/liederbuch/printliederbuch.sty
 
 %package -n texlive-liftarm
-Version:        %{texlive_version}.%{texlive_noarch}.3.0svn71309
+Version:        %{texlive_version}.%{texlive_noarch}.4.0svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Geometric constructions with liftarms using TikZ and LaTeX3
@@ -21741,21 +22048,21 @@ Provides:       tex(liftarm.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source157:      liftarm.tar.xz
-Source158:      liftarm.doc.tar.xz
+# from 20260301
+Source161:      liftarm.tar.xz
+Source162:      liftarm.doc.tar.xz
 
 %description -n texlive-liftarm
 This package is based on the package TikZ and can be used to
 draw geometric constructions with liftarms. There are several
 options for the appearance of the liftarms. It provides an
 environment to connect multiple liftarms using the
-Newton-Raphson method and LU decomposition. It also provides an
-environment to describe a construction and a method to animate
-a construction with one or more traces.
+Newton-Raphson method and LU decomposition. It also provides a
+command to describe a construction and a method to animate a
+construction with one or more traces.
 
 %package -n texlive-liftarm-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.0svn71309
+Version:        %{texlive_version}.%{texlive_noarch}.4.0svn76924
 Release:        0
 Summary:        Documentation for texlive-liftarm
 License:        LPPL-1.0
@@ -21822,9 +22129,9 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-light-latex-make-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source159:      light-latex-make.tar.xz
-Source160:      light-latex-make.doc.tar.xz
+# from 20260301
+Source163:      light-latex-make.tar.xz
+Source164:      light-latex-make.doc.tar.xz
 
 %description -n texlive-light-latex-make
 Light LaTeX Make (llmk) is yet another build tool specific for
@@ -21920,9 +22227,9 @@ Provides:       tex(ligtype.sty)
 Requires:       tex(ifluatex.sty)
 Requires:       tex(luatexbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source161:      ligtype.tar.xz
-Source162:      ligtype.doc.tar.xz
+# from 20260301
+Source165:      ligtype.tar.xz
+Source166:      ligtype.doc.tar.xz
 
 %description -n texlive-ligtype
 This package suppresses inappropriate ligatures following
@@ -22009,10 +22316,10 @@ Requires:       tex(adjustbox.sty)
 Requires:       tex(keyval.sty)
 Requires:       tex(pgf.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source163:      lilyglyphs.tar.xz
-Source164:      lilyglyphs.doc.tar.xz
-Source165:      lilyglyphs_p2top3.dif
+# from 20260301
+Source167:      lilyglyphs.tar.xz
+Source168:      lilyglyphs.doc.tar.xz
+Source169:      lilyglyphs_p2top3.dif
 
 %description -n texlive-lilyglyphs
 The package provides the means to include arbitrary elements of
@@ -22248,9 +22555,9 @@ Requires:       tex(etoolbox.sty)
 Requires:       tex(fancyhdr.sty)
 Requires:       tex(longtable.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source166:      limap.tar.xz
-Source167:      limap.doc.tar.xz
+# from 20260301
+Source170:      limap.tar.xz
+Source171:      limap.doc.tar.xz
 
 %description -n texlive-limap
 The Information Mapping(r) method provides a methodology for
@@ -22311,7 +22618,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/limap/limap.sty
 
 %package -n texlive-limecv
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.12svn61199
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.12svn75301
 Release:        0
 License:        LPPL-1.0
 Summary:        A (Xe/Lua)LaTeX document class for curriculum vitae
@@ -22358,9 +22665,9 @@ Requires:       tex(xkeyval.sty)
 Requires:       tex(xparse.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source168:      limecv.tar.xz
-Source169:      limecv.doc.tar.xz
+# from 20260301
+Source172:      limecv.tar.xz
+Source173:      limecv.doc.tar.xz
 
 %description -n texlive-limecv
 limecv is a (Xe/Lua)LaTeX document class to write curriculum
@@ -22369,7 +22676,7 @@ elegant and clean. To this end, it offers several environments
 and macros for convenience.
 
 %package -n texlive-limecv-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.12svn61199
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.12svn75301
 Release:        0
 Summary:        Documentation for texlive-limecv
 License:        LPPL-1.0
@@ -22459,9 +22766,9 @@ Provides:       tex(linearA.map)
 Provides:       tex(linearA.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source170:      lineara.tar.xz
-Source171:      lineara.doc.tar.xz
+# from 20260301
+Source174:      lineara.tar.xz
+Source175:      lineara.doc.tar.xz
 
 %description -n texlive-lineara
 The linearA package provides a simple interface to two fonts
@@ -22543,7 +22850,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-lineara/LinearACmplxSigns.pfb
 
 %package -n texlive-linearregression
-Version:        %{texlive_version}.%{texlive_noarch}.svn73123
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 License:        LPPL-1.0
 Summary:        Calculate and display linear regressions
@@ -22573,9 +22880,9 @@ Suggests:       texlive-linearregression-doc >= %{texlive_version}
 Provides:       tex(linearregression.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source172:      linearregression.tar.xz
-Source173:      linearregression.doc.tar.xz
+# from 20260301
+Source176:      linearregression.tar.xz
+Source177:      linearregression.doc.tar.xz
 
 %description -n texlive-linearregression
 This package provides the definition of some document-level
@@ -22584,7 +22891,7 @@ regression on a set of data and present the data and the
 results in tabular and in graphic form.
 
 %package -n texlive-linearregression-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn73123
+Version:        %{texlive_version}.%{texlive_noarch}.svn76924
 Release:        0
 Summary:        Documentation for texlive-linearregression
 License:        LPPL-1.0
@@ -22620,7 +22927,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/linearregression/linearregression.sty
 
 %package -n texlive-linebreaker
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn66639
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Prevent overflow boxes with LuaLaTeX
@@ -22650,9 +22957,9 @@ Suggests:       texlive-linebreaker-doc >= %{texlive_version}
 Provides:       tex(linebreaker.sty)
 Requires:       tex(luatexbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source174:      linebreaker.tar.xz
-Source175:      linebreaker.doc.tar.xz
+# from 20260301
+Source178:      linebreaker.tar.xz
+Source179:      linebreaker.doc.tar.xz
 
 %description -n texlive-linebreaker
 This package tries to prevent overflow lines in paragraphs or
@@ -22662,7 +22969,7 @@ the paragraph with increased values of \tolerance and
 doesn't help, it chooses the solution with the lowest badness.
 
 %package -n texlive-linebreaker-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn66639
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1csvn77682
 Release:        0
 Summary:        Documentation for texlive-linebreaker
 License:        LPPL-1.0
@@ -22732,9 +23039,9 @@ Requires:       tex(etex.sty)
 Requires:       tex(zref-savepos.sty)
 Requires:       tex(zref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source176:      linegoal.tar.xz
-Source177:      linegoal.doc.tar.xz
+# from 20260301
+Source180:      linegoal.tar.xz
+Source181:      linegoal.doc.tar.xz
 
 %description -n texlive-linegoal
 The linegoal package provides a macro \linegoal to be used with
@@ -22783,7 +23090,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/linegoal/linegoal.sty
 
 %package -n texlive-lineno
-Version:        %{texlive_version}.%{texlive_noarch}.5.4svn73638
+Version:        %{texlive_version}.%{texlive_noarch}.5.7svn77875
 Release:        0
 License:        LPPL-1.0
 Summary:        Line numbers on paragraphs
@@ -22822,9 +23129,9 @@ Requires:       tex(longtable.sty)
 Requires:       tex(ltabptch.sty)
 Requires:       tex(varioref.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source178:      lineno.tar.xz
-Source179:      lineno.doc.tar.xz
+# from 20260301
+Source182:      lineno.tar.xz
+Source183:      lineno.doc.tar.xz
 
 %description -n texlive-lineno
 Adds line numbers to selected paragraphs with reference
@@ -22833,7 +23140,7 @@ mechanism. Line numbering may be extended to footnote lines,
 using the fnlineno package.
 
 %package -n texlive-lineno-doc
-Version:        %{texlive_version}.%{texlive_noarch}.5.4svn73638
+Version:        %{texlive_version}.%{texlive_noarch}.5.7svn77875
 Release:        0
 Summary:        Documentation for texlive-lineno
 License:        LPPL-1.0
@@ -22921,9 +23228,9 @@ Requires:       tex(stmaryrd.sty)
 Requires:       tex(ulem.sty)
 Requires:       tex(upgreek.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source180:      ling-macros.tar.xz
-Source181:      ling-macros.doc.tar.xz
+# from 20260301
+Source184:      ling-macros.tar.xz
+Source185:      ling-macros.doc.tar.xz
 
 %description -n texlive-ling-macros
 This package contains macros for typesetting glosses and formal
@@ -22968,7 +23275,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ling-macros/ling-macros.sty
 
 %package -n texlive-linguex
-Version:        %{texlive_version}.%{texlive_noarch}.4.3svn30815
+Version:        %{texlive_version}.%{texlive_noarch}.4.3svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Format linguists' examples
@@ -23002,9 +23309,9 @@ Requires:       tex(cgloss4e.sty)
 Requires:       tex(tree-dvips.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source182:      linguex.tar.xz
-Source183:      linguex.doc.tar.xz
+# from 20260301
+Source186:      linguex.tar.xz
+Source187:      linguex.doc.tar.xz
 
 %description -n texlive-linguex
 This bundle comprises two packages: The linguex package
@@ -23016,7 +23323,7 @@ tree-dvips, but overcoming some of the older package's
 shortcomings.
 
 %package -n texlive-linguex-doc
-Version:        %{texlive_version}.%{texlive_noarch}.4.3svn30815
+Version:        %{texlive_version}.%{texlive_noarch}.4.3svn77682
 Release:        0
 Summary:        Documentation for texlive-linguex
 License:        LPPL-1.0
@@ -23057,7 +23364,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/linguex/ps-trees.sty
 
 %package -n texlive-linguisticspro
-Version:        %{texlive_version}.%{texlive_noarch}.svn64858
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        LinguisticsPro fonts with LaTeX support
@@ -23344,9 +23651,9 @@ Requires:       tex(mweights.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source184:      linguisticspro.tar.xz
-Source185:      linguisticspro.doc.tar.xz
+# from 20260301
+Source188:      linguisticspro.tar.xz
+Source189:      linguisticspro.doc.tar.xz
 
 %description -n texlive-linguisticspro
 The package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -23354,7 +23661,7 @@ support for the LinguisticsPro family of fonts. This family is
 derived from the Utopia Nova font family, by Andreas Nolda.
 
 %package -n texlive-linguisticspro-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64858
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-linguisticspro
 License:        LPPL-1.0
@@ -23366,7 +23673,7 @@ Supplements:    (texlive-linguisticspro and texlive-alldocumentation)
 This package includes the documentation for texlive-linguisticspro
 
 %package -n texlive-linguisticspro-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64858
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-linguisticspro
 License:        LPPL-1.0
@@ -23677,6 +23984,219 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_datadir}/fonts/texlive-linguisticspro/LinguisticsPro-Italic.pfb
 %{_datadir}/fonts/texlive-linguisticspro/LinguisticsPro-Regular.pfb
 
+%package -n texlive-linguistix
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn77571
+Release:        0
+License:        GPL-2.0-or-later
+Summary:        Enhanced support for linguistics
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-linguistix-doc >= %{texlive_version}
+Provides:       tex(linguistix-american.sty)
+Provides:       tex(linguistix-base.sty)
+Provides:       tex(linguistix-british.sty)
+Provides:       tex(linguistix-english.sty)
+Provides:       tex(linguistix-fixpex.sty)
+Provides:       tex(linguistix-fonts.sty)
+Provides:       tex(linguistix-glossing.sty)
+Provides:       tex(linguistix-greek.sty)
+Provides:       tex(linguistix-ipa.sty)
+Provides:       tex(linguistix-languages.sty)
+Provides:       tex(linguistix-leipzig.sty)
+Provides:       tex(linguistix-logos.sty)
+Provides:       tex(linguistix-marathi.sty)
+Provides:       tex(linguistix-nfss.sty)
+Provides:       tex(linguistix.sty)
+Requires:       tex(babel.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(lua-unicode-math.sty)
+Requires:       tex(multicol.sty)
+Requires:       tex(setspace.sty)
+Requires:       tex(unicode-math.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source190:      linguistix.tar.xz
+Source191:      linguistix.doc.tar.xz
+
+%description -n texlive-linguistix
+This is an experimental bundle of packages that provide
+enhanced support for typesetting in linguistics. It can be used
+as a single package, or the packages can be loaded
+independently for separate features. Currently, it provides the
+following packages: LinguisTiX-base: A base package used by
+other LinguisTiX siblings LinguisTiX-fixpex: Solves the
+compatibility bug between expex and unicode-math
+LinguisTiX-fonts: General text in the New Computer Modern font
+family LinguisTiX-ipa: IPA text in the New Computer Modern font
+family LinguisTiX-glossing: Accessible interlinear glossing
+LinguisTiX-leipzig: Leipzig-style glossing with tagging
+LinguisTiX-languages: Support for modern multilingual
+typesetting LinguisTiX-logos: For printing the logos of the
+LinguisTiX bundle LinguisTiX-nfss: Extra control over NFSS
+
+%package -n texlive-linguistix-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.8svn77571
+Release:        0
+Summary:        Documentation for texlive-linguistix
+License:        GPL-2.0-or-later
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-linguistix and texlive-alldocumentation)
+
+%description -n texlive-linguistix-doc
+This package includes the documentation for texlive-linguistix
+
+%post -n texlive-linguistix
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-linguistix
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-linguistix
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-linguistix-doc
+%{_texmfdistdir}/doc/latex/linguistix/COPYING
+%{_texmfdistdir}/doc/latex/linguistix/README.txt
+%{_texmfdistdir}/doc/latex/linguistix/linguistix-english.pdf
+%{_texmfdistdir}/doc/latex/linguistix/linguistix-greek.pdf
+%{_texmfdistdir}/doc/latex/linguistix/linguistix-marathi.pdf
+%{_texmfdistdir}/doc/latex/linguistix/linguistix.pdf
+
+%files -n texlive-linguistix
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-american.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-base.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-british.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-english.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-fixpex.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-fonts.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-glossing.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-greek.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-ipa.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-languages.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-leipzig.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-logos.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-marathi.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix-nfss.sty
+%{_texmfdistdir}/tex/latex/linguistix/linguistix.sty
+
+%package -n texlive-linkedthm
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn75860
+Release:        0
+License:        LPPL-1.0
+Summary:        Hyperlinked theorem-proof environments for LaTeX
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-linkedthm-doc >= %{texlive_version}
+Provides:       tex(linkedthm.sty)
+Requires:       tex(amsthm.sty)
+Requires:       tex(hyperref.sty)
+Requires:       tex(xparse.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source192:      linkedthm.tar.xz
+Source193:      linkedthm.doc.tar.xz
+
+%description -n texlive-linkedthm
+This package provides lightweight infrastructure for
+bidirectional linking between theorem-like environments and
+their corresponding proofs. It automatically adds a [Proof]
+hyperlink at the end of a theorem and a restated version with a
+[Return] link inside the proof. You can declare any number of
+custom linked environments (e.g., linkeddefinition,
+linkedexample) using \DeclareLinkedTheorem, and base them on
+any amsthm-compatible environment. This is useful for
+mathematical writing and documentation, where proof navigation
+is essential. The package uses amsthm, xparse, and hyperref,
+and is compatible with all standard LaTeX engines.
+
+%package -n texlive-linkedthm-doc
+Version:        %{texlive_version}.%{texlive_noarch}.1.0svn75860
+Release:        0
+Summary:        Documentation for texlive-linkedthm
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-linkedthm and texlive-alldocumentation)
+
+%description -n texlive-linkedthm-doc
+This package includes the documentation for texlive-linkedthm
+
+%post -n texlive-linkedthm
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-linkedthm
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-linkedthm
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-linkedthm-doc
+%{_texmfdistdir}/doc/latex/linkedthm/README.md
+%{_texmfdistdir}/doc/latex/linkedthm/linkedthm-doc.pdf
+%{_texmfdistdir}/doc/latex/linkedthm/linkedthm-doc.tex
+%{_texmfdistdir}/doc/latex/linkedthm/linkedthm-example.pdf
+%{_texmfdistdir}/doc/latex/linkedthm/linkedthm-example.tex
+
+%files -n texlive-linkedthm
+%{_texmfdistdir}/tex/latex/linkedthm/linkedthm.sty
+
 %package -n texlive-linop
 Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn41304
 Release:        0
@@ -23709,9 +24229,9 @@ Provides:       tex(linop.sty)
 Requires:       tex(bm.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source186:      linop.tar.xz
-Source187:      linop.doc.tar.xz
+# from 20260301
+Source194:      linop.tar.xz
+Source195:      linop.doc.tar.xz
 
 %description -n texlive-linop
 This small package aims to provide two simple commands and many
@@ -23758,7 +24278,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/linop/linop.sty
 
 %package -n texlive-lion-msc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.30svn55415
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.31svn75184
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX class for B.Sc. and M.Sc. reports at Leiden Institute of Physics (LION)
@@ -23796,16 +24316,16 @@ Requires:       tex(fancyhdr.sty)
 Requires:       tex(fncychap.sty)
 Requires:       tex(graphicx.sty)
 Requires:       tex(hyperref.sty)
-Requires:       tex(inputenc.sty)
 Requires:       tex(mathpazo.sty)
 Requires:       tex(natbib.sty)
 Requires:       tex(report.cls)
+Requires:       tex(svg.sty)
 Requires:       tex(titling.sty)
 Requires:       tex(xcolor.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source188:      lion-msc.tar.xz
-Source189:      lion-msc.doc.tar.xz
+# from 20260301
+Source196:      lion-msc.tar.xz
+Source197:      lion-msc.doc.tar.xz
 
 %description -n texlive-lion-msc
 LaTeX class for B.Sc. and M.Sc. reports at Leiden Institute of
@@ -23818,7 +24338,7 @@ supervisor). Students are free to change the layout of the text
 but should leave the title page as it is.
 
 %package -n texlive-lion-msc-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.30svn55415
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.31svn75184
 Release:        0
 Summary:        Documentation for texlive-lion-msc
 License:        LPPL-1.0
@@ -23854,6 +24374,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/lion-msc/Fig3a.png
 %{_texmfdistdir}/doc/latex/lion-msc/Fig3b.png
 %{_texmfdistdir}/doc/latex/lion-msc/Fig4.png
+%{_texmfdistdir}/doc/latex/lion-msc/LICENSE
 %{_texmfdistdir}/doc/latex/lion-msc/README.md
 %{_texmfdistdir}/doc/latex/lion-msc/lion-msc.layout
 %{_texmfdistdir}/doc/latex/lion-msc/lion-msc.pdf
@@ -23867,7 +24388,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lion-msc/lion-msc.cls
 
 %package -n texlive-lipsum
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn60561
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Easy access to the Lorem Ipsum and other dummy texts
@@ -23902,9 +24423,9 @@ Requires:       tex(babel.sty)
 Requires:       tex(l3keys2e.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source190:      lipsum.tar.xz
-Source191:      lipsum.doc.tar.xz
+# from 20260301
+Source198:      lipsum.tar.xz
+Source199:      lipsum.doc.tar.xz
 
 %description -n texlive-lipsum
 This package gives you easy access to 150 paragraphs of the
@@ -23912,7 +24433,7 @@ Lorem Ipsum dummy text provided by https://lipsum.com, plus a
 growing list of other dummy texts in different languages.
 
 %package -n texlive-lipsum-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.7svn60561
+Version:        %{texlive_version}.%{texlive_noarch}.2.7svn77682
 Release:        0
 Summary:        Documentation for texlive-lipsum
 License:        LPPL-1.0
@@ -23998,9 +24519,9 @@ Provides:       tex(lisp-util.sty)
 Requires:       tex(expl3.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source192:      lisp-on-tex.tar.xz
-Source193:      lisp-on-tex.doc.tar.xz
+# from 20260301
+Source200:      lisp-on-tex.tar.xz
+Source201:      lisp-on-tex.doc.tar.xz
 
 %description -n texlive-lisp-on-tex
 The package provides a LISP interpreter written using TeX
@@ -24101,9 +24622,9 @@ Provides:       tex(listbib.cfg)
 Provides:       tex(listbib.sty)
 Provides:       tex(listbib.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source194:      listbib.tar.xz
-Source195:      listbib.doc.tar.xz
+# from 20260301
+Source202:      listbib.tar.xz
+Source203:      listbib.doc.tar.xz
 
 %description -n texlive-listbib
 Generates listings of bibliographic data bases in BibTeX format
@@ -24180,9 +24701,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-listing-doc >= %{texlive_version}
 Provides:       tex(listing.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source196:      listing.tar.xz
-Source197:      listing.doc.tar.xz
+# from 20260301
+Source204:      listing.tar.xz
+Source205:      listing.doc.tar.xz
 
 %description -n texlive-listing
 The listing environment is provided and is similar to figure
@@ -24230,7 +24751,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/listing/listing.sty
 
 %package -n texlive-listings
-Version:        %{texlive_version}.%{texlive_noarch}.1.10csvn72368
+Version:        %{texlive_version}.%{texlive_noarch}.1.11bsvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset source code listings using LaTeX
@@ -24275,9 +24796,9 @@ Requires:       tex(textcomp.sty)
 Requires:       tex(upquote.sty)
 Requires:       tex(xurl.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source198:      listings.tar.xz
-Source199:      listings.doc.tar.xz
+# from 20260301
+Source206:      listings.tar.xz
+Source207:      listings.doc.tar.xz
 
 %description -n texlive-listings
 The package enables the user to typeset programs (programming
@@ -24296,7 +24817,7 @@ listings are also available, using either \lstinline|...| or
 command).
 
 %package -n texlive-listings-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.10csvn72368
+Version:        %{texlive_version}.%{texlive_noarch}.1.11bsvn77682
 Release:        0
 Summary:        Documentation for texlive-listings
 License:        LPPL-1.0
@@ -24338,6 +24859,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/listings/listings-lua.prf
 %{_texmfdistdir}/tex/latex/listings/listings-python.prf
 %{_texmfdistdir}/tex/latex/listings/listings-rexx.prf
+%{_texmfdistdir}/tex/latex/listings/listings-riscv.prf
 %{_texmfdistdir}/tex/latex/listings/listings.cfg
 %{_texmfdistdir}/tex/latex/listings/listings.sty
 %{_texmfdistdir}/tex/latex/listings/lstdoc.sty
@@ -24381,9 +24903,9 @@ Provides:       tex(listings-ext.sty)
 Requires:       tex(listings.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source200:      listings-ext.tar.xz
-Source201:      listings-ext.doc.tar.xz
+# from 20260301
+Source208:      listings-ext.tar.xz
+Source209:      listings-ext.doc.tar.xz
 
 %description -n texlive-listings-ext
 The package provides a means of marking a source, so that
@@ -24480,9 +25002,9 @@ Requires:       tex(listings.sty)
 Requires:       tex(pdftexcmds.sty)
 Requires:       tex(stringenc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source202:      listingsutf8.tar.xz
-Source203:      listingsutf8.doc.tar.xz
+# from 20260301
+Source210:      listingsutf8.tar.xz
+Source211:      listingsutf8.doc.tar.xz
 
 %description -n texlive-listingsutf8
 Package listings does not support files with multi-byte
@@ -24530,7 +25052,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/listingsutf8/listingsutf8.sty
 
 %package -n texlive-listlbls
-Version:        %{texlive_version}.%{texlive_noarch}.1.04svn67215
+Version:        %{texlive_version}.%{texlive_noarch}.1.04svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Creates a list of all labels used throughout a document
@@ -24560,9 +25082,9 @@ Suggests:       texlive-listlbls-doc >= %{texlive_version}
 Provides:       tex(listlbls.sty)
 Requires:       tex(translations.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source204:      listlbls.tar.xz
-Source205:      listlbls.doc.tar.xz
+# from 20260301
+Source212:      listlbls.tar.xz
+Source213:      listlbls.doc.tar.xz
 
 %description -n texlive-listlbls
 The package aims to help a LaTeX author to keep track of all
@@ -24574,7 +25096,7 @@ TeX/Stackexchange in the thread 'List of all labels with
 hyperlinks'.
 
 %package -n texlive-listlbls-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.04svn67215
+Version:        %{texlive_version}.%{texlive_noarch}.1.04svn77682
 Release:        0
 Summary:        Documentation for texlive-listlbls
 License:        LPPL-1.0
@@ -24612,7 +25134,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/listlbls/listlbls.sty
 
 %package -n texlive-listliketab
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset lists as tables
@@ -24643,9 +25165,9 @@ Provides:       tex(listliketab.sty)
 Requires:       tex(array.sty)
 Requires:       tex(calc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source206:      listliketab.tar.xz
-Source207:      listliketab.doc.tar.xz
+# from 20260301
+Source214:      listliketab.tar.xz
+Source215:      listliketab.doc.tar.xz
 
 %description -n texlive-listliketab
 The listliketab package helps the user make list-like tabulars,
@@ -24654,7 +25176,7 @@ enumerate environment. The advantage of using a tabular is that
 the user can add additional columns to each entry in the list.
 
 %package -n texlive-listliketab-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-listliketab
 License:        LPPL-1.0
@@ -24690,7 +25212,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/listliketab/listliketab.sty
 
 %package -n texlive-listofitems
-Version:        %{texlive_version}.%{texlive_noarch}.1.65svn70579
+Version:        %{texlive_version}.%{texlive_noarch}.1.65svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Grab items in lists using user-specified sep char
@@ -24720,9 +25242,9 @@ Suggests:       texlive-listofitems-doc >= %{texlive_version}
 Provides:       tex(listofitems.sty)
 Provides:       tex(listofitems.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source208:      listofitems.tar.xz
-Source209:      listofitems.doc.tar.xz
+# from 20260301
+Source216:      listofitems.tar.xz
+Source217:      listofitems.doc.tar.xz
 
 %description -n texlive-listofitems
 This simple package is designed to read a list of items whose
@@ -24738,7 +25260,7 @@ dimensions of the type \foo[3,2] to access the item #2 of the
 list contained within the item #3 of the top-tier list.
 
 %package -n texlive-listofitems-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.65svn70579
+Version:        %{texlive_version}.%{texlive_noarch}.1.65svn77682
 Release:        0
 Summary:        Documentation for texlive-listofitems
 License:        LPPL-1.0
@@ -24816,9 +25338,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(nomencl.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source210:      listofsymbols.tar.xz
-Source211:      listofsymbols.doc.tar.xz
+# from 20260301
+Source218:      listofsymbols.tar.xz
+Source219:      listofsymbols.doc.tar.xz
 
 %description -n texlive-listofsymbols
 Listofsymbols provides commands to automatically create a list
@@ -24898,9 +25420,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-listparskip-doc >= %{texlive_version}
 Provides:       tex(listparskip.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source212:      listparskip.tar.xz
-Source213:      listparskip.doc.tar.xz
+# from 20260301
+Source220:      listparskip.tar.xz
+Source221:      listparskip.doc.tar.xz
 
 %description -n texlive-listparskip
 This package modifies list environments such that they add
@@ -24950,7 +25472,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/listparskip/listparskip.sty
 
 %package -n texlive-litetable
-Version:        %{texlive_version}.%{texlive_noarch}.3.3bsvn74391
+Version:        %{texlive_version}.%{texlive_noarch}.3.9asvn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Class schedules with colorful course blocks
@@ -24978,20 +25500,18 @@ Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-litetable-doc >= %{texlive_version}
 Provides:       tex(litetable.sty)
-Requires:       tex(expl3.sty)
 Requires:       tex(tikz.sty)
-Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source214:      litetable.tar.xz
-Source215:      litetable.doc.tar.xz
+# from 20260301
+Source222:      litetable.tar.xz
+Source223:      litetable.doc.tar.xz
 
 %description -n texlive-litetable
-The litetable class provides a colorful timetable design,
-developed by expl3 based on article and TikZ.
+This package provides a colorful timetable design, developed
+using expl3, and based on TikZ.
 
 %package -n texlive-litetable-doc
-Version:        %{texlive_version}.%{texlive_noarch}.3.3bsvn74391
+Version:        %{texlive_version}.%{texlive_noarch}.3.9asvn77682
 Release:        0
 Summary:        Documentation for texlive-litetable
 License:        LPPL-1.0
@@ -25021,7 +25541,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-litetable-doc
+%{_texmfdistdir}/doc/latex/litetable/LICENSE
 %{_texmfdistdir}/doc/latex/litetable/README.md
+%{_texmfdistdir}/doc/latex/litetable/announcement.md
+%{_texmfdistdir}/doc/latex/litetable/build.lua
+%{_texmfdistdir}/doc/latex/litetable/litetable-demo.pdf
+%{_texmfdistdir}/doc/latex/litetable/litetable-demo.tex
 %{_texmfdistdir}/doc/latex/litetable/litetable-zh-cn.pdf
 %{_texmfdistdir}/doc/latex/litetable/litetable-zh-cn.tex
 %{_texmfdistdir}/doc/latex/litetable/litetable-zh-hk.pdf
@@ -25118,9 +25643,9 @@ Provides:       tex(l7xuzc.fd)
 Provides:       tex(latin7.def)
 Provides:       tex(latin7x.enc)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source216:      lithuanian.tar.xz
-Source217:      lithuanian.doc.tar.xz
+# from 20260301
+Source224:      lithuanian.tar.xz
+Source225:      lithuanian.doc.tar.xz
 
 %description -n texlive-lithuanian
 This language support package provides extra 8-bit encoding
@@ -25253,9 +25778,9 @@ Requires:       tex(color.sty)
 Requires:       tex(ecclesiastic.sty)
 Requires:       tex(lettrine.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source218:      liturg.tar.xz
-Source219:      liturg.doc.tar.xz
+# from 20260301
+Source226:      liturg.tar.xz
+Source227:      liturg.doc.tar.xz
 
 %description -n texlive-liturg
 The packages offers simple macros for typesetting Catholic
@@ -25299,6 +25824,92 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-liturg
 %{_texmfdistdir}/tex/latex/liturg/liturg.sty
 
+%package -n texlive-liturgy-cw
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn76053
+Release:        0
+License:        LPPL-1.0
+Summary:        Create Common Worship style documents
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-liturgy-cw-doc >= %{texlive_version}
+Provides:       tex(liturgy-cw.sty)
+Requires:       tex(array.sty)
+Requires:       tex(bibleref.sty)
+Requires:       tex(booktabs.sty)
+Requires:       tex(calc.sty)
+Requires:       tex(fontspec.sty)
+Requires:       tex(framed.sty)
+Requires:       tex(geometry.sty)
+Requires:       tex(titlesec.sty)
+Requires:       tex(xcolor.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source228:      liturgy-cw.tar.xz
+Source229:      liturgy-cw.doc.tar.xz
+
+%description -n texlive-liturgy-cw
+This package greatly simplifies the typesetting of service
+sheets and booklets in the style of the Common Worship
+liturgical resources of the Church of England. The package
+provides commands for a number of liturgical elements,
+including rubrics, responsories and 'required part' indicators.
+
+%package -n texlive-liturgy-cw-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3svn76053
+Release:        0
+Summary:        Documentation for texlive-liturgy-cw
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-liturgy-cw and texlive-alldocumentation)
+
+%description -n texlive-liturgy-cw-doc
+This package includes the documentation for texlive-liturgy-cw
+
+%post -n texlive-liturgy-cw
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-liturgy-cw
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-liturgy-cw
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-liturgy-cw-doc
+%{_texmfdistdir}/doc/latex/liturgy-cw/README.md
+%{_texmfdistdir}/doc/latex/liturgy-cw/liturgy-cw.pdf
+
+%files -n texlive-liturgy-cw
+%{_texmfdistdir}/tex/latex/liturgy-cw/liturgy-cw.sty
+
 %package -n texlive-lkproof
 Version:        %{texlive_version}.%{texlive_noarch}.3.1svn20021
 Release:        0
@@ -25329,9 +25940,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lkproof-doc >= %{texlive_version}
 Provides:       tex(proof.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source220:      lkproof.tar.xz
-Source221:      lkproof.doc.tar.xz
+# from 20260301
+Source230:      lkproof.tar.xz
+Source231:      lkproof.doc.tar.xz
 
 %description -n texlive-lkproof
 The package defines a pair of commands \infer and \deduce, that
@@ -25375,7 +25986,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lkproof/proof.sty
 
 %package -n texlive-llncs
-Version:        %{texlive_version}.%{texlive_noarch}.2.26svn74287
+Version:        %{texlive_version}.%{texlive_noarch}.2.26svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Document class and bibliography style for Lecture Notes in Computer Science (LNCS)
@@ -25407,9 +26018,9 @@ Requires:       tex(aliascnt.sty)
 Requires:       tex(article.cls)
 Requires:       tex(multicol.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source222:      llncs.tar.xz
-Source223:      llncs.doc.tar.xz
+# from 20260301
+Source232:      llncs.tar.xz
+Source233:      llncs.doc.tar.xz
 
 %description -n texlive-llncs
 This is Springer's official macro package for typesetting
@@ -25418,7 +26029,7 @@ Computer Science (LNCS) and its related proceedings series
 CCIS, LNBIP, LNICST, and IFIP AICT.
 
 %package -n texlive-llncs-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.26svn74287
+Version:        %{texlive_version}.%{texlive_noarch}.2.26svn77682
 Release:        0
 Summary:        Documentation for texlive-llncs
 License:        LPPL-1.0
@@ -25491,9 +26102,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(rcsinfo.sty)
 Requires:       tex(svninfo.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source224:      llncsconf.tar.xz
-Source225:      llncsconf.doc.tar.xz
+# from 20260301
+Source234:      llncsconf.tar.xz
+Source235:      llncsconf.doc.tar.xz
 
 %description -n texlive-llncsconf
 The package extends Springer's llncs class for adding
@@ -25552,7 +26163,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/llncsconf/llncsconf.sty
 
 %package -n texlive-lm
-Version:        %{texlive_version}.%{texlive_noarch}.2.005svn67718
+Version:        %{texlive_version}.%{texlive_noarch}.2.005svn77682
 Release:        0
 License:        LPPL-1.3c
 Summary:        Latin modern fonts in outline formats
@@ -26302,9 +26913,9 @@ Provides:       tex(ts1lmssq.fd)
 Provides:       tex(ts1lmtt.fd)
 Provides:       tex(ts1lmvtt.fd)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source226:      lm.tar.xz
-Source227:      lm.doc.tar.xz
+# from 20260301
+Source236:      lm.tar.xz
+Source237:      lm.doc.tar.xz
 
 %description -n texlive-lm
 The Latin Modern family of fonts consists of 72 text fonts and
@@ -26320,7 +26931,7 @@ corresponding to: Cork encoding (cork-*.tfm); QX encoding
 fonts aka TS1 (ts1-*.tfm).
 
 %package -n texlive-lm-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.005svn67718
+Version:        %{texlive_version}.%{texlive_noarch}.2.005svn77682
 Release:        0
 Summary:        Documentation for texlive-lm
 License:        LPPL-1.3c
@@ -26332,7 +26943,7 @@ Supplements:    (texlive-lm and texlive-alldocumentation)
 This package includes the documentation for texlive-lm
 
 %package -n texlive-lm-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.2.005svn67718
+Version:        %{texlive_version}.%{texlive_noarch}.2.005svn77682
 Release:        0
 Summary:        Severed fonts for texlive-lm
 License:        LPPL-1.3c
@@ -27670,9 +28281,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Requires:       texlive-lm-math-fonts >= %{texlive_version}
 Suggests:       texlive-lm-math-doc >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source228:      lm-math.tar.xz
-Source229:      lm-math.doc.tar.xz
+# from 20260301
+Source238:      lm-math.tar.xz
+Source239:      lm-math.doc.tar.xz
 
 %description -n texlive-lm-math
 Latin Modern Math is a maths companion for the Latin Modern
@@ -27782,9 +28393,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lmake-doc >= %{texlive_version}
 Provides:       tex(lmake.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source230:      lmake.tar.xz
-Source231:      lmake.doc.tar.xz
+# from 20260301
+Source240:      lmake.tar.xz
+Source241:      lmake.doc.tar.xz
 
 %description -n texlive-lmake
 The package provides commands to simplify processing of
@@ -27828,7 +28439,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lmake/lmake.sty
 
 %package -n texlive-lni
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn73766
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Official class for the "Lecture Notes in Informatics"
@@ -27890,9 +28501,9 @@ Requires:       tex(url.sty)
 Requires:       tex(verbatim.sty)
 Requires:       tex(xspace.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source232:      lni.tar.xz
-Source233:      lni.doc.tar.xz
+# from 20260301
+Source242:      lni.tar.xz
+Source243:      lni.doc.tar.xz
 
 %description -n texlive-lni
 This is the official version of the class "lni" for submissions
@@ -27902,7 +28513,7 @@ lni-author-template.tex and edit it in your favorite LaTeX
 editor.
 
 %package -n texlive-lni-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.0svn73766
+Version:        %{texlive_version}.%{texlive_noarch}.2.0svn77682
 Release:        0
 Summary:        Documentation for texlive-lni
 License:        LPPL-1.0
@@ -27943,7 +28554,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lni/lni.cls
 
 %package -n texlive-lobster2
-Version:        %{texlive_version}.%{texlive_noarch}.svn64442
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 License:        OFL-1.1
 Summary:        Lobster Two fonts, with support for all LaTeX engines
@@ -28060,9 +28671,9 @@ Requires:       tex(ifxetex.sty)
 Requires:       tex(textcomp.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source234:      lobster2.tar.xz
-Source235:      lobster2.doc.tar.xz
+# from 20260301
+Source244:      lobster2.tar.xz
+Source245:      lobster2.doc.tar.xz
 
 %description -n texlive-lobster2
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
@@ -28072,7 +28683,7 @@ and terminal forms; for the best results, use XeLaTeX or
 LuaLaTeX. There are two weights and italic variants for both.
 
 %package -n texlive-lobster2-doc
-Version:        %{texlive_version}.%{texlive_noarch}.svn64442
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Documentation for texlive-lobster2
 License:        OFL-1.1
@@ -28084,7 +28695,7 @@ Supplements:    (texlive-lobster2 and texlive-alldocumentation)
 This package includes the documentation for texlive-lobster2
 
 %package -n texlive-lobster2-fonts
-Version:        %{texlive_version}.%{texlive_noarch}.svn64442
+Version:        %{texlive_version}.%{texlive_noarch}.svn77682
 Release:        0
 Summary:        Severed fonts for texlive-lobster2
 License:        OFL-1.1
@@ -28261,9 +28872,9 @@ Suggests:       texlive-locality-doc >= %{texlive_version}
 Provides:       tex(locality.sty)
 Requires:       tex(etoolbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source236:      locality.tar.xz
-Source237:      locality.doc.tar.xz
+# from 20260301
+Source246:      locality.tar.xz
+Source247:      locality.doc.tar.xz
 
 %description -n texlive-locality
 A toolbox of macros designed to allow the LaTeX programmer to
@@ -28338,9 +28949,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-localloc-doc >= %{texlive_version}
 Provides:       tex(localloc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source238:      localloc.tar.xz
-Source239:      localloc.doc.tar.xz
+# from 20260301
+Source248:      localloc.tar.xz
+Source249:      localloc.doc.tar.xz
 
 %description -n texlive-localloc
 This package approaches the problem of the shortage of
@@ -28414,9 +29025,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-logbox-doc >= %{texlive_version}
 Provides:       tex(logbox.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source240:      logbox.tar.xz
-Source241:      logbox.doc.tar.xz
+# from 20260301
+Source250:      logbox.tar.xz
+Source251:      logbox.doc.tar.xz
 
 %description -n texlive-logbox
 The command \logbox does \showbox without stopping the
@@ -28492,9 +29103,9 @@ Suggests:       texlive-logical-markup-utils-doc >= %{texlive_version}
 Provides:       tex(onedash.sty)
 Provides:       tex(quoted.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source242:      logical-markup-utils.tar.xz
-Source243:      logical-markup-utils.doc.tar.xz
+# from 20260301
+Source252:      logical-markup-utils.tar.xz
+Source253:      logical-markup-utils.doc.tar.xz
 
 %description -n texlive-logical-markup-utils
 The bundle contains two packages: quoted, for inserting
@@ -28572,9 +29183,9 @@ Provides:       tex(logicproof.sty)
 Requires:       tex(array.sty)
 Requires:       tex(ifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source244:      logicproof.tar.xz
-Source245:      logicproof.doc.tar.xz
+# from 20260301
+Source254:      logicproof.tar.xz
+Source255:      logicproof.doc.tar.xz
 
 %description -n texlive-logicproof
 A common style of proof used in propositional and predicate
@@ -28622,7 +29233,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/logicproof/logicproof.sty
 
 %package -n texlive-logicpuzzle
-Version:        %{texlive_version}.%{texlive_noarch}.2.5svn34491
+Version:        %{texlive_version}.%{texlive_noarch}.2.5svn78101
 Release:        0
 License:        LPPL-1.0
 Summary:        Typeset (grid-based) logic puzzles
@@ -28657,9 +29268,9 @@ Requires:       tex(ragged2e.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source246:      logicpuzzle.tar.xz
-Source247:      logicpuzzle.doc.tar.xz
+# from 20260301
+Source256:      logicpuzzle.tar.xz
+Source257:      logicpuzzle.doc.tar.xz
 
 %description -n texlive-logicpuzzle
 The package allows the user to typeset various logic puzzles.
@@ -28689,7 +29300,7 @@ Tents and Trees (aka Zeltlager, Zeltplatz, Camping, ...), and
 Tunnel.
 
 %package -n texlive-logicpuzzle-doc
-Version:        %{texlive_version}.%{texlive_noarch}.2.5svn34491
+Version:        %{texlive_version}.%{texlive_noarch}.2.5svn78101
 Release:        0
 Summary:        Documentation for texlive-logicpuzzle
 License:        LPPL-1.0
@@ -28731,6 +29342,90 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/logicpuzzle/logicpuzzle.sty
 %{_texmfdistdir}/tex/latex/logicpuzzle/lpenv.sty
 
+%package -n texlive-logictools
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn76924
+Release:        0
+License:        LPPL-1.0
+Summary:        Additional tools for typesetting formal logic
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-logictools-doc >= %{texlive_version}
+Provides:       tex(logictools.sty)
+Requires:       tex(adjustbox.sty)
+Requires:       tex(amsmath.sty)
+Requires:       tex(bussproofs.sty)
+Requires:       tex(stmaryrd.sty)
+Requires:       tex(trimspaces.sty)
+Requires:       tex(xfrac.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source258:      logictools.tar.xz
+Source259:      logictools.doc.tar.xz
+
+%description -n texlive-logictools
+Adds various tools for typesetting formal logic, including: An
+environment that makes it easier to produce good looking formal
+logic. A few macros that would be of interest to people
+studying logic at Oxford (or other places with similar
+notational conventions).
+
+%package -n texlive-logictools-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.1svn76924
+Release:        0
+Summary:        Documentation for texlive-logictools
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-logictools and texlive-alldocumentation)
+
+%description -n texlive-logictools-doc
+This package includes the documentation for texlive-logictools
+
+%post -n texlive-logictools
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-logictools
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-logictools
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-logictools-doc
+%{_texmfdistdir}/doc/latex/logictools/Logictools_Documentation.pdf
+%{_texmfdistdir}/doc/latex/logictools/README
+%{_texmfdistdir}/doc/latex/logictools/logictools-documentation.tex
+
+%files -n texlive-logictools
+%{_texmfdistdir}/tex/latex/logictools/logictools.sty
+
 %package -n texlive-logix
 Version:        %{texlive_version}.%{texlive_noarch}.1.13svn63688
 Release:        0
@@ -28766,9 +29461,9 @@ Requires:       tex(iftex.sty)
 Requires:       tex(mathtools.sty)
 Requires:       tex(unicode-math.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source248:      logix.tar.xz
-Source249:      logix.doc.tar.xz
+# from 20260301
+Source260:      logix.tar.xz
+Source261:      logix.doc.tar.xz
 
 %description -n texlive-logix
 The package provides a Unicode font with over 4,000 symbols to
@@ -28890,9 +29585,9 @@ Requires:       tex(simplekv.sty)
 Requires:       tex(tikz.sty)
 Requires:       tex(xstring.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source250:      logoetalab.tar.xz
-Source251:      logoetalab.doc.tar.xz
+# from 20260301
+Source262:      logoetalab.tar.xz
+Source263:      logoetalab.doc.tar.xz
 
 %description -n texlive-logoetalab
 This package provides commands to display the "Licence Ouverte
@@ -28983,9 +29678,9 @@ Provides:       tex(logpap.sty)
 Requires:       tex(calc.sty)
 Requires:       tex(color.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source252:      logpap.tar.xz
-Source253:      logpap.doc.tar.xz
+# from 20260301
+Source264:      logpap.tar.xz
+Source265:      logpap.doc.tar.xz
 
 %description -n texlive-logpap
 The logpap package provides four macros for drawing
@@ -29065,9 +29760,9 @@ Provides:       tex(logreq.sty)
 Requires:       tex(etoolbox.sty)
 Requires:       tex(keyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source254:      logreq.tar.xz
-Source255:      logreq.doc.tar.xz
+# from 20260301
+Source266:      logreq.tar.xz
+Source267:      logreq.doc.tar.xz
 
 %description -n texlive-logreq
 The package helps to automate a typical LaTeX workflow that
@@ -29195,9 +29890,9 @@ Provides:       tex(lollipop-text.tex)
 Provides:       tex(lollipop-tools.tex)
 Provides:       tex(lollipop.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source256:      lollipop.tar.xz
-Source257:      lollipop.doc.tar.xz
+# from 20260301
+Source268:      lollipop.tar.xz
+Source269:      lollipop.doc.tar.xz
 
 %description -n texlive-lollipop
 Lollipop is "TeX made easy" -- it is a macro package that
@@ -29297,7 +29992,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lollipop/lollipop.tex
 
 %package -n texlive-longdivision
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.2svn68609
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Typesets long division
@@ -29327,9 +30022,9 @@ Suggests:       texlive-longdivision-doc >= %{texlive_version}
 Provides:       tex(longdivision.sty)
 Requires:       tex(xparse.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source258:      longdivision.tar.xz
-Source259:      longdivision.doc.tar.xz
+# from 20260301
+Source270:      longdivision.tar.xz
+Source271:      longdivision.doc.tar.xz
 
 %description -n texlive-longdivision
 This package executes the long division algorithm and typesets
@@ -29348,7 +30043,7 @@ to be an integer). This package depends on the xparse package
 from the l3packages bundle.
 
 %package -n texlive-longdivision-doc
-Version:        %{texlive_version}.%{texlive_noarch}.1.2.2svn68609
+Version:        %{texlive_version}.%{texlive_noarch}.1.2.2svn77682
 Release:        0
 Summary:        Documentation for texlive-longdivision
 License:        LPPL-1.0
@@ -29419,9 +30114,9 @@ Requires:       tex(footnote.sty)
 Requires:       tex(options.sty)
 Requires:       tex(pict2e.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source260:      longfbox.tar.xz
-Source261:      longfbox.doc.tar.xz
+# from 20260301
+Source272:      longfbox.tar.xz
+Source273:      longfbox.doc.tar.xz
 
 %description -n texlive-longfbox
 The longfbox package provides framed boxes that can be
@@ -29498,9 +30193,9 @@ Provides:       tex(longfigure.sty)
 Requires:       tex(tocloft.sty)
 Requires:       tex(xkeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source262:      longfigure.tar.xz
-Source263:      longfigure.doc.tar.xz
+# from 20260301
+Source274:      longfigure.tar.xz
+Source275:      longfigure.doc.tar.xz
 
 %description -n texlive-longfigure
 The longfigure package uses and relabels components of the
@@ -29575,9 +30270,9 @@ Suggests:       texlive-longmath-doc >= %{texlive_version}
 Provides:       tex(longmath.sty)
 Requires:       tex(luatexbase.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source264:      longmath.tar.xz
-Source265:      longmath.doc.tar.xz
+# from 20260301
+Source276:      longmath.tar.xz
+Source277:      longmath.doc.tar.xz
 
 %description -n texlive-longmath
 This package provides yet another solution to some well known
@@ -29638,7 +30333,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/lualatex/longmath/longmath.sty
 
 %package -n texlive-longnamefilelist
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn27889
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn77682
 Release:        0
 License:        LPPL-1.0
 Summary:        Tidy \listfiles with long file names
@@ -29668,9 +30363,9 @@ Suggests:       texlive-longnamefilelist-doc >= %{texlive_version}
 Provides:       tex(longnamefilelist.sty)
 Requires:       tex(myfilist.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source266:      longnamefilelist.tar.xz
-Source267:      longnamefilelist.doc.tar.xz
+# from 20260301
+Source278:      longnamefilelist.tar.xz
+Source279:      longnamefilelist.doc.tar.xz
 
 %description -n texlive-longnamefilelist
 The package equips LaTeX's \listfiles command with an optional
@@ -29681,7 +30376,7 @@ The package can be combined with the myfilist package as
 explained in the documentation.
 
 %package -n texlive-longnamefilelist-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn27889
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.2svn77682
 Release:        0
 Summary:        Documentation for texlive-longnamefilelist
 License:        LPPL-1.0
@@ -29717,6 +30412,85 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %files -n texlive-longnamefilelist
 %{_texmfdistdir}/tex/latex/longnamefilelist/longnamefilelist.sty
 
+%package -n texlive-longtwocolumn
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn75852
+Release:        0
+License:        LPPL-1.0
+Summary:        A twocolumn alternative allowing automatic page breaks
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Requires(pre):  texlive-filesystem >= %{texlive_version}
+Requires(post): coreutils
+Requires(postun): coreutils
+Requires(postun): texlive >= %{texlive_version}
+Requires(postun): texlive-filesystem >= %{texlive_version}
+Requires(postun): texlive-kpathsea-bin >= %{texlive_version}
+Requires(postun): texlive-kpathsea >= %{texlive_version}
+Requires(postun): texlive-scripts-bin >= %{texlive_version}
+Requires(postun): texlive-scripts >= %{texlive_version}
+Requires(posttrans): coreutils
+Requires(posttrans): ed
+Requires(posttrans): findutils
+Requires(posttrans): grep
+Requires(posttrans): sed
+Requires(posttrans): texlive >= %{texlive_version}
+Requires(posttrans): texlive-filesystem >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea-bin >= %{texlive_version}
+Requires(posttrans): texlive-kpathsea >= %{texlive_version}
+Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
+Requires(posttrans): texlive-scripts >= %{texlive_version}
+Suggests:       texlive-longtwocolumn-doc >= %{texlive_version}
+Provides:       tex(longtwocolumn.sty)
+# Download at ftp://ftp.tug.org/texlive/tlnet/archive/
+# from 20260301
+Source280:      longtwocolumn.tar.xz
+Source281:      longtwocolumn.doc.tar.xz
+
+%description -n texlive-longtwocolumn
+This package provides a command \longtwocolumn similar to the
+LaTeX kernel command \twocolumn, but it allows the optional
+argument to span several pages. The package is an adaption of
+an old KOMA-Script forum entry.
+
+%package -n texlive-longtwocolumn-doc
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.1svn75852
+Release:        0
+Summary:        Documentation for texlive-longtwocolumn
+License:        LPPL-1.0
+Group:          Productivity/Publishing/TeX/Base
+URL:            https://www.tug.org/texlive/
+Supplements:    (texlive-longtwocolumn and texlive-alldocumentation)
+
+%description -n texlive-longtwocolumn-doc
+This package includes the documentation for texlive-longtwocolumn
+
+%post -n texlive-longtwocolumn
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+
+%postun -n texlive-longtwocolumn
+mkdir -p /var/run/texlive
+> /var/run/texlive/run-mktexlsr
+> /var/run/texlive/run-update
+if test $1 = 0; then
+    exit 0
+fi
+
+%posttrans -n texlive-longtwocolumn
+test -d /var/run/texlive || exit 0
+VERBOSE=false %{_texmfdistdir}/texconfig/update || :
+
+%files -n texlive-longtwocolumn-doc
+%{_texmfdistdir}/doc/latex/longtwocolumn/LICENSE.md
+%{_texmfdistdir}/doc/latex/longtwocolumn/README.md
+%{_texmfdistdir}/doc/latex/longtwocolumn/longtwocolumn-example.pdf
+%{_texmfdistdir}/doc/latex/longtwocolumn/longtwocolumn-example.tex
+%{_texmfdistdir}/doc/latex/longtwocolumn/longtwocolumn.pdf
+
+%files -n texlive-longtwocolumn
+%{_texmfdistdir}/tex/latex/longtwocolumn/longtwocolumn.sty
+
 %package -n texlive-loops
 Version:        %{texlive_version}.%{texlive_noarch}.1.3svn30704
 Release:        0
@@ -29748,9 +30522,9 @@ Suggests:       texlive-loops-doc >= %{texlive_version}
 Provides:       tex(loops.sty)
 Requires:       tex(skeyval.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source268:      loops.tar.xz
-Source269:      loops.doc.tar.xz
+# from 20260301
+Source282:      loops.tar.xz
+Source283:      loops.doc.tar.xz
 
 %description -n texlive-loops
 The package provides efficient looping macros for processing
@@ -29795,10 +30569,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/loops/loops.sty
 
 %package -n texlive-lparse
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn65693
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn78101
 Release:        0
 License:        LPPL-1.0
-Summary:        A Lua module for parsing key-value options
+Summary:        Parse macro arguments with Lua using xparse-like specification
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -29825,9 +30599,9 @@ Suggests:       texlive-lparse-doc >= %{texlive_version}
 Provides:       tex(lparse.sty)
 Provides:       tex(lparse.tex)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source270:      lparse.tar.xz
-Source271:      lparse.doc.tar.xz
+# from 20260301
+Source284:      lparse.tar.xz
+Source285:      lparse.doc.tar.xz
 
 %description -n texlive-lparse
 The name lparse is derived from xparse. The 'x' has been
@@ -29835,12 +30609,12 @@ replaced by an 'l' because this package only works with LuaTeX.
 'l' stands for "Lua". Just as with xparse, it is possible to
 use a special syntax consisting of single letters to express
 the arguments of a macro. However, lparse is able to read
-arguments regardless of the macro systemd used -- whether
-LaTeX, or ConTeXt, or even plain TeX. Of course, LuaTeX must
-always be used as the engine.
+arguments regardless of the macro system used -- whether LaTeX,
+or ConTeXt, or even plain TeX. Of course, LuaTeX must always be
+used as the engine.
 
 %package -n texlive-lparse-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.1.0svn65693
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.3.0svn78101
 Release:        0
 Summary:        Documentation for texlive-lparse
 License:        LPPL-1.0
@@ -29870,8 +30644,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-lparse-doc
 %{_texmfdistdir}/doc/luatex/lparse/README.md
+%{_texmfdistdir}/doc/luatex/lparse/lparse-doc.pdf
 %{_texmfdistdir}/doc/luatex/lparse/lparse-doc.tex
-%{_texmfdistdir}/doc/luatex/lparse/lparse.pdf
 
 %files -n texlive-lparse
 %{_texmfdistdir}/tex/luatex/lparse/lparse.lua
@@ -29909,9 +30683,9 @@ Suggests:       texlive-lpform-doc >= %{texlive_version}
 Provides:       tex(lpform.sty)
 Requires:       tex(xifthen.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source272:      lpform.tar.xz
-Source273:      lpform.doc.tar.xz
+# from 20260301
+Source286:      lpform.tar.xz
+Source287:      lpform.doc.tar.xz
 
 %description -n texlive-lpform
 The package is designed to aid the author writing linear
@@ -29995,9 +30769,9 @@ Requires:       tex(epsfig.sty)
 Requires:       tex(ifthen.sty)
 Requires:       tex(rotating.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source274:      lpic.tar.xz
-Source275:      lpic.doc.tar.xz
+# from 20260301
+Source288:      lpic.tar.xz
+Source289:      lpic.doc.tar.xz
 
 %description -n texlive-lpic
 The package defines a convenient interface to put any LaTeX
@@ -30050,7 +30824,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lpic/lpic.sty
 
 %package -n texlive-lplfitch
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn31077
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn75712
 Release:        0
 License:        LPPL-1.0
 Summary:        Fitch-style natural deduction proofs
@@ -30079,19 +30853,21 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lplfitch-doc >= %{texlive_version}
 Provides:       tex(lplfitch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source276:      lplfitch.tar.xz
-Source277:      lplfitch.doc.tar.xz
+# from 20260301
+Source290:      lplfitch.tar.xz
+Source291:      lplfitch.doc.tar.xz
 
 %description -n texlive-lplfitch
 The package provides macros for typesetting natural deduction
 proofs in "Fitch" style, with subproofs indented and offset by
 scope lines. The proofs from use of the package are in the
-format used in the textbook Language, Proof, and Logic by Dave
-Barker-Plummer, Jon Barwise, and John Etchemendy.
+format used in the textbook "Language, Proof, and Logic" by
+Dave Barker-Plummer, Jon Barwise, and John Etchemendy. (In
+fact, the prefix "lpl" in the package name stands for
+"Language, Proof, and Logic".)
 
 %package -n texlive-lplfitch-doc
-Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn31077
+Version:        %{texlive_version}.%{texlive_noarch}.0.0.9svn75712
 Release:        0
 Summary:        Documentation for texlive-lplfitch
 License:        LPPL-1.0
@@ -30162,9 +30938,9 @@ Requires:       tex(mathptmx.sty)
 Requires:       tex(titlesec.sty)
 Requires:       tex(titletoc.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source278:      lps.tar.xz
-Source279:      lps.doc.tar.xz
+# from 20260301
+Source292:      lps.tar.xz
+Source293:      lps.doc.tar.xz
 
 %description -n texlive-lps
 The 'Logic and Philosophy of Science' journal is an online
@@ -30239,9 +31015,9 @@ Requires(posttrans): texlive-scripts >= %{texlive_version}
 Suggests:       texlive-lroundrect-doc >= %{texlive_version}
 Provides:       tex(lroundrect.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source280:      lroundrect.tar.xz
-Source281:      lroundrect.doc.tar.xz
+# from 20260301
+Source294:      lroundrect.tar.xz
+Source295:      lroundrect.doc.tar.xz
 
 %description -n texlive-lroundrect
 This LaTeX package provides ways to use the extremely
@@ -30320,9 +31096,9 @@ Requires:       tex(ifthen.sty)
 Requires:       tex(pst-node.sty)
 Requires:       tex(pstricks.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source282:      lsc.tar.xz
-Source283:      lsc.doc.tar.xz
+# from 20260301
+Source296:      lsc.tar.xz
+Source297:      lsc.doc.tar.xz
 
 %description -n texlive-lsc
 This package is similar to the msc package in that it provides
@@ -30402,9 +31178,9 @@ Suggests:       texlive-lscapeenhanced-doc >= %{texlive_version}
 Provides:       tex(lscapeenhanced.sty)
 Requires:       tex(xpatch.sty)
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source284:      lscapeenhanced.tar.xz
-Source285:      lscapeenhanced.doc.tar.xz
+# from 20260301
+Source298:      lscapeenhanced.tar.xz
+Source299:      lscapeenhanced.doc.tar.xz
 
 %description -n texlive-lscapeenhanced
 The package solves an issue with the detection of text height,
@@ -30449,7 +31225,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/lscapeenhanced/lscapeenhanced.sty
 
 %package -n texlive-lshort-bulgarian
-Version:        %{texlive_version}.%{texlive_noarch}.svn15878
+Version:        %{texlive_version}.%{texlive_noarch}.svn77050
 Release:        0
 License:        SUSE-Public-Domain
 Summary:        Bulgarian translation of the "Short Introduction to LaTeX2e"
@@ -30476,12 +31252,12 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source286:      lshort-bulgarian.doc.tar.xz
+# from 20260301
+Source300:      lshort-bulgarian.doc.tar.xz
 
 %description -n texlive-lshort-bulgarian
 The source files, PostScript and PDF files of the Bulgarian
-translation of the "Short Introduction to LaTeX 2e".
+translation of the "Short Introduction to LaTeX2e".
 
 %post -n texlive-lshort-bulgarian
 mkdir -p /var/run/texlive
@@ -30533,8 +31309,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source287:      lshort-chinese.doc.tar.xz
+# from 20260301
+Source301:      lshort-chinese.doc.tar.xz
 
 %description -n texlive-lshort-chinese
 A Chinese edition of the not so short introduction to LaTeX2e,
@@ -30613,8 +31389,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source288:      lshort-czech.doc.tar.xz
+# from 20260301
+Source302:      lshort-czech.doc.tar.xz
 
 %description -n texlive-lshort-czech
 This is the Czech translation of "A Short Introduction to
@@ -30692,8 +31468,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source289:      lshort-dutch.doc.tar.xz
+# from 20260301
+Source303:      lshort-dutch.doc.tar.xz
 
 %description -n texlive-lshort-dutch
 This is the Dutch (Nederlands) translation of the Short
@@ -30751,8 +31527,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source290:      lshort-english.doc.tar.xz
+# from 20260301
+Source304:      lshort-english.doc.tar.xz
 
 %description -n texlive-lshort-english
 The document derives from a German introduction ('lkurz'),
@@ -30812,8 +31588,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source291:      lshort-estonian.doc.tar.xz
+# from 20260301
+Source305:      lshort-estonian.doc.tar.xz
 
 %description -n texlive-lshort-estonian
 This is the Estonian translation of Short Introduction to
@@ -30888,8 +31664,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source292:      lshort-finnish.doc.tar.xz
+# from 20260301
+Source306:      lshort-finnish.doc.tar.xz
 
 %description -n texlive-lshort-finnish
 This is the Finnish translation of Short Introduction to
@@ -30960,8 +31736,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source293:      lshort-french.doc.tar.xz
+# from 20260301
+Source307:      lshort-french.doc.tar.xz
 
 %description -n texlive-lshort-french
 French version of A Short Introduction to LaTeX2e.
@@ -31017,8 +31793,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source294:      lshort-german.doc.tar.xz
+# from 20260301
+Source308:      lshort-german.doc.tar.xz
 
 %description -n texlive-lshort-german
 The lshort-german package
@@ -31091,8 +31867,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source295:      lshort-italian.doc.tar.xz
+# from 20260301
+Source309:      lshort-italian.doc.tar.xz
 
 %description -n texlive-lshort-italian
 This is the Italian translation of the Short Introduction to
@@ -31152,8 +31928,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source296:      lshort-japanese.doc.tar.xz
+# from 20260301
+Source310:      lshort-japanese.doc.tar.xz
 
 %description -n texlive-lshort-japanese
 The lshort-japanese package
@@ -31210,8 +31986,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source297:      lshort-korean.doc.tar.xz
+# from 20260301
+Source311:      lshort-korean.doc.tar.xz
 
 %description -n texlive-lshort-korean
 A translation of Oetiker's original (not so) short
@@ -31267,8 +32043,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source298:      lshort-mongol.doc.tar.xz
+# from 20260301
+Source312:      lshort-mongol.doc.tar.xz
 
 %description -n texlive-lshort-mongol
 A translation of Oetiker's Not so short introduction.
@@ -31347,8 +32123,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source299:      lshort-persian.doc.tar.xz
+# from 20260301
+Source313:      lshort-persian.doc.tar.xz
 
 %description -n texlive-lshort-persian
 A Persian (Farsi) translation of Oetiker's (not so) short
@@ -31422,8 +32198,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source300:      lshort-polish.doc.tar.xz
+# from 20260301
+Source314:      lshort-polish.doc.tar.xz
 
 %description -n texlive-lshort-polish
 This is the Polish translation of A Short Introduction to
@@ -31482,8 +32258,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source301:      lshort-portuguese.doc.tar.xz
+# from 20260301
+Source315:      lshort-portuguese.doc.tar.xz
 
 %description -n texlive-lshort-portuguese
 This is the Portuguese translation of A Short Introduction to
@@ -31538,8 +32314,8 @@ Requires(posttrans): texlive-kpathsea >= %{texlive_version}
 Requires(posttrans): texlive-scripts-bin >= %{texlive_version}
 Requires(posttrans): texlive-scripts >= %{texlive_version}
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
-Source302:      lshort-russian.doc.tar.xz
+# from 20260301
+Source316:      lshort-russian.doc.tar.xz
 
 %description -n texlive-lshort-russian
 Russian version of A Short Introduction to LaTeX2e.
@@ -31907,6 +32683,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:90} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:91} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:92} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lete-sans-math
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/lete-sans-math/*.{pf[ab],[ot]tf}
@@ -31936,10 +32716,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:93} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:94} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:95} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:96} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:97} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:98} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:99} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -31949,6 +32725,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:103} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:104} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:105} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/fonts/levy/makeall \
 	       %{_texmfdistdir}/doc/fonts/levy/makefont \
@@ -31957,10 +32737,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:106} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:107} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:108} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:109} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lexend
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/public/lexend/*.{pf[ab],[ot]tf}
@@ -31990,10 +32770,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:110} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:111} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:112} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:113} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:114} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:115} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:116} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32007,6 +32783,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:124} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:125} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:126} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-libertine
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/libertine/*.{pf[ab],[ot]tf} \
@@ -32057,12 +32837,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-libertine.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-libertine.conf
-    tar --use-compress-program=xz -xf %{S:127} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:128} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:129} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:130} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:131} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:132} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-libertinus-fonts
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/libertinus-fonts/*.{pf[ab],[ot]tf}
@@ -32092,10 +32872,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:133} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:134} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:135} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:136} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-libertinus-type1
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/libertinus-type1/*.{pf[ab],[ot]tf}
@@ -32125,8 +32905,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:137} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:138} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-libertinust1math
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/libertinust1math/*.{pf[ab],[ot]tf}
@@ -32156,12 +32936,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:139} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:140} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:141} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:142} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:143} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:144} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-librebaskerville
     for font in %{buildroot}/%{_texmfdistdir}/fonts/truetype/impallari/librebaskerville/*.{pf[ab],[ot]tf} \
@@ -32212,8 +32992,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-librebaskerville.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-librebaskerville.conf
-    tar --use-compress-program=xz -xf %{S:145} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:146} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-librebodoni
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/librebodoni/*.{pf[ab],[ot]tf} \
@@ -32264,8 +33044,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-librebodoni.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-librebodoni.conf
-    tar --use-compress-program=xz -xf %{S:147} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:148} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-librecaslon
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/librecaslon/*.{pf[ab],[ot]tf} \
@@ -32316,8 +33096,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-librecaslon.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-librecaslon.conf
-    tar --use-compress-program=xz -xf %{S:149} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:150} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-librefranklin
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/librefranklin/*.{pf[ab],[ot]tf} \
@@ -32368,8 +33148,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-librefranklin.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-librefranklin.conf
-    tar --use-compress-program=xz -xf %{S:151} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:152} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-libris
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/libris/*.{pf[ab],[ot]tf}
@@ -32399,14 +33179,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:153} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:154} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:155} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:156} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:157} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:158} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:159} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:160} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive
     # Avoid /usr/bin/env <prog>
     for scr in %{_texmfdistdir}/scripts/light-latex-make/llmk.lua
     do
@@ -32419,12 +33199,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 		q
 	EOF
     done
-    tar --use-compress-program=xz -xf %{S:161} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:162} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:163} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:164} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:165} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive
     pushd %{buildroot}%{_datadir}/texlive/texmf-dist
-	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:165}
+	patch --reject-format=unified --quoting-style=literal -f -p1 -F0 -T < %{S:169}
     popd
     # Correct shebang of python3 scripts if any
     for scr in %{_texmfdistdir}/scripts/lilyglyphs/lily-glyph-commands.py \
@@ -32486,12 +33266,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:166} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:167} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:168} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:169} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:170} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:171} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lineara
     for font in %{buildroot}/%{_texmfdistdir}/fonts/type1/public/lineara/*.{pf[ab],[ot]tf}
@@ -32521,10 +33301,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:172} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:173} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:174} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:175} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:176} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:177} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:178} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32535,6 +33311,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:183} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:184} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:185} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-linguisticspro
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/linguisticspro/*.{pf[ab],[ot]tf} \
@@ -32585,36 +33365,32 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-linguisticspro.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-linguisticspro.conf
-    tar --use-compress-program=xz -xf %{S:186} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:187} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:188} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:189} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:190} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:191} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:192} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:193} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:194} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:195} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:196} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:197} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:198} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:199} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:200} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:201} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive
     # Make possible scripts usable if any
     for scr in %{_texmfdistdir}/doc/latex/listings-ext/listings-ext.makemake
     do
 	test -e %{buildroot}/$scr || continue
 	chmod 0755 %{buildroot}/$scr
     done
-    tar --use-compress-program=xz -xf %{S:202} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:203} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:204} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:205} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:206} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:207} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:208} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:209} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:210} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:211} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:212} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32633,6 +33409,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:225} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:226} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:227} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lm
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/lm/*.{pf[ab],[ot]tf} \
@@ -32683,8 +33469,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-lm.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-lm.conf
-    tar --use-compress-program=xz -xf %{S:228} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:229} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lm-math
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/lm-math/*.{pf[ab],[ot]tf}
@@ -32714,12 +33500,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:230} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:231} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:232} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:233} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:234} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:235} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-lobster2
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/impallari/lobster2/*.{pf[ab],[ot]tf} \
@@ -32770,26 +33556,28 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	</fontconfig>
 	EOF
     ln -sf %{_datadir}/fontconfig/conf.avail/55-texlive-lobster2.conf %{buildroot}%{_sysconfdir}/fonts/conf.d/55-texlive-lobster2.conf
-    tar --use-compress-program=xz -xf %{S:236} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:237} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:238} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:239} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:240} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:241} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:242} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:243} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:244} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:245} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:246} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:247} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Strip executable bit from non-scripts
     for txt in %{_texmfdistdir}/scripts/logicpuzzle/simple.smc
     do
 	test -e %{buildroot}/$txt || continue
 	chmod 0644 %{buildroot}/$txt
     done
-    tar --use-compress-program=xz -xf %{S:248} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:249} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Move font files
     mkdir -p %{buildroot}%{_datadir}/fonts/texlive-logix
     for font in %{buildroot}/%{_texmfdistdir}/fonts/opentype/public/logix/*.{pf[ab],[ot]tf} \
@@ -32820,26 +33608,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 	  </rejectfont>
 	</fontconfig>
 	EOF
-    tar --use-compress-program=xz -xf %{S:250} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:251} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:252} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:253} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:254} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:255} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:256} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:257} -C %{buildroot}%{_datadir}/texlive
-    tar --use-compress-program=xz -xf %{S:258} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:259} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:260} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:261} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:262} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:263} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:264} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:265} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:266} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:267} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:268} -C %{buildroot}%{_datadir}/texlive
+    tar --use-compress-program=xz -xf %{S:269} -C %{buildroot}%{_datadir}/texlive
     tar --use-compress-program=xz -xf %{S:270} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:271} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:272} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32858,8 +33634,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:285} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:286} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:287} -C %{buildroot}%{_datadir}/texlive/texmf-dist
-    # Remove files
-    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/lshort-chinese/src/make.bat
     tar --use-compress-program=xz -xf %{S:288} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:289} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:290} -C %{buildroot}%{_datadir}/texlive/texmf-dist
@@ -32874,7 +33648,23 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
     tar --use-compress-program=xz -xf %{S:299} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:300} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     tar --use-compress-program=xz -xf %{S:301} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    # Remove files
+    rm -vf  %{buildroot}%{_texmfdistdir}/doc/latex/lshort-chinese/src/make.bat
     tar --use-compress-program=xz -xf %{S:302} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:303} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:304} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:305} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:306} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:307} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:308} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:309} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:310} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:311} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:312} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:313} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:314} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:315} -C %{buildroot}%{_datadir}/texlive/texmf-dist
+    tar --use-compress-program=xz -xf %{S:316} -C %{buildroot}%{_datadir}/texlive/texmf-dist
     # Remove this
     rm -vrf %{buildroot}%{_texmfdistdir}/tlpkg/tlpobj
     rm -vrf %{buildroot}%{_texmfmaindir}/tlpkg/tlpobj

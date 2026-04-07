@@ -13,8 +13,8 @@
  # use strict 'vars';
  
 @@ -31,7 +32,7 @@ sub date2str;
- $VERSION = "1.29";
- $DATE    = date2str ('$Date: 2018/11/25 13:05:37 $' =~ m|(\d+/\d+/\d+)|);
+ $VERSION = "1.30";
+ $DATE    = date2str ('$Date: 2026/01/16 08:11:30 $' =~ m|(\d+/\d+/\d+)|);
  
 -$tmp = "/tmp/$CMD.$$";
 +(undef, $tmp) = tempfile();

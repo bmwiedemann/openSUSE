@@ -590,4 +590,12 @@
   * Resolve missing local perl package tools.pm with upstream fix</comment>
     <requestid>1328095</requestid>
   </revision>
+  <revision rev="57" vrev="60">
+    <srcmd5>0a09a6cdce1607ca21e39ab060febc52</srcmd5>
+    <version>unknown</version>
+    <time>1775572309</time>
+    <user>dimstar_suse</user>
+    <comment>Update to TeXLive 2026</comment>
+    <requestid>1344144</requestid>
+  </revision>
 </revisionlist>
