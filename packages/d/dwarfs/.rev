@@ -215,4 +215,54 @@ Bug fixes:
     could trigger an assertion inside libfuse when extra arguments</comment>
     <requestid>1342131</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2711567945356d0f6afb392b53ac34bc</srcmd5>
+    <version>0.15.1</version>
+    <time>1774469902</time>
+    <user>anag_factory</user>
+    <comment>- Add patches to fix the test suite on 32-bit architectures:
+  * 0001-fix-util-implement-time_with_unit-using-integer-arit.patch
+  * 0002-fix-utils-implement-ratio_to_string-using-integer-ar.patch
+  * 0003-fix-frozen-Layout-should-use-64-bit-type-for-64-bit-.patch
+  * 0004-fix-always-set-_FILE_OFFSET_BITS-64-on-UNIX-like-sys.patch
+  gh#mhx/dwarfs#354</comment>
+    <requestid>1342295</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8a8598a1d1bfee9ef09fefd55021542c</srcmd5>
+    <version>0.15.3</version>
+    <time>1775572401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.3:
+Bug fixes:
+  * The op_readlink implementation is now guaranteed to terminate
+    the returned string, as required by the FUSE specification.
+Build:
+  * Warning supressions for (newer) GCC warnings triggered
+    warnings on older GCC versions. These have been fixed.
+Other:
+  * Some automatic code refactoring from clang-tidy was applied
+    and some minor issues were fixed in the process.
+- Changes in version 0.15.2:
+Bug fixes:
+  * The image size was not passed correctly to one instance of
+    the filesystem parser, which caused errors when loading a
+    DwarFS image embedded inside a larger file (for example,
+    a multi-layer file).
+  * The performance monitor timer for op_lseek in the FUSE driver
+    was not initialized correctly. This could lead to segmentation
+    faults or bus errors due to an uninitialized index into a
+    std::deque. The issue has been fixed, and an additional check
+    has been added to catch similar errors in the future.
+  * Native 32-bit glibc builds could fail in tests involving
+    sparse files larger than 4 GiB because _FILE_OFFSET_BITS=64
+    was required for 64-bit file operations.
+    Additional non-deterministic test failures related to time
+    and ratio formatting were also fixed by rewriting that code
+    to use integer arithmetic instead of floating-point
+    arithmetic.
+    A separate test bug that surfaced only with GCC was fixed
+    as well.</comment>
+    <requestid>1344775</requestid>
+  </revision>
 </revisionlist>

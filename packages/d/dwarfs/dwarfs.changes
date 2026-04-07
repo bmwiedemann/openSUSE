@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Apr  6 17:06:07 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.15.3:
+Bug fixes:
+  * The op_readlink implementation is now guaranteed to terminate
+    the returned string, as required by the FUSE specification.
+Build:
+  * Warning supressions for (newer) GCC warnings triggered
+    warnings on older GCC versions. These have been fixed.
+Other:
+  * Some automatic code refactoring from clang-tidy was applied
+    and some minor issues were fixed in the process.
+- Changes in version 0.15.2:
+Bug fixes:
+  * The image size was not passed correctly to one instance of
+    the filesystem parser, which caused errors when loading a
+    DwarFS image embedded inside a larger file (for example,
+    a multi-layer file).
+  * The performance monitor timer for op_lseek in the FUSE driver
+    was not initialized correctly. This could lead to segmentation
+    faults or bus errors due to an uninitialized index into a
+    std::deque. The issue has been fixed, and an additional check
+    has been added to catch similar errors in the future.
+  * Native 32-bit glibc builds could fail in tests involving
+    sparse files larger than 4 GiB because _FILE_OFFSET_BITS=64
+    was required for 64-bit file operations.
+    Additional non-deterministic test failures related to time
+    and ratio formatting were also fixed by rewriting that code
+    to use integer arithmetic instead of floating-point
+    arithmetic.
+    A separate test bug that surfaced only with GCC was fixed
+    as well.
+    gh#mhx/dwarfs#354
+  * The FUSE drivers (dwarfs, dwarfs2) were refactored to
+    eliminate a number of subtle startup and option-handling
+    issues and to make behavior much more consistent across the
+    various supported FUSE variants.
+  * The manual pages shown with --man for all tools
+    unintentionally included the license header from XML comments
+    at the top of the source files. The renderer now ignores those
+    comments.
+- Drop patches (included in 0.15.2):
+  * 0001-fix-util-implement-time_with_unit-using-integer-arit.patch
+  * 0002-fix-utils-implement-ratio_to_string-using-integer-ar.patch
+  * 0003-fix-frozen-Layout-should-use-64-bit-type-for-64-bit-.patch
+  * 0004-fix-always-set-_FILE_OFFSET_BITS-64-on-UNIX-like-sys.patch
+
+-------------------------------------------------------------------
+Tue Mar 24 18:35:20 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Add patches to fix the test suite on 32-bit architectures:
+  * 0001-fix-util-implement-time_with_unit-using-integer-arit.patch
+  * 0002-fix-utils-implement-ratio_to_string-using-integer-ar.patch
+  * 0003-fix-frozen-Layout-should-use-64-bit-type-for-64-bit-.patch
+  * 0004-fix-always-set-_FILE_OFFSET_BITS-64-on-UNIX-like-sys.patch
+  gh#mhx/dwarfs#354
+
+-------------------------------------------------------------------
 Mon Mar 23 03:05:32 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to version 0.15.1:
