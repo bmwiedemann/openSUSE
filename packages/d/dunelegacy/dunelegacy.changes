@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 22 13:38:00 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.99.5
+  * Too many changes to list. See release_notes/RELEASE_NOTES.md
+    for the details.
+- Drop patch
+  * fix-build-with-SDL_mixer-2.0.2.patch
+- Add patch:
+  * dunelegacy-fix-cmake.patch
+- Use tar_scm to generate the tarball
+
+-------------------------------------------------------------------
 Mon Feb 26 08:03:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

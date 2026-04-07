@@ -1,7 +1,7 @@
 #
 # spec file for package dunelegacy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,28 @@
 
 
 Name:           dunelegacy
-Version:        0.96.4
+Version:        0.99.5
 Release:        0
 Summary:        A modern Dune II reimplementation
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Real Time
-URL:            http://dunelegacy.sourceforge.net/
-Source:         http://downloads.sourceforge.net/%{name}/%{name}-%{version}-src.tar.bz2
+URL:            https://dunelegacy.sourceforge.net/
+Source:         %{name}-%{version}.tar.xz
 # PATCH-FEATURE-UPSTREAM https://sourceforge.net/p/dunelegacy/patches/8/
 Source8:        %{name}.appdata.xml
 # PATCH-FEATURE-UPSTREAM https://sourceforge.net/p/dunelegacy/patches/7/
 Source9:        %{name}.6
-# PATCH-FIX-OPENSUSE fix-build-with-SDL_mixer-2.0.2.patch wbauer@tmo.at -- fix build with SDL2_mixer 2.0.2 where MIX_INIT_FLUIDSYNTH has been renamed to MIX_INIT_MID
-Patch0:         fix-build-with-SDL_mixer-2.0.2.patch
-BuildRequires:  cppunit-devel
-BuildRequires:  dos2unix
+Patch0:         dunelegacy-fix-cmake.patch
+BuildRequires:  cmake
+BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libstdc++-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(miniupnpc)
 BuildRequires:  pkgconfig(sdl2)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Lead one of three interplanetary houses, Atreides, Harkonnen or Ordos,
@@ -58,39 +58,24 @@ NOTE: Original Dune 2 game files are needed.
 %prep
 %autosetup -p1
 
-dos2unix ToDo.txt
-
 %build
-%configure
-make V=1 %{?_smp_mflags}
-
-%check
-make V=1 %{?_smp_mflags} distclean
-./runUnitTests.sh
+%cmake
+%cmake_build
 
 %install
-%make_install V=1
-
-# Install .desktop file and icon
-%suse_update_desktop_file -i %{name}
-install -D -p -m 0644 %{name}-128x128.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
-
-# https://en.opensuse.org/openSUSE:AppStore
-mkdir -p %{buildroot}%{_datadir}/appdata
-cp %{SOURCE8} %{buildroot}%{_datadir}/appdata
-
-# Install man page
-mkdir -p %{buildroot}%{_mandir}/man6
-cp %{SOURCE9} %{buildroot}%{_mandir}/man6
+%cmake_install
+install -Dpm 0644 %{SOURCE8} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+install -Dpm 0644 %{SOURCE9} %{buildroot}%{_mandir}/man6/%{name}.6
+rm %{buildroot}/usr/share/doc/packages/dunelegacy/{AUTHORS,COPYING,NEWS,Release_Notes.md}
 
 %files
-%defattr(644,root,root,755)
-%doc README ToDo.txt NEWS COPYING AUTHORS ChangeLog
-%attr(755,root,root) %{_bindir}/%{name}
-%{_mandir}/man?/%{name}.?.*
-%{_datadir}/%{name}/
-%attr(755,root,root) %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.png
+%license COPYING
+%doc AUTHORS NEWS README ChangeLog release_notes/RELEASE_NOTES.md
+%{_bindir}/dunelegacy
+%{_mandir}/man6/%{name}.6%{?ext_man}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/DuneLegacy
+%{_datadir}/icons/hicolor/*/apps/%{name}.??g
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %changelog
