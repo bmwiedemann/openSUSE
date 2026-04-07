@@ -1,7 +1,7 @@
 #
 # spec file for package python-ConfigArgParse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ConfigArgParse
-Version:        1.7.1
+Version:        1.7.5
 Release:        0
 Summary:        A drop-in replacement for argparse
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/bw2/ConfigArgParse
 Source:         https://files.pythonhosted.org/packages/source/c/configargparse/configargparse-%{version}.tar.gz
-Patch1:         https://github.com/bw2/ConfigArgParse/pull/295/commits/5e9f442374bc6d9707a43df13aaff684dff6b535.patch#/py313-skip-exit.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -67,10 +67,10 @@ export COLUMNS=80
 %pytest -k 'not (test_main or testGlobalInstances or testGlobalInstances_WithName or testConfigOrEnvValueErrors or testMutuallyExclusiveArgs)'
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
-%{python_sitelib}/configargparse*
+%{python_sitelib}/configargparse.py
 %{python_sitelib}/[Cc]onfig[Aa]rg[Pp]arse-%{version}*info
-%pycache_only %{python_sitelib}/__pycache__
+%pycache_only %{python_sitelib}/__pycache__/configargparse*
 
 %changelog

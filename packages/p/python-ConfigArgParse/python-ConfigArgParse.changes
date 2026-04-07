@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  6 21:24:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.5:
+  * Add support for tomllib (Python 3.11+)
+  * Add serialization support for IniConfigParser and TomlConfigParser
+  * Fix argument injection order (issue #298, #285, #296)
+  * Improve error handling during config parsing
+  * Add support for Python 3.13
+- drop obsolete py313-skip-exit.patch
+
+-------------------------------------------------------------------
 Thu Dec  4 09:37:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.7.1

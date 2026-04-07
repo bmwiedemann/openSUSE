@@ -75,4 +75,18 @@
     <comment></comment>
     <requestid>1321556</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5b78af1f9b24fada8bf1d9d43c30cba0</srcmd5>
+    <version>1.7.5</version>
+    <time>1775572420</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.5:
+  * Add support for tomllib (Python 3.11+)
+  * Add serialization support for IniConfigParser and TomlConfigParser
+  * Fix argument injection order (issue #298, #285, #296)
+  * Improve error handling during config parsing
+  * Add support for Python 3.13
+- drop obsolete py313-skip-exit.patch</comment>
+    <requestid>1344808</requestid>
+  </revision>
 </revisionlist>
