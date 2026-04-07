@@ -1,0 +1,30 @@
+From b7dcbe5e1b95033d7d258b1425cfee3657f8f810 Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@opensuse.org>
+Date: Fri, 20 Mar 2026 17:17:25 -0700
+Subject: [PATCH] allow for config in usr etc
+
+---
+ CMakeLists.txt | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7ea8027..36d1a4f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -70,12 +70,7 @@ ENDIF()
+ 
+ # Defaults to /usr/local/lib for installation.
+ INCLUDE(GNUInstallDirs)
+-IF(CMAKE_INSTALL_PREFIX STREQUAL "/usr")
+-  # For targets /usr, forces configurations into XDG config default path.
+-  SET(WLMAKER_INSTALL_CONFIG_DIR "/etc/xdg/wlmaker")
+-ELSE()
+-  SET(WLMAKER_INSTALL_CONFIG_DIR "${CMAKE_INSTALL_SYSCONFDIR}/xdg/wlmaker")
+-ENDIF()
++SET(WLMAKER_INSTALL_CONFIG_DIR "${CMAKE_INSTALL_SYSCONFDIR}/xdg/wlmaker")
+ 
+ INCLUDE(CTest)
+ 
+-- 
+2.53.0
+

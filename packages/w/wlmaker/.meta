@@ -1,0 +1,5 @@
+<package name="wlmaker" project="openSUSE:Factory">
+  <title>wlmaker</title>
+  <description>A Wayland compositor inspired by Window Maker</description>
+  <url>https://github.com/phkaeser/wlmaker</url>
+</package>

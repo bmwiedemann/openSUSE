@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Sat Mar 21 00:53:32 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 0.7.1:
+  * Adds CPU, memory, and network usage graph dockapps
+    (gh#phkaeser/wlmaker#431)
+  * add clipboard support (gh#phkaeser/wlmaker#399)
+  * Sets the default style to be more aligned with GNUStep and with
+    gray background (gh#phkaeser/wlmaker#446)
+  * Read keymap from /etc/default/keyboard or similar
+  * Adds wlmtool to parse XDG desktop files, eliminates need for
+    wmmenugen
+  * Build with wlroots-0.20
+  * Refactors pointer focus and layout computation to compute only
+    once per frame
+  * BugFixes:
+    - Fix crash when changing to different terminal
+      (gh#phkaeser/wlmaker#438)
+    - wlmaker not showing window of wlroots clients
+      (gh#phkaeser/wlmaker#439)
+    - Cursor remains small (not scaled) on output with scale > 1.0
+      (gh#phkaeser/wlmaker#444)
+  * Added 0002-allow-for-config-in-usr-etc.patch
+  * Updated libbase to a6c6a27e1f8fa2af3b36e9b2f60dbc0bfa0bcb0e
+
+-------------------------------------------------------------------
+Mon Jan 26 00:26:46 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 0.7:
+  * Output state and Window fixes
+  * Updates CMake version tag and header in roadmap
+- Updates from 0.5 - 0.6.2
+  * Support for multiple outputs, configurable through
+    wlr-output-management-unstable-v1 protocol
+  * Root Menu can be generated from XDG repository
+  * wlmclock now keeps updating also on accelerated graphics
+    backends
+  * Fixes crash with root menu open and output magnify/removal
+  * Fixed build issues on Ubuntu
+- Added 0001-remove-google-chrome.patch
+- Updated bundled libbase library to aa0da7a355b04b1dd8572a94261a0b0c497e1a85
+
+-------------------------------------------------------------------
+Sat Mar  8 16:28:15 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 0.5:
+  * Adds window menu, and enables it for xdg_toplevel
+  * Adds root menu, configurable via a plist text file
+  * fixes #158 and adds rudimentary support for
+    wlr-layer-shell-unstable-v1 keyboard interactivity
+    (gh#phkaeser/wlmaker#158)
+
+-------------------------------------------------------------------
+Fri Jan 17 19:56:21 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Initial Packaging
