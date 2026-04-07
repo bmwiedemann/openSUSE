@@ -1,7 +1,7 @@
 #
 # spec file for package python-Logbook
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,44 +18,50 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Logbook
-Version:        1.8.2
+Version:        1.9.2
 Release:        0
 Summary:        A logging replacement for Python
 License:        BSD-3-Clause
 URL:            https://github.com/getlogbook/logbook
 Source:         https://files.pythonhosted.org/packages/source/l/logbook/logbook-%{version}.tar.gz
-BuildRequires:  %{python_module Brotli}
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module SQLAlchemy}
+Source1:        vendor.tar.zst
+BuildRequires:  %{python_module Brotli >= 1.1.0}
+BuildRequires:  %{python_module Jinja2 >= 2.11.3}
+BuildRequires:  %{python_module SQLAlchemy >= 1.4}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module execnet >= 1.0.9}
-BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module execnet >= 1.5}
+BuildRequires:  %{python_module gevent >= 25.5.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module pytest >= 8.4.0}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pyzmq}
-BuildRequires:  %{python_module redis}
+BuildRequires:  %{python_module pytest-rerunfailures >= 15.1}
+BuildRequires:  %{python_module pyzmq >= 27.0.2}
+BuildRequires:  %{python_module redis >= 4.6.0}
+BuildRequires:  %{python_module setuptools-rust >= 1.11.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions >= 4.14.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
 BuildRequires:  util-linux
-Recommends:     python-Jinja2
-Recommends:     python-SQLAlchemy
-Recommends:     python-execnet >= 1.0.9
-Recommends:     python-gevent
-Recommends:     python-pyzmq
-Recommends:     python-redis
+BuildRequires:  zstd
+Requires:       python-typing-extensions >= 4.14.0
+Recommends:     python-Brotli >= 1.1.0
+Recommends:     python-Jinja2 >= 2.11.3
+Recommends:     python-SQLAlchemy >= 1.4
+Recommends:     python-execnet >= 1.5
+Recommends:     python-gevent >= 25.5.1
+Recommends:     python-pyzmq >= 27.0.2
+Recommends:     python-redis >= 4.6.0
 %python_subpackages
 
 %description
 An alternative logging implementation for python.
 
 %prep
-%autosetup -p1 -n logbook-%{version}
+%autosetup -p1 -a1 -n logbook-%{version}
 dos2unix LICENSE
 
 %build

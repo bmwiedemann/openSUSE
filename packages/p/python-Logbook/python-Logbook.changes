@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr  7 08:21:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.2:
+  * When used as a context manager, handlers, flags, and
+    processors would swallow a raised ``BaseException`` and raise a
+    ``TypeError``
+  * Required files were missing from the source distribution
+  * Python 3.14 free-threading support (beta). This does not
+    extend to all optional dependencies. At the time of writing,
+    the following extras are not supported due to their
+    dependencies pulling in C extensions which do not
+    support free-threading:
+  * ``logbook.__version__``. Use :mod:`importlib.metadata`
+    instead.
+  * There are now only two ways to activate
+    :class:`~logbook.Handler`,
+  * :class:`~logbook.Flags`, and :class:`~logbook.Processor`
+    instances.
+  * The previous contextvars implementation (used by
+    ``push_context``, ``pop_context``, and ``contextbound``)
+    was completely broken.
+
+-------------------------------------------------------------------
 Wed Jun 25 06:16:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.8.2

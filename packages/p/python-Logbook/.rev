@@ -175,4 +175,30 @@
   - Use Python 3.11 on SLE-15 by default</comment>
     <requestid>1288472</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>815f0fcf1c86e04c22b4f18574526034</srcmd5>
+    <version>1.9.2</version>
+    <time>1775572448</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.2:
+  * When used as a context manager, handlers, flags, and
+    processors would swallow a raised ``BaseException`` and raise a
+    ``TypeError``
+  * Required files were missing from the source distribution
+  * Python 3.14 free-threading support (beta). This does not
+    extend to all optional dependencies. At the time of writing,
+    the following extras are not supported due to their
+    dependencies pulling in C extensions which do not
+    support free-threading:
+  * ``logbook.__version__``. Use :mod:`importlib.metadata`
+    instead.
+  * There are now only two ways to activate
+    :class:`~logbook.Handler`,
+  * :class:`~logbook.Flags`, and :class:`~logbook.Processor`
+    instances.
+  * The previous contextvars implementation (used by
+    ``push_context``, ``pop_context``, and ``contextbound``)
+    was completely broken.</comment>
+    <requestid>1344912</requestid>
+  </revision>
 </revisionlist>
