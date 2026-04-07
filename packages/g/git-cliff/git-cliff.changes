@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr  6 14:10:09 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.12.0:
+  * Add offline flag
+  * Add --skip-tags cli argument
+  * Implement commit processing summary
+  * Bug Fixes
+- includes changes from 2.11.0:
+  * Support failing on unmatched commits
+  * Add support for azure devops
+  * Improve repository/directory path resolution
+  * Add split_regex, replace_regex, find_regex filters
+  * Bug Fixes
+- -includes changes from 2.10.1:
+  * Add 'integrations' feature flag for enabling all integrations
+  * Bug Fixes
+  * CVE-2025-55159: lab: incorrect bounds check in get_disjoint_mut
+    function can lead to undefined behavior or potential crash due
+    to out-of-bounds access (boo#1248065)
+
+-------------------------------------------------------------------
 Mon Jul 28 06:18:26 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 2.10.0:

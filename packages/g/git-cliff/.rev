@@ -354,4 +354,12 @@
   * (website) Update the node version - (566c2a1)</comment>
     <requestid>1296045</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b53f6bbc43b4b5c027d3fc923b8f1847</srcmd5>
+    <version>2.12.0</version>
+    <time>1775572456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1344896</requestid>
+  </revision>
 </revisionlist>
