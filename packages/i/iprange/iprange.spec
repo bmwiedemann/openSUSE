@@ -1,7 +1,7 @@
 #
 # spec file for package iprange
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,32 +17,39 @@
 
 
 Name:           iprange
-Version:        1.0.4
+Version:        2.0.0
 Release:        0
 Summary:        IP address range management tool for FireHOL
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Security
-Url:            http://firehol.org/
+URL:            https://firehol.org/
 Source:         https://github.com/firehol/iprange/releases/download/v%{version}/iprange-%{version}.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  autoconf
+BuildRequires:  automake
 
 %description
 This tool manages IP address ranges for FireHOL.
 
 %prep
-%setup -q
+%autosetup
+# Test expects permanent failure but no network connection means we
+# only get temporary name resolution errors. Reported upstream:
+# https://github.com/firehol/iprange/issues/42
+rm -r tests.d/64-dns-failure-exit-status
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
+%check
+%make_build check
+
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README.md
-%{_mandir}/man1/iprange.1%{ext_man}
+%license COPYING
+%doc ChangeLog README.md wiki
+%{_mandir}/man1/iprange.1%{?ext_man}
 %{_bindir}/iprange
 
 %changelog

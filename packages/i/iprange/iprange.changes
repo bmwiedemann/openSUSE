@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Apr  6 16:24:19 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Enable test suite
+- Update to version 2.0.0:
+New features:
+  * IPv6 support — --ipv6 / -6 flag enables IPv6 mode with full
+    set operations (merge, intersect, exclude, diff, compare,
+    reduce, count)
+  * IPv4 input normalized to ::ffff:x.x.x.x in IPv6 mode
+  * IPv4-mapped IPv6 (::ffff:x.x.x.x) converted back to IPv4
+    in IPv4 mode
+  * IPv6 DNS resolution (both AAAA and A records)
+  * IPv6 binary format v2.0 with family-aware header
+  * --has-ipv6 feature detection flag
+  * @filename file list and @directory directory loading
+  * --has-filelist-loading and --has-directory-loading flags
+Bug fixes:
+  * Fix UINT32_MAX boundary overflow — ranges at 255.255.255.255
+    no longer incorrectly merge with ranges at 0.0.0.0
+    gh#firehol/iprange#28
+  * Fix IPv6 diff algorithm at address space boundary
+  * Strict numeric parsing for --ipset-reduce value
+    gh#firehol/iprange#24
+Build improvements:
+  * Updated test suite: 93 CLI tests, 7 build tests, 5 sanitizer
+    tests, 6 unit tests, 1 TSAN test
+Documentation:
+  * Comprehensive README and wiki with verified examples
+  * One wiki page per operation
+  * Detailed guides for input/output formats, IPv6, DNS resolution,
+    ipset optimization
+
+-------------------------------------------------------------------
 Sun Jun  9 15:25:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Add missing words to descriptions.
