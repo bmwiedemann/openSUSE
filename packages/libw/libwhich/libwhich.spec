@@ -1,7 +1,7 @@
 #
 # spec file for package libwhich
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libwhich
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Which for Dynamic Libraries
 License:        MIT
@@ -29,13 +29,13 @@ Source1:        %{name}-rpmlintrc
 A command line utility to locate shared libraries by name.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build
 
 %install
-install -D -m 755 libwhich %{buildroot}/%{_bindir}/libwhich
+%make_install
 
 %files
 %license LICENSE
