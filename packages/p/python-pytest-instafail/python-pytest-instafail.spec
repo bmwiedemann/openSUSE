@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-instafail
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           python-pytest-instafail
 Version:        0.5.0
 Release:        0
 Summary:        Pytest Plugin to Show Failures Instantly
-License:        BSD-2-Clause
+License:        BSD-3-Clause
 URL:            https://github.com/jpvanhal/pytest-instafail
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-instafail/pytest-instafail-%{version}.tar.gz
 BuildRequires:  %{python_module pip}

@@ -89,4 +89,14 @@
 - No more greedy globs in %files.</comment>
     <requestid>1275104</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>d3d6cf985fd338b23b4a05ed9aab79c7</srcmd5>
+    <version>0.5.0</version>
+    <time>1775572390</time>
+    <user>dimstar_suse</user>
+    <comment>- License is BSD-3 , fix the specfile. This was caught in SLFO due to
+  a refreshed legal review, see:
+  https://src.suse.de/pool/python-pytest-instafail/pulls/1#issuecomment-313199</comment>
+    <requestid>1344730</requestid>
+  </revision>
 </revisionlist>
