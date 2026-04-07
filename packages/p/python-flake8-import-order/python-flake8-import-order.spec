@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-import-order
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%bcond_without python2
 Name:           python-flake8-import-order
-Version:        0.18.2
+Version:        0.19.2
 Release:        0
 Summary:        Flake8 plugin that checks the ordering of import statements
 License:        LGPL-3.0-only
 Group:          Development/Languages/Python
-URL:            https://github.com/public/flake8-import-order
-Source:         https://files.pythonhosted.org/packages/source/f/flake8-import-order/flake8-import-order-%{version}.tar.gz
+URL:            https://github.com/PyCQA/flake8-import-order
+Source:         https://files.pythonhosted.org/packages/source/f/flake8_import_order/flake8_import_order-%{version}.tar.gz
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle}
@@ -37,19 +36,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-flake8
 Requires:       python-pycodestyle
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-enum34
-%endif
-%ifpython2
-Requires:       python2-enum34
-%endif
 %python_subpackages
 
 %description
 Flake8 and pylama plugin that checks the ordering of import statements.
 
 %prep
-%setup -q -n flake8-import-order-%{version}
+%setup -q -n flake8_import_order-%{version}
 
 %build
 %pyproject_wheel

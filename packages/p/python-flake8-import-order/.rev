@@ -71,4 +71,31 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1280544</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3cba38b507ef2c170f18947de68d969</srcmd5>
+    <version>0.19.2</version>
+    <time>1775572410</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.19.2:
+  * Fix AttributeError in code for checking the order of imports
+    in a TYPE_CHECKING block.
+  * Yank 0.19.0 from PyPI to avoid aforementioned users on older
+    versions of Python accidentally receiving 0.19.0
+  * Fix bug in code for checking the order of imports in a
+    TYPE_CHECKING block.
+  * Fix python_requires missing from 0.19.0 to allow folks using
+    vulnerable and unmaintained versions of Python to continue
+    running 0.18.x with pip selecting the correct version for
+    them.
+  * Drop deprecated Python versions 3.7 and 3.8
+  * Drop unsupported pypy3.9
+  * Use sys.stdlib_module_names where available to determine
+    whether a module is in the standard library or not.
+  * Replace usage of pkg_resources from setuptools with
+    importlib.metadata.
+  * Move package to PyCQA PyPI organization
+
+- Update to version 0.18.2</comment>
+    <requestid>1344792</requestid>
+  </revision>
 </revisionlist>
