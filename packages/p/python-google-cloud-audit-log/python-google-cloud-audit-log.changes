@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  6 20:21:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * Allow Protobuf 7.x, require Python 3.9
+
+-------------------------------------------------------------------
 Fri Oct 17 08:36:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.4.0

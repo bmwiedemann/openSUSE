@@ -44,4 +44,13 @@
   * Add *.proto files to google-cloud-audit-log (#14587) (forwarded request 1311939 from glaubitz)</comment>
     <requestid>1312007</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>56f5ad6bc58c58db0d0738e0bcab431e</srcmd5>
+    <version>0.5.0</version>
+    <time>1775572413</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * Allow Protobuf 7.x, require Python 3.9</comment>
+    <requestid>1344785</requestid>
+  </revision>
 </revisionlist>

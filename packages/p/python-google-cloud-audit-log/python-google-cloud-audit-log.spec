@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-audit-log
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-audit-log
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Google Cloud Audit Protos
 License:        Apache-2.0
@@ -30,11 +30,11 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module googleapis-common-protos >= 1.56.2}
-BuildRequires:  %{python_module protobuf >= 3.20.2}
+BuildRequires:  %{python_module protobuf >= 4.25.8}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-googleapis-common-protos >= 1.56.2
-Requires:       python-protobuf >= 3.20.2
+Requires:       python-protobuf >= 4.25.8
 BuildArch:      noarch
 %python_subpackages
 
