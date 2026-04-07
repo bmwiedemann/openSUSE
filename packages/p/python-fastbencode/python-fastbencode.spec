@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastbencode
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 
 
 Name:           python-fastbencode
-Version:        0.3.2
+Version:        0.3.10
 Release:        0
 Summary:        Implementation of the bencode serialization format
-License:        GPL-2.0-or-later
+License:        Apache-2.0
 URL:            https://github.com/breezy-team/fastbencode
 Source:         https://github.com/breezy-team/fastbencode/archive/refs/tags/v%{version}.tar.gz#/fastbencode-%{version}.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools-rust}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
+BuildRequires:  zstd
 %python_subpackages
 
 %description
@@ -42,7 +45,7 @@ based on Cython. Both provide the same functionality, but the C extension
 provides significantly better performance.
 
 %prep
-%autosetup -p1 -n fastbencode-%{version}
+%autosetup -p1 -n fastbencode-%{version} -a1
 
 %build
 %pyproject_wheel

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:06:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.10:
+  * Support pyo3 0.28
+- update to 0.3.5:
+  * Port native bindings to rust
+  * Fix github action
+  * Update copyright for rust bindings
+  * Change license to Apache-2.0
+
+-------------------------------------------------------------------
 Tue May 20 10:12:51 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file.
