@@ -673,4 +673,12 @@
   - Add preliminary support for parsing =\graphicspath= in</comment>
     <requestid>1308606</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>f07d09ccd014cacd5079d85e6a16d3e0</srcmd5>
+    <version>14.1.0</version>
+    <time>1775572452</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip auto generated style files for Leap (upstream also dislike them)</comment>
+    <requestid>1344913</requestid>
+  </revision>
 </revisionlist>

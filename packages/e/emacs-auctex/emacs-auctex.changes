@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  7 08:40:42 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Skip auto generated style files for Leap (upstream also dislike them) 
+
+-------------------------------------------------------------------
 Thu Oct  2 11:24:31 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to AUCTeX ELPA version 14.1.0
