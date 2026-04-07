@@ -1,7 +1,7 @@
 #
 # spec file for package xorgxrdp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xorgxrdp
-Version:        0.9.19
+Version:        0.9.20
 Release:        0
 Summary:        Xorg drivers for xrdp
 License:        X11
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-server-sdk
 BuildRequires:  xrdp-devel
 BuildRequires:  pkgconfig(xorg-macros)
-Requires:       xrdp >= 0.9.1
+Requires:       xrdp >= 0.9.25
 ExcludeArch:    s390 s390x
 %{x11_abi_videodrv_req}
 %{x11_abi_xinput_req}
