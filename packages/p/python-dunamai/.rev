@@ -132,4 +132,14 @@
     if it is not the chronologically latest tag (forwarded request 1334515 from rrahl0)</comment>
     <requestid>1334516</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6b3edf348921598351a534570f6eee18</srcmd5>
+    <version>1.26.1</version>
+    <time>1775572380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1:
+  * Fixed: The highest_tag argument was ignored in Version.from_any_vcs()
+  * Fixed: Compatibility with Pijul 1.0.0-beta.11 (forwarded request 1344713 from rrahl0)</comment>
+    <requestid>1344714</requestid>
+  </revision>
 </revisionlist>

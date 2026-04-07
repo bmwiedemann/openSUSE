@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  5 21:21:43 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.26.1:
+  * Fixed: The highest_tag argument was ignored in Version.from_any_vcs()
+  * Fixed: Compatibility with Pijul 1.0.0-beta.11
+
+-------------------------------------------------------------------
 Mon Feb 23 13:55:02 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.26.0:
