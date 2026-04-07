@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Apr  5 20:36:56 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.1
+  - Features
+    - Settings merge: Layered collect-then-merge flow for settings,
+      weak dependencies and disabled status in symcache,
+      force-enable override for settings conflicts
+    - Fuzzy dynamic blocks: Dynamic block API for fuzzy storage
+      worker, custom response codes (403 for ratelimits vs 503 for
+      bans), ratelimit_whitelist check exposed to Lua
+  - Bug fixes
+    - Proxy milter fd leak: Original fd was not closed after milter
+      dup(), leaking one fd per milter connection — caused
+      unbounded CLOSE_WAIT accumulation in production (regression
+      in 4.0.0)
+    - Proxy self-scan task timeout: Used upstream wire timeout
+      (e.g. 120s) instead of task_timeout (8s default) for
+      self-scan tasks
+    - ARC AAR parsing (#5963): Replace naive semicolon split with
+      LPeg grammar respecting RFC 8601 comments and quoted strings
+      — fixes cv=fail on multi-hop ARC chains where i=N appeared
+      inside comments
+    - Fix ev_now() usage for dynamic ban expiry
+    - Fix deps in pre/postfilters and settings flow
+    - Fix missing #include <memory> in redis_backend.cxx
+
+-------------------------------------------------------------------
 Mon Mar 30 13:04:02 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.0.0
