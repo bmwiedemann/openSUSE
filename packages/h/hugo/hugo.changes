@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 04 13:32:34 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.160.0:
+  * releaser: Bump versions for release of 0.160.0
+  * build(deps): bump github.com/magefile/mage from 1.16.1 to 1.17.1
+  * Fix some recently introduced Position issues
+  * markup/goldmark: Fix double-escaping of ampersands in link URLs
+  * all: Replace NewIntegrationTestBuilder with Test/TestE/TestRunning
+  * tpl: Fix stray quotes from partial decorator in script context
+  * readme: Revise edition descriptions and installation instructions
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.1.3 to 4.1.4
+  * tpl/css: Support @import "hugo:vars" for CSS custom properties in css.Build
+  * Improve and extend .Position handling in Goldmark render hooks
+  * build(deps): bump golang.org/x/image from 0.37.0 to 0.38.0
+  * markup/goldmark: Clean up test
+  * releaser: Prepare repository for 0.160.0-DEV
+
+-------------------------------------------------------------------
 Wed Apr 01 17:16:47 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.159.2:
