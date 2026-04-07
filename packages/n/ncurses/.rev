@@ -5613,4 +5613,29 @@
     declarations when constructing DLLs, to work with Visual Studio C++.</comment>
     <requestid>1337604</requestid>
   </revision>
+  <revision rev="326" vrev="99">
+    <srcmd5>a1fcf710d63d3856f153bc1f63b39866</srcmd5>
+    <version>unknown</version>
+    <time>1774469830</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260321
+  + build-fix for --enable-fvisibility option vs C++ shared library
+    (adapted from patch by Nicholas Vinson).
+  + improve a few configure-checks vs overly-strict compiler warnings.
+
+- Add ncurses patch 20260314
+  + fixes for pangoterm and wezterm, from tic warnings -TD
+  + improve man page description of getmaxyx (report by Lucas Veltkamp).
+  + add configure option --enable-conpty, and modify configure script to
+    allow the low-level term-driver and conpty driver as part of termlib.</comment>
+    <requestid>1342039</requestid>
+  </revision>
+  <revision rev="327" vrev="100">
+    <srcmd5>d4cb2d545cb13c05c37285c2c13a724a</srcmd5>
+    <version>unknown</version>
+    <time>1775572284</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344748</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Mar 30 07:13:08 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260328
+  + modify test/ncurses to close stdin when ^D is entered in the getch
+    tests, to demonstrate error return.
+  + adapt some ifdefs, etc., to reduce difference vs Juergen Pfeifer's
+    fork.
+
+-------------------------------------------------------------------
+Mon Mar 23 12:20:01 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260321
+  + build-fix for --enable-fvisibility option vs C++ shared library
+    (adapted from patch by Nicholas Vinson).
+  + improve a few configure-checks vs overly-strict compiler warnings.
+
+-------------------------------------------------------------------
+Mon Mar 16 08:35:36 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260314
+  + fixes for pangoterm and wezterm, from tic warnings -TD
+  + improve man page description of getmaxyx (report by Lucas Veltkamp).
+  + add configure option --enable-conpty, and modify configure script to
+    allow the low-level term-driver and conpty driver as part of termlib.
+
+-------------------------------------------------------------------
 Mon Mar  9 07:42:57 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260307
