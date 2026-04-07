@@ -30,4 +30,13 @@
   * Adds Python 3.13 support (#319) (forwarded request 1327368 from glaubitz)</comment>
     <requestid>1327389</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9661fdf2c1ac0854eaa454b77f07e47</srcmd5>
+    <version>0.36.1</version>
+    <time>1775572415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.36.1:
+  * Allow Protobuf 7.x, require Python 3.9</comment>
+    <requestid>1344788</requestid>
+  </revision>
 </revisionlist>
