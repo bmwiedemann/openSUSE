@@ -183,4 +183,12 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1157627</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0de66e5b6e9a84eead4fd5812deb2538</srcmd5>
+    <version>5.2.1</version>
+    <time>1775572421</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344802</requestid>
+  </revision>
 </revisionlist>

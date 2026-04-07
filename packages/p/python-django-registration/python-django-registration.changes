@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Mar 30 20:57:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.1:
+  * Correct a packaging error with 5.2.0.
+  * Supported Django versions are now 4.2, 5.1, and 5.2.
+  * Adopted "DjangoVer" versioning.
+  * Supported Django versions are now 4.2, 5.0, and 5.1.
+  * Supported Python versions are now 3.9, 3.10, 3.11, 3.12, and
+    3.13.
+  * The base :class:`~django_registration.forms.RegistrationForm`
+    has been completely rewritten, though in a backwards-
+    compatible way. It is no longer a subclass of Django's
+    UserCreationForm, which means it is far more flexible with
+    respect to custom user models (and for many cases, no longer
+    requires a custom form subclass just to handle a custom user
+    model).
+  * :class:`~django_registration.views.ActivationView` has also
+    been rewritten, and with it parts of :ref:`the built-in
+    activation-based workflow <activation-workflow>`. The primary
+    change here is that ActivationView now only attempts to
+    activate the user account on an HTTP POST request (previously
+    it would do so on GET, which was increasingly unsafe due to
+    email clients auto-following links). This is backwards-
+    incompatible: the activation view now displays a form on GET,
+    and the templates involved have changed. See :ref:`the
+    template documentation <default-templates>` for details of
+    the required templates.
+  * The :ref:`reserved names list <reserved-names>` has a new
+    entry: "xrpc", which is used in domain-ownership verification
+    by Bluesky/AT protocol.
+  * Validation of the email field in registration forms no longer
+    applies Django's default email validator, instead applying
+    only django-registration's
+    :class:`~django_registration.validators.HTML5EmailValidator`
+    and :func:`~django_registration.validators.validate_confusabl
+    es_email`. Since django-registration's validators are
+    significantly stricter, this does not actually change the set
+    of email addresses which will be accepted; all it does is
+    prevent a duplicate error message displaying when both the
+    default Django validator and the django-registration
+    validators reject the email address. See GitHub issue #238.
+  * The supported Python and Django versions are changed to:
+    Django 3.2, 4.1, and 4.2, on Python 3.7 (Django 3.2 only),
+    3.8, 3.9, 3.10, and 3.11 (Django 4.1 and 4.2 only).
+
+-------------------------------------------------------------------
 Wed Mar 13 14:10:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up the SPEC file
@@ -120,7 +166,7 @@ Tue Apr 19 13:37:33 UTC 2016 - appleonkel@opensuse.org
 
 - Update to version 2.0.4
   + No Changelog
-- Use new specfile from py2pack 
+- Use new specfile from py2pack
 
 -------------------------------------------------------------------
 Sat Sep 28 14:09:01 UTC 2013 - p.drouand@gmail.com
@@ -153,7 +199,7 @@ Mon May 31 07:14:45 UTC 2010 - toms@suse.de
 -------------------------------------------------------------------
 Fri Aug 21 10:15:04 CEST 2009 - garloff@suse.de
 
-- Build as noarch on openSUSE >= 11.2. 
+- Build as noarch on openSUSE >= 11.2.
 
 -------------------------------------------------------------------
 Thu Aug 20 16:16:01 CEST 2009 - garloff@suse.de
@@ -168,5 +214,4 @@ Thu Aug 20 16:04:46 CEST 2009 - garloff@suse.de
 -------------------------------------------------------------------
 Sat Sep 13 01:57:21 CEST 2008 - crrodriguez@suse.de
 
-- update to version 0.6 
-
+- update to version 0.6
