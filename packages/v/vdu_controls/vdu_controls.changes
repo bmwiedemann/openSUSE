@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr  6 20:08:10 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.5.0
+  * Visual refresh of the Main-panel. 
+  * Added option "toolbar-at-top" to configure the top/bottom placement of the toolbar 
+    in the main-window. Top placement is more Plasma-6-like and may also be useful
+    when combined with top-located system-trays 
+  * Added option "separate-status-bar" to allow the main-window's status-bar to be 
+    separated from its toolbar.  This may be useful when combined with "toolbar-at-top".
+  * Replaced QProgressBar with a more modern circular busy-spinner.
+  * Added a tooltip to the status-bar that shows the last 10 status messages.
+  * The context-menu now includes a Control-Panel menu-item on all desktops - previously it 
+    was Gnome-only (for tray extensions), but Xfce's tray also needs it.
+  * Light-Metering window - corrected the horizontal tick mark placement on the sun-plot.
+  * Light-Metering window - added enlarged tick-marks to the sun-plot at 3,6,9,15,18,21 hours.
+  * Added option "tray-follows-theme" (default enabled) to invert the tray icon’s light/dark state
+    when the desktop theme changes. It can be set for trays that flip-with the desktop or 
+    flip-opposite to the desktop, or unset for trays don’t change at all (there isn't a 
+    common way to detect tray-themes, so this cannot be automated).
+  * Internal code simplifications and cleanups.
+
+-------------------------------------------------------------------
 Fri Aug 29 02:21:40 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.4.3
