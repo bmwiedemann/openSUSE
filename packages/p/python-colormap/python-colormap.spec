@@ -1,7 +1,7 @@
 #
 # spec file for package python-colormap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,23 @@
 #
 
 
-%define skip_python36 1
 Name:           python-colormap
-Version:        1.0.6
+Version:        1.3.0
 Release:        0
 Summary:        Utilities to manipulate matplotlib colormaps and color codecs
 License:        BSD-3-Clause
 URL:            https://github.com/cokelaer/colormap
-Source:         https://files.pythonhosted.org/packages/source/c/colormap/colormap-%{version}.tar.gz
+Source:         https://github.com/cokelaer/colormap/archive/refs/tags/v%{version}.tar.gz#/colormap-%{version}-gh.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-easydev
-Requires:       python-matplotlib
+Requires:       python-matplotlib >= 3
+Requires:       python-numpy
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module easydev}
-BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module matplotlib >= 3}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -49,10 +47,6 @@ the test_colormap can be used to visually test a new colormap.
 
 %prep
 %setup -q -n colormap-%{version}
-# We don't want the pytest addopts for coverage. Nothing relevant in there
-rm setup.cfg
-# matplotlib depends on numpy anyway, use that as replacement for easydev.easytest using nose
-sed -i 's/from easydev.easytest import assert_list_almost_equal/from numpy.testing import assert_almost_equal as assert_list_almost_equal/' test/test_colors.py
 
 %build
 %pyproject_wheel

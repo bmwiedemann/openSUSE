@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr  6 20:27:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Support poetry-core 2.0
+  * update user interface with 2 new functions (plot_colormap and
+    plot_category)
+  * Make pyproject fully compatible  from py3.8 to py3.12
+  * Trying to add back the py3.8 support in the CI;
+  * Add Python 3.12
+  * Use integers
+  * move from setuptools to pyproject
+
+-------------------------------------------------------------------
 Fri May  9 04:42:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
