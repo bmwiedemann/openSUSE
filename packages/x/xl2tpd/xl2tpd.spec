@@ -16,23 +16,19 @@
 #
 
 
-%define rundir /run
 Name:           xl2tpd
 Version:        1.3.20
 Release:        0
 Summary:        Layer 2 Tunnelling Protocol Daemon (RFC 2661)
 License:        GPL-2.0-only
-Group:          Productivity/Networking/System
-URL:            http://www.xelerance.com/software/xl2tpd/
-Source0:        https://github.com/xelerance/xl2tpd/archive/v%{version}.tar.gz
+URL:            https://github.com/xelerance/xl2tpd
+Source0:        %{url}/archive/v%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        %{name}.conf
-Patch0:         Makefile.patch
-Patch1:         xl2tpd.init.patch
-BuildRequires:  libpcap
-BuildRequires:  libpcap-devel
 BuildRequires:  linux-kernel-headers >= 2.6.19
+BuildRequires:  ppp
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libpcap)
 Requires:       ppp
 Obsoletes:      l2tpd <= 0.68
 Provides:       l2tpd = 0.69
@@ -64,46 +60,26 @@ Xl2tpd is based on the 0.69 L2TP by Jeff McAdams <jeffm@iglou.com>
 It was de-facto maintained by Jacco de Leeuw <jacco2@dds.nl> in 2002 and 2003.
 
 %prep
-%autosetup -p0
+%autosetup
 
 %build
-make %{?_smp_mflags} DFLAGS="%{optflags} -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
+%make_build
 
 %install
-export PREFIX=%{_prefix}
-%make_install
-install -p -D -m644 examples/xl2tpd.conf %{buildroot}%{_sysconfdir}/xl2tpd/xl2tpd.conf
-install -p -d -m750 %{buildroot}%{_sysconfdir}/ppp
-install -p -D -m644 examples/ppp-options.xl2tpd %{buildroot}%{_sysconfdir}/ppp/options.xl2tpd
-install -p -D -m600 doc/l2tp-secrets.sample %{buildroot}%{_sysconfdir}/xl2tpd/l2tp-secrets
-install -p -D -m600 examples/chapsecrets.sample %{buildroot}%{_sysconfdir}/ppp/chap-secrets.sample
-install -p -D -m755 -d %{buildroot}%{rundir}/xl2tpd
+%make_install PREFIX=%{_prefix}
+install -p -D -m644 examples/%{name}.conf %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
+install -p -D -m600 doc/l2tp-secrets.sample %{buildroot}%{_sysconfdir}/%{name}/l2tp-secrets
+install -p -d -m755 %{buildroot}%{_rundir}/%{name}
 install -D -m0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 install -D -m0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
-%if 0%{?suse_version} > 1310
-sed -i 's|%{_localstatedir}/run/|/run/|' %{buildroot}%{_tmpfilesdir}/%{name}.conf
-%endif
-mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
+sed -i 's|%{_localstatedir}/run/|%{_rundir}/|' %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -p -d -m755 %{buildroot}%{_prefix}/lib/modules-load.d
 echo "l2tp_ppp" > %{buildroot}%{_prefix}/lib/modules-load.d/%{name}.conf
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
 %service_add_pre %{name}.service
 
 %post
-# if we migrate from l2tpd to xl2tpd, copy the configs
-if [ -f %{_sysconfdir}/l2tpd/l2tpd.conf ]
-then
-	echo "Old %{_sysconfdir}/l2tpd configuration found, migrating to %{_sysconfdir}/xl2tpd"
-	mv %{_sysconfdir}/xl2tpd/xl2tpd.conf %{_sysconfdir}/xl2tpd/xl2tpd.conf.rpmsave
-	cat %{_sysconfdir}/l2tpd/l2tpd.conf | sed "s/options.l2tpd/options.xl2tpd/" > %{_sysconfdir}/xl2tpd/xl2tpd.conf
-	mv %{_sysconfdir}/ppp/options.xl2tpd %{_sysconfdir}/ppp/options.xl2tpd.rpmsave
-	mv %{_sysconfdir}/ppp/options.l2tpd %{_sysconfdir}/ppp/options.xl2tpd
-	mv %{_sysconfdir}/xl2tpd/l2tp-secrets %{_sysconfdir}/xl2tpd/l2tpd-secrets.rpmsave
-	cp -pa %{_sysconfdir}/l2tpd/l2tp-secrets %{_sysconfdir}/xl2tpd/l2tp-secrets
-
-fi
-
 %service_add_post %{name}.service
 %fillup_only
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
@@ -116,26 +92,22 @@ fi
 
 %files
 %license LICENSE
-%doc BUGS CHANGES CREDITS README.* TODO
-%doc doc/README.patents examples/chapsecrets.sample
-%{_sbindir}/rcxl2tpd
-%{_sbindir}/xl2tpd
-%{_sbindir}/xl2tpd-control
+%doc BUGS CHANGES COMPATIBILITY_ISSUES CONTRIBUTION.md CREDITS README.md TODO
+%doc doc/COMMON_SOLUTIONS doc/README.patents examples/chapsecrets.sample
+%config(noreplace) %{_sysconfdir}/%{name}
+%dir %ghost %{_rundir}/%{name}
+%dir %{_prefix}/lib/modules-load.d
+%ghost %{_rundir}/%{name}/l2tp-control
 %{_bindir}/pfc
-%dir %{_sysconfdir}/xl2tpd
-%config(noreplace) %{_sysconfdir}/xl2tpd/*
-%dir %{_sysconfdir}/ppp
-%config(noreplace) %{_sysconfdir}/ppp/*
-%dir %ghost %{rundir}/xl2tpd
-%ghost %{rundir}/xl2tpd/l2tp-control
+%{_mandir}/man?/%{name}-control.?%{?ext_man}
+%{_mandir}/man?/%{name}.?%{?ext_man}
+%{_mandir}/man?/%{name}.conf.?%{?ext_man}
+%{_mandir}/man?/l2tp-secrets.?%{?ext_man}
+%{_mandir}/man?/pfc.?%{?ext_man}
+%{_prefix}/lib/modules-load.d/%{name}.conf
+%{_sbindir}/%{name}
+%{_sbindir}/%{name}-control
 %{_tmpfilesdir}/%{name}.conf
 %{_unitdir}/%{name}.service
-%dir %{_prefix}/lib/modules-load.d
-%{_prefix}/lib/modules-load.d/%{name}.conf
-%{_mandir}/man1/pfc.1%{?ext_man}
-%{_mandir}/man5/l2tp-secrets.5%{?ext_man}
-%{_mandir}/man5/xl2tpd.conf.5%{?ext_man}
-%{_mandir}/man8/xl2tpd-control.8%{?ext_man}
-%{_mandir}/man8/xl2tpd.8%{?ext_man}
 
 %changelog

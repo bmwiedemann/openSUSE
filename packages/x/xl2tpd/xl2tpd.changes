@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 20 13:11:52 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Modernize spec file:
+  * remove defined rundir when we have _rundir
+  * switch over to github url, as old website doesn't exist anymore
+  * update build dependencies
+  * use of rpm macros for make
+  * removal of rc file
+  * removal of Makefile.patch and xl2tpd.init.patch, as they are not
+    necessary anymore
+
+-------------------------------------------------------------------
 Wed Feb  4 20:17:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.20
