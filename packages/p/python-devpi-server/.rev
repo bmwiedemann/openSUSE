@@ -222,4 +222,41 @@
     already using a token via a shared secret, so this is redundant.</comment>
     <requestid>1330977</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b6f69eeaf5186551733cf57a7f5ca173</srcmd5>
+    <version>6.19.2</version>
+    <time>1775572418</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.19.2:
+  * Preserve log for documentation uploads in export.
+  * Any missing file on mirrors will be ignored during event
+    processing as is already the case in other places.
+  * Use short timeout when project list is requested for
+    ``has_project`` call on mirrors instead of the long one used
+    for ``list_projects``. This prevents installers from timing
+    out and retrying several times.
+  * Fix error handling for proxy requests from replica to
+    primary.
+  * Pin setuptools as pyramid still requires pkg_resources.
+  * Always allow replicas to access deleted releases to get the
+    proper ``410 Gone`` instead of ``403 Forbidden`` when
+    ``devpi-lockdown`` is in use.
+  * Add ``--autocreate-users`` server option.
+  * Automatically creates users that don't exist in devpi, but
+    have successfully authenticated via an authentication plugin.
+  * A typical example of when to enable this would be when
+    authenticating via an LDAP directory.
+  * Automatically created users do not have passwords, and have
+    no password hash to prevent local authentication.
+  * Add ``replica-files-in-sync-at``, ``replica-init-queue-
+    finished-at`` and ``replica-metadata-in-sync-at`` to status
+    view, the existing ``replica-in-sync-at`` is now a
+    combination of all three instead of just metadata.
+
+- Update to version 6.8.0
+  * Dropped support for Python 2.7, 3.4 and 3.5. Python 3.x versions
+  * Remove deprecated command line options which were replaced by
+  * add explicit ruamel.yaml dependency declaration after strictyaml</comment>
+    <requestid>1344803</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-devpi-server
-Version:        6.18.0
+Version:        6.19.2
 Release:        0
 Summary:        Private PyPI caching server
 License:        MIT
@@ -38,11 +38,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-argon2-cffi >= 16.2
-Requires:       python-attrs
+Requires:       python-argon2-cffi
+Requires:       python-attrs >= 22.2.0
 Requires:       python-defusedxml
-Requires:       python-devpi-common >= 3.3.0
-Requires:       python-execnet >= 1.2
+Requires:       python-devpi-common >= 3.6.0
 Requires:       python-httpx
 Requires:       python-itsdangerous >= 0.24
 Requires:       python-lazy
@@ -52,9 +51,14 @@ Requires:       python-pluggy >= 0.6.0
 Requires:       python-py >= 1.4.23
 Requires:       python-pyramid >= 2
 Requires:       python-repoze.lru >= 0.6
-Requires:       python-ruamel.yaml >= 0.15.94
+Requires:       python-requests >= 2.3.0
+Requires:       python-ruamel.yaml
+Requires:       python-setuptools <= 81
 Requires:       python-strictyaml
 Requires:       python-waitress >= 1.0.1
+%if %{python_version_nodots} >= 313
+Requires:       python-legacy-cgi
+%endif
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -70,11 +74,11 @@ Suggests:       python-beautifulsoup4
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module WebTest}
-BuildRequires:  %{python_module argon2-cffi >= 16.2}
-BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module argon2-cffi}
+BuildRequires:  %{python_module attrs >= 22.2.0}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module devpi-common >= 3.3.0}
+BuildRequires:  %{python_module devpi-common >= 3.6.0}
 BuildRequires:  %{python_module execnet >= 1.2}
 BuildRequires:  %{python_module itsdangerous >= 0.24}
 BuildRequires:  %{python_module lazy}
@@ -86,7 +90,8 @@ BuildRequires:  %{python_module pyramid >= 2}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module repoze.lru >= 0.6}
-BuildRequires:  %{python_module ruamel.yaml >= 0.15.94}
+BuildRequires:  %{python_module requests >= 2.3.0}
+BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module strictyaml}
 BuildRequires:  %{python_module waitress >= 1.0.1}
 # /SECTION

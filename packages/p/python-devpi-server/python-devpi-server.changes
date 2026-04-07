@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Mar 30 21:36:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.19.2:
+  * Preserve log for documentation uploads in export.
+  * Any missing file on mirrors will be ignored during event
+    processing as is already the case in other places.
+  * Use short timeout when project list is requested for
+    ``has_project`` call on mirrors instead of the long one used
+    for ``list_projects``. This prevents installers from timing
+    out and retrying several times.
+  * Fix error handling for proxy requests from replica to
+    primary.
+  * Pin setuptools as pyramid still requires pkg_resources.
+  * Always allow replicas to access deleted releases to get the
+    proper ``410 Gone`` instead of ``403 Forbidden`` when
+    ``devpi-lockdown`` is in use.
+  * Add ``--autocreate-users`` server option.
+  * Automatically creates users that don't exist in devpi, but
+    have successfully authenticated via an authentication plugin.
+  * A typical example of when to enable this would be when
+    authenticating via an LDAP directory.
+  * Automatically created users do not have passwords, and have
+    no password hash to prevent local authentication.
+  * Add ``replica-files-in-sync-at``, ``replica-init-queue-
+    finished-at`` and ``replica-metadata-in-sync-at`` to status
+    view, the existing ``replica-in-sync-at`` is now a
+    combination of all three instead of just metadata.
+
+-------------------------------------------------------------------
 Wed Feb  4 13:24:48 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - migrate to libalternatives
@@ -215,7 +244,7 @@ Mon Apr 10 07:28:50 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Tue Dec 13 04:54:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 6.8.0 
+- Update to version 6.8.0
   * Features
   - Fix #929: Cache normalized project names per transaction on mirror index instances.
   * Bug Fixes
@@ -350,12 +379,12 @@ Tue Aug  3 09:11:58 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.1.0
   * Proxy requests from replica to master are now streamed if possible.
-  * Dropped support for Python 2.7, 3.4 and 3.5. Python 3.x versions 
+  * Dropped support for Python 2.7, 3.4 and 3.5. Python 3.x versions
     will be supported until their EOL.
-  * Remove deprecated command line options which were replaced by 
+  * Remove deprecated command line options which were replaced by
     separate scripts.
   * The user creation and modification time is now stored.
-  * add explicit ruamel.yaml dependency declaration after strictyaml 
+  * add explicit ruamel.yaml dependency declaration after strictyaml
     vendored it
   * Allow user and index URLs to work with a trailing slash.
 
@@ -369,16 +398,16 @@ Thu Apr  2 11:26:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 5.4.1
   * This is the last feature release with Python 2.7 support!
-  * Import won't abort anymore when a base index was removed. 
+  * Import won't abort anymore when a base index was removed.
     The bases setting will be imported as is.
-  * The ``requires_python`` metadata is now included in version 
+  * The ``requires_python`` metadata is now included in version
     data on mirror indexes.
-  * Downloaded files from mirrors can be included in exports with 
+  * Downloaded files from mirrors can be included in exports with
     the ``--include-mirrored-files`` option.
-  * On import files for mirror indexes are now imported when they 
+  * On import files for mirror indexes are now imported when they
     were included in the dump (see ``--include-mirrored-files``).
   * Fix ``--no-root-pypi`` option when importing devpi data.
-  * Fix pushing from mirror to an index when the file was removed 
+  * Fix pushing from mirror to an index when the file was removed
     and ``mirror_use_external_urls`` is active.
 - Drop Python2 anyway because of pyramid dropping Python2
 
