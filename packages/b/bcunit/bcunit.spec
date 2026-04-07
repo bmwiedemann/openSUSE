@@ -1,7 +1,7 @@
 #
 # spec file for package bcunit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libbcunit
 %define sover   1
 Name:           bcunit
-Version:        5.3.101
+Version:        5.4.102
 Release:        0
 Summary:        Provide C programmers basic testing functionality
 License:        LGPL-2.0-or-later
@@ -83,19 +83,18 @@ This package installs the BCUnit shared library.
 
 mkdir -p %{buildroot}%{_libdir}/BCUnit/
 
-%post -n %{soname}%{sover} -p /sbin/ldconfig
-%postun -n %{soname}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{soname}%{sover}
 
 %files -n %{soname}%{sover}
 %doc AUTHORS ChangeLog NEWS README.md TODO
 %license COPYING
-%{_libdir}/%{soname}.so.%{sover}*
+%{_libdir}/%{soname}.so.%{sover}{,.*}
 
 %files doc
 %dir %{_datadir}/BCUnit/
 %{_datadir}/BCUnit/*dtd
 %{_datadir}/BCUnit/*xsl
-%{_datadir}/man/man3/BCUnit.3.gz
+%{_mandir}/man3/BCUnit.3%{?ext_man}
 
 %files devel
 %dir %{_datadir}/BCUnit/

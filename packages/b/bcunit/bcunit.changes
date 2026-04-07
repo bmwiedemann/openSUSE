@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:20:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.4.102:
+  * No longer use CMAKE_BUILD_TYPE to allow configuration choice at
+    build time
+
+-------------------------------------------------------------------
 Mon Feb 17 08:03:57 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.3.101 (no changelog).
