@@ -561,4 +561,12 @@
     <comment>Support Immutable Mode (jsc#PED-14907 and jsc#PED-14906)</comment>
     <requestid>1327593</requestid>
   </revision>
+  <revision rev="54" vrev="57">
+    <srcmd5>ab9894399c1b5219dc19acea450f72be</srcmd5>
+    <version>unknown</version>
+    <time>1775572314</time>
+    <user>dimstar_suse</user>
+    <comment>Update to TeXLive 2026</comment>
+    <requestid>1344148</requestid>
+  </revision>
 </revisionlist>

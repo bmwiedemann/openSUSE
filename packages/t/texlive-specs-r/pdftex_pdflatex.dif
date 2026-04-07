@@ -1,34 +1,36 @@
 ---
- texmf-dist/doc/man/man1/pdftex.1 |    9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ texmf-dist/doc/man/man1/pdftex.1 |   12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
 --- texmf-dist/doc/man/man1/pdftex.1
-+++ texmf-dist/doc/man/man1/pdftex.1	2022-04-07 09:53:46.136169015 +0000
-@@ -20,12 +20,17 @@
- .if t .ds WB W\s-2EB\s+2
++++ texmf-dist/doc/man/man1/pdftex.1	2026-03-31 08:38:00.151187425 +0000
+@@ -9,11 +9,16 @@
+ .if n .ds LX LaTeX
  .\"=====================================================================
  .SH NAME
--pdftex \- PDF output from TeX
-+pdftex \- PDF output from \*(TX
+-pdftex, pdfetex \- PDF output from TeX
++pdftex, pdfetex \- PDF output from \*(TX
 +.br
 +pdflatex \- PDF output from \*(LX
  .SH SYNOPSIS
  .B pdftex
  .RI [ options ]
  .RI [ \fB&\fPformat ]
- .RI [ file | \fB\e\fPcommands ]
 +.br
 +.B pdflatex
 +.RI [ first-line ]
+ \h'.25' [ \fIfile\fP [ \fImore-input\fP ] \h'.5'|\h'.5' [ \fB\e\fP\fImore-input\fP ]
  .\"=====================================================================
  .SH DESCRIPTION
- Run the pdf\*(TX typesetter on
-@@ -57,6 +62,8 @@ PDF output has been enabled.  The
- command uses the equivalent of the plain \*(TX format, and the
- .B pdflatex
- command uses the equivalent of the \*(LX format.
+@@ -38,7 +43,10 @@ The typical use of pdf\*(TX is with preg
+ .B pdftex
+ command uses the plain \*(TX format, and the
+ .BR pdflatex (1)
+-command uses the \*(LX format.  As described in 
++command uses the \*(LX format.
 +For a further description of \*(LX see the manual page
 +.BR latex (1).
- To generate formats, use the
- .B \-ini
- switch.
++As described in 
+ .BR etex (1),
+ the e-\*(TX extensions are enabled when building the \fI.fmt\fP file.
+ .PP
