@@ -21,12 +21,12 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define texlive_version  2025
-%define texlive_previous 2022
-%define texlive_release  20250308
+%define texlive_version  2026
+%define texlive_previous 2025
+%define texlive_release  20260301
 %define texlive_noarch   222
-%define texlive_source   texlive-20250308-source
-%define biber_version    2.20
+%define texlive_source   texlive-20260301-source
+%define biber_version    2.21
 
 %define __perl_requires		%{nil}
 %define __os_install_post	/usr/lib/rpm/brp-compress \\\
@@ -126,7 +126,7 @@ Source30:       texlive-filesystem-rpmlintrc
 Source31:       dot.dvipsrc
 Source42:       zypplugin.in
 # Download at ftp://ftp.tug.org/texlive/tlnet/archive/
-# from 20250308
+# from 20260301
 Source1000:     scheme-basic.tar.xz
 Source1001:     scheme-bookpub.tar.xz
 Source1002:     scheme-context.tar.xz
@@ -310,7 +310,7 @@ are large), nor does it contain additional mathematical or
 other technical packages.
 
 %package -n texlive-scheme-context
-Version:        %{texlive_version}.%{texlive_noarch}.svn73338
+Version:        %{texlive_version}.%{texlive_noarch}.svn75426
 Release:        0
 License:        LPPL-1.0
 Summary:        ConTeXt scheme
@@ -318,51 +318,116 @@ Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
 Provides:       pattern() = texlive_scheme_context
 Provides:       pattern-category() = TeXLive%20Scheme
+Requires:       texlive-almfixed >= %{texlive_version}
+#!BuildIgnore: texlive-almfixed
 Requires:       texlive-antt >= %{texlive_version}
 #!BuildIgnore: texlive-antt
-Requires:       texlive-asana-math >= %{texlive_version}
-#!BuildIgnore: texlive-asana-math
-Requires:       texlive-ccicons >= %{texlive_version}
-#!BuildIgnore: texlive-ccicons
+Requires:       texlive-circuitikz >= %{texlive_version}
+#!BuildIgnore: texlive-circuitikz
+Requires:       texlive-cm-unicode >= %{texlive_version}
+#!BuildIgnore: texlive-cm-unicode
 Requires:       texlive-collection-context >= %{texlive_version}
 #!BuildIgnore: texlive-collection-context
 Requires:       texlive-collection-metapost >= %{texlive_version}
 #!BuildIgnore: texlive-collection-metapost
+Requires:       texlive-concmath-otf >= %{texlive_version}
+#!BuildIgnore: texlive-concmath-otf
+Requires:       texlive-context-animation >= %{texlive_version}
+#!BuildIgnore: texlive-context-animation
+Requires:       texlive-context-calendar-examples >= %{texlive_version}
+#!BuildIgnore: texlive-context-calendar-examples
+Requires:       texlive-context-collating-marks >= %{texlive_version}
+#!BuildIgnore: texlive-context-collating-marks
+Requires:       texlive-context-cyrillicnumbers >= %{texlive_version}
+#!BuildIgnore: texlive-context-cyrillicnumbers
+Requires:       texlive-context-filter >= %{texlive_version}
+#!BuildIgnore: texlive-context-filter
+Requires:       texlive-context-gnuplot >= %{texlive_version}
+#!BuildIgnore: texlive-context-gnuplot
+Requires:       texlive-context-handlecsv >= %{texlive_version}
+#!BuildIgnore: texlive-context-handlecsv
+Requires:       texlive-context-letter >= %{texlive_version}
+#!BuildIgnore: texlive-context-letter
+Requires:       texlive-context-mathsets >= %{texlive_version}
+#!BuildIgnore: texlive-context-mathsets
+Requires:       texlive-context-pocketdiary >= %{texlive_version}
+#!BuildIgnore: texlive-context-pocketdiary
+Requires:       texlive-context-simpleslides >= %{texlive_version}
+#!BuildIgnore: texlive-context-simpleslides
+Requires:       texlive-context-squares >= %{texlive_version}
+#!BuildIgnore: texlive-context-squares
+Requires:       texlive-context-sudoku >= %{texlive_version}
+#!BuildIgnore: texlive-context-sudoku
+Requires:       texlive-context-transliterator >= %{texlive_version}
+#!BuildIgnore: texlive-context-transliterator
+Requires:       texlive-context-vim >= %{texlive_version}
+#!BuildIgnore: texlive-context-vim
+Requires:       texlive-context-visualcounter >= %{texlive_version}
+#!BuildIgnore: texlive-context-visualcounter
 Requires:       texlive-dejavu >= %{texlive_version}
 #!BuildIgnore: texlive-dejavu
-Requires:       texlive-eulervm >= %{texlive_version}
-#!BuildIgnore: texlive-eulervm
+Requires:       texlive-ebgaramond >= %{texlive_version}
+#!BuildIgnore: texlive-ebgaramond
+Requires:       texlive-erewhon >= %{texlive_version}
+#!BuildIgnore: texlive-erewhon
+Requires:       texlive-erewhon-math >= %{texlive_version}
+#!BuildIgnore: texlive-erewhon-math
+Requires:       texlive-euler-math >= %{texlive_version}
+#!BuildIgnore: texlive-euler-math
+Requires:       texlive-fontawesome >= %{texlive_version}
+#!BuildIgnore: texlive-fontawesome
+Requires:       texlive-garamond-math >= %{texlive_version}
+#!BuildIgnore: texlive-garamond-math
+Requires:       texlive-gentium-sil >= %{texlive_version}
+#!BuildIgnore: texlive-gentium-sil
 Requires:       texlive-iwona >= %{texlive_version}
 #!BuildIgnore: texlive-iwona
+Requires:       texlive-kpfonts-otf >= %{texlive_version}
+#!BuildIgnore: texlive-kpfonts-otf
 Requires:       texlive-kurier >= %{texlive_version}
 #!BuildIgnore: texlive-kurier
-Requires:       texlive-ly1 >= %{texlive_version}
-#!BuildIgnore: texlive-ly1
-Requires:       texlive-manfnt-font >= %{texlive_version}
-#!BuildIgnore: texlive-manfnt-font
+Requires:       texlive-libertinus-fonts >= %{texlive_version}
+#!BuildIgnore: texlive-libertinus-fonts
+Requires:       texlive-lm >= %{texlive_version}
+#!BuildIgnore: texlive-lm
+Requires:       texlive-lm-math >= %{texlive_version}
+#!BuildIgnore: texlive-lm-math
+Requires:       texlive-lua-widow-control >= %{texlive_version}
+#!BuildIgnore: texlive-lua-widow-control
 Requires:       texlive-marvosym >= %{texlive_version}
 #!BuildIgnore: texlive-marvosym
-Requires:       texlive-mflogo-font >= %{texlive_version}
-#!BuildIgnore: texlive-mflogo-font
+Requires:       texlive-oldstandard >= %{texlive_version}
+#!BuildIgnore: texlive-oldstandard
+Requires:       texlive-pgf >= %{texlive_version}
+#!BuildIgnore: texlive-pgf
+Requires:       texlive-pgfplots >= %{texlive_version}
+#!BuildIgnore: texlive-pgfplots
+Requires:       texlive-plex >= %{texlive_version}
+#!BuildIgnore: texlive-plex
 Requires:       texlive-poltawski >= %{texlive_version}
 #!BuildIgnore: texlive-poltawski
-Requires:       texlive-pxfonts >= %{texlive_version}
-#!BuildIgnore: texlive-pxfonts
 Requires:       texlive-tex-gyre >= %{texlive_version}
 #!BuildIgnore: texlive-tex-gyre
 Requires:       texlive-tex-gyre-math >= %{texlive_version}
 #!BuildIgnore: texlive-tex-gyre-math
-Requires:       texlive-txfonts >= %{texlive_version}
-#!BuildIgnore: texlive-txfonts
-Requires:       texlive-wasy >= %{texlive_version}
-#!BuildIgnore: texlive-wasy
+Requires:       texlive-xcharter >= %{texlive_version}
+#!BuildIgnore: texlive-xcharter
+Requires:       texlive-xcharter-math >= %{texlive_version}
+#!BuildIgnore: texlive-xcharter-math
 Requires:       texlive-xits >= %{texlive_version}
 #!BuildIgnore: texlive-xits
 Provides:       tex(context)
 BuildArch:      noarch
 
 %description -n texlive-scheme-context
-This is the TeX Live scheme for installing ConTeXt.
+This is the TeX Live scheme for installing ConTeXt. It's
+intended to give essentially the same results as the ConTeXt
+standalone distribution. In addition to collection-context,
+includes fonts and other packages commonly used with ConTeXt.
+TeX Live uses the ConTeXt repackaging as distributed from
+https://github.com/gucci-on-fleek/context-packaging. See
+https://contextgarden.net and https://pragma-ade.com for
+information about ConTeXt.
 
 %package -n texlive-scheme-full
 Version:        %{texlive_version}.%{texlive_noarch}.svn54074
@@ -645,7 +710,7 @@ scripts are used in TeX Live infrastructure. This scheme
 corresponds exactly to collection-basic.
 
 %package -n texlive-scheme-small
-Version:        %{texlive_version}.%{texlive_noarch}.svn71080
+Version:        %{texlive_version}.%{texlive_noarch}.svn77510
 Release:        0
 License:        LPPL-1.0
 Summary:        Small scheme (basic + xetex, metapost, a few languages)
@@ -729,24 +794,62 @@ Requires:       texlive-hyphen-spanish >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-spanish
 Requires:       texlive-hyphen-swedish >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-swedish
+Requires:       texlive-l3backend-dev >= %{texlive_version}
+#!BuildIgnore: texlive-l3backend-dev
+Requires:       texlive-l3kernel-dev >= %{texlive_version}
+#!BuildIgnore: texlive-l3kernel-dev
+Requires:       texlive-latex-amsmath-dev >= %{texlive_version}
+#!BuildIgnore: texlive-latex-amsmath-dev
+Requires:       texlive-latex-base-dev >= %{texlive_version}
+#!BuildIgnore: texlive-latex-base-dev
+Requires:       texlive-latex-bin-dev >= %{texlive_version}
+#!BuildIgnore: texlive-latex-bin-dev
+Requires:       texlive-latex-firstaid-dev >= %{texlive_version}
+#!BuildIgnore: texlive-latex-firstaid-dev
+Requires:       texlive-latex-graphics-dev >= %{texlive_version}
+#!BuildIgnore: texlive-latex-graphics-dev
+Requires:       texlive-latex-lab >= %{texlive_version}
+#!BuildIgnore: texlive-latex-lab
+Requires:       texlive-latex-lab-dev >= %{texlive_version}
+#!BuildIgnore: texlive-latex-lab-dev
+Requires:       texlive-latex-tools-dev >= %{texlive_version}
+#!BuildIgnore: texlive-latex-tools-dev
 Requires:       texlive-lm >= %{texlive_version}
 #!BuildIgnore: texlive-lm
+Requires:       texlive-ltx-talk >= %{texlive_version}
+#!BuildIgnore: texlive-ltx-talk
+Requires:       texlive-lua-unicode-math >= %{texlive_version}
+#!BuildIgnore: texlive-lua-unicode-math
 Requires:       texlive-lualibs >= %{texlive_version}
 #!BuildIgnore: texlive-lualibs
+Requires:       texlive-luamml >= %{texlive_version}
+#!BuildIgnore: texlive-luamml
 Requires:       texlive-luaotfload >= %{texlive_version}
 #!BuildIgnore: texlive-luaotfload
 Requires:       texlive-luatexbase >= %{texlive_version}
 #!BuildIgnore: texlive-luatexbase
+Requires:       texlive-make4ht >= %{texlive_version}
+#!BuildIgnore: texlive-make4ht
+Requires:       texlive-pdfmanagement-testphase >= %{texlive_version}
+#!BuildIgnore: texlive-pdfmanagement-testphase
 Requires:       texlive-revtex >= %{texlive_version}
 #!BuildIgnore: texlive-revtex
 Requires:       texlive-synctex >= %{texlive_version}
 #!BuildIgnore: texlive-synctex
+Requires:       texlive-tagpdf >= %{texlive_version}
+#!BuildIgnore: texlive-tagpdf
+Requires:       texlive-tex4ebook >= %{texlive_version}
+#!BuildIgnore: texlive-tex4ebook
+Requires:       texlive-tex4ht >= %{texlive_version}
+#!BuildIgnore: texlive-tex4ht
 Requires:       texlive-times >= %{texlive_version}
 #!BuildIgnore: texlive-times
 Requires:       texlive-tipa >= %{texlive_version}
 #!BuildIgnore: texlive-tipa
 Requires:       texlive-ulem >= %{texlive_version}
 #!BuildIgnore: texlive-ulem
+Requires:       texlive-unicode-math >= %{texlive_version}
+#!BuildIgnore: texlive-unicode-math
 Requires:       texlive-upquote >= %{texlive_version}
 #!BuildIgnore: texlive-upquote
 Requires:       texlive-zapfding >= %{texlive_version}
@@ -757,7 +860,9 @@ BuildArch:      noarch
 %description -n texlive-scheme-small
 This is a small TeX Live scheme, corresponding to MacTeX's
 BasicTeX variant. It adds XeTeX, MetaPost, various
-hyphenations, and some recommended packages to scheme-basic.
+hyphenations, and a few recommended packages to scheme-basic,
+including the tagged pdf support in LaTeX. It also provides the
+{pdf,xe,lua,...}latex-dev engines for helping to test LaTeX.
 
 %package -n texlive-scheme-tetex
 Version:        %{texlive_version}.%{texlive_noarch}.svn74022
@@ -989,7 +1094,7 @@ plain TeX macros, Computer Modern fonts, and configuration for
 common drivers; no LaTeX.
 
 %package -n texlive-collection-bibtexextra
-Version:        %{texlive_version}.%{texlive_noarch}.svn73262
+Version:        %{texlive_version}.%{texlive_noarch}.svn75480
 Release:        0
 License:        LPPL-1.0
 Summary:        BibTeX additional styles
@@ -1029,6 +1134,8 @@ Requires:       texlive-bib2qr >= %{texlive_version}
 #!BuildIgnore: texlive-bib2qr
 Requires:       texlive-bibarts >= %{texlive_version}
 #!BuildIgnore: texlive-bibarts
+Requires:       texlive-bibbreeze >= %{texlive_version}
+#!BuildIgnore: texlive-bibbreeze
 Requires:       texlive-bibcop >= %{texlive_version}
 #!BuildIgnore: texlive-bibcop
 Requires:       texlive-biber >= %{texlive_version}
@@ -1209,6 +1316,8 @@ Requires:       texlive-citeall >= %{texlive_version}
 #!BuildIgnore: texlive-citeall
 Requires:       texlive-citeref >= %{texlive_version}
 #!BuildIgnore: texlive-citeref
+Requires:       texlive-citeright >= %{texlive_version}
+#!BuildIgnore: texlive-citeright
 Requires:       texlive-collection-latex >= %{texlive_version}
 #!BuildIgnore: texlive-collection-latex
 Requires:       texlive-collref >= %{texlive_version}
@@ -1341,7 +1450,7 @@ Additional BibTeX styles and bibliography data(bases), notably
 including BibLaTeX.
 
 %package -n texlive-collection-binextra
-Version:        %{texlive_version}.%{texlive_noarch}.svn73049
+Version:        %{texlive_version}.%{texlive_noarch}.svn77772
 Release:        0
 License:        LPPL-1.0
 Summary:        TeX auxiliary programs
@@ -1504,10 +1613,14 @@ Requires:       texlive-purifyeps >= %{texlive_version}
 #!BuildIgnore: texlive-purifyeps
 Requires:       texlive-pythontex >= %{texlive_version}
 #!BuildIgnore: texlive-pythontex
+Requires:       texlive-runtexfile >= %{texlive_version}
+#!BuildIgnore: texlive-runtexfile
 Requires:       texlive-runtexshebang >= %{texlive_version}
 #!BuildIgnore: texlive-runtexshebang
 Requires:       texlive-seetexk >= %{texlive_version}
 #!BuildIgnore: texlive-seetexk
+Requires:       texlive-show-pdf-tags >= %{texlive_version}
+#!BuildIgnore: texlive-show-pdf-tags
 Requires:       texlive-spix >= %{texlive_version}
 #!BuildIgnore: texlive-spix
 Requires:       texlive-sqltex >= %{texlive_version}
@@ -1564,6 +1677,10 @@ Requires:       texlive-upmendex >= %{texlive_version}
 #!BuildIgnore: texlive-upmendex
 Requires:       texlive-web >= %{texlive_version}
 #!BuildIgnore: texlive-web
+Requires:       texlive-xdvipsk >= %{texlive_version}
+#!BuildIgnore: texlive-xdvipsk
+Requires:       texlive-xdvipsk-support >= %{texlive_version}
+#!BuildIgnore: texlive-xdvipsk-support
 Requires:       texlive-xindex >= %{texlive_version}
 #!BuildIgnore: texlive-xindex
 Requires:       texlive-xpdfopen >= %{texlive_version}
@@ -1577,7 +1694,7 @@ programs and macros for DVI file manipulation, literate
 programming, patgen, and plenty more.
 
 %package -n texlive-collection-context
-Version:        %{texlive_version}.%{texlive_noarch}.svn72727
+Version:        %{texlive_version}.%{texlive_noarch}.svn75426
 Release:        0
 License:        LPPL-1.0
 Summary:        ConTeXt and packages
@@ -1590,14 +1707,14 @@ Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
 Requires:       texlive-context >= %{texlive_version}
 #!BuildIgnore: texlive-context
+Requires:       texlive-context-animation >= %{texlive_version}
+#!BuildIgnore: texlive-context-animation
 Requires:       texlive-context-calendar-examples >= %{texlive_version}
 #!BuildIgnore: texlive-context-calendar-examples
 Requires:       texlive-context-chat >= %{texlive_version}
 #!BuildIgnore: texlive-context-chat
 Requires:       texlive-context-collating-marks >= %{texlive_version}
 #!BuildIgnore: texlive-context-collating-marks
-Requires:       texlive-context-companion-fonts >= %{texlive_version}
-#!BuildIgnore: texlive-context-companion-fonts
 Requires:       texlive-context-cyrillicnumbers >= %{texlive_version}
 #!BuildIgnore: texlive-context-cyrillicnumbers
 Requires:       texlive-context-filter >= %{texlive_version}
@@ -1622,8 +1739,6 @@ Requires:       texlive-context-squares >= %{texlive_version}
 #!BuildIgnore: texlive-context-squares
 Requires:       texlive-context-sudoku >= %{texlive_version}
 #!BuildIgnore: texlive-context-sudoku
-Requires:       texlive-context-texlive >= %{texlive_version}
-#!BuildIgnore: texlive-context-texlive
 Requires:       texlive-context-transliterator >= %{texlive_version}
 #!BuildIgnore: texlive-context-transliterator
 Requires:       texlive-context-typescripts >= %{texlive_version}
@@ -1641,10 +1756,14 @@ BuildArch:      noarch
 
 %description -n texlive-collection-context
 Hans Hagen's powerful ConTeXt system, https://pragma-ade.com.
-Also includes third-party ConTeXt packages.
+Also includes third-party ConTeXt packages. TeX Live uses the
+ConTeXt repackaging as distributed from
+https://github.com/gucci-on-fleek/context-packaging. See
+https://contextgarden.net and https://pragma-ade.com for
+information about ConTeXt.#
 
 %package -n texlive-collection-fontsextra
-Version:        %{texlive_version}.%{texlive_noarch}.svn73401
+Version:        %{texlive_version}.%{texlive_noarch}.svn77044
 Release:        0
 License:        LPPL-1.0
 Summary:        Additional fonts
@@ -1696,6 +1815,8 @@ Requires:       texlive-arimo >= %{texlive_version}
 #!BuildIgnore: texlive-arimo
 Requires:       texlive-arsenal >= %{texlive_version}
 #!BuildIgnore: texlive-arsenal
+Requires:       texlive-arsenal-math >= %{texlive_version}
+#!BuildIgnore: texlive-arsenal-math
 Requires:       texlive-arvo >= %{texlive_version}
 #!BuildIgnore: texlive-arvo
 Requires:       texlive-asana-math >= %{texlive_version}
@@ -1718,6 +1839,8 @@ Requires:       texlive-aurical >= %{texlive_version}
 #!BuildIgnore: texlive-aurical
 Requires:       texlive-b1encoding >= %{texlive_version}
 #!BuildIgnore: texlive-b1encoding
+Requires:       texlive-bahaistar >= %{texlive_version}
+#!BuildIgnore: texlive-bahaistar
 Requires:       texlive-barcodes >= %{texlive_version}
 #!BuildIgnore: texlive-barcodes
 Requires:       texlive-baskervaldadf >= %{texlive_version}
@@ -1962,6 +2085,12 @@ Requires:       texlive-fontawesome >= %{texlive_version}
 #!BuildIgnore: texlive-fontawesome
 Requires:       texlive-fontawesome5 >= %{texlive_version}
 #!BuildIgnore: texlive-fontawesome5
+Requires:       texlive-fontawesome6 >= %{texlive_version}
+#!BuildIgnore: texlive-fontawesome6
+Requires:       texlive-fontawesome7 >= %{texlive_version}
+#!BuildIgnore: texlive-fontawesome7
+Requires:       texlive-fontawesomescaled >= %{texlive_version}
+#!BuildIgnore: texlive-fontawesomescaled
 Requires:       texlive-fontmfizz >= %{texlive_version}
 #!BuildIgnore: texlive-fontmfizz
 Requires:       texlive-fonts-churchslavonic >= %{texlive_version}
@@ -2074,6 +2203,8 @@ Requires:       texlive-jetbrainsmono-otf >= %{texlive_version}
 #!BuildIgnore: texlive-jetbrainsmono-otf
 Requires:       texlive-josefin >= %{texlive_version}
 #!BuildIgnore: texlive-josefin
+Requires:       texlive-juliamono >= %{texlive_version}
+#!BuildIgnore: texlive-juliamono
 Requires:       texlive-junicode >= %{texlive_version}
 #!BuildIgnore: texlive-junicode
 Requires:       texlive-junicodevf >= %{texlive_version}
@@ -2126,12 +2257,16 @@ Requires:       texlive-lobster2 >= %{texlive_version}
 #!BuildIgnore: texlive-lobster2
 Requires:       texlive-logix >= %{texlive_version}
 #!BuildIgnore: texlive-logix
+Requires:       texlive-luciole >= %{texlive_version}
+#!BuildIgnore: texlive-luciole
 Requires:       texlive-luwiantype >= %{texlive_version}
 #!BuildIgnore: texlive-luwiantype
 Requires:       texlive-lxfonts >= %{texlive_version}
 #!BuildIgnore: texlive-lxfonts
 Requires:       texlive-ly1 >= %{texlive_version}
 #!BuildIgnore: texlive-ly1
+Requires:       texlive-lydtype >= %{texlive_version}
+#!BuildIgnore: texlive-lydtype
 Requires:       texlive-magra >= %{texlive_version}
 #!BuildIgnore: texlive-magra
 Requires:       texlive-marcellus >= %{texlive_version}
@@ -2162,6 +2297,8 @@ Requires:       texlive-mlmodern >= %{texlive_version}
 #!BuildIgnore: texlive-mlmodern
 Requires:       texlive-mnsymbol >= %{texlive_version}
 #!BuildIgnore: texlive-mnsymbol
+Requires:       texlive-monaspace-otf >= %{texlive_version}
+#!BuildIgnore: texlive-monaspace-otf
 Requires:       texlive-montserrat >= %{texlive_version}
 #!BuildIgnore: texlive-montserrat
 Requires:       texlive-mpfonts >= %{texlive_version}
@@ -2224,6 +2361,8 @@ Requires:       texlive-pagella-otf >= %{texlive_version}
 #!BuildIgnore: texlive-pagella-otf
 Requires:       texlive-paratype >= %{texlive_version}
 #!BuildIgnore: texlive-paratype
+Requires:       texlive-pennstander-otf >= %{texlive_version}
+#!BuildIgnore: texlive-pennstander-otf
 Requires:       texlive-phaistos >= %{texlive_version}
 #!BuildIgnore: texlive-phaistos
 Requires:       texlive-phonetic >= %{texlive_version}
@@ -2302,6 +2441,8 @@ Requires:       texlive-sourceserifpro >= %{texlive_version}
 #!BuildIgnore: texlive-sourceserifpro
 Requires:       texlive-spectral >= %{texlive_version}
 #!BuildIgnore: texlive-spectral
+Requires:       texlive-splentinex >= %{texlive_version}
+#!BuildIgnore: texlive-splentinex
 Requires:       texlive-srbtiks >= %{texlive_version}
 #!BuildIgnore: texlive-srbtiks
 Requires:       texlive-starfont >= %{texlive_version}
@@ -2590,7 +2731,7 @@ package(s). It also includes the Aleph engine and related Omega
 formats and packages, and the HiTeX engine and related.
 
 %package -n texlive-collection-games
-Version:        %{texlive_version}.%{texlive_noarch}.svn73533
+Version:        %{texlive_version}.%{texlive_noarch}.svn76381
 Release:        0
 License:        LPPL-1.0
 Summary:        Games typesetting
@@ -2620,6 +2761,8 @@ Requires:       texlive-customdice >= %{texlive_version}
 #!BuildIgnore: texlive-customdice
 Requires:       texlive-egameps >= %{texlive_version}
 #!BuildIgnore: texlive-egameps
+Requires:       texlive-eigo >= %{texlive_version}
+#!BuildIgnore: texlive-eigo
 Requires:       texlive-gamebook >= %{texlive_version}
 #!BuildIgnore: texlive-gamebook
 Requires:       texlive-gamebooklib >= %{texlive_version}
@@ -2648,8 +2791,12 @@ Requires:       texlive-logicpuzzle >= %{texlive_version}
 #!BuildIgnore: texlive-logicpuzzle
 Requires:       texlive-mahjong >= %{texlive_version}
 #!BuildIgnore: texlive-mahjong
+Requires:       texlive-mathador >= %{texlive_version}
+#!BuildIgnore: texlive-mathador
 Requires:       texlive-maze >= %{texlive_version}
 #!BuildIgnore: texlive-maze
+Requires:       texlive-multi-sudoku >= %{texlive_version}
+#!BuildIgnore: texlive-multi-sudoku
 Requires:       texlive-musikui >= %{texlive_version}
 #!BuildIgnore: texlive-musikui
 Requires:       texlive-nimsticks >= %{texlive_version}
@@ -2662,6 +2809,8 @@ Requires:       texlive-othelloboard >= %{texlive_version}
 #!BuildIgnore: texlive-othelloboard
 Requires:       texlive-pas-crosswords >= %{texlive_version}
 #!BuildIgnore: texlive-pas-crosswords
+Requires:       texlive-pgf-go >= %{texlive_version}
+#!BuildIgnore: texlive-pgf-go
 Requires:       texlive-playcards >= %{texlive_version}
 #!BuildIgnore: texlive-playcards
 Requires:       texlive-psgo >= %{texlive_version}
@@ -2698,6 +2847,8 @@ Requires:       texlive-tangramtikz >= %{texlive_version}
 #!BuildIgnore: texlive-tangramtikz
 Requires:       texlive-thematicpuzzle >= %{texlive_version}
 #!BuildIgnore: texlive-thematicpuzzle
+Requires:       texlive-tictactoe >= %{texlive_version}
+#!BuildIgnore: texlive-tictactoe
 Requires:       texlive-tikz-triminos >= %{texlive_version}
 #!BuildIgnore: texlive-tikz-triminos
 Requires:       texlive-trivialpursuit >= %{texlive_version}
@@ -2721,7 +2872,7 @@ BuildArch:      noarch
 Setups for typesetting various games, including chess.
 
 %package -n texlive-collection-humanities
-Version:        %{texlive_version}.%{texlive_noarch}.svn72692
+Version:        %{texlive_version}.%{texlive_noarch}.svn75384
 Release:        0
 License:        LPPL-1.0
 Summary:        Humanities packages
@@ -2791,8 +2942,12 @@ Requires:       texlive-ling-macros >= %{texlive_version}
 #!BuildIgnore: texlive-ling-macros
 Requires:       texlive-linguex >= %{texlive_version}
 #!BuildIgnore: texlive-linguex
+Requires:       texlive-linguistix >= %{texlive_version}
+#!BuildIgnore: texlive-linguistix
 Requires:       texlive-liturg >= %{texlive_version}
 #!BuildIgnore: texlive-liturg
+Requires:       texlive-liturgy-cw >= %{texlive_version}
+#!BuildIgnore: texlive-liturgy-cw
 Requires:       texlive-metrix >= %{texlive_version}
 #!BuildIgnore: texlive-metrix
 Requires:       texlive-nnext >= %{texlive_version}
@@ -2853,7 +3008,7 @@ Packages for law, linguistics, social sciences, humanities,
 etc.
 
 %package -n texlive-collection-langarabic
-Version:        %{texlive_version}.%{texlive_noarch}.svn69111
+Version:        %{texlive_version}.%{texlive_noarch}.svn78033
 Release:        0
 License:        LPPL-1.0
 Summary:        Arabic
@@ -2878,6 +3033,8 @@ Requires:       texlive-arabluatex >= %{texlive_version}
 #!BuildIgnore: texlive-arabluatex
 Requires:       texlive-arabtex >= %{texlive_version}
 #!BuildIgnore: texlive-arabtex
+Requires:       texlive-awami >= %{texlive_version}
+#!BuildIgnore: texlive-awami
 Requires:       texlive-bidi >= %{texlive_version}
 #!BuildIgnore: texlive-bidi
 Requires:       texlive-bidihl >= %{texlive_version}
@@ -2886,6 +3043,8 @@ Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
 Requires:       texlive-dad >= %{texlive_version}
 #!BuildIgnore: texlive-dad
+Requires:       texlive-fariscovernew >= %{texlive_version}
+#!BuildIgnore: texlive-fariscovernew
 Requires:       texlive-ghab >= %{texlive_version}
 #!BuildIgnore: texlive-ghab
 Requires:       texlive-hvarabic >= %{texlive_version}
@@ -2906,6 +3065,8 @@ Requires:       texlive-lshort-persian >= %{texlive_version}
 #!BuildIgnore: texlive-lshort-persian
 Requires:       texlive-luabidi >= %{texlive_version}
 #!BuildIgnore: texlive-luabidi
+Requires:       texlive-mohe-book >= %{texlive_version}
+#!BuildIgnore: texlive-mohe-book
 Requires:       texlive-na-box >= %{texlive_version}
 #!BuildIgnore: texlive-na-box
 Requires:       texlive-parsimatn >= %{texlive_version}
@@ -2935,7 +3096,7 @@ BuildArch:      noarch
 Support for Arabic and Persian.
 
 %package -n texlive-collection-langchinese
-Version:        %{texlive_version}.%{texlive_noarch}.svn72136
+Version:        %{texlive_version}.%{texlive_noarch}.svn77432
 Release:        0
 License:        LPPL-1.0
 Summary:        Chinese
@@ -2979,6 +3140,10 @@ Requires:       texlive-latex-notes-zh-cn >= %{texlive_version}
 #!BuildIgnore: texlive-latex-notes-zh-cn
 Requires:       texlive-lshort-chinese >= %{texlive_version}
 #!BuildIgnore: texlive-lshort-chinese
+Requires:       texlive-luatex-cn >= %{texlive_version}
+#!BuildIgnore: texlive-luatex-cn
+Requires:       texlive-lxgw-fonts >= %{texlive_version}
+#!BuildIgnore: texlive-lxgw-fonts
 Requires:       texlive-nanicolle >= %{texlive_version}
 #!BuildIgnore: texlive-nanicolle
 Requires:       texlive-njurepo >= %{texlive_version}
@@ -3083,7 +3248,7 @@ Thai support is in collection-langother. Additional packages
 for CJK are in their individual language collections.
 
 %package -n texlive-collection-langcyrillic
-Version:        %{texlive_version}.%{texlive_noarch}.svn69727
+Version:        %{texlive_version}.%{texlive_noarch}.svn78069
 Release:        0
 License:        LPPL-1.0
 Summary:        Cyrillic
@@ -3131,6 +3296,8 @@ Requires:       texlive-hyphen-bulgarian >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-bulgarian
 Requires:       texlive-hyphen-churchslavonic >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-churchslavonic
+Requires:       texlive-hyphen-kazakh >= %{texlive_version}
+#!BuildIgnore: texlive-hyphen-kazakh
 Requires:       texlive-hyphen-mongolian >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-mongolian
 Requires:       texlive-hyphen-russian >= %{texlive_version}
@@ -3679,7 +3846,7 @@ BuildArch:      noarch
 Support for French and Basque.
 
 %package -n texlive-collection-langgerman
-Version:        %{texlive_version}.%{texlive_noarch}.svn68711
+Version:        %{texlive_version}.%{texlive_noarch}.svn74675
 Release:        0
 License:        LPPL-1.0
 Summary:        German
@@ -3715,6 +3882,8 @@ Requires:       texlive-etoolbox-de >= %{texlive_version}
 #!BuildIgnore: texlive-etoolbox-de
 Requires:       texlive-fifinddo-info >= %{texlive_version}
 #!BuildIgnore: texlive-fifinddo-info
+Requires:       texlive-fragoli >= %{texlive_version}
+#!BuildIgnore: texlive-fragoli
 Requires:       texlive-german >= %{texlive_version}
 #!BuildIgnore: texlive-german
 Requires:       texlive-germbib >= %{texlive_version}
@@ -3910,7 +4079,7 @@ BuildArch:      noarch
 Support for Italian.
 
 %package -n texlive-collection-langjapanese
-Version:        %{texlive_version}.%{texlive_noarch}.svn74394
+Version:        %{texlive_version}.%{texlive_noarch}.svn76651
 Release:        0
 License:        LPPL-1.0
 Summary:        Japanese
@@ -3994,6 +4163,8 @@ Requires:       texlive-lshort-japanese >= %{texlive_version}
 #!BuildIgnore: texlive-lshort-japanese
 Requires:       texlive-luatexja >= %{texlive_version}
 #!BuildIgnore: texlive-luatexja
+Requires:       texlive-luwa-ul >= %{texlive_version}
+#!BuildIgnore: texlive-luwa-ul
 Requires:       texlive-mendex-doc >= %{texlive_version}
 #!BuildIgnore: texlive-mendex-doc
 Requires:       texlive-morisawa >= %{texlive_version}
@@ -4103,7 +4274,7 @@ BuildArch:      noarch
 Support for Korean; additional packages in collection-langcjk.
 
 %package -n texlive-collection-langother
-Version:        %{texlive_version}.%{texlive_noarch}.svn74031
+Version:        %{texlive_version}.%{texlive_noarch}.svn74620
 Release:        0
 License:        LPPL-1.0
 Summary:        Other languages
@@ -4225,6 +4396,8 @@ Requires:       texlive-thaienum >= %{texlive_version}
 #!BuildIgnore: texlive-thaienum
 Requires:       texlive-thaispec >= %{texlive_version}
 #!BuildIgnore: texlive-thaispec
+Requires:       texlive-tuzuk >= %{texlive_version}
+#!BuildIgnore: texlive-tuzuk
 Requires:       texlive-unicode-alphabets >= %{texlive_version}
 #!BuildIgnore: texlive-unicode-alphabets
 Requires:       texlive-velthuis >= %{texlive_version}
@@ -4388,7 +4561,7 @@ BuildArch:      noarch
 Support for Spanish.
 
 %package -n texlive-collection-latex
-Version:        %{texlive_version}.%{texlive_noarch}.svn73720
+Version:        %{texlive_version}.%{texlive_noarch}.svn77034
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX fundamental packages
@@ -4488,6 +4661,8 @@ Requires:       texlive-ltxcmds >= %{texlive_version}
 #!BuildIgnore: texlive-ltxcmds
 Requires:       texlive-ltxmisc >= %{texlive_version}
 #!BuildIgnore: texlive-ltxmisc
+Requires:       texlive-lua-uni-algos >= %{texlive_version}
+#!BuildIgnore: texlive-lua-uni-algos
 Requires:       texlive-mfnfss >= %{texlive_version}
 #!BuildIgnore: texlive-mfnfss
 Requires:       texlive-mptopdf >= %{texlive_version}
@@ -4528,7 +4703,7 @@ These packages are either mandated by the core LaTeX team, or
 very widely used and strongly recommended in practice.
 
 %package -n texlive-collection-latexextra
-Version:        %{texlive_version}.%{texlive_noarch}.svn74415
+Version:        %{texlive_version}.%{texlive_noarch}.svn78205
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX additional packages
@@ -4580,6 +4755,8 @@ Requires:       texlive-advdate >= %{texlive_version}
 #!BuildIgnore: texlive-advdate
 Requires:       texlive-affilauthor >= %{texlive_version}
 #!BuildIgnore: texlive-affilauthor
+Requires:       texlive-afperpack >= %{texlive_version}
+#!BuildIgnore: texlive-afperpack
 Requires:       texlive-akktex >= %{texlive_version}
 #!BuildIgnore: texlive-akktex
 Requires:       texlive-akletter >= %{texlive_version}
@@ -4678,8 +4855,14 @@ Requires:       texlive-basicarith >= %{texlive_version}
 #!BuildIgnore: texlive-basicarith
 Requires:       texlive-bchart >= %{texlive_version}
 #!BuildIgnore: texlive-bchart
+Requires:       texlive-beamer-reveal >= %{texlive_version}
+#!BuildIgnore: texlive-beamer-reveal
 Requires:       texlive-beamer-rl >= %{texlive_version}
 #!BuildIgnore: texlive-beamer-rl
+Requires:       texlive-beamer-theme-albi >= %{texlive_version}
+#!BuildIgnore: texlive-beamer-theme-albi
+Requires:       texlive-beamer-varbox >= %{texlive_version}
+#!BuildIgnore: texlive-beamer-varbox
 Requires:       texlive-beamer2thesis >= %{texlive_version}
 #!BuildIgnore: texlive-beamer2thesis
 Requires:       texlive-beamerappendixnote >= %{texlive_version}
@@ -4698,10 +4881,18 @@ Requires:       texlive-beamersubframe >= %{texlive_version}
 #!BuildIgnore: texlive-beamersubframe
 Requires:       texlive-beamertheme-arguelles >= %{texlive_version}
 #!BuildIgnore: texlive-beamertheme-arguelles
+Requires:       texlive-beamertheme-bilkent-econ >= %{texlive_version}
+#!BuildIgnore: texlive-beamertheme-bilkent-econ
+Requires:       texlive-beamertheme-cleaneasy >= %{texlive_version}
+#!BuildIgnore: texlive-beamertheme-cleaneasy
+Requires:       texlive-beamertheme-csh >= %{texlive_version}
+#!BuildIgnore: texlive-beamertheme-csh
 Requires:       texlive-beamertheme-cuerna >= %{texlive_version}
 #!BuildIgnore: texlive-beamertheme-cuerna
 Requires:       texlive-beamertheme-detlevcm >= %{texlive_version}
 #!BuildIgnore: texlive-beamertheme-detlevcm
+Requires:       texlive-beamertheme-durham >= %{texlive_version}
+#!BuildIgnore: texlive-beamertheme-durham
 Requires:       texlive-beamertheme-epyt >= %{texlive_version}
 #!BuildIgnore: texlive-beamertheme-epyt
 Requires:       texlive-beamertheme-focus >= %{texlive_version}
@@ -4728,6 +4919,8 @@ Requires:       texlive-beamertheme-simpledarkblue >= %{texlive_version}
 #!BuildIgnore: texlive-beamertheme-simpledarkblue
 Requires:       texlive-beamertheme-simpleplus >= %{texlive_version}
 #!BuildIgnore: texlive-beamertheme-simpleplus
+Requires:       texlive-beamertheme-spectrum >= %{texlive_version}
+#!BuildIgnore: texlive-beamertheme-spectrum
 Requires:       texlive-beamertheme-tcolorbox >= %{texlive_version}
 #!BuildIgnore: texlive-beamertheme-tcolorbox
 Requires:       texlive-beamertheme-trigon >= %{texlive_version}
@@ -4942,6 +5135,8 @@ Requires:       texlive-circledsteps >= %{texlive_version}
 #!BuildIgnore: texlive-circledsteps
 Requires:       texlive-circledtext >= %{texlive_version}
 #!BuildIgnore: texlive-circledtext
+Requires:       texlive-cistercian >= %{texlive_version}
+#!BuildIgnore: texlive-cistercian
 Requires:       texlive-classics >= %{texlive_version}
 #!BuildIgnore: texlive-classics
 Requires:       texlive-classpack >= %{texlive_version}
@@ -5404,6 +5599,12 @@ Requires:       texlive-ehhline >= %{texlive_version}
 #!BuildIgnore: texlive-ehhline
 Requires:       texlive-einfart >= %{texlive_version}
 #!BuildIgnore: texlive-einfart
+Requires:       texlive-elegantbook >= %{texlive_version}
+#!BuildIgnore: texlive-elegantbook
+Requires:       texlive-elegantnote >= %{texlive_version}
+#!BuildIgnore: texlive-elegantnote
+Requires:       texlive-elegantpaper >= %{texlive_version}
+#!BuildIgnore: texlive-elegantpaper
 Requires:       texlive-elements >= %{texlive_version}
 #!BuildIgnore: texlive-elements
 Requires:       texlive-ellipsis >= %{texlive_version}
@@ -5454,8 +5655,12 @@ Requires:       texlive-enumitem >= %{texlive_version}
 #!BuildIgnore: texlive-enumitem
 Requires:       texlive-enumitem-zref >= %{texlive_version}
 #!BuildIgnore: texlive-enumitem-zref
+Requires:       texlive-enumsub >= %{texlive_version}
+#!BuildIgnore: texlive-enumsub
 Requires:       texlive-envbig >= %{texlive_version}
 #!BuildIgnore: texlive-envbig
+Requires:       texlive-envelope-letter >= %{texlive_version}
+#!BuildIgnore: texlive-envelope-letter
 Requires:       texlive-enverb >= %{texlive_version}
 #!BuildIgnore: texlive-enverb
 Requires:       texlive-environ >= %{texlive_version}
@@ -5498,6 +5703,8 @@ Requires:       texlive-esint >= %{texlive_version}
 #!BuildIgnore: texlive-esint
 Requires:       texlive-esint-type1 >= %{texlive_version}
 #!BuildIgnore: texlive-esint-type1
+Requires:       texlive-essaykit >= %{texlive_version}
+#!BuildIgnore: texlive-essaykit
 Requires:       texlive-etaremune >= %{texlive_version}
 #!BuildIgnore: texlive-etaremune
 Requires:       texlive-etextools >= %{texlive_version}
@@ -5610,6 +5817,8 @@ Requires:       texlive-fifo-stack >= %{texlive_version}
 #!BuildIgnore: texlive-fifo-stack
 Requires:       texlive-figsize >= %{texlive_version}
 #!BuildIgnore: texlive-figsize
+Requires:       texlive-figureversions >= %{texlive_version}
+#!BuildIgnore: texlive-figureversions
 Requires:       texlive-filecontents >= %{texlive_version}
 #!BuildIgnore: texlive-filecontents
 Requires:       texlive-filecontentsdef >= %{texlive_version}
@@ -5640,6 +5849,8 @@ Requires:       texlive-fixme >= %{texlive_version}
 #!BuildIgnore: texlive-fixme
 Requires:       texlive-fixmetodonotes >= %{texlive_version}
 #!BuildIgnore: texlive-fixmetodonotes
+Requires:       texlive-fixtounicode >= %{texlive_version}
+#!BuildIgnore: texlive-fixtounicode
 Requires:       texlive-fjodor >= %{texlive_version}
 #!BuildIgnore: texlive-fjodor
 Requires:       texlive-flabels >= %{texlive_version}
@@ -5752,6 +5963,8 @@ Requires:       texlive-fundus-cyr >= %{texlive_version}
 #!BuildIgnore: texlive-fundus-cyr
 Requires:       texlive-fundus-sueterlin >= %{texlive_version}
 #!BuildIgnore: texlive-fundus-sueterlin
+Requires:       texlive-futharksymb >= %{texlive_version}
+#!BuildIgnore: texlive-futharksymb
 Requires:       texlive-fvextra >= %{texlive_version}
 #!BuildIgnore: texlive-fvextra
 Requires:       texlive-fwlw >= %{texlive_version}
@@ -5836,6 +6049,8 @@ Requires:       texlive-glossaries-slovene >= %{texlive_version}
 #!BuildIgnore: texlive-glossaries-slovene
 Requires:       texlive-glossaries-spanish >= %{texlive_version}
 #!BuildIgnore: texlive-glossaries-spanish
+Requires:       texlive-glossaries-ukrainian >= %{texlive_version}
+#!BuildIgnore: texlive-glossaries-ukrainian
 Requires:       texlive-gmdoc >= %{texlive_version}
 #!BuildIgnore: texlive-gmdoc
 Requires:       texlive-gmdoc-enhance >= %{texlive_version}
@@ -6056,8 +6271,8 @@ Requires:       texlive-isopt >= %{texlive_version}
 #!BuildIgnore: texlive-isopt
 Requires:       texlive-isorot >= %{texlive_version}
 #!BuildIgnore: texlive-isorot
-Requires:       texlive-isosafety >= %{texlive_version}
-#!BuildIgnore: texlive-isosafety
+Requires:       texlive-isosigns >= %{texlive_version}
+#!BuildIgnore: texlive-isosigns
 Requires:       texlive-isotope >= %{texlive_version}
 #!BuildIgnore: texlive-isotope
 Requires:       texlive-issuulinks >= %{texlive_version}
@@ -6116,6 +6331,8 @@ Requires:       texlive-komacv-rg >= %{texlive_version}
 #!BuildIgnore: texlive-komacv-rg
 Requires:       texlive-korigamik >= %{texlive_version}
 #!BuildIgnore: texlive-korigamik
+Requires:       texlive-ktbox >= %{texlive_version}
+#!BuildIgnore: texlive-ktbox
 Requires:       texlive-ktv-texdata >= %{texlive_version}
 #!BuildIgnore: texlive-ktv-texdata
 Requires:       texlive-l3backend-dev >= %{texlive_version}
@@ -6154,6 +6371,8 @@ Requires:       texlive-latex-graphics-dev >= %{texlive_version}
 #!BuildIgnore: texlive-latex-graphics-dev
 Requires:       texlive-latex-lab-dev >= %{texlive_version}
 #!BuildIgnore: texlive-latex-lab-dev
+Requires:       texlive-latex-tagging-status >= %{texlive_version}
+#!BuildIgnore: texlive-latex-tagging-status
 Requires:       texlive-latex-tools-dev >= %{texlive_version}
 #!BuildIgnore: texlive-latex-tools-dev
 Requires:       texlive-latex-uni8 >= %{texlive_version}
@@ -6182,6 +6401,8 @@ Requires:       texlive-leaflet >= %{texlive_version}
 #!BuildIgnore: texlive-leaflet
 Requires:       texlive-lebhart >= %{texlive_version}
 #!BuildIgnore: texlive-lebhart
+Requires:       texlive-lecturenotes >= %{texlive_version}
+#!BuildIgnore: texlive-lecturenotes
 Requires:       texlive-lectures >= %{texlive_version}
 #!BuildIgnore: texlive-lectures
 Requires:       texlive-lectureslides >= %{texlive_version}
@@ -6194,6 +6415,8 @@ Requires:       texlive-leipzig >= %{texlive_version}
 #!BuildIgnore: texlive-leipzig
 Requires:       texlive-lengthconvert >= %{texlive_version}
 #!BuildIgnore: texlive-lengthconvert
+Requires:       texlive-leporello >= %{texlive_version}
+#!BuildIgnore: texlive-leporello
 Requires:       texlive-lettre >= %{texlive_version}
 #!BuildIgnore: texlive-lettre
 Requires:       texlive-lettrine >= %{texlive_version}
@@ -6248,6 +6471,8 @@ Requires:       texlive-longfigure >= %{texlive_version}
 #!BuildIgnore: texlive-longfigure
 Requires:       texlive-longnamefilelist >= %{texlive_version}
 #!BuildIgnore: texlive-longnamefilelist
+Requires:       texlive-longtwocolumn >= %{texlive_version}
+#!BuildIgnore: texlive-longtwocolumn
 Requires:       texlive-loops >= %{texlive_version}
 #!BuildIgnore: texlive-loops
 Requires:       texlive-lsc >= %{texlive_version}
@@ -6314,6 +6539,8 @@ Requires:       texlive-makedtx >= %{texlive_version}
 #!BuildIgnore: texlive-makedtx
 Requires:       texlive-makeglos >= %{texlive_version}
 #!BuildIgnore: texlive-makeglos
+Requires:       texlive-makegobbler >= %{texlive_version}
+#!BuildIgnore: texlive-makegobbler
 Requires:       texlive-makelabels >= %{texlive_version}
 #!BuildIgnore: texlive-makelabels
 Requires:       texlive-makerobust >= %{texlive_version}
@@ -6370,6 +6597,8 @@ Requires:       texlive-meetingmins >= %{texlive_version}
 #!BuildIgnore: texlive-meetingmins
 Requires:       texlive-memexsupp >= %{texlive_version}
 #!BuildIgnore: texlive-memexsupp
+Requires:       texlive-memoize-ext >= %{texlive_version}
+#!BuildIgnore: texlive-memoize-ext
 Requires:       texlive-memory >= %{texlive_version}
 #!BuildIgnore: texlive-memory
 Requires:       texlive-mensa-tex >= %{texlive_version}
@@ -6380,6 +6609,8 @@ Requires:       texlive-menucard >= %{texlive_version}
 #!BuildIgnore: texlive-menucard
 Requires:       texlive-menukeys >= %{texlive_version}
 #!BuildIgnore: texlive-menukeys
+Requires:       texlive-metacapture >= %{texlive_version}
+#!BuildIgnore: texlive-metacapture
 Requires:       texlive-metalogox >= %{texlive_version}
 #!BuildIgnore: texlive-metalogox
 Requires:       texlive-metanorma >= %{texlive_version}
@@ -6398,6 +6629,8 @@ Requires:       texlive-mi-solns >= %{texlive_version}
 #!BuildIgnore: texlive-mi-solns
 Requires:       texlive-midpage >= %{texlive_version}
 #!BuildIgnore: texlive-midpage
+Requires:       texlive-milestonetimeline >= %{texlive_version}
+#!BuildIgnore: texlive-milestonetimeline
 Requires:       texlive-mindflow >= %{texlive_version}
 #!BuildIgnore: texlive-mindflow
 Requires:       texlive-minibox >= %{texlive_version}
@@ -6416,6 +6649,8 @@ Requires:       texlive-minorrevision >= %{texlive_version}
 #!BuildIgnore: texlive-minorrevision
 Requires:       texlive-minted >= %{texlive_version}
 #!BuildIgnore: texlive-minted
+Requires:       texlive-minted-code >= %{texlive_version}
+#!BuildIgnore: texlive-minted-code
 Requires:       texlive-minutes >= %{texlive_version}
 #!BuildIgnore: texlive-minutes
 Requires:       texlive-mla-paper >= %{texlive_version}
@@ -6432,6 +6667,8 @@ Requires:       texlive-moderncv >= %{texlive_version}
 #!BuildIgnore: texlive-moderncv
 Requires:       texlive-modernposter >= %{texlive_version}
 #!BuildIgnore: texlive-modernposter
+Requires:       texlive-modernruler >= %{texlive_version}
+#!BuildIgnore: texlive-modernruler
 Requires:       texlive-moderntimeline >= %{texlive_version}
 #!BuildIgnore: texlive-moderntimeline
 Requires:       texlive-modref >= %{texlive_version}
@@ -6494,6 +6731,8 @@ Requires:       texlive-multifootnote >= %{texlive_version}
 #!BuildIgnore: texlive-multifootnote
 Requires:       texlive-multilang >= %{texlive_version}
 #!BuildIgnore: texlive-multilang
+Requires:       texlive-multinotes >= %{texlive_version}
+#!BuildIgnore: texlive-multinotes
 Requires:       texlive-multiple-choice >= %{texlive_version}
 #!BuildIgnore: texlive-multiple-choice
 Requires:       texlive-multirow >= %{texlive_version}
@@ -6592,6 +6831,8 @@ Requires:       texlive-notestex >= %{texlive_version}
 #!BuildIgnore: texlive-notestex
 Requires:       texlive-notoccite >= %{texlive_version}
 #!BuildIgnore: texlive-notoccite
+Requires:       texlive-novabeamer-theme >= %{texlive_version}
+#!BuildIgnore: texlive-novabeamer-theme
 Requires:       texlive-nowidow >= %{texlive_version}
 #!BuildIgnore: texlive-nowidow
 Requires:       texlive-nox >= %{texlive_version}
@@ -6618,6 +6859,8 @@ Requires:       texlive-octavo >= %{texlive_version}
 #!BuildIgnore: texlive-octavo
 Requires:       texlive-oldstyle >= %{texlive_version}
 #!BuildIgnore: texlive-oldstyle
+Requires:       texlive-onepgnote >= %{texlive_version}
+#!BuildIgnore: texlive-onepgnote
 Requires:       texlive-onlyamsmath >= %{texlive_version}
 #!BuildIgnore: texlive-onlyamsmath
 Requires:       texlive-opcit >= %{texlive_version}
@@ -6666,6 +6909,8 @@ Requires:       texlive-pageslts >= %{texlive_version}
 #!BuildIgnore: texlive-pageslts
 Requires:       texlive-palette >= %{texlive_version}
 #!BuildIgnore: texlive-palette
+Requires:       texlive-panda >= %{texlive_version}
+#!BuildIgnore: texlive-panda
 Requires:       texlive-pangram >= %{texlive_version}
 #!BuildIgnore: texlive-pangram
 Requires:       texlive-paper >= %{texlive_version}
@@ -6682,6 +6927,8 @@ Requires:       texlive-parades >= %{texlive_version}
 #!BuildIgnore: texlive-parades
 Requires:       texlive-paralist >= %{texlive_version}
 #!BuildIgnore: texlive-paralist
+Requires:       texlive-paramcalc >= %{texlive_version}
+#!BuildIgnore: texlive-paramcalc
 Requires:       texlive-paresse >= %{texlive_version}
 #!BuildIgnore: texlive-paresse
 Requires:       texlive-parnotes >= %{texlive_version}
@@ -6794,6 +7041,8 @@ Requires:       texlive-picture >= %{texlive_version}
 #!BuildIgnore: texlive-picture
 Requires:       texlive-piff >= %{texlive_version}
 #!BuildIgnore: texlive-piff
+Requires:       texlive-pkginfograb >= %{texlive_version}
+#!BuildIgnore: texlive-pkginfograb
 Requires:       texlive-pkgloader >= %{texlive_version}
 #!BuildIgnore: texlive-pkgloader
 Requires:       texlive-placeins >= %{texlive_version}
@@ -6900,6 +7149,8 @@ Requires:       texlive-quoting >= %{texlive_version}
 #!BuildIgnore: texlive-quoting
 Requires:       texlive-quotmark >= %{texlive_version}
 #!BuildIgnore: texlive-quotmark
+Requires:       texlive-rainbowbrackets >= %{texlive_version}
+#!BuildIgnore: texlive-rainbowbrackets
 Requires:       texlive-ran_toks >= %{texlive_version}
 #!BuildIgnore: texlive-ran_toks
 Requires:       texlive-randexam >= %{texlive_version}
@@ -6920,6 +7171,8 @@ Requires:       texlive-readarray >= %{texlive_version}
 #!BuildIgnore: texlive-readarray
 Requires:       texlive-realboxes >= %{texlive_version}
 #!BuildIgnore: texlive-realboxes
+Requires:       texlive-realscripts >= %{texlive_version}
+#!BuildIgnore: texlive-realscripts
 Requires:       texlive-recipe >= %{texlive_version}
 #!BuildIgnore: texlive-recipe
 Requires:       texlive-recipebook >= %{texlive_version}
@@ -7050,6 +7303,8 @@ Requires:       texlive-secdot >= %{texlive_version}
 #!BuildIgnore: texlive-secdot
 Requires:       texlive-secnum >= %{texlive_version}
 #!BuildIgnore: texlive-secnum
+Requires:       texlive-secretx >= %{texlive_version}
+#!BuildIgnore: texlive-secretx
 Requires:       texlive-sectionbox >= %{texlive_version}
 #!BuildIgnore: texlive-sectionbox
 Requires:       texlive-sectionbreak >= %{texlive_version}
@@ -7152,6 +7407,8 @@ Requires:       texlive-skrapport >= %{texlive_version}
 #!BuildIgnore: texlive-skrapport
 Requires:       texlive-slantsc >= %{texlive_version}
 #!BuildIgnore: texlive-slantsc
+Requires:       texlive-slixte >= %{texlive_version}
+#!BuildIgnore: texlive-slixte
 Requires:       texlive-smalltableof >= %{texlive_version}
 #!BuildIgnore: texlive-smalltableof
 Requires:       texlive-smart-eqn >= %{texlive_version}
@@ -7264,6 +7521,8 @@ Requires:       texlive-svninfo >= %{texlive_version}
 #!BuildIgnore: texlive-svninfo
 Requires:       texlive-swfigure >= %{texlive_version}
 #!BuildIgnore: texlive-swfigure
+Requires:       texlive-switch >= %{texlive_version}
+#!BuildIgnore: texlive-switch
 Requires:       texlive-swungdash >= %{texlive_version}
 #!BuildIgnore: texlive-swungdash
 Requires:       texlive-syntax >= %{texlive_version}
@@ -7284,6 +7543,8 @@ Requires:       texlive-tablefootnote >= %{texlive_version}
 #!BuildIgnore: texlive-tablefootnote
 Requires:       texlive-tableof >= %{texlive_version}
 #!BuildIgnore: texlive-tableof
+Requires:       texlive-tablericons >= %{texlive_version}
+#!BuildIgnore: texlive-tablericons
 Requires:       texlive-tablists >= %{texlive_version}
 #!BuildIgnore: texlive-tablists
 Requires:       texlive-tabls >= %{texlive_version}
@@ -7296,6 +7557,8 @@ Requires:       texlive-tabto-ltx >= %{texlive_version}
 #!BuildIgnore: texlive-tabto-ltx
 Requires:       texlive-tabu >= %{texlive_version}
 #!BuildIgnore: texlive-tabu
+Requires:       texlive-tabular2 >= %{texlive_version}
+#!BuildIgnore: texlive-tabular2
 Requires:       texlive-tabularborder >= %{texlive_version}
 #!BuildIgnore: texlive-tabularborder
 Requires:       texlive-tabularcalc >= %{texlive_version}
@@ -7338,6 +7601,8 @@ Requires:       texlive-templatetools >= %{texlive_version}
 #!BuildIgnore: texlive-templatetools
 Requires:       texlive-termcal >= %{texlive_version}
 #!BuildIgnore: texlive-termcal
+Requires:       texlive-terminalcode >= %{texlive_version}
+#!BuildIgnore: texlive-terminalcode
 Requires:       texlive-termlist >= %{texlive_version}
 #!BuildIgnore: texlive-termlist
 Requires:       texlive-termsim >= %{texlive_version}
@@ -7426,6 +7691,10 @@ Requires:       texlive-tokcycle >= %{texlive_version}
 #!BuildIgnore: texlive-tokcycle
 Requires:       texlive-tokenizer >= %{texlive_version}
 #!BuildIgnore: texlive-tokenizer
+Requires:       texlive-tokglobalstack >= %{texlive_version}
+#!BuildIgnore: texlive-tokglobalstack
+Requires:       texlive-tokgroupmark >= %{texlive_version}
+#!BuildIgnore: texlive-tokgroupmark
 Requires:       texlive-toolbox >= %{texlive_version}
 #!BuildIgnore: texlive-toolbox
 Requires:       texlive-topfloat >= %{texlive_version}
@@ -7438,6 +7707,8 @@ Requires:       texlive-totcount >= %{texlive_version}
 #!BuildIgnore: texlive-totcount
 Requires:       texlive-totpages >= %{texlive_version}
 #!BuildIgnore: texlive-totpages
+Requires:       texlive-traffic-light-protocol >= %{texlive_version}
+#!BuildIgnore: texlive-traffic-light-protocol
 Requires:       texlive-tramlines >= %{texlive_version}
 #!BuildIgnore: texlive-tramlines
 Requires:       texlive-translations >= %{texlive_version}
@@ -7486,6 +7757,8 @@ Requires:       texlive-ucs >= %{texlive_version}
 #!BuildIgnore: texlive-ucs
 Requires:       texlive-uebungsblatt >= %{texlive_version}
 #!BuildIgnore: texlive-uebungsblatt
+Requires:       texlive-ullrcorners >= %{texlive_version}
+#!BuildIgnore: texlive-ullrcorners
 Requires:       texlive-umoline >= %{texlive_version}
 #!BuildIgnore: texlive-umoline
 Requires:       texlive-underlin >= %{texlive_version}
@@ -7574,6 +7847,8 @@ Requires:       texlive-vpe >= %{texlive_version}
 #!BuildIgnore: texlive-vpe
 Requires:       texlive-vruler >= %{texlive_version}
 #!BuildIgnore: texlive-vruler
+Requires:       texlive-vscodeicons >= %{texlive_version}
+#!BuildIgnore: texlive-vscodeicons
 Requires:       texlive-vtable >= %{texlive_version}
 #!BuildIgnore: texlive-vtable
 Requires:       texlive-vwcol >= %{texlive_version}
@@ -7660,6 +7935,8 @@ Requires:       texlive-xkeymask >= %{texlive_version}
 #!BuildIgnore: texlive-xkeymask
 Requires:       texlive-xltabular >= %{texlive_version}
 #!BuildIgnore: texlive-xltabular
+Requires:       texlive-xmeaning >= %{texlive_version}
+#!BuildIgnore: texlive-xmeaning
 Requires:       texlive-xmpincl >= %{texlive_version}
 #!BuildIgnore: texlive-xmpincl
 Requires:       texlive-xnewcommand >= %{texlive_version}
@@ -7670,6 +7947,8 @@ Requires:       texlive-xpatch >= %{texlive_version}
 #!BuildIgnore: texlive-xpatch
 Requires:       texlive-xpeek >= %{texlive_version}
 #!BuildIgnore: texlive-xpeek
+Requires:       texlive-xpeekahead >= %{texlive_version}
+#!BuildIgnore: texlive-xpeekahead
 Requires:       texlive-xprintlen >= %{texlive_version}
 #!BuildIgnore: texlive-xprintlen
 Requires:       texlive-xpunctuate >= %{texlive_version}
@@ -7680,10 +7959,18 @@ Requires:       texlive-xsavebox >= %{texlive_version}
 #!BuildIgnore: texlive-xsavebox
 Requires:       texlive-xsim >= %{texlive_version}
 #!BuildIgnore: texlive-xsim
+Requires:       texlive-xsipa >= %{texlive_version}
+#!BuildIgnore: texlive-xsipa
+Requires:       texlive-xstacks >= %{texlive_version}
+#!BuildIgnore: texlive-xstacks
+Requires:       texlive-xstix2 >= %{texlive_version}
+#!BuildIgnore: texlive-xstix2
 Requires:       texlive-xstring >= %{texlive_version}
 #!BuildIgnore: texlive-xstring
 Requires:       texlive-xtab >= %{texlive_version}
 #!BuildIgnore: texlive-xtab
+Requires:       texlive-xtufte >= %{texlive_version}
+#!BuildIgnore: texlive-xtufte
 Requires:       texlive-xurl >= %{texlive_version}
 #!BuildIgnore: texlive-xurl
 Requires:       texlive-xwatermark >= %{texlive_version}
@@ -7731,7 +8018,7 @@ BuildArch:      noarch
 A very large collection of add-on packages for LaTeX.
 
 %package -n texlive-collection-latexrecommended
-Version:        %{texlive_version}.%{texlive_noarch}.svn73720
+Version:        %{texlive_version}.%{texlive_noarch}.svn77082
 Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX recommended packages
@@ -7809,6 +8096,10 @@ Requires:       texlive-lineno >= %{texlive_version}
 #!BuildIgnore: texlive-lineno
 Requires:       texlive-listings >= %{texlive_version}
 #!BuildIgnore: texlive-listings
+Requires:       texlive-ltx-talk >= %{texlive_version}
+#!BuildIgnore: texlive-ltx-talk
+Requires:       texlive-lua-unicode-math >= %{texlive_version}
+#!BuildIgnore: texlive-lua-unicode-math
 Requires:       texlive-lwarp >= %{texlive_version}
 #!BuildIgnore: texlive-lwarp
 Requires:       texlive-mathspec >= %{texlive_version}
@@ -7889,7 +8180,7 @@ A collection of recommended add-on packages for LaTeX which
 have widespread use.
 
 %package -n texlive-collection-luatex
-Version:        %{texlive_version}.%{texlive_noarch}.svn74062
+Version:        %{texlive_version}.%{texlive_noarch}.svn77766
 Release:        0
 License:        LPPL-1.0
 Summary:        LuaTeX packages
@@ -7909,6 +8200,8 @@ Requires:       texlive-bezierplot >= %{texlive_version}
 #!BuildIgnore: texlive-bezierplot
 Requires:       texlive-blopentype >= %{texlive_version}
 #!BuildIgnore: texlive-blopentype
+Requires:       texlive-char2path >= %{texlive_version}
+#!BuildIgnore: texlive-char2path
 Requires:       texlive-checkcites >= %{texlive_version}
 #!BuildIgnore: texlive-checkcites
 Requires:       texlive-chickenize >= %{texlive_version}
@@ -7933,6 +8226,10 @@ Requires:       texlive-emojicite >= %{texlive_version}
 #!BuildIgnore: texlive-emojicite
 Requires:       texlive-enigma >= %{texlive_version}
 #!BuildIgnore: texlive-enigma
+Requires:       texlive-fancymag >= %{texlive_version}
+#!BuildIgnore: texlive-fancymag
+Requires:       texlive-farbe >= %{texlive_version}
+#!BuildIgnore: texlive-farbe
 Requires:       texlive-gitinfo-lua >= %{texlive_version}
 #!BuildIgnore: texlive-gitinfo-lua
 Requires:       texlive-ideavault >= %{texlive_version}
@@ -7943,6 +8240,12 @@ Requires:       texlive-interpreter >= %{texlive_version}
 #!BuildIgnore: texlive-interpreter
 Requires:       texlive-kanaparser >= %{texlive_version}
 #!BuildIgnore: texlive-kanaparser
+Requires:       texlive-kkluaverb >= %{texlive_version}
+#!BuildIgnore: texlive-kkluaverb
+Requires:       texlive-kkran >= %{texlive_version}
+#!BuildIgnore: texlive-kkran
+Requires:       texlive-kksymbols >= %{texlive_version}
+#!BuildIgnore: texlive-kksymbols
 Requires:       texlive-ligtype >= %{texlive_version}
 #!BuildIgnore: texlive-ligtype
 Requires:       texlive-linebreaker >= %{texlive_version}
@@ -7963,8 +8266,6 @@ Requires:       texlive-lua-uca >= %{texlive_version}
 #!BuildIgnore: texlive-lua-uca
 Requires:       texlive-lua-ul >= %{texlive_version}
 #!BuildIgnore: texlive-lua-ul
-Requires:       texlive-lua-uni-algos >= %{texlive_version}
-#!BuildIgnore: texlive-lua-uni-algos
 Requires:       texlive-lua-visual-debug >= %{texlive_version}
 #!BuildIgnore: texlive-lua-visual-debug
 Requires:       texlive-lua-widow-control >= %{texlive_version}
@@ -7995,6 +8296,8 @@ Requires:       texlive-luainputenc >= %{texlive_version}
 #!BuildIgnore: texlive-luainputenc
 Requires:       texlive-luakeys >= %{texlive_version}
 #!BuildIgnore: texlive-luakeys
+Requires:       texlive-luakeyval >= %{texlive_version}
+#!BuildIgnore: texlive-luakeyval
 Requires:       texlive-lualatex-math >= %{texlive_version}
 #!BuildIgnore: texlive-lualatex-math
 Requires:       texlive-lualatex-truncate >= %{texlive_version}
@@ -8003,6 +8306,8 @@ Requires:       texlive-lualibs >= %{texlive_version}
 #!BuildIgnore: texlive-lualibs
 Requires:       texlive-lualinalg >= %{texlive_version}
 #!BuildIgnore: texlive-lualinalg
+Requires:       texlive-lualineno >= %{texlive_version}
+#!BuildIgnore: texlive-lualineno
 Requires:       texlive-luamathalign >= %{texlive_version}
 #!BuildIgnore: texlive-luamathalign
 Requires:       texlive-luamaths >= %{texlive_version}
@@ -8031,6 +8336,8 @@ Requires:       texlive-luaset >= %{texlive_version}
 #!BuildIgnore: texlive-luaset
 Requires:       texlive-luatbls >= %{texlive_version}
 #!BuildIgnore: texlive-luatbls
+Requires:       texlive-luatex-type-definitions >= %{texlive_version}
+#!BuildIgnore: texlive-luatex-type-definitions
 Requires:       texlive-luatex85 >= %{texlive_version}
 #!BuildIgnore: texlive-luatex85
 Requires:       texlive-luatexbase >= %{texlive_version}
@@ -8069,6 +8376,8 @@ Requires:       texlive-odsfile >= %{texlive_version}
 #!BuildIgnore: texlive-odsfile
 Requires:       texlive-optex >= %{texlive_version}
 #!BuildIgnore: texlive-optex
+Requires:       texlive-parstat >= %{texlive_version}
+#!BuildIgnore: texlive-parstat
 Requires:       texlive-pdfarticle >= %{texlive_version}
 #!BuildIgnore: texlive-pdfarticle
 Requires:       texlive-pdfextra >= %{texlive_version}
@@ -8087,6 +8396,8 @@ Requires:       texlive-pyluatex >= %{texlive_version}
 #!BuildIgnore: texlive-pyluatex
 Requires:       texlive-scikgtex >= %{texlive_version}
 #!BuildIgnore: texlive-scikgtex
+Requires:       texlive-seatingchart >= %{texlive_version}
+#!BuildIgnore: texlive-seatingchart
 Requires:       texlive-selnolig >= %{texlive_version}
 #!BuildIgnore: texlive-selnolig
 Requires:       texlive-semesterplannerlua >= %{texlive_version}
@@ -8130,7 +8441,7 @@ The LuaTeX engine itself (and plain formats) are in
 collection-basic.
 
 %package -n texlive-collection-mathscience
-Version:        %{texlive_version}.%{texlive_noarch}.svn74351
+Version:        %{texlive_version}.%{texlive_noarch}.svn77561
 Release:        0
 License:        LPPL-1.0
 Summary:        Mathematics, natural sciences, computer science packages
@@ -8168,6 +8479,8 @@ Requires:       texlive-annotate-equations >= %{texlive_version}
 #!BuildIgnore: texlive-annotate-equations
 Requires:       texlive-apxproof >= %{texlive_version}
 #!BuildIgnore: texlive-apxproof
+Requires:       texlive-aspen >= %{texlive_version}
+#!BuildIgnore: texlive-aspen
 Requires:       texlive-atableau >= %{texlive_version}
 #!BuildIgnore: texlive-atableau
 Requires:       texlive-autobreak >= %{texlive_version}
@@ -8194,10 +8507,16 @@ Requires:       texlive-bosisio >= %{texlive_version}
 #!BuildIgnore: texlive-bosisio
 Requires:       texlive-bpchem >= %{texlive_version}
 #!BuildIgnore: texlive-bpchem
+Requires:       texlive-bracealign >= %{texlive_version}
+#!BuildIgnore: texlive-bracealign
 Requires:       texlive-bropd >= %{texlive_version}
 #!BuildIgnore: texlive-bropd
+Requires:       texlive-broydensolve >= %{texlive_version}
+#!BuildIgnore: texlive-broydensolve
 Requires:       texlive-bussproofs >= %{texlive_version}
 #!BuildIgnore: texlive-bussproofs
+Requires:       texlive-bussproofs-colorful >= %{texlive_version}
+#!BuildIgnore: texlive-bussproofs-colorful
 Requires:       texlive-bussproofs-extra >= %{texlive_version}
 #!BuildIgnore: texlive-bussproofs-extra
 Requires:       texlive-bytefield >= %{texlive_version}
@@ -8352,12 +8671,16 @@ Requires:       texlive-fixmath >= %{texlive_version}
 #!BuildIgnore: texlive-fixmath
 Requires:       texlive-fnspe >= %{texlive_version}
 #!BuildIgnore: texlive-fnspe
+Requires:       texlive-fodot >= %{texlive_version}
+#!BuildIgnore: texlive-fodot
 Requires:       texlive-formal-grammar >= %{texlive_version}
 #!BuildIgnore: texlive-formal-grammar
 Requires:       texlive-fouridx >= %{texlive_version}
 #!BuildIgnore: texlive-fouridx
 Requires:       texlive-freealign >= %{texlive_version}
 #!BuildIgnore: texlive-freealign
+Requires:       texlive-freemath >= %{texlive_version}
+#!BuildIgnore: texlive-freemath
 Requires:       texlive-functan >= %{texlive_version}
 #!BuildIgnore: texlive-functan
 Requires:       texlive-galois >= %{texlive_version}
@@ -8392,12 +8715,16 @@ Requires:       texlive-hepthesis >= %{texlive_version}
 #!BuildIgnore: texlive-hepthesis
 Requires:       texlive-hepunits >= %{texlive_version}
 #!BuildIgnore: texlive-hepunits
+Requires:       texlive-hideproofs >= %{texlive_version}
+#!BuildIgnore: texlive-hideproofs
 Requires:       texlive-ibrackets >= %{texlive_version}
 #!BuildIgnore: texlive-ibrackets
 Requires:       texlive-includernw >= %{texlive_version}
 #!BuildIgnore: texlive-includernw
 Requires:       texlive-interval >= %{texlive_version}
 #!BuildIgnore: texlive-interval
+Requires:       texlive-intexgral >= %{texlive_version}
+#!BuildIgnore: texlive-intexgral
 Requires:       texlive-ionumbers >= %{texlive_version}
 #!BuildIgnore: texlive-ionumbers
 Requires:       texlive-isomath >= %{texlive_version}
@@ -8424,8 +8751,12 @@ Requires:       texlive-lie-hasse >= %{texlive_version}
 #!BuildIgnore: texlive-lie-hasse
 Requires:       texlive-linearregression >= %{texlive_version}
 #!BuildIgnore: texlive-linearregression
+Requires:       texlive-linkedthm >= %{texlive_version}
+#!BuildIgnore: texlive-linkedthm
 Requires:       texlive-logicproof >= %{texlive_version}
 #!BuildIgnore: texlive-logicproof
+Requires:       texlive-logictools >= %{texlive_version}
+#!BuildIgnore: texlive-logictools
 Requires:       texlive-longdivision >= %{texlive_version}
 #!BuildIgnore: texlive-longdivision
 Requires:       texlive-lpform >= %{texlive_version}
@@ -8434,6 +8765,8 @@ Requires:       texlive-lplfitch >= %{texlive_version}
 #!BuildIgnore: texlive-lplfitch
 Requires:       texlive-lstbayes >= %{texlive_version}
 #!BuildIgnore: texlive-lstbayes
+Requires:       texlive-lua-regression >= %{texlive_version}
+#!BuildIgnore: texlive-lua-regression
 Requires:       texlive-luanumint >= %{texlive_version}
 #!BuildIgnore: texlive-luanumint
 Requires:       texlive-math-operator >= %{texlive_version}
@@ -8532,6 +8865,8 @@ Requires:       texlive-physics-patch >= %{texlive_version}
 #!BuildIgnore: texlive-physics-patch
 Requires:       texlive-physics2 >= %{texlive_version}
 #!BuildIgnore: texlive-physics2
+Requires:       texlive-physics3 >= %{texlive_version}
+#!BuildIgnore: texlive-physics3
 Requires:       texlive-physunits >= %{texlive_version}
 #!BuildIgnore: texlive-physunits
 Requires:       texlive-pinoutikz >= %{texlive_version}
@@ -8560,10 +8895,18 @@ Requires:       texlive-pythonhighlight >= %{texlive_version}
 #!BuildIgnore: texlive-pythonhighlight
 Requires:       texlive-qsharp >= %{texlive_version}
 #!BuildIgnore: texlive-qsharp
+Requires:       texlive-quantikz >= %{texlive_version}
+#!BuildIgnore: texlive-quantikz
+Requires:       texlive-quantum-chemistry-bonn >= %{texlive_version}
+#!BuildIgnore: texlive-quantum-chemistry-bonn
+Requires:       texlive-quantumcubemodel >= %{texlive_version}
+#!BuildIgnore: texlive-quantumcubemodel
 Requires:       texlive-quickreaction >= %{texlive_version}
 #!BuildIgnore: texlive-quickreaction
 Requires:       texlive-quiver >= %{texlive_version}
 #!BuildIgnore: texlive-quiver
+Requires:       texlive-qworld >= %{texlive_version}
+#!BuildIgnore: texlive-qworld
 Requires:       texlive-rank-2-roots >= %{texlive_version}
 #!BuildIgnore: texlive-rank-2-roots
 Requires:       texlive-rbt-mathnotes >= %{texlive_version}
@@ -8594,6 +8937,8 @@ Requires:       texlive-sclang-prettifier >= %{texlive_version}
 #!BuildIgnore: texlive-sclang-prettifier
 Requires:       texlive-scratchx >= %{texlive_version}
 #!BuildIgnore: texlive-scratchx
+Requires:       texlive-seqcalc >= %{texlive_version}
+#!BuildIgnore: texlive-seqcalc
 Requires:       texlive-sesamanuel >= %{texlive_version}
 #!BuildIgnore: texlive-sesamanuel
 Requires:       texlive-sfg >= %{texlive_version}
@@ -8664,6 +9009,8 @@ Requires:       texlive-tensind >= %{texlive_version}
 #!BuildIgnore: texlive-tensind
 Requires:       texlive-tensor >= %{texlive_version}
 #!BuildIgnore: texlive-tensor
+Requires:       texlive-tensormatrix >= %{texlive_version}
+#!BuildIgnore: texlive-tensormatrix
 Requires:       texlive-tex-ewd >= %{texlive_version}
 #!BuildIgnore: texlive-tex-ewd
 Requires:       texlive-textgreek >= %{texlive_version}
@@ -8678,6 +9025,8 @@ Requires:       texlive-thmtools >= %{texlive_version}
 #!BuildIgnore: texlive-thmtools
 Requires:       texlive-tiscreen >= %{texlive_version}
 #!BuildIgnore: texlive-tiscreen
+Requires:       texlive-tkz-interval >= %{texlive_version}
+#!BuildIgnore: texlive-tkz-interval
 Requires:       texlive-turnstile >= %{texlive_version}
 #!BuildIgnore: texlive-turnstile
 Requires:       texlive-ulqda >= %{texlive_version}
@@ -8698,6 +9047,8 @@ Requires:       texlive-yquant >= %{texlive_version}
 #!BuildIgnore: texlive-yquant
 Requires:       texlive-ytableau >= %{texlive_version}
 #!BuildIgnore: texlive-ytableau
+Requires:       texlive-zeckendorf >= %{texlive_version}
+#!BuildIgnore: texlive-zeckendorf
 Requires:       texlive-zx-calculus >= %{texlive_version}
 #!BuildIgnore: texlive-zx-calculus
 Provides:       tex(mathscience)
@@ -8827,7 +9178,7 @@ BuildArch:      noarch
 The collection-metapost package
 
 %package -n texlive-collection-music
-Version:        %{texlive_version}.%{texlive_noarch}.svn73288
+Version:        %{texlive_version}.%{texlive_noarch}.svn76267
 Release:        0
 License:        LPPL-1.0
 Summary:        Music packages
@@ -8852,6 +9203,8 @@ Requires:       texlive-ddphonism >= %{texlive_version}
 #!BuildIgnore: texlive-ddphonism
 Requires:       texlive-figbas >= %{texlive_version}
 #!BuildIgnore: texlive-figbas
+Requires:       texlive-fretplot >= %{texlive_version}
+#!BuildIgnore: texlive-fretplot
 Requires:       texlive-gchords >= %{texlive_version}
 #!BuildIgnore: texlive-gchords
 Requires:       texlive-gregoriotex >= %{texlive_version}
@@ -8919,7 +9272,7 @@ BuildArch:      noarch
 Music-related fonts and packages.
 
 %package -n texlive-collection-pictures
-Version:        %{texlive_version}.%{texlive_noarch}.svn74418
+Version:        %{texlive_version}.%{texlive_noarch}.svn77389
 Release:        0
 License:        LPPL-1.0
 Summary:        Graphics, pictures, diagrams
@@ -8957,6 +9310,8 @@ Requires:       texlive-bondgraph >= %{texlive_version}
 #!BuildIgnore: texlive-bondgraph
 Requires:       texlive-bondgraphs >= %{texlive_version}
 #!BuildIgnore: texlive-bondgraphs
+Requires:       texlive-bootstrapicons >= %{texlive_version}
+#!BuildIgnore: texlive-bootstrapicons
 Requires:       texlive-braids >= %{texlive_version}
 #!BuildIgnore: texlive-braids
 Requires:       texlive-bxeepic >= %{texlive_version}
@@ -9053,6 +9408,8 @@ Requires:       texlive-flowchart >= %{texlive_version}
 #!BuildIgnore: texlive-flowchart
 Requires:       texlive-forest >= %{texlive_version}
 #!BuildIgnore: texlive-forest
+Requires:       texlive-forest-ext >= %{texlive_version}
+#!BuildIgnore: texlive-forest-ext
 Requires:       texlive-genealogytree >= %{texlive_version}
 #!BuildIgnore: texlive-genealogytree
 Requires:       texlive-getmap >= %{texlive_version}
@@ -9087,6 +9444,8 @@ Requires:       texlive-istgame >= %{texlive_version}
 #!BuildIgnore: texlive-istgame
 Requires:       texlive-kblocks >= %{texlive_version}
 #!BuildIgnore: texlive-kblocks
+Requires:       texlive-keisennote >= %{texlive_version}
+#!BuildIgnore: texlive-keisennote
 Requires:       texlive-kinematikz >= %{texlive_version}
 #!BuildIgnore: texlive-kinematikz
 Requires:       texlive-knitting >= %{texlive_version}
@@ -9105,10 +9464,14 @@ Requires:       texlive-lpic >= %{texlive_version}
 #!BuildIgnore: texlive-lpic
 Requires:       texlive-lroundrect >= %{texlive_version}
 #!BuildIgnore: texlive-lroundrect
+Requires:       texlive-lua-tikz3dtools >= %{texlive_version}
+#!BuildIgnore: texlive-lua-tikz3dtools
 Requires:       texlive-luamesh >= %{texlive_version}
 #!BuildIgnore: texlive-luamesh
 Requires:       texlive-luasseq >= %{texlive_version}
 #!BuildIgnore: texlive-luasseq
+Requires:       texlive-lucide-icons >= %{texlive_version}
+#!BuildIgnore: texlive-lucide-icons
 Requires:       texlive-maker >= %{texlive_version}
 #!BuildIgnore: texlive-maker
 Requires:       texlive-makeshape >= %{texlive_version}
@@ -9137,6 +9500,12 @@ Requires:       texlive-nndraw >= %{texlive_version}
 #!BuildIgnore: texlive-nndraw
 Requires:       texlive-numericplots >= %{texlive_version}
 #!BuildIgnore: texlive-numericplots
+Requires:       texlive-open-everyday-symbols >= %{texlive_version}
+#!BuildIgnore: texlive-open-everyday-symbols
+Requires:       texlive-openmoji >= %{texlive_version}
+#!BuildIgnore: texlive-openmoji
+Requires:       texlive-optikz >= %{texlive_version}
+#!BuildIgnore: texlive-optikz
 Requires:       texlive-outilsgeomtikz >= %{texlive_version}
 #!BuildIgnore: texlive-outilsgeomtikz
 Requires:       texlive-papiergurvan >= %{texlive_version}
@@ -9225,8 +9594,8 @@ Requires:       texlive-qcircuit >= %{texlive_version}
 #!BuildIgnore: texlive-qcircuit
 Requires:       texlive-qrcode >= %{texlive_version}
 #!BuildIgnore: texlive-qrcode
-Requires:       texlive-quantikz >= %{texlive_version}
-#!BuildIgnore: texlive-quantikz
+Requires:       texlive-qrcodetikz >= %{texlive_version}
+#!BuildIgnore: texlive-qrcodetikz
 Requires:       texlive-randbild >= %{texlive_version}
 #!BuildIgnore: texlive-randbild
 Requires:       texlive-randomwalk >= %{texlive_version}
@@ -9293,6 +9662,8 @@ Requires:       texlive-tikz-bpmn >= %{texlive_version}
 #!BuildIgnore: texlive-tikz-bpmn
 Requires:       texlive-tikz-cd >= %{texlive_version}
 #!BuildIgnore: texlive-tikz-cd
+Requires:       texlive-tikz-cookingsymbols >= %{texlive_version}
+#!BuildIgnore: texlive-tikz-cookingsymbols
 Requires:       texlive-tikz-decofonts >= %{texlive_version}
 #!BuildIgnore: texlive-tikz-decofonts
 Requires:       texlive-tikz-dependency >= %{texlive_version}
@@ -9345,6 +9716,8 @@ Requires:       texlive-tikz-relay >= %{texlive_version}
 #!BuildIgnore: texlive-tikz-relay
 Requires:       texlive-tikz-sfc >= %{texlive_version}
 #!BuildIgnore: texlive-tikz-sfc
+Requires:       texlive-tikz-shields >= %{texlive_version}
+#!BuildIgnore: texlive-tikz-shields
 Requires:       texlive-tikz-swigs >= %{texlive_version}
 #!BuildIgnore: texlive-tikz-swigs
 Requires:       texlive-tikz-timing >= %{texlive_version}
@@ -9357,6 +9730,8 @@ Requires:       texlive-tikz2d-fr >= %{texlive_version}
 #!BuildIgnore: texlive-tikz2d-fr
 Requires:       texlive-tikz3d-fr >= %{texlive_version}
 #!BuildIgnore: texlive-tikz3d-fr
+Requires:       texlive-tikzbrickfigurines >= %{texlive_version}
+#!BuildIgnore: texlive-tikzbrickfigurines
 Requires:       texlive-tikzbricks >= %{texlive_version}
 #!BuildIgnore: texlive-tikzbricks
 Requires:       texlive-tikzcalendarnotes >= %{texlive_version}
@@ -9369,6 +9744,8 @@ Requires:       texlive-tikzducks >= %{texlive_version}
 #!BuildIgnore: texlive-tikzducks
 Requires:       texlive-tikzfill >= %{texlive_version}
 #!BuildIgnore: texlive-tikzfill
+Requires:       texlive-tikzfxgraph >= %{texlive_version}
+#!BuildIgnore: texlive-tikzfxgraph
 Requires:       texlive-tikzinclude >= %{texlive_version}
 #!BuildIgnore: texlive-tikzinclude
 Requires:       texlive-tikzlings >= %{texlive_version}
@@ -9455,6 +9832,8 @@ Requires:       texlive-vectorlogos >= %{texlive_version}
 #!BuildIgnore: texlive-vectorlogos
 Requires:       texlive-venndiagram >= %{texlive_version}
 #!BuildIgnore: texlive-venndiagram
+Requires:       texlive-vexillology >= %{texlive_version}
+#!BuildIgnore: texlive-vexillology
 Requires:       texlive-visualpstricks >= %{texlive_version}
 #!BuildIgnore: texlive-visualpstricks
 Requires:       texlive-wheelchart >= %{texlive_version}
@@ -9477,7 +9856,7 @@ Including TikZ, pict, etc., but MetaPost and PStricks are
 separate.
 
 %package -n texlive-collection-plaingeneric
-Version:        %{texlive_version}.%{texlive_noarch}.svn72878
+Version:        %{texlive_version}.%{texlive_noarch}.svn75599
 Release:        0
 License:        LPPL-1.0
 Summary:        Plain (La)TeX packages
@@ -9533,6 +9912,8 @@ Requires:       texlive-eijkhout >= %{texlive_version}
 #!BuildIgnore: texlive-eijkhout
 Requires:       texlive-encxvlna >= %{texlive_version}
 #!BuildIgnore: texlive-encxvlna
+Requires:       texlive-eoldef >= %{texlive_version}
+#!BuildIgnore: texlive-eoldef
 Requires:       texlive-epigram >= %{texlive_version}
 #!BuildIgnore: texlive-epigram
 Requires:       texlive-epsf >= %{texlive_version}
@@ -9603,6 +9984,8 @@ Requires:       texlive-localloc >= %{texlive_version}
 #!BuildIgnore: texlive-localloc
 Requires:       texlive-mathdots >= %{texlive_version}
 #!BuildIgnore: texlive-mathdots
+Requires:       texlive-measurebox >= %{texlive_version}
+#!BuildIgnore: texlive-measurebox
 Requires:       texlive-metatex >= %{texlive_version}
 #!BuildIgnore: texlive-metatex
 Requires:       texlive-midnight >= %{texlive_version}
@@ -9635,10 +10018,14 @@ Requires:       texlive-pdf-trans >= %{texlive_version}
 #!BuildIgnore: texlive-pdf-trans
 Requires:       texlive-pdfmsym >= %{texlive_version}
 #!BuildIgnore: texlive-pdfmsym
+Requires:       texlive-pdftoolbox >= %{texlive_version}
+#!BuildIgnore: texlive-pdftoolbox
 Requires:       texlive-pitex >= %{texlive_version}
 #!BuildIgnore: texlive-pitex
 Requires:       texlive-placeins-plain >= %{texlive_version}
 #!BuildIgnore: texlive-placeins-plain
+Requires:       texlive-plain-widow >= %{texlive_version}
+#!BuildIgnore: texlive-plain-widow
 Requires:       texlive-plainpkg >= %{texlive_version}
 #!BuildIgnore: texlive-plainpkg
 Requires:       texlive-plipsum >= %{texlive_version}
@@ -9669,6 +10056,8 @@ Requires:       texlive-simplekv >= %{texlive_version}
 #!BuildIgnore: texlive-simplekv
 Requires:       texlive-soul >= %{texlive_version}
 #!BuildIgnore: texlive-soul
+Requires:       texlive-stretchy >= %{texlive_version}
+#!BuildIgnore: texlive-stretchy
 Requires:       texlive-swrule >= %{texlive_version}
 #!BuildIgnore: texlive-swrule
 Requires:       texlive-systeme >= %{texlive_version}
@@ -9691,6 +10080,8 @@ Requires:       texlive-texinfo >= %{texlive_version}
 #!BuildIgnore: texlive-texinfo
 Requires:       texlive-timetable >= %{texlive_version}
 #!BuildIgnore: texlive-timetable
+Requires:       texlive-tokmap >= %{texlive_version}
+#!BuildIgnore: texlive-tokmap
 Requires:       texlive-tracklang >= %{texlive_version}
 #!BuildIgnore: texlive-tracklang
 Requires:       texlive-transparent-io >= %{texlive_version}
@@ -9707,6 +10098,8 @@ Requires:       texlive-upca >= %{texlive_version}
 #!BuildIgnore: texlive-upca
 Requires:       texlive-varisize >= %{texlive_version}
 #!BuildIgnore: texlive-varisize
+Requires:       texlive-visualtoks >= %{texlive_version}
+#!BuildIgnore: texlive-visualtoks
 Requires:       texlive-xii >= %{texlive_version}
 #!BuildIgnore: texlive-xii
 Requires:       texlive-xii-lat >= %{texlive_version}
@@ -9727,7 +10120,7 @@ Add-on packages and macros that work with plain TeX, often
 LaTeX, and occasionally other formats.
 
 %package -n texlive-collection-pstricks
-Version:        %{texlive_version}.%{texlive_noarch}.svn65367
+Version:        %{texlive_version}.%{texlive_noarch}.svn77232
 Release:        0
 License:        LPPL-1.0
 Summary:        PSTricks
@@ -9819,6 +10212,8 @@ Requires:       texlive-pst-fit >= %{texlive_version}
 #!BuildIgnore: texlive-pst-fit
 Requires:       texlive-pst-flags >= %{texlive_version}
 #!BuildIgnore: texlive-pst-flags
+Requires:       texlive-pst-fourbarlinkage >= %{texlive_version}
+#!BuildIgnore: texlive-pst-fourbarlinkage
 Requires:       texlive-pst-fr3d >= %{texlive_version}
 #!BuildIgnore: texlive-pst-fr3d
 Requires:       texlive-pst-fractal >= %{texlive_version}
@@ -9829,6 +10224,8 @@ Requires:       texlive-pst-func >= %{texlive_version}
 #!BuildIgnore: texlive-pst-func
 Requires:       texlive-pst-gantt >= %{texlive_version}
 #!BuildIgnore: texlive-pst-gantt
+Requires:       texlive-pst-gears >= %{texlive_version}
+#!BuildIgnore: texlive-pst-gears
 Requires:       texlive-pst-geo >= %{texlive_version}
 #!BuildIgnore: texlive-pst-geo
 Requires:       texlive-pst-geometrictools >= %{texlive_version}
@@ -9847,6 +10244,8 @@ Requires:       texlive-pst-intersect >= %{texlive_version}
 #!BuildIgnore: texlive-pst-intersect
 Requires:       texlive-pst-jtree >= %{texlive_version}
 #!BuildIgnore: texlive-pst-jtree
+Requires:       texlive-pst-kepler >= %{texlive_version}
+#!BuildIgnore: texlive-pst-kepler
 Requires:       texlive-pst-knot >= %{texlive_version}
 #!BuildIgnore: texlive-pst-knot
 Requires:       texlive-pst-labo >= %{texlive_version}
@@ -9863,6 +10262,8 @@ Requires:       texlive-pst-magneticfield >= %{texlive_version}
 #!BuildIgnore: texlive-pst-magneticfield
 Requires:       texlive-pst-marble >= %{texlive_version}
 #!BuildIgnore: texlive-pst-marble
+Requires:       texlive-pst-massspring >= %{texlive_version}
+#!BuildIgnore: texlive-pst-massspring
 Requires:       texlive-pst-math >= %{texlive_version}
 #!BuildIgnore: texlive-pst-math
 Requires:       texlive-pst-mirror >= %{texlive_version}
@@ -9871,6 +10272,8 @@ Requires:       texlive-pst-moire >= %{texlive_version}
 #!BuildIgnore: texlive-pst-moire
 Requires:       texlive-pst-node >= %{texlive_version}
 #!BuildIgnore: texlive-pst-node
+Requires:       texlive-pst-nutation >= %{texlive_version}
+#!BuildIgnore: texlive-pst-nutation
 Requires:       texlive-pst-ob3d >= %{texlive_version}
 #!BuildIgnore: texlive-pst-ob3d
 Requires:       texlive-pst-ode >= %{texlive_version}
@@ -9921,6 +10324,8 @@ Requires:       texlive-pst-soroban >= %{texlive_version}
 #!BuildIgnore: texlive-pst-soroban
 Requires:       texlive-pst-spectra >= %{texlive_version}
 #!BuildIgnore: texlive-pst-spectra
+Requires:       texlive-pst-sphericaltrochoid >= %{texlive_version}
+#!BuildIgnore: texlive-pst-sphericaltrochoid
 Requires:       texlive-pst-spinner >= %{texlive_version}
 #!BuildIgnore: texlive-pst-spinner
 Requires:       texlive-pst-stru >= %{texlive_version}
@@ -9970,7 +10375,7 @@ BuildArch:      noarch
 PSTricks core and all add-on packages.
 
 %package -n texlive-collection-publishers
-Version:        %{texlive_version}.%{texlive_noarch}.svn74102
+Version:        %{texlive_version}.%{texlive_noarch}.svn77878
 Release:        0
 License:        LPPL-1.0
 Summary:        Publisher styles, theses, etcetera
@@ -9986,6 +10391,8 @@ Requires:       texlive-abntex2 >= %{texlive_version}
 #!BuildIgnore: texlive-abntex2
 Requires:       texlive-abntexto >= %{texlive_version}
 #!BuildIgnore: texlive-abntexto
+Requires:       texlive-abntexto-uece >= %{texlive_version}
+#!BuildIgnore: texlive-abntexto-uece
 Requires:       texlive-acmart >= %{texlive_version}
 #!BuildIgnore: texlive-acmart
 Requires:       texlive-acmconf >= %{texlive_version}
@@ -9994,6 +10401,8 @@ Requires:       texlive-active-conf >= %{texlive_version}
 #!BuildIgnore: texlive-active-conf
 Requires:       texlive-adfathesis >= %{texlive_version}
 #!BuildIgnore: texlive-adfathesis
+Requires:       texlive-aeskwadraat >= %{texlive_version}
+#!BuildIgnore: texlive-aeskwadraat
 Requires:       texlive-afthesis >= %{texlive_version}
 #!BuildIgnore: texlive-afthesis
 Requires:       texlive-aguplus >= %{texlive_version}
@@ -10090,12 +10499,18 @@ Requires:       texlive-confproc >= %{texlive_version}
 #!BuildIgnore: texlive-confproc
 Requires:       texlive-contract >= %{texlive_version}
 #!BuildIgnore: texlive-contract
+Requires:       texlive-cqjtuthesis >= %{texlive_version}
+#!BuildIgnore: texlive-cqjtuthesis
 Requires:       texlive-cquthesis >= %{texlive_version}
 #!BuildIgnore: texlive-cquthesis
 Requires:       texlive-dccpaper >= %{texlive_version}
 #!BuildIgnore: texlive-dccpaper
+Requires:       texlive-deutschesmuseum >= %{texlive_version}
+#!BuildIgnore: texlive-deutschesmuseum
 Requires:       texlive-dithesis >= %{texlive_version}
 #!BuildIgnore: texlive-dithesis
+Requires:       texlive-dlrg-templates >= %{texlive_version}
+#!BuildIgnore: texlive-dlrg-templates
 Requires:       texlive-ebook >= %{texlive_version}
 #!BuildIgnore: texlive-ebook
 Requires:       texlive-ebsthesis >= %{texlive_version}
@@ -10136,6 +10551,8 @@ Requires:       texlive-fcltxdoc >= %{texlive_version}
 #!BuildIgnore: texlive-fcltxdoc
 Requires:       texlive-fei >= %{texlive_version}
 #!BuildIgnore: texlive-fei
+Requires:       texlive-fhj-script >= %{texlive_version}
+#!BuildIgnore: texlive-fhj-script
 Requires:       texlive-ftc-notebook >= %{texlive_version}
 #!BuildIgnore: texlive-ftc-notebook
 Requires:       texlive-gaceta >= %{texlive_version}
@@ -10184,6 +10601,10 @@ Requires:       texlive-hu-berlin-bundle >= %{texlive_version}
 #!BuildIgnore: texlive-hu-berlin-bundle
 Requires:       texlive-hustthesis >= %{texlive_version}
 #!BuildIgnore: texlive-hustthesis
+Requires:       texlive-hustvisual >= %{texlive_version}
+#!BuildIgnore: texlive-hustvisual
+Requires:       texlive-iacrj >= %{texlive_version}
+#!BuildIgnore: texlive-iacrj
 Requires:       texlive-iaria >= %{texlive_version}
 #!BuildIgnore: texlive-iaria
 Requires:       texlive-iaria-lite >= %{texlive_version}
@@ -10222,8 +10643,12 @@ Requires:       texlive-jourrr >= %{texlive_version}
 #!BuildIgnore: texlive-jourrr
 Requires:       texlive-jpsj >= %{texlive_version}
 #!BuildIgnore: texlive-jpsj
+Requires:       texlive-jsonresume >= %{texlive_version}
+#!BuildIgnore: texlive-jsonresume
 Requires:       texlive-jwjournal >= %{texlive_version}
 #!BuildIgnore: texlive-jwjournal
+Requires:       texlive-jyu-chem-thesis >= %{texlive_version}
+#!BuildIgnore: texlive-jyu-chem-thesis
 Requires:       texlive-kdgdocs >= %{texlive_version}
 #!BuildIgnore: texlive-kdgdocs
 Requires:       texlive-kdpcover >= %{texlive_version}
@@ -10252,6 +10677,8 @@ Requires:       texlive-lni >= %{texlive_version}
 #!BuildIgnore: texlive-lni
 Requires:       texlive-lps >= %{texlive_version}
 #!BuildIgnore: texlive-lps
+Requires:       texlive-maine-thesis >= %{texlive_version}
+#!BuildIgnore: texlive-maine-thesis
 Requires:       texlive-matc3 >= %{texlive_version}
 #!BuildIgnore: texlive-matc3
 Requires:       texlive-matc3mem >= %{texlive_version}
@@ -10270,6 +10697,8 @@ Requires:       texlive-mnras >= %{texlive_version}
 #!BuildIgnore: texlive-mnras
 Requires:       texlive-modeles-factures-belges-assocs >= %{texlive_version}
 #!BuildIgnore: texlive-modeles-factures-belges-assocs
+Requires:       texlive-modernnewspaper >= %{texlive_version}
+#!BuildIgnore: texlive-modernnewspaper
 Requires:       texlive-msu-thesis >= %{texlive_version}
 #!BuildIgnore: texlive-msu-thesis
 Requires:       texlive-mucproc >= %{texlive_version}
@@ -10326,10 +10755,16 @@ Requires:       texlive-opteng >= %{texlive_version}
 #!BuildIgnore: texlive-opteng
 Requires:       texlive-oststud >= %{texlive_version}
 #!BuildIgnore: texlive-oststud
+Requires:       texlive-ou-tma >= %{texlive_version}
+#!BuildIgnore: texlive-ou-tma
 Requires:       texlive-oup-authoring-template >= %{texlive_version}
 #!BuildIgnore: texlive-oup-authoring-template
+Requires:       texlive-pats-resume >= %{texlive_version}
+#!BuildIgnore: texlive-pats-resume
 Requires:       texlive-philosophersimprint >= %{texlive_version}
 #!BuildIgnore: texlive-philosophersimprint
+Requires:       texlive-phimisci >= %{texlive_version}
+#!BuildIgnore: texlive-phimisci
 Requires:       texlive-pittetd >= %{texlive_version}
 #!BuildIgnore: texlive-pittetd
 Requires:       texlive-pkuthss >= %{texlive_version}
@@ -10360,6 +10795,8 @@ Requires:       texlive-resphilosophica >= %{texlive_version}
 #!BuildIgnore: texlive-resphilosophica
 Requires:       texlive-resumecls >= %{texlive_version}
 #!BuildIgnore: texlive-resumecls
+Requires:       texlive-retosmatematicos >= %{texlive_version}
+#!BuildIgnore: texlive-retosmatematicos
 Requires:       texlive-revtex >= %{texlive_version}
 #!BuildIgnore: texlive-revtex
 Requires:       texlive-revtex4 >= %{texlive_version}
@@ -10370,6 +10807,8 @@ Requires:       texlive-rub-kunstgeschichte >= %{texlive_version}
 #!BuildIgnore: texlive-rub-kunstgeschichte
 Requires:       texlive-rutitlepage >= %{texlive_version}
 #!BuildIgnore: texlive-rutitlepage
+Requires:       texlive-rwth-ci >= %{texlive_version}
+#!BuildIgnore: texlive-rwth-ci
 Requires:       texlive-ryersonsgsthesis >= %{texlive_version}
 #!BuildIgnore: texlive-ryersonsgsthesis
 Requires:       texlive-ryethesis >= %{texlive_version}
@@ -10424,6 +10863,8 @@ Requires:       texlive-suftesi >= %{texlive_version}
 #!BuildIgnore: texlive-suftesi
 Requires:       texlive-sugconf >= %{texlive_version}
 #!BuildIgnore: texlive-sugconf
+Requires:       texlive-sysuthesis >= %{texlive_version}
+#!BuildIgnore: texlive-sysuthesis
 Requires:       texlive-tabriz-thesis >= %{texlive_version}
 #!BuildIgnore: texlive-tabriz-thesis
 Requires:       texlive-technion-thesis-template >= %{texlive_version}
@@ -10591,7 +11032,7 @@ BuildArch:      noarch
 The collection-publishers package
 
 %package -n texlive-collection-xetex
-Version:        %{texlive_version}.%{texlive_noarch}.svn71515
+Version:        %{texlive_version}.%{texlive_noarch}.svn77786
 Release:        0
 License:        LPPL-1.0
 Summary:        XeTeX and packages
@@ -10634,8 +11075,6 @@ Requires:       texlive-philokalia >= %{texlive_version}
 #!BuildIgnore: texlive-philokalia
 Requires:       texlive-ptext >= %{texlive_version}
 #!BuildIgnore: texlive-ptext
-Requires:       texlive-realscripts >= %{texlive_version}
-#!BuildIgnore: texlive-realscripts
 Requires:       texlive-simple-resume-cv >= %{texlive_version}
 #!BuildIgnore: texlive-simple-resume-cv
 Requires:       texlive-simple-thesis-dissertation >= %{texlive_version}
@@ -10754,8 +11193,8 @@ Summary:        Basic development packages for TeXLive
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND SUSE-TeX
 Group:          Development/Languages/Other
 URL:            https://www.tug.org/texlive/
-Requires:       texlive-kpathsea-devel = 6.4.1
-Requires:       texlive-ptexenc-devel = 1.5.1
+Requires:       texlive-kpathsea-devel = 6.4.2
+Requires:       texlive-ptexenc-devel = 1.5.2
 Requires:       texlive-synctex-devel = 1.21
 Requires:       texlive-texlua-devel = 5.3.6
 %if %{with LuaJIT}
@@ -11083,6 +11522,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/bibtex/bst/notex-bst
     mkdir -p %{buildroot}%{_texmfdistdir}/bibtex/bst/nxuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/bibtex/bst/opcit
+    mkdir -p %{buildroot}%{_texmfdistdir}/bibtex/bst/oup-authoring-template
     mkdir -p %{buildroot}%{_texmfdistdir}/bibtex/bst/perception
     mkdir -p %{buildroot}%{_texmfdistdir}/bibtex/bst/persian-bib
     mkdir -p %{buildroot}%{_texmfdistdir}/bibtex/bst/phfnote
@@ -11130,22 +11570,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/bibtex/csf/persian-bib
     mkdir -p %{buildroot}%{_texmfdistdir}/bibtex/csf/polish-csf
     mkdir -p %{buildroot}%{_texmfdistdir}/chktex
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/scite/context
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/scite/context/documents
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/scite/context/lexers/data
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/scite/context/lexers/themes
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/texfont
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/texworks
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/texworks/TUG
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/texworks/completion
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/texworks/configuration
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/vscode
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/vscode/extensions/context
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/vscode/extensions/context/keybindings
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/vscode/extensions/context/settings
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/vscode/extensions/context/syntaxes
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/vscode/extensions/context/tasks
-    mkdir -p %{buildroot}%{_texmfdistdir}/context/data/vscode/extensions/context/themes
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/aleph/base
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/amstex/base
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/asymptote/examples
@@ -11204,12 +11628,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/bibtex8
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/bibtexu/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/chktex
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/colors/profiles
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/documents/general/leaflets
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/documents/general/magazines
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/documents/general/manuals
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/documents/general/qrcs
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/examples/calculator
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/examples/clock
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/examples/tagging
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/presentations/bachotex/2005
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/presentations/bachotex/2009
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/presentations/bachotex/2010
@@ -11238,6 +11664,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/presentations/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/presentations/tug/2001
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/presentations/tug/2007
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sample
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/scripts/mkii
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/scripts/mkiv
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/leaflets
@@ -11264,22 +11691,25 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/lua
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/luametafun
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/luametatex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/luatex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/math
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/mathml
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/metafun
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/mk
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/moretocome
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/musings
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/mvlcolumnsets
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/nodes
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/notnow
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/onandon
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/ontarget
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/pagecolumns
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/pdfmerge
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/ppchtex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/publications
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/readme
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/rules
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/signals
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/spacing
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/spreadsheets
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/sql
@@ -11299,26 +11729,26 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/workflows
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/xml
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/sources/general/manuals/xtables
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/animation
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/calendar-examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/chat
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/circuitikz
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/collating-marks
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/example
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/01
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/02
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/03
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/04
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/05
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/06
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/07
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/08
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/09
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/10
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/11
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/12
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/13
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/14
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/zhfonts
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/15
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/16
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/zhfonts
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/cyrillicnumbers
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/enigma/enigma/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/context/third/filter
@@ -11380,6 +11810,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/arphic/gbsnu
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/arphic/gkaiu
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/arsenal
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/arsenal-math
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/arvo
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/asana-math
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/asapsym
@@ -11387,7 +11818,9 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/astro
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/atkinson
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/auncial-new
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/awami
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/baekmuk
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/bahaistar
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/bartel-chess-fonts/other-sources
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/baskervaldadf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/baskervaldx
@@ -11473,7 +11906,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/concmath-fonts
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/concmath-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/concrete
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/context-companion-fonts
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/context
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/cooperhewitt
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/cormorantgaramond
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/countriesofeurope
@@ -11539,6 +11972,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/fonetika
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/fontawesome
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/fontawesome5
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/fontawesome6
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/fontawesome7
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/fontinst/encspecs
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/fontinst/examples/basic
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/fontinst/examples/eurofont
@@ -11565,14 +12000,23 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gelasiomath
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/genealogy
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-otf
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/documentation
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/assets/css
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/assets/images
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/pandocfilters
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/web
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/assets/css
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/assets/images
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/pdf
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/source
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/source/pandocfilters
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/source/productsite
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/web
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/assets/css
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/assets/images
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/pdf
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/source
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/source/pandocfilters
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/source/productsite
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/web
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gfsartemisia
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gfsbaskerville
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/gfsbodoni
@@ -11631,6 +12075,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/jetbrainsmono-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/jfmutil
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/josefin
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/juliamono
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/junicode
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/junicodevf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/kerkis
@@ -11668,8 +12113,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/lm-math
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/lobster2
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/logix
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/luciole
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/luwiantype
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/lxfonts
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/lxgw-fonts
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/lydtype
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/magra
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/marcellus
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/marvosym
@@ -11688,6 +12136,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/missaali
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/mlmodern
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/modes
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/monaspace-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/montserrat
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/morisawa
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/mpfonts
@@ -11725,6 +12174,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/paratype
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/parsimatn
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/parsinevis
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/pennstander-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/phaistos
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/phonetic
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/phonetic/209
@@ -11771,6 +12221,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/skaknew
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/spark-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/spectral
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/splentinex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/srbtiks
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/starfont
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/fonts/staves
@@ -11947,6 +12398,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/elhyphen
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/enctex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/encxvlna
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/eoldef
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/epsf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/epsf/okay
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/es-tex-faq
@@ -11992,7 +12444,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/knuth-hint/texware
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/knuth-hint/tie
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/knuth-hint/web
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/knuth-hint/xetex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/knuth-pdf/bibtex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/knuth-pdf/ctie
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/knuth-pdf/cweb
@@ -12023,6 +12474,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/m-tx
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/markdown
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/mathdots
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/measurebox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/memoize
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/mfpic
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/mfpic/examples
@@ -12052,7 +12504,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pdfmsym
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pdftexcmds
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/petri-nets
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pgf
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pgf/images
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pgf/plots
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pgfplots/license_prepcontour
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pictex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/plainpkg
@@ -12093,11 +12546,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-feyn/data
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-fill
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-fit
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-fourbarlinkage
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-fr3d
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-fractal
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-fun
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-func
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-gantt
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-gears
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-geo
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-geo/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-geometrictools
@@ -12107,6 +12563,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-hsb
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-infixplot
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-jtree
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-kepler
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-kepler/images
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-knot
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-labo
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-lens
@@ -12115,6 +12573,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-magneticfield
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-marble
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-marble/examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-massspring
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-massspring/images
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-math
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-mirror
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-mirror/createEPS
@@ -12122,6 +12582,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-moire
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-moire/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-node
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-nutation
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-nutation/animations
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-ob3d
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-ode
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-ode/examples
@@ -12150,6 +12612,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-solides3d/text
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-soroban
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-spectra
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-spinner
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-spinner/images
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/pst-stru
@@ -12176,6 +12640,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/shapepar
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/simplekv
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/soul
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/stretchy
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/stretchy/Documentation
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/systeme
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/t2
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/t2/etc/rubibtex
@@ -12214,6 +12680,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/textmerg
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/thumbpdf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/tokcycle
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/tokmap
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/tracklang
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/tracklang/samples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/tracklang/samples/animals
@@ -12229,6 +12696,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/vaucanson-g
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/vaucanson-g/VCManual-src
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/velthuis
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/visualtoks
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/vntex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/witharrows
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/xint
@@ -12239,6 +12707,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/xypic/support
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/yax
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/youngtab
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/zeckendorf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/generic/zhspacing
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/hitex/base
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/kpathsea
@@ -12260,6 +12729,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/abnt
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/abntex2/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/abntexto
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/abntexto-uece
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/abraces
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/abspos
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/abstract
@@ -12288,7 +12758,9 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/adtrees
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/advdate
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/aeguill
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/aeskwadraat
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/affilauthor
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/afperpack
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/afthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/aguplus
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/aiaa
@@ -12381,6 +12853,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/asmejour
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/asmejour/asmewide_example
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/aspectratio
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/aspen
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/assignment
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/assoccnt
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/association-matrix
@@ -12452,7 +12925,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bchart
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bclogo
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamer-fuberlin
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamer-reveal
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamer-reveal/Media
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamer-theme-albi
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamer-tut-pt
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamer-varbox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamer-verona
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamer/emulation-examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamer/examples/a-conference-talk
@@ -12477,9 +12954,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamersubframe
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamerswitch
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-arguelles/demo
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-bilkent-econ
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-cleaneasy
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-cleaneasy/configs
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-csh
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-cuerna
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-cuerna/pictures
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-detlevcm
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-durham
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-epyt
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-focus
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-focus/focus-demo
@@ -12495,6 +12977,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-saintpetersburg/figures
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-simpledarkblue
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-simpleplus
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-spectrum
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-tcolorbox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-trigon
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/beamertheme-upenn-bc
@@ -12520,6 +13003,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bgteubner
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bib2qr
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bibarts
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bibbreeze
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-abnt
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-abnt/tests
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/biblatex-accursius
@@ -12610,6 +13094,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bibtopic
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bibtopicprefix
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bibunits
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bidi
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bigfoot
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bigintcalc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bigints
@@ -12657,12 +13142,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/booktabs-de
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/booktabs-fr
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/boolexpr
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bootstrapicons
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bophook
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bosisio
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/boxedminipage
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/boxhandler
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bpchem
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/br-lex
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bracealign
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bracketkey
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/braids
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/braille
@@ -12675,9 +13162,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bredzenie
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/breqn
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bropd
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/broydensolve
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bubblesort
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bullcntr
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bussproofs
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bussproofs-colorful
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bussproofs-extra
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bxbase
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/bxcalc
@@ -12771,6 +13260,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/changes/userdoc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/chappg
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/chapterfolder
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/char2path
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/chbibref
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cheatsheet
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/checkend
@@ -12823,10 +13313,12 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/circuit-macros/examples/xfig
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/circuitikz
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/circularglyphs
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cistercian
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/citation-style-language
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cite
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/citeall
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/citeref
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/citeright
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cje
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cjhebrew
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cjk-ko
@@ -12980,6 +13472,10 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/covington
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cprotect
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cprotectinside
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cqjtuthesis/examples/bibliography
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cqjtuthesis/examples/contents
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cqjtuthesis/examples/contents-graduate
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cqjtuthesis/examples/figures
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cquthesis/contents
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cquthesis/figures
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/cquthesis/ref
@@ -13109,6 +13605,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/democodetools
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/denisbdoc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/derivative
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/deutschesmuseum
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/dhua
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/diabetes-logbook
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/diabetes-logbook/QQ/TEST
@@ -13160,6 +13657,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/dithesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/dk-bib
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/dlfltxb
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/dlrg-templates
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/dlrg-templates/Beispiele
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/dnaseq
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/doclicense
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/docmfp
@@ -13257,6 +13756,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/egplot
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ehhline
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/eiad-ltx
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/eigo
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/einfart/demo
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ejpecp
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ekaia
@@ -13265,6 +13765,12 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/eledform/include
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/eledmac
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/eledmac/examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/elegantbook
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/elegantbook/figure
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/elegantbook/image
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/elegantnote/image
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/elegantpaper
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/elegantpaper/image
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/elements
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ellipse
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ellipsis
@@ -13312,7 +13818,9 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/enumext
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/enumitem
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/enumitem-zref
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/enumsub
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/envbig
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/envelope-letter
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/enverb
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/environ
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/envlab
@@ -13350,6 +13858,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/eskdx/source
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/eskdx/test
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/eso-pic
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/essaykit
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/estcpmm
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/esvect
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/etaremune
@@ -13378,6 +13887,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/euro
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/euromoney
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/europasscv/example
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/europecv/assets
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/europecv/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/europecv/templates
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/everyhook
@@ -13449,6 +13959,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/faq-fr
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/faq-fr-gutenberg/pdf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/faq-fr/legacy_versions
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fariscovernew
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fascicules/guide/ch4_mon_chapitre/content
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fascicules/guide/ch4_mon_chapitre/img
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fascicules/guide/content/img
@@ -13474,6 +13985,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ffcode
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ffslides
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fgruler
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fhj-script
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fifinddo-info/variants
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fifo-stack
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/figbib
@@ -13484,6 +13996,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/figput/javascript/development
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/figput/javascript/release
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/figsize
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/figureversions
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/filecontents
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/filecontentsdef
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/filedate
@@ -13508,6 +14021,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fixmath
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fixme
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fixmetodonotes
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fixtounicode
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fjodor
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/flabels
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/flacards
@@ -13527,6 +14041,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/floatrow
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/floatrowbytocbasic
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/flowchart
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/flowfram/flowfram-manual-examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/flowfram/images
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/flowfram/samples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fmp
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fmtcount
@@ -13538,9 +14054,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fnpct
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fnspe
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fnumprint
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fodot
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/foekfont
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/foilhtml
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/foliono/pics
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fontawesomescaled
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fontaxes
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fontscale
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fontscripts
@@ -13558,6 +14076,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/forarray
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/foreign
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/forest
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/forest-ext
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/forest-quickstart
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/forloop
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/formal-grammar
@@ -13568,12 +14087,15 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fouridx
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fp
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fragments
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fragoli
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/framed
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/framedsyntax
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/frankenstein/unsupported
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/freealign
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/freemath
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/frege
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/frenchmath
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fretplot
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/frletter
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/frontespizio
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/froufrou
@@ -13591,6 +14113,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/functional
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fundus-calligra
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fundus-sueterlin
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/futharksymb
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fvextra
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/fwlw
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/g-brief
@@ -13658,6 +14181,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/glossaries-serbian
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/glossaries-slovene
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/glossaries-spanish
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/glossaries-ukrainian
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/glossaries/glossaries-user-examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/glossaries/samples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/gmdoc
@@ -13755,6 +14279,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hausarbeit-jura
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/havannah
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hc
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hduthesis
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hduthesis/example
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/he-she
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hebdomon/figures
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hebrew-fonts
@@ -13784,6 +14310,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hfutexam
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hhtensor
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hideanswer
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hideproofs
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/highlightlatex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/highlightx
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hindawi-latex-template
@@ -13816,6 +14343,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/huaz
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hulipsum
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hustthesis
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hustvisual
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hvarabic
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hvextern
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hvfloat
@@ -13837,6 +14365,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hyperref
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hyperxmp
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/hyphenat
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/iacrj
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/iaria-lite/template
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/iaria/template
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ibrackets
@@ -13885,7 +14414,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/inputnormalization
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/inputtrc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/install-latex-guide-zh-cn
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/install-latex-guide-zh-cn/appendix
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/install-latex-guide-zh-cn/chapter
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/intcalc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/interactiveworkbook/documentation
@@ -13894,6 +14422,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/interfaces
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/interlinear
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/interval
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/intexgral
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/intopdf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/intro-scientific
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/inversepath
@@ -13924,7 +14453,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/isonums
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/isopt
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/isorot
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/isosafety
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/isosigns
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/isotope
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/isphysicalmath
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/issuulinks
@@ -13969,6 +14498,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/jurarsp
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/jvlisting
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/jwjournal
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/jyu-chem-thesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kalendarium
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kanbun
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kantlipsum
@@ -13979,6 +14509,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kblocks
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kdgdocs
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kdpcover
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/keisennote
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kerntest
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/keycommand
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/keyfloat
@@ -13993,6 +14524,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kfupm-math-exam
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kinematikz
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kix
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kkran
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kksymbols
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kluwer
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/knittingpattern
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/knowledge
@@ -14027,6 +14560,9 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ksp-thesis/demo/full/content/front
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ksp-thesis/demo/full/preamble
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ksp-thesis/demo/minimal
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ktbox
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ktbox/data
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ktbox/doc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ktv-texdata
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ku-template/images
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/kvdefinekeys
@@ -14041,11 +14577,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l2tabu-spanish
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l3backend
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l3build
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l3experimental/l3benchmark
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l3experimental/l3draw
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l3experimental/l3graphics
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l3experimental/l3opacity
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l3experimental/l3str
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l3experimental/xcoffins
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l3experimental/xgalley
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/l3kernel
@@ -14077,6 +14609,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/latex-lab
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/latex-mr
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/latex-refsheet
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/latex-tagging-status
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/latex-uni8
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/latex-veryshortguide
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/latex-via-exemplos
@@ -14129,6 +14662,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/leftindex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/leipzig
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lengthconvert
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/leporello
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/leporello/doc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/letltxmacro
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/letterswitharrows
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lettre
@@ -14157,6 +14692,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lineno
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ling-macros
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/linguex
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/linguistix
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/linkedthm
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/linop
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lion-msc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lipsum
@@ -14174,6 +14711,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/litetable
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lithuanian
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/liturg
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/liturgy-cw
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lkproof
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/llncs
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/llncsconf/example
@@ -14184,6 +14722,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/logical-markup-utils
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/logicproof
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/logicpuzzle
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/logictools
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/logoetalab
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/logpap
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/logreq/examples
@@ -14191,6 +14730,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/longfbox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/longfigure
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/longnamefilelist
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/longtwocolumn
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/loops
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lpic
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lplfitch
@@ -14232,15 +14772,24 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ltablex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ltabptch
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ltb2bib
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ltx-talk
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ltxdockit
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ltxguidex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ltxkeys
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ltxnew
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ltxtools
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lua-tikz3dtools
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/luacolor
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lualatex-doc-de
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/luatex-cn
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/luatex-cn/example/homepage-showcase
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/luatex-cn/example/hongloumeng-jiaxuben
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/luatex-cn/example/shiji-juan6-modern
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/luatex-cn/example/shiji-wudibenji
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/luatex-cn/example/siku-jianming-mulu
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/luatikz
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/luatikz/example
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lucide-icons
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/lwarp
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ly1
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/macrolist
@@ -14253,12 +14802,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mahjong
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mailing
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mailmerge
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/maine-thesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/makebarcode
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/makebase
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/makebox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/makecell
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/makecmds
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/makeglos
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/makegobbler
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/makelabels
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/makeplot
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/maker
@@ -14282,7 +14833,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/matc3
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/matc3mem
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/math-into-latex-4
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/math-operator/user_guide
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/math-operator
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mathador
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mathalpha
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mathastext
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mathcommand
@@ -14326,6 +14878,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/memexsupp
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/memoir
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/memoirchapterstyles
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/memoize-ext
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/memory
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/memorygraphs
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mensa-tex/doc
@@ -14335,6 +14888,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/menukeys
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mercatormap
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/messagepassing
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/metacapture
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/metalogo
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/metalogox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/metanorma
@@ -14358,6 +14912,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/microtype
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/microtype-de
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/midpage
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/milestonetimeline/examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/milestonetimeline/test
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/miller
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/milog
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/milsymb
@@ -14374,11 +14930,13 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/minitoc/images
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/minorrevision
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/minted
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/minted-code
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/minutes
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mismath
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mitthesis/MIT-thesis-template/fontsets
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/latex_sources
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mitthesis/examples/design_examples/latex_sources
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mitthesis/mitthesis-doc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mla-paper
@@ -14396,7 +14954,10 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/modeles-factures-belges-assocs
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/moderncv
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/moderncv/manual
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/modernnewspaper/docs
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/modernnewspaper/example
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/modernposter
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/modernruler
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/moderntimeline
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/modiagram
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/modref
@@ -14437,6 +14998,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mugsthesis/sample
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/muling
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multenum
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multi-sudoku
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multiaudience
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multibbl
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multibib
@@ -14447,6 +15009,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multienv
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multifootnote
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multilang
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multinotes
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multiobjective
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multiple-choice
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/multirow
@@ -14468,6 +15031,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mycv/Examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mylatex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mylatexformat
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mynsfc
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/mynsfc/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nag
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/naive-ebnf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nameauth
@@ -14539,6 +15104,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/notespages
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/notestex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/notoccite
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/novabeamer-theme/doc
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/novabeamer-theme/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nowidow
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nrc
@@ -14564,11 +15131,13 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/numspell
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nwafuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nwafuthesis/logo
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nwejm
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nwejm/addons/completion
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nwejm/english
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nwejm/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nwejm/french
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nxuthesis/chapter
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nxuthesis/figures
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/nxuthesis/ref
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/oberdiek
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/oberdiek/example
@@ -14585,13 +15154,17 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/omgtudoc-asoiu
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/onedown
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/onedown/Examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/onepgnote
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/onlyamsmath
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/onrannual
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/opcit
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/open-everyday-symbols
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/opencolor
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/openmoji
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/oplotsymbl
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/opteng
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/optidef
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/optikz/optikz_doc_code
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/optional
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/options
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/orcidlink
@@ -14603,6 +15176,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/othello
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/othelloboard
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/otibet
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ou-tma
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/oubraces
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/oup-authoring-template
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/oup-authoring-template/doc
@@ -14626,6 +15200,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pagesel
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pageslts
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/palette
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/panda
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pangram
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/panneauxroute
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/paper
@@ -14639,6 +15214,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/parades/example
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/paralist
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/parallel
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/paramcalc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/paresse
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/parnotes
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/parrun
@@ -14652,6 +15228,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pascaltriangle
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/passopt
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/patchcmd
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pats-resume
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pauldoc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pawpict
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pax
@@ -14686,6 +15263,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pdfscreen
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pdfslide
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pdfsync
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pdftoolbox
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pdftoolbox/Documentation
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pdftricks
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pdftricks2
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pdfwin
@@ -14699,6 +15278,10 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pfarrei
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pfdicons
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pgf-blur
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pgf-go
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pgf-go/en
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pgf-go/es
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pgf-go/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pgf-interference
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pgf-periodictable
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles
@@ -14731,6 +15314,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/phfthm
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/philex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/philosophersimprint
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/phimisci
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/phonenumbers
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/phonrule
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/photo
@@ -14739,6 +15323,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/physics
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/physics-patch
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/physics2
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/physics3
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/physunits
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/piano
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/picinpar
@@ -14752,6 +15337,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pittetd
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pixelart
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pixelarttikz
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pkginfograb
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pkgloader
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pkuthss/example
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/pkuthss/example/chap
@@ -14899,12 +15485,17 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qobitree
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qrbill
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qrcode
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qrcodetikz
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qsharp
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qstest
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qsymbols
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qtree
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quantikz
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quantum-chemistry-bonn
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quantumarticle
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quantumcubemodel
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quantumcubemodel/examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quickreaction
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quicktype
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quiver
@@ -14916,10 +15507,12 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quran
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quran-bn
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/quran-ur
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qworld
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qyxf-book
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/qyxf-book/figure
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/r_und_s
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ragged2e
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/rainbowbrackets
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/raleway
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ran_toks/docs
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ran_toks/examples
@@ -14978,6 +15571,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/resphilosophica
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/responsive
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/rest-api
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/retosmatematicos
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/returntogrid
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/revquantum
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/revtex/aip
@@ -15031,6 +15625,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/rutitlepage
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/rviewport
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/rvwrite
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/rwth-ci
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/rwth-ci/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ryersonsgsthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ryethesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/sa-tikz
@@ -15094,6 +15690,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/se2thesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/secdot
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/secnum
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/secretx
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/section
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/sectionbox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/sectionbox/example
@@ -15111,6 +15708,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/semtex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/sepfootnotes
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/sepnum
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/seqcalc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/seqsplit
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/serbian-apostrophe
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/serbian-date-lat
@@ -15195,6 +15793,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/skmath
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/skrapport
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/slantsc
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/slixte
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/smalltableof
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/smart-eqn
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/smartdiagram
@@ -15312,6 +15911,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/swebib
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/swfigure
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/swimgraf
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/switch
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/swungdash
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/syllogism
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/synproof
@@ -15320,6 +15920,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/synthslant
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/syntrace
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/synttree
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/sysuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/t-angles
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tabbing
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tabfigures
@@ -15327,6 +15928,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tableaux
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tablefootnote
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tableof
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tablericons
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tablists
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tablor
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tablor/Figures
@@ -15337,6 +15939,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tabstackengine
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tabto-ltx
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tabu
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tabular2
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tabularborder
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tabularcalc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tabularew
@@ -15368,8 +15971,10 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tengwarscript
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tensind
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tensor
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tensormatrix
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/termcal
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/termcal-de
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/terminalcode
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/termlist
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/termsim
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/testhyphens
@@ -15433,6 +16038,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/thuthesis/ref
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ticket
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ticollege
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tictactoe
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tidyres
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tiet-question-paper
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tiet-question-paper/images
@@ -15443,6 +16049,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-bbox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-bpmn
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-cd
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-cookingsymbols
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-decofonts
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-dependency
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-dimline
@@ -15470,6 +16077,9 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-qtree
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-relay
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-sfc
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-shields
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-shields/doc
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-shields/doc/img
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-swigs
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-timing
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-trackschematic
@@ -15479,6 +16089,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz-truchet
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz2d-fr
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikz3d-fr
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzbrickfigurines
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzbricks
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzcalendarnotes
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzcodeblocks
@@ -15486,6 +16097,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzdotncross
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzducks
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzfill
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzfxgraph
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzinclude
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzlings
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tikzmark
@@ -15532,11 +16144,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-doc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-elements
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-elements/examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-elements/examples/lua
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-elements/lua
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-euclide
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-fct
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-graph
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-graph/doc/latex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-grapheur
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-interval
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-orm
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkz-tab
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tkzexample
@@ -15557,6 +16172,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/todonotes/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/todonotes/img
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tokenizer
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tokglobalstack
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tokgroupmark
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tonevalue
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/toolbox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tools
@@ -15569,6 +16186,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/totpages
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tpslifonts
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tqft
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/traffic-light-protocol
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/trajan
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tram
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tramlines
@@ -15610,6 +16228,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/turnstile
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/turnthepage
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tutodoc
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/tuzuk
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/twemojis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/twoinone
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/twoup
@@ -15671,6 +16290,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/uiucredborder
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/uiucthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ukbill
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ullrcorners
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ulqda
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/ulthese
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/umbclegislation
@@ -15776,6 +16396,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/versions
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/versonotes
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/vertbars
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/vexillology
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/vgrid
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/vhistory
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/visualfaq
@@ -15793,6 +16414,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/voss-mathcol
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/vpe
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/vruler
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/vscodeicons
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/vtable
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/vwcol
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/wallpaper
@@ -15811,7 +16433,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/webquiz/www/js
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/weiqi
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/whatsnote
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/whatsnote/figure
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/wheelchart
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/widetable
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/widows-and-orphans
@@ -15854,6 +16475,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xebaposter/images
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xecyrmongolian
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xellipsis
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xepersian
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xepersian/img/weather
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xfakebold
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xfor
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xfrac
@@ -15869,12 +16492,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xkeymask
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xkeyval
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xltabular
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xmeaning
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xmpincl
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xmuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xnewcommand
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xoptarg
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xpatch
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xpeek
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xpeekahead
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xpiano
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xpicture
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xpinyin
@@ -15884,8 +16509,13 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xsavebox
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xsim
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xsim/examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xsipa
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xskak
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xstacks
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xstix2
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xtab
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xtufte
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xtufte/graphics
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xtuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xtuthesis/body
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/latex/xtuthesis/figures
@@ -15952,6 +16582,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/domaincoloring
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/ekdosis/samples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/emojicite
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/fancymag
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/gitinfo-lua
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/hmtrump/nkd04_playing_cards_index
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/hu-berlin-bundle
@@ -15959,6 +16590,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/ideavault
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/innerscript
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/japanese-mathformulas
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/jsonresume
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/jsonresume/example
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/kkluaverb
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/lecturenotes/doc
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/lecturenotes/sample
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/letgut
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/ligtype
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/linebreaker
@@ -15967,8 +16603,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/lua-physical/test
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/lua-placeholders
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/lua-placeholders/lua-placeholders-example
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/lua-regression
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/lua-regression/example
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/lua-typo
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/lua-ul
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/lua-unicode-math
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/luabibentry
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/luabidi
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/luacas/appendix
@@ -16012,6 +16651,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/luatextra
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/luatodonotes
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/luatruthtable
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/luwa-ul
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/makecookbook/mycookbook/img
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/makecookbook/mycookbook/tex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/marginalia
@@ -16027,6 +16667,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/pyluatex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/pyluatex/example
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/scikgtex
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/seatingchart
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/selnolig
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/semesterplanner
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/semesterplannerlua
@@ -16049,9 +16690,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/wallcalendar/doc/examples/cal-burst
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/wallcalendar/doc/examples/data
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/wallcalendar/doc/examples/photos
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/xdvipsk-support
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/xindex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/xindex/tests
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/lualatex/yamlvars
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luametatex/base
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/addtoluatexpath
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/barracuda/doc/ga-graphic-asm
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/barracuda/doc/manual/image
@@ -16073,6 +16716,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/ctablestack
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/evangelion-jfm
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/evangelion-jfm/figure
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/farbe
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/gregoriotex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/gregoriotex/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/hyph-utf8
@@ -16085,10 +16729,13 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/lua-widow-control
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/luaaddplot
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/luakeys
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/luakeyval
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/lualibs
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/lualineno
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/luamplib
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/luaotfload
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/luapackageloader
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/luatex-type-definitions
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/luatexbase
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/luatexja
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/luatexko
@@ -16101,23 +16748,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/minim-pdf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/minim-xmp
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/nodetree
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/czech
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/czech/articles
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/czech/fmt
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/czech/images
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/czech/intros
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/czech/notes
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/czech/txs
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/english
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/english/articles
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/english/fmt
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/english/images
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/english/intros
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/english/notes
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/examples/english/txs
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/images
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/opbible/txs-gen
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/penlight
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/penlightplus
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/luatex/spelling
@@ -16202,6 +16832,24 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/omega/ocherokee
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/base
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/markdown/examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/czech
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/czech/articles
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/czech/fmt
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/czech/images
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/czech/intros
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/czech/notes
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/czech/txs
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/english
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/english/articles
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/english/fmt
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/english/images
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/english/intros
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/english/notes
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/examples/english/txs
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/images
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/opbible/txs-gen
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/parstat
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/pdfextra
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/optex/pdfextra/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/otherformats/jadetex/base
@@ -16287,6 +16935,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/plain/pgfplots
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/plain/pitex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/plain/plain-doc
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/plain/plain-widow
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/plain/plipsum
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/plain/plnfss
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/plain/plstmary
@@ -16330,7 +16979,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/chklref
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/classpack
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/clojure-pamphlet
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/cluttex/bin
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/cluttex/doc
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/cluttex/example/biblatex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/cluttex/example/bibtex
@@ -16343,6 +16991,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/cluttex/example/minted
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/cluttex/example/simple
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/cluttex/example/simple-ja
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/cluttex/src
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/cluttex/src/texrunner
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/convbkmk
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/crossrefware
@@ -16464,7 +17113,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/ppmcheckpdf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/pst2pdf
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/purifyeps
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/runtexfile
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/runtexfile/examples
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/runtexfile/images
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/runtexshebang
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/show-pdf-tags
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/spix
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/sqltex
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/support/srcredact
@@ -16518,6 +17171,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/texlive/texlive-es/archive/2021
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/texlive/texlive-es/archive/2022-march-2022-dec
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/texlive/texlive-es/archive/2023
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/texlive/texlive-es/archive/2024
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/texlive/texlive-fr
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/texlive/texlive-it
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/texlive/texlive-ja
@@ -16534,7 +17188,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/arabic-book
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/arabxetex/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/bhcexam/examples
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/bidi
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/bidi-atbegshi
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/bidicontour
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/bidihl
@@ -16558,11 +17211,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/fontbook
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/fontwrap
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/hanzibox
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/hduthesis
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/hduthesis/cha/source
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/hduthesis/example
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/hduthesis/example/cha
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/hduthesis/example/figures
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/hfutthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/hfutthesis/hfut-bib
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/hfutthesis/hfut-chapters
@@ -16578,7 +17226,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/langsci/documentation
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/langsci/examples
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/mathspec
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/mynsfc
+    mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/mohe-book
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/na-box
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/na-position
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/nanicolle
@@ -16614,9 +17262,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/xecyr/inputs
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/xecyr/old
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/xeindex
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/xepersian
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/xepersian-hm
-    mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/xepersian/img/weather
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/xespotcolor
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/xetex-itrans
     mkdir -p %{buildroot}%{_texmfdistdir}/doc/xelatex/xevlna
@@ -16680,6 +17326,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-electricfield
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-eucl
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-feyn
+    mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-fourbarlinkage
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-fractal
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-fun
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-func
@@ -16695,6 +17342,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-mirror
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-moire
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-node
+    mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-nutation
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-ode
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-optexp
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/pst-ovl
@@ -16718,6 +17366,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/uhc
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/xcolor
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/xdvi
+    mkdir -p %{buildroot}%{_texmfdistdir}/dvips/xdvipsk
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/xypic
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/yfonts-t1
     mkdir -p %{buildroot}%{_texmfdistdir}/dvips/zapfchan
@@ -16744,7 +17393,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/bitstrea/charter
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/esstix
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/gust/poltawski
-    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/hoekwater/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/hoekwater/manfnt-font
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/hoekwater/mflogo-font
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/jmn/hans
@@ -16786,6 +17434,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/public/cmsrb
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/public/cmupint
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/public/cochineal
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/public/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/public/countriesofeurope
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/public/cryst
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/public/culmus
@@ -16891,7 +17540,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/wadalab/mcj
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/wadalab/mr2j
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/afm/wadalab/mrj
-    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/cid/fontforge
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/cid/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/cmap/adobemapping/cmap-resources
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/cmap/adobemapping/cmap-resources/Adobe-CNS1-7
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/cmap/adobemapping/cmap-resources/Adobe-CNS1-7/CMap
@@ -16909,6 +17558,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/cmap/dvipdfmx
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/cmap/ptex-fontmaps
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/cmap/uptex-fonts
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/academicons
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/accanthis
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/adforn
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/adfsymbols
@@ -16986,6 +17636,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/fira
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/fontawesome
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/fontawesome5
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/fontawesome6
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/fontawesome7
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/fontools
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/fonts-tlwg
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/forum
@@ -17077,6 +17729,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/sourcesanspro
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/sourceserifpro
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/spectral
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/splentinex
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/srbtiks
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/step
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/enc/dvips/stepgreek
@@ -17143,6 +17796,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvipdfmx/ptex-fontmaps/yu-osx
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvipdfmx/ptex-fontmaps/yu-win
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvipdfmx/ptex-fontmaps/yu-win10
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/academicons
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/accanthis
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/adforn
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/adfsymbols
@@ -17271,6 +17925,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/fonetika
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/fontawesome
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/fontawesome5
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/fontawesome6
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/fontawesome7
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/fonts-tlwg
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/forum
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/fourier
@@ -17410,6 +18066,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/sourcesanspro
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/sourceserifpro
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/spectral
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/splentinex
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/srbtiks
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/starfont
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/staves
@@ -17453,7 +18110,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/dvips/zapfding
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/fontname
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/glyphlist
-    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/luatex/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/pdftex/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/vtex/antiqua
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/map/vtex/cm-super
@@ -17479,6 +18135,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/ofm/public/oinuit
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/ofm/public/omega
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/ofm/public/otibet
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/SIL/gentium-sil
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/adobe/sourcecodepro
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/adobe/sourcesanspro
@@ -17505,6 +18162,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/nowacki/kurier
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/omnibus-type/asapsym
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/aboensis
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/academicons
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/aesupp
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/alfaslabone
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/algolrevived
@@ -17512,6 +18170,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/antt
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/archivo
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/arsenal
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/arsenal-math
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/asana-math
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/atkinson
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/baskervaldx
@@ -17525,7 +18184,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/cochineal
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/coelacanth
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/concmath-otf
-    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/context-companion-fonts
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/cooperhewitt
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/countriesofeurope
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/courierten
@@ -17549,6 +18208,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/firamath
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/fontawesome
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/fontawesome5
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/fontawesome6
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/fontawesome7
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/fonts-churchslavonic
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/fonts-tlwg
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/forum
@@ -17587,12 +18248,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/lm-math
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/logix
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/luapstricks
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/luciole
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/mdsymbol
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/metsymb
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/mfb-oldstyle
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/miama
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/missaali
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/mnsymbol
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/monaspace-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/montserrat
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/musixtex-fonts
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/newcomputermodern
@@ -17603,6 +18266,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/nunito
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/ocr-b-outline
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/oldstandard
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/pennstander-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/phaistos
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/philokalia
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/playfair
@@ -17616,6 +18280,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/simpleicons
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/skaknew
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/spark-otf
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/splentinex
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/step
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/stix
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/opentype/public/stix2-otf
@@ -17648,6 +18313,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/ovp/public/ocherokee
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/ovp/public/omega
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/ovp/public/otibet
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/pk/ljfour/public/cm/dpi600
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/sfd/dnp
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/sfd/pxchfon
@@ -17679,10 +18345,12 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/aramaic-serto
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/archaic
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/armenian
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/arsenal-math
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/ascmac
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/aspectratio
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/astro
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/aurical
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/bahaistar
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/bangtex
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/barcodes
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/source/public/bartel-chess-fonts
@@ -17870,7 +18538,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/google/roboto
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/google/tinos
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/gust/poltawski
-    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/hoekwater/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/huerta/alegreya
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/huerta/bitter
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/huerta/caladea
@@ -17889,6 +18556,9 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/jknappen/fc
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/jmn/hans
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/kosch/crimson
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/lh/lh-t2a
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/metapost
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/monotype/helvetic
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/monotype/symbol
@@ -17903,6 +18573,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/ptex-fonts/jis
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/ptex-fonts/nmin-ngoth
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/ptex-fonts/standard
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/academicons
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/ae
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/aesupp
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/alfaslabone
@@ -17930,6 +18601,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/augie
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/auncial-new
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/aurical
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/bahaistar
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/bangtex
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/barcodes
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/bartel-chess-fonts
@@ -17984,6 +18656,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/coelacanth
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/concmath-fonts
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/concrete
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/cookingsymbols
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/cooperhewitt
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/countriesofeurope
@@ -18042,6 +18715,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/fonetika
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/fontawesome
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/fontawesome5
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/fontawesome6
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/fontawesome7
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/fonts-tlwg
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/forum
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/fourier
@@ -18191,6 +18866,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/skak
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/skaknew
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/skull
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/splentinex
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/srbtiks
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/starfont
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/tfm/public/staves
@@ -18319,9 +18995,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/arphic-ttf
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/arvo
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/asana-math
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/awami
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/baekmuk
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/bangla
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/belleek
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/crimsonpro
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/culmus
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/cuprum
@@ -18340,17 +19018,22 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/inriafonts
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/ipaex
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/josefin
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/juliamono
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/junicodevf
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/khatalmaqala
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/lexend
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/logix
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/luacensor
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/luciole
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/luwiantype
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/lxgw-fonts
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/lydtype
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/marcellus
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/marvosym
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/mpchess
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/parsimatn
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/parsinevis
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/pennstander-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/poiretone
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/rit-fonts
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/truetype/public/theanodidot
@@ -18397,7 +19080,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/google/roboto
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/google/tinos
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/gust/poltawski
-    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/hoekwater/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/hoekwater/manfnt-font
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/hoekwater/mflogo-font
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/huerta/alegreya
@@ -18424,6 +19106,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/paratype/ptsans
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/paratype/ptserif
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/production/spectral
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/academicons
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/aesupp
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/alfaslabone
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/algolrevived
@@ -18485,6 +19168,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/cmupint
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/cochineal
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/coelacanth
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/context
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/cooperhewitt
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/countriesofeurope
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/courierten
@@ -18526,6 +19210,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/fonetika
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/fontawesome
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/fontawesome5
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/fontawesome6
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/fontawesome7
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/fonts-tlwg
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/forum
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/fourier
@@ -18626,6 +19312,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/semaphor
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/simpleicons
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/skaknew
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/splentinex
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/starfont
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/staves
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/type1/public/step
@@ -18876,6 +19563,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/vf/public/sansmathaccent
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/vf/public/sansmathfonts
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/vf/public/scholax
+    mkdir -p %{buildroot}%{_texmfdistdir}/fonts/vf/public/splentinex
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/vf/public/srbtiks
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/vf/public/step
     mkdir -p %{buildroot}%{_texmfdistdir}/fonts/vf/public/stepgreek
@@ -18957,7 +19645,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/makeindex/repeatindex
     mkdir -p %{buildroot}%{_texmfdistdir}/makeindex/songbook
     mkdir -p %{buildroot}%{_texmfdistdir}/makeindex/startex
-    mkdir -p %{buildroot}%{_texmfdistdir}/makeindex/tikzpingus
     mkdir -p %{buildroot}%{_texmfdistdir}/makeindex/xdoc
     mkdir -p %{buildroot}%{_texmfdistdir}/metafont/base
     mkdir -p %{buildroot}%{_texmfdistdir}/metafont/config
@@ -19019,7 +19706,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/metapost/mptrees
     mkdir -p %{buildroot}%{_texmfdistdir}/metapost/nkarta
     mkdir -p %{buildroot}%{_texmfdistdir}/metapost/piechartmp
-    mkdir -p %{buildroot}%{_texmfdistdir}/metapost/profcollege
+    mkdir -p %{buildroot}%{_texmfdistdir}/metapost/profcollege/datastest
     mkdir -p %{buildroot}%{_texmfdistdir}/metapost/proflycee
     mkdir -p %{buildroot}%{_texmfdistdir}/metapost/repere
     mkdir -p %{buildroot}%{_texmfdistdir}/metapost/roundrect
@@ -19089,10 +19776,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/clojure-pamphlet
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/cloze
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/cluttex
-    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context-texlive/stubs-mkiv/unix
-    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context-texlive/stubs-mkiv/win64
-    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context-texlive/stubs/unix
-    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context-texlive/stubs/win64
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context/lua/third/enigma/mtx-t-enigma.lua
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context/lua/third/simpleslides
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context/lua/third/transliterator
@@ -19102,6 +19785,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context/ruby/base/kpse
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context/ruby/graphics
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context/ruby/rslb
+    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context/stubs/unix
+    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/context/stubs/win64
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/convbkmk
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/crossrefware
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/ctan-o-mat
@@ -19124,7 +19809,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/extractbb
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/fig4latex
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/findhyph
-    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/flowfram
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/fmtcount
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/fontools
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/fontscripts
@@ -19177,7 +19861,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/luasseq
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/lwarp
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/lyluatex
-    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/m-tx
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/magicnum
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/make4ht
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/make4ht/domfilters
@@ -19231,7 +19914,9 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/pythontex
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/qrbill
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/rubik
+    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/runtexfile
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/runtexshebang
+    mkdir -p %{buildroot}%{_texmfdistdir}/scripts/show-pdf-tags
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/simpdftex
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/spelling
     mkdir -p %{buildroot}%{_texmfdistdir}/scripts/spix
@@ -19289,18 +19974,19 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/base/mkxl
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/bib/common
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/bib/mkii
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/colors/icc/context
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/colors/context
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/colors/profiles
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/fonts/mkii
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/fonts/mkiv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/fonts/mkxl
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/interface/mkiv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/interface/third
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/lexers/data
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/lexers/themes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/modules/common
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/modules/mkii
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/modules/mkiv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/modules/mkxl
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/modules/third
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/patterns/common
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/patterns/mkii
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/patterns/mkiv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/patterns/mkxl
@@ -19310,6 +19996,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/test/mkiv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/texlive
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/third/advice
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/third/animation
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/third/asymptote
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/third/calendar-examples
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/context/third/chat
@@ -19365,11 +20052,10 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/fontinst/misc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/fontinst/smbletx
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/fontinst/smblmtx
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/fonts/bonum-otf
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/fonts/cascadiamono-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/2up
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/abbr
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/abstyles
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/academicons
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/advice
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/alphalph
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/apnum
@@ -19534,6 +20220,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/gv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/ha
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/haw
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/hbo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/he
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/hi
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/hnj
@@ -19546,6 +20233,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/ig
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/ii
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/inh
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/invalid
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/is
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/isv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/it
@@ -19570,7 +20258,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/kl
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/kln
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/km
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/kmr
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/kn
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/ko
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/kok
@@ -19681,6 +20368,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/ses
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/sg
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/sga
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/shared
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/shi
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/si
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/sk
@@ -19722,6 +20410,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/ug
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/uga
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/uk
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/und
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/ur
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/uz
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/babel/locale/vai
@@ -19772,7 +20461,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/commutative-diagrams
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/compare
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/config
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/context/luatex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/context/mptopdf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/context/ppchtex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/crossrefenum
@@ -19793,6 +20481,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/encodings
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/enctex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/enigma
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/eoldef
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/epigram
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/epsf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/etexcmds
@@ -19850,6 +20539,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/mathabx
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/mathdots
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/mathlig
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/measurebox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/memoize
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/metapost
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/mfpic
@@ -19969,11 +20659,13 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-feyn
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-fill
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-fit
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-fourbarlinkage
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-fr3d
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-fractal
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-fun
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-func
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-gantt
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-gears
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-geo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-geo/data
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-geometrictools
@@ -19984,6 +20676,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-infixplot
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-intersect
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-jtree
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-kepler
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-knot
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-labo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-lens
@@ -19991,10 +20684,12 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-lsystem
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-magneticfield
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-marble
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-massspring
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-math
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-mirror
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-moire
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-node
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-nutation
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-ob3d
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-ode
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-optic
@@ -20015,6 +20710,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-solarsystem
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-solides3d
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-spectra
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-sphericaltrochoid
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-spinner
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-stru
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/pst-text
@@ -20041,6 +20737,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/simplekv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/soul
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/splitindex
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/stretchy
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/stringenc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/swrule
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/systeme
@@ -20064,6 +20761,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/tikz-cd
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/tikz-ext
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/tokcycle
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/tokmap
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/tracklang
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/trigonometry
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/tuple
@@ -20076,6 +20774,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/variations
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/vaucanson-g
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/velthuis
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/visualtoks
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/witharrows
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/xint
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/xkeyval
@@ -20085,6 +20784,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/yax
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/ydoc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/youngtab
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/zeckendorf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/zhmetrics
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/generic/zhspacing
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/hitex/base
@@ -20112,11 +20812,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/abnt
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/abntex2
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/abntexto
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/abntexto-uece
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/aboensis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/abraces
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/abspos
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/abstract
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/academicons
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/accanthis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/accents
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/accessibility
@@ -20145,8 +20845,10 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/advice
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ae
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/aeguill
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/aeskwadraat/logos
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/aesupp
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/affilauthor
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/afperpack
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/afthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/aguplus
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/aiaa
@@ -20222,6 +20924,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/arraysort
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/arsclassica
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/arsenal
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/arsenal-math
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/articleingud
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/arvo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/arydshln
@@ -20236,6 +20939,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/asmeconf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/asmejour
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/aspectratio
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/aspen
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/assignment
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/assoccnt
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/association-matrix
@@ -20276,6 +20980,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/babelbib
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/background
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/backnaur
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bahaistar
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bangla
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bangorcsthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bangorexam
@@ -20299,6 +21004,9 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bclogo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamer
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamer-fuberlin
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamer-reveal
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamer-theme-albi
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamer-varbox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamer-verona
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamer2thesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamerappendixnote
@@ -20310,8 +21018,12 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamersubframe
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamerswitch
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-arguelles
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-bilkent-econ
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/logos
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-csh
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-cuerna
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-detlevcm
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-durham
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-epyt
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-focus
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-gotham
@@ -20325,6 +21037,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-saintpetersburg
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-simpledarkblue
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-simpleplus
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-spectrum
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-tcolorbox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-trigon
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/beamertheme-upenn-bc
@@ -20356,6 +21069,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bguq
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bib2qr
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bibarts
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bibbreeze
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bibcop
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/biblatex-abnt
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/biblatex-accursius
@@ -20443,6 +21157,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bibtopic
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bibtopicprefix
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bibunits
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bidi
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bigfoot
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bigints
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bilingualpages
@@ -20475,6 +21190,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/boldtensors
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bondgraph
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bondgraphs
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bonum-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/book-of-common-prayer
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bookcover
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bookest
@@ -20486,12 +21202,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/booktabs
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/boolexpr
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/boondox
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bootstrapicons
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bophook
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bosisio
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/boxedminipage
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/boxhandler
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bpchem
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/br-lex
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bracealign
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bracketkey
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/braids
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/braille
@@ -20504,12 +21222,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bredzenie
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/breqn
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bropd
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/broydensolve
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/brushscr
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bubblesort
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bullcntr
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bundledoc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/burmese
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bussproofs
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bussproofs-colorful
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bussproofs-extra
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bxbase
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/bxcalc
@@ -20561,6 +21281,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cartonaugh
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cascade
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cascadia-code
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cascadiamono-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cascadilla
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cases
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/casyl
@@ -20597,6 +21318,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/changes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/chappg
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/chapterfolder
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/char2path
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/charissil
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/chbibref
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cheatsheet
@@ -20649,11 +21371,13 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/circuit-macros
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/circuitikz
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/circularglyphs
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cistercian
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/citation-style-language/locales
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/citation-style-language/styles
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cite
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/citeall
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/citeref
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/citeright
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cje
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cjhebrew
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cjk-ko
@@ -20801,6 +21525,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/covington
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cprotect
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cprotectinside
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cqjtuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/cquthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/crbox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/create-theorem
@@ -20932,6 +21657,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/democodetools
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/denisbdoc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/derivative
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/deutschesmuseum
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/dhua
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/diabetes-logbook
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/diadia
@@ -20956,6 +21682,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/dithesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/dk-bib
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/dlfltxb
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/dlrg-templates
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/dlrg-templates/data
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/dnaseq
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/doclicense/images
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/doclicense/license-texts
@@ -21048,6 +21776,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ehhline
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/eiad
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/eiad-ltx
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/eigo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/einfart
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ejpecp
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ekaia
@@ -21055,6 +21784,9 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/electrumadf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/eledform
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/eledmac
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/elegantbook
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/elegantnote
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/elegantpaper
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/elements
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ellipse
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ellipsis
@@ -21098,7 +21830,9 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/enumext
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/enumitem
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/enumitem-zref
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/enumsub
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/envbig
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/envelope-letter
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/enverb
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/environ
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/envlab
@@ -21136,6 +21870,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/eskdx
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/eso-pic
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/esrelation
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/essaykit
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/esstix
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/estcpmm
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/esvect
@@ -21215,6 +21950,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fancytabs
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fancytooltips
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fancyvrb
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fariscovernew
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fascicules
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fast-diagram
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fbb
@@ -21239,11 +21975,13 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ffslides
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fge
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fgruler
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fhj-script
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fifo-stack
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/figbib
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/figchild
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/figput
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/figsize
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/figureversions
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/filecontents
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/filecontentsdef
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/filedate
@@ -21282,6 +22020,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fixme/layouts/target
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fixme/themes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fixmetodonotes
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fixtounicode
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fjodor
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/flabels
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/flacards
@@ -21307,12 +22046,16 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fnpct
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fnspe
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fnumprint
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fodot
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/foekfont
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/foilhtml
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/foliono
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fonetika
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fontawesome
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fontawesome5
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fontawesome6
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fontawesome7
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fontawesomescaled
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fontaxes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fontinst
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fontmfizz
@@ -21333,6 +22076,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/forarray
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/foreign
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/forest
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/forest-ext
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/forloop
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/formal-grammar
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/forms16be
@@ -21343,14 +22087,17 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fouriernc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fp
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fragments
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fragoli
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/framed
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/framedsyntax
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/francais-bst
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/frankenstein
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/frcursive
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/freealign
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/freemath
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/frege
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/frenchmath
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fretplot
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/frimurer
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/frletter
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/frontespizio
@@ -21367,6 +22114,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fundus-calligra
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fundus-cyr
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fundus-sueterlin
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/futharksymb
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fvextra
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/fwlw
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/g-brief
@@ -21449,6 +22197,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/glossaries-serbian
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/glossaries-slovene
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/glossaries-spanish
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/glossaries-ukrainian
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/glossaries/base
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/glossaries/expl
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/glossaries/rollback
@@ -21542,6 +22291,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hausarbeit-jura
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/havannah
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hc
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hduthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/he-she
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hebdomon
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hebrew-fonts
@@ -21576,6 +22326,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hfutexam
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hhtensor
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hideanswer
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hideproofs
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/highlightlatex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/highlightx
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hindmadurai
@@ -21600,6 +22351,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/huaz
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hulipsum
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hustthesis
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hustvisual
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hvarabic
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hvextern
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hvfloat
@@ -21619,6 +22371,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hyperref
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hyperxmp
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/hyphenat
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/iacrj
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/iaria
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/iaria-lite
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ibarra
@@ -21675,6 +22428,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/interfaces
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/interlinear
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/interval
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/intexgral
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/intopdf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/inversepath
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/invoice
@@ -21694,8 +22448,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/isonums
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/isopt
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/isorot
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/isosafety
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/isosigns
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/isotope
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/isphysicalmath
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/issuulinks
@@ -21727,6 +22480,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/jpsj
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/jslectureplanner
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/jsonparse
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/juliamono
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/jumplines
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/junicode
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/jupynotex
@@ -21737,6 +22491,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/jurarsp
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/jvlisting
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/jwjournal
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/jyu-chem-thesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kalendarium
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kanbun
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kantlipsum
@@ -21746,6 +22501,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kblocks
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kdgdocs
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kdpcover
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/keisennote
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kerkis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kerntest
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ketcindy
@@ -21762,6 +22518,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kfupm-math-exam
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kinematikz
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kix
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kkran
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kksymbols
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kluwer
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/knitting
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/knittingpattern
@@ -21781,6 +22539,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kpfonts
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kpfonts-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ksp-thesis
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ktbox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ktv-texdata
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ku-template
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kurier
@@ -21789,11 +22548,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/kvsetkeys
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/l3backend
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/l3build
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/l3experimental/l3benchmark
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/l3experimental/l3draw
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/l3experimental/l3graphics
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/l3experimental/l3opacity
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/l3experimental/l3str
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/l3experimental/xcoffins
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/l3experimental/xgalley
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/l3kernel
@@ -21817,6 +22572,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/latex-context-ppchtex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/latex-lab
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/latex-make
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/latex-tagging-status
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/latex-uni8
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/latex2man
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/latex2pydata
@@ -21847,6 +22603,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/leftindex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/leipzig
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lengthconvert
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/leporello
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lete-sans-math
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/letltxmacro
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/letterswitharrows
@@ -21892,6 +22649,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ling-macros
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/linguex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/linguisticspro
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/linguistix
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/linkedthm
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/linop
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lion-msc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lipsum
@@ -21908,6 +22667,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/litetable
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lithuanian
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/liturg
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/liturgy-cw
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lkproof
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/llncs
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/llncsconf
@@ -21920,6 +22680,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/logical-markup-utils
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/logicproof
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/logicpuzzle
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/logictools
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/logix
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/logoetalab
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/logpap
@@ -21928,6 +22689,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/longfbox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/longfigure
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/longnamefilelist
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/longtwocolumn
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/loops
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lpic
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lplfitch
@@ -21943,18 +22705,24 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ltablex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ltabptch
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ltb2bib
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ltx-talk
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ltxdockit
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ltxguidex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ltxkeys
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ltxmisc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ltxnew
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ltxtools
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lua-tikz3dtools
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/luacolor
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/luatikz
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lucide-icons
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/luciole
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/luwiantype
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lwarp
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lxfonts
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lxgw-fonts
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ly1
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/lydtype
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/m-tx
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/macrolist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/macros2e
@@ -21966,6 +22734,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mahjong/tiles
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mailing
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mailmerge
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/maine-thesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/makebarcode
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/makebase
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/makebox
@@ -21973,6 +22742,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/makecmds
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/makedtx
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/makeglos
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/makegobbler
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/makelabels
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/makeplot
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/maker
@@ -21995,6 +22765,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/matc3
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/matc3mem
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/math-operator
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mathador
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mathalpha
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mathastext
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mathcommand
@@ -22042,6 +22813,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/memexsupp
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/memoir
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/memoize
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/memoize-ext
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/memory
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/memorygraphs
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mensa-tex
@@ -22052,6 +22824,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mercatormap
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/merriweather
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/messagepassing
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/metacapture
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/metalogo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/metalogox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/metanorma
@@ -22074,6 +22847,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/miama
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/microtype
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/midpage
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/milestonetimeline
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/miller
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/milog
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/milsymb
@@ -22086,6 +22860,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/minitoc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/minorrevision
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/minted
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/minted-code
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mintspirit
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/minutes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mismath
@@ -22104,13 +22879,16 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mnsymbol
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/modeles-factures-belges-assocs
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/moderncv
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/modernnewspaper
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/modernposter
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/modernruler
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/moderntimeline
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/modiagram
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/modref
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/modroman
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/modular
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/moloch
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/monaspace-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mongolian-babel
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/monofill
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/montex
@@ -22138,6 +22916,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mugsthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/muling
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multenum
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multi-sudoku
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multiaudience
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multibbl
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multibib
@@ -22149,6 +22928,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multienv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multifootnote
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multilang
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multinotes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multiobjective
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multiple-choice
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/multirow
@@ -22168,6 +22948,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mycv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mylatex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mylatexformat
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/mynsfc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nag
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/naive-ebnf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nameauth
@@ -22248,6 +23029,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/noto
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/notoccite
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/notomath
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/novabeamer-theme
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nowidow
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nrc
@@ -22270,7 +23052,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nunito
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nwafuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nwejm
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nwejm/images
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nwejm/logos
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/nxuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/oberdiek
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/objectz
@@ -22287,14 +23069,18 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/oldstyle
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/omgtudoc-asoiu
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/onedown
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/onepgnote
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/onlyamsmath
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/onrannual
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/opcit
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/open-everyday-symbols
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/opencolor
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/openmoji
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/opensans
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/oplotsymbl
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/opteng
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/optidef
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/optikz
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/optional
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/options
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/orcidlink
@@ -22307,6 +23093,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/othello
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/othelloboard
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/otibet
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ou-tma
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/oubraces
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/oup-authoring-template
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/outilsgeomtikz
@@ -22333,6 +23120,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pageslts
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/palatino
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/palette
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/panda
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pangram
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/panneauxroute/Danger
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/panneauxroute/Indication
@@ -22350,6 +23138,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/parades
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/paralist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/parallel
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/paramcalc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/paratype
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/paresse
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/parnotes
@@ -22363,6 +23152,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pascaltriangle
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/passopt
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/patchcmd
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pats-resume
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pauldoc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pawpict
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pax
@@ -22398,6 +23188,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pdfxup
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pecha
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pegmatch
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pennstander-otf
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/perfectcut
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/perltex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/permute
@@ -22405,6 +23196,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pfarrei
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pfdicons
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pgf-blur
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pgf-go
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pgf-interference
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pgf-periodictable/flags
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pgf-periodictable/lattice
@@ -22447,6 +23239,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/phfthm
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/philex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/philosophersimprint
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/phimisci
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/phonenumbers
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/phonetic
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/phonrule
@@ -22456,6 +23249,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/physics
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/physics-patch
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/physics2
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/physics3
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/physunits
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/piano
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/picinpar
@@ -22470,6 +23264,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pittetd
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pixelart
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pixelarttikz
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pkginfograb
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pkgloader
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pkuthss
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/placeins
@@ -22596,11 +23391,13 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-fit
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-flags
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-flags/Flags
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-fourbarlinkage
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-fr3d
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-fractal
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-fun
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-func
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-gantt
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-gears
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-geo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-geometrictools
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-gr3d
@@ -22609,6 +23406,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-infixplot
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-intersect
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-jtree
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-kepler
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-knot
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-labo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-layout
@@ -22617,10 +23415,12 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-lsystem
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-magneticfield
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-marble
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-massspring
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-math
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-mirror
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-moire
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-node
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-nutation
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-ob3d
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-ode
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-optexp
@@ -22646,6 +23446,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-solides3d
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-soroban
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-spectra
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-sphericaltrochoid
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-spinner
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-stru
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/pst-text
@@ -22689,12 +23490,15 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/qobitree
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/qrbill
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/qrcode
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/qrcodetikz
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/qsharp
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/qstest
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/qsymbols
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/qtree
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/quantikz
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/quantum-chemistry-bonn
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/quantumarticle
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/quantumcubemodel
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/quattrocento
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/quickreaction
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/quicktype
@@ -22707,9 +23511,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/quran
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/quran-bn
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/quran-ur
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/qworld
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/qyxf-book
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/r_und_s
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ragged2e
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/rainbowbrackets
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/raleway
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ran_toks
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/randbild
@@ -22763,6 +23569,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/resphilosophica
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/responsive
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/rest-api
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/retosmatematicos
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/returntogrid
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/revquantum
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/revtex
@@ -22808,6 +23615,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/rutitlepage
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/rviewport
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/rvwrite
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/rwth-ci
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ryersonsgsthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ryethesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sa-tikz
@@ -22866,6 +23674,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/se2thesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/secdot
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/secnum
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/secretx
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/section
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sectionbox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sectionbreak
@@ -22883,6 +23692,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/semtex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sepfootnotes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sepnum
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/seqcalc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/seqsplit
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/serbian-apostrophe
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/serbian-date-lat
@@ -22908,6 +23718,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/shipunov
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/shortmathj
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/shorttoc
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/show-pdf-tags
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/show2e
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/showcharinbox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/showdim
@@ -22941,8 +23752,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/siunitx
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sjtutex/font
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sjtutex/lang
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sjtutex/preset
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sjtutex/scheme
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sjtutex/thesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sjtutex/vi
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/skak
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/skb
@@ -22955,6 +23766,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/skrapport
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/skull
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/slantsc
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/slixte
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/smalltableof
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/smart-eqn
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/smartdiagram
@@ -22984,6 +23796,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/spelatex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sphdthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/spie
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/splentinex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/splitbib
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/splitindex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/spot
@@ -23074,6 +23887,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/svrsymbols
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/swfigure
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/swimgraf
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/switch
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/swungdash
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/syllogism
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/symbats3
@@ -23084,6 +23898,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/synthslant
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/syntrace
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/synttree
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/sysuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/t-angles
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/t2
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tabbing
@@ -23092,6 +23907,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tableaux
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tablefootnote
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tableof
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tablericons
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tablists
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tablor
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tabls
@@ -23100,6 +23916,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tabstackengine
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tabto-ltx
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tabu
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tabular2
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tabularborder
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tabularcalc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tabularew
@@ -23129,9 +23946,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tengwarscript
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tensind
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tensor
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tensormatrix
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/termcal
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/termcal-de
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/termes-otf
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/terminalcode
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/termlist
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/termsim
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/testhyphens
@@ -23191,6 +24010,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/thuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ticket
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ticollege
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tictactoe
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tidyres
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tiet-question-paper
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-3dplot
@@ -23200,6 +24020,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-bbox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-bpmn
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-cd
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-cookingsymbols
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-decofonts
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-dependency
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-dimline
@@ -23226,6 +24047,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-qtree
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-relay
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-sfc
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-shields
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-swigs
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-timing
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-trackschematic
@@ -23233,12 +24055,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz-truchet
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz2d-fr
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikz3d-fr
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzbrickfigurines
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzbricks
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzcalendarnotes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzcodeblocks
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzdotncross
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzducks
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzfill
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzfxgraph
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzinclude
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzlings
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tikzmark
@@ -23282,6 +24106,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tkz-fct
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tkz-graph
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tkz-grapheur
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tkz-interval
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tkz-orm
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tkz-tab
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tkzexample
@@ -23294,6 +24119,8 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/todo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/todonotes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tokenizer
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tokglobalstack
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tokgroupmark
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tonevalue
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/toolbox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tools
@@ -23307,6 +24134,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tpslifonts
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tqft
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tracklang
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/traffic-light-protocol
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/trajan
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tram
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tramlines
@@ -23335,6 +24163,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/turnstile
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/turnthepage
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tutodoc
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/tuzuk
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/twemojis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/twoinone
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/twoup
@@ -23381,6 +24210,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/uiucredborder
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/uiucthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ukbill
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ullrcorners
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ulqda
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/ulthese
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/umbclegislation
@@ -23468,6 +24298,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/versions
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/versonotes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/vertbars
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/vexillology
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/vgrid
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/vhistory
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/vmargin
@@ -23476,6 +24307,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/volumes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/vpe
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/vruler
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/vscodeicons
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/vtable
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/vwcol
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/wallpaper
@@ -23528,6 +24360,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xebaposter
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xecyrmongolian
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xellipsis
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xepersian
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xfakebold
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xfor
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xfrac
@@ -23542,12 +24375,14 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xkeymask
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xkeyval
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xltabular
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xmeaning
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xmpincl
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xmuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xnewcommand
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xoptarg
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xpatch
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xpeek
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xpeekahead
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xpiano
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xpicture
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xpinyin
@@ -23557,8 +24392,12 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xreview
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xsavebox
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xsim
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xsipa
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xskak
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xstacks
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xstix2
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xtab
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xtufte
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xtuthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xurl
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/latex/xwatermark
@@ -23619,6 +24458,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/domaincoloring
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/ekdosis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/emojicite
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/fancymag/img
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/gitinfo-lua
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/gregoriotex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/hmtrump
@@ -23626,15 +24466,20 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/ideavault
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/innerscript
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/japanese-mathformulas
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/jsonresume
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/junicodevf
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/letgut
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/kkluaverb
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/lecturenotes
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/letgut/logos
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/ligtype
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/linebreaker
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/longmath
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/lua-check-hyphen
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/lua-placeholders
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/lua-regression
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/lua-typo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/lua-ul
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/lua-unicode-math
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/lua-widow-control
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luabibentry
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luabidi
@@ -23674,9 +24519,19 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luaset
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luasseq
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatbls
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatex-cn/banxin
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatex-cn/configs
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatex-cn/core
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatex-cn/debug
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatex-cn/decorate
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatex-cn/digital
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatex-cn/fonts
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatex-cn/guji
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatex-cn/util
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatextra
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatodonotes
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luatruthtable
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/luwa-ul
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/marginalia
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/novel
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/odsfile
@@ -23687,6 +24542,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/plantuml
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/pyluatex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/scikgtex
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/seatingchart
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/selnolig
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/semesterplanner
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/semesterplannerlua
@@ -23703,6 +24559,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/unitconv
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/wallcalendar
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/wallcalendar/i18n
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/xdvipsk-support
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/xindex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/lualatex/yamlvars
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/addtoluatexpath
@@ -23711,10 +24568,12 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/chickenize
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/chinese-jfm
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/cloze
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/context
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/cstypo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/ctablestack
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/ctex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/evangelion-jfm
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/farbe
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/gregoriotex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/hyph-utf8
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/interpreter
@@ -23726,10 +24585,13 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/lua-widow-control
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/luaaddplot
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/luakeys
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/luakeyval
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/lualibs
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/lualineno
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/luamplib
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/luaotfload
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/luapackageloader
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/luatex-type-definitions
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/luatexbase
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/luatexja/addons
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/luatex/luatexja/patches
@@ -23759,6 +24621,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/optex/demo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/optex/lua-widow-control
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/optex/opbible
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/optex/parstat
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/optex/pdfextra
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/optex/pkg
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/advice
@@ -23814,6 +24677,11 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/mlawriter
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/newsletr
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/omega
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/pdftoolbox
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/pdftoolbox/pdfData
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/pdftoolbox/pdfDstruct
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/pdftoolbox/pdfGraphics
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/pdftoolbox/pdfGraphics/listingcommands
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/pgf/basiclayer
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/pgf/frontendlayer
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/pgf/math
@@ -23822,6 +24690,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/pgfplots
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/pitex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/placeins-plain
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/plain-widow
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/plipsum
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/plnfss
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/plain/plstmary
@@ -23863,7 +24732,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/arabic-book
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/arabxetex
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/bhcexam
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/bidi
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/bidi-atbegshi
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/bidicontour
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/bidihl
@@ -23879,7 +24747,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/fontbook
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/fontwrap
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/hanzibox
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/hduthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/hfutthesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/hithesis
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/imsproc
@@ -23887,7 +24754,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/kurdishlipsum
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/langsci
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/mathspec
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/mynsfc
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/mohe-book
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/na-box
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/na-position
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/nanicolle
@@ -23916,7 +24783,6 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/xecolor
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/xecyr
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/xeindex
-    mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/xepersian
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/xepersian-hm
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/xespotcolor
     mkdir -p %{buildroot}%{_texmfdistdir}/tex/xelatex/xetex-pstricks
@@ -24294,6 +25160,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/bbold
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/bitstrea/charter
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/cbgreek
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/ccicons
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/cfrinitials
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/charset
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/chess
@@ -24336,6 +25203,7 @@ EOF
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/mflogo
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/misc
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/musix
+    mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/nfssect
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/ntxsups
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/ntxtm
     mkdir -p %{buildroot}%{_texmfdistdir}/tex4ht/ht-fonts/unicode/pl
@@ -24487,7 +25355,7 @@ EOF
 %if ! %{with immutable}
     # the permission files, any change is also required within do.mklists
     # Note: the entry for the public program is set to
-    #   %{_libexecdir}/mktex/publici    root:%{texgrp}  2755
+    #   %{_libexecdir}/mktex/public	root:%{texgrp}  2755
     # in the standard global permission files
     mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
     (cat > %{buildroot}%{_sysconfdir}/permissions.d/texlive.texlive) <<-EOF
@@ -24986,6 +25854,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/bibtex/bst/notex-bst
 %dir %{_texmfdistdir}/bibtex/bst/nxuthesis
 %dir %{_texmfdistdir}/bibtex/bst/opcit
+%dir %{_texmfdistdir}/bibtex/bst/oup-authoring-template
 %dir %{_texmfdistdir}/bibtex/bst/perception
 %dir %{_texmfdistdir}/bibtex/bst/persian-bib
 %dir %{_texmfdistdir}/bibtex/bst/phfnote
@@ -25034,27 +25903,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/bibtex/csf/persian-bib
 %dir %{_texmfdistdir}/bibtex/csf/polish-csf
 %dir %{_texmfdistdir}/chktex
-%dir %{_texmfdistdir}/context
-%dir %{_texmfdistdir}/context/data
-%dir %{_texmfdistdir}/context/data/scite
-%dir %{_texmfdistdir}/context/data/scite/context
-%dir %{_texmfdistdir}/context/data/scite/context/documents
-%dir %{_texmfdistdir}/context/data/scite/context/lexers
-%dir %{_texmfdistdir}/context/data/scite/context/lexers/data
-%dir %{_texmfdistdir}/context/data/scite/context/lexers/themes
-%dir %{_texmfdistdir}/context/data/texfont
-%dir %{_texmfdistdir}/context/data/texworks
-%dir %{_texmfdistdir}/context/data/texworks/TUG
-%dir %{_texmfdistdir}/context/data/texworks/completion
-%dir %{_texmfdistdir}/context/data/texworks/configuration
-%dir %{_texmfdistdir}/context/data/vscode
-%dir %{_texmfdistdir}/context/data/vscode/extensions
-%dir %{_texmfdistdir}/context/data/vscode/extensions/context
-%dir %{_texmfdistdir}/context/data/vscode/extensions/context/keybindings
-%dir %{_texmfdistdir}/context/data/vscode/extensions/context/settings
-%dir %{_texmfdistdir}/context/data/vscode/extensions/context/syntaxes
-%dir %{_texmfdistdir}/context/data/vscode/extensions/context/tasks
-%dir %{_texmfdistdir}/context/data/vscode/extensions/context/themes
 %dir %{_texmfdistdir}/doc
 %dir %{_texmfdistdir}/doc/aleph
 %dir %{_texmfdistdir}/doc/aleph/base
@@ -25121,6 +25969,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/bibtexu/examples
 %dir %{_texmfdistdir}/doc/chktex
 %dir %{_texmfdistdir}/doc/context
+%dir %{_texmfdistdir}/doc/context/colors
+%dir %{_texmfdistdir}/doc/context/colors/profiles
 %dir %{_texmfdistdir}/doc/context/documents
 %dir %{_texmfdistdir}/doc/context/documents/general
 %dir %{_texmfdistdir}/doc/context/documents/general/leaflets
@@ -25130,6 +25980,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/context/examples
 %dir %{_texmfdistdir}/doc/context/examples/calculator
 %dir %{_texmfdistdir}/doc/context/examples/clock
+%dir %{_texmfdistdir}/doc/context/examples/tagging
 %dir %{_texmfdistdir}/doc/context/presentations
 %dir %{_texmfdistdir}/doc/context/presentations/bachotex
 %dir %{_texmfdistdir}/doc/context/presentations/bachotex/2005
@@ -25162,6 +26013,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/context/presentations/tug
 %dir %{_texmfdistdir}/doc/context/presentations/tug/2001
 %dir %{_texmfdistdir}/doc/context/presentations/tug/2007
+%dir %{_texmfdistdir}/doc/context/sample
 %dir %{_texmfdistdir}/doc/context/scripts
 %dir %{_texmfdistdir}/doc/context/scripts/mkii
 %dir %{_texmfdistdir}/doc/context/scripts/mkiv
@@ -25192,22 +26044,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/lowlevel
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/lua
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/luametafun
-%dir %{_texmfdistdir}/doc/context/sources/general/manuals/luametatex
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/luatex
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/math
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/mathml
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/metafun
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/mk
+%dir %{_texmfdistdir}/doc/context/sources/general/manuals/moretocome
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/musings
+%dir %{_texmfdistdir}/doc/context/sources/general/manuals/mvlcolumnsets
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/nodes
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/notnow
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/onandon
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/ontarget
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/pagecolumns
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/pdfmerge
+%dir %{_texmfdistdir}/doc/context/sources/general/manuals/ppchtex
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/publications
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/readme
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/rules
+%dir %{_texmfdistdir}/doc/context/sources/general/manuals/signals
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/spacing
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/spreadsheets
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/sql
@@ -25228,28 +26083,29 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/xml
 %dir %{_texmfdistdir}/doc/context/sources/general/manuals/xtables
 %dir %{_texmfdistdir}/doc/context/third
+%dir %{_texmfdistdir}/doc/context/third/animation
 %dir %{_texmfdistdir}/doc/context/third/calendar-examples
 %dir %{_texmfdistdir}/doc/context/third/chat
 %dir %{_texmfdistdir}/doc/context/third/circuitikz
 %dir %{_texmfdistdir}/doc/context/third/collating-marks
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src
-%dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/example
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/01
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/02
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/03
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/04
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/05
-%dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/06
+%dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/07
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/08
-%dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/09
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/10
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/11
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/12
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/13
 %dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/14
-%dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/zhfonts
+%dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/15
+%dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/figures/16
+%dir %{_texmfdistdir}/doc/context/third/context-notes-zh-cn/src/zhfonts
 %dir %{_texmfdistdir}/doc/context/third/cyrillicnumbers
 %dir %{_texmfdistdir}/doc/context/third/enigma
 %dir %{_texmfdistdir}/doc/context/third/enigma/enigma
@@ -25319,6 +26175,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/fonts/arphic/gbsnu
 %dir %{_texmfdistdir}/doc/fonts/arphic/gkaiu
 %dir %{_texmfdistdir}/doc/fonts/arsenal
+%dir %{_texmfdistdir}/doc/fonts/arsenal-math
 %dir %{_texmfdistdir}/doc/fonts/arvo
 %dir %{_texmfdistdir}/doc/fonts/asana-math
 %dir %{_texmfdistdir}/doc/fonts/asapsym
@@ -25326,7 +26183,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/fonts/astro
 %dir %{_texmfdistdir}/doc/fonts/atkinson
 %dir %{_texmfdistdir}/doc/fonts/auncial-new
+%dir %{_texmfdistdir}/doc/fonts/awami
 %dir %{_texmfdistdir}/doc/fonts/baekmuk
+%dir %{_texmfdistdir}/doc/fonts/bahaistar
 %dir %{_texmfdistdir}/doc/fonts/bartel-chess-fonts
 %dir %{_texmfdistdir}/doc/fonts/bartel-chess-fonts/other-sources
 %dir %{_texmfdistdir}/doc/fonts/baskervaldadf
@@ -25417,7 +26276,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/fonts/concmath-fonts
 %dir %{_texmfdistdir}/doc/fonts/concmath-otf
 %dir %{_texmfdistdir}/doc/fonts/concrete
-%dir %{_texmfdistdir}/doc/fonts/context-companion-fonts
+%dir %{_texmfdistdir}/doc/fonts/context
 %dir %{_texmfdistdir}/doc/fonts/cooperhewitt
 %dir %{_texmfdistdir}/doc/fonts/cormorantgaramond
 %dir %{_texmfdistdir}/doc/fonts/countriesofeurope
@@ -25484,6 +26343,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/fonts/fonetika
 %dir %{_texmfdistdir}/doc/fonts/fontawesome
 %dir %{_texmfdistdir}/doc/fonts/fontawesome5
+%dir %{_texmfdistdir}/doc/fonts/fontawesome6
+%dir %{_texmfdistdir}/doc/fonts/fontawesome7
 %dir %{_texmfdistdir}/doc/fonts/fontinst
 %dir %{_texmfdistdir}/doc/fonts/fontinst/encspecs
 %dir %{_texmfdistdir}/doc/fonts/fontinst/examples
@@ -25514,15 +26375,26 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/fonts/genealogy
 %dir %{_texmfdistdir}/doc/fonts/gentium-otf
 %dir %{_texmfdistdir}/doc/fonts/gentium-sil
-%dir %{_texmfdistdir}/doc/fonts/gentium-sil/documentation
-%dir %{_texmfdistdir}/doc/fonts/gentium-sil/documentation/assets
-%dir %{_texmfdistdir}/doc/fonts/gentium-sil/documentation/assets/css
-%dir %{_texmfdistdir}/doc/fonts/gentium-sil/documentation/assets/images
-%dir %{_texmfdistdir}/doc/fonts/gentium-sil/documentation/pdf
-%dir %{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source
-%dir %{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/pandocfilters
-%dir %{_texmfdistdir}/doc/fonts/gentium-sil/documentation/source/productsite
-%dir %{_texmfdistdir}/doc/fonts/gentium-sil/web
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/Gentium
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/assets
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/assets/css
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/assets/images
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/pdf
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/source
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/source/pandocfilters
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/documentation/source/productsite
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/Gentium/web
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/assets
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/assets/css
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/assets/images
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/pdf
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/source
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/source/pandocfilters
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/documentation/source/productsite
+%dir %{_texmfdistdir}/doc/fonts/gentium-sil/GentiumBook/web
 %dir %{_texmfdistdir}/doc/fonts/gfsartemisia
 %dir %{_texmfdistdir}/doc/fonts/gfsbaskerville
 %dir %{_texmfdistdir}/doc/fonts/gfsbodoni
@@ -25588,6 +26460,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/fonts/jetbrainsmono-otf
 %dir %{_texmfdistdir}/doc/fonts/jfmutil
 %dir %{_texmfdistdir}/doc/fonts/josefin
+%dir %{_texmfdistdir}/doc/fonts/juliamono
 %dir %{_texmfdistdir}/doc/fonts/junicode
 %dir %{_texmfdistdir}/doc/fonts/junicodevf
 %dir %{_texmfdistdir}/doc/fonts/kerkis
@@ -25626,8 +26499,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/fonts/lm-math
 %dir %{_texmfdistdir}/doc/fonts/lobster2
 %dir %{_texmfdistdir}/doc/fonts/logix
+%dir %{_texmfdistdir}/doc/fonts/luciole
 %dir %{_texmfdistdir}/doc/fonts/luwiantype
 %dir %{_texmfdistdir}/doc/fonts/lxfonts
+%dir %{_texmfdistdir}/doc/fonts/lxgw-fonts
+%dir %{_texmfdistdir}/doc/fonts/lydtype
 %dir %{_texmfdistdir}/doc/fonts/magra
 %dir %{_texmfdistdir}/doc/fonts/marcellus
 %dir %{_texmfdistdir}/doc/fonts/marvosym
@@ -25646,6 +26522,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/fonts/missaali
 %dir %{_texmfdistdir}/doc/fonts/mlmodern
 %dir %{_texmfdistdir}/doc/fonts/modes
+%dir %{_texmfdistdir}/doc/fonts/monaspace-otf
 %dir %{_texmfdistdir}/doc/fonts/montserrat
 %dir %{_texmfdistdir}/doc/fonts/morisawa
 %dir %{_texmfdistdir}/doc/fonts/mpfonts
@@ -25683,6 +26560,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/fonts/paratype
 %dir %{_texmfdistdir}/doc/fonts/parsimatn
 %dir %{_texmfdistdir}/doc/fonts/parsinevis
+%dir %{_texmfdistdir}/doc/fonts/pennstander-otf
 %dir %{_texmfdistdir}/doc/fonts/phaistos
 %dir %{_texmfdistdir}/doc/fonts/phonetic
 %dir %{_texmfdistdir}/doc/fonts/phonetic/209
@@ -25730,6 +26608,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/fonts/skaknew
 %dir %{_texmfdistdir}/doc/fonts/spark-otf
 %dir %{_texmfdistdir}/doc/fonts/spectral
+%dir %{_texmfdistdir}/doc/fonts/splentinex
 %dir %{_texmfdistdir}/doc/fonts/srbtiks
 %dir %{_texmfdistdir}/doc/fonts/starfont
 %dir %{_texmfdistdir}/doc/fonts/staves
@@ -25916,6 +26795,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/elhyphen
 %dir %{_texmfdistdir}/doc/generic/enctex
 %dir %{_texmfdistdir}/doc/generic/encxvlna
+%dir %{_texmfdistdir}/doc/generic/eoldef
 %dir %{_texmfdistdir}/doc/generic/epsf
 %dir %{_texmfdistdir}/doc/generic/epsf/okay
 %dir %{_texmfdistdir}/doc/generic/es-tex-faq
@@ -25964,7 +26844,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/knuth-hint/texware
 %dir %{_texmfdistdir}/doc/generic/knuth-hint/tie
 %dir %{_texmfdistdir}/doc/generic/knuth-hint/web
-%dir %{_texmfdistdir}/doc/generic/knuth-hint/xetex
 %dir %{_texmfdistdir}/doc/generic/knuth-pdf
 %dir %{_texmfdistdir}/doc/generic/knuth-pdf/bibtex
 %dir %{_texmfdistdir}/doc/generic/knuth-pdf/ctie
@@ -25998,6 +26877,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/m-tx
 %dir %{_texmfdistdir}/doc/generic/markdown
 %dir %{_texmfdistdir}/doc/generic/mathdots
+%dir %{_texmfdistdir}/doc/generic/measurebox
 %dir %{_texmfdistdir}/doc/generic/memoize
 %dir %{_texmfdistdir}/doc/generic/mfpic
 %dir %{_texmfdistdir}/doc/generic/mfpic/examples
@@ -26029,6 +26909,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/pdftexcmds
 %dir %{_texmfdistdir}/doc/generic/petri-nets
 %dir %{_texmfdistdir}/doc/generic/pgf
+%dir %{_texmfdistdir}/doc/generic/pgf/images
+%dir %{_texmfdistdir}/doc/generic/pgf/plots
 %dir %{_texmfdistdir}/doc/generic/pgfplots
 %dir %{_texmfdistdir}/doc/generic/pgfplots/license_prepcontour
 %dir %{_texmfdistdir}/doc/generic/pictex
@@ -26071,11 +26953,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/pst-feyn/data
 %dir %{_texmfdistdir}/doc/generic/pst-fill
 %dir %{_texmfdistdir}/doc/generic/pst-fit
+%dir %{_texmfdistdir}/doc/generic/pst-fourbarlinkage
+%dir %{_texmfdistdir}/doc/generic/pst-fourbarlinkage/examples
 %dir %{_texmfdistdir}/doc/generic/pst-fr3d
 %dir %{_texmfdistdir}/doc/generic/pst-fractal
 %dir %{_texmfdistdir}/doc/generic/pst-fun
 %dir %{_texmfdistdir}/doc/generic/pst-func
 %dir %{_texmfdistdir}/doc/generic/pst-gantt
+%dir %{_texmfdistdir}/doc/generic/pst-gears
 %dir %{_texmfdistdir}/doc/generic/pst-geo
 %dir %{_texmfdistdir}/doc/generic/pst-geo/examples
 %dir %{_texmfdistdir}/doc/generic/pst-geometrictools
@@ -26085,6 +26970,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/pst-hsb
 %dir %{_texmfdistdir}/doc/generic/pst-infixplot
 %dir %{_texmfdistdir}/doc/generic/pst-jtree
+%dir %{_texmfdistdir}/doc/generic/pst-kepler
+%dir %{_texmfdistdir}/doc/generic/pst-kepler/images
 %dir %{_texmfdistdir}/doc/generic/pst-knot
 %dir %{_texmfdistdir}/doc/generic/pst-labo
 %dir %{_texmfdistdir}/doc/generic/pst-lens
@@ -26093,6 +26980,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/pst-magneticfield
 %dir %{_texmfdistdir}/doc/generic/pst-marble
 %dir %{_texmfdistdir}/doc/generic/pst-marble/examples
+%dir %{_texmfdistdir}/doc/generic/pst-massspring
+%dir %{_texmfdistdir}/doc/generic/pst-massspring/images
 %dir %{_texmfdistdir}/doc/generic/pst-math
 %dir %{_texmfdistdir}/doc/generic/pst-mirror
 %dir %{_texmfdistdir}/doc/generic/pst-mirror/createEPS
@@ -26100,6 +26989,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/pst-moire
 %dir %{_texmfdistdir}/doc/generic/pst-moire/examples
 %dir %{_texmfdistdir}/doc/generic/pst-node
+%dir %{_texmfdistdir}/doc/generic/pst-nutation
+%dir %{_texmfdistdir}/doc/generic/pst-nutation/animations
 %dir %{_texmfdistdir}/doc/generic/pst-ob3d
 %dir %{_texmfdistdir}/doc/generic/pst-ode
 %dir %{_texmfdistdir}/doc/generic/pst-ode/examples
@@ -26129,6 +27020,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/pst-solides3d/text
 %dir %{_texmfdistdir}/doc/generic/pst-soroban
 %dir %{_texmfdistdir}/doc/generic/pst-spectra
+%dir %{_texmfdistdir}/doc/generic/pst-sphericaltrochoid
+%dir %{_texmfdistdir}/doc/generic/pst-sphericaltrochoid/animations
 %dir %{_texmfdistdir}/doc/generic/pst-spinner
 %dir %{_texmfdistdir}/doc/generic/pst-spinner/images
 %dir %{_texmfdistdir}/doc/generic/pst-stru
@@ -26155,6 +27048,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/shapepar
 %dir %{_texmfdistdir}/doc/generic/simplekv
 %dir %{_texmfdistdir}/doc/generic/soul
+%dir %{_texmfdistdir}/doc/generic/stretchy
+%dir %{_texmfdistdir}/doc/generic/stretchy/Documentation
 %dir %{_texmfdistdir}/doc/generic/systeme
 %dir %{_texmfdistdir}/doc/generic/t2
 %dir %{_texmfdistdir}/doc/generic/t2/etc
@@ -26197,6 +27092,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/textmerg
 %dir %{_texmfdistdir}/doc/generic/thumbpdf
 %dir %{_texmfdistdir}/doc/generic/tokcycle
+%dir %{_texmfdistdir}/doc/generic/tokmap
 %dir %{_texmfdistdir}/doc/generic/tracklang
 %dir %{_texmfdistdir}/doc/generic/tracklang/samples
 %dir %{_texmfdistdir}/doc/generic/tracklang/samples/animals
@@ -26212,6 +27108,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/vaucanson-g
 %dir %{_texmfdistdir}/doc/generic/vaucanson-g/VCManual-src
 %dir %{_texmfdistdir}/doc/generic/velthuis
+%dir %{_texmfdistdir}/doc/generic/visualtoks
 %dir %{_texmfdistdir}/doc/generic/vntex
 %dir %{_texmfdistdir}/doc/generic/witharrows
 %dir %{_texmfdistdir}/doc/generic/xint
@@ -26222,6 +27119,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/generic/xypic/support
 %dir %{_texmfdistdir}/doc/generic/yax
 %dir %{_texmfdistdir}/doc/generic/youngtab
+%dir %{_texmfdistdir}/doc/generic/zeckendorf
 %dir %{_texmfdistdir}/doc/generic/zhspacing
 %dir %{_texmfdistdir}/doc/hitex
 %dir %{_texmfdistdir}/doc/hitex/base
@@ -26247,6 +27145,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/abntex2
 %dir %{_texmfdistdir}/doc/latex/abntex2/examples
 %dir %{_texmfdistdir}/doc/latex/abntexto
+%dir %{_texmfdistdir}/doc/latex/abntexto-uece
 %dir %{_texmfdistdir}/doc/latex/abraces
 %dir %{_texmfdistdir}/doc/latex/abspos
 %dir %{_texmfdistdir}/doc/latex/abstract
@@ -26279,7 +27178,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/adtrees
 %dir %{_texmfdistdir}/doc/latex/advdate
 %dir %{_texmfdistdir}/doc/latex/aeguill
+%dir %{_texmfdistdir}/doc/latex/aeskwadraat
 %dir %{_texmfdistdir}/doc/latex/affilauthor
+%dir %{_texmfdistdir}/doc/latex/afperpack
 %dir %{_texmfdistdir}/doc/latex/afthesis
 %dir %{_texmfdistdir}/doc/latex/aguplus
 %dir %{_texmfdistdir}/doc/latex/aiaa
@@ -26379,6 +27280,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/asmejour
 %dir %{_texmfdistdir}/doc/latex/asmejour/asmewide_example
 %dir %{_texmfdistdir}/doc/latex/aspectratio
+%dir %{_texmfdistdir}/doc/latex/aspen
 %dir %{_texmfdistdir}/doc/latex/assignment
 %dir %{_texmfdistdir}/doc/latex/assoccnt
 %dir %{_texmfdistdir}/doc/latex/association-matrix
@@ -26459,7 +27361,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/bclogo
 %dir %{_texmfdistdir}/doc/latex/beamer
 %dir %{_texmfdistdir}/doc/latex/beamer-fuberlin
+%dir %{_texmfdistdir}/doc/latex/beamer-reveal
+%dir %{_texmfdistdir}/doc/latex/beamer-reveal/Media
+%dir %{_texmfdistdir}/doc/latex/beamer-theme-albi
 %dir %{_texmfdistdir}/doc/latex/beamer-tut-pt
+%dir %{_texmfdistdir}/doc/latex/beamer-varbox
 %dir %{_texmfdistdir}/doc/latex/beamer-verona
 %dir %{_texmfdistdir}/doc/latex/beamer/emulation-examples
 %dir %{_texmfdistdir}/doc/latex/beamer/examples
@@ -26488,9 +27394,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/beamerswitch
 %dir %{_texmfdistdir}/doc/latex/beamertheme-arguelles
 %dir %{_texmfdistdir}/doc/latex/beamertheme-arguelles/demo
+%dir %{_texmfdistdir}/doc/latex/beamertheme-bilkent-econ
+%dir %{_texmfdistdir}/doc/latex/beamertheme-cleaneasy
+%dir %{_texmfdistdir}/doc/latex/beamertheme-cleaneasy/configs
+%dir %{_texmfdistdir}/doc/latex/beamertheme-csh
 %dir %{_texmfdistdir}/doc/latex/beamertheme-cuerna
 %dir %{_texmfdistdir}/doc/latex/beamertheme-cuerna/pictures
 %dir %{_texmfdistdir}/doc/latex/beamertheme-detlevcm
+%dir %{_texmfdistdir}/doc/latex/beamertheme-durham
 %dir %{_texmfdistdir}/doc/latex/beamertheme-epyt
 %dir %{_texmfdistdir}/doc/latex/beamertheme-focus
 %dir %{_texmfdistdir}/doc/latex/beamertheme-focus/focus-demo
@@ -26508,6 +27419,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/beamertheme-saintpetersburg/figures
 %dir %{_texmfdistdir}/doc/latex/beamertheme-simpledarkblue
 %dir %{_texmfdistdir}/doc/latex/beamertheme-simpleplus
+%dir %{_texmfdistdir}/doc/latex/beamertheme-spectrum
 %dir %{_texmfdistdir}/doc/latex/beamertheme-tcolorbox
 %dir %{_texmfdistdir}/doc/latex/beamertheme-trigon
 %dir %{_texmfdistdir}/doc/latex/beamertheme-upenn-bc
@@ -26537,6 +27449,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/bgteubner
 %dir %{_texmfdistdir}/doc/latex/bib2qr
 %dir %{_texmfdistdir}/doc/latex/bibarts
+%dir %{_texmfdistdir}/doc/latex/bibbreeze
 %dir %{_texmfdistdir}/doc/latex/biblatex
 %dir %{_texmfdistdir}/doc/latex/biblatex-abnt
 %dir %{_texmfdistdir}/doc/latex/biblatex-abnt/tests
@@ -26637,6 +27550,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/bibtopic
 %dir %{_texmfdistdir}/doc/latex/bibtopicprefix
 %dir %{_texmfdistdir}/doc/latex/bibunits
+%dir %{_texmfdistdir}/doc/latex/bidi
 %dir %{_texmfdistdir}/doc/latex/bigfoot
 %dir %{_texmfdistdir}/doc/latex/bigintcalc
 %dir %{_texmfdistdir}/doc/latex/bigints
@@ -26690,12 +27604,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/booktabs-de
 %dir %{_texmfdistdir}/doc/latex/booktabs-fr
 %dir %{_texmfdistdir}/doc/latex/boolexpr
+%dir %{_texmfdistdir}/doc/latex/bootstrapicons
 %dir %{_texmfdistdir}/doc/latex/bophook
 %dir %{_texmfdistdir}/doc/latex/bosisio
 %dir %{_texmfdistdir}/doc/latex/boxedminipage
 %dir %{_texmfdistdir}/doc/latex/boxhandler
 %dir %{_texmfdistdir}/doc/latex/bpchem
 %dir %{_texmfdistdir}/doc/latex/br-lex
+%dir %{_texmfdistdir}/doc/latex/bracealign
 %dir %{_texmfdistdir}/doc/latex/bracketkey
 %dir %{_texmfdistdir}/doc/latex/braids
 %dir %{_texmfdistdir}/doc/latex/braille
@@ -26708,9 +27624,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/bredzenie
 %dir %{_texmfdistdir}/doc/latex/breqn
 %dir %{_texmfdistdir}/doc/latex/bropd
+%dir %{_texmfdistdir}/doc/latex/broydensolve
 %dir %{_texmfdistdir}/doc/latex/bubblesort
 %dir %{_texmfdistdir}/doc/latex/bullcntr
 %dir %{_texmfdistdir}/doc/latex/bussproofs
+%dir %{_texmfdistdir}/doc/latex/bussproofs-colorful
 %dir %{_texmfdistdir}/doc/latex/bussproofs-extra
 %dir %{_texmfdistdir}/doc/latex/bxbase
 %dir %{_texmfdistdir}/doc/latex/bxcalc
@@ -26809,6 +27727,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/changes/userdoc
 %dir %{_texmfdistdir}/doc/latex/chappg
 %dir %{_texmfdistdir}/doc/latex/chapterfolder
+%dir %{_texmfdistdir}/doc/latex/char2path
 %dir %{_texmfdistdir}/doc/latex/chbibref
 %dir %{_texmfdistdir}/doc/latex/cheatsheet
 %dir %{_texmfdistdir}/doc/latex/checkend
@@ -26862,10 +27781,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/circuit-macros/examples/xfig
 %dir %{_texmfdistdir}/doc/latex/circuitikz
 %dir %{_texmfdistdir}/doc/latex/circularglyphs
+%dir %{_texmfdistdir}/doc/latex/cistercian
 %dir %{_texmfdistdir}/doc/latex/citation-style-language
 %dir %{_texmfdistdir}/doc/latex/cite
 %dir %{_texmfdistdir}/doc/latex/citeall
 %dir %{_texmfdistdir}/doc/latex/citeref
+%dir %{_texmfdistdir}/doc/latex/citeright
 %dir %{_texmfdistdir}/doc/latex/cje
 %dir %{_texmfdistdir}/doc/latex/cjhebrew
 %dir %{_texmfdistdir}/doc/latex/cjk
@@ -27037,6 +27958,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/covington
 %dir %{_texmfdistdir}/doc/latex/cprotect
 %dir %{_texmfdistdir}/doc/latex/cprotectinside
+%dir %{_texmfdistdir}/doc/latex/cqjtuthesis
+%dir %{_texmfdistdir}/doc/latex/cqjtuthesis/examples
+%dir %{_texmfdistdir}/doc/latex/cqjtuthesis/examples/bibliography
+%dir %{_texmfdistdir}/doc/latex/cqjtuthesis/examples/contents
+%dir %{_texmfdistdir}/doc/latex/cqjtuthesis/examples/contents-graduate
+%dir %{_texmfdistdir}/doc/latex/cqjtuthesis/examples/figures
 %dir %{_texmfdistdir}/doc/latex/cquthesis
 %dir %{_texmfdistdir}/doc/latex/cquthesis/contents
 %dir %{_texmfdistdir}/doc/latex/cquthesis/figures
@@ -27177,6 +28104,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/democodetools
 %dir %{_texmfdistdir}/doc/latex/denisbdoc
 %dir %{_texmfdistdir}/doc/latex/derivative
+%dir %{_texmfdistdir}/doc/latex/deutschesmuseum
 %dir %{_texmfdistdir}/doc/latex/dhua
 %dir %{_texmfdistdir}/doc/latex/diabetes-logbook
 %dir %{_texmfdistdir}/doc/latex/diabetes-logbook/QQ
@@ -27238,6 +28166,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/dithesis
 %dir %{_texmfdistdir}/doc/latex/dk-bib
 %dir %{_texmfdistdir}/doc/latex/dlfltxb
+%dir %{_texmfdistdir}/doc/latex/dlrg-templates
+%dir %{_texmfdistdir}/doc/latex/dlrg-templates/Beispiele
 %dir %{_texmfdistdir}/doc/latex/dnaseq
 %dir %{_texmfdistdir}/doc/latex/doclicense
 %dir %{_texmfdistdir}/doc/latex/docmfp
@@ -27339,6 +28269,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/egplot
 %dir %{_texmfdistdir}/doc/latex/ehhline
 %dir %{_texmfdistdir}/doc/latex/eiad-ltx
+%dir %{_texmfdistdir}/doc/latex/eigo
 %dir %{_texmfdistdir}/doc/latex/einfart
 %dir %{_texmfdistdir}/doc/latex/einfart/demo
 %dir %{_texmfdistdir}/doc/latex/ejpecp
@@ -27348,6 +28279,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/eledform/include
 %dir %{_texmfdistdir}/doc/latex/eledmac
 %dir %{_texmfdistdir}/doc/latex/eledmac/examples
+%dir %{_texmfdistdir}/doc/latex/elegantbook
+%dir %{_texmfdistdir}/doc/latex/elegantbook/figure
+%dir %{_texmfdistdir}/doc/latex/elegantbook/image
+%dir %{_texmfdistdir}/doc/latex/elegantnote
+%dir %{_texmfdistdir}/doc/latex/elegantnote/image
+%dir %{_texmfdistdir}/doc/latex/elegantpaper
+%dir %{_texmfdistdir}/doc/latex/elegantpaper/image
 %dir %{_texmfdistdir}/doc/latex/elements
 %dir %{_texmfdistdir}/doc/latex/ellipse
 %dir %{_texmfdistdir}/doc/latex/ellipsis
@@ -27398,7 +28336,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/enumext
 %dir %{_texmfdistdir}/doc/latex/enumitem
 %dir %{_texmfdistdir}/doc/latex/enumitem-zref
+%dir %{_texmfdistdir}/doc/latex/enumsub
 %dir %{_texmfdistdir}/doc/latex/envbig
+%dir %{_texmfdistdir}/doc/latex/envelope-letter
 %dir %{_texmfdistdir}/doc/latex/enverb
 %dir %{_texmfdistdir}/doc/latex/environ
 %dir %{_texmfdistdir}/doc/latex/envlab
@@ -27440,6 +28380,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/eskdx/source
 %dir %{_texmfdistdir}/doc/latex/eskdx/test
 %dir %{_texmfdistdir}/doc/latex/eso-pic
+%dir %{_texmfdistdir}/doc/latex/essaykit
 %dir %{_texmfdistdir}/doc/latex/estcpmm
 %dir %{_texmfdistdir}/doc/latex/esvect
 %dir %{_texmfdistdir}/doc/latex/etaremune
@@ -27470,6 +28411,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/europasscv
 %dir %{_texmfdistdir}/doc/latex/europasscv/example
 %dir %{_texmfdistdir}/doc/latex/europecv
+%dir %{_texmfdistdir}/doc/latex/europecv/assets
 %dir %{_texmfdistdir}/doc/latex/europecv/examples
 %dir %{_texmfdistdir}/doc/latex/europecv/templates
 %dir %{_texmfdistdir}/doc/latex/everyhook
@@ -27547,6 +28489,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/faq-fr-gutenberg
 %dir %{_texmfdistdir}/doc/latex/faq-fr-gutenberg/pdf
 %dir %{_texmfdistdir}/doc/latex/faq-fr/legacy_versions
+%dir %{_texmfdistdir}/doc/latex/fariscovernew
 %dir %{_texmfdistdir}/doc/latex/fascicules
 %dir %{_texmfdistdir}/doc/latex/fascicules/guide
 %dir %{_texmfdistdir}/doc/latex/fascicules/guide/ch4_mon_chapitre
@@ -27578,6 +28521,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/ffcode
 %dir %{_texmfdistdir}/doc/latex/ffslides
 %dir %{_texmfdistdir}/doc/latex/fgruler
+%dir %{_texmfdistdir}/doc/latex/fhj-script
 %dir %{_texmfdistdir}/doc/latex/fifinddo-info
 %dir %{_texmfdistdir}/doc/latex/fifinddo-info/variants
 %dir %{_texmfdistdir}/doc/latex/fifo-stack
@@ -27590,6 +28534,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/figput/javascript/development
 %dir %{_texmfdistdir}/doc/latex/figput/javascript/release
 %dir %{_texmfdistdir}/doc/latex/figsize
+%dir %{_texmfdistdir}/doc/latex/figureversions
 %dir %{_texmfdistdir}/doc/latex/filecontents
 %dir %{_texmfdistdir}/doc/latex/filecontentsdef
 %dir %{_texmfdistdir}/doc/latex/filedate
@@ -27614,6 +28559,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/fixmath
 %dir %{_texmfdistdir}/doc/latex/fixme
 %dir %{_texmfdistdir}/doc/latex/fixmetodonotes
+%dir %{_texmfdistdir}/doc/latex/fixtounicode
 %dir %{_texmfdistdir}/doc/latex/fjodor
 %dir %{_texmfdistdir}/doc/latex/flabels
 %dir %{_texmfdistdir}/doc/latex/flacards
@@ -27636,6 +28582,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/floatrowbytocbasic
 %dir %{_texmfdistdir}/doc/latex/flowchart
 %dir %{_texmfdistdir}/doc/latex/flowfram
+%dir %{_texmfdistdir}/doc/latex/flowfram/flowfram-manual-examples
+%dir %{_texmfdistdir}/doc/latex/flowfram/images
 %dir %{_texmfdistdir}/doc/latex/flowfram/samples
 %dir %{_texmfdistdir}/doc/latex/fmp
 %dir %{_texmfdistdir}/doc/latex/fmtcount
@@ -27647,10 +28595,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/fnpct
 %dir %{_texmfdistdir}/doc/latex/fnspe
 %dir %{_texmfdistdir}/doc/latex/fnumprint
+%dir %{_texmfdistdir}/doc/latex/fodot
 %dir %{_texmfdistdir}/doc/latex/foekfont
 %dir %{_texmfdistdir}/doc/latex/foilhtml
 %dir %{_texmfdistdir}/doc/latex/foliono
 %dir %{_texmfdistdir}/doc/latex/foliono/pics
+%dir %{_texmfdistdir}/doc/latex/fontawesomescaled
 %dir %{_texmfdistdir}/doc/latex/fontaxes
 %dir %{_texmfdistdir}/doc/latex/fontscale
 %dir %{_texmfdistdir}/doc/latex/fontscripts
@@ -27669,6 +28619,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/forarray
 %dir %{_texmfdistdir}/doc/latex/foreign
 %dir %{_texmfdistdir}/doc/latex/forest
+%dir %{_texmfdistdir}/doc/latex/forest-ext
 %dir %{_texmfdistdir}/doc/latex/forest-quickstart
 %dir %{_texmfdistdir}/doc/latex/forloop
 %dir %{_texmfdistdir}/doc/latex/formal-grammar
@@ -27680,13 +28631,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/fouridx
 %dir %{_texmfdistdir}/doc/latex/fp
 %dir %{_texmfdistdir}/doc/latex/fragments
+%dir %{_texmfdistdir}/doc/latex/fragoli
 %dir %{_texmfdistdir}/doc/latex/framed
 %dir %{_texmfdistdir}/doc/latex/framedsyntax
 %dir %{_texmfdistdir}/doc/latex/frankenstein
 %dir %{_texmfdistdir}/doc/latex/frankenstein/unsupported
 %dir %{_texmfdistdir}/doc/latex/freealign
+%dir %{_texmfdistdir}/doc/latex/freemath
 %dir %{_texmfdistdir}/doc/latex/frege
 %dir %{_texmfdistdir}/doc/latex/frenchmath
+%dir %{_texmfdistdir}/doc/latex/fretplot
 %dir %{_texmfdistdir}/doc/latex/frletter
 %dir %{_texmfdistdir}/doc/latex/frontespizio
 %dir %{_texmfdistdir}/doc/latex/froufrou
@@ -27705,6 +28659,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/functional
 %dir %{_texmfdistdir}/doc/latex/fundus-calligra
 %dir %{_texmfdistdir}/doc/latex/fundus-sueterlin
+%dir %{_texmfdistdir}/doc/latex/futharksymb
 %dir %{_texmfdistdir}/doc/latex/fvextra
 %dir %{_texmfdistdir}/doc/latex/fwlw
 %dir %{_texmfdistdir}/doc/latex/g-brief
@@ -27774,6 +28729,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/glossaries-serbian
 %dir %{_texmfdistdir}/doc/latex/glossaries-slovene
 %dir %{_texmfdistdir}/doc/latex/glossaries-spanish
+%dir %{_texmfdistdir}/doc/latex/glossaries-ukrainian
 %dir %{_texmfdistdir}/doc/latex/glossaries/glossaries-user-examples
 %dir %{_texmfdistdir}/doc/latex/glossaries/samples
 %dir %{_texmfdistdir}/doc/latex/gmdoc
@@ -27880,6 +28836,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/hausarbeit-jura
 %dir %{_texmfdistdir}/doc/latex/havannah
 %dir %{_texmfdistdir}/doc/latex/hc
+%dir %{_texmfdistdir}/doc/latex/hduthesis
+%dir %{_texmfdistdir}/doc/latex/hduthesis/example
 %dir %{_texmfdistdir}/doc/latex/he-she
 %dir %{_texmfdistdir}/doc/latex/hebdomon
 %dir %{_texmfdistdir}/doc/latex/hebdomon/figures
@@ -27910,6 +28868,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/hfutexam
 %dir %{_texmfdistdir}/doc/latex/hhtensor
 %dir %{_texmfdistdir}/doc/latex/hideanswer
+%dir %{_texmfdistdir}/doc/latex/hideproofs
 %dir %{_texmfdistdir}/doc/latex/highlightlatex
 %dir %{_texmfdistdir}/doc/latex/highlightx
 %dir %{_texmfdistdir}/doc/latex/hindawi-latex-template
@@ -27943,6 +28902,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/huaz
 %dir %{_texmfdistdir}/doc/latex/hulipsum
 %dir %{_texmfdistdir}/doc/latex/hustthesis
+%dir %{_texmfdistdir}/doc/latex/hustvisual
 %dir %{_texmfdistdir}/doc/latex/hvarabic
 %dir %{_texmfdistdir}/doc/latex/hvextern
 %dir %{_texmfdistdir}/doc/latex/hvfloat
@@ -27965,6 +28925,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/hyperref
 %dir %{_texmfdistdir}/doc/latex/hyperxmp
 %dir %{_texmfdistdir}/doc/latex/hyphenat
+%dir %{_texmfdistdir}/doc/latex/iacrj
 %dir %{_texmfdistdir}/doc/latex/iaria
 %dir %{_texmfdistdir}/doc/latex/iaria-lite
 %dir %{_texmfdistdir}/doc/latex/iaria-lite/template
@@ -28018,7 +28979,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/inputnormalization
 %dir %{_texmfdistdir}/doc/latex/inputtrc
 %dir %{_texmfdistdir}/doc/latex/install-latex-guide-zh-cn
-%dir %{_texmfdistdir}/doc/latex/install-latex-guide-zh-cn/appendix
 %dir %{_texmfdistdir}/doc/latex/install-latex-guide-zh-cn/chapter
 %dir %{_texmfdistdir}/doc/latex/intcalc
 %dir %{_texmfdistdir}/doc/latex/interactiveworkbook
@@ -28028,6 +28988,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/interfaces
 %dir %{_texmfdistdir}/doc/latex/interlinear
 %dir %{_texmfdistdir}/doc/latex/interval
+%dir %{_texmfdistdir}/doc/latex/intexgral
 %dir %{_texmfdistdir}/doc/latex/intopdf
 %dir %{_texmfdistdir}/doc/latex/intro-scientific
 %dir %{_texmfdistdir}/doc/latex/inversepath
@@ -28061,7 +29022,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/isonums
 %dir %{_texmfdistdir}/doc/latex/isopt
 %dir %{_texmfdistdir}/doc/latex/isorot
-%dir %{_texmfdistdir}/doc/latex/isosafety
+%dir %{_texmfdistdir}/doc/latex/isosigns
 %dir %{_texmfdistdir}/doc/latex/isotope
 %dir %{_texmfdistdir}/doc/latex/isphysicalmath
 %dir %{_texmfdistdir}/doc/latex/issuulinks
@@ -28109,6 +29070,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/jurarsp
 %dir %{_texmfdistdir}/doc/latex/jvlisting
 %dir %{_texmfdistdir}/doc/latex/jwjournal
+%dir %{_texmfdistdir}/doc/latex/jyu-chem-thesis
 %dir %{_texmfdistdir}/doc/latex/kalendarium
 %dir %{_texmfdistdir}/doc/latex/kanbun
 %dir %{_texmfdistdir}/doc/latex/kantlipsum
@@ -28119,6 +29081,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/kblocks
 %dir %{_texmfdistdir}/doc/latex/kdgdocs
 %dir %{_texmfdistdir}/doc/latex/kdpcover
+%dir %{_texmfdistdir}/doc/latex/keisennote
 %dir %{_texmfdistdir}/doc/latex/kerntest
 %dir %{_texmfdistdir}/doc/latex/keycommand
 %dir %{_texmfdistdir}/doc/latex/keyfloat
@@ -28133,6 +29096,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/kfupm-math-exam
 %dir %{_texmfdistdir}/doc/latex/kinematikz
 %dir %{_texmfdistdir}/doc/latex/kix
+%dir %{_texmfdistdir}/doc/latex/kkran
+%dir %{_texmfdistdir}/doc/latex/kksymbols
 %dir %{_texmfdistdir}/doc/latex/kluwer
 %dir %{_texmfdistdir}/doc/latex/knittingpattern
 %dir %{_texmfdistdir}/doc/latex/knowledge
@@ -28175,6 +29140,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/ksp-thesis/demo/full/content/front
 %dir %{_texmfdistdir}/doc/latex/ksp-thesis/demo/full/preamble
 %dir %{_texmfdistdir}/doc/latex/ksp-thesis/demo/minimal
+%dir %{_texmfdistdir}/doc/latex/ktbox
+%dir %{_texmfdistdir}/doc/latex/ktbox/data
+%dir %{_texmfdistdir}/doc/latex/ktbox/doc
 %dir %{_texmfdistdir}/doc/latex/ktv-texdata
 %dir %{_texmfdistdir}/doc/latex/ku-template
 %dir %{_texmfdistdir}/doc/latex/ku-template/images
@@ -28191,11 +29159,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/l3backend
 %dir %{_texmfdistdir}/doc/latex/l3build
 %dir %{_texmfdistdir}/doc/latex/l3experimental
-%dir %{_texmfdistdir}/doc/latex/l3experimental/l3benchmark
 %dir %{_texmfdistdir}/doc/latex/l3experimental/l3draw
-%dir %{_texmfdistdir}/doc/latex/l3experimental/l3graphics
-%dir %{_texmfdistdir}/doc/latex/l3experimental/l3opacity
-%dir %{_texmfdistdir}/doc/latex/l3experimental/l3str
 %dir %{_texmfdistdir}/doc/latex/l3experimental/xcoffins
 %dir %{_texmfdistdir}/doc/latex/l3experimental/xgalley
 %dir %{_texmfdistdir}/doc/latex/l3kernel
@@ -28230,6 +29194,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/latex-lab
 %dir %{_texmfdistdir}/doc/latex/latex-mr
 %dir %{_texmfdistdir}/doc/latex/latex-refsheet
+%dir %{_texmfdistdir}/doc/latex/latex-tagging-status
 %dir %{_texmfdistdir}/doc/latex/latex-uni8
 %dir %{_texmfdistdir}/doc/latex/latex-veryshortguide
 %dir %{_texmfdistdir}/doc/latex/latex-via-exemplos
@@ -28284,6 +29249,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/leftindex
 %dir %{_texmfdistdir}/doc/latex/leipzig
 %dir %{_texmfdistdir}/doc/latex/lengthconvert
+%dir %{_texmfdistdir}/doc/latex/leporello
+%dir %{_texmfdistdir}/doc/latex/leporello/doc
 %dir %{_texmfdistdir}/doc/latex/letltxmacro
 %dir %{_texmfdistdir}/doc/latex/letterswitharrows
 %dir %{_texmfdistdir}/doc/latex/lettre
@@ -28314,6 +29281,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/lineno
 %dir %{_texmfdistdir}/doc/latex/ling-macros
 %dir %{_texmfdistdir}/doc/latex/linguex
+%dir %{_texmfdistdir}/doc/latex/linguistix
+%dir %{_texmfdistdir}/doc/latex/linkedthm
 %dir %{_texmfdistdir}/doc/latex/linop
 %dir %{_texmfdistdir}/doc/latex/lion-msc
 %dir %{_texmfdistdir}/doc/latex/lipsum
@@ -28332,6 +29301,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/litetable
 %dir %{_texmfdistdir}/doc/latex/lithuanian
 %dir %{_texmfdistdir}/doc/latex/liturg
+%dir %{_texmfdistdir}/doc/latex/liturgy-cw
 %dir %{_texmfdistdir}/doc/latex/lkproof
 %dir %{_texmfdistdir}/doc/latex/llncs
 %dir %{_texmfdistdir}/doc/latex/llncsconf
@@ -28343,6 +29313,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/logical-markup-utils
 %dir %{_texmfdistdir}/doc/latex/logicproof
 %dir %{_texmfdistdir}/doc/latex/logicpuzzle
+%dir %{_texmfdistdir}/doc/latex/logictools
 %dir %{_texmfdistdir}/doc/latex/logoetalab
 %dir %{_texmfdistdir}/doc/latex/logpap
 %dir %{_texmfdistdir}/doc/latex/logreq
@@ -28351,6 +29322,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/longfbox
 %dir %{_texmfdistdir}/doc/latex/longfigure
 %dir %{_texmfdistdir}/doc/latex/longnamefilelist
+%dir %{_texmfdistdir}/doc/latex/longtwocolumn
 %dir %{_texmfdistdir}/doc/latex/loops
 %dir %{_texmfdistdir}/doc/latex/lpic
 %dir %{_texmfdistdir}/doc/latex/lplfitch
@@ -28401,15 +29373,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/ltablex
 %dir %{_texmfdistdir}/doc/latex/ltabptch
 %dir %{_texmfdistdir}/doc/latex/ltb2bib
+%dir %{_texmfdistdir}/doc/latex/ltx-talk
 %dir %{_texmfdistdir}/doc/latex/ltxdockit
 %dir %{_texmfdistdir}/doc/latex/ltxguidex
 %dir %{_texmfdistdir}/doc/latex/ltxkeys
 %dir %{_texmfdistdir}/doc/latex/ltxnew
 %dir %{_texmfdistdir}/doc/latex/ltxtools
+%dir %{_texmfdistdir}/doc/latex/lua-tikz3dtools
 %dir %{_texmfdistdir}/doc/latex/luacolor
 %dir %{_texmfdistdir}/doc/latex/lualatex-doc-de
+%dir %{_texmfdistdir}/doc/latex/luatex-cn
+%dir %{_texmfdistdir}/doc/latex/luatex-cn/example
+%dir %{_texmfdistdir}/doc/latex/luatex-cn/example/homepage-showcase
+%dir %{_texmfdistdir}/doc/latex/luatex-cn/example/hongloumeng-jiaxuben
+%dir %{_texmfdistdir}/doc/latex/luatex-cn/example/shiji-juan6-modern
+%dir %{_texmfdistdir}/doc/latex/luatex-cn/example/shiji-wudibenji
+%dir %{_texmfdistdir}/doc/latex/luatex-cn/example/siku-jianming-mulu
 %dir %{_texmfdistdir}/doc/latex/luatikz
 %dir %{_texmfdistdir}/doc/latex/luatikz/example
+%dir %{_texmfdistdir}/doc/latex/lucide-icons
 %dir %{_texmfdistdir}/doc/latex/lwarp
 %dir %{_texmfdistdir}/doc/latex/ly1
 %dir %{_texmfdistdir}/doc/latex/macrolist
@@ -28423,12 +29405,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/mahjong
 %dir %{_texmfdistdir}/doc/latex/mailing
 %dir %{_texmfdistdir}/doc/latex/mailmerge
+%dir %{_texmfdistdir}/doc/latex/maine-thesis
 %dir %{_texmfdistdir}/doc/latex/makebarcode
 %dir %{_texmfdistdir}/doc/latex/makebase
 %dir %{_texmfdistdir}/doc/latex/makebox
 %dir %{_texmfdistdir}/doc/latex/makecell
 %dir %{_texmfdistdir}/doc/latex/makecmds
 %dir %{_texmfdistdir}/doc/latex/makeglos
+%dir %{_texmfdistdir}/doc/latex/makegobbler
 %dir %{_texmfdistdir}/doc/latex/makelabels
 %dir %{_texmfdistdir}/doc/latex/makeplot
 %dir %{_texmfdistdir}/doc/latex/maker
@@ -28455,7 +29439,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/matc3mem
 %dir %{_texmfdistdir}/doc/latex/math-into-latex-4
 %dir %{_texmfdistdir}/doc/latex/math-operator
-%dir %{_texmfdistdir}/doc/latex/math-operator/user_guide
+%dir %{_texmfdistdir}/doc/latex/mathador
 %dir %{_texmfdistdir}/doc/latex/mathalpha
 %dir %{_texmfdistdir}/doc/latex/mathastext
 %dir %{_texmfdistdir}/doc/latex/mathcommand
@@ -28501,6 +29485,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/memexsupp
 %dir %{_texmfdistdir}/doc/latex/memoir
 %dir %{_texmfdistdir}/doc/latex/memoirchapterstyles
+%dir %{_texmfdistdir}/doc/latex/memoize-ext
 %dir %{_texmfdistdir}/doc/latex/memory
 %dir %{_texmfdistdir}/doc/latex/memorygraphs
 %dir %{_texmfdistdir}/doc/latex/mensa-tex
@@ -28511,6 +29496,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/menukeys
 %dir %{_texmfdistdir}/doc/latex/mercatormap
 %dir %{_texmfdistdir}/doc/latex/messagepassing
+%dir %{_texmfdistdir}/doc/latex/metacapture
 %dir %{_texmfdistdir}/doc/latex/metalogo
 %dir %{_texmfdistdir}/doc/latex/metalogox
 %dir %{_texmfdistdir}/doc/latex/metanorma
@@ -28535,6 +29521,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/microtype
 %dir %{_texmfdistdir}/doc/latex/microtype-de
 %dir %{_texmfdistdir}/doc/latex/midpage
+%dir %{_texmfdistdir}/doc/latex/milestonetimeline
+%dir %{_texmfdistdir}/doc/latex/milestonetimeline/examples
+%dir %{_texmfdistdir}/doc/latex/milestonetimeline/test
 %dir %{_texmfdistdir}/doc/latex/miller
 %dir %{_texmfdistdir}/doc/latex/milog
 %dir %{_texmfdistdir}/doc/latex/milsymb
@@ -28551,6 +29540,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/minitoc/images
 %dir %{_texmfdistdir}/doc/latex/minorrevision
 %dir %{_texmfdistdir}/doc/latex/minted
+%dir %{_texmfdistdir}/doc/latex/minted-code
 %dir %{_texmfdistdir}/doc/latex/minutes
 %dir %{_texmfdistdir}/doc/latex/mismath
 %dir %{_texmfdistdir}/doc/latex/mitthesis
@@ -28559,6 +29549,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/mitthesis/examples
 %dir %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples
 %dir %{_texmfdistdir}/doc/latex/mitthesis/examples/cover_page_samples/latex_sources
+%dir %{_texmfdistdir}/doc/latex/mitthesis/examples/design_examples
+%dir %{_texmfdistdir}/doc/latex/mitthesis/examples/design_examples/latex_sources
 %dir %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples
 %dir %{_texmfdistdir}/doc/latex/mitthesis/examples/font_samples/latex_sources
 %dir %{_texmfdistdir}/doc/latex/mitthesis/mitthesis-doc
@@ -28577,7 +29569,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/modeles-factures-belges-assocs
 %dir %{_texmfdistdir}/doc/latex/moderncv
 %dir %{_texmfdistdir}/doc/latex/moderncv/manual
+%dir %{_texmfdistdir}/doc/latex/modernnewspaper
+%dir %{_texmfdistdir}/doc/latex/modernnewspaper/docs
+%dir %{_texmfdistdir}/doc/latex/modernnewspaper/example
 %dir %{_texmfdistdir}/doc/latex/modernposter
+%dir %{_texmfdistdir}/doc/latex/modernruler
 %dir %{_texmfdistdir}/doc/latex/moderntimeline
 %dir %{_texmfdistdir}/doc/latex/modiagram
 %dir %{_texmfdistdir}/doc/latex/modref
@@ -28626,6 +29622,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/mugsthesis/sample
 %dir %{_texmfdistdir}/doc/latex/muling
 %dir %{_texmfdistdir}/doc/latex/multenum
+%dir %{_texmfdistdir}/doc/latex/multi-sudoku
 %dir %{_texmfdistdir}/doc/latex/multiaudience
 %dir %{_texmfdistdir}/doc/latex/multibbl
 %dir %{_texmfdistdir}/doc/latex/multibib
@@ -28636,6 +29633,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/multienv
 %dir %{_texmfdistdir}/doc/latex/multifootnote
 %dir %{_texmfdistdir}/doc/latex/multilang
+%dir %{_texmfdistdir}/doc/latex/multinotes
 %dir %{_texmfdistdir}/doc/latex/multiobjective
 %dir %{_texmfdistdir}/doc/latex/multiple-choice
 %dir %{_texmfdistdir}/doc/latex/multirow
@@ -28657,6 +29655,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/mycv/Examples
 %dir %{_texmfdistdir}/doc/latex/mylatex
 %dir %{_texmfdistdir}/doc/latex/mylatexformat
+%dir %{_texmfdistdir}/doc/latex/mynsfc
+%dir %{_texmfdistdir}/doc/latex/mynsfc/examples
 %dir %{_texmfdistdir}/doc/latex/nag
 %dir %{_texmfdistdir}/doc/latex/naive-ebnf
 %dir %{_texmfdistdir}/doc/latex/nameauth
@@ -28730,6 +29730,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/notespages
 %dir %{_texmfdistdir}/doc/latex/notestex
 %dir %{_texmfdistdir}/doc/latex/notoccite
+%dir %{_texmfdistdir}/doc/latex/novabeamer-theme
+%dir %{_texmfdistdir}/doc/latex/novabeamer-theme/doc
+%dir %{_texmfdistdir}/doc/latex/novabeamer-theme/examples
 %dir %{_texmfdistdir}/doc/latex/nowidow
 %dir %{_texmfdistdir}/doc/latex/nox
 %dir %{_texmfdistdir}/doc/latex/nrc
@@ -28764,6 +29767,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/nwejm/french
 %dir %{_texmfdistdir}/doc/latex/nxuthesis
 %dir %{_texmfdistdir}/doc/latex/nxuthesis/chapter
+%dir %{_texmfdistdir}/doc/latex/nxuthesis/figures
 %dir %{_texmfdistdir}/doc/latex/nxuthesis/ref
 %dir %{_texmfdistdir}/doc/latex/oberdiek
 %dir %{_texmfdistdir}/doc/latex/oberdiek/example
@@ -28780,13 +29784,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/omgtudoc-asoiu
 %dir %{_texmfdistdir}/doc/latex/onedown
 %dir %{_texmfdistdir}/doc/latex/onedown/Examples
+%dir %{_texmfdistdir}/doc/latex/onepgnote
 %dir %{_texmfdistdir}/doc/latex/onlyamsmath
 %dir %{_texmfdistdir}/doc/latex/onrannual
 %dir %{_texmfdistdir}/doc/latex/opcit
+%dir %{_texmfdistdir}/doc/latex/open-everyday-symbols
 %dir %{_texmfdistdir}/doc/latex/opencolor
+%dir %{_texmfdistdir}/doc/latex/openmoji
 %dir %{_texmfdistdir}/doc/latex/oplotsymbl
 %dir %{_texmfdistdir}/doc/latex/opteng
 %dir %{_texmfdistdir}/doc/latex/optidef
+%dir %{_texmfdistdir}/doc/latex/optikz
+%dir %{_texmfdistdir}/doc/latex/optikz/optikz_doc_code
 %dir %{_texmfdistdir}/doc/latex/optional
 %dir %{_texmfdistdir}/doc/latex/options
 %dir %{_texmfdistdir}/doc/latex/orcidlink
@@ -28798,6 +29807,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/othello
 %dir %{_texmfdistdir}/doc/latex/othelloboard
 %dir %{_texmfdistdir}/doc/latex/otibet
+%dir %{_texmfdistdir}/doc/latex/ou-tma
 %dir %{_texmfdistdir}/doc/latex/oubraces
 %dir %{_texmfdistdir}/doc/latex/oup-authoring-template
 %dir %{_texmfdistdir}/doc/latex/oup-authoring-template/doc
@@ -28821,6 +29831,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/pagesel
 %dir %{_texmfdistdir}/doc/latex/pageslts
 %dir %{_texmfdistdir}/doc/latex/palette
+%dir %{_texmfdistdir}/doc/latex/panda
 %dir %{_texmfdistdir}/doc/latex/pangram
 %dir %{_texmfdistdir}/doc/latex/panneauxroute
 %dir %{_texmfdistdir}/doc/latex/paper
@@ -28836,6 +29847,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/parades/example
 %dir %{_texmfdistdir}/doc/latex/paralist
 %dir %{_texmfdistdir}/doc/latex/parallel
+%dir %{_texmfdistdir}/doc/latex/paramcalc
 %dir %{_texmfdistdir}/doc/latex/paresse
 %dir %{_texmfdistdir}/doc/latex/parnotes
 %dir %{_texmfdistdir}/doc/latex/parrun
@@ -28849,6 +29861,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/pascaltriangle
 %dir %{_texmfdistdir}/doc/latex/passopt
 %dir %{_texmfdistdir}/doc/latex/patchcmd
+%dir %{_texmfdistdir}/doc/latex/pats-resume
 %dir %{_texmfdistdir}/doc/latex/pauldoc
 %dir %{_texmfdistdir}/doc/latex/pawpict
 %dir %{_texmfdistdir}/doc/latex/pax
@@ -28884,6 +29897,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/pdfscreen
 %dir %{_texmfdistdir}/doc/latex/pdfslide
 %dir %{_texmfdistdir}/doc/latex/pdfsync
+%dir %{_texmfdistdir}/doc/latex/pdftoolbox
+%dir %{_texmfdistdir}/doc/latex/pdftoolbox/Documentation
 %dir %{_texmfdistdir}/doc/latex/pdftricks
 %dir %{_texmfdistdir}/doc/latex/pdftricks2
 %dir %{_texmfdistdir}/doc/latex/pdfwin
@@ -28897,6 +29912,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/pfarrei
 %dir %{_texmfdistdir}/doc/latex/pfdicons
 %dir %{_texmfdistdir}/doc/latex/pgf-blur
+%dir %{_texmfdistdir}/doc/latex/pgf-go
+%dir %{_texmfdistdir}/doc/latex/pgf-go/en
+%dir %{_texmfdistdir}/doc/latex/pgf-go/es
+%dir %{_texmfdistdir}/doc/latex/pgf-go/examples
 %dir %{_texmfdistdir}/doc/latex/pgf-interference
 %dir %{_texmfdistdir}/doc/latex/pgf-periodictable
 %dir %{_texmfdistdir}/doc/latex/pgf-periodictable/manualfiles
@@ -28930,6 +29949,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/phfthm
 %dir %{_texmfdistdir}/doc/latex/philex
 %dir %{_texmfdistdir}/doc/latex/philosophersimprint
+%dir %{_texmfdistdir}/doc/latex/phimisci
 %dir %{_texmfdistdir}/doc/latex/phonenumbers
 %dir %{_texmfdistdir}/doc/latex/phonrule
 %dir %{_texmfdistdir}/doc/latex/photo
@@ -28939,6 +29959,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/physics
 %dir %{_texmfdistdir}/doc/latex/physics-patch
 %dir %{_texmfdistdir}/doc/latex/physics2
+%dir %{_texmfdistdir}/doc/latex/physics3
 %dir %{_texmfdistdir}/doc/latex/physunits
 %dir %{_texmfdistdir}/doc/latex/piano
 %dir %{_texmfdistdir}/doc/latex/picinpar
@@ -28953,6 +29974,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/pittetd
 %dir %{_texmfdistdir}/doc/latex/pixelart
 %dir %{_texmfdistdir}/doc/latex/pixelarttikz
+%dir %{_texmfdistdir}/doc/latex/pkginfograb
 %dir %{_texmfdistdir}/doc/latex/pkgloader
 %dir %{_texmfdistdir}/doc/latex/pkuthss
 %dir %{_texmfdistdir}/doc/latex/pkuthss/example
@@ -29121,12 +30143,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/qobitree
 %dir %{_texmfdistdir}/doc/latex/qrbill
 %dir %{_texmfdistdir}/doc/latex/qrcode
+%dir %{_texmfdistdir}/doc/latex/qrcodetikz
 %dir %{_texmfdistdir}/doc/latex/qsharp
 %dir %{_texmfdistdir}/doc/latex/qstest
 %dir %{_texmfdistdir}/doc/latex/qsymbols
 %dir %{_texmfdistdir}/doc/latex/qtree
 %dir %{_texmfdistdir}/doc/latex/quantikz
+%dir %{_texmfdistdir}/doc/latex/quantum-chemistry-bonn
 %dir %{_texmfdistdir}/doc/latex/quantumarticle
+%dir %{_texmfdistdir}/doc/latex/quantumcubemodel
+%dir %{_texmfdistdir}/doc/latex/quantumcubemodel/examples
+%dir %{_texmfdistdir}/doc/latex/quantumcubemodel/examples/out
 %dir %{_texmfdistdir}/doc/latex/quickreaction
 %dir %{_texmfdistdir}/doc/latex/quicktype
 %dir %{_texmfdistdir}/doc/latex/quiver
@@ -29138,10 +30165,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/quran
 %dir %{_texmfdistdir}/doc/latex/quran-bn
 %dir %{_texmfdistdir}/doc/latex/quran-ur
+%dir %{_texmfdistdir}/doc/latex/qworld
 %dir %{_texmfdistdir}/doc/latex/qyxf-book
 %dir %{_texmfdistdir}/doc/latex/qyxf-book/figure
 %dir %{_texmfdistdir}/doc/latex/r_und_s
 %dir %{_texmfdistdir}/doc/latex/ragged2e
+%dir %{_texmfdistdir}/doc/latex/rainbowbrackets
 %dir %{_texmfdistdir}/doc/latex/raleway
 %dir %{_texmfdistdir}/doc/latex/ran_toks
 %dir %{_texmfdistdir}/doc/latex/ran_toks/docs
@@ -29203,6 +30232,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/resphilosophica
 %dir %{_texmfdistdir}/doc/latex/responsive
 %dir %{_texmfdistdir}/doc/latex/rest-api
+%dir %{_texmfdistdir}/doc/latex/retosmatematicos
 %dir %{_texmfdistdir}/doc/latex/returntogrid
 %dir %{_texmfdistdir}/doc/latex/revquantum
 %dir %{_texmfdistdir}/doc/latex/revtex
@@ -29260,6 +30290,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/rutitlepage
 %dir %{_texmfdistdir}/doc/latex/rviewport
 %dir %{_texmfdistdir}/doc/latex/rvwrite
+%dir %{_texmfdistdir}/doc/latex/rwth-ci
+%dir %{_texmfdistdir}/doc/latex/rwth-ci/examples
 %dir %{_texmfdistdir}/doc/latex/ryersonsgsthesis
 %dir %{_texmfdistdir}/doc/latex/ryethesis
 %dir %{_texmfdistdir}/doc/latex/sa-tikz
@@ -29325,6 +30357,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/se2thesis
 %dir %{_texmfdistdir}/doc/latex/secdot
 %dir %{_texmfdistdir}/doc/latex/secnum
+%dir %{_texmfdistdir}/doc/latex/secretx
 %dir %{_texmfdistdir}/doc/latex/section
 %dir %{_texmfdistdir}/doc/latex/sectionbox
 %dir %{_texmfdistdir}/doc/latex/sectionbox/example
@@ -29342,6 +30375,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/semtex
 %dir %{_texmfdistdir}/doc/latex/sepfootnotes
 %dir %{_texmfdistdir}/doc/latex/sepnum
+%dir %{_texmfdistdir}/doc/latex/seqcalc
 %dir %{_texmfdistdir}/doc/latex/seqsplit
 %dir %{_texmfdistdir}/doc/latex/serbian-apostrophe
 %dir %{_texmfdistdir}/doc/latex/serbian-date-lat
@@ -29432,6 +30466,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/skmath
 %dir %{_texmfdistdir}/doc/latex/skrapport
 %dir %{_texmfdistdir}/doc/latex/slantsc
+%dir %{_texmfdistdir}/doc/latex/slixte
 %dir %{_texmfdistdir}/doc/latex/smalltableof
 %dir %{_texmfdistdir}/doc/latex/smart-eqn
 %dir %{_texmfdistdir}/doc/latex/smartdiagram
@@ -29556,6 +30591,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/swebib
 %dir %{_texmfdistdir}/doc/latex/swfigure
 %dir %{_texmfdistdir}/doc/latex/swimgraf
+%dir %{_texmfdistdir}/doc/latex/switch
 %dir %{_texmfdistdir}/doc/latex/swungdash
 %dir %{_texmfdistdir}/doc/latex/syllogism
 %dir %{_texmfdistdir}/doc/latex/synproof
@@ -29564,6 +30600,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/synthslant
 %dir %{_texmfdistdir}/doc/latex/syntrace
 %dir %{_texmfdistdir}/doc/latex/synttree
+%dir %{_texmfdistdir}/doc/latex/sysuthesis
 %dir %{_texmfdistdir}/doc/latex/t-angles
 %dir %{_texmfdistdir}/doc/latex/tabbing
 %dir %{_texmfdistdir}/doc/latex/tabfigures
@@ -29571,6 +30608,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/tableaux
 %dir %{_texmfdistdir}/doc/latex/tablefootnote
 %dir %{_texmfdistdir}/doc/latex/tableof
+%dir %{_texmfdistdir}/doc/latex/tablericons
 %dir %{_texmfdistdir}/doc/latex/tablists
 %dir %{_texmfdistdir}/doc/latex/tablor
 %dir %{_texmfdistdir}/doc/latex/tablor/Figures
@@ -29581,6 +30619,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/tabstackengine
 %dir %{_texmfdistdir}/doc/latex/tabto-ltx
 %dir %{_texmfdistdir}/doc/latex/tabu
+%dir %{_texmfdistdir}/doc/latex/tabular2
 %dir %{_texmfdistdir}/doc/latex/tabularborder
 %dir %{_texmfdistdir}/doc/latex/tabularcalc
 %dir %{_texmfdistdir}/doc/latex/tabularew
@@ -29613,8 +30652,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/tengwarscript
 %dir %{_texmfdistdir}/doc/latex/tensind
 %dir %{_texmfdistdir}/doc/latex/tensor
+%dir %{_texmfdistdir}/doc/latex/tensormatrix
 %dir %{_texmfdistdir}/doc/latex/termcal
 %dir %{_texmfdistdir}/doc/latex/termcal-de
+%dir %{_texmfdistdir}/doc/latex/terminalcode
 %dir %{_texmfdistdir}/doc/latex/termlist
 %dir %{_texmfdistdir}/doc/latex/termsim
 %dir %{_texmfdistdir}/doc/latex/testhyphens
@@ -29681,6 +30722,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/thuthesis/ref
 %dir %{_texmfdistdir}/doc/latex/ticket
 %dir %{_texmfdistdir}/doc/latex/ticollege
+%dir %{_texmfdistdir}/doc/latex/tictactoe
 %dir %{_texmfdistdir}/doc/latex/tidyres
 %dir %{_texmfdistdir}/doc/latex/tiet-question-paper
 %dir %{_texmfdistdir}/doc/latex/tiet-question-paper/images
@@ -29691,6 +30733,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/tikz-bbox
 %dir %{_texmfdistdir}/doc/latex/tikz-bpmn
 %dir %{_texmfdistdir}/doc/latex/tikz-cd
+%dir %{_texmfdistdir}/doc/latex/tikz-cookingsymbols
 %dir %{_texmfdistdir}/doc/latex/tikz-decofonts
 %dir %{_texmfdistdir}/doc/latex/tikz-dependency
 %dir %{_texmfdistdir}/doc/latex/tikz-dimline
@@ -29718,6 +30761,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/tikz-qtree
 %dir %{_texmfdistdir}/doc/latex/tikz-relay
 %dir %{_texmfdistdir}/doc/latex/tikz-sfc
+%dir %{_texmfdistdir}/doc/latex/tikz-shields
+%dir %{_texmfdistdir}/doc/latex/tikz-shields/doc
+%dir %{_texmfdistdir}/doc/latex/tikz-shields/doc/img
 %dir %{_texmfdistdir}/doc/latex/tikz-swigs
 %dir %{_texmfdistdir}/doc/latex/tikz-timing
 %dir %{_texmfdistdir}/doc/latex/tikz-trackschematic
@@ -29727,6 +30773,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/tikz-truchet
 %dir %{_texmfdistdir}/doc/latex/tikz2d-fr
 %dir %{_texmfdistdir}/doc/latex/tikz3d-fr
+%dir %{_texmfdistdir}/doc/latex/tikzbrickfigurines
 %dir %{_texmfdistdir}/doc/latex/tikzbricks
 %dir %{_texmfdistdir}/doc/latex/tikzcalendarnotes
 %dir %{_texmfdistdir}/doc/latex/tikzcodeblocks
@@ -29734,6 +30781,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/tikzdotncross
 %dir %{_texmfdistdir}/doc/latex/tikzducks
 %dir %{_texmfdistdir}/doc/latex/tikzfill
+%dir %{_texmfdistdir}/doc/latex/tikzfxgraph
 %dir %{_texmfdistdir}/doc/latex/tikzinclude
 %dir %{_texmfdistdir}/doc/latex/tikzlings
 %dir %{_texmfdistdir}/doc/latex/tikzmark
@@ -29785,12 +30833,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/tkz-doc
 %dir %{_texmfdistdir}/doc/latex/tkz-elements
 %dir %{_texmfdistdir}/doc/latex/tkz-elements/examples
+%dir %{_texmfdistdir}/doc/latex/tkz-elements/examples/lua
+%dir %{_texmfdistdir}/doc/latex/tkz-elements/lua
 %dir %{_texmfdistdir}/doc/latex/tkz-euclide
 %dir %{_texmfdistdir}/doc/latex/tkz-fct
 %dir %{_texmfdistdir}/doc/latex/tkz-graph
 %dir %{_texmfdistdir}/doc/latex/tkz-graph/doc
 %dir %{_texmfdistdir}/doc/latex/tkz-graph/doc/latex
 %dir %{_texmfdistdir}/doc/latex/tkz-grapheur
+%dir %{_texmfdistdir}/doc/latex/tkz-interval
 %dir %{_texmfdistdir}/doc/latex/tkz-orm
 %dir %{_texmfdistdir}/doc/latex/tkz-tab
 %dir %{_texmfdistdir}/doc/latex/tkzexample
@@ -29812,6 +30863,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/todonotes/examples
 %dir %{_texmfdistdir}/doc/latex/todonotes/img
 %dir %{_texmfdistdir}/doc/latex/tokenizer
+%dir %{_texmfdistdir}/doc/latex/tokglobalstack
+%dir %{_texmfdistdir}/doc/latex/tokgroupmark
 %dir %{_texmfdistdir}/doc/latex/tonevalue
 %dir %{_texmfdistdir}/doc/latex/toolbox
 %dir %{_texmfdistdir}/doc/latex/tools
@@ -29824,6 +30877,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/totpages
 %dir %{_texmfdistdir}/doc/latex/tpslifonts
 %dir %{_texmfdistdir}/doc/latex/tqft
+%dir %{_texmfdistdir}/doc/latex/traffic-light-protocol
 %dir %{_texmfdistdir}/doc/latex/trajan
 %dir %{_texmfdistdir}/doc/latex/tram
 %dir %{_texmfdistdir}/doc/latex/tramlines
@@ -29868,6 +30922,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/turnstile
 %dir %{_texmfdistdir}/doc/latex/turnthepage
 %dir %{_texmfdistdir}/doc/latex/tutodoc
+%dir %{_texmfdistdir}/doc/latex/tuzuk
 %dir %{_texmfdistdir}/doc/latex/twemojis
 %dir %{_texmfdistdir}/doc/latex/twoinone
 %dir %{_texmfdistdir}/doc/latex/twoup
@@ -29933,6 +30988,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/uiucredborder
 %dir %{_texmfdistdir}/doc/latex/uiucthesis
 %dir %{_texmfdistdir}/doc/latex/ukbill
+%dir %{_texmfdistdir}/doc/latex/ullrcorners
 %dir %{_texmfdistdir}/doc/latex/ulqda
 %dir %{_texmfdistdir}/doc/latex/ulthese
 %dir %{_texmfdistdir}/doc/latex/umbclegislation
@@ -30044,6 +31100,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/versions
 %dir %{_texmfdistdir}/doc/latex/versonotes
 %dir %{_texmfdistdir}/doc/latex/vertbars
+%dir %{_texmfdistdir}/doc/latex/vexillology
 %dir %{_texmfdistdir}/doc/latex/vgrid
 %dir %{_texmfdistdir}/doc/latex/vhistory
 %dir %{_texmfdistdir}/doc/latex/visualfaq
@@ -30061,6 +31118,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/voss-mathcol
 %dir %{_texmfdistdir}/doc/latex/vpe
 %dir %{_texmfdistdir}/doc/latex/vruler
+%dir %{_texmfdistdir}/doc/latex/vscodeicons
 %dir %{_texmfdistdir}/doc/latex/vtable
 %dir %{_texmfdistdir}/doc/latex/vwcol
 %dir %{_texmfdistdir}/doc/latex/wallpaper
@@ -30081,7 +31139,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/webquiz/www/js
 %dir %{_texmfdistdir}/doc/latex/weiqi
 %dir %{_texmfdistdir}/doc/latex/whatsnote
-%dir %{_texmfdistdir}/doc/latex/whatsnote/figure
 %dir %{_texmfdistdir}/doc/latex/wheelchart
 %dir %{_texmfdistdir}/doc/latex/widetable
 %dir %{_texmfdistdir}/doc/latex/widows-and-orphans
@@ -30126,6 +31183,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/xebaposter/images
 %dir %{_texmfdistdir}/doc/latex/xecyrmongolian
 %dir %{_texmfdistdir}/doc/latex/xellipsis
+%dir %{_texmfdistdir}/doc/latex/xepersian
+%dir %{_texmfdistdir}/doc/latex/xepersian/img
+%dir %{_texmfdistdir}/doc/latex/xepersian/img/weather
 %dir %{_texmfdistdir}/doc/latex/xfakebold
 %dir %{_texmfdistdir}/doc/latex/xfor
 %dir %{_texmfdistdir}/doc/latex/xfrac
@@ -30141,12 +31201,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/xkeymask
 %dir %{_texmfdistdir}/doc/latex/xkeyval
 %dir %{_texmfdistdir}/doc/latex/xltabular
+%dir %{_texmfdistdir}/doc/latex/xmeaning
 %dir %{_texmfdistdir}/doc/latex/xmpincl
 %dir %{_texmfdistdir}/doc/latex/xmuthesis
 %dir %{_texmfdistdir}/doc/latex/xnewcommand
 %dir %{_texmfdistdir}/doc/latex/xoptarg
 %dir %{_texmfdistdir}/doc/latex/xpatch
 %dir %{_texmfdistdir}/doc/latex/xpeek
+%dir %{_texmfdistdir}/doc/latex/xpeekahead
 %dir %{_texmfdistdir}/doc/latex/xpiano
 %dir %{_texmfdistdir}/doc/latex/xpicture
 %dir %{_texmfdistdir}/doc/latex/xpinyin
@@ -30156,8 +31218,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/latex/xsavebox
 %dir %{_texmfdistdir}/doc/latex/xsim
 %dir %{_texmfdistdir}/doc/latex/xsim/examples
+%dir %{_texmfdistdir}/doc/latex/xsipa
 %dir %{_texmfdistdir}/doc/latex/xskak
+%dir %{_texmfdistdir}/doc/latex/xstacks
+%dir %{_texmfdistdir}/doc/latex/xstix2
 %dir %{_texmfdistdir}/doc/latex/xtab
+%dir %{_texmfdistdir}/doc/latex/xtufte
+%dir %{_texmfdistdir}/doc/latex/xtufte/graphics
 %dir %{_texmfdistdir}/doc/latex/xtuthesis
 %dir %{_texmfdistdir}/doc/latex/xtuthesis/body
 %dir %{_texmfdistdir}/doc/latex/xtuthesis/figures
@@ -30234,6 +31301,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/lualatex/ekdosis
 %dir %{_texmfdistdir}/doc/lualatex/ekdosis/samples
 %dir %{_texmfdistdir}/doc/lualatex/emojicite
+%dir %{_texmfdistdir}/doc/lualatex/fancymag
 %dir %{_texmfdistdir}/doc/lualatex/gitinfo-lua
 %dir %{_texmfdistdir}/doc/lualatex/hmtrump
 %dir %{_texmfdistdir}/doc/lualatex/hmtrump/nkd04_playing_cards_index
@@ -30242,6 +31310,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/lualatex/ideavault
 %dir %{_texmfdistdir}/doc/lualatex/innerscript
 %dir %{_texmfdistdir}/doc/lualatex/japanese-mathformulas
+%dir %{_texmfdistdir}/doc/lualatex/jsonresume
+%dir %{_texmfdistdir}/doc/lualatex/jsonresume/example
+%dir %{_texmfdistdir}/doc/lualatex/kkluaverb
+%dir %{_texmfdistdir}/doc/lualatex/lecturenotes
+%dir %{_texmfdistdir}/doc/lualatex/lecturenotes/doc
+%dir %{_texmfdistdir}/doc/lualatex/lecturenotes/sample
 %dir %{_texmfdistdir}/doc/lualatex/letgut
 %dir %{_texmfdistdir}/doc/lualatex/ligtype
 %dir %{_texmfdistdir}/doc/lualatex/linebreaker
@@ -30252,8 +31326,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/lualatex/lua-physical/test
 %dir %{_texmfdistdir}/doc/lualatex/lua-placeholders
 %dir %{_texmfdistdir}/doc/lualatex/lua-placeholders/lua-placeholders-example
+%dir %{_texmfdistdir}/doc/lualatex/lua-regression
+%dir %{_texmfdistdir}/doc/lualatex/lua-regression/example
 %dir %{_texmfdistdir}/doc/lualatex/lua-typo
 %dir %{_texmfdistdir}/doc/lualatex/lua-ul
+%dir %{_texmfdistdir}/doc/lualatex/lua-unicode-math
 %dir %{_texmfdistdir}/doc/lualatex/luabibentry
 %dir %{_texmfdistdir}/doc/lualatex/luabidi
 %dir %{_texmfdistdir}/doc/lualatex/luacas
@@ -30303,6 +31380,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/lualatex/luatextra
 %dir %{_texmfdistdir}/doc/lualatex/luatodonotes
 %dir %{_texmfdistdir}/doc/lualatex/luatruthtable
+%dir %{_texmfdistdir}/doc/lualatex/luwa-ul
 %dir %{_texmfdistdir}/doc/lualatex/makecookbook
 %dir %{_texmfdistdir}/doc/lualatex/makecookbook/mycookbook
 %dir %{_texmfdistdir}/doc/lualatex/makecookbook/mycookbook/img
@@ -30320,6 +31398,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/lualatex/pyluatex
 %dir %{_texmfdistdir}/doc/lualatex/pyluatex/example
 %dir %{_texmfdistdir}/doc/lualatex/scikgtex
+%dir %{_texmfdistdir}/doc/lualatex/seatingchart
 %dir %{_texmfdistdir}/doc/lualatex/selnolig
 %dir %{_texmfdistdir}/doc/lualatex/semesterplanner
 %dir %{_texmfdistdir}/doc/lualatex/semesterplannerlua
@@ -30343,9 +31422,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/lualatex/wallcalendar/doc/examples/cal-burst
 %dir %{_texmfdistdir}/doc/lualatex/wallcalendar/doc/examples/data
 %dir %{_texmfdistdir}/doc/lualatex/wallcalendar/doc/examples/photos
+%dir %{_texmfdistdir}/doc/lualatex/xdvipsk-support
 %dir %{_texmfdistdir}/doc/lualatex/xindex
 %dir %{_texmfdistdir}/doc/lualatex/xindex/tests
 %dir %{_texmfdistdir}/doc/lualatex/yamlvars
+%dir %{_texmfdistdir}/doc/luametatex
+%dir %{_texmfdistdir}/doc/luametatex/base
 %dir %{_texmfdistdir}/doc/luatex
 %dir %{_texmfdistdir}/doc/luatex/addtoluatexpath
 %dir %{_texmfdistdir}/doc/luatex/barracuda
@@ -30372,6 +31454,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/luatex/ctablestack
 %dir %{_texmfdistdir}/doc/luatex/evangelion-jfm
 %dir %{_texmfdistdir}/doc/luatex/evangelion-jfm/figure
+%dir %{_texmfdistdir}/doc/luatex/farbe
 %dir %{_texmfdistdir}/doc/luatex/gregoriotex
 %dir %{_texmfdistdir}/doc/luatex/gregoriotex/examples
 %dir %{_texmfdistdir}/doc/luatex/hyph-utf8
@@ -30384,10 +31467,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/luatex/lua-widow-control
 %dir %{_texmfdistdir}/doc/luatex/luaaddplot
 %dir %{_texmfdistdir}/doc/luatex/luakeys
+%dir %{_texmfdistdir}/doc/luatex/luakeyval
 %dir %{_texmfdistdir}/doc/luatex/lualibs
+%dir %{_texmfdistdir}/doc/luatex/lualineno
 %dir %{_texmfdistdir}/doc/luatex/luamplib
 %dir %{_texmfdistdir}/doc/luatex/luaotfload
 %dir %{_texmfdistdir}/doc/luatex/luapackageloader
+%dir %{_texmfdistdir}/doc/luatex/luatex-type-definitions
 %dir %{_texmfdistdir}/doc/luatex/luatexbase
 %dir %{_texmfdistdir}/doc/luatex/luatexja
 %dir %{_texmfdistdir}/doc/luatex/luatexko
@@ -30400,24 +31486,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/luatex/minim-pdf
 %dir %{_texmfdistdir}/doc/luatex/minim-xmp
 %dir %{_texmfdistdir}/doc/luatex/nodetree
-%dir %{_texmfdistdir}/doc/luatex/opbible
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/czech
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/czech/articles
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/czech/fmt
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/czech/images
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/czech/intros
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/czech/notes
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/czech/txs
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/english
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/english/articles
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/english/fmt
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/english/images
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/english/intros
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/english/notes
-%dir %{_texmfdistdir}/doc/luatex/opbible/examples/english/txs
-%dir %{_texmfdistdir}/doc/luatex/opbible/images
-%dir %{_texmfdistdir}/doc/luatex/opbible/txs-gen
 %dir %{_texmfdistdir}/doc/luatex/penlight
 %dir %{_texmfdistdir}/doc/luatex/penlightplus
 %dir %{_texmfdistdir}/doc/luatex/spelling
@@ -30514,6 +31582,25 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/optex/base
 %dir %{_texmfdistdir}/doc/optex/markdown
 %dir %{_texmfdistdir}/doc/optex/markdown/examples
+%dir %{_texmfdistdir}/doc/optex/opbible
+%dir %{_texmfdistdir}/doc/optex/opbible/examples
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/czech
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/czech/articles
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/czech/fmt
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/czech/images
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/czech/intros
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/czech/notes
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/czech/txs
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/english
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/english/articles
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/english/fmt
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/english/images
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/english/intros
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/english/notes
+%dir %{_texmfdistdir}/doc/optex/opbible/examples/english/txs
+%dir %{_texmfdistdir}/doc/optex/opbible/images
+%dir %{_texmfdistdir}/doc/optex/opbible/txs-gen
+%dir %{_texmfdistdir}/doc/optex/parstat
 %dir %{_texmfdistdir}/doc/optex/pdfextra
 %dir %{_texmfdistdir}/doc/optex/pdfextra/examples
 %dir %{_texmfdistdir}/doc/otherformats
@@ -30610,6 +31697,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/plain/pgfplots
 %dir %{_texmfdistdir}/doc/plain/pitex
 %dir %{_texmfdistdir}/doc/plain/plain-doc
+%dir %{_texmfdistdir}/doc/plain/plain-widow
 %dir %{_texmfdistdir}/doc/plain/plipsum
 %dir %{_texmfdistdir}/doc/plain/plnfss
 %dir %{_texmfdistdir}/doc/plain/plstmary
@@ -30664,7 +31752,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/support/classpack
 %dir %{_texmfdistdir}/doc/support/clojure-pamphlet
 %dir %{_texmfdistdir}/doc/support/cluttex
-%dir %{_texmfdistdir}/doc/support/cluttex/bin
 %dir %{_texmfdistdir}/doc/support/cluttex/doc
 %dir %{_texmfdistdir}/doc/support/cluttex/example
 %dir %{_texmfdistdir}/doc/support/cluttex/example/biblatex
@@ -30817,7 +31904,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/support/ppmcheckpdf
 %dir %{_texmfdistdir}/doc/support/pst2pdf
 %dir %{_texmfdistdir}/doc/support/purifyeps
+%dir %{_texmfdistdir}/doc/support/runtexfile
+%dir %{_texmfdistdir}/doc/support/runtexfile/examples
+%dir %{_texmfdistdir}/doc/support/runtexfile/images
 %dir %{_texmfdistdir}/doc/support/runtexshebang
+%dir %{_texmfdistdir}/doc/support/show-pdf-tags
 %dir %{_texmfdistdir}/doc/support/spix
 %dir %{_texmfdistdir}/doc/support/sqltex
 %dir %{_texmfdistdir}/doc/support/srcredact
@@ -30875,6 +31966,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/texlive/texlive-es/archive/2021
 %dir %{_texmfdistdir}/doc/texlive/texlive-es/archive/2022-march-2022-dec
 %dir %{_texmfdistdir}/doc/texlive/texlive-es/archive/2023
+%dir %{_texmfdistdir}/doc/texlive/texlive-es/archive/2024
 %dir %{_texmfdistdir}/doc/texlive/texlive-fr
 %dir %{_texmfdistdir}/doc/texlive/texlive-it
 %dir %{_texmfdistdir}/doc/texlive/texlive-ja
@@ -30897,7 +31989,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/xelatex/arabxetex/examples
 %dir %{_texmfdistdir}/doc/xelatex/bhcexam
 %dir %{_texmfdistdir}/doc/xelatex/bhcexam/examples
-%dir %{_texmfdistdir}/doc/xelatex/bidi
 %dir %{_texmfdistdir}/doc/xelatex/bidi-atbegshi
 %dir %{_texmfdistdir}/doc/xelatex/bidicontour
 %dir %{_texmfdistdir}/doc/xelatex/bidihl
@@ -30924,12 +32015,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/xelatex/fontbook
 %dir %{_texmfdistdir}/doc/xelatex/fontwrap
 %dir %{_texmfdistdir}/doc/xelatex/hanzibox
-%dir %{_texmfdistdir}/doc/xelatex/hduthesis
-%dir %{_texmfdistdir}/doc/xelatex/hduthesis/cha
-%dir %{_texmfdistdir}/doc/xelatex/hduthesis/cha/source
-%dir %{_texmfdistdir}/doc/xelatex/hduthesis/example
-%dir %{_texmfdistdir}/doc/xelatex/hduthesis/example/cha
-%dir %{_texmfdistdir}/doc/xelatex/hduthesis/example/figures
 %dir %{_texmfdistdir}/doc/xelatex/hfutthesis
 %dir %{_texmfdistdir}/doc/xelatex/hfutthesis/hfut-bib
 %dir %{_texmfdistdir}/doc/xelatex/hfutthesis/hfut-chapters
@@ -30946,7 +32031,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/xelatex/langsci/documentation
 %dir %{_texmfdistdir}/doc/xelatex/langsci/examples
 %dir %{_texmfdistdir}/doc/xelatex/mathspec
-%dir %{_texmfdistdir}/doc/xelatex/mynsfc
+%dir %{_texmfdistdir}/doc/xelatex/mohe-book
 %dir %{_texmfdistdir}/doc/xelatex/na-box
 %dir %{_texmfdistdir}/doc/xelatex/na-position
 %dir %{_texmfdistdir}/doc/xelatex/nanicolle
@@ -30982,10 +32067,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/doc/xelatex/xecyr/inputs
 %dir %{_texmfdistdir}/doc/xelatex/xecyr/old
 %dir %{_texmfdistdir}/doc/xelatex/xeindex
-%dir %{_texmfdistdir}/doc/xelatex/xepersian
 %dir %{_texmfdistdir}/doc/xelatex/xepersian-hm
-%dir %{_texmfdistdir}/doc/xelatex/xepersian/img
-%dir %{_texmfdistdir}/doc/xelatex/xepersian/img/weather
 %dir %{_texmfdistdir}/doc/xelatex/xespotcolor
 %dir %{_texmfdistdir}/doc/xelatex/xetex-itrans
 %dir %{_texmfdistdir}/doc/xelatex/xevlna
@@ -31051,6 +32133,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/dvips/pst-electricfield
 %dir %{_texmfdistdir}/dvips/pst-eucl
 %dir %{_texmfdistdir}/dvips/pst-feyn
+%dir %{_texmfdistdir}/dvips/pst-fourbarlinkage
 %dir %{_texmfdistdir}/dvips/pst-fractal
 %dir %{_texmfdistdir}/dvips/pst-fun
 %dir %{_texmfdistdir}/dvips/pst-func
@@ -31066,6 +32149,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/dvips/pst-mirror
 %dir %{_texmfdistdir}/dvips/pst-moire
 %dir %{_texmfdistdir}/dvips/pst-node
+%dir %{_texmfdistdir}/dvips/pst-nutation
 %dir %{_texmfdistdir}/dvips/pst-ode
 %dir %{_texmfdistdir}/dvips/pst-optexp
 %dir %{_texmfdistdir}/dvips/pst-ovl
@@ -31089,6 +32173,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/dvips/uhc
 %dir %{_texmfdistdir}/dvips/xcolor
 %dir %{_texmfdistdir}/dvips/xdvi
+%dir %{_texmfdistdir}/dvips/xdvipsk
 %dir %{_texmfdistdir}/dvips/xypic
 %dir %{_texmfdistdir}/dvips/yfonts-t1
 %dir %{_texmfdistdir}/dvips/zapfchan
@@ -31124,7 +32209,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/afm/gust
 %dir %{_texmfdistdir}/fonts/afm/gust/poltawski
 %dir %{_texmfdistdir}/fonts/afm/hoekwater
-%dir %{_texmfdistdir}/fonts/afm/hoekwater/context
 %dir %{_texmfdistdir}/fonts/afm/hoekwater/manfnt-font
 %dir %{_texmfdistdir}/fonts/afm/hoekwater/mflogo-font
 %dir %{_texmfdistdir}/fonts/afm/jmn
@@ -31171,6 +32255,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/afm/public/cmsrb
 %dir %{_texmfdistdir}/fonts/afm/public/cmupint
 %dir %{_texmfdistdir}/fonts/afm/public/cochineal
+%dir %{_texmfdistdir}/fonts/afm/public/context
 %dir %{_texmfdistdir}/fonts/afm/public/countriesofeurope
 %dir %{_texmfdistdir}/fonts/afm/public/cryst
 %dir %{_texmfdistdir}/fonts/afm/public/culmus
@@ -31281,7 +32366,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/afm/wadalab/mr2j
 %dir %{_texmfdistdir}/fonts/afm/wadalab/mrj
 %dir %{_texmfdistdir}/fonts/cid
-%dir %{_texmfdistdir}/fonts/cid/fontforge
+%dir %{_texmfdistdir}/fonts/cid/context
 %dir %{_texmfdistdir}/fonts/cmap
 %dir %{_texmfdistdir}/fonts/cmap/adobemapping
 %dir %{_texmfdistdir}/fonts/cmap/adobemapping/cmap-resources
@@ -31305,6 +32390,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/cmap/uptex-fonts
 %dir %{_texmfdistdir}/fonts/enc
 %dir %{_texmfdistdir}/fonts/enc/dvips
+%dir %{_texmfdistdir}/fonts/enc/dvips/academicons
 %dir %{_texmfdistdir}/fonts/enc/dvips/accanthis
 %dir %{_texmfdistdir}/fonts/enc/dvips/adforn
 %dir %{_texmfdistdir}/fonts/enc/dvips/adfsymbols
@@ -31382,6 +32468,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/enc/dvips/fira
 %dir %{_texmfdistdir}/fonts/enc/dvips/fontawesome
 %dir %{_texmfdistdir}/fonts/enc/dvips/fontawesome5
+%dir %{_texmfdistdir}/fonts/enc/dvips/fontawesome6
+%dir %{_texmfdistdir}/fonts/enc/dvips/fontawesome7
 %dir %{_texmfdistdir}/fonts/enc/dvips/fontools
 %dir %{_texmfdistdir}/fonts/enc/dvips/fonts-tlwg
 %dir %{_texmfdistdir}/fonts/enc/dvips/forum
@@ -31473,6 +32561,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/enc/dvips/sourcesanspro
 %dir %{_texmfdistdir}/fonts/enc/dvips/sourceserifpro
 %dir %{_texmfdistdir}/fonts/enc/dvips/spectral
+%dir %{_texmfdistdir}/fonts/enc/dvips/splentinex
 %dir %{_texmfdistdir}/fonts/enc/dvips/srbtiks
 %dir %{_texmfdistdir}/fonts/enc/dvips/step
 %dir %{_texmfdistdir}/fonts/enc/dvips/stepgreek
@@ -31547,6 +32636,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/map/dvipdfmx/ptex-fontmaps/yu-win
 %dir %{_texmfdistdir}/fonts/map/dvipdfmx/ptex-fontmaps/yu-win10
 %dir %{_texmfdistdir}/fonts/map/dvips
+%dir %{_texmfdistdir}/fonts/map/dvips/academicons
 %dir %{_texmfdistdir}/fonts/map/dvips/accanthis
 %dir %{_texmfdistdir}/fonts/map/dvips/adforn
 %dir %{_texmfdistdir}/fonts/map/dvips/adfsymbols
@@ -31675,6 +32765,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/map/dvips/fonetika
 %dir %{_texmfdistdir}/fonts/map/dvips/fontawesome
 %dir %{_texmfdistdir}/fonts/map/dvips/fontawesome5
+%dir %{_texmfdistdir}/fonts/map/dvips/fontawesome6
+%dir %{_texmfdistdir}/fonts/map/dvips/fontawesome7
 %dir %{_texmfdistdir}/fonts/map/dvips/fonts-tlwg
 %dir %{_texmfdistdir}/fonts/map/dvips/forum
 %dir %{_texmfdistdir}/fonts/map/dvips/fourier
@@ -31814,6 +32906,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/map/dvips/sourcesanspro
 %dir %{_texmfdistdir}/fonts/map/dvips/sourceserifpro
 %dir %{_texmfdistdir}/fonts/map/dvips/spectral
+%dir %{_texmfdistdir}/fonts/map/dvips/splentinex
 %dir %{_texmfdistdir}/fonts/map/dvips/srbtiks
 %dir %{_texmfdistdir}/fonts/map/dvips/starfont
 %dir %{_texmfdistdir}/fonts/map/dvips/staves
@@ -31857,8 +32950,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/map/dvips/zapfding
 %dir %{_texmfdistdir}/fonts/map/fontname
 %dir %{_texmfdistdir}/fonts/map/glyphlist
-%dir %{_texmfdistdir}/fonts/map/luatex
-%dir %{_texmfdistdir}/fonts/map/luatex/context
 %dir %{_texmfdistdir}/fonts/map/pdftex
 %dir %{_texmfdistdir}/fonts/map/pdftex/context
 %dir %{_texmfdistdir}/fonts/map/vtex
@@ -31893,6 +32984,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/ofm/public/otibet
 %dir %{_texmfdistdir}/fonts/opentype
 %dir %{_texmfdistdir}/fonts/opentype/SIL
+%dir %{_texmfdistdir}/fonts/opentype/SIL/gentium-sil
 %dir %{_texmfdistdir}/fonts/opentype/SIL/jetbrainsmono-otf
 %dir %{_texmfdistdir}/fonts/opentype/adobe
 %dir %{_texmfdistdir}/fonts/opentype/adobe/sourcecodepro
@@ -31932,6 +33024,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/opentype/omnibus-type/asapsym
 %dir %{_texmfdistdir}/fonts/opentype/public
 %dir %{_texmfdistdir}/fonts/opentype/public/aboensis
+%dir %{_texmfdistdir}/fonts/opentype/public/academicons
 %dir %{_texmfdistdir}/fonts/opentype/public/aesupp
 %dir %{_texmfdistdir}/fonts/opentype/public/alfaslabone
 %dir %{_texmfdistdir}/fonts/opentype/public/algolrevived
@@ -31939,6 +33032,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/opentype/public/antt
 %dir %{_texmfdistdir}/fonts/opentype/public/archivo
 %dir %{_texmfdistdir}/fonts/opentype/public/arsenal
+%dir %{_texmfdistdir}/fonts/opentype/public/arsenal-math
 %dir %{_texmfdistdir}/fonts/opentype/public/asana-math
 %dir %{_texmfdistdir}/fonts/opentype/public/atkinson
 %dir %{_texmfdistdir}/fonts/opentype/public/baskervaldx
@@ -31952,7 +33046,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/opentype/public/cochineal
 %dir %{_texmfdistdir}/fonts/opentype/public/coelacanth
 %dir %{_texmfdistdir}/fonts/opentype/public/concmath-otf
-%dir %{_texmfdistdir}/fonts/opentype/public/context-companion-fonts
+%dir %{_texmfdistdir}/fonts/opentype/public/context
 %dir %{_texmfdistdir}/fonts/opentype/public/cooperhewitt
 %dir %{_texmfdistdir}/fonts/opentype/public/countriesofeurope
 %dir %{_texmfdistdir}/fonts/opentype/public/courierten
@@ -31976,6 +33070,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/opentype/public/firamath
 %dir %{_texmfdistdir}/fonts/opentype/public/fontawesome
 %dir %{_texmfdistdir}/fonts/opentype/public/fontawesome5
+%dir %{_texmfdistdir}/fonts/opentype/public/fontawesome6
+%dir %{_texmfdistdir}/fonts/opentype/public/fontawesome7
 %dir %{_texmfdistdir}/fonts/opentype/public/fonts-churchslavonic
 %dir %{_texmfdistdir}/fonts/opentype/public/fonts-tlwg
 %dir %{_texmfdistdir}/fonts/opentype/public/forum
@@ -32014,12 +33110,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/opentype/public/lm-math
 %dir %{_texmfdistdir}/fonts/opentype/public/logix
 %dir %{_texmfdistdir}/fonts/opentype/public/luapstricks
+%dir %{_texmfdistdir}/fonts/opentype/public/luciole
 %dir %{_texmfdistdir}/fonts/opentype/public/mdsymbol
 %dir %{_texmfdistdir}/fonts/opentype/public/metsymb
 %dir %{_texmfdistdir}/fonts/opentype/public/mfb-oldstyle
 %dir %{_texmfdistdir}/fonts/opentype/public/miama
 %dir %{_texmfdistdir}/fonts/opentype/public/missaali
 %dir %{_texmfdistdir}/fonts/opentype/public/mnsymbol
+%dir %{_texmfdistdir}/fonts/opentype/public/monaspace-otf
 %dir %{_texmfdistdir}/fonts/opentype/public/montserrat
 %dir %{_texmfdistdir}/fonts/opentype/public/musixtex-fonts
 %dir %{_texmfdistdir}/fonts/opentype/public/newcomputermodern
@@ -32030,6 +33128,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/opentype/public/nunito
 %dir %{_texmfdistdir}/fonts/opentype/public/ocr-b-outline
 %dir %{_texmfdistdir}/fonts/opentype/public/oldstandard
+%dir %{_texmfdistdir}/fonts/opentype/public/pennstander-otf
 %dir %{_texmfdistdir}/fonts/opentype/public/phaistos
 %dir %{_texmfdistdir}/fonts/opentype/public/philokalia
 %dir %{_texmfdistdir}/fonts/opentype/public/playfair
@@ -32043,6 +33142,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/opentype/public/simpleicons
 %dir %{_texmfdistdir}/fonts/opentype/public/skaknew
 %dir %{_texmfdistdir}/fonts/opentype/public/spark-otf
+%dir %{_texmfdistdir}/fonts/opentype/public/splentinex
 %dir %{_texmfdistdir}/fonts/opentype/public/step
 %dir %{_texmfdistdir}/fonts/opentype/public/stix
 %dir %{_texmfdistdir}/fonts/opentype/public/stix2-otf
@@ -32084,6 +33184,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/ovp/public/otibet
 %dir %{_texmfdistdir}/fonts/pk
 %dir %{_texmfdistdir}/fonts/pk/ljfour
+%dir %{_texmfdistdir}/fonts/pk/ljfour/lh
+%dir %{_texmfdistdir}/fonts/pk/ljfour/lh/lh-t2a
 %dir %{_texmfdistdir}/fonts/pk/ljfour/public
 %dir %{_texmfdistdir}/fonts/pk/ljfour/public/cm
 %dir %{_texmfdistdir}/fonts/pk/ljfour/public/cm/dpi600
@@ -32124,10 +33226,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/source/public/aramaic-serto
 %dir %{_texmfdistdir}/fonts/source/public/archaic
 %dir %{_texmfdistdir}/fonts/source/public/armenian
+%dir %{_texmfdistdir}/fonts/source/public/arsenal-math
 %dir %{_texmfdistdir}/fonts/source/public/ascmac
 %dir %{_texmfdistdir}/fonts/source/public/aspectratio
 %dir %{_texmfdistdir}/fonts/source/public/astro
 %dir %{_texmfdistdir}/fonts/source/public/aurical
+%dir %{_texmfdistdir}/fonts/source/public/bahaistar
 %dir %{_texmfdistdir}/fonts/source/public/bangtex
 %dir %{_texmfdistdir}/fonts/source/public/barcodes
 %dir %{_texmfdistdir}/fonts/source/public/bartel-chess-fonts
@@ -32333,8 +33437,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/tfm/google/tinos
 %dir %{_texmfdistdir}/fonts/tfm/gust
 %dir %{_texmfdistdir}/fonts/tfm/gust/poltawski
-%dir %{_texmfdistdir}/fonts/tfm/hoekwater
-%dir %{_texmfdistdir}/fonts/tfm/hoekwater/context
 %dir %{_texmfdistdir}/fonts/tfm/huerta
 %dir %{_texmfdistdir}/fonts/tfm/huerta/alegreya
 %dir %{_texmfdistdir}/fonts/tfm/huerta/bitter
@@ -32361,6 +33463,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/tfm/jmn/hans
 %dir %{_texmfdistdir}/fonts/tfm/kosch
 %dir %{_texmfdistdir}/fonts/tfm/kosch/crimson
+%dir %{_texmfdistdir}/fonts/tfm/lh
+%dir %{_texmfdistdir}/fonts/tfm/lh/lh-t2a
+%dir %{_texmfdistdir}/fonts/tfm/lhcyr
+%dir %{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2a
+%dir %{_texmfdistdir}/fonts/tfm/lhcyr/lh-t2b
 %dir %{_texmfdistdir}/fonts/tfm/metapost
 %dir %{_texmfdistdir}/fonts/tfm/monotype
 %dir %{_texmfdistdir}/fonts/tfm/monotype/helvetic
@@ -32382,6 +33489,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/tfm/ptex-fonts/nmin-ngoth
 %dir %{_texmfdistdir}/fonts/tfm/ptex-fonts/standard
 %dir %{_texmfdistdir}/fonts/tfm/public
+%dir %{_texmfdistdir}/fonts/tfm/public/academicons
 %dir %{_texmfdistdir}/fonts/tfm/public/ae
 %dir %{_texmfdistdir}/fonts/tfm/public/aesupp
 %dir %{_texmfdistdir}/fonts/tfm/public/alfaslabone
@@ -32410,6 +33518,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/tfm/public/augie
 %dir %{_texmfdistdir}/fonts/tfm/public/auncial-new
 %dir %{_texmfdistdir}/fonts/tfm/public/aurical
+%dir %{_texmfdistdir}/fonts/tfm/public/bahaistar
 %dir %{_texmfdistdir}/fonts/tfm/public/bangtex
 %dir %{_texmfdistdir}/fonts/tfm/public/barcodes
 %dir %{_texmfdistdir}/fonts/tfm/public/bartel-chess-fonts
@@ -32464,6 +33573,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/tfm/public/coelacanth
 %dir %{_texmfdistdir}/fonts/tfm/public/concmath-fonts
 %dir %{_texmfdistdir}/fonts/tfm/public/concrete
+%dir %{_texmfdistdir}/fonts/tfm/public/context
 %dir %{_texmfdistdir}/fonts/tfm/public/cookingsymbols
 %dir %{_texmfdistdir}/fonts/tfm/public/cooperhewitt
 %dir %{_texmfdistdir}/fonts/tfm/public/countriesofeurope
@@ -32522,6 +33632,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/tfm/public/fonetika
 %dir %{_texmfdistdir}/fonts/tfm/public/fontawesome
 %dir %{_texmfdistdir}/fonts/tfm/public/fontawesome5
+%dir %{_texmfdistdir}/fonts/tfm/public/fontawesome6
+%dir %{_texmfdistdir}/fonts/tfm/public/fontawesome7
 %dir %{_texmfdistdir}/fonts/tfm/public/fonts-tlwg
 %dir %{_texmfdistdir}/fonts/tfm/public/forum
 %dir %{_texmfdistdir}/fonts/tfm/public/fourier
@@ -32672,6 +33784,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/tfm/public/skak
 %dir %{_texmfdistdir}/fonts/tfm/public/skaknew
 %dir %{_texmfdistdir}/fonts/tfm/public/skull
+%dir %{_texmfdistdir}/fonts/tfm/public/splentinex
 %dir %{_texmfdistdir}/fonts/tfm/public/srbtiks
 %dir %{_texmfdistdir}/fonts/tfm/public/starfont
 %dir %{_texmfdistdir}/fonts/tfm/public/staves
@@ -32826,9 +33939,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/truetype/public/arphic-ttf
 %dir %{_texmfdistdir}/fonts/truetype/public/arvo
 %dir %{_texmfdistdir}/fonts/truetype/public/asana-math
+%dir %{_texmfdistdir}/fonts/truetype/public/awami
 %dir %{_texmfdistdir}/fonts/truetype/public/baekmuk
 %dir %{_texmfdistdir}/fonts/truetype/public/bangla
 %dir %{_texmfdistdir}/fonts/truetype/public/belleek
+%dir %{_texmfdistdir}/fonts/truetype/public/context
 %dir %{_texmfdistdir}/fonts/truetype/public/crimsonpro
 %dir %{_texmfdistdir}/fonts/truetype/public/culmus
 %dir %{_texmfdistdir}/fonts/truetype/public/cuprum
@@ -32847,17 +33962,22 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/truetype/public/inriafonts
 %dir %{_texmfdistdir}/fonts/truetype/public/ipaex
 %dir %{_texmfdistdir}/fonts/truetype/public/josefin
+%dir %{_texmfdistdir}/fonts/truetype/public/juliamono
 %dir %{_texmfdistdir}/fonts/truetype/public/junicodevf
 %dir %{_texmfdistdir}/fonts/truetype/public/khatalmaqala
 %dir %{_texmfdistdir}/fonts/truetype/public/lexend
 %dir %{_texmfdistdir}/fonts/truetype/public/logix
 %dir %{_texmfdistdir}/fonts/truetype/public/luacensor
+%dir %{_texmfdistdir}/fonts/truetype/public/luciole
 %dir %{_texmfdistdir}/fonts/truetype/public/luwiantype
+%dir %{_texmfdistdir}/fonts/truetype/public/lxgw-fonts
+%dir %{_texmfdistdir}/fonts/truetype/public/lydtype
 %dir %{_texmfdistdir}/fonts/truetype/public/marcellus
 %dir %{_texmfdistdir}/fonts/truetype/public/marvosym
 %dir %{_texmfdistdir}/fonts/truetype/public/mpchess
 %dir %{_texmfdistdir}/fonts/truetype/public/parsimatn
 %dir %{_texmfdistdir}/fonts/truetype/public/parsinevis
+%dir %{_texmfdistdir}/fonts/truetype/public/pennstander-otf
 %dir %{_texmfdistdir}/fonts/truetype/public/poiretone
 %dir %{_texmfdistdir}/fonts/truetype/public/rit-fonts
 %dir %{_texmfdistdir}/fonts/truetype/public/theanodidot
@@ -32921,7 +34041,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/type1/gust
 %dir %{_texmfdistdir}/fonts/type1/gust/poltawski
 %dir %{_texmfdistdir}/fonts/type1/hoekwater
-%dir %{_texmfdistdir}/fonts/type1/hoekwater/context
 %dir %{_texmfdistdir}/fonts/type1/hoekwater/manfnt-font
 %dir %{_texmfdistdir}/fonts/type1/hoekwater/mflogo-font
 %dir %{_texmfdistdir}/fonts/type1/huerta
@@ -32960,6 +34079,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/type1/production
 %dir %{_texmfdistdir}/fonts/type1/production/spectral
 %dir %{_texmfdistdir}/fonts/type1/public
+%dir %{_texmfdistdir}/fonts/type1/public/academicons
 %dir %{_texmfdistdir}/fonts/type1/public/aesupp
 %dir %{_texmfdistdir}/fonts/type1/public/alfaslabone
 %dir %{_texmfdistdir}/fonts/type1/public/algolrevived
@@ -33022,6 +34142,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/type1/public/cmupint
 %dir %{_texmfdistdir}/fonts/type1/public/cochineal
 %dir %{_texmfdistdir}/fonts/type1/public/coelacanth
+%dir %{_texmfdistdir}/fonts/type1/public/context
 %dir %{_texmfdistdir}/fonts/type1/public/cooperhewitt
 %dir %{_texmfdistdir}/fonts/type1/public/countriesofeurope
 %dir %{_texmfdistdir}/fonts/type1/public/courierten
@@ -33063,6 +34184,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/type1/public/fonetika
 %dir %{_texmfdistdir}/fonts/type1/public/fontawesome
 %dir %{_texmfdistdir}/fonts/type1/public/fontawesome5
+%dir %{_texmfdistdir}/fonts/type1/public/fontawesome6
+%dir %{_texmfdistdir}/fonts/type1/public/fontawesome7
 %dir %{_texmfdistdir}/fonts/type1/public/fonts-tlwg
 %dir %{_texmfdistdir}/fonts/type1/public/forum
 %dir %{_texmfdistdir}/fonts/type1/public/fourier
@@ -33164,6 +34287,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/type1/public/semaphor
 %dir %{_texmfdistdir}/fonts/type1/public/simpleicons
 %dir %{_texmfdistdir}/fonts/type1/public/skaknew
+%dir %{_texmfdistdir}/fonts/type1/public/splentinex
 %dir %{_texmfdistdir}/fonts/type1/public/starfont
 %dir %{_texmfdistdir}/fonts/type1/public/staves
 %dir %{_texmfdistdir}/fonts/type1/public/step
@@ -33450,6 +34574,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/fonts/vf/public/sansmathaccent
 %dir %{_texmfdistdir}/fonts/vf/public/sansmathfonts
 %dir %{_texmfdistdir}/fonts/vf/public/scholax
+%dir %{_texmfdistdir}/fonts/vf/public/splentinex
 %dir %{_texmfdistdir}/fonts/vf/public/srbtiks
 %dir %{_texmfdistdir}/fonts/vf/public/step
 %dir %{_texmfdistdir}/fonts/vf/public/stepgreek
@@ -33542,7 +34667,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/makeindex/repeatindex
 %dir %{_texmfdistdir}/makeindex/songbook
 %dir %{_texmfdistdir}/makeindex/startex
-%dir %{_texmfdistdir}/makeindex/tikzpingus
 %dir %{_texmfdistdir}/makeindex/xdoc
 %dir %{_texmfdistdir}/metafont
 %dir %{_texmfdistdir}/metafont/base
@@ -33611,6 +34735,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/metapost/nkarta
 %dir %{_texmfdistdir}/metapost/piechartmp
 %dir %{_texmfdistdir}/metapost/profcollege
+%dir %{_texmfdistdir}/metapost/profcollege/datastest
 %dir %{_texmfdistdir}/metapost/proflycee
 %dir %{_texmfdistdir}/metapost/repere
 %dir %{_texmfdistdir}/metapost/roundrect
@@ -33691,13 +34816,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/scripts/cloze
 %dir %{_texmfdistdir}/scripts/cluttex
 %dir %{_texmfdistdir}/scripts/context
-%dir %{_texmfdistdir}/scripts/context-texlive
-%dir %{_texmfdistdir}/scripts/context-texlive/stubs
-%dir %{_texmfdistdir}/scripts/context-texlive/stubs-mkiv
-%dir %{_texmfdistdir}/scripts/context-texlive/stubs-mkiv/unix
-%dir %{_texmfdistdir}/scripts/context-texlive/stubs-mkiv/win64
-%dir %{_texmfdistdir}/scripts/context-texlive/stubs/unix
-%dir %{_texmfdistdir}/scripts/context-texlive/stubs/win64
 %dir %{_texmfdistdir}/scripts/context/lua
 %dir %{_texmfdistdir}/scripts/context/lua/third
 %dir %{_texmfdistdir}/scripts/context/lua/third/enigma
@@ -33710,6 +34828,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/scripts/context/ruby/base/kpse
 %dir %{_texmfdistdir}/scripts/context/ruby/graphics
 %dir %{_texmfdistdir}/scripts/context/ruby/rslb
+%dir %{_texmfdistdir}/scripts/context/stubs
+%dir %{_texmfdistdir}/scripts/context/stubs/unix
+%dir %{_texmfdistdir}/scripts/context/stubs/win64
 %dir %{_texmfdistdir}/scripts/convbkmk
 %dir %{_texmfdistdir}/scripts/crossrefware
 %dir %{_texmfdistdir}/scripts/ctan-o-mat
@@ -33732,7 +34853,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/scripts/extractbb
 %dir %{_texmfdistdir}/scripts/fig4latex
 %dir %{_texmfdistdir}/scripts/findhyph
-%dir %{_texmfdistdir}/scripts/flowfram
 %dir %{_texmfdistdir}/scripts/fmtcount
 %dir %{_texmfdistdir}/scripts/fontools
 %dir %{_texmfdistdir}/scripts/fontscripts
@@ -33787,7 +34907,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/scripts/luasseq
 %dir %{_texmfdistdir}/scripts/lwarp
 %dir %{_texmfdistdir}/scripts/lyluatex
-%dir %{_texmfdistdir}/scripts/m-tx
 %dir %{_texmfdistdir}/scripts/magicnum
 %dir %{_texmfdistdir}/scripts/make4ht
 %dir %{_texmfdistdir}/scripts/make4ht/domfilters
@@ -33841,7 +34960,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/scripts/pythontex
 %dir %{_texmfdistdir}/scripts/qrbill
 %dir %{_texmfdistdir}/scripts/rubik
+%dir %{_texmfdistdir}/scripts/runtexfile
 %dir %{_texmfdistdir}/scripts/runtexshebang
+%dir %{_texmfdistdir}/scripts/show-pdf-tags
 %dir %{_texmfdistdir}/scripts/simpdftex
 %dir %{_texmfdistdir}/scripts/spelling
 %dir %{_texmfdistdir}/scripts/spix
@@ -33911,8 +35032,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/context/bib/common
 %dir %{_texmfdistdir}/tex/context/bib/mkii
 %dir %{_texmfdistdir}/tex/context/colors
-%dir %{_texmfdistdir}/tex/context/colors/icc
-%dir %{_texmfdistdir}/tex/context/colors/icc/context
+%dir %{_texmfdistdir}/tex/context/colors/context
+%dir %{_texmfdistdir}/tex/context/colors/profiles
 %dir %{_texmfdistdir}/tex/context/fonts
 %dir %{_texmfdistdir}/tex/context/fonts/mkii
 %dir %{_texmfdistdir}/tex/context/fonts/mkiv
@@ -33920,14 +35041,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/context/interface
 %dir %{_texmfdistdir}/tex/context/interface/mkiv
 %dir %{_texmfdistdir}/tex/context/interface/third
+%dir %{_texmfdistdir}/tex/context/lexers
+%dir %{_texmfdistdir}/tex/context/lexers/data
+%dir %{_texmfdistdir}/tex/context/lexers/themes
 %dir %{_texmfdistdir}/tex/context/modules
 %dir %{_texmfdistdir}/tex/context/modules/common
 %dir %{_texmfdistdir}/tex/context/modules/mkii
 %dir %{_texmfdistdir}/tex/context/modules/mkiv
 %dir %{_texmfdistdir}/tex/context/modules/mkxl
-%dir %{_texmfdistdir}/tex/context/modules/third
 %dir %{_texmfdistdir}/tex/context/patterns
-%dir %{_texmfdistdir}/tex/context/patterns/common
 %dir %{_texmfdistdir}/tex/context/patterns/mkii
 %dir %{_texmfdistdir}/tex/context/patterns/mkiv
 %dir %{_texmfdistdir}/tex/context/patterns/mkxl
@@ -33940,6 +35062,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/context/texlive
 %dir %{_texmfdistdir}/tex/context/third
 %dir %{_texmfdistdir}/tex/context/third/advice
+%dir %{_texmfdistdir}/tex/context/third/animation
 %dir %{_texmfdistdir}/tex/context/third/asymptote
 %dir %{_texmfdistdir}/tex/context/third/calendar-examples
 %dir %{_texmfdistdir}/tex/context/third/chat
@@ -34002,13 +35125,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/fontinst/misc
 %dir %{_texmfdistdir}/tex/fontinst/smbletx
 %dir %{_texmfdistdir}/tex/fontinst/smblmtx
-%dir %{_texmfdistdir}/tex/fonts
-%dir %{_texmfdistdir}/tex/fonts/bonum-otf
-%dir %{_texmfdistdir}/tex/fonts/cascadiamono-otf
 %dir %{_texmfdistdir}/tex/generic
 %dir %{_texmfdistdir}/tex/generic/2up
 %dir %{_texmfdistdir}/tex/generic/abbr
 %dir %{_texmfdistdir}/tex/generic/abstyles
+%dir %{_texmfdistdir}/tex/generic/academicons
 %dir %{_texmfdistdir}/tex/generic/advice
 %dir %{_texmfdistdir}/tex/generic/alphalph
 %dir %{_texmfdistdir}/tex/generic/apnum
@@ -34174,6 +35295,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/babel/locale/gv
 %dir %{_texmfdistdir}/tex/generic/babel/locale/ha
 %dir %{_texmfdistdir}/tex/generic/babel/locale/haw
+%dir %{_texmfdistdir}/tex/generic/babel/locale/hbo
 %dir %{_texmfdistdir}/tex/generic/babel/locale/he
 %dir %{_texmfdistdir}/tex/generic/babel/locale/hi
 %dir %{_texmfdistdir}/tex/generic/babel/locale/hnj
@@ -34186,6 +35308,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/babel/locale/ig
 %dir %{_texmfdistdir}/tex/generic/babel/locale/ii
 %dir %{_texmfdistdir}/tex/generic/babel/locale/inh
+%dir %{_texmfdistdir}/tex/generic/babel/locale/invalid
 %dir %{_texmfdistdir}/tex/generic/babel/locale/is
 %dir %{_texmfdistdir}/tex/generic/babel/locale/isv
 %dir %{_texmfdistdir}/tex/generic/babel/locale/it
@@ -34210,7 +35333,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/babel/locale/kl
 %dir %{_texmfdistdir}/tex/generic/babel/locale/kln
 %dir %{_texmfdistdir}/tex/generic/babel/locale/km
-%dir %{_texmfdistdir}/tex/generic/babel/locale/kmr
 %dir %{_texmfdistdir}/tex/generic/babel/locale/kn
 %dir %{_texmfdistdir}/tex/generic/babel/locale/ko
 %dir %{_texmfdistdir}/tex/generic/babel/locale/kok
@@ -34321,6 +35443,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/babel/locale/ses
 %dir %{_texmfdistdir}/tex/generic/babel/locale/sg
 %dir %{_texmfdistdir}/tex/generic/babel/locale/sga
+%dir %{_texmfdistdir}/tex/generic/babel/locale/shared
 %dir %{_texmfdistdir}/tex/generic/babel/locale/shi
 %dir %{_texmfdistdir}/tex/generic/babel/locale/si
 %dir %{_texmfdistdir}/tex/generic/babel/locale/sk
@@ -34362,6 +35485,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/babel/locale/ug
 %dir %{_texmfdistdir}/tex/generic/babel/locale/uga
 %dir %{_texmfdistdir}/tex/generic/babel/locale/uk
+%dir %{_texmfdistdir}/tex/generic/babel/locale/und
 %dir %{_texmfdistdir}/tex/generic/babel/locale/ur
 %dir %{_texmfdistdir}/tex/generic/babel/locale/uz
 %dir %{_texmfdistdir}/tex/generic/babel/locale/vai
@@ -34413,7 +35537,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/compare
 %dir %{_texmfdistdir}/tex/generic/config
 %dir %{_texmfdistdir}/tex/generic/context
-%dir %{_texmfdistdir}/tex/generic/context/luatex
 %dir %{_texmfdistdir}/tex/generic/context/mptopdf
 %dir %{_texmfdistdir}/tex/generic/context/ppchtex
 %dir %{_texmfdistdir}/tex/generic/crossrefenum
@@ -34435,6 +35558,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/encodings
 %dir %{_texmfdistdir}/tex/generic/enctex
 %dir %{_texmfdistdir}/tex/generic/enigma
+%dir %{_texmfdistdir}/tex/generic/eoldef
 %dir %{_texmfdistdir}/tex/generic/epigram
 %dir %{_texmfdistdir}/tex/generic/epsf
 %dir %{_texmfdistdir}/tex/generic/etexcmds
@@ -34494,6 +35618,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/mathabx
 %dir %{_texmfdistdir}/tex/generic/mathdots
 %dir %{_texmfdistdir}/tex/generic/mathlig
+%dir %{_texmfdistdir}/tex/generic/measurebox
 %dir %{_texmfdistdir}/tex/generic/memoize
 %dir %{_texmfdistdir}/tex/generic/metapost
 %dir %{_texmfdistdir}/tex/generic/mfpic
@@ -34630,11 +35755,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/pst-feyn
 %dir %{_texmfdistdir}/tex/generic/pst-fill
 %dir %{_texmfdistdir}/tex/generic/pst-fit
+%dir %{_texmfdistdir}/tex/generic/pst-fourbarlinkage
 %dir %{_texmfdistdir}/tex/generic/pst-fr3d
 %dir %{_texmfdistdir}/tex/generic/pst-fractal
 %dir %{_texmfdistdir}/tex/generic/pst-fun
 %dir %{_texmfdistdir}/tex/generic/pst-func
 %dir %{_texmfdistdir}/tex/generic/pst-gantt
+%dir %{_texmfdistdir}/tex/generic/pst-gears
 %dir %{_texmfdistdir}/tex/generic/pst-geo
 %dir %{_texmfdistdir}/tex/generic/pst-geo/data
 %dir %{_texmfdistdir}/tex/generic/pst-geometrictools
@@ -34645,6 +35772,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/pst-infixplot
 %dir %{_texmfdistdir}/tex/generic/pst-intersect
 %dir %{_texmfdistdir}/tex/generic/pst-jtree
+%dir %{_texmfdistdir}/tex/generic/pst-kepler
 %dir %{_texmfdistdir}/tex/generic/pst-knot
 %dir %{_texmfdistdir}/tex/generic/pst-labo
 %dir %{_texmfdistdir}/tex/generic/pst-lens
@@ -34652,10 +35780,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/pst-lsystem
 %dir %{_texmfdistdir}/tex/generic/pst-magneticfield
 %dir %{_texmfdistdir}/tex/generic/pst-marble
+%dir %{_texmfdistdir}/tex/generic/pst-massspring
 %dir %{_texmfdistdir}/tex/generic/pst-math
 %dir %{_texmfdistdir}/tex/generic/pst-mirror
 %dir %{_texmfdistdir}/tex/generic/pst-moire
 %dir %{_texmfdistdir}/tex/generic/pst-node
+%dir %{_texmfdistdir}/tex/generic/pst-nutation
 %dir %{_texmfdistdir}/tex/generic/pst-ob3d
 %dir %{_texmfdistdir}/tex/generic/pst-ode
 %dir %{_texmfdistdir}/tex/generic/pst-optic
@@ -34676,6 +35806,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/pst-solarsystem
 %dir %{_texmfdistdir}/tex/generic/pst-solides3d
 %dir %{_texmfdistdir}/tex/generic/pst-spectra
+%dir %{_texmfdistdir}/tex/generic/pst-sphericaltrochoid
 %dir %{_texmfdistdir}/tex/generic/pst-spinner
 %dir %{_texmfdistdir}/tex/generic/pst-stru
 %dir %{_texmfdistdir}/tex/generic/pst-text
@@ -34702,6 +35833,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/simplekv
 %dir %{_texmfdistdir}/tex/generic/soul
 %dir %{_texmfdistdir}/tex/generic/splitindex
+%dir %{_texmfdistdir}/tex/generic/stretchy
 %dir %{_texmfdistdir}/tex/generic/stringenc
 %dir %{_texmfdistdir}/tex/generic/swrule
 %dir %{_texmfdistdir}/tex/generic/systeme
@@ -34726,6 +35858,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/tikz-cd
 %dir %{_texmfdistdir}/tex/generic/tikz-ext
 %dir %{_texmfdistdir}/tex/generic/tokcycle
+%dir %{_texmfdistdir}/tex/generic/tokmap
 %dir %{_texmfdistdir}/tex/generic/tracklang
 %dir %{_texmfdistdir}/tex/generic/trigonometry
 %dir %{_texmfdistdir}/tex/generic/tuple
@@ -34738,6 +35871,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/variations
 %dir %{_texmfdistdir}/tex/generic/vaucanson-g
 %dir %{_texmfdistdir}/tex/generic/velthuis
+%dir %{_texmfdistdir}/tex/generic/visualtoks
 %dir %{_texmfdistdir}/tex/generic/witharrows
 %dir %{_texmfdistdir}/tex/generic/xint
 %dir %{_texmfdistdir}/tex/generic/xkeyval
@@ -34747,6 +35881,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/generic/yax
 %dir %{_texmfdistdir}/tex/generic/ydoc
 %dir %{_texmfdistdir}/tex/generic/youngtab
+%dir %{_texmfdistdir}/tex/generic/zeckendorf
 %dir %{_texmfdistdir}/tex/generic/zhmetrics
 %dir %{_texmfdistdir}/tex/generic/zhspacing
 %dir %{_texmfdistdir}/tex/hitex
@@ -34779,11 +35914,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/abnt
 %dir %{_texmfdistdir}/tex/latex/abntex2
 %dir %{_texmfdistdir}/tex/latex/abntexto
+%dir %{_texmfdistdir}/tex/latex/abntexto-uece
 %dir %{_texmfdistdir}/tex/latex/aboensis
 %dir %{_texmfdistdir}/tex/latex/abraces
 %dir %{_texmfdistdir}/tex/latex/abspos
 %dir %{_texmfdistdir}/tex/latex/abstract
-%dir %{_texmfdistdir}/tex/latex/academicons
 %dir %{_texmfdistdir}/tex/latex/accanthis
 %dir %{_texmfdistdir}/tex/latex/accents
 %dir %{_texmfdistdir}/tex/latex/accessibility
@@ -34812,8 +35947,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/advice
 %dir %{_texmfdistdir}/tex/latex/ae
 %dir %{_texmfdistdir}/tex/latex/aeguill
+%dir %{_texmfdistdir}/tex/latex/aeskwadraat
+%dir %{_texmfdistdir}/tex/latex/aeskwadraat/logos
 %dir %{_texmfdistdir}/tex/latex/aesupp
 %dir %{_texmfdistdir}/tex/latex/affilauthor
+%dir %{_texmfdistdir}/tex/latex/afperpack
 %dir %{_texmfdistdir}/tex/latex/afthesis
 %dir %{_texmfdistdir}/tex/latex/aguplus
 %dir %{_texmfdistdir}/tex/latex/aiaa
@@ -34892,6 +36030,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/arraysort
 %dir %{_texmfdistdir}/tex/latex/arsclassica
 %dir %{_texmfdistdir}/tex/latex/arsenal
+%dir %{_texmfdistdir}/tex/latex/arsenal-math
 %dir %{_texmfdistdir}/tex/latex/articleingud
 %dir %{_texmfdistdir}/tex/latex/arvo
 %dir %{_texmfdistdir}/tex/latex/arydshln
@@ -34906,6 +36045,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/asmeconf
 %dir %{_texmfdistdir}/tex/latex/asmejour
 %dir %{_texmfdistdir}/tex/latex/aspectratio
+%dir %{_texmfdistdir}/tex/latex/aspen
 %dir %{_texmfdistdir}/tex/latex/assignment
 %dir %{_texmfdistdir}/tex/latex/assoccnt
 %dir %{_texmfdistdir}/tex/latex/association-matrix
@@ -34946,6 +36086,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/babelbib
 %dir %{_texmfdistdir}/tex/latex/background
 %dir %{_texmfdistdir}/tex/latex/backnaur
+%dir %{_texmfdistdir}/tex/latex/bahaistar
 %dir %{_texmfdistdir}/tex/latex/bangla
 %dir %{_texmfdistdir}/tex/latex/bangorcsthesis
 %dir %{_texmfdistdir}/tex/latex/bangorexam
@@ -34969,6 +36110,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/bclogo
 %dir %{_texmfdistdir}/tex/latex/beamer
 %dir %{_texmfdistdir}/tex/latex/beamer-fuberlin
+%dir %{_texmfdistdir}/tex/latex/beamer-reveal
+%dir %{_texmfdistdir}/tex/latex/beamer-theme-albi
+%dir %{_texmfdistdir}/tex/latex/beamer-varbox
 %dir %{_texmfdistdir}/tex/latex/beamer-verona
 %dir %{_texmfdistdir}/tex/latex/beamer2thesis
 %dir %{_texmfdistdir}/tex/latex/beamerappendixnote
@@ -34980,8 +36124,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/beamersubframe
 %dir %{_texmfdistdir}/tex/latex/beamerswitch
 %dir %{_texmfdistdir}/tex/latex/beamertheme-arguelles
+%dir %{_texmfdistdir}/tex/latex/beamertheme-bilkent-econ
+%dir %{_texmfdistdir}/tex/latex/beamertheme-cleaneasy
+%dir %{_texmfdistdir}/tex/latex/beamertheme-cleaneasy/logos
+%dir %{_texmfdistdir}/tex/latex/beamertheme-csh
 %dir %{_texmfdistdir}/tex/latex/beamertheme-cuerna
 %dir %{_texmfdistdir}/tex/latex/beamertheme-detlevcm
+%dir %{_texmfdistdir}/tex/latex/beamertheme-durham
 %dir %{_texmfdistdir}/tex/latex/beamertheme-epyt
 %dir %{_texmfdistdir}/tex/latex/beamertheme-focus
 %dir %{_texmfdistdir}/tex/latex/beamertheme-gotham
@@ -34996,6 +36145,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/beamertheme-saintpetersburg
 %dir %{_texmfdistdir}/tex/latex/beamertheme-simpledarkblue
 %dir %{_texmfdistdir}/tex/latex/beamertheme-simpleplus
+%dir %{_texmfdistdir}/tex/latex/beamertheme-spectrum
 %dir %{_texmfdistdir}/tex/latex/beamertheme-tcolorbox
 %dir %{_texmfdistdir}/tex/latex/beamertheme-trigon
 %dir %{_texmfdistdir}/tex/latex/beamertheme-upenn-bc
@@ -35028,6 +36178,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/bguq
 %dir %{_texmfdistdir}/tex/latex/bib2qr
 %dir %{_texmfdistdir}/tex/latex/bibarts
+%dir %{_texmfdistdir}/tex/latex/bibbreeze
 %dir %{_texmfdistdir}/tex/latex/bibcop
 %dir %{_texmfdistdir}/tex/latex/biblatex
 %dir %{_texmfdistdir}/tex/latex/biblatex-abnt
@@ -35119,6 +36270,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/bibtopic
 %dir %{_texmfdistdir}/tex/latex/bibtopicprefix
 %dir %{_texmfdistdir}/tex/latex/bibunits
+%dir %{_texmfdistdir}/tex/latex/bidi
 %dir %{_texmfdistdir}/tex/latex/bigfoot
 %dir %{_texmfdistdir}/tex/latex/bigints
 %dir %{_texmfdistdir}/tex/latex/bilingualpages
@@ -35151,6 +36303,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/boldtensors
 %dir %{_texmfdistdir}/tex/latex/bondgraph
 %dir %{_texmfdistdir}/tex/latex/bondgraphs
+%dir %{_texmfdistdir}/tex/latex/bonum-otf
 %dir %{_texmfdistdir}/tex/latex/book-of-common-prayer
 %dir %{_texmfdistdir}/tex/latex/bookcover
 %dir %{_texmfdistdir}/tex/latex/bookest
@@ -35162,12 +36315,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/booktabs
 %dir %{_texmfdistdir}/tex/latex/boolexpr
 %dir %{_texmfdistdir}/tex/latex/boondox
+%dir %{_texmfdistdir}/tex/latex/bootstrapicons
 %dir %{_texmfdistdir}/tex/latex/bophook
 %dir %{_texmfdistdir}/tex/latex/bosisio
 %dir %{_texmfdistdir}/tex/latex/boxedminipage
 %dir %{_texmfdistdir}/tex/latex/boxhandler
 %dir %{_texmfdistdir}/tex/latex/bpchem
 %dir %{_texmfdistdir}/tex/latex/br-lex
+%dir %{_texmfdistdir}/tex/latex/bracealign
 %dir %{_texmfdistdir}/tex/latex/bracketkey
 %dir %{_texmfdistdir}/tex/latex/braids
 %dir %{_texmfdistdir}/tex/latex/braille
@@ -35180,12 +36335,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/bredzenie
 %dir %{_texmfdistdir}/tex/latex/breqn
 %dir %{_texmfdistdir}/tex/latex/bropd
+%dir %{_texmfdistdir}/tex/latex/broydensolve
 %dir %{_texmfdistdir}/tex/latex/brushscr
 %dir %{_texmfdistdir}/tex/latex/bubblesort
 %dir %{_texmfdistdir}/tex/latex/bullcntr
 %dir %{_texmfdistdir}/tex/latex/bundledoc
 %dir %{_texmfdistdir}/tex/latex/burmese
 %dir %{_texmfdistdir}/tex/latex/bussproofs
+%dir %{_texmfdistdir}/tex/latex/bussproofs-colorful
 %dir %{_texmfdistdir}/tex/latex/bussproofs-extra
 %dir %{_texmfdistdir}/tex/latex/bxbase
 %dir %{_texmfdistdir}/tex/latex/bxcalc
@@ -35237,6 +36394,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/cartonaugh
 %dir %{_texmfdistdir}/tex/latex/cascade
 %dir %{_texmfdistdir}/tex/latex/cascadia-code
+%dir %{_texmfdistdir}/tex/latex/cascadiamono-otf
 %dir %{_texmfdistdir}/tex/latex/cascadilla
 %dir %{_texmfdistdir}/tex/latex/cases
 %dir %{_texmfdistdir}/tex/latex/casyl
@@ -35273,6 +36431,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/changes
 %dir %{_texmfdistdir}/tex/latex/chappg
 %dir %{_texmfdistdir}/tex/latex/chapterfolder
+%dir %{_texmfdistdir}/tex/latex/char2path
 %dir %{_texmfdistdir}/tex/latex/charissil
 %dir %{_texmfdistdir}/tex/latex/chbibref
 %dir %{_texmfdistdir}/tex/latex/cheatsheet
@@ -35326,12 +36485,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/circuit-macros
 %dir %{_texmfdistdir}/tex/latex/circuitikz
 %dir %{_texmfdistdir}/tex/latex/circularglyphs
+%dir %{_texmfdistdir}/tex/latex/cistercian
 %dir %{_texmfdistdir}/tex/latex/citation-style-language
 %dir %{_texmfdistdir}/tex/latex/citation-style-language/locales
 %dir %{_texmfdistdir}/tex/latex/citation-style-language/styles
 %dir %{_texmfdistdir}/tex/latex/cite
 %dir %{_texmfdistdir}/tex/latex/citeall
 %dir %{_texmfdistdir}/tex/latex/citeref
+%dir %{_texmfdistdir}/tex/latex/citeright
 %dir %{_texmfdistdir}/tex/latex/cje
 %dir %{_texmfdistdir}/tex/latex/cjhebrew
 %dir %{_texmfdistdir}/tex/latex/cjk
@@ -35483,6 +36644,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/covington
 %dir %{_texmfdistdir}/tex/latex/cprotect
 %dir %{_texmfdistdir}/tex/latex/cprotectinside
+%dir %{_texmfdistdir}/tex/latex/cqjtuthesis
 %dir %{_texmfdistdir}/tex/latex/cquthesis
 %dir %{_texmfdistdir}/tex/latex/crbox
 %dir %{_texmfdistdir}/tex/latex/create-theorem
@@ -35615,6 +36777,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/democodetools
 %dir %{_texmfdistdir}/tex/latex/denisbdoc
 %dir %{_texmfdistdir}/tex/latex/derivative
+%dir %{_texmfdistdir}/tex/latex/deutschesmuseum
 %dir %{_texmfdistdir}/tex/latex/dhua
 %dir %{_texmfdistdir}/tex/latex/diabetes-logbook
 %dir %{_texmfdistdir}/tex/latex/diadia
@@ -35639,6 +36802,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/dithesis
 %dir %{_texmfdistdir}/tex/latex/dk-bib
 %dir %{_texmfdistdir}/tex/latex/dlfltxb
+%dir %{_texmfdistdir}/tex/latex/dlrg-templates
+%dir %{_texmfdistdir}/tex/latex/dlrg-templates/data
 %dir %{_texmfdistdir}/tex/latex/dnaseq
 %dir %{_texmfdistdir}/tex/latex/doclicense
 %dir %{_texmfdistdir}/tex/latex/doclicense/images
@@ -35732,6 +36897,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/ehhline
 %dir %{_texmfdistdir}/tex/latex/eiad
 %dir %{_texmfdistdir}/tex/latex/eiad-ltx
+%dir %{_texmfdistdir}/tex/latex/eigo
 %dir %{_texmfdistdir}/tex/latex/einfart
 %dir %{_texmfdistdir}/tex/latex/ejpecp
 %dir %{_texmfdistdir}/tex/latex/ekaia
@@ -35739,6 +36905,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/electrumadf
 %dir %{_texmfdistdir}/tex/latex/eledform
 %dir %{_texmfdistdir}/tex/latex/eledmac
+%dir %{_texmfdistdir}/tex/latex/elegantbook
+%dir %{_texmfdistdir}/tex/latex/elegantnote
+%dir %{_texmfdistdir}/tex/latex/elegantpaper
 %dir %{_texmfdistdir}/tex/latex/elements
 %dir %{_texmfdistdir}/tex/latex/ellipse
 %dir %{_texmfdistdir}/tex/latex/ellipsis
@@ -35783,7 +36952,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/enumext
 %dir %{_texmfdistdir}/tex/latex/enumitem
 %dir %{_texmfdistdir}/tex/latex/enumitem-zref
+%dir %{_texmfdistdir}/tex/latex/enumsub
 %dir %{_texmfdistdir}/tex/latex/envbig
+%dir %{_texmfdistdir}/tex/latex/envelope-letter
 %dir %{_texmfdistdir}/tex/latex/enverb
 %dir %{_texmfdistdir}/tex/latex/environ
 %dir %{_texmfdistdir}/tex/latex/envlab
@@ -35821,6 +36992,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/eskdx
 %dir %{_texmfdistdir}/tex/latex/eso-pic
 %dir %{_texmfdistdir}/tex/latex/esrelation
+%dir %{_texmfdistdir}/tex/latex/essaykit
 %dir %{_texmfdistdir}/tex/latex/esstix
 %dir %{_texmfdistdir}/tex/latex/estcpmm
 %dir %{_texmfdistdir}/tex/latex/esvect
@@ -35901,6 +37073,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/fancytabs
 %dir %{_texmfdistdir}/tex/latex/fancytooltips
 %dir %{_texmfdistdir}/tex/latex/fancyvrb
+%dir %{_texmfdistdir}/tex/latex/fariscovernew
 %dir %{_texmfdistdir}/tex/latex/fascicules
 %dir %{_texmfdistdir}/tex/latex/fast-diagram
 %dir %{_texmfdistdir}/tex/latex/fbb
@@ -35925,11 +37098,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/ffslides
 %dir %{_texmfdistdir}/tex/latex/fge
 %dir %{_texmfdistdir}/tex/latex/fgruler
+%dir %{_texmfdistdir}/tex/latex/fhj-script
 %dir %{_texmfdistdir}/tex/latex/fifo-stack
 %dir %{_texmfdistdir}/tex/latex/figbib
 %dir %{_texmfdistdir}/tex/latex/figchild
 %dir %{_texmfdistdir}/tex/latex/figput
 %dir %{_texmfdistdir}/tex/latex/figsize
+%dir %{_texmfdistdir}/tex/latex/figureversions
 %dir %{_texmfdistdir}/tex/latex/filecontents
 %dir %{_texmfdistdir}/tex/latex/filecontentsdef
 %dir %{_texmfdistdir}/tex/latex/filedate
@@ -35975,6 +37150,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/fixme/layouts/target
 %dir %{_texmfdistdir}/tex/latex/fixme/themes
 %dir %{_texmfdistdir}/tex/latex/fixmetodonotes
+%dir %{_texmfdistdir}/tex/latex/fixtounicode
 %dir %{_texmfdistdir}/tex/latex/fjodor
 %dir %{_texmfdistdir}/tex/latex/flabels
 %dir %{_texmfdistdir}/tex/latex/flacards
@@ -36000,12 +37176,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/fnpct
 %dir %{_texmfdistdir}/tex/latex/fnspe
 %dir %{_texmfdistdir}/tex/latex/fnumprint
+%dir %{_texmfdistdir}/tex/latex/fodot
 %dir %{_texmfdistdir}/tex/latex/foekfont
 %dir %{_texmfdistdir}/tex/latex/foilhtml
 %dir %{_texmfdistdir}/tex/latex/foliono
 %dir %{_texmfdistdir}/tex/latex/fonetika
 %dir %{_texmfdistdir}/tex/latex/fontawesome
 %dir %{_texmfdistdir}/tex/latex/fontawesome5
+%dir %{_texmfdistdir}/tex/latex/fontawesome6
+%dir %{_texmfdistdir}/tex/latex/fontawesome7
+%dir %{_texmfdistdir}/tex/latex/fontawesomescaled
 %dir %{_texmfdistdir}/tex/latex/fontaxes
 %dir %{_texmfdistdir}/tex/latex/fontinst
 %dir %{_texmfdistdir}/tex/latex/fontmfizz
@@ -36026,6 +37206,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/forarray
 %dir %{_texmfdistdir}/tex/latex/foreign
 %dir %{_texmfdistdir}/tex/latex/forest
+%dir %{_texmfdistdir}/tex/latex/forest-ext
 %dir %{_texmfdistdir}/tex/latex/forloop
 %dir %{_texmfdistdir}/tex/latex/formal-grammar
 %dir %{_texmfdistdir}/tex/latex/forms16be
@@ -36036,14 +37217,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/fouriernc
 %dir %{_texmfdistdir}/tex/latex/fp
 %dir %{_texmfdistdir}/tex/latex/fragments
+%dir %{_texmfdistdir}/tex/latex/fragoli
 %dir %{_texmfdistdir}/tex/latex/framed
 %dir %{_texmfdistdir}/tex/latex/framedsyntax
 %dir %{_texmfdistdir}/tex/latex/francais-bst
 %dir %{_texmfdistdir}/tex/latex/frankenstein
 %dir %{_texmfdistdir}/tex/latex/frcursive
 %dir %{_texmfdistdir}/tex/latex/freealign
+%dir %{_texmfdistdir}/tex/latex/freemath
 %dir %{_texmfdistdir}/tex/latex/frege
 %dir %{_texmfdistdir}/tex/latex/frenchmath
+%dir %{_texmfdistdir}/tex/latex/fretplot
 %dir %{_texmfdistdir}/tex/latex/frimurer
 %dir %{_texmfdistdir}/tex/latex/frletter
 %dir %{_texmfdistdir}/tex/latex/frontespizio
@@ -36060,6 +37244,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/fundus-calligra
 %dir %{_texmfdistdir}/tex/latex/fundus-cyr
 %dir %{_texmfdistdir}/tex/latex/fundus-sueterlin
+%dir %{_texmfdistdir}/tex/latex/futharksymb
 %dir %{_texmfdistdir}/tex/latex/fvextra
 %dir %{_texmfdistdir}/tex/latex/fwlw
 %dir %{_texmfdistdir}/tex/latex/g-brief
@@ -36144,6 +37329,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/glossaries-serbian
 %dir %{_texmfdistdir}/tex/latex/glossaries-slovene
 %dir %{_texmfdistdir}/tex/latex/glossaries-spanish
+%dir %{_texmfdistdir}/tex/latex/glossaries-ukrainian
 %dir %{_texmfdistdir}/tex/latex/glossaries/base
 %dir %{_texmfdistdir}/tex/latex/glossaries/expl
 %dir %{_texmfdistdir}/tex/latex/glossaries/rollback
@@ -36240,6 +37426,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/hausarbeit-jura
 %dir %{_texmfdistdir}/tex/latex/havannah
 %dir %{_texmfdistdir}/tex/latex/hc
+%dir %{_texmfdistdir}/tex/latex/hduthesis
 %dir %{_texmfdistdir}/tex/latex/he-she
 %dir %{_texmfdistdir}/tex/latex/hebdomon
 %dir %{_texmfdistdir}/tex/latex/hebrew-fonts
@@ -36274,6 +37461,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/hfutexam
 %dir %{_texmfdistdir}/tex/latex/hhtensor
 %dir %{_texmfdistdir}/tex/latex/hideanswer
+%dir %{_texmfdistdir}/tex/latex/hideproofs
 %dir %{_texmfdistdir}/tex/latex/highlightlatex
 %dir %{_texmfdistdir}/tex/latex/highlightx
 %dir %{_texmfdistdir}/tex/latex/hindmadurai
@@ -36298,6 +37486,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/huaz
 %dir %{_texmfdistdir}/tex/latex/hulipsum
 %dir %{_texmfdistdir}/tex/latex/hustthesis
+%dir %{_texmfdistdir}/tex/latex/hustvisual
 %dir %{_texmfdistdir}/tex/latex/hvarabic
 %dir %{_texmfdistdir}/tex/latex/hvextern
 %dir %{_texmfdistdir}/tex/latex/hvfloat
@@ -36317,6 +37506,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/hyperref
 %dir %{_texmfdistdir}/tex/latex/hyperxmp
 %dir %{_texmfdistdir}/tex/latex/hyphenat
+%dir %{_texmfdistdir}/tex/latex/iacrj
 %dir %{_texmfdistdir}/tex/latex/iaria
 %dir %{_texmfdistdir}/tex/latex/iaria-lite
 %dir %{_texmfdistdir}/tex/latex/ibarra
@@ -36373,6 +37563,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/interfaces
 %dir %{_texmfdistdir}/tex/latex/interlinear
 %dir %{_texmfdistdir}/tex/latex/interval
+%dir %{_texmfdistdir}/tex/latex/intexgral
 %dir %{_texmfdistdir}/tex/latex/intopdf
 %dir %{_texmfdistdir}/tex/latex/inversepath
 %dir %{_texmfdistdir}/tex/latex/invoice
@@ -36392,8 +37583,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/isonums
 %dir %{_texmfdistdir}/tex/latex/isopt
 %dir %{_texmfdistdir}/tex/latex/isorot
-%dir %{_texmfdistdir}/tex/latex/isosafety
-%dir %{_texmfdistdir}/tex/latex/isosafety/isosafety-pdfs
+%dir %{_texmfdistdir}/tex/latex/isosigns
 %dir %{_texmfdistdir}/tex/latex/isotope
 %dir %{_texmfdistdir}/tex/latex/isphysicalmath
 %dir %{_texmfdistdir}/tex/latex/issuulinks
@@ -36425,6 +37615,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/jpsj
 %dir %{_texmfdistdir}/tex/latex/jslectureplanner
 %dir %{_texmfdistdir}/tex/latex/jsonparse
+%dir %{_texmfdistdir}/tex/latex/juliamono
 %dir %{_texmfdistdir}/tex/latex/jumplines
 %dir %{_texmfdistdir}/tex/latex/junicode
 %dir %{_texmfdistdir}/tex/latex/jupynotex
@@ -36435,6 +37626,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/jurarsp
 %dir %{_texmfdistdir}/tex/latex/jvlisting
 %dir %{_texmfdistdir}/tex/latex/jwjournal
+%dir %{_texmfdistdir}/tex/latex/jyu-chem-thesis
 %dir %{_texmfdistdir}/tex/latex/kalendarium
 %dir %{_texmfdistdir}/tex/latex/kanbun
 %dir %{_texmfdistdir}/tex/latex/kantlipsum
@@ -36444,6 +37636,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/kblocks
 %dir %{_texmfdistdir}/tex/latex/kdgdocs
 %dir %{_texmfdistdir}/tex/latex/kdpcover
+%dir %{_texmfdistdir}/tex/latex/keisennote
 %dir %{_texmfdistdir}/tex/latex/kerkis
 %dir %{_texmfdistdir}/tex/latex/kerntest
 %dir %{_texmfdistdir}/tex/latex/ketcindy
@@ -36460,6 +37653,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/kfupm-math-exam
 %dir %{_texmfdistdir}/tex/latex/kinematikz
 %dir %{_texmfdistdir}/tex/latex/kix
+%dir %{_texmfdistdir}/tex/latex/kkran
+%dir %{_texmfdistdir}/tex/latex/kksymbols
 %dir %{_texmfdistdir}/tex/latex/kluwer
 %dir %{_texmfdistdir}/tex/latex/knitting
 %dir %{_texmfdistdir}/tex/latex/knittingpattern
@@ -36480,6 +37675,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/kpfonts
 %dir %{_texmfdistdir}/tex/latex/kpfonts-otf
 %dir %{_texmfdistdir}/tex/latex/ksp-thesis
+%dir %{_texmfdistdir}/tex/latex/ktbox
 %dir %{_texmfdistdir}/tex/latex/ktv-texdata
 %dir %{_texmfdistdir}/tex/latex/ku-template
 %dir %{_texmfdistdir}/tex/latex/kurier
@@ -36489,11 +37685,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/l3backend
 %dir %{_texmfdistdir}/tex/latex/l3build
 %dir %{_texmfdistdir}/tex/latex/l3experimental
-%dir %{_texmfdistdir}/tex/latex/l3experimental/l3benchmark
 %dir %{_texmfdistdir}/tex/latex/l3experimental/l3draw
-%dir %{_texmfdistdir}/tex/latex/l3experimental/l3graphics
-%dir %{_texmfdistdir}/tex/latex/l3experimental/l3opacity
-%dir %{_texmfdistdir}/tex/latex/l3experimental/l3str
 %dir %{_texmfdistdir}/tex/latex/l3experimental/xcoffins
 %dir %{_texmfdistdir}/tex/latex/l3experimental/xgalley
 %dir %{_texmfdistdir}/tex/latex/l3kernel
@@ -36518,6 +37710,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/latex-context-ppchtex
 %dir %{_texmfdistdir}/tex/latex/latex-lab
 %dir %{_texmfdistdir}/tex/latex/latex-make
+%dir %{_texmfdistdir}/tex/latex/latex-tagging-status
 %dir %{_texmfdistdir}/tex/latex/latex-uni8
 %dir %{_texmfdistdir}/tex/latex/latex2man
 %dir %{_texmfdistdir}/tex/latex/latex2pydata
@@ -36548,6 +37741,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/leftindex
 %dir %{_texmfdistdir}/tex/latex/leipzig
 %dir %{_texmfdistdir}/tex/latex/lengthconvert
+%dir %{_texmfdistdir}/tex/latex/leporello
 %dir %{_texmfdistdir}/tex/latex/lete-sans-math
 %dir %{_texmfdistdir}/tex/latex/letltxmacro
 %dir %{_texmfdistdir}/tex/latex/letterswitharrows
@@ -36594,6 +37788,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/ling-macros
 %dir %{_texmfdistdir}/tex/latex/linguex
 %dir %{_texmfdistdir}/tex/latex/linguisticspro
+%dir %{_texmfdistdir}/tex/latex/linguistix
+%dir %{_texmfdistdir}/tex/latex/linkedthm
 %dir %{_texmfdistdir}/tex/latex/linop
 %dir %{_texmfdistdir}/tex/latex/lion-msc
 %dir %{_texmfdistdir}/tex/latex/lipsum
@@ -36610,6 +37806,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/litetable
 %dir %{_texmfdistdir}/tex/latex/lithuanian
 %dir %{_texmfdistdir}/tex/latex/liturg
+%dir %{_texmfdistdir}/tex/latex/liturgy-cw
 %dir %{_texmfdistdir}/tex/latex/lkproof
 %dir %{_texmfdistdir}/tex/latex/llncs
 %dir %{_texmfdistdir}/tex/latex/llncsconf
@@ -36622,6 +37819,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/logical-markup-utils
 %dir %{_texmfdistdir}/tex/latex/logicproof
 %dir %{_texmfdistdir}/tex/latex/logicpuzzle
+%dir %{_texmfdistdir}/tex/latex/logictools
 %dir %{_texmfdistdir}/tex/latex/logix
 %dir %{_texmfdistdir}/tex/latex/logoetalab
 %dir %{_texmfdistdir}/tex/latex/logpap
@@ -36630,6 +37828,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/longfbox
 %dir %{_texmfdistdir}/tex/latex/longfigure
 %dir %{_texmfdistdir}/tex/latex/longnamefilelist
+%dir %{_texmfdistdir}/tex/latex/longtwocolumn
 %dir %{_texmfdistdir}/tex/latex/loops
 %dir %{_texmfdistdir}/tex/latex/lpic
 %dir %{_texmfdistdir}/tex/latex/lplfitch
@@ -36645,18 +37844,24 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/ltablex
 %dir %{_texmfdistdir}/tex/latex/ltabptch
 %dir %{_texmfdistdir}/tex/latex/ltb2bib
+%dir %{_texmfdistdir}/tex/latex/ltx-talk
 %dir %{_texmfdistdir}/tex/latex/ltxdockit
 %dir %{_texmfdistdir}/tex/latex/ltxguidex
 %dir %{_texmfdistdir}/tex/latex/ltxkeys
 %dir %{_texmfdistdir}/tex/latex/ltxmisc
 %dir %{_texmfdistdir}/tex/latex/ltxnew
 %dir %{_texmfdistdir}/tex/latex/ltxtools
+%dir %{_texmfdistdir}/tex/latex/lua-tikz3dtools
 %dir %{_texmfdistdir}/tex/latex/luacolor
 %dir %{_texmfdistdir}/tex/latex/luatikz
+%dir %{_texmfdistdir}/tex/latex/lucide-icons
+%dir %{_texmfdistdir}/tex/latex/luciole
 %dir %{_texmfdistdir}/tex/latex/luwiantype
 %dir %{_texmfdistdir}/tex/latex/lwarp
 %dir %{_texmfdistdir}/tex/latex/lxfonts
+%dir %{_texmfdistdir}/tex/latex/lxgw-fonts
 %dir %{_texmfdistdir}/tex/latex/ly1
+%dir %{_texmfdistdir}/tex/latex/lydtype
 %dir %{_texmfdistdir}/tex/latex/m-tx
 %dir %{_texmfdistdir}/tex/latex/macrolist
 %dir %{_texmfdistdir}/tex/latex/macros2e
@@ -36669,6 +37874,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/mahjong/tiles
 %dir %{_texmfdistdir}/tex/latex/mailing
 %dir %{_texmfdistdir}/tex/latex/mailmerge
+%dir %{_texmfdistdir}/tex/latex/maine-thesis
 %dir %{_texmfdistdir}/tex/latex/makebarcode
 %dir %{_texmfdistdir}/tex/latex/makebase
 %dir %{_texmfdistdir}/tex/latex/makebox
@@ -36676,6 +37882,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/makecmds
 %dir %{_texmfdistdir}/tex/latex/makedtx
 %dir %{_texmfdistdir}/tex/latex/makeglos
+%dir %{_texmfdistdir}/tex/latex/makegobbler
 %dir %{_texmfdistdir}/tex/latex/makelabels
 %dir %{_texmfdistdir}/tex/latex/makeplot
 %dir %{_texmfdistdir}/tex/latex/maker
@@ -36698,6 +37905,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/matc3
 %dir %{_texmfdistdir}/tex/latex/matc3mem
 %dir %{_texmfdistdir}/tex/latex/math-operator
+%dir %{_texmfdistdir}/tex/latex/mathador
 %dir %{_texmfdistdir}/tex/latex/mathalpha
 %dir %{_texmfdistdir}/tex/latex/mathastext
 %dir %{_texmfdistdir}/tex/latex/mathcommand
@@ -36746,6 +37954,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/memexsupp
 %dir %{_texmfdistdir}/tex/latex/memoir
 %dir %{_texmfdistdir}/tex/latex/memoize
+%dir %{_texmfdistdir}/tex/latex/memoize-ext
 %dir %{_texmfdistdir}/tex/latex/memory
 %dir %{_texmfdistdir}/tex/latex/memorygraphs
 %dir %{_texmfdistdir}/tex/latex/mensa-tex
@@ -36756,6 +37965,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/mercatormap
 %dir %{_texmfdistdir}/tex/latex/merriweather
 %dir %{_texmfdistdir}/tex/latex/messagepassing
+%dir %{_texmfdistdir}/tex/latex/metacapture
 %dir %{_texmfdistdir}/tex/latex/metalogo
 %dir %{_texmfdistdir}/tex/latex/metalogox
 %dir %{_texmfdistdir}/tex/latex/metanorma
@@ -36778,6 +37988,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/miama
 %dir %{_texmfdistdir}/tex/latex/microtype
 %dir %{_texmfdistdir}/tex/latex/midpage
+%dir %{_texmfdistdir}/tex/latex/milestonetimeline
 %dir %{_texmfdistdir}/tex/latex/miller
 %dir %{_texmfdistdir}/tex/latex/milog
 %dir %{_texmfdistdir}/tex/latex/milsymb
@@ -36790,6 +38001,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/minitoc
 %dir %{_texmfdistdir}/tex/latex/minorrevision
 %dir %{_texmfdistdir}/tex/latex/minted
+%dir %{_texmfdistdir}/tex/latex/minted-code
 %dir %{_texmfdistdir}/tex/latex/mintspirit
 %dir %{_texmfdistdir}/tex/latex/minutes
 %dir %{_texmfdistdir}/tex/latex/mismath
@@ -36808,13 +38020,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/mnsymbol
 %dir %{_texmfdistdir}/tex/latex/modeles-factures-belges-assocs
 %dir %{_texmfdistdir}/tex/latex/moderncv
+%dir %{_texmfdistdir}/tex/latex/modernnewspaper
 %dir %{_texmfdistdir}/tex/latex/modernposter
+%dir %{_texmfdistdir}/tex/latex/modernruler
 %dir %{_texmfdistdir}/tex/latex/moderntimeline
 %dir %{_texmfdistdir}/tex/latex/modiagram
 %dir %{_texmfdistdir}/tex/latex/modref
 %dir %{_texmfdistdir}/tex/latex/modroman
 %dir %{_texmfdistdir}/tex/latex/modular
 %dir %{_texmfdistdir}/tex/latex/moloch
+%dir %{_texmfdistdir}/tex/latex/monaspace-otf
 %dir %{_texmfdistdir}/tex/latex/mongolian-babel
 %dir %{_texmfdistdir}/tex/latex/monofill
 %dir %{_texmfdistdir}/tex/latex/montex
@@ -36842,6 +38057,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/mugsthesis
 %dir %{_texmfdistdir}/tex/latex/muling
 %dir %{_texmfdistdir}/tex/latex/multenum
+%dir %{_texmfdistdir}/tex/latex/multi-sudoku
 %dir %{_texmfdistdir}/tex/latex/multiaudience
 %dir %{_texmfdistdir}/tex/latex/multibbl
 %dir %{_texmfdistdir}/tex/latex/multibib
@@ -36853,6 +38069,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/multienv
 %dir %{_texmfdistdir}/tex/latex/multifootnote
 %dir %{_texmfdistdir}/tex/latex/multilang
+%dir %{_texmfdistdir}/tex/latex/multinotes
 %dir %{_texmfdistdir}/tex/latex/multiobjective
 %dir %{_texmfdistdir}/tex/latex/multiple-choice
 %dir %{_texmfdistdir}/tex/latex/multirow
@@ -36872,6 +38089,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/mycv
 %dir %{_texmfdistdir}/tex/latex/mylatex
 %dir %{_texmfdistdir}/tex/latex/mylatexformat
+%dir %{_texmfdistdir}/tex/latex/mynsfc
 %dir %{_texmfdistdir}/tex/latex/nag
 %dir %{_texmfdistdir}/tex/latex/naive-ebnf
 %dir %{_texmfdistdir}/tex/latex/nameauth
@@ -36952,6 +38170,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/noto
 %dir %{_texmfdistdir}/tex/latex/notoccite
 %dir %{_texmfdistdir}/tex/latex/notomath
+%dir %{_texmfdistdir}/tex/latex/novabeamer-theme
 %dir %{_texmfdistdir}/tex/latex/nowidow
 %dir %{_texmfdistdir}/tex/latex/nox
 %dir %{_texmfdistdir}/tex/latex/nrc
@@ -36974,7 +38193,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/nunito
 %dir %{_texmfdistdir}/tex/latex/nwafuthesis
 %dir %{_texmfdistdir}/tex/latex/nwejm
-%dir %{_texmfdistdir}/tex/latex/nwejm/images
+%dir %{_texmfdistdir}/tex/latex/nwejm/logos
 %dir %{_texmfdistdir}/tex/latex/nxuthesis
 %dir %{_texmfdistdir}/tex/latex/oberdiek
 %dir %{_texmfdistdir}/tex/latex/objectz
@@ -36991,14 +38210,18 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/oldstyle
 %dir %{_texmfdistdir}/tex/latex/omgtudoc-asoiu
 %dir %{_texmfdistdir}/tex/latex/onedown
+%dir %{_texmfdistdir}/tex/latex/onepgnote
 %dir %{_texmfdistdir}/tex/latex/onlyamsmath
 %dir %{_texmfdistdir}/tex/latex/onrannual
 %dir %{_texmfdistdir}/tex/latex/opcit
+%dir %{_texmfdistdir}/tex/latex/open-everyday-symbols
 %dir %{_texmfdistdir}/tex/latex/opencolor
+%dir %{_texmfdistdir}/tex/latex/openmoji
 %dir %{_texmfdistdir}/tex/latex/opensans
 %dir %{_texmfdistdir}/tex/latex/oplotsymbl
 %dir %{_texmfdistdir}/tex/latex/opteng
 %dir %{_texmfdistdir}/tex/latex/optidef
+%dir %{_texmfdistdir}/tex/latex/optikz
 %dir %{_texmfdistdir}/tex/latex/optional
 %dir %{_texmfdistdir}/tex/latex/options
 %dir %{_texmfdistdir}/tex/latex/orcidlink
@@ -37011,6 +38234,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/othello
 %dir %{_texmfdistdir}/tex/latex/othelloboard
 %dir %{_texmfdistdir}/tex/latex/otibet
+%dir %{_texmfdistdir}/tex/latex/ou-tma
 %dir %{_texmfdistdir}/tex/latex/oubraces
 %dir %{_texmfdistdir}/tex/latex/oup-authoring-template
 %dir %{_texmfdistdir}/tex/latex/outilsgeomtikz
@@ -37037,6 +38261,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/pageslts
 %dir %{_texmfdistdir}/tex/latex/palatino
 %dir %{_texmfdistdir}/tex/latex/palette
+%dir %{_texmfdistdir}/tex/latex/panda
 %dir %{_texmfdistdir}/tex/latex/pangram
 %dir %{_texmfdistdir}/tex/latex/panneauxroute
 %dir %{_texmfdistdir}/tex/latex/panneauxroute/Danger
@@ -37055,6 +38280,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/parades
 %dir %{_texmfdistdir}/tex/latex/paralist
 %dir %{_texmfdistdir}/tex/latex/parallel
+%dir %{_texmfdistdir}/tex/latex/paramcalc
 %dir %{_texmfdistdir}/tex/latex/paratype
 %dir %{_texmfdistdir}/tex/latex/paresse
 %dir %{_texmfdistdir}/tex/latex/parnotes
@@ -37068,6 +38294,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/pascaltriangle
 %dir %{_texmfdistdir}/tex/latex/passopt
 %dir %{_texmfdistdir}/tex/latex/patchcmd
+%dir %{_texmfdistdir}/tex/latex/pats-resume
 %dir %{_texmfdistdir}/tex/latex/pauldoc
 %dir %{_texmfdistdir}/tex/latex/pawpict
 %dir %{_texmfdistdir}/tex/latex/pax
@@ -37103,6 +38330,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/pdfxup
 %dir %{_texmfdistdir}/tex/latex/pecha
 %dir %{_texmfdistdir}/tex/latex/pegmatch
+%dir %{_texmfdistdir}/tex/latex/pennstander-otf
 %dir %{_texmfdistdir}/tex/latex/perfectcut
 %dir %{_texmfdistdir}/tex/latex/perltex
 %dir %{_texmfdistdir}/tex/latex/permute
@@ -37111,6 +38339,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/pfdicons
 %dir %{_texmfdistdir}/tex/latex/pgf
 %dir %{_texmfdistdir}/tex/latex/pgf-blur
+%dir %{_texmfdistdir}/tex/latex/pgf-go
 %dir %{_texmfdistdir}/tex/latex/pgf-interference
 %dir %{_texmfdistdir}/tex/latex/pgf-periodictable
 %dir %{_texmfdistdir}/tex/latex/pgf-periodictable/flags
@@ -37154,6 +38383,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/phfthm
 %dir %{_texmfdistdir}/tex/latex/philex
 %dir %{_texmfdistdir}/tex/latex/philosophersimprint
+%dir %{_texmfdistdir}/tex/latex/phimisci
 %dir %{_texmfdistdir}/tex/latex/phonenumbers
 %dir %{_texmfdistdir}/tex/latex/phonetic
 %dir %{_texmfdistdir}/tex/latex/phonrule
@@ -37163,6 +38393,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/physics
 %dir %{_texmfdistdir}/tex/latex/physics-patch
 %dir %{_texmfdistdir}/tex/latex/physics2
+%dir %{_texmfdistdir}/tex/latex/physics3
 %dir %{_texmfdistdir}/tex/latex/physunits
 %dir %{_texmfdistdir}/tex/latex/piano
 %dir %{_texmfdistdir}/tex/latex/picinpar
@@ -37177,6 +38408,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/pittetd
 %dir %{_texmfdistdir}/tex/latex/pixelart
 %dir %{_texmfdistdir}/tex/latex/pixelarttikz
+%dir %{_texmfdistdir}/tex/latex/pkginfograb
 %dir %{_texmfdistdir}/tex/latex/pkgloader
 %dir %{_texmfdistdir}/tex/latex/pkuthss
 %dir %{_texmfdistdir}/tex/latex/placeins
@@ -37306,11 +38538,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/pst-fit
 %dir %{_texmfdistdir}/tex/latex/pst-flags
 %dir %{_texmfdistdir}/tex/latex/pst-flags/Flags
+%dir %{_texmfdistdir}/tex/latex/pst-fourbarlinkage
 %dir %{_texmfdistdir}/tex/latex/pst-fr3d
 %dir %{_texmfdistdir}/tex/latex/pst-fractal
 %dir %{_texmfdistdir}/tex/latex/pst-fun
 %dir %{_texmfdistdir}/tex/latex/pst-func
 %dir %{_texmfdistdir}/tex/latex/pst-gantt
+%dir %{_texmfdistdir}/tex/latex/pst-gears
 %dir %{_texmfdistdir}/tex/latex/pst-geo
 %dir %{_texmfdistdir}/tex/latex/pst-geometrictools
 %dir %{_texmfdistdir}/tex/latex/pst-gr3d
@@ -37319,6 +38553,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/pst-infixplot
 %dir %{_texmfdistdir}/tex/latex/pst-intersect
 %dir %{_texmfdistdir}/tex/latex/pst-jtree
+%dir %{_texmfdistdir}/tex/latex/pst-kepler
 %dir %{_texmfdistdir}/tex/latex/pst-knot
 %dir %{_texmfdistdir}/tex/latex/pst-labo
 %dir %{_texmfdistdir}/tex/latex/pst-layout
@@ -37327,10 +38562,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/pst-lsystem
 %dir %{_texmfdistdir}/tex/latex/pst-magneticfield
 %dir %{_texmfdistdir}/tex/latex/pst-marble
+%dir %{_texmfdistdir}/tex/latex/pst-massspring
 %dir %{_texmfdistdir}/tex/latex/pst-math
 %dir %{_texmfdistdir}/tex/latex/pst-mirror
 %dir %{_texmfdistdir}/tex/latex/pst-moire
 %dir %{_texmfdistdir}/tex/latex/pst-node
+%dir %{_texmfdistdir}/tex/latex/pst-nutation
 %dir %{_texmfdistdir}/tex/latex/pst-ob3d
 %dir %{_texmfdistdir}/tex/latex/pst-ode
 %dir %{_texmfdistdir}/tex/latex/pst-optexp
@@ -37356,6 +38593,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/pst-solides3d
 %dir %{_texmfdistdir}/tex/latex/pst-soroban
 %dir %{_texmfdistdir}/tex/latex/pst-spectra
+%dir %{_texmfdistdir}/tex/latex/pst-sphericaltrochoid
 %dir %{_texmfdistdir}/tex/latex/pst-spinner
 %dir %{_texmfdistdir}/tex/latex/pst-stru
 %dir %{_texmfdistdir}/tex/latex/pst-text
@@ -37399,12 +38637,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/qobitree
 %dir %{_texmfdistdir}/tex/latex/qrbill
 %dir %{_texmfdistdir}/tex/latex/qrcode
+%dir %{_texmfdistdir}/tex/latex/qrcodetikz
 %dir %{_texmfdistdir}/tex/latex/qsharp
 %dir %{_texmfdistdir}/tex/latex/qstest
 %dir %{_texmfdistdir}/tex/latex/qsymbols
 %dir %{_texmfdistdir}/tex/latex/qtree
 %dir %{_texmfdistdir}/tex/latex/quantikz
+%dir %{_texmfdistdir}/tex/latex/quantum-chemistry-bonn
 %dir %{_texmfdistdir}/tex/latex/quantumarticle
+%dir %{_texmfdistdir}/tex/latex/quantumcubemodel
 %dir %{_texmfdistdir}/tex/latex/quattrocento
 %dir %{_texmfdistdir}/tex/latex/quickreaction
 %dir %{_texmfdistdir}/tex/latex/quicktype
@@ -37417,9 +38658,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/quran
 %dir %{_texmfdistdir}/tex/latex/quran-bn
 %dir %{_texmfdistdir}/tex/latex/quran-ur
+%dir %{_texmfdistdir}/tex/latex/qworld
 %dir %{_texmfdistdir}/tex/latex/qyxf-book
 %dir %{_texmfdistdir}/tex/latex/r_und_s
 %dir %{_texmfdistdir}/tex/latex/ragged2e
+%dir %{_texmfdistdir}/tex/latex/rainbowbrackets
 %dir %{_texmfdistdir}/tex/latex/raleway
 %dir %{_texmfdistdir}/tex/latex/ran_toks
 %dir %{_texmfdistdir}/tex/latex/randbild
@@ -37473,6 +38716,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/resphilosophica
 %dir %{_texmfdistdir}/tex/latex/responsive
 %dir %{_texmfdistdir}/tex/latex/rest-api
+%dir %{_texmfdistdir}/tex/latex/retosmatematicos
 %dir %{_texmfdistdir}/tex/latex/returntogrid
 %dir %{_texmfdistdir}/tex/latex/revquantum
 %dir %{_texmfdistdir}/tex/latex/revtex
@@ -37518,6 +38762,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/rutitlepage
 %dir %{_texmfdistdir}/tex/latex/rviewport
 %dir %{_texmfdistdir}/tex/latex/rvwrite
+%dir %{_texmfdistdir}/tex/latex/rwth-ci
 %dir %{_texmfdistdir}/tex/latex/ryersonsgsthesis
 %dir %{_texmfdistdir}/tex/latex/ryethesis
 %dir %{_texmfdistdir}/tex/latex/sa-tikz
@@ -37577,6 +38822,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/se2thesis
 %dir %{_texmfdistdir}/tex/latex/secdot
 %dir %{_texmfdistdir}/tex/latex/secnum
+%dir %{_texmfdistdir}/tex/latex/secretx
 %dir %{_texmfdistdir}/tex/latex/section
 %dir %{_texmfdistdir}/tex/latex/sectionbox
 %dir %{_texmfdistdir}/tex/latex/sectionbreak
@@ -37594,6 +38840,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/semtex
 %dir %{_texmfdistdir}/tex/latex/sepfootnotes
 %dir %{_texmfdistdir}/tex/latex/sepnum
+%dir %{_texmfdistdir}/tex/latex/seqcalc
 %dir %{_texmfdistdir}/tex/latex/seqsplit
 %dir %{_texmfdistdir}/tex/latex/serbian-apostrophe
 %dir %{_texmfdistdir}/tex/latex/serbian-date-lat
@@ -37619,6 +38866,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/shipunov
 %dir %{_texmfdistdir}/tex/latex/shortmathj
 %dir %{_texmfdistdir}/tex/latex/shorttoc
+%dir %{_texmfdistdir}/tex/latex/show-pdf-tags
 %dir %{_texmfdistdir}/tex/latex/show2e
 %dir %{_texmfdistdir}/tex/latex/showcharinbox
 %dir %{_texmfdistdir}/tex/latex/showdim
@@ -37653,8 +38901,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/sjtutex
 %dir %{_texmfdistdir}/tex/latex/sjtutex/font
 %dir %{_texmfdistdir}/tex/latex/sjtutex/lang
+%dir %{_texmfdistdir}/tex/latex/sjtutex/preset
 %dir %{_texmfdistdir}/tex/latex/sjtutex/scheme
-%dir %{_texmfdistdir}/tex/latex/sjtutex/thesis
 %dir %{_texmfdistdir}/tex/latex/sjtutex/vi
 %dir %{_texmfdistdir}/tex/latex/skak
 %dir %{_texmfdistdir}/tex/latex/skb
@@ -37667,6 +38915,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/skrapport
 %dir %{_texmfdistdir}/tex/latex/skull
 %dir %{_texmfdistdir}/tex/latex/slantsc
+%dir %{_texmfdistdir}/tex/latex/slixte
 %dir %{_texmfdistdir}/tex/latex/smalltableof
 %dir %{_texmfdistdir}/tex/latex/smart-eqn
 %dir %{_texmfdistdir}/tex/latex/smartdiagram
@@ -37696,6 +38945,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/spelatex
 %dir %{_texmfdistdir}/tex/latex/sphdthesis
 %dir %{_texmfdistdir}/tex/latex/spie
+%dir %{_texmfdistdir}/tex/latex/splentinex
 %dir %{_texmfdistdir}/tex/latex/splitbib
 %dir %{_texmfdistdir}/tex/latex/splitindex
 %dir %{_texmfdistdir}/tex/latex/spot
@@ -37786,6 +39036,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/svrsymbols
 %dir %{_texmfdistdir}/tex/latex/swfigure
 %dir %{_texmfdistdir}/tex/latex/swimgraf
+%dir %{_texmfdistdir}/tex/latex/switch
 %dir %{_texmfdistdir}/tex/latex/swungdash
 %dir %{_texmfdistdir}/tex/latex/syllogism
 %dir %{_texmfdistdir}/tex/latex/symbats3
@@ -37796,6 +39047,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/synthslant
 %dir %{_texmfdistdir}/tex/latex/syntrace
 %dir %{_texmfdistdir}/tex/latex/synttree
+%dir %{_texmfdistdir}/tex/latex/sysuthesis
 %dir %{_texmfdistdir}/tex/latex/t-angles
 %dir %{_texmfdistdir}/tex/latex/t2
 %dir %{_texmfdistdir}/tex/latex/tabbing
@@ -37804,6 +39056,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/tableaux
 %dir %{_texmfdistdir}/tex/latex/tablefootnote
 %dir %{_texmfdistdir}/tex/latex/tableof
+%dir %{_texmfdistdir}/tex/latex/tablericons
 %dir %{_texmfdistdir}/tex/latex/tablists
 %dir %{_texmfdistdir}/tex/latex/tablor
 %dir %{_texmfdistdir}/tex/latex/tabls
@@ -37812,6 +39065,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/tabstackengine
 %dir %{_texmfdistdir}/tex/latex/tabto-ltx
 %dir %{_texmfdistdir}/tex/latex/tabu
+%dir %{_texmfdistdir}/tex/latex/tabular2
 %dir %{_texmfdistdir}/tex/latex/tabularborder
 %dir %{_texmfdistdir}/tex/latex/tabularcalc
 %dir %{_texmfdistdir}/tex/latex/tabularew
@@ -37841,9 +39095,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/tengwarscript
 %dir %{_texmfdistdir}/tex/latex/tensind
 %dir %{_texmfdistdir}/tex/latex/tensor
+%dir %{_texmfdistdir}/tex/latex/tensormatrix
 %dir %{_texmfdistdir}/tex/latex/termcal
 %dir %{_texmfdistdir}/tex/latex/termcal-de
 %dir %{_texmfdistdir}/tex/latex/termes-otf
+%dir %{_texmfdistdir}/tex/latex/terminalcode
 %dir %{_texmfdistdir}/tex/latex/termlist
 %dir %{_texmfdistdir}/tex/latex/termsim
 %dir %{_texmfdistdir}/tex/latex/testhyphens
@@ -37903,6 +39159,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/thuthesis
 %dir %{_texmfdistdir}/tex/latex/ticket
 %dir %{_texmfdistdir}/tex/latex/ticollege
+%dir %{_texmfdistdir}/tex/latex/tictactoe
 %dir %{_texmfdistdir}/tex/latex/tidyres
 %dir %{_texmfdistdir}/tex/latex/tiet-question-paper
 %dir %{_texmfdistdir}/tex/latex/tikz-3dplot
@@ -37912,6 +39169,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/tikz-bbox
 %dir %{_texmfdistdir}/tex/latex/tikz-bpmn
 %dir %{_texmfdistdir}/tex/latex/tikz-cd
+%dir %{_texmfdistdir}/tex/latex/tikz-cookingsymbols
 %dir %{_texmfdistdir}/tex/latex/tikz-decofonts
 %dir %{_texmfdistdir}/tex/latex/tikz-dependency
 %dir %{_texmfdistdir}/tex/latex/tikz-dimline
@@ -37938,6 +39196,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/tikz-qtree
 %dir %{_texmfdistdir}/tex/latex/tikz-relay
 %dir %{_texmfdistdir}/tex/latex/tikz-sfc
+%dir %{_texmfdistdir}/tex/latex/tikz-shields
 %dir %{_texmfdistdir}/tex/latex/tikz-swigs
 %dir %{_texmfdistdir}/tex/latex/tikz-timing
 %dir %{_texmfdistdir}/tex/latex/tikz-trackschematic
@@ -37945,12 +39204,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/tikz-truchet
 %dir %{_texmfdistdir}/tex/latex/tikz2d-fr
 %dir %{_texmfdistdir}/tex/latex/tikz3d-fr
+%dir %{_texmfdistdir}/tex/latex/tikzbrickfigurines
 %dir %{_texmfdistdir}/tex/latex/tikzbricks
 %dir %{_texmfdistdir}/tex/latex/tikzcalendarnotes
 %dir %{_texmfdistdir}/tex/latex/tikzcodeblocks
 %dir %{_texmfdistdir}/tex/latex/tikzdotncross
 %dir %{_texmfdistdir}/tex/latex/tikzducks
 %dir %{_texmfdistdir}/tex/latex/tikzfill
+%dir %{_texmfdistdir}/tex/latex/tikzfxgraph
 %dir %{_texmfdistdir}/tex/latex/tikzinclude
 %dir %{_texmfdistdir}/tex/latex/tikzlings
 %dir %{_texmfdistdir}/tex/latex/tikzmark
@@ -37994,6 +39255,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/tkz-fct
 %dir %{_texmfdistdir}/tex/latex/tkz-graph
 %dir %{_texmfdistdir}/tex/latex/tkz-grapheur
+%dir %{_texmfdistdir}/tex/latex/tkz-interval
 %dir %{_texmfdistdir}/tex/latex/tkz-orm
 %dir %{_texmfdistdir}/tex/latex/tkz-tab
 %dir %{_texmfdistdir}/tex/latex/tkzexample
@@ -38006,6 +39268,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/todo
 %dir %{_texmfdistdir}/tex/latex/todonotes
 %dir %{_texmfdistdir}/tex/latex/tokenizer
+%dir %{_texmfdistdir}/tex/latex/tokglobalstack
+%dir %{_texmfdistdir}/tex/latex/tokgroupmark
 %dir %{_texmfdistdir}/tex/latex/tonevalue
 %dir %{_texmfdistdir}/tex/latex/toolbox
 %dir %{_texmfdistdir}/tex/latex/tools
@@ -38019,6 +39283,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/tpslifonts
 %dir %{_texmfdistdir}/tex/latex/tqft
 %dir %{_texmfdistdir}/tex/latex/tracklang
+%dir %{_texmfdistdir}/tex/latex/traffic-light-protocol
 %dir %{_texmfdistdir}/tex/latex/trajan
 %dir %{_texmfdistdir}/tex/latex/tram
 %dir %{_texmfdistdir}/tex/latex/tramlines
@@ -38047,6 +39312,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/turnstile
 %dir %{_texmfdistdir}/tex/latex/turnthepage
 %dir %{_texmfdistdir}/tex/latex/tutodoc
+%dir %{_texmfdistdir}/tex/latex/tuzuk
 %dir %{_texmfdistdir}/tex/latex/twemojis
 %dir %{_texmfdistdir}/tex/latex/twoinone
 %dir %{_texmfdistdir}/tex/latex/twoup
@@ -38093,6 +39359,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/uiucredborder
 %dir %{_texmfdistdir}/tex/latex/uiucthesis
 %dir %{_texmfdistdir}/tex/latex/ukbill
+%dir %{_texmfdistdir}/tex/latex/ullrcorners
 %dir %{_texmfdistdir}/tex/latex/ulqda
 %dir %{_texmfdistdir}/tex/latex/ulthese
 %dir %{_texmfdistdir}/tex/latex/umbclegislation
@@ -38180,6 +39447,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/versions
 %dir %{_texmfdistdir}/tex/latex/versonotes
 %dir %{_texmfdistdir}/tex/latex/vertbars
+%dir %{_texmfdistdir}/tex/latex/vexillology
 %dir %{_texmfdistdir}/tex/latex/vgrid
 %dir %{_texmfdistdir}/tex/latex/vhistory
 %dir %{_texmfdistdir}/tex/latex/vmargin
@@ -38188,6 +39456,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/volumes
 %dir %{_texmfdistdir}/tex/latex/vpe
 %dir %{_texmfdistdir}/tex/latex/vruler
+%dir %{_texmfdistdir}/tex/latex/vscodeicons
 %dir %{_texmfdistdir}/tex/latex/vtable
 %dir %{_texmfdistdir}/tex/latex/vwcol
 %dir %{_texmfdistdir}/tex/latex/wallpaper
@@ -38240,6 +39509,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/xebaposter
 %dir %{_texmfdistdir}/tex/latex/xecyrmongolian
 %dir %{_texmfdistdir}/tex/latex/xellipsis
+%dir %{_texmfdistdir}/tex/latex/xepersian
 %dir %{_texmfdistdir}/tex/latex/xfakebold
 %dir %{_texmfdistdir}/tex/latex/xfor
 %dir %{_texmfdistdir}/tex/latex/xfrac
@@ -38254,12 +39524,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/xkeymask
 %dir %{_texmfdistdir}/tex/latex/xkeyval
 %dir %{_texmfdistdir}/tex/latex/xltabular
+%dir %{_texmfdistdir}/tex/latex/xmeaning
 %dir %{_texmfdistdir}/tex/latex/xmpincl
 %dir %{_texmfdistdir}/tex/latex/xmuthesis
 %dir %{_texmfdistdir}/tex/latex/xnewcommand
 %dir %{_texmfdistdir}/tex/latex/xoptarg
 %dir %{_texmfdistdir}/tex/latex/xpatch
 %dir %{_texmfdistdir}/tex/latex/xpeek
+%dir %{_texmfdistdir}/tex/latex/xpeekahead
 %dir %{_texmfdistdir}/tex/latex/xpiano
 %dir %{_texmfdistdir}/tex/latex/xpicture
 %dir %{_texmfdistdir}/tex/latex/xpinyin
@@ -38269,8 +39541,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/latex/xreview
 %dir %{_texmfdistdir}/tex/latex/xsavebox
 %dir %{_texmfdistdir}/tex/latex/xsim
+%dir %{_texmfdistdir}/tex/latex/xsipa
 %dir %{_texmfdistdir}/tex/latex/xskak
+%dir %{_texmfdistdir}/tex/latex/xstacks
+%dir %{_texmfdistdir}/tex/latex/xstix2
 %dir %{_texmfdistdir}/tex/latex/xtab
+%dir %{_texmfdistdir}/tex/latex/xtufte
 %dir %{_texmfdistdir}/tex/latex/xtuthesis
 %dir %{_texmfdistdir}/tex/latex/xurl
 %dir %{_texmfdistdir}/tex/latex/xwatermark
@@ -38333,6 +39609,8 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/lualatex/domaincoloring
 %dir %{_texmfdistdir}/tex/lualatex/ekdosis
 %dir %{_texmfdistdir}/tex/lualatex/emojicite
+%dir %{_texmfdistdir}/tex/lualatex/fancymag
+%dir %{_texmfdistdir}/tex/lualatex/fancymag/img
 %dir %{_texmfdistdir}/tex/lualatex/gitinfo-lua
 %dir %{_texmfdistdir}/tex/lualatex/gregoriotex
 %dir %{_texmfdistdir}/tex/lualatex/hmtrump
@@ -38340,15 +39618,21 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/lualatex/ideavault
 %dir %{_texmfdistdir}/tex/lualatex/innerscript
 %dir %{_texmfdistdir}/tex/lualatex/japanese-mathformulas
+%dir %{_texmfdistdir}/tex/lualatex/jsonresume
 %dir %{_texmfdistdir}/tex/lualatex/junicodevf
+%dir %{_texmfdistdir}/tex/lualatex/kkluaverb
+%dir %{_texmfdistdir}/tex/lualatex/lecturenotes
 %dir %{_texmfdistdir}/tex/lualatex/letgut
+%dir %{_texmfdistdir}/tex/lualatex/letgut/logos
 %dir %{_texmfdistdir}/tex/lualatex/ligtype
 %dir %{_texmfdistdir}/tex/lualatex/linebreaker
 %dir %{_texmfdistdir}/tex/lualatex/longmath
 %dir %{_texmfdistdir}/tex/lualatex/lua-check-hyphen
 %dir %{_texmfdistdir}/tex/lualatex/lua-placeholders
+%dir %{_texmfdistdir}/tex/lualatex/lua-regression
 %dir %{_texmfdistdir}/tex/lualatex/lua-typo
 %dir %{_texmfdistdir}/tex/lualatex/lua-ul
+%dir %{_texmfdistdir}/tex/lualatex/lua-unicode-math
 %dir %{_texmfdistdir}/tex/lualatex/lua-widow-control
 %dir %{_texmfdistdir}/tex/lualatex/luabibentry
 %dir %{_texmfdistdir}/tex/lualatex/luabidi
@@ -38391,9 +39675,20 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/lualatex/luaset
 %dir %{_texmfdistdir}/tex/lualatex/luasseq
 %dir %{_texmfdistdir}/tex/lualatex/luatbls
+%dir %{_texmfdistdir}/tex/lualatex/luatex-cn
+%dir %{_texmfdistdir}/tex/lualatex/luatex-cn/banxin
+%dir %{_texmfdistdir}/tex/lualatex/luatex-cn/configs
+%dir %{_texmfdistdir}/tex/lualatex/luatex-cn/core
+%dir %{_texmfdistdir}/tex/lualatex/luatex-cn/debug
+%dir %{_texmfdistdir}/tex/lualatex/luatex-cn/decorate
+%dir %{_texmfdistdir}/tex/lualatex/luatex-cn/digital
+%dir %{_texmfdistdir}/tex/lualatex/luatex-cn/fonts
+%dir %{_texmfdistdir}/tex/lualatex/luatex-cn/guji
+%dir %{_texmfdistdir}/tex/lualatex/luatex-cn/util
 %dir %{_texmfdistdir}/tex/lualatex/luatextra
 %dir %{_texmfdistdir}/tex/lualatex/luatodonotes
 %dir %{_texmfdistdir}/tex/lualatex/luatruthtable
+%dir %{_texmfdistdir}/tex/lualatex/luwa-ul
 %dir %{_texmfdistdir}/tex/lualatex/marginalia
 %dir %{_texmfdistdir}/tex/lualatex/novel
 %dir %{_texmfdistdir}/tex/lualatex/odsfile
@@ -38404,6 +39699,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/lualatex/plantuml
 %dir %{_texmfdistdir}/tex/lualatex/pyluatex
 %dir %{_texmfdistdir}/tex/lualatex/scikgtex
+%dir %{_texmfdistdir}/tex/lualatex/seatingchart
 %dir %{_texmfdistdir}/tex/lualatex/selnolig
 %dir %{_texmfdistdir}/tex/lualatex/semesterplanner
 %dir %{_texmfdistdir}/tex/lualatex/semesterplannerlua
@@ -38420,6 +39716,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/lualatex/unitconv
 %dir %{_texmfdistdir}/tex/lualatex/wallcalendar
 %dir %{_texmfdistdir}/tex/lualatex/wallcalendar/i18n
+%dir %{_texmfdistdir}/tex/lualatex/xdvipsk-support
 %dir %{_texmfdistdir}/tex/lualatex/xindex
 %dir %{_texmfdistdir}/tex/lualatex/yamlvars
 %dir %{_texmfdistdir}/tex/luatex
@@ -38429,10 +39726,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/luatex/chickenize
 %dir %{_texmfdistdir}/tex/luatex/chinese-jfm
 %dir %{_texmfdistdir}/tex/luatex/cloze
+%dir %{_texmfdistdir}/tex/luatex/context
 %dir %{_texmfdistdir}/tex/luatex/cstypo
 %dir %{_texmfdistdir}/tex/luatex/ctablestack
 %dir %{_texmfdistdir}/tex/luatex/ctex
 %dir %{_texmfdistdir}/tex/luatex/evangelion-jfm
+%dir %{_texmfdistdir}/tex/luatex/farbe
 %dir %{_texmfdistdir}/tex/luatex/gregoriotex
 %dir %{_texmfdistdir}/tex/luatex/hyph-utf8
 %dir %{_texmfdistdir}/tex/luatex/interpreter
@@ -38444,10 +39743,13 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/luatex/lua-widow-control
 %dir %{_texmfdistdir}/tex/luatex/luaaddplot
 %dir %{_texmfdistdir}/tex/luatex/luakeys
+%dir %{_texmfdistdir}/tex/luatex/luakeyval
 %dir %{_texmfdistdir}/tex/luatex/lualibs
+%dir %{_texmfdistdir}/tex/luatex/lualineno
 %dir %{_texmfdistdir}/tex/luatex/luamplib
 %dir %{_texmfdistdir}/tex/luatex/luaotfload
 %dir %{_texmfdistdir}/tex/luatex/luapackageloader
+%dir %{_texmfdistdir}/tex/luatex/luatex-type-definitions
 %dir %{_texmfdistdir}/tex/luatex/luatexbase
 %dir %{_texmfdistdir}/tex/luatex/luatexja
 %dir %{_texmfdistdir}/tex/luatex/luatexja/addons
@@ -38481,6 +39783,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/optex/demo
 %dir %{_texmfdistdir}/tex/optex/lua-widow-control
 %dir %{_texmfdistdir}/tex/optex/opbible
+%dir %{_texmfdistdir}/tex/optex/parstat
 %dir %{_texmfdistdir}/tex/optex/pdfextra
 %dir %{_texmfdistdir}/tex/optex/pkg
 %dir %{_texmfdistdir}/tex/plain
@@ -38537,6 +39840,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/plain/mlawriter
 %dir %{_texmfdistdir}/tex/plain/newsletr
 %dir %{_texmfdistdir}/tex/plain/omega
+%dir %{_texmfdistdir}/tex/plain/pdftoolbox
+%dir %{_texmfdistdir}/tex/plain/pdftoolbox/pdfData
+%dir %{_texmfdistdir}/tex/plain/pdftoolbox/pdfDstruct
+%dir %{_texmfdistdir}/tex/plain/pdftoolbox/pdfGraphics
+%dir %{_texmfdistdir}/tex/plain/pdftoolbox/pdfGraphics/listingcommands
 %dir %{_texmfdistdir}/tex/plain/pgf
 %dir %{_texmfdistdir}/tex/plain/pgf/basiclayer
 %dir %{_texmfdistdir}/tex/plain/pgf/frontendlayer
@@ -38546,6 +39854,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/plain/pgfplots
 %dir %{_texmfdistdir}/tex/plain/pitex
 %dir %{_texmfdistdir}/tex/plain/placeins-plain
+%dir %{_texmfdistdir}/tex/plain/plain-widow
 %dir %{_texmfdistdir}/tex/plain/plipsum
 %dir %{_texmfdistdir}/tex/plain/plnfss
 %dir %{_texmfdistdir}/tex/plain/plstmary
@@ -38595,7 +39904,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/xelatex/arabic-book
 %dir %{_texmfdistdir}/tex/xelatex/arabxetex
 %dir %{_texmfdistdir}/tex/xelatex/bhcexam
-%dir %{_texmfdistdir}/tex/xelatex/bidi
 %dir %{_texmfdistdir}/tex/xelatex/bidi-atbegshi
 %dir %{_texmfdistdir}/tex/xelatex/bidicontour
 %dir %{_texmfdistdir}/tex/xelatex/bidihl
@@ -38611,7 +39919,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/xelatex/fontbook
 %dir %{_texmfdistdir}/tex/xelatex/fontwrap
 %dir %{_texmfdistdir}/tex/xelatex/hanzibox
-%dir %{_texmfdistdir}/tex/xelatex/hduthesis
 %dir %{_texmfdistdir}/tex/xelatex/hfutthesis
 %dir %{_texmfdistdir}/tex/xelatex/hithesis
 %dir %{_texmfdistdir}/tex/xelatex/imsproc
@@ -38619,7 +39926,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/xelatex/kurdishlipsum
 %dir %{_texmfdistdir}/tex/xelatex/langsci
 %dir %{_texmfdistdir}/tex/xelatex/mathspec
-%dir %{_texmfdistdir}/tex/xelatex/mynsfc
+%dir %{_texmfdistdir}/tex/xelatex/mohe-book
 %dir %{_texmfdistdir}/tex/xelatex/na-box
 %dir %{_texmfdistdir}/tex/xelatex/na-position
 %dir %{_texmfdistdir}/tex/xelatex/nanicolle
@@ -38648,7 +39955,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex/xelatex/xecolor
 %dir %{_texmfdistdir}/tex/xelatex/xecyr
 %dir %{_texmfdistdir}/tex/xelatex/xeindex
-%dir %{_texmfdistdir}/tex/xelatex/xepersian
 %dir %{_texmfdistdir}/tex/xelatex/xepersian-hm
 %dir %{_texmfdistdir}/tex/xelatex/xespotcolor
 %dir %{_texmfdistdir}/tex/xelatex/xetex-pstricks
@@ -39079,6 +40385,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/bitstrea
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/bitstrea/charter
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/cbgreek
+%dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/ccicons
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/cfrinitials
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/charset
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/chess
@@ -39128,6 +40435,7 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/mflogo
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/misc
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/musix
+%dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/nfssect
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/ntxsups
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/ntxtm
 %dir %{_texmfdistdir}/tex4ht/ht-fonts/unicode/pl

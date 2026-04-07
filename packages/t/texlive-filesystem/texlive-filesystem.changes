@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 30 13:22:00 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2026 (20260301)
+  * UTF-8 Encoding: The distribution now exclusively uses UTF-8
+    input encoding.
+  * Font Support: Minimal support for OpenType and TrueType fonts
+    (without ligatures or math) has been added.
+  * New Primitives: $\backslash$Uchar and $\backslash$Ucharcat
+    primitives have been added.
+
+-------------------------------------------------------------------
 Thu Feb 26 09:35:45 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid permission files and check in case of Immutable Mode
