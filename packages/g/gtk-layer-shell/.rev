@@ -228,4 +228,17 @@
   * Tests: support optionally running under Valgrind</comment>
     <requestid>1314503</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3a76c3a2194c4bbc1df6174842289b88</srcmd5>
+    <version>0.10.1</version>
+    <time>1775572464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.1:
+  * Fix: unmap when surface is immediately requested to close after opening #218
+  * Fix: time out after 1 second of waiting for configure #220
+  * Fix: edge cases around montiros changing while being mapped #221
+  * gtk-priv: rename ast.py -&gt; c_ast.py to avoid name collision with std lib
+  * Compat: bump supported GTK to v3.24.52</comment>
+    <requestid>1344922</requestid>
+  </revision>
 </revisionlist>
