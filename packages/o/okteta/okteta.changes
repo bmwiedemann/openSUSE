@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Apr  7 18:59:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.26
+  * Improved: translations
+  * Improved: enable sorting by columns in Bookmarks tool
+  * Improved: line-wise selection by mouse now also extendable to
+    other lines
+  * Improved: data drop on tab bar/empty pane defaults to copy
+    (w/ Ctrl move)
+  * Improved: data drop on doc defaults to copy (w/ Ctrl move)
+  * Changed: group-wise selection by mouse and keyboard with cursor
+    focus in values now based on display grouping, word-wise only
+    in chars
+  * Changed: enable Go-to action in String Extract tool with one
+    selection
+  * Changed: enable Go-to/Rename actions in Bookmarks tool with
+    one selection
+  * Changed: use consistently alternating row colors in all
+    tables of tools
+  * Changed: data drag in same doc defaults to move
+    (w/ Shift copy)
+  * Fixed: crash using button in Charset Conversion tool before
+    first document
+  * Fixed: potential crash on render updates just for byte group
+    spacing
+  * Fixed: work-around broken non-native QFileDialog urlsSelected
+    signal (kde#441802)
+  * Fixed: update half-read primitives' arrays in Structures
+    tool on changes
+  * Fixed: update data in Structures tool on unlocking structure
+    offset
+  * Fixed: do not place cursor on next line after word-wise
+    selection at end
+  * Fixed: do not leak canceled Save-As file dialog
+  * Fixed: do not leak canceled Export file dialog
+  * Fixed: have mouse cursor be less arrow for non-read-only
+  * Fixed: move action in data drag to other place also removes
+    source data
+
+-------------------------------------------------------------------
 Wed Feb  4 15:31:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.25
