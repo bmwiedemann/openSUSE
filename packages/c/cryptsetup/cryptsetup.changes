@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr  3 17:50:54 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2.8.6.
+- Release notes for 2.8.6:
+  * Fixes an autotools regression in 2.8.5 in the locking tmpfiles.d
+    directory configuration.
+- Release notes for 2.8.5:
+  * Add a specific error for failed detached header allocation.
+  * Check the UUID of the resumed device to match the UUID stored in
+    metadata.
+  * Fix FileVault (fvault2) metadata parsing.
+  * Fix LUKS2 reencryption lock name.
+  * Fix OpenSSL crypto backend if built with LibreSSL.
+  * Fix reading FileVault image metadata from incorrect image offset.
+  * Fix tests not to use aes-generic kernel cipher name.
+  * OpenSSL backend: Increase the number of allowed threads to 64.
+  * Several compatibility fixes to the alternative Meson configuration
+    system.
+  * Various code fixes based on AI-assisted reviews.
+
+-------------------------------------------------------------------
 Mon Feb  2 11:16:21 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.8.4:
