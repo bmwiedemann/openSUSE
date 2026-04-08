@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Apr  7 12:13:24 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.9.1 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 140.9.1
+  https://www.mozilla.org/security/advisories/mfsa2026-27
+  MFSA 2026-27 (boo#1261663)
+  * CVE-2026-5732 (bmo#2017867)
+    Incorrect boundary conditions, integer overflow in the
+    Graphics: Text component
+  * CVE-2026-5731 (bmo#2021894, bmo#2022225, bmo#2022252,
+    bmo#2022294, bmo#2023007, bmo#2023130, bmo#2023191,
+    bmo#2023364, bmo#2023829, bmo#2024074, bmo#2024417,
+    bmo#2024433, bmo#2024436, bmo#2024437, bmo#2024453,
+    bmo#2024461, bmo#2024462, bmo#2024472, bmo#2024474,
+    bmo#2024477, bmo#2025364, bmo#2025401, bmo#2025402,
+    bmo#2025472, bmo#2026287, bmo#2026299, bmo#2026305,
+    bmo#2026426)
+    Memory safety bugs fixed in Firefox ESR 115.34.1, Firefox ESR
+    140.9.1, Thunderbird ESR 140.9.1, Firefox 149.0.2 and
+    Thunderbird 149.0.2
+  * CVE-2026-5734 (bmo#2022369, bmo#2023026, bmo#2023545,
+    bmo#2023555, bmo#2023958, bmo#2025422, bmo#2025468,
+    bmo#2025492, bmo#2025505)
+    Memory safety bugs fixed in Firefox ESR 140.9.1, Thunderbird
+    ESR 140.9.1, Firefox 149.0.2 and Thunderbird 149.0.2
+
+-------------------------------------------------------------------
 Tue Mar 24 07:53:07 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Firefox Extended Support Release 140.9.0 ESR
