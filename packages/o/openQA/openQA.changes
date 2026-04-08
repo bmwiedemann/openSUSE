@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
-Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
+Wed Apr 08 10:16:33 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1775115436.d37d45f6:
+- Update to version 5.1775643384.e9cf2643:
+  * fix: Move Workers constants to Constants.pm
+  * refactor: Remove $VERSION variables from modules
+  * fix(apparmor): let ipmitool read enterprise-numbers
+  * fix(apparmor): add rules for xterm-console
+  * fix(apparmor): allow to start icewm
+  * fix(apparmor): remove unnecessary rules from x3270 profile
+  * test: Cover initdb
+  * fix(apparmor): allow x3270 to write trace files
+  * fix: Let worker init fail for missing working dir
+  * ci(mergify): prevent any unused merge queue checks
+  * test(43-scheduling-and-worker-scalability): automate job count scenarios
   * feat: Show possible candidates for working directory in error message
   * test: Cover `t/44-scripts-create_admin.t`
   * test: refactor dynamic limit tests to use table-driven approach
@@ -35,6 +46,13 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * refactor(assets): remove deprecated KeyEvent usage
   * docs: relocate scheduler and worker load documentation
   * feat: dynamically adjust global job limit based on system load
+  * chore(deps): bump picomatch from 2.3.1 to 2.3.2
+  * build(deps-dev): bump flatted from 3.4.1 to 3.4.2
+
+-------------------------------------------------------------------
+Mon Mar 30 20:17:41 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774895777.6c2911d1:
   * feat: Customizable time_limit_days
   * fix: arrow navigation not working in Chrome-based browsers
   * style: Remove various magic numbers
@@ -44,6 +62,14 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * refactor: Avoid repeated access to `$args{command}` in worker schema
   * fix(clone-job): Restore authorized asset downloads after 06bc5193d25b
   * fix: restore broken label and flag icons in comments
+  * feat: support parallel Perl tests with PROVE_JOBS in Makefile
+  * fix(ui): Prevent build tag labels from rendering in all caps
+  * feat: replace Test::Strict with Test::Compile in compilation check
+
+-------------------------------------------------------------------
+Mon Mar 30 08:07:50 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774854217.24dbd811:
   * style: Fix TestingAndDebugging::RequireUseStrict violations
   * style: Fix TestingAndDebugging::ProhibitNoStrict violations
   * style: Fix BuiltinFunctions::RequireBlockMap violations
@@ -53,11 +79,8 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * style: Fix ProhibitInterpolationOfLiterals violations
   * style: Fix CodeLayout::ProhibitParensWithBuiltins violations
   * style: Run perlcritic also for t/
-  * feat: support parallel Perl tests with PROVE_JOBS in Makefile
   * chore(deps): Dependency cron 2026-03-28
-  * fix(ui): Prevent build tag labels from rendering in all caps
   * feat: complete shim-less migration to Font Awesome 6
-  * feat: replace Test::Strict with Test::Compile in compilation check
   * chore: Add dependency for extending `t/11-commands.t`
   * chore: Reduce permissions of workflows
   * feat: support "always_run" test flag in web UI and API
@@ -68,20 +91,29 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * feat(scheduler): provide visual indication of limited disk space
   * feat(scheduler): provide visual indication of limited disk space
   * feat(scheduler): prevent openQA depleting storage with new openQA jobs
-  * chore(deps): bump picomatch from 2.3.1 to 2.3.2
   * refactor(tests): consolidate page loads in 01-list.t
+  * feat: replace deprecated fork-awesome with Font Awesome 6 Free
+  * fix(influxdb): prevent empty tags populated to telegraf
+  * feat(MCP): Add MCP tool annotations
+
+-------------------------------------------------------------------
+Thu Mar 26 08:07:45 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774510397.efec10a7:
   * Revert "refactor: Replace jQuery-dependent timeago with vanilla timeago.js"
   * docs(userguide): fix position of job_templates unique id
   * docs(amqp): cover usage examples of amqp and slack integration
   * feat: Allow resuming asset downloads with `openqa-clone-job`
   * feat: migrate to timeago.js for proper jquery4 compatibility
-  * feat: replace deprecated fork-awesome with Font Awesome 6 Free
   * style: Exclude external/ directory from 01-style.t checks
   * style: Fix various perlcritic violations in script/
   * git subrepo pull (merge) external/os-autoinst-common
-  * fix(influxdb): prevent empty tags populated to telegraf
+
+-------------------------------------------------------------------
+Wed Mar 25 01:08:28 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774384552.1377209d:
   * test: Add Test::Perl::Critic
-  * feat(MCP): Add MCP tool annotations
   * test: Consider everything under `lib/openQA/` covered
   * refactor: Avoid duplicate code for making test suite name unique
   * test: Consider everything under `lib/OpenQA/Scheduler/` covered
@@ -99,20 +131,29 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * chore: migrate remaining ESLint settings from legacy to flat config
   * style: migrate all JavaScript consistently from var to let/const
   * chore(ci): bump javascript check to node 22
+
+-------------------------------------------------------------------
+Mon Mar 23 16:26:14 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774278862.ea002efa:
   * refactor: slightly simplify BuildResults
   * chore(AGENTS.md): add customized file
   * refactor: deduplicate configuration defaults and verify openqa.ini
   * fix(ci): fix referencing commit-message-checker
   * style: Add Test::Perl::Critic dependency
   * docs: document "always_run" test flag
-  * build(deps-dev): bump flatted from 3.4.1 to 3.4.2
   * feat(Makefile): add help text for missing targets
   * fix: prevent intermittent failure in t/ui/13-admin.t
+  * fix: remove fixed container sizing in needlediff view
+
+-------------------------------------------------------------------
+Mon Mar 23 02:08:22 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1774104919.9788babf:
   * feat: add pre-commit hooks with gitlint
   * ci: replace GHA commit-message-checker with os-autoinst-common one
   * refactor: replace .gitlint with identical os-autoinst-common one
   * git subrepo pull (merge) external/os-autoinst-common
-  * fix: remove fixed container sizing in needlediff view
   * fix: needlediff view alignment (regression from dc1a3709e)
   * fix: robust group property validation and reliable UI tests
   * test: Consider the `CacheService` directory fully covered
@@ -156,11 +197,16 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * feat: Allow reproducing test with pinned test code via clone-job
   * feat(webui): make rendering batch size configurable
   * fix: resolve sporadic failure in UI test tabs loading
+  * fix(investigation): select casedir/needledir correctly when no symlink
+
+-------------------------------------------------------------------
+Fri Mar 13 22:08:20 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1773427330.0b172206:
   * fix: Display GitHub bugrefs correctly when used within a label
   * refactor: Improve style in `t/39-scheduled_products-table.t`
   * feat: improve responsiveness of tabs in job details view
   * ci(helm): override pullPolicy when install helm via ct
-  * test: Fix unstable test for stacking of parallel tests on overview page
   * test: Consider everything under `lib/OpenQA/Schema` covered
   * test: Cover generating Gravatar URLs
   * test: Cover handling failed job cancellation when scheduling iso
@@ -179,10 +225,26 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * test: Consider everything under `lib/OpenQA/Script/` covered
   * test: Cover `openqa_baseurl` used by clone script
   * test: Cover handling unexpected return code in clone script
-  * fix(investigation): select casedir/needledir correctly when no symlink
+
+-------------------------------------------------------------------
+Fri Mar 13 01:00:04 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1773333964.ffc5eff5:
+  * test: Fix unstable test for stacking of parallel tests on overview page
+
+-------------------------------------------------------------------
+Thu Mar 12 05:26:52 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1773291834.69acf4b4:
   * chore(deps): Dependency cron 2026-03-12
   * style: Use HTTP::Status status code constants
   * Revert "feat: optimize size of devel:openQA:ci/base container"
+  * feat: adapt to os-autoinst switching to markdown
+
+-------------------------------------------------------------------
+Tue Mar 10 17:07:52 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1773151075.654d76ed:
   * refactor: Write `renderComments()` in a more compact way
   * fix: Restore spacing between bug and other icons after 9346b7165
   * ci(helm): replace internal retry with okurz/retry/
@@ -196,29 +258,50 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * feat: Render labels with bug references as clickable links
   * refactor: Improve coding style in `renderComments()`
   * feat: Use bugref within label when creating 'Job mentioned in …' comment
-  * docs: Link to latest passed job to ensure the download tab exists
   * docs: document the priority throttling for scheduled jobs
-  * feat: allow filtering by job result and state in /tests/latest
   * Dependency cron 2026-03-09
   * feat: Streamline "relates to default checkout" condition
   * feat: Enable `git_auto_update` if `CASEDIR` and `NEEDLES_DIR` are set
   * feat: Support `CASEDIR` lookup introduced in ef229dc also in Git tasks
   * fix: Handle error when determining Git server host correctly
+  * feat: add privacy policy
+
+-------------------------------------------------------------------
+Mon Mar 09 15:07:31 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1773068319.a9347c1b:
+  * docs: Link to latest passed job to ensure the download tab exists
+  * feat: allow filtering by job result and state in /tests/latest
   * style: Always pass a regex match to split
   * style: Use map only in block form
   * style: Use grep only in block form
-  * feat: add privacy policy
   * style(gitlint): allow unwrappable longer URLs in git commit message body
   * feat: unify priority management of max_job_time and throttling
-  * feat: adapt to os-autoinst switching to markdown
   * ci(helm): pull container images in advance
   * ci(helm): make sure that install-chart runs after lint-chart
-  * style: Use builtin functions without parentheses consistently
   * feat: optimize size of devel:openQA:ci/base container
+  * feat: allow users to delete/anonymize their own account
+
+-------------------------------------------------------------------
+Thu Mar 05 16:46:27 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772722702.3877b2ca:
+  * style: Use builtin functions without parentheses consistently
   * build: update minimatch to fix ReDoS vulnerabilities
+
+-------------------------------------------------------------------
+Thu Mar 05 10:10:51 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772705410.5c7fe0aa:
   * style(t): fix formatting of long line in t/37-limit_assets.t
   * test(Makefile): treat t/01-style consistently with tidy+compile tests
   * ci: cover sporadic download errors with retries
+  * feat: support show_build=1 for overview badges
+
+-------------------------------------------------------------------
+Tue Mar 03 15:10:02 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772550094.48b5cce5:
   * refactor: Improve code for testing OpenID auth
   * test: Consider everything under `lib/OpenQA/WebAPI/` covered
   * test: Cover all code for OpenID auth
@@ -227,7 +310,6 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * refactor: Remove unused local variable in OBS rsync code
   * test: Cover parameter validation warnings code for API descriptions
   * fix(config): Drop max_conns to allow proper queueing
-  * feat: allow users to delete/anonymize their own account
   * refactor: Improve code in `renderTestLists()`
   * feat: Pass all parameters when making AJAX requests on "All tests" page
   * feat: Allow use of `job_setting` parameter also on "All tests" page
@@ -236,14 +318,23 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * test: remove stabilized tests from tools/unstable_tests.txt
   * test(lib): remove unused "disconnect" function
   * test(lib): mark uncovered line
+
+-------------------------------------------------------------------
+Mon Mar 02 19:07:33 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772475695.6c6c7eda:
   * build(Makefile): add make target help text
-  * feat: support show_build=1 for overview badges
+  * fix(npm): bump to non-vulerable versions (boo#1259005, boo#1258632)
+
+-------------------------------------------------------------------
+Mon Mar 02 14:07:44 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772460208.7a4e1e06:
   * docs: Document array-like job settings and `job_setting` parameter
   * test: Ensure test of filter params of jobs API fails if code breaks
   * feat: Support searching by job settings in API to list jobs
   * refactor: Improve `cancel_by_settings`
   * fix: Allow filtering by more than one job setting in various routes
-  * fix(npm): bump to non-vulerable versions (boo#1259005, boo#1258632)
   * test: Improve checks in `t/api/02-iso.t`
   * feat: Allow searching by job settings via overview routes
   * style: use consistent q{} syntax for SQL strings in Cache Model
@@ -258,34 +349,49 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * fix(cache): capture stderr and handle exit status robustly in Sync task
   * test: make SIGCHLD handler selective in OpenQA::Test::Utils
   * docs: document aggregate result badges for overview queries
+
+-------------------------------------------------------------------
+Thu Feb 26 18:08:33 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772092969.74a39650:
   * test: Consider all of `lib/OpenQA/Task/` covered
   * test: Cover handling developer session when saving needles
   * test: Cover further error cases when saving needles
   * fix: Fix error handling when saving needle JSON
   * test: Workaround limitation of coverage tracking
   * feat: Improve needle JSON validation
-  * docs(image): describe the TW image with openQA available in o3
   * test: Cover all cases of needle JSON validation
   * fix: Avoid Perl warning when validating needle JSON
   * refactor: Simplify code in `_delete_needles`
   * test: Cover handling error when asset directory is not writable
   * test: Cover skipping screenshot cleanup if still enqueued
+  * feat(openqa-upstreams.inc): set `max_conns` to max connection handled
+  * refactor: optimize and harden aggregate overview badges implementation
+  * refactor: improve aggregate overview badges implementation
+  * test: consolidate SVG badge unit tests
+  * feat: implement test result badges for aggregate overview queries
+
+-------------------------------------------------------------------
+Wed Feb 25 20:08:14 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1772031289.93bc2a13:
+  * docs(image): describe the TW image with openQA available in o3
   * fix(t/03-auth): avoid 'Too many open files' with mocks
   * fix: avoid constant redefinition warnings in ScheduledProducts
   * feat: add aggregate favicons for test overview
   * build: improve cleanup of generated favicon assets
   * feat: add Makefile targets to run services with temporary test database
-  * feat(openqa-upstreams.inc): set `max_conns` to max connection handled
   * ci(helm): increase timeout on ct install
   * feat: add gitlint for conventional commit checks
+
+-------------------------------------------------------------------
+Tue Feb 24 21:52:18 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771942065.808b073f:
   * test(t/44-scripts): extend to cover Python scripts
   * test(t/44-scripts): implement individual timeouts
   * fix(script): add early argument validation where missing
   * test: harmonize Test::More call format using '+' prefix
-  * refactor: optimize and harden aggregate overview badges implementation
-  * refactor: improve aggregate overview badges implementation
-  * test: consolidate SVG badge unit tests
-  * feat: implement test result badges for aggregate overview queries
   * Dependency cron 2026-02-24
   * test: refine style check and fix ambiguous test calls
   * Replace Ingress with Kubernetes Gateway API for external access
@@ -296,17 +402,32 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * tweak: Use normal warning log messages when encountering Git problems
   * fix: Avoid Perl warnings if URL passed to `git_commit_url` is invalid
   * docs: Add section about security
-  * fix: update ajv to fix moderate severity ReDoS vulnerability
-  * fix: update minimatch override to fix high severity ReDoS vulnerability
-  * openqa-load-templates: Slightly simplify
-  * refactor(test/overview): use signatures and clean up code
-  * refactor(test/overview): reduce duplication
-  * feat: Improve default `PRODUCTDIR` after ef229dc2
   * Fix tools/test_helm_chart after Helm chart reorganization
   * Update Helm chart documentation
   * Move worker subchart under openqa/ and fix connectivity
   * Add single openqa parent chart with ingress and nginx
   * Remove old helm chart structure
+
+-------------------------------------------------------------------
+Mon Feb 23 16:01:06 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771846996.b67911c1:
+  * fix: update ajv to fix moderate severity ReDoS vulnerability
+  * fix: update minimatch override to fix high severity ReDoS vulnerability
+  * openqa-load-templates: Slightly simplify
+
+-------------------------------------------------------------------
+Sat Feb 21 20:10:39 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771626210.b82f14f2:
+  * refactor(test/overview): use signatures and clean up code
+  * refactor(test/overview): reduce duplication
+
+-------------------------------------------------------------------
+Fri Feb 20 17:09:47 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771589939.8f8502b4:
+  * feat: Improve default `PRODUCTDIR` after ef229dc2
   * refactor(ui): simplify removal of empty query parameters (after rebase)
   * test(45-make-update-deps): allow bypassing dependency update check
   * fix(test): improve UI test robustness by using state-based waiting
@@ -315,14 +436,19 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * fix: Fix wrong uses of "checkout" that should be "check out"
   * feat: support filtering by meta-results+states in /tests/overview
   * Revert "feat: Add symlink for aeon in openqa-bootstrap script"
+  * fix(43-scheduling-and-worker-scalability): prevent sporadic issues
+  * refactor: use join for properties in determine_free_workers
+  * fix: do not cache websocket_api_version if not set
+
+-------------------------------------------------------------------
+Thu Feb 19 13:10:12 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1771473096.98530511:
   * feat(ui): remove empty query parameters from /tests/overview URL
   * fix(mcp): set navbar check expression to read-only
   * feat: support inverted result filters in /tests/overview
   * feat: Allow specifying `CASEDIR` to avoid symlinking
   * fix(test): Enable helm install-chart test again
-  * fix(43-scheduling-and-worker-scalability): prevent sporadic issues
-  * refactor: use join for properties in determine_free_workers
-  * fix: do not cache websocket_api_version if not set
   * git subrepo pull (merge) --force external/os-autoinst-common
   * feat: Make allowed hosts for SCENARIO_DEFINITIONS_YAML_FILE configurable
   * test: Consider everything under `lib/OpenQA/Shared/` covered
@@ -351,6 +477,11 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * feat: Allow archiving jobs with infinite important storage durations
   * feat: Flag jobs without results as archived for consistency
   * feat: Remove one corner case preventing jobs from being archived
+
+-------------------------------------------------------------------
+Tue Feb 10 13:08:35 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1770718745.ce2072d3:
   * feat(ui): use clickable test overview summary counts for quick filtering
   * build(Makefile): fix uninterruptable tests
   * docs: Mention caveats of `…_cleanup_max_free_percentage` setting
@@ -369,6 +500,13 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * test: Improve name of subtest for archiving
   * test: Verify that archiving works regardless of logs/results present
   * Dependency cron 2026-02-06
+  * Bump js-yaml from 4.1.0 to 4.1.1
+  * build(deps): bump ace-builds from 1.43.3 to 1.43.4
+
+-------------------------------------------------------------------
+Thu Feb 05 17:16:04 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1770308102.12dfd0e4:
   * fix: Configure sudoers correctly in Leap 16
   * Also use devel:openQA/16.0 in dependency bot workflow
   * Remove dependencies not available in 16
@@ -413,6 +551,11 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * refactor: Simplify `JobTemplate::destroy`
   * refactor: Remove unused code from `JobTemplate.pm`
   * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
+Thu Jan 29 06:10:03 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1769644379.ef069e9d:
   * style: Add quotes in openqa-bootstrap
   * feat: default API key expiration to 1 year, aligning with UI
   * feat: wrap array in an object in api_key API responses
@@ -433,11 +576,16 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * test: Improve tests of multi-machine API
   * Remove unused module Config::Tiny from dependencies
   * Handle links on test_log on missing git repo extension
-  * refactor(investigation): Use TEST_GIT_URL and NEEDLES_GIT_URL
-  * refactor(investigation): Rename gitrepodir function
   * test: Consider `Test.pm` fully covered
   * test: Extend tests for showing dependency graph
   * fix: Merge parallel clusters correctly for displaying dependency tree
+
+-------------------------------------------------------------------
+Tue Jan 27 23:08:10 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1769550212.662a4f95:
+  * refactor(investigation): Use TEST_GIT_URL and NEEDLES_GIT_URL
+  * refactor(investigation): Rename gitrepodir function
   * Restart: handle subclassed AMQP plugin
   * Revert "Update CircleCI image to Leap 16.0"
   * fix: Fix invalid HTML in test creation form
@@ -463,15 +611,11 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * test: Cover options to take images/areas from existing needles
   * Use body parameters in POST request
   * feat: Add symlink for aeon in openqa-bootstrap script
-  * Dependency cron 2026-01-22
   * chore(deps): bump lodash from 4.17.21 to 4.17.23
   * test: Add test for displaying audio results
   * test: Cover remaining lines of `File.pm`
-  * feat: Show limits on "Next & Previous" tab within table
-  * fix: Avoid Perl warning if product spec contains undef values
   * feat: Improve log message about invalid config in df-based cleanup
   * feat: Add dry run to df-based cleanup of job results
-  * GenericBug: Add [QE] to the subject
   * Fix grammatic mistakes on the snapshots documentation
   * Describe how snapshots work internally
   * doc: Improve wording in documentation about space-aware cleanup
@@ -485,6 +629,20 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * fix: Account deletion of screenshots of archived jobs correctly
   * doc: Mention variables for df-based job result cleanup
   * feat: Consider archive as well in df-based cleanup of job results
+
+-------------------------------------------------------------------
+Thu Jan 22 17:43:32 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1769068942.639067ee:
+  * Dependency cron 2026-01-22
+  * feat: Show limits on "Next & Previous" tab within table
+
+-------------------------------------------------------------------
+Wed Jan 21 13:01:48 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768996386.e3f58202:
+  * fix: Avoid Perl warning if product spec contains undef values
+  * GenericBug: Add [QE] to the subject
   * doc: Mention version lookup of mediums and special value `*`
   * doc: Wrap section about medium types consistently at 80 characters
   * doc: Remove surplus white-space
@@ -493,56 +651,140 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * tests: Improve/add tests for "no products found" case
   * KernelBug: Extend the kernel bug template
   * feat: Improve error message when falling back to version `*`
+
+-------------------------------------------------------------------
+Tue Jan 20 13:17:03 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768856318.847e4fc7:
   * fix(systemd): prevent openqa-gru starting while mounts are unavailable
   * fix(systemd): try restarts on failure to be more resilient
   * feat: Show when "Next & Previous" jobs are limited
   * refactor: Format SQL code for "Next & Previous" jobs more nicely
   * refactor: Simplify determining latest job in "Next & Previous" list
-  * feat: optionally configure fake auth key+secret+expiration
+
+-------------------------------------------------------------------
+Sat Jan 17 14:09:38 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768564451.45d5d5b2:
   * OpenSuseIssueReporter: Avoid multiple push calls
+  * unit_tests: Add unit tests for OpenSuseBugzillaUtils
+  * unit_tests: Adapt the UI tests to the new kernel bug button
+  * plugins: Introduce OpenSuseIssueReporter for external issue reporting
+
+-------------------------------------------------------------------
+Thu Jan 15 20:43:21 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768402729.462b3957:
+  * feat: optionally configure fake auth key+secret+expiration
+
+-------------------------------------------------------------------
+Tue Jan 13 23:23:36 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768323619.9a70ab91:
   * refactor: Extend tests of df-based cleanup
   * fix: Avoid wrong deletion of archived jobs in df-based cleanup
   * refactor: Move logic for validating percentage into helper
   * refactor: Clarify wording in comment regarding job cleanup
   * Use template literals in certain JavaScript code
-  * unit_tests: Add unit tests for OpenSuseBugzillaUtils
-  * unit_tests: Adapt the UI tests to the new kernel bug button
-  * plugins: Introduce OpenSuseIssueReporter for external issue reporting
   * Retry delete_needles job on server restart
   * Add test for _delete_needles
   * feat(OpenQA::Git): Cleanup git dir in commit() on shutdown
   * feat: Improve rendering results on the scheduled product page
+
+-------------------------------------------------------------------
+Mon Jan 12 13:11:23 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1768209690.f34c2973:
   * feat(scheduled-products): Allow adding note to result data
   * docs: Use node_modules target
   * docs: Mention minimum PostgreSQL version
   * ci: Update PostgreSQL in CI/packaging to at least 14
   * Revert "Add MCP tool annotations for Claude connector compliance"
+
+-------------------------------------------------------------------
+Thu Jan 08 17:20:06 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1767868268.dacbd3f7:
   * Add MCP tool annotations for Claude connector compliance
+
+-------------------------------------------------------------------
+Thu Jan 08 10:09:35 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1767864265.63cd20df:
   * Skip caching for KERNEL and INITRD variables
+
+-------------------------------------------------------------------
+Fri Dec 19 21:38:55 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1766150951.2799046e:
   * Coverage of openQA: add folder Client/ in codecov.yaml
   * Improve openQA coverage of _download_handler in Archive.pm
+
+-------------------------------------------------------------------
+Thu Dec 18 17:20:22 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1766053374.57cdeee3:
   * fix(docs): Fix indentation in job template examples
   * feat(Needle::Save): Adapt to new error handling
   * feat(OpenQA::Git): Make error handling more flexible with exceptions
+
+-------------------------------------------------------------------
+Tue Dec 16 15:12:03 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765887110.8fc02990:
+  * Avoid partial deletion of a screenshot if Minion job is aborted
+  * Add `SignalBlocker` to delay signal handling during critical sections
+
+-------------------------------------------------------------------
+Mon Dec 15 14:08:30 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765805960.2112d43d:
   * fix(codecov): Fix wrong casing for 'fully_covered' entries
+
+-------------------------------------------------------------------
+Fri Dec 12 21:07:39 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765535865.b566a24c:
   * fix(codecov): Be strict about coverage thresholds
-  * worker: Add coverage for OVS DBus checks
   * Show jobs that have been cloned when `t` parameter is used on overview
+
+-------------------------------------------------------------------
+Thu Dec 11 17:35:22 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765469360.5c0525b5:
+  * worker: Add coverage for OVS DBus checks
   * Fix overview when filtering by test and module result at the same time
   * Return signal as part of run_cmd result
   * Add scanner for untracked screenshots
   * KTAP: Properly hide details of a skipped subtest
   * docs: Restory logic of the sentence about NFT vs firewalld
   * docs: Clarify DHCP/RA availability on MM networks
+  * feat: Allow to configure key+secret with env variables
+
+-------------------------------------------------------------------
+Tue Dec 09 14:19:12 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765286149.3debb8ea:
   * KTAP: Don't increment parsed_lines_count in "SKIP" lines
   * KTAP: Define unparsed_lines and parsed_lines_count
+
+-------------------------------------------------------------------
+Mon Dec 08 20:38:05 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765217707.d6e697fd:
   * Test commenting on overview page together with TODO filter
-  * Avoid partial deletion of a screenshot if Minion job is aborted
-  * Add `SignalBlocker` to delay signal handling during critical sections
   * Fix job IDs that are considered for mass-commenting on overview page
-  * feat: Allow to configure key+secret with env variables
+
+-------------------------------------------------------------------
+Sat Dec 06 09:10:00 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1765009312.be30f6e0:
   * README: Remove left-over empty badge reference
-  * Bump js-yaml from 4.1.0 to 4.1.1
+
+-------------------------------------------------------------------
+Mon Dec 01 10:09:00 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1764349525.ffb59486:
   * Also use TIMEOUT_SCALE for priority malus calculation
   * docs: Fix wrapping and typo
   * Document multi machine ovs flow setup and IPv6 usage
@@ -563,14 +805,29 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * Emit restart events when job restarted automatically
   * Add debug message about priority malus
   * Fix ordering of job groups after 2ad929ceca43d
+
+-------------------------------------------------------------------
+Sat Nov 22 05:38:10 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1763743683.1da97aa2:
   * Optimize Job Group dropdown database query
   * Split dependency handling out of create_from_settings
   * Give jobs with high MAX_JOB_TIME a priority malus
   * Make the number of builds per group on the front page configurable
   * docs: Feature auto-generated deepwiki less prominently
   * apparmor: Additional perms for tests in osado to run
+
+-------------------------------------------------------------------
+Fri Nov 14 22:09:18 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1763153079.b36ac754:
   * Skip a build if there are no jobs
   * Remove unused variable
+
+-------------------------------------------------------------------
+Tue Nov 11 18:10:52 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1762879267.52145e9a:
   * Avoid installing unwanted package versions
   * Fix check in git_clone for dirty git dir
   * Prevent `t/24-worker-webui-connection.t` from running into timeout
@@ -578,12 +835,21 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * Fix sporadic failures in `t/ui/10-tests_overview.t`
   * Adapt os-autoinst-scripts reference after rename
   * Properly conclude scheduling if there are no jobs
+
+-------------------------------------------------------------------
+Tue Nov 04 01:24:33 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1762193001.2f6e71ca:
   * Potentially improve stability of `t/ui/16-tests_job_next_previous.t`
   * Avoid failing check in `t/16-utils-runcmd.t`
   * README: Add deepwiki badge
   * Dependency cron 2025-10-27
   * Retry image optimizations
-  * Dependency cron 2025-10-23
+
+-------------------------------------------------------------------
+Fri Oct 24 16:35:40 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1761296552.ae7c17aa:
   * Add tests for file_security_policy
   * Pass parameter $is_userfile to log_url
   * Remove redirect and serve files as attachments if necessary
@@ -591,28 +857,90 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * Use direct link to subdomain for the test assets
   * Revert "Don't redirect to asset domain via /needles/ID/(image|json) route"
   * Revert "Don't redirect screenshots, thumbs and needles to files_domain"
+
+-------------------------------------------------------------------
+Thu Oct 23 14:14:37 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1761228068.a3a7f84d:
+  * Dependency cron 2025-10-23
+
+-------------------------------------------------------------------
+Tue Oct 21 10:09:10 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1761037330.ad78558e:
   * Avoid needless check for number of clones
   * Avoid creation of `git_clone` tasks for jobs with empty `DISTRI`
-  * build(deps): bump ace-builds from 1.43.3 to 1.43.4
+
+-------------------------------------------------------------------
+Sun Oct 19 16:11:35 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1760515610.a802d1dd:
   * Lower the prio of archiving jobs to avoid piling up finalize jobs
   * Add signatures in Schema::Result::ApiKeys
+
+-------------------------------------------------------------------
+Sun Oct 12 05:13:00 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1760245411.e3aeaaec:
   * Dependency cron 2025-10-12
+
+-------------------------------------------------------------------
+Fri Oct 10 15:12:32 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1760108577.fd2f2a48:
   * Log unavailability due to high load only as warning
   * Filter job stats of scheduled products also by arch and build
   * Document how to disable image optimizations
   * Make image optimization errors stop the job producing an incomplete job
   * Improve wording in description about job stats API
   * Run `optipng` for real and handle errors if it fails
+
+-------------------------------------------------------------------
+Wed Oct 08 10:12:41 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759912962.689b31ed:
   * Avoid failing `obs_rsync_run` jobs when restarting `openqa-gru.service`
+
+-------------------------------------------------------------------
+Tue Oct 07 11:14:46 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759834744.06a7028a:
   * parser: ktap: Return earlier if subtest result is SKIP
   * parser: ktap: Fallback to subtest index if name is not available
+
+-------------------------------------------------------------------
+Fri Oct 03 14:13:10 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759440640.bb989cab:
   * Don't redirect to asset domain via /needles/ID/(image|json) route
+
+-------------------------------------------------------------------
+Thu Oct 02 18:13:03 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759402042.49e912c3:
   * Introduce array job settings
   * Retry `obs_rsync_update_*` tasks if Gru service terminates
+
+-------------------------------------------------------------------
+Wed Oct 01 17:12:54 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759329378.3b8e8685:
   * Reduce the number of required checks for Mergify again
   * Ensure a failing cache service is seen as such by the worker/scheduler
+
+-------------------------------------------------------------------
+Tue Sep 30 16:13:28 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759248257.70b23b32:
   * Increase number of successful checks in Mergify config again
   * Disable Helm Chart CI checks temporarily
+  * Consider all jobs for cleanup, not just jobs that were executed
+  * Verify job deletion when dependent job present
+
+-------------------------------------------------------------------
+Mon Sep 29 15:13:06 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1759149505.49c40b0b:
   * Use always the latest PostgreSQL image in Compose and documentation
   * Update the PostgreSQL version in the contributing documentation
   * Update PostgreSQL data path in Docker Compose file after updating to v18
@@ -620,45 +948,94 @@ Thu Apr 02 07:37:36 UTC 2026 - okurz@suse.com
   * mergify: Allow more time for dependabot update reaction
   * Remove version property from docker-compose
   * README: Fix openQA badge after switch to UEFI
+  * build(deps-dev): bump eslint from 9.35.0 to 9.36.0
+
+-------------------------------------------------------------------
+Fri Sep 26 21:12:56 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758910696.7549bb98:
   * Replace argument assignment with signatures on ObsRsync/Task
   * Enable automatic dependabot updates again after improvements
   * docs: Add instructions for a continuous dashboard setup
-  * Consider all jobs for cleanup, not just jobs that were executed
-  * Verify job deletion when dependent job present
   * Replace argument assignment with signatures Folders package
   * Fully cover WebAPI::Plugin::ObsRsync::Controller::Folders
+  * script: Also use OPENQA_WEBUI_MODE for related services
+
+-------------------------------------------------------------------
+Thu Sep 25 17:12:45 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758814503.03d923a4:
   * Use Mojo::File in Worker for is_qemu_running
   * Use Mojo::File in Worker for meminfo
-  * script: Also use OPENQA_WEBUI_MODE for related services
   * Document archiving of important jobs
+
+-------------------------------------------------------------------
+Wed Sep 24 16:13:41 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758729450.b88c0b40:
   * Reject jobs if worker is broken when receiving a new job
+
+-------------------------------------------------------------------
+Wed Sep 24 14:13:16 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758711845.e5c02221:
   * script: Allow to configure openQA mode
   * t: run at least once Memorylimit register with max_rss_limit > 0
   * Replace argument assignation with signatures on MemoryLimit
+
+-------------------------------------------------------------------
+Tue Sep 23 14:13:26 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758632540.ed64f555:
   * Check for consistent zypper setting for auto/continuous-update
-  * Don't redirect screenshots, thumbs and needles to files_domain
   * Ignore scripts when installing NPM packages in RPM builds
   * Avoid installing NPM dev deps unnecessarily in RPM builds
   * Avoid installing NPM dev deps unnecessarily in `Makefile`
+
+-------------------------------------------------------------------
+Mon Sep 22 15:12:15 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758551670.e3aa50f9:
+  * Don't redirect screenshots, thumbs and needles to files_domain
   * Cleanup .gitignore files
-  * build(deps-dev): bump eslint from 9.35.0 to 9.36.0
   * Update Dockerfile to setup proxy via script/configure-web-proxy
   * Redirect test assets to file_domain if configured
   * Make sure assets are generated before listing them
-  * docs: Fix shell syntax in development setup
-  * Replace argument assignment with signatures on ObsRsync
-  * Treat SVG files as attachment for security reasons
-  * Fix LegacyKeyValueFormat on openqa_data/Dockerfile
-  * bootstrap-container: Workaround SELinux issue by split of zypper calls
 
 -------------------------------------------------------------------
-Thu Sep 18 09:04:08 UTC 2025 - okurz@suse.com
+Sat Sep 20 20:13:19 UTC 2025 - okurz@suse.com
 
-- Update to version 5.1758186241.6227e906:
+- Update to version 5.1758307053.75367131:
+  * docs: Fix shell syntax in development setup
+  * Replace argument assignment with signatures on ObsRsync
+
+-------------------------------------------------------------------
+Fri Sep 19 13:38:27 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758276230.9cef0ea3:
+  * Treat SVG files as attachment for security reasons
+  * Fix LegacyKeyValueFormat on openqa_data/Dockerfile
+
+-------------------------------------------------------------------
+Thu Sep 18 19:12:57 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758194931.aa2c9a8b:
+  * bootstrap-container: Workaround SELinux issue by split of zypper calls
   * Prevent abort while doing database interaction in Delete needles
+
+-------------------------------------------------------------------
+Tue Sep 16 16:21:17 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758036156.d3e99d09:
   * Temporarily require manual review of Dependabot PRs
   * Prevent warning from `DBIx::Class::Storage::TxnScopeGuard`
   * Avoid sporadic test failures in `t/ui/15-comments.t`
+  * Worker: Detect IPMI config and shutdown SUT when unused
+
+-------------------------------------------------------------------
+Mon Sep 15 18:12:46 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757954579.4d0727fe:
   * Use of finish method in place of close_connection
   * Clean up streamtext signature from unused params
   * Fix invocation of `validateJobGroupForm()` when expanding group editor
@@ -669,14 +1046,33 @@ Thu Sep 18 09:04:08 UTC 2025 - okurz@suse.com
   * build(deps-dev): bump debug from 4.4.1 to 4.4.3
   * Update automatically updated group properties in UI
   * Automatically increase important durations to match regular durations
+
+-------------------------------------------------------------------
+Sun Sep 14 17:12:54 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757798615.f8615cd6:
   * t: Fix comparison by interpolating variable
+
+-------------------------------------------------------------------
+Fri Sep 12 19:18:15 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757696527.61d51d58:
   * Avoid partitioning in raid0 device
-  * Worker: Detect IPMI config and shutdown SUT when unused
   * Avoid "Server returned …" error if there is an actual error message
   * Highlight invalid/problematic group config fields in UI when applying
   * Improve validation of cleanup configuration
-  * Add usage examples of netrc to the access tokens
   * AMQP: include list of failed modules in job.done messages
+
+-------------------------------------------------------------------
+Thu Sep 11 15:13:17 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757597587.61c22a78:
+  * Add usage examples of netrc to the access tokens
+
+-------------------------------------------------------------------
+Thu Sep 11 10:13:00 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757512851.666d7dc7:
   * build(deps): bump datatables.net-bs5 from 2.3.3 to 2.3.4
   * Fix regression handling retention of important jobs
   * Use newly introduced `_all_parents` function in `_sort_dep` as well
@@ -684,40 +1080,77 @@ Thu Sep 18 09:04:08 UTC 2025 - okurz@suse.com
   * build(deps-dev): bump eslint from 9.34.0 to 9.35.0
   * Fix typos in PosgreSQL related documentation
   * Use autoyast ERB helper to detect disk dynamically
-  * Dependency cron 2025-09-06
   * Use find_or_create when registering assets
   * Stop logging confusing exception when GruTask is gone
+  * parser: ktap: Don't add skipped subtests to output
+  * t: Use proper test description strings in 03-auth.t
+  * t: Condense variable assignment with ok-check
+
+-------------------------------------------------------------------
+Mon Sep 08 08:13:22 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757135418.ec726f9c:
+  * Dependency cron 2025-09-06
+
+-------------------------------------------------------------------
+Fri Sep 05 21:13:12 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757084700.fad3731d:
   * Ensure no untracked files in unit test run part 2
   * Dependency cron 2025-09-05
-  * parser: ktap: Don't add skipped subtests to output
   * Add MCP support as an optional feature
   * Allow specifying a full domain via `file_security_policy`
+  * Allow using a different subdomain via `file_security_policy`
+  * t: Ensure no leftover files in git directory
+  * ci: Ensure clean git status with Test::CheckGitStatus
+
+-------------------------------------------------------------------
+Thu Sep 04 17:13:00 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757005118.aac56dbc:
   * CI: Fix SLE_15_SP6_Backports repo lookup order
   * Add perl(MCP) dependency in preparation for AI support
   * build(deps-dev): bump @humanfs/node from 0.16.6 to 0.16.7
   * Revert "MCP: Add MCP support as an optional feature"
   * Fix typo on Contributing documentation
-  * Allow using a different subdomain via `file_security_policy`
   * Add MCP support as an optional feature
   * Reword `can't write` to `Cannot write` as suggested by review comment
   * Ensure destination dir for asset downloads exists when cloning jobs
-  * Dependency cron 2025-09-04
   * build(deps): bump ace-builds from 1.43.2 to 1.43.3
+
+-------------------------------------------------------------------
+Thu Sep 04 05:13:28 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1756962167.74f0204f:
+  * Dependency cron 2025-09-04
+
+-------------------------------------------------------------------
+Wed Sep 03 14:13:20 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1756905114.bb4fa746:
   * Fix syntax error in nginx config
-  * t: Ensure no leftover files in git directory
-  * ci: Ensure clean git status with Test::CheckGitStatus
   * Mark unconfigured api route log as uncoverable statement
-  * t: Use proper test description strings in 03-auth.t
-  * t: Condense variable assignment with ok-check
   * Increase test coverage for lib/OpenQA/WebAPI/Description.pm
   * parser: ktap: Don't write diagnostic data into $subtest_name
   * Extend tests for configuring subdomain to serve files
   * Avoid job terminated unexpectedly with signal handler in delete needles
   * Allow configuring subdomain for serving logs/assets more securely
-  * docs: Fix typo in path to script folder
-  * build(deps): bump bootstrap from 5.3.7 to 5.3.8
   * Do not invoke Mojo::IOLoop->remove twice
   * Add support for Bearer token authentication
+  * Worker::Engines::isotovideo: Simplify using more Mojo::File
+  * Worker::Engines::isotovideo: Remove obsolete comment
+
+-------------------------------------------------------------------
+Fri Aug 29 17:11:31 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1756479924.9488e2cc:
+  * docs: Fix typo in path to script folder
+
+-------------------------------------------------------------------
+Fri Aug 29 10:12:48 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1756374919.f1ac1b58:
+  * build(deps): bump bootstrap from 5.3.7 to 5.3.8
   * build(deps-dev): bump eslint from 9.33.0 to 9.34.0
   * parser: ktap: Sanitize spaces from group name
   * Cleanup unused parameter in streamtext
@@ -727,17 +1160,40 @@ Thu Sep 18 09:04:08 UTC 2025 - okurz@suse.com
   * Disallow browsing HTML assets/results/logs by default
   * Extend coverage on streamtext function of Running.pm
   * Fix Too few arguments for subroutine error on close_connection
+  * Handle 'expand_placeholders' return value consistently
+
+-------------------------------------------------------------------
+Tue Aug 19 15:14:15 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1755616303.131c0f0a:
   * Add space in concatenation of args and string for the fall back note
+
+-------------------------------------------------------------------
+Tue Aug 19 13:11:46 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1755609067.e3c951fe:
   * Stash gru_dependencies to avoid helper usage in view
   * Move infopanel gru task link creation to the controller
   * Create test for GRU task in test details
   * Link minion job from openQA job with waiting task
-  * Handle 'expand_placeholders' return value consistently
-  * Use backticks in docs for querying job settings
-  * Worker::Engines::isotovideo: Simplify using more Mojo::File
-  * Worker::Engines::isotovideo: Remove obsolete comment
+
+-------------------------------------------------------------------
+Mon Aug 18 09:11:01 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1755504216.b51ff4b1:
   * Use signatures in worker reactor error handler
   * Use signatures in worker job code and related mocking
+
+-------------------------------------------------------------------
+Sat Aug 16 19:11:41 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1755366162.ba8741a1:
+  * Use backticks in docs for querying job settings
+
+-------------------------------------------------------------------
+Fri Aug 15 20:11:29 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1755247660.ecd6aa3e:
   * Fix return code of worker in error case
   * Prevent worker from getting stuck on fatal error during upload
   * Describe job_settings/jobs in UsersGuide
@@ -745,11 +1201,16 @@ Thu Sep 18 09:04:08 UTC 2025 - okurz@suse.com
   * Add perlpod for job_settings/jobs
   * Fix generation of PDF documentation
   * Remove outdated comment in worker error handling
-  * Add instructions for running a openQA/tools dev environment
   * tests: Extend ktap parser tests to cover TODO directive
   * parser: ktap: Polish the ktap parser
   * parser: ktap: Add handling of the TODO directive
   * parser: ktap: Refactor to use internal state
+
+-------------------------------------------------------------------
+Wed Aug 13 15:15:09 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1755087548.49d62b92:
+  * Add instructions for running a openQA/tools dev environment
 
 -------------------------------------------------------------------
 Tue Aug 12 15:11:15 UTC 2025 - okurz@suse.com
@@ -12868,4 +13329,3 @@ Thu Jun 13 16:09:32 UTC 2013 - lnussel@suse.de
 Tue May 14 15:32:56 UTC 2013 - lnussel@suse.de
 
 - initial package
-
