@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  1 14:50:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.1.0
+  * Fix nxos sh license usage for nxos 10.
+  * Fix alcatel_sros sh lag when there are lag names.
+
+-------------------------------------------------------------------
 Sun Mar  8 21:10:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.0.0:
