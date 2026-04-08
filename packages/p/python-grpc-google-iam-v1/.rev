@@ -101,4 +101,12 @@
   * Regenerate pb2 files with protoc v25.3 (forwarded request 1312715 from glaubitz)</comment>
     <requestid>1312818</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e4024d50cbaf8badc791f75f967becdb</srcmd5>
+    <version>0.14.4</version>
+    <time>1775661428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345125</requestid>
+  </revision>
 </revisionlist>
