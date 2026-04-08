@@ -432,4 +432,12 @@ Qt5 alternative.</comment>
     <comment>Update to 1.14.3</comment>
     <requestid>1337286</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>966a373d431e3498e7c5ec8ff00d80bb</srcmd5>
+    <version>1.15.0</version>
+    <time>1775661343</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.15.0</comment>
+    <requestid>1345124</requestid>
+  </revision>
 </revisionlist>

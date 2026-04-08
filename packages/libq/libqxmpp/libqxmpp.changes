@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Apr  8 06:45:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.15.0
+  * Make QXmppTask `co_await`-able and migrate all async code to
+    C++20 coroutines
+  * Replace QCA dependency with direct OpenSSL 3.0+ usage
+  * Use constant-time comparison for OMEMO HMAC verification
+    fixing timing attacks on OMEMO
+  * Send client locale in XMPP stream open to server
+  * CarbonManagerV2: Add bindable enabled() property
+  * Add QXmppBitsOfBinaryDataList::find() convenience method
+  * Docs: Add option to generate docbook
+  * CMake: Auto-enable OMEMO and GStreamer support when
+    dependencies are found
+  * CMake: Make PkgConfig usage optional
+  * CMake: Rename `BUILD_TESTS` option to `BUILD_TESTING`
+  * Drop Qt 5 support, require Qt 6.4
+
+-------------------------------------------------------------------
+Sat Apr  4 07:27:48 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to 1.14.6:
+  * Fix parsing of XML namespace prefixes in extension elements
+  * JMI: Fix finish() emitting closed() with empty reason/migratedTo
+  * JMI: Fix duplicate closed() signal in handleExistingSession
+  * JMI: Echo `<finish/>` back when receiving one per XEP-0353 §3.7
+  * Fall back to password auth when FAST token is rejected
+  * Fix memory leak in OmemoLibPtr::ptrRef()
+  * CMake: Fix static build failing due to unexported internal OBJECT library
+
+-------------------------------------------------------------------
 Fri Mar  6 08:37:57 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.14.3

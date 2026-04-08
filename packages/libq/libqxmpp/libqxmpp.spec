@@ -16,9 +16,11 @@
 #
 
 
-%define sover 8
+%define qt6_version 6.4.0
+
+%define sover 9
 Name:           libqxmpp
-Version:        1.14.3
+Version:        1.15.0
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
@@ -28,16 +30,23 @@ Source1:        https://download.kde.org/unstable/qxmpp/qxmpp-%{version}.tar.xz.
 Source2:        qxmpp.keyring
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+# The default GCC version is too old in Leap 15 and 16
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc14-PIE
+BuildRequires:  gcc14-c++
+%endif
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} <= 1699
+BuildRequires:  gcc15-PIE
+BuildRequires:  gcc15-c++
+%endif
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qca-qt6)
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Core5Compat)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Test)
-BuildRequires:  cmake(Qt6Xml)
-BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.20
 BuildRequires:  pkgconfig(libomemo-c)
+BuildRequires:  pkgconfig(openssl) >= 3.0
 
 %description
 QXmpp is a cross-platform C++ XMPP client library based on Qt and C++.
@@ -73,11 +82,19 @@ This packages provides documentation of Qxmpp library API.
 %build
 # Due to the cmake maintainers bad idea, CMAKE_INSTALL_DOCDIR has to be redefined
 %cmake_qt6 \
-  -DWITH_GSTREAMER=ON \
-  -DCMAKE_INSTALL_DOCDIR=%{_datadir}/doc/qxmpp \
-  -DBUILD_DOCUMENTATION=ON \
-  -DBUILD_TESTS=ON \
-  -DBUILD_OMEMO=ON
+  -DCMAKE_INSTALL_DOCDIR:STRING=%{_datadir}/doc/qxmpp \
+  -DBUILD_DOCUMENTATION:BOOL=TRUE \
+  -DBUILD_TESTING:BOOL=TRUE \
+  -DBUILD_EXAMPLES:BOOL=FALSE \
+%if 0%{?suse_version} == 1500
+  -DCMAKE_C_COMPILER:STRING=gcc-14 \
+  -DCMAKE_CXX_COMPILER:STRING=g++-14
+%endif
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} <= 1699
+  -DCMAKE_C_COMPILER:STRING=gcc-15 \
+  -DCMAKE_CXX_COMPILER:STRING=g++-15
+%endif
+%{nil}
 
 %qt6_build
 
