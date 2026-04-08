@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  5 15:35:59 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 2026.1:
+  - Upstream version 2026a released 2026-03-02T06:59:49+00:00
+  - Since 2022 Moldova has observed EU transition times, that is,
+    it has sprung forward at 03:00, not 02:00, and has fallen back
+    at 04:00, not 03:00.
+  - Remove Europe/Chisinau from zonenow.tab, as it now agrees with
+    Europe/Athens for future timestamps.
+
+-------------------------------------------------------------------
 Tue Jan 27 21:35:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.3:
