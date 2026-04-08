@@ -7,4 +7,12 @@
     <comment>Submit Go-based Jsonnet implementation as it is required by Agama.</comment>
     <requestid>1090699</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fd5c215ec0658e65e65bee66e4921136</srcmd5>
+    <version>0.22.0</version>
+    <time>1775661220</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.22.0.</comment>
+    <requestid>1344944</requestid>
+  </revision>
 </revisionlist>

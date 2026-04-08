@@ -1,7 +1,7 @@
 #
-# spec file for package name
+# spec file for package golang-github-google-jsonnet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           golang-github-google-jsonnet
-Version:        0.20.0
+Version:        0.22.0
 Release:        0
 Summary:        Jsonnet implementation in pure Go
 License:        Apache-2.0
@@ -46,7 +46,6 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    ./cmd/jsonnetfmt
-
 
 go build \
    -mod=vendor \

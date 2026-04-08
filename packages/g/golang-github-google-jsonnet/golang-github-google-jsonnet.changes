@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Tue Apr 07 09:28:04 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to version 0.22.0:
+  * release: v0.22.0
+  * refactor: use MaxStack as depth limit instead of fixed constant
+  * fix: add missing linter golden files for cyclic tests
+  * fix: add stack frame accounting to manifest builtins
+  * Extend "Build and Publish Python Package" workflow to build Linux aarch64 wheels
+  * release: prepare to release v0.22.0-rc1
+  * deps: update referenced github actions to latest
+  * update cpp-jsonnet to (unreleased) 3a7b2a565827635615f8a9432d94941e2a827c70
+  * print names of reformatted files when using jsonnetfmt --test or --in-place
+  * update cpp-jsonnet to (unreleased) 833f18402b6b6a2da0b2fae75446a1e14b9116dd
+  * improve handling of YAML document streams in std.parseYaml
+  * restrict bitwise operations argument range to the safe-integer range
+  * chore: update stdlib_smoke_test.jsonnet with with float closing test
+  * add test cases for add_plus_object formatter pass
+  * simplify and clean up formatter_test
+  * add parens where necessary when converting implicit-plus to explicit-plus
+  * extract precedence info from internal/parser to a new internal/ast package
+  * update cpp-jsonnet to (unreleased) e4981ff1199f24fc6d3110311196aebfeca76eca
+  * chore(deps): bump the go_modules group across 2 directories with 1 update
+  * restrict file writes for --multi to the specified output directory
+  * chore: update to Go 1.24.5 to get support for os.Root
+  * chore: regenerate Bazel files, use go.mod to specify Go SDK version
+  * chore: update Bazel, remove WORKSPACE etc, update Bazel lockfile
+  * fix: desugar the index expression of a super[e]
+  * chore: remove Go Releaser archive naming overrides
+  * update cpp-jsonnet to unreleased commit 3560b6d317b127dc901ad4674312bfd12d95a301
+  * import golang golden overrides from cpp-jsonnet
+  * feat: add flag --no-trailing-newline to prevent adding the trailing newline on outputs
+  * chore: extract repeated interpreter-construction code from eval functions
+  * fix: Missing trailing newline when using both --multi and --string options
+  * Change FindDependencies to use functional options
+  * Change FindDependencies to optionally follow symlinks
+  * fix linter to add optional parameters to std.manifestJsonEx
+  * make linter aware of clamp function
+  * fix: return null if the provided string to parseYaml did not yield any result
+  * fix: handle negative range by returning an empty array
+  * chore: run go fmt (except on stdast.go)
+  * add some security notes about imports
+  * chore: update cpp-jsonnet submodule and stdast
+  * reimplement builtinObjectRemoveKey to support inheritance
+  * fix: do not mutate std.removeAt parameters
+  * linter: rely on ImportAST internal caching, isolate variables for each snippet
+  * Optimize runtime complexity of linter when passing in multiple snippets.
+  * inline processing of number text into lexNumber
+  * add end to end tests for number literals with underscore digit separators
+  * fix underscore handling in numbers to avoid repeated fractions or exponents
+  * Simpler to not special-case consecutive _s.
+  * Add a test for _123 lexing as identifier.
+  * Just use struct literals.
+  * Add exceptional test cases. Make case table less crazy.
+  * Fix the test.
+  * More tests. Some fail.
+  * Initial separator lexing.
+  * doc: some cleanup in the README.md
+  * fix(imports): Cache the error too in importAST().
+  * Use predefined types for pre-commit over file endings
+  * chore: bring all the number lex tests into one table driven test
+  * add trailing newline in testdata/builtinIsNull{,2}.jsonnet
+  * feat: update parameter name
+  * feat: implement std.isNull
+  * update bazel deps and cpp-jsonnet to commit bd1f67e305
+  * chore: make CI build the bazel example with multiple Bazel versions
+  * Fix bazel run
+  * chore: add test cases for std.manifestYamlDoc error reporting
+  * fix: Unchecked error in std.manifestYamlDoc().
+  * doc: add an explanatory sentence in the REAMDE about WASM
+  * chore: fix references to Go version in the README
+  * release: prepare to release v0.21.0
+  * chore: fix release action to avoid creating two releases
+  * Remove dependency on cpp-jsonnet submodule from C bindings
+  * fix: Fix error messages when a comprehension iterates over a non-array.
+  * ci: check that the example using a bazel module builds
+  * feat: add an example bazel module + go binary using the library
+  * fix: passing name= to go_sdk.download() breaks use of the bazel module
+  * ci: create a stable source archive attached to the release
+  * release: prepare to release v0.21.0-rc2
+  * Fix compatibility with setuptools 72
+  * ci: build gojsonnet wheels on Mac OS
+  * chore: bazelignore the cpp-jsonnet subdirectory
+  * ci: pin bazel version to 7.5.0, and require up-to-date lockfile for CI build
+  * chore: Switch to Go 1.23.7 and update dependencies (#794)
+  * feat: add testdata coverage for minArray/maxArray onEmpty error
+  * feat: support onEmpty optional parameter on std.minArray,std.maxArray
+  * fix: output original value from array in `std.minArray` and `std.maxArray` instead of result of `keyF`
+  * Use default options for formatter tests
+  * Fix an out-of-bounds array access when formatting some empty comment
+  * release: prepare to release v0.21.0-rc1
+  * ci: fix incorrect use of target_commitish in goreleaser release
+  * ci: grant goreleaser write permission to create releases
+  * inject proposed version when running goreleaser
+  * chore: teach update_cpp_jsonnet.sh to pull a named release version
+  * setup.py: be more verbose in the go build
+  * reformat setup.py
+  * ci: python cibuildwheel updates for go-jsonnet
+  * tests: fix python compat test to allow pre-release versions
+  * ci: update versions of referenced github actions in ci.yml
+  * ci: run build-and-test on pushes to prepare-release branch
+  * ci: copy the publish-python.yml workflow from C++ jsonnet
+  * ci: configure goreleaser to create draft GitHub releases
+  * ci: trigger release workflow manually
+  * ci: update release workflow action references
+  * chore: update golang.org/x/crypto to v0.33.0
+  * switch to go mod based goveralls in CI
+  * port some Python wrapper code fixes from C++ jsonnet
+  * update cppjsonnet and depend on a specific commit of jsonnet
+  * update Bazel rules with gazelle and manually
+  * remove unmaintained travis config
+  * remove outdated .tool-versions config
+  * feat: add |||- chomped text block syntax (#773)
+  * chore: run GitHub CI action on more pull request activity
+  * feat: update cpp-jsonnet and stdlib to latest (unreleased)
+  * feat: add builtin atan2 and hypot functions
+  * fix: use debugValueToString for debugger operations (#759)
+  * Update Go versions in CI. (#758)
+  * Fix linter: using a local in an assertion. (#723)
+  * chore: remove refs to deprecated io/ioutil (#716)
+  * Add optional parameters to manifestYamlStream in linter (#732)
+  * Fix field visibility in objectHas for extended objects (#737)
+  * chore(deps): bump golang.org/x/crypto from 0.9.0 to 0.17.0 (#738)
+  * chore: fix CI to follow the deprecation of goreleaser flags (#755)
+  * chore: update rules_go and gazelle version to fix bazel build (#756)
+  * chore: fix compilation error of valueToString in debugger.go (#754)
+  * feat: Go implementation for manifestYamlDoc and escapeStringJson (#742)
+  * feat: implement std.splitLimitR (#745)
+  * Remove dependency on gen to generate sets (#746)
+  * bump cpp_jsonnet dependency to align with v0.20.0 release (#748)
+  * fix: fix conversion from int to float64 (#753)
+  * Gracefully handle encountered regular expression when running jsonnetfmt (#724)
+  * feat: add debugger support (#739)
+  * fix: add std.objectKeysValues to jsonnet-lint (#706)
+  * Expose "unparse", FormatNode and RawAST (#710)
+  * Teach jsonnet-lint about optional parameters of std.manifestYamlDoc (#705)
+  * chore: bump go to 1.20 (#707)
+  * Remove .DS_Store (#703)
+  * feat: add std reverse linter (#709)
+  * feat: Add more math functions (#702)
+  * feat: implement std.avg (#700)
+  * feat: add more crypto functions (#699)
+  * feat: Add support for bzlmod (#698)
+  * Implement std.trim for string (#684)
+  * Adds std.any and std.all to jsonnet-lint (#695)
+  * feat: implement std.maxArray (#696)
+  * feat: implement std.equalsIgnoreCase (#692)
+  * feat: implement std.remove and std.removeAt (#689)
+  * feat: implement objectRemoveKey (#686)
+  * Resolves a false-positive detection of multi-doc YAML streams (#693)
+  * feat: implement std.minArray (#685)
+  * feat: implement std.contains (#691)
+
+-------------------------------------------------------------------
 Tue May 16 06:04:49 UTC 2023 - igonzalezsosa@suse.com
 
 - Update to version v0.20.0:
