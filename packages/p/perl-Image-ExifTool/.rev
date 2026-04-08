@@ -1167,4 +1167,18 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     when parsing corrupted CBOR information</comment>
     <requestid>1343229</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>2e81a4cb4c1aa44728c8cf2966132e57</srcmd5>
+    <version>13.54</version>
+    <time>1775661228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 13.54:
+  * Added a new PentaxModelID
+  * Decode timed GPS from another DJI model
+  * Decode more information from Apple live photo videos
+  * Updated DICOM tags to 2026b specification
+  * Patched potential security issue
+  * Patched to allow spaces in Windows title strings</comment>
+    <requestid>1344994</requestid>
+  </revision>
 </revisionlist>

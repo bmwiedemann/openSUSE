@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:56:35 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.54:
+  * Added a new PentaxModelID
+  * Decode timed GPS from another DJI model
+  * Decode more information from Apple live photo videos
+  * Updated DICOM tags to 2026b specification
+  * Patched potential security issue
+  * Patched to allow spaces in Windows title strings
+
+-------------------------------------------------------------------
 Tue Mar 24 08:10:55 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.53:
