@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 31 20:12:18 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 10.0.5 (jsc#PCT-1097)
+  + add new option to apply tags when image gets uploaded
+  + add new option to set the channel timeout during upload
+
+-------------------------------------------------------------------
 Thu May 29 15:56:54 UTC 2025 - João Mello <joao.mello@suse.com>
 
 - Create subnet and security-group when they are not provided via config

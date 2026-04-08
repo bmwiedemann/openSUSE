@@ -1,7 +1,7 @@
 #
 # spec file for package python-ec2imgutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %define upstream_name ec2imgutils
 Name:           python-ec2imgutils
-Version:        10.0.4
+Version:        10.0.5
 Release:        0
 Summary:        Image management utilities for AWS EC2
 License:        GPL-3.0-or-later
