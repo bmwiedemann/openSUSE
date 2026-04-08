@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  7 18:57:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.17.1
+  * fix for the QtCreator integration not working properly
+  * Fix a broken check with Qt 6.11
+- Drop patch, merged upstream:
+  * 0001-Fix-FullyQualifiedMocTypes-giving-false-positives-fo.patch
+
+-------------------------------------------------------------------
 Tue Mar 10 09:24:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

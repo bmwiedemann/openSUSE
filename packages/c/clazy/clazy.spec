@@ -16,19 +16,17 @@
 #
 
 
-%define release_ver v1.17
+%define release_ver v1.17.1
 Name:           clazy
-Version:        1.17
+Version:        1.17.1
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
 URL:            https://apps.kde.org/clazy/
-Source0:        https://download.kde.org/stable/clazy/%{version}/src/%{name}-%{version}.tar.xz
-Source1:        https://download.kde.org/stable/clazy/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source0:        https://download.kde.org/stable/clazy/%{version}/src/%{name}-v%{version}.tar.xz
+Source1:        https://download.kde.org/stable/clazy/%{version}/src/%{name}-v%{version}.tar.xz.sig
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/alex@key1.asc?ref_type=heads
 Source2:        clazy.keyring
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-FullyQualifiedMocTypes-giving-false-positives-fo.patch
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 19.0
 BuildRequires:  cmake >= 3.13
