@@ -1179,4 +1179,13 @@
   Note that (lib)-alternatives is suse specific</comment>
     <requestid>1342186</requestid>
   </revision>
+  <revision rev="111" vrev="6">
+    <srcmd5>5a907677732d479fb43de4f4f247a80e</srcmd5>
+    <version>2.13.1</version>
+    <time>1775661225</time>
+    <user>dimstar_suse</user>
+    <comment>- Make choice for transfiletriggerin or filetriggerin rpm version
+  depend (boo#1261544)</comment>
+    <requestid>1344972</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:55:41 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Make choice for transfiletriggerin or filetriggerin rpm version
+  depend (boo#1261544)
+
+-------------------------------------------------------------------
 Tue Mar 24 08:19:51 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch man-db-4_alpha_po4a.dif (boo#1260337)

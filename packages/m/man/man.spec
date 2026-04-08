@@ -290,11 +290,8 @@ end
 --
 }
 
-%if 0%{?suse_version} >= 1699
+%if %{lua: print(rpm.vercmp(rpm.expand("%rpmversion"), "4.13") >= 0 and 1 or 0)}
 %transfiletriggerin -p <lua> -- %{_mandir}
-%else
-%filetriggerin -p <lua> -- %{_mandir}
-%endif
 %trigger_functions
 stat = posix.stat("%{_localstatedir}/cache/man/index.db")
 if stat then
@@ -314,12 +311,10 @@ else
     end
     execute("%{_bindir}/mandb", "--quiet", "--create")
 end
+%endif
 
-%if 0%{?suse_version} >= 1699
+%if %{lua: print(rpm.vercmp(rpm.expand("%rpmversion"), "4.13") >= 0 and 1 or 0)}
 %transfiletriggerpostun -p <lua> -- %{_mandir}
-%else
-%filetriggerpostun -p <lua> -- %{_mandir}
-%endif
 %trigger_functions
 stat = posix.stat("%{_localstatedir}/cache/man/index.db")
 if stat then
@@ -339,6 +334,7 @@ else
     end
     execute("%{_bindir}/mandb", "--quiet", "--create")
 end
+%endif
 
 %pre
 test -d var/catman/ && rm -rf var/catman/ || true
