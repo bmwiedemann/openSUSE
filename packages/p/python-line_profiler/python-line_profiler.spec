@@ -1,7 +1,7 @@
 #
 # spec file for package python-line_profiler
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-line_profiler
-Version:        5.0.0
+Version:        5.0.2
 Release:        0
 Summary:        Line-by-line profiler
 License:        BSD-3-Clause
 URL:            https://github.com/pyutils/line_profiler
 Source:         https://files.pythonhosted.org/packages/source/l/line_profiler/line_profiler-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE We do not ship bare python, so don't look for it
-Patch0:         no-python-in-path.patch
-# PATCH-FIX-UPSTREAM gh#pyutils/line_profiler#369
-Patch1:         support-python314.patch
+# PATCH-FIX-UPSTREAM gh#pyutils/line_profiler#430
+Patch0:         do-not-reset-pythonpath.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ipython}

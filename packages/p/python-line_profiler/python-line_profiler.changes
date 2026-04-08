@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr  8 06:01:40 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.2:
+  * ENH: improved type annotations and moved them inline
+  * FIX: Prevented duplicate or inconsistent profiler output under Python
+    3.14 when multiprocessing is used.
+  * ENH: Add %%lprun_all for more beginner-friendly profiling in
+    IPython/Jupyter
+  * FIX: mitigate speed regressions introduced in 5.0.0
+  * ENH: Added capability to combine profiling data both programmatically
+    (LineStats.__add__()) and via the CLI (python -m line_profiler)
+  * FIX: ref-count leaks
+  * FIX: Use import system to locate module file run by kernprof -m
+  * FIX: Move away from older, (temporarily-)deprecated importlib.resources
+    APIs in line_profiler.toml_config
+  * CHANGE: remove default alphabetical sorting of profiled functions
+- Drop patches:
+  * no-python-in-path.patch
+  * support-python314.patch
+- Add patch do-not-reset-pythonpath.patch:
+  * Do not reset PYTHONPATH in two tests.
+
+-------------------------------------------------------------------
 Wed Nov  5 03:33:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0.0:

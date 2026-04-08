@@ -226,4 +226,30 @@
   * Support Python 3.14 sys.monitoring changes.</comment>
     <requestid>1315629</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f65ade46362c66e5eee8b8d276a6b124</srcmd5>
+    <version>5.0.2</version>
+    <time>1775661421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.2:
+  * ENH: improved type annotations and moved them inline
+  * FIX: Prevented duplicate or inconsistent profiler output under Python
+    3.14 when multiprocessing is used.
+  * ENH: Add %%lprun_all for more beginner-friendly profiling in
+    IPython/Jupyter
+  * FIX: mitigate speed regressions introduced in 5.0.0
+  * ENH: Added capability to combine profiling data both programmatically
+    (LineStats.__add__()) and via the CLI (python -m line_profiler)
+  * FIX: ref-count leaks
+  * FIX: Use import system to locate module file run by kernprof -m
+  * FIX: Move away from older, (temporarily-)deprecated importlib.resources
+    APIs in line_profiler.toml_config
+  * CHANGE: remove default alphabetical sorting of profiled functions
+- Drop patches:
+  * no-python-in-path.patch
+  * support-python314.patch
+- Add patch do-not-reset-pythonpath.patch:
+  * Do not reset PYTHONPATH in two tests.</comment>
+    <requestid>1345116</requestid>
+  </revision>
 </revisionlist>
