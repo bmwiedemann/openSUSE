@@ -11,10 +11,10 @@ Subject: [PATCH 1/7] fixes #23668; migrates from pcre to pcre2
  4 files changed, 893 insertions(+), 175 deletions(-)
  create mode 100644 lib/wrappers/pcre2.nim
 
-Index: nim-2.2.6/lib/impure/nre.nim
+Index: nim-2.2.8/lib/impure/nre.nim
 ===================================================================
---- nim-2.2.6.orig/lib/impure/nre.nim
-+++ nim-2.2.6/lib/impure/nre.nim
+--- nim-2.2.8.orig/lib/impure/nre.nim
++++ nim-2.2.8/lib/impure/nre.nim
 @@ -1,6 +1,6 @@
  #
  #            Nim's Runtime Library
@@ -363,10 +363,10 @@ Index: nim-2.2.6/lib/impure/nre.nim
          break
  
        if matchesCrLf and offset < (str.len - 1) and
-Index: nim-2.2.6/lib/impure/re.nim
+Index: nim-2.2.8/lib/impure/re.nim
 ===================================================================
---- nim-2.2.6.orig/lib/impure/re.nim
-+++ nim-2.2.6/lib/impure/re.nim
+--- nim-2.2.8.orig/lib/impure/re.nim
++++ nim-2.2.8/lib/impure/re.nim
 @@ -1,7 +1,7 @@
  #
  #
@@ -769,10 +769,10 @@ Index: nim-2.2.6/lib/impure/re.nim
      prev = match.last + 1
    add(result, substr(s, prev))
  
-Index: nim-2.2.6/lib/wrappers/pcre2.nim
+Index: nim-2.2.8/lib/wrappers/pcre2.nim
 ===================================================================
 --- /dev/null
-+++ nim-2.2.6/lib/wrappers/pcre2.nim
++++ nim-2.2.8/lib/wrappers/pcre2.nim
 @@ -0,0 +1,561 @@
 +#
 +#
@@ -1335,10 +1335,10 @@ Index: nim-2.2.6/lib/wrappers/pcre2.nim
 +{.pop.}
 +{.pop.}
 +
-Index: nim-2.2.6/tests/stdlib/nre/init.nim
+Index: nim-2.2.8/tests/stdlib/nre/init.nim
 ===================================================================
---- nim-2.2.6.orig/tests/stdlib/nre/init.nim
-+++ nim-2.2.6/tests/stdlib/nre/init.nim
+--- nim-2.2.8.orig/tests/stdlib/nre/init.nim
++++ nim-2.2.8/tests/stdlib/nre/init.nim
 @@ -1,6 +1,8 @@
  import unittest
  include nre

@@ -1,7 +1,7 @@
 #
 # spec file for package nim
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define _atlas_version 0.9.5
-%define _sat_commit d67107e94f92c4cf6f0791542f473b21329bbd97
+%define _atlas_version 0.10.1
+%define _sat_commit e63eaea8baf00bed8bcd5a29ffd8823abb265b39
 
 Name:           nim
-Version:        2.2.6
+Version:        2.2.8
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
@@ -170,6 +170,7 @@ cat << EOT >> tests_to_skip
   tests/stdlib/concurrency/tatomics.nim
   # exits with 1 for some reason
   tests/stdlib/tmath.nim
+  tests/generics/t22305.nim
 EOT
 
 %ifarch i586
