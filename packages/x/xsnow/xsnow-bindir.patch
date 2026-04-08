@@ -1,8 +1,7 @@
-Index: xsnow-3.8.1/src/Makefile.am
-===================================================================
---- xsnow-3.8.1.orig/src/Makefile.am
-+++ xsnow-3.8.1/src/Makefile.am
-@@ -23,7 +23,7 @@ SUBDIRS = Pixmaps
+diff -Nur xsnow-3.9.1-orig/src/Makefile.am xsnow-3.9.1/src/Makefile.am
+--- xsnow-3.9.1-orig/src/Makefile.am	2026-03-27 15:09:04.000000000 +0100
++++ xsnow-3.9.1/src/Makefile.am	2026-04-05 07:46:54.235720692 +0200
+@@ -23,7 +23,7 @@
  TOCC     = $(top_srcdir)/src/tocc.sh
  TOASCII  = $(top_srcdir)/src/toascii.sh
  
@@ -11,16 +10,15 @@ Index: xsnow-3.8.1/src/Makefile.am
  games_PROGRAMS = xsnow
  
  noinst_PROGRAMS = makeman
-Index: xsnow-3.8.1/src/Makefile.in
-===================================================================
---- xsnow-3.8.1.orig/src/Makefile.in
-+++ xsnow-3.8.1/src/Makefile.in
-@@ -668,7 +668,7 @@ top_srcdir = @top_srcdir@
+diff -Nur xsnow-3.9.1-orig/src/Makefile.in xsnow-3.9.1/src/Makefile.in
+--- xsnow-3.9.1-orig/src/Makefile.in	2026-03-27 15:09:04.000000000 +0100
++++ xsnow-3.9.1/src/Makefile.in	2026-04-05 07:47:06.012790084 +0200
+@@ -680,7 +680,7 @@
  SUBDIRS = Pixmaps
  TOCC = $(top_srcdir)/src/tocc.sh
  TOASCII = $(top_srcdir)/src/toascii.sh
 -gamesdir = $(exec_prefix)/games
 +gamesdir = $(exec_prefix)/bin
  xsnow_CPPFLAGS = $(GTK_CFLAGS) $(X11_CFLAGS) $(GSL_CFLAGS) \
- 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DLANGUAGES='"$(LANGUAGES)"' \
- 	$(am__append_1) $(am__append_2)
+ 	$(CV_CFLAGS) -DLOCALEDIR=\"$(LOCALEDIR)\" \
+ 	-DLANGUAGES='"$(LANGUAGES)"' $(am__append_1) $(am__append_2)

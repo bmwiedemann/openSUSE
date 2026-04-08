@@ -1,7 +1,7 @@
 #
 # spec file for package xsnow
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xsnow
-Version:        3.8.6
+Version:        3.9.1
 Release:        0
 Summary:        A Christmas Animation
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ Source:         https://www.ratrabbit.nl/downloads/xsnow/%{name}-%{version}.tar.
 # PATCH-FIX-OPENSUSE xsnow-bindir.patch -- Install in /usr/bin instead /usr/games
 Patch0:         xsnow-bindir.patch
 BuildRequires:  gcc-c++
+BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsl)

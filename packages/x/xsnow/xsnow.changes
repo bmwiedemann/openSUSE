@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Apr  5 05:40:18 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.9.1:
+  * 01: main.c: make_fullmaxscreen():
+            Prevent the appearance of the xsnow icon for the snow-window
+            in window-lists, taskbars etc.  using 
+            gtk_window_set_skip_taskbar_hint() and
+            gtk_window_set_skip_pager_hint().
+        main.c, flags.c, docs.c, xsnow.h, xsnow-constants.h:
+            create flag '-config' to use other configuration file
+            than $HOME/.xsnowrc. The file name must contain the string
+            'xsnow' to protect against accidentally overwriting a
+            precious file.
+  * 02: stars.c, ui.glade, docs.c: allow setting size of stars.
+  * 03: aurora.c, aurora.h, flags.c ... : replace position left, 
+            middle and right with slider for horizontal position.
+  * 04: moon.c e.a.: user can define fixed position for the moon
+            if the speed of the moon is set to zero.
+  * 05: move stars also, like the moon but always left to right
+        meteor.c: small adaptations
+  * 06: update language translations
+  * 07: bootstrap: create new file 'bootdate' only if it does not
+        exixst. Advice: when creating a new version (see AC_INIT in 
+        configure.ac), remove bootdate before running ./bootstrap.
+  * 08: add option to use screenshots to determine the placement
+        of windows. Hopefully this will assist in running under
+        wayland, but first we have to wait until a suitable 
+        screenshotter is available for wayland. 
+        It creates an extra dependency for opencv4.
+        wmctrl.c: fixed bug in using XTranslateCoordinates().
+        windows.c: ignore windows at bottom and top: this is for
+            all windows now.
+- Changes in version 3.9.0
+  * 01: many changes in defining a window to snow in.
+        When snowing in one monitor: the window is created with
+        gtk_window_maximize(), when snowing in all monitors,
+        use gtk_window_fullscreen(). 
+        The height of fallensnow on the bottom is now at max 
+        15% of the window height. On windows this is 10%.
+        Windows with "Desktop" or "desktop" in the name are
+        ignored: no snow on those windows.
+  * 02: if only one monitor is detected, use maximized in stead
+        of full screen
+  * 03: main.c: do_draw_all: set window maximized or fullscreen
+        a few times to ensure that it stays that way. 
+  * 04: main.c: disabled legacy section in do_displaychanged()
+        which caused permanent restarts when running under
+        xscreensaver with more than one monitor.
+* Rebase xsnow-bindir.patch
+* Add BuildRequires opencv-devel
+
+-------------------------------------------------------------------
 Tue Dec  9 17:42:19 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.8.6:
