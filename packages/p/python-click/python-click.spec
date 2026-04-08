@@ -27,17 +27,15 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-click%{psuffix}
-Version:        8.3.1
+Version:        8.3.2
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
 URL:            https://github.com/pallets/click
 Source:         https://files.pythonhosted.org/packages/source/c/click/click-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 %if %{with test}
 BuildRequires:  %{python_module click == %{version}}
 BuildRequires:  %{python_module pytest}

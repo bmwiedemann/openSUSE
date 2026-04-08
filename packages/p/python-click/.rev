@@ -349,4 +349,29 @@ https://pypi.org/project/click/8.2.2/
     <comment>- Add pythons_for_pypi macro</comment>
     <requestid>1330910</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3f47abc0484a5c7506c7bbb7dc366eeb</srcmd5>
+    <version>8.3.2</version>
+    <time>1775661206</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.3.2:
+  * Fix handling of flag_value when is_flag=False to allow such
+    options to be used without an explicit value. :issue:`3084`
+    :pr:`3152`
+  * Hide Sentinel.UNSET values as None when using
+    lookup_default(). :issue:`3136` :pr:`3199` :pr:`3202`
+    :pr:`3209` :pr:`3212` :pr:`3224`
+  * Prevent _NamedTextIOWrapper from closing streams owned by
+    StreamMixer. :issue:`824` :issue:`2991` :issue:`2993`
+    :issue:`3110` :pr:`3139` :pr:`3140`
+  * Add comprehensive tests for CliRunner stream lifecycle,
+    covering logging interaction, multi-threaded safety, and
+    sequential invocation isolation. Add high-iteration stress
+    tests behind a stress marker with a dedicated CI job.
+    :pr:`3139`
+  * Fix callable flag_value being instantiated when used as a
+    default via default=True. :issue:`3121` :pr:`3201` :pr:`3213`
+    :pr:`3225`</comment>
+    <requestid>1344810</requestid>
+  </revision>
 </revisionlist>
