@@ -156,4 +156,24 @@
   (CVE-2025-7783, bsc#1246814)</comment>
     <requestid>1295284</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>c73757cabdcf589200865d3147c56618</srcmd5>
+    <version>0.5.2</version>
+    <time>1774470055</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342443</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2bfd63e7fce60736dbe79741b1e3624a</srcmd5>
+    <version>0.5.3</version>
+    <time>1775661455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.3:
+  * Update template discovery to make its order deterministic
+
+- Refresh javascript dependencies to update @xmldom/xmldom
+  (CVE-2026-34601, bsc#1261514)</comment>
+    <requestid>1345154</requestid>
+  </revision>
 </revisionlist>

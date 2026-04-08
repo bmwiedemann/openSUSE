@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab-templates
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python39 1
-%define pyver 0.5.2
-%define distver 0.5.2
+%define pyver 0.5.3
+%define distver 0.5.3
 Name:           python-jupyterlab-templates
 Version:        %{pyver}
 Release:        0
@@ -32,6 +31,8 @@ Source1:        package-lock.json
 # node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
 Source2:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
+# PATCH-FIX-UPSTREAM update-deps.patch bsc#1259114
+Patch0:         update-deps.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module hatchling}

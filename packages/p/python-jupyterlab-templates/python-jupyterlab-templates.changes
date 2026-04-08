@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr  8 10:35:00 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.5.3:
+  * Update template discovery to make its order deterministic
+
+-------------------------------------------------------------------
+Wed Apr  8 10:05:15 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Refresh javascript dependencies to update @xmldom/xmldom
+  (CVE-2026-34601, bsc#1261514)
+
+-------------------------------------------------------------------
+Wed Mar 25 10:02:49 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Refresh javascript dependencies to drop @tootallnate/once
+  (CVE-2026-3449, bsc#1259114)
+- add update-deps.patch to fix build with updated dependencies
+
+-------------------------------------------------------------------
 Wed Jul 23 08:58:34 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Refresh javascript dependencies to update form-data
