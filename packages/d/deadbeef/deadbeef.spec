@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %bcond_with restricted
 Name:           deadbeef
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 Summary:        GTK+ audio player
 License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later
@@ -79,6 +79,8 @@ Requires:       %{name}-plugins-extra = %{version}-%{release}
 %else
 Recommends:     %{name}-plugins-extra = %{version}
 %endif
+Obsoletes:      deadbeef-plugin-mpris2 <= 1.16
+Provides:       deadbeef-plugin-mpris2 = 1.16.1
 
 %description
 DeaDBeeF is an audio player using GTK+. Through use of the ffmpeg
@@ -151,7 +153,7 @@ export LDFLAGS="$LDFLAGS -pie"
 
 %install
 %make_install
-rm -rf %{buildroot}%{_libexecdir}/debug/%{_libdir}/%{name}/ddb_soundtouch.so*
+rm -rf %{buildroot}%{_libexecdir}/debug/%{_libdir}/%{name}/{ddb_soundtouch,mpris}.so*
 rm -rf %{buildroot}%{_docdir}/%{name}
 install -Dpm 0644 %{name}.appdata.xml \
 %{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
@@ -193,6 +195,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/dca.so*
 %{_libdir}/%{name}/mms.so*
 %{_libdir}/%{name}/musepack.so*
+%{_libdir}/%{name}/mpris.so*
 %{_libdir}/%{name}/opus.so*
 %{_libdir}/%{name}/shellexec.so*
 %{_libdir}/%{name}/tta.so*

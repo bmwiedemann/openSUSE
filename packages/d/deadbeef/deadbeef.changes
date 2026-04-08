@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  7 10:47:32 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Add Provides/Obsoletes for deadbeef-plugin-mpris2
+
+-------------------------------------------------------------------
+Tue Mar 31 15:46:48 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.10.2:
+  * Fixed: Regression in replaygain scanner, producing INF for album gain
+  * Added: MPRIS plugin is now part of DeaDBeeF, replacing global hotkeys
+
+-------------------------------------------------------------------
 Sun Mar  8 14:26:07 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.10.1:

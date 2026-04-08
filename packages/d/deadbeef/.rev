@@ -334,4 +334,16 @@
     <comment></comment>
     <requestid>1337764</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a470ddc29b1fb74d5806b824235231e5</srcmd5>
+    <version>1.10.2</version>
+    <time>1775661256</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Provides/Obsoletes for deadbeef-plugin-mpris2
+
+- Update to 1.10.2:
+  * Fixed: Regression in replaygain scanner, producing INF for album gain
+  * Added: MPRIS plugin is now part of DeaDBeeF, replacing global hotkeys</comment>
+    <requestid>1344970</requestid>
+  </revision>
 </revisionlist>
