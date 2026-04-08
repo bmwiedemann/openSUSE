@@ -1,8 +1,7 @@
 #
 # spec file for package openexr
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +26,7 @@
 %endif
 
 Name:           openexr
-Version:        3.4.6
+Version:        3.4.9
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
@@ -35,8 +34,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openexr.com/
 Source0:        https://github.com/AcademySoftwareFoundation/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
-# fix build with glibc 2.43 [bsc#1258747]
-Patch0:         openexr-glibc-2.43.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc%{?force_gcc_version}

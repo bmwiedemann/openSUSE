@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Apr  7 07:57:03 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 3.4.9
+  * [CVE-2026-34589](https://www.cve.org/CVERecord?id=CVE-2026-34589) DWA Lossy Decoder Heap Out-of-Bounds Write
+  * [CVE-2026-34588](https://www.cve.org/CVERecord?id=CVE-2026-34588) Signed 32-bit Overflow in PIZ Decoder Leads to OOB Read/Write
+  * [CVE-2026-34380](https://www.cve.org/CVERecord?id=CVE-2026-34380) Signed integer overflow (undefined behavior) in undo_pxr24_impl may allow bounds-check bypass in PXR24 decompression
+  * [CVE-2026-34379](https://www.cve.org/CVERecord?id=CVE-2026-34379) Misaligned write in LossyDctDecoder_execute leading to undefined behavior (DWA/DWAB decompression)
+  * [CVE-2026-34378](https://www.cve.org/CVERecord?id=CVE-2026-34378) Signed integer overflow in generic_unpack() when parsing EXR files with crafted negative dataWindow.min.x
+  * Fix signed integer overflow in `LossyDctDecoder_execute()` pointer arithmatic
+  * fix integer overflow in PIZ wavelet buffer arithmetic
+  * Add a message about image size limits and OOM errors to SECURITY.md and website
+  * Fix shared lib symlink installation path
+  * Fix misaligned memory access in `LossyDctDecoder_execute` HALF→FLOAT expansion
+  * fix signed integer overflow in `undo_pxr24_impl()`
+  * Fix integer overflow in `srcbuffer` pointer arithmetic in `unpack_*`
+  * Add "cherry" and "changes" options to release.py
+  * Fix an integer-overflow bug reading malformed files compressed with
+  *   B44A/B44B
+  * Fix a buffer-overrun bug reading malformed files compressed with PXR24
+  * Fix a bug compressing half data with ZIPS/ZIP data when the
+  *   compressed size equals packed size
+  * Single part files no longer get assigned a part name when writing
+  *   via the python module
+  * Fix a build failure on FreeBSD involving `threads.h`
+  * Fix an integer overflow decoding very wide htj2k images
+  * Fix build failure with glibc 2.43
+  * Fix Windows symbol visibility warnings
+- fixes CVE-2026-34545 [bsc#1261344]
+        CVE-2026-34543 [bsc#1261339]
+        CVE-2026-34544 [bsc#1261342]
+- deleted patches
+  * openexr-glibc-2.43.patch (upstreamed)
+
+-------------------------------------------------------------------
 Wed Mar 11 08:51:10 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
