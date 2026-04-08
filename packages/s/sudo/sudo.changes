@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  7 08:31:13 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- CVE-2026-35535: potential privilege escalation when running
+  the mailer (bsc#1261420)
+  * fix-CVE-2026-35535.patch
+- Move tests under /usr/share for transactional system support 
+  (jsc#PED-14830)
+
+-------------------------------------------------------------------
 Mon Sep 15 11:25:24 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - Update to 1.9.17p2

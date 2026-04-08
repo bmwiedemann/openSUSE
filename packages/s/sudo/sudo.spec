@@ -1,7 +1,7 @@
 #
 # spec file for package sudo
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@
 %define confmode 0440
 %endif
 
+%define testsuitedir %{_datadir}/sudo/tests
+
 Name:           sudo
 Version:        1.9.17p2
 Release:        0
@@ -44,6 +46,7 @@ Source9:        51-wheel.rules
 Source10:       system-group-sudo.conf
 # PATCH-OPENSUSE: the "SUSE" branding of the default sudo config
 Patch0:         sudo-sudoers.patch
+Patch1:         fix-CVE-2026-35535.patch
 BuildRequires:  audit-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  groff
@@ -223,9 +226,9 @@ install -D -m 644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-group-sudo.conf
 %find_lang sudoers
 cat sudoers.lang >> %{name}.lang
 # tests
-install -d -m 755 %{buildroot}%{_localstatedir}/lib/tests/sudo
-install -m 755 %{SOURCE6} %{buildroot}%{_localstatedir}/lib/tests/sudo
-install -m 755 %{SOURCE7} %{buildroot}%{_localstatedir}/lib/tests/sudo
+install -d -m 755 %{buildroot}%{testsuitedir}
+install -m 755 %{SOURCE6} %{buildroot}%{testsuitedir}
+install -m 755 %{SOURCE7} %{buildroot}%{testsuitedir}
 
 install -d %{buildroot}%{_licensedir}/%{name}
 rm -fv %{buildroot}%{_docdir}/%{name}/LICENSE.md
@@ -324,7 +327,8 @@ test -f %{_sysconfdir}/sudoers.rpmsave && mv -v %{_sysconfdir}/sudoers.rpmsave %
 %{_libexecdir}/%{name}/*.la
 
 %files test
-%{_localstatedir}/lib/tests
+%{_datadir}/%{name}
+%{testsuitedir}
 
 %files policy-wheel-auth-self
 %attr(0440,root,root) %{confdir}/sudoers.d/50-wheel-auth-self
