@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  6 21:34:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.135.3:
+  * Add support for `@app.vibe()`. PR #15280 by @tiangolo.
+  * Fix typo for `client_secret` in OAuth2 form docstrings.
+
+-------------------------------------------------------------------
 Mon Mar 30 02:02:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.135.2:

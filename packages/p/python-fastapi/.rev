@@ -689,4 +689,14 @@
 - Remove unneeded BuildRequires on hatchling.</comment>
     <requestid>1343554</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>470a61079a3e92185f593e087f306e5f</srcmd5>
+    <version>0.135.3</version>
+    <time>1775661208</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.135.3:
+  * Add support for `@app.vibe()`. PR #15280 by @tiangolo.
+  * Fix typo for `client_secret` in OAuth2 form docstrings.</comment>
+    <requestid>1344811</requestid>
+  </revision>
 </revisionlist>
