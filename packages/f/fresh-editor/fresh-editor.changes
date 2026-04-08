@@ -1,0 +1,439 @@
+-------------------------------------------------------------------
+Tue Apr 07 13:44:46 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version v0.2.21:
+  * Significantly reduced startup times by pre-compiling syntax grammars and 
+    parallelizing plugin initialization.
+  * Introduced multi-LSP server infrastructure allowing merged results and 
+    diagnostics from multiple language servers simultaneously.
+  * Expanded built-in support and configurations for a wide array of 
+    programming languages and web frameworks.
+  * Implemented project-wide search and replace with a parallel streaming 
+    engine that includes unsaved buffer content.
+  * Added "Hot Exit" support to persist unnamed buffers and workspace state
+    across editor restarts.
+  * Overhauled Vim mode stability with extensive bug fixes and native 
+    implementations for core movements and actions.
+  * Modernized the Settings UI with improved keyboard navigation, deep search
+    capabilities, and a refreshed visual design.
+  * Optimized syntax highlighting for large files using a marker-based 
+    convergence system to prevent display lag and drift.
+  * Integrated git index polling for real-time gutter status updates when files
+    are modified externally.
+  * Added Page View mode with configurable centered layouts and improved 
+    line-wrap controls.
+  * Enhanced the plugin API with isolated global state persistence and a 
+    unified system for keybinding registration.
+  * Improved Windows compatibility through native virtual terminal input 
+    handling and fixed path resolution logic.
+  * Upgraded the completion engine with smart-case matching, multi-buffer word
+    scanning, and improved popup behavior.
+  * Refined theme accessibility by enforcing higher contrast ratios and 
+    standardizing color tables.
+  * Expanded distribution options including official Flatpak support and 
+    automated builds for major operating systems.
+  * Enhanced command palette search functionality to include command 
+    descriptions for better discoverability.
+  * Improved clipboard synchronization in client-server environments with 
+    support for specialized terminal sequences.
+  * Fixed multiple text selection and cursor behavior regressions, particularly
+    regarding multibyte and accented characters.
+
+-------------------------------------------------------------------
+Fri Mar 13 15:59:37 UTC 2026 - Gunnar André Saxvik-Lilleaasen <dev@heksesang.no>
+
+- Update to version v0.2.14:
+  * Bump version to 0.2.14
+  * CHANGELOG.md
+  * Revert "Drain buffered input events before rendering for CPU-constrained responsiveness"
+  * Add checkbox indicator to keybinding map submenu items
+  * Update user-facing docs for features shipped in 0.2.9–0.2.13
+  * Add plugin best practices section covering frame lag mitigations
+  * Remove 15 shipped design docs, enrich plugin architecture section
+  * Add unified design decisions trail, remove duplicate docs, revise audit
+  * Add docs audit for 0.2.9-0.2.13 changelog changes
+  * Bump version to 0.2.13
+  * CHANGELOG.md
+  * Add Rust LSP mode switching command and change defaults to full mode
+  * Add restartLspForLanguage plugin API
+  * Add process limits to LSP plugin API (ProcessLimitsPackConfig)
+  * Fix theme editor test flakiness on Windows CI
+  * Fix palette swatch click test hanging in CI
+  * Skip degraded semantic token responses to preserve syntax highlighting
+  * Add inline overlay properties and text_properties in cursor_moved event
+  * Fix picker click behavior and swatch color rendering
+  * Fix mouse_scroll and resize events to use plugin hook system
+  * Add virtual scrolling, mouse support, and hide cursor in theme editor
+  * Redesign theme editor with inline styling and flicker-free rendering
+  * Fix plugin dev LSP: add workspace folders and set buffer language to TypeScript
+  * Add LSP support for plugin development buffers
+  * Add design doc for LSP support in plugin development buffers
+  * Implement hanging line wrap indentation (issue #1169)
+  * Add design analysis for hanging line wrap indentation
+  * Add missing load_plugin_from_buffer i18n keys to all locales
+  * Add i18n entries for LoadPluginFromBuffer and use buffer filename as plugin name
+  * Add e2e tests for Load Plugin from Buffer and hot-reload cleanup
+  * Phase 3 plugin cleanup: kill processes, close buffers/terminals, remove scroll sync on unload
+  * Implement "Load Plugin from Buffer" command with hot-reload cleanup
+  * Audit plugin state cleanup for hot-reload correctness
+  * Design doc: Load Plugin from Buffer command
+  * Skip background grammar build in tests to fix property test timeouts
+  * Revert "Increase nextest timeout for property-based tests"
+  * Increase nextest timeout for property-based tests
+  * Update tests and pkg.ts to await reloadGrammars()
+  * Make reloadGrammars() async so plugins can await grammar rebuild
+  * Fix grammar and CRLF merge conflict test failures
+  * Skip permission-denied tests when running as root
+  * cargo clippy --fix && cargo fmt
+  * Fix clippy let_underscore_must_use lint on channel sends
+  * Drain buffered input events before rendering for CPU-constrained responsiveness
+  * Non-blocking grammar build: move SyntaxSet::build() to background thread
+  * Upgrade dependencies: oxc 0.115, ts-rs 12, rquickjs-serde 0.5, tempfile 3.25
+  * Fix path:line:col follow-up issues from PR #1149
+  * update for comment
+  * Added path:line[:col] parsing for Open File prompt and Quick Open, and jump to the specified location after opening.
+  * Fix strict-mode type errors: make Option fields optional in .d.ts, add null checks
+  * Migrate all plugins from globalThis to registerHandler, enable strict tsc
+  * Add registerHandler() and fix plugin init template to match actual API
+  * Fix registerCommand docs: remove "normal" context, explain the parameter
+  * Fix example plugins passing "normal" as context, hiding commands from palette
+  * Fix search tests: use project dir for short status-bar paths
+  * Fix flaky search test: use process_async_and_render for search confirm
+  * Fix flaky search tests: use tick_and_render, remove internal-state checks
+  * Add E2E test for F3 navigation in large-file search mode
+  * Fix search F3 navigation losing matches after viewport scroll
+  * Add e2e test for Ctrl+C copy in settings JSON editor
+  * Fix Ctrl+C copy not working in Settings JSON text editor
+  * Fix LSP failing for file paths containing brackets (issue #953)
+  * Eliminate plugin file I/O for theme loading and saving
+  * Fix dead link in session-persistence docs
+  * homepage: Update discord links
+  * Fix flaky tests: remove fixed timers per CONTRIBUTING.md guidelines
+  * Fix bracketed paste mode and terminal feature parity in client/server sessions
+  * Fix theme save failing when themes directory doesn't exist (#1180)
+  * Add e2e test for saving theme when themes directory doesn't exist (#1180)
+  * Regenerate config schema after adding language_id_overrides
+  * Add configurable language_id_overrides to LspServerConfig
+  * Deduplicate BufferViewState config initialization via apply_config_defaults
+  * Fix line numbers showing when disabled in settings for new files (#1181)
+  * Add missing error.name_is_builtin i18n key to all locales
+  * Fix package_manager test matching wrong command for "Select Theme"
+  * Add missing inspect_theme_at_cursor i18n keys to all locales
+  * Fix theme inspect failing after saving custom theme
+  * Fix theme editor saving incomplete theme files
+  * Fix suggestions popup bottom border overwritten by status bar
+  * Add "Save and close" option to theme editor discard prompt, default to keep editing
+  * Remove Ctrl+Q shortcut from theme editor, use only Escape to close
+  * Reject built-in theme names in Save As prompt
+  * Stop theme editor from setting status line for ambient/nav messages
+  * Add multi-round inspect theme e2e test, fix re-focus on re-inspect
+  * Add e2e test for Inspect Theme at Cursor command
+  * Add "Inspect Theme at Cursor" command palette action
+  * Add ThemeInspectKey hook to open theme editor at specific key
+  * Fix popup text selection copying wrong text when lines wrap
+  * Refactor markdown.rs: extract is_space, unify add_text_to_lines, remove get_line_text
+  * Add hanging indent and paragraph spacing for popup text wrapping
+  * Use markdown rendering for signature help popup
+  * Fix completion popup positioning and extract shared builder
+  * Drop stale LSP diagnostics using document version
+  * Fix LSP cleanup on disable and completion debounce issues
+  * Fix LSP diagnostic flow and suppress ContentModified errors
+  * Implement Ctrl+Right-Click theme info popup
+  * Design: Ctrl+Right-Click character theme info popup
+  * Add Gentoo support section to README
+  * Use foreground-only colors for inline diagnostic text
+  * Right-align inline diagnostic text to the edge of the viewport
+  * Regenerate config schema with diagnostics_inline_text field
+  * Add E2E tests for inline diagnostics feature
+  * Implement inline diagnostic text at end of lines
+  * Remove unused diagnostic_indicators from MarginManager
+  * Add design document for inline diagnostics feature
+  * Add e2e test for LSP environment variables and regenerate schema
+  * Regenerate config JSON schema with new LSP env field
+  * Support passing environment variables to LSP binaries
+  * Disable LSP start/restart commands for languages without LSP config
+  * Fix status bar e2e tests to examine rendered output not internal state
+  * Fix bar visibility not applying immediately when saving settings UI
+  * Add config option and command palette command to toggle status bar visibility
+  * Bump version to 0.2.12
+  * CHANGELOG.md
+  * Suppress auto-close quotes inside strings and add surround-selection
+  * Fix settings e2e tests broken by auto_surround field insertion
+  * Fix multi-cursor Enter in markdown mode (issue #1140)
+  * Add e2e regression tests for multi-cursor Enter (issue #1140)
+  * Add multi-cursor shadow model proptest for regression coverage
+  * Fix multi-cursor position drift for cursors with no events (issue #1140)
+  * Fix test failures caused by auto_close being independent from auto_indent
+  * Add auto_close config option to independently toggle auto-close feature
+  * Make stdlib and filesystem-readonly files open as read-only buffers
+  * Reduce log noise by disabling span events and moving hot-path logs to trace
+
+-------------------------------------------------------------------
+Mon Mar 02 08:58:16 UTC 2026 - Gunnar André Saxvik-Lilleaasen <dev@heksesang.no>
+
+- Update to version v0.2.11:
+  * Bump version to 0.2.11
+  * CHANGELOG.md
+  * Fix flaky hover dedup test by replacing fixed-iteration loop with semantic waiting
+  * Replace buffer_modified plugin with native diff indicators
+  * Fix search performance on large files (issue #1146)
+  * Fix search memory usage on large files (issue #1146)
+  * Fix bar/underline cursor invisible on characters (issue #851)
+  * Add cursor rendering bug analysis for issue #851
+  * Fix viewport scroll limit counting logical lines instead of visual rows (#1147)
+  * Add e2e tests reproducing issue #1147: wrapped line navigation bugs
+  * Fix Nix build: include PNG files in source filter
+  * Bump version to 0.2.10
+  * CHANGELOG.md
+  * Enable indent-based code folding in large file mode with unified byte-offset pipeline
+  * Add e2e tests for Tab/Shift+Tab bullet cycling and fix BackTab key binding
+  * Fix markdown plugin: language-based activation (#1117) and reverse bullet cycling (#1116)
+  * Fix Discord link in README
+  * Fix bracket highlight hanging on large files
+  * Fix Settings Save button mouse click not closing the dialog
+  * Fix active tab styling bleeding through dropdown menu border
+  * Reproduce active tab styling bleeding through dropdown menu border
+  * Reproduce hardware cursor bleeding through dropdown menus
+  * Fix cursor corruption when clicking tab in inactive split
+  * Reproduce cursor corruption when clicking tab in inactive split
+  * Fix comment delimiter characters using wrong color in syntax highlighting
+  * Fix scroll events going to file browser panel regardless of mouse position
+  * Fix whitespace indicator i18n, toggle behavior, and position classification
+  * Add i18n translations for whitespace settings field labels
+  * Flatten whitespace config into individual fields for Settings UI
+  * Replace flat whitespace booleans with granular position-based config
+  * Add i18n translations for whitespace_indicator_fg theme field
+  * Add global config settings for whitespace/tab indicators and theme support
+  * Fix Reset button to show confirmation dialog and fix Discard dialog persisting on reopen
+  * Fix settings UI usability issues and add regression tests
+  * Add settings UI usability report from manual testing
+  * Make status log and warning log buffers read-only
+  * Run cargo fmt on test files
+  * Skip indent-based folding for large files to fix render timeout
+  * Update visual regression screenshot SVGs for fold indicators
+  * Fix tests broken by indent-based fold indicators in gutter
+  * Fix file explorer border hover/drag bugs and support folding from non-header lines
+  * Fix code folding: indent-based fallback and file explorer border overlap
+  * Use standard attach flow for open-file auto-attach
+  * Auto-attach client when open-file starts a new session
+  * Add --wait flag to session open-file for blocking until done
+  * Document range selection and @"message" syntax in CLI help
+  * Add range selection and hover message support for file open
+  * Fix macOS menu hover jump by using WaitUntil instead of Poll
+  * Fix Windows named pipe crash in Server::handle_new_connection
+  * Run cargo fmt on menu_tracking.rs
+  * Wire up platform icons for Windows .exe and Linux deb/rpm packages
+  * Cache menu item states to avoid redundant NSMenuItem mutations
+  * Use new icon set from logo branch for macOS app bundle
+  * Fix macOS menu bar jump-to-leftmost-menu bug during hover
+  * Run cargo fmt and regenerate config schema
+  * Support dynamic menu features (when/checkbox/DynamicSubmenu) in native macOS menus
+  * Refactor native menu to trait-driven architecture with NativeMenuBar abstraction
+  * Add macOS GUI native integration: menu bar, Cmd keybindings, app icon, and bundle resources
+  * icons
+  * cargo fmt
+  * docs: update feature and config reference for 0.2.9
+  * blog: What's New in Fresh 0.2.9
+  * Strip fresh-gui dep from fresh-editor before cargo publish
+  * Fix cargo publish for workspace with unpublishable fresh-gui
+
+-------------------------------------------------------------------
+Wed Feb 25 09:32:39 UTC 2026 - Gunnar André Saxvik-Lilleaasen <dev@heksesang.no>
+
+- Update to version v0.2.9:
+  * Bump version to 0.2.9
+  * CHANGELOG.md
+  * Update bump-version.py to fix fresh-gui version as well
+  * Bump version to 0.2.8
+  * CHANGELOG.md
+  * flake.nix: Include .ttf font files in Nix source filter
+  * Bump version to 0.2.7
+  * CHANGELOG.md
+  * flake.nix: Update rust 1.92.0
+  * Bump version to 0.2.6
+  * CHANGELOG.md
+  * Fix client mode not resetting terminal properly on exit
+  * fresh-client: Use log in logs_dir
+  * Fix infinite loop in chunk_split_and_load for unaligned pieces
+  * Fix large file viewport loading entire file after line scan rebuild
+  * Fix auto-indent not maintaining indent level on normal statement lines
+  * Add e2e test for auto-indent maintaining tab indent on normal Go lines
+  * Fix tab_size setting having no effect on auto-indent
+  * Fix property test shadow model to match smart backspace dedent
+  * Add smart backspace dedent and auto-indent character tests
+  * Fix Go auto-dedent using spaces instead of tabs (#1068)
+  * Unify language detection with DetectedLanguage struct and apply_language()
+  * Fix glob pattern language detection on macOS and Windows
+  * Add E2E tests for glob pattern language detection
+  * Run cargo fmt
+  * Support path glob patterns (e.g. /etc/**/rc.*) in language config filenames
+  * Support glob patterns in language config filenames for extensionless files
+  * Also disable single-quote skip-over in markdown
+  * Disable single-quote auto-close in markdown files
+  * Fix flaky visual cursor test by using semantic waiting
+  * Add auto-bullet continuation and indent+cycle to markdown_source plugin
+  * Fix spurious buffer_activated hook when re-opening already-active files
+  * Fix markdown_source plugin and add e2e tests
+  * Add markdown_source plugin for smart source-mode editing
+  * Use grammar registry for semantic reverse lookup instead of string tricks
+  * Use config language IDs as single source of truth for Set Language
+  * Fix Set Language command storing wrong case for language ID (#1078)
+  * Add e2e tests reproducing issue #1078: Set Language command uses wrong case
+  * Fix debug keyboard dialog not capturing keys in client/server mode
+  * Add e2e tests reproducing Python nested indent bug (issue #1069)
+  * Apply cargo fmt formatting to test files
+  * Add e2e regression tests for escape sequence parsing (#1089)
+  * Fix escape sequence parsing in server-side InputParser (#1089)
+  * Apply config show_hidden/show_gitignored on explorer init (#1079)
+  * Run cargo fmt
+  * Fix remaining callers bypassing ignore filter (#1079)
+  * Fix hidden subtree children leaking through filter (#1079)
+  * Fix dotfiles always visible in file explorer (#1079)
+  * Add e2e test reproducing dotfiles always visible in explorer (#1079)
+  * Add e2e tests for large file gutter indicators
+  * Add viewport filtering and batch API for large file gutter indicators
+  * Fix piece_tree_diff producing wrong offsets for large files
+  * Added example of how to bind a key to play a macro
+  * Format buffer_management.rs
+  * Fix property tests failing on Windows due to reserved device names
+  * Translate scan_line_index i18n keys to correct locale translations
+  * Add missing scan_line_index i18n keys to all non-English locales
+  * Add Action::ScanLineIndex command, remove scan_line_index(), add shadow test
+  * Add integration tests for concurrent Python agent requests and regenerate schema
+  * Use async concurrency for line-feed scanning with configurable read_concurrency
+  * Change debug_span! to trace_span! to reduce filesystem I/O on cursor movement
+  * fix: translate new goto.* keys and fix remote huge file test timeout
+  * feat: replace estimated line numbers with byte offsets and add parallel line scanning
+  * fix: use configured estimated_line_length for approximate line numbers
+  * fix: show uppercase N as default in line scan confirm prompt (y/N)
+  * fix: use path-copying for leaf line-feed fixups to preserve Arc sharing
+  * test: e2e test for edit-scan-edit lifecycle with exact line numbers
+  * fix: scan None leaves after replay for unloaded large files
+  * perf: rebuild saved_root after line scan for O(edits) diff
+  * feat: add tracing spans for render/load performance diagnosis
+  * refactor: pre-split tree before scanning instead of repairing after
+  * fix: preserve scanned line feed counts across chunk-loading splits
+  * feat: show scanning progress during line index scan
+  * perf: path-copying tree mutations + structural diff with Arc::ptr_eq
+  * feat: add line index scanning with precise Go to Line for large files
+  * feat: show approximate line numbers in gutter for large files
+  * perf: replace linear span lookups in compute_char_style with O(1) cursor
+  * perf: eliminate JSON round-trip and JS source re-parsing in plugin hook dispatch
+  * fix: make ensure_visible fold-aware to prevent viewport jumps in folded regions
+  * fix: allow unfold when folding_ranges is empty (e.g. LSP disconnected)
+  * Fixed e2e::folding::test_folded_gutter_line_numbers_match_content_during_scroll by correcting the gutter line-number baseline when the viewport starts inside a folded range and by reintroducing incremental line-number jumps for collapsed headers
+  * cherry pick new test
+  * fix remaining bug, add e2e test
+  * extend the source window to cover the hidden block and still fill the viewport with real lines. fix a bug
+  * update impl based on comment, fix highlight problem, add e2e test
+  * impl foldingRange
+  * docs: replace outdated Deno references with QuickJS and oxc_transformer
+  * fix: resolve clippy errors and warnings
+  * style: apply cargo fmt
+  * ci: run clippy with --all-features to lint GUI code
+  * docs: document workspace crate structure in CONTRIBUTING.md
+  * refactor: split GUI backend into separate fresh-gui crate
+  * feat: diagnostics panel navigates editor on cursor move
+  * fix: diagnostics panel Enter now jumps to diagnostic location
+  * test: reproduce diagnostics panel Enter not jumping to location
+  * fix: advertise all supported LSP client capabilities
+  * fix: advertise publishDiagnostics client capability (#1006)
+  * fix: restore LSP status indicator after request completion (#952)
+  * fix: send didClose when toggling LSP off to prevent desync (#952)
+  * test: add missing didClose test and document non-toggle investigation (#952)
+  * test: add e2e test reproducing LSP toggle desync bug (#952)
+  * fix(windows): remove thread spawn that broke winit event loop
+  * fix: resolve windows crate version conflict for Windows builds
+  * chore: fix all compiler warnings across codebase
+  * fix(gui): always render software cursor + rename gui_mode → software_cursor_only
+  * fix(gui): distinguish Left/Right Alt (Option) on macOS
+  * fix: three GUI bugs — cursor at EOL, mouse offset, event debug
+  * ci: install libxkbcommon-x11 for headless GUI tests
+  * feat: add GUI e2e tests and CI headless Vulkan support
+  * feat: add unit tests for GUI event translation and tracing setup
+  * docs: add implementation plan for GUI backend
+  * feat: add native GUI backend via winit + wgpu (--gui flag)
+  * fix: decode file URIs properly in diagnostics panel for Windows paths
+  * fix: gate trailing empty line on at_buffer_end to avoid spurious lines in viewport slices
+  * fix: cursor lands on correct row after Ctrl+End then disabling line wrap
+  * fix: Down arrow reaches trailing empty line after Ctrl+End→Left
+  * test: reproduce Down arrow bug at trailing empty line (135x37)
+  * test: add e2e test for Down arrow reaching trailing empty line
+  * fix: Ctrl+End scrolls viewport to show trailing empty line
+
+-------------------------------------------------------------------
+Fri Feb 20 13:19:36 UTC 2026 - Gunnar André Saxvik-Lilleaasen <dev@heksesang.no>
+
+- Update to version v0.2.5:
+  * Bump version to 0.2.5
+  * CHANGELOG.md
+  * test: add e2e test for smart home on soft-wrapped lines
+  * fix: smart home respects soft-wrapped visual lines
+  * fix: change Home key default binding to smart_home
+  * test: add e2e tests for side-by-side diff scrolling
+  * fix: support scrollbar click/drag for composite buffer diff views
+  * fix: route bracket paste to terminal PTY in terminal mode
+  * Split out and enriched CONTRIBUTING.md
+  * fix: don't mark buffer as LSP-opened when did_open send fails
+
+-------------------------------------------------------------------
+Fri Feb 13 15:51:15 UTC 2026 - Gunnar André Saxvik-Lilleaasen <dev@heksesang.no>
+
+- Remove %debug_package statement to avoid conflict during build.
+
+-------------------------------------------------------------------
+Fri Feb 13 12:07:21 UTC 2026 - Gunnar André Saxvik-Lilleaasen <dev@heksesang.no>
+
+- Update to version v0.2.3:
+  * Bump version to 0.2.3
+  * CHANGELOG.md
+  * homepage - link to blog
+  * blog: 0.2
+  * README.md
+  * README.md
+  * Add shadow model undo/redo support and property-based tests
+  * Add blog showcase system for feature demos with animated GIFs
+  * Fix AltGr+Shift not recognized as text input on Windows (#993)
+  * Fix undo corruption after save: restore buffers alongside piece tree
+- strip debug symbols
+
+-------------------------------------------------------------------
+Wed Feb  4 15:42:22 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.1.99:
+  * Text Encoding Support: Detect and convert files in UTF-8, UTF-16 LE/BE, 
+    Latin-1, Windows-1252, Windows-1250, GBK, Shift-JIS, EUC-KR, and GB18030. 
+    Encoding shown in status bar 
+  * Encoding Selection in File Browser: Toggle "Detect Encoding" with Alt+E 
+    when opening files. When disabled, prompts for manual encoding selection.
+  * Bundle Package Type: New package type containing multiple languages, 
+    plugins, and themes in a single package. Shown with "B" tag in package 
+    manager.
+  * Space-Separated Fuzzy Search: Queries with spaces are now split into 
+    independent terms, all of which must match. For example, 
+    "features groups-view" now matches "/features/groups/groups-view.tsx"
+  * Fixed Escape key not closing the manual and keyboard shortcuts pages
+  * Fixed scrollbar and mouse wheel scrolling not working with line wrap 
+    enabled
+  * Fixed scrollbar thumb drag jumping to mouse position instead of following
+    drag movement
+  * Fixed LSP servers registered via plugins being disabled by default
+  * Fixed language packs being installed to plugins directory instead 
+    of languages directory.
+  * Fixed theme changes not persisting when selecting the default theme
+  * Fixed popup positioning not accounting for file explorer width
+  * Fixed LSP did_open sending wrong language for multi-language LSP servers
+  * Fixed manual LSP start not working when LSP config was disabled; 
+    settings now sync immediately.
+
+see other changes on https://github.com/sinelaw/fresh/blob/master/CHANGELOG.md
+
+-------------------------------------------------------------------
+Sun Jan 25 18:01:22 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Added documentation
+
+-------------------------------------------------------------------
+Sun Jan 25 16:51:16 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- first packaged version: 0.1.88
