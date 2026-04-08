@@ -1,7 +1,7 @@
 #
 # spec file for package zam-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2018 Edgar Aichinger <edogawa@aon.at>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define         _lto_cflags      %{nil}
 Name:           zam-plugins
-Version:        4.3
+Version:        4.5
 Release:        0
 Summary:        A collection of audio plugins for high quality processing
 License:        GPL-2.0-or-later

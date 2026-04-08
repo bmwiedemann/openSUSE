@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Apr 04 08:14:19 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 4.5:
+  * Version 4.5
+  * CI: Bump macos to 15
+  * UI: Fix deprecated api calls for UI()
+  * dpf: bump submodule for CI macos-13 deprecation
+  * ZamEcho: Add new simple echo plugin
+  * Version 4.4
+  * CI: Remove hardcoded PawPaw hash, upstream now fixed
+  * ZamTube: Fix Ipk units
+  * ZamTube: New circuit based on gen4
+  * ZamTube: Fixed most of the clicks
+  * ZamTube: Fix valve curves
+  * ZamTube: Improve wave shaping
+  * ZamTube: Adjust output levels to not clip && better param adj
+  * Update DPF to latest develop branch for pluginval fix
+  * CI: Update PawPaw version to cross build plugins
+  * Update DPF to latest develop branch
+  * ZamNoise: Don't call fftwf_cleanup
+  * ZamNoise: Allocate FFT on heap
+  * ZamNoise: Try to fix pluginval errors
+  * CI: Bump macos to 13
+  * ZamNoise: Protect output when destroying Denoise class
+  * Fixup previous commit
+  * ZamNoise: Fix memory leak from fftw
+  * ZamEQ2: Fix freq range on F1 param
+  * lv2lint: Add missing lv2 properties
+  * CI: Bump ubuntu version to 22.04 and macos to 12
+  * ZamTube: Propagate capacitors in/out of circuit
+  * ZamTube: Based on ODS
+  * ZamTube: Fix initial state by setting mostly zeroes
+  * ZamTube: Invalidate old params to force initial recompute
+  * ZamTube: Combine steady state solutions since identical
+  * ZamTube: Fix signs within model causing unresponsive tone stacks
+
+-------------------------------------------------------------------
 Sun Sep 08 00:25:27 UTC 2024 - jgwang@suse.com
 
 - Update to version 4.3:
