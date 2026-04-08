@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  6 21:57:34 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add fix_tests_on_python_3_14.patch
+
+-------------------------------------------------------------------
 Wed Jun  4 06:09:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

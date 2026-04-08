@@ -27,4 +27,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282515</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e1933d380c09cf1e5ccb31cf4a380153</srcmd5>
+    <version>0.5.0</version>
+    <time>1775661429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345126</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-timeout-decorator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/t/timeout-decorat
 Source1:        https://raw.githubusercontent.com/pnpnpn/timeout-decorator/master/tests/test_timeout_decorator.py
 # https://github.com/pnpnpn/timeout-decorator/issues/68
 Source2:        https://raw.githubusercontent.com/pnpnpn/timeout-decorator/master/LICENSE.txt
+# PATCH-UPSTREAM: https://github.com/pnpnpn/timeout-decorator/pull/89
+Patch1:         fix_tests_on_python_3_14.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -40,7 +42,7 @@ BuildArch:      noarch
 Python timeout decorator.
 
 %prep
-%setup -q -n timeout-decorator-%{version}
+%autosetup -p1 -n timeout-decorator-%{version}
 cp %{SOURCE1} %{SOURCE2} .
 
 %build
