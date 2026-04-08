@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Apr  6 21:31:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 40.13.0:
+  * Fix: Ensure deterministic locale selection in multi-locale
+    mode. Thanks @just6660 and @patakk.
+  * Add address providers for `ar_DZ` and `fr_DZ` locales
+    (#2341). Thanks @othmane099.
+  * Fix: rebind deepcopy proxies to copied Faker instances.
+  * Add major Swiss banks to `de_CH` bank provider.
+  * Fix: mixed-gender names in `es_MX` locale.
+  * Fix `pt_PT` `postalcode` format in address provider.
+  * Fix mutable default providers.
+  * Add free email domains to `hu_HU` locale.
+  * Improve Polish address grammar: categorize street types and
+    prefixes.
+  * Add country names to `he_IL` locale.
+  * Fix `_get_local_timezone()` missing `return` statement.
+  * Add missing formats and remove duplicates in
+    `user_name_formats`.
+  * Add passport and `cie` for `it_IT`.
+  * Add major Greek banks to `el_GR` bank provider.
+  * Update internet `pt_bR` provider (domains, tlds, slugify).
+  * fix `pyfloat` `TypeError` when combining `positive=True` with
+    `max_value`.
+  * Make `tzdata` conditionally required based on platform.
+  * Fix grouping for `-i` CLI parameter.
+  * Add selective uniqueness with `.exclude_types()`.
+  * Capitalize `en_GB` address street suffixes.
+  * Add french female variants for jobs.
+  * Delete duplicates in Russian professions.
+  * Add french company RCS number.
+
+-------------------------------------------------------------------
 Fri Nov 21 10:09:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 38.2.0
