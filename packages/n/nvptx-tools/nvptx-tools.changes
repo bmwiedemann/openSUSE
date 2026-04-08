@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 08 05:48:55 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to version 1.0+git.20260402.212da2e:
+  * as: Add (preferred, but optional) "nvJitLink library" verification variant [#30]
+  * as: Add (preferred, but optional) "'ptxas' with NVRTC library" verification variant [#30]
+  * as: Refactor 'ptxas' verification [#30]
+  * as: Slightly refactor and clarify 'ptxas' verification test cases [#30]
+  * Revert most testsuite changes of "Bump testsuite baseline dependency from sm_30 to sm_35" [#30]
+  * Revert most testsuite changes of "Bump architecture baseline from sm_35 to sm_50 [#30]"
+  * run: Fix CUDA 13 '-DNVPTX_RUN_INCLUDE_SYSTEM_CUDA_H' build
+  * In the 'Makefile', better highlight how to (optionally) plug in a CUDA Toolkit distribution
+  * Refactor out of 'nvptx-run.cc' some of the interfacing to the NVIDIA/CUDA Driver library
+  * Dynamic shared objects: check <dlfcn.h>, too
+  * 'nvptx-run.cc' (usually) does '#include "cuda/cuda.h"', '#include "nvptx-run-cuda-lib.def"'
+  * Refactor: 'nvptx_none_{as,ld,nm,run}_{SOURCES,DEPENDENCIES}'
+  * Enhance 'test/as/ptxas/invoke-1.test': malformed target architectures [#33]
+  * Enhance 'test/as/ptxas/invoke-1.test': no special-casing for explicit '-m TARGET' [#33]
+  * 'test/README', "lit Installation", "jq Installation": GNU Guix
+  * lit-based testsuite: Run lit with '--timeout 10'
+  * lit-based testsuite: 'test/lit.json.log' -> 'test/lit.log', 'test/lit.sum' files
+  * Defuse 'nvptx-none-run.exp:sim_exec'
+
+-------------------------------------------------------------------
 Wed Jun 18 12:25:55 UTC 2025 - rguenther@suse.com
 
 - Update to version 1.0+git.20240904.a0c1fff: [bsc#1244683]

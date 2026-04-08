@@ -17,7 +17,7 @@
 
 
 Name:           nvptx-tools
-Version:        1.0+git.20240904.a0c1fff
+Version:        1.0+git.20260402.212da2e
 Release:        0
 Summary:        PTX language tools
 License:        GPL-3.0-or-later
@@ -46,6 +46,10 @@ Execution) GCC toolchains.
 %build
 %configure
 make %{?_smp_mflags}
+
+# the testsuite requires the lit tool which we do no package
+#%%check
+#make %{?_smp_mflags} check
 
 %install
 make DESTDIR=%{buildroot} install

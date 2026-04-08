@@ -190,4 +190,30 @@
   * ld: Every 'included' symbol must have a 'def'</comment>
     <requestid>1286710</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>af3adf95101f6ecc64eb0d6fe26b6120</srcmd5>
+    <version>1.0+git.20260402.212da2e</version>
+    <time>1775661460</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git.20260402.212da2e:
+  * as: Add (preferred, but optional) &quot;nvJitLink library&quot; verification variant [#30]
+  * as: Add (preferred, but optional) &quot;'ptxas' with NVRTC library&quot; verification variant [#30]
+  * as: Refactor 'ptxas' verification [#30]
+  * as: Slightly refactor and clarify 'ptxas' verification test cases [#30]
+  * Revert most testsuite changes of &quot;Bump testsuite baseline dependency from sm_30 to sm_35&quot; [#30]
+  * Revert most testsuite changes of &quot;Bump architecture baseline from sm_35 to sm_50 [#30]&quot;
+  * run: Fix CUDA 13 '-DNVPTX_RUN_INCLUDE_SYSTEM_CUDA_H' build
+  * In the 'Makefile', better highlight how to (optionally) plug in a CUDA Toolkit distribution
+  * Refactor out of 'nvptx-run.cc' some of the interfacing to the NVIDIA/CUDA Driver library
+  * Dynamic shared objects: check &lt;dlfcn.h&gt;, too
+  * 'nvptx-run.cc' (usually) does '#include &quot;cuda/cuda.h&quot;', '#include &quot;nvptx-run-cuda-lib.def&quot;'
+  * Refactor: 'nvptx_none_{as,ld,nm,run}_{SOURCES,DEPENDENCIES}'
+  * Enhance 'test/as/ptxas/invoke-1.test': malformed target architectures [#33]
+  * Enhance 'test/as/ptxas/invoke-1.test': no special-casing for explicit '-m TARGET' [#33]
+  * 'test/README', &quot;lit Installation&quot;, &quot;jq Installation&quot;: GNU Guix
+  * lit-based testsuite: Run lit with '--timeout 10'
+  * lit-based testsuite: 'test/lit.json.log' -&gt; 'test/lit.log', 'test/lit.sum' files
+  * Defuse 'nvptx-none-run.exp:sim_exec'</comment>
+    <requestid>1345158</requestid>
+  </revision>
 </revisionlist>
