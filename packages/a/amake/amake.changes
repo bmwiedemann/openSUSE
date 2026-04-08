@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sat Apr 05 21:48:36 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Initial package for amake 0.1.0
+  * Task runner for AI CLI tools (Claude Code, Aider, Copilot)
+  * TOML-based task definitions with dependency resolution
+  * Template variables with stdout capture, CLI vars, and env vars
+  * Built-in adapters for claude-code, aider, and copilot
+  * Optional clampdown sandbox integration
+
