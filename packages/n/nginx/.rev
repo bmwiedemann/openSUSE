@@ -1440,4 +1440,18 @@
   the http3/quic support</comment>
     <requestid>1343729</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>531deeaeddf323ab4571313b6969ae8d</srcmd5>
+    <version>1.29.8</version>
+    <time>1775661231</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.29.8
+  * https://nginx.org/en/CHANGES
+  * Added the &quot;max_headers&quot; directive.
+  * Added OpenSSL 4.0 compatibility.
+  * Added the &quot;include&quot; directive inside the &quot;geo&quot; block supports wildcards.
+  * Fixed in processing of HTTP 103 (Early Hints) responses from a proxied backend.
+  * Fixed the $request_port and $is_request_port variables were not available in subrequests.</comment>
+    <requestid>1345030</requestid>
+  </revision>
 </revisionlist>

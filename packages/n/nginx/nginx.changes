@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  7 14:28:15 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.29.8
+  * https://nginx.org/en/CHANGES
+  * Added the "max_headers" directive.
+  * Added OpenSSL 4.0 compatibility.
+  * Added the "include" directive inside the "geo" block supports wildcards.
+  * Fixed in processing of HTTP 103 (Early Hints) responses from a proxied backend.
+  * Fixed the $request_port and $is_request_port variables were not available in subrequests.
+
+-------------------------------------------------------------------
 Thu Mar 26 01:49:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Enable support to build with aws-lc instead of openssl to ship
+- Enabled support to build with aws-lc instead of openssl to ship
   the http3/quic support
 
 -------------------------------------------------------------------

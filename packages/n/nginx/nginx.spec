@@ -24,14 +24,14 @@
 %bcond_with    awslc
 #
 Name:           nginx
-Version:        1.29.7
+Version:        1.29.8
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/nginx/nginx
-Source0:        https://github.com/nginx/nginx/releases/download/release-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/nginx/nginx/releases/download/release-%{version}/%{name}-%{version}.tar.gz.asc
+Source0:        https://nginx.org/download/%{name}-%{version}.tar.gz
+Source1:        https://nginx.org/download/%{name}-%{version}.tar.gz.asc
 # https://nginx.org/en/pgp_keys.html
 Source2:        %{name}.keyring
 Source3:        %{name}.rpmlintrc
