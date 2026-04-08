@@ -1,8 +1,0 @@
-<package name="osmo-mgw" project="openSUSE:Factory">
-  <title>OsmoMGW: Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks</title>
-  <description>OsmoMGW: Osmocom's Media Gateway for 2G and 3G circuit-switched mobile networks.
-
-</description>
-  <devel project="network:telephony" package="osmo-mgw"/>
-  <url>https://osmocom.org/projects/osmo-mgw</url>
-</package>
