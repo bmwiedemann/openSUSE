@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  2 16:30:37 UTC 2026 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to PDAL 2.10.1
+  * Fix sampling failure when there are no points (commit 6dc7c28)
+  * Fix build error on 32-bit systems (commit ca475b7)
+  * Ensure FileSpec's filenames are UTF8 (commit 12350f4)
+  * Adds a ContextWrapper for lepcc_ContextHdl in EsriUtil (commit c5408cc)
+  * Changes building of lasdump tools to be a cmake option (commit 3533e5a)
+  * Fixes cmake options handling (commit 3f8fc55)
+  * Various other fixes
+
+-------------------------------------------------------------------
 Thu Mar  5 17:36:15 UTC 2026 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to PDAL 2.10.0

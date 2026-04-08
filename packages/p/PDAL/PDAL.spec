@@ -18,10 +18,10 @@
 
 
 %define soname 20
-%define sovers 20.0.0
+%define sovers 20.1.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
