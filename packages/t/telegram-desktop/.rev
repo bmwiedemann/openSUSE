@@ -1597,4 +1597,15 @@
   * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.7.2</comment>
     <requestid>1344498</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>1e7a4cb161994ae7f9ee6f3675d595e3</srcmd5>
+    <version>6.7.5</version>
+    <time>1775661316</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated td to git20260406.
+  * no changes provides.
+- Updated telegram-desktop to 6.7.5
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v6.7.5</comment>
+    <requestid>1345093</requestid>
+  </revision>
 </revisionlist>
