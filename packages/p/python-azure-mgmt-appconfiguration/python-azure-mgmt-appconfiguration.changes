@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:05:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 6.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 6.0.0~b1
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Wed Jun 18 08:42:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

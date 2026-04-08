@@ -177,4 +177,17 @@
 - Update Requires from setup.py (forwarded request 1286585 from glaubitz)</comment>
     <requestid>1287947</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c400257ed6764d52571fa6a83f54c1e6</srcmd5>
+    <version>6.0.0~b1</version>
+    <time>1775661263</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 6.0.0~b1
+- Update Requires from pyproject.toml (forwarded request 1344923 from glaubitz)</comment>
+    <requestid>1344998</requestid>
+  </revision>
 </revisionlist>
