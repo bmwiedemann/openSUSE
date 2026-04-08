@@ -727,4 +727,16 @@
     <comment></comment>
     <requestid>1321799</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>b30111ab7adcd1e5f7915359edaf402d</srcmd5>
+    <version>0.41.0</version>
+    <time>1775661200</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.41.0:
+  * Switch to 3.14 for testing (#1086)
+  * Drop 3.9 support (#1085)
+  * More visible deprecation (#1077)
+- update BuildRequires from pyproject.toml</comment>
+    <requestid>1344793</requestid>
+  </revision>
 </revisionlist>

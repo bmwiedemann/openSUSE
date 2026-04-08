@@ -1,7 +1,7 @@
 #
 # spec file for package python-eventlet
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-eventlet
-Version:        0.40.4
+Version:        0.41.0
 Release:        0
 Summary:        Concurrent networking library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://eventlet.net
 Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventlet-%{version}.tar.gz
-BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatch-vcs >= 0.3}
+BuildRequires:  %{python_module hatchling >= 1.12.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
