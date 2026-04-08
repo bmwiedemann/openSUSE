@@ -1,7 +1,7 @@
 #
 # spec file for package python-happybase
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           python-happybase
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A Python library to interact with Apache HBase
 License:        MIT
 URL:            https://github.com/wbolster/happybase
 Source:         https://github.com/wbolster/happybase/archive/%{version}.tar.gz
-# https://github.com/python-happybase/happybase/pull/238
-Patch0:         use_pytest.patch
+BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -34,6 +33,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+Requires:       python-importlib-resources
 Requires:       python-six
 Requires:       python-thriftpy2 >= 0.4
 BuildArch:      noarch
@@ -65,8 +65,8 @@ sphinx-build -b html doc docs/build/html
 rm -r docs/build/html/.[a-z]*
 
 %check
-# the api tests need running thrift server
-%pytest tests/test_util.py
+rm -v pytest.ini tests/test_api.py
+%pytest
 
 %files %{python_files}
 %license LICENSE.rst

@@ -178,4 +178,20 @@
 - No more greedy globs in %files.</comment>
     <requestid>1273928</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fa56dbbd180c5bc32918918a7b283771</srcmd5>
+    <version>1.3.0</version>
+    <time>1775661353</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Switch to pytest (pr 238)
+  * Use importlib_resources package because pkg_resources is
+    deprecated in Python 3.12 (pr 261)
+- drop use_pytest.patch (upstream)
+
+- add missing six buildrequires
+  `Scan.setBatching()` at the Java side (inside the Thrift server).
+- Initial packaging (0.4)</comment>
+    <requestid>1345078</requestid>
+  </revision>
 </revisionlist>

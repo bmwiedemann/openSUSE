@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  7 21:53:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * Switch to pytest (pr 238)
+  * Use importlib_resources package because pkg_resources is
+    deprecated in Python 3.12 (pr 261)
+- drop use_pytest.patch (upstream)
+
+-------------------------------------------------------------------
 Fri May  2 07:30:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -13,7 +22,7 @@ Thu Mar 14 13:31:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Mon Nov  8 13:54:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add missing six buildrequires 
+- add missing six buildrequires
 
 -------------------------------------------------------------------
 Tue Mar 31 12:03:26 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
@@ -77,7 +86,7 @@ Tue Apr 15 21:00:40 UTC 2014 - dmueller@suse.com
  * Add support for retrieving sorted columns, which is possible with the HBase
   0.96 Thrift API
  * The `batch_size` argument to :py:meth:`Table.scan` is no longer propagated to
-  `Scan.setBatching()` at the Java side (inside the Thrift server). 
+  `Scan.setBatching()` at the Java side (inside the Thrift server).
 
 -------------------------------------------------------------------
 Mon Dec  9 23:13:08 UTC 2013 - p.drouand@gmail.com
@@ -141,5 +150,5 @@ Wed Mar 13 09:52:35 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Wed Mar 13 09:39:35 UTC 2013 - dmueller@suse.com
 
-- Initial packaging (0.4) 
+- Initial packaging (0.4)
 
