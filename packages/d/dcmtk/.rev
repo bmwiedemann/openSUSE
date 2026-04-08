@@ -356,4 +356,13 @@
   * 0001-dcmimage-Link-privately-to-libtiff-and-libpng.patch</comment>
     <requestid>1325262</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>d309ec8d78ff0c9e9e2b72a19142291a</srcmd5>
+    <version>3.7.0</version>
+    <time>1775661339</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change (CVE-2026-5663, boo#1261594)
+  * 0001-Sanitize-all-strings-passed-to-the-exec-options.patch</comment>
+    <requestid>1345068</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:52:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (CVE-2026-5663, boo#1261594)
+  * 0001-Sanitize-all-strings-passed-to-the-exec-options.patch
+
+-------------------------------------------------------------------
 Sun Jan  4 10:12:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.7.0. See docs/CHANGES.370 for the full list of changes

@@ -28,6 +28,8 @@ Source0:        https://dicom.offis.de/download/dcmtk/dcmtk370/%{name}-%{version
 Patch0:         dcmtk-fix-DCMTKTargets.cmake.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-dcmimage-Link-privately-to-libtiff-and-libpng.patch
+# PATCH-FIX-UPSTREAM -- CVE-2026-5663
+Patch2:         0001-Sanitize-all-strings-passed-to-the-exec-options.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
