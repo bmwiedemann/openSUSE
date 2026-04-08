@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rack
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack
-Version:        3.1.18
+Version:        3.2.6
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
@@ -54,7 +54,8 @@ middleware) into a single method call.
 
 %install
 %gem_install \
-  --doc-files="CHANGELOG.md MIT-LICENSE README.md" \
+  --no-rdoc --no-ri \
+  --doc-files="CHANGELOG.md CONTRIBUTING.md MIT-LICENSE README.md" \
   -f
 # MANUAL
 %fdupes %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/
