@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 05:19:56 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-314.patch:
+  * Support Python 3.14's grammar changes.
+
+-------------------------------------------------------------------
 Wed Dec  4 05:33:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-313.patch:

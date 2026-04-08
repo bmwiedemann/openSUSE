@@ -40,4 +40,13 @@
   * Support Python 3.13's grammar changes.</comment>
     <requestid>1228134</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>8886f0b9b64720728c8abe82353fe305</srcmd5>
+    <version>0.3.0</version>
+    <time>1775661418</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-314.patch:
+  * Support Python 3.14's grammar changes.</comment>
+    <requestid>1345107</requestid>
+  </revision>
 </revisionlist>

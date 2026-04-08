@@ -1,0 +1,185 @@
+From 30839512f752c69fcec5d63c23ae7b9e46c151a3 Mon Sep 17 00:00:00 2001
+From: Alexander Sulfrian <alexander@sulfrian.net>
+Date: Fri, 2 Jan 2026 16:31:24 +0100
+Subject: [PATCH 1/5] Improve SyntaxError messages for pattern captures
+
+python/cpython@23f159ae711d84177e8ce34cd9a6c8a762de64ac improved the
+SyntaxError messages for invalid pattern targets. This adds support for the
+more detailed messages in Python 3.14 and above.
+---
+ data/python.gram                                  | 7 +++++--
+ tests/python_parser/test_syntax_error_handling.py | 2 +-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+Index: pegen-0.3.0/data/python.gram
+===================================================================
+--- pegen-0.3.0.orig/data/python.gram
++++ pegen-0.3.0/data/python.gram
+@@ -1047,13 +1047,29 @@ try_stmt[ast.Try]:
+ 
+ except_block[ast.ExceptHandler]:
+     | invalid_except_stmt_indent
++    | 'except' e=expressions ':' b=block {
++        PY_VERSION >= (3, 14);
++        ast.ExceptHandler(type=e, name=None, body=b, LOCATIONS) }
++    | 'except' e=expression 'as' t=NAME ':' b=block {
++        PY_VERSION >= (3, 14);
++        ast.ExceptHandler(type=e, name=t.string, body=b, LOCATIONS) }
+     | 'except' e=expression t=['as' z=NAME { z.string }] ':' b=block {
++        PY_VERSION < (3, 14);
+         ast.ExceptHandler(type=e, name=t, body=b, LOCATIONS) }
+     | 'except' ':' b=block { ast.ExceptHandler(type=None, name=None, body=b, LOCATIONS) }
+     | invalid_except_stmt
+ except_star_block[ast.ExceptHandler]:
+     | invalid_except_star_stmt_indent
++    | 'except' '*' e=expressions ':' b=block {
++        PY_VERSION >= (3, 14);
++        ast.ExceptHandler(type=e, name=None, body=b, LOCATIONS)
++     }
++    | 'except' '*' e=expression 'as' t=NAME ':' b=block {
++        PY_VERSION >= (3, 14);
++        ast.ExceptHandler(type=e, name=t.string, body=b, LOCATIONS)
++     }
+     | 'except' '*' e=expression t=['as' z=NAME { z.string }] ':' b=block {
++        PY_VERSION < (3, 14);
+         ast.ExceptHandler(type=e, name=t, body=b, LOCATIONS)
+      }
+     | invalid_except_stmt
+@@ -2255,7 +2271,12 @@ invalid_try_stmt[NoReturn]:
+         )
+      }
+ invalid_except_stmt[None]:
++    | 'except' '*'? a=expression ',' expressions 'as' NAME ':' {
++        PY_VERSION >= (3, 14);
++        self.raise_syntax_error_starting_from("multiple exception types must be parenthesized when using 'as'", a)
++     }
+     | 'except' '*'? a=expression ',' expressions ['as' NAME ] ':' {
++        PY_VERSION < (3, 14);
+         self.raise_syntax_error_starting_from("multiple exception types must be parenthesized", a)
+      }
+     | a='except' '*'? expression ['as' NAME ] NEWLINE { self.raise_syntax_error("expected ':'") }
+@@ -2314,8 +2335,11 @@ invalid_as_pattern[NoReturn]:
+     | or_pattern 'as' a="_" {
+         self.raise_syntax_error_known_location("cannot use '_' as a target", a)
+      }
+-    | or_pattern 'as' !NAME a=expression {
+-        self.raise_syntax_error_known_location("invalid pattern target", a)
++    | or_pattern 'as' a=expression {
++        self.raise_syntax_error_known_location(
++            f"cannot use {self.get_expr_name(a)} as pattern target", a)
++        if self.py_version >= (3, 14)
++        else self.raise_syntax_error_known_location("invalid pattern target", a)
+      }
+ invalid_class_pattern[NoReturn]:
+     | name_or_attr '(' a=invalid_class_argument_pattern  {
+Index: pegen-0.3.0/tests/python_parser/test_syntax_error_handling.py
+===================================================================
+--- pegen-0.3.0.orig/tests/python_parser/test_syntax_error_handling.py
++++ pegen-0.3.0/tests/python_parser/test_syntax_error_handling.py
+@@ -976,26 +976,32 @@ def test_invalid_try_stmt(
+                 sys.version_info < (3, 11), reason="Syntax unsupported before 3.11+"
+             ),
+         ),
+-        (
++        pytest.param(
+             "try:\n\tpass\nexcept ValueError, IndexError:",
+             SyntaxError,
+             "multiple exception types must be parenthesized",
+             (3, 8),
+             (3, 30),
++            marks=pytest.mark.skipif(
++                sys.version_info >= (3, 14), reason="PEP 758 allows unparenthesized except and except* blocks"
++            ),
+         ),
+-        (
++        pytest.param(
+             "try:\n\tpass\nexcept ValueError, IndexError,:",
+             SyntaxError,
+             "multiple exception types must be parenthesized",
+             (3, 8),
+             (3, 31),
++            marks=pytest.mark.skipif(
++                sys.version_info >= (3, 14), reason="PEP 758 allows unparenthesized except and except* blocks"
++            ),
+         ),
+         (
+             "try:\n\tpass\nexcept ValueError, IndexError, a=1:",
+             SyntaxError,
+             "invalid syntax",
+-            (3, 18),
+-            (3, 19),
++            (3, 33) if sys.version_info >= (3, 14) else (3, 18),
++            (3, 34) if sys.version_info >= (3, 14) else (3, 19),
+         ),
+         (
+             "try:\n\tpass\nexcept Exception\npass",
+@@ -1156,7 +1162,7 @@ def test_invalid_case_stmt(
+         (
+             "match a:\n\tcase 1 as 1+1:\n\t\tpass",
+             SyntaxError,
+-            "invalid pattern target",
++            "cannot use expression as pattern target" if sys.version_info >= (3, 14) else "invalid pattern target",
+             (2, 12),
+             (2, 15),
+         ),
+Index: pegen-0.3.0/src/pegen/python_generator.py
+===================================================================
+--- pegen-0.3.0.orig/src/pegen/python_generator.py
++++ pegen-0.3.0/src/pegen/python_generator.py
+@@ -397,6 +397,7 @@ class PythonParserGenerator(ParserGenera
+         locations = False
+         unreachable = False
+         used = None
++        version_check = None
+         if action:
+             # Replace magic name in the action rule
+             if "LOCATIONS" in action:
+@@ -405,6 +406,11 @@ class PythonParserGenerator(ParserGenera
+             if "UNREACHABLE" in action:
+                 unreachable = True
+                 action = action.replace("UNREACHABLE", self.unreachable_formatting)
++            if ";" in action:
++                parts = action.split(";", 1)
++                if parts[0].startswith("PY_VERSION"):
++                    action = parts[1].lstrip()
++                    version_check = parts[0].replace("PY_VERSION", "self.py_version")
+ 
+             # Extract the names actually used in the action.
+             used = self.usednamesvisitor.visit(ast.parse(action))
+@@ -423,6 +429,11 @@ class PythonParserGenerator(ParserGenera
+                 if has_invalid:
+                     self.print("self.call_invalid_rules")
+                     first = False
++                if version_check:
++                    if not first:
++                        self.print("and")
++                    self.print(f"({version_check})")
++                    first = False
+                 for item in node.items:
+                     if first:
+                         first = False
+Index: pegen-0.3.0/.github/workflows/test.yml
+===================================================================
+--- pegen-0.3.0.orig/.github/workflows/test.yml
++++ pegen-0.3.0/.github/workflows/test.yml
+@@ -13,7 +13,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        python-version: ['3.8','3.9','3.10', '3.11', '3.12', '3.13']
++        python-version: ['3.8','3.9','3.10', '3.11', '3.12', '3.13', '3.14']
+     steps:
+     - uses: actions/checkout@v4
+     - name: Get history and tags for SCM versioning to work
+Index: pegen-0.3.0/pyproject.toml
+===================================================================
+--- pegen-0.3.0.orig/pyproject.toml
++++ pegen-0.3.0/pyproject.toml
+@@ -24,6 +24,7 @@ classifiers = [
+     "Programming Language :: Python :: 3.11",
+     "Programming Language :: Python :: 3.12",
+     "Programming Language :: Python :: 3.13",
++    "Programming Language :: Python :: 3.14",
+     "Programming Language :: Python :: 3 :: Only",
+ ]
+ keywords = ["parser", "CPython", "PEG", "pegen"]
