@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 09:38:42 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Add silence-signedness-change-through-implicit-conversion-error.patch
+  * Silence signedness change through implicit conversion error. The
+    error pops up when using the rebranch Clang.
+
+-------------------------------------------------------------------
 Thu Jan 16 09:23:41 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add disable-cast-function-type-mismatch.patch

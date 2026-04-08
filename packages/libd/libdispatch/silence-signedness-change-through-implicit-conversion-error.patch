@@ -1,0 +1,34 @@
+From 38872e2d44d66d2fb94186988509defc734888a5 Mon Sep 17 00:00:00 2001
+From: Anthony Latsis <alatsis@apple.com>
+Date: Mon, 9 Jun 2025 19:42:15 +0100
+Subject: [PATCH] Silence signedness change through implicit conversion error
+
+The error pops up when using the rebranch Clang (stable/20250402):
+
+```
+/home/build-user/swift-corelibs-libdispatch/src/event/event_epoll.c:92:27: error: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Werror,-Wsign-conversion]
+92 |         return dmn->dmn_events & ~dmn->dmn_disarmed_events;
+   |                                ~ ^~~~~~~~~~~~~~~~~~~~~~~~~
+```
+---
+ src/event/event_epoll.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/event/event_epoll.c b/src/event/event_epoll.c
+index f31d13e..b7fe837 100644
+--- a/src/event/event_epoll.c
++++ b/src/event/event_epoll.c
+@@ -89,7 +89,9 @@ DISPATCH_ALWAYS_INLINE
+ static inline uint32_t
+ _dispatch_muxnote_armed_events(dispatch_muxnote_t dmn)
+ {
+-	return dmn->dmn_events & ~dmn->dmn_disarmed_events;
++  uint32_t events = dmn->dmn_events;
++  uint16_t disarmed_events = dmn->dmn_disarmed_events;
++  return events & ~(uint32_t)disarmed_events;
+ }
+ 
+ DISPATCH_ALWAYS_INLINE
+-- 
+2.50.1
+

@@ -31,6 +31,8 @@ Patch0:         prevent_unused.patch
 Patch2:         soversion.patch
 # UPSTREAM-PATCH https://github.com/swiftlang/swift-corelibs-libdispatch/pull/840
 Patch3:         disable-cast-function-type-mismatch.patch
+# PATCH-FIX-UPSTREAM https://github.com/swiftlang/swift-corelibs-libdispatch/pull/880
+Patch4:         silence-signedness-change-through-implicit-conversion-error.patch
 BuildRequires:  chrpath
 BuildRequires:  clang
 BuildRequires:  cmake
