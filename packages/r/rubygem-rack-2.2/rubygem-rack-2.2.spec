@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rack-2.2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-2.2
-Version:        2.2.22
+Version:        2.2.23
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
@@ -56,6 +56,7 @@ middleware) into a single method call.
 
 %install
 %gem_install \
+  --no-rdoc --no-ri \
   --symlink-binaries \
   --doc-files="CHANGELOG.md CONTRIBUTING.md MIT-LICENSE README.rdoc" \
   -f
