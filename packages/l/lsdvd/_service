@@ -1,16 +1,15 @@
 <services>
-  <service mode="manual" name="tar_scm">
+  <service name="tar_scm" mode="manual">
     <param name="url">git://git.code.sf.net/p/lsdvd/git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">0.20</param>
+    <param name="revision">0.21</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="filename">lsdvd</param>
   </service>
-  <service mode="manual" name="recompress">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="manual" name="set_version" />
+  <service name="set_version" mode="manual"/>
 </services>
-

@@ -1,7 +1,7 @@
 #
 # spec file for package lsdvd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2006-2009 Manfred Tremmel <Manfred.Tremmel@iiv.de>
 # Copyright (c) 2004 Rainer Lay <rainer@links2linux.de>
 #
@@ -23,14 +23,13 @@
 %bcond_with tests
 
 Name:           lsdvd
-Version:        0.20
+Version:        0.21
 Release:        0
 Summary:        A ls for video DVDs
 Summary(de):    Ein ls für Video DVDs
 License:        GPL-2.0-only
 URL:            https://sourceforge.net/projects/lsdvd/
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         fix-input-XML_DEPRECATED_MEMBER.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 %if 0%{?suse_version} == 1500
@@ -54,9 +53,6 @@ Ein Programm zur Anzeige des Inhalts einer Video-DVD
 
 %prep
 %setup -q
-%if %{pkg_vcmp libxml2-devel >= 2.14.5}
-%patch -P 0 -p1
-%endif
 
 %build
 export CC=gcc
@@ -76,8 +72,8 @@ export PATH=%{buildroot}%{_bindir}:$PATH
 %endif
 
 %files
-%doc AUTHORS ChangeLog README
 %license COPYING
+%doc AUTHORS ChangeLog README
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{ext_man}
 

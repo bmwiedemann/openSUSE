@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  7 11:12:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.21
+  * Corrected python self test.
+  * Migrated to newer API methods to work with newer libxml.
+    Tested with libxml >= 2.9.
+- Drop patch:
+  * fix-input-XML_DEPRECATED_MEMBER.patch (not longer needed)
+
+-------------------------------------------------------------------
 Fri Oct 17 19:15:59 UTC 2025 - munix9@googlemail.com
 
 - Fix patch fix-input-XML_DEPRECATED_MEMBER.patch:
