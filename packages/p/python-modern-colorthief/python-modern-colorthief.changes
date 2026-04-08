@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  7 13:39:04 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.1.13:
+  * Refactor image handling in get_palette and get_color
+
+-------------------------------------------------------------------
 Tue Jan 20 23:48:30 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.1.12:

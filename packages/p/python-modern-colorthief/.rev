@@ -62,4 +62,13 @@
   * feat: split python file (forwarded request 1328401 from rrahl0)</comment>
     <requestid>1328402</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d6f1dacbc12aad7b965af9c6a3f179b1</srcmd5>
+    <version>0.1.13</version>
+    <time>1775661270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.13:
+  * Refactor image handling in get_palette and get_color (forwarded request 1345009 from rrahl0)</comment>
+    <requestid>1345010</requestid>
+  </revision>
 </revisionlist>
