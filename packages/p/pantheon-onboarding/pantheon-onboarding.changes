@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  7 18:19:02 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.1.0:
+  * Application: rely on Granite.StyleManager
+  * StyleView: Support Latte
+  * FinishView: explain how to access system settings
+
+-------------------------------------------------------------------
 Sun Dec 21 02:47:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 = Update to version 8.0.4:

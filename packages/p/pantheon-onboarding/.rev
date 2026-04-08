@@ -40,4 +40,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324521</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>434fffbcc3272941fdee7b90e7f05357</srcmd5>
+    <version>8.1.0</version>
+    <time>1775661333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.1.0:
+  * Application: rely on Granite.StyleManager
+  * StyleView: Support Latte
+  * FinishView: explain how to access system settings (forwarded request 1345046 from rrahl0)</comment>
+    <requestid>1345047</requestid>
+  </revision>
 </revisionlist>
