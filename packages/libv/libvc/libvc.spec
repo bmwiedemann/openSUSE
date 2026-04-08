@@ -1,7 +1,7 @@
 #
 # spec file for package libvc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define c_lib   libvc0
 Name:           libvc
-Version:        012
+Version:        013
 Release:        0
 Summary:        Library to read and write vcard files
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libvc/libvc
 Source0:        https://github.com/libvc/libvc/archive/v%{version}.tar.gz
-BuildRequires:  autoconf >= 2.71
+BuildRequires:  autoconf >= 2.72
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  byacc

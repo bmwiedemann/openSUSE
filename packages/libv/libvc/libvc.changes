@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 03:35:33 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 013:
+  * Increased AC_PREREQ to 2.72
+  * Abort the configure script if Flex or Bison programs are not found
+
+-------------------------------------------------------------------
 Tue Oct  4 12:25:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 012:
