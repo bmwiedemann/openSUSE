@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Apr  5 13:57:40 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.3.4
+  - Bump pyo3 from 0.28.1 to 0.28.2 in #114
+  - Validate rel attribute conflict with link_rel in #117
+  - Expose default clean_content_tags as module constant in #118
+  - Accept frozenset and Mapping in type stubs in #119
+- Changes from 0.3.3
+  - Bump pyo3 from 0.27.1 to 0.27.2 in #106
+    - Bump actions/checkout from 5 to 6 in the github-actions group in #105
+  - Bump the github-actions group with 2 updates in #108
+  - Add riscv64 build, and make target list more explicit #110
+  - Bump pyo3 from 0.27.2 to 0.28.0 in #111
+- Changes from 0.3.2
+  - Upgrade GitHub Actions in #94
+  - GitHub Actions: Stop reinstalling Rust on windows-11-arm in #95
+  - Add README reference in pyproject.toml in #97
+  - Keep GitHub Actions up to date with GitHub's Dependabot in #96
+  - Build wheels for Python 3.14 free-threaded in #100
+- Changes from 0.3.1
+  - Bump ammonia from 4.1.1 to 4.1.2 in #93
+  - Bump pyo3 from 0.25.1 to 0.26.0 in #92
+
+-------------------------------------------------------------------
 Mon Oct  6 08:54:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.3.0

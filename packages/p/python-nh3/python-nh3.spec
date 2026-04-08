@@ -1,7 +1,7 @@
 #
 # spec file for package python-nh3
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nh3
-Version:        0.3.0
+Version:        0.3.4
 Release:        0
 Summary:        Ammonia HTML sanitizer Python binding
 License:        MIT
@@ -28,7 +28,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  %{python_module maturin >= 1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
