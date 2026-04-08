@@ -1,7 +1,7 @@
 #
 # spec file for package maven-doxia-sitetools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-doxia-sitetools
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Doxia content generation framework
 License:        Apache-2.0
@@ -25,7 +25,6 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/doxia/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.tar.xz
-Patch1:         0001-Remove-dependency-on-velocity-tools.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
@@ -43,7 +42,6 @@ BuildRequires:  modello
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-i18n
 BuildRequires:  plexus-interpolation
-BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
 BuildRequires:  plexus-xml
@@ -51,6 +49,7 @@ BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
 BuildRequires:  velocity-engine-core
+BuildRequires:  velocity-tools-generic
 BuildArch:      noarch
 
 %description
@@ -69,9 +68,6 @@ API documentation for %{name}.
 
 %prep
 %setup -q -a1
-%patch -P 1 -p1
-
-%pom_remove_dep -r :velocity-tools-generic
 
 %build
 mkdir -p lib
@@ -96,7 +92,8 @@ build-jar-repository -s lib \
     plexus-velocity/plexus-velocity \
     plexus/xml \
     slf4j/api \
-    velocity-engine/velocity-engine-core
+    velocity-engine/velocity-engine-core \
+    velocity-tools/velocity-tools-generic
 
 ant package javadoc
 

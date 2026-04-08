@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Apr  8 07:41:17 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.1.0
+  * New features and improvements
+    + Expose SCM last modification date and author from Doxia source
+      in Velocity
+    + Allow to set an alternative source directory (for editing)
+    + Support conditional resources from skins
+    + Support for rendering Mermaid diagrams client-side.
+  * Bug Fixes
+    + Interpolate using user and system properties in Site
+      Descriptor
+  * Documentation updates
+    + Convert Sites from APT to MD
+    + Clarify menu inheritance and default behavior of "inherit"
+      attribute
+    + Upgrade to Site Descriptor 2.x
+    + Clarify image attributes in site descriptor
+    + Document value "none" for attribute "position"
+  * Maintenance
+    + JUnit Jupiter best practices
+    + PlexusStringUtils Refaster recipes
+    + PlexusFileUtils Refaster recipes
+    + JUnit Jupiter migration from JUnit 4.x
+    + feat: enable prevent branch protection rules
+    + Enable Github issues
+    + DOXIASITETOOLS-359: Support site directories where duplicates
+      are skipped
+    + DOXIASITETOOLS-356: Provide more context in error message
+    + DOXIASITETOOLS-313: Refresh download page
+  * Dependency updates
+    + Update to Doxia 2.1.0
+    + Bump org.junit:junit-bom from 5.11.2 to 5.14.3
+    + Bump org.apache.maven.plugin-testing
+      :maven-plugin-testing-harness from 3.3.0 to 3.5.1
+    + DOXIASITETOOLS-360: Bump org.codehaus.mojo:l10n-maven-plugin
+      from 1.0.0 to 1.1.0
+    + Bump org.codehaus.mojo:l10n-maven-plugin from 1.1.0 to 1.2.0
+    + Bump org.apache.maven:maven-parent from 43 to 47
+    + Bump org.codehaus.plexus:plexus-testing from 1.4.0 to 2.1.0
+    + DOXIASITETOOLS-361: Bump org.htmlunit:htmlunit from 4.4.0 to
+      4.9.0
+    + Bump org.htmlunit:htmlunit from 4.9.0 to 4.21.0
+    + Bump org.apache.commons:commons-lang3 from 3.17.0 to 3.20.0
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.27 to
+      1.29
+    + Bump org.codehaus.plexus:plexus-i18n from 1.0-beta-10 to 1.1.0
+    + Bump commons-io:commons-io from 2.17.0 to 2.21.0
+    + Bump org.codehaus.plexus:plexus-velocity from 2.2.0 to 2.3.0
+    + Bump org.codehaus.plexus:plexus-classworlds from 2.8.0 to
+      2.9.0
+    + Bump org.apache.velocity:velocity-engine-core from 2.4 to
+      2.4.1
+- Removed patch:
+  * 0001-Remove-dependency-on-velocity-tools.patch
+    + we are now building against the velocity-tools-generic
+
+-------------------------------------------------------------------
 Tue Jun  3 08:18:01 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4
