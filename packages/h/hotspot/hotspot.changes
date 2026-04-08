@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Apr  8 04:02:00 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Packaging changes for Factory
+  * Use manual services
+  * Include tarball in sources
+
+-------------------------------------------------------------------
+Fri Mar  6 04:24:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to 1.6.0
+  * add support for archives
+  * allow handling of compressed perfparser files
+  * allow user to specify perf and objdump via command line
+  * associate application/x-perf-data and application/x-hotspot with hotspot
+  * clarify "Filter In On Thread #%1 By Time"
+  * ignore empty command line arguments
+  * move compressed test data to files instead of base64 strings
+  * open more perf files
+  * Parse tracepoint data in hotspot
+  * remove memory leak when calling QLayout::replaceWidget
+  * show current unwind settings in settings dialog
+  * support regex search
+  * update icons
+  * Bug fixes
+- Build with Qt6
+- Use scm rather than release assets for sources to include submodules
+
+-------------------------------------------------------------------
 Sat Dec 27 13:09:05 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - change BuildRequires to pkgconfig(qcustomplot-qt5) for

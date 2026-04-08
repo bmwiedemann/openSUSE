@@ -1,7 +1,7 @@
 #
 # spec file for package hotspot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,56 +17,47 @@
 
 
 Name:           hotspot
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Perf GUI for performance analysis
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/KDAB/hotspot
-Source:         https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-v%{version}.tar.gz
-Source1:        https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-perfparser-v%{version}.tar.gz
-Source2:        https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-PrefixTickLabels-v%{version}.tar.gz
+Source:         hotspot-%{version}.tar.gz
 BuildRequires:  extra-cmake-modules
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-PIE
-BuildRequires:  gcc13-c++
-%endif
 BuildRequires:  glibc-devel-static
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KDDockWidgets)
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5ItemModels)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(KF5ThreadWeaver)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Network)
-# qcustomplot-devel in Leap 15 needs this dependency. Keep it there for the moment
-%if 0%{?suse_version} == 1500
-BuildRequires:  cmake(Qt5PrintSupport)
-%endif
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
+
+BuildRequires:  cmake(KDDockWidgets-qt6)
+BuildRequires:  cmake(KF6Archive)
+BuildRequires:  cmake(KF6ConfigWidgets)
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6IconThemes)
+BuildRequires:  cmake(KF6ItemModels)
+BuildRequires:  cmake(KF6ItemViews)
+BuildRequires:  cmake(KF6KIO)
+BuildRequires:  cmake(KF6Notifications)
+BuildRequires:  cmake(KF6Parts)
+BuildRequires:  cmake(KF6Solid)
+BuildRequires:  cmake(KF6SyntaxHighlighting)
+BuildRequires:  cmake(KF6ThreadWeaver)
+BuildRequires:  cmake(KF6WindowSystem)
+BuildRequires:  cmake(KGraphViewerPart)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Test)
 BuildRequires:  pkgconfig(libdebuginfod)
 %if 0%{?suse_version} > 1600
-BuildRequires:  pkgconfig(qcustomplot-qt5)
-%else
-BuildRequires:  pkgconfig(qcustomplot)
+BuildRequires:  pkgconfig(qcustomplot-qt6)
 %endif
+
+Provides:       bundled(hotspot-PrefixTickLabels)
+Provides:       bundled(hotspot-perfparser)
+
 Requires:       binutils
 Requires:       perf
 Requires:       pkexec
@@ -76,34 +67,24 @@ Hotspot is a standalone GUI for performance data with an UI like KCachegrind
 around Linux perf.
 
 %prep
-# %%autosetup fails with more than one extra 'Source'
-%setup -q -n %{name} -a 1 -a 2
-
-mv perfparser/* 3rdparty/perfparser/
-mv PrefixTickLabels/* 3rdparty/PrefixTickLabels/
+%autosetup
 
 %build
-%if 0%{?suse_version} == 1500
-export CXX=g++-13
-%endif
-
-%cmake_kf5 -d build
+%cmake_kf6 -DQT6_BUILD=TRUE
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
 %files
 %license LICENSE.GPL.txt
 %doc README.md
-%{_kf5_applicationsdir}/com.kdab.hotspot.desktop
-%{_kf5_appstreamdir}/com.kdab.Hotspot.appdata.xml
-%{_kf5_bindir}/hotspot
-%if %{pkg_vcmp kf5-filesystem >= 20220307}
+%{_kf6_applicationsdir}/com.kdab.hotspot.desktop
+%{_kf6_appstreamdir}/com.kdab.Hotspot.appdata.xml
+%{_datadir}/mime/packages/com.kdab.hotspot.xml
+%{_kf6_bindir}/hotspot
 %{_libexecdir}/hotspot-perfparser
-%else
-%{_kf5_libdir}/libexec/hotspot-perfparser
-%endif
-%{_kf5_iconsdir}/hicolor/*/*/hotspot.png
-%{_kf5_notifydir}/hotspot.notifyrc
+%{_kf6_iconsdir}/hicolor/*/*/hotspot.png
+%{_kf6_notificationsdir}/hotspot.notifyrc
 
 %changelog
