@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  6 21:42:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.7:
+  * Pre-built optimized version using mypy[c] v1.20.
+  * Relax `setuptools` constraint to `setuptools>=68,<82.1`.
+  * Correctly remove SIG remnant in utf-7 decoded string. (#718)
+
+-------------------------------------------------------------------
 Sun Mar 29 09:09:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.6:
