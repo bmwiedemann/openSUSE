@@ -1,7 +1,7 @@
 #
 # spec file for package python-Kajiki
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,28 @@
 
 
 Name:           python-Kajiki
-Version:        0.9.2
+Version:        1.0.2
 Release:        0
 Summary:        Compiler for Genshi syntax outputting Python bytecode
 License:        MIT
-URL:            https://github.com/nandoflorestan/kajiki
+URL:            https://github.com/jackrosenthal/kajiki
 Source:         https://github.com/jackrosenthal/kajiki/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
 BuildRequires:  %{python_module Babel}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module linetable}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+%if %{python_version_nodots} < 39
+BuildRequires:  %{python_module importlib-resources}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Requires:       python-linetable
+%if %{python_version_nodots} < 39
+Requires:       python-importlib-resources
+%endif
 BuildArch:      noarch
 %python_subpackages
 

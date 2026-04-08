@@ -137,4 +137,25 @@
 - Actually drop {Build,}Requires on nine.</comment>
     <requestid>1182028</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b513980b35e1685885da826d10fd6d10</srcmd5>
+    <version>1.0.2</version>
+    <time>1775661350</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2:
+  * Added new --json and --toml CLI options to load input
+    variables from JSON and TOML files, respectively.  --toml
+    requires Python 3.11 or newer.
+  * The kajiki CLI entry point was accidentally removed during
+    the conversion to hatchling.  It was added back.
+  * py:match and structural pattern matching added.  Python 3.10+
+    is required for this feature.  Thanks @CastixGitHub for the
+    contribution.
+  * PEP-517 backend switched from setuptools to hatchling.
+  * Removed API usages of pkg_resources.
+  * Added integration tests with TurboGears2 to ensure we don't
+    break users.
+  * Python 3.8+ is now required.</comment>
+    <requestid>1345074</requestid>
+  </revision>
 </revisionlist>

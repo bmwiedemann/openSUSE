@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  7 21:34:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Added new --json and --toml CLI options to load input
+    variables from JSON and TOML files, respectively.  --toml
+    requires Python 3.11 or newer.
+  * The kajiki CLI entry point was accidentally removed during
+    the conversion to hatchling.  It was added back.
+  * py:match and structural pattern matching added.  Python 3.10+
+    is required for this feature.  Thanks @CastixGitHub for the
+    contribution.
+  * PEP-517 backend switched from setuptools to hatchling.
+  * Removed API usages of pkg_resources.
+  * Added integration tests with TurboGears2 to ensure we don't
+    break users.
+  * Python 3.8+ is now required.
+
+-------------------------------------------------------------------
 Fri Jun 21 05:58:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
