@@ -54,6 +54,11 @@ Patch4:         support-msgfmt-0.25.patch
 Patch6:         test_strip_tags.patch
 # PATCH-FIX-OPENSUSE skip-flaky-tests.patch skip tests which are erratic on OBS
 Patch7:         skip-flaky-tests.patch
+# three patches which together make Django4 compatible with Python 3.14
+# PATCH-FIX-UPSTREAM https://github.com/django/django/commit/8d7b1423f89bcc3df57333fc79fa5aead17b0cbc Refs #35844 -- Fixed copying BaseContext and its subclasses on Python 3.14+.
+# PATCH-FIX-UPSTREAM https://github.com/django/django/commit/34066d6cf3d66b8a3c7fac86912455dbb2ed0ed6 Refs #35844 -- Fixed tests for test --parallel option on Python 3.14+.
+# PATCH-FIX-UPSTREAM https://github.com/django/django/commit/fcd9d08379a2aee3b2c49eab0d0b8db6fd66d091 Refs #35844 -- Fixed OtherModelFormTests.test_prefetch_related_queryset() test on Python 3.14+.
+Patch8:         py314.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}

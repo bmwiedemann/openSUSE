@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  7 12:45:23 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add py314.patch to fix build with Python 3.14
+
+-------------------------------------------------------------------
 Wed Mar  4 09:18:08 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.2.29

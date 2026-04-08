@@ -1,0 +1,167 @@
+From 8d7b1423f89bcc3df57333fc79fa5aead17b0cbc Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Sun, 17 Nov 2024 16:07:23 +0100
+Subject: [PATCH] Refs #35844 -- Fixed copying BaseContext and its subclasses
+ on Python 3.14+.
+
+super objects are copyable on Python 3.14+:
+
+https://github.com/python/cpython/commit/5ca4e34bc1aab8321911aac6d5b2b9e75ff764d8
+
+and can no longer be used in BaseContext.__copy__().
+---
+ django/template/context.py           | 4 +++-
+ tests/template_tests/test_context.py | 8 ++++++++
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+Index: django-4.2.29/django/template/context.py
+===================================================================
+--- django-4.2.29.orig/django/template/context.py
++++ django-4.2.29/django/template/context.py
+@@ -35,7 +35,9 @@ class BaseContext:
+             self.dicts.append(value)
+ 
+     def __copy__(self):
+-        duplicate = copy(super())
++        duplicate = BaseContext()
++        duplicate.__class__ = self.__class__
++        duplicate.__dict__ = copy(self.__dict__)
+         duplicate.dicts = self.dicts[:]
+         return duplicate
+ 
+Index: django-4.2.29/tests/template_tests/test_context.py
+===================================================================
+--- django-4.2.29.orig/tests/template_tests/test_context.py
++++ django-4.2.29/tests/template_tests/test_context.py
+@@ -1,3 +1,4 @@
++from copy import copy
+ from unittest import mock
+ 
+ from django.http import HttpRequest
+@@ -276,3 +277,10 @@ class RequestContextTests(SimpleTestCase
+         context = RequestContext(request, {})
+         context["foo"] = "foo"
+         self.assertEqual(template.render(context), "foo")
++
++    def test_context_copyable(self):
++        request_context = RequestContext(HttpRequest())
++        request_context_copy = copy(request_context)
++        self.assertIsInstance(request_context_copy, RequestContext)
++        self.assertEqual(request_context_copy.dicts, request_context.dicts)
++        self.assertIsNot(request_context_copy.dicts, request_context.dicts)
+From 34066d6cf3d66b8a3c7fac86912455dbb2ed0ed6 Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Thu, 24 Oct 2024 16:41:37 +0200
+Subject: [PATCH] Refs #35844 -- Fixed tests for test --parallel option on
+ Python 3.14+.
+
+"forkserver" is the new default on POSIX systems, and Django doesn't
+support parallel tests with "forkserver":
+
+https://github.com/python/cpython/commit/b65f2cdfa77d8d12c213aec663ddaaa30d75a4b2
+---
+ tests/test_runner/test_discover_runner.py | 1 +
+ tests/test_runner/tests.py                | 5 +++++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/tests/test_runner/test_discover_runner.py b/tests/test_runner/test_discover_runner.py
+index a845f6dd67d4..4f13cceeffc4 100644
+--- a/tests/test_runner/test_discover_runner.py
++++ b/tests/test_runner/test_discover_runner.py
+@@ -45,6 +45,7 @@ def change_loader_patterns(patterns):
+ @mock.patch.dict(os.environ, {}, clear=True)
+ @mock.patch.object(multiprocessing, "cpu_count", return_value=12)
+ # Python 3.8 on macOS defaults to 'spawn' mode.
++# Python 3.14 on POSIX systems defaults to 'forkserver' mode.
+ @mock.patch.object(multiprocessing, "get_start_method", return_value="fork")
+ class DiscoverRunnerParallelArgumentTests(SimpleTestCase):
+     def get_parser(self):
+diff --git a/tests/test_runner/tests.py b/tests/test_runner/tests.py
+index b900ff69ea0c..fba8dd3b6ff2 100644
+--- a/tests/test_runner/tests.py
++++ b/tests/test_runner/tests.py
+@@ -506,6 +506,7 @@ def test_durations_lt_py312(self):
+ @mock.patch.dict(os.environ, {}, clear=True)
+ @mock.patch.object(multiprocessing, "cpu_count", return_value=12)
+ class ManageCommandParallelTests(SimpleTestCase):
++    @mock.patch.object(multiprocessing, "get_start_method", return_value="fork")
+     def test_parallel_default(self, *mocked_objects):
+         with captured_stderr() as stderr:
+             call_command(
+@@ -515,6 +516,7 @@ def test_parallel_default(self, *mocked_objects):
+             )
+         self.assertIn("parallel=12", stderr.getvalue())
+ 
++    @mock.patch.object(multiprocessing, "get_start_method", return_value="fork")
+     def test_parallel_auto(self, *mocked_objects):
+         with captured_stderr() as stderr:
+             call_command(
+@@ -550,12 +552,14 @@ def test_no_parallel_spawn(self, *mocked_objects):
+         self.assertEqual(stderr.getvalue(), "")
+ 
+     @mock.patch.dict(os.environ, {"DJANGO_TEST_PROCESSES": "7"})
++    @mock.patch.object(multiprocessing, "get_start_method", return_value="fork")
+     def test_no_parallel_django_test_processes_env(self, *mocked_objects):
+         with captured_stderr() as stderr:
+             call_command("test", testrunner="test_runner.tests.MockTestRunner")
+         self.assertEqual(stderr.getvalue(), "")
+ 
+     @mock.patch.dict(os.environ, {"DJANGO_TEST_PROCESSES": "invalid"})
++    @mock.patch.object(multiprocessing, "get_start_method", return_value="fork")
+     def test_django_test_processes_env_non_int(self, *mocked_objects):
+         with self.assertRaises(ValueError):
+             call_command(
+@@ -565,6 +569,7 @@ def test_django_test_processes_env_non_int(self, *mocked_objects):
+             )
+ 
+     @mock.patch.dict(os.environ, {"DJANGO_TEST_PROCESSES": "7"})
++    @mock.patch.object(multiprocessing, "get_start_method", return_value="fork")
+     def test_django_test_processes_parallel_default(self, *mocked_objects):
+         for parallel in ["--parallel", "--parallel=auto"]:
+             with self.subTest(parallel=parallel):
+From fcd9d08379a2aee3b2c49eab0d0b8db6fd66d091 Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Fri, 20 Dec 2024 08:43:14 +0100
+Subject: [PATCH] Refs #35844 -- Fixed
+ OtherModelFormTests.test_prefetch_related_queryset() test on Python 3.14+.
+
+https://github.com/python/cpython/commit/5a23994a3dbee43a0b08f5920032f60f38b63071
+---
+ tests/model_forms/tests.py | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+Index: django-4.2.29/tests/model_forms/tests.py
+===================================================================
+--- django-4.2.29.orig/tests/model_forms/tests.py
++++ django-4.2.29/tests/model_forms/tests.py
+@@ -23,6 +23,7 @@ from django.forms.models import (
+ from django.template import Context, Template
+ from django.test import SimpleTestCase, TestCase, skipUnlessDBFeature
+ from django.test.utils import isolate_apps
++from django.utils.version import PY314, PYPY
+ 
+ from .models import (
+     Article,
+@@ -2947,7 +2948,7 @@ class OtherModelFormTests(TestCase):
+                 return ", ".join(c.name for c in obj.colours.all())
+ 
+         field = ColorModelChoiceField(ColourfulItem.objects.prefetch_related("colours"))
+-        with self.assertNumQueries(3):  # would be 4 if prefetch is ignored
++        with self.assertNumQueries(2 if PYPY or PY314 else 3):  # would be 4 if prefetch is ignored
+             self.assertEqual(
+                 tuple(field.choices),
+                 (
+Index: django-4.2.29/django/utils/version.py
+===================================================================
+--- django-4.2.29.orig/django/utils/version.py
++++ django-4.2.29/django/utils/version.py
+@@ -18,6 +18,9 @@ PY310 = sys.version_info >= (3, 10)
+ PY311 = sys.version_info >= (3, 11)
+ PY312 = sys.version_info >= (3, 12)
+ PY313 = sys.version_info >= (3, 13)
++PY314 = sys.version_info >= (3, 14)
++
++PYPY = sys.implementation.name == "pypy"
+ 
+ 
+ def get_version(version=None):

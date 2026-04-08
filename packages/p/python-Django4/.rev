@@ -17,4 +17,12 @@
     file system objects (bsc#1259142)</comment>
     <requestid>1336304</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9d52c4bebd488b5e3181366fc80827c6</srcmd5>
+    <version>4.2.29</version>
+    <time>1775661436</time>
+    <user>dimstar_suse</user>
+    <comment>- Add py314.patch to fix build with Python 3.14</comment>
+    <requestid>1345131</requestid>
+  </revision>
 </revisionlist>
