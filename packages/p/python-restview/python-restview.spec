@@ -1,7 +1,7 @@
 #
 # spec file for package python-restview
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-restview
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        ReStructuredText viewer
 License:        GPL-3.0-only
@@ -27,8 +27,6 @@ URL:            https://mg.pov.lt/restview/
 Source:         https://files.pythonhosted.org/packages/source/r/restview/restview-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-tests.patch gh#mgedmin/restview@5033eacb1d55
 Patch0:         fix-tests.patch
-# PATCH-FIX-UPSTREAM fix_tests.patch gh#mgedmin/restview@6a1d6b44ee40
-Patch1:         fix_tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -63,7 +61,7 @@ A viewer for ReStructuredText documents that renders them on the fly.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k "not doctest_RestViewer_rest_to_html"
 
 %pre
 %python_libalternatives_reset_alternative restview

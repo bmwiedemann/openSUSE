@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:05:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.2:
+  * Add support for Python 3.12 and 3.13.
+- drop fix_tests.patch (obsolete)
+- refresh fix-tests.patch
+
+-------------------------------------------------------------------
 Wed Jun 11 13:08:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build and libalternatives
