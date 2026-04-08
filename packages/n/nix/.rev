@@ -210,4 +210,15 @@ support for software auditability among other things</comment>
     <comment></comment>
     <requestid>1343237</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>28d0c2153afc2ea4d6ea8897e0b7a066</srcmd5>
+    <version>2.34.5</version>
+    <time>1775661346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.34.5:
+  https://discourse.nixos.org/t/nix-security-advisory-privilege-escalation-via-symlink-following-during-fod-output-registration/76900
+  - libstore: Use landlock with LANDLOCK_SCOPE_ABSTRACT_UNIX_SOCKET
+    for new enough kernels</comment>
+    <requestid>1345082</requestid>
+  </revision>
 </revisionlist>
