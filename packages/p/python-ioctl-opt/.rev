@@ -15,4 +15,16 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1290555</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>509b81a9272b75e89a76726261710d73</srcmd5>
+    <version>1.3.1</version>
+    <time>1775661349</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.1:
+  * fix licensing to LGPL
+  * migrate to pyproject
+
+- Switch to pyproject macros.</comment>
+    <requestid>1345070</requestid>
+  </revision>
 </revisionlist>

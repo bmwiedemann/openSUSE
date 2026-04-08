@@ -1,7 +1,7 @@
 #
 # spec file for package python-ioctl-opt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-ioctl-opt
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        Pythonified linux asm-generic/ioctl.h
-License:        GPL-2.0-only
+License:        LGPL-2.1-or-later
 URL:            https://github.com/vpelletier/python-ioctl-opt
-Source:         https://pypi.org/packages/source/i/ioctl-opt/ioctl-opt-%{version}.tar.gz
+Source:         https://github.com/vpelletier/python-ioctl-opt/archive/refs/tags/%{version}.tar.gz#/ioctl-opt-%{version}-gh.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -35,7 +35,7 @@ BuildArch:      noarch
 Functions to compute fnctl.ioctl's opt argument.
 
 %prep
-%autosetup -p1 -n ioctl-opt-%{version}
+%autosetup -p1
 
 %build
 %pyproject_wheel
@@ -46,7 +46,7 @@ Functions to compute fnctl.ioctl's opt argument.
 
 %files %{python_files}
 %doc README.rst
-%license COPYING
+%license COPYING.LESSER
 %{python_sitelib}/ioctl_opt
 %{python_sitelib}/ioctl_opt-%{version}.dist-info
 
