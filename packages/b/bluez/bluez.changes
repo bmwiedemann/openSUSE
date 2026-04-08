@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  7 05:33:16 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Add bluez-mainloop-Only-connect-to-NOTIFY_SOCKET-if-STATUS-Sta.patch
+  to fix that systemd 259.3 causes timeout in starting home-assistant
+  using podman systemd unit / quadlet. (bsc#1259656)
+
+-------------------------------------------------------------------
 Tue Feb 24 05:59:22 UTC 2026 - Joey Lee <jlee@suse.com>
 
 - Add documentation for obexd system bus support:

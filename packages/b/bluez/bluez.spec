@@ -62,6 +62,8 @@ Patch12:        disable_some_obex_tests.patch
 Patch15:        hcidump-Fix-memory-leak-with-malformed-packet.patch
 # bsc#1013712 CVE-2016-9798
 Patch16:        hcidump-Fixed-malformed-segment-frame-length.patch
+# Bug 1259656 - systemd 259.3 causes timeout in starting home-assistant using podman systemd unit / quadlet
+Patch17:        bluez-mainloop-Only-connect-to-NOTIFY_SOCKET-if-STATUS-Sta.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
 # => PATCH-FIX-OPENSUSE for those two :-)
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)
