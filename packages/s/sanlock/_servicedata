@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://pagure.io/sanlock</param>
-              <param name="changesrevision">dbf6e4dd64d1b2d518ea9241d8921dec0464b60d</param></service></servicedata>
+              <param name="changesrevision">dbf6e4dd64d1b2d518ea9241d8921dec0464b60d</param></service><service name="tar_scm">
+                <param name="url">https://codeberg.org/sanlock/sanlock</param>
+              <param name="changesrevision">995685ac3ad8909cb7562e74dd13e3b450833d9c</param></service></servicedata>

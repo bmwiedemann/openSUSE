@@ -382,4 +382,26 @@ corruption of the VM's disk image.  See FATE#306399.</comment>
     <comment></comment>
     <requestid>1342641</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8eef7b67c18ea8d641be55d4322dc27d</srcmd5>
+    <version>5.1.0</version>
+    <time>1775661202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.0:
+  * release 5.1.0
+  * sanlock: add settings for caw fua and dpo
+  * sanlock: add debug for dm errors
+  * sanlock: fix compare and write on device with minor number 0
+  * sanlock: rename sanlock.service.native to sanlock.service
+  * remove: old service files no longer used
+  * remove: fence_sanlock reset python
+  * remove outdated files
+  * With '-Wl,--no-undefined' added to the library link flags in src/Makefile, the following errors are observed
+  * sanlock: add SANLK_REL_NO_DISK
+- spec: Disable building python bindings since they have been
+  abandoned upstream. Dropped sanlock-python-prefix.patch
+
+- Update spec and service file with new sanlock project URL</comment>
+    <requestid>1344794</requestid>
+  </revision>
 </revisionlist>

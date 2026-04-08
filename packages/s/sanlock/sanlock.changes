@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 06 20:14:43 UTC 2026 - jfehlig@suse.com
+
+- Update to version 5.1.0:
+  * release 5.1.0
+  * sanlock: add settings for caw fua and dpo
+  * sanlock: add debug for dm errors
+  * sanlock: fix compare and write on device with minor number 0
+  * sanlock: rename sanlock.service.native to sanlock.service
+  * remove: old service files no longer used
+  * remove: fence_sanlock reset python
+  * remove outdated files
+  * With '-Wl,--no-undefined' added to the library link flags in src/Makefile, the following errors are observed
+  * sanlock: add SANLK_REL_NO_DISK
+- spec: Disable building python bindings since they have been
+  abandoned upstream. Dropped sanlock-python-prefix.patch
+
+-------------------------------------------------------------------
+Mon Apr  6 14:23:04 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update spec and service file with new sanlock project URL
+
+-------------------------------------------------------------------
 Tue Mar 24 04:52:17 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Update to commit dbf6e4dd64

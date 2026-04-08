@@ -1,10 +1,10 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">sanlock</param>
-    <param name="revision">dbf6e4dd64d1b2d518ea9241d8921dec0464b60d</param>
+    <param name="revision">995685ac3ad8909cb7562e74dd13e3b450833d9c</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
-    <param name="url">https://pagure.io/sanlock</param>
+    <param name="url">https://codeberg.org/sanlock/sanlock</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">^sanlock[-]?(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
