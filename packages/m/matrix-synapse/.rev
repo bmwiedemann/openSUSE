@@ -1631,4 +1631,53 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.149.0</comment>
     <requestid>1338090</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>a6283c4779138d487ce9a71c5bef7393</srcmd5>
+    <version>1.150.0</version>
+    <time>1774469931</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1342324 from darix
+
+- Update to 1.150.0</comment>
+    <requestid>1342325</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>cf7a79cdce83d0a1a3595918e3ee581e</srcmd5>
+    <version>1.151.0</version>
+    <time>1775661445</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1345147 from darix
+
+- Update to 1.151.0
+  - Features
+    - Add stable support for MSC4284 Policy Servers. (#19503)
+    - Update and stabilize support for MSC2666: Get rooms in common
+      with another user. Contributed by @tulir @ Beeper. (#19511)
+    - Updated experimental support for MSC4388: Secure out-of-band
+      channel for sign in with QR. (#19573)
+    - Stabilize room_version and encryption fields in the
+      space/room /hierarchy API (part of MSC3266). (#19576)
+    - Introduce a configuration option to allow using HTTP/2 over
+      plaintext when Synapse connects to Matrix Authentication
+      Service. (#19586)
+  - Bugfixes
+    - Fix KNOWN_ROOM_VERSIONS.__contains__ raising TypeError for
+      non-string keys, which could cause /sync to fail for rooms
+      with a NULL room version in the database. Bug introduced in
+      #19589 as part of v1.151.0rc1. (#19649)
+    - Fix MSC4284 Policy Servers implementation to skip signing
+      org.matrix.msc4284.policy and m.room.policy state events.
+      (#19503)
+    - Correctly apply MSC4284 Policy Server signatures to events
+      when the sender and policy server have the same server name.
+      (#19503)
+    - Allow Synapse to start up even when discovery fails for an
+      OpenID Connect provider. (#19509)
+    - Fix quarantine media admin APIs sometimes returning
+      inaccurate counts for remote media. (#19559)
+    - Fix Build and push complement image CI job not having poetry
+      available for the Complement runner script. (#19578)
+    - Increase timeout for policy server requests to avoid repeated</comment>
+    <requestid>1345148</requestid>
+  </revision>
 </revisionlist>
