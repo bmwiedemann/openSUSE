@@ -47,4 +47,14 @@
     <comment></comment>
     <requestid>1276924</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>98e169466ea1d980f9e6ed39e5ef1e5f</srcmd5>
+    <version>0.4.0</version>
+    <time>1775661410</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup macro.
+- Add patch support-python-314.patch:
+  * Support Python 3.14 changes.</comment>
+    <requestid>1345095</requestid>
+  </revision>
 </revisionlist>

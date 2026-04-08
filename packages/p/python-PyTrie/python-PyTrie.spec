@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyTrie
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        A pure Python implementation of the trie data structure
 License:        BSD-3-Clause
 URL:            https://github.com/gsakkis/pytrie/
 Source:         https://files.pythonhosted.org/packages/source/P/PyTrie/PyTrie-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support Python 3.14 changes
+Patch0:         support-python-314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sortedcontainers}
@@ -45,8 +47,7 @@ implementing the mapping interface, tries allow finding the items for a given
 prefix, and vice versa, finding the items whose keys are prefixes of a given key.
 
 %prep
-%setup -q -n PyTrie-%{version}
-%autopatch -p1
+%autosetup -p1 -n PyTrie-%{version}
 
 %build
 %pyproject_wheel
@@ -62,7 +63,7 @@ prefix, and vice versa, finding the items whose keys are prefixes of a given key
 %license LICENSE
 %doc README.md
 %{python_sitelib}/pytrie.py
-%{python_sitelib}/[Pp]y[Tt]rie-%{version}*-info
+%{python_sitelib}/[Pp]y[Tt]rie-%{version}.dist-info
 %pycache_only %{python_sitelib}/__pycache__/pytrie*
 
 %changelog

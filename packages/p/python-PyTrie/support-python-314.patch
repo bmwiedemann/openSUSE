@@ -1,0 +1,24 @@
+Index: PyTrie-0.4.0/pytrie.py
+===================================================================
+--- PyTrie-0.4.0.orig/pytrie.py
++++ PyTrie-0.4.0/pytrie.py
+@@ -44,7 +44,7 @@ KeyError
+ __all__ = ['Trie', 'StringTrie', 'SortedTrie', 'SortedStringTrie', 'Node']
+ 
+ import sys
+-from copy import copy
++from copy import copy, deepcopy
+ from collections.abc import MutableMapping
+ 
+ import sortedcontainers
+@@ -397,7 +397,9 @@ class Trie(MutableMapping):
+         self._root.children.clear()
+ 
+     def copy(self):
+-        clone = copy(super(Trie, self))
++        clone = deepcopy(super(Trie, self))
++        if hasattr(clone, '__self__'):
++            clone = clone.__self__
+         clone._root = copy(self._root)  # pylint: disable=protected-access
+         return clone
+ 
