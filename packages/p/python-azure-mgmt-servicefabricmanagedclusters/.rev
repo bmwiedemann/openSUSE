@@ -71,4 +71,17 @@
 - Update Requires from setup.py (forwarded request 1245566 from glaubitz)</comment>
     <requestid>1245627</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>23b4935b86b2cf15183d53747206fbce</srcmd5>
+    <version>3.0.0</version>
+    <time>1775661263</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from pyproject.toml (forwarded request 1344987 from glaubitz)</comment>
+    <requestid>1344997</requestid>
+  </revision>
 </revisionlist>
