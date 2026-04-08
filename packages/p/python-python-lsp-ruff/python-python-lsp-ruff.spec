@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lsp-ruff
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-python-lsp-ruff
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Ruff linting plugin for pylsp
 License:        MIT

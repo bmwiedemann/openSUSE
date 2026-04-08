@@ -7,4 +7,13 @@
     <comment>new package, needed for new Spyder version</comment>
     <requestid>1319670</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a3c34997966f730fbf3013cd188e2297</srcmd5>
+    <version>2.3.1</version>
+    <time>1775661442</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * fix: Replace deprecated E999 error</comment>
+    <requestid>1345149</requestid>
+  </revision>
 </revisionlist>

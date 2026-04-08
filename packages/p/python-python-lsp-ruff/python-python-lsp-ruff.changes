@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  8 09:06:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * fix: Replace deprecated E999 error
+
+-------------------------------------------------------------------
 Fri Nov 21 15:47:41 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v2.3.0
