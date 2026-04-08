@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  8 08:14:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.4
+  libbson
+  * No changes since 2.2.3. Version incremented to match the
+    libmongoc version.
+  libmongoc
+  * Fix handling of corrupt GridFS files.
+
+-------------------------------------------------------------------
 Thu Mar  5 14:52:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.3
