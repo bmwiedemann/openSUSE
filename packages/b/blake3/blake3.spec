@@ -1,7 +1,7 @@
 #
 # spec file for package blake3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %bcond_with     b3sum
 
 Name:           blake3
-Version:        1.8.2
+Version:        1.8.4
 Release:        0
 Summary:        A cryptographic hash function
 License:        Apache-2.0

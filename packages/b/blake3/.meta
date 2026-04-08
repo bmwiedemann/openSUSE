@@ -1,5 +1,6 @@
 <package name="blake3" project="openSUSE:Factory">
   <title>The official Rust and C implementations of BLAKE3</title>
   <description>The official Rust and C implementations of the BLAKE3 cryptographic hash function.</description>
+  <devel project="devel:libraries:c_c++" package="blake3"/>
   <url>https://github.com/BLAKE3-team/BLAKE3</url>
 </package>
