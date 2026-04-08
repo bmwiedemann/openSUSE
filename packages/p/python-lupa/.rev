@@ -229,4 +229,20 @@
     <comment></comment>
     <requestid>1317845</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5d9ef5bf0363776c3022d75d7f3d67a3</srcmd5>
+    <version>2.7</version>
+    <time>1775661452</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7 (bsc#1261595, CVE-2026-34444):
+  * In Lua 5.5, the string hash seed can be configured for each
+    LuaRuntime.
+  * The bundled LuaJIT versions were updated to the latest git
+    branches.
+  * Lua 5.5 is included in the binary wheels.
+  * Lupa can be built as abi3 wheel.
+  * Some lesser used platforms are served with abi3 wheels.
+  * Built with Cython 3.2.4.</comment>
+    <requestid>1345153</requestid>
+  </revision>
 </revisionlist>
