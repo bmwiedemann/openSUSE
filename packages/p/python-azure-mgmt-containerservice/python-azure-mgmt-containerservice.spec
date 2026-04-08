@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-containerservice
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-containerservice
-Version:        40.2.0
+Version:        41.0.0
 Release:        0
 Summary:        Microsoft Azure Container Service Management Client Library
 License:        MIT
@@ -37,7 +37,7 @@ Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-azure-mgmt-core >= 1.6.0 with python-azure-mgmt-core < 2.0.0)
-Requires:       (python-msrest >= 0.7.1 with python-msrest < 1.0.0)
+Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-mgmt-containerservice < 29.1.0

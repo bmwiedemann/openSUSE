@@ -666,4 +666,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1319640 from glaubitz)</comment>
     <requestid>1319692</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>565a643497e35da7167a42f2e195a267</srcmd5>
+    <version>41.0.0</version>
+    <time>1775661268</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 41.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1344907 from glaubitz)</comment>
+    <requestid>1345003</requestid>
+  </revision>
 </revisionlist>
