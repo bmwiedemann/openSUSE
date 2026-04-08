@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  7 14:54:31 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.0.16
+  * Fixes
+    fix(protocol): verify compressed message length before decompression by @calmh in #10595
+    fix(systemd): support overrides for syncOwnership by @Valloric in #10602
+    fix(systemd): add back chown allowed syscalls by @Valloric in #10605
+  * Other
+    chore(config, connections): use same reconnection interval for QUIC and TCP (fixes #10507) by @marbens-arch in #10573
+    build(deps): update dependencies by @calmh in #10588
+    chore(sqlite): reduce max open connections, keep them open permanently (fixes #10592) by @calmh in #10596 
+
+-------------------------------------------------------------------
 Tue Mar  3 09:24:07 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.0.15

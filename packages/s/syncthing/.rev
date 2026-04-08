@@ -1667,4 +1667,12 @@
     <comment>Update to v2.0.15</comment>
     <requestid>1336008</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>fe231ab2e990a55c6bc10ca4a3160735</srcmd5>
+    <version>2.0.16</version>
+    <time>1775661312</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.0.16</comment>
+    <requestid>1345033</requestid>
+  </revision>
 </revisionlist>
