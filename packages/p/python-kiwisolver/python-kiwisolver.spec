@@ -1,7 +1,7 @@
 #
 # spec file for package python-kiwisolver
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kiwisolver
-Version:        1.4.9
+Version:        1.5.0
 Release:        0
 Summary:        An implementation of the Cassowary constraint solver
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/nucleic/kiwi
 Source:         https://files.pythonhosted.org/packages/source/k/kiwisolver/kiwisolver-%{version}.tar.gz
-BuildRequires:  %{python_module cppy >= 1.2.0}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module cppy >= 1.3.0}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -52,7 +52,7 @@ In addition to the C++ solver, Kiwi ships with hand-rolled Python bindings.
 %prep
 %setup -q -n kiwisolver-%{version}
 # Fix wrong-file-end-of-line-encoding
-dos2unix LICENSE README.rst releasenotes.rst
+dos2unix LICENSE README.md releasenotes.rst
 
 %build
 export CFLAGS="%{optflags}"
@@ -67,7 +67,7 @@ export CFLAGS="%{optflags}"
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst releasenotes.rst
+%doc README.md releasenotes.rst
 %{python_sitearch}/kiwisolver
 %{python_sitearch}/kiwisolver-%{version}*-info
 

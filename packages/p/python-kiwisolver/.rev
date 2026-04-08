@@ -140,4 +140,41 @@
     system headers</comment>
     <requestid>1306360</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>15f684e5066ba6c80bfe54ae1f1e83f8</srcmd5>
+    <version>1.5.0</version>
+    <time>1775661218</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * add support for CMakeLists PR #206
+  * implement more move constructor in the C++ code PR #207
+  * add C++ tests PR #207
+  * add support for GraalPy PR #204
+  * add RiscV support PR #208
+  * add support for Python 3.14 PR #196 #198
+  * include Python.h, or headers including Python.h, before
+    system headers
+  * drop support for Python 3.8 and 3.9 PR #189
+  * do not link to MSVCP on Windows and drop windows 32 bits
+    support PR #189
+  * add support for free-threaded builds on Python 3.13 PR #190
+    #191
+  * no library changes only fixes to the build infrastructure
+  * drop support for Python 3.7 PR #183
+  * add support for Python 3.13 PR #183
+  * update linking strategy on Windows when building wheels PR
+    #183 This is in line with Matplotlib strategy
+    https://github.com/matplotlib/matplotlib/pull/28687
+  * implement exceptions in Python PR #162 This allows to expose
+    in a natural manner the object relevant to the exception:
+    constraint or edit_variable
+  * add missing signature of Constraint.violated for Python
+    wrapper PR #166
+  * add support for Python 3.12
+  * fix timing in shared data release procedure PR #149
+  * revert use of nullpointer introduced in #142 Its use is not
+    necessary anymore in 3.11.0-beta.4 and used to cause issues
+    on some platforms (see #144 ) PR #145</comment>
+    <requestid>1344934</requestid>
+  </revision>
 </revisionlist>
