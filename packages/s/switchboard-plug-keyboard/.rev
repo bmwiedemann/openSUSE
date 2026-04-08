@@ -15,4 +15,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1301209</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6c3c18df16fda6859f36395579922e1d</srcmd5>
+    <version>8.1.1</version>
+    <time>1775661333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.1.1:
+  * Allow assigning Gdk.Key.Tools button
+  * Layout: arrange vertically
+  * ShortcutsList: store shortcuts in a listmodel
+  * InputMethod: Run &quot;ibus start&quot; instead of running ibus-daemon directly (forwarded request 1345048 from rrahl0)</comment>
+    <requestid>1345049</requestid>
+  </revision>
 </revisionlist>

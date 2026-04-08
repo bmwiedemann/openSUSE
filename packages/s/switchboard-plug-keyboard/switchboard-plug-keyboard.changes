@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  7 18:23:21 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.1.1:
+  * Allow assigning Gdk.Key.Tools button
+  * Layout: arrange vertically
+  * ShortcutsList: store shortcuts in a listmodel
+  * InputMethod: Run "ibus start" instead of running ibus-daemon directly
+
+-------------------------------------------------------------------
 Sat Aug 16 19:32:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 8.1.0:
