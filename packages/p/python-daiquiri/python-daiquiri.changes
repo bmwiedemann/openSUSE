@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  6 20:32:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * fix: don't break the monkeypatch chain
+  * build: update dependencies (python-json-logger >= 3, setuptools >= 64, setuptools_scm >= 8)
+- update to 3.3.0:
+  * ci: fix Python 3.12 tests & linters
+  * build: support Python 3.13
+  * build: drop support for Python 3.8 and 3.9
+  * fix: turn on deprecation warning and upgrade jsonlogger
+
+-------------------------------------------------------------------
 Mon Feb  5 14:58:27 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.2.5.1:
