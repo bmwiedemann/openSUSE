@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  5 15:48:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14
+  * The volume and panning envelopes should now behave exactly
+    like FT2 in special cases.
+  * Some other things regarding audio has been changed to better
+    match FT2 (but the difference is maybe not audible).
+  * New higher-quality FT2 logo in the about screen.
+
+-------------------------------------------------------------------
 Mon Mar 30 19:40:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.13
