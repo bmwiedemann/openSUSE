@@ -98,4 +98,41 @@
 - Update to 24.12.0 (bsc#1256572, CVE-2025-59464):</comment>
     <requestid>1337315</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c4afd131c3c29ae0740dd80e2a5fa27f</srcmd5>
+    <version>24.14.1</version>
+    <time>1775661230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 24.14.1:
+  * use null prototype for headersDistinct/trailersDistinct (CVE-2026-21710, bsc#1260455)
+  * wrap SNICallback invocation in try/catch (CVE-2026-21637, bsc#1256576)
+  * test array index hash collision (CVE-2026-21717, bsc#1260494)
+  * use timing-safe comparison in Web Cryptography HMAC and KMAC (CVE-2026-21713, bsc#1260463)
+  * handle NGHTTP2_ERR_FLOW_CONTROL error code (CVE-2026-21714, bsc#1260480)
+  * handle url crash on different url formats (CVE-2026-21712, bsc#1260460)
+  * include permission check on lib/fs/promises (CVE-2026-21716, bsc#1260462)
+  * add permission check to realpath.native (CVE-2026-21715, bsc#1260482)
+- Changes in versino 24.14.0:
+  * async_hooks: add trackPromises option to createHook()
+  * build,deps: replace cjs-module-lexer with merve
+  * deps: add LIEF as a dependency
+  * events: repurpose events.listenerCount() to accept EventTargets
+  * fs: add ignore option to fs.watch
+  * http: add http.setGlobalProxyFromEnv()
+  * module: allow subpath imports that start with #/
+  * process: preserve AsyncLocalStorage in queueMicrotask only when needed
+  * sea: split sea binary manipulation code
+  * sqlite: enable defensive mode by default
+  * sqlite: add sqlite prepare options args
+  * src: add initial support for ESM in embedder API
+  * stream: add bytes() method to node:stream/consumers
+  * stream: do not pass readable.compose() output via Readable.from()
+  * test: use fixture directories for sea tests
+  * test_runner: add env option to run function
+  * test_runner: support expecting a test-case to fail
+  * util: add convertProcessSignalToExitCode utility
+for details, see https://nodejs.org/en/blog/release/v24.14.0
+- npm-path-normalization.patch: upstreamed, dropped</comment>
+    <requestid>1345013</requestid>
+  </revision>
 </revisionlist>

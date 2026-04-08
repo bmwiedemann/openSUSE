@@ -25,7 +25,7 @@
 %endif
 
 Name:           nodejs24
-Version:        24.13.0
+Version:        24.14.1
 Release:        0
 
 # Double DWZ memory limits
@@ -138,7 +138,6 @@ Source21:       README.md
 Patch3:         fix_ci_tests.patch
 Patch4:         v8_nameclash.patch
 Patch5:         icu_781.patch
-Patch6:         npm-path-normalization.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -153,8 +152,6 @@ Patch102:       node-gyp-addon-gypi.patch
 Patch104:       npm_search_paths.patch
 
 Patch120:       flaky_test_rerun.patch
-Patch121:       61008.patch
-
 
 # Use versioned binaries and paths
 Patch200:       versioned.patch
@@ -230,7 +227,7 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 %else
 # bundled openssl
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
-Provides:       bundled(openssl) = 3.5.4
+Provides:       bundled(openssl) = 3.5.5
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
@@ -254,13 +251,13 @@ BuildRequires:  sqlite3-devel
 %if ! 0%{with intree_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 71
 %else
-Provides:       bundled(icu) = 77.1
+Provides:       bundled(icu) = 78.2
 %endif
 
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-Provides:       bundled(nghttp2) = 1.67.1
+Provides:       bundled(nghttp2) = 1.68.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -313,19 +310,21 @@ Provides:       bundled(uvwasi) = 0.0.23
 Provides:       bundled(libuv) = 1.51.0
 Provides:       bundled(v8) = 13.6.233.17
 %if %{with intree_brotli}
-Provides:       bundled(brotli) = 1.1.0
+Provides:       bundled(brotli) = 1.2.0
 %else
 BuildRequires:  pkgconfig(libbrotlidec)
 %endif
 
 
+Provides:       bundled(LIEF) = 0.17.0
+Provides:       bundled(merve) = 1.0.0
 Provides:       bundled(llhttp) = 9.3.0
 Provides:       bundled(ngtcp2) = 1.11.0
 
 
-Provides:       bundled(simdjson) = 4.1.0
+Provides:       bundled(simdjson) = 4.2.4
 # bundled url-ada parser, not ada
-Provides:       bundled(ada) = 3.3.0
+Provides:       bundled(ada) = 3.4.2
 
 Provides:       bundled(node-acorn) = 8.15.0
 Provides:       bundled(node-acorn-walk) = 8.3.4
@@ -362,7 +361,7 @@ Requires:       nodejs-common
 Requires:       nodejs24 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 11.6.2
+Provides:       npm(npm) = 11.11.0
 Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
