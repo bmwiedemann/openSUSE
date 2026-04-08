@@ -21,12 +21,12 @@
 %define bird_home %{_localstatedir}/lib/bird
 %define bird_runtimedir %{_rundir}/%{name}
 Name:           bird
-Version:        2.18.0
+Version:        2.18.1
 Release:        0
 Summary:        The BIRD Internet Routing Daemon
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Routing
-URL:            https://bird.network.cz/
+URL:            https://bird.nic.cz/
 Source:         https://bird.nic.cz/download/bird-2.18.tar.gz
 Source1:        bird.service
 Source3:        bird.tmpfiles.d
