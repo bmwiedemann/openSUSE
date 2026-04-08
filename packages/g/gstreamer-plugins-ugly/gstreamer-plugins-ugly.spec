@@ -47,7 +47,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gmodule-no-export-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{gstreamer_req_version}
-BuildRequires:  pkgconfig(libmpeg2) >= 0.5.1
 Requires:       gstreamer-plugins-base >= %{gstreamer_req_version}
 Enhances:       gstreamer
 # Generic name, never used in SUSE:
@@ -111,6 +110,7 @@ export PYTHON=%{_bindir}/python3
 	-D gpl=enabled \
 	-D sidplay=disabled \
 	-D doc=disabled \
+	-D mpeg2dec=disabled \
 	%{nil}
 %meson_build
 
@@ -126,7 +126,6 @@ export PYTHON=%{_bindir}/python3
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdlpcmdec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdread.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdsub.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstmpeg2dec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrealmedia.so
 
 %if 0%{?BUILD_ORIG}
