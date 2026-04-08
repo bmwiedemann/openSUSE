@@ -102,4 +102,13 @@
     *   drop redundant xwmfs code portions no longer needed.</comment>
     <requestid>1302693</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d22dda8df71ed9b3b84be6dbb60c655f</srcmd5>
+    <version>1.11</version>
+    <time>1775661249</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version v1.11:
+  * fix compilation error on GCC-16 (bsc#1260667)</comment>
+    <requestid>1344971</requestid>
+  </revision>
 </revisionlist>

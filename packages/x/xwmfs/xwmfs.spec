@@ -1,7 +1,7 @@
 #
 # spec file for package xwmfs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,13 @@ BuildRequires:  gcc-c++
 BuildRequires:  libX11-devel
 BuildRequires:  pkgconfig(fuse3)
 Requires:       fuse3
-Version:        1.10
+Version:        1.11
 Release:        0
 URL:            https://github.com/gerstner-hub/xwmfs
 Summary:        A file system for accessing X server and window manager features
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Source0:        https://github.com/gerstner-hub/xwmfs/releases/download/v%{version}/xwmfs-%{version}-dist.tar.gz
+Source0:        https://github.com/gerstner-hub/xwmfs/releases/download/v%{version}/xwmfs-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

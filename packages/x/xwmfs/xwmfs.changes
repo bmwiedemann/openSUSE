@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  7 10:39:01 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to version v1.11:
+  * fix compilation error on GCC-16 (bsc#1260667)
+
+-------------------------------------------------------------------
 Thu Sep  4 08:28:02 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - update to version v1.10:
