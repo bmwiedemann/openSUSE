@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr  7 13:49:36 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.8.1:
+  * fix: use ^{commit} to actually let rev-parse resolve to the commit
+- Update to version 12.8.0:
+  * feat: enable one-job to request a particular job
+  * feat: add options for declaring a connection to daemon, one-job
+  * feat: deprecate register, create-runner-file
+  * feat: allow timezone in on.schedule
+  * feat: remove experimental connect command without replacement
+  * fix: quit in daemon-mode when runner should be ephemeral
+  * fix: precedence of inputs in Docker actions
+  * fix: restore inheritance of env workflow variables
+  * fix: protect against tags & branches that look like pinned SHAs but are not
+  * fix: increase log level of client-side fetch timeout
+
+-------------------------------------------------------------------
+Thu Mar 26 08:18:42 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.7.3:
+  * feat: set a custom user-agent header for all gRPC requests
+  * fix: replace logger.Panicf with panics that have a useful error message
+
+-------------------------------------------------------------------
 Tue Mar 17 10:44:55 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.7.2:

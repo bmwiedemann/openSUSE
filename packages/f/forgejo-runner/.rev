@@ -565,4 +565,32 @@
   * fix: accept boolean workflow_call inputs that are booleans (forwarded request 1339564 from rrahl0)</comment>
     <requestid>1339565</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>23dffdcc23c0acade04cbdcf8911c487</srcmd5>
+    <version>12.7.3</version>
+    <time>1774555785</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342725</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>92491771ef82e4b95589389a40cf0ba0</srcmd5>
+    <version>12.8.1</version>
+    <time>1775661302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 12.8.1:
+  * fix: use ^{commit} to actually let rev-parse resolve to the commit
+- Update to version 12.8.0:
+  * feat: enable one-job to request a particular job
+  * feat: add options for declaring a connection to daemon, one-job
+  * feat: deprecate register, create-runner-file
+  * feat: allow timezone in on.schedule
+  * feat: remove experimental connect command without replacement
+  * fix: quit in daemon-mode when runner should be ephemeral
+  * fix: precedence of inputs in Docker actions
+  * fix: restore inheritance of env workflow variables
+  * fix: protect against tags &amp; branches that look like pinned SHAs but are not
+  * fix: increase log level of client-side fetch timeout (forwarded request 1345022 from rrahl0)</comment>
+    <requestid>1345023</requestid>
+  </revision>
 </revisionlist>
