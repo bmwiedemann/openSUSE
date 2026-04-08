@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Feb 26 04:04:23 UTC 2026 - william.brown@suse.com
+
+- bsc#1258727 - CVE-2025-14905 - heap buffer overflow due to improper size calculation in
+                                 `schema_attr_enum_callback` callback.
+- Update to version 3.1.4+e2562f589:
+  * Security fix for CVE-2025-14905
+  * Issue 7277 - UI - Fix Japanese translation for "Successfully updated group" in Cockpit UI (#7278)
+  * Issue 7275 - UI - Improve password policy field validation in Cockpit UI (#7276)
+  * Issue 7279 - UI - Fix typo in export certificate dialog (#7280)
+  * Issue 7273 - In a chaining environment binding as remote user causes an invalid error in the logs
+  * Issue 7271 - plugins that create threads need to update  active thread count
+  * Issue 5853 - Update concread to 0.5.10
+  * Issue 7223 - Remove integerOrderingMatch requirement for parentid (#7264)
+  * Issue 7243 - UI - fix certificate table and modal
+  * Issue 7066/7052 - allow password history to be set to zero and remove history
+  * Issue 7223 - Use lexicographical order for ancestorid (#7256)
+  * Issue 7213 - (2nd) MDB_BAD_VALSIZE error while handling VLV (#7258)
+  * Issue 7184 - (2nd) argparse.HelpFormatter _format_actions_usage() is deprecated (#7257)
+  * Issue - CLI - dsctl db2index needs some hardening with MBD
+  * Issue 7248 - CLI - attribute uniqueness - fix usage for exclude subtree option
+  * Issue 7231 - Sync repl tests fail in FIPS mode due to non FIPS compliant crypto (#7232)
+  * Issue 7121 - (2nd) LeakSanitizer: various leaks during replication (#7212)
+  * Issue 6947 - Fix health_system_indexes_test.py
+  * Issue 7221 - CI tests - fix some flaky tests
+  * Issue 7076 - Fix revert_cache() never called in modrdn (#7220)
+  * Issue 7096 - (2nd) During replication online total init the function idl_id_is_in_idlist is not scaling with large database (#7205)
+  * Issue 3555 - UI - Fix audit issue with npm - @isaacs/brace-expansion (#7228)
+  * Issue 7223 - Add dsctl index-check command for offline index repair
+  * Issue 7223 - Detect and log index ordering mismatch during backend startup
+  * Issue 7223 - Add upgrade function to remove ancestorid index config entry
+  * Issue 7223 - Add upgrade function to remove nsIndexIDListScanLimit from parentid
+  * Issue 7223 - Revert index scan limits for system indexes
+  * Issue 7224 - CI Test - Simplify test_reserve_descriptor_validation (#7225)
+
+-------------------------------------------------------------------
 Wed Feb 04 02:40:45 UTC 2026 - william.brown@suse.com
 
 - To prevent SLE-16 pulling in non LTS branches (which is what we run in tumbleweed), we have to
