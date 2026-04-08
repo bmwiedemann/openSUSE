@@ -1,7 +1,7 @@
 #
 # spec file for package python-iwlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-iwlib
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Python module to interface with iwlib
 License:        GPL-2.0-only
@@ -40,8 +40,8 @@ Requires:       python-cffi
 Python-iwlib is a package for interfacing with iwlib, providing an implementation to
 the wireless tools in Linux.
 
-It provides scanning, setting the ESSID of a device, and getting the current configuration
-back from a device.
+It provides scanning, setting the ESSID of a device, and getting the current
+configuration back from a device.
 
 %prep
 %setup -q -n iwlib-%{version}
@@ -54,8 +54,7 @@ back from a device.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# Fix for https://github.com/openSUSE/python-rpm-macros/issues/31
-PYTHONPATH=FIX-ME
+mv iwlib iwlib.bak
 %pytest_arch
 
 %files %{python_files}
