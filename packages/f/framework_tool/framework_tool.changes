@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Apr  7 13:54:41 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.6.2:
+  * flake: cross-windows: Add mingw by @JohnAZoidberg in #281
+  * Add documentation for version bump by @JohnAZoidberg in #255
+  * --flash-gpu-escriptor: Keep bay power if already on
+    by @JohnAZoidberg in #283
+  * gh-actions: Package DEB and RPM by @JohnAZoidberg in #284
+  * Fix uefi commandline parsing by @JohnAZoidberg in #286
+  * Simplify CLAUDE.md by @JohnAZoidberg in #288
+  * README: Add doc for how to install with cargo by @JohnAZoidberg in #289
+  * contrib: Add more details about release process by @JohnAZoidberg in #290
+  * gitignore: Add OVMF firmware files by @JohnAZoidberg in #293
+  * completions: Move to framework_tool/ to include in crates.io release
+    by @nadzyah in #297
+  * readme: fix winget installation command by @JohnAZoidberg in #298
+  * Add --flash-full-ec to flash entire EC flash by @JohnAZoidberg in #300
+  * Document how to do a FreeBSD release by @JohnAZoidberg in #299
+  * README: Document more package managers by @JohnAZoidberg in #296
+  * framework_lib: Restrict portio modules to x86/x86_64 architectures
+    by @nadzyah in #301
+  * portio also doesn't work on 32bit by @JohnAZoidberg in #302
+  * laptop13/laptop12: Support input deck related commands
+    by @JohnAZoidberg in #292
+  * Avoid unsafe when decoding by @JohnAZoidberg in #303
+  * update actions to v6 by @kiram9 in #307
+  * Fix --pdports for framework systems by @JohnAZoidberg in #305
+  * fw16 - round up chunk calculation by @kiram9 in #306
+  * --kblight: Fix on some early systems by @JohnAZoidberg in #285
+  * --pdports: Remove name by @JohnAZoidberg in #309
+  * bump to 0.6.2 by @JohnAZoidberg in #308
+
+-------------------------------------------------------------------
 Mon Mar  9 13:18:46 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.6.1

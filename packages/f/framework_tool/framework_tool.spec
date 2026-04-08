@@ -20,7 +20,7 @@
 %define completion_dir_bash %{_datadir}/bash-completion/completions
 %define completion_dir_zsh %{_datadir}/zsh/functions/Completion
 Name:           framework_tool
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Rust tools to interact with the Framework Computer systems
 License:        BSD-3-Clause
@@ -44,8 +44,8 @@ Rust tools to interact with the Framework Computer systems, especially with the 
 
 %install
 install -D -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
-install -D -m 0644 completions/bash/framework_tool %{buildroot}%{completion_dir_bash}/framework_tool.bash
-install -D -m 0644 completions/zsh/_framework_tool %{buildroot}%{completion_dir_zsh}/framework_tool.zsh
+install -D -m 0644 framework_tool/completions/bash/framework_tool %{buildroot}%{completion_dir_bash}/framework_tool.bash
+install -D -m 0644 framework_tool/completions/zsh/_framework_tool %{buildroot}%{completion_dir_zsh}/framework_tool.zsh
 
 %check
 %cargo_test
