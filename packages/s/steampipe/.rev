@@ -284,4 +284,18 @@
   * Add Claude Code command for fixing Dependabot vulnerabilities (#4927) (forwarded request 1335723 from ph03nix)</comment>
     <requestid>1336206</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5d1bac4d2a2c658ce6a5313af91b4f52</srcmd5>
+    <version>2.4.1</version>
+    <time>1775661464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.1:
+  * Harden GitHub Actions: pin actions to SHAs and set explicit permissions (#4965) (#4975)
+  * Bump FDW version to v2.2.2 (#4971)
+  * Bump go-git to v5.17.1 to fix CVE-2026-34165 and CVE-2026-33762
+  * Upgrade Go to 1.26.1 to fix CVEs (CVE-2026-27138, CVE-2026-27137, CVE-2026-25679, CVE-2026-27139, CVE-2026-27142)
+  * Fix Dependabot CVE alerts by bumping deps and removing pgconn v1
+  * Warn after login when env vars override saved credentials (forwarded request 1345118 from ph03nix)</comment>
+    <requestid>1345169</requestid>
+  </revision>
 </revisionlist>

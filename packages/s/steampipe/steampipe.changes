@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 08 06:04:34 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.4.1:
+  * Harden GitHub Actions: pin actions to SHAs and set explicit permissions (#4965) (#4975)
+  * Bump FDW version to v2.2.2 (#4971)
+  * Bump go-git to v5.17.1 to fix CVE-2026-34165 and CVE-2026-33762
+  * Upgrade Go to 1.26.1 to fix CVEs (CVE-2026-27138, CVE-2026-27137, CVE-2026-25679, CVE-2026-27139, CVE-2026-27142)
+  * Fix Dependabot CVE alerts by bumping deps and removing pgconn v1
+  * Warn after login when env vars override saved credentials
+
+-------------------------------------------------------------------
 Mon Mar 02 07:15:59 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.4.0:
