@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 09:03:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.0:
+  * Added experimental --no-subtest-reports CLI option. This
+    disables subtests output unless it's a failed subtest.
+
+-------------------------------------------------------------------
 Thu Nov 27 06:45:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Allow testsuite to fail.
@@ -84,7 +91,7 @@ Tue Jan 10 04:19:50 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
   * Users no longer need to configure a warnings filter for the internal A
     private pytest class or function was used pytest warning (#52).
   * Experimental: Use SUBPASS and , for passed subtests instead of general
-    PASSED, SUBFAIL and u for failed ones instead of FAILED (#30). 
+    PASSED, SUBFAIL and u for failed ones instead of FAILED (#30).
 
 -------------------------------------------------------------------
 Thu Oct  7 09:36:20 UTC 2021 - Pedro Monreal <pmonreal@suse.com>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-subtests
-Version:        0.14.2
+Version:        0.15.0
 Release:        0
 Summary:        Python unittest subTest() support and subtests fixture
 License:        MIT
@@ -30,11 +30,11 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
-Requires:       python-pytest >= 7.0
+Requires:       python-pytest >= 7.4
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 19.2.0}
-BuildRequires:  %{python_module pytest >= 7.0}
+BuildRequires:  %{python_module pytest >= 7.4}
 # /SECTION
 %python_subpackages
 
