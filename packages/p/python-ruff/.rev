@@ -3211,4 +3211,38 @@
   * Mention AI policy in PR template</comment>
     <requestid>1343320</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>675d529d678ed3a2b9a3b278da3c13d9</srcmd5>
+    <version>0.15.9</version>
+    <time>1775661216</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.9
+ * Preview features
+  * [pyflakes] Flag annotated variable redeclarations as F811 in preview mode 
+  * [ruff] Allow dunder-named assignments in non-strict mode for RUF067 
+ * Bug fixes
+  * [flake8-errmsg] Avoid shadowing existing msg in fix for EM101 
+  * [flake8-simplify] Ignore pre-initialization references in SIM113 
+  * [pycodestyle] Fix W391 fixes for consecutive empty notebook cells 
+  * [pyupgrade] Fix UP008 nested class matching 
+  * [pyupgrade] Ignore strings with string-only escapes (UP012) 
+  * [ruff] RUF072: skip formfeeds on dedent 
+  * [ruff] Avoid re-using symbol in RUF024 fix 
+  * [ruff] Parenthesize expression in RUF050 fix 
+  * Disallow starred expressions as values of starred expressions 
+ * Rule changes
+  * [flake8-simplify] Suppress SIM105 for except* before Python 3.12 
+  * [pyflakes] Extend F507 to flag %-format strings with zero placeholders 
+  * [pyupgrade] UP018 should detect more unnecessarily wrapped literals (UP018) 
+  * [pyupgrade] Fix UP008 callable scope handling to support lambdas 
+  * [ruff] RUF010: Mark fix as unsafe when it deletes a comment 
+ * Formatter
+  * Add nested-string-quote-style formatting option 
+ * Documentation
+  * [flake8-bugbear] Clarify RUF071 fix safety for non-path string comparisons 
+  * [flake8-type-checking] Clarify import cycle wording for TC001/TC002/TC003 
+ * Other changes
+  * Avoid rendering fix lines with trailing whitespace after |</comment>
+    <requestid>1344910</requestid>
+  </revision>
 </revisionlist>
