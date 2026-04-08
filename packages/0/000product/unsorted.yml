@@ -575,6 +575,7 @@ unsorted:
   - alttab 
   - alure 
   - alure-devel 
+  - amake 
   - amanda 
   - amarok-doc 
   - amarok-lang 
@@ -1391,7 +1392,6 @@ unsorted:
   - bcftools 
   - bcg729-devel 
   - bchunk 
-  - bcmatroska2-devel 
   - bcpp 
   - bctoolbox-devel 
   - bcunit-devel 
@@ -1409,12 +1409,7 @@ unsorted:
   - bees 
   - beets 
   - beforelight 
-  - belcard-data 
-  - belcard-devel 
-  - belle-sip-data 
-  - belle-sip-devel 
   - below 
-  - belr-devel 
   - bemenu 
   - bemenu-devel 
   - benchdnn 
@@ -1869,7 +1864,6 @@ unsorted:
   - bzip2-doc 
   - bzip3 
   - bzip3-devel 
-  - bzrtp-devel 
   - c-ares-devel 
   - c-ares-utils 
   - c-intro-and-ref-html 
@@ -4527,6 +4521,7 @@ unsorted:
   - frei0r-plugins-devel 
   - frei0r-plugins-opencv 
   - frescobaldi 
+  - fresh-editor 
   - fribidi-devel 
   - fritzing 
   - fritzing-lang 
@@ -7033,29 +7028,6 @@ unsorted:
   - gifsicle 
   - gimp-devel 
   - gimp-extension-goat-excercises 
-  - gimp-help 
-  - gimp-help-ca 
-  - gimp-help-da 
-  - gimp-help-de 
-  - gimp-help-el 
-  - gimp-help-en_GB 
-  - gimp-help-es 
-  - gimp-help-fi 
-  - gimp-help-fr 
-  - gimp-help-hr 
-  - gimp-help-it 
-  - gimp-help-ja 
-  - gimp-help-ko 
-  - gimp-help-lt 
-  - gimp-help-nl 
-  - gimp-help-nn 
-  - gimp-help-pl 
-  - gimp-help-pt_BR 
-  - gimp-help-ro 
-  - gimp-help-ru 
-  - gimp-help-sl 
-  - gimp-help-sv 
-  - gimp-help-zh 
   - gimp-lang 
   - gimp-plugin-gmic 
   - gimp-plugin-resynthesizer 
@@ -11433,7 +11405,7 @@ unsorted:
   - libQCoro6Qml0 
   - libQCoro6Quick0 
   - libQCoro6WebSockets0 
-  - libQXmppQt6-8 
+  - libQXmppQt6-9 
   - libQXmppQt6-devel 
   - libQZint-devel 
   - libQZint2_16 
@@ -12285,7 +12257,6 @@ unsorted:
   - libbbf3 
   - libbcc0 
   - libbcg729-0 
-  - libbcmatroska2-0 
   - libbctoolbox-tester1 
   - libbctoolbox1 
   - libbcunit1 
@@ -12313,9 +12284,6 @@ unsorted:
   - libbde1 
   - libbeecrypt-devel 
   - libbeecrypt6 
-  - libbelcard1 
-  - libbelle-sip1 
-  - libbelr1 
   - libbemenu0 
   - libbenchmark1 
   - libbfio-devel 
@@ -12565,7 +12533,6 @@ unsorted:
   - libbz2-devel-32bit 
   - libbzip3-1 
   - libbzip3-1-x86-64-v3 
-  - libbzrtp0 
   - libc++-devel 
   - libc++1 
   - libc++abi-devel 
@@ -14520,15 +14487,10 @@ unsorted:
   - liblightmediascanner0 
   - liblilv-0-0-32bit 
   - liblilv-0-devel 
-  - liblime0 
   - liblinbox0 
   - liblinebreak-devel 
   - liblinebreak2 
   - liblink-grammar5 
-  - liblinphone++10 
-  - liblinphone-data 
-  - liblinphone-devel 
-  - liblinphone10 
   - libliquid1 
   - liblirc0 
   - liblirc0-32bit 
@@ -14544,6 +14506,7 @@ unsorted:
   - liblldb20 
   - liblldb21 
   - liblldpctl4 
+  - libllhttp9_3 
   - liblmdb-0_9_35-32bit 
   - liblms7002m-devel 
   - liblms7compact0 
@@ -14762,7 +14725,6 @@ unsorted:
   - libmediacheck-devel 
   - libmediainfo-devel 
   - libmediainfo0 
-  - libmediastreamer2-11 
   - libmedimport0 
   - libmeep32 
   - libmemcache-devel 
@@ -14894,6 +14856,7 @@ unsorted:
   - libmpdec++4 
   - libmpdec++4-32bit 
   - libmpdec4-32bit 
+  - libmpeg2-0 
   - libmpeg2-0-32bit 
   - libmpeg2-devel 
   - libmpeg2convert0 
@@ -15325,9 +15288,6 @@ unsorted:
   - libosmo-gsup-client-devel 
   - libosmo-gsup-client0 
   - libosmo-hnbap0 
-  - libosmo-mgcp-client-devel 
-  - libosmo-mgcp-client9 
-  - libosmo-mgcp-devel 
   - libosmo-mslookup-devel 
   - libosmo-mslookup0 
   - libosmo-octoi3 
@@ -15576,7 +15536,6 @@ unsorted:
   - libportmidi2 
   - libpostproc55_9 
   - libpostproc58 
-  - libpostquantumcryptoengine1 
   - libpowerman0 
   - libppd-devel 
   - libppl14 
@@ -17642,7 +17601,6 @@ unsorted:
   - lilypond-emmentaler-fonts 
   - lilypond-fonts-common 
   - lima 
-  - lime-devel 
   - limesuite 
   - limesuite-devel 
   - limesuite-udev 
@@ -17661,9 +17619,6 @@ unsorted:
   - linkloop 
   - links 
   - linode-cli-bash-completion 
-  - linphone-cli 
-  - linphone-desktop 
-  - linphone-devel 
   - linsim 
   - linssid 
   - linstor 
@@ -17743,6 +17698,7 @@ unsorted:
   - lldb21-devel 
   - lldpd 
   - lldpd-devel 
+  - llhttp-devel 
   - llmnrd 
   - llvm 
   - llvm-bolt 
@@ -18886,9 +18842,6 @@ unsorted:
   - med-tools-doc 
   - mediainfo 
   - mediainfo-gui 
-  - mediastreamer2 
-  - mediastreamer2-devel 
-  - mediastreamer2-doc 
   - mednafen 
   - mednafen-doc 
   - mednafen-lang 
@@ -21067,7 +21020,6 @@ unsorted:
   - osmo-gtphub 
   - osmo-hlr 
   - osmo-iuh-devel 
-  - osmo-mgw 
   - osmo-mslookup-client 
   - osmo-pcap 
   - osmo-pcu 
@@ -23638,8 +23590,6 @@ unsorted:
   - postorius 
   - postorius-web 
   - postorius-web-uwsgi 
-  - postquantumcryptoengine 
-  - postquantumcryptoengine-devel 
   - postsrsd 
   - potrace 
   - potrace-devel 
@@ -24937,6 +24887,7 @@ unsorted:
   - python311-azure-mgmt-containerinstance 
   - python311-azure-mgmt-containerorchestratorruntime 
   - python311-azure-mgmt-containerregistry 
+  - python311-azure-mgmt-containerregistrytasks 
   - python311-azure-mgmt-containerservice 
   - python311-azure-mgmt-containerservicefleet 
   - python311-azure-mgmt-containerservicesafeguards 
@@ -27571,7 +27522,6 @@ unsorted:
   - python311-sambacc 
   - python311-samplerate 
   - python311-sane 
-  - python311-sanlock 
   - python311-sarge 
   - python311-sarif-om 
   - python311-sat-search 
@@ -28809,6 +28759,7 @@ unsorted:
   - python313-azure-mgmt-containerinstance 
   - python313-azure-mgmt-containerorchestratorruntime 
   - python313-azure-mgmt-containerregistry 
+  - python313-azure-mgmt-containerregistrytasks 
   - python313-azure-mgmt-containerservice 
   - python313-azure-mgmt-containerservicefleet 
   - python313-azure-mgmt-containerservicesafeguards 
@@ -31465,7 +31416,6 @@ unsorted:
   - python313-sambacc 
   - python313-samplerate 
   - python313-sane 
-  - python313-sanlock 
   - python313-sarge 
   - python313-sarif-om 
   - python313-sat-search 
@@ -32132,6 +32082,7 @@ unsorted:
   - python314-Delorean 
   - python314-Deprecated 
   - python314-Django 
+  - python314-Django4 
   - python314-Django6 
   - python314-Dumper 
   - python314-Durus 
@@ -32272,6 +32223,7 @@ unsorted:
   - python314-PyScreeze 
   - python314-PySnooper 
   - python314-PySocks 
+  - python314-PyTrie 
   - python314-PyTweening 
   - python314-PyVirtualDisplay 
   - python314-PyWavelets 
@@ -32501,6 +32453,7 @@ unsorted:
   - python314-augeas 
   - python314-authheaders 
   - python314-authres 
+  - python314-autobahn 
   - python314-autocommand 
   - python314-autodocsumm 
   - python314-autoflake 
@@ -32692,6 +32645,7 @@ unsorted:
   - python314-azure-mgmt-containerinstance 
   - python314-azure-mgmt-containerorchestratorruntime 
   - python314-azure-mgmt-containerregistry 
+  - python314-azure-mgmt-containerregistrytasks 
   - python314-azure-mgmt-containerservice 
   - python314-azure-mgmt-containerservicefleet 
   - python314-azure-mgmt-containerservicesafeguards 
@@ -33072,6 +33026,7 @@ unsorted:
   - python314-chardet 
   - python314-charset-normalizer 
   - python314-check-manifest 
+  - python314-checkdmarc 
   - python314-cheroot 
   - python314-chest 
   - python314-chroma-hnswlib 
@@ -33448,6 +33403,7 @@ unsorted:
   - python314-emcee 
   - python314-emoji 
   - python314-empy 
+  - python314-enaml 
   - python314-encore 
   - python314-endesive 
   - python314-enrich 
@@ -34093,6 +34049,7 @@ unsorted:
   - python314-ligo-lw 
   - python314-ligo-segments 
   - python314-ligotimegps 
+  - python314-line_profiler 
   - python314-linetable 
   - python314-lineup-widget 
   - python314-link-traits 
@@ -34128,6 +34085,9 @@ unsorted:
   - python314-lz4 
   - python314-macholib 
   - python314-magic 
+  - python314-magic-wormhole 
+  - python314-magic-wormhole-mailbox-server 
+  - python314-magic-wormhole-transit-relay 
   - python314-magicalimport 
   - python314-mailman3-fedmsg-plugin 
   - python314-maison 
@@ -34486,6 +34446,7 @@ unsorted:
   - python314-peewee-migrate 
   - python314-pefile 
   - python314-pegasus-wms.common 
+  - python314-pegen 
   - python314-pelican 
   - python314-pelican-myst-reader 
   - python314-pem 
@@ -35178,6 +35139,7 @@ unsorted:
   - python314-requestbuilder 
   - python314-requests 
   - python314-requests-aws 
+  - python314-requests-cache 
   - python314-requests-download 
   - python314-requests-file 
   - python314-requests-ftp 
@@ -35263,7 +35225,6 @@ unsorted:
   - python314-sambacc 
   - python314-samplerate 
   - python314-sane 
-  - python314-sanlock 
   - python314-sarge 
   - python314-sarif-om 
   - python314-sat-search 
@@ -35555,6 +35516,7 @@ unsorted:
   - python314-tiktoken 
   - python314-time-machine 
   - python314-time-travel 
+  - python314-timeout-decorator 
   - python314-timeout-executor 
   - python314-tiny-proxy 
   - python314-tinyarray 

@@ -2350,7 +2350,6 @@
     <package name="libmpcdec6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libmpdec4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libmpeg2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpeg2encpp-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libmpg123-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
