@@ -600,4 +600,20 @@ Stop storing build machine kernel version (boo#1101107)</comment>
   - #9455 Fix memory leak in ColumnarScan</comment>
     <requestid>1343618</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>76ff938868ddeefcb89616dc8157bbaf</srcmd5>
+    <version>2.26.2</version>
+    <time>1775661462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.26.2
+  - #9460 Fix WAL record tracking in EXPLAIN for direct compress
+  - #9485 Fix use-after-free of invalidation in tsl_compressor_free
+  - #9486 Fix use-after-free in job owner validation
+  - #9487 Fix use-after-free in reorder_chunk
+  - #9392 Fix wrong result when performing chunk exclusion by a
+    mutable expression
+  - #9510 Fix chunk skipping with dropped columns
+  - #9522 Fix GROUP BY ROLLUP on compressed continuous aggregates</comment>
+    <requestid>1345155</requestid>
+  </revision>
 </revisionlist>

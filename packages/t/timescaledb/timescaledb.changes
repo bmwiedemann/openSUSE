@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:23:12 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.26.2
+  - #9460 Fix WAL record tracking in EXPLAIN for direct compress
+  - #9485 Fix use-after-free of invalidation in tsl_compressor_free
+  - #9486 Fix use-after-free in job owner validation
+  - #9487 Fix use-after-free in reorder_chunk
+  - #9392 Fix wrong result when performing chunk exclusion by a
+    mutable expression
+  - #9510 Fix chunk skipping with dropped columns
+  - #9522 Fix GROUP BY ROLLUP on compressed continuous aggregates
+
+-------------------------------------------------------------------
 Mon Mar 30 09:26:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.26.1
