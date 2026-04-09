@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  3 12:12:43 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add fontforge-CVE-2025-15270.patch:
+  Backport d01333a5 from upstream, add validation to check for
+  negative kern class name length values before using them as
+  array indices. This fixes a heap buffer overflow where malicious
+  SFD files could supply negative length values (e.g., -1, -38, -139),
+  causing writes to memory before the allocated buffer through
+  kc->firsts[i][temp] = '\0' and kc->seconds[i][temp] = '\0'
+  operations.
+  (CVE-2025-15270, ZDI-CAN-28563, ZDI-25-1194, bsc#1256031)
+
+-------------------------------------------------------------------
 Wed Jan 21 15:07:19 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add fontforge-fix-multiple-crashes-in-Multiple-Masters.patch:

@@ -47,6 +47,8 @@ Patch9:         fontforge-CVE-2025-15279-part02_720ea950.patch
 Patch10:        fontforge-fix-crash-for-content-over-32767-characters-in-GDraw.patch
 # PATCH-FIX-UPSTREAM fontforge-fix-multiple-crashes-in-Multiple-Masters.patch qzhao@suse.com -- Fix multiple crashes in Multiple Masters (#5733).
 Patch11:        fontforge-fix-multiple-crashes-in-Multiple-Masters.patch
+# PATCH-FIX-UPSTREAM fontforge-CVE-2025-15270.patch CVE-2025-15270 ZDI-CAN-28563 ZDI-25-1194 bsc#1256031 -- Add validation to check for negative kern class name length values.
+Patch12:        fontforge-CVE-2025-15270.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
