@@ -17,22 +17,16 @@
 
 
 Name:           AusweisApp
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Official authentication app for German ID cards and residence permits
 License:        EUPL-1.2
 Group:          Productivity/Security
 URL:            https://www.ausweisapp.bund.de
 Source0:        https://github.com/Governikus/AusweisApp2/archive/%{version}.tar.gz
-# PATCH-FIX-OPENSUSE - Enforce use of old OpenSSL API (bsc#1231686)
-Patch0:         0001-use-legacy-openssl-api.patch
 BuildRequires:  cmake
-%if 0%{?suse_version} > 1500
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc11-c++
-%endif
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libopenssl-devel
 BuildRequires:  ninja
@@ -54,6 +48,7 @@ BuildRequires:  qt6-statemachine-devel
 BuildRequires:  qt6-svg-devel
 BuildRequires:  qt6-websockets-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libllhttp)
 BuildRequires:  pkgconfig(libudev)
 Requires:       libQt6Svg6
 Provides:       AusweisApp2 = 2.0.0
@@ -68,17 +63,12 @@ reader or compatible NFC smart phone is required.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch -P0 -p1
 
 %build
-%if 0%{?suse_version} <= 1500
-export CC=gcc-11
-export CXX=g++-11
-%endif
 export CFLAGS="%{optflags} -fPIC"
 export CXXFLAGS="%{optflags} -fPIC"
 %define __builder ninja
-%cmake -DBUILD_SHARED_LIBS=OFF
+%cmake -DBUILD_SHARED_LIBS=OFF -DUSE_LEGACY_OPENSSL_API=ON
 ninja
 
 %install

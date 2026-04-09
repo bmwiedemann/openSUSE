@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:55:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.5.0
+    - Visual adjustments and optimizations to the graphical user interface.
+    - macOS Ventura 13 is no longer supported.
+    - iOS 16 is no longer supported.
+    - The http_parser library has been replaced by llhttp.
+    - A compiler with C++20 support is required.
+    - Update of Qt to version 6.10.2.
+    - Update of OpenSSL to version 3.6.1.
+    - Update of the Android NDK to r29 (29.0.14206865).
+    - Update of the Android SDK Platform to Android 16 (API level 36).
+    - Smartphones paired as card readers with an installed AusweisApp
+      are now available as readers on Android via the SDK.
+    - Access for web browsers to the partially integrated SDK is disabled
+      by default and can be enabled if needed.
+- Add pkgconfig(libllhttp) to BuildRequires
+- Build with -DUSE_LEGACY_OPENSSL_API=ON to enable legacy OpenSSL API
+- Drop 0001-use-legacy-openssl-api.patch, fixed upstream
+- Drop build support for openSUSE Leap 15
+
+-------------------------------------------------------------------
 Thu Jan 29 20:55:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
