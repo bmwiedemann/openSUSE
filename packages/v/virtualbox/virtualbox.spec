@@ -134,6 +134,8 @@ Patch11:        cxx17.patch
 Patch12:        host-source.patch
 Patch20:        gentoo-C23.patch
 Patch21:        kernel-6.19.patch
+# Patch for Leap 16.1
+Patch30:        leap16.1-kmp-fixes.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}

@@ -2852,4 +2852,13 @@ we must have vb7.1.10.</comment>
     <comment>- do not build vboxvideo on kernel 7.0 at all (bsc#1259536)</comment>
     <requestid>1343127</requestid>
   </revision>
+  <revision rev="305" vrev="7">
+    <srcmd5>e44508b9aeaddf46c62f747d8fe52b77</srcmd5>
+    <version>7.2.6</version>
+    <time>1775743711</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for KMP build on openSUSE Leap 16.1 (bsc#1242207)
+  leap16.1-kmp-fixes.patch</comment>
+    <requestid>1345264</requestid>
+  </revision>
 </revisionlist>
