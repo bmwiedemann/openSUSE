@@ -236,4 +236,12 @@
     <comment>- Update to release 0.16.8</comment>
     <requestid>1339299</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7d5db0dc4009882983eb3ea2d5178fd3</srcmd5>
+    <version>0.16.9</version>
+    <time>1775748031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.16.9</comment>
+    <requestid>1345574</requestid>
+  </revision>
 </revisionlist>

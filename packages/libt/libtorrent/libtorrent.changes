@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  9 13:27:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.9
+  * Index DNS cache entries by hostname instead of family+hostname.
+  * Added timeouts to DNS cache.
+
+-------------------------------------------------------------------
 Mon Mar 16 07:06:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.8
