@@ -1,7 +1,7 @@
 Index: hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/application.rb
 ===================================================================
---- hawk2-2.6.6+git.1734344973.d7058a83.orig/hawk/config/application.rb
-+++ hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/application.rb
+--- a/hawk/config/application.rb
++++ b/hawk/config/application.rb
 @@ -44,6 +44,11 @@ module Hawk
        config.middleware.use Rack::Deflater
      end
@@ -16,8 +16,8 @@ Index: hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/application.rb
      def lookup_daemon_dir
 Index: hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/boot.rb
 ===================================================================
---- hawk2-2.6.6+git.1734344973.d7058a83.orig/hawk/config/boot.rb
-+++ hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/boot.rb
+--- a/hawk/config/boot.rb
++++ b/hawk/config/boot.rb
 @@ -38,7 +38,7 @@ else
    gem "virtus", version: "~> 1.0"
    require "virtus"
@@ -29,8 +29,8 @@ Index: hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/boot.rb
    gem "fast_gettext", version: "~> 1.4"
 Index: hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/environments/development.rb
 ===================================================================
---- hawk2-2.6.6+git.1734344973.d7058a83.orig/hawk/config/environments/development.rb
-+++ hawk2-2.6.6+git.1734344973.d7058a83/hawk/config/environments/development.rb
+--- a/hawk/config/environments/development.rb
++++ b/hawk/config/environments/development.rb
 @@ -27,7 +27,7 @@ Rails.application.configure do
  
    config.cache_store = :memory_store
