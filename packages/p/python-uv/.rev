@@ -2387,4 +2387,36 @@
   * Document false opt-out for exclude-newer-package</comment>
     <requestid>1344908</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>4dd80f067aef808e9caffe66af907e2e</srcmd5>
+    <version>0.11.5</version>
+    <time>1775748019</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.5 
+ * Bug fixes
+  * Do not remove files outside the venv on uninstall 
+  * Validate and heal wheel RECORD during installation 
+  * Avoid uv cache clean errors due to Win32 path normalization 
+
+- update to 0.11.4 
+ * Enhancements
+  * Add support for --upgrade-group 
+  * Merge repeated archive URL hashes by version ID 
+  * Require all direct URL hash algorithms to match 
+ * Bug fixes
+  * Avoid panics in environment finding via cycle detection 
+  * Enforce direct URL hashes for pyproject.toml dependencies 
+  * Error on --locked and --frozen when script lockfile is missing 
+  * Fix uv export extra resolution for workspace member and conflicting extras 
+  * Include conflicts defined in virtual workspace root 
+  * Recompute relative exclude-newer values during uv tree --outdated 
+  * Respect --exclude-newer in uv tool list --outdated 
+  * Sort by comparator to break specifier ties 
+  * Store relative timestamps in tool receipts 
+  * Track newly-activated extras when determining conflicts 
+  * Patch Cargo.lock in uv-build source distributions 
+ * Documentation
+  * Clarify that --exclude-newer compares artifact upload times</comment>
+    <requestid>1345545</requestid>
+  </revision>
 </revisionlist>
