@@ -1,7 +1,7 @@
 #
 # spec file for package python-mss
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,21 @@
 
 %bcond_without libalternatives
 Name:           python-mss
-Version:        7.0.1
+Version:        10.1.0
 Release:        0
 Summary:        Python multiple screenshots module
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/BoboTiG/python-mss
 Source:         https://files.pythonhosted.org/packages/source/m/mss/mss-%{version}.tar.gz
-BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module PyVirtualDisplay}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
@@ -37,6 +41,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  xrandr
 BuildRequires:  xvfb-run
 Requires:       alts
+Requires:       python-Pillow
+Requires:       python-numpy
 Requires:       xrandr
 BuildArch:      noarch
 %python_subpackages
@@ -62,14 +68,14 @@ An ultra fast cross-platform multiple screenshots module in pure Python using ct
 export LANG=en_US.UTF-8
 # test_region_out_of_monitor_bounds fails on ppc64 only
 echo '
-%pytest --ignore mss/tests/test_setup.py -k "not test_region_out_of_monitor_bounds"
+%pytest --ignore src/tests/test_setup.py -k "not (test_region_out_of_monitor_bounds or test_with_cursor) "
 '> pytest_script.sh
 # need explicitly set up screen.
 xvfb-run --server-args "-screen 0 1920x1080x24" sh pytest_script.sh
 
 %files %{python_files}
-%doc README.rst
-%license LICENSE
+%doc README.md
+%license LICENSE.txt
 %python_alternative %{_bindir}/mss
 %{python_sitelib}/mss
 %{python_sitelib}/mss-%{version}*-info

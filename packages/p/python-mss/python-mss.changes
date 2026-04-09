@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Apr  7 22:05:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.1.0:
+  * Added `BITS_PER_PIXELS_32`
+  * Added `SUPPORTED_BITS_PER_PIXELS`
+  * Removed `XEvent` class. Use `XErrorEvent` instead.
+  * Added `XErrorEvent` class (old `Event` class is just an alias
+    now, and will be removed in v9.0.0)
+  * Added `compression_level=6` keyword argument to
+    `MSS.__init__()`
+  * Added `display=None` keyword argument to `MSS.__init__()`
+  * Added `max_displays=32` keyword argument to `MSS.__init__()`
+  * Added `with_cursor=False` keyword argument to
+    `MSS.__init__()`
+  * Added `MSS.with_cursor` attribute
+  * Added `MSS.close()`
+  * Moved `MSS.__init__()` keyword arguments handling to the base
+    class
+  * Renamed `error_handler()` function to `_error_handler()`
+  * Renamed `validate()` function to `__validate()`
+  * Renamed `MSS.has_extension()` method to
+    `_is_extension_enabled()`
+  * Removed `ERROR` namespace
+  * Removed `MSS.drawable` attribute
+  * Removed `MSS.root` attribute
+  * Removed `MSS.get_error_details()` method. Use
+    `ScreenShotError.details` attribute instead.
+
+-------------------------------------------------------------------
 Mon Jun  9 14:16:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
@@ -11,7 +40,7 @@ Mon Jun  2 12:56:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Tue Nov  8 17:24:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v7.0.1 
+- Update to v7.0.1
   * fixed the wheel package
 
 - Update to v7.0.0
@@ -29,7 +58,7 @@ Wed Dec 23 09:33:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - Update to v6.1.0
   * MSS: reworked how C functions are initialised
   * tests: expand Python versions to 3.9 and 3.10
-  * tests: fix test_entry_point() when there are several monitors 
+  * tests: fix test_entry_point() when there are several monitors
 - clean test rig setup
 
 -------------------------------------------------------------------

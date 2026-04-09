@@ -39,4 +39,39 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1284212</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>25ef73d6cc66ed2c771b23565549ea27</srcmd5>
+    <version>10.1.0</version>
+    <time>1775743718</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.1.0:
+  * Added `BITS_PER_PIXELS_32`
+  * Added `SUPPORTED_BITS_PER_PIXELS`
+  * Removed `XEvent` class. Use `XErrorEvent` instead.
+  * Added `XErrorEvent` class (old `Event` class is just an alias
+    now, and will be removed in v9.0.0)
+  * Added `compression_level=6` keyword argument to
+    `MSS.__init__()`
+  * Added `display=None` keyword argument to `MSS.__init__()`
+  * Added `max_displays=32` keyword argument to `MSS.__init__()`
+  * Added `with_cursor=False` keyword argument to
+    `MSS.__init__()`
+  * Added `MSS.with_cursor` attribute
+  * Added `MSS.close()`
+  * Moved `MSS.__init__()` keyword arguments handling to the base
+    class
+  * Renamed `error_handler()` function to `_error_handler()`
+  * Renamed `validate()` function to `__validate()`
+  * Renamed `MSS.has_extension()` method to
+    `_is_extension_enabled()`
+  * Removed `ERROR` namespace
+  * Removed `MSS.drawable` attribute
+  * Removed `MSS.root` attribute
+  * Removed `MSS.get_error_details()` method. Use
+    `ScreenShotError.details` attribute instead.
+
+- Update to v7.0.1
+  * tests: fix test_entry_point() when there are several monitors</comment>
+    <requestid>1345083</requestid>
+  </revision>
 </revisionlist>
