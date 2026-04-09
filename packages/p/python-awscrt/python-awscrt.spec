@@ -18,16 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-awscrt
-Version:        0.31.3
+Version:        0.32.0
 Release:        0
 Summary:        A common runtime for AWS Python projects
 License:        Apache-2.0
 URL:            https://github.com/awslabs/aws-crt-python
 Source:         %{url}/archive/v%{version}.tar.gz#/awscrt-%{version}.tar.gz
-
 # PATCH-FIX-OPENSUSE skip-test-requiring-network.patch nforro@redhat.com -- one test requires internet connection, skip it
 Patch:          skip-test-requiring-network.patch
-
 BuildRequires:  python-rpm-macros
 BuildRequires:  cmake(aws-c-auth)
 BuildRequires:  cmake(aws-c-cal)

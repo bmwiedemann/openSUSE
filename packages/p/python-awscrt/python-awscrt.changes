@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  9 11:53:10 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.32.0
+  * Support free-thread build by @TingDaoK in (#725)
+  * Add support for notifying end of remote stream by @TingDaoK in (#727)
+- Refresh skip-test-requiring-network.patch and add more tests to skip
+
+-------------------------------------------------------------------
 Mon Mar 16 14:03:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.31.3
