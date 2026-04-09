@@ -1393,7 +1393,6 @@ unsorted:
   - bcg729-devel 
   - bchunk 
   - bcpp 
-  - bctoolbox-devel 
   - bcunit-devel 
   - bcunit-doc 
   - bdf2psf 
@@ -12257,8 +12256,6 @@ unsorted:
   - libbbf3 
   - libbcc0 
   - libbcg729-0 
-  - libbctoolbox-tester1 
-  - libbctoolbox1 
   - libbcunit1 
   - libbd_btrfs-devel 
   - libbd_crypto-devel 
@@ -15265,7 +15262,6 @@ unsorted:
   - liborigin-doc 
   - liborigin-tools 
   - liborigin3 
-  - libortp15 
   - libosdCPU3_6_1 
   - libosg2vsg-devel 
   - libosg2vsg0 
@@ -15559,13 +15555,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp0_13 
-  - libprotobuf-lite33_3_0-32bit 
+  - libprotobuf-lite34_1_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf33_3_0-32bit 
+  - libprotobuf34_1_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc33_3_0 
-  - libprotoc33_3_0-32bit 
+  - libprotoc34_1_0 
+  - libprotoc34_1_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -16137,7 +16133,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_8_6 
+  - librssguard-5_0_4 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -16739,7 +16735,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent38 
+  - libtorrent39 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -16922,7 +16918,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-33_3_0-32bit 
+  - libutf8_range-34_1_0-32bit 
   - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
@@ -17623,6 +17619,7 @@ unsorted:
   - linssid 
   - linstor 
   - linutil 
+  - linux-bpf-devel 
   - linux-enable-ir-emitter 
   - linux-ftools 
   - linux-libertine-fonts 
@@ -20972,8 +20969,6 @@ unsorted:
   - orthos-client 
   - orthos2 
   - orthos2-docs 
-  - ortp 
-  - ortp-devel 
   - os-autoinst 
   - os-autoinst-devel 
   - os-autoinst-distri-opensuse-deps 
@@ -22955,7 +22950,6 @@ unsorted:
   - perl-slurm 
   - perl-solv 
   - perl-strictures 
-  - perl-subunit 
   - perl-syntax 
   - perl-thrift 
   - perl-warewulf-cluster 
@@ -23752,7 +23746,6 @@ unsorted:
   - prometheus-simpleclient-java-tracer 
   - prometheus-simpleclient-java-tracer-common 
   - prometheus-webhook-snmp 
-  - promtail 
   - pronsole 
   - pronterface 
   - properties-maven-plugin 
@@ -33499,6 +33492,7 @@ unsorted:
   - python314-flasgger 
   - python314-flask-jwt-extended 
   - python314-flask-oidc 
+  - python314-flask-restx 
   - python314-flatbuffers 
   - python314-flatdict 
   - python314-fleming 
@@ -33551,6 +33545,7 @@ unsorted:
   - python314-gast 
   - python314-gcsfs 
   - python314-gcsfs-fuse 
+  - python314-gear 
   - python314-ged4py 
   - python314-genfire 
   - python314-genson 
@@ -34483,7 +34478,6 @@ unsorted:
   - python314-pip-run 
   - python314-pip-wheel 
   - python314-pipdeptree 
-  - python314-pipreqs 
   - python314-pipx 
   - python314-pivy 
   - python314-pixelmatch 
@@ -35015,6 +35009,7 @@ unsorted:
   - python314-python-socks 
   - python314-python-sql 
   - python314-python-stdnum 
+  - python314-python-subunit 
   - python314-python-ternary 
   - python314-python-utils 
   - python314-python-vlc 
@@ -35494,6 +35489,7 @@ unsorted:
   - python314-testfixtures 
   - python314-testflo 
   - python314-testpath 
+  - python314-testrepository 
   - python314-testresources 
   - python314-testscenarios 
   - python314-testsuite 

@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260408" schemaversion="4.1">
+<image name="OBS__MicroOS___20260409" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260408</productvar>
+      <productvar name="VERSION">20260409</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260408,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260409,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260408/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260409/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1029,7 +1029,7 @@
       <repopackage name="libproc2-1"/>
       <repopackage name="libprojectM3"/>
       <repopackage name="libprotobuf-c1"/>
-      <repopackage name="libprotobuf-lite33_3_0"/>
+      <repopackage name="libprotobuf-lite34_1_0"/>
       <repopackage name="libproxy1"/>
       <repopackage name="libpskc0"/>
       <repopackage name="libpsl5"/>
@@ -1257,7 +1257,7 @@
       <repopackage name="libUsageEnvironment3"/>
       <repopackage name="libusb-1_0-0"/>
       <repopackage name="libusbmuxd-2_0-7"/>
-      <repopackage name="libutf8_range-33_3_0"/>
+      <repopackage name="libutf8_range-34_1_0"/>
       <repopackage name="libuuid1"/>
       <repopackage name="libva-drm2"/>
       <repopackage name="libva-wayland2"/>
