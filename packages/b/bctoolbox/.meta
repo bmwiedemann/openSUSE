@@ -1,5 +1,0 @@
-<package name="bctoolbox" project="openSUSE:Factory">
-  <title>Utilities library used by Belledonne Communications softwares like belle-sip, mediastreamer2 and linphone.</title>
-  <description>Utilities library used by Belledonne Communications softwares like belle-sip, mediastreamer2 and linphone.</description>
-  <devel project="network:telephony" package="bctoolbox"/>
-</package>
