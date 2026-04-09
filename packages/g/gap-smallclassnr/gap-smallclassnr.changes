@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  9 12:25:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.0
+  * Added option `AsPermGroup`, which can be given to
+    `SmallClassNrGroup`, `AllSmallClassNrGroups` and
+    `OneSmallClassNrGroup`, to return groups as PermGroups even if
+    they are soluble.
+  * Added functionality to convert `IdClassNr` to IDs used by other
+    group libraries (gap-smallgrp, GAP Library of Finite Perfect
+    Groups, gap-primgrp, gap-transgrp, gap-atlasrep).
+  * Precomputed group sizes are now stored for all groups in the
+    library, and are used to more efficiently determine IdClassNr
+    for a given group.
+
+-------------------------------------------------------------------
 Fri Nov 14 09:28:08 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.3

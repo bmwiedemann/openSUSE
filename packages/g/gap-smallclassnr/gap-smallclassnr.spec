@@ -1,7 +1,7 @@
 #
 # spec file for package gap-smallclassnr
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-smallclassnr
-Version:        1.4.3
+Version:        1.5.0
 Release:        0
 Summary:        GAP: Finite groups library with small class number
 License:        GPL-2.0-or-later
