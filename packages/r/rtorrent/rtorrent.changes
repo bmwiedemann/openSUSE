@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  9 13:57:46 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.9
+  * Improved DNS cache handling and various bug fixes
+  * Trusted/Untrusted XMLRPC Connection Security Model
+  * SCGI Systemd Socket Activation Support
+
+-------------------------------------------------------------------
 Mon Mar 16 07:13:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.8
