@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          149
-%define mainver        %major.0
-%define orig_version   149.0
+%define mainver        %major.0.2
+%define orig_version   149.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -38,7 +38,13 @@
 %define do_profiling   1
 
 # upstream default is clang (to use gcc for large parts set to 0)
+%if 0%{?is_opensuse} && 0%{?suse_version} <= 1600
+# builds on Leap definitely need clang
+%define clang_build    1
+%else
+# stick with gcc based builds on all other platforms
 %define clang_build    0
+%endif
 
 %bcond_with only_print_mozconfig
 
@@ -103,8 +109,10 @@ BuildRequires:  memory-constraints
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
 BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
+BuildRequires:  libstdc++6-devel-gcc13
 %else
-BuildRequires:  gcc-c++
+BuildRequires:  gcc15-c++
+BuildRequires:  libstdc++6-devel-gcc15
 %endif
 BuildRequires:  cargo1.93
 BuildRequires:  rust1.93
@@ -403,11 +411,11 @@ export CXX=clang++
 export CC=gcc-13
 export CXX=g++-13
 %else
-export CC=gcc
-export CXX=g++
-export AR=gcc-ar
-export NM=gcc-nm
-export RANLIB=gcc-ranlib
+export CC=gcc-15
+export CXX=g++-15
+export AR=gcc-ar-15
+export NM=gcc-nm-15
+export RANLIB=gcc-ranlib-15
 %endif
 %endif
 %ifarch %arm %ix86

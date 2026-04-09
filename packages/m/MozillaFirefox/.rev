@@ -8093,4 +8093,41 @@
     Incorrect boundary conditions in the Audio/Video: Playback</comment>
     <requestid>1343068</requestid>
   </revision>
+  <revision rev="482" vrev="1">
+    <srcmd5>0d6282775159a347fbef188341c76b92</srcmd5>
+    <version>149.0.2</version>
+    <time>1775743685</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 149.0.2
+  MFSA 2026-25
+  * CVE-2026-5732 (bmo#2017867)
+    Incorrect boundary conditions, integer overflow in the
+    Graphics: Text component
+  * CVE-2026-5733 (bmo#2022554)
+    Incorrect boundary conditions in the Graphics: WebGPU component
+  * CVE-2026-5731 (bmo#2021894, bmo#2022225, bmo#2022252, bmo#2022294,
+    bmo#2023007, bmo#2023130, bmo#2023191, bmo#2023364, bmo#2023829,
+    bmo#2024074, bmo#2024417, bmo#2024433, bmo#2024436, bmo#2024437,
+    bmo#2024453, bmo#2024461, bmo#2024462, bmo#2024472, bmo#2024474,
+    bmo#2024477, bmo#2025364, bmo#2025401, bmo#2025402, bmo#2025472,
+    bmo#2026287, bmo#2026299, bmo#2026305, bmo#2026426)
+    Memory safety bugs fixed in Firefox ESR 115.34.1, Firefox ESR
+    140.9.1, Thunderbird ESR 140.9.1, Firefox 149.0.2 and
+    Thunderbird 149.0.2
+  * CVE-2026-5734 (bmo#2022369, bmo#2023026, bmo#2023545, bmo#2023555,
+    bmo#2023958, bmo#2025422, bmo#2025468, bmo#2025492, bmo#2025505)
+    Memory safety bugs fixed in Firefox ESR 140.9.1, Thunderbird
+    ESR 140.9.1, Firefox 149.0.2 and Thunderbird 149.0.2
+  * CVE-2026-5735 (bmo#2025475, bmo#2025477)
+    Memory safety bugs fixed in Firefox 149.0.2 and Thunderbird
+    149.0.2
+  * Enterprise: Introduced a new enterprise policy that allows
+    administrators to directly manage and control AI-related
+    features within Firefox. (bmo#2019983)
+  * Enterprise: Fixed an issue where enterprise policies for the
+    browser homepage and start page were not being applied
+    correctly. (bmo#2027888)
+  * Enterprise: Introduced a new enterprise policy that allows</comment>
+    <requestid>1345066</requestid>
+  </revision>
 </revisionlist>
