@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 25 06:14:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.63.1:
+  * Bug Fixes
+    - deploy: adopt managed fields after migration from helm to
+      nelm (#7406) (eab87e5)
+    - deploy: pass option for yaml validator to allow duplicate map
+      key (#7408) (c9ea743)
+
+-------------------------------------------------------------------
 Tue Mar 24 05:47:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.63.0:
