@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sdbootutil
-Version:        1+git20260407.f1134c1
+Version:        1+git20260408.db91528
 Release:        0
 Summary:        Bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -44,7 +44,7 @@ Requires:       (%{name}-tukit if read-only-root-fs)
 Requires:       tpm2.0-tools
 Requires:       libtss2-tcti-device0
 # For bootctl and systemd-pcrlock
-Requires:       (udev >= 257.9 or systemd-experimental < 257.9)
+Requires:       udev
 Supplements:    (grub2-x86_64-efi-bls and shim)
 Supplements:    (systemd-boot and shim)
 # Because uhmac it is not a noarch package

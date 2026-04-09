@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 08 18:07:32 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260408.db91528:
+  * Find /etc/os-release and machine-id in mkosi
+  * Drop reference to systemd-experimental
+  * Fix set-default-snapshot when snapshots are not present
+
+-------------------------------------------------------------------
 Tue Apr 07 11:32:59 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260407.f1134c1:
