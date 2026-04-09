@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Apr 09 11:58:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.68:
+  * Fixed
+    - MD039: preserve link titles and image captions when trimming
+      spaces (845bcb3)
+    - MD025: preserve closing hashes when demoting closed ATX
+      headings (58b690d)
+    - MD040: preserve existing info string attributes when adding
+      language (c46da6a)
+    - MD026: include setext H1 underlines in likely_has_headings
+      check (83dbca2)
+    - skip overlapping fix ranges in apply_warning_fixes to prevent
+      data corruption (2ecf48c)
+    - MD025: prevent infinite demotion loop when configured level
+      is 6 (b4a6d3d)
+    - MD046: correctly match closing fence by opener length in
+      fix() (1e03cae)
+    - MD030: align fix() with check() for parser-recognized list
+      items (96aa7aa)
+    - MD030: check nested list items regardless of indentation
+      depth (423435f)
+    - MD044: skip URL after WikiLink double-bracket links (f2390c8)
+    - MD013: correct line-length boundary check when indentation is
+      stripped (7620cd6)
+    - MD013: preserve indentation of list continuation lines after
+      nested lists (a4cb7c0)
+    - MD013: recognize "St." as abbreviation in sentence-per-line
+      mode (31c76cf)
+- Update to version 0.1.67:
+  * Added
+    - MD077: detect over-indented tight continuation lines
+      (a1e100d)
+    - docs: add interactive playground page powered by rumdl-wasm
+      (3352b87)
+  * Fixed
+    - MD077: correct nested list tight continuation false positive
+      (12f34e3)
+    - MD077: skip deeply indented list markers in tight
+      continuation check (3455ae9)
+    - ci: use nextest archive in pre-push hook to prevent binary
+      race (fccfe9a)
+    - remove orphaned doc comments causing clippy warnings
+      (0dd98b4)
+    - docs: prevent playground panels from shrinking after Fix All
+      (e209ce6)
+    - MD064: skip spaces after list markers inside blockquotes
+      (36fbeae)
+    - docs: replace npmjs.com link with github link in playground
+      (da60e47)
+    - docs: load rumdl-wasm from jsdelivr without version pin
+      (e781e6b)
+
+-------------------------------------------------------------------
 Fri Apr 03 05:29:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.66:
