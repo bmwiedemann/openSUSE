@@ -100,4 +100,36 @@ There are still minor multi-architecture adjustments to refine, but the package 
     <comment></comment>
     <requestid>1343224</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>102e4de5dfa0f1fa13bfd5a6b3bf6b00</srcmd5>
+    <version>32.1.1</version>
+    <time>1775743714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 32.1.1:
+  * libobs: Update version to 32.1.1
+  * obs-websocket: Update version to 5.7.3
+  * libobs: Monitoring deduplication fix for 'Desktop Audio' on monitor_only
+  * frontend: Fix muted colors
+  * frontend: Add toolbar actions to mixer menu
+  * frontend: Fix audio mixer light theme colors
+  * frontend: Improve VolumeMeter size calculation
+  * frontend: Fix audio mixer sorting weight
+  * frontend: Fix disabled sources appearing in audio mixer
+  * frontend: Improve VolumeName size calculations
+  * frontend: Adjust mixer horizontal layout
+  * frontend: Add missing tooltips to audio mixer
+  * CI: Update Signing action commit
+  * CI: Pin Homebrew/actions/setup-homebrew to commit hash
+  * CI: Pin github/codeql-action/upload-sarif to commit hash
+  * CI: Pin actions/upload-artifact/merge to commit hash
+  * CI: Pin actions/upload-artifact to commit hash
+  * CI: Pin actions/download-artifact to commit hash
+  * CI: Pin actions/checkout to commit hash
+  * CI: Pin actions/cache/save to commit hash
+  * CI: Pin actions/cache/restore to commit hash
+  * CI: Pin actions/cache to commit hash
+  * CI: Pin actions/attest-build-provenance to commit hash
+  * Add SECURITY.md</comment>
+    <requestid>1345308</requestid>
+  </revision>
 </revisionlist>
