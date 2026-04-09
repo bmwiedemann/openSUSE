@@ -1,4 +1,5 @@
 <package name="python-Django6" project="openSUSE:Factory">
   <title></title>
   <description>Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.</description>
+  <devel project="devel:languages:python:django" package="python-Django6"/>
 </package>
