@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Apr  7 22:51:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * First-class async/await and property/descriptor support.
+    Chaining.  InOrder.
+  * Enhanced `captor`, new `patch_attr` and `patch_dict`.
+  * Deprecate `verifyNoMoreInteractions` in favor of
+    `ensureNoUnverifiedInteractions`.
+  * Deprecate `verifyNoUnwantedInteractions` in favor of
+    `verifyExpectedInteractions`.
+  * Context managers now check usage and any expectations (set
+    via `expect`) on exit. The usage
+  * check can be disabled with the environment variable
+    `MOCKITO_CONTEXT_MANAGERS_CHECK_USAGE="0"`.
+  * The `between` matcher now supports open ranges, e.g.
+    `between=(0,)` to assert that at least
+  * 0 interactions occurred.
+  * Calling `thenAnswer()` without arguments is now allowed and
+    is treated like
+  * `thenReturn()` without arguments: the stubbed method will
+    return `None`.
+  * Allow `...` in fixed argument positions as an ad-hoc `any`
+    matcher.
+  * Trailing positional `...` keeps its existing "rest"
+    semantics.
+  * Expanded `mock({...})` constructor shorthands. Refer
+    https://mockito-python.readthedocs.io/en/latest/mock-
+    shorthands.html
+  * Added a first-class `InOrder` API via ``mockito.InOrder``.
+    The legacy in-order mode only supported one mock at a time;
+
+-------------------------------------------------------------------
 Wed Nov 26 13:59:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.5.5

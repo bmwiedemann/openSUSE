@@ -1,7 +1,7 @@
 #
 # spec file for package python-mockito
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mockito
-Version:        1.5.5
+Version:        2.0.3
 Release:        0
 Summary:        Spying framework
 License:        MIT
@@ -46,6 +46,7 @@ Mockito is a spying framework originally based on the Java library with the same
 %autosetup -p1 -n mockito-python-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install
