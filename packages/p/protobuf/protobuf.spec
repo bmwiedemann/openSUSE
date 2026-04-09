@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define tarname protobuf
 # see cmake/abseil-cpp.cmake and src/google/protobuf/port_def.inc
 %define abseil_min_version 20250512.1
-%global         sover 33_3_0
+%global         sover 34_1_0
 %if 0%{?gcc_version} < 11
 %define with_gcc 11
 %endif
@@ -66,7 +66,7 @@
 %global protoc_arch sparc_64
 %endif
 Name:           protobuf
-Version:        33.3
+Version:        34.1
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -105,6 +105,7 @@ BuildRequires:  pkgconfig(absl_log_severity) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_memory) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_node_hash_map) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_node_hash_set) >= %{abseil_min_version}
+BuildRequires:  pkgconfig(absl_optional) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_random_distributions) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_random_random) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_span) >= %{abseil_min_version}
@@ -113,7 +114,6 @@ BuildRequires:  pkgconfig(absl_statusor) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_strings) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_synchronization) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_time) >= %{abseil_min_version}
-BuildRequires:  pkgconfig(absl_type_traits) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(absl_utility) >= %{abseil_min_version}
 BuildRequires:  pkgconfig(zlib)
 %if %{with check}

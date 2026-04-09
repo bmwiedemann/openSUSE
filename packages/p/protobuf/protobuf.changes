@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Mar 28 12:43:48 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 34.1:
+  * Add support for bazel 9.x
+  * Bazel: Moved protocopt flag out of the cc dir, since it is not
+    a c++-specific flag
+  * C++: Add cc_proto_library for MessageSet in
+    //src/google/protobuf/bridge
+  * Java: Avoid toBigIntegerExact in JsonFormat to avoid degenerate
+    parse behavior in the face of large exponents
+
+-------------------------------------------------------------------
+Sat Mar 14 17:40:11 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 34.0:
+  * potentially breaking changes to Objective-C, Python, PHP, C++,
+    driven by feature additions, bug fixes and updatres, removal or
+    replacements of interfaces and functions
+  * potentiallly breaking changes to Bazel:
+    --proto_toolchain_for* and --proto_compiler are no longer read
+    See https://protobuf.dev/news/2026-03-13/
+
+-------------------------------------------------------------------
+Thu Mar  5 17:09:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 33.5:
+  * Fix Any recursion depth bypass in Python json_format.ParseDict
+    (boo#1257173, CVE-2026-0994), drop CVE-2026-0994.patch
+- includes changes form 33.4:
+  * Bazel: Remove hardcoded dependency on //:protoc from language
+    runtimes
+
+-------------------------------------------------------------------
+Mon Jan 26 13:00:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2026-0994.patch to fix google.protobuf.Any recursion depth
+  bypass in Python json_format.ParseDict (bsc#1257173, CVE-2026-0994)
+
+-------------------------------------------------------------------
 Sat Jan 10 11:50:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 33.3, a general maintenance release:

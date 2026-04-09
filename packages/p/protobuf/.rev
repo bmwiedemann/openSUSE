@@ -982,4 +982,12 @@ fix baselibs</comment>
     <comment></comment>
     <requestid>1327044</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>bb7e2cd59581393a82dc1d1abfe53cb7</srcmd5>
+    <version>34.1</version>
+    <time>1775743682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1343383</requestid>
+  </revision>
 </revisionlist>

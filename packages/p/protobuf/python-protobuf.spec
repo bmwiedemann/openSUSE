@@ -1,7 +1,7 @@
 #
 # spec file for package python-protobuf
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define baseversion 33.3
+%define baseversion 34.1
 %{?sle15_python_module_pythons}
 Name:           python-protobuf
-Version:        6.%{baseversion}
+Version:        7.%{baseversion}
 Release:        0
 Summary:        Python Bindings for Google Protocol Buffers
 License:        BSD-3-Clause
@@ -43,7 +43,7 @@ RPC protocols and file formats.
 This package contains the Python bindings for Google Protocol Buffers.
 
 %prep
-%autosetup -p2 -n protobuf-%{version}
+%autosetup -p1 -n protobuf-%{version}
 
 # The previous blank line is crucial for older system being able
 # to use the autosetup macro
