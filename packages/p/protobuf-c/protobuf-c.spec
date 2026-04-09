@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf-c
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Pascal Bleser
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -27,6 +27,7 @@ License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://github.com/protobuf-c/protobuf-c
 Source:         https://github.com/protobuf-c/protobuf-c/releases/download/v%version/%name-%version.tar.gz
+Patch1:         0001-Fix-compilation-against-protobuf-v34.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
