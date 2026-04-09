@@ -15,4 +15,16 @@
     <comment>- require setuptools</comment>
     <requestid>1136468</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1d5fa733faf4cb6604d14deb0309da64</srcmd5>
+    <version>30.3.0</version>
+    <time>1775743718</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 30.3.0:
+  * skipped 24 major versions, changes in
+    https://github.com/tobymao/sqlglot/blob/v30.3.0/CHANGELOG.md
+- add use-sys-executable.patch
+- missing-duckdb.patch: refresh</comment>
+    <requestid>1345085</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sqlglot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,19 @@
 %define modname sqlglot
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sqlglot
-Version:        7.0.0
+Version:        30.3.0
 Release:        0
 Summary:        An easily customizable SQL parser and transpiler
 License:        MIT
 URL:            https://github.com/tobymao/sqlglot
-# gh#tobymao/sqlglot#585
-Source:         https://github.com/tobymao/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sqlglot/sqlglot-30.3.0.tar.gz
 # PATCH-FIX-OPENSUSE missing-duckdb.patch mcepl@suse.com
 # Skip over duckdb requiring tests until it is packaged
 Patch0:         missing-duckdb.patch
+Patch1:         use-sys-executable.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.0}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

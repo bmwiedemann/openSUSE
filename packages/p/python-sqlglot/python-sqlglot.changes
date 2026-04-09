@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  7 22:38:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 30.3.0:
+  * skipped 24 major versions, changes in
+    https://github.com/tobymao/sqlglot/blob/v30.3.0/CHANGELOG.md
+- add use-sys-executable.patch
+- missing-duckdb.patch: refresh
+
+-------------------------------------------------------------------
 Wed Jan  3 10:24:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools
