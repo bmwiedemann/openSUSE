@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 25 17:58:05 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.6.8:
+  * feat: Use different debian version for fluent-bit (#21247)
+  * feat: Upgrade Go used by querytee/promtail to 3.6 (#21244)
+  * feat: Upgrade Go to 1.25.8 (release-3.6.x) (#21240)
+  * fix(deps): update module google.golang.org/grpc to v1.79.3 [security] (release-3.6.x) (#21193)
+  * fix(deps): update module github.com/buger/jsonparser to v1.1.2 [security] (release-3.6.x) (#21201)
+  * docs: Update RN for 3.5.12 (backport release-3.6.x) (#21184)
+  * docs: fix two small typos (backport release-3.6.x) (#21153)
+  * docs: fix broken link (backport release-3.6.x) (#21131)
+  * docs: rename troubleshooting file (#21127)
+  * docs: backport Troubleshooing updates 3.6 (#21124)
+  * feat: Upgrade `go.opentelemetry.io/otel/sdk` from v1.38.0 to v1.40.0 (#21115)
+  * docs: backport typo to 3.6 (#21053)
+  * docs: backport fix to 3.6 branch (#21049)
+  * fix(deps): update module go.opentelemetry.io/otel/sdk to v1.40.0 [security] (release-3.6.x) (#20887)
+  * docs: Release Notes 3.5.11 (backport release-3.6.x) (#20932)
+  * docs: Release Notes 3.6.7 (backport release-3.6.x) (#20930)
+  * chore(release-3.6.x): release 3.6.7 (#20924)
+
+-------------------------------------------------------------------
 Mon Feb 23 11:34:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.6.7:
