@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  9 11:52:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.19.1:
+  * Documentation
+    - docs: Update deployment group support statements (#125 (closed))
+      (c236e5e)
+  * Fix
+    - fix: Object access in 5.1.3 secret_scan_deployment_config (#135
+      (closed)) (7941c95)
+
+-------------------------------------------------------------------
 Wed Mar 18 06:50:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.19.0:
