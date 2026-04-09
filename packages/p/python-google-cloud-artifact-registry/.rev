@@ -103,4 +103,17 @@
     <comment></comment>
     <requestid>1327614</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aa787751d5e360f0c9533893e6cca1fd</srcmd5>
+    <version>1.21.0</version>
+    <time>1775743716</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.21.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking
+  * add DIRSUM_SHA256 hash type</comment>
+    <requestid>1344928</requestid>
+  </revision>
 </revisionlist>
