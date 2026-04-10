@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  4 04:42:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 5.10
+  * Fix adaptive interval display for calculate-as-you-type result
+  * Improve handling of "to mixed" after previous conversion statement (e.g. "1 m to in to mixed")
+  * Fix file paths with non-ASCII characters on Windows
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Tue Nov 25 09:30:41 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.8.2:
