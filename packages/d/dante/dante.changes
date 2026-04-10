@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 25 14:35:32 UTC 2026 - Alexey Svistunov <svalx@svalx.net>
+
+- Change systemd unit dependencies, fix fail to start on some network
+  configs
+
+-------------------------------------------------------------------
 Sun May 18 18:54:29 MSK 2025 - Mark Nefedov <mark_nefedov@icloud.com>
 
 - Update to version 1.4.4
