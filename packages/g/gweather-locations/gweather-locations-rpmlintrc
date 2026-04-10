@@ -1,0 +1,2 @@
+# Weship one .pc file which only references locations to files
+addFilter("devel-file-in-non-devel-package");

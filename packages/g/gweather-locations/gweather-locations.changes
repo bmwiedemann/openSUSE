@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Mar 23 08:52:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 17 08:47:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2026.2:
+  + Remove missing METAR stations
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 11 12:36:03 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initial package, version 2026.1
