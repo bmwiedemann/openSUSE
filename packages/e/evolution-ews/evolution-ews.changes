@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:28:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 08:42:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.60.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 28 09:07:36 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.59.3:
+  + Bug Fixes:
+    - Allow building without Evolution
+    - m365: Event attachment stream not freed after download
+  + Miscellaneous:
+    - Use GHashTable's `replace()` instead of `insert()` on some
+      places
+    - Correct responses for OAuth2 authentication failures
+    - Increase default connection timeout to 30 seconds
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 13 08:58:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.59.2:
+  + Disable free/busy calendars for meeting conflict lookup by
+    default
+  + Calendar: Prepare to support build with libical 4.x
+  + m365: Camel: Read/write Answered/Forwarded message flags
+- Changes from version 3.59.1:
+  + Camel: Implement CamelStore::get_inbox_folder()
+  + Adapt to libebook API changes
+  + Lower default connection timeout to 15 seconds
+  + Adapt to libcamel API removals
+  + Calendar: Change Free/Busy calendar range in the calendar
+    Properties
+  + flatpak: Add gettext ACLOCAL workaround
+  + Camel: Set IS_JUNK/IS_TRASH CamelFolder flags for Junk/Trash
+    folders
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 30 15:16:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.58.3:
