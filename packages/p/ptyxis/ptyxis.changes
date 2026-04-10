@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Mar 20 16:12:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 17 08:41:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + window: fix restore with "Next" for new-tab-position.
+  + tab: fix NULL warning from libadwaita via subtitle property.
+
+-------------------------------------------------------------------
+Tue Feb 24 07:57:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 13 15:11:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Add "Switch to Last Tab" shortcut (Alt+9).
+  + Use tab-focus action to handle tab bar overflow gracefully.
+  + Shortcut dialog: add reset button for default accelerator;
+    allow shift+arrow selection; make keyboard-shortcuts shortcut
+    configurable.
+  + Add setting to enable/disable zoom on scroll with Ctrl.
+  + Make zoom less sensitive.
+  + Support for apx containers.
+  + Agent: ignore --no-tty/-tty when distrobox.unshare_groups=1.
+  + Ignore tab notifications shorter than 250 ms.
+  + Fix palette 'Foreground' typo.
+  + Fix man page and README.
+- Changes from version 50.alpha:
+  + Add a logout inhibitor when tabs have active programs running
+    that are not the shell process. Can be disabled by toggling a
+    GSetting named 'inhibit-logout'.
+  + Add dialog to change tab profile.
+  + Improvements to --working-directory support.
+  + cell-width-scale profile option.
+  + User palettes can now set primary/system-accent colors.
+  + Man page documentation for palettes.
+  + Improved tab focus handling when creating new tabs and windows.
+  + Move open/copy link actions to top of terminal context menu.
+  + Improved single-instance handling in preferences.
+  + Screen reader announcements for terminal size changes.
+  + Use default profile when requested profile UUID does not exist.
+  + Clear X11 urgency hint when window becomes active.
+  + Fix visual bell area padding.
+  + Fix cursor color in linux.palette.
+  + Fix terminal snapshot rewriting for single color node.
+  + Handle failure to get portal path gracefully.
+  + Avoid Document Portal paths during Drag'n'Drop operations.
+  + Improved cleanup handling during application shutdown.
+  + Raise priority of force-quit fallback.
+  + Improved container handling for --init 1 containers.
+  + Remove unnecessary gate check for containers list.
+  + Make libc-compat builds optional.
+  + Use VTE -Dapp=false build option now that it is supported.
+  + Testsuite infrastructure for container provider unit testing.
+  + Include APP_ID and DESKTOP_SESSION in troubleshooting
+    information.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 24 07:43:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.3:

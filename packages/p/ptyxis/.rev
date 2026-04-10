@@ -206,4 +206,12 @@
     containers (forwarded request 1328981 from iznogood)</comment>
     <requestid>1329298</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cf5b8d76d4188c2378187bfa45170980</srcmd5>
+    <version>50.1</version>
+    <time>1775836229</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345417</requestid>
+  </revision>
 </revisionlist>

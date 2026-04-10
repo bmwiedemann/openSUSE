@@ -17,12 +17,12 @@
 
 
 Name:           ptyxis
-Version:        49.3
+Version:        50.1
 Release:        0
 Summary:        A terminal for GNOME with first-class support for containers
 License:        GPL-3.0-or-later
 URL:            https://www.gnome.org
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.64.0
 BuildRequires:  pkgconfig
