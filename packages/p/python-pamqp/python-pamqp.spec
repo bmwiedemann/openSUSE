@@ -1,7 +1,7 @@
 #
 # spec file for package python-pamqp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,16 @@
 
 
 Name:           python-pamqp
-Version:        3.3.0
+Version:        4.0.0
 Release:        0
 Summary:        Pure-python AMQP 0-9-1 frame encoder and decoder
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/gmr/pamqp
 Source:         https://github.com/gmr/pamqp/archive/%{version}.tar.gz#/pamqp-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -60,7 +59,7 @@ encoding should be run through the pamqp.frame module.
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/pamqp
 %{python_sitelib}/pamqp-%{version}*-info
 

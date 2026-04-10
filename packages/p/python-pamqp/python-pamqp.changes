@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:33:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * **Python 3.11+ required** (previously 3.7+)
+  * Removed explicit `__annotations__` class variable from all
+    command classes and base classes. Python manages
+    `__annotations__` automatically; the explicit declarations
+    conflicted with `object.__annotations__`. Code that
+    introspected `MyCommand.__annotations__` directly may need
+    updating.
+  * **Fix `Basic.Reject(requeue=False)` being coerced to `True`**
+    — The codegen emitted `self.requeue = requeue or True` which
+    made it impossible to reject without requeuing. Now uses a
+    proper ternary to preserve explicit `False`.
+  * **Fix `Exchange.Declare(internal=True)` raising
+    `ValueError`** — The `internal` flag was incorrectly treated
+    as a deprecated field. It is a legitimate AMQP flag used for
+    internal exchanges and RabbitMQ tracing.
+  * **Fix encoding of negative byte-range integers in field
+    tables** (#45) — `table_integer` routed values in `-128..127`
+    to `octet()` which uses unsigned byte format (`struct 'B'`),
+    causing `struct.error` for negative values like `-1`. Now
+    uses signed byte format (`struct '>b'`). This affected
+    `x-priority`, `x-delivery-limit`, and any other table
+    argument using small negative integers.
+  * **Fix codegen domain regex for exchange/queue names** — The
+    codegen now extends the AMQP spec regex to include characters
+    RabbitMQ allows in practice (`@`, `#`, `,`, `/`, `+`, space),
+    and fixes a bug where the trailing-comma replacement
+    corrupted regex patterns containing commas.
+  * **Full type checking with mypy and basedpyright** — Both type
+    checkers now pass cleanly and are enforced in pre-commit
+    hooks and CI.
+  * **`typing.ClassVar` annotations** on all class-level
+    attributes across base classes, command classes, body,
+    header, and heartbeat modules. Codegen updated to emit these
+    correctly.
+  * **Explicit submodule imports in `__init__.py`** to satisfy
+    basedpyright's `reportUnsupportedDunderAll` check.
+  * **Boolean default assignment fix in codegen** — Boolean
+    fields with defaults now use ternary expressions (`x if x is
+    not None else default`) instead of `x or default`, which
+    correctly preserves `False` values.
+  * **Modernized project tooling** — hatchling build backend, uv
+    for dependency management, ruff for linting/formatting, pre-
+    commit hooks
+  * **Migrated documentation from Sphinx/RST to MkDocs/Markdown**
+    with mkdocs-material theme and mkdocstrings for API reference
+  * **Converted README from RST to Markdown** with updated
+    badges, features, and "Used By" section
+  * **Updated CI** — GitHub Actions with Python 3.11-3.14 matrix,
+    uv-based workflow, mypy and basedpyright checks
+  * **Updated CONTRIBUTING.md** with current uv/ruff/pre-commit
+    workflow
+
+-------------------------------------------------------------------
 Mon Jun  2 15:51:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
