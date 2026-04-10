@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 30 07:07:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.820.0 (6.82)
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.82      2026-03-29 17:02:10Z
+      - Fix env_proxy() warning for unrelated environment variables (GH#501)
+        (Olaf Alders) with patch provided by @kberry.
+      - Fix `C<>` usage in doc (GH#500) (Dan Church)
+      - add an in-repo Makefile.PL for those tools that insist on running one
+        (GH#497) (Karen Etheridge)
+
+-------------------------------------------------------------------
 Thu Oct 23 05:35:03 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.810.0 (6.81)
