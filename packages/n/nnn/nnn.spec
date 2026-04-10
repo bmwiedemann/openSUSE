@@ -1,7 +1,7 @@
 #
 # spec file for package nnn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nnn
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Terminal based file browser
 License:        BSD-2-Clause
@@ -28,8 +28,9 @@ Source1:        https://github.com/jarun/nnn/releases/download/v%{version}/%{nam
 Source99:       nnn.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-Recommends:     sshfs
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(ncursesw)
+Recommends:     sshfs
 
 %description
 nnn is a fork of noice, a terminal file browser with keyboard
@@ -66,14 +67,14 @@ The official zsh completion script for %{name}.
 
 %build
 export CFLAGS="%{optflags}"
-%make_build strip
+%make_build strip O_PCRE2=1
 
 %install
-%make_install PREFIX=%{_prefix}
+%make_install PREFIX=%{_prefix} O_PCRE2=1
 
-install -Dm0644 misc/auto-completion/fish/nnn.fish $RPM_BUILD_ROOT%{_datadir}/fish/vendor_completions.d/%{name}.fish
-install -Dm0644 misc/auto-completion/bash/nnn-completion.bash $RPM_BUILD_ROOT%{_datadir}/bash-completion/completions/%{name}
-install -Dm0644 misc/auto-completion/zsh/_nnn $RPM_BUILD_ROOT%{_datadir}/zsh/site-functions/_%{name}
+install -Dm0644 misc/auto-completion/fish/nnn.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -Dm0644 misc/auto-completion/bash/nnn-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm0644 misc/auto-completion/zsh/_nnn %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %files
 %license LICENSE
