@@ -34,7 +34,7 @@
 %endif
 
 Name:           ngtcp2
-Version:        1.21.0
+Version:        1.22.0
 Release:        0
 Summary:        Implementation of the IETF QUIC protocol
 License:        MIT

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr  9 07:56:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.0:
+  * Consistent hex literals and integer suffixes
+  * Deprecate quictls
+  * Introduce struct ngtcp2_stateless_reset_token
+  * Fix assertion failure without get_new_connection_id
+  * Add ngtcp2_pkt_write_stateless_reset2
+  * Add missing callbacks to callbacks test
+  * Add ngtcp2_conn_get_active_dcid2 and ngtcp2_cid_token2
+  * Prefer sizeof token instead of integer constant
+  * Introduce struct ngtcp2_path_challenge_data
+  * Store cid and token directly into frame
+  * tests: Remove xcid_init in favor of make_xcid
+  * tests: Inline initialization for transport parameters tests
+  * tests: Make shared crypto objects static const
+  * build(deps): bump actions/upload-artifact from 6 to 7
+  * tests: More static const variables
+  * build(deps): bump actions/download-artifact from 7 to 8
+  * Avoid memset for struct initialization
+  * Hp ecb
+  * crypto: Encrypt full chacha block
+  * crypto/wolfssl: Use aes-ecb for header protection cipher
+  * Upcase hex char in string literals
+  * crypto: No need to disable padding for aes-ecb
+  * More use of designated initializers
+  * docker: Switch to aws-lc
+  * GHA: Build with macos-26
+  * Fix assertion error when seq=0 Connection ID is required on
+    0.5RTT
+  * Add function to continue TLS handshake
+  * Refine handshake continuation
+  * doc: Add documentation about TLS handshake interruptions
+
+-------------------------------------------------------------------
 Wed Mar 11 10:33:46 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
 
 - Update tto 1.21.0:
