@@ -1,7 +1,7 @@
 #
 # spec file for package sushi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global __requires_exclude typelib\\(LOKDocView\\)
 
 Name:           sushi
-Version:        46.0+11
+Version:        50.rc.1
 Release:        0
 Summary:        Quick Previewer for Nautilus
 License:        SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/File utilities
 URL:            https://www.gnome.org
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source99:       sushi-rpmlintrc
 
 BuildRequires:  meson
@@ -78,7 +78,7 @@ Sushi is a quick previewer for Nautilus, the GNOME desktop file manager.
 %doc AUTHORS NEWS README.md
 %{_bindir}/%{name}
 %{_datadir}/dbus-1/services/org.gnome.NautilusPreviewer.service
-%{_datadir}/metainfo/org.gnome.NautilusPreviewer.appdata.xml
+%{_datadir}/metainfo/org.gnome.NautilusPreviewer.metainfo.xml
 %dir %{_datadir}/%{name}/gtksourceview-4
 %dir %{_datadir}/%{name}/gtksourceview-4/styles
 %{_datadir}/%{name}/gtksourceview-4/styles/builder-dark.style-scheme.xml
