@@ -1,7 +1,7 @@
 #
-# spec file for package plasma6-aurorae
+# spec file for package aurorae6
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           aurorae6
-Version:        6.6.3
+Version:        6.6.4
 Release:        0
 Summary:        Themeable window decoration for KWin
 License:        GPL-2.0-or-later
