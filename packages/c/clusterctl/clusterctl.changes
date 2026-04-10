@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 09 11:54:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.5:
+  * clusterctl: Bump cert-manager to v1.20.0 (#13484)
+  * clusterctl: Bump cert-manager to v1.20.1 (#13519)
+  * Others
+    - Dependency: Bump corefile-migration to v1.0.31 (#13526)
+    - Dependency: Bump dependencies to fix CVE-2026-33186
+      (google.golang.org/grpc) (#13504)
+    - Dependency: Bump go v1.25.9 (#13554)
+    - Dependency: Switch from docker to moby dependencies (#13550)
+
+-------------------------------------------------------------------
 Wed Mar 18 06:52:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.4:
