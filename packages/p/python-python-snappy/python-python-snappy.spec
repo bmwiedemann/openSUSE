@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-snappy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,54 +17,50 @@
 
 
 Name:           python-python-snappy
-Version:        0.6.1
+Version:        0.7.3
 Release:        0
 Summary:        Python library for the snappy compression library
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/andrix/python-snappy
-Source:         https://files.pythonhosted.org/packages/source/p/python-snappy/python-snappy-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+Source:         https://files.pythonhosted.org/packages/source/p/python-snappy/python_snappy-%{version}.tar.gz
+BuildRequires:  %{python_module cramjam >= 2.6.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  snappy-devel
+Requires:       python-cramjam >= 2.6.0
+BuildArch:      noarch
 %python_subpackages
 
 %description
 Python library for the snappy compression library from Google.
 
 %prep
-%setup -q -n python-snappy-%{version}
+%autosetup -p1 -n python_snappy-%{version}
 sed -i -e '/^#!\//, 1d' src/snappy/snappy.py
 
 %build
-export CFLAGS="%{optflags}"
 %pyproject_wheel
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 mkdir tester
 cp test_*.py tester/
 pushd tester
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -B test_snappy.py
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -B test_formats.py
-$python -B test_hadoop_snappy.py
 }
 popd
 
 %files %{python_files}
 %doc AUTHORS README.rst
 %license LICENSE
-%{python_sitearch}/snappy
-%{python_sitearch}/python[-_]snappy-%{version}*-info
+%{python_sitelib}/snappy
+%{python_sitelib}/python[-_]snappy-%{version}*-info
 
 %changelog

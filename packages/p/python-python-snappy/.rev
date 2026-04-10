@@ -60,4 +60,15 @@ Used by a bunch of python numeric packages.</comment>
     <comment>- Convert to pip-based build</comment>
     <requestid>1284525</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>15c13a9a2d1379acf2710aca4da9bca3</srcmd5>
+    <version>0.7.3</version>
+    <time>1775857497</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.7.3:
+  * Port to cramjam instead of C extension
+  * Remove C extension and snappy-devel dependency
+- Clean up %check and %files for noarch build</comment>
+    <requestid>1345935</requestid>
+  </revision>
 </revisionlist>

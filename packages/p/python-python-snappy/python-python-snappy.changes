@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:04:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 0.7.3:
+  * Port to cramjam instead of C extension
+  * Remove C extension and snappy-devel dependency
+- Clean up %check and %files for noarch build
+
+-------------------------------------------------------------------
 Tue Jun 10 15:10:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -39,4 +47,3 @@ Thu Apr 11 11:15:21 UTC 2019 - pgajdos@suse.com
 Mon Jan 21 03:52:54 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Initial version
-
