@@ -35,6 +35,7 @@ URL:            https://github.com/KhronosGroup/SPIRV-Tools
 Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v2026.1.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
+Patch2:         gcc16.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.17.2
 BuildRequires:  gcc%{?gcc_version} >= 9
