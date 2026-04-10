@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-builder
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,23 @@
 
 
 # Update this on every major/minor bump
-%define basever 49
+%define basever 50
 %define glib_version 2.85
 
 Name:           gnome-builder
-Version:        49.1
+Version:        50.rc.1
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 # PATCH-FIX-OPENSUSE Dirty-quick-hackfix-typelibs.patch -- Nuke away bogus typelibs dependencies
 Patch0:         Dirty-quick-hackfix-typelibs.patch
+# PATCH-FIX-OPENSUSE gnome-builder-no-test-iter.patch -- Disable test-text-iter, not working in OBS build env
+Patch1:         gnome-builder-no-test-iter.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

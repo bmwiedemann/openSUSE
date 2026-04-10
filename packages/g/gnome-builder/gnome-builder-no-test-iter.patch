@@ -1,0 +1,21 @@
+diff --git a/src/tests/meson.build b/src/tests/meson.build
+index 21a5b566..4f026ebf 100644
+--- a/src/tests/meson.build
++++ b/src/tests/meson.build
+@@ -19,11 +19,11 @@ test_line_reader = executable('test-line-reader', 'test-line-reader.c',
+ test('test-line-reader', test_line_reader, env: test_env)
+ 
+ 
+-test_text_iter = executable('test-text-iter', 'test-text-iter.c',
+-        c_args: test_cflags,
+-  dependencies: [ libide_sourceview_dep ],
+-)
+-test('test-text-iter', test_text_iter, env: test_env)
++#test_text_iter = executable('test-text-iter', 'test-text-iter.c',
++#        c_args: test_cflags,
++#  dependencies: [ libide_sourceview_dep ],
++#)
++#test('test-text-iter', test_text_iter, env: test_env)
+ 
+ 
+ test_vcs_uri = executable('test-vcs-uri', 'test-vcs-uri.c',
