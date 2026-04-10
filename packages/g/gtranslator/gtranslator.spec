@@ -1,7 +1,7 @@
 #
 # spec file for package gtranslator
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gtranslator
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Gtranslator
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source99:       gtranslator-rpmlintrc
 
 BuildRequires:  desktop-file-utils
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  gettext-tools
 BuildRequires:  intltool
 BuildRequires:  itstool
-BuildRequires:  meson >= 0.46.0
+BuildRequires:  meson >= 1.7
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36.0

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:51:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sat Mar 14 10:28:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Only prevent from saving if there are severe errors
+  + Make translation panel resizable
+  + Use static links for app screenshots in app metadata
+  + Require meson 1.7
+  + Allow updating PO files with an updated POT template
+  + Improve "Upload" dialog
+  + Plug some memory leaks
+  + Ask for D-L authentication token during initial setup
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 15 06:22:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
