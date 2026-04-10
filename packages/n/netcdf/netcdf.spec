@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,8 @@
 ExclusiveArch:  do_not_build
 %endif
 
+%if "%{flavor}" != "serial"
 ExcludeArch:    s390 s390x i586 %arm
-
-%if "%{flavor}" == "serial"
-%endif
-
-%if "%{flavor}" == "mvapich2"
-%define mpi_flavor mvapich2
 %endif
 
 %if "%{flavor}" == "openmpi4"
@@ -85,7 +80,7 @@ Name:           %{package_name}
 Summary:        Command-line programs for the NetCDF scientific data format
 License:        NetCDF
 Group:          Productivity/Scientific/Other
-Version:        4.9.3
+Version:        4.10.0
 Release:        0
 URL:            https://www.unidata.ucar.edu/software/netcdf/
 Source:         https://downloads.unidata.ucar.edu/netcdf-c/%{version}/%{pname}-c-%{version}.tar.gz

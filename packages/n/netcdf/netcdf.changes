@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  8 01:48:32 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.10.0
+  * For complete changelog, see included RELEASE_NOTES.md, or
+    https://github.com/Unidata/netcdf-c/releases/tag/v4.10.0
+- Clean up spec file
+- Reenable 32 bit architectures, accidentally removed with the
+  HPC changes.
+
+-------------------------------------------------------------------
 Tue Aug 26 18:34:22 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.9.3:
