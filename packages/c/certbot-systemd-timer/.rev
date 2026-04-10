@@ -38,4 +38,12 @@
     <comment></comment>
     <requestid>1243045</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d859529eba34979547020ca61b6e875e</srcmd5>
+    <version>0.0</version>
+    <time>1775836556</time>
+    <user>dimstar_suse</user>
+    <comment>- Require just 'certbot' to work with any python flavour</comment>
+    <requestid>1345834</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 10 13:27:44 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Require just 'certbot' to work with any python flavour
+
+-------------------------------------------------------------------
 Mon Feb  3 16:24:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.20: referencing ../ in %doc/%license is not
