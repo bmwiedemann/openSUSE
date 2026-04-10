@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-services-manager
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 ######################################################################
 
 Name:           yast2-services-manager
-Version:        5.0.1
+Version:        5.0.3
 Release:        0
 Summary:        YaST2 - Services Manager
 Group:          System/YaST
@@ -34,12 +34,16 @@ URL:            https://github.com/yast/yast-services-manager
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  ruby
-BuildRequires:  update-desktop-files
 # 'target' argument for Installation::AutoClient#export method
 BuildRequires:  yast2 >= 4.3.10
 BuildRequires:  yast2-ruby-bindings >= 1.2.0
-# To show service logs
+
+# only in openSUSE Tumbleweed or Leap, not in SLES
+%if 0%{?suse_version} == 1699 || 0%{?is_opensuse}
+# needed just to run an unit test
 BuildRequires:  yast2-journal >= 4.1.1
+%endif
+
 # Support for 'data' directory in rake install task
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake) >= 0.1.7
 BuildRequires:  yast2-devtools >= 4.2.2
