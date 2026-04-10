@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:40:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Mar 15 09:11:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.0:
+  + SMTP server without password cannot be configured
+  + Remove unneeded SMTP password escaping
+  + build: Disable google provider Files feature
+  + MS365: Fix mail address and name
+  + Google: Set mail name to presentation identity
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 11 10:02:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.57.1:
+  + Default Microsoft 365 client is unverified
+  + Microsoft 365: Make use of email for id
+  + goadaemon: Allow manage system notifications
+  + goamsgraphprovider: bump credentials generation
+  + goaprovider: Allow to disable, instead of enable, selected
+    providers
+- Changes from version 3.57.0:
+  + Support for saving a Kerberos password to the keychain after
+    the first login
+  + changing expired kerberos password is not supported.
+  + Provided Files URI does not override undiscovered endpoint
+  + DAV client rejects 204 status in OPTIONS request handler
+  + Include emblem-default-symbolic.svg
+  + Connecting a Runbox CardDAV/CalDAV account hangs/freezes after
+    sign in
+  + i81n: fix translatable string
+  + goaimapsmptprovider: fix accounts without SMTP or
+    authentication-less SMTP
+  + build: only install icons for the goabackend build
+  + build: don't require goabackend to build documentation
+  + ci: test the build without gtk4
+  + DAV-client: Added short path for SOGo
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Feb  4 13:58:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.56.4:

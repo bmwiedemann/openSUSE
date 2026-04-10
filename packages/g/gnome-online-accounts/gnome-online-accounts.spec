@@ -17,13 +17,13 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.56.4
+Version:        3.58.0
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeOnlineAccounts
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson
@@ -31,9 +31,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.52
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.52
-BuildRequires:  pkgconfig(glib-2.0) >= 2.52
+BuildRequires:  pkgconfig(gio-2.0) >= 2.84.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.84.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.2
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gtk4) >= 4.10
@@ -122,15 +122,17 @@ libraries in GNOME can access the user's online accounts.
 %files
 %license COPYING
 %doc NEWS
-%{_libexecdir}/goa-daemon
+%{_datadir}/applications/org.gnome.OnlineAccounts.OAuth2.desktop
+%{_datadir}/applications/org.gnome.goa-daemon.desktop
+%{_datadir}/dbus-1/services/org.gnome.Identity.service
 %{_datadir}/dbus-1/services/org.gnome.OnlineAccounts.service
 %{_datadir}/icons/hicolor/*/apps/goa-account*.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.goa-daemon-symbolic.svg
+%{_libexecdir}/goa-daemon
+%{_libexecdir}/goa-identity-service
+%{_libexecdir}/goa-oauth2-handler
 %{_mandir}/man8/goa-daemon.8%{?ext_man}
 %dir %{_libdir}/goa-1.0
-%{_libexecdir}/goa-identity-service
-%{_datadir}/dbus-1/services/org.gnome.Identity.service
-%{_libexecdir}/goa-oauth2-handler
-%{_datadir}/applications/org.gnome.OnlineAccounts.OAuth2.desktop
 
 %files -n libgoa-1_0-0
 %{_libdir}/libgoa-1.0.so.*
