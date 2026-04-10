@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:34:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Wed Mar  4 15:01:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update spec copyright and shorter tag ref in _service.
+
+-------------------------------------------------------------------
 Mon Mar  3 19:24:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Split out gtk-devel sub-package. Make the gtk3 dependency
