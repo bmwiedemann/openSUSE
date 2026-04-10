@@ -341,4 +341,12 @@
     <comment>Lets try this again :-) (forwarded request 1305203 from iznogood)</comment>
     <requestid>1305510</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a0fc224287ee7fc103be6cad41794b84</srcmd5>
+    <version>50.0</version>
+    <time>1775836201</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345346</requestid>
+  </revision>
 </revisionlist>

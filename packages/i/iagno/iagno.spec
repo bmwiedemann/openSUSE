@@ -1,7 +1,7 @@
 #
 # spec file for package iagno
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,21 @@
 
 
 Name:           iagno
-Version:        3.38.1
+Version:        50.0
 Release:        0
 Summary:        Reversi Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Iagno
-Source0:        https://download.gnome.org/sources/iagno/3.38/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM b37eacaf1485cda54d0fa4b2d2423f3d8c620af1.patch dimstar@opensuse.org -- Fix build with Vala 0.51
-Patch0:         https://gitlab.gnome.org/GNOME/iagno/-/commit/b37eacaf1485cda54d0fa4b2d2423f3d8c620af1.patch
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  glycin-loaders
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
-BuildRequires:  pkgconfig(gio-2.0) >= 2.42.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
-BuildRequires:  pkgconfig(gsound) >= 1.0.2
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
+Buildsystem:    meson
 
 %description
 Iagno is the two player strategy game of Othello, which is also known
@@ -49,16 +44,10 @@ board.
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson \
-	%{nil}
-%meson_build
-
-%install
-%meson_install
+%install -a
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_datadir}
 
@@ -68,7 +57,7 @@ board.
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/metainfo/org.gnome.Reversi.appdata.xml
+%{_datadir}/metainfo/org.gnome.Reversi.metainfo.xml
 %{_datadir}/applications/org.gnome.Reversi.desktop
 %{_datadir}/dbus-1/services/org.gnome.Reversi.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Reversi.gschema.xml

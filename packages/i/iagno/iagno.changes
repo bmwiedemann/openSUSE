@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Mar 19 16:11:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 23 07:45:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + This version uses libadwaita's breakpoints to make interface
+    adaptive to smaller screens.
+  + Another notable change is a switch to Glycin library for
+    loading textures.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 11:17:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.alpha:
+  + New release with a port to Gtk4 and libadwaita.
+  + Also GNOME branding was removed. It's just a Reversi from now
+    on.
+  + Updated translations.
+- Convert package to use obs_scm _service.
+- Drop most static buildrequires and use dynamic buildrequire
+  generation.
+- Drop b37eacaf1485cda54d0fa4b2d2423f3d8c620af1.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Sep  9 10:41:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add explicit glycin-loaders BuildRequires: provide image loaders
