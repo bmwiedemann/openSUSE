@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 09 11:55:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.4:
+  No kumactl-related changes
+
+-------------------------------------------------------------------
+Wed Mar 25 13:59:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.3:
+  * chore(deps): bump scan-docker-image to v6.1.0 (#15991)
+  * fix(gatewayapi): ensure statuses are deterministic (backport of
+    #15928) (#15988)
+  * chore(deps): bump distroless-iptables to v0.8.8 (#15981)
+  * chore(deps): bump coredns to v1.14.2 (#15976)
+  * fix(zoneingress): no public address causes DPP reconciliation
+    failure (backport of #15926) (#15932)
+  * chore(deps): upgrade envoy from v1.36.4 to 1.36.5 (backport of
+    #15905) (#15909)
+  * chore(deps): bump github.com/buger/jsonparser from 1.1.1 to
+    1.1.2 (#15903)
+  * chore(deps/dev): bump go from 1.26.0 to 1.26.1 (#15892)
+  * chore(deps): security update (#15880)
+  * chore(deps): security update (#15867)
+  * chore(deps/dev): bump go to v1.26.0 (#15587)
+  * fix(matchers): match delegated gw dpps (backport of #15791)
+    (#15802)
+  * chore(deps): security update (#15790)
+  * fix(xds): don't create empty filter chain for a gateway
+    (backport of #15532) (#15699)
+
+-------------------------------------------------------------------
 Thu Feb 26 08:44:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.2:
