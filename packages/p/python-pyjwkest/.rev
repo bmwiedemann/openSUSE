@@ -38,4 +38,18 @@
 - Switch to pyproject macros</comment>
     <requestid>1108963</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8de09a44b5362a1c48a381847909f66</srcmd5>
+    <version>1.4.4</version>
+    <time>1775849321</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.4:
+  * Raise proper exception when failing to deserialize an EC key
+  * Fix deprecated API for array tostring and tobytes
+  * Add pyproject.toml
+  * Fix logging instance
+  * Add maintainance warning
+- drop py39-tobytes.patch (upstream)</comment>
+    <requestid>1345841</requestid>
+  </revision>
 </revisionlist>

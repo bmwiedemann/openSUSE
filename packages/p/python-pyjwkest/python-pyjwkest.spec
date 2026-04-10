@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyjwkest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,13 @@
 #
 
 
-%define commit 9ed11b406911dde70b281b2473a976ec88afd1a9
 Name:           python-pyjwkest
-Version:        1.4.2
+Version:        1.4.4
 Release:        0
 Summary:        Python implementation of JWT, JWE, JWS and JWK
 License:        Apache-2.0
-URL:            https://github.com//IdentityPython/pyjwkest
-#Source:         https://files.pythonhosted.org/packages/source/p/pyjwkest/pyjwkest-%%{version}.tar.gz
-# 1.4.2, released on PyPI is untagged on GitHub, but we need the tests
-Source:         https://github.com/IdentityPython/pyjwkest/archive/%{commit}.tar.gz#/pyjwkest-%{version}-gh.tar.gz
-# PATCH-FIX-OPENSUSE (upstream is unmaintained) -- py 3.9 compatibility. Works for all of py3.
-Patch0:         py39-tobytes.patch
+URL:            https://github.com/IdentityPython/pyjwkest
+Source:         https://github.com/IdentityPython/pyjwkest/archive/refs/tags/v%{version}.tar.gz#/pyjwkest-%{version}-gh.tar.gz
 Patch1:         remove-future-requirement.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +33,7 @@ Requires:       python-pycryptodomex
 Requires:       python-requests
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 BuildRequires:  %{python_module pycryptodomex}
 BuildRequires:  %{python_module pytest}
@@ -53,7 +48,7 @@ Python implementation of JWT, JWE, JWS and JWK.
 Note: This library is NOT actively maintained anymore.
 
 %prep
-%autosetup -p1 -n pyjwkest-%{commit}
+%autosetup -p1 -n pyjwkest-%{version}
 # https://github.com/rohe/pyjwkest/pull/1
 chmod a+x script/gen_symkey.py
 sed -i '1 {s:^#!:#!/usr/bin/env python:}' script/gen_symkey.py

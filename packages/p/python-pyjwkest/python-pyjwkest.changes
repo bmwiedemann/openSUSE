@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 10 13:38:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.4:
+  * Raise proper exception when failing to deserialize an EC key
+  * Fix deprecated API for array tostring and tobytes
+  * Add pyproject.toml
+  * Fix logging instance
+  * Add maintainance warning
+- drop py39-tobytes.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Sep  5 01:24:06 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-future-requirement.patch, drop future requirement
