@@ -16,8 +16,6 @@
 #
 
 
-# Tests require network connection
-%bcond_with tests
 %{?sle15_python_module_pythons}
 Name:           python-httplib2
 Version:        0.31.2
@@ -32,14 +30,16 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
-Requires:       python-certifi
 Requires:       python-pyparsing >= 3.1
 BuildArch:      noarch
-%if %{with tests}
-# Test requirements (for ssl module):
-BuildRequires:  python
-BuildRequires:  python3
-%endif
+# SECTION testing requirements
+BuildRequires:  %{python_module PySocks}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module pyparsing >= 3.1}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -57,11 +57,12 @@ left out of other HTTP libraries.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests require network connection
-# python3 python3/httplib2test.py
+%pytest
 
 %files %{python_files}
-%{python_sitelib}/httplib2-%{version}*-info
+%license LICENSE
+%doc README.md
 %{python_sitelib}/httplib2
+%{python_sitelib}/httplib2-%{version}.dist-info
 
 %changelog

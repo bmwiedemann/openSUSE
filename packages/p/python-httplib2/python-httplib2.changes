@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 01:09:47 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Ship the LICENSE and README in the built packages.
+- Actually run the testsuite.
+
+-------------------------------------------------------------------
 Sun Mar 15 19:03:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.31.2:
