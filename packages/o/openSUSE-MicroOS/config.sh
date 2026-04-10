@@ -120,7 +120,7 @@ cat >>/etc/fstab.script <<"EOF"
 # Add umask=0077 to the ESP (boo#1250510)
 gawk -i inplace '$2 == "/boot/efi" && $4 == "defaults" { $4 = $4",umask=0077" } { print $0 }' /etc/fstab
 # Ensure it's present
-gawk '$2 == "/boot/efi"' /etc/fstab | grep -qw umask=0077
+gawk '$2 == "/boot/efi" { if ($4 !~ /umask=0077/) exit(1); }' /etc/fstab
 EOF
 
 cat >>/etc/fstab.script <<"EOF"

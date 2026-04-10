@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:47:11 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Drop root=UUID requirement, as sdbootutil will select it
+
+-------------------------------------------------------------------
+Thu Apr  9 08:57:10 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Fix umask=0077 check for non-EFI cases
+
+-------------------------------------------------------------------
 Tue Feb 24 13:02:02 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Use set -euxo pipefail for generated script
