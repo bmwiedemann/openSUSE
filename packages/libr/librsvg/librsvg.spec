@@ -1,7 +1,7 @@
 #
 # spec file for package librsvg
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.61.3
+Version:        2.62.0
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  cargo-c >= 0.10.12

@@ -1359,4 +1359,12 @@
     <comment></comment>
     <requestid>1315430</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>5e721dc9eba2ec687598288065e820b2</srcmd5>
+    <version>2.62.0</version>
+    <time>1775835919</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345340</requestid>
+  </revision>
 </revisionlist>
