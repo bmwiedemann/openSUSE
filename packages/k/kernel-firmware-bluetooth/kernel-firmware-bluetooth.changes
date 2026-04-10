@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  9 05:33:17 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260408 (git commit e9cae76da758):
+  * Revert "rtl_bt: Update RTL8822C BT USB and UART firmware to 0x0673"
+
+-------------------------------------------------------------------
 Sun Mar 29 08:38:45 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260327 (git commit 85786b4413fd):
