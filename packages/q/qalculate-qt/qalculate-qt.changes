@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr  4 04:42:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 5.10
+  * Fixes and improvements for number bases
+  * Fix adaptive interval display for calculate-as-you-type result
+  * Improve handling of "to mixed" after previous conversion statement (e.g. "1 m to in to mixed")
+  * Fix file paths with non-ASCII characters on Windows
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Mon Jan 19 14:04:06 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.9
