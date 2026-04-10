@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Mar 20 15:39:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 16:31:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Updated dependencies.
+
+-------------------------------------------------------------------
+Sat Feb 28 09:37:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Updated dependencies.
+
+-------------------------------------------------------------------
+Fri Feb 13 15:18:03 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Changed
+    - Support XPM and JPEG 2000 mime-types, offering Image Editor
+      as app when opening these image formats
+    - Use AdwShortcutsDialog
+- Changes from version 50.alpha:
+  + Added
+    - Add a specific error message when loading the image file
+      fails. Usually when the file does not exists or there are
+      no rights to access the file.
+  + Fixed
+    - Fixed image navigation overlay controls conflicting with
+      always visible scrollbars.
+    - Showing wrong mime type in error message if the file ending
+      for an image is wrong.
+  + Changed
+    - Don't allow endless zoom out
+    - Only allow 4 integer digits and 2 decimal digits. That's
+      what's actually respected by the input at max.
+    - Don't jump to best-fit zoom level during pinch zoom gesture
+      when scroolbars get displayed. This has only been an issue
+      with the disability option "always show scrollbars."
+
+-------------------------------------------------------------------
 Fri Jan  2 13:52:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:

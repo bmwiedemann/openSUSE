@@ -17,13 +17,13 @@
 
 
 Name:           loupe
-Version:        49.2
+Version:        50.0
 Release:        0
 Summary:        A simple image viewer application
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/loupe
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 
 BuildRequires:  AppStream
 BuildRequires:  cargo-packaging >= 1.2.0+3
@@ -34,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk4) >= 4.13.6
 BuildRequires:  pkgconfig(gweather4) >= 4.0.0
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.0
 BuildRequires:  pkgconfig(libheif) >= 1.14.2
 BuildRequires:  pkgconfig(libseccomp) >= 2.5.0
 Requires:       glycin-loaders
