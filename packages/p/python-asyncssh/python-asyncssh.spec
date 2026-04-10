@@ -1,7 +1,7 @@
 #
 # spec file for package python-asyncssh
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asyncssh
-Version:        2.21.1
+Version:        2.22.0
 Release:        0
 Summary:        Asynchronous SSHv2 client and server library
 License:        EPL-2.0 OR GPL-2.0-or-later
@@ -26,8 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ronf/asyncssh
 Source:         https://files.pythonhosted.org/packages/source/a/asyncssh/asyncssh-%{version}.tar.gz
 Patch0:         gss_test.patch
-# PATCH-FIX-UPSTREAM fido2-compat.patch
-Patch1:         fido2-compat.patch
 # SECTION test requirements
 BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 39.0}

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Apr  3 13:08:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.22.0:
+  * Added a new config option utf8_decode_errors for handling
+    UTF-8 decode errors when parsing certain fields in SSH
+    packets (disconnect error, debug message, userauth banner,
+    channel open failure reason, channel exit signal reason, and
+    SFTP error reason). The default continues to behave as
+    before, raising a ProtocolError exception, but this option
+    allows invalid bytes to be removed or replaced. Thanks go to
+    GitHub user Le-Syl21 for suggesting this.
+  * Changed config parser to Ignore subdirectories and parse only
+    plain files matching a glob pattern in include directives,
+    better matching the behavior of other SSH implementations.
+    Thanks go to Jacopo Nespolo for contributing this change.
+  * Improved a previous fix for a race condition which sometimes
+    triggered assertion errors in SSHForwarder. Thanks go to Mike
+    Barry for reporting the issue and helping to test the
+    improved fix.
+  * Removed optional dependency on libnacl/libsodium for chacha20
+    and Edwrds curves, now that these are available in all
+    supported versions of the cryptography package.
+  * Updated asyncssh to use version 2 of the fido2 package, and
+    update minimum Python version to 3.10, required by that
+    updated package.
+  * Fixed issue with the OpenSSL legacy provider on Windows and
+    re-enabled OpenSSL use in unit tests on Windows.
+  * Inproved "run multiple clients" example to show the hostname
+    being accessed by each task.
+  * Added unit testing for Python 3.14 and dropped 3.8 and 3.9.
+- drop fido2-compat.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Oct 10 11:51:00 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Add fido2-compat.patch to restore compatibility with python-fido2 >= 2
