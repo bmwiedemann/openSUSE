@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Apr  4 13:38:06 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.15.2
+  * Fixed issue in 3D structured CGNS output
+- Update to 4.15.1
+  * Bug fixes
+- Update to 4.15.0
+  * New Closest, Parametric Point and Normal parser functions
+  * Changed Boundary and CombinedBoundary parser functions to not
+    return signed entity tags anymore (use new OrientedBoundary
+    and OrientedCombinedBoundary to get the old behavior)
+  * Changed default value of oriented argument to false in
+    model/getBoundary API
+  * New fltk/run() option to automatically load/save options
+    between runs
+  * Improved Constant and Restrict mesh size fields
+  * Reverted curve drawing to use fixed number of subdivisions
+  * Levelset-based plugins now take entity visibility
+    into account
+  * Bug fixes.
+  * New API functions:
+    + model/isEntityOrphan
+    + occ/getClosestEntities
+  * Incompatible API changes:
+    + new arguments to algorithm/tetrahedralize and fltk/run
+- Update to 4.14.1
+  * Further improvement of return value of boolean operations
+  * Bug fixes
+
+-------------------------------------------------------------------
 Fri Jul  4 18:05:54 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Update to 4.14.0
