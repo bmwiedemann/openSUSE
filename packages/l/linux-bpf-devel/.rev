@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b97565a94bab56f9cf5de30da5f13da</srcmd5>
+    <version>MACRO</version>
+    <time>1775743936</time>
+    <user>dimstar_suse</user>
+    <comment>vmlinux.h packaging (boo#1249582 jsc#PED-15106)</comment>
+    <requestid>1345553</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7c0f6f22e0bcb99fa44a80aaf10113fd</srcmd5>
+    <version>MACRO</version>
+    <time>1775836430</time>
+    <user>dimstar_suse</user>
+    <comment>Drop runtime kernel dependency and fix build on 15.6</comment>
+    <requestid>1345734</requestid>
+  </revision>
+</revisionlist>

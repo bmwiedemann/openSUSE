@@ -1,0 +1,7 @@
+<package name="linux-bpf-devel" project="openSUSE:Factory">
+  <title>vmlinux.h header for BPF CO-RE development</title>
+  <description>vmlinux.h is a C header generated from the BTF (BPF Type Format) data embedded in the kernel binary. It exposes the complete set of internal kernel type definitions in a single file, enabling BPF programs to reference kernel structures — such as task_struct or sk_buff — without requiring full kernel source headers.
+
+This is the foundation of BPF CO-RE (Compile Once - Run Everywhere): the type layout information in this file allows libbpf to transparently relocate field accesses at load time, making a single compiled BPF object portable across kernel versions. Intended to be used alongside libbpf-devel.</description>
+  <url>https://docs.kernel.org/bpf/btf.html</url>
+</package>

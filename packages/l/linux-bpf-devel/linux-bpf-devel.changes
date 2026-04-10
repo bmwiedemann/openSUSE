@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Apr  9 14:33:58 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix build on 15.6
+
+-------------------------------------------------------------------
+Thu Apr  9 14:21:20 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Drop runtime kernel dependency.
+
+-------------------------------------------------------------------
+Thu Jan 29 03:46:49 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Initial vmlinux.h packaging (boo#1249582 jsc#PED-15106)
