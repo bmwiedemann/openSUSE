@@ -1,7 +1,7 @@
 #
 # spec file for package tinysparql
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,13 +21,13 @@
 %define RPMtinysparqlAPI 3_0
 
 Name:           tinysparql
-Version:        3.10.1
+Version:        3.11.0
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://gitlab.gnome.org/GNOME/tinysparql
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes

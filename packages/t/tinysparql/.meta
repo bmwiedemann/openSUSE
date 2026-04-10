@@ -13,6 +13,5 @@ including context linking and audit trails for a file object.
 
 It has the ability to index, store, harvest metadata, retrieve
 and search all types of files and other first class objects.</description>
-  <devel project="GNOME:Factory" package="tinysparql"/>
   <url>https://gitlab.gnome.org/GNOME/tinysparql</url>
 </package>
