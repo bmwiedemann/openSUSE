@@ -883,4 +883,12 @@ for -ldl. (forwarded request 586626 from jengelh)</comment>
   + Updated translations. (forwarded request 1325268 from iznogood)</comment>
     <requestid>1325364</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>a50f46e9a7e03c9b6e379c2f8055cc40</srcmd5>
+    <version>17.0.2</version>
+    <time>1775836226</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345412</requestid>
+  </revision>
 </revisionlist>
