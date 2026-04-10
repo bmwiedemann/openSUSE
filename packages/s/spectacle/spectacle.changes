@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  7 15:00:17 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.4
+- Changes since 6.6.3:
+  * Update version for new release 6.6.4
+  * Gui/CaptureOverlay: Work around Qt 6.11 being clever (kde#515304)
+
+-------------------------------------------------------------------
 Fri Apr  3 00:04:20 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Added patch to fix libtesseract filename (kde#516162)
