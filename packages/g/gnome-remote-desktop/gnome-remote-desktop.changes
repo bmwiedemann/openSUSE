@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:40:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Mar 15 15:57:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Improve GDM remote display interoperability
+  + Improve hardware acceleration compatibility
+  + Wait for GDM before initializing system daemon startup
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 25 10:16:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Add documentation for configuring Kerberos authentication
+  + Fix crash
+  + Misc bug fixes & cleanups
+  + Send host name to GDM when creating remote display
+  + Add explicit DMA buffer synchronization
+  + Enable zero-copy Vulkan & VA-API rendering by default
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 25 09:16:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Add camera redirection support
+  + Add connection throttling (CVE-2025-5024)
+  + Add Kerberos authentication support to single user runtime
+    modes
+  + Add HiDPI support
+  + Support remote login to headless GDM autologin sessions
+  + Make RDP session handover more reliable
+  + Disable VA-API when using an AMD GPU
+  + Code preparation for Vulkan Video Encode support
+  + Misc bug fixes & cleanups
+- Drop upstream merged patches:
+  + 0001-control-Allow-controlling-all-daemon-types.patch
+  + 0002-daemon-Use-GError-auto-pointer.patch
+  + 0004-rdp-sam-Dup-fd-kept-in-struct.patch
+  + 0005-rdp-server-Set-socket-backlog-count-to-5.patch
+  + 0006-utils-Add-some-time-conversion-helpers.patch
+  + 0007-utils-Add-helper-to-close-connection-and-notify.patch
+  + 0008-Introduce-throttler-class.patch
+  + 0009-rdp-server-Throttle-connections-using-GrdThrottler.patch
+  + 0010-throttler-Introduce-limits-struct.patch
+  + 0011-vnc-server-Hook-up-VNC-server-to-the-throttler.patch
+  + 0013-throttler-Allow-overriding-hard-coded-parallel-conne.patch
+- Add pkgconfig(krb5) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Wed Feb 25 08:16:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.3:

@@ -17,41 +17,19 @@
 
 
 %global systemd_unit       gnome-remote-desktop.service gnome-remote-desktop-configuration.service
-%define freerdp_version    3.15.0
+%define freerdp_version    3.22.0
 %define glib_version       2.75.0
 %define gstreamer_version  1.10.0
 %define polkit_req >= 122
 
 Name:           gnome-remote-desktop
-Version:        49.3
+Version:        50.0
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://gitlab.gnome.org/GNOME/gnome-remote-desktop
-Source0:        %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM 0001-control-Allow-controlling-all-daemon-types.patch bsc#1244053 mgorse@suse.com -- allow controlling all daemon types.
-Patch0:         0001-control-Allow-controlling-all-daemon-types.patch
-# PATCH-FIX-UPSTREAM 0002-daemon-Use-GError-auto-pointer.patch bsc#1244053 mgorse@suse.com -- daemon: Use GError auto-pointer.
-Patch1:         0002-daemon-Use-GError-auto-pointer.patch
-# PATCH-FIX-UPSTREAM 0004-rdp-sam-Dup-fd-kept-in-struct.patch bsc#1244053 mgorse@suse.com -- rdp-sam: Dup fd kept in struct.
-Patch2:         0004-rdp-sam-Dup-fd-kept-in-struct.patch
-# PATCH-FIX-UPSTREAM 0005-rdp-server-Set-socket-backlog-count-to-5.patch bsc#1244053 mgorse@suse.com -- rdp-server: Set socket backlog count to 5.
-Patch3:         0005-rdp-server-Set-socket-backlog-count-to-5.patch
-# PATCH-FIX-UPSTREAM 0006-utils-Add-some-time-conversion-helpers.patch bsc#1244053 mgorse@suse.com -- add some time conversion helpers.
-Patch4:         0006-utils-Add-some-time-conversion-helpers.patch
-# PATCH-FIX-UPSTREAM 0007-utils-Add-helper-to-close-connection-and-notify.patch bsc#1244053 mgorse@suse.com -- add helper to close connection and notify.
-Patch5:         0007-utils-Add-helper-to-close-connection-and-notify.patch
-# PATCH-FIX-UPSTREAM 0008-Introduce-throttler-class.patch bsc#1244053 mgorse@suse.com -- introduce throttler class.
-Patch6:         0008-Introduce-throttler-class.patch
-# PATCH-FIX-UPSTREAM 0009-rdp-server-Throttle-connections-using-GrdThrottler.patch bsc#1244053 mgorse@suse.com -- throttle connections using GrdThrottler.
-Patch7:         0009-rdp-server-Throttle-connections-using-GrdThrottler.patch
-# PATCH-FIX-UPSTREAM 0010-throttler-Introduce-limits-struct.patch bsc#1244053 mgorse@suse.com -- introduce limits struct.
-Patch8:         0010-throttler-Introduce-limits-struct.patch
-# PATCH-FIX-UPSTREAM 0011-vnc-server-Hook-up-VNC-server-to-the-throttler.patch bsc#1244053 mgorse@suse.com -- hook up VNC server to the throttler.
-Patch9:         0011-vnc-server-Hook-up-VNC-server-to-the-throttler.patch
-# PATCH-FIX-UPSTREAM 0013-throttler-Allow-overriding-hard-coded-parallel-conne.patch bsc#1244053 mgorse@suse.com -- allow overriding hard coded parallel connections limit.
-Patch10:        0013-throttler-Allow-overriding-hard-coded-parallel-conne.patch
+Source0:        %{name}-%{version}.tar.xz
 
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 BuildRequires:  gcc13
@@ -82,6 +60,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libei-1.0) >= 1.3.901
 BuildRequires:  pkgconfig(libnotify)
@@ -154,7 +133,6 @@ export CC=gcc-13
 %doc README.md
 %{_bindir}/grdctl
 %{_datadir}/%{name}/
-%{_datadir}/applications/org.gnome.RemoteDesktop.Handover.desktop
 %{_datadir}/dbus-1/system-services/org.gnome.RemoteDesktop.Configuration.service
 %{_libexecdir}/gnome-remote-desktop-configuration-daemon
 %{_datadir}/dbus-1/system.d/org.gnome.RemoteDesktop.conf
