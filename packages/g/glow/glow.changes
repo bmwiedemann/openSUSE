@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 10 06:50:09 UTC 2026 - munix9@googlemail.com
+
+- Fix Leap build with go 1.25.8
+- Adjust %check/tests
+
+-------------------------------------------------------------------
+Thu Apr  9 23:53:00 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to 2.1.2:
+  * allow config file to load showLineNumbers (#653) (@prithvijj)
+  * use shell.Fields to parse $PAGER command (#922) (@mvanhorn)
+
+-------------------------------------------------------------------
 Wed Oct  8 15:21:38 UTC 2025 - munix9@googlemail.com
 
 - Add fix-CVE-2025-47911_CVE-2025-58190.patch

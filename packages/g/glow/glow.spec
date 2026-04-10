@@ -1,7 +1,7 @@
 #
 # spec file for package glow
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global _lto_cflags %nil
 
 Name:           glow
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Render markdown on the CLI
 License:        MIT
@@ -80,6 +80,10 @@ Zsh command-line completion support for %{name}.
 %autosetup -a1 -p1
 patch -d vendor/golang.org/x/net/ -p1 -i %{SOURCE3}
 
+%if 0%{?suse_version} <= 1600
+go mod edit -go=1.25.8
+%endif
+
 %build
 %ifnarch ppc64
 BUILDMOD="-buildmode=pie"
@@ -111,8 +115,8 @@ install -D -m 0644 %{name}.zsh  %{buildroot}%{_datadir}/zsh/site-functions/_%{na
 
 %check
 ./build/%{name} --version
-# Skip TestGlowSources and TestURLParser as they can both fail without internet.
-go test -v ./... -skip 'TestGlowSources|TestURLParser'
+# Skip TestURLParser as it can fail without internet.
+go test -v ./... -skip 'TestURLParser'
 
 %files
 %doc README.md
