@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr  3 15:43:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.1:
+  * Refactor release workflow to tag-based publishing via GitHub
+    Actions (#843).
+  * Remove support for Django 5.1 (EOL) (#840).
+  * Remove support for Python 3.9 (EOL) (#833, #835).
+  * Add support for Python 3.14 (#831).
+  * Add support for Django 6.0 (#830).
+  * Drop support for Django 5.0 (EOL) (#814).
+  * Add support for Django 5.2 (#815).
+  * Use astral-sh/setup-uv in GitHub Actions (#820, #821).
+  * Use `uv build` (#822).
+  * Use `uv.lock` in GitHub Actions (#823).
+  * Announce maintenance mode (#808).
+  * Switch to just and uv (#805).
+  * Remove Python 3.8, add Python 3.13 (#805).
+
+-------------------------------------------------------------------
 Tue Nov 12 08:55:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.4:

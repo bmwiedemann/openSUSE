@@ -106,4 +106,12 @@
   * Add support for Django 5.1 (#758).</comment>
     <requestid>1223571</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>376d2fedd9654a012636f5b66b9e7a04</srcmd5>
+    <version>26.1</version>
+    <time>1775849325</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1345852</requestid>
+  </revision>
 </revisionlist>

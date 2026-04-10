@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-bootstrap4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-bootstrap4
-Version:        24.4
+Version:        26.1
 Release:        0
 Summary:        Bootstrap support for Django projects
 License:        BSD-3-Clause
@@ -26,16 +26,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/zostera/django-bootstrap4
 Source:         https://github.com/zostera/django-bootstrap4/archive/v%{version}.tar.gz#/django-bootstrap4-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module uv-build >= 0.9.6}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django
-Requires:       python-beautifulsoup4
+Requires:       python-Django >= 4.2
+Requires:       python-beautifulsoup4 >= 4.10.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.10.0}
 BuildRequires:  gdal-devel
 # /SECTION
 %python_subpackages
