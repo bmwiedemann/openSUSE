@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  9 09:42:24 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied patches (bsc#1261772)
+  * s390-tools-hyptop-opts-Replace-sort_field-option-with-sort.patch
+  * s390-tools-hyptop-opts-Fix-long-command-line-option-abbreviations.patch 
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Mon Mar  2 11:48:50 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Refactored the spec file for transactional and immutable OS

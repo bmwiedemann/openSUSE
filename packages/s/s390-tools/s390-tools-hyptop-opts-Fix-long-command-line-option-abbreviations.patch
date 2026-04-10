@@ -1,0 +1,109 @@
+From 7c75df9e9634548a2513aa1e6dc7f6c100a4f37a Mon Sep 17 00:00:00 2001
+From: Mete Durlu <meted@linux.ibm.com>
+Date: Tue, 17 Feb 2026 09:54:08 +0100
+Subject: [PATCH] hyptop/opts: Fix long command line option abbreviations
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hyptop should be able to accept abbreviations of the long command line
+options as getopt() is able to match them. Ex;
+
+$ hyptop --batch-mode
+
+$ hyptop --batch
+
+$ hyptop --bat
+
+From getopt(3) man page:
+"""
+  Long option names may be abbreviated if the abbreviation is unique
+  or is an exact match for some defined option.
+"""
+
+After the introduction of commit c5695e43c4cd ("hyptop/opts: Replace long
+option formats for consistency") long command line options for hyptop
+received additional definitions to support dash separated option formats.
+Unfortunately these definitions were defined as new and unique options
+and caused an ambiguity for getopt() when abbreviations matched both
+definitions. Ex;
+
+$ hyptop --batch
+hyptop: option '--batch' is ambiguous;
+possibilities: '--batch-mode' '--batch_mode'
+
+Map both long option formats to the same short option to fix the
+issue and restore the functionality.
+
+Fixes: c5695e43c4cd ("hyptop/opts: Replace long option formats for consistency")
+Reported-by: Gorkem Kilinc <kilinc@linux.ibm.com>
+Reviewed-by: Jan Höppner <hoeppner@linux.ibm.com>
+Signed-off-by: Mete Durlu <meted@linux.ibm.com>
+Signed-off-by: Jan Höppner <hoeppner@linux.ibm.com>
+---
+ hyptop/opts.c | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
+
+diff --git a/hyptop/opts.c b/hyptop/opts.c
+index a8829683..1a98cd99 100644
+--- a/hyptop/opts.c
++++ b/hyptop/opts.c
+@@ -54,13 +54,6 @@ static char HELP_TEXT[] =
+ #define OPT_FORMAT	256 /* --format */
+ #define OPT_FORMAT_ALL	261 /* --all*/
+ 
+-/*
+- * Options with underscore to keep compatibility
+- */
+-#define OPT_BATCH_MODE	257 /* --batch_mode */
+-#define OPT_CPU_TYPES	258 /* --cpu_types */
+-#define OPT_SMT_FACTOR	259 /* --smt_factor */
+-
+ /*
+  * Initialize default settings
+  */
+@@ -361,18 +354,18 @@ void opts_parse(int argc, char *argv[])
+ 		{ "version",     no_argument,       NULL, 'v'},
+ 		{ "help",        no_argument,       NULL, 'h'},
+ 		{ "batch-mode",  no_argument,       NULL, 'b'},
+-		{ "batch_mode",  no_argument,       NULL, OPT_BATCH_MODE},
++		{ "batch_mode",  no_argument,       NULL, 'b'},
+ 		{ "all",         no_argument,       NULL, OPT_FORMAT_ALL },
+ 		{ "delay",       required_argument, NULL, 'd'},
+ 		{ "smt-factor",  required_argument, NULL, 'm'},
+-		{ "smt_factor",  required_argument, NULL, OPT_SMT_FACTOR},
++		{ "smt_factor",  required_argument, NULL, 'm'},
+ 		{ "window",      required_argument, NULL, 'w'},
+ 		{ "sys",         required_argument, NULL, 's'},
+ 		{ "iterations",  required_argument, NULL, 'n'},
+ 		{ "fields",      required_argument, NULL, 'f'},
+ 		{ "sort",        required_argument, NULL, 'S'},
+ 		{ "cpu-types",   required_argument, NULL, 't'},
+-		{ "cpu_types",   required_argument, NULL, OPT_CPU_TYPES},
++		{ "cpu_types",   required_argument, NULL, 't'},
+ 		{ "format",      required_argument, NULL, OPT_FORMAT },
+ 		{ NULL,          0,                 NULL, 0  }
+ 	};
+@@ -391,14 +384,12 @@ void opts_parse(int argc, char *argv[])
+ 		case 'h':
+ 			l_usage();
+ 			hyptop_exit(0);
+-		case OPT_BATCH_MODE:
+ 		case 'b':
+ 			l_batch_mode_set();
+ 			break;
+ 		case 'd':
+ 			l_delay_set(optarg);
+ 			break;
+-		case OPT_SMT_FACTOR:
+ 		case 'm':
+ 			l_factor_set(optarg);
+ 			break;
+@@ -411,7 +402,6 @@ void opts_parse(int argc, char *argv[])
+ 		case 'n':
+ 			l_iterations_set(optarg);
+ 			break;
+-		case OPT_CPU_TYPES:
+ 		case 't':
+ 			l_cpu_types_set(optarg);
+ 			break;

@@ -92,6 +92,8 @@ Source200:      vendor.tar.zst
 
 ###
 # IBM patches
+Patch100:       s390-tools-hyptop-opts-Replace-sort_field-option-with-sort.patch
+Patch101:       s390-tools-hyptop-opts-Fix-long-command-line-option-abbreviations.patch
 ###
 # SUSE patches
 Patch900:       s390-tools-combined.patch
@@ -100,7 +102,6 @@ Patch901:       s390-tools-dasdfmt-reworked.patch
 Patch910:       s390-tools-ALP-zdev-live.patch
 ###
 
-BuildRequires:  cryptsetup-devel >= 2.8.2
 BuildRequires:  curl-devel
 BuildRequires:  dracut
 BuildRequires:  fuse3-devel
