@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-font-viewer
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           gnome-font-viewer
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        A font viewer utility for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-font-viewer
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildSystem:    meson
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  desktop-file-utils
+BuildRequires:  meson >= 0.59.0
 Conflicts:      gnome-utils < 3.3.1
 
 %description
@@ -49,7 +50,7 @@ A utility to let you see the installed fonts at a glance.
 %{_datadir}/dbus-1/services/org.gnome.font-viewer.service
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/%{name}.thumbnailer
-%{_datadir}/metainfo/org.gnome.font-viewer.appdata.xml
+%{_datadir}/metainfo/org.gnome.font-viewer.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.font-viewer*.svg
 
 %files lang -f %{name}.lang

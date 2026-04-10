@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:38:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Mon Mar 16 08:12:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.0:
+  + Redesigned font preview grid that has a consistent preview size
+  + Search entry moved to the headerbar to be always visible, and
+    with automatic key stroke forwarding to the entry and Esc for
+    clearing search
+  + Reorganized font information page
+  + Enhance application metadata
+  + Plug multiple memory leaks
+  + Correctly claim to open font collection files
+  + Updated translations.
+- Add desktop-file-utils BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Fri Sep 12 06:27:50 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
