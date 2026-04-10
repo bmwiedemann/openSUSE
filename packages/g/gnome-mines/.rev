@@ -334,4 +334,12 @@
   + Updated translations (forwarded request 1305101 from iznogood)</comment>
     <requestid>1305502</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6697a17d629d9f0a37c16dc6146585dd</srcmd5>
+    <version>50.0</version>
+    <time>1775836221</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345401</requestid>
+  </revision>
 </revisionlist>
