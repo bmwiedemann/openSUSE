@@ -446,4 +446,20 @@
   * feat(cli): customizable keyboard shortcuts</comment>
     <requestid>1344232</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5cb20ff96cc05cf5eb86460bbf5e75c2</srcmd5>
+    <version>0.37.1</version>
+    <time>1775836452</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v0.37.1
+* Dynamic Sandbox Expansion: Implemented dynamic sandbox
+  expansion and worktree support.
+* Tool-Based Topic Grouping (Chapters): Introduced &quot;Chapters&quot; to
+  logically group agent interactions based on tool usage and
+  intent.
+* Enhanced Browser Agent: Added persistent session management,
+  dynamic read-only tool discovery, and sandbox-aware
+  initialization for the browser agent. (forwarded request 1345724 from stimut)</comment>
+    <requestid>1345788</requestid>
+  </revision>
 </revisionlist>
