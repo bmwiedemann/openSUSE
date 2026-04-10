@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:38:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Mon Mar 16 09:16:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
+Tue Mar  3 17:07:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Update for mutter 50.rc API change
+  + Add a new option `--no-cursor` to hide the cursor
+  + Ensure initial window state, size and position are applied
+  + Improve auto-fullscreen detection by default
+  + Disable animations when hardware acceleration is not available
+  + Add a new option `--force-animations` to force animations
+  + Start accessibility settings in systemd sessions (required for
+    Orca)
+  + Do not restart the script session on exit (allows logout)
+  + Disable the VT switch keybindings by default
+  + Add a new option `--enable-vt-switch` to enable VT switch
+    keybindings
+  + Hide the accessibility panel app from other desktops
+  + Add error logging for mount failures
+  + Fix bounds checking for layout_index in get_selected_layout
+  + Fix race condition in configuration file reload
+  + Fix null pointer dereference in input engine manager
+  + Fix memory leaks in window tracker
+
+-------------------------------------------------------------------
+Thu Feb 12 13:23:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Fix session (not) registering causing a hang in GDM
+  + Update to keymap API changes in mutter
+- Changes from version 50.alpha:
+  + Reload window configuration on change
+  + Add an example of accessibility panel (optional)
+  + Document accessibility settings
+  + Adapt to dropped X11 backend from Mutter
+  + Fix wallpaper with multi-monitor
+  + Add a basic notification daemon (optional)
+  + Add a magnifier for accessibility
+  + Add "lock-on-monitor" option
+  + Add "lock-on-monitor-area" option
+  + Add "lock-on-area" option
+  + Fix minimized windows remaining on screen when maximized
+  + Various code and compilation warnings fixes
+- Bump mutter_api to 18, following upstream.  
+
+-------------------------------------------------------------------
 Sat Oct 18 06:10:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Don't build search-app on architectures without Firefox.

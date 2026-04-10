@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-kiosk
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define mutter_api 17
+%define mutter_api 18
 %ifarch armv6l armv6hl ppc ppc64 i586
 %define build_search_app 0
 %else
@@ -24,12 +24,12 @@
 %endif
 
 Name:           gnome-kiosk
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-kiosk
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -100,6 +100,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Kiosk.Searc
 %dir %{_datadir}/gnome-kiosk
 %{_datadir}/dconf/profile/gnomekiosk
 %{_datadir}/gnome-kiosk/gnomekiosk.dconf.compiled
+%{_datadir}/gnome-kiosk/window-config.ini
 
 %if %build_search_app
 %files sample-app
