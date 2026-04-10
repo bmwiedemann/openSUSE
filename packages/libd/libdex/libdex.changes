@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Apr  6 02:55:06 UTC 2026 - Federico Mena Quintero <federico@suse.com>
+
+- Update suse_version macro for 1610 (jsc#PED-15830)
+
+-------------------------------------------------------------------
+Mon Mar 23 08:09:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 17 08:53:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.0:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
+Tue Feb 24 07:55:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.rc:
+  + Require GLib 2.87.0
+
+-------------------------------------------------------------------
+Mon Feb 16 08:08:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.alpha:
+  + New D-Bus support with DexDBusInterfaceSkeleton for dispatching
+    method invocations in fibers, allowing async/await in D-Bus
+    handlers
+  + New dex_bus_own_name_on_connection() for managing bus name
+    ownership
+  + New DexFutureListModel for integrating futures with GListModel
+  + Python asyncio integration allowing Dex.Future to be used with
+    async/await in Python code
+  + New runtime version query API: dex_get_major_version(),
+    dex_get_minor_version(), and dex_get_micro_version()
+  + New GIO wrappers: dex_file_create(),
+    dex_data_input_stream_read_line(), dex_find_program_in_path(),
+    dex_mkdir_with_parents(), and g_unlink()
+  + Improved Visual Studio and clang-cl build support with C11
+    atomic support
+  + Thread pool scheduler now falls back to POSIX backend for AIO
+    when necessary
+  + io_uring context reuse improvements
+  + Extensive documentation improvements with gi-docgen annotations
+  + Various bug fixes and memory leak fixes
+
+-------------------------------------------------------------------
 Sun Aug 31 11:19:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.0:

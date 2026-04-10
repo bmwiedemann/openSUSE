@@ -10,6 +10,5 @@ of wrapper promises.
 looking code which calls asynchronous APIs from GIO underneath.
 
 </description>
-  <devel project="GNOME:Factory" package="libdex"/>
   <url>https://gitlab.gnome.org/chergert/libdex</url>
 </package>

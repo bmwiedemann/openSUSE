@@ -1,7 +1,7 @@
 #
 # spec file for package libdex
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %bcond_with profiling
 
 Name:           libdex
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Library supporting "Deferred Execution" for GNOME and GTK
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/chergert/libdex
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-SLE disable-test-semaphore.patch bsc#1242053 -- temporarily disable the unit test on IBS
 Patch1000:      disable-test-semaphore.patch
 
@@ -34,7 +34,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(atomic_ops)
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.87
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(liburing)
 %if %{with profiling}
@@ -93,7 +93,7 @@ applications with libdex.
 %prep
 %autosetup -N
 %autopatch -p1 -M 999
-%if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
+%if !0%{?is_opensuse} || 0%{?suse_version} < 1699
 %autopatch -p1 -m 1000
 %endif
 
@@ -109,7 +109,9 @@ applications with libdex.
 %meson_install
 
 %check
-%meson_test
+# skip test-dbus test, as we have no machine-id setup in the worker
+test_list=$(%meson_test --list | grep -v test-dbus)
+%meson_test $test_list
 
 %ldconfig_scriptlets -n %soname
 
@@ -126,6 +128,9 @@ applications with libdex.
 %{_includedir}/libdex-1/
 %{_libdir}/libdex-1.so
 %{_libdir}/pkgconfig/libdex-1.pc
+%{python3_sitelib}/gi/
+%dir %{_libexecdir}/libdex-1
+%{_libexecdir}/libdex-1/dex-gdbus-codegen-extension.py
 
 %files devel-docs
 %doc NEWS README.md
