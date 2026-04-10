@@ -917,4 +917,12 @@ This was wanted by the SLE Guys apparently.</comment>
     <comment></comment>
     <requestid>1004800</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>7cb1c1bcbdae18551625abff0e2e5df2</srcmd5>
+    <version>50.0</version>
+    <time>1775836226</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345408</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-power-manager
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-power-manager
-Version:        43.0
+Version:        50.0
 Release:        0
 Summary:        Power Management for GNOME
 License:        GPL-2.0-or-later
@@ -32,9 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  libupower-glib-devel
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gdk-3.0) >= 2.91.7
 BuildRequires:  pkgconfig(glib-2.0) >= 2.45.8
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.3.8
+BuildRequires:  pkgconfig(gtk4) >= 3.3.8
 Requires:       gnome-session-core
 Requires:       upower
 %glib2_gsettings_schema_requires

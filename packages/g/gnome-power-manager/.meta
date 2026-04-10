@@ -3,5 +3,4 @@
   <description>GNOME Power Manager is a GNOME session daemon that acts as a policy
 agent. It listens for system events and responds with
 user-configurable actions.</description>
-  <devel project="GNOME:Factory" package="gnome-power-manager"/>
 </package>
