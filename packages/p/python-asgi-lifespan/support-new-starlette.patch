@@ -1,0 +1,32 @@
+From 6c2af0035c723255db2c729a65186abea9094acd Mon Sep 17 00:00:00 2001
+From: Matheus Polkorny <mpolkorny@gmail.com>
+Date: Sat, 4 Apr 2026 19:59:22 -0300
+Subject: [PATCH] Fix compatibility with Starlette 1.0
+
+---
+ tests/test_manager.py | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_manager.py b/tests/test_manager.py
+index d4e4e2e..2d66c4a 100644
+--- a/tests/test_manager.py
++++ b/tests/test_manager.py
+@@ -59,7 +59,17 @@ async def shutdown() -> None:
+ 
+         on_shutdown.append(shutdown)
+ 
+-    router = Router(on_startup=on_startup, on_shutdown=on_shutdown)
++    @contextlib.asynccontextmanager
++    async def lifespan(app: ASGIApp) -> typing.AsyncGenerator:
++        for handler in on_startup:
++            await handler()
++        try:
++            yield
++        finally:
++            for handler in on_shutdown:
++                await handler()
++
++    router = Router(lifespan=lifespan)
+ 
+     # Set up spying on exchanged ASGI events.
+ 

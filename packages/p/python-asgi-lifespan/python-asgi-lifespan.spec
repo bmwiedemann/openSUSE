@@ -1,7 +1,7 @@
 #
 # spec file for package python-asgi-lifespan
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-asgi-lifespan
 Version:        2.1.0
@@ -25,6 +26,8 @@ URL:            https://github.com/florimondmanca/asgi-lifespan
 Source:         https://files.pythonhosted.org/packages/source/a/asgi-lifespan/asgi-lifespan-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM as proposed in https://github.com/florimondmanca/asgi-lifespan/issues/65 AsyncClient.__init__() got an unexpected keyword argument 'app'
 Patch0:         httpx028.patch
+# PATCH-FIX-UPSTREAM gh#florimondmanca/asgi-lifespan#72
+Patch1:         support-new-starlette.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

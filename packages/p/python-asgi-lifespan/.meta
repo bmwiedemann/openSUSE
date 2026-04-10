@@ -1,4 +1,5 @@
 <package name="python-asgi-lifespan" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="devel:languages:python" package="python-asgi-lifespan"/>
 </package>

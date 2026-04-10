@@ -7,4 +7,13 @@
     <comment>Required by `python-sse-starlette`, which is in turn one of dependencies of `python-mistral-vibe`.</comment>
     <requestid>1327296</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>043c6039cd3a22fca7fccc9400475b3c</srcmd5>
+    <version>2.1.0</version>
+    <time>1775836434</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-starlette.patch:
+  * Support starlette 1.0 changes.</comment>
+    <requestid>1345750</requestid>
+  </revision>
 </revisionlist>
