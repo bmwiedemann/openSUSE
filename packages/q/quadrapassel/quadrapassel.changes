@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Mar 19 10:07:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.0.1:
+  + Fixed a bug where some user visible strings were not marked for
+    translation
+  + Fixed the screenshot size and an issue where the pause button
+    was highlighted
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 15 15:54:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Fixed a bug where the Preview would not unparent its children
+    before destroying them
+  + Switched key recognition to make use of Gdk.Key constants
+    instead of variables
+  + Removed the GitLab project icon (logo.png) from the repository
+  + Updated the app screenshots
+  + Updated libgnome-games-support
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 23 07:52:27 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Fixed the game view to make blocks invisible on pause instead
+    of covering them up
+  + Fixed an incorrect cast in the theme dialog
+  + Updated libgnome-games-support
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 18:26:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Upgraded the project license to GPLv3
+  + Replaced gsound and libcanberra with a new sound player
+  + Fixed keyboard controls to not produce duplicate rotations and
+    movement
+  + Fixed miscellaneous controls bugs
+  + Updated libgnome-games-support which fixed some memory leaks
+    and added score removal
+- Changes from version 50.alpha:
+  + Made game view and preview exactly fit the blocks
+  + Fixed a bug where the game would pause when the new game button
+    got focused
+  + Updated libgnome-games-support
+  + Improved game controller support
+  + Fixed a bug where the statistics labels would expand past the
+    window
+  + Reduced the minimum window height
+  + Updated translations.
+- Add pkgconfig(sndfile) and pkgconfig(openal) BuildRequires:
+  dependencies of the libgnome-games-support subproject, which is
+  not autodetected.
+
+-------------------------------------------------------------------
 Thu Dec 11 09:26:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2.3:

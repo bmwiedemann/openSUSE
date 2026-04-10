@@ -1,7 +1,7 @@
 #
 # spec file for package quadrapassel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           quadrapassel
-Version:        49.2.3
+Version:        50.0.1
 Release:        0
 Summary:        Tetris Game for GNOME
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Other
 URL:            https://live.gnome.org/Quadrapassel
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildSystem:    meson
 
 BuildRequires:  blueprint-compiler
@@ -32,6 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  vala >= 0.24.0
+BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  rpm_macro(meson_buildrequires)
 
 %description
