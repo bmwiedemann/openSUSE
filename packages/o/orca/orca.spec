@@ -1,7 +1,7 @@
 #
 # spec file for package orca
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global __requires_exclude typelib\\(Wnck\\)
 
 Name:           orca
-Version:        49.5
+Version:        50.0.9
 Release:        0
 Summary:        Screen reader for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Orca
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
@@ -41,8 +41,8 @@ BuildRequires:  python3-gobject >= 3.18
 BuildRequires:  python3-louis
 BuildRequires:  python3-speechd
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(atk-bridge-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(atspi-2) >= 2.52.0
+BuildRequires:  pkgconfig(atk-bridge-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(atspi-2) >= 2.56.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.18
 # the gsettings tool is used to know if a11y is enabled
@@ -85,10 +85,11 @@ braille, and/or magnification.
 %{_bindir}/orca
 %{_sysconfdir}/xdg/autostart/orca-autostart.desktop
 %{_datadir}/icons/hicolor/*/apps/orca*
-%{_datadir}/orca/
 %{_mandir}/man1/orca.1%{?ext_man}
 %{python3_sitelib}/orca/
 %{_userunitdir}/orca.service
+%{_datadir}/applications/orca.desktop
+%{_datadir}/glib-2.0/schemas/org.gnome.Orca.gschema.xml
 
 %files lang -f %{name}.lang
 

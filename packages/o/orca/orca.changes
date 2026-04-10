@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Wed Mar 18 16:46:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.0.9:
+  + Prevent browse/focus mode changes during say all
+  + Fix presentation of new Writer paragraph when navigating by
+    char/word
+  + Fix regression in presenting newly-opened menus
+- Switch _Service to do tar/compress on the packagers machine. With
+  the migration of the devel project to git we no longer benefit
+  from the obscpio files on the backend.
+
+-------------------------------------------------------------------
+Wed Mar 18 13:13:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.0.8:
+  + Fix comparison in is_release_for()
+  + Don't announce "focus mode" when LO Writer destroys objects
+  + Fix flat review of open menus
+  + Fix traceback
+
+-------------------------------------------------------------------
+Mon Mar 16 09:27:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0.7:
+  + Speculative fix for not presenting selection changes in gecko
+    address bar
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 09:05:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0.6:
+  + Fix braille presentation of the Gecko address bar
+- Changes from version 50.0.5:
+  + Speculative fix for caja chattiness
+  + Don't announce automatic unselection of text
+  + Eliminate some chattiness from autocompletes
+  + Don't echo word or sentence when text is selected
+
+-------------------------------------------------------------------
+Sun Mar 15 09:29:51 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0.4:
+  + Fix regression in saving the keyboard layout
+
+-------------------------------------------------------------------
+Sat Mar 14 18:36:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0.3:
+  + Update docs to remove "stickiness" section
+  + Add another null check for generator context
+
+-------------------------------------------------------------------
+Sat Mar 14 16:09:32 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0.2:
+  + Add null checks for generator context
+
+-------------------------------------------------------------------
+Sat Mar 14 14:14:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0.1:
+  + Ignore events from hidden menus
+  + Fix unit test
+
+-------------------------------------------------------------------
+Sat Mar 14 10:23:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Refactor mouse review to use the new AtspiDevice API when
+    available.
+  + Fix multiple issues related to settings and the preferences
+    window.
+  + Fix presentation when using Google Docs' native navigation.
+  + Fix caret navigation sticking on named links with broken
+    hypertext offsets.
+  + Don't toggle browse/focus modes when using the table navigator.
+  + Fix presentation of characters when automatic language
+    switching is enabled.
+  + Attempt to use the action interface when synthesizing a right
+    click.
+  + Fix flat review braille panning viewport jump.
+  + Fix presentation of autoinsertions of one character.
+  + Include the new value when changing rate, pitch, or volume on
+    the fly.
+  + Add per-layout Orca modifier key settings so preferred
+    modifiers are remembered when switching layouts.
+  + Add another workaround for
+    https://bugreports.qt.io/browse/QTBUG-128558 so that Mumble
+    status cells are presented.
+  + Fix on-screen speech display not initially focused on MATE.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 12:17:30 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Orca now uses GSettings. Existing settings will be migrated
+    from JSON automatically.
+  + There is new Say All option to only speak displayed text,
+    making reading a long web page smoother.
+  + There is new option to read chat room meesages from the active
+    room when in any application.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 13 15:31:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + New features:
+    - Orca has a brand new preferences window. It is still GTK3,
+      but has an appearance more consistent with other GNOME
+      applications.
+    - All settings and commands are now global, eliminating the
+      need to save settings on a per-application basis e.g. for
+      web browsers. Settings can, of course, still be saved on a
+      per-application basis when doing so is desired.
+    - Automatic language switching has been added both for web
+      content and for UI. Because this can have unexpected results,
+      it can be turned off within the preferences window.
+    - It is now possible to keep contrated braille enabled at the
+      cursor location, and to display object mnemonics in braille.
+    - Browse mode now works in all document content; not just web
+      content.
+    - Sticky focus mode should be automatically enabled for all
+      Electron apps.
+  + Bug fixes:
+    - Fix orphaned key grabs for non-numeric KeyPad keys when
+      NumLock is toggled on.
+    - Fix presentation of terminal-app window title when the
+      speak-title command is used.
+    - Filter out name and description changes that are too similar,
+      e.g. from busy indicators.
+    - Fix presentation when Alt+Tabbing back into Firefox without
+      receiving the expected window-activate event.
+    - Don't announce indentation during word navigation.
+    - Always treat lists and tables as "large objects" for the
+      purpose of structural navigation.
+    - Fix Learn Mode incorrectly reporting unbound/disabled
+      commands
+    - Fix skipping over elements in web pages during Say All.
+    - Work around Firefox downloads list chattiness.
+    - Prevent muted speech from being re-enabled by the switcher
+      script.
+    - Fix double-presentation of lines with new line characters in
+      web content.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Nov 25 15:50:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:
