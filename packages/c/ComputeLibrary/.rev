@@ -261,4 +261,19 @@
     <comment></comment>
     <requestid>1307761</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>140f2c7246fa9cdb8e33c1db41adbb7c</srcmd5>
+    <version>52.8.0</version>
+    <time>1775836309</time>
+    <user>dimstar_suse</user>
+    <comment>- Workaround for wrong include path
+  https://github.com/ARM-software/ComputeLibrary/issues/1277
+-  Update to 52.8.0:
+  * Public minor release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v52.8.0
+</comment>
+    <requestid>1345762</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 10 07:47:01 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Workaround for wrong include path
+  https://github.com/ARM-software/ComputeLibrary/issues/1277
+
+-------------------------------------------------------------------
+Thu Apr  9 15:21:46 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 52.8.0:
+  * Public minor release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v52.8.0
+
+-------------------------------------------------------------------
 Mon Sep 22 13:32:27 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 52.4.0:
