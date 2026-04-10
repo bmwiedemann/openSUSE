@@ -36,4 +36,19 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264842</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da2ec27cc16395aed887cc6fca18061d</srcmd5>
+    <version>0.1.2.2</version>
+    <time>1775849329</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.2.2:
+  * A bug-fix minor release.
+  * Fix invalid Unicode escape sequences in byte strings
+  * A very minor 'between-patches' release adding support for
+    python versions 3.9+.
+  * Improved logging for HTMLRTF stripping.
+  * Added transform_based_on_content_type.
+  * Correctly handle hex arrays in text extraction.</comment>
+    <requestid>1345941</requestid>
+  </revision>
 </revisionlist>
