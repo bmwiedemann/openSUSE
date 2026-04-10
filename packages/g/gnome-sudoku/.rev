@@ -518,4 +518,12 @@
     dialog (forwarded request 1330233 from iznogood)</comment>
     <requestid>1330726</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>45ceb9b6c0a4ae5a2293dc6e11a85ef9</srcmd5>
+    <version>50.0</version>
+    <time>1775836211</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345371</requestid>
+  </revision>
 </revisionlist>

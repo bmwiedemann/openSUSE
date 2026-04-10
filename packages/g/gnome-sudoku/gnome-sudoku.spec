@@ -17,13 +17,13 @@
 
 
 Name:           gnome-sudoku
-Version:        49.4
+Version:        50.0
 Release:        0
 Summary:        Sudoku Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
 URL:            https://wiki.gnome.org/Apps/Sudoku
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  blueprint-compiler >= 0.16
@@ -38,9 +38,9 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
-BuildRequires:  pkgconfig(gtk4) >= 4.18.0
+BuildRequires:  pkgconfig(gtk4) >= 4.19.3
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.7
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildRequires:  pkgconfig(qqwing) >= 1.3.4
 
 %description

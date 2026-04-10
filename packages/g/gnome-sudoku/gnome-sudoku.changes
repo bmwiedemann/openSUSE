@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:43:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 16:23:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Add fallback for automatically saving
+
+-------------------------------------------------------------------
+Sat Feb 28 09:27:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Fix warnings not working in loaded games
+  + Update translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 13:36:27 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Remove Open shortcut
+  + Add save, export and share shortcuts to the shortcuts dialog
+  + Fix loading finished games failing when the timer was disabled
+  + Fix reset board being unhooked
+  + Fix shared game not always being correctly detected
+  + Fix natural window width being higher than 360
+  + Fix reference cycle
+- Changes from version 50.alpha:
+  + Port Shortcuts Window to Shortcuts Dialog
+  + Add duplicate warnings preference
+  + Rename "Check Against Solution" preference to
+    "Solution Warnings"
+  + Remove warnings and highlighter settings
+  + Add a backwards compatibility check that disables warning
+    preferences if the warnings setting was disabled
+  + Add a new Puzzle submenu with 3 new buttons to share, save or
+    export games
+  + Retire custom game creation, if you have an ongoing custom game
+    make sure to finish it before updating or you will lose it
+  + Reuse custom game difficulty to load games for now
+  + Save printed games to their own folder
+  + Add mnemonics to print multiple dialog and game completed
+    dialog
+  + Add current highscore to clock box tooltip
+  + In game completed dialog:
+    - Add "Change Difficulty" button
+    - Shorten the winning string to "Puzzle Completed!" in most
+      cases
+    - Bind Escape to return to the start menu
+  + Add Escape shortcut to popdown the number picker
+  + Add RTL support for earmarks
+  + Merge print current puzzle into print multiple dialog
+  + In print multiple dialog:
+    - Synchronize number of puzzles to multiples of puzzles per
+      page
+    - Mirror print button with start game button
+    - Add an ellipsis to Print
+    - Use only the latest played difficulty to preselect choices
+    - Don't allow non numeric characters in the spin row
+    - Fix capitalization
+  + Update translations
+
+-------------------------------------------------------------------
 Sun Feb  1 09:32:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.4:
