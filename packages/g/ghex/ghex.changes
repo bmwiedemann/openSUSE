@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:32:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 17 08:49:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + docs:
+    - Fix HexDocument GIR annotations
+    - Fix external links
+  + This release includes libgtkhex 4.12.0
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 10 09:11:52 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + widget: Add :insert-mode property
+  + appwin: Bind appwin's insert-mode with widgets' for
+    per-document insert-mode
+  + hex-buf-direct: Fix possible nullptr dereference
+  + hex-buf-mmap: Document that using without a file is undefined
+    behaviour
+  + hex-doc: Make default backend malloc unless/until file is set
+  + hex-buffer-mmap: Tighten unhappy code paths and avoid potential
+    nullptr operations
+  + appwin: Don't allow insert-mode for the direct HexBuffer
+    backend
+  + widget: Fix regression re: mouse clicks on ascii pane with
+    control chars
+  + appwin/widget/hex-doc/findrep: Fix ownership/lifetime issues
+    and add/fix some assertions
+  + widget: Fix regression from 5bf9ac6 in
+    hex_widget_zero_selection()
+  + widget: Don't violate new GTK assertions for GtkAdjustment's
+  + appwin: Only grab focus of active HexWidget after closing tab
+    if there is one
+  + appwin: Duplicate title for close doc conf dialog
+  + widget: Fix ownership of :document property of HexWidget
+  + widget: Handle numpad navigational keys
+  + appwin/common: Fetch basename of files more sanely
+  + lib: Don't leak string when setting up GdkContentProvider
+  + appwin: Clear weak pointers for copy/paste special dialogs
+  + widget: Use g_signal_connect_object for doc signal handlers
+  + hex-doc:
+    - Don't leak monitor use g_clear_object w.r.t. gfile
+    - Add more sanity checks to file monitor operations
+    - Add GI annotations for _finish() functions where required
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Nov  4 18:09:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.3:
