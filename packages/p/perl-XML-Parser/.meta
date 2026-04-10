@@ -21,5 +21,4 @@ When underlying handlers get called, they receive as their first parameter
 You will find examples in
 /usr/share/doc/packages/perl-XML-Parser/samples.  For documentation
 read the XML::Parser and XML::Parser::Expat man pages.</description>
-  <devel project="devel:languages:perl" package="perl-XML-Parser"/>
 </package>

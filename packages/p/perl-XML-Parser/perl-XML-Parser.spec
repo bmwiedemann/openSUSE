@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Parser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,23 @@
 
 %define cpan_name XML-Parser
 Name:           perl-XML-Parser
-Version:        2.470.0
+Version:        2.570.0
 Release:        0
-# 2.47 -> normalize -> 2.470.0
-%define cpan_version 2.47
+# 2.57 -> normalize -> 2.570.0
+%define cpan_version 2.57
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        Artistic-2.0
 Summary:        Perl module for parsing XML documents
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 Patch0:         XML-Parser-2.40.diff
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(LWP::UserAgent)
-Requires:       perl(LWP::UserAgent)
+BuildRequires:  perl(File::ShareDir)
+BuildRequires:  perl(File::ShareDir::Install) >= 0.60
+Requires:       perl(File::ShareDir)
 Provides:       perl(XML::Parser) = %{version}
 Provides:       perl(XML::Parser::Expat) = %{version}
 Provides:       perl(XML::Parser::Style::Debug)
@@ -66,9 +68,10 @@ When underlying handlers get called, they receive as their first parameter
 the _Expat_ object, not the Parser object.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p0
+%autosetup -n %{cpan_name}-%{cpan_version} -N
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%patch -P0 -p0
 # MANUAL BEGIN
 chmod 644 samples/{canonical,xml*}
 # MANUAL END
@@ -86,7 +89,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README README.md samples
+%doc AI_POLICY.md Changes README.md samples
 %license LICENSE
 
 %changelog

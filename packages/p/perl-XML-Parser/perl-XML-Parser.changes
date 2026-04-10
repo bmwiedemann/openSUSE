@@ -1,4 +1,234 @@
 -------------------------------------------------------------------
+Wed Apr  8 06:55:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.570.0 (2.57)
+   see /usr/share/doc/packages/perl-XML-Parser/Changes
+
+  2.57 2026-04-07 (by Todd Rinaldo)
+    Fixes:
+      - PR #235 GH #234 Fix PE parsing regression that broke XML::Twig DTD
+        round-tripping: defer parameter entity parsing activation to when a
+        declaration handler is registered, preventing PE references from
+        being consumed by the empty sub-parser instead of reaching the
+        Default handler
+      - PR #232 GH #47 Add regression tests for post-root character data
+        routing and add ppport.h for XS backward compatibility macros
+      - PR #229 Add NULL check after XML_ParserCreate_MM to prevent
+        segfault on memory allocation failure
+      - PR #225 Replace deprecated indirect object syntax in
+        LWPExternEnt.pl (new URI(...) -> URI->new(...), etc.) for forward
+        compatibility with Perl 5.36+ where 'use v5.36' disables the
+        indirect feature. Also add 'use strict' to the file
+    Improvements:
+      - PR #233 Add downstream CI testing for XML::XPath, XML::DOM, and
+        XML::Twig to catch breakage in major consumers before release
+    Maintenance:
+      - PR #239 Convert t/char_end_doc.t to Test::More; all 57 test files
+        now consistently use Test::More
+      - PR #238 Expand CLAUDE.md with project conventions for generated
+        files, releases, and testing
+      - PR #231 Add test coverage for load_encoding, xml_escape edge
+        cases, and ContentModel API
+      - PR #230 Add test coverage for element_index, position_in_context,
+        specified_attr, and setHandlers
+      - PR #228 Add test coverage for recognized_string, default_current,
+        and original_string introspection methods
+      - PR #227 Add test coverage for context-tracking API (context,
+        current_element, in_element, within_element, depth)
+      - PR #226 Add test coverage for parse_start/ExpatNB non-blocking
+        parser API
+      - PR #225 Replace indirect object syntax in test files (t/decl.t,
+        t/parament.t, t/external_ent.t)
+      - PR #224 Add test coverage for IO control character rejection in
+        external entity paths
+
+-------------------------------------------------------------------
+Fri Apr  3 06:25:39 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.560.0 (2.56)
+   see /usr/share/doc/packages/perl-XML-Parser/Changes
+
+  2.56 2026-04-02 (by Todd Rinaldo)
+
+    Fixes:
+      - PR #223 Skip original_string test when expat lacks
+        XML_CONTEXT_BYTES, fixing false test failures on platforms
+        where libexpat is compiled without XML_CONTEXT_BYTES (e.g.
+        DragonFlyBSD system expat)
+
+-------------------------------------------------------------------
+Wed Apr  1 22:43:36 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.550.0 (2.55)
+   see /usr/share/doc/packages/perl-XML-Parser/Changes
+
+  2.55 2026-04-01 (by Todd Rinaldo)
+    Fixes:
+      - PR #221 Fix struct-return ABI mismatch in XML_ExpatVersionInfo()
+        by parsing the version string instead of using the struct return,
+        which was corrupted when Perl and libexpat used different struct
+        return conventions (-fpcc-struct-return vs -freg-struct-return)
+      - PR #214 GH #211 GH #212 GH #213 Revert defaulthandle char
+        routing and standalone string changes that broke downstream CPAN
+        modules (XML-Twig, XML-DOM, XML-XPath)
+      - PR #216 GH #215 Increase deep_nesting test depth from 600 to
+        2048 to actually exercise the st_serial_stack reallocation code
+        path (the GH #39 fix)
+      - PR #218 Update expat download URL from SourceForge to GitHub in
+        the "expat not found" error message
+    Improvements:
+      - PR #220 GH #215 Add AddressSanitizer CI job for XS memory safety
+        to catch heap buffer overflows and use-after-free bugs
+    Maintenance:
+      - PR #219 Modernize last 4 print-ok test files (astress, namespaces,
+        stream, skip) to Test::More with descriptive test names
+      - PR #217 Remove obsolete .travis.yml (project uses GitHub Actions)
+  2.54 2026-03-27 (by Todd Rinaldo)
+    Fixes:
+      - PR #196 Plug XS memory leaks on error paths in Expat.xs
+        (externalEntityRef, parse_stream, ParserCreate)
+      - PR #204 Add defensive NULL checks in Expat.xs to prevent crashes
+        on memory exhaustion and undefined behavior on short input lines
+      - PR #203 Add explicit package main after inline package declarations
+        in test files to clarify scope
+    Improvements:
+      - PR #207 GH #205 Add GitHub Actions workflow to auto-create GitHub
+        Releases on tag push, enabling downstream notification via
+        GitHub's release watch
+      - PR #209 Update AUTHORS POD in Parser.pm and Expat.pm to reflect
+        full maintainer history
+      - PR #210 Add CI badge to POD via =for markdown directive so it
+        survives README.md regeneration
+      - Rename README to README.md and regenerate from POD
+    Maintenance:
+      - PR #208 Modernize 10 legacy test files from print-ok style to
+        Test::More (cdata, finish, deep_nesting, xml_escape, partial,
+        char_end_doc, current_length, combine_chars, utf8_stream, defaulted)
+  2.53 2026-03-25 (by Todd Rinaldo)
+    Fixes:
+      - PR #202 GH #201 Fix detection of bare glob filehandles (*FH) in
+        Expat::parse; previously only glob references were recognized
+    Maintenance:
+      - PR #198 Modernize encoding.t from print-ok style to Test::More
+        and expand coverage
+      - PR #197 Modernize styles.t from Test to Test::More and expand
+        coverage
+      - Ignore Mac OS metadata files (.DS_Store) in .gitignore
+  2.52 2026-03-24 (by Todd Rinaldo)
+    Fixes:
+      - PR #193 Restrict Subs style to package-local subs only; previously
+        UNIVERSAL::can() walked the inheritance tree, potentially dispatching
+        to inherited base class methods on element names like <connect/>
+    Improvements:
+      - PR #195 Require perl 5.008 minimum and remove pre-5.008 compat code
+        (dead polyfills, tied-handle branch, ExtUtils::Liblist guard)
+    Documentation:
+      - PR #176 GH #173 Explain why the empty sub-parser parse is needed in
+        externalEntityRef for parameter entity processing
+    Maintenance:
+      - PR #194 Remove dead code: Built_In_Styles hash, $have_File_Spec,
+        newSVpvn/ERRSV compat guards
+      - PR #192 GH #190 Log expat version in all CI jobs for easier
+        diagnosis of platform-specific failures
+      - Add AI_POLICY.md for transparency
+
+-------------------------------------------------------------------
+Mon Mar 23 06:25:36 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.510.0 (2.51)
+   see /usr/share/doc/packages/perl-XML-Parser/Changes
+
+  2.51 2026-03-20 (by Todd Rinaldo)
+    Fixes:
+      - PR #184 GH #182 Fix compile warnings from Fedora gcc: unhandled enum
+        value in switch and uninitialized variables in parse_stream
+      - PR #186 GH #183 Add explicit case labels for XML_CTYPE_EMPTY and
+        XML_CTYPE_ANY in generate_model switch to fix -Wswitch on BSD/clang
+      - PR #175 GH #174 Add XML_DTD/XML_GE compile-time guards to AllocTracker
+        and BillionLaughs XS bindings to fix warnings when expat lacks these flags
+      - PR #187 GH #185 Require proper declaration in AllocTracker feature
+        detection to prevent implicit function declaration on BSD
+    Improvements:
+      - PR #189 GH #188 Add tests for XS functions modified in PR #184 covering
+        XML_ErrorString, XML_GetBase/XML_SetBase, and generate_model
+    Maintenance:
+      - PR #181 GH #180 Add Fedora 43 container job to CI test matrix
+      - PR #178 Add BSD testing (FreeBSD, OpenBSD, NetBSD) to CI
+      - PR #179 Add no-lwp CI job to validate test suite without LWP::UserAgent
+      - Update MANIFEST
+  2.49 2026-03-19 (by Todd Rinaldo)
+    Improvements:
+      - PR #171 Expose expat library version at runtime via expat_version()
+        and expat_version_info() class methods on XML::Parser::Expat
+      - PR #169 GH #168 Expose Expat 2.7.2 AllocTracker security APIs
+        (AllocTrackerMaximumAmplification, AllocTrackerActivationThreshold)
+    Maintenance:
+      - PR #170 Clean up build configuration: remove dead CAPI code from
+        Makefile.PL and Expat/Makefile.PL, add test dependencies to cpanfile
+  2.48 2026-03-18 (by Todd Rinaldo)
+    Fixes:
+      - GH #39 Fix off-by-one heap buffer overflow in st_serial_stack growth check (CVE-2006-10003) bsc#1259902
+      - GH #64 Fix buffer overflow in parse_stream when filehandle has :utf8 layer (CVE-2006-10002) bsc#1259901
+      - GH #27 Prevent symbol table auto-vivification in Expat::parse
+      - GH #30 Set UTF-8 flag on sysid in ExternEnt handler and fix Debug style for non-ASCII chars
+      - GH #36 Prevent position overflow for large files in line/column/error paths
+      - GH #41 Fix xml_escape to escape all occurrences of quote characters
+      - GH #44 Fix lexical filehandle handling in ExternEnt handler return values
+      - GH #45 Clean up compiler warnings in Expat.xs
+      - GH #47 Fix routing of character data after root element to Char handler
+      - GH #48 Fix current_byte overflow for large XML files on 32-bit perl
+      - GH #50 Propagate xpcroak errors in Subs style instead of swallowing them
+      - GH #53 Fix parameter entity references in internal DTD subset breaking handler dispatch
+      - GH #65 Support standard LIBS and INC options in Makefile.PL; propagate to Expat/Makefile.PL
+      - GH #69 Auto-detect multiarch library paths for expat
+      - GH #72 Localize $_ in Style::Stream to avoid read-only modification
+      - GH #76 Use system tmpdir for temp files in Devel::CheckLib
+      - GH #83 Use pkg-config to auto-detect expat in non-standard locations
+      - GH #90 Improve "Couldn't find your C compiler" error message
+      - GH #100 Clean up MSVC assertlib .obj files on Windows
+      - GH #103 Skip -rpath on Mac OS X 10.4 and earlier
+      - GH #106 Fix freeing of the content model using XML_FreeContentModel
+      - GH #148 XML-escape attribute values in Stream style default output
+      - GH #149 Restore Base after parsefile() to prevent context pollution on reuse
+      - GH #152 Fix SYNOPSIS handler name Characters -> Text in Stream.pm
+      - GH #153 Fix variable interpolation in xpcarp() and setHandlers() error messages
+      - GH #157 Restore Perl 5.8 and 5.10 test compatibility
+      - GH #160 Initialize st_serial_stacksize after allocation in Expat.xs
+      - GH #162 Replace local $^W=0 with no warnings 'numeric' in Expat.pm
+      - GH #164 Add missing ENTER/SAVETMPS scope to notationDecl callback
+      - GH #165 Replace each() with keys() to avoid iterator side effects
+      - GH #166 Remove no-op study() call in xml_escape
+    Improvements:
+      - GH #38 Add G_VOID flag to all void-context perl_call_sv/method/pv calls
+      - GH #46 Add UseForeignDTD option for documents without DOCTYPE
+      - GH #49 Add current_length method to XML::Parser::Expat
+      - GH #54 Add hint about unescaped characters for invalid token errors
+      - GH #67 Add NoLWP to expat capability probes for consistent skip logic
+      - GH #70 Enhance parse exceptions with XML context when ErrorContext is set
+      - GH #71 Move encoding maps from PERL5LIB to File::ShareDir
+      - GH #73 XMLDecl handler now returns "yes"/"no" for standalone attribute
+      - GH #101 Make LWP::UserAgent a recommended dependency, not required
+      - GH #102 Expose expat security APIs: BillionLaughs and ReparseDeferral
+      - GH #167 Modernize Perl pragmas across modules
+    Documentation:
+      - GH #55 Add ERROR HANDLING section and improve parse error documentation
+      - GH #56 Clarify Char handler splitting behavior with example and docs
+      - GH #74 Document predefined entity expansion in Tree style
+      - GH #161 Fix Standalone parameter description in README
+    Maintenance:
+      - GH #25 Add Debug style multibyte character regression test
+      - GH #28 Add tests for globref and lexical filehandle return values in ExternEnt handler
+      - GH #31 Add encoding tests for windows-1251, koi8-r, windows-1255, and ibm866
+      - GH #51 Skip external DTD tests when expat lacks parameter entity support
+      - GH #150 Replace Artistic-2.0 LICENSE with correct Perl dual license
+      - GH #151 Modernize xpcroak.t from Test.pm to Test::More
+      - GH #155 Modernize CI workflow inspired by YAML-Syck
+      - GH #159 Install libexpat1-dev in perl-tester CI containers
+      - GH #163 Replace defunct Travis CI badge with GitHub Actions
+      - GH #168 Update META_MERGE URLs to cpan-authors organization
+      - Integrate Windows into overall CI test run
+
+-------------------------------------------------------------------
 Fri Feb 28 13:47:22 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Fix license manually (module metadata is contradicting).

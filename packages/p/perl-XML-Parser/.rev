@@ -306,4 +306,41 @@
 See also https://github.com/cpan-authors/XML-Parser/pull/99 (forwarded request 1249249 from tinita)</comment>
     <requestid>1249251</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2f9024f76783cc8c589755258faca08e</srcmd5>
+    <version>2.570.0</version>
+    <time>1775835790</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.570.0 (2.57)
+   see /usr/share/doc/packages/perl-XML-Parser/Changes
+  2.57 2026-04-07 (by Todd Rinaldo)
+    Fixes:
+      - PR #235 GH #234 Fix PE parsing regression that broke XML::Twig DTD
+        round-tripping: defer parameter entity parsing activation to when a
+        declaration handler is registered, preventing PE references from
+        being consumed by the empty sub-parser instead of reaching the
+        Default handler
+      - PR #232 GH #47 Add regression tests for post-root character data
+        routing and add ppport.h for XS backward compatibility macros
+      - PR #229 Add NULL check after XML_ParserCreate_MM to prevent
+        segfault on memory allocation failure
+      - PR #225 Replace deprecated indirect object syntax in
+        LWPExternEnt.pl (new URI(...) -&gt; URI-&gt;new(...), etc.) for forward
+        compatibility with Perl 5.36+ where 'use v5.36' disables the
+        indirect feature. Also add 'use strict' to the file
+    Improvements:
+      - PR #233 Add downstream CI testing for XML::XPath, XML::DOM, and
+        XML::Twig to catch breakage in major consumers before release
+    Maintenance:
+      - PR #239 Convert t/char_end_doc.t to Test::More; all 57 test files
+        now consistently use Test::More
+      - PR #238 Expand CLAUDE.md with project conventions for generated
+        files, releases, and testing
+      - PR #231 Add test coverage for load_encoding, xml_escape edge
+        cases, and ContentModel API
+      - PR #230 Add test coverage for element_index, position_in_context,
+        specified_attr, and setHandlers
+      - PR #228 Add test coverage for recognized_string, default_current,</comment>
+    <requestid>1345222</requestid>
+  </revision>
 </revisionlist>
