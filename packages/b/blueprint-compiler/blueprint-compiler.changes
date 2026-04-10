@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:22:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Feb 27 13:42:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.20.0:
+  + Added:
+    - Added help-text and visited accessibility properties
+    - Added a --minify argument to compile and batch-compile to
+      emit XML with no comments or whitespace
+    - Extern class names can now include a "." for readability
+    - Added a linter
+    - Added extension syntax for Gtk.LevelBar offsets
+    - Allow translated string constants in expressions
+    - Added support for some Pango types to be specified as strings
+    - The formatter wraps long lines now
+    - Added support for Gtk.TryExpression
+    - Added support for null in expressions
+  + Language Server:
+    - Added the signature of a long block as an inlay hint at the
+      end of the block
+    - Added completions for available namespaces when typing a
+      class name
+    - Added completions for imports
+    - Added completion for translation-domain
+    - Added object value completions
+    - Completions are now sorted. Up to five commonly used
+      completions are highlighted at the top, based on statistics
+      from a collection of open-source projects that use Blueprint.
+    - Hovering over the object in a signal shows the object's
+      signature
+  + Changed:
+    - blueprint-compiler now uses libgirepository to load typelib
+      information, rather than a custom parser.
+    - Lookup expressions on an object reference no longer emit an
+      unnecessary <constant> tag
+- Convert to obs_scm service.
+- Enable check section, running meson_test. Ignore the result
+  though for now, as some tests require a display.
+
+-------------------------------------------------------------------
+Fri Jan 16 10:58:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.19.0:
+  + This is an unstable release - No changelog yet
+
+-------------------------------------------------------------------
 Wed Jul  2 06:10:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Updatet o version 0.18.0:

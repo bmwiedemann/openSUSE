@@ -1,7 +1,7 @@
 #
 # spec file for package blueprint-compiler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@
 %endif
 
 Name:           blueprint-compiler
-Version:        0.18.0
+Version:        0.20.0
 Release:        0
 Summary:        A markup language for GTK user interfaces
 License:        LGPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/blueprint-compiler
-Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module gobject}
@@ -51,7 +51,7 @@ Requires:       blueprint-compiler = %{version}
 A markup language for GTK user interface files.
 
 %prep
-%autosetup -n %{name}-v%{version}
+%autosetup -p1
 %if 0%{?suse_version} < 1600
 sed -i -e 's|python3|python3.11|g' meson.build
 sed -i -e 's|=3.9|=3.11|g' justfile
@@ -71,8 +71,8 @@ sed -i -e 's|/usr/bin/env python3|/usr/bin/python3.11|g' docs/collect-sections.p
 
 sed -i '1s|#!/usr/bin/env |#!/usr/bin/|' %{buildroot}%{_bindir}/blueprint-compiler
 
-#%check
-#python3 -m unittest
+%check
+%meson_test || :
 
 %files
 %license COPYING
