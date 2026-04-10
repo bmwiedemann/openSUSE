@@ -17,24 +17,25 @@
 
 
 Name:           gnome-calendar
-Version:        49.1
+Version:        50.0
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Design/Apps/Calendar
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  blueprint-compiler
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(geocode-glib-2.0) >= 3.26.2
 BuildRequires:  pkgconfig(gio-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.2.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.21.2
-BuildRequires:  pkgconfig(gtk4) >= 4.15.2
+BuildRequires:  pkgconfig(gtk4) >= 4.21.2
 BuildRequires:  pkgconfig(gweather4)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.45.1

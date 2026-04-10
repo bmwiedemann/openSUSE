@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:35:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sat Mar 14 16:13:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Updated screenshots
+  + Focus adjacent cell when pressing Ctrl+Tab in the Month view
+  + Refreshing calendars also updates collections now. This makes
+    new remote calendars appear when refreshing.
+  + Fix an untranslatable string
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  2 09:48:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Add navigation using arrow keys in the Month view. This in
+    itself is a major accessibility improvement, but it also comes
+    in preparation of further improvements in the Month view.
+  + Fix handling of all-day events in the file importer dialog
+  + Make Page Up and Page Down shortcuts jump to first day of month
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 08:38:55 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Show event attendees in a section in the event editor dialog
+  + Fix accessibility warnings in the Month view
+  + Remove support for sound-only alarms. All alarms created by
+    GNOME Calendar display notifications now.
+  + Fade out event titles if they're too long
+  + Updated translations
+- Changes from version 50.alpha:
+  + Various updates to the Flatpak manifest
+  + Minor tweaks to the coloring of event widgets
+  + Various accessibility fixes all around
+  + Performance improvements in the Month view
+  + More prominent month name in the Month view
+  + Improved scrolling animations in the Month view
+  + Improved alignment of event widgets in the Month view
+  + Plug a bunch of memory leaks in the Quick Add popover
+  + Update the design of the Quick Add popover
+  + Plug dozens of memory leaks in tests and in the app
+  + Announce the number of search results to the screen reader
+  + Respect the new GSetting for first weekday
+  + Updated translations
+- Add pkgconfig(fribidi) BuildRequires: new dependency
+
+-------------------------------------------------------------------
 Tue Jan  6 07:48:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1:
