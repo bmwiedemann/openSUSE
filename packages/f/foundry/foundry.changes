@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:29:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 17 08:39:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.1:
+  + Fix GNOME CI release issue around metainfo and rc/beta/alpha
+    tags.
+
+-------------------------------------------------------------------
+Tue Mar 17 08:35:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.0:
+  + plugins/flatpak: fix dup_environ() for flatpak manifests
+  + libfoundry-adw: fix possible critical on bound title property
+  + libfoundry/cli: remove unimplemented/commented lines
+  + plugins/qemu: fix translator comment
+  + API: libfoundry/flatpak: add getter for "env" style fields
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 24 07:46:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.rc:
+  + Bug fixes:
+    - plugins/openai: fix a potential critical log
+    - plugins/flatpak: ignore font remapping on some systems
+    - plugins/devhelp: deduplicate symlink directories
+    - contrib/eggbitset: remove unused variable
+  + API:
+    - Add foundry_file_read_link() and
+      foundry_file_read_link_recurse() helpers in libfoundry util
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 16 08:00:16 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.beta:
+  + Build:
+    - Add `foundry build --inhibit-suspend` option to prevent
+      system suspend during long builds
+    - Add libfoundry helper to inhibit suspend via logind
+      integration
+  + API:
+    - FoundryWeakPair is now part of public API for use as closure
+      data
+    - Add foundry_strv_empty0() utility
+  + Other:
+    - Switch application and library IDs from app.devsuite to
+      org.gnome
+    - Add Slovenian translation
+- Changes from version 1.1.alpha:
+  + Debugger Infrastructure:
+    - Complete Debug Adapter Protocol (DAP) implementation with GDB
+      and LLDB integration, providing a unified debugging
+      experience across debuggers
+    - Full debugger UI with stack frames, locals, parameters,
+      registers, and breakpoint visualization
+    - Disassembly view and REPL interpreter support for interactive
+      debugging
+    - Memory visualization with address range browsing and
+      read_memory() API
+    - Quirks system to handle non-ideal DAP implementations
+      gracefully
+    - Debugger state tracking and GActionGroup integration for easy
+      UI wiring
+  + Language Server Protocol:
+    - LSP progress operations bridging to FoundryOperation for
+      long-running language server tasks
+    - Hierarchical symbol tree support for modern LSP
+      implementations
+    - Improved buffer synchronization with cleaner fiber-based
+      implementation
+    - Enhanced diagnostics integration with tooltips and gutter
+      rendering
+    - Fixed JSON-RPC driver to handle edge cases in protocol
+      parsing
+  + Symbol and Documentation Systems:
+    - New symbol provider API with CTags parser and tree-sitter
+      plugin support
+    - Symbol tree, symbol location, and path navigation
+      infrastructure
+    - FoundryGir parser for accessing reflected GIR files without
+      compilation, enabling documentation access even when not
+      generated
+    - Documentation bridge for markdown generation and search
+      integration
+    - Pathbar infrastructure for symbol, documentation, and file
+      navigation
+    - FoundryPathNavigator with subclasses for symbols,
+      documentation, and files
+  + File and Search Infrastructure:
+    - New file search API with grep integration and thread-pool
+      optimization
+    - Search provider abstraction with GNU grep default and ripgrep
+      support
+    - Search/replace API with back-reference support for regex
+      replacements
+    - FoundryFileRow component for path browsing with
+      collapse/expand support
+    - Include/exclude globbing for file searches
+    - Improved fallback search using git file listing for faster
+      index building
+  + Build System:
+    - Build pipeline with phase tracking and dynamic stage
+      calculation
+    - Build system discovery with priority-based addin loading
+    - Linked pipeline support for multi-project builds (e.g.,
+      building GTK as
+      part of your application build)
+    - Non-destructive Flatpak manifest editing with write-back
+      support
+    - SDK management with write-back to configurations
+    - Support for install, export, and deploy actions
+    - Pipeline now supports prepend/append PATH modifications
+    - Justfile support using `just` build tool
+  + Intent System:
+    - New IntentManager with plugin model and priorities for
+      flexible application policy handling
+    - Intents for file operations, symbols, documentation, web
+      navigation, and actions
+    - FoundryActionIntent and FoundryWebIntent for application
+      integration
+    - Integrated intent system across file operations, search
+      results, and navigation
+    - Terminal Intent and TerminalService for opening terminals
+      within applications
+  + Terminal Integration:
+    - FoundryTerminal with snapshot rewriting from Ptyxis for
+      consistent terminal experience
+    - Terminal intent and service for application integration
+    - PTY diagnostics with auto-registration to diagnostic manager
+    - Terminal palette support with FoundryTerminalPaletteSet
+- Add explicit pkgconfig(gtk4) BuildRequires: dependency now
+  version-checked my the build system.
+- Add readline-devel, pkgconfig(libpanel-1), pkgconfig(libsecret-1)
+  and pkgconfig(libadwaita-1) BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
 Wed Oct 29 06:42:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.1:
