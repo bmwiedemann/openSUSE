@@ -1,7 +1,7 @@
 #
 # spec file for package showtime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define appid org.gnome.Showtime
 
 Name:           showtime
-Version:        49.1
+Version:        50.0
 Release:        0
 Summary:        Video player
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/showtime
-Source:         %{name}-%{version}.tar
+Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson
