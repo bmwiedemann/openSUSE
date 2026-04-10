@@ -294,4 +294,15 @@
   See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
     <requestid>1319076</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1dcbcdbf4f8b7ff8b69557f442089389</srcmd5>
+    <version>1.490.0</version>
+    <time>1775835783</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.490.0 (1.49)
+   see /usr/share/doc/packages/perl-XML-XPath/Changes
+  1.49  2026-03-28 MANWAR
+        - Proposed patch for the issue #213 caused by XML::Parser v2.48.</comment>
+    <requestid>1345213</requestid>
+  </revision>
 </revisionlist>

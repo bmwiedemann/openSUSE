@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-XPath
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name XML-XPath
 Name:           perl-XML-XPath
-Version:        1.480.0
+Version:        1.490.0
 Release:        0
-# 1.48 -> normalize -> 1.480.0
-%define cpan_version 1.48
+# 1.49 -> normalize -> 1.490.0
+%define cpan_version 1.49
 License:        Artistic-2.0
 Summary:        Parse and evaluate XPath statements
 URL:            https://metacpan.org/release/%{cpan_name}
