@@ -1,7 +1,7 @@
 #
 # spec file for package ipmiutil
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Andy Cress
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{!?_unitdir: %define _unitdir  %{_prefix}/lib/systemd/system}
 Name:           ipmiutil
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Easy-to-use IPMI server management utilities
 License:        BSD-3-Clause

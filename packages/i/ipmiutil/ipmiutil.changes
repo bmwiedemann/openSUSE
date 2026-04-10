@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  9 20:37:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.2:
+  * ireset: interpret -e as modifier, not target (SR62)
+  * ireset: make -u and boot target order invariant (SR63)
+  * ireset: support logical instance specification with
+    new -l option (SR64)
+  * isol: added WIN32_LEAN_AND_MEAN for Windows builds
+  * lanplus: removed -lcrypto from LIBADD in Makefile
+
+-------------------------------------------------------------------
 Mon Nov 17 17:26:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:
