@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr  9 08:43:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.1.4 (CVE-2026-35204, CVE-2026-35205, CVE-2026-35206):
+  Helm v4.1.4 is a security fix patch release. Users are encouraged
+  to upgrade for the best experience.
+  * Security fixes
+    - GHSA-hr2v-4r36-88hr Helm Chart extraction output directory
+      collapse via Chart.yaml name dot-segment
+    - GHSA-q5jf-9vfq-h4h7 Plugin verification fails open when .prov
+      is missing, allowing unsigned plugin install
+    - GHSA-vmx8-mqv2-9gmg Path traversal in plugin metadata version
+      enables arbitrary file write outside Helm plugin directory
+  * Changelog
+    - fix: Plugin missing provenance bypass 05fa379 (George
+      Jenkins)
+    - fix: Chart dot-name path bug 4e7994d (George Jenkins)
+    - ignore error plugin loads (cli, getter) 2581943 (George
+      Jenkins)
+    - fix: Plugin version path traversal 36c8539 (George Jenkins)
+    - fix: pin codeql-action/upload-sarif to commit SHA in
+      scorecards workflow c61e086 (Terry Howe)
+
+-------------------------------------------------------------------
 Fri Mar 13 08:44:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.3:
