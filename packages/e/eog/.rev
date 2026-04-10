@@ -1380,4 +1380,12 @@ New stable release</comment>
     <comment> (forwarded request 1326493 from iznogood)</comment>
     <requestid>1326744</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>544851aecc4b26cc1bb93e61ed94b943</srcmd5>
+    <version>50.0</version>
+    <time>1775836216</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345383</requestid>
+  </revision>
 </revisionlist>
