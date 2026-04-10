@@ -17,13 +17,13 @@
 
 
 Name:           gnome-maps
-Version:        49.4
+Version:        50.0
 Release:        0
 Summary:        Maps Application for GNOME
 License:        Apache-2.0 AND CC-BY-3.0 AND GPL-2.0-or-later AND BSD-3-Clause AND ISC AND MIT
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Maps
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
@@ -31,6 +31,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gobject-introspection
 #
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  blueprint-compiler >= 0.19
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -51,7 +52,7 @@ BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(rest-1.0) >= 0.7.90
-BuildRequires:  pkgconfig(shumate-1.0) >= 1.5.alpha
+BuildRequires:  pkgconfig(shumate-1.0) >= 1.6.alpha
 Recommends:     dbus(org.freedesktop.GeoClue2)
 
 %description

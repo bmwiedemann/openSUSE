@@ -950,4 +950,12 @@
   + Updated translations. (forwarded request 1329791 from iznogood)</comment>
     <requestid>1330185</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>3f61428c9f0ee97ccd9864366d969e68</srcmd5>
+    <version>50.0</version>
+    <time>1775835945</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345368</requestid>
+  </revision>
 </revisionlist>

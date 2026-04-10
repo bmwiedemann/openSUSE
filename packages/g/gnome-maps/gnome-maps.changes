@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:38:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 12:32:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Handle unknown HTTP response codes from Overpass, so that place
+    information still shows up
+  + Fix Copenhagen Metro icon to not use <style/> SVG attribute to
+    render with the new Gtk.SVG renderer
+  + Show correct railway station types even when Overpass query
+    failed (based on data from tiles)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 28 12:59:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Show place type (bus stop, railway station, et.c.) when
+    selecting a place from a public transit itinerary
+  + Add support for showing localized result for public transit
+    itineraries from Transitous/MOTIS (when available in the
+    upstream timetable feeds)
+  + Updated appdata screenshots
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 11 13:35:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Allow bookmarking public transit stop location from Transitous
+    itineraries
+  + Show more content from Wikipedia article extracts in place
+    details in desktop mode
+  + Fix UI issues with date and time selection for public transit
+    when 12 hour time format is used
+  + Add mnemonics to main menu menu items
+  + Port send-to dialog to AdwDialog
+- Changes from version 50.alpha:
+  + Redesign to use an AdwMultiView to show both place information
+    and the route planner in a sidebar on desktop, and a bottom
+    sheet on mobile
+  + Always use Transitous for public transit routing
+  + Port UI templates to Blueprint
+- Add blueprint-compiler BuildRequires: new dependency.
+  
+-------------------------------------------------------------------
 Thu Jan 29 09:57:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.4:
