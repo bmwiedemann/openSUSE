@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Mar 31 06:23:43 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-software-online-update.patch: Use online update instead
+  of offline update in SLE 16 (jsc#PED-15005).
+- Add gnome-software-disable-download-updates.patch: Disable
+  download-updates by default to avoid online-updatable updates
+  being installed automatically (jsc#PED-15005).
+- Drop gnome-software-launch-gpk-update-viewer-for-updates.patch
+  and gnome-software-disable-offline-update.patch: not needed
+  any more due to above added patches.
+
+-------------------------------------------------------------------
+Mon Mar 23 08:43:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 08:24:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 28 09:12:33 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Remember window size between app restarts
+  + Updates page could be sometimes hidden after resume from
+    suspend
+  + Allow remove also Flatpak remotes from system installation
+  + Correct check for add-ons when app's ID changed
+  + Improve socket permissions checks for Flatpak apps
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 13 08:06:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Show install and uninstall progress of an add-on
+  + Use lower thread priority when running in background
+  + Fix possible crash on session permission change
+  + Fix possible crash after XbSilo rebuild
+- Changes from version 50.alpha:
+  + Improve notifying the user about newly installed trivial
+    flatpak app updates
+  + Improve display of keyboard shortcuts
+  + Split rpm-ostree changelogs by app
+  + Display error toasts in the repositories dialog when something
+    goes wrong
+  + Updated translations
+
+-------------------------------------------------------------------
 Tue Jan 13 10:33:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.3:

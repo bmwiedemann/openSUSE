@@ -20,19 +20,18 @@
 %bcond_with profiling
 
 Name:           gnome-software
-Version:        49.3
+Version:        50.0
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
-Source0:        %{name}-%{version}.tar.zst
-%if 0%{?sle_version}
-# PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
-Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
-# PATCH-FIX-OPENSUSE gnome-software-disable-offline-update.patch bsc#944832 sckang@suse.com -- Disable offline update in SLE and openSUSE Leap
-Patch1:         gnome-software-disable-offline-update.patch
-%endif
+Source0:        %{name}-%{version}.tar.xz
+## NOTE: SLE-only patches (starting on 1000).
+# PATCH-FEATURE-SLE gnome-software-online-update.patch jsc#PED-15005 sckang@suse.com -- Use online update in SLE 16
+Patch1000:        gnome-software-online-update.patch
+# PATCH-FEATURE-SLE gnome-software-disable-download-updates.patch jsc#PED-15005 sckang@suse.com -- Disable download-updates by default to avoid online-updatable updates being installed automatically.
+Patch1001:        gnome-software-disable-download-updates.patch
 BuildRequires:  gtk-doc
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.58.0
@@ -47,10 +46,10 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.11.5
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.18.0
 BuildRequires:  pkgconfig(gspell-1)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.17.5
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(malcontent-0) >= 0.5.0
@@ -98,7 +97,12 @@ the GNOME software store.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -N
+
+%autopatch -p1 -M 999
+%if !0%{?is_opensuse} && 0%{?suse_version} > 1600
+%autopatch -p1 -m 1000
+%endif
 
 %build
 %meson \
@@ -136,6 +140,7 @@ FOE
 %{_datadir}/metainfo/org.gnome.Software.metainfo.xml
 %{_datadir}/applications/gnome-software-local-file-flatpak.desktop
 %{_datadir}/applications/gnome-software-local-file-fwupd.desktop
+%{_datadir}/applications/gnome-software-local-file-metainfo.desktop
 %{_datadir}/applications/gnome-software-local-file-packagekit.desktop
 %{_datadir}/applications/org.gnome.Software.desktop
 %{_datadir}/bash-completion/completions/gnome-software
@@ -149,7 +154,6 @@ FOE
 %{_datadir}/icons/hicolor/*/*/*.svg
 %dir %{_libdir}/gnome-software
 %{_libexecdir}/gnome-software-cmd
-%{_libexecdir}/gnome-software-restarter
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_userunitdir}/gnome-software.service
 

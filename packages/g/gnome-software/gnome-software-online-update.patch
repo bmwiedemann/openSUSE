@@ -1,0 +1,208 @@
+From 1d7b6c89ace0fd80d1cf8be9669d83ac3d02d53b Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Tue, 11 Nov 2025 11:02:41 +0800
+Subject: [PATCH] Bring back online update support
+
+---
+ plugins/packagekit/gs-plugin-packagekit.c | 125 ++++++++++------------
+ plugins/packagekit/packagekit-common.c    |   2 +-
+ 2 files changed, 60 insertions(+), 67 deletions(-)
+
+diff --git a/plugins/packagekit/gs-plugin-packagekit.c b/plugins/packagekit/gs-plugin-packagekit.c
+index df2221378..24c01c07c 100644
+--- a/plugins/packagekit/gs-plugin-packagekit.c
++++ b/plugins/packagekit/gs-plugin-packagekit.c
+@@ -156,6 +156,12 @@ gs_plugin_packagekit_init (GsPluginPackagekit *self)
+ {
+ 	GsPlugin *plugin = GS_PLUGIN (self);
+ 
++	if (g_file_test ("/usr/sbin/transactional-update", G_FILE_TEST_EXISTS)) {
++		gs_plugin_set_enabled (plugin, FALSE);
++		g_debug ("Disabling itself as the system is in immutable mode.");
++		return;
++	}
++
+ 	/* refine */
+ 	self->control_refine = pk_control_new ();
+ 	g_signal_connect (self->control_refine, "updates-changed",
+@@ -378,6 +384,35 @@ app_list_get_package_ids (GsAppList       *apps,
+ 	return g_steal_pointer (&list_package_ids);
+ }
+ 
++static GPtrArray *
++app_list_get_real_package_ids (GsPluginPackagekit *self,
++			       GsAppList *apps)
++{
++	g_autoptr(GPtrArray) package_ids = g_ptr_array_new_with_free_func (NULL);
++
++	for (guint i = 0; i < gs_app_list_length (apps); i++) {
++		GsApp *app = gs_app_list_index (apps, i);
++		GsAppList *related = gs_app_get_related (app);
++
++		/* System Updates proxy app. */
++		if (gs_app_has_quirk (app, GS_APP_QUIRK_IS_PROXY)) {
++			for (guint j = 0; j < gs_app_list_length (related); j++) {
++				GsApp *app_tmp = gs_app_list_index (related, j);
++
++				if (gs_app_get_state (app_tmp) == GS_APP_STATE_UPDATABLE_LIVE &&
++				    gs_app_has_management_plugin (app_tmp, GS_PLUGIN (self)))
++					g_ptr_array_add (package_ids, gs_app_get_source_id_default (app_tmp));
++			}
++		} else {
++			if (gs_app_get_state (app) == GS_APP_STATE_UPDATABLE_LIVE &&
++			    gs_app_has_management_plugin (app, GS_PLUGIN (self)))
++				g_ptr_array_add (package_ids, gs_app_get_source_id_default (app));
++		}
++	}
++
++	return g_steal_pointer (&package_ids);
++}
++
+ static GsApp *
+ gs_plugin_packagekit_dup_app_origin_repo (GsPluginPackagekit  *self,
+                                           GsApp               *app,
+@@ -1261,7 +1296,7 @@ gs_plugin_packagekit_set_update_app_state (GsApp *app,
+ 		   pk_package_get_info (package) == PK_INFO_ENUM_INSTALLING) {
+ 		gs_app_set_state (app, GS_APP_STATE_AVAILABLE);
+ 	} else {
+-		gs_app_set_state (app, GS_APP_STATE_UPDATABLE);
++		gs_app_set_state (app, GS_APP_STATE_UPDATABLE_LIVE);
+ 	}
+ #else
+ 	if (pk_package_get_info (package) == PK_INFO_ENUM_REMOVING ||
+@@ -1270,7 +1305,7 @@ gs_plugin_packagekit_set_update_app_state (GsApp *app,
+ 	} else if (pk_package_get_info (package) == PK_INFO_ENUM_INSTALLING) {
+ 		gs_app_set_state (app, GS_APP_STATE_AVAILABLE);
+ 	} else {
+-		gs_app_set_state (app, GS_APP_STATE_UPDATABLE);
++		gs_app_set_state (app, GS_APP_STATE_UPDATABLE_LIVE);
+ 	}
+ #endif
+ }
+@@ -5130,66 +5165,26 @@ update_apps_download_cb (GObject      *source_object,
+ 	}
+ 
+ 	if (!(data->flags & GS_PLUGIN_UPDATE_APPS_FLAGS_NO_APPLY)) {
+-		gboolean trigger_update = FALSE;
+-
+-		/* Are any of these apps from PackageKit, and suitable for offline
+-		 * updates? If any of them can be processed offline, trigger an offline
+-		 * update. If all of them are updatable online, don’t. */
+-		for (guint i = 0; i < gs_app_list_length (data->apps); i++) {
+-			GsApp *app = gs_app_list_index (data->apps, i);
+-			GsAppList *related = gs_app_get_related (app);
+-
+-			/* try to trigger this app */
+-			if (!gs_app_has_quirk (app, GS_APP_QUIRK_IS_PROXY) &&
+-			    gs_app_get_state (app) == GS_APP_STATE_UPDATABLE &&
+-			    gs_app_has_management_plugin (app, GS_PLUGIN (self))) {
+-				trigger_update = TRUE;
+-				break;
+-			}
+-
+-			/* try to trigger each related app */
+-			for (guint j = 0; j < gs_app_list_length (related); j++) {
+-				GsApp *app_tmp = gs_app_list_index (related, j);
+-
+-				if (gs_app_get_state (app_tmp) == GS_APP_STATE_UPDATABLE &&
+-				    gs_app_has_management_plugin (app_tmp, GS_PLUGIN (self))) {
+-					trigger_update = TRUE;
+-					break;
+-				}
+-			}
+-		}
++		g_autoptr(GPtrArray) package_ids = g_ptr_array_new_with_free_func (NULL);
++		g_autoptr(GsPackagekitHelper) helper = NULL;
++		g_autoptr(PkTask) task_update = NULL;
+ 
+-		if (trigger_update && !self->is_triggered) {
+-			GDBusConnection *connection;
++		helper = gs_packagekit_helper_new (GS_PLUGIN (source_object));
++		task_update = gs_packagekit_task_new (GS_PLUGIN (source_object));
++		gs_packagekit_task_take_helper (GS_PACKAGEKIT_TASK (task_update), helper);
+ 
+-			/* trigger offline update if it’s not already been triggered */
++		package_ids = app_list_get_real_package_ids (self, data->apps);
++		if (package_ids->len > 0) {
++			/* NULL-terminate the array */
++			g_ptr_array_add (package_ids, NULL);
+ 
+-			/* Assume we can use the singleton system bus connection
+-			 * due to prior PackageKit calls having created it. This
+-			 * avoids an async callback. */
+-			connection = g_bus_get_sync (G_BUS_TYPE_SYSTEM,
+-						     cancellable,
+-						     &local_error);
+-			if (connection == NULL) {
+-				g_task_return_error (task, g_steal_pointer (&local_error));
+-				return;
+-			}
++			pk_task_update_packages_async (task_update,
++						       (gchar **) package_ids->pdata,
++						       cancellable,
++						       NULL, NULL,
++						       update_apps_trigger_cb,
++						       g_steal_pointer (&task));
+ 
+-			/* FIXME: This can be simplified down to a call to
+-			 * pk_offline_trigger_with_flags_async() when it exists.
+-			 * See https://github.com/PackageKit/PackageKit/issues/605 */
+-			g_dbus_connection_call (connection,
+-						"org.freedesktop.PackageKit",
+-						"/org/freedesktop/PackageKit",
+-						"org.freedesktop.PackageKit.Offline",
+-						"Trigger",
+-						g_variant_new ("(s)", pk_offline_action_to_string (PK_OFFLINE_ACTION_REBOOT)),
+-						NULL,
+-						interactive ? G_DBUS_CALL_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION : G_DBUS_CALL_FLAGS_NONE,
+-						-1,
+-						cancellable,
+-						update_apps_trigger_cb,
+-						g_steal_pointer (&task));
+ 			return;
+ 		}
+ 	}
+@@ -5202,21 +5197,19 @@ update_apps_trigger_cb (GObject      *source_object,
+                         GAsyncResult *result,
+                         gpointer      user_data)
+ {
+-	GDBusConnection *connection = G_DBUS_CONNECTION (source_object);
+ 	g_autoptr(GTask) task = g_steal_pointer (&user_data);
+-	GsPluginPackagekit *self = g_task_get_source_object (task);
+-	GCancellable *cancellable = g_task_get_cancellable (task);
++	g_autoptr(PkResults) results = NULL;
+ 	g_autoptr(GError) local_error = NULL;
++	GsPluginUpdateAppsData *data = g_task_get_task_data (task);
+ 
+-	if (!g_dbus_connection_call_finish (connection, result, &local_error)) {
+-		gs_plugin_packagekit_error_convert (&local_error, cancellable);
++	results = pk_task_generic_finish (PK_TASK (source_object), result, &local_error);
++
++	if (local_error != NULL || !gs_plugin_packagekit_results_valid (results, g_task_get_cancellable (task), &local_error)) {
++		gs_plugin_packagekit_error_convert (&local_error, g_task_get_cancellable (task));
+ 		g_task_return_error (task, g_steal_pointer (&local_error));
+ 		return;
+ 	}
+ 
+-	/* don't rely on the file monitor */
+-	gs_plugin_packagekit_refresh_is_triggered (self, cancellable);
+-
+ 	g_task_return_boolean (task, TRUE);
+ }
+ 
+diff --git a/plugins/packagekit/packagekit-common.c b/plugins/packagekit/packagekit-common.c
+index 443023ad7..5443cf6ed 100644
+--- a/plugins/packagekit/packagekit-common.c
++++ b/plugins/packagekit/packagekit-common.c
+@@ -386,7 +386,7 @@ gs_plugin_packagekit_resolve_packages_app (GsPlugin *plugin,
+ 	} else if (number_installed + number_available > sources->len) {
+ 		/* we have more packages returned than source packages */
+ 		gs_app_set_state (app, GS_APP_STATE_UNKNOWN);
+-		gs_app_set_state (app, GS_APP_STATE_UPDATABLE);
++		gs_app_set_state (app, GS_APP_STATE_UPDATABLE_LIVE);
+ 	} else if (number_installed + number_available < sources->len) {
+ 		g_autofree gchar *tmp = NULL;
+ 		/* we have less packages returned than source packages */
+-- 
+2.53.0
+
