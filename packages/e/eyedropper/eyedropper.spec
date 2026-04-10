@@ -1,8 +1,8 @@
 #
 # spec file for package eyedropper
 #
-# Copyright (c) 2025 mantarimay
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 mantarimay
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,24 @@
 
 
 %define lname   com.github.finefindus.eyedropper
-%bcond_with     warp
-%bcond_with     test
-%define sname   blueprint-compiler
-%define sver    0.8.1
+
 Name:           eyedropper
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Pick and format colors
 License:        GPL-3.0-or-later
 URL:            https://github.com/FineFindus/eyedropper
-Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-%if %{with warp}
-Source1:        https://gitlab.gnome.org/jwestman/%{sname}/-/archive/v%{sver}/%{sname}-v%{sver}.tar.bz2
-BuildRequires:  python3-gobject
-Provides:       bundled(blueprint-compiler)
-%else
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
+
+BuildRequires:  AppStream
 BuildRequires:  blueprint-compiler
-%endif
-BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
-BuildRequires:  meson
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.0
 BuildRequires:  desktop-file-utils
+BuildRequires:  meson
+BuildRequires:  python3-gobject
+BuildRequires:  pkgconfig(gtk4) >= 4.22.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.0
 
 %description
 An application to pick and format colors.
@@ -57,11 +51,7 @@ Features:
 %lang_package
 
 %prep
-%autosetup -p1
-%if %{with warp}
-mkdir subprojects/%{sname}
-tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{sname}
-%endif
+%autosetup -p1 -a1
 
 %build
 %meson
@@ -71,10 +61,8 @@ tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{sname}
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 
-%if %{with test}
 %check
 %meson_test
-%endif
 
 %files
 %license LICENSE
@@ -84,6 +72,7 @@ tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{sname}
 %{_datadir}/%{name}/
 %{_datadir}/glib-2.0/schemas/%{lname}.gschema.xml
 %{_datadir}/dbus-1/services/%{lname}.SearchProvider.service
+%{_datadir}/dbus-1/services/%{lname}.service
 %dir %{_datadir}/gnome-shell/
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/%{lname}.search-provider.ini

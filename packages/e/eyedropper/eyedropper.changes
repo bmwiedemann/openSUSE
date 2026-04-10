@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 26 19:58:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to source service, vendor rust dependencies.
+- Following the above: Remove conditional bundling of old
+  blueprint-compiler.
+- Replace appstream-glib with AppStream BuildRequires following
+  upstream changes, enable tests again.
+
+-------------------------------------------------------------------
+Wed Mar 18 22:24:56 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.2.0
+  * RGB can now be displayed in decimal notation
+  * Colors can now be directly entered, without picking a color first
+  * Support for focus-independent (global) shortcuts
+  * Fixed a layout issue on systems where scrollbars are always shown
+  * Updated to modern GNOME styling
+  * Improved checking for unsupported systems
+
+-------------------------------------------------------------------
 Wed May 21 22:11:55 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Disable test: validate-appdata fail on test
