@@ -6,5 +6,4 @@ accessibility toolkit. This version is based on dbus.
 This package contains the AT-SPI registry daemon. It provides a
 mechanism for all assistive technologies to discover and interact
 with applications running on the desktop.</description>
-  <devel project="GNOME:Factory" package="at-spi2-core"/>
 </package>

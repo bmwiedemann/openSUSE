@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:21:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sat Mar 14 16:07:32 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.60.0:
+  + Fix detection of whether the
+    org.freedesktop.a11y.PointerLocator interface is available.
+
+-------------------------------------------------------------------
+Mon Mar  2 09:34:36 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.59.90:
+  + AtspiDevice: Add API to enable and disable features. This can
+    be used to test whether particular features are supported by
+    the device.
+  + AtspiDevice: Add a pointer-moved signal. This is supported on
+    X11 and on Wayland when the compositor supports the
+    org.freedesktop.a11y.PointerLocator interface.
+  + AtspiDevice: Add key-pressed and key-released signals.
+    Deprecate atspi_device_add_key_watcher.
+  + AtspiDeviceX11: Support monitoring the pointer. This currently
+    requires xres, which is now an optional dependency.
+  + Fix a use after free in _atspi_send_event.
+
+-------------------------------------------------------------------
+Mon Feb 16 11:22:39 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.59.1:
+  + Added a build option to link against dbus-glib, rather than
+    using the internal fork for the main loop integration code.
+  + Add ATSPI_MODIFIER_SUPER as an alias for META3.
+  + Various documentation fixes.
+- Changes from version 2.59.0:
+  + meson: Use dbus-broker by default.
+  + Document the remaining DBus interfaces.
+
+-------------------------------------------------------------------
 Sun Jan  4 13:12:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.58.3:

@@ -2795,4 +2795,12 @@
   + python: Speed up __eq__ and __ne__ (forwarded request 1325264 from iznogood)</comment>
     <requestid>1325361</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>08e9203466a47b96cf04d1f6cec47bd3</srcmd5>
+    <version>2.60.0</version>
+    <time>1775835955</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345380</requestid>
+  </revision>
 </revisionlist>
