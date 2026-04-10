@@ -871,4 +871,12 @@ New stable release</comment>
   + Updated translations. (forwarded request 1330062 from iznogood)</comment>
     <requestid>1330723</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>4438dd1c9bad234d9748b9071b2c00aa</srcmd5>
+    <version>50.0</version>
+    <time>1775835991</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345404</requestid>
+  </revision>
 </revisionlist>
