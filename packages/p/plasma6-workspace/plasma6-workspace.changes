@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr  7 15:00:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.4
+- Changes since 6.6.3:
+  * applets/activitybar: fix layout on narrow panels (kde#518451)
+  * Update version for new release 6.6.4
+  * Adjust reduced_featureset build to 6.11
+  * Disable qmllint for calendar module
+  * applets/systemtray: banish black corners in tray icons' context menus (kde#513307)
+  * applets/desktoptheme: Protect against setting infinity size
+  * devicenotifications: keep mode objects around until KWin removes them (kde#516217)
+  * libtaskmanager: Listen for sycoca changes in WaylandTasksModel
+  * applets/digital-clock: Fix clipboard menu (kde#517692)
+  * applets/kicker: provide url in recent apps model
+  * shellcorona: do not crash on panels after their destruction (kde#477941)
+  * applets/systemtray: Guard for itemForService returning null (kde#518128)
+  * Don't prevent the user from using hidden files as wallpapers (kde#472987)
+
+-------------------------------------------------------------------
 Wed Mar 18 11:06:03 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.3:
