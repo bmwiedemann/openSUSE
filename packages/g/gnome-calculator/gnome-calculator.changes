@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:35:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Mar 15 15:56:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar  6 08:07:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 08:41:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Support grouping digits in non-decimal numbers
+  + Remove the ones function and add swap endianness button
+- Changes from version 50.alpha:
+  + Improved metainfo
+  + Improved build process
+  + Fix cropped buttons section
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 21 17:14:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:

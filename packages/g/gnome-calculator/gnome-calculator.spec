@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calculator
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        49.2
+Version:        50.0
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wiki.gnome.org/Apps/Calculator
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildSystem:    meson
 BuildOption:    -Ddisable-introspection=true
 

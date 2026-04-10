@@ -605,4 +605,12 @@
   + Updated translations. (forwarded request 1319161 from iznogood)</comment>
     <requestid>1319639</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>a80cd57e0323d6b66d1de284fd3678cf</srcmd5>
+    <version>50.0</version>
+    <time>1775835980</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345399</requestid>
+  </revision>
 </revisionlist>
