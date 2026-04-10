@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.6.3
+Version:        6.6.4
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -39,8 +39,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-backends-drm-disable-drm-color-pipelines-on-AMD.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 # GCC 13 doesn't know std::ranges::to

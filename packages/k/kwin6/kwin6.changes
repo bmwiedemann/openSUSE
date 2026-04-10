@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Apr  7 14:59:25 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.4
+- Changes since 6.6.3:
+  * Update version for new release 6.6.4
+  * ci: Disable qt dev pipeline for now
+  * ci: Adjust the minimal build pipeline to new CI image names
+  * main_wayland: prevent stale config values from causing wrong Xwayland scaling
+  * plugins/blur: make the scene responsible for expanding repaint regions (kde#515568)
+  * wayland: Fix scaled pointer position when focused client gets a pointer
+  * Manage text input v3 object client state in a per-client fashion.
+  * autotests/integration: Test server-side key repeat with Bounce Keys
+  * autotests/integration: add a test for server side key repeat
+  * plugins/bouncekeys: Let key repeat events through the filter (kde#513268)
+  * backends/drm: disable drm color pipelines on AMD
+  * plugins/startupfeedback: Get rid of intermediate QImage in scalePixmap()
+  * plugins/startupfeedback: Remove unnecessary image format conversion
+  * plugins/startupfeedback: Make scaled pixmap use ARGB32_Premultiplied format
+  * plugins/startupfeedback: Fix pixelated icons (kde#489403)
+  * effects/wobblywindows: Fix blur flickering after wobble (kde#474196)
+  * scene/workspacescene: fix direct scanout with overlay items on other screens (kde#516808)
+  * A11yKeyboardMonitor: Don't crash when XKB state is null (kde#517711)
+- Drop patches, now upstream:
+  * 0001-backends-drm-disable-drm-color-pipelines-on-AMD.patch
+
+-------------------------------------------------------------------
 Wed Mar 25 15:32:03 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix color issues with some AMD GPUs (kde#517556):
