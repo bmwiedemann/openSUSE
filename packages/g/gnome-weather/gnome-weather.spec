@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-weather
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global __requires_exclude GLib
 %define full_name org.gnome.Weather
 Name:           gnome-weather
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://apps.gnome.org/app/org.gnome.Weather
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FIX-UPSTREAM gnome-weather-BackgroundService-service-fails-to-start.patch bsc#1209391 glgo#GNOME/gnome-weather!132 xwang@suse.com -- org.gnome.Weather.BackgroundService fails to start
 Patch0:         gnome-weather-BackgroundService-service-fails-to-start.patch
