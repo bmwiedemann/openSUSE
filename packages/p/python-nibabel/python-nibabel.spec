@@ -17,42 +17,50 @@
 
 
 %define binaries nib-conform nib-convert nib-dicomfs nib-diff nib-ls nib-nifti-dx nib-roi nib-stats nib-tck2trk nib-trk2tck parrec2nii
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-nibabel
-Version:        5.3.3
+Version:        5.4.2
 Release:        0
 Summary:        Tool to access multiple neuroimaging data formats
 License:        MIT
 URL:            https://nipy.org/nibabel
 # SourceRepository: https://github.com/nipy/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM One commit of gh#nipy/nibabel#1416
-Patch0:         ignore-userwarnings.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.20
-Requires:       python-packaging => 17
+Requires:       python-numpy >= 1.25
+Requires:       python-packaging >= 17
+Recommends:     python-Pillow
+Recommends:     python-h5py
+Recommends:     python-pydicom >= 1
+Recommends:     python-scipy
+BuildArch:      noarch
 %if 0%{?python_version_nodots} < 312
 Requires:       python-importlib-resources >= 5.12
 %endif
 %if 0%{?python_version_nodots} < 313
 Requires:       python-typing-extensions >= 4.6
 %endif
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-Pillow
-Recommends:     python-h5py
-Recommends:     python-pydicom >= 1
-Recommends:     python-scipy
-BuildArch:      noarch
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module importlib-resources >= 5.12 if %python-base < 3.12}
-BuildRequires:  %{python_module numpy >= 1.20}
+BuildRequires:  %{python_module numpy >= 1.25}
 BuildRequires:  %{python_module packaging >= 17}
 BuildRequires:  %{python_module pydicom >= 1}
 BuildRequires:  %{python_module pytest-doctestplus}
@@ -99,6 +107,9 @@ done
 
 %postun
 %{expand:%(for b in %{binaries}; do echo "%%python_uninstall_alternative $b"; done)}
+
+%pre
+%{expand:%(for b in %{binaries}; do echo "%%python_libalternatives_reset_alternative $b"; done)}
 
 %files %{python_files}
 %doc AUTHOR Changelog README.rst
