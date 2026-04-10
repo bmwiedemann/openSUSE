@@ -17,7 +17,7 @@
 
 
 Name:           minicom
-Version:        2.10
+Version:        2.11.1
 Release:        0
 Summary:        A Terminal Program
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ Patch1:         openSUSE-no-root-setup.patch
 Patch3:         minicom-2.8-replace-sigrelse.patch
 # PATCH-FIX-UPSTREAM fix-undefined-reference.patch -- Fix undefined reference to external COLS and LINES
 Patch4:         minicom-2.8-fix-undefined-reference.patch
-Patch5:         minicom-2.10-src-sysdep.h-remove-cfset-i-o-speed-macros-for-glibc.patch
 BuildRequires:  ckermit
 BuildRequires:  gettext-devel
 BuildRequires:  ncurses-devel

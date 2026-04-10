@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 13 21:25:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11.1
+  * Fix build error due to use of BOTHER flag, thus make it
+    optional.
+- Update to version 2.11
+  * Fix baudrate setting on Linux when compiled against glibc >= 2.42
+  * Support multi-column character for window drawing
+  * Add 1843200 to the baud rate list
+  * Allow any baud rate to be set
+  * Updates translations: ka, fr, ro, pl, ko, de, ja, sv
+- Drop not longer needed patch:
+  * minicom-2.10-src-sysdep.h-remove-cfset-i-o-speed-macros-for-glibc.patch
+
+-------------------------------------------------------------------
 Wed Dec 17 22:02:07 UTC 2025 - Richard Weinberger <richard@nod.at>
 
 - add

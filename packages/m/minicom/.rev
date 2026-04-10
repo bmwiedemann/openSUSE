@@ -388,4 +388,12 @@
    * baudrate setting broken on Linux when compiling against glibc &gt;= 2.42</comment>
     <requestid>1326837</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>95d4b682f2173555f71fa26b038b7ddc</srcmd5>
+    <version>2.11.1</version>
+    <time>1775836383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345690</requestid>
+  </revision>
 </revisionlist>
