@@ -1,7 +1,7 @@
 #
 # spec file for package wayfire
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,6 @@ BuildRequires:  hwdata
 BuildRequires:  inotify-tools-devel
 BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
-BuildRequires:  wlroots-devel >= 0.19.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(doctest)
 BuildRequires:  pkgconfig(egl)
@@ -58,6 +57,7 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.12
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wf-config) >= %{major_ver}
+BuildRequires:  pkgconfig(wlroots-0.19)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(yyjson)
