@@ -1,5 +1,75 @@
 -------------------------------------------------------------------
-Tue Feb 10 23:01:22 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+Wed Mar 25 01:39:49 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Fix packages for %suse_version bump (jsc#PED-15854).
+
+-------------------------------------------------------------------
+Mon Mar 23 08:42:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Mar 15 12:42:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Improve accessibility of app folders'
+  + Also respect --force-animation flag in remote sessions
+  + Fix logout action showing up erroneously
+  + Fix keyboard layout changing after leaving password entry
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Update vendored tarballs following upstream changes.
+
+-------------------------------------------------------------------
+Tue Mar  3 17:06:03 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Fix cursor glitch on entry icons
+  + Fix stale folder icon after pinning apps to dash
+  + Improve support for logind inhibitors in system actions
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 13:28:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Allow parents to extend screen time limits
+  + Do not recreate default folders after they were removed
+  + Use gnome-software for offline update support
+  + Improve discrete GPU detection
+  + Fix tab focus behavior in quick settings menu
+  + Handle external/locked keyboard layout sources in indicator
+  + Fix screen time tracking with idle inhibitors
+  + Snap volume slider to 100% when using over-amplification
+  + Do not expose password text in IM pre-edits
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+- Changes from version 50.alpha:
+  + Continue transition from raw event handling to ClutterGesture
+  + Adapt to removal of X11 mutter backend
+  + Lock screen when reaching screen time limit in a child session
+  + Fix activating app-switcher thumbnails via click
+  + Disable internal commands if parental controls are enabled
+  + Fix glitch when (re)expanding notification group
+  + Add extension support to test-tool
+  + Fix lost focus on lock screen after resume from suspend
+  + Correctly expose/hide caps-lock warning to a11y tree
+  + Stop recording when reissuing screencast shortcut
+  + Indicate non-default power mode in top bar
+  + Improve accessibility of icon buttons in screenshot tool
+  + Fix user deselection after idle on login screen
+  + Improve readability of insensitive text
+  + Use default color for muted microphone indicator
+  + Show notification when allowed screen time is almost up
+  + Add async ease variants
+  + Support week-start-day setting
+  + Misc. bug fixes and cleanups
+  + Updated translations
+
+-------------------------------------------------------------------
+Tue Feb 10 10:01:22 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.4:
   + Fix screen time tracking with idle inhibitors

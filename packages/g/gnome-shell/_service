@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-shell.git</param>
-    <param name="revision">49.4</param>
+    <param name="revision">50.0</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -12,22 +12,21 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/libgnome-volume-control.git</param>
-    <param name="revision">664eba4c054ecc4a140f0ef01ae9297422b71fdc</param>
+    <param name="revision">d2442f455844e5292cb4a74ffc66ecc8d7595a9f</param>
     <param name="versionformat">0.gitmodule</param>
   </service>
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/libshew.git</param>
-    <param name="revision">ed782477cb5164320ae4f731d49bc5d475ab2a52</param>
+    <param name="revision">d16afc40412b565d2bbecf80335f54a19a978009</param>
     <param name="versionformat">0.gitmodule</param>
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
-    <param name="compression">zst</param>
+    <param name="compression">xz</param>
   </service>
   <service name="set_version" mode="manual">
     <param name="basename">gnome-shell</param>
   </service>
 </services>
-

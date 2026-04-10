@@ -17,11 +17,11 @@
 
 
 %global __requires_exclude typelib\\(Meta|MetaTest|St|Cogl|Clutter|TelepathyGlib\\)
-%define mutter_api 17
-%define mutter_req 49.0
+%define mutter_api 18
+%define mutter_req 50.rc
 
 Name:           gnome-shell
-Version:        49.4
+Version:        50.0
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -29,9 +29,9 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
 # Source url disabled as we are using a git checkout via source service
-Source0:        %{name}-%{version}.tar.zst
-Source1:        libgnome-volume-control-0.gitmodule.tar.zst
-Source2:        libshew-0.gitmodule.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        libgnome-volume-control-0.gitmodule.tar.xz
+Source2:        libshew-0.gitmodule.tar.xz
 
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
 Source100:      noise-texture.png
@@ -83,14 +83,14 @@ BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.86.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.86.0
-BuildRequires:  pkgconfig(gjs-1.0) >= 1.85.90
+BuildRequires:  pkgconfig(gjs-1.0) >= 1.87.1
 BuildRequires:  pkgconfig(gnome-autoar-0)
 BuildRequires:  pkgconfig(gnome-bluetooth-3.0)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.49.1
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 46.beta
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 50.alpha
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.92
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
@@ -188,7 +188,7 @@ mv libshew-0.gitmodule libshew
 popd
 %autopatch -p1 -M 999
 
-%if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
+%if !0%{?is_opensuse} || 0%{?suse_version} < 1699
 %autopatch -p1 -m 1000
 %endif
 
@@ -267,8 +267,7 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/gnome-shell/perf-background.xml
 %{_datadir}/gnome-shell/gnome-shell-icons.gresource
 %{_mandir}/man?/gnome-shell.?%{ext_man}
-%{_userunitdir}/org.gnome.Shell.target
-%{_userunitdir}/org.gnome.Shell@wayland.service
+%{_userunitdir}/org.gnome.Shell@.service
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.gschema.override
 
 %dir %{_libdir}/gnome-shell/girepository-1.0

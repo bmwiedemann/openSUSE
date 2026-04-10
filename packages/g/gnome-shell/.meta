@@ -3,5 +3,4 @@
   <description>The GNOME Shell redefines user interactions with the GNOME desktop. In
 particular, it offers new paradigms for launching applications, accessing
 documents, and organizing open windows in GNOME.</description>
-  <devel project="GNOME:Factory" package="gnome-shell"/>
 </package>
