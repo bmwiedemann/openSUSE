@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  7 14:59:44 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.4
+- Changes since 6.6.3:
+  * Update version for new release 6.6.4
+  * applets/kicker: fix sidebar in rtl
+  * Disable qmllint for pager applet
+  * applets/kicker: activate SideBarItem on Return
+  * applets/kickoff: a bunch of fixes for ListOfGrids (kde#517693,kde#518170)
+  * Actually start the drag only after a pointer move (kde#509880)
+  * SolidActions: Use absolute path for getting the template file (kde#518317)
+  * kcm/keys: prevent shortcut conflicts during save (BUG: 471370) (kde#471370)
+  * desktop: stop unsorted desktop icons being sorted during drag and drop
+
+-------------------------------------------------------------------
 Wed Mar 18 11:05:41 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.3:
