@@ -1,6 +1,11 @@
 -------------------------------------------------------------------
-Wed Apr 08 18:07:32 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+Thu Apr 09 14:28:59 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
+- Update to version 1+git20260409.83d5678:
+  * Detect uninitialized machine-id
+
+-------------------------------------------------------------------
+Wed Apr 08 18:07:32 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 - Update to version 1+git20260408.db91528:
   * Find /etc/os-release and machine-id in mkosi
   * Drop reference to systemd-experimental
