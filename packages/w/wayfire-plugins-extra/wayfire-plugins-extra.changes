@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 10 03:01:59 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Change from wlroot-devel to pkgconfig(wlroots-0.19). 
+
+-------------------------------------------------------------------
 Thu Oct  2 03:30:41 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Replaced BuildRequires from libboost_system-devel 

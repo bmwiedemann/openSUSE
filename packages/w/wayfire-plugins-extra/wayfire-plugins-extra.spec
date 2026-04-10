@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(giomm-2.4)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(wayfire) >= %{major_ver}
 BuildRequires:  pkgconfig(wf-config)
-BuildRequires:  wlroots-devel >= 0.19.0
+BuildRequires:  pkgconfig(wlroots-0.19)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(nlohmann_json)
