@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Mar 20 15:33:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Mar 15 09:04:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.84.0:
+  + No changes, stable bump only
+
+-------------------------------------------------------------------
+Mon Mar  2 09:44:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.83.91:
+  + lib: Fix missing prototype
+  + spawn: Allow g_get_prgname() being nullptr
+  + build: simdutf: Improve subproject
+  + widget: Skip updating adjustment when unmapped
+  + build: Deprecate gnutls build option
+
+-------------------------------------------------------------------
+Mon Mar 02 09:44:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.83.91:
+  * build: Deprecate gnutls build option
+  * widget: Skip updating adjustment when unmapped
+  * build: simdutf: Improve subproject
+  * spawn: Allow g_get_prgname() being nullptr
+  * lib: Fix missing prototype
+  * build: Post release version bump
+
+-------------------------------------------------------------------
+Fri Feb 13 15:04:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.83.90:
+  * all: Remove SIXEL support from stable branch
+  * lib: Remove VteProperties from branch
+  * lib: Fix HSL colour parsing
+  * emulation: Update xtermcap from xterm
+  * emulation: Fix xtermcap entry
+  * draw: Remove image drawing code
+  * parser: Make unripe dispatch setting DCS-only
+  * widget: Fix fallback backspace binding without pty
+  * parser: Add some more param convenience functions
+  * parser: Add some more known sequences
+  * parser: Add some more known modes
+  * widget: Add API to reset termprop
+  * lib: Consolidate property reset code
+  * widget: Update forbidden PCRE2 flags check
+  * vte: bail from pty_io_write()/io_write_cb() on error conditions
+  * lib: Add flag-enum attributes to flags enums
+  * app: Try window icons again
+  * widget: Fix scrollback-lines value for infinite scrollback
+  * emulation: Fix erase bindings for Ctrl-Backspace
+  * vteaccess-gtk4: Implement granular notifications upon scrolling
+  * vte-access-gtk4: Fix line counting during a line query
+  * vteaccess-gtk4: Return a range per text attribute
+  * emulation: Fix XTRQTCAP response for Backspace key
+  * docs: Update API versions
+
+-------------------------------------------------------------------
 Sun Jan 04 10:10:30 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.82.3:
