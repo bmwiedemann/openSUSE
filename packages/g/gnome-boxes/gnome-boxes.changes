@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:34:42 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sat Mar 14 10:27:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Updated translations.
+- Drop unneeded pkgconfig(gtksourceview-4) BuildRequires.
+- Add AppStream BuildRequires: validate metainfo during build. 
+
+-------------------------------------------------------------------
 Mon Nov 24 16:33:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1:
