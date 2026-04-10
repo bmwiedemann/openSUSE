@@ -1,7 +1,7 @@
 #
 # spec file for package armnn
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,9 +53,9 @@
 %else
 %bcond_with armnn_onnx
 %endif
-%define version_major 25
-%define version_minor 02
-%define version_lib 35
+%define version_major 26
+%define version_minor 01
+%define version_lib 36
 %define version_lib_testutils 3
 %define version_lib_tfliteparser 24
 %define version_lib_onnxparser 24
@@ -68,8 +68,6 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
-# PATCH-FIX-UPSTREAM -
-Patch1:         armnn-fix-gcc15.patch
 BuildRequires:  ComputeLibrary-devel >= %{version_major}.%{version_minor}
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  9 13:14:23 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 26.01:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v26.01
+- Drop upstreamed patch:
+  * armnn-fix-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Sep 25 06:50:02 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on libboost_system-devel, removed on boost 1.89 
