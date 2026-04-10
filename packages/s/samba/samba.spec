@@ -169,7 +169,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.23.5+git.458.200d9061a31
+Version:        4.23.6+git.466.1a6b75cb208
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -714,6 +714,7 @@ CONFIGURE_OPTIONS="\
 	--enable-pmda \
 %endif
 	--enable-fhs \
+  --enable-usretc \
 	--with-cluster-support \
 	--with-socketpath=%{_localstatedir}/lib/ctdb/ctdb.socket \
 %if 0%{?build_ceph}
