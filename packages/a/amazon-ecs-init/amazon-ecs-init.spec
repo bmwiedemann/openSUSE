@@ -144,8 +144,9 @@ Amazon EC2.
 %patch -P1 -p1
 
 %build
+env
 export GO111MODULE="auto"
-./scripts/gobuild.sh suse
+SUSE_ZNOW=0 ./scripts/gobuild.sh suse
 gzip -c scripts/amazon-ecs-init.1 > scripts/amazon-ecs-init.1.gz
 
 %install

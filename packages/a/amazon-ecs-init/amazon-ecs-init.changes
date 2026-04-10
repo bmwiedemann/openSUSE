@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  7 14:50:26 UTC 2026 - Joachim Gleissner <jgleissner@suse.com>
+
+- Do not use -z now linker flag (module nvml has unresolved symobls
+  wich are provided by libnvidia-ml, so lazy linking is required
+  otherwise binary fails to load)
+
+-------------------------------------------------------------------
 Tue Mar 31 11:54:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.102.1

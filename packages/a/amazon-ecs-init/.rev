@@ -163,4 +163,12 @@
 - Switch to systemd-tmpfiles to store runtime data (jsc#PED-14842) (forwarded request 1343899 from glaubitz)</comment>
     <requestid>1343906</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>27e0e25cdb1ec760cffdb1b94185a4ea</srcmd5>
+    <version>1.102.1</version>
+    <time>1775836361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345670</requestid>
+  </revision>
 </revisionlist>
