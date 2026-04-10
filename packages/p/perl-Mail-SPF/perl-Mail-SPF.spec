@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-SPF
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define cpan_name Mail-SPF
 Name:           perl-Mail-SPF
-Version:        3.202.505.50
+Version:        3.202.603.310
 Release:        0
-# 3.20250505 -> normalize -> 3.202.505.50
-%define cpan_version 3.20250505
+# 3.20260331 -> normalize -> 3.202.603.310
+%define cpan_version 3.20260331
 License:        BSD-3-Clause
 Summary:        An object-oriented implementation of Sender Policy Framework
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/A/AD/ADAVIS/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MB/MBRADSHAW/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
 Patch0:         skip_test.patch

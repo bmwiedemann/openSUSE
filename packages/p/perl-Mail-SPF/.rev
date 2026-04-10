@@ -225,4 +225,16 @@ On Wednesday 19 September 2012, Julian Mehnle wrote:
    see /usr/share/doc/packages/perl-Mail-SPF/Changes</comment>
     <requestid>1309352</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f3731b444482c32148f47e6053506d2d</srcmd5>
+    <version>3.202.603.310</version>
+    <time>1775835787</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.202.603.310 (3.20260331)
+   see /usr/share/doc/packages/perl-Mail-SPF/Changes
+  3.20260331 2026-04-01 Australia/Melbourne
+    ** Thanks to Giovanni &lt;g.bechis@snb.it&gt; for this change:
+    - Do not check for multiple CNAMEs if the included domain is a macro</comment>
+    <requestid>1345215</requestid>
+  </revision>
 </revisionlist>
