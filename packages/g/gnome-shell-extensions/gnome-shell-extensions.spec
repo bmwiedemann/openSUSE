@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extensions
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,19 +19,19 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 
-# PATCH-FEATURE-OPENSUSE gnome-shell-add-app-to-desktop.patch bnc#870580 dliang@suse.com --  allow adding app shortcut to desktop easily.
-Patch1:         gnome-shell-add-app-to-desktop.patch
-
 ## NOTE keep SLE Classic patch at the bottom
+# PATCH-FEATURE-SLE gnome-shell-add-app-to-desktop.patch bnc#870580 dliang@suse.com --  allow adding app shortcut to desktop easily.
+Patch1000:      gnome-shell-add-app-to-desktop.patch
+
 BuildRequires:  fdupes
 # Needed for directory ownership
 BuildRequires:  gnome-shell
@@ -103,7 +103,12 @@ This GNOME Shell extension displays system usage information in the top bar.
 %lang_package -n %{name}-common
 
 %prep
-%autosetup -p1
+%autosetup -N
+%autopatch -p1 -M 999
+
+%if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
+%autopatch -p1 -m 1000
+%endif
 
 # In openSUSE GNOME, we don't launch gnome-session directly, but wrap this through a shell script, /usr/bin/gnome
 sed -i "s:Exec=gnome-session:Exec=gnome:g" data/gnome-classic.desktop.in
@@ -151,8 +156,10 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_datadir}/gnome-shell/modes
 %{_datadir}/gnome-shell/modes/classic.json
 %dir %{_datadir}/wayland-sessions
-%{_datadir}/wayland-sessions/gnome-classic-wayland.desktop
 %{_datadir}/wayland-sessions/gnome-classic.desktop
+%dir %{_userunitdir}/gnome-session@gnome-classic.target.d
+%{_userunitdir}/gnome-session@gnome-classic.target.d/gnome-classic.session.conf
+%{_datadir}/gnome-session/sessions/gnome-classic.session
 %if 0%{?sle_version}
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/default.desktop
