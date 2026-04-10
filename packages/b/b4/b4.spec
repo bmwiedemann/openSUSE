@@ -24,24 +24,21 @@
 %global pprefix python311
 %endif
 Name:           b4
-Version:        0.14.3
+Version:        0.15.2
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        https://github.com/mricon/b4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-ez-do-a-patch-id-match-when-pulling-in-trailer-updat.patch
-Patch1:         0001-dig-initial-b4-dig-implementation.patch
-Patch2:         0002-dig-fix-wrong-msgid-output-for-matches.patch
-Patch3:         0003-dig-actually-handle-commitish-strings.patch
-Patch4:         0004-dig-first-round-of-refinement-to-dig.patch
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module dkimpy >= 1.0.5}
 BuildRequires:  %{python_module patatt >= 0.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.24.0}
+BuildRequires:  %{python_module textual}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
@@ -78,7 +75,7 @@ sed -i.old '1{/#!.*/d}' src/b4/*.py
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-install -m644 -Dt %{buildroot}%{_mandir}/man5/ src/b4/man/b4.5
+install -m644 -Dt %{buildroot}%{_mandir}/man1/ src/b4/man/b4.1
 
 %check
 %pytest --ignore=build
@@ -86,14 +83,14 @@ export PYTHONPATH="./build/lib"
 THEIRS=`%{buildroot}/%{_bindir}/b4 --version`
 OURS=`sed -n "s/__VERSION__ = '\(.*\)'/\1/p" src/b4/__init__.py`
 test "$THEIRS" = "$OURS"
-%{buildroot}/%{_bindir}/b4 --help | grep -q 'mbox,am,shazam,pr'
-%{buildroot}/%{_bindir}/b4 mbox abc |& grep -q 'Grabbing thread from lore.kernel.org/all/abc/t.mbox.gz'
+%{buildroot}/%{_bindir}/b4 --help | grep -Fq 'mbox,am,shazam,review,pr'
+%{buildroot}/%{_bindir}/b4 mbox abc |& grep -Fq 'Looking up https://lore.kernel.org/all/abc/'
 
 %files
 %doc README.rst
 %license COPYING
 %{_bindir}/%{name}
-%{_mandir}/man5/b4.5%{?ext_man}
+%{_mandir}/man1/b4.1%{?ext_man}
 %{python_sitelib}/%{name}*
 
 %changelog

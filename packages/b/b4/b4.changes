@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Apr 10 06:30:23 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.15.2
+  * review: show visual cue for patches unchanged between revisions --
+    when upgrading a series, identical patches now display a dim "≡"
+    marker so you can focus your review on patches that actually changed
+  * review: prevent double-sending of reviews carried over from a prior
+    revision after a series upgrade
+  * review: fix crash when stored message-id points to wrong version
+    thread after a series upgrade
+  * review: fix IndexError crash when toggling followups
+  * review: fix crash when background rescan completes while a modal
+    screen is active
+  * review: fix replies to additional patches being treated as inline
+    reviews on the wrong patch
+  * review: fix range-diff failing to find previous series revision
+  * review: fix upgrade branches polluting tracking DB with wrong
+    change*id
+  * review: show per-series error details after "Update all" instead of
+    only a total error count
+  * mbox: don't split on "---" in free-form reply messages (fixes body
+    content being silently discarded when encountering a "---" marker)
+
+-------------------------------------------------------------------
+Wed Mar 25 09:56:19 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.15.1
+  * review: fix CI results list not scrolling to follow cursor
+  * review: fix patch list scrolling on large series
+  * Fix TUI tests failing when run outside a git repository
+  * docs: fix incorrect b4 dig examples in release notes
+- drop 0001-src-b4-ty-fix-for-no-.git.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Mar 24 07:27:30 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.15.0
+  * Series tracking and lifecycle management
+  * Revision discovery and upgrades
+  * Inline commenting
+  * AI agent integration
+  * Per-patch state machine
+  * Three take strategies
+  * Snooze
+  * Cross-machine synchronisation
+  * Mutt-style thread viewer
+  * Worktree support
+  * Patchwork state synchronisation
+  * Prior review context
+  * Quick-reply
+  * b4 dig — trace applied commits back to mailing list submissions
+  * b4 shazam — three-way merge and conflict resolution
+  * b4 prep — pre/post history-rewrite hooks
+- add 0001-src-b4-ty-fix-for-no-.git.patch
+- remove (they are upstream):
+  * 0001-ez-do-a-patch-id-match-when-pulling-in-trailer-updat.patch
+  * 0001-dig-initial-b4-dig-implementation.patch
+  * 0002-dig-fix-wrong-msgid-output-for-matches.patch
+  * 0003-dig-actually-handle-commitish-strings.patch
+  * 0004-dig-first-round-of-refinement-to-dig.patch
+
+-------------------------------------------------------------------
 Tue Oct 14 06:11:17 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - add dig support
