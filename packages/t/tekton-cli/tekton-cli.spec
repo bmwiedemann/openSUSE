@@ -1,7 +1,7 @@
 #
 # spec file for package tekton-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name tkn
 
 Name:           tekton-cli
-Version:        0.43.0
+Version:        0.44.1
 Release:        0
 Summary:        CLI for interacting with the Tekton CD system
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
+BuildRequires:  go1.25 >= 1.25.6
 BuildRequires:  zsh
 Provides:       tkn = %{version}
 
