@@ -311,4 +311,12 @@
     <comment>Plasma 6.6.3. Built, but not install tested. plasma6-keyboard and knighttime redone (forwarded request 1340928 from Vogtinator)</comment>
     <requestid>1340939</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>8622fba5c133fc48447eb2c79d445497</srcmd5>
+    <version>6.6.4</version>
+    <time>1775836059</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.6.4. ksshaskpass is now in /usr/bin/ as well, for consistency with upstream and other distros. (forwarded request 1345504 from Vogtinator)</comment>
+    <requestid>1345601</requestid>
+  </revision>
 </revisionlist>
