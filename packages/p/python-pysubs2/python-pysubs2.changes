@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 10 13:50:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * TMP subtitle writer now supports newlines, patch by CK-Explorer
+  * TTML reader now accepts optional parameter
+    ignore_par_time_offset=True for compatibility with Apple Music TTML
+    format (Issue #108)
+  * Refactoring to use pathlib.Path for paths
+  * Type hints improvements
+  * CLI tests properly get path to Python binary
+  * Added support for Python 3.14
+  * Migrated from legacy Setuptools project to uv, hatch and
+    pyproject.toml
+- Drop upstreamed python_executable.patch.
+
+-------------------------------------------------------------------
 Thu Feb 20 13:51:37 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add python_executable.patch (from gh#tkarabela/pysubs2!104) to
