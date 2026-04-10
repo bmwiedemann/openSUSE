@@ -190,4 +190,12 @@
   + Updated translations. (forwarded request 1329790 from iznogood)</comment>
     <requestid>1330184</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a67a4859b7d7b57dab7b72c4b93fca0f</srcmd5>
+    <version>1.6.0</version>
+    <time>1775835947</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345369</requestid>
+  </revision>
 </revisionlist>

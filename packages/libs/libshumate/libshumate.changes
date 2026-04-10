@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:06:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 12:33:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.0:
+  + No changes, stable version bump only.
+
+-------------------------------------------------------------------
+Sat Feb 28 13:00:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 11 12:40:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.beta:
+  + Fixes to the vector renderer, added missing @since annotations,
+    add get_type function, add transfer=none to annotation, mark
+    agument as const
+- Changes from version 1.6.alpha:
+  + Use 'find_program' instead of 'dependency' for vapigen
+  + Implement global-state expressions for vector stylesheets
+  + Add 'changed' signal for viewport (consolidating latitude,
+    longitude, zoom level)
+  + Fix some memory leaks
+  + Remove option to build without the vector renderer
+
+-------------------------------------------------------------------
 Thu Jan 29 09:56:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.5.3:
