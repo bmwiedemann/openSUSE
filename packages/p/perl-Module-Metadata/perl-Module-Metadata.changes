@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  5 06:22:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.000039
+   see /usr/share/doc/packages/perl-Module-Metadata/Changes
+
+  1.000039  2026-04-03 20:54:53Z
+    - adds recognition of attributes in "class" declarations (Erik Huelsmann,
+      #39)
+
+-------------------------------------------------------------------
 Sat Apr 29 03:12:16 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.000038

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Metadata
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %define cpan_name Module-Metadata
 Name:           perl-Module-Metadata
-Version:        1.000038
+Version:        1.000039
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Gather package and POD information from perl module files
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -40,7 +41,7 @@ determining the version of a module, the '$VERSION' assignment is 'eval'ed,
 as is traditional in the CPAN toolchain.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

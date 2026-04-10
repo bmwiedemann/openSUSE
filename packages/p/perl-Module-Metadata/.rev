@@ -63,4 +63,16 @@
     <comment></comment>
     <requestid>1084435</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e69e4968b6e6649bd7f5e12e1400c836</srcmd5>
+    <version>1.000039</version>
+    <time>1775835788</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.000039
+   see /usr/share/doc/packages/perl-Module-Metadata/Changes
+  1.000039  2026-04-03 20:54:53Z
+    - adds recognition of attributes in &quot;class&quot; declarations (Erik Huelsmann,
+      #39)</comment>
+    <requestid>1345221</requestid>
+  </revision>
 </revisionlist>
