@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 30 12:44:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Skip test_backend_gtk3.py::test_save_figure_return, fails with
+  glib 2.88 and upstream is going to filter the warning anyway
+
+-------------------------------------------------------------------
 Mon Mar  9 11:34:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Skip test_backend_gtk3.py::test_correct_key, upstream dropped the

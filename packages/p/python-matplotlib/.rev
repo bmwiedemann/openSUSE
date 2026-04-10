@@ -1143,4 +1143,13 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment></comment>
     <requestid>1338022</requestid>
   </revision>
+  <revision rev="130" vrev="6">
+    <srcmd5>d5d7cb7e9623c7890aa9582ff1eccba1</srcmd5>
+    <version>3.10.8</version>
+    <time>1775835911</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_backend_gtk3.py::test_save_figure_return, fails with
+  glib 2.88 and upstream is going to filter the warning anyway</comment>
+    <requestid>1343667</requestid>
+  </revision>
 </revisionlist>
