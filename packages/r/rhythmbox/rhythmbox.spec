@@ -1,7 +1,7 @@
 #
 # spec file for package rhythmbox
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rhythmbox
-Version:        3.4.8
+Version:        3.4.9
 Release:        0
 Summary:        GNOME Music Management Application
 License:        GPL-2.0-or-later
@@ -37,30 +37,35 @@ BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  vala
 BuildRequires:  yelp-tools
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.18.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(girepository-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.0
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.0
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.92
-BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 0.11.02
-BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 0.11.92
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 0.11.92
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 0.11.92
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
-BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.4.0
+BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.4.0
+BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.4.0
+BuildRequires:  pkgconfig(gstreamer-controller-1.0) >= 1.4.0
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.4.0
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.4.0
+BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= 1.4.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16.0
+BuildRequires:  pkgconfig(gudev-1.0) >= 143
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libbrasero-media3)
 BuildRequires:  pkgconfig(libdmapsharing-4.0)
 BuildRequires:  pkgconfig(libgpod-1.0)
 BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libpeas-1.0) >= 0.7.3
-BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 0.7.3
+BuildRequires:  pkgconfig(libpeas-1.0) >= 1.38
+BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.38
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.7
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
-BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(tdb)
+BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(pygobject-3.0) >= 3.53.0
+BuildRequires:  pkgconfig(tdb) >= 1.2.6
 BuildRequires:  pkgconfig(totem-plparser) >= 3.2.0
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good

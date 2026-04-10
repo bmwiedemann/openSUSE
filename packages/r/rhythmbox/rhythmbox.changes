@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 13 11:21:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.4.9:
+  + Python plugin loader now works with new pygobject/libpeas
+  + New playback backend, replacing the old crossfading backend
+  + Issues fixed:
+    - apidoc not installed
+    - Error activate plugins: libpeas: Could not load plugin loader
+      'python3'
+    - Constant CPU usage and wakeups while idle with an Android
+      device plugged in
+    - GLib2 changed the way g_values copy GStrings. This breaks
+      rhythmbox
+- Add pkgconfig(cairo), pkgconfig(pango) and
+  pkgconfig(girepository-2.0) BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
 Fri May 23 16:06:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires. Replace with
