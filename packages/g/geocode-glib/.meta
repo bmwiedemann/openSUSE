@@ -6,5 +6,4 @@ Finder APIs, as described at http://developer.yahoo.com/geo/placefinder/
 The Place Finder web service allows to do geocoding (finding longitude
 and latitude from an address), and reverse geocoding (finding an address
 from coordinates).</description>
-  <devel project="GNOME:Factory" package="geocode-glib"/>
 </package>

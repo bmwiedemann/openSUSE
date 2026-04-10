@@ -16,18 +16,10 @@
 #
 
 
-%define flavor @BUILD_FLAVOR@%nil
-%if "%{flavor}" == "soup2"
-%define nsuffix -soup2
-%define shlib   libgeocode-glib0
-%define typelib typelib-1_0-GeocodeGlib-1_0
-%else
 %define shlib   libgeocode-glib-2-0
 %define typelib typelib-1_0-GeocodeGlib-2_0
 
-%endif
-
-Name:           geocode-glib%{?nsuffix}
+Name:           geocode-glib
 Version:        3.26.4
 Release:        0
 Summary:        Convenience library for the Yahoo! Place Finder APIs
@@ -35,7 +27,6 @@ License:        LGPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gnome.org/
 Source0:        https://download.gnome.org/sources/geocode-glib/3.26/geocode-glib-%{version}.tar.xz
-Source1:        baselibs.conf
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
@@ -44,11 +35,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.34
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.99.2
-%if "%{flavor}" == "soup2"
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
-%else
 BuildRequires:  pkgconfig(libsoup-3.0)
-%endif
 
 %description
 The geocode-glib library is a convenience library for the Yahoo! Place
@@ -107,34 +94,24 @@ This package contains development files needed to develop with the
 geocode-glib library.
 
 %prep
-%setup -q -n geocode-glib-%{version}
+%autosetup -p1
 
 %build
 # FIXME Please investigate if we should package installed-tests
 %meson \
 	-Denable-gtk-doc=true \
 	-Denable-installed-tests=false \
-%if "%{flavor}" == "soup2"
-	-Dsoup2=true \
-%else
 	-Dsoup2=false \
-%endif
 	%{nil}
 %meson_build
 
 %install
 %meson_install
-# we package the icons as part of the ""-flavor package
-%if "%{flavor}" != ""
-rm -rf %{buildroot}%{_datadir}/icons/hicolor
-%endif
 
 %ldconfig_scriptlets -n %{shlib}
 
-%if "%{flavor}" == ""
 %files
 %{_datadir}/icons/hicolor/
-%endif
 
 %files -n %{shlib}
 %license COPYING.LIB

@@ -277,4 +277,12 @@
     <comment>New stable release (forwarded request 994142 from iznogood)</comment>
     <requestid>994159</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>3247b19b87d75db0e2176cc351d72514</srcmd5>
+    <version>3.26.4</version>
+    <time>1775836029</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345431</requestid>
+  </revision>
 </revisionlist>
