@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-clocks
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,20 +18,21 @@
 
 
 Name:           gnome-clocks
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        Clock application designed for GNOME 3
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.55.1
+BuildRequires:  vorbis-tools
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(geocode-glib-2.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58
@@ -42,7 +43,9 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsound) >= 0.98
 BuildRequires:  pkgconfig(gtk4) >= 4.5
 BuildRequires:  pkgconfig(gweather4) >= 3.32.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.0
+BuildRequires:  pkgconfig(icu-i18n) >= 60.0
+BuildRequires:  pkgconfig(icu-uc) >= 60.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.rc
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.4
 
 %description
@@ -81,11 +84,12 @@ search results from GNOME Clocks.
 %doc README.md NEWS
 %doc %{_datadir}/help/C/gnome-clocks/
 %{_bindir}/%{name}
-%{_datadir}/metainfo/org.gnome.clocks.metainfo.xml
+%{_datadir}/applications/org.gnome.clocks.desktop
 %{_datadir}/dbus-1/services/org.gnome.clocks.service
 %{_datadir}/glib-2.0/schemas/org.gnome.clocks.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.clocks*
-%{_datadir}/applications/org.gnome.clocks.desktop
+%{_datadir}/metainfo/org.gnome.clocks.metainfo.xml
+%{_datadir}/sounds/gnome/
 
 %files -n gnome-shell-search-provider-gnome-clocks
 %dir %{_datadir}/gnome-shell

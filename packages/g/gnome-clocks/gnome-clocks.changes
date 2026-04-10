@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:36:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Thu Mar 12 08:06:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.0:
+  + gresources: Use preprocess=xml-stripblanks
+  + build: use oggenc from vorbis-tools instead of ffmpeg
+  + Updated translations.
+- BuildRequire vorbis-tools instead of %ffmpeg_pref: follow
+  upstream changes. This also allows us to drop the BuildConflict
+  on %{ffmpeg_pref}-mini-libs.
+
+-------------------------------------------------------------------
+Tue Feb 10 08:45:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + New alarms default to the Toys sound
+  + Fix duplicate timer notifications
+  + Fix timers going off immediately
+  + Multiple code cleanups and simplifications
+  + Many GObject properties are now construct-only
+  + Many GObject properties are now read-only
+- Changes from version 50.alpha:
+  + General improvements and bug fixes
+  + Port shortcuts dialog to AdwShortcutsDialog
+  + Add support for customizing the alarm bell. Requires ffmpeg on
+    compile time
+  + UI improvements for the stopwatch view
+  + Use icu-i18n and icu-uc to format time spans
+  + Disable vala C warnings
+  + Link to static.gnome.org for app screenshots
+  + Bugs fixed:
+    - Animate transition to lap table in stop watch
+    - Don’t show timer lapsed notification when Clocks is focused
+    - i18n: sentence is split
+    - The New Timer dialog isn't scrollable
+  + Updated translations.
+- Add pkgconfig(icu-i18n) and pkgconfig(icu-uc) BuildRequires: new
+  dependencies.
+- Add %ffmpeg_pref BuildRequires: build requires /usr/bin/ffmpeg
+  and we want to use the system default ffmpeg version.
+- BuildConflicts %{ffmpeg_pref}-mini-libs, as we need to ensure we
+  have the full library set. The mini is fine for linking alone,
+  but gnome-clocks wants to test things.
+
+-------------------------------------------------------------------
 Mon Oct 20 18:45:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace appstream-glib with AppStream BuildRequires, meson setup
