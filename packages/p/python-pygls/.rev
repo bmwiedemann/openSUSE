@@ -68,4 +68,22 @@
     JsonRPCProtocol</comment>
     <requestid>1337528</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9618fbad5c92f751be3c1e55c530679</srcmd5>
+    <version>2.1.1</version>
+    <time>1775857498</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.1:
+  * feat(ServerTextPosition): implement comparison operators
+  * chore: add `license` field to pyproject.toml
+- update to 2.1.0:
+  * Normalize percent-encoded URIs used as workspace dict keys
+  * TextDocument ergonomics improvements
+  * Fix get_capability typing overloads
+  * Add Galaxy Language Server to Implementations.md
+  * build(deps): bump the pip group across 2 directories with 1
+    update
+  * build(deps): release v2.1.0 and upgrade dev deps</comment>
+    <requestid>1345937</requestid>
+  </revision>
 </revisionlist>

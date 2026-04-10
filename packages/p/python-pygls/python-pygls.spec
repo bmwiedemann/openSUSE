@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygls
-Version:        2.0.1
+Version:        2.1.1
 Release:        0
 Summary:        A pythonic generic language server
 License:        Apache-2.0
 URL:            https://github.com/openlawlibrary/pygls
 Source:         https://github.com/openlawlibrary/pygls/archive/refs/tags/v%{version}.tar.gz#/pygls-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module pytest}
 Requires:       python-attrs >= 24.3.0
 Requires:       python-cattrs >= 23.1.2
 Requires:       python-lsprotocol = 2025.0.0
-Requires:       python-websockets
+Requires:       python-websockets >= 13.0
 BuildArch:      noarch
 %python_subpackages
 

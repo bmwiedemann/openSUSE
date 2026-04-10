@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:13:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * feat(ServerTextPosition): implement comparison operators
+  * chore: add `license` field to pyproject.toml
+- update to 2.1.0:
+  * Normalize percent-encoded URIs used as workspace dict keys
+  * TextDocument ergonomics improvements
+  * Fix get_capability typing overloads
+  * Add Galaxy Language Server to Implementations.md
+  * build(deps): bump the pip group across 2 directories with 1
+    update
+  * build(deps): release v2.1.0 and upgrade dev deps
+
+-------------------------------------------------------------------
 Sun Mar  8 21:06:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.1:
