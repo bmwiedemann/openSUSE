@@ -291,4 +291,13 @@
     - Remove TODO from cow test</comment>
     <requestid>1338058</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3b60cca3d603485486a6165e5379799c</srcmd5>
+    <version>0.500.0</version>
+    <time>1775835779</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.500.0 (0.50)
+   see /usr/share/doc/packages/perl-Clone/Changes</comment>
+    <requestid>1345212</requestid>
+  </revision>
 </revisionlist>

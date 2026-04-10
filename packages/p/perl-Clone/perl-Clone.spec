@@ -18,10 +18,10 @@
 
 %define cpan_name Clone
 Name:           perl-Clone
-Version:        0.480.0
+Version:        0.500.0
 Release:        0
-# 0.48 -> normalize -> 0.480.0
-%define cpan_version 0.48
+# 0.50 -> normalize -> 0.500.0
+%define cpan_version 0.50
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Recursively copy Perl datatypes
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -68,6 +68,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README.md
+%doc AI_POLICY.md Changes README.md SECURITY.md
 
 %changelog
