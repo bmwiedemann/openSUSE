@@ -18,10 +18,10 @@
 
 %define cpan_name TimeDate
 Name:           perl-TimeDate
-Version:        2.340.0
+Version:        2.350.0
 Release:        0
-# 2.34 -> normalize -> 2.340.0
-%define cpan_version 2.34
+# 2.35 -> normalize -> 2.350.0
+%define cpan_version 2.35
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Date and time formatting subroutines
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -57,6 +57,7 @@ Provides:       perl(Date::Language::Italian) = %{version}
 Provides:       perl(Date::Language::Norwegian) = %{version}
 Provides:       perl(Date::Language::Occitan) = %{version}
 Provides:       perl(Date::Language::Oromo) = %{version}
+Provides:       perl(Date::Language::Portuguese) = %{version}
 Provides:       perl(Date::Language::Romanian) = %{version}
 Provides:       perl(Date::Language::Russian) = %{version}
 Provides:       perl(Date::Language::Russian_cp1251) = %{version}
@@ -109,7 +110,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
+%doc Changes README SECURITY.md
 %license LICENSE
 
 %changelog

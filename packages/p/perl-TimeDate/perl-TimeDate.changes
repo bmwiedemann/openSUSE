@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Mar 23 06:25:07 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.350.0 (2.35)
+   see /usr/share/doc/packages/perl-TimeDate/Changes
+
+  2.35      2026-03-20 21:44:45-06:00 America/Denver
+
+  2.34_03   2026-03-18 22:12:43-06:00 America/Denver (TRIAL RELEASE)
+
+    * test: document and pin RT#84075/GH#12 fix in regression suite
+    * fix: add NST, NFT, and NDT (Newfoundland) timezone support
+    * fix: add ICT and PHT timezone support
+    * fix: restore rebase regressions and clarify first-century limitation
+    * fix: normalize two-digit years in str2time to avoid Time::Local windowing mismatch
+    * fix: use standard 2-letter German weekday abbreviations
+    * fix: detect timegm/timelocal overflow for far-future dates (RT#88777)
+    * test: add regression tests for RT#88777 (negative epoch for far-future dates)
+    * fix: use stored epoch in format_Z/format_z to fix DST fall-back timezone name
+    * fix: document MSK timezone history and add regression test (RT#98949)
+    * fix: strftime %s with timezone now returns correct epoch (RT#52387)
+    * test: add POD validity regression test for RT#53557
+    * fix: include day in year-inference for dates without an explicit year
+    * fix: document MSK timezone history and add regression test (RT#81350)
+    * ci: install Pod::Checker via cpm in Linux CI
+    * docs: add SECURITY.md with vulnerability reporting policy
+    * test: add regression tests for RT#57800 / GH#3 (numeric m/d/yyyy pre-1970 dates)
+    * fix: normalize year offset for dates before 1901 in strptime (RT#106105)
+    * fix: reject timezone-only inputs in strptime (RT#70650)
+    * test: add failing tests for RT#70650 (ludicrous date parsing)
+    * fix: prevent negative month from strptime for 6-digit inputs like '199001'
+    * test: add Portuguese format and round-trip tests from PR #61
+    * fix: treat number > 31 after month name as year, not day (GH#2)
+    * fix: translate timezone abbreviations (%Z) in language-specific formatting
+    * fix: tz_name() offset in seconds was treated as minutes (RT#59298)
+    * docs: fix ISO-8601 example date in Date::Parse POD (issue #6)
+    * feat: add optional LANGUAGE parameter to time2str()
+    * feat: allow str2time() to accept a custom reference epoch (RT#64789)
+    * docs: clarify strptime() return format for ISO 8601 dates (issue #44)
+    * feat: add Portuguese language module
+    * fix: prefer CEST over MEST as canonical Central European Summer Time name
+    * fix: add ICT and PHT timezone abbreviations to Time::Zone (RT#123247)
+    * fix: standardize Greek.pm to use native Unicode instead of \x{} escapes
+    * test: add regression test for RT#105031 / GH#17 (1965-12-31 maps to 2065)
+    * fix: declare Carp as runtime prerequisite in Makefile.PL
+    * fix: infer current year for future months when no year given (RT#92611)
+    * test: add regression tests for RT#53413 (4-digit year mangling)
+    * fix: handle leap day in year-only date parsing test
+    * fix: support IANA timezone names in tz2zone and tz_offset (RT#76968)
+    * fix: preserve comma as ISO 8601 decimal separator in strptime
+    * fix: add French day ordinal suffix in format_o
+    * fix: make tz_name tests deterministic across DST transitions
+
+-------------------------------------------------------------------
 Sat Feb 28 05:56:24 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.340.0 (2.34)

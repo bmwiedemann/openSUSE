@@ -267,4 +267,41 @@
    see /usr/share/doc/packages/perl-TimeDate/Changes</comment>
     <requestid>1338069</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fd64707903f99217be9af8b167fdd909</srcmd5>
+    <version>2.350.0</version>
+    <time>1775835772</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.350.0 (2.35)
+   see /usr/share/doc/packages/perl-TimeDate/Changes
+  2.35      2026-03-20 21:44:45-06:00 America/Denver
+  2.34_03   2026-03-18 22:12:43-06:00 America/Denver (TRIAL RELEASE)
+    * test: document and pin RT#84075/GH#12 fix in regression suite
+    * fix: add NST, NFT, and NDT (Newfoundland) timezone support
+    * fix: add ICT and PHT timezone support
+    * fix: restore rebase regressions and clarify first-century limitation
+    * fix: normalize two-digit years in str2time to avoid Time::Local windowing mismatch
+    * fix: use standard 2-letter German weekday abbreviations
+    * fix: detect timegm/timelocal overflow for far-future dates (RT#88777)
+    * test: add regression tests for RT#88777 (negative epoch for far-future dates)
+    * fix: use stored epoch in format_Z/format_z to fix DST fall-back timezone name
+    * fix: document MSK timezone history and add regression test (RT#98949)
+    * fix: strftime %s with timezone now returns correct epoch (RT#52387)
+    * test: add POD validity regression test for RT#53557
+    * fix: include day in year-inference for dates without an explicit year
+    * fix: document MSK timezone history and add regression test (RT#81350)
+    * ci: install Pod::Checker via cpm in Linux CI
+    * docs: add SECURITY.md with vulnerability reporting policy
+    * test: add regression tests for RT#57800 / GH#3 (numeric m/d/yyyy pre-1970 dates)
+    * fix: normalize year offset for dates before 1901 in strptime (RT#106105)
+    * fix: reject timezone-only inputs in strptime (RT#70650)
+    * test: add failing tests for RT#70650 (ludicrous date parsing)
+    * fix: prevent negative month from strptime for 6-digit inputs like '199001'
+    * test: add Portuguese format and round-trip tests from PR #61
+    * fix: treat number &gt; 31 after month name as year, not day (GH#2)
+    * fix: translate timezone abbreviations (%Z) in language-specific formatting
+    * fix: tz_name() offset in seconds was treated as minutes (RT#59298)
+    * docs: fix ISO-8601 example date in Date::Parse POD (issue #6)</comment>
+    <requestid>1345209</requestid>
+  </revision>
 </revisionlist>
