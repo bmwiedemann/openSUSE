@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:38:49 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.26.2 (released 2026-04-07) includes security fixes to the go
+  command, the compiler, and the archive/tar, crypto/tls,
+  crypto/x509, html/template, and os packages, as well as bug fixes
+  to the go command, the go fix command, the compiler, the linker,
+  the runtime, and the net, net/http, and net/url packages.
+  Refs boo#1255111 go1.26 release tracking
+  CVE-2026-27140 CVE-2026-27143 CVE-2026-27144 CVE-2026-32280 CVE-2026-32281 CVE-2026-32282 CVE-2026-32283 CVE-2026-32288 CVE-2026-32289 CVE-2026-33810
+  * go#78422 go#78335 boo#1261653 security: fix CVE-2026-27140: cmd/go: trust layer bypass when using cgo and SWIG
+  * go#78420 go#78333 boo#1261654 security: fix CVE-2026-27143: cmd/compile: possible memory corruption after bound check elimination
+  * go#78424 go#78371 boo#1261655 security: fix CVE-2026-27144: cmd/compile: no-op interface conversion bypasses overlap checking
+  * go#78362 go#78282 boo#1261656 security: fix CVE-2026-32280: crypto/x509: unexpected work during chain building
+  * go#78360 go#78281 boo#1261657 security: fix CVE-2026-32281: crypto/x509: inefficient policy validation
+  * go#78426 go#78293 boo#1261658 security: fix CVE-2026-32282: os: Root.Chmod can follow symlinks out of the root on Linux
+  * go#78428 go#78334 boo#1261659 security: fix CVE-2026-32283: crypto/tls: multiple key update handshake messages can cause connection to deadlock
+  * go#78415 go#78301 boo#1261660 security: fix CVE-2026-32288: archive/tar: unbounded allocation when parsing old format GNU sparse map
+  * go#78417 go#78331 boo#1261661 security: fix CVE-2026-32289: html/template: JS template literal context incorrectly tracked
+  * go#78418 go#78332 boo#1261662 security: fix CVE-2026-33810 crypto/x509: excluded DNS constraints not properly applied to wildcard domains
+  * go#77838 cmd/compile: internal compiler error: panic: interface conversion: ir.Node is *ir.IndexExpr, not *ir.StarExpr
+  * go#77856 runtime: allocation in printfloat64 causes throw
+  * go#77885 net: ReadMsgUDP/WriteMsgUDP fails with WSAEFAULT on Windows when oob is empty but non-nil
+  * go#77922 cmd/compile: internal compiler error len larger than cap for OSLICEHEADER
+  * go#77950 net/http: package doc comment is missing
+  * go#78019 net/http: race condition on windows when using os.File as request body
+  * go#78041 runtime: Windows crash with Go 1.26.0, 1.26.1
+  * go#78058 cmd/go: DiskCache.Trim on macOS often blocks go command for >20 minutes
+  * go#78087 runtime: go runtime.GC() can cause segfault with -race builds
+  * go#78111 net/url: url.Parse in 1.26 breaks mongodb connection string parsing with multiple hosts
+  * go#78191 cmd/fix: panics with "package path has no import prefix"
+  * go#78239 cmd/link: panic on darwin/arm64 in go1.26.0: nil pointer deref in arm64.gensymlate / SetSymSect
+  * go#78253 doc, x/website: go.dev/doc/godebug page contains "{{raw" due to misconfigured template use
+  * go#78319 test: issue46234.go failures with "command exceeded time limit"
+  * go#78330 net/url: package docs are missing (detached from package statement)
+
+-------------------------------------------------------------------
 Fri Mar  6 00:26:39 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.26.1 (released 2026-03-05) includes security fixes to the
