@@ -18,4 +18,12 @@
 - Change License to OFL, following upstream (forwarded request 1305150 from dimstar)</comment>
     <requestid>1305507</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34aa63512b92192f3a3495e5ba501c32</srcmd5>
+    <version>50.0</version>
+    <time>1775835920</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345341</requestid>
+  </revision>
 </revisionlist>
