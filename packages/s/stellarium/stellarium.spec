@@ -1,7 +1,7 @@
 #
 # spec file for package stellarium
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           stellarium
-Version:        25.4
+Version:        26.1
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -63,6 +63,7 @@ BuildRequires:  pkgconfig(Qt5Positioning)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Script)
 BuildRequires:  pkgconfig(Qt5SerialPort)
+BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
@@ -82,7 +83,9 @@ BuildRequires:  pkgconfig(Qt6Positioning)
 BuildRequires:  pkgconfig(Qt6PrintSupport)
 BuildRequires:  pkgconfig(Qt6Qml)
 BuildRequires:  pkgconfig(Qt6SerialPort)
+BuildRequires:  pkgconfig(Qt6SvgWidgets)
 BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6TextToSpeech)
 BuildRequires:  pkgconfig(Qt6UiTools)
 BuildRequires:  pkgconfig(Qt6Widgets)
 %ifarch aarch64 x86_64 riscv64
@@ -104,8 +107,8 @@ binoculars or a small telescope.
 %autosetup -p1
 
 %build
-# Require at least 4000 MB of memory per job
-%limit_build -m 4000
+# Require at least 4096 MB of memory per job
+%limit_build -m 4096
 export QT_HASH_SEED=0
 %cmake	-DCMAKE_BUILD_TYPE=Release \
 	-DCPM_USE_LOCAL_PACKAGES=yes \
@@ -121,6 +124,11 @@ mkdir -p %{buildroot}%{_datadir}/%{name}/data/script_internet_update
 %fdupes %{buildroot}%{_datadir}
 # remove all zero size files
 find %{buildroot}%{_datadir}/%{name}/skycultures -type f -size 0 -delete
+# fix shebang and permissions
+for f in %{buildroot}%{_datadir}/%{name}/skycultures/modern_st/*.py; do
+	sed -i -e "s/env //1" ${f}
+	chmod +x ${f}
+done
 
 #%%find_lang %%{name}
 #%%find_lang %%{name}-skycultures
