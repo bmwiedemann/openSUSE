@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 10 07:43:11 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Add fix-tests-with-3-14.patch to fix tests
+
+-------------------------------------------------------------------
 Mon Feb 23 10:09:03 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add "-mavx2" to CFLAGS to fix build in i586, gh#pygame/pygame#4573

@@ -816,4 +816,13 @@
   skip-broken-tests.patch</comment>
     <requestid>1334467</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>6941f3bee4fa641902b16920ee13dfd0</srcmd5>
+    <version>2.6.1</version>
+    <time>1775836438</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests-with-3-14.patch to fix tests
+</comment>
+    <requestid>1345763</requestid>
+  </revision>
 </revisionlist>

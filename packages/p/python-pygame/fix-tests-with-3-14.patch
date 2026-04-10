@@ -1,0 +1,260 @@
+From ac69c0be7e165d967123ffaf2075f81357a5a25e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ren=C3=A9=20Dudfield?= <renesd@gmail.com>
+Date: Sun, 5 Oct 2025 12:09:07 -0300
+Subject: [PATCH] freetype_test: mask_test: rwobject_test: Change ref counts
+ for py 3.14
+
+Are these correct? I don't know.
+
+But apparently the garbage collector changed and reference counts
+changed.
+---
+ test/freetype_test.py | 17 +++++++--
+ test/mask_test.py     | 84 +++++++++++++++++++++++++++++++++++--------
+ test/rwobject_test.py |  6 +++-
+ 3 files changed, 89 insertions(+), 18 deletions(-)
+
+diff --git a/test/freetype_test.py b/test/freetype_test.py
+index 25551d8b8c..d00db8ac5c 100644
+--- a/test/freetype_test.py
++++ b/test/freetype_test.py
+@@ -1609,16 +1609,27 @@ def ref_items(seq):
+         else:
+             array = arrinter.Array(rect.size, "u", 1)
+             o = font.render_raw(text)
+-            self.assertEqual(getrefcount(o), 2)
++            # if python 3.14+, getrefcount returns 1 instead of 2
++            if sys.version_info >= (3, 14):
++                self.assertEqual(getrefcount(o), 1)
++            else:
++                self.assertEqual(getrefcount(o), 2)
+             self.assertEqual(getrefcount(o[0]), 2)
+             self.assertEqual(getrefcount(o[1]), 2)
+             self.assertEqual(getrefcount(font.render_raw_to(array, text)), 1)
+             o = font.get_metrics("AB")
+-            self.assertEqual(getrefcount(o), 2)
++            if sys.version_info >= (3, 14):
++                self.assertEqual(getrefcount(o), 1)
++            else:
++                self.assertEqual(getrefcount(o), 2)
++
+             for i in range(len(o)):
+                 self.assertEqual(getrefcount(o[i]), 2, "refcount fail for item %d" % i)
+             o = font.get_sizes()
+-            self.assertEqual(getrefcount(o), 2)
++            if sys.version_info >= (3, 14):
++                self.assertEqual(getrefcount(o), 1)
++            else:
++                self.assertEqual(getrefcount(o), 2)
+             for i in range(len(o)):
+                 self.assertEqual(getrefcount(o[i]), 2, "refcount fail for item %d" % i)
+ 
+diff --git a/test/mask_test.py b/test/mask_test.py
+index bd7daf5fa5..3bd70620c1 100644
+--- a/test/mask_test.py
++++ b/test/mask_test.py
+@@ -2579,7 +2579,11 @@ def test_get_bounding_rects(self):
+     @unittest.skipIf(IS_PYPY, "Segfaults on pypy")
+     def test_to_surface(self):
+         """Ensures empty and full masks can be drawn onto surfaces."""
+-        expected_ref_count = 3
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 2
++        else:
++            expected_ref_count = 3
++
+         size = (33, 65)
+         surface = pygame.Surface(size, SRCALPHA, 32)
+         surface_color = pygame.Color("red")
+@@ -2599,7 +2603,11 @@ def test_to_surface(self):
+ 
+     def test_to_surface__create_surface(self):
+         """Ensures empty and full masks can be drawn onto a created surface."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         size = (33, 65)
+@@ -2624,7 +2632,11 @@ def test_to_surface__create_surface(self):
+ 
+     def test_to_surface__surface_param(self):
+         """Ensures to_surface accepts a surface arg/kwarg."""
+-        expected_ref_count = 4
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 3
++        else:
++            expected_ref_count = 4
++
+         expected_color = pygame.Color("white")
+         surface_color = pygame.Color("red")
+         size = (5, 3)
+@@ -2648,7 +2660,11 @@ def test_to_surface__surface_param(self):
+ 
+     def test_to_surface__setsurface_param(self):
+         """Ensures to_surface accepts a setsurface arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         expected_color = pygame.Color("red")
+@@ -2675,7 +2691,11 @@ def test_to_surface__setsurface_param(self):
+ 
+     def test_to_surface__unsetsurface_param(self):
+         """Ensures to_surface accepts a unsetsurface arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         expected_color = pygame.Color("red")
+@@ -2701,7 +2721,11 @@ def test_to_surface__unsetsurface_param(self):
+ 
+     def test_to_surface__setcolor_param(self):
+         """Ensures to_surface accepts a setcolor arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         expected_color = pygame.Color("red")
+@@ -2738,7 +2762,11 @@ def test_to_surface__setcolor_default(self):
+ 
+     def test_to_surface__unsetcolor_param(self):
+         """Ensures to_surface accepts a unsetcolor arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         expected_color = pygame.Color("red")
+@@ -2777,7 +2805,11 @@ def test_to_surface__unsetcolor_default(self):
+ 
+     def test_to_surface__dest_param(self):
+         """Ensures to_surface accepts a dest arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         default_surface_color = (0, 0, 0, 0)
+@@ -2833,7 +2865,11 @@ def test_to_surface__dest_default(self):
+     @unittest.expectedFailure
+     def test_to_surface__area_param(self):
+         """Ensures to_surface accepts an area arg/kwarg."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         default_surface_color = (0, 0, 0, 0)
+@@ -3327,7 +3363,11 @@ def test_to_surface__default_surface_with_param_combinations(self):
+         This tests many different parameter combinations with full and empty
+         masks.
+         """
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         size = (5, 3)
+@@ -3411,7 +3451,11 @@ def test_to_surface__surface_with_param_combinations(self):
+         This tests many different parameter combinations with full and empty
+         masks.
+         """
+-        expected_ref_count = 4
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 3
++        else:
++            expected_ref_count = 4
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         size = (5, 3)
+@@ -5273,7 +5317,11 @@ def test_to_surface__area_off_mask_with_setsurface_unsetsurface(self):
+ 
+     def test_to_surface__surface_with_zero_size(self):
+         """Ensures zero sized surfaces are handled correctly."""
+-        expected_ref_count = 3
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 2
++        else:
++            expected_ref_count = 3
++
+         size = (0, 0)
+         surface = pygame.Surface(size)
+         mask = pygame.mask.Mask((3, 4), fill=True)
+@@ -5287,7 +5335,11 @@ def test_to_surface__surface_with_zero_size(self):
+ 
+     def test_to_surface__setsurface_with_zero_size(self):
+         """Ensures zero sized setsurfaces are handled correctly."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         expected_color = pygame.Color("white")  # Default setcolor.
+@@ -5307,7 +5359,11 @@ def test_to_surface__setsurface_with_zero_size(self):
+ 
+     def test_to_surface__unsetsurface_with_zero_size(self):
+         """Ensures zero sized unsetsurfaces are handled correctly."""
+-        expected_ref_count = 2
++        if sys.version_info >= (3, 14):
++            expected_ref_count = 1
++        else:
++            expected_ref_count = 2
++
+         expected_flag = SRCALPHA
+         expected_depth = 32
+         expected_color = pygame.Color("black")  # Default unsetcolor.
+diff --git a/test/rwobject_test.py b/test/rwobject_test.py
+index 31723aee98..3441b04d9e 100644
+--- a/test/rwobject_test.py
++++ b/test/rwobject_test.py
+@@ -1,5 +1,6 @@
+ import pathlib
+ import unittest
++import sys
+ 
+ from pygame import encode_string, encode_file_path
+ 
+@@ -83,7 +84,10 @@ def test_refcount(self):
+             bpath = encode_string(bpath)
+             self.assertEqual(getrefcount(bpath), before)
+             bpath = encode_string(upath)
+-            self.assertEqual(getrefcount(bpath), before)
++            if sys.version_info >= (3, 14):
++                self.assertEqual(getrefcount(bpath), before - 1)
++            else:
++                self.assertEqual(getrefcount(bpath), before)
+ 
+     def test_smp(self):
+         utf_8 = b"a\xF0\x93\x82\xA7b"

@@ -26,6 +26,8 @@ URL:            https://github.com/pygame/pygame
 Source0:        %{url}/archive/%{version}.tar.gz#/pygame-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE skip-broken-tests.patch
 Patch0:         skip-broken-tests.patch
+# PATCH-FIX-UPSTREAM fix-tests-with-3-14.patch
+Patch1:         fix-tests-with-3-14.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
