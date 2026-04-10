@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-session
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,14 @@
 #
 
 
-%define basever 49
-
 Name:           gnome-session
-Version:        49.2
+Version:        50.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -40,9 +38,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.82.0
 BuildRequires:  pkgconfig(gnome-desktop-4) >= 3.24.2
-BuildRequires:  pkgconfig(gtk4) >= 3.22.0
 BuildRequires:  pkgconfig(ice)
-BuildRequires:  pkgconfig(json-glib-1.0) >= 0.10
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(systemd) >= 242
@@ -87,7 +83,7 @@ functionality, for the GNOME Desktop.
 
 %install
 %meson_install
-%find_lang %{name}-%{basever} %{?no_lang_C}
+%find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
 # Prepare for 'default.desktop' being update-alternative handled, boo#1039756
@@ -110,7 +106,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/default.desktop
 %{_datadir}/wayland-sessions/gnome.desktop
-%{_datadir}/wayland-sessions/gnome-wayland.desktop
 %ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
 %{_bindir}/gnome-session
 %{_bindir}/gnome-session-inhibit
@@ -134,8 +129,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_userunitdir}/gnome-session-restart-dbus.service
 %{_userunitdir}/gnome-session-shutdown.target
 %{_userunitdir}/gnome-session-signal-init.service
-%{_userunitdir}/gnome-session-wayland.target
-%{_userunitdir}/gnome-session-wayland@.target
+%{_userunitdir}/gnome-session-services.target
 %{_userunitdir}/gnome-session-x11-services-ready.target
 %{_userunitdir}/gnome-session-x11-services.target
 %{_userunitdir}/gnome-session.target
@@ -148,6 +142,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_userunitdir}/gnome-session@gnome.target.d
 %{_userunitdir}/gnome-session@gnome.target.d/gnome.session.conf
 
-%files lang -f %{name}-%{basever}.lang
+%files lang -f %{name}.lang
 
 %changelog

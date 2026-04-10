@@ -1671,4 +1671,12 @@ Index: gnome-session.changes
     <comment></comment>
     <requestid>1320146</requestid>
   </revision>
+  <revision rev="220" vrev="1">
+    <srcmd5>48b39cfbd9e11c0d4a4b44e629b5c2fb</srcmd5>
+    <version>50.0</version>
+    <time>1775835953</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345377</requestid>
+  </revision>
 </revisionlist>

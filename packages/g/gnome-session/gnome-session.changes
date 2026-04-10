@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:41:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sat Mar 14 10:17:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + No changes, version bump only.
+
+-------------------------------------------------------------------
+Tue Mar  3 07:37:20 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Hid availability of session save/restore support. This feature
+    has been postponed to a future release of GNOME
+  + Fixed bug where inhibitors list doesn't update in end-session
+    dialog
+  + Refactored CanShutdown() to more accurately represent the
+    availability of the shutdown action, including API-incompatible
+    changes that allow it to report inhibitor status,
+    needs-authentication status, and so on
+  + Introduced CanReboot(), which enables the rest of the session
+    to hide reboot buttons if rebooting isn't actually available
+  + Introduced CanSuspend() and Suspend(), for putting the system
+    to sleep
+  + GNOME's logind sleep inhibitor was downgraded from a
+    type='block' to a type='block-weak'. This restores the behavior
+    of the inhibitor prior to systemd v257
+  + We now ignore sleep inhibitors when the user manually suspends
+    the system. The user will likely need to authenticate before
+    ignoring the inhibitors. Note that systemd will, by default,
+    also automatically ignore sleep inhibitors when a laptop's lid
+    is closed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 13:32:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Updates to mimeapps.list: Incorporated latest changes to
+    Font Viewer, Software, and Loupe
+- Changes from version 50.alpha:
+  + Updated documentation to reflect the major changes in GNOME 49
+    work better in non-systemd environments
+  + Removed version number from gettext POT name, which should make
+    translations easier on services like launchpad.net
+  + Fixed bug with offline updates that prevented gnome-shell from
+    converting a shutdown into a reboot
+  + Improved safety check that enforces only one active graphical
+    session per user by checking for any running graphical session,
+    not just another GNOME session
+  + Dropped support for running X11 sessions. Note that this
+    dropped all display server specific unit files, since the
+    generic gnome-session*.target units are now Wayland-only
+  + Implemented initial plumbing for session save/restore
+  + Reworked unit files to adapt to new changes where gnome-shell's
+    unit file takes the gnome-shell mode as its argument. This
+    makes it easier for kiosk sessions or other special/custom
+    sessions to use gnome-shell modes
+  + Dropped unused dependencies: json-glib and gtk4
+  + Updates to mimeapps.list: Added Shaper (new GTK icon editor
+    tool) and fixed bugs with GNOME Disk Utility
+  + Updated translations
+- Drop pkgconfig(gtk4) and pkgconfig(json-glib-1.0) BuildRequires:
+  no longer required
+- Drop basever defines: no longer needed as translations are now
+  uinversioned.
+
+-------------------------------------------------------------------
 Tue Nov 25 08:32:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:
