@@ -2505,4 +2505,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1335577</requestid>
   </revision>
+  <revision rev="282" vrev="1">
+    <srcmd5>64ab5fffac387ffedeed6602a2df9ff8</srcmd5>
+    <version>50.0</version>
+    <time>1775836033</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345432</requestid>
+  </revision>
 </revisionlist>

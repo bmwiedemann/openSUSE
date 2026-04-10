@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Mon Apr  6 02:26:35 UTC 2026 - Federico Mena Quintero <federico@suse.com>
+
+- Update suse_version macro for 1610 (jsc#PED-15829)
+
+-------------------------------------------------------------------
+Wed Mar 25 07:35:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable malcontent support for now. The feature is optional, and
+  the newer version required is not yet acceptable to openSUSE.
+
+-------------------------------------------------------------------
+Mon Mar 23 08:37:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 12:52:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Match old app ID for backwards compatibility in
+    metainfo/appdata
+  + Close visible toplevels and dialogs when loading other panels
+  + Accessibility:
+    - Improve keyboard navigation in Reduced Motion setting
+    - Fix Reduced Motion setting not applying due to type mismatch
+    - Mark hotspot dialog error labels for a11y
+  + Power:
+    - Rework logic to show power button action
+    - Various inhibitor fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 27 14:28:52 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Various translation updates
+  + Allow space-separated domains in G_MESSAGES_DEBUG
+  + Update gnome-control-center man page
+  + About:
+    - Make gmobile dependency (optional)
+    - Fallback to getting hardware model via device tree on phones
+  + Display: Gracefully handle missing UPower
+  + Keyboard: Add missing polkit dependency for keyboard panel
+  + Power:
+    - Hide EU warning when suspend is unsupported
+    - Cache results of CanSuspend/CanHibernate
+    - Show suspend settings when inhibited by systemd inhibitors
+    - Gracefully handle missing UPower
+  + Remote Desktop:
+    - Correctly handle missing secret collection
+      (e.g. fresh auto-login)
+    - Rename "Verify Encryption" to "Verify Fingerprint"
+  + Sound: Update libgnome-volume-control revision (fix device
+    switching)
+  + Wacom: Pass keybinding keys through to the action dialog
+  + WWAN: Add Primary Sim Slot setting
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 27 13:29:52 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Build: Update libgnome-volume-control revision (fixing
+    sound/bluetooth crash)
+  + Accessibility:
+    - Add new text-size setting with slider
+    - Map crosshairs length nonlinearly and set new default
+  + Date & Time:
+    - Add first day of week settings
+    - Set system keyboard mapping on single user systems
+  + Power: Fix infinite loop when switching battery charge modes
+  + Remote Desktop: Handle when keyring is locked
+  + Wacom: Show link to mouse settings for pucks
+  + Wellbeing:
+    - Disable info button when using malcontent
+    - Synchronize settings with malcontent
+- Changes from version 50.alpha:
+  + Remove X11 backend
+  + Port remaining UI definition files to Blueprint
+  + Fix various compiler warnings and memory leaks
+  + Various translation updates
+  + About: Add "winver" to keywords for About page
+  + Accessibility:
+    - Replace "enable animations" with "reduced motion"
+    - Add magnify, magnifier, and overamplification keywords to
+      desktop file
+    - Fix monitoring app filter changes
+    - Add toast confirmation when removing file/link association
+    - Remove unused callbacks and includes
+  + Background: Scale checkmark properly
+  + Color management:
+    - Fix calibration and restarting functionality
+    - Fix issues when running calibration multiple times
+    - Fix small memory leak
+    - Remove use of goto in C code
+  + Common:
+    - Redesign split-row widget
+    - Port keyboard-shortcut-group to Blueprint
+  + Date & Time:
+    - Make sure timezone dialog always shows search entry
+    - Fix timezone search assuming unicode casing
+    - Sync subdialogs visibility with user permissions
+  + Display: Wrap "AM/PM" buttons into stack pages
+  + Keyboard:
+    - Update for new default activities overview shortcut
+    - Add layout default to alternate char page
+    - Allow default Alternate Character keys
+    - Add None option for alternate key (lv3)
+    - Improve xkb-modifier-page with better translation support
+    - Port keyboard-shortcut-group to Blueprint
+    - Use AdwButtonRow to add a custom shortcut
+    - Increase input chooser dialog height
+  + Mobile Networks:
+    - Port "Modem Details" dialog to AdwDialog
+    - Port modem details rows to CcListRow
+    - Use "property" style for the rows
+  + Mouse & Touchpad: Don't let primary buttons shrink
+  + Multitasking:
+    - Add save/restore toggle switch
+    - Actually turn off wifi when only managing a single device
+    - Clarify no saved networks title
+    - Show a status page if there are no saved Wi-Fi networks
+    - Show "No Saved Networks" page after deleting last connection
+    - Don't show hyphen in long passwords in QR code dialog
+    - Announce to the screen reader when an IP address is wrong
+  + Power:
+    - Fix battery model string leak
+    - Port CcBatteryRow to Blueprint
+  + Region:
+    - Always set all variables when setting system locale
+    - Fix name of the US measurement system
+    - Increase language chooser dialog height
+  + Sound:
+    - Better distinguish input and outputs rows in panel
+    - Ignore loopbacks
+    - Port CcPasswordDialog and CcAddUserDialog to Blueprint
+    - Use CcEntryFeedback for password states
+    - Announce password verify entry state changes to screen reader
+    - Update admin switch position in add user dialog
+    - Allow changing password with remote user
+    - Reverse main & fallback mechanisms for getting vendor &
+      product
+  + Wellbeing:
+    - Handle accounts managed by malcontent
+    - Add SPDX comment to bar chart documentation diagram
+
+-------------------------------------------------------------------
 Fri Feb 27 13:28:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.5:

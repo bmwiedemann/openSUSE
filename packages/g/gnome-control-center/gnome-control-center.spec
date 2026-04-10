@@ -24,16 +24,17 @@
 %else
 %bcond_without  wacom
 %endif
+%bcond_with     malcontent
 
 Name:           gnome-control-center
-Version:        49.5
+Version:        50.0
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://apps.gnome.org/app/org.gnome.Settings
-Source0:        %{name}-%{version}.tar.zst
-Source1:        libgxdp-0.gitmodule.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        libgxdp-0.gitmodule.tar.xz
 Source99:       %{name}-rpmlintrc
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
@@ -45,7 +46,7 @@ Patch1002:      gnome-control-center-more-power-button-actions.patch
 Patch1003:      gnome-control-center-bring-back-firewall-zone.patch
 
 BuildRequires:  /usr/bin/Xvfb
-BuildRequires:  blueprint-compiler
+BuildRequires:  blueprint-compiler >= 0.19
 BuildRequires:  cups-devel >= 1.4
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -75,7 +76,7 @@ BuildRequires:  pkgconfig(goa-1.0) >= 3.51.0
 BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 47.0
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 50.alpha
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.15.2
@@ -88,7 +89,9 @@ BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(malcontent-0) => 0.7.0
+%if %{with malcontent}
+BuildRequires:  pkgconfig(malcontent-0) => 0.14.alpha
+%endif
 BuildRequires:  pkgconfig(mm-glib) >= 0.7
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(pwquality) >= 1.2.2
@@ -127,8 +130,10 @@ Recommends:     system-config-printer-dbus-service
 # power-profile-daemon uses a dbus interface, which is provided by tuned-ppd and power-profiles-daemom
 # Either one will do
 Recommends:     ppd-server
+%if %{with malcontent}
 # For parental control (malcontent) support for users
 Recommends:     malcontent-control
+%endif
 # If the user expresses no choice, we pick the original power-profiles-daemon for now
 Suggests:       power-profiles-daemon
 # To ensure that the distribution icon is always displayed in the About section, even for minimal installations
@@ -209,7 +214,7 @@ popd
 %autopatch -p1 -M 999
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
-%if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
+%if !0%{?is_opensuse} || 0%{?suse_version} < 1699
 %autopatch -p1 -m 1000
 %endif
 
@@ -217,7 +222,7 @@ popd
 %meson \
 	-Ddocumentation=true \
 	%{!?with_ibus: -Dibus=false} \
-	-Dmalcontent=true \
+	-Dmalcontent=%[ %{with malcontent} ? "true" : "false" ] \
 	-Dtests=false \
 	-Dsnap=false \
 	-Dlocation-services=enabled \
