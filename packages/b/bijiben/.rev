@@ -503,4 +503,12 @@
     <comment></comment>
     <requestid>1308801</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>923adc9645d354e3d3c1eb9c7b6867c9</srcmd5>
+    <version>40.2+git586.102d7c2f</version>
+    <time>1775836198</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345342</requestid>
+  </revision>
 </revisionlist>
