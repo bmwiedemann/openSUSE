@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:28:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Feb 13 16:46:39 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.8.9:
+  + Improve docs
+  + Add custom theme example
+  + udev: Match LED on devices with multiple status LEDs
+  + Simplify using media roles via build profile
+  + theme: Fix window-close event name
+- Changes from version 0.8.8:
+  + Support haptic on Google Nexus 10, Samung Note 10.1
+  + Create uses via systemd-sysusers
+  + Fix max brightness for LED patterns on multicolor LEDs
+- BuildRequire sysuser-tools: the package installs a file to
+  %{_sysusersdir}.
+
+-------------------------------------------------------------------
 Thu Nov 20 15:04:42 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.8.7:

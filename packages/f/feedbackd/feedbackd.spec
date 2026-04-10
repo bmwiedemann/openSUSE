@@ -1,7 +1,7 @@
 #
 # spec file for package feedbackd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname libfeedback-0_0-0
 
 Name:           feedbackd
-Version:        0.8.7
+Version:        0.8.9
 Release:        0
 Summary:        Feedback library for GNOME
 License:        GPL-3.0-only AND LGPL-2.1-only
@@ -29,6 +29,7 @@ Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  c_compiler
 BuildRequires:  dbus-1
 BuildRequires:  meson >= 1.1.0
+BuildRequires:  sysuser-tools
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
@@ -107,6 +108,7 @@ exit 0
 %{_datadir}/dbus-1/services/org.sigxcpu.Feedback.service
 %{_datadir}/feedbackd
 %{_datadir}/glib-2.0/schemas/org.sigxcpu.feedbackd.gschema.xml
+%{_sysusersdir}/feedbackd.conf
 %{_udevrulesdir}/*
 %{_userunitdir}/fbd-alert-slider.service
 
