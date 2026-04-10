@@ -1,7 +1,7 @@
 #
 # spec file for package yaml-cpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-%define library_name libyaml-cpp0_8
+%define library_name libyaml-cpp0_9
 Name:           yaml-cpp
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        YAML parser and emitter in C++
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/jbeder/yaml-cpp/
-Source:         https://github.com/jbeder/yaml-cpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/jbeder/yaml-cpp/archive/%{name}-%{version}.tar.gz
 Source98:       baselibs.conf
-# https://github.com/jbeder/yaml-cpp/commit/7b469b4220f96fb3d036cf68cd7bd30bd39e61d2
-Patch0:         yaml-cpp-gcc15.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 BuildRequires:  sed
@@ -58,7 +56,7 @@ Requires:       %{library_name} = %{version}
 Development files for %{name} library.
 
 %prep
-%autosetup -n %{name}-%{version} -p1
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 export CC=gcc
@@ -71,8 +69,7 @@ export CXX=g++-6
     -DYAML_BUILD_SHARED_LIBS:BOOL=ON \
     -DYAML_CPP_BUILD_TESTS:BOOL=OFF \
     -DCMAKE_C_COMPILER=$CC             \
-    -DCMAKE_CXX_COMPILER=$CXX \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_CXX_COMPILER=$CXX
 
 make %{?_smp_mflags}
 
@@ -82,8 +79,7 @@ make %{?_smp_mflags}
 %check
 %ctest
 
-%post -n %{library_name} -p /sbin/ldconfig
-%postun -n %{library_name} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{library_name}
 
 %files -n %{library_name}
 %license LICENSE

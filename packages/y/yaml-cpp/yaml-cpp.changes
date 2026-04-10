@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 29 17:40:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.0
+  * Increase minimum required CMake version to 3.5,
+    update Googletest to 1.13.
+  * Bazel module builds.
+  * Update cmakelists to use system googletest if available.
+  * Fix indentation of empty flow sequences.
+  * Add option YAML_ENABLE_PIC.
+  * fix: use C locale by default.
+  * Use FetchContent_MakeAvailable.
+  * fix: parse files with '\r' symbols as line ending correctly.
+  * fix(src): avoid possible infinite loop in LoadAll().
+  * missing keys should throw InvalidNode, not BadConversion.
+  * fix: prettier floating point numbers.
+  * Optimization of merge memories.
+- Drop patch:
+  * yaml-cpp-gcc15.patch (not longer needed)
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Fri Mar 21 22:33:11 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
