@@ -420,4 +420,12 @@
     <comment></comment>
     <requestid>1265684</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>b0e0d6bae39b10c2ecff220d5e1d69db</srcmd5>
+    <version>1.38.1</version>
+    <time>1775835998</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345413</requestid>
+  </revision>
 </revisionlist>

@@ -2,5 +2,4 @@
   <title>GObject-based Plugin Engine</title>
   <description>libpeas is a gobject-based plugin engine, and is targetted at giving
 every application the chance to assume its own extensibility.</description>
-  <devel project="GNOME:Factory" package="libpeas"/>
 </package>

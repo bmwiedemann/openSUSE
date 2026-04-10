@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar 17 07:07:42 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-enable python plugin: with the update to 1.38.1, the loader
+  gained support for GIR 2.0.
+
+-------------------------------------------------------------------
+Sun Mar  8 12:13:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependency of glade-catalog-libpeas to libpeas-gtk-1_0-1.
+
+-------------------------------------------------------------------
+Sun Feb  1 09:35:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.38.1:
+  + Break ABI to support girepository-2.0. This is required as
+    language bindings are moving to the same GIRepository version.
+    We will try to minimize application changes as much as possible
+    but it is likely that applications using libpeas will need to
+    be recompiled and update any local usage of GIRepository to the
+    new girepository-2.0.
+    As libpeas-2.0 does not link against gobject-introspection-1.0
+    or libgirepository-2.0, it is unaffected. You may find it a
+    better use of time to port to libpeas-2.x instead.
+  + Updated translations.
+- Bump soname of shared libraries following upstream changes.
+
+-------------------------------------------------------------------
 Mon Mar 31 06:32:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable python loader for now: peas uses GIRepostiory 1.0, which

@@ -1,7 +1,7 @@
 #
 # spec file for package libpeas
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 %bcond_with lua51
-%bcond_with python3
+%bcond_without python3
 Name:           libpeas
-Version:        1.36.0
+Version:        1.38.1
 Release:        0
 Summary:        GObject-based Plugin Engine
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libpeas
-Source0:        https://download.gnome.org/sources/libpeas/1.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libpeas/1.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(luajit) >= 2.0
 libpeas is a gobject-based plugin engine, and is targetted at giving
 every application the chance to assume its own extensibility.
 
-%package -n libpeas-1_0-0
+%package -n libpeas-1_0-1
 Summary:        GObject-based Plugin Engine
 # We provide %%{name} to make the lang package installable
 Group:          System/Libraries
@@ -62,7 +62,7 @@ Obsoletes:      %{name}-loader-gjs <= %{version}
 # Stop packaging the demo sub-package
 Obsoletes:      %{name}-demo <= %{version}
 
-%description -n libpeas-1_0-0
+%description -n libpeas-1_0-1
 libpeas is a gobject-based plugin engine, and is targetted at giving
 every application the chance to assume its own extensibility.
 
@@ -77,11 +77,11 @@ every application the chance to assume its own extensibility.
 This package provides the GObject Introspection bindings for the libpeas
 library.
 
-%package -n libpeas-gtk-1_0-0
+%package -n libpeas-gtk-1_0-1
 Summary:        GObject-based Plugin Engine
 Group:          System/Libraries
 
-%description -n libpeas-gtk-1_0-0
+%description -n libpeas-gtk-1_0-1
 libpeas is a gobject-based plugin engine, and is targetted at giving
 every application the chance to assume its own extensibility.
 
@@ -99,7 +99,7 @@ libpeas-gtk library.
 %package loader-python3
 Summary:        Python3 runtime loader for libpeas
 Group:          System/Libraries
-Supplements:    (libpeas-1_0-0 and python3)
+Supplements:    (libpeas-1_0-1 and python3)
 
 %description loader-python3
 libpeas is a gobject-based plugin engine, and is targetted at giving
@@ -111,7 +111,7 @@ This package contains the python3 loader.
 %package loader-lua51
 Summary:        Lua 5.1 runtime loader for libpeas
 Group:          System/Libraries
-Supplements:    packageand(libpeas-1_0-0:lua51)
+Supplements:    packageand(libpeas-1_0-1:lua51)
 
 %description loader-lua51
 libpeas is a gobject-based plugin engine, and is targetted at giving
@@ -124,7 +124,7 @@ This package contains the LUA 5.1 loader.
 Summary:        Glade catalog for libpeas, a GObject-based plugin engine
 Group:          Development/Tools/GUI Builders
 Requires:       glade
-Requires:       libpeas-gtk-1_0-0 = %{version}
+Requires:       libpeas-gtk-1_0-1 = %{version}
 Supplements:    (glade and %{name}-devel)
 BuildArch:      noarch
 
@@ -138,8 +138,8 @@ widgets in Glade.
 %package devel
 Summary:        Development files for libpeas, a GObject-based plugin engine
 Group:          Development/Languages/C and C++
-Requires:       libpeas-1_0-0 = %{version}
-Requires:       libpeas-gtk-1_0-0 = %{version}
+Requires:       libpeas-1_0-1 = %{version}
+Requires:       libpeas-gtk-1_0-1 = %{version}
 Requires:       typelib-1_0-Peas-1_0 = %{version}
 Requires:       typelib-1_0-PeasGtk-1_0 = %{version}
 
@@ -170,10 +170,10 @@ every application the chance to assume its own extensibility.
 %find_lang %{name}-1.0 %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/doc/
 
-%ldconfig_scriptlets -n libpeas-1_0-0
-%ldconfig_scriptlets -n libpeas-gtk-1_0-0
+%ldconfig_scriptlets -n libpeas-1_0-1
+%ldconfig_scriptlets -n libpeas-gtk-1_0-1
 
-%files -n libpeas-1_0-0
+%files -n libpeas-1_0-1
 %license COPYING
 %doc AUTHORS README
 %{_libdir}/libpeas-1.0.so.*
@@ -185,7 +185,7 @@ every application the chance to assume its own extensibility.
 %files -n typelib-1_0-Peas-1_0
 %{_libdir}/girepository-1.0/Peas-1.0.typelib
 
-%files -n libpeas-gtk-1_0-0
+%files -n libpeas-gtk-1_0-1
 %{_libdir}/libpeas-gtk-1.0.so.*
 # The icon is the default icon shown for loaded plugins without own definition.
 %{_datadir}/icons/hicolor/*/actions/libpeas-plugin.*
