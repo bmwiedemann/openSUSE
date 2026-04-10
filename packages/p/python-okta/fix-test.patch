@@ -1,0 +1,22 @@
+diff --git a/test_oauth_http_client.py b/test_oauth_http_client.py
+index 5d4286a..1717b9d 100644
+--- a/test_oauth_http_client.py
++++ b/test_oauth_http_client.py
+@@ -9,6 +9,7 @@ Tests cover:
+ 5. Multiple sequential requests maintain isolated state
+ """
+ 
++import mimetypes
+ from unittest.mock import AsyncMock, MagicMock, patch, mock_open
+ import pytest
+ import aiohttp
+@@ -178,6 +179,9 @@ class TestHTTPClientFormData:
+     async def test_file_upload_still_works(self):
+         """Test that file upload functionality is not broken"""
+ 
++        # Initialize mimetypes BEFORE patching open
++        mimetypes.init()
++
+         http_config = {
+             "headers": {
+                 "User-Agent": "test-client",

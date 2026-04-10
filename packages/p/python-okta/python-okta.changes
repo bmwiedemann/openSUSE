@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr  9 19:00:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.0
+  * feat: Implement DPoP module.
+  * Remove minLength validation for the secondEmail attribute from
+    the OpenAPI spec.
+  * Add CAA DNS Record Type Support for Custom Domain Operations.
+  * Fix multipart file upload handling in HTTP client.
+  * Revert changes for EmailDomainDNSRecordType schema.
+- Update to version 3.3.0
+  * fix: Handle unknown Application signOnMode values gracefully.
+  * Added FAILED_TO_VERIFY as ENUM option to DomainValidationStatus
+  * fix: Correct EmailDomain model field deserialization.
+  * fix: handle nullable discriminator fields in JWKS models.
+- Update to version 3.2.0
+  * Replace flatdict dependency with custom dictionary utilities.
+  * Python MGMT SDK: SDK making malformed request for OAuth access
+    tokens in v 3.0.0.
+  * fix: use lazy imports to speed up module import time.
+  * Handle apps with the "MFA_AS_SERVICE" sign-on mode.
+  * feat: Add LogUserBehavior model and comprehensive System Log
+    userBehaviors support.
+- Add patch:
+  * fix-test.patch
+
+-------------------------------------------------------------------
 Sun Mar 15 21:20:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:

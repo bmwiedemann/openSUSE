@@ -2,7 +2,7 @@
 # spec file for package python-okta
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2024-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-okta
-Version:        3.1.0
+Version:        3.4.0
 Release:        0
 Summary:        Python SDK for the Okta Management API
 License:        Apache-2.0
 URL:            https://github.com/okta/okta-sdk-python
-Source:         https://files.pythonhosted.org/packages/source/o/okta/okta-%{version}.tar.gz
+Source:         https://github.com/okta/okta-sdk-python/archive/refs/tags/v%{version}.tar.gz#/okta-sdk-python-%{version}.tar.gz
+Patch0:         fix-test.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module aenum}
+BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module aenum}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module flatdict}
@@ -43,6 +45,9 @@ BuildRequires:  %{python_module pydash}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-recording}
+BuildRequires:  %{python_module pytest-tornasync}
+BuildRequires:  %{python_module pytest-trio}
+BuildRequires:  %{python_module pytest-twisted}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests}
@@ -71,7 +76,7 @@ BuildArch:      noarch
 Python SDK for the Okta Management API.
 
 %prep
-%autosetup -p1 -n okta-%{version}
+%autosetup -p1 -n okta-sdk-python-%{version}
 
 %build
 %pyproject_wheel
