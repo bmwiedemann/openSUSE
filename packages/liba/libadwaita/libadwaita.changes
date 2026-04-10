@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Fri Mar 20 16:13:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 16:19:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.9.0:
+  + Fix build with certain GLib configurations
+  + Adaptive preview: Disable window controls by default
+  + AdwSidebar:
+    - Fix grab_focus()
+    - Add a screenshot to :mode docs
+  + AdwViewSwitcherSidebar: Add a screenshot to :mode docs
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 28 09:32:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.rc:
+  + Replace null strings with "" in non-nullable string setters
+  + Update internal icons
+    - Bundle all used icons not in GTK
+    - Rename avatar-default-symbolic to avoid name clashes
+  + AdwAboutDialog: Fix a broken doc link
+  + AdwAlertDialog: Fix prefer-wide-layout behavior and docs
+  + AdwBreakpointBin: Queue resize when changing breakpoint on
+    startup
+  + AdwSidebar: Focus the selected row on focus instead of first
+    row
+  + Demo: Bundle all used icons not in GTK or libadwaita
+  + Docs:
+    - Mention overlay sidebars on the adaptive layouts page
+    - Bundle all used icons not in GTK or libadwaita
+    - Disable icon theme for screenshots
+  + Stylesheet: Explicitly set icon palette
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 14:29:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.beta:
+  + Print deprecations with GTK_DEBUG=builder
+  + AdwAboutDialog: Allow creating dialogs from appstream data
+    using properties
+  + AdwBreakpointBin: Fix breakpoints being added in the opposite
+    order
+  + AdwSidebar: Fix a critical with empty sections in page mode
+  + Demo: Make desktop file visible for normal installs
+- Changes from version 1.9.alpha:
+  + Add AdwNoneAnimationTarget, AdwSidebar, and
+    AdwViewSwitcherSidebar
+  + Consistently do null checks for non-nullable strings
+    - Tint the device bezel to match the other styles
+  + AdwAboutDialog/Window: Add a context menu to link rows
+  + AdwActionRow
+    - Fix subtitle comparison
+    - Port to GPtrArray
+  + AdwApplication: Deprecate style-dark.css, style-hc.css and
+    style-hc-dark.css
+  + AdwWindow/AdwApplicationWindow: Add :item-type and :n-items
+    to :dialogs
+  + AdwBottomSheet: Use crossfade animations when possible for
+    reduced motion
+  + AdwBreakpointBin: Port to GPtrArray
+  + AdwComboRow
+    - Improve accessibility
+    - Update selection when the expression changes
+  + AdwDialog: Use crossfade animations when possible for reduced
+    motion
+  + AdwEntryRow
+    - Fix title ellipsizing too late
+    - Activate the row action when pressing enter
+  + AdwEnumListModel: Add :item-type and :n-items
+  + AdwHeaderBar
+    - Fix title buttons on macOS
+    - Report back button context menu to screen reader
+    - Make badges accessible
+  + AdwMultiLayoutView
+    - Port to GPtrArray
+    - Use crossfade animations when possible for reduced motion
+    - Fix a build warning on some platforms
+    - Add :item-type and :n-items :navigation-stack
+    - Implement search activation
+    - Fix accessible label
+    - Fix a typo in the add_child() critical
+    - Implement search activation
+    - Fix an accessibility warning
+  + AdwShortcutsSection: Add :item-type and :n-items
+  + AdwStatusPage: Implement focus() and grab_focus()
+  + AdwTabBar/AdwTabOverview
+    - Improve drag-n-drop docs
+    - Fix ::extra-drag-drop annotations
+    - Report context menu to screen reader
+  + AdwTabOverview
+    - Use crossfade animation for reduced motion
+    - Implement search activation
+  + AdwTabView
+    - Implement GtkSectionModel for :pages
+    - Add :item-type and :n-items to :pages
+  + AdwToggleGroup
+    - Add a missing tooltip test
+    - Add AdwToggle:description
+    - Add :item-type and :n-items to :toggles
+  + AdwViewStack
+    - Add section API to AdwViewStackPage, expose sections via :pages
+    - Add :item-type and :n-items to :pages
+    - Fix accessible labels with underlines
+    - Port to GPtrArray
+  + AdwViewSwitcher: Make badges accessible
+  + Build
+    - Fix gen-public-types.py encoding
+    - Depend on GTK 4.21.1 and GLib 2.84.0
+  + Demo
+    - Port to AdwSidebar, reorganize the sidebar and add icons
+    - Drop the color scheme toggle
+    - Add page search
+    - Improve the view switcher demo
+    - Increase default window size
+    - Update metainfo
+    - Mention sidebars on the adaptive layouts page
+    - Consistently link enum values and constants
+    - Fix banner-suggested screenshot
+    - Improve wrap box screenshots
+  + Stylesheet
+    - Support prefers-reduced-motion media query
+    - Merge regular and high contrast styles via media queries
+
+-------------------------------------------------------------------
 Mon Feb  2 15:48:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.4:

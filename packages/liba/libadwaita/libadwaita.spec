@@ -17,12 +17,12 @@
 
 
 Name:           libadwaita
-Version:        1.8.4
+Version:        1.9.0
 Release:        0
 Summary:        Building blocks for modern GNOME applications
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/libadwaita
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.63.0
@@ -32,9 +32,9 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(appstream)
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.19.4
+BuildRequires:  pkgconfig(gtk4) >= 4.21.1
 %lang_package
 
 %description
