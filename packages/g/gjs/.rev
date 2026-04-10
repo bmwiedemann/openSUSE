@@ -1854,4 +1854,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1335554</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>64f62109fe338472c5b4f540985dec7a</srcmd5>
+    <version>1.88.0</version>
+    <time>1775835955</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345378</requestid>
+  </revision>
 </revisionlist>

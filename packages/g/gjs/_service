@@ -3,18 +3,17 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gjs.git</param>
-    <param name="revision">1.86.0</param>
+    <param name="revision">1.88.0</param>
     <!-- Using +TAG_OFFSET breaks the test suite - https://gitlab.gnome.org/GNOME/gjs/-/issues/646 -->
     <param name="versionformat">@PARENT_TAG@.g@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*).g0</param>
     <param name="versionrewrite-replacement">\1</param>
-<!--    <param name="changesgenerate">enable</param> -->
+    <!--    <param name="changesgenerate">enable</param> -->
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
-    <param name="compression">zst</param>
+    <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="manual" />
+  <service name="set_version" mode="manual"/>
 </services>
-

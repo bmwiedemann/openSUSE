@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:32:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sat Mar 14 10:21:48 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.88.0:
+  + No changes, version bump only.
+
+-------------------------------------------------------------------
+Mon Mar  2 09:46:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.87.90:
+  + Enabling various clang-tidy checks
+  + Various maintenance
+  + Error when importing Gio after manipulating Object.prototype
+  + Investigate union fields being garbage collected
+  + Follow-up from "Gtk: Builder constructor overrides in GTK4"
+  + Tweaks to examples
+
+-------------------------------------------------------------------
+Sat Feb 28 02:39:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.87.2:
+  + The beta release for the GNOME 50 cycle brings more
+    modernization of the code base and type-safety.
+  + Known defects: The new Gtk.Builder convenience API does not
+    work correctly in some cases when connecting signals without a
+    widget template, which may lead to the signals being
+    disconnected after a garbage collection. This is planned to be
+    addressed in 1.87.3
+- Changes from version 1.87.1:
+  + In this alpha release for the GNOME 50 cycle, the main focus
+    has been on modernizing the code base and making it more
+    type-safe. Expect more of this in the beta release.
+  + We have better support for boxed C unions now in
+    gobject-introspection.
+  + Gtk.Builder has gained some JS-only conveniences, which should
+    make it less tedious to use from JS code.
+  + The following construct properties are now recognized:
+    - "data" accepts a string or UTF-8-encoded Uint8Array
+      containing Gtk.Builder XML, and automatically calls
+      add_from_string().
+    - "resource" accepts a string resource path, and automatically
+      calls add_from_resource().
+    - "filename" accepts a string filename, and automatically calls
+      add_from_file().
+    - "callbacks" accepts a property bag with properties equal to
+      callbacks that are referenced in the Gtk.Builder XML.
+    - "objects" accepts a property bag with properties equal to
+      objects that should be exposed to the Gtk.Builder XML.
+  + Gtk.Builder has also gained a few JS-only convenience methods:
+    - exposeObjects() calls expose_object() for each name and
+      object in a property bag, much like the new "objects"
+      construct property.
+    - get_objects() overrides the original C get_objects() method,
+      but on the returned array, additionally, there are named
+      properties representing the exposed objects.
+  + Gio.ActionMap.add_action_entries() now supports additional
+    types in its array of entries: GLib.Variant and
+    GLib.VariantType. It also interprets JS values as unpacked
+    GLib.Variants where appropriate.
+  + GLib.idle_add_once(), GLib.timeout_add_once(), and
+    GLib.timeout_add_seconds_once() are now introspectable.
+- Drop gjs-gi-Allow-optional-inout-arguments-to-be-null.patch.
+
+-------------------------------------------------------------------
 Sat Feb 28 01:39:59 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gjs-gi-Allow-optional-inout-arguments-to-be-null.patch:

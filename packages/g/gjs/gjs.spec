@@ -20,16 +20,13 @@
 %global __requires_exclude typelib\\(GioWin32\\)
 
 Name:           gjs
-Version:        1.86.0
+Version:        1.88.0
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
-Source0:        %{name}-%{version}.tar.zst
-
-# PATCH-FIX-UPSTREAM gjs-gi-Allow-optional-inout-arguments-to-be-null.patch glgo#GNOME/gjs!1047 bsc#1258964 xwang@suse.com -- Allow optional inout arguments to be null
-Patch1:         gjs-gi-Allow-optional-inout-arguments-to-be-null.patch
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  /usr/bin/dbus-run-session
 BuildRequires:  c++_compiler
