@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:38:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 10 18:58:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Logs are now exported in ascending order
+  + Fix help dialog inside sandboxes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 12 06:28:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:

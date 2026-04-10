@@ -371,4 +371,12 @@
   + Updated translations (forwarded request 1305188 from dimstar)</comment>
     <requestid>1305509</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3de289f97944fdf4ce3e5826b9c32b59</srcmd5>
+    <version>50.0</version>
+    <time>1775835937</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345358</requestid>
+  </revision>
 </revisionlist>
