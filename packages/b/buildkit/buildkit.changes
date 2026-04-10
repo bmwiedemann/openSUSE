@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Mar 31 08:35:43 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.28.1:
+  * build(deps): bump github/codeql-action from 4.34.1 to 4.35.1
+  * build(deps): bump actions/setup-go from 6.3.0 to 6.4.0
+  * build(deps): bump codecov/codecov-action from 5.5.4 to 6.0.0
+  * build(deps): bump the crazy-max-dot-github group with 2 updates
+  * build(deps): bump crazy-max/.github from 1.2.0 to 1.3.0
+  * Dockerfile: update runc binary to v1.3.5
+  * fix zizmor findings
+  * ci: zizmor workflow
+  * build(deps): bump crazy-max/.github/.github/workflows/pr-assign-author.yml
+  * build(deps): bump crazy-max/.github from 1.1.0 to 1.2.0
+  * vendor: fix otel dependency version inconsitency
+  * vendor: revert containerd platforms back to rc.2
+  * Dockerfile: update containerd to v2.2.2
+  * vendor: update deps that are already newer in moby
+  * vendor: bump outdated patch releases
+  * vendor: update direct deps for v0.29 release
+  * history: fix nil events filtering
+  * executor/oci: scope state files to roots
+  * source/git: scope path access to roots
+  * source/http: use os.Root for read-path file operations
+  * git: harden ref arg handling
+  * git: normalize and validate subdir paths
+  * source: extract SafeFileName into shared pathutil package
+  * source/http: use os.Root for saved file operations
+  * source/http: sanitize downloaded filenames
+  * executor: validate container IDs centrally
+  * vendor: update policy-helpers to b7c0b994300b
+  * ci: bump crazy-max/.github to 1.1.0
+  * vendor: github.com/moby/patternmatcher v0.6.1
+  * solver/llbsolver/history: fix panic when listing history
+  * vendor: google.golang.org/grpc v1.79.3
+  * vendor: go.opentelemetry.io/otel v1.39.0
+  * exporter: propagate Dockerfile default epoch
+  * vendor: github.com/klauspost/compress v1.18.5
+  * source: add git.mtime attr for commit-time mtimes
+  * build(deps): bump nick-fields/retry from 3.0.2 to 4.0.0
+  * dockerfile: support SOURCE_DATE_EPOCH as global ARG default
+  * fix: container filesystem resolves symlinks correctly
+  * exporter: fix reporting push progress under export vertex
+  * build(deps): bump softprops/action-gh-release from 2.6.0 to 2.6.1
+  * hack: fall back when cgroup remount setup is unavailable
+  * ci: update scout to 1.20.2
+  * dockerfile: update cni to 1.9.1
+  * docs: clarify leading whitespace behavior in LegacyKeyValueFormat check
+  * docs: clarify HEALTHCHECK interval behavior during start period
+  * docs: document ** recursive glob support in COPY --parents
+  * docs: clarify RUN --mount=type=bind rw write discard behavior
+  * docs: fix misleading shell form ENTRYPOINT language around CMD args
+  * docs: clarify exec form CMD should be used with exec form ENTRYPOINT
+  * docs: clarify STOPSIGNAL applies to docker stop, not keyboard interrupts
+  * docs: add example showing a previous build stage used as base image
+  * docs: clarify that only final stage labels appear in output image
+  * docs: document no-colon variable modifier variants in environment replacement
+  * build(deps): bump softprops/action-gh-release from 2.5.0 to 2.6.0
+  * util/tracing: remove semconv dependency
+  * update binfmt to v10.2.1
+  * ci: update crazy-max/.github reusable workflows to latest
+  * refactor: decompose toDispatchState into dispatchContext methods
+  * refactor: extract COPY/ADD dispatch into convert_copy.go
+  * refactor: split dockerfile validations
+  * source/git: checkout before submodule update
+  * Test Updates for client, secrets and provenance
+  * refactor: move resultProxy from bridge.go to result.go
+  * refactor: extract build history recording from solver.go
+  * refactor: extract entitlements logic from llbsolver/solver.go
+  * refactor: consolidate source policy logic into policy.go
+  * refactor: move provenance result helpers to provenance.go
+  * refactor: extract export logic from llbsolver/solver.go
+  * test: add unit tests for provenance capture and predicate
+  * refactor: move build config helpers into provenance package
+  * test: add unit tests for history pubsub
+  * refactor: split history package into focused files
+  * refactor: extract build history into dedicated package
+  * refactor: deduplicate NopWriteCloser into util/iohelper
+  * refactor: replace strutil.DedupeSlice with generic bkslices.Dedupe
+  * refactor: add typed sync.Map wrapper to eliminate type assertions
+  * refactor: add typed sync.Pool wrapper to eliminate any
+  * grpcclient: fix procMessageForwarder panic on close
+  * gateway: fix ExecProcess deadlock on fast-exiting processes
+
+-------------------------------------------------------------------
 Tue Mar 10 10:31:04 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.28.0:
