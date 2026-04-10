@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Mar 18 19:04:42 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to _service creating tarball. After we migrated the devel
+  project to git, there is no benefit in storing obscpio files.
+
+-------------------------------------------------------------------
+Tue Mar 17 16:42:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
+Fri Mar  6 08:27:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + default tweaks
+  + Tubes - extra dark wallpaper
+  + Glass chip - same name, new design
+
+-------------------------------------------------------------------
+Tue Feb 10 08:37:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.alpha:
+  + new default
+  + new additions: balls, blendpills
+  + removals: geometrics, neogeo, swoosh
+
+-------------------------------------------------------------------
 Fri Sep 12 14:59:38 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
