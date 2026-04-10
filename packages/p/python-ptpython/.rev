@@ -163,4 +163,27 @@
 - No more greedy globs in %files.</comment>
     <requestid>1284625</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ece8aa267332594ca399b17f0eeb1369</srcmd5>
+    <version>3.0.32</version>
+    <time>1775857496</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.32:
+  * Use ANSI colors (instead of RGB colors) for the default code
+    theme. This improves the chances of having a better contrast
+    with the background color, because we now use what is
+    configured in the terminal emulator. The theme is
+    called 'default-ansi' and exists alongside 'default'.
+  * Add `patch_stdout_raw` parameter to `embed()`.
+  * Fix repl.min_brightness and repl.max_brightness config in
+    history.
+  * Fix positioning of exit confirmation (compatibility with
+    latest prompt_toolkit).
+  * Show exception cause/context when printing chained
+    exceptions.
+  * Reworked project layout and use pyproject.toml instead of
+    setup.py.
+  * Drop Python 3.7 support.</comment>
+    <requestid>1345931</requestid>
+  </revision>
 </revisionlist>

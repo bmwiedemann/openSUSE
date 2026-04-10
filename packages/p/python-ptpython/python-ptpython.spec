@@ -1,7 +1,7 @@
 #
 # spec file for package python-ptpython
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,30 @@
 
 
 %{?sle15_python_module_pythons}
-%define skip_python39 1
 Name:           python-ptpython
-Version:        3.0.29
+Version:        3.0.32
 Release:        0
 Summary:        Python REPL build on top of prompt_toolkit
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/jonathanslenders/ptpython
 Source:         https://files.pythonhosted.org/packages/source/p/ptpython/ptpython-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 68}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
 Requires:       python-appdirs
-Requires:       python-docopt
-Requires:       python-jedi >= 0.9.0
-Requires:       python-prompt_toolkit >= 3.0.0
+Requires:       python-jedi >= 0.16.0
+Requires:       python-prompt_toolkit >= 3.0.43
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module appdirs}
-BuildRequires:  %{python_module docopt}
-BuildRequires:  %{python_module jedi >= 0.9.0}
-BuildRequires:  %{python_module prompt_toolkit >= 3.0.0}
+BuildRequires:  %{python_module jedi >= 0.16.0}
+BuildRequires:  %{python_module prompt_toolkit >= 3.0.43}
 # /SECTION
 Recommends:     python-ptpython-ptipython
 %python_subpackages
@@ -64,7 +61,7 @@ This package provides IPython support to Ptpython.
 
 %prep
 %setup -q -n ptpython-%{version}
-sed -i -e '/^#!\//, 1d' ptpython/entry_points/run_*.py
+sed -i -e '/^#!\//, 1d' src/ptpython/entry_points/run_*.py
 
 %build
 %pyproject_wheel
@@ -72,7 +69,6 @@ sed -i -e '/^#!\//, 1d' ptpython/entry_points/run_*.py
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-rm %{buildroot}%{_bindir}/pt{,i}python?*
 %python_clone -a %{buildroot}%{_bindir}/ptpython
 %python_clone -a %{buildroot}%{_bindir}/ptipython
 
