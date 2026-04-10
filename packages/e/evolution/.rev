@@ -2757,4 +2757,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1330983 from mgorse)</comment>
     <requestid>1331120</requestid>
   </revision>
+  <revision rev="293" vrev="1">
+    <srcmd5>70037608e12c87b4179963ca266d7128</srcmd5>
+    <version>3.60.0</version>
+    <time>1775835943</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345366</requestid>
+  </revision>
 </revisionlist>

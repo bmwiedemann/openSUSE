@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:27:33 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 08:40:19 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.60.0:
+  + Bug Fixes: Freeze due to (indirect) gtk+ calls in a non-main
+    thread
+  + Miscellaneous: Mail: Accessing style sheets can be rejected in
+    "unset HTML colors"
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 28 09:06:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.59.3:
+  + Bug Fixes:
+    - Calendar: Year view shows incorrect week number
+    - One day events show misleding End Date in List view
+    - Mail: Handle media CSS rules properly in "unset HTML colors"
+  + Miscellaneous:
+    - EDateEdit: Postpone fill of time combo until the widget is
+      mapped
+    - Use GHashTable's `replace()` instead of `insert()` on some
+      places
+    - mail-config-assistant: Skip "rss" Camel provider
+    - itip-formatter: Correct time range for the "day agenda"
+      column
+    - Increase default connection timeout to 30 seconds
+    - Check for libicalvcal pkgconfig file (for libical 4.x)
+  + Updated translations.
+- Drop evolution-year-view-week-number.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Feb 13 08:49:53 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.59.2:
+  + e-cal-ops: Fallback to default list if selected list is
+    read-only
+  + Add “Mark as read” action to new mail-notifications
+  + Mail: Add "Copy Message Link" action
+  + Calendar: Prepare to support build with libical 4.x
+  + EMailReader: Update actions also after message is parsed
+  + Remove ESourceConflictSearch (moved to evolution-data-server)
+  + e-vcard-editor: Skip stored empty values
+  + Calendar: Component preview panel does not modify DATE value
+    of DTEND
+- Changes from version 3.59.1:
+  + Custom icon and text color for Search Folders lost on renaming
+  + mail-vfolder: Correct and speed up setup and update of search
+    folders
+  + Renaming a mail folder resets its "Current View"
+  + Crash when copying multiple lines from “Markdown as HTML”
+    composer
+  + Vendor autoar-gtk-chooser.c from gnome-autoar
+  + metainfo: Add keywords to improve discoverability
+  + appearance-settings: Use the Settings portal to use the dark
+    style
+  + Adapt to libebook API changes and added vCard 4.0 support
+  + CalDAV: Provide a date limit for information sync
+  + CamelSearchFolder: Add "not_all" "match-threads" kind
+  + help: Replace some dead GNOME wiki URIs with GitLab URIs
+  + Lower default connection timeout to 15 seconds
+  + Adapt to libcamel API removals
+  + shell: Make "Close Immediately" question button "destructive"
+  + cal-config-caldav: Correct when showing limit-download-days
+    option
+  + EStockRequest: Remove leftover code
+  + Mail: Import preview panel can generate runtime warning
+  + e-util: Check for non-NULL GError in e_show_uri()
+  + mail-vfolder: Remove unneeded runtime warning
+  + EContactEditor: Prefer vCard "take" functions
+  + Calendar: Allow to use GNOME system setting for
+    "week start day"
+  + shell: Fix a crash on start when app initialization fails
+  + flatpak: Add gettext ACLOCAL workaround
+  + e-contact-quick-add: Remove unused code
+  + EContactMapWindow: Use book view to get contacts and their
+    changes
+  + EABEditor: Remove unneeded signals
+  + EContactEditor: Change how required and supported fields are
+    read
+  + EABEditor: Remove unused functions and rename
+    eab_editor_closed()
+  + Contacts: Add a new vCard editor
+  + EABContactFormatter: Show "GEO Location" and "Time zone"
+    attributes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Feb  4 14:31:12 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add evolution-year-view-week-number.patch: fix incorrect week
