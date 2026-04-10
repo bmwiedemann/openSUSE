@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 09 08:01:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.94.3:
+  * Split out detector types into separate proto file in order to narrow CODEOWNERS scope (#4871)
+  * Add HTML decoder for secret detection in HTML-formatted sources (#4840)
+  * [CSM-1857] Fix expired Azure secrets being silently dropped (#4845)
+  * Add nil check and error context to GitHub analyzer (#4858)
+  * Add AnalysisInfo to verified results (#4862)
+  * handle AADSTS50173 as explicit revocation signal for azure refresh tokens (#4842)
+  * Add release bot workflow for trufflehog releases (#4835)
+
+-------------------------------------------------------------------
 Thu Apr 02 04:45:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.94.2:
