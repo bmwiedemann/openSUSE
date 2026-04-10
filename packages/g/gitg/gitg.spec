@@ -1,7 +1,7 @@
 #
 # spec file for package gitg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gitg
-Version:        44
+Version:        44.git.238
 Release:        0
 Summary:        Git repository viewer
 License:        GPL-2.0-or-later
@@ -27,6 +27,8 @@ Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gitg-typelib-dependencies.patch dimstar@opensuse.org -- Change the way we add library dependencies to .typelibs. openSUSE requires a full library name, incl. version
 Patch0:         gitg-typelib-dependencies.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         https://gitlab.gnome.org/GNOME/gitg/-/merge_requests/305.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -34,7 +36,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.2
-BuildRequires:  pkgconfig(glib-2.0) >= 2.38
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.1
 BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
@@ -42,13 +44,11 @@ BuildRequires:  pkgconfig(gspell-1) >= 1.8.1
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.3
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libdazzle-1.0)
-BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.27.7
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 1.2.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
 #BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.2
@@ -168,7 +168,7 @@ graphical presentation.
 %license COPYING
 %doc AUTHORS README.md NEWS
 %{_bindir}/gitg
-%{_datadir}/metainfo/org.gnome.gitg.appdata.xml
+%{_datadir}/metainfo/org.gnome.gitg.metainfo.xml
 %{_datadir}/gitg/
 %{_datadir}/applications/org.gnome.gitg.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.gitg.gschema.xml

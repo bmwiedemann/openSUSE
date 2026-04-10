@@ -499,4 +499,12 @@
     <comment></comment>
     <requestid>1123788</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>863a20bdf4fa975f73a3f204f128b122</srcmd5>
+    <version>44.git.238</version>
+    <time>1775836238</time>
+    <user>dimstar_suse</user>
+    <comment>Redownload patch</comment>
+    <requestid>1345435</requestid>
+  </revision>
 </revisionlist>

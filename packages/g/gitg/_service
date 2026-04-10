@@ -1,15 +1,17 @@
+<?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gitg.git</param>
-    <param name="revision">refs/tags/v44</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">master</param>
+    <param name="versionformat">@PARENT_TAG@.git.@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v?(\d+(?:\.\d+)*)(?:\.git\.0)?(\.git\.[1-9]\d*)?</param>
+    <param name="versionrewrite-replacement">\1\2</param>
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="manual" />
+  <service name="set_version" mode="manual"/>
 </services>
