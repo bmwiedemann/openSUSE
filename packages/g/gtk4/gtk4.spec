@@ -1,7 +1,7 @@
 #
 # spec file for package gtk4
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Dominique Leuenebrger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,14 +28,14 @@
 %endif
 
 Name:           gtk4
-Version:        4.20.3
+Version:        4.22.2
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         %{_name}-%{version}.tar.zst
+Source:         %{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
@@ -74,13 +74,12 @@ BuildRequires:  pkgconfig(epoxy) >= 1.4
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(graphene-gobject-1.0) >= 1.10.0
-BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(vulkan)
 %if %{with gst}
 BuildRequires:  pkgconfig(gstreamer-gl-1.0)
@@ -329,6 +328,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_bindir}/gtk4-update-icon-cache
 %dir %{_datadir}/gtk-4.0/emoji
 %{_datadir}/gtk-4.0/emoji/*.gresource
+%{_datadir}/mime/packages/gtk-mime.xml
 %{_mandir}/man1/gtk4-broadwayd.1%{?ext_man}
 %{_mandir}/man1/gtk4-launch.1%{?ext_man}
 %{_mandir}/man1/gtk4-query-settings.1%{?ext_man}
@@ -348,6 +348,11 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/bash-completion/completions/gtk4-demo
 %{_bindir}/gtk4-demo-application
 %{_bindir}/gtk4-encode-symbolic-svg
+%{_bindir}/gtk4-icon-editor
+%{_datadir}/applications/org.gtk.Shaper.desktop
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.Shaper.Devel.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gtk.Shaper.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gtk.Shaper-symbolic.svg
 %{_bindir}/gtk4-image-tool
 %{_datadir}/bash-completion/completions/gtk4-image-tool
 %{_bindir}/gtk4-node-editor

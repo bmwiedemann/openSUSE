@@ -1111,4 +1111,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1319174</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>7b55435777595be662b9307a203aeb4d</srcmd5>
+    <version>4.22.2</version>
+    <time>1775835958</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345385</requestid>
+  </revision>
 </revisionlist>
