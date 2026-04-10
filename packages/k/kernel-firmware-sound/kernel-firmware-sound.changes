@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  9 05:34:23 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260408 (git commit e9cae76da758):
+  * linux-firmware: qcom: sync audioreach firmwares from v1.0.3 build
+  * qcom: consolidate audioreach-tplg firmwares into one location in WHENCE
+
+-------------------------------------------------------------------
 Wed Apr  1 13:39:09 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260331 (git commit 441bcf2eaa2a):

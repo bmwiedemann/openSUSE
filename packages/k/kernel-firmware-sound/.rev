@@ -424,4 +424,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l63: Fix Cirrus Amp firmware links for some Dell laptops</comment>
     <requestid>1344446</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e54ab1ea7fbc735a7459636871d64288</srcmd5>
+    <version>20260408</version>
+    <time>1775836177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260408 (git commit e9cae76da758):
+  * linux-firmware: qcom: sync audioreach firmwares from v1.0.3 build
+  * qcom: consolidate audioreach-tplg firmwares into one location in WHENCE</comment>
+    <requestid>1345542</requestid>
+  </revision>
 </revisionlist>
