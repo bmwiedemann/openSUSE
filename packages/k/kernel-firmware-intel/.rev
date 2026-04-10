@@ -285,4 +285,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: qcom: Add FW blobs for DELL XPS13 9345</comment>
     <requestid>1344440</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0b730209f397154110151d8f70a47bba</srcmd5>
+    <version>20260408</version>
+    <time>1775836171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260408 (git commit e9cae76da758):
+  * WHENCE: Fix ISH firmware symlink prefix for Lenovo PTL systems
+  * intel_vpu: Update NPU firmware</comment>
+    <requestid>1345539</requestid>
+  </revision>
 </revisionlist>
