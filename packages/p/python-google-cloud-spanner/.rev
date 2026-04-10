@@ -68,4 +68,37 @@
   * prevent thread leak by ensuring singleton initialization (#1492) (forwarded request 1336330 from glaubitz)</comment>
     <requestid>1336408</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7943ce38ab6557c73fcbed47ee6a427f</srcmd5>
+    <version>3.64.0</version>
+    <time>1775836360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.64.0
+  * mark new AsyncIO APIs as experimental (#1533)
+  * A comment for field `routing_hint` in messages `.google.spanner.v1.ResultSet`
+    and `.google.spanner.v1.PartialResultSet` are changed
+  * A comment in message `.google.spanner.v1.TransactionOptions.ReadWrite.ReadLockMode` is changed
+  * A comment for field `params` in message `.google.spanner.v1.PartitionQueryRequest` is changed
+  * A comment for field `transaction_tag` in message `.google.spanner.v1.RequestOptions` is changed
+  * A comment for field `param_types` in message `.google.spanner.v1.PartitionQueryRequest` is changed
+  * A comment for field `commit_timestamp` in message `.google.spanner.v1.BatchWriteResponse` is changed
+  * Update high_priority_cpu_utilization_percent in AutoscalingConfig
+    to be Optional and clarify its behavior when not specified
+  * minor update for Spanner Location API
+  * include cache updates and routing hint into BeginTransaction
+    and Commit request/response respectively
+  * include cache updates into the ResultSet response
+  * add a ClientContext field to Spanner requests
+  * add Secure Parameters to the ClientContext
+  * Exposing total CPU related fields in AutoscalingConfig
+  * implement native asyncio support via Cross-Sync (#1509)
+  * use inline begin to eliminate BeginTransaction RPC (#1502)
+  * add Client Context support to options (#1499)
+  * add TLS/mTLS support for experimental host (#1479)
+  * add threading import and _resource_info to snapshot.py
+  * restore implicit database_dialect reload in sync client (#1537)
+  * resolve async deadlock in multiplexed session manager (#1520)
+- Update Python file list in %files section (forwarded request 1345120 from glaubitz)</comment>
+    <requestid>1345666</requestid>
+  </revision>
 </revisionlist>

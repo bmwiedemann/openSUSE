@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-spanner%{psuffix}
-Version:        3.63.0
+Version:        3.64.0
 Release:        0
 Summary:        Google Cloud Spanner API client library
 License:        Apache-2.0
@@ -110,6 +110,7 @@ export GOOGLE_CLOUD_PROJECT="PROJECT"
 %pycache_only %{python_sitelib}/google/cloud/__pycache__
 %dir %{python_sitelib}/google
 %dir %{python_sitelib}/google/cloud
+%{python_sitelib}/google/cloud/aio*
 %{python_sitelib}/google/cloud/spanner*
 %{python_sitelib}/google_cloud_spanner-%{version}.dist-info
 %endif

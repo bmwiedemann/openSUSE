@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Apr  8 06:32:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.64.0
+  * mark new AsyncIO APIs as experimental (#1533)
+  * A comment for field `routing_hint` in messages `.google.spanner.v1.ResultSet`
+    and `.google.spanner.v1.PartialResultSet` are changed
+  * A comment in message `.google.spanner.v1.TransactionOptions.ReadWrite.ReadLockMode` is changed
+  * A comment for field `params` in message `.google.spanner.v1.PartitionQueryRequest` is changed
+  * A comment for field `transaction_tag` in message `.google.spanner.v1.RequestOptions` is changed
+  * A comment for field `param_types` in message `.google.spanner.v1.PartitionQueryRequest` is changed
+  * A comment for field `commit_timestamp` in message `.google.spanner.v1.BatchWriteResponse` is changed
+  * Update high_priority_cpu_utilization_percent in AutoscalingConfig
+    to be Optional and clarify its behavior when not specified
+  * minor update for Spanner Location API
+  * include cache updates and routing hint into BeginTransaction
+    and Commit request/response respectively
+  * include cache updates into the ResultSet response
+  * add a ClientContext field to Spanner requests
+  * add Secure Parameters to the ClientContext
+  * Exposing total CPU related fields in AutoscalingConfig
+  * implement native asyncio support via Cross-Sync (#1509)
+  * use inline begin to eliminate BeginTransaction RPC (#1502)
+  * add Client Context support to options (#1499)
+  * add TLS/mTLS support for experimental host (#1479)
+  * add threading import and _resource_info to snapshot.py
+  * restore implicit database_dialect reload in sync client (#1537)
+  * resolve async deadlock in multiplexed session manager (#1520)
+- Update Python file list in %files section
+
+-------------------------------------------------------------------
 Wed Mar  4 10:50:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.63.0
