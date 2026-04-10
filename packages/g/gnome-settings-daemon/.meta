@@ -7,5 +7,4 @@ the startup of the screensaver, etc.
 
 This module was previously part of GNOME Control Center, but has been
 splitted from it for a more general use.</description>
-  <devel project="GNOME:Factory" package="gnome-settings-daemon"/>
 </package>

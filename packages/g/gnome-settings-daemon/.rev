@@ -1683,4 +1683,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment></comment>
     <requestid>1330366</requestid>
   </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>d179fa5a6a5663af0f29ddfa0ff84c70</srcmd5>
+    <version>50.0</version>
+    <time>1775835962</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345387</requestid>
+  </revision>
 </revisionlist>

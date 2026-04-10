@@ -27,16 +27,16 @@
 %bcond_without wacom
 %endif
 
-%define base_ver 49
+%define base_ver 50
 
 Name:           gnome-settings-daemon
-Version:        49.1
+Version:        50.0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch0:         gnome-settings-daemon-initial-keyboard.patch
@@ -46,10 +46,6 @@ Patch1:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patc
 Patch4:         0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
 # PATCH-FEATURE-OPENSUSE -- Sorry GNOME, but pestering users like this is not welcome. We will add a Support GNOME into our welcome app thogh
 Patch5:         g-s-d-skip-donation.patch
-# PATCH-FIX-UPSTREAM gnome-settings-daemon-gvc-31.patch glgo#GNOME/libgnome-volume-control!31 alynx.zhou@suse.com -- Fix crash with newer pipewire on switching bluetooth profile
-Patch6:         gnome-settings-daemon-gvc-31.patch
-# PATCH-FIX-UPSTREAM gnome-settings-daemon-gvc-32.patch bsc#1257512, glgo#GNOME/libgnome-volume-control!32 alynx.zhou@suse.com -- Fix duplicated new devices introduced by glgo#GNOME/libgnome-volume-control!31
-Patch7:         gnome-settings-daemon-gvc-32.patch
 
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
@@ -83,7 +79,7 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.3.1
 BuildRequires:  pkgconfig(libnm) >= 1.0
-BuildRequires:  pkgconfig(libnotify) >= 0.7.3
+BuildRequires:  pkgconfig(libnotify) >= 0.8.7
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 2.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
@@ -144,10 +140,9 @@ contact the settings daemon via its DBus interface.
 %prep
 %autosetup -N
 
-%if 0%{?is_opensuse}
 %autopatch -p1 -M 999
-%else
-%autopatch -p1
+%if !0%{?is_opensuse}
+%autopatch -p1 -m 1000
 %endif
 
 %build

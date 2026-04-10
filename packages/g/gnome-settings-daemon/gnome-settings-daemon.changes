@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:41:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Mar 15 08:59:32 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Media-keys: Ignore suspend inhibitors on explicit actions
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 08:41:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Test suite improvements
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 18 14:45:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Update gnome-volume-control submodule
+  + Color: Use libnotify app launch context
+  + Datetime:
+    - Use libnotify app launch context
+    - Harden timezone logic and fix coordinate parsing
+  + Housekeeping: Use libnotify app launch context
+  + Media-keys: Clamp volume when disabling over-amplification
+  + Printing: Use libnotify app launch context
+  + Smartcard: Reproduceable build improvements
+  + Updated translations.
+- Drop upstream merged patches:
+  + gnome-settings-daemon-gvc-31.patch
+  + gnome-settings-daemon-gvc-32.patch
+
+-------------------------------------------------------------------
+Tue Feb 10 13:48:56 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.alpha:
+  + Removed -Dx11 build option
+  + Color: Plugged leaks
+  + Housekeeping:
+    - Performance improvements
+    - Donation reminder notification got a lesser priority
+  + Power:
+    - Fixes to ambient light sensor handling
+    - Fixed eager suspend after resume with NVidia hardware
+    - Multiple improvements to the test suite
+  + Sharing:
+    - Start or stop sharing services independently of network
+      availability
+    - Systemd integration cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 30 13:52:49 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gnome-settings-daemon-gvc-32.patch: Fix duplicated new
