@@ -1,7 +1,7 @@
 #
 # spec file for package swell-foop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           swell-foop
-Version:        48.1
+Version:        50.0
 Release:        0
 Summary:        Same Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/Swell_Foop
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -35,9 +35,8 @@ BuildRequires:  pkgconfig(gee-0.8) >= 0.14.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.74
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.36.0
-BuildRequires:  pkgconfig(gtk4) >= 4.10
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(libgnome-games-support-2) >= 2.0.0
+BuildRequires:  pkgconfig(gtk4) >= 4.15.3
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.rc
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(pangocairo)
 
@@ -60,6 +59,7 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
+%find_lang %{name}_libgnome-games-support %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
 %check
@@ -76,6 +76,6 @@ desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/org.gnome.SwellFoo
 %{_datadir}/icons/hicolor/
 %{_datadir}/metainfo/org.gnome.SwellFoop.metainfo.xml
 
-%files lang -f %{name}.lang
+%files lang -f %{name}.lang -f %{name}_libgnome-games-support.lang
 
 %changelog

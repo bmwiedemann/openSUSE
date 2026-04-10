@@ -289,4 +289,12 @@
   + Fix save settings on close. (forwarded request 1268808 from iznogood)</comment>
     <requestid>1269676</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f9e2aec0d2efc5d53e254c204cfdb462</srcmd5>
+    <version>50.0</version>
+    <time>1775835987</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345403</requestid>
+  </revision>
 </revisionlist>

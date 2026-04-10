@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Mar 20 15:34:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Mar 15 18:13:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 11:04:56 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta.1:
+  + Updated gnome-games support library name
+
+-------------------------------------------------------------------
+Tue Feb 10 08:52:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Metadata updates
+  + Use libgames-gnome as subproject
+  + Updated translations
+- Drop pkgconfig(libgnome-games-support-2) BuildRequires: now
+  tracked as a subproject.
+
+-------------------------------------------------------------------
 Sat Apr 12 18:47:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:
