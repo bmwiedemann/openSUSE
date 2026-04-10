@@ -6380,4 +6380,12 @@ changes to the past changelong is due to remove unicode lookalikes:
 https://src.opensuse.org/chromium/chromium/commit/865f270c0c9ba77f4a37d6fc6210f70529a641fe0d5adf0871e939f85518dcee</comment>
     <requestid>1344632</requestid>
   </revision>
+  <revision rev="513" vrev="1">
+    <srcmd5>d4b09063664b327bc61159f807cd738b</srcmd5>
+    <version>147.0.7727.55</version>
+    <time>1775836247</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 147.0.7727.55 (boo#1261758)</comment>
+    <requestid>1345294</requestid>
+  </revision>
 </revisionlist>
