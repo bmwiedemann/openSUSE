@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 09:55:34 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.6 
+ * This release resolves a low severity security advisory in which wheels with malformed RECORD
+    entries could delete arbitrary files on uninstall. See GHSA-pjjw-68hj-v9mw for details.
+
+-------------------------------------------------------------------
 Thu Apr  9 12:59:56 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.5 

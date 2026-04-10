@@ -2419,4 +2419,14 @@
   * Clarify that --exclude-newer compares artifact upload times</comment>
     <requestid>1345545</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>1a66e41f79b316963e625234aed764ec</srcmd5>
+    <version>0.11.6</version>
+    <time>1775836457</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.6 
+ * This release resolves a low severity security advisory in which wheels with malformed RECORD
+    entries could delete arbitrary files on uninstall. See GHSA-pjjw-68hj-v9mw for details.</comment>
+    <requestid>1345794</requestid>
+  </revision>
 </revisionlist>
