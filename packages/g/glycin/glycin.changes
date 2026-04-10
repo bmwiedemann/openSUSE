@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Apr  8 07:03:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(glycin-2) for all build modules except
+  libglycin itself. Chain them properly behind each other.
+
+-------------------------------------------------------------------
+Tue Mar 24 08:21:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.1.1:
+  + Fixed: Bump gufo to 4.0.1. This fixes optaining key-value pairs
+    potentially containing nul-characters, which is not allowed per
+    PNG standard and can't be transmitted as String via D-Bus.
+
+-------------------------------------------------------------------
+Mon Mar 23 08:34:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 16:44:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.1.0:
+  + Fixed: thumbnailer: Remove padding if stride is longer than row
+    data, avoiding broken scaling. This manly affects AVIF and HEIC
+
+-------------------------------------------------------------------
+Sat Feb 28 09:17:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.rc:
+  + image-rs: Don't assume that JPEGs are in YCbCr encoded. Support
+    grayscale and YCCK as well.
+
+-------------------------------------------------------------------
+Wed Feb 11 08:16:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.beta:
+  + Require libjxl 0.11.1
+  + Use hayro-jpeg2000 loader instead of jpeg2k and make it part of
+    the glycin-image-rs loader, enabled by default.
+  + thumbnailer: Use dynamically linked libglycin instead of glycin
+    crate.
+- Changes from version 2.1.alpha.3:
+  + Fixed:
+    - Fix builds on docs.rs
+  + Changed
+    - Update to gtk-rs 0.22/0.11
+    - Updated many dependencies
+- Changes from version 2.1.alpha:
+  + Added:
+    - Add a specific error for when glycin fails to load the image
+      from it's file/stream.
+    - image-rs: Add XBM and XPM support
+
+-------------------------------------------------------------------
 Wed Feb 11 08:05:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.0.8:

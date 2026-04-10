@@ -25,13 +25,13 @@ Name:           %{flavor}
 %endif
 %define _name glycin
 
-Version:        2.0.8
+Version:        2.1.1
 Release:        0
 Summary:        Sandboxed image rendering
 License:        LGPL-2.1-or-later OR MPL-2.0
 URL:            https://gitlab.gnome.org/GNOME/glycin
-Source0:        %{_name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{_name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 Source2:        baselibs.conf
 Source90:       libglycin.spec.inc
 Source91:       libglycin-gtk4.spec.inc
@@ -46,6 +46,9 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libseccomp)
+%if "%{name}" != "libglycin"
+BuildRequires:  pkgconfig(glycin-2)
+%endif
 %if "%{name}" == "glycin-loaders"
 BuildRequires:  (pkgconfig(libjxl) >= 0.8.2 with pkgconfig(libjxl) < 0.13.0)
 BuildRequires:  pkgconfig(libheif) >= 1.17.4
