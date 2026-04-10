@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 05:38:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.17.2:
+  * Update development dependencies.
+  * Add support for Python 3.14.
+
+-------------------------------------------------------------------
 Mon Feb 23 09:08:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17.1:

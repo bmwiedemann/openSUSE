@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netutils
-Version:        1.17.1
+Version:        1.17.2
 Release:        0
 Summary:        Common helper functions useful in network automation
 License:        Apache-2.0
@@ -52,9 +52,7 @@ chmod -x netutils/lib_helpers.py
 
 %install
 %pyproject_install
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}
-rm -f %{buildroot}%{$python_sitelib}/{CHANGELOG.md,LICENSE,README.md}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # test_is_fqdn_resolvable, test_fqdn_to_ip, test_tcp_ping: needs internet connection

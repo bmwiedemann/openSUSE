@@ -208,4 +208,14 @@
     banner end normalization.</comment>
     <requestid>1334416</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4c9f2c164e5f227161edd44c967e1777</srcmd5>
+    <version>1.17.2</version>
+    <time>1775836431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.2:
+  * Update development dependencies.
+  * Add support for Python 3.14.</comment>
+    <requestid>1345736</requestid>
+  </revision>
 </revisionlist>
