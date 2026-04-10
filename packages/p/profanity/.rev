@@ -742,4 +742,66 @@
   * Add meson build system (#2086)</comment>
     <requestid>1334437</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>49127639d622ca3ff4f713f3c5dd1e81</srcmd5>
+    <version>0.17.0</version>
+    <time>1774555805</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.17.0:
+  Features:
+  * Add OMEMO trust status indicators to the titlebar (#2104)
+  * Add command autocompletion for /stamp (#2126)
+  * Add jid_is_valid_user_jid() to check for valid user JIDs (#2102)
+  * Add unified quality-check script and git hook support (#2099)
+  * Display incoming reports (XEP-0377) (#2117)
+  * Handle and allow JIDs with trailing slashes (#2102)
+  * Implement color coded status messages for file transfers (#2131)
+  * Implement dynamic pad resizing (#2122)
+  * Improve XEP-0377 support with report-origin and third-party elements (#2117)
+  * Improve feedback during OMEMO session Initiation (#2104)
+  * Improve validation of JIDs (#2102)
+  * Notify users when new OMEMO devices or fingerprints are discovered (#2104)
+  * Only request receipts when supported (#2101)
+  * Provide descriptive fallback messages for OMEMO decryption failures (#2104)
+  * Provide detailed encryption failure messages for OMEMO (#2104)
+  * Sanitize illegal XML characters from outgoing messages (#2116)
+  * Show active and trust status in /omemo fingerprint (#2104)
+  * Support UTF-8 characters in autocompletion (#2115)
+  * Suppress &quot;new device&quot; alerts for already known devices (#2113)
+  * Suppress redundant session already exists messages (#2113)
+  * Suppress repetitive missing device ID warnings (#2113)
+  * Introduce prof_date_time_format_iso8601(). (#2112)
+  * Optimize random data generation. (#2109)
+  Bug Fixes:
+  * Allow adding own JID to roster (#2127)
+  * Check for necessary pointers in omemo_receive_message
+  * Correct handling of create_fulljid without resource (#2102)
+  * Database return NULL if no history limits are found (#2102)</comment>
+    <requestid>1342773</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>78d6543ef1cbfb9a358d82e67103345a</srcmd5>
+    <version>0.18.0</version>
+    <time>1775849329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.0:
+  Features:
+  * Add spellcheck highlighting support (#2132)
+  * Implement asynchronous external editor support (#2145)
+  Bug Fixes:
+  * Add missing includes for libomemo-c builds (#2133)
+  * Ensure consistent unescaping and space handling (#2139)
+  * Fix crash when loading MAM for a contact with empty db (#2144)
+  * Fix removal of entries in account file (#2145)
+  * Handle X11 connection loss gracefully (#2140)
+  * Ignore key contents if there is no payload (#2147)
+  * Implement backslash escaping for contact names (#2139)
+  * Restore TTY access for eval_password commands (#2145)
+  * Standardize PreKey management to prevent decryption failures (#2137)
+  * Verify 'by' attribute of stanza-id and MAM result (#2136)
+  Chores:
+  * Fix release years in doap file
+  * Support building libstrophe as a subproject (#2141)</comment>
+    <requestid>1345856</requestid>
+  </revision>
 </revisionlist>

@@ -48,13 +48,13 @@
 %bcond_without omemo_qrcode
 #
 Name:           %{pname}
-Version:        0.16.0
+Version:        0.18.0
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://profanity-im.github.io
-Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}_meson.tar.xz
+Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  meson
 # mandatory requirements
@@ -83,7 +83,7 @@ BuildRequires:  pkgconfig(gpgme)
 %endif
 %if %{with omemo}
 BuildRequires:  pkgconfig(libgcrypt) >= 1.7.0
-BuildRequires:  pkgconfig(libsignal-protocol-c) >= 2.3.2
+BuildRequires:  libomemo-c-devel
 %endif
 %if %{with xscreensaver}
 BuildRequires:  pkgconfig(xscrnsaver)
@@ -158,6 +158,7 @@ This package contains the files needed to build with libprofanity.
 %endif
 %if %{with omemo}
 	-Domemo=enabled \
+	-Domemo-backend=libomemo-c \
 %endif
 %if %{with xscreensaver}
 	-Dxscreensaver=enabled \
