@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-gnome
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xdg-desktop-portal-gnome
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome
-Source:         %{name}-%{version}.tar.zst
-Source1:        libgxdp-0.gitmodule.tar.zst
+Source:         %{name}-%{version}.tar.xz
+Source1:        libgxdp-0.gitmodule.tar.xz
 
 BuildRequires:  c_compiler
 BuildRequires:  fontconfig

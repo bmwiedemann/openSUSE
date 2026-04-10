@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Mar 23 09:00:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sat Mar 14 16:29:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Make the Clipboard portal return errors instead of succeeding
+  + Fix a bug in the Print portal where it was accidentally closing
+    fd 0
+  + Updated translations.
+- Update libgxdp vendored tarball to fix settings schema
+
+-------------------------------------------------------------------
+Mon Mar  2 10:24:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 08:50:56 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Update libgxdp
+  + Remove ellipse from the app chooser list header
+  + Fix a memory leak in the Print portal implementation
+  + Fix icon size in the Dynamic Launcher portal
+  + Various fixes in the Remote Desktop portal
+  + Fix monitor identification in VMs
+  + Fix an issue with mismatching GVariant type unwrapping
+- Changes from version 50.alpha:
+  + Fix a potential source of crashes in the ScreenCast portal code
+  + Properly send the Global Shortcut activation token to the
+    portal frontend
+  + Update libgxdp to override GTK settings
+  + Use a GNOME OS based CI template
+  + Updated translatons.
+
+-------------------------------------------------------------------
 Mon Sep 15 06:33:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
