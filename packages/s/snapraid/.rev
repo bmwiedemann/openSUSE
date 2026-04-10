@@ -67,4 +67,22 @@
 </comment>
     <requestid>1344871</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fe0038e513bd63007994d5875e93ca54</srcmd5>
+    <version>14.2</version>
+    <time>1775836432</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 14.2:
+  * Added a workaround for filesystems with a broken implementation of
+    posix_fadvise() that returns unexpected error codes.
+    This issue was specifically reported with the F2FS filesystem.
+    This change is primarily intended for package maintainers who need to run
+    &quot;make check&quot; on build servers that may use such filesystems.
+    No update is required if you have not encountered an error message about
+    failure to advise files.
+  * Log the modification time of the content file in probe and other commands.
+    This log entry is used by SnapRAID Daemon 1.6.
+</comment>
+    <requestid>1345753</requestid>
+  </revision>
 </revisionlist>
