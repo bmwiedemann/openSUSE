@@ -1,7 +1,7 @@
 #
 # spec file for package vocalis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           vocalis
-Version:        43.beta+125
+Version:        43.beta+131
 Release:        0
 Summary:        Sound Recorder
 License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Design/Apps/SoundRecorder
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson

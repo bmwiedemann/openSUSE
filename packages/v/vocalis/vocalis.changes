@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 23 09:00:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Feb 20 14:01:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta+131:
+  + gi-types: Update 03-14-2025
+  + general: Update types
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 17 13:01:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 43.beta+125:
