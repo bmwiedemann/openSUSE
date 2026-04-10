@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview5
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview5
-Version:        5.18.0
+Version:        5.20.0
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
-Source0:        %{_name}-%{version}.tar.zst
+Source0:        %{_name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 1.70
 BuildRequires:  meson >= 0.59.0

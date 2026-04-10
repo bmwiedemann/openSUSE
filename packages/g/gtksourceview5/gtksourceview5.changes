@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:51:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 17 08:55:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.20.0:
+  + No changes since 5.19.0.
+
+-------------------------------------------------------------------
+Tue Feb 24 10:57:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.19.0:
+  + Annotations: draw a background behind annotations; align to the
+    right when they fit (e.g. for diagnostics)
+  + GObject Introspection: fix nullable and callback destroy
+    annotations (get_location, get_match_style, scheduler,
+    callbacks)
+  + Fix gutter text renderer text layout snapshot deprecation
+  + PHP language: highlight PHP 8.0 attributes and add new keywords
+  + New language: Cornish
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 13 08:34:02 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 5.18.0:
