@@ -3,6 +3,5 @@
   <description>D-Spy is a simple tool to explore D-Bus connections.
 
 </description>
-  <devel project="GNOME:Factory" package="d-spy"/>
   <url>https://gitlab.gnome.org/GNOME/d-spy</url>
 </package>

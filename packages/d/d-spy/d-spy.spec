@@ -1,7 +1,7 @@
 #
 # spec file for package d-spy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,14 @@
 %define sover 1
 
 Name:           d-spy
-Version:        49.2
+Version:        50.0
 Release:        0
 Summary:        A D-Bus explorer for GNOME
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/d-spy
 Source:         %{name}-%{version}.tar.xz
 
-# appstream-glib BR disabled until upstream fixes the metadata test
-# BuildRequires: appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  c_compiler
 BuildRequires:  libxml2-tools
