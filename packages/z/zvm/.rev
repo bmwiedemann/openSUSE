@@ -89,4 +89,17 @@
 - Update to 0.8.12:</comment>
     <requestid>1344365</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e71672866e18b573535af94b12e21027</srcmd5>
+    <version>0.8.17</version>
+    <time>1775836472</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.17:
+  * Added version command because even I was getting sick of forgetting
+- Includes changes from 0.8.16 and 0.8.15:
+  * Fixed issue with incorrect unarchive path for Windows install script
+  * Fixed dereferencing a nil pointer that was breaking upgrade.go and Go installs
+  * Add support for minimum_zig_version in the run and use commands (forwarded request 1345828 from lmulling)</comment>
+    <requestid>1345829</requestid>
+  </revision>
 </revisionlist>

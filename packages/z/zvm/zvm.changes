@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 10 13:02:54 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.8.17:
+  * Added version command because even I was getting sick of forgetting
+- Includes changes from 0.8.16 and 0.8.15:
+  * Fixed issue with incorrect unarchive path for Windows install script
+  * Fixed dereferencing a nil pointer that was breaking upgrade.go and Go installs
+  * Add support for minimum_zig_version in the run and use commands
+
+-------------------------------------------------------------------
 Fri Mar 27 13:35:55 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 0.8.14:
