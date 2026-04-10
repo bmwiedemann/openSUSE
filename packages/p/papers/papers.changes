@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Mar 14 14:20:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Bug fixes:
+    - Saved image files are empty
+    - Print dialog says "Manage Custom Sizes" for Paper Size every
+      time
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  8 11:57:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add tarball containing test data from papers-test-data subproject
+- Re-enable test-suite.
+
+-------------------------------------------------------------------
+Mon Mar  2 09:36:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Some changes we can highlight:
+    - selection of annotation color is now remembered
+  + Bug fixes:
+    - Right clicking highlighted text changes its highlight colour
+- Disable tests for now: glgo#GNOME/papers#646
+- Enable updates of vendored dependencies again.
+
+-------------------------------------------------------------------
+Tue Feb 10 18:31:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + new editing tools (ink and free text annotations)
+  + better troubleshooting information
+  + add a "copy email address" menu item
+  + improved translation strings using formatx! and gettext
+  + stop using osd style for overlay buttons
+  + Bug fixes:
+    - show a radio button for digital signing when there is a
+      single certificate
+    - fix sidebar not grabbing focus when it should
+
+-------------------------------------------------------------------
 Tue Feb 10 10:14:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.4:

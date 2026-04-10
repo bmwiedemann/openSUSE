@@ -2,6 +2,5 @@
   <title>GNOME Document Viewer</title>
   <description>Papers is a document viewer capable of displaying single-page and multi-page
 document formats like PDF and PostScript.</description>
-  <devel project="GNOME:Factory" package="papers"/>
   <url>https://gitlab.gnome.org/GNOME/Incubator/papers</url>
 </package>

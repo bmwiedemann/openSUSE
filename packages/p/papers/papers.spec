@@ -23,13 +23,14 @@
 %define plugin_ver 6
 %define appid org.gnome.Papers
 Name:           papers
-Version:        49.4
+Version:        50.0
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/papers
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
+Source2:        %{name}-test-data-0.tar.xz
 BuildRequires:  blueprint-compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  desktop-file-utils
@@ -51,7 +52,7 @@ BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libspectre)
 BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(poppler-glib)
+BuildRequires:  pkgconfig(poppler-glib) >= 25.07.0
 Recommends:     papers-plugin-pdfdocument
 Suggests:       papers-plugin-comicsdocument
 Suggests:       papers-plugin-djvudocument
@@ -140,6 +141,7 @@ A extension for support document on nautilus.
 
 %prep
 %autosetup -a1
+tar -xf %{SOURCE2} --strip-components=1 -C test-data
 
 %build
 %meson \
