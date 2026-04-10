@@ -1,7 +1,7 @@
 #
 # spec file for package libblastrampoline
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global somajor 5
 %global libname libblastrampoline%{somajor}
 Name:           libblastrampoline
-Version:        5.11.0
+Version:        5.15.0
 Release:        0
 Summary:        BLAS/LAPACK demuxer library using PLT trampolines
 License:        MIT
@@ -85,7 +85,7 @@ mv -v %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
 %{_libdir}/%{name}.so
 
 %files -n %{libname}
-%license LICENSE
+%license LICENSE.md
 %{_libdir}/%{name}.so.%{somajor}*
 
 %changelog

@@ -48,4 +48,27 @@
     `LBT_USE_RTLD_DEEPBIND`</comment>
     <requestid>1198101</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d3555287db6cbcddb444387e7bd283a</srcmd5>
+    <version>5.15.0</version>
+    <time>1775849330</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.15.0:
+  * Avoid `dlsym()` when finding trampoline addresses
+  * Add loongarch64 support
+- update to 5.14.0:
+  * MKL support: Set the LAPACK domain thread number
+  * Add support for setting/getting theading information for NVPL
+- update to 5.13.1:
+  * Fix trampoline build on latest clang on macos
+  * Add mac aarch64 and remove ppc
+- update to 5.13.0:
+  * Add new LAPACK symbols from the release 3.12.1
+- update to 5.12.0:
+  * Add new symbols for the future release of Reference-LAPACK
+- update to 5.11.1:
+  * Fix riscv64 trampoline to be compatible with PIC
+  * Fix assembler syntax for riscv</comment>
+    <requestid>1345945</requestid>
+  </revision>
 </revisionlist>
