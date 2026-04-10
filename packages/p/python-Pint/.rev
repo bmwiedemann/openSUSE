@@ -375,4 +375,27 @@
   * Improve pressure unit definitions in default definition file (#2186)</comment>
     <requestid>1336252</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d3513e55b86d32fa2e59372743fb552b</srcmd5>
+    <version>0.25.3</version>
+    <time>1775836464</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.25.3:
+  * Replace python-mip with scipy for unit optimization,
+    fixing crashes on Python 3.12+ (issue #2121).
+  * Add support for more NumPy functions: vdot, inner,
+    outer, matvec, vecmat, and tensordot.
+  * Implement lazy loading for dask to avoid unnecessary
+    imports.
+  * Add &quot;^&quot; formatting flag to force non-ratio unit
+    representation.
+  * Improve NaN scale handling to prevent incorrect unit
+    cancellations.
+  * Add electric_field_gradient to default definitions.
+  * Ensure string evaluation always returns a Quantity
+    object.
+
+- Only require pytest-subtests with pytest &lt; 9.</comment>
+    <requestid>1345810</requestid>
+  </revision>
 </revisionlist>

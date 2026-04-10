@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pint
-Version:        0.25.2
+Version:        0.25.3
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause

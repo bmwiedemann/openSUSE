@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 10 11:47:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.3:
+  * Replace python-mip with scipy for unit optimization,
+    fixing crashes on Python 3.12+ (issue #2121).
+  * Add support for more NumPy functions: vdot, inner,
+    outer, matvec, vecmat, and tensordot.
+  * Implement lazy loading for dask to avoid unnecessary
+    imports.
+  * Add "^" formatting flag to force non-ratio unit
+    representation.
+  * Improve NaN scale handling to prevent incorrect unit
+    cancellations.
+  * Add electric_field_gradient to default definitions.
+  * Ensure string evaluation always returns a Quantity
+    object.
+
+-------------------------------------------------------------------
 Wed Mar  4 01:53:00 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.25.2:
@@ -41,7 +59,7 @@ Wed Mar  4 01:53:00 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Thu Nov 27 06:05:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Only require pytest-subtests with pytest < 9. 
+- Only require pytest-subtests with pytest < 9.
 
 -------------------------------------------------------------------
 Tue Apr 22 01:40:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
