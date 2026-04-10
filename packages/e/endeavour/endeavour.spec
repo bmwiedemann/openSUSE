@@ -1,7 +1,7 @@
 #
 # spec file for package endeavour
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2022 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,14 @@
 
 
 Name:           endeavour
-Version:        43.0
+Version:        43.0.git.170
 Release:        0
 Summary:        Personal task manager for GNOME
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/Endeavour
 Source:         %{name}-%{version}.tar.xz
 
+BuildRequires:  blueprint-compiler
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.53.0
@@ -33,7 +34,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.43.4
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.2.0
 BuildRequires:  pkgconfig(gtk4) >= 3.92.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.2
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.32.0
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.17
@@ -63,11 +64,7 @@ This package contains the development files for %{name}.
 %autosetup -p1
 
 %build
-# NOTE: We are not building introspection support as that
-# introduces a dep on a private lib, last checked ver 43.0
-%meson \
-	-D introspection=false \
-	%{nil}
+%meson
 %meson_build
 
 %install
@@ -85,14 +82,8 @@ This package contains the development files for %{name}.
 %{_datadir}/dbus-1/services/org.gnome.Todo.service
 %{_datadir}/glib-2.0/schemas/org.gnome.todo.gschema.xml
 %{_datadir}/help/C/%{name}/
-%dir %{_datadir}/icons/hicolor/symbolic/actions
 %{_datadir}/icons/hicolor/*/*/*.svg
 %{_datadir}/metainfo/org.gnome.Todo.appdata.xml
-
-%files devel
-%doc doc/CONTRIBUTING.md doc/HACKING.md README.md
-%{_includedir}/%{name}/
-%{_libdir}/pkgconfig/%{name}.pc
 
 %files lang -f %{name}.lang
 

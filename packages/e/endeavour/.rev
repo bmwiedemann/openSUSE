@@ -24,4 +24,12 @@
 - Add check section and run meson_test macro during build. (forwarded request 1073108 from iznogood)</comment>
     <requestid>1073150</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>965c5ee4cd58186cbeb61d7f83e908e7</srcmd5>
+    <version>43.0.git.170</version>
+    <time>1775836192</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345335</requestid>
+  </revision>
 </revisionlist>
