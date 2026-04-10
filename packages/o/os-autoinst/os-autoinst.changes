@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 09 14:22:35 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1775744546.1ee50c6:
+  * style(llm): use indented heredocs for better readability
+  * refactor: consolidate logic in _detect_serial_marker_capability
+  * style: use non-capturing group for BASH version detection
+  * fix(distribution): make PRETTY_SERIAL_MARKER reboot-safe
+  * refactor: early returns in _detect_serial_marker_capability
+  * fix(consoles): support newer x3270 versions
+  * refactor: unconditionally import LLM analysis to fix coverage
+  * feat(llm): integrate LLM analysis into isotovideo
+  * feat(llm): add core LLM failure analysis module and tests
+
+-------------------------------------------------------------------
 Tue Apr 07 13:44:02 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1775569433.3681116:
