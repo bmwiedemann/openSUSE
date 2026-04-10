@@ -17,34 +17,22 @@
 
 
 %define lsAPI 3.0
-%define tinysparql_basever 3.8
+%define tinysparql_basever 3.11
 
 Name:           localsearch
-Version:        3.10.2
+Version:        3.11.0
 Release:        0
 Summary:        Search tool and indexer using tinysparql
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/localsearch
-Source0:        %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM 0001-extractor-Check-for-valid-offsets-extracting-MP3-per.patch bsc#1257606 mgorse@suse.com -- check for valid offsets extracting MP3 performer tags.
-Patch0:         0001-extractor-Check-for-valid-offsets-extracting-MP3-per.patch
-# PATCH-FIX-UPSTREAM 0002-extractor-Bail-out-on-0-size-frame-for-ID3v2.0-tags.patch mgorse@suse.com -- fix a possible NULL pointer dereference.
-Patch1:         0002-extractor-Bail-out-on-0-size-frame-for-ID3v2.0-tags.patch
-# PATCH-FIX-UPSTREAM 0003-extractor-Check-for-buffer-boundaries-extracting-MP3.patch bsc#1257607 mgorse@suse.com -- check for buffer boundaries extracting MP3 TXX tags.
-Patch2:         0003-extractor-Check-for-buffer-boundaries-extracting-MP3.patch
-# PATCH-FIX-UPSTREAM 0004-extractor-Minor-code-refactor.patch mgorse@suse.com -- minor code refactor.
-Patch3:         0004-extractor-Minor-code-refactor.patch
-# PATCH-FIX-UPSTREAM 0005-extractor-Refactor-fix-handling-of-COMM-tags.patch bsc#1257608 mgorse@suse.com -- refactor/fix handling of COMM tags.
-Patch4:         0005-extractor-Refactor-fix-handling-of-COMM-tags.patch
-# PATCH-FIX-UPSTREAM 0006-extractor-Fix-accounting-of-offsets-within-MP3-perfo.patch bsc#1257609 mgorse@suse.com -- fix accounting of offsets within MP3 performer tags.
-Patch5:         0006-extractor-Fix-accounting-of-offsets-within-MP3-perfo.patch
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
-BuildRequires:  meson >= 0.51.0
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(dbus-1)
@@ -58,7 +46,6 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
-BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(gupnp-dlna-2.0)
 BuildRequires:  pkgconfig(icu-i18n) >= 4.8.1.1
 BuildRequires:  pkgconfig(icu-uc) >= 4.8.1.1
@@ -66,17 +53,17 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcue) >= 2.0.0
-BuildRequires:  pkgconfig(libexif) >= 0.6
 BuildRequires:  pkgconfig(libgsf-1) >= 1.14.24
 BuildRequires:  pkgconfig(libgxps)
-BuildRequires:  pkgconfig(libiptcdata)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libosinfo-1.0) >= 0.2.9
 BuildRequires:  pkgconfig(libseccomp) >= 2.0
+BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
+BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
-BuildRequires:  pkgconfig(tinysparql-3.0)
+BuildRequires:  pkgconfig(tinysparql-3.0) >= 3.10.1
 BuildRequires:  pkgconfig(totem-plparser)
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
 # The schema files moved from libtracker-common to tracker-miners
@@ -137,7 +124,6 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_datadir}/glib-2.0/schemas/org.freedesktop.TrackerMiners3.enums.xml
 %dir %{_datadir}/localsearch3
 %dir %{_datadir}/localsearch3/extract-rules
-%dir %{_datadir}/localsearch3/miners
 %{_datadir}/localsearch3/extract-rules/10-abw.rule
 %{_datadir}/localsearch3/extract-rules/10-bmp.rule
 %{_datadir}/localsearch3/extract-rules/10-comics.rule
@@ -158,6 +144,7 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_datadir}/localsearch3/extract-rules/10-raw.rule
 %{_datadir}/localsearch3/extract-rules/10-svg.rule
 %{_datadir}/localsearch3/extract-rules/10-tiff.rule
+%{_datadir}/localsearch3/extract-rules/10-webp.rule
 %{_datadir}/localsearch3/extract-rules/10-xps.rule
 %{_datadir}/localsearch3/extract-rules/11-iso.rule
 %{_datadir}/localsearch3/extract-rules/11-msoffice-xml.rule
@@ -169,7 +156,6 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_datadir}/localsearch3/extract-rules/90-disc-generic.rule
 %{_datadir}/localsearch3/extract-rules/90-libav-audio-generic.rule
 %{_datadir}/localsearch3/extract-rules/90-libav-video-generic.rule
-%{_datadir}/localsearch3/miners/org.freedesktop.Tracker3.Miner.Files.service
 %dir %{_libdir}/localsearch-%{lsAPI}
 %dir %{_libdir}/localsearch-%{lsAPI}/extract-modules
 %dir %{_libdir}/localsearch-%{lsAPI}/trackertestutils
@@ -197,6 +183,7 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-raw.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-text.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-tiff.so
+%{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-webp.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-xps.so
 %{_libdir}/localsearch-%{lsAPI}/libtracker-extract.so
 %{_libdir}/localsearch-%{lsAPI}/trackertestutils/__init__.py
@@ -210,9 +197,11 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_libdir}/localsearch-%{lsAPI}/trackertestutils/sandbox.py
 %{_libdir}/localsearch-%{lsAPI}/trackertestutils/storehelper.py
 %{_libdir}/localsearch-%{lsAPI}/writeback-modules/libwriteback-gstreamer.so
+%{_libdir}/localsearch-%{lsAPI}/writeback-modules/libwriteback-playlist.so
 %{_libdir}/localsearch-%{lsAPI}/writeback-modules/libwriteback-xmp.so
 %{_libexecdir}/localsearch-3
 %{_libexecdir}/localsearch-control-3
+%{_libexecdir}/localsearch-endpoint-3
 %{_libexecdir}/localsearch-extractor-3
 %{_libexecdir}/localsearch-writeback-3
 %{_mandir}/man1/localsearch-3.1%{?ext_man}

@@ -81,4 +81,12 @@
     <comment></comment>
     <requestid>1331584</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2baa966a6ced7688930a6f2f57203c06</srcmd5>
+    <version>3.11.0</version>
+    <time>1775835974</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345395</requestid>
+  </revision>
 </revisionlist>

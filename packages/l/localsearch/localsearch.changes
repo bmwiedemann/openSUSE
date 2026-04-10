@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Mar 20 16:08:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Mar 15 09:22:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.11.0:
+  + Memory leak fixes
+  + Stability fixes
+  + Fixes to tv series/season extraction from video files
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 12:53:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.11.rc:
+  + Reliability improvements to the test suite
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 18 14:31:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.11.beta:
+  + Fixes for possible buffer overflows and NULL pointer
+    dereferences in MP3 extractor
+  + Fix seccomp jail in database helper process for removable
+    devices
+  + Replace libgsf with libzip for ZIP content handling
+  + Improve reliability of the test suite in slow scenarios
+  + Updated translations.
+- Add pkgconfig(libzip) BuildRequires: new, optional dependency.
+- Drop upstream merged patches:
+  + 0001-extractor-Check-for-valid-offsets-extracting-MP3-per.patch
+  + 0002-extractor-Bail-out-on-0-size-frame-for-ID3v2.0-tags.patch
+  + 0003-extractor-Check-for-buffer-boundaries-extracting-MP3.patch
+  + 0004-extractor-Minor-code-refactor.patch
+  + 0005-extractor-Refactor-fix-handling-of-COMM-tags.patch
+  + 0006-extractor-Fix-accounting-of-offsets-within-MP3-perfo.patch
+- Add pkgconfig(libzip) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Fri Feb 13 15:45:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.11.alpha:
+  + Default configuration change, the user home directory will now
+    be indexed recursively as a whole, instead of XDG folders
+  + Major change in handling of removable devices. When enabled,
+    removable devices will get a `.localsearch3` folder with a
+    self-contained database for the removable device indexed data,
+    instead of being included in the main database in the user home
+    folder. The setting default remains off.
+  + Improved handling of indexed folder changes found on restart
+  + Improved handling of indexing cancellation in deleted folders
+  + Improved handling of BTRFS filesystems
+  + Dropped libexif dependency, EXIF data is now extracted through
+    gexiv2
+  + Dropped libpiptcdata dependency, IPTC data is now extracted
+    through gexiv2
+  + Consistency improvements to extracted metadata
+  + Fixes to SHSTK handling in the sandboxed process
+  + Further extended test coverage
+  + Updated translations.
+- Add pkgconfig(libwebpdemux) BuildRequires: new default
+  dependency.
+- Drop pkgconfig(gudev-1.0), pkgconfig(libexif), and
+  pkgconfig(libiptcdata) BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
 Thu Feb  5 17:39:02 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add fixes for the MP3 extractor:
