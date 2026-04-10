@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-contacts
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define glib_version 2.64
 
 Name:           gnome-contacts
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
@@ -40,9 +40,10 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(folks) >= %{folks_version}
 BuildRequires:  pkgconfig(folks-eds) >= %{folks_version}
 BuildRequires:  pkgconfig(gee-0.8)
-BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.15.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(glycin-2) >= 2.0
+BuildRequires:  pkgconfig(glycin-gtk4-2) >= 2.0
 BuildRequires:  pkgconfig(gmodule-export-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)

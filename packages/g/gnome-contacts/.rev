@@ -638,4 +638,12 @@
 - Add blueprint-compiler BuildRequires: new dependency. (forwarded request 1305219 from iznogood)</comment>
     <requestid>1305514</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>d35e56b90e66bd2c90eeacf6b36e6908</srcmd5>
+    <version>50.0</version>
+    <time>1775836024</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345429</requestid>
+  </revision>
 </revisionlist>
