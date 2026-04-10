@@ -277,4 +277,14 @@ next week.  Gcc7 can pick it up from there.
   * includes fix for bogus expression simplification [bsc#1257463]</comment>
     <requestid>1330688</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a007f13850f24e9bc4fc2b5406d0cc52</srcmd5>
+    <version>14.3.1+git12513</version>
+    <time>1775836551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-14 branch head, 046776dac7cc74bdbab36f450, git12513
+  * pulls build fixes for libcody when using a C++20 defaulting host
+    compiler</comment>
+    <requestid>1345560</requestid>
+  </revision>
 </revisionlist>
