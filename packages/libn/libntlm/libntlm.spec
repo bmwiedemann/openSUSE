@@ -29,6 +29,7 @@ URL:            https://gitlab.com/gsasl/libntlm/
 Source:         https://download.savannah.nongnu.org/releases/libntlm/%name-%version.tar.gz
 Source2:        https://download.savannah.nongnu.org/releases/libntlm/%name-%version.tar.gz.sig
 Source3:        %name.keyring
+Source9:        baselibs.conf
 BuildRequires:  pkg-config
 
 %description

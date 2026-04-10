@@ -104,4 +104,12 @@
     <comment>- update to 1.8:</comment>
     <requestid>1194604</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2039bced9e6bac19bb97ce5adc2474c5</srcmd5>
+    <version>1.8</version>
+    <time>1775836165</time>
+    <user>dimstar_suse</user>
+    <comment>- add baselibs.conf for neon</comment>
+    <requestid>1345483</requestid>
+  </revision>
 </revisionlist>
