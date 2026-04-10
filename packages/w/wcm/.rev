@@ -27,4 +27,14 @@ in the LXQt environment</comment>
     <comment></comment>
     <requestid>1319568</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>82aaf421e8c2df64c8491161ac39a7b4</srcmd5>
+    <version>0.10.0</version>
+    <time>1775836411</time>
+    <user>dimstar_suse</user>
+    <comment>- Change from wlroot-devel to pkgconfig(wlroots-0.19)
+
+  * Don't show 'not found' icon for plugins without an icon.</comment>
+    <requestid>1345715</requestid>
+  </revision>
 </revisionlist>

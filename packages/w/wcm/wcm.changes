@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  9 23:35:10 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Change from wlroot-devel to pkgconfig(wlroots-0.19)
+
+-------------------------------------------------------------------
 Sat Nov 22 21:26:29 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
@@ -12,7 +17,7 @@ Thu Sep  4 04:50:39 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
   * Use default app-id for .desktop file name.
   * Do not bundle wdisplays by default for packaging reasons.
   * Get rid of redundant wdisplays subproject.
-  * Don't show 'not found' icon for plugins without an icon. 
+  * Don't show 'not found' icon for plugins without an icon.
 
 -------------------------------------------------------------------
 Tue Jan  7 18:01:56 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
