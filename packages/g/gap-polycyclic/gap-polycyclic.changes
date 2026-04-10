@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:19:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.18
+  * Let `Centralizer( U, g )` work if `g` is not contained in `U`.
+  * Improve `Intersection` to work in more cases (instead of
+    erroring out), specifically if one of the arguments is finite.
+
+-------------------------------------------------------------------
 Sat Oct 11 18:36:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.17

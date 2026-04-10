@@ -17,7 +17,7 @@
 
 
 Name:           gap-polycyclic
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        GAP: Computation with polycyclic groups
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-alnuth >= 3.0
 Requires:       gap-autpgrp >= 1.6
-Requires:       gap-core >= 4.9
+Requires:       gap-core >= 4.12
 
 %description
 The Polycyclic package provides a basis for working with polycyclic

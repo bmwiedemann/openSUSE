@@ -15,4 +15,12 @@
     <comment>- Update to release 2.17</comment>
     <requestid>1310768</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>83004d6c47060149a6c17269363bcab3</srcmd5>
+    <version>2.18</version>
+    <time>1775836449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.18</comment>
+    <requestid>1345774</requestid>
+  </revision>
 </revisionlist>
