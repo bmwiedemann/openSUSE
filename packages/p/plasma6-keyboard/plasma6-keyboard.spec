@@ -15,6 +15,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %global kf6_version 6.5.0
 %global qt6_version 6.8.0
 
@@ -28,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-keyboard
-Version:        6.6.3
+Version:        6.6.4
 Release:        0
 Summary:        Virtual Keyboard for Qt based desktops
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -119,4 +121,3 @@ desktop-file-validate %{buildroot}%{_kf6_applicationsdir}/org.kde.plasma.keyboar
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_plasmakeyboard.so
 
 %changelog
-
