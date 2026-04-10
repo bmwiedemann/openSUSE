@@ -19,18 +19,14 @@ diff --git a/src/Gui/Quarter/QuarterWidget.cpp b/src/Gui/Quarter/QuarterWidget.c
 index 5e1f89e04d..18f418e19e 100644
 --- a/src/Gui/Quarter/QuarterWidget.cpp
 +++ b/src/Gui/Quarter/QuarterWidget.cpp
-@@ -72,6 +72,11 @@
- #include <Inventor/SbByteBuffer.h>
+@@ -58,6 +58,7 @@
+ # include <config.h>
+ # ifdef  HAVE_GL_GL_H
+ #  include <GL/gl.h>
++# include <GL/glext.h>
+ # endif
  #endif
  
-+#if !defined(FC_OS_MACOSX)
-+# include <GL/gl.h>
-+# include <GL/glext.h>
-+#endif
-+
- #include <Inventor/SbColor.h>
- #include <Inventor/SbViewportRegion.h>
- #include <Inventor/SoDB.h>
 @@ -131,10 +136,6 @@ using namespace SIM::Coin3D::Quarter;
  
  #define PRIVATE(obj) obj->pimpl

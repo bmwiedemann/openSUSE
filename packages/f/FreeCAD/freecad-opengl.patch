@@ -11,16 +11,8 @@
      simple(Coin3D "${COIN3D_VERSION} [${COIN3D_LIBRARIES}] [${COIN3D_INCLUDE_DIRS}]")
 --- a/src/Gui/CMakeLists.txt
 +++ b/src/Gui/CMakeLists.txt
-@@ -68,6 +68,7 @@ if(MSVC)
-          FreeCADApp
-          ${COIN3D_LIBRARIES}
-          ${OPENGL_gl_LIBRARY}
-+         ${OPENGL_LIBRARY}
-     )
- 
-     if(FREECAD_USE_3DCONNEXION_LEGACY)
-@@ -82,6 +83,7 @@ else(MSVC)
-         ${COIN3D_LIBRARIES}
+@@ -113,6 +113,7 @@ else(MSVC)
+         FreeCADApp
          ${Boost_LIBRARIES}
          ${OPENGL_gl_LIBRARY}
 +        ${OPENGL_LIBRARY}

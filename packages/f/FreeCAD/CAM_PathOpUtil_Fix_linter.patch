@@ -1,0 +1,354 @@
+From 06bc4f61e06fb4215ae7e5014c9870262dfe3577 Mon Sep 17 00:00:00 2001
+From: tarman3 <joice501790018@tutamail.com>
+Date: Mon, 24 Nov 2025 23:21:36 +0200
+Subject: [PATCH] CAM: OpUtil - Fix linter errors
+
+---
+ src/Mod/CAM/CAMTests/TestPathOpUtil.py | 90 +++++++++++++-------------
+ src/Mod/CAM/Path/Op/Util.py            | 19 +++---
+ 2 files changed, 54 insertions(+), 55 deletions(-)
+
+diff --git a/src/Mod/CAM/CAMTests/TestPathOpUtil.py b/src/Mod/CAM/CAMTests/TestPathOpUtil.py
+index 0aef98c6fffd..8bf7e3748007 100644
+--- a/src/Mod/CAM/CAMTests/TestPathOpUtil.py
++++ b/src/Mod/CAM/CAMTests/TestPathOpUtil.py
+@@ -317,7 +317,7 @@ def test22(self):
+         lastAngle = None
+         refAngle = math.pi / 3
+         for e in wire.Edges:
+-            if Part.Circle == type(e.Curve):
++            if isinstance(e.Curve, Part.Circle):
+                 self.assertRoughly(5, e.Curve.Radius)
+                 self.assertCoincide(Vector(0, 0, -1), e.Curve.Axis)
+             else:
+@@ -365,15 +365,15 @@ def test32(self):
+ 
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getPositiveShape(obj), 3, True)
+         self.assertEqual(8, len(wire.Edges))
+-        self.assertEqual(4, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
+-        self.assertEqual(4, len([e for e in wire.Edges if Part.Circle == type(e.Curve)]))
++        self.assertEqual(4, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
++        self.assertEqual(4, len([e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]))
+         for e in wire.Edges:
+-            if Part.Line == type(e.Curve):
++            if isinstance(e.Curve, Part.Line):
+                 if Path.Geom.isRoughly(e.Vertexes[0].Point.x, e.Vertexes[1].Point.x):
+                     self.assertEqual(40, e.Length)
+                 if Path.Geom.isRoughly(e.Vertexes[0].Point.y, e.Vertexes[1].Point.y):
+                     self.assertEqual(60, e.Length)
+-            if Part.Circle == type(e.Curve):
++            if isinstance(e.Curve, Part.Circle):
+                 self.assertRoughly(3, e.Curve.Radius)
+                 self.assertCoincide(Vector(0, 0, -1), e.Curve.Axis)
+         self.assertTrue(PathOpUtil.isWireClockwise(wire))
+@@ -381,15 +381,15 @@ def test32(self):
+         # change offset orientation
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getPositiveShape(obj), 3, False)
+         self.assertEqual(8, len(wire.Edges))
+-        self.assertEqual(4, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
+-        self.assertEqual(4, len([e for e in wire.Edges if Part.Circle == type(e.Curve)]))
++        self.assertEqual(4, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
++        self.assertEqual(4, len([e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]))
+         for e in wire.Edges:
+-            if Part.Line == type(e.Curve):
++            if isinstance(e.Curve, Part.Line):
+                 if Path.Geom.isRoughly(e.Vertexes[0].Point.x, e.Vertexes[1].Point.x):
+                     self.assertEqual(40, e.Length)
+                 if Path.Geom.isRoughly(e.Vertexes[0].Point.y, e.Vertexes[1].Point.y):
+                     self.assertEqual(60, e.Length)
+-            if Part.Circle == type(e.Curve):
++            if isinstance(e.Curve, Part.Circle):
+                 self.assertRoughly(3, e.Curve.Radius)
+                 self.assertCoincide(Vector(0, 0, +1), e.Curve.Axis)
+         self.assertFalse(PathOpUtil.isWireClockwise(wire))
+@@ -400,25 +400,25 @@ def test33(self):
+ 
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getPositiveShape(obj), 3, True)
+         self.assertEqual(6, len(wire.Edges))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Circle == type(e.Curve)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]))
+         length = 60 * math.sin(math.radians(60))
+         for e in wire.Edges:
+-            if Part.Line == type(e.Curve):
++            if isinstance(e.Curve, Part.Line):
+                 self.assertRoughly(length, e.Length)
+-            if Part.Circle == type(e.Curve):
++            if isinstance(e.Curve, Part.Circle):
+                 self.assertRoughly(3, e.Curve.Radius)
+                 self.assertCoincide(Vector(0, 0, -1), e.Curve.Axis)
+ 
+         # change offset orientation
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getPositiveShape(obj), 3, False)
+         self.assertEqual(6, len(wire.Edges))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Circle == type(e.Curve)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]))
+         for e in wire.Edges:
+-            if Part.Line == type(e.Curve):
++            if isinstance(e.Curve, Part.Line):
+                 self.assertRoughly(length, e.Length)
+-            if Part.Circle == type(e.Curve):
++            if isinstance(e.Curve, Part.Circle):
+                 self.assertRoughly(3, e.Curve.Radius)
+                 self.assertCoincide(Vector(0, 0, +1), e.Curve.Axis)
+ 
+@@ -428,26 +428,26 @@ def test34(self):
+ 
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getPositiveShape(obj), 3, True)
+         self.assertEqual(6, len(wire.Edges))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Circle == type(e.Curve)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]))
+         length = 40
+         radius = 20 + 3
+         for e in wire.Edges:
+-            if Part.Line == type(e.Curve):
++            if isinstance(e.Curve, Part.Line):
+                 self.assertRoughly(length, e.Length)
+-            if Part.Circle == type(e.Curve):
++            if isinstance(e.Curve, Part.Circle):
+                 self.assertRoughly(radius, e.Curve.Radius)
+                 self.assertCoincide(Vector(0, 0, -1), e.Curve.Axis)
+ 
+         # change offset orientation
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getPositiveShape(obj), 3, False)
+         self.assertEqual(6, len(wire.Edges))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Circle == type(e.Curve)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]))
+         for e in wire.Edges:
+-            if Part.Line == type(e.Curve):
++            if isinstance(e.Curve, Part.Line):
+                 self.assertRoughly(length, e.Length)
+-            if Part.Circle == type(e.Curve):
++            if isinstance(e.Curve, Part.Circle):
+                 self.assertRoughly(radius, e.Curve.Radius)
+                 self.assertCoincide(Vector(0, 0, +1), e.Curve.Axis)
+ 
+@@ -476,7 +476,7 @@ def test36(self):
+ 
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getNegativeShape(obj), 3, True)
+         self.assertEqual(4, len(wire.Edges))
+-        self.assertEqual(4, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
++        self.assertEqual(4, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
+         for e in wire.Edges:
+             if Path.Geom.isRoughly(e.Vertexes[0].Point.x, e.Vertexes[1].Point.x):
+                 self.assertRoughly(34, e.Length)
+@@ -487,7 +487,7 @@ def test36(self):
+         # change offset orientation
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getNegativeShape(obj), 3, False)
+         self.assertEqual(4, len(wire.Edges))
+-        self.assertEqual(4, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
++        self.assertEqual(4, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
+         for e in wire.Edges:
+             if Path.Geom.isRoughly(e.Vertexes[0].Point.x, e.Vertexes[1].Point.x):
+                 self.assertRoughly(34, e.Length)
+@@ -501,7 +501,7 @@ def test37(self):
+ 
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getNegativeShape(obj), 3, True)
+         self.assertEqual(3, len(wire.Edges))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
+         length = 48 * math.sin(math.radians(60))
+         for e in wire.Edges:
+             self.assertRoughly(length, e.Length)
+@@ -510,7 +510,7 @@ def test37(self):
+         # change offset orientation
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getNegativeShape(obj), 3, False)
+         self.assertEqual(3, len(wire.Edges))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
+         for e in wire.Edges:
+             self.assertRoughly(length, e.Length)
+         self.assertTrue(PathOpUtil.isWireClockwise(wire))
+@@ -521,26 +521,26 @@ def test38(self):
+ 
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getNegativeShape(obj), 3, True)
+         self.assertEqual(6, len(wire.Edges))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Circle == type(e.Curve)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]))
+         length = 40
+         radius = 20 - 3
+         for e in wire.Edges:
+-            if Part.Line == type(e.Curve):
++            if isinstance(e.Curve, Part.Line):
+                 self.assertRoughly(length, e.Length)
+-            if Part.Circle == type(e.Curve):
++            if isinstance(e.Curve, Part.Circle):
+                 self.assertRoughly(radius, e.Curve.Radius)
+                 self.assertCoincide(Vector(0, 0, +1), e.Curve.Axis)
+ 
+         # change offset orientation
+         wire = PathOpUtil.offsetWire(getWire(obj.Tool), getNegativeShape(obj), 3, False)
+         self.assertEqual(6, len(wire.Edges))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Line == type(e.Curve)]))
+-        self.assertEqual(3, len([e for e in wire.Edges if Part.Circle == type(e.Curve)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Line)]))
++        self.assertEqual(3, len([e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]))
+         for e in wire.Edges:
+-            if Part.Line == type(e.Curve):
++            if isinstance(e.Curve, Part.Line):
+                 self.assertRoughly(length, e.Length)
+-            if Part.Circle == type(e.Curve):
++            if isinstance(e.Curve, Part.Circle):
+                 self.assertRoughly(radius, e.Curve.Radius)
+                 self.assertCoincide(Vector(0, 0, -1), e.Curve.Axis)
+ 
+@@ -642,7 +642,7 @@ def test42(self):
+         self.assertCoincide(Vector(-x, y, 0), wire.Edges[0].Vertexes[0].Point)
+         self.assertCoincide(Vector(+x, y, 0), wire.Edges[-1].Vertexes[1].Point)
+ 
+-        rEdges = [e for e in wire.Edges if Part.Circle == type(e.Curve)]
++        rEdges = [e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]
+ 
+         self.assertEqual(1, len(rEdges))
+         self.assertCoincide(Vector(0, 20, 0), rEdges[0].Curve.Center)
+@@ -654,7 +654,7 @@ def test42(self):
+         self.assertCoincide(Vector(+x, y, 0), wire.Edges[0].Vertexes[0].Point)
+         self.assertCoincide(Vector(-x, y, 0), wire.Edges[-1].Vertexes[1].Point)
+ 
+-        rEdges = [e for e in wire.Edges if Part.Circle == type(e.Curve)]
++        rEdges = [e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]
+ 
+         self.assertEqual(1, len(rEdges))
+         self.assertCoincide(Vector(0, 20, 0), rEdges[0].Curve.Center)
+@@ -686,7 +686,7 @@ def test43(self):
+         self.assertCoincide(Vector(-x, y, 0), wire.Edges[0].Vertexes[0].Point)
+         self.assertCoincide(Vector(+x, y, 0), wire.Edges[-1].Vertexes[1].Point)
+ 
+-        rEdges = [e for e in wire.Edges if Part.Circle == type(e.Curve)]
++        rEdges = [e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]
+ 
+         self.assertEqual(1, len(rEdges))
+         self.assertCoincide(Vector(0, 20, 0), rEdges[0].Curve.Center)
+@@ -698,7 +698,7 @@ def test43(self):
+         self.assertCoincide(Vector(+x, y, 0), wire.Edges[0].Vertexes[0].Point)
+         self.assertCoincide(Vector(-x, y, 0), wire.Edges[-1].Vertexes[1].Point)
+ 
+-        rEdges = [e for e in wire.Edges if Part.Circle == type(e.Curve)]
++        rEdges = [e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]
+ 
+         self.assertEqual(1, len(rEdges))
+         self.assertCoincide(Vector(0, 20, 0), rEdges[0].Curve.Center)
+@@ -801,7 +801,7 @@ def test46(self):
+         self.assertCoincide(Vector(+x, y, 0), wire.Edges[0].Vertexes[0].Point)
+         self.assertCoincide(Vector(-x, y, 0), wire.Edges[-1].Vertexes[1].Point)
+ 
+-        rEdges = [e for e in wire.Edges if Part.Circle == type(e.Curve)]
++        rEdges = [e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]
+         self.assertEqual(0, len(rEdges))
+ 
+         # offset the other way
+@@ -810,7 +810,7 @@ def test46(self):
+         self.assertCoincide(Vector(-x, y, 0), wire.Edges[0].Vertexes[0].Point)
+         self.assertCoincide(Vector(+x, y, 0), wire.Edges[-1].Vertexes[1].Point)
+ 
+-        rEdges = [e for e in wire.Edges if Part.Circle == type(e.Curve)]
++        rEdges = [e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]
+         self.assertEqual(0, len(rEdges))
+ 
+     def test47(self):
+@@ -839,7 +839,7 @@ def test47(self):
+         self.assertCoincide(Vector(+x, y, 0), wire.Edges[0].Vertexes[0].Point)
+         self.assertCoincide(Vector(-x, y, 0), wire.Edges[-1].Vertexes[1].Point)
+ 
+-        rEdges = [e for e in wire.Edges if Part.Circle == type(e.Curve)]
++        rEdges = [e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]
+         self.assertEqual(0, len(rEdges))
+ 
+         # offset the other way
+@@ -848,7 +848,7 @@ def test47(self):
+         self.assertCoincide(Vector(-x, y, 0), wire.Edges[0].Vertexes[0].Point)
+         self.assertCoincide(Vector(+x, y, 0), wire.Edges[-1].Vertexes[1].Point)
+ 
+-        rEdges = [e for e in wire.Edges if Part.Circle == type(e.Curve)]
++        rEdges = [e for e in wire.Edges if isinstance(e.Curve, Part.Circle)]
+         self.assertEqual(0, len(rEdges))
+ 
+     def test50(self):
+diff --git a/src/Mod/CAM/Path/Op/Util.py b/src/Mod/CAM/Path/Op/Util.py
+index a8639e78c770..5035371c1c90 100644
+--- a/src/Mod/CAM/Path/Op/Util.py
++++ b/src/Mod/CAM/Path/Op/Util.py
+@@ -22,7 +22,6 @@
+ # *                                                                         *
+ # ***************************************************************************
+ 
+-from PySide.QtCore import QT_TRANSLATE_NOOP
+ import FreeCAD
+ import Path
+ import math
+@@ -56,12 +55,12 @@ def debugEdge(label, e):
+         return
+     p0 = e.valueAt(e.FirstParameter)
+     p1 = e.valueAt(e.LastParameter)
+-    if Part.Line == type(e.Curve):
++    if isinstance(e.Curve, Part.Line):
+         print(
+             "%s Part.makeLine((%.2f, %.2f, %.2f), (%.2f, %.2f, %.2f))"
+             % (label, p0.x, p0.y, p0.z, p1.x, p1.y, p1.z)
+         )
+-    elif Part.Circle == type(e.Curve):
++    elif isinstance(e.Curve, Part.Circle):
+         r = e.Curve.Radius
+         c = e.Curve.Center
+         a = e.Curve.Axis
+@@ -139,9 +138,9 @@ def _isWireClockwise(w):
+     # handle wires consisting of a single circle or 2 edges where one is an arc.
+     # in both cases, because the edges are expected to be oriented correctly, the orientation can be
+     # determined by looking at (one of) the circle curves.
+-    if 2 >= len(w.Edges) and Part.Circle == type(w.Edges[0].Curve):
++    if len(w.Edges) <= 2 and isinstance(w.Edges[0].Curve, Part.Circle):
+         return 0 > w.Edges[0].Curve.Axis.z
+-    if 2 == len(w.Edges) and Part.Circle == type(w.Edges[1].Curve):
++    if len(w.Edges) == 2 and isinstance(w.Edges[1].Curve, Part.Circle):
+         return 0 > w.Edges[1].Curve.Axis.z
+ 
+     # for all other wires we presume they are polygonial and refer to Gauss
+@@ -183,10 +182,10 @@ def offsetWire(wire, base, offset, forward, Side=None):
+     """
+     Path.Log.track("offsetWire")
+ 
+-    if 1 == len(wire.Edges):
++    if len(wire.Edges) == 1:
+         edge = wire.Edges[0]
+         curve = edge.Curve
+-        if Part.Circle == type(curve) and wire.isClosed():
++        if isinstance(curve, Part.Circle) and wire.isClosed():
+             # it's a full circle and there are some problems with that, see
+             # https://www.freecad.org/wiki/Part%20Offset2D
+             # it's easy to construct them manually though
+@@ -205,7 +204,7 @@ def offsetWire(wire, base, offset, forward, Side=None):
+ 
+             return Part.Wire([new_edge])
+ 
+-        if Part.Circle == type(curve) and not wire.isClosed():
++        if isinstance(curve, Part.Circle) and not wire.isClosed():
+             # Process arc segment
+             z = -1 if forward else 1
+             l1 = math.sqrt(
+@@ -257,7 +256,7 @@ def offsetWire(wire, base, offset, forward, Side=None):
+ 
+             return Part.Wire([edge])
+ 
+-        if Part.Line == type(curve) or Part.LineSegment == type(curve):
++        if isinstance(curve, (Part.Line, Part.LineSegment)):
+             # offsetting a single edge doesn't work because there is an infinite
+             # possible planes into which the edge could be offset
+             # luckily, the plane here must be the XY-plane ...
+@@ -351,7 +350,7 @@ def isInside(edge):
+ 
+     def isCircleAt(edge, center):
+         """isCircleAt(edge, center) ... helper function returns True if edge is a circle at the given center."""
+-        if Part.Circle == type(edge.Curve) or Part.ArcOfCircle == type(edge.Curve):
++        if isinstance(edge.Curve, (Part.Circle, Part.ArcOfCircle)):
+             return Path.Geom.pointsCoincide(edge.Curve.Center, center)
+         return False
+ 

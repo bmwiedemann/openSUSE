@@ -42,37 +42,27 @@
 %endif
 
 Name:           FreeCAD
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://www.freecad.org/
-# https://github.com/FreeCAD/FreeCAD/releases/download/%%{version}/freecad_source.tar.gz
-Source0:        https://github.com/FreeCAD/FreeCAD/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/FreeCAD/OndselSolver/archive/09d6175a2ba69e7016fcecc4f384946a2f84f92d.zip#/ondselsolver-09d6175a2ba6.zip
+Source0:        https://github.com/FreeCAD/FreeCAD/releases/download/%{version}/freecad_source_%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Gui-Quarter-Add-missing-OpenGL-includes.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Avoid-catching-SIGSEGV-defer-to-system-services.patch
 # PATCH-FIX-OPENSUSE
-Patch2:         0001-Implement-math.comb-fallback-for-Python-3.6.patch
-# PATCH-FIX-OPENSUSE
 Patch3:         0001-Mod-CAM-Add-missing-OpenGL-includes.patch
-# PATCH-FIX-UPSTREAM
-Patch8:         0001-fix-issue-23829-build-with-boost-v1.89-and-greater.patch
 # PATCH-FIX-UPSTREAM
 Patch9:         0001-Fix-variable-name-for-OpenGL-library.patch
 # PATCH-FIX-OPENSUSE
 Patch14:        freecad-opengl.patch
-# PATCH-FIX-UPSTREAM -- Prereq for Fix-test-failure-temporary-file-race.patch
-Patch16:        https://github.com/FreeCAD/FreeCAD/commit/6f23f01e509348a6755ad3c465a3d7ffd758ee03.patch#/Add-property-read-write-test.patch
 # PATCH-FIX-UPSTREAM
-Patch17:        https://github.com/FreeCAD/FreeCAD/commit/a0e1a31623e334d7186e687c33fad3887e91ee2e.patch#/Fix-test-failure-temporary-file-race.patch
-# PATCH-FIX-UPSTREAM
-Patch18:        https://github.com/FreeCAD/FreeCAD/commit/8547e798fb3b0f51953b18a2cb98f60aec0a7e33.patch#/Fix-Eigen3-version-search.patch
-# PATCH-FIX-OPENSUSE
-Patch100:       disable-test46-test47.patch
+Patch15:        https://github.com/FreeCAD/FreeCAD/commit/06bc4f61e06fb4215ae7e5014c9870262dfe3577.patch#/CAM_PathOpUtil_Fix_linter.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/FreeCAD/commit/a18f77f3b81c15677973e2ea14274c73200470f1
+Patch16:        Fix_CAM_PathOpUtil_OCCT_7_9.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -116,7 +106,7 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  unzip
 
 # Qt & python3
-BuildRequires:  python3-devel >= 3.6.9
+BuildRequires:  python3-devel >= 3.10.0
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-pivy >= 0.6.8
 BuildRequires:  python3-ply
@@ -159,6 +149,7 @@ Requires:       python3-vtk
 
 # For Arch & Draft workbench
 Requires:       python3-pivy
+Requires:       python3-typing_extensions
 
 # For FEM workbench
 Requires:       python3-PyYAML
@@ -190,20 +181,8 @@ Requires:       %{name} = %{version}
 This package contains the files needed for development with FreeCAD.
 
 %prep
-%autosetup -N -b 1
+%autosetup -c -N
 %autopatch -p1
-
-rmdir ./src/3rdParty/OndselSolver
-mv ../OndselSolver-* ./src/3rdParty/OndselSolver
-
-# Use system gtest - https://github.com/FreeCAD/FreeCAD/issues/10126
-sed -i -e 's/add_subdirectory(lib)/find_package(GTest)/' \
-       -e 's/ gtest_main/ GTest::gtest_main/' \
-       -e 's/ gmock_main/ GTest::gmock_main/' \
-  tests/CMakeLists.txt \
-  tests/src/Mod/*/CMakeLists.txt
-# Lower Python minimum version for Leap 15.x
-sed -i -e 's/3.8/3.6/' cMake/FreeCAD_Helpers/SetupPython.cmake
 
 # fix env-script-interpreter
 sed -i '1 s@#!.*@#!%{__python3}@' \
@@ -266,6 +245,7 @@ rm tests/lib -fr
   -DBUILD_ENABLE_CXX_STD:STRING="C++17" \
   -DFREECAD_USE_QT_DIALOG:BOOL=OFF \
   -DFREECAD_USE_EXTERNAL_FMT:BOOL=TRUE \
+  -DFREECAD_USE_EXTERNAL_GTEST:BOOL=TRUE \
   -DFREECAD_USE_EXTERNAL_PIVY:BOOL=TRUE \
   -DBUILD_OPENSCAD:BOOL=ON \
   -DBUILD_FLAT_MESH:BOOL=ON \
@@ -323,7 +303,9 @@ ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCADCmd
 
 %check
 export QT_QPA_PLATFORM=offscreen
-%ctest --test-dir tests
+# FileInfoTests are racy, https://github.com/FreeCAD/FreeCAD/issues/28737
+%ctest --test-dir tests --exclude-regex FileInfoTest
+%ctest --test-dir tests --parallel 1 --tests-regex FileInfoTest
 
 %post -p /sbin/ldconfig
 

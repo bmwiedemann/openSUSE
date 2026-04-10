@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Mar 26 02:33:58 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.1.0
+  For details, see https://wiki.freecad.org/Release_notes_1.1
+- Drop:
+  * Add-property-read-write-test.patch
+  * Fix-Eigen3-version-search.patch
+  * Fix-test-failure-temporary-file-race.patch
+  * disable-test46-test47.patch
+  * 0001-fix-issue-23829-build-with-boost-v1.89-and-greater.patch
+  * 0001-Implement-math.comb-fallback-for-Python-3.6.patch
+- Rebase:
+  * freecad-opengl.patch
+- Add:
+  * CAM_PathOpUtil_Fix_linter.patch
+  * Fix_CAM_PathOpUtil_OCCT_7_9.patch
+- Remove separate ondselsolver source, included in tarball
+
+-------------------------------------------------------------------
 Mon Feb 16 16:20:30 UTC 2026 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Add Fix-Eigen3-version-search.patch

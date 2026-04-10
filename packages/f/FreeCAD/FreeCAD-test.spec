@@ -17,16 +17,14 @@
 
 
 Name:           FreeCAD-test
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Meta source package that runs the FreeCAD testsuite when built
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://www.freecadweb.org/
 BuildRequires:  FreeCAD = %{version}
-%if 0%{?suse_version} > 1500
 BuildRequires:  gmsh
-%endif
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
