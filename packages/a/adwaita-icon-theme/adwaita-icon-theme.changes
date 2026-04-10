@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:34:36 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 20 16:35:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace gtk3-tools with gtk4-tools BuildRequires, most of the
+  GNOME stack have moved to gtk4 now, and in any case, there should
+  be no functional difference.
+
+-------------------------------------------------------------------
+Tue Mar 17 16:36:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Use old format of the legacy icons for gtk3.
+
+-------------------------------------------------------------------
+Fri Mar  6 08:05:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Reintroduce legacy icons because themes.
+
+-------------------------------------------------------------------
+Tue Feb 10 08:10:42 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.alpha:
+  + symbolic:battery icons no longer fuzzy
+  + build: Windows build
+
+-------------------------------------------------------------------
 Fri Sep 12 15:15:16 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
