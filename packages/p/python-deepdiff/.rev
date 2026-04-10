@@ -276,4 +276,12 @@
 - Use libalternatives instead of update-alternatives</comment>
     <requestid>1342180</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dd8ee3000e4e20b6d6c93d6d31649319</srcmd5>
+    <version>9.0.0</version>
+    <time>1775849326</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1345857</requestid>
+  </revision>
 </revisionlist>

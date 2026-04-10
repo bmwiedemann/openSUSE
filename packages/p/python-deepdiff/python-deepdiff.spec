@@ -22,39 +22,33 @@
 %bcond_with libalternatives
 %endif
 
-# No tag for last release, so we need to pick from the repository by
-# commit id.
-%define commit 0d07ec21d12b46ef4e489383b363eadc22d990fb
-
 %{?sle15_python_module_pythons}
 Name:           python-deepdiff
-Version:        8.6.2
+Version:        9.0.0
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
 URL:            https://github.com/seperman/deepdiff
-Source:         https://github.com/seperman/deepdiff/archive/%{commit}.tar.gz#/deepdiff-%{version}-gh.tar.gz
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module flit-core}
-BuildRequires:  %{python_module jsonpickle}
-#BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module orderly-set >= 5.4.1}
-BuildRequires:  %{python_module orjson}
-BuildRequires:  %{python_module pandas}
+Source:         https://github.com/seperman/deepdiff/archive/%{version}.tar.gz#/deepdiff-%{version}-gh.tar.gz
+BuildRequires:  %{python_module PyYAML >= 6.0.3}
+BuildRequires:  %{python_module click >= 8.3.1}
+BuildRequires:  %{python_module flit-core >= 3.11}
+BuildRequires:  %{python_module jsonpickle >= 4.1.1}
+BuildRequires:  %{python_module orderly-set >= 5.5.0}
+BuildRequires:  %{python_module orjson >= 3.11.7}
+BuildRequires:  %{python_module pandas >= 2.2.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic}
-BuildRequires:  %{python_module pytest-benchmark}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tomli-w}
-BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module uuid6}
+BuildRequires:  %{python_module pydantic >= 2.12.5}
+BuildRequires:  %{python_module pytest >= 9.0.2}
+BuildRequires:  %{python_module pytest-benchmark >= 5.2.3}
+BuildRequires:  %{python_module python-dateutil >= 2.9.0}
+BuildRequires:  %{python_module tomli >= 2.4.0}
+BuildRequires:  %{python_module tomli-w >= 1.2.0}
+BuildRequires:  %{python_module uuid6 == 2025.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-orderly-set >= 5.4.1
+Requires:       python-orderly-set >= 5.5.0
 
 %if %{with libalternatives}
 Requires:       alts
@@ -71,7 +65,7 @@ Requires:       python-click
 Recommends:     python-jsonpickle
 Recommends:     python-numpy
 Recommends:     python-orjson
-Recommends:     python-toml
+Recommends:     python-tomli
 #Suggests:     python-clevercsv
 BuildArch:      noarch
 %python_subpackages
@@ -82,7 +76,7 @@ iterables, strings and other objects. It can search for objects
 within other objects, and hash any object based on their content.
 
 %prep
-%autosetup -p1 -n deepdiff-%{commit}
+%autosetup -p1 -n deepdiff-%{version}
 sed -i '1{/env python/d}' deepdiff/deephash.py deepdiff/diff.py deepdiff/search.py
 chmod -x deepdiff/diff.py
 
