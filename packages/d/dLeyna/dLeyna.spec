@@ -1,7 +1,7 @@
 #
 # spec file for package dLeyna
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Services and D-Bus APIs to access UPnP and DLNA media devices in a network
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/World/dLeyna
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM dLeyna-no-python-shebang.patch -- Do not carry /usr/bin/python shebang in python module files
 Patch0:         dLeyna-no-python-shebang.patch
 
