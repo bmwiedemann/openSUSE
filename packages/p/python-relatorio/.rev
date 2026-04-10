@@ -185,4 +185,13 @@
   * Add support for Python 3.13</comment>
     <requestid>1344563</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8e3b013b42c8d7db8d7af2b06b72210f</srcmd5>
+    <version>0.12.1</version>
+    <time>1775857499</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.1:
+  * minor typo fix</comment>
+    <requestid>1345938</requestid>
+  </revision>
 </revisionlist>

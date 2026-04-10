@@ -20,7 +20,7 @@
 %define         mod_name relatorio
 %{?sle15_python_module_pythons}
 Name:           python-relatorio
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        Python module to create reports from Python objects
 License:        GPL-3.0-or-later
