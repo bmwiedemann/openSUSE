@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed Mar 25 08:27:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.3:
+  + This release reverts back to the original adblock filters used
+    before 50.rc.
+  + Bugs fixed:
+    - Regression in site compatibility due to adblocking
+    - ci: Remove workflow:rules
+    - filters-manager: fix disabling adblocker
+    - Switch back to easylist-downloads.adblockplus.org
+
+-------------------------------------------------------------------
+Sat Mar 21 08:20:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2:
+  + Bugs fixed:
+    - Crash in ephy_window_set_active_tab()
+    - Add 15 second timeout when fetching adblock filters
+    - shell: fix crash when invalid URL passed on command line
+    - Many fixes for the adblocker
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 19 09:15:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.1:
+  + Remove ublock filter rules
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 12 19:56:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Bugs fixed:
+    - When closing a newly created tab, focus is reset to the last
+      tab, instead of the previously focused tab
+    - Bugs may cause session state to be deleted
+    - epiphany-browser 49.2 build error against Nettle 4.0
+    - Outdated comment for translators
+    - UI Bug: Imported bookmarks only show one link per tag
+      (stacked on top of each other) & Drag-and-Drop is broken
+    - Allow web apps to run in the background, with configurable
+      toggle and quit action, even when not sandboxed by flatpak
+    - Fix crash when opening javascript: URLs in new tab
+    - Fix -Wdiscarded-qualifiers warnings
+    - web-view: fix security status when restoring pages from
+      session state
+    - session: refuse to save window without tabs
+    - Revert "Fetch locale specific adlock list" 
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  4 15:27:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Disable "Run in background" for when running unsandboxed
+  + New tags created in bookmark edit mode are not sorted
+  + missing files from POTFILES.in: ephy-prefs-dialog.c
+  + check-potfiles CI job is broken
+  + Site menu icon is broken
+  + Remove user gesture check for opening external URLs
+  + Change default content filters to bnema/ublock-webkit-filters
+  + bookmarks-dialog: Save index in tags order
+  + More bookmarks dialog fixes
+  + Add blueprint format checker
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar  4 14:27:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Move from expander rows to navigation for search engines
+  + [Enhancement] Match dark theme preference in blank homepage
+  + Web apps lack a button to access site permissions
+  + Manual bookmark sorting fails
+  + Epiphany crashes with a URL containing an out-of-range port
+  + Need to escape feature descriptions in features preferences
+  + Remote Denial of Service (DoS) via Improper Logging in
+    ephy-session.c
+  + Add option to delete service worker data to the Clear Data
+    dialog
+  + Crash when downloading a file in an extra window and closing
+    that window before the confirmation in-app notification overlay
+    is dismissed
+  + autofill-view: Make countries searchable
+  + Change Favorites tag icon to heart-filled-symbolic
+  + Fix about: page crash
+  + features-page: Only add subtitle when details available
+  + passwords-view: fix crash when opening dialog
+  + style: Replace deprecated resources with media queries
+  + bookmark-properties: Validate bookmark url
+  + Use proper Favorites tag icon in all places
+  + action-bar: Hide bookmarks button in web app mode
+- Changes from version 50.alpha:
+  + Move buttons out of the location entry
+  + Crash loading invalid URL using "Open Link in New Tab"
+  + Site menu is too hard to find
+  + Use shield-half for symbolic in privacy report
+  + Add option to hide cookie banner
+  + Move reader mode button to site menu
+  + Update search bar options icon
+  + sqlite: Start caching history service statements
+  + window: fix "Open link in new tab" appearing for non-URLs
+  + Updated translatoins.
+
+-------------------------------------------------------------------
 Tue Mar  3 08:30:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.3:

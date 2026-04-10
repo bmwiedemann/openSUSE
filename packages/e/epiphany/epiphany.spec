@@ -17,13 +17,13 @@
 
 
 Name:           epiphany
-Version:        49.3
+Version:        50.3
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.12.0
+BuildRequires:  pkgconfig(gtk4) >= 4.21.0
 BuildRequires:  pkgconfig(gtk4-unix-print)
 BuildRequires:  pkgconfig(hogweed) >= 3.2
 BuildRequires:  pkgconfig(icu-uc) >= 4.6
