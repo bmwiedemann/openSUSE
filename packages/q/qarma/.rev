@@ -10,4 +10,16 @@ Provides a Qt port of Zenity, will be used by the LXQt project in the
 future</comment>
     <requestid>1237538</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1071fc2c43679f47d729d1d78de1cda0</srcmd5>
+    <version>1.1.1</version>
+    <time>1775836410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1
+  * handle print column default value for lists
+    (gh#luebking/qarma#66)
+  * Mention --help-font-selection in --help (gh#luebking/qarma#53)
+  * Make DBus optional (gh#luebking/qarma#33)</comment>
+    <requestid>1345716</requestid>
+  </revision>
 </revisionlist>

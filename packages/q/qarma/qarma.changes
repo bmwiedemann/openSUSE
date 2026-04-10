@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  9 23:52:03 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 1.1.1
+  * handle print column default value for lists
+    (gh#luebking/qarma#66)
+  * Mention --help-font-selection in --help (gh#luebking/qarma#53)
+  * Make DBus optional (gh#luebking/qarma#33)
+
+-------------------------------------------------------------------
 Mon Jan 13 16:59:52 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Changed Source: line to use named tarball
