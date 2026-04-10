@@ -1,7 +1,7 @@
 #
 # spec file for package kwin6-x11
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6-x11
-Version:        6.6.3
+Version:        6.6.4
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -124,11 +124,11 @@ BuildRequires:  pkgconfig(xcb-xinput)
 BuildRequires:  pkgconfig(xcb-xkb) >= 1.10
 BuildRequires:  pkgconfig(xkbcommon) >= 0.7.0
 BuildRequires:  pkgconfig(xkbcommon-x11)
-Requires:       xwayland
 Requires:       breeze6-decoration >= %{_plasma6_bugfix}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kglobalacceld6  >= %{_plasma6_bugfix}
 Requires:       libkwin-x11-6 = %{version}
+Requires:       xwayland
 # SECTION QML dependencies
 Requires:       kf6-kdeclarative-imports >= %{kf6_version}
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
