@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 10 01:59:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on curio.
+
+-------------------------------------------------------------------
+Wed Apr  8 20:54:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.1:
+  * Fix socks5 reply reading by @rigens
+- update to 2.8.0:
+  * Add `ProxyException` base class
+
+-------------------------------------------------------------------
 Wed Aug  6 09:08:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.7.2

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-socks
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-python-socks%{psuffix}
-Version:        2.7.2
+Version:        2.8.1
 Release:        0
 Summary:        Core proxy client functionality for Python
 License:        Apache-2.0
 URL:            https://github.com/romis2012/python-socks
 # gh#romis2012/python-socks#30
 Source:         https://github.com/romis2012/python-socks/archive/refs/tags/v%{version}.tar.gz#/python-socks-%{version}.tar.gz
-BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module anyio >= 3.3.4}
 BuildRequires:  %{python_module async-timeout}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -52,7 +52,7 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tiny-proxy}
-BuildRequires:  %{python_module trio}
+BuildRequires:  %{python_module trio >= 0.24}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module yarl}
 %endif
