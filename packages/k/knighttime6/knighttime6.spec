@@ -1,7 +1,7 @@
 #
-# spec file for package knighttime
+# spec file for package knighttime6
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define kf6_version 6.18.0
 %define qt6_version 6.9.0
 %define soversion 0
@@ -25,7 +26,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           knighttime6
-Version:        6.6.3
+Version:        6.6.4
 Release:        0
 Summary:        Day-night cycle helper library
 License:        LGPL-2.1-or-later
@@ -45,8 +46,8 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Positioning) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 Requires:       libKNightTime%{soversion} = %{version}
 
 %description
