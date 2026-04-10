@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Wed Apr  1 14:02:53 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.52.1 (bsc#1261172 bsc#1261173 bsc#1261174
+  bsc#1261175 bsc#1261176 bsc#1261177 bsc#1261178 bsc#1261179):
+  + Reduce the amount of useless MPRIS notifications produced by
+    MediaSesion when the information about media being played is
+    incomplete.
+  + Support turning off USE_GSTREAMER to configure the build with
+    all multimedia features disabled.
+  + Add Sysprof marks for mouse events.
+  + Fix MediaSession icon for iheart.com not being displayed.
+  + Fix the build with USE_GSTREAMER_GL disabled.
+  + Fix the build with librice version 0.3.0 or newer.
+  + Fix several crashes and rendering issues.
+  + Translation updates: Georgian.
+  + Security fixes: CVE-2026-20643, CVE-2026-20664, CVE-2026-20665,
+    CVE-2026-20691, CVE-2026-28857, CVE-2026-28859, CVE-2026-28861,
+    CVE-2026-28871.
+- Add webkitgtk-gtk3-build-fix.patch: fix the gtk3 build.
+
+-------------------------------------------------------------------
+Wed Mar 18 17:18:52 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.52.0:
+  + Make scrolling with touch input smoother for small movements.
+  + Fix estimated load progress of downloads when Content-Length
+    value is wrong.
+  + Ensure that "scrollend" events are correctly emitted after
+    scroll animations.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+  + Security fixes: CVE-2025-43213, CVE-2025-43214, CVE-2025-43457,
+    CVE-2025-43511, CVE-2025-46299, CVE-2026-20608, CVE-2026-20635,
+    CVE-2026-20636, CVE-2026-20644, CVE-2026-20652, CVE-2026-20676
+    (bsc#1259934 bsc#1259935 bsc#1259936 bsc#1259937 bsc#1259938
+     bsc#1259939 bsc#1259940 bsc#1259941 bsc#1259942 bsc#1259943
+     bsc#1259944 bsc#1259945 bsc#1259946 bsc#1259947 bsc#1259948
+     bsc#1259949 bsc#1259950)
+
+-------------------------------------------------------------------
+Sun Mar  8 18:25:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.51.93:
+  + Make text look like in other browsers by blending in linear
+    color space.
+  + Avoid composition for non visible layers with running
+    animations.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Wed Mar  4 16:23:32 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add webkit2gtk3-aarch64-build-fix.patch: fix the build on
+  aarch64.
+
+-------------------------------------------------------------------
+Fri Feb 27 13:37:29 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.51.92:
+  + Fix PDF rendering broken by the accelerated 2D canvas
+    performance improvements.
+  + Fix flickering while scrolling in some edge cases.
+  + Support for rotation and mirroring in internal WebCodecs encoder.
+  + System fallback font selection no longer takes style into account.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Tue Feb 24 13:48:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.51.91:
+  + Disable GPU process by default.
+  + Improve async scrolling when main thread is busy by avoiding
+    locks and rendering the scrollbars from the scrolling thread.
+  + Fix the build with old versions of libdrm.
+  + Fix the build on i386.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Thu Jan 29 21:41:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Renamed webkit2gtk3 package to webkitgk, drop soup2 variant.
