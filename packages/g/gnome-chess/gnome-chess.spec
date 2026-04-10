@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-chess
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-chess
-Version:        49.2
+Version:        50.0
 Release:        0
 Summary:        Chess Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://wiki.gnome.org/Apps/Chess
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -32,14 +32,8 @@ BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.35.7
-BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(gtk4) >= 3.19.0
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
 Requires:       chess_backend
+BuildSystem:    meson
 
 %description
 This is a game for playing the classic board game of chess, in which
@@ -49,20 +43,12 @@ in a window.
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson
-%meson_build
-
-%install
-%meson_install
+%install -a
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
-
-%check
-desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
 %license COPYING

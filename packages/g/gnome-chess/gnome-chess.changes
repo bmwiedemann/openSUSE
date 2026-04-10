@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:35:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Thu Mar 12 19:55:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 14:26:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Port to AdwShortcutsDialog and more
+  + Updated translations.
+- Drop gnome-chess-autodep.patch: This has been addressed in the
+  meson dep-generator.
+
+-------------------------------------------------------------------
+Thu Nov 20 16:27:23 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert spec file to declarative build system using automatic
+  dependency tracking.
+- Add gnome-chess-autodep.patch: Fix spacing to properly translate
+  for RPM deps.
+
+-------------------------------------------------------------------
 Thu Oct  2 06:32:59 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:
