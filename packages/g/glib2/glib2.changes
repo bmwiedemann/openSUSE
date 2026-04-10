@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:33:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 17 08:33:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.88.0:
+  + gslice: Factor out a size helper macro and stop using MAX in
+    a public header
+- Drop 5097.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Mar 13 08:27:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.87.5:
+  + Avoid installing broken symlinks as part of the test data for
+    the gdatetime tests
+  + Fix `g_file_set_contents()` with non-ASCII filenames on Windows
+  + Bugs fixed:
+    - Documentation issue with g_slice_new and g_slice_new0
+    - Unclear assertion failure message when `G_PARAM_CONSTRUCT`
+      and `G_PARAM_CONSTRUCT_ONLY` are both specified
+    - vs2019-arm64 CI fails with ninja error
+    - g_file_set_contents broken on windows for non-ASCII filenames
+    - Documentation of g_file_info_get_is_backup() doesn’t define
+      what a backup file is
+    - GLocalFileInfo's set_symlink() is backwards
+    - Memory leak in g_desktop_app_info_launch_uris_with_spawn
+    - gsocketconnection: Set an error when closed if no address is
+      cached
+    - minor doc fixes
+    - tests: Fix a minor memory leak in the socket test
+    - Prevent iptosmessage test failures on FreeBSD and Hurd
+    - gobject: Disable new construct property check with
+      G_DISABLE_CHECKS
+  + Updated translations.
+- Add 5097.patch: Fix build of NetworkManager, patch from upstream
+
+-------------------------------------------------------------------
+Thu Feb 26 14:15:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.87.3:
+  + Improved support for `GNotification` on Windows
+  + Fix module lookups via `GModule` on Cygwin
+  + Fix local timezone lookup with nested symlinks in
+    `/etc/localtime`
+  + Fix ordering and sequential consistency of gatomic memory
+    barriers on MSVC and fallback GCC code paths
+  + Fix various integer overflow bugs (CVE-2026-1484,
+    CVE-2026-1485, CVE-2026-1489)
+  + Add `GSocketControlMessage` subclasses for receiving `IP_TOS`
+    and `IPV6_TCLASS`
+  + Support polling more than 1024 FDs on macOS
+  + Remove platform-specific backward compatibility from GLib-2.0
+    as it’s impossible to support
+  + Improve introspection annotations for delimiters on
+    `g_strsplit_set()`
+  + Basic support for building and running some functionality on
+    tvOS and watchOS
+  + Add `g_get_monotonic_time()` variant with nanosecond precision
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 17 11:53:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.87.2:
+  + Add initial support for `GNotification` on Windows
+  + glib-compile-resources: Incorrect compiler detection on Windows
+    when building GTK causes a DoS
+  + gio/unixmounts: use bsearch() to check for set inclusion
+  + gdesktopappinfo: Fix -Wsign-conversion warnings
+  + gobject: Fix -Wshorten-64-to-32 warnings and enable warning
+    flag
+  + gtestutils: Avoid pointless logging string handling in
+    gtestutils
+  + glib-unix: Implement g_unix_fd_query_path for Cygwin
+  + gio: Fix some -Wsign-conversion warnings
+  + gmodule: Enable -Wshorten-64-to-32 warnings for gmodule
+  + Fixup unicode 17
+-Changes from version 2.87.1:
+  * Several low-risk CVE fixes
+  * Respect `NO_COLOR` environment variable in log output
+  * Update file system type lists to mark more file system types as
+    system ones and to recognise `ntfs3` file systems
+  + Add `G_GNUC_FLAG_ENUM` attribute to mark enums as flags
+  + Add a static CRT constructor and fusion manifest XML for GLib
+    utilities on Windows so that `stderr` can be unbuffered and
+    streams are flushed on exit
+  + Fix `G_FILE_MONITOR_WATCH_HARD_LINKS` on Windows
+- Changes from version 2.87.0:
+  + Update to Unicode 17.0.0 (!4793, work by Peng Wu)
+  + Support runtime extensions to `gdbus-codegen` tool to allow
+    modifying its output in project-specific ways
+  + Use document portal to open all the URIs for snaps
+  + Add g_markup_parse_context_get_offset() API for getting error
+    locations in XML files
+    - GNOME/ptyxis#490 new tab does not open in current directory
+      when hostname contains a period
+    - hash resize broken for large sizes
+    - g_filename_from_uri rejects valid host names according to
+      RFC 1123
+    - !4793 gunicode: Update the code for Unicode 17.0.0
+    - !4807 Add missing "nullable" to parameter docs of GList/GSList
+    - !4810 gutils: Mark load_user_special_dirs unlocked
+  + Updated translations
+- Drop glib2-CVE-2026-0988.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sat Feb 14 09:48:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.86.4:

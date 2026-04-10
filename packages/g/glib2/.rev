@@ -2499,4 +2499,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
   + glib2-CVE-2026-1489.patch (forwarded request 1333019 from iznogood)</comment>
     <requestid>1333533</requestid>
   </revision>
+  <revision rev="304" vrev="1">
+    <srcmd5>f57794ae45d304a3e3caae620136524b</srcmd5>
+    <version>2.88.0</version>
+    <time>1775836000</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345414</requestid>
+  </revision>
 </revisionlist>
