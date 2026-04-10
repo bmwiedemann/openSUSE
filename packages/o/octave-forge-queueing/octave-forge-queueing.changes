@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  5 19:33:40 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Skip inaccessible private/sumexpn function in tests
+  (https://github.com/mmarzolla/queueing/issues/4)
+
+-------------------------------------------------------------------
 Wed Jun 12 04:02:36 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 1.2.8:
