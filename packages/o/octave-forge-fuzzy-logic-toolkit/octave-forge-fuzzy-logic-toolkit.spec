@@ -44,6 +44,8 @@ This is part of Octave-Forge project.
 %octave_pkg_install
 
 %check
+# Private functions are not accessible as tests
+%global octskiptests private/.*
 %octave_pkg_test
 
 %post
