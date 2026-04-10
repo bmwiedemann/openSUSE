@@ -19,7 +19,7 @@
 
 %define sover 27
 Name:           neon
-Version:        0.36.0
+Version:        0.37.1
 Release:        0
 Summary:        An HTTP and WebDAV Client Library
 # library is LGPL see src/COPYING.LIB
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(krb5-gssapi)
+BuildRequires:  pkgconfig(libntlm)
 BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
