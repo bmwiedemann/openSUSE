@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Mar 27 09:44:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop google conditional and pkgconfig(libgdata), no longer
+  supported. 
+
+-------------------------------------------------------------------
+Mon Mar 23 08:52:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 12:30:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.60.0:
+  + CVE-2026-28296: ftp: Reject paths with CR/LF in
+    g_vfs_ftp_file_new_from_ftp
+  + monitor: Do not load monitors when GIO_USE_VFS=local
+
+-------------------------------------------------------------------
+Sat Feb 28 09:41:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.59.90:
+  + client: Fix use-after-free when creating async proxy failed
+  + udisks2: Emit changed signals from update_all()
+  + daemon: Fix race on subscribers list when on thread
+  + ftp: Validate fe_size when parsing symlink target
+  + ftp: Check localtime() return value before use
+  + gphoto2: Use g_try_realloc() instead of g_realloc()
+  + cdda: Reject path traversal in mount URI host
+  + client: Fail when URI has invalid UTF-8 chars
+  + udisks2: Fix memory corruption with duplicate mount paths
+  + build: Update GOA dependency to > 3.57.0
+  + Some other fixes
+  + ftp: Use control connection address for PASV data.
+    (CVE-2026-28295, bsc#1258953)
+  + ftp: Reject paths containing CR/LF characters
+    (CVE-2026-28296, bsc#1258954)
+
+-------------------------------------------------------------------
+Sat Feb 28 09:41:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.59.1:
+  + mtp: replace Android extension checks with capability checks
+  + dav: Add X-OC-Mtime header on push to preserve last modified
+    time
+  + udisks2: Use hash tables in the volume monitor to improve
+    performance
+  + onedrive: Check for identity instead of presentation identity
+  + build: Disable google option and mark as deprecated
+- Guard google build behind a bcond to easily enable it. Disabled
+  by upstream as this depends on unmaintained libgdata and
+  libsoup2.
+
+-------------------------------------------------------------------
 Sat Feb 28 09:41:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.58.2:

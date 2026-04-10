@@ -18,14 +18,15 @@
 
 %bcond_without  cdda
 %bcond_without  onedrive
+
 Name:           gvfs
-Version:        1.58.2
+Version:        1.60.0
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gvfs
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source99:       baselibs.conf
 
@@ -37,7 +38,7 @@ Patch1001:      gvfs-nvvfs.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libgcrypt-devel >= 1.2.2
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  openssh
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
@@ -49,14 +50,13 @@ BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.83.0
-BuildRequires:  pkgconfig(goa-1.0) >= 3.17.1
+BuildRequires:  pkgconfig(goa-1.0) >= 3.57.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.0
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libbluray)
 BuildRequires:  pkgconfig(libcap)
-BuildRequires:  pkgconfig(libgdata) >= 0.18.0
 BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 1.2
 BuildRequires:  pkgconfig(libmtp) >= 1.1.12
@@ -159,15 +159,15 @@ This package contains FUSE support that allows applications
 not using GIO to access the GVfs filesystems.
 
 %package backend-goa
-Summary:        Google disk and GOA functionality for GLib
+Summary:        GNOME online accounts functionality for GLib
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Supplements:    (gvfs and gnome-online-accounts)
 
 %description backend-goa
-This package provides a gvfs backend that supports Google disk
-and GNOME online accounts integration.
+This package provides a gvfs backend that supports GNOME online
+accounts integration.
 
 %package devel
 Summary:        Development files for the GNOME Virtual file system
@@ -285,8 +285,6 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_userunitdir}/gvfs-goa-volume-monitor.service
 %{_datadir}/%{name}/remote-volume-monitors/goa.monitor
 %{_datadir}/dbus-1/services/org.gtk.vfs.GoaVolumeMonitor.service
-%{_libexecdir}/%{name}/gvfsd-google
-%{_datadir}/%{name}/mounts/google.mount
 %if %{with onedrive}
 %{_libexecdir}/gvfs/gvfsd-onedrive
 %{_datadir}/gvfs/mounts/onedrive.mount
