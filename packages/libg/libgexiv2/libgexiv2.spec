@@ -17,7 +17,12 @@
 
 
 %define tarname gexiv2
+%if 0%{?suse_version} < 1699
 %define pythons python3
+%bcond_without python3
+%else
+%bcond_with python3
+%endif
 
 Name:           libgexiv2
 Version:        0.14.6
@@ -33,9 +38,11 @@ BuildRequires:  gobject-introspection
 BuildRequires:  libtool
 BuildRequires:  meson >= 0.48
 BuildRequires:  pkgconfig
+%if %{with python3}
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject-devel
+%endif
 BuildRequires:  pkgconfig(exiv2) >= 0.26
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
@@ -92,6 +99,7 @@ This package provides the Python 3 bindings for the libgexiv2 library.
 %build
 %meson \
 	-Dintrospection=true \
+        -Dpython3=%[ %{with python3} ? "true" : "false" ] \
 	%{nil}
 %meson_build
 
@@ -118,7 +126,9 @@ This package provides the Python 3 bindings for the libgexiv2 library.
 %{_datadir}/vala/vapi/gexiv2.vapi
 %{_datadir}/vala/vapi/gexiv2.deps
 
+%if %{with python3}
 %files -n python3-gexiv2
 %{python3_sitelib}/*
+%endif
 
 %changelog

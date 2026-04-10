@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 27 12:12:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable python3 bindings for Tumbleweed, where the python
+  bindings for GExiv2 are built as part of the gexiv2 0.16 package
+  (library parallel installable).
+
+-------------------------------------------------------------------
 Sun Jul  6 18:50:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.14.6:
