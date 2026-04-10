@@ -274,4 +274,13 @@ sr#1280514
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1290928</requestid>
   </revision>
+  <revision rev="33" vrev="15">
+    <srcmd5>640b9a74913bf247873e8366888d5105</srcmd5>
+    <version>1.1.4</version>
+    <time>1775836414</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-314.patch:
+  * Support functools.partial() Python 3.14 changes.</comment>
+    <requestid>1345722</requestid>
+  </revision>
 </revisionlist>

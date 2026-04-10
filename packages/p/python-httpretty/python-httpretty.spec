@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpretty
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,8 @@ Patch4:         relax-test-callback-response.patch
 Patch5:         0001-Fix-test_417_openssl.py-if-pyOpenSSL-not-available.patch
 # PATCH-FIX-UPSTREAM https://github.com/gabrielfalcao/HTTPretty/pull/485
 Patch6:         0001-Mock-socket.shutdown-for-compatibility-with-urllib3-.patch
+# PATCH-FIX-UPSTREAM https://github.com/gabrielfalcao/HTTPretty/pull/488
+Patch7:         support-python-314.patch
 %if %{with boto3}
 BuildRequires:  %{python_module boto3}
 %endif
