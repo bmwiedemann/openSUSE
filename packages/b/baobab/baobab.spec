@@ -1,7 +1,7 @@
 #
 # spec file for package baobab
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,13 @@
 %define glib2_version 2.44
 
 Name:           baobab
-Version:        49.1
+Version:        50.0
 Release:        0
 Summary:        Disk Usage Analyzer
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DiskUsageAnalyzer
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
