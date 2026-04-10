@@ -21,7 +21,7 @@
 %define rname ksshaskpass
 %bcond_without released
 Name:           ksshaskpass6
-Version:        6.6.3
+Version:        6.6.4
 Release:        0
 Summary:        Plasma 6 version of ssh-askpass
 License:        GPL-2.0-or-later
@@ -55,19 +55,23 @@ A Plasma 6 version of ssh-askpass with KWallet support.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-# KDE_INSTALL_BINDIR is redefined to install ksshaskpass in the same folder as ssh-askpass, gnome-ssh-askpass, etc...
-%cmake_kf6 -DKDE_INSTALL_BINDIR:STRING=%{_libexecdir}/ssh
+%cmake_kf6
 
 %kf6_build
 
 %install
 %kf6_install
 
+# Compat symlink to the same location as other askpass implementations
+mkdir -p %{buildroot}%{_libexecdir}/ssh/
+ln -s %{_kf6_bindir}/ksshaskpass %{buildroot}%{_libexecdir}/ssh/
+
 %find_lang %{name} --all-name
 
 %files
 %license LICENSES/*
 %{_kf6_applicationsdir}/org.kde.ksshaskpass.desktop
+%{_kf6_bindir}/ksshaskpass
 %dir %{_libexecdir}/ssh
 %{_libexecdir}/ssh/ksshaskpass
 %doc %lang(en) %{_kf6_mandir}/man1/ksshaskpass.1%{?ext_man}
