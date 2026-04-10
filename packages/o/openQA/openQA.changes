@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 09 16:47:28 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1775753240.e466faa2:
+  * fix: Reference schema files from the installed package for helm lint
+  * feat: limit job results on group overview and dashboard
+
+-------------------------------------------------------------------
 Wed Apr 08 10:16:33 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1775643384.e9cf2643:
