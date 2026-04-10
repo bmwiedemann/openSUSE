@@ -1150,4 +1150,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment> (forwarded request 1279642 from iznogood)</comment>
     <requestid>1280040</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>27ce6f88624ca2d961edb0f0e71afe0a</srcmd5>
+    <version>50.0</version>
+    <time>1775836016</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345423</requestid>
+  </revision>
 </revisionlist>
