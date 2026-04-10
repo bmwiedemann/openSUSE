@@ -17,14 +17,15 @@
 
 
 Name:           gitea-tea
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        A command line tool to interact with Gitea servers
 License:        MIT
 URL:            https://gitea.com/gitea/tea
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.25
+# 16.0 fails with go.mod requires go >= 1.26.0 (running go 1.26rc3; GOTOOLCHAIN=local)
+BuildRequires:  go1.26 >= 1.26.0
 Conflicts:      tea
 
 %description

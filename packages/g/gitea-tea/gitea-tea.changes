@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Apr  9 13:18:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.13.0:
+  * docs: add v0.13.0 release notes to CHANGELOG (#945)
+  * feat(pulls): add edit subcommand for pull requests (#944)
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.17.2
+    (#943)
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.17.1
+    (#942)
+  * fix(deps): update module code.gitea.io/sdk/gitea to v0.24.1
+    (#936)
+  * fix(deps): update module github.com/go-authgate/sdk-go to
+    v0.6.1 (#935)
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.8.0
+    (#937)
+  * replace log.Fatal/os.Exit with error returns (#941)
+  * chore(deps): update docker.gitea.com/gitea docker tag to
+    v1.25.5 (#934)
+  * fix(deps): update module github.com/olekukonko/tablewriter to
+    v1.1.4 (#933)
+  * chore(deps): update mcr.microsoft.com/devcontainers/go docker
+    tag to v2.1 (#930)
+  * chore(deps): update Go dependencies and CI workflow action
+    versions (#932)
+  * feat(repos): support owner-based repository listing with robust
+    lookup (#931)
+  * feat(repos): add repo edit subcommand (#928)
+  * feat: store OAuth tokens in OS keyring via credstore (#926)
+  * add function comment
+  * make vet&fmt pass
+  * Update to charm libraries v2 (#923)
+  * fix(deps): update module golang.org/x/oauth2 to v0.36.0 (#919)
+  * go 1.26
+  * fix(deps): update module github.com/go-git/go-git/v5 to v5.17.0
+    (#910)
+  * Parse multiple values in api subcommand (#911)
+
+-------------------------------------------------------------------
 Fri Feb 20 05:59:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.12.0:

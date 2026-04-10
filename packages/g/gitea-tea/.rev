@@ -166,4 +166,12 @@
     <comment>update to 0.12.0 (remove all four patches, currently checking if they are upstream already) (forwarded request 1334120 from ojkastl_buildservice)</comment>
     <requestid>1334459</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5ab8d060beaa475350c53b85a30d7546</srcmd5>
+    <version>0.13.0</version>
+    <time>1775836446</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.13.0 (forwarded request 1345554 from ojkastl_buildservice)</comment>
+    <requestid>1345777</requestid>
+  </revision>
 </revisionlist>
