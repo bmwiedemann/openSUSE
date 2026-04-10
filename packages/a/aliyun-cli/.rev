@@ -108,4 +108,19 @@
     <comment></comment>
     <requestid>1341134</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>430dd88c284fdf337c6813f600fbd153</srcmd5>
+    <version>3.3.4</version>
+    <time>1775836358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.4
+  * {Core} Fix unknown-flag parsing for plugin-style subcommands
+    by @AllyW in (#1296)
+  * Update Aliyun OpenAPI meta data
+- from version 3.3.3
+  * {Core} Add ai-mode and safety policy configuration
+    by @AllyW in (#1295)
+  * Update Aliyun OpenAPI meta data (forwarded request 1345119 from glaubitz)</comment>
+    <requestid>1345665</requestid>
+  </revision>
 </revisionlist>
