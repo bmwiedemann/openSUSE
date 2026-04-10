@@ -315,4 +315,40 @@
 </comment>
     <requestid>1333933</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d9c07b269b2b56529d585cfa2b6b40d8</srcmd5>
+    <version>1.28.0</version>
+    <time>1775836392</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.28:
+  * fix spelling of Micropython -&gt; MicroPython
+  * use enum instead of bool argument to mp_handle_pending
+  * remove warning about the project being in beta stage
+  * add a section describing MicroPython's values
+  * misc: remove unused mp_check function
+  * emitnative: optimise register clearing
+  * asmrv32: reserve a flag for the Zcmp RV32 CPU extension
+  * asmrv32: use Zcmp opcodes for function prologues and epilogues
+  * persistentcode: decouple native code loading from emitters' presence
+  * persistentcode: detect the target architecture from compiler defines
+  * emitglue: flush caches when loading native code without emitters
+  * misc: add byte-swapping macros
+  * emitglue: check for bytecode with MICROPY_PY_FUNCTION_ATTRS_CODE
+  * mpconfig: enable MICROPY_PY_FUNCTION_ATTRS_CODE when marshal enabled
+  * persistentcode: support saving functions with children
+  * objfun: support code on functions with children
+  * vstr: make vstr_ins_byte/char functions inline to reduce code size
+  * vstr: add vstr_ins_strn helper function
+  * vstr: don't check for byte_len&gt;0 in vstr_ins_blank_bytes
+  * lexer: use null char as lexer EOF sentinel
+  * lexer: add support for nested f-strings within f-strings
+  * lexer: move f-string completion code to more logical location
+- update to mbedtls 3.6.6 which includes a number of security
+  fixes, see https://github.com/Mbed-TLS/mbedtls/releases/tag/mbedtls-3.6.6
+- drop CVE-2026-1998.patch (upstream)
+
+- avoid spec-cleaner messing it up
+    - main: make static variable that's potentially clobbered by longjm</comment>
+    <requestid>1345697</requestid>
+  </revision>
 </revisionlist>

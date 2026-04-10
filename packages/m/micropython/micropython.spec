@@ -20,15 +20,14 @@
 %{?sle15_python_module_pythons}
 
 Name:           micropython
-Version:        1.27.0
+Version:        1.28.0
 Release:        0
 Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT
 URL:            https://micropython.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        prepare.sh
-Source2:        https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-3.6.5/mbedtls-3.6.5.tar.bz2#/mbedtls-3.6.5.tar.bz2
-Patch0:         CVE-2026-1998.patch
+Source2:        https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-3.6.6/mbedtls-3.6.6.tar.bz2#/mbedtls-3.6.6.tar.bz2
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -74,7 +73,7 @@ sed -i -e "s:/usr/lib/micropython:%{_prefix}/lib/micropython:g" "ports/unix/main
 %define make_flags V=1 MICROPY_PY_BTREE=0 MICROPY_PY_USSL=0
 
 rm -rf lib/mbedtls
-mv mbedtls-3.6.5 lib/mbedtls
+mv mbedtls-3.6.6 lib/mbedtls
 
 %build
 # micropython
