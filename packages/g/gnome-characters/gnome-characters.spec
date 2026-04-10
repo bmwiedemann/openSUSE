@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-characters
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-characters
-Version:        49.1
+Version:        50.0
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/CharacterMap
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -32,11 +32,11 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.87.0
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.43.3
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.9.alpha
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 # Ensure default sections are filled with content
@@ -89,7 +89,7 @@ sleep 10
 %files
 %license COPYING
 %{_bindir}/gnome-characters
-%{_datadir}/metainfo/org.gnome.Characters.appdata.xml
+%{_datadir}/metainfo/org.gnome.Characters.metainfo.xml
 %{_datadir}/org.gnome.Characters/
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers

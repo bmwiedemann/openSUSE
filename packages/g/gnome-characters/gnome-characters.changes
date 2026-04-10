@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:35:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Mon Mar 16 08:09:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.0:
+  + Flatpak builds use the noto-emoji from the Freedesktop SDK
+  + Switch to search results when the search entry is activated
+  + Don't restore selection when deactivating search on mobile
+  + Correctly show sidebar after finishing a search
+  + Strip whitespaces in bundled GResources
+  + Add --version cli option
+  + Add captions to app screenshots
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 08:44:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.alpha:
+  + Don't skip the first block when iterating
+  + Fix fetching the list of languages in Flatpak
+  + Fix the IBus check
+  + Fix wrong emoji size when font scaling is enabled
+  + Include the new CJK block from unicode 17.0
+  + Port shortcuts to AdwShortcutsDialog
+  + Port to AdwSidebar
+  + Rename appdata to metainfo
+  + Support language aliases
+  + Update to Unicode 17.0.0
+  + Fix active window tracking
+  + Fix a typo in the app metadata
+  + Update app screenshots to GNOME 49
+  + Updated translations
+
+-------------------------------------------------------------------
 Sun Oct 12 15:53:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.1:
