@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 23 11:30:24 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 7.7.0:
+  * Add support for signing BPF programs before loading them, using a private
+    PEM key and X.509 certificate. This comes at the cost of an additional
+    build dependency to OpenSSL's development library.
+  * Add a new command bpftool token list showing information for each BPF
+    virtual file system mount point containing BPF token information.
+  * Add support for instructions array maps (insn_array keyword), and teach the
+    disassembler about indirect jump instructions.
+  * Support merging multiple module BTF objects with bpftool btf dump file
+    <path1> file <path2> ....
+  * Add a prepend option for loading tcx programs (bpftool net attach
+    tcx_ingress name tc_prog dev lo prepend) to insert the program at the
+    beginning of the chain.
+  * Add support for fsession attach type for cgroup programs.
+  * Improve the error message when dumping a JIT-ed BPF program returns no
+    instructions, to hint at kernel.kptr_restrict that might interfere with the
+    dump.
+  * Update the bpftool-prog manual page to mention newer ekfunc
+    bpf_stream_vprintk_impl() rather than the legacy bpf_stream_vprintk().
+
+-------------------------------------------------------------------
 Fri Jan 30 08:07:39 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Simplify LLVM-version detection to use product_libs_llvm_ver

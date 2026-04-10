@@ -135,4 +135,12 @@
     <comment>Workaround boo#1257253</comment>
     <requestid>1330339</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6f2a64fe3a21766cd0a1523999c1bf0f</srcmd5>
+    <version>7.7.0</version>
+    <time>1775836160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345314</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           bpftool
-Version:        7.6.0
+Version:        7.7.0
 Release:        0
 Summary:        Tool for inspection and manipulation of BPF programs and maps
 License:        GPL-2.0-only
@@ -34,6 +34,7 @@ BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
 # llvm-strip is needed for the included BPF program (i.e. skeletons)
 BuildRequires:  llvm%{product_libs_llvm_ver}
+BuildRequires:  pkgconfig(openssl)
 
 %description
 bpftool allows for inspection and simple modification of BPF objects (programs
