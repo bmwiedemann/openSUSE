@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Wed Mar 25 01:28:31 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Fix packages for %suse_version bump (jsc#PED-15853).
+
+-------------------------------------------------------------------
+Mon Mar 23 08:31:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sat Mar 14 10:19:29 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + With systemd v260+, remote desktop sessions and local sessions
+    in the background will be granted access to the GPU. This
+    allows remote sessions to have accelerated graphics on distros
+    that restrict the permissions on the GPU's device nodes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar  3 07:34:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Changed remote desktop plumbing (i.e., the CreateRemoteDisplay
+    method) to accept a hostname, so that we can correctly
+    communicate this information to PAM and to wtmp/utpm/btmp.
+  + Minor performance optimization for $GDM_DEBUG_JSON_REQUESTS
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 13:52:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Add support for "unified" authentication mechanism.
+    Histrionically, each authentication method went through its
+    own PAM conversation. Now, we also support running a single PAM
+    conversation that runs multiple authentication methods at once.
+    This requires support from PAM modules like pam_sss
+  + Introduce debugging for JSON PAM messages via
+    $GDM_DEBUG_JSON_REQUESTS env var
+  + Re-introduce a timeout while waiting for primary GPU to appear.
+    There are edge cases where there is a GPU (and thus Wayland
+    will work) but none is labeled as primary. Once the timeout
+    expires we stop waiting for the primary GPU and just launch the
+    session on any available GPU.
+  + Authentication failures caused by PAM services reporting
+    themselves as unavailable are no longer reported as failed
+    authentication attempts. For instance, fingerprint sensor
+    timeouts are reported as a service unavailable error, and we
+    would previously log that as a failed authentication attempt.
+  + "Service Unavailable" errors from PAM modules are no longer
+    treated as failed login attempts. Most notably, such errors are
+    returned by fprintd whenever the fingerprint sensor times out.
+  + GDM now tries to shut down the session whenever the PAM worker
+    process crashes
+  + Partially un-merged the session and display registration steps
+    that were merged in 50.alpha, due to bugs that the change
+    introduced
+  + Misc. other bug fixes
+- Changes from version 50.alpha.1:
+  + Corrected Git mishap. The 50.alpha tag points at a commit that
+    never made it to the main branch. 50.alpha.1 corrects this.
+    Make sure to look at the changelog for 50.alpha for news about
+    what's new in this release!
+  + Fixups to the README
+  + Dropped vistigial `udev-dir` meson option
+- Changes from version 50.alpha:
+  + Fixed bug where we'd lose track of the user session failure
+    counter
+  + Special sessions (like GDM, initial-setup) are now loaded from
+    .desktop files rather than being hard-coded into GDM
+  + Entirely removed X11 support, except for the ability to launch
+    other desktops' X11 sessions with a per-user X server. This
+    means that features like XDCMP and system-wide Xserver are
+    gone, and that GDM's own sessions will always run with
+    Wayland.
+  + Consequently, we removed the ability to compile GDM without
+    Wayland support
+  + Introduced a new `gnome-headless-session@<username>.service`,
+    which makes it easier to start a headless graphical session
+    (i.e. for RDP purposes)
+  + Merged display and session registration into one step, because
+    the previous approach didn't work right for Wayland. This
+    allowed us to remove workarounds that caused bugs
+  + Reworked wtmp/utmp/btmp fields to contain more useful values,
+    especially on Wayland and with headless RDP sessions
+  + Dropped final usages of the `gdm`/`gdm3` user, so distros no
+    longer need to create it for us (GDM now entirely relies on
+    dynamically allocated users)
+  + Adapted to changes in gnome-shell's systemd unit files, and
+    dropped hard-coded gnome-shell session modes. It's now easier
+    for custom/kiosk sessions to use custom gnome-shell session
+    modes
+  + Added support for Linux 6.18's new `boot_display` sysfs
+    attribute, which replaces the `boot_vga` attribute. These
+    attributes allow GDM to identify the primary GPU, but modern
+    AMD cards cannot use `boot_vga` because they no longer have VGA
+    support!
+  + Fixed bug where we failed to propagate some environment
+    variables into the greeter's Pipewire instance
+- Drop gdm-xauthlocalhostname.patch and gdm-suse-xsession.patch: no
+  longer applicable as XSession is no longer supported.
+- Drop gdmflexiserver subpackage: no longer applicable.
+
+-------------------------------------------------------------------
 Wed Jan 28 05:21:04 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gdm-initial-vt-tty1.patch: the greeter session runs on tty1

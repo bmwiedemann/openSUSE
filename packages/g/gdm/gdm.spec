@@ -27,21 +27,19 @@
 %endif
 
 Name:           gdm
-Version:        49.2
+Version:        50.0
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GDM
 
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source1:        gdm.pamd
 Source2:        gdm-autologin.pamd
 Source3:        gdm-launch-environment.pamd
 Source4:        gdm-fingerprint.pamd
 Source5:        gdm-smartcard.pamd
-# gdmflexiserver wrapper, to enable other display managers to abuse the gdmflexiserver namespace (like lightdm)
-Source6:        gdmflexiserver-wrapper
 # /etc/xinit.d/xdm integration script
 Source7:        X11-displaymanager-gdm
 # Use tmpfiles to create directories under /var to support transactional updates
@@ -60,10 +58,6 @@ Source20:       default.pa
 Source21:       keytable.in
 # PATCH-FIX-OPENSUSE  gdm-sysconfig-settings.patch bnc432360 bsc#919723 hpj@novell.com -- Read autologin options from /etc/sysconfig/displaymanager; note that accountsservice has a similar patch (accountsservice-sysconfig.patch)
 Patch1:         gdm-sysconfig-settings.patch
-# PATCH-FIX-OPENSUSE gdm-suse-xsession.patch vuntz@novell.com -- Use the /etc/X11/xdm/* scripts
-Patch2:         gdm-suse-xsession.patch
-# PATCH-FIX-OPENSUSE gdm-xauthlocalhostname.patch bnc#538064 vuntz@novell.com -- Set XAUTHLOCALHOSTNAME to current hostname when we authenticate, for local logins, to avoid issues in the session in case the hostname changes later one. See comment 24 in the bug.
-Patch4:         gdm-xauthlocalhostname.patch
 # PATCH-FIX-OPENSUSE gdm-switch-to-tty1.patch bsc#1113700 xwang@suse.com -- switch to tty1 when stopping gdm service
 Patch5:         gdm-switch-to-tty1.patch
 # PATCH-FIX-OPENSUSE gdm-initial-setup-hardening.patch boo#1140851, glgo#GNOME/gnome-initial-setup#76 fezhang@suse.com -- Prevent gnome-initial-setup running if any regular user has perviously logged into the system
@@ -116,7 +110,6 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-branding = %{version}
 Requires:       displaymanager-sysconfig
-Requires:       gdmflexiserver
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
 Requires:       gnome-shell
@@ -228,18 +221,6 @@ By default openSUSE uses xdm which enables the DM based on sysconfig.
 This package is only needed if the system administrator wishes to use
 'systemctl' instead of openSUSE's default 'update-alternatives' method.
 
-%package -n gdmflexiserver
-Summary:        Compatibility Wrapper for Display Managers
-Group:          System/GUI/GNOME
-Suggests:       gdm
-BuildArch:      noarch
-
-%description -n gdmflexiserver
-The GDMFlexiServer tool interacts with the display manager to
-enable fast user switching. This package contains a wrapper that
-selects the correct Gdmflexiserver implementation, based on the
-running display manager.
-
 %lang_package
 
 %prep
@@ -248,7 +229,7 @@ running display manager.
 %autopatch -p1 -m 1 -M 999
 
 ### SLE and Leap only patches start at 1000
-%if !0%{?is_opensuse} || 0%{?suse_version} <= 1600
+%if !0%{?is_opensuse} || 0%{?suse_version} < 1699
 ## Use this when there's no need to skip patches.
 %autopatch -p1 -m 1000
 %endif
@@ -258,9 +239,7 @@ running display manager.
         --libexecdir=%{_libexecdir}/gdm \
         -Dat-spi-registryd-dir=%{_libexecdir}/at-spi \
         -Dgdm-xsession=true \
-        -Dgnome-settings-daemon-dir=%{_libexecdir}/gnome-settings-daemon-3.0 \
         -Dinitial-vt=7 \
-        -Dipv6=true \
         -Dpam-mod-dir=%{_pam_moduledir} \
         -Ddbus-sys=%{_datadir}/dbus-1/system.d \
         -Ddistro=generic \
@@ -270,11 +249,6 @@ running display manager.
         -Dsplit-authentication=true \
 %else
         -Dsplit-authentication=false \
-%endif
-        -Dudev-dir=%{_udevrulesdir} \
-        -Dwayland-support=true \
-%if !0%{?is_opensuse}
-        -Dx11-support=false \
 %endif
         %nil
 %meson_build
@@ -312,12 +286,6 @@ cp %{SOURCE15} %{buildroot}%{_pam_vendordir}/gdm-smartcard
 # The default gdm pam configuration is the one to be used as pam-password too
 ln -s gdm %{buildroot}%{_pam_vendordir}/gdm-password
 ## Install other files
-# Install PostLogin script.
-mv %{buildroot}%{_sysconfdir}/gdm/PostLogin/Default.sample %{buildroot}%{_sysconfdir}/gdm/PostLogin/Default
-# Move gdmflexiserver to libexecdir and replace it with the compatibility wrapper
-mv %{buildroot}%{_bindir}/gdmflexiserver %{buildroot}%{_libexecdir}/gdm/gdmflexiserver
-install -m 755 %{SOURCE6} %{buildroot}%{_bindir}/gdmflexiserver
-sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{buildroot}%{_bindir}/gdmflexiserver
 #Install /etc/xinit.d/xdm integration script
 install -D -m 644 %{SOURCE7} %{buildroot}%{_prefix}/lib/X11/displaymanagers/gdm
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
@@ -430,7 +398,6 @@ fi
 %{_pam_moduledir}/pam_gdm.so
 %dir %{_libexecdir}/gdm
 %{_libexecdir}/gdm/gdm-*
-%{_libexecdir}/gdm/gdmflexiserver
 %ghost %attr(750,gdm,gdm) %dir %{_localstatedir}/lib/gdm
 %if 0%{?is_opensuse}
 %attr(0700, gdm, gdm) %ghost %dir %{_localstatedir}/lib/gdm/.pulse
@@ -449,12 +416,14 @@ fi
 %_config_norepl %{_pam_vendordir}/gdm-launch-environment
 %{_datadir}/dbus-1/system.d/gdm.conf
 %{_datadir}/polkit-1/rules.d/20-gdm.rules
+%{_datadir}/polkit-1/actions/org.gnome.displaymanager.policy
 %{_tmpfilesdir}/gdm.conf
 %{_sysusersdir}/gdm.conf
 %dir %{_prefix}/lib/systemd/logind.conf.d
 %{_prefix}/lib/systemd/logind.conf.d/reserveVT.conf
 %dir %{_userunitdir}/gnome-session@gnome-login.target.d
 %{_userunitdir}/gnome-session@gnome-login.target.d/gnome-login.session.conf
+%{_unitdir}/gnome-headless-session@.service
 
 %files xdm-integration
 # /etc/xinit.d/xdm integration
@@ -485,9 +454,6 @@ fi
 %files systemd
 %{_unitdir}/gdm.service
 %{_libexecdir}/gdm/keytable
-
-%files -n gdmflexiserver
-%{_bindir}/gdmflexiserver
 
 %files lang -f %{name}.lang
 

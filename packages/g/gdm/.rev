@@ -2342,4 +2342,12 @@
   (bsc#1252888). (forwarded request 1329739 from xiaoguang_wang)</comment>
     <requestid>1330183</requestid>
   </revision>
+  <revision rev="296" vrev="1">
+    <srcmd5>9fbc7d219b3029a26954ce5dac7ebdc4</srcmd5>
+    <version>50.0</version>
+    <time>1775836035</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345433</requestid>
+  </revision>
 </revisionlist>

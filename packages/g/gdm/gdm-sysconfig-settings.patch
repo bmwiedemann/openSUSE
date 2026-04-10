@@ -1,8 +1,8 @@
-Index: gdm-49.rc/common/gdm-settings-system-backend.c
+Index: gdm-50.beta/common/gdm-settings-system-backend.c
 ===================================================================
 --- /dev/null
-+++ gdm-49.rc/common/gdm-settings-system-backend.c
-@@ -0,0 +1,372 @@
++++ gdm-50.beta/common/gdm-settings-system-backend.c
+@@ -0,0 +1,339 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
 + * Copyright (C) 2008 Hans Petter Jansson <hpj@copyleft.no>
@@ -47,7 +47,6 @@ Index: gdm-49.rc/common/gdm-settings-system-backend.c
 +
 +#define SYSCONFIG_AUTOLOGIN_KEY         "DISPLAYMANAGER_AUTOLOGIN"
 +#define SYSCONFIG_TCP_OPEN_KEY          "DISPLAYMANAGER_XSERVER_TCP_PORT_6000_OPEN"
-+#define SYSCONFIG_XDMCP_KEY             "DISPLAYMANAGER_REMOTE_ACCESS"
 +#define SYSCONFIG_STARTS_XSERVER_KEY    "DISPLAYMANAGER_STARTS_XSERVER"
 +/* Keys from sysconfig that have no equivalent in GDM:
 + *   - DISPLAYMANAGER_ROOT_LOGIN_REMOTE
@@ -136,26 +135,6 @@ Index: gdm-49.rc/common/gdm-settings-system-backend.c
 +                                val = g_strdup (tcp_open ? "false" : "true");
 +                        }
 +                }
-+        } else if (!strcasecmp (key, GDM_KEY_XDMCP_ENABLE)) {
-+                if (priv->dirty_xdmcp) {
-+                        val = g_strdup (priv->set_xdmcp ? "true" : "false");
-+                } else {
-+                        gboolean xdmcp;
-+
-+                        if (gdm_sysconfig_get_value_boolean ((const gchar **) priv->lines, SYSCONFIG_XDMCP_KEY, &xdmcp)) {
-+                                val = g_strdup (xdmcp ? "true" : "false");
-+                        }
-+                }
-+        } else if (!strcasecmp (key, GDM_KEY_SHOW_LOCAL_GREETER)) {
-+                if (priv->dirty_show_local_greeter) {
-+                        val = g_strdup (priv->set_xdmcp ? "true" : "false");
-+                } else {
-+                        gboolean local_greeter;
-+
-+                        if (gdm_sysconfig_get_value_boolean ((const gchar **) priv->lines, SYSCONFIG_STARTS_XSERVER_KEY, &local_greeter)) {
-+                                val = g_strdup (local_greeter ? "true" : "false");
-+                        }
-+                }
 +        } else {
 +                g_set_error (error, GDM_SETTINGS_BACKEND_ERROR, GDM_SETTINGS_BACKEND_ERROR_KEY_NOT_FOUND, "Key not found");
 +                goto out;
@@ -208,12 +187,6 @@ Index: gdm-49.rc/common/gdm-settings-system-backend.c
 +                if (!gdm_sysconfig_set_value_boolean (backend->priv->lines, SYSCONFIG_TCP_OPEN_KEY, backend->priv->set_tcp_open))
 +                        g_warning ("Unable to set key %s to '%s'.", SYSCONFIG_TCP_OPEN_KEY,
 +                                   backend->priv->set_tcp_open ? "yes" : "no");
-+        }
-+
-+        if (backend->priv->dirty_xdmcp) {
-+                if (!gdm_sysconfig_set_value_boolean (backend->priv->lines, SYSCONFIG_XDMCP_KEY, backend->priv->set_xdmcp))
-+                        g_warning ("Unable to set key %s to '%s'.", SYSCONFIG_XDMCP_KEY,
-+                                   backend->priv->set_xdmcp ? "yes" : "no");
 +        }
 +
 +        if (backend->priv->dirty_show_local_greeter) {
@@ -295,12 +268,6 @@ Index: gdm-49.rc/common/gdm-settings-system-backend.c
 +                /* beware: that's the opposite of the sysconfig key */
 +                priv->set_tcp_open = !value_to_boolean (value);
 +                GDM_SETTINGS_SYSTEM_BACKEND (backend)->priv->dirty_tcp_open = TRUE;
-+        } else if (!strcasecmp (key, GDM_KEY_XDMCP_ENABLE)) {
-+                priv->set_xdmcp = value_to_boolean (value);
-+                GDM_SETTINGS_SYSTEM_BACKEND (backend)->priv->dirty_xdmcp = TRUE;
-+        } else if (!strcasecmp (key, GDM_KEY_SHOW_LOCAL_GREETER)) {
-+                priv->set_show_local_greeter = value_to_boolean (value);
-+                GDM_SETTINGS_SYSTEM_BACKEND (backend)->priv->dirty_show_local_greeter = TRUE;
 +        } else {
 +                g_set_error (error, GDM_SETTINGS_BACKEND_ERROR, GDM_SETTINGS_BACKEND_ERROR_KEY_NOT_FOUND, "Key not found");
 +                return FALSE;
@@ -375,10 +342,10 @@ Index: gdm-49.rc/common/gdm-settings-system-backend.c
 +
 +        return GDM_SETTINGS_BACKEND (object);
 +}
-Index: gdm-49.rc/common/gdm-settings-system-backend.h
+Index: gdm-50.beta/common/gdm-settings-system-backend.h
 ===================================================================
 --- /dev/null
-+++ gdm-49.rc/common/gdm-settings-system-backend.h
++++ gdm-50.beta/common/gdm-settings-system-backend.h
 @@ -0,0 +1,56 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -436,10 +403,10 @@ Index: gdm-49.rc/common/gdm-settings-system-backend.h
 +G_END_DECLS
 +
 +#endif /* __GDM_SETTINGS_SYSTEM_BACKEND_H */
-Index: gdm-49.rc/common/gdm-settings.c
+Index: gdm-50.beta/common/gdm-settings.c
 ===================================================================
---- gdm-49.rc.orig/common/gdm-settings.c
-+++ gdm-49.rc/common/gdm-settings.c
+--- gdm-50.beta.orig/common/gdm-settings.c
++++ gdm-50.beta/common/gdm-settings.c
 @@ -38,6 +38,7 @@
  #include "gdm-settings.h"
  
@@ -459,10 +426,10 @@ Index: gdm-49.rc/common/gdm-settings.c
          backend = gdm_settings_desktop_backend_new (GDM_RUNTIME_CONF);
          if (backend)
                  settings->backends = g_list_prepend (settings->backends, backend);
-Index: gdm-49.rc/common/gdm-sysconfig.c
+Index: gdm-50.beta/common/gdm-sysconfig.c
 ===================================================================
 --- /dev/null
-+++ gdm-49.rc/common/gdm-sysconfig.c
++++ gdm-50.beta/common/gdm-sysconfig.c
 @@ -0,0 +1,509 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -973,10 +940,10 @@ Index: gdm-49.rc/common/gdm-sysconfig.c
 +        g_strfreev (lines);
 +        return result;
 +}
-Index: gdm-49.rc/common/gdm-sysconfig.h
+Index: gdm-50.beta/common/gdm-sysconfig.h
 ===================================================================
 --- /dev/null
-+++ gdm-49.rc/common/gdm-sysconfig.h
++++ gdm-50.beta/common/gdm-sysconfig.h
 @@ -0,0 +1,43 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -1021,10 +988,10 @@ Index: gdm-49.rc/common/gdm-sysconfig.h
 +G_END_DECLS
 +
 +#endif /* __GDM_SYSCONFIG_H */
-Index: gdm-49.rc/data/gdm.conf-custom.in
+Index: gdm-50.beta/data/gdm.conf-custom.in
 ===================================================================
---- gdm-49.rc.orig/data/gdm.conf-custom.in
-+++ gdm-49.rc/data/gdm.conf-custom.in
+--- gdm-50.beta.orig/data/gdm.conf-custom.in
++++ gdm-50.beta/data/gdm.conf-custom.in
 @@ -1,4 +1,7 @@
  # GDM configuration storage
 +#
@@ -1032,12 +999,12 @@ Index: gdm-49.rc/data/gdm.conf-custom.in
 +#
  
  [daemon]
- # Uncomment the line below to force the login screen to use Xorg
-Index: gdm-49.rc/common/meson.build
+ 
+Index: gdm-50.beta/common/meson.build
 ===================================================================
---- gdm-49.rc.orig/common/meson.build
-+++ gdm-49.rc/common/meson.build
-@@ -6,9 +6,11 @@ libgdmcommon_src = files(
+--- gdm-50.beta.orig/common/meson.build
++++ gdm-50.beta/common/meson.build
+@@ -5,9 +5,11 @@ libgdmcommon_src = files(
    'gdm-profile.c',
    'gdm-settings-backend.c',
    'gdm-settings-desktop-backend.c',
