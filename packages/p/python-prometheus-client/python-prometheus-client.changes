@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:03:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.0:
+  * Fix spaces in grouping key values for push_to_gateway
+  * Support MultiProcessCollector in RestrictedRegistry
+- update to 0.24.1:
+  * [Django] Pass correct registry to MultiProcessCollector
+- update to 0.24.0:
+  * Add an AIOHTTP exporter
+  * Add remove_matching() method for metric label deletion
+  * fix(multiprocess): avoid double-building child metric names
+  * Don't interleave histogram metrics in multi-process collector
+  * Relax registry type annotations for exposition
+  * Added compression support in pushgateway
+  * Add Django exporter
+- update to 0.23.1:
+  * fix: use tuples instead of packaging Version
+- update to 0.23.0:
+  * UTF-8 Content Negotiation
+  * Re include test data
+  * Improve parser performance
+  * Add support to `write_to_textfile` for custom tmpdir
+  * OM text exposition for NH
+  * Fix bug which caused metric publishing to not accept query
+    string parameters in ASGI app
+  * Emit native histograms only when OM 2.0.0 is requested
+  * fix: remove space after comma in openmetrics exposition
+  * Fix issue parsing double spaces after # HELP/# TYPE
+- update to 0.22.1:
+  * BugFix: Skip validating and parsing comment lines early
+  * Use License Expressions in pyproject.toml
+- update to 0.22.0:
+  * Add support for native histograms in OM parser
+  * Add exemplar support to CounterMetricFamily [Fix #1062]
+  * Fix `write_to_textfile` leaves back temp files on errors
+  * Support UTF-8 in metric creation, parsing, and exposition
+  * Fix incorrect use of reentrant locks
+  * Remove Python 3.8 support
+  * Check if labelvalues is in _metrics before deletion in
+    MetricWrapperBase.remove()
+  * Add support for Python 3.13
+  * Correct nh sample span structure and parsing
+  * Migrate from setup.py to pyproject.toml
+  * Changed pushgateway.md
+  * Fix order-dependent flaky tests related to UTF-8 support
+  * Update versions for docs Github actions
+  * Documentation Updates
+  * Add note on gauge.set_function not working with
+    multiprocessing
+  * Don't send an empty HTTP header for /favicon.ico
+
+-------------------------------------------------------------------
 Wed Feb 26 11:27:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.21.1

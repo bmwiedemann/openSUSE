@@ -1,7 +1,7 @@
 #
 # spec file for package python-prometheus-client
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-prometheus-client
-Version:        0.21.1
+Version:        0.25.0
 Release:        0
 Summary:        Python client for the Prometheus monitoring system
-License:        Apache-2.0
+License:        Apache-2.0 AND BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/prometheus/client_python
 Source:         https://github.com/prometheus/client_python/archive/v%{version}.tar.gz
@@ -29,8 +29,11 @@ Source:         https://github.com/prometheus/client_python/archive/v%{version}.
 # we disable testing the optional Twisted integration on older versions because that dependency tree is troublesome
 BuildRequires:  %{python_module Twisted}
 %endif
+BuildRequires:  %{python_module asgiref}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 77.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,13 +41,10 @@ Recommends:     python-Twisted
 Provides:       python-prometheus_client = %{version}-%{release}
 Obsoletes:      python-prometheus_client < %{version}-%{release}
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-futures
-%endif
 %python_subpackages
 
 %description
-The official Python 2 and 3 client for Prometheus.
+The official Python client for Prometheus.
 
 %prep
 %autosetup -p1 -n client_python-%{version}

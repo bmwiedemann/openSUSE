@@ -146,4 +146,41 @@
     <comment></comment>
     <requestid>1248804</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5b3ae8e5b996b31b046a399e2cbc5fb7</srcmd5>
+    <version>0.25.0</version>
+    <time>1775857497</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.25.0:
+  * Fix spaces in grouping key values for push_to_gateway
+  * Support MultiProcessCollector in RestrictedRegistry
+- update to 0.24.1:
+  * [Django] Pass correct registry to MultiProcessCollector
+- update to 0.24.0:
+  * Add an AIOHTTP exporter
+  * Add remove_matching() method for metric label deletion
+  * fix(multiprocess): avoid double-building child metric names
+  * Don't interleave histogram metrics in multi-process collector
+  * Relax registry type annotations for exposition
+  * Added compression support in pushgateway
+  * Add Django exporter
+- update to 0.23.1:
+  * fix: use tuples instead of packaging Version
+- update to 0.23.0:
+  * UTF-8 Content Negotiation
+  * Re include test data
+  * Improve parser performance
+  * Add support to `write_to_textfile` for custom tmpdir
+  * OM text exposition for NH
+  * Fix bug which caused metric publishing to not accept query
+    string parameters in ASGI app
+  * Emit native histograms only when OM 2.0.0 is requested
+  * fix: remove space after comma in openmetrics exposition
+  * Fix issue parsing double spaces after # HELP/# TYPE
+- update to 0.22.1:
+  * BugFix: Skip validating and parsing comment lines early
+  * Use License Expressions in pyproject.toml
+- update to 0.22.0:</comment>
+    <requestid>1345936</requestid>
+  </revision>
 </revisionlist>
