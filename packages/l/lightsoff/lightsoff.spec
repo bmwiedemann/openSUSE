@@ -1,7 +1,7 @@
 #
 # spec file for package lightsoff
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           lightsoff
-Version:        48.1
+Version:        50.0
 Release:        0
 Summary:        Lights Out Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Lightsoff
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 BuildSystem:    meson
 
 BuildRequires:  AppStream
