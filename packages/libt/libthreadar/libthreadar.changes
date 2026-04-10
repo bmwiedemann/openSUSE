@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:58:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.1:
+  * removed forced static compilation flags in examples that
+    breaked compilation when only dynamic flavor was requested
+    (--disable-static given to ./configure script).
+  * added feature: thread::set_stack_size() method added to set
+    the stack size of the thread to be run().
+  * condition::get_waiting_thread_count() passed as const method
+    to be also available to const objects
+  * fixed undue use of sigaction.sa_restorer (was set to nullptr
+    for sanity reasons, but broke compilation on Mac OS).
+  * renaming for_autoconf as libthreadar_for_autoconf to
+    solve conflict with libdar using the same function name
+    to be used with autoconf AC_CHECK_LIB
+
+-------------------------------------------------------------------
 Sat Aug 31 15:47:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:
