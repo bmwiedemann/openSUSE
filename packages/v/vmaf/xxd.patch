@@ -18,7 +18,7 @@ Index: vmaf/bin/xxd
 +my($nflag, $iflag);
 +&Getopt::Long::Configure(qw(bundling));
 +&GetOptions("include" => \$iflag, "i" => \$iflag, "n=s" => \$nflag);
-+if (!defined($nflag)) { ($nflag = $ARGV[0]) =~ s{[^a-z0-9]}{_}gi; }
++if (!defined($nflag)) { $nflag = $ARGV[0]; } $nflag =~ s{[^a-z0-9]}{_}gi;
 +open(STDIN, "<", $ARGV[0]) or die("$ARGV[0]: $!");
 +if (scalar(@ARGV) == 2) { open(STDOUT, ">", $ARGV[1]) or die("$ARGV[1]: $!"); }
 +my $data = join("", <STDIN>);

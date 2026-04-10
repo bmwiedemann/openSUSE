@@ -1,7 +1,7 @@
 #
 # spec file for package vmaf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 # undefined reference to `vmaf_cpu_cpuid'
 %define _lto_cflags %nil
 Name:           vmaf
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Perceptual video quality assessment algorithm
 License:        BSD-2-Clause-Patent AND BSD-3-Clause
@@ -36,8 +36,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.47
 BuildRequires:  nasm
 BuildRequires:  pkg-config
-Provides:       bundled(libsvm) = 3.24
 Provides:       vmaf-devel:/usr/bin/vmaf
+Provides:       bundled(libsvm) = 3.24
 
 %description
 VMAF is a perceptual video quality assessment algorithm.
@@ -63,11 +63,16 @@ This package contains the library API definitions.
 %autosetup -p1
 
 %build
-export PATH="$PATH:$PWD/bin"
+export PATH="$PWD/bin:$PATH"
 chmod a+x bin/xxd
 rm -rf third_party
 cd libvmaf/
-%meson -Dbuilt_in_models=true -Denable_float=true
+# Unconditional use of avx2 asm breaks compilation <https://github.com/Netflix/vmaf/issues/1481>
+%meson \
+%ifarch %ix86
+	-Denable_asm=false \
+%endif
+	-Dbuilt_in_models=true -Denable_float=true
 %meson_build
 
 %install

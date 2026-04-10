@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  3 16:36:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.0
+  * Added `--aom_ctc v7.0` as a recognized option for that testing
+    mode. (Alliance for Open Media's Common Test Conditions)
+
+-------------------------------------------------------------------
 Mon Nov 17 23:22:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add xxd.patch and ditch build dependency on vim's xxd
