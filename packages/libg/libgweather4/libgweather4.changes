@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:55:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 17 08:45:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.6.0:
+  + No functional changes.
+
+-------------------------------------------------------------------
+Wed Feb 11 12:08:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.5.0:
+  + Move the locations database to gweather-locations
+  + Fix build on Solaris
+  + Update METAR endpoint
+  + Remove support for libsoup-2.0
+  + Documentation updates
+  + Updated translations.
+- Convert to source _Service
+- No longer pass -D soup2=false to meson: not supported anymore.
+- Add pkgconfig(gweather-locations) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Sun Sep  1 15:16:46 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.4.4:

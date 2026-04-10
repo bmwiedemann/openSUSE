@@ -1,7 +1,7 @@
 #
 # spec file for package libgweather4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           libgweather4
-Version:        4.4.4
+Version:        4.6.0
 Release:        0
 Summary:        Library to get online weather information
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/LibGWeather
-Source0:        https://download.gnome.org/sources/libgweather/4.4/libgweather-%{version}.tar.xz
+Source0:        libgweather-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
@@ -33,8 +33,9 @@ BuildRequires:  python3-gobject
 BuildRequires:  pkgconfig(geocode-glib-2.0)
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(gweather-locations)
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.2
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(vapigen)
 
@@ -64,6 +65,7 @@ This package provides the development files.
 %package -n libgweather-4-0
 Summary:        Library to get online weather information
 Group:          Development/Libraries/GNOME
+Requires:       gweather-locations
 Requires:       gweather4-data >= %{version}
 
 %description -n libgweather-4-0
@@ -88,7 +90,6 @@ libgweather library.
 %meson \
 	-D enable_vala=true \
 	-D gtk_doc=true \
-	-D soup2=false \
 	%{nil}
 %meson_build
 
@@ -96,16 +97,12 @@ libgweather library.
 %meson_install
 
 %find_lang libgweather-4.0 %{?no_lang_C}
-%find_lang libgweather-4.0-locations libgweather-4.0.lang %{?no_lang_C}
 
 %ldconfig_scriptlets -n libgweather-4-0
 
 %files -n gweather4-data
 %{_datadir}/glib-2.0/schemas/org.gnome.GWeather4.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.GWeather4.gschema.xml
-%{_datadir}/libgweather-4/
-%dir %{_libdir}/libgweather-4
-%{_libdir}/libgweather-4/Locations.bin
 
 %files -n libgweather-4-0
 %license COPYING
