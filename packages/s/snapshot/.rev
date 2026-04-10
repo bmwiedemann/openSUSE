@@ -121,4 +121,12 @@ New package for GNOME</comment>
     <comment></comment>
     <requestid>1331474</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>35f453672a029c2ecc69d6253525de40</srcmd5>
+    <version>50.0</version>
+    <time>1775836208</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345359</requestid>
+  </revision>
 </revisionlist>

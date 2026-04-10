@@ -19,13 +19,13 @@
 %define gstreamer_version 1.20
 
 Name:           snapshot
-Version:        49.1
+Version:        50.0
 Release:        0
 Summary:        Take pictures and videos
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/snapshot
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
 
 BuildRequires:  AppStream
 BuildRequires:  cargo-packaging
@@ -36,6 +36,8 @@ BuildRequires:  libxml2-tools
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.75
+BuildRequires:  pkgconfig(glycin-2) >= 2
+BuildRequires:  pkgconfig(glycin-gtk4-2) >= 2
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_version}
 BuildRequires:  pkgconfig(gtk4) >= 4.13.6
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.alpha

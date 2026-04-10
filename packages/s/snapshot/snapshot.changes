@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Mar 23 07:52:30 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Thu Mar 12 08:06:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 28 09:38:33 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Prefer caps with more desirable formats
+  + Run tests as part of meson test
+  + Fix bitrate for openh264enc
+  + Set video/image caps to I420 and VN12
+  + Update gtk4-rs to 0.11
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 08:55:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Update rqrr to 0.10.0
+  + Update gtk4-rs to 0.11.0-alpha
+- Changes from version 50.alpha:
+  + Screenshots are now hosted at static.gnome.org
+  + Require meson 1.7
+  + Dynamically link to glycin using glycin-rebind
+  + Set properties to encoders
+  + Updated translations
+- Add pkgconfig(glycin-gtk4-2) and pkgconfig(glycin-2)
+  BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
 Thu Feb  5 15:24:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gstreamer-plugin-pipewire: without the pipewire plugin,
