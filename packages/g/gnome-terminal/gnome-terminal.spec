@@ -18,13 +18,13 @@
 
 %bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.58.1
+Version:        3.60.0
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

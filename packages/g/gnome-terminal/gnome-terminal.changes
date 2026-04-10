@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:43:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Mar 15 09:08:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.60.0:
+  * build: Use vte-0-84 branch for vte fallback
+  * util: Fix error dialogue
+  * Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 13 14:31:20 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.59.90:
+  * build: Version 3.59.90
+  * notebook: Hide tab widget child widgets in non-active tabs
+  * build: Post release version bump
+
+-------------------------------------------------------------------
 Sun Jan 04 13:10:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.58.1:
