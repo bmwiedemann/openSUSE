@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm4
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define _name gtkmm
 
 Name:           gtkmm4
-Version:        4.20.0
+Version:        4.22.0
 Release:        0
 Summary:        C++ Interface for GTK4 (a GUI Library for X)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/gtkmm/4.20/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtkmm/4.22/%{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.35.5
 BuildRequires:  pkgconfig(giomm-2.68) >= 2.75.0
 BuildRequires:  pkgconfig(glibmm-2.68) >= 2.75.0
-BuildRequires:  pkgconfig(gtk4) >= 4.17.5
+BuildRequires:  pkgconfig(gtk4) >= 4.22.0
 BuildRequires:  pkgconfig(pangomm-2.48) >= 2.50.0
 
 %description
@@ -99,8 +99,7 @@ chmod -x NEWS
 %meson_install
 %fdupes %{buildroot}%{_prefix}
 
-%post -n libgtkmm%{so_ver} -p /sbin/ldconfig
-%postun -n libgtkmm%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgtkmm%{so_ver}
 
 %files -n libgtkmm%{so_ver}
 %license COPYING

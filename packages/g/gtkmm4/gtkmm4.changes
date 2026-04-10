@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Mar 12 15:50:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.22.0:
+  + Some unstable API has been removed.
+  + The corresponding API was removed in gtk 4.22.0.
+  + Fix build with build-deprecated-api=false.
+  + Gtk:
+    - Add TryExpression.
+    - FileFilter: Add add_mime_types().
+    - SearchEntry2: Add property_key_capture_widget().
+    * Svg: Add get_state_names(). Remove get_n_states().
+  + Documentation: Gtk::GestureClick: Improve the class
+    description.
+  + Tests: Add test of Gtk::TryExpression.
+  + Build: Require gtk4 >= 4.22.0
+- Drop gtkmm4-svg-buildfix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sat Mar  7 21:14:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gtkmm4-svg-buildfix.patch: Fix build with gtk4 4.22.0
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Wed Feb 18 17:29:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.21.3:
+  + Gtk:
+    - Accessible: Add get_accessible_id().
+    - Application: Remove save(), forget(),
+      property_support_save(), property_autosave_interval(),
+      signal_restore_window(), signal_save_state(), signal_restore_state().
+    - ApplicationWindow: Remove signal_save_state().
+    - Remove enum RestoreReason.
+- Changes from version 4.21.2:
+  + Gsk: Add enum PorterDuff and Isolation.
+  + Gtk:
+    - Application: Call init_gtkmm_internals() in more
+      constructors.
+    - Window: Add set/get_remove_on_hide().
+    - Picture: Add set/get/property_isolate_contents().
+    - PopoverBin: New widget.
+    - Snapshot: Add push_isolation() and push_composite().
+    - Svg: Add enum Svg::Features, load_from_resource(),
+      set/get/property_features(), property_resource().
+      Remove the Svg(const std::string& resource) constructor.
+      Class Svg has not yet been included in a stable gtkmm
+      release.
+
+-------------------------------------------------------------------
 Sat Sep 20 17:44:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.20.0:

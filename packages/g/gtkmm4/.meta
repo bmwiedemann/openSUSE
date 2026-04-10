@@ -6,6 +6,5 @@ inheritance, and a comprehensive set of widget classes that can be
 freely combined to quickly create complex user interfaces.
 
 </description>
-  <devel project="GNOME:Factory" package="gtkmm4"/>
   <url>http://www.gtkmm.org/</url>
 </package>
