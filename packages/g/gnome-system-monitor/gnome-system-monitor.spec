@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-system-monitor
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           gnome-system-monitor
-Version:        49.1
+Version:        50.0
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/SystemMonitor
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
+Patch0:         gnome-system-monitor-fix-crash.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -33,13 +34,13 @@ BuildRequires:  polkit-devel
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(catch2-with-main)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
-BuildRequires:  pkgconfig(giomm-2.68)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.55.0
+BuildRequires:  pkgconfig(giomm-2.68) >= 2.84
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.46
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gtk4) >= 3.22.0
-BuildRequires:  pkgconfig(gtkmm-4.0) >= 3.3.18
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.alpha
+BuildRequires:  pkgconfig(gtk4) >= 4.17.5
+BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.17.5
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libgtop-2.0) >= 2.41.2
 BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.35
@@ -73,6 +74,7 @@ processor time, memory, and disk space are being used.
 %{_bindir}/gnome-system-monitor
 %{_datadir}/applications/gnome-system-monitor-kde.desktop
 %{_datadir}/applications/org.gnome.SystemMonitor.desktop
+%{_datadir}/dbus-1/services/org.gnome.SystemMonitor.service
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-system-monitor.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-system-monitor.gschema.xml
 %{_datadir}/metainfo/org.gnome.SystemMonitor.metainfo.xml

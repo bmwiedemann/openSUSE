@@ -1,0 +1,62 @@
+diff --git a/src/application.cpp b/src/application.cpp
+index 20a7db3a..adc56693 100644
+--- a/src/application.cpp
++++ b/src/application.cpp
+@@ -360,7 +360,6 @@ GsmApplication::GsmApplication()
+   app_menu_button (NULL),
+ 
+   config (),
+-  pretty_table (NULL),
+   tree (NULL),
+   proc_actionbar_revealer (NULL),
+   proc_popover_menu (NULL),
+@@ -487,7 +486,6 @@ GsmApplication::shutdown ()
+ 
+   proctable_free_table (this);
+   delete smooth_refresh;
+-  delete pretty_table;
+ 
+   glibtop_close ();
+ 
+@@ -553,6 +551,5 @@ GsmApplication::on_startup ()
+ 
+   load_settings ();
+ 
+-  pretty_table = new PrettyTable ();
+   smooth_refresh = new SmoothRefresh (settings);
+ }
+diff --git a/src/application.h b/src/application.h
+index 6f99770a..b94bd329 100644
+--- a/src/application.h
++++ b/src/application.h
+@@ -104,7 +104,7 @@ public:
+ 
+   ProcList processes;
+   ProcConfig config;
+-  PrettyTable *pretty_table;
++  PrettyTable pretty_table;
+   GsmTreeView *tree;
+   GtkRevealer *proc_actionbar_revealer;
+   GtkPopover *proc_popover_menu;
+diff --git a/src/proctable.cpp b/src/proctable.cpp
+index 2b1ed622..f0e80a01 100644
+--- a/src/proctable.cpp
++++ b/src/proctable.cpp
+@@ -184,7 +184,7 @@ cb_refresh_icons (GtkIconTheme*,
+   GsmApplication *app = (GsmApplication *) data;
+ 
+   for (auto&v : app->processes)
+-    app->pretty_table->set_icon (v.second);
++    app->pretty_table.set_icon (v.second);
+ 
+   proctable_update (app);
+ }
+@@ -850,7 +850,7 @@ insert_info_to_tree (ProcInfo       *info,
+                       COL_SECURITYCONTEXT, info->security_context.c_str (),
+                       -1);
+ 
+-  app->pretty_table->set_icon (*info);
++  app->pretty_table.set_icon (*info);
+ 
+   procman_debug ("inserted %d%s", info->pid, (forced ? " (forced)" : ""));
+ }
