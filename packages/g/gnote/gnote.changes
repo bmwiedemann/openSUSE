@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Mar 21 18:18:51 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar 16 10:00:29 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.rc:
+  + Fix possible vipe-out of notes on network error during sync
+  + Synchronization will no longer delete files in the destination
+    if it isn't valid sync destination
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 10 08:55:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.beta:
+  + New Features: Add support for custom tab stops
+  + Fixes: Make repeated Ctrl+F refocus search entry instead of
+    closing
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar  1 21:47:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.alpha:
+  + Disable next/prev in search based on position
+  + Fix handling file URIs (#217)
+  + Fix reference for the --new-window command-line option
+  + Fix potential crash on reopening note
+  + Update title and link colors on setting changes
+  + Widen input field for WebDAV configuration
+  + Check if already mounted when synchronizing
+  + Improved reliability of WebDAV synchronization
+  + New command-line option --new-window
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar  1 20:47:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.3:
