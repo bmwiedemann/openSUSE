@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:29:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  Performance:
+  * HT block decoder: nibble-packed sigma representation for SPP/MRP passes,
+    replacing byte-per-sample storage; halves memory traffic in significance
+    propagation and magnitude refinement
+  * HT block decoder: branchless VLC unstuff eliminates short-circuit branches;
+    CTZ-based SPP/MRP with branchless bit importers halve branch misses
+  * HT block decoder: fused dequantize pass with vectorized kappa computation
+    and specialized 9/7 cascade; removes a separate dequant loop
+  * HT block decoder: vectorize Emax computation in cleanup decode
+  * AVX2: add 4-quad 16-bit decode path for HT block decoder
+  * AVX-512: expand coverage to FDWT vertical lifting and all color transform
+    functions (forward/inverse ICT and RCT)
+  * AVX-512: masked stores for vertical DWT tail columns, eliminating scalar
+    fallback for non-multiple-of-16 widths
+  * NEON: port nibble-packed sigma SPP/MRP, add irrev 5/3 (ATK) IDWT kernels
+    (horizontal and vertical), add 16-bit HT cleanup decode path (pLSB > 16)
+  * WASM: port nibble-packed sigma SPP/MRP to WASM SIMD decoder
+  * Vectorize PPM interleave output (SSE4.1 / NEON) and PGM/PGX byte-packing
+    in decoder CLI
+  * ThreadPool: lock-free get() via atomic index; skip pool overhead entirely
+    in single-threaded mode
+  * ThreadPool: replace std::queue<std::function<void()>> with a fixed-size
+    32 K-slot InlineTask ring buffer with cache-line aligned head/tail; eliminates
+    per-task heap allocation from std::deque chunk management and std::function
+    type-erased storage. 32-byte inline storage with memcpy fast path for
+    trivially-copyable lambdas (all hot-path captures); relocate-trampoline slow
+    path for non-trivial captures
+  * DWT batch path: eliminate per-tile per-level Xext / Yext copy buffer.
+  * In-place horizontal DWT now handles all rows (including the first and last
+    row of each tile) by prepending DWT_LEFT_SLACK = 8 floats and appending
+    DWT_RIGHT_SLACK = SIMD_PADDING = 32 floats of border slack to every
+    j2k_subband / j2k_resolution::i_samples allocation; the user-visible
+    pointer is offset by DWT_LEFT_SLACK. Removes a per-row memcpy round-trip
+    for the boundary rows
+  * DWT: replace scalar PSE-fill loops with constant-pattern SIMD reflection
+    (vpermps on AVX2 / AVX-512, vrev64q + vextq on NEON, i32x4_shuffle
+    on WASM SIMD); covers idwt_1d_row_inplace, idwt_1d_sr_inplace, and
+    fdwt_1d_sr_inplace. Drops the PSEo() modulo + branch on the hot path
+  * coding_units: flatten unique_ptr<unique_ptr<T>[]> double-indirection in
+    pband, subbands, precincts, and resolution to single-allocation
+  * flat arrays via operator new[] + placement-new (matching the existing
+    j2k_codeblock pattern). Reduces N+1 heap allocations to 1 per container
+    and improves cache locality
+  * coding_units: embed tagtree by value in j2k_precinct_subband,
+    eliminating two heap allocations per precinct-subband
+  * decoder: hoist per-tile scratch vectors (band_h, tile_x_off, tile_w,
+    row_ptrs, accum) out of the multi-tile scatter loop in
+    decode_line_based_stream; reduces O(numTiles.x × numTiles.y) heap
+    allocations to a constant 5
+  Bug Fixes:
+  * Fix AVX2 pack_i32_to_u8: signed values were incorrectly clamped to zero
+    by packus; now clamps via max(0) before packing
+  * Fix fused dequant SIMD overshoot race condition with branchless VLC/MEL
+  * Fix WASM wasm_u16x8_shl → wasm_i16x8_shl in 16-bit decode path
+  * Fix WASM 16-bit HT decode regression and DC level shift
+  * Fix intermittent DFS/ATK test failures: zero full stride×height in LL
+    resolution buffer
+  * Fix segfault when /dev/null used as decoder output
+  * Suppress all compiler warnings in native and WASM builds
+  * Fix four memory leaks on exception paths: ~j2k_tile_component now finalizes
+    line_dec / line_enc so aligned_mem_alloc'd sub-resources are released
+    even if finalize_*() was never called explicitly; init_line_decode
+    validates DWT direction before allocating state arrays (fail-fast);
+    create_compressed_buffer NULL-checks the realloc result instead of
+    losing the original pointer; the four decoder.cpp invoke variants
+    validate tile count before allocating raw new int32_t[] output buffers
+    (was leaking on the validation throw)
+  * coding_units: add RAII placement_new_array_guard<T> and apply it at all
+    five placement-new array construction sites (codeblocks, pband, subbands,
+    precincts, resolution); partial construction failures now unwind cleanly
+    instead of leaving the destructor calling ~T on uninitialized memory
+  * ThreadPool: replace silent ring overflow under NDEBUG (assert-only) with
+    a std::runtime_error throw in both push_task and push_batch; raise
+    RING_CAP from 8192 to 32768 to comfortably hold the worst-case 4K-tile
+    encode burst (a single precinct can enqueue ~5-8 K codeblock tasks
+    back-to-back via push_batch before workers begin draining)
+  WASM:
+  * Node.js v24 compatibility: rewrite module loader to evaluate Emscripten JS
+    as CJS via new Function(), pass .wasm binary directly via wasmBinary
+    option, bypassing Emscripten's fetch()-based loader
+  * Add ~137 WASM conformance tests (HT Profile 0, Profile 1, HiFi) using
+    node open_htj2k_dec.mjs decode + native imgcmp comparison
+  * Align index.html ESM exports with updated wrapper API
+
+-------------------------------------------------------------------
 Tue Apr  7 09:23:08 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.0:
