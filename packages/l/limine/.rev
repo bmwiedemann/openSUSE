@@ -303,4 +303,12 @@
     <comment>Update to 11.2.0</comment>
     <requestid>1344467</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>cfb32de19a596c37a75efef834c7b81a</srcmd5>
+    <version>11.3.1</version>
+    <time>1775857502</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 11.3.1</comment>
+    <requestid>1345939</requestid>
+  </revision>
 </revisionlist>

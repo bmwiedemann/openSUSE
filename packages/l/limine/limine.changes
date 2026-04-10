@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:22:39 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 11.3.1:
+  * Implement "TSC Frequency" feature of the Limine boot protocol.
+  * Add PIT-based TSC calibration for BIOS.
+  * Do not clear framebuffer in quiet mode.
+  * Make "Keep IOMMU" Limine boot protocol feature x86-64-only.
+  * Do not clear framebuffer on modeset as Flanterm immediately repaints
+    it, wasting time.
+  * Allow menu recovery on overflow panics in the multiboot protocols.
+  * Significantly improve TSC calibration accuracy.
+  * Do not force-start uninitialised GOP outputs if a framebuffer is
+  * already available, for compatibility with quirky firmwares (Apple
+    Macs).
+  * Call Apple set_os protocol on UEFI to try to keep iGPU alive on
+    dual-GPU Apple Macs.
+  * Migrated to GitHub alongside with several subprojects.
+  * Build limine.exe using i486 MinGW from osdev0/mingw-binary-builds
+    in binary builds for better compatibility.
+
+-------------------------------------------------------------------
 Fri Apr  3 12:09:36 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 11.2.0:
