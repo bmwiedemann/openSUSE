@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Fri Mar 20 15:35:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sun Mar 15 09:18:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Enhancements:
+    - More thumbnailing tests
+    - Add ARM64 CI pipeline
+  + Bugfixes: Correctly handle canceling archive extraction
+  + Cleanups:
+    - Remove last remaining bits of eel library
+    - Make archive operation tests run reliably
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  2 10:25:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Add a test for file chooser
+  + Distinguish automatic and manual file selections
+  + Avoid unnecessary delay in operation dialogs
+  + Add accessible roles to icons
+  + Constrain file chooser label to single line
+  + Add release script
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 11 12:48:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Build:
+    - Add glycin dependency
+    - Add blueprint-compiler dependency
+  + Enhancements:
+    - Move grid view captions to a dedicated dialog in the view
+      menu
+    - Add button to pop-out properties dialog
+    - Use glycin for thumbnails
+    - Rework icon caching
+    - Make path completion case-insensitive
+    - Use AdwShortcutsDialog
+    - Add checkerboard background to thumbnails in properties
+    - Improve multi-file properties dialog
+    - Add renaming tests
+    - Use Blueprint for UI files
+    - Change public folder banner based on sharing setting
+    - Fix handling of early rename popover closure
+    - Do not count children for autofs mountpoints
+    - Fix d'n'd placeholder style in sidebar
+    - Fix leak from .alpha in move operation
+    - Make type of time independent for each search
+    - Fix icon cache
+  + Cleanups:
+    - Integrate renaming into operations set
+    - Bundle search provider functionality in parent class
+    - Use AdwDialog for properties
+    - Remove unused desktop file launcher
+    - Show untrimmed error messages in dialogs
+    - Performance enhancements for search and sorting
+- Change from versionin 50.alpha:
+  + Enhancements:
+    - Improved thumbnail loading through new custom widget
+    - Significantly increase code coverage by adding tests for
+      thumbnail sizes, batch renaming, redoing, bookmarks, and many
+      more
+    - Rework batch rename mechanism and avoid freezes on cyclic
+      collisions
+    - Strip whitespaces in editable file names
+    - Strip newlines from file name in file chooser
+    - Reduce memory usage by trimming on window/tab closure
+    - Use shorter operation status message in sidebar
+    - Support multiple file type search filters
+    - Use highlight for batch rename replacement text
+    - Use AdwAlertDialog for file operation dialogs
+    - Add settings menu item to context menu for trash and recent
+    - Focus password entry on extraction
+    - Make file type filter buttons more accessible
+    - Add alternative bindings for copy and paste
+    - Remove drag icon from column chooser
+    - Pass activation_token to previewer
+  + Cleanups:
+    - Read image properties without GdkPixbuf
+    - Drop superfluous thumbnail prioritizing
+    - Detect videos via xdg/shared-mime-info over intern list
+    - Drop usages of goto
+    - Replace some deprecated GTK APIs
+    - Use media queries for high contrast style
+    - Avoid redundant folder name in completion toast
+    - Cleanup bookmark list API to use GFile
+    - Make NautilusHashQueue more useful with destroy funcs
+    - Continued search-related rework
+    - Cleanup controls in metainfo
+    - NautilusFile/Directory constructor-related cleanups
+    - Remove NautilusWindowSlot usage from NautilusApplication
+    - Drop deprecated FileOperations interface
+    - Deprecate packagekit build option
+    - Don't skip the first file from batch rename progress
+      monitoring
+- Replace pkgconfig(gexiv-2) BuildRequires with
+  pkgconfig(gexiv2-0.16): follow upstreams port to the new API
+- Add pkgconfig(glycin-2) and pkgconfig(glycin-gtk4-2)
+  BuildRequires: new dependencies.
+
+-------------------------------------------------------------------
 Mon Feb  2 18:02:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.4:

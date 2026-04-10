@@ -1842,4 +1842,12 @@ Hence, recommended to be added to 12.3</comment>
   + Updated translations. (forwarded request 1330616 from iznogood)</comment>
     <requestid>1330728</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>84b150221e9b7c1fc38e04092e7f30ee</srcmd5>
+    <version>50.0</version>
+    <time>1775835971</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345393</requestid>
+  </revision>
 </revisionlist>

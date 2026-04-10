@@ -17,46 +17,49 @@
 
 
 Name:           nautilus
-Version:        49.4
+Version:        50.0
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source1:        set_trusted.desktop
 Source2:        set_trusted.sh
 
 # needed for directory ownership
 BuildRequires:  dbus-1
+BuildRequires:  blueprint-compiler >= 0.19.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  meson >= 0.59.0
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  mutter
 BuildRequires:  pkgconfig
 BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 BuildRequires:  pkgconfig(cloudproviders) >= 0.3.1
-BuildRequires:  pkgconfig(gexiv2) >= 0.14.2
+BuildRequires:  pkgconfig(gexiv2-0.16) >= 0.16.0
 BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.84.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.84.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
+BuildRequires:  pkgconfig(glycin-2) >= 2
+BuildRequires:  pkgconfig(glycin-gtk4-2) >= 2
 BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.84.0
 BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.3.0
 BuildRequires:  pkgconfig(gnome-desktop-4) >= 1.0.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.13.6
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.0
+BuildRequires:  pkgconfig(gtk4) >= 4.20.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libselinux) >= 2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(pango) >= 1.44.4
-BuildRequires:  pkgconfig(tinysparql-3.0)
+BuildRequires:  pkgconfig(tinysparql-3.0) >= 3.8
 # Needed for tests
 BuildRequires:  python3-gobject
 BuildRequires:  localsearch
