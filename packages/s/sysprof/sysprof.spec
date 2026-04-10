@@ -1,7 +1,7 @@
 #
 # spec file for package sysprof
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,13 +22,13 @@
 %define glib_version 2.76.0
 
 Name:           sysprof
-Version:        49.0
+Version:        50.0
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
-Source0:        sysprof-%{version}.tar.zst
+Source0:        sysprof-%{version}.tar.xz
 Patch0:         harden_sysprof3.service.patch
 Patch1:         explicitly-include-unistd.patch
 
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
-BuildRequires:  pkgconfig(gtk4) >= 4.10
+BuildRequires:  pkgconfig(gtk4) >= 4.19.4
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30.0

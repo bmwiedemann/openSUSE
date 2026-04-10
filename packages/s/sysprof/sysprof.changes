@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Mar 20 16:09:55 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Tue Mar 17 08:52:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 24 07:48:16 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 10 13:13:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.beta:
+  + Port to AdwShortcutsDialog
+  + Ignore process 0 by default on aarch64
+  + Fix typo in libsysprof-capture public typedef
+- Changes from version 50.alpha:
+  + Mark chart improvements with filtering and ability to hide mark
+    groups
+  + Recording template cleanup and simplification
+  + Improved discoverability with additional keywords in appdata
+  + Fix compiler warnings for integer conversions
+  + Version macros added to libsysprof-capture
+  + Counter ring buffer memory cleanup
+  + Minimum GTK version bumped to 4.19.4
+  + CI build integration updates
+  + Updated translations
+
+-------------------------------------------------------------------
 Sat Sep 13 08:29:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 49.0:
