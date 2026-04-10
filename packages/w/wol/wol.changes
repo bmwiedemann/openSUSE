@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  9 09:10:07 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Added wol-use-port-9.patch to apply wol-use-port-9.patch to change
+  the default to UDP Port 9, which give better results with todays
+  WOL Magic Packets(tm) implementations.
+- Added wol.info-fix.patch to apply wol.info-fix.patch: removes
+  obsolete @setcontentsaftertitlepage command from wol.texi
+  in order to allow successful doc regeneration.
+
+-------------------------------------------------------------------
 Mon Feb 17 10:45:53 UTC 2025 - pgajdos@suse.com
 
 - Added wol-gcc15.patch to fix build with gcc15.

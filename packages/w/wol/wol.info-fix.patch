@@ -1,0 +1,12 @@
+Index: b/doc/wol.texi
+===================================================================
+--- a/doc/wol.texi
++++ b/doc/wol.texi
+@@ -3,7 +3,6 @@
+ @settitle Wake On LAN client
+ @afourpaper
+ @finalout
+-@setcontentsaftertitlepage
+ 
+ 
+ @set UPDATED 18 April 2004

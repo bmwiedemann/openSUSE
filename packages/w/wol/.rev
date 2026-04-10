@@ -157,4 +157,17 @@
     <comment>- Added wol-gcc15.patch to fix build with gcc15.</comment>
     <requestid>1246405</requestid>
   </revision>
+  <revision rev="23" vrev="165">
+    <srcmd5>c663729079d5c112b7d36f8cc49072df</srcmd5>
+    <version>0.7.1</version>
+    <time>1775836167</time>
+    <user>dimstar_suse</user>
+    <comment>- Added wol-use-port-9.patch to apply wol-use-port-9.patch to change
+  the default to UDP Port 9, which give better results with todays
+  WOL Magic Packets(tm) implementations.
+- Added wol.info-fix.patch to apply wol.info-fix.patch: removes
+  obsolete @setcontentsaftertitlepage command from wol.texi
+  in order to allow successful doc regeneration.</comment>
+    <requestid>1345496</requestid>
+  </revision>
 </revisionlist>

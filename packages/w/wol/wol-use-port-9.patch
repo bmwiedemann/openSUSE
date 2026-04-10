@@ -1,0 +1,111 @@
+Index: b/demo/nic-fake.py
+===================================================================
+--- a/demo/nic-fake.py
++++ b/demo/nic-fake.py
+@@ -5,7 +5,7 @@ from struct import *
+ 
+ while 1:
+ 	s = socket (AF_INET, SOCK_DGRAM)
+-	s.bind (("localhost", 40000))
++	s.bind (("localhost", 9))
+ 	r = s.recv (1024)
+ 	l = len (r)
+ 	data = unpack (`l` + 'B', r)
+Index: b/doc/wol.1
+===================================================================
+--- a/doc/wol.1
++++ b/doc/wol.1
+@@ -176,7 +176,7 @@ client is a multihomed host and you want
+ .IX Item "--port=NUM"
+ .PD
+ Send packet with this destination port \fI\s-1NUM\s0\fR. This option is important if
+-your packet filter would block the default destination port \f(CW40000\fR.
++your packet filter would block the default destination port \f(CW9\fR.
+ .IP "\fB\-f \s-1FILE\s0\fR" 4
+ .IX Item "-f FILE"
+ .PD 0
+Index: b/doc/wol.info
+===================================================================
+--- a/doc/wol.info
++++ b/doc/wol.info
+@@ -185,7 +185,7 @@ This is a list of `wol's' command line o
+ `--port=NUM'
+      Send packet with this destination port NUM. This option is
+      important if your packet filter would block the default
+-     destination port `40000'.
++     destination port `9'.
+ 
+ `-f FILE'
+ `--file=FILE'
+@@ -225,8 +225,8 @@ Examples
+ ********
+ 
+ `wol 00:4F:49:07:0B:5F 00:4F:50:06:12:4F'
+-     Sends packets addressed to 255.255.255.255:40000 and is intended
+-     to wake up the machines with hardware addresses 00:4F:49:07:0B:5F
++     Sends packets addressed to 255.255.255.255:9 and is intended to
++     wake up the machines with hardware addresses 00:4F:49:07:0B:5F
+      and 00:4F:50:06:12:4F.
+ 
+ `wol --host=192.168.3.255 -p 69 00:4F:49:07:0B:5F'
+@@ -234,7 +234,7 @@ Examples
+      up the NIC with hardware address 00:4F:49:07:0B:5F.
+ 
+ `wol --passwd=09-e6-f5-f3-dc-4e 00:4F:49:07:0B:5F'
+-     Sends packet addressed to 255.255.255.255:40000 with SecureON
++     Sends packet addressed to 255.255.255.255:9 with SecureON
+      password 09-e6-f5-f3-dc-4e.
+ 
+ `wol --passwd beblebroox'
+@@ -307,6 +307,6 @@ Node: Wake On LAN requirements3107
+ Node: Magic Packet3990
+ Node: Description4972
+ Node: Options6199
+-Node: Examples7849
++Node: Examples7845
+ 
+ End Tag Table
+Index: b/doc/wol.texi
+===================================================================
+--- a/doc/wol.texi
++++ b/doc/wol.texi
+@@ -239,7 +239,7 @@ client is a multihomed host and you want
+ @itemx --port=NUM
+ 
+ Send packet with this destination port @var{NUM}. This option is important if
+-your packet filter would block the default destination port @code{40000}.
++your packet filter would block the default destination port @code{9}.
+ 
+ 
+ @item -f FILE
+@@ -292,7 +292,7 @@ To set the password of your SecureON cap
+ @table @samp
+ @item wol 00:4F:49:07:0B:5F 00:4F:50:06:12:4F
+ 
+-Sends packets addressed to 255.255.255.255:40000 and is intended to wake up
++Sends packets addressed to 255.255.255.255:9 and is intended to wake up
+ the machines with hardware addresses 00:4F:49:07:0B:5F and 00:4F:50:06:12:4F.
+ 
+ 
+@@ -304,7 +304,7 @@ NIC with hardware address 00:4F:49:07:0B
+ 
+ @item wol --passwd=09-e6-f5-f3-dc-4e 00:4F:49:07:0B:5F
+ 
+-Sends packet addressed to 255.255.255.255:40000 with SecureON password
++Sends packet addressed to 255.255.255.255:9 with SecureON password
+ 09-e6-f5-f3-dc-4e.
+ 
+ 
+Index: b/include/wol.h
+===================================================================
+--- a/include/wol.h
++++ b/include/wol.h
+@@ -44,7 +44,7 @@
+ #endif /* ENABLE_NLS */
+ 
+ 
+-#define DEFAULT_PORT 40000
++#define DEFAULT_PORT 9
+ #define DEFAULT_IPADDR "255.255.255.255"
+ 
+ 

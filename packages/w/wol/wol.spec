@@ -1,7 +1,7 @@
 #
 # spec file for package wol
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,18 @@ Group:          Productivity/Networking/Boot/Utilities
 URL:            https://sourceforge.net/projects/wake-on-lan
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.rules
-Patch0:         wol-0.7.1-Fix-config.h-test-consumption.patch
-Patch1:         wol-0.7.1-Fix-malloc-detection.patch
-Patch2:         wol-0.7.1-linux-headers.patch
+Patch0:         %{name}-0.7.1-Fix-config.h-test-consumption.patch
+Patch1:         %{name}-0.7.1-Fix-malloc-detection.patch
+Patch2:         %{name}-0.7.1-linux-headers.patch
 # fix build with gcc15
-Patch3:         wol-gcc15.patch
+Patch3:         %{name}-gcc15.patch
+# use port 9 by default to improve compliance to current magic packet implementation
+Patch4:         %{name}-use-port-9.patch
+# remove obsolete texinfo command: @setcontentsaftertitlepage
+Patch5:         %{name}.info-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  makeinfo
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 
