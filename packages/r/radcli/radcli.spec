@@ -1,8 +1,8 @@
 #
 # spec file for package radcli
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2019-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2019-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%define sover 6
+%define sover 10
 Name:           radcli
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A RADIUS client library
 License:        BSD-2-Clause AND MIT
@@ -89,10 +89,10 @@ autoreconf -fiv
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-%make_build check
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
+%make_build check || (find . -name test-suite.log -exec cat {} +)
 
-%post   -n libradcli%{sover} -p /sbin/ldconfig
-%postun -n libradcli%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libradcli%{sover}
 
 %files
 %license COPYRIGHT

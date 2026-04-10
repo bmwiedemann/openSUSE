@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:26:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.0
+  * Send Message-Authenticator message unconditionally.
+  * Validate the Message-Authenticator attribute in received
+    responses.  Per draft-ietf-radext-deprecating-radius
+    (CVE-2024-3596 / BLAST RADIUS), servers MUST include
+    Message-Authenticator in all Access-Request responses and
+    clients MUST discard responses that lack or fail it.
+    Responses missing the attribute are therefore rejected by
+    default. Set 'require-message-authenticator = no' in the
+    client config to allow responses from legacy servers that do
+    not include this attribute.
+  * Fix reconnection to a server that has closed the TLS
+    connection.
+  * Allow large attribute names in dictionaries.
+- Use %ldconfig_scriptlets
+
+-------------------------------------------------------------------
 Sat Jun 15 12:11:58 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.0
