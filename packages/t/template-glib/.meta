@@ -8,5 +8,4 @@ Template-GLib allows you to access properties on GObjects as well as call
 simple methods via GObject-Introspection. See our examples for how to call
 methods.
 </description>
-  <devel project="GNOME:Factory" package="template-glib"/>
 </package>

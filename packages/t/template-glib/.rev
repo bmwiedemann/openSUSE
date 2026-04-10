@@ -111,4 +111,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 1304955 from dimstar)</comment>
     <requestid>1305492</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>50672a33fde70bb457c40a836f5ecbaf</srcmd5>
+    <version>3.40.0</version>
+    <time>1775836227</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345415</requestid>
+  </revision>
 </revisionlist>

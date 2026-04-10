@@ -1,7 +1,7 @@
 #
 # spec file for package template-glib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           template-glib
-Version:        3.38.0
+Version:        3.40.0
 Release:        0
 Summary:        Library for generating text based on a template and user defined state
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/template-glib/
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  bison
 BuildRequires:  flex
