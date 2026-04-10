@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Apr 10 00:48:20 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.3.0:
+  * chore: release v17.3.0 (#1902)
+  * refactor: use bail! macro where possible (#1942)
+  * feat(config): add custom step order (#1940)
+  * feat(archlinux): add shelly package manager (#1941)
+  * fix(skills): skip npx update prompt with assume_yes (#1920)
+  * feat(claude): update non-user scope plugins (#1938)
+  * chore(pre-commit): autoupdate (#1933)
+  * chore(deps): lock file maintenance (#1935)
+  * ci: fix check_pr_template.yml workflow (#1934)
+  * ci: fix check_pr_template.yml workflow (#1931)
+  * ci: fix check_pr_template.yml workflow (#1927)
+  * ci: fix check_pr_template.yml workflow (#1925)
+  * ci: automatically close PRs that did not use the PR template (#1922)
+  * chore(deps): update rust crate self_update_crate to 0.44 (#1916)
+  * feat: add sudo loop (#1803)
+  * fix: do not continue to next step when ctrl+c is pressed at retry prompt (#1915)
+  * feat(gup): add exclude config (#1911)
+  * docs(readme): use GFM note (#1910)
+  * fix(sudo): ignore set_home for run0 (#1905)
+  * feat(step): add tpack (#1898)
+  * chore(deps): update vmactions/openbsd-vm action to v1.3.8 (#1896)
+
+-------------------------------------------------------------------
 Thu Apr 02 11:48:36 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.2.1:
