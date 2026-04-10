@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:27:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 08:38:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.60.0:
+  + Bug Fixes: Backends: Do not block views' start by slow
+    connection
+  + Miscellaneous:
+    - Correct ICalGLib reference in gir when building against
+      version 4
+    - docs: Update libical-glib online documentation link
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 28 09:04:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.59.3:
+  + Bug Fixes:
+    - Make credential prompt dialog non-modal
+    - camel-sasl-ntlm: Check for integer overflow in
+      ntlm_get_string()
+    - camel-pop3-store: Compute APOP response without string
+      allocation
+    - Canonicalize path before local cache file removal
+    - e-cal-recur: Check interval intersect always as date-time
+      value
+    - NNTP: Subscription dialog does not show all groups
+  + Miscellaneous:
+    - e-collection-backend: Fix possible memory leak
+    - Use GHashTable's `replace()` instead of `insert()` on some
+      places
+    - e-name-western: Crash due to double quotes in the name
+    - camel-network-service: Move static variable to read-only
+      area
+    - credential-prompters: Add some spacing around widgets in the
+      dialog (gtk4)
+    - camel-store-search: Minimize hold of the folder and folder
+      summary locks
+    - camel-debug: Include object address in ref/unref backtraces
+    - Increase default connection timeout to 30 seconds
+  + Updated translations.
+- Drop eds-CVE-2026-2604.patch: Fixed upstream
+
+-------------------------------------------------------------------
+Mon Feb 23 21:28:33 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.59.2:
+  + Calendar: Prepare to support build with libical 4.x
+  + docs: Document libical-glib as dependency
+  + Calendar: Correct typo in error message
+  + Fix a compiler warning in camel-network-service.c
+  + e-book-utils: Correct read of a certificate from a vCard
+    attribute
+  + Add ESourceConflictSearch from Evolution
+- Changes from version 3.59.1:
+  + Support vCard v4.0 (RFC 6350)
+  + CalDAV: Provide a date limit for information sync
+  + Camel: Encrypt Recipient Alias Configuration
+  + Calendar: Multiple detached instances cause duplicates
+  + addressbook-export: Fails with "Invalid query" error
+  + Camel: Remove camel_session_ref_service_by_url
+  + Remove several migration functions from Evolution Source
+    Registry
+  + Lower default connection timeout to 15 seconds
+  + evolution-source-registry: Remove unused variable
+  + CamelGpgContext: Improve error messages
+  + WebDAV: Default to no download limit
+  + IMAPx: Avoid Junk/Trash folder open when saving changes
+  + ERemindersWidget: Workaround too large gap between action
+    buttons
+  + CamelFolderSummary: Reload from DB could leak already loaded
+    infos
+  + addressbook: Prefer vCard "take" functions
+  + CamelDataCache: Rephrase "Empty cache file" error message
+  + Camel: Unread count for virtual Trash/Junk folder not updated
+    properly
+  + CamelStoreSearch: Ignore all errors when a message cannot be
+    opened
+  + CamelStore: Speed up open folders with virtual Trash or Junk
+    folder
+  + EContactAddress: Add helper functions to read, write and clear
+    the structure
+  + EContact: Add EContactGeo functions to convert to/from string
+  + EVCard: Add conversion code for GEO attribute
+  + EVCard: Correct PHOTO/LOGO data: URI conversion
+  + EContact: Add 'timezone' field
+  + EVCard: Add conversion code for KEY attribute
+  + EContactCert: Add helper functions to work with attributes
+  + ECertificateWidget: Add a function to check whether any
+    certificate data is shown
+  + flatpak: Add gettext ACLOCAL workaround
+  + EBookSqlite: Correct mutex unlock in e_book_sqlite_lock()
+  + EVCard: Add RFC 2739 properties into the list of known
+    vCard 3.0 properties
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Feb 23 20:10:38 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add eds-CVE-2026-2604.patch: canonicalize path before local

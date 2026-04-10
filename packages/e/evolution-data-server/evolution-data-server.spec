@@ -19,28 +19,26 @@
 %global with_docs 0
 
 # Shared Library soNUMs, to make it easier for updates
-%define so_camel 66
+%define so_camel 67
 %define so_ebackend 11
 %define so_edataserver 27
 %define so_edataserverui 4
 %define so_edataserverui4 0
 %define so_ebook 21
-%define so_ebook_contacts 4
+%define so_ebook_contacts 5
 %define so_edata_book 27
 %define so_ecal 3
 %define so_edata_cal 2
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.58.3
+Version:        3.60.0
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        %{name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM eds-CVE-2026-2604.patch bsc#1258307 mgorse@suse.com -- canonicalize path before local cache file removal.
-Patch0:         eds-CVE-2026-2604.patch
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  cmake >= 3.15
 BuildRequires:  db-devel
