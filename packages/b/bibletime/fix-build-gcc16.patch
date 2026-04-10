@@ -1,0 +1,601 @@
+From 13ed64c5165612c3a33cf1544d96d29c439d0451 Mon Sep 17 00:00:00 2001
+From: Jaak Ristioja <jaak@ristioja.ee>
+Date: Wed, 18 Feb 2026 01:24:32 +0200
+Subject: [PATCH 01/11] backend, CSword(Tree|Verse)Key: Fix compilation with
+ C++20 and later
+
+---
+ cmake/BTApplication.cmake         | 2 +-
+ src/backend/keys/cswordtreekey.h  | 3 ++-
+ src/backend/keys/cswordversekey.h | 3 ++-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/BTApplication.cmake b/cmake/BTApplication.cmake
+index 33b00ea69..b703f680c 100644
+--- a/cmake/BTApplication.cmake
++++ b/cmake/BTApplication.cmake
+@@ -60,7 +60,7 @@ IF(MSVC)
+ ELSE()
+     ADD_EXECUTABLE("bibletime" ${bibletime_SOURCES})
+ ENDIF()
+-TARGET_COMPILE_FEATURES("bibletime" PRIVATE cxx_std_17)
++TARGET_COMPILE_FEATURES("bibletime" PRIVATE cxx_std_26)
+ TARGET_COMPILE_DEFINITIONS("bibletime" PRIVATE
+     "BT_RUNTIME_DOCDIR=\"${BT_RUNTIME_DOCDIR}\""
+     "BT_VERSION=\"${PROJECT_VERSION}\""
+diff --git a/src/backend/keys/cswordtreekey.h b/src/backend/keys/cswordtreekey.h
+index e75448db2..f5568aee2 100644
+--- a/src/backend/keys/cswordtreekey.h
++++ b/src/backend/keys/cswordtreekey.h
+@@ -50,11 +50,12 @@ class CSwordTreeKey final : public CSwordKey {
+     public:
+ 
+         #define BibleTime_CSwordTreeKey_DEFINE_COMP(op) \
+-            friend bool operator op(CSwordTreeKey const & lhs, \
++            friend auto operator op(CSwordTreeKey const & lhs, \
+                                     CSwordTreeKey const & rhs) \
+             { return lhs.offset() op rhs.offset(); }
+         #if __cpp_impl_three_way_comparison >= 201907L
+         BibleTime_CSwordTreeKey_DEFINE_COMP(<=>)
++        BibleTime_CSwordTreeKey_DEFINE_COMP(==)
+         #else
+         BibleTime_CSwordTreeKey_DEFINE_COMP(<)
+         BibleTime_CSwordTreeKey_DEFINE_COMP(<=)
+diff --git a/src/backend/keys/cswordversekey.h b/src/backend/keys/cswordversekey.h
+index d66fda116..d04a46ef3 100644
+--- a/src/backend/keys/cswordversekey.h
++++ b/src/backend/keys/cswordversekey.h
+@@ -71,7 +71,7 @@ class CSwordVerseKey final : public CSwordKey {
+     public: // methods:
+ 
+         #define BibleTime_CSwordVerseKey_DEFINE_COMP(op) \
+-            friend bool operator op(CSwordVerseKey const & lhs, \
++            friend auto operator op(CSwordVerseKey const & lhs, \
+                                     CSwordVerseKey const & rhs) \
+             { \
+                 return std::tuple(lhs.testament(), lhs.book(), lhs.chapter(), \
+@@ -81,6 +81,7 @@ class CSwordVerseKey final : public CSwordKey {
+             }
+         #if __cpp_impl_three_way_comparison >= 201907L
+         BibleTime_CSwordVerseKey_DEFINE_COMP(<=>)
++        BibleTime_CSwordVerseKey_DEFINE_COMP(==)
+         #else
+         BibleTime_CSwordVerseKey_DEFINE_COMP(<)
+         BibleTime_CSwordVerseKey_DEFINE_COMP(<=)
+-- 
+2.53.0
+
+
+From 1fb39508da2e7a2a8712867cf913e70b81d08dd2 Mon Sep 17 00:00:00 2001
+From: Jaak Ristioja <jaak@ristioja.ee>
+Date: Wed, 18 Feb 2026 01:42:43 +0200
+Subject: [PATCH 02/11] backend, CDisplayTemplateMgr: Fix
+ [-Wdeprecated-enum-float-conversion] warning
+
+---
+ src/backend/managers/cdisplaytemplatemgr.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/backend/managers/cdisplaytemplatemgr.cpp b/src/backend/managers/cdisplaytemplatemgr.cpp
+index d8c9e245d..9814ac2e8 100644
+--- a/src/backend/managers/cdisplaytemplatemgr.cpp
++++ b/src/backend/managers/cdisplaytemplatemgr.cpp
+@@ -188,7 +188,9 @@ QString CDisplayTemplateMgr::fillTemplate(const QString & name,
+                    requires a real number in the range [1, 1000]. No extra
+                    checks are needed for floating point precision in the result
+                    range. */
+-                auto const fontWeight = 1.0 + (f.weight() * 999.0) / 99.0;
++                using U = std::underlying_type_t<decltype(f.weight())>;
++                auto const fontWeight =
++                        1.0 + (static_cast<U>(f.weight()) * 999.0) / 99.0;
+ 
+                 auto const fontStyleString =
+                         [&f]() {
+-- 
+2.53.0
+
+
+From 9291e1c1271415c92583f82f72d3843222363b71 Mon Sep 17 00:00:00 2001
+From: Jaak Ristioja <jaak@ristioja.ee>
+Date: Wed, 18 Feb 2026 01:56:21 +0200
+Subject: [PATCH 03/11] cmake/BTApplication.cmake: Undo accidental switch from
+ C++17 to C++20
+
+Introduced by commit 13ed64c5165612c3a33cf1544d96d29c439d0451.
+---
+ cmake/BTApplication.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/BTApplication.cmake b/cmake/BTApplication.cmake
+index b703f680c..33b00ea69 100644
+--- a/cmake/BTApplication.cmake
++++ b/cmake/BTApplication.cmake
+@@ -60,7 +60,7 @@ IF(MSVC)
+ ELSE()
+     ADD_EXECUTABLE("bibletime" ${bibletime_SOURCES})
+ ENDIF()
+-TARGET_COMPILE_FEATURES("bibletime" PRIVATE cxx_std_26)
++TARGET_COMPILE_FEATURES("bibletime" PRIVATE cxx_std_17)
+ TARGET_COMPILE_DEFINITIONS("bibletime" PRIVATE
+     "BT_RUNTIME_DOCDIR=\"${BT_RUNTIME_DOCDIR}\""
+     "BT_VERSION=\"${PROJECT_VERSION}\""
+-- 
+2.53.0
+
+
+From 02d74e907ec0bc914f7322565615b1d6efa732f0 Mon Sep 17 00:00:00 2001
+From: Jaak Ristioja <jaak@ristioja.ee>
+Date: Wed, 18 Feb 2026 19:20:17 +0200
+Subject: [PATCH 04/11] backend, CSwordModuleInfo: Fixed
+ -Wdeprecated-enum-enum-conversion warnings
+
+---
+ src/backend/drivers/cswordmoduleinfo.cpp | 35 ++++++++++++++----------
+ src/util/to_underlying.h                 | 31 +++++++++++++++++++++
+ 2 files changed, 52 insertions(+), 14 deletions(-)
+ create mode 100644 src/util/to_underlying.h
+
+diff --git a/src/backend/drivers/cswordmoduleinfo.cpp b/src/backend/drivers/cswordmoduleinfo.cpp
+index 27bc3c6ab..9b401f43b 100644
+--- a/src/backend/drivers/cswordmoduleinfo.cpp
++++ b/src/backend/drivers/cswordmoduleinfo.cpp
+@@ -32,6 +32,7 @@
+ #include "../../util/cresmgr.h"
+ #include "../../util/directory.h"
+ #include "../../util/tool.h"
++#include "../../util/to_underlying.h"
+ #include "../config/btconfig.h"
+ #include "../keys/cswordkey.h"
+ #include "../managers/cswordbackend.h"
+@@ -512,13 +513,19 @@ void CSwordModuleInfo::buildIndex() {
+ 
+             lucene::document::Document doc;
+ 
++            #define U(C) \
++                static constexpr auto LUCENE_ ## C = \
++                    util::to_underlying(lucene::document::Field::C)
++            U(STORE_YES); U(STORE_NO); U(INDEX_NO); U(INDEX_TOKENIZED);
++            #undef U
++
+             //index the key
+             lucene_utf8towcs(wcharBuffer, key->getText(), BT_MAX_LUCENE_FIELD_LENGTH);
+ 
+             doc.add(*(new lucene::document::Field(static_cast<const TCHAR *>(_T("key")),
+                                                   static_cast<const TCHAR *>(wcharBuffer),
+-                                                  lucene::document::Field::STORE_YES
+-                                                  | lucene::document::Field::INDEX_NO)));
++                                                  LUCENE_STORE_YES
++                                                  | LUCENE_INDEX_NO)));
+ 
+             if (importantFilterOption) {
+                 // Index text including strongs, morph, footnotes, and headings.
+@@ -529,8 +536,8 @@ void CSwordModuleInfo::buildIndex() {
+                                  BT_MAX_LUCENE_FIELD_LENGTH);
+                 doc.add(*(new lucene::document::Field(static_cast<const TCHAR *>(_T("content")),
+                                                       static_cast<const TCHAR *>(wcharBuffer),
+-                                                      lucene::document::Field::STORE_NO
+-                                                      | lucene::document::Field::INDEX_TOKENIZED)));
++                                                      LUCENE_STORE_NO
++                                                      | LUCENE_INDEX_TOKENIZED)));
+                 textBuffer.clear();
+             }
+ 
+@@ -542,16 +549,16 @@ void CSwordModuleInfo::buildIndex() {
+                              BT_MAX_LUCENE_FIELD_LENGTH);
+             doc.add(*(new lucene::document::Field(static_cast<const TCHAR *>(_T("content")),
+                                                   static_cast<const TCHAR *>(wcharBuffer),
+-                                                  lucene::document::Field::STORE_NO
+-                                                  | lucene::document::Field::INDEX_TOKENIZED)));
++                                                  LUCENE_STORE_NO
++                                                  | LUCENE_INDEX_TOKENIZED)));
+             textBuffer.clear();
+ 
+             for (auto & vp : m_swordModule.getEntryAttributes()["Footnote"]) {
+                 lucene_utf8towcs(wcharBuffer, vp.second["body"], BT_MAX_LUCENE_FIELD_LENGTH);
+                 doc.add(*(new lucene::document::Field(static_cast<const TCHAR *>(_T("footnote")),
+                                                       static_cast<const TCHAR *>(wcharBuffer),
+-                                                      lucene::document::Field::STORE_NO
+-                                                      | lucene::document::Field::INDEX_TOKENIZED)));
++                                                      LUCENE_STORE_NO
++                                                      | LUCENE_INDEX_TOKENIZED)));
+             }
+ 
+             // Headings
+@@ -561,8 +568,8 @@ void CSwordModuleInfo::buildIndex() {
+                 lucene_utf8towcs(wcharBuffer, vp.second, BT_MAX_LUCENE_FIELD_LENGTH);
+                 doc.add(*(new lucene::document::Field(static_cast<const TCHAR *>(_T("heading")),
+                                                       static_cast<const TCHAR *>(wcharBuffer),
+-                                                      lucene::document::Field::STORE_NO
+-                                                      | lucene::document::Field::INDEX_TOKENIZED)));
++                                                      LUCENE_STORE_NO
++                                                      | LUCENE_INDEX_TOKENIZED)));
+             }
+ 
+             // Strongs/Morphs
+@@ -582,8 +589,8 @@ void CSwordModuleInfo::buildIndex() {
+                         lucene_utf8towcs(wcharBuffer, lemmaIter->second, BT_MAX_LUCENE_FIELD_LENGTH);
+                         doc.add(*(new lucene::document::Field(static_cast<const TCHAR *>(_T("strong")),
+                                                               static_cast<const TCHAR *>(wcharBuffer),
+-                                                              lucene::document::Field::STORE_NO
+-                                                              | lucene::document::Field::INDEX_TOKENIZED)));
++                                                              LUCENE_STORE_NO
++                                                              | LUCENE_INDEX_TOKENIZED)));
+                     }
+ 
+                 }
+@@ -593,8 +600,8 @@ void CSwordModuleInfo::buildIndex() {
+                     lucene_utf8towcs(wcharBuffer, morphIter->second, BT_MAX_LUCENE_FIELD_LENGTH);
+                     doc.add(*(new lucene::document::Field(static_cast<const TCHAR *>(_T("morph")),
+                                                           static_cast<const TCHAR *>(wcharBuffer),
+-                                                          lucene::document::Field::STORE_NO
+-                                                          | lucene::document::Field::INDEX_TOKENIZED)));
++                                                          LUCENE_STORE_NO
++                                                          | LUCENE_INDEX_TOKENIZED)));
+                 }
+             }
+ 
+diff --git a/src/util/to_underlying.h b/src/util/to_underlying.h
+new file mode 100644
+index 000000000..e3135bd99
+--- /dev/null
++++ b/src/util/to_underlying.h
+@@ -0,0 +1,31 @@
++/*********
++*
++* In the name of the Father, and of the Son, and of the Holy Spirit.
++*
++* This file is part of BibleTime's source code, https://bibletime.info/
++*
++* Copyright 1999-2026 by the BibleTime developers.
++* The BibleTime source code is licensed under the GNU General Public License
++* version 2.0.
++*
++**********/
++
++#pragma once
++
++#include <utility>
++
++
++namespace util {
++
++#if defined(__cpp_lib_to_underlying) && (__cpp_lib_to_underlying >= 202102L)
++template <typename ... Args>
++constexpr auto to_underlying(Args && ... args)
++{ return std::to_underlying(std::forward<Args>(args)...); }
++#else
++template <typename T>
++[[nodiscard]] constexpr std::underlying_type_t<T>
++to_underlying(T value) noexcept
++{ return static_cast<std::underlying_type_t<T>>(value); }
++#endif
++
++} // namespace util
+-- 
+2.53.0
+
+
+From 4794466079b575b301760ad30ed6e6930552b3d4 Mon Sep 17 00:00:00 2001
+From: Jaak Ristioja <jaak@ristioja.ee>
+Date: Wed, 18 Feb 2026 19:43:01 +0200
+Subject: [PATCH 05/11] backend, CSwordBackend: Fix -Wdeprecated-declarations
+ warnings with C++20, compilation with C++26
+
+---
+ src/backend/managers/cswordbackend.cpp | 16 ++++++++++++++--
+ src/backend/managers/cswordbackend.h   |  7 +++++++
+ 2 files changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/src/backend/managers/cswordbackend.cpp b/src/backend/managers/cswordbackend.cpp
+index 9113d9458..37415494b 100644
+--- a/src/backend/managers/cswordbackend.cpp
++++ b/src/backend/managers/cswordbackend.cpp
+@@ -60,8 +60,12 @@ CSwordBackend::CSwordBackend()
+ {
+     auto const clearCache =
+             [this]() noexcept {
++                #if __cplusplus >= 202002L
++                m_availableLanguagesCache.store(
++                #else
+                 std::atomic_store_explicit(
+                             &m_availableLanguagesCache,
++                #endif
+                             decltype(m_availableLanguagesCache)(),
+                             std::memory_order_relaxed);
+             };
+@@ -99,10 +103,13 @@ CSwordModuleInfo * CSwordBackend::findFirstAvailableModule(CSwordModuleInfo::Mod
+ }
+ 
+ std::shared_ptr<CSwordBackend::AvailableLanguagesCacheContainer const>
+-CSwordBackend::availableLanguages() noexcept
+-{
++CSwordBackend::availableLanguages() noexcept {
++    #if __cplusplus >= 202002L
++    auto oldCache = m_availableLanguagesCache.load(std::memory_order_acquire);
++    #else
+     auto oldCache = std::atomic_load_explicit(&m_availableLanguagesCache,
+                                               std::memory_order_acquire);
++    #endif
+     if (oldCache)
+         return oldCache;
+ 
+@@ -120,9 +127,14 @@ CSwordBackend::availableLanguages() noexcept
+             };
+ 
+     for (auto newCache = generateCache();; newCache = generateCache())
++        #if __cplusplus >= 202002L
++        if (m_availableLanguagesCache.compare_exchange_strong(
++                oldCache,
++        #else
+         if (std::atomic_compare_exchange_strong_explicit(
+                 &m_availableLanguagesCache,
+                 &oldCache,
++        #endif
+                 newCache,
+                 std::memory_order_acq_rel,
+                 std::memory_order_relaxed))
+diff --git a/src/backend/managers/cswordbackend.h b/src/backend/managers/cswordbackend.h
+index e22be5eac..ff1b936f8 100644
+--- a/src/backend/managers/cswordbackend.h
++++ b/src/backend/managers/cswordbackend.h
+@@ -12,6 +12,9 @@
+ 
+ #pragma once
+ 
++#if __cplusplus >= 202002L
++#include <atomic>
++#endif
+ #include <memory>
+ #include <QObject>
+ #include <QString>
+@@ -237,7 +240,11 @@ private: // fields:
+     } m_manager;
+ 
+     std::shared_ptr<BtBookshelfModel> const m_dataModel;
++#if __cplusplus >= 202002L
++    std::atomic<std::shared_ptr<AvailableLanguagesCacheContainer const>>
++#else
+     std::shared_ptr<AvailableLanguagesCacheContainer const>
++#endif
+             m_availableLanguagesCache;
+ 
+     static CSwordBackend * m_instance;
+-- 
+2.53.0
+
+
+From c7c42b04e79b28ef4220d767cbc2f5120adc40f6 Mon Sep 17 00:00:00 2001
+From: Jaak Ristioja <jaak@ristioja.ee>
+Date: Wed, 18 Feb 2026 20:21:08 +0200
+Subject: [PATCH 06/11] Require C++23
+
+---
+ README.md                                |  2 +-
+ cmake/BTApplication.cmake                |  2 +-
+ src/backend/drivers/cswordmoduleinfo.cpp |  4 +--
+ src/backend/keys/cswordtreekey.h         | 23 ++++++------------
+ src/backend/keys/cswordversekey.h        |  9 -------
+ src/backend/managers/cswordbackend.cpp   | 16 ------------
+ src/backend/managers/cswordbackend.h     |  6 -----
+ src/util/to_underlying.h                 | 31 ------------------------
+ 8 files changed, 11 insertions(+), 82 deletions(-)
+ delete mode 100644 src/util/to_underlying.h
+
+diff --git a/README.md b/README.md
+index cadf47810..79e4c4e47 100644
+--- a/README.md
++++ b/README.md
+@@ -11,7 +11,7 @@ You can just download and install BibleTime from
+ The following requirements are needed only if you want to develop BibleTime.
+ 
+ ### BUILD REQUIREMENTS
+- - A C++17 compiler.
++ - A C++23 compiler.
+  - [Qt 6.7+](https://www.qt.io) (built against ICU)
+  - [Sword 1.8.1+](https://crosswire.org/sword) (built against ICU)
+  - [CLucene 2.0+](https://clucene.sf.net)
+diff --git a/cmake/BTApplication.cmake b/cmake/BTApplication.cmake
+index 33b00ea69..608336963 100644
+--- a/cmake/BTApplication.cmake
++++ b/cmake/BTApplication.cmake
+@@ -60,7 +60,7 @@ IF(MSVC)
+ ELSE()
+     ADD_EXECUTABLE("bibletime" ${bibletime_SOURCES})
+ ENDIF()
+-TARGET_COMPILE_FEATURES("bibletime" PRIVATE cxx_std_17)
++TARGET_COMPILE_FEATURES("bibletime" PRIVATE cxx_std_23)
+ TARGET_COMPILE_DEFINITIONS("bibletime" PRIVATE
+     "BT_RUNTIME_DOCDIR=\"${BT_RUNTIME_DOCDIR}\""
+     "BT_VERSION=\"${PROJECT_VERSION}\""
+diff --git a/src/backend/drivers/cswordmoduleinfo.cpp b/src/backend/drivers/cswordmoduleinfo.cpp
+index 9b401f43b..eb2f330ed 100644
+--- a/src/backend/drivers/cswordmoduleinfo.cpp
++++ b/src/backend/drivers/cswordmoduleinfo.cpp
+@@ -28,11 +28,11 @@
+ #include <string>
+ #include <string_view>
+ #include <type_traits>
++#include <utility>
+ #include "../../util/btassert.h"
+ #include "../../util/cresmgr.h"
+ #include "../../util/directory.h"
+ #include "../../util/tool.h"
+-#include "../../util/to_underlying.h"
+ #include "../config/btconfig.h"
+ #include "../keys/cswordkey.h"
+ #include "../managers/cswordbackend.h"
+@@ -515,7 +515,7 @@ void CSwordModuleInfo::buildIndex() {
+ 
+             #define U(C) \
+                 static constexpr auto LUCENE_ ## C = \
+-                    util::to_underlying(lucene::document::Field::C)
++                    std::to_underlying(lucene::document::Field::C)
+             U(STORE_YES); U(STORE_NO); U(INDEX_NO); U(INDEX_TOKENIZED);
+             #undef U
+ 
+diff --git a/src/backend/keys/cswordtreekey.h b/src/backend/keys/cswordtreekey.h
+index f5568aee2..e3517d5fd 100644
+--- a/src/backend/keys/cswordtreekey.h
++++ b/src/backend/keys/cswordtreekey.h
+@@ -49,22 +49,13 @@ class CSwordTreeKey final : public CSwordKey {
+ 
+     public:
+ 
+-        #define BibleTime_CSwordTreeKey_DEFINE_COMP(op) \
+-            friend auto operator op(CSwordTreeKey const & lhs, \
+-                                    CSwordTreeKey const & rhs) \
+-            { return lhs.offset() op rhs.offset(); }
+-        #if __cpp_impl_three_way_comparison >= 201907L
+-        BibleTime_CSwordTreeKey_DEFINE_COMP(<=>)
+-        BibleTime_CSwordTreeKey_DEFINE_COMP(==)
+-        #else
+-        BibleTime_CSwordTreeKey_DEFINE_COMP(<)
+-        BibleTime_CSwordTreeKey_DEFINE_COMP(<=)
+-        BibleTime_CSwordTreeKey_DEFINE_COMP(==)
+-        BibleTime_CSwordTreeKey_DEFINE_COMP(!=)
+-        BibleTime_CSwordTreeKey_DEFINE_COMP(>=)
+-        BibleTime_CSwordTreeKey_DEFINE_COMP(>)
+-        #endif
+-        #undef BibleTime_CSwordTreeKey_DEFINE_COMP
++        friend auto
++        operator<=>(CSwordTreeKey const & lhs, CSwordTreeKey const & rhs)
++        { return lhs.offset() <=> rhs.offset(); }
++
++        friend auto
++        operator==(CSwordTreeKey const & lhs, CSwordTreeKey const & rhs)
++        { return lhs.offset() == rhs.offset(); }
+ 
+         CSwordTreeKey & operator=(CSwordTreeKey const &) = delete;
+ 
+diff --git a/src/backend/keys/cswordversekey.h b/src/backend/keys/cswordversekey.h
+index d04a46ef3..5ed363981 100644
+--- a/src/backend/keys/cswordversekey.h
++++ b/src/backend/keys/cswordversekey.h
+@@ -79,17 +79,8 @@ class CSwordVerseKey final : public CSwordKey {
+                        std::tuple(rhs.testament(), rhs.book(), rhs.chapter(), \
+                                   rhs.verse(), rhs.suffix()); \
+             }
+-        #if __cpp_impl_three_way_comparison >= 201907L
+         BibleTime_CSwordVerseKey_DEFINE_COMP(<=>)
+         BibleTime_CSwordVerseKey_DEFINE_COMP(==)
+-        #else
+-        BibleTime_CSwordVerseKey_DEFINE_COMP(<)
+-        BibleTime_CSwordVerseKey_DEFINE_COMP(<=)
+-        BibleTime_CSwordVerseKey_DEFINE_COMP(==)
+-        BibleTime_CSwordVerseKey_DEFINE_COMP(!=)
+-        BibleTime_CSwordVerseKey_DEFINE_COMP(>=)
+-        BibleTime_CSwordVerseKey_DEFINE_COMP(>)
+-        #endif
+         #undef BibleTime_CSwordVerseKey_DEFINE_COMP
+ 
+         CSwordVerseKey & operator=(CSwordVerseKey const &) = delete;
+diff --git a/src/backend/managers/cswordbackend.cpp b/src/backend/managers/cswordbackend.cpp
+index 37415494b..6ebb7fa33 100644
+--- a/src/backend/managers/cswordbackend.cpp
++++ b/src/backend/managers/cswordbackend.cpp
+@@ -60,12 +60,7 @@ CSwordBackend::CSwordBackend()
+ {
+     auto const clearCache =
+             [this]() noexcept {
+-                #if __cplusplus >= 202002L
+                 m_availableLanguagesCache.store(
+-                #else
+-                std::atomic_store_explicit(
+-                            &m_availableLanguagesCache,
+-                #endif
+                             decltype(m_availableLanguagesCache)(),
+                             std::memory_order_relaxed);
+             };
+@@ -104,12 +99,7 @@ CSwordModuleInfo * CSwordBackend::findFirstAvailableModule(CSwordModuleInfo::Mod
+ 
+ std::shared_ptr<CSwordBackend::AvailableLanguagesCacheContainer const>
+ CSwordBackend::availableLanguages() noexcept {
+-    #if __cplusplus >= 202002L
+     auto oldCache = m_availableLanguagesCache.load(std::memory_order_acquire);
+-    #else
+-    auto oldCache = std::atomic_load_explicit(&m_availableLanguagesCache,
+-                                              std::memory_order_acquire);
+-    #endif
+     if (oldCache)
+         return oldCache;
+ 
+@@ -127,14 +117,8 @@ CSwordBackend::availableLanguages() noexcept {
+             };
+ 
+     for (auto newCache = generateCache();; newCache = generateCache())
+-        #if __cplusplus >= 202002L
+         if (m_availableLanguagesCache.compare_exchange_strong(
+                 oldCache,
+-        #else
+-        if (std::atomic_compare_exchange_strong_explicit(
+-                &m_availableLanguagesCache,
+-                &oldCache,
+-        #endif
+                 newCache,
+                 std::memory_order_acq_rel,
+                 std::memory_order_relaxed))
+diff --git a/src/backend/managers/cswordbackend.h b/src/backend/managers/cswordbackend.h
+index ff1b936f8..c86e18c63 100644
+--- a/src/backend/managers/cswordbackend.h
++++ b/src/backend/managers/cswordbackend.h
+@@ -12,9 +12,7 @@
+ 
+ #pragma once
+ 
+-#if __cplusplus >= 202002L
+ #include <atomic>
+-#endif
+ #include <memory>
+ #include <QObject>
+ #include <QString>
+@@ -240,11 +238,7 @@ private: // fields:
+     } m_manager;
+ 
+     std::shared_ptr<BtBookshelfModel> const m_dataModel;
+-#if __cplusplus >= 202002L
+     std::atomic<std::shared_ptr<AvailableLanguagesCacheContainer const>>
+-#else
+-    std::shared_ptr<AvailableLanguagesCacheContainer const>
+-#endif
+             m_availableLanguagesCache;
+ 
+     static CSwordBackend * m_instance;
+diff --git a/src/util/to_underlying.h b/src/util/to_underlying.h
+deleted file mode 100644
+index e3135bd99..000000000
+--- a/src/util/to_underlying.h
++++ /dev/null
+@@ -1,31 +0,0 @@
+-/*********
+-*
+-* In the name of the Father, and of the Son, and of the Holy Spirit.
+-*
+-* This file is part of BibleTime's source code, https://bibletime.info/
+-*
+-* Copyright 1999-2026 by the BibleTime developers.
+-* The BibleTime source code is licensed under the GNU General Public License
+-* version 2.0.
+-*
+-**********/
+-
+-#pragma once
+-
+-#include <utility>
+-
+-
+-namespace util {
+-
+-#if defined(__cpp_lib_to_underlying) && (__cpp_lib_to_underlying >= 202102L)
+-template <typename ... Args>
+-constexpr auto to_underlying(Args && ... args)
+-{ return std::to_underlying(std::forward<Args>(args)...); }
+-#else
+-template <typename T>
+-[[nodiscard]] constexpr std::underlying_type_t<T>
+-to_underlying(T value) noexcept
+-{ return static_cast<std::underlying_type_t<T>>(value); }
+-#endif
+-
+-} // namespace util
+-- 
+2.53.0

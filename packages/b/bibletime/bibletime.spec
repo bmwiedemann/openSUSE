@@ -29,6 +29,8 @@ Group:          Productivity/Scientific/Other
 URL:            http://www.bibletime.info/
 Source0:        https://github.com/bibletime/bibletime/releases/download/v%{version}/bibletime-%{version}.tar.xz
 Source1:        bibletime-rpmlintrc
+# FIX-PATCH-UPSTREAM fix build with gcc16 (boo#1261805)
+Patch0:         fix-build-gcc16.patch
 BuildRequires:  cmake >= 3.25
 BuildRequires:  curl-devel
 BuildRequires:  fdupes

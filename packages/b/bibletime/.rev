@@ -254,4 +254,12 @@
 - Add cmake(Qt6TextToSpeech) to BuildRequires</comment>
     <requestid>1334602</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1e1fba54f2523cb2a121f11dbd0d84b9</srcmd5>
+    <version>3.2.0</version>
+    <time>1775836386</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-build-gcc16.patch (boo#1261805)</comment>
+    <requestid>1345691</requestid>
+  </revision>
 </revisionlist>

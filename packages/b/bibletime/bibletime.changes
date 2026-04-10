@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  9 19:59:32 UTC 2026 - Cor Blom <cornelis@solcon.nl>
+
+- Add fix-build-gcc16.patch (boo#1261805)
+
+-------------------------------------------------------------------
 Mon Feb 23 21:07:26 UTC 2026 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 3.2.0. Key features:
