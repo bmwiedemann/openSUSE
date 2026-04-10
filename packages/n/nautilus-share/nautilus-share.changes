@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 23 08:55:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Wed Mar  4 14:59:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update spec copyright and shorter tag ref in _service.
+
+-------------------------------------------------------------------
 Tue Nov  7 09:50:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

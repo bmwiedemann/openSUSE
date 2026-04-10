@@ -263,4 +263,12 @@
     <comment></comment>
     <requestid>1170685</requestid>
   </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>b71d2265d89c0ec7cd8b83956ecd9484</srcmd5>
+    <version>0.7.5</version>
+    <time>1775835915</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345333</requestid>
+  </revision>
 </revisionlist>
