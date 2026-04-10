@@ -18,7 +18,7 @@
 
 %define services %{name}.service
 Name:           forgejo-runner
-Version:        12.8.1
+Version:        12.8.2
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        GPL-3.0-or-later

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  9 19:05:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.8.2:
+  * fix: return error when one-job receives no task
+
+-------------------------------------------------------------------
 Tue Apr  7 13:49:36 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.8.1:
