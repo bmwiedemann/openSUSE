@@ -357,4 +357,12 @@ Resub it :-)</comment>
   + Updated translations (forwarded request 1305209 from iznogood)</comment>
     <requestid>1305513</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4b3c3c2718c05a418b96b65a8a46f9ce</srcmd5>
+    <version>50.0</version>
+    <time>1775836200</time>
+    <user>dimstar_suse</user>
+    <comment>Push GNOME 50</comment>
+    <requestid>1345345</requestid>
+  </revision>
 </revisionlist>
