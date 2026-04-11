@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 11 18:01:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Test with Python 3.14
+  * Improved handling of file:// URIs in tests
+  * Made detection of editable installs in tests more universal
+  * Type checker configuration
+  * Python 3.8 and pip 19 from CI
+  * Support for Poetry 2.0
+  * Test with pip=24.3.1
+  * Test with Python 3.13
+  * Test with pip=24.2
+  * Support for `[[tool.poetry.source]]` without any URL
+  * Terminal condition for possible endless loops in the
+    implementation of default/devel package groups
+  * Implementation of default/devel package groups
+- add pip-version-optional.patch
+
+-------------------------------------------------------------------
 Mon Jun  9 10:56:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

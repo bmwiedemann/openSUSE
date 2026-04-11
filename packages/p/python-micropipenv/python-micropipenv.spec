@@ -1,7 +1,7 @@
 #
 # spec file for package python-micropipenv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,16 @@
 %define modname micropipenv
 %bcond_without libalternatives
 Name:           python-micropipenv
-Version:        1.6.0
+Version:        1.10.0
 Release:        0
 Summary:        Convert various requirements-type files to use with pip-tools
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/thoth-station/micropipenv
 Source:         https://github.com/thoth-station/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Patch1:         pip-version-optional.patch
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 56.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes

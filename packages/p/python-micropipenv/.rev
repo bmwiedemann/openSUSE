@@ -35,4 +35,26 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1284162</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>366c813b151b4e8490911b3c6a2a442f</srcmd5>
+    <version>1.10.0</version>
+    <time>1775942013</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.10.0:
+  * Test with Python 3.14
+  * Improved handling of file:// URIs in tests
+  * Made detection of editable installs in tests more universal
+  * Type checker configuration
+  * Python 3.8 and pip 19 from CI
+  * Support for Poetry 2.0
+  * Test with pip=24.3.1
+  * Test with Python 3.13
+  * Test with pip=24.2
+  * Support for `[[tool.poetry.source]]` without any URL
+  * Terminal condition for possible endless loops in the
+    implementation of default/devel package groups
+  * Implementation of default/devel package groups
+- add pip-version-optional.patch</comment>
+    <requestid>1346097</requestid>
+  </revision>
 </revisionlist>
