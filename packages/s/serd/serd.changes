@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 10 07:31:51 UTC 2026 - Simon Lees <sflees@suse.de>
+- update to 0.32.8
+  * Avoid use of snprintf() when writing
+  * Fix unbounded reader stack growth when reading NQuads
+  * Improve reader error handling
+  * Relax nullability of SerdNode buffer field
+  * Release reader stack memory on read error
+  * Strengthen handling of corrupt UTF-8 input
+  * Support writing all escapes in Turtle and TriG prefixed names
+- Set suse_version for enabling docs to >= to 1699 as we don't have
+  * python3-sphinxygen in SLES (jsc#PED-15823)
+
+-------------------------------------------------------------------
 Wed Dec 10 08:21:49 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 0.32.6
