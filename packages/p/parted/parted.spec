@@ -1,7 +1,7 @@
 #
 # spec file for package parted
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           parted
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        GNU partitioner
 License:        GPL-3.0-or-later
@@ -34,11 +34,9 @@ Patch1:         parted-2.4-ncursesw6.patch
 
 # Other patches
 Patch10:        hfs_fix.dif
-Patch11:        parted-wipeaix.patch
 Patch12:        libparted-partition-naming.patch
 #PATCH-FEATURE-SUSE more-reliable-informing-the-kernel.patch bnc#657360 petr.uzel@suse.cz
 Patch13:        more-reliable-informing-the-kernel.patch
-Patch14:        dummy-bootcode-only-for-x86.patch
 Patch16:        parted-mac.patch
 Patch17:        libparted-use-BLKRRPART-for-DASD.patch.patch
 Patch18:        libparted-make-BLKRRPART-more-robust.patch
@@ -59,7 +57,6 @@ Patch34:        libparted-canonicalize-dev-md-paths.patch
 Patch36:        libparted-linux-pmem-path.patch
 # bsc#1164260
 Patch37:        parted-print-max-partitions-for-yast.patch
-Patch38:        parted-do-version.patch
 # bsc#1164907
 # Fatresize
 Patch100:       parted-fatresize-autoconf.patch
@@ -172,7 +169,7 @@ rm %{buildroot}%{_libdir}/*.la
 
 %files devel
 %defattr(-,root,root)
-%doc doc/API doc/FAT
+%doc doc/API.md doc/FAT
 %{_includedir}/*
 %{_libdir}/pkgconfig/libparted*.pc
 %{_libdir}/*.so

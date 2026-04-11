@@ -1233,4 +1233,12 @@
   - parted-do-version.patch</comment>
     <requestid>1239472</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>22f2323c8d37aa4091fc56b2dd38a4fa</srcmd5>
+    <version>3.7</version>
+    <time>1775938967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345773</requestid>
+  </revision>
 </revisionlist>

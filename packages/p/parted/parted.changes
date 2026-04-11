@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 09 08:40:03 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- update to version 3.7:
+  - Stop adding boot code into the MBR if it's zero when updating
+    an existing msdos partition table
+  - Do not detect ext4 without journal as ext2
+  removed patches:
+  - parted-wipeaix.patch
+  - dummy-bootcode-only-for-x86.patch
+  - parted-do-version.patch
+  
+-------------------------------------------------------------------
 Wed Jan 22 10:35:05 CET 2025 - aschnell@suse.com
 
 - fixed build with gcc15
