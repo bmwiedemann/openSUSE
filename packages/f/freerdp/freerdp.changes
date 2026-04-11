@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 11 06:27:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Fix freerdp-devel dependencies. sso-mib must be present when
+  using the freerdp-client library.
+- Only use sso_mib where the build dep is available (i.e: Tumbleweed)
+
+-------------------------------------------------------------------
 Tue Apr  7 10:31:37 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add sso-mib library to integrate with Microsoft Azure Entra ID Conditional Access,

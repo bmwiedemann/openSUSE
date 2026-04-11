@@ -26,6 +26,9 @@
 %global _with_ffmpeg 1
 %endif
 %endif
+%if 0%{?suse_version} >= 1699
+%global _with_sso_mib 1
+%endif
 
 %global _with_gss 1
 
@@ -87,7 +90,7 @@ BuildRequires:  xmlto
 # Upstream use SDL3, but SDL3 does not exist in Leap and SDL3_ttf does not exists in Leap and Tumbleweed.
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(sso-mib)
+%{?_with_sso_mib:BuildRequires:  pkgconfig(sso-mib)}
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(x11)
@@ -175,6 +178,7 @@ Requires:       lib%{name}%{libfreerdp_package} = %{version}-%{release}
 Requires:       lib%{name}-server-proxy%{libfreerdp_package}
 Requires:       winpr-devel = %{version}-%{release}
 Requires:       pkgconfig(fuse3)
+%{?_with_sso_mib:Requires:       pkgconfig(sso-mib)}
 Obsoletes:      %{name}-server-proxy%{libfreerdp_package}-devel < %{version}-%{release}
 Provides:       %{name}-server-proxy%{libfreerdp_package}-devel = %{version}-%{release}
 
@@ -296,7 +300,7 @@ export CXX=g++-12
         -DWITH_SHADOW_MAC=ON \
         -DWITH_SAMPLE=OFF \
         -DWITH_SOXR=%{?_with_soxr:ON}%{?!_with_soxr:OFF} \
-        -DWITH_SSO_MIB=ON \
+        -DWITH_SSO_MIB=%{?_with_sso_mib:ON}%{?!_with_sso_mib:OFF} \
         -DWITH_WAYLAND=ON \
         -DWITH_X11=ON \
         -DWITH_XCURSOR=ON \

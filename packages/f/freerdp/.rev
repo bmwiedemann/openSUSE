@@ -843,4 +843,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
   which enables /aad option</comment>
     <requestid>1344966</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>7eed7d9007be298b7998275e6e562f5f</srcmd5>
+    <version>3.24.1</version>
+    <time>1775939210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346078</requestid>
+  </revision>
 </revisionlist>
