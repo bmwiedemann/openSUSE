@@ -7,10 +7,10 @@ Subject: [PATCH] Make unsafe subinterpreter support available via cfg flag
  src/impl_/pymodule.rs | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: cryptography-46.0.2/vendor/pyo3-0.26.0/src/impl_/pymodule.rs
+Index: cryptography-46.0.7/vendor/pyo3-0.26.0/src/impl_/pymodule.rs
 ===================================================================
---- cryptography-46.0.2.orig/vendor/pyo3-0.26.0/src/impl_/pymodule.rs
-+++ cryptography-46.0.2/vendor/pyo3-0.26.0/src/impl_/pymodule.rs
+--- cryptography-46.0.7.orig/vendor/pyo3-0.26.0/src/impl_/pymodule.rs
++++ cryptography-46.0.7/vendor/pyo3-0.26.0/src/impl_/pymodule.rs
 @@ -100,7 +100,7 @@ impl ModuleDef {
          // that static data is not reused across interpreters.
          //
@@ -20,22 +20,22 @@ Index: cryptography-46.0.2/vendor/pyo3-0.26.0/src/impl_/pymodule.rs
          {
              // PyInterpreterState_Get is only available on 3.9 and later, but is missing
              // from python3.dll for Windows stable API on 3.9
-Index: cryptography-46.0.2/Cargo.toml
+Index: cryptography-46.0.7/Cargo.toml
 ===================================================================
---- cryptography-46.0.2.orig/Cargo.toml
-+++ cryptography-46.0.2/Cargo.toml
-@@ -29,3 +29,6 @@ openssl-sys = "0.9.108"
+--- cryptography-46.0.7.orig/Cargo.toml
++++ cryptography-46.0.7/Cargo.toml
+@@ -29,3 +29,6 @@ openssl-sys = "0.9.110"
  
  [profile.release]
  overflow-checks = true
 +
 +[patch.crates-io]
 +pyo3 = { path="vendor/pyo3-0.26.0" }
-Index: cryptography-46.0.2/Cargo.lock
+Index: cryptography-46.0.7/Cargo.lock
 ===================================================================
---- cryptography-46.0.2.orig/Cargo.lock
-+++ cryptography-46.0.2/Cargo.lock
-@@ -276,8 +276,6 @@ dependencies = [
+--- cryptography-46.0.7.orig/Cargo.lock
++++ cryptography-46.0.7/Cargo.lock
+@@ -279,8 +279,6 @@ dependencies = [
  [[package]]
  name = "pyo3"
  version = "0.26.0"

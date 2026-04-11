@@ -19,11 +19,11 @@ Signed-off-by: Michał Górny <mgorny@gentoo.org>
  pyproject.toml | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/pyproject.toml b/pyproject.toml
-index e26b386280a5..8640cb6e5951 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
-@@ -106,10 +106,10 @@ module-name = "cryptography.hazmat.bindings._rust"
+Index: cryptography-46.0.7/pyproject.toml
+===================================================================
+--- cryptography-46.0.7.orig/pyproject.toml
++++ cryptography-46.0.7/pyproject.toml
+@@ -104,10 +104,10 @@ module-name = "cryptography.hazmat.bindi
  locked = true
  sdist-generator = "git"
  include = [
@@ -37,7 +37,7 @@ index e26b386280a5..8640cb6e5951 100644
  
      { path = "src/_cffi_src/**/*.py", format = "sdist" },
      { path = "src/_cffi_src/**/*.c", format = "sdist" },
-@@ -121,7 +121,7 @@ include = [
+@@ -119,7 +119,7 @@ include = [
      { path = "src/rust/**/Cargo.lock", format = "sdist" },
      { path = "src/rust/**/*.rs", format = "sdist" },
  
