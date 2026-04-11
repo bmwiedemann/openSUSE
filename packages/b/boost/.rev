@@ -1647,4 +1647,14 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
     <comment></comment>
     <requestid>1322898</requestid>
   </revision>
+  <revision rev="178" vrev="2">
+    <srcmd5>d7105a86cb2d21c367c0d862468fbe0d</srcmd5>
+    <version>1.90.0</version>
+    <time>1775938960</time>
+    <user>dimstar_suse</user>
+    <comment>- disable the cobalt module explicitly to avoid implicit enablement
+  when using a C++20 defaulted compiler given we are not packaging
+  that module at the moment;  this fixes the packaging with GCC 16 (forwarded request 1345770 from rguenther)</comment>
+    <requestid>1345771</requestid>
+  </revision>
 </revisionlist>

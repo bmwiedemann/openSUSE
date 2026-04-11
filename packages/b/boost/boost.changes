@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 07:58:52 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- disable the cobalt module explicitly to avoid implicit enablement
+  when using a C++20 defaulted compiler given we are not packaging
+  that module at the moment;  this fixes the packaging with GCC 16
+
+-------------------------------------------------------------------
 Wed Dec 10 18:26:07 CET 2025 - Arvin Schnell <aschnell@suse.com>
 
 - update to 1.90.0
