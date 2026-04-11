@@ -199,4 +199,12 @@
     <comment>KDE Frameworks 6.24 (forwarded request 1338840 from krop)</comment>
     <requestid>1338916</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>81461b3f03fae455d9e5a43c15b51316</srcmd5>
+    <version>6.25.0</version>
+    <time>1775939039</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.25 (forwarded request 1345661 from krop)</comment>
+    <requestid>1345886</requestid>
+  </revision>
 </revisionlist>
