@@ -30,7 +30,7 @@
 %global sle_needs_crypto_policies 1
 %endif
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %global openssl_test_flags HARNESS_JOBS=${RPM_BUILD_NCPUS}
 %endif
 
@@ -51,8 +51,7 @@ Source2:        %{_rname}.keyring
 # to get mtime of file:
 Source3:        %{name}.changes
 Source4:        baselibs.conf
-Source5:        showciphers.c
-Source6:        openssl-TESTS-Disable-default-provider-crypto-policies.patch
+Source5:        openssl-TESTS-Disable-default-provider-crypto-policies.patch
 # PATCH-FIX-OPENSUSE: Do not install html docs as it takes ages
 Patch1:         openssl-no-html-docs.patch
 Patch2:         openssl-truststore.patch
@@ -157,7 +156,26 @@ Patch60:        openssl-CVE-2025-15467-test.patch
 Patch61:        openssl-CVE-2025-11187.patch
 # PATCH-FIX-UPSTREAM bsc#1256831 CVE-2025-15468: NULL dereference in SSL_CIPHER_find() function on unknown cipher ID
 Patch62:        openssl-CVE-2025-15468.patch
-
+# PATCH-FIX_UPSTREAM bsc#1259652 CVE-2026-2673: TLS 1.3 servers may choose unexpected key agreement group
+Patch63:        openssl-crypto-mem.c-factor-out-memory-allocation-failure-reporting.patch
+Patch64:        openssl-Add-array-memory-allocation-routines.patch
+Patch65:        openssl-CVE-2026-2673.patch
+# PATCH-FIX-UPSTREAM CVE-2026-28387: Potential use-after-free in DANE client code (bsc#1260441)
+Patch66:        openssl-CVE-2026-28387.patch
+# PATCH-FIX-UPSTREAM CVE-2026-28388: NULL Pointer Dereference When Processing a Delta (bsc#1260442)
+Patch67:        openssl-CVE-2026-28388.patch
+Patch68:        openssl-CVE-2026-28388-tests.patch
+# PATCH-FIX-UPSTREAM CVE-2026-28389: Possible NULL dereference when processing CMS KeyAgreeRecipientInfo (bsc#1260443)
+Patch69:        openssl-CVE-2026-28389.patch
+# PATCH-FIX-UPSTREAM CVE-2026-31789: Heap buffer overflow in hexadecimal conversion (bsc#1260444)
+Patch70:        openssl-CVE-2026-31789.patch
+# PATCH-FIX-UPSTREAM CVE-2026-31790: Incorrect failure handling in RSA KEM RSASVE encapsulation (bsc#1260445)
+Patch71:        openssl-CVE-2026-31790.patch
+Patch72:        openssl-CVE-2026-31790-tests.patch
+# PATCH-FIX-UPSTREAM: NULL pointer dereference when processing an OCSP response
+Patch73:        openssl-NULL-pointer-dereference-in-ocsp_find_signer_sk.patch
+# PATCH-FIX-UPSTREAM CVE-2026-28390: NULL pointer dereference during processing of a crafted CMS EnvelopedData message with KeyTransportRecipientInfo (bsc#1261678)
+Patch74:        openssl-CVE-2026-28390.patch
 # ulp-macros is available according to SUSE version.
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1540
 BuildRequires:  ulp-macros
@@ -304,7 +322,7 @@ perl configdata.pm --dump
 %check
 # Relax the crypto-policies requirements and disable the default
 # provider for the test suite regression tests
-patch -p1 < %{SOURCE6}
+patch -p1 < %{SOURCE5}
 export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
 export MALLOC_CHECK_=3
 export MALLOC_PERTURB_=$(($RANDOM % 255 + 1))
@@ -334,8 +352,8 @@ LD_LIBRARY_PATH="$PWD" make test %{?_smp_mflags} %{?openssl_test_flags}
 %{nil}
 
 # show ciphers
-gcc -o showciphers %{optflags} -I%{buildroot}%{_includedir} %{SOURCE5} -L%{buildroot}%{_libdir} -lssl -lcrypto
-LD_LIBRARY_PATH=%{buildroot}%{_libdir} ./showciphers
+OPENSSL_CONF=/dev/null LD_LIBRARY_PATH=. apps/openssl ciphers
+OPENSSL_CONF=/dev/null LD_LIBRARY_PATH=. apps/openssl ciphers -s
 
 %install
 %{?pack_ipa_dumps}
@@ -363,10 +381,6 @@ done
 # Make a copy of the default openssl.cnf file
 cp %{buildroot}%{ssletcdir}/openssl.cnf %{buildroot}%{ssletcdir}/openssl-orig.cnf
 
-# Create openssl ca-certificates dir required by nodejs regression tests [bsc#1207484]
-mkdir -p %{buildroot}%{_localstatedir}/lib/ca-certificates/openssl
-install -d -m 555 %{buildroot}%{_localstatedir}/lib/ca-certificates/openssl
-
 # Remove the fipsmodule.cnf because FIPS module is loaded automatically in FIPS mode
 rm -f %{buildroot}%{ssletcdir}/fipsmodule.cnf
 
@@ -388,11 +402,15 @@ popd
 # Do not install demo scripts executable under /usr/share/doc
 find demos -type f -perm /111 -exec chmod 644 {} +
 
-# Place showciphers.c for %%doc macro
-cp %{SOURCE5} .
-
 # Compute the FIPS hmac using the brp-50-generate-fips-hmac script
 export BRP_FIPSHMAC_FILES="%{buildroot}%{_libdir}/libssl.so.%{sover} %{buildroot}%{_libdir}/libcrypto.so.%{sover}"
+
+# Install tmpfiles.d and define the configuration for immutable mode (jsc#PED-14813)
+install -d %{buildroot}%{_tmpfilesdir}
+cat > %{buildroot}%{_tmpfilesdir}/%{_rname}-%{sover}.conf <<EOF
+d /var/lib/ca-certificates/ 0755 root root - -
+d /var/lib/ca-certificates/openssl/ 0555 root root - -
+EOF
 
 %post -p "/bin/bash"
 if [ "$1" -gt 1 ] ; then
@@ -407,10 +425,12 @@ if [ "$1" -gt 1 ] ; then
     fi
 fi
 
-%pre
-
-%post -n libopenssl3 -p /sbin/ldconfig
+%post -n libopenssl3
+%tmpfiles_create %{_tmpfilesdir}/%{_rname}-%{sover}.conf
+/sbin/ldconfig
+%end
 %postun -n libopenssl3 -p /sbin/ldconfig
+%end
 
 %files -n libopenssl3
 %license LICENSE.txt
@@ -430,8 +450,9 @@ fi
 %config (noreplace) %{ssletcdir}/ct_log_list.cnf
 %dir %{_datadir}/ssl
 %{_datadir}/ssl/misc
-%dir %{_localstatedir}/lib/ca-certificates/
-%dir %{_localstatedir}/lib/ca-certificates/openssl
+%{_tmpfilesdir}/%{_rname}-%{sover}.conf
+%ghost %attr(0755,root,root) %dir %{_localstatedir}/lib/ca-certificates/
+%ghost %attr(0555,root,root) %dir %{_localstatedir}/lib/ca-certificates/openssl
 
 %files -n libopenssl-3-fips-provider
 %{_libdir}/ossl-modules/fips.so
@@ -452,7 +473,6 @@ fi
 %files doc
 %doc README.md
 %doc doc/html/* doc/HOWTO/* demos
-%doc showciphers.c
 %{_mandir}/man3/*
 
 %files

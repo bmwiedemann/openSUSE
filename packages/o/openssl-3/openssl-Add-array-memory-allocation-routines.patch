@@ -1,0 +1,524 @@
+From fa9b7b930e3e59f5b30de0e8a6755bfaafdd5c49 Mon Sep 17 00:00:00 2001
+From: Eugene Syromiatnikov <esyr@openssl.org>
+Date: Thu, 17 Jul 2025 03:32:02 +0200
+Subject: [PATCH] Add array memory allocation routines
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Such routines allow alleviating the need to perform explicit integer
+overflow check during allocation size calculation and generally make
+the allocations more semantic (as they signify that a collection
+of NUM items, each occupying SIZE bytes is being allocated), which paves
+the road for additional correctness checks in the future.
+
+Signed-off-by: Eugene Syromiatnikov <esyr@openssl.org>
+
+Reviewed-by: Saša Nedvědický <sashan@openssl.org>
+Reviewed-by: Matt Caswell <matt@openssl.org>
+Reviewed-by: Paul Dale <ppzgs1@gmail.com>
+Reviewed-by: Neil Horman <nhorman@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/28059)
+
+Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
+---
+ crypto/array_alloc.c               | 94 ++++++++++++++++++++++++++++++
+ crypto/build.info                  |  2 +-
+ doc/man3/OPENSSL_malloc.pod        | 52 ++++++++++++++---
+ doc/man3/OPENSSL_secure_malloc.pod | 34 +++++++++--
+ include/internal/mem_alloc_utils.h | 37 +++++++++++-
+ include/openssl/crypto.h.in        | 31 ++++++++++
+ util/libcrypto.num                 |  7 +++
+ util/other.syms                    |  7 +++
+ 8 files changed, 249 insertions(+), 15 deletions(-)
+ create mode 100644 crypto/array_alloc.c
+
+Index: openssl-3.5.3/crypto/array_alloc.c
+===================================================================
+--- /dev/null
++++ openssl-3.5.3/crypto/array_alloc.c
+@@ -0,0 +1,94 @@
++/*
++ * Copyright 2025 The OpenSSL Project Authors. All Rights Reserved.
++ *
++ * Licensed under the Apache License 2.0 (the "License").  You may not use
++ * this file except in compliance with the License.  You can obtain a copy
++ * in the file LICENSE in the source distribution or at
++ * https://www.openssl.org/source/license.html
++ */
++
++/*
++ * This file provides implementation of various array allocation routines that
++ * perform integer overflow checking for size calculation.
++ */
++
++#include "internal/mem_alloc_utils.h"
++#include <openssl/crypto.h>
++
++void *CRYPTO_malloc_array(size_t num, size_t size, const char *file, int line)
++{
++    size_t bytes;
++
++    if (ossl_unlikely(!ossl_size_mul(num, size, &bytes, file, line)))
++        return NULL;
++
++    return CRYPTO_malloc(bytes, file, line);
++}
++
++void *CRYPTO_calloc(size_t num, size_t size, const char *file, int line)
++{
++    size_t bytes;
++
++    if (ossl_unlikely(!ossl_size_mul(num, size, &bytes, file, line)))
++        return NULL;
++
++    return CRYPTO_zalloc(bytes, file, line);
++}
++
++void *CRYPTO_aligned_alloc_array(size_t num, size_t size, size_t align,
++                                 void **freeptr, const char *file, int line)
++{
++    size_t bytes;
++
++    if (ossl_unlikely(!ossl_size_mul(num, size, &bytes, file, line))) {
++        *freeptr = NULL;
++
++        return NULL;
++    }
++
++    return CRYPTO_aligned_alloc(bytes, align, freeptr, file, line);
++}
++
++void *CRYPTO_realloc_array(void *addr, size_t num, size_t size,
++                           const char *file, int line)
++{
++    size_t bytes;
++
++    if (ossl_unlikely(!ossl_size_mul(num, size, &bytes, file, line)))
++        return NULL;
++
++    return CRYPTO_realloc(addr, bytes, file, line);
++}
++
++void *CRYPTO_clear_realloc_array(void *addr, size_t old_num, size_t num,
++                                 size_t size, const char *file, int line)
++{
++    size_t old_bytes, bytes = 0;
++
++    if (ossl_unlikely(!ossl_size_mul(old_num, size, &old_bytes, file, line)
++                      || !ossl_size_mul(num, size, &bytes, file, line)))
++        return NULL;
++
++    return CRYPTO_clear_realloc(addr, old_bytes, bytes, file, line);
++}
++
++void *CRYPTO_secure_malloc_array(size_t num, size_t size,
++                                 const char *file, int line)
++{
++    size_t bytes;
++
++    if (ossl_unlikely(!ossl_size_mul(num, size, &bytes, file, line)))
++        return NULL;
++
++    return CRYPTO_secure_malloc(bytes, file, line);
++}
++
++void *CRYPTO_secure_calloc(size_t num, size_t size, const char *file, int line)
++{
++    size_t bytes;
++
++    if (ossl_unlikely(!ossl_size_mul(num, size, &bytes, file, line)))
++        return NULL;
++
++    return CRYPTO_secure_zalloc(bytes, file, line);
++}
+Index: openssl-3.5.3/crypto/build.info
+===================================================================
+--- openssl-3.5.3.orig/crypto/build.info
++++ openssl-3.5.3/crypto/build.info
+@@ -100,7 +100,7 @@ $UTIL_COMMON=\
+         threads_pthread.c threads_win.c threads_none.c initthread.c \
+         context.c sparse_array.c asn1_dsa.c packet.c param_build.c \
+         param_build_set.c der_writer.c threads_lib.c params_dup.c \
+-        time.c params_idx.c
++        time.c params_idx.c array_alloc.c
+ 
+ SOURCE[../libcrypto]=$UTIL_COMMON \
+         mem.c mem_sec.c \
+Index: openssl-3.5.3/doc/man3/OPENSSL_malloc.pod
+===================================================================
+--- openssl-3.5.3.orig/doc/man3/OPENSSL_malloc.pod
++++ openssl-3.5.3/doc/man3/OPENSSL_malloc.pod
+@@ -4,14 +4,19 @@
+ 
+ OPENSSL_malloc_init,
+ OPENSSL_malloc, OPENSSL_aligned_alloc, OPENSSL_zalloc, OPENSSL_realloc,
+-OPENSSL_free, OPENSSL_clear_realloc, OPENSSL_clear_free, OPENSSL_cleanse,
+-CRYPTO_malloc, CRYPTO_aligned_alloc, CRYPTO_zalloc, CRYPTO_realloc, CRYPTO_free,
++OPENSSL_malloc_array, OPENSSL_aligned_alloc_array, OPENSSL_calloc,
++OPENSSL_realloc_array, OPENSSL_free,
++OPENSSL_clear_realloc, OPENSSL_clear_realloc_array,
++OPENSSL_clear_free, OPENSSL_cleanse,
++CRYPTO_malloc, CRYPTO_aligned_alloc, CRYPTO_zalloc,
++CRYPTO_malloc_array, CRYPTO_aligned_alloc_array, CRYPTO_calloc,
++CRYPTO_realloc, CRYPTO_realloc_array, CRYPTO_free,
+ OPENSSL_strdup, OPENSSL_strndup,
+ OPENSSL_memdup, OPENSSL_strlcpy, OPENSSL_strlcat, OPENSSL_strtoul,
+ CRYPTO_strdup, CRYPTO_strndup,
+ OPENSSL_mem_debug_push, OPENSSL_mem_debug_pop,
+ CRYPTO_mem_debug_push, CRYPTO_mem_debug_pop,
+-CRYPTO_clear_realloc, CRYPTO_clear_free,
++CRYPTO_clear_realloc, CRYPTO_clear_realloc_array, CRYPTO_clear_free,
+ CRYPTO_malloc_fn, CRYPTO_realloc_fn, CRYPTO_free_fn,
+ CRYPTO_get_mem_functions, CRYPTO_set_mem_functions,
+ CRYPTO_get_alloc_counts,
+@@ -31,6 +36,11 @@ OPENSSL_MALLOC_FD
+  void *OPENSSL_aligned_alloc(size_t num, size_t alignment, void **freeptr);
+  void *OPENSSL_zalloc(size_t num);
+  void *OPENSSL_realloc(void *addr, size_t num);
++ void *OPENSSL_malloc_array(size_t num, size_t size);
++ void *OPENSSL_aligned_alloc_array(size_t num, size_t size, size_t alignment,
++                                   void **freeptr);
++ void *OPENSSL_calloc(size_t num, size_t size);
++ void *OPENSSL_realloc_array(void *addr, size_t num, size_t size);
+  void OPENSSL_free(void *addr);
+  char *OPENSSL_strdup(const char *str);
+  char *OPENSSL_strndup(const char *str, size_t s);
+@@ -39,20 +49,30 @@ OPENSSL_MALLOC_FD
+  int OPENSSL_strtoul(char *src, char **endptr, int base, unsigned long *num);
+  void *OPENSSL_memdup(void *data, size_t s);
+  void *OPENSSL_clear_realloc(void *p, size_t old_len, size_t num);
++ void *OPENSSL_clear_realloc_array(void *p, size_t old_len, size_t num,
++                                   size_t size);
+  void OPENSSL_clear_free(void *str, size_t num);
+  void OPENSSL_cleanse(void *ptr, size_t len);
+ 
+  void *CRYPTO_malloc(size_t num, const char *file, int line);
+- void *CRYPTO_aligned_alloc(size_t num, size_t align, void **freeptr, 
++ void *CRYPTO_aligned_alloc(size_t num, size_t align, void **freeptr,
+                             const char *file, int line);
+  void *CRYPTO_zalloc(size_t num, const char *file, int line);
+  void *CRYPTO_realloc(void *p, size_t num, const char *file, int line);
+- void CRYPTO_free(void *str, const char *, int);
++ void *CRYPTO_malloc_array(size_t num, size_t size, const char *file, int line);
++ void *CRYPTO_aligned_alloc_array(size_t num, size_t size, size_t align,
++                                  void **freeptr, const char *file, int line);
++ void *CRYPTO_calloc(size_t num, size_t size, const char *file, int line);
++ void *CRYPTO_realloc_array(void *p, size_t num, size_t size,
++                            const char *file, int line);
++ void CRYPTO_free(void *str, const char *file, int line);
+  char *CRYPTO_strdup(const char *p, const char *file, int line);
+  char *CRYPTO_strndup(const char *p, size_t num, const char *file, int line);
+  void *CRYPTO_clear_realloc(void *p, size_t old_len, size_t num,
+                             const char *file, int line);
+- void CRYPTO_clear_free(void *str, size_t num, const char *, int);
++ void *CRYPTO_clear_realloc_array(void *p, size_t old_len, size_t num,
++                                  size_t size, const char *file, int line);
++ void CRYPTO_clear_free(void *str, size_t num, const char *file, int line);
+ 
+  typedef void *(*CRYPTO_malloc_fn)(size_t num, const char *file, int line);
+  typedef void *(*CRYPTO_realloc_fn)(void *addr, size_t num, const char *file,
+@@ -120,6 +140,15 @@ The old buffer is filled with zero's by
+ before ultimately calling OPENSSL_free(). If the argument to OPENSSL_free() is
+ NULL, nothing is done.
+ 
++OPENSSL_malloc_array(), OPENSSL_calloc(), OPENSSL_aligned_alloc_array(),
++OPENSSL_realloc_array(), and OPENSSL_clear_realloc_array() are variants
++of OPENSSL_malloc(), OPENSSL_zalloc(), OPENSSL_aligned_alloc(),
++OPENSSL_realloc(), and OPENSSL_clear_realloc(), respectively, that accept
++an additional parameter, B<size>, which enables memory allocation
++operations for an array of B<num> members B<size> bytes each;
++these functions return an error if multiplication of B<num> and B<size>
++leads to an integer overflow, thus preventing allocations of an incorrect size.
++
+ OPENSSL_cleanse() fills B<ptr> of size B<len> with a string of 0's.
+ Use OPENSSL_cleanse() with care if the memory is a mapping of a file.
+ If the storage controller uses write compression, then it's possible
+@@ -195,9 +224,12 @@ CRYPTO_free(), CRYPTO_clear_free() and C
+ return no value.
+ 
+ OPENSSL_malloc(), OPENSSL_aligned_alloc(), OPENSSL_zalloc(), OPENSSL_realloc(),
+-OPENSSL_clear_realloc(),
++OPENSSL_malloc_array(), OPENSSL_aligned_alloc_array(), OPENSSL_calloc(),
++OPENSSL_realloc_array(),
++OPENSSL_clear_realloc(), OPENSSL_clear_realloc_array(),
+ CRYPTO_malloc(), CRYPTO_zalloc(), CRYPTO_realloc(),
+-CRYPTO_clear_realloc(),
++CRYPTO_malloc_array(), CRYPTO_calloc(), CRYPTO_realloc_array(),
++CRYPTO_clear_realloc(), CRYPTO_clear_realloc_array(),
+ OPENSSL_strdup(), and OPENSSL_strndup()
+ return a pointer to allocated memory or NULL on error.
+ 
+@@ -251,6 +283,10 @@ The memory-leak checking has been deprec
+ clang's memory and leak sanitizer.
+ OPENSSL_aligned_alloc(), CRYPTO_aligned_alloc(), OPENSSL_strtoul() were
+ added in OpenSSL 3.4.
++OPENSSL_malloc_array(), OPENSSL_calloc(), OPENSSL_aligned_alloc_array(),
++OPENSSL_realloc_array(), OPENSSL_clear_realloc_array(), CRYPTO_malloc_array(),
++CRYPTO_calloc(), CRYPTO_aligned_alloc_array(), CRYPTO_realloc_array(),
++CRYPTO_clear_realloc_array() were added in OpenSSL 3.6.
+ 
+ =head1 COPYRIGHT
+ 
+Index: openssl-3.5.3/doc/man3/OPENSSL_secure_malloc.pod
+===================================================================
+--- openssl-3.5.3.orig/doc/man3/OPENSSL_secure_malloc.pod
++++ openssl-3.5.3/doc/man3/OPENSSL_secure_malloc.pod
+@@ -4,8 +4,9 @@
+ 
+ CRYPTO_secure_malloc_init, CRYPTO_secure_malloc_initialized,
+ CRYPTO_secure_malloc_done, OPENSSL_secure_malloc, CRYPTO_secure_malloc,
+-OPENSSL_secure_zalloc, CRYPTO_secure_zalloc, OPENSSL_secure_free,
+-CRYPTO_secure_free, OPENSSL_secure_clear_free,
++OPENSSL_secure_zalloc, CRYPTO_secure_zalloc, OPENSSL_secure_malloc_array,
++CRYPTO_secure_malloc_array, OPENSSL_secure_calloc, CRYPTO_secure_calloc,
++OPENSSL_secure_free, CRYPTO_secure_free, OPENSSL_secure_clear_free,
+ CRYPTO_secure_clear_free, OPENSSL_secure_actual_size,
+ CRYPTO_secure_allocated,
+ CRYPTO_secure_used - secure heap storage
+@@ -26,6 +27,14 @@ CRYPTO_secure_used - secure heap storage
+  void *OPENSSL_secure_zalloc(size_t num);
+  void *CRYPTO_secure_zalloc(size_t num, const char *file, int line);
+ 
++ void *OPENSSL_secure_malloc_array(size_t num, size_t size);
++ void *CRYPTO_secure_malloc_array(size_t num, size_t size,
++                                  const char *file, int line);
++
++ void *OPENSSL_secure_calloc(size_t num, size_t size);
++ void *CRYPTO_secure_calloc(size_t num, size_t size,
++                            const char *file, int line);
++
+  void OPENSSL_secure_free(void* ptr);
+  void CRYPTO_secure_free(void *ptr, const char *, int);
+ 
+@@ -80,6 +89,15 @@ OPENSSL_secure_zalloc() and CRYPTO_secur
+ OPENSSL_secure_malloc() and CRYPTO_secure_malloc(), respectively,
+ except that they call memset() to zero the memory before returning.
+ 
++OPENSSL_secure_malloc_array(), CRYPTO_secure_malloc_array(),
++OPENSSL_secure_calloc(), and CRYPTO_secure_calloc() are variants
++of OPENSSL_secure_malloc(), CRYPTO_secure_malloc(),
++OPENSSL_secure_zalloc(), and CRYPTO_secure_zalloc(), respectively, that accept
++an additional parameter, B<size>, which enables memory allocation
++operations for an array of B<num> members B<size> bytes each;
++these functions return an error if multiplication of B<num> and B<size>
++leads to an integer overflow, thus preventing allocations of an incorrect size.
++
+ OPENSSL_secure_free() releases the memory at C<ptr> back to the heap.
+ It must be called with a value previously obtained from
+ OPENSSL_secure_malloc().
+@@ -116,9 +134,11 @@ CRYPTO_secure_malloc_initialized() retur
+ available (that is, if CRYPTO_secure_malloc_init() has been called,
+ but CRYPTO_secure_malloc_done() has not been called or failed) or 0 if not.
+ 
+-OPENSSL_secure_malloc() and OPENSSL_secure_zalloc() return a pointer into
+-the secure heap of the requested size, or C<NULL> if memory could not be
+-allocated.
++OPENSSL_secure_malloc(), CRYPTO_secure_malloc(), OPENSSL_secure_zalloc(),
++CRYPTO_secure_zalloc(), OPENSSL_secure_malloc_array(),
++CRYPTO_secure_malloc_array(), OPENSSL_secure_calloc(), and CRYPTO_secure_calloc()
++return a pointer into the secure heap of the requested size,
++or C<NULL> if memory could not be allocated.
+ 
+ CRYPTO_secure_allocated() returns 1 if the pointer is in the secure heap, or 0 if not.
+ 
+@@ -138,6 +158,10 @@ The OPENSSL_secure_clear_free() function
+ The second argument to CRYPTO_secure_malloc_init() was changed from an B<int> to
+ a B<size_t> in OpenSSL 3.0.
+ 
++The OPENSSL_secure_malloc_array(), CRYPTO_secure_malloc_array(),
++OPENSSL_secure_calloc(), and CRYPTO_secure_calloc() functions were added
++in OpenSSL 3.6.
++
+ =head1 COPYRIGHT
+ 
+ Copyright 2015-2025 The OpenSSL Project Authors. All Rights Reserved.
+Index: openssl-3.5.3/include/internal/mem_alloc_utils.h
+===================================================================
+--- openssl-3.5.3.orig/include/internal/mem_alloc_utils.h
++++ openssl-3.5.3/include/internal/mem_alloc_utils.h
+@@ -14,11 +14,18 @@
+ #ifndef OSSL_INTERNAL_CHECK_SIZE_OVERFLOW_H
+ # define OSSL_INTERNAL_CHECK_SIZE_OVERFLOW_H
+ 
++# include <limits.h>
++# include <stdbool.h>
++# include <stdint.h>
++
+ # include "internal/common.h"
++# include "internal/safe_math.h"
+ 
+ # include <openssl/cryptoerr.h>
+ # include <openssl/err.h>
+ 
++OSSL_SAFE_MATH_UNSIGNED(size_t, size_t)
++
+ /*
+  * A helper routine to report memory allocation errors.
+  * Similar to the ERR_raise() macro, but accepts explicit file/line arguments,
+@@ -41,10 +48,38 @@ ossl_report_alloc_err_ex(const char * co
+ }
+ 
+ /* Report a memory allocation failure. */
+-static inline void
++static ossl_inline ossl_unused void
+ ossl_report_alloc_err(const char * const file, const int line)
+ {
+     ossl_report_alloc_err_ex(file, line, ERR_R_MALLOC_FAILURE);
+ }
+ 
++/* Report an integer overflow during allocation size calculation. */
++static ossl_inline ossl_unused void
++ossl_report_alloc_err_of(const char * const file, const int line)
++{
++    ossl_report_alloc_err_ex(file, line, CRYPTO_R_INTEGER_OVERFLOW);
++}
++
++/*
++ * Check the result of num and size multiplication for overflow
++ * and set error if it is the case;  return true if there was no overflow,
++ * false if there was.
++ */
++static ossl_inline ossl_unused bool
++ossl_size_mul(const size_t num, const size_t size, size_t *bytes,
++              const char * const file, const int line)
++{
++    int err = 0;
++    *bytes = safe_mul_size_t(num, size, &err);
++
++    if (ossl_unlikely(err != 0)) {
++        ossl_report_alloc_err_of(file, line);
++
++        return false;
++    }
++
++    return true;
++}
++
+ #endif /* OSSL_INTERNAL_CHECK_SIZE_OVERFLOW_H */
+Index: openssl-3.5.3/include/openssl/crypto.h.in
+===================================================================
+--- openssl-3.5.3.orig/include/openssl/crypto.h.in
++++ openssl-3.5.3/include/openssl/crypto.h.in
+@@ -103,13 +103,25 @@ int CRYPTO_atomic_store(uint64_t *dst, u
+         CRYPTO_malloc(num, OPENSSL_FILE, OPENSSL_LINE)
+ # define OPENSSL_zalloc(num) \
+         CRYPTO_zalloc(num, OPENSSL_FILE, OPENSSL_LINE)
++# define OPENSSL_malloc_array(num, size) \
++        CRYPTO_malloc_array(num, size, OPENSSL_FILE, OPENSSL_LINE)
++# define OPENSSL_calloc(num, size) \
++        CRYPTO_calloc(num, size, OPENSSL_FILE, OPENSSL_LINE)
+ # define OPENSSL_aligned_alloc(num, alignment, freeptr) \
+         CRYPTO_aligned_alloc(num, alignment, freeptr, \
+                              OPENSSL_FILE, OPENSSL_LINE)
++# define OPENSSL_aligned_alloc_array(num, size, alignment, freeptr) \
++        CRYPTO_aligned_alloc_array(num, size, alignment, freeptr, \
++                               OPENSSL_FILE, OPENSSL_LINE)
+ # define OPENSSL_realloc(addr, num) \
+         CRYPTO_realloc(addr, num, OPENSSL_FILE, OPENSSL_LINE)
+ # define OPENSSL_clear_realloc(addr, old_num, num) \
+         CRYPTO_clear_realloc(addr, old_num, num, OPENSSL_FILE, OPENSSL_LINE)
++# define OPENSSL_realloc_array(addr, num, size) \
++        CRYPTO_realloc_array(addr, num, size, OPENSSL_FILE, OPENSSL_LINE)
++# define OPENSSL_clear_realloc_array(addr, old_num, num, size) \
++        CRYPTO_clear_realloc_array(addr, old_num, num, size, \
++                               OPENSSL_FILE, OPENSSL_LINE)
+ # define OPENSSL_clear_free(addr, num) \
+         CRYPTO_clear_free(addr, num, OPENSSL_FILE, OPENSSL_LINE)
+ # define OPENSSL_free(addr) \
+@@ -124,6 +136,10 @@ int CRYPTO_atomic_store(uint64_t *dst, u
+         CRYPTO_secure_malloc(num, OPENSSL_FILE, OPENSSL_LINE)
+ # define OPENSSL_secure_zalloc(num) \
+         CRYPTO_secure_zalloc(num, OPENSSL_FILE, OPENSSL_LINE)
++# define OPENSSL_secure_malloc_array(num, size) \
++        CRYPTO_secure_malloc_array(num, size, OPENSSL_FILE, OPENSSL_LINE)
++# define OPENSSL_secure_calloc(num, size) \
++        CRYPTO_secure_calloc(num, size, OPENSSL_FILE, OPENSSL_LINE)
+ # define OPENSSL_secure_free(addr) \
+         CRYPTO_secure_free(addr, OPENSSL_FILE, OPENSSL_LINE)
+ # define OPENSSL_secure_clear_free(addr, num) \
+@@ -332,9 +348,16 @@ void CRYPTO_get_mem_functions(CRYPTO_mal
+ 
+ OSSL_CRYPTO_ALLOC void *CRYPTO_malloc(size_t num, const char *file, int line);
+ OSSL_CRYPTO_ALLOC void *CRYPTO_zalloc(size_t num, const char *file, int line);
++OSSL_CRYPTO_ALLOC void *CRYPTO_malloc_array(size_t num, size_t size,
++                                            const char *file, int line);
++OSSL_CRYPTO_ALLOC void *CRYPTO_calloc(size_t num, size_t size,
++                                      const char *file, int line);
+ OSSL_CRYPTO_ALLOC void *CRYPTO_aligned_alloc(size_t num, size_t align,
+                                              void **freeptr, const char *file,
+                                              int line);
++OSSL_CRYPTO_ALLOC void *CRYPTO_aligned_alloc_array(size_t num, size_t size,
++                                                   size_t align, void **freeptr,
++                                                   const char *file, int line);
+ void *CRYPTO_memdup(const void *str, size_t siz, const char *file, int line);
+ char *CRYPTO_strdup(const char *str, const char *file, int line);
+ char *CRYPTO_strndup(const char *str, size_t s, const char *file, int line);
+@@ -343,11 +366,19 @@ void CRYPTO_clear_free(void *ptr, size_t
+ void *CRYPTO_realloc(void *addr, size_t num, const char *file, int line);
+ void *CRYPTO_clear_realloc(void *addr, size_t old_num, size_t num,
+                            const char *file, int line);
++void *CRYPTO_realloc_array(void *addr, size_t num, size_t size,
++                           const char *file, int line);
++void *CRYPTO_clear_realloc_array(void *addr, size_t old_num, size_t num,
++                                 size_t size, const char *file, int line);
+ 
+ int CRYPTO_secure_malloc_init(size_t sz, size_t minsize);
+ int CRYPTO_secure_malloc_done(void);
+ OSSL_CRYPTO_ALLOC void *CRYPTO_secure_malloc(size_t num, const char *file, int line);
+ OSSL_CRYPTO_ALLOC void *CRYPTO_secure_zalloc(size_t num, const char *file, int line);
++OSSL_CRYPTO_ALLOC void *CRYPTO_secure_malloc_array(size_t num, size_t size,
++                                                   const char *file, int line);
++OSSL_CRYPTO_ALLOC void *CRYPTO_secure_calloc(size_t num, size_t size,
++                                             const char *file, int line);
+ void CRYPTO_secure_free(void *ptr, const char *file, int line);
+ void CRYPTO_secure_clear_free(void *ptr, size_t num,
+                               const char *file, int line);
+Index: openssl-3.5.3/util/libcrypto.num
+===================================================================
+--- openssl-3.5.3.orig/util/libcrypto.num
++++ openssl-3.5.3/util/libcrypto.num
+@@ -5927,3 +5927,10 @@ OSSL_AA_DIST_POINT_it
+ PEM_ASN1_write_bio_ctx                  6054	3_5_0	EXIST::FUNCTION:
+ ossl_ctx_legacy_digest_signatures_allowed ?	3_0_1	EXIST::FUNCTION:
+ ossl_ctx_legacy_digest_signatures_allowed_set ?	3_0_1	EXIST::FUNCTION:
++CRYPTO_malloc_array                     ?	3_5_0	EXIST::FUNCTION:
++CRYPTO_calloc                           ?	3_5_0	EXIST::FUNCTION:
++CRYPTO_aligned_alloc_array              ?	3_5_0	EXIST::FUNCTION:
++CRYPTO_realloc_array                    ?	3_5_0	EXIST::FUNCTION:
++CRYPTO_clear_realloc_array              ?	3_5_0	EXIST::FUNCTION:
++CRYPTO_secure_malloc_array              ?	3_5_0	EXIST::FUNCTION:
++CRYPTO_secure_calloc                    ?	3_5_0	EXIST::FUNCTION:
+Index: openssl-3.5.3/util/other.syms
+===================================================================
+--- openssl-3.5.3.orig/util/other.syms
++++ openssl-3.5.3/util/other.syms
+@@ -426,21 +426,28 @@ OPENSSL_VERSION_BUILD_METADATA
+ OPENSSL_VERSION_PRE_RELEASE_STR         define
+ OPENSSL_VERSION_BUILD_METADATA_STR      define
+ OPENSSL_VERSION_TEXT                    define
++OPENSSL_calloc                          define
+ OPENSSL_clear_free                      define
+ OPENSSL_clear_realloc                   define
++OPENSSL_clear_realloc_array             define
+ OPENSSL_free                            define
+ OPENSSL_malloc                          define
++OPENSSL_malloc_array                    define
+ OPENSSL_aligned_alloc                   define
++OPENSSL_aligned_alloc_array             define
+ OPENSSL_malloc_init                     define
+ OPENSSL_mem_debug_pop                   define deprecated 3.0.0
+ OPENSSL_mem_debug_push                  define deprecated 3.0.0
+ OPENSSL_memdup                          define
+ OPENSSL_no_config                       define deprecated 1.1.0
+ OPENSSL_realloc                         define
++OPENSSL_realloc_array                   define
+ OPENSSL_secure_actual_size              define
+ OPENSSL_secure_clear_free               define
+ OPENSSL_secure_free                     define
++OPENSSL_secure_calloc                   define
+ OPENSSL_secure_malloc                   define
++OPENSSL_secure_malloc_array             define
+ OPENSSL_secure_zalloc                   define
+ OPENSSL_strdup                          define
+ OPENSSL_strndup                         define

@@ -494,4 +494,41 @@
     <comment></comment>
     <requestid>1335431</requestid>
   </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>c4cddf408a6df5fae5696324c3073f72</srcmd5>
+    <version>3.5.3</version>
+    <time>1775939080</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt spec file for immutability via systemd-tmpfiles (jsc#PED-14813)
+- Fix check %{suse_version} &gt; 1600 (jsc#PED-15816)
+
+- Security fixes:
+  * CVE-2026-28387: Potential use-after-free in DANE client code
+    (bsc#1260441)
+  * CVE-2026-28388: NULL Pointer Dereference When Processing a
+    Delta (bsc#1260442)
+  * CVE-2026-28389: Possible NULL dereference when processing CMS
+    KeyAgreeRecipientInfo (bsc#1260443)
+  * CVE-2026-31789: Heap buffer overflow in hexadecimal conversion
+    (bsc#1260444)
+  * CVE-2026-31790: Incorrect failure handling in RSA KEM RSASVE
+    encapsulation (bsc#1260445)
+  * CVE-2026-28390: NULL pointer dereference during processing of a crafted CMS
+    EnvelopedData message with KeyTransportRecipientInfo (bsc#1261678)
+  * Add	patches: openssl-CVE-2026-28387.patch
+    openssl-CVE-2026-28388.patch openssl-CVE-2026-28388-tests.patch
+    openssl-CVE-2026-28389.patch openssl-CVE-2026-31789.patch
+    openssl-CVE-2026-31790.patch openssl-CVE-2026-31790-tests.patch
+    openssl-CVE-2026-28390.patch
+- Fix NULL pointer dereference when processing an OCSP response
+  * Add patch openssl-NULL-pointer-dereference-in-ocsp_find_signer_sk.patch
+
+- Security fix:
+  * CVE-2026-2673: TLS 1.3 servers may choose unexpected key agreement group (bsc#1259652)
+    Added patch openssl-CVE-2026-2673.patch
+    Added patch openssl-crypto-mem.c-factor-out-memory-allocation-failure-reporting.patch
+    Added patch openssl-Add-array-memory-allocation-routines.patch
+- Remove showciphers.c in favor of openssl ciphers (forwarded request 1345573 from lmulling)</comment>
+    <requestid>1345575</requestid>
+  </revision>
 </revisionlist>

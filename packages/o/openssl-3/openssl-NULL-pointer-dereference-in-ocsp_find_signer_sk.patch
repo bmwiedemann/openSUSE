@@ -1,0 +1,22 @@
+commit de4bb3bfc7d5d56b2b678bbd90f60c8b440ea287
+Author: Alexandr Nedvedicky <sashan@openssl.org>
+Date:   Tue Mar 17 11:48:41 2026 +0100
+
+    CVE-2026-31791 NULL pointer dereference in ocsp_find_signer_sk() when ResponderID byKey is NULL
+    
+    the issue has been kindly reported and fix contributed by kamil.frankowicz@cert.pl,
+    jan.kaminski@cert.pl and bartosz.michalowski@cert.pl
+
+diff --git a/crypto/ocsp/ocsp_vfy.c b/crypto/ocsp/ocsp_vfy.c
+index 70e670cd63..d2a741c13f 100644
+--- a/crypto/ocsp/ocsp_vfy.c
++++ b/crypto/ocsp/ocsp_vfy.c
+@@ -199,6 +199,8 @@ static X509 *ocsp_find_signer_sk(const STACK_OF(X509) *certs, OCSP_RESPID *id)
+     /* Lookup by key hash */
+ 
+     /* If key hash isn't SHA1 length then forget it */
++    if (id->value.byKey == NULL)
++        return NULL;
+     if (id->value.byKey->length != SHA_DIGEST_LENGTH)
+         return NULL;
+     keyhash = id->value.byKey->data;
