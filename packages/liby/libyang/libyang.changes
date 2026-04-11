@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Apr 10 23:18:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.9:
+  * all the important changes mentioned in the transition manual
+  * `bin` value functions removed
+  * LYB uses complex encoding
+  * `tree` printer refactored
+  * schema mount improvements
+  * `anydata` changes
+  * xpath support
+  * native tree traversal support
+  * extension support significantly improved
+  * OpenConfig extensions support
+  * LYB format improvements
+  * strict `anydata` parsing (@ahassany)
+  * lots of other bugfixes and minor improvements
+  * all the important changes mentioned in the transition manual
+  * major LYB binary format optimizations
+  * user-ordered lists `diff` fixes
+  * validation optimizations
+  * lots of other bugfixes and improvements
+  * *yanglint* `extension-instance` YANG data validation support
+  * compatibility fixes for FreeBSD
+  * minor LYB data format improvements
+  * lots of other bugfixes and improvements
+
+-------------------------------------------------------------------
 Tue Sep  2 15:08:20 UTC 2025 - pgajdos@suse.com
 
 - version update to 3.13.5
