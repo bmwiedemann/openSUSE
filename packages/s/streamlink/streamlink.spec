@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}%{!?sle15_python_module_pythons:%define pythons python3}
 Name:           streamlink%{psuffix}
-Version:        8.2.1
+Version:        8.3.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause
@@ -37,7 +37,7 @@ Patch0:         remove-check-for-update.patch
 Patch1:         lower-pytest-requirement.patch
 BuildRequires:  %{python_module PySocks >= 1.5.6}
 BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module isodate}
 BuildRequires:  %{python_module lxml >= 4.6.4}
 BuildRequires:  %{python_module myst-parser >= 1.0.0}
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module pycountry}
 BuildRequires:  %{python_module pycryptodome >= 3.4.3}
 BuildRequires:  %{python_module requests >= 2.30}
 BuildRequires:  %{python_module setuptools >= 77.0}
-BuildRequires:  %{python_module sphinx-design >= 0.5.0}
+BuildRequires:  %{python_module sphinx-design >= 0.6.0}
 BuildRequires:  %{python_module trio >= 0.25.0}
 BuildRequires:  %{python_module trio-websocket >= 0.9.0}
 BuildRequires:  %{python_module urllib3 >= 2.0.0}

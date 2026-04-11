@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 11 02:23:01 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.3.0:
+  + Added: support for choosing the --interface by name on non-Windows systems,
+    with optional prefixes, similar to curl
+  + Added: support for also checking stream segments in
+    HLSStream.parse_variant_playlist() by setting check_streams="segments"
+  + Fixed: stdout/stderr streams in ProcessOutput not being fully line-buffered
+  + Updated plugins:
+    - cdnbg: rewritten and fixed plugin
+    - nicolive: added websocket reconnect attempts on HLS decryption key
+      retrieval failure
+    - soop: migrated to sooplive.com
+    - telefe: rewritten and fixed plugin
+
+-------------------------------------------------------------------
 Wed Mar 11 07:52:53 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.2.1:

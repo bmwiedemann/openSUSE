@@ -247,4 +247,23 @@
     <comment></comment>
     <requestid>1341601</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>30559df08d079e3053eecbc9d8d325d7</srcmd5>
+    <version>8.3.0</version>
+    <time>1775939140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.3.0:
+  + Added: support for choosing the --interface by name on non-Windows systems,
+    with optional prefixes, similar to curl
+  + Added: support for also checking stream segments in
+    HLSStream.parse_variant_playlist() by setting check_streams=&quot;segments&quot;
+  + Fixed: stdout/stderr streams in ProcessOutput not being fully line-buffered
+  + Updated plugins:
+    - cdnbg: rewritten and fixed plugin
+    - nicolive: added websocket reconnect attempts on HLS decryption key
+      retrieval failure
+    - soop: migrated to sooplive.com
+    - telefe: rewritten and fixed plugin (forwarded request 1345983 from rrahl0)</comment>
+    <requestid>1345984</requestid>
+  </revision>
 </revisionlist>
