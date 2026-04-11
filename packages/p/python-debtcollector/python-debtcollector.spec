@@ -1,7 +1,7 @@
 #
 # spec file for package python-debtcollector
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 Name:           python-debtcollector
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        A collection of Python deprecation patterns and strategies
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/debtcollector/latest/
-Source0:        https://files.pythonhosted.org/packages/source/d/debtcollector/debtcollector-3.0.0.tar.gz
-BuildRequires:  %{python_module fixtures}
+Source0:        https://files.pythonhosted.org/packages/source/d/debtcollector/debtcollector-%{version}.tar.gz
+BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module wrapt >= 1.7.0}
+BuildRequires:  %{python_module wrapt >= 2.1.0}
 BuildRequires:  openstack-macros
 Requires:       python-importlib-metadata
-Requires:       python-pbr
-Requires:       python-wrapt >= 1.7.0
+Requires:       python-pbr >= 6.1.1
+Requires:       python-wrapt >= 2.1.0
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-debtcollector < %{version}
 %endif
@@ -54,7 +54,7 @@ future deprecations.
 Summary:        Documentation for %{name}
 Group:          Documentation/HTML
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-openstackdocstheme >= 2.2.1
 
 %description -n python-debtcollector-doc
 A collection of Python deprecation patterns and strategies that help
@@ -70,13 +70,13 @@ future deprecations.
 This package contains documentation in HTML format.
 
 %prep
-%autosetup -p1 -n debtcollector-3.0.0
+%autosetup -p1 -n debtcollector-%{version}
 
 %build
 %pyproject_wheel
 
 # generate html doc
-PBR_VERSION=3.0.0 %{sphinx_build} -b html doc/source doc/build/html
+PBR_VERSION=%{version} %{sphinx_build} -b html doc/source doc/build/html
 # remove the Sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

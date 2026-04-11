@@ -293,4 +293,36 @@
     <comment>switch to singlespec</comment>
     <requestid>1316754</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>22397876559a076b815ac8894099fd66</srcmd5>
+    <version>3.1.0</version>
+    <time>1775939190</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.0:
+  * ruff: Configure hacking as external linter
+  * Bump wrapt to 2.1.0
+  * Add typing information
+  * Subclass removed\_property from property
+  * Bump minimum version of wrapt
+  * Integrate ruff, ruff-format
+  * Remove reference to tag framework
+  * Enable doc8 check for all .rst files
+  * Bump pyupgrade target to 3.10+
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * add pyproject.toml to support pip 23.1
+  * Drop explicit dependency on python-subunit
+  * Drop redundant injection of VIRTUAL\_ENV
+  * Drop fallback for Python &lt; 3.8
+  * Add note about requirements lower bounds
+  * Remove Python 3.8 support
+  * Use pre-commit hook to run doc8
+  * Run pyupgrade to clean up Python 2 syntaxes
+  * pre-commit: Bump versions
+  * Declare Python 3.12 support
+  * Remove old excludes
+  * reno: Update master for unmaintained/victoria</comment>
+    <requestid>1346059</requestid>
+  </revision>
 </revisionlist>
