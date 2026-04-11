@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 11 18:30:24 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1775932217.bd11042:
+  * fix: prevent deprecation warning about "spurt"
+  * feat(edid): Add virtio-vga-gl support
+  * style(llm): use indented heredocs for better readability
+  * refactor: consolidate logic in _detect_serial_marker_capability
+  * style: use non-capturing group for BASH version detection
+  * fix(distribution): make PRETTY_SERIAL_MARKER reboot-safe
+
+-------------------------------------------------------------------
 Thu Apr 09 14:22:35 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1775744546.1ee50c6:
