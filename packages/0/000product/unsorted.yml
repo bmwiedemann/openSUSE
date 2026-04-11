@@ -351,7 +351,6 @@ unsorted:
   - WPEWebDriver 
   - WSL-DistroLauncher 
   - WSL-DistroLauncher-debug 
-  - WebKitGTK-4.0-lang 
   - WindowMaker-devel 
   - WindowMaker-themes 
   - WoeUSB 
@@ -2497,8 +2496,6 @@ unsorted:
   - colord-kde 
   - colord-kde-lang 
   - colordiff 
-  - colorhug-client 
-  - colorhug-client-lang 
   - colormake 
   - colorpicker 
   - colorpicker-lang 
@@ -3729,7 +3726,6 @@ unsorted:
   - enchant-tools 
   - enchive 
   - endeavour 
-  - endeavour-devel 
   - endeavour-lang 
   - endless-sky 
   - enet-devel 
@@ -5070,7 +5066,6 @@ unsorted:
   - gensio-devel 
   - geoclue2-devel 
   - geocode-glib-devel 
-  - geocode-glib-soup2-devel 
   - geoipupdate 
   - geoipupdate-legacy 
   - geolite2legacy 
@@ -5107,6 +5102,7 @@ unsorted:
   - gettext-tools-mini 
   - gexif 
   - gexif-lang 
+  - gexiv2-devel 
   - gf2x-devel 
   - gfan 
   - gfio 
@@ -7314,9 +7310,6 @@ unsorted:
   - gnome-dictionary-lang 
   - gnome-directory-thumbnailer 
   - gnome-directory-thumbnailer-lang 
-  - gnome-doc-utils 
-  - gnome-doc-utils-devel 
-  - gnome-doc-utils-lang 
   - gnome-epub-thumbnailer 
   - gnome-firmware 
   - gnome-firmware-lang 
@@ -12099,10 +12092,10 @@ unsorted:
   - libarm_compute52 
   - libarm_compute_graph52 
   - libarmadillo15 
-  - libarmnn35 
-  - libarmnn35-opencl 
-  - libarmnnBasePipeServer35 
-  - libarmnnBasePipeServer35-opencl 
+  - libarmnn36 
+  - libarmnn36-opencl 
+  - libarmnnBasePipeServer36 
+  - libarmnnBasePipeServer36-opencl 
   - libarmnnTestUtils3 
   - libarmnnTestUtils3-opencl 
   - libarpack2 
@@ -13538,6 +13531,8 @@ unsorted:
   - libgdal-drivers 
   - libgdal38 
   - libgdata-devel 
+  - libgdata-lang 
+  - libgdata22 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
   - libgdcm3_2 
@@ -13570,7 +13565,6 @@ unsorted:
   - libgensiocpp14 
   - libgensiomdns14 
   - libgensioosh14 
-  - libgeocode-glib0 
   - libgeos3_14_1 
   - libgeos_c1 
   - libgeotiff5 
@@ -13648,7 +13642,6 @@ unsorted:
   - libglvnd-devel-32bit 
   - libglycin-2-0-32bit 
   - libglycin-devel 
-  - libglycin-gtk4-2-0 
   - libglycin-gtk4-devel 
   - libgme-devel 
   - libgme0-32bit 
@@ -13659,13 +13652,16 @@ unsorted:
   - libgmodule-2_0-0-32bit 
   - libgmpxx4 
   - libgmpxx4-32bit 
-  - libgmsh4_14 
+  - libgmsh4_15 
   - libgmxapi0 
   - libgmxapi_mpi0 
+  - libgnome-autoar-gtk-0-0 
   - libgnome-desktop-3-devel 
   - libgnome-desktop-4-devel 
   - libgnome-games-support-1-3 
+  - libgnome-games-support-2-4 
   - libgnome-games-support-devel 
+  - libgnome-games-support-lang 
   - libgnome-games-support1_3-devel 
   - libgnome-games-support1_3-lang 
   - libgnome-keyring-devel 
@@ -14186,8 +14182,11 @@ unsorted:
   - libipq0 
   - libipset13 
   - libiptc-devel 
+  - libiptcdata 
   - libiptcdata-devel 
   - libiptcdata-doc 
+  - libiptcdata-lang 
+  - libiptcdata0 
   - libircclient-devel 
   - libircclient-doc 
   - libircclient1 
@@ -14239,7 +14238,6 @@ unsorted:
   - libjasper-devel 
   - libjasper7-32bit 
   - libjavamapscript 
-  - libjavascriptcoregtk-4_0-18 
   - libjaylink-devel 
   - libjbig-devel 
   - libjbig-devel-32bit 
@@ -15062,7 +15060,7 @@ unsorted:
   - libntk1 
   - libntl45 
   - libntlm-devel 
-  - libntlm0 
+  - libntlm0-32bit 
   - libntpc1 
   - libnuma-devel 
   - libnuma1-32bit 
@@ -15630,6 +15628,7 @@ unsorted:
   - libpython3_10-1_0 
   - libpython3_11-1_0-32bit 
   - libpython3_12-1_0 
+  - libpython3_12-1_0-32bit 
   - libpython3_12-1_0-x86-64-v3 
   - libpython3_13-1_0-32bit 
   - libpython3_13t1_0 
@@ -15879,7 +15878,7 @@ unsorted:
   - libqxtglobalshortcut0 
   - librabbitmq-devel 
   - librabbitmq4 
-  - libradcli6 
+  - libradcli10 
   - librados-devel 
   - libradospp-devel 
   - libraft0 
@@ -16692,10 +16691,10 @@ unsorted:
   - libtiff-devel-32bit 
   - libtiff-devel-docs 
   - libtiff6-32bit 
-  - libtimelineDecoder35 
-  - libtimelineDecoder35-opencl 
-  - libtimelineDecoderJson35 
-  - libtimelineDecoderJson35-opencl 
+  - libtimelineDecoder36 
+  - libtimelineDecoder36-opencl 
+  - libtimelineDecoderJson36 
+  - libtimelineDecoderJson36-opencl 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -17127,7 +17126,6 @@ unsorted:
   - libwcs8 
   - libwebcam-devel 
   - libwebcam0 
-  - libwebkit2gtk-4_0-37 
   - libwebp-devel 
   - libwebp-devel-32bit 
   - libwebp7-32bit 
@@ -17176,7 +17174,9 @@ unsorted:
   - libwmime2 
   - libwnck-devel 
   - libwnck-tools 
+  - libwoff2common1_0_2 
   - libwoff2common1_0_2-32bit 
+  - libwoff2dec1_0_2 
   - libwoff2dec1_0_2-32bit 
   - libwoff2enc1_0_2 
   - libwoff2enc1_0_2-32bit 
@@ -17439,7 +17439,7 @@ unsorted:
   - libyajl-devel 
   - libyajl-devel-static 
   - libyaml-0-2-32bit 
-  - libyaml-cpp0_8-32bit 
+  - libyaml-cpp0_9-32bit 
   - libyaml-devel 
   - libyang-devel 
   - libyang-doc 
@@ -21707,7 +21707,6 @@ unsorted:
   - perl-Class-Factory-Util 
   - perl-Class-ISA 
   - perl-Class-Inner 
-  - perl-Class-Inspector 
   - perl-Class-Load 
   - perl-Class-Load-XS 
   - perl-Class-MakeMethods 
@@ -21933,7 +21932,6 @@ unsorted:
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
-  - perl-Exporter-Tiny 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
   - perl-ExtUtils-CppGuess 
@@ -21983,7 +21981,6 @@ unsorted:
   - perl-File-Rename 
   - perl-File-Rsync 
   - perl-File-Share 
-  - perl-File-ShareDir 
   - perl-File-ShareDir-Install 
   - perl-File-ShareDir-ProjectDistDir 
   - perl-File-Slurp 
@@ -22162,8 +22159,6 @@ unsorted:
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
   - perl-List-Compare 
-  - perl-List-MoreUtils 
-  - perl-List-MoreUtils-XS 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -22433,7 +22428,6 @@ unsorted:
   - perl-Parallel-ForkManager 
   - perl-Params-Classify 
   - perl-Params-Coerce 
-  - perl-Params-Util 
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
   - perl-Parse-ANSIColor-Tiny 
@@ -25933,6 +25927,7 @@ unsorted:
   - python311-hashids 
   - python311-hatanaka 
   - python311-hatch 
+  - python311-hatch-argparse-manpage 
   - python311-hatch-fancy-pypi-readme 
   - python311-hatch-jupyter-builder 
   - python311-hatch-requirements-txt 
@@ -28137,23 +28132,42 @@ unsorted:
   - python311-zxcvbn 
   - python311-zxcvbn-rs-py 
   - python312 
+  - python312-32bit 
+  - python312-argcomplete 
   - python312-base 
+  - python312-base-32bit 
   - python312-base-x86-64-v3 
+  - python312-calver 
+  - python312-click 
   - python312-curses 
   - python312-dbm 
   - python312-desktop-entry-lib 
   - python312-devel 
   - python312-doc 
   - python312-doc-devhelp 
+  - python312-flit-core 
   - python312-gwpy 
+  - python312-hatch_vcs 
+  - python312-hatchling 
   - python312-idle 
   - python312-onnx 
+  - python312-packaging 
+  - python312-pathspec 
   - python312-pegasus-wms.api 
+  - python312-pip 
+  - python312-pip-wheel 
+  - python312-platformdirs 
   - python312-plotly 
+  - python312-pluggy 
   - python312-pyroomacoustics 
+  - python312-setuptools 
+  - python312-setuptools-wheel 
+  - python312-setuptools_scm 
   - python312-testsuite 
   - python312-tk 
   - python312-tools 
+  - python312-trove-classifiers 
+  - python312-wheel 
   - python312-x86-64-v3 
   - python313-32bit 
   - python313-APScheduler 
@@ -29807,6 +29821,7 @@ unsorted:
   - python313-hashids 
   - python313-hatanaka 
   - python313-hatch 
+  - python313-hatch-argparse-manpage 
   - python313-hatch-fancy-pypi-readme 
   - python313-hatch-jupyter-builder 
   - python313-hatch-requirements-txt 
@@ -32212,6 +32227,7 @@ unsorted:
   - python314-PyQt6-sip 
   - python314-PyRIC 
   - python314-PyRSS2Gen 
+  - python314-PyRect 
   - python314-PySDL2 
   - python314-PyScreeze 
   - python314-PySnooper 
@@ -32405,6 +32421,7 @@ unsorted:
   - python314-asdf-unit-schemas 
   - python314-asdf-wcs-schemas 
   - python314-ase 
+  - python314-asgi-lifespan 
   - python314-asgiref 
   - python314-asn1crypto 
   - python314-aspectlib 
@@ -33673,6 +33690,7 @@ unsorted:
   - python314-hashids 
   - python314-hatanaka 
   - python314-hatch 
+  - python314-hatch-argparse-manpage 
   - python314-hatch-fancy-pypi-readme 
   - python314-hatch-jupyter-builder 
   - python314-hatch-requirements-txt 
@@ -33712,10 +33730,12 @@ unsorted:
   - python314-httpbin 
   - python314-httpcore 
   - python314-httplib2 
+  - python314-httpretty 
   - python314-httpsig_cffi 
   - python314-httptools 
   - python314-httpx 
   - python314-httpx-socks 
+  - python314-httpx-sse 
   - python314-httpx-ws 
   - python314-huey 
   - python314-huggingface-hub 
@@ -34148,6 +34168,7 @@ unsorted:
   - python314-miniupnpc 
   - python314-misaka 
   - python314-mistletoe 
+  - python314-mistral-vibe 
   - python314-mistralai 
   - python314-mistune 
   - python314-mistune2 
@@ -34222,6 +34243,9 @@ unsorted:
   - python314-named 
   - python314-nanobind 
   - python314-nanobind-devel 
+  - python314-napalm 
+  - python314-napalm-asa 
+  - python314-napalm-procurve 
   - python314-natsort 
   - python314-nautilus 
   - python314-nautilus-devel 
@@ -34250,9 +34274,11 @@ unsorted:
   - python314-netifaces 
   - python314-netmiko 
   - python314-netpbmfile 
+  - python314-netutils 
   - python314-networkx 
   - python314-nftables 
   - python314-nh3 
+  - python314-nibabel 
   - python314-nine 
   - python314-nitrokey 
   - python314-nkdfu 
@@ -34301,6 +34327,7 @@ unsorted:
   - python314-oci-sdk 
   - python314-octave-kernel 
   - python314-odfpy 
+  - python314-odorik 
   - python314-oic 
   - python314-oiffile 
   - python314-okta 
@@ -34680,6 +34707,8 @@ unsorted:
   - python314-pyftpdlib 
   - python314-pygal 
   - python314-pygaljs 
+  - python314-pygame 
+  - python314-pygame-devel 
   - python314-pygdbmi 
   - python314-pygerrit2 
   - python314-pygit2 
@@ -34781,6 +34810,7 @@ unsorted:
   - python314-pyprojroot 
   - python314-pypsexec 
   - python314-pypubsub 
+  - python314-pypuppetdb 
   - python314-pyqt-builder 
   - python314-pyquery 
   - python314-pyrad 
@@ -35233,6 +35263,7 @@ unsorted:
   - python314-scikit-hep-testdata 
   - python314-scikit-image 
   - python314-scikit-learn 
+  - python314-scikit-sound 
   - python314-scikit-sparse 
   - python314-scipy 
   - python314-scitokens 
@@ -35410,6 +35441,7 @@ unsorted:
   - python314-srcinfo 
   - python314-srt 
   - python314-ssdeep 
+  - python314-sse-starlette 
   - python314-sseclient 
   - python314-sshpubkeys 
   - python314-stack-data 
@@ -35540,6 +35572,7 @@ unsorted:
   - python314-topy 
   - python314-tornado 
   - python314-tornado6 
+  - python314-tortilla 
   - python314-towncrier 
   - python314-tox 
   - python314-tox-no-internet 
@@ -36852,8 +36885,6 @@ unsorted:
   - rke 
   - rke2 
   - rke2-1.29 
-  - rke2-1.31 
-  - rke2-1.32 
   - rke2-1.33 
   - rke2-1.34 
   - rke2-selinux 
@@ -49266,6 +49297,7 @@ unsorted:
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GData-0_0 
   - typelib-1_0-GES-1_0 
+  - typelib-1_0-GExiv2-0_16 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
   - typelib-1_0-GPaste-2 
@@ -49293,7 +49325,6 @@ unsorted:
   - typelib-1_0-Gdaui-6_0 
   - typelib-1_0-GdkPixdata-2_0 
   - typelib-1_0-Gee-0_8 
-  - typelib-1_0-GeocodeGlib-1_0 
   - typelib-1_0-Gepub-0_7 
   - typelib-1_0-Gfls-1 
   - typelib-1_0-Ggit-1_0 
@@ -49368,7 +49399,6 @@ unsorted:
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ibis-1_0 
   - typelib-1_0-Ido3-0_1 
-  - typelib-1_0-JavaScriptCore-4_0 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-3_0 
@@ -49440,8 +49470,6 @@ unsorted:
   - typelib-1_0-Vips-8.0 
   - typelib-1_0-Vte-2_91 
   - typelib-1_0-Vte-3_91 
-  - typelib-1_0-WebKit2-4_0 
-  - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
   - typelib-1_0-WebKitWebProcessExtension-6_0 
   - typelib-1_0-Wp-0_5 
@@ -50130,16 +50158,12 @@ unsorted:
   - webcamoid 
   - webdot 
   - webenginepart 
-  - webkit-jsc-4 
   - webkit-jsc-4.1 
   - webkit-jsc-6.0 
-  - webkit2gtk-4_0-injected-bundles 
-  - webkit2gtk3-devel 
-  - webkit2gtk3-minibrowser 
-  - webkit2gtk3-soup2-devel 
-  - webkit2gtk3-soup2-minibrowser 
-  - webkit2gtk4-devel 
-  - webkit2gtk4-minibrowser 
+  - webkitgtk3-devel 
+  - webkitgtk3-minibrowser 
+  - webkitgtk4-devel 
+  - webkitgtk4-minibrowser 
   - weblate 
   - weblug 
   - webrepl 
@@ -50588,8 +50612,6 @@ unsorted:
   - xml-stylebook 
   - xml-stylebook-demo 
   - xml-stylebook-javadoc 
-  - xml2po 
-  - xml2po-devel 
   - xmlb-tool 
   - xmlbird-devel 
   - xmlformat 
