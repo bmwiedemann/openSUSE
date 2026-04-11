@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 10 19:53:48 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260410:
+  * Fix RB query for non-NA countries when translated
+  * Update Turkish translation
+  * Update Japanese translations
+  * vx8: Fix 6.25kHz step channels being off frequency
+
+-------------------------------------------------------------------
 Fri Apr  3 12:28:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260403:

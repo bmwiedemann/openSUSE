@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">chirp</param>
-    <param name="versionformat">20260403</param>
-    <param name="revision">45fd68cd20271e24778669eec19ec290caf8b559</param>
+    <param name="versionformat">20260410</param>
+    <param name="revision">6025bd4d75cbdf54cea51688e5645c63568701ed</param>
   </service>
   <service mode="manual" name="set_version"/>
   <service name="tar" mode="buildtime"/>
