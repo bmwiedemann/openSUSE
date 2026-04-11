@@ -106,4 +106,16 @@
     <comment></comment>
     <requestid>1327615</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>14b21385a0e545c9f71b8360054bf474</srcmd5>
+    <version>3.36.0</version>
+    <time>1775939182</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.36.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Improve type checking
+- Update BuildRequires and Requires from setup.py</comment>
+    <requestid>1346054</requestid>
+  </revision>
 </revisionlist>

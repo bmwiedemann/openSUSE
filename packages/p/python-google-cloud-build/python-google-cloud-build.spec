@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-build
-Version:        3.35.0
+Version:        3.36.0
 Release:        0
 Summary:        Google Cloud Build API client library
 License:        Apache-2.0
@@ -30,11 +30,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 1.34.0}
+BuildRequires:  %{python_module google-api-core >= 2.11.0}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
-BuildRequires:  %{python_module proto-plus >= 1.22.3}
-BuildRequires:  %{python_module protobuf >= 3.20.2}
+BuildRequires:  %{python_module proto-plus >= 1.25.0}
+BuildRequires:  %{python_module protobuf >= 4.25.8}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -44,11 +44,11 @@ Requires:       python-grpcio >= 1.33.2
 %else
 Requires:       python-grpcio >= 1.75.1
 %endif
-Requires:       python-google-api-core >= 1.34.0
+Requires:       python-google-api-core >= 2.11.0
 Requires:       python-google-auth >= 2.14.1
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
-Requires:       python-proto-plus >= 1.22.3
-Requires:       python-protobuf >= 3.20.2
+Requires:       python-proto-plus >= 1.25.0
+Requires:       python-protobuf >= 4.25.8
 BuildArch:      noarch
 %python_subpackages
 
