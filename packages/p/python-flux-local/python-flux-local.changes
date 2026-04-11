@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Apr 11 07:43:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.2.0:
+  * Add HelmChart resource support and enhance HelmRelease handling
+    by @mouchar in #1066
+  * chore(deps): update docker.io/alpine/helm docker tag to v4 by
+    @renovate[bot] in #1045
+  * chore(deps): update actions/checkout action to v6 - autoclosed
+    by @renovate[bot] in #1044
+  * chore(deps): update peter-evans/create-pull-request action to
+    v8 by @renovate[bot] in #1060
+  * feat: add ExternalArtifact as local source by @jkotiuk in #1056
+  * chore(deps): update pre-commit hook astral-sh/ruff-pre-commit
+    to v0.14.11 by @renovate[bot] in #1071
+  * New updates detected with Cruft by @github-actions[bot] in
+    #1076
+  * Update devcontainer to
+    mcr.microsoft.com/devcontainers/python:3.14-bookworm by
+    @allenporter in #1078
+  * Replace kubernetes-dashboard with headlamp in test repositories
+    by @allenporter in #1079
+  * Avoid spwaning subprocesses to speed up tests by @allenporter
+    in #1080
+  * Add additional subprocess caching to speed up tests by
+    @allenporter in #1081
+  * Fix headlamp tests by @allenporter in #1082
+  * chore(deps): update dependency pip to v26 by @renovate[bot] in
+    #1075
+  * chore(deps): update dependency mashumaro to v3.18 by
+    @renovate[bot] in #1074
+  * Update renovate chart to use oci by @allenporter in #1086
+  * chore(deps): update dependency oras to v0.2.39 by
+    @renovate[bot] in #1083
+  * chore(deps): update dependency ruff to v0.15.1 by
+    @renovate[bot] in #1084
+  * chore(deps): update pre-commit hook astral-sh/ruff-pre-commit
+    to v0.15.1 by @renovate[bot] in #1085
+  * Mark OCI charts as succeed when OCI is disabled. by
+    @allenporter in #1087
+  * chore: Update Flux CLI version by @onedr0p in #1088
+  * chore(deps): update github artifact actions (major) by
+    @renovate[bot] in #1089
+  * New updates detected with Cruft by @github-actions[bot] in
+    #1096
+  * feat: add more helm template flags by @neodejack in #1092
+  * feat: Resolve HelmRelease chartRef to HelmChart resources by
+    @allenporter in #1097
+
+-------------------------------------------------------------------
 Tue Jan 13 06:43:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.1.0:
