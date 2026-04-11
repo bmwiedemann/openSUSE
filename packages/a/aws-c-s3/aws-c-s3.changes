@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:53:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.12.2
+  * Better checksumming support by @DmitriyMusatkin in (#623)
+- from version 0.12.1
+  * Fix the try-trim logic by @TingDaoK in (#621)
+
+-------------------------------------------------------------------
+Wed Mar 25 10:35:29 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.12.0
+  * Auto - Update S3 Ruleset & Partition by @aws-crt-bot in (#613)
+  * Optimize the sizes of buffers requested from mem pool
+    by @DmitriyMusatkin in (#563)
+
+-------------------------------------------------------------------
 Fri Feb  6 11:59:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.11.5
