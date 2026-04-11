@@ -1,7 +1,7 @@
 #
 # spec file for package cross-s390x-gcc13-bootstrap
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,7 +108,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.4.0+git9739
+Version:        13.4.1+git10254
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -139,7 +139,6 @@ Patch24:        gcc13-sanitizer-remove-crypt-interception.patch
 Patch26:        gcc13-pr101523.patch
 Patch27:        gcc13-amdgcn-remove-fiji.patch
 Patch28:        gcc13-bsc1239566.patch
-Patch29:        gcc13-sanitizer-vs-termio.diff
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -297,12 +296,18 @@ Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 %if 0%{!?gcc_accel:1}
 # Generally only one cross for the same target triplet can be installed
 # at the same time as we are populating a non-version-specific sysroot
-# The -bootstrap packages file-conflict with the non-bootstrap variants.
+# The -bootstrap packages file-conflict with the non-bootstrap variants
+# and between each others due to shared unsuffixed binary names unless
+# we use update-alternatives which we still do before SLE-16.
 # Even if we don't actually (want to) distribute the bootstrap variants
 # the following avoids repo-checker spamming us endlessly.
+%if 0%{!?gcc_libc_bootstrap:1} || %{suse_version} >= 1600
 Provides:       %{gcc_target_arch}-gcc
 Conflicts:      %{gcc_target_arch}-gcc
+%endif
+%if 0%{!?gcc_libc_bootstrap:1}
 Conflicts:      %{pkgname}-bootstrap
+%endif
 %endif
 #!BuildIgnore: gcc-PIE
 %if %{build_cp}
@@ -367,7 +372,6 @@ ln -s newlib-4.3.0.20230120/newlib .
 %patch -P 26 -p1
 %patch -P 27 -p1
 %patch -P 28 -p1
-%patch -P 29 -p1
 %patch -P 51
 %patch -P 60 -p1
 %patch -P 61 -p1

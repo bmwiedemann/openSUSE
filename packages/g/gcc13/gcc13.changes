@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr  9 07:31:15 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-13 branch head, 0cc1f282d5bc63745cb3b873c, git10254
+  * pulls build fixes for libcody when using a C++20 defaulting host
+    compiler
+- Remove now included gcc13-sanitizer-vs-termio.diff
+
+-------------------------------------------------------------------
+Thu Mar 19 12:49:54 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Avoid conflicts between %gcc_libc_bootstrap packages of different
+  versions if update-alternatives are still in use (SLE 15 and older)
+
+-------------------------------------------------------------------
 Thu Oct  9 14:33:53 UTC 2025 - Michael Matz <matz@suse.com>
 
 - Add gcc13-sanitizer-vs-termio.diff to fix build with glibc 2.42.

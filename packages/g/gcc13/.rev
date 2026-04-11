@@ -489,4 +489,18 @@ that go1.21 can be build.  I believe Staging:L for now.
 - Add gcc13-sanitizer-vs-termio.diff to fix build with glibc 2.42.</comment>
     <requestid>1310027</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>00819d3830654d011f1d3b7c83804563</srcmd5>
+    <version>13.4.1+git10254</version>
+    <time>1775942012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-13 branch head, 0cc1f282d5bc63745cb3b873c, git10254
+  * pulls build fixes for libcody when using a C++20 defaulting host
+    compiler
+- Remove now included gcc13-sanitizer-vs-termio.diff
+
+- Avoid conflicts between %gcc_libc_bootstrap packages of different
+  versions if update-alternatives are still in use (SLE 15 and older)</comment>
+    <requestid>1345660</requestid>
+  </revision>
 </revisionlist>
