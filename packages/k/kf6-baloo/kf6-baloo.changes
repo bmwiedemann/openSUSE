@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:18:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.25.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.25.0
+- Changes since 6.24.0:
+  * Update dependency version to 6.25.0
+  * Fix remaining QFile::open nodiscard warnings
+  * [FileIndexerConfigUtils] Fix a nodiscard warning in fixture setup
+  * [FileIndexerConfigUtils] Remove unneeded QTextStream
+  * [FileIndexerConfigTest] Get rid of an almost duplicate helper function
+  * [FileIndexerConfigTest] Reduce repetitions/manual expansion
+  * [FileIndexerConfigTest] Reduce string puzzles to improve readability
+  * [FileIndexerConfigTest] Move single-use strings out of header file
+  * [DocumentUrlDBTest] Remove unused helper function
+  * [ExtractorProcess] Verify transaction was sucessfully created
+  * Tell the compiler QFile::open(fd, ...) can not fail for STDIN
+  * [Query] Use explicit percent-encoding for title and json data
+  * [QuerySerializationTest] Extend test coverage for disallowed characters
+  * [QuerySerializationTest] Cover fromSearchUrl/toSearchUrl methods
+  * [QuerySerializationTest] Make JSON roundtrip test data driven
+  * Update version to 6.25.0
+
+-------------------------------------------------------------------
 Mon Mar  9 08:07:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.24.0
