@@ -1,7 +1,7 @@
 #
 # spec file for package python-dm-tree
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,41 +17,41 @@
 
 
 Name:           python-dm-tree
-Version:        0.1.8
+Version:        0.1.10
 Release:        0
 Summary:        Tree is a library for working with nested data structures
 License:        Apache-2.0
 URL:            https://github.com/deepmind/tree
-Source:         https://files.pythonhosted.org/packages/source/d/dm-tree/dm-tree-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/dm_tree/dm_tree-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/google-deepmind/tree/pull/50
 Patch0:         remove-abseil.patch
 # PATCH-FIX-UPSTREAM Based on https://github.com/google-deepmind/tree/pull/73
 Patch1:         use-system-pybind11.patch
 # PATCH-FIX-OPENSUSE Set debug build so we get symbols
 Patch2:         set-debug.patch
-BuildRequires:  python-rpm-macros
-BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  cmake
+BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module absl-py >= 0.6.1}
 BuildRequires:  %{python_module attrs >= 18.2.0}
-BuildRequires:  %{python_module numpy >= 1.15.4}
-BuildRequires:  %{python_module wrapt >= 1.11.2}
+BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wrapt >= 1.11.2}
 # /SECTION
-BuildRequires:  fdupes
 %python_subpackages
 
 %description
 Tree is a library for working with nested data structures.
 
 %prep
-%autosetup -p1 -n dm-tree-%{version}
+%autosetup -p1 -n dm_tree-%{version}
 
 %build
 export CFLAGS="%{optflags}"

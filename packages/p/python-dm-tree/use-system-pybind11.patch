@@ -1,48 +1,87 @@
-From 5dd767f3e60d9e4c58f6ee7764b24e1dec2c5edb Mon Sep 17 00:00:00 2001
-From: Alexander Tsvyashchenko <ndl@endl.ch>
-Date: Sat, 1 Jan 2022 13:22:47 +0100
-Subject: [PATCH] Use system pybind11 and absl when available
-
-Current CMakeLists.txt always downloads and builds `pybind11` and `absl` which conflicts with packaging best practices in some of the distributions. This change uses system libraries (if available) and falls back to the old behavior (if not).
----
- tree/CMakeLists.txt | 122 ++++++++++++++++++++++++--------------------
- 1 file changed, 66 insertions(+), 56 deletions(-)
-
-Index: dm-tree-0.1.8/tree/CMakeLists.txt
-===================================================================
---- dm-tree-0.1.8.orig/tree/CMakeLists.txt
-+++ dm-tree-0.1.8/tree/CMakeLists.txt
-@@ -50,18 +50,21 @@ if(APPLE)
-   set (CMAKE_FIND_FRAMEWORK LAST)
+--- dm_tree-0.1.10.orig/tree/CMakeLists.txt	2026-03-31 14:56:46.000000000 +0000
++++ dm_tree-0.1.10/tree/CMakeLists.txt	2026-04-11 11:59:57.471680860 +0000
+@@ -7,8 +7,7 @@
+ 
+ project (tree LANGUAGES CXX)
+ 
+-option(USE_SYSTEM_ABSEIL "Force use of system abseil-cpp" OFF)
+-option(USE_SYSTEM_PYBIND11 "Force use of system pybind11" OFF)
++option(USE_SYSTEM_PYBIND11 "Force use of system pybind11" ON)
+ 
+ # Required for Python.h and python binding.
+ find_package(Python3 COMPONENTS Interpreter Development)
+@@ -61,66 +60,21 @@
+ # abseil-cpp and pybind11).
+ include(FetchContent)
+ 
+-# Needed to disable Abseil tests.
+-set(BUILD_TESTING OFF)
+-
+-# Try to find abseil-cpp package system-wide first.
+-if (USE_SYSTEM_ABSEIL)
+-    message(STATUS "Use system abseil-cpp: ${USE_SYSTEM_ABSEIL}")
+-    set(ABSEIL_FIND_PACKAGE_ARGS FIND_PACKAGE_ARGS)
+-endif()
+-
+-# Include abseil-cpp.
+-set(ABSEIL_REPO https://github.com/abseil/abseil-cpp)
+-set(ABSEIL_CMAKE_ARGS
+-  "-DCMAKE_INSTALL_PREFIX=${CMAKE_SOURCE_DIR}/abseil-cpp"
+-  "-DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}"
+-  "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
+-  "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}"
+-  "-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}"
+-  "-DCMAKE_POSITION_INDEPENDENT_CODE=${CMAKE_POSITION_INDEPENDENT_CODE}"
+-  "-DLIBRARY_OUTPUT_PATH=${CMAKE_SOURCE_DIR}/abseil-cpp/lib"
+-  "-DABSL_PROPAGATE_CXX_STD=ON")
+-if(DEFINED CMAKE_OSX_ARCHITECTURES)
+-  set(ABSEIL_CMAKE_ARGS
+-      ${ABSEIL_CMAKE_ARGS}
+-      "-DCMAKE_OSX_ARCHITECTURES=${CMAKE_OSX_ARCHITECTURES}")
+-endif()
+-
+-FetchContent_Declare(
+-  absl
+-  URL         ${ABSEIL_REPO}/archive/refs/tags/20260107.1.tar.gz
+-  URL_HASH    SHA256=4314e2a7cbac89cac25a2f2322870f343d81579756ceff7f431803c2c9090195
+-  CMAKE_ARGS  ${ABSEIL_CMAKE_ARGS}
+-  EXCLUDE_FROM_ALL
+-  ${ABSEIL_FIND_PACKAGE_ARGS})
+-
+ # Try to find pybind11 package system-wide first.
+ if (USE_SYSTEM_PYBIND11)
+-    message(STATUS "Use system pybind11: ${USE_SYSTEM_PYBIND11}")
+-    set(PYBIND11_FIND_PACKAGE_ARGS FIND_PACKAGE_ARGS)
++    find_package(pybind11 CONFIG)
  endif()
  
--# Fetch pybind to be able to use pybind11_add_module symbol.
--set(PYBIND_VER v2.10.1)
--include(FetchContent)
 -FetchContent_Declare(
 -  pybind11
--  GIT_REPOSITORY https://github.com/pybind/pybind11
--  GIT_TAG        ${PYBIND_VER}
--)
--if(NOT pybind11_POPULATED)
--    FetchContent_Populate(pybind11)
--    add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
--    include_directories(${pybind11_INCLUDE_DIR})
-+find_package(pybind11 CONFIG)
+-  URL       https://github.com/pybind/pybind11/archive/refs/tags/v3.0.1.tar.gz
+-  URL_HASH  SHA256=741633da746b7c738bb71f1854f957b9da660bcd2dce68d71949037f0969d0ca
+-  ${PYBIND11_FIND_PACKAGE_ARGS})
+-
+-FetchContent_MakeAvailable(absl pybind11)
 +if (NOT pybind11_FOUND)
-+  # Fetch pybind to be able to use pybind11_add_module symbol.
-+  set(PYBIND_VER v2.10.1)
-+  include(FetchContent)
 +  FetchContent_Declare(
 +    pybind11
-+    GIT_REPOSITORY https://github.com/pybind/pybind11
-+    GIT_TAG        ${PYBIND_VER}
-+  )
-+  if(NOT pybind11_POPULATED)
-+      FetchContent_Populate(pybind11)
-+      add_subdirectory(${pybind11_SOURCE_DIR} ${pybind11_BINARY_DIR})
-+      include_directories(${pybind11_INCLUDE_DIR})
-+  endif()
- endif()
++    URL       https://github.com/pybind/pybind11/archive/refs/tags/v3.0.1.tar.gz
++    URL_HASH  SHA256=741633da746b7c738bb71f1854f957b9da660bcd2dce68d71949037f0969d0ca)
++  FetchContent_MakeAvailable(pybind11)
++endif()
  
  # Define pybind11 tree module.
+ pybind11_add_module(_tree tree.h tree.cc)
+ 
+-target_link_libraries(
+-  _tree
+-  PRIVATE
+-    absl::int128
+-    absl::raw_hash_set
+-    absl::raw_logging_internal
+-    absl::strings
+-    absl::synchronization
+-    absl::throw_delegate)
+-
+ # Make the module private to tree package.
+ set_target_properties(_tree PROPERTIES OUTPUT_NAME tree/_tree)

@@ -11,4 +11,17 @@
   * set-debug.patch -- Build using debug symbols.</comment>
     <requestid>1186515</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ea206413126553dd41ea3d5f7eb789cf</srcmd5>
+    <version>0.1.10</version>
+    <time>1775939183</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.10:
+  * Added support for Python 3.14.
+  * Dropped support for Python &lt;3.10.
+- remove-abseil.patch, use-system-pybind11.patch: refresh
+
+- Initial release of 0.1.8.</comment>
+    <requestid>1346058</requestid>
+  </revision>
 </revisionlist>
