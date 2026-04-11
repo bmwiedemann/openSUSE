@@ -125,6 +125,7 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %check
 %{buildroot}/%{_bindir}/%{binary_name} --version | grep %{version}
 rm -rf tests/contest/
+%{cargo_test}
 
 %files
 %doc README.md
