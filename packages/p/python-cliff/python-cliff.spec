@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cliff
-Version:        4.13.2
+Version:        4.13.3
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
 URL:            https://docs.openstack.org/cliff/latest/
 Source:         https://files.pythonhosted.org/packages/source/c/cliff/cliff-%{version}.tar.gz
-Patch1:         cmd2-3.1.0-compat.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,12 +32,12 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module autopage >= 0.4.0}
 BuildRequires:  %{python_module PrettyTable >= 0.7.2}
 BuildRequires:  %{python_module PyYAML >= 3.12}
-BuildRequires:  %{python_module Sphinx >= 2.0.0}
+BuildRequires:  %{python_module Sphinx >= 5.0.0}
 BuildRequires:  %{python_module cmd2 >= 1.0.0}
-BuildRequires:  %{python_module coverage >= 4.0}
-BuildRequires:  %{python_module fixtures}
+BuildRequires:  %{python_module coverage >= 5.0}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module stevedore >= 2.0.1}
+BuildRequires:  %{python_module stevedore >= 5.6.0}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  %{python_module testtools >= 2.2.0}
 # /SECTION
@@ -47,7 +46,7 @@ Requires:       python-PrettyTable >= 0.7.2
 Requires:       python-PyYAML >= 3.12
 Requires:       python-autopage >= 0.4.0
 Requires:       python-cmd2 >= 1.0.0
-Requires:       python-stevedore >= 2.0.1
+Requires:       python-stevedore >= 5.6.0
 BuildArch:      noarch
 %python_subpackages
 

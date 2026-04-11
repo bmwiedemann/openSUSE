@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 10 19:34:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.3:
+  * typing: Remove additional use of private _argparse module
+  * typing: Broaden return type of Command.get_parser
+  * Relax help usage assertion for module-based runners
+  * Fix cliff sphinxextention for Python 3.14
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.1
+  * Update .gitreview for stable/2026.1
+  * Fix compatibility with cmd2 3.1.0+
+- drop cmd2-3.1.0-compat.patch: upstream
+
+-------------------------------------------------------------------
 Mon Mar 16 09:31:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add cmd2-3.1.0-compat.patch

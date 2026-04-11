@@ -664,4 +664,20 @@
   * Add typing classifier</comment>
     <requestid>1339302</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>69eda9f6f32c12d203d6fbd617faae72</srcmd5>
+    <version>4.13.3</version>
+    <time>1775939125</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.13.3:
+  * typing: Remove additional use of private _argparse module
+  * typing: Broaden return type of Command.get_parser
+  * Relax help usage assertion for module-based runners
+  * Fix cliff sphinxextention for Python 3.14
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.1
+  * Update .gitreview for stable/2026.1
+  * Fix compatibility with cmd2 3.1.0+
+- drop cmd2-3.1.0-compat.patch: upstream</comment>
+    <requestid>1345955</requestid>
+  </revision>
 </revisionlist>
