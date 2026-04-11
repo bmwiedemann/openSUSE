@@ -87,4 +87,16 @@
     <comment></comment>
     <requestid>1327616</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35588857cd0abb02a63b3a80c6537faf</srcmd5>
+    <version>1.13.0</version>
+    <time>1775939181</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking</comment>
+    <requestid>1346053</requestid>
+  </revision>
 </revisionlist>
