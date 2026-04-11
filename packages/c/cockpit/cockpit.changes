@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr  9 13:05:29 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 360
+  * 360
+    - ws: be more explicit when handling hostnames on cli bsc#1261829/CVE-2026-4631
+    - ws: support loading a custom login page
+    - Translation updates
+  * 359
+    - Bug fixes and translation updates
+
+-------------------------------------------------------------------
+Wed Mar 25 13:38:23 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 358
+  * 358
+    - Networking: Add Wi-Fi support
+    - Cockpit Client updated to GTK 4
+    - Bugfixes and translation updates
+    - Dependency updates
+  * 357
+    - lib: Use browser context menu on shift
+    - bridge: support Python 3.14 on old kernels (RHEL 8)
+
+-------------------------------------------------------------------
+Wed Mar 25 07:23:18 UTC 2026 - Luna D Dragon <luna.dragon@suse.com>
+
+- add 0010-Override-kdump-message.patch bsc#1259774
+
+-------------------------------------------------------------------
+Wed Mar 18 11:36:38 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Refactor packagekit-single-install.patch to match upstream
+  * bsc#1259210
+
+-------------------------------------------------------------------
 Mon Feb 23 13:16:16 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996

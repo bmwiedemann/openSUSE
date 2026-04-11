@@ -907,4 +907,33 @@ outside of Factory
     <comment>- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996</comment>
     <requestid>1335033</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>e4598c017e17599aa555fef4bb2e1cb7</srcmd5>
+    <version>360</version>
+    <time>1775938974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 360
+  * 360
+    - ws: be more explicit when handling hostnames on cli bsc#1261829/CVE-2026-4631
+    - ws: support loading a custom login page
+    - Translation updates
+  * 359
+    - Bug fixes and translation updates
+
+- Update to 358
+  * 358
+    - Networking: Add Wi-Fi support
+    - Cockpit Client updated to GTK 4
+    - Bugfixes and translation updates
+    - Dependency updates
+  * 357
+    - lib: Use browser context menu on shift
+    - bridge: support Python 3.14 on old kernels (RHEL 8)
+
+- add 0010-Override-kdump-message.patch bsc#1259774
+
+- Refactor packagekit-single-install.patch to match upstream
+  * bsc#1259210</comment>
+    <requestid>1345802</requestid>
+  </revision>
 </revisionlist>

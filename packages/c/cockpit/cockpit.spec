@@ -56,7 +56,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-3.0 AND BSD-3-Clause
 URL:            https://cockpit-project.org/
 
-Version:        356
+Version:        360
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
 Source2:        cockpit-rpmlintrc
@@ -90,6 +90,7 @@ Patch111:       0001-cockpit-overview-support-SUSE_SUPPORT_PRODUCT-keys.patch
 Patch112:       0002-cockpit-kdump-support-SLE-micro-6.2.patch
 Patch113:       0003-branding-use-SUSE_SUPPORT_PRODUCT-and-SUSE_SUPPORT_P.patch
 Patch114:       0009-packagekit-reboot-notification.patch
+Patch115:       0010-Override-kdump-message.patch
 Patch201:       remove_rh_links.patch
 
 %define build_all 1
@@ -273,6 +274,7 @@ BuildRequires:  python3-pytest-timeout
 
 %if 0%{?suse_version} >= 1600
 %patch -P 110 -p1
+%patch -P 115 -p1
 %if !0%{?is_opensuse}
 %patch -P  111 -p1
 %patch -P  112 -p1

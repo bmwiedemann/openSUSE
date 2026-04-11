@@ -1,0 +1,25 @@
+From de6f14c1bdf0ac9fc879c38ed12c290e7a49e50f Mon Sep 17 00:00:00 2001
+From: Luna D Dragon <luna.dragon@suse.com>
+Date: Wed, 25 Mar 2026 12:06:22 +0530
+Subject: [PATCH] Override kdump message
+
+---
+ pkg/kdump/kdump-view.jsx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pkg/kdump/kdump-view.jsx b/pkg/kdump/kdump-view.jsx
+index c9cc2fa8f..54ebc4997 100644
+--- a/pkg/kdump/kdump-view.jsx
++++ b/pkg/kdump/kdump-view.jsx
+@@ -555,7 +555,7 @@ ${enableCrashKernel}
+                         <span className="pf-v6-u-font-family-monospace-vf">crashkernel</span>
+                     );
+                     alertDetail = fmt_to_fragments(
+-                        _("Reserve memory at boot time by setting a '$0' option on the kernel command line. For example, append '$1' to $2  in $3 or use your distribution's kernel argument editor."),
++                        _("Reserve memory at boot time by running systemctl enable --now kdump.service. This service is expected to fail the first time it run. After rebooting it will succeed."),
+                         <span className="pf-v6-u-font-family-monospace-vf">crashkernel</span>,
+                         <span className="pf-v6-u-font-family-monospace-vf">crashkernel=512M</span>,
+                         <span className="pf-v6-u-font-family-monospace-vf">GRUB_CMDLINE_LINUX</span>,
+-- 
+2.53.0
+
