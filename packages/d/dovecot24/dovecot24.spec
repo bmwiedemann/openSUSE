@@ -57,6 +57,8 @@ URL:            https://www.dovecot.org
 Source:         https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz
 Source1:        https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz
 Source2:        dovecot-rpmlintrc
+Source3:        https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz.sig
+Source4:        https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz.sig
 Source12:       dovecot24.keyring
 Source13:       dovecot-2.4.configfiles
 Source15:       dovecot.conf
@@ -582,8 +584,10 @@ fi
 %{_mandir}/man1/doveadm-acl.1%{?ext_man}
 %{_mandir}/man1/doveadm-altmove.1%{?ext_man}
 %{_mandir}/man1/doveadm-auth.1%{?ext_man}
+%{_mandir}/man1/doveadm-backup.1%{?ext_man}
 %{_mandir}/man1/doveadm-compress-connect.1%{?ext_man}
 %{_mandir}/man1/doveadm-config.1%{?ext_man}
+%{_mandir}/man1/doveadm-copy.1%{?ext_man}
 %{_mandir}/man1/doveadm-deduplicate.1%{?ext_man}
 %{_mandir}/man1/doveadm-dict.1%{?ext_man}
 %{_mandir}/man1/doveadm-dump.1%{?ext_man}
@@ -634,6 +638,7 @@ fi
 %{_mandir}/man1/sieve-test.1%{?ext_man}
 %{_mandir}/man1/sievec.1%{?ext_man}
 %{_mandir}/man1/sieved.1%{?ext_man}
+%{_mandir}/man7/doveadm-search-query.7%{?ext_man}
 %{_mandir}/man7/pigeonhole.7%{?ext_man}
 # doc
 %doc %{_docdir}/%{pkg_name}

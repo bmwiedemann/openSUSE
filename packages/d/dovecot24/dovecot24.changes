@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 19:25:42 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Upstream republished the source tarballs for 2.4.3 due to missing
+  man pages in the tarball
+- Added signature files for source tarballs
+
+-------------------------------------------------------------------
 Fri Mar 27 10:23:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.4.3 (boo#1260893 boo#1260894 boo#1260895 boo#1260896
