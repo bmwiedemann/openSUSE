@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Mar 29 20:51:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.0.27:
+  * Updated phone metadata for region code(s):
+    BF, BL, CM, GF, GH, GP, GU, KE, MF, MQ, MY, SX, TD, TJ, US
+  * New geocoding data for country calling code(s): 1738 (en)
+  * New carrier data for country calling code(s): 1721 (en)
+  * Updated carrier data for country calling code(s):
+    60 (en), 599 (en), 992 (en)
+  *  Updated / refreshed time zone meta data.
+- includes changes from v9.0.26:
+   * Updated phone metadata for region code(s):
+     BL, GF, GP, GY, KY, MF, PL, PM, VU
+  * Updated short number metadata for region code(s): BL, GF, GP, GY, MF, PM
+  * Updated geocoding data for country calling code(s): 48 (en)
+  * Updated carrier data for country calling code(s):
+    33 (en), 44 (en), 229 (en), 591 (en), 1345 (en)
+- includes changes from v9.0.25:
+  * Updated alternate formatting data for country calling code(s): 90
+  * Updated phone metadata for region code(s): 882, HK, MY, PA, SL, TG, TR
+  * Updated short number metadata for region code(s): KR
+  * New geocoding data for country calling code(s): 1728 (en)
+  * Updated carrier data for country calling code(s):
+    33 (en), 44 (en), 55 (en), 60 (en), 81 (en), 90 (en), 228 (en), 232 (en),
+    420 (en), 852 (en, zh)
+  * Updated / refreshed time zone meta data.
+- includes changes from v9.0.24:
+  * Updated alternate formatting data for country calling code(s): 352
+  * Updated phone metadata for region code(s):
+    CF, HT, KZ, LU, PL, RU, SG, TT, TZ
+  * Updated geocoding data for country calling code(s):
+    7 (en, ru), 1437 (en), 1445 (en)
+  * Updated carrier data for country calling code(s):
+    32 (en), 65 (en), 255 (en), 381 (en), 685 (en), 853 (en), 976 (en)
+ - Updated / refreshed time zone meta data.
+
+-------------------------------------------------------------------
 Tue Feb 10 21:10:02 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.0.23:
