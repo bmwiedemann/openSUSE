@@ -19,7 +19,7 @@
 
 %define libsoname liberasurecode1
 Name:           liberasurecode
-Version:        1.6.5
+Version:        1.7.1
 Release:        0
 Summary:        Erasure Code API library with pluggable Erasure Code backends
 License:        BSD-3-Clause
@@ -54,7 +54,9 @@ Development files for the Unified Erasure Coding interface.
 %build
 ./autogen.sh
 %configure \
-	--disable-static \
+        --enable-pic \
+        --enable-shared \
+	--enable-static \
 	--disable-mmi \
 	%{nil}
 %make_build
@@ -81,6 +83,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/liberasurecode
 %{_includedir}/config_liberasurecode.h
 %{_includedir}/erasurecode*.h
+%exclude %{_libdir}/lib*.a
 %{_libdir}/libXorcode.so
 %{_libdir}/liberasurecode.so
 %{_libdir}/libnullcode.so

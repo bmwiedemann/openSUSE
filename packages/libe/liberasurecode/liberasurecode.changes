@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 10 21:38:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Fixed version number.
+  * Added a new ISA-L backend based on Vandermonde matrices but
+    allowing optimal codes even with more than four parity.
+  * Properly fail when there are too many failures for
+    flat_xor_hd to handle.
+  * Fixed compiler warning about maybe-uninitialized tables.
+  * Other minor fixes and updates.
+
+-------------------------------------------------------------------
 Sat Feb  8 15:47:16 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.6.5:
@@ -112,7 +123,7 @@ Mon Feb 29 10:56:53 UTC 2016 - dmueller@suse.com
   * doxygen documentation fixes
   * Minor bugfixes including removing offending MAJOR/MINOR version macros
   * Enforce upper limit 32 on the number of erasure coding fragments
-   (#data + #chunks) < 32 
+   (#data + #chunks) < 32
   * Introduce 'liberasurecode_rs_vand', a native, software-based Reed-Soloman
    Vandermonde backend
   * Properly set W in the new internal RS backend.  Without this change, the

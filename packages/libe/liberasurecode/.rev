@@ -80,4 +80,20 @@
     <comment></comment>
     <requestid>1244511</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e47f4187c93f257da462e852cbd23c9f</srcmd5>
+    <version>1.7.1</version>
+    <time>1775939126</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed version number.
+  * Added a new ISA-L backend based on Vandermonde matrices but
+    allowing optimal codes even with more than four parity.
+  * Properly fail when there are too many failures for
+    flat_xor_hd to handle.
+  * Fixed compiler warning about maybe-uninitialized tables.
+  * Other minor fixes and updates.
+
+   (#data + #chunks) &lt; 32</comment>
+    <requestid>1345957</requestid>
+  </revision>
 </revisionlist>
