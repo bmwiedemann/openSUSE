@@ -52,4 +52,27 @@
     <comment></comment>
     <requestid>1283383</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c91f3ab5e567ccf68f2140709ee2a055</srcmd5>
+    <version>4.1.0</version>
+    <time>1775939134</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.0:
+  * Fixed stray characters in `FlatDict.__repr__` output
+  * Added type annotations to `FlatDict` and `FlatterDict`
+  * Converted from single module (`flatdict.py`) to package
+    (`flatdict/`)
+  * Removed `__version__` attribute (use
+    `importlib.metadata.version('flatdict')` instead)
+  * Replaced `==` with `is` for type comparisons in `FlatterDict`
+  * Added exception chaining in `FlatterDict.__setitem__`
+  * Removed Python &lt; 3.6 compatibility code
+  * Migrated from pip to uv for dependency management
+  * Switched test runner from unittest discovery to pytest
+  * Switched to OIDC trusted publishing for PyPI deploys
+  * Converted from `setup.py`/`setup.cfg` to `pyproject.toml`
+    with hatchling
+  * Switched to `hatch-vcs` for version management</comment>
+    <requestid>1345980</requestid>
+  </revision>
 </revisionlist>

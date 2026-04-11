@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 11 00:22:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Fixed stray characters in `FlatDict.__repr__` output
+  * Added type annotations to `FlatDict` and `FlatterDict`
+  * Converted from single module (`flatdict.py`) to package
+    (`flatdict/`)
+  * Removed `__version__` attribute (use
+    `importlib.metadata.version('flatdict')` instead)
+  * Replaced `==` with `is` for type comparisons in `FlatterDict`
+  * Added exception chaining in `FlatterDict.__setitem__`
+  * Removed Python < 3.6 compatibility code
+  * Migrated from pip to uv for dependency management
+  * Switched test runner from unittest discovery to pytest
+  * Switched to OIDC trusted publishing for PyPI deploys
+  * Converted from `setup.py`/`setup.cfg` to `pyproject.toml`
+    with hatchling
+  * Switched to `hatch-vcs` for version management
+
+-------------------------------------------------------------------
 Thu Jun  5 08:53:51 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Enable sle15allpythons to additionally build for modern Python
