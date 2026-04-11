@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:48:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.38.4
+  * fix(http): use user-provided ClientBootstrap in HttpConnection
+    by @abhu85 in (#823)
+  * Unified write data API binding by @azkrishpy in (#839)
+  * bump version af aws-c-s3 by @sbiscigl in (#841)
+
+-------------------------------------------------------------------
+Wed Apr  1 14:22:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.38.3
+  * Add missing ctor impl by @sbiscigl in (#837)
+- from version 0.38.2
+  * Bind out proxy settings for profile and web
+    identity creds provider by @sbiscigl in (#835)
+- from version 0.38.1
+  * [Bug Fix] Fix exposed private header for metrics
+    by @xiazhvera in (#832)
+- from version 0.38.0
+  * Add IoT Metrics Support by @xiazhvera in (#809)
+  * Bump event stream by @azkrishpy in (#830)
+
+-------------------------------------------------------------------
 Mon Mar 23 11:04:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.37.4
