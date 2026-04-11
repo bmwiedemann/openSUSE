@@ -1,7 +1,7 @@
 #
 # spec file for package libfixbuf
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 9
 Name:           libfixbuf
-Version:        2.5.2
+Version:        2.5.4
 Release:        0
 Summary:        Implementation of the IPFIX Protocol as a C library
 License:        LGPL-3.0-only
