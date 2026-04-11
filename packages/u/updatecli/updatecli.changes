@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Sat Apr 11 06:59:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.116.0:
+  * Features
+    - feat: source caching @loispostula (#8291)
+    - feat: golang module support pseudo version @olblak (#8293)
+    - feat(github): add client-side pull request merge option
+      @LeC-D (#8204)
+    - feat: add PyPI resource and pyproject autodiscovery plugins
+      @loispostula (#8155)
+    - feat(telemetry): add OpenTelemetry tracing for pipeline
+      execution @loispostula (#8055)
+    - feat: allow to filter compose policies based on policy id
+      @olblak (#8246)
+    - feat(version): add pep440 version kind @loispostula (#8245)
+  * Bug Fixes
+    - fix(yaml): compare decoded scalar values to avoid rewriting
+      folded blocks @loispostula (#8296)
+    - fix(github): nil-check token source to avoid panic when no
+      token configured @loispostula (#8298)
+  * Maintenance
+    - install Zizmor gha action v0.5.2 @updateclibot[bot] (#8294)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#8206)
+    - deps(updatecli/policies): bump all policies
+      @updateclibot[bot] (#8205)
+    - deps(updatecli/policies): bump all policies
+      @updateclibot[bot] (#8179)
+
+-------------------------------------------------------------------
+Thu Mar 26 05:47:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.115.0:
+  * Features
+    - feat(compose): add include parameter to compose file @olblak
+      (#8120)
+    - feat(autodiscovery): by default enable gha digest @olblak
+      (#8074)
+    - fix(github): allow GitHub client creation without a token for
+      unauthenticated access @railgun-0402 (#8054)
+    - fix(file): don't output binary file content @AdeshDeshmukh
+      (#7874)
+    - feat(flux): support multiple yaml documents @olblak (#8056)
+    - Dockerfile: Add ability to leave unset or empty value alone
+      @Vlatombe (#7870)
+    - feat(compose): support inline values @olblak (#7868)
+    - feat(autodiscovery): align matching rule validation across
+      all plugins @railgun-0402 (#7867)
+    - feat(tmp): add --unique-tmp-dir flag to support parallel
+      execution @railgun-0402 (#7864)
+    - feat(scm): add gitlabsearch SCM plugin @railgun-0402 (#7843)
+  * Bug Fixes
+    - fix(json): disable HTML escaping when writing JSON files
+      @loispostula (#8090)
+    - When the Adoptium API advertises a MostRecentFeatureRelease
+      (e.g. 26) @loispostula (#8075)
+    - fix(gitlabsearch): add missing depth parameter @olblak
+      (#7934)
+    - fix(githubsearch): add missing depth parameter support
+      @olblak (#7933)
+    - fix(helm): Remove validation check for helm chart name
+      @varad-kadam (#7873)
+    - fix(dockercompose): add compose*.y*ml to defaultFilePattern
+      @qianlongzt (#7845)
+    - fix(autodiscovery/argocd): correctly handle multiple
+      documents @olblak (#7848)
+    - fix(autodiscovery/kubernetes): handle multiple yaml document
+      @olblak (#7846)
+  * Maintenance
+    - chore: update typos action to version v1.44.0 @olblak (#8108)
+    - chore: improve various gha pipeline @olblak (#8076)
+    - deps(go): bump module helm.sh/helm/v3 to v3.20.1
+      @updateclibot[bot] (#8079)
+    - refactor(httpclient): centralize HTTP client creation and
+      harden transport @loispostula (#8072)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.8.1 @updateclibot[bot] (#8068)
+    - chore(deps): bump github.com/buger/jsonparser from 1.1.1 to
+      1.1.2 in the go_modules group across 1 directory
+      @dependabot[bot] (#8070)
+    - chore(deps): bump google.golang.org/grpc from 1.79.1 to
+      1.79.3 in the go_modules group across 1 directory
+      @dependabot[bot] (#8036)
+    - deps: Bump Golang version to 1.26.1 @updateclibot[bot]
+      (#8002)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.5.2 @updateclibot[bot] (#7988)
+    - install Zizmor gha action v0.5.2 @updateclibot[bot] (#7986)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/service/ec2 to v1.289.1
+      @updateclibot[bot] (#7976)
+    - deps(go): bump module github.com/getsops/sops/v3 to v3.12.1
+      @updateclibot[bot] (#7963)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.11 @updateclibot[bot] (#7956)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#7819)
+    - vi : github action workflow typo @olblak (#7876)
+    - deps: Bump updatecli version @olblak (#7875)
+    - chore(deps): bump github.com/docker/cli from
+      28.5.0+incompatible to 29.2.0+incompatible in the go_modules
+      group across 1 directory @dependabot[bot] (#7869)
+    - Add GitHub Actions workflow for zizmor security analysis
+      @olblak (#7865)
+    - deps(go): bump module github.com/aws/smithy-go to v1.24.2
+      @updateclibot[bot] (#7858)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.8.0 @updateclibot[bot] (#7850)
+    - deps(go): bump module golang.org/x/net to v0.51.0
+      @updateclibot[bot] (#7857)
+    - deps(go): bump module gitlab.com/gitlab-org/api/client-go to
+      v1.45.0 @updateclibot[bot] (#7854)
+    - deps(go): bump module github.com/go-git/go-git/v5 to v5.17.0
+      @updateclibot[bot] (#7852)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.0
+      @updateclibot[bot] (#7823)
+    - chore(deps): bump go.opentelemetry.io/otel/sdk from 1.38.0 to
+      1.40.0 in the go_modules group across 1 directory
+      @dependabot[bot] (#7847)
+    - chore(deps): bump github.com/cloudflare/circl from 1.6.1 to
+      1.6.3 in the go_modules group across 1 directory
+      @dependabot[bot] (#7842)
+    - deps(go): bump module github.com/zclconf/go-cty to v1.18.0
+      @updateclibot[bot] (#7830)
+    - deps(go): bump module github.com/aws/smithy-go to v1.24.1
+      @updateclibot[bot] (#7832)
+
+-------------------------------------------------------------------
 Wed Feb 25 10:01:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.114.0:
