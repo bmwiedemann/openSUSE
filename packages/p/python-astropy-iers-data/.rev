@@ -167,4 +167,18 @@
     data/compare/v0.2026.1.19.0.42.31...v0.2026.3.9.0.47.45</comment>
     <requestid>1339106</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>819dc74fe45d11c1d73e2cb371568321</srcmd5>
+    <version>0.2026.4.6.0.54.57</version>
+    <time>1775939183</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2026.4.6.0.54.57:
+  * TST: expand test matrix to include all supported Python
+    versions
+  * DEP: drop support for CPython 3.8 and 3.9 (EOL)
+  * CLN: remove unused tox `build_docs` env
+  * BLD: use an include list instead of an exclude list for
+    source dist artifacts</comment>
+    <requestid>1346057</requestid>
+  </revision>
 </revisionlist>

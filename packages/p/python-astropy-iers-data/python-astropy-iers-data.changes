@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 11 11:44:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2026.4.6.0.54.57:
+  * TST: expand test matrix to include all supported Python
+    versions
+  * DEP: drop support for CPython 3.8 and 3.9 (EOL)
+  * CLN: remove unused tox `build_docs` env
+  * BLD: use an include list instead of an exclude list for
+    source dist artifacts
+
+-------------------------------------------------------------------
 Sun Mar 15 14:55:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2026.3.9.0.47.45:

@@ -26,13 +26,13 @@
 %endif
 
 Name:           python-astropy-iers-data%{psuffix}
-Version:        0.2026.3.9.0.47.45
+Version:        0.2026.4.6.0.54.57
 Release:        0
 Summary:        IERS Earth Rotation and Leap Second tables for the astropy core package
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/astropy-iers-data
 Source:         https://files.pythonhosted.org/packages/source/a/astropy-iers-data/astropy_iers_data-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
