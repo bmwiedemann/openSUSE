@@ -124,6 +124,17 @@ if [ -f /etc/chrony.conf ]; then
 	systemctl enable chronyd
 fi
 
+cat >/etc/fstab.script <<"EOF"
+#!/bin/sh
+set -euxo pipefail
+# Add umask=0077 to the ESP (boo#1250510)
+gawk -i inplace '$2 == "/boot/efi" && $4 == "defaults" { $4 = $4",umask=0077" } { print $0 }' /etc/fstab
+# Ensure it's present
+gawk '$2 == "/boot/efi" { if ($4 !~ /umask=0077/) exit(1); }' /etc/fstab
+EOF
+
+chmod a+x /etc/fstab.script
+
 #======================================
 # Add default kernel boot options
 #--------------------------------------

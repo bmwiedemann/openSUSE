@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:47:11 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Use set -euxo pipefail for generated script
+- Assert that /boot/efi has the correct umask
+- Drop systemd-experimental as systemd-pcrlock is in udev
+- Add "umask=0077" for the ESP to keep /boot/efi/loader/random-seed secret
+  (boo#1250510) 
+
+-------------------------------------------------------------------
 Tue Jan 20 11:06:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use zypp-* configuration packages and patch zypp.conf only when
