@@ -40,4 +40,16 @@
   * remove setup.cfg configuration for creating universal wheels (#981) (forwarded request 1327410 from glaubitz)</comment>
     <requestid>1327429</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>60a059bd173b3544f447da84d0e3feb6</srcmd5>
+    <version>3.15.0</version>
+    <time>1775939130</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.15.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Improve type checking
+  * support mTLS certificates when available</comment>
+    <requestid>1345970</requestid>
+  </revision>
 </revisionlist>

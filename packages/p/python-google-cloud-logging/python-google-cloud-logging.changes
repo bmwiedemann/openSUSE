@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 10 23:21:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Improve type checking
+  * support mTLS certificates when available
+
+-------------------------------------------------------------------
 Thu Jan 15 14:24:15 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.13.0
