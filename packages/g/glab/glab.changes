@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Apr 11 07:00:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.92.1:
+  * Bug Fixes
+    - a91ac2ae: fix(auth): clear stale credentials before OAuth
+      flow, not after (Kai Armstrong karmstrong@gitlab.com)
+  * Maintenance
+    - b830236f: ci: fix release notes bot token override and remove
+      redundant jq install (Kai Armstrong karmstrong@gitlab.com)
+- Update to version 1.92.0:
+  * Features
+    - a5848540: feat: add duo-cli path override (Andrei Zubov
+      azubov@gitlab.com)
+    - 388a0f44: feat: add glab todo list and done commands (Kai
+      Armstrong karmstrong@gitlab.com)
+  * Bug Fixes
+    - 8acb8487: fix(auth): clear stale credentials on re-login to
+      fix OAuth-to-token switch (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 6f30fd44: fix(clone): "glab repo clone" with custom directory
+      (Martin Schurz 2090677-schurzi@users.noreply.gitlab.com)
+    - 3dffae69: fix(token): fix rotate command failing to match
+      tokens by numeric ID (Kai Armstrong karmstrong@gitlab.com)
+    - b5624786: fix: add enum constraints and positional arg hints
+      to MCP tool schemas (Kai Armstrong karmstrong@gitlab.com)
+    - 8b01065a: fix: avoid GET /projects/:id in changelog generate
+      to support CI job tokens (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 5a83a038: fix: handle numeric timezone offsets in
+      oauth2_expiry_date parsing (Kai Armstrong
+      karmstrong@gitlab.com)
+    - d0fa983b: fix: map 'user' config key to GLAB_USER to prevent
+      $USER shadowing (Kai Armstrong karmstrong@gitlab.com)
+    - 0d7a0be7: fix: use GitLab API for default branch instead of
+      git remote show (Kai Armstrong karmstrong@gitlab.com)
+  * Documentation
+    - 5b34c099: docs: Add link to changelogs info (Brendan
+      blynch@gitlab.com)
+    - 5cd14e11: docs: update mr note examples to use resolve/reopen
+      subcommands (Kai Armstrong karmstrong@gitlab.com)
+  * Dependencies
+    - 29e4990c: chore(deps): update module
+      github.com/hashicorp/go-version to v1.9.0 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - 4571890b: chore(deps): update module
+      github.com/modelcontextprotocol/go-sdk to v1.5.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 3284fe2a: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.13.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 08deb1d3: chore: add Claude Code project settings and
+      gitignore local overrides (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 412f53ec: ci: add expire_in to sign_windows job artifacts
+      (Kai Armstrong karmstrong@gitlab.com)
+    - 40d9efbd: ci: use dedicated GITLAB_TOKEN_RELEASE_NOTES
+      variable for notify-issues job (Kai Armstrong
+      karmstrong@gitlab.com)
+
+-------------------------------------------------------------------
 Thu Apr 02 04:47:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.91.0:
