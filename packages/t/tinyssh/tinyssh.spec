@@ -1,7 +1,7 @@
 #
 # spec file for package tinyssh
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,15 @@
 
 
 Name:           tinyssh
-Version:        20250501
+Version:        20260401
 Release:        0
 Summary:        A minimalistic SSH server which implements only a subset of SSHv2 features
 License:        CC0-1.0
 Group:          Productivity/Networking/SSH
 URL:            https://tinyssh.org/
 Source0:        https://github.com/janmojzis/tinyssh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/janmojzis/tinyssh/releases/download/%{version}/%{version}.tar.gz.asc
-Source2:        %{name}-%{version}.tar.gz
-Source3:        %{version}.tar.gz.asc
+Source1:        https://github.com/janmojzis/tinyssh/releases/download/%{version}/%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
 Source4:        %{name}.keyring
-Patch0:         tinyssh-gcc14-compat.patch
 
 %description
 tinyssh is a minimalistic SSH server which implements only a subset of SSHv2
@@ -40,7 +37,7 @@ unsafe features (such as password or hostbased authentication) or doesn't
 use dynamic memory allocation (no allocation failures, etc.)
 
 %prep
-%autosetup -a2
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -56,7 +53,7 @@ export PREFIX=/usr
 %endif
 
 %files
-%license LICENCE.md
+%license LICENSE.md
 %doc README*
 %{_sbindir}/tinysshd
 %{_sbindir}/tinysshd-makekey

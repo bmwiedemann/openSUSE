@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr  6 13:08:12 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 20260401:
+  * Fixed session handling, now rejects out-of-order or duplicate channel requests.
+  * Fixed connection shutdown, timeout handling and subprocess waiting edge cases.
+  * Fixed inherited file-descriptor leak before fork.
+  * Fixed file descriptor leak in authorized_keys processing.
+  * Fixed log buffer purging and a potential out-of-bounds read in buf_putsharedsecret_.
+  * Updated makefilegen.sh to use gcc -MM -isystem /usr/local/include
+  * Moved LICENCE.md -> LICENSE.md
+
+-------------------------------------------------------------------
+Sun Mar  1 21:14:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20260301:
+  * Fixed crypto_sign_ed25519_tinyssh_open, now rejects
+    signatures where S >= L (Ed25519 group order).
+- drop tinyssh-gcc14-compat.patch (obsolete)
+
+-------------------------------------------------------------------
 Mon May  5 19:50:38 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 20250501:

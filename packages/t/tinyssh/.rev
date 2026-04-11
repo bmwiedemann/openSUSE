@@ -96,4 +96,27 @@
   * add lib1305 support</comment>
     <requestid>1275341</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9e860403d04b8c5dce4df1328e818133</srcmd5>
+    <version>20260301</version>
+    <time>1774469926</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342322</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6b1f02bf268e9651152f7184ad280c2d</srcmd5>
+    <version>20260401</version>
+    <time>1775939187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20260401:
+  * Fixed session handling, now rejects out-of-order or duplicate channel requests.
+  * Fixed connection shutdown, timeout handling and subprocess waiting edge cases.
+  * Fixed inherited file-descriptor leak before fork.
+  * Fixed file descriptor leak in authorized_keys processing.
+  * Fixed log buffer purging and a potential out-of-bounds read in buf_putsharedsecret_.
+  * Updated makefilegen.sh to use gcc -MM -isystem /usr/local/include
+  * Moved LICENCE.md -&gt; LICENSE.md</comment>
+    <requestid>1346050</requestid>
+  </revision>
 </revisionlist>
