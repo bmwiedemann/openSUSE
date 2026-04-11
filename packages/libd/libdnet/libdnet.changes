@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:41:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to libdnet-1.18.2:
+  * 1.18.1 was skipped due to a few unresolved issues.
+  * fix copyright typo
+  * Fix encoding (iso-8859 -> utf-8) and add GL CI config
+  * config.h.in: Fix wrong return type
+
+-------------------------------------------------------------------
 Tue Apr  2 15:12:24 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.18.0

@@ -221,4 +221,16 @@
     <comment></comment>
     <requestid>1164158</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2a56afa457a6598bbe8063c7cc91c4bf</srcmd5>
+    <version>1.18.2</version>
+    <time>1775938986</time>
+    <user>dimstar_suse</user>
+    <comment>- update to libdnet-1.18.2:
+  * 1.18.1 was skipped due to a few unresolved issues.
+  * fix copyright typo
+  * Fix encoding (iso-8859 -&gt; utf-8) and add GL CI config
+  * config.h.in: Fix wrong return type</comment>
+    <requestid>1345943</requestid>
+  </revision>
 </revisionlist>
