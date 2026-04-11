@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  7 09:19:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.47.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Improve type checking
+
+-------------------------------------------------------------------
 Fri Mar 27 12:35:27 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.46.0

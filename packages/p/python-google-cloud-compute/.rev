@@ -109,4 +109,15 @@
     change exemption is approved in internal http://b/488396206. (forwarded request 1343187 from glaubitz)</comment>
     <requestid>1343191</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f221800d8e325a930811c70ae0494f23</srcmd5>
+    <version>1.47.0</version>
+    <time>1775939180</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.47.0:
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Improve type checking</comment>
+    <requestid>1346052</requestid>
+  </revision>
 </revisionlist>
