@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 11 06:59:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.69:
+  * Fixed
+    - MD055,MD056: emit per-row fixes to preserve inline-disabled
+      rows (099443f)
+    - MD073: make should_skip case-insensitive to match
+      detect_toc_region (3d5ad7b)
+    - MD050: use skip-context-aware detection for consistent mode
+      target style (a82362d)
+    - MD044: use byte-based Fix range to handle multi-byte content
+      on line (e85e032)
+    - apply_warning_fixes returns content unchanged when no fixes
+      present (a892a90)
+    - md013: reflow overlong single-line normalize content
+      (cfa6954)
+    - MD055: preserve trailing newline in check() Fix replacement
+      for end-of-document tables (7cebfcb)
+
+-------------------------------------------------------------------
 Thu Apr 09 11:58:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.68:
