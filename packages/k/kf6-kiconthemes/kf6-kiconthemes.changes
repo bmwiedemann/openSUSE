@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:19:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.25.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.25.0
+- Changes since 6.24.0:
+  * Update dependency version to 6.25.0
+  * Explain why SVG preference was reverted
+  * Don't try to create KIconTheme with empty theme name
+  * Revert "KIconTheme: Prefer SVG files over PNG files" (kde#516007)
+  * Update version to 6.25.0
+
+-------------------------------------------------------------------
 Mon Mar  9 08:07:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.24.0
