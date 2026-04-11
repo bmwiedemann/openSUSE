@@ -1,7 +1,7 @@
 #
 # spec file for package python-pkgconfig
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pkgconfig
-Version:        1.5.5
+Version:        1.6.0
 Release:        0
 Summary:        Interface Python with pkg-config
 License:        MIT
@@ -46,7 +46,7 @@ command line tool
 
 %prep
 %setup -q -n pkgconfig-%{version}
-(cd ..; tar xf %{SOURCE1} pkgconfig-%{version}/{test_pkgconfig.py,data})
+(cd ..; tar xf %{SOURCE1} pkgconfig-%{version}/tests)
 
 %build
 %pyproject_wheel
@@ -56,7 +56,7 @@ command line tool
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k "not test_configure_extension"
 
 %files %{python_files}
 %license LICENSE

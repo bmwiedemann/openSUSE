@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:38:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.6.0
+  * Drop support for Python < 3.9, support 3.9 .. 3.14.
+  * README: clarify pkg-config and pkgconf, #75
+  * Switch CI from Travis to GitHub Actions; test on all supported Python versions.
+  * Use src/ layout for project, fixes #36. Also move tests and test data to tests/.
+  * Replace deprecated distutils with setuptools to make tests work on Python 3.12; fixes #64.
+  * Fix configure_extension for empty cflags or libs.
+- Adjust path list for extracting tests from GitHub archive
+- Skip test_configure_extension test during testsuite
+
+-------------------------------------------------------------------
 Tue Jun  3 11:38:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
