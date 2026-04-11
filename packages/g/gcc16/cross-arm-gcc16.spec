@@ -91,22 +91,18 @@
 %endif
 %endif
 
-%if 0%{?gcc_icecream:1}
-%define sysroot %{_prefix}/%{gcc_target_arch}
-%else
 # offloading builds newlib in-tree and can install in
 # the GCC private path without extra sysroot
 %if 0%{!?gcc_accel:1}
 # use same sysroot as in binutils.spec
 %define sysroot %{_prefix}/%{binutils_os}/sys-root
 %endif
-%endif
 
 Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        16.0.1+git8152
+Version:        16.0.1+git8410
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -196,7 +192,6 @@ BuildRequires:  zlib-devel
 %ifarch ia64
 BuildRequires:  libunwind-devel
 %endif
-%if 0%{!?gcc_icecream:1}
 %if 0%{!?gcc_libc_bootstrap:1}
 %if 0%{?gcc_target_newlib:1}
 %if !0%{?is_opensuse}
@@ -223,7 +218,6 @@ ExclusiveArch:  do-not-build
 %endif
 BuildRequires:  cross-%cross_arch-glibc-devel
 %requires_ge cross-%cross_arch-glibc-devel
-%endif
 %endif
 %if "%{cross_arch}" == "nvptx"
 BuildRequires:  nvptx-tools
@@ -260,7 +254,7 @@ ExclusiveArch:  %arm
 ExcludeArch:    %{cross_arch}
 %endif
 %endif
-%if 0%{?gcc_icecream:1}%{?gcc_libc_bootstrap:1}
+%if 0%{?gcc_libc_bootstrap:1}
 %if %{suse_version} < 1699 && "%{cross_arch}" == "loongarch64"
 ExclusiveArch:  do-not-build
 %else
@@ -279,9 +273,13 @@ Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 # The -bootstrap packages file-conflict with the non-bootstrap variants.
 # Even if we don't actually (want to) distribute the bootstrap variants
 # the following avoids repo-checker spamming us endlessly.
+%if 0%{!?gcc_libc_bootstrap:1}
 Provides:       %{gcc_target_arch}-gcc
 Conflicts:      %{gcc_target_arch}-gcc
+%endif
+%if 0%{!?gcc_libc_bootstrap:1}
 Conflicts:      %{pkgname}-bootstrap
+%endif
 %endif
 #!BuildIgnore: gcc-PIE
 %if %{build_cp}
@@ -300,10 +298,6 @@ License:        GPL-3.0-or-later
 
 %description
 The GNU Compiler Collection as a cross-compiler targeting %{cross_arch}.
-%if 0%{?gcc_icecream:1}
-Note this is only useful for building freestanding things like the
-kernel since it fails to include target libraries and headers.
-%endif
 %if 0%{?gcc_libc_bootstrap:1}
 This is a package that is necessary for bootstrapping another package
 only, it is not intended for any other use.
@@ -767,20 +761,7 @@ amdgcn-amdhsa,\
 export QEMU_STACK_SIZE=64M
 %endif
 
-%if 0%{!?gcc_icecream:1}
 make %{?make_output_sync} %{?_smp_mflags}
-%else
-make %{?make_output_sync} %{?_smp_mflags} all-host
-%endif
-
-%if 0%{?gcc_icecream:%gcc_icecream}
-%package -n cross-%cross_arch-gcc16-icecream-backend
-Summary:        Icecream backend for the GNU C Compiler
-Group:          Development/Languages/C and C++
-
-%description -n cross-%cross_arch-gcc16-icecream-backend
-This package contains the icecream environment for the GNU C Compiler
-%endif
 
 %if 0%{?nvptx_newlib:1}
 %package -n cross-nvptx-newlib16-devel
@@ -825,9 +806,6 @@ rm -f $RPM_BUILD_ROOT/%{targetlibsubdir}/liblto_plugin.la
 rm -f $RPM_BUILD_ROOT%{_libdir}/libiberty.a
 
 # install and fixup target parts
-%if 0%{?gcc_icecream:1}
-# so expect the sysroot to be populated from natively built binaries
-%else
 # We want shared libraries to reside in the sysroot but the .so symlinks
 # on the host.  Once we have a cross target that has shared libs we need
 # to manually fix up things here like we do for non-cross compilers
@@ -843,7 +821,6 @@ find $RPM_BUILD_ROOT/%_prefix/include/c++/%{gcc_dir_version} -mindepth 1 -maxdep
 find $RPM_BUILD_ROOT/%_prefix/include/c++/%{gcc_dir_version} -maxdepth 1 -type f | xargs -r rm
 # And also remove installed pretty printers which conflict in similar ways
 rm -rf $RPM_BUILD_ROOT/%{_datadir}/gcc%{binsuffix}
-%endif
 %endif
 
 %if 0%{?binutils_os:1}
@@ -886,54 +863,20 @@ ln -s %{_prefix}/amdgcn-amdhsa/bin/nm $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhs
 ln -s %{_prefix}/amdgcn-amdhsa/bin/ranlib $RPM_BUILD_ROOT%{_prefix}/bin/amdgcn-amdhsa-ranlib
 %endif
 
-%if 0%{?gcc_icecream:%gcc_icecream}
-# Build an icecream environment
-# The assembler comes from the cross-binutils, and hence is _not_
-# named funnily, not even on ppc, so there we need the original target
-install -s -D %{_prefix}/bin/%{binutils_os}-as \
-	$RPM_BUILD_ROOT/env/usr/bin/as
-install -s $RPM_BUILD_ROOT/%{_prefix}/bin/%{gcc_target_arch}-g++%{binsuffix} \
-	$RPM_BUILD_ROOT/env/usr/bin/g++
-install -s $RPM_BUILD_ROOT/%{_prefix}/bin/%{gcc_target_arch}-gcc%{binsuffix} \
-	$RPM_BUILD_ROOT/env/usr/bin/gcc
-
-for back in cc1 cc1plus; do
-	install -s -D $RPM_BUILD_ROOT/%{targetlibsubdir}/$back \
-		$RPM_BUILD_ROOT/env%{targetlibsubdir}/$back
-done
-if test -f $RPM_BUILD_ROOT/%{targetlibsubdir}/liblto_plugin.so; then
-  install -s -D $RPM_BUILD_ROOT/%{targetlibsubdir}/liblto_plugin.so \
-		$RPM_BUILD_ROOT/env%{targetlibsubdir}/liblto_plugin.so
-fi
-
-# Make sure to also pull in all shared library requirements for the
-# binaries we put into the environment which is operated by chrooting
-# into it and execing the compiler
-libs=`for bin in $RPM_BUILD_ROOT/env/usr/bin/* $RPM_BUILD_ROOT/env%{targetlibsubdir}/*; do \
-  ldd $bin | sed -n '\,^[^/]*\(/[^ ]*\).*,{ s//\1/; p; }'  ;\
-done | sort -u `
-for lib in $libs; do
-  # Check wether the same library also exists in the parent directory,
-  # and prefer that on the assumption that it is a more generic one.
-  baselib=`echo "$lib" | sed 's,/[^/]*\(/[^/]*\)$,\1,'`
-  test -f "$baselib" && lib=$baselib
-  install -s -D $lib $RPM_BUILD_ROOT/env$lib
-done
-
-cd $RPM_BUILD_ROOT/env
-tar --no-recursion --mtime @${SOURCE_DATE_EPOCH:-$(date +%s)} --format=gnu -cv `find *|LC_ALL=C sort` |\
-  gzip -n9 > ../%{name}_%{_arch}.tar.gz
-cd ..
-mkdir -p usr/share/icecream-envs
-mv %{name}_%{_arch}.tar.gz usr/share/icecream-envs
-rpm -q --changelog glibc >  usr/share/icecream-envs/%{name}_%{_arch}.glibc
-rpm -q --changelog binutils >  usr/share/icecream-envs/%{name}_%{_arch}.binutils
-rm -r env
+# for the -bootstrap compilers only keep versioned gcc and cpp binaries
+# so they are co-installable
+%if 0%{?gcc_libc_bootstrap:1}
+mv $RPM_BUILD_ROOT%{_prefix}/bin/%{gcc_target_arch}-cpp $RPM_BUILD_ROOT%{_prefix}/bin/%{gcc_target_arch}-cpp%{binsuffix}
+rm -f $RPM_BUILD_ROOT%{_prefix}/bin/%{gcc_target_arch}-gcc
+rm -f $RPM_BUILD_ROOT%{_prefix}/bin/%{gcc_target_arch}-gcc-ar
+rm -f $RPM_BUILD_ROOT%{_prefix}/bin/%{gcc_target_arch}-gcc-nm
+rm -f $RPM_BUILD_ROOT%{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib
+rm -f $RPM_BUILD_ROOT%{_prefix}/bin/%{gcc_target_arch}-lto-dump
 %endif
 
 # we provide update-alternatives for selecting a compiler version for
 # crosses
-%if 0%{!?gcc_accel:1} && %{suse_version} < 1600
+%if 0%{!?gcc_accel:1} && 0%{!?gcc_libc_bootstrap:1} && %{suse_version} < 1600
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for ex in gcc cpp \
 %if %{build_cp}
@@ -988,6 +931,10 @@ fi
 %{_prefix}/bin/amdgcn-amdhsa-ranlib
 %endif
 %else
+%if 0%{?gcc_libc_bootstrap:1}
+%{_prefix}/bin/%{gcc_target_arch}-gcc%{binsuffix}
+%{_prefix}/bin/%{gcc_target_arch}-cpp%{binsuffix}
+%else
 %{_prefix}/bin/%{gcc_target_arch}-gcc%{binsuffix}
 %if %{suse_version} < 1600
 %{_prefix}/bin/%{gcc_target_arch}-cpp%{binsuffix}
@@ -996,7 +943,7 @@ fi
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-lto-dump%{binsuffix}
 %endif
-%if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" != "bpf"
+%if "%{cross_arch}" != "bpf"
 %if %{suse_version} < 1600
 %{_prefix}/bin/%{gcc_target_arch}-gcov%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcov-dump%{binsuffix}
@@ -1019,7 +966,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-nm
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-ranlib
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-lto-dump
-%if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" != "bpf"
+%if "%{cross_arch}" != "bpf"
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-dump
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-tool
@@ -1034,7 +981,6 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-c++
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-g++
 %endif
-%if 0%{!?gcc_libc_bootstrap:1}
 %if "%{cross_arch}" == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
 %{_prefix}/include/c++
 %endif
@@ -1044,14 +990,8 @@ fi
 %dir %{_libdir}/gcc/%{gcc_target_arch}
 %{targetlibsubdir}
 %endif
-%if 0%{!?gcc_icecream:1} && 0%{!?gcc_libc_bootstrap:1} && 0%{?sysroot:1}
+%if 0%{!?gcc_libc_bootstrap:1} && 0%{?sysroot:1}
 %{sysroot}
-%endif
-
-%if 0%{?gcc_icecream:%gcc_icecream}
-%files -n cross-%cross_arch-gcc16-icecream-backend
-%defattr(-,root,root)
-/usr/share/icecream-envs
 %endif
 
 %if 0%{?nvptx_newlib:1}

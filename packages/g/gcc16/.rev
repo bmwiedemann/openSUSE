@@ -46,4 +46,23 @@ builds significantly due to switching to release checking.
 - Package libquadmath independently of fortran</comment>
     <requestid>1340890</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c18adb8969bfaabed77fa8b17c1752c9</srcmd5>
+    <version>16.0.1+git8410</version>
+    <time>1775942011</time>
+    <user>dimstar_suse</user>
+    <comment>- Only package version suffixed binaries in %gcc_libc_bootstrap
+  packages, drop LTO related tools from them.  This makes them
+  co-installable between different GCC versions.
+- Going forward no longer register alternatives via update-alternatives
+  for %gcc_libc_bootstrap packages, even on older distros.
+
+- Update to 16.0.1+git8410
+
+- Avoid conflicts between %gcc_libc_bootstrap packages of different
+  versions if update-alternatives are still in use (SLE 15 and older)
+
+- Wipe all icecream backend build support from the spec file.</comment>
+    <requestid>1345505</requestid>
+  </revision>
 </revisionlist>

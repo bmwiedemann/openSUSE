@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr  2 09:31:28 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Only package version suffixed binaries in %gcc_libc_bootstrap
+  packages, drop LTO related tools from them.  This makes them
+  co-installable between different GCC versions.
+- Going forward no longer register alternatives via update-alternatives
+  for %gcc_libc_bootstrap packages, even on older distros.
+
+-------------------------------------------------------------------
+Thu Apr  2 07:44:27 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to 16.0.1+git8410
+
+-------------------------------------------------------------------
+Thu Mar 19 12:25:52 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Avoid conflicts between %gcc_libc_bootstrap packages of different
+  versions if update-alternatives are still in use (SLE 15 and older)
+
+-------------------------------------------------------------------
+Thu Mar 19 12:01:28 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Wipe all icecream backend build support from the spec file.
+
+-------------------------------------------------------------------
 Wed Mar 18 08:54:47 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update to 16.0.1+git8152
