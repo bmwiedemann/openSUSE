@@ -1,9 +1,27 @@
 -------------------------------------------------------------------
-Thu Apr 09 16:47:28 UTC 2026 - okurz@suse.com
+Fri Apr 10 13:42:25 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1775753240.e466faa2:
+- Update to version 5.1775828534.8622a781:
+  * refactor: Rename `results_storage_above_threshold`
+  * feat: Log a meaningful error message if `check_df` fails
+  * feat: Add separate setting for scheduler storage space check
+  * fix: address further XSS in admin_needle.js response loop
+  * fix: address XSS vulnerability in admin_needle.js handleSingleError
+  * fix: address further XSS vulnerabilities in admintable.js catch blocks
+  * fix: address XSS vulnerability in admintable.js catch block
+  * fix: address XSS vulnerability in ws_console.js sendAndLogCommand
+  * fix: address XSS vulnerability in ws_console.js logLine
+  * build(deps): bump lodash from 4.17.23 to 4.18.1
+  * fix: Calculate upload speed correctly by including milliseconds
+  * docs: Clarify description of `force_result_regex`
+  * test: Cover remaining lines of `upgradedb`
+  * test: Fix missing assignment in upgradedb test
+  * refactor: Avoid duplicating user handling in database scripts
+  * fix: Apply force result label correctly if `force_result_regex` is empty
+  * test: Verify applying force_result label from carried over comments
   * fix: Reference schema files from the installed package for helm lint
   * feat: limit job results on group overview and dashboard
+  * build(deps-dev): bump eslint-plugin-prettier from 5.5.4 to 5.5.5
 
 -------------------------------------------------------------------
 Wed Apr 08 10:16:33 UTC 2026 - okurz@suse.com
