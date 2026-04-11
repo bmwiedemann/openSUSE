@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyvuetify
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 1.10
+%define distversion 1.11.3
 Name:           python-ipyvuetify
-Version:        1.10.0
+Version:        1.11.3
 Release:        0
 Summary:        Jupyter widgets based on vuetify UI components
 License:        MIT
