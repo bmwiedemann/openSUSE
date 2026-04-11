@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 11 00:11:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.26.0:
+  * A new field mime_type is added to message
+    .google.cloud.translation.v3.AdaptiveMtTranslateRequest
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core >= 2.11.0
+  * Improve type checking
+
+-------------------------------------------------------------------
 Fri Mar 27 13:33:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.25.0

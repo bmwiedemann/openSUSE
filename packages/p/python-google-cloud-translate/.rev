@@ -231,4 +231,18 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1343206 from glaubitz)</comment>
     <requestid>1343207</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dd62d52086ee144de16d0d4fe36053b9</srcmd5>
+    <version>3.26.0</version>
+    <time>1775939135</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.26.0:
+  * A new field mime_type is added to message
+    .google.cloud.translation.v3.AdaptiveMtTranslateRequest
+  * Allow Protobuf 7.x
+  * Require Python 3.9
+  * Require google-api-core &gt;= 2.11.0
+  * Improve type checking</comment>
+    <requestid>1345979</requestid>
+  </revision>
 </revisionlist>
