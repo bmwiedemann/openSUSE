@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 11 10:33:37 UTC 2026 - ecsos <ecsos@opensuse.org> - 0.55.2
+
+- Update to 0.55.2
+  * New features:
+    - Added fz::buffer::clear_and_free
+    - Added fz::event_handler::remove_events<T>() to remove all
+      events of a given type.
+- Changes from 0.55.1
+  * Bugfixes and minor changes:
+    - Added fz::socket::flag_oobinline
+- Changes from 0.55.0
+  * New features:
+    - MSW: Added functionality to iterate over registry values
+    - Added SHA3 support for fz::hash_accumulator
+  * Bugfixes and minor changes:
+    - Fix handling of certificates without subject due to
+      gnutls_x509_get_dn3 returning an error instead of an empty DN
+
+-------------------------------------------------------------------
 Sat Nov 15 12:15:39 UTC 2025 - ecsos <ecsos@opensuse.org> - 0.52.0
 
 - Update to 0.52.0
