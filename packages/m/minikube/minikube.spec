@@ -1,7 +1,7 @@
 #
 # spec file for package minikube
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           minikube
-Version:        1.37.0
+Version:        1.38.1
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
@@ -32,7 +32,7 @@ BuildRequires:  git-core
 BuildRequires:  libvirt-devel >= 1.2.14
 BuildRequires:  zsh
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.24
+BuildRequires:  golang(API) = 1.25
 Recommends:     docker-machine-driver-kvm2
 Recommends:     kubernetes-client
 Recommends:     libvirt
@@ -41,21 +41,13 @@ Recommends:     qemu-kvm
 Recommends:     socat
 ExcludeArch:    ppc64le s390x
 
+# 1.38.0 removed the docker-machine-driver-kvm2 driver
+Obsoletes:      docker-machine-driver-kvm2 < %{version}
+
 %description
 Minikube is a tool that allows running Kubernetes locally. Minikube
 runs a single-node Kubernetes cluster inside a VM on your machine for
 users looking to try out Kubernetes or develop with it day-to-day.
-
-# vendor/github.com/libvirt/libvirt-go/domain_events.go:334: type [1073741824]_Ctype_struct__virDomainEventGraphicsSubjectIdentity too large
-%ifnarch i586 %{arm}
-%package -n docker-machine-driver-kvm2
-Summary:        KVM driver for docker-machine
-Group:          System/Management
-
-%description -n docker-machine-driver-kvm2
-KVM driver for docker-machine which is using libvirt for setting up
-virtual machines with Docker.
-%endif
 
 %package        bash-completion
 Summary:        Minikube bash completion
@@ -94,39 +86,14 @@ Optional zsh completion for minikube.
 %prep
 %autosetup -p 1 -a 1
 
-# remove hardcoded GOTOOLCHAIN in the Makefile
-sed -i '/^export GOTOOLCHAIN/d' Makefile
-
 %build
 export GOFLAGS="-buildmode=pie"
+export GO_VERSION="$(go version | awk '{print $3}' | sed 's/go//g')"
 %make_build out/minikube
-%ifnarch i586
-%ifarch aarch64
-# do not use make, as it would skip due to
-# https://github.com/kubernetes/minikube/issues/19959
-go build \
-	-buildvcs=false \
-	-installsuffix "static" \
-	-ldflags="-X k8s.io/minikube/pkg/drivers/kvm.version=v%{version} -X k8s.io/minikube/pkg/drivers/kvm.gitCommitID=v%{version}" \
-	-tags "libvirt_without_lxc" \
-	-o out/docker-machine-driver-kvm2-arm64 k8s.io/minikube/cmd/drivers/kvm
-%else
-%make_build out/docker-machine-driver-kvm2
-%endif
-%endif
 
 %install
 install -m 755 -d %{buildroot}%{_bindir}
 install -p -m 755 -t %{buildroot}%{_bindir} out/minikube
-%ifnarch i586
-install -p -m 755 -t %{buildroot}%{_bindir} out/docker-machine-driver-kvm2*
-%ifarch aarch64
-# Add a symlink without '-arm64' suffix
-pushd %{buildroot}%{_bindir}
-ln -s docker-machine-driver-kvm2* docker-machine-driver-kvm2
-popd
-%endif
-%endif
 
 %fdupes %{buildroot}%{_bindir}
 
@@ -143,18 +110,13 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %check
+%{buildroot}/%{_bindir}/%{name} version
 %{buildroot}/%{_bindir}/%{name} version | grep v%{version}
 
 %files
 %license LICENSE
 %doc CHANGELOG.md CONTRIBUTING.md README.md
 %{_bindir}/minikube
-
-%ifnarch i586
-%files -n docker-machine-driver-kvm2
-%license LICENSE
-%{_bindir}/docker-machine-driver-kvm2*
-%endif
 
 %files -n %{name}-bash-completion
 %{_datadir}/bash-completion/completions/%{name}

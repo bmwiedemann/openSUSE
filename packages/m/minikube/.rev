@@ -772,4 +772,41 @@
     <comment></comment>
     <requestid>1306415</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>fe9fd2c582410839dc7d4d8883e8b8b4</srcmd5>
+    <version>1.38.1</version>
+    <time>1775939085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.38.1:
+  * Feature
+    - Add Support for Kubernetes version v1.35.1 (#22665)
+  * Bug fixes
+    - Fix lock file regression by appending UID to the lock
+      driectory (#22623)
+    - Fix regression cross-arch execution by masking systemd-binfmt
+      (#22621)
+    - Fix: PowerShell curl alias on Windows to check
+      resgistry.k8s.io connectivity (#22659)
+  * Addons
+    - Addon cloud-spanner: Update cloud-spanner-emulator/emulator
+      image from 1.5.47 to 1.5.49 (#22637)
+    - Addon Headlamp: Update Headlamp image from v0.39.0 to v0.40.0
+      (#22640)
+    - Addon ingress: Update ingress-nginx/controller image from
+      v1.14.1 to v1.14.2 (#22595)
+    - Addon ingress: Update ingress-nginx/controller image from
+      v1.14.2 to v1.14.3 (#22638)
+    - Addon inspektor-gadget: Update inspektor-gadget image from
+      v0.48.0 to v0.48.1 (#22592)
+    - Addon inspektor-gadget: Update inspektor-gadget image from
+      v0.48.1 to v0.49.1 (#22634)
+    - Addon metrics-server: Update metrics-server/metrics-server
+      image from v0.8.0 to v0.8.1 (#22596)
+    - Addon nvidia-device-plugin: Update nvidia/k8s-device-plugin
+      image from v0.18.1 to v0.18.2 (#22531)
+    - Addon registry: Update registry image from 3.0.0 to 3.0.0
+      (#22593)
+    - Addon Volcano: Update volcano images from v1.13.1 to v1.14.0</comment>
+    <requestid>1345713</requestid>
+  </revision>
 </revisionlist>
