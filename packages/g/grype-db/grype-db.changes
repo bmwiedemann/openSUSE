@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Apr 11 07:15:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.1:
+  * Additional Changes
+    - turn up hummingbird provider [#965 @willmurphyscode]
+    - update anchore dependencies [#962 @anchore-oss-update-bot]
+    - update zizmor workflow triggers [#958 @wagoodman]
+    - Improve automation [#956 @wagoodman]
+    - (chore): removing automations [#954 @wagoodman]
+    - update tool versions [#948 @anchore-oss-update-bot]
+    - update anchore dependencies [#940 @anchore-oss-update-bot]
+    - update tool versions [#936 @anchore-oss-update-bot]
+    - configure uv to exclude package versions newer than 1 week
+      [#910 @westonsteimel]
+    - integrate grype v0.110.0 [#933 @westonsteimel]
+    - prevent updates on certain dependencies [#928
+      @willmurphyscode]
+    - drop v5 workflow tests [#923 @willmurphyscode]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#967)
+    - chore(deps): update anchore dependencies (#962)
+    - chore(deps): update tools to latest versions (#903)
+    - chore(deps): update tool versions (#948)
+    - chore(deps): Bump boto3 in the python-minor-and-patch group
+      (#945)
+    - chore(deps-dev): Bump moto from 4.2.14 to 5.1.22 (#922)
+    - chore(deps): update anchore dependencies (#940)
+    - chore(deps): update tool versions (#936)
+    - chore(deps): Bump github.com/go-git/go-git/v5 from 5.17.0 to
+      5.17.1 (#944)
+    - chore(deps): Bump the python-minor-and-patch group across 1
+      directory with 4 updates (#943)
+    - chore(deps): Bump slackapi/slack-github-action from 2.1.1 to
+      3.0.1 (#926)
+    - chore(deps): Bump actions/setup-go in
+      /.github/actions/bootstrap (#942)
+    - chore(deps): Bump github.com/klauspost/compress from 1.18.4
+      to 1.18.5 (#938)
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#927)
+    - chore(deps): Bump actions/cache from 5.0.3 to 5.0.4 (#930)
+    - chore(deps): Bump actions/cache in /.github/actions/bootstrap
+      (#931)
+    - chore(deps): Bump requests from 2.32.5 to 2.33.0 (#934)
+    - chore(deps): prevent updates on certain dependencies (#928)
+    - chore(deps): Bump github.com/hashicorp/go-getter from 1.8.4
+      to 1.8.5 (#919)
+    - chore(deps): Bump google.golang.org/grpc from 1.76.0 to
+      1.79.3 (#920)
+    - chore(deps): Bump the python-minor-and-patch group across 1
+      directory with 3 updates (#917)
+
+-------------------------------------------------------------------
 Tue Mar 10 06:16:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.0:
