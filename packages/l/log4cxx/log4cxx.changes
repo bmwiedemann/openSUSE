@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 10 22:13:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Non-ascii characters incorrectly encoded in JSON output [#615]
+  * XML output could contain characters not allowed by the XML 1.0
+    specification
+  * An XML configuration file with recursive references caused
+    program termination [#605]
+  * Possible undefined behavior during a configuration change
+  * Message loss when the calculation of a logged value also logs
+  * ODBCAppender prepared statement value buffers had incorrect
+    lifetimes [#581]
+
+-------------------------------------------------------------------
 Mon Dec 29 11:15:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:

@@ -118,4 +118,21 @@
     a configuration file [#550]</comment>
     <requestid>1324694</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5233d22d98e27167a04f8a9d0cc33d59</srcmd5>
+    <version>1.7.0</version>
+    <time>1775939128</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * Non-ascii characters incorrectly encoded in JSON output [#615]
+  * XML output could contain characters not allowed by the XML 1.0
+    specification
+  * An XML configuration file with recursive references caused
+    program termination [#605]
+  * Possible undefined behavior during a configuration change
+  * Message loss when the calculation of a logged value also logs
+  * ODBCAppender prepared statement value buffers had incorrect
+    lifetimes [#581]</comment>
+    <requestid>1345964</requestid>
+  </revision>
 </revisionlist>

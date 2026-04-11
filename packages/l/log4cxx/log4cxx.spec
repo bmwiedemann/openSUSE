@@ -1,7 +1,7 @@
 #
 # spec file for package log4cxx
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           log4cxx
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 %define soname 15
 Summary:        Log4j like C++ Logging Library
