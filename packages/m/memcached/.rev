@@ -692,4 +692,12 @@ bsc#1007869) (CVE-2016-8706)</comment>
   because it tries to use an intree copy of liburing</comment>
     <requestid>1330693</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>e026273e03e8dea40f1c5161f9cfab66</srcmd5>
+    <version>1.6.41</version>
+    <time>1775938959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345699</requestid>
+  </revision>
 </revisionlist>
