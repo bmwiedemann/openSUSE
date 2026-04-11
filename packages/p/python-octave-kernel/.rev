@@ -113,4 +113,41 @@
   gh#Calysto/octave_kernel#240</comment>
     <requestid>1222584</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3abb5190fcfefd00d35099cbd09d638c</srcmd5>
+    <version>1.0.3</version>
+    <time>1775939216</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.3:
+  * fix: inject --auto-servernum via executable property to fix
+    xvfb-run on kernel restart
+  * fix: add --auto-servernum to xvfb-run validation to prevent
+    kernel restart failures
+  * ci: rename make_sdist to build, add dynamic Python matrix,
+    and free-threading support
+  * fix: include tests in sdist and only skip CI on forks when
+    secrets needed
+  * This is the first stable 1.0 release of octave_kernel. It
+    includes a significant round of bug fixes for long-standing
+    interactive prompt issues, a new documentation site, Docker
+    image publishing, performance improvements, and a
+    modernized project toolchain.
+  * Fix `input()` prompt garbled when called inside a for-loop
+  * Fix kernel hang when calling `doc()` or `open()`
+  * Fix `pause()` prompt not shown when called from a user-
+    defined function
+  * Fix `do_shutdown` coroutine warning and improve console UX
+
+- update to 0.39.0:
+  * Validate Octave executable on engine init and clean up
+    diagnostics #273 (@blink1073)
+  * Add Binder support with Qt/Xvfb and document JupyterHub setup
+    #271 (@blink1073)
+  * Change default executable to octave and always pass --no-gui
+    #270 (@blink1073)
+  * Start Xvfb globally in action instead of per-command #269
+    (@blink1073)
+  * Test Python 3.10 on ubuntu-22.04 in test-linux matrix #272</comment>
+    <requestid>1346113</requestid>
+  </revision>
 </revisionlist>

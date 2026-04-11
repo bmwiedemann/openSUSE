@@ -1,7 +1,7 @@
 #
 # spec file for package python-octave-kernel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,21 @@
 
 
 # truncate trailing .0
-%define distversion 0.36
+%define distversion 1.0.3
 Name:           python-octave-kernel
-Version:        0.36.0
+Version:        1.0.3
 Release:        0
 Summary:        A Jupyter kernel for Octave
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Calysto/octave_kernel
 Source:         https://files.pythonhosted.org/packages/source/o/octave_kernel/octave_kernel-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling >= 1.5}
-BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module jupyter-client >= 4.3.0}
+BuildRequires:  %{python_module ipykernel >= 6.22.0}
+BuildRequires:  %{python_module jupyter-client >= 8.1.0}
 BuildRequires:  %{python_module jupyter_kernel_test}
-BuildRequires:  %{python_module jupyter_packaging}
-BuildRequires:  %{python_module metakernel >= 0.24.0}
+BuildRequires:  %{python_module metakernel >= 1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  fdupes
@@ -42,9 +41,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
 Requires:       jupyter-octave-kernel = %{version}
 Requires:       octave
-Requires:       python-ipykernel
-Requires:       python-jupyter-client >= 4.3.0
-Requires:       python-metakernel >= 0.24.0
+Requires:       python-ipykernel >= 6.22.0
+Requires:       python-jupyter-client >= 8.1.0
+Requires:       python-metakernel >= 1.0
 Provides:       python-jupyter_octave_kernel = %{version}-%{release}
 Obsoletes:      python-jupyter_octave_kernel < %{version}-%{release}
 BuildArch:      noarch
@@ -84,13 +83,12 @@ This package provides the jupyter notebook extension.
 
 %check
 export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
-xvfb-run python3 -m octave_kernel.check
 # no test_execute_stdout: gh#Calysto/octave_kernel#240 -- octave does not find qt toolkit backed
 %pytest test_octave_kernel.py -k "not test_execute_stdout"
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
+%doc README.md
 %{python_sitelib}/octave_kernel/
 %{python_sitelib}/octave_kernel-%{version}*-info
 

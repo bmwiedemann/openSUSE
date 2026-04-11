@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Apr 11 19:59:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.3:
+  * fix: inject --auto-servernum via executable property to fix
+    xvfb-run on kernel restart
+  * fix: add --auto-servernum to xvfb-run validation to prevent
+    kernel restart failures
+  * ci: rename make_sdist to build, add dynamic Python matrix,
+    and free-threading support
+  * fix: include tests in sdist and only skip CI on forks when
+    secrets needed
+  * This is the first stable 1.0 release of octave_kernel. It
+    includes a significant round of bug fixes for long-standing
+    interactive prompt issues, a new documentation site, Docker
+    image publishing, performance improvements, and a
+    modernized project toolchain.
+  * Fix `input()` prompt garbled when called inside a for-loop
+  * Fix kernel hang when calling `doc()` or `open()`
+  * Fix `pause()` prompt not shown when called from a user-
+    defined function
+  * Fix `do_shutdown` coroutine warning and improve console UX
+
+-------------------------------------------------------------------
+Mon Mar 16 22:54:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.39.0:
+  * Validate Octave executable on engine init and clean up
+    diagnostics #273 (@blink1073)
+  * Add Binder support with Qt/Xvfb and document JupyterHub setup
+    #271 (@blink1073)
+  * Change default executable to octave and always pass --no-gui
+    #270 (@blink1073)
+  * Start Xvfb globally in action instead of per-command #269
+    (@blink1073)
+  * Test Python 3.10 on ubuntu-22.04 in test-linux matrix #272
+    (@blink1073, @claude)
+  * Improve snap support and update supported platforms #267
+  * Document qt backend and expose executable as configurable
+    trait #266 (@blink1073, @claude)
+  * Add snap support and consolidate CI test jobs #265
+  * Add composite GitHub Action for Octave installation #259
+  * Add typing support with mypy strict mode #256 (@blink1073)
+  * Add flatpak support for Octave auto-detection #254
+  * Add macOS runner to CI test matrix #253 (@blink1073)
+  * Extend ruff linting and fix all violations #262 (@blink1073)
+  * Add a step to the GitHub Action to verify octave install #261
+  * Add unit tests for OctaveEngine, OctaveKernel, and check
+    module #260 (@blink1073)
+  * Move test dependencies to dependency-groups #257 (@blink1073)
+  * Add tests_check job for branch protection #255 (@blink1073,
+    @claude)
+  * Bump the actions group with 3 updates #252 (@blink1073)
+  * Add dependabot config #251 (@blink1073)
+  * Add pre-commit hooks and apply code quality fixes #250
+    (@blink1073)
+  * Replace Makefile with justfile and migrate to uv #249
+    (@blink1073)
+  * Add CodeQL analysis workflow configuration #248 (@blink1073)
+  * Fix CI install of octave #247 (@blink1073)
+  * Update ci again #246 (@blink1073)
+  * Fix octave install in CI and update supported Python versions
+    #245 (@blink1073)
+  * Update supported pythons #243 (@blink1073)
+
+-------------------------------------------------------------------
 Thu Nov  7 19:48:28 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Exclude stdout test because of qt not found
@@ -91,7 +156,7 @@ Sun Aug 11 03:27:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Switch from wheel to sdist.
 - Add fix_octave5.patch
-  Fix tests to work with octave 5 
+  Fix tests to work with octave 5
   From: gh#Calysto/octave_kernel#160
 
 -------------------------------------------------------------------
@@ -111,10 +176,10 @@ Wed May 29 20:21:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
 - Rename to match upstream name change.
 - Update to 0.30.3
   * Update configurability handling
-  * Allow inline backend to be specified using plot magic 
+  * Allow inline backend to be specified using plot magic
   * Don't give a stack trace on exit
   * clean up plot handling and add config
-  * Add support for default plot backend 
+  * Add support for default plot backend
   * use improved interrupt handling in metakernel
   * clean up executable handling logic
   * Better default setup for engine
