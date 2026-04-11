@@ -269,4 +269,41 @@
     @codecov-commenter)</comment>
     <requestid>1338881</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b0eb00e152f20e8c2e415e7ef8848188</srcmd5>
+    <version>1.0.0</version>
+    <time>1775939216</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * DisplayData() for raw MIME bundle display
+  * schedule_display_output() for pushing messages to frontends
+    outside of execution
+  * %lsmagic -v for magic load debugging
+  * kernel_javascript support — write kernel.js during kernelspec
+    install
+  * JupyterHub deployment docs and cross-origin regression tests
+  * ## Bug Fixes
+  * execute_reply now reports error status when do_execute_direct
+    raises (#175) — previously errors were silently
+  * swallowed with an 'ok' status
+  * %px / %px errors now surface as proper error messages
+  * %%tutor no longer loads all iframes immediately (#68) — only
+    the active frame loads
+  * %jigsaw cross-origin errors fixed and button functionality
+    restored (#375), plus fix for saving files when workspace
+  * path includes a subdirectory
+  * %%python display() routed to wrong kernel — fixed
+  * %activity magic showed wrong results on repeated &quot;Results&quot;
+    clicks (#240) — fixed
+  * ipywidgets Output context manager now works with MetaKernel
+  * shell_magic load failure on Windows — fixed via lazy-
+    initializing the shell process
+  * prompt_change_cmd stored unformatted template (#359) — fixed
+  * REPLWrapper encoding parameter added to fix startup hang on
+    Windows
+  * REPLWrapper waits for any output instead of default prompt on
+    startup (#357), and clears PS0 in bash wrapper
+  * REPLWrapper args parameter added to support executable paths</comment>
+    <requestid>1346112</requestid>
+  </revision>
 </revisionlist>

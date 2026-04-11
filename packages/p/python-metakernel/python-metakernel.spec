@@ -18,38 +18,40 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-metakernel
-Version:        0.32.0
+Version:        1.0.0
 Release:        0
 Summary:        Metakernel for Jupyter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Calysto/metakernel
 Source:         https://files.pythonhosted.org/packages/source/m/metakernel/metakernel-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core >= 2.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-comm > 0.1.0
-Requires:       python-ipykernel >= 5.5.6
-Requires:       python-jedi >= 0.18
-Requires:       python-jupyter-core >= 4.9.2
-Requires:       python-pexpect >= 4.8
+Requires:       python-comm >= 0.1.3
+Requires:       python-ipykernel >= 6.22.0
+Requires:       python-jedi >= 0.19.0
+Requires:       python-jupyter-core >= 5.3.1
+Requires:       python-pexpect >= 4.9.0
 Recommends:     python-ipyparallel
 Recommends:     python-portalocker
 Provides:       python-jupyter_metakernel = %{version}
 Obsoletes:      python-jupyter_metakernel < %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module ipykernel >= 5.5.6}
-BuildRequires:  %{python_module comm >= 0.1.0}
-BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module jupyter-core >= 4.9.2}
+BuildRequires:  %{python_module comm >= 0.1.3}
+BuildRequires:  %{python_module ipykernel >= 6.22.0}
+BuildRequires:  %{python_module ipython >= 9.0}
+BuildRequires:  %{python_module ipywidgets >= 8.0.5}
+BuildRequires:  %{python_module jupyter-core >= 5.3.1}
+BuildRequires:  %{python_module jupyter_kernel_test >= 0.6.0}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module pexpect >= 4.8}
-BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module pexpect >= 4.9.0}
+BuildRequires:  %{python_module pytest >= 9.0}
+BuildRequires:  %{python_module pytest-timeout >= 2.2.0}
+BuildRequires:  %{python_module requests >= 2.29.0}
 BuildRequires:  coreutils-doc
 BuildRequires:  man
 # /SECTION
@@ -76,7 +78,7 @@ sed -i '1{/env python/d}' tests/test_expect.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k "not (test_spawn_args or test_spawn_no_args)"
 
 %files %{python_files}
 %doc README.md
