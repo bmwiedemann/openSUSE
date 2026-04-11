@@ -1,7 +1,7 @@
 #
 # spec file for package log4cpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %define sonum 5
 
 Name:           log4cpp
-Version:        1.1.4
+Version:        1.1.6
 Release:        0
 Summary:        C++ logging library
 License:        LGPL-2.1-only
 Group:          Development/Languages/C and C++
 URL:            https://log4cpp.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/log4cpp/log4cpp-1.1.x%20%28new%29/log4cpp-1.1/log4cpp-%{version}.tar.gz
+BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -91,7 +92,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %attr(644,root,root) %{_datadir}/aclocal/%{name}.m4
 
 %files doc
-%doc AUTHORS ChangeLog NEWS README THANKS
+%doc AUTHORS ChangeLog NEWS README.md THANKS
 %doc %{_docdir}/%{name}
 %license COPYING
 

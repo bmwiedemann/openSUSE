@@ -53,4 +53,25 @@
 - Replace _service with full URL in Source (forwarded request 1136382 from StefanBruens)</comment>
     <requestid>1136398</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3cea8bb28f81868c40fe2b8eb6ba8a50</srcmd5>
+    <version>1.1.6</version>
+    <time>1775939126</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.6
+  * Add formatted and streaming log4cpp macros with
+    compile-time stripping (LOG4CPP_DEBUG, etc.)
+  * vsnprintf: Use va_copy for C++11 and later
+  * Sync lib versions in CMakeLists.txt and configure.in
+  * CMake: add test build support using CTest
+  * Enable building examples via LOG4CPP_BUILD_EXAMPLES
+  * Generate include/log4cpp/config.h from Autotools-style
+    config.h.in in CMake
+  * Support for Embarcadero RAD Studio 12 and MSVC 2022
+  * Fix compilation warnings and reformat source codebase
+    with clang-format
+  * Allow installation paths for different architectures in
+    CMake to support cross-compilation</comment>
+    <requestid>1345958</requestid>
+  </revision>
 </revisionlist>

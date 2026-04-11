@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 10 21:50:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 1.1.6
+  * Add formatted and streaming log4cpp macros with
+    compile-time stripping (LOG4CPP_DEBUG, etc.)
+  * vsnprintf: Use va_copy for C++11 and later
+  * Sync lib versions in CMakeLists.txt and configure.in
+  * CMake: add test build support using CTest
+  * Enable building examples via LOG4CPP_BUILD_EXAMPLES
+  * Generate include/log4cpp/config.h from Autotools-style
+    config.h.in in CMake
+  * Support for Embarcadero RAD Studio 12 and MSVC 2022
+  * Fix compilation warnings and reformat source codebase
+    with clang-format
+  * Allow installation paths for different architectures in
+    CMake to support cross-compilation
+
+-------------------------------------------------------------------
 Wed Jan  3 04:55:42 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 1.1.4
@@ -107,4 +125,3 @@ Tue Jan 13 18:32:37 CET 2009 - bbrunner@suse.de
 
 - Initial package.
 
--------------------------------------------------------------------
