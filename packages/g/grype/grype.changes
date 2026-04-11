@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Apr 11 07:15:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.111.0:
+  * Added Features
+    - db diff for v6 [#3277 @kzantow]
+    - add ProvideFromReader for in-memory SBOM processing [#3344
+      @jspilman]
+    - match on hummingbird [#3331 @willmurphyscode]
+    - CSAF vex transformer [#3349 @willmurphyscode]
+    - curated mapping of known CPE to grype package specifiers
+      [#3332 @westonsteimel]
+    - templates/html.tmpl - Add Grype version and vulnerability DB
+      version [#2877 #3345 @kenvez]
+  * Bug Fixes
+    - normalise version constraint types in v6 db [#3328
+      @westonsteimel]
+    - set alpm ecosystem for Arch Linux packages [#3324
+      @westonsteimel]
+    - spec-compliant CPE string formatting for db search commands
+      [#3308 @westonsteimel]
+    - Update APK NAK handling to be based on
+      ownership-by-file-overlap relationship [#3267 #3286 @kzantow]
+    - Wrong version output [#3306]
+  * Additional Changes
+    - update anchore dependencies [#3321 @anchore-oss-update-bot]
+    - update tool versions [#3319 @anchore-oss-update-bot]
+    - chore(deps): update tools to latest versions (#3320)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/bootstrap (#3323)
+    - chore(deps): bump anchore/sbom-action from 0.23.1 to 0.24.0
+      (#3322)
+    - chore(deps): bump github.com/klauspost/compress from 1.18.4
+      to 1.18.5 (#3317)
+    - chore(deps): bump slackapi/slack-github-action from 2.1.1 to
+      3.0.1 (#3303)
+    - chore(deps): bump github.com/google/go-containerregistry
+      (#3313)
+    - chore(deps): bump actions/cache in /.github/actions/bootstrap
+      (#3315)
+    - chore(deps): bump actions/cache from 5.0.3 to 5.0.4 (#3314)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.20
+      to 0.5.21 (#3309)
+    - chore(deps): pin some go dependencies (#3311)
+    - chore(deps): update tools to latest versions (#3307)
+
+-------------------------------------------------------------------
 Fri Mar 20 06:39:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.110.0:
