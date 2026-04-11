@@ -2,5 +2,6 @@
   <title>Read settings from config files</title>
   <description>`maison` aims to provide a simple and flexible way to read and validate those
 configuration options so that they may be used in the package.</description>
+  <devel project="devel:languages:python" package="python-maison"/>
   <url>https://github.com/dbatten5/maison</url>
 </package>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 11 18:50:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Removes toml dependency as it's unmaintained and doesn't
+    support TOML 1.0 symtax. Replaced with tomli.
+  * Major refactor of the package to improve separation of
+    concerns, testability, and maintainability.
+
+-------------------------------------------------------------------
 Wed Oct  1 09:51:58 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires: python-six: seems to be a bogus requirement
