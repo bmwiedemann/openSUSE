@@ -1,7 +1,7 @@
 #
 # spec file for package openvswitch
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,22 @@
 
 
 %define skip_python2 1
-%define ovs_lname libopenvswitch-3_6-0
-%define ovn_lname libovn-25_03-0
-%define ovs_version 3.6.1
-%define ovn_version 25.03.2
+%define ovs_lname libopenvswitch-3_7-0
+%define ovn_lname libovn-26_03-0
+%define ovs_version 3.7.1
+%define ovn_version 26.03.0
 %define ovs_dir ovs-%{ovs_version}
 %define ovn_dir ovn-%{ovn_version}
 %define rpmstate %{_rundir}/openvswitch-rpm-state-
-%define _dpdkv 24.11
+%define _dpdkv 25.11
 %define name_tag ${nil}
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 %ifarch aarch64 x86_64 ppc64le
-%if 0%{?suse_version}
-# DPDK enabled only SUSE/openSUSE
+# DPDK enabled
 %bcond_without dpdk
-%else
-# DPDK disabled elsewhere even if supported by the architecture.
-%bcond_with dpdk
-%endif
 %else
 # No DPDK support on these architectures
 %bcond_with dpdk
@@ -46,10 +41,14 @@
 # The testsuite is somewhat fragile for continuous testing in OBS
 # but keep it here as an option
 %bcond_with check
-# Disable building the external kernel datapath by default
-%bcond_with kmp
 # Disable building with AF_XDP support, specify '--without afxdp' when building
-%bcond_with afxdp
+%if 0%{suse_version} >= 1600 && 0%{?is_opensuse}
+  %bcond_without afxdp
+%else
+  # SLES-16.0 is missing xdp-tools (jsc#PED-16013)
+  %bcond_with afxdp
+%endif
+
 Name:           openvswitch
 Version:        %{ovs_version}
 Release:        0
@@ -61,8 +60,7 @@ License:        Apache-2.0 AND LGPL-2.1-only AND SISSL
 Group:          Productivity/Networking/System
 URL:            http://openvswitch.org/
 Source0:        http://openvswitch.org/releases/openvswitch-%{version}.tar.gz
-Source1:        https://github.com/ovn-org/ovn/archive/v%{ovn_version}.tar.gz#/ovn-%{ovn_version}.tar.gz
-Source2:        preamble
+Source1:        https://github.com/ovn-org/ovn/archive/refs/tags/v%{ovn_version}.tar.gz#/ovn-%{ovn_version}.tar.gz
 Source10:       openvswitch-user.conf
 Source89:       Module.supported.updates
 Source99:       openvswitch-rpmlintrc
@@ -109,7 +107,6 @@ Provides:       %{name}-switch = %{version}
 Obsoletes:      %{name}-dpdk < 2.7.0
 Obsoletes:      %{name}-dpdk-switch < 2.7.0
 Obsoletes:      %{name}-switch < 2.7.0
-%if 0%{?suse_version}
 BuildRequires:  libopenssl-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  sysuser-tools
@@ -118,22 +115,9 @@ Requires(pre):  shadow
 Suggests:       logrotate
 %{?systemd_ordering}
 %sysusers_requires
-%else
-BuildRequires:  environment-modules
-BuildRequires:  openssl-devel
-BuildRequires:  python3-rpm-macros
-BuildRequires:  systemd-units
-Requires(post): systemd-units
-Requires(postun): systemd-units
-Requires(pre):  shadow-utils
-Requires(preun): systemd-units
-%endif
 # Needed by the testsuite
 %if %{with check}
 BuildRequires:  procps
-%endif
-%if %{with kmp}
-Suggests:       openvswitch-kmp
 %endif
 %if %{with dpdk}
 # We need to be a bit strict with the dpdk version since
@@ -144,6 +128,11 @@ BuildRequires:  libmnl-devel
 BuildRequires:  libnuma-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  rdma-core-devel
+%endif
+%if %{with afxdp}
+BuildRequires:  libnuma-devel
+BuildRequires:  pkgconfig(libbpf)
+BuildRequires:  pkgconfig(libxdp)
 %endif
 # ovs-flowviz depends on python3-openvswitch and other python3 modules
 Requires:       python3-openvswitch = %{version}-%{release}
@@ -160,25 +149,13 @@ sFlow, RSPAN, ERSPAN, CLI, LACP, 802.1ag). In addition, it supports
 distribution across multiple physical servers similar to VMware’s
 vNetwork distributed vswitch or Cisco’s Nexus 1000V.
 
-%if %{with kmp}
-%package kmp
-Summary:        Open vSwitch kernel modules
-License:        GPL-2.0-or-later
-Group:          System/Kernel
-BuildRequires:  %{kernel_module_package_buildreqs}
-%suse_kernel_module_package -p %{_sourcedir}/preamble ec2 xenpae vmi um
-
-%description kmp
-Kernel modules supporting the openvswitch datapath.
-%endif
-
 %package -n %{ovs_lname}
 Summary:        Open vSwitch core libraries
 License:        Apache-2.0
 Group:          System/Libraries
 %if %{with dpdk}
 Requires:       dpdk >= %{_dpdkv}
-Requires:       libdpdk-25 >= %{_dpdkv}
+Requires:       libdpdk-26 >= %{_dpdkv}
 %endif
 
 %description -n %{ovs_lname}
@@ -199,7 +176,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 Requires:       %{ovs_lname} = %{version}
 # Required for ovsdb-ildc
-Requires:       python3-openvswitch = %{version}
+Requires:       python3-openvswitch = %{version}-%{release}
 Provides:       %{name}-dpdk-devel = %{version}
 Obsoletes:      %{name}-dpdk-devel < 2.7.0
 
@@ -214,6 +191,7 @@ Requires:       %{name} = %{version}
 Requires:       openssl(cli)
 Provides:       %{name}-dpdk-pki = %{version}
 Obsoletes:      %{name}-dpdk-pki < 2.7.0
+BuildArch:      noarch
 
 %description pki
 openvswitch-pki provides PKI (public key infrastructure) support for
@@ -247,6 +225,7 @@ Requires:       %{name} = %{version}
 Requires:       /usr/sbin/ipsec
 Requires:       python3-openvswitch = %{version}-%{release}
 Requires:       strongswan
+BuildArch:      noarch
 
 %description ipsec
 This package provides IPsec tunneling support for OVS tunnels.
@@ -273,7 +252,7 @@ Requires:       python3
 Requires:       python3-Twisted
 Requires:       python3-openvswitch = %{version}-%{release}
 Provides:       python3-%{name}-test = %{version}
-Obsoletes:      python3-%{name}-test < 2.13.0
+Obsoletes:      python3-%{name}-test < %{version}-%{release}
 
 %description test
 Open vSwitch is a software-based Ethernet switch.
@@ -296,9 +275,7 @@ Provides:       %{name}-ovn-common = %{ovn_version}
 Obsoletes:      %{name}-dpdk-ovn < 2.7.0
 Obsoletes:      %{name}-ovn < 2.7.0
 Obsoletes:      %{name}-ovn-common < 2.13.0
-%if 0%{?suse_version}
 Suggests:       logrotate
-%endif
 
 %description -n ovn
 OVN, the Open Virtual Network, is a system to support virtual network
@@ -363,6 +340,7 @@ This subpackage contains the OVN VTEP (VXLAN Tunnel Endpoint) controller.
 %package -n ovn-docker
 Version:        %{ovn_version}
 Release:        0
+BuildArch:      noarch
 Summary:        Docker network plugins for OVN
 License:        Apache-2.0
 Group:          Productivity/Networking/System
@@ -382,10 +360,10 @@ This subpackage contains the OVN Docker network plugins.
 %package -n ovn-doc
 Version:        %{ovn_version}
 Release:        0
+BuildArch:      noarch
 Summary:        Open Virtual Network Documentation
 License:        Apache-2.0
 Group:          System/Libraries
-BuildArch:      noarch
 
 %description -n ovn-doc
 Contains additional documentation for OVN.
@@ -413,6 +391,15 @@ Provides:       %{name}-devel:%{_includedir}/ovn
 %description -n ovn-devel
 Devel libraries and headers for Open Virtual Network.
 
+%package -n ovn-br-controller
+Summary:        Open Virtual Network local OVS bridge controller
+License:        Apache-2.0
+Requires:       ovn
+
+%description -n ovn-br-controller
+ovn-br-controller is OVN logical flow based local controller
+daemon to control and program the Open vSwitch bridges.
+
 %prep
 %setup -q -n %{name}-%{ovs_version} -a 1
 %patch -P 0 -p1
@@ -420,6 +407,9 @@ Devel libraries and headers for Open Virtual Network.
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
+
+sed -i '1s|^#!/usr/bin/env bpftrace|#!%{_bindir}/bpftrace|' utilities/usdt-scripts/bridge_loop.bt
+
 # remove python/ovs/dirs.py - this is generated from template to have proper paths
 rm python/ovs/dirs.py
 cd %{ovn_dir}
@@ -436,26 +426,6 @@ pushd %ovs_dir
 # only call boot.sh for distros with autoconf >= 2.64
 bash -x boot.sh
 popd
-
-# Build kernel modules if needed.
-%if %{with kmp}
-    mkdir kmp
-    export EXTRA_CFLAGS='-DVERSION=\"%{ovs_version}\"'
-    for flavor in %{flavors_to_build}; do
-        rm -rf kmp/$flavor
-        cp -r %ovs_dir kmp/$flavor
-        cp -a %{SOURCE89} kmp/$flavor/datapath/linux/Module.supported
-        pushd kmp/$flavor
-        %configure \
-            --with-logdir=%{_localstatedir}/log/openvswitch \
-            --with-rundir=%{_rundir}/openvswitch \
-            --with-linux=%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor \
-            --with-linux-source=%{_prefix}/src/linux
-        cd datapath/linux
-        make %{?_smp_mflags}
-        popd
-    done
-%endif
 
 # Build OVS.
 pushd %ovs_dir
@@ -542,19 +512,6 @@ popd
 
 %install
 
-# Intall kernel modules.
-%if %{with kmp}
-export NO_BRP_STALE_LINK_ERROR=yes
-export INSTALL_MOD_PATH=%{buildroot}
-export INSTALL_MOD_DIR=updates
-export BRP_PESIGN_FILES="*.ko /lib/firmware"
-for flavor in %{flavors_to_build}; do
-    pushd kmp/$flavor/datapath/linux
-    make -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor modules_install M=$PWD
-    popd
-done
-%endif
-
 # Install OVS dist files on temp buildroot.
 mkdir -p buildroot/ovs
 pushd %ovs_dir
@@ -621,7 +578,6 @@ done
 #    %%{buildroot}%%{_prefix}/lib/udev/rules.d/91-vfio.rules
 #%%endif
 
-%if 0%{?suse_version}
 install -D -m 644 rhel/usr_share_openvswitch_scripts_systemd_sysconfig.template \
         %{buildroot}%{_fillupdir}/sysconfig.openvswitch
 
@@ -629,19 +585,6 @@ install -D -m 644 rhel/usr_share_openvswitch_scripts_systemd_sysconfig.template 
 mkdir -p %{buildroot}/%{_datadir}/bash-completion/completions/
 mv %{buildroot}/%{_sysconfdir}/bash_completion.d/ovs-* %{buildroot}/%{_datadir}/bash-completion/completions/
 chmod 0644 %{buildroot}/%{_datadir}/bash-completion/completions/*
-
-# fixing W: # interpreter
-find %{buildroot}/%{_datadir}/openvswitch/scripts/ -name "*.py" -exec sed -i 's|env python|python|' \{\} +
-
-%else
-install -D -m 644 rhel/usr_share_openvswitch_scripts_systemd_sysconfig.template \
-        %{buildroot}%{_sysconfdir}/sysconfig/openvswitch
-install -d -m 0755 %{buildroot}/%{_sysconfdir}/sysconfig/network-scripts/
-install -p -m 0755 rhel/etc_sysconfig_network-scripts_ifdown-ovs \
-        %{buildroot}%{_sysconfdir}/sysconfig/network-scripts/ifdown-ovs
-install -p -m 0755 rhel/etc_sysconfig_network-scripts_ifup-ovs \
-        %{buildroot}%{_sysconfdir}/sysconfig/network-scripts/ifup-ovs
-%endif
 
 install -d -m 0755 %{buildroot}/%{_rundir}/openvswitch
 install -d -m 0755 %{buildroot}%{_sysconfdir}/logrotate.d
@@ -678,38 +621,35 @@ rm -rf %{buildroot}%{_datadir}/openvswitch/python
 export LDFLAGS="${LDFLAGS} -L %{buildroot}%{_libdir}"
 export CPPFLAGS="-I ../%{ovs_dir}/include"
 
-%if 0%{?suse_version}
-# SLES
 %{python3_build}
 %{python3_install}
-%else
-# RHEL
-%py3_build
-%py3_install
-%endif
 
 # Done with OVS additional files.
 popd
 
+#FIX: remove executable bit from these files
+chmod a-x %{buildroot}/%{_datadir}/openvswitch/scripts/usdt/kernel_delay.rst
+chmod a-x %{buildroot}/%{_datadir}/openvswitch/scripts/usdt/usdt_lib.py
+
+%python3_fix_shebang_path %{buildroot}/%{_datadir}/openvswitch/scripts/usdt/*
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
 # Install OVN aditional files.
 pushd %ovn_dir
 
 for service in ovn-controller \
                ovn-controller-vtep \
-               ovn-northd; do
+               ovn-northd \
+               ovn-br-controller \
+               ovn-br-db; do
         install -D -m 644 rhel/usr_lib_systemd_system_${service}.service \
         %{buildroot}%{_unitdir}/${service}.service
         ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc${service}
 done
 
-%if 0%{?suse_version}
 install -D -m 644 rhel/usr_share_ovn_scripts_systemd_sysconfig.template \
         %{buildroot}%{_fillupdir}/sysconfig.ovn
-%else
-install -D -m 644 rhel/usr_share_ovn_scripts_systemd_sysconfig.template \
-        %{buildroot}%{_sysconfdir}/sysconfig/ovn
-%endif
 
 # firewalld
 install -d %{buildroot}%{_prefix}/lib/firewalld/services/
@@ -720,7 +660,6 @@ install -p -m 0644 rhel/usr_lib_firewalld_services_ovn-host-firewall-service.xml
 
 install -p -D -m 0644 rhel/etc_logrotate.d_ovn \
         %{buildroot}%{_sysconfdir}/logrotate.d/ovn
-install -d -m 0755 %{buildroot}%{_localstatedir}/log/ovn
 
 # Copy documentation.
 mkdir -p %{buildroot}%{_docdir}/ovn
@@ -734,17 +673,13 @@ popd
 
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/openvswitch.conf
 
-%if %{suse_version} >= 1600
-%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/ovsdb/*
-%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/scripts/*
-%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/scripts/usdt/*
-%python3_fix_shebang_path %{buildroot}%{_datadir}/%{name}/scripts/ovsdb/*
-%endif
+# Create tmpfiles.d configurations for the log directories
+mkdir -p %{buildroot}%{_tmpfilesdir}
+echo "d %{_localstatedir}/log/openvswitch 0755 root root -" > %{buildroot}%{_tmpfilesdir}/openvswitch.conf
+echo "d %{_localstatedir}/log/ovn 0755 root root -" > %{buildroot}%{_tmpfilesdir}/ovn.conf
 
 %pre -f openvswitch.pre
-%if 0%{?suse_version}
-    %service_add_pre ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
-%endif
+%service_add_pre ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
 if [ "$1" -ge 1 ]; then
     # Save the "enabled" state across the transition of
     # ownership of openvswitch.service from openvswitch-switch to
@@ -755,44 +690,16 @@ if [ "$1" -ge 1 ]; then
 fi
 
 %pre ipsec
-%if 0%{?suse_version}
-    %service_add_pre openvswitch-ipsec.service
-%endif
+%service_add_pre openvswitch-ipsec.service
 
 %preun
-%if 0%{?suse_version}
-    %service_del_preun ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
-%else
-    %if 0%{?systemd_preun:1}
-        %systemd_preun %{name}.service
-    %else
-        # Package install, not upgrade
-        if [ $1 -eq 0 ]; then
-            /bin/systemctl --no-reload disable %{name}.service >/dev/null 2>&1 || :
-            /bin/systemctl stop %{name}.service >/dev/null 2>&1 || :
-        fi
-    %endif
-%endif
+%service_del_preun ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
 
 %preun ipsec
-%if 0%{?suse_version}
-	%service_del_preun openvswitch-ipsec.service
-%endif
+%service_del_preun openvswitch-ipsec.service
 
 %preun test
-%if 0%{?suse_version}
-    %service_del_preun openvswitch-testcontroller
-%else
-    %if 0%{?systemd_post:1}
-        %systemd_preun openvswitch-testcontroller.service
-    %else
-        # Package install, not upgrade
-        if [ $1 -eq 0 ]; then
-            /bin/systemctl --no-reload disable openvswitch-testcontroller.service >/dev/null 2>&1 || :
-            /bin/systemctl stop openvswitch-testcontroller.service >/dev/null 2>&1 || :
-        fi
-    %endif
-%endif
+%service_del_preun openvswitch-testcontroller
 
 %post
 if [ $1 -eq 1 ]; then
@@ -801,23 +708,10 @@ if [ $1 -eq 1 ]; then
     %{?suse_version: %fillup_only -n openvswitch}
 fi
 
-%if 0%{?suse_version}
-	%service_add_post ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
-%else
-    %if 0%{?systemd_post:1}
-        %systemd_post openvswitch.service
-    %else
-        # Package install, not upgrade
-        if [ $1 -eq 1 ]; then
-            /bin/systemctl daemon-reload >dev/null || :
-        fi
-    %endif
-%endif
+%service_add_post ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
 
 %post ipsec
-%if 0%{?suse_version}
-	%service_add_post openvswitch-ipsec.service
-%endif
+%service_add_post openvswitch-ipsec.service
 
 %post -n %{ovs_lname} -p /sbin/ldconfig
 
@@ -829,31 +723,13 @@ fi
 # the OvS can break remote administration during the update so let the
 # admin decide when it's the best time for an OvS restart.
 # 5771f476573445710834234a6a9f7bd999a027e7 ("fedora: do not restart the service on a pkg upgrade")
-%if 0%{?suse_version}
-    %service_del_postun_without_restart ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
-%else
-    %if 0%{?systemd_postun:1}
-        %systemd_postun openvswitch.service
-    %else
-        /bin/systemctl daemon-reload >/dev/null 2>&1 || :
-    %endif
-%endif
+%service_del_postun_without_restart ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
 
 %postun ipsec
-%if 0%{?suse_version}
-	%service_del_postun_without_restart openvswitch-ipsec.service
-%endif
+%service_del_postun_without_restart openvswitch-ipsec.service
 
 %postun test
-%if 0%{?suse_version}
-    %service_del_postun_without_restart openvswitch-testcontroller
-%else
-    %if 0%{?systemd_postun:1}
-        %systemd_postun openvswitch-testcontroller.service
-    %else
-        /bin/systemctl daemon-reload >/dev/null 2>&1 || :
-    %endif
-%endif
+%service_del_postun_without_restart openvswitch-testcontroller
 
 %postun -n %{ovs_lname} -p /sbin/ldconfig
 
@@ -912,9 +788,7 @@ EOF
 fi
 
 %pre -n ovn-central
-%if 0%{?suse_version}
 %service_add_pre ovn-northd.service
-%endif
 # Save the "enabled" state across the transition of
 # ownership of ovn-northd.service from openvswitch-ovn-central to
 # ovn-central.
@@ -925,9 +799,7 @@ if [ "$1" -ge 1 ]; then
 fi
 
 %pre -n ovn-host
-%if 0%{?suse_version}
 %service_add_pre ovn-controller.service
-%endif
 # Save the "enabled" state across the transition of
 # ownership of ovn-controller.service from openvswitch-ovn-host to
 # ovn-host.
@@ -938,9 +810,7 @@ if [ "$1" -ge 1 ]; then
 fi
 
 %pre -n ovn-vtep
-%if 0%{?suse_version}
 %service_add_pre ovn-controller-vtep.service
-%endif
 # Save the "enabled" state across the transition of
 # ownership of ovn-controller-vtep.service from openvswitch-ovn-vtep to
 # ovn-vtep.
@@ -950,50 +820,20 @@ if [ "$1" -ge 1 ]; then
     fi
 fi
 
+%pre -n ovn-br-controller
+%service_add_pre ovn-br-controller.service ovn-br-db.service
+
 %preun -n ovn-central
-%if 0%{?suse_version}
-    %service_del_preun ovn-northd.service
-%else
-    %if 0%{?systemd_preun:1}
-        %systemd_preun ovn-northd.service
-    %else
-        # Package install, not upgrade
-        if [ $1 -eq 0 ]; then
-            /bin/systemctl --no-reload disable ovn-northd.service >/dev/null 2>&1 || :
-            /bin/systemctl stop ovn-northd.service >/dev/null 2>&1 || :
-        fi
-    %endif
-%endif
+%service_del_preun ovn-northd.service
 
 %preun -n ovn-host
-%if 0%{?suse_version}
-    %service_del_preun ovn-controller.service
-%else
-    %if 0%{?systemd_preun:1}
-        %systemd_preun ovn-controller.service
-    %else
-        # Package install, not upgrade
-        if [ $1 -eq 0 ]; then
-            /bin/systemctl --no-reload disable ovn-controller.service >/dev/null 2>&1 || :
-            /bin/systemctl stop ovn-controller.service >/dev/null 2>&1 || :
-        fi
-    %endif
-%endif
+%service_del_preun ovn-controller.service
 
 %preun -n ovn-vtep
-%if 0%{?suse_version}
-    %service_del_preun ovn-controller-vtep.service
-%else
-    %if 0%{?systemd_preun:1}
-        %systemd_preun ovn-controller-vtep.service
-    %else
-        # Package install, not upgrade
-        if [ $1 -eq 0 ]; then
-            /bin/systemctl --no-reload disable ovn-controller-vtep.service >/dev/null 2>&1 || :
-            /bin/systemctl stop ovn-controller-vtep.service >/dev/null 2>&1 || :
-        fi
-    %endif
-%endif
+%service_del_preun ovn-controller-vtep.service
+
+%preun -n ovn-br-controller
+%service_del_preun ovn-br-controller.service ovn-br-db.service
 
 %post -n ovn
 if [ $1 -eq 1 ]; then
@@ -1003,81 +843,30 @@ if [ $1 -eq 1 ]; then
 fi
 
 %post -n ovn-central
-%if 0%{?suse_version}
-    %service_add_post ovn-northd.service
-%else
-    %if 0%{?systemd_post:1}
-        %systemd_post ovn-northd.service
-    %else
-        # Package install, not upgrade
-        if [ $1 -eq 1 ]; then
-            /bin/systemctl daemon-reload >dev/null || :
-        fi
-    %endif
-%endif
+%service_add_post ovn-northd.service
 
 %post -n ovn-host
-%if 0%{?suse_version}
-    %service_add_post ovn-controller.service
-%else
-    %if 0%{?systemd_post:1}
-        %systemd_post ovn-controller.service
-    %else
-        # Package install, not upgrade
-        if [ $1 -eq 1 ]; then
-            /bin/systemctl daemon-reload >dev/null || :
-        fi
-    %endif
-%endif
+%service_add_post ovn-controller.service
 
 %post -n ovn-vtep
-%if 0%{?suse_version}
-    %service_add_post ovn-controller-vtep.service
-%else
-    %if 0%{?systemd_post:1}
-        %systemd_post ovn-controller-vtep.service
-    %else
-        # Package install, not upgrade
-        if [ $1 -eq 1 ]; then
-            /bin/systemctl daemon-reload >dev/null || :
-        fi
-    %endif
-%endif
+%service_add_post ovn-controller-vtep.service
+
+%post -n ovn-br-controller
+%service_add_post ovn-br-controller.service ovn-br-db.service
 
 %post -n %{ovn_lname} -p /sbin/ldconfig
 
 %postun -n ovn-central
-%if 0%{?suse_version}
-    %service_del_postun_without_restart ovn-northd.service
-%else
-    %if 0%{?systemd_postun:1}
-        %systemd_postun ovn-northd.service
-    %else
-        /bin/systemctl daemon-reload >/dev/null 2>&1 || :
-    %endif
-%endif
+%service_del_postun_without_restart ovn-northd.service
 
 %postun -n ovn-host
-%if 0%{?suse_version}
-    %service_del_postun_without_restart ovn-controller.service
-%else
-    %if 0%{?systemd_postun:1}
-        %systemd_postun ovn-controller.service
-    %else
-        /bin/systemctl daemon-reload >/dev/null 2>&1 || :
-    %endif
-%endif
+%service_del_postun_without_restart ovn-controller.service
 
 %postun -n ovn-vtep
-%if 0%{?suse_version}
-    %service_del_postun_without_restart ovn-controller-vtep.service
-%else
-    %if 0%{?systemd_postun:1}
-        %systemd_postun ovn-controller-vtep.service
-    %else
-        /bin/systemctl daemon-reload >/dev/null 2>&1 || :
-    %endif
-%endif
+%service_del_postun_without_restart ovn-controller-vtep.service
+
+%postun -n ovn-br-controller
+%service_del_postun_without_restart ovn-br-controller.service ovn-br-db.service
 
 %postun -n %{ovn_lname} -p /sbin/ldconfig
 
@@ -1111,9 +900,10 @@ fi
 %files
 %defattr(-,root,openvswitch, 775)
 %dir %{_sysconfdir}/openvswitch
+%ghost %dir %{_localstatedir}/log/openvswitch
 %defattr(-,openvswitch,openvswitch)
-%dir %{_localstatedir}/log/openvswitch
-%config %ghost %{_sysconfdir}/openvswitch/system-id.conf
+%{_tmpfilesdir}/openvswitch.conf
+%config %ghost %attr(0644,root,root) %{_sysconfdir}/openvswitch/system-id.conf
 # This is no longer the DB path for new installs but we still need this for
 # upgrades that preserve the old DB path.
 %ghost %{_sysconfdir}/openvswitch/.conf.db.~lock~
@@ -1176,18 +966,10 @@ fi
 %{_unitdir}/ovs-vswitchd.service
 %{_unitdir}/ovsdb-server.service
 %{_unitdir}/ovs-delete-transient-ports.service
-%if 0%{?suse_version}
 %{_fillupdir}/sysconfig.openvswitch
 %{_datadir}/bash-completion/completions/ovs-appctl-bashcomp.bash
 %{_datadir}/bash-completion/completions/ovs-vsctl-bashcomp.bash
 %{_sysusersdir}/openvswitch.conf
-%else
-%config(noreplace) %{_sysconfdir}/sysconfig/openvswitch
-%{_sysconfdir}/bash_completion.d/ovs-appctl-bashcomp.bash
-%{_sysconfdir}/bash_completion.d/ovs-vsctl-bashcomp.bash
-%{_sysconfdir}/sysconfig/network-scripts/ifup-ovs
-%{_sysconfdir}/sysconfig/network-scripts/ifdown-ovs
-%endif
 %ghost %attr(755,root,root) %{_rundir}/openvswitch
 %ghost %attr(644,root,root) %{_rundir}/openvswitch.useropts
 %exclude %{_docdir}/%{name}
@@ -1263,13 +1045,10 @@ fi
 
 %files -n ovn
 %defattr(-,openvswitch,openvswitch)
-%dir %{_localstatedir}/log/ovn
+%{_tmpfilesdir}/ovn.conf
+%ghost %dir %attr(0755,root,root) %{_localstatedir}/log/ovn
 %defattr(-,root,root)
-%if 0%{?suse_version}
 %{_fillupdir}/sysconfig.ovn
-%else
-%config(noreplace) %{_sysconfdir}/sysconfig/ovn
-%endif
 %{_bindir}/ovn-nbctl
 %{_bindir}/ovn-sbctl
 %{_bindir}/ovn-trace
@@ -1356,5 +1135,16 @@ fi
 %files -n ovn-devel
 %{_libdir}/libovn.so
 %{_includedir}/ovn/
+
+%files -n ovn-br-controller
+%{_bindir}/ovn-br-controller
+%{_bindir}/ovn-brctl
+%{_mandir}/man5/ovn-br.5.gz
+%{_mandir}/man8/ovn-br-controller.8.gz
+%{_datadir}/ovn/ovn-br.ovsschema
+%{_unitdir}/ovn-br-controller.service
+%{_unitdir}/ovn-br-db.service
+%{_sbindir}/rcovn-br-controller
+%{_sbindir}/rcovn-br-db
 
 %changelog

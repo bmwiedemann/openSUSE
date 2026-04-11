@@ -1,1 +1,2 @@
 addFilter("E: backup-file-in-package /etc/openvswitch/\.conf\.db\.~lock~")
+addFilter("openvswitch.*W: zero-perms-ghost Suggestion:.*\.conf\.db\.~lock~")

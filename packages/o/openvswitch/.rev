@@ -982,4 +982,24 @@ Changes:
     <comment></comment>
     <requestid>1325934</requestid>
   </revision>
+  <revision rev="86" vrev="32">
+    <srcmd5>845030e3f7ce62a7204570b06270249a</srcmd5>
+    <version>unknown</version>
+    <time>1774555607</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342560</requestid>
+  </revision>
+  <revision rev="87" vrev="33">
+    <srcmd5>1fd1f820658c385550717c080fb2a5f4</srcmd5>
+    <version>unknown</version>
+    <time>1775938979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update openvswitch to 3.7.1
+  - Bug fixes
+  - Fixed buffer overflow during conntrack processing of alg=ftp in
+    userspace datapath (CVE-2026-34956) (bsc#1261273).
+</comment>
+    <requestid>1345811</requestid>
+  </revision>
 </revisionlist>

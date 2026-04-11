@@ -1,4 +1,199 @@
 -------------------------------------------------------------------
+Thu Apr  9 12:11:01 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update openvswitch to 3.7.1
+  - Bug fixes
+  - Fixed buffer overflow during conntrack processing of alg=ftp in
+    userspace datapath (CVE-2026-34956) (bsc#1261273).
+
+-------------------------------------------------------------------
+Mon Mar 23 09:28:44 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update ovn to 26.03.0
+  - Added DNS query statistics tracking in ovn-controller using OVS coverage
+    counters. Statistics can be queried using "ovn-appctl -t ovn-controller
+    coverage/read-counter <counter_name>" or "coverage/show". Tracked metrics
+    include total queries, query types (A, AAAA, PTR, ANY, Other), cache
+    performance (hits/misses), responses sent, and error conditions.
+  - Added support for TLS Server Name Indication (SNI) with the new
+    --ssl-server-name option in OVN utilities and daemons. This allows
+    specifying the server name for SNI, which is useful when connecting
+    through proxies or service meshes where the connection endpoint differs
+    from the intended server name. Without this option, the hostname from
+    the connection string is used for SNI, as before.
+  - Added disable_garp_rarp option to logical_router table in order to disable
+    GARP/RARP announcements by all the peer ports of this logical router.
+  - Support for specifying output_port for logical router reroute policies.
+  - Added "ic-route-deny-adv" and "ic-route-deny-learn" options to
+    the Logical_Router/Logical_Router_Port tables to allow users to
+    deny filter advertised/learned IC routes.
+  - Dynamic Routing:
+    * Extend the Logical Switch EVPN support to now automatically learn
+      IP neighbors (Type-2 MAC+IP EVPN routes) and automatically inject them
+      into the pipelines of the adjacent logical routers.
+    * Add the "other_config:dynamic-routing-arp-prefer-local" to Logical
+      Switches. If set to "true" ovn-controller will give preference to SB
+      (Static_)MAC_Bindings of adjacent logical routers over ARPs learned
+      through EVPN on the switch.
+    * Add the "other_config:dynamic-routing-redistribute=ip" to Logical
+      Switches to announce local IPs/MAC bindings belonging to the same
+      EVPN domain.
+    * Introduce the capability to specify EVPN device names using
+      Logical_Switch other_config column.
+    * Introduce the capability to specify multiple ips for ovn-evpn-local-ip
+      option.
+    * Add the option "dynamic-routing-vrf-id" to Logical Routers which allows
+      CMS to specify the Linux routing table id for a given vrf.
+    * Add the option "dynamic-routing-v4-prefix-nexthop" to Logical Routers
+      which allows CMS to specify nexthop for IPv4 Advertised routes.
+    * Add the option "dynamic-routing-v6-prefix-nexthop" to Logical Routers
+      which allows CMS to specify nexthop for IPv6 Advertised routes.
+    * Add the "options:dynamic-routing-no-learning" to Logical Routers. If
+      set to true router will not learn routes and will forget learned
+      routes.
+    * Add the "options:dynamic-routing-no-learning" to Logical Routers ports.
+      If set to true, router port will not learn routes and will forget
+      learned routes. This option has priority over its router counterpart.
+    * The EVPN support is now considered stable.  Its "experimental" tag has
+      been removed.
+  - Add support for Network Function insertion in OVN with stateful traffic
+    redirection capability in Logical Switch datapath. The feature introduces
+    three new NB database tables:
+    * Network_Function: Defines network function entities with inport/outport
+      pairs. These logical_switch_ports need to point to each other using
+      "nf-linked-port" option and also "is-nf" option set to true.
+    * Network_Function_Group: Groups multiple network functions for redundancy
+    * Network_Function_Health_Check: Configurable health monitoring with
+      interval, timeout, success_count and failure_count parameters.
+    Traffic matching ACLs can be redirected through inline network functions
+    using the network_function_group column in ACL. A healthy network function
+    from the group gets automatically selected based on ICMP forwarding probes
+    with failover to some other member of the group when currently active
+    network function becomes unavailable. Network functions operate in
+    "inline" mode, transparently processing packets without modifying headers,
+    and support both ingress (from-lport) and egress (to-lport) traffic flows.
+    Two new options have been added to Logical_Switch_Port which need to
+    be set to false for ports used as network function inport or outport.
+    - "lsp_learn_mac": This can be used to control mac learning on the port.
+    - "receive_multicast": This can used to control whether multicast packets
+      can be received by the port.
+    NOTE:
+    * Network functions must not modify packet headers.
+    * The feature is not supported in conjunction with Load Balancer.
+    * The feature is supported for both VLAN and overlay networks.
+      When network function is used in a VLAN network, geneve tunneling is
+      used for cross host traffic (between the chassis hosting network
+      function and the chassis hosting the port where the ACL is being
+      enforced). Proper MTU needs to be configured to accomodate this
+      encapsulation.
+  - Added Transit Router support:
+   * Support the creation of Transit Routers.
+   * Added new ovn-ic-nbctl 'tr-add','tr-del','tr-list' commands to manage
+       Transit Router.
+   * Support the creation of Transit Router Ports.
+   * Added new ovn-ic-nbctl 'trp-add' and 'tpr-del' commands to manage
+       Transit Router Ports.
+  - Add ovn-nbctl lsp-add-router-port which will create router port on
+    specified LS.
+  - Add ovn-nbctl lsp-add-localnet-port which will create localnet port on
+    specified LS.
+  - Add a new experimental service - ovn-br-controller to program and
+    manage OVS bridges (not managed by ovn-controller) using OVN logical
+    flows. For more details see man ovn-br(5).
+  - Added experimental flow-based tunnel support. Enable via
+    external_ids:ovn-enable-flow-based-tunnels=true to use shared tunnel
+    ports instead of per-chassis ports, reducing port count for large scale
+    environments. Default is disabled.
+  - Add fallback support for Network Function.
+  - Load balancer health checks can now use Logical Router Port IPs as the
+    source IP for health check probes. Previously, health checks required
+    reserving an unused IP from the backend's subnet. This change allows
+    using LRP IPs directly, eliminating the need to reserve additional IPs
+    per backend port.
+  - Add "distributed" option for load balancer, that forces traffic to be
+    routed only to backend instances running locally on the same chassis
+    it arrives on.
+  - Add support for special port_security prefix "VRRPv3". This prefix allows
+    CMS to allow all required traffic for a VRRPv3 virtual router behind LSP.
+    See ovn-nb(5) man page for more details.
+  - Fixed support for fragmented traffic in the userspace datapath. Added the
+    "acl_ct_translation" NB_Global option to enable connection tracking
+    based L4 field translation for stateful ACLs. When enabled allows proper
+    handling of IP fragmentation in userspace datapaths. This option may break
+    hardware offloading and is disabled by default.
+  - Added support for health check monitoring for Logical Switch Ports using
+    tcp, udp, and icmp protocols. The check status from SB database is
+    synchronized to NB database to health check status field for CMS needs.
+- Spec file cleanups:
+  - Use tmpfiles.d for /var/log/{openvswitch,ovn}
+  - shebang updates
+  - remove all "if 0%suse_version" conditions for RH compatibility.
+  - remove kmp build options, as out-of-tree kernel modules are removed
+    from openvswitch since version 3.0.0
+  - change bcond to enable afxdp for opensuse >= 1600
+
+-------------------------------------------------------------------
+Mon Feb 16 21:31:54 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update openvswitch to 3.7.0
+  - AF_XDP:
+    * AF_XDP support now requires Linux kernel v5.4+ or a nominally older
+      distribution kernel with sufficient features backported.
+    * Setting or reporting "use-need-wakeup" is no longer supported.  The
+      feature is always enabled.
+  - TLS:
+    * Added support for TLS Server Name Indication (SNI) with the new
+      --ssl-server-name option.  This allows specifying the server name
+      for SNI, which is useful when connecting through proxies or service
+      meshes where the connection endpoint differs from the intended
+      server name.  Without this option, the hostname from the connection
+      string is used for SNI, as before.
+  - Userspace datapath:
+    * Conntrack now supports the FTP commands EPSV and EPRT with IPv4
+      connections, instead of limiting these commands to IPv6 only.
+    * Userspace tunneling now supports multi-table and source-based routing
+      using routing rules for selecting next hops after encapsulation.
+  - DPDK:
+    * Add support for DPDK 25.11.
+  - Flow HW Offload:
+    * New global configuration option 'other-config:hw-offload-priority'
+      that allows to set the order of the hardware offload providers
+      to try when multiple exist for a given datapath implementation.
+    * New per-interface configuration option
+      'other-config:hw-offload-priority' that allows to set order of the
+      hardware offload providers or disable flow offloading on a particular
+      interface.
+  - OVSDB-IDL:
+    * New ovsdb_idl_txn_assert_read_only() interface to mark transactions
+      as read-only and trigger assertion failure when application attempts
+      to modify the database data through this transaction.
+  - ovs-appctl:
+    * 'ovs/route/show': added new option, table=[ID|all], to list routes from
+      a specific table or all routes from all tables.
+    * 'ovs/route/add' and 'ovs/route/del': added new option, table=ID, to
+      add/delete a route from a specific table.
+    * 'ovs/route/lookup': added new option, src=IP, to perform lookup with
+      a specific source IP address.
+    * Added a new sub-command, ovs/route/rule/show, to list OVS routing rules.
+    * Added new sub-commands, ovs/route/rule/{add,del}, to add and remove
+      user-specified routing rules.
+  - Windows Support
+    * Support for compiling for and running on Windows has been deprecated.
+  - Deprecation of support for running OVS user-space with OOT kernel module
+    * The OOT kernel module refers to the kernel module that was
+      previously distributed as part of OVS - out of tree (OOT) from the
+      perspective of the upstream Kernel tree.
+    * The OOT kernel module: was deprecated in v2.15; was last present in
+      the v2.17 release; and is no longer present in any supported release
+      since v2.17 went EOL when v3.5 was released.
+  - The following AVX512-specific features are now deprecated:
+    * AVX512-optimized DPCLS lookups.
+    * AVX512-optimized action handling.
+    * AVX512-optimized miniflow extraction.
+    * AVX512-optimized DPIF input processing.
+  - Increased the number of OpenFlow registers to 32.
+
+-------------------------------------------------------------------
 Tue Jan  6 14:56:34 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - OVN update to 25.03.2
@@ -39,7 +234,7 @@ Tue Mar 18 14:56:52 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 -------------------------------------------------------------------
 Mon Mar 10 08:33:01 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
--  Update OVN to 25.03.0 for a list of changes, check 
+-  Update OVN to 25.03.0 for a list of changes, check
    https://github.com/ovn-org/ovn/blob/v25.03.0/NEWS
 
 -------------------------------------------------------------------
@@ -82,7 +277,7 @@ Wed Aug 28 05:18:36 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
     * openvswitch-2.17.8-gcc14-build-fix.patch
     * openvswitch-CVE-2023-3966.patch
 - Updated the patch for version v3.3.1
-    * install-ovsdb-tools.patch 
+    * install-ovsdb-tools.patch
 
 -------------------------------------------------------------------
 Tue Jul 30 13:50:21 UTC 2024 - pgajdos@suse.com
@@ -97,7 +292,7 @@ Tue Jun  4 09:48:39 UTC 2024 - Martin Jambor <mjambor@suse.com>
   didn't do that.  Add check for __clang__, so GCC doesn't include
   headers designed for Clang
   (openvswitch-2.17.8-gcc14-build-fix.patch) [boo#1225906]
-  
+
 -------------------------------------------------------------------
 Mon Feb 26 12:38:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
@@ -108,7 +303,7 @@ Thu Feb 15 06:53:54 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - Fix CVE-2023-3966 [bsc#1219465] openvswitch3: Invalid memory access in Geneve with HW offload
 - Added patch,
-      +openvswitch-CVE-2023-3966.patch 
+      +openvswitch-CVE-2023-3966.patch
 
 -------------------------------------------------------------------
 Thu Feb  1 19:34:16 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
