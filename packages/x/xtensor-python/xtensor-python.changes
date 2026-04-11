@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  1 11:43:52 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add 0001-Fix-C-version-requirement-for-testing-331.patch:
+  fix build with gcc16 (boo#1260947)
+
+-------------------------------------------------------------------
 Mon Mar  9 08:08:17 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to 0.29

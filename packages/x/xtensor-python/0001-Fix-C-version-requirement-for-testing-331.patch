@@ -1,0 +1,25 @@
+From 8cf31b05232e253fe874986d6ee586d8c0c5d126 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <serge.guelton@telecom-bretagne.eu>
+Date: Tue, 24 Feb 2026 17:09:38 +0000
+Subject: [PATCH] Fix C++ version requirement for testing (#331)
+
+---
+ test/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 60fcf10..fb31c6e 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -29,7 +29,7 @@ include(CheckCXXCompilerFlag)
+ 
+ string(TOUPPER "${CMAKE_BUILD_TYPE}" U_CMAKE_BUILD_TYPE)
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
+ 
+ if(MSVC)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc /MP /bigobj")
+-- 
+2.51.0
+

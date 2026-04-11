@@ -23,6 +23,7 @@ Summary:        Python bindings for the xtensor C++ multi-dimensional array libr
 License:        BSD-3-Clause
 URL:            https://github.com/xtensor-stack/xtensor-python
 Source0:        https://github.com/xtensor-stack/xtensor-python/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
+Patch0:         0001-Fix-C-version-requirement-for-testing-331.patch
 BuildRequires:  %{python_module breathe}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module sphinx_rtd_theme}
