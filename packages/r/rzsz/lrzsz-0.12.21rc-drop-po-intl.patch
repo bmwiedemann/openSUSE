@@ -19,12 +19,13 @@
  noinst_SCRIPTS = systype
 --- a/configure.in
 +++ b/configure.in
-@@ -107,7 +107,7 @@ dnl AC_PROG_MAKE_SET included in AM_INIT
+@@ -107,7 +107,8 @@ dnl AC_PROG_MAKE_SET included in AM_INIT
  AC_PROG_RANLIB
  AC_ISC_POSIX
  AC_USE_SYSTEM_EXTENSIONS
 -AM_GNU_GETTEXT
 +AM_GNU_GETTEXT([external])
++AM_GNU_GETTEXT_REQUIRE_VERSION(0.20)
  AC_C_CONST
  AC_C_INLINE
  

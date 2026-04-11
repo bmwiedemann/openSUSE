@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 20:15:31 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update lrzsz-0.12.21rc-drop-po-intl.patch to add a minimum
+  version for gettext and fix build with gettext 1.0
+
+-------------------------------------------------------------------
 Wed Feb 11 20:30:12 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update lrzsz-0.12.21rc-fix-build-with-gcc-15.patch to fix build
