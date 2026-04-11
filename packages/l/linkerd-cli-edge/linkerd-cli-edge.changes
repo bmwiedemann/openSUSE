@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Apr 11 06:59:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.4.2:
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.22 to
+    0.0.23 (#15145)
+  * build(deps-dev): bump webpack from 5.105.4 to 5.106.0 in
+    /web/app (#15148)
+  * chore(deps): ignore major lingui updates (#15135)
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.20 to
+    0.0.21 (#15146)
+  * build(deps): bump tokio from 1.51.0 to 1.51.1 (#15147)
+  * build(deps): bump tokio from 1.50.0 to 1.51.0 (#15139)
+  * build(deps): bump cc from 1.2.58 to 1.2.59 (#15140)
+  * build(deps): bump fastrand from 2.3.0 to 2.4.1 (#15137)
+  * build(deps): bump semver from 1.0.27 to 1.0.28 (#15138)
+  * build(deps): bump libc from 0.2.183 to 0.2.184 (#15117)
+  * build(deps): bump indexmap from 2.13.0 to 2.13.1 (#15121)
+  * build(deps): bump google.golang.org/grpc from 1.79.3 to 1.80.0
+    (#15115)
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.21 to
+    0.0.22 (#15120)
+  * build(deps): bump lodash from 4.17.23 to 4.18.1 in /web/app
+    (#15127)
+  * build(deps-dev): bump jest-environment-jsdom in /web/app
+    (#15128)
+  * build(deps): bump github.com/clarketm/json from 1.15.7 to
+    1.17.1 (#15116)
+  * build(deps): bump docker/login-action from 4.0.0 to 4.1.0
+    (#15122)
+  * build(deps-dev): bump webpack-bundle-analyzer in /web/app
+    (#15129)
+  * build(deps-dev): bump sinon from 21.0.2 to 21.0.3 in /web/app
+    (#15130)
+  * build(deps): bump extractions/setup-just from 3.1.0 to 4.0.0
+    (#15132)
+
+-------------------------------------------------------------------
 Fri Apr 03 05:55:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.4.1:
