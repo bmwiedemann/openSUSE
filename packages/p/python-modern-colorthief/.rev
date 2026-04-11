@@ -71,4 +71,13 @@
   * Refactor image handling in get_palette and get_color (forwarded request 1345009 from rrahl0)</comment>
     <requestid>1345010</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cc3c28a9ce65e3a04184552695cfea0e</srcmd5>
+    <version>0.1.14</version>
+    <time>1775939137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.14:
+  + feat: add more docs and enable support for gil-less python (forwarded request 1345987 from rrahl0)</comment>
+    <requestid>1345988</requestid>
+  </revision>
 </revisionlist>

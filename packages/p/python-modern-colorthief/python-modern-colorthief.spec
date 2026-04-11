@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define         pyname modern_colorthief
 Name:           python-modern-colorthief
-Version:        0.1.13
+Version:        0.1.14
 Release:        0
 Summary:        Colorthief reimagined
 License:        MIT
