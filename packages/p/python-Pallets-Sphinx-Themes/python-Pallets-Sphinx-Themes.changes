@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 10 11:49:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Use Atkinson Hyperlegible font.
+  * Click theme does not use monospace font for body.
+  * Use local font files instead of Google Fonts.
+  * Fix compatibility with Sphinx >= 9.0. :issue:`128`
+  * Require Sphinx >= 7.3. :issue:`128`
+
+-------------------------------------------------------------------
 Sat Nov 23 08:29:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:

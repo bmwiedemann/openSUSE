@@ -91,4 +91,17 @@
     stable version or PRs. :pr:`123`</comment>
     <requestid>1225954</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d817d50ba650abb96d43f4efd6877e1f</srcmd5>
+    <version>2.5.0</version>
+    <time>1775938984</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0:
+  * Use Atkinson Hyperlegible font.
+  * Click theme does not use monospace font for body.
+  * Use local font files instead of Google Fonts.
+  * Fix compatibility with Sphinx &gt;= 9.0. :issue:`128`
+  * Require Sphinx &gt;= 7.3. :issue:`128`</comment>
+    <requestid>1345812</requestid>
+  </revision>
 </revisionlist>
