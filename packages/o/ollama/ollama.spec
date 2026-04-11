@@ -35,7 +35,7 @@
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.19.0
+Version:        0.20.5
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT

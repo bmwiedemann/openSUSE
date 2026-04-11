@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 11 06:58:38 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to versoin 0.20.5
+  * Gemma 4 support
+  * Fixes for ROCm
+  * openClaw extensions
+
+-------------------------------------------------------------------
 Tue Mar 31 16:26:30 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 0.19.0
