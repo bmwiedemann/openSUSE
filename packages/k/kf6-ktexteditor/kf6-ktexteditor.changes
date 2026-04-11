@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:19:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.25.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.25.0
+- Changes since 6.24.0:
+  * Update dependency version to 6.25.0
+  * don't do reverse encoding if the target is the null char
+  * KTextEditor::DocumentPrivate constructor does the register
+  * katedocument: Use first line of text as document title
+  * katedocument: Add relevant MIME types to Save dialog
+  * Remove cmake warning
+  * Update MiniMap Area (kde#516653)
+  * Update version to 6.25.0
+
+-------------------------------------------------------------------
 Mon Mar  9 08:07:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.24.0
