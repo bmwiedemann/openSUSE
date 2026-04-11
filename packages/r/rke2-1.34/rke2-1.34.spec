@@ -34,7 +34,7 @@
 %define hardened_etcd_version build20260227
 
 Name:           rke2-1.34
-Version:        1.34.6+rke2r1
+Version:        1.34.6+rke2r3
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
