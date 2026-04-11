@@ -1521,4 +1521,15 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
   * kdumptool commandline: ignore minor differencies (bsc#1260535)</comment>
     <requestid>1343205</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>d6e0856635cd5f7314fe482f99316764</srcmd5>
+    <version>2.1.9</version>
+    <time>1775938986</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to version 2.1.9
+  * fix syntax in sysconfig
+  * drop quiet from commandline when KDUMP_VERBOSE=8
+- update calibrate values</comment>
+    <requestid>1345855</requestid>
+  </revision>
 </revisionlist>

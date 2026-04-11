@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 10 15:09:45 UTC 2026 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.1.9
+  * fix syntax in sysconfig
+  * drop quiet from commandline when KDUMP_VERBOSE=8
+- update calibrate values
+
+-------------------------------------------------------------------
 Thu Mar 26 10:09:05 UTC 2026 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.1.8
