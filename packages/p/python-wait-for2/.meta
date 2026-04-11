@@ -1,0 +1,4 @@
+<package name="python-wait-for2" project="openSUSE:Factory">
+  <title></title>
+  <description>Asyncio wait_for that can handle simultaneous cancellation and future completion.</description>
+</package>

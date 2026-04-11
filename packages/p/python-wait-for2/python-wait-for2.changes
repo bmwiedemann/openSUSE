@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Mar 27 15:03:20 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
+
+- Enable test suite using pytest-asyncio
+- Disable i586 build due to upstream asyncio timing issues in 32-bit
+
+-------------------------------------------------------------------
+Thu Mar 26 15:31:22 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
+
+- Initial package of python-wait-for2 0.4.1
