@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  7 21:44:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.8:
+  * Support omitting source in version table when path is
+    declared
+
+-------------------------------------------------------------------
 Tue Mar  3 18:56:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.7:
