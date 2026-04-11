@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:18:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.25.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.25.0
+- Changes since 6.24.0:
+  * Update dependency version to 6.25.0
+  * We depend against qt 6.8 => we can remove check here
+  * Propagate C++20 requirement to consumers
+  * [KEncodingProber] Remove unused/unreachable Reset() method
+  * [KEncodingProber] Use in-class initialization for prober members
+  * [Codec] Default constructors/destructors, annotate as constexpr
+  * [Codec] Simplify codecForName lookup
+  * [Codec] Benchmark codecForName lookup
+  * [Codec] Move test class declaration to implementation file
+  * [Codec] Remove double quote for invalid codec warning
+  * [KCharsets] Simplify instance singleton
+  * [KCharsets] Reuse translated strings from encodingsByScript
+  * [KCharsets] Fix possible initialization race for encodingsByScript
+  * [KCharsets] Remove unused include
+  * [KCharsetsTest] Reduce call nesting to improve readability
+  * Update version to 6.25.0
+
+-------------------------------------------------------------------
 Mon Mar  9 08:07:27 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.24.0
