@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:19:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.25.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.25.0
+- Changes since 6.24.0:
+  * Update dependency version to 6.25.0
+  * waylandclipboard: Wait for up to 1s for the clipboard contents
+  * waylandclipboard: Properly interrupt thread when client extension goes inactive
+  * Remove ifdef now that we depend on Qt >= 6.9.0
+  * Change include in ksysteminhibitor_dbus.cpp preventing building when using a QT version < 6.9.
+  * systemclipboard: waylandApp ptr validation cleanup
+  * systemclipboard/wlrwaylandclipboard: Fix WlrDataControlDevice::setPrimarySelection
+  * Update version to 6.25.0
+
+-------------------------------------------------------------------
 Mon Mar  9 08:07:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.24.0
