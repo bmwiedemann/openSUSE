@@ -411,4 +411,40 @@
     <comment></comment>
     <requestid>1324294</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f0b7350a006757c57efee9ec0a5e4223</srcmd5>
+    <version>3.16.0</version>
+    <time>1775939136</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.16.0:
+  * Creating a dataset with neither ``data`` nor ``dtype`` specified
+    is deprecated.
+    We plan to make this an error in h5py 4.0. Use ``dtype='f4'``
+    to keep the current default (which is different from NumPy's default).
+  * ``h5py.config().read_byte_strings`` is deprecated. This has no effect since
+    h5py 3.0, and we plan to get rid of it in 4.0.
+  * Indexing datasets with an array or list of indices is now much faster when
+    selecting many indices (:pr:`2603`).
+  * Fixed a memory leak involving the object registry (:pr:`2783`).
+  * Fix selecting parts of a multi-dimensional dataset with a
+    boolean array corresponding to the first dimension (:pr:`2769`).
+  * Correctly raise errors when trying to write data to a zero-sized dataset or
+    a zero-sized slice (:pr:`2729`).
+  * When creating a dataset, the ``dtype=`` parameter can now be a
+    :class:`TypeID &lt;low:h5py.h5t.TypeID&gt;` object from the low-level API.
+  * Various fixes for safe usage from multiple threads
+  * Trying to store region references in a dataset for object references now
+    raises ``TypeError`` instead of discarding information
+  * A list of reference objects can be used to create a dataset
+  * Fix getting filter details for the :ref:`scaleoffset filter
+    &lt;dataset_scaleoffset&gt;` (:pr:`2781`).
+  * Better error message when attempting to slice a dataset with None or
+    ``np.newaxis`` (:pr:`2731`).
+  * Pre-built Windows packages on PyPI now bundle a recent version of zlib
+  * Avoid replacing ``arr.shape``, which will break in some future version of
+    NumPy (:pr:`2728`).
+  * Closing files should be slightly faster after a redundant call
+    was removed</comment>
+    <requestid>1345981</requestid>
+  </revision>
 </revisionlist>

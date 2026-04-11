@@ -1,7 +1,7 @@
 #
 # spec file for package python-h5py
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@
 %endif
 # /SECTION MPI DEFINITIONS
 Name:           %{pname}%{?my_suffix}
-Version:        3.15.1
+Version:        3.16.0
 Release:        0
 Summary:        Python interface to the Hierarchical Data Format library
 License:        BSD-3-Clause
