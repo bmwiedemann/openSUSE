@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 29 13:41:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.8.6:
+  * fix incompatibility with Nettle 4.x (boo#1257934)
+  * fix NULL pointer dereference in archive_acl_from_text_w() (boo#1260998)
+  * bsdunzip: fix ISO week year and Gregorian year confusion
+  * 7zip: fix SEGV in check_7zip_header_in_sfx via ELF offset validation (boo#1260999)
+  * 7zip: fix out-of-bounds access on ELF 64-bit header (boo#1261000)
+  * RAR5 reader: fix infinite loop in rar5 decompression (boo#1261001)
+  * RAR5 reader: fix potential memory leak (boo#1261002)
+  * RAR5: fix SIGSEGV when archive_read_support_format_rar5 is called twice
+  * CAB reader: fix memory leak on repeated calls to archive_read_support_format_cab
+  * mtree reader: Fix file descriptor leak in mtree parser cleanup (boo#1261003)
+  * various small bugfixes in code and documentation
+- the distributed tarball is missing a test file, add it back
+  add libarchive-3.8.6-add-missing-test.patch
+
+-------------------------------------------------------------------
 Fri Jan  9 21:34:50 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 3.8.5:
