@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname karchive
-# Full KF6 version (e.g. 6.24.0)
+# Full KF6 version (e.g. 6.25.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-karchive
-Version:        6.24.0
+Version:        6.25.0
 Release:        0
 Summary:        Qt 6 addon providing access to numerous types of archives
 License:        LGPL-2.0-or-later
@@ -106,6 +106,7 @@ GZip format, via a subclass of QIODevice. Development files
 %{_kf6_includedir}/KArchive/
 %{_kf6_cmakedir}/KF6Archive/
 %{_kf6_libdir}/libKF6Archive.so
+%{_kf6_pkgconfigdir}/KF6Archive.pc
 
 %files -n libKF6Archive6-lang -f kf6-karchive.lang
 
