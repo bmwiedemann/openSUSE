@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 11 06:16:19 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.10.36
+- Fix profile filter
+
+-------------------------------------------------------------------
+Wed Apr  8 19:48:18 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.10.35
+- Fix updater
+- Add ini config type
+- Use tcp by default on Windows
+
+-------------------------------------------------------------------
 Tue Apr  7 10:16:08 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.34
