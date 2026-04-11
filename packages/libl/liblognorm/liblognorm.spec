@@ -1,7 +1,7 @@
 #
 # spec file for package liblognorm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 5
 Name:           liblognorm
-Version:        2.0.6
+Version:        2.0.9
 Release:        0
 Summary:        Library and tool to normalize log data
 License:        Apache-2.0 AND LGPL-2.1-or-later

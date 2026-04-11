@@ -196,4 +196,34 @@
     <comment></comment>
     <requestid>1256207</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b2283afecb35489b10787f20682a340c</srcmd5>
+    <version>2.0.9</version>
+    <time>1775938990</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.9:
+  * fix build issue on some platforms
+  * fix memory leak when a custom type in rules does not match
+  * fix potential segfault on some platforms
+  * parser(name-value-list): add separator character option
+  * adds new option &quot;separator&quot; for custom key/value pair
+    separation
+  * parser(name-value-list): add assignator option
+  * adds new option &quot;assignator&quot; for custom key/value assignment
+  * parser(name-value-list): fix parsing of escaped characters
+  * parser(name-value-list): add test for quoted values
+  * parser(name-value-list): improve handling of invalid pairs
+  * parser(CEF): fix empty last value handling
+  * parser(CEF): fix header and escape sequence handling
+  * code cleanup: removed problematic language from code base
+  * maintenance: fixed various misspellings in code and comments
+  * string rulebase bugfix: segfault when using LF in json rule
+  * If a json rule used a LF inside a string rule (one not loaded
+  * rulebase file), liblognorm segfaults.
+  * closes https://github.com/rsyslog/liblognorm/issues/333
+
+  * new API to support error callbacks
+  - BuildRequires:  libestr-devel</comment>
+    <requestid>1345956</requestid>
+  </revision>
 </revisionlist>
