@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:18:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.25.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.25.0
+- Changes since 6.24.0:
+  * Update dependency version to 6.25.0
+  * Duplicate kdesrc-build icon as kde-builder icon
+  * Remove duplicate/bogous style sheets
+  * Remove unused path in im-invisible-user.svg that breaks webfont on MacOS
+  * Add data-question status icon similar to other data-* status icons
+  * Add nicer 16x16 variant of dialog-question
+  * Add keyframe-warn
+  * Resize kmouth, konversation, and kde-im-log-viewer to same height
+  * Add icon for conic gradients
+  * Add mask action icons
+  * Update version to 6.25.0
+
+-------------------------------------------------------------------
 Mon Mar  9 08:07:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.24.0
