@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  7 19:19:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.25.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.25.0
+- Too many changes since 6.24.0, only listing bugfixes:
+  * Revert "KFileItem: use permissions to determine isWritable and isReadable" (kde#504287)
+  * Fix protocol in "Destination" header for WebDAV copy/move. (kde#487503)
+  * filepreviewjob: Track subjobs using QPointer (kde#517867)
+  * gui/filepreviewjob: avoid a crash when temp is removed (kde#516575)
+  * kurlnavigator: Change fallback behaviour for user input url (kde#408315)
+
+-------------------------------------------------------------------
 Mon Mar  9 08:07:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.24.0
