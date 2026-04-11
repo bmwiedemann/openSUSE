@@ -1,0 +1,785 @@
+From e2a28fcfa2b63a596cf26c0eae1a6f04235b348c Mon Sep 17 00:00:00 2001
+From: Andrey Rakhmatullin <wrar@wrar.name>
+Date: Mon, 23 Feb 2026 15:38:51 +0500
+Subject: [PATCH] Drop Python 3.9, reinstate 3.14/pydantic jobs (#112)
+
+---
+ .github/workflows/checks.yml      | 12 +++----
+ .github/workflows/publish.yml     |  4 +--
+ .github/workflows/tests.yml       | 31 +++++++---------
+ .pre-commit-config.yaml           |  6 +++-
+ README.md                         |  2 +-
+ itemadapter/_imports.py           | 60 ++++++++++++++++++-------------
+ itemadapter/_json_schema.py       | 14 +++-----
+ pyproject.toml                    | 11 +++---
+ tests/__init__.py                 | 28 +++++++--------
+ tests/test_adapter.py             |  6 ++--
+ tests/test_adapter_pydantic.py    | 11 +++---
+ tests/test_adapter_pydantic_v1.py | 10 ++----
+ tests/test_json_schema.py         | 16 ++++-----
+ tests/test_utils.py               |  2 +-
+ tox.ini                           | 16 ++++-----
+ 15 files changed, 114 insertions(+), 115 deletions(-)
+
+diff --git a/.github/workflows/checks.yml b/.github/workflows/checks.yml
+index ebe4199..94e0687 100644
+--- a/.github/workflows/checks.yml
++++ b/.github/workflows/checks.yml
+@@ -14,21 +14,21 @@ jobs:
+       fail-fast: false
+       matrix:
+         include:
+-        - python-version: 3.13
++        - python-version: "3.14"
+           env:
+             TOXENV: typing
+-        - python-version: 3.13
++        - python-version: "3.14"
+           env:
+             TOXENV: docs
+-        - python-version: 3.13
++        - python-version: "3.14"
+           env:
+             TOXENV: twinecheck
+-        - python-version: 3.13
++        - python-version: "3.14"
+           env:
+             TOXENV: pylint
+ 
+     steps:
+-    - uses: actions/checkout@v5
++    - uses: actions/checkout@v6
+ 
+     - name: Set up Python ${{ matrix.python-version }}
+       uses: actions/setup-python@v6
+@@ -45,5 +45,5 @@ jobs:
+   pre-commit:
+     runs-on: ubuntu-latest
+     steps:
+-    - uses: actions/checkout@v5
++    - uses: actions/checkout@v6
+     - uses: pre-commit/action@v3.0.1
+diff --git a/.github/workflows/publish.yml b/.github/workflows/publish.yml
+index aa82c0d..a472ecc 100644
+--- a/.github/workflows/publish.yml
++++ b/.github/workflows/publish.yml
+@@ -12,10 +12,10 @@ jobs:
+     permissions:
+       id-token: write
+     steps:
+-    - uses: actions/checkout@v5
++    - uses: actions/checkout@v6
+     - uses: actions/setup-python@v6
+       with:
+-        python-version: 3.13
++        python-version: "3.14"
+     - run: |
+         python -m pip install --upgrade build
+         python -m build
+diff --git a/.github/workflows/tests.yml b/.github/workflows/tests.yml
+index 79113b8..8c5c15f 100644
+--- a/.github/workflows/tests.yml
++++ b/.github/workflows/tests.yml
+@@ -15,21 +15,18 @@ jobs:
+       fail-fast: false
+       matrix:
+         include:
+-        - python-version: "3.9"
++        - python-version: "3.10"
+           env:
+             TOXENV: min-attrs
+-        - python-version: "3.9"
++        - python-version: "3.10"
+           env:
+             TOXENV: min-pydantic
+-        - python-version: "3.9"
++        - python-version: "3.10"
+           env:
+             TOXENV: min-scrapy
+-        - python-version: "3.9"
++        - python-version: "3.10"
+           env:
+             TOXENV: min-extra
+-        - python-version: "3.9"
+-          env:
+-            TOXENV: py
+         - python-version: "3.10"
+           env:
+             TOXENV: py
+@@ -42,21 +39,19 @@ jobs:
+         - python-version: "3.13"
+           env:
+             TOXENV: py
+-        - python-version: "3.14.0-rc.2"
++        - python-version: "3.14"
+           env:
+             TOXENV: py
+-        - python-version: "3.14.0-rc.2"
++        - python-version: "3.14"
+           env:
+             TOXENV: attrs
+-        # pydantic doesn't yet support 3.14
+-        - python-version: "3.13"
++        - python-version: "3.14"
+           env:
+             TOXENV: pydantic
+-        - python-version: "3.14.0-rc.2"
++        - python-version: "3.14"
+           env:
+             TOXENV: scrapy
+-        # pydantic doesn't yet support 3.14
+-        - python-version: "3.13"
++        - python-version: "3.14"
+           env:
+             TOXENV: extra
+         - python-version: "pypy3.11"
+@@ -73,7 +68,7 @@ jobs:
+ 
+ 
+     steps:
+-    - uses: actions/checkout@v5
++    - uses: actions/checkout@v6
+ 
+     - name: Set up Python ${{ matrix.python-version }}
+       uses: actions/setup-python@v6
+@@ -91,19 +86,19 @@ jobs:
+       uses: codecov/codecov-action@v5
+ 
+   tests-other-os:
+-    name: "Test: py39, ${{ matrix.os }}"
++    name: "Test: py310, ${{ matrix.os }}"
+     runs-on: "${{ matrix.os }}"
+     strategy:
+       matrix:
+         os: [macos-latest, windows-latest]
+ 
+     steps:
+-    - uses: actions/checkout@v5
++    - uses: actions/checkout@v6
+ 
+     - name: Set up Python
+       uses: actions/setup-python@v6
+       with:
+-        python-version: 3.9
++        python-version: "3.10"
+ 
+     - name: Install tox
+       run: pip install tox
+diff --git a/.pre-commit-config.yaml b/.pre-commit-config.yaml
+index 9ef4361..8f83d15 100644
+--- a/.pre-commit-config.yaml
++++ b/.pre-commit-config.yaml
+@@ -1,6 +1,6 @@
+ repos:
+ - repo: https://github.com/astral-sh/ruff-pre-commit
+-  rev: v0.13.0
++  rev: v0.15.2
+   hooks:
+     - id: ruff-check
+       args: [ --fix ]
+@@ -10,3 +10,7 @@ repos:
+   hooks:
+   - id: end-of-file-fixer
+   - id: trailing-whitespace
++- repo: https://github.com/rhysd/actionlint
++  rev: v1.7.11
++  hooks:
++    - id: actionlint
+diff --git a/README.md b/README.md
+index a9cad1a..9da4122 100644
+--- a/README.md
++++ b/README.md
+@@ -24,7 +24,7 @@ a pre-defined interface (see [extending `itemadapter`](#extending-itemadapter)).
+ 
+ ## Requirements
+ 
+-* Python 3.9+, either the CPython implementation (default) or the PyPy
++* Python 3.10+, either the CPython implementation (default) or the PyPy
+   implementation
+ * [`scrapy`](https://scrapy.org/) 2.2+: optional, needed to interact with
+   `scrapy` items
+diff --git a/itemadapter/_imports.py b/itemadapter/_imports.py
+index a6cc611..6223e4b 100644
+--- a/itemadapter/_imports.py
++++ b/itemadapter/_imports.py
+@@ -1,5 +1,6 @@
+ from __future__ import annotations
+ 
++import sys
+ from typing import Any
+ 
+ # attempt the following imports only once,
+@@ -33,34 +34,45 @@
+ except ImportError:
+     attr = None
+ 
+-pydantic_v1: Any = None
+ pydantic: Any = None
++PydanticUndefined: Any = None
+ 
+-try:
+-    import pydantic
+-except ImportError:  # No pydantic
+-    pass
+-else:
++pydantic_v1: Any = None
++PydanticV1Undefined: Any = None
++
++# pydantic v1 doesn't support Python 3.14+, on older Python versions we try to find both
++if sys.version_info < (3, 14):
+     try:
+-        import pydantic.v1 as pydantic_v1
+-    except ImportError:  # Pydantic <1.10.17
+-        pydantic_v1 = pydantic
+-        pydantic = None
+-    else:  # Pydantic 1.10.17+
+-        if not hasattr(pydantic.BaseModel, "model_fields"):  # Pydantic <2
++        import pydantic
++    except ImportError:  # No pydantic
++        pass
++    else:
++        try:
++            import pydantic.v1 as pydantic_v1
++        except ImportError:  # Pydantic <1.10.17
+             pydantic_v1 = pydantic
+             pydantic = None
++        else:  # Pydantic 1.10.17+
++            if not hasattr(pydantic.BaseModel, "model_fields"):  # Pydantic >=1.10.17,<2
++                pydantic_v1 = pydantic
++                pydantic = None
++            # else Pydantic >=2
+ 
+-try:
+-    from pydantic.v1.fields import Undefined as PydanticV1Undefined
+-    from pydantic_core import PydanticUndefined
+-except ImportError:  # < Pydantic 2.0
+     try:
+-        from pydantic.fields import (  # type: ignore[attr-defined,no-redef]
+-            Undefined as PydanticUndefined,
+-        )
+-        from pydantic.fields import (  # type: ignore[attr-defined,no-redef]
+-            Undefined as PydanticV1Undefined,
+-        )
+-    except ImportError:
+-        PydanticUndefined = PydanticV1Undefined = None  # type: ignore[assignment]
++        from pydantic.v1.fields import Undefined as PydanticV1Undefined
++        from pydantic_core import PydanticUndefined
++    except ImportError:  # Pydantic < 2.0
++        try:
++            from pydantic.fields import (  # type: ignore[attr-defined,no-redef]
++                Undefined as PydanticUndefined,
++            )
++
++            PydanticV1Undefined = PydanticUndefined
++        except ImportError:
++            pass
++else:
++    try:
++        import pydantic
++        from pydantic_core import PydanticUndefined
++    except ImportError:  # No pydantic
++        pass
+diff --git a/itemadapter/_json_schema.py b/itemadapter/_json_schema.py
+index ccca7e5..162e8e8 100644
+--- a/itemadapter/_json_schema.py
++++ b/itemadapter/_json_schema.py
+@@ -9,6 +9,7 @@
+ from copy import copy
+ from enum import Enum
+ from textwrap import dedent
++from types import MappingProxyType, UnionType
+ from typing import (
+     TYPE_CHECKING,
+     Any,
+@@ -24,8 +25,6 @@
+ from .utils import _is_pydantic_model
+ 
+ if TYPE_CHECKING:
+-    from types import MappingProxyType
+-
+     from .adapter import AdapterInterface, ItemAdapter
+ 
+ 
+@@ -139,7 +138,7 @@ def array_type(type_hint):
+     unique_args = set(args)
+     if len(unique_args) == 1:
+         return next(iter(unique_args))
+-    return Union[tuple(unique_args)]
++    return Union[tuple(unique_args)]  # noqa: UP007
+ 
+ 
+ def update_prop_from_pattern(prop: dict[str, Any], pattern: str) -> None:
+@@ -147,12 +146,7 @@ def update_prop_from_pattern(prop: dict[str, Any], pattern: str) -> None:
+         prop.setdefault("pattern", pattern)
+ 
+ 
+-try:
+-    from types import UnionType
+-except ImportError:  # Python < 3.10
+-    UNION_TYPES: set[Any] = {Union}
+-else:
+-    UNION_TYPES = {Union, UnionType}
++UNION_TYPES = {Union, UnionType}
+ 
+ 
+ def update_prop_from_origin(
+@@ -204,7 +198,7 @@ def update_prop_from_type(prop: dict[str, Any], prop_type: Any, state: _JsonSche
+         if issubclass(prop_type, Enum):
+             values = [item.value for item in prop_type]
+             value_types = tuple({type(v) for v in values})
+-            prop_type = value_types[0] if len(value_types) == 1 else Union[value_types]
++            prop_type = value_types[0] if len(value_types) == 1 else Union[value_types]  # noqa: UP007
+             update_prop_from_type(prop, prop_type, state)
+             prop.setdefault("enum", values)
+             return
+diff --git a/pyproject.toml b/pyproject.toml
+index 3054618..d1b24af 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -11,17 +11,17 @@ authors = [
+ readme = "README.md"
+ license = "BSD-3-Clause"
+ license-files = ["LICENSE"]
+-requires-python = ">=3.9"
++requires-python = ">=3.10"
+ classifiers = [
+     "Development Status :: 3 - Alpha",
+     "Intended Audience :: Developers",
+     "Programming Language :: Python",
+     "Programming Language :: Python :: 3",
+-    "Programming Language :: Python :: 3.9",
+     "Programming Language :: Python :: 3.10",
+     "Programming Language :: Python :: 3.11",
+     "Programming Language :: Python :: 3.12",
+     "Programming Language :: Python :: 3.13",
++    "Programming Language :: Python :: 3.14",
+     "Programming Language :: Python :: Implementation :: CPython",
+     "Programming Language :: Python :: Implementation :: PyPy",
+     "Operating System :: OS Independent",
+@@ -74,6 +74,9 @@ regex = true
+ [[tool.bumpversion.files]]
+ filename = "itemadapter/__init__.py"
+ 
++[tool.coverage.run]
++branch = true
++
+ [tool.pylint.MASTER]
+ persistent = "no"
+ load-plugins=[
+@@ -257,7 +260,3 @@ split-on-trailing-comma = false
+ 
+ [tool.ruff.lint.pydocstyle]
+ convention = "pep257"
+-
+-[tool.ruff.lint.pyupgrade]
+-# for Pydantic annotations while we support Python 3.9
+-keep-runtime-typing = true
+diff --git a/tests/__init__.py b/tests/__init__.py
+index 5735527..4df3fa6 100644
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -5,19 +5,19 @@
+ from contextlib import contextmanager
+ from dataclasses import dataclass, field
+ from enum import Enum
+-from typing import TYPE_CHECKING, Any, Callable, Optional, Union
++from typing import TYPE_CHECKING, Any, Optional, Union
+ 
+ from itemadapter import ItemAdapter
+ from itemadapter._imports import pydantic, pydantic_v1
+ 
+ if TYPE_CHECKING:
+-    from collections.abc import Generator
++    from collections.abc import Callable, Generator
+ 
+ 
+ def make_mock_import(block_name: str) -> Callable:
+     def mock_import(name: str, *args, **kwargs):
+         """Prevent importing a specific module, let everything else pass."""
+-        if name.split(".")[0] == block_name:
++        if name.split(".", maxsplit=1)[0] == block_name:
+             raise ImportError(name)
+         return importlib.__import__(name, *args, **kwargs)
+ 
+@@ -88,7 +88,7 @@ class DataClassItemJsonSchema:
+     name: str = field(metadata={"json_schema_extra": {"title": "Name"}})
+     """Display name"""
+     color: Color
+-    answer: Union[str, float, int, None]
++    answer: str | float | int | None
+     numbers: list[float]
+     aliases: dict[str, str]
+     nested: DataClassItemJsonSchemaNested
+@@ -151,7 +151,7 @@ class AttrsItemJsonSchema:
+         name: str = attr.ib(metadata={"json_schema_extra": {"title": "Name"}})
+         """Display name"""
+         color: Color = attr.ib()
+-        answer: Union[str, float, int, None] = attr.ib()
++        answer: str | float | int | None = attr.ib()
+         numbers: list[float] = attr.ib()
+         aliases: dict[str, str] = attr.ib()
+         nested: AttrsItemJsonSchemaNested = attr.ib()
+@@ -173,17 +173,17 @@ class AttrsItemJsonSchema:
+ else:
+ 
+     class PydanticV1Model(pydantic_v1.BaseModel):
+-        name: Optional[str] = pydantic_v1.Field(
++        name: Optional[str] = pydantic_v1.Field(  # noqa: UP045
+             default_factory=lambda: None,
+             serializer=str,
+         )
+-        value: Optional[int] = pydantic_v1.Field(
++        value: Optional[int] = pydantic_v1.Field(  # noqa: UP045
+             default_factory=lambda: None,
+             serializer=int,
+         )
+ 
+     class PydanticV1SpecialCasesModel(pydantic_v1.BaseModel):
+-        special_cases: Optional[int] = pydantic_v1.Field(
++        special_cases: Optional[int] = pydantic_v1.Field(  # noqa: UP045
+             default_factory=lambda: None,
+             alias="special_cases",
+             allow_mutation=False,
+@@ -220,7 +220,7 @@ class PydanticV1ModelJsonSchema(pydantic_v1.BaseModel):
+         value: Any = None
+         color: Color
+         produced: bool
+-        answer: Union[str, float, int, None]
++        answer: Union[str, float, int, None]  # noqa: UP007
+         numbers: list[float]
+         aliases: dict[str, str]
+         nested: PydanticV1ModelJsonSchemaNested
+@@ -245,17 +245,17 @@ class Config:
+ else:
+ 
+     class PydanticModel(pydantic.BaseModel):
+-        name: Optional[str] = pydantic.Field(
++        name: str | None = pydantic.Field(
+             default_factory=lambda: None,
+             json_schema_extra={"serializer": str},
+         )
+-        value: Optional[int] = pydantic.Field(
++        value: int | None = pydantic.Field(
+             default_factory=lambda: None,
+             json_schema_extra={"serializer": int},
+         )
+ 
+     class PydanticSpecialCasesModel(pydantic.BaseModel):
+-        special_cases: Optional[int] = pydantic.Field(
++        special_cases: int | None = pydantic.Field(
+             default_factory=lambda: None,
+             alias="special_cases",
+             frozen=True,
+@@ -294,7 +294,7 @@ class PydanticModelJsonSchema(pydantic.BaseModel):
+         value: Any = None
+         color: Color
+         produced: bool = pydantic.Field(default_factory=lambda: True)
+-        answer: Union[str, float, int, None]
++        answer: str | float | int | None
+         numbers: list[float]
+         aliases: dict[str, str]
+         nested: PydanticModelJsonSchemaNested
+@@ -367,7 +367,7 @@ class ScrapySubclassedItemJsonSchema(ScrapyItem):
+         )
+         color: Color = Field()
+         produced = Field()
+-        answer: Union[str, float, int, None] = Field()
++        answer: str | float | int | None = Field()
+         numbers: list[float] = Field()
+         aliases: dict[str, str] = Field()
+         nested: ScrapySubclassedItemJsonSchemaNested = Field()
+diff --git a/tests/test_adapter.py b/tests/test_adapter.py
+index 219e904..38130fc 100644
+--- a/tests/test_adapter.py
++++ b/tests/test_adapter.py
+@@ -79,7 +79,7 @@ def test_repr_attrs_init_false(self):
+         adapter["name"] = "set after init"
+         assert repr(adapter) == "<ItemAdapter for AttrsItemWithoutInit(name='set after init')>"
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
++    @unittest.skipIf(not PydanticV1Model, "pydantic <2 module is not available")
+     def test_repr_pydantic(self):
+         item = PydanticV1Model(name="asdf", value=1234)
+         adapter = ItemAdapter(item)
+@@ -407,7 +407,7 @@ class PydanticV1ModelTestCase(NonDictTestMixin, unittest.TestCase):
+         **{
+             k: v
+             for k, v in NonDictTestMixin.expected_json_schema.items()
+-            if k not in {"additionalProperties"}
++            if k != "additionalProperties"
+         },
+         "properties": {
+             **{
+@@ -471,7 +471,7 @@ class PydanticModelTestCase(NonDictTestMixin, unittest.TestCase):
+         **{
+             k: v
+             for k, v in NonDictTestMixin.expected_json_schema.items()
+-            if k not in {"additionalProperties"}
++            if k != "additionalProperties"
+         },
+         "properties": {
+             **{
+diff --git a/tests/test_adapter_pydantic.py b/tests/test_adapter_pydantic.py
+index a444fc2..999a351 100644
+--- a/tests/test_adapter_pydantic.py
++++ b/tests/test_adapter_pydantic.py
+@@ -1,6 +1,7 @@
++from __future__ import annotations
++
+ import unittest
+ from types import MappingProxyType
+-from typing import Optional
+ from unittest import mock
+ 
+ import pytest
+@@ -54,7 +55,7 @@ def test_false(self):
+             assert not PydanticAdapter.is_item(ScrapyItem())
+             assert not PydanticAdapter.is_item(ScrapySubclassedItem())
+ 
+-    @unittest.skipIf(not PydanticModel, "pydantic <2 module is not available")
++    @unittest.skipIf(not PydanticModel, "pydantic module is not available")
+     @mock.patch("builtins.__import__", make_mock_import("pydantic"))
+     def test_module_import_error(self):
+         with clear_itemadapter_imports():
+@@ -86,7 +87,7 @@ def test_true(self):
+         mapping_proxy_type = get_field_meta_from_class(PydanticModel, "name")
+         assert mapping_proxy_type == MappingProxyType(
+             {
+-                "annotation": Optional[str],
++                "annotation": str | None,
+                 "default_factory": mapping_proxy_type["default_factory"],
+                 "json_schema_extra": {"serializer": str},
+                 "repr": True,
+@@ -95,7 +96,7 @@ def test_true(self):
+         mapping_proxy_type = get_field_meta_from_class(PydanticModel, "value")
+         assert get_field_meta_from_class(PydanticModel, "value") == MappingProxyType(
+             {
+-                "annotation": Optional[int],
++                "annotation": int | None,
+                 "default_factory": mapping_proxy_type["default_factory"],
+                 "json_schema_extra": {"serializer": int},
+                 "repr": True,
+@@ -104,7 +105,7 @@ def test_true(self):
+         mapping_proxy_type = get_field_meta_from_class(PydanticSpecialCasesModel, "special_cases")
+         assert mapping_proxy_type == MappingProxyType(
+             {
+-                "annotation": Optional[int],
++                "annotation": int | None,
+                 "alias": "special_cases",
+                 "alias_priority": 2,
+                 "default_factory": mapping_proxy_type["default_factory"],
+diff --git a/tests/test_adapter_pydantic_v1.py b/tests/test_adapter_pydantic_v1.py
+index 690b2e7..80d549e 100644
+--- a/tests/test_adapter_pydantic_v1.py
++++ b/tests/test_adapter_pydantic_v1.py
+@@ -18,6 +18,8 @@
+ )
+ from tests.test_json_schema import check_schemas
+ 
++pytestmark = pytest.mark.skipif(not PydanticV1Model, reason="pydantic <2 module is not available")
++
+ 
+ class PydanticTestCase(unittest.TestCase):
+     def test_false(self):
+@@ -51,7 +53,6 @@ def test_false(self):
+             assert not PydanticAdapter.is_item(ScrapyItem())
+             assert not PydanticAdapter.is_item(ScrapySubclassedItem())
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic <2 module is not available")
+     @mock.patch("builtins.__import__", make_mock_import("pydantic"))
+     def test_module_import_error(self):
+         with clear_itemadapter_imports():
+@@ -63,7 +64,6 @@ def test_module_import_error(self):
+             ):
+                 get_field_meta_from_class(PydanticV1Model, "name")
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
+     @mock.patch("itemadapter.utils.pydantic", None)
+     @mock.patch("itemadapter.utils.pydantic_v1", None)
+     def test_module_not_available(self):
+@@ -73,7 +73,6 @@ def test_module_not_available(self):
+         with pytest.raises(TypeError, match=r"tests.PydanticV1Model'\> is not a valid item class"):
+             get_field_meta_from_class(PydanticV1Model, "name")
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
+     def test_true(self):
+         from itemadapter.adapter import PydanticAdapter
+ 
+@@ -99,7 +98,6 @@ def test_true(self):
+         with pytest.raises(KeyError, match="PydanticV1Model does not support field: non_existent"):
+             get_field_meta_from_class(PydanticV1Model, "non_existent")
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
+     def test_json_schema_forbid(self):
+         from itemadapter._imports import pydantic_v1
+ 
+@@ -120,7 +118,6 @@ class Config:
+         }
+         check_schemas(actual, expected)
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
+     def test_json_schema_field_deprecated_bool(self):
+         from itemadapter._imports import pydantic_v1
+ 
+@@ -137,7 +134,6 @@ class Item(pydantic_v1.BaseModel):
+         }
+         check_schemas(actual, expected)
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
+     def test_json_schema_field_deprecated_str(self):
+         from itemadapter._imports import pydantic_v1
+ 
+@@ -154,7 +150,6 @@ class Item(pydantic_v1.BaseModel):
+         }
+         check_schemas(actual, expected)
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
+     def test_json_schema_field_default_factory(self):
+         from itemadapter._imports import pydantic_v1
+ 
+@@ -170,7 +165,6 @@ class Item(pydantic_v1.BaseModel):
+         }
+         check_schemas(actual, expected)
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
+     def test_json_schema_validators(self):
+         from itemadapter._imports import pydantic_v1
+ 
+diff --git a/tests/test_json_schema.py b/tests/test_json_schema.py
+index 66c1853..cf78bb1 100644
+--- a/tests/test_json_schema.py
++++ b/tests/test_json_schema.py
+@@ -7,7 +7,7 @@
+ from collections.abc import Mapping, Sequence  # noqa: TC003
+ from dataclasses import dataclass, field
+ from enum import Enum
+-from typing import Any, Optional, Union
++from typing import Any, Union
+ 
+ import pytest
+ 
+@@ -48,7 +48,7 @@ class OptionalItemListNestedItem:
+ 
+ @dataclass
+ class OptionalItemListItem:
+-    foo: Optional[list[OptionalItemListNestedItem]] = None
++    foo: list[OptionalItemListNestedItem] | None = None
+ 
+ 
+ @dataclass
+@@ -329,7 +329,7 @@ class TestItem:
+     def test_union_single(self):
+         @dataclass
+         class TestItem:
+-            foo: Union[str]
++            foo: Union[str]  # noqa: UP007
+ 
+         actual = ItemAdapter.get_json_schema(TestItem)
+         expected = {
+@@ -345,7 +345,7 @@ class TestItem:
+     def test_custom_any_of(self):
+         @dataclass
+         class TestItem:
+-            foo: Union[str, SimpleItem] = field(
++            foo: str | SimpleItem = field(
+                 metadata={"json_schema_extra": {"anyOf": []}},
+             )
+ 
+@@ -458,7 +458,6 @@ class TestItem:
+         check_schemas(actual, expected)
+ 
+     @unittest.skipIf(not AttrsItem, "attrs module is not available")
+-    @unittest.skipIf(PYTHON_VERSION < (3, 10), "Modern optional annotations require Python 3.10+")
+     def test_modern_optional_annotations(self):
+         import attr
+ 
+@@ -554,7 +553,7 @@ class CrossNestingTestCase(unittest.TestCase):
+ 
+     maxDiff = None
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
++    @unittest.skipIf(not PydanticV1Model, "pydantic <2 module is not available")
+     def test_dataclass_pydantic1(self):
+         @dataclass
+         class TestItem:
+@@ -613,7 +612,7 @@ class TestItem:
+     @unittest.skipIf(not ScrapySubclassedItem, "scrapy module is not available")
+     @unittest.skipIf(not AttrsItem, "attrs module is not available")
+     def test_scrapy_attrs(self):
+-        actual = ItemAdapter.get_json_schema(ScrapySubclassedItemCrossNested)
++        actual = ItemAdapter.get_json_schema(ScrapySubclassedItemCrossNested)  # pylint: disable=possibly-used-before-assignment
+         expected = {
+             "type": "object",
+             "additionalProperties": False,
+@@ -637,7 +636,7 @@ def test_scrapy_attrs(self):
+         }
+         check_schemas(actual, expected)
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
++    @unittest.skipIf(not PydanticV1Model, "pydantic <2 module is not available")
+     @unittest.skipIf(not ScrapySubclassedItem, "scrapy module is not available")
+     def test_pydantic1_scrapy(self):
+         from . import pydantic_v1
+@@ -745,6 +744,7 @@ class TestItem(pydantic.BaseModel):
+         check_schemas(actual, expected)
+ 
+     @unittest.skipIf(not PydanticModel, "pydantic module is not available")
++    @unittest.skipIf(not PydanticV1Model, "pydantic <2 module is not available")
+     @pytest.mark.filterwarnings("ignore:Mixing V1 models and V2 models")
+     def test_pydantics(self):
+         class TestItem(pydantic.BaseModel):
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 9ff0050..e254b0a 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -65,7 +65,7 @@ def test_true_attrs(self):
+         assert is_item(AttrsItem(name="asdf", value=1234))
+         assert ItemAdapter.is_item_class(AttrsItem)
+ 
+-    @unittest.skipIf(not PydanticV1Model, "pydantic module is not available")
++    @unittest.skipIf(not PydanticV1Model, "pydantic <2 module is not available")
+     def test_true_pydantic(self):
+         assert is_item(PydanticV1Model(name="asdf", value=1234))
+         assert ItemAdapter.is_item_class(PydanticV1Model)
+diff --git a/tox.ini b/tox.ini
+index 0af2c34..61171d7 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,12 +1,12 @@
+ [tox]
+-envlist = min-attrs,min-pydantic,min-scrapy,min-extra,py39,py310,py311,py312,py313,py314,attrs,pydantic1,pydantic,scrapy,extra,extra-pydantic1,pre-commit,typing,docs,twinecheck,pylint
++envlist = min-attrs,min-pydantic,min-scrapy,min-extra,py310,py311,py312,py313,py314,attrs,pydantic1,pydantic,scrapy,extra,extra-pydantic1,pre-commit,typing,docs,twinecheck,pylint
+ 
+ [testenv]
+ basepython =
+-    min-attrs,min-pydantic,min-scrapy,min-extra: python3.9
++    min-attrs,min-pydantic,min-scrapy,min-extra: python3.10
+ deps =
+     pytest>=5.4
+-    pytest-cov>=2.8
++    pytest-cov>=7.0.0
+     packaging
+     min-attrs,min-extra: attrs==20.1.0
+     min-pydantic,min-extra: pydantic==1.8
+@@ -33,16 +33,16 @@ commands =
+ [testenv:typing]
+ basepython = python3
+ deps =
+-    mypy==1.18.1
+-    attrs==25.3.0
+-    pydantic==2.11.9
+-    scrapy==2.13.3
++    mypy==1.19.1
++    attrs==25.4.0
++    pydantic==2.12.5
++    scrapy==2.14.1
+ commands =
+     mypy {posargs:itemadapter}
+ 
+ [testenv:pylint]
+ deps =
+-    pylint==3.3.6
++    pylint==4.0.5
+     pylint-per-file-ignores==1.4.0
+ commands =
+     pylint {posargs:itemadapter tests}

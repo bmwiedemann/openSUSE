@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 11 11:42:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add fix-pydantic-tests.patch to fix pydantic tests
+
+-------------------------------------------------------------------
+Tue Apr  7 08:42:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.1:
+  * Fixed `get_json_schema()` to properly format multiline field
+    docstrings using `inspect.cleandoc()`, ensuring consistent
+    indentation and whitespace handling
+
+-------------------------------------------------------------------
 Mon Mar 23 12:00:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.0:

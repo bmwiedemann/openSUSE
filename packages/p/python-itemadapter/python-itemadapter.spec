@@ -27,12 +27,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-itemadapter%{psuffix}
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        Wrapper for data container objects
 License:        BSD-3-Clause
 URL:            https://github.com/scrapy/itemadapter
 Source:         https://github.com/scrapy/itemadapter/archive/v%{version}.tar.gz#/itemadapter-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/scrapy/itemadapter/commit/e2a28fcfa2b63a596cf26c0eae1a6f04235b348c
+Patch1:         fix-pydantic-tests.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}

@@ -81,4 +81,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1343669</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>04b79b71b7ad833d2c19ddf83f4ff2dd</srcmd5>
+    <version>0.13.1</version>
+    <time>1775939192</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-pydantic-tests.patch to fix pydantic tests
+
+- update to 0.13.1:
+  * Fixed `get_json_schema()` to properly format multiline field
+    docstrings using `inspect.cleandoc()`, ensuring consistent
+    indentation and whitespace handling</comment>
+    <requestid>1346060</requestid>
+  </revision>
 </revisionlist>
