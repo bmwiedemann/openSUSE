@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 10 13:55:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.2.3:
+  * Require Python >= 3.7, dropping support for 3.6.
+  * Add support for Python 3.7, 3.9, 3.10, 3.11, 3.12 and
+    PyPy.
+  * Update test suite to handle newer packaging error
+    messages.
+  * Update project metadata, documentation links, and
+    README.
+  * Update Mypy configuration to Python 3.9.
+- drop fix_regex.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Feb  4 09:40:11 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Add fix_regex.patch: relax regex because of new version of packaging
- (gh#repo-helper/pyproject-examples#52) 
+ (gh#repo-helper/pyproject-examples#52)
 
 -------------------------------------------------------------------
 Thu Feb 27 10:00:28 UTC 2025 - ecsos <ecsos@opensuse.org>

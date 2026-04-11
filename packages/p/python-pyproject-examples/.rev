@@ -23,4 +23,23 @@
     <comment></comment>
     <requestid>1330963</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fc4484e4422b816d7f8ca8af10bb66db</srcmd5>
+    <version>2026.2.3</version>
+    <time>1775938985</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.2.3:
+  * Require Python &gt;= 3.7, dropping support for 3.6.
+  * Add support for Python 3.7, 3.9, 3.10, 3.11, 3.12 and
+    PyPy.
+  * Update test suite to handle newer packaging error
+    messages.
+  * Update project metadata, documentation links, and
+    README.
+  * Update Mypy configuration to Python 3.9.
+- drop fix_regex.patch (upstream)
+
+ (gh#repo-helper/pyproject-examples#52)</comment>
+    <requestid>1345844</requestid>
+  </revision>
 </revisionlist>

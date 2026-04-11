@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-examples
-Version:        2023.6.30
+Version:        2026.2.3
 Release:        0
 Summary:        Example pyproject.toml configs for testing
 License:        MIT
 URL:            https://github.com/repo-helper/pyproject-examples
 Source:         https://files.pythonhosted.org/packages/source/p/pyproject-examples/pyproject_examples-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix_regex.patch -- based on PR
-Patch0:         fix_regex.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module whey}
 BuildRequires:  fdupes
