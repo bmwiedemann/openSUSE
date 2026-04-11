@@ -1,0 +1,22 @@
+From 8cf50c9177936e771e158ea9b249b4aa5e2cc1ee Mon Sep 17 00:00:00 2001
+From: Thomas Cokelaer <cokelaer@gmail.com>
+Date: Mon, 2 Mar 2026 12:37:46 +0100
+Subject: [PATCH] set version to 0.14.0
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index b67fa0d..815c3b3 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
+ 
+ [project]
+ name = "easydev"
+-version = "0.13.3"
++version = "0.14.0"
+ description = "Common utilities to ease development of Python packages"
+ authors = [
+     { "name" = "Thomas Cokelaer", "email" = "thomas.cokelaer@pasteur.fr" },

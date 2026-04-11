@@ -16,13 +16,15 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-easydev
-Version:        0.13.3
+Version:        0.14.0
 Release:        0
 Summary:        Common utilities to ease the development of Python packages
 License:        BSD-3-Clause
 URL:            https://github.com/cokelaer/easydev
 Source:         https://github.com/cokelaer/easydev/archive/refs/tags/v%{version}.tar.gz#/easydev-%{version}.tar.gz
+Patch:          https://github.com/cokelaer/easydev/commit/8cf50c9177936e771e158ea9b249b4aa5e2cc1ee.patch#/fix-version.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  2 13:12:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.0
+  * Add Python 3.13 and 3.14 support by @Copilot in (#41)
+  * Fix multicore tests on Python 3.14 by @cjwatson in (#40)
+  * Improve README with installation, feature overview,
+    and quick-start examples by @Copilot in (#42)
+  * Clean up redundant and dead code across easydev modules
+- add fix-version.patch
+
+-------------------------------------------------------------------
 Sun Jan 18 14:09:20 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Nobody needs full poetry to build a rpm package
@@ -29,7 +40,7 @@ Mon Apr 29 06:11:17 UTC 2024 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Mar 28 06:38:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded BuildRequires on line_profiler. 
+- Remove unneeded BuildRequires on line_profiler.
 
 -------------------------------------------------------------------
 Fri Feb 10 10:33:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -54,7 +65,7 @@ Thu Sep 16 04:01:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * some cleanups
   * removed the package module (not used)
   * more tests
-  * logging slightly improved 
+  * logging slightly improved
 - Actually run tests, skipping one test that requires network.
 - Stop installing easydev_buildPackage
 
