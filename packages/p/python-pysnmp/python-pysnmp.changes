@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 10 06:37:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.23
+  * Fixed smi.rfc1902 boolean return values to match documentation.
+  * Added type hints and tests for is_fully_resolved() to improve
+    correctness.
+  * Refactored AsyncioDispatcher to avoid creating event loop
+    unexpectedly and improve loop initialization.
+  * Improved IPv6 handling (zone ID support).
+  * Implemented v1arch command timeouts for {set,next,bulk}_cmd
+    operations.
+
+-------------------------------------------------------------------
 Thu Nov  6 04:26:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.1.22:

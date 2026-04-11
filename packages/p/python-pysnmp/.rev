@@ -302,4 +302,12 @@
 - Fix formatting in early changelog entries.</comment>
     <requestid>1315908</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>bc8188d7ef92542acc117f2985bc8293</srcmd5>
+    <version>7.1.22</version>
+    <time>1775939211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346083</requestid>
+  </revision>
 </revisionlist>

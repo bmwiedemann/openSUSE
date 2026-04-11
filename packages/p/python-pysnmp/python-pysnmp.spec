@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysnmp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  net-snmp
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
-Requires:       python-pyasn1 >= 0.4.8
+Requires:       python-pyasn1 >= 0.6.3
 Requires:       python-pysmi
 BuildArch:      noarch
 %python_subpackages
