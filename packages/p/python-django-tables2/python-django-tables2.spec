@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-tables2
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Table/data-grid framework for Django
 License:        BSD-2-Clause

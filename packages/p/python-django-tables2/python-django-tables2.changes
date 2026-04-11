@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr 11 17:36:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Rename the `querystring` templatetag to `querystring_replace`
+    to avoid shadowing built-in one.
+  * If you use custom templates to render tables with django-
+    tables2, you should replace
+  * `{% querystring %}` with `{% querystring_replace %}`
+  * `RelatedLinkColumn` is removed. Replace `RelatedLinkColumn`
+    with `Column(linkify=True)`.
+  * Remove deprecated `RelatedLinkColumn` and `NullBooleanField`
+    support
+  * `NullBooleanField` was removed in django 4.0
+  * Export `DateColumn`/`DateTimeColumn`/`TimeColumn` in ISO
+    format
+  * Rename `querystring` template tag to `querystring_replace`
+  * Use string annotation_format in `inspect.signature` to
+    prevent runtime errors with type annotations (#1027) by
+    @mschoettle
+  * Add optional `context_object_name` to `TemplateColumn` and
+    make `extra_context` optionally callable (#931) fixes: #928
+
+-------------------------------------------------------------------
 Sun Mar 29 13:53:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.0:
