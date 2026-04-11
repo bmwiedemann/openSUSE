@@ -1,0 +1,7 @@
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSQqWisqEU3zCe5nq8sjfWHptSqwQUCac/0BgAKCRAsjfWHptSq
+wXdSAQCFKCrdXxRNecPxh3OrFg+cwmsx5shkBrjMVo8RkOu7xQEAm+VvaTB1sfzc
+cE8+IRK/fUaif5P2nlE/MxB/u3/NeAM=
+=DURY
+-----END PGP SIGNATURE-----
