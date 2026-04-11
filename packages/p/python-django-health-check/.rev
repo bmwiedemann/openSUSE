@@ -137,4 +137,17 @@
   * Add OpenMetrics endpoint for Prometheus monitoring</comment>
     <requestid>1344475</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2b5ab15d24c21af7ace2b34af900b516</srcmd5>
+    <version>4.2.2</version>
+    <time>1775939214</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.2:
+  * Link to stable psutil docs
+  * Ref #701 -- Close dangling DB connections and reduce memory
+    foodprint
+  * Fix #699 -- Gracefully handle None value from active_queues
+    in Celery</comment>
+    <requestid>1346090</requestid>
+  </revision>
 </revisionlist>
