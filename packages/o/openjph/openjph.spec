@@ -25,6 +25,8 @@ Group:          Productivity/Graphics/Convertors
 URL:            https://github.com/aous72/OpenJPH
 Source:         https://github.com/aous72/OpenJPH/archive/refs/tags/%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-USPTREAM - https://github.com/aous72/OpenJPH/pull/262
+Patch1:         gh-openjph-262.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  libtiff-devel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 09:55:27 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix 32-bit arm sigbus:
+  * gh-openjph-262.patch
+
+-------------------------------------------------------------------
 Tue Feb 17 07:46:58 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - Update to 0.26.3:
