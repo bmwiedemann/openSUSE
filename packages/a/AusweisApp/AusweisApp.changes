@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 12 16:20:07 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.5.1
+    - Fix an error regarding the minimum supported macOS version.
+    - Update of OpenSSL to version 3.6.2.
+    - Fix version number on Android  mistakenly including the
+      architecture.
+
+-------------------------------------------------------------------
 Wed Apr  8 12:55:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
