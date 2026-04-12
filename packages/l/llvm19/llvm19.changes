@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 11 12:15:33 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Drop ld.lld as an ld alternative (boo#1259813).
+
+-------------------------------------------------------------------
 Mon Mar 09 15:11:08 UTC 2026 - Martin Jambor <mjambor@suse.com>
 
 - Adjust a condition in the spec file to be ready when %suse_version
