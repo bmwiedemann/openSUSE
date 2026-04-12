@@ -63,4 +63,12 @@
     + hut will check all git remotes now instead of just origin</comment>
     <requestid>1315103</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d31baab3632be3bb80193093878227a0</srcmd5>
+    <version>0.8.0</version>
+    <time>1776009187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346196</requestid>
+  </revision>
 </revisionlist>

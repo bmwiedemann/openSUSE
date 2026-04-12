@@ -1,7 +1,7 @@
 #
 # spec file for package hut
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hut
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        A CLI tool for sr.ht
 License:        AGPL-3.0-or-later
@@ -25,7 +25,7 @@ Group:          Development/Tools/Navigators
 URL:            https://sr.ht/~xenrox/hut
 Source0:        https://git.sr.ht/~xenrox/hut/archive/v%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.24
 BuildRequires:  golang-packaging
 BuildRequires:  scdoc
 %{go_nostrip}

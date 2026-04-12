@@ -1,19 +1,42 @@
 -------------------------------------------------------------------
+Sun Apr 12 13:44:11 UTC 2026 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.8.0:
+  * Added
+    + "version" command
+    + meta: pronouns and avatar handling
+    + hub: new "list" and "show" commands
+    + lists/todo: new "preferences" commands
+    + builds: improved support for job tags (filtering, updating)
+  * Changed
+    + config file: Each instance now supports setting an "origin"
+      domain from which the origin of each service will be derived.
+      Before this change the name of the instance was used for this
+      - and it stills works as a fallback. Users are encouraged to
+      update their config files.
+    + "git clone" also works with repo names
+    + When using the "--count" flag in the past, it was possible
+      that more resources than the specified amount were printed.
+      Now hut will abort early if the requested amount was printed.
+  * Fixed
+    + some bugs related to the project config system ("git setup")
+
+-------------------------------------------------------------------
 Sat Nov  1 10:35:46 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.7.0:
   * Added:
     + git webhook handling
-    + git setup command that configures a repository for "git send-email" via 
+    + git setup command that configures a repository for "git send-email" via
       the project config file
     + pages ACL handling
     + "Update" command for multiple resources
-    + "count" flag for all list commands. The number of items that should be 
-       fetched by hut can now be specified. This is especially useful when 
+    + "count" flag for all list commands. The number of items that should be
+       fetched by hut can now be specified. This is especially useful when
        redirecting "stdout" and not using the interactive pager.
   * Changed:
     + Some list commands, like ticket list and patchset list, support filtering
-      by status now and will only show actionable items by default (proposed 
+      by status now and will only show actionable items by default (proposed
       patches, open tickets)
     + hut will check all git remotes now instead of just origin
 
