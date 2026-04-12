@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Apr 10 11:00:00 UTC 2026 - Roman Dementiev <roman.dementiev@intel.com>
+
+ * Add PTL (Panther Lake) CPU support
+ * Add native PCIe metrics collection and export support (@ckang)
+ * pcm: add --die option to output aggregated core metrics per die
+ * pcm-pcicfg: add -n option to print NUMA node of PCI device
+ * pcm-pcicfg: add -l option for listing PCI devices with verbosity levels
+ * pcm-sensor-server: add --listen option to specify listening IP address
+ * pcm-sensor-server: add IPv4 command line option for non-Windows systems
+ * pcm-tpmi: add socket ID and NUMA node output
+ * Add API to map NUMA node ID to CPU socket ID
+ * Add getNUMANode() API to PciHandle and PciHandleMM classes
+ * Add quiet mode infrastructure with PCM_QUIET environment variable support
+ * Add AGENTS.md documenting AI-assisted code improvements
+ * pcm-iio: major code refactoring (@antonovalexnn)
+ * Add NUMA node information to bhs-die-stat.sh and bhs-power-mode.sh scripts
+ * Rename default mode into optimized power mode
+ * Improve thread-per-core detection
+ * Make IPv4 default on Windows instead of IPv6 for pcm-sensor-server
+ * Update Intel-PMT to latest (8e57e18) (@mmarkova)
+ * Add compiler security hardening flags (@mmarkova)
+ * Harden DLL loading, enable SSL for pcm-sensor-server on Windows CI (@mmarkova)
+ * Drop old compiler support (MSVC 2017)
+ * Rework verbosity levels across utilities
+ * Add PCM_DEBUG_PMU_DISCOVERY capability
+ * Documentation improvements: build instructions, README updates, cross-platform clarifications (@aart)
+ * Include third-party notice file in release packages (@mmarkova)
+ * Add distribution requirement to third-party notice file header (@mmarkova)
+ * Follow Bandit guidance for Python security (@mmarkova)
+ * Remove details from error messages for compliance (@mmarkova)
+ * Update Dockerfile to meet security compliance (@mmarkova)
+ * [kubernetes] setup networkPolicy for pcm (@jcpunk)
+ * [kubernetes] Set hostUsers explicitly (@jcpunk)
+ * Typos fixed (@twillhalm)
+ * Fix bhs-power-mode scripts to handle multiple TPMI instances per socket
+ * Fail on errors in time functions
+ * Fix port and debug_level parsing to use stoul with range validation
+ * Reject trailing garbage in port and debug_level parsing using stoul pos parameter
+ * Split invalid-arg and out-of-range checks for port and debug_level parsing
+ * Fix core_id computation when coreMaskWidth = 0
+ * Fix IPv4 socket binding on non-Windows systems
+ * Fix(cmake): Correct macOS KEXT build using absolute SDK paths (@darren)
+ * Fix untrusted search path vulnerability (CWE-426): load winpmem and msr.sys drivers from System32 instead of current directory (@mmarkova)
+ * Add O_NOFOLLOW symlink protection to pcm-msr.cpp, client.cpp, mmio.cpp (@mmarkova)
+ * Protect critical file operations against symlink attacks (@mmarkova)
+ * Fix TOCTOU vulnerabilities for symlink protection (@mmarkova)
+ * Eliminate TOCTOU race with O_EXCL-first retry loop in daemon (@mmarkova)
+ * Add ELOOP check for /dev/cpu/*/msr and define retry constant (@mmarkova)
+ * Protect software against DLL injections (for WinRing0 dlls) (@mmarkova)
+ * Add security validation for MCFG header length to prevent integer underflow
+ * Implement input validation for read_number function
+ * Add IP address validation in command-line parsing
+
+-------------------------------------------------------------------
 Sun Sep 14 11:00:00 UTC 2025 - Roman Dementiev <roman.dementiev@intel.com>
 
 - update to version 202509

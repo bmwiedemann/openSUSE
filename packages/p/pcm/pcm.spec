@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202509
+Version:        202604
 Release:        0
 Summary:        Intel Performance Counter Monitor
 License:        BSD-3-Clause
@@ -50,6 +50,8 @@ rm -rf %{buildroot}%{_docdir}/pcm/MAC_HOWTO.txt
 rm -rf %{buildroot}%{_docdir}/pcm/WINDOWS_HOWTO.md
 rm -rf %{buildroot}%{_docdir}/pcm/STARS.md
 rm -rf %{buildroot}%{_docdir}/pcm/generate_summary_readme.md
+rm -rf %{buildroot}%{_docdir}/pcm/NUMA_NODE_API.md
+mv %{buildroot}%{_datadir}/pcm/third-party-software.txt %{buildroot}%{_docdir}/pcm/
 
 %files
 %license LICENSE
@@ -67,6 +69,7 @@ rm -rf %{buildroot}%{_docdir}/pcm/generate_summary_readme.md
 %{_docdir}/pcm/PCM_ACCEL_README.md
 %{_docdir}/pcm/README.md
 %{_docdir}/pcm/license.txt
+%{_docdir}/pcm/third-party-software.txt
 %{_sbindir}/pcm
 %{_sbindir}/pcm-core
 %{_sbindir}/pcm-iio
