@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>1139191</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5555a6dcd16764cf44ac219156bf6258</srcmd5>
+    <version>1.9.9</version>
+    <time>1776016882</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.9:
+  * Remove deprecated setuptools-tox integration
+  * Modernize setup and docs
+  * Optimize `checkWords` and `getVersion` to avoid runtime
+    type checks
+  * Fix typo in method override (getVersion)
+
+- Initial release of 1.9.5</comment>
+    <requestid>1345974</requestid>
+  </revision>
 </revisionlist>

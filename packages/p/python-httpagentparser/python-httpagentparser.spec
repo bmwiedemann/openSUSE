@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpagentparser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpagentparser
-Version:        1.9.5
+Version:        1.9.9
 Release:        0
 Summary:        Extracts OS Browser etc information from http user agent string
 License:        MIT
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/h/httpagentparser
 # Not shipped in sdist, no releases/tags on github
 Source1:        https://raw.githubusercontent.com/shon/httpagentparser/master/tests.py
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -55,7 +55,7 @@ cp %{SOURCE1} .
 %pytest tests.py
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE.txt
 %{python_sitelib}/httpagentparser
 %{python_sitelib}/httpagentparser-%{version}.dist-info
