@@ -17205,9 +17205,9 @@ unsorted:
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
-  - libwtdbo4_11_3 
-  - libwtdbomysql4_11_3 
-  - libwtdbopostgres4_11_3 
+  - libwtdbo4_12_6 
+  - libwtdbomysql4_12_6 
+  - libwtdbopostgres4_12_6 
   - libwv-1_2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
@@ -26647,6 +26647,7 @@ unsorted:
   - python311-overrides 
   - python311-ovirt-engine-sdk 
   - python311-pa-ringbuffer 
+  - python311-packageurl-python 
   - python311-paginate 
   - python311-paho-mqtt 
   - python311-pako 
@@ -26855,6 +26856,7 @@ unsorted:
   - python311-pure-protobuf 
   - python311-pure-sasl 
   - python311-puremagic 
+  - python311-puremagic1 
   - python311-purl 
   - python311-pwdlib 
   - python311-py 
@@ -30566,6 +30568,7 @@ unsorted:
   - python313-overrides 
   - python313-ovirt-engine-sdk 
   - python313-pa-ringbuffer 
+  - python313-packageurl-python 
   - python313-paginate 
   - python313-paho-mqtt 
   - python313-pako 
@@ -34423,6 +34426,7 @@ unsorted:
   - python314-overrides 
   - python314-ovirt-engine-sdk 
   - python314-pa-ringbuffer 
+  - python314-packageurl-python 
   - python314-packaging 
   - python314-paginate 
   - python314-paho-mqtt 
