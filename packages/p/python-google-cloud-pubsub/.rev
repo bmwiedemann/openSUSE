@@ -86,4 +86,14 @@
     (PiperOrigin-RevId: 845891076)</comment>
     <requestid>1343870</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c62c24a5a1f34262d168c6daf5f0e71</srcmd5>
+    <version>2.37.0</version>
+    <time>1776009147</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 2.37.0:
+  * Fix documentation URL AIInference MessageTransform
+    service_account_email field</comment>
+    <requestid>1346114</requestid>
+  </revision>
 </revisionlist>

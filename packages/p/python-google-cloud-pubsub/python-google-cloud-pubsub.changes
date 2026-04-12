@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 11 20:10:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 2.37.0:
+  * Fix documentation URL AIInference MessageTransform
+    service_account_email field
+
+-------------------------------------------------------------------
 Tue Mar 31 09:14:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.36.0:
