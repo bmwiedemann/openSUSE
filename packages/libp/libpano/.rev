@@ -203,4 +203,12 @@ Deleted obsolete parts of descriptions and updated descriptions.</comment>
   + libpano-gcc15.patch</comment>
     <requestid>1283385</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>97d5bb6fa47054c40e5009065028d45c</srcmd5>
+    <version>2.9.23</version>
+    <time>1776012471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346198</requestid>
+  </revision>
 </revisionlist>

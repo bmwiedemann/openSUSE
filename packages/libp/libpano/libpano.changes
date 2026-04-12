@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 10 21:58:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.23:
+  * Fixes for gcc-15 (Lukas Wirz)
+  * Remove FIND_PACKAGE(PkgConfig) from CMakeLists.txt
+  * Fix FSF address in license headers
+  * Fix TAGS file target in CMakeLists.txt
+  * Fix for cmake4
+  * Use correct pointer in resample.c
+  * Fix some unsigned char/signed char issues
+  * Check if variable is valid before freeing in PTcommon.c
+  * Refactored code for reading reverse bitmap in bmp.c
+  * Initialize some variables in PTcommon.c, filter.c, morpher.c,
+    ptfeather.c, resample.c
+  * Don't write terminating null in 'line' out of bounds in parser.c
+- drop libpano-gcc15.patch (integrated upstream)
+
+-------------------------------------------------------------------
 Thu Jun  5 11:32:19 UTC 2025 - pgajdos@suse.com
 
 - added patches
@@ -183,4 +201,3 @@ Fri Jul 30 17:43:52 CEST 2004 - mcihar@suse.cz
 Fri Jul 30 10:53:00 CEST 2004 - mcihar@suse.cz
 
 - initial packaging
-
