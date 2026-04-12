@@ -1721,4 +1721,28 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1342005</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>0c58a2c77d05d511600ac6dd327bec90</srcmd5>
+    <version>2.194.0</version>
+    <time>1776016880</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.194.0:
+  * **admin:** Update the api
+  * **agentregistry:** Update the api
+  * **agentregistry:** Update the api
+  * **aiplatform:** Update the api
+  * **aiplatform:** Update the api
+  * **aiplatform:** Update the api
+  * **alertcenter:** Update the api
+  * **alertcenter:** Update the api
+  * **alloydb:** Update the api
+  * **analyticsadmin:** Update the api
+  * **apigee:** Update the api
+  * **apikeys:** Update the api
+  * **appengine:** Update the api
+  * **artifactregistry:** Update the api
+  * **backupdr:** Update the api
+  * **backupdr:** Update the api</comment>
+    <requestid>1345971</requestid>
+  </revision>
 </revisionlist>
