@@ -1,7 +1,7 @@
 #
 # spec file for package python-blosc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blosc
-Version:        1.11.3
+Version:        1.11.4
 Release:        0
 Summary:        Blosc data compressor for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Blosc/python-blosc
 Source:         https://files.pythonhosted.org/packages/source/b/blosc/blosc-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM use-frombuffer.patch gh#Blosc/python-blosc#342
-Patch0:         use-frombuffer.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module py-cpuinfo}
 BuildRequires:  %{python_module scikit-build >= 0.11.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

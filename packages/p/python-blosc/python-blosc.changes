@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 12 11:39:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.4:
+  * Added support for Python 3.14 (with GIL).
+  * Fix deprecated Numpy usage (see #347)
+- Remove use-frombuffer.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Sep  2 08:42:43 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Add the use-frombuffer.patch: It fix the building due to binary mode of fromstring being removed
@@ -67,7 +75,7 @@ Sat Feb 13 13:40:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.10.2
   * (Upstream bumped the version to release their wheels)
-  * Officially drop support for Python < 3.7.  Although we did not 
+  * Officially drop support for Python < 3.7.  Although we did not
     any explicit action that is incompatible with older Python
     versions, we only provide wheels for Python >= 3.7 (til 3.9).
 - Skip python36 build on TW, because upstream dropped support and
@@ -80,13 +88,13 @@ Sun Dec 20 18:35:01 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.9.2.
   * Internal C-Blosc updated to 1.20.1.  This fixes
-    https://github.com/Blosc/python-blosc/issues/229, and also 
-    brings many new updates in internal codecs, providing 
+    https://github.com/Blosc/python-blosc/issues/229, and also
+    brings many new updates in internal codecs, providing
     interesting bumps in performance in some cases.
   * Due to recent addition of more cores in new CPUs, the number of
     internal threads to be used by default has been increased from
     4 to 8.
-  * Allow zero-copy decompression by allowing bytes-like input. 
+  * Allow zero-copy decompression by allowing bytes-like input.
   * Fix DeprecationWarning due to invalid escape sequence and use
     array.tobytes for Python 3.9.
 
@@ -104,16 +112,16 @@ Fri Jul 17 07:17:58 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 Wed Jul  8 09:37:15 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.9.1
-  * Disable the attempt to include support for SSE2 and AVX2 on non-Intel 
+  * Disable the attempt to include support for SSE2 and AVX2 on non-Intel
     platforms, allowing the build on such platforms (see #244).
   * Dropped support for Python 2.7 and 3.5.
-  * Fixed the copy of the leftovers of a chunk when its size is not 
+  * Fixed the copy of the leftovers of a chunk when its size is not
     a multiple of the typesize.
 
 -------------------------------------------------------------------
 Thu Mar 26 14:20:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Use unittest instead of nose 
+- Use unittest instead of nose
 
 -------------------------------------------------------------------
 Thu Jan 30 16:30:20 UTC 2020 - Todd R <toddrme2178@gmail.com>
@@ -275,7 +283,7 @@ Thu Mar 10 19:48:59 UTC 2016 - toddrme2178@gmail.com
   * Updated to c-blosc v1.7.0. However, the new bitshuffle filter
     has not been made public because recent reports indicate that
     it seems too green for production.
-  * Support bytes-like objects that support the buffer interface 
+  * Support bytes-like objects that support the buffer interface
     as input to compress and decompress. On Python 2.x this
     includes unicode, on Python 3.x it doesn't. (#80 #94 @esc)
   * Fix a memory leak in decompress. Added tests to catch memory

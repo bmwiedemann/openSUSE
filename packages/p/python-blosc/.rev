@@ -220,4 +220,24 @@ Implement single-spec version</comment>
     <comment></comment>
     <requestid>1302354</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c3543c9830ed4b8d10391628138247ea</srcmd5>
+    <version>1.11.4</version>
+    <time>1776009157</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.4:
+  * Added support for Python 3.14 (with GIL).
+  * Fix deprecated Numpy usage (see #347)
+- Remove use-frombuffer.patch: fixed upstream.
+
+  * Officially drop support for Python &lt; 3.7.  Although we did not
+    https://github.com/Blosc/python-blosc/issues/229, and also
+    brings many new updates in internal codecs, providing
+  * Allow zero-copy decompression by allowing bytes-like input.
+  * Disable the attempt to include support for SSE2 and AVX2 on non-Intel
+  * Fixed the copy of the leftovers of a chunk when its size is not
+- Use unittest instead of nose
+  * Support bytes-like objects that support the buffer interface</comment>
+    <requestid>1346169</requestid>
+  </revision>
 </revisionlist>
