@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 12 12:14:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.87 (bsc#1255465, CVE-2025-68463):
+  * Migrated from setup.py to pyproject.toml for packaging configuration.
+  * Addressed security issue CVE-2025-68463 in
+    Bio.Entrez.Parser if parsing untrusted files.
+  * Additionally, a number of small bugs and typos have been fixed
+    with additions to the test suite and type annotations.
+
+-------------------------------------------------------------------
 Sun Mar 15 14:48:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.86:

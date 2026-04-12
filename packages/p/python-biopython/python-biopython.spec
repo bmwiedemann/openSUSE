@@ -20,7 +20,7 @@
 %bcond_with test
 %{?sle15_python_module_pythons}
 Name:           python-biopython
-Version:        1.86
+Version:        1.87
 Release:        0
 Summary:        Python Tools for Computational Molecular Biology
 License:        BSD-3-Clause AND MIT

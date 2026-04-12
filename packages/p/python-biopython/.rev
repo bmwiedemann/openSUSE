@@ -232,4 +232,17 @@
     OpenSCAD output file.</comment>
     <requestid>1339111</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>55e16594a5cd7d9c09788465e1d934ee</srcmd5>
+    <version>1.87</version>
+    <time>1776009182</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.87 (bsc#1255465, CVE-2025-68463):
+  * Migrated from setup.py to pyproject.toml for packaging configuration.
+  * Addressed security issue CVE-2025-68463 in
+    Bio.Entrez.Parser if parsing untrusted files.
+  * Additionally, a number of small bugs and typos have been fixed
+    with additions to the test suite and type annotations.</comment>
+    <requestid>1346177</requestid>
+  </revision>
 </revisionlist>
