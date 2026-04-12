@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 12 16:16:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 2026.4.7:
+  * Update CPython standalone build releases and hashes for
+    3.14.3, 3.13.12, 3.12.13, 3.11.15, and 3.10.20.
+  * Add PyPy 3.11.15 (v7.3.21) support.
+
+-------------------------------------------------------------------
 Mon Mar  9 18:14:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update update 2026.3.3

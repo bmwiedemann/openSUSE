@@ -73,4 +73,15 @@
 - update to 2025.4.9:</comment>
     <requestid>1337814</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>19a4390ef4168fd35e8d7393abfa2815</srcmd5>
+    <version>2026.4.7</version>
+    <time>1776015693</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2026.4.7:
+  * Update CPython standalone build releases and hashes for
+    3.14.3, 3.13.12, 3.12.13, 3.11.15, and 3.10.20.
+  * Add PyPy 3.11.15 (v7.3.21) support.</comment>
+    <requestid>1346207</requestid>
+  </revision>
 </revisionlist>
