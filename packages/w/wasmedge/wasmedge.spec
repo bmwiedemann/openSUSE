@@ -17,7 +17,7 @@
 
 
 Name:           wasmedge
-Version:        0.13.5
+Version:        0.16.1
 Release:        0
 Summary:        High-performance and extensible WebAssembly runtime
 License:        Apache-2.0 AND CC0-1.0
@@ -58,7 +58,7 @@ compiling programs using WasmEdge.
 %autosetup -n %{name} -p1
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_SHARED_LIBS=OFF -DWASMEDGE_BUILD_TESTS=OFF -DWASMEDGE_BUILD_AOT_RUNTIME=OFF
+%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_SHARED_LIBS=OFF -DWASMEDGE_BUILD_TESTS=OFF -DWASMEDGE_BUILD_AOT_RUNTIME=OFF -DWASMEDGE_USE_LLVM=OFF
 %cmake_build
 
 %install

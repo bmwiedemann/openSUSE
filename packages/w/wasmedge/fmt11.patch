@@ -10,18 +10,15 @@ lib/common/errinfo.cpp:165:25: error: "join" is not a member of "fmt"
  lib/common/errinfo.cpp | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/lib/common/errinfo.cpp b/lib/common/errinfo.cpp
-index 188a1836..5a4df5d3 100644
---- a/lib/common/errinfo.cpp
-+++ b/lib/common/errinfo.cpp
+Index: wasmedge-test/lib/common/errinfo.cpp
+===================================================================
+--- wasmedge-test.orig/lib/common/errinfo.cpp
++++ wasmedge-test/lib/common/errinfo.cpp
 @@ -1,6 +1,7 @@
  // SPDX-License-Identifier: Apache-2.0
- // SPDX-FileCopyrightText: 2019-2022 Second State INC
+ // SPDX-FileCopyrightText: 2019-2024 Second State INC
  
 +#include <fmt/ranges.h>
  #include "common/errinfo.h"
  #include "common/errcode.h"
  #include "common/hexstr.h"
--- 
-2.45.2
-

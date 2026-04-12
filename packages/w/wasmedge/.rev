@@ -23,4 +23,41 @@
     <comment></comment>
     <requestid>1187712</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ed474c9b70e3b49f73e505be02bd5906</srcmd5>
+    <version>0.16.1</version>
+    <time>1776009148</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.1:
+  * fix(tools): revert the proposal disable options
+  * fix(tools): wrong option name for threads proposal
+  * test(example): update mandelbrot-set-in-threads example
+  * ci: use macos-15-intel as the ci runner, instead of
+    macos-14-large
+  * feat(installer,v2): add version-aware manylinux support for
+    0.15.0+
+  * feat(installer,v2): support WasmEdge 0.15.0 tarball structure
+  * [CAPI]
+  * feat(api): allow redirect of stdin, stdout, and stderr in C
+    SDK
+  * feat(api): refactor the api header file
+  * feat(api): new api for setting wasm standard in config
+  * [WASI]
+  * feat(wasi): export wasi module to calling frame
+  * feat(wasi): don't handle append flag ourself
+  * [WASI-NN]
+  * feat(wasi-nn): bump llama.cpp b7090
+  * feat(wasi-nn): bump wasi-nn plugin to 0.1.34
+  * feat(wasi-nn): support gpt-oss
+  * feat(wasi-nn): remove llama_context_default_params, use
+    default common_params value
+  * feat(wasi-nn,bitnet): add BitNet backend support
+  * feat(wasi-nn,ggml): support MiniCPM-V4.5
+  * feat(wasi-nn,MLX): support whisper for MLX backend
+  * feat(wasi-nn,ggml): adjust seed type
+  * feat(wasi-nn): provide WASMEDGE_FORCE_DOWNLOAD_SIMDJSON to
+    avoid using system simdjson
+  * fix(WASI-NN/MLX): change loadBytesFromFile ifstream</comment>
+    <requestid>1346117</requestid>
+  </revision>
 </revisionlist>
