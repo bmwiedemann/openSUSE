@@ -67,4 +67,17 @@
     <comment></comment>
     <requestid>1248021</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5d3e460956415bcc2584f3c0f39b2768</srcmd5>
+    <version>0.22.1</version>
+    <time>1776009156</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.1:
+  * Support `set_authorizer` query access controls (#349)
+  * Wait for transaction queue to complete when closing connection (#305)
+  * Emit warning when connection goes out of scope without being closed (#355)
+  * Remove dependency on `typing_extensions` (#365)
+  * Added synchronous `stop()` method to `aiosqlite.Connection`</comment>
+    <requestid>1346168</requestid>
+  </revision>
 </revisionlist>

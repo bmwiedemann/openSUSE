@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosqlite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiosqlite
-Version:        0.21.0
+Version:        0.22.1
 Release:        0
 Summary:        AsyncIO Bridge to the Standard Python sqlite3 Module
 License:        MIT

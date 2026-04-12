@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 12 11:32:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.1:
+  * Support `set_authorizer` query access controls (#349)
+  * Wait for transaction queue to complete when closing connection (#305)
+  * Emit warning when connection goes out of scope without being closed (#355)
+  * Remove dependency on `typing_extensions` (#365)
+  * Added synchronous `stop()` method to `aiosqlite.Connection`
+
+-------------------------------------------------------------------
 Mon Feb 24 08:06:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.21.0
