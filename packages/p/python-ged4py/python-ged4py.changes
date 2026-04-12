@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Apr 11 17:54:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.2:
+  * Add type annotations everywhere.
+  * Modernize package structure, add pyproject.toml replacing
+    setup.{py.cfg}.
+  * Python versions supported/tested are 3.11, 3.12, 3.13.
+  * Added github actions to do testing with supported Python
+    versions, drop tox.
+  * Add pre-commit config with some checks.
+  * Extend behavior of Record.sub_tags() method.
+  * Fix crash in sub_tag() with broken files
+  * Improve handling of invalid dates
+  * Python3 goodies, use enum classes for enums
+  * Use numpydoc style for docstrings, add extension to Sphinx
+  * Drop Python2 compatibility code
+  * Use github actions instead of Travis CI
+  * Drop Python2 support
+  * Python3 supported versions are 3.6 - 3.8
+  * Extend dialect detection for new genery.com SOUR format
+  * Disable hashing for Record types
+  * Add hash method for DateValue and CalendarDate classes
+  * Improve ordering of DateValue instances
+  * Fix parsing of DATE records with leading blanks
+  * Extend documentation with examples
+  * Extend docstrings for few classes
+  * Improve support for GEDCOM date types
+  * Add support for MacOS line breaks (single CR character)
+- add python-convertdate dependency
+- update setuptools requirement to >= 61.0
+
+-------------------------------------------------------------------
 Tue May 27 13:57:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ged4py
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-ged4py
-Version:        0.1.12
+Version:        0.5.2
 Release:        0
 Summary:        GEDCOM tools for Python
 License:        MIT
@@ -25,14 +25,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/andy-z/ged4py
 Source:         https://files.pythonhosted.org/packages/source/g/ged4py/ged4py-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ansel
+Requires:       python-convertdate
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ansel}
+BuildRequires:  %{python_module convertdate}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -55,7 +57,7 @@ chmod a-x README.rst
 %pytest
 
 %files %{python_files}
-%doc AUTHORS.rst README.rst
+%doc AUTHORS.rst CONTRIBUTING.rst HISTORY.rst README.rst
 %license LICENSE
 %{python_sitelib}/ged4py
 %{python_sitelib}/ged4py-%{version}*-info
