@@ -675,4 +675,17 @@
   * Add ruff</comment>
     <requestid>1337520</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>bd54bd5e5a8d1ff1a6ac1f9cb6aabe96</srcmd5>
+    <version>10.0.1</version>
+    <time>1776021241</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.0.1:
+  * typing: Improve timeutils.StopWatch signature
+  * Fix return type of raise_with_cause
+  * fix force_reraise to be annotated as NoReturn
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.1
+  * Update .gitreview for stable/2026.1</comment>
+    <requestid>1346232</requestid>
+  </revision>
 </revisionlist>

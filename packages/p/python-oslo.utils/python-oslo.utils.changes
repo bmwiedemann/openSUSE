@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 12 18:52:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.0.1:
+  * typing: Improve timeutils.StopWatch signature
+  * Fix return type of raise_with_cause
+  * fix force_reraise to be annotated as NoReturn
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.1
+  * Update .gitreview for stable/2026.1
+
+-------------------------------------------------------------------
 Sun Mar  8 20:46:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.0.0:
