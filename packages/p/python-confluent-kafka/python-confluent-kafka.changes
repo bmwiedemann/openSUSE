@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Sat Apr 11 12:10:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * Implement async context manager protocol for AIOProducer and
+    AIOConsumer
+  * Add AssociatedNameStrategy
+  * Add enableAt to RuleSet
+  * Ensure normalize.schemas config is passed during Protobuf ref
+    lookup #2214
+  * Fix type annotations for context manager hooks so that they
+    are correct for subclasses
+  * Fix OAuth callback handling for Async IO clients to prevent
+    initialization failures
+  * confluent-kafka-python v2.14.0 is based on librdkafka
+    v2.14.0, see the
+  * librdkafka release notes
+  * for a complete list of changes, enhancements, fixes and
+    upgrade considerations.
+- update to 2.13.2:
+  * v2.13.2 is a maintenance release with the following fixes and
+    enhancements:
+  * Add Confluent-Client-Version header to requests to SR, Python
+    client
+  * Add UAMI OAuth changes
+  * Fixed memory leak in Producer.produce() when called with
+    headers and raises BufferError (queue full) or RuntimeError
+    (producer closed). The allocated rd_headers memory is now
+    properly freed in error paths before returning. Fixes Issue
+    https://github.com/confluentinc/confluent-kafka-
+    python/issues/2167.
+  * Fixed type hinting of KafkaError class, Consumer.__init()__,
+    Producer.__init()__, Producer.produce() and Consumer.commit()
+    and introduced a script in tools directory to keep error
+    codes up to date. Fixes Issue
+    https://github.com/confluentinc/confluent-kafka-
+    python/issues/2168.
+  * Fix the token expiration logic in SR Oauth
+  * Ensure use of cachetools is thread-safe
+  * Remove passing resolver in json validate
+- update to 2.13.0:
+  * Enforced type hinting for all interfaces
+  * Handle OAuth Token Refreshes using background thread for
+    Admin, Producer and Consumer clients
+  * Added black and isort linting rules and enforcement to
+    codebase
+  * Enabled direct creation of Message objects
+  * Added `close()` method to producer
+  * Added context manager for librdkafka classes to enable easy
+    scope cleanup
+  * Expose deterministic partitioner functions
+  * Add Accept-Version header for schemas
+  * Enhanced the BufferTimeoutManager to flush the librdkafka
+    queue
+  * Remove experimental module designation for Async classes
+  * Add `__len__` function to AIOProducer
+  * Enhance Message class to include serialisation support and
+    rich comparison
+  * Support Strict Validation Flags in Avro Serializers
+  * Type hint `__enter__` to return the same object type that
+    called it
+  * Fixed `Consumer.poll()`, `Consumer.consume()`,
+    `Producer.poll()`, and `Producer.flush()` blocking
+    indefinitely and not responding to Ctrl+C (KeyboardInterrupt)
+    signals. The implementation now uses a "wakeable poll"
+    pattern that breaks long blocking calls into smaller chunks
+    (200ms) and periodically re-acquires the Python GIL to check
+    for pending signals. This allows Ctrl+C to properly interrupt
+    blocking operations. Fixes Issues #209 and #807 (#2126).
+  * Fix support for wrapped Avro unions
+  * Fixed segfault exceptions on calls against objects that had
+    closed internal objects
+  * Handle evolution during field transformation of schemas
+  * Handle null group name to prevent segfault in Admin
+    `list_consumer_group_offsets()`
+  * Ensure schemaId initialization is thread-safe
+  * Fix error propagation rule for Python's C API
+  * Fix SR delete behavior with client-side caching
+  * Don't leave NewTopic partially-initialized on error
+  * Fix formatting issue of TopicPartition that causes
+    SystemError on Windows
+  * Add Py_None check for msg and offset params in `commit()` and
+    `store_offsets()`
+  * Fix experimental module references
+  * Update outdated example in README.md
+
+-------------------------------------------------------------------
+Fri Apr  3 17:38:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.1:
+  * Restored macOS binaries compatibility with macOS 13
+  * `libversion()` now returns the string/integer tuple for
+    varients on version -- use `version()` for string only
+    response
+  * Added Python 3.14 support and dropped 3.7 support -- Free-
+    threaded capabilities not fully supported yet
+  * Fixed use.schema.id in `sr.lookup_schema()`
+  * Removed tomli dependency from standard (non-documentation)
+    requirements
+  * Fixed experimental asyncio example files to correctly use new
+    capabilities
+  * Fixed invalid argument error on schema lookups on repeat
+    requests
+  * Fixed documentation generation and added error checks for
+    builds to prevent future breaks
+- update to 2.12.0:
+  * Starting with __confluent-kafka-python 2.12.0__, the next
+    generation consumer group rebalance protocol defined in
+    **KIP-848** is **production-ready**. Please refer to the
+    following migration guide for moving from `classic` to
+    `consumer` protocol.
+  * **Note:** The new consumer group protocol defined in KIP-848
+    is not enabled by default. There are few contract change
+    associated with the new protocol and might cause breaking
+    changes. `group.protocol` configuration property dictates
+    whether to use the new `consumer` protocol or older `classic`
+    protocol. It defaults to `classic` if not provided.
+  * ### AsyncIO Producer (experimental)
+  * Introduces beta class `AIOProducer` for asynchronous message
+    production in asyncio applications.
+  * AsyncIO Producer (experimental): Introduces beta class
+    `AIOProducer` for
+  * asynchronous message production in asyncio applications. This
+    API offloads
+  * blocking librdkafka calls to a thread pool and schedules
+    common callbacks
+  * (`error_cb`, `throttle_cb`, `stats_cb`, `oauth_cb`, `logger`)
+    onto the event
+  * loop for safe usage inside async frameworks.
+  * #### Features
+  * Batched async produce: `await AIOProducer(...).produce(topic,
+    value=...)`
+  * buffers messages and flushes when the buffer threshold or
+    timeout is reached.
+  * Async lifecycle: `await producer.flush()`, `await
+    producer.purge()`, and
+  * transactional operations (`init_transactions`,
+    `begin_transaction`,
+  * `commit_transaction`, `abort_transaction`).
+- update to 2.10.1:
+  * Handled `None` value for optional `ctx` parameter in
+    `ProtobufDeserializer`
+  * Handled `None` value for optional `ctx` parameter in
+    `AvroDeserializer`
+- update to 2.10.0:
+  * [KIP-848] Group Config is now supported in AlterConfigs,
+    IncrementalAlterConfigs and DescribeConfigs.
+  * [KIP-848] `describe_consumer_groups()` now supports KIP-848
+    introduced `consumer` groups. Two new fields for consumer
+    group type and target assignment have also been added. Type
+    defines whether this group is a `classic` or `consumer`
+    group. Target assignment is only valid for the `consumer`
+    protocol and its defaults to NULL. (#1873).
+
+-------------------------------------------------------------------
 Fri Jul 18 20:17:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.0:

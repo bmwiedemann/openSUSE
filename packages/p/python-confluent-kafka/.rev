@@ -190,4 +190,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1295833</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7c8fe874176c86bd51d93aa776e98cbd</srcmd5>
+    <version>2.14.0</version>
+    <time>1776009145</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.14.0:
+  * Implement async context manager protocol for AIOProducer and
+    AIOConsumer
+  * Add AssociatedNameStrategy
+  * Add enableAt to RuleSet
+  * Ensure normalize.schemas config is passed during Protobuf ref
+    lookup #2214
+  * Fix type annotations for context manager hooks so that they
+    are correct for subclasses
+  * Fix OAuth callback handling for Async IO clients to prevent
+    initialization failures
+  * confluent-kafka-python v2.14.0 is based on librdkafka
+    v2.14.0, see the
+  * librdkafka release notes
+  * for a complete list of changes, enhancements, fixes and
+    upgrade considerations.
+- update to 2.13.2:
+  * v2.13.2 is a maintenance release with the following fixes and
+    enhancements:
+  * Add Confluent-Client-Version header to requests to SR, Python
+    client
+  * Add UAMI OAuth changes
+  * Fixed memory leak in Producer.produce() when called with
+    headers and raises BufferError (queue full) or RuntimeError
+    (producer closed). The allocated rd_headers memory is now
+    properly freed in error paths before returning. Fixes Issue
+    https://github.com/confluentinc/confluent-kafka-
+    python/issues/2167.
+  * Fixed type hinting of KafkaError class, Consumer.__init()__,
+    Producer.__init()__, Producer.produce() and Consumer.commit()</comment>
+    <requestid>1346156</requestid>
+  </revision>
 </revisionlist>
