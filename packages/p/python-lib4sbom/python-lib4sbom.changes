@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Tue Apr  7 22:54:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.3:
+  * feat: handle user defined licences (SPDX3)
+  * fix: handle noassertion as supplier
+  * fix: improved handling of licences (fixes #87)
+  * fix: improved handling package supplier (fixes #86)
+  * fix: remove debug
+- update to 0.10.2:
+  * feat: allow jsonld file extension
+  * feat: preserve metadata during SBOM enrichment (fixes #83)
+  * feat: validate licence id during parsing
+  * feat: validate SPDX3 JSONLD files
+  * fix: CPE not for cryptograhic-assets
+  * fix: minor improvements for SPDX3 parsing
+  * fix: supress qualifier validation in PURL identifier
+  * fix typo in generator which prevents distribution to be set
+    to something else than clear
+  * fix: update SPDX3 parser
+- update to 0.10.1:
+  * fix: correct validation rules for PURLs (fixes #82)
+  * fix: reduced output for validation errors in spdx validation
+- update to 0.10.0:
+  * feat: add PURL identifier validator
+  * feat: add PURL validation to parser and generators
+  * feat: add SPDX3 schema to validator
+  * feat: introduce Cyclonedx CBOMS
+  * feat: SPDX3 support
+  * feat: update examples
+  * chore: bump version
+  * chore: linting
+  * chore: update licence list to 3.28
+  * doc: update README
+  * fix: correct licence list version format
+  * fix: CycloneDX fails to validate (fixes #79)
+  * fix: distribution constraints only for version 1.7
+  * fix: identify crypto properties which are only available in
+    version 1.7
+  * fix: logic error in parsing crypto file
+  * fix: restrict format for SPDX3 generation to json
+  * fix: SPDX handling of OPERATING-SYSTEM (fixes #78)
+  * fix: update build to exclude tools directory
+  * fix: update test apps
+
+-------------------------------------------------------------------
+Wed Jan 28 10:21:31 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Initial version 0.9.4

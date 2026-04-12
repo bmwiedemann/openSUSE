@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d8e5442a309817d7a6b8f945db98e294</srcmd5>
+    <version>0.9.4</version>
+    <time>1771605929</time>
+    <user>dimstar_suse</user>
+    <comment>jsc#PED-15491</comment>
+    <requestid>1334144</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f6e515488263d7a4392a630e59f9bb67</srcmd5>
+    <version>0.10.3</version>
+    <time>1776012470</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.3:
+  * feat: handle user defined licences (SPDX3)
+  * fix: handle noassertion as supplier
+  * fix: improved handling of licences (fixes #87)
+  * fix: improved handling package supplier (fixes #86)
+  * fix: remove debug
+- update to 0.10.2:
+  * feat: allow jsonld file extension
+  * feat: preserve metadata during SBOM enrichment (fixes #83)
+  * feat: validate licence id during parsing
+  * feat: validate SPDX3 JSONLD files
+  * fix: CPE not for cryptograhic-assets
+  * fix: minor improvements for SPDX3 parsing
+  * fix: supress qualifier validation in PURL identifier
+  * fix typo in generator which prevents distribution to be set
+    to something else than clear
+  * fix: update SPDX3 parser
+- update to 0.10.1:
+  * fix: correct validation rules for PURLs (fixes #82)
+  * fix: reduced output for validation errors in spdx validation
+- update to 0.10.0:
+  * feat: add PURL identifier validator
+  * feat: add PURL validation to parser and generators
+  * feat: add SPDX3 schema to validator
+  * feat: introduce Cyclonedx CBOMS
+  * feat: SPDX3 support
+  * feat: update examples
+  * chore: bump version
+  * chore: linting
+  * chore: update licence list to 3.28</comment>
+    <requestid>1345088</requestid>
+  </revision>
+</revisionlist>
