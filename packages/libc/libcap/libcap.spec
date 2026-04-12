@@ -1,7 +1,7 @@
 #
 # spec file for package libcap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libcap
-Version:        2.75
+Version:        2.78
 Release:        0
 Summary:        Library for Capabilities (linux-privs) Support
 License:        BSD-3-Clause OR GPL-2.0-only
@@ -155,5 +155,6 @@ echo 'int main() { return 0; }' > tests/b219174.c
 %{_libdir}/pkgconfig/libpsx.pc
 %{_mandir}/man3/*.3%{?ext_man}
 %{_mandir}/man5/*.5%{?ext_man}
+%{_mandir}/man7/*.7%{?ext_man}
 
 %changelog

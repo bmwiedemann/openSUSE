@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Apr 10 12:37:49 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.78
+  - Fix a potential TOCTOU race condition in cap_set_file(). (CVE-2026-4878 bsc#1261809).
+  - Fix a typo in a capset error (reported and fixed by Edward Nolan).
+
+- updated to 2.77
+
+  - Fix mistakes in setcap for reporting errors: report them with the appropriate filename.
+  - Fix bug in cap.GetIAB() 
+  - Improve libcap managed memory allocation and support CHERI RISC-V.
+  - Add C++ support to the run a .so file as an executable mechanism employed by libcap.so, libpsx.so and pam_cap.so.
+
+- updated to 2.76
+
+  - More libpsx and psx Go package mechanism fixes.
+  - Address an arm64 (aarch64) libpsx issue seen with Tracee.
+  - To make the various .so files continue to be runnable as standalone programs added another workaround for glibc.
+  - _IO_stdin_used needs to be weakly defined to make puts() and friends work. Also updated the Stackoverflow answer to include that detail.
+  - new man page cap_text_formats(7).
+  - Removed a spurious debugging printf() from setcap tool.
+  - Removed cap_ workarounds for go.dev cap package examples. The website bugs have been resolved: go/issues/70611;  go/issues/70630.
+  - Added a Makefile to the contrib/seccomp example.
+
+-------------------------------------------------------------------
 Thu Oct 16 19:34:43 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move utils to bindir and then provide symlinks under sbindir
