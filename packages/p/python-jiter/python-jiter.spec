@@ -1,7 +1,7 @@
 #
 # spec file for package python-jiter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jiter
-Version:        0.11.1
+Version:        0.14.0
 Release:        0
 Summary:        Fast iterable JSON parser
 License:        MIT
