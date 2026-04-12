@@ -204,4 +204,25 @@
   * **types:** make type required in ResponseInputMessageItem</comment>
     <requestid>1343467</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bd5ece483f411b825e2bd9a7569acd2e</srcmd5>
+    <version>2.31.0</version>
+    <time>1776017864</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.31.0:
+  * **api:** add phase field to conversations message
+  * **api:** add web_search_call.results to ResponseIncludable
+    type
+  * **client:** add support for short-lived tokens
+  * **client:** support sending raw data over websockets
+  * **internal:** implement indices array format for query and
+    form serialization
+  * **client:** preserve hardcoded query params when merging with
+    user params
+  * **types:** remove web_search_call.results from
+    ResponseIncludable
+  * **api:** update file parameter descriptions in vector_stores
+    files and file_batches</comment>
+    <requestid>1346092</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 11 17:46:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.31.0:
+  * **api:** add phase field to conversations message
+  * **api:** add web_search_call.results to ResponseIncludable
+    type
+  * **client:** add support for short-lived tokens
+  * **client:** support sending raw data over websockets
+  * **internal:** implement indices array format for query and
+    form serialization
+  * **client:** preserve hardcoded query params when merging with
+    user params
+  * **types:** remove web_search_call.results from
+    ResponseIncludable
+  * **api:** update file parameter descriptions in vector_stores
+    files and file_batches
+
+-------------------------------------------------------------------
 Sun Mar 29 15:22:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.30.0:
