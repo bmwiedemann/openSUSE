@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 11 12:15:33 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Drop ld.lld as an ld alternative (boo#1259813).
+
+-------------------------------------------------------------------
 Sat Jul 26 08:15:05 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable lldb on riscv64

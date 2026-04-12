@@ -136,4 +136,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1297155</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>c6f917db1030458da747c71dbca73d54</srcmd5>
+    <version>20.1.8</version>
+    <time>1776009159</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop ld.lld as an ld alternative (boo#1259813).
+</comment>
+    <requestid>1346172</requestid>
+  </revision>
 </revisionlist>
