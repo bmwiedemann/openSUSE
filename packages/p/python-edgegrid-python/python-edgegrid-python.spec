@@ -1,7 +1,7 @@
 #
 # spec file for package python-edgegrid-python
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,24 @@
 
 
 Name:           python-edgegrid-python
-Version:        1.3.1
+Version:        2.0.5
 Release:        0
 Summary:        Client authentication protocol for python-requests
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/akamai-open/AkamaiOPEN-edgegrid-python
-Source:         https://files.pythonhosted.org/packages/source/e/edgegrid-python/edgegrid-python-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/e/edgegrid-python/edgegrid_python-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.24.0}
+BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-ndg-httpsclient
-Requires:       python-pyOpenSSL >= 19.0.0
-Requires:       python-pyasn1
-Requires:       python-requests >= 2.3.0
-Requires:       python-requests-toolbelt
-Requires:       python-urllib3
+Requires:       python-requests >= 2.24.0
+Requires:       python-requests-toolbelt >= 0.9.1
 BuildArch:      noarch
 
 %python_subpackages
@@ -44,7 +43,7 @@ BuildArch:      noarch
 Client authentication protocol for python-requests
 
 %prep
-%setup -q -n edgegrid-python-%{version}
+%setup -q -n edgegrid_python-%{version}
 
 %build
 %pyproject_wheel
@@ -52,6 +51,9 @@ Client authentication protocol for python-requests
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.md
