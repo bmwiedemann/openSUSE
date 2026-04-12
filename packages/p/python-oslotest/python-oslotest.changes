@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 10 19:29:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add multibuild to avoid build cycle
+
+-------------------------------------------------------------------
+Tue Mar 24 17:13:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * ruff: Configure hacking as external linter
+  * mypy: Disabling warnings for untyped imports
+  * Add typing classifier
+  * Add mypy
+  * typing: Add initial types
+  * Remove unused dependency
+  * Enable logging related ruff checks
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * ruff: Use more specific name to enable pyupgrade rule
+
+-------------------------------------------------------------------
 Sun Mar  8 21:05:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:

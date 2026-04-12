@@ -413,4 +413,24 @@
   * add pyproject.toml to support pip 23.1</comment>
     <requestid>1337527</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d0ece829017f6e2db386363ded9bf41d</srcmd5>
+    <version>6.1.0</version>
+    <time>1776009146</time>
+    <user>dimstar_suse</user>
+    <comment>- add multibuild to avoid build cycle
+
+- update to 6.1.0:
+  * ruff: Configure hacking as external linter
+  * mypy: Disabling warnings for untyped imports
+  * Add typing classifier
+  * Add mypy
+  * typing: Add initial types
+  * Remove unused dependency
+  * Enable logging related ruff checks
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * ruff: Use more specific name to enable pyupgrade rule</comment>
+    <requestid>1345963</requestid>
+  </revision>
 </revisionlist>
