@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr  7 13:13:18 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Add 0001-Fix-static-init-order-fiasco-crashes.patch
+  Fixes crash on application startup.
+  gh#RawTherapee/RawTherapee#7642
+- Spec file spring cleaning:
+  * Drop unsupported distros
+    Some of these have been EOL for a very long time, and non-SUSE
+    distros all have their own RawTherapee packages.
+  * Drop deprecated scriptlets/macros to match current packaging
+    guidelines
+  * Drop -fno-tree-vectorize workaround
+    This was drastically reducing performance and upstream already
+    applies appropriate flags for affected GCC versions.
+  * Use %cmake macros
+  * Avoid greedy wildcards in file list
+  * Mark license files for RPM metadata with %license and install
+    them to the correct directory
+- Build with tcmalloc
+  Upstream explicitly supports this, and threaded applications
+  often see improvements in locality and memory fragmentation.
+
+-------------------------------------------------------------------
 Wed Nov 26 20:38:45 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.12
