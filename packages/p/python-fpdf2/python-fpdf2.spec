@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fpdf2
-Version:        2.8.5
+Version:        2.8.7
 Release:        0
 Summary:        Simple & fast PDF generation for Python
 License:        LGPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://py-pdf.github.io/fpdf2/
 # The _service download the source and repack without some ttf files
 # that has non-commercial license. boo#1232452
 Source:         fpdf2-%{version}.tar.xz
-BuildRequires:  %{python_module Pillow >= 6.2.2}
+BuildRequires:  %{python_module Pillow >= 8.3.2}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module fonttools >= 4.59.2}
 BuildRequires:  %{python_module numpy}
@@ -36,6 +36,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 4.0}
+BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module camelot-py}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module endesive}
@@ -49,7 +50,7 @@ BuildRequires:  %{python_module uharfbuzz}
 BuildRequires:  java
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-Pillow >= 6.2.2
+Requires:       python-Pillow >= 8.3.2
 Requires:       python-defusedxml
 # uses features from newer version than is documented upstream
 Requires:       python-fonttools >= 4.59.2
@@ -76,7 +77,7 @@ donttest+=" or test_bidi_paragraph_direction or test_hebrew_diacritics or test_t
 %pytest -s -k "not ($donttest)"
 
 %files %{python_files}
-%doc README.md
+%doc CHANGELOG.md README.md
 %license LICENSE
 %{python_sitelib}/fpdf
 %{python_sitelib}/fpdf2-%{version}.dist-info

@@ -136,4 +136,41 @@
     <comment></comment>
     <requestid>1328123</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>91d244d4c3d9b7d40ea401842df538e5</srcmd5>
+    <version>2.8.7</version>
+    <time>1776017860</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.7:
+  * types on `FPDF.title`, `FPDF.add_font()` and `FPDF.output()`
+  * added missing files to navigation tree in mkdocs.yml - thanks
+    to @paulsuh
+  * reverted changes to `ImageInfo` that impacted user-facing API
+  * prefer outline glyphs over bitmap if the font has both
+- update to 2.8.6:
+  * support for `FPDF.transform()` context manager to apply
+    geometric transformations (translation, rotation, scaling,
+    skewing) to the current graphics state
+  * support for SVG `` and `` elements - _cf._ issue #1580 -
+  * mypy and pyright checks in the CI pipeline to enforce strict
+    typing
+  * support WOFF and WOFF2 fonts
+  * TTC/OTC face selection via `collection_font_number` in
+    `add_font()`
+  * CID-keyed CFF font embedding support
+  * Microsoft Symbol font remapping for non-Unicode cmaps
+  * support for EBDT/EBLC bitmap fonts
+  * the `A5` value that could be specified as page `format` to
+    the `FPDF` constructor was slightly incorrect, and the
+    corresponding page dimensions have been fixed. This could
+    lead to a minor change in your documents dimensions if you
+    used this `A5` page format. - _cf._ issue #1699
+  * a bug when rendering empty tables with `INTERNAL` layout,
+    that caused an extra border to be rendered due to an
+    erroneous use of `list.index()` - _cf._ issue #1669
+  * edge cases where tiny floating-point drift could trigger
+    incorrect behaviour like issue #1393
+  * parentheses are now escaped in more places. This fixes</comment>
+    <requestid>1346087</requestid>
+  </revision>
 </revisionlist>
