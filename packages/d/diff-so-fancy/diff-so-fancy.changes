@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 12 13:37:43 UTC 2026 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 1.4.10
+  * d-s-f is much smarter and --patch mode should work in more
+    (all?) scenarios
+    * Added support for enabling patch mode via DSF_PATCH_MODE
+      environment variable
+  * Added a new CLI option --rulerWidth
+  * Support ANSI reset without the 0. \e[0m vs \e[m
+  * Upstream DiffHighlight.pm fixes. Allow "italic" in colors
+  * Add some debug logging when started with --debug to help
+    troubleshooting
+  * Support git file copies better if diff.renames copies is
+    enabled in .gitconfig
+  * Better support for recursive diff like: diff -u -r /dir/a
+    /dir/b
+
+-------------------------------------------------------------------
 Sat Jun 10 15:37:37 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 1.4.4

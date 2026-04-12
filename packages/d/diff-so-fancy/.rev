@@ -19,4 +19,12 @@ Apart from last time shell commands are used instead indirect macros (I misread 
 Update to version 1.4.4</comment>
     <requestid>1092027</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>580959698796ec393400d1e77f5d09a9</srcmd5>
+    <version>1.4.10</version>
+    <time>1776012472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346197</requestid>
+  </revision>
 </revisionlist>
