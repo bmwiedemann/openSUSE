@@ -1,7 +1,7 @@
 #
 # spec file for package python-drf-standardized-errors
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           python-drf-standardized-errors
-Version:        0.14.1
+Version:        0.15.0
 Release:        0
 Summary:        Standardize your API error responses
 License:        MIT
 URL:            https://github.com/ghazi-git/drf-standardized-errors
 Source:         https://files.pythonhosted.org/packages/source/d/drf-standardized-errors/drf_standardized_errors-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/ghazi-git/drf-standardized-errors/pull/96 fix test_openapi_utils
-Patch:          fix-test.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module django-filter}
