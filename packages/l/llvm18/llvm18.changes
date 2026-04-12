@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 11 12:15:33 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Drop ld.lld as an ld alternative (boo#1259813).
+
+-------------------------------------------------------------------
 Tue Aug  5 21:57:03 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add compiler-rt-remove-termio-interceptors.patch to fix build

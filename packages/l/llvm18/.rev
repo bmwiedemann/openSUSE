@@ -275,4 +275,13 @@
 </comment>
     <requestid>1298032</requestid>
   </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>84fa00b3a13be16e298abe1ec0f452d9</srcmd5>
+    <version>18.1.8</version>
+    <time>1776009167</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop ld.lld as an ld alternative (boo#1259813).
+</comment>
+    <requestid>1346174</requestid>
+  </revision>
 </revisionlist>
