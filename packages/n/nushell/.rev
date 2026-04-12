@@ -187,4 +187,12 @@
     <comment>Update to version 0.111.0 (forwarded request 1338878 from develop7)</comment>
     <requestid>1338880</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>29b46cb91473db8c26950a73313b1e70</srcmd5>
+    <version>0.112.1</version>
+    <time>1776009189</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.112.1 (forwarded request 1346184 from develop7)</comment>
+    <requestid>1346185</requestid>
+  </revision>
 </revisionlist>

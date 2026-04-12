@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Apr 12 10:48:37 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.112.1:
+  + Structured markdown parsing with `from md`
+  + `%` sigil to explicitly call internal commands
+  + New configuration options for history, table, and binary viewer
+    behavior
+  + Experimental cell-path type checking
+    (`--experimental-option=cell-path-types`)
+  + Breaking changes
+    * `open *.md` now parses markdown via `from md` instead of
+      returning a raw string
+  + Additions
+    * `url parse --base` to resolve relative URLs
+    * `into duration` support for `hh:mm:ss[.fraction]` input
+    * Unordered `par-each` is now streaming
+    * New table style `frameless`
+    * More Polars selector commands for numeric types
+    * MCP evals can be promoted to background jobs (`job recv`,
+      `job kill`)
+    * Other additions
+  + Other changes
+    * `table` now respects metadata of `Custom` values
+    * Optional history recording for space-prefixed commands
+    * New `auto_cd_implicit` configuration option
+    * Promoted MCP jobs now return full output payloads
+    * Additional changes
+  + Bug fixes
+    * Fix alias/extern completion-name collision crash
+    * Improve metadata handling in `get`/`skip`/`reject`/`first`/`last`
+    * `http head --full` now returns a full response record
+    * `http head --allow-errors` keeps headers for non-2xx responses
+    * Other fixes
+  + Note
+    * `0.112.0` was skipped due to crate release issues
+  + For a full list of changes with detailed descriptions, see:
+    https://www.nushell.sh/blog/2026-04-11-nushell_v0_112_1.html
+
+-------------------------------------------------------------------
 Sat Mar 14 12:47:49 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.111.0:
