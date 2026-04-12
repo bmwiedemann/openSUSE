@@ -1,0 +1,113 @@
+-------------------------------------------------------------------
+Sun Apr 12 08:45:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.17.6:
+  * Enhance url2purl to support commit hashes parsing (GitHub,
+    GitLab, and Bitbucket) https://github.com/package-
+    url/packageurl-python/pull/211
+  * Adjust validation function https://github.com/package-
+    url/packageurl-python/pull/206
+  * Add validation function https://github.com/package-
+    url/packageurl-python/pull/205
+  * Remove support for getting download URL for qpkg in purl2url.
+    https://github.com/package-url/packageurl-python/pull/203
+  * Add tests for latest purl-spec https://github.com/package-
+    url/packageurl-python/pull/202
+  * Add support for getting download URL for debian, apk, qpkg in
+    purl2url. https://github.com/package-url/packageurl-
+    python/pull/201
+  * Add support for getting download URL for Luarocks, Conda,
+    Alpm in purl2url. https://github.com/package-url/packageurl-
+    python/pull/199
+  * Fix Incorrect download url from build_golang_download_url()
+    https://github.com/package-url/packageurl-python/issues/198
+  * Add support for getting download URL for Golang, Hex, Pub and
+    Swift in purl2url. https://github.com/package-url/packageurl-
+    python/pull/195
+  * Define "pkg" as a PackageURL SCHEME class attribute.
+    https://github.com/package-url/packageurl-python/issues/184
+  * Add support for Maven in purl2url.
+    https://github.com/package-url/packageurl-python/issues/177
+  * Fix qualifiers type annotations. https://github.com/package-
+    url/packageurl-python/issues/169
+  * Fix parsing of names and namespaces with colons.
+    https://github.com/package-url/packageurl-python/issues/152
+  * Add support for Python 3.13.
+  * Drop support for Python 3.7. https://github.com/package-
+    url/packageurl-python/issues/160
+  * Improve support for 3 path segments NPM URLs in url2purl.
+    https://github.com/package-url/packageurl-python/issues/167
+  * Refine support for GitHub /archive/refs/tags/ URLs in
+    url2purl. The whole tag is now captured as the version. This
+    allows to properly reconstruct valid URLs in purl2url.
+  * Capture the whole git tag as the version for GutHub URL in
+    url2purl instead of adding a version_prefix qualifier. Note
+    that the version_prefix qualifier is still supported in
+    purl2url for backward compatibility.
+    https://github.com/package-url/packageurl-python/pull/159
+  * Add with_package_url, without_package_url, and
+    order_by_package_url to the PackageURLQuerySetMixin contrib
+    class.
+  * Add support for namespace in build_npm_download_url.
+  * Update GitHub generated Download URL for maximum
+    compatibility. https://github.com/package-url/packageurl-
+    python/issues/157
+  * Add support for Composer in purl2url and url2purl.
+    https://github.com/package-url/packageurl-python/pull/144
+  * Add an option for exact_match purl QuerySet lookups in the
+    ``PackageURLQuerySetMixin.for_package_url``method.
+    https://github.com/package-url/packageurl-python/issues/118
+  * Add support to get PackageURL from go_package or go module
+    name version string as seen in a go.mod file.
+    https://github.com/package-url/packageurl-python/pull/148
+  * Add cran ecosystem support for url2purl
+    https://github.com/package-url/packageurl-python/pull/149
+  * Add support for getting golang purl from go import.
+    https://github.com/nexB/purldb/issues/259
+  * Fix the "gem" type in the README docs.
+    https://github.com/package-url/packageurl-python/pull/114
+  * Improve support for SourceForge URLs in url2purl.
+    https://github.com/package-url/packageurl-python/issues/139
+  * Improve support for SourceForge URLs in url2purl.
+    https://github.com/package-url/packageurl-python/issues/139
+  * Improve support for SourceForge URLs in url2purl.
+    https://github.com/package-url/packageurl-python/issues/139
+  * Add support for Python 3.12 https://github.com/package-
+    url/packageurl-python/pull/135
+  * Revert changes from https://github.com/package-
+    url/packageurl-python/pull/115/ In above PR we dropped
+    namespaces for a golang purl and stored whole namespace and
+    name in name itself, which was further discussed again and
+    decided we will like to keep namespace back.
+  * Modified PackageURL.from_string to properly handle golang
+    purls. https://github.com/package-url/packageurl-
+    python/pull/115/
+  * Improve support for PyPI URLs in url2purl.
+    https://github.com/package-url/packageurl-python/pull/128
+  * Return the "gem" type instead of "rubygems" for
+    "https://rubygems.org/" URLs in url2purl. The pkg:rubygems/
+    purls are backward-compatible in purl2url.
+    https://github.com/package-url/packageurl-python/pull/114/
+  * Add support for GitLab "/archive/" URLs in url2purl.
+    https://github.com/package-url/packageurl-python/issues/133
+  * Remove deprecated purl_to_lookups and without_empty_values
+    import compatibility from packageurl.contrib.django.models.
+    Replace those functions import using
+    packageurl.contrib.django.utils.
+  * Add download purl2url support for bitbucket and gitlab.
+
+-------------------------------------------------------------------
+Wed Apr 19 17:18:01 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to v0.11.1
+  see https://github.com/package-url/packageurl-python/releases
+
+-------------------------------------------------------------------
+Wed Sep  7 05:27:45 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.10.1
+
+-------------------------------------------------------------------
+Tue Jan 14 08:10:51 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.8.7
