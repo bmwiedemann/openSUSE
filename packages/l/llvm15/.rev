@@ -261,4 +261,13 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1301085</requestid>
   </revision>
+  <revision rev="22" vrev="16">
+    <srcmd5>aea93a9c4e75c081f981e28df1eaf746</srcmd5>
+    <version>15.0.7</version>
+    <time>1776009174</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop ld.lld as an ld alternative (boo#1259813).
+</comment>
+    <requestid>1346175</requestid>
+  </revision>
 </revisionlist>

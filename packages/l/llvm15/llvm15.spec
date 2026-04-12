@@ -1,7 +1,7 @@
 #
 # spec file for package llvm15
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -724,6 +724,7 @@ Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+OrderWithRequires(pre): update-alternatives
 
 %description -n lld%{_sonum}
 LLD is a linker from the LLVM project. That is a drop-in replacement for system linkers and runs much faster than them. It also provides features that are useful for toolchain developers.
@@ -1529,16 +1530,17 @@ fi
 %{ua_remove %clang_ua_anchor}
 
 %if %{with lld}
+%pre -n lld%{_sonum}
+if [ $1 -gt 1 ] && [ -f %{_sysconfdir}/alternatives/ld ] ; then
+    %{_sbindir}/update-alternatives --remove ld %{_bindir}/ld.lld
+fi
+
 %post -n lld%{_sonum}
 %{ua_install %lld_ua_anchor} \
     %{lapply -p ua_bin_slave %lld_binfiles}
-%{_sbindir}/update-alternatives --install %{_bindir}/ld ld %{_bindir}/ld.lld 1
 
 %postun -n lld%{_sonum}
 %{ua_remove %lld_ua_anchor}
-if [ ! -f %{_bindir}/lld ] ; then
-    %{_sbindir}/update-alternatives --remove ld %{_bindir}/ld.lld
-fi
 %endif
 
 %if %{with lldb}
