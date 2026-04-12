@@ -1,7 +1,7 @@
 #
 # spec file for package regreet
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           regreet
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Customizable greeter for greetd
-License:        CC0-1.0 AND GPL-3.0-or-later AND MIT
+License:        0BSD AND CC0-1.0 AND GPL-3.0-or-later AND MIT
 URL:            https://github.com/rharish101/ReGreet
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -29,7 +29,7 @@ Source3:        %{name}.service
 Source4:        %{name}.toml
 BuildRequires:  cargo-packaging
 BuildRequires:  greetd
-BuildRequires:  rust >= 1.70
+BuildRequires:  rust >= 1.75
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk4)
@@ -53,6 +53,9 @@ install -Dm0755 ./target/release/%{name} %{buildroot}%{_bindir}/%{name}
 install -Dm0644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -Dm0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
 install -Dm0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/greetd/%{name}.toml
+install -d %{buildroot}/var/log/%{name}
+install -d %{buildroot}/var/lib/%{name}
+
 
 %pre
 %service_add_pre %{name}.service
@@ -75,6 +78,8 @@ install -Dm0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/greetd/%{name}.toml
 %doc README.md
 %config(noreplace) %{_sysconfdir}/greetd/%{name}.toml
 %{_bindir}/%{name}
+%{_localstatedir}/log/%{name}
+%{_sharedstatedir}/%{name}
 %{_tmpfilesdir}/%{name}.conf
 %{_unitdir}/%{name}.service
 

@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1248459</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>639874d688c9ccea04acb49f08d1bf7a</srcmd5>
+    <version>0.3.0</version>
+    <time>1776009151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0:
+  + Users are now fetched from AccountsService instead of /etc/passwd. This
+    provides better integration with modern desktop environments
+  + GTK cursor blinking can now be disabled via the cursor_blink option (forwarded request 1346123 from rrahl0)</comment>
+    <requestid>1346124</requestid>
+  </revision>
 </revisionlist>
