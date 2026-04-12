@@ -3403,7 +3403,6 @@ unsorted:
   - docker-credential-secretservice 
   - docker-fish-completion 
   - docker-lock 
-  - docker-machine-driver-kvm2 
   - docker-stable 
   - docker-stable-bash-completion 
   - docker-stable-buildx 
@@ -13261,7 +13260,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla50 
+  - libfilezilla54 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -17443,7 +17442,7 @@ unsorted:
   - libyaml-devel 
   - libyang-devel 
   - libyang-doc 
-  - libyang3 
+  - libyang5 
   - libyara-devel 
   - libyara10 
   - libyara10-x86-64-v3 
@@ -27986,6 +27985,7 @@ unsorted:
   - python311-w3lib 
   - python311-wadllib 
   - python311-wafw00f 
+  - python311-wait-for2 
   - python311-waitress 
   - python311-waitress-doc 
   - python311-wakeonlan 
@@ -31908,6 +31908,7 @@ unsorted:
   - python313-w3lib 
   - python313-wadllib 
   - python313-wafw00f 
+  - python313-wait-for2 
   - python313-waitress 
   - python313-waitress-doc 
   - python313-wakeonlan 
@@ -32468,6 +32469,7 @@ unsorted:
   - python314-autodocsumm 
   - python314-autoflake 
   - python314-autoimport 
+  - python314-automaton 
   - python314-autopage 
   - python314-autopep8 
   - python314-autoray 
@@ -33060,6 +33062,7 @@ unsorted:
   - python314-click-spinner 
   - python314-click-threading 
   - python314-click81 
+  - python314-cliff 
   - python314-cligj 
   - python314-clikit 
   - python314-cloud-init-seed 
@@ -33116,6 +33119,7 @@ unsorted:
   - python314-copr 
   - python314-copr-cli 
   - python314-cotengra 
+  - python314-cotyledon 
   - python314-covdefaults 
   - python314-coverage 
   - python314-coveralls-check 
@@ -33389,6 +33393,7 @@ unsorted:
   - python314-dynaconf 
   - python314-e-antic 
   - python314-easy-thumbnails 
+  - python314-easydev 
   - python314-easygui 
   - python314-easypysmb 
   - python314-easywatch 
@@ -33555,6 +33560,7 @@ unsorted:
   - python314-furo 
   - python314-fuse 
   - python314-fusepy 
+  - python314-futurist 
   - python314-fuzzywuzzy 
   - python314-fvs 
   - python314-gTTS 
@@ -33687,6 +33693,7 @@ unsorted:
   - python314-hanzidentifier 
   - python314-happybase 
   - python314-haproxyctl 
+  - python314-hardware 
   - python314-hashids 
   - python314-hatanaka 
   - python314-hatch 
@@ -33941,6 +33948,9 @@ unsorted:
   - python314-keyring-keyutils 
   - python314-keyring-pass 
   - python314-keyrings.alt 
+  - python314-keystoneauth1 
+  - python314-keystoneclient 
+  - python314-keystonemiddleware 
   - python314-khal 
   - python314-khard 
   - python314-kismet-rest 
@@ -33987,6 +33997,7 @@ unsorted:
   - python314-ldap 
   - python314-ldap3 
   - python314-ldapdomaindump 
+  - python314-ldappool 
   - python314-ldaptor 
   - python314-ldas-tools-al-swig 
   - python314-leather 
@@ -34358,6 +34369,7 @@ unsorted:
   - python314-openmesh 
   - python314-openpyxl 
   - python314-openqa_client 
+  - python314-openstacksdk 
   - python314-opentelemetry-api 
   - python314-opentelemetry-exporter-otlp 
   - python314-opentelemetry-exporter-otlp-proto-common 
@@ -34381,10 +34393,32 @@ unsorted:
   - python314-orderly-set 
   - python314-orjson 
   - python314-os-client-config 
+  - python314-os-service-types 
+  - python314-os-traits 
+  - python314-osc-lib 
   - python314-osc-tiny 
   - python314-oscrypto 
+  - python314-oslo.cache 
+  - python314-oslo.concurrency 
+  - python314-oslo.config 
+  - python314-oslo.context 
+  - python314-oslo.i18n 
+  - python314-oslo.log 
+  - python314-oslo.messaging 
+  - python314-oslo.metrics 
+  - python314-oslo.middleware 
+  - python314-oslo.policy 
+  - python314-oslo.privsep 
+  - python314-oslo.reports 
+  - python314-oslo.serialization 
+  - python314-oslo.service 
+  - python314-oslo.utils 
+  - python314-oslo.versionedobjects 
+  - python314-oslo.vmware 
+  - python314-oslotest 
   - python314-osmviz 
   - python314-ospd-openvas 
+  - python314-osprofiler 
   - python314-outcome 
   - python314-overrides 
   - python314-ovirt-engine-sdk 
@@ -34649,6 +34683,7 @@ unsorted:
   - python314-pybreaker 
   - python314-pybtex 
   - python314-pybugz 
+  - python314-pycadf 
   - python314-pycairo 
   - python314-pycairo-devel 
   - python314-pycapnp 
@@ -34711,6 +34746,7 @@ unsorted:
   - python314-pygame-devel 
   - python314-pygdbmi 
   - python314-pygerrit2 
+  - python314-pyghmi 
   - python314-pygit2 
   - python314-pyglet 
   - python314-pygls 
@@ -35478,6 +35514,7 @@ unsorted:
   - python314-superqt 
   - python314-sure 
   - python314-surer 
+  - python314-sushy 
   - python314-svglib 
   - python314-svgpathtools 
   - python314-svgwrite 
@@ -35568,6 +35605,7 @@ unsorted:
   - python314-tomlkit 
   - python314-tools 
   - python314-toolz 
+  - python314-tooz 
   - python314-toposort 
   - python314-topy 
   - python314-tornado 
@@ -35718,6 +35756,7 @@ unsorted:
   - python314-w3lib 
   - python314-wadllib 
   - python314-wafw00f 
+  - python314-wait-for2 
   - python314-waitress 
   - python314-waitress-doc 
   - python314-wakeonlan 
@@ -35814,6 +35853,7 @@ unsorted:
   - python314-yamlloader 
   - python314-yapf 
   - python314-yappi 
+  - python314-yaql 
   - python314-yara 
   - python314-yarg 
   - python314-yarl 
@@ -36884,7 +36924,6 @@ unsorted:
   - rkdeveloptool 
   - rke 
   - rke2 
-  - rke2-1.29 
   - rke2-1.33 
   - rke2-1.34 
   - rke2-selinux 
