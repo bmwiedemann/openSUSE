@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sun Apr 12 07:40:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- rename to puremagic1 and only build for python 3.11. python 3.12+
+  is served by puremagic 2.x (provided by python-puremagic)
+
+-------------------------------------------------------------------
+Sat Jul  5 10:23:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.30:
+  * Adding #109 Halt on non-regular files like /dev/zero and
+    /dev/random (thanks to Yuri Schaeffer)
+
+-------------------------------------------------------------------
+Sun May  4 08:52:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.29:
+  * Changing to publishing to pypi with Python 3.9
+  * Fixing #105 fsspec/gcsfs throws an ValueError instead of a
+    OSError (thanks to Markus)
+  * Fixing github actions due to updates
+
+-------------------------------------------------------------------
+Sun Nov  3 14:43:54 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Wed Oct 23 20:13:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- Initial package (1.28)
