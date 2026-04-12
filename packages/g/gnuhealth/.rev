@@ -604,4 +604,27 @@
     <comment>bugfix version</comment>
     <requestid>1326529</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b3a448579fda6cf9de3f92a8bd951df7</srcmd5>
+    <version>5.0.6</version>
+    <time>1774470047</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1342444</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>c8e9a48377d6654e5eb24dc39a9d04cc</srcmd5>
+    <version>5.0.7</version>
+    <time>1776009152</time>
+    <user>dimstar_suse</user>
+    <comment>- version 5.0.7
+  * health_crypto_lab: Wrong display of the validation button and 403
+    error  (https://codeberg.org/gnuhealth/his/issues/177)
+  * Update woodpecker CI and packages automated tests (thanks, Cedric!).
+    (https://codeberg.org/gnuhealth/his/commit/5decf55f83fda9e98588dbe5c11eda152df82dbf)
+  * Update pyproject.toml to PEP639 project.license current specification
+    (https://codeberg.org/gnuhealth/his/issues/178)
+</comment>
+    <requestid>1346142</requestid>
+  </revision>
 </revisionlist>

@@ -30,7 +30,7 @@
 
 Name:           gnuhealth
 
-Version:        %{majorver}.5
+Version:        %{majorver}.7
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
@@ -38,7 +38,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 
 # As directory naming is inconsistent we use a local download
-## %Source0:        https://ftp.gnu.org/gnu/health/%{name}-his-server-patchset-%{version}-bundle.tar.gz
+##% Source0:        https://ftp.gnu.org/gnu/health/%{name}-his-server-patchset-%{version}-bundle.tar.gz
 Source0:        %{name}-his-server-patchset-%{version}-bundle.tar.gz
 Source1:        GNUHealth.README.openSUSE
 Source2:        gnuhealth-control
