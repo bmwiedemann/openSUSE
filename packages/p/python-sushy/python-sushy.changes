@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  9 12:37:24 UTC 2026 - Nicolas Belouin <nicolas.belouin@suse.com>
+
+- Add Prevent-double-wrapping-timeout-tuple-in-Connector-_op.patch
+
+-------------------------------------------------------------------
 Wed Mar  4 08:30:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.10.0:

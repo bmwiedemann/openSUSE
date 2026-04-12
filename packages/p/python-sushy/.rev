@@ -356,4 +356,12 @@
     DMTF Redfish v1.12.0</comment>
     <requestid>1336287</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>802795d467ddad02f6de2ffb83703808</srcmd5>
+    <version>5.10.0</version>
+    <time>1776009144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345703</requestid>
+  </revision>
 </revisionlist>

@@ -24,6 +24,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/sushy
 Source0:        https://files.pythonhosted.org/packages/source/s/sushy/sushy-%{version}.tar.gz
+# [PATCH] Prevent double-wrapping timeout tuple in Connector _op
+Patch0:         Prevent-double-wrapping-timeout-tuple-in-Connector-_op.patch
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

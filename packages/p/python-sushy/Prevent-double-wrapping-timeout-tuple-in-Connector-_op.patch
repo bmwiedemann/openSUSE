@@ -1,0 +1,92 @@
+From a18eaf3aed8366027d3d2decfcdf6b2318c1c995 Mon Sep 17 00:00:00 2001
+From: Lennart Jern <lennart.jern@est.tech>
+Date: Thu, 26 Mar 2026 10:04:57 +0000
+Subject: [PATCH] Prevent double-wrapping timeout tuple in Connector _op
+
+Add test to ensure timeout is not nested on recursive retry when
+connect_timeout is set.
+
+Closes-Bug: 2146416
+Change-Id: I9e7ee050b6092dbc5529b519c24c18e98008f6e4
+Signed-off-by: Lennart Jern <lennart.jern@est.tech>
+(cherry picked from commit b87365bdc29c91a8c88c18c8577820f85d9c712f)
+---
+ ...-timeout-double-wrap-72ed19391dc0b470.yaml | 12 ++++++++
+ sushy/connector.py                            |  3 +-
+ sushy/tests/unit/test_connector.py            | 30 +++++++++++++++++++
+ 3 files changed, 44 insertions(+), 1 deletion(-)
+ create mode 100644 releasenotes/notes/fix-connect-timeout-double-wrap-72ed19391dc0b470.yaml
+
+diff --git a/releasenotes/notes/fix-connect-timeout-double-wrap-72ed19391dc0b470.yaml b/releasenotes/notes/fix-connect-timeout-double-wrap-72ed19391dc0b470.yaml
+new file mode 100644
+index 00000000..35d2b5bf
+--- /dev/null
++++ b/releasenotes/notes/fix-connect-timeout-double-wrap-72ed19391dc0b470.yaml
+@@ -0,0 +1,12 @@
++---
++fixes:
++  - |
++    Fixes a bug where the ``connect_timeout`` parameter caused an
++    ``Invalid timeout`` error on any HTTP retry inside ``Connector._op()``.
++    When ``connect_timeout`` is set, the timeout is wrapped into a
++    ``(connect, read)`` tuple, but on recursive retries (server-side errors,
++    re-authentication, or redirect following) the already-wrapped tuple was
++    wrapped again, producing a nested tuple like ``(30, (30, 60))`` that the
++    ``requests`` library rejects. The timeout tuple is now passed through
++    unchanged on retries.
++    See `LP#2146416 <https://bugs.launchpad.net/sushy/+bug/2146416>`_.
+diff --git a/sushy/connector.py b/sushy/connector.py
+index bef7ad02..9a8fab39 100644
+--- a/sushy/connector.py
++++ b/sushy/connector.py
+@@ -147,7 +147,8 @@ class Connector:
+         timeout = timeout or self._default_request_timeout
+         # If connect_timeout is configured, use a tuple (connect, read) for
+         # the requests timeout to allow faster failure on unreachable BMCs.
+-        if self._connect_timeout is not None:
++        if (self._connect_timeout is not None
++                and not isinstance(timeout, tuple)):
+             timeout = (self._connect_timeout, timeout)
+ 
+         url = path if urlparse.urlparse(path).netloc else urlparse.urljoin(
+diff --git a/sushy/tests/unit/test_connector.py b/sushy/tests/unit/test_connector.py
+index be077da0..60596784 100644
+--- a/sushy/tests/unit/test_connector.py
++++ b/sushy/tests/unit/test_connector.py
+@@ -203,6 +203,36 @@ class ConnectorOpTestCase(base.TestCase):
+             'GET', 'http://foo.bar:1234/fake/path',
+             headers=self.headers, json=None, verify=True, timeout=(10, 60))
+ 
++    def test_connect_timeout_not_double_wrapped_on_retry(self):
++        """Test that timeout tuple is not double-wrapped on recursive retry.
++
++        When connect_timeout is set, _op() wraps timeout into a
++        (connect, read) tuple. On retry _op() calls itself recursively,
++        passing the already-wrapped tuple. Without the isinstance guard
++        this results in (connect, (connect, read)) which requests rejects.
++        Regression test for https://bugs.launchpad.net/sushy/+bug/2146416
++        """
++        self.conn._connect_timeout = 10
++        self.conn._default_request_timeout = 60
++        self.request.side_effect = [
++            mock.Mock(status_code=http_client.NOT_ACCEPTABLE),
++            mock.Mock(status_code=http_client.OK),
++        ]
++        self.conn._op('GET', 'http://foo.bar')
++
++        self.assertEqual(2, self.request.call_count)
++        headers_no_accept = self.headers.copy()
++        headers_no_accept.pop('Accept-Encoding')
++        # Both the original and the retried request must use the same
++        # (connect, read) timeout tuple - never a nested tuple.
++        self.request.assert_has_calls([
++            mock.call('GET', 'http://foo.bar', headers=self.headers,
++                      json=None, verify=True, timeout=(10, 60)),
++            mock.call('GET', 'http://foo.bar',
++                      headers=headers_no_accept,
++                      json=None, verify=True, timeout=(10, 60)),
++        ])
++
+     def test_response_callback(self):
+         mock_response_callback = mock.MagicMock()
+         self.conn._response_callback = mock_response_callback
