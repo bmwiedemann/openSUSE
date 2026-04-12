@@ -19,7 +19,7 @@
 %define         sover   1
 %define         typelib typelib-1_0-XApp-1_0
 Name:           xapp
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Library files for the Xapp ecosystem
 License:        GPL-3.0-or-later
