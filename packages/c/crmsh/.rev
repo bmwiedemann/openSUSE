@@ -3801,4 +3801,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1344869</requestid>
   </revision>
+  <revision rev="404" vrev="1">
+    <srcmd5>ea7337d712f1925d5d5c802344d8d024</srcmd5>
+    <version>5.0.0+20260412.db68d024</version>
+    <time>1776009184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346179</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 12 03:44:20 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.0.0+20260412.db68d024:
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: bootstrap: Still set deprecated properties during bootstrap
+  * Dev: ui_configure: Don't hide deprecated properties from the completion results
+
+-------------------------------------------------------------------
 Tue Apr 07 06:44:04 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.0.0+20260407.ce740ef1:
