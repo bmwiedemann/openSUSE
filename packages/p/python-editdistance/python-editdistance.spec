@@ -1,7 +1,7 @@
 #
 # spec file for package python-editdistance
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15allpythons}
 
 Name:           python-editdistance
-Version:        0.6.2
+Version:        0.8.1
 Release:        0
 Summary:        An implementation of the edit distance (Levenshtein distance)
 License:        MIT
@@ -28,6 +28,7 @@ URL:            https://www.github.com/aflc/editdistance
 Source:         https://github.com/roy-ht/editdistance/archive/refs/tags/v%{version}.tar.gz#/editdistance-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -63,6 +64,7 @@ This package contains the files needed for binding the %{name} C module.
 
 %install
 %pyproject_install
+%python_expand rm %{buildroot}%{$python_sitearch}/.gitignore
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -70,7 +72,7 @@ This package contains the files needed for binding the %{name} C module.
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %exclude %{python_sitearch}/editdistance/*.h
 %{python_sitearch}/editdistance
 %{python_sitearch}/editdistance-%{version}.dist-info
