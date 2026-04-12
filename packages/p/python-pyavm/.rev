@@ -7,4 +7,20 @@
     <comment>- Initial release of 0.9.8.</comment>
     <requestid>1335179</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>117d1b0738c1a8f5bc9c47d145e89533</srcmd5>
+    <version>0.9.9</version>
+    <time>1776015694</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.9:
+  * Infrastructure updates
+  * General improvements and modernization of code
+  * Allow dash '-' as placeholder in controlled vocabulary lists
+  * Fix CTYPE parsing for WCS with SIP distortion extensions
+  * Validate nested attribute values using specs
+  * Add iteration support for AVM objects
+  * Added support for MetadataVersion 1.0
+  * Add changelog entries to CHANGES.md on release</comment>
+    <requestid>1346205</requestid>
+  </revision>
 </revisionlist>

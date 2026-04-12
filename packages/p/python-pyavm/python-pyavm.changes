@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 12 16:08:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.9:
+  * Infrastructure updates
+  * General improvements and modernization of code
+  * Allow dash '-' as placeholder in controlled vocabulary lists
+  * Fix CTYPE parsing for WCS with SIP distortion extensions
+  * Validate nested attribute values using specs
+  * Add iteration support for AVM objects
+  * Added support for MetadataVersion 1.0
+  * Add changelog entries to CHANGES.md on release
+
+-------------------------------------------------------------------
 Thu Feb 26 00:37:44 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.9.8.

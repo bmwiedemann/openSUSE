@@ -17,17 +17,17 @@
 
 
 Name:           python-pyavm
-Version:        0.9.8
+Version:        0.9.9
 Release:        0
 Summary:        Simple pure-python AVM meta-data handling
 License:        MIT
 URL:            http://astrofrog.github.io/pyavm/
 Source:         https://files.pythonhosted.org/packages/source/p/pyavm/pyavm-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -57,7 +57,7 @@ Simple pure-python AVM meta-data handling
 %pytest
 
 %files %{python_files}
-%doc CHANGES README.rst
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/pyavm
 %{python_sitelib}/[Pp]y[Aa][Vv][Mm]-%{version}.dist-info

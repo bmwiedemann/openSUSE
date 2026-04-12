@@ -1,4 +1,5 @@
 <package name="python-pyavm" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="devel:languages:python:numeric" package="python-pyavm"/>
 </package>
