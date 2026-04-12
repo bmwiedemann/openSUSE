@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 12 13:01:02 UTC 2026 - Dave Plater <davejplater@gmail.com>
+
+- Fix build again with new autoconf by adding -f to the autoreconf
+  command.
+
+-------------------------------------------------------------------
 Mon Mar 16 07:20:52 UTC 2026 - Dave Plater <davejplater@gmail.com>
 
 - Fix build with new autoconf

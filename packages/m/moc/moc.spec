@@ -94,7 +94,7 @@ Other features:
 %autosetup -p1 -n trunk-%{version}
 
 %build
-autoreconf -i -I /usr/share/gettext/m4
+autoreconf -i -f -I /usr/share/gettext/m4
 %configure --help
 %configure \
 	--with-gnu-ld \
