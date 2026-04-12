@@ -1,7 +1,7 @@
 #
 # spec file for package wt
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define WTSRVDIR /srv/wt
 %define WTRUNDIR %{WTSRVDIR}/run
-%define so_version 4_11_3
+%define so_version 4_12_6
 Name:           wt
-Version:        4.11.3
+Version:        4.12.6
 Release:        0
 Summary:        C++ library for developing web applications (Web Toolkit)
 License:        GPL-2.0-only
@@ -39,6 +39,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glu-devel
 BuildRequires:  graphviz
+BuildRequires:  libboost_atomic-devel
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libharu-devel
 BuildRequires:  libpng-devel
 BuildRequires:  mysql-devel
@@ -54,10 +58,6 @@ Requires:       openssl
 Recommends:     %{name}-dbo = %{version}
 Suggests:       %{name}-dbo-mysql = %{version}
 Suggests:       %{name}-dbo-postgres = %{version}
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_program_options-devel
-BuildRequires:  libboost_thread-devel
 
 %description
 Wt is a C++ library and application server for developing and
@@ -187,6 +187,8 @@ rm %{buildroot}%{_datadir}/wt/resources/themes/*/*/generate.sh
 
 %files devel
 %{_includedir}/Wt
+%dir %{_includedir}/thirdparty
+%{_includedir}/thirdparty/qrcodegen
 %{_libdir}/*.so
 %{_libdir}/cmake/wt
 %doc %{_docdir}/%{name}-devel

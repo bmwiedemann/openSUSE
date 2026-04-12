@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 11 20:34:00 UTC 2026 - Gemini CLI <gemini@suse.com>
+
+- Update to 4.12.6:
+  * Major release 4.12.0 adds std::filesystem support (optional)
+  * Added WPasswordEdit to replace deprecated WLineEdit password echo mode
+  * Added WStackedValidator to combine multiple validators
+  * Added native HTML5 input support for WDateEdit and WTimeEdit
+  * Added WLeafletMap improvements: Popups, Tooltips, and Marker options
+  * Many WTableView fixes and improvements in 4.12.1-4.12.6
+  * For full changes see ReleaseNotes.html
+- Refined missing_libs.patch for 4.12.6
+
+-------------------------------------------------------------------
 Tue Sep 30 08:04:55 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on libboost_system-devel, 

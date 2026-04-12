@@ -417,4 +417,20 @@ This release includes a backward-incompatible change and deprecates many functio
     <comment></comment>
     <requestid>1308137</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>68c01e7aa96940b582d57faf737a653b</srcmd5>
+    <version>4.12.6</version>
+    <time>1776009149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.12.6:
+  * Major release 4.12.0 adds std::filesystem support (optional)
+  * Added WPasswordEdit to replace deprecated WLineEdit password echo mode
+  * Added WStackedValidator to combine multiple validators
+  * Added native HTML5 input support for WDateEdit and WTimeEdit
+  * Added WLeafletMap improvements: Popups, Tooltips, and Marker options
+  * Many WTableView fixes and improvements in 4.12.1-4.12.6
+  * For full changes see ReleaseNotes.html
+- Refined missing_libs.patch for 4.12.6</comment>
+    <requestid>1346116</requestid>
+  </revision>
 </revisionlist>
