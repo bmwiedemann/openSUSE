@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Apr 11 17:48:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * :support`- backported` Add pip explicitly to our core
+    dependencies so that envs which don't naturally include it (a
+    thing these days!) still install it. We do literally import
+    from pip as well as call out to it in subprocesses, at least
+    for now.
+  * :bug:`-` Fix some Python 3.10-specific type hint syntax that
+    snuck in. Apologies from our dayjob, which is on Python 3.11.
+  * :bug:`-` Use $EDITOR pyproject.toml for version number
+    updates now; overlooked in earlier commits.
+  * :support:`-` Add a __version__ member to the package root
+    module.
+  * :support:`-` Drop support for Python<3.9 and switch to using
+    pyproject.toml.
+  * :support:`-` Update packaging.release.build to use pypa/build
+    instead of setup.py.  Warning Backwards compatibility note:
+    the --directory argument to tasks in this module is now ~=
+    python -m build --outdir, meaning it controls what is usually
+    named dist/. Previously, this option controlled a parent
+    directory, inside of which was created dist/ and build/.
+    There's no longer any explicit build/ (that would be up to
+    your project's build backend) and so this is now simply the
+    dist/output dir.
+  * :support:`-` Mute SyntaxWarnings from older semantic_version
+    versions (temporary measure until we can upgrade to modern
+    versions).
+
+-------------------------------------------------------------------
 Mon Jun 30 05:51:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -85,7 +115,7 @@ Thu Sep 29 02:48:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   to support headless passphrase entry. It was found that modern GPG versions require --batch and
   --pinentry-mode=loopback for --passphrase-fd to function correctly.
   [Feature]: Add a new invocations.ci task module for somewhat-more-generic CI support than the now legacy invocations.travis tasks.
-  [Feature]: Allow supplying additional test runners to pytest.coverage; primarily useful for setting up multiple additive test runs before publishing reports. 
+  [Feature]: Allow supplying additional test runners to pytest.coverage; primarily useful for setting up multiple additive test runs before publishing reports.
 
 -------------------------------------------------------------------
 Wed May  4 12:25:51 UTC 2022 - pgajdos@suse.com
@@ -98,7 +128,7 @@ Wed May  4 12:25:51 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Thu Mar 10 06:25:34 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- pytest-relaxed now supports pytest 6, so test on all python versions. 
+- pytest-relaxed now supports pytest 6, so test on all python versions.
 
 -------------------------------------------------------------------
 Mon Dec 13 23:44:38 UTC 2021 - Ben Greiner <code@bnavigator.de>

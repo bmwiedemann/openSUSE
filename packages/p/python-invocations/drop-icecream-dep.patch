@@ -1,7 +1,7 @@
-Index: invocations-3.3.0/tests/conftest.py
+Index: invocations-4.0.2/tests/conftest.py
 ===================================================================
---- invocations-3.3.0.orig/tests/conftest.py
-+++ invocations-3.3.0/tests/conftest.py
+--- invocations-4.0.2.orig/tests/conftest.py
++++ invocations-4.0.2/tests/conftest.py
 @@ -5,9 +5,11 @@ from pytest import fixture
  from invoke import MockContext
  
