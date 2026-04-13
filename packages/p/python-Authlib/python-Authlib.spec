@@ -51,6 +51,7 @@ BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 Requires:       python-cryptography
 Suggests:       python-requests
+Provides:       python-authlib
 BuildArch:      noarch
 %python_subpackages
 
