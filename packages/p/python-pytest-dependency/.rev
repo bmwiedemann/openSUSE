@@ -48,4 +48,14 @@
 - No more greedy globs in %files.</comment>
     <requestid>1275093</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a056b2657d8f8e6f6cf121e2d4bf86b6</srcmd5>
+    <version>0.6.1</version>
+    <time>1776115094</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1:
+  * fix compatibility with setuptools 81.0.0.
+  * Minor review of the build tool chain.</comment>
+    <requestid>1346224</requestid>
+  </revision>
 </revisionlist>

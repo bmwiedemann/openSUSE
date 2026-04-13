@@ -18,21 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-dependency
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Manage dependencies of tests
 License:        Apache-2.0
 URL:            https://github.com/RKrahl/pytest-dependency
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-dependency/pytest-dependency-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-dependency/pytest_dependency-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 3.6.0}
+BuildRequires:  %{python_module pytest >= 3.7.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-pytest >= 3.6.0
+Requires:       python-pytest >= 3.7.0
 BuildArch:      noarch
 %python_subpackages
 
