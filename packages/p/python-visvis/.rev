@@ -78,4 +78,20 @@
     <comment></comment>
     <requestid>1198013</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5ed6d5a5725eef7804f69b36e62569d0</srcmd5>
+    <version>1.15.0</version>
+    <time>1776115117</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.0:
+  * Modernized the repo a bit, and fixed a few things that were
+    broken.
+  * Use flit-core for build-backend.
+- Drop use-importlib.patch, integrated upstream.
+
+- Restrict numpy to &lt; 2 for now.
+- Replace use-importlib.patch with one that has been submitted upstream.
+- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1346250</requestid>
+  </revision>
 </revisionlist>

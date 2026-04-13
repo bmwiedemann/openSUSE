@@ -1,7 +1,7 @@
 #
 # spec file for package python-visvis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-visvis
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        An object oriented approach to visualization of 1D to 4D data
 License:        BSD-3-Clause
 URL:            https://github.com/almarklein/visvis
 Source:         https://files.pythonhosted.org/packages/source/v/visvis/visvis-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#almarklein/visvis#128
-Patch0:         use-importlib.patch
+BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
@@ -72,7 +69,8 @@ find * -name '*.py' -exec sed -i -e '/^#!\//, 1d' {} \;
 %pytest
 
 %files %{python_files}
-%license license.txt
+%license LICENSE
+%doc README.md
 %{python_sitelib}/visvis
 %{python_sitelib}/visvis-%{version}.dist-info
 
