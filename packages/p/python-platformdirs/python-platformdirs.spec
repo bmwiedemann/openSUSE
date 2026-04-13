@@ -27,22 +27,23 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-platformdirs%{psuffix}
-Version:        4.5.1
+Version:        4.9.6
 Release:        0
 Summary:        Module for determining appropriate platform-specific dirs
 License:        MIT
 URL:            https://github.com/platformdirs/platformdirs
 Source:         https://files.pythonhosted.org/packages/source/p/platformdirs/platformdirs-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatch-vcs}
-BuildRequires:  %{python_module hatchling >= 0.22.0}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatch-vcs >= 0.5}
+BuildRequires:  %{python_module hatchling >= 1.29}
 BuildRequires:  %{python_module pip}
 %if %{with test}
 BuildRequires:  %{python_module appdirs == 1.4.4}
+BuildRequires:  %{python_module covdefaults >= 2.3}
 BuildRequires:  %{python_module platformdirs = %{version}}
-BuildRequires:  %{python_module pytest >= 7.4}
-BuildRequires:  %{python_module pytest-cov >= 4.1}
-BuildRequires:  %{python_module pytest-mock >= 3.11.1}
+BuildRequires:  %{python_module pytest >= 9.0.2}
+BuildRequires:  %{python_module pytest-cov >= 7}
+BuildRequires:  %{python_module pytest-mock >= 3.15.1}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -73,7 +74,7 @@ A small Python module for determining appropriate platform-specific dirs, e.g. a
 
 %if !%{with test}
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %{python_sitelib}/platformdirs
 %{python_sitelib}/platformdirs-%{version}.dist-info
