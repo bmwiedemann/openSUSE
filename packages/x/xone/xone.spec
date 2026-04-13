@@ -17,7 +17,7 @@
 
 
 Name:           xone
-Version:        0.5.7
+Version:        0.5.8
 Release:        0
 Summary:        Driver for Xbox One and Xbox Series X|S controllers
 License:        GPL-2.0-or-later
