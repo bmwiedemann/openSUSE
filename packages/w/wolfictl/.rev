@@ -279,4 +279,20 @@
     <comment></comment>
     <requestid>1343568</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3354a0c68c4eec0c10bdd36fa5ff2ea1</srcmd5>
+    <version>0.39.8</version>
+    <time>1775743902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345509</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d7831723642c5b9e3e3a7817e767fda7</srcmd5>
+    <version>0.39.9</version>
+    <time>1776115131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346338</requestid>
+  </revision>
 </revisionlist>

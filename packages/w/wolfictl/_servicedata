@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/wolfi-dev/wolfictl</param>
-              <param name="changesrevision">003075229f72beb1240bf7b5a6f60983f7851796</param></service></servicedata>
+              <param name="changesrevision">003075229f72beb1240bf7b5a6f60983f7851796</param></service><service name="tar_scm">
+                <param name="url">https://github.com/wolfi-dev/wolfictl.git</param>
+              <param name="changesrevision">bfefe70c532532c05d1e9e503f54a87c7a5f1622</param></service></servicedata>
