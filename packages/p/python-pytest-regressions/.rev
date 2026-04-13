@@ -112,4 +112,15 @@
     dropped.</comment>
     <requestid>1327967</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0151d998db79a7bd9519c287284fcffa</srcmd5>
+    <version>2.10.0</version>
+    <time>1776115080</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10.0:
+  * Add support for Pandas 3.0 to `dataframe_regression`
+
+- Remove python-pandas and python-matplotlib from BuildRequires</comment>
+    <requestid>1345283</requestid>
+  </revision>
 </revisionlist>
