@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:00:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.3:
+  * build(deps): bump google.golang.org/api from 0.274.0 to 0.275.0
+    (#2169)
+  * build(deps): bump step-security/harden-runner from 2.16.1 to
+    2.17.0 (#2171)
+  * build(deps): bump step-security/action-actionlint from 1.69.1
+    to 1.72.0 (#2172)
+  * build(deps): bump golang.org/x/sys from 0.42.0 to 0.43.0
+    (#2170)
+  * build(deps): bump step-security/harden-runner from 2.16.0 to
+    2.16.1 (#2167)
+  * build(deps): bump google.golang.org/api from 0.273.1 to 0.274.0
+    (#2161)
+  * build(deps): bump go.opentelemetry.io/otel from 1.42.0 to
+    1.43.0 (#2162)
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.42.0 to
+    1.43.0 (#2163)
+  * chore(harden-runner): add files.example.com endpoint (#2165)
+  * chore(workflows): add actionlint and zizmor action linters
+    [INC-161] (#2166)
+  * build(deps): bump chainguard-dev/actions from 1.6.11 to 1.6.13
+    (#2160)
+
+-------------------------------------------------------------------
+Thu Apr 09 07:36:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.2:
+  * build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.4 to
+    3.0.5 in the go_modules group across 1 directory (#2159)
+
+-------------------------------------------------------------------
 Thu Apr 02 15:58:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.1:
