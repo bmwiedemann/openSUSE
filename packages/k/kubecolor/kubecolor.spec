@@ -1,7 +1,7 @@
 #
 # spec file for package kubecolor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           kubecolor
-Version:        0.5.3
+Version:        0.6.0
 Release:        0
 Summary:        Colorize your kubectl output
 License:        MIT
 URL:            https://kubecolor.github.io/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.gz
-BuildRequires:  go1.25 >= 1.25.3
+BuildRequires:  go1.26 >= 1.26.1
 Requires:       kubernetes-client-provider
 
 %description

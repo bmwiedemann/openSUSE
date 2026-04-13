@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:00:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.0:
+  * Features
+    - Colorize kubectl label & kubectl annotate by @applejag in
+      #300
+    - Colorize True/False bool status in kubectl get table output
+      by @tenitski in #307
+    - Improve 'executable not found' error by @applejag in #299
+      Makes the error easier to understand.
+
+      Before:
+
+        $ kubecolor get pods
+        [kubecolor] [ERROR] exec: "kubectl": executable file not found in $PATH
+
+      After:
+
+        $ kubecolor get pods
+        [kubecolor] [ERROR] exec: "kubectl": executable file not found in $PATH; kubectl must be installed to use kubecolor
+
+  * Fixes
+    - Increase max line length from 65 kB to 1.5 MB by @applejag in
+      #297
+      Before this fix, kubecolor would freeze when it tried to
+      parse a line that was too long. But with this buffer size
+      increase you should now be able to use kubecolor without it
+      freezing.
+      In short, this fixes:
+      - Running kubecolor get secret -o yaml on a secret with a
+        really big value, such as Helm release secrets
+      - Running kubecolor logs on a pod that had a really big log
+        line
+      In addition, if kubecolor tries to read a line that's still
+      too long (more than 1.5 MB now), it will now error out
+      instead of freezing.
+      The size limit was chosen based on the maximum Secret and
+      ConfigMap value size, rounded up a bit to account for the
+      size increase of base64 encoding and any other formatting
+      like indentation and key names.
+    - Always use the custom version printer by @applejag in #298
+      This did not work before becase kubecolor runs kubectl behind
+      the scenes, reads its output, parses it, and adds in the
+      coloring. And with the kubectl version subcommand it also
+      injects kubecolor's own version into the output.
+      But when kubecolor's output is not a terminal, such as when
+      piping it through cat, then as an optimization kubecolor just
+      handed its stdout over to kubectl, so kubecolor has no way of
+      seeing or modifying the output.
+      The fix was to still wrap kubectl's output when being piped,
+      if (and only if) the subcommand used is kubectl version.
+      You could always also get the kubecolor version using
+      kubecolor --kubecolor-version. But now it behaves more
+      predictable when piping.
+  * Other
+    - Add cooldown to Dependabot updates by @applejag in #296
+  * Dependencies
+    - Update to Go 1.26.1 by @applejag in #308
+    - Bump actions/checkout from 6.0.0 to 6.0.1 in the all group by
+      @dependabot[bot] in #287
+    - Bump actions/checkout from 6.0.1 to 6.0.2 in the all group by
+      @dependabot[bot] in #293
+    - Bump actions/download-artifact from 7.0.0 to 8.0.0 in the all
+      group by @dependabot[bot] in #306
+    - Bump actions/download-artifact from 8.0.0 to 8.0.1 in the all
+      group by @dependabot[bot] in #314
+    - Bump codecov/codecov-action from 5.5.2 to 6.0.0 in the all
+      group by @dependabot[bot] in #316
+    - Bump docker/build-push-action from 6.18.0 to 6.19.2 in the
+      all group by @dependabot[bot] in #302
+    - Bump docker/setup-qemu-action from 3.6.0 to 3.7.0 in the all
+      group by @dependabot[bot] in #284
+    - Bump goreleaser/goreleaser-action from 6.4.0 to 7.0.0 in the
+      all group by @dependabot[bot] in #303
+    - Bump k8s.io/apimachinery from 0.34.1 to 0.34.2 in the all
+      group by @dependabot[bot] in #285
+    - Bump k8s.io/apimachinery from 0.34.2 to 0.34.3 in the all
+      group by @dependabot[bot] in #288
+    - Bump k8s.io/apimachinery from 0.34.3 to 0.35.0 in the all
+      group by @dependabot[bot] in #290
+    - Bump k8s.io/apimachinery from 0.35.0 to 0.35.1 in the all
+      group by @dependabot[bot] in #301
+    - Bump k8s.io/apimachinery from 0.35.1 to 0.35.2 in the all
+      group by @dependabot[bot] in #305
+    - Bump k8s.io/apimachinery from 0.35.2 to 0.35.3 in the all
+      group by @dependabot[bot] in #313
+    - Bump the all group with 2 updates by @dependabot[bot] in #291
+    - Bump the all group with 2 updates by @dependabot[bot] in #292
+    - Bump the all group with 2 updates by @dependabot[bot] in #294
+    - Bump the all group with 2 updates by @dependabot[bot] in #315
+    - Bump the all group with 3 updates by @dependabot[bot] in #286
+    - Bump the all group with 3 updates by @dependabot[bot] in #289
+    - Bump the all group with 3 updates by @dependabot[bot] in #311
+    - Bump the all group with 5 updates by @dependabot[bot] in #312
+    - Bump zizmorcore/zizmor-action from 0.4.1 to 0.5.0 in the all
+      group by @dependabot[bot] in #295
+
+-------------------------------------------------------------------
 Mon Nov 03 17:34:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.3:
