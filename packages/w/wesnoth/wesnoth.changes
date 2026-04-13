@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 11 21:03:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.18.7:
+  * Updated translations: Bengali, Chinese (Simplified), Czech,
+    French, Hungarian, Portuguese (Brazil)
+  * Fix time of day sounds not playing.
+
+-------------------------------------------------------------------
 Tue Jan  6 16:41:09 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 1.18.6:
@@ -166,7 +174,7 @@ Sun Jun 23 18:13:18 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
   Packaging
   * Fixed building with Boost 1.85.
   Translations
-  * Updated translations: Arabic, Bengali, Bulgarian, 
+  * Updated translations: Arabic, Bengali, Bulgarian,
     Chinese (Simplified), Czech, Finnish, French, German, Italian,
     Japanese, Norwegian, Russian, Slovak, Ukrainian
   User interface
@@ -492,10 +500,10 @@ Sat Feb 26 15:43:28 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
   * Replays using custom units from add-ons will no longer fail
     to play
   * Players using CJK languages will no longer need to wait
-    10+ minutes 
+    10+ minutes
   * When in the lobby of a game, having the
     "Show joins of friends only"
-    preference set will now function correctly 
+    preference set will now function correctly
   * When storing the password for multiple accounts the password
     file will no longer become corrupted
 - Add wesnoth-cmake-fix-find-readline.patch, fixes detection of
@@ -582,7 +590,7 @@ Fri Jul 16 20:45:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
     beta for 1.16!
   * Full changes:
     https://github.com/wesnoth/wesnoth/blob/1.15.14/changelog.md
-- remove fix-widgets.patch (upstream) 
+- remove fix-widgets.patch (upstream)
 
 -------------------------------------------------------------------
 Mon May 31 13:34:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
@@ -609,7 +617,7 @@ Sun May  9 18:42:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Mon Mar 22 21:35:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.11:
-  * AI improvements, 
+  * AI improvements,
     see https://github.com/wesnoth/wesnoth/blob/1.15.11/changelog.md
 
   * Fixed color fringing issues with ClearType on Windows.
@@ -685,7 +693,7 @@ Sun Feb 28 20:07:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
    * Fixed display zoom not being taken into account when using the `x`, `y`,
      `directional_x` and `directional_y` attributes in unit animations.
    * Fixed a warning message and the AI leader potentially not moving when it
-     cannot reach a keep because it's occupied by an allied unit 
+     cannot reach a keep because it's occupied by an allied unit
 
 -------------------------------------------------------------------
 Mon Jan 18 23:25:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -794,7 +802,7 @@ Mon Sep 24 13:46:23 UTC 2018 - mvetter@suse.com
     + Support formula= key in [variable] ConditionalWML
     + Support to_location in [move_unit], taking a special location ID
     + Support dir in [move_unit] to perform relative movements
-    + Support location_id in [teleport], [recall], [unstore_unit] 
+    + Support location_id in [teleport], [recall], [unstore_unit]
       for the target location
     + Support a comma-separated list for location_id key in SLF
     + Support [filter_weapon] in leadership and resistance abilities,
@@ -1192,7 +1200,7 @@ Tue May  8 11:04:58 UTC 2018 - antoine.belvire@opensuse.org
 - Drop tools subpackage (removed from upstream sources).
 - Drop link-boost.patch (fixed upstream).
 - Drop conditionals for Leap 42.3: It wont't build anyway as boost
-  1.56 is not available. 
+  1.56 is not available.
 
 -------------------------------------------------------------------
 Tue Aug  8 13:31:56 UTC 2017 - rpm@fthiessen.de
@@ -1217,7 +1225,7 @@ Upgraded to 1.12.2:
 
  * Campaigns:
    * Use the new bigmaps for A Tale of Two Brothers, Delfadors Memoirs, The
-     Hammer of Thursagan, Northern Rebirth and the epilogue of Legend of 
+     Hammer of Thursagan, Northern Rebirth and the epilogue of Legend of
      Wesmere.
 
  * Language and i18n:
@@ -1308,7 +1316,7 @@ Sun Nov 24 07:14:07 UTC 2013 - bwiedemann@suse.com
       replays).
     * Backported several bugfixes for wmllint (Windows-unfriendliness on the
       command line, unusual crashers, underscores stripped from keys).
- 
+
 Version 1.10.6:
   * Campaigns:
     * The Rise of Wesnoth:
@@ -1537,7 +1545,7 @@ Mon Jul 19 14:32:03 UTC 2010 - reddwarf@opensuse.org
 Fri Jun  4 11:16:59 UTC+9 2010 - highwaystar.ru@gmail.com
 
 - update to version 1.8.2
-- bugfix release 
+- bugfix release
   * Campaigns:
    * An Orcish Incursion:
      * Made 'Valley of Trolls' easier on the easiest difficulties.
@@ -1564,7 +1572,7 @@ Fri Jun  4 11:16:59 UTC+9 2010 - highwaystar.ru@gmail.com
 -------------------------------------------------------------------
 Mon Apr  5 15:34:19 UTC 2010 - highwaystar.ru@gmail.com
 
-- migrate to cmake, because autoconf obsolete 
+- migrate to cmake, because autoconf obsolete
 - updated to 1.8
  * Campaigns:
    * Descent into Darkness
@@ -1610,7 +1618,7 @@ Fri Mar 12 13:52:04 UTC 2010 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Tue Jul  7 15:27:05 CEST 2009 - robert.munteanu@gmail.com
 
-- Updated to 1.6.4 
+- Updated to 1.6.4
 
 -------------------------------------------------------------------
 Tue Mar 31 10:30:27 CEST 2009 - novell@mirell.de
