@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-uv-build
-Version:        0.11.0
+Version:        0.11.6
 Release:        0
 Summary:        The uv build backend
 License:        MIT

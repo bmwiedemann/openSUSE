@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Apr 10 23:51:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.6:
+  * This release resolves a low severity security advisory in
+    which wheels with malformed RECORD entries could delete
+    arbitrary files on uninstall. See GHSA-pjjw-68hj-v9mw for
+    details.
+  * Do not remove files outside the venv on uninstall
+  * Validate and heal wheel `RECORD` during installation
+  * Avoid `uv cache clean` errors due to Win32 path normalization
+- update to 0.11.5:
+  * Fix `build_system.requires` error message
+  * Remove trailing path separators in path normalization
+  * Improve error messages for unsupported or invalid TLS
+    certificates
+  * Normalize persisted fork markers before lock equality checks
+  * Clear junction properly when uninstalling Python versions on
+    Windows
+  * Report error cleanly instead of panicking on TLS certificate
+    error
+- update to 0.11.4:
+  * Add support for `--upgrade-group`
+  * Merge repeated archive URL hashes by version ID
+  * Require all direct URL hash algorithms to match
+  * Avoid panics in environment finding via cycle detection
+  * Enforce direct URL hashes for `pyproject.toml` dependencies
+  * Error on `--locked` and `--frozen` when script lockfile is
+    missing
+  * Fix `uv export` extra resolution for workspace member and
+    conflicting extras
+  * Include conflicts defined in virtual workspace root
+  * Recompute relative `exclude-newer` values during `uv tree
+    --outdated`
+  * Respect `--exclude-newer` in `uv tool list --outdated`
+  * Sort by comparator to break specifier ties
+  * Store relative timestamps in tool receipts
+  * Track newly-activated extras when determining conflicts
+  * Patch `Cargo.lock` in `uv-build` source distributions
+- update to 0.11.3:
+  * Add progress bar for hashing phase in uv publish
+  * Add support for ROCm 7.2
+  * Emit abi3t tags for every abi3 version
+  * Expand `uv workspace metadata` with dependency information
+    from the lock
+  * Implement support for PEP 803
+  * Pretty-print platform in built wheel errors
+  * Publish installers to `/installers/uv/latest` on the mirror
+  * Show free-threaded Python in built-wheel errors
+- update to 0.11.2:
+  * Add a dedicated Windows PE editing error
+  * Make `uv self update` fetch the manifest from the mirror
+    first
+  * Use uv reqwest client for self update
+  * Show `uv self update` success and failure messages with
+    `--quiet`
+  * Evaluate extras and groups when determining auditable
+    packages
+- update to 0.11.1:
+  * Add missing hash verification for `riscv64gc-unknown-linux-
+    musl`
+  * Fallback to direct download when direct URL streaming is
+    unsupported
+  * Revert treating 'Dynamic' values as case-insensitive
+  * Remove torchdata from list of packages to source from the
+    PyTorch index
+  * Special-case `==` Python version request ranges
+  * Cover `--python ` in "Using arbitrary Python environments"
+  * Fix version annotations for `PS_MODULE_PATH` and
+    `UV_WORKING_DIR`
+
+-------------------------------------------------------------------
 Mon Mar 23 22:34:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.0:

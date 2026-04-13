@@ -43,4 +43,41 @@
   * Add CPython 3.12.13</comment>
     <requestid>1342121</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e2f2b016937a95d8e40cc4a11412868</srcmd5>
+    <version>0.11.6</version>
+    <time>1776115084</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.6:
+  * This release resolves a low severity security advisory in
+    which wheels with malformed RECORD entries could delete
+    arbitrary files on uninstall. See GHSA-pjjw-68hj-v9mw for
+    details.
+  * Do not remove files outside the venv on uninstall
+  * Validate and heal wheel `RECORD` during installation
+  * Avoid `uv cache clean` errors due to Win32 path normalization
+- update to 0.11.5:
+  * Fix `build_system.requires` error message
+  * Remove trailing path separators in path normalization
+  * Improve error messages for unsupported or invalid TLS
+    certificates
+  * Normalize persisted fork markers before lock equality checks
+  * Clear junction properly when uninstalling Python versions on
+    Windows
+  * Report error cleanly instead of panicking on TLS certificate
+    error
+- update to 0.11.4:
+  * Add support for `--upgrade-group`
+  * Merge repeated archive URL hashes by version ID
+  * Require all direct URL hash algorithms to match
+  * Avoid panics in environment finding via cycle detection
+  * Enforce direct URL hashes for `pyproject.toml` dependencies
+  * Error on `--locked` and `--frozen` when script lockfile is
+    missing
+  * Fix `uv export` extra resolution for workspace member and
+    conflicting extras
+  * Include conflicts defined in virtual workspace root
+  * Recompute relative `exclude-newer` values during `uv tree</comment>
+    <requestid>1345975</requestid>
+  </revision>
 </revisionlist>
