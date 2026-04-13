@@ -1,7 +1,7 @@
 #
 # spec file for package python-cogapp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cogapp
-Version:        3.3.0
+Version:        3.6.0
 Release:        0
 Summary:        A code generator for executing Python snippets in source files
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://nedbatchelder.com/code/cog
+URL:            https://nedbatchelder.com/code/cog
 Source:         https://files.pythonhosted.org/packages/source/c/cogapp/cogapp-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 80}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Conflicts:      cog
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,24 +51,22 @@ need.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone -a %{buildroot}%{_bindir}/cog.py
-# remove redundant binary
-rm %{buildroot}%{_bindir}/cog
+%python_clone -a %{buildroot}%{_bindir}/cog
 
 %check
-# reverse -q from addopts in setup.cfg
+# reverse -q from addopts in pyproject.toml
 %pytest -v
 
 %post
-%python_install_alternative cog.py
+%python_install_alternative cog
 
 %postun
-%python_uninstall_alternative cog.py
+%python_uninstall_alternative cog
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
-%python_alternative %{_bindir}/cog.py
+%doc CHANGELOG.rst README.rst
+%python_alternative %{_bindir}/cog
 %{python_sitelib}/cogapp
 %{python_sitelib}/cogapp-%{version}*-info
 

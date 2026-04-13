@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:38:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.0:
+  * Added a --check-fail-msg option for providing a message as
+    part of the output of a --check failure.
+  * Added support for Python 3.14.
+  * Updated documentation to remove confusing terminology.
+  * Added a --diff option to show the diff of what changed to
+    fail a --check run.
+  * Embedded code can change the current directory, cog will
+    change back to the original directory when the code is done.
+  * Changed the checksum format to use shorter base64 encoding
+    instead of hex, making checksums less visually distracting.
+    The old hex format will still be accepted, but will be
+    updated to the new format automatically when writing.
+  * Added --help option as an alias for -h.
+  * Dropped support for Python 3.7 and 3.8, and added 3.13.
+  * Dropped support for Python 2.7, 3.5, and 3.6, and added 3.11
+    and 3.12.
+  * Removed the cog.py installed file.  Use the cog command, or
+    python -m cogapp to run cog.
+  * Processing long files has been made much faster.  Thanks,
+    Panayiotis Gavriil.
+  * Files listing other files to process can now be specified as
+    &files_to_cog.txt to interpret the file names relative to the
+    location of the list file.  The existing @files_to_cog.txt
+    syntax interprets file names relative to the current working
+    directory.  Thanks, Phil Kirkpatrick.
+  * Support FIPS mode computers by marking our MD5 use as not
+    related to security.  Thanks, Ryan Santos.
+  * Docs have moved to https://cog.readthedocs.io
+
+-------------------------------------------------------------------
 Tue Dec  5 14:29:56 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - Add .py suffix to avoid conflicts with the cog browser package.
