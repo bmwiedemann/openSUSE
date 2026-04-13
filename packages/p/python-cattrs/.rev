@@ -123,4 +123,41 @@
   * Some defaultdicts are now supported by default, and</comment>
     <requestid>1318119</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dca85e80f5592f00d8465a5472833af8</srcmd5>
+    <version>26.1.0</version>
+    <time>1776115136</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires/Suggests on tomli-w.
+
+- update to 26.1.0:
+  * Add the {mod}`tomllib &lt;cattrs.preconf.tomllib&gt;` preconf
+    converter.
+  * Customizing un/structuring of _attrs_ classes, dataclasses,
+    TypedDicts and dict NamedTuples is now possible by using
+    `Annotated[T, override()]` on fields.
+  * Fix structuring of nested generic classes with stringified
+    annotations.
+  * Python 3.9 is no longer supported, as it is end-of-life. Use
+    previous versions on this Python version.
+  * Apply the attrs converter to the default value before
+    checking if it is equal to the attribute's value, when
+    `omit_if_default` is true and an attrs converter is
+    specified.
+  * Use the optional `_value_` type hint to structure and
+    unstructure enums if present.
+  * Aliases (when in use) now properly generate rename metadata
+    in generated hooks.
+  * _cattrs_ now tracks performance using codspeed.
+  * The {mod}`tomlkit &lt;cattrs.preconf.tomlkit&gt;` preconf converter
+    now properly handles native `date` objects when structuring.
+  * The {mod}`tomlkit &lt;cattrs.preconf.tomlkit&gt;` preconf converter
+    now passes date objects directly to _tomlkit_ for
+    unstructuring.
+  * Enum handling has been optimized by switching to hook
+    factories, improving performance especially for plain enums.
+  * Fix {func}`cattrs.strategies.include_subclasses` when used
+    with {func}`cattrs.strategies.configure_tagged_union` and</comment>
+    <requestid>1346332</requestid>
+  </revision>
 </revisionlist>

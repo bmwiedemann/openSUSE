@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:03:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires/Suggests on tomli-w.
+
+-------------------------------------------------------------------
+Fri Apr  3 12:55:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.1.0:
+  * Add the {mod}`tomllib <cattrs.preconf.tomllib>` preconf
+    converter.
+  * Customizing un/structuring of _attrs_ classes, dataclasses,
+    TypedDicts and dict NamedTuples is now possible by using
+    `Annotated[T, override()]` on fields.
+  * Fix structuring of nested generic classes with stringified
+    annotations.
+  * Python 3.9 is no longer supported, as it is end-of-life. Use
+    previous versions on this Python version.
+  * Apply the attrs converter to the default value before
+    checking if it is equal to the attribute's value, when
+    `omit_if_default` is true and an attrs converter is
+    specified.
+  * Use the optional `_value_` type hint to structure and
+    unstructure enums if present.
+  * Aliases (when in use) now properly generate rename metadata
+    in generated hooks.
+  * _cattrs_ now tracks performance using codspeed.
+  * The {mod}`tomlkit <cattrs.preconf.tomlkit>` preconf converter
+    now properly handles native `date` objects when structuring.
+  * The {mod}`tomlkit <cattrs.preconf.tomlkit>` preconf converter
+    now passes date objects directly to _tomlkit_ for
+    unstructuring.
+  * Enum handling has been optimized by switching to hook
+    factories, improving performance especially for plain enums.
+  * Fix {func}`cattrs.strategies.include_subclasses` when used
+    with {func}`cattrs.strategies.configure_tagged_union` and
+    classes using diamond inheritance.
+  * Fix {func}`cattrs.strategies.configure_tagged_union` when
+    used with recursive type aliases.
+
+-------------------------------------------------------------------
 Mon Nov 17 02:10:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 25.3.0:
