@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 13 13:15:56 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.5.18:
+  + fixed typo
+  + Remove Proton-Sarek
+  + Temporary fix for Proton-CachyOS
+  + feat(launch-options): Implement new launch options view
+  + Fix Latest releases for Bottles
+  + Handle symlink preservation for user_settings.py
+  + Improve UI
+  + Update to GNOME 50
+  + Updated translations
+
+-------------------------------------------------------------------
 Mon Feb 23 12:36:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.5.17:

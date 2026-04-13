@@ -288,4 +288,21 @@
     <comment></comment>
     <requestid>1334494</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9e2b04561c0bc8f1cc9d42a8d67753d7</srcmd5>
+    <version>0.5.18</version>
+    <time>1776115210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.18:
+  + fixed typo
+  + Remove Proton-Sarek
+  + Temporary fix for Proton-CachyOS
+  + feat(launch-options): Implement new launch options view
+  + Fix Latest releases for Bottles
+  + Handle symlink preservation for user_settings.py
+  + Improve UI
+  + Update to GNOME 50
+  + Updated translations (forwarded request 1346450 from rrahl0)</comment>
+    <requestid>1346451</requestid>
+  </revision>
 </revisionlist>
