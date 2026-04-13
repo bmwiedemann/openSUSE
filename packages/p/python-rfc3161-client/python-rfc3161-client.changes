@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 13 13:46:44 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.0.6 (fixes CVE-2026-33753, bsc#1261804)
+  * Fixed a bug where the verification incorrectly picked the leaf certificate.
+    This allowed an attacker who could modify a timestamp response to make a
+    legitimately-signed timestamp from TSA-A pass verification as if it came
+    fromTSA-B. 
+
+-------------------------------------------------------------------
 Tue Jan 27 01:37:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.5:
