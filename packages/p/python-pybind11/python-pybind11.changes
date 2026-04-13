@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr  8 15:25:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.3:
+  * Fixed TSS key exhaustion in `implicitly_convertible()` when
+    many implicit conversions are registered across large module
+    sets.
+  * Fixed heap-buffer-overflow in `pythonbuf` with undersized
+    buffers by enforcing a minimum buffer size.
+  * Fixed virtual-inheritance pointer offset crashes when
+    dispatching inherited methods through virtual bases.
+  * Fixed `free(): invalid pointer` crashes during interpreter
+    shutdown with `py::enum_<>` by duplicating late-added
+    `def_property_static` argument strings.
+  * Fixed `function_record` heap-type deallocation to call
+    `PyObject_Free()` and decref the type.
+  * Hardened `PYBIND11_MODULE_PYINIT` and `get_internals()`
+    against module-initialization crashes.
+  * Fixed `static_pointer_cast` build failure with virtual
+    inheritance in `holder_caster_foreign_helpers.h`.
+  * Fixed ambiguous `factory` template specialization that caused
+    compilation failures with nvcc + GCC 14.
+  * Fixed crash in `def_readwrite` for non-smart-holder
+    properties of smart-holder classes.
+  * Fixed memory leak for `py::dynamic_attr()` objects on Python
+    3.13+ by clearing managed `__dict__` contents during
+    deallocation.
+  * Fixed binding of `noexcept` and ref-qualified (`&`, `&&`)
+    methods inherited from unregistered base classes.
+  * Switched to newer public CPython APIs (`PyType_GetFlags` and
+    public vectorcall APIs where available).
+
+-------------------------------------------------------------------
 Thu Mar  5 08:12:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.2:

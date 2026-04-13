@@ -393,4 +393,39 @@
   * Updated `py::native_enum` bindings to unregister enum types</comment>
     <requestid>1337815</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b914864798f120195eb3a734e11c430a</srcmd5>
+    <version>3.0.3</version>
+    <time>1776115079</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.3:
+  * Fixed TSS key exhaustion in `implicitly_convertible()` when
+    many implicit conversions are registered across large module
+    sets.
+  * Fixed heap-buffer-overflow in `pythonbuf` with undersized
+    buffers by enforcing a minimum buffer size.
+  * Fixed virtual-inheritance pointer offset crashes when
+    dispatching inherited methods through virtual bases.
+  * Fixed `free(): invalid pointer` crashes during interpreter
+    shutdown with `py::enum_&lt;&gt;` by duplicating late-added
+    `def_property_static` argument strings.
+  * Fixed `function_record` heap-type deallocation to call
+    `PyObject_Free()` and decref the type.
+  * Hardened `PYBIND11_MODULE_PYINIT` and `get_internals()`
+    against module-initialization crashes.
+  * Fixed `static_pointer_cast` build failure with virtual
+    inheritance in `holder_caster_foreign_helpers.h`.
+  * Fixed ambiguous `factory` template specialization that caused
+    compilation failures with nvcc + GCC 14.
+  * Fixed crash in `def_readwrite` for non-smart-holder
+    properties of smart-holder classes.
+  * Fixed memory leak for `py::dynamic_attr()` objects on Python
+    3.13+ by clearing managed `__dict__` contents during
+    deallocation.
+  * Fixed binding of `noexcept` and ref-qualified (`&amp;`, `&amp;&amp;`)
+    methods inherited from unregistered base classes.
+  * Switched to newer public CPython APIs (`PyType_GetFlags` and
+    public vectorcall APIs where available).</comment>
+    <requestid>1345232</requestid>
+  </revision>
 </revisionlist>
