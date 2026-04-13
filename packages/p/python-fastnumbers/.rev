@@ -135,4 +135,15 @@
 - Use %pytest_arch instead of home made calling of pytest.</comment>
     <requestid>1225877</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ffc943713d5763a9faeb4920ac66ffc7</srcmd5>
+    <version>5.1.1</version>
+    <time>1776115085</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1.1:
+  * Support for Python 3.13
+  * Support for Python 3.7
+- Remove fix-compiler-errors.patch (obsolete).</comment>
+    <requestid>1346055</requestid>
+  </revision>
 </revisionlist>

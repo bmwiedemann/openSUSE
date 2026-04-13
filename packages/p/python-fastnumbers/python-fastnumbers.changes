@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 11 11:28:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.1:
+  * Support for Python 3.13
+  * Support for Python 3.7
+- Remove fix-compiler-errors.patch (obsolete).
+
+-------------------------------------------------------------------
 Fri Nov 22 18:57:14 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add fix-compiler-errors.patch with upstream fixes for compiler

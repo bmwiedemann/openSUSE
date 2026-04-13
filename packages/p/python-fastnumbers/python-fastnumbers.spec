@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastnumbers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fastnumbers
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Drop-in replacement for Python's int and float
 License:        MIT
 URL:            https://github.com/SethMMorton/fastnumbers
 Source:         https://files.pythonhosted.org/packages/source/f/fastnumbers/fastnumbers-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-compiler-errors.patch mcepl@suse.com
-# Code from gh#SethMMorton/fastnumbers@5522116cd03a and gh#SethMMorton/fastnumbers@8d2104e5cd93
-Patch0:         fix-compiler-errors.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools-scm >= 8.0}
 BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -73,13 +72,14 @@ export CFLAGS="%{optflags} -Wno-error=return-type"
 
 %install
 %pyproject_install
+%python_expand rm -rf %{buildroot}%{$python_sitearch}/cpp
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %pytest_arch
 
 %files %{python_files}
-%doc README.rst
+%doc README.rst CHANGELOG.md
 %license LICENSE
 %{python_sitearch}/fastnumbers
 %{python_sitearch}/fastnumbers-%{version}.dist-info
