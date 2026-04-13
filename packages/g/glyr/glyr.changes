@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 19:36:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * glyr-fix-includes.patch
+- Use %ldconfig_scriptlets macro
+
+-------------------------------------------------------------------
 Tue Feb 27 11:03:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

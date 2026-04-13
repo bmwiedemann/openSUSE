@@ -1,7 +1,7 @@
 #
 # spec file for package glyr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,12 +33,12 @@ Patch0:         glyr-date-n-time.patch
 Patch1:         glyr-optflags.patch
 # PATCH-FIX-OPENSUSE glyr-pkgconfig.patch crrodriguez@opensuse.org -- do not inject bogus dependencies into other packages.
 Patch2:         glyr-pkgconfig.patch
+Patch3:         glyr-fix-includes.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The sort of metadata glyr is searching (and downloading) is usually the
@@ -94,6 +94,7 @@ Glyr development files.
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2
+%patch -P 3 -p1
 
 %build
 %cmake
@@ -102,28 +103,23 @@ Glyr development files.
 %install
 %cmake_install
 
-%post -n libglyr%{major} -p /sbin/ldconfig
-
-%postun -n libglyr%{major} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libglyr%{major}
 
 %files -n glyrc
-%defattr(-,root,root,-)
 %license COPYING
 %doc AUTHORS README.textile state_of_providers.txt
 %{_bindir}/glyrc
 
 %files -n lib%{name}%{major}
-%defattr(-,root,root,-)
 %license COPYING
-%{_libdir}/*.so.*
+%{_libdir}/libglyr.so.%{major}*
 
 %files devel
-%defattr(-,root,root,-)
 %license COPYING
 %doc AUTHORS README.textile state_of_providers.txt
 %doc src/examples
 %{_includedir}/%{name}/
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
+%{_libdir}/libglyr.so
+%{_libdir}/pkgconfig/libglyr.pc
 
 %changelog
