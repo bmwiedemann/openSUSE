@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:09:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17.36 (no releases between .33 and .36):
+  * 07b5c05 fix(subscr): show correct message
+  * 6b5a4ae Merge pull request #3754 from
+    semaphoreui/fix/ldap_filter_injection
+
+-------------------------------------------------------------------
 Thu Apr 02 04:49:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.17.33:
