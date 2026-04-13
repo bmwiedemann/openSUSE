@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 11 12:15:33 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Drop ld.lld as an ld alternative (boo#1259813).
+
+-------------------------------------------------------------------
+Wed Mar 11 15:54:29 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- clang-riscv-triple.patch: Add riscv64-suse-linux to RISCV64Triples
+
+-------------------------------------------------------------------
 Tue Mar 10 22:02:09 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Exclude bolt from update-alternatives: the runtime libraries are

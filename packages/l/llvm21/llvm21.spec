@@ -459,6 +459,8 @@ Patch28:        llvm-fix-cov-test-i586.patch
 Patch29:        clang-getdistro-android.patch
 # PATCH-FIX-UPSTREAM (?) Link bolt with libLLVM.so
 Patch30:        bolt-link-shared-library.patch
+# PATCH-FIX-UPSTREAM Add missing triple to RISCV64Triples (gh#llvm/llvm-project#164228)
+Patch31:        clang-riscv-triple.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -784,6 +786,7 @@ Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+OrderWithRequires(pre): update-alternatives
 
 %description -n lld%{_sonum}
 LLD is a linker from the LLVM project. That is a drop-in replacement for system linkers and runs much faster than them. It also provides features that are useful for toolchain developers.
@@ -925,6 +928,7 @@ pushd clang-%{_version}.src
 %patch -P 9 -p2
 %patch -P 27 -p2
 %patch -P 29 -p1
+%patch -P 31 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
@@ -1359,9 +1363,6 @@ rm %{buildroot}%{_libdir}/libarcher_static.a
 # Prepare for update-alternatives usage
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 
-# For installing lld as ld alternative.
-ln -s %{_sysconfdir}/alternatives/ld %{buildroot}%{_bindir}/ld
-
 # Fix the clang -> clang-X symlink to work with update-alternatives
 mv %{buildroot}%{_bindir}/clang-%{_sonum} %{buildroot}%{_bindir}/clang
 
@@ -1607,16 +1608,17 @@ fi
 %{ua_remove %clang_ua_anchor}
 
 %if %{with lld}
+%pre -n lld%{_sonum}
+if [ $1 -gt 1 ] && [ -f %{_sysconfdir}/alternatives/ld ] ; then
+    %{_sbindir}/update-alternatives --remove ld %{_bindir}/ld.lld
+fi
+
 %post -n lld%{_sonum}
 %{ua_install %lld_ua_anchor} \
     %{lapply -p ua_bin_slave %lld_binfiles}
-%{_sbindir}/update-alternatives --install %{_bindir}/ld ld %{_bindir}/ld.lld 1
 
 %postun -n lld%{_sonum}
 %{ua_remove %lld_ua_anchor}
-if [ ! -f %{_bindir}/lld ] ; then
-    %{_sbindir}/update-alternatives --remove ld %{_bindir}/ld.lld
-fi
 %endif
 
 %if %{with lldb}
@@ -1851,8 +1853,6 @@ fi
 %if %{with lld}
 %files -n lld%{_sonum}
 %license CREDITS.TXT LICENSE.TXT
-%{_bindir}/ld
-%ghost %{_sysconfdir}/alternatives/ld
 %{lapply -p bin_path %lld_ua_anchor %lld_binfiles}
 %{lapply -p bin_sonum_path %lld_ua_anchor %lld_binfiles}
 %{lapply -p ghost_ua_bin_link %lld_ua_anchor %lld_binfiles}
