@@ -494,4 +494,14 @@
     <comment></comment>
     <requestid>1344930</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>02244004c8260a2f285ea561c931268a</srcmd5>
+    <version>2.30.3</version>
+    <time>1776115190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.30.3
+  * Avoid repeated scan of entire venv via packages_distributions()
+    at import time (#16579) (forwarded request 1346415 from glaubitz)</comment>
+    <requestid>1346446</requestid>
+  </revision>
 </revisionlist>

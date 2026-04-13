@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 13 11:28:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.30.3
+  * Avoid repeated scan of entire venv via packages_distributions()
+    at import time (#16579)
+
+-------------------------------------------------------------------
 Sat Apr  4 10:40:45 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.30.2
