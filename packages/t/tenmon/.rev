@@ -208,4 +208,26 @@
 </comment>
     <requestid>1331541</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>99188034775291e394cd81dffe840657</srcmd5>
+    <version>20260217</version>
+    <time>1774555787</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342710</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e3fab75b82dce9dd4086407302ebbff5</srcmd5>
+    <version>20260412</version>
+    <time>1776115212</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20260412:
+  * Special handling of COUNT aggregate function
+  * Add table view to database tree 
+  * Add support copy to clipboard for table
+  * Add database tree view
+  * Add running script as CLI option
+</comment>
+    <requestid>1346448</requestid>
+  </revision>
 </revisionlist>

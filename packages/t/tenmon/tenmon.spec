@@ -21,7 +21,7 @@
 %endif
 
 Name:           tenmon
-Version:        20260119
+Version:        20260412
 Release:        0
 Summary:        FITS and XISF image viewer, converter and indexer
 License:        GPL-3.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(Qt6Charts)
 BuildRequires:  pkgconfig(Qt6OpenGL)
 BuildRequires:  pkgconfig(Qt6Qml)
 BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(glib-2.0)

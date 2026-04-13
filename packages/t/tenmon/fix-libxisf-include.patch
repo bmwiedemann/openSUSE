@@ -2,14 +2,14 @@ Index: tenmon/src/main.cpp
 ===================================================================
 --- tenmon.orig/src/main.cpp
 +++ tenmon/src/main.cpp
-@@ -6,6 +6,7 @@
+@@ -5,6 +5,7 @@
+ #include <QCommandLineParser>
  #include <QSettings>
  #include <stdlib.h>
- #include "../thumbnailer/genthumbnail.h"
 +#include <libxisf.h>
- 
- int main(int argc, char *argv[])
- {
+ #include "../thumbnailer/genthumbnail.h"
+ #ifdef Q_OS_WIN64
+ #include <windows.h>
 Index: tenmon/src/scriptengine.cpp
 ===================================================================
 --- tenmon.orig/src/scriptengine.cpp

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 13 12:53:49 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 20260412:
+  * Special handling of COUNT aggregate function
+  * Add table view to database tree 
+  * Add support copy to clipboard for table
+  * Add database tree view
+  * Add running script as CLI option
+
+-------------------------------------------------------------------
+Tue Mar 24 23:04:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update 20260217:
+  * Enable sorting of FITS header
+  * Update metainfo/README
+
+-------------------------------------------------------------------
 Fri Feb  6 08:39:42 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20260119:
