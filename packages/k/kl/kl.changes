@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:11:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.0:
+  * feat: add unicode progress bar to logs view
+  * docs: improve demo
+  * feat: custom filter modes
+  * fix: deselect all with R available anywhere
+  * fix: ensure no ansi escape codes in saved logs
+
+-------------------------------------------------------------------
+Thu Mar 26 05:52:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.0:
+  * feat: upgrade viewport to v0.11.2
+  * feat: start logs unwrapped, add hint for wrap and prettify
+  * docs: update README dev section
+  * fix: make entity state transitions more resilient to duplicate
+    container deltas
+  * fix: ensure entity tree selection is only maintained after
+    MaintainEntitySelectionAfterFirstContainer
+  * feat: vertically center focused matches in unwrapped logs
+  * chore: update demo
+  * ci: fix and pin linting
+
+-------------------------------------------------------------------
 Mon Mar 09 07:40:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.7.0:
