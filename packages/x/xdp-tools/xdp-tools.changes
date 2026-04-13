@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 11 21:01:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.3:
+  * xdp-trafficgen: Load an xdp_pass program on bonding driver
+  * A couple of xdpsock fixes
+  * configure: Update clang versions
+  * xdpdump: include  removed from linux/ethtool.h
+  * configure: support compilation for non-sudoers
+  * xdp-forward/xdp_flowtable: Fix backward compatibility
+    verifier issue
+
+-------------------------------------------------------------------
 Mon Feb 23 05:08:17 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to v1.6.2

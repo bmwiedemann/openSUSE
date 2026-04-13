@@ -73,4 +73,19 @@
     <comment></comment>
     <requestid>1334394</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cf40a86205454aa4297081ea3af79cb7</srcmd5>
+    <version>1.6.3</version>
+    <time>1776115089</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.3:
+  * xdp-trafficgen: Load an xdp_pass program on bonding driver
+  * A couple of xdpsock fixes
+  * configure: Update clang versions
+  * xdpdump: include  removed from linux/ethtool.h
+  * configure: support compilation for non-sudoers
+  * xdp-forward/xdp_flowtable: Fix backward compatibility
+    verifier issue</comment>
+    <requestid>1346118</requestid>
+  </revision>
 </revisionlist>
