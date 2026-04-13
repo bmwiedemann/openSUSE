@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 13 09:33:28 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1776072800.e5bc7424:
+  * chore(ci): bump checkout v4->v6
+  * feat: implement "None" authentication provider
+  * feat: Prevent job assignments when running out of space by default
+  * fix(results_min_free_storage_space_percentage): Allow disabling with `0`
+  * fix(results_min_free_storage_space_percentage): Add to `Setup.pm`
+  * feat: make compute_build_results faster by passing the query for jobs
+  * feat: optimize comment_data_for_jobs when passed a result set
+
+-------------------------------------------------------------------
 Fri Apr 10 13:42:25 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1775828534.8622a781:
