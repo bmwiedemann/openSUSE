@@ -96,4 +96,31 @@
     <comment></comment>
     <requestid>1280886</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b34a68f6a84993d6b9951121ce68bbda</srcmd5>
+    <version>0.10.0</version>
+    <time>1776115093</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.0:
+  * Clarify examples in README
+  * Drop Python 3.6 support
+  * Add Python 3.14 support
+  * Add pytest 9 support
+  * Consolidate tests
+  * Remove obsolete driver code in some modules
+  * Remove obsolete PyTest command from setup.py
+  * Switch to PEP-639 compliant license metadata
+  * Update outdated GitHub Action versions
+  * Add a summary GitHub Action job
+  * Update the AUTHORS file
+  * Update listed dependencies to add support for pytest 8 and
+    drop support for pytest&lt;4.6
+  * Add support for exposing server certificate
+  * Explicitly store request data (fixes #77)
+  * Make the code compliant with pre-commit hooks
+  * Remove unused `six` from tox config
+  * Drop Python 3.5 support
+  * Add Python 3.13 support</comment>
+    <requestid>1346223</requestid>
+  </revision>
 </revisionlist>

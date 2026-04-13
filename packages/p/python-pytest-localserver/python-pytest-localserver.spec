@@ -25,18 +25,18 @@
 %define pytestjobs -n ${RPM_BUILD_NCPUS:-1}
 %endif
 Name:           python-pytest-localserver
-Version:        0.8.1
+Version:        0.10.0
 Release:        0
 Summary:        Plugin for py.test to test server connections locally
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-localserver
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-localserver/pytest-localserver-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-localserver/pytest_localserver-%{version}.tar.gz
 BuildRequires:  %{python_module Werkzeug >= 0.10}
 %if %{with extras}
 BuildRequires:  %{python_module aiosmtpd}
 %endif
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 2.0.0}
+BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools >= 42}
@@ -49,7 +49,7 @@ BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Werkzeug >= 0.10
-Requires:       python-pytest >= 2.0.0
+Requires:       python-pytest >= 4.6
 BuildArch:      noarch
 %python_subpackages
 
@@ -64,7 +64,7 @@ server running locally which behaves just like the real thing. Well, look
 no further!
 
 %prep
-%setup -q -n pytest-localserver-%{version}
+%setup -q -n pytest_localserver-%{version}
 %autopatch -p1
 sed -i "1d" pytest_localserver/{plugin,smtp}.py
 

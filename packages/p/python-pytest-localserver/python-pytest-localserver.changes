@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:33:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.0:
+  * Clarify examples in README
+  * Drop Python 3.6 support
+  * Add Python 3.14 support
+  * Add pytest 9 support
+  * Consolidate tests
+  * Remove obsolete driver code in some modules
+  * Remove obsolete PyTest command from setup.py
+  * Switch to PEP-639 compliant license metadata
+  * Update outdated GitHub Action versions
+  * Add a summary GitHub Action job
+  * Update the AUTHORS file
+  * Update listed dependencies to add support for pytest 8 and
+    drop support for pytest<4.6
+  * Add support for exposing server certificate
+  * Explicitly store request data (fixes #77)
+  * Make the code compliant with pre-commit hooks
+  * Remove unused `six` from tox config
+  * Drop Python 3.5 support
+  * Add Python 3.13 support
+
+-------------------------------------------------------------------
 Wed May 28 12:51:11 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - phase out %jobs macro (boo#1237231)
