@@ -36,7 +36,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           oci-cli%{psuffix}
-Version:        3.61.0
+Version:        3.76.2
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
@@ -52,12 +52,12 @@ BuildRequires:  %{pythons}-click >= 8.0.4
 BuildRequires:  %{pythons}-cryptography >= 3.2.1
 BuildRequires:  %{pythons}-devel
 BuildRequires:  %{pythons}-jmespath >= 0.10.0
-BuildRequires:  %{pythons}-oci-sdk >= 2.154.3
+BuildRequires:  %{pythons}-oci-sdk >= 2.168.3
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-pyOpenSSL >= 22.1.0
 BuildRequires:  %{pythons}-python-dateutil >= 2.5.3
 BuildRequires:  %{pythons}-pytz >= 2016.10
-BuildRequires:  %{pythons}-setuptools
+BuildRequires:  %{pythons}-setuptools >= 78.1.1
 BuildRequires:  %{pythons}-six >= 1.15.0
 BuildRequires:  %{pythons}-terminaltables >= 3.1.10
 BuildRequires:  %{pythons}-wheel
