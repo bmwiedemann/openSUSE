@@ -105,4 +105,41 @@
     <comment>- Only require pytest-subtests with pytest &lt; 9.</comment>
     <requestid>1321492</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d56fc4c65f3373deb25697933d77fdc5</srcmd5>
+    <version>0.40</version>
+    <time>1776115114</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.40:
+  * v0.38 - IDP configuration
+  * docs: docstrings for schedules and intervals
+    (https://github.com/tableau/server-client-python/pull/1528)
+  * docs: Docstrings for new fields
+  * feat: enable retrieving only owned workbooks
+  * feat: Add support for multiple IDPs (jorwoods)
+  * feat: Add fields:_all_ support
+    (https://github.com/tableau/server-client-python/pull/1563)
+  * feat: project support all fields
+  * feat: groups all fields
+  * feat: views support all fields
+  * feat: user support _all_ fields
+  * feat: workbook support all fields
+  * feat: datasourceitem _all_ fields
+  * feat: add fields methods to QuerySet
+  * feat: add owner attribute to project
+  * Add SSL option for connecting to Tableau Server with a weaker
+    DH key length
+  * feat: 1580 list extracts on schedule
+  * chore: type hint database and table objects
+- update to 0.37:
+  * fix: Incorrect size unit when logging fileUpload
+  * docs: DatasourceItem and Endpoint docstrings
+  * fix: Change GroupSets.get api for more consistency
+  * fix: Virtual connection ConnectionItem attributes
+  * fix: Remove vizHeight and vizWidth from ImageRequestOptions
+  * feat: Adding incremental refresh option for workbook and
+    datasource endpoints
+  * feat: New JobItem code</comment>
+    <requestid>1346245</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Apr 12 19:43:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.40:
+  * v0.38 - IDP configuration
+  * docs: docstrings for schedules and intervals
+    (https://github.com/tableau/server-client-python/pull/1528)
+  * docs: Docstrings for new fields
+  * feat: enable retrieving only owned workbooks
+  * feat: Add support for multiple IDPs (jorwoods)
+  * feat: Add fields:_all_ support
+    (https://github.com/tableau/server-client-python/pull/1563)
+  * feat: project support all fields
+  * feat: groups all fields
+  * feat: views support all fields
+  * feat: user support _all_ fields
+  * feat: workbook support all fields
+  * feat: datasourceitem _all_ fields
+  * feat: add fields methods to QuerySet
+  * feat: add owner attribute to project
+  * Add SSL option for connecting to Tableau Server with a weaker
+    DH key length
+  * feat: 1580 list extracts on schedule
+  * chore: type hint database and table objects
+- update to 0.37:
+  * fix: Incorrect size unit when logging fileUpload
+  * docs: DatasourceItem and Endpoint docstrings
+  * fix: Change GroupSets.get api for more consistency
+  * fix: Virtual connection ConnectionItem attributes
+  * fix: Remove vizHeight and vizWidth from ImageRequestOptions
+  * feat: Adding incremental refresh option for workbook and
+    datasource endpoints
+  * feat: New JobItem code
+- update to 0.36:
+  * Fixes a 400 Bad Request error when calling Refresh Datasource
+    with 0.35
+- update to 0.35:
+  * feat: Workbook update Description
+  * feat: capture site content url from sign in
+  * fix: datasource id on ConnectionItem
+  * feat: support for thumbnail related options in workbook
+    publish
+  * feat: incremental refresh for extracts
+  * Fixing set default permissions for virtual connections
+  * feat: publish datasource as replacement
+  * chore: Update versioneer
+  * docs: docstrings for custom_views
+  * docs: webhook docstrings
+  * docs: task docstrings
+  * docs: docstrings for Pager and RequestOptions
+  * docs: docstrings for group endpoint and item
+  * docs: project docstrings
+  * docs: docstrings for JobItem and Jobs endpoint
+  * docs: docstrings on ConnectionItem and ConnectionCredentials
+  * docs: flow docstrings
+  * docs: docstrings for views
+
+-------------------------------------------------------------------
 Mon Dec  8 04:29:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Only require pytest-subtests with pytest < 9.
