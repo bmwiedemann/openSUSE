@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  9 20:13:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 20260115:
+  * Update version reference in INSTALL.
+  * Update translation status lists for dhcp and e2fsprogs.
+  * Extensive updates to GNU binutils man pages (updated to
+    match binutils 2.45.50):
+    - Significant rewrites for addr2line.1 and ar.1.
+    - Added new man pages: c++filt.1 and elfedit.1.
+    - General updates and formatting for as.1 and gprof.1.
+
+-------------------------------------------------------------------
 Thu Aug 24 13:14:49 UTC 2023 - pgajdos@suse.com
 
 - version update to 20230815
@@ -183,7 +195,7 @@ Thu Jul  5 18:51:57 CEST 2007 - lrupp@suse.de
 
 - update to 20070615
 - cleanup after build is finished
-- use fdupes 
+- use fdupes
 
 -------------------------------------------------------------------
 Tue Feb 28 19:43:21 CET 2006 - mfabian@suse.de
@@ -203,7 +215,7 @@ Mon Jul 25 17:14:59 CEST 2005 - mfabian@suse.de
 -------------------------------------------------------------------
 Sat Aug 21 16:03:08 CEST 2004 - mfabian@suse.de
 
-- update to 20040815. 
+- update to 20040815.
 
 -------------------------------------------------------------------
 Mon Feb 23 16:26:54 CET 2004 - hmacht@suse.de
