@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr  3 16:32:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.1:
+  * Up version python-ipware (minimal possible api /
+    compatibility change)
+  * Add `HTTP_CF_CONNECTING_IP` to list of known ip headers (Adam
+    M.)
+  * Remove `HTTP_VIA` header support (unreliable IP information)
+    (@yourcelf)
+  * Up-version python-ipware to 2.0.3
+  * Add typings (thx: @federicobond)
+  * Show in Pypi Python 3.12 is supported (thx: @jrobichaud)
+  * Add support for Django 5.0 (thx: @cclauss)
+  * Add support for Python 3.12 (thx: @cclauss)
+  * Add IPWARE_META_PROXY_COUNT setting + corresponding docs
+    (thx: @mmcclelland1002)
+  * Use python-ipware under the hood
+  * Minor behavior changes as python-ipware is more accurate
+  * Use 5.0.2 if you need the old behavior
+
+-------------------------------------------------------------------
 Tue Jun  3 06:57:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
