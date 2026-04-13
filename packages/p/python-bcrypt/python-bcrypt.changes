@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 29 09:23:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.0:
+  * Bumped MSRV to 1.74.
+  * Added support for Python 3.14 and free-threaded Python 3.14.
+  * Added support for Windows on ARM.
+  * Passing hashpw a password longer than 72 bytes now raises
+    a ValueError. Previously the password was silently truncated,
+    following the behavior of the original OpenBSD bcrypt
+    implementation.
+
+-------------------------------------------------------------------
 Wed Sep 10 15:35:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add PYO3_USE_ABI3_FORWARD_COMPATIBILITY to build with python 3.14

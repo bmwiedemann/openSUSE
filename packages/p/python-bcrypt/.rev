@@ -190,4 +190,19 @@
     <comment></comment>
     <requestid>1303670</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2546ce67d022c949e624a34086ce6869</srcmd5>
+    <version>5.0.0</version>
+    <time>1776115076</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.0:
+  * Bumped MSRV to 1.74.
+  * Added support for Python 3.14 and free-threaded Python 3.14.
+  * Added support for Windows on ARM.
+  * Passing hashpw a password longer than 72 bytes now raises
+    a ValueError. Previously the password was silently truncated,
+    following the behavior of the original OpenBSD bcrypt
+    implementation.</comment>
+    <requestid>1307706</requestid>
+  </revision>
 </revisionlist>
