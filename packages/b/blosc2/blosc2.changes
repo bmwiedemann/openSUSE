@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:55:46 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Move another test to singlethread
+
+-------------------------------------------------------------------
+Tue Mar 24 20:26:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.23.1:
+  * Fix documentation: grammar, typos, and clarity improvements
+  * Enable byteshuffle for arbitrary number of bytes
+  * Fix pkgconfig file
+  * Allow resize of shape 0 arrays
+  * Add openzl plugin
+  * Correct pkgconfig
+- update to 2.22.0:
+  * Main changes:
+  * `b2nd_squeeze` and `b2nd_squeeze_index` now return views and
+    their signatures have consequently changed
+  * bug fix for indexing `[ndim - 1]` which caused an error when
+    `ndim` is 0 (thanks @leroycep !)
+  * fix: check ndim > 0 before indexing into stride arrays
+- update to 2.21.3:
+  * Increase MAX_DIMS from 8 to 16
+  * Fix compatibility with glibc v2.42
+- update to 2.21.2:
+  * Allocate strides array on stack if ndim <= B2ND_MAX_DIM in
+    unidim_to_multidim.
+  * Should allow to speed up code.  Thanks to Barak Ugav.
+  * Handle frame_to_schunk failure in schunk_open. Thanks to
+    Barak Ugav.
+  * Fix fastpath decision logic for ndarray slicing. Thanks to
+    Preeyan Parmar.
+- update to 2.21.0:
+  * New public API `b2nd_save_append`. It is useful for appending
+    a b2nd array into a file.
+  * Added new public APIs for the shuffling filters:
+  * `blosc2_shuffle`
+  * `blosc2_unshuffle`
+  * `blosc2_bitshuffle`
+  * `blosc2_bitunshuffle`
+  * Fix a potential nullptr exception on `b2nd_create_ctx` with
+    null storage.
+  * Now, a blosc/config.h is generated in the binary directory.
+- update to 2.20.0:
+  * Extended `b2nd_expand_dims()` to allow for list of axes like
+    NumPy.
+  * See PR #676. This represents a breaking change for the API,
+    but as
+  * it was introduced in 2.18.0, it is unlikely to be used in
+    practice.
+- update to 2.19.1:
+  * New `blosc2_error_string()` public function for getting the
+    error string corresponding to a given error code.
+  * Support BLOSC2_ERROR_TUNER in print_error.
+  * Eagerly register io_cb's to avoid race.
+- update to 2.19.0:
+  * New `b2nd_expand_dims()` function for expanding the
+    dimensions of a b2nd array.
+  * New internal view object that allows accessing the data in a
+    b2nd array without copying it.
+  * New `b2nd_concatenate()` function for concatenating two b2nd
+    arrays.
+- update to 2.17.1:
+  * Fix uninitialized memory access in newly added
+    unshuffle12_sse2 and unshuffle12_avx2 functions
+  * Fix unaligned access in _sw32 and sw32_
+  * Fix DWORD being printed as %s in sprintf call
+  * Fix warning on unused variable (since this variable was only
+    being used in the linux branch)
+  * `splitmode` variable was uninitialized if goto was triggered
+  * See PR #658.  Many thanks to @EmilDohne for this nice job.
+
+-------------------------------------------------------------------
 Thu Mar 13 10:44:45 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.17.0:

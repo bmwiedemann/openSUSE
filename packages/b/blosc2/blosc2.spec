@@ -1,7 +1,7 @@
 #
 # spec file for package blosc2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 # Adjust baselibs.conf if this changes
-%define major 4
+%define major 7
 %define libname lib%{name}-%{major}
 Name:           blosc2
-Version:        2.17.0
+Version:        2.23.1
 Release:        0
 Summary:        A fast, compressed, persistent binary data store library for C
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -91,7 +91,7 @@ for %{libname}.
 %check
 export LD_PRELOAD="$LD_PRELOAD  %{buildroot}%{_libdir}/libblosc2.so  %{buildroot}%{_libdir}/libblosc2.so.%{major}"
 # https://github.com/Blosc/c-blosc2/issues/432
-single_thread_tests='test_sframe|test_schunk_frame|test_fill_special'
+single_thread_tests='test_sframe|test_schunk_frame|test_fill_special|test_b2nd_save'
 %ctest --exclude-regex "${single_thread_tests}"
 pushd build
 ctest --tests-regex "${single_thread_tests}"

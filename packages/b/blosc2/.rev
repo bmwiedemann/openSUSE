@@ -221,4 +221,21 @@
     <comment></comment>
     <requestid>1252870</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a410cd6fdf24f30824dbd215ca94bcd6</srcmd5>
+    <version>2.23.1</version>
+    <time>1774469978</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342379</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>33fe768d8c4fbed9901388fe8d562fbc</srcmd5>
+    <version>2.23.1</version>
+    <time>1776115099</time>
+    <user>dimstar_suse</user>
+    <comment>- Move another test to singlethread
+</comment>
+    <requestid>1346220</requestid>
+  </revision>
 </revisionlist>
