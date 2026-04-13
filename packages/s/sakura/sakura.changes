@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:28:02 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- `convert` from ImageMagick has to be replaced via rsvg-convert
+  since svg conversion became not allowed by the security policy.
+
+-------------------------------------------------------------------
 Sun Sep 14 16:39:28 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.8.9:

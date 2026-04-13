@@ -1,7 +1,7 @@
 #
 # spec file for package sakura
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Source:         https://launchpad.net/sakura/trunk/%{version}/+download/sakura-%
 Patch0:         sakura-icon.patch
 Patch1:         sakura-fix_pod2man.patch
 # to convert SVG to PNG:
-BuildRequires:  ImageMagick
+BuildRequires:  rsvg-convert
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -48,7 +48,7 @@ multiple tabs in the same window.
 %prep
 %autosetup -p1
 mv terminal-tango.svg sakura.svg
-convert -strip sakura.svg sakura.png
+rsvg-convert -o sakura.png sakura.svg
 # replace hard-coded ICON_DIR
 sed -i -r 's|^(\s*#define\s*ICON_DIR\s+").+("\s*)$|\1%{_datadir}/pixmaps\2|g' src/sakura.c
 
