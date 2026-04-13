@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-vncdotool
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Command line VNC client
 License:        MIT
@@ -32,15 +32,15 @@ BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Requires:       python-Pillow
-Requires:       python-Twisted
-Requires:       python-pycryptodomex
+Requires:       python-Pillow >= 10.0.1
+Requires:       python-Twisted >= 22.10.0
+Requires:       python-cryptography >= 41.0.7
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module Pillow >= 10.0.1}
+BuildRequires:  %{python_module Twisted >= 22.10.0}
+BuildRequires:  %{python_module cryptography >= 41.0.7}
 BuildRequires:  %{python_module pexpect}
-BuildRequires:  %{python_module pycryptodomex}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -72,7 +72,7 @@ rm -rf tests/functional
 %pytest -k 'not functional'
 
 %files %{python_files}
-%doc README.rst
+%doc CHANGELOG.rst README.rst
 %license LICENSE.txt
 %python_alternative %{_bindir}/vncdo
 %python_alternative %{_bindir}/vncdotool

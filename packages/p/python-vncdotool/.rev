@@ -92,4 +92,26 @@
   * py311-compat.patch</comment>
     <requestid>1343510</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6d0576d30e8f88f440d7875a9cccae10</srcmd5>
+    <version>1.3.0</version>
+    <time>1776115123</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Fix functional test suite (@phahn)
+  * Python 3.12 is supported, Python 3.7 support removed (@phahn)
+  * Improve documentation (@phahn)
+  * Improve PEP-484 type hinting (@phahn)
+  * Fix mouse dragging (@phahn)
+  * Improve special key handling, fix key-down/key-up discrepancy
+    with force_caps (@phahn, #270)
+  * Allow specifying a format with captureScreen (@erjiang, #293)
+  * Allow input literal - via client.keyPress with minus keyword
+  * Fix: typefile and pastefile now accept - as filename for
+    stdin
+  * Switch from pycryptodomex to cryptography.io (@geofft, #278)
+  * Remove transitive dependency zope.interface
+  * Bump minimum Pillow version to 10.0.1</comment>
+    <requestid>1346286</requestid>
+  </revision>
 </revisionlist>
