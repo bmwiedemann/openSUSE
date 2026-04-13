@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 25 23:34:51 UTC 2026 - Perry Werneck <perry.werneck@gmail.com>
+
+- Update to new upstream release 3.0.0:
+  * Configuration is now in /etc/pam_radius_auth.conf
+  * BlastRADIUS attack mitigations (add Message-Authenticator to Access-Request packets, new require_message_authenticator config flag)
+  * All known and reported bugs have been fixed.
+  * Ignore packets from unknown sources.  Based on patches from Alex Malowany.
+  * Remove obsolete functionality (Old-Password support, workarounds for Livingston RADIUS server, password change support, etc)
+ 
+-------------------------------------------------------------------
 Mon Jul 24 14:46:08 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Use %_pam_moduledir (boo#1190958)

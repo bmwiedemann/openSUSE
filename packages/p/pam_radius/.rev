@@ -150,4 +150,19 @@
     <comment></comment>
     <requestid>1104245</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d7f478984ba30f8877341f75bdbf8445</srcmd5>
+    <version>3.0.0</version>
+    <time>1776115189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 3.0.0:
+  * Configuration is now in /etc/pam_radius_auth.conf
+  * BlastRADIUS attack mitigations (add Message-Authenticator to Access-Request packets, new require_message_authenticator config flag)
+  * All known and reported bugs have been fixed.
+  * Ignore packets from unknown sources.  Based on patches from Alex Malowany.
+  * Remove obsolete functionality (Old-Password support, workarounds for Livingston RADIUS server, password change support, etc)
+ 
+</comment>
+    <requestid>1346489</requestid>
+  </revision>
 </revisionlist>
