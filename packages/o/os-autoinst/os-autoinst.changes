@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 13 09:57:54 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1776074266.6a6c5ee:
+  * fix(manpages): Fix the output of pod2man
+  * fix(t/08-autotest.t): Fix FTBFS for reproducible builds
+  * chore(ci): bump checkout v4->v6
+  * fix: prevent deprecation warning about "spurt"
+  * style(llm): use indented heredocs for better readability
+  * refactor: consolidate logic in _detect_serial_marker_capability
+  * style: use non-capturing group for BASH version detection
+  * fix(distribution): make PRETTY_SERIAL_MARKER reboot-safe
+  * refactor: early returns in _detect_serial_marker_capability
+
+-------------------------------------------------------------------
 Sat Apr 11 18:30:24 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1775932217.bd11042:
