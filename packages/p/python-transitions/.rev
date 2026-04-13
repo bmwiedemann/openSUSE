@@ -157,4 +157,29 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282528</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4a369caa4d8b7b269e046d2ab8be940a</srcmd5>
+    <version>0.9.3</version>
+    <time>1776115122</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.3:
+  * Bug #682: `AsyncTimeout` did not stop execution (thanks
+  * Bug #683: Typing wrongly suggested that `Transition`
+    instances can be passed to `Machine.__init__` and/or
+    `Machine.add_transition(s)` (thanks @antonio-antuan)
+  * Bug #692: When adding an already constructed `NestedState`,
+    FunctionWrapper was not properly initialized (thanks @drpjm)
+  * Bug #701: `Machine.dispatch` should not short-circuit when a
+    model returns False (thanks @Joshuaalbert)
+  * Typing should be more precise now
+  * Made `transitions.core.(Async)TransitionConfigDict` a
+    `TypedDict` which can be used to spot parameter errors during
+    static analysis
+  * `Machine.add_transitions` and `Machine.__init__` expect a
+    `Sequence` of configurations for transitions now
+  * Added 'async' callbacks to types in `asyncio` extension
+
+  * introduces `on_final` callbacks on machines (as well as</comment>
+    <requestid>1346283</requestid>
+  </revision>
 </revisionlist>

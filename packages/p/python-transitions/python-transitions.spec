@@ -1,7 +1,7 @@
 #
 # spec file for package python-transitions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-transitions
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        A lightweight, object-oriented Python state machine implementation
 License:        MIT
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-pygraphviz
-Suggests:       python-pytest
+Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dill}
@@ -43,6 +43,7 @@ BuildRequires:  %{python_module graphviz}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module six}
 # png support for graphviz
 BuildRequires:  graphviz-gnome
 BuildRequires:  noto-sans-fonts

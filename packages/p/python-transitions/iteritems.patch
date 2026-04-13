@@ -1,7 +1,7 @@
-Index: transitions-0.9.1/transitions/extensions/factory.py
+Index: transitions-0.9.3/transitions/extensions/factory.py
 ===================================================================
---- transitions-0.9.1.orig/transitions/extensions/factory.py
-+++ transitions-0.9.1/transitions/extensions/factory.py
+--- transitions-0.9.3.orig/transitions/extensions/factory.py
++++ transitions-0.9.3/transitions/extensions/factory.py
 @@ -9,7 +9,6 @@
  
  from functools import partial
@@ -19,10 +19,10 @@ Index: transitions-0.9.1/transitions/extensions/factory.py
          return GraphMachine.format_references(func)
  
  
-Index: transitions-0.9.1/transitions/extensions/markup.py
+Index: transitions-0.9.3/transitions/extensions/markup.py
 ===================================================================
---- transitions-0.9.1.orig/transitions/extensions/markup.py
-+++ transitions-0.9.1/transitions/extensions/markup.py
+--- transitions-0.9.3.orig/transitions/extensions/markup.py
++++ transitions-0.9.3/transitions/extensions/markup.py
 @@ -13,8 +13,6 @@ import importlib
  import itertools
  import numbers
@@ -32,7 +32,7 @@ Index: transitions-0.9.1/transitions/extensions/markup.py
  from ..core import Machine
  from .nesting import HierarchicalMachine
  
-@@ -125,7 +123,7 @@ class MarkupMachine(Machine):
+@@ -132,7 +130,7 @@ class MarkupMachine(Machine):
                  ", ".join(itertools.chain(
                      (str(_) for _ in func.args),
                      ("%s=%s" % (key, value)
@@ -41,11 +41,11 @@ Index: transitions-0.9.1/transitions/extensions/markup.py
          return str(func)
  
      def _convert_states_and_transitions(self, root):
-Index: transitions-0.9.1/transitions/extensions/nesting.py
+Index: transitions-0.9.3/transitions/extensions/nesting.py
 ===================================================================
---- transitions-0.9.1.orig/transitions/extensions/nesting.py
-+++ transitions-0.9.1/transitions/extensions/nesting.py
-@@ -730,11 +730,11 @@ class HierarchicalMachine(Machine):
+--- transitions-0.9.3.orig/transitions/extensions/nesting.py
++++ transitions-0.9.3/transitions/extensions/nesting.py
+@@ -733,11 +733,11 @@ class HierarchicalMachine(Machine):
          """
          with self():
              source_path = [] if source == "*" \

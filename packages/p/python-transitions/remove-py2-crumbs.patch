@@ -11,21 +11,11 @@ Subject: [PATCH] remove Python 2 crumbs
  transitions/extensions/nesting.py       | 28 +++++++------------------
  6 files changed, 18 insertions(+), 65 deletions(-)
 
-diff -Nru transitions-0.9.2.orig/tests/test_nesting.py transitions-0.9.2/tests/test_nesting.py
---- transitions-0.9.2.orig/tests/test_nesting.py	2024-08-06 15:30:55.000000000 +0200
-+++ transitions-0.9.2/tests/test_nesting.py	2025-04-03 15:37:00.639048015 +0200
-@@ -1,10 +1,5 @@
- # -*- coding: utf-8 -*-
- 
--try:
--    from builtins import object
--except ImportError:
--    pass
--
- import sys
- import tempfile
- from os.path import getsize
-@@ -37,7 +32,7 @@
+Index: transitions-0.9.3/tests/test_nesting.py
+===================================================================
+--- transitions-0.9.3.orig/tests/test_nesting.py
++++ transitions-0.9.3/tests/test_nesting.py
+@@ -36,7 +36,7 @@ if TYPE_CHECKING:
  default_separator = NestedState.separator
  
  
@@ -34,9 +24,10 @@ diff -Nru transitions-0.9.2.orig/tests/test_nesting.py transitions-0.9.2/tests/t
      pass
  
  
-diff -Nru transitions-0.9.2.orig/transitions/core.py transitions-0.9.2/transitions/core.py
---- transitions-0.9.2.orig/transitions/core.py	2024-08-06 15:30:55.000000000 +0200
-+++ transitions-0.9.2/transitions/core.py	2025-04-03 15:37:00.639277420 +0200
+Index: transitions-0.9.3/transitions/core.py
+===================================================================
+--- transitions-0.9.3.orig/transitions/core.py
++++ transitions-0.9.3/transitions/core.py
 @@ -6,23 +6,7 @@
      and transition concepts.
  """
@@ -62,7 +53,7 @@ diff -Nru transitions-0.9.2.orig/transitions/core.py transitions-0.9.2/transitio
  
  import inspect
  import itertools
-@@ -31,7 +15,6 @@
+@@ -31,7 +15,6 @@ import warnings
  
  from collections import OrderedDict, defaultdict, deque
  from functools import partial
@@ -70,7 +61,7 @@ diff -Nru transitions-0.9.2.orig/transitions/core.py transitions-0.9.2/transitio
  
  _LOGGER = logging.getLogger(__name__)
  _LOGGER.addHandler(logging.NullHandler())
-@@ -838,7 +821,7 @@
+@@ -838,7 +821,7 @@ class Machine(object):
          states = listify(states)
  
          for state in states:
@@ -79,7 +70,7 @@ diff -Nru transitions-0.9.2.orig/transitions/core.py transitions-0.9.2/transitio
                  state = self._create_state(
                      state, on_enter=on_enter, on_exit=on_exit,
                      ignore_invalid_triggers=ignore, **kwargs)
-@@ -1204,7 +1187,7 @@
+@@ -1205,7 +1188,7 @@ class Machine(object):
          Returns:
              callable function resolved from string or func
          """
@@ -88,9 +79,10 @@ diff -Nru transitions-0.9.2.orig/transitions/core.py transitions-0.9.2/transitio
              try:
                  func = getattr(event_data.model, func)
                  if not callable(func):  # if a property or some other not callable attribute was passed
-diff -Nru transitions-0.9.2.orig/transitions/extensions/diagrams_base.py transitions-0.9.2/transitions/extensions/diagrams_base.py
---- transitions-0.9.2.orig/transitions/extensions/diagrams_base.py	2024-08-06 15:30:55.000000000 +0200
-+++ transitions-0.9.2/transitions/extensions/diagrams_base.py	2025-04-03 15:37:00.639470446 +0200
+Index: transitions-0.9.3/transitions/extensions/diagrams_base.py
+===================================================================
+--- transitions-0.9.3.orig/transitions/extensions/diagrams_base.py
++++ transitions-0.9.3/transitions/extensions/diagrams_base.py
 @@ -8,14 +8,12 @@
  import copy
  import abc
@@ -107,10 +99,11 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/diagrams_base.py transit
      """Provides the common foundation for graphs generated either with pygraphviz or graphviz. This abstract class
      should not be instantiated directly. Use .(py)graphviz.(Nested)Graph instead.
      Attributes:
-diff -Nru transitions-0.9.2.orig/transitions/extensions/factory.py transitions-0.9.2/transitions/extensions/factory.py
---- transitions-0.9.2.orig/transitions/extensions/factory.py	2024-08-06 15:30:55.000000000 +0200
-+++ transitions-0.9.2/transitions/extensions/factory.py	2025-04-03 15:37:00.639536752 +0200
-@@ -34,7 +34,7 @@
+Index: transitions-0.9.3/transitions/extensions/factory.py
+===================================================================
+--- transitions-0.9.3.orig/transitions/extensions/factory.py
++++ transitions-0.9.3/transitions/extensions/factory.py
+@@ -34,7 +34,7 @@ except (ImportError, SyntaxError):  # pr
          """A mock of NestedAsyncTransition for Python 3.6 and earlier."""
  
  
@@ -119,9 +112,10 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/factory.py transitions-0
      """Convenience factory for machine class retrieval."""
  
      # get one of the predefined classes which fulfill the criteria
-diff -Nru transitions-0.9.2.orig/transitions/extensions/markup.py transitions-0.9.2/transitions/extensions/markup.py
---- transitions-0.9.2.orig/transitions/extensions/markup.py	2024-08-06 15:30:55.000000000 +0200
-+++ transitions-0.9.2/transitions/extensions/markup.py	2025-04-03 15:37:51.412268665 +0200
+Index: transitions-0.9.3/transitions/extensions/markup.py
+===================================================================
+--- transitions-0.9.3.orig/transitions/extensions/markup.py
++++ transitions-0.9.3/transitions/extensions/markup.py
 @@ -7,24 +7,13 @@
      also be used to store and transfer machines.
  """
@@ -149,7 +143,7 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/markup.py transitions-0.
  
  from ..core import Machine
  from .nesting import HierarchicalMachine
-@@ -236,7 +225,7 @@
+@@ -236,7 +225,7 @@ class HierarchicalMarkupMachine(MarkupMa
  
  def rep(func, format_references=None):
      """Return a string representation for `func`."""
@@ -158,7 +152,7 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/markup.py transitions-0.
          return func
      if isinstance(func, numbers.Number):
          return str(func)
-@@ -249,7 +238,7 @@
+@@ -249,7 +238,7 @@ def _convert(obj, attributes, format_ref
          val = getattr(obj, key, False)
          if not val:
              continue
@@ -167,9 +161,10 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/markup.py transitions-0.
              definition[key] = val
          elif val is True:
              definition[key] = True
-diff -Nru transitions-0.9.2.orig/transitions/extensions/nesting.py transitions-0.9.2/transitions/extensions/nesting.py
---- transitions-0.9.2.orig/transitions/extensions/nesting.py	2024-08-06 15:30:55.000000000 +0200
-+++ transitions-0.9.2/transitions/extensions/nesting.py	2025-04-03 15:37:00.639796826 +0200
+Index: transitions-0.9.3/transitions/extensions/nesting.py
+===================================================================
+--- transitions-0.9.3.orig/transitions/extensions/nesting.py
++++ transitions-0.9.3/transitions/extensions/nesting.py
 @@ -9,23 +9,11 @@
  
  from collections import OrderedDict
@@ -195,7 +190,7 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/nesting.py transitions-0
  from ..core import State, Machine, Transition, Event, listify, MachineError, EventData
  
  _LOGGER = logging.getLogger(__name__)
-@@ -414,7 +402,7 @@
+@@ -417,7 +405,7 @@ class HierarchicalMachine(Machine):
          )
  
      def __call__(self, to_scope=None):
@@ -204,7 +199,7 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/nesting.py transitions-0
              state_name = to_scope.split(self.state_cls.separator)[0]
              state = self.states[state_name]
              to_scope = (state, state.states, state.events, self.prefix_path + [state_name])
-@@ -448,7 +436,7 @@
+@@ -451,7 +439,7 @@ class HierarchicalMachine(Machine):
          if hasattr(initial_name, 'name'):
              initial_name = initial_name.name
          # initial states set by add_model or machine might contain initial states themselves.
@@ -213,7 +208,7 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/nesting.py transitions-0
              initial_states = self._resolve_initial(models, initial_name.split(self.state_cls.separator))
          # when initial is set to a (parallel) state, we accept it as it is
          else:
-@@ -513,7 +501,7 @@
+@@ -516,7 +504,7 @@ class HierarchicalMachine(Machine):
                      state = {'name': state, 'children': state.value}
                  elif isinstance(state.value, dict):
                      state = dict(name=state, **state.value)
@@ -222,7 +217,7 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/nesting.py transitions-0
                  self._add_string_state(state, on_enter, on_exit, ignore, remap, **kwargs)
              elif isinstance(state, Enum):
                  self._add_enum_state(state, on_enter, on_exit, ignore, remap, **kwargs)
-@@ -640,7 +628,7 @@
+@@ -643,7 +631,7 @@ class HierarchicalMachine(Machine):
          """
          if isinstance(state, Enum):
              state = self._get_enum_path(state)
@@ -231,7 +226,7 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/nesting.py transitions-0
              state = state.split(self.state_cls.separator)
          if not hint:
              state = copy.copy(state)
-@@ -692,11 +680,11 @@
+@@ -695,11 +683,11 @@ class HierarchicalMachine(Machine):
          """
          with self():
              source_path = [] if source == "*" \
@@ -245,7 +240,7 @@ diff -Nru transitions-0.9.2.orig/transitions/extensions/nesting.py transitions-0
                  else self._get_enum_path(dest) if isinstance(dest, Enum) \
                  else self._get_state_path(dest)
              matches = self.get_nested_transitions(trigger, source_path, dest_path)
-@@ -1166,7 +1154,7 @@
+@@ -1169,7 +1157,7 @@ class HierarchicalMachine(Machine):
                  self._init_state(substate)
  
      def _recursive_initial(self, value):

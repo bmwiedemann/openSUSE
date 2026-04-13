@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:30:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.3:
+  * Bug #682: `AsyncTimeout` did not stop execution (thanks
+  * Bug #683: Typing wrongly suggested that `Transition`
+    instances can be passed to `Machine.__init__` and/or
+    `Machine.add_transition(s)` (thanks @antonio-antuan)
+  * Bug #692: When adding an already constructed `NestedState`,
+    FunctionWrapper was not properly initialized (thanks @drpjm)
+  * Bug #701: `Machine.dispatch` should not short-circuit when a
+    model returns False (thanks @Joshuaalbert)
+  * Typing should be more precise now
+  * Made `transitions.core.(Async)TransitionConfigDict` a
+    `TypedDict` which can be used to spot parameter errors during
+    static analysis
+  * `Machine.add_transitions` and `Machine.__init__` expect a
+    `Sequence` of configurations for transitions now
+  * Added 'async' callbacks to types in `asyncio` extension
+
+-------------------------------------------------------------------
 Wed Jun  4 06:08:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -53,7 +73,7 @@ Thu May 30 08:25:50 UTC 2024 - Markéta Machová <mmachova@suse.com>
 - update to 0.9.1
   * several bugfixes
   * typing improvements
-  * introduces `on_final` callbacks on machines (as well as 
+  * introduces `on_final` callbacks on machines (as well as
     `NestedState`) and `final` flags for states
   * see the full list in Changelog.md
 - Add remove-py2-crumbs.patch to get rid of most py2 remnants
