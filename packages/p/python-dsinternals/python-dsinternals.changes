@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:21:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.5
+  * strip tests from install; support pycryptodome.
+  * Catch OverflowError in KeyCredential.
+  * [enhancement] enable tox testing in setup.cfg
+  * [enhancement] Use cryptography library after pyopenssl
+    deprecated PKCS12 class.
+  * [enhancement] Fix Shadow Credentials after Microsoft validated
+    write change.
+
+-------------------------------------------------------------------
 Mon Oct 30 20:19:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.2.4
