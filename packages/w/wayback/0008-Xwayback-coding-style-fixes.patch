@@ -1,0 +1,53 @@
+From 2aee5d6772366818760f9f8aea6c076a361a7e26 Mon Sep 17 00:00:00 2001
+From: Ferass El Hafidi <funderscore@postmarketos.org>
+Date: Wed, 28 Jan 2026 12:27:14 +0000
+Subject: [PATCH 08/14] Xwayback: coding style fixes
+
+No functional changes.
+
+Signed-off-by: Ferass El Hafidi <funderscore@postmarketos.org>
+---
+ xwayback/xwayback.c | 20 ++++++++------------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
+
+diff --git a/xwayback/xwayback.c b/xwayback/xwayback.c
+index ea4c86e..ffb9c49 100644
+--- a/xwayback/xwayback.c
++++ b/xwayback/xwayback.c
+@@ -389,12 +389,13 @@ int main(int argc, char *argv[])
+ 	snprintf(fd_xwayback, sizeof(fd_xwayback), "%d", socket_xwayback[0]);
+ 	snprintf(fd_xwayland, sizeof(fd_xwayland), "%d", socket_xwayland[0]);
+ 
+-	if (posix_spawn(&comp_pid,
+-	                wayback_compositor_path,
+-	                &file_actions,
+-	                NULL,
+-	                (char *[]){ (char *)wayback_compositor_path, fd_xwayback, fd_xwayland, verbstr, NULL },
+-	                environ) != 0) {
++	if (posix_spawn(
++			&comp_pid,
++			wayback_compositor_path,
++			&file_actions,
++			NULL,
++			(char *[]){ (char *)wayback_compositor_path, fd_xwayback, fd_xwayland, verbstr, NULL },
++			environ) != 0) {
+ 		wayback_log(LOG_ERROR, "Failed to launch wayback-compositor: %s", strerror(errno));
+ 		exit(EXIT_FAILURE);
+ 	}
+@@ -443,12 +444,7 @@ int main(int argc, char *argv[])
+ 
+ 	char geometry[4096] = "";
+ 	const char *xwayback_args[] = {
+-		"-terminate",
+-		"3",
+-		"-geometry",
+-		geometry,
+-		"-verbose",
+-		verbstr,
++		"-terminate", "3", "-geometry", geometry, "-verbose", verbstr,
+ 	};
+ 
+ 	snprintf(geometry,
+-- 
+2.51.0
+

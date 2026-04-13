@@ -1,0 +1,33 @@
+From d690296d35134735991607149515525207e348ce Mon Sep 17 00:00:00 2001
+From: Joan Torres Lopez <joantolo@redhat.com>
+Date: Fri, 10 Apr 2026 13:57:08 +0200
+Subject: [PATCH 14/14] Xwayback: use optmatch() in the argument forwarding
+ loop
+
+Use the newly extracted optmatch() to apply the same matching logic
+as optparse() when filtering Xwayback-handled options before passing
+the rest to Xwayland.
+
+This fixes OPT_NUM options like "vt" (where the number is part of
+the argument, e.g. "vt2") leaking through to Xwayland, which does
+not recognize them and fatally errors out.
+---
+ xwayback/xwayback.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xwayback/xwayback.c b/xwayback/xwayback.c
+index ffb9c49..dcf5b22 100644
+--- a/xwayback/xwayback.c
++++ b/xwayback/xwayback.c
+@@ -461,7 +461,7 @@ int main(int argc, char *argv[])
+ 	for (int i = 1; i < argc; i++) {
+ 		size_t j = 0;
+ 		for (; j < ARRAY_SIZE(opts); j++) {
+-			if (strcmp(opts[j].name, argv[i]) == 0) {
++			if (optmatch(argv[i], &opts[j])) {
+ 				if (opts[j].flag == OPT_OPERAND && (i + 1) < argc) {
+ 					i++;
+ 				}
+-- 
+2.51.0
+

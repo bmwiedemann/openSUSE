@@ -1,0 +1,34 @@
+From 664473ee94237f0913efcd281f996a94d27bf10e Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Sun, 15 Feb 2026 15:23:00 -0500
+Subject: [PATCH 11/14] meson: Simplify wlroots dependency to a single array
+
+This lets us ensure the wlroots dependency is correctly marked as
+a required dependency, while still retaining the flexibility to
+use different supported versions of wlroots.
+---
+ meson.build | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 3ee77c7..15d21be 100644
+--- a/meson.build
++++ b/meson.build
+@@ -23,10 +23,10 @@ wayland_protos = dependency('wayland-protocols', version: '>=1.14')
+ xkbcommon      = dependency('xkbcommon')
+ xwayland       = dependency('xwayland', version: '>=24.1')
+ 
+-wlroots = dependency('wlroots-0.20', version: '>=0.20', required: false)
+-if not wlroots.found()
+-  wlroots = dependency('wlroots-0.19', version: '>=0.19', required: false)
+-endif
++wlroots = dependency([
++'wlroots-0.20',
++'wlroots-0.19',
++])
+ 
+ xwayland_executable_path = xwayland.get_variable(pkgconfig: 'xwayland')
+ add_global_arguments('-DXWAYLAND_EXEC_PATH="@0@"'.format(xwayland_executable_path), language : 'c')
+-- 
+2.51.0
+

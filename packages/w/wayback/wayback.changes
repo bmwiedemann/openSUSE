@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 11 23:40:41 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-wayback-session-fix-sesscmd-handling.patch
+  0002-CI-Drop-Arch-Linux-build.patch
+  0003-CI-fedora-Force-repos-and-gpg-keys-to-be-updated.patch
+  0004-Wayback-is-now-in-Debian.patch
+  0005-common-wayback_log-add-support-for-setting-verbosity.patch
+  0006-wayback-compositor-add-support-for-setting-verbosity.patch
+  0007-Xwayback-properly-handle-and-parse-verbose-option.patch
+  0008-Xwayback-coding-style-fixes.patch
+  0009-build-allow-build-with-wlroots-0.20.patch
+  0010-meson-Drop-support-for-wlroots-0.18.patch
+  0011-meson-Simplify-wlroots-dependency-to-a-single-array.patch
+  0012-CI-add-build-jobs-to-build-against-wlroots-0.20.patch
+  0013-common-optparse-extract-optmatch-for-consistent-opti.patch
+  0014-Xwayback-use-optmatch-in-the-argument-forwarding-loo.patch
+  * adding latest changes from git to match current wlroots
+
+-------------------------------------------------------------------
 Thu Dec 25 21:50:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.3

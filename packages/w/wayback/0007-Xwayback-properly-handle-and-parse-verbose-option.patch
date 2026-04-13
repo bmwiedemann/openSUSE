@@ -1,0 +1,106 @@
+From 8ffb4e5786f1e7ac7f1c7ada862f3480d378156f Mon Sep 17 00:00:00 2001
+From: Ferass El Hafidi <funderscore@postmarketos.org>
+Date: Wed, 28 Jan 2026 12:19:34 +0000
+Subject: [PATCH 07/14] Xwayback: properly handle and parse -verbose option
+
+-verbose has been previously ignored by Xwayback. Handle it by setting
+wayback_log verbosity accordingly and passing it to the compositor and
+Xwayland.
+
+Signed-off-by: Ferass El Hafidi <funderscore@postmarketos.org>
+---
+ xwayback/xwayback.c | 41 ++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 40 insertions(+), 1 deletion(-)
+
+diff --git a/xwayback/xwayback.c b/xwayback/xwayback.c
+index b22296d..ea4c86e 100644
+--- a/xwayback/xwayback.c
++++ b/xwayback/xwayback.c
+@@ -235,6 +235,10 @@ int main(int argc, char *argv[])
+ 		  .description = "show Xwayback version",
+ 		  .flag = OPT_NOFLAG,
+ 		  .ignore = false },
++		{ .name = "-verbose",
++		  .description = "set verbosity level for information printed on stderr",
++		  .flag = OPT_OPERAND,
++		  .ignore = false },
+ 		{ .name = "-novtswitch",
+ 		  .description = "do not switch VTs on startup (default)",
+ 		  .flag = OPT_NOFLAG,
+@@ -298,6 +302,7 @@ int main(int argc, char *argv[])
+ 
+ 	wayback_log_init("Xwayback", LOG_INFO, NULL);
+ 
++	long verbosity = 0;
+ 	int cur_opt = 0;
+ 	while (cur_opt = optparse(argc, argv, opts, ARRAY_SIZE(opts)), cur_opt != -1) {
+ 		if (strcmp(argv[cur_opt], "-version") == 0 || strcmp(argv[cur_opt], "-showconfig") == 0) {
+@@ -305,6 +310,36 @@ int main(int argc, char *argv[])
+ 			            "Wayback <https://wayback.freedesktop.org/> X.Org compatibility layer");
+ 			wayback_log(LOG_INFO, "Version %s", WAYBACK_VERSION);
+ 			exit(EXIT_SUCCESS);
++		} else if (strcmp(argv[cur_opt], "-verbose") == 0) {
++			// set verbosity level
++			verbosity = strtol(argv[cur_opt + 1], NULL, 10);
++			if (verbosity < 0 || verbosity > 20 || errno) {
++				if (errno) {
++					wayback_log(LOG_ERROR, "Failed to parse verbosity level: %s", strerror(errno));
++				} else {
++					wayback_log(LOG_ERROR, "Verbosity level must be between 0 and 20");
++				}
++				exit(EXIT_FAILURE);
++			}
++
++			// verbosity levels subject to change
++			switch (verbosity) {
++				case 0:
++					wayback_log_verbosity(LOG_ERROR);
++					break;
++				case 1:
++				case 2:
++				case 3:
++					wayback_log_verbosity(LOG_WARN);
++					break;
++				case 4:
++				case 5:
++					wayback_log_verbosity(LOG_INFO);
++					break;
++				default: // case 6:
++					wayback_log_verbosity(LOG_DEBUG);
++					break;
++			}
+ 		}
+ 	}
+ 
+@@ -347,8 +382,10 @@ int main(int argc, char *argv[])
+ 	posix_spawn_file_actions_addclose(&file_actions, socket_xwayback[1]);
+ 	posix_spawn_file_actions_addclose(&file_actions, socket_xwayland[1]);
+ 
++	char verbstr[4] = "";
+ 	char fd_xwayback[64];
+ 	char fd_xwayland[64];
++	snprintf(verbstr, sizeof(verbstr), "%ld", verbosity);
+ 	snprintf(fd_xwayback, sizeof(fd_xwayback), "%d", socket_xwayback[0]);
+ 	snprintf(fd_xwayland, sizeof(fd_xwayland), "%d", socket_xwayland[0]);
+ 
+@@ -356,7 +393,7 @@ int main(int argc, char *argv[])
+ 	                wayback_compositor_path,
+ 	                &file_actions,
+ 	                NULL,
+-	                (char *[]){ (char *)wayback_compositor_path, fd_xwayback, fd_xwayland, NULL },
++	                (char *[]){ (char *)wayback_compositor_path, fd_xwayback, fd_xwayland, verbstr, NULL },
+ 	                environ) != 0) {
+ 		wayback_log(LOG_ERROR, "Failed to launch wayback-compositor: %s", strerror(errno));
+ 		exit(EXIT_FAILURE);
+@@ -410,6 +447,8 @@ int main(int argc, char *argv[])
+ 		"3",
+ 		"-geometry",
+ 		geometry,
++		"-verbose",
++		verbstr,
+ 	};
+ 
+ 	snprintf(geometry,
+-- 
+2.51.0
+

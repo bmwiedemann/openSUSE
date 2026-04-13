@@ -1,0 +1,32 @@
+From 1bd155556bb023275746e3edf179bdc21611c16f Mon Sep 17 00:00:00 2001
+From: Edward Betts <edward@4angle.com>
+Date: Sat, 7 Feb 2026 11:17:06 +0000
+Subject: [PATCH 04/14] Wayback is now in Debian
+
+---
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/README.md b/README.md
+index 40b30db..a177d94 100644
+--- a/README.md
++++ b/README.md
+@@ -49,6 +49,7 @@ are still applicable to the latest code.***
+ - Alpine Linux: [`wayback`][alpine-pkg] (in `community` repo)
+ - ALT Linux: [`wayback`][alt-pkg]
+ - Arch Linux: [`wayback-x11-git`][aur-pkg] in the AUR
++- Debian: [`wayback`][debian-pkg]
+ - Fedora Linux: [`wayback`][fedora-pkg]
+ - Gentoo GURU: [`gui-wm/wayback`][gentoo-guru]
+ - Nixpkgs: [`wayback-x11`][nixpkgs-pkg]
+@@ -59,6 +60,7 @@ are still applicable to the latest code.***
+ [alpine-pkg]: https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/community/wayback
+ [alt-pkg]: https://packages.altlinux.org/en/sisyphus/srpms/wayback/
+ [aur-pkg]: https://aur.archlinux.org/packages/wayback-x11-git
++[debian-pkg]: https://packages.debian.org/experimental/wayback
+ [fedora-pkg]: https://src.fedoraproject.org/rpms/wayback
+ [gentoo-guru]: https://wiki.gentoo.org/wiki/Project:GURU/Information_for_End_Users
+ [nixpkgs-pkg]: https://search.nixos.org/packages?channel=unstable&show=wayback-x11
+-- 
+2.51.0
+

@@ -15,4 +15,12 @@
     <comment>- Update to release 0.3</comment>
     <requestid>1324410</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>82e3c434c5afd8a46b7a3f143562fdcb</srcmd5>
+    <version>0.3</version>
+    <time>1776115308</time>
+    <user>dimstar_suse</user>
+    <comment>added latest changes from git to match current wlroots</comment>
+    <requestid>1346491</requestid>
+  </revision>
 </revisionlist>

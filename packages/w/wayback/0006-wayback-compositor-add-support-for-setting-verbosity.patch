@@ -1,0 +1,75 @@
+From 3302127d38d4c84a753fd4439ab769f5d865d548 Mon Sep 17 00:00:00 2001
+From: Ferass El Hafidi <funderscore@postmarketos.org>
+Date: Wed, 28 Jan 2026 12:18:37 +0000
+Subject: [PATCH 06/14] wayback-compositor: add support for setting verbosity
+
+Signed-off-by: Ferass El Hafidi <funderscore@postmarketos.org>
+---
+ wayback-compositor/wayback-compositor.c | 46 +++++++++++++++++++++++--
+ 1 file changed, 43 insertions(+), 3 deletions(-)
+
+diff --git a/wayback-compositor/wayback-compositor.c b/wayback-compositor/wayback-compositor.c
+index 5ea49b5..4570cf5 100644
+--- a/wayback-compositor/wayback-compositor.c
++++ b/wayback-compositor/wayback-compositor.c
+@@ -785,14 +785,54 @@ static void wayback_wlr_vlog(enum wayback_log_level verbosity, const char *fmt,
+ 
+ int main(int argc, char *argv[])
+ {
+-	wlr_log_init(WLR_DEBUG, NULL);
+-	wayback_log_init("wayback-compositor", LOG_INFO, wayback_wlr_vlog);
++	enum wayback_log_level wayback_log_verb = LOG_INFO;
++	enum wlr_log_importance wlr_log_verb = WLR_INFO;
++	if (argc == 4) {
++		// workaround errno being set to ESPIPE on startup?
++		errno = 0;
++		// set verbosity level
++		const long verbosity = strtol(argv[3], NULL, 10);
++		if (verbosity < 0 || verbosity > 20 || errno) {
++			wayback_log_init("wayback-compositor", wayback_log_verb, NULL);
++			if (errno) {
++				wayback_log(LOG_ERROR, "Failed to parse verbosity level: %s", strerror(errno));
++			} else {
++				wayback_log(LOG_ERROR, "Verbosity level must be between 0 and 20");
++			}
++			exit(EXIT_FAILURE);
++		}
++
++		// verbosity levels subject to change
++		switch (verbosity) {
++			case 0:
++				wayback_log_verb = LOG_ERROR;
++				wlr_log_verb = WLR_ERROR;
++				break;
++			case 1:
++			case 2:
++			case 3:
++				wayback_log_verb = LOG_WARN;
++				wlr_log_verb = WLR_ERROR;
++				break;
++			case 4:
++			case 5:
++				wayback_log_verb = LOG_INFO;
++				wlr_log_verb = WLR_INFO;
++				break;
++			default: // case 6:
++				wayback_log_verb = LOG_DEBUG;
++				wlr_log_verb = WLR_DEBUG;
++				break;
++		}
++	}
++	wlr_log_init(wlr_log_verb, NULL);
++	wayback_log_init("wayback-compositor", wayback_log_verb, wayback_wlr_vlog);
+ 
+ 	if (argc < 3) {
+ 		wayback_log(LOG_INFO,
+ 		            "Wayback <https://wayback.freedesktop.org/> X.Org compatibility layer");
+ 		wayback_log(LOG_INFO, "Version %s", WAYBACK_VERSION);
+-		wayback_log(LOG_INFO, "Usage: %s <socket xwayback> <socket xwayland>", argv[0]);
++		wayback_log(LOG_INFO, "Usage: %s <socket xwayback> <socket xwayland> [verbosity]", argv[0]);
+ 		exit(EXIT_FAILURE);
+ 	}
+ 
+-- 
+2.51.0
+

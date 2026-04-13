@@ -1,0 +1,48 @@
+From 90a8b0751686632b274506ac9ff047b1bed61f85 Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Thu, 12 Feb 2026 05:14:27 -0500
+Subject: [PATCH 02/14] CI: Drop Arch Linux build
+
+This has been failing for quite some time on issues we cannot fix.
+Moreover, it is effectively a duplicate of what the Fedora Rawhide
+image provides.
+---
+ .gitlab-ci.yml | 22 ----------------------
+ 1 file changed, 22 deletions(-)
+
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+index 7905e3c..688fa55 100644
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -37,28 +37,6 @@ alpine:
+         - branches
+         - merge_requests
+ 
+-arch:
+-    image: ghcr.io/archlinux/archlinux:base-devel
+-    stage: build
+-    cache:
+-      key: pacman-cache
+-      paths:
+-        - pacman-cache/
+-    script: |
+-          pacman --cachedir=`pwd`/pacman-cache -Syu --needed --noconfirm \
+-            libxkbcommon \
+-            meson \
+-            wayland \
+-            wayland-protocols \
+-            wlroots0.19 \
+-            xorg-xwayland \
+-            scdoc
+-          meson setup --fatal-meson-warnings builddir/ -Dgenerate_manpages=enabled
+-          meson compile -C builddir/ -v
+-    only:
+-        - branches
+-        - merge_requests
+-
+ fedora:
+     image: quay.io/fedora/fedora:rawhide
+     stage: build
+-- 
+2.51.0
+

@@ -1,0 +1,43 @@
+From 179095d626c2a69f302e2402a4e39abaa49d451c Mon Sep 17 00:00:00 2001
+From: Ferass El Hafidi <funderscore@postmarketos.org>
+Date: Wed, 28 Jan 2026 12:16:24 +0000
+Subject: [PATCH 05/14] common/wayback_log: add support for setting verbosity
+ at runtime
+
+Signed-off-by: Ferass El Hafidi <funderscore@postmarketos.org>
+---
+ common/wayback_log.c | 5 +++++
+ common/wayback_log.h | 1 +
+ 2 files changed, 6 insertions(+)
+
+diff --git a/common/wayback_log.c b/common/wayback_log.c
+index f5715c6..6358ab3 100644
+--- a/common/wayback_log.c
++++ b/common/wayback_log.c
+@@ -68,6 +68,11 @@ void wayback_log_init(char *ctx,
+ 		logging_use_color = false;
+ }
+ 
++void wayback_log_verbosity(enum wayback_log_level max_verbosity)
++{
++	logging_max_verbosity = max_verbosity;
++}
++
+ void wayback_vlog(enum wayback_log_level verbosity, const char *format, va_list args)
+ {
+ 	logging_func(verbosity, format, args);
+diff --git a/common/wayback_log.h b/common/wayback_log.h
+index fee3271..0a35c5d 100644
+--- a/common/wayback_log.h
++++ b/common/wayback_log.h
+@@ -24,6 +24,7 @@ void wayback_log_init(char *ctx,
+                       enum wayback_log_level max_verbosity,
+                       wayback_log_func_t log_function);
+ 
++void wayback_log_verbosity(enum wayback_log_level max_verbosity);
+ void wayback_vlog(enum wayback_log_level verbosity, const char *format, va_list args);
+ void wayback_log(enum wayback_log_level verbosity, const char *format, ...);
+ 
+-- 
+2.51.0
+

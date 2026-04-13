@@ -1,0 +1,26 @@
+From dc140d7512ca3307b59aa8f0f73838286e3bf07a Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Thu, 12 Feb 2026 05:23:57 -0500
+Subject: [PATCH 03/14] CI: fedora: Force repos and gpg keys to be updated
+
+The GitLab runner pull policy is keeping the images from being updated
+properly, which means we need to force it to do the right thing.
+---
+ .gitlab-ci.yml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+index 688fa55..59a0e18 100644
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -45,6 +45,7 @@ fedora:
+       paths:
+         - dnf-cache/
+     script: |
++          dnf --setopt=cachedir=`pwd`/dnf-cache --assumeyes --nogpgcheck upgrade fedora-repos fedora-gpg-keys
+           dnf --setopt=cachedir=`pwd`/dnf-cache --assumeyes install \
+             meson \
+             gcc \
+-- 
+2.51.0
+

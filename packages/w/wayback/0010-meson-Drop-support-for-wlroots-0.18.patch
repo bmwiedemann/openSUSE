@@ -1,0 +1,28 @@
+From bc1fd154cfddc664d439ecf2d3c31148f97488df Mon Sep 17 00:00:00 2001
+From: Neal Gompa <neal@gompa.dev>
+Date: Sun, 15 Feb 2026 15:16:25 -0500
+Subject: [PATCH 10/14] meson: Drop support for wlroots-0.18
+
+Now that we support wlroots 0.20, we do not need to keep support
+for wlroots-0.18 anymore.
+---
+ meson.build | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index b5bb37e..3ee77c7 100644
+--- a/meson.build
++++ b/meson.build
+@@ -26,9 +26,6 @@ xwayland       = dependency('xwayland', version: '>=24.1')
+ wlroots = dependency('wlroots-0.20', version: '>=0.20', required: false)
+ if not wlroots.found()
+   wlroots = dependency('wlroots-0.19', version: '>=0.19', required: false)
+-  if not wlroots.found()
+-    wlroots = dependency('wlroots-0.18', version: '>=0.18')
+-  endif
+ endif
+ 
+ xwayland_executable_path = xwayland.get_variable(pkgconfig: 'xwayland')
+-- 
+2.51.0
+

@@ -1,0 +1,84 @@
+From 623596debb23587e8dee4a719dffc50c7acf43fb Mon Sep 17 00:00:00 2001
+From: Achill Gilgenast <achill@achill.org>
+Date: Sun, 15 Feb 2026 20:54:52 +0100
+Subject: [PATCH 12/14] CI: add build jobs to build against wlroots 0.20
+
+Signed-off-by: Achill Gilgenast <achill@achill.org>
+---
+ .gitlab-ci.yml | 33 +++++++++++++++++++++++++++------
+ 1 file changed, 27 insertions(+), 6 deletions(-)
+
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+index 59a0e18..48cb641 100644
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -15,10 +15,11 @@ clang-format:
+     only:
+         - merge_requests
+ 
+-alpine:
++.alpine:
+     image: docker.io/alpine:edge
+     stage: build
+     script: |
++          echo "https://ftp.halifax.rwth-aachen.de/alpine/edge/testing/" >> /etc/apk/repositories
+           apk update
+           apk upgrade
+           apk add \
+@@ -28,16 +29,26 @@ alpine:
+             meson \
+             wayland-dev \
+             wayland-protocols \
+-            wlroots-dev \
+             xwayland-dev \
+-            scdoc
++            scdoc \
++            $WLROOTS
+           meson setup --fatal-meson-warnings builddir/ -Dgenerate_manpages=enabled
+           meson compile -C builddir/ -v
+     only:
+         - branches
+         - merge_requests
+ 
+-fedora:
++alpine-wlroots0.19:
++    extends: .alpine
++    variables:
++        WLROOTS: wlroots0.19-dev
++
++alpine-wlroots0.20:
++    extends: .alpine
++    variables:
++        WLROOTS: wlroots0.20-dev
++
++.fedora:
+     image: quay.io/fedora/fedora:rawhide
+     stage: build
+     cache:
+@@ -55,11 +66,21 @@ fedora:
+             'pkgconfig(wayland-egl)' \
+             'pkgconfig(wayland-protocols)' \
+             'pkgconfig(wayland-server)' \
+-            'pkgconfig(wlroots-0.19)' \
+             'pkgconfig(xkbcommon)' \
+-            'pkgconfig(xwayland)'
++            'pkgconfig(xwayland)' \
++            "$WLROOTS"
+           meson setup --fatal-meson-warnings builddir/ -Dgenerate_manpages=enabled
+           meson compile -C builddir/ -v
+     only:
+         - branches
+         - merge_requests
++
++fedora-wlroots0.19:
++    extends: .fedora
++    variables:
++        WLROOTS: pkgconfig(wlroots-0.19)
++
++fedora-wlroots0.20:
++    extends: .fedora
++    variables:
++        WLROOTS: pkgconfig(wlroots-0.20)
+-- 
+2.51.0
+

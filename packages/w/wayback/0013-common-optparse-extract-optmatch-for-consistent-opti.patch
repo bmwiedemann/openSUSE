@@ -1,0 +1,83 @@
+From 7636bfab38516477670f2b580c592e8c1a2f2168 Mon Sep 17 00:00:00 2001
+From: Joan Torres Lopez <joantolo@redhat.com>
+Date: Fri, 10 Apr 2026 13:48:30 +0200
+Subject: [PATCH 13/14] common/optparse: extract optmatch() for consistent
+ option matching
+
+Extract the option matching logic into a public optmatch() function
+and refactor optparse() to use it, merging the previously separate
+exact-match and OPT_NUM branches into a single code path.
+---
+ common/optparse.c | 27 +++++++++++++--------------
+ common/optparse.h |  1 +
+ 2 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/common/optparse.c b/common/optparse.c
+index dced8c8..0bcc200 100644
+--- a/common/optparse.c
++++ b/common/optparse.c
+@@ -17,6 +17,13 @@
+ 
+ int optind = 0, optpos = 0, optoper = 0;
+ 
++bool optmatch(const char *arg, const struct optcmd *opt)
++{
++	if (opt->flag == OPT_NUM)
++		return strncmp(arg, opt->name, strlen(opt->name)) == 0;
++	return strcmp(opt->name, arg) == 0;
++}
++
+ int optparse(int argc, char *argv[], const struct optcmd opts[], uint32_t optlen)
+ {
+ 	optpos++;
+@@ -45,12 +52,14 @@ int optparse(int argc, char *argv[], const struct optcmd opts[], uint32_t optlen
+ 				}
+ 			}
+ 			exit(EXIT_SUCCESS);
+-		} else if (strcmp(argv[optpos], opts[i].name) == 0) {
+-			if (((opts[i].flag == OPT_OPERAND) && (((optpos + 1) >= argc || !argv[optpos + 1]))) ||
+-			    opts[i].flag == OPT_NUM) {
++		} else if (optmatch(argv[optpos], &opts[i])) {
++			if ((opts[i].flag == OPT_OPERAND && ((optpos + 1) >= argc || !argv[optpos + 1])) ||
++			    (opts[i].flag == OPT_NUM && strlen(argv[optpos]) == strlen(opts[i].name))) {
+ 				wayback_log(LOG_ERROR, "Option %s requires operand", argv[optpos]);
+ 				exit(EXIT_FAILURE);
+-			} else if (opts[i].ignore == true) {
++			}
++
++			if (opts[i].ignore == true) {
+ 				if (strcmp(opts[i].description, "") != 0)
+ 					wayback_log(LOG_WARN, "%s: %s", argv[optpos], opts[i].description);
+ 				else
+@@ -63,16 +72,6 @@ int optparse(int argc, char *argv[], const struct optcmd opts[], uint32_t optlen
+ 			}
+ 			optind++;
+ 			break;
+-		} else if (opts[i].flag == OPT_NUM &&
+-		           strncmp(argv[optpos], opts[i].name, strlen(opts[i].name)) == 0) {
+-			if (opts[i].ignore == true) {
+-				if (strcmp(opts[i].description, "") != 0)
+-					wayback_log(LOG_WARN, "%s: %s", argv[optpos], opts[i].description);
+-				else
+-					wayback_log(LOG_WARN, "Option %s ignored", argv[optpos]);
+-			}
+-			optind++;
+-			break;
+ 		}
+ 	}
+ 	return optpos;
+diff --git a/common/optparse.h b/common/optparse.h
+index 6f3cdd5..81b777f 100644
+--- a/common/optparse.h
++++ b/common/optparse.h
+@@ -31,6 +31,7 @@ struct optcmd
+ #define IGNORE_OPT_DESC(s, f, d) { .name = s, .description = d, .flag = f, .ignore = true }
+ #define IGNORE_OPT(s, f) IGNORE_OPT_DESC(s, f, "")
+ 
++bool optmatch(const char *arg, const struct optcmd *opt);
+ int optparse(int argc, char *argv[], const struct optcmd opts[], uint32_t optlen);
+ 
+ #endif
+-- 
+2.51.0
+
