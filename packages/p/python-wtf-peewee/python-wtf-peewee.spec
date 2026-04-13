@@ -1,7 +1,7 @@
 #
 # spec file for package python-wtf-peewee
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wtf-peewee
-Version:        3.0.6
+Version:        3.1.0
 Release:        0
 Summary:        WTForms integration for peewee models
 License:        MIT
 URL:            https://github.com/coleifer/wtf-peewee/
-Source:         https://files.pythonhosted.org/packages/source/w/wtf-peewee/wtf-peewee-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/w/wtf-peewee/wtf_peewee-%{version}.tar.gz
 BuildRequires:  %{python_module WTForms}
 BuildRequires:  %{python_module peewee >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -42,7 +42,7 @@ wtf-peewee provides a bridge between peewee models and wtforms, mapping
 model fields to form fields.
 
 %prep
-%autosetup -p1 -n wtf-peewee-%{version}
+%autosetup -p1 -n wtf_peewee-%{version}
 
 %build
 %pyproject_wheel

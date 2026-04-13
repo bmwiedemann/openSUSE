@@ -28,4 +28,16 @@
   * Updates to support latest wtforms</comment>
     <requestid>1225383</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6adfc0675c8dec2f7735bf69376bdaf1</srcmd5>
+    <version>3.1.0</version>
+    <time>1776115120</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 3.1.0:
+  * Add support for json fields in sqlite
+  * add test for checking form data
+  * fix validation on foreign-key for missing object
+  * clean up error messages and add test for length validator</comment>
+    <requestid>1346274</requestid>
+  </revision>
 </revisionlist>
