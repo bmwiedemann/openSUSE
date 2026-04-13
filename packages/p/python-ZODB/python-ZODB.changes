@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 12 20:06:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2:
+  * DemoStorage was unable to wrap base storages who did
+    not have an '_oid' attribute
+
+-------------------------------------------------------------------
 Mon Nov 10 08:25:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1:
