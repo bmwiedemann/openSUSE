@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:29:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.6.7
+  Fixes:
+  * A reload bug where if a connection closes during a reload it
+    could cause a crash.
+  * A reload bug where if you reload twice while a connection
+    stays up it can cause a crash.
+- Update to version 4.6.6
+  * This release fixes a couple of minor bugs.
+
+-------------------------------------------------------------------
 Wed Nov 12 12:05:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.5:
