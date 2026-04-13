@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>1195256</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>136b3d50c33e0e45c90183a3fc972658</srcmd5>
+    <version>0.14.2</version>
+    <time>1776115170</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.2:
+  * Support non-ASCII usernames in Windows pipe path (#112)</comment>
+    <requestid>1346398</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package git-credential-keepassxc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           git-credential-keepassxc
-Version:        0.14.1~0
+Version:        0.14.2
 Release:        0
-Summary:        Helper that allows Git (and shell scripts) to use KeePassXC as credential store 
+Summary:        Helper that allows Git (and shell scripts) to use KeePassXC as credential store
 License:        GPL-3.0-only
 URL:            https://github.com/Frederick888/git-credential-keepassxc
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 ExclusiveArch:  %{rust_tier1_arches}
 
