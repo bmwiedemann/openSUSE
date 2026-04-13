@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uharfbuzz
-Version:        0.53.3
+Version:        0.53.6
 Release:        0
 Summary:        Streamlined Cython bindings for the harfbuzz shaping engine
 License:        Apache-2.0

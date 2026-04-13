@@ -106,4 +106,18 @@
     <comment></comment>
     <requestid>1330518</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2f55a5719c7f614d37b1e9b52ad11d91</srcmd5>
+    <version>0.53.6</version>
+    <time>1776115118</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.53.6:
+  * Bump requests from 2.32.4 to 2.33.0 in /docs
+  * Bump pygments from 2.19.2 to 2.20.0 in /docs
+  * Update to HarfBuzz 14.0.0
+- update to 0.53.4:
+  * Fix test_set_axis_range failure due to test data type
+    mismatch</comment>
+    <requestid>1346268</requestid>
+  </revision>
 </revisionlist>

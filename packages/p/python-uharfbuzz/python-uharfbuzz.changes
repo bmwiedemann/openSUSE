@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:11:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.53.6:
+  * Bump requests from 2.32.4 to 2.33.0 in /docs
+  * Bump pygments from 2.19.2 to 2.20.0 in /docs
+  * Update to HarfBuzz 14.0.0
+- update to 0.53.4:
+  * Fix test_set_axis_range failure due to test data type
+    mismatch
+
+-------------------------------------------------------------------
 Sat Jan 31 14:23:52 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.53.3
