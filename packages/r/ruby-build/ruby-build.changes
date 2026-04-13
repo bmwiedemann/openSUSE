@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 12 16:19:33 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20260412.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260412
+  * Add JRuby 10.0.5.0 by @headius in #2615
+  * Add TruffleRuby and TruffleRuby GraalVM 34.0.0 by @eregon in #2616
+
+-------------------------------------------------------------------
 Fri Mar 27 03:28:12 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20260327.
