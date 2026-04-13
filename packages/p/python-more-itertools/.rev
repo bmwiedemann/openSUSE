@@ -517,4 +517,41 @@
     <comment></comment>
     <requestid>1303561</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9a0e3c4bcb6479ce40714f143edff793</srcmd5>
+    <version>11.0.2</version>
+    <time>1776115083</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.0.2:
+  * `zip_equal` was removed in 11.0.0. It had been deprecated and
+    raising ``DeprecationWarning`` since 2021, but it's removal
+    shoul have been documented in 11.0.0's release notes. We
+    regret the error.
+  * `running_statistics` has been moved from
+    ``more_itertools.more`` to ``more_itertools.recipes``. Its
+    docstring was also improved (thanks to mastash3ff and
+    rhettinger)
+- update to 11.0.0:
+  * Python 3.9 support was dropped, since it went EOL on
+    2025-10-31
+  * `callback_iter` is deprecated. It will be removed in a future
+    major release.
+  * `iequals` no longer returns ``True`` when called with ``([],
+    [ANY])`` (thanks to rhettinger and pochmann3)
+  * The ``pred`` argument for `locate` and `replace` must now be
+    able to handle a variable number of arguments.
+  * `unique_everseen` now raises ``TypeError`` when input
+    elements are not hashable.
+    * `concurrent_tee`: similar to `tee`, but with guaranteed
+    threading semantics
+  * `random_derangement`: returns a random derangement of
+    elements from an iterable
+  * `running_mean`: yields the mean of values in an iterable, or
+    in a sliding window
+  * `running_statistics`: provides statistics for the values in
+    an iterable, or in a sliding window
+  * `serialize`: wraps a non-concurrent iterator with a lock to
+    enforce sequential access</comment>
+    <requestid>1345972</requestid>
+  </revision>
 </revisionlist>

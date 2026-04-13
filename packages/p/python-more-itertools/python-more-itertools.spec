@@ -1,7 +1,7 @@
 #
 # spec file for package python-more-itertools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-more-itertools
-Version:        10.8.0
+Version:        11.0.2
 Release:        0
 Summary:        More routines for operating on iterables, beyond itertools
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/erikrose/more-itertools
 Source:         https://files.pythonhosted.org/packages/source/m/more_itertools/more_itertools-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module flit-core >= 3.12}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
