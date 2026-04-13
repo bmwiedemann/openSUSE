@@ -213,4 +213,12 @@ update to 6.1.0</comment>
   * Add flatten_config_keys() utility to flatten nested config</comment>
     <requestid>1344510</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>286f3f414675fcbcddbfde8d77a8997c</srcmd5>
+    <version>7.10.1</version>
+    <time>1776115220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346474</requestid>
+  </revision>
 </revisionlist>
