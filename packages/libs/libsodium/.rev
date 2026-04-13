@@ -441,4 +441,12 @@
     and crypto_hash_*_statebytes() have been added in order to</comment>
     <requestid>1329146</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9850ebcc3c7884f43fe2ddfb5b3e97c7</srcmd5>
+    <version>1.0.22</version>
+    <time>1776115086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346080</requestid>
+  </revision>
 </revisionlist>

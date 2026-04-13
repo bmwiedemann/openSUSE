@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr 10 13:14:52 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.0.22:
+  * Post-quantum key encapsulation is now available. ML-KEM768, the
+    NIST-standardized lattice-based KEM, is accessible through the
+    crypto_kem_mlkem768_*() functions.
+  * X-Wing, a hybrid KEM combining ML-KEM768 with X25519 for protection
+    against both classical and quantum adversaries, is available through the
+    crypto_kem_*() functions. X-Wing is the recommended KEM for most
+    applications.
+  * SHA-3 hash functions are now available as crypto_hash_sha3256_*()
+    and crypto_hash_sha3512_*(), with both one-shot and streaming APIs.
+  * Performance: NEON optimizations for Argon2 on ARM platforms.
+  * Performance: SHA3 (Keccak1600) now leverages ARM SHA3 instructions when
+    available on ARM platforms.
+  * Performance: WebAssembly SIMD implementations of Argon2 have been added.
+  * XOF state alignment has been relaxed.
+  * crypto_core_keccak1600_state has been added.
+  * Export missing crypto_ipcrypt_nd_keygen() helper function.
+  * crypto_auth_hmacsha256_init and crypto_auth_hmacsha512_init now
+    accept NULL key pointers (with a zero key length), for consistency with
+    other _init functions.
+  * Fixed compilation with GCC on aarch64 and gcc 4.x.
+  * On aarch64, aes256-gcm is now enabled even when not using clang,
+    including MSVC.
+  * Libsodium can be directly used as a dependency in a Zig project.
+  * Remove patch libsodium-Fix-compilation-with-GCC-on-aarch64.patch
+
+-------------------------------------------------------------------
 Thu Jan  8 13:04:50 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 1.0.21 (bsc#1256070, CVE-2025-15444, bsc#1255764, CVE-2025-69277):

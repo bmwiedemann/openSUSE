@@ -20,7 +20,7 @@
 %define sover   26
 %define lname   %{name}%{sover}
 Name:           libsodium
-Version:        1.0.21
+Version:        1.0.22
 Release:        0
 Summary:        Portable NaCl-based crypto library
 License:        ISC
@@ -30,7 +30,6 @@ Source0:        https://download.libsodium.org/libsodium/releases/%{name}-%{vers
 Source1:        https://download.libsodium.org/libsodium/releases/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source99:       baselibs.conf
-Patch0:         libsodium-Fix-compilation-with-GCC-on-aarch64.patch
 BuildRequires:  pkgconfig
 
 %description
