@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:19:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.5.0:
+  * treq is packaged with Hatchling, and consequently no longer
+    directly depends on setuptools.
+  * Update documentation to use async/await syntax
+  * Support for Python 3.8, which has reached end of support, is
+    deprecated. This is the last release with support for Python
+    3.8.
+
+-------------------------------------------------------------------
 Tue Oct 29 20:40:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.9.1:

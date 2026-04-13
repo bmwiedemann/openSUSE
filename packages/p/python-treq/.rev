@@ -165,4 +165,18 @@
     of support, has been dropped.</comment>
     <requestid>1219181</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fdb992e9023ead766643a886b12c3390</srcmd5>
+    <version>25.5.0</version>
+    <time>1776115120</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 25.5.0:
+  * treq is packaged with Hatchling, and consequently no longer
+    directly depends on setuptools.
+  * Update documentation to use async/await syntax
+  * Support for Python 3.8, which has reached end of support, is
+    deprecated. This is the last release with support for Python
+    3.8.</comment>
+    <requestid>1346276</requestid>
+  </revision>
 </revisionlist>
