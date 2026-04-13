@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:49:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * All: Add a CircleCI Windows build with py3.6-py3.12 and
+   remove references to TravisCI. (#246)
+  * All: Add Ubuntu builds for py3.6-3.13
+  * ci: Remove custom hooks from `python setup.py test` since
+    this is no longer supported.
+  * ci: Fix build-related buttons in README.md.
+
+-------------------------------------------------------------------
 Fri Jan 17 15:01:51 UTC 2025 - pgajdos@suse.com
 
 - really remove six requirements
@@ -60,7 +71,7 @@ Thu Apr 21 21:51:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
 Wed Mar 23 06:45:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-mock.patch:
-  * Do not use external mock. 
+  * Do not use external mock.
 
 -------------------------------------------------------------------
 Fri Mar 13 12:37:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
@@ -70,7 +81,7 @@ Fri Mar 13 12:37:42 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Sat Dec 28 18:31:07 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- fix python-path/python-path.py requires 
+- fix python-path/python-path.py requires
 
 -------------------------------------------------------------------
 Mon Jun  3 09:07:17 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>

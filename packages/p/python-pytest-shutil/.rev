@@ -116,4 +116,21 @@
     <comment></comment>
     <requestid>1238531</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6240645eb5b11fa40a60449565b2cf7f</srcmd5>
+    <version>1.8.1</version>
+    <time>1776115106</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.1:
+  * All: Add a CircleCI Windows build with py3.6-py3.12 and
+   remove references to TravisCI. (#246)
+  * All: Add Ubuntu builds for py3.6-3.13
+  * ci: Remove custom hooks from `python setup.py test` since
+    this is no longer supported.
+  * ci: Fix build-related buttons in README.md.
+
+  * Do not use external mock.
+- fix python-path/python-path.py requires</comment>
+    <requestid>1346221</requestid>
+  </revision>
 </revisionlist>

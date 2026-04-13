@@ -1,7 +1,7 @@
-Index: pytest-shutil-1.8.0/pytest_shutil/cmdline.py
+Index: pytest-shutil-1.8.1/pytest_shutil/cmdline.py
 ===================================================================
---- pytest-shutil-1.8.0.orig/pytest_shutil/cmdline.py
-+++ pytest-shutil-1.8.0/pytest_shutil/cmdline.py
+--- pytest-shutil-1.8.1.orig/pytest_shutil/cmdline.py
++++ pytest-shutil-1.8.1/pytest_shutil/cmdline.py
 @@ -10,12 +10,6 @@ from contextlib import contextmanager
  from tempfile import mkdtemp
  
@@ -15,10 +15,10 @@ Index: pytest-shutil-1.8.0/pytest_shutil/cmdline.py
  def get_log():
      return logging.getLogger(__name__)
  
-Index: pytest-shutil-1.8.0/pytest_shutil/run.py
+Index: pytest-shutil-1.8.1/pytest_shutil/run.py
 ===================================================================
---- pytest-shutil-1.8.0.orig/pytest_shutil/run.py
-+++ pytest-shutil-1.8.0/pytest_shutil/run.py
+--- pytest-shutil-1.8.1.orig/pytest_shutil/run.py
++++ pytest-shutil-1.8.1/pytest_shutil/run.py
 @@ -3,36 +3,20 @@
  """
  import sys
@@ -124,10 +124,10 @@ Index: pytest-shutil-1.8.0/pytest_shutil/run.py
      return inner if isinstance(fn, str) else update_wrapper(inner, fn)
  
  
-Index: pytest-shutil-1.8.0/pytest_shutil/workspace.py
+Index: pytest-shutil-1.8.1/pytest_shutil/workspace.py
 ===================================================================
---- pytest-shutil-1.8.0.orig/pytest_shutil/workspace.py
-+++ pytest-shutil-1.8.0/pytest_shutil/workspace.py
+--- pytest-shutil-1.8.1.orig/pytest_shutil/workspace.py
++++ pytest-shutil-1.8.1/pytest_shutil/workspace.py
 @@ -1,6 +1,5 @@
  """ Temporary directory fixtures
  """
@@ -135,23 +135,22 @@ Index: pytest-shutil-1.8.0/pytest_shutil/workspace.py
  import os
  import tempfile
  import shutil
-Index: pytest-shutil-1.8.0/setup.py
+Index: pytest-shutil-1.8.1/setup.py
 ===================================================================
---- pytest-shutil-1.8.0.orig/setup.py
-+++ pytest-shutil-1.8.0/setup.py
-@@ -17,7 +17,7 @@ classifiers = [
-     'Programming Language :: Python :: 3.7',
+--- pytest-shutil-1.8.1.orig/setup.py
++++ pytest-shutil-1.8.1/setup.py
+@@ -18,7 +18,6 @@ classifiers = [
  ]
  
--install_requires = ['six',
-+install_requires = [
-                     'execnet',
-                     'pytest',
-                     'termcolor'
-Index: pytest-shutil-1.8.0/tests/integration/test_run_integration.py
+ install_requires = [
+-    'six',
+     'execnet',
+     'pytest',
+     'termcolor',
+Index: pytest-shutil-1.8.1/tests/integration/test_run_integration.py
 ===================================================================
---- pytest-shutil-1.8.0.orig/tests/integration/test_run_integration.py
-+++ pytest-shutil-1.8.0/tests/integration/test_run_integration.py
+--- pytest-shutil-1.8.1.orig/tests/integration/test_run_integration.py
++++ pytest-shutil-1.8.1/tests/integration/test_run_integration.py
 @@ -6,13 +6,9 @@ import pytest
  import execnet
  import inspect
@@ -167,10 +166,10 @@ Index: pytest-shutil-1.8.0/tests/integration/test_run_integration.py
  from pytest_shutil import run, workspace
  from pytest_shutil.env import no_cov
  
-Index: pytest-shutil-1.8.0/tests/unit/test_run.py
+Index: pytest-shutil-1.8.1/tests/unit/test_run.py
 ===================================================================
---- pytest-shutil-1.8.0.orig/tests/unit/test_run.py
-+++ pytest-shutil-1.8.0/tests/unit/test_run.py
+--- pytest-shutil-1.8.1.orig/tests/unit/test_run.py
++++ pytest-shutil-1.8.1/tests/unit/test_run.py
 @@ -1,17 +1,11 @@
 +import pickle
  import sys

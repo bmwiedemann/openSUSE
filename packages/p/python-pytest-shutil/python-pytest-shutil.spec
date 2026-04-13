@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-shutil
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        A goodie-bag of unix shell and environment tools for pytest
 License:        MIT
