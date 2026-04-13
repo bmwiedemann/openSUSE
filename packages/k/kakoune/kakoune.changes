@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 13 07:53:24 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2026.04.12:
+  * finaleol option to support writing files that do not end with an final
+    end-of-line byte
+  * FocusIn/FocusOut events on suspend
+  * %val{buffile} is now empty for scratch buffers
+  * Reworked Json UI draw_status call to give UI implementation more control,
+    added cursor pos to the draw call and removed the set_cursor call
+  * number-lines -full-relative switch to keep a smaller line number gutter.
+  * <a-I> and <a-A> to select nested text objects
+  * kak -C <session> connects to a session or creates it if it does not exist.
+
+-------------------------------------------------------------------
 Tue Jun  3 11:12:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2025.06.03:

@@ -325,4 +325,21 @@
     <comment></comment>
     <requestid>1282269</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>de545df142b43cdc7dee7b63e178e344</srcmd5>
+    <version>2026.04.12</version>
+    <time>1776115164</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2026.04.12:
+  * finaleol option to support writing files that do not end with an final
+    end-of-line byte
+  * FocusIn/FocusOut events on suspend
+  * %val{buffile} is now empty for scratch buffers
+  * Reworked Json UI draw_status call to give UI implementation more control,
+    added cursor pos to the draw call and removed the set_cursor call
+  * number-lines -full-relative switch to keep a smaller line number gutter.
+  * &lt;a-I&gt; and &lt;a-A&gt; to select nested text objects
+  * kak -C &lt;session&gt; connects to a session or creates it if it does not exist.</comment>
+    <requestid>1346373</requestid>
+  </revision>
 </revisionlist>
