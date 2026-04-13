@@ -19,14 +19,14 @@
 %{?sle15_python_module_pythons}
 %define modname weblate_language_data
 Name:           python-weblate-language-data
-Version:        2026.6
+Version:        2026.7
 Release:        0
 Summary:        Language Data for Weblate
 License:        MIT
 URL:            https://github.com/WeblateOrg/language-data
 Source0:        https://files.pythonhosted.org/packages/source/w/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 78.0.2}
 BuildRequires:  %{python_module translate-toolkit}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

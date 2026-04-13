@@ -147,4 +147,13 @@
   * feat: update list of RTL languages</comment>
     <requestid>1342220</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>453ea4df9de0febdb04feae201a3476d</srcmd5>
+    <version>2026.7</version>
+    <time>1776115113</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.7:
+  * fix: improve RTL data</comment>
+    <requestid>1346241</requestid>
+  </revision>
 </revisionlist>
