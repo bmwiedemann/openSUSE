@@ -123,4 +123,20 @@
 - No more greedy globs in %files.</comment>
     <requestid>1285974</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0ae72d9902efc04fbf520ea5739a46f3</srcmd5>
+    <version>2.1.0</version>
+    <time>1776115121</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * ruff: Configure hacking as external linter
+  * Add typing
+  * Add ruff
+  * Migrate setup configuration to pyproject.toml
+  * Remove translation sections from setup.cfg
+  * Drop Python 3.8, 3.9 support
+  * pre-commit: Bump dependencies
+  * add pyproject.toml to support pip 23.1</comment>
+    <requestid>1346280</requestid>
+  </revision>
 </revisionlist>

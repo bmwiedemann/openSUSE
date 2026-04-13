@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:25:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * ruff: Configure hacking as external linter
+  * Add typing
+  * Add ruff
+  * Migrate setup configuration to pyproject.toml
+  * Remove translation sections from setup.cfg
+  * Drop Python 3.8, 3.9 support
+  * pre-commit: Bump dependencies
+  * add pyproject.toml to support pip 23.1
+
+-------------------------------------------------------------------
 Mon Jun 16 06:17:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.

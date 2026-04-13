@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-feature-classification
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-feature-classification
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Sphinx extension to generate a matrix of pluggable drivers
 License:        Apache-2.0
 URL:            https://www.openstack.org/
-Source:         https://files.pythonhosted.org/packages/source/s/sphinx-feature-classification/sphinx-feature-classification-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinx-feature-classification/sphinx_feature_classification-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module ddt >= 1.0.1}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module pbr >= 2.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testtools >= 1.4.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docutils >= 0.11
@@ -43,7 +44,7 @@ An extension to Sphinx to generate a matrix of pluggable drivers and
 their support to an API.
 
 %prep
-%setup -q -n sphinx-feature-classification-%{version}
+%setup -q -n sphinx_feature_classification-%{version}
 
 %build
 %pyproject_wheel
@@ -57,7 +58,7 @@ their support to an API.
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS ChangeLog README.rst
+%doc ChangeLog README.rst
 %{python_sitelib}/sphinx_feature_classification
 %{python_sitelib}/sphinx_feature_classification-%{version}.dist-info
 
