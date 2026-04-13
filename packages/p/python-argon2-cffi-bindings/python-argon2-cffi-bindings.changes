@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:33:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.1.0:
+  * Vendoring Argon2 @ **`f57e61e`**.
+  * Official Python 3.12, 3.13, and 3.14 support.
+  * Support for free-threading (aka nogil) on Python 3.14.
+  * Python 3.6, 3.7, and 3.8 support.
+
+-------------------------------------------------------------------
 Tue May 13 13:49:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

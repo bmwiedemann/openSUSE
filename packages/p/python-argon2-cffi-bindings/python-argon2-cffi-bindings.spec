@@ -1,7 +1,7 @@
 #
 # spec file for package python-argon2-cffi-bindings
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-argon2-cffi-bindings
-Version:        21.2.0
+Version:        25.1.0
 Release:        0
 Summary:        Low-level Python CFFI Bindings for Argon2
 License:        MIT
 URL:            https://github.com/hynek/argon2-cffi-bindings
-Source:         https://files.pythonhosted.org/packages/source/a/argon2-cffi-bindings/argon2-cffi-bindings-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/argon2-cffi-bindings/argon2_cffi_bindings-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.0.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 45}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -46,7 +46,7 @@ argon2-cffi-bindings provides low-level CFFI bindings
 to the Argon2 password hashing algorithm.
 
 %prep
-%setup -q -n argon2-cffi-bindings-%{version}
+%setup -q -n argon2_cffi_bindings-%{version}
 
 %build
 export ARGON2_CFFI_USE_SYSTEM=1
