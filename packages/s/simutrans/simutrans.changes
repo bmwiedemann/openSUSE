@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr  6 09:56:16 UTC 2026 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124.4
+
+- Update to new version 124.4
+- The patch returnNull.patch is not needed anymore, since fixed upstream. 
+See https://forum.simutrans.com/index.php/topic,23464.0.html
+- Also the patch "simutrans-makefile.patch" is not needed anymore. It now runs correctly on all systems.
+This is probably thanks to the update of the make utility.
+- It was high time, almost one year had passed since the last release. 
+Most visible are the GUI improvements like searchable comboboxes 
+(just type when a box is open) or grouping goods/passengers by connection. 
+Under the hood, the city growth (house and road building) was totally overhauled, 
+removing many errors with multitile buildings and street connections 
+(and the lack of terraforming for it). As a nice side effect, initial 
+town generation on a new map became about 3x faster.
+- For beginner, there a much nicer tutorial with pak64, pak64.german and pak128.
+- This release is built from svn revision number 11919.
+
+-------------------------------------------------------------------
 Sun Apr  6 10:03:06 UTC 2025 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124.3.1
 
 - Update to new version 124.3.1

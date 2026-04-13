@@ -1,7 +1,7 @@
 #
 # spec file for package simutrans
 #
-# Copyright (c) 2020-2025 SUSE LLC
+# Copyright (c) 2020-2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,19 @@
 #
 
 
-%define pkgver 124-3-1
+%define pkgver 124-4
 Name:           simutrans
-Version:        124.3.1
+Version:        124.4
 Release:        0
 Summary:        Transport and Economic Simulation Game
 License:        Artistic-1.0
 Group:          Amusements/Games/Strategy/Real Time
 URL:            http://sourceforge.net/projects/simutrans/
-Source0:        simutrans-src-124-3-1.zip
+Source0:        simutrans-src-124-4.zip
 Source1:        config.default
 Source2:        http://www.simutrans.com/images/resources/simutrans-square.svg
-# PATCH-FIX-UPSTREAM http://forum.simutrans.com/index.php?topic=11173.0
+# PATCH-FIX-UPSTREAM https://forum.simutrans.com/index.php/topic,11173.0.html
 Patch0:         simutrans-fhs-home-directory.patch
-Patch1:         simutrans-makefile.patch
-# PATCH-FIX-UPSTREAM https://forum.simutrans.com/index.php/topic,23464.0.html
-Patch2:         returnNull.patch
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  unzip

@@ -1,9 +1,9 @@
 diff -ru old/src/simutrans/sys/simsys.cc new/src/simutrans/sys/simsys.cc
 --- old/src/simutrans/sys/simsys.cc
 +++ new/src/simutrans/sys/simsys.cc
-@@ -562,7 +562,7 @@
+@@ -609,7 +609,7 @@
  	int maxlen = PATH_MAX + 22;
- 	unsigned n;
+ 	int n;
  	if( getenv("XDG_DATA_HOME") == NULL ) {
 -		n = snprintf(buffer, maxlen, "%s/simutrans", getenv("HOME"));
 +		n = snprintf(buffer, maxlen, "%s/.simutrans", getenv("HOME"));
