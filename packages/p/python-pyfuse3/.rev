@@ -175,4 +175,12 @@
   * fix LICENSE text: LGPL v2.1, #102</comment>
     <requestid>1343469</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>519ac087a47608ea41b01df04753141f</srcmd5>
+    <version>3.4.2</version>
+    <time>1776115136</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not ship source files in binary packages.</comment>
+    <requestid>1346346</requestid>
+  </revision>
 </revisionlist>

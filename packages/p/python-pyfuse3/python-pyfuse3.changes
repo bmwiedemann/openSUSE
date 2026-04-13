@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:35:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not ship source files in binary packages.
+
+-------------------------------------------------------------------
 Sun Mar 29 14:46:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.2:

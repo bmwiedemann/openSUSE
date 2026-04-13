@@ -54,7 +54,9 @@ pyfuse3 is a set of Python 3 bindings for libfuse 3. It provides an asynchronous
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand %fdupes %{buildroot}%{$python_sitearch}
+rm %{buildroot}%{$python_sitearch}/pyfuse3/*.[ch]
+}
 
 %check
 # Note: There are some tests that are skipped because the user that
