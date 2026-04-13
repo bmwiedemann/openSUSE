@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 13 13:39:13 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.78:
+  * Bugfixes
+    - Fixed a memory leak introduced in version 5.73.
+    - Build fix for systems without timegm()
+      (thanks to Jose A. Diaz and Shubham Gupta).
+    - Fixed a startup crash when both global (default)
+      and service-level lists of values are configured
+      for an option.
+  * Features
+    - Support for zstd and brotli compression with OpenSSL 3.2
+      and TLS 1.2 or older.
+    - Support for new "options" parameter values.
+    - Less bloated errors on an invalid configuration file.
+    - Documentation updated from Pod to Pandoc Markdown.
+    - Removed support for OpenSSL versions older than 0.9.8.
+      The final update for the OpenSSL 0.9.7 branch
+      (0.9.7m) was issed on 23 Feb 2007.
+
+-------------------------------------------------------------------
 Thu Feb 26 12:44:31 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 5.77:

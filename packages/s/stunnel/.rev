@@ -419,4 +419,28 @@ Do not replace the active config file: boo#1182376</comment>
     <comment></comment>
     <requestid>1335294</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4ad9288660cfcfbeadea48b490fdf5eb</srcmd5>
+    <version>5.78</version>
+    <time>1776115214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.78:
+  * Bugfixes
+    - Fixed a memory leak introduced in version 5.73.
+    - Build fix for systems without timegm()
+      (thanks to Jose A. Diaz and Shubham Gupta).
+    - Fixed a startup crash when both global (default)
+      and service-level lists of values are configured
+      for an option.
+  * Features
+    - Support for zstd and brotli compression with OpenSSL 3.2
+      and TLS 1.2 or older.
+    - Support for new &quot;options&quot; parameter values.
+    - Less bloated errors on an invalid configuration file.
+    - Documentation updated from Pod to Pandoc Markdown.
+    - Removed support for OpenSSL versions older than 0.9.8.
+      The final update for the OpenSSL 0.9.7 branch
+      (0.9.7m) was issed on 23 Feb 2007. (forwarded request 1346455 from pmonrealgonzalez)</comment>
+    <requestid>1346456</requestid>
+  </revision>
 </revisionlist>
