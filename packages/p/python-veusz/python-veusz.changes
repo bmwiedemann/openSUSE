@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  6 19:36:08 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.2.1:
+  * Change tutorial highlight color to magenta.
+  * Fix missing icon in tutorial.
+  * Move data settings to top in fit widget.
+  * Fix silent uninstallation.
+- Add python-veusz-disable-failing-test-w-qt6_11.patch to disable
+  test failing with Qt 6.11 (known, see upstream commit b6106f2).
+
+-------------------------------------------------------------------
 Sun Oct 12 08:57:35 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.2:

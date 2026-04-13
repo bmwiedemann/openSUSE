@@ -1,7 +1,7 @@
 #
 # spec file for package python-veusz
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,15 @@
 %{?sle15_python_module_pythons}
 %define modname veusz
 Name:           python-veusz
-Version:        4.2
+Version:        4.2.1
 Release:        0
 Summary:        Scientific plotting library for Python
 # The entire source code is GPL-2.0+ except helpers/src/_nc_cntr.c which is Python-2.0
 License:        GPL-2.0-or-later AND Python-2.0
 URL:            https://veusz.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/v/veusz/veusz-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-veusz-disable-failing-test-w-qt6_11.patch badshah400@gmail.com -- disable test known to fail with Qt 6.11 (see commit b6106f2)
+Patch0:         python-veusz-disable-failing-test-w-qt6_11.patch
 BuildRequires:  %{python_module PyQt6-devel}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel}

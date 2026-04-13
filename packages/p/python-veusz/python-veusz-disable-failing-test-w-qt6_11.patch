@@ -1,0 +1,18 @@
+---
+ tests/runselftest.py |    3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: veusz-4.2.1/tests/runselftest.py
+===================================================================
+--- veusz-4.2.1.orig/tests/runselftest.py
++++ veusz-4.2.1/tests/runselftest.py
+@@ -113,6 +113,9 @@ excluded_tests = set([
+         '3d_points.vsz',
+         '3d_surface.vsz',
+         '3d_volume.vsz',
++
++        # fails with Qt 6.11
++        'vectorfield.vsz',
+     ])
+ 
+ class StupidFontMetrics:
