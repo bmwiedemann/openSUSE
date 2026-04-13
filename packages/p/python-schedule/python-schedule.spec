@@ -1,7 +1,7 @@
 #
 # spec file for package python-schedule
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,16 @@
 
 
 Name:           python-schedule
-Version:        1.1.0
+Version:        1.2.2
 Release:        0
 Summary:        Job scheduling module for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dbader/schedule
 Source:         https://files.pythonhosted.org/packages/source/s/schedule/schedule-%{version}.tar.gz
-# https://github.com/dbader/schedule/issues/484
-Patch0:         python-schedule-no-mock.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

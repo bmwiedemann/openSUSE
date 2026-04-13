@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:27:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.2:
+  * Fix bugs in cross-timezone scheduling
+  * Add support for python 3.12
+  * Fix bug where schedule was off when using .at with timezone
+  * Dropped support for Python 3.6, add support for Python 3.10
+    and 3.11.
+  * Add timezone support for .at(). See #517. Thanks @chrimaho!
+  * Get next run by tag (#463) Thanks @jweijers!
+  * Add py.typed file. See #521. Thanks @Akuli!
+  * Fix the re pattern of the 'days'. See #506 Thanks @sunpro108!
+  * Fix test_until_time failure when run early.
+  * Fix crash repr on partially constructed job.
+- drop python-schedule-no-mock.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jun 12 09:21:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -11,7 +28,7 @@ Fri Mar  4 08:04:55 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Mon Nov  8 12:18:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 2.7 build 
+- skip python 2.7 build
 
 -------------------------------------------------------------------
 Thu Sep  9 11:43:19 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -90,7 +107,7 @@ Wed May 16 15:35:22 UTC 2018 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Tue Jan 19 19:40:31 UTC 2016 - hpj@urpla.net
 
-- reduce log level from info to debug 
+- reduce log level from info to debug
 
 -------------------------------------------------------------------
 Tue Jan 19 15:34:57 UTC 2016 - hpj@urpla.net

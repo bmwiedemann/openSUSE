@@ -85,4 +85,27 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285078</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b68a3271cf2b120acd870eeee9609c1f</srcmd5>
+    <version>1.2.2</version>
+    <time>1776115121</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.2:
+  * Fix bugs in cross-timezone scheduling
+  * Add support for python 3.12
+  * Fix bug where schedule was off when using .at with timezone
+  * Dropped support for Python 3.6, add support for Python 3.10
+    and 3.11.
+  * Add timezone support for .at(). See #517. Thanks @chrimaho!
+  * Get next run by tag (#463) Thanks @jweijers!
+  * Add py.typed file. See #521. Thanks @Akuli!
+  * Fix the re pattern of the 'days'. See #506 Thanks @sunpro108!
+  * Fix test_until_time failure when run early.
+  * Fix crash repr on partially constructed job.
+- drop python-schedule-no-mock.patch (upstream)
+
+- skip python 2.7 build
+- reduce log level from info to debug</comment>
+    <requestid>1346279</requestid>
+  </revision>
 </revisionlist>
