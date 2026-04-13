@@ -1,7 +1,7 @@
 #
 # spec file for package alacritty
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           alacritty
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
@@ -26,13 +26,13 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source3:        README.suse-maint
 BuildRequires:  cargo-packaging
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  libxcb-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.85
 BuildRequires:  scdoc
-BuildRequires:  update-desktop-files
 BuildRequires:  xclip
 BuildRequires:  pkgconfig(fontconfig)
 # taken from vendor/freetype-sys/build.rs
@@ -82,9 +82,15 @@ install -D -m 0755 target/release/alacritty %{buildroot}%{_bindir}/alacritty
 # rm duplicate license and useless toml file
 rm -fr %{buildroot}%{_datadir}
 
-# install completions
+# install desktop integration
 install -Dm 0644 extra/linux/Alacritty.desktop \
-    %{buildroot}/%{_datadir}/applications/Alacritty.desktop
+    %{buildroot}/%{_datadir}/applications/org.alacritty.Alacritty.desktop
+desktop-file-install \
+    --dir=%{buildroot}%{_datadir}/applications \
+    --add-category=Utility \
+    %{buildroot}/%{_datadir}/applications/org.alacritty.Alacritty.desktop
+
+# install completions
 install -Dm 0644 extra/logo/alacritty-simple.svg \
     %{buildroot}/%{_datadir}/pixmaps/Alacritty.svg
 install -Dm 0644 extra/linux/org.alacritty.Alacritty.appdata.xml \
@@ -97,14 +103,12 @@ install -Dm 0644 extra/completions/_%{name} \
     %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
 
 # build and install manpages
-mkdir -p %{buildroot}%{_mandir}/man{1,5}
+mkdir -p %{buildroot}%{_mandir}/man{1,5,7}
 scdoc < extra/man/%{name}.1.scd > %{buildroot}%{_mandir}/man1/%{name}.1
 scdoc < extra/man/%{name}-msg.1.scd > %{buildroot}%{_mandir}/man1/%{name}-msg.1
 scdoc < extra/man/%{name}.5.scd > %{buildroot}%{_mandir}/man5/%{name}.5
 scdoc < extra/man/%{name}-bindings.5.scd > %{buildroot}%{_mandir}/man5/%{name}-bindings.5
-
-# install desktop file
-%suse_update_desktop_file Alacritty
+scdoc < extra/man/%{name}-escapes.7.scd > %{buildroot}%{_mandir}/man7/%{name}-escapes.7
 
 %fdupes %{buildroot}%{_datadir}
 
@@ -116,7 +120,8 @@ scdoc < extra/man/%{name}-bindings.5.scd > %{buildroot}%{_mandir}/man5/%{name}-b
 %{_mandir}/man1/%{name}-msg.1%{?ext_man}
 %{_mandir}/man5/%{name}.5%{?ext_man}
 %{_mandir}/man5/%{name}-bindings.5%{?ext_man}
-%{_datadir}/applications/Alacritty.desktop
+%{_mandir}/man7/%{name}-escapes.7%{?ext_man}
+%{_datadir}/applications/org.alacritty.Alacritty.desktop
 %{_datadir}/pixmaps/Alacritty.svg
 %{_datadir}/appdata/org.alacritty.Alacritty.appdata.xml
 

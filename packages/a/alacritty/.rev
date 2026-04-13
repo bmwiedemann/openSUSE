@@ -416,4 +416,12 @@ Bump minimum required rust version to 1.85</comment>
 Update to version 0.16.1</comment>
     <requestid>1312899</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>84a86ce304fe1788ba9b21a2b549831d</srcmd5>
+    <version>0.17.0</version>
+    <time>1776115101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346230</requestid>
+  </revision>
 </revisionlist>
