@@ -18,14 +18,13 @@
 
 %define         appname org.gnome.World.PikaBackup
 Name:           pika-backup
-Version:        0.7.6
+Version:        0.8.1
 Release:        0
 Summary:        Simple backups based on borg
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/pika-backup
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Patch0:         disable-gtk-test.patch
 BuildRequires:  borgbackup
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
@@ -36,10 +35,11 @@ BuildRequires:  openssh-clients
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.12.5
+BuildRequires:  pkgconfig(gtk4) >= 4.21
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.0
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libsecret-1)
+BuildRequires:  pkgconfig(openssl)
 Requires:       borgbackup
 Requires:       python3-msgpack
 Requires:       python3-pyfuse3

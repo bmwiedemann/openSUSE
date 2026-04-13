@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:14:52 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Remove disable-gtk-test.patch Fixed appstream. 
+
+-------------------------------------------------------------------
+Mon Apr 13 03:47:26 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.1:
+  * Fix timestamps not respecting 12h/24h clock format setting.
+  * Fix UI sometimes being unresponsive when starting / stopping 
+    backups.
+  * Fix backups failing to get credentials or mount GFvs if two 
+    scheduled backups are started at the same time. Now, only 
+    one backups is started per minute.
+  * Fix buttons in notifications not working in flatpaked version 
+    with workaround.
+  * Add detailed explanation about the risks and benefits of 
+    encrypting backups.
+  * Change code to use three different Rust modules.
+  * Change fnmatches to be stored as strings instead of bytes in 
+    config.
+  * Change setup dialog start page is split into two pages.
+  * Change history file to be smaller.
+  * Change to error out if archives are mounted for scheduled backup.
+  * Change to error out if backup is already in use for scheduled 
+    backup.
+  * Change to use AdwAlertDialog.
+  * Change to use AdwAboutDialog.
+  * Change to use AdwDialog for all dialogs.
+  * Change to use AdwWrapBox instead of our own implementation.
+  * Change to use AdwShortcutsDialog.
+  * Change to use tracing for logging instead of glib.
+  * Change to no longer explicitly support X11.
+  * Change reconnect mechanism to be more robust in detecting 
+    if work happened between disconnects.
+  * Add ability to backup files.
+  * Add dialog showing the state of closing archives mounted for 
+    browsing when closing main window.
+  * Add propper error messages for more situations like missing 
+    filesystem access.
+  * Add info about potential Ubuntu bug when mounting archives fails.
+  * Add pkgconfig(openssl) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Mon Mar  2 03:29:51 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.7.6:
