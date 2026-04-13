@@ -1,7 +1,7 @@
 #
 # spec file for package python-multidict
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-multidict
-Version:        6.1.0
+Version:        6.7.1
 Release:        0
 Summary:        Multidict implementation
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/multidict
 Source:         https://files.pythonhosted.org/packages/source/m/multidict/multidict-%{version}.tar.gz
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module setuptools >= 40}
+BuildRequires:  %{python_module typing-extensions >= 4.1.0 if %python-base < 3.10}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-typing-extensions
+%if 0%{?python_version_nodots} < 310
+Requires:       python-typing-extensions >= 4.1.0
+%endif
 %python_subpackages
 
 %description
@@ -54,6 +60,8 @@ export CFLAGS="%{optflags}"
 %check
 # remove the extra pytest opts
 rm pytest.ini
+# remove codespeed tests
+rm tests/test_*_benchmarks.py
 # test_circular_imports try to import from the system and the module
 # is installed in the buildroot at this point.
 %pytest_arch --ignore tests/test_circular_imports.py
