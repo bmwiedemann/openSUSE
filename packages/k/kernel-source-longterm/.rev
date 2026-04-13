@@ -945,4 +945,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>update longterm</comment>
     <requestid>1344429</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>0a5869722a925978f232429b17861aac</srcmd5>
+    <version>6.18.22</version>
+    <time>1776115091</time>
+    <user>dimstar_suse</user>
+    <comment>update longterm</comment>
+    <requestid>1346145</requestid>
+  </revision>
 </revisionlist>
