@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:29:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.10.1:
+  * Fixed python version in package metadata. `3.13` was missing.
+  * Fixed an issue with `pytest 9` related to the fixture closure
+    building fixes
+  * Added the `with_case_tags` decorator for applying common tags
+    to all cases defined in a case class. Fixes #351.
+
+-------------------------------------------------------------------
 Mon Sep 29 21:22:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.1:

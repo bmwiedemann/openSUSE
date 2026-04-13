@@ -15,4 +15,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1309392</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>06a3210af7d647aea252690d84972448</srcmd5>
+    <version>3.10.1</version>
+    <time>1776115106</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.10.1:
+  * Fixed python version in package metadata. `3.13` was missing.
+  * Fixed an issue with `pytest 9` related to the fixture closure
+    building fixes
+  * Added the `with_case_tags` decorator for applying common tags
+    to all cases defined in a case class. Fixes #351.</comment>
+    <requestid>1346222</requestid>
+  </revision>
 </revisionlist>

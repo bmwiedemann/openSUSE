@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-cases
-Version:        3.9.1
+Version:        3.10.1
 Release:        0
 Summary:        Separate test code from test cases in pytest
 License:        BSD-3-Clause
@@ -59,6 +59,8 @@ Separate test code from test cases in pytest.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
+%doc README.md
+%license LICENSE
 %{python_sitelib}/pytest_cases
 %{python_sitelib}/pytest_cases-%{version}.dist-info
 
