@@ -27,4 +27,14 @@ Update to version 1.4.4</comment>
     <comment></comment>
     <requestid>1346197</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>79df16daa5d8c2d47e41dc1244a7ca03</srcmd5>
+    <version>1.4.10</version>
+    <time>1776115124</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1346266 from jlkDE
+
+Keep the source tree intact for %check while preserving the installed runtime file layout</comment>
+    <requestid>1346267</requestid>
+  </revision>
 </revisionlist>

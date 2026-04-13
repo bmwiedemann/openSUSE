@@ -49,7 +49,7 @@ mv bats-assert-%{bats_assert_version} test/test_helper/bats-assert
 
 %install
 mkdir -p %{buildroot}%{_datadir}/diff-so-fancy
-cp -a lib third_party %{buildroot}%{_datadir}/diff-so-fancy/
+cp -a lib/* third_party %{buildroot}%{_datadir}/diff-so-fancy/
 chmod -x %{buildroot}%{_datadir}/diff-so-fancy/third_party/*/*.pl
 sed -i '#!\/usr\/bin/d' %{buildroot}%{_datadir}/diff-so-fancy/third_party/*/*.pl
 sed -i '0 , /^$/ d' %{buildroot}%{_datadir}/diff-so-fancy/third_party/*/*.pl

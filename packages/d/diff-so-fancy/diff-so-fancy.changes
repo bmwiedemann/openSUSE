@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:06:26 UTC 2026 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Add a %check section and run the upstream unit test suite with bats
+- Vendor bats-core, bats-support, and bats-assert as additional
+  source archives for tests
+- Keep the source tree intact for %check while preserving the
+  installed runtime file layout
+
+-------------------------------------------------------------------
 Sun Apr 12 13:37:43 UTC 2026 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 1.4.10
