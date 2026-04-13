@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:41:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * Support Request #122: Feature proposal: Capability to mark
+    checks as xfail
+  * Allow CheckContextManager to catch any exception, not just
+    AssertionError (#198).
+  * Non-assertion exceptions (IndexError, KeyError,
+    AttributeError, etc.) are now properly caught and reported as
+    check failures.
+  * (typing) Set comparison function types such that None is not
+    allowed
+  * Passing `None` to comparison functions like `greater()`,
+    `less()`, etc. used to raise an exception, which caused a
+    test failure and stopped the test.
+  * (typing) Allow numpy floats with comparison functions to pass
+    mypy.
+  * (typing) Allow mixed `int`/`float` arguments in strict mypy
+    for comparison helpers by adding `float` numeric overloads
+    for `greater()`, `greater_equal()`, `less()`, and
+    `less_equal()` in `check_functions.py`.
+  * Ignore dist-packages in pseudo stack trace - Fixes #196 -
+  * (typing) Resolve remaining mypy errors for `import
+    pytest_check as check` usage; internal adjustments in
+    `check_functions.py`.
+  * (typing) Update internal `_Comparable*` protocol comparison
+    signatures to satisfy strict mypy checks.
+  * (tox) Enable and expand `mypy` env checks to include
+    `examples/`.
+  * (tox) Install `httpx` in the `mypy` env so example type
+    checking works without import ignores.
+  * (examples) Switch decorator usage in
+    `test_example_check_func_decorator.py` to import `check_func`
+    directly for static type checking.
+  * (examples) Add `test_example_context_manager_type.py` to
+    document and validate context-manager fixture typing
+    behavior.
+  * (docs) Document custom message support (`msg`) in
+    `check.raises()`.
+  * (tests) Add tests for custom messages in `check.raises()`.
+  * (docs) Document that built-in check methods return `bool`
+    values.
+  * (docs) Update pseudo-traceback examples to reflect the
+    default single pseudo-traceback and show how to increase it
+    with `--check-max-tb=5`.
+  * (docs) Add `check.call_on_fail()` section with usage
+    guidance.
+  * (examples) Add runnable logging example in
+    `examples/logging_to_a_file/`.
+  * (tests) Make `test_raises_custom_msg` compatible with pytest
+    < 7.3 short-summary output.
+  * Fix #190: pyright errors
+  * Fix #145: Is the 'raises' parameter in xfail ignored? - not
+    anymore
+  * Greater/less_equal support numpy scalars #189 - Thanks
+
+-------------------------------------------------------------------
+Wed Nov  5 17:10:03 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- update to 2.6.0:
+  * raises returns the exception value, so the excpected error message can be verified
+  * raises & any_failures exported from top init.py module so that mypy does not complain that they are not explicitly exported
+  * Make _Comparable* protocols compatible with builtins
+  * Turn on testing for Python 3.14 in CI
+  * Relative paths in tracebacks
+  * Add testing of Python 3.14
+  * Fixes a weird corner case where an internal error could be generated
+  * Set a minimum pluggy version during type checking
+  * Add type hints, remove support for Python 3.8
+  * Fixes check doesn't respect runxfail option
+  * Add testing for Python 3.13 to GH actions
+  * Add testing for Python 3.13 and 3.14 to tox.ini
+  * Switch packackaching from flit to hatchling
+- change BuildRequires from flit-core >= 2 to hatchling
+- Add pytest-check-no-new-classifiers.patch: to remove new classifiers for older hatchling version
+
+-------------------------------------------------------------------
 Sat Aug 31 12:11:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.1:

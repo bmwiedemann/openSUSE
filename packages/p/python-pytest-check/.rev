@@ -109,4 +109,41 @@
   * Add tox-uv to tox.ini and main.yml</comment>
     <requestid>1198057</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e4c0634597a9862fda928e1258e618aa</srcmd5>
+    <version>2.8.0</version>
+    <time>1776115107</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.0:
+  * Support Request #122: Feature proposal: Capability to mark
+    checks as xfail
+  * Allow CheckContextManager to catch any exception, not just
+    AssertionError (#198).
+  * Non-assertion exceptions (IndexError, KeyError,
+    AttributeError, etc.) are now properly caught and reported as
+    check failures.
+  * (typing) Set comparison function types such that None is not
+    allowed
+  * Passing `None` to comparison functions like `greater()`,
+    `less()`, etc. used to raise an exception, which caused a
+    test failure and stopped the test.
+  * (typing) Allow numpy floats with comparison functions to pass
+    mypy.
+  * (typing) Allow mixed `int`/`float` arguments in strict mypy
+    for comparison helpers by adding `float` numeric overloads
+    for `greater()`, `greater_equal()`, `less()`, and
+    `less_equal()` in `check_functions.py`.
+  * Ignore dist-packages in pseudo stack trace - Fixes #196 -
+  * (typing) Resolve remaining mypy errors for `import
+    pytest_check as check` usage; internal adjustments in
+    `check_functions.py`.
+  * (typing) Update internal `_Comparable*` protocol comparison
+    signatures to satisfy strict mypy checks.
+  * (tox) Enable and expand `mypy` env checks to include
+    `examples/`.
+  * (tox) Install `httpx` in the `mypy` env so example type
+    checking works without import ignores.
+  * (examples) Switch decorator usage in</comment>
+    <requestid>1346225</requestid>
+  </revision>
 </revisionlist>
