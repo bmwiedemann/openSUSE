@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr  9 16:23:14 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.10 
+ * Preview features
+  * [flake8-logging] Allow closures in except handlers (LOG004) 
+  * [flake8-self] Make SLF diagnostics robust to non-self-named variables 
+  * [flake8-simplify] Make the fix for collapsible-if safe in preview (SIM102) 
+ * Bug fixes
+  * Avoid emitting multi-line f-string elements before Python 3.12 
+  * Avoid syntax error from E502 fixes in f-strings and t-strings 
+  * Strip form feeds from indent passed to dedent_to 
+  * [pyupgrade] Fix panic caused by handling of octals (UP012) 
+  * Reject multi-line f-string elements before Python 3.12 
+ * Rule changes
+  * [ruff] Treat f-string interpolation as potential side effect (RUF019) 
+ * Server
+  * Add support for custom file extensions 
+ * Documentation
+  * Document adding fixes in CONTRIBUTING.md 
+  * Fix JSON typo in settings example 
+
+-------------------------------------------------------------------
 Tue Apr  7 08:38:05 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.9
