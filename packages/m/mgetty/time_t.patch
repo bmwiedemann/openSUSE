@@ -1,0 +1,29 @@
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Fri Mar 6 03:47:59 2026 +0100
+
+Fix two year-2038-problems
+See https://en.wikipedia.org/wiki/Year_2038_problem
+This patch was done while reviewing potential year-2038 issues in openSUSE.
+
+diff --git a/callback/callback.c b/callback/callback.c
+index 961a4e5..6016769 100644
+--- a/callback/callback.c
++++ b/callback/callback.c
+@@ -262,7 +262,7 @@ TIO tio;
+  */
+ int callback_find_device _P5( (ttys, device, mgetty_pid, rtime, end_time),
+ 			      char * ttys, char * device, int * mgetty_pid,
+-			      int rtime, int end_time )
++			      int rtime, time_t end_time )
+ {
+ char * p, *p_help;
+ int fd;
+@@ -339,7 +339,7 @@ boolean found_locked;			/* found some tty locked */
+ }
+ 
+ int dialup _P4((fd, phone, count, end_time), 
+-		int fd, char ** phone, int count, int end_time )
++		int fd, char ** phone, int count, time_t end_time )
+ {
+ int n;
+ char dialbuf[MAXLINE];

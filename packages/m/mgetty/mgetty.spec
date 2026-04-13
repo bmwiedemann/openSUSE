@@ -44,6 +44,7 @@ Patch14:        mgetty-fix-errlist.patch
 Patch15:        faxq-libexec.patch
 # build with gcc15
 Patch16:        mgetty-gcc15.patch
+Patch17:        time_t.patch
 BuildRequires:  groff
 BuildRequires:  makeinfo
 BuildRequires:  netpbm
@@ -111,6 +112,7 @@ The g3utils are included in the mgetty source package.
 %patch -P 14 -p1
 %patch -P 15 -p1
 %patch -P 16 -p1
+%patch -P 17 -p1
 chmod +x mkidirs
 
 %build
