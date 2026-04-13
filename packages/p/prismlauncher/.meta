@@ -3,5 +3,6 @@
   <description>
 A custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once.
   </description>
+  <devel project="games:tools" package="prismlauncher"/>
   <url>https://github.com/PrismLauncher/PrismLauncher</url>
 </package>

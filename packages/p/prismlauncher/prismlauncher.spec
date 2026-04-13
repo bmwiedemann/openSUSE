@@ -18,13 +18,12 @@
 
 %define _name PrismLauncher
 Name:           prismlauncher
-Version:        10.0.5
+Version:        11.0.2
 Release:        0
 Summary:        A custom launcher for Minecraft
 License:        GPL-3.0-only AND Apache-2.0 AND LGPL-3.0-only AND OFL-1.1 AND LGPL-2.1-only AND MIT AND BSD-3-Clause
 URL:            https://github.com/%{_name}/%{_name}
-# n=PrismLauncher && v=10.0.5 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/$n.git $n && pushd $n && git submodule && git submodule update --init --recursive libraries/libnbtplusplus && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
-Source0:        %{_name}-%{version}.tar.xz
+Source0:        https://github.com/%{_name}/%{_name}/releases/download/%{version}/%{_name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
@@ -40,6 +39,7 @@ BuildRequires:  cmake(Qt6OpenGL)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(VulkanHeaders)
 BuildRequires:  pkgconfig(gamemode)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcmark)
@@ -47,8 +47,12 @@ BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(scdoc)
 BuildRequires:  pkgconfig(tomlplusplus)
 BuildRequires:  pkgconfig(zlib)
+# libQt6Svg6 needed to render SVG icons in the resource provider dialogs.
+Requires:       libQt6Svg6
 Requires:       pciutils
-Recommends:     java <= 25
+# qt6-imageformats needed to render WEBP icons in the resource provider dialogs.
+Requires:       qt6-imageformats
+Recommends:     (java-25 or java-21 or java-17 or java-1.8.0 or java-1.7.0)
 # xrandr needed for LWJGL on NVidia blob https://github.com/LWJGL/lwjgl/issues/128
 Recommends:     xrandr
 Suggests:       flite
@@ -79,15 +83,15 @@ sed -i -e 's|\$ORIGIN/||' -e 's/\${TODAY}/unknown/' CMakeLists.txt
 %license COPYING.md LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%dir %{_datadir}/PrismLauncher
-%{_datadir}/PrismLauncher/*
-%{_datadir}/applications/org.%{name}.PrismLauncher.desktop
-%{_datadir}/icons/hicolor/*/apps/org.%{name}.PrismLauncher.{png,svg}
+%dir %{_datadir}/%{_name}
+%{_datadir}/%{_name}/*
+%{_datadir}/applications/org.%{name}.%{_name}.desktop
+%{_datadir}/icons/hicolor/*/apps/org.%{name}.%{_name}.{png,svg}
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.%{name}.PrismLauncher.metainfo.xml
-%{_datadir}/mime/packages/modrinth-mrpack-mime.xml
+%{_datadir}/metainfo/org.%{name}.%{_name}.metainfo.xml
+%{_datadir}/mime/packages/org.%{name}.%{_name}.xml
 %dir %{_datadir}/qlogging-categories6
 %{_datadir}/qlogging-categories6/%{name}.categories
-%{_mandir}/man?/prismlauncher.*
+%{_mandir}/man?/%{name}.*
 
 %changelog
