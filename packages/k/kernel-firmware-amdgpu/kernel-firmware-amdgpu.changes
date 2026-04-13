@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:39:58 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260410 (git commit dc85ccedc9c9):
+  * amdgpu: Revert Yellow Carp DMUB fw to 0x4000045
+
+-------------------------------------------------------------------
 Sun Mar 29 08:38:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260327 (git commit 85786b4413fd):
