@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 13 06:44:30 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip flaky tests, bsc#1261360
+
+-------------------------------------------------------------------
 Fri Mar 13 09:22:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.25.2:

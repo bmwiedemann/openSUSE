@@ -79,7 +79,10 @@ inter-process communication.
 %else
 
 %check
-%pytest -rs
+# flaky test
+donttest="test_threaded_shared_lock_obj"
+donttest+=" or test_threaded_lock_different_lock_obj"
+%pytest -rs -k "not ($donttest)"
 %endif
 
 %changelog

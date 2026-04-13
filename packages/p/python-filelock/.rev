@@ -323,4 +323,12 @@
     `ReadWriteLock`</comment>
     <requestid>1338659</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>12b38f1baf2e7b1932dab21d26694ced</srcmd5>
+    <version>3.25.2</version>
+    <time>1776115095</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip flaky tests, bsc#1261360</comment>
+    <requestid>1346371</requestid>
+  </revision>
 </revisionlist>
