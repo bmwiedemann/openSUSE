@@ -211,4 +211,14 @@
   * Bigger image size in break screen #866</comment>
     <requestid>1344958</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>70f0e0310adda5db5acad8282c61d6c4</srcmd5>
+    <version>3.4.0</version>
+    <time>1776115165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0:
+  * Update translations
+  * Short and long break command line argument #849</comment>
+    <requestid>1346381</requestid>
+  </revision>
 </revisionlist>
