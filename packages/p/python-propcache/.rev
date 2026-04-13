@@ -48,4 +48,32 @@
     <comment></comment>
     <requestid>1303576</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d3466d36cfbd7a7de2f001bc16a7b892</srcmd5>
+    <version>0.4.1</version>
+    <time>1776115080</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.1:
+  * Fixed reference leak caused by Py_INCREF because Cython has
+    its own reference counter systems -- by :user:`Vizonex`.
+    Related issues and pull requests on GitHub: :issue:`162`.
+  * Fixes the default value for the os parameter in reusable-
+    build-wheel.yml to be ubuntu-latest instead of ubuntu.
+    Related issues and pull requests on GitHub: :issue:`155`.
+  * Optimized propcache by replacing sentinel :py:class:`object`
+    for checking if the :py:class:`object` is NULL and changed
+    :py:class:`dict` API for Python C-API -- by :user:`Vizonex`.
+    Related issues and pull requests on GitHub: :issue:`121`.
+  * Builds have been added for arm64 Windows wheels and the
+    reusable-build-wheel.yml workflow has been modified to allow
+    for an OS value (windows-11-arm) which does not include the
+    -latest postfix -- by :user:`finnagin`. Related issues and
+    pull requests on GitHub: :issue:`133`.
+  * Added CI for CPython 3.14 -- by :user:`kumaraditya303`.
+    Related issues and pull requests on GitHub: :issue:`140`.
+- drop py314.patch (upstream)
+
+  * Implemented support for the free-threaded build of CPython 3.13 -- by :user:lysnikolaou.</comment>
+    <requestid>1345291</requestid>
+  </revision>
 </revisionlist>
