@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  3 13:15:09 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
+
+- Drop python-Quart-fix-test-propagation-werkzeug317.patch:
+  fixed upstream in Werkzeug 3.1.8. 
+
+-------------------------------------------------------------------
 Sun Mar 29 20:32:21 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
 
 - Fix test_propagation test failure with Werkzeug >= 3.1.7 which no

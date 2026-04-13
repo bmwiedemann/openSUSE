@@ -29,7 +29,6 @@ Summary:        A Python ASGI web microframework with the same API as Flask
 License:        MIT
 URL:            https://github.com/pallets/quart/
 Source:         https://github.com/pallets/quart/archive/refs/tags/%{version}.tar.gz#/quart-%{version}.tar.gz
-Patch0:         python-Quart-fix-test-propagation-werkzeug317.patch
 BuildRequires:  %{python_module Flask >= 3.0}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module MarkupSafe}
