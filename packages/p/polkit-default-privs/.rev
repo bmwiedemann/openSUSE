@@ -2462,4 +2462,14 @@ for 12.3</comment>
     <comment></comment>
     <requestid>1332724</requestid>
   </revision>
+  <revision rev="264" vrev="1">
+    <srcmd5>cd2e11fa5a2d965b53cf29ad106ad835</srcmd5>
+    <version>1550+20260409.85cbda6</version>
+    <time>1776115096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20260409.85cbda6:
+  * profiles: systemd v260 new actions (bsc#1259318)
+  * profiles: whitelist cosmic-settings Admin action (bsc#1259402)</comment>
+    <requestid>1345478</requestid>
+  </revision>
 </revisionlist>

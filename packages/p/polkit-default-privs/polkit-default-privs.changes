@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 09 09:05:16 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 1550+20260409.85cbda6:
+  * profiles: systemd v260 new actions (bsc#1259318)
+  * profiles: whitelist cosmic-settings Admin action (bsc#1259402)
+
+-------------------------------------------------------------------
 Thu Feb 12 14:26:29 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 1550+20260212.d84c6be:
