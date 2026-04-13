@@ -1,7 +1,7 @@
 #
 # spec file for package cage
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cage
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Wayland Kiosk
 License:        MIT
@@ -27,7 +27,7 @@ Source:         %{name}-%{version}.tar.gz
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
-BuildRequires:  wlroots-devel >= 0.19.0
+BuildRequires:  wlroots-devel >= 0.20.0
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
 BuildRequires:  pkgconfig(wayland-server)

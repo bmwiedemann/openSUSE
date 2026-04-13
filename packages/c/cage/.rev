@@ -31,4 +31,23 @@
     <comment></comment>
     <requestid>1310392</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>65363a5ce3246557b0d689aa9b29b561</srcmd5>
+    <version>0.3.0</version>
+    <time>1776115166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0:
+  * build: bump version to 0.3.0
+  * Make buffer bigger to prevent wayland disconnection
+  * build: drop cage_heaers
+  * Upgrade wlroots to v0.20
+  * Fix segfault during cleanup when wlr_scene isn't created
+  * Implement the drm-lease-v1 protocol
+  * xwayland: fix crash when request_fullscreen is called while unmapped
+  * xdg_shell: skip configure in request_fullscreen handler if unmapped
+  * Fix segfault when title or app_id is NULL
+  * xwayland: remove associate/dissociate listeners
+  * Add support for wlr-foreign-toplevel-management</comment>
+    <requestid>1346379</requestid>
+  </revision>
 </revisionlist>
