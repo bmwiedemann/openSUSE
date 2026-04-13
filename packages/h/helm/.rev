@@ -1139,4 +1139,14 @@ See changelog in:
       scorecards workflow c61e086 (Terry Howe)</comment>
     <requestid>1345702</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>81b2efaac2bb48f97ae0380c869df272</srcmd5>
+    <version>4.1.4</version>
+    <time>1776115109</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.4 (bsc#1261939, CVE-2026-35204,
+      bsc#1261935 CVE-2026-35205,
+      bsc#1261938 CVE-2026-35206):</comment>
+    <requestid>1346237</requestid>
+  </revision>
 </revisionlist>

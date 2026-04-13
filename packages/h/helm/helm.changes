@@ -1,9 +1,9 @@
 -------------------------------------------------------------------
 Thu Apr  9 08:43:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 4.1.4 (CVE-2026-35204, CVE-2026-35205, CVE-2026-35206):
-  Helm v4.1.4 is a security fix patch release. Users are encouraged
-  to upgrade for the best experience.
+- update to 4.1.4 (bsc#1261939, CVE-2026-35204,
+      bsc#1261935 CVE-2026-35205,
+      bsc#1261938 CVE-2026-35206):
   * Security fixes
     - GHSA-hr2v-4r36-88hr Helm Chart extraction output directory
       collapse via Chart.yaml name dot-segment
