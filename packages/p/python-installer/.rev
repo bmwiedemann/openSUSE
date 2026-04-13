@@ -75,4 +75,41 @@
 - add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1083115</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>28b22fda32c6ad047bc739fbbedd6ee2</srcmd5>
+    <version>1.0.0</version>
+    <time>1776115086</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to GitHub tarball, the sdist no longer ships tests.
+
+- update to 1.0.0:
+  * Drop support for Python 3.9, 3.8, and 3.7
+  * Add support and Python 3.13 and 3.14
+  * Add `--overwrite-existing` CLI option
+  * Add `--validate-record` CLI option
+  * Support installing multiple wheels
+  * Handle invalid hash algorithms
+  * Stream-based validation instead of in-memory
+  * Add validate_stream methods
+  * Consolidate and refine validation APIs
+  * Sort entries before writing RECORD
+  * Do not install __pycache__ from wheels
+  * Fix a path traversal bug
+  * Update launcher scripts and Windows behavior
+  * Fix Windows relpath bug
+  * Migrate to dataclasses
+  * Use cached_property for memoization
+  * Refactor installer.scripts
+  * Decouple test modules
+  * Avoid cross-module imports from .utils
+  * Lazy imports for performance
+  * Complete type annotations and enforce strict mypy
+  * Deprecate RecordEntry.validate
+  * Fix documentation typos and grammar
+  * Improve docstrings and internal documentation
+
+- build with any python3 interpreter installed in the buildenv
+  * Separate validation of RECORD (#147, #167)</comment>
+    <requestid>1346062</requestid>
+  </revision>
 </revisionlist>

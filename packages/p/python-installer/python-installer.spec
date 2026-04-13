@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-installer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-installer%{pkg_suffix}
-Version:        0.7.0
+Version:        1.0.0
 Release:        0
 Summary:        A library for installing Python wheels
 License:        MIT
 URL:            https://github.com/pypa/installer
-Source:         https://files.pythonhosted.org/packages/source/i/installer/installer-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module flit-core}
+Source:         https://github.com/pypa/installer/archive/refs/tags/%{version}.tar.gz#/installer-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
