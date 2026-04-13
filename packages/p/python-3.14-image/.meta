@@ -1,0 +1,4 @@
+<package name="python-3.14-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI Python 3.14 development</title>
+  <description>Python 3.14 development container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
