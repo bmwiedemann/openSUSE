@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Apr 13 08:14:59 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.2:
+  * Closes the 3.9 ms live-vs-offline decode gap on M3 Max, bringing the live
+    RTP receiver from ~50 fps to ~60 fps on 4K 4:2:2 HT at 1.7 bpp with
+    --threads 2
+
+-------------------------------------------------------------------
+Mon Apr 13 08:14:19 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  * RTP receiver: Fix -DOPENHTJ2K_RTP=ON build on macOS
+
+-------------------------------------------------------------------
+Mon Apr 13 08:13:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.13.0
+
+-------------------------------------------------------------------
+Mon Apr 13 08:13:33 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.12.0
+
+-------------------------------------------------------------------
+Mon Apr 13 08:12:57 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.1:
+  * Update the RTP receiver capability claim from "sustains 4K @ 30 fps" to
+    "sustains 4K @ 60 fps on modern x86-64 with --threads 2", to reflect the
+    v4-perf work that shipped in 0.11.0
+
+-------------------------------------------------------------------
+Mon Apr 13 08:12:24 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.0:
+  See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.11.0
+
+-------------------------------------------------------------------
+Mon Apr 13 08:11:42 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.10.0
+
+-------------------------------------------------------------------
 Fri Apr 10 16:13:21 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.1:

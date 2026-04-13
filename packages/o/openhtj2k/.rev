@@ -144,4 +144,35 @@
     all frames had an odd-offset EOC.</comment>
     <requestid>1345853</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7b2c037353c76cd0c5bde9ea255d228b</srcmd5>
+    <version>0.13.2</version>
+    <time>1776115168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.2:
+  * Closes the 3.9 ms live-vs-offline decode gap on M3 Max, bringing the live
+    RTP receiver from ~50 fps to ~60 fps on 4K 4:2:2 HT at 1.7 bpp with
+    --threads 2
+
+- Update to 0.13.1:
+  * RTP receiver: Fix -DOPENHTJ2K_RTP=ON build on macOS
+
+- Update to 0.13.0:
+  See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.13.0
+
+- Update to 0.12.0:
+  See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.12.0
+
+- Update to 0.11.1:
+  * Update the RTP receiver capability claim from &quot;sustains 4K @ 30 fps&quot; to
+    &quot;sustains 4K @ 60 fps on modern x86-64 with --threads 2&quot;, to reflect the
+    v4-perf work that shipped in 0.11.0
+
+- Update to 0.11.0:
+  See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.11.0
+
+- Update to 0.10.0:
+  See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.10.0</comment>
+    <requestid>1346378</requestid>
+  </revision>
 </revisionlist>
