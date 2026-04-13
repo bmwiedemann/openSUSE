@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:11:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.70:
+  * Fixed
+    - MD044: do not flag proper names inside bare-domain link text
+      (56a45df)
+
+-------------------------------------------------------------------
 Sat Apr 11 06:59:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.69:
