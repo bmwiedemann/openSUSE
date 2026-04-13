@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-dateparser
-Version:        1.2.2
+Version:        1.4.0
 Release:        0
 Summary:        Date parsing library designed to parse dates from HTML pages
 License:        BSD-3-Clause
@@ -32,8 +32,6 @@ Source:         https://files.pythonhosted.org/packages/source/d/dateparser/date
 # PATCH-FIX-UPSTREAM mark-network-tests.patch gh#scrapinghub/dateparser#1059 mcepl@suse.com
 # mark test requiring network access
 Patch1:         mark-network-tests.patch
-# PATCH-FIX-UPSTREAM https://github.com/scrapinghub/dateparser/pull/1294 use current year in test_search_dates_with_prepositions
-Patch2:         happy-new-year.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
