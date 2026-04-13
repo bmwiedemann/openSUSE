@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 13 12:52:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.6:
+  * extract_v3: validate link target size.
+  * query: match depends exactly against dependencies.
+  * defines: add and use APKE_BUFFER_SIZE.
+  * db: fix url buffer sizes and names.
+  * pkg: add and use PKG_VER_MAX for PKG_VER_FMT.
+  * db, update: update idb package size from index.
+  * db: set diri->pkg to null to indicate overlay.
+  * fix re-exec writing to original argv instead of copy.
+  * fix off-by-one in fetch_parseuint radix check.
+
+-------------------------------------------------------------------
 Thu Mar 12 17:03:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.5:

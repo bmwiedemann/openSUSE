@@ -21,7 +21,7 @@
 %define soname 3_0_0
 %define libname libapk%{soname}
 Name:           apk-tools
-Version:        3.0.5
+Version:        3.0.6
 Release:        0
 Summary:        Alpine package manager
 License:        GPL-2.0-or-later
