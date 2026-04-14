@@ -423,4 +423,14 @@
   * Internal updates</comment>
     <requestid>1342128</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3ae34a5cd9dfdd74377c16f1a2891d24</srcmd5>
+    <version>6.2.9</version>
+    <time>1776181733</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.9:
+  * Fixed an issue with cf_call not getting the last page of
+    results</comment>
+    <requestid>1346288</requestid>
+  </revision>
 </revisionlist>

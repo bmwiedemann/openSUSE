@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 12 22:10:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.9:
+  * Fixed an issue with cf_call not getting the last page of
+    results
+
+-------------------------------------------------------------------
 Mon Mar 23 23:03:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.8:

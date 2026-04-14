@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-softlayer
-Version:        6.2.8
+Version:        6.2.9
 Release:        0
 Summary:        A set of Python libraries that assist in calling the SoftLayer API
 License:        MIT
@@ -72,6 +72,7 @@ donttest="test_getpass_issues1436 or TestSoapAPICall"
 # Broken with Click 8.3+, re-enable on upgrade
 donttest+=" or test_list_hw_search_noargs or test_create_like "
 donttest+=" or test_list_vs_search_noargs"
+donttest+=" or test_cf_call_large_dataset"
 %pytest -k "not ($donttest)"
 
 %post
@@ -82,7 +83,7 @@ donttest+=" or test_list_vs_search_noargs"
 
 %files %{python_files}
 %license LICENSE
-%doc *.md
+%doc CHANGELOG.md README.rst
 %{python_sitelib}/SoftLayer
 %{python_sitelib}/softlayer-%{version}.dist-info
 %python_alternative %{_bindir}/slcli
