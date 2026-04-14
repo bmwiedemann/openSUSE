@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 11 06:59:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.17:
+  * Bug Fixes
+    - fix: add cross-process lock around cache.New to prevent macOS
+      keychain race by @weinong in #744
+  * Maintenance
+    - chore: upgrade Go toolchain from 1.24 to 1.25.9 by @Copilot
+      in #745
+
+-------------------------------------------------------------------
 Wed Mar 11 06:03:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.16:
