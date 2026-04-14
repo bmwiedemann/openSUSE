@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 13 23:03:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.37.2:
+  * fix(patch): cherry-pick 9d741ab to release/v0.37.1-pr-24565
+    to patch version v0.37.1 and create version 0.37.2
+
+-------------------------------------------------------------------
 Fri Apr 10 02:09:18 UTC 2026 - Timothy Brown <stimut@gmail.com>
 
 - Update to v0.37.1
