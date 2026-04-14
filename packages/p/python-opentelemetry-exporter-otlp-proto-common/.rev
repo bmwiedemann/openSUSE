@@ -261,4 +261,13 @@
   * metadata updates</comment>
     <requestid>1343481</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a36a992907060ab0dc8af86b1b2b04b1</srcmd5>
+    <version>1.41.0</version>
+    <time>1776181734</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.41.0:
+  * no changes</comment>
+    <requestid>1346290</requestid>
+  </revision>
 </revisionlist>
