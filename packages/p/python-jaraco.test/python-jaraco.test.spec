@@ -35,12 +35,13 @@ BuildRequires:  %{python_module jaraco.collections}
 BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
+BuildRequires:  git-core
 # /SECTION
 BuildRequires:  fdupes
+Requires:       git-core
 Requires:       python-jaraco.collections
 Requires:       python-jaraco.context
 Requires:       python-jaraco.functools
-Requires:       python-testsuite
 Suggests:       python-sphinx >= 3.5
 Suggests:       python-jaraco.packaging >= 9
 Suggests:       python-rst.linker >= 1.9
@@ -63,8 +64,8 @@ Testing support by jaraco
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/pytest-dev/pytest/issues/12303
-%pytest -v || :
+export PYTHONPATH=.
+%pytest
 
 %files %{python_files}
 %doc NEWS.rst README.rst
