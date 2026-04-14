@@ -26,14 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-cov%{psuffix}
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest_cov-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest-cov/pull/722 match coverage 7.10.7 warnings
-Patch0:         0001-match-coverage-7.10.7-warnings.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
@@ -50,7 +48,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-coverage >= 7.10.6
 Requires:       python-pluggy >= 1.2
-Requires:       python-pytest >= 6.2.5
+Requires:       python-pytest >= 7
 BuildArch:      noarch
 %python_subpackages
 

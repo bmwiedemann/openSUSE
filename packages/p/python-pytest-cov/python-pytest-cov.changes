@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr 12 19:00:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0:
+  * Fixed total coverage computation to always be consistent,
+    regardless of reporting settings. Previously some reports
+    could produce different total counts, and consequently can
+    make --cov-fail-under behave different depending on reporting
+    options. See #641.
+  * Improve handling of ResourceWarning from sqlite3. The plugin
+    adds warning filter for sqlite3 ResourceWarning unclosed
+    database (since 6.2.0). It checks if there is already
+    existing plugin for this message by comparing filter regular
+    expression. When filter is specified on command line the
+    message is escaped and does not match an expected message. A
+    check for an escaped regular expression is added to handle
+    this case. With this fix one can suppress ResourceWarning
+    from sqlite3 from command line:  pytest -W "ignore:unclosed
+    database in <sqlite3.Connection object at:ResourceWarning"
+  * Various improvements to documentation. Contributed by Art
+    Pelling in #718 and "vivodi" in #738. Also closed #736.
+  * Fixed some assertions in tests. Contributed by in Markéta
+    Machová in #722.
+  * Removed unnecessary coverage configuration copying (meant as
+    a backup because reporting commands had configuration side-
+    effects before coverage 5.0).
+- drop 0001-match-coverage-7.10.7-warnings.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Oct 13 14:15:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add 0001-match-coverage-7.10.7-warnings.patch to fix tests
