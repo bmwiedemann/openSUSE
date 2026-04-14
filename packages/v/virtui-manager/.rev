@@ -279,4 +279,15 @@ version 2.4.3:
     <comment></comment>
     <requestid>1346437</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e1d743aa1242860bb9923370ea203b16</srcmd5>
+    <version>2.5.4</version>
+    <time>1776181771</time>
+    <user>dimstar_suse</user>
+    <comment>- version 2.5.4:
+  * fix major issue from last update of textual in TW:
+    https://github.com/Textualize/textual/releases/tag/v8.0.0
+</comment>
+    <requestid>1346536</requestid>
+  </revision>
 </revisionlist>
