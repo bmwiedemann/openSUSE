@@ -166,4 +166,13 @@
   * Add Python 3.14 support</comment>
     <requestid>1343489</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bbc7d5363b1e73bf114759d99f6946bb</srcmd5>
+    <version>0.62b0</version>
+    <time>1776181736</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.62b0:
+  * lince some pylint warnings</comment>
+    <requestid>1346295</requestid>
+  </revision>
 </revisionlist>
