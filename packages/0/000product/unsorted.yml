@@ -13658,9 +13658,6 @@ unsorted:
   - libgnome-desktop-3-devel 
   - libgnome-desktop-4-devel 
   - libgnome-games-support-1-3 
-  - libgnome-games-support-2-4 
-  - libgnome-games-support-devel 
-  - libgnome-games-support-lang 
   - libgnome-games-support1_3-devel 
   - libgnome-games-support1_3-lang 
   - libgnome-keyring-devel 
@@ -15229,14 +15226,14 @@ unsorted:
   - libopentimelineio18 
   - libopentracing-cpp1 
   - libopenvdb13_0 
-  - libopenvino2600 
-  - libopenvino_c2600 
-  - libopenvino_ir_frontend2600 
-  - libopenvino_onnx_frontend2600 
-  - libopenvino_paddle_frontend2600 
-  - libopenvino_pytorch_frontend2600 
-  - libopenvino_tensorflow_frontend2600 
-  - libopenvino_tensorflow_lite_frontend2600 
+  - libopenvino2610 
+  - libopenvino_c2610 
+  - libopenvino_ir_frontend2610 
+  - libopenvino_onnx_frontend2610 
+  - libopenvino_paddle_frontend2610 
+  - libopenvino_pytorch_frontend2610 
+  - libopenvino_tensorflow_frontend2610 
+  - libopenvino_tensorflow_lite_frontend2610 
   - libopenvswitch-3_7-0 
   - liboping-devel 
   - liboping0 
@@ -27258,6 +27255,7 @@ unsorted:
   - python311-python-gitlab 
   - python311-python-gnupg 
   - python311-python-gvm 
+  - python311-python-ipware 
   - python311-python-iso639 
   - python311-python-jenkins 
   - python311-python-jose 
@@ -27952,6 +27950,7 @@ unsorted:
   - python311-varint 
   - python311-varlink 
   - python311-vcrpy 
+  - python311-vcs-versioning 
   - python311-vcver 
   - python311-vcversioner 
   - python311-vdirsyncer 
@@ -28169,6 +28168,7 @@ unsorted:
   - python312-tk 
   - python312-tools 
   - python312-trove-classifiers 
+  - python312-vcs-versioning 
   - python312-wheel 
   - python312-x86-64-v3 
   - python313-32bit 
@@ -31176,6 +31176,7 @@ unsorted:
   - python313-python-gitlab 
   - python313-python-gnupg 
   - python313-python-gvm 
+  - python313-python-ipware 
   - python313-python-iso639 
   - python313-python-jenkins 
   - python313-python-jose 
@@ -31876,6 +31877,7 @@ unsorted:
   - python313-varint 
   - python313-varlink 
   - python313-vcrpy 
+  - python313-vcs-versioning 
   - python313-vcver 
   - python313-vcversioner 
   - python313-vdf 
@@ -34744,6 +34746,7 @@ unsorted:
   - python314-pyflakes 
   - python314-pyforgejo 
   - python314-pyftpdlib 
+  - python314-pyfuse3 
   - python314-pygal 
   - python314-pygaljs 
   - python314-pygame 
@@ -35035,6 +35038,7 @@ unsorted:
   - python314-python-gitlab 
   - python314-python-gnupg 
   - python314-python-gvm 
+  - python314-python-ipware 
   - python314-python-iso639 
   - python314-python-jenkins 
   - python314-python-jose 
@@ -35727,6 +35731,7 @@ unsorted:
   - python314-varint 
   - python314-varlink 
   - python314-vcrpy 
+  - python314-vcs-versioning 
   - python314-vcver 
   - python314-vcversioner 
   - python314-vdirsyncer 
@@ -35740,6 +35745,7 @@ unsorted:
   - python314-versioneer-toml 
   - python314-versioningit 
   - python314-versiontools 
+  - python314-veusz 
   - python314-vim-vint 
   - python314-vine 
   - python314-virtkey 
