@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 14 02:54:10 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.2:
+  * Work around an issue with stored encryption passwords not 
+    being able to be read or written.
+
+-------------------------------------------------------------------
 Mon Apr 13 05:14:52 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Remove disable-gtk-test.patch Fixed appstream. 
