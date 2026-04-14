@@ -1499,4 +1499,41 @@
   * Upgrade memmap2 version</comment>
     <requestid>1343551</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>fa1ea7d9204720ef44cdcaaf44343b37</srcmd5>
+    <version>1.13.1</version>
+    <time>1776181700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13.1
+  * fix: fall back to placeholder for abi3 when found interpreters
+    are too old
+    gh#PyO3/maturin#3126
+- Changes in version 1.13.0:
+  * Sync legacy_py.rs with upstream PyPI warehouse legacy.py
+    gh#PyO3/maturin#3053
+  * Fix --strip conflicting with --include-debuginfo in develop
+    gh#PyO3/maturin#3057
+  * Fix abi3 wheel producing version-specific tags for CPython
+    below minimum
+    gh#PyO3/maturin#3061
+  * Fix data symlink permission handling
+    gh#PyO3/maturin#3069
+  * fix: correct bugs in audit.rs typo and module_writer
+    gh#PyO3/maturin#3070
+  * perf: use lazy-initialized regexes instead of per-call
+    compilation
+    gh#PyO3/maturin#3071
+  * fix: skip legacy manylinux aliases not in PyPI allow-list
+    gh#PyO3/maturin#3078
+  * fix: auto-generate .def file for zig + windows-gnu
+    to export PyInit symbol
+    gh#PyO3/maturin#3079
+  * fix: pass -undefined dynamic_lookup via
+    CARGO_ENCODED_RUSTFLAGS on macOS
+    gh#PyO3/maturin#3083
+  * feat: add Profile-Guided Optimization (PGO) support
+    gh#PyO3/maturin#3085
+  * Respect metadata_directory in build_wheel per PEP 517</comment>
+    <requestid>1346282</requestid>
+  </revision>
 </revisionlist>

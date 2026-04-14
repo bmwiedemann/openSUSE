@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:22:48 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 1.13.1
+  * fix: fall back to placeholder for abi3 when found interpreters
+    are too old
+    gh#PyO3/maturin#3126
+- Changes in version 1.13.0:
+  * Sync legacy_py.rs with upstream PyPI warehouse legacy.py
+    gh#PyO3/maturin#3053
+  * Fix --strip conflicting with --include-debuginfo in develop
+    gh#PyO3/maturin#3057
+  * Fix abi3 wheel producing version-specific tags for CPython
+    below minimum
+    gh#PyO3/maturin#3061
+  * Fix data symlink permission handling
+    gh#PyO3/maturin#3069
+  * fix: correct bugs in audit.rs typo and module_writer
+    gh#PyO3/maturin#3070
+  * perf: use lazy-initialized regexes instead of per-call
+    compilation
+    gh#PyO3/maturin#3071
+  * fix: skip legacy manylinux aliases not in PyPI allow-list
+    gh#PyO3/maturin#3078
+  * fix: auto-generate .def file for zig + windows-gnu
+    to export PyInit symbol
+    gh#PyO3/maturin#3079
+  * fix: pass -undefined dynamic_lookup via
+    CARGO_ENCODED_RUSTFLAGS on macOS
+    gh#PyO3/maturin#3083
+  * feat: add Profile-Guided Optimization (PGO) support
+    gh#PyO3/maturin#3085
+  * Respect metadata_directory in build_wheel per PEP 517
+    gh#PyO3/maturin#3086
+  * Fix cargo path with puccinialin for Windows
+    gh#PyO3/maturin#3093
+  * build(deps): bump tar from 0.4.44 to 0.4.45
+    gh#PyO3/maturin#3095
+  * build(deps): bump rustls-webpki from 0.103.9 to 0.103.10
+    gh#PyO3/maturin#3096
+  * Upgrade pyo3 to 0.28
+    gh#PyO3/maturin#3101
+  * PyO3: Adds --generate_stubs build options
+    gh#PyO3/maturin#3105
+  * fix: prevent panic when no interpreters match abi3
+    minimum version
+    gh#PyO3/maturin#3108
+  * feat: re-implement delocate for repairing macOS wheels
+    gh#PyO3/maturin#3114
+  * PyO3: Adds generate-stubs command
+    gh#PyO3/maturin#3115
+  * feat: re-implement delvewheel for repairing Windows wheels
+    gh#PyO3/maturin#3116
+  * Add auditwheel Warn mode, default to Warn on macOS/Windows
+    gh#PyO3/maturin#3121
+  * feat: Support large zip files
+    gh#PyO3/maturin#3118
+
+-------------------------------------------------------------------
 Sun Mar 29 21:41:56 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Drop CVE-2026-25727.patch (handled in _service)
