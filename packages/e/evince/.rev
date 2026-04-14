@@ -1455,4 +1455,11 @@ New stable release</comment>
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346585</requestid>
   </revision>
+  <revision rev="185" vrev="3">
+    <srcmd5>530dacc46a8ab903c40a001e4b11287a</srcmd5>
+    <version>48.1</version>
+    <time>1776188346</time>
+    <user>dimstar_suse</user>
+    <comment>revert</comment>
+  </revision>
 </revisionlist>
