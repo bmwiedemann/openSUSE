@@ -28,7 +28,6 @@ Source0:        https://github.com/aws/amazon-ecs-agent/archive/refs/tags/v%{ver
 Source1:        %{short_name}.service
 Source2:        amazon-ecs-init.tmpfiles
 Patch0:         reproducible.patch
-Patch1:         use-agent-container-built-in-certs.patch
 BuildRequires:  go  >= 1.7
 BuildRequires:  pkgconfig(systemd)
 # We cannot handle cross module dependencies properly, i.e. one module can
@@ -141,12 +140,11 @@ Amazon EC2.
 %prep
 %setup -q -n amazon-ecs-agent-%{version}
 %patch -P0 -p1
-%patch -P1 -p1
 
 %build
 env
 export GO111MODULE="auto"
-SUSE_ZNOW=0 ./scripts/gobuild.sh suse
+SUSE_ZNOW=0 ./scripts/gobuild.sh
 gzip -c scripts/amazon-ecs-init.1 > scripts/amazon-ecs-init.1.gz
 
 %install

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:53:32 UTC 2026 - Joachim Gleissner <jgleissner@suse.com>
+
+- Drop use-agent-container-built-in-certs.patch (patch ineffective
+  as it doesn't set //go:build required by newer versions of go)
+- Drop 'suse' flag from build script command so generic_rpm target
+  gets built (otherwise /etc/ssl gets bind to agent container which
+  shadows the built-in certificate files)
+
+-------------------------------------------------------------------
 Tue Apr  7 14:50:26 UTC 2026 - Joachim Gleissner <jgleissner@suse.com>
 
 - Do not use -z now linker flag (module nvml has unresolved symobls
