@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
-Mon Apr 13 09:33:28 UTC 2026 - okurz@suse.com
+Tue Apr 14 04:56:01 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1776072800.e5bc7424:
+- Update to version 5.1776103434.91af0a8b:
+  * feat: expand parallel test execution in t/testrules.yml
+  * feat: set no expiration for "None" auth API keys
+  * fix: Avoid gap between caret and preview container
+  * refactor(upload): Move chunk size constant to constants module
+  * refactor(upload): Define chunk size only once
+  * test: Check for unhandled output by default
+  * git subrepo pull (merge) external/os-autoinst-common
+  * perf(upload): Speed up asset uploads
+  * feat: enable videos for all jobs again
+  * ci: remove redundant perl-critic GHA covered by circleCI
+  * ci: separate compile tests into independent job
+  * test: Move author tests to xt/ and separate compile checks
+  * fix: use Test::Warnings in 02-perlcritic
+  * chore(deps): Remove obsolete Freenode::StrictWarnings policy
   * chore(ci): bump checkout v4->v6
   * feat: implement "None" authentication provider
   * feat: Prevent job assignments when running out of space by default

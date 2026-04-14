@@ -99,7 +99,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1776072800.e5bc7424
+Version:        5.1776103434.91af0a8b
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -344,9 +344,6 @@ local-npm-registry %{_sourcedir} install --omit=dev --legacy-peer-deps --no-pack
 sed -i '/Perl::Tidy/d' cpanfile
 cpanm -n --mirror http://no.where/ --installdeps --with-feature=test .
 %endif
-
-# we don't really need the tidy test
-rm -f t/00-tidy.t
 
 %if %{with tests}
 rm -rf %{buildroot}/DB
