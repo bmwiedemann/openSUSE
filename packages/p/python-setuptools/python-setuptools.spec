@@ -100,6 +100,7 @@ BuildRequires:  %{python_module pytest-timeout}
 # BuildRequires:  %%{python_module pytest-xdist >= 3}
 BuildRequires:  %{python_module setuptools = %{version}}
 BuildRequires:  %{python_module setuptools-wheel = %{version}}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module tomli-w >= 1.0.0}
 BuildRequires:  %{python_module virtualenv >= 13.0.0}
 %endif

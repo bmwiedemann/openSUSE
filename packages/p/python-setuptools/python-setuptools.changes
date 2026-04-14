@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 13 18:01:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add testsuite for tests
+
+-------------------------------------------------------------------
 Thu Jan 29 14:55:29 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix suse_version check to make sure that primary builds for SLE-16

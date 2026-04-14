@@ -1398,4 +1398,12 @@
   minimal stack for different python versions.</comment>
     <requestid>1330931</requestid>
   </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>ea0cab44a69fa3a6d0c369309053a5a2</srcmd5>
+    <version>80.9.0</version>
+    <time>1776181721</time>
+    <user>dimstar_suse</user>
+    <comment>- add testsuite for tests</comment>
+    <requestid>1346492</requestid>
+  </revision>
 </revisionlist>
