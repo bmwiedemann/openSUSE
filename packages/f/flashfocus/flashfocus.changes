@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Feb 26 07:24:50 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.0:
+  * Correct versions
+- Update flashfocus-2.4.0-no-i3ipc.patch
+
+-------------------------------------------------------------------
+Mon Feb 16 09:15:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.8.0:
+  * Bump marshmallow >= 4.0
+
+-------------------------------------------------------------------
 Wed Feb 21 09:47:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

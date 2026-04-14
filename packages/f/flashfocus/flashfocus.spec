@@ -1,7 +1,7 @@
 #
 # spec file for package flashfocus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flashfocus
-Version:        2.4.1
+Version:        2.9.0
 Release:        0
 Summary:        Focus animations for tiling window managers
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  python3-wheel
 Requires:       python3-PyYAML >= 5.1
 Requires:       python3-cffi
 Requires:       python3-click
-Requires:       python3-marshmallow
+Requires:       python3-marshmallow >= 4.0
 Requires:       python3-xcffib
 Requires:       python3-xpybutil
 Recommends:     compton
