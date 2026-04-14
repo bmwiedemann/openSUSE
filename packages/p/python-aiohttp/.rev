@@ -865,4 +865,12 @@
     <comment>- update to 3.13.4 (bsc#1261322, CVE-2026-34514, bsc#1261320, CVE-2026-22815, bsc#1261321, CVE-2026-34513):</comment>
     <requestid>1344308</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>e43ad1feb7266ceec01620df5cb2ffea</srcmd5>
+    <version>3.13.5</version>
+    <time>1776181713</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing bug references</comment>
+    <requestid>1346419</requestid>
+  </revision>
 </revisionlist>

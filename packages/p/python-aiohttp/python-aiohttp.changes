@@ -10,7 +10,9 @@ Wed Apr  1 08:56:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Tue Mar 31 20:09:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.13.4 (bsc#1261322, CVE-2026-34514, bsc#1261320, CVE-2026-22815, bsc#1261321, CVE-2026-34513):
+- update to 3.13.4 (bsc#1261322, CVE-2026-34514, bsc#1261320, CVE-2026-22815, bsc#1261321, CVE-2026-34513,
+  bsc#1261329, CVE-2026-34516, bsc#1261331, CVE-2026-34517, bsc#1261332, CVE-2026-34518, bsc#1261334,
+  CVE-2026-34520, bsc#1261335, CVE-2026-34520, bsc#1261343, CVE-2026-34525):
   * Added max_headers parameter to limit the number of headers
     that should be read from a response -- by
     :user:`Dreamsorcerer`. Related issues and pull requests on
