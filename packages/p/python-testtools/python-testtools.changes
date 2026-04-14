@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:10:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Add ``LessThanOrEqual`` and ``GreaterThanOrEqual`` matchers.
+  * Improve type annotations throughout the codebase, including
+    compatibility fixes for mypy 1.20.0.
+
+-------------------------------------------------------------------
 Sat Mar 14 20:16:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.7:

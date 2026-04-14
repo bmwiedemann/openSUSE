@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-testtools%{psuffix}
-Version:        2.8.7
+Version:        2.9.0
 Release:        0
 Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
@@ -39,9 +39,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Twisted
-%if %python_version_nodots > 311
-Requires:       python-setuptools
-%endif
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module fixtures}

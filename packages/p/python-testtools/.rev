@@ -463,4 +463,15 @@
   * resolve-testcase-eq-deprecation-warning.patch</comment>
     <requestid>1339008</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>256db9b3f8363f007cd64c50c918c22f</srcmd5>
+    <version>2.9.0</version>
+    <time>1776181693</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.0:
+  * Add ``LessThanOrEqual`` and ``GreaterThanOrEqual`` matchers.
+  * Improve type annotations throughout the codebase, including
+    compatibility fixes for mypy 1.20.0.</comment>
+    <requestid>1346271</requestid>
+  </revision>
 </revisionlist>
