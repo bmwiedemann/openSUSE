@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-instrumentation-fastapi%{?psuffix}
-Version:        0.61b0
+Version:        0.62b0
 Release:        0
 Summary:        OpenTelemetry FastAPI Instrumentation
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module fastapi >= 0.58}
+BuildRequires:  %{python_module fastapi >= 0.92}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module opentelemetry-instrumentation-fastapi = %{version}}
 BuildRequires:  %{python_module opentelemetry-test-utils = %{version}}
@@ -45,6 +45,9 @@ BuildRequires:  %{python_module pytest}
 %endif
 BuildRequires:  %{python_module opentelemetry-api >= 1.12}
 BuildRequires:  %{python_module opentelemetry-instrumentation = %{version}}
+BuildRequires:  %{python_module opentelemetry-instrumentation-asgi = %{version}}
+BuildRequires:  %{python_module opentelemetry-semantic-conventions = %{version}}
+BuildRequires:  %{python_module opentelemetry-util-http = %{version}}
 BuildRequires:  fdupes
 Requires:       python-opentelemetry-api >= 1.12
 Requires:       python-opentelemetry-instrumentation = %{version}
