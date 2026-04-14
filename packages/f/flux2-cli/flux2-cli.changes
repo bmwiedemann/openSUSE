@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 09 13:32:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.8.5:
+  * Fixes:
+    - Fix a race condition where a cancelled reconciliation could
+      leave stale data in the cache, causing Kustomizations to get
+      stuck (kustomize-controller)
+    - Fix Azure Blob prefix option not being passed to the storage
+      client (source-controller)
+  * Improvements:
+    - Improve error message for encrypted SSH keys without password
+      (source-controller)
+    - Add optional email and audience fields to the GCR Receiver
+      for tighter verification (notification-controller)
+    - Add provider manifest example for Azure Event Hub managed
+      identity authentication (notification-controller)
+  * CLI changelog:
+    - Update toolkit components by @fluxcdbot in #5822
+
+-------------------------------------------------------------------
+Thu Apr 09 13:28:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.8.4:
+  * fix: validate --source flag in create kustomization command
+  * Update fluxcd/pkg dependencies
+
+-------------------------------------------------------------------
 Mon Mar 16 15:15:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.8.3:

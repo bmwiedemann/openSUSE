@@ -23,13 +23,13 @@
 %define helm_controller_version             v1.5.3
 %define image_automation_controller_version v1.1.1
 %define image_reflector_controller_version  v1.1.1
-%define kustomize_controller_version        v1.8.2
-%define notification_controller_version     v1.8.2
-%define source_controller_version           v1.8.1
+%define kustomize_controller_version        v1.8.3
+%define notification_controller_version     v1.8.3
+%define source_controller_version           v1.8.2
 %define source_watcher_version              v2.1.1
 
 Name:           flux2-cli
-Version:        2.8.3
+Version:        2.8.5
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
