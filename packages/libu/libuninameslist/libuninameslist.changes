@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 10 21:51:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20260107:
+  * This release contains source code to build libuninameslist
+    (with NamesList.txt 17.0), libuninameslist-fr (with
+    ListeDesNoms 17.0), and Python wrapper uninameslist.py
+    (ver0.2).
+  * This version updated libuninameslist-fr from 16.0 to 17.0
+
+-------------------------------------------------------------------
 Wed Oct  1 09:35:43 UTC 2025 - pgajdos@suse.com
 
 - version update to 20250909
