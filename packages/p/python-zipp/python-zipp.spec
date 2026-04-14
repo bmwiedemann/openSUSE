@@ -1,7 +1,7 @@
 #
 # spec file for package python-zipp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,9 +33,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/zipp
 Source:         https://files.pythonhosted.org/packages/source/z/zipp/zipp-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -47,7 +47,9 @@ BuildRequires:  %{python_module jaraco.itertools}
 BuildRequires:  %{python_module jaraco.test}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module zipp >= %{version}}
+BuildRequires:  %{pythons}
 %endif
 %python_subpackages
 
@@ -55,7 +57,7 @@ BuildRequires:  %{python_module zipp >= %{version}}
 A pathlib-compatible Zipfile object wrapper.
 
 %prep
-%setup -q -n zipp-%{version}
+%autosetup -p1 -n zipp-%{version}
 sed -i '/addopts/ s/--doctest-modules//' pytest.ini
 # People still want this for 15.X despite Python 3.6 is not supported upstream anymore
 sed -i 's/python_requires = >=3.7/python_requires = >=3.6/' setup.cfg
