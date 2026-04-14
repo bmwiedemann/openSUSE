@@ -579,4 +579,15 @@
   * Rename the preferred_pins argument of provider classes to locked_candidates,</comment>
     <requestid>1343756</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>594c23c515963306f3f1eed1d6b03c72</srcmd5>
+    <version>2.26.7</version>
+    <time>1776181763</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-installer-1.0.patch:
+  * Support installer 1.0 changes.
+- Specify versions for many of the requirements.
+- Stop skipping so many network tests.</comment>
+    <requestid>1346529</requestid>
+  </revision>
 </revisionlist>

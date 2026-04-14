@@ -1,0 +1,73 @@
+From 59011ab3cac77866816c9a55ad84ae01e873dce3 Mon Sep 17 00:00:00 2001
+From: Maximiliano Curia <maxy@gnuservers.com.ar>
+Date: Fri, 10 Apr 2026 10:39:03 +0200
+Subject: [PATCH] Add make_file_executable to utils
+
+Avoid using the installer.utils internal implementation.
+
+An implementation detail, the implemented make_file_executable works
+similar to invoking chmod +x $file, while the previously used
+installer's version was similar to invoking chmod 755 $file.
+---
+ src/pdm/installers/installers.py | 3 ++-
+ src/pdm/models/caches.py         | 4 +---
+ src/pdm/utils.py                 | 6 ++++++
+ 3 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/src/pdm/installers/installers.py b/src/pdm/installers/installers.py
+index 526e2cad5d..7f6eeb9633 100644
+--- a/src/pdm/installers/installers.py
++++ b/src/pdm/installers/installers.py
+@@ -16,6 +16,7 @@
+ from installer.sources import WheelFile as _WheelFile
+ 
+ from pdm.models.cached_package import CachedPackage
++from pdm.utils import make_file_executable
+ 
+ if TYPE_CHECKING:
+     from typing import Any, BinaryIO, Iterable, Literal
+@@ -100,7 +101,7 @@ def __init__(
+ 
+     def write_to_fs(self, scheme: Scheme, path: str, stream: BinaryIO, is_executable: bool) -> RecordEntry:
+         from installer.records import Hash
+-        from installer.utils import copyfileobj_with_hashing, make_file_executable
++        from installer.utils import copyfileobj_with_hashing
+ 
+         target_path = os.path.join(self.scheme_dict[scheme], path)
+         if os.path.exists(target_path):
+diff --git a/src/pdm/models/caches.py b/src/pdm/models/caches.py
+index 6929969b64..93de674fea 100644
+--- a/src/pdm/models/caches.py
++++ b/src/pdm/models/caches.py
+@@ -17,7 +17,7 @@
+ from pdm.models.candidates import Candidate
+ from pdm.models.markers import EnvSpec
+ from pdm.termui import logger
+-from pdm.utils import atomic_open_for_write, create_tracked_tempdir
++from pdm.utils import atomic_open_for_write, create_tracked_tempdir, make_file_executable
+ 
+ if TYPE_CHECKING:
+     from httpx import Client
+@@ -278,8 +278,6 @@ def cache_wheel(self, wheel: Path) -> CachedPackage:
+         """Create a CachedPackage instance from a wheel file"""
+         import zipfile
+ 
+-        from installer.utils import make_file_executable
+-
+         dest = self.root.joinpath(f"{wheel.name}.cache")
+         pkg = CachedPackage(dest, original_wheel=wheel)
+         if dest.exists():
+diff --git a/src/pdm/utils.py b/src/pdm/utils.py
+index d321f2620a..6aae96c59c 100644
+--- a/src/pdm/utils.py
++++ b/src/pdm/utils.py
+@@ -605,3 +605,9 @@ def hide_url(url: str) -> HiddenText:
+     netloc = f"*****@{netloc}"
+     redacted = parse.urlunsplit((parsed.scheme, netloc, parsed.path, parsed.query, parsed.fragment))
+     return HiddenText(url, redacted)
++
++
++def make_file_executable(path: str | Path) -> None:
++    """Make the file at the provided path executable."""
++    path_ = Path(path)
++    path_.chmod(path_.stat().st_mode | 0o111)
