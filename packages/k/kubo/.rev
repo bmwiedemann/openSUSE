@@ -270,4 +270,41 @@ now with fixed build</comment>
   * Limit MFS operation for --flush=false</comment>
     <requestid>1320546</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a9c349559d3f29b0989d40472b67bdc3</srcmd5>
+    <version>0.40.1</version>
+    <time>1776181819</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.40.1
+- 0.40.0
+  * IPIP-499: UnixFS CID Profiles
+  * Automatic cleanup of interrupted imports
+  * Light clients can now use your node for delegated routing
+  * See total size when pinning
+  * IPIP-523: ?format= takes precedence over Accept header
+  * IPIP-524: Gateway codec conversion disabled by default
+  * More reliable IPNS over PubSub
+  * New ipfs diag datastore commands
+  * New ipfs swarm addrs autonat command
+  * Improved ipfs p2p tunnels with foreground mode
+  * Friendlier ipfs dag stat output
+  * ipfs key improvements
+  * More reliable content providing after startup
+  * No unnecessary DNS lookups for AutoTLS addresses
+  * Configurable gateway request duration limit
+  * Recovery from corrupted MFS root
+  * RPC Content-Type headers for binary responses
+  * New ipfs name get|put commands
+  * Long listing format for ipfs ls
+  * WebUI Improvements
+  * Fixed Prometheus metrics bloat on popular subdomain gateways
+  * libp2p announces all interface addresses
+  * Badger v1 datastore slated for removal this year
+  * Go 1.26
+  * Dependency updates
+    - github.com/ipld/go-ipld-prime v0.22.0 (boo#1261818, CVE-2026-35480)
+
+    - golang.org/x/net v0.47.0 (boo#1251613, CVE-2025-58190, boo#1251419, CVE-2025-47911)</comment>
+    <requestid>1346862</requestid>
+  </revision>
 </revisionlist>

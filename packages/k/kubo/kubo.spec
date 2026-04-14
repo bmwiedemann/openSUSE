@@ -17,7 +17,7 @@
 
 
 Name:           kubo
-Version:        0.39.0
+Version:        0.40.1
 Release:        0
 Summary:        IPFS implementation in Go
 License:        MIT

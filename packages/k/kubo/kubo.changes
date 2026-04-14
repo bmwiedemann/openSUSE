@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Apr 14 11:20:48 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Update to 0.40.1
+- 0.40.0
+  * IPIP-499: UnixFS CID Profiles
+  * Automatic cleanup of interrupted imports
+  * Light clients can now use your node for delegated routing
+  * See total size when pinning
+  * IPIP-523: ?format= takes precedence over Accept header
+  * IPIP-524: Gateway codec conversion disabled by default
+  * More reliable IPNS over PubSub
+  * New ipfs diag datastore commands
+  * New ipfs swarm addrs autonat command
+  * Improved ipfs p2p tunnels with foreground mode
+  * Friendlier ipfs dag stat output
+  * ipfs key improvements
+  * More reliable content providing after startup
+  * No unnecessary DNS lookups for AutoTLS addresses
+  * Configurable gateway request duration limit
+  * Recovery from corrupted MFS root
+  * RPC Content-Type headers for binary responses
+  * New ipfs name get|put commands
+  * Long listing format for ipfs ls
+  * WebUI Improvements
+  * Fixed Prometheus metrics bloat on popular subdomain gateways
+  * libp2p announces all interface addresses
+  * Badger v1 datastore slated for removal this year
+  * Go 1.26
+  * Dependency updates
+    - github.com/ipld/go-ipld-prime v0.22.0 (boo#1261818, CVE-2026-35480)
+
+-------------------------------------------------------------------
 Thu Nov 27 16:56:13 UTC 2025 - Dmitry Markov <werwolf131313@gmail.com>
 
 - Update to 0.39.0
@@ -11,6 +43,8 @@ Thu Nov 27 16:56:13 UTC 2025 - Dmitry Markov <werwolf131313@gmail.com>
   * Automatic UPnP recovery after router restarts
   * No longer publish deprecated go-ipfs name
   * Limit for gateway range request for CDN compatibility
+    - golang.org/x/net v0.47.0 (boo#1251613, CVE-2025-58190, boo#1251419, CVE-2025-47911)
+    - golang.org/x/crypto v0.45.0 (boo#1253857, CVE-2025-58181)
 
 - 0.38.0
   * Repository migration: simplified provide configuration
