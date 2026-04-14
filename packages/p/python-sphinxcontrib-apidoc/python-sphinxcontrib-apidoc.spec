@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-apidoc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-apidoc%{psuffix}
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        A Sphinx extension for running 'sphinx-apidoc' on each build
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://www.sphinx-doc.org/
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-apidoc/sphinxcontrib-apidoc-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM sphinx-82.patch gh#sphinx-contrib/apidoc#23
-Patch0:         sphinx-82.patch
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-apidoc/sphinxcontrib_apidoc-%{version}.tar.gz
 BuildRequires:  %{python_module pbr >= 4.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -60,7 +58,7 @@ actually build documentation - rather it simply generates it. As a result, it
 must be run before *sphinx-build*.
 
 %prep
-%autosetup -p1 -n sphinxcontrib-apidoc-%{version}
+%autosetup -p1 -n sphinxcontrib_apidoc-%{version}
 
 %build
 %pyproject_wheel
@@ -79,7 +77,7 @@ must be run before *sphinx-build*.
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS ChangeLog README.rst
+%doc ChangeLog README.rst
 %dir %{python_sitelib}/sphinxcontrib
 %{python_sitelib}/sphinxcontrib/apidoc
 %{python_sitelib}/sphinxcontrib_apidoc-%{version}-py*-nspkg.pth

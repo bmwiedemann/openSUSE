@@ -95,4 +95,18 @@
 - No more greedy globs in %files.</comment>
     <requestid>1285970</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3ec44fba1d51abaa74b3d1dc6436b56a</srcmd5>
+    <version>0.6.0</version>
+    <time>1776181688</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * Add pointer to built-in extension
+  * ruff: Enable upgrade, security rules
+  * pre-commit: Bump versions, migrate to ruff
+  * Drop Python &lt; 3.9 support
+  * Annotate the list of strings correctly for Sphinx 8.2+
+- drop sphinx-82.patch (upstream)</comment>
+    <requestid>1346236</requestid>
+  </revision>
 </revisionlist>
