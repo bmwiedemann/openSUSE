@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycountry
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pycountry
-Version:        23.12.11
+Version:        26.2.16
 Release:        0
 Summary:        Databases for ISO standards 639 3166 3166-2 4217 15924
 License:        LGPL-2.1-only
@@ -29,11 +29,10 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-lxml
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module pytest-cov}
 # /SECTION
 %python_subpackages
 

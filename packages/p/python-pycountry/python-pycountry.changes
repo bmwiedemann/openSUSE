@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:44:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 26.2.16:
+  * Drop support for Python 3.8 and 3.9 (minimum version is
+    now 3.10).
+  * Add support for Python 3.13 and 3.14.
+  * Update ISO databases (iso-codes) with numerous
+    additions and corrections:
+    - ISO 15924: Added many new scripts (e.g., Garay,
+      Gurung Khema, Sunuwar, etc.) and updated names.
+    - ISO 3166-2: Updated parent codes for Azerbaijan
+      subdivisions.
+  * Migrate project metadata to PEP 621 [project] table in
+    pyproject.toml.
+  * Update license identifier to SPDX LGPL-2.1-only.
+  * Move repository and project URLs to the pycountry
+    GitHub organization.
+  * Add detailed COPYRIGHT.txt including full contributor
+    list and data source information.
+  * Refresh documentation and examples in README.rst,
+    including updated subdivision types and attribute
+    behavior.
+
+-------------------------------------------------------------------
 Mon Mar 11 03:55:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing importlib-metadata BuildRequires.
