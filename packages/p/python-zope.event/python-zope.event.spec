@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.event
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%global modname zope.event
+%global modname zope_event
 %{?sle15_python_module_pythons}
 Name:           python-zope.event
-Version:        5.0
+Version:        6.1
 Release:        0
 Summary:        Very basic event publishing system
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/z/zope.event/%{modname}-%{version}.tar.gz
-# fix upstream, compatible with recent Sphinx
-Patch1:         intersphinx.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,8 +47,7 @@ Summary:        Very basic event publishing system
 This package contains documentation files for %{name}.
 
 %prep
-%setup -q -n %{modname}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %pyproject_wheel
@@ -74,7 +71,6 @@ $python -m doctest -v src/zope/event/classhandler.py
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/event
 %{python_sitelib}/zope[_.]event-%{version}*info
-%{python_sitelib}/zope.event-%{version}*pth
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc
