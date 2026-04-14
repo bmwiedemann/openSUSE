@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Sun Apr 12 22:12:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.0.0:
+  * Moved to a uv-based, pyproject.toml-driven project layout,
+    with main replacing master as the default git branch.
+  * Move from Circle CI to Github Actions for continuous
+    integration and releasing.
+  * Lots of documentation has been refreshed.
+  * Python versions between 3.11 and 3.14, inclusive, are now
+    supported.
+  * Python versions 3.10 and earlier are no longer supported.
+  * :class:`TempDir` is now introduced as a
+    :class:`~pathlib.Path`-based alternative to
+    :class:`TempDirectory`.
+  * :class:`TempDir` and :class:`TempDirectory` have grown
+    support for dumping and parsing JSON, YAML and TOML natively
+    by way of the :meth:`~TempDir.dump` and :meth:`TempDir.parse`
+    methods.
+  * :class:`TempDir` and :class:`TempDirectory` now have
+    :meth:`~TempDir.read_text` and :meth:`TempDir.read_bytes`
+    methods that mirror the behaviour of their
+    :class:`~pathlib.Path` equivalents.
+  * :class:`TempDir` and :class:`TempDirectory` now support
+    :class:`~pathlib.Path` objects anywhere they previously
+    supported string and sequences of strings.
+  * :class:`TempDir` and :class:`TempDirectory` now have a
+    :meth:`~TempDir.clone` method for copying existing files or
+    directories into themselves for using during testing.
+  * None can now be passed to :class:`ShouldRaise` to check that
+    no exception is raised. This is useful for parameterised
+    tests where some cases may expect an exception to be raised
+    while others do not.
+  * :class:`ShouldRaise` now has a match parameter to bring
+    feature parity with :func:`pytest.raises`.
+  * :class:`Comparison` now shows the wrong type when it is
+    compared against a wrong type.
+  * :class:`Comparison` no longer spuriously reports
+    :class:`~testfixtures.comparison.AlreadySeen` as the wrong
+    type.
+  * Fixed a bug where comparing parameterised generic type
+    objects resulted in an infinite loop.
+  * Fixed a bug in the warning issued when a :class:`Replacer` is
+    deleted with replacements still in place.
+  * Reworked :func:`compare` options so that typos and the like
+    will now result in an exception being raised. This ended up
+    being a breaking change if you use custom comparers that take
+    options as this now has a :ref:`different API <custom-
+    comparer-options>`.
+  * Reworked the :doc:`compare documentation <comparing>` to
+    explain why you should be using it as well as updating the
+    examples and explaining more fully how to configure and
+    customise it.
+  * Implement :func:`like`, :func:`sequence`, :func:`contains`,
+    :func:`unordered` for strictly typed :ref:`comparisons
+    <comparison-objects>`.
+  * Correctly type :attr:`ShouldRaise.raised`.
+  * Add support for passing :class:`StringComparison` instances
+    as parameters to :meth:`OutputCapture.compare`.
+  * :attr:`ShouldRaise.raised` is now always an exception
+    instance. If no exception has been raised, it will be a
+    :class:`~testfixtures.shouldraise.NoException` instance. This
+    prevents typing complaints around using an attribute that
+    might be None.
+  * :func:`mock_time` has been reworked to return an instance of
+    :class:`~testfixtures.datetime.MockTime` rather than the
+    class itself. :class:`~testfixtures.datetime.MockTime` has
+    also been reworked such that it can no longer be instantiated
+    with the same parameters as :class:`~datetime.datetime` -
+    this edge case was never supported, but is highlighted here
+    in case folks were using it.
+  * Python 3.11 is now the minimum supported version.
+  * A show_whitespace parameter has been added to
+    :class:`ShouldAssert`.
+  * testfixtures is now fully typed, checked with mypy and is
+    distributed with a py.typed marker file.
+- drop support-python-313.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Feb 25 09:39:04 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Fix the condition with suse_version macro on SLFO (jsc#PED-15848)
@@ -87,8 +165,8 @@ Wed Nov 29 01:50:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Tue Dec 13 17:36:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 7.0.4 
-  * Remove py.typed file: neither mypy nor testfixtures are ready for this file to be present.  
+- Update to 7.0.4
+  * Remove py.typed file: neither mypy nor testfixtures are ready for this file to be present.
 
 -------------------------------------------------------------------
 Wed Nov  9 19:29:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
@@ -102,7 +180,7 @@ Wed Nov  9 19:29:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 7.0.1 (1 Nov 2022)
   * Remove non-functional support for self-referential data structures in :func:`compare`. The functionality didn't work but did cause
-    erroneous reported equality of values in dictionaries that were actually not equal. 
+    erroneous reported equality of values in dictionaries that were actually not equal.
 
 -------------------------------------------------------------------
 Tue Oct  4 15:30:20 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
@@ -170,7 +248,7 @@ Sun May  9 17:11:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 6.17.1
   - Fix bug where bug where duplicated entries in an ordered but partial
     :class:`SequenceComparison` could result in a failed match.
- 
+
 -------------------------------------------------------------------
 Wed Apr 28 07:49:55 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
@@ -209,7 +287,7 @@ Wed Sep 16 21:30:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 Tue Jun 23 15:51:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - use local source dir for pytest imports (tests are not installed)
-  gh#openSUSE/python-rpm-macros#48 
+  gh#openSUSE/python-rpm-macros#48
 
 -------------------------------------------------------------------
 Tue May 19 10:20:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
@@ -302,7 +380,7 @@ Tue May 21 08:14:30 UTC 2019 - pgajdos@suse.com
 Thu Apr 18 14:41:23 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 6.7.0
-  * Add :meth:`twisted.LogCapture.raise_logged_failure` debugging 
+  * Add :meth:`twisted.LogCapture.raise_logged_failure` debugging
     helper.
 
 -------------------------------------------------------------------
@@ -360,7 +438,7 @@ Fri Jan  5 09:58:02 UTC 2018 - alarrosa@suse.com
 -------------------------------------------------------------------
 Fri Nov 17 10:49:24 UTC 2017 - alarrosa@suse.com
 
-- Update to version 5.3.0 
+- Update to version 5.3.0
   * Add pytest traceback hiding for TempDirectory.compare.
   * Add warnings that log_capture, tempdir and replace are not
     currently compatible with pytest's fixtures mechanism.

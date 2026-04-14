@@ -34,17 +34,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-testfixtures%{psuffix}
-Version:        8.3.0
+Version:        11.0.0
 Release:        0
 Summary:        A collection of helpers and mock objects for unit tests and doc tests
 License:        MIT
 URL:            https://github.com/Simplistix/testfixtures
 Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/testfixtures-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#simplistix/testfixtures#202
-Patch0:         support-python-313.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.11}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 %if %{with test}
 
@@ -54,15 +52,15 @@ BuildRequires:  %{python_module pytest-django}
 %endif
 
 BuildRequires:  %{python_module Twisted}
-BuildRequires:  %{python_module pytest >= 3.6}
-BuildRequires:  %{python_module sybil >= 6}
+BuildRequires:  %{python_module pytest >= 8}
+BuildRequires:  %{python_module sybil >= 6.0.3}
 BuildRequires:  %{python_module testfixtures = %{version}}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-Django
 Suggests:       python-Twisted
-Suggests:       python-sybil >= 6
+Suggests:       python-sybil >= 6.0.3
 BuildArch:      noarch
 %python_subpackages
 
@@ -79,7 +77,7 @@ their own library and give them some tests of their own!
 
 %prep
 %autosetup -p1 -n testfixtures-%{version}
-chmod a-x docs/*.txt
+chmod a-x docs/*.rst
 
 %build
 %pyproject_wheel
@@ -87,7 +85,6 @@ chmod a-x docs/*.txt
 %install
 %if %{without test}
 %pyproject_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/testfixtures/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -95,17 +92,17 @@ chmod a-x docs/*.txt
 %if %{with test}
 export PYTHONPATH=$(pwd)
 %if %{with django}
-export DJANGO_SETTINGS_MODULE=testfixtures.tests.test_django.settings
+export DJANGO_SETTINGS_MODULE=tests.test_django.settings
 %else
 test_flags="--ignore=testfixtures/tests/test_django"
 %endif
-%pytest $test_flags testfixtures/tests
+%pytest $test_flags
 %endif
 
 %if %{without test}
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst docs/*.txt
+%doc README.rst CHANGELOG.rst docs/*.rst
 %{python_sitelib}/testfixtures
 %{python_sitelib}/testfixtures-%{version}.dist-info
 %endif
