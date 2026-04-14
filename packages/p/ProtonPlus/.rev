@@ -305,4 +305,14 @@
   + Updated translations (forwarded request 1346450 from rrahl0)</comment>
     <requestid>1346451</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b1aff863012f0e496d57324722d057c5</srcmd5>
+    <version>0.5.19</version>
+    <time>1776181799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.19:
+  + Add fallback directory paths for launcher detection
+  + Translations update (forwarded request 1346852 from rrahl0)</comment>
+    <requestid>1346853</requestid>
+  </revision>
 </revisionlist>
