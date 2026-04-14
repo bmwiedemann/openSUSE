@@ -1,7 +1,188 @@
 -------------------------------------------------------------------
+Fri Apr 10 07:07:39 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 0.44.1:
+  * HOTFIX: remove riscv as it's breaking the release
+  * chore(release): v0.44.1
+  * Minor fix before patch version (#5011)
+  * docs(changelog): osc52 report pr
+  * feat(zellij-server): report OSC 52 clipboard support over DA1 (#4545)
+  * Fix pty race when opening new panes (#5010)
+  * docs(changelog): underline reset fix
+  * fix(ansi): reset bold should not entail reset underline (#4962)
+  * docs(changelog): update --name pr
+  * fix: respect --name flag when creating new panes (#4979)
+  * docs(changelog): update recent PRs
+  * fix: position host cursor for CJK IME even when app hides cursor (#4951)
+  * fix(windows): encode modifiers in raw bytes for non-Char keys (#4967)
+  * fix(web-client): use base URL when switching sessions (#4981)
+  * Fix bce and other issues (#4992)
+  * fix(e2e): stabilize tests and support Apple Silicon local dev (#4952)
+  * Move from native-tls to rustls in the remote client (mirrors the web server) (#4972)
+  * Preserve scrollback for partial scroll regions starting at top (#4941)
+  * Proper error when providing layout name with a tab (#4958)
+  * Error on socket paths that are too long (#4957)
+  * Layout string flag (#4956)
+  * docs(changelog): recent windows fixes
+  * fix: resolve Windows compilation warnings (#4890)
+  * fix(windows): normalize temp socket paths (#4923)
+  * Support OSC-99 desktop notifications (#4931)
+  * CLI focus-pane-id and are-floating-panes-visible actions (#4926)
+  * docs(changelog): riscv64 binaries
+  * ci: add riscv64 to release binaries (#4913)
+  * docs(changelog): update recent PRs
+  * fix: performance regression when switching tabs (#4918)
+  * fix: do not reset layout selection in layout manager (#4919)
+  * docs(changelog): theme pr
+  * fix: user themes from `~/.config/zellij/themes` not loaded on session start (#4892)
+  * fix: properly display web server status with default ports in share plugin (#4908)
+- Drop zellij-update-wasmtime-wasi-to-33.0.2.patch. WASM runtime has been migrated from `wasmtime` to `wasmi`.
+  * boo#1246953
+- Update to version 0.44.0:
+  * chore(release): v0.44.0
+  * Fix cli blocking logic and update dependencies (#4881)
+  * Add windows support in strider (#4854)
+  * Release notes and fixes (#4879)
+  * adjust badges location in readme
+  * fix sponsored links truncation
+  * fix(windows): avoid hang when share plugin starts web server (#4863)
+  * Fix Windows config/data paths and consolidate path helpers (#4852)
+  * change layout manager key (#4865)
+  * Minor fixes and updates (#4861)
+  * fix: do not reuse terminal pane ids, clean up tokio tasks (#4859)
+  * feat(themes): add Flexoki Dark theme (#4555)
+  * Add Windows MSI installer with WiX v6 (#4847)
+  * fix: sixel-image aspect ratio and opacity issues (#4858)
+  * Warning and duplication cleanups (#4857)
+  * Ansi dump support (#4848)
+  * Add `--pane-id` and `--tab-id` to all relevant CLI commands (#4846)
+  * Fix debug-mode stack overflow on Windows (#4843)
+  * fix: pass NotificationEnd to KeybindPipe to prevent 1s timeout (#4638)
+  * fix: restore console input mode on exit to prevent mouse sequence leak (#4829)
+  * fix: handle short writes in write_to_tty_stdin to prevent paste truncation (#4818)
+  * Focus follows mouse and mouse clickthrough (#4836)
+  * add verify cli test (#4835)
+  * fix: atomic floating pane issues with the about screen (#4834)
+  * Layout manager ux fixes (#4831)
+  * Web security hardening (#4830)
+  * Highlight priority levels (#4827)
+  * allow specifying ip/port with the zellij web --status cli (#4825)
+  * Update CHANGELOG.md
+  * allow dumping screen to STDOUT as well (#4823)
+  * docs(changelog): dump viewport of pane id
+  * feat(cli): add --pane-id option to dump-screen action (#4598)
+  * Remove unnecessary winapi features (#4816)
+  * Single screen session manager (#4821)
+  * Add cli paste action (#4817)
+  * Allow subscribing to pane viewport updates (renders) from the CLI (#4814)
+  * Update CHANGELOG.md
+  * Fix partial sequences parsing (#4623)
+  * docs(changelog): add pr
+  * fix: click links with alt-click (#4809)
+  * Click file paths to open in editor, allow plugins to change styles and hover of viewport (#4802)
+  * build: make test mirror build command for plugins (#4801)
+  * build: fix redundant proto codegen, plugin batch building, and profile mismatch between build and run (#4799)
+  * Update CHANGELOG.md
+  * feat: add per-pane default foreground/background color support (#4737)
+  * docs(changelog): native Windows support (!!)
+  * [Windows port PR8] feature: add Windows support (#4768)
+  * Visual indication for terminal bells (#4781)
+  * feat(web): improve web client ui on mobile (#4723)
+  * performance: de-bottleneck resizing/line-wrapping (#4778)
+  * fix: translate plugin paths in api (add missing methods) (#4767)
+  * fix: properly offset viewport when refreshing (#4766)
+  * Atomic show hide floating panes (#4764)
+  * fix: respect user's cursor choice in web client even when terminal overrides it (#4762)
+  * remove sequence plugin (#4761)
+  * Allow closing replaced panes when opening panes in place (#4760)
+  * [Windows port PR7] refactor: upgrade sysinfo and add cross-compilation proof (#4759)
+  * docs(changelog): preserve cwd for editor panes
+  * fix: make `TerminalAction::OpenFile` also inherit client/pane cwd (#4593)
+  * [Windows port PR6] refactor: gate daemonization and shell-related functions for cross-platform support (#4746)
+  * fix: set scroll region to viewport size when resizing in alternate screen (#4748)
+  * Add sponsor badge
+  * [Windows port PR5] refactor: upgrade interprocess to v2+ and abstract IPC for cross-platform support (#4740)
+  * refactor: split client signal handling into platform files (#4738)
+  * fix: prevent watchers from stealing renders from non-watchers (#4739)
+  * [Windows port PR3] refactor: replace RawFd/AsyncFile, introduce platform-split PTY backend (#4722)
+  * fix: go to welcome screen when opening web root (#4736)
+  * fix: do not attempt to reconnect from the web if kicked from the session (#4730)
+  * Purge `async_std` from the codebase (#4672)
+  * fix: tab-bar wrapping for extremely small widths (#4728)
+  * Fix multi pane breakout (#4726)
+  * docs(changelog): add ansi dump pr
+  * Add optional support for raw scrollback with ansi (#4617)
+  * [Windows port PR2] Replace client-side termios/ioctl with crossterm for raw mode and terminal size (#4721)
+  * refactor: replace nix::Error with std::io::Error in public APIs (#4720)
+  * docs(changelog): add timeout pr
+  * fix: add --timeout flag to zellij web --status (#4706)
+  * fix grid crashes on invalid state (#4718)
+  * docs(changelog): update pr
+  * fix: properly detect editor panes when serializing sessions (#4717)
+  * fix: proper boundary when clicking on pane in fullscreen (#4715)
+  * Revamp the sequence plugin (#4713)
+  * Fix startup message and cache file creation (#4705)
+  * Allow plugins to read env vars present upon session creation (behind permission) (#4700)
+  * Propagate plugin alias config changes to plugins (#4698)
+  * fix: report layout folder to screen from watcher instead of querying (#4696)
+  * CLI commands to query tab ids, names and info (#4695)
+  * Allow writing characters, bytes and keys to specific panes from the CLI (#4691)
+  * Improve plugin API ergonomics and add CLI goodies (#4690)
+  * chore: Fix the issue template to match existing labels (#4637)
+  * test: Tighten network privileges for e2e test container (#4688)
+  * refactor: make tab_ids stable (#4685)
+  * fix: scrolling with double/triple-click selection (#4681)
+  * fix: don't trim empty characters with background (#4680)
+  * Allow resizing panes with the mouse (#4678)
+  * fix(layout): Correctly handle relative layout paths from CLI (#4664)
+  * Handle errors in route loop (#4655)
+  * Allow saving current session for resurrection on demand (#4654)
+  * fix: session creation time on musl (for "zellij ls") (#4645)
+  * docs(changelog): restore tab position
+  * feat(zellij-server): restore tab position when re-attaching (#4115)
+  * fix: properly occlude cursor in floating pane when pinned pane covers it (#4644)
+  * feat(assets): add svg logo (#4196)
+  * Fix loading short layouts and custom config dirs (#4640)
+  * fix: get "zellij run --session" to also work on sessions that have no attached clients (#4626)
+  * fix: sessions started from the session manager will now default to the current cwd (#4625)
+  * Allow disabling OSC8 link generation (#4624)
+  * Fix breaking panes behavior (#4622)
+  * feat(web): add base_url option (#4409)
+  * Fix query webserver from IPC rather than HTTPS (#4620)
+  * Fix tiled new pane borderless (#4618)
+  * Allow toggling pane frames for specific panes (#4615)
+  * Fix: allow 0% coordinate specification for floating panes (#4609)
+  * fix: properly quit welcome screen when switching sessions (#4605)
+  * fix: center floating panes when width/height but no x/y are provided (#4607)
+  * docs(changelog): add PRs
+  * fix: remove layout config when switching sessions (#4604)
+  * fix(security): validate session name in delete-session to prevent directory deletion (#4583)
+  * Deps upgrade (#4603)
+  * Layout manager (#4601)
+  * docs(CONTRIBUTING): Describe rust toolchain versioning policy (#4585)
+  * build: Update Rust toolchain to 1.92.0 (#4579)
+  * Feature: allow overriding a layout for a currently running tab (change layout at runtime) (#4566)
+  * Read only web tokens (#4551)
+  * HOTFIX: fix flaky macos test
+  * Command Sequences, Blocking CLI Commands, New Plugin APIs (#4546)
+  * fix(zellij-server): unblock building on 32bit targets (#4484)
+  * Improve CLI interface (add detach, switch session, blocking zellij run and more) (#4492)
+  * Feature: watcher clients (#4487)
+  * Migrate from wasmtime to wasmi (#4449)
+  * Give plugins the ability to read pane contents (#4465)
+  * build(cargo): Update Rust toolchain to 1.90.0 (#4457)
+  * New Feature: remote attach to a Zellij session from the terminal (#4460)
+  * fix(resurrection): allow splitting fixed one-row fixed panes (#4442)
+  * fix(resurrection): occasional status-bar pop-out after resurrection (#4440)
+  * fix(ipc): make sessions compatible between versions (#4439)
+  * refactor(client-server-contract): config + layout (#4383)
+  * fix(web): avoid sending single meta keypresses, cleanup (#4376)
+  * chore(repo): update development version
+
+-------------------------------------------------------------------
 Sat Oct 11 03:09:27 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
-- add zellij-update-wasmtime-wasi-to-33.0.2.patch
+- Add zellij-update-wasmtime-wasi-to-33.0.2.patch
   * CVE-2025-53901 (boo#1246953)
 
 -------------------------------------------------------------------
@@ -35,7 +216,7 @@ Fri Aug 08 20:10:44 UTC 2025 - RN <R_Nik_C@proton.me>
   * fix(web_server): Handle extracting session_token from multiple cookies (#4271)
 
 -------------------------------------------------------------------
-Mon Apr 21 11:48:49 UTC 2025 - gerald_chen@foxmail.com
+Mon Apr 21 11:48:49 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 0.42.2:
   * chore(release): v0.42.2
@@ -167,7 +348,7 @@ Wed Mar 19 02:22:48 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
   * Use recomprizz instead of recompress.
 
 -------------------------------------------------------------------
-Wed Feb 12 21:31:52 UTC 2025 - gerald_chen@foxmail.com
+Wed Feb 12 21:31:52 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 0.41.2:
   * chore(release): v0.41.2
@@ -209,7 +390,7 @@ Wed Feb 12 21:31:52 UTC 2025 - gerald_chen@foxmail.com
   * chore(repo): bump development version
 
 -------------------------------------------------------------------
-Tue Nov 05 10:16:30 UTC 2024 - gerald_chen@foxmail.com
+Tue Nov 05 10:16:30 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update _service file
 - Update to version 0.41.1:

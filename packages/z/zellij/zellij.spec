@@ -1,7 +1,7 @@
 #
 # spec file for package zellij
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,13 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.43.1
+Version:        0.44.1
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
 URL:            https://github.com/zellij-org/zellij
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Patch0:         zellij-update-wasmtime-wasi-to-33.0.2.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
@@ -88,39 +87,11 @@ rm -v zellij-utils/assets/plugins/*
 %build
 # First rebuilt plugins we just deleted
 # Note: RUSTFLAGS break linking with WASM-files, so we don't use the cargo_build-macro here
-pushd default-plugins/compact-bar
-cargo --offline build --release --target=wasm32-wasip1
-popd
-pushd default-plugins/status-bar
-cargo --offline build --release --target=wasm32-wasip1
-popd
-pushd default-plugins/tab-bar
-cargo --offline build --release --target=wasm32-wasip1
-popd
-pushd default-plugins/strider
-cargo --offline build --release --target=wasm32-wasip1
-popd
-pushd default-plugins/session-manager
-cargo --offline build --release --target=wasm32-wasip1
-popd
-pushd default-plugins/fixture-plugin-for-tests
-cargo --offline build --release --target=wasm32-wasip1
-popd
-pushd default-plugins/configuration
-cargo --offline build --release --target=wasm32-wasip1
-popd
-pushd default-plugins/plugin-manager
-cargo --offline build --release --target=wasm32-wasip1
-popd
-pushd default-plugins/about
-cargo --offline build --release --target=wasm32-wasip1
-popd
-pushd default-plugins/share
-cargo --offline build --release --target=wasm32-wasip1
-popd
-pushd default-plugins/multiple-select
-cargo --offline build --release --target=wasm32-wasip1
-popd
+for plugin in default-plugins/*; do
+  pushd "${plugin}"
+  cargo --offline build --release --target=wasm32-wasip1
+  popd
+done
 
 # Move the results to the place they are expected
 mv -v target/wasm32-wasip1/release/*.wasm zellij-utils/assets/plugins/

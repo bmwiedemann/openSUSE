@@ -1,24 +1,21 @@
 <services>
-  <service mode="manual" name="obs_scm">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/zellij-org/zellij.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.43.1</param>
+    <param name="revision">v0.44.1</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">gerald_chen@foxmail.com</param>
   </service>
-  <service mode="manual" name="tar"/>
-  <service mode="manual" name="recomprizz">
-    <param name="target">*.tar</param>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>
-  <service mode="manual" name="set_version"/>
+  <service name="set_version" mode="manual"/>
   <service name="cargo_vendor" mode="manual">
     <param name="src">zellij</param>
-    <param name="compression">zst</param>
-    <param name="update">true</param>
   </service>
 </services>
