@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 14 05:38:59 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 2.2.2:
+  * go.mod: github.com/docker/cli v29.2.0+incompatible
+  * go.mod: google.golang.org/grpc v1.79.3
+  * update CNI plugins (1.9.1)
+  * update BuildKit (0.28.1)
+
+-------------------------------------------------------------------
 Tue Dec 23 04:38:35 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 2.2.1:
