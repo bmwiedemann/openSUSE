@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 13 11:43:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.4.0
+  * Publish binary wheels for RISC-V 64.
+  * Fix multiple rare crash paths during interpreter shutdown.
+    Note that this now relies on the atexit module, and introduces
+    subtle API changes during interpreter shutdown (for example,
+    getcurrent is no longer available once the atexit callback fires).
+    See PR #499 by Nicolas Bouvrette.
+  * Address the results of an automated code audit performed by
+    Daniel Diniz. This includes several minor correctness changes
+    that theoretically could have been crashing bugs, but typically
+    only in very rare circumstances.
+    See PR 502.
+  * Fix several race conditions that could arise in free-threaded
+    builds when using greenlet objects from multiple threads, some
+    of which could lead to assertion failures or interpreter crashes.
+    See issue 503, with thanks to Nitay Dariel and Daniel Diniz.
+
+-------------------------------------------------------------------
 Wed Feb 25 09:53:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.3.2
