@@ -297,4 +297,41 @@
   * Add experimental composable rule based sampler</comment>
     <requestid>1343487</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>00db811ebc9aef44ade5fdcda088cf07</srcmd5>
+    <version>1.41.0</version>
+    <time>1776181711</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.41.0:
+  * `opentelemetry-sdk`: Add `host` resource detector support to
+    declarative file configuration via
+    `detection_development.detectors[].host`
+  * `opentelemetry-sdk`: Add `container` resource detector
+    support to declarative file configuration via
+    `detection_development.detectors[].container`, using entry
+    point loading of the `opentelemetry-resource-detector-
+    containerid` contrib package
+  * `opentelemetry-sdk`: Add
+    `create_tracer_provider`/`configure_tracer_provider` to
+    declarative file configuration, enabling TracerProvider
+    instantiation from config files without reading env vars
+  * Enabled the flake8-tidy-import plugins rules for the ruff
+    linter. These rules throw warnings for relative imports in
+    the modules.
+  * `opentelemetry-sdk`: Fix `AttributeError` in
+    `ExplicitBucketHistogramAggregation` when applied to non-
+    Histogram instruments without explicit boundaries
+  * Fix `BatchLogRecordProcessor` default `schedule_delay_millis`
+    from 5000ms to 1000ms to comply with the OTel specification.
+    Note: logs may be exported 5x more frequently by default
+    (e.g. for users who don't explicitly set the
+    `OTEL_BLRP_SCHEDULE_DELAY` env var).
+  * `opentelemetry-sdk`: Add `process` resource detector support
+    to declarative file configuration via
+    `detection_development.detectors[].process`
+  * `opentelemetry-sdk`: Add shared `_parse_headers` helper for
+    declarative config OTLP exporters
+  * `opentelemetry-api`: Replace a broad exception in attribute</comment>
+    <requestid>1346390</requestid>
+  </revision>
 </revisionlist>

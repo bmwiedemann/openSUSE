@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-sdk%{psuffix}
-Version:        1.40.0
+Version:        1.41.0
 Release:        0
 Summary:        OpenTelemetry Python SDK
 License:        Apache-2.0
@@ -36,18 +36,20 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 %if %{with test}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module opentelemetry-sdk = %{version}}
-BuildRequires:  %{python_module opentelemetry-test-utils = 0.61b0}
+BuildRequires:  %{python_module opentelemetry-test-utils = 0.62b0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing-extensions >= 3.7.4}
+BuildRequires:  %{python_module typing-extensions >= 4.5.0}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-opentelemetry-api = %{version}
-Requires:       python-opentelemetry-semantic-conventions = 0.61b0
-Requires:       python-typing-extensions >= 3.7.4
+Requires:       python-opentelemetry-semantic-conventions = 0.62b0
+Requires:       python-typing-extensions >= 4.5.0
 BuildArch:      noarch
 %python_subpackages
 
