@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:00:22 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 1.6.0:
+  * chore: bump version to 1.6.0 and update CHANGELOG
+  * test: address review findings for util tests (#985)
+  * test: fix executor and util review findings (#984)
+  * test: strengthen test assertions per review (#983)
+  * test: add executor edge case tests (#982)
+  * test: add filecontent edge case tests (#981)
+  * test: add more coverage tests (#980)
+  * Localization update
+  * test: add gpgkeystate coverage tests (#979)
+  * test: add UserInfo created/expiry coverage (#978)
+- Drop QtPass-desktop_version.patch because it's no longer needed.
+
+-------------------------------------------------------------------
 Sun Mar 22 06:19:32 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.5.1
 
 - Update to 1.5.1

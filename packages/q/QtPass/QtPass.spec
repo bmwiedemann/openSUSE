@@ -17,14 +17,14 @@
 
 
 Name:           QtPass
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        A multi-platform gui for pass
 License:        GPL-3.0-only
 Group:          Productivity/Security
 URL:            https://qtpass.org/
-Source0:        https://github.com/IJHack/qtpass/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         %{name}-desktop_version.patch
+#Source0:        https://github.com/IJHack/qtpass/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
