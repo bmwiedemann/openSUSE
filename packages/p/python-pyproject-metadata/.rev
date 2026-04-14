@@ -61,4 +61,17 @@
 - Required by meson-python</comment>
     <requestid>1329163</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e6b891260c7eb7d034b47011721a8f28</srcmd5>
+    <version>0.11.0</version>
+    <time>1776181682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.0:
+  * This release refactors a lot of the internals to break up
+    conversion and validation. This should not be noticeable
+    except for better error messages in some cases.
+  * Test on some downstream projects.
+  * Remove some PEP 621 terminology</comment>
+    <requestid>1345142</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-metadata
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        PEP 621 metadata parsing
 License:        MIT
