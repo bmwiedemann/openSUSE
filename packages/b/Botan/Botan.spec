@@ -17,10 +17,10 @@
 #
 
 
-%define version_suffix 3-9
+%define version_suffix 3-11
 %define short_version 3
 Name:           Botan
-Version:        3.9.0
+Version:        3.11.1
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause
@@ -30,6 +30,7 @@ Source0:        https://botan.randombit.net/releases/Botan-%{version}.tar.xz
 Source1:        https://botan.randombit.net/releases/Botan-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Source10:       README.md
 BuildRequires:  bzip2 >= 1.0.2
 BuildRequires:  c++_compiler
 BuildRequires:  libbz2-devel
