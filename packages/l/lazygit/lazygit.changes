@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:12:54 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.61.1:
+  * Don't default the base repo for pull requests to "origin"
+  * Hide closed pull requests on main branches
+  * Discourage contributions
+  * Add a warning about adding new config options
+  * Make the TOC entries links
+  * Fix heading level
+  * Fix case-insensitive remote URL matching for GitHub PRs
+  * Add a justfile
+  * fix: yaml.github-actions.security.run-shell-injection.run-shell-injection security vulnerability
+
+-------------------------------------------------------------------
+Tue Apr 14 10:12:40 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.61.0:
+  * Update docs and schema for release
+  * Update translations from Crowdin
+  * Add condition field to custom command prompts
+  * Log hashes of local branches when deleting them
+  * Add missing quote
+  * Localize "Dropping stash" log
+  * Bump github.com/sasha-s/go-deadlock from 0.3.6 to 0.3.9
+  * Bump github.com/sahilm/fuzzy from 0.1.0 to 0.1.1
+  * Bump github.com/integrii/flaggy from 1.4.0 to 1.8.0
+  * Bump github.com/spkg/bom from 0.0.0-20160624110644-59b7046e48ad to 1.0.1
+  * Bump github.com/adrg/xdg from 0.4.0 to 0.5.3
+  * Add some brief documentation
+  * Don't refresh pull requests when checking out a local branch
+  * Change "Copy pull request URL to clipboard" command to use existing PR if there is one
+  * Add commands for opening a Github PR in the browser
+  * Prompt only once per session for each repo
+  * Add an optional onCancel hook for menus
+  * Call OnMenuPress(nil) when hitting esc in a menu
+  * Show PR information in main view, above the branch log
+  * Cache PRs in AppState so that they appear immediately at startup
+  * Show PR icons in branches list
+  * Add pull requests to lazygit's model and refresh them
+  * Add GitHub commands and model for fetching PR status
+  * Add cli/go-gh/v2 and cli/safeexec vendor dependencies
+  * Refactor hosting service to support repo name extraction
+  * Remove branch icons from Branches list
+  * Add missing entries to scopeNameMap
+  * Allow turning off nerd fonts without restarting
+  * README.md: Update Sponsors
+  * Bump github.com/sanity-io/litter from 1.5.2 to 1.5.8
+  * Bump github.com/stretchr/testify from 1.10.0 to 1.11.1
+  * Bump github.com/creack/pty from 1.1.11 to 1.1.24
+  * Bump github.com/spf13/afero from 1.9.5 to 1.15.0
+  * Bump github.com/lucasb-eyer/go-colorful from 1.3.0 to 1.4.0
+  * Bump actions/upload-artifact from 6 to 7
+  * Bump actions/download-artifact from 7 to 8
+  * Bump actions/cache from 4 to 5
+  * Allow customizing the window width/height thresholds for when to use portrait mode
+  * Fix typo
+  * Add label "maintenance" to PRs created by dependabot
+  * Add dependabot config for github actions
+  * Remove the allowed_updates key
+  * Update all actions to their newest versions
+  * fix: pin 7 unpinned action(s) to commit SHAs
+  * fix: extract inline secret from run block in ci.yml
+  * Fix panic when branch.autosetuprebase is set
+  * Make file sort order and case sensitivity configurable
+  * Remove empty directories after discarding files
+  * Extract helper method removeFiles
+  * Change test setup to allow nested directories
+  * Don't stage out-of-date submodules when asking user to auto-stage after resolving conflicts
+  * Add test to demonstrate the problem
+  * Bump github.com/buger/jsonparser from 1.1.1 to 1.1.2
+  * Fix patch commands when git config has color=always
+  * docs: fix CONTRIBUTING grammar
+  * Update redo keyboard shortcut in README.md
+  * Make Debian/Ubuntu install command architecture-independent
+  * Scroll to top when showing subcommits
+  * Improve performance for discarding range selection of many files
+  * Improve performance of discarding changes in large directories
+  * Add runGitCmdOnPaths utility
+  * Add integration tests for discarding dir changes when filtering by path
+  * Add unit tests for WorkingTreeDiscard{All,Unstaged}DirChanges
+  * Cleanup: better check for which files are removed
+  * Cleanup: simplify by using lo.FilterMap instead of separate calls to Filter and Map
+  * Cleanup: use oscommands.RemoveFile rather than plain os.Remove
+  * Fix searching commits or main view after switching repos
+  * Remove go-git dependency
+  * Remove go-git repo from GitCommon
+  * Remove go-git repo from ConfigCommands
+  * Don't use go-git to parse branches
+  * Don't use go-git to parse remotes
+  * Add support for clicking on arrows in the file list to expand/collapse directories
+  * Add GetOnClick to HasKeybindings
+  * Add GetVisualDepth method to FileTree/CommitFileTree
+  * Document some of the methods of HasKeybindings
+  * Rename GetOnClick (et al) to GetOnDoubleClick
+  * Fix the expanded layout of the branches panel (half and full screen modes)
+  * Add a note about AI to CONTRIBUTING.md
+  * Revert test workaround
+  * Fix selection after staging an added line
+  * Fix staging only some lines of a block of consecutive changes
+  * Add test for how the selection advances after staging lines
+  * Add regression test for staging a single added line
+  * Add test demonstrating problem with staging only some changed lines
+
+-------------------------------------------------------------------
+Tue Apr 14 10:12:19 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.60.0:
+  * Update docs and schema for release
+  * Update translations from Crowdin
+  * Re-render main view when changing screen mode
+  * Cleanup: use CurrentSide() instead of private currentSidePanel
+  * Show worktree name next to branch in branches list
+  * README.md: Update Sponsors
+  * Enable { and } to change diff context size in branches and tags panels in diffing mode
+  * Use new ShouldHandleMouseEvent hook to prevent clicks in views behind panels
+  * Bump gocui
+  * Add comments
+  * Fix off-by-one error when calculating popup panel dimensions
+  * Add backward cycling support for all branches log view
+  * Fix typo: MacOS to macOS
+  * Fix #5302: Create .git/info directory before writing exclude file
+  * Bump github.com/cloudflare/circl from 1.6.1 to 1.6.3
+  * Show branch name and detached HEAD in worktrees tab
+  * Filter file views rather than search
+  * Only reset selection in ReApplyFilter when search prompt is active
+  * Reset PrevSearchIndex when opening filter prompt
+  * Rename GetFilter to GetStatusFilter on IFileTree
+  * Prevent patch building panel from briefly appearing when discarding change from commit
+  * Allow discarding lines from patch directly
+  * Add DisabledReason for discarding from a multiselection of commits
+  * Turn error checks in discard handler into DisabledReasons
+  * Remove redundant CantPatchWhileRebasingError checks in handlers
+  * Warn more prominently about resetting the patch when discarding changes
+  * Say "discard" instead of "remove" when discard changes from a commit
+  * Hide the "Fetching..." status of the auto-fetch when bottom line is not showing
+  * Rename "Copy commit hash to clipboard" to mention abbreviated hash
+  * Fix matching of lazygit-edit URLs without line numbers
+  * docs: Add Terra install method
+
+-------------------------------------------------------------------
 Sun Feb 08 15:01:55 UTC 2026 - ecsos@opensuse.org
 
 - Update to version 0.59.0:
