@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysvn
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define packagename pysvn
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysvn
-Version:        1.9.23
+Version:        1.9.25
 Release:        0
 Summary:        Highlevel Subversion Python Bindings
 License:        Apache-1.1

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 12 18:55:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.25:
+  * Build binary kits for Windows and macOS
+  * Subversion LTS is 1.14 build only
+
+-------------------------------------------------------------------
 Wed Sep 10 12:56:37 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 1.9.23:

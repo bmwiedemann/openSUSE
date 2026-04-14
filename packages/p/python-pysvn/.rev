@@ -320,4 +320,14 @@
   * No longer build svn 1.10 kits as subversion LTS is 1.14 now</comment>
     <requestid>1303658</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>dddcac9719f445fbf06dde94e9eb7da6</srcmd5>
+    <version>1.9.25</version>
+    <time>1776181731</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.25:
+  * Build binary kits for Windows and macOS
+  * Subversion LTS is 1.14 build only</comment>
+    <requestid>1346233</requestid>
+  </revision>
 </revisionlist>
