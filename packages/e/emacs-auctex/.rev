@@ -681,4 +681,12 @@
     <comment>- Skip auto generated style files for Leap (upstream also dislike them)</comment>
     <requestid>1344913</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>028bcb266d212f823a37d0eb8715dafa</srcmd5>
+    <version>14.1.0</version>
+    <time>1776181773</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to TeXLive 2026</comment>
+    <requestid>1346799</requestid>
+  </revision>
 </revisionlist>

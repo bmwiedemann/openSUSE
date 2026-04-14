@@ -17,7 +17,7 @@
 
 
 %bcond_with     tex4auto
-%define tlversion 2025
+%define tlversion 2026
 %if %{undefined ext_el}
 %define ext_el  .gz
 %endif
