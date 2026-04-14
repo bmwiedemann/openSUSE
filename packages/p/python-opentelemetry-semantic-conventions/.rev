@@ -138,4 +138,13 @@
     system.memory.linux.* attributes.</comment>
     <requestid>1343488</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7250f27f6b46c680819037cefe5eac8b</srcmd5>
+    <version>0.62b0</version>
+    <time>1776181709</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.62b0:
+  * match version bump to 1.41</comment>
+    <requestid>1346297</requestid>
+  </revision>
 </revisionlist>

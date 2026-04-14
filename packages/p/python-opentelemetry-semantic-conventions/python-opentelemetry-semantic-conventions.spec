@@ -18,20 +18,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-semantic-conventions
-Version:        0.61b0
+Version:        0.62b0
 Release:        0
 Summary:        OpenTelemetry Semantic Conventions
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-semantic-conventions
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-semantic-conventions/opentelemetry_semantic_conventions-%{version}.tar.gz
-BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Deprecated >= 1.2.6
-Requires:       python-opentelemetry-api >= 1.29.0
+Requires:       python-opentelemetry-api >= 1.41.0
+Requires:       python-typing-extensions >= 4.5.0
 BuildArch:      noarch
 %python_subpackages
 
