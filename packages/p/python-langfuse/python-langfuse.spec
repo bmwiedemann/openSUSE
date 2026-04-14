@@ -1,7 +1,7 @@
 #
 # spec file for package python-langfuse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,31 +18,31 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langfuse
-Version:        3.1.2
+Version:        4.2.0
 Release:        0
 Summary:        A client library for accessing langfuse
 License:        MIT
 URL:            https://github.com/langfuse/langfuse-python
 Source:         https://files.pythonhosted.org/packages/source/l/langfuse/langfuse-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
+BuildRequires:  %{python_module uv-build >= 0.11.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio
-Requires:       python-backoff
-Requires:       python-httpx
-Requires:       python-idna
-Requires:       python-packaging
-Requires:       python-pydantic
-Requires:       python-wrapt
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       python-backoff >= 1.10.0
+Requires:       python-httpx >= 0.15.4
+Requires:       python-opentelemetry-api >= 1.33.1
+Requires:       python-opentelemetry-exporter-otlp-proto-http >= 1.33.1
+Requires:       python-opentelemetry-sdk >= 1.33.1
+Requires:       python-packaging >= 23.2
+Requires:       python-pydantic >= 2
+Requires:       python-wrapt >= 1.14
 BuildArch:      noarch
 %python_subpackages
 
 %description
-A client library for accessing langfuse, an open-source LLM engineering platform that helps teams
-collaboratively debug, analyze, and iterate on their LLM applications.
+A client library for accessing langfuse, an open-source LLM engineering
+platform that helps teams collaboratively debug, analyze, and iterate on their
+LLM applications.
 
 %prep
 %autosetup -p1 -n langfuse-%{version}
@@ -52,19 +52,11 @@ collaboratively debug, analyze, and iterate on their LLM applications.
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/release
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%post
-%python_install_alternative release
-
-%postun
-%python_uninstall_alternative release
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python_alternative %{_bindir}/release
 %{python_sitelib}/langfuse
 %{python_sitelib}/langfuse-%{version}.dist-info
 

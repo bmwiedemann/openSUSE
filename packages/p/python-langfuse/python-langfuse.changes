@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Fri Apr 10 23:45:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * feat(client): add custom span exporter support
+- update to 4.1.0:
+  * feat(api): update API spec from langfuse/langfuse 1999706
+- update to 4.0.6:
+  * feat(langchain): mark LangChain root observations in metadata
+- update to 4.0.5:
+  * fix(experiments): fix unstable local experiment IDs for local
+    data
+- update to 3.14.6:
+  * feat(langchain): backport Langchain root metadata flag to
+    v3-stable
+  * fix(langchain): exit propagation context gracefully
+- update to 4.0.2:
+  * fix(openai): correct token details field names for Response
+    API usage
+  * fix(openai): include responses instructions in captured
+    prompt
+  * fix(observe): Handle asyncio.CancelledError in exception
+    blocks
+  * feat(api): update API spec from langfuse/langfuse a6c38c6
+  * fix(scores): parse session ID correctly
+  * fix(experiments): maintain propagated context in async
+    experiments
+- update to 4.0.1:
+  * feat(api): update API spec from langfuse/langfuse e84ca45
+  * chore(deps-dev): bump orjson from 3.11.3 to 3.11.6
+  * feat(api): update API spec from langfuse/langfuse b3adfc3
+- update to 4.0.0:
+  * fix(media): reuse httpx client for requests
+  * feat(api): update API spec from langfuse/langfuse 784ab09
+  * fix(media): retry failed uploads
+  * feat(api): update API spec from langfuse/langfuse 25b5139
+  * feat(api): update API spec from langfuse/langfuse a93f65a
+  * fix(langchain): skip priority-tier keys when subtracting
+    token detail counts
+  * fix(experiment): replace escaped newlines with actual
+    newlines in format output
+  * fix(openai): remove unreachable None type assignments for
+    OpenAI classes
+  * Add handling for invalid tool calls in CallbackHandler
+  * fix: apply stricter early routing for base64 media to prevent
+    SSE dat…
+  * fix(client): pass release variable to span clients
+  * feat(api): update API spec from langfuse/langfuse 2eaf041
+- update to 3.14.5:
+  * feat(batch-evaluation): add trace tags and roll up scores to
+    trace
+- update to 3.14.4:
+  * fix(experiments): remove dataset version from run item
+    request if None
+- update to 3.14.3:
+  * fix(openai): parse finish_reason from chat completion stream
+- update to 3.14.2:
+  * fix Evaluation docstring examples to use value=0 instead of
+    value=None
+  * feat(api): update API spec from langfuse/langfuse 270f036
+  * fix(openai): parse usage details from response API response
+    chunk
+- update to 3.14.1:
+  * feat(dataset-versioning): support running versioned
+    experiments
+- update to 3.14.0:
+  * feat(api): update API spec from langfuse/langfuse 966662e
+- update to 3.13.0:
+  * feat(batch-evaluation): allow passing fields param for
+    efficient trace fetching
+- update to 3.12.1:
+  * Add metadata parameter to score_current_span and
+    score_current_trace
+  * fix: Skip trace url generation when tracing is disabled
+  * fix(batch-evaluation): pass trace ID for score creation if
+    scope = observations
+- update to 3.12.0:
+  * feat(api): update API spec from langfuse/langfuse d59b6a3
+  * feat(api): update API spec from langfuse/langfuse 41f064c
+  * feat(api): update API spec from langfuse/langfuse 99ffc45
+  * fix(experiments): move evaluations to root experiment span
+  * feat(client): add score metadata argument to span client
+    score methods
+  * feat(client): add methods to langfuse client to fetch and
+    delete dataset runs
+- update to 3.11.2:
+  * fix(client): reuse httpx client in get_client
+- update to 3.11.1:
+  * feat(api): update API spec from langfuse/langfuse 3dbec46
+  * fix(langchain): allow prompt linking with langchain v1
+    create_agent
+- update to 3.11.0:
+  * fix(langchain): update docstring for trace_context
+  * feat(client): allow propagating trace name
+- update to 3.10.7:
+  * fix(client): flush on shutdown
+- update to 3.10.6:
+  * feat(api): update API spec from langfuse/langfuse fc04a50
+  * fix(openai): handle parsed_n non integer
+  * fix(resource-manager): flush custom tracer provider if
+    provided
+- update to 3.10.5:
+  * feat(client): Add optional timestamp parameter to score
+    creation
+  * fix(resource_manager): define tracer_provider if
+    tracing_enabled=False
+- update to 3.10.3:
+  * fix(gemini): gemini input token calculation when implicit
+    cache is hit using langchain
+  * feat(api): update API spec from langfuse/langfuse ad16fa0
+  * feat: Add comment field to langfuse Evaluation from autoevals
+    metadata
+  * feat(langchain): allow injecting trace_context into
+    LangchainCallbackHandler
+  * feat(api): update API spec from langfuse/langfuse cb16277
+  * fix(resource-manager): reuse passed tracer provider for
+    reinit
+- update to 3.10.2:
+  * docs(experiments): evaluation value cannot be None
+  * fix(openai): handle pydantic BaseModel as metadata
+  * fix(datasets): add schema arguments to create_dataset
+  * fix(prompts): evict prompt cache on NotFound error
+  * **Full Changelog**: https://github.com/langfuse/langfuse-
+    python/compare/v3.10.1...v3.10.2
+
+-------------------------------------------------------------------
 Sat Jul  5 10:28:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.2:
