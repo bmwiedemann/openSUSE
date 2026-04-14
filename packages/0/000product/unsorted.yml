@@ -12477,7 +12477,7 @@ unsorted:
   - libboost_wave1_90_0-devel 
   - libboost_wave1_90_0-x86-64-v3 
   - libboringssl1 
-  - libbotan-3-9 
+  - libbotan-3-11 
   - libbotan-devel 
   - libbox2d-devel 
   - libbpf-devel 
@@ -26064,6 +26064,7 @@ unsorted:
   - python311-itsdangerous 
   - python311-iwlib 
   - python311-j2gen 
+  - python311-jaconv 
   - python311-jalali-core 
   - python311-jaraco.classes 
   - python311-jaraco.collections 
@@ -27549,6 +27550,7 @@ unsorted:
   - python311-serverfiles 
   - python311-setools 
   - python311-setproctitle 
+  - python311-setuptools 
   - python311-setuptools-declarative-requirements 
   - python311-setuptools-gettext 
   - python311-setuptools-git 
@@ -29971,6 +29973,7 @@ unsorted:
   - python313-itsdangerous 
   - python313-iwlib 
   - python313-j2gen 
+  - python313-jaconv 
   - python313-jalali-core 
   - python313-jaraco.classes 
   - python313-jaraco.collections 
@@ -33847,6 +33850,7 @@ unsorted:
   - python314-itsdangerous 
   - python314-iwlib 
   - python314-j2gen 
+  - python314-jaconv 
   - python314-jalali-core 
   - python314-jaraco.classes 
   - python314-jaraco.collections 
