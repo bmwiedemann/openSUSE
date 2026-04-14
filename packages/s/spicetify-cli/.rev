@@ -133,4 +133,12 @@
     <comment>Update to version 2.40.11</comment>
     <requestid>1284425</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>45cc58b93e65cfa0123cc389a9bbea00</srcmd5>
+    <version>2.43.1</version>
+    <time>1776181785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346824</requestid>
+  </revision>
 </revisionlist>

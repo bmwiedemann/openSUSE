@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Mon Apr 13 13:38:39 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- Update to version 2.43.1:
+  * fix(preprocess): use old approach with changing css
+  * feat: patch in old card stylings
+  * fix: handle css classes as objects (#3759)
+  * feat(lyrics-plus): add idling indicator for pauses and UI enhancements (#3726)
+  * feat(css-map): add classes for Spotify `1.2.86` (#3757)
+  * fix: css classes not applying to js (#3758)
+  * fix(fullAppDisplay): use GraphQL to fetch album date (#3733)
+  * fix(devtools): respect `XDG_CACHE_HOME` for offline.bnk lookup
+  * fix: do some changes for Spotify `1.2.86`
+  * ci: do not trigger release when release is not marked as latest
+  * fix(trashbin): context menu label not updating (#3744)
+  * fix(types): add missing types for Player and ReactJSX (#3732)
+  * fix(lyrics-plus): use `spclient` endpoint to fetch tempo (#3734)
+  * fix(types): make `PopupModal` content accept `JSXElement` (#3728)
+  * feat(lyrics-plus): add performer tag for the Musixmatch provider (#3689)
+  * feat(css-map): added newer mappings for progress bar (#3720)
+  * fix: update `loopyLoop` to handle Spotify DOM restructuring (#3724)
+  * fix(types): change types for `SubMenu` and `ButtonProps` (#3723)
+  * fix(preprocess): adapt Platform regex due to URL in the chunk
+  * feat: move to our own implementation of `ScrollableContainer`
+  * fix(wrapper): unmount `_HTMLGenericModal` React content on hide (#3717)
+  * fix(wrapper): find `ScrollableContainer` in `exportedMemos` for spotify `1.2.84`
+  * chore(deps): bump actions/attest-build-provenance from 3 to 4 (#3713)
+  * fix: skip `ExclusiveModeAPI` resolution to prevent Linux segfault (#3705)
+  * fix: apply latest fix to `waitForChunks` as well
+  * fix: adapt wrapper to spotify `1.2.83`
+  * feat: disable getting Cards for now
+  * ci: update URL for AUR package update (#3686)
+  * fix(custom-apps): directly access `ReactDOM`
+  * fix(preprocess): add nullish check
+  * fix: use exact match with pkill to terminate Spotify (#3543)
+  * feat(lyrics-plus): convert musixmatch translation name from iso to language name (#3672)
+  * chore(deps): bump golang.org/x/net from 0.48.0 to 0.49.0 (#3677)
+  * fix(lyrics-plus): use `data-testid` to match the icon
+  * chore(deps): bump golang.org/x/sys from 0.39.0 to 0.40.0 (#3675)
+  * fix: init paths for few unchainable commands
+  * fix: init paths after unchainable commands
+  * chore(coderabbit): disable issue enrichment
+  * fix(shuffle+): use `PlatformAPI` for `Rootlist`
+  * feat(css-map): add entity header with bg img & nav bar class (#3658)
+  * chore(deps): bump actions/upload-artifact from 5 to 6 (#3655)
+  * feat(config/linux): add `lpf-spotify-client` path (#3654)
+  * chore(deps): bump golang.org/x/net from 0.47.0 to 0.48.0 (#3648)
+  * chore(deps): bump golang.org/x/sys from 0.38.0 to 0.39.0 (#3649)
+  * fix(apply): custom apps for `1.2.78` (#3643)
+  * fix(preprocess): apply old snackbar regex for 1.2.77 and below
+  * fix(apply): add support for Spotify `1.2.78`+ (#3629)
+  * fix: check for both dll and exe on windows
+  * fix(lyrics-plus): correctly detect non-standard language from Musixmatch providers (#3596)
+  * feat: add build type detection
+  * feat(css-map): add track list disabled class (#3591)
+  * chore(deps): bump actions/checkout from 5 to 6 (#3586)
+  * feat(lyrics-plus): enhance Musixmatch integration (#3562)
+  * feat: add a workaround around weird spotify condition
+  * feat(css-map): add missing progress bar classes for 1.2.75+ (#3583)
+  * chore(deps): bump golang.org/x/net from 0.46.0 to 0.47.0 (#3576)
+  * chore(deps): bump golang.org/x/sys from 0.37.0 to 0.38.0 (#3574)
+  * feat(css-maps): add missing maps and introduce new maps for watch feed modal (#3560)
+  * chore(deps): bump actions/upload-artifact from 4 to 5 (#3564)
+  * chore(deps): bump signpath/github-action-submit-signing-request from 1 to 2 (#3563)
+  * chore(deps): bump golang.org/x/net from 0.44.0 to 0.46.0 (#3553)
+  * chore(deps): bump github.com/pterm/pterm from 0.12.80 to 0.12.82 (#3556)
+  * feat(css-map): add various missing classes for `1.2.73` (#3541)
+  * feat(css-map): add missing settings classes for `1.2.73` (#3538)
+  * fix(shuffle+): use `PlatformAPI` for getting contents of the playlist
+  * fix(css-map): replace `lyrics-lyricsContent-active` key (#3535)
+  * feat(css-map): add player classes for `1.2.73` (#3529)
+  * feat(css-map): add missing lyrics classes (#3524)
+  * feat(css-map): add `NPV` and `LibraryX` classnames missing in 1.2.72 (#3528)
+  * chore: properly change fetch remote css map spinner (#3522)
+  * feat(wrapper): allow nesting submenus
+  * chore: change log style
+  * fix: some changes for Spotify `1.2.72`
+  * fix(watch): properly handle goroutine for logging
+  * feat: logging improvements and refactoring (#3493)
+  * chore(deps): bump actions/setup-go from 5 to 6 (#3507)
+  * chore(deps): bump golang.org/x/net from 0.43.0 to 0.44.0 (#3514)
+  * chore(types): add `isRight` property to `Topbar.Button` class (#3516)
+  * feat(css-map): update for `1.2.72` (#3511)
+  * fix(uri): hook correct chunk (#3508)
+  * fix: use try catch block
+  * fix(react-component): hook correct `ContextMenu` (#3501)
+  * chore(deps): bump actions/attest-build-provenance from 2 to 3 (#3499)
+  * fix(preprocess/colors): only break regexes on the end
+  * fix(preprocess): use word breaks in regex
+  * fix(loopyLoop): wait for webpack
+  * fix(apply): correctly check for multiple indexes in one case
+  * fix(preprocess): exclude selector RTL rules (#3488)
+  * fix(css-map): use different classname forBdcf5g__Rug3TGqSdbiy`
+  * ci(build): arm64 macOS should also be built
+  * style: disable `useIterableCallbackReturn`
+  * ci(build): do not build `arm64` linux build
+  * chore(deps): bump amannn/action-semantic-pull-request from 5 to 6 (#3487)
+  * ci: attest output after signing
+  * feat(apply): support for `1.2.70` (#3483)
+  * chore(deps): bump actions/checkout from 4 to 5 (#3480)
+  * style: lint (#3484)
+  * feat(css-map): map various classes for 1.2.69 (#3481)
+  * chore(deps): bump golang.org/x/net from 0.42.0 to 0.43.0 (#3476)
+  * chore(deps): bump golang.org/x/sys from 0.34.0 to 0.35.0 (#3475)
+  * fix(autoSkipExplicit): add missing `async`
+  * fix(autoSkipExplicit): wait for webpack to be loaded
+  * chore(deps): bump golang.org/x/net from 0.41.0 to 0.42.0 (#3459)
+  * chore(deps): bump golang.org/x/sys from 0.33.0 to 0.34.0 (#3457)
+  * docs: change readme a bit
+  * revert: only check changed files
+  * ci(linter): only check changed files
+  * feat(keyboardShortcut): change scroll top keybind (#3442)
+  * feat(css-map): map `artistAbout` classes
+  * fix(sidebarConfig): wait for snackbar & new props (#3446)
+  * style(biome): update schema (#3447)
+
+-------------------------------------------------------------------
 Tue Jun 10 11:10:34 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 2.40.11:
