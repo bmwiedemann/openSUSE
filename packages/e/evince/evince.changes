@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 23 10:40:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Sat Aug 30 11:23:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 49.alpha:
+  + Make annotation popup window always opaque
+  + Port Evince to Gtk4
+  + profiling:
+    - Usage of sysprof for profiling
+    - EV_PROFILE and EV_PROFILE_JOBS environment variables for
+      profiling are now ignored. Anybody wishing to profile evince
+      can now use sysprof, which provides a far better interface.
+    - Avoid view events while view is still
+  + shell:
+    - Fix crash when exiting
+    - Fix opening of linked PDFs
+    - Confine monitor fix to affected gtk versions
+    - Warn about nonexisting launch target file
+
+-------------------------------------------------------------------
 Sat Jul 12 13:32:15 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Remove SLE 15 patches (no longer needed for 16):

@@ -1,7 +1,7 @@
 #
 # spec file for package evince
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,19 @@
 #
 
 
-%define evdocument_so 3-4
-%define evview_so 3-3
-%define typelibAPI 3_0
-%define pluginAPI 4
+%define evdocument_so 4_0-6
+%define evview_so 4_0-5
+%define typelibAPI 4_0
+%define pluginAPI 6
 
 Name:           evince
-Version:        48.1
+Version:        49.alpha
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM evince-kpathsea.patch -- Fix build with gcc 15
 Patch0:         evince-kpathsea.patch
 # PATCH-FIX-UPSTREAM evince-a11y-crash.patch mgorse@suse.com -- fix crash in the accessible code when page cache text is NULL.
@@ -45,26 +45,24 @@ BuildRequires:  texlive-devel
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(adwaita-icon-theme) >= 2.17.1
 BuildRequires:  pkgconfig(appstream-glib)
+BuildRequires:  pkgconfig(cairo) >= 1.14.0
 BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.22
+BuildRequires:  pkgconfig(exempi-2.0) >= 2.0
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.75.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gnome-desktop-3.0)
+BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.0
-BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-base-1.0)
-BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gtk4) >= 4.6.0
 BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.0
 BuildRequires:  pkgconfig(libarchive) >= 3.6.0
 BuildRequires:  pkgconfig(libgxps) >= 0.2.1
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.5
 BuildRequires:  pkgconfig(libspectre) >= 0.2.0
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:  pkgconfig(poppler-glib) >= 22.02.0
 BuildRequires:  pkgconfig(sm) >= 1.0.0
 BuildRequires:  pkgconfig(synctex) >= 1.18
@@ -215,10 +213,11 @@ A plugin for Evince to read XPS documents.
 %files
 %license COPYING
 %doc %{_datadir}/help/C/%{name}/
-%{_bindir}/*
+%{_bindir}/evince
+%{_bindir}/evince-previewer
+%{_bindir}/evince-thumbnailer
 %{_datadir}/applications/*.desktop
-%{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
-%{_datadir}/evince
+%{_datadir}/dbus-1/services/org.gnome.Evince.Daemon.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Evince.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Evince*
 %{_datadir}/metainfo/org.gnome.Evince.metainfo.xml
