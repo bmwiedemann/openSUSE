@@ -44,4 +44,13 @@
    * Add an option to skip thread-unsafe tests</comment>
     <requestid>1325331</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ed358ca31146e2f66655221b5be2a605</srcmd5>
+    <version>0.8.2</version>
+    <time>1776181686</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.2:
+  * Reset warning filter during thread-unsafe detection</comment>
+    <requestid>1346234</requestid>
+  </revision>
 </revisionlist>

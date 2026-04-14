@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 12 18:57:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.2:
+  * Reset warning filter during thread-unsafe detection
+
+-------------------------------------------------------------------
 Mon Jan  5 03:32:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.8.1:
