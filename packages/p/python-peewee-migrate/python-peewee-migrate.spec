@@ -24,24 +24,27 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-peewee-migrate
-Version:        1.14.3
+Version:        1.15.0
 Release:        0
 Summary:        Support for migrations in Peewee ORM
 License:        MIT
 URL:            https://github.com/klen/peewee_migrate
-Source:         https://files.pythonhosted.org/packages/source/p/peewee-migrate/peewee_migrate-%{version}.tar.gz
+Source:         https://github.com/klen/peewee_migrate/archive/refs/tags/%{version}.tar.gz#/peewee-migrate-%{version}-gh.tar.gz
+BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
+BuildRequires:  %{python_module psycopg2}
+BuildRequires:  %{python_module uv-build}
+BuildRequires:  %{pythons}
 BuildRequires:  python-rpm-macros
 %if 0%{?run_tests}
 # The following are required for the testsuite
 BuildRequires:  %{python_module peewee}
-BuildRequires:  %{python_module pytest-mypy}
 BuildRequires:  %{python_module pytest}
 %endif
 BuildRequires:  fdupes
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Requires:       python
 Requires:       python-click
 Requires:       python-peewee
 BuildArch:      noarch
@@ -76,6 +79,7 @@ done
 
 %files %{python_files}
 %license LICENSE
+%doc README.rst
 %python_alternative %{_bindir}/pw-migrate
 %python_alternative %{_bindir}/pw_migrate
 %{python_sitelib}/peewee_migrate

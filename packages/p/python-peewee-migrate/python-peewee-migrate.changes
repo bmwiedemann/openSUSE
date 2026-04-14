@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 12 18:26:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.0:
+  * feat: tune migrations
+  * fix: ignore peewee defaults for migrations
+  * fix: replace deprecated datetime.utcnow() with timezone-aware equivalent
+
+-------------------------------------------------------------------
 Wed Dec  3 22:09:20 UTC 2025 - Guang Yee <gyee@suse.com>
 
-- Update to 1.14.3 
+- Update to 1.14.3
   - feat: drop py3.8, update indexes
   - fix: ignore peewee defaults for migrations
   - feat: tune migrations
