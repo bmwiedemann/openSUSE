@@ -30,7 +30,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.16.3
+Version:        1.16.6
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -44,6 +44,8 @@ Source4:        update-user-flatpaks.timer
 Source5:        https://flathub.org/repo/flathub.flatpakrepo
 # PATCH-FEATURE-OPENSUSE polkit_rules_usability.patch -- Make the rules comply with openSUSE expectations
 Patch0:         polkit_rules_usability.patch
+# PATCH-FIX-UPSTREAM flatpak-selinux needs to be in in distributed instead of contrib bsc#1262051
+Patch1:         1262051-selinux-flatpak.if-should-be-installed-in-distribute.patch
 
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= %{bubblewrap_version}
@@ -164,7 +166,7 @@ Group:          System/Packages
 Requires:       flatpak
 Requires(postun): flatpak
 Requires(postun): sed
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 Supplements:    flatpak
 %endif
 BuildArch:      noarch
@@ -395,7 +397,7 @@ fi;
 %config %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
 
 %files selinux
-%{_datadir}/selinux/devel/include/contrib/flatpak.if
+%{_datadir}/selinux/devel/include/distributed/flatpak.if
 %{_datadir}/selinux/packages/flatpak.pp.bz2
 
 %changelog

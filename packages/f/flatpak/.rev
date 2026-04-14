@@ -1107,4 +1107,41 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342946</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>7d3d1b3802f40af73dabcb1a8337417a</srcmd5>
+    <version>1.16.6</version>
+    <time>1776181725</time>
+    <user>dimstar_suse</user>
+    <comment>- Install flatpak-selinux.if in distributed instead of contrib
+  to avoid clashing with the interfaces from the main selinux-policy
+  package (bsc#1262051)
+  - Add 1262051-selinux-flatpak.if-should-be-installed-in-distribute.patch
+  - Can be dropped when this comes back from upstream:
+    https://github.com/flatpak/flatpak/pull/6622 
+
+- Update to version 1.16.6:
+  + Bug fixes:
+    - Fix the remaining regression for Chromium based browsers by
+      not leaking file descriptors down to wrapped command
+    - Fix a regression when installing extra-data without a
+      runtime, which is the case for openh264
+    - Fix the remaining regression for Epiphany by ignoring
+      unusable sandbox-expose paths for sub-sandboxes in the portal
+    - Fix the installed tests by allowing to add a new ref to an
+      existing temporary ostree repo
+    - Avoid closing fds 0/1/2 when they are used as a bad argument
+      to flatpak-run, and reduce duplication in handling file
+      descriptor arguments
+
+- Update to version 1.16.5:
+  + Bug fixes: Fix regressions caused by the sandbox escape
+    security fix, which impact some browsers, browser-based apps
+    and Steam
+  + Enhancements: Expand test coverage of flatpak-run features used
+    by flatpak-portal
+
+- Update to version 1.16.4:
+  + Security fixes:</comment>
+    <requestid>1346811</requestid>
+  </revision>
 </revisionlist>

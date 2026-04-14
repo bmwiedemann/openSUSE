@@ -1,0 +1,32 @@
+From 495dd5cdb09085b224d2ad33af54d6e4e4b86ae6 Mon Sep 17 00:00:00 2001
+From: Cathy Hu <cathy.hu@suse.com>
+Date: Tue, 14 Apr 2026 09:37:27 +0200
+Subject: [PATCH] selinux: flatpak.if should be installed in `distributed`
+ (bsc#1262051)
+
+instead of `contrib`. Otherwise interfaces might clash with the
+interfaces from the main policy on fedora and openSUSE.
+
+See the independent policy guideline:
+https://fedoraproject.org/wiki/SELinux/IndependentPolicy#Using_custom_interfaces
+
+And:
+https://bugzilla.opensuse.org/show_bug.cgi?id=1262051
+---
+ selinux/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/selinux/meson.build b/selinux/meson.build
+index 238a46f1..cf499615 100644
+--- a/selinux/meson.build
++++ b/selinux/meson.build
+@@ -17,5 +17,5 @@ custom_target(
+ 
+ install_data(
+   'flatpak.if',
+-  install_dir : get_option('datadir') / 'selinux' / 'devel' / 'include' / 'contrib',
++  install_dir : get_option('datadir') / 'selinux' / 'devel' / 'include' / 'distributed',
+ )
+-- 
+2.53.0
+

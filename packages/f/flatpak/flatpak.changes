@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Apr 14 07:53:35 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Install flatpak-selinux.if in distributed instead of contrib
+  to avoid clashing with the interfaces from the main selinux-policy
+  package (bsc#1262051)
+  - Add 1262051-selinux-flatpak.if-should-be-installed-in-distribute.patch
+  - Can be dropped when this comes back from upstream:
+    https://github.com/flatpak/flatpak/pull/6622 
+
+-------------------------------------------------------------------
+Fri Apr 10 17:49:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.6:
+  + Bug fixes:
+    - Fix the remaining regression for Chromium based browsers by
+      not leaking file descriptors down to wrapped command
+    - Fix a regression when installing extra-data without a
+      runtime, which is the case for openh264
+    - Fix the remaining regression for Epiphany by ignoring
+      unusable sandbox-expose paths for sub-sandboxes in the portal
+    - Fix the installed tests by allowing to add a new ref to an
+      existing temporary ostree repo
+    - Avoid closing fds 0/1/2 when they are used as a bad argument
+      to flatpak-run, and reduce duplication in handling file
+      descriptor arguments
+
+-------------------------------------------------------------------
+Thu Apr  9 13:51:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.5:
+  + Bug fixes: Fix regressions caused by the sandbox escape
+    security fix, which impact some browsers, browser-based apps
+    and Steam
+  + Enhancements: Expand test coverage of flatpak-run features used
+    by flatpak-portal
+
+-------------------------------------------------------------------
+Wed Apr  8 05:57:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.4:
+  + Security fixes:
+    - Fix a complete sandbox escape which leads to host file access
+      and code execution in the host context (CVE-2026-34078)
+    - Prevent arbitrary file deletion on the host filesystem
+      (CVE-2026-34079)
+    - Prevent arbitrary read-access to files in the system-helper
+      context (GHSA-2fxp-43j9-pwvc)
+    - Prevent orphaning cross-user pull operations
+      (GHSA-89xm-3m96-w3jg)
+
+-------------------------------------------------------------------
+Mon Apr  6 03:23:08 UTC 2026 - Federico Mena Quintero <federico@suse.com>
+
+- Update suse_version macro for 1610 (jsc#PED-15828)
+
+-------------------------------------------------------------------
 Mon Mar 23 08:28:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
