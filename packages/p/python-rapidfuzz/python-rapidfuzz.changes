@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:18:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.5:
+  * fix release ci attempting to upload a pyodide wheel
+  * add risc64 wheels
+  * add support for taskflow 4.0.0
+  * upgrade to Cython==3.2.4.
+  * fix type hints for extractOne when no score_cutoff is
+    provided
+
+-------------------------------------------------------------------
 Tue Jan 27 21:32:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.3:

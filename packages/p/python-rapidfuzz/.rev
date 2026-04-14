@@ -205,4 +205,18 @@
   * fixed WRatio for a length ratio of exactly 8.0</comment>
     <requestid>1329565</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a2d99a44aac014dd94398a783476b657</srcmd5>
+    <version>3.14.5</version>
+    <time>1776181697</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.14.5:
+  * fix release ci attempting to upload a pyodide wheel
+  * add risc64 wheels
+  * add support for taskflow 4.0.0
+  * upgrade to Cython==3.2.4.
+  * fix type hints for extractOne when no score_cutoff is
+    provided</comment>
+    <requestid>1346275</requestid>
+  </revision>
 </revisionlist>
