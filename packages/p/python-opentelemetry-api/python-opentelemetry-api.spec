@@ -27,31 +27,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-api%{?psuffix}
-Version:        1.40.0
+Version:        1.41.0
 Release:        0
 Summary:        OpenTelemetry Python API
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python/tree/master/opentelemetry-api
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-api/opentelemetry_api-%{version}.tar.gz
-BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module importlib-metadata >= 6.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module typing-extensions >= 4.5.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# Note: If python3-aiocontextvars is not available, the error message will
-# be confusing: https://github.com/openSUSE/obs-build/issues/685
-BuildRequires:  (python3-aiocontextvars if python3-base < 3.7)
 BuildArch:      noarch
-Requires:       python-Deprecated
-Requires:       python-importlib-metadata
-%if %{python_version_nodots} < 37
-Requires:       python-aiocontextvars
-%endif
+Requires:       python-importlib-metadata >= 6.0
+Requires:       python-typing-extensions >= 4.5.0
 %if %{with test}
 BuildRequires:  %{python_module opentelemetry-api = %{version}}
-BuildRequires:  %{python_module opentelemetry-test-utils = 0.61b0}
+BuildRequires:  %{python_module opentelemetry-test-utils = 0.62b0}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages

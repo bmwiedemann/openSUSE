@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sun Apr 12 16:22:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.41.0:
+  * `opentelemetry-sdk`: Add `host` resource detector support to
+    declarative file configuration via
+    `detection_development.detectors[].host`
+  * `opentelemetry-sdk`: Add `container` resource detector
+    support to declarative file configuration via
+    `detection_development.detectors[].container`, using entry
+    point loading of the `opentelemetry-resource-detector-
+    containerid` contrib package
+  * `opentelemetry-sdk`: Add
+    `create_tracer_provider`/`configure_tracer_provider` to
+    declarative file configuration, enabling TracerProvider
+    instantiation from config files without reading env vars
+  * Enabled the flake8-tidy-import plugins rules for the ruff
+    linter. These rules throw warnings for relative imports in
+    the modules.
+  * `opentelemetry-sdk`: Fix `AttributeError` in
+    `ExplicitBucketHistogramAggregation` when applied to non-
+    Histogram instruments without explicit boundaries
+  * Fix `BatchLogRecordProcessor` default `schedule_delay_millis`
+    from 5000ms to 1000ms to comply with the OTel specification.
+    Note: logs may be exported 5x more frequently by default
+    (e.g. for users who don't explicitly set the
+    `OTEL_BLRP_SCHEDULE_DELAY` env var).
+  * `opentelemetry-sdk`: Add `process` resource detector support
+    to declarative file configuration via
+    `detection_development.detectors[].process`
+  * `opentelemetry-sdk`: Add shared `_parse_headers` helper for
+    declarative config OTLP exporters
+  * `opentelemetry-api`: Replace a broad exception in attribute
+    cleaning tests to satisfy pylint in the `lint-opentelemetry-
+    api` CI job
+  * `opentelemetry-sdk`: Add
+    `create_meter_provider`/`configure_meter_provider` to
+    declarative file configuration, enabling MeterProvider
+    instantiation from config files without reading env vars
+  * `opentelemetry-sdk`: Add `create_resource` and
+    `create_propagator`/`configure_propagator` to declarative
+    file configuration, enabling Resource and propagator
+    instantiation from config files without reading env vars
+  * `opentelemetry-sdk`: Map Python `CRITICAL` log level to OTel
+    `FATAL` severity text per the specification
+  * `opentelemetry-sdk`: Add file configuration support with
+    YAML/JSON loading, environment variable substitution, and
+    schema validation against the vendored OTel config JSON
+    schema
+  * Fix intermittent CI failures in `getting-started` and
+    `tracecontext` jobs caused by GitHub git CDN SHA propagation
+    lag by installing contrib packages from the already-checked-
+    out local copy instead of a second git clone
+  * `opentelemetry-sdk`: fix type annotations on `MetricReader`
+    and related types
+  * `opentelemetry-sdk`: implement log creation metric
+  * `opentelemetry-sdk`: implement metric reader metrics
+  * `opentelemetry-sdk`: implement processor metrics
+  * `opentelemetry-sdk`: upgrade vendored OTel configuration
+    schema from v1.0.0-rc.3 to v1.0.0
+  * improve check-links ci job
+  * Resolve some Pyright type errors in Span/ReadableSpan and
+    utility stubs
+  * `opentelemetry-exporter-prometheus`: Fix metric name prefix
+  * `opentelemetry-api`, `opentelemetry-sdk`: Add deepcopy
+    support for `BoundedAttributes` and `BoundedList`
+  * `opentelemetry-proto-json`, `opentelemetry-codegen-json`:
+    Implement custom protoc plugin to generate OTLP JSON class
+    definitions
+  * Add configurable `max_export_batch_size` to OTLP HTTP metrics
+    exporter
+  * `opentelemetry-sdk`: Implement experimental Meter
+    configurator
+  * `opentelemetry-exporter-otlp-proto-http`: use consistent
+    protobuf for export request
+  * `opentelemetry-sdk`: cache TracerConfig into the tracer, this
+    changes an internal interface. Only one Tracer with the same
+    instrumentation scope will be created
+  * Redo OTLPMetricExporter unit tests of `max_export_batch_size`
+    to use real `export`
+  * `opentelemetry-sdk`: Implement experimental Logger
+    configurator
+
+-------------------------------------------------------------------
 Mon Mar 23 22:08:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.40.0:
