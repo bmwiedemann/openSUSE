@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:20:26 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.9.22:
+  - cleanups of capture code
+  - clear address cache command, thanks to Ronald W. Henderson.
+  - avoid multiple close event, by Ronald W. Henderson.
+  - saving window size in preferences dialog, by Ronald W. Henderson.
+  - F11 to make EtherApe fullscreen, by Ronald W. Henderson.
+  - new georgian translation, thanks to Temuri Doghonadze.
+  - documentation improvments, thanks to Ronald W. Henderson.
+  - IP unknown protocols display now subject to the 'unknown ports' setting.
+  - Smaller improvements and fixes.
+  - One can now export Etherape data to JSON as well as XML.
+  - Export file format is selected in the Preferences dialog.
+  - Export menu entry icon added.
+  - Updated Preferences dialog help and figures.
+  - Man page updates.
+  - XML escaping extended.
+  - Fix for text appearance in these pull downs: Central Node and Capture filter.
+  - Fix for avoiding adding duplicate legend widgets. Now using a hash table.
+  - capture statistics now displayed on one line.
+  - Better nodes and links expiration during low capture rates or for strict capture filters.
+  - Fix for displaying a node prior to its position calculation.
+
+-------------------------------------------------------------------
 Thu Oct  2 15:50:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.9.21:
