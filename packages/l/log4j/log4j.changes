@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 14 12:49:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * log4j-CVE-2026-34479.patch
+    + backported upstream fix for bsc#1262091 (CVE-2026-34479):
+      log processing denial of service due to improper XML escaping
+  * log4j-CVE-2026-34480.patch
+    + backported upstream fix for bsc#1262092 (CVE-2026-34480):
+      invalid XML output causes denial of service in logging
+  * log4j-CVE-2026-34481.patch
+    + backported upstream fix for bsc#1262093 (CVE-2026-34481):
+      denial of service via invalid JSON output
+
+-------------------------------------------------------------------
+Tue Apr 14 10:11:10 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * log4j-CVE-2026-34477.patch
+    + backported upstream fix for bsc#1262050 (CVE-2026-34477):
+      man-in-the-middle attack due to incomplete hostname
+      verification
+
+-------------------------------------------------------------------
 Mon Jan  5 18:13:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.18.0

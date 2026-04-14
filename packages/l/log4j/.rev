@@ -366,4 +366,12 @@
     <comment>2.20.0 + bsc#1255427, CVE-2025-68161</comment>
     <requestid>1325545</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>65a7b57d85209fe6390ef0ca2d8ccc59</srcmd5>
+    <version>2.20.0</version>
+    <time>1776181798</time>
+    <user>dimstar_suse</user>
+    <comment>Many more security fixes</comment>
+    <requestid>1346881</requestid>
+  </revision>
 </revisionlist>

@@ -33,6 +33,10 @@ Patch0:         logging-log4j-Remove-unsupported-EventDataConverter.patch
 Patch1:         0002-Remove-usage-of-toolchains.patch
 Patch2:         log4j-jackson-databind.patch
 Patch3:         log4j-CVE-2025-68161.patch
+Patch4:         log4j-CVE-2026-34477.patch
+Patch5:         log4j-CVE-2026-34479.patch
+Patch6:         log4j-CVE-2026-34480.patch
+Patch7:         log4j-CVE-2026-34481.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
@@ -50,6 +54,7 @@ BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
+BuildRequires:  mvn(org.codehaus.woodstox:stax2-api)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
 BuildRequires:  mvn(org.jctools:jctools-core)
 BuildRequires:  mvn(org.osgi:osgi.core)
