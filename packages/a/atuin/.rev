@@ -1463,4 +1463,41 @@
     + Fix duplicated word in Kubernetes guide (#3338) (forwarded request 1343345 from develop7)</comment>
     <requestid>1343346</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4c133267edf0a2d4b3f1096ff1ce02a0</srcmd5>
+    <version>18.14.1</version>
+    <time>1776181792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.14.1:
+  * Bug Fixes
+    + Ensure we can publish to crates (#3403)
+    + Thread remote and content_length through system
+      for server tool calls (#3404)
+- Update to version 18.14.0:
+  * Bug Fixes
+    + (ui) Make preview line breaking algorithm aware
+      of CJK double-width characters (#3360)
+    + (ui) When inverted, invert scroll events handling (#3373)
+    + Replace `e&gt;|` with `|` in nushell integration
+      to restore history recording (#3358)
+    + Resolve git worktrees to main repo in workspace filter (#3366)
+    + Ensure daemon is running (#3384)
+  * Features
+    + Opt-in to sharing last command with ai (#3367)
+    + Add 'atuin config' subcommand for reading
+      and setting config values (#3368)
+    + Option to disable mouse support (#3372)
+    + Add support for deleting all matching commands
+      via keybindings (#3375)
+    + Add strip_trailing_whitespace, on by default (#3390)
+    + Client-tool execution + permission system (#3370)
+    + Add history tail for live monitoring view (#3389)
+    + Track coding agent shell usage (#3388)
+    + Remove agent search from tui (#3397)
+    + Add pi hook installer (#3398)
+    + Autoinstall ai shell history hooks (#3399)
+  * Miscellaneous Tasks
+    + Update to eye-declare 0.3.0 (#3365) (forwarded request 1346825 from develop7)</comment>
+    <requestid>1346828</requestid>
+  </revision>
 </revisionlist>

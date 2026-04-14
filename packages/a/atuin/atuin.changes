@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Apr 14 09:37:36 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 18.14.1:
+  * Bug Fixes
+    + Ensure we can publish to crates (#3403)
+    + Thread remote and content_length through system
+      for server tool calls (#3404)
+
+- Update to version 18.14.0:
+  * Bug Fixes
+    + (ui) Make preview line breaking algorithm aware
+      of CJK double-width characters (#3360)
+    + (ui) When inverted, invert scroll events handling (#3373)
+    + Replace `e>|` with `|` in nushell integration
+      to restore history recording (#3358)
+    + Resolve git worktrees to main repo in workspace filter (#3366)
+    + Ensure daemon is running (#3384)
+  * Features
+    + Opt-in to sharing last command with ai (#3367)
+    + Add 'atuin config' subcommand for reading
+      and setting config values (#3368)
+    + Option to disable mouse support (#3372)
+    + Add support for deleting all matching commands
+      via keybindings (#3375)
+    + Add strip_trailing_whitespace, on by default (#3390)
+    + Client-tool execution + permission system (#3370)
+    + Add history tail for live monitoring view (#3389)
+    + Track coding agent shell usage (#3388)
+    + Remove agent search from tui (#3397)
+    + Add pi hook installer (#3398)
+    + Autoinstall ai shell history hooks (#3399)
+  * Miscellaneous Tasks
+    + Update to eye-declare 0.3.0 (#3365)
+  * Refactor
+    + Rename examples -> contrib (#3400)
+
+-------------------------------------------------------------------
 Fri Mar 27 22:34:20 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 18.13.6:
