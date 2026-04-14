@@ -1,0 +1,8 @@
+<services>
+  <service name="download_files" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+     <param name="srctar">libchewing*.tar.*</param>
+     <param name="compression">zst</param>
+  </service>
+</services>
+

@@ -1,7 +1,7 @@
 #
 # spec file for package libchewing
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 Name:           libchewing
 %define soname	3
-Version:        0.9.1
+Version:        0.12.0
 Release:        0
 Summary:        Intelligent Phonetic Input Method Library for Traditional Chinese
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
-URL:            https://github.com/chewing
-Source:         %{name}-%{version}.tar.zst
+URL:            https://codeberg.org/chewing/libchewing
+Source:         https://codeberg.org/chewing/libchewing/releases/download/v%{version}/libchewing-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  corrosion
+BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
 BuildRequires:  rust
 BuildRequires:  sqlite3-devel
 BuildRequires:  zstd
-BuildRequires:  fdupes
 
 %description
 Intelligent phonetic input method library for traditional Chinese.
@@ -73,14 +73,6 @@ This package contains data files for libchewing.
 %autosetup -a 1
 
 %build
-mkdir .cargo
-cat > .cargo/config.toml <<EOF
-[source.crates-io]
-replace-with = "vendored-sources"
-
-[source.vendored-sources]
-directory = "vendor"
-EOF
 cmake --preset rust-with-sqlite-release --install-prefix %{_prefix}
 cmake --build build
 

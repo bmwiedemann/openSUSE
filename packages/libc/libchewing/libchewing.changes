@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr 10 22:45:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.0:
+  * dict: loading user dictionary are now also controlled by
+    enabled_dicts in chewing_new3().
+  * dict: deleted phrases now can be recorded in a separate
+    chewing-deleted.dat exclusion dictionary. This allows excluding
+    phrases from even built-in dictionaries. Deleted phrases will
+    not be auto learned again.
+  * editor: new config option "chewing.auto_snapshot_selections"
+    can be used to control whether phrase selections are
+    automatically locked after some condition.
+  * dict: fixed parsing trie dictionary file with extension fields.
+  * dict: fixed trie_buf tombstone is not cleared after adding phrase again.
+  * dict: use max freq of all dictionaries as phrase frequency
+    to avoid repeatedly adding static dictionary freq to user
+    dictionary freq.
+
+-------------------------------------------------------------------
 Wed Jan 29 10:34:52 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - fix search path for dictionaries
@@ -40,7 +59,7 @@ Wed Sep 29 21:35:52 UTC 2021 - mcepl@suse.com
 Fri Sep 24 07:52:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on python-devel, and the conflicting
-  old py_* macros. 
+  old py_* macros.
 - Remove references to "Python 2", the module supports Python 3.
 - Mark COPYING as license.
 
@@ -219,7 +238,7 @@ Thu Jan 24 20:10:59 UTC 2013 - jengelh@inai.de
 -------------------------------------------------------------------
 Thu Jan 17 02:18:32 UTC 2013 - swyear@gmail.com
 
-- Split libchewing.so.* into subpackage libchewing3 
+- Split libchewing.so.* into subpackage libchewing3
 
 -------------------------------------------------------------------
 Wed Jan 16 15:04:45 UTC 2013 - swyear@gmail.com
@@ -254,7 +273,7 @@ Wed Jan 16 15:04:45 UTC 2013 - swyear@gmail.com
 - Fix GNU Hurd build
 - Fix Microsoft VC build
 - Fix Windows 64-bit build
-- Fix mingw32/64 + WINE build 
+- Fix mingw32/64 + WINE build
 
 -------------------------------------------------------------------
 Sun Nov 13 09:14:24 UTC 2011 - coolo@suse.com
@@ -286,7 +305,7 @@ Mon Sep 21 11:23:25 CEST 2009 - tiwai@suse.de
 -------------------------------------------------------------------
 Fri Sep 11 12:21:12 CEST 2009 - ro@suse.de
 
-- fix missing call to fclose in sort_word.c (bnc#535452) 
+- fix missing call to fclose in sort_word.c (bnc#535452)
 
 -------------------------------------------------------------------
 Wed Jun 17 14:28:45 CEST 2009 - tiwai@suse.de
@@ -301,7 +320,7 @@ Wed Jun 17 14:28:45 CEST 2009 - tiwai@suse.de
 Wed Jan 28 14:29:30 CET 2009 - crrodriguez@suse.de
 
 - remove "la" files with empty dependency_libs
-- remove static libraries 
+- remove static libraries
 
 -------------------------------------------------------------------
 Tue Dec 04 16:35:17 CET 2007 - mfabian@suse.de
@@ -312,7 +331,7 @@ Tue Dec 04 16:35:17 CET 2007 - mfabian@suse.de
 -------------------------------------------------------------------
 Tue Apr 10 00:57:28 CEST 2007 - ro@suse.de
 
-- fix build with updated check package 
+- fix build with updated check package
 
 -------------------------------------------------------------------
 Tue Mar 27 12:47:56 CEST 2007 - sbrabec@suse.cz
@@ -348,7 +367,7 @@ Thu Jul 13 16:17:05 CEST 2006 - mfabian@suse.de
   + Merge phone and phrase from CNS11643.
   + Reduce the amount for the expose for internal symbols.
   + Improved Han-Yu PinYin to use table-lookup implementation.
-  + Experimental frequency-evaluation. (re-compute chewing 
+  + Experimental frequency-evaluation. (re-compute chewing
   + lifetime)
   + Implement the choice mechanism for pair symbols.
   + Improved Tab handling to allow the switching over different
@@ -371,7 +390,7 @@ Tue May 23 09:37:06 CEST 2006 - zsu@suse.de
 Tue May  9 05:43:33 CEST 2006 - zsu@suse.de
 
 - bugzilla #155270: Fix scim crash issue when switching from Chewing
-  to other input method. 
+  to other input method.
 
 -------------------------------------------------------------------
 Wed Jan 25 21:37:24 CET 2006 - mls@suse.de
