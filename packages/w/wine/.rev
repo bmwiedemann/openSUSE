@@ -5846,4 +5846,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.5 release</comment>
     <requestid>1343610</requestid>
   </revision>
+  <revision rev="489" vrev="1">
+    <srcmd5>1271cd09e9a11a644f3eaa7daebad18c</srcmd5>
+    <version>11.6</version>
+    <time>1776181764</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1346800</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr  4 08:28:08 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.6 release
+  - Beginnings of a revival of the Android driver.
+  - DLL load order heuristics to better support game mods.
+  - More VBScript compatibility fixes.
+  - Various bug fixes.
+- update staging to 11.6 release
+
+-------------------------------------------------------------------
 Tue Mar 24 09:53:35 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Conditionally recommend selinux-policy-targeted-gaming on
