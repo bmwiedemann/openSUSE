@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:53:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.62b0:
+  * ### Added
+  * `opentelemetry-instrumentation`: Add support for wrapt 2.x
+  * ### Fixed
+  * `opentelemetry-docker-tests`: Replace deprecated
+    `SpanAttributes` from `opentelemetry.semconv.trace` with
+    `opentelemetry.semconv._incubating.attributes`
+  * `opentelemetry-instrumentation-confluent-kafka`: Skip `recv`
+    span creation when `poll()` returns no message or `consume()`
+    returns an empty list, avoiding empty spans on idle polls
+  * Fix intermittent `Core Contrib Test` CI failures caused by
+    GitHub git CDN SHA propagation lag by installing core
+    packages from the already-checked-out local copy instead of a
+    second git clone
+  * Don't import module in unwrap if not already imported
+  * `opentelemetry-instrumentation-logging`: Map Python
+    `CRITICAL` log level to OTel `FATAL` severity text and
+    `WARNING` to `WARN`
+  * Breaking change: callback class `Callbacks` renamed to
+    `OpAMPCallbacks`
+- drop wrapt2.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Mar 23 22:11:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.61b0:

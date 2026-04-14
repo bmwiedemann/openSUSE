@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-instrumentation
-Version:        0.61b0
+Version:        0.62b0
 Release:        0
 Summary:        Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-instrumentation/opentelemetry_instrumentation-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/open-telemetry/opentelemetry-python-contrib/pull/4082 update opentelemetry-instrumentation to wrapt v2
-Patch:          wrapt2.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
