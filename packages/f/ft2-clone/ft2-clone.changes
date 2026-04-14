@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 13 16:11:04 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.16
+  * Reverted mixer interpolation phases from 4096 to 8192.
+
+-------------------------------------------------------------------
 Thu Apr  9 19:19:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.15
