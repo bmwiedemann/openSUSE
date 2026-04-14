@@ -1,7 +1,7 @@
 #
 # spec file for package python-term-background
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,29 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define tarname term-background
-%define modname %( echo %{tarname} | tr '-' '_' )
 Name:           python-term-background
-Version:        1.0.2
+Version:        1.0.5
 Release:        0
 Summary:        Determine if shell has a light or dark background
-License:        GPL-2.0-or-later
-URL:            http://github.com/rocky/shell-term-background
-Source0:        https://github.com/rocky/shell-term-background/releases/download/%{version}/%{tarname}-%{version}.tar.gz
-# Missed in source tarball
-Source1:        https://raw.githubusercontent.com/rocky/shell-term-background/%{version}/__pkginfo__.py
+License:        GPL-3.0-or-later
+URL:            https://github.com/rocky/shell-term-background
+Source0:        https://github.com/rocky/shell-term-background/releases/download/%{version}/term_background-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 70.0.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION For tests
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-BuildArch:      noarch
 %python_subpackages
 
 %description
 A python module to determine if a shell has a light or dark background.
 
 %prep
-%setup -q -n %{tarname}-%{version}
-cp %{SOURCE1} .
+%autosetup -p1 -n term_background-%{version}
 
 %build
 %pyproject_wheel
@@ -58,7 +52,8 @@ cp %{SOURCE1} .
 
 %files %{python_files}
 %license COPYING
-%{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-%{version}.dist-info
+%doc README.rst
+%{python_sitelib}/term_background
+%{python_sitelib}/term_background-%{version}.dist-info
 
 %changelog

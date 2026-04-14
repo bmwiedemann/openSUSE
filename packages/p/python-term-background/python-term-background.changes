@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Apr 12 22:07:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Incorporate CLI_THEME and contour terminal
+  * Fix COLORFGBG sense in Python script on one place
+  * This could use improvement for handling CSC 996 commands
+    (light/dark term background), but leave that for later.
+- update to 1.0.4:
+  * Remove hex number conversions. Assume osascript and others
+    now work in decimal, not hex.
+  * If this is wrong, we'll have to adjust in the future.
+  * Start POSIX shell testing using `shunit`.
+- update to 1.0.3:
+  * Adjust MacOS terminal detection, especially in `zsh` and
+    `ksh`.
+  * Report on `NO_COLOR` presence in the main Python program.
+  * Support up to Python 3.13 (which needs new pyproject.toml
+    packaging).
+
+-------------------------------------------------------------------
 Wed Nov 20 17:05:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:
