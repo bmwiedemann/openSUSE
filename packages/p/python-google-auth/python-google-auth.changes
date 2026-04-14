@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 13 11:33:07 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.49.2
+  * Use requests transport for GCE MDS (#16480)
+
+-------------------------------------------------------------------
 Tue Mar 17 12:14:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.49.1
