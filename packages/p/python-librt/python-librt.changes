@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:55:52 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.9.0
+  * Use PEP 639 license metadata
+  * Sync mypy including extract_symbol() PR
+
+-------------------------------------------------------------------
 Wed Apr  1 10:14:48 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.8.1:
