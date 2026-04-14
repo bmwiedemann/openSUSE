@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Apr 14 09:18:01 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.72.0:
+  + Reject point at infinity in EC_KEY_set_public_key
+  + Add SSL_use_cert_and_key for per-connection cert/key setting
+  + Add Optimized and HOL Light verified AVX2 Keccak x4
+  + Fix intermittent WIN32_rename failures in openssl ca CLI tool due to
+    transient file locks
+  + Remove redundant definitions
+  + fipsmodule/ml-kem: Import mlkem-native v1.1.0
+  + Zeroize sensitive stack buffers in DRBG, X25519, Ed25519, ECDSA, ECDH…
+  + Fix entropy source selection for Apple cross-compilation targets
+  + openssl-tool CLI: CA cleanup
+  + 
+  + Remove redundant definitions
+  + fipsmodule/ml-kem: Import mlkem-native v1.1.0
+  + Zeroize sensitive stack buffers in DRBG, X25519, Ed25519, ECDSA, ECDH…
+  + Fix entropy source selection for Apple cross-compilation targets
+  + openssl-tool CLI: CA cleanup
+  + Fix PostgreSQL integration SSL test failures for upstream error string
+    changes
+  + Hardening fixes for ML-DSA digest mode, XTS key comparison, and urandom
+  + Fix bind9 integration test for upstream build system changes
+  + Consistently set outlen to zero for all error paths
+  + Add -msg and -servername support to openssl s_client
+  + Add NULL pointer validation to ML-KEM EVP encapsulate/decapsulate
+  + Add openssl version -a and -p flag support
+  + Rename __AWS_LC_ENSURE to AWS_LC_ENSURE to avoid reserved identifier
+  + Upgrade custom libc++ to LLVM 19 and add sanitizer support to
+    build_and_test.sh
+  + Update PyOpenSSL patch
+  + Harden OCSP response printing and fix integer overflow in
+    x509v3_bytes_to_hex
+  + Small fixes for RSA_METHOD and EVP_PKEY_derive_set_peer
+  + Add OPENSSL_INIT_ATFORK compatibility stub
+  + Bound ReadConsoleW by stack buffer size
+  + Change ML-KEM PKCS#8 encoding from expanded to seed form
+  + Add missing error return for short metadata keys
+  + Lower default SSL peek test rounds and remove CI workarounds
+  + Check RSA-PSS digest algorithms for X509
+  + Update target.h to support Loongarch64 ABI1.0 architecture
+  + Make some more half-empty EVP_PKEY states impossible
+
+-------------------------------------------------------------------
 Fri Mar 20 12:05:15 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.71.0:
