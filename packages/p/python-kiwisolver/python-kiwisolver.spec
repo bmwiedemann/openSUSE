@@ -61,6 +61,8 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+# remove setuptools_scm working file
+%python_expand rm -r %{buildroot}%{$python_sitearch}/src
 
 %check
 %pytest_arch
