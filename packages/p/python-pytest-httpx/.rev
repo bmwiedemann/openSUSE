@@ -178,4 +178,26 @@
   * Requires httpx==0.28.*</comment>
     <requestid>1231288</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c9a6de5ec883d9d52dd115c437104552</srcmd5>
+    <version>0.36.2</version>
+    <time>1776181754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.36.2:
+  ## Changed
+  * pytest required version is now 9.
+  ## Added
+  * Explicit support for python 3.14.
+  * match_params parameter is now available on responses and callbacks
+    registration, as well as request(s) retrieval. Allowing to provide query
+    parameters as a dict instead of being part of the matched URL.
+    + This parameter allows to perform partial query params matching.
+  ## Fixed
+  * URL with more than one value for the same parameter were not matched
+    properly (matching was performed on the first value).
+  * httpx_mock.add_exception is now properly documented.
+  ## Removed
+  * python 3.9 is not supported anymore.</comment>
+    <requestid>1346510</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 13 06:12:01 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.36.2:
+  ## Changed
+  * pytest required version is now 9.
+  ## Added
+  * Explicit support for python 3.14.
+  * match_params parameter is now available on responses and callbacks
+    registration, as well as request(s) retrieval. Allowing to provide query
+    parameters as a dict instead of being part of the matched URL.
+    + This parameter allows to perform partial query params matching.
+  ## Fixed
+  * URL with more than one value for the same parameter were not matched
+    properly (matching was performed on the first value).
+  * httpx_mock.add_exception is now properly documented.
+  ## Removed
+  * python 3.9 is not supported anymore.
+
+-------------------------------------------------------------------
 Mon Dec 16 04:00:04 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.35.0:
