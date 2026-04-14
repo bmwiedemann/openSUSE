@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-proto
 # Please keep in sync with python-opentelemetry-exporter-otlp-*
-Version:        1.40.0
+Version:        1.41.0
 Release:        0
 Summary:        OpenTelemetry Python Proto
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module protobuf >= 5.0 with %python-protobuf < 7.0}
+BuildRequires:  %{python_module protobuf >= 5.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes

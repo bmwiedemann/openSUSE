@@ -221,4 +221,13 @@
   * Documentation improvements and duplicate key warnings.</comment>
     <requestid>1343478</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>27a23345c5b7c1f4e39d8a15458d36c4</srcmd5>
+    <version>1.41.0</version>
+    <time>1776181729</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.41.0:
+  * no changes</comment>
+    <requestid>1346228</requestid>
+  </revision>
 </revisionlist>
