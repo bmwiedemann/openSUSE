@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 14 12:10:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.39
+  * Added Georgian translation.
+  * Fixed an HHC parser bug.
+  * Replaced a few obsolete wxWidgets constructs.
+  * Added more basic safety checks in CHM raw buffer parsing.
+
+-------------------------------------------------------------------
 Sun Feb  1 16:16:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.38

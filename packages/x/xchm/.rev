@@ -63,4 +63,12 @@
     <comment>- Update to release 1.38</comment>
     <requestid>1330262</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>10bc7179ead732b49c2eda6c7d5cba71</srcmd5>
+    <version>1.39</version>
+    <time>1776181834</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.39</comment>
+    <requestid>1346871</requestid>
+  </revision>
 </revisionlist>
