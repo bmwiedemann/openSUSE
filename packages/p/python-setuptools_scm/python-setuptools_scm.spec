@@ -29,33 +29,38 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-setuptools_scm%{psuffix}
-Version:        9.2.2
+Version:        10.0.5
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
 URL:            https://github.com/pypa/setuptools_scm/
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools-scm/setuptools_scm-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tomli if %python-base < 3.11}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
+BuildRequires:  %{python_module vcs-versioning >= 1.0.0.dev0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Provides:       python-setuptools-scm = %{version}
 Requires:       alts
 Requires:       python-packaging >= 20.0
 Requires:       python-setuptools
+Requires:       python-vcs-versioning >= 1.0.0.dev0
 BuildArch:      noarch
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1
+Requires:       python-typing-extensions
 %endif
 %if %{with test}
 # Testing requirements
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm = %{version}}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module typing-extensions if %python-base < 3.11}
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  git-core

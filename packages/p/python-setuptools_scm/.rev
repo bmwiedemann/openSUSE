@@ -392,4 +392,49 @@
   minimal stack for different python versions.</comment>
     <requestid>1330936</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>902d3d5250e85cb39ecb6fb4513e7651</srcmd5>
+    <version>9.2.2</version>
+    <time>1774469840</time>
+    <user>anag_factory</user>
+    <comment>- add compat provides with fedora / AI assistants</comment>
+    <requestid>1342281</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7ecb37364bed7b4c9f0c4f3d2df2bee5</srcmd5>
+    <version>10.0.5</version>
+    <time>1776181691</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.0.5:
+  * Allow `dump_version()` deprecation warning to be silenced by
+    passing `scm_version=None`.
+  * Remove `[tool.uv.sources]` from `setuptools-
+    scm/pyproject.toml` to fix sdist builds outside the workspace
+    — the workspace root already declares the source mapping for
+    development.
+  * Anchor ``get_version`` in ``setup.py`` with ``relative_to``
+    and ``fallback_root`` so SCM fallbacks (e.g. ``PKG-INFO``) do
+    not resolve against the wrong directory when the build cwd is
+    the workspace or repo root.
+  * Enter ``GlobalOverrides`` for ``SETUPTOOLS_SCM`` when using
+    ``setuptools_scm.get_version`` / ``_get_version``, avoiding
+    implicit context warnings for direct API callers.
+  * Remove monorepo-only ``../vcs-versioning/src`` from ``build-
+    system.backend-path`` so sdists install under PEP 517 (paths
+    must stay inside the source tree).
+  * Fix version file not generated for editable installs. Version
+    files are now written to the source tree by default during
+    inference (restoring pre-10.x behavior), and also registered
+    as ``build_py`` outputs so strict editable installs include
+    them in the persistent auxiliary directory. Set
+    ``SETUPTOOLS_SCM_WRITE_TO_SOURCE=0`` to disable source-tree
+    writing (e.g., for read-only source directories).
+  * Drop Python 3.8 and 3.9 support. Minimum Python version is
+    now 3.10.
+  * setuptools-scm now depends on vcs-versioning for core version
+    inference logic. This enables other build backends to use the
+    same version inference without setuptools dependency.
+  * Version files (``write_to`` and ``version_file``) are now</comment>
+    <requestid>1346264</requestid>
+  </revision>
 </revisionlist>
