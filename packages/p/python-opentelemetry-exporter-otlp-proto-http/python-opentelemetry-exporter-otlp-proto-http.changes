@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:37:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.41.0:
+  * Enabled the flake8-tidy-import plugins rules for the ruff
+    linter. These rules throw warnings for relative imports in
+    the modules.
+  * improve check-links ci job
+  * `opentelemetry-exporter-otlp-proto-http`: use consistent
+    protobuf for export request
+
+-------------------------------------------------------------------
 Mon Mar 23 22:00:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.40.0:
