@@ -253,4 +253,12 @@
     <comment>10.1.52</comment>
     <requestid>1337368</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>919f53b215c2cfff2736585ab9853e59</srcmd5>
+    <version>10.1.54</version>
+    <time>1776181748</time>
+    <user>dimstar_suse</user>
+    <comment>10.1.54</comment>
+    <requestid>1346444</requestid>
+  </revision>
 </revisionlist>

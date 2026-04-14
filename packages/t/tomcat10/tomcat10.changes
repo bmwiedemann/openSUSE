@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Mon Apr 13 12:46:29 UTC 2026 - Ricardo Mestre <ricardo.mestre@suse.com>
+
+- Update to Tomcat 10.1.54
+  * Fixed CVEs:
+    + CVE-2026-24880: Request smuggling via invalid chunk extension
+      (bsc#1261850)
+    + CVE-2026-25854: Occasionally open redirect (bsc#1261851)
+    + CVE-2026-29129: TLS cipher order is not preserved (bsc#1261852)
+    + CVE-2026-29145: OCSP checks sometimes soft-fail even when soft-fail is
+      disabled (bsc#1261853)
+    + CVE-2026-29146: EncryptInterceptor vulnerable to padding oracle attack by
+      default (bsc#1261854)
+    + CVE-2026-32990: The fix for CVE-2025-66614 was incomplete
+    + CVE-2026-34483: Incomplete escaping of JSON access logs (bsc#1261855)
+    + CVE-2026-34486: Fix for CVE-2026-29146 allowed bypass of
+      EncryptInterceptor (bsc#1261854)
+    + CVE-2026-34487: Cloud membership for clustering component exposed the
+      Kubernetes bearer token (bsc#1261856)
+    + CVE-2026-34500: OCSP checks sometimes soft-fail with FFM even when
+      soft-fail is disabled (bsc#1261857)
+  * Catalina
+    + Fix: Add escaping for URI and query string in the access log. (markt)
+    + Fix: 69967: Fix inconsistencies related to Content-Length and Content-Type
+      headers when accessed using the getHeader method and similar. (remm)
+    + Fix: 69940: Improve redirect handling in the LoadBalancerDrainingValve.
+      (schultz)
+  * Cluster
+    + Fix: Reduce log verbosity of the Kubernetes connection attempts and
+      failure. (remm)
+    + Fix: Better error handling for the EncryptInterceptor. (markt)
+    + Fix: 69970: Support raw IPv6 in Kubernetes membership provider for the
+      service host. (remm)
+    + Add: Add support for new algorithms provided by JPA providers to the
+      EncyptInterceptor. (markt)
+  * Coyote
+    + Update: Align buffer reuse of the OpenSSLEngine for tomcat-native with the
+      FFM code. (remm)
+    + Fix: Fix an HTTP/2 header frame parsing bug that could result in a
+      connection being closed without a GOAWAY frame if an invalid HEADERS frame
+      was received. (markt)
+    + Fix: 69982: Fix a bug in the non-blocking flushing code for NIO+TLS that
+      meant that a response may not be fully written until the connection is
+      closed. Pull request #966 provided by Phil Clay. (markt)
+    + Fix: Ensure the HTTP/2 request header read buffer is reset (including
+      restoration to default size) after a stream reset. (markt)
+    + Add: Provide trailer field filtering equivalent to that provided for
+      non-trailer fields. Control characters (excluding TAB), and characters
+      with code points above 255 will be replaced with a space. (markt)
+    + Fix: Align OpenSSl FFM behaviour with Tomcat Native for various OCSP edge
+      cases. (markt)
+    + Add: Add an HTTP configuration setting, noCompressionEncodings, that can
+      be used to control which content encodings will not be compressed when
+      compression is enabled. Based on pull request #914 by Long9725. (markt)
+    + Fix: Add size limit for OCSP responses. Based on code submitted by Chenjp.
+      (remm)
+    + Fix: To maintain the documented alignment with the OpenSSL development
+      branch, the use of the aliases SSLv3, EXPORT, EXPORT40, EXPORT56, KRB5,
+      kFZA, aFZA, eFZA and FZA are no longer supported when setting the ciphers
+      attribute of an SSLHostConfig element. (markt)
+    + Fix: To maintain the documented alignment with the OpenSSL development
+      branch, add support for the aliases ARIAGCM and CBCwhen setting the
+      ciphers attribute of an SSLHostConfig element. (markt)
+    + Add: 69870: Add a drainTimeout to the HTTP/2 UpgradeProtocol element to
+      allow configuration of an time between the two final GOAWAY frames sent by
+      Tomcat when closing am HTTP/2 connection. Pull request #917 provided by
+      Kai Burjack. (markt)
+    + Update: Update the minimum recommended version of Tomcat Native so that
+      users of 1.3.x are recommended to update to 2.0.x. (markt)
+    + Fix: Respect the value for the jdk.tls.namedGroups system property as the
+      default value for the configured group list on the Connector. (remm)
+    + Fix: 69964: Respect the configured cipher order, which was no longer
+      respected following the addition of TLS 1.3 specific cipher configuration.
+      TLS 1.3 ciphers will always be first in the list. (remm)
+    + Fix: Free the x509 object in the FFM code when getting the peer
+      certificate if getting the bytes from the certificate somehow fails. Pull
+      request #951 provided by Chenjp. (remm)
+    + Fix: Improve HPACK exception use, making sure HpackException is thrown
+      instead of unexpected types. (remm)
+    + Fix: Update the parser for the HTTP Host header and :authority pseudo
+      header to convert the port, if any, to an Integer rather than a Long to be
+      consistent with how port is exposed in the Servlet API. (markt)
+    + Add: To aid the migration from the single ciphers configuration attribute
+      to the use of ciphers and cipherSuites, TLS 1.3 cipher suites listed in
+      the ciphers attribute will be removed from the ciphers attribute and added
+      to the end of the cipherSuites attribute. This behaviour will be removed
+      in Tomcat 12.0.x onwards. (markt)
+    + Code: Replace the external OpenSSL based OCSP responder used during unit
+      tests with a Bouncy Castle based, in-process Java OCSP responder. (markt)
+    + Fix: Relax HTTP/2 header validation and respond to invalid requests with a
+      stream reset or a 400 response as appropriate rather then with a
+      connection reset. (markt)
+    + Fix: Add validation of chunk extensions for chunked transfer encoding.
+      (markt)
+    + Update: Update the recommended version for Tomcat Native 2.x to 2.0.14.
+      (markt)
+    + Fix: Align the FFM handling of OCSP TRY_LATER responses with Tomcat
+      Native. (remm)
+    + Fix: Free CA certificate after calling SSL_CTX_add_client_CA in the FFM
+      code. Based on code from PR 44 from tomcat-native. (remm)
+    + Fix: Free certificate chain if an error occurs, in the FFM code. (remm)
+    + Fix: Report handshake issues as SSLException in the FFM code, rather than
+      IllegalStateException. (remm)
+    + Fix: Fix case sensitive handling of the protocol host name. (remm)
+  * Jasper
+    + Fix: 69948: Avoid ArrayOutOfBoundsException instead of
+      PropertyNotFoundException when generating a properties not found exception
+      in AstValue. Based on #950 submitted by Jérôme Besnard. (remm)
+    + Add: Add support for specifying Java 27 (with the value 27) as the
+      compiler source and/or compiler target for JSP compilation. If used with
+      an Eclipse JDT compiler version that does not support these values, a
+      warning will be logged and the default will be used. (markt)
+  * Web applications
+    + Add: 69931: Add <label> for fields in the HTML manager application. Patch
+      provided by yukitidev. (schultz)
+  * Websocket
+    + Fix: 69972: Remove unwanted space in DIGEST authorization header. Patch
+      submitted by Stefan Kalscheuer in #957. (remm)
+  * Other
+    + Update: Update bnd to 7.2.3. (markt)
+    + Update: Improvements to French translations. (remm)
+    + Update: Improvements to Japanese translations provided by tak7iji. (markt)
+    + Update: Update the internal fork of Apache Commons BCEL to 6.12.0. (markt)
+    + Update: Update Tomcat Native to 2.0.14. (markt)
+    + Update: Update Objenesis to 3.5. (markt)
+    + Update: Update Byte Buddy to 1.18.7. (markt)
+    + Update: Update BND to 7.2.1. (markt)
+    + Update: Improvements to French translations. (remm)
+    + Update: Improvements to Chinese translations provided by eaststrongox.
+      (markt)
+    + Update: Improvements to Japanese translations provided by tak7iji. (markt)
+
+-------------------------------------------------------------------
 Fri Mar  6 13:46:39 UTC 2026 - Ricardo Mestre <ricardo.mestre@suse.com>
 
 - Update to Tomcat 10.1.52
