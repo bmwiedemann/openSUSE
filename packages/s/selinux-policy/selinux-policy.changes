@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Apr 10 12:02:19 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260410:
+  * Add missing Nextcloud file contexts (bsc#1261535)
+  * openSUSE uses /var/lib/php8 (bsc#1239177)
+  * /srv/www/htdocs is DocumentRoot of apache (bsc#1261535)
+  * Allow cloud init to domtrans into ssh keygen (bsc#1249964)
+  * Allow accountsd dbus chat with systemd-homed
+  * Allow accountsd read accountsd_share_t files
+  * Fix file context specification for /usr/share/accountsservice
+  * Allow xdm_exec_t be an entrypoint of login_userdomain
+  * Allow sshd-session send a generic signal to sshd-auth
+  * Allow virtnetworkd get attributes of filesystems with extended attributes
+  * Allow Polkit to get attributes of user terminals
+  * Allow nfsidmap connect to xdm over a unix stream socket
+  * Label /usr/share/accountsservice with accountsd_share_t
+  * Allow systemd-resolved write to systemd-networkd socket
+  * Dontaudit setroubleshootd read root's home files like .rpmmacros
+  * Support sandboxing features for sysadm_t
+  * Allow unconfined_t mounton on itself (bsc#1261035)
+  * update support for polkit agent helper (bsc#1251931)
+  * Add auth_nnp_domtrans_chkpwd()
+  * Allow staff_sudo_t read PID1's process state
+  * Allow staff_sudo_t read logind sessions files
+  * Allow nfs-server system generator the dac_read_search capability
+  * Allow snmpd create and use netlink tcpdiag socket
+  * Allow systemd-coredump signull containers
+  * Allow named_filetrans_domain filetrans flatpak homedir (bsc#1253682)
+  * Dontaudit logrotate perfmon and sys_admin capabilities
+  * Allow samba-bgqd sendto over a unix dgram socket
+  * Allow snapper sdbootutil plugin read kernel modules (bsc#1259867)
+  * Move interfaces from other modules to optional block
+  * Allow fedoratp_exec_t be an entrypoint of unconfined_t
+  * Allow rasdaemon_t to list pstore (bsc#1259742)
+  * Allow virtqemud_t send kill signal to svirt_tcg_t
+  * Allow virtqemud_t get priority of a svirt_t process
+  * Allow sysadm user connect to lvm over a unix stream socket
+  * Allow staff user delete thump_tmp_t files
+  * Allow staff user connect to systemd-logind over a unix stream socket
+  * Allow staff user mount /proc
+  * Allow virtqemud map vhost net device
+  * Dontaudit ps to read proc (bsc#1257527)
+  * Revert "Define file equivalency for /var/opt" (bsc#1259704)
+  * Allow dovecot_deliver_t map its private tmp files
+  * Allow rpcbind get attributes of the pidfs filesystem
+  * Fix names in mysql.if
+  * Allow create kerberos files in mysql db home
+  * Allow systemd-resolved connect to systemd-networkd over a unix stream socket
+  * Introduce local_login_allow_accountutils_fallback_mode boolean (bsc#1259119)
+  * Make stalld stalld_var_run_t labeling rules more generic (bsc#1259438)
+- Syncing with upstream rawhide selinux-policy up to:
+  * d3068ffe2a211a7e959bb1d0ad9dd434c2d7da5b
+- Update embedded container-selinux version to commit:
+  * f336064bb5a086cab121c02acf285a68fa4b8352 (v2.247.0)
+
+-------------------------------------------------------------------
 Wed Mar 11 08:20:07 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260311:

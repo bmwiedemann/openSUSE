@@ -1,4 +1,4 @@
-policy_module(container, 2.246.0)
+policy_module(container, 2.247.0)
 
 gen_require(`
 	class passwd rootok;
@@ -98,6 +98,15 @@ gen_tunable(container_read_public_content, false)
 ##  </p>
 ## </desc>
 gen_tunable(container_manage_public_content, false)
+
+## <desc>
+##  <p>
+##  Allow user_t confined users to run podman containers.
+##  Disabled by default since user_t is the most restricted
+##  confined user type.
+##  </p>
+## </desc>
+gen_tunable(user_t_run_containers, false)
 
 attribute container_runtime_domain;
 container_runtime_domain_template(container_runtime)
@@ -838,7 +847,9 @@ optional_policy(`
 
 optional_policy(`
 	unconfined_domain_noaudit(spc_t)
-	domain_ptrace_all_domains(spc_t)
+	tunable_policy(`deny_ptrace',`',`
+		domain_ptrace_all_domains(spc_t)
+	')
 	# This should eventually be in upstream policy.
 	# https://github.com/fedora-selinux/selinux-policy/pull/806
 	allow spc_t domain:bpf { map_create map_read map_write prog_load prog_run };
@@ -1135,6 +1146,7 @@ allow container_net_domain self:netlink_route_socket create_netlink_socket_perms
 allow container_net_domain self:sctp_socket listen;
 allow container_net_domain self:packet_socket create_socket_perms;
 allow container_net_domain self:socket create_socket_perms;
+allow container_net_domain self:smc_socket listen;
 allow container_net_domain self:rawip_socket create_stream_socket_perms;
 allow container_net_domain self:netlink_kobject_uevent_socket create_socket_perms;
 allow container_net_domain self:netlink_tcpdiag_socket nlmsg_read;
@@ -1333,13 +1345,26 @@ optional_policy(`
 	allow userdomain self:cap_userns ~{ sys_module };
 	container_read_state(userdomain)
 	allow userdomain container_runtime_t:process { noatsecure rlimitinh siginh };
-	container_runtime_run(user_t, user_r)
+	role user_r types container_runtime_t;
 	role user_r types container_user_domain;
 
 	staff_role_change_to(system_r)
+	unprivuser_role_change_to(system_r)
 
 	allow staff_t container_runtime_t:process signal_perms;
 	allow staff_t container_domain:process signal_perms;
+
+	# Allow confined user systemd instances to create and manage sockets
+	# for podman.socket activation (user-level systemd pre-labels the
+	# socket as container_runtime_t via setsockcreatecon)
+	allow { staff_t user_t } container_runtime_t:unix_stream_socket { create bind listen getattr setopt };
+
+	tunable_policy(`user_t_run_containers',`
+		container_runtime_domtrans(user_t)
+		allow user_t container_runtime_t:process signal_perms;
+		allow user_t container_domain:process signal_perms;
+	')
+
 	allow container_domain userdomain:socket_class_set { accept ioctl read getattr lock write append getopt shutdown setopt };
 ')
 
