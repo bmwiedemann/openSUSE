@@ -177,4 +177,12 @@
     <comment>Push papers, converted to tar.xz</comment>
     <requestid>1345559</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9acbbed48a9da31f900b28e01c1d47f9</srcmd5>
+    <version>50.1</version>
+    <time>1776181770</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346749</requestid>
+  </revision>
 </revisionlist>

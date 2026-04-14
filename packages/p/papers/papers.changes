@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 10 17:54:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + Bug fixes:
+    - shell:
+      . Fix crash when navigating empty search results
+      . Save load job and handler id when reloading
+    - libview:
+      . Correct zoom in odd left dual page mode
+      . Fix tool not pointing towards the ink in annotation cursor
+      . Fix free text annotations position on insertion
+      . Fix detection of some form checkboxes
+    - Text annotation displayed in wrong colors
+    - Scrolling in presentation mode skips pages
+    - Fix several criticals for the previewer
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 14 14:20:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.0:
