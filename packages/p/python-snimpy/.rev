@@ -107,4 +107,20 @@
     <comment></comment>
     <requestid>1321716</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4e11c58a483bde6ba985504573bf6962</srcmd5>
+    <version>1.1.2</version>
+    <time>1776181774</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.2:
+  * Fix timeout handling for SNMPv1 and SNMPv2c walk and set
+    operations.
+  * Don't walk too much when iterating on a column.
+  * Fix leaked timeout tasks.
+  * Improve performance on SNMPv1 and SNMPv2c.
+  * Update for PySNMP 7. This version does not work with previous
+    versions of PySNMP.
+  * Modernize build system.</comment>
+    <requestid>1346806</requestid>
+  </revision>
 </revisionlist>

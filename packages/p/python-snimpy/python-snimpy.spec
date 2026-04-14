@@ -1,7 +1,7 @@
 #
 # spec file for package python-snimpy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,9 +16,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-snimpy
-Version:        1.0.4
+Version:        1.1.2
 Release:        0
 Summary:        Interactive SNMP tool
 License:        ISC
@@ -27,15 +28,15 @@ Source:         https://files.pythonhosted.org/packages/source/s/snimpy/snimpy-%
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 42.0.0}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module vcversioner}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libsmi-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi >= 1.0.0
-Requires:       python-pysnmp >= 5
+Requires:       python-pysnmp >= 7
+Requires:       python-pysnmpcrypto
 Requires:       python-setuptools
 Requires:       (python-pyasyncore if python-base >= 3.12)
 Requires(post): update-alternatives
@@ -43,7 +44,8 @@ Requires(postun): update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module pyasyncore if %python-base >= 3.12}
-BuildRequires:  %{python_module pysnmp >= 5}
+BuildRequires:  %{python_module pysnmp >= 7}
+BuildRequires:  %{python_module pysnmpcrypto}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -79,6 +81,7 @@ export CFLAGS="%{optflags}"
 
 %install
 %pyproject_install
+install -D man/snimpy.1 %{buildroot}%{_mandir}/man1/snimpy.1
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/snimpy
 %python_clone -a %{buildroot}%{_mandir}/man1/snimpy.1
@@ -97,7 +100,7 @@ rm tests/test_main.py tests/test_manager.py tests/test_snmp.py
 
 %files %{python_files}
 %license docs/license.rst
-%doc AUTHORS.rst README.rst
+%doc README.rst
 %python_alternative %{_bindir}/snimpy
 %python_alternative %{_mandir}/man1/snimpy.1%{ext_man}
 %{python_sitearch}/snimpy

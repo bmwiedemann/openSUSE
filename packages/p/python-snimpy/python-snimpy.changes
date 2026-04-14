@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 14 08:03:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * Fix timeout handling for SNMPv1 and SNMPv2c walk and set
+    operations.
+  * Don't walk too much when iterating on a column.
+  * Fix leaked timeout tasks.
+  * Improve performance on SNMPv1 and SNMPv2c.
+  * Update for PySNMP 7. This version does not work with previous
+    versions of PySNMP.
+  * Modernize build system.
+
+-------------------------------------------------------------------
 Tue Dec  9 09:07:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.0.4
