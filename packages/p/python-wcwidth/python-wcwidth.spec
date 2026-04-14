@@ -1,7 +1,7 @@
 #
 # spec file for package python-wcwidth
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-wcwidth
-Version:        0.2.14
+Version:        0.6.0
 Release:        0
 Summary:        Number of Terminal column cells of wide-character codes
 License:        MIT
 URL:            https://github.com/jquast/wcwidth
 Source:         https://github.com/jquast/wcwidth/archive/%{version}.tar.gz#/wcwidth-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if %python_version_nodots < 38
-Requires:       python-importlib-metadata
-%endif
 %python_subpackages
 
 %description
@@ -67,7 +63,7 @@ sed -i 's/looponfailroots.*//' tox.ini
 
 %files %{python_files}
 %license LICENSE
-%doc docs/intro.rst
+%doc README.rst docs/intro.rst
 %{python_sitelib}/wcwidth
 %{python_sitelib}/wcwidth-%{version}.dist-info
 

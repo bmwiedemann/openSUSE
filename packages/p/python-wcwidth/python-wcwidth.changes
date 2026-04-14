@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Apr 12 22:17:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Complete textwrap.wrap() with 6 missing params!
+- update to 0.5.3:
+  * Add Virama conjunct for the Brahmic scripts
+- update to 0.5.2:
+  * Do not distribute any data files
+  * Update specs and zero-width tables regarding Mc
+  * Standalone emoji support
+- update to 0.5.0:
+  * **Drop Support** of many historical versions of wide and zero
+    unicode tables.  Only the latest Unicode version (17.0.0) is
+    now shipped. The related ``unicode_version='auto'`` keyword
+    of the `wcwidth()`-family of functions are ignored.
+    `list_versions()` always returns a tuple of only a single
+    element of the only unicode version supported. #195
+  * **Performance** improvement of most common call without
+    version or ambiguous_width specified by 20%. #195
+  * **Bugfix** OSC Hyperlinks when broken mid-text by ``wrap()``.
+- update to 0.4.0:
+  * Bugfix: OSC Hyperlinks should not be broken by ``wrap()``
+  * New functions: ``iter_graphemes_reverse()``,
+    ``grapheme_boundary_before()``
+- update to 0.3.5:
+  * Re-stamp package version correctly, 0.3.4 packaged a failing
+    test
+- update to 0.3.4:
+  * bugfix our center() padding algorithm
+  * docfix: accidental double-escapes t -> t
+- update to 0.3.3:
+  * Add fast path for ASCII printables to `width()`
+  * Add `py.typed` file and `Typing :: Typed` classifier
+- update to 0.3.2:
+  * type hinting for full ``mympy --strict`` compliance, by
+    @penguinolog https://github.com/jquast/wcwidth/pull/183
+- update to 0.3.1:
+  * Add benchmarking using codspeed.io
+  * improve width() performance
+- update to 0.3.0:
+  * Major changes since 0.2.14, in order
+  * Migrate from setup.py + setuptools to pyproject.toml +
+    hatchling
+  * Small improvements to update-tables.py and wcwidth-browser.py
+  * New: iter_graphemes()
+  * New: width() terminal-aware string measurement
+  * New: ljust(), rjust(), center() justify text
+  * New: wrap()
+  * improve wcswidth() performance ~30%
+  * New ambigous_width=1 argument
+  * New strip_sequences() and cut() functions
+  * Width 0 for Default_Ignorable_Code_Point characters
+  * Bugfix for Prepended_Concatenation_Mark characters
+
+-------------------------------------------------------------------
 Wed Oct 29 13:02:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.2.14
