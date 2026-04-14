@@ -406,4 +406,29 @@
 - Correct dist-info directory due to new setuptools.</comment>
     <requestid>1266249</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f6e6d33bcc76d2419588ae278c52b856</srcmd5>
+    <version>8.3</version>
+    <time>1776181690</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.3:
+  * Add support for free-threaded Python 3.14t
+  * Guard 4 unprotected ``PyErr_Clear()`` calls in the C extension
+    with ``PyErr_ExceptionMatches`` checks, matching the pattern
+    already used at 7 other sites in the same file. Without the
+    guard
+  * Move all supported package metadata into ``pyproject.toml``.
+  * Ignore ``__annotate_func__`` added in Python 3.14b1.
+
+- Update to 8.1.1:
+  * Drop support for Python 3.9.
+  * Add support for Python 3.14.
+  * Make tests resilient against different ways of calling them.
+  * Remove run-time dependency on setuptools.
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+  * Drop support for Python 3.8.
+  * Allow using newer setuptools version.
+- Run the testsuite as upstream does.</comment>
+    <requestid>1346249</requestid>
+  </revision>
 </revisionlist>

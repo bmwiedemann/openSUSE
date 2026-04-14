@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Apr 12 20:09:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.3:
+  * Add support for free-threaded Python 3.14t
+  * Guard 4 unprotected ``PyErr_Clear()`` calls in the C extension
+    with ``PyErr_ExceptionMatches`` checks, matching the pattern
+    already used at 7 other sites in the same file. Without the
+    guard
+  * Move all supported package metadata into ``pyproject.toml``.
+  * Ignore ``__annotate_func__`` added in Python 3.14b1.
+
+-------------------------------------------------------------------
+Wed Dec 10 05:04:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.1.1:
+  * Drop support for Python 3.9.
+  * Add support for Python 3.14.
+  * Make tests resilient against different ways of calling them.
+  * Remove run-time dependency on setuptools.
+  * Replace pkg_resources namespace with PEP 420 native namespace.
+  * Drop support for Python 3.8.
+  * Allow using newer setuptools version.
+- Run the testsuite as upstream does.
+
+-------------------------------------------------------------------
 Tue Apr  1 15:53:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools

@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.interface
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,14 @@
 %global modname zope.interface
 %{?sle15_python_module_pythons}
 Name:           python-zope.interface%{psuffix}
-Version:        7.2
+Version:        8.3
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zope.interface
-Source:         https://files.pythonhosted.org/packages/source/z/%{modname}/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/%{modname}/zope_interface-%{version}.tar.gz
 # needed for tests that try to compile things
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -47,7 +47,6 @@ BuildRequires:  %{python_module zope.testing}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 %python_subpackages
 
 %description
@@ -60,7 +59,7 @@ API or contract. So, this package can be considered as implementation of
 the Design By Contract methodology support in Python.
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
+%autosetup -p1 -n zope_interface-%{version}
 
 %build
 %if !%{with test}
@@ -76,8 +75,8 @@ the Design By Contract methodology support in Python.
 
 %check
 %if %{with test}
-cd src
-%pyunittest zope/interface/{common/,}tests/test_*.py
+export PURE_PYTHON="1"
+%pyunittest discover -s src/zope
 %endif
 
 %if !%{with test}
@@ -85,7 +84,6 @@ cd src
 %license LICENSE.txt COPYRIGHT.txt
 %doc CHANGES.rst README.rst
 %{python_sitearch}/zope[_.]interface-%{version}.dist-info
-%{python_sitearch}/zope.interface-%{version}*-nspkg.pth
 %dir %{python_sitearch}/zope
 %{python_sitearch}/zope/interface
 
