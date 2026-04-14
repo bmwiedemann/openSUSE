@@ -1,0 +1,5 @@
+<package name="python-jaconv" project="openSUSE:Factory">
+  <title>Pure-Python Japanese character interconverter for Hiragana, Katakana, Hankaku, Zenkaku and more</title>
+  <description>jaconv (Japanese Converter) is interconverter for Hiragana, Katakana, Hankaku (half-width character) and Zenkaku (full-width character)</description>
+  <url>https://pypi.org/project/jaconv/</url>
+</package>
