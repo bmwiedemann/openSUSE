@@ -1,7 +1,7 @@
 #
 # spec file for package python-kombu
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,7 +86,8 @@ rm t/unit/transport/test_azureservicebus.py
 
 %check
 # test_global_keyprefix_transaction doesn't support new redis yet https://github.com/celery/kombu/pull/2132
-%pytest -k "not test_global_keyprefix_transaction"
+# test_connparams_health_check_interval_supported broken with redis 7.4
+%pytest -k "not (test_global_keyprefix_transaction or test_connparams_health_check_interval_supported)"
 
 %files %{python_files}
 %license LICENSE

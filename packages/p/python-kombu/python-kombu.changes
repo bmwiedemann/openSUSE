@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 14 03:54:01 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a test broken by redis 7.4.
+
+-------------------------------------------------------------------
 Wed Jan  7 16:06:30 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.6.2
