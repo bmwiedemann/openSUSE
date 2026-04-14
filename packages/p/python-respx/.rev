@@ -123,4 +123,27 @@
   respx-pr278-httpx0.28.patch: upstream</comment>
     <requestid>1265489</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f4212285495031a7398b1f6077d2ef71</srcmd5>
+    <version>0.23.1</version>
+    <time>1776181689</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.23.1:
+  * Fix regression causing `params` pattern to stop working under
+    some conditions, by doing a strict detection of `ANY` in multi
+    items patterns
+  * Fix `data` pattern with list value
+  * Fix and enhance incorrect documentations about iterable side
+    effects
+  * Fix documentation typo, thanks @markhobson
+  * Fix support for multiple slashes `//` in URL path by not
+    using `urljoin` when
+  * prepending path, thanks @lewiscollard and @Skeen
+  * Type Route.respond json as `Any` to align with HTTPX
+  * Properly handle `ANY` in `MuitiItems` patterns
+  * Fix test warnings
+  * Add Python 3.14 to test matrix, thanks @carlosdorneles-mb
+  * Update nix flake, mypy target and workflows</comment>
+    <requestid>1346239</requestid>
+  </revision>
 </revisionlist>

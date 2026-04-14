@@ -1,7 +1,7 @@
 #
 # spec file for package python-respx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-respx
-Version:        0.22.0
+Version:        0.23.1
 Release:        0
 Summary:        Mock HTTPX with request patterns and response side effects
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-httpx >= 0.21
+Requires:       python-httpx >= 0.25.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -60,7 +60,7 @@ sed -i '/--cov/d' setup.cfg
 
 %files %{python_files}
 %license LICENSE.md
-%doc README.md
+%doc CHANGELOG.md README.md
 %{python_sitelib}/respx-%{version}.dist-info
 %{python_sitelib}/respx
 
