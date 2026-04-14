@@ -1,18 +1,54 @@
 -------------------------------------------------------------------
+Tue Apr 14 12:31:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.10.0
+  * Skip response buffer allocation for STUN indications.
+  * WebRTC Auth optimization path (#1860).
+  * Fix null pointer dereferences in post_parse() (#1859).
+  * Extend seed corpus (#1858).
+  * Add Linux-only `recvmmsg` receive path for DTLS/UDP listener.
+  * Fix Linux build warnings (#1853).
+  * perf: remove mutex from per-thread super_memory allocator.
+  * Keep only NEV_UDP_SOCKET_PER_THREAD network engine.
+  * Fix stack buffer overflow in OAuth token decoding.
+  * Update config and Readme files about deprecated TLSv1/1.1.
+  * perf: eliminate mutex and reduce copies on auth message
+    dispatch (#1843).
+  * perf: replace mutex_bps with lock-free atomics for bandwidth
+    tracking.
+  * Fix uint16_t truncation overflow in stun_get_message_len_str()
+    causes (#1844).
+  * fix: restore RFC 3489 (old STUN) backward compatibility broken
+    since 4.7.0 (#1839).
+  * Change port identifiers to use uint16_t (#1752).
+  * Fixes: run_tests.sh and no db (#1834).
+  * Add session usage reporting callback to TURN database driver.
+  * Initialize variables before use (#1832).
+  * Replace perror with logging (#1831).
+  * CLI interface is disabled by default.
+  * Disable reason string in response messages to reduce
+    amplification factor.
+  * Perf: improve worst case scenario optimization.
+  * Fix compilation warnings (#1822).
+
+-------------------------------------------------------------------
 Fri Mar 13 23:01:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+Fixes for CVE-2026-27624 (boo#1258847) and CVE-2025-69217 (boo##1255744)
 
 - Update to version 4.9.0
   * Multiple security fixes.
   * Fix to Web Admin password check.
   * Cleanup of deprecated openssl APIs.
   * Fix for CVE-2026-27624: bypass localhost and IP range block
-    using IPv4-mapped IPv6.
+    using IPv4-mapped IPv6. boo#1258847
 - Update to version 4.8.0
   * Faster packet validation on listener threads to improve
     handling of DDoS attacks.
   * Make socket buffer size configurable with sock-buf-size.
   * Address memory leaks and potential crashes.
   * Improve random number usage to address CVE-2025-69217.
+    boo#1255744
 
 -------------------------------------------------------------------
 Sun Nov 23 09:17:14 UTC 2025 - Martin Hauke <mardnh@gmx.de>
