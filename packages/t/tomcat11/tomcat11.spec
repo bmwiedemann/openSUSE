@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat11
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025-2026 SUSE LLC and contributors
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@
 %define elspec %{elspec_major}.%{elspec_minor}
 %define major_version 11
 %define minor_version 0
-%define micro_version 18
+%define micro_version 21
 %define java_major 1
 %define java_minor 17
 %define java_version %{java_major}.%{java_minor}

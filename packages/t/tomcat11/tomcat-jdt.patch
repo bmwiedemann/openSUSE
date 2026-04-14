@@ -36,8 +36,8 @@
              } else if (opt.equals("26")) {
                  // Constant not available in latest ECJ version shipped with
                  // Tomcat. May be supported in a snapshot build.
-@@ -342,11 +342,11 @@
-                 settings.put(CompilerOptions.OPTION_Source, "26");
+@@ -347,11 +347,11 @@
+                 settings.put(CompilerOptions.OPTION_Source, "27");
              } else {
                  log.warn(Localizer.getMessage("jsp.warning.unknown.sourceVM", opt));
 -                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_17);
@@ -50,7 +50,7 @@
          }
  
          // Target JVM
-@@ -396,35 +396,35 @@
+@@ -401,35 +401,35 @@
                  settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_15);
                  settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_15);
              } else if (opt.equals("16")) {
@@ -106,8 +106,8 @@
              } else if (opt.equals("26")) {
                  // Constant not available in latest ECJ version shipped with
                  // Tomcat. May be supported in a snapshot build.
-@@ -433,12 +433,12 @@
-                 settings.put(CompilerOptions.OPTION_Compliance, "26");
+@@ -444,12 +444,12 @@
+                 settings.put(CompilerOptions.OPTION_Compliance, "27");
              } else {
                  log.warn(Localizer.getMessage("jsp.warning.unknown.targetVM", opt));
 -                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_17);
