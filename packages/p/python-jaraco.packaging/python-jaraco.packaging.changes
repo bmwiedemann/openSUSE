@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 13 02:39:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 10.4.0:
+  * Added releases option to sidebar-links directive, generating a link to
+    the GitHub releases page from the Source URL in project metadata.
+  * Complete annotations and add py.typed marker.
+  * Enabled strict type checking.
+  * Inline the definition of StrPath.
+
+-------------------------------------------------------------------
 Tue Apr  1 15:35:17 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools

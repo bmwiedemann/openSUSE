@@ -130,4 +130,17 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266236</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0e351752d009040fef50bc445fc41cde</srcmd5>
+    <version>10.4.0</version>
+    <time>1776181710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.4.0:
+  * Added releases option to sidebar-links directive, generating a link to
+    the GitHub releases page from the Source URL in project metadata.
+  * Complete annotations and add py.typed marker.
+  * Enabled strict type checking.
+  * Inline the definition of StrPath.</comment>
+    <requestid>1346319</requestid>
+  </revision>
 </revisionlist>

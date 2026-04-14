@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.packaging
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.packaging
-Version:        10.2.3
+Version:        10.4.0
 Release:        0
 Summary:        Supplement packaging Python releases
 License:        MIT
@@ -67,8 +67,11 @@ rm -rf jaraco.packaging.egg-info
 
 %check
 export PIP_FIND_LINKS=$(dirname %{SOURCE10})
-# Broken by https://github.com/pytest-dev/pytest/issues/12303
-%pytest -k 'not (packaging.metadata.hunt_down_url or packaging.print-metadata.main)'
+export PYTHONPATH=.
+# Requires large amount of external wheels to install
+donttest="metadata.hunt_down_url or print-metadata.main"
+donttest+=" or metadata.get_source_url or sphinx.load_config_from_setup"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
