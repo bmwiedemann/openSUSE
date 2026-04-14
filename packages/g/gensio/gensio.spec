@@ -1,8 +1,8 @@
 #
 # spec file for package gensio
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2020-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        3.0.0
+Version:        3.0.2
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
@@ -184,6 +184,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/gensiot
 %{_bindir}/gmdns
 %{_bindir}/greflector
+%{_bindir}/gsh
 %{_bindir}/gsound
 %{_bindir}/gtlssh
 %{_bindir}/gtlssh-keygen
@@ -191,6 +192,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/gensiot.1%{?ext_man}
 %{_mandir}/man1/gmdns.1%{?ext_man}
 %{_mandir}/man1/greflector.1%{?ext_man}
+%{_mandir}/man1/gsh.1%{?ext_man}
 %{_mandir}/man1/gsound.1%{?ext_man}
 %{_mandir}/man1/gtlssh-keygen.1%{?ext_man}
 %{_mandir}/man1/gtlssh.1%{?ext_man}
@@ -211,7 +213,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgensiomdnscpp.so.%{sover}*
 
 %files -n libgensio_openipmi_oshandler%{sover}
-%{_libdir}/libgensio_openipmi_oshandler.so.%{sover}*
 %{_libdir}/libgensio_openipmi_oshandler.so.%{sover}*
 
 %files -n libgensio_python_swig%{sover}

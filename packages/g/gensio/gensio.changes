@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr 12 10:26:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.2
+  * Fix afskmdm shutdown issues.
+  * Fix a crash if gensio_acc_disable() is called more than once.
+  * Allow the pcre2 package to be used.
+  * Fix a locking issue in cm108gpio.
+- Update to version 3.0.1
+  Fixes:
+  * Problems with IPv6 compatibility and running without a fully
+    working network.
+  * The permissions of the PTY were not set correctly with gtlsshd.
+  Enhancements:
+  * A "chardelay" gensio is added. This is basically the same as
+    the Nagle algorithm in TCP, but it works on other things, like
+    UDP and relpkt, to make transfer more efficient on those.
+  * You can use "gsh" instead of "gtlssh" for a shorter name.
+
+-------------------------------------------------------------------
 Sun Sep 21 07:26:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.0
