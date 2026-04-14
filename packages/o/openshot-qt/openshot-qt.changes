@@ -1,4 +1,620 @@
 -------------------------------------------------------------------
+Wed Apr 08 06:16:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.5.1:
+  * Fixing some Codacy nitpicks in our unit tests mostly.
+  * Translating "User Interface Scale" in UI and documentation
+  * Adding User Interface Scale to preferences, to allow users to easily change the scale of OpenShot. When Enabling the Legacy Timeline it disables this option, and sets it back to 100% scale (our legacy web timeline backends have ugly artifacts when using some fractional scales)
+  * Fixing SHIFT+Scroll Wheel regression, where our new qwidget timeline backend did not scroll horizontally when SHIFT was pressed. Added unit tests as well.
+  * Align razor icon with mouse position hotspot in QCursor (qwidget timeline backend). It was offset incorrectly, so the dotted line was not aligned with the actual cursor position, thus cutting in the wrong place.
+  * Invalidate all qwidget timeline clip thumbnail caching when "Edit Title" is used, so thumbnails of titles stay in sync after edits (dragging thumbnail, initial timeline thumbnail, and dropped thumbnail)
+  * Updating file menu image used in docs, due to missing "Optimize" option in the menu. Updating README.md to add missing English PDF for website.
+  * Updating supporters.json file with credits from donations.
+  * Fixing a regression which added Preview->Optimize to the main windows top menu - oops.
+  * Fixing many Codacy nitpicks and complaints. Mostly minor changes - I validated all the code still works and tests pass.
+  * Adding final 3.5.1 translation compiled files (qm files)
+  * Adding missing translatable strings for Optimize feature
+  * Bumping version to 3.5.1, minimum libopenshot version to 0.7.0
+  * Fixing sphynx syntax error on korean user-guide translation
+  * Fixing broken language headers in user guide po files
+  * Updating user-guide translations in all po website po files.
+  * Improving test_translations.py to also check user-guide translation syntax, for missing placeholders, accidental unescaped % signs, and gettext correctness. Updating README.md with better instructions.
+  * Updating user-guide language README instructions, for calling `make gettext` and merging those template changes into all *.po files. Also, updating all po files with new pot tepmlate changes.
+  * Updating user-guide docs translation templates
+  * Updating core OpenShot translation templates for new release
+  * Fixing regression on auto-play preview dialog (was slow to open, resize event was fighting auto-play signal), now it's faster to start playback, and still resizes correctly when window changes sizes.
+  * Updating a few more user-guide images to have white backgrounds instead of black (for alpha)
+  * Updating a few more user-guide images to have white backgrounds instead of black (for alpha)
+  * - Updating all preferences images in user-guide to use white background, and updating preview tab image with new optimized video settings. - Refactoring asset moving code, to be sure we remove the assets as we move them (titles, optimized videos, protobuf files, thumbnails, etc...) - New Unit tests
+  * Fixing some Optimize issues found during testing: - Optimize on an unlinked file, just links it again - Delete & Unlink now works again (broke due to file path issues) - Fixed a backup_assets/ folder path issue, when a backup.osp is used (it just just resolve to the .openshot_qt/ folder. - Added a main window, Edit->Clear->Optimized Videos option (if optimized files exist)
+  * Lots of improvements to optimize feature, renaming menu, updating docs, improving file name matching for "Link to Existing" to more closely match behavior of other common suffixes and established/expected patterns.
+  * Fixing a regression on the preview dialog - so SVG images stay sharp and auto playback still works
+  * Adjusting preview dialog, split file, and region dialogs to use proxy_reader (optimize preview) when available, for performance.
+  * Fixing build failure related to executor (and possibly older verison of python) - our Linux builder was failing.
+  * Integrating new, faster thumbnailing, with a 3X thumbnail size max decode (so our Thumbnail function can still scale it down with higher accuracy - clearer picture)
+  * Add to Timeline dialog now selects clips after adding them to the timeline - similar to dragging files directly onto the timeline (identical behavior now)
+  * Improving zooming on timeline (CTRL+Scroll Wheel, and CTRL+Press Scroll Wheel) to leave playhead at existing position, and center zoom around that position. Also fixing a small snapping regression.
+  * Fixing thumbnail cache issues on qwidget timeline backend, causing some thumbnails to flicker when smooth zooming
+  * - Add new Proxy Service to manage a new "Optimize Preview" feature - Optimize Preview intercepts JSON to libopenshot, and substitutes lower resolution preview media, and manages this process (generating new low-resolution files, linking pre-existing low-resolution files, removing low resolution proxy files. - Moving thumbnails into folders per file id - New unit tests - New settings to manage "Optimize" process (in Preview tab on preferences)
+  * Applying new thread preference clamps (2 to 3X cpu count), logging on thread init, and a more descriptive "Copy Version Info" context menu - with way more system info (and cache settings).
+  * Adding link to our step by step guide on installing ComfyUI: Advanced AI server for OpenShot.
+  * - Upgraded Change Video Style... to WAN VACE with reference image + depth/Canny control. - Added Extract -> Depth and Extract -> Lines for images and videos. - Added reference image to generate dialog: Reference tab. - Renamed img2video-svd to img2video-wan and updated docs/icons.
+  * Fixing transitions / clip paint artifacts, during updates (which sometimes caused a tiny glitch in the UI when resizing them)
+  * Updating docs with multi-selection trimming / re-timing notes.
+  * Preview the correct clip/transition when multiple clips are selected and being trimmed/re-timed. Which ever item initiated the trim, will be the one previewed.
+  * Improving transition resizing and retiming, to always show the static keyframes for brightness, and ensure they are still visible after resizing. Also, some cleanup work around this same feature.
+  * Fixing multi-item trims/retiming to use the same exact position for all items, to prevent drift as updates are applied and mouse is still moving.
+  * Fixing first and last thumbnail slots (on Entire mode) to use center of slot as the frame #, instead of anchoring to the start/end frames - which was causing all sorts of issues. This is simpler, and consistent with how the other slots report their center frames.
+  * Only adding overlay play icon to video file types (in Project Files), and leaving images and audio just thumbnails - so each has a distinct look, and we no longer use the film strip edges for videos.
+  * Adding retries to Project Files thumbnailing, better support for device pixel scaling and ui-scale support, and support for a new thumbnailing override (scale_mode), so our thumbnails no longer have black bars based on aspect ratio (they zoomin enough to remove black bars) making thumbnails appear clearer.
+  * Improving the cursor waiting / spinner behavior to be more reliable, and less likely to spin forever.
+  * Improving thumbnailing with some experimental overlay changes, and dynamic icons in Project Files
+  * - Added Ctrl + middle-drag smooth zoom to the qwidget timeline (smooth scroll) - Multi-selection now only resizes/retimes on shared outer edges; interior edges drag instead. - Grouped trim/retime now applies correctly to aligned selected clips. - Preview during grouped resize/retime follows the topmost clip. - Fixed grouped resize mouse-release flashing. - Reduced zoom thumbnail churn, while keeping retimed clip thumbnails stable. - Added focused helper tests for zoom, grouped edge targeting, trim, and retime.
+  * Sentry bug fix: Protect save_recovery() - now returns immediately if file_path does not exist yet
+  * Sentry bug fix: Protecting AddTransition from None item_ids list (similar bug to AddClip was fixed)
+  * Sentry bug fix: Fixing advanced title editor launch error handling, to not over verbose report this to Sentry
+  * Sentry bug fix: Missing blender exe error logging was too verbose, and moving from log.error to log.info
+  * Sentry bug fix: Protect int formatting on properties tableview, to avoid a formatting error: %d format: a number is required, not str.
+  * Sentry bug fix: protecting item_ids attribute, so we don't get a 'NoneType' object has no attribute 'clear' exception.
+  * - UpdateManager sets a simple in-progress flag while undo/redo is running - any re-entrant undo() / redo() call returns immediately instead of touching history - history entries are removed by stable index with pop(), not by object lookup with remove()
+  * Fixing sentry bug: Removing old reference to actionPause on Tutorial (no longer exists), the actionPlay just toggles the icon now.
+  * Fixing Sentry bug: TimelineView.dragLeaveEvent() now delegates to TimelineWidget.dragLeaveEvent() on the qwidget backend, instead of   running the legacy cleanup path that could leave item_ids in the wrong state.
+  * Fixing multi-selection drags of transitions to not apply any auto-direction updates (just move them). Also, apply clip moves first, and then apply transition moves, to keep things in batches and process them in a better order. This fixes a bug where by moving a bunch of clips + transitions, it could reverse the transitions due to invalid ordering.
+  * Fixing a bug on launch, where scale is compared for equality, but it's a float, so 14.99999999 != 15.0, and it causes the initial empty project to be "dirty" and show a save project dialog. Using tolerance check now.
+  * Additional logging to identify what updates mark the project as dirty, and log using debug level. Trying to identify why Windows thinks project has changed on launch.
+  * Fixing Qt compatibility helpers for Ubuntu 18.04 (our oldest supported launchpad PPA build), which was missing 2 functions from later versions of Qt, and crash when painting a clip on the timeline.
+  * Do not mark project dirty, if default sample rate changes on launch (on some environments this is more common)
+  * Fixing keyframe detection logic to better detect keyframes (even empty ones with no points), for example when you delete all keyframes for a clip using the keyframe panel. Now, all keyframes available still appear when right clicking on the keyframe panel. Also, some log adjustments have been made around deleting keyframes.
+  * Animate>Reset menu now clears rotation, shear_x/y, origin_x/y, as well as location_x/y, and scale_x/y.
+  * Updating translations for all core translation files (website languages)
+  * Updating translation template
+  * - Larger FPS fraction limits in File Properties, Export, and Edit Profile. - Live calculated FPS (2 decimals) labels added to all three dialogs, so you can understand easily that 30000 / 1001 = 29.97. - File Properties now shows live Duration above Frame Rate. - FPS editing is image-sequence-only
+  * Updating gitlab artifact expiration from 4 weeks to 2 weeks, running out of space.
+  * Fixing recent projects unit test to be deterministic, and not fail at certain times of the day. Take 2.
+  * Fixing recent projects unit test to be deterministic, and not fail at certain times of the day (oops)
+  * Fixing sphinx configuration to be backwards compatible for older Ubuntu versions: config-inited / builder-inited
+  * Fixing sphinx configuration to be backwards compatible for older Ubuntu versions: add_css_file and add_js_file methods.
+  * More work on making unit tests more compatible with build servers, which are headless (no display). Take 4.
+  * Ensuring webengine is not required for python unit tests (take 3)
+  * I added a test bootstrap in src/tests/__init__.py that runs before unittest discover imports the Qt-heavy test modules. It now:
+  * - Added a shared test helper at src/qt_test_app.py so tests can retrofit an existing Qt app instance with the OpenShot-like methods/state they need. - Changed src/language/test_translations.py to create its QCoreApplication lazily instead of at import time, which removes the discovery-order poison pill.
+  * Updating ai.po translations for user-guide doc translations
+  * Fixing some typos on ai.rst (ComfyUI docs), primarily where to find the setting for ComfyUI URL.
+  * Fixing missing razor icon on qwidget timeline backend, and also enhancing the razor to also cut transitions.
+  * Bumping version to 3.5.0-dev
+  * Fixing an issue in our deploy script, if a GitHub release asset already exists.
+  * Packaging libsndfile in AppImage, to prevent some audio issues on systems with incompatible system libsndfile libraries
+  * Fixing small regression failure in our new unit tests (on Linux gitlab runner)
+  * Making qwidget keyframe dragging silky smooth, and fixing issue with disappearing partial thumbnails during trimming.
+  * Fixing a bunch of qwidget clip and thumbnailing issues: - trimming of re-timed clips - thumbnailing system big refactor, use time keyframes, and volume keyframes - lots of new unit tests around thumbnailing and clip sizes - new squash/stretch thumbnail behavior when re-timing - new trim thumbnail behavior on start, and start-end
+  * Translating docs in all website languages
+  * Bumping version to 3.5.0, minimum libopenshot version to 0.6.0. Major upstream release of OpenShot!
+  * Updating donors and supporters
+  * Fixing more Codacy nitpicks
+  * Fixing Codacy nitpicks about /tmp/ file paths being hardcoded.
+  * Fix gitlab-ci to only sign windows builds when all builds succeed
+  * Fixing test failures on github and gitlab ci's
+  * Added new unittest coverage for json_data, project_data, main_window, and timeline helpers. Actions and GitLab Linux CI to run full test discovery command.
+  * Removing legacy "resource" attribute on transitions, which break on project save for AppImages (due to /tmp/.mount/ folder locations changing between runs)
+  * - Recent Projects now normalizes paths, removing Windows slash-mismatch duplicates. - Missing-file paths now display cleanly, wrap better, and Browse picks a folder instead of a file.
+  * I patched src/classes/sentry.py so sentry.init_tracing() fails closed: if Sentry transport setup throws, OpenShot logs a warning and continues without telemetry.
+  * Stop playback when trimming starts, and reset play button correctly
+  * Improving dragging multiple selections on qwidget timeline backend, to ensure they are moved as an atomic unit, with no drift during fast dragging and dropping.
+  * Fixing transition snapping direction to correctly handle overlapping clips
+  * When dropdowns are used to keyframe a value, use constant interpolation, since these values always represent binary choices (like types, enums, modes), and never ranges (linear, bezier).
+  * Add fade_audio_hint to transitions created automatically, which informs the Timeline to fade audio as well as the image. If the transition is on the left side of a clip, it will fade in audio. If the transition is on the right side of a clip, it will fade out audio. And if the transition is overlapping 2 clips, it will fade out one, and fade in the other, using an equal-power curve.
+  * Improved ComfyUI async request checking on launch to avoid lagging when checking for server availability in the UI.
+  * Fixing snap regression which caused snapping on the qwidget timeline to stop working after zooming into the timeline (CTRL+Scroll Wheel)
+  * Adding missing webp dependencies for windows freeze.py, to move them into the root so windows can find them when loading the webp imageformat.
+  * Renaming Comfy UI to ComfyUI in translations as well
+  * Renaming Comfy UI to ComfyUI.
+  * Updating all translations for the next release of OpenShot, including the full set of website languages 100% translated.
+  * Updating some Qt packaging changes for imageformat dependencies, to move them into the root folder so the imageformat plugins do not fail to load at runtime.
+  * Updating language template POT file with new English strings from Openshot
+  * Fixing a few tiny media path differences between JS and qwidget timeline backends (attempting to fix a JPEG issue on Windows)
+  * Improving the Check Hardware decoding button to use a new libopenshot method for verifying hardware decoding actually worked
+  * Fixing a bug in the autosave system, if not modifications happened since last time
+  * Removed Experimental label from Blender GPU acceleration
+  * Removing "Transform" menu from OpenShot, since it's not the default (always-on) behavior when selecting a clip (or multiple clips). Also updating the documentation.
+  * Adding live previewing to transition trimming, for both static and animated masks, to give more feedback to what portion of the mask will be used after trimming.
+  * Incorporating Raffi's suggestions into documentation. Updating a few annotated screenshots with arrows, moving some sections around, and other small refactors.
+  * - Mask handling now uses has_single_image to split static wipes from animated masks. - Animated masks keep real start/end and remove wipe brightness keyframes. - start/end now show for effects that use a video mask source. - Split-file mask sources now apply their saved start/end.
+  * Huge update of documentation / user guide, updating every single screenshot, improving tables / descriptions, and links. All screenshots now use Cosmic Dusk theme, and also improved ai.rst a bunch, adding new images and new content.
+  * Large refactor of preferences and categories, to simplify and clarify some settings. Also fixing some cosmic dusk theme issues related to preferences, and making the comfyui URL check button use a green checkmark, instead of a dialog popup. Lastly, defaulting to new timeline (qwidget - no longer called experimental), and adding a legacy web timeline option - if a user needs to use the old webengine or webkit timeline. Also, defaulting thumbnail style to "Entire" as the default value.  Lastly, removing "Auto Transform" from preferences, and making that enabled perminetely (since OpenShot is very buggy feeling with it disabled).
+  * Small bug fix for placeholder on profile edit dialog, where formatting was being escaped
+  * Clear export dialog settings cache when the project profile is changed, to prevent confusion when switching profiles - we don't want to use old, cached export of our old profile.
+  * Adjusting mp4/webm and many common export presets to use crf quality settings, and setting options for software codecs to use improved values for "gop", "allow_b_frames" and "max_b_frames". The end result is smaller file sizes across the board, improved quality for med/low quality settings, and similar export times. Some are faster, some are slower by a few %, but file sizes are reduced across the board.
+  * Fixing duration calculation on new libopenshot handling of mp3 files (with has_single_image = true)
+  * Support high DPI thumbnails on qwidget experimental timeline
+  * Adding new docs *.rst file for timeline usage, including keyframe panel.
+  * Adding modifiers to the keyframe panel "Insert Keyframe" buttons:  ALT = bezier, CTRL = constant, SHIFT = linear.  Also fixed a few bugs with keyframe right click menu inside the keyframe panel, for single and multiple selections.
+  * Fixing regression in SHIFT click on qwidget timeline backend, to correctly select a range of clips/transitions.
+  * Fix regression which clamped playhead to max frame on timeline.
+  * Fix small regression to the split file / preview / cutting dialog, so it restores normal functionality
+  * Adding QToolTip support for qwidget experimental timeline backend, for clips, effects, transitions, and track icons.
+  * Small fix to our GetMaxFrame calculation, to clamp seeking (next/prev buttons) to the start of the last frame, not after the last frame.  This prevents a strange bug which can allow playback to go past the last frame.
+  * Removing noisy log thumbnailing missing on qwidget timeline backend
+  * Fixing selection when single clicking on multiple selections, to unselect the other items.
+  * Display file reader "file_name" attribute, which can differ from the actual original file name. For example, emoji's have their emoji name (for readability), and Split File dialog can have user-defined file names, and file names with timestamps (if no name is given). These custom names now appear in the properties dock dropdown for clarity.
+  * Fixing missing loop icon on Windows builds (hopefully)
+  * Fixing bug in "Add to Timeline" for JS timeline backend, probably a regression from all the qwidget changes)
+  * Fixing qwidget experimental timeline to drag all selected clips, even when they are outside of the viewable area. Also, improving our mp3/audio file detection, so thumbnails are faster loading when thumbnail style set to "entire" mode.
+  * Improving transform in video preview widget to handle multiple clips better, even if they don't all intersect the playhead - still create keyframes at the same relative points in all selected clips.
+  * Improving timeline auto extend duration when using "Add to Timeline" dialog or dragging large or multiple files past the right edge of the project/timeline. Also, dragging a clip past the right edge now smoothly extends the project automatically.
+  * Removing noisy logs in video transforms
+  * - Snapping is now 12px. - Trim snapping is directional and stable (left/right both work). - Out-of-range keyframes (including frame 1 / 0.0) now snap correctly. - Preview drag updates are smoother (less seek throttling).
+  * Fixing regressions on JS timeline backend seeking/playhead movement, to correctly seek and clear cached frames.
+  * Adding a new trace UI recorder, which can assist in automated UI testing and validation.
+  * Upgrading text to video to wan2.2 family, 5B model
+  * Fixing some minor regressions on ComfyUI models that mention a prefix path (removing the prefix), and preventing an invalid SRT file path from being set as the file's caption - if Whisper fails.
+  * Fixing bug which caused the property selection dropdown to not show clip's effects, when a clip was selected in the Experiemntal qwidget timeline.
+  * Auto generate waveforms for audio-only files when adding them to the timeline. Also, on the qwidget experimental timeline, correctly display the audio thumbnail when in thumbnail mode.
+  * Updating documentation with ComfyUI / Advanced AI, Animated effect mask support, and more doc updates.
+  * Fixing CTRL+Click, SHIFT+Click, ALT+Click handling on experimental qwidget timeline backend.
+  * Removing older legacy pipeline code and support for ComfyUI, since we split them into JSON files. Also removing usage of turbo model.
+  * Fixing regression in Seek Next/Prev buttons due to caching fixes and stronger seek protections (for smooth caching and playhead movement)
+  * Fixed tracked-object selection consistency so Object Detection property edits/transform handles target the selected object (supports both legacy index keys and new <effect-uuid>-<index>   IDs), preventing misaligned or delayed box updates.   Also fixed region preview seek-signal compatibility by allowing QueueSeek to accept both int and int,bool, and kept ESC handling simple/local in SelectRegion (no global focus/event hacks).
+  * Fixing a couple seek / refresh frame regressions, which were not previewing our property changes for clips/effects
+  * - Timeline/seek call sites were updated to use SeekSignal(frame, start_preroll) consistently, so commit seeks explicitly pass True. - Playhead dragging logic was simplified and made deterministic: emits preview/commit seeks directly, avoids duplicate emits, and forces a final commit on release. - Preview thread seek handling was switched to a thread-safe latest-wins queue, so rapid scrubs don’t backlog stale seeks. - A small timeline mouse-move path fix ensures playhead drag events are handled immediately. - Temporary debug noise in this repo was cleaned up (notably playback-mode and cache-thread toggle logs).
+  * Fixing qwidget timeline backend to allow for clips to drop beyond the duration of the project (i.e. past the right edge of the timeline) and extending the timeline automatically.
+  * Fixing "Add to Timeline" dialog bug which did not correctly extend the timeline when files extend past the duration of the timeline.
+  * Improving missing file dialog to be more clear, adding instructions, and making long paths use relative paths, with a bold file name.
+  * Modifying the launch.py script to append lib/PyQt5 path to the environment variable on Windows. This is gated for windows only, to fix an issue with our packaging of imageformats not loading due to the dependencies not being found on the PATH. This impacted JPEG and other image formats.
+  * Fixing mixed slashes in windows paths for Transition extra JPG files, due to the /extra/ folder. These paths need to be normalized. This only was breaking in the Experimental timeline though, but this fixes it.
+  * Unselect a project file when dropping it on the timeline, and focus the timeline widget. This allows the user to drop a file on the timeline and press DELETE immediately, and it only deletes the new clip (not the previously selected Project File too)
+  * Populating project files on "Open Project" is now batched, and populates the model much faster (30%+ on some larger projects).
+  * Fixing duplicate file importing bug, where a user can import the same file after opening a project - but then it prevents further importing until the next time you open the project. Weird.
+  * Improve missing file prompt, to have a "Skip File", "Skip All", and "Browse..." button. Also, check some additional spots in the project file where file paths are used, and better duplicate prevention when a file is used on multiple things (transition effect path and a clip path... for example)
+  * Patched a likely root cause for this Windows-only crash: synchronous QWidget.repaint() calls during active paint/update cycles.   - Replaced repaint() with update() in playback/zoom-heavy paths:
+  * Fixing playhead snapping inaccuracy on the Experimental timeline, which snapped +1 frame after the playhead instead of on top of the playhead frame.
+  * Fixing Retro theme and removing theme specific code from our region dialog.
+  * Improvements to theming for AI context menus, generate dialog, and region dialog (for tracking)
+  * Make meta batches for tracking objects with SAM2 use dynamic batch size (so we minimize chance for OOM on higher resolution videos)
+  * Fixing SAM2 tracking on images to mirror the functionality on videos:   - Track -> Blur   - Track -> Highlight   - Track -> Mask
+  * Fixing selection handling after a generated file was added and auto selected
+  * - Added Music... ACE 1.5 template + music icon. - Renamed Audio... to Sound.... - Fixed music runs: random seeds, no stale output reuse, and prompt-to-tags/lyrics handling.
+  * - Prevented cross-job state contamination with a per-run cache key for windowed SAM2 state. - Improved chunk-boundary stability using richer carries (point+bbox) plus 4-frame boundary replay. - Added detailed DINO/SAM2 debug logging (currently always on).
+  * Added a loop icon on video preview dialog, and SPACE now controls play/pause, and the play button resets correctly when end of video is reached.
+  * - Fixed Track Object output routing: Blur/Highlight now only import final video, Mask only imports mask; blocked fallback paths that were re-adding extra outputs. - Fixed filename prefix handling so openshot_mask/openshot_gen suffixes are preserved (with payload appended), enabling reliable output filtering. - Expanded Generate/Highlight UX: simplified Prompt + Tracking tabs, added Qt color pickers, plus new Mask Brightness and Background Brightness controls wired end-to-end.
+  * - Region UI now supports multi-tool annotations (pos/neg points + rects), frame markers, and clear-all, plus new toolbar icons. - Generate + SAM2 workflows now pass full tracking JSON (seed frame + per-frame points/rects/auto) instead of seed-only inputs. - Tracker preprocess flow was fixed (dialog parenting + guards/imports) to avoid region selection crashes/regressions.
+  * - Comfy scene splitting now returns range metadata and OpenShot creates split-style file entries from it, reusing the original source path with start/end trims (no duplicate segment MP4     imports). - Scene split file names now match Split File dialog format exactly (base (start to end)), with only start and end attributes applied.
+  * Replaces the WAN-based image workflow with a standard SDXL graph (CheckpointLoaderSimple, CLIPTextEncode, KSampler, VAEDecode,     SaveImage). - The image model/settings are now quality-oriented SDXL Base: ckpt_name = sd_xl_base_1.0.safetensors, steps = 28, and cfg = 6.5.
+  * - Replaced built-in txt2img-basic and txt2video-svd workflows with WAN-based graphs (UNET/CLIP/VAE loaders, ModelSamplingSD3, WAN model paths), and set video defaults to 832x480, 16 fps,     length: 64 (~4s). - Switched these template IDs (and img2video-svd) off legacy Python workflow generation so OpenShot now uses JSON templates directly at runtime. - Added WAN node types to template classification, renamed the image-to-video menu label to Image to Video (WAN 2.2 TI2V), and added/used a new img2video-svd WAN 2.2 TI2V template in the     Enhance flow.
+  * - Fix Comfy progress tracking for meta-batch follow-up prompts and cleaner WS event selection. - Add queue progress metadata (progress_detail, sub_progress) and improve fallback behavior when /progress is unavailable. - Switch blur-anything SAM2 workflow to OpenShot windowed/chunked nodes with masked blur and 96-frame batching.
+  * - Harden Comfy progress updates after sleep/wake: detect stale WS, reconnect with backoff (60s -> 300s), and fallback to /progress when WS is quiet. - Fix template input rewriting for multi-loader workflows by matching both file/video (and audio/file) keys. - Tune Blur Anything defaults: switch to sam2.1_hiera_tiny, keep model loaded, reduce batch size to 32.
+  * Check more known paths used in effects and clip effects, and properly call find_missing_files() flow - to prompt the user, or remove the effect if asset can not be found. Also it logs when assets/effects are removed.
+  * Fix recursive paint on Experimental timeline by adding repaint_after_paint
+  * - Added new SAM2 Blur Anything templates:       - src/comfyui/image-blur-anything-sam2.json       - src/comfyui/video-blur-anything-sam2.json - Added Comfy availability gating + URL validation:       - Hide AI menus when Comfy is unreachable       - Preferences now has Check for comfy-ui-url - Added Comfy error truncation/sanitizing so failures don’t dump huge payloads in UI dialogs. - Enabled proper maximize/min-max behavior for Region and Split dialogs. - Moved Queued badge to the bottom of file thumbnails (list + tree views).
+  * Large refactor to support user-defined ComfyUI JSON files in .openshot_qt/comfyui/ folder, and write a debug.json file (what we send to ComfyUI for debugging purposes). Also split out all our built-in workflows as simple JSON files, with a few overrides to help menus/categories. Also now use the category icon when generating new items (audio icon, image icon, etc...). Menu is now dynamic, and will load user-defined JSON workflows as well.
+  * Add OS-dropped file on Drag-Enter on the Experimental timeline, so the clip is draggable like a normal clip.
+  * Auto show properties when a clip or transition is double-clicked (all timeline backends supported)
+  * Integrating recent fix from comfy-ui branch, to resolve accidentally unselecting Project Files (multiple selections) when right clicking.
+  * Fixing automatic selections when adding files from OS (file explorer), Add to Timeline, and Dropping emojis and files on timeline (Experimental qwdiget timeline backend)
+  * Fixing file multi-selections in this branch (so right click doesn't not clear them)
+  * Fixing qwidget timeline clip selections, so that multiple clips can be right clicked on without unselecting most of them.  However, the clip menu button does unselect other clips. Also, wrapping a transaction around "Remove Clip" menu so a single UNDO will bring all removed clips back.
+  * Fixed some issues with file tree/list selection, and clicking off the selects (margin or empty spot) now deselects items correctly. Also, fixed preview window to correctly close on ESC/reject async (fast shutdown, and stops playback)
+  * Large refactor of ComfyUI context menus, trying to simplify and improve integration with many of the AI tasks. Also, new icons.
+  * Lowering quality and fps of text to video (for now)
+  * Add TransNet scene segmentation template and robust segment import handling
+  *  - Add Comfy templates for img2video-svd and RIFE 2x frame interpolation, with full workflow wiring.  - Use remote Comfy node/model discovery (RIFE + flexible SVD checkpoint selection).  - Show immediate generation progress in Project Files (including queued state) without mutating file names.
+  * Adding support for Whisper/SRT subtitles to the Generate dialog. Also, auto Caption effect when a file has caption data already.
+  *  - Normalize transition drag payload paths and restore robust transition reader loading on drop (deferred preview still uses lightweight path-only reader metadata).   - Harden deferred transition drop finalization to detect/log failed inserts and only refresh timeline state after successful commits.
+  * Autoplay when preview window is opened. Seems like we are just saving users a click, lol.
+  * Fix auto transition when adding new emoji or file to experimental timeline
+  * Fixing region dialog used by Tracker effect to select a region (this was broken in a recent commit due to a new signal that was not implemented)
+  * qwidget timeline: defer drag inserts until drop, keep real preview
+  * Do not delete new items (clips and transitions) when mouse goes over track name (annoying), for example when trying to drop a new item at position 0.0 (next to the track name).  Also, select items (and unselect others) when the menu icon is clicked (similar to our JS timeline backend)
+  * Adding some additional protection and logging around transition readers and drag data handling for transitions (trying to fix a windows specific bug where transitions fail to drag)
+  * Fix playback state checks and refresh behavior
+  * Improve split-file UX and fix export correctness for split clips
+  * Refactoring auto transitions so they work the same in our JS and qwidget experimental timeline backends, by overlapping 2 clips.
+  * Add Comfy audio/video generation pipelines and generalized output import
+  * Refactoring Comfy UI service code to it's own file, improving code to work with remote servers (i.e. LoadFile -> Upload files). Updating file headers with correct header and copyright. Updating some base/default models for image generation and upscaling. Much more stable now at reconnecting, losing connection, and not giving up.
+  * Initial ComfyUI pipeline and client implementations. - Generate with no input file - Generate with 1 input image - Progress displayed in "Project Files" - Cancel Job menu - Full circle generations and editing proven
+  * timeline(qwidget): polish transition visuals and live resize feedback
+  * Fix transition auto-direction and keyframe handling on drag/trim
+  * Timeline(qwidget backend): fix keyframe panel sync/selection across drag, snap, tracks, and multi-clip edits
+  * • Improve QWidget timeline theme parity and keyframe panel styling across Humanity Dark/Retro
+  * - Adjusting lock colors for JS timeline backends (dimmer version of normal track style and border style). - Moving thumbnails downward on Experimental timeline (Humanity Dark and Retro themes) - Adding lock functionality to Experimental Timeline (undraggable, undeletable)
+  * - Fix many dragging / snapping related issues on the Experimental timeline keyframe panel. - Remove / Reorder track buttons on Experimental timeline (Lock, Keyframe Panel) - Improve selection box on keyframe panel, so the tiny gaps between the property rows do not unselect the clip.
+  * Adding the name of the emoji as the Project Files name, which is much easier to read (instead of the real file name of the emoji SVG file)
+  * Fixing a regression which broke the preview and split file screen from appearing. Not sure when this broke, but this feels like a merge regression.
+  * Removing debug code causing feature branches to upload artifacts to GitHub daily builds
+  * Enable "Use Blender GPU rendering for Animated Titles" setting by default (seems very stable now)
+  * Temporary test the develop branch only upload and mktorrent logic for our new code sign job
+  * Hiding a gitlab ci "re-init-builders" job, and gating it behind a release branch filter.
+  * Renaming windows gitlab ci job names, and splitting the code signing job by architecture (x64 vs x86)
+  * Fixing python executable name on new code signing commands in gitlab ci
+  * Adding msys bin to path for code signing gitlab ci job
+  * Fixing yml syntax error on gitlab ci section for code signing
+  * Updating Windows code signing flow, to separate the gitlab runner jobs, so another server can sign and upload.
+  * Updating developer certification for Mac code
+  * Fixing many Codacy nitpicks, and protecting against a missing timing mode "reader" attribute in a clip (which happened to break while testing these changes)
+  * Adding transaction around adding multiple clips to the timeline, so a single CTRL+Z will undo them all.
+  * Adding transaction to emoji adding (adds a file and a clip), so a single CTRL+Z should undo this
+  * Removing noisy debug logs for property model updates
+  * Removing incorrect log during project save, which claimed to copy title assets when they were already copied.
+  * Fixing project title update during an export (i.e. auto save firing during an export caused an error)
+  * Improving thumbnailing on qwidget timeline backend (more stable thumbnail slots, less flicker, better handling of tiny clip widths). This applies improvements to all thumbnail styles (start, start/end, entire clip).
+  * Removing delay on thumbnail trimming refresh, so preview is updated immediately after clip is trimmed.
+  * General improvements to caching and playback: - New caching defaults (0.5 play ahead cache, 768 MB limit, 900 frames max) - Seek playhead to trim position after trimming is done, and refresh preview only one time (more stable preview after trimming)
+  * Fixing crash on deleting clips with effects, and fixing regression that causes effects to break the UNDO/REDO system - not allowing the user to undo an effect added to a clip.
+  * Adding CTRL and SHIFT modifiers to snap rotation in the video preview transform handles. We snap by 15 degree increments only when pressing the modifier key.
+  * Prevent a crash on shutdown when using the qwidget timeline backend (by ensuring the thumbnail thread is properly shut down first)
+  * Sort missing files before prompting the user to find the missing files.
+  * Improving missing file prompts to be less annoying, and adding a 'cancel' button which stops prompting the user, and no longer prompts per "clip", only per "file".  Less prompts, easy bail out.
+  * Fixing title editor to correctly edit titles or duplicate titles from our primary Project Files context menu (this is a regression from our tabstop branch)
+  * Silence more theme misses (when applying theme colors, icons, and styles)
+  * Reduce grid size of Emoji list view (they have too much horizontal padding/margin)
+  * Quite theme miss logs (too noisy at the moment)
+  * Calling apt-get update on GitHub translations action, since it is failing with a 404 trying to install dependencies for qttranslations5-l10n python3-pyqt5
+  * Fixing a few focus-related colors on Cosmic Dusk, so checkboxes, browse buttons, and tabs (horizontal and vertical) look more distinctive, for easier TAB/keyboard navigation.
+  * Fixing a bunch of Codacy nitpicks on out new tabstop code
+  * Fixing a new regression in our test_translations.py script, due to changing our "Line %s" substitutions with QLocale
+  * Making ENTER on Preferences window close the dialog - not press the "Restore Defaults" button
+  * Improvements to the top menu styling for Cosmic Dusk, adding a focus style (to ALT allows you to see which menu is focused using keyboard and arrow keys).  Also improving the top menu's PINK debug focus border (OPENSHOT_DEBUG_FOCUS=1). Also fixing many Property related keyboard editing issues (SPACE/ENTER now being editing the value OR show the dropdown menu). Pressing a ,.0-9 numeric key enters edit mode, and types that key value.
+  * Improvements to the top menu styling for Cosmic Dusk, adding a focus style (to ALT allows you to see which menu is focused using keyboard and arrow keys).  Also improving the top menu's PINK debug focus border (OPENSHOT_DEBUG_FOCUS=1)
+  * Updating translations for our 25 fully translated website languages (adding missing emojis and missing translations)
+  * Improving numeric translation in OpenShot, for patterns like "Track " + number, "Transition " + number to use QLocale().toString() instead, so we can natively support different number systems.
+  * Standardizing the template text in our SVG titles (Replacing UPPER version with Title casing), and adding them to translation template (so "Title", "Sub-Title" and similar text values will be included in the translation system.
+  * Fixing a regression on set_single_column mode for screen readers (like Orca). Now our Thumbnail and Detail views work great with screen readers (and no longer duplicate the icon text next to the Thumbnail) since both views have their own Proxy now.
+  * Improving focus styles for cosmic dusk on main window, to work well with hover and click styles, and toggle buttons (like snapping, razor, timing)
+  * Adding focus styles into main window toolbars, so it's more clear what has focus when pressing TAB.
+  * Improvements to Export dialog TAB order, and pink debug outline for Advanced Tabs added.
+  * Improvements to Export dialog TAB order, and pink debug outline for Advanced Tabs added.
+  * Fixing some pink debug TAB styles, consolidating some treeview padding styles in base.py theme, fixing checkboxes and a few other pink outline issues.
+  * Improving TAB order on main window - better logic to ensure order goes from TOP LEFT to BOTTOM RIGHT and adjusts dynamically to changes in dock position.
+  * Fixing some Codacy nitpicks, code complexity, some unused imports, etc...
+  * Fixing some missing focus debug pink borders (for spinners and sliders) for OPENSHOT_DEBUG_FOCUS=1, and fixing some TAB order issues in Animated Titles screen.
+  * Fix creeping timeline height on launch - timeline dock should restore to the same height as the previous size when OpenShot is closed
+  * Improvements to list views (transitions, emojis, files, effects) to output the correct name for screen readers (in thumbnail views), and the dock icons now have a name.
+  * Allow for pressing buttons with SPACE key when buttons are focused, so timeline doesn't steel control of the space bar. This allows for dock buttons to be TAB'ed to and SPACE closes a dock.  Also, Allow for any # numeric value to edit a property value in our property dock (0-9,.)
+  * Improvements to tabstop on main window, and added an env variable: OPENSHOT_DEBUG_FOCUS=1 to clearly show a pink bright focus border for debuggin.
+  * Stop blender from rendering when cancel is pressed. Also, prevent Animated Title screen from jumping focus back to listview after thumbnail preview is generated
+  * Adding Title and Animated title to our tabstop improvements - both screens now work great with TAB key.
+  * Adding initial tabstop implementation, to improve the tab order (i.e. using TAB key to jump through the various screens). This commit improves the Preferences, Export, Title, and Animated Title screens.
+  * Removing auto update sphinx docs - due to translations and git pulls on production website
+  * Completing more translations for other domains (transitions, blender, emojis) for our 25 website languages
+  * Completing 100% translations on the 25 languages translated on openshot.org, to match our website fully
+  * Adding GA4 tracking to sphinx updates on website (gitlab-ci)
+  * Adding GA4 tracking instructions for user-guide documentation for openshot.org website
+  * Adding instructions for generating all user-guide translations for the openshot website, and adding a toggle to make the html docs use relative parent paths for (_static, _images, _sources) for easier serving of the user-guide translations.
+  * Fixed latex user-guide pdf output for most languages, including bn and ar - still RTL issues though, and a few languages still have issues: "ar" "hi" "ja" "ko"
+  * Adding fully translated languages for user-guide: - ro - ru - tr - uk - vi - zh_hans - zh_hant - pt
+  * Adding fully translated "nl", "nb", "pl" languages for user-guide
+  * Adding fully translated "it", "ja", "ko" languages for user-guide
+  * Adding fully translated "hr", "id", "is" languages for user-guide
+  * Adding fully translated "hi", "fi" languages for user-guide
+  * Adding fully translated "de", "es", and "fa" languages for user-guide
+  * Adding translations for ar and bn lang codes
+  * Adding initial po files for all website supported languages - to our user-guide will initially match up with these 25 languages
+  * Updating README.md instructions
+  * Reverting invalid icon names in French translation
+  * Removing doc folder from make html command in README.md
+  * Initial POT english templates for user-guide for v3.4 of OpenShot, and initial French translation - for testing.
+  * Experimental ssl and crypto libraries included in AppImage freeze to prevent ssl errors on newer distros
+  * Replace old universal analytics tracking code with updated GA4 tracking - for basic anonymous usage tracking and exception reporting
+  * Added a safe __deepcopy__ override to JsonDataStore (src/classes/json_data.py) that skips deep-copying compiled regex objects (which Python 3.6 can’t clone)
+  * Importing typing for Tuple for python 3.6 compatibility
+  * Removing annotation import for python 3.6 compatibility (for bionic build server on launchpad)
+  * Adding a few more shims for importing modules in our new qwidget timeline backend, to prevent errors on launchpad
+  * Fixing an import error with this shim, to resolve an error on debian build servers, including launchpad build server for our PPA.
+  * Removing @dataclass usage in new experimental timeline, due to older Python 3.6 not supporting this (bionic build server)
+  * Protect Experimental Timeline from recursive paint events - causing the timeline to become unresponsive
+  * Use dynamic video bitrate for "All Format" exports
+  * Adding has_static_image optimization in new experimental timeline (qwidget), to not keep requesting duplicate thumbnails
+  * Improve snapping on qwidget timeline backend, and ignore snapping to self (and fixing a bug causing snapping to stop working)
+  * Fixing "start" and "start and end" thumbnail slot positions, and timed thumbnail generation on pause during a trim
+  * Fixing slot offsets on qwidget thumbnail styles (experimental timeline)
+  * Making thumbnail style preference to immediately take effect when changing values (if experimental timeline is present)
+  * Improving thumbnail generation for experimental qwidget timeline, so trimming works correctly, and thumbnails load more reliably
+  * Protecting from missing audio data on webview waveform display logic
+  * Clear cache on "Save Frame As" to prevent corrupt or tiny preview sized logic from squashing images.
+  * Fix regression on Time->Repeat which ignored our start trim
+  * Fixing Slice (Keep Right) to include the playhead position frame, so the preview does not disappear for the right edge of the clip.
+  * Fixing bug where clicking on marker jumps 1 frame to the left of the marker (on webview timeline backends)
+  * Updating waveform generation to match new qwdiget timeline backend - a nicer visualization, rendered on a center line (instead of bottom up)
+  * Increase values for Aspect Ratio, Pixel Ratio on Profile Editor, Export Dialog, and File Properties, which allows files that have really large ratios, like:   "display_ratio": {     "den": 2059423,     "num": 1157472   }, "pixel_ratio": {     "den": 32145,     "num": 32152   }
+  * Implementing a deep copy of the project data so our Query filter() only serves up cached copies that are safe to mutate - and it's lighting fast. This fixes a regression breaking some context menus from working with our undo/redo system.
+  * Fix repeated keyframes for Time->Repeat option, so we accurately repeat the keyframes on the visible/trimmed clip.
+  * Fixing property frame clamping and video widget frame clamping to edges of visible/trimmed clip, so if the playehad is outside the bounds of a trimmed clip, it will return/modify the nearest edge frame of the clip.
+  * Updating clip duration when emojis and static images are trimmed/resized (bug)
+  * Unselect transition before deleting it, this should prevent a crash when Transitions are selected and deleted.
+  * Adding Select All/None, Ripple Select, and Razor shortcuts (q/w) to the qwidget timeline backend.
+  * Fixing Time->Repeat to fully support start/end trims, so it only repeats the visible clip section
+  * Fix issue where transaction groups were not working after closing and opening a saved project. Now undo/redo operations are still connected to their transaction ids.
+  * Truncating log entries which are too long (greater than 2048 characters). This is an arbitrary length - to prevent huge, waveform arrays and other huge log entries from filling up our log files)
+  * Fixing magic wand animated title to be compatible with Blender 5.0
+  * Hardening property editor against breaking on multiple audio-only clips and non int values - causing a freeze that required OpenShot to be restarted
+  * Improving audio splitting to ignore clips with no audio, reuse the source clip when it has no video/image (i.e. audio only files)
+  * Extending timeline when Time->Repeat is used - in case our new long repeated clip extends past the edge of the project duration / timeline
+  * Fixing "Remove all Gaps" to not affect overlapping clips and transitions.
+  * Updating Final Cut Pro XML import to import video tracks first and then audio tracks afterwords (more natural import order)
+  * Prevent timeline caching during "Save Frame As..." to prevent crashing
+  * Updating JS timeline backends to use industry standard frame 0 to fps-1 range (00:00:00:00)
+  * Fixing lens flare animated title for Blender 5.0 compatibility
+  * Fixing frame # parsing on Blender animated title progress label
+  * Removing blur title, which does not work in Blender 5.0 and freezes blender. Also, no real need for this, since OpenShot has a great blur effect now.
+  * Fixing glass and glare animated titles to support Blender 5.0, and adding new glare type: Sun Beams with animated beams
+  * Fixing earth animated title for Blender 5 - it had many errors
+  * Fixing exploding text for Blender 5
+  * Fixing blinds and dissolving text animated titles for Blender 5.0, and discovered that "World Scene" lighting is making many of our titles appear dim. Defaulting specular intensity to 1.0, and setting new range for all effects to 1 to 5. Fixed a bug in blur animated title also - but it is running too slow to be useful.
+  * Refactoring some Blender 5.0 compatibility issues into a base.py.in file.
+  * Updating minimum version of blender to 5.0
+  * Fixing colors animated title for Blender 5.0 compatibility
+  * Protect animated title editor from invalid alpha value in color picker.
+  * Fixing crash when deleting a Track with selected clips and transitions.
+  * Adding DTD version support for Final Cut Pro XML export
+  * Improving compatibility of EDL export and import, to follow industry standards as much as possible, but also includes many OpenShot-specific details.
+  * Updating final cut pro XML exporting and docs example to use 00:00:00:00 as the timecode for frame 1 (industry standard)
+  * Adding basic motion effects for Final Cut Pro export and import, so we can now export and import clips tracks, start/end trim, alpha, volume, location, scale, rotation keyframes. There are some limitations and some data loss (i.e. scale_x/y must be the same value, some interpolation handles are lost for bezier, shear_x/y is not supported).
+  * Experimental UI code to set window state and geometry before window is shown (so our initial widgets don't appear and then suddenly disappear)
+  * Fixing some issues with Time reversing for repeated time curves. Now you should be able to reverse any arbitrary time curve points.
+  * Fix paint issue in qwidget timeline for waveforms (sometimes waveform would not appear). Also, adding some debug logging to the waveform generation flow.
+  * Updating EDL exports to add all major keyframes as comments (location, scale, shear, rotation, alpha, and volume)
+  * Fixing more bugs on XML export, ensuring we are as close to the DTD spec as possible. Now XML exported/imported is complatible with the v4/v5 xmeml formats published by Apple online.
+  * Removing adobe specific attributes from XML export, so we use a pure and valid Final Cut Pro XML format, according to published DTD files for v4 and v5 of this format.
+  * Since I can't figure out why our timeline height is not being restored correctly by our restoreState and restoreGeometry functions - we are adding 1 extra hidden setting to track this. This seems to work really well in my testing.
+  * Shutdown of thumbnail thread on shutdown to prevent crash during close of our new qwidget timeline
+  * Fixing scrollbars during resize of timeline dock (on new qwidget experimental timeline) - and correctly setting height and min size of timeline.
+  * Improving thumbnail generation for qwidget timeline - still a work in progress
+  * Adding new Experimental category and "Enable Experimental Timeline" option in preferences, plus a new dependency option for preferences.
+  * Adding thumbnail styles to new qwidget timeline backend. Adding new "Experimental" preference category.
+  * Protecting from effects with no reader attribute in our query module
+  * Making dragging have a small tolerance on qwidget timeline backend, so a quick selection click doesn't accidentally move the clip.
+  * Updating documentation related to icons for interpolation.
+  * Fixing flipped keyframe icons (diamond == linear interpolation, square == constant interpolation). Not sure when these got messed up and swapped.
+  * Improving keyframe panel, click to jump to that position, right click context menu to change properties
+  * Fix qwidget timeline keyframe panel icons for different interpolation modes
+  * Removing Qt::MarkdownText from profile-edit.ui, since our AppImage does not support this property and it was unused. This prevents an error showing the profile editor in the AppImage for OpenShot.
+  * Fixing support for interpolation types in XML final cut pro export and import.
+  * Adding new path_utils for use with import/export tools, to help generate and parse file paths. Also adding merging for XML imports that have split audio/video clips for the same resource (so it imports correct into a single clip in OpenShot)
+  * Fixing bugs in EDL and XML export formats (lots of small issues) so we have a more compatible importer and exporter for Final Cut Pro and related formats.
+  * Fixing qwidget timeline backend bug which limited static images (and emojis) to 10.0 second length. Now you can resize them from both sides, and any length.
+  * Adding libselinux.so.1 back into AppImage for Arch/Manjaro
+  * Updating freezing with experimental changes to fix AppImages in Ubuntu 25.10 (testing this out on build server) - I might revert in the future if unstable.
+  * Standardizing our python unit tests to not require main() to be executed
+  * Replacing a heavy json loads/dumps serialization on the query.py filter method with a shallow copy function. Seems to work fine, and is much better performance (CPU wise). I don't see any regressions - but I'll keep my eye open.
+  * More fixes for Windows support to Track name rendering, and track icon spacing
+  * Fix track name rendering on qwidget timeline backend, and text-rendering issues on Windows. Experimental.
+  * Fixing state machine bug on launch of qwidget timeline backend - very ugly fix - but it works on Windows and I'm moving on for now. I would love to simplify this in the future.
+  * Fixing state machine bug on launch of qwidget timeline backend
+  * Add marker functionality into qwidget timeline backend
+  * Improving ZoomSlider to not jitter when zooming in/out of qwidget timeline backend. Also, fixing the scroll-wheel behavior on this backend ot center on playhead.
+  * Update angular timeline backends to use "id" attribute and fallback to index if no id attribute is found - this prevents certain types of errors from crashing the JS timelines.
+  * Fixing bug which clears playback cache when resizing widgets in the main window. Preview window can change size, and only clears the playback cache if the actual preview rect changes size (not the parent widget itself).
+  * Huge performance improvements to qwidget timeline widget, for scrolling and resizing widget. Now faster than either of our webview based timeline backends for large timelines. No longer rebuilds geometry on scrolling and resizing events.
+  * Improve performance of CPU rendering on qwidget timeline backend, for smoother scrolling, consistent border strokes on any size clip/transition, and less jittery zooming.
+  * Don't blow away cache when changing selections on qwidget timeline backend
+  * Improve smoothness of zooming in/out of qwidget timeline backend
+  * Updating waveform rendering style on new qwidget timeline backend! Looks much smoother, and centers rendering on center line of clip geometry (as opposed to the old draw from the bottom up)
+  * Fixed alternating track color bands to not shift when scrolling accidentally
+  * Integrate timeline cache bar into qwidget timeline backend.
+  * Fixing regression when slicing clips that leaves the clip's duration attribute incorrect (still set to original media duration). Also, fixing a regression where Time->Reverse was not respecting start/end trims - causing the reversed clip to possibly be too long.
+  * Increase caption interval for cleaning cache and updating the clip data - so it interupts to user less often (1000 ms)
+  * Adding paste functionality into qwidget timeline backend, and fixing effect IDs to always generate new IDs on paste and split functions. This prevents a bug where deleting an effect from a split clip, also deletes it from the newly split clip.
+  * Fixing zoom slider regressions with qwidget timeline backend
+  * Adding alternating bands of color for qwidget timeline backend, when zoomed in really close - to show frame boundaries. Also adding a timeline resize handle to the right edge of the timeline.
+  * Large refactor of the qwidget timeline backend, splitting many large files into smaller feature driven files.
+  * Sharpen SVG track icon rendering
+  * Adding track icons to all themes in qwidget timeline backend (experimental)
+  * Adding all track icons to qwidget timeline backend. Also, increasing size of icons to 16x16 (experimental)
+  * Adding additional track icons for qwidget timeline backend
+  * Scaling keyframe panel icons larger
+  * Adding keyframe panel to tracks in qwidget timeline backend - experimental.
+  * Adding keyframe icons
+  * Clamp multiple selected clips to edges of timeline, so offset clips don't become aligned when hitting the edge. Also include a transaction around multi clip edits and drags on the qwidget timeline backend.
+  * Fixing some regressions in our qwidget timeline backend, related to dragging keyframe icons. Now it drags all keyframe properties from a specific type (effect, clip, transition) without combining other keyframes, and now snaps to clip edges and other keyframe positions. Also, updates properties dock after dragging a keyframe icon (to show moved keyframe with correct color: green).
+  * Track multiple wait requests, and correctly unwind cursor wait changes - so we don't end up with a race condition - causing an infinite wait cursor
+  * Fixing snap tolerance when trimming a clip or transition. Also, fix a bug where dragging a keyframe collects any keyframes you drag past: on qwidget timeline backend.
+  * On qwidget timeline backend, sort clips and transitions by position before rendering. Also, fix transition rendering to use transparent corners. Also, make playhead line non-interactive (don't steel clicks or hits).
+  * Fix effect icon selection brightness on qwidget timeline backend.
+  * Preserve temporary timeline changes on qwidget timeline backend during drags and changes - to prevent flicker back to original positions.
+  * Invalidate timeline when right-clicking on items, so we redraw/repaint the selections correctly.
+  * Setting initial zoom when opening project using qwidget timeline backend
+  * Huge refactor to qwidget timeline backend, adding effect icons, improved snapping, keyframe rendering and snapping, waveform generation, smoother clip dragging, etc...
+  * Refactor of clip_time and frame_utils into single utility class: clip_utils.py, with a variety of frame and clip functions to determine duration and # of video frames.
+  * Fixing more video_length issues, including previewing trim changes to time curved clips, and correct video_length scaling when using different source FPS and project FPS.
+  * Reverting changes to audio-only and image-only video_length updates during profile changes
+  * Fixing many bugs inside our clip bounds clamping code - simplifying to use reader's built-in max duration/video_length.
+  * Fixing audio-only and image-only files to auto use project FPS, and scale keyframes and video_length anytime we update project profile + FPS. Also, defining selected_items on launch, to prevent a crash in debuggers.
+  * Fixing bug with timeline toolbar icons become spread out on smaller screens, due to the zoom slider widget becoming hidden.
+  * Timeline: keep keyframes visible during trim/retime, snap to FPS grid, and resample waveforms on length changes
+  * Add visible keyframes to snapping targets when trimming (skip for dragging clips or retiming clips)
+  * Big refactor on audio waveforms on timeline, to no longer hide them during trimming or re-timing drag operations. Now we trim or squash/stretch them in real-time - to give a better preview of audio changes due to trimming or re-timing. Also, we also leave keyframes visible during these operations - which makes it much easier to trim clips around existing keyframes.
+  * Large refactor of waveform trimming and re-timing. No longer hide waveform during trims and re-times, but show the effects of the drag operation in real-time.
+  * -Using VideoLength and MaxDuration for clip bounds, which utilizes time curves to determine max video length in project FPS precision. -Correctly generate waveforms again when UNDO/REDO actions are invoked on clips with waveforms displayed. -Adding a Time->Reverse menu option, which simple reverses all time keyframes (without adjusting speed)
+  * Fixing crop/transform handles when X/Y Offsets are negative to correctly stay synced with libopenshot image changes.
+  * Fixing crop handles to match transform handles when resize = True, which solves lots of jank when adjusting crop for a resizing clip image.
+  * Re-enable cache thread on export
+  * Fix error when canceling an export - due to our new caching thread performance improvements
+  * Updating cached icons
+  * Updating supporters and donors
+  * Updating languages, 18 core translations 100% completed, many new languages!
+  * Snap keyframe dragging and video preview transform handle dimming to project FPS grid, which improves the accuracy of dragging keyframes and detecting playhead intersections with clips.
+  * Allowing dragging image clips from both sides. Also allowing "Timing" mode to drag both sides. Fixing jank in keyframe dragging (cursor, precision, allow drag to continue even if mouse moves away, and fix web engine issues)
+  * Fixing regression which caused Time->Reset Time to make an emoji 1 hour long (or any image file)
+  * Adding documentation for Copy/Paste importing files, clipboard folder, project Assets folder, and temporarily file cleanup
+  * Remove invalid clamp of frame # during previewClipFrame (causing the right edge of clips to not preview the correct frame - if the source FPS != project FPS)
+  * Preventing keyframe dragging from leaving the clip edges
+  * Fixing invalid durations on clips. now supports time points, timing mode, and reader durations.
+  * Remove paste option from file list/tree views (no need)
+  * Clean up and saving custom clipboard pasted assets (into asset folder)
+  * Changing color for Analog Tape effect icon
+  * Adding support for Copy/Paste files from clipboard or OS into Project Files.
+  * Fixing more Codacy nitpicks around qwidget timeline complexity
+  * Fixing a ton of Codacy nitpicks, especially around functions which are too complex - mostly minor refactoring - except qwidget timeline files had a major refactoring into smaller methods.
+  * Fixing small issue with the sequence of transform oeprations on our transform handle & crop handles - causing a mismatch from libopenshot
+  * Fixing regression in transition "Reverse" which caused left keyframe to disappear
+  * Hiding UI scale preference for release (will make visible for a future release)
+  * Fixing regression in Repeat / loop options and time context menu
+  * Adding Repeat options to Time context menu (Loop, Ping-Pong), and fully supports Timing mode, scaling, and Reset Time options. Also adding repeat documentation to the user guide.
+  * Adding Repeat options to Time context menu (Loop, Ping-Pong), and fully supports Timing mode, scaling, and Reset Time options.
+  * Fixing more nitpicks JS files (Codacy)
+  * Fixing more nitpicks JS files (Codacy)
+  * Fixing nitpicks JS files (Codacy)
+  * Fixing nitpicks in qwidget timeline backend (unused imports)
+  * Fixing re-timing keyframes - use project FPS for video_length (fixes lots of issues with timing, time keyframes, time context menu)
+  * Adding documentation for new composite / blend modes on Clips
+  * Small fix for GIF and image sequence duration regression for calculations
+  * Replace Unicode characters in docs which are crashing PDF generation
+  * Fix regression to transition scaling, to right edge keyframe does not disappear
+  * Adding Analog Tape icon and documentation: Vintage home video wobble, bleed, and grain.
+  * Updating Spherical Projection documentation
+  * Simplifying and updating all 9 keyframe icons for better colorizing (to match effect colors)
+  * Fixing regression on clamping clip time to media duration (special case for has_single_frame)
+  * Support for custom UI scales from preferences. This still causes issues on Windows with fractional scales (borders on clips and timeline lines). But this is very useful on Linux/Mac as a nice way to adjust the exact scale of the UI (making it larger or smaller)
+  * Fixing video widget crop origin - to stay pinned to the same place on the original clip image
+  * Integrating ZoomSlider into qwidget timeline backend - improving the design to not ping pong events back and forth between timeline and ZoomSlider. Removed some noisy debug outputs.
+  * Updating SphericalProject effect documentation with new args, usage notes
+  * Fixing off by one error on Split File dialog, causing clip ends to be +1 frame too long
+  * Fixing vertical scrolling through the ruler in qwidget timeline backend
+  * Adding scrollbars and zoomslider support for qwidget based timeline backend
+  * Improve transition data updates - keep custom kefyrames, reveresed keyframes, and scale keyframes on resize - never clobber and rebuild keyframes
+  * Added resizing and trimming and re-timing and context menus to qwidget timeline.
+  * Added gradient support for Humanity dark theme for qwidget timeline backend
+  * More style improvements for qwidget timeline backend - playhead, ruler, and more. Still a WIP.
+  * Updating qwidget backend to support more themes and functionality (track menus, ruler time and tick styles, better track styles, context menus, edge detection for resizing, cursors, etc...). Still a WIP.
+  * Ensure time keyframe values are constrained to frame boundaries and valid range of original file's frame #'s. Also ensure resetting time keyframes re-scales keyframes correctly and resumes original video_length.
+  * Initial code for Timing toggle toolbar button, to make re-timing an easy drag and drop operation just like trimming a clip.
+  * Large refactor to keyframe icons and colors and selection behavior. Clicking on a keyframe will bring up a specific effect properties. Next/Prev marker button will jump through the selected item's keyframes. Non selected item's keyframes will be dimmer.
+  * Fixing the crop offset origin to not move when dragging the crop handles
+  * Big improvement to transform handles for clip transformations, crop handles, and region handles. Handles fade away when they don't intersect the playhead - to improve visibility that you are not editing what you are seeing. Also, crop and transform geometry was fixed so they stay in sync correctly during transforms. Also, crop handles are light gray, clip transform handles are blue.
+  * Making crop handles resize when 'resize' is true, and making origin point fixed to input image.
+  * Adding documentation to Crop handles and Crop context menu
+  * Improved clear selections logic for transform and crop handles. Only change keyframes from the crop handles that were moved
+  * Improve cursor and transform/crop/selection dragging accuracy
+  * Adding "Crop" context menu, and Crop handles to video preview - making cropping a 1st rate experience
+  * Fixing regression in release candidate due to Basic theme parsing
+  * Improved theme parsing and theme classes for qwidget backend. Also added in track gaps, and some additional theme properties.
+  * Improve theme CSS parsing for color and int properties.
+  * Fixing assest list logic in build server
+  * Fixing assest list logic in build server
+  * Improving retry logic in GitHub asset upload
+  * Additional debugging for GitHubError 422
+  * Removing existing assets in attempt loop for releases / daily builds
+  * More refactoring of timeline qwidget backend (separating functionality)
+  * Large refactor of experimental timeline widget backend (separating snap, geometry, paint, and state). Still a work in progress - lots more work needed.
+  * More work on qwidget based timeline backend (some basic functionality, moving clips/transitions, playhead scrubbing, selections, box selection, and snapping.
+  * Prevent drag and drop error where first clip is left behind (sometimes), and previous selected items get dragged as well.
+  * Prevent crash when a clip is selected and transform handles are visible, and then changing the project profile.
+  * Fixing a few issues with Split File dialog (correct ending frame, update preview when slider stops, adding suffix to file name if no custom label is chosen)
+  * Updating Tracker and Object Detector trackedObjects in the "Parent" property of a clip context menu to use "Effect ID: Index" - to give every tracked object a unique id.
+  * Prevent crash when selected items are present and reloading a project or loading a new project
+  * Prevent adding the same clip twice when tracked objects are present and multiple tracker effects are on the clip.
+  * Fixing issues with preview transform handles to allow Object Detector selected tracked object to appear.
+  * Updating Unique Colors for all effects in UI (icon colors)
+  * Adding icons to Effect list in documentation
+  * Protecting from crashes on transform handle (video preview widget) while testing the Tracker effect
+  * Fixing regression whe showing property context menus for multiple selections (do not show multiple context menus)
+  * Fixing crash when selected clip is deleted while video preview is playing.
+  * Fixing regression caused by draggable keyframe. The old implementation was breaking Slicing and other Angular issues (due to modifying the scope + receiving JSON updates from ApplyJsonDiff) - now we only receive updates from ApplyJsonDiff.
+  * Fixing multi-drag and drop files on timeline to prevent gaps and clips spreading out with fast mouse movement
+  * Fixing regression on Split File dialog, where the first clip is fine, but later clips were offset incorrectly
+  * Adding new cached thumbnails for new titles
+  * Adding 3 new titles for next release, and generating new translations
+  * Updating audio thumbnail to something more modern
+  * Bumping version to 3.4.0, minimum libopenshot version to 0.5.0
+  * Adding new cached icons for next release
+  * Tweak regex for changelog parsing, to fix issues with commit messages with double spaces
+  * Adding proxy models and faster filtering to About / Credits models (change log, supporters, developers, etc...)
+  * Compiling translation resource file
+  * Updating supporters for next release
+  * updating 21 language translations for next release
+  * Updating translation template for next release
+  * Updating docs for multi selection editing, updated swig bindings, movable keyframes, etc...
+  * Fixing crash caused by multiple selections and deleting a selected files (mostly due to transform handles still references the deleted clips)
+  * Improving speed of selections and large edits (i.e. selecting hundreds of clips and moving them). Making selection dropdown load menu on click (for speed up)
+  * Adding drag and drop feature to keyframes on timeline. This previews the video while the drag happens, and disables the "wait" cursor caused by update_clip_data (IgnoreUpdates.emit)
+  * Add clip thumbnails to property selection dropdown (use 'start' trim as well)
+  * Fixing Codacy nit picks
+  * Fixing Codacy nit picks
+  * Adding transactions into property editor with multi-selection.
+  * Integrating multi-selection into Transform handles, so it's now possible to transform multiple clips at the same time (location, scaling, rotation, skew, etc...). Improving multi-selection support for Property dock selection dropdown, to maintain the full list of selections and allow the user to jump between them and back to the full multi-selection. Made it possible to select multiple effects at the same time, and unselect effects with CTRL+click. Selected effects are brighter icons, unselected effects are dimmer. Fixed issue on property editor where the "." character would not begin editing mode.
+  * Large refactor of selections, from multiple lists, to a single list, and then full support for multiple-selection editing in the property dock and context menus. Added properties on the main window to emulate the original separate lists, to minimize code changes.
+  * Clearing the main timeline cache during export (to free up memory and stop the video cache thread in the player from competing with the export), then restore it on dialog close (back to original cache)
+  * Integrating VideoCacheThread into Export dialog to speed up exports by 23% (using test video: 720p 24FPS)
+  * Fixing a color picker bug which causes a crash on Mac due to 2 QPainters colliding. Also fixing a parent issue on the color picker used on the property dialog, to correctly size the dialog.
+  * Adding optional manual button for GitLab to re-init builders before deployment or release (since lots of time passes between initial build and deployment)
+  * In an effort to save on infrastructure costs, switching to a dynamic, SQS-based, Auto-Scaling GitLab runner design, which will only run our builders when we need them to run. It should save a few hundred dollars a month.
+  * Adding lens flare icons and documentation
+  * Adding color map LUT files and categories into translation template, and removing && logic from _() translation function.
+  * Including a section on Rec 709 gamma, in the color map documentation.
+  * Fixing lut name (signature teal & orange)
+  * Updating some LUT names and moving a few to new categories, trying to organize them better. Also, added a gallery view to our documentation, so we can preview them all with their name + border.
+  * Updating translation generation to better support dynamic effects and effect properties (no more list of hard-coded translation effects)
+  * Updating docs again with Color Map name and description
+  * Code cleanup, remove unneeded \
+  * Allow effects to be filtered on both effect name and description
+  * Adding overall intensity to the Color Map effect documentation
+  * Adding LUT files from freshluts.com (with AUTHORS.md for attribution for all LUT authors). Organized LUT files into folders for simplicity and renamed them for clarity. Improved lut path context menu, and @colors replacement logic to support folders.
+  * Adding new @color path prefix, to keep lut paths relative to OpenShot src. Also, adding new context menu for lut_path property keys (which uses a combo of default lut files + user .openshot_qt/colors files)
+  * Adding new color map effect icon and documentation, using LUT (.cube) files for color grading
+  * Updating translation template for new effect text strings
+  * Adding documentation for Sharpen effect to user guide
+  * Adding new cached icons
+  * Updating cached icons and thumbnails, and adding new sharpen icons
+  * Adding sharpen effect icons
+  * Fixing table syntax in export profile documentation
+  * Added new 360 profiles to documenation, and updated list of profiles and presets to be accurate.
+  * Updating the profile naming logic to only include DAR as a description uniqueness attribute. Updating 100+ profiles to use new unique names.
+  * Adding documentation for our new Spherical export profile option, and our new spherical projection effect, plus some new glossary terms.
+  * Adding new spherical projection effect icon
+  * Don't show popup message if effect icon is missing, just skip the icon and output a warning to STDOUT.
+  * Integrating libopenshot call to add Spherical metadata
+  * Adding 360 column to export screen, under advanced / profile
+  * Adding 360 column to profile screen, profile editing
+  * Fixing manage.py profiles to use 0 or 1 when adding spherical attribute, and regenerating affected 360 profiles.
+  * Adding new 360 spherical profiles, and updating manage.py script to correctly handle spherical attribute.
+  * Updating 4 profiles to a new naming convention, for consistency
+  * Removing legacy logic from profile definition manage.py script.
+  * Adding new 360-degree video profiles from common / popular 360 recording devices
+  * Protect undo and redo actions from selection and property timers, and prevent crashes in some situations (i.e. undoing 2 new selected clips)
+  * Updating error message text for Linux and non Linux systems (mention snap limitations, really hinting at inkscape, but I don't want to hardcode the Inkscape command into this logic.)
+  * Adding error for snap/flatpak versions of inkscape which simply don't work when passing filepath args to them.
+  * Reverting lines that didn't need updating
+  * Cleanup some experimental changes
+  * Cleanup some experimental changes
+  * Adding cwd == home dir for all subprocess.Popen calls, to protect from AppImage permission issues.
+  * Experimental debugging to learn more about AppImage environment vs host environment
+  * Adding snap bin to PATH in AppImage for snap support in Ubuntu distros
+  * Adding protection around JavaScript errors being output on moveItem, due to empty bounding box elements.
+  * Fixing regression which breaks deleting in the timeline object (leaving behind clips/transitions after deleting from the UI)
+  * Force the insert timestamp button in the Caption editor to use 3 digit milliseconds (which is the standard)
+  * Fixing marker data to snap to FPS precision when changing profiles (similar to clips, transitions, effects, and keyframes).
+  * Adding "None" option for Mask/Transition source attribute, and really any "Reader" based property of any object. This clears the current reader.
+  * Fixing snapping line to also use dynamic height and replace "var" with "const" on app.js
+  * Removing this fix, since it's no longer necessary
+  * Fix incorrect track Y coordinates causing bad drag/drop accuracy after a track was inserted or deleted.
+  * Refactor how scrolling track divs are resized to fit the webview widget, and how the playhead-line height is kept in-sync with the track heights.
+  * Prevent undo deletions from crashing OpenShot (by unselecting deleted item ids, before we remove them) in our TimelinSync object.
+  * Fixing animate and volume presets to use single transaction id
+  * Added transactions to fade in/out presets (keep a single transaction)
+  * Experimental switch of cxFreeze 7 (required for Ubuntu 24.04 github action)
+  * Fixing depreciated Ubuntu 20.04 GitHub action target - moving to 22.04 and 24.04.
+  * Fixing color keyframes which were broken in the previous merge (i.e. chromakey and similar handling)
+  * Update max Outline effect width to 100 (a more reasonable value)
+  * Fixing layout of Outline effect documentation
+  * Adding documentation for the Outline effect
+  * Adding effect background image, and a new placeholder outline effect icon
+  * Removing unused imports
+  * Changing checker size to a fixed #, since scaling is already happening in other places.
+  * Fixing checkerboard size to be more consistent for different DPIs
+  * Fixing the title editor to support high DPI + checkerboard + center label on background color + update preview when label resized. Also making checkerboard checker size function relative to DPI.
+  * Fixing regression for location_x and location_y during the transform tool. Rotation adjustments need to ignore "rotation" and "location" changes.
+  * Apply the relative rotation of a clip to our mouse motions when transforming a rotated clip (feels much more natural)
+  * Fix accessing the "rotate" metadata.
+  * Making actionSave_trigger use a synchronous save method, instead of a Thread, which prevents many race conditions related to "Recent Projects/Open Project" while saving unsaved changes at the same time.
+  * Fixing lens flare error, caused by emission strength syntax change, and updated the default value since it seems Blender has changed how this works.
+  * Improve upgrade logic for legacy profiles, to prevent the accidentally matching of a new profile description with a legacy one (such as HD Vertical 1080p 50 fps)
+  * Draw checkboard on title editor preview label (and use transparent color behind Thumbnails)
+  * Draw checkerboard on the color picker preview rect, to display the alpha changes
+  * Updating sphinx upload artifact version to v4
+  * Adding alpha input back to color picker, so transparency can be set in the title editor and property editors.
+  * Removing "gif" from list of known images, so it can be handled as a video from FFmpeg (with variable duration/video_length)
+- Dropped check section
+
+-------------------------------------------------------------------
 Thu Jan 23 17:42:59 UTC 2025 - bjorn.lie@gmail.com
 
 - Update to version 3.3.0:

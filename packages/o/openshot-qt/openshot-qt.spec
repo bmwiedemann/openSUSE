@@ -1,7 +1,7 @@
 #
 # spec file for package openshot-qt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define appname org.openshot.OpenShot
 Name:           openshot-qt
-Version:        3.3.0
+Version:        3.5.1
 Release:        0
 Summary:        Non-linear video editor with broad format support
 License:        GPL-3.0-or-later
@@ -75,9 +75,6 @@ chmod -x src/presets/format_*.xml
 %python3_install
 %suse_update_desktop_file -r %{appname} AudioVideo AudioVideoEditing
 %fdupes -s %{buildroot}%{python3_sitelib}
-
-%check
-python3 -B ./src/tests/query_tests.py -platform minimal
 
 %files
 %doc README.md
