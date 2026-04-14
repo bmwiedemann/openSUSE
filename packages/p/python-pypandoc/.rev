@@ -143,4 +143,29 @@
     <comment></comment>
     <requestid>1329159</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bd0b2119c69c5c679ca02c9019700776</srcmd5>
+    <version>1.17</version>
+    <time>1776181727</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.17
+  * Migrated build system from poetry/setuptools to Hatch
+  * Added a formal CLI accessible via pypandoc or python -m
+    pypandoc, including commands for version info and
+    pandoc downloads.
+  * Integrated with TinyTeX (via pytinytex) for automated
+    LaTeX package management and PDF conversion.
+  * Improved download_pandoc to use the GitHub API instead
+    of HTML scraping, adding retry logic and authenticated
+    request support.
+  * Fixed data corruption when handling binary input
+    formats (e.g., docx, epub) by avoiding unnecessary
+    decoding.
+  * Enhanced error reporting with actionable hints for
+    missing LaTeX dependencies.
+
+  - Remove dead code (#393, #394)
+  - Remove the Python 3.6 PyPI trove classifier (#389)</comment>
+    <requestid>1346215</requestid>
+  </revision>
 </revisionlist>

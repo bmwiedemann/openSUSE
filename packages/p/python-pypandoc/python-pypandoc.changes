@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr 12 16:33:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to version 1.17
+  * Migrated build system from poetry/setuptools to Hatch
+  * Added a formal CLI accessible via pypandoc or python -m
+    pypandoc, including commands for version info and
+    pandoc downloads.
+  * Integrated with TinyTeX (via pytinytex) for automated
+    LaTeX package management and PDF conversion.
+  * Improved download_pandoc to use the GitHub API instead
+    of HTML scraping, adding retry logic and authenticated
+    request support.
+  * Fixed data corruption when handling binary input
+    formats (e.g., docx, epub) by avoiding unnecessary
+    decoding.
+  * Enhanced error reporting with actionable hints for
+    missing LaTeX dependencies.
+
+-------------------------------------------------------------------
 Sun Jan 25 12:34:37 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - poetry-core is enough to build
@@ -8,9 +27,9 @@ Sun Jan 25 12:34:37 UTC 2026 - Ben Greiner <code@bnavigator.de>
 Thu Dec  4 05:36:43 UTC 2025 - Guang Yee <gyee@suse.com>
 
 - Update to 1.16.2
-  - Remove dead code (#393, #394) 
+  - Remove dead code (#393, #394)
   - Begin removing Python 2 compatibility code (#392, #401)
-  - Remove the Python 3.6 PyPI trove classifier (#389) 
+  - Remove the Python 3.6 PyPI trove classifier (#389)
   - Adding python 3.14 and 3.15
   - Pypandoc (test) on arm
   - Improvements to CI

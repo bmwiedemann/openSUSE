@@ -17,14 +17,20 @@
 
 
 %define base_name pypandoc
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pypandoc
-Version:        1.16.2
+Version:        1.17
 Release:        0
 Summary:        Thin wrapper for pandoc
 License:        MIT
 URL:            https://github.com/JessicaTegner/pypandoc
 Source:         https://github.com/JessicaTegner/pypandoc/archive/refs/tags/v%{version}.tar.gz#/pypandoc-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pandocfilters}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
@@ -38,8 +44,15 @@ BuildRequires:  tex(amsmath.sty)
 BuildRequires:  tex(bookmark.sty)
 Requires:       pandoc
 Suggests:       ghc-citeproc
-ExcludeArch:    %{ix86}
 BuildArch:      noarch
+ExcludeArch:    %{ix86}
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -53,16 +66,24 @@ pypandoc provides a thin wrapper for pandoc, a universal document converter.
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/pypandoc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # 'test_basic_conversion_from_http_url' needs network
 # 'test_conversion_with_data_files' => https://github.com/JessicaTegner/pypandoc/issues/278
-%pytest tests.py -k 'not test_basic_conversion_from_http_url and not test_conversion_with_data_files and not test_basic_conversion_from_file_pattern_pathlib_glob'
+%pytest -k 'not test_basic_conversion_from_http_url and not test_conversion_with_data_files and not test_basic_conversion_from_file_pattern_pathlib_glob'
+
+%post
+%python_install_alternative pypandoc
+
+%postun
+%python_uninstall_alternative pypandoc
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
+%python_alternative %{_bindir}/pypandoc
 %{python_sitelib}/pypandoc
 %{python_sitelib}/pypandoc-%{version}.dist-info
 
