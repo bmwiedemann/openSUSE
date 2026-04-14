@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Apr 13 19:37:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0
+  Highlights
+  * SMB server with NTLM hash capture and optional quick hash
+    cracking.
+  * DNS server to receive and log incoming DNS queries.
+  * SMTP server to receive emails and attachments.
+  * Redirect endpoint for HTTP 3xx redirects with custom headers.
+  * File-based ACLs for per-directory authentication and access
+    control.
+  * Share links with time and download limits, QR codes, and
+    token-based access WebDAV, SFTP, Basic Auth, Certificate Auth,
+    Let’s Encrypt, and much more
+  Security Fixes
+  * Fix GHSA-7qx6-f23w-3w7f
+    Unauthenticated Open Redirect, Arbitrary HTTP Response Header
+    Injection, Missing CSRF, and Invisible-Mode Bypass in goshs
+    `/?redirect` endpoint
+  * Fix GHSA-7h3j-592v-jcrp
+    Public collaborator feed leaks .goshs ACL credentials and
+    enables unauthorized access.
+  * Fix GHSA-jrq5-hg6x-j6g3
+    CSRF in state-changing GET routes enables authenticated file
+    deletion and directory creation
+  * Fix GHSA-c29w-qq4m-2gcv
+    Empty-username SFTP password authentication bypass in goshs
+  * Fix GHSA-5h6h-7rc9-3824
+    SFTP root escape via prefix-based path validation in goshs
+  * Fix CVE-2026-40189 (boo#1261996), GHSA-wvhv-qcqf-f3cx
+    File-based ACL authorization bypass in goshs state-changing
+    routes.
+  * Fix CVE-2026-40188 (boo#1261995), GHSA-2943-crp8-38xx
+    Missing Write Protection for Parametric Data Values
+  * Fix CVE-2026-35393 (boo#1261608), GHSA-jg56-wf8x-qrv5
+     Improper Limitation of a Pathname to a Restricted Directory
+    ('Path Traversal') in goshs POST multipart upload
+  * Fix CVE-2026-35392 (boo#1261607), GHSA-g8mv-vp7j-qp64
+    Improper Limitation of a Pathname to a Restricted Directory
+    ('Path Traversal') in goshs PUT Upload
+  * Fix CVE-2026-35471 (boo#1261609), GHSA-6qcc-6q27-whp8
+    Improper Limitation of a Pathname to a Restricted Directory
+    ('Path Traversal') in goshs deleteFile()
+  * Fix GHSA-jgfx-74g2-9r6g
+    Auth Bypass via Share Token
+- Add patch:
+  * gosh-fix-test.patch
+
+-------------------------------------------------------------------
 Sat Mar 14 09:25:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.4

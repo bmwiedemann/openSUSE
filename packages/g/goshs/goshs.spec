@@ -16,7 +16,7 @@
 #
 
 Name:           goshs
-Version:        1.1.4
+Version:        2.0.0
 Release:        0
 Summary:        A simple HTTP server
 License:        MIT
@@ -25,6 +25,7 @@ URL:            https://goshs.de/
 #Git-Clone:     https://github.com/patrickhener/goshs.git
 Source:         https://github.com/patrickhener/goshs/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch0:         gosh-fix-test.patch
 BuildRequires:  go >= 1.24.1
 BuildRequires:  golang-packaging
 # shared-mime-info needed for tests

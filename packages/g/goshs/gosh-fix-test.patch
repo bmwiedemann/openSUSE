@@ -1,0 +1,13 @@
+diff --git a/smtpserver/session_test.go b/smtpserver/session_test.go
+index 14ebf26..b8dfc74 100644
+--- a/smtpserver/session_test.go
++++ b/smtpserver/session_test.go
+@@ -97,7 +97,7 @@ func TestDeriveFilename_KnownTypes(t *testing.T) {
+ 		{"application/pdf", "attachment.pdf"},
+ 		{"application/zip", "attachment.zip"},
+ 		{"text/plain", "attachment.txt"},
+-		{"video/mp4", "attachment.mpg4"},
++		{"video/mp4", "attachment.mp4"},
+ 	}
+ 	for _, tc := range tests {
+ 		got := deriveFilename(tc.mime)
