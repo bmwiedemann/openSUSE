@@ -224,4 +224,13 @@
   * Silence events API warnings for internal users</comment>
     <requestid>1343483</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d8a6b3ccd20cded83db9b0402a37a650</srcmd5>
+    <version>1.41.0</version>
+    <time>1776181737</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.41.0:
+  * no changes</comment>
+    <requestid>1346299</requestid>
+  </revision>
 </revisionlist>

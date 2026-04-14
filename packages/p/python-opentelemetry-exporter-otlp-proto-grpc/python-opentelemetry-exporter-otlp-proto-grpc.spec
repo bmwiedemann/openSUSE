@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-exporter-otlp-proto-grpc
-Version:        1.40.0
+Version:        1.41.0
 Release:        0
 Summary:        OpenTelemetry Collector Protobuf over gRPC Exporter
 License:        Apache-2.0
@@ -28,9 +28,8 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Deprecated >= 1.2.6}
-BuildRequires:  %{python_module googleapis-common-protos >= 1.52}
-BuildRequires:  %{python_module grpcio >= 1.0.0}
+BuildRequires:  %{python_module googleapis-common-protos >= 1.57}
+BuildRequires:  %{python_module grpcio >= 1.63.2}
 BuildRequires:  %{python_module opentelemetry-api >= 1.15}
 BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-common = %{version}}
 BuildRequires:  %{python_module opentelemetry-proto = %{version}}
@@ -38,15 +37,16 @@ BuildRequires:  %{python_module opentelemetry-sdk >= %{version}}
 BuildRequires:  %{python_module opentelemetry-test-utils}
 BuildRequires:  %{python_module pytest-grpc}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module typing-extensions >= 4.6.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-Deprecated >= 1.2.6
-Requires:       python-googleapis-common-protos
-Requires:       python-grpcio >= 1.0.0
-Requires:       python-opentelemetry-api
+Requires:       python-googleapis-common-protos >= 1.57
+Requires:       python-grpcio >= 1.63.2
+Requires:       python-opentelemetry-api >= 1.15
 Requires:       python-opentelemetry-exporter-otlp-proto-common = %{version}
 Requires:       python-opentelemetry-proto = %{version}
-Requires:       python-opentelemetry-sdk
+Requires:       python-opentelemetry-sdk >= %{version}
+Requires:       python-typing-extensions >= 4.6.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -71,6 +71,8 @@ rm -rvf tests/performance
 %pytest
 
 %files %{python_files}
+%doc README.rst
+%license LICENSE
 %dir %{python_sitelib}/opentelemetry
 %dir %{python_sitelib}/opentelemetry/exporter
 %dir %{python_sitelib}/opentelemetry/exporter/otlp
