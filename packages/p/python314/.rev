@@ -2828,4 +2828,41 @@ jsc#PED-15851</comment>
   http.cookies.BaseCookie.js_output (bsc#1259734, CVE-2026-3644).</comment>
     <requestid>1343741</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>36a3990e247ed20a67c91644f6b10be4</srcmd5>
+    <version>3.14.4</version>
+    <time>1776261784</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.14.4:
+  - Security
+    - gh-145986: xml.parsers.expat: Fixed a crash caused by
+      unbounded C recursion when converting deeply nested XML
+      content models with ElementDeclHandler(). This addresses
+      CVE 2026-4224 (bsc#1259735, CVE-2026-4224).
+    - gh-145599: Reject control characters in http.cookies.Morsel
+      update() and js_output(). This addresses CVE 2026-3644
+      (bsc#1259734, CVE-2026-3644).
+    - gh-145506: Fixes CVE 2026-2297 by ensuring that
+      SourcelessFileLoader uses io.open_code() when opening .pyc
+      files (bsc#1259240, CVE-2026-2297).
+    - gh-144370: Disallow usage of control characters in status
+      in wsgiref.handlers to prevent HTTP header injections.
+      Patch by Benedikt Johannes.
+    - gh-143930: Reject leading dashes in URLs passed to
+      webbrowser.open() (bsc#1260026, CVE-2026-4519).
+  - Core and Builtins
+    - gh-148157: Fix an unlikely crash when parsing an invalid
+      type comments for function parameters. Found by OSS Fuzz in
+      #492782951.
+    - gh-148144: Initialize _PyInterpreterFrame.visited when
+      copying interpreter frames so incremental GC does not read
+      an uninitialized byte from generator and frame-object
+      copies.
+    - gh-146615: Fix a crash in __get__() for METH_METHOD
+      descriptors when an invalid (non-type) object is passed as
+      the second argument. Patch by Steven Sun.
+    - gh-146308: Fixed several error handling issues in the
+      _remote_debugging module, including safer validation of</comment>
+    <requestid>1345663</requestid>
+  </revision>
 </revisionlist>

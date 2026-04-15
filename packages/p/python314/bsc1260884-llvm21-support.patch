@@ -47,17 +47,17 @@ tarball download infrastructure.
  6 files changed, 129 insertions(+), 47 deletions(-)
  create mode 100644 Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst
 
-Index: Python-3.14.3/Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst
+Index: Python-3.14.4/Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ Python-3.14.3/Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst	2026-03-28 19:07:08.905250841 +0100
++++ Python-3.14.4/Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst	2026-04-08 11:17:17.883764230 +0200
 @@ -0,0 +1 @@
 +Update JIT compilation to use LLVM 21 at build time.
-Index: Python-3.14.3/Python/jit.c
+Index: Python-3.14.4/Python/jit.c
 ===================================================================
---- Python-3.14.3.orig/Python/jit.c	2026-02-03 16:32:20.000000000 +0100
-+++ Python-3.14.3/Python/jit.c	2026-03-28 19:07:08.905586532 +0100
-@@ -419,15 +419,43 @@
+--- Python-3.14.4.orig/Python/jit.c	2026-04-07 15:13:20.000000000 +0200
++++ Python-3.14.4/Python/jit.c	2026-04-08 11:17:17.884330327 +0200
+@@ -355,15 +355,43 @@
  }
  
  void patch_aarch64_trampoline(unsigned char *location, int ordinal, jit_state *state);
@@ -101,7 +101,7 @@ Index: Python-3.14.3/Python/jit.c
  // Generate and patch AArch64 trampolines. The symbols to jump to are stored
  // in the jit_stencils.h in the symbols_map.
  void
-@@ -444,20 +472,8 @@
+@@ -380,20 +408,8 @@
          return;
      }
  
@@ -124,7 +124,7 @@ Index: Python-3.14.3/Python/jit.c
  
  
      /* Generate the trampoline
-@@ -474,6 +490,37 @@
+@@ -410,6 +426,37 @@
      patch_aarch64_26r(location, (uintptr_t)p);
  }
  
@@ -162,7 +162,7 @@ Index: Python-3.14.3/Python/jit.c
  static void
  combine_symbol_mask(const symbol_mask src, symbol_mask dest)
  {
-@@ -515,8 +562,13 @@
+@@ -451,8 +498,13 @@
      // Round up to the nearest page:
      size_t page_size = get_page_size();
      assert((page_size & (page_size - 1)) == 0);
@@ -178,7 +178,7 @@ Index: Python-3.14.3/Python/jit.c
      unsigned char *memory = jit_alloc(total_size);
      if (memory == NULL) {
          return -1;
-@@ -535,7 +587,7 @@
+@@ -471,7 +523,7 @@
      // Loop again to emit the code:
      unsigned char *code = memory;
      state.trampolines.mem = memory + code_size;
@@ -187,7 +187,7 @@ Index: Python-3.14.3/Python/jit.c
      // Compile the shim, which handles converting between the native
      // calling convention and the calling convention used by jitted code
      // (which may be different for efficiency reasons).
-@@ -557,7 +609,9 @@
+@@ -493,7 +545,9 @@
      code += group->code_size;
      data += group->data_size;
      assert(code == memory + code_size);
@@ -198,10 +198,10 @@ Index: Python-3.14.3/Python/jit.c
      if (mark_executable(memory, total_size)) {
          jit_free(memory, total_size);
          return -1;
-Index: Python-3.14.3/Tools/jit/README.md
+Index: Python-3.14.4/Tools/jit/README.md
 ===================================================================
---- Python-3.14.3.orig/Tools/jit/README.md	2026-02-03 16:32:20.000000000 +0100
-+++ Python-3.14.3/Tools/jit/README.md	2026-03-28 19:07:08.905766140 +0100
+--- Python-3.14.4.orig/Tools/jit/README.md	2026-04-07 15:13:20.000000000 +0200
++++ Python-3.14.4/Tools/jit/README.md	2026-04-08 11:17:17.884838104 +0200
 @@ -9,32 +9,32 @@
  
  The JIT compiler does not require end users to install any third-party dependencies, but part of it must be *built* using LLVM[^why-llvm]. You are *not* required to build the rest of CPython using LLVM, or even the same version of LLVM (in fact, this is uncommon).
@@ -263,10 +263,10 @@ Index: Python-3.14.3/Tools/jit/README.md
  
  ## Building
  
-Index: Python-3.14.3/Tools/jit/_llvm.py
+Index: Python-3.14.4/Tools/jit/_llvm.py
 ===================================================================
---- Python-3.14.3.orig/Tools/jit/_llvm.py	2026-03-28 19:07:01.506684972 +0100
-+++ Python-3.14.3/Tools/jit/_llvm.py	2026-03-28 19:07:08.905859205 +0100
+--- Python-3.14.4.orig/Tools/jit/_llvm.py	2026-04-08 10:56:15.619727417 +0200
++++ Python-3.14.4/Tools/jit/_llvm.py	2026-04-08 11:17:17.885158548 +0200
 @@ -10,9 +10,9 @@
  
  import _targets
@@ -332,11 +332,11 @@ Index: Python-3.14.3/Tools/jit/_llvm.py
      # Nothing found:
      return None
  
-Index: Python-3.14.3/Tools/jit/_stencils.py
+Index: Python-3.14.4/Tools/jit/_stencils.py
 ===================================================================
---- Python-3.14.3.orig/Tools/jit/_stencils.py	2026-03-28 19:07:01.511197803 +0100
-+++ Python-3.14.3/Tools/jit/_stencils.py	2026-03-28 19:07:08.905962259 +0100
-@@ -302,6 +302,23 @@
+--- Python-3.14.4.orig/Tools/jit/_stencils.py	2026-04-08 10:56:15.623184158 +0200
++++ Python-3.14.4/Tools/jit/_stencils.py	2026-04-08 11:17:17.885412907 +0200
+@@ -274,6 +274,23 @@
                  self._trampolines.add(ordinal)
                  hole.addend = ordinal
                  hole.symbol = None
@@ -360,10 +360,10 @@ Index: Python-3.14.3/Tools/jit/_stencils.py
          self.code.remove_jump()
          self.code.add_nops(nop=nop, alignment=alignment)
          self.data.pad(8)
-Index: Python-3.14.3/Tools/jit/_targets.py
+Index: Python-3.14.4/Tools/jit/_targets.py
 ===================================================================
---- Python-3.14.3.orig/Tools/jit/_targets.py	2026-03-28 19:07:01.513403213 +0100
-+++ Python-3.14.3/Tools/jit/_targets.py	2026-03-28 19:07:08.906085812 +0100
+--- Python-3.14.4.orig/Tools/jit/_targets.py	2026-04-08 10:56:15.625514156 +0200
++++ Python-3.14.4/Tools/jit/_targets.py	2026-04-08 11:17:17.885705308 +0200
 @@ -150,10 +150,6 @@
              "-fno-asynchronous-unwind-tables",
              # Don't call built-in functions that we can't find or patch:

@@ -124,7 +124,7 @@
 # %%define tarversion %%{version}
 # %%endif
 # We don't process beta signs well
-%define         folderversion 3.14.3
+%define         folderversion 3.14.4
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
 %define         abi_kind   %{nil}
@@ -162,7 +162,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.3
+Version:        3.14.4
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -238,21 +238,6 @@ Patch50:        CVE-2025-15366-imap-ctrl-chars.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15367-poplib-ctrl-chars.patch bsc#1257041 mcepl@suse.com
 # Reject control characters in poplib
 Patch51:        CVE-2025-15367-poplib-ctrl-chars.patch
-# PATCH-FIX-UPSTREAM CVE-2026-2297-SourcelessFileLoader-io_open_code.patch bsc#1259240 mcepl@suse.com
-# Ensure SourcelessFileLoader uses io.open_code
-Patch52:        CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
-# PATCH-FIX-UPSTREAM CVE-2026-3644-cookies-Morsel-update-II.patch bsc#1259734 mcepl@suse.com
-# Reject control characters in http.cookies.Morsel.update() and http.cookies.BaseCookie.js_output
-Patch53:        CVE-2026-3644-cookies-Morsel-update-II.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4224-expat-unbound-C-recursion.patch bsc#1259735 mcepl@suse.com
-# Avoid unbound C recursion in conv_content_model
-Patch54:        CVE-2026-4224-expat-unbound-C-recursion.patch
-# PATCH-FIX-UPSTREAM CVE-2025-13462-tarinfo-header-parse.patch bsc#1259611 mcepl@suse.com
-# Skip TarInfo DIRTYPE normalization during GNU long name handling
-Patch55:        CVE-2025-13462-tarinfo-header-parse.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4519-webbrowser-open-dashes.patch bsc#1260026 mcepl@suse.com
-# reject leading dashes in webbrowser URLs
-Patch56:        CVE-2026-4519-webbrowser-open-dashes.patch
 # PATCH-FIX-OPENSUSE bsc1260884-llvm21-support.patch bsc#1260884 mcepl@suse.com
 # update JIT builds to use LLVM 21
 Patch57:        bsc1260884-llvm21-support.patch
