@@ -36,7 +36,7 @@
 %bcond_with voamrwbenc
 %endif
 
-%if 0%{?is_opensuse} || 0%{?suse_version} > 1600
+%if 0%{?is_opensuse} || 0%{?suse_version} >= 1699
 %bcond_without faad
 %else
 %bcond_with faad
@@ -81,7 +81,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.28.1
+Version:        1.28.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -800,6 +800,13 @@ anything media-related, from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
+%package        extra
+Summary:        GStreamer plugins extra mpeg2 support
+Group:          Productivity/Multimedia/Other
+
+%description    extra
+GStreamer plugins bad extras. Provides mpeg2 encoding support
+
 %package -n gstreamer-transcoder
 Summary:        GStreamer Transcoding API
 Group:          Productivity/Multimedia/Other
@@ -1085,12 +1092,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstmicrodns.so
 %endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstmidi.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstmpeg2enc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegpsdemux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegtsdemux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegpsmux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegtsmux.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstmplex.so
 %ifarch x86_64
 %{_libdir}/gstreamer-%{gst_branch}/libgstmsdk.so
 %endif
@@ -1184,6 +1189,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if %{with zbar}
 %{_libdir}/gstreamer-%{gst_branch}/libgstzbar.so
 %endif
+
+%files extra
+%{_libdir}/gstreamer-%{gst_branch}/libgstmpeg2enc.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstmplex.so
 
 %if %{with fluidsynth}
 %files fluidsynth

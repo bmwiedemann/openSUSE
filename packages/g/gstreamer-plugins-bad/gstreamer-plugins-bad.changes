@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Apr 14 17:15:08 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix suse_version check to enable faad codec only in TW since
+  SLE 16 SP1 will use a suse_version value of 1610
+
+-------------------------------------------------------------------
+Wed Apr  8 11:55:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.2:
+  + analytics: Set default pixel-aspect-ratio for inference
+    elements
+  + av1dec: Enable VIDEO_META and VIDEO_ALIGNMENT for pool
+  + av1parse, vp9parse: Remove segment clipping to let downstream
+    handle frame boundaries
+  + av1parse:
+    - Avoid signed 32 bit integer overflow and OOB reads when
+      parsing LEB128 values
+    - Split the alignment and stream type logic
+    - Misc fixes 2 typo
+    - Invalid assertion in gst_av1_parse_detect_stream_format()
+  + dashsink: test: use playbin3 for DASH playback verification
+  + decklinkvideosink: fix element leak in decklink callback
+  + dtls: unregister signal handlers from connection
+  + gdppay: Fix null pointer dereference on duplicated caps event
+  + h264parse, h265parse: Preserve upstream buffer duration if
+    possible
+  + h264parser:
+    - Fix memory leak in gst_h264_parser_parse_nal()
+    - Avoid NULL pointer dereferences when freeing partially parsed
+      SPS/MVC data
+  + h264: Memory Leak in gst_h264_parser_parse_nal()
+  + h266parser: Avoid integer overflow when parsing profile / tier
+    / level
+  + jp2kdecimator: Avoid integer overflows and divisions by zero on
+    invalid tile configurations
+  + mxfdemux: hardening
+  + nice: Fix leak of webrtc libnice thread
+  + nvcodec: Add capability caching to speed up plugin
+    initialization
+  + tsmux: Fix integer overflow in SCTE35 NULL interval
+  + sctp: Set number of outgoing & incoming streams to the same
+    value
+  + shm: fix shmsink exit code 1 on clean shutdown
+  + soundtouch: Only allow up to 192kHz and 16 channels
+  + srtpenc: preserve ROC when master key is updated for an ongoing
+    session
+  + svtav1: fix "Level of parallelism" property type discrepencies
+  + vkswapper/vksink: Don't advertise unsupported formats
+  + vmncdec: Set cursormask to NULL to prevent double free
+  + vtdec:
+    - vp9 support is only enabled in first vtdec element
+    - Do not hold the stream lock when pushing out frames
+    - Prefer outputting VulkanImage instead of sysmem, fix some
+      leaks, ensure vulkansink provides a window
+    - Store supplemental codec support in a global variable
+    - Supplemental VideoToolbox decoders now registered via vtutil
+      helper
+    - Handle decoder error status for iOS, vtenc: restart if
+      VTCompressionSessionCompleteFrames fails
+  + vulkan: Clear mutex when GstVulkanImageMemory is freed
+  + vulkanvp9dec: Fix case in device-specific factory name
+  + wasapi2: Log target device information
+  + wasapi2sink: Ignore device errors from default device
+  + wayland: display: Add protection when replacing wl_output
+  + waylandsink:
+    - Fix waylandsink crash when call window flush
+    - Properly reset the tag orientation
+  + wlwindow: fix viewport source outside buffer when play
+    resolution change stream
+  + Fix a couple of const correctness bugs around strchr() usage
+  + GThreadFunc return type fixes
+  + meson: Fix downloading MoltenVK SDK, make it work when
+    meson-installed
+- Split out gstreamer-plugins-bad-extra sub-package, move mpeg2
+  encoder/plexer in its own sub-package. Gstreamer-plugins-libav
+  provides the prefered software plugin.
+
+-------------------------------------------------------------------
 Thu Feb 26 08:56:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.1:
