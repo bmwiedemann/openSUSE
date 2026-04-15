@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Apr 14 07:21:46 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.29.0:
+  * vendor: github.com/docker/cli v29.4.0
+  * Dockerfile: update docker engine, cli to v29.4
+  * s3cache: Fix data race in readerAtCloser
+  * client: write CDI specs atomically in integration tests
+  * chore: remove deprecated client.SolveOpts.LocalDirs member
+  * chore: prune unused protobuf files from googleapis
+  * build(deps): bump crazy-max/.github from 1.5.0 to 1.6.0
+  * build(deps): bump the crazy-max-dot-github group with 2 updates
+  * solver: route gateway dockerfile.v0 source to builtin frontend
+  * Update Test Coverage for Secrets
+  * frontend/dockerfile: fix HEALTHCHECK history formatting
+  * hack: print the README diff when doctoc validation fails
+  * Dockerfiles: pin doctoc to a fixed version
+  * cache: add retry_mode and retry_max_attempts options to s3 cache
+  * build(deps): bump crazy-max/.github from 1.3.0 to 1.5.0
+  * build(deps): bump docker/github-builder/.github/workflows/bake.yml
+  * build(deps): bump docker/login-action from 4.0.0 to 4.1.0
+  * test: use separate container ID for exec phase of worker test
+  * gitutil: add opt-in support for host git config
+  * Introduce disable_accept_encoding flag in s3 cache.
+  * gitutil: avoid global git config lookup on Windows
+  * ci: fix Windows ARM64 test compatibility
+  * session(auth): cancel blocked credential callbacks
+
+-------------------------------------------------------------------
 Tue Mar 31 08:35:43 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.28.1:
