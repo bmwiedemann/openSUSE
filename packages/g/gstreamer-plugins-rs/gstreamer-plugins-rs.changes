@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:43:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.2:
+  + burn: yoloxinference: Restrict widths/heights to a multiple of
+    32
+  + fallbacksrc: Send select-streams event to collection source
+    element
+  + gtk4paintablesink: Error out in NULL->READY if there is no
+    default GDK display
+  + png: implement image repacking when buffer is padded
+  + rtpbin2:
+    - Don't panic in Drop impl
+    - Improve logs
+    - Jtterbuffer: fix deadline for re-ordered packets
+    - More log improvements
+  + rtprecv: JitterBufferStream: avoid polling JitterBuffer when
+    possible
+  + speechmatics:
+    - Fix first_buffer_pts race condition in dispatch_message
+    - textaccumulate: fix flushing issues
+  + threadshare:
+    - Fix socket leak in ts-udpsink
+    - udpsink/src: don't error out failing to send packet to a
+      client / receiving an ICMP error
+  + tracers: Mark enum types as plugin API
+  + transcriberbin: ignore flow errors from transcription branch
+  + webrtc:
+    - Silence new clippy warning
+    - tests: run signalling server with unique port number
+  + whisper:
+    - Fix compiling on ARM
+    - Update to latest release 0.16
+  + Don't transform push_event() false returns into flow errors
+  + Switch from std::os::raw to std::ffi for C types
+  + Update dependencies
+  - meson: only add example features when dependencies are found
+  - build: update rustfmt edition to 2024
+
+-------------------------------------------------------------------
 Thu Feb 26 09:18:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.1:
