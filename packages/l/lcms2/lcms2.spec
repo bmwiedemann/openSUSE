@@ -1,7 +1,7 @@
 #
 # spec file for package lcms2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lcms2
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        Little CMS Engine - A color management library and tools
 License:        MIT
@@ -107,23 +107,30 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 
 rm %{buildroot}/%{_libdir}/liblcms2.la
 
-%post -n liblcms2-2 -p /sbin/ldconfig
-%postun -n liblcms2-2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n liblcms2-2
 
 %files
 %license LICENSE
 %doc AUTHORS
-%{_bindir}/*
-%{_mandir}/man?/*.*
+%{_bindir}/jpgicc
+%{_bindir}/linkicc
+%{_bindir}/psicc
+%{_bindir}/tificc
+%{_bindir}/transicc
+%{_mandir}/man1/jpgicc.1%{?ext_man}
+%{_mandir}/man1/linkicc.1%{?ext_man}
+%{_mandir}/man1/psicc.1%{?ext_man}
+%{_mandir}/man1/tificc.1%{?ext_man}
+%{_mandir}/man1/transicc.1%{?ext_man}
 
 %files -n liblcms2-2
 %{_libdir}/liblcms2.so.2*
 
 %files -n liblcms2-devel
 
-%{_includedir}/*.h
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
+%{_includedir}/lcms2*.h
+%{_libdir}/liblcms2.so
+%{_libdir}/pkgconfig/lcms2.pc
 
 %files -n liblcms2-doc
 %doc doc/*pdf
