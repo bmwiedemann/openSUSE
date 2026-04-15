@@ -27,28 +27,26 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-zope.configuration%{psuffix}
-Version:        7.0
+Version:        7.1
 Release:        0
 Summary:        Zope Configuration Markup Language (ZCML)
 License:        ZPL-2.1
 URL:            http://www.python.org/pypi/zope.configuration
 Source:         https://files.pythonhosted.org/packages/source/z/zope.configuration/zope_configuration-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 78.1.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Requires:       python-zope.i18nmessageid
 Requires:       python-zope.interface
 Requires:       python-zope.schema >= 4.9
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module zope.configuration = %{version}}
 BuildRequires:  %{python_module zope.testing}
-BuildRequires:  %{python_module zope.testrunner}
+BuildRequires:  %{python_module zope.testrunner >= 6.4}
 %endif
 %python_subpackages
 

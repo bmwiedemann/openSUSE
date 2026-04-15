@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 14 22:46:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1:
+  * Move package metadata from setup.py to pyproject.toml.
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+  * Remove run-time dependency on setuptools.
+
+-------------------------------------------------------------------
 Tue Jan  6 04:30:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.0:

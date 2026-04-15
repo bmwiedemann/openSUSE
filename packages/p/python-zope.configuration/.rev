@@ -121,4 +121,16 @@ New dependency of python-pyramid</comment>
 - BuildRequire ourselves for the test flavor.</comment>
     <requestid>1325518</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>021140656adb7beea7b285c0b92ace54</srcmd5>
+    <version>7.1</version>
+    <time>1776261941</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1:
+  * Move package metadata from setup.py to pyproject.toml.
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+  * Remove run-time dependency on setuptools.</comment>
+    <requestid>1347031</requestid>
+  </revision>
 </revisionlist>
