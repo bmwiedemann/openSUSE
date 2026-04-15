@@ -20,7 +20,7 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.28.1
+Version:        1.28.2
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -102,6 +102,13 @@ that operate on media data. Applications using this library can do
 anything media-related, from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
+
+%package        extra
+Summary:        GStreamer-plugins-bad extra plugins
+Requires:       %{name}
+
+%description    extra
+This package provides GStreamer-plugins-bad cdparanoia and libvisual support.
 
 %package -n libgstallocators-1_0-0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
@@ -557,12 +564,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudiotestsrc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstaudiorate.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstbasedebug.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstcdparanoia.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcompositor.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdsd.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstencoding.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstgio.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstlibvisual.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstogg.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopengl.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopus.so
@@ -582,6 +587,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstvorbis.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstximagesink.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstxvimagesink.so
+
+%files extra
+%{_libdir}/gstreamer-%{gst_branch}/libgstcdparanoia.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstlibvisual.so
 
 %files -n libgstallocators-1_0-0
 %{_libdir}/libgstallocators*.so.*

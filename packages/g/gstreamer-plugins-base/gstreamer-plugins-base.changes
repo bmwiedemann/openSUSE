@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:29:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.2:
+  + GstAudio/VideoDecoder: Fix different seqnum for eos event error
+  + gst-validate reports event::eos-has-wrong-seqnum in
+    GstAudio/VideoDecoder
+  + audioencoder: Remove fixed caps from srcpad
+  + audio-resampler-neon: read array operand by hand to fix build
+    errors with some armv7hf toolchains
+  + audio-resampler: build error with some armv7hf toolchains:
+    'asm' operand has impossible constraints
+  + compositor: move gst_compositor_init_blend() to element
+    class_init
+  + exiftag:
+    - Add missing bounds check and integer overflow protections in
+      various places
+    - Ignore invalid fractions with numerator/denominator G_MININT
+    - Unmap buffer if parsing a rational number gives a zero
+      denominator
+  + gl: upload: Fix linking glupload with restrictive caps filter
+  + glupload: can't handle caps video/x-raw(memory:GLMemory)
+  + glcolorconvert: Fix NULL pointer dereference on buffers without
+    video meta
+  + libs_gstglcolorconvert test failure in 1.28.1
+  + opusenc:
+    - Use correct memcpy() size when copying Vorbis channel
+      positions
+    - Using invalid size for memcpy?
+  + playback: Make sure to check for empty/any caps before getting
+    the first structure
+  + rtcp: Fix buffer overread in SDES packet parsing
+  + rtpbuffer: Add validation for CSRC list length
+  + rtsp:
+    - gstrtspurl: Parse URL having user without password
+    - Does not parse URL with user but no password as valid
+  + subparse:
+    - Avoid NULL-pointer dereferences in mdvdsub parsing code
+    - Fix integer overflow when calculating qttext timestamp
+    - Replace regex string matching / replacing with plain C string
+      parsing
+  + typefindfunctions: Avoid signed 32 bit integer overflow and OOB
+    reads when parsing LEB128 values
+  + video-converter: fix I420/A420 BGRA/ARGB output on big-endian
+  + video: fix too small default stride for UYVP with odd widths
+  + videorate: Fix unrestored caps on backward PTS
+  + GThreadFunc return type fixes
+- Split put new gstreamer-plugins-base-extra sub-package.
+
+-------------------------------------------------------------------
 Thu Feb 26 08:54:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.1:
