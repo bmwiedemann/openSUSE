@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  7 07:17:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit pkgconfig(icu-uc) BuildRequires: checked for by
+  meson.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:47:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

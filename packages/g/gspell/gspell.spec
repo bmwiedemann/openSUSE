@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(enchant-2) >= 2.1.3
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.42.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(icu-uc) >= 0.35
 BuildRequires:  pkgconfig(iso-codes) >= 0.35
 BuildRequires:  pkgconfig(vapigen)
 
