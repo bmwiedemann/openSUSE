@@ -1,7 +1,7 @@
 #
 # spec file for package kora-icon-theme
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           kora-icon-theme
-Version:        2.0.0
+Version:        2.0.4
 Release:        0
-Summary:        SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)
+Summary:        SVG icon theme suitable for every desktop environment
 License:        GPL-3.0-only
 URL:            https://github.com/bikass/kora
 Source0:        https://github.com/bikass/kora/archive/refs/tags/v%{version}.tar.gz
@@ -50,9 +50,6 @@ rm -f "kora/create-new-icon-theme.cache.sh"
 rm -f "kora/icon-theme.cache"
 rm -f "kora-pgrey/create-new-icon-theme.cache.sh"
 rm -f "kora-pgrey/icon-theme.cache"
-# Remove icons that currently have an invalid symlink (https://github.com/bikass/kora/issues/245)
-rm -f "kora/apps/scalable/net.lugsole.bible_gui.svg"
-rm -f "kora/apps/scalable/org.xiphos.Xiphos.svg"
 
 # Install icons
 mkdir -p %{buildroot}/usr/share/icons
