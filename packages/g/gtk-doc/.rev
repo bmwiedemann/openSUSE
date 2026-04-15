@@ -410,4 +410,12 @@ Required meson version is now in Factory (forwarded request 976110 from susnux)<
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342973</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>37ce80d3e445d03b9927d77cc54a9824</srcmd5>
+    <version>1.36.1</version>
+    <time>1776261799</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346650</requestid>
+  </revision>
 </revisionlist>

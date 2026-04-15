@@ -25,7 +25,7 @@
 %endif
 
 Name:           gtk-doc%{?psuffix}
-Version:        1.36.0
+Version:        1.36.1
 Release:        0
 %if "%{flavor}" == ""
 Summary:        GTK+ Documentation Generator
