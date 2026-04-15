@@ -538,4 +538,12 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1343004</requestid>
   </revision>
+  <revision rev="60" vrev="10">
+    <srcmd5>bd9a25881534fdd147b9359e10565abe</srcmd5>
+    <version>20250310</version>
+    <time>1776261804</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346750</requestid>
+  </revision>
 </revisionlist>

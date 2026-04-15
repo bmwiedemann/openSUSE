@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  6 02:13:43 UTC 2026 - Federico Mena Quintero <federico@suse.com>
+
+- Update suse_version macro for 1610 (jsc#PED-15831)
+
+-------------------------------------------------------------------
 Sat Mar 21 21:24:28 UTC 2026 - Heitor Moreira da Silva <heitor@opensuse.org>
 
 - Fix Gnome applications ignoring dead keys (boo#1251853).

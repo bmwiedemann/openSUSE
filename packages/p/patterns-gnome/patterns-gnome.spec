@@ -87,7 +87,7 @@ Recommends:     pinentry-gnome3
 # bsc#1164858 bsc#1081584
 # - only in Leap and SLE as we don't want to install gnome-packagekit by
 #   default on TW
-%if 0%{?suse_version} != 01600
+%if 0%{suse_version} < 1600 || 0%{suse_version} >= 1699
 Recommends:     gnome-packagekit
 %endif
 %if !0%{?is_opensuse}
@@ -649,7 +649,7 @@ GNOME Utilities
 
 ################################################################################
 
- %if 0%{?is_opensuse} && 0%{?suse_version} > 1600
+ %if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
 %package gnome_yast
 %pattern_basetechnologies
 Summary:        YaST GNOME User Interfaces
@@ -662,7 +662,7 @@ Provides:       pattern-order() = 1260
 Obsoletes:      patterns-openSUSE-gnome_yast < %{version}
 Requires:       libyui-qt-pkg
 Requires:       yast2-control-center-qt
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 Recommends:     pattern() = x11_yast
 %endif
 
@@ -720,7 +720,7 @@ for i in devel_gnome \
     gnome_games gnome_ide gnome_multimedia \
     gnome_office \
     gnome_utilities \
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
     gnome_yast\
 %endif
     sw_management_gnome; do
