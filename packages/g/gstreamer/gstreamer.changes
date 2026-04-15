@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:02:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.2:
+  + Highlighted bugfixes in 1.28.2
+    - Various security fixes and playback fixes
+    - audioencoder: allow change of channel configuration with
+      avenc_aac
+    - audioinvert: fix float format handling
+    - h264parse, h265parse, baseparse: Preserve upstream buffer
+      duration if possible
+    - compositor: fix segfault with force-live=true and no sink
+      pads (regression)
+    - fallbacksrc: send select-streams event to collection source
+      element directly
+    - hlsdemux2: fix seekable range for live HLS streams
+    - glupload: Fix linking glupload with restrictive caps filter
+    - nvcodec: Add capability caching to speed up plugin
+      initialization
+    - RTP and RTCP packet handling fixes
+    - RTSP server fixes for clean-up of timed out play requests
+    - video-converter: fix I420/A420 BGRA/ARGB output on big-endian
+    - qtdemux: fix invalid WebVTT timestamps, and other fixes
+    - qmlgl6sink: Qt6GLVideoItem caps update handling fixes
+    - threadshare udp sink and source fixes
+    - transcriberbin and speechmatics text-to-speech fixes and
+      improvements
+    - videorate: Fix wrong caps in case of PTS going backward
+    - vtdec: more Apple VideoToolbox decoder fixes
+    - wavparse: Fix parsing of RF64 wave files
+    - wasapi2sink: Ignore transient device errors from default
+      device
+    - waylandsink: various fixes and improvements
+    - WebRTC DTLS robustness/stability improvements
+    - Cerbero: Various inno Windows installer fixes and
+      improvements; new 'gstreamer_bundle' wheels meta-package
+    - Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:
+    - bin: iterator is not nullable
+    - registry: Skip .dSYM bundles when loading plugins, try 3
+    - baseparse:
+      . Preserve upstream buffer duration if possible
+      . Fix out_buffer leak in frame_free and missing ref in
+        frame_copy
+    - filesink: Fix wrong open() in overwrite mode
+    - queue: Fix potential use-after-free in log function
+    - GThreadFunc return type fixes
+    - Strange File-sink-file-mode property value in filesink plugin
+
+-------------------------------------------------------------------
 Thu Feb 26 08:48:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.1:
