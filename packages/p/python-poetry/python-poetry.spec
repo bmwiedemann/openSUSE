@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -46,6 +46,7 @@ Requires:       (python-cachecontrol >= 0.14.0 with python-cachecontrol < 0.15.0
 Requires:       python-filelock >= 3.8.0
 # /cachecontrol[filecache]
 Requires:       (python-cleo >= 2.1.0 with python-cleo < 3.0.0)
+Requires:       python-installer >= 0.7.0
 Requires:       python-packaging >= 24.2
 Requires:       python-pbs-installer >= 2025.6.10
 Requires:       python-trove-classifiers >= 2022.5.19
@@ -53,7 +54,6 @@ Requires:       python-virtualenv >= 20.26.6
 Requires:       (python-dulwich >= 0.25.0 with python-dulwich < 2)
 Requires:       (python-fastjsonschema >= 2.18.0 with python-fastjsonschema < 3.0.0)
 Requires:       (python-findpython >= 0.6.2 with python-findpython < 0.8.0)
-Requires:       (python-installer >= 0.7.0 with python-installer < 0.8.0)
 Requires:       (python-keyring >= 25.1.0 with python-keyring < 26.0.0)
 Requires:       (python-pkginfo >= 1.12 with python-pkginfo < 2.0)
 Requires:       (python-platformdirs >= 3.0.0 with python-platformdirs < 5)

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 12 18:16:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.4:
+  * Fix a performance regression in the wheel installer that was
+    introduced in Poetry 2.3.3 (#10821).
+  * Fix a path traversal vulnerability in sdist extraction on
+    Python 3.10.0-3.10.12 and 3.11.0-3.11.4 that could allow
+    malicious tarball files to write files outside the target
+    directory (#10837).
+
+-------------------------------------------------------------------
 Mon Mar 30 20:35:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.3:
