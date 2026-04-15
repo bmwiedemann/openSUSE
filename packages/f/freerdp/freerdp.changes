@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 14 20:41:44 UTC 2026 - Dennis Duda <seri@seri.tools>
+
+- Build with SDL3 instead of SDL2 on Tumbleweed
+
+-------------------------------------------------------------------
 Sat Apr 11 06:27:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Fix freerdp-devel dependencies. sso-mib must be present when

@@ -28,6 +28,7 @@
 %endif
 %if 0%{?suse_version} >= 1699
 %global _with_sso_mib 1
+%global _with_sdl3 1
 %endif
 
 %global _with_gss 1
@@ -87,9 +88,13 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(openssl)
 %{?_with_soxr:BuildRequires:  pkgconfig(soxr)}
 BuildRequires:  xmlto
-# Upstream use SDL3, but SDL3 does not exist in Leap and SDL3_ttf does not exists in Leap and Tumbleweed.
+%if 0%{?_with_sdl3}
+BuildRequires:  pkgconfig(sdl3)
+BuildRequires:  pkgconfig(sdl3-ttf)
+%else
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(sdl2)
+%endif
 %{?_with_sso_mib:BuildRequires:  pkgconfig(sso-mib)}
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-scanner)
