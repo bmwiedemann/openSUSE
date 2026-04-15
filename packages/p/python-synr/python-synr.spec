@@ -1,7 +1,7 @@
 #
 # spec file for package python-synr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,14 @@ License:        Apache-2.0
 URL:            https://synr.readthedocs.io
 Source0:        https://files.pythonhosted.org/packages/source/s/synr/synr-%{version}.tar.gz
 Source1:        https://github.com/octoml/synr/raw/v%{version}/tests/test_synr.py
+# PATCH-FIX-UPSTREAM gh#octoml/synr#25
+Patch0:         switch-to-poetry-core.patch
+# PATCH-FIX-UPSTREAM gh#octoml/synr#26
+Patch1:         support-python-3.14.patch
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
@@ -39,7 +42,7 @@ BuildArch:      noarch
 A library for a stable Abstract Syntax Tree for Python.
 
 %prep
-%setup -q -n synr-%{version}
+%autosetup -p1 -n synr-%{version}
 mkdir tests
 cp %{SOURCE1} tests
 
@@ -57,6 +60,6 @@ cp %{SOURCE1} tests
 %doc README.md
 %license LICENSE
 %{python_sitelib}/synr
-%{python_sitelib}/synr-%{version}*-info
+%{python_sitelib}/synr-%{version}.dist-info
 
 %changelog

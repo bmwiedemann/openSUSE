@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 15 02:24:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch switch-to-poetry-core.patch:
+  * Switch the build backend to poetry-core.
+- Add patch support-python-3.14.patch:
+  * Support Python 3.14 AST changes.
+
+-------------------------------------------------------------------
 Fri Jun 13 12:18:52 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

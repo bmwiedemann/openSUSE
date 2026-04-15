@@ -1,0 +1,34 @@
+From 1d1c94197251e1b4638dd62094dde0a62084803a Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 15 Apr 2026 12:20:17 +1000
+Subject: [PATCH] Support Python 3.14 ast changes
+
+Python 3.14 removed four constants from the ast module, replacing them
+all with Constant. Those four have been deprecated since Python 3.8, but
+it's easy enough to continue to support them with hasattr(), so I have
+done so. (The fourth is Bytes, which isn't used here.)
+---
+ synr/compiler.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/synr/compiler.py b/synr/compiler.py
+index 2bf8493..00059fb 100644
+--- a/synr/compiler.py
++++ b/synr/compiler.py
+@@ -428,11 +428,13 @@ def compile_expr(self, expr: py_ast.expr) -> Expr:
+                 expr_span,
+             )
+             return Constant(expr_span, float("nan"))
+-        if isinstance(expr, py_ast.Num):
++        if hasattr(py_ast, "Num") and isinstance(expr, py_ast.Num):
+             return Constant(expr_span, expr.n)
+-        if isinstance(expr, py_ast.Str):
++        if hasattr(py_ast, "Str") and isinstance(expr, py_ast.Str):
+             return Constant(expr_span, expr.s)
+-        if isinstance(expr, py_ast.NameConstant):
++        if hasattr(py_ast, "NameConstant") and isinstance(expr, py_ast.NameConstant):
++            return Constant(expr_span, expr.value)
++        if hasattr(py_ast, "Constant") and isinstance(expr, py_ast.Constant):
+             return Constant(expr_span, expr.value)
+         if isinstance(expr, py_ast.Call):
+             return self.compile_call(expr)
