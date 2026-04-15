@@ -531,4 +531,12 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment></comment>
     <requestid>1317840</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>6f70d5e0916f91c3d9d40027adc9bc61</srcmd5>
+    <version>2026.1</version>
+    <time>1776261801</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346716</requestid>
+  </revision>
 </revisionlist>

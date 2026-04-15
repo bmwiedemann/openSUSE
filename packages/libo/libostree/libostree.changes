@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 11 10:47:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2026.1:
+  * fix soft-reboot handling for var, sysroot, and boot mounts,
+  * preserve extension BLS keys across staged deployments.
+  * libarchive integration now correctly handles UTF-8 filenames
+    without locale dependency
+  * ostree admin status --json now includes the deployment origin
+    refspec.
+
+-------------------------------------------------------------------
 Wed Nov 12 19:21:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2025.7:
