@@ -24,7 +24,8 @@ License:        Apache-2.0 AND CC0-1.0
 Group:          Development/Tools/Other
 URL:            https://github.com/WasmEdge/WasmEdge
 Source0:        https://github.com/WasmEdge/WasmEdge/releases/download/%{version}/%{name}-%{version}-src.tar.gz
-Patch1:         fmt11.patch
+Patch:          fmt11.patch
+Patch:          gcc16.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.15.0
 BuildRequires:  fmt-devel

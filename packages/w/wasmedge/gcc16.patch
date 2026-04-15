@@ -1,0 +1,125 @@
+From 1f763d763bae933953034dd8f55f69671681fe16 Mon Sep 17 00:00:00 2001
+From: LFsWang <tnst92002@gmail.com>
+Date: Mon, 12 Jan 2026 02:35:40 +0800
+Subject: [PATCH] fix: refactor Poller context handling to use direct reference
+ instead of wrapper
+
+Signed-off-by: LFsWang <tnst92002@gmail.com>
+---
+ include/host/wasi/environ.h   |  2 +-
+ include/host/wasi/inode.h     |  2 +-
+ lib/host/wasi/inode-linux.cpp | 12 ++++++------
+ lib/host/wasi/inode-macos.cpp |  2 +-
+ lib/host/wasi/inode-win.cpp   |  2 +-
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/include/host/wasi/environ.h b/include/host/wasi/environ.h
+index 83783a2b47bb..2e2f3b9767d5 100644
+--- a/include/host/wasi/environ.h
++++ b/include/host/wasi/environ.h
+@@ -1284,7 +1284,7 @@ class EVPoller : protected VPoller {
+   void close(std::shared_ptr<VINode> Node) noexcept { VPoller::close(Node); }
+ 
+ private:
+-  Environ &env() noexcept { return static_cast<Environ &>(Ctx.get()); }
++  Environ &env() noexcept { return static_cast<Environ &>(*Ctx); }
+ };
+ 
+ inline WasiExpect<EVPoller>
+diff --git a/include/host/wasi/inode.h b/include/host/wasi/inode.h
+index 758cdb030a8f..15bad33466e7 100644
+--- a/include/host/wasi/inode.h
++++ b/include/host/wasi/inode.h
+@@ -911,7 +911,7 @@ class Poller
+   bool ok() noexcept;
+ 
+ protected:
+-  std::reference_wrapper<PollerContext> Ctx;
++  PollerContext *Ctx;
+ 
+ private:
+   Span<__wasi_event_t> WasiEvents;
+diff --git a/lib/host/wasi/inode-linux.cpp b/lib/host/wasi/inode-linux.cpp
+index 01c0e290968a..e6875a1918cf 100644
+--- a/lib/host/wasi/inode-linux.cpp
++++ b/lib/host/wasi/inode-linux.cpp
+@@ -1592,7 +1592,7 @@ Poller::Poller(PollerContext &C) noexcept
+           ::epoll_create(32)
+ #endif
+               ),
+-      Ctx(C) {
++      Ctx(&C) {
+ #if !__GLIBC_PREREQ(2, 9)
+   if (auto Res = ::fcntl(Fd, F_SETFD, FD_CLOEXEC); unlikely(Res != 0)) {
+     FdHolder::reset();
+@@ -1623,7 +1623,7 @@ void Poller::clock(__wasi_clockid_t Clock, __wasi_timestamp_t Timeout,
+   Event.userdata = UserData;
+   Event.type = __WASI_EVENTTYPE_CLOCK;
+ 
+-  if (auto Res = Ctx.get().acquireTimer(Clock); unlikely(!Res)) {
++  if (auto Res = Ctx->acquireTimer(Clock); unlikely(!Res)) {
+     Event.Valid = true;
+     Event.error = Res.error();
+     return;
+@@ -1633,7 +1633,7 @@ void Poller::clock(__wasi_clockid_t Clock, __wasi_timestamp_t Timeout,
+ 
+   auto &Timer = Timers.back();
+   if (auto Res = Timer.setTime(Timeout, Precision, Flags); unlikely(!Res)) {
+-    Ctx.get().releaseTimer(std::move(Timer));
++    Ctx->releaseTimer(std::move(Timer));
+     Timers.pop_back();
+     Event.Valid = true;
+     Event.error = Res.error();
+@@ -1657,7 +1657,7 @@ void Poller::clock(__wasi_clockid_t Clock, __wasi_timestamp_t Timeout,
+     if (auto Res = ::epoll_ctl(Fd, EPOLL_CTL_ADD, Timer.Fd, &EPollEvent);
+         unlikely(Res < 0)) {
+       FdDatas.erase(Iter);
+-      Ctx.get().releaseTimer(std::move(Timer));
++      Ctx->releaseTimer(std::move(Timer));
+       Timers.pop_back();
+       Event.Valid = true;
+       Event.error = fromErrNo(errno);
+@@ -1666,7 +1666,7 @@ void Poller::clock(__wasi_clockid_t Clock, __wasi_timestamp_t Timeout,
+ 
+     return;
+   } catch (std::bad_alloc &) {
+-    Ctx.get().releaseTimer(std::move(Timer));
++    Ctx->releaseTimer(std::move(Timer));
+     Timers.pop_back();
+     Event.Valid = true;
+     Event.error = __WASI_ERRNO_NOMEM;
+@@ -1895,7 +1895,7 @@ void Poller::wait() noexcept {
+     // `this` as the dummy parameter.
+     ::epoll_ctl(Fd, EPOLL_CTL_DEL, Timer.Fd,
+                 reinterpret_cast<struct epoll_event *>(this));
+-    Ctx.get().releaseTimer(std::move(Timer));
++    Ctx->releaseTimer(std::move(Timer));
+   }
+ 
+   std::swap(FdDatas, OldFdDatas);
+diff --git a/lib/host/wasi/inode-macos.cpp b/lib/host/wasi/inode-macos.cpp
+index a622f71ae4bb..bb9e57ff7b90 100644
+--- a/lib/host/wasi/inode-macos.cpp
++++ b/lib/host/wasi/inode-macos.cpp
+@@ -1392,7 +1392,7 @@ WasiExpect<void> INode::updateStat() const noexcept {
+   return {};
+ }
+ 
+-Poller::Poller(PollerContext &C) noexcept : FdHolder(::kqueue()), Ctx(C) {}
++Poller::Poller(PollerContext &C) noexcept : FdHolder(::kqueue()), Ctx(&C) {}
+ 
+ WasiExpect<void> Poller::prepare(Span<__wasi_event_t> E) noexcept {
+   WasiEvents = E;
+diff --git a/lib/host/wasi/inode-win.cpp b/lib/host/wasi/inode-win.cpp
+index f2b2a33a0dd9..b9f2cf272ae0 100644
+--- a/lib/host/wasi/inode-win.cpp
++++ b/lib/host/wasi/inode-win.cpp
+@@ -2179,7 +2179,7 @@ WasiExpect<__wasi_filesize_t> INode::filesize() const noexcept {
+ 
+ bool INode::canBrowse() const noexcept { return SavedVFSFlags & VFS::Read; }
+ 
+-Poller::Poller(PollerContext &C) noexcept : Ctx(C) {}
++Poller::Poller(PollerContext &C) noexcept : Ctx(&C) {}
+ 
+ WasiExpect<void> Poller::prepare(Span<__wasi_event_t> E) noexcept {
+   WasiEvents = E;

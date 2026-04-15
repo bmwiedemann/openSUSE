@@ -60,4 +60,12 @@
   * fix(WASI-NN/MLX): change loadBytesFromFile ifstream</comment>
     <requestid>1346117</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>53dd3ab7e2eb9a2220dcbd44d970b3e9</srcmd5>
+    <version>0.16.1</version>
+    <time>1776261895</time>
+    <user>dimstar_suse</user>
+    <comment>- add gcc16.patch (bsc#1262067)</comment>
+    <requestid>1346934</requestid>
+  </revision>
 </revisionlist>
