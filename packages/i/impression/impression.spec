@@ -18,7 +18,7 @@
 
 %define         appname io.gitlab.adhami3310.Impression
 Name:           impression
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        A straight-forward and modern application to create bootable drives
 License:        GPL-3.0-only
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.81
+BuildRequires:  pkgconfig(glib-2.0) >= 2.87
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.10
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
