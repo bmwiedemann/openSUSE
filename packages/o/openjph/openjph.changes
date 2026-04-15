@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 14 07:15:09 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.27.0:
+  * Add initial support for oss-fuzz #249
+  * Fix OSS-fuzz build #250
+  * Renamed file to avoid duplicate library names in custom builds. #252
+  * Validate dimensions in the SIZ marker segment after reading it from a codestream #253
+  * Fix: Rule of 3/5/7 violation leads to possible use after free in
+    inadvertent use of copy constructor /assignment. #242
+  * Fix typo in the signature of get_tile_offset() #254
+  * Fix oss-fuzz build and improve documentation #256
+  * fix move special functions in mem in and outfile #258
+  * Add support for CIFuzz #259
+  * Fix race condition in table initialization with multiple threads #243
+  * Fix 32-bit ARM SIGBUS: align elastic allocator payload for coded_lists::buf #262
+  * Add Linux-ARM32 Build #263
+  * Extend fuzzing harness to add more reachability #264
+  * Fix ARM64EC builds by excluding ARM64EC from x64(_M_X64) detection on Windows #265
+- Drop gh-openjph-262.patch
+
+-------------------------------------------------------------------
 Fri Apr 10 09:55:27 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix 32-bit arm sigbus:

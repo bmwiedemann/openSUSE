@@ -17,7 +17,7 @@
 
 
 Name:           openjph
-Version:        0.26.3
+Version:        0.27.0
 Release:        0
 Summary:        An implementation of JPEG2000 Part-15
 License:        BSD-2-Clause
@@ -25,8 +25,6 @@ Group:          Productivity/Graphics/Convertors
 URL:            https://github.com/aous72/OpenJPH
 Source:         https://github.com/aous72/OpenJPH/archive/refs/tags/%{version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-USPTREAM - https://github.com/aous72/OpenJPH/pull/262
-Patch1:         gh-openjph-262.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  libtiff-devel
@@ -35,11 +33,11 @@ BuildRequires:  libtiff-devel
 This package contains libopenjph, a library implementing the JPEG-2000
 standard Part 15.
 
-%package -n libopenjph0_26
+%package -n libopenjph0_27
 Summary:        JPEG-2000 Part-15 library
 Group:          System/Libraries
 
-%description -n libopenjph0_26
+%description -n libopenjph0_27
 This is an implementation of High-throughput JPEG2000 (HTJ2K), also
 known as JPH, JPEG2000 Part 15, ISO/IEC 15444-15, or ITU-T T.814.
 Only the LGT 5/3 wavelet transform for lossless compression and the
@@ -49,7 +47,7 @@ CDF 9/7 wavelet transform for lossy compression are supported.
 Summary:        Development files for libopenjph, a JPEG-2000 Part 15 library
 Group:          Development/Libraries/C and C++
 Requires:       libjpeg-devel
-Requires:       libopenjph0_26 = %{version}
+Requires:       libopenjph0_27 = %{version}
 
 %description devel
 This package contains libopenjph, a library implementing the JPEG-2000
@@ -70,7 +68,7 @@ standard Part 15.
 %install
 %cmake_install
 
-%ldconfig_scriptlets -n libopenjph0_26
+%ldconfig_scriptlets -n libopenjph0_27
 
 %files
 %license LICENSE
@@ -78,7 +76,7 @@ standard Part 15.
 %{_bindir}/ojph_compress
 %{_bindir}/ojph_expand
 
-%files -n libopenjph0_26
+%files -n libopenjph0_27
 %{_libdir}/libopenjph*.so.*
 
 %files devel
