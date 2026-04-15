@@ -1875,4 +1875,16 @@ C API
   http.cookies.BaseCookie.js_output (bsc#1259734, CVE-2026-3644).</comment>
     <requestid>1343944</requestid>
   </revision>
+  <revision rev="68" vrev="5">
+    <srcmd5>4c7533921ea12d6d5fdd1d69931aef4d</srcmd5>
+    <version>3.11.15</version>
+    <time>1776261783</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2026-3479-pkgutil_get_data.patch pkgutil.get_data() has
+  the same security model as open(). The documented limitations
+  ensure compatibility with non-filesystem loaders; Python
+  doesn't check that. (bsc#1259989, CVE-2026-3479,
+  gh#python/cpython#146121).</comment>
+    <requestid>1345247</requestid>
+  </revision>
 </revisionlist>

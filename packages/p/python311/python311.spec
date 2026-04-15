@@ -212,6 +212,9 @@ Patch40:        CVE-2025-13462-tarinfo-header-parse.patch
 # PATCH-FIX-UPSTREAM CVE-2026-4519-webbrowser-open-dashes.patch bsc#1260026 mcepl@suse.com
 # reject leading dashes in webbrowser URLs
 Patch41:        CVE-2026-4519-webbrowser-open-dashes.patch
+# PATCH-FIX-UPSTREAM CVE-2026-3479-pkgutil_get_data.patch bsc#1259989 mcepl@suse.com
+# pkgutil.get_data() reject invalid resource arguments
+Patch42:        CVE-2026-3479-pkgutil_get_data.patch
 ### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
