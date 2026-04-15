@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  8 13:22:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.2:
+  + rtsp-client: Lock media when unlinking session medias
+  + rtsp-stream: Clear send_thread when it's freed
+  + Attempt to use freed thread for reusable RTSP media
+  + Fix a couple of const correctness bugs around strchr() usage
+
+-------------------------------------------------------------------
 Thu Feb 26 09:08:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.1:
