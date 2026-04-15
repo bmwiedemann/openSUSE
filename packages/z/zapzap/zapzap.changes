@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr 14 15:24:17 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 6.4.0
+  * fix: refactor clipboard logic to prevent wayland segfault
+  * Update pt_PT.po
+  * Update pt_PT and pt_BR
+  * Add Arabic Translation
+  * Allow customizations like CSS, JS and Extensions
+  * Add and update Swedish translations
+  * Update information about Fedora Copr and AppImage
+  * Allow to hide App Sidebar
+  * Enable DevTools
+  * Avoid duplicate external URL openings from createWindow
+    redirections
+  * Improve Flatpak permission guidance for file access issues
+  * notifications: make Freedesktop backend resilient to transient
+    DBus service loss
+  * Windows Support, Multi-Account Grid View, and Privacy
+    Enhancements
+  * Add first-run 3-step onboarding dialog and integrate into
+    startup
+  * Add CardUser actions to page button context menu
+  * Add theme switcher to View menu with keyboard shortcuts
+  * Add informational note about notification sound settings in
+    Notifications page
+  * Add Donate button to settings sidebar
+  * Add "Disable pinch to zoom" option to Performance settings
+  * Add Debug Logs management UI and handlers to General settings
+
+-------------------------------------------------------------------
 Thu Jan 22 08:50:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.2.7:
