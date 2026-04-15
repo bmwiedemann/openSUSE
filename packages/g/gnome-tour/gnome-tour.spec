@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-tour
-Version:        49.0.openSUSE+git20251020.478f3eb
+Version:        50.0.openSUSE+git20260413.334ffbd
 Release:        0
 Summary:        GNOME Tour & Greeter
 License:        GPL-3.0-or-later

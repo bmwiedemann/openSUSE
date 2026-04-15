@@ -138,4 +138,12 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342964</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a5eb8f4143871a321c056530dceb196d</srcmd5>
+    <version>50.0.openSUSE+git20260413.334ffbd</version>
+    <time>1776261797</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346638</requestid>
+  </revision>
 </revisionlist>
