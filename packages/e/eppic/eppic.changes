@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 12 12:40:19 UTC 2026 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to 51b15e7fbc8a58cc558c047acefdf54be03b44d3
+  o Fix a user-after-free issue in eppic_deletefile()
+  o Fix false incomplete type resolution
+  o Various build fixes
+- Refresh eppic-fix-install.patch.
+
+-------------------------------------------------------------------
 Thu May 29 07:34:48 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
 
 - Update to 6cb0c2ad3ac2de988c02378766ef53302726abf3

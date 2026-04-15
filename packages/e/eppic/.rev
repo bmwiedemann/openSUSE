@@ -109,4 +109,16 @@
   o Fix build with gcc-15</comment>
     <requestid>1281091</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b680cbb576ecd3ba0a56739ba606e82b</srcmd5>
+    <version>4.99.git.1773318907.51b15e7</version>
+    <time>1776261974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 51b15e7fbc8a58cc558c047acefdf54be03b44d3
+  o Fix a user-after-free issue in eppic_deletefile()
+  o Fix false incomplete type resolution
+  o Various build fixes
+- Refresh eppic-fix-install.patch.</comment>
+    <requestid>1347093</requestid>
+  </revision>
 </revisionlist>

@@ -20,4 +20,4 @@ Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
 -	(cd scripts ; $(MAKE) install )
  
  baseops.o: mkbaseop.c
- 	$(CC) $(CFLAGS) -o mkbaseop mkbaseop.c
+ 	gcc $(CFLAGS) -o mkbaseop mkbaseop.c

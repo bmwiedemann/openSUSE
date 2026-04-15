@@ -2,7 +2,7 @@
   <service mode="localonly" name="tar_scm">
     <param name="scm">git</param>
     <param name="url">https://github.com/lucchouina/eppic.git</param>
-    <param name="revision">refs/heads/v5.0</param>
+    <param name="revision">v5.0</param>
     <param name="versionprefix">4.99.git</param>
   </service>
   <service mode="localonly" name="recompress">
