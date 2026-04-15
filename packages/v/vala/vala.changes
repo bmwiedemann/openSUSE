@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Mar 30 15:46:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.56.19:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Minor refactoring of TypeRegisterFunction and its
+        subclasses
+      . Use G_TYPE_FLAG_NONE when targetting glib >= 2.74
+      . Use g_once_init_{enter,leave}_pointer when targetting glib
+        >= 2.80
+      . Propagate default_value_on_error from parent struct
+      . Return default_value_on_error on precondition failures
+    - gdbus:
+      . Avoid unused variables in method call and properties
+        getter/setter
+      . Allow GLib.VariantDict for a{sv}
+      . Do not provide unintended read/write access to properties
+    - parser: Fix statement error recovery [#1590]
+    - vala: Use reference-transfer as needed when transforming
+      conditional-expression
+    - girwriter:
+      . Don't use instance-parameter inside function elements
+      . Add the doc:format argument in the .gir file
+    - libvaladoc:
+      . Do not error-out on doc:format
+      . Add compat layer for gvRenderData to cope with API break
+  + Bindings:
+    - glib-2.0:
+      . Allow FileUtils.open_tmp's first argument to be null
+      . Fix *.add_once () callbacks
+      . Fix a typo in a parameter name
+    - posix: add UTIME_{NOW,OMIT} constants for utimensat
+    - gsl: Deprecate gsl_linalg_cholesky_decomp in favour of
+      gsl_linalg_cholesky_decomp1
+    - libxml-2.0: Add more fields to ParserCtxt
+    - gobject-2.0:
+      . Set default_value{,_on_error} for GType
+      . Fix return type
+      . Add Type.to_string ()
+    - gstreamer-1.0: Fix ownership of Caps.full*() parameters
+    - gtk4:
+      . Update to 4.21.6+83716767
+      . Make all Gsk.RenderNode and Gsk.Renderer shadow their
+        parent type
+      . Fix CursorGetTextureCallback declaration
+
+-------------------------------------------------------------------
 Sun Mar  2 21:55:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.56.18:

@@ -1332,4 +1332,12 @@ I'm sure nobody is going to miss that :) (forwarded request 1208100 from dimstar
     <comment>Early Staging of GNOME 48.rc</comment>
     <requestid>1251369</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>917abb85910eb9b63a93768318fdcdee</srcmd5>
+    <version>0.56.19</version>
+    <time>1776261806</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346784</requestid>
+  </revision>
 </revisionlist>

@@ -4,5 +4,4 @@
 programming language features to GNOME developers without imposing any
 additional runtime requirements and without using a different ABI
 compared to applications and libraries written in C.</description>
-  <devel project="GNOME:Factory" package="vala"/>
 </package>
