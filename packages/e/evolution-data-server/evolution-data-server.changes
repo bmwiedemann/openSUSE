@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 10 13:10:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.60.1:
+  + Bug Fixes: nntp: Fix GSocket ref leak in stream timeout helpers
+  + Miscellaneous:
+    - nntp: Rename nntp_get_stream_socket() to
+      nntp_ref_stream_socket()
+    - ESoupSession: Correct
+      e_soup_session_get_authentication_requires_credentials()
+
+-------------------------------------------------------------------
 Mon Mar 23 08:27:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
