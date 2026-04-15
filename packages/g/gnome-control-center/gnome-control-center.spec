@@ -27,7 +27,7 @@
 %bcond_with     malcontent
 
 Name:           gnome-control-center
-Version:        50.0
+Version:        50.1
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later

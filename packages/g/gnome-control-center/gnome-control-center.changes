@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 13 07:53:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + Accessibility: Fix keyboard navigation between cursor sizes
+  + Display: Correct the type of num_scales counter
+  + Privacy:
+    - Fix memory leak in camera page
+    - Fix memory leak in location page
+  + Users: Chain up dispose in crop area widget
+  + Updated translations.
+- Update libgxdp sub-module.
+
+-------------------------------------------------------------------
 Mon Apr  6 02:26:35 UTC 2026 - Federico Mena Quintero <federico@suse.com>
 
 - Update suse_version macro for 1610 (jsc#PED-15829)

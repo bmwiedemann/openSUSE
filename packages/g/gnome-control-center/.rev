@@ -2513,4 +2513,12 @@ New stable rel</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345432</requestid>
   </revision>
+  <revision rev="283" vrev="1">
+    <srcmd5>78271478e244223d63dc6ede04e4afe5</srcmd5>
+    <version>50.1</version>
+    <time>1776261794</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346605</requestid>
+  </revision>
 </revisionlist>
