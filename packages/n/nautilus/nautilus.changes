@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr 12 08:18:29 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1:
+  + Bugfixes:
+    - Fix a crash on empty MIME type
+    - Fix read-only/not accessible emblems
+    - Assure view item deduplication on slow machines
+    - Fix error icon size
+    - Restore default focus for permanent delete dialog
+    - Autocomplete folders with trailing slash again
+    - Fix opening folder with many custom icons
+    - Fix showing properties for encrypted partition
+    - Fix image rounding
+  + Cleanups:
+    - Don't allow editing custom icons for trash or trashed files
+    - Use GIcon for launch context
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 20 15:35:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
