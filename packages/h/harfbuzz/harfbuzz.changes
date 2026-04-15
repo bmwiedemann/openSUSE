@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Fri Apr 10 08:31:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable the new libharfbuzz-gpu demo-tool behind a bcond (with
+  gpu). Building this leads to a build-cycle unfortunately.
+
+-------------------------------------------------------------------
+Mon Apr  6 15:47:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 14.1.0:
+  + GPU library improvements:
+    - Add anti-aliased rendering for small sizes.
+    - Store font scale in blob header.
+    - Port scale/ppem support to MSL, WGSL, and HLSL shaders.
+    - Fix contour breaks and bounds quantization in encode.
+    - Fix garbled rendering after font change in web demo.
+  + Various robustness fixes.
+  + Various fuzzing fixes for harfbuzz-raster, harfbuzz-gpu and
+    harfbuzz-vector libraries.
+  + Move HB_NO_CFF from HB_LEAN to HB_NO_DRAW closure, and fix
+    HB_TINY build.
+- Changes from version 14.0.0:
+  + New libharfbuzz-gpu library: GPU text rasterization based on
+    the Slug algorithm by Eric Lengyel. Encodes glyph outlines on
+    the CPU into compact blobs that the GPU decodes and rasterizes
+    directly in the fragment shader, with no intermediate bitmap
+    atlas.
+  + Shader sources provided in GLSL, WGSL, MSL, and HLSL.
+  + New hb-gpu installed utility for interactive GPU text
+    rendering.
+  + Live web demo: https://harfbuzz.github.io/hb-gpu-demo/
+  + New harfbuzz-world.cc amalgamated source for building a subset
+    of all HarfBuzz libraries into one compilation unit, driven by
+    a custom hb-features.h.
+  + Updated README with libraries overview and project description.
+  + Various bug fixes.
+- Add pkgconfig(glew) and pkgconfig(glfw3) BuildRequires: New
+  dependencies.
+- Add new sub-package libharfbuzz-gpu0 following upstream changes.
+
+-------------------------------------------------------------------
+Fri Mar 20 20:38:22 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 13.2.1:
+  + Fix regression in tracing messages from previous release.
+- Changes from version 13.2.0:
+  + Fix hb-view glyph positioning with --glyphs input from hb-shape
+    --ned.
+  + Various fuzzing fixes for harfbuzz-subset, harfbuzz-raster and
+    harfbuzz-vector libraries.
+  + Various improvements to tracing messages.
+  + Various documentation improvements.
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Fri Mar 13 08:33:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 13.1.1:
+  + Support gzip-compressed SVG glyphs in harfbuzz-raster and
+    harfbuzz-vector libraries. This new functionality requires
+    zlib, and will not be available if HarfBuzz is built without
+    zlib.
+  + Improve handling of SVG glyphs in harfbuzz-raster and
+    harfbuzz-vector libraries.
+  + Further harden application of stch feature against malicious
+    fonts.
+  + Various fuzzing fixes.
+  + Various build fixes:
+    - Add missing chafa dependency to hb-raster utility, and remove
+      accidental cairo dependency.
+    - Don’t build raster and vector fuzzers if the library is
+      disabled.
+    - Add meson options for enabling / disabling libpng and zlib.
+    - Support building harfbuzz-raster and harfbuzz-vector
+      libraries with CMake.
+- Add new optional pkgconfig(zlib) BuildRequires. 
+
+-------------------------------------------------------------------
+Wed Mar 11 09:24:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 13.1.0:
+  + The harfbuzz-raster library can now render bitmap color glyph
+    formats (CBDT and sbix). It now also has an API to serialize /
+    deserialize images to and from PNGs. This new functionality
+    requires libpng, and will not be available if HarfBuzz is built
+    without libpng.
+  + Install hb-raster command line utility.
+  + Fix overflow when applying stch feature with malicious fonts.
+  + Fix memory leaks in harfbuzz-raster and harfbuzz-vector in
+    error conditions, as well as more robust handling of allocation
+    failures.
+  + Various documentation improvements and build fixes.
+- Build the new optional libpng support, add pkgconfig(libpng)
+  BuildRequires.
+
+-------------------------------------------------------------------
+Sat Mar  7 22:29:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 13.0.1:
+  + Bug fixes in rendering COLR v1 fonts.
+  + Various build fixes.
+
+-------------------------------------------------------------------
+Thu Mar  5 07:09:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 13.0.0:
+  + New experimental drawing and rendering libraries:
+    - New public hb-vector API for vector output of glyph outlines.
+      The only supported output format currently is SVG.
+    - The new API is available in a separate harfbuzz-vector library.
+    - New public hb-raster API for rasterizing glyphs to A8 /
+      BGRA32 images.
+    - The new API is available in a separate harfbuzz-raster
+      library.
+    - Both APIs are still experimental and subject to change.
+    - Both libraries support monochrome as well as vector color
+      glyph formats (COLR v0, v1, and SVG).
+    - Additionally, hb-vector supports also bitmap color glyph
+      formats (CBDT and sbix).
+    - New command line utilities to accompany the new APIs:
+      hb-vector and hb-raster. They share many of the same options
+      as hb-view.
+  + New subset flag HB_SUBSET_FLAGS_DOWNGRADE_CFF2 to convert
+    instantiated CFF2 table to CFF . This options will
+    desubroutinize CFF2 table and convert it to CID-keyed CFF
+    table. This is useful for compatibility with older renderers
+    that do not support CFF2 table, including embedded instantiated
+    fonts in PDF documents.
+  + The hb-view command-line utility got a few bells and whistles
+    as well, including support for logical / ink extents (with the
+    default being the union of both), stroke, and an option to
+    rotate glyph foreground colors (rainbow coloring).
+  + New API to inspect color-glyph documents in SVG table.
+  + New API to signal that the buffer content was changed by the
+    client in message callbacks.
+  + Improve VARC drawing accuracy with multiple transform /
+    rounding fixes.
+  + Don’t reject malformed cmap subtables, a regression from 12.3.0
+    when we stopped sanitizing malformed tables.
+  + Disallow calling hb_buffer_set_message_func() from within the
+    message callback.
+  + Various performance optimizations, fuzzing fixes, and
+    documentation improvements.
+- Add new libharfbuzz-raster0 and libharfbuzz-vector0 sub-packages
+  following upstream changes.
+
+-------------------------------------------------------------------
 Sun Jan 25 11:36:30 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 12.3.2:

@@ -1389,4 +1389,12 @@ New stable rel</comment>
   + Fix NULL pointer deference when malloc fails. (forwarded request 1329065 from iznogood)</comment>
     <requestid>1329300</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>4b5fd48362dd63eeecca5b6c5e1078b9</srcmd5>
+    <version>14.1.0</version>
+    <time>1776261800</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346675</requestid>
+  </revision>
 </revisionlist>

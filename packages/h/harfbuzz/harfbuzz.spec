@@ -16,14 +16,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%bcond_with gpu
 
 Name:           harfbuzz
-Version:        12.3.2
+Version:        14.1.0
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  c++_compiler
@@ -33,12 +34,18 @@ BuildRequires:  pkgconfig >= 0.28
 BuildRequires:  pkgconfig(cairo) >= 1.10
 BuildRequires:  pkgconfig(cairo-ft)
 BuildRequires:  pkgconfig(freetype2) >= 12.0.6
+%if %{with gpu}
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(glfw3)
+%endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.30
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(graphite2) >= 1.2.0
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(icu-uc) >= 49.0
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(zlib)
 Conflicts:      cantarell-fonts < 0.0.23
 
 %description
@@ -71,6 +78,13 @@ Summary:        GObject wrapper around the HarfBuzz OpenType text shaping engine
 HarfBuzz is an OpenType text shaping engine.
 This package contains the GObject library.
 
+%package -n libharfbuzz-gpu0
+Summary:        GPU wrapper around the HarfBuzz OpenType text shaping engine
+
+%description -n libharfbuzz-gpu0
+HarfBuzz is an OpenType text shaping engine.
+This package contains the gpu library.
+
 %package -n libharfbuzz-subset0
 Summary:        An OpenType text shaping engine
 
@@ -85,6 +99,18 @@ Summary:        Introspection bindings for the HarfBuzz/GObject library
 HarfBuzz is an OpenType text shaping engine.
 This package provides the GObject Introspection bindings for HarfBuzz.
 
+%package -n libharfbuzz-raster0
+Summary:        An OpenType text shaping engine
+
+%description -n libharfbuzz-raster0
+%{Summary}.
+
+%package -n libharfbuzz-vector0
+Summary:        An OpenType text shaping engine
+
+%description -n libharfbuzz-vector0
+%{Summary}.
+
 %package tools
 Summary:        Tools from the HarfBuzz text shaping software
 
@@ -96,8 +122,11 @@ This package provides a set of tools for HarfBuzz.
 Summary:        Development files for the HarfBuzz OpenType text shaping engine
 Requires:       libharfbuzz-cairo0 = %{version}
 Requires:       libharfbuzz-gobject0 = %{version}
+Requires:       libharfbuzz-gpu0 = %{version}
 Requires:       libharfbuzz-icu0 = %{version}
+Requires:       libharfbuzz-raster0 = %{version}
 Requires:       libharfbuzz-subset0 = %{version}
+Requires:       libharfbuzz-vector0 = %{version}
 Requires:       libharfbuzz0 = %{version}
 Requires:       typelib-1_0-HarfBuzz-0_0 = %{version}
 Requires:       pkgconfig(freetype2) >= 12.0.6
@@ -116,6 +145,9 @@ export CXXFLAGS="%optflags -std=c++17"
 	-Ddocs=disabled \
 	-Dgraphite=enabled \
 	-Dchafa=disabled \
+%if !%{with gpu}
+	-Dgpu_demo=disabled \
+%endif
 	%{nil}
 %meson_build
 
@@ -129,7 +161,10 @@ export CXXFLAGS="%optflags -std=c++17"
 %ldconfig_scriptlets -n libharfbuzz-cairo0
 %ldconfig_scriptlets -n libharfbuzz-icu0
 %ldconfig_scriptlets -n libharfbuzz-gobject0
+%ldconfig_scriptlets -n libharfbuzz-gpu0
 %ldconfig_scriptlets -n libharfbuzz-subset0
+%ldconfig_scriptlets -n libharfbuzz-raster0
+%ldconfig_scriptlets -n libharfbuzz-vector0
 
 %files -n libharfbuzz0
 %license COPYING
@@ -148,9 +183,19 @@ export CXXFLAGS="%optflags -std=c++17"
 %license COPYING
 %{_libdir}/libharfbuzz-gobject.so.0*
 
+%files -n libharfbuzz-gpu0
+%license COPYING
+%{_libdir}/libharfbuzz-gpu.so.0*
+
 %files -n libharfbuzz-subset0
 %license COPYING
 %{_libdir}/libharfbuzz-subset.so.0*
+
+%files -n libharfbuzz-raster0
+%{_libdir}/libharfbuzz-raster.so.0*
+
+%files -n libharfbuzz-vector0
+%{_libdir}/libharfbuzz-vector.so.0*
 
 %files -n typelib-1_0-HarfBuzz-0_0
 %license COPYING
@@ -158,10 +203,15 @@ export CXXFLAGS="%optflags -std=c++17"
 
 %files tools
 %license COPYING
+%if %{with gpu}
+%{_bindir}/hb-gpu
+%endif
 %{_bindir}/hb-info
+%{_bindir}/hb-raster
 %{_bindir}/hb-shape
 %{_bindir}/hb-subset
 %{_bindir}/hb-view
+%{_bindir}/hb-vector
 
 %files devel
 %license COPYING
@@ -172,7 +222,10 @@ export CXXFLAGS="%optflags -std=c++17"
 %{_libdir}/pkgconfig/harfbuzz-cairo.pc
 %{_libdir}/pkgconfig/harfbuzz-icu.pc
 %{_libdir}/pkgconfig/harfbuzz-gobject.pc
+%{_libdir}/pkgconfig/harfbuzz-gpu.pc
 %{_libdir}/pkgconfig/harfbuzz-subset.pc
+%{_libdir}/pkgconfig/harfbuzz-raster.pc
+%{_libdir}/pkgconfig/harfbuzz-vector.pc
 %{_datadir}/gir-1.0/HarfBuzz-0.0.gir
 %dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/harfbuzz
