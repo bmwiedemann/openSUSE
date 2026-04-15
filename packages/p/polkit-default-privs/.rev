@@ -2472,4 +2472,12 @@ for 12.3</comment>
   * profiles: whitelist cosmic-settings Admin action (bsc#1259402)</comment>
     <requestid>1345478</requestid>
   </revision>
+  <revision rev="265" vrev="1">
+    <srcmd5>3bce4c276c79399d3a4cf8dadae5feee</srcmd5>
+    <version>1550+20260414.1647bf2</version>
+    <time>1776261809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346805</requestid>
+  </revision>
 </revisionlist>
