@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Graphics-Toolkit-Color
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Graphics-Toolkit-Color
 Name:           perl-Graphics-Toolkit-Color
-Version:        1.972.0
+Version:        2.20.0
 Release:        0
-# 1.972 -> normalize -> 1.972.0
-%define cpan_version 1.972
+# 2.02 -> normalize -> 2.20.0
+%define cpan_version 2.02
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Calculate color (sets), IO many spaces and formats
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,7 +32,9 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 1.3
+BuildRequires:  perl(Test::Warn) >= 0.300
 Provides:       perl(Graphics::Toolkit::Color) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Calculator) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Name) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Name::Constant) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Name::Scheme) = %{version}
@@ -69,8 +71,8 @@ Provides:       perl(Graphics::Toolkit::Color::Values) = %{version}
 Graphics::Toolkit::Color, for short *GTC*, is the top level API of this
 release and the only package a regular user should be concerned with. Its
 main purpose is the creation of related colors or sets of them, such as
-gradients, complements and others. But you can use it also to convert
-and/or reformat color definitions.
+gradients, complements and more. But if you want to convert, quantize,
+round or reformat color definitions, it can be helpful too.
 
 GTC are read only, one color representing objects with no additional
 dependencies. Create them in many different ways (see CONSTRUCTOR). Access
@@ -81,13 +83,15 @@ that are not only related to the current color but also have relations
 between each other. Error messages will appear as return values instead of
 the expected result.
 
-While this module can understand and output color values to many color
+While this module can understand and output color values for many color
 spaces, RGB is the (internal) primal one, because GTC is about colors that
-can be shown on the screen, and these are usually encoded in _RGB_. Humans
-access colors on hardware level (eye) in _RGB_, on cognition level in _HSL_
-(brain) and on cultural level (language) with names. Having easy access to
-all of those plus some color math and many formats should enable you to get
-the color palette you desire quickly.
+can be shown on the screen, and these are usually encoded in _RGB_
+(nonlinear standard RGB). Humans access colors on hardware level (eye) in
+_RGB_, on cognition level in _HSL_ or _LAB_ (brain) and on cultural level
+(language) with names. With all these options available you can express
+easily and intuitively with which color to start. And plenty of functions
+with lots of options help you to arrive at the desired color (palette)
+quickly.
 
 %prep
 %autosetup -n %{cpan_name}-%{cpan_version} -p1

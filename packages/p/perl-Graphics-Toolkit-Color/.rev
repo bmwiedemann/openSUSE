@@ -93,4 +93,18 @@
       * = tiny POD fix release</comment>
     <requestid>1309617</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>857fb2e3c7491b9601afbb6f2bb3fcd8</srcmd5>
+    <version>2.20.0</version>
+    <time>1776261881</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.20.0 (2.02)
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+  2.02    2026-03-30   lichtkind
+  -------
+      * = minor feature release
+      * + add method 'apply' with only argument 'gamma'
+      * + add argument 'only' to method 'invert', selecting axis to invert</comment>
+    <requestid>1346899</requestid>
+  </revision>
 </revisionlist>
