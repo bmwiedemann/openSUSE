@@ -148,4 +148,49 @@
     <comment></comment>
     <requestid>1313845</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c24968bf856fffc5cecb2c391681ecb1</srcmd5>
+    <version>2.7.1</version>
+    <time>1774555697</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.7.1:
+  * Tests that depend on the optional langdetect package are now
+    skipped when the package is not installed. :bug:`6421`
+  * :doc:`plugins/lastgenre`: Added cleanup_existing
+    configuration flag to allow whitelist canonicalization of
+    existing genres.
+  * Add native support for multiple genres per album/track. The
+    genres field now stores genres as a list and is written to
+    files as multiple individual genre tags (e.g., separate GENRE
+    tags for FLAC/MP3). The :doc:`plugins/musicbrainz`,
+    :doc:`plugins/beatport`, :doc:`plugins/discogs` and
+    :doc:`plugins/lastgenre` plugins have been updated to
+    populate the genres field as a list. Migration: Existing
+    libraries with comma-separated, semicolon-separated, or
+    slash-separated genre strings (e.g., &quot;Rock, Alternative,
+    Indie&quot;) are automatically migrated to the genres list when
+    you first run beets after upgrading. The migration runs once
+    when the database schema is updated, splitting genre strings
+    and writing the changes to the database. The updated genres
+    values will be written to media files the next time you run a
+    command that writes tags (such as beet write or during
+    import). No manual action or mbsync is required. The genre
+    field is split by the first separator found in the string, in
+    the following order of precedence:  :doc:`plugins/lastgenre`
+    separator configuration Semicolon followed by a space Comma
+    followed by a space Slash wrapped by spaces
+  * :doc:`plugins/lastgenre` separator configuration
+  * Semicolon followed by a space
+  * Comma followed by a space
+  * Slash wrapped by spaces</comment>
+    <requestid>1342629</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d73c91822743a7fc6be9851ce8ca0143</srcmd5>
+    <version>2.8.0</version>
+    <time>1776278528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346412</requestid>
+  </revision>
 </revisionlist>

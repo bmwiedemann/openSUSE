@@ -1,7 +1,7 @@
 #
 # spec file for package beets
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           beets
-Version:        2.5.1
+Version:        2.8.0
 Release:        0
 Summary:        Music tagger and library organizer
 License:        MIT
@@ -35,11 +35,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-Unidecode
-BuildRequires:  python3-confuse >= 1.5.0
-BuildRequires:  python3-devel >= 3.9.0
+BuildRequires:  python3-confuse >= 2.2.0
+BuildRequires:  python3-devel >= 3.10.0
 BuildRequires:  python3-jellyfish
 BuildRequires:  python3-mediafile >= 0.12.0
-BuildRequires:  python3-musicbrainzngs >= 0.4
 BuildRequires:  python3-pip
 BuildRequires:  python3-poetry-core
 BuildRequires:  python3-setuptools
@@ -58,14 +57,15 @@ BuildRequires:  python3-responses
 BuildRequires:  python3-testsuite
 Requires:       python3-PyYAML
 Requires:       python3-Unidecode
-Requires:       python3-confuse >= 1.5.0
+Requires:       python3-confuse >= 2.2.0
 Requires:       python3-jellyfish
 Requires:       python3-lap
 Requires:       python3-mediafile >= 0.12.0
-Requires:       python3-musicbrainzngs >= 0.4
-Requires:       python3-musicbrainzngs >= 0.4
-Requires:       python3-numpy
+Requires:       python3-numpy >= 2.0.2
+Requires:       python3-packaging >= 24.0
 Requires:       python3-platformdirs
+Requires:       python3-requests >= 2.32.5
+Requires:       python3-requests-ratelimiter >= 0.7.0
 Requires:       python3-sqlite3
 Recommends:     ffmpeg
 Recommends:     python3-Flask
@@ -78,8 +78,6 @@ Recommends:     python3-pylast
 Recommends:     python3-python-mpd2
 Recommends:     python3-pyxdg
 Recommends:     python3-rarfile
-Recommends:     python3-requests
-Recommends:     python3-requests
 Recommends:     python3-requests-oauthlib >= 0.6.1
 Suggests:       flac
 Suggests:       mp3val
