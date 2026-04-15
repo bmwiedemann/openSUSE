@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 15 16:25:20 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.70.1:
+  - Features
+    * feat: Add .chezmoi.rawHomeDir template variable
+    * feat: Add build-info check to doctor command
+    * feat: Add globCaseInsensitive template function
+    * feat: Detect unknown fields when parsing config files
+  - Fixes
+    * fix: Fix Debian ARM package names
+    * fix: Don't warn on secrets when re-adding encrypted files
+  - Documentation
+    * docs: Add missing protonpass password manager entry
+
+-------------------------------------------------------------------
 Tue Mar 10 17:36:54 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.70.0:

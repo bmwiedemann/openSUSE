@@ -1146,4 +1146,23 @@
 </comment>
     <requestid>1338363</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>bf327f80f775d43529293333af1c3049</srcmd5>
+    <version>2.70.1</version>
+    <time>1776278551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.70.1:
+  - Features
+    * feat: Add .chezmoi.rawHomeDir template variable
+    * feat: Add build-info check to doctor command
+    * feat: Add globCaseInsensitive template function
+    * feat: Detect unknown fields when parsing config files
+  - Fixes
+    * fix: Fix Debian ARM package names
+    * fix: Don't warn on secrets when re-adding encrypted files
+  - Documentation
+    * docs: Add missing protonpass password manager entry
+</comment>
+    <requestid>1347147</requestid>
+  </revision>
 </revisionlist>
