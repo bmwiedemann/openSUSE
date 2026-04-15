@@ -36,4 +36,15 @@ Thu Sep 18 16:44:55 UTC 2014 - nemysis@gmx.ch
 </comment>
     <requestid>261716</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>efc225258b992d4909026c2a5e871f63</srcmd5>
+    <version>20140921</version>
+    <time>1776278545</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not run dos2unix in prep: there are no *.map or *.cards files
+  that could possibly be found at that stage of the build, implying
+  that this was never actually used. Old versions of dos2unix were
+  more forgiving and just ignoring this fact. (forwarded request 1347129 from dimstar)</comment>
+    <requestid>1347135</requestid>
+  </revision>
 </revisionlist>

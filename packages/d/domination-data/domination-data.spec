@@ -1,7 +1,7 @@
 #
 # spec file for package domination-data
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           %{oname}-data
 Version:        20140921
 Release:        0
 Summary:        Data files for Domination
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Amusements/Games/StrategyGame
-Url:            http://domination.sourceforge.net/getmaps.shtml
+URL:            http://domination.sourceforge.net/getmaps.shtml
 Source0:        http://domination.sourceforge.net/maps/solar.zip
 Source1:        http://domination.sourceforge.net/maps/bigeurope.zip
 Source2:        http://domination.sourceforge.net/maps/google.zip
@@ -116,7 +116,6 @@ Source87:       http://domination.sourceforge.net/maps/germany2.zip
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
-BuildRequires:  dos2unix
 BuildRequires:  unzip
 Requires:       %{oname}
 BuildArch:      noarch
@@ -134,8 +133,6 @@ it works in all OSs that run java.
 Data files (cards, maps and images) for Domination.
 
 %prep
-# Convert to unix line end
-find -name "*.cards" -print0 -or -name "*.map" -print0 | xargs -0 dos2unix
 
 %build
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 15 13:55:20 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not run dos2unix in prep: there are no *.map or *.cards files
+  that could possibly be found at that stage of the build, implying
+  that this was never actually used. Old versions of dos2unix were
+  more forgiving and just ignoring this fact.
+
+-------------------------------------------------------------------
 Thu Nov 13 18:55:30 UTC 2014 - nemysis@gmx.ch
 
 - Change URL
