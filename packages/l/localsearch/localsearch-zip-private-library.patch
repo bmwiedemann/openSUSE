@@ -1,0 +1,50 @@
+From dac77c836c010bf38443ff425b9c0d61929a6f35 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Wed, 18 Mar 2026 07:02:00 +0100
+Subject: [PATCH] extractor: Separate zip input stream into a private shared
+ library
+
+Fixes issues with GObject registration coming from multiple places for this
+object, if multiple modules using it are loaded and run.
+
+To be completely fair, this was the original approach at commit 407b89a62f
+and https://gitlab.gnome.org/GNOME/localsearch/-/merge_requests/662. But
+was changed to this more broken version by yours truly. This patch is taken
+verbatim from there, so credit goes to Charles at Canonical.
+
+Closes: https://gitlab.gnome.org/GNOME/localsearch/-/issues/438
+---
+ src/extractor/meson.build | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/src/extractor/meson.build b/src/extractor/meson.build
+index 96aad88aa..db7c12490 100644
+--- a/src/extractor/meson.build
++++ b/src/extractor/meson.build
+@@ -25,10 +25,19 @@ if libgsf.found()
+ endif
+ 
+ if libzip.found()
+-  zip_files = files('tracker-zip-input-stream.c')
+-  modules += [['extract-epub', ['tracker-extract-epub.c', zip_files], ['10-epub.rule'], [libzip]]]
+-  modules += [['extract-msoffice-xml', ['tracker-extract-msoffice-xml.c', zip_files], ['11-msoffice-xml.rule'], [libzip]]]
+-  modules += [['extract-oasis', ['tracker-extract-oasis.c', zip_files], ['10-oasis.rule'], [libzip]]]
++  libtracker_extract_zip = shared_library('tracker-extract-zip',
++    'tracker-zip-input-stream.c',
++    c_args: tracker_c_args,
++    dependencies: [tracker_extract_dep, libzip],
++    install: true,
++    install_dir: tracker_internal_libs_dir)
++
++  tracker_extract_zip_dep = declare_dependency(
++    link_with: libtracker_extract_zip)
++
++  modules += [['extract-epub', 'tracker-extract-epub.c', ['10-epub.rule'], [tracker_extract_zip_dep]]]
++  modules += [['extract-msoffice-xml', 'tracker-extract-msoffice-xml.c', ['11-msoffice-xml.rule'], [tracker_extract_zip_dep]]]
++  modules += [['extract-oasis', 'tracker-extract-oasis.c', ['10-oasis.rule'], [tracker_extract_zip_dep]]]
+ endif
+ 
+ if have_gexiv2
+-- 
+2.53.0
+

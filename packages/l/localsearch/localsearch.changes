@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 12 23:19:24 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add localsearch-zip-private-library.patch: fix a crash when
+  handling zip files.
+
+-------------------------------------------------------------------
 Fri Mar 20 16:08:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

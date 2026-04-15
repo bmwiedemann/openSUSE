@@ -89,4 +89,12 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345395</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>53cf235b4c8392f8fd33b7716d624223</srcmd5>
+    <version>3.11.0</version>
+    <time>1776261802</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346734</requestid>
+  </revision>
 </revisionlist>

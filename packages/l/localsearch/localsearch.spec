@@ -27,6 +27,8 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/localsearch
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM localsearch-zip-private-library.patch bsc#1261941 mgorse@suse.com -- extractor: Separate zip input stream into a private shared library
+Patch0:         localsearch-zip-private-library.patch
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0
@@ -186,6 +188,7 @@ These are the sources for the search tool and indexer (e.g. files, rss)
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-webp.so
 %{_libdir}/localsearch-%{lsAPI}/extract-modules/libextract-xps.so
 %{_libdir}/localsearch-%{lsAPI}/libtracker-extract.so
+%{_libdir}/localsearch-%{lsAPI}/libtracker-extract-zip.so
 %{_libdir}/localsearch-%{lsAPI}/trackertestutils/__init__.py
 %{_libdir}/localsearch-%{lsAPI}/trackertestutils/__main__.py
 %{_libdir}/localsearch-%{lsAPI}/trackertestutils/dbusdaemon.py
