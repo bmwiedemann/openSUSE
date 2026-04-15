@@ -199,7 +199,7 @@ echo '# Overwrite default update method
 UPDATE_METHOD=up' >> 10-use-up-as-default.conf
 
 # Enable soft-reboot by default
-sed -i 's/^REBOOT_ALLOW_SOFT_REBOOT=.*/REBOOT_ALLOW_SOFT_REBOOT=false/' etc/tukit.conf
+sed -i 's/^REBOOT_ALLOW_SOFT_REBOOT=.*/REBOOT_ALLOW_SOFT_REBOOT=true/' etc/tukit.conf
 
 %install
 %make_install
