@@ -2,10 +2,10 @@
  Modules/readline.c |   23 +++++++++++++++++++++++
  1 file changed, 23 insertions(+)
 
-Index: Python-3.13.9/Modules/readline.c
+Index: Python-3.13.13/Modules/readline.c
 ===================================================================
---- Python-3.13.9.orig/Modules/readline.c	2025-10-14 15:52:31.000000000 +0200
-+++ Python-3.13.9/Modules/readline.c	2025-11-20 00:46:45.594286346 +0100
+--- Python-3.13.13.orig/Modules/readline.c	2026-04-07 20:19:01.000000000 +0200
++++ Python-3.13.13/Modules/readline.c	2026-04-08 12:15:38.216398555 +0200
 @@ -175,6 +175,8 @@
      return PyUnicode_DecodeLocale(s, "surrogateescape");
  }

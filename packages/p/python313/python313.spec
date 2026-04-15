@@ -167,7 +167,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.12
+Version:        3.13.13
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -236,21 +236,6 @@ Patch45:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-UPSTREAM pass-test_write_read_limited_history.patch bsc#[0-9]+ mcepl@suse.com
 # Fix readline history truncation when length is reduced
 Patch48:        pass-test_write_read_limited_history.patch
-# PATCH-FIX-UPSTREAM CVE-2026-2297-SourcelessFileLoader-io_open_code.patch bsc#1259240 mcepl@suse.com
-# Ensure SourcelessFileLoader uses io.open_code
-Patch49:        CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
-# PATCH-FIX-UPSTREAM CVE-2026-3644-cookies-Morsel-update-II.patch bsc#1259734 mcepl@suse.com
-# Reject control characters in http.cookies.Morsel.update() and http.cookies.BaseCookie.js_output
-Patch50:        CVE-2026-3644-cookies-Morsel-update-II.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4224-expat-unbound-C-recursion.patch bsc#1259735 mcepl@suse.com
-# Avoid unbound C recursion in conv_content_model
-Patch51:        CVE-2026-4224-expat-unbound-C-recursion.patch
-# PATCH-FIX-UPSTREAM CVE-2025-13462-tarinfo-header-parse.patch bsc#1259611 mcepl@suse.com
-# Skip TarInfo DIRTYPE normalization during GNU long name handling
-Patch52:        CVE-2025-13462-tarinfo-header-parse.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4519-webbrowser-open-dashes.patch bsc#1260026 mcepl@suse.com
-# reject leading dashes in webbrowser URLs
-Patch53:        CVE-2026-4519-webbrowser-open-dashes.patch
 #### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

@@ -1220,4 +1220,41 @@
   http.cookies.BaseCookie.js_output (bsc#1259734, CVE-2026-3644).</comment>
     <requestid>1343743</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a3718635452afa0f4900c2916f088c45</srcmd5>
+    <version>3.13.13</version>
+    <time>1776261781</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.13.13
+  - Security
+    - gh-145986: xml.parsers.expat: Fixed a crash caused by
+      unbounded C recursion when converting deeply nested XML
+      content models with ElementDeclHandler(). This addresses
+      CVE 2026-4224 (bsc#1259735, CVE-2026-4224).
+    - gh-145599: Reject control characters in http.cookies.Morsel
+      update() and js_output(). This addresses CVE 2026-3644
+      (bsc#1259734, CVE-2026-3644).
+    - gh-145506: Fixes CVE 2026-2297 by ensuring that
+      SourcelessFileLoader uses io.open_code() when opening .pyc
+      files (bsc#1259240, CVE-2026-2297).
+    - gh-144370: Disallow usage of control characters in status
+      in wsgiref.handlers to prevent HTTP header injections.
+      Patch by Benedikt Johannes.
+    - gh-143930: Reject leading dashes in URLs passed to
+      webbrowser.open() (bsc#1260026, CVE-2026-4519).
+  - Library
+    - gh-144503: Fix a regression introduced in 3.14.3 and
+      3.13.12 where the multiprocessing forkserver start method
+      would fail with BrokenPipeError when the parent process had
+      a very large sys.argv. The argv is now passed to the
+      forkserver as separate command-line arguments rather than
+      being embedded in the -c command string, avoiding the
+      operating system’s per-argument length limit.
+    - gh-146613: itertools: Fix a crash in itertools.groupby()
+      when the grouper iterator is concurrently mutated.
+    - gh-146080: ssl: fix a crash when an SNI callback tries to
+      use an SSL object that has already been garbage-collected.
+      Patch by Bénédikt Tran.</comment>
+    <requestid>1345198</requestid>
+  </revision>
 </revisionlist>
