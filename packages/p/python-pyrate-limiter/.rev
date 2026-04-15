@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbc49d593bb53404a7a789d3e578854d</srcmd5>
+    <version>4.1.0</version>
+    <time>1776278530</time>
+    <user>dimstar_suse</user>
+    <comment>Add package required for python-requests-ratelimiter ( https://build.opensuse.org/requests/1347051 )</comment>
+    <requestid>1347052</requestid>
+  </revision>
+</revisionlist>
