@@ -46,12 +46,14 @@ This package only includes the %{name}-cert binary.
 %autosetup -a1 -p1
 
 %build
-go build -buildmode=pie -mod=vendor -ldflags "-X main.Build=%{version}-dirty" -o %{name} ./cmd/%{name}
-go build -buildmode=pie -mod=vendor -ldflags "-X main.Build=%{version}-dirty" -o %{name}-cert ./cmd/%{name}-cert
+for i in %{name} %{name}-cert %{name}-service ; do
+go build -buildmode=pie -mod=vendor -ldflags "-X main.Build=%{version}-dirty" -o $i ./cmd/$i
+done
 
 %install
 install -Dm0755 -t %{buildroot}%{_sbindir} %{name}
 install -Dm0755 -t %{buildroot}%{_bindir} %{name}-cert
+install -Dm0755 -t %{buildroot}%{_sbindir} %{name}-service
 install -Dm0644 -t %{buildroot}%{_unitdir} %{SOURCE2}
 install -d %{buildroot}%{_sysconfdir}/%{name}
 
@@ -74,6 +76,7 @@ install -d %{buildroot}%{_sysconfdir}/%{name}
 %license LICENSE
 %doc AUTHORS CHANGELOG.md LOGGING.md README.md SECURITY.md examples/config.yml
 %{_sbindir}/%{name}
+%{_sbindir}/%{name}-service
 %{_unitdir}/%{name}.service
 %{_sysconfdir}/%{name}
 

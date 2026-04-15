@@ -137,4 +137,12 @@
     validating certificates in a future version (forwarded request 1332860 from rrahl0)</comment>
     <requestid>1332861</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9fcef7cea6382fba6421d2c8d3938081</srcmd5>
+    <version>1.10.3</version>
+    <time>1776262081</time>
+    <user>dimstar_suse</user>
+    <comment>- add the nebula-service binary (forwarded request 1347103 from rrahl0)</comment>
+    <requestid>1347104</requestid>
+  </revision>
 </revisionlist>
