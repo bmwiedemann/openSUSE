@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 12 12:16:22 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.58.1:
+  + Bugs fixed: google: Use #ifdef for GOA_GOOGLE_FILES_ENABLED
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:40:10 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
