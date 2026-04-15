@@ -28,7 +28,7 @@
 %define oname xdg-desktop-portal
 
 Name:           %{oname}%{?psuffix}
-Version:        1.20.3
+Version:        1.20.4
 Release:        0
 %if "%{flavor}" == ""
 Summary:        A portal frontend service for Flatpak
@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinxcontrib-copybutton
 BuildRequires:  python3-sphinxext-opengraph
-%if 0%{suse_version} > 1600
+%if 0%{suse_version} >= 1699
 BuildRequires:  python3-furo
 %endif
 %endif
@@ -115,7 +115,7 @@ This package contains convenience documentation for developers.
 
 %prep
 %autosetup -N -n %{oname}-%{version}
-%if 0%{suse_version} <= 1600
+%if 0%{suse_version} < 1699
 %patch -P 0 -p1
 %endif
 
