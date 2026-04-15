@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 10 13:29:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.60.1:
+  + Bug Fixes: Calendar: Crash when cancelling meeting with empty
+    notice
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:28:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
