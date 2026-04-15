@@ -1,7 +1,7 @@
 #
 # spec file for package mangohud
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,8 +35,9 @@ Source4:        https://github.com/KhronosGroup/Vulkan-Headers/archive/v%{vulkan
 Source5:        https://github.com/epezent/implot/archive/refs/tags/v%{implot_ver}.zip#/implot-%{implot_ver}.tar.gz
 Source6:        https://wrapdb.mesonbuild.com/v2/implot_%{implot_ver}-1/get_patch#/implot-%{implot_ver}-1-wrap.zip
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM mangohud-remove-glew-dep.patch
-# https://github.com/flightlessmango/MangoHud/commit/9da183900bc6f7af0f3cb907d9370aec54a11a91.patch
+# PATCH-FIX-UPSTREAM mangohud-gpu_fdinfo-add-missing-sstream-header-include.patch bsc#1262011
+# https://github.com/flightlessmango/MangoHud/pull/1884
+Patch0:         mangohud-gpu_fdinfo-add-missing-sstream-header-include.patch
 BuildRequires:  AppStream
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150500
 BuildRequires:  gcc12-c++

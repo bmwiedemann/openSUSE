@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 04:54:52 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Add mangohud-gpu_fdinfo-add-missing-sstream-header-include.patch
+  to fix build with GCC 16. 
+
+-------------------------------------------------------------------
 Mon Dec  1 06:56:43 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Remove file patch mangohud-remove-glew-dep.patch. 

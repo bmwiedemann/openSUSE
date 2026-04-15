@@ -1,0 +1,32 @@
+From 8c8d0c6d2f45f8b2fbdfd3685a88b52a6963c203 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Mon, 1 Dec 2025 18:17:36 +0200
+Subject: [PATCH] gpu_fdinfo: add missing implicit sstream header include
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+It's not implicit in gcc-16 anymore.
+
+../src/gpu_fdinfo.cpp: In member function ‘void GPU_fdinfo::get_current_hwmon_readings()’:
+../src/gpu_fdinfo.cpp:287:27: error: aggregate ‘std::stringstream ss’ has incomplete type and cannot be defined
+  287 |         std::stringstream ss;
+      |
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ src/gpu_fdinfo.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/gpu_fdinfo.h b/src/gpu_fdinfo.h
+index 7d22703b40..109082bfdd 100644
+--- a/src/gpu_fdinfo.h
++++ b/src/gpu_fdinfo.h
+@@ -11,6 +11,7 @@
+ #include <map>
+ #include <set>
+ #include <regex>
++#include <sstream>
+ 
+ #ifdef TEST_ONLY
+ #include <../src/mesa/util/os_time.h>
