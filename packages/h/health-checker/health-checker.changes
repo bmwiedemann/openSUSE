@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:53:23 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.13+git20260414.bb3e4ad:
+  * Update configure.ac with autoupdate
+  * Remove dependencies on cloud-init [bsc#1244078] and for removed plugins
+
+-------------------------------------------------------------------
 Mon Jan 05 14:02:10 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 1.13+git20251219.f90f390:

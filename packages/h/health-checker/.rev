@@ -245,4 +245,14 @@
     <comment></comment>
     <requestid>1325430</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5dba41819debebcd6d87375d1a50b1b9</srcmd5>
+    <version>1.13+git20260414.bb3e4ad</version>
+    <time>1776261828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.13+git20260414.bb3e4ad:
+  * Update configure.ac with autoupdate
+  * Remove dependencies on cloud-init [bsc#1244078] and for removed plugins</comment>
+    <requestid>1346876</requestid>
+  </revision>
 </revisionlist>
