@@ -752,4 +752,25 @@
 - adjusted U_xwayland_Dont_run_key_behaviors_and_actions.patch</comment>
     <requestid>1327962</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>f9068e2efe7f6a01a90bf0c76c414223</srcmd5>
+    <version>24.1.9</version>
+    <time>1776261835</time>
+    <user>dimstar_suse</user>
+    <comment>- updated bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
+  * XKB Out-of-bounds read in CheckModifierMap() (bsc#1260925, CVE-2026-34002)
+
+- bsc1260922_CVE-2026-33999_xkb-fix-buffer-re-use-in-_XkbSetCompatMap.patch
+  * XKB Integer Underflow in XkbSetCompatMap() (bsc#1260922, CVE-2026-33999)
+- bsc1260923_CVE-2026-34000_xkb-Fix-bounds-check-in-_CheckSetGeom.patch
+  * XKB Out-of-bounds Read in CheckSetGeom() (bsc#1260923, CVE-2026-34000)
+- bsc1260924_CVE-2026-34001_miext-sync-Fix-use-after-free-in-miSyncTriggerFence.patch
+  * XSYNC Use-after-free in miSyncTriggerFence() (bsc#1260924, CVE-2026-34001)
+- bsc1260925_CVE-2026-34002_0001-xkb-Fix-out-of-bounds-read-in-CheckModifierMap.patch
+  bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
+  * XKB Out-of-bounds read in CheckModifierMap() (bsc#1260925, CVE-2026-34002)
+- bsc1260926_CVE-2026-34003_0001-xkb-Add-additional-bound-checking-in-CheckKeyTypes.patch
+  * XKB Buffer overflow in CheckKeyTypes() (bsc#1260926, CVE-2026-34003)</comment>
+    <requestid>1346892</requestid>
+  </revision>
 </revisionlist>

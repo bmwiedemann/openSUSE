@@ -38,6 +38,13 @@ Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
 Patch3:         U_xwayland_Dont_run_key_behaviors_and_actions.patch
 
+Patch1260922:   bsc1260922_CVE-2026-33999_xkb-fix-buffer-re-use-in-_XkbSetCompatMap.patch
+Patch1260923:   bsc1260923_CVE-2026-34000_xkb-Fix-bounds-check-in-_CheckSetGeom.patch
+Patch1260924:   bsc1260924_CVE-2026-34001_miext-sync-Fix-use-after-free-in-miSyncTriggerFence.patch
+Patch1260925:   bsc1260925_CVE-2026-34002_0001-xkb-Fix-out-of-bounds-read-in-CheckModifierMap.patch
+Patch1260926:   bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
+Patch1260927:   bsc1260926_CVE-2026-34003_0001-xkb-Add-additional-bound-checking-in-CheckKeyTypes.patch
+
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig

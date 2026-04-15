@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr  9 09:47:54 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
+  * XKB Out-of-bounds read in CheckModifierMap() (bsc#1260925, CVE-2026-34002)
+
+-------------------------------------------------------------------
+Sat Mar 28 15:03:53 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- bsc1260922_CVE-2026-33999_xkb-fix-buffer-re-use-in-_XkbSetCompatMap.patch
+  * XKB Integer Underflow in XkbSetCompatMap() (bsc#1260922, CVE-2026-33999)
+- bsc1260923_CVE-2026-34000_xkb-Fix-bounds-check-in-_CheckSetGeom.patch
+  * XKB Out-of-bounds Read in CheckSetGeom() (bsc#1260923, CVE-2026-34000)
+- bsc1260924_CVE-2026-34001_miext-sync-Fix-use-after-free-in-miSyncTriggerFence.patch
+  * XSYNC Use-after-free in miSyncTriggerFence() (bsc#1260924, CVE-2026-34001)
+- bsc1260925_CVE-2026-34002_0001-xkb-Fix-out-of-bounds-read-in-CheckModifierMap.patch
+  bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
+  * XKB Out-of-bounds read in CheckModifierMap() (bsc#1260925, CVE-2026-34002)
+- bsc1260926_CVE-2026-34003_0001-xkb-Add-additional-bound-checking-in-CheckKeyTypes.patch
+  * XKB Buffer overflow in CheckKeyTypes() (bsc#1260926, CVE-2026-34003)
+
+-------------------------------------------------------------------
 Sun Jan 18 20:29:00 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 24.1.9
