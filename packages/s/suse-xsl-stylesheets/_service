@@ -1,10 +1,11 @@
+<!-- osc service runall -->
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">2.95.33</param>
+    <param name="versionformat">2.95.35</param>
     <param name="versionprefix"></param>
     <param name="url">https://github.com/openSUSE/suse-xsl.git</param>
     <param name="scm">git</param>
-    <param name="revision">2.95.33</param>
+    <param name="revision">2.95.35</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

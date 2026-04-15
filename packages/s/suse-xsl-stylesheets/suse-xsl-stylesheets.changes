@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:54:46 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.35
+
+- Update 2.95.35
+  SUVA / AskGeeko integration in #789
+
+-------------------------------------------------------------------
+Tue Apr 14 11:00:03 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.34
+
+- Update 2.95.34
+  * JSON-LD/mentions: Look for nearest info element in #796
+  * Fix DOCTEAM-2221: Introduce dateCreated in #797
+
+-------------------------------------------------------------------
 Wed Apr  1 06:24:06 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.33
 
 - Update 2.95.33

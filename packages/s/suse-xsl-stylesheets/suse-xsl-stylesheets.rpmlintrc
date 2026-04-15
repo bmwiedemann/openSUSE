@@ -1,3 +1,4 @@
+addFilter("no-%check-section")
 addFilter("explicit-lib-dependency libxslt")
 # addFilter("explicit-lib-dependency liberation-fonts")
 # addFilter("incorrect-fsf-address .*/hyphen/czhyphen.il2")
