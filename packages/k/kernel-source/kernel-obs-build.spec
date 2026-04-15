@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.19.11
+%define patchversion 6.19.12
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -38,23 +38,23 @@
 %endif
 %endif
 %endif
-%global kernel_package kernel%kernel_flavor-srchash-b4a2f1cd357933360e85f345421a3a8e5011786a
+%global kernel_package kernel%kernel_flavor-srchash-c7234f7435aefeda97031bd56ce6912c3fe2a3ce
 %endif
 %if 0%{?rhel_version}
 %global kernel_package kernel
 %endif
 
 Name:           kernel-obs-build
-Version:        6.19.11
+Version:        6.19.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb4a2f1c
+Release:        <RELEASE>.gc7234f7
 %else
 Release:        0
 %endif
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Provides:       kernel-obs-build-srchash-b4a2f1cd357933360e85f345421a3a8e5011786a
+Provides:       kernel-obs-build-srchash-c7234f7435aefeda97031bd56ce6912c3fe2a3ce
 BuildRequires:  coreutils
 BuildRequires:  device-mapper
 BuildRequires:  dracut
