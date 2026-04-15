@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 13:37:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.2:
+  + Remove spurious python-embed dependency from libges
+  + Fix a couple of const correctness bugs around strchr() usage
+
+-------------------------------------------------------------------
 Thu Feb 26 09:10:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.1:
