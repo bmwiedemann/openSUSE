@@ -27,10 +27,12 @@ URL:            https://github.com/untitaker/click-repl
 Source:         https://github.com/click-contrib/click-repl/archive/%{version}.tar.gz#/click-repl-%{version}-gh.tar.gz
 # https://github.com/click-contrib/click-repl/issues/128
 BuildRequires:  %{python_module click < 8.2.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module prompt_toolkit}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
@@ -45,10 +47,10 @@ REPL plugin for Click
 %autosetup -p1 -n click-repl-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +60,6 @@ REPL plugin for Click
 %doc README.md
 %license LICENSE
 %{python_sitelib}/click_repl
-%{python_sitelib}/click_repl-%{version}*info
+%{python_sitelib}/click_repl-%{version}.dist-info
 
 %changelog
