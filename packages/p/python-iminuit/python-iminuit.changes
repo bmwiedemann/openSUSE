@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Mar 23 13:25:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.32.0:
+  * Support user-provided g2 and hessian
+  * Update external root
+  * Fix bug in _repr_html_ when both minos and limits are used
+  * Add python 3.14 wheels
+  * Add free-threading wheels (missing!)
+  * Fixing test suite after regression of
+    scipy.stats.multivariate_normal in scipy-1.16.0
+
+-------------------------------------------------------------------
 Mon Jul 21 18:02:31 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.31.1:
