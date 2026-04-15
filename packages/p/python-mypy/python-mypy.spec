@@ -158,6 +158,8 @@ donttest+=" or teststubtest"
 donttest+=" or testMathOps or testFloatOps"
 # fails on Python 3.11.4, see gh#python/mypy#15446. Patch db5b5af1201fff03465b0684d16b6489a62a3d78 does not apply clean, better wait for a new upstream version
 donttest+=" or PEP561Suite"
+# https://github.com/python/cpython/issues/146121 caused the tests to fail as described in https://github.com/python/mypy/issues/21120, upstream hotfix does not work here
+donttest+=" or testAllBase64Features_librt"
 %pytest -n auto -k "not (testallexcept ${donttest})"
 %endif
 

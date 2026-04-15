@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 14 16:37:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Skip test failing with CPython CVE fix
+
+-------------------------------------------------------------------
 Wed Feb 25 15:59:45 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Fix the condition with suse_version macro on SLFO (jsc#PED-15844) 

@@ -672,4 +672,13 @@ reveal_type(Context[MyBot]().bot)
     <comment></comment>
     <requestid>1335238</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>10a24c468f64b8ee68a686adf895ea3f</srcmd5>
+    <version>1.19.1</version>
+    <time>1776261785</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test failing with CPython CVE fix
+</comment>
+    <requestid>1346922</requestid>
+  </revision>
 </revisionlist>
