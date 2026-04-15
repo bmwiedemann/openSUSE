@@ -1367,4 +1367,12 @@ New stable release</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345364</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>67bf3d0925c1b6f9f30b4ee82c0610b8</srcmd5>
+    <version>50.1</version>
+    <time>1776261796</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346630</requestid>
+  </revision>
 </revisionlist>
