@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Apr 15 06:32:56 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.15.3:
+  * chore: auto-update generated files
+  * fix(rust): glibc version stripping for gnueabi/gnueabihf targets
+  * docs(rust): document ability to specify custom glibc version
+  * fix(rust): strip custom glibc version from target for rustup command
+  * ci(deps): bump the actions group with 2 updates
+  * chore(deps): bump the gomod group with 5 updates
+  * chore(deps): bump golang in the docker group across 1 directory
+  * sec: prevent secret leaks in logs and improve redaction
+  * fix(srpm): remove double close of package file
+  * fix(bun): show original target in parse error, not trimmed version
+  * fix(rust): show all workspace members in error message, not just first
+  * fix(docker): remove duplicate WithOutput in error wrapping
+  * fix(docker): fix "did you mean?" suggestion always suggesting the input name itself
+  * fix(winget): use filepath.Join instead of path.Join for local filesystem paths
+  * fix(docker): check evaluated Dockerfile template for emptiness, not raw template
+  * fix(nfpm): show correct value in content mtime parse error
+  * fix(aur,krew,aursources): apply template to SkipUpload before checking its value
+  * fix(blob): evaluate template in provider before checking for S3 ACL support
+  * fix(release): log correct repo name for GitLab and Gitea releases
+  * fix(build): fix broken backtick and missing GOMIPS64 in --single-target help text
+  * fix(sbom): use matched filename for artifact Name instead of glob pattern
+  * fix(changelog): prevent panic on negative abbrev values other than -1
+  * fix(changelog): use %t instead of %b for bool in debug log format
+  * fix(partial): add missing ppc64le to archExtraEnvs map
+  * fix(partial): use GGOMIPS64/GOMIPS64 instead of GGOMIPS/GOMIPS for mips64/mips64le
+  * fix(gitea): fix misleading 'using master' log when default branch lookup fails
+  * chore: auto-update generated files
+  * chore: go 1.26.2 (#6547)
+  * chore(deps): use ko@main to grab more recent docker (#6545)
+  * chore(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp from 1.42.0 to 1.43.0
+  * chore(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp from 1.42.0 to 1.43.0 (#6542)
+  * chore(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp from 0.18.0 to 0.19.0 (#6544)
+  * test(github): use context with timeout
+  * fix: handle io.ReadAll error in bodyOf instead of discarding it
+  * fix: replace recursive rateLimitChecker with single check and context-aware sleep
+  * fix: use typed structs for LinkedIn API responses
+  * fix: guard iterator bounds in gerrors Details
+  * fix: preserve original error details in git config extraction
+  * ci: cleanup node before build
+  * refactor: use io.WriteString
+  * fix(targz): close gzip reader in Copy
+  * fix(redact): return 0 bytes written on underlying write failure
+  * fix(http): remove double-close of response body in executeHTTPRequest
+  * fix(tmpl): return error instead of panicking on invalid filter regex
+  * fix(build): prevent panic when command has single element
+  * fix(checksums): prevent panic in sort when line has no double-space
+  * fix(docker): prevent panic in parsePlatform with missing arch
+  * fix(github): nil-guard resp in updateRelease before accessing Header
+  * docs: ai usage guidelines (#6525)
+  * fix: check buildx for dockers v1 (#6526)
+  * chore: auto-update generated files
+  * fix(dockers/v2): digest log
+  * chore: schema update
+  * fix: add retries everywhere possible (#6528)
+  * refactor(tests): simplify client tests with helpers  (#6537)
+  * chore: auto-update generated files
+  * refactor(http): remove global assetOpen mock pattern
+  * chore(deps): bump github.com/distribution/distribution/v3 from 3.0.0 to 3.1.0 (#6535)
+  * test(client): comprehensive coverage for GitHub, GitLab, and Gitea clients (#6536)
+  * fix: use Mattermost.Color instead of Teams.Color in mattermost pipe (#6533)
+  * fix(client): off-by-one in truncateReleaseBody (#6534)
+  * fix: remove duplicate WithField in gitea client push logging (#6532)
+  * fix: better log
+  * docs: regenerate favicons with transparent background (#6521)
+  * chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.3 to 4.1.4 (#6522)
+  * chore(deps): bump the gomod group with 2 updates (#6523)
+  * ci(deps): bump the actions group with 5 updates (#6524)
+  * chore: auto-update generated files
+  * docs: fix output
+  * docs: add v2.15 banner
+  * chore: auto-update generated files
+  * ci: check release sign, checksum, attestations (#6517)
+  * fix(opencollective): handle errors, more tests (#6512)
+  * chore: auto-update generated files
+  * docs: Fix signature verification of checksum file (#6513)
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Thu Apr 02 09:42:35 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.15.2:
