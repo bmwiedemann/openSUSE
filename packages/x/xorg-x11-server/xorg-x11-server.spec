@@ -242,6 +242,13 @@ Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
 Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
 
+Patch1260922:   bsc1260922_CVE-2026-33999_xkb-fix-buffer-re-use-in-_XkbSetCompatMap.patch
+Patch1260923:   bsc1260923_CVE-2026-34000_xkb-Fix-bounds-check-in-_CheckSetGeom.patch
+Patch1260924:   bsc1260924_CVE-2026-34001_miext-sync-Fix-use-after-free-in-miSyncTriggerFence.patch
+Patch1260925:   bsc1260925_CVE-2026-34002_0001-xkb-Fix-out-of-bounds-read-in-CheckModifierMap.patch
+Patch1260926:   bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
+Patch1260927:   bsc1260926_CVE-2026-34003_0001-xkb-Add-additional-bound-checking-in-CheckKeyTypes.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -394,6 +401,13 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1960 -p1
 
 %patch -P 1218176 -p1
+
+%patch -P 1260922 -p1
+%patch -P 1260923 -p1
+%patch -P 1260924 -p1
+%patch -P 1260925 -p1
+%patch -P 1260926 -p1
+%patch -P 1260927 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

@@ -4403,4 +4403,25 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>1337601</requestid>
   </revision>
+  <revision rev="449" vrev="5">
+    <srcmd5>d0dd7d6f3fbd4a0662ce8a30ae123645</srcmd5>
+    <version>21.1.21</version>
+    <time>1776261831</time>
+    <user>dimstar_suse</user>
+    <comment>- updated bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
+  * XKB Out-of-bounds read in CheckModifierMap() (bsc#1260925, CVE-2026-34002)
+
+- bsc1260922_CVE-2026-33999_xkb-fix-buffer-re-use-in-_XkbSetCompatMap.patch
+  * XKB Integer Underflow in XkbSetCompatMap() (bsc#1260922, CVE-2026-33999)
+- bsc1260923_CVE-2026-34000_xkb-Fix-bounds-check-in-_CheckSetGeom.patch
+  * XKB Out-of-bounds Read in CheckSetGeom() (bsc#1260923, CVE-2026-34000)
+- bsc1260924_CVE-2026-34001_miext-sync-Fix-use-after-free-in-miSyncTriggerFence.patch
+  * XSYNC Use-after-free in miSyncTriggerFence() (bsc#1260924, CVE-2026-34001)
+- bsc1260925_CVE-2026-34002_0001-xkb-Fix-out-of-bounds-read-in-CheckModifierMap.patch
+  bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
+  * XKB Out-of-bounds read in CheckModifierMap() (bsc#1260925, CVE-2026-34002)
+- bsc1260926_CVE-2026-34003_0001-xkb-Add-additional-bound-checking-in-CheckKeyTypes.patch
+  * XKB Buffer overflow in CheckKeyTypes() (bsc#1260926, CVE-2026-34003)</comment>
+    <requestid>1346890</requestid>
+  </revision>
 </revisionlist>
