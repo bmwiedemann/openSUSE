@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr 10 20:07:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.8
+  * Bug fix: burn_offst_source_new() parameter "size" rolled over
+    at 2 exp 31.
+  * Bug fix: ATA and SATA drives under sg did not register their
+    SCSI address tuple.
+  * Bug fix: WAVE files with unsuitable audio format were read as
+    raw audio file.
+  * New API calls use and return off_t sizes instead of int or
+    uint32_t.
+  * Augmented struct burn_toc_entry by new off_t block addresses
+    and counters.
+  * New struct burn_progress_v2 and API call
+    burn_drive_get_status_v2().
+  * New API call burn_disc_track_lba_nwa_v2().
+  * New API calls burn_disc_get_sectors_v2(),
+    burn_session_get_sectors_v2(),
+    burn_track_get_sectors_v2().
+  * New API call burn_get_read_capacity_v2().
+  * New API call burn_drive_release_v2().
+  * New API call burn_write_opts_set_perform_opc_v2.
+  * New cdrskin option --audio_not_raw.
+  * New cdrskin options --perform_opc and --perform_opc_growisofs.
+- Drop patch:
+  * libburn-1.5.6-c23.patch (not longer needed)
+- Use %ldconfig_scriptlets macro
+
+-------------------------------------------------------------------
 Tue Apr  8 17:35:12 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add libburn-1.5.6-c23.patch from upstream to fix gcc15 compile

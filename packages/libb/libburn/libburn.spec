@@ -1,7 +1,7 @@
 #
 # spec file for package libburn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define so_ver 4
-%define basever 1.5.6
+%define basever 1.5.8
 Name:           libburn
-Version:        1.5.6
+Version:        1.5.8
 Release:        0
 Summary:        Library for Writing Preformatted Data onto Optical Media
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ URL:            http://libburnia-project.org/
 Source0:        http://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz
 Source1:        http://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM
-Patch1:         libburn-1.5.6-c23.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -84,8 +82,7 @@ cp -a doc/html/ %{buildroot}%{_docdir}/%{name}-devel/
 
 %fdupes -s %{buildroot}%{_docdir}/%{name}-devel/
 
-%post -n libburn%{so_ver} -p /sbin/ldconfig
-%postun -n libburn%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libburn%{so_ver}
 
 %files devel
 %license COPYING
