@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 14 05:22:42 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Add trigger-rebuild.timestamp, this dummy file is updated manually
+  to trigger a rebuild when the project certificate (_projectcert.crt)
+  changes, as OBS doesn't track it automatically in some cases.
+  (bsc#1256888)
+
+-------------------------------------------------------------------
 Tue May  4 06:53:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add exclusivearch to match mokutil setting 

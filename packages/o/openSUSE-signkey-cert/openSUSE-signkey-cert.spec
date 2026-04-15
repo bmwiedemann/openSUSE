@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-signkey-cert
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,10 @@ Release:        0
 Summary:        Certificate for openSUSE KMP signing key
 License:        GPL-2.0-or-later
 Group:          System/Kernel
+# This dummy file is updated manually to trigger a rebuild when the project
+# certificate (_projectcert.crt) changes, as OBS doesn't track it automatically.
+# e.g. date > trigger-rebuild.timestamp
+Source1:        trigger-rebuild.timestamp
 BuildRequires:  openssl >= 0.9.8
 Requires(post): mokutil
 # matches mokutil

@@ -15,4 +15,12 @@
     <comment>- add exclusivearch to match mokutil setting</comment>
     <requestid>891057</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>38160e857121fa351c038d16b44bfca3</srcmd5>
+    <version>MACRO</version>
+    <time>1776261947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347070</requestid>
+  </revision>
 </revisionlist>
