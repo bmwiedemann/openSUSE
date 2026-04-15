@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 31 23:49:18 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Update to version 26.3.3 (from 25.12.0):
+  * V1 programmatic API and schema subcommand
+  * Parameterized execution environment initialization
+  * EEConfig dataclass for structured EE configuration
+  * Custom EE build tags and definition filenames
+  * SCM server support for private Git repositories
+  * Registry TLS verification control (--registry-tls-verify)
+  * Runtime-configurable EE workflows via dispatch inputs
+  * Replaced hardcoded hub URLs with generic galaxy_servers
+  * Python 3.12 interpreter for AAP 2.5 compatibility
+  * Fixed ansible_core/ansible_runner exclusion for base images 
+
+-------------------------------------------------------------------
 Mon Feb 16 16:34:52 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Initial package for ansible-creator 25.12.0

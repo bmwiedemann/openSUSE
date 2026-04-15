@@ -1,4 +1,5 @@
 <package name="ansible-creator" project="openSUSE:Factory">
   <title>A CLI tool for scaffolding Ansible Content</title>
   <description>Ansible Creator provides commands to scaffold new Ansible projects and content (collections, playbook projects, execution environments). Part of the ansible-dev-tools suite.</description>
+  <devel project="systemsmanagement:ansible" package="ansible-creator"/>
 </package>
