@@ -306,4 +306,41 @@
   - Address parsing error related to string detection on read for empty strings.</comment>
     <requestid>1312558</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>eb410692e7963c0ab08cb888279abd32</srcmd5>
+    <version>1.440.0</version>
+    <time>1776261882</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.440.0 (1.44)
+   see /usr/share/doc/packages/perl-YAML-Syck/Changes
+  1.44 Apr 02 2026
+    [Bug Fixes]
+    - Fix: positive hex and octal values parsed as 0 with ImplicitTyping
+      (PR #187)
+    - Fix: resolve uintptr_t redefinition error on Win64 MinGW
+      (PR #186)
+  1.43 Apr 01 2026
+    [Bug Fixes]
+    - Fix: prevent resource leaks on croak/early-return paths in Dump
+      (PR #161)
+    - Fix: prevent output SV leaks on croak in Dump/DumpFile callers
+      (PR #163)
+    - Fix: Load() in list context returns empty list for empty/undef input;
+      also applies to LoadBytes and LoadUTF8 (GH #164, PR #165)
+    - Fix: DumpCode serializes prototype string instead of code body
+      (PR #168)
+    - Fix: memory leak in !perl/scalar Load — newRV_inc should be
+      newRV_noinc (PR #170)
+    - Fix: add pTHX_ to SAVEDESTRUCTOR_X callback for threaded Perl
+      (GH #175, PR #176)
+    - Fix: add TODO guard for eval_pv leak on Perl &lt; 5.14
+      (GH #179, PR #180)
+    - Fix: negative hex and octal values parsed as 0 with ImplicitTyping
+      (PR #183)
+    - Fix: negative int#base60 values produce unsigned wraparound (PR #185)
+    [Improvements]
+    - Modernize META_MERGE for CPANTS compliance (PR #162)
+    - Fix hash table size handling and remove compile warnings in syck_st</comment>
+    <requestid>1346901</requestid>
+  </revision>
 </revisionlist>

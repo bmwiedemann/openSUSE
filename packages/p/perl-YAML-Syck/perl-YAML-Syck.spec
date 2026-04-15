@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-Syck
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name YAML-Syck
 Name:           perl-YAML-Syck
-Version:        1.360.0
+Version:        1.440.0
 Release:        0
-# 1.36 -> normalize -> 1.360.0
-%define cpan_version 1.36
+# 1.44 -> normalize -> 1.440.0
+%define cpan_version 1.44
 License:        MIT
 Summary:        Perl YAML loader and dumper
 URL:            https://metacpan.org/release/%{cpan_name}
