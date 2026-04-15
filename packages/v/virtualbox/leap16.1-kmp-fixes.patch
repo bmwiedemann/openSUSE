@@ -8,8 +8,9 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
  src/VBox/Additions/linux/drm/vbox_drv.c  |   11 ++++++-----
  src/VBox/Additions/linux/drm/vbox_drv.h  |   11 +++++++++++
  src/VBox/Additions/linux/drm/vbox_fb.c   |    6 +++---
+ src/VBox/Additions/linux/drm/vbox_main.c |    4 ++--
  src/VBox/Additions/linux/drm/vbox_mode.c |    2 +-
- 5 files changed, 31 insertions(+), 9 deletions(-)
+ 6 files changed, 33 insertions(+), 11 deletions(-)
 
 --- a/include/iprt/linux/version.h
 +++ b/include/iprt/linux/version.h
@@ -121,6 +122,26 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
  	drm_fb_helper_prepare(dev, &fbdev->helper, 32, NULL);
  #elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(8,9, 8,99) || RTLNX_RHEL_RANGE(9,3, 9,99)
  	drm_fb_helper_prepare(dev, &fbdev->helper, 32, &vbox_fb_helper_funcs);
+--- a/src/VBox/Additions/linux/drm/vbox_main.c
++++ b/src/VBox/Additions/linux/drm/vbox_main.c
+@@ -180,7 +180,7 @@ int vbox_framebuffer_init(struct drm_dev
+ {
+ 	int ret;
+ 
+-#if RTLNX_VER_MIN(6,17,0) || RTLNX_RHEL_RANGE(9,8, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99)
++#if RTLNX_VER_MIN(6,17,0) || RTLNX_RHEL_RANGE(9,8, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99) || RTLNX_SUSE_SLFO_RANGE(1,3, 1,3)
+ 	const struct drm_format_info *format = drm_get_format_info(dev, mode_cmd->pixel_format, 0);
+ 	drm_helper_mode_fill_fb_struct(dev, &vbox_fb->base, format, mode_cmd);
+ #elif RTLNX_VER_MIN(4,11,0) || RTLNX_RHEL_MAJ_PREREQ(7,5)
+@@ -201,7 +201,7 @@ int vbox_framebuffer_init(struct drm_dev
+ static struct drm_framebuffer *vbox_user_framebuffer_create(
+ 		struct drm_device *dev,
+ 		struct drm_file *filp,
+-#if RTLNX_VER_MIN(6,17,0) || RTLNX_RHEL_RANGE(9,8, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99)
++#if RTLNX_VER_MIN(6,17,0) || RTLNX_RHEL_RANGE(9,8, 9,99) || RTLNX_RHEL_RANGE(10,1, 10,99) || RTLNX_SUSE_SLFO_RANGE(1,3, 1,3)
+ 		const struct drm_format_info *info,
+ #endif
+ #if RTLNX_VER_MIN(4,5,0) || RTLNX_RHEL_MAJ_PREREQ(7,3)
 --- a/src/VBox/Additions/linux/drm/vbox_mode.c
 +++ b/src/VBox/Additions/linux/drm/vbox_mode.c
 @@ -660,7 +660,7 @@ static int vbox_get_modes(struct drm_con

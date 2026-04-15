@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:18:59 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Refresh the Leap 16.1 build fix patch for covering the missing
+  file:
+  leap16.1-kmp-fixes.patch
+
+-------------------------------------------------------------------
 Wed Apr  8 09:33:02 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Fixes for KMP build on openSUSE Leap 16.1 (bsc#1242207)

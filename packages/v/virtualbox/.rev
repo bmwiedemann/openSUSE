@@ -2861,4 +2861,14 @@ we must have vb7.1.10.</comment>
   leap16.1-kmp-fixes.patch</comment>
     <requestid>1345264</requestid>
   </revision>
+  <revision rev="306" vrev="8">
+    <srcmd5>188542888eabe7e06aa0e9f9142772c5</srcmd5>
+    <version>7.2.6</version>
+    <time>1776261827</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh the Leap 16.1 build fix patch for covering the missing
+  file:
+  leap16.1-kmp-fixes.patch</comment>
+    <requestid>1346861</requestid>
+  </revision>
 </revisionlist>
