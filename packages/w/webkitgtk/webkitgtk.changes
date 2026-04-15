@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 13 12:57:37 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.52.2:
+  + Improve handling of real-time threads.
+  + Fix scrollbar rendering glitches visible in some GPU
+    configurations.
+  + Fix V4L2 hardware accelerated media codecs now working due to
+    overly restrictive sandbox device access rules.
+  + Fix leak of bitmap images in
+    webkit_favicon_database_get_favicon_finish().
+  + Fix the build with USE_GTK4=OFF.
+  + Fix several crashes and rendering issues.
+- Drop webkitgtk-gtk3-build-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Apr  1 14:02:53 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.52.1 (bsc#1261172 bsc#1261173 bsc#1261174

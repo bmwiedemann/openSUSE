@@ -7,4 +7,12 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345357</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d2bdf0baa80e316fc825a9363ce3bfb2</srcmd5>
+    <version>2.52.2</version>
+    <time>1776261807</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 50 early fixes</comment>
+    <requestid>1346787</requestid>
+  </revision>
 </revisionlist>

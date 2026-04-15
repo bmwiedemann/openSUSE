@@ -62,7 +62,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit%{_gtknamesuffix}
-Version:        2.52.1
+Version:        2.52.2
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -76,8 +76,6 @@ Source99:       webkitgtk.keyring
 Patch0:         reproducibility.patch
 # PATCH-FIX-UPSTREAM webkit2gtk3-aarch64-build-fix.patch webkit#306638 mgorse@suse.com -- fix JavaScriptCore build on aarch64 with JIT disabled.
 Patch1:      webkit2gtk3-aarch64-build-fix.patch
-# PATCH-FIX-UPSTREAM webkitgtk-gtk3-build-fix.patch mgorse@suse.com -- fix the gtk3 build.
-Patch2:         webkitgtk-gtk3-build-fix.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
