@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 14 21:33:54 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix unit file, as it executes /sbin/ipp-usb, not /usr/sbin/ipp-usb
+
+-------------------------------------------------------------------
+Mon Mar  2 16:04:58 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.9.31:
+  * Refactoring: QuirksSet renamed to QuirksDb, to simplify documentation
+  * UsbDeviceInfo: properly handle empty Manufacturer or ProductName
+  * UsbDeviceInfo.MfgAndProduct sting replaced with UsbDeviceInfo
+  * Preliminary Support for HWID-Based Quirks
+  * HWID quirks integrated with the UsbTransport
+  * Added HWID quirks for Xerox B210
+  * Added HWID quirks for Xerox B205 and B215
+  * Man page updated (HWID quirks explained)
+  * Small refactoring of quirks handling
+  * Quirks prioritization algorithm updated to match the documentation
+  * Paths refactored (preparation to make them configurable)
+  * Accept textWithLanguage for many printer attrs where text is expected
+  * Added program options to control file/directory placement
+  * Fix handling of usb-send-delay-threshold quirk
+  * Fixed a error message formatting
+
+-------------------------------------------------------------------
 Mon Mar 17 22:22:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.9.30:

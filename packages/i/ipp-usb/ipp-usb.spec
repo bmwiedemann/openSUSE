@@ -1,7 +1,7 @@
 #
 # spec file for package ipp-usb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         import_path github.com/OpenPrinting/ipp-usb
 Name:           ipp-usb
-Version:        0.9.30
+Version:        0.9.31
 Release:        0
 Summary:        HTTP reverse proxy, backed by IPP-over-USB connection to device
 License:        BSD-2-Clause

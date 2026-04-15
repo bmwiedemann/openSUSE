@@ -6,7 +6,7 @@ Wants=avahi-daemon.service
 
 [Service]
 Type=simple
-ExecStart=/sbin/ipp-usb udev
+ExecStart=/usr/sbin/ipp-usb udev
 
 [Install]
 WantedBy=multi-user.target
