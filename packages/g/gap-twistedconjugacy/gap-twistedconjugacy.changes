@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 14 13:28:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3.0
+  * Add a better implementation of `IsFinite` for twisted conjugacy
+    classes, double cosets, orbits of affine actions and group
+    derivation images.
+  * `ReidemeisterNumber` now immediately returns infinity if the
+    source group is finite but the range group is infinite.
+
+-------------------------------------------------------------------
 Tue Feb 17 09:43:35 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.0

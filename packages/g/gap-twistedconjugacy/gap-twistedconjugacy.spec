@@ -17,7 +17,7 @@
 
 
 Name:           gap-twistedconjugacy
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        GAP: Computation with twisted conjugacy classes
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-autpgrp >= 1.11
 Requires:       gap-core >= 4.14
-Requires:       gap-polycyclic >= 2.16
+Requires:       gap-polycyclic >= 2.17
 
 %description
 The TwistedConjugacy package provides methods for solving the twisted
