@@ -496,4 +496,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>1338713</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>abc44a4301ec5a06f0285156546875c6</srcmd5>
+    <version>9.8.1</version>
+    <time>1776261948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347078</requestid>
+  </revision>
 </revisionlist>

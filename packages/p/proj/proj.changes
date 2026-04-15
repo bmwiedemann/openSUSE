@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Apr 12 10:49:58 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
+
+- update to 9.8.1:
+  o Database: Revert content from EPSG v12.049 to v12.029
+    (#4741).  See above warning for more details.
+  o CMake: handle deprecated SQLite::SQLite3 target in
+    CMake 4.3 (#4694)
+  * Make sure that epoch is set in more scenarios of
+    time-dependent transformations (#4688)
+  * pj_obj_create: use database context if already open for
+    grid name resolution (#4703)
+  * Chain vertical CRS transformations through intermediate
+    same-datum vertical CRS (#4711) Helps for example for
+    EPSG:5705 (Baltic 1977 height) to EPSG:5706 (Caspian depth)
+    by using intermediate operation from Baltic 1977 height
+    to Caspian height
+  * gie: various fixes around crs_src/crs_dst
+    support and bootstrap test/gie/epsg_grid.gie and
+    test/gie/epsg_no_grid.gie (#4740)
+
+-------------------------------------------------------------------
 Wed Mar  4 11:37:30 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
 
 - update to 9.8.0:
