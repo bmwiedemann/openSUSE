@@ -1,7 +1,41 @@
 -------------------------------------------------------------------
+Tue Apr 14 12:01:27 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- dealers-choice 0.0.12
+  * Update package description
+  + Add dealers-choice-bot: a headless rules-based CLI bot that connects to a
+    running server like a regular client. Reads DC_PASSWORD from the
+    environment (bot is rejected if the server has no password set).
+  + Text input fields: scrolling with cursor navigation (left/right/home/end),
+    mid-text insertion, Ctrl+V paste; cursor blink resets on each keypress;
+    yellow cursor color for visibility against white text
+  + Handle audio device disconnection: when the audio backend has no default
+    device to reroute to, the device is stopped; register a miniaudio
+    notification callback to detect this and restart the engine when possible
+    (#243).
+  + Stud games: implement bring-in forced partial bet (bringin_amount in
+    server.conf, default 50); subsequent streets open with the player
+    holding the best visible hand
+  + Deuces wild: server now evaluates wild hands automatically using
+    POKEVAL_compare_hands_wild / POKEVAL_evaluate_hand_wild; removed the
+    end-of-hand UI selection for wild card replacement and the associated
+    exchange button, timeout setting (wild_exchange_timeout_ms), network
+    message (MSG_WILD_REPLACEMENT), and server-side exchange logic
+  * bugfix: Three busy-waits, high-cpu server usage
+  * Require libsodium unconditionally; fix authentication bypass where
+    clients could authenticate on password-protected servers without
+    libsodium present
+  * bugfix: Show clear error on protocol version mismatch
+  * Update docker-compose.yml to use DC_PASSWORD and extra arguments when running
+    the server
+  * Fix coin animation: animate from the player who paid, not the next player
+    to act
+  * Bump GAME_PROTOCOL_VERSION from 7 to 8
+
+-------------------------------------------------------------------
 Thu Apr  2 09:05:02 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
 
-  * Drop cmake build dependency (no longer needed for miniaudio) 
+  * Drop cmake build dependency (no longer needed for miniaudio)
 
 -------------------------------------------------------------------
 Wed Apr 01 09:20:16 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
@@ -17,7 +51,7 @@ Wed Apr 01 09:20:16 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
 
 -------------------------------------------------------------------
 Mon Mar 29 14:46:16 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
-  
+
 - dealers-choice 0.0.10:
   + Add Texas Hold'em
   * bugfix: Client freezes (infinite loop in layout_cards) when slot-0

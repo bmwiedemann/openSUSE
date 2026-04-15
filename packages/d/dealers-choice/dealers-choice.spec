@@ -17,14 +17,15 @@
 
 
 Name:           dealers-choice
-Version:        0.0.11
+Version:        0.0.12
 Release:        0
-Summary:        Online Multiplayer Stud and Draw Poker
+Summary:        Online Multiplayer Stud and Draw Poker, Texas Hold'em and Omaha
 License:        MIT
 Group:          Amusements/Games/Board/Card
 URL:            https://dealer-s-choice.github.io/
 Source:         https://github.com/Dealer-s-Choice/dealers-choice/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  meson >= 0.61.0
@@ -35,13 +36,13 @@ BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(sdl2)
-Requires:       hicolor-icon-theme
+Requires:       hicolor-icon-theme >= 0
 
 %description
-Dealer's Choice is a cross-platform, networked multiplayer poker game that
-supports various draw and stud variants, including optional wild cards. The
-deal rotates between players, and each new game allows a different player to
-choose the variant.
+Dealer's Choice is a cross-platform, networked multiplayer poker game
+supporting draw, stud, and community-card variants, including Texas Hold'em
+and Omaha, with optional wild cards. The deal rotates around the table, and
+the dealer chooses the game before each hand.
 
 %lang_package
 
@@ -58,6 +59,8 @@ choose the variant.
 
 %install
 %meson_install
+%fdupes %{buildroot}%{_docdir}/%{name}
+
 %find_lang %{name}
 
 rm -f %{buildroot}%{_docdir}/%{name}/LICENSE
@@ -69,6 +72,7 @@ rm -f %{buildroot}%{_docdir}/%{name}/LICENSE
 %license LICENSE
 %{_docdir}/%{name}
 %{_bindir}/%{name}
+%{_bindir}/%{name}-bot
 %{_datadir}/applications/dealers-choice.desktop
 %{_datadir}/%{name}/
 %dir %{_datadir}/icons/hicolor
