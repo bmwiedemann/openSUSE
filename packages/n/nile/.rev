@@ -18,4 +18,19 @@ This is also a dependency for heroic-games-launcher package.</comment>
   * Remove unnecessary runtime Requires pulled by macro expansion</comment>
     <requestid>1334898</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b3d24477f8d5ca48bb041533a3bc277f</srcmd5>
+    <version>1.1.2</version>
+    <time>1776262075</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise build flow and enable noarch for Leap 16.0/15.7
+* Removed python3-PyInstaller dependency to fix builds on Leap 16.0.
+* Replaced ExclusiveArch with BuildArch: noarch for better portability.
+* Now dynamically generates pyproject.toml during %prep to manage
+dependencies and entry points.
+* Uses standard %pyproject macros and %py3_compile for bytecode.
+* Stripped unnecessary shebangs from library files.
+* Implemented %fdupes to handle duplicated files in site-packages.</comment>
+    <requestid>1347034</requestid>
+  </revision>
 </revisionlist>

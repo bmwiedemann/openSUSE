@@ -1,7 +1,7 @@
 #
 # spec file for package nile
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define         pythons %{primary_python}
 Name:           nile
 Version:        1.1.2
 Release:        0
@@ -22,44 +23,64 @@ Summary:        Unofficial Amazon Games client
 License:        GPL-3.0-only
 URL:            https://github.com/imLinguin/nile.git
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  python3-PyInstaller
-BuildRequires:  python3-json5 >= 0.9
-BuildRequires:  python3-pip
-BuildRequires:  python3-protobuf >= 4.0
-BuildRequires:  python3-pycryptodome >= 3.0
-BuildRequires:  python3-requests < 3.0}
-BuildRequires:  python3-setuptools
-%ifarch aarch64
-ExclusiveArch: aarch64
-%endif
-%ifarch x86_64
-ExclusiveArch: x86_64
-%endif
+BuildRequires:  fdupes
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module json5}
+BuildRequires:  %{python_module protobuf}
+BuildRequires:  %{python_module pycryptodome}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module zstandard}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
+Requires:       python3-protobuf
+Requires:       python3-pycryptodome
+Requires:       python3-requests
+Requires:       python3-json5
+Requires:       python3-zstandard
+Requires:       python3-platformdirs
+BuildArch:      noarch
 
 %description
 Nile aims to be CLI and GUI tool for managing and playing games from Amazon.
 
 %prep
 %setup -q
+sed -i '1{/^#!/d}' nile/cli.py
 
-# Fixes pyproject and adds a data section.
-cat >> pyproject.toml <<'PYEOF'
+cat > pyproject.toml <<EOF
+[project]
+name = "nile"
+version = "%{version}"
+description = "Unofficial Amazon Games client"
+dependencies = [
+    "protobuf", "pycryptodome", "requests", "json5", "zstandard", "platformdirs",
+]
+[project.scripts]
+nile = "nile.cli:main"
 [tool.setuptools.packages.find]
-where = ["."]
 include = ["nile", "nile.*"]
-
 [tool.setuptools.package-data]
 "nile" = ["assets/**/*"]
-PYEOF
+EOF
 
 %build
-pyinstaller --onefile --name nile nile/cli.py
+export SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-$(date +%%s)}
+%pyproject_wheel
 
 %install
-install -Dm0755 dist/nile %{buildroot}/%{_bindir}/nile
+export SOURCE_DATE_EPOCH=${SOURCE_DATE_EPOCH:-$(date +%%s)}
+export PYTHONHASHSEED=0
+%pyproject_install
+
+find %{buildroot} -name "*.py" -exec touch -d "@$SOURCE_DATE_EPOCH" {} +
+%py3_compile %{buildroot}%{python_sitelib}/nile
+
+%fdupes %{buildroot}%{python_sitelib}
 
 %files
 %license LICENSE*
 %{_bindir}/nile
+%{python_sitelib}/nile
+%{python_sitelib}/nile-%{version}*.dist-info
 
 %changelog

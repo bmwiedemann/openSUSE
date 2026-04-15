@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 14 22:20:20 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update Requires to use python3- prefix instead of python- to
+  fix "nothing provides" errors during installation, as the
+  modern openSUSE python stack uses the python3 capability. 
+
+-------------------------------------------------------------------
+Sat Apr 11 19:28:14 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Add missing %changelog line in spec. 
+
+-------------------------------------------------------------------
+Sat Apr 11 18:59:12 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Modernise build flow and enable noarch for Leap 16.0/15.7
+  * Removed python3-PyInstaller dependency to fix builds on Leap 16.0.
+  * Replaced ExclusiveArch with BuildArch: noarch for better portability.
+  * Now dynamically generates pyproject.toml during %prep to manage 
+    dependencies and entry points.
+  * Uses standard %pyproject macros and %py3_compile for bytecode.
+  * Stripped unnecessary shebangs from library files.
+  * Implemented %fdupes to handle duplicated files in site-packages. 
+
+-------------------------------------------------------------------
 Wed Feb 25 01:51:43 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Fix incorrect python dependency macros usage
