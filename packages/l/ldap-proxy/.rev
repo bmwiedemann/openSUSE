@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1275381</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>60ee3daeddc68dccd8bb07c15132a570</srcmd5>
+    <version>0.1.4~2</version>
+    <time>1776261900</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1.4
+  * Drop OpenSSL for Rustls
+  * Update concread which improves cache performance
+  * Allow DN mapping so that the proxy can impersonate users
+  * Allow un-authenticated searches per rfc4511 (forwarded request 1346810 from fstegmeier)</comment>
+    <requestid>1346949</requestid>
+  </revision>
 </revisionlist>

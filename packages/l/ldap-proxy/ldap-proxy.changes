@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 13 07:53:00 UTC 2026 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to version 0.1.4
+  * Drop OpenSSL for Rustls
+  * Update concread which improves cache performance
+  * Allow DN mapping so that the proxy can impersonate users
+  * Allow un-authenticated searches per rfc4511
+
+-------------------------------------------------------------------
 Wed May  7 04:36:45 UTC 2025 - William Brown <william.brown@suse.com>
 
 - bsc#1242640 - CVE-2025-3416 - openssl use after free
