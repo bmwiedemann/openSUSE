@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Apr  8 12:13:19 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.2:
+  + audioinvert: fix float truncation in transform_float
+  + audioinvert float path broken
+  + compositor: segfault with force-live=true and no sink pads
+    (regression in 1.28)
+  + flvdemux: Avoid assertions on corrupted streams
+  + flvmux: fix race condition on caps get and check
+  + hlsdemux2: fix seekable range for live HLS streams
+  + matroskademux: Fix calculation of bz2 buffer sizes
+  + qtqml: Avoid parsing caps on every buffer (same fix for both
+    qt5 and qt6)
+  + qtdemux:
+    - Add various integer overflow and bounds checks to
+      uncompressed video handling
+    - Fix invalid WebVTT timestamps
+    - Fix handling of in-between fragments without tfdt
+    - Don't immediately push segment after moov in push mode for
+      fmp4
+    - Preserve Metas and Flags when doing row alignment
+    - Avoid a couple of integer overflows
+    - Various fixes related to audio channel counts
+  + Qt6GLVideoItem: caps update fixed
+  + GstGLQt6VideoItem crashes after source pipeline change
+  + rgvolume: don't apply dBSPL reference level compensation for
+    LUFS values
+  + rtspsrc:
+    - Discard early data in ONVIF mode
+    - Fix const-correctness issue around strchr() usage
+  + rtph264depay: fix invalid memory access in
+    gst_rtp_h264_finish_fragmentation_unit
+  + rtptwcc: fix feedback packet count wrapping at 255
+  + vmncdec: Set cursormask to NULL to prevent double free
+  + wavenc: Skip writing empty LIST INFO chunk
+  + wavparse:
+    - Avoid overflow in length when setting ignore-length=true
+    - Fix integer overflow when checking available buffer size for
+      reading cues
+    - Fix parsing of RF64 wave files
+  + GThreadFunc return type fixes
+
+-------------------------------------------------------------------
 Thu Feb 26 09:02:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.1:
