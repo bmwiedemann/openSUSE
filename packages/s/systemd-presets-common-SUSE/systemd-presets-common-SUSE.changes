@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  8 11:11:58 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Enable the new update-desktop-database service that updates
+  the desktop files database on boot for immutable systems
+  (jsc#PED-14839).
+
+-------------------------------------------------------------------
 Thu Jan 29 08:28:27 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Enable vpdupdate service for lsvpd (jsc#PED-14567).

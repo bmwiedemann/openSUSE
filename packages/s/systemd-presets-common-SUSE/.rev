@@ -412,4 +412,17 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>1329839</requestid>
   </revision>
+  <revision rev="48" vrev="48">
+    <srcmd5>756a2c0e955d05780bc1cd36131ac36e</srcmd5>
+    <version>15</version>
+    <time>1776278526</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable the new update-desktop-database service that updates
+  the desktop files database on boot for immutable systems
+  (jsc#PED-14839).
+
+For reference the service is being added in https://build.opensuse.org/requests/1345701
+</comment>
+    <requestid>1346382</requestid>
+  </revision>
 </revisionlist>
