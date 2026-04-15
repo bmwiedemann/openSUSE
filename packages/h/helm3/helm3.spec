@@ -31,7 +31,7 @@ Provides:       helm = %{version}
 BuildRequires:  fish
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
 # go is not available on Framework one for x86
 ExcludeArch:    %ix86
 %endif

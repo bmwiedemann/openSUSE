@@ -81,4 +81,12 @@
     <comment>- Update to version 3.20.2 (bsc#1261938, CVE-2026-35206):</comment>
     <requestid>1346238</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>03c992d3a2512b1cea8a193b5e14c37b</srcmd5>
+    <version>3.20.2</version>
+    <time>1776278542</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix packages for %suse_version bump (jsc#PED-15794)</comment>
+    <requestid>1347125</requestid>
+  </revision>
 </revisionlist>

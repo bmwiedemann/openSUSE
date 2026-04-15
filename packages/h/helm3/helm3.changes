@@ -31,6 +31,11 @@ Thu Mar 12 07:19:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
     map 5417bfa (Evans Mungai)
 
 -------------------------------------------------------------------
+Fri Mar  6 06:21:00 UTC 2026 - rcmadhankumar <madhankumar.chellamuthu@suse.com>
+
+- Fix packages for %suse_version bump (jsc#PED-15794)
+
+-------------------------------------------------------------------
 Thu Jan 22 06:01:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.20.0:
