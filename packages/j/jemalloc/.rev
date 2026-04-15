@@ -794,4 +794,12 @@ If the request is OK, please forward it to Factory soon so that we can
 switch the default compiler. (forwarded request 1273720 from jamborm)</comment>
     <requestid>1273778</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>da55bfef627d7913df59d78029d0ed41</srcmd5>
+    <version>5.3.1</version>
+    <time>1776261829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.3.1</comment>
+    <requestid>1346886</requestid>
+  </revision>
 </revisionlist>

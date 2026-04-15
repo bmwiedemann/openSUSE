@@ -1,7 +1,7 @@
 #
 # spec file for package jemalloc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libjemalloc2
 Name:           jemalloc
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        General-purpose scalable concurrent malloc implementation
 License:        BSD-2-Clause

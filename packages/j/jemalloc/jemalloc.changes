@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 14 13:25:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.3.1
+  * Implement the `pvalloc` C function.
+  * Add runtime option `prof_bt_max` to control the max stack depth
+    for profiling.
+  * Add runtime option `tcache_ncached_max` to control the number
+    of items in each size bin in the thread cache.
+  * Add runtime option `calloc_madvise_threshold` to determine if
+    kernel or memset is used to zero the allocations for calloc.
+  * Add runtime option `disable_large_size_classes` to guard the
+    new usable size calculation, which minimizes the memory
+    overhead for large allocations, i.e., >= 4 * PAGE.
+  * Enable process_madvise usage, add runtime option
+    `process_madvise_max_batch` to control the max # of regions in
+    each madvise batch.
+
+-------------------------------------------------------------------
 Wed Apr 30 17:20:06 UTC 2025 - Martin Jambor <mjambor@suse.com>
 
 - Add fix_make_check_with_gcc15.patch to make the testsuite pass
