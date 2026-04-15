@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 13 07:01:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.26.7:
+  + Fix uninitialized variable error in plparser
+  + Add itunes genre support for podcast RSS feeds
+  + Split podcast tests
+  + Fix deprecation warnings
+  + Fix return value from cancelled plparser calls
+  + Fix TotemPlParserMetadata in plparser bindings
+  + Use gitlab.gnome.org for bug-database in doap
+  + Use apps.gnome.org for homepage in doap
+  + Update podcast test for server changes
+  + Fix guard return type in plparser
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:59:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

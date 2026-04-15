@@ -19,7 +19,7 @@
 %define sover   18
 
 Name:           totem-pl-parser
-Version:        3.26.6+30
+Version:        3.26.7
 Release:        0
 Summary:        A GObject-based library to parse playlist formats
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later

@@ -3,8 +3,11 @@
   <service mode="manual" name="obs_scm">
     <param name="url">https://gitlab.gnome.org/GNOME/totem-pl-parser.git</param>
     <param name="scm">git</param>
-    <param name="revision">51b843912dc7bc43f371f1d88901a38ff2090b43</param>
-    <param name="versionformat">3.26.6+@TAG_OFFSET@</param>
+    <param name="revision">3.26.7</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">(.*)\+0</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">disable</param>
   </service>
   <service name="tar" mode="manual"/>
   <service name="recompress" mode="manual">
