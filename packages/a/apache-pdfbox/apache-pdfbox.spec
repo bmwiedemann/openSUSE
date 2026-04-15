@@ -1,7 +1,7 @@
 #
 # spec file for package apache-pdfbox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.
 Name:           apache-pdfbox
-Version:        2.0.29
+Version:        2.0.36
 Release:        0
 Summary:        Java PDF Library
 License:        Apache-2.0 AND OFL-1.1
@@ -26,8 +26,9 @@ Group:          Development/Libraries/Java
 URL:            https://pdfbox.apache.org/
 Source0:        https://archive.apache.org/dist/pdfbox/%{version}/pdfbox-%{version}-src.zip
 Source1:        https://archive.apache.org/dist/pdfbox/%{version}/pdfbox-%{version}-src.zip.asc
-Source2:        pdfbox-%{version}-build.tar.xz
+Source2:        pdfbox-build.tar.xz
 Source3:        https://www.apache.org/dist/pdfbox/KEYS#/pdfbox.keyring
+Patch0:         pdfbox-CVE-2026-33929.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  bouncycastle
@@ -58,6 +59,7 @@ JavaDoc documentation for %{name}
 
 %prep
 %setup -q -n pdfbox-%{version} -a2
+%patch -P 0 -p1
 
 # Remove provided binaries
 find -name '*.class' -delete
@@ -77,7 +79,7 @@ install -d -m 0755 %{buildroot}%{_mavenpomdir}/pdfbox
 install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
 for jar in fontbox pdfbox xmpbox debugger tools; do
     install -p -m 0644 ${jar}/target/*-%{version}.jar %{buildroot}%{_javadir}/pdfbox/${jar}.jar
-	%mvn_install_pom ${jar}/pom.xml %{buildroot}%{_mavenpomdir}/pdfbox/${jar}.pom
+	%{mvn_install_pom} ${jar}/pom.xml %{buildroot}%{_mavenpomdir}/pdfbox/${jar}.pom
 	%add_maven_depmap pdfbox/${jar}.pom pdfbox/${jar}.jar
 	cp -pr ${jar}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${jar}
 done
@@ -86,12 +88,12 @@ ln -s -f %{_javadir}/pdfbox/fontbox.jar %{buildroot}%{_javadir}/
 
 %fdupes -s %{buildroot}%{_javadocdir}
 
+%files -f .mfiles
+%{_javadir}/fontbox.jar
+%license LICENSE.txt NOTICE.txt
+%doc RELEASE-NOTES.txt README.md
+
 %files javadoc
 %{_javadocdir}/%{name}
-
-%files -f .mfiles
-%doc RELEASE-NOTES.txt README.md
-%license LICENSE.txt NOTICE.txt
-%{_javadir}/fontbox.jar
 
 %changelog

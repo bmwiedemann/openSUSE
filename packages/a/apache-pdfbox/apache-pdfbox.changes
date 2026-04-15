@@ -1,4 +1,451 @@
 -------------------------------------------------------------------
+Tue Apr 14 09:47:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * pdfbox-CVE-2026-33929.patch
+    + upstream fix for bsc#1262046, CVE-2026-3392: Path Traversal
+      in PDFBox ExtractEmbeddedFiles Example Code
+
+-------------------------------------------------------------------
+Tue Apr 14 09:00:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.0.36
+  * Bug
+    - XMPBox removes namespaces on serialization
+    - False negative on PDFA-1b validation : missing field type
+    - PlainText.Paragraph.getLines extremely slow on long lines
+    - Valid PDF/A 1B is rejected
+    - Potential StackOverflows in BaseParser
+    - Unknown code in Huffman RLE stream
+    - IllegalArgumentException: Can't add attribute to 0-length text
+    - TTFSubsetter.buildGlyfTable() modifies glyphIds while
+      iterating over its entries possibly causing
+      ConcurrentModificationException to be thrown
+    - IndexOutOfBoundsException in
+      Type1CharStringParser.processCallSubr()
+    - Exception "No type defined for
+      {http://www.aiim.org/pdfa/ns/id/}rev" when trying to determine
+      version of PDF/A-4 document
+    - allow new PDF/A-4 conformance levels
+    - pdfbox-app-X.X.X-sources.jar on maven central are empty (and
+      javadoc jar is missing)
+    - Cmd line docs
+    - IllegalArgumentException: Multiplying two matrices produces
+      illegal values in PDFStreamEngine.processAnnotation()
+    - XmpParsingException: Schema is not set in this document:
+      http://ns.adobe.com/xap/1.0/sType/ResourceEvent#
+    - NullPointerException in FontMapperImpl.getFontMatches()
+    - border style in FDFAnnotation is not initialized if width is 0
+    - German umlauts are not rendered
+    - Invalid type in Schema not detected when in XML attributes
+    - Serializing produces date "1-01-01T00:00:00+01:00"
+    - Seconds of date "D:2015-02-03T10:11:12" returned as 0
+    - Confusing naming of "DerivedFrom" property getter in
+      XMPMediaManagementSchema
+    - ClassCastException in XMPMediaManagementSchema.getHistory()
+    - IllegalArgumentException: Input buffer too short in
+      StandardSecurityHandler.computeRC4key()
+    - IllegalArgumentException: Width (0) and height (0) cannot be
+      <= 0 when printing landscape rotated with RASTERIZE_DPI_AUTO
+    - DateConverter fails on valid date
+    - ClassCastException: class org.apache.xmpbox.type.TextType
+      cannot be cast to class org.apache.xmpbox.type.ArrayProperty
+      in DublinCoreSchema.getCreatorsProperty()
+    - tiff:YCbCrSubSampling and tiff:YCbCrPositioning have wrong
+      cardinality
+    - ClassCastException: class org.apache.xmpbox.type.FlashType
+    - Cannot find a definition for the namespace
+      http://www.w3.org/1999/02/22-rdf-syntax-ns#, property:
+      rdf:Description
+    - XmpParsingException: Schema is not set in this document:
+      http://ns.adobe.com/xap/1.0/sType/ResourceEvent#, property:
+      stEvt:action
+    - XmpParsingException: Missing pdfaSchema:property in type
+      definition in lenient mode
+    - XmpParsingException: Unknown property value type : Open Choice
+      of Integer
+    - XmpParsingException: Property 'CountryCode' not defined in
+      http://www.epo.org/patent-bibliographic-data/1.0/
+    - date "0-00-00T00:00:00-04:00" read as
+      "0002-11-30T00:00:00-40:00"
+    - XmpParsingException: Type 'stRef:documentName' not defined in
+      http://ns.adobe.com/xap/1.0/sType/ResourceRef# in lenient mode
+    - Invalid PDF/A namespace definition, prefix: xmlns, namespace:
+      http://www.aiim.org/pdfa/ns/extension/
+    - XmpParsingException: Schema is not set in this document:
+      http://www.aiim.org/pdfa/ns/extension/, property:
+      pdfaExtension:schemas
+    - NegativeArraySizeException in PredictorOutputStream()
+    - NullpointerException in PDAcroForm.getField(Line 485)
+    - OutOfMemoryError when trying to extract text from pdf
+    - Outlines circular reference vulnerability
+    - Rendered text missing
+    - Inverted images due to enlarged decode array
+    - PDF displays garbled characters in Adobe Reader but renders
+      correctly in web browsers
+    - NullPointerException while merging PDFs with output intents
+  * Improvement
+    - Valid XMP Extension Schema rejected
+    - Remove dead code from PDFMarkedContentExtractor
+    - Include test file in test class
+    - Get and Add PageTextSchema
+    - Remove / deprecate TypeMapping.getAssociatedSchemaObject()
+    - Support Seq / Bag mixup in lenient mode
+    - Parse xmp files in lenient mode that have no processing
+      instructions
+    - deprecate getPDFIdentificationSchema() in favor of
+      getPDFAIdentificationSchema()
+    - Support TIFF-files with FillOrder=2 conversion to PDF
+  * Task
+    - Remove / deprecate unused parts of PDIndexed
+    - modernize rat exclusions
+    - Run regression tests for 2.0.36
+
+-------------------------------------------------------------------
+Tue Apr 14 08:56:18 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.0.35
+  * Bug
+    - NegativeArraySizeException with PDF file with huge fonts
+    - Inline image bug with multi-byte newline tokens
+    - fix initial ByteArrayOutputStream size for deflate operation
+    - PDF takes an hour to render
+    - Splitter does not include structure tree in documents past the
+      first split
+    - build fails on jdk11
+    - Load a TTF font which is from Mac OS throw an exception
+    - Wrong glyphs since PDFBOX-5790
+    - ClassCastException on broken file in
+      PDEmbeddedFilesNameTreeNode.convertCOSToPD()
+    - invalid XMP generated when Apache Xalan in the classpath
+    - XMP JobType constructor ignores fieldPrefix
+    - NullPointerException in xmpbox serializer if a date is empty
+    - Rendering issue with type 2 shading: vertical expansion
+    - Possible infinite loop in shading code
+    - Potential OOM in XrefStreamParser
+    - Potential StackOverflow in PDFStreamParser
+    - Potential StackOverflow in PDPageTree's
+      getInheritableAttribute
+    - Potential OOM in Type1Lexer
+    - Potential OOM in PfbParser
+    - PDMarkedContentReference.setMCID() should not accept negative
+      numbers
+    - IllegalPathStateException: missing initial moveto in path
+      definition
+    - Fix possible ClassCastException
+    - NullPointerException in COSDictionary
+    - StringIndexOutOfBoundsException in
+      PlainText$Paragraph.getLines()
+    - LZWFilter crashes, probably not handling the KwKwK special
+      case
+    - NullPointerException in PDNumberTreeNode.getNumbers()
+    - UnsupportedOperationException: JPX color spaces don't support
+      drawing
+    - Signing tries to set byteRange of old signature (2)
+    - ClassCastException in
+      PDOptionalContentProperties.getBaseState()
+  * Improvement
+    - Add test for embedded files
+    - set size for ByteArrayOutputStreams
+    - avoid creation of temporary objects when parsing hex values
+    - avoid unnecessary map lokups
+    - remove unnecessary iteration and StringBuilder creation
+    - Support reverse landscape orientation for printing
+    - Add test coverage for orphan annotation
+    - Remove orphan popup parent annotation
+    - Improve XmpSerializer test by verifying its output
+    - Consider rotation of page when applying overlay
+    - Preserve Perms dictionary when signing
+    - Check /ParentTree against /K tree
+    - Add test for 5521
+    - Refactor RC4Cipher
+  * Task
+    - Regression tests for 2.0.35
+
+-------------------------------------------------------------------
+Tue Apr 14 08:53:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.0.34
+  * Bug
+    - PageDrawer is not rendering unrotatable Annotations on rotated
+      pages
+    - Zero-width non-joiner characters visible in generated PDF
+    - Surrogate pairs with combining diacritics are incorrectly
+      ordered on text extraction
+    - TestCreateSignature.testCreateSignedTimeStamp checkLTV build
+      test fail (2) / Support several issuers
+    - IllegalArgumentException: Width (0) and height (0) must be
+      non-zero
+    - Merge docs with specific characteristics causes stack overflow
+    - InvalidKeyException: Supplied key
+      (sun.security.ec.ECPrivateKeyImpl) is not a RSAPrivateKey
+    - Can't read the embedded Type1 font: Found Token[kind=NAME,
+      text=def] but expected begin
+    - Wrong size entry in trailer after incremental save
+    - FileSystemFontProvider doesn't register failed type1 fonts
+    - Text annotation crosshair symbol too small when using Adobe
+      symbol font
+    - Orphan /OpenAction destination page kept in merge
+    - PDFRenderer causes endless loop
+    - Invalid stream length: 0, stream start position: <xxx>
+    - Inline image incorrectly parsed (2)
+    - IllegalArgumentException: Not a valid Unicode code point:
+      0xE28496
+    - Type 3 font glyphs not displayed
+    - Rendered PDF is missing shading pattern graphics
+    - NPE during merge
+    - Class cast exception in building PDDestinationNameTreeNode
+    - DomXmpParser incorrectly expects namespaces on attribute level
+    - BDC processor mishandles property name
+    - Can't render some Type1C fonts.
+    - PDF to Image conversion results in a blank white page
+  * Improvement
+    - Implement PDFormXObject.setGroup()
+    - CertificateVerifier.isSelfSigned() should not throw an
+      exception
+    - Use Zapf Dingbats code for cross text annotation
+    - Support PushPin, Tag and Graph file attachment annotation
+      icons
+    - Improve PDFMergerUtility memory footprint
+    - Support rare RC4 encryption where R=4, key length < 128 bits
+    - Improve checkWithNumberTree() test
+    - Use SHA256 instead of MD5 for document id
+  * Wish
+    - PrintPDF should not be case sensitive against printer name on
+      Windows
+  * Task
+    - Run regression tests for 2.0.34
+
+-------------------------------------------------------------------
+Tue Apr 14 08:49:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.0.33
+  * Bug
+    - Character positions shifted
+    - Incorrectly extracted text (broken words)
+    - Wrong color of uncolored tiling pattern
+    - OutOfMemoryError - during renderImageWithDPI
+    - BaseParser fails when a number is followed by a string
+      starting with 'e'
+    - Type3 font is not rendered
+    - Flattening removes all annotations when widget annotation has
+      no page
+    - Image lost on page render
+    - extra whitespaces when extracting Arabic text
+    - SMaskInData not supported for JPX images
+    - Kid Widget /DA is ignored in setDefaultAppearance() call
+    - Radio button can't be set
+    - the PDDocument.documentId does not seem to be written into the
+      flat byteStream
+    - PDFBox is unable to remove ID
+    - Fix last step of the build process
+    - StringIndexOutOfBoundsException in AppearanceGeneratorHelper
+    - ClassCastException in SetLineJoinStyle.process()
+    - Unable to load password protected pdf
+    - PDFBox not extracting text of non-latin languages(tamil,
+      bengali) properly but adobe reader's save as text does
+    - Checkstyle
+    - [PATCH] Detect CMYK image without relying on metadata
+    - Regression from PDFBOX-5841: Text extraction with rotation
+      magic fails for PDF with multiple content streams in a page
+    - PDF render blank page: The end of the stream doesn't point to
+      the correct offset, using workaround to read the stream,
+      stream start position: 196, length: 0, expected end position:
+      196
+    - CVE for Lucene libraries
+    - The pattern created with PDFBox shows inconsistent colors
+      between Safari and Adobe.
+    - BDC sequence with resource reference instead of with MCID
+    - StackOverflowError in PDFieldFactory.findFieldType
+    - ClassCastException in AnnotationValidator
+    - The CPU usage of a PDF file with a size of 85.6 MB is abnormal
+    - Many ZapfDingbats symbols do not appear when page is rendered.
+    - IOException when reading isolated "+"
+    - IllegalArgumentException: capacity < 0: (-75475220 < 0) in
+      RandomAccessReadBuffer constructor
+    - FontBox spawns a `cmd` subprocess to read an environment
+      variable (on Windows)
+    - Implement PDF 2.0 dash phase clarification (2)
+    - Particular PDF fails on renderImageWithDPI call
+    - PDType0Font return invalid space width
+    - Icons of text annotations sometimes too large
+    - Orphan page check doesn't check annotation destinations
+    - NPE in COSArray.indexOfObject
+    - NPE in PagePane.mouseMoved()
+    - ArrayIndexOutOfBoundsException in CMap.toInt()
+  * New Feature
+    - Show ASN.1 decoded Contents for Signature-Dictionary
+  * Improvement
+    - Exchange hard-coded values for variables and provide
+      command-line options in TextToPDF component
+    - Long rendering time of fonts in a specific PDF
+    - Support imageio-jnr / imageio-openjpeg library for JPEG2000
+      decoding
+    - Improve ExtractTTFFonts
+    - Change Loglevel from Warn to info when rebuilding font cache
+    - Support OCG visibility expressions
+    - Add page getter/setter to PDObjectReference
+    - Support long values for COSInteger objects
+    - Empty constructor for PDViewerPreferences
+    - Add check of /P to PDFMergerUtilityTest
+    - support Markdown extraction from the command line
+    - Calculate dpi dynamically when printing with raster
+    - Remove orphan annotations in structure tree
+    - Add font name to PrintTextLocations
+  * Wish
+    - Improve detection whether printing or viewing
+    - Hi CPU and memory usage when converting a PDF with type 4
+      shading
+  * Task
+    - 2.0 builds fail on jenkins because jdk11 no longer supported
+
+-------------------------------------------------------------------
+Tue Apr 14 08:45:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.0.32
+  * Bug
+    - preflight-app fails on Java 11+ with NoClassDefFoundError:
+      javax/activation/DataSource
+    - AppearanceGeneratorHelper assumes fontscale 1000
+    - Remove release subproject
+    - Don't use a predefined CMap if a ToUnicode CMap is present
+    - Regression NPE in Splitter
+    - The content of the specified font is lost, Google Chrome can
+      display it
+    - Crash for Softmask with incorrect backdrop color components
+    - Observable Timing Discrepancy (Timing Attack)
+    - Black rectangle over image
+    - Wrong font substitution for Wingdings
+    - PDDocument#importPage slowed down by factor 1300
+    - Split aborts with broken destinations
+    - IllegalArgumentException: Parameter must be 1-based, but is 0
+      when using PDFTextStripperByArea
+    - Files created with PDFMergerExample are not correct PDF/A
+    - Missing /Subtype and /Type in Metadata not detected
+    - Multiple exceptions coming from org.apache.fontbox.ttf for
+      different PDFs
+    - IOException: Error expected floating point
+      numberactual='-12.-1'
+    - NullPointerException: Cannot invoke "String.codePointAt(int)"
+      because "uni" is null
+    - DomXmpParser - IllegalArgumentException: prefix cannot be
+      "null" when creating a QName
+    - ClassCastException: org.apache.pdfbox.cos.COSNull cannot be
+      cast to org.apache.pdfbox.cos.COSDictionary
+    - IllegalArgumentException: Width (26) and height (0) must be
+      non-zero
+    - There is an exception when getting embedded font, is it
+      compatible?
+    - Infinite loop after splitting and saving PDF / giant result
+      files
+  * Improvement
+    - JPEGFactory. Reduce logging severity when no image metadata is
+      present
+    - Add test for surrogate pair character ð©¸½
+    - Update unicode Scripts.txt
+    - Include a PDFA check with VeraPDF for CreatePDFATest
+    - Add center constructor parameter to PDFPageable and to
+      pdfbox-app
+    - When splitting, keep named page destinations that are part of
+      target document(s)
+    - When this PDF is rendered with the "f" Operator, a black
+      screen appears.
+  * Task
+    - Investigate why we get "response contains wrong nonce value"
+      during build tests
+
+-------------------------------------------------------------------
+Tue Apr 14 08:42:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.0.31
+  * Bug
+    - [PATCH] Split pdf lose accessibility tags
+    - Allow creating of PDFXObjectImage without accessing to the
+      image stream
+    - PfbParser fails to parse PFB font with multiple binary
+      records.
+    - Lines vanish when printing on MacOS
+    - java.lang.IllegalArgumentException: Provided dictionary is not
+      of type 'COSName{OCG}'
+    - The embedded font DroidSansFallbackFull reports an error when
+      parsing, and finally uses lastResortFont, resulting in garbled
+      fonts.
+    - COSName caches already cached hashCode
+    - Font operation takes a long time with 3.0.1
+    - NullPointerException in TTFSubsetter.buildPostTable()
+    - Problem converting PDF to image (java.awt.color.CMMException:
+      Can not access specified profile)
+    - Set the default value for PDNonTerminalField
+    - java.lang.ArrayIndexOutOfBoundsException Bug Report
+    - Wrong colors in PDF since PDFBOX-5488
+    - Java 7 support on 2.0
+    - Convert to image exception
+    - PDF conversion in this format is very slow. Is there any room
+      for optimization?
+    - IllegalArgumentException: -Infinity is not a finite number
+    - Inconsistent signature page handling when signing in existing
+      signature fields
+    - Add leading "0" for octal values in MacOSRomanEncoding
+    - DataFormatException: invalid distance too far back
+    - Grayscale JPEG rendered multicolor
+    - OutOfMemoryError in FileSystemFontsProvider.scanFonts
+    - NPE in PageDrawer.getPaint()
+    - Issue with embedded Font and descendant Font
+    - LCMS error 13: Mismatched alpha channels
+  * New Feature
+    - Enable Native Markdown Extraction in Apache PDFBox
+  * Improvement
+    - When splitting, keep page destinations that are part of target
+      document(s)
+    - Replace Exception with some repair attempt
+
+-------------------------------------------------------------------
+Tue Apr 14 08:38:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.0.30
+  * Bug
+    - Regression unicode mapping in Korean document
+    - Operators "q" and "Q" should also preserve text matrices
+    - Signature Image not Rendered starting with PDFBox 2.0.23
+    - Fonts are not subsetted when saving incrementally
+    - Bug in PDFMergerUtility#mergeFields
+    - Password protected PDF opens in GUI apps but PDFbox says
+      invalid password
+    - Wrong error message "2.4.1 : Invalid Color space, The operator
+      "rg" can't be used with CMYK Profile"
+    - Make FDF annotations more compliant with the specification
+    - NPE in DomXmpParser.parseLiDescription
+    - Regression: NoSuchElementException in PDFXrefStreamParser
+    - The PageDrawer.strokePath method is blocked, and cpu100%
+    - Avoid NPE when processing CFF2 based fonts
+    - IllegalArgumentException: Dimensions (width=458477041
+      height=26) are too large
+    - Can not see checkbox check
+    - NPE when converting pdf to image.
+    - NullPointerException in XMPMetadata.getSchema()
+    - PDFToImage might not correctly detect unsupported image
+      formats
+    - Font cache isn't effective on my machine, always rebuilds
+    - PDF to Image conversion results in different converted image
+    - Text in a certain font is lost when converting pdf to image
+    - Incorrect colors in image from PDFs (DCTDecode)
+  * New Feature
+    - Inconsistent/incomplete PDF rendering
+  * Improvement
+    - Improve code quality (4)
+    - Add PDRectangle#TABLOID paper size
+    - Support version 0.5 of MaximumProfileTable
+    - loca-table isn't mandatory for TTF/OTF-fonts using CFF
+      outlines
+    - Implement PDF 2.0 dash phase clarification
+    - Add getter and setter for the CO array under PDAcroForm
+    - Make UTC timezone static
+    - Facilitate migration to PDFBox 3.0
+    - Consolidate bouncycastle configuration
+    - Consistent scm.url values for pom.xml
+    - use comparison operators for enums
+
+-------------------------------------------------------------------
 Mon Aug  7 07:12:31 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to 2.0.29
@@ -67,7 +514,7 @@ Fri Apr 14 08:10:09 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
       dictionary of a Page
     - Support charset parameter in TextToPDF
     - Add a method to get the components of a composite glyph
-    - PDResource font cache improvement 
+    - PDResource font cache improvement
     - RFE: Comb flag warning
     - fix unnecessary boxing/unboxing
     - optimize LZWFilter
@@ -135,7 +582,7 @@ Fri Apr 14 08:10:09 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
     - Image interpolation when there shouldn't be
     - pDAcroForm.flatten() does not remove /SigFlags in /Catalog
       object
-    - Could not read embedded TTF for font 
+    - Could not read embedded TTF for font
     - ToUnicodeWriter.writeTo allows byte overflow in bfrange
       operator
     - TextToPDF appends space to each line
@@ -262,7 +709,7 @@ Fri Apr 14 08:10:09 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
     - Behaviour change in 2.0.20 due to use of
       IOUtils.populateBuffer in
       SecurityHandler.prepareAESInitializationVector leading to
-      IOException for certain PDF 
+      IOException for certain PDF
     - java.io.IOException: Page tree root must be a dictionary
     - Snapshot Deploy not working
     - TSAClient with username+password
@@ -295,7 +742,7 @@ Fri Apr 14 08:10:09 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
   * Wish
     - When merging multiple pdf ua documents, Tags become nested
   * Task
-    - Failing testFlattenPDFBox2469Filled on Ubuntu 
+    - Failing testFlattenPDFBox2469Filled on Ubuntu
     - Add test for PDFMarkedContentExtractor class
     - Create test for CreateGradientShadingPDF
 
@@ -468,7 +915,7 @@ Tue May 15 13:31:52 UTC 2018 - fstrba@suse.com
 -------------------------------------------------------------------
 Fri Sep 29 06:42:51 UTC 2017 - fstrba@suse.com
 
-- Don't condition the maven defines on release version, but on 
+- Don't condition the maven defines on release version, but on
   _maven_repository being defined
 
 -------------------------------------------------------------------
