@@ -108,4 +108,41 @@
 - Update to version 6.0.0:</comment>
     <requestid>1321375</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>13b56a4eaf83737e1f97e6825e8650e0</srcmd5>
+    <version>6.1.4</version>
+    <time>1776278531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.1.4 (bsc#1262142, CVE-2026-40499):
+  * Analysis: improve autoname scoring, jmptbl detection, and performance
+  * Add callargs modifier, rnum expressions, and typed function context
+  * Refactor autoname into plugin; extend RAnalPlugin hooks
+  * Fix leaks, overflows, and command injection in analysis scripts
+  * Improve string detection, wide strings, and switch/case analysis
+  * Arch: fix v850/nds32 ESIL, optimize to O(1), improve pseudo support
+  * Cache capstone options and improve multi-arch disassembly
+  * ASM: add camel syntax support, unify via RArch API
+  * Bin: major parser fixes (ELF, Mach-O, PE, DEX, PDB, WAD, XCOFF)
+  * Fix leaks, OOB reads/writes, overflows, and improve bounds checks
+  * Improve Swift demangling, ARM hints, relocations, and imports
+  * Add nds32 reloc support and optimize kernelcache parsing
+  * Build: install to lib64, fix illumos and packaging issues
+  * CI: add GitHub Actions and FilC builds
+  * Console: fix multiple overflows, OOB issues, and improve performance
+  * Core: API renames, plugin load order, sandbox/config fixes
+  * Crash: extensive fixes (UAF, OOB, overflows, injections, fuzz bugs)
+  * Harden ELF, PDB, kernelcache, regex, disassemblers, and webserver
+  * Debug: improve ptrace, winkd support, breakpoints, checkpoints
+  * Disasm: cache flag lookups for performance
+  * FS/IO: fix leaks, bounds, sparse IO, and device handling
+  * HTTP/socket: webserver fixes and SSL fallback handling
+  * Print/projects: improve formatting, endian handling, project metadata
+  * Pseudo: add while/switch support and cleaner control flow
+  * Search/shell: improve commands, parsing, and usability
+  * Security: fix widespread command injection and sandbox escapes
+  * Tests/tools: improve r2r, CLI tools, fuzzing, and plugin support
+  * Types/util: parsing improvements, JSON/base64 updates, optimizations
+  * Visual: fix UAF/leaks, improve panels and UX</comment>
+    <requestid>1347121</requestid>
+  </revision>
 </revisionlist>

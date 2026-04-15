@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Tue Apr 14 22:46:31 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 6.1.4 (bsc#1262142, CVE-2026-40499):
+  * Analysis: improve autoname scoring, jmptbl detection, and performance
+  * Add callargs modifier, rnum expressions, and typed function context
+  * Refactor autoname into plugin; extend RAnalPlugin hooks
+  * Fix leaks, overflows, and command injection in analysis scripts
+  * Improve string detection, wide strings, and switch/case analysis
+  * Arch: fix v850/nds32 ESIL, optimize to O(1), improve pseudo support
+  * Cache capstone options and improve multi-arch disassembly
+  * ASM: add camel syntax support, unify via RArch API
+  * Bin: major parser fixes (ELF, Mach-O, PE, DEX, PDB, WAD, XCOFF)
+  * Fix leaks, OOB reads/writes, overflows, and improve bounds checks
+  * Improve Swift demangling, ARM hints, relocations, and imports
+  * Add nds32 reloc support and optimize kernelcache parsing
+  * Build: install to lib64, fix illumos and packaging issues
+  * CI: add GitHub Actions and FilC builds
+  * Console: fix multiple overflows, OOB issues, and improve performance
+  * Core: API renames, plugin load order, sandbox/config fixes
+  * Crash: extensive fixes (UAF, OOB, overflows, injections, fuzz bugs)
+  * Harden ELF, PDB, kernelcache, regex, disassemblers, and webserver
+  * Debug: improve ptrace, winkd support, breakpoints, checkpoints
+  * Disasm: cache flag lookups for performance
+  * FS/IO: fix leaks, bounds, sparse IO, and device handling
+  * HTTP/socket: webserver fixes and SSL fallback handling
+  * Print/projects: improve formatting, endian handling, project metadata
+  * Pseudo: add while/switch support and cleaner control flow
+  * Search/shell: improve commands, parsing, and usability
+  * Security: fix widespread command injection and sandbox escapes
+  * Tests/tools: improve r2r, CLI tools, fuzzing, and plugin support
+  * Types/util: parsing improvements, JSON/base64 updates, optimizations
+  * Visual: fix UAF/leaks, improve panels and UX
+  * Full changelog is available at:
+    https://github.com/radareorg/radare2/releases/tag/6.1.4
+
+-------------------------------------------------------------------
+Tue Apr 14 22:43:19 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 6.1.2:
+  * Analysis: preserve timeouts, improve bb/jmptbl validation and limits
+  * Optimize string detection and hot-path functions
+  * Add APIs for function signatures, vars limits, and instruction hints
+  * Fix overlapped functions, invalid code checks, and large bb handling
+  * API: remove deprecated librmagic/filetype APIs and name filter
+  * Arch: fix Thumb/endianness issues, add Python pseudo plugin
+  * ASM: unify settings via RArch, fix directives, add bf pseudo plugin
+  * Bin: improve ELF/Mach-O stripped detection and parsing safety
+  * Harden Mach-O bounds, optimize kernelcache and XNU parsing
+  * Fix many leaks (DEX, demangler, parsers) and infinite loops
+  * Improve DWARF handling and symbol/type extraction
+  * Build: improve meson, toolchains, and add ISO/docker support
+  * Console: preserve timeout, fix themes and UTF-8 handling
+  * Core: fix config bugs, improve startup and addressing support
+  * Crash: fix UAF, OOB, race conditions, regex bugs, and overflows
+  * Add safety checks across dotnet, Mach-O, DWARF, and webserver
+  * Debug/ESIL: safer execution and divide-by-zero handling
+  * FS/IO: fix HFS+, dyldcache speedups, safer zip handling
+  * Graph: add bb size limit option
+  * Print: merge commands, improve UTF-8 and formatting
+  * Projects/tools: new configs, plugin support, CLI improvements
+  * Search: faster analysis search and block buffering
+  * Shell: improve grep/macros and file operations
+  * Types: lazy-load, cache, and improve parsing (varargs, structs)
+  * Tests: expand fuzzing and test suites
+  * General cleanup, performance tuning, and safety improvements
+  * Full changelog is available at:
+    https://github.com/radareorg/radare2/releases/tag/6.1.4
+
+-------------------------------------------------------------------
+Tue Apr 14 22:40:51 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 6.1.0:
+  * Reimplement RBufRef using RRef; fix RLibDelHandler API
+  * Remove stale JAY code; improve analysis performance and CI speed
+  * Optimize type propagation, jump tables, and plugin integration
+  * Fix infinite loops, antidisasm tricks, and function autonaming
+  * Add new analysis options and trace import plugin (DRCOV)
+  * Improve RCore seek operations and naming APIs
+  * API: add RNum.getErr, enforce safe alloc macros, new helpers
+  * Arch: update ARC disasm, refactor sessions, remove unsafe string ops
+  * ASM: improve x86 validation, add CIL and ARC pseudo plugins
+  * Bin: major fixes for PE, ELF, Java, MDMP, LE, DEX; reduce memory use
+  * Add/import DWARF types, improve relocations and symbol handling
+  * Extensive memory leak fixes and parser hardening across formats
+  * Improve string handling, caching, and zero-copy optimizations
+  * Build: improve meson, remove zip deps, add 3rd-party plugin support
+  * Console: fix UTF-8 graphs and color propagation
+  * Core: improve plugin handling and background task stability
+  * Crash: fix multiple UAF, OOB, overflows, and injection issues
+  * Sanitize inputs (function names, demangler, callconv)
+  * Debug: add source breakpoints, ARM64/XNU support, FPU regs
+  * Disasm: improve string handling, comments, and color logic
+  * ESIL: extend x86 FPU emulation
+  * FS/IO: fixes and plugin reorganizations
+  * HTTP: fix sandbox webserver issues
+  * Hash/tools: minor fixes and output improvements
+  * General cleanup, safety checks, and performance optimizations
+  * Full changelog is available at:
+    https://github.com/radareorg/radare2/releases/tag/6.1.0
+
+-------------------------------------------------------------------
+Tue Apr 14 22:35:05 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 6.0.8:
+  * Migrate r_vector to RVec across core components
+  * Refactor and optimize type propagation (now plugin-based)
+  * Remove redundant anal.a2f and related duplication
+  * Improve caching, memoization, and performance in analysis
+  * Fix file corruption, null asserts, and command issues
+  * Enhance x86 (AT&T syntax, enter instruction) and z80 support
+  * Add initial .NET (CIL) disasm/asm support
+  * Improve Java, ELF, Mach-O, APK, and PDB handling
+  * Fix demangling, symbols, and relocation issues
+  * Resolve multiple memory leaks and parser bugs
+  * Fix UAF, OOB, overflows, and command injection vulnerabilities
+  * Improve GDB debugging and breakpoint handling
+  * Enhance disassembly visuals and color options
+  * Update ESIL operators and behavior
+  * Add support for APFS, GPT, BSD, APM partitions
+  * Improve IO handling and add new plugins
+  * Optimize performance (strbuf, memory usage)
+  * Improve console UI, themes, and terminal handling
+  * Refine SDK builds and CI pipelines
+  * Improve CLI tools (rabin2, rasm2, rafs2)
+  * Add JSON support and better help/version info
+  * Expand type parsing (typedef, enum, union)
+  * Improve socket/HTTP handling and downloads
+  * Add and refine tests and reporting
+  * General cleanup, safety checks, and code modernization
+  * Full changelog is available at:
+    https://github.com/radareorg/radare2/releases/tag/6.0.8
+
+- Expand %{bindir}/*
+
+-------------------------------------------------------------------
 Sat Dec  6 15:57:07 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Add %check section and test bins
@@ -6,7 +141,7 @@ Sat Dec  6 15:57:07 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 -------------------------------------------------------------------
 Sat Dec  6 15:10:43 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Rename sdb.1 man page to r2sdb.1 to avoid conflict with snobol4 
+- Rename sdb.1 man page to r2sdb.1 to avoid conflict with snobol4
 
 -------------------------------------------------------------------
 Thu Dec  4 14:07:30 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>

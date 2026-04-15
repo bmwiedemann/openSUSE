@@ -1,7 +1,7 @@
 #
 # spec file for package radare2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%global sdb_rev    2.2.4
-%global sdb_soname 2_2_4
+%global sdb_rev    2.4.2
+%global sdb_soname 2_4_2
 
-%global qjs_rev v0.11.0
+%global qjs_rev 3087a2ce5bcb66cc1fcd9f34d3e5ce3bd43a67d9
 
-%global tests_rev 65539cb70eba0901995e04b471975beca0c42c69
+%global tests_rev d6a4529fd6c8439a309abbcf00bb7a9efc9e8271
 
 Name:           radare2
-Version:        6.0.7
+Version:        6.1.4
 Release:        0
 Summary:        Reverse Engineering Framework
 License:        GPL-3.0-only AND LGPL-3.0-only
@@ -89,7 +89,7 @@ sdb is a simple string key/value database based on djb's cdb disk
 storage and supports JSON and arrays introspection.
 
 %ldconfig_scriptlets -n libsdb%{sdb_soname}
-%ldconfig_scriptlets -n %name
+%ldconfig_scriptlets -n %{name}
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
@@ -106,7 +106,7 @@ mkdir -p test/bins
 tar   -C test/bins --strip-components=1 -x -f %{SOURCE3}
 
 %build
-%__meson subprojects packagefiles --apply
+%{__meson} subprojects packagefiles --apply
 
 %meson \
   -Duse_sys_capstone=true \
@@ -122,9 +122,6 @@ tar   -C test/bins --strip-components=1 -x -f %{SOURCE3}
 
 %install
 %meson_install
-
-mkdir -p %{buildroot}%{_docdir}/radare2
-mv %{buildroot}%{_datadir}/doc/radare2/* %{buildroot}%{_docdir}/radare2/
 
 chrpath -d %{buildroot}%{_bindir}/r2sdb
 
@@ -142,22 +139,39 @@ export PATH="$PWD/%{_vpath_builddir}/binr/radare2:$PATH"
 %{_libdir}/libr_*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/libr
-%dir %{_datadir}/radare2/%{version}/charsets
 %dir %{_datadir}/radare2/%{version}/fcnsign
 %dir %{_datadir}/radare2/%{version}/format
 %dir %{_datadir}/radare2/%{version}/opcodes
 %dir %{_datadir}/radare2/%{version}/syscall
-%{_datadir}/radare2/%{version}/charsets/*
+%dir %{_datadir}/radare2/%{version}/fortunes/
 %{_datadir}/radare2/%{version}/fcnsign/*
 %{_datadir}/radare2/%{version}/format/*
 %{_datadir}/radare2/%{version}/opcodes/*
 %{_datadir}/radare2/%{version}/syscall/*
+%{_datadir}/radare2/%{version}/fortunes/*
 
 %files
 %doc COMMUNITY.md CONTRIBUTING.md DEVELOPERS.md README.md
 %license COPYING.md
-%{_docdir}/radare2/*
-%{_bindir}/*
+%{_bindir}/r2
+%{_bindir}/r2agent
+%{_bindir}/r2pm
+%{_bindir}/r2r
+%{_bindir}/r2sdb
+%{_bindir}/rabin2
+%{_bindir}/radare2
+%{_bindir}/radiff2
+%{_bindir}/rafind2
+%{_bindir}/rafs2
+%{_bindir}/ragg2
+%{_bindir}/rahash2
+%{_bindir}/rapatch2
+%{_bindir}/rarun2
+%{_bindir}/rasign2
+%{_bindir}/rasm2
+%{_bindir}/ravc2
+%{_bindir}/rax2
+
 %{_libdir}/libr_*.so.*
 
 %dir %{_datadir}/radare2
