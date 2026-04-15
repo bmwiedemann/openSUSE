@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Apr  8 20:11:58 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.219.0 (2.219)
+   see /usr/share/doc/packages/perl-IO-Compress/Changes
+
+    2.219 9 March 2026
+      * Fix a few  typos
+        Mon Mar 9 12:03:18 2026 +0000
+        132941df2afe808142ca525f361d18ebb3a7f882
+      * Squash repeated semicolons
+        Mon Mar 9 12:02:15 2026 +0000
+        3cd732119e823688a26ba7fbf3a99bd0be18bc88
+      * Make dependent version checking consistent amd update module to version 2.219. Fixes #70
+        Mon Mar 9 11:51:37 2026 +0000
+        b81179d2db053da540d77af4a61ec449b91fca6e
+    2.218 8 March 2026
+      * Refresh zipdetails to version 4.005 Sourced from https://github.com/pmqs/zipdetails
+        Sun Mar 8 15:07:58 2026 +0000
+        13528f57cffecebdddc2f04e5d6dc7590b0acd3e
+      * version 2.218
+        Sun Mar 8 14:28:31 2026 +0000
+        3e0ff70d9dd75749a3c03efb666af8d7adff2a19
+      * Add SECURITY.md,  Fixes #69
+        Sun Mar 8 14:03:41 2026 +0000
+        b95e8a32051aa3d7d69e7e60acf3eb7c0c274a7b
+      * fix spelling typo
+        Tue Feb 24 19:47:01 2026 +0000
+        ecd61fa10ef1d1b9bc30662bfccf68d75118103a
+      * Refresh Changes file
+        Sun Feb 1 11:04:49 2026 +0000
+        c9f81969de01d90104f7abbaafe09608af92bbf1
+      * Update release date in README
+        Sun Feb 1 11:02:46 2026 +0000
+        ce5ff6ea860443bc27ca180993852eb6ef1a63e8
+      * Refresh zipdetails from https://github.com/pmqs/zipdetails
+        Sun Feb 1 10:58:21 2026 +0000
+        0fa7ba236438fb2e022f9f2bb92caac25f075cc5
+    2.217 1 February 2026
+      * Update release date in README
+        Sun Feb 1 11:02:46 2026 +0000
+        ce5ff6ea860443bc27ca180993852eb6ef1a63e8
+      * Refresh zipdetails from https://github.com/pmqs/zipdetails
+        Sun Feb 1 10:58:21 2026 +0000
+        0fa7ba236438fb2e022f9f2bb92caac25f075cc5
+      * Delete GZIP environment variable before running interop tests Fixes #24
+        Sat Jan 31 12:22:30 2026 +0000
+        6304ffa76606030467900b17de088504ce026a0d
+      * Update version to 2.217
+        Sat Jan 31 11:36:36 2026 +0000
+        6405df64a348fd953a0ddebb30422d20e2c1bd9f
+    2.216 31 January 2026
+        * Update version to 2.216
+          Fri Jan 30 22:20:17 2026 +0000
+          e88105b0fc002346dfcd9b501525bf454c83bf92
+        * IO::Compress @2.215: t/006zip.t fails due to missing test files #67
+          Fri Jan 30 22:11:20 2026 +0000
+          5e67a654844f4e05b3fefc54b2bc3b2041994d25
+    2.215 31 January 2026
+        * Fix version check in 000prereq.t
+          Fri Jan 30 11:59:07 2026 +0000
+          4fb2a081607db9285970edcfdcf50a94f504b378
+        * Update Changes for 2.215
+          Fri Jan 30 11:55:16 2026 +0000
+          b9cf3c64724584be2b739f6d26909eb4c90b7d2e
+        * Update version to 2.215 & change copyright year to 2026
+          Fri Jan 30 11:52:41 2026 +0000
+          2634d1c3a6e2ed9b0cee109c262d0ccf81a3bf91
+        * Add tests for handling zero and invalid datetime values in unzip functionality. Fix for #65
+          Sat Oct 25 19:52:01 2025 +0100
+          739698a7b1bb6814d1aa3c4a1b81374b16a9fea5
+        * Enhance _dosToUnixTime to handle zero and invalid datetime values; add tests for edge cases. Fixes #65
+          Sat Oct 25 19:50:08 2025 +0100
+          fd28c1d2374eee9811f6d0c5bddc0957abdf1da8
+
+-------------------------------------------------------------------
 Sat Oct 25 05:32:15 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.214.0 (2.214)
