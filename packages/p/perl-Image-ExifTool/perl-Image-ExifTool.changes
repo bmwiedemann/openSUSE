@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 10 10:55:18 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.55:
+  * Added a few new Windows LNK GUID values
+  * Extract more unknown information from QuickTime metadata tracks
+  * Improved config_files/local_time.config to preserve sub seconds
+  * Improved lens identification logic for Canon cameras in the case
+    where the maker notes are missing
+
+-------------------------------------------------------------------
 Tue Apr  7 09:56:35 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.54:
