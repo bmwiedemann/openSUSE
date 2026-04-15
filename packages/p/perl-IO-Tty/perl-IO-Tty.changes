@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Thu Apr  9 11:55:50 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.270.0 (1.27)
+   see /usr/share/doc/packages/perl-IO-Tty/ChangeLog
+
+  1.27 2026-04-03 Todd Rinaldo <toddr@cpan.org>
+    Bug Fixes:
+      * GH #68, PR #68 - Fix build on OpenBSD by including termios.h to
+        detect openpty reliably and setting _BSD_SOURCE to find strlcpy
+        in includes. (Alexander Bluhm)
+  1.26 2026-04-02 Todd Rinaldo <toddr@cpan.org>
+    Bug Fixes:
+      * PR #67 - Fix strlcpy detection on DragonFly BSD to avoid
+        static/non-static declaration conflict. Added __DragonFly__ guard
+        to the function test (paralleling __FreeBSD__) and added a
+        belt-and-suspenders check for perl's own HAS_STRLCPY in Tty.xs.
+    Maintenance:
+      * PR #66 - Add 5-minute timeout to all CI test steps to prevent
+        hung tests from consuming CI resources indefinitely.
+  1.25 2026-04-01 Todd Rinaldo <toddr@cpan.org>
+    Bug Fixes:
+      * GH #62, PR #64 - Fix IO::Pty DESTROY force-closing the slave pty.
+        The DESTROY method (added in 1.21) explicitly closed the cached
+        slave handle, breaking consumers like IPC::Run that hold a
+        reference to the slave via $pty->slave() and expect it to survive
+        master destruction. Now just deletes the internal reference and
+        lets Perl's refcounting handle fd closure correctly.
+    Maintenance:
+      * PR #61 - Simplify version variables to a single source of truth.
+        Extract version from Tty.pm in Makefile.PL using
+        MM->parse_version() instead of hardcoding it, use VERSION_FROM in
+        WriteMakefile, and remove $XS_VERSION from Tty.pm.
+  1.24 2026-03-27 Todd Rinaldo <toddr@cpan.org>
+    Bug Fixes:
+      * GH #54, PR #55 - Fix slave pty reopening on Solaris/illumos. After
+        close_slave(), reopening with plain Perl open() skipped pushing
+        STREAMS modules (ptem, ldterm, ttcompat), causing isatty() to
+        return false. Added _open_tty() XS function that opens the device
+        and pushes STREAMS modules on platforms that support I_PUSH.
+      * GH #56, PR #58 - Fix undef warnings on Perl 5.8.8 by removing the
+        undef operator on localized $SIG{__DIE__}, and fix XS ttyname() on
+        older Perls by avoiding the InOutStream typemap which can return
+        NULL for filehandles created via new_from_fd.
+      * GH #57, PR #59 - Add __BSD_VISIBLE for FreeBSD in function probes.
+        The _XOPEN_SOURCE definition hid BSD extensions like strlcpy,
+        causing probe failures and subsequent compile errors from
+        conflicting static/non-static declarations.
+    Maintenance:
+      * PR #60 - Modernize Makefile.PL: replace BUILD_REQUIRES with
+        TEST_REQUIRES (EUMM 6.64+), add CONFIGURE_REQUIRES, upgrade
+        META_MERGE to meta-spec v2, modernize generated Constant.pm to
+        use 'our' instead of 'use vars', and remove dead PPD postamble.
+  1.23 2026-03-24 Todd Rinaldo <toddr@cpan.org>
+    Bug Fixes:
+      * PR #52 - Replace deprecated indirect object syntax (e.g. `new IO::Pty`)
+        with direct method calls (`IO::Pty->new`). Perl 5.36+ disables indirect
+        object calls, so this fixes forward compatibility.
+    Improvements:
+      * PR #53 - Add clone_winsize_from() test coverage (7 new tests) covering
+        basic clone between slave ttys, non-tty master fast path, croak on
+        non-tty source, and pixel dimension preservation.
+    Maintenance:
+      * PR #52 - Regenerate README from POD to fix stale version.
+      * PR #53 - Modernize `use vars` to `our` declarations in Tty.pm and
+        Pty.pm. Add missing `use warnings` to Pty.pm.
+      * Add AI_POLICY.md for transparency on AI-assisted contributions.
+      * Convert README to Markdown and update MANIFEST.
+  1.22 2026-03-24 Todd Rinaldo <toddr@cpan.org>
+    Bug Fixes:
+      * GH #47, PR #48 - Fix function detection on Solaris by adding
+        __EXTENSIONS__ to expose BSD extensions (like strlcpy) that are
+        hidden when _XOPEN_SOURCE is defined.
+      * PR #49 - Fix file descriptor leaks in open_slave() error paths.
+        The master pty fd was not closed on several early-return error
+        paths, causing fd leaks when falling through multiple pty
+        allocation methods.
+    Improvements:
+      * PR #50 - Add unit tests for ttyname(), slave()/close_slave()
+        lifecycle, set_winsize()/get_winsize() round-trips,
+        pack_winsize/unpack_winsize, and constant importing (28 new tests).
+      * PR #51 - Replace DynaLoader with XSLoader and bump minimum perl
+        version to 5.8.8. XSLoader is simpler and has been in core since
+        perl 5.6.
+    Maintenance:
+      * PR #44 - Fix stale POD versions, add Perl 5.38/5.40 to CI, and
+        update repository URLs from toddr/IO-Tty to cpan-authors/IO-Tty.
+      * PR #45 - Remove dead Perl 5.003 compatibility code, modernize XS
+        (Nullch to NULL, perl_get_sv to get_sv, sprintf to snprintf).
+      * PR #46 - Modernize CI with dynamic perl version discovery via
+        perl-actions/perl-versions and add a disttest job.
+  1.21 2026-03-22 Todd Rinaldo <toddr@cpan.org>
+    Bug Fixes:
+      * GH #14, PR #39 - Fix slave fd leak on IO::Pty destruction. The slave
+        pty file descriptor was not closed when the IO::Pty object was
+        destroyed, leaking file descriptors until process exit.
+      * GH #12, PR #40 - Fix set_raw() to modify cflag for proper raw mode
+        on BSD/macOS. set_raw() was not clearing CSIZE|PARENB or setting CS8
+        in cflag, causing incomplete raw mode on macOS, OpenBSD, and NetBSD.
+      * GH #38, PR #41 - Modernize function detection to use proper system
+        headers instead of fragile K&R-style forward declarations. The old
+        approach conflicted with real prototypes on modern compilers
+        (especially FreeBSD/Clang), causing all function checks to fail.
+    Improvements:
+      * PR #42 - Add BSD CI testing for FreeBSD, OpenBSD, and NetBSD via
+        cross-platform-actions. Also bumps actions/checkout from v2 to v4.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:34:00 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

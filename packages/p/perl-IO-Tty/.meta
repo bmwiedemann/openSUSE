@@ -28,5 +28,4 @@ If it's working on your system, please send me a short note with details
 start; also, the output from &quot;perl Makefile.PL&quot; contains a lot of
 interesting info, so please include that as well) so I can get an overview.
 Thanks!</description>
-  <devel project="devel:languages:perl" package="perl-IO-Tty"/>
 </package>

@@ -215,4 +215,41 @@
 </comment>
     <requestid>1156484</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>95b1676e82d47633bba2894257b59d0f</srcmd5>
+    <version>1.270.0</version>
+    <time>1776261839</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.270.0 (1.27)
+   see /usr/share/doc/packages/perl-IO-Tty/ChangeLog
+  1.27 2026-04-03 Todd Rinaldo &lt;toddr@cpan.org&gt;
+    Bug Fixes:
+      * GH #68, PR #68 - Fix build on OpenBSD by including termios.h to
+        detect openpty reliably and setting _BSD_SOURCE to find strlcpy
+        in includes. (Alexander Bluhm)
+  1.26 2026-04-02 Todd Rinaldo &lt;toddr@cpan.org&gt;
+    Bug Fixes:
+      * PR #67 - Fix strlcpy detection on DragonFly BSD to avoid
+        static/non-static declaration conflict. Added __DragonFly__ guard
+        to the function test (paralleling __FreeBSD__) and added a
+        belt-and-suspenders check for perl's own HAS_STRLCPY in Tty.xs.
+    Maintenance:
+      * PR #66 - Add 5-minute timeout to all CI test steps to prevent
+        hung tests from consuming CI resources indefinitely.
+  1.25 2026-04-01 Todd Rinaldo &lt;toddr@cpan.org&gt;
+    Bug Fixes:
+      * GH #62, PR #64 - Fix IO::Pty DESTROY force-closing the slave pty.
+        The DESTROY method (added in 1.21) explicitly closed the cached
+        slave handle, breaking consumers like IPC::Run that hold a
+        reference to the slave via $pty-&gt;slave() and expect it to survive
+        master destruction. Now just deletes the internal reference and
+        lets Perl's refcounting handle fd closure correctly.
+    Maintenance:
+      * PR #61 - Simplify version variables to a single source of truth.
+        Extract version from Tty.pm in Makefile.PL using
+        MM-&gt;parse_version() instead of hardcoding it, use VERSION_FROM in
+        WriteMakefile, and remove $XS_VERSION from Tty.pm.
+  1.24 2026-03-27 Todd Rinaldo &lt;toddr@cpan.org&gt;</comment>
+    <requestid>1346902</requestid>
+  </revision>
 </revisionlist>
