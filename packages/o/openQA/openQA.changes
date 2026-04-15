@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 14 21:33:39 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1776202410.3448a30a:
+  * feat(worker): Resolve share directory correctly for relative basedir
+  * fix: SQL ON CONFLICT constraints for Assets registration
+  * feat: allow ignoring job groups on dashboard evaluation
+
+-------------------------------------------------------------------
 Tue Apr 14 04:56:01 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1776103434.91af0a8b:
