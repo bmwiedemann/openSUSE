@@ -1,0 +1,25 @@
+From 6fdc1f29b2711069df0183e1c4e82fb3995979f9 Mon Sep 17 00:00:00 2001
+From: Alynx Zhou <alynx.zhou@gmail.com>
+Date: Mon, 13 Apr 2026 18:52:15 +0800
+Subject: [PATCH] shell: Fix a double-free on GError
+
+We already use g_autoptr for that so no explicit free should be called.
+---
+ gnome-session/gsm-shell.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/gnome-session/gsm-shell.c b/gnome-session/gsm-shell.c
+index 04f5dcd8..d7aa4eda 100644
+--- a/gnome-session/gsm-shell.c
++++ b/gnome-session/gsm-shell.c
+@@ -303,7 +303,6 @@ on_open_finished (GObject *source,
+ 
+         if (error != NULL) {
+                 g_warning ("Unable to open shell end session dialog: %s", error->message);
+-                g_error_free (error);
+ 
+                 g_signal_emit (G_OBJECT (shell), signals[END_SESSION_DIALOG_OPEN_FAILED], 0);
+                 return;
+-- 
+GitLab
+

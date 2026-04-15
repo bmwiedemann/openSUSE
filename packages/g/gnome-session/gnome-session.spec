@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-session-fix-double-free-GError.patch bsc#1261932, glgo#GNOME/gnome-session!176 alynx.zhou@suse.com -- Fix a double-free on GError
+Patch0:         gnome-session-fix-double-free-GError.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes

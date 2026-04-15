@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 14 01:01:43 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gnome-session-fix-double-free-GError.patch: Fix a double-free
+  on GError. (bsc#1261932, glgo#GNOME/gnome-session!176)
+
+-------------------------------------------------------------------
 Mon Mar 23 08:41:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
