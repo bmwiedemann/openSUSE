@@ -29,6 +29,11 @@ Tue Apr  7 07:57:03 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 - fixes CVE-2026-34545 [bsc#1261344]
         CVE-2026-34543 [bsc#1261339]
         CVE-2026-34544 [bsc#1261342]
+        CVE-2026-34588 [bsc#1261624]
+        CVE-2026-34589 [bsc#1261634]
+        CVE-2026-34378 [bsc#1261620]
+        CVE-2026-34379 [bsc#1261621]
+        CVE-2026-34380 [bsc#1261622]
 - deleted patches
   * openexr-glibc-2.43.patch (upstreamed)
 

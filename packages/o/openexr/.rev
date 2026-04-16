@@ -1029,4 +1029,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>[CVE-2026-34589](https//www.cve.org/CVERecord?id=CVE-2026-34589), [CVE-2026-34588](https//www.cve.org/CVERecord?id=CVE-2026-34588), [CVE-2026-34380](https//www.cve.org/CVERecord?id=CVE-2026-34380), [CVE-2026-34379](https//www.cve.org/CVERecord?id=CVE-2026-34379), [CVE-2026-34378](https//www.cve.org/CVERecord?id=CVE-2026-34378), CVE-2026-34545, [bsc#1261344], CVE-2026-34543, [bsc#1261339], CVE-2026-34544, [bsc#1261342]</comment>
     <requestid>1344902</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>8857f5d0e3b584943048d33e987af7b1</srcmd5>
+    <version>3.4.9</version>
+    <time>1776357912</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1347076</requestid>
+  </revision>
 </revisionlist>
