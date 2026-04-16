@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Apr 10 22:13:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.7.0:
+- update to 1.7.0 (bsc#1261994, CVE-2026-40023):
   * Non-ascii characters incorrectly encoded in JSON output [#615]
   * XML output could contain characters not allowed by the XML 1.0
     specification
