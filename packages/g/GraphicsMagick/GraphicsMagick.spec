@@ -39,6 +39,8 @@ Patch2:         GraphicsMagick-CVE-2026-25799.patch
 Patch3:         GraphicsMagick-CVE-2026-30883.patch
 # CVE-2026-28690: missing bounds check in the MNG encoder can lead to a stack buffer overflow (bsc#1259456)
 Patch4:         GraphicsMagick-CVE-2026-28690.patch
+# CVE-2026-26284: Heap overflow in pcd decoder leads to out of bounds read. [bsc#1258765]
+Patch5:         GraphicsMagick-CVE-2026-26284.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

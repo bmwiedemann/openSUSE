@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 13 07:54:32 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-26284: Heap overflow in pcd decoder leads to out of bounds read. [bsc#1258765]
+  * GraphicsMagick-CVE-2026-26284.patch
+
+-------------------------------------------------------------------
 Fri Mar 20 11:02:38 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
