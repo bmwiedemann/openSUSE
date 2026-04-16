@@ -1700,4 +1700,41 @@ Thanks</comment>
     <comment>- Add build support for loongarch64 (forwarded request 1337409 from glaubitz)</comment>
     <requestid>1337420</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>6d608c5ef76c062a7a1cb6c6d8c9bdad</srcmd5>
+    <version>2.6.3</version>
+    <time>1776360469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.3:
+  * minor incompatible change: (MAKE-ARRAY X :ELEMENT-TYPE 'UNDEFINED)
+    now signals an error, consistent with (UPGRADED-ARRAY-ELEMENT-TYPE
+    'UNDEFINED).
+  * platform support:
+    * fix disassembler on ppc for the MFLR and ISEL instructions
+    * the Lisp Return Address object (as part of the Lisp calling
+      convention) is no longer needed or supported on PPC, SPARC, MIPS
+      or ARM. (This also frees up a widetag slot previously held by
+      return-pc-widetag)
+    * remove sensitivity to SBCL init files when building
+      embedcore-sbcl.
+    * add support for the ADCX and ADOX instructions on
+      x86-64.
+    * on PPC64, indicate the number of return values through flags,
+      making function calls four times faster.
+    * fix FFI involving int128 arguments on x86-64.
+    * fix build on OpenIndiana/x86-64.
+    * fix build on Haiku/x86-64.
+  * bug fix: improved stability of (particularly) the mark-region
+    garbage collector.
+  * bug fix: compiler type error in complicated expression involving
+    BOOLE and conditionals.
+  * bug fix: dotted lists involving symbols whose names begins with
+    &quot;DEF&quot; are not definitions.
+  * bug fix: STABLE-SORT miscompiled on declared union types involving
+    both LIST and VECTOR.
+  * bug fix: more consistent results between compiler and interpreter
+    in numerical computations involving negative zeros.
+  * bug fix: USE-PACKAGE once again signals the correct error if an (forwarded request 1344728 from mschreiner)</comment>
+    <requestid>1344760</requestid>
+  </revision>
 </revisionlist>

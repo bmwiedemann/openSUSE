@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Apr  6 02:21:23 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2.6.3:
+  * minor incompatible change: (MAKE-ARRAY X :ELEMENT-TYPE 'UNDEFINED)
+    now signals an error, consistent with (UPGRADED-ARRAY-ELEMENT-TYPE
+    'UNDEFINED).
+  * platform support:
+    * fix disassembler on ppc for the MFLR and ISEL instructions
+    * the Lisp Return Address object (as part of the Lisp calling
+      convention) is no longer needed or supported on PPC, SPARC, MIPS
+      or ARM. (This also frees up a widetag slot previously held by
+      return-pc-widetag)
+    * remove sensitivity to SBCL init files when building
+      embedcore-sbcl.
+    * add support for the ADCX and ADOX instructions on
+      x86-64.
+    * on PPC64, indicate the number of return values through flags,
+      making function calls four times faster.
+    * fix FFI involving int128 arguments on x86-64.
+    * fix build on OpenIndiana/x86-64.
+    * fix build on Haiku/x86-64.
+  * bug fix: improved stability of (particularly) the mark-region
+    garbage collector.
+  * bug fix: compiler type error in complicated expression involving
+    BOOLE and conditionals.
+  * bug fix: dotted lists involving symbols whose names begins with
+    "DEF" are not definitions.
+  * bug fix: STABLE-SORT miscompiled on declared union types involving
+    both LIST and VECTOR.
+  * bug fix: more consistent results between compiler and interpreter
+    in numerical computations involving negative zeros.
+  * bug fix: USE-PACKAGE once again signals the correct error if an
+    attempt is made to use the KEYWORD package.
+  * bug fix: EQUALP on hash tables is no longer sensitive to
+    irrelevant aspects of the hash table.
+  * bug fix: SB-INTROSPECT:DEFTYPE-LAMBDA-LIST is more robust against
+    types defined in low debug situations.
+  * bug fix: ENSURE-GENERIC-FUNCTION ensures that the allocation of a
+    generic function does not happen in an arena.
+  * optimization: actually return early when we hit the cache for a
+    :MAKUNBOUND slot access.
+  * optimization: streams opened with WITH-OPEN-FILE avoid having
+    finalizers.
+  * optimization: improvement of COUNT on non-simple bit-vectors, or
+    simple ones with :START/:END arguments.
+  * optimization: SIMD routines for checking strings for ASCII-only
+    content are more compact.
+  * optimization: the reader prefers base-string symbol-names of
+    uninterned symbols if possible.
+  * optimization: (length (remove-duplicates a s)) doesn't cons an
+    intermediate sequence.
+  * optimization: REMOVE-DUPLICATES uses hash-tables in more
+    situations.
+  * optimization: UPGRADED-ARRAY-ELEMENT-TYPE is now faster.
+
+-------------------------------------------------------------------
 Sat Mar  7 09:18:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add build support for loongarch64
