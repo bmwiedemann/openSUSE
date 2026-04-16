@@ -1,0 +1,14 @@
+<services>
+  <service mode="manual" name="cargo_vendor">
+    <param name="url">https://codeberg.org/LGFae/awww</param>
+      <param name="revision">v0.12.0</param>
+    <param name="versionrewriteregex">^v?(.*)</param>
+    <param name="versionrewritepattern">$1</param>
+    <param name="changesgenerate">true</param>
+    <param name="changesauthor">Soc Virnyl Estela</param>
+    <param name="changesemail">uncomfyhalomacro@opensuse.org</param>
+    <param name="update">true</param>
+  </service>
+</services>
+
+<!-- vim: set syntax=xml: -->

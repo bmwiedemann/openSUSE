@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb3ac9179e008ff7c441869aac9abd58</srcmd5>
+    <version>0.12.0</version>
+    <time>1776353159</time>
+    <user>dimstar_suse</user>
+    <comment>The swww package was renamed to awww, so in order to remove the former this was created as a replacement</comment>
+    <requestid>1347176</requestid>
+  </revision>
+</revisionlist>

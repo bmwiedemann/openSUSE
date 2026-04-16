@@ -1,0 +1,650 @@
+-------------------------------------------------------------------
+Wed Apr 15 21:12:40 UTC 2026 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Add Provides/Obsoletes for the previous swww package names to support
+  upgrades to awww without a separate transition package.
+
+-------------------------------------------------------------------
+Sun Apr 12 13:27:47 UTC 2026 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.12.0:
+  BREAKING
+    * Renaming: All references to swww have now been changed to awww
+    * We've changed the place we store the cache from $XDG_CACHE_HOME/awww to
+      $XDG_CACHE_HOME/awww/$PKG_VERSION. This means the first time you use the
+      new version it won't have anything cached, and you will have to set the
+      wallpaper image again.
+  Enhancements
+    * Added a pause feature, by MrNavaStar
+    * awww query now supports json printing!
+    * --transition-random now also randomizes the angles!
+    * we support jxl behind a feature flag (by Askedis)
+    * Improved animated images compression and decompression efficiency (with
+      an avx512 decompression implementation!)
+    * Improved transition efficiency, by using a function with less branching,
+      leading to better auto-vectorization
+    * Resize method is now also stored in the cache
+    * Optimized many structs memory layouts (too many -- and too technical -- to
+      list here)
+    * The common crate now also uses log for warnings (it was doing manual
+      prints before, which looked ugly and was inconsistent)
+    * ryincler improved documentation by replacing single-ticks with bold blocks
+      and removing useless bold blocks
+    * delete all multi-threading from the daemon. Finally, there can be no more
+      run conditions!
+    * manual logging implementation for extra nice messages and efficiency
+      common crate is now no-std, using only rustix for interacting with the
+      operating system.
+    * daemon crate is almost no-std. The only blocker is the fact that would
+      force users to have a nightly rust toolchain to build it. Making it no-std
+      has improved many things in terms of efficiency and memory footprint.
+  Fixes
+    * Adjusted multi monitor example script, by Felix Baum
+    * Fixed ghosting when transition-step is too high
+    * Fixed some documentation
+    * Fixed animation frames using the wrong resize strategy
+    * awww-daemon --help had the wrong indentation
+    * Ryan Bruntz fixed the awww query --all documentation
+    * viri has helped fixing some links in the Readme
+  Internal
+    * updated to rust edition 2024
+    * deleted compression benchmark (it was terrible, unreliable and misleading)
+    * tried many, many times to fix the codeberg CI, and still failed T_T
+
+-------------------------------------------------------------------
+Sun Sep 21 13:48:02 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.11.2:
+  * decompression: forgot to fix 4channel decomp for ssse3
+  * update waybackend dependency: fix building on some architectures
+  * daemon: use macro implementations from waybackend
+  * fix animations with 4 channels
+  * fix incorrect description of swww clear-cache in swww(1) man page
+
+-------------------------------------------------------------------
+Thu Sep 11 19:45:52 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Require rust verion 1.89 explicitly
+
+-------------------------------------------------------------------
+Thu Sep 11 19:34:56 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.11.0:
+  *  BREAKING
+    * **IMPORTANT**: --format xrgb is no longer supported. Use
+      --format argb instead. However, this is now the default, so,
+      if you  want, you can simply not set anything instead. We
+      still accept --format xrgb  so as to not break any
+      configurations. Previously, the daemon automatically  would
+      check to see which wayland_shm format was the most convenient
+      for us to use. However, many people have had weird bugs when
+      using any format other  than xrgb. Therefore, we have made
+      that the default, and only change it when  the user
+      specifically asks for it.
+    * swww query now returns information in the following format:
+      <namespace>: OUTPUT: SIZE, scale: SCALE, currently
+      displaying: IMAGE_OR_COLOR
+    * we are creating the socket in a slightly different location now:
+      ${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}-swww-daemon.<specified
+      namespace>.socket
+  *  Additions
+    * every command (except clear-cache) now accepts a
+      -n|--namespace argument. This namespace will then be appended
+      to swww-daemon to make up the wayland namespace of the
+      daemon's layer surface.
+    * as a convenience, every command (except clear-cache) also
+      accepts a -a|--all flag, that lets the user send commands to
+      all namespaces at once.
+    * support avif decoding through dav1d, with the --features=avif
+      compilation option.
+    * we finally support static SVGs!
+    * swww-daemon now correctly renders static images with
+      transparency.
+    * swww clear now accepts colors with an alpha value.
+  *  Fixes
+    * Fixed a division by 0 when animating with no frames
+    * Fixed destroying wayland buffers too early
+    * Better fractional-scale implementation (we shamelessly tried
+      copying the swaybg implementation). This will hopefully
+      prevent newer issues with hyprland.
+
+-------------------------------------------------------------------
+Mon Jun  9 19:34:32 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.10.3:
+  * check if wl_output contains the CURRENT mode
+
+-------------------------------------------------------------------
+Mon Jun 09 11:19:09 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.10.2:
+  * do not accept wl_output modes that are not current
+  * prioritize fractional scale events
+  * update waybackend dependency
+  * fix fractional scaling
+  * use tiny-bench instead of criterion
+
+-------------------------------------------------------------------
+Mon Jun 09 02:04:10 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.10.0:
+  * version 0.10
+  * update swww-daemon man page
+  * update dependencies
+  * Merge pull request #423 from LGFae/configurable-layer
+  * allow the user to set which Layer they would prefer to render in
+  * Merge pull request #420 from LGFae/delete-nix-tests
+  * delete `build.nix` and the nix tests
+  * Merge pull request #410 from LGFae/waybackend
+  * fix cargo-clippy
+  * try to fix CI
+  * Merge pull request #415 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * update dependencies
+  * update .gitignore test_images path
+  * update README with new build dependencies
+  * fix most of CI
+  * rewrite using waybackend
+  * update dependencies
+  * Merge pull request #406 from Axlefublr/main
+  * Merge pull request #408 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * fix readme
+  * Merge pull request #395 from LGFae/update_flake_lock_action
+  * Merge pull request #391 from rubiefawn/updated_example_scripts
+  * Merge pull request #403 from filip-rs/main
+  * Updated swww_randomize_multi.sh to be executable
+  * flake.lock: Update
+  * Fix misuse of read(1) and unset(1)
+  * Restore deleted comment
+  * Make swww_randomize.sh and swww_randomize_multi.sh scripts more POSIX-friendly
+  * Merge pull request #387 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Merge pull request #383 from LGFae/remove-most-static-muts
+  * remote most static muts from globals
+  * fix warnings and update MSRV to 1.82
+  * Merge pull request #375 from kerty0/main
+  * Merge pull request #381 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Add wallpaper refresh on monitor configuration change
+  * Fix crush when changing monitor configuration
+  * Merge pull request #376 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Fix memory leak and stopped animation
+  * Merge pull request #372 from kerty0/main
+  * Fix swww restore error handling
+  * update MSRV
+  * update dependencies
+  * Merge pull request #373 from rexept/resize-features
+  * formatted + typo fix
+  * more concise definition
+  * added to docs
+  * added resize-stretch feature
+  * Update old cache handling
+  * Fix crush when using solid color
+  * Add filter caching
+  * Merge pull request #371 from mendess/mendess/fix-animation-cache
+  * Fix animation cache not working when image is behind a symlink
+  * Merge pull request #366 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Merge pull request #360 from iynaix/main
+  * fix reading image from stdin
+  * Merge pull request #358 from mstoeckl/fix-wayl-sock
+  * Merge pull request #359 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Fix connecting to Wayland via WAYLAND_SOCKET
+  * Merge pull request #352 from LGFae/nuke-multithreading
+  * FractionalScaleManager and PollTime structs
+  * small refactors
+  * stop animations when output disconnects
+  * Arc -> Rc; Mutex -> RefCell
+  * finish up first implementation
+  * step 1: structs for trantition's internal state
+  * fix autocompletion with swww img `file`
+  * debug assertion on ipc sending shm fd wildly wrong
+  * fix debug assertion of ipc Codes shm fds
+  * fix socket naming
+  * Merge pull request #327 from LGFae/better-socket-location-defaults
+  * update dependencies
+  * fix documentation indentation
+  * better defaults for when we can't read env vars
+  * Merge pull request #340 from cplir-c/cplir-c-randomize-multi
+  * Merge pull request #349 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Move `break 2` else clause to inside the "no image" check so it doesn't run every time
+  * Comment swww_randomize_multi.sh and normalize
+  * add example_scripts/swww_randomize_multi.sh
+  * Merge pull request #339 from LGFae/revert-333-main
+  * Revert "Refactor IPC handling in both client and daemon"
+  * Merge pull request #338 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Merge pull request #333 from rkuklik/main
+  * Merge pull request #334 from Not-Glunk/swww-fix-typos
+  * Fix typos
+  * fix(daemon): rt dir creation
+  * refactor(client): consolidate IPC logic
+  * fix(daemon): unused imports
+  * refactor(daemon): move init more to relevant structs
+  * refactor(daemon): extract `Daemon` into separate module
+  * Merge pull request #331 from rkuklik/main
+  * refactor(mmap): minor fonction movement
+  * refactor(mmap): unify `Mapped'thing'` with generic bool
+  * refactor(mmap): extract into top level module
+  * refactor(ipc): rework messaging format v1
+  * refactor(ipc): replace old methods with new
+  * refactor(socket): introduce new `IpcSocket` type
+  * refactor(ipc): get rid of unused `Answer::Err`
+  * fix: resolver should be set to "2" in top level manifest
+  * Merge pull request #330 from rkuklik/main
+  * fix(script): update singe file on version change
+  * fix(ci): nix build version extraction
+  * fix(ci): `rust-version` detection and formatting
+  * refactor(naming): rename utils to common
+  * refactor(workspace): separate project into 3 folders
+  * fix protocol error when destroying Wallpaper
+  * Merge pull request #230 from WhyNotHugo/main
+  * Drop 'init` command
+  * Merge pull request #195 from flick0/colour
+  * Merge pull request #324 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Merge pull request #323 from LGFae/trim-dev-dependencies
+  * trim dependencies: criterion features and fastrand
+  * Merge pull request #322 from ettancos/main
+  * daemon: guard against unnecessary blocking read if there is no payload
+  * fix conflicts
+  * Merge branch 'main' into colour
+  * workaround for not using Option<image::RgbImage>
+  * Merge pull request #319 from JohnRTitor/add-workflows
+  * Merge pull request #318 from LGFae/update_flake_lock_action
+  * workflows: add CI nix-tests workflow
+  * workflows: update-flake-lock should now run monthly
+  * pick a file starting with 0x if exists before using it as color
+  * add comment for Color
+  * nuke `spin_sleep` dependency
+  * do not use `image`'s default features
+  * flake.lock: Update
+  * update fast_image_resize to version 4.0.0
+  * Merge pull request #316 from LGFae/unmap-when-idle
+  * Merge pull request #315 from LGFae/custom-wayland-backend
+  * update libc
+  * Merge pull request #313 from kovidgoyal/patch-1
+  * Add kitty as an alternative
+  * Merge pull request #312 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * document `BumpPool` better
+  * unmap shared memory when idle
+  * wait for animation threads on normal exit
+  * ensure buffers are destroyed before the shm_pool
+  * better error handling
+  * send all draw-related requests in one single msg
+  * stop animations at exit
+  * remember to notify systemd
+  * fix animation timings
+  * improve ObjectManager to not use the BinaryHeap
+  * document our custom wayland implementation
+  * manual wayland implementation for swww-daemon
+  * bump master version to force rebuilding the cache
+  * Merge pull request #305 from LGFae/zero-copy-serialization
+  * fix rustix features and put utils in workspace
+  * increase MSRV to 1.75.0
+  * off by one error when caching animation frames
+  * refactor ipc into multiple modules
+  * serialize directly onto mmaped file
+  * mmap file when reading cache
+  * mmap only parts of the shm we care about
+  * do not copy over images and animations
+  * fix wrong inversion in y axis during transitions
+  * Merge pull request #309 from LGFae/update_flake_lock_action
+  * flake.lock: Update
+  * Merge pull request #306 from JohnRTitor/add-flake
+  * Merge pull request #308 from JaKooLit/main
+  * replaced deprecated swww init commands with swww-daemon
+  * README: add instructions for NixOS users
+  * workflows: add update-flake-lock workflow that will run weekly
+  * Nix: allow building swww from the source directly
+  * fix off by one error when receiving image request
+  * unwrap on thread::Builder::spawn
+  * nuke rayon from `swww-daemon`
+  * Merge pull request #302 from LGFae/faster-wave
+  * refactor transitions common byte changing code
+  * faster wave transition
+  * faster wipe transition
+  * Merge pull request #301 from LGFae/fix-output-transforms
+  * fix output transforms
+  * faster grow and outer transitions
+  * fix `clear` not flushing the wayland fd
+  * faster simple and fade transitions
+  * remove allow-git for bitcode
+  * nuke simplelog and use a custom log implementation
+  * Merge pull request #299 from LGFae/manual-serializer
+  * minor refactors
+  * use just one request for animated images
+  * fix loading cached animation frames
+  * return std::io::Result for the cache mod functions
+  * refactor out common socket code
+  * remove unsafe from deserializer
+  * move all memory map functions into utils/ipc
+  * delete extra prints
+  * only truncate the shared mem file when necessary
+  * do not copy to intermediate buffer
+  * use shared memory for large transfers
+  * use rustix sockets instead of std
+  * manually serialize answers
+  * manually serialize requests
+  * Merge pull request #298 from LGFae/remove-codecoverage-from-ci
+  * remove llvm-cov from CI
+  * v0.9.5
+  * flush the wayland_fd correctly from animations
+  * update TODO
+  * specialized function for `none` transition type
+  * Merge pull request #296 from LGFae/fix-initial-black-screen
+  * Merge pull request #297 from hkupty/remove-unused
+  * refactor: Remove unused mutable buffer
+  * fix initial black screen due to late configuration
+
+-------------------------------------------------------------------
+Wed Apr 16 09:01:56 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update vendored dependencies
+
+-------------------------------------------------------------------
+Sat Sep 28 16:09:58 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Update vendored dependencies
+
+-------------------------------------------------------------------
+Sun May  5 14:24:00 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.9.5:
+  * flush the wayland_fd correctly from animations
+  * specialized function for `none` transition type
+  * refactor: Remove unused mutable buffer
+  * fix initial black screen due to late configuration
+  * don't use event_fd to wake up the main thread
+  * remove sleep during cache loading
+  * collapse else if into single line
+  * README.md - explicit warning about gnome
+  * fix switching width and height
+  * use output name advertised by wl_registry as id
+  * process output transforms properly
+  * fix fractional scale rounding calculation
+  * fix wallpaper never setting configured to 'true'
+  * fix typo and update documentation
+  * Add --no-cache option to swww-daemon
+
+-------------------------------------------------------------------
+Tue Apr 23 01:02:52 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 0.9.4:
+  * less casting between types
+  * implement fractional scaling
+  * merge BumpPool and RawPool; remove MmapMut2 dep
+  * fix output scaling
+  * delete proc traversal code from client
+  * do not set nonblocking mode for socket
+  * create ImageRequest and AnimationRequest structs
+  * update documentation regarding sockets and `init`
+  * Try pinging the daemon instead of inspecting /proc.
+  * Fix over-eager errors.
+  * Fix silly PathBuf recreation.
+  * Adjust instance checking to work with separate sockets.
+  * Bind to a separate socket per-display.
+  * typo when setting output's description
+  * fix transitions performance
+  * add SIGHUP to list of signals we catch
+  * reimplement the cache and error on unknown events
+  * fix initialization
+  * delete sctk dependency
+  * Implement layer shell manually
+  * implement WlOutput manually
+  * implement WlRegistry
+  * implement wl_shm
+  * delete CompositorState import
+  * implement delegate_compositor manually
+  * do not parallelize the simple transition
+  * fix sigaction on systems with different libc
+  * add bitcode git url to exceptions in cargo-deny
+  * use bitcode instead of rykv
+  * Fix build on i686 (32bit x86)
+  * automatically delete old socket in daemon
+  * Update README.md
+  * use eventfd instead of pipes to awake the daemon
+  * fix resize when image is larger than monitor
+  * simplify daemon's transitions
+  * refactor client's image format choice
+  * Increase thread pool stack size of daemon to 512KiB
+
+-------------------------------------------------------------------
+Sun Mar 31 16:59:18 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.9.1:
+  * deprecate swww init
+  * update CHANGELOG.md
+  * add BSD2 and Apache2.0 with LLVM-exception license
+  * update MSRV to 1.74.0
+  * support animations when piping from stdin
+  * update dependencies
+  * forward init format option to daemon
+  * option to force use of a wayland_shm format
+  * prevent UB from a malformed BitPack at decompression
+  * do not use unsafe for the FORMAT statics
+  * specialize transitions for 3channels
+  * Use 3 channel formats when available
+  * only swap R and B channels when necessary
+  * document unsafe invariants
+  * compression functions api signal errors better
+  * reuse the buffer when compressing
+  * use system lz4 library
+  * implement sse variants of compress and decompress
+  * new compression functions
+  * Implement frame callbacks and a new memory pool
+  * refactor version.sh
+  * fix out-of-bounds access in decompression
+  * process clear-cache before sending requests
+  * rename `Init` request/answer to `Ping`
+  * wait for daemon initialization before any requests
+  * wait for daemon initialization before certain requests
+  * add restore command
+  * wait for child swww process, to prevent zombies
+  * fix randomize script trying to use directories as images
+  * fix gif animations overlapping when sending two gifs
+  * center cropped images larger than the monitor
+  * make an fps an u16
+  * Format code with cargo fmt
+  * Update ahash to 0.7.8
+  * remove all cache contents on clean-cache
+  * support animated pngs
+  * typo in comment
+  * fix busyloop while waiting for WlBuffers to be released
+  * fix single image webp and gif
+  * fix let_underscore_lock lint
+  * explicit versions for all dependencies
+
+-------------------------------------------------------------------
+Tue Jan 30 08:20:46 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.8.2:
+  * update daemon dependencies
+  * implement clear-cache command
+  * bump dependencies and fix versioning
+  * Update README.md - add final photo source
+  * Animated WebP Support + Memory Optimisations
+  * image_pad: fix capacity of Vec
+- Remove cargo_config. part of vendored tarball now.
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:50 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
+Tue Jul 25 23:22:33 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.8.1:
+  * fix sending images in quick succession
+  * remember to set exclusive zone to -1
+  * remove condvar from wallpaper
+  * overhaul transition waiting mechanism
+  * nuke gif processing pipeline
+  * load cache on `swww init`
+  * add a `none` transition
+  * fix clear exiting daemon
+  * Version 0.8.0
+  * update CHANGELOG and man-pages
+  * fix rebase error
+  * spell check example scripts
+  * fix fade transition
+  * fix failing test
+  * update changelog and todo
+  * stop using signals hack to wake main thread
+  * cache only tries loading gifs from correct version
+  * fix deadlock when resizing monitor
+  * put Arc<SlotPool> in wallpaper struct
+  * name threads for better errors
+  * Rework syncing animations between monitors
+  * bump dependencies - new rust version
+  * reimplement cache with a different strategy
+  * fix scaling images
+  * fix deadlock on `clear` with on-going animation
+  * update documentation
+  * reimplement syncing animations
+  * fix wrong transmute
+  * rename utils::communication -> utils::ipc
+  * use Box instead of Vec in all communication types
+  * better values for step when falling back to simple
+  * fix animation preventing transition to begin
+  * change serde for rkyv for serialization
+  * compress animation frames in a pipeline
+  * only lock what is necessary
+  * Rename daemon's modules and structs for clarity
+  * Sending RGB instead of RGBA images
+  * nuke cache
+  * syncronizing with condvars
+  * fix canvas pool not being ready
+  * fix crash when changing scale factor
+  * rename modules and fix cache import
+  * animations working
+  * transitions working
+  * begin implementation - working for static images
+  * add to docs
+  * add doc for --invert-y
+  * fix invert_y for percentage values
+  * impl invert_y flag
+  * fix spelling
+  * feat: add option to resize image to fit screen instead of cropping
+  * fix: don't skew images padded from odd widths
+  * fix
+  * add doc
+  * readd `simple` and rename to `fade`
+  * cargo fmt && cargo clippy
+  * re add fallback
+  * impl beziers for simple
+
+-------------------------------------------------------------------
+Thu Jun  8 23:22:03 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update vendored dependencies. Resolves CVE and bsc#1212009.
+
+-------------------------------------------------------------------
+Sun May 07 20:36:24 UTC 2023 - uncomfy+openbuildservice@uncomfyhalomacro.pl
+
+- Update to version 0.7.3:
+  * Log error instead of returning
+  * Send status update to systemd when daemon has initialized
+  * split outputs with ,
+  * bump dependencies
+  * start animation right after finishing transition
+  * better spread of different bytes
+  * create benchmarks for compression functions
+  * update dependencies
+  * stop-gag zip_eq panic on slices of unequal size
+  * check if cache dir is actually a dir
+  * use std::thread::scope for gif frames
+  * wait until all gif's frames are ready
+  * `--transition-step` with `simple` saner default
+  * fix: Missing `/` when using `$HOME/.cache/swww`
+
+-------------------------------------------------------------------
+Sun May  7 16:32:52 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Build and package man pages
+- Add cargo version requirement
+
+-------------------------------------------------------------------
+Sat Mar 18 01:33:30 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Fix specfile.
+- Fix installation of swww-daemon.
+
+-------------------------------------------------------------------
+Fri Mar 10 13:26:49 UTC 2023 - uncomfy+openbuildservice@uncomfyhalomacro.pl
+
+- Update to version 0.7.2:
+  * update dependencies
+  * man-pages
+  * Sync animations
+  * update changelog
+  * ignore integration_tests by default
+  * cache the images to reload them on startup
+  * prepare 0.7.1 release
+  * update dependencies
+  * cargo clippy and style
+  * update CHANGELOG.md
+  * fix integration_tests calling incorrect daemon bin
+  * add ability to use screen cords instead of percentages in `--transition-pos`
+  * typo: pipw -> pipe
+  * fix reading image from stdin (don't cannonicalize)
+  * document `--no_resize` and `--fill_color` args
+  * fix `swww` query not returning correct image
+  * change the version in Cargo.toml
+
+-------------------------------------------------------------------
+Mon Jan 30 22:19:21 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.7.0
+  * update changelog
+  * nuke `fix_zsh_completion.sh`
+  * bump dependencies
+  * inline printed variables where possible
+  * use `with_guessed_format` to detect image type
+  * [utils/comp_decomp] handle scale factor reduction
+  * new transition: wave (#66)
+  * [client] use scaling when sending images
+
+-------------------------------------------------------------------
+Mon Jan 23 14:03:35 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.6.0+git18:
+  * fix panic on gif with identical frames
+  * implement --no-resize for animated gifs
+  * implement --no-resize option
+  * fix insane problem introduced by 29e2683
+  * change default transition step value
+  * implement reading image from stdin
+
+-------------------------------------------------------------------
+Mon Oct 10 17:31:19 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim excess marketing from description
+
+-------------------------------------------------------------------
+Sun Oct 09 11:07:06 UTC 2022 - uncomfy+openbuildservice@uncomfyhalomacro.pl
+
+- Update to version 0.4.3+git14:
+  * bump dependencies (clap went from 3.x to 4.x)
+  * Render the cursor on an empty desktop
+  * Fixed a typo
+  * This protocol is not actually required / used
+  * Use safer type conversion
+  * docs: Put type in backticks
+  * Formatting
+  * Simplify closure that just calls a function
+  * Avoid copying data unnecessarily
+  * Remove unnecessary Option
+
+- Install shell completions for zsh, bash, and fish
+
+-------------------------------------------------------------------
+Sun Oct  9 06:37:58 UTC 2022 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Initial spec for swww version 0.4.3
