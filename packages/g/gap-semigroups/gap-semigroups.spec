@@ -17,7 +17,7 @@
 
 
 Name:           gap-semigroups
-Version:        5.6.1
+Version:        5.6.2
 Release:        0
 Summary:        GAP: Computing with Semigroups of Transformations and Partial Permutations
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ URL:            https://semigroups.github.io/Semigroups/
 #Git-Clone:     https://github.com/semigroups/Semigroups
 #Changelog:     <source0>/CHANGELOG.md
 Source:         https://github.com/semigroups/Semigroups/releases/download/v%version/semigroups-%version.tar.gz
-Patch1:         no-avx.patch
 BuildRequires:  automake
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -37,7 +36,7 @@ BuildRequires:  libtool
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libsemigroups)
 Requires:       gap-core >= 4.12.1
-Requires:       gap-datastructures >= 0.2.5
+Requires:       gap-datastructures >= 0.3.0
 Requires:       gap-digraphs >= 1.6.2
 Requires:       gap-genss >= 1.6.5
 Requires:       gap-images >= 1.3.1
@@ -68,9 +67,7 @@ autoreconf -fi
 %set_build_flags
 export CFLAGS="$CFLAGS $(pkg-config eigen3 --cflags)"
 export CXXFLAGS="$CXXFLAGS $(pkg-config eigen3 --cflags)"
-%configure --disable-static --disable-hpcombi \
-	--enable-eigen --with-external-eigen \
-	--enable-fmt --with-external-fmt \
+%configure --disable-static \
 	--with-external-libsemigroups \
 	--with-gaproot="%gapdir"
 

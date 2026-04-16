@@ -104,4 +104,12 @@
     <comment>- Update to release 5.6.1</comment>
     <requestid>1341084</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>11636ac71b9f27f9df30d11d67c7d47e</srcmd5>
+    <version>5.6.2</version>
+    <time>1776353147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.6.2</comment>
+    <requestid>1347154</requestid>
+  </revision>
 </revisionlist>
