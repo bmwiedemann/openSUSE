@@ -1749,8 +1749,8 @@
     <package name="libcblas3" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libcbor0_13" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libccolamd3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libcdda_interface0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libcdda_paranoia0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libcdda_interface0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libcdda_paranoia0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcddb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcdio19" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libcdio_cdda2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2424,7 +2424,7 @@
     <package name="libopeniscsiusr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libopenjp2-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenjp2-7-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libopenjph0_26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libopenjph0_27" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopenmpt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenobex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libopenraw9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2564,7 +2564,7 @@
     <package name="librasqal3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librav1e0_8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libraw1394-11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libraw23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libraw25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="librdf0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librdmacm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2824,7 +2824,6 @@
     <package name="libvirt-daemon-qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvirt-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libvisio-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libvisual-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libvlc5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libvlccore9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libvmaf3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

@@ -1281,6 +1281,10 @@ unsorted:
   - aws-sdk-java-test-utils 
   - aws-sdk-java-waf 
   - aws-sdk-java-workspaces 
+  - awww 
+  - awww-bash-completion 
+  - awww-fish-completion 
+  - awww-zsh-completion 
   - ax25-apps 
   - ax25-tools 
   - axel 
@@ -4214,7 +4218,6 @@ unsorted:
   - file-unpack 
   - file-unpack2 
   - fileb0x 
-  - filebench 
   - filelight 
   - filelight-lang 
   - filesystem-media 
@@ -8074,11 +8077,13 @@ unsorted:
   - gstreamer-plugins-bad-chromaprint 
   - gstreamer-plugins-bad-chromaprint-32bit 
   - gstreamer-plugins-bad-devel 
+  - gstreamer-plugins-bad-extra 
   - gstreamer-plugins-bad-fluidsynth 
   - gstreamer-plugins-bad-fluidsynth-32bit 
   - gstreamer-plugins-base-32bit 
   - gstreamer-plugins-base-devel 
   - gstreamer-plugins-base-devel-32bit 
+  - gstreamer-plugins-base-extra 
   - gstreamer-plugins-farstream 
   - gstreamer-plugins-good-32bit 
   - gstreamer-plugins-good-extra 
@@ -13812,8 +13817,8 @@ unsorted:
   - libgraphite2-3-32bit 
   - libgravatar-devel 
   - libgretl-1_0-51 
-  - libgromacs10 
-  - libgromacs_mpi10 
+  - libgromacs11 
+  - libgromacs_mpi11 
   - libgrpc++1_76 
   - libgrpc1_76 
   - libgrpc51 
@@ -13968,8 +13973,11 @@ unsorted:
   - libharfbuzz-cairo0 
   - libharfbuzz-cairo0-32bit 
   - libharfbuzz-gobject0-32bit 
+  - libharfbuzz-gpu0 
   - libharfbuzz-icu0-32bit 
+  - libharfbuzz-raster0 
   - libharfbuzz-subset0-32bit 
+  - libharfbuzz-vector0 
   - libharfbuzz0-32bit 
   - libharminv3 
   - libharu-devel 
@@ -15198,7 +15206,7 @@ unsorted:
   - libopenhpi4 
   - libopenhtj2k0 
   - libopenjp2-7-32bit 
-  - libopenjph0_26-32bit 
+  - libopenjph0_27-32bit 
   - libopenlibm4 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -15896,7 +15904,7 @@ unsorted:
   - libraw1394-devel 
   - libraw1394-devel-32bit 
   - libraw1394-tools 
-  - libraw23-32bit 
+  - libraw25-32bit 
   - libraylib550 
   - librbd-devel 
   - librbio4 
@@ -16117,7 +16125,7 @@ unsorted:
   - librnp0 
   - librocblas4 
   - librocfft0 
-  - librocksdb10 
+  - librocksdb11 
   - librocm-core1 
   - librocrand1 
   - librocsgraphtheory0 
@@ -16200,7 +16208,7 @@ unsorted:
   - libscrypt-devel 
   - libscrypt0 
   - libscrypt0-x86-64-v3 
-  - libsdb2_2_4 
+  - libsdb2_4_2 
   - libseafile0 
   - libseagull0 
   - libsearpc-devel 
@@ -16417,7 +16425,6 @@ unsorted:
   - libsqlcipher-3_46_1-0-x86-64-v3 
   - libsqlite3-0-32bit 
   - libsqlitecpp0 
-  - libsqlparser1 
   - libsquashfuse0 
   - libsquirrel1001 
   - libsratom-0-0-32bit 
@@ -17027,6 +17034,7 @@ unsorted:
   - libviskores-1_1 
   - libviskores-mpich-1_1 
   - libviskores-openmpi4-1_1 
+  - libvisual-0_4-0 
   - libvisual-0_4-0-32bit 
   - libvisual-devel 
   - libvkd3d-shader1 
@@ -18864,7 +18872,6 @@ unsorted:
   - menu-cache-devel 
   - mercurial 
   - mercurial-extension-hg-evolve 
-  - mercurial-extension-hg-git 
   - mercurial-lang 
   - mercurial-rust 
   - mercurial-tests 
@@ -20022,6 +20029,7 @@ unsorted:
   - nginx-module-geoip2 
   - nginx-module-lua 
   - nginx-module-njs 
+  - nginx-module-rtmp 
   - nginx-module-vts 
   - nginx-module-zstd 
   - nginx-source 
@@ -21304,6 +21312,7 @@ unsorted:
   - patterns-base-documentation 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-fips 
+  - patterns-base-hardware 
   - patterns-base-immutable_base 
   - patterns-base-kdump 
   - patterns-base-minimal_base-32bit 
@@ -26853,7 +26862,6 @@ unsorted:
   - python311-pure-eval 
   - python311-pure-protobuf 
   - python311-pure-sasl 
-  - python311-puremagic 
   - python311-puremagic1 
   - python311-purl 
   - python311-pwdlib 
@@ -27076,6 +27084,7 @@ unsorted:
   - python311-pyramid-chameleon 
   - python311-pyramid-debugtoolbar 
   - python311-pyramid-mako 
+  - python311-pyrate-limiter 
   - python311-pyreadstat 
   - python311-pyregion 
   - python311-pyright 
@@ -27436,6 +27445,7 @@ unsorted:
   - python311-requests-kerberos 
   - python311-requests-mock 
   - python311-requests-oauthlib 
+  - python311-requests-ratelimiter 
   - python311-requests-toolbelt 
   - python311-requests-unixsocket 
   - python311-requests-wsgi-adapter 
@@ -28162,7 +28172,6 @@ unsorted:
   - python312-platformdirs 
   - python312-plotly 
   - python312-pluggy 
-  - python312-pyroomacoustics 
   - python312-setuptools 
   - python312-setuptools-wheel 
   - python312-setuptools_scm 
@@ -31000,6 +31009,7 @@ unsorted:
   - python313-pyramid-chameleon 
   - python313-pyramid-debugtoolbar 
   - python313-pyramid-mako 
+  - python313-pyrate-limiter 
   - python313-pyreadstat 
   - python313-pyregion 
   - python313-pyright 
@@ -31355,6 +31365,7 @@ unsorted:
   - python313-requests-kerberos 
   - python313-requests-mock 
   - python313-requests-oauthlib 
+  - python313-requests-ratelimiter 
   - python313-requests-toolbelt 
   - python313-requests-unixsocket 
   - python313-requests-wsgi-adapter 
@@ -32108,6 +32119,7 @@ unsorted:
   - python314-ExifRead 
   - python314-Fabric 
   - python314-Faker 
+  - python314-Fiona 
   - python314-Flask 
   - python314-Flask-Assets 
   - python314-Flask-Babel 
@@ -34849,6 +34861,7 @@ unsorted:
   - python314-pyppmd 
   - python314-pyprel 
   - python314-pyprimes 
+  - python314-pyproj 
   - python314-pyproject-api 
   - python314-pyproject-examples 
   - python314-pyproject-hooks 
@@ -34866,10 +34879,12 @@ unsorted:
   - python314-pyramid-chameleon 
   - python314-pyramid-debugtoolbar 
   - python314-pyramid-mako 
+  - python314-pyrate-limiter 
   - python314-pyreadstat 
   - python314-pyregion 
   - python314-pyright 
   - python314-pyroma 
+  - python314-pyroomacoustics 
   - python314-pyroute2 
   - python314-pyrsistent 
   - python314-pysaml2 
@@ -35222,6 +35237,7 @@ unsorted:
   - python314-requests-kerberos 
   - python314-requests-mock 
   - python314-requests-oauthlib 
+  - python314-requests-ratelimiter 
   - python314-requests-toolbelt 
   - python314-requests-unixsocket 
   - python314-requests-wsgi-adapter 
@@ -35535,6 +35551,7 @@ unsorted:
   - python314-swapper 
   - python314-sybil 
   - python314-sympy 
+  - python314-synr 
   - python314-syrupy 
   - python314-system-hotkey310 
   - python314-system_hotkey 
@@ -38205,7 +38222,6 @@ unsorted:
   - sptlrx 
   - spyder 
   - spyder-lang 
-  - sql-parser-devel 
   - sqlcipher 
   - sqlcipher-devel 
   - sqlite-jdbc 
@@ -48925,8 +48941,6 @@ unsorted:
   - torbrowser-launcher 
   - torbrowser-launcher-lang 
   - torrentinfo 
-  - tortoisehg 
-  - tortoisehg-nautilus 
   - totem-devel 
   - totem-pl-parser-devel 
   - touchegg 

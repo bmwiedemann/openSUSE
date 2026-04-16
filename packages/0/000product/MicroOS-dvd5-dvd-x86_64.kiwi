@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260414" schemaversion="4.1">
+<image name="OBS__MicroOS___20260416" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260414</productvar>
+      <productvar name="VERSION">20260416</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260414,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260416,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260414/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260416/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -575,8 +575,6 @@
       <repopackage name="libcap2"/>
       <repopackage name="libcares2"/>
       <repopackage name="libcbor0_13"/>
-      <repopackage name="libcdda_interface0"/>
-      <repopackage name="libcdda_paranoia0"/>
       <repopackage name="libcddb2"/>
       <repopackage name="libcdio19"/>
       <repopackage name="libcdio_cdda2"/>
@@ -983,7 +981,7 @@
       <repopackage name="libopenh264-8"/>
       <repopackage name="libopeniscsiusr0"/>
       <repopackage name="libopenjp2-7"/>
-      <repopackage name="libopenjph0_26"/>
+      <repopackage name="libopenjph0_27"/>
       <repopackage name="libopenmpt0"/>
       <repopackage name="libopenssl3"/>
       <repopackage name="libopus0"/>
@@ -1152,7 +1150,7 @@
       <repopackage name="libQtQuick5"/>
       <repopackage name="librav1e0_8"/>
       <repopackage name="libraw1394-11"/>
-      <repopackage name="libraw23"/>
+      <repopackage name="libraw25"/>
       <repopackage name="libreadline8"/>
       <repopackage name="librepo0"/>
       <repopackage name="librist4"/>
@@ -1266,7 +1264,6 @@
       <repopackage name="libvdpau1"/>
       <repopackage name="libverto1"/>
       <repopackage name="libvidstab1_2"/>
-      <repopackage name="libvisual-0_4-0"/>
       <repopackage name="libvlc5"/>
       <repopackage name="libvlccore9"/>
       <repopackage name="libvmaf3"/>
