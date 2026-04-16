@@ -1,7 +1,7 @@
 #
 # spec file for package python-puremagic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
+%global skip_python311 1
 Name:           python-puremagic
-Version:        1.30
+Version:        2.2.0
 Release:        0
 Summary:        Pure python implementation of magic file detection
 License:        MIT
@@ -26,11 +27,14 @@ URL:            https://github.com/cdgriffith/puremagic
 Source:         https://files.pythonhosted.org/packages/source/p/puremagic/puremagic-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools-scm >= 6.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       alts
+BuildRequires:  alts
 %python_subpackages
 
 %description
@@ -44,14 +48,22 @@ Pure python implementation of magic file detection
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/puremagic
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
+%post
+%python_install_alternative puremagic
+
+%postun
+%python_uninstall_alternative puremagic
+
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.md README.rst
 %license LICENSE
+%python_alternative %{_bindir}/puremagic
 %{python_sitelib}/puremagic
 %{python_sitelib}/puremagic-%{version}.dist-info
 

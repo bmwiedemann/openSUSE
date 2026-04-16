@@ -33,4 +33,41 @@
     /dev/random (thanks to Yuri Schaeffer)</comment>
     <requestid>1290768</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4844b62a1e32178899c6c91a57d3c634</srcmd5>
+    <version>2.2.0</version>
+    <time>1776353126</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * Refactored into a modular scanner architecture
+  * Added new scanners for Ogg, ASF, and EBML files
+  * Updated build system to use setuptools-scm
+  * Added MSI (Windows Installer) and MPP (Microsoft Project)
+    detection to CFBF scanner
+  * Fixing #146 OOXML detection now uses [Content_Types].xml
+    content types as primary method
+  * Dropped support for older Python versions, now requires &gt;= 3.12
+  * Fixing text scanner now treats files containing NUL bytes as
+    binary data instead of misidentifying them as text
+  * Fixing mz5 HDF5 scanner typo in chromatogram dataset name
+  * Fixing #141 deep scan no longer overrides valid binary format
+    matches (e.g. JPEG) for files without extensions (thanks to
+    marph91)
+  * Adding #6 `from_extension()` and `magic_extension()` to look
+    up MIME types by file extension
+  * Adding #119 CFBF/OLE2 scanner to distinguish Word, Excel,
+    PowerPoint, Outlook MSG, Visio, and Publisher files (thanks
+    to Simeon Stoykov and Andy - NebularNerd)
+  * Adding #139 codespell check (thanks to Christian Clauss)
+  * Adding `-e`/`--extension` CLI flag for extension-based MIME
+    type lookup
+  * Fixing #104 WAV MIME type changed from `audio/wave` to
+    `audio/wav` (thanks to Simon Willison and Andy - NebularNerd)
+  * Fixing #137 passing non-existent filename to
+    from_string()/from_stream() no longer raises
+    FileNotFoundError (thanks to denisw)
+  * Fixing #126 Python scanner false positives — now uses AST
+    node walking instead of regex to verify real Python</comment>
+    <requestid>1345298</requestid>
+  </revision>
 </revisionlist>
