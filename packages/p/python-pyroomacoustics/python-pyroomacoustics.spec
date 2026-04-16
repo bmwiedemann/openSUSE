@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyroomacoustics
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyroomacoustics
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        A framework for room acoustics and audio processing in Python
 License:        MIT
 URL:            https://github.com/LCAV/pyroomacoustics
-Source:         https://github.com/LCAV/pyroomacoustics/archive/v%{version}.tar.gz#/pyroomacoustics-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE  pyroomacoustics-opensuse-buildoptions.patch code@bnavigator.de -- Use eigen3 headers from system instead of from the empty submodule dir in the github archive.
+Source0:        https://files.pythonhosted.org/packages/source/p/pyroomacoustics/pyroomacoustics-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE  pyroomacoustics-opensuse-buildoptions.patch code@bnavigator.de -- Use eigen3 headers from system instead of from the submodule dir in the github archive.
 Patch0:         pyroomacoustics-opensuse-buildoptions.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
@@ -56,6 +56,7 @@ beamforming algorithms in indoor scenarios.
 
 %prep
 %autosetup -p1 -n pyroomacoustics-%{version}
+rm -r pyroomacoustics/libroom_src/ext/eigen
 chmod a-x README.rst
 
 %build
@@ -70,7 +71,11 @@ export CFLAGS="%{optflags}"
 # Only test on x86_64: All other platforms fail because of rounding errors vs.
 # too tight precision requirements in tests.
 %ifarch x86_64
-%pytest_arch pyroomacoustics/tests --import-mode=append
+# example file missing in sdist
+donttest="test_snr_error"
+# no python-sofa installation
+donttest="$donttest or test_energy_preserving_filtering"
+%pytest_arch pyroomacoustics/tests --import-mode=append -k "not ($donttest)"
 %endif
 
 %files %{python_files}

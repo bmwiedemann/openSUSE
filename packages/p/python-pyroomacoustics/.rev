@@ -175,4 +175,41 @@
     scattering &gt; 0.0.</comment>
     <requestid>1324596</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>95c679965ab7579aaf37bfdce4182c6a</srcmd5>
+    <version>0.10.0</version>
+    <time>1776353148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0
+  * Ray Tracing Directivity
+  * This new release introduces source and receiver directivities
+    for the ray tracing simulation engine.
+  * Support for source directivities in non-shoebox rooms using the
+    images source model.
+  * New pyroomacoustics.random module that provides some primitives
+    for sampling at random from arbitrary distributions on the
+    sphere. This is used for source directivities in the ray
+    tracing simulator.
+  * New octave filter bank with energy conservation and perfect
+    reconstruction described in Antoni, &quot;Orthogonal-like
+    fractional-octave-band filters,&quot; 2009. The filter bank is
+    implemented in
+    pyroomacoustics.acoustics.AntoniOctaveFilterBank.
+  * A method sample_rays is added to the Directivity objects to
+    provide a unified interface to sample rays of sources used for
+    ray tracing.
+  * The class directivities.SphericalHistogram allows to collect
+    and display histograms on the sphere which can be useful to
+    visualize and test directivities.
+  ## Added
+  * A new random sub-module that contains a Numpy random number
+    generator to use package wide and some methods to set the seeds
+    for this generator and that of the libroom module.
+  * New methods to sample from spherical distributions either
+    analytically, or by rejection sampling are provided in random.
+  ## Changed
+  * Bumped the numpy requirement to v1.17.0 to use the
+    numpy.random.Generator objects.</comment>
+    <requestid>1347162</requestid>
+  </revision>
 </revisionlist>
