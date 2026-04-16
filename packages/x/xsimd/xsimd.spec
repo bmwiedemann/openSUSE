@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           xsimd
-Version:        14.0.0
+Version:        14.1.0
 Release:        0
 Summary:        C++ wrappers for SIMD intrinsics
 License:        BSD-3-Clause
