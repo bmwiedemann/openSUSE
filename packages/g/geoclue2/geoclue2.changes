@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 12 10:56:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.1
+  * Accept NMEA GGA sentences with 11 or more parts (needed 14 or
+    more previously).
+  * Use async D-bus 'Set' methods to set client properties in
+    libgeoclue to improve robustness.
+  * Do not change Client Location property on updates which are
+    below threshold to avoid leaking location to D-bus.
+  * Ignore wired WPA interfaces when finding an interface for WiFi
+    scanning.
+
+-------------------------------------------------------------------
 Tue Sep 16 12:00:04 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Delete 0001-ichnaea-include-ssid.patch,
