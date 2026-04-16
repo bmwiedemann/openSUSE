@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Werkzeug%{psuffix}
-Version:        3.1.6
+Version:        3.1.8
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause

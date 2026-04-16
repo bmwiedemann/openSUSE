@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Apr  3 12:56:01 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
+
+- Update to version 3.1.8:
+  * Fix release, no behavior changes or breaking changes compared
+    to 3.1.7.
+  * Request.host and get_host now return an empty string if the
+    host header is missing or contains invalid characters (gh#3142). 
+
+-------------------------------------------------------------------
+Tue Mar 24 09:31:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.7:
+  * parse_list_header preserves partially quoted items, discards
+    empty items, and returns empty for unclosed quoted values.
+    :pr:`3128`
+  * WWWAuthenticate.to_header does not produce a trailing space
+    when there are no parameters. :issue:`3127`
+  * Transfer-Encoding is parsed as a set. :pr:`3134`
+  * Request.host, get_host, and host_is_trusted validate the
+    characters of the value. An empty value is no longer allowed.
+    A Unix socket server address is ignored. The trusted_list
+    argument to host_is_trusted is optional. :pr:`3113`
+  * Fix multipart form parser handling of newline at boundary.
+    :issue:`3088`
+  * Response.make_conditional sets the Accept-Ranges header even
+    if it is not a satisfiable range request. :issue:`3108`
+  * merge_slashes merges any number of consecutive slashes.
+    :issue:`3121`
+
+-------------------------------------------------------------------
 Tue Mar 17 16:20:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.1.6
