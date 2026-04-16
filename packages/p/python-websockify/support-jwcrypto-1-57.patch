@@ -1,0 +1,19 @@
+From 93f694cca60ad5eed2ff44348831e1c6f2b6fb29 Mon Sep 17 00:00:00 2001
+From: Justin Luong <justinl1996@yahoo.com>
+Date: Mon, 13 Apr 2026 23:29:35 +1000
+Subject: [PATCH] Fix symmetric jws token unit tests
+
+A 256 bit key length has been enforced in jwcrypto v1.57. See https://github.com/latchset/jwcrypto/releases/tag/v1.5.7
+---
+ tests/fixtures/symmetric.key | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/fixtures/symmetric.key b/tests/fixtures/symmetric.key
+index 668b39c4..6532a13c 100644
+--- a/tests/fixtures/symmetric.key
++++ b/tests/fixtures/symmetric.key
+@@ -1 +1 @@
+-secret_sauce
+\ No newline at end of file
++secret_sauce_secret_sauce_secret_sauce_secret_sauce
+\ No newline at end of file

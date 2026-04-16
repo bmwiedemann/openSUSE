@@ -292,4 +292,15 @@
     plugins.</comment>
     <requestid>1316814</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>8a2c855a37fe8a18c42a2b395f67f14f</srcmd5>
+    <version>0.13.0</version>
+    <time>1776357908</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support-jwcrypto-1-57.patch to fix tests with new jwcrypto
+
+Fix for python-jwcrypto in Stanging:L
+</comment>
+    <requestid>1346925</requestid>
+  </revision>
 </revisionlist>

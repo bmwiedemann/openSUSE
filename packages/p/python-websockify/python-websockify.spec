@@ -1,7 +1,7 @@
 #
 # spec file for package python-websockify
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ License:        BSD-2-Clause AND LGPL-3.0-only AND MPL-2.0 AND BSD-3-Clause
 URL:            https://github.com/novnc/websockify
 Source:         https://github.com/novnc/websockify/archive/v%{version}.tar.gz
 Patch1:         optional-websockify.patch
+#PATCH-FIX-UPSTREAM support-jwcrypto-1-57.patch https://github.com/novnc/websockify/pull/631
+Patch2:         support-jwcrypto-1-57.patch
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module jwcrypto}
 BuildRequires:  %{python_module pip}
