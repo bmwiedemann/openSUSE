@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Apr 14 17:36:59 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 20
+
+-------------------------------------------------------------------
+Fri Apr 10 13:46:12 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- The remote access to the Agama web server can be disabled with
+  the "inst.remote=0" boot option (jsc#AGM-153)
+
+-------------------------------------------------------------------
+Wed Apr  1 14:46:08 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Run the shell at tty8 as a login shell (to initialize some
+  environment variables like $PAGER from /etc/profile)
+  (gh#agama-project/agama#3354)
+
+-------------------------------------------------------------------
+Tue Mar 31 14:28:52 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add userChrome.css to simplify the firefox UI
+  (gh#agama-project/agama#3343)
+- Force user selection of download location for config/logs
+
+-------------------------------------------------------------------
+Mon Mar 30 14:06:56 UTC 2026 - Steffen Winterfeldt <snwint@suse.com>
+
+- apply driver update only to the product it is intended for (bsc#1261030)
+
+-------------------------------------------------------------------
+Wed Mar 25 19:18:18 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Update the OBS systemsmanagement:Agama:Devel GPG key,
+  the old one has expired (gh#agama-project/agama#3334)
+
+-------------------------------------------------------------------
+Tue Mar 24 17:21:07 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Do not print the Agama URLs on the console when remote access
+  has been disabled using the "inst.listen_on=localhost" boot
+  parameter (related to jsc#AGM-153, gh#agama-project/agama#3269)
+
+-------------------------------------------------------------------
 Fri Mar 20 07:25:55 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
 
 - Replace plymouth with blog-plymouth on s390x (bsc#1254326)
