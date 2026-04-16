@@ -1,7 +1,7 @@
 #
 # spec file for package gssntlmssp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gssntlmssp
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        GSSAPI NTLMSSP Mechanism
 License:        ISC

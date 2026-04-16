@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 15 17:38:02 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.1
+  * Make sending only filled MsvAvFlags field for CHALLENGE message
+- Update to version 1.3.0
+  * Fix typo in header guard for src/ntlm.h
+  * Fix crash in target_name decoding.
+  * Mark defined numbers as unsigned.
+  * BF: libiconv does not support undashed unicode encoding aliases
+  * Change the ossl3 context to be allocated once.
+
+-------------------------------------------------------------------
 Wed Feb 15 10:48:14 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Adapt license changes from upstream
