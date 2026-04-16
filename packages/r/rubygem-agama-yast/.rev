@@ -657,4 +657,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1343733</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>10cc63ae9b7f1bd1b0c4581201c8bc25</srcmd5>
+    <version>19.devel319.fca55b0ac</version>
+    <time>1776357911</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1346930</requestid>
+  </revision>
 </revisionlist>
