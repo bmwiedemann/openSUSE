@@ -94,7 +94,8 @@ find . -name '.gitignore' -delete
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+# test_bad_environ_raises_bad_request fails and was removed upstream https://github.com/pallets/flask/commit/a31e6b73469cb2bf7eb8f70b5ff21f710fd2e23c
+%pytest -k "not test_bad_environ_raises_bad_request"
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
