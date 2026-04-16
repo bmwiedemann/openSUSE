@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 11 21:12:38 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Build with Clang <= 21 for now to work around boo#1260596.
+
+-------------------------------------------------------------------
 Fri Mar 20 12:50:14 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Suggests only the IMA policy package, and keep it as example (bsc#1259963)

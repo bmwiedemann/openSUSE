@@ -44,7 +44,13 @@ Patch1:         keylime-agent.conf.diff
 Patch2:         Cargo_lock.patch
 Patch3:         Cargo_toml.patch
 BuildRequires:  cargo-packaging
+%if %product_libs_llvm_ver <= 21
 BuildRequires:  clang
+%else
+# Workaround for failing build with Clang 22, probably requires bindgen >= 0.72.1.
+BuildRequires:  clang21
+BuildRequires:  llvm21-libclang13
+%endif
 BuildRequires:  firewall-macros
 BuildRequires:  libarchive-devel
 BuildRequires:  rust
