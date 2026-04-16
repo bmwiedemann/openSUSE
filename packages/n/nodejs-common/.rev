@@ -218,4 +218,12 @@
   per revision.</comment>
     <requestid>1320746</requestid>
   </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>c2c44455e351821e03c55404bcc5fd32</srcmd5>
+    <version>6.1</version>
+    <time>1776353111</time>
+    <user>dimstar_suse</user>
+    <comment>- Use adapted suse_version for 16.1 (jsc#PED-15772)</comment>
+    <requestid>1346427</requestid>
+  </revision>
 </revisionlist>

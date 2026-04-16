@@ -64,6 +64,11 @@
 %endif
 
 %if 0%{?suse_version} == 1600
+# 16.0
+%define default_node_ver 22
+%endif
+
+%if 0%{?suse_version} == 1610
 # 16.1
 %define default_node_ver 24
 %endif

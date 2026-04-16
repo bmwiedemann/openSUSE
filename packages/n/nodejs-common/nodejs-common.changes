@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 13 12:02:39 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Use adapted suse_version for 16.1 (jsc#PED-15772)
+
+-------------------------------------------------------------------
 Fri Nov 28 18:43:55 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - Update TW and SLFO to 24. Since we cannot differentiate between
