@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Tue Apr  7 10:01:34 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 0.22.1
+  * Limit strcat space in hassy model manipulation
+  * Version increment; shlib increment: internal ABI has changed
+  * check panasonic enc8 tile width against image width
+  * CR3 parser: zero all buffers before fread
+  * skip memory allocation checks for OWN_ALLOC decoders
+  * DNG SDK glue: check for memory limits
+  * raw2image()/dcraw_process() - check for int16 source data present
+  * Check for correct bayer pattern, pass incorect ones to vng_interpolate
+  * parse_rollei: zero input string before fgets
+  * Nikon padded/12bit: no need to calculate padded row size before final raw_width adjustment
+  * TALOS-2026-2364: Fix for data size calculation integer overflow in float/deflated DNG loader; Check for read results
+  * Fix for TALOS-2026-2363: avoid integer overflow in allocation size calculation. Also: check for EOF in read loop
+  * X3F decoder: implemented hard single allocation limit via LIBRAW_X3F_ALLOC_LIMIT_MB define;
+    allocation size calculation converted to 64 bit arithm; fix for TALOS-2026-2359
+  * Fix for TALOS-2026-2358
+  * Fix for TALOS-2026-2331
+  * Fix for TALOS-2026-2330
+  * Sony YCC decoder: check tile size; add +3 bytes to input buffer to avoid possible overrun in huffman decoder
+  * FP DNG data limit: perform calculations in 64 bit
+  * Add extra huff_coeff item to handle huff_index==17 with known (zero) value, not externally provided tag value
+  * use %lld format for timestamp parse/print where appropriate
+  * nikon coolscan loader: check for EOF
+  * Initialize olympus lensID bits
+  * CR3 parser: all file offsets are unsigned/64bit; check current offset against file size
+  * Add Canon EOS Kiss M2 to camera list
+  * Check real color count against filters; do not pass really 4-color images to fbdd or advanced demosaic
+  * Use LIBRAW_EXCEPTION instead of own internal in losslessjpeg.h
+  * zero input string to avoid compare random stack garbage with tag names
+  * Check for eof in Pentax tag search loop
+  * Fuji decoder: initialize allocated buffers 
+  * fixes CVE-2026-5342 [bsc#1261499]
+- version update to 0.22.0
+  Raw format support
+  * Panasonic encoding 8
+  * Sony YCC (Medium/Small compression) pseudo-RAW support
+  * DNG 1.7 (including JPEG-XL compression) support via Adobe DNG SDK 1.7.x integration
+  * Canon CRN files: embedded RAW extracted
+  * New implementation for Samsung V3 decoder (NX1, NX500, etc)
+  * OM System 14-bit high-resolution files
+  * Nikon NEFX
+  Camera support
+  * Canon EOS R1, EOS R5 Mark II, EOS R5 C, EOS R6 Mark II, EOS R8, EOS R50, EOS R100, EOS Ra
+  * Fujifilm X-T50, GFX 100S II, GFX100-II, X-T5, X-S20, X-H2
+  * X-H2S: support of files with wrong metadata (pre 1.03 fw)
+  * GoPro HERO11, HERO12 (via GoPro SDK)
+  * Hasselblad CFV-50c, CFV-100c, X2D-100c
+  * Leica Q3 43, D-Lux8, SL3, Q3, M11 Monochrom
+  * Nikon (standard compression only): Z6-III, Z f, Z30, Z8
+  * Olympus/OM System OM-1 Mark II, TG-7, OM-5
+  * Panasonic GH7, S9, DC-G9 II, DC-ZS200D / ZS220D, DC-TZ200D / TZ202D / TZ220D, DC-S5-II, DC-GH6
+  * Pentax KF, K III Monochrome
+  * Sony ZV-E10M2, UMC-R10C, A9-III, ILX-LR1, A7C-II, A7CR, ILCE-6700, ZV-1M2, ZV-E1, ILCE-7RM5 (A7R-V), ILME-FX30
+  * Multiple DJI and Skydio drones
+  Preview format support 
+  * JPEG-XL previews (DNG 1.7) support:
+  * H265 (Canon) and JPEG-XL thumbnail support for dcraw_make_mem_thumb
+  * Note: libraw_processed_image_t.type is set to LIBRAW_IMAGE_H265 or LIBRAW_IMAGE_JPEGXL respectively
+  * Jpeg XL preview file writer
+  * Jpeg XL preview support in simple_dcraw -E/-e
+  API/ABI changes
+  * New rawoptions/processing flag for DNG processing if compiled with Adobe DNG SDK:
+    LIBRAW_RAWOPTIONS_DNG_STAGE23_IFPRESENT_JPGJXL
+  * DNG OpcodeList1/2/3: opcode list(s) are read (as is) into imgdata.color.dng_levels.rawopcodes[3]
+  * Exif callback is called from CR3 parser before calling parse_makernotes() parameters are the same
+    as usual, except tag parameter value.
+  * Exif callback is called for Sony SR2 tag with tag parameter set to 0x60000 | tagID
+  * Makernotes callback implemented for TIFF-like (IFD structure makernotes)
+  * New metadata field makernotes.pentax.DynamicRangeExpansion[4]
+  * New API call (static) int LibRaw::simplify_make_model
+  * All file offsets are 64-bit now; Note: data callback signature has changed
+  * New LibRaw_abstract_datastream (and derived classes) methods:
+  * New bits in imgdata.process_warnings:
+    LIBRAW_WARN_DNG_NOT_PROCESSED - RAW file was passed to DNG SDK, but not processed.
+    LIBRAW_WARN_DNG_NOT_PARSED - DNG parse error or non-valid DNG at valid_for_dngsdk() stage
+  * New compile-time define: LIBRAW_MAX_CR3_RAW_FILE_SIZE
+  * New imgdata.params.use_p1_correction parameter
+  * New possible bit in imgdata.process_warnings: LIBRAW_WARN_VENDOR_CROP_SUGGESTED
+  * LibRaw::adjust_to_raw_inset_crop exposed via C-API call
+    libraw_adjust_to_raw_inset_crop(libraw_data_t *lr, unsigned mask, float maxcrop);
+  * Added imgdata.makernotes.sony.AspectRatio field
+  * Canon AutoRotate mode detection for several cameras.
+  * Most small buffer allocations: malloc changed to calloc to prevent uninitialized heap data leaks
+  * Large buffer allocation (RAW backing store, thumbnails store)
+- version update to 0.21.5
+  * Accurate exception handling in fuji compressed decoder/openmp case
+  * Update libraw_types.h to fix calling C++ files in external C/Swift
+  * Cannon AFData: read/data size fix and check AFInfo2/3 data against tag size 
+- remove superfluous libraw-CVE-2020-22628.patch
+- remove supoerfluous export hacks
+- fixes CVE-2026-20884 [bsc#1261671]
+        CVE-2026-20889 [bsc#1261672]
+        CVE-2026-20911 [bsc#1261673]
+        CVE-2026-21413 [bsc#1261674]
+        CVE-2026-24450 [bsc#1261675]
+        CVE-2026-24660 [bsc#1261676]
+
+-------------------------------------------------------------------
 Wed Apr 23 08:32:35 UTC 2025 - pgajdos@suse.com
 
 - version update to 0.21.4

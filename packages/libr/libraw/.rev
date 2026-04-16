@@ -780,4 +780,12 @@ The only dup reported was for /usr/lib64/libraw.a and libraw_r.a (forwarded requ
   * CVE-2025-43963 [bsc#1241642]</comment>
     <requestid>1272324</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>e5452dce217b0594a04cd063feaae886</srcmd5>
+    <version>0.22.1</version>
+    <time>1776353111</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2026-20884, [bsc#1261671], CVE-2026-20889, [bsc#1261672], CVE-2026-20911, [bsc#1261673], CVE-2026-21413, [bsc#1261674], CVE-2026-24450, [bsc#1261675], CVE-2026-24660, [bsc#1261676]</comment>
+    <requestid>1346435</requestid>
+  </revision>
 </revisionlist>

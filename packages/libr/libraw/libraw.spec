@@ -1,7 +1,7 @@
 #
 # spec file for package libraw
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %define asan_build    0
 
 %define tar_name LibRaw
-%define lver    23
+%define lver    25
 %define lname	libraw%{lver}
 Name:           libraw
-Version:        0.21.4
+Version:        0.22.1
 Release:        0
 Summary:        Library for reading RAW files obtained from digital photo cameras
 License:        CDDL-1.0 OR LGPL-2.1-only
@@ -32,8 +32,6 @@ URL:            https://www.libraw.org/
 #Git-Clone:	git://github.com/LibRaw/LibRaw
 Source0:        https://www.libraw.org/data/%tar_name-%version.tar.gz
 Source1:        baselibs.conf
-# CVE-2020-22628 [bsc#1215308], stretch() function in librawsrcpostprocessing
-Patch0:         libraw-CVE-2020-22628.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -106,12 +104,9 @@ against LibRaw. LibRaw does not provide dynamic libraries.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CXXFLAGS="%{optflags} -fPIC -DUSE_ZLIB"
-export LDFLAGS="$LDFLAGS -pie"
 %if %{debug_build}
 export CXXFLAGS="$CXXFLAGS -O0"
 %endif
-export LIBS="$LIBS -lz"
 autoreconf -fi
 %configure
 %if %{asan_build}
