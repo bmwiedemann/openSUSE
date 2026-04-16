@@ -1,0 +1,54 @@
+--- a/ncurses/base/lib_mouse.c
++++ b/ncurses/base/lib_mouse.c
+@@ -892,40 +892,43 @@ _nc_mouse_event(SCREEN *sp)
+ #if USE_SYSMOUSE
+     case M_SYSMOUSE:
+ 	if (sp->_sysmouse_head < sp->_sysmouse_tail) {
++	    *eventp = sp->_sysmouse_fifo[sp->_sysmouse_head];
+ 	    /*
+ 	     * Point the fifo-head to the next possible location.  If there
+ 	     * are none, reset the indices.  This may be interrupted by the
+ 	     * signal handler, doing essentially the same reset.
+ 	     */
+ 	    sp->_sysmouse_head += 1;
+ 	    if (sp->_sysmouse_head == sp->_sysmouse_tail) {
+ 		sp->_sysmouse_tail = 0;
+ 		sp->_sysmouse_head = 0;
+ 	    }
+ 
+ 	    /* bump the next-free pointer into the circular list */
+ 	    sp->_mouse_write++;
+ 	    result = TRUE;
+ 	}
+ 	break;
+ #endif /* USE_SYSMOUSE */
+ 
+ #if USE_TERM_DRIVER
+     case M_TERM_DRIVER:
+ 	while (sp->_drv_mouse_head < sp->_drv_mouse_tail) {
++	    *eventp = sp->_drv_mouse_fifo[sp->_drv_mouse_head];
+ 	    /*
+ 	     * Point the fifo-head to the next possible location.  If there
+ 	     * are none, reset the indices.
+ 	     */
+ 	    sp->_drv_mouse_head += 1;
+ 	    if (sp->_drv_mouse_head == sp->_drv_mouse_tail) {
+ 		sp->_drv_mouse_tail = 0;
+ 		sp->_drv_mouse_head = 0;
+ 	    }
+ 
+ 	    /* bump the next-free pointer into the circular list */
+ 	    sp->_mouse_write++;
++	    eventp = EventAt(sp, sp->_mouse_write);
+ 	    result = TRUE;
+ 	}
+ 	break;
+ #endif
+@@ -1746,4 +1749,5 @@ _nc_mouse_parse(SCREEN *sp, int runcount)
+      * with.  The same issue applies to first_valid and _mouse_read.
+      */
+-    while (!ValidEvent(EventAt(sp, sp->_mouse_read))) {
++    while (sp->_mouse_read != sp->_mouse_write &&
++	   !ValidEvent(EventAt(sp, sp->_mouse_read))) {
+ 	sp->_mouse_read++;
+     }

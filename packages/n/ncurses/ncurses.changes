@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  5 12:41:35 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- added fix-mouse.patch to fix regression introduced in patch 20260301
+  causing htop to crash (boo#1253379)
+
+-------------------------------------------------------------------
 Mon Mar 30 07:13:08 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260328
