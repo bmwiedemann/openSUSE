@@ -1990,4 +1990,41 @@ CVE-2020-13871 boo#1172646</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1341580</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>f0dfbd5d8fbc308e3631ef92d801c235</srcmd5>
+    <version>3.53.0</version>
+    <time>1776353129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.53.0:
+  * https://sqlite.org/releaselog/3_53_0.html
+  * Add the Query Result Formatter (QRF) library for formatting the
+    results of SQL queries for human readability on a fixed-pitch
+    font screen.
+  * Enhance ALTER TABLE to permit adding and removing NOT NULL and
+    CHECK constraints.
+  * The REINDEX EXPRESSIONS statement rebuilds expression indexes.
+  * The body of TEMP triggers may now modify and/or query tables
+    in the main schema.
+  * Enhance VACUUM INTO so that if a URI filename is used as the
+    target and that filename has a reserve=N query parameter with
+    N between 0 and 255, then the reserve amount for the generated
+    database copy is set to N.
+  * New SQL functions json_array_insert() and jsonb_array_insert().
+  * Renovations to the CLI.
+  * New C-language interfaces: sqlite3_str_truncate(),
+    sqlite3_str_free(), sqlite3_carray_bind_v2().
+  * Add the SQLITE_PREPARE_FROM_DDL option to sqlite3_prepare_v3().
+  * Added the SQLITE_UTF8_ZT constant which can be used as the
+    encoding parameter to sqlite3_result_text64() or
+    sqlite3_bind_text64() to indicate that the value is UTF-8
+    encoded and zero terminated.
+  * The SQLITE_LIMIT_PARSER_DEPTH option is added to
+    sqlite3_limit().
+  * The SQLITE_DBCONFIG_FP_DIGITS option is added to
+    sqlite3_db_config().
+  * Query planner improvements.
+  * Add new interfaces to the session extension that enable an
+    application to add changes one at a time to the</comment>
+    <requestid>1345589</requestid>
+  </revision>
 </revisionlist>
