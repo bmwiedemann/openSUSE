@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 14 17:36:57 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 20
+
+-------------------------------------------------------------------
+Tue Apr 14 15:40:28 UTC 2026 - David Diaz <dgonzalez@suse.com>
+
+- Redesign network connection form with improved user experience
+  (related to gh#agama-project/agama#3386 and bsc#1259067).
+
+-------------------------------------------------------------------
+Mon Apr 13 15:25:11 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Extend storage UI to reuse LVM volume groups
+  (gh#agama-project/agama#3380).
+
+-------------------------------------------------------------------
+Tue Apr  7 14:19:47 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Redirect to the overview page after selecting the product during
+  an auto-installation (gh#agama-project/agama#3365).
+
+-------------------------------------------------------------------
 Tue Mar 24 14:45:14 UTC 2026 - David Diaz <dgonzalez@suse.com>
 
 - Allow downloading logs and config from the installation finished
