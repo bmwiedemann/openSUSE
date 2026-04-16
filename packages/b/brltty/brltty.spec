@@ -21,7 +21,7 @@
 %define sover 0_8
 %define soname libbrlapi%{sover}
 Name:           brltty
-Version:        6.9
+Version:        6.9.1
 Release:        0
 Summary:        Braille display driver for Linux/Unix
 License:        LGPL-2.1-or-later
@@ -33,8 +33,6 @@ Source1:        README.SUSE
 Source2:        %name.rpmlintrc
 Patch0:         brltty-udev-dir.patch
 Patch2:         brltty-reproducible-jar-mtime.patch
-# PATCH-FIX-UPSTREAM brltty-handytech-crash-fix.patch mgorse@suse.com -- fix crash with some HandyTech displays via USB.
-Patch3:         brltty-handytech-crash-fix.patch
 
 Requires(pre):  system-user-brltty = %version-%release
 
@@ -311,7 +309,6 @@ System user for the Braille display driver for Linux/Unix
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
 %patch -P 2 -p1
 %endif
-%patch -P 3 -p1
 
 %build
 %sysusers_generate_pre Autostart/Systemd/sysusers system-user-brltty %name.conf
@@ -465,6 +462,7 @@ rm -f %_localstatedir/adm/update-messages/%name-%version-%release-something
 %_mandir/man1/brltty.1*
 %_mandir/man1/eutp.1.gz
 %_tmpfilesdir/%name.conf
+%_udevrulesdir/90-%name-beeper.rules
 %_udevrulesdir/90-%name-hid.rules
 %_udevrulesdir/90-%name-uinput.rules
 %_udevrulesdir/90-%name-usb-customized.rules

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  7 14:21:44 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 6.9.1:
+  + Too many changes; please read ChangeLog
+- Drop brltty-handytech-crash-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sat Feb 28 18:17:01 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 6.9:
