@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  9 10:29:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.18.1:
+  * [BUGFIX] Fix tarball command compatibility #375
+
+-------------------------------------------------------------------
 Wed Feb 11 06:03:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.18.0:
