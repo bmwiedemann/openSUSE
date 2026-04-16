@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  9 11:10:20 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Recover fix-chardet-RequestsDependencyWarning.patch, bsc#1261500
+  * Fix RequestsDependencyWarning with chardet (6.0.0dev0) on
+    Factory/TW (gh#psf/requests#7219) (gh#psf/requests#7220)
+    (gh#psf/requests#7239)
+
+-------------------------------------------------------------------
 Tue Mar 31 12:46:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.33.1:

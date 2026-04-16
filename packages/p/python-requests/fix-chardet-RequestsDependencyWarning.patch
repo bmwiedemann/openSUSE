@@ -1,0 +1,22 @@
+Index: requests-2.33.1/src/requests/__init__.py
+===================================================================
+--- requests-2.33.1.orig/src/requests/__init__.py
++++ requests-2.33.1/src/requests/__init__.py
+@@ -42,6 +42,8 @@ import warnings
+ 
+ import urllib3
+ 
++import re
++
+ from .exceptions import RequestsDependencyWarning
+ 
+ try:
+@@ -74,7 +76,7 @@ def check_compatibility(urllib3_version,
+     # Check charset_normalizer for compatibility.
+     if chardet_version:
+         major, minor, patch = chardet_version.split(".")[:3]
+-        major, minor, patch = int(major), int(minor), int(patch)
++        major, minor, patch = int(major), int(minor), int(re.sub(r'[^\d]+', '', patch))
+         # chardet_version >= 3.0.2, < 8.0.0
+         assert (3, 0, 2) <= (major, minor, patch) < (8, 0, 0)
+     elif charset_normalizer_version:

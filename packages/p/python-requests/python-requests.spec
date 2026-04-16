@@ -32,6 +32,8 @@ Summary:        Python HTTP Library
 License:        Apache-2.0
 URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE fix-chardet-RequestsDependencyWarning.patch munix9@googlemail.com -- based on PR 7239
+Patch0:         fix-chardet-RequestsDependencyWarning.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
