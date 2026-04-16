@@ -807,6 +807,7 @@ Group:          Metapackages
 Provides:       pattern() = immutable_base
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 1050
+Provides:       pattern-visible()
 Obsoletes:      patterns-base-transactional_base
 Provides:       patterns-base-transactional_base
 Requires:       /usr/bin/gzip
@@ -880,6 +881,11 @@ Requires:       kdump
 Requires:       vim-small
 Requires:       pattern() = base
 Suggests:       health-checker
+%if 0%{?suse_version} < 1699
+Requires:       audit
+Requires:       pam_pwquality
+Requires:       rollback-helper
+%endif
 
 %description immutable_base
 This is the base system for a host updated by Transactional Updates. Includes Tools for systems with a read-only root filesystem.
@@ -1173,6 +1179,42 @@ The X Window System provides the only standard platform-independent networked gr
 
 ################################################################################
 
+# Same conditions to build as immutable_base - used in the pre-built images
+%if !(0%{?is_opensuse} && 0%{suse_version} >= 1600 && 0%{suse_version} < 1699) || 0%{?is_leapmicro}
+%package hardware
+Summary:        Hardware Support
+Group:          Metapackages
+Provides:       pattern() = hardware
+Provides:       pattern-category() = SL-Micro
+Provides:       pattern-icon() = pattern-kubic
+Provides:       pattern-order() = 9030
+Provides:       pattern-visible()
+Obsoletes:      patterns-micro-hardware
+Obsoletes:      patterns-microos-hardware
+Provides:       patterns-micro-hardware
+Provides:       patterns-microos-hardware
+Requires:       ethtool
+%ifnarch s390x
+Requires:       irqbalance
+%endif
+Requires:       fcoe-utils
+Requires:       hwinfo
+%ifarch %ix86 x86_64
+Requires:       ucode-amd
+Requires:       ucode-intel
+%endif
+Requires:       kernel-firmware-all
+
+%description hardware
+Packages required to install minimal host on real hardware.
+
+%files hardware
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/hardware.txt
+%endif
+
+################################################################################
+
 %prep
 
 %build
@@ -1196,6 +1238,7 @@ done
 for i in basesystem bootloader documentation fips selinux kdump \
 %if !(0%{?is_opensuse} && 0%{suse_version} >= 1600 && 0%{suse_version} < 1699) || 0%{?is_leapmicro}
 immutable_base \
+hardware \
 %endif
 %if !0%{?is_opensuse} && 0%{?suse_version} >= 1600
 kernel_livepatching \

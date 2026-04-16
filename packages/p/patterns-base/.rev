@@ -1237,4 +1237,12 @@ by zypper, as no packages with those names exist</comment>
     <comment>- add fwupd to enhanced base pattern (jsc#PED-15697) (forwarded request 1335999 from msmeissn)</comment>
     <requestid>1336052</requestid>
   </revision>
+  <revision rev="143" vrev="27">
+    <srcmd5>33d866b5e0b99ecbc9f32861a37e711c</srcmd5>
+    <version>20241218</version>
+    <time>1776357926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347297</requestid>
+  </revision>
 </revisionlist>

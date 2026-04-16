@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 16 09:04:22 UTC 2026 - Jiri Srain <jsrain@suse.com>
+
+- add hardware pattern used for SL-Micro equivalent images
+- extend the immutable base pattern content
+
+-------------------------------------------------------------------
+Wed Apr 15 09:11:09 UTC 2026 - Jiri Srain <jsrain@suse.com>
+
+- add missing pattern-visible() provide to immutable_base pattern
+  (bsc#1262133)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:39:11 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - add fwupd to enhanced base pattern (jsc#PED-15697)
