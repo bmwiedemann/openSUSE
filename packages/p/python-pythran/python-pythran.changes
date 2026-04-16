@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Apr 15 13:03:07 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Skip two tests failing with xsimd 14.1.0
+
+-------------------------------------------------------------------
+Sun Apr 12 19:06:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.1:
+  * Add support for passing types as pythran export parameters,
+    esp. to pass dtype parameters to numpy arrays
+  * Improve the normalization pass that removes keyword parameter
+  * Move default compiler flag to C++14, modernize the codebase
+    accordingly
+  * Use std::unordered_set instead of std::set as set backend
+  * Stable API support, for CPython 3.7+
+  * Fix ufunc support
+  * Add support for generation of .abi3.* limited api extensions
+  * Obsolete support of numpy.distutils for python 3.9
+  * Improve interactions with numpy.nditerator
+  * Support numpy.frombuffer
+  * Update numpy.fromstring support to match numpy's change
+  * Avoid internal conflict between ndarray (the function) and
+    ndarray (the namespace)
+- drop GCC15_fix_Add-missing-operators-to-nditerator.patch,
+    GCC15_pythran-PR2325-missing-operators.patch,
+    np.patch: merged upstream
+
+-------------------------------------------------------------------
 Mon Sep 29 21:32:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - prepare for py314 tests

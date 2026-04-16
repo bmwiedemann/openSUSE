@@ -1,7 +1,7 @@
 #
 # spec file for package python-pythran
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ ExclusiveArch:  x86_64
 %endif
 
 Name:           python-pythran%{psuffix}
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        Ahead of Time compiler for numeric kernels
 License:        BSD-3-Clause
@@ -55,21 +55,15 @@ URL:            https://github.com/serge-sans-paille/pythran
 # Tests are only availble from the github archive
 Source0:        https://github.com/serge-sans-paille/pythran/archive/refs/tags/%{version}.tar.gz#/pythran-%{version}-gh.tar.gz
 Source99:       python-pythran-rpmlintrc
-# PATCH-FIX-UPSTREAM: https://github.com/serge-sans-paille/pythran/commit/14b78f0db9cbd253414b751d14644843354e7557
-Patch0:         GCC15_fix_Add-missing-operators-to-nditerator.patch
-# PATCH-FIX-UPSTREAM: https://github.com/serge-sans-paille/pythran/commit/623fa5031df7ec5c3dfe6789bf608cf11ac95c36
-Patch1:         GCC15_pythran-PR2325-missing-operators.patch
-# PATCH-FIX-UPSTREAM https://github.com/serge-sans-paille/pythran/pull/2323 Various fixes with recent numpy
-Patch2:         np.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 62}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-beniget >= 0.4.0
 Requires:       python-numpy
 Requires:       python-ply >= 3.4
 Requires:       python-setuptools
+Requires:       (python-beniget >= 0.4.0 with python-beniget < 0.5.0)
 Requires:       (python-gast >= 0.6.0 with python-gast < 0.7.0)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -84,6 +78,7 @@ Requires:       xsimd-devel >= 13.0.0
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pythran = %{version}}
@@ -140,11 +135,11 @@ libs=openblas
 EOF
 export PYTHRANRC=$PWD/config.pythranrc
 %endif
-# gh#serge-sans-paille/pythran#2317 -- changed AST in Py3.13
-# gh#serge-sans-paille/pythran#2326
-python313_skip_tests=("-k" "not (test_tutorial or test_utils)")
+export PYTHONPATH=.
+# two tests failures with xsimd 14.1.0 https://github.com/serge-sans-paille/pythran/issues/2423
+skiptests="test_numpy_ufunc_unary_numpy_ufunc_unary_numpy_signbit_float or test_numpy_ufunc_unary_numpy_ufunc_unary_numpy_signbit_matrix_float"
 # pytest_extra_args is for debug builds with local defines on command line
-%pytest %{?jobs:-n %jobs} %{?pytest_extra_args} "${$python_skip_tests[@]}"
+%pytest %{?jobs:-n %jobs} %{?pytest_extra_args} -k "not ($skiptests)"
 %endif
 
 %if !%{with test}
