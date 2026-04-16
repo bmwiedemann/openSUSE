@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 15 15:49:29 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 5.15.2:
+  * Full changes:
+    https://docs.luanti.org/about/changelog/#5151--5152
+- Remove obsolete Recommends: entry pointing to luanti-game, which
+  does not exist
+
+-------------------------------------------------------------------
 Mon Feb  9 14:40:22 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 5.15.1:

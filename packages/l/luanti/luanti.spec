@@ -22,7 +22,7 @@
 %bcond_without redis
 %bcond_without postgresql
 Name:           luanti
-Version:        5.15.1
+Version:        5.15.2
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
@@ -82,7 +82,6 @@ BuildRequires:  postgresql-server-devel
 %endif
 Requires:       %{name}-data = %{version}
 Requires:       opengl-games-utils
-Recommends:     %{name}-game
 Recommends:     %{name}-lang
 Provides:       %{name}-runtime = %{version}
 Obsoletes:      minetest < %{version}
@@ -102,7 +101,6 @@ License:        LGPL-2.1-or-later
 Group:          Amusements/Games/3D/Simulation
 Requires:       %{name}-data = %{version}
 Requires(pre):  shadow
-Recommends:     %{name}-game
 Provides:       %{name}-runtime = %{version}
 Provides:       group(%{luantigroup})
 Provides:       user(%{luantiuser})
