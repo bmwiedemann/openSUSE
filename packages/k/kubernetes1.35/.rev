@@ -32,4 +32,12 @@
     <comment>Monthly Patch Release – March, 2026: Update to version 1.35.3</comment>
     <requestid>1341165</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0bb3a6e6038319c30c44d3b61bec9cf8</srcmd5>
+    <version>1.35.4</version>
+    <time>1776353169</time>
+    <user>dimstar_suse</user>
+    <comment>Monthly Patch Release – April, 2026: Update to version 1.35.4</comment>
+    <requestid>1347226</requestid>
+  </revision>
 </revisionlist>

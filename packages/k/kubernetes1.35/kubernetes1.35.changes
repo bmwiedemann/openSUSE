@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 16 05:55:59 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.35.4:
+  * Update github.com/moby/spdystream from v0.5.0 to v0.5.1
+  * update go.opentelemetry.io/otel to v1.41.0
+  * Bump images and versions to go 1.25.9 and distroless iptables
+  * Deflake TestPodSubresourceAuth by waiting for effective permissions before testing
+  * podresources: filter out inactive pods in Get()
+  * e2e: node: podresources: fix expectations for Get() and terminated pods
+  * Fix device plugin admission failure after container restart
+  * Fix backport differences for 1.35 (remove WithOrigin and MarkAlpha)
+  * Add slice and map union member support with tests
+  * Use IsZero instead of IsNil for union ratcheting check
+  * Add DRA test for device attribute with no value set
+  * Add nil OldValue test coverage for union doc_tests
+  * Fix union validation ratcheting when oldObj is nil
+  * KEP-961: demote maxUnavailable feature in statefulset to off by default
+  * kubelet: fix sidecar restart after kubelet restart
+  * pkg/proxy/nftables: fix kube-proxy crash with newer nftables versions
+  * Update knftables to v0.0.21
+  * Bugfix: calculate request latency properly in audit log filter
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.25.9`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.35.4/build/dependencies.yaml#L132-L139
+
+-------------------------------------------------------------------
 Thu Mar 19 11:33:11 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.35.3:
