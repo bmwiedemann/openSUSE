@@ -1,7 +1,7 @@
 #
 # spec file for package acpica
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%define src_dir acpica-unix-%{version}
 %define kver %(rpm -q --qf '%%{VERSION}' kernel-source)
 %define dmp_ver %{kver}
 Name:           acpica
-Version:        20251212
+Version:        20260408
 Release:        0
 Summary:        A set of tools to display and debug BIOS ACPI tables
 License:        GPL-2.0-only
 URL:            https://acpica.org
-# https://acpica.org/sites/acpica/files/%{src_dir}.tar.gz
 # New location:
 # https://github.com/user-attachments/files/16769900/acpica-unix-20240827.tar.gz
-Source:         %{src_dir}.tar.gz
+Source:         acpica-%{version}.tar.xz
 Source1:        ec_access.c
 Source2:        acpi_genl.tar.bz2
 Source3:        acpi_validate
@@ -59,7 +57,7 @@ Language). This AML is suitable for inclusion as a DSDT in system
 firmware. It also can disassemble AML, for debugging purposes.
 
 %prep
-%setup -q -n %{src_dir} -a 2 -a 4
+%setup -q -a 2 -a 4
 %autopatch -p1
 mkdir acpidump-%{dmp_ver}
 cd acpidump-%{dmp_ver}
@@ -103,7 +101,6 @@ export WERROR=0
 make V=1 EXTRA_CFLAGS="%{optflags}" mandir=%{_mandir} prefix=%{_prefix} DESTDIR=%{buildroot} install install-man
 
 %files
-%doc changes.txt
 %doc %{_docdir}/%{name}
 %{_bindir}/iasl
 %{_bindir}/acpiexec

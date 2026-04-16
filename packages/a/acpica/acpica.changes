@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 15 14:48:12 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Enable obs_scm in _service for git based tarball generation
+- Update to version 20260408:
+  * Update version to 20260408
+  * Update the copyright year to 2026
+  * Enhance OEM ID and Table ID validation in AcpiExLoadTableOp to prevent buffer overflows
+  * Fix NULL pointer dereference in AcpiNsCustomPackage
+  * Enhance buffer validation in AcpiUtWalkAmlResources to prevent buffer overflows
+  * Add validation for Node in AcpiNsBuildNormalizedPath to prevent use-after-free vulnerabilities
+  * validate resource template buffer length and check allocation type
+  * validate handler object type in AcpiEvHasDefaultHandler and AcpiEvFindRegionHandler
+  * Fix integer overflow in AcpiExOpcode_3A_1T_1R (MidOp)
+  * Prevent adding references for local, argument, and debug objects in AcpiUtCopySimpleObject
+
+-------------------------------------------------------------------
 Wed Feb 18 12:15:56 UTC 2026 - Thomas Renninger <trenn@suse.de>
 
 - Update to 20251212
