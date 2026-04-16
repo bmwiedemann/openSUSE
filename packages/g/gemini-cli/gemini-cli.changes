@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Wed Apr 15 20:08:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.1:
+  * fix(patch): cherry-pick 050c303 to release/v0.38.0-pr-25317
+    to patch version v0.38.0 and create version 0.38.1
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.38.0...v0.38.1
+- update to 0.38.0:
+  * fix(cli): refresh slash command list after /skills reload
+  * Update README.md for links.
+  * fix(core): ensure complete_task tool calls are recorded in
+    chat history
+  * feat(policy): explicitly allow web_fetch in plan mode with
+    ask_user
+  * fix(core): refactor linux sandbox to fix ARG_MAX crashes
+  * feat(config): add
+    experimental.adk.agentSessionNoninteractiveEnabled setting
+  * Changelog for v0.36.0-preview.8
+  * feat(cli): change default loadingPhrases to 'off' to hide
+    tips
+  * fix(cli): ensure agent stops when all declinable tools are
+    cancelled
+  * fix(core): enhance sandbox usability and fix build error
+  * Terminal Serializer Optimization
+  * Auto configure memory.
+  * Unused error variables in catch block are not allowed
+  * feat(core): add background memory service for skill
+    extraction
+  * feat: implement high-signal PR regression check for
+    evaluations
+  * Fix shell output display
+  * fix(ui): resolve unwanted vertical spacing around various
+    tool output treatments
+  * revert(cli): bring back input box and footer visibility in
+    copy mode
+  * fix(cli): prevent crash in AnsiOutputText when handling non-
+    array data
+  * feat(cli): support default values for environment variables
+  * Implement background process monitoring and inspection tools
+  * docs(browser-agent): update stale browser agent documentation
+  * fix: enable browser_agent in integration tests and add
+    localhost fixture tests
+  * fix(browser): handle computer-use model detection for
+    analyze_screenshot
+  * feat(core): Land ContextCompressionService
+  * feat(core): scope subagent workspace directories via
+    AsyncLocalStorage
+  * Update ink version to 6.6.7
+  * fix(acp): handle all InvalidStreamError types gracefully in
+    prompt
+  * Fix crash when vim editor is not found in PATH on Windows
+  * fix(core): move project memory dir under tmp directory
+  * Enable 'Other' option for yesno question type
+  * fix(cli): clear stale retry/loading state after cancellation
+  * Changelog for v0.37.0-preview.0
+  * feat(core): implement context-aware persistent policy
+    approvals
+  * docs: move agent disabling instructions and update remote
+    agent status
+  * feat(cli): migrate nonInteractiveCli to LegacyAgentSession
+  * fix(core): unsafe type assertions in Core File System #19712
+  * fix(ui): hide model quota in /stats and refactor quota
+    display
+  * Changelog for v0.36.0
+  * Changelog for v0.37.0-preview.1
+  * docs: add missing .md extensions to internal doc links
+  * fix(ui): fixed table styling
+  * fix(core): pass includeDirectories to sandbox configuration
+  * feat(ui): enable "TerminalBuffer" mode to solve flicker
+  * docs: clarify release coordination
+  * fix(core): remove broken PowerShell translation and fix
+    native __write in Windows sandbox
+  * Add instructions for how to start react in prod and force
+    react to prod mode
+  * feat(cli): minimalist sandbox status labels
+  * Feat/browser agent metrics
+  * test: fix Windows CI execution and resolve exposed platform
+    failures
+  * feat(core,cli): prioritize summary for topics
+  * show color
+  * feat(cli): enable compact tool output by default
+  * fix(core): inject skill system instructions into subagent
+    prompts if activated
+  * fix(core): improve windows sandbox reliability and fix
+    integration tests
+  * fix(core): ensure sandbox approvals are correctly persisted
+    and matched for proactive expansions
+  * feat(cli) Scrollbar for input prompt
+  * Do not run pr-eval workflow when no steering changes detected
+  * Fix restoration of topic headers.
+  * feat(core): discourage update topic tool for simple tasks
+  * fix(core): ensure global temp directory is always in sandbox
+    allowed paths
+  * fix(core): detect uninitialized lines
+  * docs: update sandboxing documentation and toolSandboxing
+    settings
+  * feat(cli): enhance tool confirmation UI and selection layout
+  * feat(acp): add support for `/about` command
+  * feat(cli): add role specific metrics to /stats
+  * split context
+  * fix(cli): remove -S from shebang to fix Windows and BSD
+    execution
+  * Fix issue where topic headers can be posted back to back
+  * fix(core): handle partial llm_request in BeforeModel hook
+    override
+  * fix(ui): improve narration suppression and reduce flicker
+  * fix(ui): fixed auth race condition causing logo to flicker
+  * fix(browser): remove premature browser cleanup after subagent
+    invocation
+  * Revert "feat(core,cli): prioritize summary for topics
+    (#24608)"
+  * relax tool sandboxing overrides for plan mode to match
+    defaults.
+  * fix(cli): respect global environment variable allowlist
+  * fix(cli): ensure skills list outputs to stdout in non-
+    interactive environments
+  * Add an eval for and fix unsafe cloning behavior.
+  * fix(policy): allow complete_task in plan mode
+  * feat(telemetry): add browser agent clearcut metrics
+  * feat(cli): support selective topic expansion and click-to-
+    expand
+  * temporarily disable sandbox integration test on windows
+  * Remove flakey test
+  * Alisa/approve button
+  * feat(hooks): display hook system messages in UI
+  * fix(core): propagate BeforeModel hook model override end-to-
+    end
+  * chore: fix formatting for behavioral eval skill reference
+    file
+  * fix: use directory junctions on Windows for skill linking
+  * fix(cli): prevent multiple banner increments on remount
+  * feat(acp): add /help command
+  * fix(core): remove tmux alternate buffer warning
+  * Improve sandbox error matching and caching
+  * feat(core): add agent protocol UI types and experimental flag
+  * feat(core): use experiment flags for default fetch timeouts
+  * Revert "fix(ui): improve narration suppression and reduce
+    flicker (#2…
+  * refactor(cli): remove duplication in interactive shell
+    awaiting input hint
+  * refactor(core): make LegacyAgentSession dependencies optional
+  * Changelog for v0.37.0-preview.2
+  * fix(cli): always show shell command description or actual
+    command
+  * Added flag for ept size and increased default size
+  * fix(core): dispose Scheduler to prevent McpProgress listener
+    leak
+  * fix(cli): switch default back to terminalBuffer=false and fix
+    regressions introduced for that mode
+  * feat(cli): switch to ctrl+g from ctrl-x
+  * fix: isolate concurrent browser agent instances
+  * docs: update MCP server OAuth redirect port documentation
+
+-------------------------------------------------------------------
 Mon Apr 13 23:03:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.37.2:

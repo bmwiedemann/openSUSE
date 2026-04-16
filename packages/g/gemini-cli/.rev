@@ -472,4 +472,41 @@
     to patch version v0.37.1 and create version 0.37.2</comment>
     <requestid>1346507</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>195bc4dab3e988f4f24bc848c5dd3fc5</srcmd5>
+    <version>0.38.1</version>
+    <time>1776353156</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.38.1:
+  * fix(patch): cherry-pick 050c303 to release/v0.38.0-pr-25317
+    to patch version v0.38.0 and create version 0.38.1
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.38.0...v0.38.1
+- update to 0.38.0:
+  * fix(cli): refresh slash command list after /skills reload
+  * Update README.md for links.
+  * fix(core): ensure complete_task tool calls are recorded in
+    chat history
+  * feat(policy): explicitly allow web_fetch in plan mode with
+    ask_user
+  * fix(core): refactor linux sandbox to fix ARG_MAX crashes
+  * feat(config): add
+    experimental.adk.agentSessionNoninteractiveEnabled setting
+  * Changelog for v0.36.0-preview.8
+  * feat(cli): change default loadingPhrases to 'off' to hide
+    tips
+  * fix(cli): ensure agent stops when all declinable tools are
+    cancelled
+  * fix(core): enhance sandbox usability and fix build error
+  * Terminal Serializer Optimization
+  * Auto configure memory.
+  * Unused error variables in catch block are not allowed
+  * feat(core): add background memory service for skill
+    extraction
+  * feat: implement high-signal PR regression check for
+    evaluations
+  * Fix shell output display
+  * fix(ui): resolve unwanted vertical spacing around various</comment>
+    <requestid>1347165</requestid>
+  </revision>
 </revisionlist>
