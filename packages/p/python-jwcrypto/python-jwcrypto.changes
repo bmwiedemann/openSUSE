@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  7 21:26:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.7:
+  * JWE: allow general (non flattened) serialization syntax
+  * Update CI actions
+  * Allow to pass through pem loading unsafe option
+  * Add support for 'scope' claim with multiple scopes
+  * Set default kid when importing keys from pyca.
+  * Hardening: Enforce length of keys for HMAC operations
+  * Add Ed25519 and Ed448 signature algorithms
+  * Migrate jwcrypto packaging to Hatch
+
+-------------------------------------------------------------------
 Tue Mar 19 07:14:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.6 (bsc#1221230, CVE-2024-28102):
