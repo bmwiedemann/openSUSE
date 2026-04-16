@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 15 17:17:47 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.18.2
+- Upstream changes:
+  * Fixed Flatpak X11 app icon
+- For version 1.18.1:
+  * Improved interface mode switch
+  * Show banner and icon in grayscale if game not installed
+  * Fixed games not running from file manager with Proton-CachyOS (System)
+  * Fixed app icon not showing on X11
+  * Fixed playtime not counting when using protonfix
+
+-------------------------------------------------------------------
 Sun Apr  5 23:15:12 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Removed unused code from older versions in .spec file 
