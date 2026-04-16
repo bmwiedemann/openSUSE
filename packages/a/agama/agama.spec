@@ -245,7 +245,6 @@ echo $PATH
 %doc README.md
 %license LICENSE
 %{_bindir}/agama-web-server
-%{_bindir}/agama-web-server.sh
 %{_bindir}/agama-journal
 %{_bindir}/agama-zypp-journal
 %{_bindir}/agama-proxy-setup

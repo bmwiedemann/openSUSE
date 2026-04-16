@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Apr 14 17:36:56 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 20
+
+-------------------------------------------------------------------
+Tue Apr 14 10:20:25 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-12285
+  - re-introduced initial implementation for installer state status
+    report via IPMI. Original implementation lost due to transition
+    from Ruby to Rust.
+
+-------------------------------------------------------------------
+Mon Apr 13 15:21:17 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Update storage schemas (gh#agama-project/agama#3380).
+
+-------------------------------------------------------------------
+Fri Apr 10 13:46:02 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Replace the "inst.listen_on" boot option with "inst.remote=0"
+  to disable remote access to the Agama web server (jsc#AGM-153)
+
+-------------------------------------------------------------------
+Fri Apr 10 08:02:40 UTC 2026 - Lidong Zhong <lidong.zhong@suse.com>
+
+- Run scripts from /var/lib/agama/scripts (bsc#1261787).
+
+-------------------------------------------------------------------
+Thu Apr  9 06:53:34 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix OpenAPI specification for PATCH /config (gh#agama-project/agama#3368).
+
+-------------------------------------------------------------------
+Tue Apr  7 16:55:22 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
+
+- Automatically try loading the autoinstallation profile from the
+  root of the installation medium (jsc#PED-16010)
+- Use journal logging with more details in the autoinstallation
+  CLI tool (log to stdout when running manually)
+
+-------------------------------------------------------------------
 Tue Mar 24 13:01:38 UTC 2026 - Ladislav Slezák <lslezak@suse.com>
 
 - Include more details when saving the journal log
