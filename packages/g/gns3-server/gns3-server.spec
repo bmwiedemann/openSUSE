@@ -1,7 +1,7 @@
 #
 # spec file for package gns3-server
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define gns3_group _gns3
 %define gns3_home %{_sharedstatedir}/gns3
 Name:           gns3-server
-Version:        2.2.52
+Version:        2.2.58.1
 Release:        0
 Summary:        A graphical network simulator
 License:        GPL-3.0-or-later

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Apr 12 13:47:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.58.1
+  * Sync appliances.
+- Update to version 2.2.58
+  * Sync appliances.
+  * Snapshot refactoring.
+- Update to version 2.2.57
+  * feat(telnet_server): improve error handling and connection
+    management.
+  * Deactivate 'use default IOU values' by default and update
+    RAM/NVRAM values.
+  * Make sure the node shows as stopped when the wrap console
+    cannot be stopped.
+  * tests(controller,port): short_name finishes successfully when
+    port name is None.
+  * fix(controller,port): handle None port name to prevent TypeError
+    in short_name method.
+  * fix: busybox static link detection on Alpine/musl.
+  * Take populated disks into consideration when calculating PCI
+    device ID.
+- Update to version 2.2.57
+  * Upgrade dependencies
+  * Drop Python 3.8 support
+- Update to version 2.2.56
+  * Set default location of udhcpc in "/etc/network/udhcpc".
+- Update to version 2.2.55
+  * Docker API version requirements and process to handle older
+    daemons.
+  * Use docker_name property when creating a container.
+  * Set name of container in Docker.
+  * Support for Python 3.14.
+  * Enable ip cef in IOU L2 and IOU L3 base configs.
+  * Only build and push Docker image when releasing a new version.
+  * Add missing 'nat' template type in schema.
+  * Resolve deprecation warnings of regex library.
+- Update to version 2.2.54
+  * Add new method to find the IP address of a VBox GNS3 VM +
+    allow NAT Network.
+  * Add edk2-stable202502 UEFI firmwares and try to first use
+    firmwares from the ovmf package if installed.
+  * Try to detect swtpm and AppArmor issue.
+  * Fix Docker logs decoding.
+  * Add delay after starting a Docker container and adding
+    connections in uBridge.
+  * Fix TypeError when reading Docker container logs.
+  * Replace "Docker hub" by "Docker repository" because it is
+     ossible to use different repositories
+- Update to version 2.2.53
+  * Add more information when patching .vbox file.
+  * Increase timeout to run compute HTTP queries.
+  * Use 'allow_methods="*"' in aiohttp_cors.ResourceOptions().
+  * Fix: do not use the iourc file if IOU licence check is not
+    enabled.
+
+-------------------------------------------------------------------
 Wed Dec  4 18:29:47 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.52
