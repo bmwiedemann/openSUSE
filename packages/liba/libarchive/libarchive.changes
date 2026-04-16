@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 13 14:32:28 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 3.8.7:
+  * CAB: fix NULL pointer dereference during skip (#2900)
+  * CAB: Fix Heap OOB Write in CAB LZX decoder (#2919)
+  * cpio: various fixes and improvements (#2899, #2908, #2910, #2939)
+  * contrib/untar: fix out-of-bounds read (#2903)
+  * iso9660: fix undefined behavior (#2897)
+  * iso9660: fix posibble heap buffer overflow on 32-bit systems (#2934)
+  * libarchive: fix handling of option failures (#2871)
+  * libarchive: do not continue with truncated numbers (#2911)
+  * libarchive: lzop and grzip filter support (#2947)
+  * RAR: fix LZSS window size mismatch after PPMd block (#2898)
+- Added add-missing-tests.patch: the distributed tarball is missing a test file, add it back
+- Removed libarchive-3.8.6-add-missing-test.patch 
+
+-------------------------------------------------------------------
 Sun Mar 29 13:41:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.8.6:
@@ -15,7 +32,7 @@ Sun Mar 29 13:41:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
   * various small bugfixes in code and documentation
 - the distributed tarball is missing a test file, add it back
   add libarchive-3.8.6-add-missing-test.patch
-
+  
 -------------------------------------------------------------------
 Fri Jan  9 21:34:50 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 

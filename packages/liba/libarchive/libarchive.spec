@@ -20,7 +20,7 @@
 %define somajor 13
 %define libname libarchive%{somajor}
 Name:           libarchive
-Version:        3.8.6
+Version:        3.8.7
 Release:        0
 Summary:        Utility and C library to create and read several streaming archive formats
 License:        BSD-2-Clause
@@ -30,8 +30,7 @@ Source0:        https://github.com/libarchive/libarchive/releases/download/v%{ve
 Source1:        https://github.com/libarchive/libarchive/releases/download/v%{version}/libarchive-%{version}.tar.xz.asc
 Source2:        libarchive.keyring
 Source1000:     baselibs.conf
-# https://github.com/libarchive/libarchive/issues/2916
-Patch0:         libarchive-3.8.6-add-missing-test.patch
+Patch0:         add-missing-tests.patch
 BuildRequires:  cmake
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
