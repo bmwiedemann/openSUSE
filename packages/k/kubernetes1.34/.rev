@@ -50,4 +50,12 @@
     <comment>Monthly Patch Release – March, 2026: Update to version 1.34.6</comment>
     <requestid>1341164</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5c96e4a7679cef2f45c774c46c4d54b9</srcmd5>
+    <version>1.34.7</version>
+    <time>1776353169</time>
+    <user>dimstar_suse</user>
+    <comment>Monthly Patch Release – April, 2026: Update to version 1.34.7</comment>
+    <requestid>1347225</requestid>
+  </revision>
 </revisionlist>
