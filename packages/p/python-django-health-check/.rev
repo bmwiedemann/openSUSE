@@ -150,4 +150,14 @@
     in Celery</comment>
     <requestid>1346090</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6bba074f273bdf8ff9a2ac103f269b6a</srcmd5>
+    <version>4.3.0</version>
+    <time>1776353153</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.0:
+  * Ref #701 -- Add support for a custom executor for synchronous
+    checks</comment>
+    <requestid>1347168</requestid>
+  </revision>
 </revisionlist>

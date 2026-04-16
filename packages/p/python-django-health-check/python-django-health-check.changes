@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 15 20:22:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Ref #701 -- Add support for a custom executor for synchronous
+    checks
+
+-------------------------------------------------------------------
 Sat Apr 11 17:38:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.2:
