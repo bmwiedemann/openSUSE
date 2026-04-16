@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 14 06:14:57 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.43.1:
+  * [release-1.43] Bump Buildah to v1.43.1
+  * [release-1.43] Bump c/common v0.67.1, c/image v5.39.2
+  * update module github.com/go-jose/go-jose/v4 to v4.1.4 [security]
+  * ignore ErrLayerUnknown in cache lookup
+  * fix setting of gid
+  * fix call to chown
+
+-------------------------------------------------------------------
 Fri Feb 20 09:25:29 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.43.0:
