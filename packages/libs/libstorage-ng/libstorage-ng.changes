@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Wed Apr 15 12:16:57 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1067
+- removed unneeded mockups
+- 4.5.312
+
+--------------------------------------------------------------------
+Wed Apr 15 05:43:22 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1066
+- handle invalid output from parted
+- 4.5.311
+
+--------------------------------------------------------------------
+Mon Apr 13 10:34:17 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1065
+- moved devicegraph copy function to impl
+- 4.5.310
+
+--------------------------------------------------------------------
 Thu Apr 9 16:57:40 UTC 2026 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1064
