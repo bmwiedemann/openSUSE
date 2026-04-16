@@ -1,12 +1,99 @@
 -------------------------------------------------------------------
+Fri Feb  6 12:36:22 UTC 2026 - Michal Svec <msvec@suse.com>
+
+- Update to 2026.01.09
+  * arm_loader: Apply rpifwcrypto lock permissions GET/SET USER OTP
+    Previously, the GET/SET user OTP mailboxes would provide access to the
+    device unique private key. Update the mailbox API to fail if the
+    key has been locked via lock_device_private_key=1 in config.txt or
+    the associated mailbox call.
+    GET/SET user OTP fails by setting the result tag to the standard
+    error code (0x80000000). The dedicate GET/SET private key continue
+    to fail the entire mailbox operation to force vcmailbox to exit
+    with a non-zero error code.
+  * Query all sdram devices for temperature when adjusting refresh
+  * Add support for more SDRAM die configurations.
+
+-------------------------------------------------------------------
 Wed Dec 17 07:46:50 UTC 2025 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Update to 2025.12.08
+  * arm_loader: Add machine ID derived from OTP values
+    Machine ID is generated and exposed in device tree as rpi-machine-id
+  * arm_ldconfig: Avoid double os_prefix on initramfs
+    When using auto_initramfs we were picking up prefix from the kernel,
+    but also adding os_prefix later:
+    fname = prefixed_path(initramfs_file, os_prefix, temp_path, sizeof(temp_path));
+    See: https://forums.raspberrypi.com/viewtopic.php?t=394238
+  * recovery: Use OTP rpiboot GPIO if non-zero
+    If an rpiboot GPIO has already been written to OTP then default to
+    that value if C(program_rpiboot_gpio) is not specified on config.txt.
+  * Manufacture test updates for SDRAM.
 
 -------------------------------------------------------------------
 Thu Jun 19 08:19:44 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2025.05.08
+  * arm_loader: Correct some mailbox response lengths
+    The GET_GENCMD_RESULT mailbox handler was setting the wrong response
+    length, and GET_FIRMWARE_COMMIT_HASH and GET_FIRMWARE_VARIANT were not
+    setting any length.
+    See: raspberrypi/firmware#1968
+  * Signed boot and HTTP boot mode
+    HTTP boot mode is supposed to be disabled if signed boot is enabled and
+    a host is not specified. The code is checking the http_secure flag to
+    enforce this. But this is valid now we support custom CA certs.
+    Only disable HTTP mode if we're using the default HOST.
+  * Implement TCP window for net boot
+    The minimal IP stack used for https booting lacks the ability to cache
+    packets received out of order, which can lead to severe slowdown when
+    it happens. The problem seems to affect some ISPs more than others.
+    The receive window implemented here copes with packet losses of 10%.
+  * netboot: Correct the TCP MSS
+  * rp1_net: Overwrite the length field
+    Although concise, ORing in the packet length runs the risk of leaving
+    some unwanted bits set. Ensure the length field is cleared before
+    ORing in the required value.
+  * Correct msecs in debug timestamps
+    The fractional part of timestamps in UART debug output was showing the
+    100ths and 1000ths of a second, rather than 10ths and 100ths, causing
+    strange sequences that appear to jump backwards.
+  * Implement GET_BOARD_MAC_ADDRESS on Pi5
+    The Pi 5 EEPROM implements a subset of the original mailbox properties.
+    Add GET_BOARD_MAC_ADDRESS to the subset.
+    See: #698
+  * Ensure the initramfs matches the kernel
+    As far as is possible, both the kernel and initramfs are matched to the
+    device. However, where multiple kernel variants can run on a device, the
+    initramfs must be matched to the chosen kernel. Make that the sole rule
+    for initramfs selection, rather than duplicating the device matching
+    logic.
+    See: raspberrypi/firmware#1965
+  * Enable logging messages from OS loader
+    Pi 5 EEPROM builds were missing the output from the main OS loading
+    function, including some important diagnostics. Enabling the logging
+    output from this loader code results in some near-duplicates, but is
+    more user friendly and is available via "sudo vclog -m".
+  * arm_dt: Revert to using the max fan speed
+    It has been reported that the presence of a cooling fan at boot time
+    can lead to a maximum observed fan speed of ~300 but a current speed
+    of 0. The absence of a fan results in 0s for both metrics.
+    See: #690
+  * os_check: cm5: Check for CM5 specific dtbs
+    Check for BCM2712 support in bcm2712-rpi-cm5-cm5io.dtb
+    or bcm2712-rpi-cm5l-cm5io.dtb on CM5 instead of bcm2712-rpi-5-b.dtb.
+    This avoids needing to put os_check=1 or specifying device_tree
+    in config.txt in minimal images for CM5.
+    See: #682
+  * Log the fan speed at boot
+    Record the fan RPM (and the maximum seen) during boot, so that it is
+    accessible using "sudo vclog -m".
+    See: #678
+  * Add current_supply to HAT+ support
+    Refactor the HAT library to make it more self-contained, and combine
+    the I2C address detection and the reading of the EEPROM contents.
+    Use it to allow the earlier boot stages to check for a current_supply
+    setting in the EEPROM of a normal (non-stackable) HAT+.
 
 -------------------------------------------------------------------
 Mon Sep  9 10:41:02 UTC 2024 - Ivan Ivanov <ivan.ivanov@suse.com>
