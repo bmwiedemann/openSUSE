@@ -2348,4 +2348,12 @@ there will be 4 permissive avcs left regarding pcrlock, but those will be fixed 
     <comment>april 2026 policy update</comment>
     <requestid>1345818</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>1fabcbd4327c24be15bf48103f6f9151</srcmd5>
+    <version>20260414</version>
+    <time>1776357921</time>
+    <user>dimstar_suse</user>
+    <comment>fixes</comment>
+    <requestid>1347140</requestid>
+  </revision>
 </revisionlist>

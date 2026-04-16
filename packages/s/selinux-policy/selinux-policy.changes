@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 15 15:18:29 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260414:
+  * Allow snapper_sdbootutil_plugin_t linux_immutable (bsc#1261945)
+  * allow unconfined services to read VM state (bsc#1251789)
+
+-------------------------------------------------------------------
 Fri Apr 10 12:02:19 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260410:
