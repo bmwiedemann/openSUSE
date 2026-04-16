@@ -19,7 +19,7 @@
 %define texlive_version  2026
 %define texlive_previous 2025
 %define texlive_release  20260301
-%define texlive_noarch   222
+%define texlive_noarch   226
 %define texlive_source   texlive-20260301-source
 %define biber_version    2.21
 
@@ -79,7 +79,7 @@ Name:           texlive
 Version:        %{texlive_version}.%{texlive_release}
 Release:        0
 Summary:        The TeXLive Formatting System
-License:        Apache-2.0 AND Artistic-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND LPPL-1.3c AND LPPL-1.0 AND MIT AND BSD-3-Clause AND SUSE-TeX AND SUSE-Public-Domain
+License:        Apache-2.0 AND Artistic-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND LPPL-1.3c AND LPPL-1.0 AND MIT AND BSD-3-Clause AND SUSE-TeX AND LicenseRef-SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 PreReq:         %{name}-filesystem >= %{texlive_version}
@@ -310,6 +310,8 @@ Patch9:         source-luacore.dif
 Patch11:        source-lacheck.dif
 Patch12:        source-warns.dif
 Patch13:        source-x11r7.dif
+Patch14:        source-dvipdfmx.dif
+Patch15:        source-tl-r78399.dif
 Patch17:        source-64.dif
 Patch18:        source-a2ping.dif
 Patch19:        source-dvipng.dif
@@ -4372,7 +4374,7 @@ This package is required by the package texlive-biber-bin.
 	esac > /dev/null 2>&1
     }
     cflags -std=gnu11			XCFLAGS
-    cflags -std=gnu++14			XCXXFLAGS
+    cflags -std=gnu++17			XCFLAGS XCXXFLAGS
     cflags -fno-const-strings		XCFLAGS XCXXFLAGS
     cflags -fno-strict-aliasing		XCFLAGS XCXXFLAGS
     cflags -fPIC			XCFLAGS XCXXFLAGS
@@ -4487,6 +4489,8 @@ This package is required by the package texlive-biber-bin.
 %patch -P11 -p0 -b .lacheck
 %patch -P12 -p0 -b .warns
 %patch -P13 -p0 -b .x11r7
+%patch -P14 -p0 -b .s390
+%patch -P15 -p0 -b .r78399
 %patch -P17 -p0 -b .64
 %patch -P18 -p0 -b .a2p
 %patch -P19 -p0 -b .dvipng

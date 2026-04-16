@@ -1361,4 +1361,21 @@
     <comment>Update to TeXLive 2026</comment>
     <requestid>1344157</requestid>
   </revision>
+  <revision rev="115" vrev="118">
+    <srcmd5>03514d6991d3d35d480614d74e402a28</srcmd5>
+    <version>unknown</version>
+    <time>1776353117</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch source-tl-r78399.dif
+  * Fix report on tlsecurity
+
+- Modify patch source-dvipdfmx.dif with the code change from Fabian 
+
+- Add patch source-dvipdfmx.dif to make test in dvipdfmx tree
+  work even on s390x (boo#1262008)
+
+- Correct cflags() shell function usage to catch g++ case as
+  well ... here to use -std=g++17 (boo#1262013)</comment>
+    <requestid>1347091</requestid>
+  </revision>
 </revisionlist>

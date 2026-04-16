@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:54:52 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patch source-tl-r78399.dif
+  * Fix report on tlsecurity
+
+-------------------------------------------------------------------
+Tue Apr 14 15:21:50 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch source-dvipdfmx.dif with the code change from Fabian 
+
+-------------------------------------------------------------------
+Tue Apr 14 08:58:01 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch source-dvipdfmx.dif to make test in dvipdfmx tree
+  work even on s390x (boo#1262008)
+
+-------------------------------------------------------------------
+Tue Apr 14 07:56:30 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Correct cflags() shell function usage to catch g++ case as
+  well ... here to use -std=g++17 (boo#1262013)
+
+-------------------------------------------------------------------
 Mon Mar 30 13:12:36 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to TeXLive 2026 (20260301)
