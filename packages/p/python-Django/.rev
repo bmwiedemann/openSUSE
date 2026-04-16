@@ -1506,4 +1506,22 @@
     annotations in Python 3.14</comment>
     <requestid>1336308</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>ea7d6d4b61967f87a7969970451daf70</srcmd5>
+    <version>5.2.13</version>
+    <time>1776353127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.13
+  * CVE-2026-3902: ASGI header spoofing via underscore/hyphen
+    conflation (bsc#1261729)
+  * CVE-2026-4277: Privilege abuse in GenericInlineModelAdmin
+    (bsc#1261731)
+  * CVE-2026-4292: Privilege abuse in ModelAdmin.list_editable
+    (bsc#1261732)
+  * CVE-2026-33033: Potential denial-of-service vulnerability in
+    MultiPartParser via base64-encoded file upload (bsc#1261722)
+  * CVE-2026-33034: Potential denial-of-service vulnerability in
+    ASGI requests via memory upload limit bypass (bsc#1261724)</comment>
+    <requestid>1345439</requestid>
+  </revision>
 </revisionlist>
