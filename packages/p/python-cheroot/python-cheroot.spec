@@ -1,7 +1,7 @@
 #
 # spec file for package python-cheroot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-%{pypi_name}
-Version:        10.0.1
+Version:        11.1.2
 Release:        0
 Summary:        Pure-python HTTP server
 License:        BSD-3-Clause
@@ -40,15 +40,13 @@ Patch0:         no-pypytools.patch
 Patch1:         no-relative-imports.patch
 # PATCH-FIX-SUSE increase-tests-timeouts.patch alarrosa@suse.com Tests take longer to run in s390x
 Patch2:         increase-tests-timeouts.patch
-# handle openssl3 error in ssl tests
-Patch3:         handle-openssl3-error-in-ssl-tests.patch
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module more-itertools >= 2.6}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 34.4}
-BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
+BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module setuptools_scm >= 7.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
@@ -61,6 +59,7 @@ BuildRequires:  %{python_module jaraco.text >= 3.1}
 BuildRequires:  %{python_module portend}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest >= 4.6}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-mock >= 1.11.0}
 BuildRequires:  %{python_module pytest-rerunfailures}

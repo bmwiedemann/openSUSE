@@ -258,4 +258,41 @@ It was a bug in requests-unixsocket
 - avoid deprecation warnings for 3.13</comment>
     <requestid>1218115</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d3cb2688ce8d5860427a32106bc43f87</srcmd5>
+    <version>11.1.2</version>
+    <time>1776353133</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.1.2:
+  * The &quot;service unavailable&quot; thread is now turn down properly
+    when the server is shut down -- by :user:`itamarst`. This
+    fixes a regression in Cheroot originally introduced in
+    v11.0.0 that would manifest itself under Python 3.12 and
+    older. In certain conditions like under CherryPy, it would
+    also lead to hangs on tear-down. Related issues and pull
+    requests on GitHub: :issue:`769`, :issue:`794`.
+  * The packaging configuration has been fixed to ensure that
+    only :file:`cheroot` package will be installed into
+    :file:`site-packages/` -- by :user:`webknjaz`. This fixes a
+    regression introduced in version 11.1.0. Related issues and
+    pull requests on GitHub: :issue:`790`. Related commits on
+    GitHub: :commit:`d286d1a10718e871366743f3f496c760113cee15`.
+  * Added optional private key password argument to SSL adapters
+    to support password-protected private keys -- by
+    :user:`jatalahd`. Related issues and pull requests on GitHub:
+    :issue:`752`.
+  * Added missing __all__ and IS_WINDOWS definitions to .pyi stub
+    files for mypy. -- by :user:`julianz-` Related issues and
+    pull requests on GitHub: :issue:`774`.
+  * Made test_http_over_https_error compatible with Solaris -- by
+    :user:`mtelka`. Related issues and pull requests on GitHub:
+    :issue:`776`.
+  * Increased timeout values test_client.server_instance.timeout
+    and http_request_timeout to make related tests more stable.
+    Related issues and pull requests on GitHub: :issue:`777`.
+  * When load is too high, Cheroot now responds with a 503
+    Service Unavailable HTTP error. Previously it silently closed
+    the connection. -- by :user:`itamarst` Related issues and</comment>
+    <requestid>1346176</requestid>
+  </revision>
 </revisionlist>

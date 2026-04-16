@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Sun Apr 12 11:48:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.1.2:
+  * The "service unavailable" thread is now turn down properly
+    when the server is shut down -- by :user:`itamarst`. This
+    fixes a regression in Cheroot originally introduced in
+    v11.0.0 that would manifest itself under Python 3.12 and
+    older. In certain conditions like under CherryPy, it would
+    also lead to hangs on tear-down. Related issues and pull
+    requests on GitHub: :issue:`769`, :issue:`794`.
+  * The packaging configuration has been fixed to ensure that
+    only :file:`cheroot` package will be installed into
+    :file:`site-packages/` -- by :user:`webknjaz`. This fixes a
+    regression introduced in version 11.1.0. Related issues and
+    pull requests on GitHub: :issue:`790`. Related commits on
+    GitHub: :commit:`d286d1a10718e871366743f3f496c760113cee15`.
+  * Added optional private key password argument to SSL adapters
+    to support password-protected private keys -- by
+    :user:`jatalahd`. Related issues and pull requests on GitHub:
+    :issue:`752`.
+  * Added missing __all__ and IS_WINDOWS definitions to .pyi stub
+    files for mypy. -- by :user:`julianz-` Related issues and
+    pull requests on GitHub: :issue:`774`.
+  * Made test_http_over_https_error compatible with Solaris -- by
+    :user:`mtelka`. Related issues and pull requests on GitHub:
+    :issue:`776`.
+  * Increased timeout values test_client.server_instance.timeout
+    and http_request_timeout to make related tests more stable.
+    Related issues and pull requests on GitHub: :issue:`777`.
+  * When load is too high, Cheroot now responds with a 503
+    Service Unavailable HTTP error. Previously it silently closed
+    the connection. -- by :user:`itamarst` Related issues and
+    pull requests on GitHub: :issue:`745`.
+  * Cheroot dropped support for Python 3.6 and 3.7. It now
+    requires Python 3.8 or later. -- by :user:`jaraco` Related
+    issues and pull requests on GitHub: :issue:`565`,
+    :issue:`633`. Related commits on GitHub: :commit:`437863ee`.
+  * Declared Python 3.12 and Python 3.13 as supported officially
+    -- by :user:`webknjaz`. Related issues and pull requests on
+    GitHub: :issue:`696`. Related commits on GitHub:
+    :commit:`5db4f634`.
+  * The minimum version of the setuptools-scm build dependency
+    has been set to 7. The Git archives are now produced by it
+    natively, instead of relying on a third party plugin which is
+    no longer being used. -- by :user:`serhii73` Related issues
+    and pull requests on GitHub: :issue:`628`.
+  * The packaging metadata has been migrated to the
+    :file:`pyproject.toml`-based PEP 621 declaration -- by
+    :user:`jaraco` and :user:`webknjaz`. As a part of this
+    update, the minimum version of the setuptools build backend
+    was bumped to 61.2. Moreover, any compatibility shims that
+    existed in :file:`setup.cfg` and :file:`setup.py` have been
+    removed for good. Related issues and pull requests on GitHub:
+    :issue:`690`.
+  * The test infrastructure has been updated to stop using the
+    pytest-forked plugin -- by :user:`jaraco` and
+    :user:`webknjaz`. This plugin was causing problems with
+    upgrading to modern versions of Pytest and it is not going to
+    be fixed anytime soon. It was used in a test that interacts
+    with the system resource limits under *NIX environments in
+    hopes to isolate the side effects caused by the preparatory
+    code. It is possible that this will have an effect on the
+    test sessions and we may have to look for alternative
+    solutions for test process isolation. Related issues and pull
+    requests on GitHub: :issue:`502`, :issue:`511`, :issue:`680`,
+    :issue:`681`, :issue:`703`.
+  * The test infrastructure has been updated to start using the
+    upstream reusable workflow :file:`reusable-tox.yml` from
+    :gh:`tox-dev/workflow` -- by :user:`webknjaz`. This chance
+    allows us to de-duplicate the commonly used CI shape. Related
+    issues and pull requests on GitHub: :issue:`743`.
+- Refreshed patches:
+  * no-pypytools.patch
+  * no-relative-imports.patch
+  * increase-tests-timeouts.patch
+- Dropped handle-openssl3-error-in-ssl-tests.patch (obsolete)
+
+-------------------------------------------------------------------
 Thu Oct 24 19:24:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add handle-openssl3-error-in-ssl-tests.patch:
