@@ -111,7 +111,7 @@
 %global pkg_name blender
 
 Name:           blender-5.1
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later

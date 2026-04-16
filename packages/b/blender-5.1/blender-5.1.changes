@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 16 00:54:14 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.1.1
+  https://developer.blender.org/docs/release_notes/5.1/corrective_releases/#blender-511
+
+-------------------------------------------------------------------
+Tue Mar 24 11:29:59 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- lower constraints again based on statistics from the last runs
+
+-------------------------------------------------------------------
 Sun Mar 22 02:40:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - add daf9b2ba60305497684412bf864e7de2f9a467e3.patch and reenable
