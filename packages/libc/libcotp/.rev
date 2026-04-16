@@ -219,4 +219,27 @@
 </comment>
     <requestid>1336283</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>82060723d79c4ca37d84416766497da7</srcmd5>
+    <version>4.0.1</version>
+    <time>1776360309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.1:
+  Security Fixes
+    * Fixed timing side-channel in validate_totp_in_window: comparison now uses min(gen_len, user_len) bytes to prevent reading past buffer bounds when lengths differ
+    * Normalized secret key is now zeroed with cotp_secure_memzero before freeing in compute_hmac
+    * Fixed memory leak in OpenSSL backend: EVP_MAC not freed when calloc fails in whmac_gethandle
+    * Fixed memory leak in OpenSSL backend: EVP_MAC_CTX not freed in whmac_freehandle and on buffer-too-small error path in whmac_finalize
+    * Added negative algorithm index validation (algo &lt; 0) in all three HMAC backends (gcrypt, OpenSSL, MbedTLS)
+  Hardening
+    * All public symbols now use explicit __attribute__((visibility(&quot;default&quot;))); library compiled with -fvisibility=hidden to minimize exported symbol surface
+    * Added linker hardening flags: full RELRO (-Wl,-z,relro,-z,now) and non-executable stack (-Wl,-z,noexecstack)
+    * REVERSE_BYTES macro wrapped in do { ... } while (0) for safe use in all statement contexts
+    * CMake now detects explicit_bzero at configure time via check_function_exists
+  Improvements
+    * Base32 validation (valid_b32_str) now enforces RFC 4648 padding rules: rejects data characters after padding, validates padding count (0, 1, 3, 4, or 6), and requires padded strings to have length divisible by 8
+    * check_input max_len parameter changed from int32_t to size_t for type correctness
+</comment>
+    <requestid>1347296</requestid>
+  </revision>
 </revisionlist>
