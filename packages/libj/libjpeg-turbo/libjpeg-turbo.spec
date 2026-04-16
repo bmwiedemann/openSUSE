@@ -1,7 +1,7 @@
 #
 # spec file for package libjpeg-turbo
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 %endif
 %define libver   %{major}.%{minor}.%{micro}
 Name:           %{flavor}
-Version:        3.1.2
+Version:        3.1.4.1
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause

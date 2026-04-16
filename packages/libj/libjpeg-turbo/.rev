@@ -1220,4 +1220,41 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1305360</requestid>
   </revision>
+  <revision rev="76" vrev="83">
+    <srcmd5>153969f838b3f7e2108ce042a9232199</srcmd5>
+    <version>unknown</version>
+    <time>1776353099</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.4.1:
+  * Fixed an issue in the TurboJPEG 2.x compatibility wrapper
+    whereby, if a calling program attempted to decompress a
+    lossless JPEG image using `tjDecompress2()` with decompression
+    scaling, the decompressed image was unexpectedly unscaled.
+  * The SIMD dispatchers now use `getauxval()` or `elf_aux_info()`,
+    if available, to detect support for Neon and AltiVec
+    instructions on AArch32 and PowerPC Linux, Android, and
+    *BSD systems.
+  * Hardened the libjpeg API against hypothetical applications
+    that may erroneously set one of the exposed quantization
+    table values to 0 just before calling `jpeg_start_compress()`.
+  * Fixed a division-by-zero error that occurred when attempting
+    to use the jpegtran `-drop` option with a specially-crafted
+    malformed drop
+  * a memory leak that occurred if a pre-allocated JPEG destination
+    buffer was passed to `tj3Compress*()` or `tj3Transform()`,
+    `TJPARAM_NOREALLOC` was unset, and it was necessary for the
+    library to re-allocate the buffer to accommodate the
+    destination image
+  * a potential caller double free that occurred if
+    pre-allocated JPEG destination buffers were passed to
+    `tj3Transform()`, multiple lossless transform operations
+    were performed, and it was necessary
+    for the library to re-allocate the second buffer to
+    accommodate the second destination image.
+  * Fixed an issue in `tj3Transform()` whereby, if
+    `TJPARAM_SAVEMARKERS` was set to 2 or 4, `TJXOPT_COPYNONE` was
+    not specified, an ICC profile was extracted from the source image,
+    and another ICC profile was associated with the TurboJPEG (forwarded request 1345948 from dirkmueller)</comment>
+    <requestid>1346361</requestid>
+  </revision>
 </revisionlist>
