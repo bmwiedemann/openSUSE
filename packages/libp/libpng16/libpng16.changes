@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 13 10:45:08 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.6.57:
+  * Fixed CVE-2026-34757 (medium severity):
+      Use-after-free in `png_set_PLTE`, `png_set_tRNS` and `png_set_hIST`
+      leading to corrupted chunk data and potential heap information disclosure.
+      Also hardened the append-style setters (`png_set_text`, `png_set_sPLT`,
+      `png_set_unknown_chunks`) against a theoretical variant of the same
+      aliasing pattern.
+      (Reported by Iv4n <Iv4n550@users.noreply.github.com>.)
+  * Fixed integer overflow in rowbytes computation in read transforms.
+      (Contributed by Mohammad Seet.)
+- fixes [bsc#1261957]
+
+-------------------------------------------------------------------
 Fri Mar 27 11:03:04 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - verson update to 1.6.56:

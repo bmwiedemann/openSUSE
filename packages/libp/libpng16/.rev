@@ -1023,4 +1023,12 @@
   * Performed various refactorings and cleanups.</comment>
     <requestid>1343165</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>d5be3711909a6cc3ac2a825a830de064</srcmd5>
+    <version>1.6.57</version>
+    <time>1776353104</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2026-34757, [bsc#1261957]</comment>
+    <requestid>1346408</requestid>
+  </revision>
 </revisionlist>
