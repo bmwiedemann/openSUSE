@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Apr 12 09:53:07 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 11.0.4:
+  * Public API changes:
+    + Re-remove deprecated DB::Open raw pointer variants in db.h
+    + Relax option sanitization for kv ratio compaction
+    + Revert removing deprecated DB::Open raw pointer variants in db.h
+    + Added new virtual methods AbortAllCompactions() and 
+      ResumeAllCompactions() to the DB class. i
+      Added new Status::SubCode::kCompactionAborted to indicate a compaction 
+      was aborted. Added Status::IsCompactionAborted() helper method to checki
+      if a status represents an aborted compaction.
+    + Drop support for reading (and writing) SST files using 
+      BlockBasedTableOptions.format_version < 2, which hasn't been the default
+      format for about 10 years. An upgrade path is still possible with full 
+      compaction using a RocksDB version >= 4.6.0 and < 11.0.0 and then using 
+      the newer version.
+    + Remove deprecated raw DB* variants of DB::Open and related functions. 
+      Some other minor public APIs were updated as a result
+    + Remove deprecated DB::MaxMemCompactionLevel()
+    + Remove useless option 
+      CompressedSecondaryCacheOptions::compress_format_version
+    + Remove deprecated DB option skip_checking_sst_file_sizes_on_db_open. 
+    + Remove deprecated SliceTransform::InRange() virtual method 
+    + Remove deprecated, unused APIs and options: ReadOptions::managed and 
+      ColumnFamilyOptions::snap_refresh_nanos. Corresponding C and Java APIs 
+      are also removed.
+    + Remove deprecated SstFileWriter::Add() method (use Put() instead) and 
+      the deprecated skip_filters parameter from SstFileWriter constructors 
+      (use BlockBasedTableOptions::filter_policy set to nullptr to skip filter
+      generation instead).
+  * New Features:
+    + Added support for storing wide-column entity column values in blob files
+    + Added CompactionOptionsFIFO::max_data_files_size to support FIFO 
+      compaction trimming based on combined SST and blob file sizes
+  * Behavior Changes
+    + Change the default value of 
+      CompactionOptionsUniversal::reduce_file_locking from false to true to
+      improve write stall and reduce read regression
+  * Bug Fixes
+    + Fix longstanding failures that can arise from reading and/or compacting 
+      old DB dirs with range deletions (likely from version < 5.19.0) in many i
+      newer versions.
+    + Fix a bug where WritePrepared/WriteUnprepared TransactionDB with 
+      two_write_queues=true could experience "sequence number going backwards"
+      corruption during recovery from a background error, due to 
+      allocated-but-not-published sequence numbers not being synced before 
+      creating new WAL files.
+  * Performance Improvements
+    + Add a new table option separate_key_value_in_data_block. When set to true
+      keys and values will be stored separately in the data block, which can 
+      result in higher cpu cache hit rate and better compression. Works best 
+      with data blocks with sufficient restart intervals and large values. 
+      Previous versions of RocksDB will reject files written using this option
+
+-------------------------------------------------------------------
 Sat Mar  7 15:52:09 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 10.10.1:
