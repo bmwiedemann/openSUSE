@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 13 10:11:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.9.0+git20260413.9633b0c5:
+  * Update openSUSE's licenses.toml
+  * systemd-tmpfiles: whitelist snapd snap-private-tmp (bsc#1261739)
+  * cli: Allow usage of --strict option
+
+-------------------------------------------------------------------
 Thu Mar 26 10:15:07 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 2.9.0+git20260326.abd95437:

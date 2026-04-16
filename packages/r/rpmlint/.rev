@@ -5601,4 +5601,15 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
     <comment></comment>
     <requestid>1342753</requestid>
   </revision>
+  <revision rev="534" vrev="1">
+    <srcmd5>58efebb0b1f93800caace14668eb3e67</srcmd5>
+    <version>2.9.0+git20260413.9633b0c5</version>
+    <time>1776353102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.0+git20260413.9633b0c5:
+  * Update openSUSE's licenses.toml
+  * systemd-tmpfiles: whitelist snapd snap-private-tmp (bsc#1261739)
+  * cli: Allow usage of --strict option</comment>
+    <requestid>1346395</requestid>
+  </revision>
 </revisionlist>
