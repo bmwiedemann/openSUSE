@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 15 08:30:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.19
+  * Support for 4-bit (indexed 16-color) PCX #8655
+  * Increase code determinism when when compiling with fuzzing instrumentation #8544
+  * Fix MNG animation speed for sub-frame animations with offsets #8666
+  * Fix JXL animated export transparent blending and offset frames #8656
+  * build(deps): bump ImageMagick/code-signing-action from 1.0.0 to 1.0.1 #8660
+  * build(deps): bump github/codeql-action from 4.32.6 to 4.35.1 #8661
+  * Fix AVIF animation export error on sequences with mixed alpha #8657
+  * build(deps): bump msys2/setup-msys2 from 2.30.0 to 2.31.0 #8645
+  * build(deps): bump caphyon/advinst-github-action from 2.0.1 to 2.0.2 #8647
+  * build(deps): bump azure/login from 2.3.0 to 3.0.0 #8643
+  * Fix APNG output duration/framerate #8639
+  * Animated AVIF support (libheif 1.20.0+) #8640
+  * Set BackgroundDispose for animated JXL frames with alpha #8635
+  * Skip frame duplication for APNG in video coder #8636
+- fixes CVE-2026-33905 [bsc#1262097]
+
+-------------------------------------------------------------------
 Mon Mar 30 12:36:54 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - modified patches
