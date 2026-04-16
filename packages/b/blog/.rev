@@ -305,4 +305,19 @@ use private glib API but implement a share memory mkstemp</comment>
     the password asking child processes (boo#1259547)</comment>
     <requestid>1341094</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>04323796ba39b7d7f2eef8f79135561a</srcmd5>
+    <version>2.38</version>
+    <time>1776353112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.38
+  * Silent debugging messages in epoll algorithm (boo#1261699)
+  * Make it work on 3215 console of s390
+    means no tcdrain() for 3215, no blocking writes, not more then
+    130 characters per line, no \r, finalize lines with \n.
+    Nevertheless use a blocking read for password requests.
+    Make automatic CLEAR an kernel command line option with
+    the parameter blog.timeout=0 (boo#1261697)</comment>
+    <requestid>1346447</requestid>
+  </revision>
 </revisionlist>

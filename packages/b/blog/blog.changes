@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 13 12:47:36 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.38
+  * Silent debugging messages in epoll algorithm (boo#1261699)
+  * Make it work on 3215 console of s390
+    means no tcdrain() for 3215, no blocking writes, not more then
+    130 characters per line, no \r, finalize lines with \n.
+    Nevertheless use a blocking read for password requests.
+    Make automatic CLEAR an kernel command line option with
+    the parameter blog.timeout=0 (boo#1261697)
+
+-------------------------------------------------------------------
 Thu Mar 19 07:30:54 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.37
