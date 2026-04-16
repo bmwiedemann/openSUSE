@@ -2697,4 +2697,26 @@ New Features
   * Fix the handling of key statements defined inside views.</comment>
     <requestid>1342855</requestid>
   </revision>
+  <revision rev="231" vrev="1">
+    <srcmd5>861d7c1db0b3241d469aef2c9a8bc075</srcmd5>
+    <version>9.20.22</version>
+    <time>1776353114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.20.22
+  Security Fixes:
+  * Fix crash when reconfiguring zone update policy during active
+    updates.
+  Bug Fixes:
+  * Fix intermittent named crashes during asynchronous zone
+    operations.
+  * Count temporal problems with DNSSEC validation as attempts.
+  * Fix a possible deadlock in RPZ processing.
+  * Fix a crash triggered by rndc modzone on a zone from a
+    configuration file.
+  * Fix the processing of empty catalog zone ACLs.
+  * Fix a crash triggered by rndc modzone on zone that already
+    existed in NZF file.
+  * Fix potential resource leak during resolver error handling.</comment>
+    <requestid>1346466</requestid>
+  </revision>
 </revisionlist>

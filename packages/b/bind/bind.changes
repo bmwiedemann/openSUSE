@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 13 14:50:07 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.20.22
+  Security Fixes:
+  * Fix crash when reconfiguring zone update policy during active
+    updates.
+
+  Bug Fixes:
+  * Fix intermittent named crashes during asynchronous zone
+    operations.
+  * Count temporal problems with DNSSEC validation as attempts.
+  * Fix a possible deadlock in RPZ processing.
+  * Fix a crash triggered by rndc modzone on a zone from a
+    configuration file.
+  * Fix the processing of empty catalog zone ACLs.
+  * Fix a crash triggered by rndc modzone on zone that already
+    existed in NZF file.
+  * Fix potential resource leak during resolver error handling.
+
+-------------------------------------------------------------------
 Thu Mar 26 13:39:47 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.20.21

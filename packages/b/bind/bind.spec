@@ -34,7 +34,7 @@
 %define dlz_modules_hash 5923650
 
 Name:           bind
-Version:        9.20.21
+Version:        9.20.22
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
