@@ -25,6 +25,13 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-debugpy%{psuffix}
 Version:        1.8.20
@@ -52,8 +59,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  gdb
 %endif
-Requires(post): alts
-Requires(postun): alts
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -136,6 +148,9 @@ sed -i '/launch/d' tests/debugpy/test_flask.py
 
 %pytest_arch -k "not ($donttest)"
 %endif
+
+%pre
+%python_libalternatives_reset_alternative debugpy debugpy-adapter
 
 %post
 %python_install_alternative debugpy debugpy-adapter
