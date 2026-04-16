@@ -59,4 +59,17 @@ This is also a dependency for heroic-games-launcher package.</comment>
     store by @CommandMC in #30 </comment>
     <requestid>1335521</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5de01f9cdd4bf40fb96115c9024bee71</srcmd5>
+    <version>0.20.42</version>
+    <time>1776353143</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework packaging to treat legendary as a CLI application, not a Python module
+  * Drop %python_subpackages and multi-interpreter builds
+  * Build and install using python3 directly instead of %pyproject macros
+  * Remove python alternatives and %python_clone handling
+  * Fix incorrect Requires on python3-* modules which forced primary interpreter
+  * Simplify spec to install only for system Python </comment>
+    <requestid>1347200</requestid>
+  </revision>
 </revisionlist>

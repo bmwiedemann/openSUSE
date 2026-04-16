@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Apr 16 01:39:11 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Add .rpmlintrc to fix false setuptools and wheel missing require warning.
+
+-------------------------------------------------------------------
+Thu Apr 16 00:42:43 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Rework packaging to treat legendary as a CLI application, not a Python module
+  * Drop %python_subpackages and multi-interpreter builds
+  * Build and install using python3 directly instead of %pyproject macros
+  * Remove python alternatives and %python_clone handling
+  * Fix incorrect Requires on python3-* modules which forced primary interpreter
+  * Simplify spec to install only for system Python 
+
+-------------------------------------------------------------------
+Tue Apr 14 22:31:20 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update Requires to use python3- prefix instead of python- to
+  fix "nothing provides" errors during installation, as the
+  modern openSUSE python stack uses the python3 capability.  
+
+-------------------------------------------------------------------
+Sun Apr 12 02:59:49 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix Requires: do not use python_module macro in runtime dependencies
+  to avoid unneeded expansion
+
+-------------------------------------------------------------------
+Sat Apr 11 19:29:24 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Add missing %changelog line in spec.
+
+-------------------------------------------------------------------
+Sat Apr 11 19:00:09 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Convert to native python build and enable Leap 15.7/16.0 compatibility
+  * Removed python3-PyInstaller and ExclusiveArch (now BuildArch: noarch).
+  * This change allows compilation on Leap 16.0 and 15.7 where PyInstaller 
+    is unavailable or problematic.
+  * Switched to %pyproject_wheel and %pyproject_install macros.
+  * Added %python_subpackages to support various Python flavors.
+  * Implemented update-alternatives for /usr/bin/legendary.
+  * Used %fdupes to optimize disk space by linking duplicated bytecode.
+  * Applied SOURCE_DATE_EPOCH for reproducible builds. 
+
+-------------------------------------------------------------------
 Fri Feb 27 23:43:27 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to 0.20.42 - Riding Shotgun

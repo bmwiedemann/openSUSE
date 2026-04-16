@@ -15,40 +15,48 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:           legendary
-Version:        0.20.42
-Release:        0
-Summary:        An Epic Games Launcher alternative
-License:        GPL-3.0-only
-URL:            https://github.com/Heroic-Games-Launcher/legendary.git
-Source:         %{name}-%{version}.tar.gz
-BuildRequires:  python3-filelock
-BuildRequires:  python3-PyInstaller
+Name:             legendary
+Version:          0.20.42
+Release:          0
+Summary:          An Epic Games Launcher alternative
+License:          GPL-3.0-only
+URL:              https://github.com/Heroic-Games-Launcher/legendary.git
+Source:           %{name}-%{version}.tar.gz
+Source1:          legendary.rpmlintrc
+BuildRequires:  fdupes
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-requests < 3.0
-BuildRequires:  python3-requests-futures
-%ifarch aarch64
-ExclusiveArch: aarch64
-%endif
-%ifarch x86_64
-ExclusiveArch: x86_64
-%endif
+BuildRequires:  python3-wheel
+BuildRequires:  python3-build
+BuildRequires:  python3-installer
+Requires:       python3
+Requires:       python3-requests < 3.0
+Requires:       python3-filelock
+Requires:       python3-requests-futures
+BuildArch:      noarch
 
 %description
-A replacement for the Epic Games Launcher.
+Legendary is an open-source game launcher that can install and manage games from the Epic Games Store.
 
 %prep
 %autosetup -p1
+find . -name "*.py" -exec sed -i '1{/^#!/d}' {} +
 
 %build
-pyinstaller --onefile --name legendary legendary/cli.py
+python3 -m build --wheel --no-isolation
 
 %install
-install -Dm0755 dist/legendary %{buildroot}/%{_bindir}/legendary
+python3 -m installer --destdir=%{buildroot} dist/*.whl
+
+find %{buildroot}%{python3_sitelib} -name "*.pyc" -delete
+
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
 %license LICENSE*
+%doc README.md
 %{_bindir}/legendary
+%{python3_sitelib}/legendary
+%{python3_sitelib}/legendary_gl-%{version}*.dist-info
 
 %changelog

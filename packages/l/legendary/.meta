@@ -3,5 +3,6 @@
   <description>Legendary is an open-source game launcher that can download and install games from the Epic Games platform on Linux, macOS, and Windows. Its name as a tongue-in-cheek play on tiers of item rarity in many MMORPGs.
 
 </description>
+  <devel project="games:tools" package="legendary"/>
   <url>https://github.com/Heroic-Games-Launcher/legendary</url>
 </package>
