@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1249626</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>11b18f364cffee41e6b88a332ae37ab1</srcmd5>
+    <version>0.4.0</version>
+    <time>1776353132</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0:
+  * Migrate from setuptools to hatchling and hatch-requirements-txt.</comment>
+    <requestid>1346159</requestid>
+  </revision>
 </revisionlist>

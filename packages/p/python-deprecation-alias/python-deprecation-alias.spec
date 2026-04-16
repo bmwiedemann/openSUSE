@@ -1,7 +1,7 @@
 #
 # spec file for package python-deprecation-alias
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,22 +26,27 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-deprecation-alias%{psuffix}
-Version:        0.3.3
+Version:        0.4.0
 Release:        0
 Summary:        A wrapper around 'deprecation' providing support for deprecated aliases
 License:        Apache-2.0
 URL:            https://github.com/domdfcoding/deprecation-alias
 Source:         https://github.com/domdfcoding/deprecation-alias/archive/refs/tags/v%{version}.tar.gz#/deprecation-alias-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-requirements-txt}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 40.6.0}
-BuildRequires:  %{python_module wheel >= 0.34.2}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module coincidence}
+BuildRequires:  %{python_module coincidence >= 0.2.0}
+BuildRequires:  %{python_module coverage >= 5.1}
 BuildRequires:  %{python_module deprecation-alias = %{version}}
-BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module domdf-python-tools >= 2.0.1}
+BuildRequires:  %{python_module importlib-metadata >= 3.6.0}
+BuildRequires:  %{python_module iniconfig >= 1.0.1}
+BuildRequires:  %{python_module pytest >= 6.0.0}
+BuildRequires:  %{python_module pytest-cov >= 2.8.1}
+BuildRequires:  %{python_module pytest-timeout >= 1.4.2}
 %endif
 # /SECTION
 BuildRequires:  fdupes
