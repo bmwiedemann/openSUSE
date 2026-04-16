@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Sun Apr 12 21:39:57 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.7.2:
+  * Fix RDSEED counter
+  * Process code by AI code checkers and apply suggested cosmetic fixes
+  * Heap memory: always munlock all mlock'ed memory
+  * Fix ChaCha20 on Apple compiled with XCode 26.4
+  * Fix a potential crasher with Base64 and applied various fixes reported
+  * Add X.509 certificate signing request (CSR) generator and parser
+  * ML-DSA: add lc_dilithium_pk_from_sk API to derive the PK from a given SK
+  * SLH-DSA: add lc_sphincs_pk_from_sk API to derive the PK from a given SK
+  * ML-KEM: add lc_kyber_pk_from_sk API to derive the PK from a given SK
+  * AES-CT: fix non-aligned data processing - reported
+  * Apply suggestions from Claude code
+  * X.509: Enforce path length restriction
+
+-------------------------------------------------------------------
+Mon Apr  6 09:13:06 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Update to 1.7.1
+  * Offer a means to select the AES-C constant time / S-Box implementation via
+    lc_init API
+  * use the AES-C constant time implementation by default - it is about 3 times
+    slower than the AES-C S-Box implementation, but more secure. As the
+    leancrypto library is about secure by default, the CT implementation is
+    just right. Furthermore, if a caller wants to have the faster AES-C S-Box,
+    he can call lc_init(LC_INIT_AES_SBOX) at the beginning.
+  * CVE-2026-34610: X.509: fix security issue (bsc#1261382)
+  * FIPS: mark only seeded DRBG instances as FIPS-approved
+  * ASN.1: add lc_x509_cert_check_issuer_ca convenience function
+  * Enable side-channel-resistant AES implementation (and thus enable
+    respective Timecop tests)
+  * Fix some side channel test failures (all failures are due to test case
+    issues, and no real problems)
+  * AARCH64: enable GCS support (see
+    https://community.arm.com/arm-community-blogs/b/tools-software-ides-blog/posts/gcc-15-continuously-improving#guarded
+    and https://docs.kernel.org/next/arch/arm64/gcs.html)
+  * Add PKCS#8 support for ML-DSA following RFC9881 including full support for
+    the seed or full keys. The change adds OpenSSL interoperability testing as
+    well. NOTE: The raw on-disk private key format that is generated with
+    lc_x509_generate --create-keypair changed to comply with RFC9881.
+  * Add PKCS#8 support for SLH-DSA. The change adds OpenSSL interoperability
+    testing as well. NOTE: The raw on-disk private key format that is generated
+    with lc_x509_generate --create-keypair changed to dump the raw key instead
+    of wrapping it into a BIT STRING to comply with OpenSSL's format.
+  * Provide full PKCS#7 interoperability with OpenSSL: OpenSSL artificially
+    orders the parsing of the authenticated attributes. This implies that the
+    message digest part of the authenticated attributes is parsed as last
+    entry. This ordering is important for the signature generation and
+    verification. Furthermore, for ML-DSA/SLH-DSA, the authenticated attributes
+    are signed with the pure algorithm instead of the pre-hashed operation as
+    suggested by RFC5652 section 9.2.
+  * ML-KEM/DSA: add safety measures against compilers trying to reason about
+    code they should not reason about. Derived from
+    https://github.com/pq-code-package/ml[dsa|kem]-native/
+  * ML-DSA: reduce amount of duplicate code compilation suggested
+  * ML-DSA: fix bug in poly_uniform which, however, is unlikely to be triggered
+  * ChaCha20: fix crasher when assembler support is not compiled
+  * Add AES constant time C implementation accessible with the lc_aes_*ct
+    references. Yet, it is about 3 times slower than the default C
+    implementation. Thus is is only provided if somebody truly relies on a
+    constant time implementation.
+- Patches are merged upstream:
+  * Drop fe9751f2.patch
+  * Drop leancrypto_avx_detect1.patch
+  * Drop leancrypto_avx_detect2.patch
+  * Drop 0469d92f.patch
+
+- For full changelog, see:
+https://github.com/smuellerDD/leancrypto/releases/tag/v1.7.0
+https://github.com/smuellerDD/leancrypto/releases/tag/v1.7.1
+
+-------------------------------------------------------------------
+Wed Feb 25 13:03:13 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build with kernel 6.19 on aarch64:
+  * 0469d92f.patch 
+
+-------------------------------------------------------------------
+Wed Feb 25 13:03:13 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build with kernel 6.19 on aarch64:
+  * 0469d92f.patch
+
+-------------------------------------------------------------------
 Wed Dec  3 09:19:47 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Fix bsc#1254370, bsc#1253654 - AVX detection is wrong on older intel CPUs

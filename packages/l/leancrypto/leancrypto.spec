@@ -1,7 +1,7 @@
 #
 # spec file for package leancrypto
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2022 - 2025 Stephan Mueller <smueller@chronox.de
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@
 %define pkgname leancrypto
 %define libname lib%{pkgname}
 Name:           %{pkgname}%{psuffix}
-Version:        1.6.0
+Version:        1.7.2
 Release:        0
 %if %{with kmp}
 Summary:        leancrypto Kernel Module Package
@@ -42,12 +42,7 @@ Source0:        https://www.leancrypto.org/%{pkgname}/releases/%{pkgname}-%{vers
 Source1:        https://www.leancrypto.org/%{pkgname}/releases/%{pkgname}-%{version}/%{pkgname}-%{version}.tar.xz.asc
 Source2:        https://leancrypto.org/about/smuellerDD-2024.asc#/leancrypto.keyring
 Source3:        baselibs.conf
-# PATCH-FIX-UPSTREAM - https://github.com/smuellerDD/leancrypto/commit/fe9751f2b
-Patch1:         fe9751f2.patch
-# PATCH-FIX-UPSTREAM https://github.com/smuellerDD/leancrypto/commit/38bb12a185b2d3aa4ff3656d743b33b3ae25bac7
-# bsc#1253654, bsc#1254370 - fix AVX detection in older intel CPUs
-Patch2:		leancrypto_avx_detect1.patch
-Patch3:		leancrypto_avx_detect2.patch
+
 BuildRequires:  clang
 BuildRequires:  meson
 %if %{with kmp}
