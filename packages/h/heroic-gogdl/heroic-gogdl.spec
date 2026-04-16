@@ -15,25 +15,27 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:           heroic-gogdl
-Version:        1.2.1
-Release:        0
-Summary:        GOG download module for Heroic Games Launcher
-License:        GPL-3.0-only
-URL:            https://github.com/Heroic-Games-Launcher/heroic-gogdl
-Source0:        %{name}-%{version}.tar.gz
-Patch0:         use-system-xdelta3.patch
-BuildRequires:  python3-PyInstaller
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-requests < 3.0
-Requires:       xdelta3
-%ifarch aarch64
-ExclusiveArch: aarch64
-%endif
-%ifarch x86_64
-ExclusiveArch: x86_64
-%endif
+Name:             heroic-gogdl
+Version:          1.2.1
+Release:          0
+Summary:          GOG download module for Heroic Games Launcher
+License:          GPL-3.0-only
+URL:              https://github.com/Heroic-Games-Launcher/heroic-gogdl
+Source0:          %{name}-%{version}.tar.gz
+Patch0:           use-system-xdelta3.patch
+BuildRequires:    gcc
+BuildRequires:    fdupes
+BuildRequires:    xdelta3-devel
+BuildRequires:    python3-devel
+BuildRequires:    python3-pip
+BuildRequires:    python3-setuptools
+BuildRequires:    python3-wheel
+BuildRequires:    python3-build
+BuildRequires:    python3-installer
+Requires:         python3
+Requires:         python3-requests
+Requires:         xdelta3
+BuildArch:        noarch
 
 %description
 GOG Downloading module for Heroic Games Launcher
@@ -41,14 +43,27 @@ GOG Downloading module for Heroic Games Launcher
 %prep
 %autosetup -p1
 
+rm -f gogdl/xdelta3.c
+
+sed -i '/\[tool.setuptools.ext-modules\]/,/\]/d' pyproject.toml
+sed -i '/xdelta3/d' pyproject.toml
+
+find . -name "*.py" -exec sed -i '1{/^#!/d}' {} +
+
 %build
-pyinstaller --onefile --name gogdl gogdl/cli.py
+python3 -m build --wheel --no-isolation
 
 %install
-install -Dm0755 dist/gogdl %{buildroot}/%{_bindir}/gogdl
+python3 -m installer --destdir=%{buildroot} dist/*.whl
+
+find %{buildroot} -name "*.pyc" -delete
+
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
 %license LICENSE*
 %{_bindir}/gogdl
+%{python3_sitelib}/gogdl
+%{python3_sitelib}/gogdl-%{version}*.dist-info
 
 %changelog

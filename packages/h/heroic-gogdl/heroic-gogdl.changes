@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Apr 16 00:56:23 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Convert package to a single CLI application (system Python only):
+  * Drop %python_subpackages and python_module macros
+  * Avoid building for multiple Python versions
+  * Replace unversioned python3-* requirements that pulled
+    python313 dependencies into all builds
+  * Use "python3 -m build" and "python3 -m installer"
+  * Remove dependency on pyproject macros
+  * Simplify BuildRequires to python3-* stack
+  * Align packaging with openSUSE guidelines for Python applications 
+
+-------------------------------------------------------------------
+Tue Apr 14 22:29:58 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update Requires to use python3- prefix instead of python- to
+  fix "nothing provides" errors during installation, as the
+  modern openSUSE python stack uses the python3 capability. 
+
+-------------------------------------------------------------------
+Sun Apr 12 02:59:04 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix Requires: do not use python_module macro in runtime dependencies
+  to avoid unneeded expansion
+ 
+
+-------------------------------------------------------------------
+Sat Apr 11 18:51:49 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Convert to native python package for Leap compatibility
+  * Removed PyInstaller and switched to native %python_subpackages.
+  * Changed to BuildArch: noarch to support Leap 15.7 and 16.0.
+  * Removed bundled gogdl/xdelta3.c and patched pyproject.toml 
+    to remove C extension modules, relying on system libraries.
+  * Added update-alternatives support for the gogdl command.
+  * Added %fdupes and reproducible build flags (SOURCE_DATE_EPOCH).
+  * Note: xdelta3 is currently missing in Leap 16.0 repositories. 
+    While this package is now ready for Leap 16.0, runtime functionality 
+    for GOG patching will require xdelta3 to be available.
+
+-------------------------------------------------------------------
 Wed Feb 25 01:38:42 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Fix incorrect python dependency macros usage

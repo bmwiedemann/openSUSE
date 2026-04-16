@@ -3,5 +3,6 @@
   <description>GOG download module for Heroic Games Launcher
 Important note
 This is not user friendly cli, it's meant to be used by some other application wanting to download game files, manage cloud saves or conveniently launch the game</description>
+  <devel project="games:tools" package="heroic-gogdl"/>
   <url>https://github.com/Heroic-Games-Launcher/heroic-gogdl</url>
 </package>

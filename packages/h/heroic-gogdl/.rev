@@ -46,4 +46,20 @@ Fix URL to use upstream GitHub release tarball as Source0</comment>
   * Remove unnecessary runtime Requires pulled by macro expansion</comment>
     <requestid>1334899</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d54ef77d9bf370e6d311dedb80b0e283</srcmd5>
+    <version>1.2.1</version>
+    <time>1776353142</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert package to a single CLI application (system Python only):
+  * Drop %python_subpackages and python_module macros
+  * Avoid building for multiple Python versions
+  * Replace unversioned python3-* requirements that pulled
+    python313 dependencies into all builds
+  * Use &quot;python3 -m build&quot; and &quot;python3 -m installer&quot;
+  * Remove dependency on pyproject macros
+  * Simplify BuildRequires to python3-* stack
+  * Align packaging with openSUSE guidelines for Python applications </comment>
+    <requestid>1347195</requestid>
+  </revision>
 </revisionlist>
