@@ -139,6 +139,7 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
   --disable-libipset-dynamic \
   --disable-libnl-dynamic \
   --enable-libnl \
+  --with-iproute-etc-dir=%{_sysconfdir}/iproute2 \
   --enable-json
 make %{?_smp_mflags}
 %sysusers_generate_pre %{SOURCE12} %{name} %{S:4}

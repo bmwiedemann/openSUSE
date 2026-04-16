@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 16 11:35:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- ensure we are always using /etc/iproute2 and not /etc/iproute2.d
+  for some reason the auto detection on code 15 does not work.
+
+-------------------------------------------------------------------
 Wed Feb 11 04:47:03 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - Clean up spec file. Remove not used rpmlint and deprecated %if-s
