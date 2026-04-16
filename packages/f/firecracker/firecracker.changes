@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Apr 09 13:20:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.15.1:
+  * Fixed
+    - #5762: Cap virtio-rng per-request entropy to 64 KiB.
+      Previously, a guest could construct a descriptor chain that
+      caused Firecracker to allocate more host memory than the
+      guest actually provided, potentially leading to excessive
+      host memory consumption.
+    - #5818: Enforce the virtio device initialization sequence in
+      the PCI transport, matching the existing MMIO transport
+      behavior. The PCI transport now validates device status
+      transitions, rejects queue configuration writes outside the
+      FEATURES_OK to DRIVER_OK window, rejects feature negotiation
+      outside the DRIVER state, blocks re-initialization after a
+      failed reset, and sets DEVICE_NEEDS_RESET when device
+      activation fails. This fixes CVE-2026-5747.
+    - #5818: Reject device status writes that clear previously set
+      bits in the MMIO transport, except for reset.
+    - #5780: Fixed missing /sys/devices/system/cpu/cpu*/cache/* in
+      aarch64 guests when running on host kernels >= 6.3 with guest
+      kernels >= 6.1.156.
+    - #5793: Fixed virtio-mem plug/unplug skipping KVM slot updates
+      for memory blocks not aligned to a slot boundary. On plug,
+      this could leave hotplugged memory inaccessible to the guest.
+      On unplug, the guest could retain access to memory that
+      Firecracker considered freed.
+    - #5794: Bound balloon statistics descriptor length to prevent
+      a guest-controlled oversized descriptor from temporarily
+      stalling the VMM event loop. Only affects microVMs with
+      stats_polling_interval_s > 0.
+    - #5809: Fixed a bug on host Linux >= 5.16 for x86_64 guests
+      using the kvm-clock clock source causing the monotonic clock
+      to jump on restore by the wall-clock time elapsed since the
+      snapshot was taken. Users using kvm-clock that want to
+      explicitly advance the clock with KVM_CLOCK_REALTIME can opt
+      back in using the new clock_realtime flag in LoadSnapshot
+      API.
+
+-------------------------------------------------------------------
 Tue Mar 10 06:59:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.15.0:
