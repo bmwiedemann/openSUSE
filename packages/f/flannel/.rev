@@ -254,4 +254,12 @@
 The update also include version bump for `golang.org/x/oauth2` to v0.27.0, bsc#1239203</comment>
     <requestid>1322152</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>02971d50071ce40147ee24426b1adb07</srcmd5>
+    <version>0.28.4</version>
+    <time>1776353171</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.28.4 (includes fix for CVE-2026-33413, bsc#1260853 and CVE-2026-33343, bsc#1260847)</comment>
+    <requestid>1347237</requestid>
+  </revision>
 </revisionlist>

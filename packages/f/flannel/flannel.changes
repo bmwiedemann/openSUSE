@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Apr 16 06:42:56 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update .spec file to bump go version build requirements:
+   * `BuildRequires:  golang(API) >= 1.25`
+   * ref: https://github.com/flannel-io/flannel/compare/v0.28.3...v0.28.4 
+
+- Update to version 0.28.4:
+  * fix go version (don't set patch version) (#2428)
+  * Bump flannel-cni-plugin to v1.9.1-flannel1 (#2427)
+  * Bump the other-go-modules group across 1 directory with 3 updates (#2425)
+  * Bump the tencent group with 2 updates (#2417)
+  * Bump the etcd group with 4 updates (#2398), includes fix for CVE-2026-33413 (bsc#1260853) and CVE-2026-33343 (bsc#1260847)
+  * Bump go.opentelemetry.io/otel/sdk from 1.40.0 to 1.43.0 (#2420)
+  * Bump go to 1.25 (#2424)
+  * Bump actions/upload-pages-artifact from 4.0.0 to 5.0.0
+  * Bump docker/build-push-action from 7.0.0 to 7.1.0
+  * Bump docker/login-action from 4.0.0 to 4.1.0
+  * Verify the kubectl sha256sum
+  * Secure makefile (#2414)
+  * Improve the security of Dockerfile
+  * Bump github/codeql-action from 4.34.1 to 4.35.1 (#2409)
+  * Bump actions/deploy-pages from 4.0.5 to 5.0.0
+  * lease: only print BackendData when json.Marshal succeeds
+  * vxlan: delete v6 direct route with correct Route struct
+  * fix: honor --stderrthreshold flag when --logtostderr is enabled
+  * Bump actions/configure-pages from 5.0.0 to 6.0.0
+  * Bump actions/setup-go from 6.3.0 to 6.4.0
+  * don't use unquoted shell vars in extensions backend example
+  * Don't use shell invocations in extensions backend.
+  * Bump google.golang.org/grpc from 1.71.1 to 1.79.3
+  * Bump ossf/scorecard-action from 2.4.1 to 2.4.3
+  * Bump actions/upload-artifact from 4.6.1 to 7.0.0
+  * Bump docker/metadata-action from 5.10.0 to 6.0.0
+  * Bump actions/checkout from 4.2.2 to 6.0.2
+  * Bump docker/setup-buildx-action from 3.12.0 to 4.0.0
+  * Bump aquasecurity/trivy-action from 0.33.1 to 0.35.0
+  * Bump docker/setup-qemu-action from 3.7.0 to 4.0.0
+  * [StepSecurity] Apply security best practices
+  * Bump actions/attest-build-provenance from 3.2.0 to 4.1.0
+  * Fix logic in AddBlackholeV4Route and AddBlackholeV6Route to correctly check for existing routes
+  * Added check for nftables before checking br_netfilter module
+  * Bump golang.org/x/crypto from 0.36.0 to 0.45.0
+  * Bump k8s deps to v0.32.10
+  * Bump golang-ci-lint to v2.7.2
+  * Bump golangci/golangci-lint-action from 6.1.1 to 9.2.0
+  * Additional check on podCIDR
+  * ip: improve primary address selection to account for address flags
+  * Added TAG to fix bin version
+
+-------------------------------------------------------------------
 Thu Dec 11 08:50:50 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 0.27.4:
