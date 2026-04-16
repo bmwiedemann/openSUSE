@@ -296,4 +296,12 @@
 - Refresh fix-cargo-checksums.patch (forwarded request 1340876 from glaubitz)</comment>
     <requestid>1340886</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2108b2851a1f8a22d68b7ab71a35f98e</srcmd5>
+    <version>3.0.1</version>
+    <time>1776353183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347273</requestid>
+  </revision>
 </revisionlist>

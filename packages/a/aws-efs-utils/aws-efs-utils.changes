@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 14 11:08:29 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.1
+  * Fix proxy crash on NFS error in READ_BYPASS response
+- from version 3.0.0
+  * Add support for s3files
+- Refresh support-relro-in-delocator.patch
+- Refresh fix-cargo-checksums.patch
+
+-------------------------------------------------------------------
 Wed Mar 18 10:59:07 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.4.2
