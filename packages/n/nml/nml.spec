@@ -1,8 +1,7 @@
 #
 # spec file for package nml
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +17,7 @@
 
 
 Name:           nml
-Version:        0.8.1
+Version:        0.9.0
 Release:        0
 Summary:        NewGRF Meta Language
 License:        GPL-2.0-or-later
@@ -27,15 +26,13 @@ URL:            http://dev.openttdcoop.org/projects/nml
 Source:         https://github.com/OpenTTD/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.10
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 # We need the required packages also on building for regression tests:
 BuildRequires:  python3-Pillow >= 3.4
-BuildRequires:  python3-ply
 Requires:       python3-Pillow >= 3.4
-Requires:       python3-ply
 Provides:       nmlc = %{version}
 
 %description
