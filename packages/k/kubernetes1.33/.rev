@@ -89,4 +89,12 @@
     <comment>Monthly Patch Release – March, 2026: Update to version 1.33.10</comment>
     <requestid>1341163</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a8817733a127c0bcec15dbf468fbcd9b</srcmd5>
+    <version>1.33.11</version>
+    <time>1776353168</time>
+    <user>dimstar_suse</user>
+    <comment>Monthly Patch Release – April, 2026: Update to version 1.33.11</comment>
+    <requestid>1347224</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 16 06:05:24 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.11:
+  * Update github.com/moby/spdystream from v0.5.0 to v0.5.1
+  * update go.opentelemetry.io/otel to v1.41.0
+  * Bump images and versions to go 1.25.9 and distroless iptables
+  * Bump to go 1.25
+  * bump golang.org/x/vuln/cmd/govulncheck to v1.1.4
+  * Fix flaking RunTestDelayedWatchDelivery
+  * pkg/proxy/nftables: fix kube-proxy crash with newer nftables versions
+  * Update knftables to v0.0.21
+  * Fix RepairIPAddress controller startup failure when namespace informer is not yet synced
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.25.9`
+  * `BuildRequires:  golang(API) = 1.25`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.33.11/build/dependencies.yaml#L119-L124 
+
+-------------------------------------------------------------------
 Thu Mar 19 11:37:06 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.10:
