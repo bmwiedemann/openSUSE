@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 10 07:31:51 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Update to 0.26.4
+  * Add clang nullability annotations
+  * Address new warnings in clang and clang-tidy 21
+  * Fix default LV2 path on cross-compiled Windows builds
+  * Fix loading of duplicate bundles with equivalent versions
+  * Fix potential crash when UIs have multiple types or binaries
+  * Use consistent quoting and punctuation in log messages
+- Set suse_version for enabling docs to >= to 1699 as we don't have
+  python3-sphinxygen in SLES (jsc#PED-15821)
+
+-------------------------------------------------------------------
 Wed Dec 10 08:12:14 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 0.26.2
