@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 16 08:03:23 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.112.2:
+  * Fixed regressions in quoting for string arguments in Nu script 
+    calls.
+  * Fixed regressions for `input list`.
+  * Other fixes.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2026-04-15-nushell_v0_112_2.html.
+
+-------------------------------------------------------------------
+Thu Apr 16 08:03:08 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.112.2:
+  + Bug fixes
+    * Fix regressions in quoting for string arguments in Nu script calls
+    * Fix regressions for `input list` behavior with `--fuzzy` and
+      `--multi` (navigation, wrap-around, and streamed input search)
+    * Properly quote empty strings and strings containing `[`, `{`, or
+      `}` in script arguments
+  + For a full list of changes with detailed descriptions, see:
+    https://www.nushell.sh/blog/2026-04-15-nushell_v0_112_2.html
+
+-------------------------------------------------------------------
 Sun Apr 12 10:48:37 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.112.1:
