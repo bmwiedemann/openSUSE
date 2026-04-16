@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 15 20:09:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * Drop support for click < 8
+  * typing: Make things stricter (4/4)
+  * typing: Make things stricter (3/4)
+  * typing: Make things stricter (2/4)
+  * typing: Make things stricter (1/4)
+  * tox: Remove CLI overrides
+  * Add mypy configuration to pyproject.toml
+  * Use objects from collections.abc, typing
+  * Enable pyupgrade (U) checks
+  * Move packaging configuration to pyproject.toml
+  * Add support for Python 3.14, drop Python 3.9
+  * Migrate to ruff
+  * tests: Add test for dependency feature
+  * series: Enable applying series dependencies
+  * api: Add function to get an object from a URL
+
+-------------------------------------------------------------------
 Fri Feb  7 12:00:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.7.1

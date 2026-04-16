@@ -1,7 +1,7 @@
 #
 # spec file for package python-git-pw
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,20 @@
 %define modname git_pw
 %{?sle15_python_module_pythons}
 Name:           python-git-pw
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        A tool for integrating Git with Patchwork
 License:        MIT
 URL:            https://github.com/getpatchwork/git-pw
 Source:         https://files.pythonhosted.org/packages/source/g/%{modname}/%{modname}-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module arrow >= 0.10}
-BuildRequires:  %{python_module click >= 6.0}
+BuildRequires:  %{python_module click >= 8.0}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyaml >= 5.1}
 BuildRequires:  %{python_module pytest >= 3.0}
-BuildRequires:  %{python_module requests > 2.0}
+BuildRequires:  %{python_module requests >= 2.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tabulate >= 0.8}
 BuildRequires:  %{python_module wheel}
@@ -40,10 +40,10 @@ BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       git-core
+Requires:       python-PyYAML >= 5.1
 Requires:       python-arrow >= 0.10
-Requires:       python-click >= 6.0
-Requires:       python-pyaml >= 5.1
-Requires:       python-requests > 2.0
+Requires:       python-click >= 8.0
+Requires:       python-requests >= 2.0
 Requires:       python-tabulate >= 0.8
 Provides:       git-pw = %{version}
 Obsoletes:      git-pw < %{version}
