@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:19:01 UTC 2026 - YI HSIN Lyu <richard.lyu@suse.com>
+
+- Add DEBUG_TO_MEM build option for x86_64 and AArch64
+  - Linux kernel version 6.17 introduces a new boolean config option,
+  OVMF_DEBUG_LOG. When enabled, the kernel exposes the firmware debug
+  log via sysfs. If both the kernel and firmware support this feature,
+  the log will be available under /sys/firmware/efi/ovmf_debug_log.
+  - This option enables compatibility with the kernel feature, allowing
+  firmware debug logs to be retrieved from the OS without relying on
+  traditional debug interfaces. 
+
+-------------------------------------------------------------------
 Wed Apr  1 03:01:38 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
 
 - Update ovmf descriptors
