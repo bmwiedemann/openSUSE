@@ -1,7 +1,7 @@
 #
 # spec file for package python-CherryPy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Summary:        Object-Oriented HTTP framework
 License:        BSD-3-Clause
 URL:            https://www.cherrypy.dev
 Source:         https://files.pythonhosted.org/packages/source/C/CherryPy/cherrypy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/cherrypy/cherrypy/commit/1f75bc9eed8e0e385f64f368bd69f58d96fb8c2b Temporarily mark test_queue_full as xfail
+Patch0:         xfail.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}

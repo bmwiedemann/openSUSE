@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 15 08:13:59 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Temporarily mark test_queue_full as xfail with xfail.patch
+
+-------------------------------------------------------------------
 Tue Apr  1 11:53:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the dist-info name case-insensitive
