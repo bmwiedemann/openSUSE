@@ -367,4 +367,12 @@
   - missed in original implementation of jsc#PM-2128</comment>
     <requestid>1340725</requestid>
   </revision>
+  <revision rev="32" vrev="32">
+    <srcmd5>528a47c5ea4c1f1e8bc053e85a208a4c</srcmd5>
+    <version>0</version>
+    <time>1776357909</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1346928</requestid>
+  </revision>
 </revisionlist>
