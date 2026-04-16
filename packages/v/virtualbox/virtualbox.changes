@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 16 11:08:46 UTC 2026 - Max Lin <mlin@suse.com>
+
+- Tweak the build conditions according to %suse_version=1610 change
+
+-------------------------------------------------------------------
 Tue Apr 14 10:18:59 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Refresh the Leap 16.1 build fix patch for covering the missing

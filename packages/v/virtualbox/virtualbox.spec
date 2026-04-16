@@ -19,7 +19,7 @@
 	# macros for virtualbox-kmp
 	%define main_package 0
 	%define kmp_package 1
-	%if 0%{?suse_version} > 1600
+	%if 0%{?suse_version} >= 1699
 		%define kmp_longterm 1
 	%endif
 	%define name_suffix kmp
@@ -54,8 +54,8 @@
 %endif
 
 # If you want to disable building Python parts, just set this to %%nil
-%if 0%{?suse_version} == 1600
-	# Leap 16.0 has python3.13, currently not supported
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
+	# Leap 16.x has python3.13 or above, currently not supported
 	%global mypython %nil
 %else
 	# Using python3.11 for Factory, current version doesn't support python3.13

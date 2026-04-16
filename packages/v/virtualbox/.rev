@@ -2871,4 +2871,12 @@ we must have vb7.1.10.</comment>
   leap16.1-kmp-fixes.patch</comment>
     <requestid>1346861</requestid>
   </revision>
+  <revision rev="307" vrev="9">
+    <srcmd5>b5b11df427a2177d632c8bcb50bf12ec</srcmd5>
+    <version>7.2.6</version>
+    <time>1776353123</time>
+    <user>dimstar_suse</user>
+    <comment>- Tweak the build conditions according to %suse_version=1610 change</comment>
+    <requestid>1347279</requestid>
+  </revision>
 </revisionlist>
