@@ -2429,4 +2429,27 @@
     entries could delete arbitrary files on uninstall. See GHSA-pjjw-68hj-v9mw for details.</comment>
     <requestid>1345794</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>d0d35f00901f7a620c43c858736de7a1</srcmd5>
+    <version>0.11.7</version>
+    <time>1776353172</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.7 
+ * Enhancements
+  * Elevate configuration errors to required-version mismatches 
+  * Further improve TLS certificate validation messages 
+  * Improve --exclude-newer hints 
+ * Preview features
+  * Fix --script handling in uv audit 
+  * Fix traversal of extras in uv audit 
+ * Bug fixes
+  * De-quote workspace metadata in linehaul data 
+  * Avoid installing tool workspace member dependencies as editable 
+  * Emit JSON report for uv sync --check failures 
+  * Filter and warn on invalid TLS certificates 
+  * Fix equality comparisons for version specifiers with ~= operators 
+  * Fix stale Python upgrade preview feature check in project environment construction 
+  * Improve Windows path normalization</comment>
+    <requestid>1347243</requestid>
+  </revision>
 </revisionlist>

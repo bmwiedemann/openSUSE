@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 16 08:27:33 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.7 
+ * Enhancements
+  * Elevate configuration errors to required-version mismatches 
+  * Further improve TLS certificate validation messages 
+  * Improve --exclude-newer hints 
+ * Preview features
+  * Fix --script handling in uv audit 
+  * Fix traversal of extras in uv audit 
+ * Bug fixes
+  * De-quote workspace metadata in linehaul data 
+  * Avoid installing tool workspace member dependencies as editable 
+  * Emit JSON report for uv sync --check failures 
+  * Filter and warn on invalid TLS certificates 
+  * Fix equality comparisons for version specifiers with ~= operators 
+  * Fix stale Python upgrade preview feature check in project environment construction 
+  * Improve Windows path normalization 
+
+-------------------------------------------------------------------
 Fri Apr 10 09:55:34 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.6 
