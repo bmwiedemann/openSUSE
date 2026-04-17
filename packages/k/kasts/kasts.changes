@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Fix Android build with Qt 6.11
+  * Fix dialogs on SynchronizationSettingsPage showing up on wrong window (kde#518296)
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * Fix (again) images with no basepath
+  * Fix duplication of feed authors
+  * Fix clickable titles in HeaderBar
+  * Fix crash when html images don't have a host set (kde#517775)
+  * Try both the original and redirected URL for streams (kde#517427)
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * Implement maximum amount of parallel episode downloads and add to settings (kde#496632)
+  * Download and process feed updates from same host sequentially (kde#516859)
+  * Fix empty EpisodePage on startup (kde#510634)
+  * Encode spaces in streaming urls handed over to vlc (kde#514562)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
