@@ -61,4 +61,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1340723</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c96fadd0614dc48b1df9ffece004e5c</srcmd5>
+    <version>2.7.6</version>
+    <time>1776452057</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.6:
+  - Added
+    - MergeStrategy enum and merge logic for configuration
+    - call_source=vibe_code field in LLM request metadata
+    - &quot;Other&quot; task type for non-code requests in CLI prompt
+  - Changed
+    - Parallelized git subprocess calls during startup
+    - Extracted command registry and refactored skill resolution
+    - 1M context window and thinking budget max for opus
+    - Updated default telemetry URL to api.mistral.ai
+  - Fixed
+    - Markdown fence context loss causing streaming rendering
+      problems
+    - Proxy chain URLs in api_base parsing
+  - Removed
+    - Alt+Left / Alt+Right key bindings from chat input
+
+- Upgrade to 2.7.5:
+  - Changed
+    - Display detected files and LLM risks in trust folder dialog
+    - Text-to-speech via the Mistral SDK with telemetry tracking
+    - Deferred MCP and git I/O to background thread for faster
+      CLI startup
+    - Made telemetry URL configurable
+    - Bumped Textual to 8.2.1
+  - Fixed
+    - Encoding detection fallback in read_safe for non-UTF-8
+      files
+    - Config saving logic cleanup
+- Upgrade to 2.7.4:</comment>
+    <requestid>1347590</requestid>
+  </revision>
 </revisionlist>
