@@ -135,4 +135,14 @@
   * Various improvements.</comment>
     <requestid>1321118</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0ddb89e7c74c09422636a8d52412bd8f</srcmd5>
+    <version>0.8.2</version>
+    <time>1776452720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.2:
+  * Add fuzzel and mew to the default list of choosers.
+  * Various bugfixes and improvements.</comment>
+    <requestid>1347741</requestid>
+  </revision>
 </revisionlist>
