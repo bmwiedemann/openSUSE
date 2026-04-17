@@ -1,7 +1,7 @@
 #
 # spec file for package kclock
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without  released
 Name:           kclock
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Clock application for Plasma
 License:        GPL-2.0-or-later
@@ -48,6 +48,7 @@ BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
 BuildRequires:  cmake(KF6Svg) >= %{kf6_version}
 BuildRequires:  cmake(Plasma) >= %{plasma6_version}
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -103,7 +104,7 @@ A clock application for Plasma.
 %dir %{_kf6_plasmadir}/plasmoids
 %{_kf6_plasmadir}/plasmoids/org.kde.plasma.kclock_1x2/
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.kclock_1x2.so
-%{_kf6_sharedir}/krunner/dbusplugins/kclock-runner.desktop
+%{_kf6_sharedir}/krunner/dbusplugins/org.kde.kclock.desktop
 
 %files lang -f %{name}.lang
 
