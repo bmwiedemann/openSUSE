@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 17 15:28:56 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Obsolete hyprland-plugin-hyprscrolling as functionality was
+  included in hyprland proper. Consult
+  https://wiki.hypr.land/0.54.0/Configuring/Scrolling-Layout/ for
+  more information.
+
+-------------------------------------------------------------------
 Sun Mar 29 10:07:38 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.54.3:

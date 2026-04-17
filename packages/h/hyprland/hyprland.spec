@@ -81,6 +81,7 @@ BuildRequires:  Mesa-libGLESv3-devel
 %endif
 Recommends:     %{name}-wallpapers
 Suggests:       %{name}-devel
+Obsoletes:      %{name}-plugin-hyprscrolling < 0.54.0
 
 %description
 Hyprland is a dynamic tiling Wayland compositor based on wlroots
