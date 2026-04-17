@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 17 17:46:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.2:
+  * Correct repr for MultiCell by @henryiii in
+  * Fix serialization round-trip for 3D histograms with empty
+    axes
+  * Fix `__setitem__` axis index mismatch when slices are not
+    leading indices
+  * Support 0D MeanView/WeightedMeanView
+  * Broadcast scalar axis args to match array sample length in
+    Mean/WeightedMean fill
+  * Slightly better getitem type
+
+-------------------------------------------------------------------
 Mon Feb 16 16:58:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.1:

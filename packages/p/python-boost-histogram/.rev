@@ -109,4 +109,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1334566</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>47e279b4078f76f70825b4c8a05210fc</srcmd5>
+    <version>1.7.2</version>
+    <time>1776452724</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.2:
+  * Correct repr for MultiCell by @henryiii in
+  * Fix serialization round-trip for 3D histograms with empty
+    axes
+  * Fix `__setitem__` axis index mismatch when slices are not
+    leading indices
+  * Support 0D MeanView/WeightedMeanView
+  * Broadcast scalar axis args to match array sample length in
+    Mean/WeightedMean fill
+  * Slightly better getitem type</comment>
+    <requestid>1347779</requestid>
+  </revision>
 </revisionlist>

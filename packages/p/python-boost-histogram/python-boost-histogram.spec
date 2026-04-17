@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-boost-histogram
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        The Boost::Histogram Python wrapper
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-hep/boost-histogram
 Source:         https://files.pythonhosted.org/packages/source/b/boost-histogram/boost_histogram-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pybind11-devel >= 2.13.3}
-BuildRequires:  %{python_module scikit-build-core >= 0.10}
+BuildRequires:  %{python_module pybind11-devel >= 3}
+BuildRequires:  %{python_module scikit-build-core >= 0.11}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -35,11 +35,11 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module hypothesis >= 6.0}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy >= 1.21.3}
+BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-benchmark}
-BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       python-numpy
+Requires:       python-numpy >= 1.21.3
 %python_subpackages
 
 %description
@@ -63,6 +63,8 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pytest_arch --benchmark-disable
 
 %files %{python_files}
+%license LICENSE
+%doc README.md
 %{python_sitearch}/boost_histogram/
 %{python_sitearch}/boost_histogram-%{version}.dist-info/
 
