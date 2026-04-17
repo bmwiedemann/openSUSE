@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 13 19:58:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.13.2:
+  * Requires Rust 1.88.0
+  * Allow iterations higher than 255 in --zopfli
+  * update bundled dependencies
+- fixes build with gcc16 (boo#1261736)
+
+-------------------------------------------------------------------
 Thu Oct 30 21:46:36 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.13.1
