@@ -1,7 +1,7 @@
 #
 # spec file for package kcron
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kcron
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Cron job configuration tool
 License:        GPL-2.0-or-later
@@ -44,6 +44,7 @@ BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11.76
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 Requires:       kirigami-addons6 >= 0.11.76
 Obsoletes:      kcron5 < %{version}
 Provides:       kcron5 = %{version}
