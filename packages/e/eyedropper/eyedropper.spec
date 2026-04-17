@@ -20,7 +20,7 @@
 %define lname   com.github.finefindus.eyedropper
 
 Name:           eyedropper
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Pick and format colors
 License:        GPL-3.0-or-later

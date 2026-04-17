@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 10 18:37:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.1:
+  * Fixes an issue with the italian translation
+
+-------------------------------------------------------------------
 Thu Mar 26 19:58:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch to source service, vendor rust dependencies.
