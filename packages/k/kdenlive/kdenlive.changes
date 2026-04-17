@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Too many changes since 26.03.90, only listing bugfixes:
+  * Fix effect zones cannot be moved/resized from timeline ruler (kde#513278)
+  * Fix effect zone on cut clips (kde#509096)
+  * Ensure item does not move when scaling with transform from effect stack (kde#518363)
+  * Fix subtitle cut broken (kde#514341)
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * Disable fullscreen mirror option on Windows and macOS
+  * Fix image sequence losing its length on track switch
+  * Fix tab order in Render dialog (kde#487883)
+  * Improved math for clip in and out calculation for speed change.
+  * Change speed of multiple items when multiple items are selected and then speed is changed by ctrl+drag.
+  * splash: ensure loading progress info is on top
+  * Fix proxying of clip without audio but containing an attached pic stream
+  * Show feedback in welcome screen when opening project
+  * Fix possible crash in curveeditor
+  * Fix crash clicking in fullscreen mirrored monitor
+  * Fix speech editor search not working when searching for multiple words (kde#517762)
+  * Fix STT translation seamless install with more recent python
+  * Fix moving clips in timeline when subtitle track is visible
+  * Fix crash downloading seamless translation model
+  * Ensure saved file always have a correct extension
+  * Fixed multiple issues with undo and redo of sequence creation
+  * Fix appium tests
+  * Improve clip drop in timeline (adjust pos when dropping in limited space), and fix overwrite/insert mode
+  * Fix crash on clip cut when using subtitles
+  * Fix removing last subtitle item not saved
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * Add "Add to Project Bin" option to Render Widget (kde#509908)
+  * Include "Add Clip" actions in context menu for folders in Project Bin (kde#379409)
+  * Improve logic for lumas depending on project profile (kde#503443)
+  * Allow disabling Breeze drag on non KDE platform (kde#480072)
+  * Fix timeline double click (kde#514874)
+  * Hide mouse cursor when placed over monitor and not moving for 2 seconds (kde#434386)
+  * Add xml prolog to fix translations (kde#502297)
+  * When performing Find Clip in Bin, disable all filters if the clip was hidden to ensure the find operation succeeds (kde#509816)
+  * Fix typos in data/effects/copychannelstostereo.xml (kde#463340)
+  * BugFix: Restore custom shortcuts when resetting toolbars (kde#376053)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
