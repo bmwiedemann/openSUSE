@@ -1,7 +1,7 @@
 #
 # spec file for package akonadiconsole
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           akonadiconsole
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Management and debugging console for akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
