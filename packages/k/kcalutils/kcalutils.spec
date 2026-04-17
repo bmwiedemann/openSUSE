@@ -1,7 +1,7 @@
 #
 # spec file for package kcalutils
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           kcalutils
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
@@ -32,7 +33,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -40,9 +40,8 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextTemplate)
+BuildRequires:  cmake(KF6TextTemplate) >= %{ktextaddons_version}
 BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 Conflicts:      libKF6CalendarUtils5 < %{version}
 
 %description
@@ -77,7 +76,7 @@ to develop applications wanting to use kcalutils.
 %autosetup -p1 -n kcalutils-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -99,7 +98,6 @@ to develop applications wanting to use kcalutils.
 %{_kf6_libdir}/libKPim6CalendarUtils.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6CalendarUtils.*
 %{_includedir}/KPim6/KCalUtils/
 %{_kf6_cmakedir}/KPim6CalendarUtils/
 %{_kf6_libdir}/libKPim6CalendarUtils.so
