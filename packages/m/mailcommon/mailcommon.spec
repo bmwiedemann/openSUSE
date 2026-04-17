@@ -1,7 +1,7 @@
 #
 # spec file for package mailcommon
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           mailcommon
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -32,7 +33,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -45,7 +45,7 @@ BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextCustomEditor)
+BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
@@ -65,7 +65,6 @@ BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6TemplateParser) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
@@ -106,7 +105,7 @@ This package contains the development headers for the mailcommon library.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -126,7 +125,6 @@ This package contains the development headers for the mailcommon library.
 %{_libdir}/libKPim6MailCommon.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6MailCommon.*
 %{_includedir}/KPim6/MailCommon/
 %{_kf6_cmakedir}/KPim6MailCommon/
 %{_kf6_libdir}/libKPim6MailCommon.so
