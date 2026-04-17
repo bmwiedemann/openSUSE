@@ -1,7 +1,7 @@
 #
 # spec file for package libkdcraw
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,15 +26,11 @@
 %define library_name libKDcrawQt6
 %define so_suffix -5
 %else
-%define qt5 1
-%define kf5_version 5.91.0
-%define qt5_version 5.15.0
-%define library_name libKF5KDcraw
-%define so_suffix 5
+ExclusiveArch:  do_not_build
 %endif
 %bcond_without released
 Name:           libkdcraw%{?pkg_suffix}
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
@@ -50,12 +46,6 @@ BuildRequires:  pkgconfig(libraw) >= 0.18.0
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
-%else
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
-BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
-BuildRequires:  cmake(Qt5Gui) >= %{qt5_version}
-Provides:       libkdcraw-kf5 = %{version}
-Obsoletes:      libkdcraw-kf5 < %{version}
 %endif
 
 %description
@@ -81,10 +71,6 @@ programs.
 %package devel
 Summary:        Shared library interface around dcraw
 Requires:       %{library_name}%{so_suffix} = %{version}
-%if 0%{?qt5}
-Obsoletes:      libkdcraw-kf5-devel < %{version}
-Provides:       libkdcraw-kf5-devel = %{version}
-%endif
 
 %description devel
 Libkdcraw is a C++ interface around dcraw binary program used to decode
@@ -99,18 +85,13 @@ programs.
 
 %build
 %if 0%{?qt6}
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 %kf6_build
-%else
-%cmake_kf5 -d build
-%cmake_build
 %endif
 
 %install
 %if 0%{?qt6}
 %kf6_install
-%else
-%kf5_makeinstall -C build
 %endif
 
 %ldconfig_scriptlets -n %{library_name}%{so_suffix}
@@ -118,8 +99,6 @@ programs.
 %files
 %if 0%{?qt6}
 %{_kf6_debugdir}/libkdcraw.categories
-%else
-%{_kf5_debugdir}/libkdcraw.categories
 %endif
 
 %files -n %{library_name}%{so_suffix}
@@ -131,9 +110,6 @@ programs.
 %if 0%{?qt6}
 %{_kf6_cmakedir}/KDcrawQt6/
 %{_includedir}/KDcrawQt6/
-%else
-%{_kf5_cmakedir}/KF5KDcraw/
-%{_kf5_includedir}/KDCRAW/
 %endif
 %{_libdir}/%{library_name}.so
 
