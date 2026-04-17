@@ -1,5 +1,0 @@
-<package name="llcbench" project="openSUSE:Factory">
-  <title>Low Level Architectural Characterization Benchmark Suite</title>
-  <description>LLCbench (Low-Level Characterization Benchmarks) was created by combining MPBench, CacheBench, and BLASBench into a single benchmark package.</description>
-  <devel project="benchmark" package="llcbench"/>
-</package>
