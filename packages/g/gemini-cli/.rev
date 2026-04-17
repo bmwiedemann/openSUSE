@@ -509,4 +509,12 @@
   * fix(ui): resolve unwanted vertical spacing around various</comment>
     <requestid>1347165</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f149099303b0cee8094e0040db00defb</srcmd5>
+    <version>0.38.1</version>
+    <time>1776452704</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix-mount-path.patch for sandbox handling</comment>
+    <requestid>1347706</requestid>
+  </revision>
 </revisionlist>

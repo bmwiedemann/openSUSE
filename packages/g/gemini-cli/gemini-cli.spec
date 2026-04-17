@@ -24,6 +24,7 @@ License:        Apache-2.0
 URL:            https://github.com/google-gemini/gemini-cli
 Source0:        https://github.com/google-gemini/gemini-cli/releases/download/v%{version}/gemini-cli-bundle.zip#/%{name}-%{version}-cli-bundle.zip
 Source1:        https://raw.githubusercontent.com/google-gemini/gemini-cli/refs/tags/v%{version}/LICENSE
+Patch:          fix-mount-path.patch
 BuildRequires:  unzip
 BuildArch:      noarch
 Requires:       /usr/bin/node
@@ -48,6 +49,7 @@ most direct path from your prompt to our model.
 
 %prep
 %setup -c
+%autopatch -p1
 cp -p %{SOURCE1} .
 
 %build

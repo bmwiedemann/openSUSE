@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 17 11:46:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add fix-mount-path.patch for sandbox handling
+
+-------------------------------------------------------------------
 Wed Apr 15 20:08:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.38.1:

@@ -1,0 +1,13 @@
+Index: gemini-cli-0.38.1/gemini.js
+===================================================================
+--- gemini-cli-0.38.1.orig/gemini.js
++++ gemini-cli-0.38.1/gemini.js
+@@ -8475,7 +8475,7 @@ async function start_sandbox(config, nod
+     args.push("--volume", `${workdir}:${containerWorkdir}`);
+     const userHomeDirOnHost = homedir();
+     const userSettingsDirInSandbox = getContainerPath(
+-      `/home/node/${GEMINI_DIR}`
++      `/usr/libexec/gemini-cli/${GEMINI_DIR}`
+     );
+     if (!fs4.existsSync(userHomeDirOnHost)) {
+       fs4.mkdirSync(userHomeDirOnHost, { recursive: true });
