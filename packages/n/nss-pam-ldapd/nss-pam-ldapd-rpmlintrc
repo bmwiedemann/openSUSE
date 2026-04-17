@@ -1,5 +1,0 @@
-# Silence rpmlint's warning regarding the shared library policy as
-# splitting of a library package for libnss_ldap.so.2 doesn't make much
-# sense. The NSS Module doesn't do anything useful with out the nslcd
-# daemon
-addFilter("shlib-policy-name-error .*")
