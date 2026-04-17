@@ -160,4 +160,22 @@
     make `extra_context` optionally callable (#931) fixes: #928</comment>
     <requestid>1346089</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b819907f705767742cffc395a46057ba</srcmd5>
+    <version>3.0.0</version>
+    <time>1776455549</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Rename the `querystring` templatetag to `querystring_replace`
+    to avoid shadowing built-in one.
+  * If you use custom templates to render tables with django-
+    tables2, you should replace
+    `{% querystring %}` with `{% querystring_replace %}`
+    `RelatedLinkColumn` is removed. Replace `RelatedLinkColumn`
+    with `Column(linkify=True)`.
+  * Restore signature of `TemplateColumn.render()` (#1033) by
+  * Remove declared support for Django 4.2 and 5.1, upgrade pre-
+    commit dependencies</comment>
+    <requestid>1347771</requestid>
+  </revision>
 </revisionlist>

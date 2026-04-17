@@ -1,7 +1,7 @@
-Index: python-django-tables2/tests/test_export.py
+Index: django-tables2-3.0.0/tests/test_export.py
 ===================================================================
---- python-django-tables2.orig/tests/test_export.py
-+++ python-django-tables2/tests/test_export.py
+--- django-tables2-3.0.0.orig/tests/test_export.py
++++ django-tables2-3.0.0/tests/test_export.py
 @@ -24,6 +24,10 @@ try:
  except ImproperlyConfigured:
      TableExport = None
@@ -29,7 +29,7 @@ Index: python-django-tables2/tests/test_export.py
      def test_datetime_xls(self):
          """Verify datatime objects can be exported to xls."""
          utc = pytz.timezone("UTC")
-@@ -371,8 +377,9 @@ class UnicodeExportViewTest(TestCase):
+@@ -377,8 +383,9 @@ class UnicodeExportViewTest(TestCase):
          self.assertEqual(response.getvalue().decode("utf8"), expected_csv)
  
          # smoke tests, hard to test this binary format for string containment
@@ -41,7 +41,7 @@ Index: python-django-tables2/tests/test_export.py
  
          response = OccupationView.as_view()(build_request("/?_export=xlsx"))
          self.assertGreater(len(response.content), len(expected_csv))
-@@ -387,6 +394,7 @@ class UnicodeExportViewTest(TestCase):
+@@ -393,6 +400,7 @@ class UnicodeExportViewTest(TestCase):
          response = exporter.response()
          self.assertEqual(response.getvalue().decode("utf8"), unicode_header + "\r\n")
  

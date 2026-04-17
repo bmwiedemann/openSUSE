@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-tables2
-Version:        2.9.0
+Version:        3.0.0
 Release:        0
 Summary:        Table/data-grid framework for Django
 License:        BSD-2-Clause
@@ -37,7 +37,7 @@ BuildArch:      noarch
 # SECTION test requirements, see requirements/common.pip
 BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module django-filter >= 25.1}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module openpyxl}
