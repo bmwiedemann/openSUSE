@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:20 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Fix build with Qt 6.11 on Android
+  * Use release branch dependencies for Craft builds in the release branch
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * Fix QML warning about bindings on non-notifyable properties
+  * Fix leaked MapCSS eval expression terms in certain error cases
+  * Don't build OSM PBF reader on Android
+  * Don't attempt to render to an empty viewport
+  * Add reverse geocoding API using the raw data tiles
+  * Support displaying car rental stations
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
