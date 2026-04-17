@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * snapcraft: Slim down file, add missing dep, prepare for beta.
+
+-------------------------------------------------------------------
+Mon Mar 30 12:09:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * desktop: Fix tabs bar and clean up the styling
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * Try harder to hide toolbar in webapp mode
+  * webapp: Remove questionLoader property
+  * Added CSS for reader mode
+  * Implemented a dialog box that asks for the title of the web app before creating the webapp
+  * Fix downloads
+  * Update adblock crate
+  * Switch default search engine to DuckDuckGo's noai variant
+  * Revise bookmarks and history queries and show mix on naventrysheet
+  * Fix update of the last visit
+  * Fix loading icons for desktop
+  * Fix build with corrosion 0.6
+  * Fix showing permission questions
+  * Move NewTabQuestion to lib
+  * Show new tab notification for shorter time
+  * Fix search via menu
+  * Guard pageWebView while it is loading
+  * Check for developer tool state only when item is available
+  * Adjust SQL statement to the stored data
+  * Update adblock crate to 0.11
+  * Remove favicon handling from SQL queries
+  * Use QtWebengine favicon provider instead of the internal one
+  * Use qEnvironmentVariable
+  * Take into account env QTWEBENGINE_CHROMIUM_FLAGS
+  * Updates navigation entry sheet only after currentWebView is ready
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
