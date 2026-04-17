@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Refresh shortcut: Ignore repeat events (kde#514209)
+  * DolphinTabPage: Prevent re-entrant signal activation for slotViewActivated (kde#508554, kde#512011,, kde#508405,, kde#511076,, kde#503576)
+
+-------------------------------------------------------------------
+Mon Mar 30 12:09:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * panels/information: prevent memleak when closing mediawidget
+  * dolphincontextmenu: Set item list properties before adding actions
+  * CMakeLists.txt: bump KF6_MIN_VERSION to 6.23
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * Fix incorrect app id for Kfind (kde#510370)
+  * informationpanel: ignore gestures on media slider (kde#431307)
+  * information/pixmapviewer: handle hdipi for animated images (kde#510829)
+  * kitemlistview: when editing file name set anchored selection (kde#453262)
+  * KItemListController: Check for highlightEntireRow on rightClick (kde#508356)
+  * Revert "!1026" (kde#516341)
+  * Add keyboard shortcut support for service menu actions (kde#260266)
+  * Dynamic view should weight folders. (kde#508304)
+  * KItemListController: Use entire row for drag and drop if highlightEntireRow is true (kde#515439)
+  * panel/terminal: Add ability to disable konsole url sync (kde#306381)
+  * Add keyboard anchor assignments to mouse events (kde#508609)
+  * dolphinfontrequester: Do not apply custom view font to font mode combobox (kde#499783)
+  * viewproperties: remove temp file after loading defaultConfig (kde#510500)
+  * dolphinmainwindow: Reload context menu plugins when configuration changes (kde#508722)
+  * Dolphin: Inform user when italic filename style is not supported by the font (kde#499784)
+  * viewmodes: ensure font dialog retains last custom selection (kde#499786)
+  * dolphinview: fix missing selection on next item after Delete key removal (kde#513371)
+  * dolphinview: do not get view properties if we do not apply dynamic view (kde#508402)
+  * DolphinView: observeCreatedDirectory take into account last / of m_url (kde#513345)
+  * dolphintabbpage: Allow migration for users with the old session file format (kde#513466)
+  * kfileitemmodel: Fix folder/file icon rating display (kde#512940)
+  * folderstabssettingspage: add 3 options for closing split view (kde#464696)
+  * kitemviews: Prevent crash when dragging details side padding header (kde#511057)
+  * dolphinnavigatorswidgetaction: show focus indicator in split mode (kde#150718)
+  * context menu: use selected item as containing folder for New file menu (kde#508196)
+  * kstandarditemlistwidget: Fix vertical misalignment for file names containing certain glyphs (kde#512152)
+  * main: set active view in split mode when not restoring session (kde#503576)
+  * Revert "Avoid implicitly selecting items" (kde#494125)
+  * dolphin: improve keyboard search behavior for repeated characters (kde#501851)
+  * informationpanel: ensure selection info is shown when using keyboard navigation (kde#474507)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3

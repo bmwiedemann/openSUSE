@@ -10,11 +10,11 @@ desktop. So this patch is absolutely pointless for us.
  src/main.cpp | 15 ---------------
  1 file changed, 15 deletions(-)
 
-diff --git a/src/main.cpp b/src/main.cpp
-index 0d2f825..c128c53 100644
---- a/src/main.cpp
-+++ b/src/main.cpp
-@@ -51,21 +51,6 @@ constexpr auto dolphinTranslationDomain{"dolphin"};
+Index: dolphin-25.03.70git.20260124T015104~32f41bd69/src/main.cpp
+===================================================================
+--- dolphin-25.03.70git.20260124T015104~32f41bd69.orig/src/main.cpp	2026-01-24 02:51:04.000000000 +0100
++++ dolphin-25.03.70git.20260124T015104~32f41bd69/src/main.cpp	2026-01-24 08:12:49.102760471 +0100
+@@ -51,21 +51,6 @@
  
  int main(int argc, char **argv)
  {
@@ -27,7 +27,7 @@ index 0d2f825..c128c53 100644
 -                    "@info:shell %1 is a terminal command",
 -                    "Running <application>Dolphin</application> with <command>sudo</command> is discouraged. Please run <icode>%1</icode> instead.",
 -                    QStringLiteral("dolphin --sudo")))
--                  << std::endl;
+-                  << '\n';
 -        // We could perform a privilege de-escalation here and continue as normal. It is a bit safer though to simply let the user restart without sudo.
 -        return EXIT_FAILURE;
 -    }
@@ -36,6 +36,3 @@ index 0d2f825..c128c53 100644
      /**
       * trigger initialisation of proper icon theme
       */
--- 
-2.49.0
-

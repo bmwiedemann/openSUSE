@@ -1,8 +1,8 @@
-diff --git a/src/dolphinui.rc b/src/dolphinui.rc
-index 7c2cb2bfc..01decac3c 100644
---- a/src/dolphinui.rc
-+++ b/src/dolphinui.rc
-@@ -88,6 +88,7 @@
+Index: dolphin-25.03.70git.20260124T015104~32f41bd69/src/dolphinui.rc
+===================================================================
+--- dolphin-25.03.70git.20260124T015104~32f41bd69.orig/src/dolphinui.rc	2026-01-24 02:51:04.000000000 +0100
++++ dolphin-25.03.70git.20260124T015104~32f41bd69/src/dolphinui.rc	2026-01-24 08:10:22.418071207 +0100
+@@ -90,6 +90,7 @@
              <Action name="invert_selection" />
              <Separator/>
              <Action name="go_back" />
