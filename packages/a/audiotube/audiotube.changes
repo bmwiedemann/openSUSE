@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:19 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- No code change since 26.03.90
+
+-------------------------------------------------------------------
+Mon Mar 30 12:09:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * Remove duplicate exception handling in ytmusic.cpp
+  * Fix reference error in HeroHomeShelf.qml
+  * Remove unnecessary std::shared_ptr hackery
+  * Use same loading indicator as on other pages
+  * Unify corner radius with rest of the application
+  * Add loading placeholders
+  * Unify spacings
+  * feat: Save in app state last opened page
+  * fix: Sort thumbnail by size to display the non blurry one
+  * refactor: Remove duplication explore and home model
+  * mood: Add page displaying all the mood
+  * Add home and explore page
+  * home: Add support for fetching information for home page
+  * search: Add support for searching for moods
+  * Fix adding songs to playlists
+  * Fix spacing for toolbar
+  * Handle empty repeater
+  * Use ConvergentContextMenu instead of own implementation
+  * Reword translatable strings
+  * Add translation context to strings with variables
+  * Update tested ytmusicapi version to 1.11.4
+  * Remove empty KDE::supporters tag
+  * Add snap to ci and prepare beta release
+  * add duktape-dev to fix snap builds
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:20 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
