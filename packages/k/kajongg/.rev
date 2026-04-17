@@ -1324,4 +1324,12 @@
     <comment>KDE release gear 25.12.3</comment>
     <requestid>1336933</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>5131532633ddf3a76d63bec78fa586d9</srcmd5>
+    <version>26.04.0</version>
+    <time>1776455363</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 26.04 (forwarded request 1346091 from krop)</comment>
+    <requestid>1347381</requestid>
+  </revision>
 </revisionlist>
