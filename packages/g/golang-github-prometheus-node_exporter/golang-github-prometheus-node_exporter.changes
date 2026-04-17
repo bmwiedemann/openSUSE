@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr  9 11:46:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.11.1:
+  * [BUGFIX] Fix kernel_hung for no data #3613
+- update to 1.11.0:
+  * [CHANGE] Adds distroless container image. #3592
+  * [FEATURE] infiniband: Add hw_counters metrics #2827
+  * [FEATURE] kernel_hung: Add collector for kernel hung tasks
+    #3470
+  * [FEATURE] mixin: Add "All" option to cluster variable in
+    dashboards #3509
+  * [FEATURE] netlink: Add node_network_altnames_info metric #3541
+  * [FEATURE] thermal: Add support for CPU temperature metrics on
+    Apple Silicon #3547
+  * [FEATURE] bcachefs: Add new collector for bcachefs #3523
+  * [ENHANCEMENT] mixin: Make devices in network graphs
+    configurable #3525
+  * [ENHANCEMENT] nvme: Add namespace parameters #3360
+  * [BUGFIX] netdev: Respect deviceFilter for
+    node_network_address_info metric #3340
+  * [BUGFIX] mountstats: Fix multiple transports statistics
+    labeling #3358
+  * [BUGFIX] diskstats: Fix panic when using device-include flag
+    only #3603
+
+-------------------------------------------------------------------
 Wed Feb  4 09:24:57 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Replace cpio with tar
@@ -466,15 +492,15 @@ Thu Feb 25 12:50:00 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
     + Add zoneinfo collector #1922
   * Enhancements
     + Add more InfiniBand counters #1694
-    + Add flag to aggr ipvs metrics to avoid high cardinality metrics #1709    
-    + Adding backlog/current queue length to qdisc collector #1732    
-    + Include TCP OutRsts in netstat metrics #1733    
-    + Add pool size to entropy collector #1753    
-    + Remove CGO dependencies for OpenBSD amd64 #1774    
-    + bcache: add writeback_rate_debug stats #1658    
-    + Add check state for mdadm arrays via node_md_state metric #1810    
-    + Expose XFS inode statistics #1870    
-    + Expose zfs zpool state #1878    
+    + Add flag to aggr ipvs metrics to avoid high cardinality metrics #1709
+    + Adding backlog/current queue length to qdisc collector #1732
+    + Include TCP OutRsts in netstat metrics #1733
+    + Add pool size to entropy collector #1753
+    + Remove CGO dependencies for OpenBSD amd64 #1774
+    + bcache: add writeback_rate_debug stats #1658
+    + Add check state for mdadm arrays via node_md_state metric #1810
+    + Expose XFS inode statistics #1870
+    + Expose zfs zpool state #1878
     + Added an ability to pass collector.supervisord.url via SUPERVISORD_URL environment variable #1947
   * Bug fixes
     + filesystem_freebsd: Fix label values #1728
@@ -501,7 +527,7 @@ Fri Aug 21 11:53:46 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
   * Changes to build specification
     + Modify spec: update golang version to 1.14
     + Remove update tarball script
-    + Add _service file to allow for updates via `osc service disabledrun`  
+    + Add _service file to allow for updates via `osc service disabledrun`
   * Bug fixes
     + [BUGFIX] filesystem_freebsd: Fix label values #1728
     + [BUGFIX] Update prometheus/procfs to fix log noise #1735
@@ -526,30 +552,30 @@ Fri Aug 21 11:53:46 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
     + [BUGFIX] Fix accidentally empty lines in meminfo_linux #1671
   * Several enhancements
     + See https://github.com/prometheus/node_exporter/releases/tag/v1.0.0
- 
+
 -------------------------------------------------------------------
 Thu Feb 20 20:25:26 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.0.0-rc.0
 
 Breaking changes
-  * The netdev collector CLI argument --collector.netdev.ignored-devices 
-    was renamed to --collector.netdev.device-blacklist in order to conform 
+  * The netdev collector CLI argument --collector.netdev.ignored-devices
+    was renamed to --collector.netdev.device-blacklist in order to conform
     with the systemd collector. #1279
-  * The label named state on node_systemd_service_restart_total metrics was 
+  * The label named state on node_systemd_service_restart_total metrics was
     changed to name to better describe the metric. #1393
   * Refactoring of the mdadm collector changes several metrics
         node_md_disks_active is removed
         node_md_disks now has a state label for "fail", "spare", "active" disks.
-        node_md_is_active is replaced by node_md_state with a state set of 
+        node_md_is_active is replaced by node_md_state with a state set of
         "active", "inactive", "recovering", "resync".
-  * Additional label mountaddr added to NFS device metrics to distinguish 
+  * Additional label mountaddr added to NFS device metrics to distinguish
     mounts from the same URL, but different IP addresses. #1417
-  * Metrics node_cpu_scaling_frequency_min_hrts and 
-    node_cpu_scaling_frequency_max_hrts of the cpufreq collector were 
-    renamed to node_cpu_scaling_frequency_min_hertz and 
+  * Metrics node_cpu_scaling_frequency_min_hrts and
+    node_cpu_scaling_frequency_max_hrts of the cpufreq collector were
+    renamed to node_cpu_scaling_frequency_min_hertz and
     node_cpu_scaling_frequency_max_hertz. #1510
-  * Collectors that are enabled, but are unable to find data to collect, 
+  * Collectors that are enabled, but are unable to find data to collect,
     now return 0 for node_scrape_collector_success.
 
 -------------------------------------------------------------------
