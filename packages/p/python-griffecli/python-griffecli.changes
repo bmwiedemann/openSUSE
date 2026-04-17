@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Apr 13 23:29:12 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Restore build for Python 3.14.
+
+-------------------------------------------------------------------
+Wed Apr  1 18:10:28 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial packaging effort for griffecli 2.0.2.
+- Add static-version.patch to skip using dynamic versions of the
+  package.
