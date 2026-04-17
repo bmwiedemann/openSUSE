@@ -1,7 +1,7 @@
 #
 # spec file for package marble
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           marble
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
