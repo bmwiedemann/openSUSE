@@ -1,0 +1,58 @@
+From 05542a0d5abe6643b92c8059fc20f2cf0b768eb0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 15 Apr 2026 11:39:32 +0200
+Subject: [PATCH] Fix for PB DescriptorDataBase API breaks
+
+---
+ pybind11_protobuf/proto_cast_util.cc | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/pybind11_protobuf/proto_cast_util.cc b/pybind11_protobuf/proto_cast_util.cc
+index 5ca857b..4e3fdcc 100644
+--- a/pybind11_protobuf/proto_cast_util.cc
++++ b/pybind11_protobuf/proto_cast_util.cc
+@@ -347,6 +347,14 @@ class PythonDescriptorPoolWrapper {
+   // Similar to DescriptorPoolDatabase: wraps a Python DescriptorPool
+   // as a DescriptorDatabase.
+   class DescriptorPoolDatabase : public DescriptorDatabase {
++   protected:
++   #if PROTOBUF_VERSION >= 6034000
++   using PbStringViewArg = absl::string_view;
++   #elif PROTOBUF_VERSION >= 6031000
++   using PbStringViewArg = StringViewArg;
++   #else
++   using PbStringViewArg = const std::string&;
++   #endif
+    public:
+     DescriptorPoolDatabase(py::object python_pool)
+         : pool_(std::move(python_pool)) {}
+@@ -355,7 +363,7 @@ class PythonDescriptorPoolWrapper {
+     // the Python DescriptorPool.
+ 
+     // Find a file by file name.
+-    bool FindFileByName(const std::string& filename,
++    bool FindFileByName(PbStringViewArg filename,
+                         FileDescriptorProto* output) override {
+       try {
+         auto file = pool_.attr("FindFileByName")(filename);
+@@ -371,7 +379,7 @@ class PythonDescriptorPoolWrapper {
+     }
+ 
+     // Find the file that declares the given fully-qualified symbol name.
+-    bool FindFileContainingSymbol(const std::string& symbol_name,
++    bool FindFileContainingSymbol(PbStringViewArg symbol_name,
+                                   FileDescriptorProto* output) override {
+       try {
+         auto file = pool_.attr("FindFileContainingSymbol")(symbol_name);
+@@ -389,7 +397,7 @@ class PythonDescriptorPoolWrapper {
+ 
+     // Find the file which defines an extension extending the given message type
+     // with the given field number.
+-    bool FindFileContainingExtension(const std::string& containing_type,
++    bool FindFileContainingExtension(PbStringViewArg containing_type,
+                                      int field_number,
+                                      FileDescriptorProto* output) override {
+       try {
+-- 
+2.53.0
+

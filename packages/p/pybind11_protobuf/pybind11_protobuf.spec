@@ -1,7 +1,7 @@
 #
 # spec file for package pybind11_protobuf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,30 @@
 
 %global _lto_cflags %{nil}
 Name:           pybind11_protobuf
-Version:        0~git20241101.90b1a5b
+Version:        0~git20250210.f02a2b7
 Release:        0
 Summary:        Pybind11 bindings for Protocol Buffers
 License:        BSD-3-Clause
 URL:            https://github.com/pybind/pybind11_protobuf
 Source:         pybind11_protobuf-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
-Patch5:         0006-Add-install-target-for-CMake-builds.patch
+Patch1:         0006-Add-install-target-for-CMake-builds.patch
 # PATCH-FIX-OPENSUSE
-Patch6:         0007-CMake-Use-Python-Module.patch
+Patch2:         0001-Fix-for-PB-DescriptorDataBase-API-breaks.patch
+# PATCH-FIX-OPENSUSE
+Patch3:         0001-Fix-CMake-variable-scope.patch
 BuildRequires:  cmake >= 3.24
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  protobuf-devel >= 26.0
+BuildRequires:  pybind11-abseil-devel
+BuildRequires:  (protobuf-devel >= 29.2 with protobuf-devel < 35)
 %if 0%{?sle_version} >= 150500
-BuildRequires:  python311-pybind11-devel >= 2.11.1
+BuildRequires:  python311-pybind11-devel >= 2.13.6
 %else
-BuildRequires:  python3-pybind11-devel >= 2.11.1
+BuildRequires:  python3-pybind11-devel >= 2.13.6
 %endif
 BuildRequires:  cmake(absl) >= 20230125
+BuildRequires:  cmake(zlib)
 # TESTS
 %if 0%{?sle_version} >= 150500
 BuildRequires:  python311-abseil
@@ -60,13 +64,14 @@ Headers and other development files for %name
 
 %prep
 %autosetup -p1
-sed -i -e '/protobuf_package_args/ s/4.23.3/5.26.0/g' CMakeLists.txt
+sed -i -e '/protobuf/ s/5.29.2/ /g' cmake/dependencies.cmake
 
 %build
 %cmake \
   -DUSE_SYSTEM_ABSEIL:BOOL=ON \
   -DUSE_SYSTEM_PROTOBUF:BOOL=ON \
   -DUSE_SYSTEM_PYBIND:BOOL=ON \
+  -DPYBIND11_PROTOBUF_BUILD_TESTING:BOOL=OFF \
   %{nil}
 %cmake_build
 

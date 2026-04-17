@@ -1,22 +1,24 @@
-From 23dbb17ee57e79d60ad46f46988f45eb798a338c Mon Sep 17 00:00:00 2001
+From 6e643f8417dca60bc005f5166aca6c50b60a614f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Thu, 16 May 2024 01:04:58 +0200
-Subject: [PATCH 6/7] Add install target for CMake builds
+Subject: [PATCH] Add install target for CMake builds
 
 ---
- CMakeLists.txt        | 53 +++++++++++++++++++++++++++++++++++++++++++
- cmake/Config.cmake.in | 11 +++++++++
- 2 files changed, 64 insertions(+)
+ CMakeLists.txt                   | 13 +++++++++++
+ cmake/Config.cmake.in            | 13 +++++++++++
+ pybind11_protobuf/CMakeLists.txt | 38 ++++++++++++++++++++++++++++++++
+ 3 files changed, 64 insertions(+)
  create mode 100644 cmake/Config.cmake.in
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 4514f34..100bbf8 100644
+index 4ec0f64..2b6e477 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -81,6 +81,19 @@ list(APPEND CMAKE_MESSAGE_INDENT "  ")
- FetchContent_MakeAvailable(absl Protobuf pybind11)
- list(POP_BACK CMAKE_MESSAGE_INDENT)
- 
+@@ -39,3 +39,16 @@ add_subdirectory(cmake/dependencies dependencies)
+ set(TOP_LEVEL_DIR ${CMAKE_CURRENT_LIST_DIR})
+ include_directories(${TOP_LEVEL_DIR} ${pybind11_INCLUDE_DIRS})
+ add_subdirectory(pybind11_protobuf)
++
 +# ============================================================================
 +# pybind11_protobuf CMake Config module
 +include(CMakePackageConfigHelpers)
@@ -29,67 +31,9 @@ index 4514f34..100bbf8 100644
 +  "${CMAKE_CURRENT_BINARY_DIR}/pybind11_protobuf-config.cmake"
 +  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
 +)
-+
- # ============================================================================
- # pybind11_proto_utils pybind11 extension module
- pybind11_add_module(
-@@ -114,6 +127,28 @@ target_sources(
-   pybind11_protobuf/proto_cast_util.h
-   pybind11_protobuf/proto_caster_impl.h)
- 
-+add_library(pybind11_protobuf::native ALIAS pybind11_native_proto_caster)
-+
-+install(TARGETS pybind11_native_proto_caster
-+  EXPORT pybind11_protobuf_native_targets
-+  DESTINATION ${CMAKE_INSTALL_LIBDIR}
-+  INCLUDES
-+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
-+)
-+install(FILES
-+  pybind11_protobuf/native_proto_caster.h
-+  pybind11_protobuf/check_unknown_fields.h
-+  pybind11_protobuf/enum_type_caster.h
-+  pybind11_protobuf/proto_caster_impl.h
-+  pybind11_protobuf/proto_cast_util.h
-+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
-+)
-+install(EXPORT pybind11_protobuf_native_targets
-+  FILE pybind11_protobuf_native-targets.cmake
-+  NAMESPACE pybind11_protobuf::
-+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
-+)
-+
- target_link_libraries(
-   pybind11_native_proto_caster
-   absl::flat_hash_map
-@@ -152,6 +187,24 @@ target_sources(
-   pybind11_protobuf/proto_cast_util.h
-   pybind11_protobuf/proto_caster_impl.h)
- 
-+add_library(pybind11_protobuf::wrapped ALIAS pybind11_wrapped_proto_caster)
-+
-+install(TARGETS pybind11_wrapped_proto_caster
-+  EXPORT pybind11_protobuf_wrapped_targets
-+  DESTINATION ${CMAKE_INSTALL_LIBDIR}
-+  INCLUDES
-+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
-+)
-+install(FILES
-+  pybind11_protobuf/wrapped_proto_caster.h
-+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
-+)
-+install(EXPORT pybind11_protobuf_wrapped_targets
-+  FILE pybind11_protobuf_wrapped-targets.cmake
-+  NAMESPACE pybind11_protobuf::
-+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
-+)
-+
- target_link_libraries(
-   pybind11_wrapped_proto_caster
-   absl::flat_hash_map
 diff --git a/cmake/Config.cmake.in b/cmake/Config.cmake.in
 new file mode 100644
-index 0000000..c59048c
+index 0000000..04b4bc8
 --- /dev/null
 +++ b/cmake/Config.cmake.in
 @@ -0,0 +1,13 @@
@@ -106,6 +50,68 @@ index 0000000..c59048c
 +foreach(_comp ${_pybind11_protobuf_supported_components})
 +  include("${CMAKE_CURRENT_LIST_DIR}/pybind11_protobuf_${_comp}-targets.cmake")
 +endforeach()
+diff --git a/pybind11_protobuf/CMakeLists.txt b/pybind11_protobuf/CMakeLists.txt
+index 7a9cdc1..dd8aefb 100644
+--- a/pybind11_protobuf/CMakeLists.txt
++++ b/pybind11_protobuf/CMakeLists.txt
+@@ -26,9 +26,30 @@ add_library(
+   proto_cast_util.cc
+   proto_cast_util.h
+   proto_caster_impl.h)
++
+ add_library(pybind11_protobuf::pybind11_native_proto_caster ALIAS
+             pybind11_native_proto_caster)
+ 
++install(TARGETS pybind11_native_proto_caster
++  EXPORT pybind11_protobuf_native_targets
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  INCLUDES
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
++)
++install(FILES
++  native_proto_caster.h
++  check_unknown_fields.h
++  enum_type_caster.h
++  proto_caster_impl.h
++  proto_cast_util.h
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
++)
++install(EXPORT pybind11_protobuf_native_targets
++  FILE pybind11_protobuf_native-targets.cmake
++  NAMESPACE pybind11_protobuf::
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
++)
++
+ target_link_libraries(
+   pybind11_native_proto_caster
+   PUBLIC absl::flat_hash_map
+@@ -50,9 +71,26 @@ add_library(
+   wrapped_proto_caster.h
+   # bazel: pybind_library: proto_cast_util
+   proto_cast_util.cc proto_cast_util.h proto_caster_impl.h)
++
+ add_library(pybind11_protobuf::pybind11_wrapped_proto_caster ALIAS
+             pybind11_wrapped_proto_caster)
+ 
++install(TARGETS pybind11_wrapped_proto_caster
++  EXPORT pybind11_protobuf_wrapped_targets
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  INCLUDES
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
++)
++install(FILES
++  wrapped_proto_caster.h
++  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pybind11_protobuf
++)
++install(EXPORT pybind11_protobuf_wrapped_targets
++  FILE pybind11_protobuf_wrapped-targets.cmake
++  NAMESPACE pybind11_protobuf::
++  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pybind11_protobuf
++)
++
+ target_link_libraries(
+   pybind11_wrapped_proto_caster
+   PUBLIC absl::flat_hash_map
 -- 
-2.45.0
+2.53.0
 

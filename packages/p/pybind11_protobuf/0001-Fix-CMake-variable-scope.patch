@@ -1,0 +1,33 @@
+From c6be7a30e98fb281afcaf2fdb82bcc89458c394e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 15 Apr 2026 11:49:03 +0200
+Subject: [PATCH] Fix CMake variable scope
+
+find_package(...) in subdirectory scope will not make the targets
+available at the calling scope, but include will.
+---
+ CMakeLists.txt                                            | 2 +-
+ cmake/{dependencies/CMakeLists.txt => dependencies.cmake} | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename cmake/{dependencies/CMakeLists.txt => dependencies.cmake} (100%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2b6e477..bb6622c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,7 +34,7 @@ find_package(Python3 REQUIRED COMPONENTS Interpreter Development.Module)
+ 
+ # ============================================================================
+ # Build dependencies
+-add_subdirectory(cmake/dependencies dependencies)
++include(cmake/dependencies.cmake)
+ 
+ set(TOP_LEVEL_DIR ${CMAKE_CURRENT_LIST_DIR})
+ include_directories(${TOP_LEVEL_DIR} ${pybind11_INCLUDE_DIRS})
+diff --git a/cmake/dependencies/CMakeLists.txt b/cmake/dependencies.cmake
+similarity index 100%
+rename from cmake/dependencies/CMakeLists.txt
+rename to cmake/dependencies.cmake
+-- 
+2.53.0
+

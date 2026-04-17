@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 14 23:37:28 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update git snapshot to 0~git20250210.f02a2b7
+- Rebase 0006-Add-install-target-for-CMake-builds.patch
+- Drop obsolete 0007-CMake-Use-Python-Module.patch
+- Add patches:
+  * 0001-Fix-CMake-variable-scope.patch
+  * 0001-Fix-for-PB-DescriptorDataBase-API-breaks.patch
+
+-------------------------------------------------------------------
 Mon Nov 18 03:08:55 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update git snapshot to 0~git20241101.90b1a5b
