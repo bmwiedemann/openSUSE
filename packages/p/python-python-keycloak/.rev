@@ -68,4 +68,12 @@
     <comment>- Correct BuildRequires WRT poetry-core vs poetry.</comment>
     <requestid>1328164</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dfc0ea03dc3722abba88377ed1f3a54d</srcmd5>
+    <version>7.1.1</version>
+    <time>1776452717</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1347734</requestid>
+  </revision>
 </revisionlist>

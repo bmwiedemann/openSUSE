@@ -18,28 +18,33 @@
 
 %global modname python-keycloak
 Name:           python-%{modname}
-Version:        3.7.0
+Version:        7.1.1
 Release:        0
 Summary:        Python package providing access to the Keycloak API
 License:        MIT
 URL:            https://github.com/marcospereirampj/python-keycloak
 Source:         https://github.com/marcospereirampj/python-keycloak/archive/refs/tags/v%{version}.tar.gz#/python-keycloak-%{version}.tar.gz
 Patch0:         fix-version.patch
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module deprecation}
-BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module httmock}
+BuildRequires:  %{python_module aiofiles >= 24.1.0}
+BuildRequires:  %{python_module cryptography >= 42.0.0}
+BuildRequires:  %{python_module deprecation >= 2.1.0}
+BuildRequires:  %{python_module freezegun >= 1.2.2}
+BuildRequires:  %{python_module httpx >= 0.23.2}
+BuildRequires:  %{python_module jwcrypto >= 1.5.4}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-jose}
-BuildRequires:  %{python_module requests-toolbelt}
+BuildRequires:  %{python_module poetry-core >= 1.0.0}
+BuildRequires:  %{python_module pytest >= 7.1.2}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module requests >= 2.20.0}
+BuildRequires:  %{python_module requests-toolbelt >= 0.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-deprecation
-Requires:       python-python-jose >= 1.4.0
+Requires:       python-aiofiles >= 24.1.0
+Requires:       python-deprecation >= 2.1.0
+Requires:       python-httpx >= 0.23.2
+Requires:       python-jwcrypto >= 1.5.4
 Requires:       python-requests >= 2.20.0
-Requires:       python-requests-toolbelt
+Requires:       python-requests-toolbelt >= 0.6.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,8 +66,9 @@ Python package providing access to the Keycloak API
 # the code is absolutely dependant on these variables being in the environment
 . tox.env
 export KEYCLOAK_HOST=localhost
+export KEYCLOAK_DOCKER_IMAGE_TAG=latest
 export KEYCLOAK_ADMIN KEYCLOAK_ADMIN_PASSWORD KEYCLOAK_PORT
-%pytest --ignore tests/test_keycloak_admin.py --ignore tests/test_keycloak_openid.py --ignore tests/test_keycloak_uma.py
+%pytest --ignore tests/test_keycloak_admin.py --ignore tests/test_keycloak_openid.py --ignore tests/test_keycloak_uma.py --ignore tests/test_pkce_flow.py
 
 %files %{python_files}
 %license LICENSE

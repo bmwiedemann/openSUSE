@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Apr 10 13:07:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.1:
+  * **uma**: set requested resource ids correctly in permission
+    ticket creation (#702)
+  * decode token with all keys, added get client certificate info
+    method (#704)
+  * do not throw when processing signed userinfo response (#699)
+  * Fix/python version and ci (#691)
+  * python version
+  * this change introduces a very strong typing across the library.
+  * updated lockfile
+  * pass along the default connection manager configuration into uma
+  * dont override transport for httpx
+  * pass query params in get groups
+  * removed async property as a dependency
+  * strong and consistent typing across the library
+  * changes the behavior of get_group_by_path to raise an exception
+    in case the path is not found, which is now the definitive new
+    behavior
+  * Add PKCE support (RFC 7636) (#670)
+  * implement authz import request (#685)
+  * add get_role_composites_by_id method (#680)
+  * add pool_maxsize parameter to connection managers (#651)
+  * prevent all httpx deprecation warnings (#666)
+  * implement endpoints returning the number of members in an
+    organization (#665)
+  * add `get_composite_client_roles_of_role` (#660)
+  * fix tests (#661)
+  * add pagination support to get realm roles (#659)
+  * fix/latest version (#654)
+  * implement client for revoking consents/offline access, with async
+    and improved testing (#644)
+  * adds support for keycloak organizations (#642)
+  * add py.typed marker file (pep-561) (#637)
+  * more authentication flows and executions methods
+  * Add functions to get/update realm users profile (#634)
+  * small bugs, use ruff as linter, added annotations
+  * retry upon 401
+  * get_client_all_sessions now supports pagination
+  * uma extra payload
+  * user profile metadata parameter for get_user method
+  * uma extra payload
+  * check uma permissions with resource ID as well
+  * get group by path should not raise on 404
+  * change to mounts (#622)
+  * Feature parity for `a_decode_token` and `decode_token` (#616)
+  * make sure to not call sync IO functions inside async functions
+  * add client scope client-specific role mappings (#605)
+  * Add optional Nonce parameter to the authorization URL requests
+  * add scopes to device auth (#599)
+  * changed sync get user id to async get user in create user async
+    function (#600)
+  * Add the max_retries parameter (#598)
+  * Set client_credentials as grant_type also when x509 certificate
+    is given (#597)
+  * add ability to remove composite client roles (#596)
+  * add matchingUri support for listing resources with wildcards
+  * allow the use of client certificates in all requests (#584)
+  * use a_public_key() in a_decode_token() instead of public_key()
+  * correctly pass query params in a_send_update_account and
+    a_send_verify_email (#581)
+  * passing timeout values to ConnectionManager (#578)
+  * functions for updating resource permissions and getting
+    associated policies for a permission (#574)
+  * Async feature (#566)
+  * changes signatures significantly
+  * Many attributes removed from the admin class
+  * Merge pull request #556 from marcospereirampj/release/4.0.0
+  * re-enable full group hierarchy fetching
+  * removed dead code, stabilized tests
+  * removed deprecated functionality
+  * allows retrieval of realm and client level roles for a user
+  * lowercase default role name (#547)
+  * add admin group count (#540)
+  * fix keycloak_admin.create_user documentation/ typehint (#545)
+  * improve KeycloakAdmin.get_client_id() performances (#511)
+  * Allow query parameters for group children (#534)
+  * incorporate custom headers into default header setup (#533)
+  * get_groups pagination call was not used #537 (#541)
+  * use jwcrypto and remove python-jose
+  * replace python-jose with jwcrypto
+
+-------------------------------------------------------------------
 Tue Jan 20 03:38:44 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Correct BuildRequires WRT poetry-core vs poetry.
@@ -6,7 +90,7 @@ Tue Jan 20 03:38:44 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Fri Jan 10 05:03:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Correct %doc and %license locations. 
+- Correct %doc and %license locations.
 
 -------------------------------------------------------------------
 Wed Feb 14 01:32:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
@@ -91,7 +175,7 @@ Tue Dec 13 18:49:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
  BREAKING CHANGE
   * Renamed parameter client_name to client_id in get_client_id method
  Fix
- * check client existence based on clientId 
+ * check client existence based on clientId
 
 -------------------------------------------------------------------
 Sat Apr 30 09:26:19 UTC 2022 - Matej Cepl <mcepl@suse.com>
