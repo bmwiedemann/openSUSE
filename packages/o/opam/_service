@@ -15,6 +15,7 @@
     <param name="exclude">doc/index.html</param>
     <param name="exclude">doc/modules</param>
     <param name="exclude">doc/pages</param>
+    <param name="exclude">master_changes.md</param>
     <param name="exclude">release</param>
     <param name="exclude">shell/autogen</param>
     <param name="exclude">shell/bootstrap-ocaml.sh</param>
@@ -38,7 +39,7 @@
     <param name="exclude">src_ext</param>
     <param name="exclude">tests</param>
     <param name="filename">opam</param>
-    <param name="revision">edf980ebd18ad6b5e990dbf3b6367cffcaf01815</param>
+    <param name="revision">6218d0c4c022106034a93c8ecb5b80fa213d7356</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/opam.git</param>

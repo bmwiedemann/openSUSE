@@ -179,4 +179,13 @@
   see included CHANGES file for details</comment>
     <requestid>1320255</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c744288c1ec837f673927a59512b231f</srcmd5>
+    <version>2.5.1</version>
+    <time>1776452718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.1 (CVE-2026-41082 bsc#1262281)
+  see included CHANGES file for details</comment>
+    <requestid>1347738</requestid>
+  </revision>
 </revisionlist>
