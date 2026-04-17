@@ -306,4 +306,20 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1341187</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6250b4bf9996b88eab2a32cf66b797f5</srcmd5>
+    <version>3.1.28</version>
+    <time>1776452608</time>
+    <user>dimstar_suse</user>
+    <comment>- Update spec file due to new package restrictions
+  On SUSE new package restrictions where added to support the
+  concept of the so called immutable mode. The new guideline
+  says &quot;Any files in the RPM spec %files section that are not
+  in /usr or /etc is likely to break in Immutable Mode&quot;. For
+  the flake-pilot packaging this applies to the flake-pilot-firecracker
+  sub package. This commit implements the suggested solution based
+  on systemd-tmpfiles and only applies for SUSE.
+  This Fixes jira#PCT-1054</comment>
+    <requestid>1347309</requestid>
+  </revision>
 </revisionlist>

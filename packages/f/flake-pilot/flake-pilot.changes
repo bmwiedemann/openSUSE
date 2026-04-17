@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 15 14:11:56 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update spec file due to new package restrictions
+
+  On SUSE new package restrictions where added to support the
+  concept of the so called immutable mode. The new guideline
+  says "Any files in the RPM spec %files section that are not
+  in /usr or /etc is likely to break in Immutable Mode". For
+  the flake-pilot packaging this applies to the flake-pilot-firecracker
+  sub package. This commit implements the suggested solution based
+  on systemd-tmpfiles and only applies for SUSE.
+  This Fixes jira#PCT-1054
+
+-------------------------------------------------------------------
 Thu Mar 12 16:06:42 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.27 → 3.1.28

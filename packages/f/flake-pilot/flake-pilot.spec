@@ -31,6 +31,8 @@ URL:            https://github.com/OSInside/flake-pilot
 Source0:        %{name}.tar.gz
 Source1:        cargo_config
 Source2:        %{name}-rpmlintrc
+# SUSE-specific source additions (1001+)
+Source1001:     systemd-tmpfiles-for-suse.conf
 %if 0%{?debian} || 0%{?ubuntu}
 Requires:       golang-github-containers-common
 %endif
@@ -141,9 +143,12 @@ make DESTDIR=%{buildroot}/ install_sci
 mkdir -p %{buildroot}/overlayroot
 mkdir -p %{buildroot}/usr/lib/flake-pilot
 
+%if 0%{?suse_version} >= 1600
+install -D -m 755 %{SOURCE1001} %{buildroot}%{_tmpfilesdir}/flake-pilot-firecracker.conf
+%else
 mkdir -p %{buildroot}/var/lib/firecracker/images
-
 mkdir -p %{buildroot}/var/lib/firecracker/storage
+%endif
 
 mkdir -p %{buildroot}/etc/dracut.conf.d
 mkdir -p %{buildroot}/usr/lib/dracut/modules.d/80netstart
@@ -180,9 +185,16 @@ install -m 644 flakes.yml %{buildroot}/etc/flakes.yml
 %doc /usr/share/man/man8/podman-pilot.8.gz
 
 %files -n flake-pilot-firecracker
+%if 0%{?suse_version} >= 1600
+%{_tmpfilesdir}/flake-pilot-firecracker.conf
+%ghost %dir /var/lib/firecracker
+%ghost %dir /var/lib/firecracker/images
+%ghost %dir /var/lib/firecracker/storage
+%else
 %dir /var/lib/firecracker
 %dir /var/lib/firecracker/images
 %dir /var/lib/firecracker/storage
+%endif
 %dir /usr/lib/flake-pilot
 %config /etc/flakes/firecracker-flake.yaml
 %config /etc/flakes/firecracker.json
