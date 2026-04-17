@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:09 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- No code change since 26.03.90
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * Drop voidTestMD5Performance
+  * REUSE.html - add .gersemirc
+  * gersemi fixes - cmake linting and formatting
+  * Add lsan support
+  * Add clazy support
+  * Warnings are errors support
+  * cmake_minimum_required: drop outdated FATAL_ERROR.
+  * Make readMessage return unique_ptr
+  * Documentation fixes
+  * Add -Wshadow for clang-based builds
+  * Add inheaderfile
+  * Show class
+  * Use namespace
+  * Add missing explicit
+  * Add CMakePreset for generating doc
+  * Port to qdoc
+  * Make sure that we don't add deprecated code
+  * Use std::shared_ptr instead of QSharedPointer
+  * Port away from kmime deprecated API
+  * Port away from kmime deprecated typedefs
+  * Add default ClangBuildAnalyzer.ini (testing compile time)
+  * Add missing USE_UNITY_CMAKE_SUPPORT variable for building as unity from cmakepreset
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
