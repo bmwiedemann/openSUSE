@@ -68,4 +68,26 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300818</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b5fc570fa62c53068592a413023c567d</srcmd5>
+    <version>0.5.0</version>
+    <time>1775743772</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * adds .pyw and **jupyter notebook support**
+  * forces default file encoding to utf-8
+  * bumps python support versions
+  * migrates packaging system to poetry
+  * increased test coverage
+- add allow-newer-python.patch</comment>
+    <requestid>1345302</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>41248b1856b2bbb3b204a9ba4f2ab64d</srcmd5>
+    <version>0.5.0</version>
+    <time>1776452641</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1347599</requestid>
+  </revision>
 </revisionlist>
