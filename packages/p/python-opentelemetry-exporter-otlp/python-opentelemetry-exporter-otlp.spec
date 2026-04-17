@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-exporter-otlp
-Version:        1.40.0
+Version:        1.41.0
 Release:        0
 Summary:        OpenTelemetry Collector Exporters
 License:        Apache-2.0
@@ -63,6 +63,8 @@ once they've determined their preferred serialization and protocol method.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
+%license LICENSE
+%doc README.rst
 %dir %{python_sitelib}/opentelemetry
 %dir %{python_sitelib}/opentelemetry/exporter
 %{python_sitelib}/opentelemetry/exporter/otlp
