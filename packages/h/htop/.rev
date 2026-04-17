@@ -679,4 +679,12 @@
   * Fix builds using native curses on NetBSD</comment>
     <requestid>1268560</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>ec8381b72f331b8d8bc77f56c9049fa1</srcmd5>
+    <version>3.5.0</version>
+    <time>1776452656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347638</requestid>
+  </revision>
 </revisionlist>
