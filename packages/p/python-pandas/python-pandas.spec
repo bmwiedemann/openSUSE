@@ -1,7 +1,7 @@
 #
 # spec file for package python-pandas
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,8 @@
 %else
 %define psuffix -%{flavor}
 %bcond_without test
-%if "%{flavor}" != "test-py310"
-%define skip_python310 1
-%endif
 %if "%{flavor}" != "test-py311"
 %define skip_python311 1
-%endif
-%if "%{flavor}" != "test-py312"
-%define skip_python312 1
 %endif
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
@@ -79,6 +73,8 @@ Source0:        pandas-%{version}.tar.gz
 Patch1:         pandas-pr61132-dropna.patch
 # PATCH-FIX-UPSTREAM pandas-pr62553-numexpr.patch gh#pandas-dev/pandas#62553 TST: remove expected warnings for new numexpr version
 Patch2:         pandas-pr62553-numexpr.patch
+# PATCH-FIX-UPSTREAM pandas-pr63406-meson-types.patch gh#pandas-dev/pandas#63406 BLD: newer versions of meson are pickier about types
+Patch3:         pandas-pr63406-meson-types.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}

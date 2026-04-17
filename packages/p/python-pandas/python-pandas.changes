@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 16 06:45:51 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream pandas-pr63406-meson-types.patch to fix build with
+  meson 1.11
+- Refresh test python flavors
+
+-------------------------------------------------------------------
 Thu Dec 18 10:25:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 2.3.3

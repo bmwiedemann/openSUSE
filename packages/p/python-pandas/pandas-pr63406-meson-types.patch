@@ -1,0 +1,36 @@
+From 0e978b68ba68e0f3b1f8b9f6b5a38072948638f0 Mon Sep 17 00:00:00 2001
+From: Thomas A Caswell <tcaswell@gmail.com>
+Date: Thu, 18 Dec 2025 05:56:43 -0500
+Subject: [PATCH] BLD: newer versions of meson are pickier about types (#63406)
+
+---
+ pandas/_libs/meson.build        | 2 +-
+ pandas/_libs/tslibs/meson.build | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: pandas-2.3.3/pandas/_libs/meson.build
+===================================================================
+--- pandas-2.3.3.orig/pandas/_libs/meson.build
++++ pandas-2.3.3/pandas/_libs/meson.build
+@@ -116,7 +116,7 @@ foreach ext_name, ext_dict : libs_source
+         ext_dict.get('sources'),
+         cython_args: cython_args,
+         include_directories: [inc_np, inc_pd],
+-        dependencies: ext_dict.get('deps', ''),
++        dependencies: ext_dict.get('deps', []),
+         subdir: 'pandas/_libs',
+         install: true
+     )
+Index: pandas-2.3.3/pandas/_libs/tslibs/meson.build
+===================================================================
+--- pandas-2.3.3.orig/pandas/_libs/tslibs/meson.build
++++ pandas-2.3.3/pandas/_libs/tslibs/meson.build
+@@ -34,7 +34,7 @@ foreach ext_name, ext_dict : tslibs_sour
+         ext_dict.get('sources'),
+         cython_args: cython_args,
+         include_directories: [inc_np, inc_pd],
+-        dependencies: ext_dict.get('deps', ''),
++        dependencies: ext_dict.get('deps', []),
+         subdir: 'pandas/_libs/tslibs',
+         install: true
+     )

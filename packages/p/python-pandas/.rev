@@ -885,4 +885,12 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>1323507</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>fe4990963379d0d572be364530d2ea52</srcmd5>
+    <version>2.3.3</version>
+    <time>1776452039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347236</requestid>
+  </revision>
 </revisionlist>
