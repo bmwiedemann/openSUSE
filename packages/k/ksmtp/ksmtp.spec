@@ -1,7 +1,7 @@
 #
 # spec file for package ksmtp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           ksmtp
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
@@ -33,13 +33,11 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 KSMTP is a job based library to send email through an SMTP server.
@@ -74,7 +72,7 @@ to build programs that use the KSMTP library.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -93,7 +91,6 @@ to build programs that use the KSMTP library.
 %{_kf6_libdir}/libKPim6SMTP.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6SMTP.*
 %{_includedir}/KPim6/KSMTP/
 %{_kf6_cmakedir}/KPim6SMTP/
 %{_kf6_libdir}/libKPim6SMTP.so
