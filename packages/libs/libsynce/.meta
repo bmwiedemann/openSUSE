@@ -1,6 +1,0 @@
-<package name="libsynce" project="openSUSE:Factory">
-  <title>Core library for the SynCE project</title>
-  <description>The purpose of the SynCE project is to provide a means of communication with a Windows Mobile, or Windows CE, device from a computer running Linux, FreeBSD or a similar operating system.</description>
-  <devel project="mobile:synchronization:FACTORY" package="libsynce"/>
-  <url>http://www.synce.org</url>
-</package>
