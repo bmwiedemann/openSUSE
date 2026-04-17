@@ -1,7 +1,7 @@
 #
 # spec file for package kldap
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kldap
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Library to assist working with LDAP directories
 License:        LGPL-2.1-or-later
@@ -32,7 +32,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  openldap2-devel
 # Voluntarily omitted, QCH doc is sufficient
@@ -41,7 +40,6 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Keychain)
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 This package contains additional libraries for KDE PIM applications.
@@ -75,7 +73,7 @@ to add LDAP support to applications.
 %autosetup -p1 -n kldap-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -101,7 +99,6 @@ to add LDAP support to applications.
 %{_kf6_libdir}/libKPim6LdapWidgets.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6Ldap*.*
 %{_includedir}/KPim6/KLDAPCore/
 %{_includedir}/KPim6/KLDAPWidgets/
 %{_kf6_cmakedir}/KPim6LdapCore/
