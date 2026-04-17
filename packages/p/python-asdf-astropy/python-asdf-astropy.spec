@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf-astropy%{psuffix}
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        ASDF serialization support for astropy
 License:        BSD-3-Clause
@@ -36,25 +36,26 @@ Source:         https://files.pythonhosted.org/packages/source/a/asdf-astropy/as
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module packaging >= 19}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 60}
+BuildRequires:  %{python_module setuptools > 77}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asdf >= 2.15.0
+Requires:       python-asdf >= 3.3.0
 Requires:       python-asdf-coordinates-schemas >= 0.4
 Requires:       python-asdf-standard >= 1.1.0
 Requires:       python-asdf-transform-schemas >= 0.6
-Requires:       python-astropy >= 5.2
-Requires:       python-numpy >= 1.25
+Requires:       python-astropy >= 6.0
+Requires:       python-numpy >= 1.26.4
 Requires:       python-packaging >= 19
 %if %{with test}
 BuildRequires:  %{python_module asdf-astropy = %{version}}
+BuildRequires:  %{python_module gwcs >= 0.22}
 BuildRequires:  %{python_module pytest-asdf-plugin}
 BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module scipy >= 1.14.1}
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -88,6 +89,8 @@ mkdir -p $XDG_CACHE_HOME
 
 %if !%{with test}
 %files %{python_files}
+%license LICENSE.rst
+%doc CHANGES.rst README.rst
 %{python_sitelib}/asdf_astropy
 %{python_sitelib}/asdf_astropy-%{version}.dist-info
 %endif

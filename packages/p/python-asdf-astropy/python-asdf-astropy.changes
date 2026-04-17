@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 17 17:23:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Add support for astropy.wcs.wcsapi.HighLevelWCSWrapper.
+  * Update version checks for transform schema compatibility to
+    use package versions instead of manifests
+
+-------------------------------------------------------------------
 Thu Mar 19 07:24:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires for pytest-asdf-plugin for the testsuite.
