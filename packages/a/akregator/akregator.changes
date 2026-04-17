@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Use release/26.04
+
+-------------------------------------------------------------------
+Mon Mar 30 12:09:52 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * Fix restore main window not being registered with the system tray (kde#494071)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
