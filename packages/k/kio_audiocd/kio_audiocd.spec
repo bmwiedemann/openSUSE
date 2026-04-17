@@ -1,7 +1,7 @@
 #
 # spec file for package kio_audiocd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kio_audiocd
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
@@ -78,7 +78,6 @@ This package contains the development files for the audiocd kio slave
 %files
 %license COPYING*
 %doc %lang(en) %{_kf6_htmldir}/en/kcontrol/
-%doc %lang(en) %{_kf6_htmldir}/en/kioworker6/
 %{_kf6_applicationsdir}/kcm_audiocd.desktop
 %{_kf6_appstreamdir}/org.kde.kio_audiocd.metainfo.xml
 %{_kf6_configkcfgdir}/audiocd_*_encoder.kcfg
@@ -102,6 +101,5 @@ This package contains the development files for the audiocd kio slave
 
 %files lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/kcontrol/
-%exclude %{_kf6_htmldir}/en/kioworker6/
 
 %changelog
