@@ -1,7 +1,7 @@
 #
 # spec file for package pimcommon
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           pimcommon
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -32,7 +33,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # For xsltproc
@@ -50,9 +50,9 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextAddonsWidgets)
-BuildRequires:  cmake(KF6TextAutoCorrectionWidgets)
-BuildRequires:  cmake(KF6TextCustomEditor)
+BuildRequires:  cmake(KF6TextAddonsWidgets) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextAutoCorrectionWidgets) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
@@ -65,7 +65,6 @@ BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
 BuildRequires:  cmake(PlasmaActivities)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
@@ -82,8 +81,8 @@ Requires:       libKPim6PimCommonAkonadi6 = %{version}
 Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6Contacts) >= %{kf6_version}
 Requires:       cmake(KF6KIO) >= %{kf6_version}
-Requires:       cmake(KF6TextAutoCorrectionWidgets)
-Requires:       cmake(KF6TextCustomEditor)
+Requires:       cmake(KF6TextAutoCorrectionWidgets) >= %{ktextaddons_version}
+Requires:       cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
 Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
 Requires:       cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
 Requires:       cmake(KPim6IMAP) >= %{kpim6_version}
@@ -122,7 +121,7 @@ The PimCommon Akonadi library
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -149,7 +148,6 @@ The PimCommon Akonadi library
 %{_kf6_libdir}/libKPim6PimCommonAkonadi.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6PimCommon*.*
 %{_includedir}/KPim6/PimCommon/
 %{_includedir}/KPim6/PimCommonActivities/
 %{_includedir}/KPim6/PimCommonAkonadi/

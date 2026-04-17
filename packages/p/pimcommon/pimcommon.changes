@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- No code change since 26.03.90
+
+-------------------------------------------------------------------
+Mon Mar 30 12:11:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * Drop unused kitemviews dependency
+
+-------------------------------------------------------------------
+Sat Mar 14 09:10:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * Fix bug 514511: Use addresses indexed from emails for autocompletion refuses to stop harvesting addresses regardless of check box setting (kde#514511)
+
+-------------------------------------------------------------------
 Fri Mar  6 07:48:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
