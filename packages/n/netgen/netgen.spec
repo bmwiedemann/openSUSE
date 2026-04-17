@@ -26,6 +26,8 @@
 %bcond_with    pytest
 %endif
 
+%define LIBVERSION 6_2_2602
+
 Name:           netgen
 Version:        6.2.2602
 Release:        0
@@ -58,6 +60,8 @@ Patch15:        0001-Fix-invalid-string-access-in-BoundaryLayerTool.patch
 Patch16:        0001-Fix-incorrect-py-keep_alive-syntax-for-def_property.patch
 # PATCH-FIX-OPENSUSE -- https://github.com/NGSolve/netgen/issues/226
 Patch17:        0001-Fix-implicit-conversions-for-signed-unsigned-types-i.patch
+# PATCH-FIX-OPENSUSE -- https://github.com/NGSolve/netgen/issues/61
+Patch18:        0001-Version-shared-libraries.patch
 %if %{with opencascade}
 BuildRequires:  occt-devel
 BuildRequires:  (pkgconfig(catch2) >= 2.13.4 with pkgconfig(catch2) < 3)
@@ -108,33 +112,41 @@ geometry kernel allows the handling of IGES and STEP files. NETGEN
 contains modules for mesh optimization and hierarchical mesh
 refinement.
 
-%package -n netgen-libs
-Summary:        NETGEN mesher libraries
+%package -n libngcore_%{LIBVERSION}
+Summary:        NETGEN mesher core library
 Group:          System/Libraries
-Conflicts:      %{name} < %{version}
-Provides:       %{name}:%{_libdir}/netgen/libngcore.so
 
-%description -n netgen-libs
-NETGEN mesh generator shared libraries.
+%description -n libngcore_%{LIBVERSION}
+NETGEN mesh generator core shared library.
 
-%package -n netgen-gui-libs
+%package -n libnglib_%{LIBVERSION}
+Summary:        NETGEN mesher main library
+Group:          System/Libraries
+
+%description -n libnglib_%{LIBVERSION}
+NETGEN mesh generator main shared library.
+
+%package -n libnggui_%{LIBVERSION}
 Summary:        NETGEN mesher library - GUI part
 Group:          System/Libraries
-Conflicts:      netgen-libs < 6.2.2204
-Provides:       %{name}:%{_libdir}/netgen/libnggui.so
 
-%description -n netgen-gui-libs
+%description -n libnggui_%{LIBVERSION}
 GUI support for NETGEN mesh generator shared libraries.
 
 %package devel
 Summary:        Development files for netgen
-# Should not depend on the netgen binary, but the cmake config is broken
 Group:          Development/Libraries/C and C++
+# Should not depend on the netgen binary, but the cmake config is broken
 Requires:       %{name} = %{version}
-Requires:       netgen-libs = %{version}
+Requires:       libngcore_%{LIBVERSION} = %{version}
+Requires:       libnggui_%{LIBVERSION} = %{version}
+Requires:       libnglib_%{LIBVERSION} = %{version}
 %if %{with opencascade}
 Requires:       occt-devel
 %endif
+# Old packages had unversioned libraries
+Conflicts:      netgen-libs < %{version}.%{release}
+Conflicts:      netgen-gui-libs < %{version}.%{release}
 
 %description devel
 Development files for NETGEN.
@@ -244,13 +256,15 @@ export COLUMNS=120
 %files examples
 %{_datadir}/netgen
 
-%files -n netgen-libs
+%files -n libngcore_%{LIBVERSION}
 %dir %{_libdir}/netgen
-%{_libdir}/netgen/libngcore.so
-%{_libdir}/netgen/libnglib.so
+%{_libdir}/netgen/libngcore.so.*
 
-%files -n netgen-gui-libs
-%{_libdir}/netgen/libnggui.so
+%files -n libnglib_%{LIBVERSION}
+%{_libdir}/netgen/libnglib.so.*
+
+%files -n libnggui_%{LIBVERSION}
+%{_libdir}/netgen/libnggui.so.*
 
 %files -n python3-%{name}
 %{python3_sitearch}/netgen
@@ -261,5 +275,8 @@ export COLUMNS=120
 %dir %{_libdir}/cmake
 %{_includedir}/netgen
 %{_libdir}/cmake/netgen
+%{_libdir}/netgen/libngcore.so
+%{_libdir}/netgen/libnglib.so
+%{_libdir}/netgen/libnggui.so
 
 %changelog

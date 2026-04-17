@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  9 19:30:02 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add SOVERSION to libraries, as upstream keeps breaking ABI, add
+  * 0001-Version-shared-libraries.patch
+- Separate nglib and ngcore packages
+
+-------------------------------------------------------------------
 Fri Mar 27 12:23:59 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Properly fix ARM Neon SIMD intrinsics, instead of relaxing

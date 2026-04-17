@@ -1,0 +1,40 @@
+From d4a4f4d0b7004630611a0064518bc389be48f805 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 9 Apr 2026 21:19:08 +0200
+Subject: [PATCH] Version shared libraries
+
+---
+ CMakeLists.txt             | 2 ++
+ libsrc/core/CMakeLists.txt | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f6c09a9..44840a8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -250,8 +250,10 @@ endif(APPLE)
+ 
+ #######################################################################
+ add_library(nglib ${NGLIB_LIBRARY_TYPE})
++set_target_properties(nglib PROPERTIES VERSION ${NETGEN_VERSION_MAJOR}.${NETGEN_VERSION_MINOR}.${NETGEN_VERSION_PATCH})
+ if(USE_GUI)
+     add_library(nggui ${NGGUI_LIBRARY_TYPE})
++    set_target_properties(nggui PROPERTIES VERSION ${NETGEN_VERSION_MAJOR}.${NETGEN_VERSION_MINOR}.${NETGEN_VERSION_PATCH})
+     if(WIN32)
+         set_target_properties( nggui PROPERTIES OUTPUT_NAME "libnggui")
+     endif(WIN32)
+diff --git a/libsrc/core/CMakeLists.txt b/libsrc/core/CMakeLists.txt
+index 6d1a03f..9655afe 100644
+--- a/libsrc/core/CMakeLists.txt
++++ b/libsrc/core/CMakeLists.txt
+@@ -18,6 +18,7 @@ add_library(ngcore ${NGCORE_LIBRARY_TYPE}
+ 
+ string(REPLACE "|" ";" ng_compile_flags_replace_sep "${NG_COMPILE_FLAGS}")
+ target_compile_options(ngcore PUBLIC ${ng_compile_flags_replace_sep})
++set_target_properties(ngcore PROPERTIES VERSION ${NETGEN_VERSION_MAJOR}.${NETGEN_VERSION_MINOR}.${NETGEN_VERSION_PATCH})
+ 
+ if(EMSCRIPTEN)
+   set(PYTHON_MODULE_EXTENSION ".so")
+-- 
+2.53.0
+
