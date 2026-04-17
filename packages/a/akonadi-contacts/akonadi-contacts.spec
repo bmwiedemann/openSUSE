@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-contacts
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           akonadi-contacts
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
@@ -32,7 +33,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
@@ -44,8 +44,8 @@ BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextUtils)
-BuildRequires:  cmake(KF6TextTemplate)
+BuildRequires:  cmake(KF6TextUtils) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextTemplate) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
@@ -53,7 +53,6 @@ BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6GrantleeTheme) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Provides:       akonadi-contact = %{version}
 Obsoletes:      akonadi-contact < %{version}
@@ -116,7 +115,7 @@ to develop KDE PIM applications.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -150,7 +149,6 @@ to develop KDE PIM applications.
 %{_kf6_sharedir}/akonadi/plugins/serializer/akonadi_serializer_contactgroup.desktop
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6AkonadiContact*.*
 %{_includedir}/KPim6/AkonadiContactCore/
 %{_includedir}/KPim6/AkonadiContactWidgets/
 %{_kf6_cmakedir}/KPim6AkonadiContactCore/
