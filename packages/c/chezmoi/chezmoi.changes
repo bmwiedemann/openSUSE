@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 17 16:38:12 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.70.2:
+  - Features
+    * feat: Add .chezmoi.flags template variable
+    * feat: Make stdinIsATTY template func available in all templates
+    * feat: Switch to betterleaks for secret detection
+  - Fixes
+    * fix: Re-enable support for TOML 1.1
+  - Documentation
+    * docs: Always use https to get install script
+    * docs: Improve documentation of secret command
+
+-------------------------------------------------------------------
 Wed Apr 15 16:25:20 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.70.1:

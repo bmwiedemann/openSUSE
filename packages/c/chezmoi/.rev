@@ -1165,4 +1165,22 @@
 </comment>
     <requestid>1347147</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>36730513b98e7ac542cb1e4965bf5ff4</srcmd5>
+    <version>2.70.2</version>
+    <time>1776452722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.70.2:
+  - Features
+    * feat: Add .chezmoi.flags template variable
+    * feat: Make stdinIsATTY template func available in all templates
+    * feat: Switch to betterleaks for secret detection
+  - Fixes
+    * fix: Re-enable support for TOML 1.1
+  - Documentation
+    * docs: Always use https to get install script
+    * docs: Improve documentation of secret command
+</comment>
+    <requestid>1347761</requestid>
+  </revision>
 </revisionlist>
