@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * fix(exercise): fix answer checking logic
+  * fix(SheetMusicView): set clip to false
+  * fix(i18n): add translation for exercise strings
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:10:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * documentation.yml is no more needed
+  * cmake_minimum_required: drop outdated FATAL_ERROR arg
+  * Add qqc2-desktop-style to .kde-ci.yml
+  * Non-Linux builds (except mobile) should use qqc2-desktop-style
+  * Fix usage of QQC2BreezeStyle
+  * Use breeze style on Windows
+  * Port to Kirigami
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
