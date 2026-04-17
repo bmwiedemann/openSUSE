@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- No code change since 26.03.90
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * Allow the KUrlRequester in speedidal configuration dialog to also select directories
+  * Fix failing test in webengine_partapi_test
+  * Ensure settings are reset before running each test
+  * Fix konqviewmgr tests failing due to simulated mouse clicks not working
+  * Don't change current tab when clicking on "reload all tabs"
+  * Allow auto-filling fields when they're outside forms
+  * Rename the 'Other tabs' submenu as 'All tabs'
+  * restore history documentation generation
+  * update English installation documentation path
+  * Search toolbar: Make it independent of the location bar
+  * Delete preloaded windows on session restore
+  * Fix situations where delayed loading a tab would leave it empty
+  * Remove workaround to avoid endless loops when WebEnginePart asked Konqueror to open HTML pages
+  * Allow the user to mark a window as protected
+  * Fix a test which failed because it looked for the wrong window title
+  * Fix failed tests for KonqViewManager by simulating a mouse click event to open the link instead of opening it with javascript
+  * appdata: fix the reference to the rendering engines
+  * Remove leftover debug code
+  * Use the user agent provided by QtWebEngine as default
+  * Add a Speed Dial page
+  * Correctly update views URLs when navigating to another page
+  * Display available web engines in the correct order in configuration dialog
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3

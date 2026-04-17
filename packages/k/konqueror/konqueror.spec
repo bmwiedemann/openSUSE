@@ -1,7 +1,7 @@
 #
 # spec file for package konqueror
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           konqueror
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: webenginepart/autotests/webengine_testutils.h is neither built nor installed in our package.
@@ -125,12 +125,14 @@ Development package for the konqueror libraries.
 %doc %lang(en) %{_kf6_htmldir}/en
 %{_kf6_applicationsdir}/bookmarks.desktop
 %{_kf6_applicationsdir}/kcm_bookmarks.desktop
-%{_kf6_applicationsdir}/kfmclient.desktop
+%{_kf6_applicationsdir}/kcm_speeddial.desktop
 %{_kf6_applicationsdir}/kfmclient_dir.desktop
 %{_kf6_applicationsdir}/kfmclient_html.desktop
 %{_kf6_applicationsdir}/kfmclient_war.desktop
+%{_kf6_applicationsdir}/kfmclient.desktop
 %{_kf6_applicationsdir}/konqbrowser.desktop
 %{_kf6_applicationsdir}/org.kde.konqueror.desktop
+%{_kf6_applicationsdir}/speeddial.desktop
 %{_kf6_appstreamdir}/org.kde.konqueror.appdata.xml
 %{_kf6_bindir}/kfmclient
 %{_kf6_bindir}/konqueror
@@ -149,6 +151,7 @@ Development package for the konqueror libraries.
 %{_kf6_plugindir}/konqueror_kcms/kcm_history.so
 %{_kf6_plugindir}/konqueror_kcms/kcm_konq.so
 %{_kf6_plugindir}/konqueror_kcms/kcm_performance.so
+%{_kf6_plugindir}/konqueror_kcms/kcm_speeddial.so
 %{_kf6_plugindir}/konqueror_kcms/khtml_*.so
 %{_kf6_sharedir}/kcmcss/
 %{_kf6_sharedir}/kconf_update/webenginepart.upd
