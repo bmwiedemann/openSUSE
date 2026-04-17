@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:20 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Use release/26.04
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * CMakeLists.txt - add missing setting for KLDAP_LIB_VERSION
+  * calendarview.cpp - suppress a cppcheck false positive
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * Agenda View: allow showing incidence description in the agenda items (kde#478358)
+  * searchdialog.cpp - save/restore search settings (kde#513987)
+  * Month View: allow configuring a custom color for today's date cell. (kde#92612)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
