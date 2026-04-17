@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-calendar
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           akonadi-calendar
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -32,7 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -53,7 +52,6 @@ BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageComposer) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 
@@ -118,7 +116,7 @@ Development package for akonadi-calendar.
 %autosetup -p1 -n akonadi-calendar-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -158,8 +156,6 @@ Development package for akonadi-calendar.
 %{_kf6_sharedir}/dbus-1/services/org.kde.kalendarac.service
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6AkonadiCalendar.*
-%doc %{_kf6_qchdir}/KPim6AkonadiCalendarCore.*
 %{_includedir}/KPim6/AkonadiCalendar/
 %{_kf6_cmakedir}/KPim6AkonadiCalendar/
 %{_includedir}/KPim6/AkonadiCalendarCore/
