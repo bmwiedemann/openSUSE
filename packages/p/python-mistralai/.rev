@@ -23,4 +23,12 @@
     <comment>Required for upgrade of python-mistral-vibe (supersedes 1335936).</comment>
     <requestid>1336000</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c488375c9730f574725668c298570dc5</srcmd5>
+    <version>2.3.2</version>
+    <time>1776452053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1346956</requestid>
+  </revision>
 </revisionlist>

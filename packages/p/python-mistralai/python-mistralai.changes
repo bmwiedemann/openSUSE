@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 14 15:03:03 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.3.2:
+  https://github.com/mistralai/client-python/releases
+- Skip tests failing on Python 3.14+
+  (gh#mistralai/client-python#490).
+
+-------------------------------------------------------------------
+Wed Apr  1 17:27:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.2.0:
+  https://github.com/mistralai/client-python/releases
+
+-------------------------------------------------------------------
+Sun Mar 15 21:52:29 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.0.2:
+  I don’t think these endless lists of API changes are useful for
+  users. If you need it, go to
+  https://github.com/mistralai/client-python/releases
+
+-------------------------------------------------------------------
 Mon Mar  2 21:49:54 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.12.4:

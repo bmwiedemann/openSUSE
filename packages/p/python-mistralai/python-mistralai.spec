@@ -17,7 +17,7 @@
 
 
 Name:           python-mistralai
-Version:        1.12.4
+Version:        2.3.2
 Release:        0
 Summary:        Python Client SDK for the Mistral AI API
 License:        Apache-2.0
@@ -32,11 +32,12 @@ Requires:       python-PyYAML >= 6.0.2
 Requires:       python-eval-type-backport >= 0.2.0
 Requires:       python-httpx >= 0.28.1
 Requires:       python-invoke >= 2.2.0
-Requires:       python-opentelemetry-api
+Requires:       python-jsonpath-python >= 1.0.6
+Requires:       python-opentelemetry-api >= 1.33.1
 Requires:       python-opentelemetry-exporter-otlp-proto-http
 Requires:       python-opentelemetry-sdk
-Requires:       python-opentelemetry-semantic-conventions
-Requires:       python-pydantic >= 2.10.3
+Requires:       python-opentelemetry-semantic-conventions >= 0.60b1
+Requires:       python-pydantic >= 2.11.2
 Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-typing-inspection >= 0.4.0
 Suggests:       python-authlib >= 1.5.2
@@ -49,12 +50,15 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyYAML >= 6.0.2}
 BuildRequires:  %{python_module eval-type-backport >= 0.2.0}
 BuildRequires:  %{python_module httpx >= 0.28.1}
+BuildRequires:  %{python_module griffe >= 1.7.3}
 BuildRequires:  %{python_module invoke >= 2.2.0}
+BuildRequires:  %{python_module mcp >= 1.0}
+BuildRequires:  %{python_module jsonpath-python >= 1.0.6}
 BuildRequires:  %{python_module opentelemetry-api >= 1.33.1}
 BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-http >= 1.37.0}
 BuildRequires:  %{python_module opentelemetry-sdk >= 1.33.1}
-BuildRequires:  %{python_module opentelemetry-semantic-conventions >= 0.59b0}
-BuildRequires:  %{python_module pydantic >= 2.10.3}
+BuildRequires:  %{python_module opentelemetry-semantic-conventions >= 0.60b1}
+BuildRequires:  %{python_module pydantic >= 2.11.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.8.2}
 BuildRequires:  %{python_module typing-inspection >= 0.4.0}
@@ -82,14 +86,16 @@ use it.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# gh#mistralai/client-python#490
+# test_create_function_result_*_span tests use asyncio.get_event_loop() which
+# raises RuntimeError on Python 3.14 where an implicit event loop is no longer
+# created automatically (upstream bug).
+%pytest -k "not (test_create_function_result_error_span or test_create_function_result_span_attributes)"
 
 %files %{python_files}
-%doc README.md
+%doc README-PYPI.md
 %license LICENSE
 %{python_sitelib}/mistralai
-%{python_sitelib}/mistralai_gcp
-%{python_sitelib}/mistralai_azure
 %{python_sitelib}/mistralai-%{version}*-info
 
 %changelog
