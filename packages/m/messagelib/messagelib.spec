@@ -1,7 +1,7 @@
 #
 # spec file for package messagelib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,11 +19,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           messagelib
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -33,9 +34,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Don-t-create-folders-in-tmp.patch
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Gpgmepp)
@@ -58,12 +56,12 @@ BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextAddonsWidgets)
-BuildRequires:  cmake(KF6TextAutoCorrectionWidgets)
-BuildRequires:  cmake(KF6TextCustomEditor)
-BuildRequires:  cmake(KF6TextEditTextToSpeech)
-BuildRequires:  cmake(KF6TextTemplate)
-BuildRequires:  cmake(KF6TextUtils)
+BuildRequires:  cmake(KF6TextAddonsWidgets) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextAutoCorrectionWidgets) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextEditTextToSpeech) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextTemplate) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextUtils) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
@@ -87,7 +85,6 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(openssl) >= 3.0.0
@@ -104,7 +101,7 @@ License:        LGPL-2.1-or-later
 Requires:       messagelib = %{version}
 Requires:       cmake(KF6Contacts) >= %{kf6_version}
 Requires:       cmake(KF6Service) >= %{kf6_version}
-Requires:       cmake(KF6TextAutoCorrectionWidgets)
+Requires:       cmake(KF6TextAutoCorrectionWidgets) >= %{ktextaddons_version}
 Requires:       cmake(KPim6Akonadi) >= %{kpim6_version}
 Requires:       cmake(KPim6AkonadiMime) >= %{kpim6_version}
 Requires:       cmake(KPim6IdentityManagementWidgets) >= %{kpim6_version}
@@ -127,7 +124,7 @@ This package contains source headers for messagelib.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -163,7 +160,6 @@ This package contains source headers for messagelib.
 %{_kf6_sharedir}/messageviewer/
 
 %files devel
-%doc %{_kf6_qchdir}/*
 %{_includedir}/KPim6/MessageComposer/
 %{_includedir}/KPim6/MessageCore/
 %{_includedir}/KPim6/MessageList/
