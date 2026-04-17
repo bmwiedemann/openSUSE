@@ -1,4 +1,4 @@
-From 1be7cf045b2c1d83f8c2b483ed424d66558d3bed Mon Sep 17 00:00:00 2001
+From 68d82f5a829ad60de756176f01c0f00242fbc077 Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Sat, 6 Dec 2025 17:00:54 +0100
 Subject: [PATCH] Revert: "Remove old libexiv2 support"
@@ -9,20 +9,20 @@ Subject: [PATCH] Revert: "Remove old libexiv2 support"
  2 files changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 735ea71..4839e7a 100644
+index 0186339a..1d64f69a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -49,7 +49,7 @@ endif()
+@@ -56,7 +56,7 @@ set_package_properties(KF6 PROPERTIES
+     DESCRIPTION "Base components"
+ )
  
- find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS I18n Declarative Config ConfigWidgets KIO CoreAddons Notifications FileMetaData DBusAddons)
- 
--find_package(LibExiv2 0.28 REQUIRED)
-+find_package(LibExiv2 0.27 REQUIRED)
- 
- ecm_find_qmlmodule(org.kde.kquickimageeditor)
- find_package(KQuickImageEditor 0.6.0 COMPONENTS)
+-find_package(LibExiv2 0.28)
++find_package(LibExiv2 0.27)
+ set_package_properties(LibExiv2 PROPERTIES
+     TYPE REQUIRED
+     DESCRIPTION "Image metadata library and tools"
 diff --git a/src/exiv2extractor.cpp b/src/exiv2extractor.cpp
-index 7b915ed..6f2eae2 100644
+index 7b915eda..6f2eae21 100644
 --- a/src/exiv2extractor.cpp
 +++ b/src/exiv2extractor.cpp
 @@ -290,7 +290,11 @@ void Exiv2Extractor::extract(const QString &filePath)

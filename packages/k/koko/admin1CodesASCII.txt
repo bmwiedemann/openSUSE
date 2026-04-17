@@ -138,11 +138,11 @@ AS.040	Swains Island	Swains Island	5881199
 AS.010	Eastern District	Eastern District	5881219
 AS.020	Manu'a	Manu'a	5881436
 AS.030	Rose Island	Rose Island	7309441
-AT.09	Vienna	Vienna	2761367
+AT.09	State of Vienna	State of Vienna	2761367
 AT.08	Vorarlberg	Vorarlberg	2762300
 AT.07	Tyrol	Tyrol	2763586
 AT.06	Styria	Styria	2764581
-AT.05	Salzburg	Salzburg	2766823
+AT.05	State of Salzburg	State of Salzburg	2766823
 AT.04	Upper Austria	Upper Austria	2769848
 AT.03	Lower Austria	Lower Austria	2770542
 AT.02	Carinthia	Carinthia	2774686
@@ -749,8 +749,8 @@ DE.07	North Rhine-Westphalia	North Rhine-Westphalia	2861876
 DE.06	Lower Saxony	Lower Saxony	2862926
 DE.12	Mecklenburg-Vorpommern	Mecklenburg-Vorpommern	2872567
 DE.05	Hesse	Hesse	2905330
-DE.04	Hamburg	Hamburg	2911297
-DE.03	City state Bremen	City state Bremen	2944387
+DE.04	Free and Hanseatic City of Hamburg	Free and Hanseatic City of Hamburg	2911297
+DE.03	Free Hanseatic City of Bremen	Free Hanseatic City of Bremen	2944387
 DE.11	Brandenburg	Brandenburg	2945356
 DE.16	State of Berlin	State of Berlin	2950157
 DE.02	Bavaria	Bavaria	2951839
@@ -1700,7 +1700,7 @@ KZ.1537272	Shymkent	Shymkent	1537272
 KZ.08	Baikonur	Baikonur	1538316
 KZ.05	Astana	Astana	1538317
 KZ.12510143	Abai Region	Abai Region	12510143
-KZ.12510144	Jetisu Region	Jetisu Region	12510144
+KZ.12510144	Zhetysu Region	Zhetysu Region	12510144
 KZ.12510145	Ulytau Region	Ulytau Region	12510145
 LA.14	Xiangkhoang	Xiangkhoang	1652077
 LA.13	Xiagnabouli	Xiagnabouli	1652210
@@ -2145,8 +2145,8 @@ MR.08	Dakhlet Nouadhibou	Dakhlet Nouadhibou	2380426
 MR.05	Brakna	Brakna	2380635
 MR.03	Assaba	Assaba	2381344
 MR.07	Adrar	Adrar	2381972
-MR.13	Nouakchott Ouest	Nouakchott Ouest	11496391
-MR.14	Nouakchott Nord	Nouakchott Nord	11496392
+MR.13	Nouakchott West	Nouakchott West	11496391
+MR.14	Nouakchott North	Nouakchott North	11496392
 MR.15	Nouakchott Sud	Nouakchott Sud	11496393
 MS.03	Saint Peter	Saint Peter	3578039
 MS.02	Saint Georges	Saint Georges	3578044
