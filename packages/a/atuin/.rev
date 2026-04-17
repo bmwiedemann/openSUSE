@@ -1500,4 +1500,28 @@
     + Update to eye-declare 0.3.0 (#3365) (forwarded request 1346825 from develop7)</comment>
     <requestid>1346828</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bed4e936e63dada3adad9ae94d3fced3</srcmd5>
+    <version>18.15.2</version>
+    <time>1776452708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.15.2:
+  * Bug Fixes
+    + Tab doesn't insert suggested command (#3420)
+- Update to version 18.15.1:
+  * Bug Fixes
+    + Enter runs suggested command when selecting permissions (#3418)
+- Update to version 18.15.0:
+  * Bug Fixes
+    + Install script incorrectly tries to install opencode hooks (#3410)
+    + Dependency fix (#3414)
+    + Loss of loading spinners + tokio panic on exit (#3415)
+  * Features
+    + Add OCI standard labels to Dockerfile (#3412)
+    + Enable atuin hex for illumos (#3413)
+    + Allow resuming previous AI sessions (#3407)
+  * Miscellaneous Tasks
+    + Add release script (#3411) (forwarded request 1347708 from develop7)</comment>
+    <requestid>1347709</requestid>
+  </revision>
 </revisionlist>

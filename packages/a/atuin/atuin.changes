@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 16 10:46:44 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 18.15.2:
+  * Bug Fixes
+    + Tab doesn't insert suggested command (#3420)
+
+- Update to version 18.15.1:
+  * Bug Fixes
+    + Enter runs suggested command when selecting permissions (#3418)
+
+- Update to version 18.15.0:
+  * Bug Fixes
+    + Install script incorrectly tries to install opencode hooks (#3410)
+    + Dependency fix (#3414)
+    + Loss of loading spinners + tokio panic on exit (#3415)
+  * Features
+    + Add OCI standard labels to Dockerfile (#3412)
+    + Enable atuin hex for illumos (#3413)
+    + Allow resuming previous AI sessions (#3407)
+  * Miscellaneous Tasks
+    + Add release script (#3411)
+
+-------------------------------------------------------------------
 Tue Apr 14 09:37:36 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 18.14.1:
