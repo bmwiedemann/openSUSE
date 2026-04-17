@@ -198,20 +198,12 @@ diff -Naur a/fdasd/fdasd.c b/fdasd/fdasd.c
  		fdasd_error(anc, unable_to_ioctl, "Error while rereading "
  			    "partition table.\nPlease reboot!");
  	}
-diff -Naur a/zdev/dracut/95zdev/parse-dasd.sh b/zdev/dracut/95zdev/parse-dasd.sh
---- a/zdev/dracut/95zdev/parse-dasd.sh	2025-12-11 17:03:28.000000000 +0100
-+++ b/zdev/dracut/95zdev/parse-dasd.sh	2026-02-06 14:13:41.947730795 +0100
-@@ -10,6 +10,8 @@
- #   parameters are evaluated and used to configure dasd devices.
- #
- 
-+zdev_dasd_base_args="--no-settle --yes --no-root-update --force"
-+
- # shellcheck source=/dev/null
- type zdev_parse_dasd_list > /dev/null 2>&1 || . /lib/s390-tools/zdev-from-dasd_mod.dasd
- 
-@@ -27,9 +29,21 @@
- 
+Index: s390-tools-2.41.0/zdev/dracut/95zdev/parse-dasd.sh
+===================================================================
+--- s390-tools-2.41.0.orig/zdev/dracut/95zdev/parse-dasd.sh
++++ s390-tools-2.41.0/zdev/dracut/95zdev/parse-dasd.sh
+@@ -27,9 +27,21 @@ zdev_vinfo() {
+
  zdev_parse_rd_dasd() {
      local _zdev_dasd _zdev_dasd_list
 -    for _zdev_dasd in $(getargs rd.dasd -d 'rd_DASD='); do
@@ -222,16 +214,16 @@ diff -Naur a/zdev/dracut/95zdev/parse-dasd.sh b/zdev/dracut/95zdev/parse-dasd.sh
 +        && [[ -f /sys/firmware/ipl/ipl_type ]] \
 +        && [[ $(< /sys/firmware/ipl/ipl_type) == "ccw" ]]; then
 +        read -r _ccw < /sys/firmware/ipl/device
-+
++ 
 +        if lszdev --offline "$_ccw" &>/dev/null; then
-+            chzdev --offline --existing --enable --active $zdev_dasd_base_args \
-+                   dasd "$_ccw"
++            chzdev --offline --existing --enable --active --no-settle --yes \
++                   --no-root-update --force dasd "$_ccw"
 +        fi
 +    else
 +        for _zdev_dasd in $(getargs rd.dasd -d 'rd_DASD='); do
 +            _zdev_dasd_list="${_zdev_dasd_list:+${_zdev_dasd_list},}$_zdev_dasd"
 +        done
-+    fi    
++    fi
      echo "$_zdev_dasd_list"
  }
  

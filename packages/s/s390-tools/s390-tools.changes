@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 17 07:43:21 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch to remove phmac_s390 kernel module load from dracut
+  * s390-tools-Remove-phmac_s390.patch 
+- Applied a modified patch (bsc#1262221)
+  * s390-tools-combined.patch
+- Amended SUSE's 'pkey.conf'
+- Re-venor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Thu Apr  9 09:42:24 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied patches (bsc#1261772)

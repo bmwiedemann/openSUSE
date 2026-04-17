@@ -1,0 +1,31 @@
+diff -Naur a/etc/modules-load.d/s390-pkey.conf b/etc/modules-load.d/s390-pkey.conf
+--- a/etc/modules-load.d/s390-pkey.conf	2026-02-16 15:33:48.000000000 +0100
++++ b/etc/modules-load.d/s390-pkey.conf	2026-04-17 09:32:27.895965780 +0200
+@@ -4,4 +4,3 @@
+ pkey_ep11
+ pkey_cca
+ paes_s390
+-phmac_s390
+diff -Naur a/zkey/dracut/99-pkey.conf b/zkey/dracut/99-pkey.conf
+--- a/zkey/dracut/99-pkey.conf	2026-02-16 15:33:48.000000000 +0100
++++ b/zkey/dracut/99-pkey.conf	2026-04-17 09:34:04.888735927 +0200
+@@ -4,6 +4,6 @@
+ # it under the terms of the MIT license. See LICENSE for details.
+ #
+ 
+-add_drivers+=" uvdevice pkey pkey_cca pkey_ep11 pkey_pckmo pkey_uv paes_s390 phmac_s390 zcrypt zcrypt_cex4 "
++add_drivers+=" uvdevice pkey pkey_cca pkey_ep11 pkey_pckmo pkey_uv paes_s390 zcrypt zcrypt_cex4 "
+ install_items+=" chzcrypt lszcrypt zkey zkey-cryptsetup "
+ install_optional_items+=" /usr/lib64/zkey/*.so  /etc/zkey/* /etc/zkey/repository/* /etc/zkey/kmip/profiles/* "
+diff -Naur a/zkey/initramfs/hooks/s390-tools-zkey b/zkey/initramfs/hooks/s390-tools-zkey
+--- a/zkey/initramfs/hooks/s390-tools-zkey	2026-02-16 15:33:48.000000000 +0100
++++ b/zkey/initramfs/hooks/s390-tools-zkey	2026-04-17 09:34:41.161023939 +0200
+@@ -29,7 +29,7 @@
+ . /usr/share/initramfs-tools/hook-functions
+ 
+ # Add zcrypt modules
+-zdev_modules="uvdevice pkey pkey_cca pkey_ep11 pkey_pckmo pkey_uv paes_s390 phmac_s390 zcrypt zcrypt_cex4"
++zdev_modules="uvdevice pkey pkey_cca pkey_ep11 pkey_pckmo pkey_uv paes_s390 zcrypt zcrypt_cex4"
+ 
+ for x in $zdev_modules ; do
+ 	manual_add_modules ${x}

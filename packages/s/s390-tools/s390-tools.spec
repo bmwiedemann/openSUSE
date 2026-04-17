@@ -99,6 +99,8 @@ Patch101:       s390-tools-hyptop-opts-Fix-long-command-line-option-abbreviation
 Patch900:       s390-tools-combined.patch
 Patch901:       s390-tools-dasdfmt-reworked.patch
 ###
+Patch905:       s390-tools-Remove-phmac_s390.patch
+###
 Patch910:       s390-tools-ALP-zdev-live.patch
 ###
 
