@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- No code change since 26.03.90
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:10:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * Add setting for opening last viewed page (kde#191681)
+  * Implement opening of embedded file attachments (kde#497154)
+  * fix file exists check (kde#495839)
+  * avoid stating recent used files (kde#514660)
+  * Make Shift+Alt+Number shortcuts to switch tabs (kde#506333)
+  * DVI: account for page info being unknown in text handling (kde#513500)
+  * Fix extreme downscaling of custom stamps (kde#370382)
+  * Add native pinch gesture support in PageView (kde#473679)
+  * Do not process HTML with QDomDocument (kde#510945)
+  * Select first certificate if previous not found (kde#511986)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
