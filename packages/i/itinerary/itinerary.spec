@@ -1,7 +1,7 @@
 #
 # spec file for package itinerary
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           itinerary
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
@@ -119,6 +119,8 @@ Itinerary and boarding pass management application.
 %check
 # Test aborts
 excluded_tests+="itinerary-self-test"
+# Requires network access
+excluded_tests+="|reservationonlinepostprocessortest"
 %ifarch %{ix86}
 # Rounding issue on x86
 excluded_tests+="|timelinemodeltest|transfertest|localizertest|"
@@ -133,13 +135,11 @@ excluded_tests+="|timelinemodeltest|transfertest|localizertest|"
 %{_kf6_bindir}/itinerary
 %{_kf6_debugdir}/org_kde_itinerary.categories
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.itinerary.svg
-%{_kf6_libdir}/libSolidExtras.so
 %{_kf6_notificationsdir}/itinerary.notifyrc
 %dir %{_kf6_plugindir}/kf6/kfilemetadata
 %{_kf6_plugindir}/kf6/kfilemetadata/kfilemetadata_itineraryextractor.so
 %dir %{_kf6_plugindir}/kf6/thumbcreator
 %{_kf6_plugindir}/kf6/thumbcreator/itinerarythumbnail.so
-%{_kf6_qmldir}/org/kde/solidextras/
 
 %files lang -f %{name}.lang
 
