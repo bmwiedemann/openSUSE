@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:23 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- No code change since 26.03.90
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * added a setting to automatically enable key grabbing in fullscreen mode (on by default)
+  * Disable automatic saving of {menu,status,tool}bar visibility during fullscreen mode (kde#515684)
+  * documentation.yml is no more needed
+  * Switch from KWallet to QtKeychain (kde#514271)
+  * Rdp: set the correct keyboardType; fix local input of some chars on japanese keyboards (kde#514241)
+  * RdpSession::endPaint() : guard for empty device context and window handle (kde#512024)
+
+-------------------------------------------------------------------
 Fri Mar  6 07:47:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3

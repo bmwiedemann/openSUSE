@@ -1,7 +1,7 @@
 #
 # spec file for package krdc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           krdc
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
@@ -54,13 +54,13 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6NotifyConfig) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
-BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Keychain)
 BuildRequires:  cmake(WinPR)
 # FIXME: temporary, see sr#1245247
 BuildRequires:  pkgconfig(fuse3)
