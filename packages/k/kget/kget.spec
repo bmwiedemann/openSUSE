@@ -1,7 +1,7 @@
 #
 # spec file for package kget
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define qt6_version 6.9.0
 %bcond_without released
 Name:           kget
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Download Manager
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sqlite-devel
 BuildRequires:  cmake(Gpgmepp) >= 1.7.0
