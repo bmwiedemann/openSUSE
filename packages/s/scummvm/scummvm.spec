@@ -23,7 +23,7 @@
 %endif
 
 Name:           scummvm
-Version:        2026.1.0
+Version:        2026.2.0
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-3.0-or-later

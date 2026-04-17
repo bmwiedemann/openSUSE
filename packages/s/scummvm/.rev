@@ -370,4 +370,14 @@ SPDX format - plus it appears as though only one license relevant binary is crea
 </comment>
     <requestid>1332060</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d03295ea39992c575c16d286c069fbdc</srcmd5>
+    <version>2026.2.0</version>
+    <time>1776452642</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2026.2.0
+  * see https://downloads.scummvm.org/frs/scummvm/2026.2.0/ReleaseNotes.html for notes
+</comment>
+    <requestid>1347603</requestid>
+  </revision>
 </revisionlist>
