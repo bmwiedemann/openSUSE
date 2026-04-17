@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:09 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Outlook SMTP: force XOAUTH token refresh when server returns authentication error (kde#500123)
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * auto update
+  * .gersemirc - don't warn about unknown macros
+  * smtpJobTest: Add expect fail for Windows
+  * Port away from string-based signal/slot connects
+  * As in other resource use kwallet or other if you want to see passwd
+  * Add option for defining: Warnings are errors
+  * cmake_minimum_required: drop outdated FATAL_ERROR.
+  * Add -Wshadow for clang-based builds
+  * Add support for generate doc
+  * Add warning when we can't open file
+  * Const'ify KConfigGroup
+  * Add default ClangBuildAnalyzer.ini (testing compile time)
+  * Add missing USE_UNITY_CMAKE_SUPPORT variable for building as unity from cmakepreset
+  * Fix some clazy warning
+  * Assign first and after that connect to signal/Slot
+  * Increase QT6KEYCHAIN_LIB_VERSION version
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
