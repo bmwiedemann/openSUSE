@@ -9,10 +9,10 @@ Subject: [PATCH 1/2] feat: set up dependencies generation for fedora
  2 files changed, 21 insertions(+)
  create mode 100644 data/mesongenbuildreq.py
 
-Index: meson-1.10.1/data/macros.meson
+Index: meson-1.11.0rc2/data/macros.meson
 ===================================================================
---- meson-1.10.1.orig/data/macros.meson
-+++ meson-1.10.1/data/macros.meson
+--- meson-1.11.0rc2.orig/data/macros.meson
++++ meson-1.11.0rc2/data/macros.meson
 @@ -47,6 +47,11 @@
          %{?qemu_user_space_build: -t 10} \
          %{nil}}
@@ -25,10 +25,10 @@ Index: meson-1.10.1/data/macros.meson
  # Declarative buildsystem, requires RPM 4.20+ to work
  # https://rpm-software-management.github.io/rpm/manual/buildsystem.html
  %buildsystem_meson_conf() %meson %*
-Index: meson-1.10.1/data/mesongenbuildreq.py
+Index: meson-1.11.0rc2/data/mesongenbuildreq.py
 ===================================================================
 --- /dev/null
-+++ meson-1.10.1/data/mesongenbuildreq.py
++++ meson-1.11.0rc2/data/mesongenbuildreq.py
 @@ -0,0 +1,61 @@
 +import subprocess
 +import json

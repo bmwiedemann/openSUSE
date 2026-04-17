@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Apr 14 06:56:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.11.0:
+  + BuildTarget(install_dir) length > 1 replaced with keywords
+  + Cython no longer requires explicitly enabling C or C++
+  + Deduplication of OpenMP linker arguments
+  + `meson dist` now accepts `-j`/`--num-processes`
+  + Deprecate `should_fail` and rename it to `expected_fail`, also
+    introduce `expected_exitcode`
+  + The external_project module uses the cygpath command to convert
+    paths
+  + install_man and install_headers: add support for install_tag
+    kwarg
+  + Added `link_early_args` to targets performing linking
+  + Machine files now expand `~` as the user's home directory
+  + `meson format` file sorting is now disabled by default and uses
+    natural sorting
+  + `-Db_lto` and `-Db_pgo` now supported for MSVC
+  + Last major version supporting Python 3.7, 3.8, and 3.9
+  + Python extension modules default to C ABI for Rust
+  + Meson now defines `QT_DEBUG` or `QT_NO_DEBUG` depending on
+    build type
+  + `compiler_target()` method in the Rust module
+  + Change to handling of linker arguments for Rust
+  + XC32 support now aware of v5.00 features
+  + windows.compile_resources now detects header changes with
+    rc.exe
+  + Added `implicit_include_directories` argument to
+    `windows.compile_resources`
+- Rebase 14001.patch and extend-test-timeout-on-qemu-builds.patch
+- Drop reproducible.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Mon Mar 23 01:50:41 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros for building and installing, using a venv
