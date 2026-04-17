@@ -1,7 +1,7 @@
 #
 # spec file for package calendarsupport
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           calendarsupport
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        KDE PIM calendaring support library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,7 +33,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -40,7 +40,7 @@ BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextCustomEditor)
+BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
 BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
@@ -48,7 +48,6 @@ BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
@@ -86,7 +85,7 @@ The development package for the calendarsupport libraries
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -106,7 +105,6 @@ The development package for the calendarsupport libraries
 %{_libdir}/libKPim6CalendarSupport.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6CalendarSupport.*
 %{_includedir}/KPim6/CalendarSupport/
 %{_kf6_cmakedir}/KPim6CalendarSupport/
 %{_kf6_libdir}/libKPim6CalendarSupport.so
