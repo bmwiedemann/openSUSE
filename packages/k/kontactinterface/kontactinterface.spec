@@ -1,7 +1,7 @@
 #
 # spec file for package kontactinterface
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kontactinterface
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Interface to Contacts
 License:        LGPL-2.1-or-later
@@ -31,7 +31,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -39,7 +38,6 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  pkgconfig(x11)
 
 %description
@@ -69,7 +67,7 @@ to develop KDE PIM applications.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -89,7 +87,6 @@ to develop KDE PIM applications.
 %{_kf6_libdir}/libKPim6KontactInterface.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6KontactInterface.*
 %{_includedir}/KPim6/KontactInterface/
 %{_kf6_cmakedir}/KPim6KontactInterface/
 %{_kf6_libdir}/libKPim6KontactInterface.so
