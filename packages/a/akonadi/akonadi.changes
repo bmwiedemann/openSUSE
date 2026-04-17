@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * FormCollectionComboBox: Fix combobox delegate text
+
+-------------------------------------------------------------------
+Mon Mar 30 12:09:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * Drop unused kwindowsystem dependency
+
+-------------------------------------------------------------------
+Sat Mar 14 09:08:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * dbconfigmysql.cpp - fallback to "mariadbd", not "mariadb" (kde#514280)
+  * Collection::displayName: Special case the akonadi_search_resource Search folder name (kde#358792)
+  * quick: fix proxy model used in collection picker page (kde#511706)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3

@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define name   akonadi
 %bcond_without released
 Name:           akonadi
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -34,7 +34,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-tools
@@ -52,7 +51,6 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
-BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
@@ -61,7 +59,6 @@ BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  pkgconfig(liblzma) >= 5.0.0
@@ -181,7 +178,7 @@ This package contains AppArmor profiles for Akonadi.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE -DDATABASE_BACKEND:STRING=SQLITE
+%cmake_kf6 -DDATABASE_BACKEND:STRING=SQLITE
 
 %kf6_build
 
@@ -190,13 +187,23 @@ This package contains AppArmor profiles for Akonadi.
 
 %find_lang %{name} --all-name
 
-%ldconfig_scriptlets
 %ldconfig_scriptlets -n libKPim6AkonadiWidgets6
 %ldconfig_scriptlets -n libKPim6AkonadiCore6
 %ldconfig_scriptlets -n libKPim6AkonadiAgentBase6
 %ldconfig_scriptlets -n libKPim6AkonadiPrivate6
 %ldconfig_scriptlets -n libKPim6AkonadiXml6
 %ldconfig_scriptlets -n libKPim6AkonadiAgentWidgetBase6
+
+%post
+%ldconfig
+%{systemd_user_post akonadi_control.service}
+
+%preun
+%{systemd_user_preun akonadi_control.service}
+
+%postun
+%ldconfig
+%{systemd_user_postun akonadi_control.service}
 
 %post apparmor
 %apparmor_reload %{_sysconfdir}/apparmor.d/mariadbd_akonadi %{_sysconfdir}/apparmor.d/mysqld_akonadi %{_sysconfdir}/apparmor.d/postgresql_akonadi %{_sysconfdir}/apparmor.d/usr.bin.akonadiserver
@@ -239,6 +246,7 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf6_sharedir}/akonadi/agents/knutresource.desktop
 %{_kf6_sharedir}/dbus-1/services/org.freedesktop.Akonadi.Control.service
 %{_kf6_sharedir}/mime/packages/akonadi-mime.xml
+%{_userunitdir}/akonadi_control.service
 
 %files -n libKPim6AkonadiAgentBase6
 %{_kf6_libdir}/libKPim6AkonadiAgentBase.so.*
@@ -263,7 +271,6 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf6_qmldir}/org/kde/akonadi/
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6Akonadi*
 %{_includedir}/KPim6/Akonadi/
 %{_includedir}/KPim6/AkonadiAgentBase/
 %{_includedir}/KPim6/AkonadiCore/
