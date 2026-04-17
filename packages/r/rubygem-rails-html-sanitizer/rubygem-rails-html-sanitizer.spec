@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rails-html-sanitizer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rails-html-sanitizer
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 %define mod_name rails-html-sanitizer
 %define mod_full_name %{mod_name}-%{version}

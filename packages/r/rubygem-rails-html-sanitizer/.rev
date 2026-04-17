@@ -95,4 +95,43 @@
     <comment></comment>
     <requestid>1108558</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d4a7f2c3dc74d47194a12ac7950a58c1</srcmd5>
+    <version>1.7.0</version>
+    <time>1776452660</time>
+    <user>dimstar_suse</user>
+    <comment>lofah issue should be okay now
+
+- Update to version 1.7.0
+  * Add Rails::HTML::Sanitizer.allowed_uri? which delegates to
+    Loofah::HTML5::Scrub.allowed_uri?, allowing the Rails framework to check
+    URI safety without a direct dependency on Loofah.
+  * The minimum Loofah dependency is now ~&gt; 2.25.
+
+- Update to version 1.6.2
+    * PermitScrubber fully supports frozen &quot;allowed tags&quot;. 
+        - v1.6.1 introduced safety checks that may remove unsafe tags from the
+          allowed list, which introduced a regression for applications passing
+          a frozen array of allowed tags. Tags and attributes are now properly
+          copied when they are passed to the scrubber. 
+- Version 1.6.1 
+    * The dependency on Nokogiri is updated to v1.15.7 or &gt;=1.16.8. This change
+      addresses CVE-2024-53985 (GHSA-w8gc-x259-rc7x).
+    * Disallowed tags will be pruned when they appear in foreign content (i.e.
+      SVG or MathML content), regardless of the prune: option value. Previously,
+      disallowed tags were &quot;stripped&quot; unless the gem was configured with the
+      prune: true option.
+      The CVEs addressed by this change are:
+        * CVE-2024-53986 (GHSA-638j-pmjw-jq48)
+        * CVE-2024-53987 (GHSA-2x5m-9ch4-qgrr)
+    * The tags &quot;noscript&quot;, &quot;mglyph&quot;, and &quot;malignmark&quot; will not be allowed, even
+      if explicitly added to the allowlist. If applications try to allow any of
+      these tags, a warning is emitted and the tags are removed from the
+      allow-list.
+      The CVEs addressed by this change are:
+        * CVE-2024-53988 (GHSA-cfjx-w229-hgx5)
+        * CVE-2024-53989 (GHSA-rxv5-gxqc-xx8g)
+      Please note that we may restore support for allowing &quot;noscript&quot; in a future</comment>
+    <requestid>1347656</requestid>
+  </revision>
 </revisionlist>
