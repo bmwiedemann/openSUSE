@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Build static extractor against release branch dependencies
+  * Update Flatpak manifest for 26.04 release branch
+  * Adapt to Poppler 26.04 API changes
+  * Update dependencies for the static extractor build
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:27 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * Handle Norwegian-language Entur tickets
+  * Move workaround for dubious German UIC station code to extractor scripts
+  * Recover station names from RCT2 on European Sleeper barcodes
+  * Fall back to station code when FCB data contains no name
+  * Add MÁV ORSZÁGBÉRLET product code mapping
+  * Update DRK filter pattern
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * Fix crash on referenced but non-existent PDF masks (kde#513945)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:52 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
