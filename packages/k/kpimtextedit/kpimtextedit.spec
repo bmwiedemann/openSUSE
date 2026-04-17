@@ -1,7 +1,7 @@
 #
 # spec file for package kpimtextedit
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           kpimtextedit
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
@@ -31,7 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
@@ -41,13 +41,12 @@ BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextAddonsWidgets)
-BuildRequires:  cmake(KF6TextCustomEditor)
-BuildRequires:  cmake(KF6TextEditTextToSpeech)
-BuildRequires:  cmake(KF6TextEmoticonsWidgets)
+BuildRequires:  cmake(KF6TextAddonsWidgets) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextEditTextToSpeech) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextEmoticonsWidgets) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
@@ -64,8 +63,8 @@ This package provides text editing functionality for KDE PIM applications
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Requires:       libKPim6TextEdit6 = %{version}
-Requires:       cmake(KF6TextCustomEditor)
-Requires:       cmake(KF6TextEditTextToSpeech)
+Requires:       cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
+Requires:       cmake(KF6TextEditTextToSpeech) >= %{ktextaddons_version}
 
 %description devel
 This package contains necessary include files and libraries needed
@@ -77,7 +76,7 @@ to develop KDE PIM applications.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -96,7 +95,6 @@ to develop KDE PIM applications.
 %{_kf6_libdir}/libKPim6TextEdit.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6TextEdit.*
 %{_includedir}/KPim6/KPIMTextEdit/
 %{_kf6_cmakedir}/KPim6TextEdit/
 %{_kf6_libdir}/libKPim6TextEdit.so

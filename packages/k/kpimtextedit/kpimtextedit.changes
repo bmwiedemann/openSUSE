@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * don't add two hr
+  * Remove qDebug
+  * fix index. Otherwise we remove current column/row
+  * Fix logic, we need to continue if obj is null otherwise it will cast
+  * Fix qbound argument
+  * Escape html
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * Use [[maybe_unused]]
+  * Fix typo + add KF_SKIP_PO_PROCESSING
+  * Add clazy build support
+  * cmake_minimum_required: drop outdated FATAL_ERROR.
+  * Add inmodule KPIMTextEdit
+  * Add -Wshadow for clang-based builds
+  * Fix documentation
+  * convert doc
+  * Fix ktextaddons dep
+  * Remove duplicate includes (found by script)
+  * Increase ktextaddons version
+  * Const'ify KConfigGroup
+  * Add default ClangBuildAnalyzer.ini (testing compile time)
+  * Fix some clazy warnings
+  * Add missing USE_UNITY_CMAKE_SUPPORT variable for building as unity from cmakepreset
+  * Use same ktextaddons version
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
