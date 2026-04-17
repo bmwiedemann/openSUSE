@@ -1,7 +1,7 @@
 #
 # spec file for package xiccd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           xiccd
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        X11 ICC Daemon
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://github.com/agalakhov/xiccd
 Source:         https://github.com/agalakhov/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM xiccd-0.4.1-no-gamma-option.patch dave@sp4m.net -- Add --no-gamma (-G) option.
+Patch0:         xiccd-0.4.1-no-gamma-option.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
@@ -48,19 +50,22 @@ native colour management yet, such as MATE, Xfce, LXDE, to name a
 few.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-autoreconf -fi
+aclocal
+autoconf
+automake --add-missing --foreign
 %configure
 %make_build
 
 %install
 %make_install
+rm %{buildroot}%{_datadir}/doc/xiccd/README.md
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_sysconfdir}/xdg/autostart/
 %{_bindir}/%{name}
 %{_mandir}/man8/%{name}.8%{?ext_man}

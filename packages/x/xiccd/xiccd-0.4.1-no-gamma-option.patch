@@ -1,0 +1,100 @@
+--- a/src/randr-conn-private.c
++++ b/src/randr-conn-private.c
+@@ -534,7 +534,7 @@ apply_icc (struct randr_display_priv *disp, GBytes *icc_bytes)
+ }
+ 
+ void
+-randr_display_private_apply_icc (struct randr_display *disp, CdIcc *icc)
++randr_display_private_apply_icc (struct randr_display *disp, CdIcc *icc, gboolean no_gamma)
+ {
+ 	GBytes *icc_bytes = NULL;
+ 	GError *err = NULL;
+@@ -548,7 +548,8 @@ randr_display_private_apply_icc (struct randr_display *disp, CdIcc *icc)
+ 			g_clear_error (&err);
+ 		}
+ 	}
+-	apply_gamma (pdisp, icc);
++	if (!no_gamma)
++		apply_gamma (pdisp, icc);
+ 	apply_icc (pdisp, icc_bytes);
+ 	if (icc_bytes)
+ 		g_bytes_unref (icc_bytes);
+diff --git a/src/randr-conn-private.h b/src/randr-conn-private.h
+index dc0ece8..bbc8deb 100644
+--- a/src/randr-conn-private.h
++++ b/src/randr-conn-private.h
+@@ -52,7 +52,7 @@ void randr_conn_private_update (struct randr_conn *conn);
+ struct randr_display *randr_conn_private_find_display (struct randr_conn *conn,
+ 						       const gchar *key,
+ 						       get_find_key_fn get_find_key);
+-void randr_display_private_apply_icc (struct randr_display *disp, CdIcc *icc);
++void randr_display_private_apply_icc (struct randr_display *disp, CdIcc *icc, gboolean no_gamma);
+ 
+ G_END_DECLS
+ 
+diff --git a/src/randr-conn.c b/src/randr-conn.c
+index 69608e3..2ef3257 100644
+--- a/src/randr-conn.c
++++ b/src/randr-conn.c
+@@ -135,9 +135,9 @@ struct randr_display *randr_conn_find_display_by_edid (RandrConn *conn, const gc
+ }
+ 
+ void
+-randr_display_apply_icc (struct randr_display *disp, CdIcc *icc)
++randr_display_apply_icc (struct randr_display *disp, CdIcc *icc, gboolean no_gamma)
+ {
+-	randr_display_private_apply_icc (disp, icc);
++	randr_display_private_apply_icc (disp, icc, no_gamma);
+ }
+ 
+ /* vim: set ts=8 sw=8 tw=0 : */
+diff --git a/src/randr-conn.h b/src/randr-conn.h
+index 4f638a2..42fc75a 100644
+--- a/src/randr-conn.h
++++ b/src/randr-conn.h
+@@ -27,7 +27,7 @@ RandrConn *randr_conn_new (const gchar *display);
+ void randr_conn_start (RandrConn *conn);
+ struct randr_display *randr_conn_find_display_by_name (RandrConn *conn, const gchar *name);
+ struct randr_display *randr_conn_find_display_by_edid (RandrConn *conn, const gchar *edid_cksum);
+-void randr_display_apply_icc (struct randr_display *disp, CdIcc *icc);
++void randr_display_apply_icc (struct randr_display *disp, CdIcc *icc, gboolean no_gamma);
+ 
+ G_END_DECLS
+ 
+diff --git a/src/xiccd.c b/src/xiccd.c
+index 568432b..d5f8077 100644
+--- a/src/xiccd.c
++++ b/src/xiccd.c
+@@ -15,6 +15,7 @@ typedef struct _Daemon {
+ static struct {
+ 	const gchar	*display;
+ 	      gboolean	edid;
++	      gboolean	no_gamma;
+ } config;
+ 
+ static void
+@@ -32,6 +33,8 @@ static GOptionEntry config_entries[] = {
+ 		"Uses a specific display", NULL },
+ 	{ "edid", 'e', 0, G_OPTION_ARG_NONE, &config.edid,
+ 		"Generates a default color profile based on the display model", NULL },
++	{ "no-gamma", 'G', 0, G_OPTION_ARG_NONE, &config.no_gamma,
++		"Do not change display gamma tables", NULL },
+ 	{ NULL }
+ };
+ 
+@@ -111,13 +114,13 @@ update_device_cb (GObject *src, GAsyncResult *res, gpointer user_data)
+ 			}
+ 			g_debug ("loading profile '%s' for display %s",
+ 				 icc ? cd_icc_get_filename (icc) : "(none)", disp->name);
+-			randr_display_apply_icc (disp, icc);
++			randr_display_apply_icc (disp, icc, config.no_gamma);
+ 			if (icc)
+ 				g_object_unref (icc);
+ 		}
+ 	} else {
+ 		g_debug ("unloading profile for display %s", disp->name);
+-		randr_display_apply_icc (disp, NULL);
++		randr_display_apply_icc (disp, NULL, config.no_gamma);
+ 	}
+ 
+ out:
