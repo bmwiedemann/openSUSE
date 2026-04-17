@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of python-3.14-image</comment>
     <requestid>1346470</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>271819ea27a3af33e385c59b3bc6a066</srcmd5>
+    <version>unknown</version>
+    <time>1776452720</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1347754</requestid>
+  </revision>
 </revisionlist>

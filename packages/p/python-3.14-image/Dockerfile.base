@@ -18,6 +18,7 @@
 #!BuildTag: opensuse/bci/python:%%py314_ver%%-base-%RELEASE%
 #!BuildTag: opensuse/bci/python:%%py314_ver%%-base
 #!BuildTag: opensuse/bci/python:3.14-base
+#!BuildTag: opensuse/bci/python:3.14
 #!BuildTag: opensuse/bci/python:latest
 #!BcntSyncTag: python-3.14-image
 
