@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * kcheckcombobox.cpp - fix the lineeditor text display (kde#518240)
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:52 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * gersemi fixes - cmake linting and formatting
+  * Use [[maybe_unused] vs Q_UNUSED
+  * cmake_minimum_required: drop outdated FATAL_ERROR.
+  * Fix the Qt commercial license naming
+  * Add module name etc.
+  * convert to qdoc
+  * Fix warning: declaration shadows a local variable
+  * Add -Wshadow for clang-based builds
+  * Add default ClangBuildAnalyzer.ini (testing compile time)
+  * Add missing USE_UNITY_CMAKE_SUPPORT variable for building as unity from cmakepreset
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
