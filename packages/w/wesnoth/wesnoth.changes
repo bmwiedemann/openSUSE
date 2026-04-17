@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 16 16:28:41 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Drop wesnoth-cmake-fix-find-readline.patch, not needed anymore
+- Clean-up specfile, Leap 15 is EOL
+
+-------------------------------------------------------------------
 Sat Apr 11 21:03:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18.7:

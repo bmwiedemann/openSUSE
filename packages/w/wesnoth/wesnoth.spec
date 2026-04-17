@@ -26,30 +26,14 @@ Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.wesnoth.org/
 # https://github.com/wesnoth/wesnoth/issues/6986 - How about adding a note to the GitHub release page saying "Don't download the tarballs from here"?
 Source:         http://files.wesnoth.org/%{name}-%{version}.tar.bz2
-# PATCH-FIX-OPENSUSE wesnoth-cmake-fix-find-readline.patch - cmake 3.20 (used on leap) can't find readline via pkg_check_modules
-Patch0:         wesnoth-cmake-fix-find-readline.patch
-Patch1:         boost.patch
+# PATCH-FIX-UPSTREAM boost.patch - Remove BuildRequires on libboost_system-devel
+Patch0:         boost.patch
 BuildRequires:  cmake >= 3.14
 BuildRequires:  dejavu
 BuildRequires:  fdupes
 BuildRequires:  fribidi-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-BuildRequires:  libboost_atomic1_75_0-devel
-BuildRequires:  libboost_chrono1_75_0-devel
-BuildRequires:  libboost_coroutine1_75_0-devel
-BuildRequires:  libboost_date_time1_75_0-devel
-BuildRequires:  libboost_filesystem1_75_0-devel
-BuildRequires:  libboost_graph1_75_0-devel
-BuildRequires:  libboost_iostreams1_75_0-devel
-BuildRequires:  libboost_locale1_75_0-devel
-BuildRequires:  libboost_program_options1_75_0-devel
-BuildRequires:  libboost_random1_75_0-devel
-BuildRequires:  libboost_regex1_75_0-devel
-BuildRequires:  libboost_system1_75_0-devel
-BuildRequires:  libboost_thread1_75_0-devel
-%else
 BuildRequires:  libboost_atomic-devel >= %{boost_min_version}
 BuildRequires:  libboost_chrono-devel >= %{boost_min_version}
 BuildRequires:  libboost_coroutine-devel >= %{boost_min_version}
@@ -62,7 +46,6 @@ BuildRequires:  libboost_program_options-devel >= %{boost_min_version}
 BuildRequires:  libboost_random-devel >= %{boost_min_version}
 BuildRequires:  libboost_regex-devel >= %{boost_min_version}
 BuildRequires:  libboost_thread-devel >= %{boost_min_version}
-%endif
 BuildRequires:  libopenssl-3-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
@@ -132,10 +115,7 @@ This package solely contains the basic file structure in order to have it owned 
 
 %prep
 %setup -q
-%patch -P 1 -p1
-%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 %patch -P 0 -p1
-%endif
 
 # Fix rpmlint's "E: env-script-interpreter".
 sed -i "s:/usr/bin/env python:/usr/bin/python:g" $(find data/tools -type f)
