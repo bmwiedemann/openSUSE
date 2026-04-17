@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        147.0.7727.55
+Version:        147.0.7727.101
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -607,6 +607,16 @@ popd
 
 %build
 # ccache experiment
+mkdir -p $HOME/.config/ccache
+cat << EOF > $HOME/.config/ccache/ccache.conf
+compression = true
+cache_dir = /.ccache
+sloppiness = gcno_cwd
+EOF
+export CCACHE_CONFIGPATH=$HOME/.config/ccache/ccache.conf
+# show what we get
+ccache --show-config
+#
 # Zero out the hit/miss stats from previous runs to have data from this build
 ccache --zero-stats
 # show how much cache we are starting with

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Apr 15 22:22:33 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 147.0.7727.101 (boo#1262174)
+  * CVE-2026-6296: Heap buffer overflow in ANGLE
+  * CVE-2026-6297: Use after free in Proxy
+  * CVE-2026-6298: Heap buffer overflow in Skia
+  * CVE-2026-6299: Use after free in Prerender
+  * CVE-2026-6358: Use after free in XR
+  * CVE-2026-6359: Use after free in Video
+  * CVE-2026-6300: Use after free in CSS
+  * CVE-2026-6301: Type Confusion in Turbofan
+  * CVE-2026-6302: Use after free in Video
+  * CVE-2026-6303: Use after free in Codecs
+  * CVE-2026-6304: Use after free in Graphite
+  * CVE-2026-6305: Heap buffer overflow in PDFium
+  * CVE-2026-6306: Heap buffer overflow in PDFium
+  * CVE-2026-6307: Type Confusion in Turbofan
+  * CVE-2026-6308: Out of bounds read in Media
+  * CVE-2026-6309: Use after free in Viz
+  * CVE-2026-6360: Use after free in FileSystem
+  * CVE-2026-6310: Use after free in Dawn
+  * CVE-2026-6311: Uninitialized Use in Accessibility
+  * CVE-2026-6312: Insufficient policy enforcement in Passwords
+  * CVE-2026-6313: Insufficient policy enforcement in CORS
+  * CVE-2026-6314: Out of bounds write in GPU
+  * CVE-2026-6315: Use after free in Permissions
+  * CVE-2026-6316: Use after free in Forms
+  * CVE-2026-6361: Heap buffer overflow in PDFium
+  * CVE-2026-6362: Use after free in Codecs
+  * CVE-2026-6317: Use after free in Cast
+  * CVE-2026-6363: Type Confusion in V8
+  * CVE-2026-6318: Use after free in Codecs
+  * CVE-2026-6319: Use after free in Payments
+  * CVE-2026-6364: Out of bounds read in Skia
+- try sloppiness=gcno_cwd in local ccache config
+
+-------------------------------------------------------------------
 Wed Apr  8 18:51:59 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 147.0.7727.55 (boo#1261758):

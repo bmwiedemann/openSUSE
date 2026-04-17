@@ -6388,4 +6388,12 @@ https://src.opensuse.org/chromium/chromium/commit/865f270c0c9ba77f4a37d6fc6210f7
     <comment>Chromium 147.0.7727.55 (boo#1261758)</comment>
     <requestid>1345294</requestid>
   </revision>
+  <revision rev="514" vrev="1">
+    <srcmd5>03aca1bc166f019e539cd82b3d48ec66</srcmd5>
+    <version>147.0.7727.101</version>
+    <time>1776452602</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 147.0.7727.101 (boo#1262174)</comment>
+    <requestid>1347177</requestid>
+  </revision>
 </revisionlist>
