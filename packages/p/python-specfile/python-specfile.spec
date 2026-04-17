@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-specfile
-Version:        0.39.1
+Version:        0.40.1
 Release:        0
 Summary:        A library for parsing and manipulating RPM spec files
 License:        MIT
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module flexmock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rpm}
 BuildRequires:  git-core
+BuildRequires:  openSUSE-release
 # /SECTION
 %python_subpackages
 

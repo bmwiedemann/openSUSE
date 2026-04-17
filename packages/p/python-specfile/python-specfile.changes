@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:18:16 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.40.1
+  * Fixed issues related to introduced sanitization (#523, #524, #525).
+- from version 0.40.0
+  * `Specfile()` has a new `sanitize` option that enables best effort
+    sanitization of potentially dangerous constructs such as shell
+    expansions and unsafe Lua macros before they are passed to RPM
+    for parsing. (#519)
+  * Fixed incorrect parsing of nested macros. (#522)
+- Add openSUSE-release to BuildRequires
+
+-------------------------------------------------------------------
 Wed Feb 25 11:16:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.39.1

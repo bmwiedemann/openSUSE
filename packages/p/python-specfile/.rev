@@ -416,4 +416,22 @@
     <comment></comment>
     <requestid>1335239</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b8433210f7437f53dfa48f12b34a1d70</srcmd5>
+    <version>0.40.1</version>
+    <time>1776452056</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1346846 from glaubitz
+
+- Update to 0.40.1
+    * Fixed issues related to introduced sanitization (#523, #524, #525).
+  - from version 0.40.0
+    * `Specfile()` has a new `sanitize` option that enables best effort
+      sanitization of potentially dangerous constructs such as shell
+      expansions and unsafe Lua macros before they are passed to RPM
+      for parsing. (#519)
+    * Fixed incorrect parsing of nested macros. (#522)
+  - Add openSUSE-release to BuildRequires</comment>
+    <requestid>1346971</requestid>
+  </revision>
 </revisionlist>
