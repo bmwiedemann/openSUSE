@@ -1,7 +1,7 @@
 #
 # spec file for package kmail
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,11 +19,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           kmail
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -56,10 +57,10 @@ BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
 BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextAutoCorrectionWidgets)
-BuildRequires:  cmake(KF6TextCustomEditor)
-BuildRequires:  cmake(KF6TextEditTextToSpeech)
-BuildRequires:  cmake(KF6TextUtils)
+BuildRequires:  cmake(KF6TextAutoCorrectionWidgets) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextEditTextToSpeech) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextUtils) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
