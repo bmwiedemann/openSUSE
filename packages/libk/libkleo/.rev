@@ -984,4 +984,12 @@
     <comment>KDE release gear 25.12.3</comment>
     <requestid>1337089</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>a530fd2d64117fb42d9724c8a1280271</srcmd5>
+    <version>26.04.0</version>
+    <time>1776455327</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 26.04</comment>
+    <requestid>1347586</requestid>
+  </revision>
 </revisionlist>
