@@ -304,4 +304,13 @@
   * Refs boo#1248678 (forwarded request 1335459 from jfkw)</comment>
     <requestid>1335460</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>067bec9fba900d3ccbd091af5b9df2ab</srcmd5>
+    <version>1.2.0</version>
+    <time>1776452651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0:
+  * go.mod: update golang.org/x dependencies (forwarded request 1347608 from jfkw)</comment>
+    <requestid>1347609</requestid>
+  </revision>
 </revisionlist>
