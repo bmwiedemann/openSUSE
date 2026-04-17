@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * build plugin: disallow closing first 2 tabs
+  * fix tab middle click to close with Qt >= 6.11
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * Fix crash in external tools plugin (kde#517045)
+  * addons/project: update open tabs when renaming (kde#516105)
+  * addons/search: add a way to clear the history (kde#503327)
+  * Fix view-less doc viewspace check (kde#515809)
+  * Fix word select+move shortcut conflict on macos (kde#512817)
+  * be consistent: we add the . later (kde#512111)
+  * Only append child's children if there's something to append (kde#513758)
+  * addons/project: allow D&D to move files (kde#479862)
+  * fix delete of last file open in editor (kde#513649)
+  * make the files relative to current dir (kde#512981)
+  * addons/project: allow deleting folders (kde#487775)
+  * Fix reading search highlight color (kde#512537)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
