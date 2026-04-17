@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 17 07:31:07 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 3.0.2:
+  * Fix Flatpak build and GUI resizing issues
+  * Add Linux low resource support and XML export functionality
+  * Claude: improve PCI and USB configuration
+
+- version 3.0.0:
+  * use netifaces to find interface
+  * improve network setup (create default bridge)
+  * Boot config: fix freeze while saving boot order
+  * Nvram back to raw format (qcow2 is causing too much issue)
+  * remove Actions collapsible: now use a Quick Bar buttons
+  * Update the doc
+  * Claude: clean up vm_details, add pci passtrhoug, fix watchdog issue
+    remove old virt-install code (no more used)
+
+-------------------------------------------------------------------
 Tue Apr 14 07:01:07 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 2.5.4:
