@@ -1836,4 +1836,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE release gear 25.12.3</comment>
     <requestid>1337130</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>41e0d90d0e6f24754930595bdb0205d8</srcmd5>
+    <version>26.04.0</version>
+    <time>1776455545</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 26.04 (forwarded request 1346091 from krop)</comment>
+    <requestid>1347581</requestid>
+  </revision>
 </revisionlist>
