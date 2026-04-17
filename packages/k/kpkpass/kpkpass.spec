@@ -1,7 +1,7 @@
 #
 # spec file for package kpkpass
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kpkpass
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
@@ -31,14 +31,12 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 kpkpass is a library to read and parse Apple Passbook files, such as the ones
@@ -76,7 +74,7 @@ to build programs that use the kpkpass library.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -104,7 +102,6 @@ to build programs that use the kpkpass library.
 %{_kf6_libdir}/libKPim6PkPass.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6PkPass.*
 %{_includedir}/KPim6/KPkPass/
 %{_kf6_cmakedir}/KPim6PkPass/
 %{_kf6_libdir}/libKPim6PkPass.so
