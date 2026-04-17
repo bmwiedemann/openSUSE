@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 10:38:07 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (jsc#PED-14607)
+  * Removing the *.la files
+
+-------------------------------------------------------------------
 Mon Jul 28 06:30:38 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (bsc#1246931)

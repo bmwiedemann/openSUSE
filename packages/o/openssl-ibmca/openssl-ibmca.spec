@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-ibmca
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,7 @@ export CPPFLAGS="%{optflags}"
 %install
 
 %make_install
+find %{buildroot} -name "*.la" -delete -print
 
 %post
 
