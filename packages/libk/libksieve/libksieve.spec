@@ -1,7 +1,7 @@
 #
 # spec file for package libksieve
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           libksieve
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -44,10 +45,10 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6Sonnet) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextAddonsWidgets)
-BuildRequires:  cmake(KF6TextCustomEditor)
-BuildRequires:  cmake(KF6TextEditTextToSpeech)
-BuildRequires:  cmake(KF6TextUtils)
+BuildRequires:  cmake(KF6TextAddonsWidgets) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextEditTextToSpeech) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextUtils) >= %{ktextaddons_version}
 BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
@@ -115,9 +116,6 @@ This package contains development headers of libksieve.
 %{_kf6_libdir}/libKPim6KSieveUi.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6KManageSieve.*
-%doc %{_kf6_qchdir}/KPim6KSieveCore.*
-%doc %{_kf6_qchdir}/KPim6KSieveUi.*
 %{_includedir}/KPim6/KManageSieve/
 %{_includedir}/KPim6/KSieve/
 %{_includedir}/KPim6/KSieveCore/
