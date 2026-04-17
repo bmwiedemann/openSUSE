@@ -1,7 +1,7 @@
 #
 # spec file for package dragonplayer
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define rname dragon
 %bcond_without released
 Name:           dragonplayer
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6MultimediaPrivate) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
