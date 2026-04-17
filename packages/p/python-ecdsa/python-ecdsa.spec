@@ -24,6 +24,8 @@ Summary:        ECDSA cryptographic signature library (pure python)
 License:        MIT
 URL:            https://github.com/tlsfuzzer/python-ecdsa
 Source:         https://files.pythonhosted.org/packages/source/e/ecdsa/ecdsa-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#tlsfuzzer/python-ecdsa#371
+Patch0:         support-python-3.14.patch
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -48,7 +50,7 @@ and signatures are very short, making them easy to handle and incorporate
 into other protocols.
 
 %prep
-%setup -q -n ecdsa-%{version}
+%autosetup -p1 -n ecdsa-%{version}
 
 %build
 %pyproject_wheel

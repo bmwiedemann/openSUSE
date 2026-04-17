@@ -232,4 +232,13 @@
     <comment></comment>
     <requestid>1343880</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>4dd60541f120fbfb91b869a5080ddf55</srcmd5>
+    <version>0.19.2</version>
+    <time>1776452656</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-3.14.patch:
+  * Support Python 3.13.13 (and 3.14.4) changes.</comment>
+    <requestid>1347627</requestid>
+  </revision>
 </revisionlist>
