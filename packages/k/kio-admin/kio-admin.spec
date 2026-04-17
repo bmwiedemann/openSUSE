@@ -1,7 +1,7 @@
 #
 # spec file for package kio-admin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kio-admin
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Manage files as administrator using the admin:// KIO protocol
 # 'GPL-2.0-only_OR_GPL-3.0-only_OR_LicenseRef-KDE-Accepted-GPL'
@@ -53,7 +53,7 @@ operations in root-scope.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
