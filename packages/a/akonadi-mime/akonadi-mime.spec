@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-mime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           akonadi-mime
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
@@ -32,7 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
@@ -42,7 +41,6 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  pkgconfig(libxslt)
 Conflicts:      libKF6AkonadiMime5 < %{version}
 
@@ -85,7 +83,7 @@ in KDE PIM applications.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -115,7 +113,6 @@ in KDE PIM applications.
 %{_kf6_sharedir}/mime/packages/x-vnd.kde.contactgroup.xml
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6AkonadiMime.*
 %{_includedir}/KPim6/AkonadiMime/
 %{_kf6_cmakedir}/KPim6AkonadiMime/
 %{_kf6_libdir}/libKPim6AkonadiMime.so
