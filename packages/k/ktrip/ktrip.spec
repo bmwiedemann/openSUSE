@@ -1,7 +1,7 @@
 #
 # spec file for package ktrip
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ktrip
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Public transport assistant targeted towards mobile Linux and Android
 License:        GPL-2.0-or-later
@@ -47,6 +47,8 @@ BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+# Upstream wants those as buildtime
+BuildRequires:  kpublictransport-imports
 # Breeze is used as the fallback icon theme
 Requires:       kf6-breeze-icons
 # QML imports

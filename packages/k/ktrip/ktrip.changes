@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Fix Android build with Qt 6.11
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * Mark all QML modules as required
+  * Fix remove qtquickcontrols2.conf
+  * Remove qtquickcontrols2.conf
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
