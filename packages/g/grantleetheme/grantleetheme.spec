@@ -1,7 +1,7 @@
 #
 # spec file for package grantleetheme
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           grantleetheme
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
@@ -31,7 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
@@ -40,8 +40,7 @@ BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
-BuildRequires:  cmake(KF6TextTemplate)
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+BuildRequires:  cmake(KF6TextTemplate) >= %{ktextaddons_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
@@ -59,7 +58,7 @@ The GrantleeTheme library
 Summary:        Development package for grantleetheme
 License:        LGPL-2.1-or-later
 Requires:       libKPim6GrantleeTheme6 = %{version}
-Requires:       cmake(KF6TextTemplate)
+Requires:       cmake(KF6TextTemplate) >= %{ktextaddons_version}
 
 %description devel
 The development package for the grantleetheme library
@@ -70,7 +69,7 @@ The development package for the grantleetheme library
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -91,7 +90,6 @@ The development package for the grantleetheme library
 %{_kf6_libdir}/libKPim6GrantleeTheme.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6GrantleeTheme.*
 %{_includedir}/KPim6/GrantleeTheme/
 %{_kf6_cmakedir}/KPim6GrantleeTheme/
 %{_kf6_libdir}/libKPim6GrantleeTheme.so
