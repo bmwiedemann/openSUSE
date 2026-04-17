@@ -1,0 +1,8 @@
+<package name="vermouth" project="openSUSE:Factory">
+  <title>A Wine/Proton game launcher for KDE</title>
+  <description>Vermouth is a lightweight game and application launcher for
+running Windows executables through Proton or Wine on KDE.
+It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
+(written in Qt/QML and using Kirigami).</description>
+  <url>https://github.com/dekomote/vermouth</url>
+</package>
