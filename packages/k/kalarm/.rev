@@ -929,4 +929,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE release gear 25.12.3</comment>
     <requestid>1336934</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>99fc0bd5c2edf90911c6ccde13d35f84</srcmd5>
+    <version>26.04.0</version>
+    <time>1776455364</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 26.04 (forwarded request 1346091 from krop)</comment>
+    <requestid>1347382</requestid>
+  </revision>
 </revisionlist>
