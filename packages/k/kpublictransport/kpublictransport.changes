@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Fix build with Qt 6.11 on Android
+  * Remove accidental ' in front of flags
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * Add support for the MOTIS v2.9 detailedLegs routing option
+  * Try harder to split route and line names in MOTIS responses
+  * Update MOTIS plan, trip and stoptime API to v5
+  * Parse brand color in MOTIS rental vehicle searches as well
+  * Support server-side stopover mode filtering with MOTIS
+  * Fix occupancy parsing assert in OTP test
+  * Fix coach tap handler wrongly triggering on engines/control cars
+  * Silence occupancy enum decoding warnings for unavailable occupancy data
+  * Correctly read international train numbers from Swiss OJP 2.0 API
+  * Make DB vehicle layout parser more robust against unknown UIC coach ids
+  * Check whether trip requests are actually for this backend before proceeding
+  * Propagate errors from Swiss train formation API
+  * Hafas attribute tweaks for nah.sh and VBN
+  * Implement trip queries for Entur's OTP variant as well
+  * Remove the non-standard SIRI carpool mode type
+  * Support Hafas location remarks
+  * Also recognize SIRI seating class enums
+  * Support Hafas pickup/dropoff constraint attributres in DB parser
+  * Add more Hafas attributes, in particular for on-demand services
+  * Handle Hafas attribute pickup/dropoff constraints
+  * Expand Hafas attribute map to support pickup/dropoff constraints
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
