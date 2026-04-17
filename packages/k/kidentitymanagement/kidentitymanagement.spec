@@ -1,7 +1,7 @@
 #
 # spec file for package kidentitymanagement
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           kidentitymanagement
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
@@ -32,7 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
@@ -44,7 +43,6 @@ BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KPim6TextEdit) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 This package provides a library to handle multiple email identities and
@@ -105,7 +103,7 @@ to develop applications that make use of multiple email identities.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -136,7 +134,6 @@ to develop applications that make use of multiple email identities.
 %{_kf6_qmldir}/org/kde/kidentitymanagement/
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6IdentityManagement*.*
 %{_includedir}/KPim6/KIdentityManagementCore/
 %{_includedir}/KPim6/KIdentityManagementQuick/
 %{_includedir}/KPim6/KIdentityManagementWidgets/
