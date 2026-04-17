@@ -1,7 +1,7 @@
 #
 # spec file for package incidenceeditor
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           incidenceeditor
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Incidenceeditor library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -32,7 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
@@ -54,7 +53,6 @@ BuildRequires:  cmake(KPim6Libkdepim) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6TextEdit) >= %{kpim6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
@@ -93,7 +91,7 @@ The development package for the incidenceeditor libraries.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -113,7 +111,6 @@ The development package for the incidenceeditor libraries.
 %{_libdir}/libKPim6IncidenceEditor.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6IncidenceEditor.*
 %{_includedir}/KPim6/IncidenceEditor/
 %{_kf6_cmakedir}/KPim6IncidenceEditor/
 %{_kf6_libdir}/libKPim6IncidenceEditor.so
