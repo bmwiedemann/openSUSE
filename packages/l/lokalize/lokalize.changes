@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * fix: stop constant "load project?" dialogues when closing tabs / project (kde#516944)
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * Revert "Add KDDockWidgets as new dependency"
+
+-------------------------------------------------------------------
+Sat Mar 14 09:10:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * fix: plural regex search (kde#411490)
+  * Autosave Glossary file while editing (kde#413495)
+  * Glossary - Create and save new glossary file (kde#513766)
+  * Compress consecutive copyright years in Gettext headers (kde#514468)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:19 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
