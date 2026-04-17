@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Tue Apr 14 10:25:53 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Restore build for Python 3.14.
+- Skip failing `test_meson_python_file_handling` test
+  (gh#mkdocstrings/griffe#452).
+
+-------------------------------------------------------------------
+Wed Apr  1 17:46:15 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial packaging effort for griffe 2.0.2.
+- Add static-version.patch to skip using dynamic versions of the
+  package.
