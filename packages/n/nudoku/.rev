@@ -146,4 +146,15 @@
   * Implement better sudoku solver (pr #78)</comment>
     <requestid>1328240</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0c6bbd58119855fe5b8d1e4859a18885</srcmd5>
+    <version>8.0.0</version>
+    <time>1776452636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.0:
+  * Add option -S to customize PDF paper size (pr #85 #87)
+  * Add Georgian and Vietnamese translation (pr #81 #82)
+  * Update Russian translation (pr #88)</comment>
+    <requestid>1347585</requestid>
+  </revision>
 </revisionlist>

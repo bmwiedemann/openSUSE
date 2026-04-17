@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 16 19:12:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 8.0.0:
+  * Add option -S to customize PDF paper size (pr #85 #87)
+  * Add Georgian and Vietnamese translation (pr #81 #82)
+  * Update Russian translation (pr #88)
+
+-------------------------------------------------------------------
 Tue Jan 20 10:19:59 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 7.0.0:
