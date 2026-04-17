@@ -1,7 +1,7 @@
 #
 # spec file for package kimap
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           kimap
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Library to assist working with IMAP servers
 License:        LGPL-2.1-or-later
@@ -33,14 +33,12 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
 %description
 KIMAP provides libraries to interface and communicate with
@@ -84,7 +82,6 @@ applications.
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %cmake_kf6 \
-  -DBUILD_QCH:BOOL=TRUE \
   -DBUILD_TESTING:BOOL=TRUE
 
 %kf6_build
@@ -105,7 +102,6 @@ applications.
 %{_kf6_libdir}/libKPim6IMAP.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6Imap.*
 %{_includedir}/KPim6/KIMAP/
 %{_includedir}/KPim6/KIMAPTest/
 %{_kf6_cmakedir}/KPim6IMAP/
