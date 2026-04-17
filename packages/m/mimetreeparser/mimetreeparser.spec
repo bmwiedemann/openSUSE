@@ -1,7 +1,7 @@
 #
 # spec file for package mimetreeparser
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,11 +19,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           mimetreeparser
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Library to parse MIME trees
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -33,7 +33,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(Gpgmepp)
 BuildRequires:  cmake(KF6CalendarCore) >= %{kf6_version}
@@ -42,13 +41,13 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KPim6Libkleo) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mbox) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 
 %description
@@ -103,7 +102,7 @@ files to develop applications using this library.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -134,8 +133,6 @@ rm %{buildroot}%{_kf6_qmldir}/org/kde/pim/mimetreeparser/private/HtmlPart.qml
 %{_kf6_qmldir}/org/kde/pim/mimetreeparser/
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6MimeTreeParserCore.*
-%doc %{_kf6_qchdir}/KPim6MimeTreeParserWidgets.*
 %{_includedir}/KPim6/MimeTreeParserCore/
 %{_includedir}/KPim6/MimeTreeParserWidgets/
 %{_kf6_cmakedir}/KPim6MimeTreeParserCore/
