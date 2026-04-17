@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 16 17:22:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build on Tumbleweed, add rnp-v0.18.1-botan-1-1.patch
+
+-------------------------------------------------------------------
 Sat Nov 22 09:07:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.18.1:

@@ -1,0 +1,32 @@
+https://github.com/rnpgp/rnp/pull/2381
+https://github.com/rnpgp/rnp/pull/2382
+
+[   36s] /home/abuild/rpmbuild/BUILD/rnp-0.18.1-build/rnp-v0.18.1/src/lib/crypto/mem.cpp: In function ‘size_t rnp::hex_decode(const char*, uint8_t*, size_t)’:
+[   36s] /home/abuild/rpmbuild/BUILD/rnp-0.18.1-build/rnp-v0.18.1/src/lib/crypto/mem.cpp:55:21: error: ‘strlen’ was not declared in this scope
+[   36s]    55 |     size_t hexlen = strlen(hex);
+[   36s]       |                     ^~~~~~
+[   36s] /home/abuild/rpmbuild/BUILD/rnp-0.18.1-build/rnp-v0.18.1/src/lib/crypto/mem.cpp:30:1: note: ‘strlen’ is defined in header ‘<cstring>’; this is probably fixable by adding ‘#include <cstring>’
+[   36s]    29 | #include "logging.h"
+[   36s]   +++ |+#include <cstring>
+[   36s]    30 | #include <botan/ffi.h>
+[   36s] make[2]: *** [src/lib/CMakeFiles/librnp-obj.dir/build.make:516: src/lib/CMakeFiles/librnp-obj.dir/crypto/mem.cpp.o] Error 1
+
+Index: rnp-v0.18.1/src/lib/crypto/mem.cpp
+===================================================================
+--- rnp-v0.18.1.orig/src/lib/crypto/mem.cpp
++++ rnp-v0.18.1/src/lib/crypto/mem.cpp
+@@ -25,6 +25,7 @@
+  */
+ 
+ #include <cstdio>
++#include <cstring>
+ #include "mem.h"
+ #include "logging.h"
+ #include <botan/ffi.h>
+@@ -65,4 +66,4 @@ hex_decode(const char *hex, uint8_t *buf
+     }
+     return buf_len;
+ }
+-} // namespace rnp
+\ No newline at end of file
++} // namespace rnp

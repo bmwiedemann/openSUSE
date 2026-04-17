@@ -173,4 +173,12 @@ Needs SR#1093175</comment>
     <comment>rnp 0.18.1 CVE-2025-13470 (boo#1253957, CVE-2025-13402)</comment>
     <requestid>1319259</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>bf1dc77bcf85ed1077cd4aa61ae7e583</srcmd5>
+    <version>0.18.1</version>
+    <time>1776452634</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on Tumbleweed</comment>
+    <requestid>1347330</requestid>
+  </revision>
 </revisionlist>
