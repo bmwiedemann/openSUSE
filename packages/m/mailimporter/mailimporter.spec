@@ -1,7 +1,7 @@
 #
 # spec file for package mailimporter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           mailimporter
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Mail import functionality for KDE PIM applications
 License:        GPL-2.0-or-later
@@ -32,7 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
@@ -44,7 +43,6 @@ BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommon) >= %{kpim6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 
@@ -92,7 +90,7 @@ used by KDE PIM applications to import data from other mail formats
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -116,8 +114,6 @@ used by KDE PIM applications to import data from other mail formats
 %{_kf6_libdir}/libKPim6MailImporterAkonadi.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6MailImporter.*
-%doc %{_kf6_qchdir}/KPim6MailImporterAkonadi.*
 %{_includedir}/KPim6/MailImporter/
 %{_includedir}/KPim6/MailImporterAkonadi/
 %{_kf6_cmakedir}/KPim6MailImporter/
