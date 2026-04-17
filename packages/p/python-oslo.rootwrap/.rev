@@ -315,4 +315,12 @@
   * Update master for stable/2025.2</comment>
     <requestid>1337526</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>23808118f0482695dbcf2c0f20ccd33e</srcmd5>
+    <version>7.9.0</version>
+    <time>1776452825</time>
+    <user>dimstar_suse</user>
+    <comment>- skip functional/eventlet tests that are less stable</comment>
+    <requestid>1347763</requestid>
+  </revision>
 </revisionlist>

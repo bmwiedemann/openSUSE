@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 17 16:44:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- skip functional/eventlet tests that are less stable
+
+-------------------------------------------------------------------
 Sun Mar  8 21:02:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.9.0:

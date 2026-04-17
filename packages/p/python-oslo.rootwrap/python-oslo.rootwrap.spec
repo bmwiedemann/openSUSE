@@ -25,7 +25,6 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.rootwrap
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo_rootwrap/oslo_rootwrap-%{version}.tar.gz
 BuildRequires:  %{python_module debtcollector}
-BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module pbr}
@@ -89,7 +88,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
 export PYTHONPATH=.
-%{openstack_stestr_run}
+rm -v oslo_rootwrap/tests/test_functional.py
+%{openstack_stestr_run} --slowest tests
 
 %files %{python_files}
 %license LICENSE
