@@ -29,8 +29,6 @@ Requires:       systemd >= 257
 Conflicts:      pkexec
 Provides:       pkexec = %{version}
 Conflicts:      sudo
-Conflicts:      sudo-plugin-python
-Conflicts:      sudo-policy-wheel-auth-self
 Provides:       sudo = %{version}
 
 %description

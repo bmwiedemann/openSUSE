@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 10 07:10:24 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove wrong conflicts to sudo dependencies
+
+-------------------------------------------------------------------
 Mon Feb 16 14:09:39 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Always enable polkit rules

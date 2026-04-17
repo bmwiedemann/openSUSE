@@ -20,4 +20,12 @@
   * run0-sudo: unset secure_path before calling run0 (test 5)</comment>
     <requestid>1333372</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3080b3d45a0369651f8946b737698d10</srcmd5>
+    <version>0.4+git20260203.bbbfcf8</version>
+    <time>1776452661</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1347654</requestid>
+  </revision>
 </revisionlist>
