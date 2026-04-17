@@ -1,7 +1,7 @@
 #
 # spec file for package facetimehd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           facetimehd
-Version:        0.6.13
+Version:        0.7.0.1
 Release:        0
 Summary:        Kernel driver for the Apple FacetimeHD webcams
 License:        GPL-2.0-only
