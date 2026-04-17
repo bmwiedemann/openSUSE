@@ -1171,4 +1171,12 @@ Fri May  9 17:13:53 UTC 2014 - tittiatcoke@gmail.com
     <comment>KDE release gear 25.12.3</comment>
     <requestid>1336900</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>0d0894e68fd394c6df0cd1f75182ec05</srcmd5>
+    <version>26.04.0</version>
+    <time>1776455338</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 26.04 (forwarded request 1346091 from krop)</comment>
+    <requestid>1347349</requestid>
+  </revision>
 </revisionlist>
