@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Apr  1 17:51:25 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial packaging effort for griffelib 2.0.2.
+- Add static-version.patch to skip using dynamic versions of the
+  package.

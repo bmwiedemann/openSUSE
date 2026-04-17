@@ -1,0 +1,34 @@
+---
+ pyproject.toml |    6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+Index: griffelib-2.0.2/pyproject.toml
+===================================================================
+--- griffelib-2.0.2.orig/pyproject.toml	2020-02-02 01:00:00.000000000 +0100
++++ griffelib-2.0.2/pyproject.toml	2026-04-01 19:59:32.823174858 +0200
+@@ -1,13 +1,14 @@
+ [build-system]
+ # pdm-backend is left here as a dependency of the version discovery script currently in use.
+ # It may be removed in the future. See mkdocstrings/griffe#430
+-requires = ["hatchling", "pdm-backend", "uv-dynamic-versioning>=0.7.0"]
++requires = ["hatchling", "pdm-backend"]
+ build-backend = "hatchling.build"
+ 
+ [project]
+ name = "griffelib"
+ description = "Signatures for entire Python programs. Extract the structure, the frame, the skeleton of your project, to generate API documentation or find breaking changes in your API."
+ authors = [{name = "Timothée Mazzucotelli", email = "dev@pawamoy.fr"}]
++version = "@VERSION@"
+ license = "ISC"
+ license-files = ["LICENSE"]
+ requires-python = ">=3.10"
+@@ -41,9 +42,6 @@
+ # to download and inspect packages from PyPI.
+ pypi = ["pip>=24.0", "platformdirs>=4.2", "wheel>=0.42"]
+ 
+-[tool.uv-dynamic-versioning]
+-pattern = '(?P<base>\d+\.\d+\.\d+)'
+-
+ [tool.hatch.version]
+ source = "code"
+ path = "../../scripts/get_version.py"
