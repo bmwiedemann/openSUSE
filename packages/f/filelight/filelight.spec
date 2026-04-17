@@ -1,7 +1,7 @@
 #
 # spec file for package filelight
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           filelight
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Graphical disk usage viewer
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -74,7 +74,6 @@ and the sizes of files and directories on the system.
 %{_kf6_applicationsdir}/org.kde.filelight.desktop
 %{_kf6_appstreamdir}/org.kde.filelight.appdata.xml
 %{_kf6_bindir}/filelight
-%{_kf6_configdir}/filelightrc
 %{_kf6_debugdir}/filelight.categories
 %{_kf6_iconsdir}/hicolor/*/*/filelight.png
 %dir %{_kf6_sharedir}/kio
