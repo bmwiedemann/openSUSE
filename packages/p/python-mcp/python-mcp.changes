@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Apr 14 14:52:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.27.0:
+  - fix: remove unused requests dependency from simple-chatbot
+    example
+  - ci: backport conformance tests from main to v1.x
+  - fix: add RFC 8707 resource validation to OAuth client
+  - feat: add idle timeout for StreamableHTTP sessions
+  - [v1.x] fix: prevent command injection in example URL opening
+  - Add VERSIONING.md, ROADMAP.md, and DEPENDENCY_POLICY.md
+  - docs: restructure README into docs/ pages
+  - docs: comprehensive feature documentation for SEP-1730 Tier 1
+  - docs: fix stub pages and improve docs structure
+  - docs: fix GitHub links to point to v1.x branch
+  - docs: add snippet verification for docs/ pages
+  - docs: add server-side tool error handling documentation
+  - Backport: Add missing TasksCallCapability to v1.x
+  - [v1.x] fix: handle non-UTF-8 bytes in stdio server stdin
+  - [v1.x] fix: handle ClosedResourceError when transport closes
+    mid-request
+
+-------------------------------------------------------------------
+Mon Feb  2 17:31:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Restore tests again.
+
+-------------------------------------------------------------------
+Mon Feb  2 11:47:16 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update to v1.26.0
+  * Backport: Support for Resource and ResourceTemplate metadata.
+  * fix: return HTTP 404 for unknown session IDs instead of 400.
+  From v.1.25.0:
+  * Fix for Url Elicitation issue.
+  From v1.24.0:
+  * feat: client-side support for SEP-1577 sampling with tools.
+  * Fix JSON-RPC error response ID matching.
+  * Add `streamable_http_client` which accepts `httpx.AsyncClient`
+  instead of `httpx_client_factory`.
+  * Fix: use correct python command name in `test_stdio.py`.
+- Add Recommends for python-uv and npm to devel package.
+
+-------------------------------------------------------------------
 Mon Feb  2 10:18:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add -devel subpackage to move commands to it, and conflict the
