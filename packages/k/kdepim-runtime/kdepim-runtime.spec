@@ -1,7 +1,7 @@
 #
 # spec file for package kdepim-runtime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
 
 %bcond_without released
 Name:           kdepim-runtime
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -117,6 +117,7 @@ use PIM applications.
 %{_kf6_applicationsdir}/org.kde.akonadi_openxchange_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_vcard_resource.desktop
 %{_kf6_applicationsdir}/org.kde.akonadi_vcarddir_resource.desktop
+%{_kf6_applicationsdir}/org.kde.akonadi_kolab_resource.desktop
 %{_kf6_bindir}/akonadi_*
 %{_kf6_bindir}/gidmigrator
 %{_kf6_dbusinterfacesdir}/org.kde.Akonadi.Maildir.Settings.xml
