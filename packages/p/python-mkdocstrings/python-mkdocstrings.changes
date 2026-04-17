@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Mon Apr 13 23:19:46 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Restore build for Python 3.14.
+
+-------------------------------------------------------------------
+Sun Apr 12 20:08:31 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove BR for pdm-pep517, which is now pdm-backend
+
+-------------------------------------------------------------------
+Sun Apr  5 12:35:24 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.0.3
+  * Bug Fixes
+    - Forward extension instances directly passed from Zensical (65b27ec).
+    - Propagate Zensical's zrelpath processor (dbf263d).
+- Changes from 1.0.2
+  * Code Refactoring
+    - Use global instances for handlers and autorefs (9f79141).
+- Changes from 1.0.1
+  * Code Refactoring
+    - Support manual cross-references in Zensical too (d37d907).
+    - Support cross-references in Zensical (f43f1ee). PR-812
+- Changes from 1.0.0
+  * Breaking Changes
+    - BaseHandler.name: Attribute value was changed: '' -> unset
+    - BaseHandler.domain: Attribute value was changed: '' -> unset
+    - BaseHandler.fallback_config: Public object was removed
+    - BaseHandler.__init__(args): Parameter was removed
+    - BaseHandler.__init__(kwargs): Parameter was removed
+    - BaseHandler.__init__(theme): Parameter was added as required
+    - BaseHandler.__init__(custom_templates): Parameter was added as required
+    - BaseHandler.__init__(mdx): Parameter was added as required
+    - BaseHandler.__init__(mdx_config): Parameter was added as required
+    - BaseHandler.update_env(args): Parameter was removed
+    - BaseHandler.update_env(kwargs): Parameter was removed
+    - BaseHandler.update_env(config): Parameter was added as required
+    - Handlers.get_anchors: Public object was removed (import from mkdocstrings directly)
+    - mkdocstrings.plugin: Public module was removed (import from mkdocstrings directly)
+    - mkdocstrings.loggers: Public module was removed (import from mkdocstrings directly)
+    - mkdocstrings.inventory: Public module was removed (import from mkdocstrings directly)
+    - mkdocstrings.extension: Public module was removed (import from mkdocstrings directly)
+    - mkdocstrings.handlers: Public module was removed (import from mkdocstrings directly)
+  * Code Refactoring
+    - Remove deprecated code before v1 (de34044).
+    - Expect Zensical to pass extension configuration instead of loading it again from YAML (6b73d5a).
+    - Expose the Markdown extension, to make mkdocstrings compatible with Zensical (6de2667).
+- Changes from 0.30.1
+  * Bug Fixes
+    - Create default SSL context in main thread before downloading inventories (eec7fb4).
+      Issue-796, PR-797
+
+
+-------------------------------------------------------------------
+Fri Oct 10 15:40:44 UTC 2025 - Misha Komarovskiy <zombah@gmail.com>
+
+- update to v0.30.0
+  * Add data-skip-inventory boolean attribute for elements to skip
+    registration in local inventory (f856160 by Bartosz Sławecki).
+    Issue-671, PR-774
+  * Add I18N support (translations) (2b4ed54 by Nyuan Zhang).
+    PR-645, Co-authored-by: Timothée Mazzucotelli dev@pawamoy.fr 
+
+-------------------------------------------------------------------
+Tue Aug  6 22:13:57 UTC 2024 - Misha Komarovskiy <zombah@gmail.com>
+
+- update to v0.25.1
+https://github.com/mkdocstrings/mkdocstrings/releases/tag/0.25.1 
+
+-------------------------------------------------------------------
+Tue Sep 12 00:28:27 UTC 2023 - Misha Komarovskiy <zombah@gmail.com>
+
+- specfile update:
+  * add pdm-backend 
+
+-------------------------------------------------------------------
+Tue Sep 12 00:13:15 UTC 2023 - Misha Komarovskiy <zombah@gmail.com>
+
+- update to v0.23.0
+https://github.com/mkdocstrings/mkdocstrings/releases/tag/0.23.0 
+
+-------------------------------------------------------------------
+Tue Jun 13 02:02:15 UTC 2023 - Misha Komarovskiy <zombah@gmail.com>
+
+- remove check section for now 
+
+-------------------------------------------------------------------
+Tue Jun 13 02:00:40 UTC 2023 - Misha Komarovskiy <zombah@gmail.com>
+
+- Initial commit of v0.21.2 
