@@ -1,0 +1,641 @@
+Building python-griffe-inherited-docstrings.spec for openSUSE_Tumbleweed/x86_64
+Using local file: python-griffe-inherited-docstrings.spec
+Getting buildconfig from server and store to /home/matej/build/home:mcepl:branches:science:machinelearning:mcp/python-griffe-inherited-docstrings/.osc/_buildconfig-openSUSE_Tumbleweed-x86_64
+unknown keyword in config: sbom:spdx
+unknown keyword in config: slsaversion:v1
+unknown keyword in config: publishflags:withsbom
+unknown keyword in config: publishflags:withreports
+Getting buildinfo from server and store to /home/matej/build/home:mcepl:branches:science:machinelearning:mcp/python-griffe-inherited-docstrings/.osc/_buildinfo-openSUSE_Tumbleweed-x86_64.xml
+unknown keyword in config: sbom:spdx
+unknown keyword in config: slsaversion:v1
+unknown keyword in config: publishflags:withsbom
+unknown keyword in config: publishflags:withreports
+Updating cache of required packages
+10.6% cache miss. 177/198 dependencies cached.
+
+1/21 (openSUSE:Tumbleweed) python311-pdm-backend-2.4.8-1.1.noarch.rpm
+2/21 (openSUSE:Tumbleweed) python314-pdm-backend-2.4.8-1.1.noarch.rpm
+3/21 (openSUSE:Tumbleweed) python313-pdm-backend-2.4.8-1.1.noarch.rpm
+4/21 (openSUSE:Tumbleweed) python311-pip-26.0.1-1.4.noarch.rpm
+5/21 (openSUSE:Tumbleweed) python314-pip-26.0.1-1.4.noarch.rpm
+6/21 (openSUSE:Tumbleweed) python313-pip-26.0.1-1.4.noarch.rpm
+7/21 (home:mcepl:branches:science:machinelearning:mcp) python311-griffelib-2.0.2-5.1.noarch.rpm
+8/21 (home:mcepl:branches:science:machinelearning:mcp) python314-griffelib-2.0.2-5.1.noarch.rpm
+9/21 (home:mcepl:branches:science:machinelearning:mcp) python313-griffelib-2.0.2-5.1.noarch.rpm
+10/21 (openSUSE:Tumbleweed) python311-setuptools-80.9.0-2.4.noarch.rpm
+11/21 (openSUSE:Tumbleweed) python311-pluggy-1.6.0-2.4.noarch.rpm
+12/21 (openSUSE:Tumbleweed) python311-Pygments-2.20.0-2.1.noarch.rpm
+13/21 (openSUSE:Tumbleweed) python311-iniconfig-2.3.0-1.3.noarch.rpm
+14/21 (openSUSE:Tumbleweed) python314-setuptools-80.9.0-2.4.noarch.rpm
+15/21 (openSUSE:Tumbleweed) python314-packaging-26.0-2.4.noarch.rpm
+16/21 (openSUSE:Tumbleweed) python314-Pygments-2.20.0-2.1.noarch.rpm
+17/21 (openSUSE:Tumbleweed) python314-iniconfig-2.3.0-1.3.noarch.rpm
+18/21 (openSUSE:Tumbleweed) python314-pluggy-1.6.0-2.4.noarch.rpm
+19/21 (openSUSE:Tumbleweed) python313-pluggy-1.6.0-2.4.noarch.rpm
+20/21 (openSUSE:Tumbleweed) python313-Pygments-2.20.0-2.1.noarch.rpm
+21/21 (openSUSE:Tumbleweed) python313-iniconfig-2.3.0-1.3.noarch.rpm
+Verifying integrity of cached packages
+using keys from openSUSE:Tumbleweed, home:mcepl:branches:science:machinelearning:mcp, science:machinelearning:mcp
+Writing build configuration
+Running build
+logging output to /var/tmp/build-root/openSUSE_Tumbleweed-x86_64/.build.log...
+[    0s] Memory limit set to 10063090KB
+[    0s] Using BUILD_ROOT=/var/tmp/build-root/openSUSE_Tumbleweed-x86_64
+[    0s] Using BUILD_ARCH=x86_64:i686:i586:i486:i386
+[    0s] 
+[    0s] unknown keyword in config: sbom:spdx
+[    0s] unknown keyword in config: slsaversion:v1
+[    0s] unknown keyword in config: publishflags:withsbom
+[    0s] unknown keyword in config: publishflags:withreports
+[    0s] unknown keyword in config: sbom:spdx
+[    0s] unknown keyword in config: slsaversion:v1
+[    0s] unknown keyword in config: publishflags:withsbom
+[    0s] unknown keyword in config: publishflags:withreports
+[    0s] 
+[    0s] mitmanek.cepl.eu started "build python-griffe-inherited-docstrings.spec" at Mon Apr 13 23:01:30 UTC 2026.
+[    0s] 
+[    0s] 
+[    0s] processing recipe /home/matej/build/home:mcepl:branches:science:machinelearning:mcp/python-griffe-inherited-docstrings/python-griffe-inherited-docstrings.spec ...
+[    0s] unknown keyword in config: sbom:spdx
+[    0s] unknown keyword in config: slsaversion:v1
+[    0s] unknown keyword in config: publishflags:withsbom
+[    0s] unknown keyword in config: publishflags:withreports
+[    1s] unknown keyword in config: sbom:spdx
+[    1s] unknown keyword in config: slsaversion:v1
+[    1s] unknown keyword in config: publishflags:withsbom
+[    1s] unknown keyword in config: publishflags:withreports
+[    1s] running changelog2spec --target rpm --file /home/matej/build/home:mcepl:branches:science:machinelearning:mcp/python-griffe-inherited-docstrings/python-griffe-inherited-docstrings.spec
+[    1s] init_buildsystem --configdir /usr/lib/build/configs --cachedir /var/cache/build --clean --rpmlist /tmp/rpmlist.8_rhan3h /home/matej/build/home:mcepl:branches:science:machinelearning:mcp/python-griffe-inherited-docstrings/python-griffe-inherited-docstrings.spec ...
+[    4s] unknown keyword in config: sbom:spdx
+[    4s] unknown keyword in config: slsaversion:v1
+[    4s] unknown keyword in config: publishflags:withsbom
+[    4s] unknown keyword in config: publishflags:withreports
+[    4s] unknown keyword in config: sbom:spdx
+[    4s] unknown keyword in config: slsaversion:v1
+[    4s] unknown keyword in config: publishflags:withsbom
+[    4s] unknown keyword in config: publishflags:withreports
+[    4s] cycle: libncurses6 -> terminfo-base
+[    4s]   breaking dependency terminfo-base -> libncurses6
+[    4s] [1/27] preinstalling compat-usrmerge-tools...
+[    4s] [2/27] preinstalling system-user-root...
+[    4s] [3/27] preinstalling filesystem...
+[    4s] [4/27] preinstalling glibc...
+[    4s] [5/27] preinstalling fillup...
+[    4s] [6/27] preinstalling libacl1...
+[    4s] [7/27] preinstalling libattr1...
+[    4s] [8/27] preinstalling libbz2-1...
+[    4s] [9/27] preinstalling libcap2...
+[    4s] [10/27] preinstalling libgmp10...
+[    4s] [11/27] preinstalling libgpg-error0...
+[    4s] [12/27] preinstalling libjitterentropy3...
+[    4s] [13/27] preinstalling liblua5_4-5...
+[    4s] [14/27] preinstalling liblzma5...
+[    4s] [15/27] preinstalling libpcre2-8-0...
+[    4s] [16/27] preinstalling libpopt0...
+[    4s] [17/27] preinstalling libz1...
+[    4s] [18/27] preinstalling libzstd1...
+[    4s] [19/27] preinstalling libselinux1...
+[    4s] [20/27] preinstalling libgcrypt20...
+[    4s] [21/27] preinstalling terminfo-base...
+[    5s] [22/27] preinstalling libncurses6...
+[    5s] [23/27] preinstalling libreadline8...
+[    5s] [24/27] preinstalling bash...
+[    5s] [25/27] preinstalling bash-sh...
+[    5s] [26/27] preinstalling coreutils...
+[    5s] [27/27] preinstalling rpm...
+[    6s] initializing rpm db...
+[    6s] reordering...unknown keyword in config: sbom:spdx
+[    6s] unknown keyword in config: slsaversion:v1
+[    6s] unknown keyword in config: publishflags:withsbom
+[    6s] unknown keyword in config: publishflags:withreports
+[    6s] cycle: libncurses6 -> terminfo-base
+[    6s]   breaking dependency terminfo-base -> libncurses6
+[    6s] cycle: lua54 -> lua-interpreter
+[    6s]   breaking dependency lua54 -> lua-interpreter
+[    6s] cycle: binutils -> libctf0
+[    6s]   breaking dependency binutils -> libctf0
+[    6s] cycle: python311-base -> libpython3_11-1_0
+[    6s]   breaking dependency python311-base -> libpython3_11-1_0
+[    6s] cycle: python313-base -> libpython3_13-1_0
+[    6s]   breaking dependency python313-base -> libpython3_13-1_0
+[    6s] cycle: python314-base -> libpython3_14-1_0
+[    6s]   breaking dependency python314-base -> libpython3_14-1_0
+[    6s] cycle: rpm-config-SUSE -> rpm
+[    6s]   breaking dependency rpm -> rpm-config-SUSE
+[    6s] done
+[    6s] querying package ids...
+[    6s] unknown keyword in config: sbom:spdx
+[    6s] unknown keyword in config: slsaversion:v1
+[    6s] unknown keyword in config: publishflags:withsbom
+[    6s] unknown keyword in config: publishflags:withreports
+[    7s] unknown keyword in config: sbom:spdx
+[    7s] unknown keyword in config: slsaversion:v1
+[    7s] unknown keyword in config: publishflags:withsbom
+[    7s] unknown keyword in config: publishflags:withreports
+[    7s] [1/198] cumulate compat-usrmerge-tools-84.87-5.23
+[    7s] [2/198] cumulate crypto-policies-20250714.cd6043a-2.1
+[    7s] [3/198] cumulate file-magic-5.47-1.1
+[    7s] [4/198] cumulate kernel-obs-build-6.19.11-1.1
+[    7s] [5/198] cumulate pkgconf-m4-2.5.1-1.2
+[    7s] [6/198] cumulate python-rpm-macros-20260317.5e02b19-1.2
+[    7s] [7/198] cumulate system-user-root-20190513-2.19
+[    7s] [8/198] cumulate vim-data-common-9.2.0219-1.2
+[    7s] [9/198] cumulate filesystem-84.87-21.1
+[    7s] [10/198] cumulate glibc-2.42-3.3
+[    7s] [11/198] cumulate diffutils-3.12-1.2
+[    7s] [12/198] cumulate envsubst-mini-1.0-2.1
+[    7s] [13/198] cumulate fillup-1.42-281.4
+[    7s] [14/198] cumulate glibc-gconv-modules-extra-2.42-3.3
+[    7s] [15/198] cumulate glibc-locale-base-2.42-3.3
+[    7s] [16/198] cumulate libacl1-2.3.2-2.4
+[    7s] [17/198] cumulate libalternatives1-1.2+31.da24cd4-25.16
+[    7s] [18/198] cumulate libatomic1-16.0.1+git8410-1.1
+[    7s] [19/198] cumulate libattr1-2.5.2-1.5
+[    7s] [20/198] cumulate libaudit1-4.0.2-3.2
+[    7s] [21/198] cumulate libbrotlicommon1-1.2.0-2.1
+[    7s] [22/198] cumulate libbz2-1-1.0.8-5.13
+[    7s] [23/198] cumulate libcap-ng0-0.8.5-1.4
+[    7s] [24/198] cumulate libcap2-2.78-1.1
+[    7s] [25/198] cumulate libcom_err2-1.47.3-1.3
+[    7s] [26/198] cumulate libcrypt1-4.5.2-2.1
+[    7s] [27/198] cumulate libeconf0-0.8.3-1.2
+[    7s] [28/198] cumulate libexpat1-2.7.5-1.1
+[    7s] [29/198] cumulate libffi8-3.5.2-2.2
+[    7s] [30/198] cumulate libgcc_s1-16.0.1+git8410-1.1
+[    7s] [31/198] cumulate libgdbm6-1.26-1.2
+[    7s] [32/198] cumulate libgmp10-6.3.0-5.3
+[    7s] [33/198] cumulate libgomp1-16.0.1+git8410-1.1
+[    7s] [34/198] cumulate libgpg-error0-1.59-1.1
+[    7s] [35/198] cumulate libitm1-16.0.1+git8410-1.1
+[    7s] [36/198] cumulate libjitterentropy3-3.6.3-1.2
+[    7s] [37/198] cumulate libjson-c5-0.18-1.4
+[    7s] [38/198] cumulate liblua5_4-5-5.4.8-4.3
+[    7s] [39/198] cumulate liblz1-1.16-1.1
+[    7s] [40/198] cumulate liblz4-1-1.10.0-2.5
+[    7s] [41/198] cumulate liblzma5-5.8.3-1.1
+[    7s] [42/198] cumulate libmpdec4-4.0.1-2.2
+[    7s] [43/198] cumulate libnghttp2-14-1.68.1-1.1
+[    7s] [44/198] cumulate libnghttp3-9-1.15.0-1.1
+[    7s] [45/198] cumulate libngtcp2-16-1.22.0-1.1
+[    7s] [46/198] cumulate libpcre2-8-0-10.47-1.3
+[    7s] [47/198] cumulate libpkgconf7-2.5.1-1.2
+[    7s] [48/198] cumulate libpopt0-1.19-2.1
+[    7s] [49/198] cumulate libsasl2-3-2.1.28-12.2
+[    7s] [50/198] cumulate libseccomp2-2.6.0-2.3
+[    7s] [51/198] cumulate libsmartcols1-2.41.3-5.2
+[    7s] [52/198] cumulate libunistring5-1.4.2-1.1
+[    7s] [53/198] cumulate libuuid1-2.41.3-5.2
+[    7s] [54/198] cumulate libverto1-0.3.2-3.6
+[    7s] [55/198] cumulate libxml2-16-2.15.2-1.1
+[    7s] [56/198] cumulate libz1-1.3.1-1.4
+[    7s] [57/198] cumulate libzstd1-1.5.7-3.2
+[    7s] [58/198] cumulate patch-2.8-2.2
+[    7s] [59/198] cumulate update-alternatives-1.22.21-2.2
+[    7s] [60/198] cumulate which-2.23-1.3
+[    7s] [61/198] cumulate xxd-9.2.0219-1.2
+[    7s] [62/198] cumulate alts-1.2+31.da24cd4-25.16
+[    7s] [63/198] cumulate libblkid1-2.41.3-5.2
+[    7s] [64/198] cumulate libbrotlidec1-1.2.0-2.1
+[    7s] [65/198] cumulate libctf-nobfd0-2.45-2.3
+[    7s] [66/198] cumulate libgdbm_compat4-1.26-1.2
+[    7s] [67/198] cumulate libglib-2_0-0-2.88.0-1.1
+[    7s] [68/198] cumulate libidn2-0-2.3.8-1.2
+[    7s] [69/198] cumulate libisl23-0.27-1.3
+[    7s] [70/198] cumulate libmpfr6-4.2.2-1.2
+[    7s] [71/198] cumulate libselinux1-3.10-1.2
+[    7s] [72/198] cumulate libstdc++6-16.0.1+git8410-1.1
+[    7s] [73/198] cumulate perl-base-5.42.0-1.2
+[    7s] [74/198] cumulate pkgconf-2.5.1-1.2
+[    7s] [75/198] cumulate libelf1-0.194-1.1
+[    7s] [76/198] cumulate libgcrypt20-1.12.1-1.3
+[    7s] [77/198] cumulate permctl-1699_20260217-1.1
+[    7s] [78/198] cumulate libmagic1-5.47-1.1
+[    7s] [79/198] cumulate build-mkbaselibs-20260312-1.1
+[    7s] [80/198] cumulate dwz-0.15-6.3
+[    7s] [81/198] cumulate findutils-4.10.0-2.4
+[    7s] [82/198] cumulate libgmodule-2_0-0-2.88.0-1.1
+[    7s] [83/198] cumulate fdupes-2.4.0-1.2
+[    7s] [84/198] cumulate file-5.47-1.1
+[    7s] [85/198] cumulate libasan8-16.0.1+git8410-1.1
+[    7s] [86/198] cumulate libfdisk1-2.41.3-5.2
+[    7s] [87/198] cumulate libhwasan0-16.0.1+git8410-1.1
+[    7s] [88/198] cumulate liblsan0-16.0.1+git8410-1.1
+[    7s] [89/198] cumulate libmount1-2.41.3-5.2
+[    7s] [90/198] cumulate libmpc3-1.3.1-1.11
+[    7s] [91/198] cumulate libpsl5-0.21.5-1.6
+[    7s] [92/198] cumulate libsource-highlight4-3.1.9-5.16
+[    7s] [93/198] cumulate libtsan2-16.0.1+git8410-1.1
+[    7s] [94/198] cumulate libubsan1-16.0.1+git8410-1.1
+[    7s] [95/198] cumulate sed-4.9-2.9
+[    7s] [96/198] cumulate tar-1.35-5.2
+[    7s] [97/198] cumulate libdw1-0.194-1.1
+[    7s] [98/198] cumulate perl-5.42.0-1.2
+[    7s] [99/198] cumulate brp-check-suse-84.87+git20260317.a0eb4ba-1.1
+[    7s] [100/198] cumulate perl-rpm-packaging-1.3-1.2
+[    7s] [101/198] cumulate libasm1-0.194-1.1
+[    7s] [102/198] cumulate babeltrace-1.5.8-4.3
+[    7s] [103/198] cumulate cpp15-15.2.1+git10776-3.2
+[    7s] [104/198] cumulate terminfo-base-6.6.20260328-100.1
+[    7s] [105/198] cumulate libncurses6-6.6.20260328-100.1
+[    7s] [106/198] cumulate libreadline8-8.3.3-2.3
+[    7s] [107/198] cumulate ncurses-utils-6.6.20260328-100.1
+[    7s] [108/198] cumulate bash-5.3.9-6.3
+[    7s] [109/198] cumulate lua54-5.4.8-4.3
+[    7s] [110/198] cumulate bash-sh-5.3.9-6.3
+[    7s] [111/198] cumulate compat-usrmerge-build-84.87-5.23
+[    7s] [112/198] cumulate lua-interpreter-5-3.2
+[    7s] [113/198] cumulate libssh-config-0.11.4-2.1
+[    7s] [114/198] cumulate cpio-2.15-7.1
+[    7s] [115/198] cumulate cpp-15-3.2
+[    7s] [116/198] cumulate gzip-1.14-1.3
+[    7s] [117/198] cumulate make-4.4.1-3.4
+[    7s] [118/198] cumulate bzip2-1.0.8-5.13
+[    7s] [119/198] cumulate grep-3.12-1.2
+[    7s] [120/198] cumulate pkgconf-pkg-config-2.5.1-1.2
+[    7s] [121/198] cumulate xz-5.8.3-1.1
+[    7s] [122/198] cumulate gettext-runtime-mini-1.0-2.1
+[    7s] [123/198] cumulate less-692-1.1
+[    7s] [124/198] cumulate strace-6.19-1.1
+[    7s] [125/198] cumulate gawk-5.3.2-1.3
+[    7s] [126/198] cumulate coreutils-9.10-3.2
+[    7s] [127/198] cumulate elfutils-0.194-1.1
+[    7s] [128/198] cumulate vim-9.2.0219-1.2
+[    7s] [129/198] cumulate linux-glibc-devel-6.19-1.1
+[    7s] [130/198] cumulate systemd-rpm-macros-26-1.2
+[    7s] [131/198] cumulate libxcrypt-devel-4.5.2-2.1
+[    7s] [132/198] cumulate permissions-config-1699_20260217-1.1
+[    7s] [133/198] cumulate polkit-default-privs-1550+20260212.d84c6be-1.1
+[    7s] [134/198] cumulate libopenssl3-3.5.3-4.1
+[    7s] [135/198] cumulate krb5-mini-1.22.2-2.2
+[    7s] [136/198] cumulate aaa_base-84.87+git20260210.ecce285-1.2
+[    7s] [137/198] cumulate gettext-tools-mini-1.0-2.1
+[    7s] [138/198] cumulate binutils-2.45-2.3
+[    7s] [139/198] cumulate rpm-4.20.1-6.2
+[    7s] [140/198] cumulate aaa_base-malloccheck-84.87+git20260210.ecce285-1.2
+[    7s] [141/198] cumulate permissions-1699_20260217-1.1
+[    7s] [142/198] cumulate rpm-config-SUSE-20250904-1.2
+[    7s] [143/198] cumulate glibc-devel-2.42-3.3
+[    7s] [144/198] cumulate libctf0-2.45-2.3
+[    7s] [145/198] cumulate libldap2-2.6.10-1.4
+[    7s] [146/198] cumulate libngtcp2_crypto_ossl0-1.22.0-1.1
+[    7s] [147/198] cumulate libssh4-0.11.4-2.1
+[    7s] [148/198] cumulate rpmlint-mini-2.9.0+git20260326.abd95437-20.51
+[    7s] [149/198] cumulate build-compare-20240801T083050.024a3a7-1.6
+[    7s] [150/198] cumulate libarchive13-3.8.6-1.1
+[    7s] [151/198] cumulate librpmbuild10-4.20.1-6.2
+[    7s] [152/198] cumulate python313-base-3.13.12-3.2
+[    7s] [153/198] cumulate python311-base-3.11.15-4.2
+[    7s] [154/198] cumulate python314-base-3.14.3-4.2
+[    7s] [155/198] cumulate debugedit-5.1-1.4
+[    7s] [156/198] cumulate python311-griffelib-2.0.2-5.1
+[    7s] [157/198] cumulate python311-iniconfig-2.3.0-1.3
+[    7s] [158/198] cumulate python311-packaging-26.0-99.2
+[    7s] [159/198] cumulate python311-pdm-backend-2.4.8-1.1
+[    7s] [160/198] cumulate python311-pluggy-1.6.0-2.4
+[    7s] [161/198] cumulate python311-setuptools-80.9.0-2.4
+[    7s] [162/198] cumulate python313-griffelib-2.0.2-5.1
+[    7s] [163/198] cumulate python313-iniconfig-2.3.0-1.3
+[    7s] [164/198] cumulate python313-packaging-26.0-99.1
+[    7s] [165/198] cumulate python313-pdm-backend-2.4.8-1.1
+[    7s] [166/198] cumulate python313-pluggy-1.6.0-2.4
+[    7s] [167/198] cumulate python313-setuptools-80.9.0-2.2
+[    7s] [168/198] cumulate python314-griffelib-2.0.2-5.1
+[    7s] [169/198] cumulate python314-iniconfig-2.3.0-1.3
+[    7s] [170/198] cumulate python314-packaging-26.0-2.4
+[    7s] [171/198] cumulate python314-pdm-backend-2.4.8-1.1
+[    7s] [172/198] cumulate python314-pluggy-1.6.0-2.4
+[    7s] [173/198] cumulate python314-setuptools-80.9.0-2.4
+[    7s] [174/198] cumulate libpython3_11-1_0-3.11.15-4.2
+[    7s] [175/198] cumulate libpython3_13-1_0-3.13.12-3.2
+[    7s] [176/198] cumulate libpython3_14-1_0-3.14.3-4.2
+[    7s] [177/198] cumulate python311-Pygments-2.20.0-2.1
+[    7s] [178/198] cumulate python313-Pygments-2.20.0-2.1
+[    7s] [179/198] cumulate python314-Pygments-2.20.0-2.1
+[    7s] [180/198] cumulate python311-pip-26.0.1-1.4
+[    7s] [181/198] cumulate python313-pip-26.0.1-1.4
+[    7s] [182/198] cumulate python313-rpm-4.20.1-6.3
+[    7s] [183/198] cumulate python314-pip-26.0.1-1.4
+[    7s] [184/198] cumulate pam-1.7.2-2.1
+[    7s] [185/198] cumulate post-build-checks-84.87+git20250725.0c3a172-1.2
+[    7s] [186/198] cumulate libcurl4-8.19.0-2.1
+[    7s] [187/198] cumulate gcc15-15.2.1+git10776-3.2
+[    7s] [188/198] cumulate gcc15-PIE-15.2.1+git10776-3.2
+[    7s] [189/198] cumulate gcc-15-3.2
+[    7s] [190/198] cumulate libdebuginfod1-0.194-1.1
+[    7s] [191/198] cumulate python-rpm-packaging-20210526+a18ca48-1.14
+[    7s] [192/198] cumulate python311-pytest-9.0.2-1.3
+[    7s] [193/198] cumulate python313-pytest-9.0.2-1.3
+[    7s] [194/198] cumulate python314-pytest-9.0.2-1.3
+[    7s] [195/198] cumulate util-linux-2.41.3-5.2
+[    7s] [196/198] cumulate gcc-PIE-15-3.2
+[    7s] [197/198] cumulate gdb-16.3-6.2
+[    7s] [198/198] cumulate rpm-build-4.20.1-6.2
+[    7s] now installing cumulated packages
+[    7s] Preparing...                          ########################################
+[    7s] Updating / installing...
+[    7s] system-user-root-20190513-2.19        ########################################
+[    7s] crypto-policies-20250714.cd6043a-2.1  ########################################
+[    7s] vim-data-common-9.2.0219-1.2          ########################################
+[    8s] python-rpm-macros-20260317.5e02b19-1.2########################################
+[    8s] pkgconf-m4-2.5.1-1.2                  ########################################
+[    8s] file-magic-5.47-1.1                   ########################################
+[    8s] compat-usrmerge-tools-84.87-5.23      ########################################
+[    8s] filesystem-84.87-21.1                 ########################################
+[    8s] glibc-2.42-3.3                        ########################################
+[    8s] libz1-1.3.1-1.4                       ########################################
+[    8s] libgcc_s1-16.0.1+git8410-1.1          ########################################
+[    8s] libstdc++6-16.0.1+git8410-1.1         ########################################
+[    8s] libzstd1-1.5.7-3.2                    ########################################
+[    8s] libelf1-0.194-1.1                     ########################################
+[    8s] libbz2-1-1.0.8-5.13                   ########################################
+[    8s] liblzma5-5.8.3-1.1                    ########################################
+[    8s] libgmp10-6.3.0-5.3                    ########################################
+[    8s] libacl1-2.3.2-2.4                     ########################################
+[    8s] libdw1-0.194-1.1                      ########################################
+[    8s] libcrypt1-4.5.2-2.1                   ########################################
+[    8s] perl-base-5.42.0-1.2                  ########################################
+[    8s] libuuid1-2.41.3-5.2                   ########################################
+[    8s] libmpfr6-4.2.2-1.2                    ########################################
+[    8s] fillup-1.42-281.4                     ########################################
+[    8s] libcap2-2.78-1.1                      ########################################
+[    8s] libexpat1-2.7.5-1.1                   ########################################
+[    8s] libpopt0-1.19-2.1                     ########################################
+[    8s] diffutils-3.12-1.2                    ########################################
+[    8s] libeconf0-0.8.3-1.2                   ########################################
+[    8s] libblkid1-2.41.3-5.2                  ########################################
+[    8s] libffi8-3.5.2-2.2                     ########################################
+[    8s] libgomp1-16.0.1+git8410-1.1           ########################################
+[    8s] liblua5_4-5-5.4.8-4.3                 ########################################
+[    9s] libmpdec4-4.0.1-2.2                   ########################################
+[    9s] libpcre2-8-0-10.47-1.3                ########################################
+[    9s] libselinux1-3.10-1.2                  ########################################
+[    9s] sed-4.9-2.9                           ########################################
+[    9s] findutils-4.10.0-2.4                  ########################################
+[    9s] libglib-2_0-0-2.88.0-1.1              ########################################
+[    9s] permctl-1699_20260217-1.1             ########################################
+[    9s] libmpc3-1.3.1-1.11                    ########################################
+[    9s] libisl23-0.27-1.3                     ########################################
+[    9s] cpp15-15.2.1+git10776-3.2             ########################################
+[    9s] dwz-0.15-6.3                          ########################################
+[    9s] libaudit1-4.0.2-3.2                   ########################################
+[    9s] libgdbm6-1.26-1.2                     ########################################
+[    9s] libjitterentropy3-3.6.3-1.2           ########################################
+[    9s] libngtcp2-16-1.22.0-1.1               ########################################
+[    9s] libunistring5-1.4.2-1.1               ########################################
+[    9s] libidn2-0-2.3.8-1.2                   ########################################
+[    9s] libpsl5-0.21.5-1.6                    ########################################
+[    9s] libgdbm_compat4-1.26-1.2              ########################################
+[   10s] perl-5.42.0-1.2                       ########################################
+[   10s] perl-rpm-packaging-1.3-1.2            ########################################
+[   10s] libgmodule-2_0-0-2.88.0-1.1           ########################################
+[   10s] babeltrace-1.5.8-4.3                  ########################################
+[   10s] libmount1-2.41.3-5.2                  ########################################
+[   10s] tar-1.35-5.2                          ########################################
+[   10s] libfdisk1-2.41.3-5.2                  ########################################
+[   10s] libasm1-0.194-1.1                     ########################################
+[   10s] libasan8-16.0.1+git8410-1.1           ########################################
+[   10s] libhwasan0-16.0.1+git8410-1.1         ########################################
+[   10s] liblsan0-16.0.1+git8410-1.1           ########################################
+[   10s] libsource-highlight4-3.1.9-5.16       ########################################
+[   10s] libtsan2-16.0.1+git8410-1.1           ########################################
+[   10s] libubsan1-16.0.1+git8410-1.1          ########################################
+[   10s] libctf-nobfd0-2.45-2.3                ########################################
+[   10s] envsubst-mini-1.0-2.1                 ########################################
+[   10s] glibc-gconv-modules-extra-2.42-3.3    ########################################
+[   10s] glibc-locale-base-2.42-3.3            ########################################
+[   10s] libalternatives1-1.2+31.da24cd4-25.16 ########################################
+[   10s] alts-1.2+31.da24cd4-25.16             ########################################
+[   10s] libatomic1-16.0.1+git8410-1.1         ########################################
+[   10s] libattr1-2.5.2-1.5                    ########################################
+[   11s] libbrotlicommon1-1.2.0-2.1            ########################################
+[   11s] libbrotlidec1-1.2.0-2.1               ########################################
+[   11s] libcap-ng0-0.8.5-1.4                  ########################################
+[   11s] libcom_err2-1.47.3-1.3                ########################################
+[   11s] libgpg-error0-1.59-1.1                ########################################
+[   11s] libgcrypt20-1.12.1-1.3                ########################################
+[   11s] libitm1-16.0.1+git8410-1.1            ########################################
+[   11s] libjson-c5-0.18-1.4                   ########################################
+[   11s] liblz1-1.16-1.1                       ########################################
+[   11s] libmagic1-5.47-1.1                    ########################################
+[   11s] liblz4-1-1.10.0-2.5                   ########################################
+[   11s] libnghttp2-14-1.68.1-1.1              ########################################
+[   11s] libnghttp3-9-1.15.0-1.1               ########################################
+[   11s] libpkgconf7-2.5.1-1.2                 ########################################
+[   11s] pkgconf-2.5.1-1.2                     ########################################
+[   11s] libsasl2-3-2.1.28-12.2                ########################################
+[   11s] libseccomp2-2.6.0-2.3                 ########################################
+[   11s] file-5.47-1.1                         ########################################
+[   11s] libsmartcols1-2.41.3-5.2              ########################################
+[   11s] libverto1-0.3.2-3.6                   ########################################
+[   11s] libxml2-16-2.15.2-1.1                 ########################################
+[   11s] patch-2.8-2.2                         ########################################
+[   11s] update-alternatives-1.22.21-2.2       ########################################
+[   11s] which-2.23-1.3                        ########################################
+[   11s] xxd-9.2.0219-1.2                      ########################################
+[   11s] terminfo-base-6.6.20260328-100.1      ########################################
+[   11s] libncurses6-6.6.20260328-100.1        ########################################
+[   11s] libreadline8-8.3.3-2.3                ########################################
+[   11s] bash-5.3.9-6.3                        ########################################
+[   11s] bash-sh-5.3.9-6.3                     ########################################
+[   12s] coreutils-9.10-3.2                    ########################################
+[   12s] libopenssl3-3.5.3-4.1                 ########################################
+[   12s] python313-base-3.13.12-3.2            ########################################
+[   12s] libpython3_13-1_0-3.13.12-3.2         ########################################
+[   12s] python311-base-3.11.15-4.2            ########################################
+[   12s] libpython3_11-1_0-3.11.15-4.2         ########################################
+[   13s] python314-base-3.14.3-4.2             ########################################
+[   13s] libpython3_14-1_0-3.14.3-4.2          ########################################
+[   13s] rpm-config-SUSE-20250904-1.2          ########################################
+[   13s] rpm-4.20.1-6.2                        ########################################
+[   13s] Updating /etc/sysconfig/services ...
+[   14s] binutils-2.45-2.3                     ########################################
+[   14s] update-alternatives: using /usr/bin/ld.bfd to provide /usr/bin/ld (ld) in auto mode
+[   14s] libctf0-2.45-2.3                      ########################################
+[   14s] grep-3.12-1.2                         ########################################
+[   14s] xz-5.8.3-1.1                          ########################################
+[   14s] gawk-5.3.2-1.3                        ########################################
+[   14s] cpio-2.15-7.1                         ########################################
+[   14s] librpmbuild10-4.20.1-6.2              ########################################
+[   14s] python313-packaging-26.0-99.1         ########################################
+[   14s] krb5-mini-1.22.2-2.2                  ########################################
+[   14s] Updating /etc/sysconfig/kadmind ...
+[   14s] Updating /etc/sysconfig/krb5kdc ...
+[   14s] lua-interpreter-5-3.2                 ########################################
+[   14s] lua54-5.4.8-4.3                       ########################################
+[   14s] python-rpm-packaging-20210526+a18ca48-########################################
+[   14s] python313-rpm-4.20.1-6.3              ########################################
+[   14s] python314-iniconfig-2.3.0-1.3         ########################################
+[   14s] python314-packaging-26.0-2.4          ########################################
+[   14s] python314-pluggy-1.6.0-2.4            ########################################
+[   14s] python314-setuptools-80.9.0-2.4       ########################################
+[   15s] python314-Pygments-2.20.0-2.1         ########################################
+[   15s] python311-iniconfig-2.3.0-1.3         ########################################
+[   15s] python311-packaging-26.0-99.2         ########################################
+[   15s] python311-pluggy-1.6.0-2.4            ########################################
+[   15s] python311-setuptools-80.9.0-2.4       ########################################
+[   15s] python311-Pygments-2.20.0-2.1         ########################################
+[   15s] python313-iniconfig-2.3.0-1.3         ########################################
+[   15s] python313-pluggy-1.6.0-2.4            ########################################
+[   15s] python313-setuptools-80.9.0-2.2       ########################################
+[   16s] python313-Pygments-2.20.0-2.1         ########################################
+[   16s] libldap2-2.6.10-1.4                   ########################################
+[   16s] libngtcp2_crypto_ossl0-1.22.0-1.1     ########################################
+[   16s] libarchive13-3.8.6-1.1                ########################################
+[   16s] linux-glibc-devel-6.19-1.1            ########################################
+[   16s] systemd-rpm-macros-26-1.2             ########################################
+[   16s] permissions-config-1699_20260217-1.1  ########################################
+[   16s] Updating /etc/sysconfig/security ...
+[   16s] Checking permissions and ownerships - using the permissions files
+[   16s] 	/usr/share/permissions/permissions
+[   16s] 	/usr/share/permissions/permissions.easy
+[   16s] 	/etc/permissions.local
+[   16s] permissions-1699_20260217-1.1         ########################################
+[   16s] pam-1.7.2-2.1                         ########################################
+[   16s] util-linux-2.41.3-5.2                 ########################################
+[   16s] polkit-default-privs-1550+20260212.d84########################################
+[   16s] Updating /etc/sysconfig/security ...
+[   16s] can't open /etc/polkit-1/rules.d/90-default-privs.rules.new: No such file or directory
+[   16s] warning: %post(polkit-default-privs-1550+20260212.d84c6be-1.1.noarch) scriptlet failed, exit status 2
+[   16s] libssh-config-0.11.4-2.1              ########################################
+[   16s] libssh4-0.11.4-2.1                    ########################################
+[   16s] libcurl4-8.19.0-2.1                   ########################################
+[   16s] libdebuginfod1-0.194-1.1              ########################################
+[   16s] cpp-15-3.2                            ########################################
+[   16s] gzip-1.14-1.3                         ########################################
+[   16s] make-4.4.1-3.4                        ########################################
+[   17s] bzip2-1.0.8-5.13                      ########################################
+[   17s] pkgconf-pkg-config-2.5.1-1.2          ########################################
+[   17s] libxcrypt-devel-4.5.2-2.1             ########################################
+[   17s] glibc-devel-2.42-3.3                  ########################################
+[   17s] gcc15-15.2.1+git10776-3.2             ########################################
+[   17s] gcc15-PIE-15.2.1+git10776-3.2         ########################################
+[   17s] gcc-15-3.2                            ########################################
+[   17s] gettext-runtime-mini-1.0-2.1          ########################################
+[   17s] gettext-tools-mini-1.0-2.1            ########################################
+[   17s] elfutils-0.194-1.1                    ########################################
+[   17s] debugedit-5.1-1.4                     ########################################
+[   17s] ncurses-utils-6.6.20260328-100.1      ########################################
+[   17s] aaa_base-84.87+git20260210.ecce285-1.2########################################
+[   17s] Updating /etc/sysconfig/proxy ...
+[   17s] aaa_base-malloccheck-84.87+git20260210########################################
+[   17s] post-build-checks-84.87+git20250725.0c########################################
+[   17s] rpm-build-4.20.1-6.2                  ########################################
+[   17s] gcc-PIE-15-3.2                        ########################################
+[   18s] gdb-16.3-6.2                          ########################################
+[   18s] rpmlint-mini-2.9.0+git20260326.abd9543########################################
+[   18s] python313-pytest-9.0.2-1.3            ########################################
+[   19s] python311-pytest-9.0.2-1.3            ########################################
+[   19s] python314-pytest-9.0.2-1.3            ########################################
+[   19s] compat-usrmerge-build-84.87-5.23      ########################################
+[   19s] build-compare-20240801T083050.024a3a7-########################################
+[   19s] python314-griffelib-2.0.2-5.1         ########################################
+[   19s] python314-pdm-backend-2.4.8-1.1       ########################################
+[   19s] python314-pip-26.0.1-1.4              ########################################
+[   19s] python311-griffelib-2.0.2-5.1         ########################################
+[   20s] python311-pdm-backend-2.4.8-1.1       ########################################
+[   20s] python311-pip-26.0.1-1.4              ########################################
+[   20s] python313-griffelib-2.0.2-5.1         ########################################
+[   20s] python313-pdm-backend-2.4.8-1.1       ########################################
+[   20s] python313-pip-26.0.1-1.4              ########################################
+[   20s] less-692-1.1                          ########################################
+[   20s] strace-6.19-1.1                       ########################################
+[   20s] vim-9.2.0219-1.2                      ########################################
+[   20s] brp-check-suse-84.87+git20260317.a0eb4########################################
+[   20s] build-mkbaselibs-20260312-1.1         ########################################
+[   20s] fdupes-2.4.0-1.2                      ########################################
+[   20s] kernel-obs-build-6.19.11-1.1          ########################################
+[   23s] now finalizing build dir...
+[   23s] ... running 01-add_abuild_user_to_trusted_group
+[   23s] ... running 02-set_timezone_to_utc
+[   23s] ... running 03-set-permissions-secure
+[   23s] ... running 11-hack_uname_version_to_kernel_version
+[   23s] unknown keyword in config: sbom:spdx
+[   23s] unknown keyword in config: slsaversion:v1
+[   23s] unknown keyword in config: publishflags:withsbom
+[   23s] unknown keyword in config: publishflags:withreports
+[   23s] WARNING could not set SOURCE_DATE_EPOCH, ensure BUILD_RELEASE is set in /.buildenv
+[   23s] tty: ttyname error: No such device
+[   23s] unknown keyword in config: sbom:spdx
+[   23s] unknown keyword in config: slsaversion:v1
+[   23s] unknown keyword in config: publishflags:withsbom
+[   23s] unknown keyword in config: publishflags:withreports
+[   23s] setting source mtime to 1776120914
+[   23s] unknown keyword in config: sbom:spdx
+[   23s] unknown keyword in config: slsaversion:v1
+[   23s] unknown keyword in config: publishflags:withsbom
+[   23s] unknown keyword in config: publishflags:withreports
+[   23s] unknown keyword in config: sbom:spdx
+[   23s] unknown keyword in config: slsaversion:v1
+[   23s] unknown keyword in config: publishflags:withsbom
+[   23s] unknown keyword in config: publishflags:withreports
+[   23s] unknown keyword in config: sbom:spdx
+[   23s] unknown keyword in config: slsaversion:v1
+[   23s] unknown keyword in config: publishflags:withsbom
+[   23s] unknown keyword in config: publishflags:withreports
+[   23s] unknown keyword in config: sbom:spdx
+[   23s] unknown keyword in config: slsaversion:v1
+[   23s] unknown keyword in config: publishflags:withsbom
+[   23s] unknown keyword in config: publishflags:withreports
+[   24s] unknown keyword in config: sbom:spdx
+[   24s] unknown keyword in config: slsaversion:v1
+[   24s] unknown keyword in config: publishflags:withsbom
+[   24s] unknown keyword in config: publishflags:withreports
+[   24s] unknown keyword in config: sbom:spdx
+[   24s] unknown keyword in config: slsaversion:v1
+[   24s] unknown keyword in config: publishflags:withsbom
+[   24s] unknown keyword in config: publishflags:withreports
+[   24s] -----------------------------------------------------------------
+[   24s] I have the following modifications for python-griffe-inherited-docstrings.spec:
+[   24s] unknown keyword in config: sbom:spdx
+[   24s] unknown keyword in config: slsaversion:v1
+[   24s] unknown keyword in config: publishflags:withsbom
+[   24s] unknown keyword in config: publishflags:withreports
+[   24s] unknown keyword in config: sbom:spdx
+[   24s] unknown keyword in config: slsaversion:v1
+[   24s] unknown keyword in config: publishflags:withsbom
+[   24s] unknown keyword in config: publishflags:withreports
+[   24s] unknown keyword in config: sbom:spdx
+[   24s] unknown keyword in config: slsaversion:v1
+[   24s] unknown keyword in config: publishflags:withsbom
+[   24s] unknown keyword in config: publishflags:withreports
+[   24s] -----------------------------------------------------------------
+[   24s] ----- building python-griffe-inherited-docstrings.spec (user abuild)
+[   24s] -----------------------------------------------------------------
+[   24s] -----------------------------------------------------------------
+[   24s] unknown keyword in config: sbom:spdx
+[   24s] unknown keyword in config: slsaversion:v1
+[   24s] unknown keyword in config: publishflags:withsbom
+[   24s] unknown keyword in config: publishflags:withreports
+[   24s] unknown keyword in config: sbom:spdx
+[   24s] unknown keyword in config: slsaversion:v1
+[   24s] unknown keyword in config: publishflags:withsbom
+[   24s] unknown keyword in config: publishflags:withreports
+[   24s] WARNING could not set SOURCE_DATE_EPOCH, ensure BUILD_RELEASE is set in /.buildenv
+[   24s] + exec rpmbuild -ba --define '_srcdefattr (-,root,root)' --noclean --nosignature --define '_build_create_debug 1' /home/abuild/rpmbuild/SOURCES/python-griffe-inherited-docstrings.spec
+[   25s] Building target platforms: noarch
+[   25s] Building for target noarch
+[   26s] Executing(%mkbuilddir): /usr/bin/bash -e /var/tmp/rpm-tmp.EaDo7R
+[   26s] Executing(%prep): /usr/bin/bash -e /var/tmp/rpm-tmp.mOB6ls
+[   26s] + umask 022
+[   26s] + cd /home/abuild/rpmbuild/BUILD/python-griffe-inherited-docstrings-1.1.3-build
+[   26s] + cd /home/abuild/rpmbuild/BUILD/python-griffe-inherited-docstrings-1.1.3-build
+[   26s] + rm -rf griffe-inherited-docstrings-1.1.3
+[   26s] + /usr/lib/rpm/rpmuncompress -x /home/abuild/rpmbuild/SOURCES/griffe_inherited_docstrings-1.1.3.tar.gz
+[   26s] + STATUS=0
+[   26s] + '[' 0 -ne 0 ']'
+[   26s] + cd griffe-inherited-docstrings-1.1.3
+[   26s] /var/tmp/rpm-tmp.mOB6ls: line 40: cd: griffe-inherited-docstrings-1.1.3: No such file or directory
+[   26s] error: Bad exit status from /var/tmp/rpm-tmp.mOB6ls (%prep)
+[   26s] 
+[   26s] RPM build errors:
+[   26s]     Bad exit status from /var/tmp/rpm-tmp.mOB6ls (%prep)
+[   26s] 
+[   26s] mitmanek.cepl.eu failed "build python-griffe-inherited-docstrings.spec" at Mon Apr 13 23:01:56 UTC 2026.
+[   26s] 
+
+Build failed with exit code 1
+The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64
+
+Cleaning the build root may fix the problem or allow you to start debugging from a well-defined state:
+  - add '--clean' option to your 'osc build' command
+  - run 'osc wipe [--vm-type=...]' prior running your 'osc build' command again
