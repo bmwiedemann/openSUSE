@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 17 18:28:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.5
+  * Added new directive `ignore_status`
+    (`vhost_traffic_status_ignore_status 1xx 3xx;`)
+  * Add support to measure status_codes
+
+-------------------------------------------------------------------
 Thu May 15 07:15:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Provide a module autoloading config fragment

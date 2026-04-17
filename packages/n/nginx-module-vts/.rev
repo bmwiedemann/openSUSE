@@ -47,4 +47,12 @@
     <comment>- Provide a module autoloading config fragment</comment>
     <requestid>1284814</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c87b83c42c2700c82927e89b8df12053</srcmd5>
+    <version>0.2.5</version>
+    <time>1776453933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.2.5</comment>
+    <requestid>1347789</requestid>
+  </revision>
 </revisionlist>

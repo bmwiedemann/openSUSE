@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-vts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define project_name nginx-module-vts
 Name:           nginx-module-vts
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        Nginx virtual host traffic status module
 License:        BSD-2-Clause
