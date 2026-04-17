@@ -1,7 +1,7 @@
 #
 # spec file for package apache-arrow
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,15 +29,15 @@
 %define gccver 13
 %endif
 
-%define sonum   2100
+%define sonum   2300
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit fbf6b703dc93d17d75fa3664c5aa2c7873ebaf06
+%define arrow_testing_commit a871ddc17a4dd936b7aa43898d59f86a11c3a2b5
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
-%define parquet_testing_commit 18d17540097fca7c40be3d42c167e6bfad90763c
+%define parquet_testing_commit e74785d85a4ecee829e1e405444d6a1b24b8bc9c
 # See cpp/thirdparty/versions.txt, replace by BuildRequires: pkgconfig(mimalloc) as soon as gh#apache/arrow#42211 is resolved
-%define arrow_mimalloc_build_version v2.2.4
+%define arrow_mimalloc_build_version v3.1.5
 Name:           apache-arrow
-Version:        21.0.0
+Version:        23.0.1
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -48,8 +48,6 @@ Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.
 Source1:        https://github.com/apache/arrow-testing/archive/%{arrow_testing_commit}.tar.gz#/arrow-testing-%{version}.tar.gz
 Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_testing_commit}.tar.gz#/parquet-testing-%{version}.tar.gz
 Source3:        https://github.com/microsoft/mimalloc/archive/%{arrow_mimalloc_build_version}.tar.gz#/mimalloc-%{arrow_mimalloc_build_version}.tar.gz
-# PATCH-FIX-OPENSUSE arrow-boost-system-1.89-boo1249599.patch gh#boostorg/system#132, boo#1249599
-Patch1:         arrow-boost-system-1.89-boo1249599.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.25
 BuildRequires:  fdupes
@@ -377,11 +375,6 @@ This package provides utilities for working with the Parquet format.
 
 %prep
 %setup -q -n arrow-apache-arrow-%{version} -a1 -a2
-%if 0%{?suse_version} >= 1699
-%patch -P1 -p1
-%endif
-# https://github.com/protocolbuffers/protobuf/issues/12292
-sed -i 's/find_package(Protobuf/find_package(Protobuf CONFIG/' cpp/cmake_modules/FindProtobufAlt.cmake
 
 %build
 %{?gccver:export CXX=g++-%{gccver}}

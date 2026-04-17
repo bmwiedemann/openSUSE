@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  7 07:56:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.0.1:
+  * Turn off GCS support by default; bundle if enabled
+  * Ensure `MAKEFLAGS` being passed during compilation
+  * Update bundled RE2 to enable Alpine Linux builds
+  * `stringr::str_replace_na()` binding implemented (#47521).
+  * Subsecond time variables no longer truncated in  `hms::hms()`
+    bindings
+  * Patch bundled version of Thrift to prevent CRAN check
+    failures (@kou, #47286)
+- drop arrow-boost-system-1.89-boo1249599.patch (obsolete)
+
+-------------------------------------------------------------------
 Fri Sep 26 16:52:42 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 -  Remove boost::system dependency for Tumbleweed
@@ -943,13 +957,13 @@ Mon Feb 17 19:17:26 UTC 2025 - Ben Greiner <code@bnavigator.de>
   * [Packaging][C++] Enable Azure file system for deb/rpm (#44348)
 - Drop apache-arrow-pr43766-boost1_86.patch
 - Release notes for 18.0.0 and 19.0.0
-  
+
 
 -------------------------------------------------------------------
 Fri Sep 27 05:31:41 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Set the appropriate C++ complier for the given platform so
-  it will compile on Leap 15.x. 
+  it will compile on Leap 15.x.
 
 -------------------------------------------------------------------
 Wed Sep 18 06:59:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
@@ -1399,7 +1413,7 @@ Sun Apr 21 16:35:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
   * disable static devel packages by default: The CMake targets
     require them for all builds, if not disabled
   * Add subpackages for Apache Arrow Flight and Flight SQL
-  
+
 
 -------------------------------------------------------------------
 Sat Mar 23 15:23:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
@@ -1413,7 +1427,7 @@ Sat Mar 23 15:23:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
     file (#40111)
   * [C++] Make span SFINAE standards-conforming to enable
     compilation with nvcc (#40253)
-  
+
 -------------------------------------------------------------------
 Wed Feb 28 08:08:44 UTC 2024 - Ben Greiner <code@bnavigator.de>
 

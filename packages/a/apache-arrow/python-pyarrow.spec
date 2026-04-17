@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyarrow
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,15 @@
 %bcond_with xsimd
 %define plainpython python
 # See git submodule /testing pointing to the correct revision
-%define arrow_testing_commit fbf6b703dc93d17d75fa3664c5aa2c7873ebaf06
+%define arrow_testing_commit a871ddc17a4dd936b7aa43898d59f86a11c3a2b5
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
-%define parquet_testing_commit 18d17540097fca7c40be3d42c167e6bfad90763c
+%define parquet_testing_commit e74785d85a4ecee829e1e405444d6a1b24b8bc9c
 %if %{suse_version} <= 1500
 # requires __has_builtin with keywords
 %define gccver 13
 %endif
 Name:           python-pyarrow
-Version:        21.0.0
+Version:        23.0.1
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -139,6 +139,7 @@ export PARQUET_TEST_DATA="${PWD}/parquet-testing-%{parquet_testing_commit}/data"
 # flaky tests
 donttest="test_total_bytes_allocated"
 donttest="$donttest or test_batch_lifetime"
+donttest="$donttest or test_table_uses_memory_pool"
 # worker crashes, we don't have an s3 setup in obs anyway
 donttest="$donttest or test_s3fs_limited_permissions_create_bucket"
 %ifarch %{ix86} %{arm32}

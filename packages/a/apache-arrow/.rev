@@ -690,4 +690,12 @@ apache-arrow is being used more and more by python numeric packages like pandas 
   * GH-46084 - [C++] Always use ARROW_VCPKG to detect vcpkg mode</comment>
     <requestid>1307560</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b699e0619e9a0d2ab4a7dd7d8f5745dd</srcmd5>
+    <version>23.0.1</version>
+    <time>1776452698</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.0.1:</comment>
+    <requestid>1347697</requestid>
+  </revision>
 </revisionlist>
