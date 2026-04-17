@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- No code change since 26.03.90
+
+-------------------------------------------------------------------
+Mon Mar 30 12:11:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * Check for XCB::Util in CMake (kde#517649)
+  * Only find XCB when building with X11 support
+  * Fix build without X11
+  * Mark PlasmaWaylandProtocols as REQUIRED (kde#517542)
+
+-------------------------------------------------------------------
+Sat Mar 14 09:10:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * Check preconditions before accessing screen info
+  * Use output order watcher from Plasma
+
+-------------------------------------------------------------------
 Tue Mar  3 09:57:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3

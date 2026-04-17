@@ -1,7 +1,7 @@
 #
 # spec file for package yakuake
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           yakuake
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Drop-down terminal emulator based on Konsole technologies
 License:        GPL-2.0-or-later
@@ -53,10 +53,13 @@ BuildRequires:  cmake(KF6StatusNotifierItem) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KWayland) >= %{plasma6_version}
+BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(x11)
+Buildrequires:  pkgconfig(xcb-event)
 Requires:       konsole-part
 Recommends:     konsole
 
