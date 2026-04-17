@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * src/agenda/timelabels.cpp - slightly better vertical grid alignment
+
+-------------------------------------------------------------------
+Mon Mar 30 12:09:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * cppcheck fixes
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * agendaitem.cpp - for short items at least show the start time too (kde#207809)
+  * agendaview.cpp - use narrow formatted dates for the day label as needed (kde#210835)
+  * monthscene.cpp - draw non-current-month date in a slightly lighter color (kde#423801)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
