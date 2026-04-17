@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Apr 17 00:16:28 UTC 2026 - malcolmlewis@opensuse.org
+
+- Update to version 3.3.2:
+  * Flush snapshot stream.
+- Changes from version 3.3.1:
+  * Fix json cmdline indent.
+  * Encode/decode usage and processes in snapshot.
+  * Snapshot with delay by default.
+  * Fix invalid JSON in snapshot.
+  * Add loop snapshot mode.
+  * Add interval mode to snapshot.
+- Changes from version 3.3.0:
+  * Merge effective load within GPU percentage meter.
+  * Refactor unified memory computation and sanitize process memory
+    usage.
+  * Fix NVIDIA memory reporting.
+  * Fix metax warnings.
+  * Bound effective load to 100%.
+  * Add support for Enflame GCU.
+  * Fix typos across documentation and source.
+  * Fix assertion failure when duplicate client_id encountered.
+  * When running on an AMD APU add VRAM + GTT together.
+  * Fix: Clamp effective load plot value to 100%.
+  * Feat: Add Effective Load metric and plot.
+  * Fix incorrect gpu number for METAX GPU.
+  * Update nvtop manpage with additional options.
+  * Fix unified memory GPU reporting to use actual GPU allocations.
+  * Fix unified memory reporting to use MemAvailable.
+  * Add device_field for memory clock.
+  * Add automatic screen redraw on tmux reconnection.
+  * Add F5 and Ctrl+L screen refresh functionality.
+  * Add rich memory stats.
+  * Feat: add support for METAX GPU.
+- Update service to manual and use xz tarball.
+
+-------------------------------------------------------------------
 Tue Jul 08 18:01:07 UTC 2025 - malcolmlewis@opensuse.org
 
 - Update to version 3.2.0+14:
