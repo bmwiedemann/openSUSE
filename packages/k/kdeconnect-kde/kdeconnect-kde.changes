@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Sanitize paths in ClipboardPlugin::receivePacket
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * sftp: Add trailing slash to URL when browsing
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * smsapp: Display newlines in chat message bubbles (kde#418285)
+  * smsapp: Preserve leading zeros in new conversation addresses (kde#498217)
+  * smsapp: Raise existing window when app is launched again (kde#498219)
+  * smsapp: Fix +New button not opening conversation (kde#463247)
+  * app: Improve accessibility of plugin list delegates (kde#517006)
+  * Fix clicking on plugin's row doesn't change plugin's status (kde#514923)
+  * plasmoid: make Share dialog non-modal (kde#515659)
+  * lanlinkprovider: don't go through instance to call a static (kde#515483)
+  * Fix do not send unsupported packets (kde#508301)
+  * runcommand: add actions for command editing (kde#512904)
+  * Fix sharing files from kdeconnect-app (kde#504982)
+  * runcommand: Make sample command OS-specific (kde#512016)
+  * Disable MDNS by default (kde#487719)
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3

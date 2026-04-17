@@ -1,7 +1,7 @@
 #
 # spec file for package kdeconnect-kde
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -67,6 +67,8 @@ BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libfakekey)
+BuildRequires:  pkgconfig(libei-1.0) 
+BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
@@ -113,8 +115,11 @@ https://f-droid.org/en/packages/org.kde.kdeconnect_tp/
 
 %find_lang %{name} --all-name
 
-# Remove unused static lib
-rm %{buildroot}%{_kf6_libdir}/libkdeconnectinterfaces.a
+# installed in %%_libdir upstream, move rules back to %%_udevrulesdir
+if [ ! -f %{buildroot}%{_udevrulesdir}/40-kdeconnect-uinput.rules ]; then
+    mkdir -p %{buildroot}%{_udevrulesdir}
+    mv %{buildroot}%{_libdir}/udev/rules.d/40-kdeconnect-uinput.rules %{buildroot}%{_udevrulesdir}
+fi
 
 %pre
 # migrate old kdeconnect-kde service
@@ -131,6 +136,7 @@ true
 
 %post
 %ldconfig
+
 %if 0%{?is_opensuse}
 if [ $1 -eq 1 ]; then # inital/first package install
     if [ -x %{_bindir}/firewall-cmd ]; then
@@ -216,6 +222,7 @@ true
 %dir %{_kf6_sharedir}/Thunar
 %dir %{_kf6_sharedir}/Thunar/sendto
 %{_kf6_sharedir}/Thunar/sendto/kdeconnect-thunar.desktop
+%{_udevrulesdir}/40-kdeconnect-uinput.rules
 
 %files lang -f %{name}.lang
 
