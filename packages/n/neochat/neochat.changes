@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Fix Android build with Qt 6.11
+  * Fix crash when reacting with /react (kde#518166)
+  * Fix icon for files in chatbar
+  * Various room creation fixes (kde#518300)
+  * Hide empty, errored out link previews (kde#517187)
+  * NeochatReportRoomJob: Fix space at beginning of endpoint URL
+  * Only load auto-completed members after typing one more character
+  * Only auto-complete joined members
+  * Fix JoinRules (and room security settings)
+  * Fix error related to editable TextComponent's usage of Sonnet
+  * Make stickers bigger in the emoji picker
+  * Don't show stickers in the custom emojis tab
+  * Include custom emojis in the history tab
+  * Fix the size of emojis in the picker
+  * Add colons around regular emoji shortcodes
+  * Increase RoomInformation scroll hack timer
+  * Ensure we select the mispelled word so it's replaced correctly
+  * Fix spellcheck suggestions never actually showing up
+  * Only start spellchecking after a short delay
+  * Fix the CompletionMenu clipping and key navigation
+  * Don't make pinned custom emotes humungous (kde#517850)
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * Force room delegates to be plain text
+  * Correct room delegate height based on font size
+  * Limit room avatar height
+  * Make sure the rich text off setting works for edits
+  * Set Rich Text Bar off by default
+  * Make sure that the chatbar is cleared when the rich text dev setting is changed.
+  * Put the Rich Chat bar under a dev setting. When off the new styling is kept but the bar is now only plain text.
+  * Fix empty list items
+  * Make sure that lists are not flattened
+  * Don't process space jobs on failure
+
+-------------------------------------------------------------------
+Sat Mar 14 09:10:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes since 25.12.3, only listing bugfixes:
+  * Don't change active connection when logging out an inactive connection (kde#515543)
+  * Don't send polls twice (kde#517184)
+  * Fix Random Next Lines (kde#516998)
+  * Close pinned message when leaving room (kde#516350)
+  * Disable send message when there's nothing to actually send (kde#516118)
+  * Fix tooltip and checked state of message overflow button (kde#516117)
+  * Don't attempt to navigate to a component that doesn't exist (kde#516107)
+  * Add support for copying & deleting multiple messages at once (kde#496458)
+  * Focus code and location chooser maximize components too (kde#515462)
+  * Don't scroll the timeline when reacting to messages (kde#515306)
+  * Use correct terminology when leaving space (kde#514888)
+  * Remove single tap to maximize code component (kde#499048)
+  * Fix transparency blur not applying to the timeline anymore (kde#513363)
+  * Improve space suggestions editing (kde#497044)
+  * Fix emojis being too small in EmojiDelegate (kde#514170)
+  * Add hack to fix crash when sending long text reactions (kde#504344)
+  * Add a button to cycle through unread highlights (kde#465095)
+  * Guard against currentIndex being -1 in NeochatMaximizeComponent (kde#513104)
+  * Consider highlights when determining whether a room can be marked as read (kde#501080)
+  * Fix crash when poll answer has fewer selections than possible (kde#511909)
+
+-------------------------------------------------------------------
 Fri Mar  6 07:47:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
