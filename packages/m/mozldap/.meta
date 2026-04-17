@@ -1,7 +1,0 @@
-<package name="mozldap" project="openSUSE:Factory">
-  <title>Mozilla LDAP C SDK</title>
-  <description>The Mozilla LDAP C SDK is a set of libraries that allow applications to communicate with LDAP directory servers. These libraries are derived from the University
-of Michigan and Netscape LDAP libraries. They use Mozilla NSPR and NSS for crypto.</description>
-  <devel project="mozilla:Factory" package="mozldap"/>
-  <url>https://wiki.mozilla.org/LDAP_C_SDK</url>
-</package>
