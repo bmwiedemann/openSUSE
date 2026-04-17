@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:14:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- Changes since 26.03.90:
+  * Harden RFC 2047 parsing against null bytes in the charset
+  * Remember where to re-try RFC 2047 word decoding
+  * Reduce temporary memory allocation in RFC 2047 decoding
+  * Harden header parser against corrupt comments in many more places
+  * Remove unnecessary export macro on internal parser function
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- Changes since 26.03.80:
+  * Validate uuencode header more strictly
+  * Add basic test for uuencoded content
+  * KMIME_LIB_VERSION is not used
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3

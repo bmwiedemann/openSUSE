@@ -1,7 +1,7 @@
 #
 # spec file for package kmime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmime
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        KDE PIM libraries MIME support
 License:        LGPL-2.1-or-later
@@ -31,13 +31,11 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
-BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 Conflicts:      libKF5Mime5 < %{version}
 
 %description
@@ -65,7 +63,7 @@ to develop KDE PIM applications.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_TESTING:BOOL=TRUE -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6 -DBUILD_TESTING:BOOL=TRUE
 
 %kf6_build
 
@@ -84,7 +82,6 @@ to develop KDE PIM applications.
 %{_kf6_libdir}/libKPim6Mime.so.*
 
 %files devel
-%doc %{_kf6_qchdir}/KPim6Mime.*
 %{_includedir}/KPim6/KMime/
 %{_kf6_cmakedir}/KPim6Mime/
 %{_kf6_libdir}/libKPim6Mime.so
