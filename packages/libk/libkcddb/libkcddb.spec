@@ -1,7 +1,7 @@
 #
 # spec file for package libkcddb
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,9 @@ Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/release-service/%{rversion}/src/%{name}-%{rversion}.tar.xz
+Source0:        %{name}-%{rversion}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{rversion}/src/%{name}-%{rversion}.tar.xz.sig
+Source1:        %{name}-%{rversion}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  pkgconfig
