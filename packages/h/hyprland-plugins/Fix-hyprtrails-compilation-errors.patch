@@ -1,0 +1,173 @@
+From: Chow Loong Jin <hyperair@debian.org>
+Date: Thu, 19 Mar 2026 16:26:16 +0800
+Subject: Fix hyprtrails compilation errors
+
+Partially fixes: #629
+Forwarded: yes
+Bug: https://github.com/hyprwm/hyprland-plugins/pull/632
+---
+ hyprtrails/globals.hpp |  9 ++++++++-
+ hyprtrails/main.cpp    | 19 +++++--------------
+ hyprtrails/trail.cpp   | 15 +++++++--------
+ hyprtrails/trail.hpp   |  3 ++-
+ 4 files changed, 22 insertions(+), 24 deletions(-)
+
+diff --git a/hyprtrails/globals.hpp b/hyprtrails/globals.hpp
+index 5abe391..9555c1b 100644
+--- a/hyprtrails/globals.hpp
++++ b/hyprtrails/globals.hpp
+@@ -1,11 +1,18 @@
+ #pragma once
+ 
+ #include <hyprland/src/plugins/PluginAPI.hpp>
++#include <src/event/EventBus.hpp>
++#include <src/render/Shader.hpp>
+ 
+ inline HANDLE PHANDLE = nullptr;
+ 
+ struct SGlobalState {
+-    SShader          trailShader;
++    CShader          trailShader;
++
++    struct {
++        Event::CEventBus::Event<> trailTick;
++    } events;
++
+     wl_event_source* tick = nullptr;
+ };
+ 
+diff --git a/hyprtrails/main.cpp b/hyprtrails/main.cpp
+index 76201a8..46b0e66 100644
+--- a/hyprtrails/main.cpp
++++ b/hyprtrails/main.cpp
+@@ -8,7 +8,7 @@
+ #include <hyprland/src/config/ConfigManager.hpp>
+ #include <hyprland/src/render/shaders/Shaders.hpp>
+ #include <hyprland/src/render/Renderer.hpp>
+-#include <hyprland/src/managers/HookSystemManager.hpp>
++#include <hyprland/src/event/EventBus.hpp>
+ 
+ #include "globals.hpp"
+ #include "shaders.hpp"
+@@ -19,10 +19,7 @@ APICALL EXPORT std::string PLUGIN_API_VERSION() {
+     return HYPRLAND_API_VERSION;
+ }
+ 
+-void onNewWindow(void* self, std::any data) {
+-    // data is guaranteed
+-    const auto PWINDOW = std::any_cast<PHLWINDOW>(data);
+-
++void onNewWindow(PHLWINDOW PWINDOW) {
+     HyprlandAPI::addWindowDecoration(PHANDLE, PWINDOW, makeUnique<CTrail>(PWINDOW));
+ }
+ 
+@@ -74,7 +71,7 @@ GLuint CreateProgram(const std::string& vert, const std::string& frag) {
+ }
+ 
+ int onTick(void* data) {
+-    EMIT_HOOK_EVENT("trailTick", nullptr);
++    g_pGlobalState->events.trailTick.emit();
+ 
+     const int TIMEOUT = g_pHyprRenderer->m_mostHzMonitor ? 1000.0 / g_pHyprRenderer->m_mostHzMonitor->m_refreshRate : 16;
+     wl_event_source_timer_update(g_pGlobalState->tick, TIMEOUT);
+@@ -85,13 +82,7 @@ int onTick(void* data) {
+ void initGlobal() {
+     g_pHyprRenderer->makeEGLCurrent();
+ 
+-    GLuint prog                                                     = CreateProgram(QUADTRAIL, FRAGTRAIL);
+-    g_pGlobalState->trailShader.program                             = prog;
+-    g_pGlobalState->trailShader.uniformLocations[SHADER_PROJ]       = glGetUniformLocation(prog, "proj");
+-    g_pGlobalState->trailShader.uniformLocations[SHADER_TEX]        = glGetUniformLocation(prog, "tex");
+-    g_pGlobalState->trailShader.uniformLocations[SHADER_COLOR]      = glGetUniformLocation(prog, "color");
+-    g_pGlobalState->trailShader.uniformLocations[SHADER_POS_ATTRIB] = glGetAttribLocation(prog, "pos");
+-    g_pGlobalState->trailShader.uniformLocations[SHADER_GRADIENT]   = glGetUniformLocation(prog, "snapshots");
++    g_pGlobalState->trailShader.createProgram(QUADTRAIL, FRAGTRAIL);
+ 
+     g_pGlobalState->tick = wl_event_loop_add_timer(g_pCompositor->m_wlEventLoop, &onTick, nullptr);
+     wl_event_source_timer_update(g_pGlobalState->tick, 1);
+@@ -115,7 +106,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
+     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprtrails:history_step", Hyprlang::INT{2});
+     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprtrails:color", Hyprlang::INT{*configStringToInt("rgba(ffaa00ff)")});
+ 
+-    static auto P = HyprlandAPI::registerCallbackDynamic(PHANDLE, "openWindow", [&](void* self, SCallbackInfo& info, std::any data) { onNewWindow(self, data); });
++    static auto P = Event::bus()->m_events.window.open.listen([&](PHLWINDOW PWINDOW) { onNewWindow(PWINDOW); });
+ 
+     g_pGlobalState = makeUnique<SGlobalState>();
+     initGlobal();
+diff --git a/hyprtrails/trail.cpp b/hyprtrails/trail.cpp
+index 8598449..f9bd3d0 100644
+--- a/hyprtrails/trail.cpp
++++ b/hyprtrails/trail.cpp
+@@ -36,12 +36,11 @@ CTrail::CTrail(PHLWINDOW pWindow) : IHyprWindowDecoration(pWindow), m_pWindow(pW
+     m_lastWindowPos  = pWindow->m_realPosition->value();
+     m_lastWindowSize = pWindow->m_realSize->value();
+ 
+-    pTickCb = HyprlandAPI::registerCallbackDynamic(PHANDLE, "trailTick", [this](void* self, SCallbackInfo& info, std::any data) { this->onTick(); });
++    pTickCb = g_pGlobalState->events.trailTick.listen([this]() { this->onTick(); });
+ }
+ 
+ CTrail::~CTrail() {
+     damageEntire();
+-    HyprlandAPI::unregisterCallback(PHANDLE, pTickCb);
+ }
+ 
+ SDecorationPositioningInfo CTrail::getPositioningInfo() {
+@@ -134,7 +133,7 @@ void CTrail::renderPass(PHLMONITOR pMonitor, const float& a) {
+ 
+     g_pHyprOpenGL->blend(true);
+ 
+-    glUseProgram(g_pGlobalState->trailShader.program);
++    glUseProgram(g_pGlobalState->trailShader.program());
+ 
+     glMatrix.transpose();
+     g_pGlobalState->trailShader.setUniformMatrix3fv(SHADER_PROJ, 1, GL_FALSE, glMatrix.getMatrix());
+@@ -246,16 +245,16 @@ void CTrail::renderPass(PHLMONITOR pMonitor, const float& a) {
+                             sc<float>((PWINDOW->m_realPosition->value().y - pMonitor->m_position.y) / pMonitor->m_size.y),
+                             sc<float>((PWINDOW->m_realPosition->value().x + PWINDOW->m_realSize->value().x) / pMonitor->m_size.x),
+                             sc<float>((PWINDOW->m_realPosition->value().y + PWINDOW->m_realSize->value().y) / pMonitor->m_size.y)};
+-    glUniform4f(g_pGlobalState->trailShader.uniformLocations[SHADER_GRADIENT], thisboxopengl.x, thisboxopengl.y, thisboxopengl.w, thisboxopengl.h);
+-    glUniform4f(g_pGlobalState->trailShader.uniformLocations[SHADER_COLOR], COLOR.r, COLOR.g, COLOR.b, COLOR.a);
++    glUniform4f(g_pGlobalState->trailShader.getUniformLocation(SHADER_GRADIENT), thisboxopengl.x, thisboxopengl.y, thisboxopengl.w, thisboxopengl.h);
++    glUniform4f(g_pGlobalState->trailShader.getUniformLocation(SHADER_COLOR), COLOR.r, COLOR.g, COLOR.b, COLOR.a);
+ 
+     CBox transformedBox = monbox;
+     transformedBox.transform(Math::wlTransformToHyprutils(Math::invertTransform(g_pHyprOpenGL->m_renderData.pMonitor->m_transform)), g_pHyprOpenGL->m_renderData.pMonitor->m_transformedSize.x,
+                              g_pHyprOpenGL->m_renderData.pMonitor->m_transformedSize.y);
+ 
+-    glVertexAttribPointer(g_pGlobalState->trailShader.uniformLocations[SHADER_POS_ATTRIB], 2, GL_FLOAT, GL_FALSE, 0, (float*)points.data());
++    glVertexAttribPointer(g_pGlobalState->trailShader.getUniformLocation(SHADER_POS_ATTRIB), 2, GL_FLOAT, GL_FALSE, 0, (float*)points.data());
+ 
+-    glEnableVertexAttribArray(g_pGlobalState->trailShader.uniformLocations[SHADER_POS_ATTRIB]);
++    glEnableVertexAttribArray(g_pGlobalState->trailShader.getUniformLocation(SHADER_POS_ATTRIB));
+ 
+     if (g_pHyprOpenGL->m_renderData.clipBox.width != 0 && g_pHyprOpenGL->m_renderData.clipBox.height != 0) {
+         CRegion damageClip{g_pHyprOpenGL->m_renderData.clipBox.x, g_pHyprOpenGL->m_renderData.clipBox.y, g_pHyprOpenGL->m_renderData.clipBox.width,
+@@ -275,7 +274,7 @@ void CTrail::renderPass(PHLMONITOR pMonitor, const float& a) {
+         }
+     }
+ 
+-    glDisableVertexAttribArray(g_pGlobalState->trailShader.uniformLocations[SHADER_POS_ATTRIB]);
++    glDisableVertexAttribArray(g_pGlobalState->trailShader.getUniformLocation(SHADER_POS_ATTRIB));
+ 
+     glClearStencil(0);
+     glClear(GL_STENCIL_BUFFER_BIT);
+diff --git a/hyprtrails/trail.hpp b/hyprtrails/trail.hpp
+index 956775f..770dbc2 100644
+--- a/hyprtrails/trail.hpp
++++ b/hyprtrails/trail.hpp
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <hyprutils/signal/Listener.hpp>
+ #define WLR_USE_UNSTABLE
+ 
+ #include <deque>
+@@ -46,7 +47,7 @@ class CTrail : public IHyprWindowDecoration {
+     virtual void                       damageEntire();
+ 
+   private:
+-    SP<HOOK_CALLBACK_FN>                                              pTickCb;
++    Hyprutils::Signal::CHyprSignalListener                            pTickCb;
+     void                                                              onTick();
+     void                                                              renderPass(PHLMONITOR pMonitor, const float& a);
+ 

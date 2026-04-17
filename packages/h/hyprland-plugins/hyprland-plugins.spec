@@ -15,8 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define hypr_tgt 0.53.0
+%define hypr_tgt 0.54.0
 %define pkg_version 0.53.0
+
+%define debian_patch_rev b772e7e4d8b8f764d2b359dc4dd299f50b2b9e50
 
 Name:           hyprland-plugins
 Version:        %{pkg_version}
@@ -25,6 +27,9 @@ Summary:        Official plugins for Hyprland
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprland-plugins
 Source0:        https://github.com/hyprwm/hyprland-plugins/archive/refs/tags/v%{pkg_version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch10:        https://salsa.debian.org/hyprland-team/hyprland-plugins/-/raw/%{debian_patch_rev}/debian/patches/all-chase-hyprland.patch
+Patch11:        https://salsa.debian.org/hyprland-team/hyprland-plugins/-/raw/%{debian_patch_rev}/debian/patches/Fix-hyprtrails-compilation-errors.patch
+Patch12:        https://salsa.debian.org/hyprland-team/hyprland-plugins/-/raw/%{debian_patch_rev}/debian/patches/expo-Chase-new-gesture-param-disableInhibit-581.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hyprland) >= %{hypr_tgt}
@@ -37,7 +42,6 @@ BuildRequires:  pkgconfig(pangocairo)
 	['hyprbars'] = 'This plugin adds title bars to windows',
 	['hyprexpo'] = 'This plugin adds an expo-like workspace overview',
 	['hyprfocus'] = 'This plugin adds flashfocus for hyprland',
-	['hyprscrolling'] = 'This plugin adds a scrolling layout to hyprland',
 	['hyprtrails'] = 'This plugin adds smooth trails behind moving windows',
 	['hyprwinwrap'] = 'This plugin is a clone of xwinwrap, allows you to put any app as a\nwallpaper',
 	['xtra-dispatchers'] = 'This plugin adds some new dispatchers',

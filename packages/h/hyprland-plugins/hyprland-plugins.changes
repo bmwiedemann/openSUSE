@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 17 15:23:54 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Introduce necessary patches to target hyprland 0.54.0, as upstream
+  did not make a release yet.
+  + Added all-chase-hyprland.patch
+  + Added expo-Chase-new-gesture-param-disableInhibit-581.patch
+  + Added Fix-hyprtrails-compilation-errors.patch
+- Removed hyprland-plugin-hyprscrolling as functionality was
+  introduced upstream.
+
+-------------------------------------------------------------------
 Mon Dec 29 21:35:52 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.53.0:

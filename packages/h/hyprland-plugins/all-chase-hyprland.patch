@@ -1,0 +1,642 @@
+From: Vaxry <vaxry@vaxry.net>
+Date: Mon, 23 Feb 2026 16:57:22 +0000
+Subject: all: chase hyprland
+
+Origin: commit:b85a56b9531013c79f2f3846fd6ee2ff014b8960
+Applied-Upstream: commit:b85a56b9531013c79f2f3846fd6ee2ff014b8960
+Forwarded: yes
+---
+ borders-plus-plus/main.cpp | 10 ++++-----
+ csgo-vulkan-fix/main.cpp   | 13 +++++------
+ hyprbars/barDeco.cpp       | 54 ++++++++++++++++++++--------------------------
+ hyprbars/barDeco.hpp       | 39 ++++++++++++++++++---------------
+ hyprbars/main.cpp          | 37 +++++++++----------------------
+ hyprexpo/main.cpp          |  3 ++-
+ hyprexpo/overview.cpp      | 12 +++++------
+ hyprexpo/overview.hpp      | 10 ++++-----
+ hyprfocus/main.cpp         | 11 +++++-----
+ hyprwinwrap/main.cpp       | 15 ++++++-------
+ xtra-dispatchers/main.cpp  | 26 +++++++++++-----------
+ 11 files changed, 104 insertions(+), 126 deletions(-)
+
+diff --git a/borders-plus-plus/main.cpp b/borders-plus-plus/main.cpp
+index 1cfa532..5bb1389 100644
+--- a/borders-plus-plus/main.cpp
++++ b/borders-plus-plus/main.cpp
+@@ -7,6 +7,7 @@
+ #include <hyprland/src/desktop/view/Window.hpp>
+ #include <hyprland/src/config/ConfigManager.hpp>
+ #include <hyprland/src/render/Renderer.hpp>
++#include <hyprland/src/event/EventBus.hpp>
+ 
+ #include "borderDeco.hpp"
+ #include "globals.hpp"
+@@ -16,11 +17,8 @@ APICALL EXPORT std::string PLUGIN_API_VERSION() {
+     return HYPRLAND_API_VERSION;
+ }
+ 
+-void onNewWindow(void* self, std::any data) {
+-    // data is guaranteed
+-    const auto PWINDOW = std::any_cast<PHLWINDOW>(data);
+-
+-    HyprlandAPI::addWindowDecoration(PHANDLE, PWINDOW, makeUnique<CBordersPlusPlus>(PWINDOW));
++static void onNewWindow(PHLWINDOW window) {
++    HyprlandAPI::addWindowDecoration(PHANDLE, window, makeUnique<CBordersPlusPlus>(window));
+ }
+ 
+ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
+@@ -45,7 +43,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
+ 
+     HyprlandAPI::reloadConfig();
+ 
+-    static auto P = HyprlandAPI::registerCallbackDynamic(PHANDLE, "openWindow", [&](void* self, SCallbackInfo& info, std::any data) { onNewWindow(self, data); });
++    static auto P = Event::bus()->m_events.window.open.listen([&](PHLWINDOW w) { onNewWindow(w); });
+ 
+     // add deco to existing windows
+     for (auto& w : g_pCompositor->m_windows) {
+diff --git a/csgo-vulkan-fix/main.cpp b/csgo-vulkan-fix/main.cpp
+index 3e820bc..a1bc25c 100644
+--- a/csgo-vulkan-fix/main.cpp
++++ b/csgo-vulkan-fix/main.cpp
+@@ -9,6 +9,7 @@
+ #include <hyprland/src/xwayland/XSurface.hpp>
+ #include <hyprland/src/managers/SeatManager.hpp>
+ #include <hyprland/src/render/Renderer.hpp>
++#include <hyprland/src/event/EventBus.hpp>
+ 
+ #include "globals.hpp"
+ 
+@@ -47,12 +48,12 @@ static const SAppConfig* getAppConfig(const std::string& appClass) {
+ void hkNotifyMotion(CSeatManager* thisptr, uint32_t time_msec, const Vector2D& local) {
+     static auto* const PFIX = (Hyprlang::INT* const*)HyprlandAPI::getConfigValue(PHANDLE, "plugin:csgo-vulkan-fix:fix_mouse")->getDataStaticPtr();
+ 
+-    Vector2D newCoords = local;
+-    auto focusState = Desktop::focusState();
+-    auto window = focusState->window();
+-    auto monitor = focusState->monitor();
++    Vector2D           newCoords  = local;
++    auto               focusState = Desktop::focusState();
++    auto               window     = focusState->window();
++    auto               monitor    = focusState->monitor();
+ 
+-    const auto CONFIG = window && monitor ? getAppConfig(window->m_initialClass) : nullptr;
++    const auto         CONFIG = window && monitor ? getAppConfig(window->m_initialClass) : nullptr;
+ 
+     if (**PFIX && CONFIG) {
+         // fix the coords
+@@ -125,7 +126,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
+     HyprlandAPI::addConfigValue(PHANDLE, "plugin:csgo-vulkan-fix:fix_mouse", Hyprlang::INT{1});
+     HyprlandAPI::addConfigValue(PHANDLE, "plugin:csgo-vulkan-fix:class", Hyprlang::STRING{"cs2"});
+ 
+-    static auto P = HyprlandAPI::registerCallbackDynamic(PHANDLE, "preConfigReload", [&](void* self, SCallbackInfo& info, std::any data) {
++    static auto P = Event::bus()->m_events.config.preReload.listen([&] {
+         g_appConfigs.clear();
+ 
+         static auto* const RESX   = (Hyprlang::INT* const*)HyprlandAPI::getConfigValue(PHANDLE, "plugin:csgo-vulkan-fix:res_w")->getDataStaticPtr();
+diff --git a/hyprbars/barDeco.cpp b/hyprbars/barDeco.cpp
+index feb973f..e9fbb4f 100644
+--- a/hyprbars/barDeco.cpp
++++ b/hyprbars/barDeco.cpp
+@@ -7,10 +7,11 @@
+ #include <hyprland/src/managers/SeatManager.hpp>
+ #include <hyprland/src/managers/input/InputManager.hpp>
+ #include <hyprland/src/render/Renderer.hpp>
+-#include <hyprland/src/managers/LayoutManager.hpp>
+ #include <hyprland/src/config/ConfigManager.hpp>
+ #include <hyprland/src/managers/animation/AnimationManager.hpp>
+ #include <hyprland/src/protocols/LayerShell.hpp>
++#include <hyprland/src/event/EventBus.hpp>
++#include <hyprland/src/layout/LayoutManager.hpp>
+ #include <pango/pangocairo.h>
+ 
+ #include "globals.hpp"
+@@ -24,19 +25,14 @@ CHyprBar::CHyprBar(PHLWINDOW pWindow) : IHyprWindowDecoration(pWindow) {
+     const auto         PMONITOR = pWindow->m_monitor.lock();
+     PMONITOR->m_scheduledRecalc = true;
+ 
+-    //button events
+-    m_pMouseButtonCallback = HyprlandAPI::registerCallbackDynamic(
+-        PHANDLE, "mouseButton", [&](void* self, SCallbackInfo& info, std::any param) { onMouseButton(info, std::any_cast<IPointer::SButtonEvent>(param)); });
+-    m_pTouchDownCallback = HyprlandAPI::registerCallbackDynamic(
+-        PHANDLE, "touchDown", [&](void* self, SCallbackInfo& info, std::any param) { onTouchDown(info, std::any_cast<ITouch::SDownEvent>(param)); });
+-    m_pTouchUpCallback = HyprlandAPI::registerCallbackDynamic( //
+-        PHANDLE, "touchUp", [&](void* self, SCallbackInfo& info, std::any param) { onTouchUp(info, std::any_cast<ITouch::SUpEvent>(param)); });
++    // button events
++    m_pMouseButtonCallback = Event::bus()->m_events.input.mouse.button.listen([&](IPointer::SButtonEvent e, Event::SCallbackInfo& info) { onMouseButton(info, e); });
++    m_pTouchDownCallback   = Event::bus()->m_events.input.touch.down.listen([&](ITouch::SDownEvent e, Event::SCallbackInfo& info) { onTouchDown(info, e); });
++    m_pTouchUpCallback     = Event::bus()->m_events.input.touch.up.listen([&](ITouch::SUpEvent e, Event::SCallbackInfo& info) { onTouchUp(info, e); });
+ 
+-    //move events
+-    m_pTouchMoveCallback = HyprlandAPI::registerCallbackDynamic(
+-        PHANDLE, "touchMove", [&](void* self, SCallbackInfo& info, std::any param) { onTouchMove(info, std::any_cast<ITouch::SMotionEvent>(param)); });
+-    m_pMouseMoveCallback = HyprlandAPI::registerCallbackDynamic( //
+-        PHANDLE, "mouseMove", [&](void* self, SCallbackInfo& info, std::any param) { onMouseMove(std::any_cast<Vector2D>(param)); });
++    // move events
++    m_pTouchMoveCallback = Event::bus()->m_events.input.touch.motion.listen([&](ITouch::SMotionEvent e, Event::SCallbackInfo& info) { onTouchMove(info, e); });
++    m_pMouseMoveCallback = Event::bus()->m_events.input.mouse.move.listen([&](Vector2D c, Event::SCallbackInfo& info) { onMouseMove(c); });
+ 
+     m_pTextTex    = makeShared<CTexture>();
+     m_pButtonsTex = makeShared<CTexture>();
+@@ -46,11 +42,6 @@ CHyprBar::CHyprBar(PHLWINDOW pWindow) : IHyprWindowDecoration(pWindow) {
+ }
+ 
+ CHyprBar::~CHyprBar() {
+-    HyprlandAPI::unregisterCallback(PHANDLE, m_pMouseButtonCallback);
+-    HyprlandAPI::unregisterCallback(PHANDLE, m_pTouchDownCallback);
+-    HyprlandAPI::unregisterCallback(PHANDLE, m_pTouchUpCallback);
+-    HyprlandAPI::unregisterCallback(PHANDLE, m_pTouchMoveCallback);
+-    HyprlandAPI::unregisterCallback(PHANDLE, m_pMouseMoveCallback);
+     std::erase(g_pGlobalState->bars, m_self);
+ }
+ 
+@@ -89,12 +80,13 @@ bool CHyprBar::inputIsValid() {
+         (g_pSeatManager->m_seatGrab && !g_pSeatManager->m_seatGrab->accepts(m_pWindow->wlSurface()->resource())))
+         return false;
+ 
+-    const auto WINDOWATCURSOR = g_pCompositor->vectorToWindowUnified(g_pInputManager->getMouseCoordsInternal(), Desktop::View::RESERVED_EXTENTS | Desktop::View::INPUT_EXTENTS | Desktop::View::ALLOW_FLOATING);
++    const auto WINDOWATCURSOR = g_pCompositor->vectorToWindowUnified(g_pInputManager->getMouseCoordsInternal(),
++                                                                     Desktop::View::RESERVED_EXTENTS | Desktop::View::INPUT_EXTENTS | Desktop::View::ALLOW_FLOATING);
++
++    auto       focusState = Desktop::focusState();
++    auto       window     = focusState->window();
++    auto       monitor    = focusState->monitor();
+ 
+-    auto focusState = Desktop::focusState();
+-    auto window = focusState->window();
+-    auto monitor = focusState->monitor();
+-    
+     if (WINDOWATCURSOR != m_pWindow && m_pWindow != window)
+         return false;
+ 
+@@ -118,7 +110,7 @@ bool CHyprBar::inputIsValid() {
+     return true;
+ }
+ 
+-void CHyprBar::onMouseButton(SCallbackInfo& info, IPointer::SButtonEvent e) {
++void CHyprBar::onMouseButton(Event::SCallbackInfo& info, IPointer::SButtonEvent e) {
+     if (!inputIsValid())
+         return;
+ 
+@@ -130,7 +122,7 @@ void CHyprBar::onMouseButton(SCallbackInfo& info, IPointer::SButtonEvent e) {
+     handleDownEvent(info, std::nullopt);
+ }
+ 
+-void CHyprBar::onTouchDown(SCallbackInfo& info, ITouch::SDownEvent e) {
++void CHyprBar::onTouchDown(Event::SCallbackInfo& info, ITouch::SDownEvent e) {
+     // Don't do anything if you're already grabbed a window with another finger
+     if (!inputIsValid() || e.touchID != 0)
+         return;
+@@ -138,7 +130,7 @@ void CHyprBar::onTouchDown(SCallbackInfo& info, ITouch::SDownEvent e) {
+     handleDownEvent(info, e);
+ }
+ 
+-void CHyprBar::onTouchUp(SCallbackInfo& info, ITouch::SUpEvent e) {
++void CHyprBar::onTouchUp(Event::SCallbackInfo& info, ITouch::SUpEvent e) {
+     if (!m_bDragPending || !m_bTouchEv || e.touchID != m_touchId)
+         return;
+ 
+@@ -158,7 +150,7 @@ void CHyprBar::onMouseMove(Vector2D coords) {
+     handleMovement();
+ }
+ 
+-void CHyprBar::onTouchMove(SCallbackInfo& info, ITouch::SMotionEvent e) {
++void CHyprBar::onTouchMove(Event::SCallbackInfo& info, ITouch::SMotionEvent e) {
+     if (!m_bDragPending || !m_bTouchEv || !validMapped(m_pWindow) || e.touchID != m_touchId)
+         return;
+ 
+@@ -177,7 +169,7 @@ void CHyprBar::onTouchMove(SCallbackInfo& info, ITouch::SMotionEvent e) {
+     m_bDraggingThis = true;
+ }
+ 
+-void CHyprBar::handleDownEvent(SCallbackInfo& info, std::optional<ITouch::SDownEvent> touchEvent) {
++void CHyprBar::handleDownEvent(Event::SCallbackInfo& info, std::optional<ITouch::SDownEvent> touchEvent) {
+     m_bTouchEv = touchEvent.has_value();
+     if (m_bTouchEv)
+         m_touchId = touchEvent.value().touchID;
+@@ -217,7 +209,7 @@ void CHyprBar::handleDownEvent(SCallbackInfo& info, std::optional<ITouch::SDownE
+     }
+ 
+     if (Desktop::focusState()->window() != PWINDOW)
+-        Desktop::focusState()->fullWindowFocus(PWINDOW);
++        Desktop::focusState()->fullWindowFocus(PWINDOW, Desktop::FOCUS_REASON_CLICK);
+ 
+     if (PWINDOW->m_isFloating)
+         g_pCompositor->changeWindowZOrder(PWINDOW, true);
+@@ -238,7 +230,7 @@ void CHyprBar::handleDownEvent(SCallbackInfo& info, std::optional<ITouch::SDownE
+     }
+ }
+ 
+-void CHyprBar::handleUpEvent(SCallbackInfo& info) {
++void CHyprBar::handleUpEvent(Event::SCallbackInfo& info) {
+     if (m_pWindow.lock() != Desktop::focusState()->window())
+         return;
+ 
+@@ -710,7 +702,7 @@ void CHyprBar::renderPass(PHLMONITOR pMonitor, const float& a) {
+ 
+     // dynamic updates change the extents
+     if (m_iLastHeight != **PHEIGHT) {
+-        g_pLayoutManager->getCurrentLayout()->recalculateWindow(PWINDOW);
++        PWINDOW->layoutTarget()->recalc();
+         m_iLastHeight = **PHEIGHT;
+     }
+ }
+diff --git a/hyprbars/barDeco.hpp b/hyprbars/barDeco.hpp
+index 1200b4b..bc4d32d 100644
+--- a/hyprbars/barDeco.hpp
++++ b/hyprbars/barDeco.hpp
+@@ -9,12 +9,17 @@
+ #include <hyprland/src/desktop/rule/windowRule/WindowRule.hpp>
+ #include <hyprland/src/helpers/AnimatedVariable.hpp>
+ #include <hyprland/src/helpers/time/Time.hpp>
++#include <hyprland/src/helpers/signal/Signal.hpp>
+ #include "globals.hpp"
+ 
+ #define private public
+ #include <hyprland/src/managers/input/InputManager.hpp>
+ #undef private
+ 
++namespace Event {
++    struct SCallbackInfo;
++}
++
+ class CHyprBar : public IHyprWindowDecoration {
+   public:
+     CHyprBar(PHLWINDOW);
+@@ -79,33 +84,33 @@ class CHyprBar : public IHyprWindowDecoration {
+     void                      damageOnButtonHover();
+ 
+     bool                      inputIsValid();
+-    void                      onMouseButton(SCallbackInfo& info, IPointer::SButtonEvent e);
+-    void                      onTouchDown(SCallbackInfo& info, ITouch::SDownEvent e);
+-    void                      onTouchUp(SCallbackInfo& info, ITouch::SUpEvent e);
++    void                      onMouseButton(Event::SCallbackInfo& info, IPointer::SButtonEvent e);
++    void                      onTouchDown(Event::SCallbackInfo& info, ITouch::SDownEvent e);
++    void                      onTouchUp(Event::SCallbackInfo& info, ITouch::SUpEvent e);
+     void                      onMouseMove(Vector2D coords);
+-    void                      onTouchMove(SCallbackInfo& info, ITouch::SMotionEvent e);
++    void                      onTouchMove(Event::SCallbackInfo& info, ITouch::SMotionEvent e);
+ 
+-    void                      handleDownEvent(SCallbackInfo& info, std::optional<ITouch::SDownEvent> touchEvent);
+-    void                      handleUpEvent(SCallbackInfo& info);
++    void                      handleDownEvent(Event::SCallbackInfo& info, std::optional<ITouch::SDownEvent> touchEvent);
++    void                      handleUpEvent(Event::SCallbackInfo& info);
+     void                      handleMovement();
+     bool doButtonPress(Hyprlang::INT* const* PBARPADDING, Hyprlang::INT* const* PBARBUTTONPADDING, Hyprlang::INT* const* PHEIGHT, Vector2D COORDS, bool BUTTONSRIGHT);
+ 
+     CBox assignedBoxGlobal();
+ 
+-    SP<HOOK_CALLBACK_FN> m_pMouseButtonCallback;
+-    SP<HOOK_CALLBACK_FN> m_pTouchDownCallback;
+-    SP<HOOK_CALLBACK_FN> m_pTouchUpCallback;
++    CHyprSignalListener m_pMouseButtonCallback;
++    CHyprSignalListener m_pTouchDownCallback;
++    CHyprSignalListener m_pTouchUpCallback;
+ 
+-    SP<HOOK_CALLBACK_FN> m_pTouchMoveCallback;
+-    SP<HOOK_CALLBACK_FN> m_pMouseMoveCallback;
++    CHyprSignalListener m_pTouchMoveCallback;
++    CHyprSignalListener m_pMouseMoveCallback;
+ 
+-    std::string          m_szLastTitle;
++    std::string         m_szLastTitle;
+ 
+-    bool                 m_bDraggingThis  = false;
+-    bool                 m_bTouchEv       = false;
+-    bool                 m_bDragPending   = false;
+-    bool                 m_bCancelledDown = false;
+-    int                  m_touchId        = 0;
++    bool                m_bDraggingThis  = false;
++    bool                m_bTouchEv       = false;
++    bool                m_bDragPending   = false;
++    bool                m_bCancelledDown = false;
++    int                 m_touchId        = 0;
+ 
+     // store hover state for buttons as a bitfield
+     unsigned int m_iButtonHoverState = 0;
+diff --git a/hyprbars/main.cpp b/hyprbars/main.cpp
+index 22c9d1f..7c3dd9b 100644
+--- a/hyprbars/main.cpp
++++ b/hyprbars/main.cpp
+@@ -7,6 +7,7 @@
+ #include <hyprland/src/desktop/view/Window.hpp>
+ #include <hyprland/src/config/ConfigManager.hpp>
+ #include <hyprland/src/render/Renderer.hpp>
++#include <hyprland/src/event/EventBus.hpp>
+ #include <hyprland/src/desktop/rule/windowRule/WindowRuleEffectContainer.hpp>
+ 
+ #include <algorithm>
+@@ -19,34 +20,18 @@ APICALL EXPORT std::string PLUGIN_API_VERSION() {
+     return HYPRLAND_API_VERSION;
+ }
+ 
+-static void onNewWindow(void* self, std::any data) {
+-    // data is guaranteed
+-    const auto PWINDOW = std::any_cast<PHLWINDOW>(data);
+-
+-    if (!PWINDOW->m_X11DoesntWantBorders) {
+-        if (std::ranges::any_of(PWINDOW->m_windowDecorations, [](const auto& d) { return d->getDisplayName() == "Hyprbar"; }))
++static void onNewWindow(PHLWINDOW window) {
++    if (!window->m_X11DoesntWantBorders) {
++        if (std::ranges::any_of(window->m_windowDecorations, [](const auto& d) { return d->getDisplayName() == "Hyprbar"; }))
+             return;
+ 
+-        auto bar = makeUnique<CHyprBar>(PWINDOW);
++        auto bar = makeUnique<CHyprBar>(window);
+         g_pGlobalState->bars.emplace_back(bar);
+         bar->m_self = bar;
+-        HyprlandAPI::addWindowDecoration(PHANDLE, PWINDOW, std::move(bar));
++        HyprlandAPI::addWindowDecoration(PHANDLE, window, std::move(bar));
+     }
+ }
+ 
+-static void onCloseWindow(void* self, std::any data) {
+-    // data is guaranteed
+-    const auto PWINDOW = std::any_cast<PHLWINDOW>(data);
+-
+-    const auto BARIT = std::find_if(g_pGlobalState->bars.begin(), g_pGlobalState->bars.end(), [PWINDOW](const auto& bar) { return bar->getOwner() == PWINDOW; });
+-
+-    if (BARIT == g_pGlobalState->bars.end())
+-        return;
+-
+-    // we could use the API but this is faster + it doesn't matter here that much.
+-    PWINDOW->removeWindowDeco(BARIT->get());
+-}
+-
+ static void onPreConfigReload() {
+     g_pGlobalState->buttons.clear();
+ }
+@@ -127,10 +112,8 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
+     g_pGlobalState->barColorRuleIdx   = Desktop::Rule::windowEffects()->registerEffect("hyprbars:bar_color");
+     g_pGlobalState->titleColorRuleIdx = Desktop::Rule::windowEffects()->registerEffect("hyprbars:title_color");
+ 
+-    static auto P = HyprlandAPI::registerCallbackDynamic(PHANDLE, "openWindow", [&](void* self, SCallbackInfo& info, std::any data) { onNewWindow(self, data); });
+-    // static auto P2 = HyprlandAPI::registerCallbackDynamic(PHANDLE, "closeWindow", [&](void* self, SCallbackInfo& info, std::any data) { onCloseWindow(self, data); });
+-    static auto P3 = HyprlandAPI::registerCallbackDynamic(PHANDLE, "windowUpdateRules",
+-                                                          [&](void* self, SCallbackInfo& info, std::any data) { onUpdateWindowRules(std::any_cast<PHLWINDOW>(data)); });
++    static auto P = Event::bus()->m_events.window.open.listen([&](PHLWINDOW w) { onNewWindow(w); });
++    static auto P3 = Event::bus()->m_events.window.updateRules.listen([&](PHLWINDOW w) { onUpdateWindowRules(w); });
+ 
+     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_color", Hyprlang::INT{*configStringToInt("rgba(33333388)")});
+     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:bar_height", Hyprlang::INT{15});
+@@ -151,14 +134,14 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
+     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprbars:on_double_click", Hyprlang::STRING{""});
+ 
+     HyprlandAPI::addConfigKeyword(PHANDLE, "plugin:hyprbars:hyprbars-button", onNewButton, Hyprlang::SHandlerOptions{});
+-    static auto P4 = HyprlandAPI::registerCallbackDynamic(PHANDLE, "preConfigReload", [&](void* self, SCallbackInfo& info, std::any data) { onPreConfigReload(); });
++    static auto P4 = Event::bus()->m_events.config.preReload.listen([&] { onPreConfigReload(); });
+ 
+     // add deco to existing windows
+     for (auto& w : g_pCompositor->m_windows) {
+         if (w->isHidden() || !w->m_isMapped)
+             continue;
+ 
+-        onNewWindow(nullptr /* unused */, std::any(w));
++        onNewWindow(w);
+     }
+ 
+     HyprlandAPI::reloadConfig();
+diff --git a/hyprexpo/main.cpp b/hyprexpo/main.cpp
+index 883fd82..442976f 100644
+--- a/hyprexpo/main.cpp
++++ b/hyprexpo/main.cpp
+@@ -10,6 +10,7 @@
+ #include <hyprland/src/render/Renderer.hpp>
+ #include <hyprland/src/managers/input/trackpad/GestureTypes.hpp>
+ #include <hyprland/src/managers/input/trackpad/TrackpadGestures.hpp>
++#include <hyprland/src/event/EventBus.hpp>
+ 
+ #include <hyprutils/string/ConstVarList.hpp>
+ using namespace Hyprutils::String;
+@@ -224,7 +225,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
+         throw std::runtime_error("[he] Failed initializing hooks");
+     }
+ 
+-    static auto P = HyprlandAPI::registerCallbackDynamic(PHANDLE, "preRender", [](void* self, SCallbackInfo& info, std::any param) {
++    static auto P = Event::bus()->m_events.render.pre.listen([](PHLMONITOR) {
+         if (!g_pOverview)
+             return;
+         g_pOverview->onPreRender();
+diff --git a/hyprexpo/overview.cpp b/hyprexpo/overview.cpp
+index 5721948..00bb8c9 100644
+--- a/hyprexpo/overview.cpp
++++ b/hyprexpo/overview.cpp
+@@ -210,7 +210,7 @@ COverview::COverview(PHLWORKSPACE startedOn_, bool swipe_) : startedOn(startedOn
+ 
+     lastMousePosLocal = g_pInputManager->getMouseCoordsInternal() - pMonitor->m_position;
+ 
+-    auto onCursorMove = [this](void* self, SCallbackInfo& info, std::any param) {
++    auto onCursorMove = [this](Event::SCallbackInfo& info) {
+         if (closing)
+             return;
+ 
+@@ -218,7 +218,7 @@ COverview::COverview(PHLWORKSPACE startedOn_, bool swipe_) : startedOn(startedOn
+         lastMousePosLocal = g_pInputManager->getMouseCoordsInternal() - pMonitor->m_position;
+     };
+ 
+-    auto onCursorSelect = [this](void* self, SCallbackInfo& info, std::any param) {
++    auto onCursorSelect = [this](Event::SCallbackInfo& info) {
+         if (closing)
+             return;
+ 
+@@ -229,11 +229,11 @@ COverview::COverview(PHLWORKSPACE startedOn_, bool swipe_) : startedOn(startedOn
+         close();
+     };
+ 
+-    mouseMoveHook = g_pHookSystem->hookDynamic("mouseMove", onCursorMove);
+-    touchMoveHook = g_pHookSystem->hookDynamic("touchMove", onCursorMove);
++    mouseMoveHook = Event::bus()->m_events.input.mouse.move.listen([onCursorMove](Vector2D, Event::SCallbackInfo& info) { onCursorMove(info); });
++    touchMoveHook = Event::bus()->m_events.input.touch.motion.listen([onCursorMove](ITouch::SMotionEvent, Event::SCallbackInfo& info) { onCursorMove(info); });
+ 
+-    mouseButtonHook = g_pHookSystem->hookDynamic("mouseButton", onCursorSelect);
+-    touchDownHook   = g_pHookSystem->hookDynamic("touchDown", onCursorSelect);
++    mouseButtonHook = Event::bus()->m_events.input.mouse.button.listen([onCursorSelect](IPointer::SButtonEvent, Event::SCallbackInfo& info) { onCursorSelect(info); });
++    touchDownHook   = Event::bus()->m_events.input.touch.down.listen([onCursorSelect](ITouch::SDownEvent, Event::SCallbackInfo& info) { onCursorSelect(info); });
+ }
+ 
+ void COverview::selectHoveredWorkspace() {
+diff --git a/hyprexpo/overview.hpp b/hyprexpo/overview.hpp
+index 4b02400..144add9 100644
+--- a/hyprexpo/overview.hpp
++++ b/hyprexpo/overview.hpp
+@@ -6,7 +6,7 @@
+ #include <hyprland/src/desktop/DesktopTypes.hpp>
+ #include <hyprland/src/render/Framebuffer.hpp>
+ #include <hyprland/src/helpers/AnimatedVariable.hpp>
+-#include <hyprland/src/managers/HookSystemManager.hpp>
++#include <hyprland/src/event/EventBus.hpp>
+ #include <vector>
+ 
+ // saves on resources, but is a bit broken rn with blur.
+@@ -74,10 +74,10 @@ class COverview {
+ 
+     bool                         closing = false;
+ 
+-    SP<HOOK_CALLBACK_FN>         mouseMoveHook;
+-    SP<HOOK_CALLBACK_FN>         mouseButtonHook;
+-    SP<HOOK_CALLBACK_FN>         touchMoveHook;
+-    SP<HOOK_CALLBACK_FN>         touchDownHook;
++    CHyprSignalListener          mouseMoveHook;
++    CHyprSignalListener          mouseButtonHook;
++    CHyprSignalListener          touchMoveHook;
++    CHyprSignalListener          touchDownHook;
+ 
+     bool                         swipe             = false;
+     bool                         swipeWasCommenced = false;
+diff --git a/hyprfocus/main.cpp b/hyprfocus/main.cpp
+index 2f74af2..1e6330a 100644
+--- a/hyprfocus/main.cpp
++++ b/hyprfocus/main.cpp
+@@ -13,8 +13,9 @@
+ #include <hyprland/src/helpers/AnimatedVariable.hpp>
+ #include <hyprland/src/managers/animation/AnimationManager.hpp>
+ #include <hyprland/src/managers/eventLoop/EventLoopManager.hpp>
+-#include <hyprland/src/managers/LayoutManager.hpp>
++#include <hyprland/src/layout/LayoutManager.hpp>
+ #include <hyprland/src/config/ConfigManager.hpp>
++#include <hyprland/src/event/EventBus.hpp>
+ #undef private
+ 
+ #include "globals.hpp"
+@@ -85,7 +86,7 @@ static void onFocusChange(PHLWINDOW window) {
+                 *w->m_realPosition = ORIGINAL.pos();
+                 *w->m_realSize     = ORIGINAL.size();
+             } else
+-                g_pLayoutManager->getCurrentLayout()->recalculateWindow(w.lock());
++                w->layoutTarget()->recalc();
+ 
+             w->m_realSize->setCallbackOnEnd(nullptr);
+         });
+@@ -104,7 +105,7 @@ static void onFocusChange(PHLWINDOW window) {
+             if (w->m_isFloating || w->isFullscreen())
+                 *w->m_realPosition = ORIGINAL;
+             else
+-                g_pLayoutManager->getCurrentLayout()->recalculateWindow(w.lock());
++                w->layoutTarget()->recalc();
+ 
+             w->m_realPosition->setCallbackOnEnd(nullptr);
+         });
+@@ -123,9 +124,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
+         throw std::runtime_error("[hww] Version mismatch");
+     }
+ 
+-    // clang-format off
+-    static auto P  = HyprlandAPI::registerCallbackDynamic(PHANDLE, "activeWindow", [&](void* self, SCallbackInfo& info, std::any data) { onFocusChange(std::any_cast<PHLWINDOW>(data)); });
+-    // clang-format on
++    static auto P = Event::bus()->m_events.window.active.listen([&](PHLWINDOW w, Desktop::eFocusReason r) { onFocusChange(w); });
+ 
+     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:mode", Hyprlang::STRING{"flash"});
+     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprfocus:only_on_monitor_change", Hyprlang::INT{0});
+diff --git a/hyprwinwrap/main.cpp b/hyprwinwrap/main.cpp
+index e2a2962..d9f2c1b 100644
+--- a/hyprwinwrap/main.cpp
++++ b/hyprwinwrap/main.cpp
+@@ -12,9 +12,10 @@
+ #include <hyprland/src/desktop/view/Window.hpp>
+ #include <hyprland/src/config/ConfigManager.hpp>
+ #include <hyprland/src/render/Renderer.hpp>
+-#include <hyprland/src/managers/LayoutManager.hpp>
+ #include <hyprland/src/managers/input/InputManager.hpp>
+ #include <hyprland/src/helpers/time/Time.hpp>
++#include <hyprland/src/layout/LayoutManager.hpp>
++#include <hyprland/src/event/EventBus.hpp>
+ #undef private
+ 
+ #include "globals.hpp"
+@@ -55,7 +56,7 @@ void                      onNewWindow(PHLWINDOW pWindow) {
+         return;
+ 
+     if (!pWindow->m_isFloating)
+-        g_pLayoutManager->getCurrentLayout()->changeWindowFloatingMode(pWindow);
++        g_layoutManager->changeFloatingMode(pWindow->layoutTarget());
+ 
+     float sx = 100.f, sy = 100.f, px = 0.f, py = 0.f;
+ 
+@@ -196,12 +197,10 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
+         throw std::runtime_error("[hww] Version mismatch");
+     }
+ 
+-    // clang-format off
+-    static auto P  = HyprlandAPI::registerCallbackDynamic(PHANDLE, "openWindow", [&](void* self, SCallbackInfo& info, std::any data) { onNewWindow(std::any_cast<PHLWINDOW>(data)); });
+-    static auto P2 = HyprlandAPI::registerCallbackDynamic(PHANDLE, "closeWindow", [&](void* self, SCallbackInfo& info, std::any data) { onCloseWindow(std::any_cast<PHLWINDOW>(data)); });
+-    static auto P3 = HyprlandAPI::registerCallbackDynamic(PHANDLE, "render", [&](void* self, SCallbackInfo& info, std::any data) { onRenderStage(std::any_cast<eRenderStage>(data)); });
+-    static auto P4 = HyprlandAPI::registerCallbackDynamic(PHANDLE, "configReloaded", [&](void* self, SCallbackInfo& info, std::any data) { onConfigReloaded(); });
+-    // clang-format on
++    static auto P  = Event::bus()->m_events.window.open.listen([&](PHLWINDOW w) { onNewWindow(w); });
++    static auto P2 = Event::bus()->m_events.window.close.listen([&](PHLWINDOW w) { onCloseWindow(w); });
++    static auto P3 = Event::bus()->m_events.render.stage.listen([&](eRenderStage stage) { onRenderStage(stage); });
++    static auto P4 = Event::bus()->m_events.config.reloaded.listen([&] { onConfigReloaded(); });
+ 
+     auto fns = HyprlandAPI::findFunctionsByName(PHANDLE, "_ZN7Desktop4View11CSubsurface8onCommitEv");
+     if (fns.size() < 1)
+diff --git a/xtra-dispatchers/main.cpp b/xtra-dispatchers/main.cpp
+index 103d537..3509581 100644
+--- a/xtra-dispatchers/main.cpp
++++ b/xtra-dispatchers/main.cpp
+@@ -29,9 +29,9 @@ APICALL EXPORT std::string PLUGIN_API_VERSION() {
+ static SDispatchResult moveOrExec(std::string in) {
+     CVarList vars(in, 0, ',');
+ 
+-    auto focusState = Desktop::focusState();
+-    auto monitor = focusState->monitor();
+-    
++    auto     focusState = Desktop::focusState();
++    auto     monitor    = focusState->monitor();
++
+     if (!monitor || !monitor->m_activeWorkspace)
+         return SDispatchResult{.success = false, .error = "No active workspace"};
+ 
+@@ -44,7 +44,7 @@ static SDispatchResult moveOrExec(std::string in) {
+             g_pCompositor->moveWindowToWorkspaceSafe(PWINDOW, monitor->m_activeWorkspace);
+         else
+             g_pCompositor->warpCursorTo(PWINDOW->middle());
+-        focusState->fullWindowFocus(PWINDOW);
++        focusState->fullWindowFocus(PWINDOW, Desktop::FOCUS_REASON_KEYBIND);
+     }
+ 
+     return SDispatchResult{};
+@@ -57,7 +57,7 @@ static SDispatchResult throwUnfocused(std::string in) {
+         return SDispatchResult{.success = false, .error = "Failed to find workspace"};
+ 
+     auto focusState = Desktop::focusState();
+-    auto window = focusState->window();
++    auto window     = focusState->window();
+ 
+     if (!window || !window->m_workspace)
+         return SDispatchResult{.success = false, .error = "No valid last window"};
+@@ -83,9 +83,9 @@ static SDispatchResult bringAllFrom(std::string in) {
+         return SDispatchResult{.success = false, .error = "Failed to find workspace"};
+ 
+     auto focusState = Desktop::focusState();
+-    auto monitor = focusState->monitor();
+-    auto window = focusState->window();
+-    
++    auto monitor    = focusState->monitor();
++    auto window     = focusState->window();
++
+     if (!monitor || !monitor->m_activeWorkspace)
+         return SDispatchResult{.success = false, .error = "No active monitor"};
+ 
+@@ -103,7 +103,7 @@ static SDispatchResult bringAllFrom(std::string in) {
+     }
+ 
+     if (PLASTWINDOW) {
+-        Desktop::focusState()->fullWindowFocus(PLASTWINDOW);
++        Desktop::focusState()->fullWindowFocus(PLASTWINDOW, Desktop::FOCUS_REASON_KEYBIND);
+         g_pCompositor->warpCursorTo(PLASTWINDOW->middle());
+     }
+ 
+@@ -111,10 +111,10 @@ static SDispatchResult bringAllFrom(std::string in) {
+ }
+ 
+ static SDispatchResult closeUnfocused(std::string in) {
+-	auto focusState = Desktop::focusState();
+-	auto monitor = focusState->monitor();
+-	auto window = focusState->window();
+-	
++    auto focusState = Desktop::focusState();
++    auto monitor    = focusState->monitor();
++    auto window     = focusState->window();
++
+     if (!window)
+         return SDispatchResult{.success = false, .error = "No focused monitor"};
+ 
