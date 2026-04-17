@@ -88,4 +88,22 @@
     <comment></comment>
     <requestid>1319535</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4efe6607055929afdc55aa67b3268463</srcmd5>
+    <version>0.2.23</version>
+    <time>1776452713</time>
+    <user>dimstar_suse</user>
+    <comment>As promised, a fixed tupitube build
+
+- Add Slowroll build support
+- More spec cleanup
+
+- Update to version 0.2.23 (no changelog supplied)
+- Drop a couple of sed fixes for ruby modules, fixed now
+- Configure requires openSUSE-release (checks /etc/os-release)
+- Add %{rubygem os} dependency: distro determination relies on it
+- Fake our non-supported distro by cloning ubuntu specs 
+- Drop enforcing ffmpeg-4, bind against current ffmpeg-7</comment>
+    <requestid>1347717</requestid>
+  </revision>
 </revisionlist>

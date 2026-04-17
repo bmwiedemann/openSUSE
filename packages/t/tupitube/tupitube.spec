@@ -1,7 +1,7 @@
 #
 # spec file for package tupitube
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,8 +21,9 @@
 %define	_tupibin  %{_libdir}/%{name}/bin
 %define	_tupilib  %{_libdir}/%{name}
 %define	_tupidata %{_datadir}/%{name}
+
 Name:           tupitube
-Version:        0.2.22
+Version:        0.2.23
 Release:        0
 Summary:        2D vectorial/animation tool
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -30,9 +31,11 @@ Group:          Productivity/Graphics/Vector Editors
 URL:            https://www.tupitube.com
 Source0:        https://sourceforge.net/projects/tupi2d/files/Source%20Code/tupitube.desk-%{version}.tar.gz
 Source99:       tupitube-rpmlintrc
+BuildRequires:  %{rubygem os}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  openSUSE-release
 BuildRequires:  pkgconfig
 BuildRequires:  ruby
 BuildRequires:  pkgconfig(Qt5Core) >= 5.13.0
@@ -44,22 +47,13 @@ BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(glib-2.0)
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(libavcodec) = 58.134.100
-BuildRequires:  pkgconfig(libavdevice) = 58.13.100
-BuildRequires:  pkgconfig(libavformat) = 58.76.100
-BuildRequires:  pkgconfig(libavutil) = 56.70.100
-BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libswscale) = 5.9.100
-%else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswscale)
-%endif
-BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(quazip1-qt5)
 BuildRequires:  pkgconfig(sndfile)
@@ -100,22 +94,27 @@ This package contains plugins for %{name}.
 %prep
 %autosetup -p1 -n tupitube.desk
 
-# Fix `require': cannot load such file -- os (LoadError)
-sed -i '/require .os/d' qonf/configure.rb
+# FIXME: create proper configs
+# so far, only Slowroll and Tumbleweed are supported, all others have dependency issues
+%if "%_repository" == "openSUSE_Slowroll"
+    ln -s ubuntu.yml qonf/distros/opensuse-slowroll.yml
+%else
+    ln -s ubuntu.yml qonf/distros/opensuse-tumbleweed.yml
+%endif
 
-# Newer rubies obviously removed this method: note the elaborated error message
-# Configure failed. error was: undefined method `exists?' for File:Class
-sed -i 's|File.exists|File.exist|' configure.rb qonf/test.rb
+# Configure failed. error was:
+# in 'block in RQonf::QMake#compile': undefined method '>>' for an instance of Process::Status (NoMethodError)
+#	    endcode = $? >> 8
+# just remove the offender
+sed -i 's/ >> 8$//g' qonf/qmake.rb
 
-# Configure failed. error was: undefined method `exists?' for module FileTest
-sed -e 's|FileTest.exists|FileTest.exist|' configure.rb
-
-# Add path to ffmpeg
+# Inquire ffmpeg includes
 ffmpeg_include=$(pkg-config --cflags-only-I libavutil)
 
-# Add Quazip path
+# Inquire Quazip includes
 quazip_include=$(pkg-config --cflags-only-I quazip1-qt5)
 
+# Patch the pathes into all project files
 find . -type f -name \*.pro | while read f; do
 echo "QMAKE_CXXFLAGS += %{optflags} ${ffmpeg_include} ${quazip_include}" >> "$f"
 done
@@ -141,7 +140,7 @@ ln -s %{_tupibin}/%{name}.desk %{buildroot}%{_bindir}/%{name}
 # Remove unneeded links
 pushd %{buildroot}%{_tupilib}
 for so in $(find . -maxdepth 1 -name \*.so); do
-rm -f $so; done
+    rm -f $so; done
 popd
 
 # SVG icon

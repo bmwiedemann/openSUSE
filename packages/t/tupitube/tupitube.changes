@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 17 12:51:12 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add Slowroll build support
+- More spec cleanup
+
+-------------------------------------------------------------------
+Thu Apr 16 16:09:09 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 0.2.23 (no changelog supplied)
+- Drop a couple of sed fixes for ruby modules, fixed now
+- Configure requires openSUSE-release (checks /etc/os-release)
+- Add %{rubygem os} dependency: distro determination relies on it
+- Fake our non-supported distro by cloning ubuntu specs 
+- Drop enforcing ffmpeg-4, bind against current ffmpeg-7
+
+-------------------------------------------------------------------
 Sat Nov 22 21:26:12 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.
