@@ -1,8 +1,7 @@
 #
 # spec file for package kubevirt
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +19,7 @@
 %define _exclusive_arch x86_64 aarch64
 
 Name:           kubevirt
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -33,6 +32,7 @@ Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
+BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
@@ -169,7 +169,7 @@ the Kubevirt container images.
 # the project config, e.g.
 #
 # Macros:
-# %kubevirt_registry_path registry.opensuse.org/Virtualization/container
+# %%kubevirt_registry_path registry.opensuse.org/Virtualization/container
 # :Macros
 #
 # 'kubevirt_registry_path' can also be defined when building locally, e.g.
@@ -232,6 +232,8 @@ mkdir -p go/src/kubevirt.io go/pkg
 ln -s ../../../ go/src/kubevirt.io/kubevirt
 export GOPATH=${PWD}/go
 export GOFLAGS="-buildmode=pie"
+# debugedit complains.
+export GOEXPERIMENT=nodwarf5
 cd ${GOPATH}/src/kubevirt.io/kubevirt
 env \
 KUBEVIRT_GO_BASE_PKGDIR="${GOPATH}/pkg" \
@@ -348,7 +350,6 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %license LICENSE
 %doc README.md
 %dir %{_datadir}/kube-virt
-%dir %{_datadir}/kube-virt/virt-handler
 %{_bindir}/virt-handler
 %{_bindir}/virt-chroot
 %{_datadir}/kube-virt/virt-handler
@@ -357,7 +358,6 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %license LICENSE
 %doc README.md
 %dir %{_datadir}/kube-virt
-%dir %{_datadir}/kube-virt/virt-launcher
 %{_bindir}/virt-launcher
 %{_bindir}/virt-launcher-monitor
 %{_bindir}/virt-freezer
@@ -380,7 +380,6 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %license LICENSE
 %doc README.md
 %dir %{_datadir}/kube-virt
-%dir %{_datadir}/kube-virt/pr-helper
 %{_datadir}/kube-virt/pr-helper
 
 %files sidecar-shim
