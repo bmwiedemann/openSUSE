@@ -16,14 +16,15 @@
 #
 
 
+
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
 
-%define libkdev_major 64
+%define libkdev_major 65
 
 %bcond_without released
 Name:           kdevelop
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
@@ -34,8 +35,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  clang-devel
-BuildRequires:  kdevelop-pg-qt >= 1.9
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  kdevelop-pg-qt >= 1.9
 BuildRequires:  libboost_headers-devel
 # TODO: not ported to Qt6. Expected: 10/2024
 # BuildRequires:  okteta-devel
@@ -82,7 +83,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 # contains the headers that are needed for the C++ parser to work (see boo#1119186)
 Requires:       clang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
 # Used by the docker plugin
-Recommends:     pkexec
+Recommends:     %{_bindir}/pkexec
 Recommends:     clazy
 Recommends:     cppcheck
 Recommends:     heaptrack
