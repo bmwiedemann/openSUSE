@@ -19,7 +19,7 @@
 
 %bcond_without confgui
 Name:           upmpdcli
-Version:        1.9.14
+Version:        1.9.16
 Release:        0
 Summary:        UPnP AV and OpenHome Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later

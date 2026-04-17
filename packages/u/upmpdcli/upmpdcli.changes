@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 17 13:41:17 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.9.16:
+  * Media server: misc plugin updates and fixes: radio, Subsonic
+  * Media server: restore Qobuz connectivite by supporting the new oauth
+    connection method. See the manual for details
+- Update to 1.9.15:
+  * Media server: plugins updates: subsonic, mother earth
+  * OpenHome: Playlist: Improve compat with Linn version.
+  * OpenHome: Radio: use album title if available in radio metadata
+
+-------------------------------------------------------------------
 Tue Feb 24 10:16:30 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - removed upstream fix-confgui.patch
