@@ -19,11 +19,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.6.3
+%define kpim6_version 6.7.0
+%define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        25.12.3
+Version:        26.04.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -56,12 +57,12 @@ BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
-BuildRequires:  cmake(KF6TextAddonsWidgets)
-BuildRequires:  cmake(KF6TextCustomEditor)
-BuildRequires:  cmake(KF6TextGrammarCheck)
-BuildRequires:  cmake(KF6TextTemplate)
-BuildRequires:  cmake(KF6TextTranslator)
-BuildRequires:  cmake(KF6TextUtils)
+BuildRequires:  cmake(KF6TextAddonsWidgets) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextCustomEditor) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextGrammarCheck) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextTemplate) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextTranslator) >= %{ktextaddons_version}
+BuildRequires:  cmake(KF6TextUtils) >= %{ktextaddons_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KPim6AddressbookImportExport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Akonadi) >= %{kpim6_version}
@@ -151,6 +152,10 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf6_plugindir}/pim6/importwizard/
 %{_kf6_plugindir}/pim6/kaddressbook/
 %dir %{_kf6_plugindir}/pim6/kcms
+%dir %{_kf6_plugindir}/autogeneratetext
+%dir %{_kf6_plugindir}/autogeneratetext/toolplugins
+%{_kf6_plugindir}/autogeneratetext/toolplugins/kaichat_addressbookplugin.so
+%{_kf6_plugindir}/autogeneratetext/toolplugins/kaichat_calendarplugin.so
 %{_kf6_plugindir}/pim6/kcms/kleopatra/
 %{_kf6_plugindir}/pim6/kmail/
 %{_kf6_plugindir}/pim6/ldapactivities/

@@ -995,4 +995,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE release gear 25.12.3</comment>
     <requestid>1336969</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>d7fdabd507dc8c2685ee73b7e826fd4f</srcmd5>
+    <version>26.04.0</version>
+    <time>1776455253</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 26.04 (forwarded request 1346091 from krop)</comment>
+    <requestid>1347419</requestid>
+  </revision>
 </revisionlist>
