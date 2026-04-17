@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Apr 11 16:13:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.0/
+- No code change since 26.03.90
+
+-------------------------------------------------------------------
+Mon Mar 30 12:10:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.90
+  * New feature release
+- No code change since 26.03.80
+
+-------------------------------------------------------------------
+Sat Mar 14 09:09:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.03.80
+  * New feature release
+- Changes since 25.12.3:
+  * CalculationPage.qml "anchors.fill: parent" already contains "anchors.bottom: parent.bottom"
+  * Nitpick: updated copyright year to 2026
+  * Added settings toggle for copying with sepearators
+  * Added Copy Input Button, this also fixes some problems with copying (kde#487933, kde#515420)
+  * Proofreading
+  * Increasing constrast in main interface (kde#487763)
+  * Fix dark buttons when starting in light mode. (kde#513290)
+  * Changed drawer menu to radio buttons instead of checkboxes. (kde#511818)
+  * Map Delete key to Clear input (kde#487585)
+  * snpacraft: Add to ci and prepare for a beta release
+  * Cleanup sidebar
+
+-------------------------------------------------------------------
 Tue Mar  3 09:56:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.12.3
