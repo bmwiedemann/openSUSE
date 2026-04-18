@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr 17 14:24:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  libbson
+  * bson_t is now trivially relocatable.
+  * deprecate bson_append_array_begin
+    Use bson_append_array_builder_begin or
+    bson_append_array_unsafe_begin instead.
+  libmongoc
+  * Added support for MongoDB's Intelligent Workload Management
+    (IWM) and ingress connection rate limiting features. The driver
+    now gracefully handles write-blocking scenarios and optimizes
+    connection establishment during high-load conditions to
+    maintain application availability. 
+  * Support appending client handshake metadata after
+    initialization and per-client/pool. 
+  * Support Kubernetes as a credential provider for MONGODB-OIDC
+    authentication.
+  * Improve cursor handling on client-side timeouts
+
+-------------------------------------------------------------------
 Wed Apr  8 08:14:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.4

@@ -18,7 +18,7 @@
 
 %define soname 2
 Name:           mongo-c-driver
-Version:        2.2.4
+Version:        2.3.0
 Release:        0
 Summary:        Client library written in C for MongoDB
 # See THIRD_PARTY_NOTICES
