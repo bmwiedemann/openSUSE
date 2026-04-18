@@ -1,7 +1,7 @@
 #
 # spec file for package haguichi
 #
-# Copyright (c) 2013-2025 Stephen Brandt <stephen@stephenbrandt.com>
+# Copyright (c) 2013-2026 Stephen Brandt <stephen@stephenbrandt.com>
 # Copyright (c) 2018 Alexei Podvalsky <avvissu@yandex.by>
 # Copyright (c) 2010-2012 Adam Mizerski <adam@mizerski.pl>
 #
@@ -20,7 +20,7 @@
 
 %define rdnn    com.github.ztefn.%{name}
 Name:           haguichi
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Hamachi Network Manager
 License:        GPL-3.0-or-later

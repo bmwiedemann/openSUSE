@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 18 15:20:17 UTC 2026 - Stephen Brandt <stephen@stephenbrandt.com>
+
+- update to 1.5.4
+  * Increased border radius of network list rows for libadwaita 1.7 and later.
+  * Now using static light and dark colors for the style selector to prevent issues with custom themes.
+  * Added Menu and Shift+F10 keyboard shortcuts to open the menu of commands editor rows.
+  * Added support for starting the Hamachi daemon directly without using any init system.
+  * Added support for using the Hamachi daemon directly as command line interface.
+  * Added support for run0 to gain super user privileges.
+  * Reinstated support for kdesu to gain super user privileges.
+  * Dropped support for all Hamachi versions older than 2.1.0.203.
+  * Improved memory safety for background threads that determine network ownership or retrieve long nicks.
+  * Disabled markup parsing in action row labels and toasts that may contain user input.
+  * Removed extra initial space in parsed %TERMINAL commands.
+  * Fixed issue on GTK versions before 4.18 where a long network or member name could mess up the sidebar layout.
+  * Updated Hungarian, Japanese, Slovak and Turkish translations.
+  * Other minor fixes, improvements and optimizations.
+
+-------------------------------------------------------------------
 Sun Nov  9 16:01:39 UTC 2025 - Stephen Brandt <stephen@stephenbrandt.com>
 
 - update to 1.5.3
