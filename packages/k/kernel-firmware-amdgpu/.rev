@@ -631,4 +631,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: Revert Yellow Carp DMUB fw to 0x4000045</comment>
     <requestid>1346019</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3ed942c4a95e93a436e9caa6e3122e48</srcmd5>
+    <version>20260414</version>
+    <time>1776540667</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260414 (git commit f48f551a902b):
+  * firmware/amdgpu: Update DMCUB fw to Release 0.1.55.0</comment>
+    <requestid>1347742</requestid>
+  </revision>
 </revisionlist>

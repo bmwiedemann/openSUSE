@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 05:02:35 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260414 (git commit f48f551a902b):
+  * firmware/amdgpu: Update DMCUB fw to Release 0.1.55.0
+
+-------------------------------------------------------------------
 Fri Apr 10 08:39:58 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260410 (git commit dc85ccedc9c9):

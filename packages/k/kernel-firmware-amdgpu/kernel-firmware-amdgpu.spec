@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version dc85ccedc9c973682fbcf4d628ca61174bcc3120
+%define git_version f48f551a902b3cc6e6aa8854e533902d3222a0c9
 
 Name:           kernel-firmware-amdgpu
-Version:        20260410
+Version:        20260414
 Release:        0
 Summary:        Kernel firmware files for AMDGPU graphics driver
 License:        GPL-2.0-or-later AND SUSE-Firmware
