@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 17 18:03:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.13
+  * slapd now uses a fresh timestamp for lastbind
+  * Made slapd delta-syncrepl always use the logDB rootdn
+  * Fixed slapd reverse lookup of proxied IPv6 addresses
+  * Fixed a slapd logging buffer overflow
+  * Fixed slapd-ldap response when invalid secprops is configured
+  * Fixed a slapd-mdb error when deleting the last child of a branch
+  * Fixed slapo-memberof clashing with refint on subtree renames
+  * Fixed slapo-syncprov to use the correct rootDN for accesslog
+    replay
+  * Fixed libldap to reject empty types in LDIF
+  * Fixed liblber to not run into a potential NULL deref in
+    `ber_bvreplace_x`
+  * Fixed a libldap heap buffer overflow in `parse_whsp`
+  * Fixed some memory leaks and race conditions in slapd and one
+    in slapo-syncprov
+  * Fixed slapd-mdb always initialize pausepoll
+  * Fixed slapo-dds incorrectly setting minttl in certain scenarios
+  * Fixed slapo-{constaint,memberof,nestgroup,retcode,syncprov} to
+    not propagate request controls to internal ops
+
+-------------------------------------------------------------------
 Mon Jun 23 11:22:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.6.10
