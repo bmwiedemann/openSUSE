@@ -17,7 +17,7 @@
 
 
 Name:           oras
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        OCI registry client - manage content like artifacts, images, packages
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.1
+BuildRequires:  go1.26 >= 1.26.2
 BuildRequires:  zsh
 
 %description

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 18 17:19:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.2:
+  * bump: tag and release ORAS CLI v1.3.2 (#2027)
+  * chore: bump Go to 1.26.2 (#2026)
+  * fix: bump alpine base image from 3.22.1 to 3.22.3 (#2014)
+  * fix: upgrade Go snap to 1.26 in snapcraft.yaml (#2011)
+
+-------------------------------------------------------------------
 Thu Mar 12 11:52:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.3.1:
