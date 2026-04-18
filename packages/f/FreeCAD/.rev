@@ -575,4 +575,12 @@ Build in science fails due to incompatible VTK 9.0, which is not yet in Tumblewe
 </comment>
     <requestid>1345224</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e296fa4661e58b0e7ad68d02b6ee84ce</srcmd5>
+    <version>1.1.1</version>
+    <time>1776540868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347783</requestid>
+  </revision>
 </revisionlist>

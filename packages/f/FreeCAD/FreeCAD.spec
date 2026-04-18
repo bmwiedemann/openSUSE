@@ -42,7 +42,7 @@
 %endif
 
 Name:           FreeCAD
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -63,6 +63,8 @@ Patch14:        freecad-opengl.patch
 Patch15:        https://github.com/FreeCAD/FreeCAD/commit/06bc4f61e06fb4215ae7e5014c9870262dfe3577.patch#/CAM_PathOpUtil_Fix_linter.patch
 # PATCH-FIX-UPSTREAM -- https://github.com/FreeCAD/FreeCAD/commit/a18f77f3b81c15677973e2ea14274c73200470f1
 Patch16:        Fix_CAM_PathOpUtil_OCCT_7_9.patch
+# PATCH-FIX-UPSTREAM
+Patch17:        https://github.com/FreeCAD/FreeCAD/commit/605af01bfa14.patch#/Fix_Lineformat_test.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x

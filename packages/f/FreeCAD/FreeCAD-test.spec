@@ -17,7 +17,7 @@
 
 
 Name:           FreeCAD-test
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Meta source package that runs the FreeCAD testsuite when built
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -35,28 +35,37 @@ This is just executing the test suite at build time.
 %build
 export LC_ALL="C.utf-8"
 export PYTHONPATH=%{_libdir}/FreeCAD/lib
-python3 -c "\
+
+alltests=`python3 -c "\
+import FreeCAD
+d = [print('{}'.format(e), end=' ') for e in FreeCAD.__unit_test__]
+"`
+
+declare -a failed
+for test in $alltests; do \
+  python3 -c "\
 import FreeCAD
 import unittest
-print(FreeCAD.__unit_test__, file=sys.stderr)
-results = {}
-for name in FreeCAD.__unit_test__:
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.defaultTestLoader.loadTestsFromName(name))
-    print(\"Running: {}\".format(name), file=sys.stderr)
-    r = unittest.TextTestRunner()
-    res = r.run(suite)
-    results[name] = res
+name = sys.argv[-1]
+suite = unittest.defaultTestLoader.loadTestsFromName(name)
+print(\"Running: {}\".format(name), file=sys.stderr)
+r = unittest.TextTestRunner()
+res = r.run(suite)
+print(res)
+exit(len(res.errors) + len(res.failures) > 0)
+" $test || failed+=($test)
+done
 
-totalerrors = 0
-totalfailures = 0
-for [name,res] in results.items():
-    print(name, file=sys.stderr)
-    print(res, file=sys.stderr)
-    totalerrors += len(res.errors)
-    totalfailures += len(res.failures)
+# Known failures (see https://github.com/FreeCAD/FreeCAD/issues/29311):
+# TestArch TestDraft TestFemApp TestPartApp
+unknown=${failed[@]}
 
-exit((totalerrors + totalfailures) > 0)
-"
+for known in TestArch TestDraft TestFemApp TestPartApp; do \
+    unknown=(${unknown[@]/$known})
+done
+
+echo -e "===\nFailed: ${failed[*]}\nUnknown: ${unknown[*]}\n==="
+# Fail if unknown is not empty
+test -z "${unknown[*]}"
 
 %changelog

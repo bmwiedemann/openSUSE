@@ -1,0 +1,99 @@
+From 605af01bfa143791881ff67f39af0e0b17357669 Mon Sep 17 00:00:00 2001
+From: filippor <filippo.rossoni@gmail.com>
+Date: Tue, 31 Mar 2026 14:01:49 +0200
+Subject: [PATCH] fix TestLineFormat. intialize preferences
+
+[pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+---
+ tests/src/Mod/TechDraw/App/LineFormat.cpp | 54 ++++++++++++++++-------
+ 1 file changed, 39 insertions(+), 15 deletions(-)
+
+diff --git a/tests/src/Mod/TechDraw/App/LineFormat.cpp b/tests/src/Mod/TechDraw/App/LineFormat.cpp
+index b84cd377b2c4..3b005b60b6d0 100644
+--- a/tests/src/Mod/TechDraw/App/LineFormat.cpp
++++ b/tests/src/Mod/TechDraw/App/LineFormat.cpp
+@@ -4,43 +4,67 @@
+ #include <QtCore/Qt>
+ 
+ #include "Mod/TechDraw/App/LineFormat.h"
++#include "src/App/InitApplication.h"
+ 
+-namespace
++class TestLineFormat: public ::testing::Test
+ {
++protected:
++    static void SetUpTestSuite()
++    {
++        tests::initApplication();
++    }
++    void SetUp() override
++    {
++        _lineFormat = std::make_unique<TechDraw::LineFormat>(
++            Qt::SolidLine,
++            0.5,
++            Base::Color(0.0F, 0.0F, 0.0F, 1.0F),
++            true
++        );
++    }
++    void TearDown() override
++    {
+ 
+-TechDraw::LineFormat makeLineFormat()
+-{
+-    return {Qt::SolidLine, 0.5, Base::Color(0.0F, 0.0F, 0.0F, 1.0F), true};
+-}
++        _lineFormat.reset();
++    }
++
++    /// Get a non-owning pointer to the internal LineFormat for this test
++    TechDraw::LineFormat* lineFormat()
++    {
++        return _lineFormat.get();
++    }
++
++private:
++    std::unique_ptr<TechDraw::LineFormat> _lineFormat;
++};
+ 
+-}  // namespace
+ 
+-TEST(TestLineFormat, setQColorKeepsOpaqueColorsOpaque)
++TEST_F(TestLineFormat, setQColorKeepsOpaqueColorsOpaque)
+ {
+-    auto format = makeLineFormat();
++    auto format = lineFormat();
+ 
+-    format.setQColor(QColor(255, 0, 0, 255));
++    format->setQColor(QColor(255, 0, 0, 255));
+ 
+-    const Base::Color stored = format.getColor();
++    const Base::Color stored = format->getColor();
+     EXPECT_FLOAT_EQ(stored.r, 1.0F);
+     EXPECT_FLOAT_EQ(stored.g, 0.0F);
+     EXPECT_FLOAT_EQ(stored.b, 0.0F);
+     EXPECT_FLOAT_EQ(stored.a, 1.0F);
+ 
+-    const QColor roundTripped = format.getQColor();
++    const QColor roundTripped = format->getQColor();
+     EXPECT_EQ(roundTripped.red(), 255);
+     EXPECT_EQ(roundTripped.green(), 0);
+     EXPECT_EQ(roundTripped.blue(), 0);
+     EXPECT_EQ(roundTripped.alpha(), 255);
+ }
+ 
+-TEST(TestLineFormat, setQColorPreservesAlphaValue)
++TEST_F(TestLineFormat, setQColorPreservesAlphaValue)
+ {
+-    auto format = makeLineFormat();
++    auto format = lineFormat();
+ 
+-    format.setQColor(QColor(12, 34, 56, 78));
++    format->setQColor(QColor(12, 34, 56, 78));
+ 
+-    const QColor roundTripped = format.getQColor();
++    const QColor roundTripped = format->getQColor();
+     EXPECT_EQ(roundTripped.red(), 12);
+     EXPECT_EQ(roundTripped.green(), 34);
+     EXPECT_EQ(roundTripped.blue(), 56);
