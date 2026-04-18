@@ -1,7 +1,7 @@
 #
 # spec file for package bouncycastle
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %global ver_major 1
-%global ver_minor 83
+%global ver_minor 84
 #%%global ver_micro 1
 %global gittag r%{ver_major}rv%{ver_minor}%{?ver_micro:v%{ver_micro}}
 %global archivever jdk18on-%{ver_major}.%{ver_minor}%{?ver_micro:0%{ver_micro}}
