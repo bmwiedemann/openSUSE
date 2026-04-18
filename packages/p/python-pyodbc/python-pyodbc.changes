@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 16 12:52:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.3.0
+  * Add support for Python 3.14 including wheels, all on PyPI now,
+    by @keitherskine
+  * Drop support for EOL Python 3.8 by @MatthijsKok in (#1445)
+  * Port SQLite tests to pytest by @shramov in (#1440)
+  * Use HOMEBREW_PREFIX to locate Homebrew by @RA80533 in (#1212)
+  * Do not perform type check on NULL pointer by @shramov in (#1439)
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
