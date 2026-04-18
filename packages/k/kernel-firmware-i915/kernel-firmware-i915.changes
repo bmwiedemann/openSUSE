@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 17 11:17:42 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260416 (git commit a2f5a2941878):
+  * i915: Xe3LPD DMC v2.34
+  * i915: Xe3LPD_3002 DMC v2.29
+
+-------------------------------------------------------------------
 Fri Apr  3 06:44:49 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260402 (git commit 583d336ee7c2):
