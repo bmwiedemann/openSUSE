@@ -626,6 +626,13 @@ Patch199:       add-x86_64_v2-as-a-possible-rpm-package-architecture.patch
 # PATCH-FIX_UPSTREAM: https://github.com/tornadoweb/tornado/pull/3584
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/750
 Patch200:       backport-of-the-cve-2026-31958-fix-bsc-1259554.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/919994f2b0ce50d5ce89a36e9273fc61013ccc8d
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/7835f3acb1179bbe00e8af28a7f3af67fa30afab
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/6dc6cc3b595de454e68e413308c9875151108d67
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/1d4f9dcc40f1845b3fa942794177a671df03f90e
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68928
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/754
+Patch201:       fix-test-failures-754.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
