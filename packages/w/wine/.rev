@@ -5854,4 +5854,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1346800</requestid>
   </revision>
+  <revision rev="490" vrev="1">
+    <srcmd5>d142e37d3fc4e3f4fa516acfec953025</srcmd5>
+    <version>11.7</version>
+    <time>1776541008</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 11.7 release
+  - Beginnings of MSXML reimplementation without libxml2.
+  - VBScript compatibility fixes and optimizations.
+  - SRGB filter support in D3DX.
+  - 7.1 speaker configuration in DirectSound.
+  - Various bug fixes.
+- update staging to 11.7 release</comment>
+    <requestid>1347913</requestid>
+  </revision>
 </revisionlist>

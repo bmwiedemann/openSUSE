@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 18 07:01:35 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.7 release
+  - Beginnings of MSXML reimplementation without libxml2.
+  - VBScript compatibility fixes and optimizations.
+  - SRGB filter support in D3DX.
+  - 7.1 speaker configuration in DirectSound.
+  - Various bug fixes.
+- update staging to 11.7 release
+
+-------------------------------------------------------------------
 Sat Apr  4 08:28:08 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.6 release
