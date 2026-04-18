@@ -420,8 +420,6 @@
     <package name="fwupd-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="fwupd-efi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="fwupd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="galculator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="galculator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gawk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gcab" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gcab-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1145,7 +1143,6 @@
     <package name="libImlib2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libJudy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKCddb5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKCompactDisc6-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKDEGames6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKDSoapWSDiscoveryClient0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKDcrawQt6-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2208,7 +2205,6 @@
     <package name="libkbdfile1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libkcddb-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkcddb-qt6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkcompactdisc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdcraw-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdecorations3-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdecorations3-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2219,7 +2215,7 @@
     <package name="libkdepim" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdepim-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkdsoap-qt6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkerfuffle25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkerfuffle26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkexiv2-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkeybinder-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libkeymap1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

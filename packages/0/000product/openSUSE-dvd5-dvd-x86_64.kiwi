@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20260416" schemaversion="4.1">
+<image name="OBS__openSUSE___20260417" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260416</productvar>
+      <productvar name="VERSION">20260417</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20260416,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20260417,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20260416/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20260417/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -420,8 +420,6 @@
       <repopackage name="fwupd-bash-completion"/>
       <repopackage name="fwupd-efi"/>
       <repopackage name="fwupd-lang"/>
-      <repopackage name="galculator"/>
-      <repopackage name="galculator-lang"/>
       <repopackage name="gawk"/>
       <repopackage name="gcab"/>
       <repopackage name="gcab-lang"/>
@@ -1791,8 +1789,6 @@
       <repopackage name="libkcddb-qt6-lang"/>
       <repopackage name="libKCddb5"/>
       <repopackage name="libkColorPicker-Qt6-0"/>
-      <repopackage name="libkcompactdisc-lang"/>
-      <repopackage name="libKCompactDisc6-5"/>
       <repopackage name="libkdcraw-qt6"/>
       <repopackage name="libKDcrawQt6-5"/>
       <repopackage name="libkdecorations3-6"/>
@@ -1808,7 +1804,7 @@
       <repopackage name="libKDSoapWSDiscoveryClient0"/>
       <repopackage name="libKEduVocDocument5"/>
       <repopackage name="libKEduVocDocument5-lang"/>
-      <repopackage name="libkerfuffle25"/>
+      <repopackage name="libkerfuffle26"/>
       <repopackage name="libkexiv2-qt6"/>
       <repopackage name="libKExiv2Qt6-0"/>
       <repopackage name="libkeybinder-3_0-0"/>
