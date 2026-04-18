@@ -163,6 +163,7 @@ BuildRequires:  pkgconfig(libssh2) >= 1.4.3
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-drm)
+BuildRequires:  pkgconfig(libvmaf)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lilv-0) >= 0.16
