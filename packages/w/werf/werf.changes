@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Apr 18 06:03:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.65.4:
+  * Miscellaneous Chores
+    - release: force 2.65.4 (07a5770)
+- Update to version 2.65.3:
+  * Bug Fixes
+    - deploy: restore WERF_EXPERIMENT_NO_GLOBAL_SERVICE_VALUES env
+      (#7468) (3ceed0c)
+- Update to version 2.65.2:
+  * Bug Fixes
+    - deploy: restore global.env (5e5defd)
+- Update to version 2.65.1:
+  * Bug Fixes
+    - includes: create local branch refs after fresh clone in
+      CloneAndFetch (#7425) (4c94b0b)
+- Update to version 2.65.0:
+  * Features
+    - build-report: support reading .env format build reports
+      (8e1501c)
+    - ci-env: add --use-docker-auth-config flag to generate Docker
+      config from DOCKER_AUTH_CONFIG env var (c2701f7)
+    - deploy: add structured image values to
+      $.Values.global.werf.images (#7413) (1b93dcc)
+  * Bug Fixes
+    - build: fix git owner and group with buildah backend (#7415)
+      (7af23b6)
+    - build: use path.Join for container-internal paths in stapel
+      (#7258) (c974594)
+    - deploy: goroutine leak in watch error channel consumer for
+      ReleaseInstall, ReleaseUninstall and ReleaseRollback (#7418)
+      (f2d817c)
+    - deploy: release had pending status after error instead of
+      failed (#7416) (b523cf2)
+    - host-cleanup: handle race condition in tmp files GC when
+      entries disappear between readdir and stat (18ff151)
+    - includes: respect --loose-giterminism for
+      --allow-includes-update (#7414) (db75a5a)
+
+-------------------------------------------------------------------
+Thu Apr 09 10:21:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.64.0:
+  * Features
+    - build: respect insecure registries and mirrors from
+      backend-native config (#7376) (fd5a826)
+  * Bug Fixes
+    - build: fix stage build time in report (#7404) (74ae247)
+    - build: handle broken import metadata images in container
+      registry (#7394) (0413384)
+    - cleanup: ensure tag is deleted before manifest removal
+      (#7401) (303506e)
+    - deploy: adopt managed fields after migration from helm to
+      nelm (#7406) (eab87e5)
+    - deploy: pass option for yaml validator to allow duplicate map
+      key (#7408) (c9ea743)
+
+-------------------------------------------------------------------
 Wed Mar 25 06:14:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.63.1:
