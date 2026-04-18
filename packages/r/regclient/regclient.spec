@@ -1,7 +1,7 @@
 #
 # spec file for package regclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           regclient
-Version:        0.11.1
+Version:        0.11.3
 Release:        0
 Summary:        OCI Registry Client in Go and tooling using those libraries
 License:        Apache-2.0
@@ -28,7 +28,7 @@ BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  git
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.25
 
 %description
 Client interface for the registry API. This packages includes regctl for a
