@@ -197,4 +197,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: vpu: add video firmware for SM8450</comment>
     <requestid>1344442</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>14cca945b9474afd005566663a096f7d</srcmd5>
+    <version>20260414</version>
+    <time>1776540671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260414 (git commit f48f551a902b):
+  * mediatek: vpu: drop old sym link</comment>
+    <requestid>1347745</requestid>
+  </revision>
 </revisionlist>

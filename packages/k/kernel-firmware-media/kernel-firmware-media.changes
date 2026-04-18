@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 15 05:02:44 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260414 (git commit f48f551a902b):
+  * mediatek: vpu: drop old sym link
+
+-------------------------------------------------------------------
 Wed Apr  1 13:38:36 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260331 (git commit 441bcf2eaa2a):
