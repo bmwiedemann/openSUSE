@@ -18,30 +18,13 @@ go_modules:
 
 .SILENT: package_lock_json
 package_lock_json:
-	echo "Preparing webui dependencies"
-	version=$$( awk '/^Version:/ {print $$2;exit;}' $(SPEC) )
-	echo "Setting basename"
-	basename=$(NAME)-$$version
-	echo "Setting obscpio"
-	obscpio=$$basename.obscpio
-	working_directory=$$(pwd)
-	tmpdir=$$(mktemp -d -p /tmp)
-	echo "Changing into tmpdir"
-	cd $$tmpdir || exit 1
-	echo "Extracting obscpio archive"
-	cpio -id < $$working_directory/$$obscpio
-	echo "Changing into services"
-	cd $$basename/web/ui/
-	echo "Removing package-lock.json"
-	rm -vf package-lock.json
-	echo "Starting npm install"
-	npm install --package-lock-only
-	echo "Copy package-lock.json"
-	cp -vf package-lock.json $$working_directory/
-	echo "Cleaning up"
-	cd $$working_directory/
-	rm -rf $$tmpdir
-	echo "Finished"
+	podman run \
+		-ti \
+		--rm \
+		--pull=always \
+		-v .:/data/ \
+		registry.opensuse.org/opensuse/leap:16.0 \
+		bash /data/create_package-lock_json.sh $(SPEC) nodejs24
 
 .SILENT: node_modules
 node_modules:

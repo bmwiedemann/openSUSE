@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        3.10.0
+Version:        3.11.1
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
@@ -39,12 +39,14 @@ Source3:        prometheus.service
 Source4:        prometheus.yml
 Source5:        prometheus.sysconfig
 Source6:        prometheus.firewall.xml
-Source8:        Makefile
-Source9:        PACKAGING_README.md
 #
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
+#
+Source21:       Makefile
+Source22:       PACKAGING_README.md
+Source23:       create_package-lock_json.sh
 #
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
