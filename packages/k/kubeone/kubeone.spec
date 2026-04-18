@@ -16,22 +16,23 @@
 #
 
 
-# https://github.com/kubermatic/kubeone/blob/main/Makefile#L40
-# curl -SsL https://dl.k8s.io/release/stable-1.34.txt
-%define KUBERNETES_STABLE_VERSION v1.34.3
+# automatically adjusted by the Makefile
+%define KUBERNETES_STABLE_VERSION v1.35.4
 
 Name:           kubeone
-Version:        1.12.3
+Version:        1.13.4
 Release:        0
 Summary:        CLI for the kubeone cluster automation
 License:        Apache-2.0
 URL:            https://github.com/kubermatic/kubeone
 Source:         kubeone-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source11:       PACKAGING_README.md
+Source22:       Makefile
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.26 >= 1.26.1
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.24
 
 %description
 Kubermatic KubeOne automates cluster operations on all your cloud, on-prem,
