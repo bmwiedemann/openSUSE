@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 24 22:53:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.3:
+  * voms-proxy-init now reports errors similarly to the Java
+    clients, in particular for expired certificates, suspended
+    users, expired AUPs
+  * voms-proxy-init doesn't contact any more the VOMS server
+    legacy endpoint
+  * add CI workflow to build RPMs and publish the release
+  * add a CHANGELOG.md file, used by the above workflow
+
+-------------------------------------------------------------------
 Tue Jul  8 13:32:28 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.1.2
@@ -35,5 +47,5 @@ Mon Feb  6 12:36:36 UTC 2023 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Thu Jan 27 07:30:48 UTC 2022 - Christian Goll <cgoll@suse.com>
 
-- initial commit of voms 2.1.0~rc0 which is a library for 
+- initial commit of voms 2.1.0~rc0 which is a library for
   grid computing

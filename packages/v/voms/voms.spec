@@ -1,7 +1,7 @@
 #
 # spec file for package voms
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2015 mischa.salle@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           voms
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        The Virtual Organisation Membership Service
 License:        Apache-2.0
