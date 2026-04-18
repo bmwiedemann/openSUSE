@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 18 09:18:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jetty-CVE-2026-2332.patch
+    + backport of upstream patch fixing bsc#1262115 (CVE-2026-2332):
+      HTTP/1.1 parser vulnerable to request smuggling when chunk
+      extensions are used
+
+-------------------------------------------------------------------
+Mon Apr 13 15:27:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Enable the jetty-jaspi module
+- Added patch:
+  * jetty-CVE-2026-5795.patch
+    + backport of upstream patch fixing bsc#1261997 (CVE-2026-5795):
+      JaspiAuthenticator broken access control
+
+-------------------------------------------------------------------
 Fri Mar  6 19:51:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

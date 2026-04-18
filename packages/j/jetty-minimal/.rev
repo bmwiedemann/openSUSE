@@ -247,4 +247,12 @@
     <comment>bsc#1259242, CVE-2025-11143</comment>
     <requestid>1337383</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>25e7a8f73e0a8deaec0b804a3645b8a7</srcmd5>
+    <version>9.4.58</version>
+    <time>1776547225</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1261997, CVE-2026-5795 and bsc#1262115, CVE-2026-2332</comment>
+    <requestid>1347974</requestid>
+  </revision>
 </revisionlist>

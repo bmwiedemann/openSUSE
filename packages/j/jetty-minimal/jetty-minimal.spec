@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-minimal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,6 +30,8 @@ URL:            https://www.eclipse.org/jetty/
 Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz#/%{src_name}.tar.gz
 Patch0:         jetty-port-to-servlet-4.0.patch
 Patch1:         jetty-CVE-2025-11143.patch
+Patch2:         jetty-CVE-2026-2332.patch
+Patch3:         jetty-CVE-2026-5795.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -42,6 +44,7 @@ BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
 BuildRequires:  mvn(org.apache.tomcat:tomcat-jasper)
+BuildRequires:  mvn(org.apache.tomcat:tomcat-jaspic-api)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.eclipse.jetty.orbit:javax.mail.glassfish)
 BuildRequires:  mvn(org.eclipse.jetty.toolchain:jetty-schemas)
@@ -143,6 +146,13 @@ Summary:        The jaas module for Jetty
 Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-jaas
+%{extdesc} %{summary}.
+
+%package        -n %{base_name}-jaspi
+Summary:        The jaspi module for Jetty
+Group:          Productivity/Networking/Web/Servers
+
+%description    -n %{base_name}-jaspi
 %{extdesc} %{summary}.
 
 %package        -n %{base_name}-jmx
@@ -279,9 +289,7 @@ Group:          Productivity/Networking/Web/Servers
 %{summary}.
 
 %prep
-%setup -q -n %{src_name}
-%patch -P 0 -p1
-%patch -P 1 -p1
+%autosetup -n %{src_name} -p1
 
 find . -name "*.?ar" -exec rm {} \;
 find . -name "*.class" -exec rm {} \;
@@ -376,6 +384,8 @@ sed -i '/^\s*\*.*<script>/d' jetty-util/src/main/java/org/eclipse/jetty/util/res
 
 %pom_change_dep org.apache.directory.api: :::test jetty-jaas
 
+%pom_change_dep :javax.security.auth.message org.apache.tomcat:tomcat-jaspic-api jetty-jaspi
+
 # the default location is not allowed by SELinux
 sed -i '/<SystemProperty name="jetty.state"/d' \
     jetty-home/src/main/resources%{_sysconfdir}/jetty-started.xml
@@ -393,7 +403,6 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %pom_disable_module jetty-maven-plugin
 %pom_disable_module jetty-jspc-maven-plugin
 %pom_disable_module jetty-spring
-%pom_disable_module jetty-jaspi
 %pom_disable_module jetty-nosql
 %pom_disable_module tests
 %pom_disable_module examples
@@ -475,6 +484,8 @@ ln -s %{_javadir}/%{base_name}/%{base_name}-ant.jar %{buildroot}%{_datadir}/ant/
 %files -n %{base_name}-http-spi -f .mfiles-jetty-http-spi
 
 %files -n %{base_name}-jaas -f .mfiles-jetty-jaas
+
+%files -n %{base_name}-jaspi -f .mfiles-jetty-jaspi
 
 %files -n %{base_name}-jndi -f .mfiles-jetty-jndi
 

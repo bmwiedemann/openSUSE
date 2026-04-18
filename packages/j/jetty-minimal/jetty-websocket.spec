@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-websocket
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
