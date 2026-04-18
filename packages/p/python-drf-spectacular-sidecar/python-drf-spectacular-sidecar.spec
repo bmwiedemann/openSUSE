@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-drf-spectacular-sidecar
-Version:        2026.4.1
+Version:        2026.4.14
 Release:        0
 Summary:        Serve self-contained distribution builds of Swagger UI and Redoc with Django
 License:        BSD-3-Clause
