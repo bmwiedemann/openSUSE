@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 17 20:14:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.68.2:
+  * build(deps): bump github.com/open-policy-agent/opa from 1.15.1
+    to 1.15.2 (#1311)
+  * build(deps): bump github.com/hashicorp/go-getter from 1.8.5 to
+    1.8.6 (#1307)
+- Update to version 0.68.1:
+  * fix(push): Use Rego v1 by default (#1290)
+
+-------------------------------------------------------------------
 Thu Apr 02 04:35:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.68.0:
