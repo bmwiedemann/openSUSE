@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 16 16:34:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not put the built binary into bin directory
+
+-------------------------------------------------------------------
 Sat Nov 22 05:27:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.19:

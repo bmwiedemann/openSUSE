@@ -1,7 +1,7 @@
 #
 # spec file for package linkerd-cli
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,11 +85,11 @@ go build \
    -tags prod \
    -buildmode=pie \
    -ldflags="-X github.com/linkerd/linkerd2/pkg/version.Version=stable-%{version}" \
-   -o bin/%{linkerd_executable_name} ./cli/
+   -o %{linkerd_executable_name} ./cli/
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{linkerd_executable_name} %{buildroot}/%{_bindir}/%{linkerd_executable_name}
+install -D -m 0755 %{linkerd_executable_name} %{buildroot}/%{_bindir}/%{linkerd_executable_name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
