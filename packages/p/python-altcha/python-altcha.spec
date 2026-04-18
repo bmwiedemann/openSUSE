@@ -17,7 +17,7 @@
 
 
 Name:           python-altcha
-Version:        1.0.0
+Version:        2.0.0
 Release:        0
 Summary:        A library for creating and verifying challenges for ALTCHA
 License:        MIT

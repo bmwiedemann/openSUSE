@@ -43,4 +43,12 @@
   * fix: salt parameter splicing</comment>
     <requestid>1333405</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fb8771092124021a3e1e6c60886c9daa</srcmd5>
+    <version>2.0.0</version>
+    <time>1776540916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347829</requestid>
+  </revision>
 </revisionlist>
