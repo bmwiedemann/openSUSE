@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Apr 18 17:18:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.74:
+  * Fixed
+    - md077: emit atomic compound fix for under-indented fences in
+      lists (455822c)
+    - doctests: correct rotted imports and blockquote indent
+      assertions (0238728)
+
+-------------------------------------------------------------------
+Sat Apr 18 05:31:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.73:
+  * Fixed
+    - test: make test_performance_md051 actually exercise MD051
+      (c550ef6)
+    - md013,bench: enforce CommonMark 3-space indent on thematic
+      breaks; hoist LintContext out of bench loop (1aafb9a)
+- Update to version 0.1.72:
+  * Added
+    - config: resolve rule aliases in config get command (69058cd)
+    - import: support JSONC comments in markdownlint config files
+      (26ae457)
+    - cli: introduce FmtArgs with formatter-appropriate interface
+      (dce2b40)
+  * Fixed
+    - md034: detect code spans inside MDX JSX component bodies
+      (d881713)
+    - md025: cascade level adjustment to subordinate headings when
+      demoting duplicate title (2399dca)
+    - formatter: inline format args to satisfy clippy (250a194)
+    - commands: resolve rule aliases in explain and rule commands
+      (5d04351)
+    - use verified fix counts in summaries and correct dry-run
+      label (cd55dc1)
+- Update to version 0.1.71:
+  * Added
+    - config: support bare rule name in rumdl config get (8369fb1)
+  * Fixed
+    - config: move test module to end of flavor.rs to satisfy
+      clippy items_after_test_module (e30714d)
+    - config: load user config alongside discovered markdownlint
+      project config (c0f79c1)
+    - config: display global.flavor as lowercase quoted string in
+      rumdl config output (b162295)
+
+-------------------------------------------------------------------
 Mon Apr 13 05:11:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.70:
