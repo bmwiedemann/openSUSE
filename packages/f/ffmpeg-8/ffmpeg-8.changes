@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 16 15:54:50 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add explicit symbol lists to work-around-abi-break.patch
+  [boo#1261836]
+
+-------------------------------------------------------------------
 Thu Apr  2 08:54:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable VVC decoders/encoders by default.

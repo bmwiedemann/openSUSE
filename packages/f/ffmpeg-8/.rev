@@ -62,4 +62,13 @@
     <comment>- Disable VVC decoders/encoders by default.</comment>
     <requestid>1344452</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>28e99c8705caf898e8a5e8fd6dd5b42c</srcmd5>
+    <version>8.1</version>
+    <time>1776540606</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit symbol lists to work-around-abi-break.patch
+  [boo#1261836]</comment>
+    <requestid>1347594</requestid>
+  </revision>
 </revisionlist>

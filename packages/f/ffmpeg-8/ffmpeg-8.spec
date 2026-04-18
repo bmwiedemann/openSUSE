@@ -662,6 +662,20 @@ done
 cat config.h
 %make_build
 
+>machine_report.txt >user_report.txt
+for i in lib*/lib*.so.*; do
+	echo "===> $i" >>user_report.txt
+	readelf -aW "$i" | grep -P '@\S+_UNTRACKED' >current.txt || :
+	cat current.txt >>machine_report.txt
+	cat current.txt >>user_report.txt
+	echo >>user_report.txt
+done
+if [ -s machine_report.txt ]; then
+	echo "ERROR: The following symbols seem to be new and should be added to work-around-abi-break.patch";
+	cat user_report.txt
+	exit 1
+fi
+
 %global extratools aviocat cws2fws ffescape ffeval ffhash fourcc2pixfmt graph2dot ismindex pktdumper probetest qt-faststart seek_print sidxindex trasher
 
 for i in %extratools; do
