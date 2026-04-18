@@ -221,4 +221,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: add firmware for Lontium LT8713SX DP hub</comment>
     <requestid>1340883</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>87c189f8e7509a16cd1823213475418a</srcmd5>
+    <version>20260416</version>
+    <time>1776540673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260416 (git commit a2f5a2941878):
+  * powervr: update Imagination Rogue firmware images</comment>
+    <requestid>1347746</requestid>
+  </revision>
 </revisionlist>
