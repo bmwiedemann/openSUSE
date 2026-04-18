@@ -11,7 +11,7 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
  
          log.debug("SUSE content product_name=%s", product_name)
          return product_name
-@@ -271,27 +273,38 @@ class _SUSEContent:
+@@ -271,27 +273,39 @@ class _SUSEContent:
  
          # Special case, parse version out of a line like this
          # cpe:/o:opensuse:opensuse:13.2,openSUSE
@@ -56,7 +56,8 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 +                elif " High Performance " in self.product_name:
 +                    sle_version = (sle_version + '.' + product_name[7][2])
 +                elif int(sle_version) <= 15:
-+                    sle_version = (sle_version + '.' + product_name[5][2])
++                    if len(product_name) > 5:
++                        sle_version = (sle_version + '.' + product_name[5][2])
                  else:
 -                    sle_version = (sle_version + '.' + self.product_name.strip().rsplit(' ')[5][2])
 +                    if len(product_name) > 1 and int(product_name[2]) != 0:
@@ -64,7 +65,7 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
              distro_version = sle_version
  
          # SUSE Container as a Service Platform
-@@ -518,13 +531,28 @@ class _SuseDistro(_RHELDistro):
+@@ -518,13 +532,28 @@ class _SuseDistro(_RHELDistro):
  
          if not cache.checked_for_suse_content:
              cache.checked_for_suse_content = True
@@ -93,7 +94,7 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
                  if media_str:
                      media_arch = "x86_64"
                      if 'aarch64' in media_str:
-@@ -580,6 +608,10 @@ class _SuseDistro(_RHELDistro):
+@@ -580,6 +609,10 @@ class _SuseDistro(_RHELDistro):
              if tree_arch == "ppc64":
                  self._kernel_paths.append(("suseboot/linux64", "suseboot/initrd64"))
  
@@ -104,7 +105,7 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
          # Tested with SLES 12 for ppc64le, all s390x
          self._kernel_paths.append(("boot/%s/linux" % tree_arch, "boot/%s/initrd" % tree_arch))
          # Tested with Opensuse 10.0
-@@ -607,8 +639,12 @@ class _SuseDistro(_RHELDistro):
+@@ -607,8 +640,12 @@ class _SuseDistro(_RHELDistro):
  
          if str(self._variant_prefix).startswith(("sles", "sled", "oes")):
              sp_version = ""
@@ -119,7 +120,7 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
  
              return self._variant_prefix + version + sp_version
  
-@@ -669,7 +705,7 @@ class _SLESDistro(_SuseDistro):
+@@ -669,7 +706,7 @@ class _SLESDistro(_SuseDistro):
      PRETTY_NAME = "SLES"
      matching_distros = ["sles"]
      _variant_prefix = "sles"
@@ -128,7 +129,7 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
      famregex = ".*SUSE Linux Enterprise.*"
  
  
-@@ -965,17 +1001,17 @@ def _build_distro_list(osobj):
+@@ -965,17 +1002,17 @@ def _build_distro_list(osobj):
      allstores = [
          # Libosinfo takes priority
          _LibosinfoDistro,

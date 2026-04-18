@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 09:37:39 MDT 2026 - carnold@suse.com
+
+- Add check for product name length to prevent exception
+  virtinst-add-sle16-detection-support.patch
+
+-------------------------------------------------------------------
 Tue Mar 31 14:50:13 MDT 2026 - carnold@suse.com
 
 - Upstream features and bug fixes (bsc#1027942) (jsc#PED-14625)
