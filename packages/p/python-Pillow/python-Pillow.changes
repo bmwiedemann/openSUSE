@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Apr  3 17:53:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 12.2.0:
+- update to 12.2.0 (fixes CVE-2026-40192, bsc#1262184):
   * Prevent FITS decompression bomb
   * Fix OOB write with invalid tile extents
   * Prevent PDF parsing trailer infinite loop

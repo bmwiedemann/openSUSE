@@ -953,4 +953,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   * Integer overflow when processing fonts</comment>
     <requestid>1344514</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>74a8aea1cd268cc30fda761a0d1b726d</srcmd5>
+    <version>12.2.0</version>
+    <time>1776540652</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug reference</comment>
+    <requestid>1347701</requestid>
+  </revision>
 </revisionlist>
