@@ -295,4 +295,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel_vpu: Update NPU firmware</comment>
     <requestid>1345539</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>6d9b3e5d009692bd34e0b6baedc414c8</srcmd5>
+    <version>20260408</version>
+    <time>1776540671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update aliases from 7.0</comment>
+    <requestid>1347744</requestid>
+  </revision>
 </revisionlist>
