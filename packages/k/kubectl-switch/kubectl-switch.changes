@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Apr 17 20:34:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.17:
+  * Bug Fixes
+    - 79df14f: fix(go): update charm.land/bubbletea/v2 ( v2.0.5 →
+      v2.0.6 ) (@mr-borboto[bot])
+    - 5804a18: fix(go): update kubernetes monorepo ( v0.35.3 →
+      v0.35.4 ) (@mr-borboto[bot])
+  * CI/CD
+    - 52bf634: ci(github-action): update github/codeql-action (
+      v4.35.1 → v4.35.2 ) (@mr-borboto[bot])
+  * Chores
+    - c2433e1: chore(mise): update aqua:goreleaser/goreleaser (
+      2.15.2 → 2.15.3 ) (@mr-borboto[bot])
+- Update to version 2.4.16:
+  * Bug Fixes
+    - 8b7bf00: fix(go): update charm.land/bubbletea/v2 ( v2.0.2 →
+      v2.0.3 ) (@mr-borboto[bot])
+    - eef4da7: fix(go): update charm.land/bubbletea/v2 ( v2.0.3 →
+      v2.0.4 ) (@mr-borboto[bot])
+    - 4f505cb: fix(go): update charm.land/bubbletea/v2 ( v2.0.4 →
+      v2.0.5 ) (@mr-borboto[bot])
+    - 2672707: fix(go): update charm.land/lipgloss/v2 ( v2.0.2 →
+      v2.0.3 ) (@mr-borboto[bot])
+  * CI/CD
+    - 2be80ed: ci(github-action): update
+      actions/create-github-app-token ( v3.0.0 → v3.1.0 )
+      (@mr-borboto[bot])
+    - 60aac54: ci(github-action): update
+      actions/create-github-app-token ( v3.1.0 → v3.1.1 )
+      (@mr-borboto[bot])
+    - fd4ca38: ci(github-action): update docker/login-action (
+      v4.0.0 → v4.1.0 ) (@mr-borboto[bot])
+    - 57c2418: ci(github-action): update github/codeql-action (
+      v4.34.1 → v4.35.0 ) (@mr-borboto[bot])
+    - 7ac8c1c: ci(github-action): update github/codeql-action (
+      v4.35.0 → v4.35.1 ) (@mr-borboto[bot])
+    - f1866ec: ci(github-action): update renovatebot/github-action
+      ( v46.1.6 → v46.1.7 ) (@mr-borboto[bot])
+    - 04724a7: ci(github-action): update renovatebot/github-action
+      ( v46.1.7 → v46.1.8 ) (@mr-borboto[bot])
+    - 8c5357d: ci(github-action): update renovatebot/github-action
+      ( v46.1.8 → v46.1.9 ) (@mr-borboto[bot])
+  * Chores
+    - f1355f4: chore(mise): update aqua:goreleaser/goreleaser (
+      2.14.3 → 2.15.0 ) (#240) (@mr-borboto[bot])
+    - 106227b: chore(mise): update aqua:goreleaser/goreleaser (
+      2.15.0 → 2.15.2 ) (#241) (@mr-borboto[bot])
+    - 1e95801: chore(mise): update go ( 1.26.1 → 1.26.2 )
+      (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Fri Mar 27 06:12:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.15:
