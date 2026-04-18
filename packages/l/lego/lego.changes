@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 17 20:01:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.34.0:
+  * b682f84 Add DNS provider for 1cloud.ru (#2921)
+  * 79b83fe Add DNS provider for Netnod (#2919)
+  * ca17894 Add DNS provider for UCloud (#2972)
+  * 61bd6bf Add DNS provider for online.net (#2964)
+  * 4f6a481 bluecatv2: fix documentation
+  * aa6fceb fix: check base64url token
+  * 1274ec8 oraclecloud: support profile session token (#2965)
+  * cff2cd7 rfc2136: add RFC3645 (TSIG-GSS) support (#2946)
+  * 33754b3 rfc2136: add dnsupdate as alias (#2957)
+  * 79796e1 yandex360: update API docs links (#2922)
+
+-------------------------------------------------------------------
 Fri Mar 20 06:59:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.33.0:
