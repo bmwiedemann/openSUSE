@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 09 08:07:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.6:
+  * BUG FIXES:
+    - Running tofu apply -refresh-only with a configuration that
+      contains ephemeral resources does not fail anymore because
+      the refresh produced changes (#3776)
+    - Fixed tofu init crashing when a module version uses a
+      variable and the module is referenced from a test file.
+      (#3686)
+    - Fixed provider-defined functions in import block id
+      expressions causing "BUG: Uninitialized function provider"
+      error. (#3803)
+    - tofu test no longer fails during cleanup when using a mocked
+      version of a resource type with write-only attributes.
+      (#3964)
+    - A malicious remote TLS server can no longer deadlock OpenTofu
+      by sending multiple key update messages in a single record.
+      (#3966)
+    - When installing module packages from "tar" archives, OpenTofu
+      now accepts only a limited number of sparse file entries to
+      avoid unbounded memory usage from maliciously-crafted
+      archives containing many sparse regions. (#3966)
+
+-------------------------------------------------------------------
 Fri Feb 13 06:19:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.5:
