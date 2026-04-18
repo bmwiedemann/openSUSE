@@ -1,7 +1,7 @@
 #
 # spec file for package cpp-httplib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define         sover 0.28
-%define         libver 0_28
+%define         sover 0.42
+%define         libver 0_42
 Name:           cpp-httplib
-Version:        0.28.0
+Version:        0.42.0
 Release:        0
 Summary:        A C++11 HTTP/HTTPS server and client library
 License:        MIT
@@ -87,7 +87,17 @@ rm -r %{buildroot}%{_datadir}/{licenses/httplib,doc/packages/cpp-httplib}
 %check
 # OBS and chroot build environments does not provide internet
 # connectivity, skip online tests to avoid failures
-%ctest --parallel 1 --exclude-regex '(_Online$)'
+# Additionally skip tests known to fail on specific architectures:
+# - ETagTest date tests: 32-bit time_t overflow (Y2038) on 32-bit arches
+# - WebSocketIntegrationTest large payload: 32-bit size_t truncation on i586
+%global ctest_exclude _Online$
+%ifarch %{ix86}
+%global ctest_exclude %{ctest_exclude}|ETagTest\.(LastModifiedAndIfModifiedSince|IfRangeWithDate)|WebSocketIntegrationTest\.(LargeMessage|MaxPayloadAtLimit)
+%endif
+%ifarch %{arm}
+%global ctest_exclude %{ctest_exclude}|ETagTest\.(LastModifiedAndIfModifiedSince|IfRangeWithDate)
+%endif
+%ctest --parallel 1 --exclude-regex '%{ctest_exclude}'
 
 %ldconfig_scriptlets -n lib%{name}%{libver}
 

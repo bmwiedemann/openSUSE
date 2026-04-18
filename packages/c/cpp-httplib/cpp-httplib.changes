@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Tue Apr 14 14:18:08 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 0.42.0:
+  * test: WebSocketIntegrationTest.SocketSettings: do not set AF_INET
+- 0.41.0:
+  * Replace httplib::any / std::map<std::string, httplib::any> based res.user_data with a new type-safe UserData class that provides set() / get<T>() API 
+  * Add parse_url utility function with UrlComponents struct for parsing URLs into scheme, host, port, path, and query components
+  * [cmake] Allow using pre-existing zstd::libzstd target if it already exists, useful for projects that bundle their own zstd
+  * Add header parser and URL parser fuzzers for OSS-Fuzz coverage improvement
+- 0.40.0:
+  * Optimize multipart content provider to coalesce small writes and reduce TCP packet fragmentation
+  * Add set_socket_opt function and corresponding test for TCP_NODELAY option
+  * Implement request body consumption and reject invalid Content-Length with Transfer-Encoding to prevent
+  * request smuggling 
+  * Fixed warnings 
+- 0.39.0:
+  * Update modules.cmake to fix cmake error
+  * "Building a Desktop LLM App with cpp-httplib" 
+- Removed OpenStreamMalformedContentLength.patch
+- Upstream release includes fixes for:
+  CVE-2026-33745 (bsc#1260906)
+  CVE-2026-34441 (bsc#1261286)
+
+-------------------------------------------------------------------
+Wed Mar 18 11:52:46 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 0.38.0:
+  * Filename sanitization for path traversal prevention — Added sanitize_filename() to prevent path traversal attacks via malicious filenames in multipart uploads
+  * Symlink protection in static file server — Static file serving now detects and rejects symlinks that point outside the mount directory, preventing symlink-based directory traversal
+  * Brotli compression support — Added Brotli (br) as a supported content encoding alongside gzip and deflate
+  * Accept-Encoding quality parameter parsing — The server now parses q= quality values in the Accept-Encoding header and selects the best encoding accordingly
+  * SSL proxy connection support — SSLClient can now establish connections through HTTPS proxies, with a new setup_proxy_connection method for cleaner proxy handling
+  * WebSocket ping interval runtime configuration — WebSocket ping interval can now be configured at runtime instead of only at compile time
+  * Benchmark test suite — Added benchmark tests and configurations for performance evaluation
+  * Unicode path component decoding tests — Added test coverage for Unicode characters in decode_path_component
+  * Documentation updates — Enhanced TLS backend documentation with platform-specific certificate handling details; clarified progress callback usage and user data handling in examples
+  * Fix port conflict in test — Fixed port number in OpenStreamMalformedContentLength test to avoid conflicts
+  * Removed large data tests for GzipDecompressor and SSLClientServerTest that caused memory issues
+  * Enabled BindDualStack test
+- 0.37.2:
+  * Fix TLS cert verification bypass on proxy redirect introduced in #2165  in #2396
+  * Various security fixes
+- 0.37.1:
+  * Remove 32-bit limitation
+- 0.37.0
+  * Use doc.yml to generate document site
+  * Fix problem with alternate file name check
+- 0.36.0
+  * Documentation Site on GitHub Pages
+  * [CMake] New compoments MbedTLS and wolfSSL
+  * Removed unused local variable by @hqo998
+  * Fix #2383
+- 0.35.0
+  * Make loading system certificates from the Keychain on macOS an opt-out feature
+- 0.34.0
+  * Added make_file_body function to send file binaries
+  * Revised description of file upload using make_file_provider
+  * Updated Crow library version from v1.2.0 to v1.3.1 (for benchmark code)
+  * Fixed bugs caused by the recent performance improvement
+- 0.33.1
+  * Fix C++11 compatibility problem
+- 0.33.0:
+  * Offline test (Resolve #2356)
+  * Use iptables to disable network
+  * Parallel test on CI by
+  * Remove macOS select() fallback
+  * Fix comparison of integers of different signs warning when compiling with BoringSSL
+  * WebSocket and Dynamic Thread Pool support
+  * Add wolfSSL support
+- 0.32.0: 
+  * Move stream and sse implementations from the decl area to the implementation area
+  * Add support for mbedtls to meson
+  * Correct sign comparison error with sk_X509_OBJECT_num
+  * Fix compilation on BoringSSL by replacing ASN1_TIME_to_tm
+  * Bypass new 100MB payload limit when a content_receiver
+- 0.31.0:
+  * Abstract TLS API support (Resolve #2309) 
+  * Add C++ modules support 
+  * Fix memory leak
+  * Old: std::numeric_limits<size_t>::max() (effectively unlimited)
+  * New: 100 * 1024 * 1024 (100MB)
+  * Code that receives payloads larger than 100MB will now fail with ExceedMaxPayloadSize error
+  * Mbed TLS can now be used by defining CPPHTTPLIB_MBEDTLS_SUPPORT
+  * Request::ssl (SSL* type) has been removed and replaced with Request::ssl (tls::const_session_t type)
+  * ClientConnection::ssl has similarly been changed to tls::session_t
+  * Constructors and methods that directly use OpenSSL types (X509*, EVP_PKEY*, etc.) are now deprecated
+  * SSLServer: X509*/EVP_PKEY* constructors → migrate to SSLServer(PemMemory) or SSLServer(ContextSetupCallback)
+  * SSLClient: ssl_context() → use tls_context() instead
+  * Client: set_server_certificate_verifier(std::function<SSLVerifierResponse(SSL*)>) → use set_server_certificate_verifier(tls::VerifyCallback) instead
+  * Result: ssl_openssl_error() → use ssl_backend_error() instead
+  * Request: req.ssl (OpenSSL SSL*) → req.ssl (tls::const_session_t) + use req.peer_cert() / req.sni()
+- 0.30.2:
+  * Problem with CI test on Windows without OpenSSL 
+  * Fix zstd detection when zstd_FOUND is true but target is missing 
+  * timegm api absent in AIX 
+  * Fix set_ca_cert_store() to skip system certs like set_ca_cert_path() 
+  * case insensitive hostname validation
+  Prevent redefinition of ssize_t 
+- 0.30.0:
+  * Apple frameworks: match CoreFoundation and CFNetwork linkage
+- 0.29.0:
+  * chore: fix some typos in comments 
+  * Optimize ThreadPool and MatcherBase constructors 
+  * New Stream API Support 
+  * Implement ETag and Last-Modified support for static file responses and If-Range requests 
+  * Update split.py file 
+  * Use std::move for content_provider in adapter 
+  * Use std::move for boundary in set_boundary method 
+  * Fix linker error on macOS when using CMake 
+  * Remove unnecessary copies for AcceptEntry 
+  * Change single char string literals to chars 
+  * Remove another unnecessary string copy 
+  * Use move semantics for auth key and value 
+  * Replace httpbin.org with httpcan.org 
+  * Add Zstd support through meson 
+  * Verify Host header omits default ports per RFC 7230 
+  * Implement SSEClient 
+  * Avoid unnecessary copying of request and response in proxy/redirect 
+  * Use std::move for request redirection 
+  * Add another missing std::move for base_dirs_ vector 
+- Skip arch-specific test failures in %check: 32-bit time_t/size_t overflow
+  on ix86/arm (ETagTest, WebSocketIntegrationTest)
+- Add OpenStreamMalformedContentLength.patch:  Fix out-of-range Content-Length
+- Upstream release includes fixes for:
+  CVE-2026-22776 (bsc#1256518)
+  CVE-2026-21428 (bsc#1255835)
+  CVE-2026-29076 (bsc#1259373)
+  CVE-2026-28435 (bsc#1259220)
+  CVE-2026-28434 (bsc#1259221)
+  CVE-2026-32627 (bsc#1259723)
+
+-------------------------------------------------------------------
 Mon Dec 22 20:58:05 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 0.28.0
