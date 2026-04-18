@@ -234,4 +234,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtw89: 8852b: update txpwr element to R43</comment>
     <requestid>1333339</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>bb635b424289a9d0bac91b99d14b6b3a</srcmd5>
+    <version>20260214</version>
+    <time>1776540675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update aliases from 7.0</comment>
+    <requestid>1347748</requestid>
+  </revision>
 </revisionlist>
