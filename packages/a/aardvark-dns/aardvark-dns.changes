@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 08 01:42:15 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 1.17.1:
+  * release v1.17.1
+  * release notes for v1.17.1
+  * migration to oidc connection
+  * fix handling of incorrect tcp packets (bsc#1261735, CVE-2026-35406)
+
+-------------------------------------------------------------------
 Mon Dec 22 10:19:19 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.17.0:

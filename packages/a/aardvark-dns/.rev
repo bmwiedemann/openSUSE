@@ -145,4 +145,12 @@ package. Also, BuildRequire cargo+rust to prevent conflicts with
     <comment></comment>
     <requestid>1324265</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>65d83dc78c37a758d7ede9d44a11f1a2</srcmd5>
+    <version>1.17.1</version>
+    <time>1776540843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347281</requestid>
+  </revision>
 </revisionlist>
