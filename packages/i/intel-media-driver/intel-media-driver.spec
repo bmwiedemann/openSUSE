@@ -19,7 +19,7 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        26.1.1
+Version:        26.1.6
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        BSD-3-Clause AND MIT

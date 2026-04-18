@@ -553,4 +553,20 @@ versions of libva(2)</comment>
     - [Decode] Fix Exclude AVC Build Issue</comment>
     <requestid>1330959</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9df1030db71c165913f8159a65d4a5c9</srcmd5>
+    <version>26.1.4</version>
+    <time>1774469877</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342278</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>8291725e66cc59cad56748f8641aa31e</srcmd5>
+    <version>26.1.6</version>
+    <time>1776547226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347978</requestid>
+  </revision>
 </revisionlist>
