@@ -518,4 +518,12 @@
   * Removed legacy extend on sunpy.time.TimeRange after its long</comment>
     <requestid>1325029</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f66fa2042b0c0a34ba754f58bbf80236</srcmd5>
+    <version>7.1.1</version>
+    <time>1776540855</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344698</requestid>
+  </revision>
 </revisionlist>

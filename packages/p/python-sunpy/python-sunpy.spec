@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python311 1
 Name:           python-sunpy
-Version:        7.1.0
+Version:        7.1.1
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
