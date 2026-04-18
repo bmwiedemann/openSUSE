@@ -312,4 +312,20 @@
     <comment></comment>
     <requestid>1304449</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a4ec20a0914de737b06e3b595992725f</srcmd5>
+    <version>1.22.0</version>
+    <time>1774469846</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342352</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>98ddc3ad8d460f45599fe64593128942</srcmd5>
+    <version>1.22.1</version>
+    <time>1776540845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347283</requestid>
+  </revision>
 </revisionlist>
