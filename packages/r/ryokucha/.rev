@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1324231</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>25af63adc131a594b61ff6a32bc7d9d7</srcmd5>
+    <version>0.4.0</version>
+    <time>1776540902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  + fix: DropDownText: Add missing default values of active_id,
+    max_width_chars, and ellipsize (forwarded request 1347805 from rrahl0)</comment>
+    <requestid>1347807</requestid>
+  </revision>
 </revisionlist>

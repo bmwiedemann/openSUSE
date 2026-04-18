@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           ryokucha
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        A GTK4 library that includes customized widgets
 License:        LGPL-3.0-or-later
