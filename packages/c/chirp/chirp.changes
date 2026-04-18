@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 18 19:11:01 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260417:
+  * Add Wouxun XS20 series channel memory support
+  * Wouxun 935/8h series extra memory settings
+  * TK-372G correct variants and names
+  * Add BF-V12D support
+  * Improve cache performance for RepeaterBook queries
+  * Improve reliability of network source requests and bug reports
+  * radtel_rt900: Fix flake8 E501 line too long in FHSS Code setting
+  * radtel_rt900: Fix FHSS Code init crash on out-of-range image values
+  * radtel_rt900: Expose FHSS Code per-channel setting
+  * radtel_rt900: Expose LearnFHSS per-channel setting
+
+-------------------------------------------------------------------
 Fri Apr 10 19:53:48 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260410:
