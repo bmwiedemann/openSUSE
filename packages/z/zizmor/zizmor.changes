@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 18 05:47:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.24.1:
+  * Bug Fixes
+    - Fixed a bug where the ref-version-mismatch audit would
+      incorrectly flag some version comments as not containing an
+      appropriate version (#1900)
+
+-------------------------------------------------------------------
 Mon Apr 13 05:08:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.24.0:

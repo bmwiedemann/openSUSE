@@ -17,7 +17,7 @@
 
 
 Name:           zizmor
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        A static analysis tool for GitHub Actions
 License:        MIT
