@@ -184,4 +184,12 @@
   * Migrate jwcrypto packaging to Hatch</comment>
     <requestid>1345071</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>b06b9967d7e720eeeb60c7ffc10c8270</srcmd5>
+    <version>1.5.7</version>
+    <time>1776540650</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug reference</comment>
+    <requestid>1347691</requestid>
+  </revision>
 </revisionlist>

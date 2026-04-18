@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Apr  7 21:26:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.5.7:
+- update to 1.5.7 (fixes CVE-2026-39373, bsc#1261802):
   * JWE: allow general (non flattened) serialization syntax
   * Update CI actions
   * Allow to pass through pem loading unsafe option
