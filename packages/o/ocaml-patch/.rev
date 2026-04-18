@@ -16,4 +16,12 @@
   see included CHANGES.md file for details</comment>
     <requestid>1317345</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2670f91b7c281854be38eda7f2fc12c7</srcmd5>
+    <version>3.1.0</version>
+    <time>1776540902</time>
+    <user>dimstar_suse</user>
+    <comment>- Relax requirement for ocaml-rpm-macros, remove ExclusiveArch</comment>
+    <requestid>1347801</requestid>
+  </revision>
 </revisionlist>

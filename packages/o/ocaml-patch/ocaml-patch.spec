@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-patch
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,10 @@
 %if "%build_flavor" == "testsuite"
 %if %{without ocaml_patch_testsuite}
 ExclusiveArch:  do-not-build
-%else
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
 %define nsuffix %nil
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 
 %define     pkg ocaml-patch
@@ -42,7 +39,7 @@ URL:            https://opam.ocaml.org/packages/patch
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 3.0
-BuildRequires:  ocaml-rpm-macros >= 20250517
+BuildRequires:  ocaml-rpm-macros >= 20231101
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(alcotest)
