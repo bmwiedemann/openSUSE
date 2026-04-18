@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sat Apr 18 07:11:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.71:
+  * Bug Fixes
+    - gofmt formatting for upgrade_cli.go (Mallikarjunadevops)
+  * Chores
+    - enable revive exported linter and add missing comments
+      (Mallikarjunadevops) #8037
+  * Issues
+    - #8037 linting checks pass even if exported structs do not
+      have any comments
+- Update to version 3.16.70:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.38
+- Update to version 3.16.69:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.37
+- Update to version 3.16.68:
+  * chore(deps): upgrade jenkins-x-plugins/jx-changelog to version
+    0.10.22
+- Update to version 3.16.67:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.8
+- Update to version 3.16.66:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.1.10
+- Update to version 3.16.65:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.36
+- Update to version 3.16.64:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.7
+
+-------------------------------------------------------------------
+Mon Apr 13 05:44:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.63:
+  * chore(deps): upgrade jenkins-x-plugins/jx-verify to version
+    0.3.18
+
+-------------------------------------------------------------------
+Mon Apr 13 05:43:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.62:
+  * chore(deps): upgrade jenkins-x-plugins/jx-secret to version
+    0.4.21
+
+-------------------------------------------------------------------
+Mon Apr 13 05:42:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.61:
+  * chore(deps): upgrade jenkins-x-plugins/jx-project to version
+    0.2.85
+
+-------------------------------------------------------------------
+Mon Apr 13 05:39:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.60:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.35
+
+-------------------------------------------------------------------
+Wed Mar 25 06:02:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.59:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.33
+
+-------------------------------------------------------------------
+Fri Mar 20 06:40:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.58:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.1.7
+
+-------------------------------------------------------------------
+Thu Mar 19 06:13:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.57:
+  * fix: make output more helpful when misspelling plugin
+
+-------------------------------------------------------------------
+Thu Mar 05 06:50:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.56:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.1.0
+
+-------------------------------------------------------------------
 Tue Mar 03 05:43:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.16.55:
