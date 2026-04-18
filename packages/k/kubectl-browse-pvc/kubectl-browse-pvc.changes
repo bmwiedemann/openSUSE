@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 17 20:31:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.4:
+  * trim job name to not end with invalid character
+  * adjust how the tool responds to active browse pods
+  * fix bad ns error check
+  * add timeout
+  * allow setting job names, truncate long job names
+- Update to version 1.4.3:
+  * Bump github.com/moby/spdystream from 0.5.0 to 0.5.1
+
+-------------------------------------------------------------------
 Sat Apr 04 05:58:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.2:
