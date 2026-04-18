@@ -1,7 +1,7 @@
 #
 # spec file for package xviewer-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xviewer-plugins
-Version:        3.4.0
+Version:        3.4.3
 Release:        0
 Summary:        A collection of plugins for xviewer
 License:        GPL-2.0-or-later
@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.1.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
-BuildRequires:  pkgconfig(libgdata) >= 0.9
 BuildRequires:  pkgconfig(libpeas-1.0) >= 0.7.4
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(xviewer) >= 3.2.1
@@ -42,7 +41,6 @@ Suggests:       xviewer-plugin-exif-display
 Suggests:       xviewer-plugin-exif-export-to-folder
 Suggests:       xviewer-plugin-exif-light-theme
 Suggests:       xviewer-plugin-exif-map
-Suggests:       xviewer-plugin-exif-postasa
 Suggests:       xviewer-plugin-exif-pythonconsole
 Suggests:       xviewer-plugin-exif-send-by-mail
 Suggests:       xviewer-plugin-exif-slideshowshuffle
@@ -87,13 +85,6 @@ Requires:       %{name}-data = %{version}
 %description -n xviewer-plugin-map
 xviewer map plugin
 
-%package -n xviewer-plugin-postasa
-Summary:        Xviewer postasa plugin
-Requires:       %{name}-data = %{version}
-
-%description -n xviewer-plugin-postasa
-xviewer postasa plugin.
-
 %package -n xviewer-plugin-pythonconsole
 Summary:        Xviewer pythonconsole plugin
 Requires:       %{name}-data = %{version}
@@ -118,7 +109,7 @@ xviewer Slideshow Shuffle plugin
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 cp %{SOURCE1} .
 
 %build
@@ -131,7 +122,7 @@ cp %{SOURCE1} .
 %fdupes %{buildroot}
 
 %files
-%license COPYING
+%license COPYING README.md
 %doc NEWS xviewer-plugins.SUSE
 
 %files -n %{name}-data
@@ -157,10 +148,6 @@ cp %{SOURCE1} .
 %files -n xviewer-plugin-map
 %{_datadir}/metainfo/xviewer-map.metainfo.xml
 %{_prefix}/lib/xviewer/plugins/{map.plugin,libmap.so}
-
-%files -n xviewer-plugin-postasa
-%{_datadir}/metainfo/xviewer-postasa.metainfo.xml
-%{_prefix}/lib/xviewer/plugins/{postasa.plugin,libpostasa.so}
 
 %files -n xviewer-plugin-pythonconsole
 %{_datadir}/xviewer/plugins/pythonconsole
