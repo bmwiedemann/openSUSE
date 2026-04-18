@@ -224,4 +224,33 @@
   * Fix pip hack workaround - by :user:`gaborbernat`</comment>
     <requestid>1343128</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4a800ec7b2716bda55b2cf461aa6a746</srcmd5>
+    <version>1.4.3</version>
+    <time>1776540678</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.3:
+  * Add kind parameter to log messages to separate semantic and
+    representation
+  * Strip PYTHONPATH from the environment during isolated builds
+    to prevent host packages from leaking into the build
+  * Pass --no-input to pip to prevent hidden credential prompts
+    that cause hangs, and automatically set
+    PIP_KEYRING_PROVIDER=subprocess (or
+    UV_KEYRING_PROVIDER=subprocess for the uv installer) when the
+    keyring CLI is on PATH -- by :user:`gaborbernat`
+  * check_dependency now reports URL requirements as unmet
+    instead of silently accepting them when a package with the
+    same name is installed - by :user:`gaborbernat`
+  * Fix misleading missing dependency error display where
+    transitive dependency chains showed the top-level package on
+    a separate line, making it appear as if the top-level package
+    itself was missing - by :user:`gaborbernat` (:issue:`875`)
+  * Fix towncrier template to generate changelog categories in
+    definition order - by :user:`gaborbernat` (:issue:`1007`)
+  * Resolve thread-safety races in the build API
+  * Validate backend-path entries exist on disk with a clear
+    error</comment>
+    <requestid>1347786</requestid>
+  </revision>
 </revisionlist>

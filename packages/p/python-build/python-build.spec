@@ -33,7 +33,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-build%{psuffix}
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Simple PEP517 package builder
 License:        MIT
@@ -68,8 +68,7 @@ BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-mock >= 2}
 BuildRequires:  %{python_module pytest-rerunfailures >= 9.1}
 BuildRequires:  %{python_module pytest-xdist >= 1.34}
-BuildRequires:  %{python_module setuptools >= 42 if %python-base < 3.10}
-BuildRequires:  %{python_module setuptools >= 56 if %python-base >= 3.11}
+BuildRequires:  %{python_module setuptools >= 67.8}
 BuildRequires:  %{python_module wheel >= 0.36}
 BuildRequires:  python3-setuptools-wheel
 %endif
