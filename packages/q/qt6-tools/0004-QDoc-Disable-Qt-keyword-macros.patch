@@ -1,0 +1,41 @@
+From 34021aa79a7fb5d1429bc2e4a6e735eafc84e567 Mon Sep 17 00:00:00 2001
+From: Paul Wicking <paul.wicking@qt.io>
+Date: Wed, 11 Mar 2026 08:17:47 +0100
+Subject: QDoc: Disable Qt keyword macros
+
+Qt defines convenience macros for signal-slot keywords such as
+`emit`, `signals`, and `slots`. QDoc doesn't use signals and
+slots, yet these macros pollute the preprocessor namespace when
+compiling against third-party headers.
+
+Upstream LLVM changes introduce a transitive inclusion chain that
+pulls in a header containing a bare `emit` method. Qt's empty
+`emit` macro turns the method declaration into a syntax error.
+Distribution packagers such as Arch Linux have worked around this
+with QT_NO_EMIT. Disabling all Qt keyword macros goes one step
+further and future-proofs a tool that has no use for them against
+similar collisions.
+
+Task-number: QTBUG-144620
+Change-Id: I6226e854159ec6d7a6d2a83a16dc850e93598045
+Reviewed-by: Topi Reinio <topi.reinio@qt.io>
+(cherry picked from commit 29bcd0789efaa36f6efa9ca512fbea9781f7d683)
+---
+ src/qdoc/qdoc/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/qdoc/qdoc/CMakeLists.txt b/src/qdoc/qdoc/CMakeLists.txt
+index 729f6bbd9..84b25bdca 100644
+--- a/src/qdoc/qdoc/CMakeLists.txt
++++ b/src/qdoc/qdoc/CMakeLists.txt
+@@ -103,6 +103,7 @@ qt_internal_add_tool(${target_name}
+     ATTRIBUTION_FILE_DIR_PATHS
+         src/qdoc/clang/AST
+     DEFINES
++        QT_NO_KEYWORDS
+         # To provide the ability to workaround version-specific Clang issues.
+         # A re-export of (LLVM|CLANG)_VERSION_MAJOR done in WrapLibClang.cmake
+         LIBCLANG_VERSION_MAJOR=${QT_LIB_CLANG_VERSION_MAJOR}
+-- 
+cgit v1.2.3
+

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 12 17:22:36 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add patches:
+  * 0003-QDoc-Swap-forever-for-while-true.patch
+  * 0004-QDoc-Disable-Qt-keyword-macros.patch
+
+-------------------------------------------------------------------
 Mon Mar 23 10:37:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0
