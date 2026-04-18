@@ -3270,4 +3270,21 @@
   * Fix JSON typo in settings example</comment>
     <requestid>1345588</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>7d2e4a982784c4c0d97ed468d3672457</srcmd5>
+    <version>0.15.11</version>
+    <time>1776540609</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.11
+ * Preview features
+  * [ruff] Ignore RUF029 when function is decorated with asynccontextmanager 
+  * [airflow] Implement airflow-xcom-pull-in-template-string (AIR201) 
+  * [flake8-bandit] Fix S103 false positives and negatives in mask analysis 
+ * Bug fixes
+  * [flake8-async] Omit overridden methods for ASYNC109 
+ * Documentation
+  * [flake8-async] Add override mention to ASYNC109 docs 
+  * Update Neovim config examples to use vim.lsp.config</comment>
+    <requestid>1347636</requestid>
+  </revision>
 </revisionlist>
