@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:43:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.2
+  * chore(s2n-tls): v0.3.35 release (#5765)
+  * fix: update memory snapshots (#5771)
+  * fix: make get_alert idempotent (#5767)
+  * chore: fix crate name (#5769)
+  * chore: delete unused s2n_stuffer_alloc_ro functions (#5757)
+  * fix: add required metadata for subscriber (#5776)
+  * docs: add comments about sslv3 weaknesses (#5777)
+  * fix(bindings): replace bare as usize casts in Tokio I/O callbacks (#5780)
+  * feat(s2n-metric-subscriber): add supported parameters (#5768)
+  * build(deps): bump jidicula/clang-format-action from 4.16.0 to 4.17.0
+    in /.github/workflows in the all-gha-updates group (#5784)
+  * refactor(rand): deprecate internal DRBG implementation (#5775)
+  * docs: clarify integrity protection requirements for connection serialization (#5782)
+  * build(deps): bump the all-gha-updates group in /.github/workflows with 2 updates (#5787)
+  * feat: add strict and interop CNSA 2.0 policies (#5760)
+  * ci: add 'style' to PR title check (#5792)
+  * fix(aws-lc): Update test for https://github.com/aws/aws-lc/pull/3101 (#5788)
+  * feat(build): Add option to enforce correct libcrypto feature probing (#5579)
+  * ci: fix install_awslc_fips script (#5790)
+  * fix: Gates rolling hash of all supported hash algorithms to TLS1.2 (#5803)
+  * chore: remove codeowners (#5797)
+  * docs: clean up DRBG references across docs, APIs, and templates (#5789)
+  * fix: reject certs with literal-IP CN and no SAN  (#5804)
+  * ci: upgrade nix awslc version (#5805)
+  * fix(ci): update MSRV for extended crates from 1.72 to 1.77 (#5810)
+- Prefer explicit path and filenames over wildcards in %files section
+- Update upstream URL in Source field
+
+-------------------------------------------------------------------
 Tue Mar  3 07:34:12 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.7.1
