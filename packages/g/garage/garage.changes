@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sat Apr 18 06:31:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.3.0:
+  This release is a stable release. There are no breaking changes
+  when migrating from Garage v2.2.0.
+  * Features/improvements:
+    - Make initial setup easier (#1329)
+      - allow to use garage server --single-node to autocreate a
+        layout and get a functional cluster right away for single
+        nodes
+      - --default-access-key to automatically create an access key
+        based on environment variable GARAGE_DEFAULT_ACCESS_KEY and
+        GARAGE_DEFAULT_SECRET_KEY
+      - --default-bucket to automatically create a bucket based on
+        environment variable GARAGE_DEFAULT_BUCKET
+    - relax requirements on imported access keys to allow easier
+      transition from other S3 storage providers (#1262)
+    - log api error in one self-sufficient line (#1381, #1390)
+    - Suppress log noise from /metrics and /health endpoints,
+      change log level for 'netapp: incomming connection ...'
+      message (#1292, #1310, #1361)
+    - Add completions sub-command for generating shell completions
+      (#1386)
+    - consul: support token auth for catalog api requests, too
+      (#1353)
+    - code maintenance with help clippy (#1314)
+    - style: replace wildcard import of garage model in website
+      (#1334)
+  * Bug fixes:
+    - db: avoid iterating bounded from empty slice (#1401, #1408)
+    - fix: bound known_addrs growth and add TCP connect timeout
+      (#1345)
+    - Fix the LifecycleWorker being uncooperative (#1396, #1404)
+    - WebsiteConfiguration: do not emit empty XML attributes for
+      absent values (#1391)
+    - Fix: correctly parse CORS website configuration with no rules
+      (#1392)
+    - force uri encoding before check signature (#1382)
+    - don't panic on missing checksum (#1387, #1389)
+    - s3: fix DeleteObjects XML parsing with pretty-printed bodies
+      (#1374)
+    - S3 api DeleteObject fix invalid XML (#1324)
+    - don't send empty 404 on GetBucketCORS/GetBucketLifecycle
+      (#1378)
+    - Use error NoSuchAccessKey in get info request processing
+      (#1293, #1356)
+    - Support streaming of gzip content involving multiple
+      Content-Encoding headers (#1369)
+    - fix silent write errors (#1360)
+    - fix: enable TCP keepalive on RPC connections (#1348)
+    - Implement error 409 BucketAlreadyOwnedByYou (#1352)
+    - emit headers on Not Modified per RFC-9110, fix (#1330, #1340)
+    - adapt code to unsafety of env::set_var fn (#1317)
+  * CI and build:
+    - release builds: set lto="thin" and strip="debuginfo" (#1342)
+    - update almost all dependencies to the last version (#1316)
+    - upgrade heed to version 0.22 (#1318)
+    - Upgrade quick-xml crate to 0.39' (#1319)
+    - chore: update nom dependency to 0.8 (#1341)
+    - run push CI only on main branch (#1343)
+  * Kubernetes:
+    - helm: Conditionally skip CRD management RBAC rule (#1248)
+    - Fix helm existing configmap volume ref in workload (#1388)
+    - add missing admin API endpoints for admin UI (#1376)
+    - helm: add priorityClassName support (#1357)
+  * Documentation:
+    - documentation improvements (#1331, #1339, #1344, #1350,
+      #1379, #1402)
+
+-------------------------------------------------------------------
 Mon Jan 26 06:43:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.2.0:

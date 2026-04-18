@@ -20,7 +20,7 @@
 %global additional_features ,consul-discovery,kubernetes-discovery,telemetry-otlp
 
 Name:           garage
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        S3-compatible object store for small self-hosted geo-distributed deployments
 License:        AGPL-3.0-only
