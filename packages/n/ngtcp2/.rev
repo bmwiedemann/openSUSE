@@ -316,4 +316,12 @@
   * Refine handshake continuation</comment>
     <requestid>1345446</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f79df1f83b38a2fe18ce3e37ee126aa8</srcmd5>
+    <version>1.22.0</version>
+    <time>1776540689</time>
+    <user>dimstar_suse</user>
+    <comment>- enable openssl support on factory only (jsc#PED-15770)</comment>
+    <requestid>1347182</requestid>
+  </revision>
 </revisionlist>

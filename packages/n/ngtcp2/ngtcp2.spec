@@ -26,7 +26,7 @@
 %global gnutls_sover 8
 %global openssl_soname %{soname}_crypto_ossl
 %global openssl_sover 0
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %bcond_without openssl
 %else
 # requires OpenSSL 3.x with QUIC support

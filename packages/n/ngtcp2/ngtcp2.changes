@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 15 23:08:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- enable openssl support on factory only (jsc#PED-15770)
+
+-------------------------------------------------------------------
 Thu Apr  9 07:56:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.22.0:
