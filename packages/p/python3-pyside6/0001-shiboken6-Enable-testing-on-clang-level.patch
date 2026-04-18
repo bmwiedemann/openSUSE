@@ -1,0 +1,1236 @@
+From 43fb3adc83afa8d2f7780abd5951db8c811f47d2 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Wed, 25 Mar 2026 09:57:37 +0100
+Subject: shiboken6_generator: Enable testing on clang parser level
+
+Move testutil.h into ApiExtractor to avoid recompiling the inline
+function for each test and add a buildDom() helper returning a code
+model item as test utility.
+
+Split out a clang parser test, which so far only contains the triplet test.
+
+Task-number: PYSIDE-3286
+Change-Id: I43e226b7d45b24f32893ad2546a7814b8cfd50e1
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+(cherry picked from commit c3ddaffa0f562ba7341cba792d22c5098003c16a)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ .../ApiExtractor/CMakeLists.txt                    |   1 +
+ .../ApiExtractor/abstractmetabuilder_testutil.cpp  |  78 ++++++++++++++++
+ .../ApiExtractor/abstractmetabuilder_testutil.h    |  27 ++++++
+ .../ApiExtractor/tests/CMakeLists.txt              |   1 +
+ .../ApiExtractor/tests/testabstractmetaclass.cpp   |   9 +-
+ .../ApiExtractor/tests/testabstractmetatype.cpp    |   7 +-
+ .../ApiExtractor/tests/testaddfunction.cpp         |   8 +-
+ .../ApiExtractor/tests/testarrayargument.cpp       |   6 +-
+ .../ApiExtractor/tests/testclangparser.cpp         | 102 +++++++++++++++++++++
+ .../ApiExtractor/tests/testclangparser.h           |  17 ++++
+ .../ApiExtractor/tests/testcodeinjection.cpp       |   8 +-
+ .../ApiExtractor/tests/testcontainer.cpp           |   3 +-
+ .../ApiExtractor/tests/testconversionoperator.cpp  |   6 +-
+ .../ApiExtractor/tests/testconversionruletag.cpp   |   7 +-
+ .../ApiExtractor/tests/testctorinformation.cpp     |   4 +-
+ .../ApiExtractor/tests/testdroptypeentries.cpp     |   9 +-
+ .../ApiExtractor/tests/testdtorinformation.cpp     |   5 +-
+ .../ApiExtractor/tests/testenum.cpp                |   7 +-
+ .../ApiExtractor/tests/testextrainclude.cpp        |  95 +------------------
+ .../ApiExtractor/tests/testextrainclude.h          |   2 -
+ .../ApiExtractor/tests/testfunctiontag.cpp         |   7 +-
+ .../ApiExtractor/tests/testimplicitconversions.cpp |   3 +-
+ .../ApiExtractor/tests/testinserttemplate.cpp      |   5 +-
+ .../ApiExtractor/tests/testmodifydocumentation.cpp |  10 +-
+ .../ApiExtractor/tests/testmodifyfunction.cpp      |   7 +-
+ .../ApiExtractor/tests/testmultipleinheritance.cpp |   4 +-
+ .../ApiExtractor/tests/testnamespace.cpp           |   8 +-
+ .../ApiExtractor/tests/testnestedtypes.cpp         |   9 +-
+ .../ApiExtractor/tests/testnumericaltypedef.cpp    |   3 +-
+ .../ApiExtractor/tests/testprimitivetypetag.cpp    |   7 +-
+ .../ApiExtractor/tests/testrefcounttag.cpp         |   6 +-
+ .../ApiExtractor/tests/testreferencetopointer.cpp  |   3 +-
+ .../ApiExtractor/tests/testremovefield.cpp         |   5 +-
+ .../ApiExtractor/tests/testremoveimplconv.cpp      |   3 +-
+ .../tests/testremoveoperatormethod.cpp             |   6 +-
+ .../ApiExtractor/tests/testresolvetype.cpp         |   6 +-
+ .../ApiExtractor/tests/testreverseoperators.cpp    |   4 +-
+ .../ApiExtractor/tests/testtemplates.cpp           |   5 +-
+ .../ApiExtractor/tests/testtyperevision.cpp        |   6 +-
+ .../ApiExtractor/tests/testutil.h                  |  66 -------------
+ .../tests/testvaluetypedefaultctortag.cpp          |   3 +-
+ .../ApiExtractor/tests/testvoidarg.cpp             |   3 +-
+ 42 files changed, 332 insertions(+), 249 deletions(-)
+ create mode 100644 sources/shiboken6_generator/ApiExtractor/abstractmetabuilder_testutil.cpp
+ create mode 100644 sources/shiboken6_generator/ApiExtractor/abstractmetabuilder_testutil.h
+ create mode 100644 sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp
+ create mode 100644 sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h
+ delete mode 100644 sources/shiboken6_generator/ApiExtractor/tests/testutil.h
+
+diff --git a/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt b/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt
+index 6adc3e10d..e1c4dcb92 100644
+--- a/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt
++++ b/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt
+@@ -12,6 +12,7 @@ set(apiextractor_SRC
+ abstractmetaargument.cpp abstractmetaargument.h
+ abstractmetabuilder.cpp abstractmetabuilder.h abstractmetabuilder_p.h
+ abstractmetabuilder_helpers.cpp
++abstractmetabuilder_testutil.cpp abstractmetabuilder_testutil.h
+ abstractmetaenum.cpp abstractmetaenum.h
+ abstractmetafield.cpp abstractmetafield.h
+ abstractmetafunction.cpp abstractmetafunction.h
+diff --git a/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder_testutil.cpp b/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder_testutil.cpp
+new file mode 100644
+index 000000000..87e8a22d3
+--- /dev/null
++++ b/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder_testutil.cpp
+@@ -0,0 +1,78 @@
++// Copyright (C) 2026 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
++
++#include "abstractmetabuilder_testutil.h"
++#include "abstractmetabuilder.h"
++#include "abstractmetabuilder_p.h"
++#include "reporthandler.h"
++#include "typedatabase.h"
++
++#include <QtCore/qbuffer.h>
++#include <QtCore/qdebug.h>
++#include <QtCore/qdir.h>
++#include <QtCore/qtemporaryfile.h>
++
++#include <exception>
++
++static std::unique_ptr<QTemporaryFile> writeCppCode(const char *cppCode)
++{
++    const QString pattern = QDir::tempPath() + QLatin1StringView("/st_XXXXXX_main.cpp");
++    auto result = std::make_unique<QTemporaryFile>(pattern);
++    if (!result->open()) {
++        qWarning("Creation of temporary file failed: %s", qPrintable(result->errorString()));
++        return {};
++    }
++    result->write(cppCode, qint64(qstrlen(cppCode)));
++    result->close();
++    return result;
++}
++
++namespace TestUtil
++{
++std::shared_ptr<_FileModelItem>
++    buildDom(const char *cppCode, bool silent, LanguageLevel languageLevel)
++{
++    ReportHandler::setSilent(silent);
++    ReportHandler::startTimer();
++    auto tempSource = writeCppCode(cppCode);
++    if (!tempSource)
++        return {};
++    return AbstractMetaBuilderPrivate::buildDom({QFile::encodeName(tempSource->fileName())},
++                                                true, languageLevel, 0);
++}
++
++std::unique_ptr<AbstractMetaBuilder>
++    parse(const char *cppCode, const char *xmlCode, bool silent, const QString &apiVersion,
++          const QStringList &dropTypeEntries, LanguageLevel languageLevel)
++{
++    ReportHandler::setSilent(silent);
++    ReportHandler::startTimer();
++    auto *td = TypeDatabase::instance(true);
++    if (apiVersion.isEmpty())
++        TypeDatabase::clearApiVersions();
++    else if (!TypeDatabase::setApiVersion(QLatin1StringView("*"), apiVersion))
++        return nullptr;
++    td->setDropTypeEntries(dropTypeEntries);
++    QBuffer buffer;
++    // parse typesystem
++    buffer.setData(xmlCode);
++    if (!buffer.open(QIODevice::ReadOnly))
++        return nullptr;
++    if (!td->parseFile(&buffer))
++        return nullptr;
++    buffer.close();
++    auto tempSource = writeCppCode(cppCode);
++    if (!tempSource)
++        return nullptr;
++    auto builder = std::make_unique<AbstractMetaBuilder>();
++    try {
++        QByteArrayList arguments{QFile::encodeName(tempSource->fileName())};
++        if (!builder->build(arguments, {}, true, languageLevel))
++            builder.reset();
++    } catch (const std::exception &e) {
++        qWarning("%s", e.what());
++        builder.reset();
++    }
++    return builder;
++}
++} // namespace TestUtil
+diff --git a/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder_testutil.h b/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder_testutil.h
+new file mode 100644
+index 000000000..0c967aa62
+--- /dev/null
++++ b/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder_testutil.h
+@@ -0,0 +1,27 @@
++// Copyright (C) 2026 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
++
++#ifndef ABSTRACTMETABUILDER_TESTUTIL_H
++#define ABSTRACTMETABUILDER_TESTUTIL_H
++
++#include "clangparser/compilersupport.h"
++
++class _FileModelItem;
++class AbstractMetaBuilder;
++
++#include <memory>
++
++namespace TestUtil
++{
++    std::shared_ptr<_FileModelItem>
++        buildDom(const char *cppCode, bool silent = true,
++                 LanguageLevel languageLevel = LanguageLevel::Default);
++
++    std::unique_ptr<AbstractMetaBuilder>
++        parse(const char *cppCode, const char *xmlCode, bool silent = true,
++              const QString &apiVersion = {}, const QStringList &dropTypeEntries = {},
++              LanguageLevel languageLevel = LanguageLevel::Default);
++
++} // namespace TestUtil
++
++#endif // ABSTRACTMETABUILDER_TESTUTIL_H
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/CMakeLists.txt b/sources/shiboken6_generator/ApiExtractor/tests/CMakeLists.txt
+index 731c0a879..cfdf53272 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/CMakeLists.txt
++++ b/sources/shiboken6_generator/ApiExtractor/tests/CMakeLists.txt
+@@ -30,6 +30,7 @@ declare_test(testabstractmetaclass)
+ declare_test(testabstractmetatype)
+ declare_test(testaddfunction)
+ declare_test(testarrayargument)
++declare_test(testclangparser)
+ declare_test(testcodeinjection)
+ declare_test(testcontainer)
+ declare_test(testconversionoperator)
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testabstractmetaclass.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testabstractmetaclass.cpp
+index 59a41af8a..ba16f756b 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testabstractmetaclass.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testabstractmetaclass.cpp
+@@ -2,15 +2,14 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testabstractmetaclass.h"
+-#include "abstractmetabuilder.h"
+-#include "testutil.h"
++
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+-#include <usingmember.h>
+ #include <typesystem.h>
+-
+-#include <qtcompat.h>
++#include <usingmember.h>
+ 
+ #include <QtTest/qtest.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testabstractmetatype.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testabstractmetatype.cpp
+index 67286eac4..e5a0773a6 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testabstractmetatype.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testabstractmetatype.cpp
+@@ -2,16 +2,15 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testabstractmetatype.h"
+-#include "testutil.h"
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <abstractmetatype.h>
+-#include <typesystem.h>
+ #include <parser/codemodel.h>
+ #include <typeparser.h>
+-
+-#include <qtcompat.h>
++#include <typesystem.h>
+ 
+ #include <QtTest/qtest.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testaddfunction.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testaddfunction.cpp
+index 7cf804afc..14d3aa714 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testaddfunction.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testaddfunction.cpp
+@@ -2,18 +2,18 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testaddfunction.h"
+-#include "testutil.h"
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <abstractmetatype.h>
+-#include <codesnip.h>
+ #include <addedfunction.h>
+ #include <addedfunction_p.h>
++#include <codesnip.h>
+ #include <complextypeentry.h>
+ #include <primitivetypeentry.h>
+-
+-#include <qtcompat.h>
++#include <typedatabase.h>
+ 
+ #include <QtTest/qtest.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testarrayargument.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testarrayargument.cpp
+index eb919b667..e64ce4789 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testarrayargument.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testarrayargument.cpp
+@@ -2,8 +2,10 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testarrayargument.h"
+-#include "testutil.h"
++
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetaenum.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+@@ -11,8 +13,6 @@
+ #include <primitivetypeentry.h>
+ #include <parser/enumvalue.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp
+new file mode 100644
+index 000000000..7345c0501
+--- /dev/null
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp
+@@ -0,0 +1,102 @@
++// Copyright (C) 2026 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
++
++#include "testclangparser.h"
++#include <abstractmetabuilder_testutil.h>
++
++#include <clangparser/triplet.h>
++
++#include <QtTest/qtest.h>
++
++using namespace Qt::StringLiterals;
++
++void TestClangParser::testParseTriplet_data()
++{
++    QTest::addColumn<QString>("tripletString");
++    QTest::addColumn<bool>("expectedOk");
++    QTest::addColumn<Architecture>("expectedArchitecture");
++    QTest::addColumn<Platform>("expectedPlatform");
++    QTest::addColumn<bool>("expectedCompilerPresent");
++    QTest::addColumn<Compiler>("expectedCompiler");
++    QTest::addColumn<bool>("expectedPlatformVersionPresent");
++    QTest::addColumn<QVersionNumber>("expectedPlatformVersion");
++    QTest::addColumn<QByteArray>("expectedConverted"); // test back-conversion
++
++    QTest::newRow("Invalid")
++        << QString("Invalid"_L1)
++        << false << Architecture::X64 << Platform::Linux << false << Compiler::Gpp
++        << false << QVersionNumber{} << QByteArray{};
++
++    QTest::newRow("Linux")
++        << QString("x86_64-unknown-linux-gnu"_L1)
++        << true << Architecture::X64 << Platform::Linux << false << Compiler::Gpp
++        << false << QVersionNumber{}
++        << "x86_64-unknown-linux-gnu"_ba;
++
++    QTest::newRow("Poky Linux")
++        << QString("aarch64-poky-linux"_L1)
++        << true << Architecture::Arm64 << Platform::Linux << false << Compiler::Gpp
++        << false << QVersionNumber{}
++        << "arm64-unknown-linux"_ba;
++
++    QTest::newRow("WindowsArm")
++        << QString("aarch64-pc-windows-msvc19.39.0"_L1)
++        << true << Architecture::Arm64 << Platform::Windows << true << Compiler::Msvc
++        << false << QVersionNumber{}
++        << "arm64-pc-windows-msvc"_ba;
++
++    QTest::newRow("Apple")
++        << QString("arm64-apple-macosx15.0.0"_L1)
++        << true << Architecture::Arm64 << Platform::macOS << false << Compiler::Gpp
++        << true << QVersionNumber{15, 0, 0}
++        << "arm64-apple-macosx15.0.0"_ba;
++
++    QTest::newRow("AndroidArm32")
++        << QString("armv7a-none-linux-android5.1"_L1)
++        << true << Architecture::Arm32 << Platform::Android << false << Compiler::Gpp
++        << true << QVersionNumber{5, 1}
++        << "armv7a-unknown-linux-android5.1"_ba;
++
++    QTest::newRow("AndroidArm64")
++        << QString("aarch64-none-linux-androideabi27.1"_L1)
++        << true << Architecture::Arm64 << Platform::Android << false << Compiler::Gpp
++        << true << QVersionNumber{27, 1}
++        << "aarch64-unknown-linux-android27.1"_ba;
++
++    QTest::newRow("iOS")
++        << QString("arm64-apple-ios"_L1)
++        << true << Architecture::Arm64 << Platform::iOS << false << Compiler::Gpp
++        << false << QVersionNumber{}
++        << "arm64-apple-ios"_ba;
++}
++
++void TestClangParser::testParseTriplet()
++{
++    QFETCH(QString, tripletString);
++    QFETCH(bool, expectedOk);
++    QFETCH(Architecture, expectedArchitecture);
++    QFETCH(Platform, expectedPlatform);
++    QFETCH(bool, expectedCompilerPresent);
++    QFETCH(Compiler, expectedCompiler);
++    QFETCH(bool, expectedPlatformVersionPresent);
++    QFETCH(QVersionNumber, expectedPlatformVersion);
++    QFETCH(QByteArray, expectedConverted);
++
++    auto tripletO = Triplet::fromString(tripletString);
++
++    QCOMPARE(tripletO.has_value(), expectedOk);
++    if (expectedOk) {
++        const Triplet &triplet = tripletO.value();
++        QCOMPARE(triplet.architecture(), expectedArchitecture);
++        QCOMPARE(triplet.platform(), expectedPlatform);
++        if (expectedPlatformVersionPresent) {
++            QCOMPARE(triplet.platformVersion().isNull(), expectedPlatformVersion.isNull());
++            QCOMPARE(triplet.platformVersion(), expectedPlatformVersion);
++        }
++        if (expectedCompilerPresent)
++            QCOMPARE(triplet.compiler(), expectedCompiler);
++        QCOMPARE(triplet.toByteArray(), expectedConverted);
++    }
++}
++
++QTEST_APPLESS_MAIN(TestClangParser)
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h
+new file mode 100644
+index 000000000..d44e7074c
+--- /dev/null
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h
+@@ -0,0 +1,17 @@
++// Copyright (C) 2026 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
++
++#ifndef TESTCLANGPARSER_H
++#define TESTCLANGPARSER_H
++
++#include <QtCore/qobject.h>
++
++class TestClangParser : public QObject
++{
++    Q_OBJECT
++private slots:
++    void testParseTriplet_data();
++    void testParseTriplet();
++};
++
++#endif // TESTCLANGPARSER_H
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testcodeinjection.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testcodeinjection.cpp
+index ac5f30709..e419d3889 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testcodeinjection.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testcodeinjection.cpp
+@@ -2,16 +2,16 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testcodeinjection.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetalang.h>
+ #include <codesnip.h>
++#include <complextypeentry.h>
+ #include <modifications.h>
+ #include <textstream.h>
+-#include <complextypeentry.h>
+ #include <valuetypeentry.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtCore/qdir.h>
+ #include <QtCore/qfileinfo.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testcontainer.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testcontainer.cpp
+index 77fb0baf4..f975dff4c 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testcontainer.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testcontainer.cpp
+@@ -2,8 +2,9 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testcontainer.h"
+-#include "testutil.h"
+ 
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetalang.h>
+ #include <abstractmetatype.h>
+ #include <complextypeentry.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testconversionoperator.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testconversionoperator.cpp
+index 010213c10..afca4e9a6 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testconversionoperator.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testconversionoperator.cpp
+@@ -2,14 +2,14 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testconversionoperator.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <abstractmetatype.h>
+ #include <typesystem.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testconversionruletag.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testconversionruletag.cpp
+index 036f433f6..a5aa90ba8 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testconversionruletag.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testconversionruletag.cpp
+@@ -2,15 +2,16 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testconversionruletag.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetalang.h>
+ #include <complextypeentry.h>
+ #include <customconversion.h>
+ #include <primitivetypeentry.h>
++#include <typedatabase.h>
+ #include <valuetypeentry.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtCore/qfile.h>
+ #include <QtCore/qtemporaryfile.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testctorinformation.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testctorinformation.cpp
+index 8250fdaf8..d05dc1862 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testctorinformation.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testctorinformation.cpp
+@@ -2,9 +2,9 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testctorinformation.h"
+-#include "abstractmetabuilder.h"
+-#include "testutil.h"
+ 
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetalang.h>
+ #include <typesystem.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testdroptypeentries.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testdroptypeentries.cpp
+index d09b3317c..9d2b1c4f6 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testdroptypeentries.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testdroptypeentries.cpp
+@@ -2,13 +2,14 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testdroptypeentries.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetaenum.h>
+ #include <abstractmetalang.h>
+-#include <typesystem.h>
+ #include <conditionalstreamreader.h>
+-
+-#include <qtcompat.h>
++#include <typedatabase.h>
++#include <typesystem.h>
+ 
+ #include <QtTest/qtest.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testdtorinformation.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testdtorinformation.cpp
+index f629f4682..470e8740d 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testdtorinformation.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testdtorinformation.cpp
+@@ -2,8 +2,9 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testdtorinformation.h"
+-#include "abstractmetabuilder.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetalang.h>
+ #include <typesystem.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testenum.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testenum.cpp
+index 1e4b12aac..7d59e9870 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testenum.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testenum.cpp
+@@ -2,18 +2,17 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testenum.h"
+-#include "testutil.h"
++
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder_p.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetaenum.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+-#include <abstractmetabuilder_p.h>
+ #include <enumtypeentry.h>
+ #include <flagstypeentry.h>
+ #include <parser/enumvalue.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testextrainclude.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testextrainclude.cpp
+index ba7e445e0..8adcfb10a 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testextrainclude.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testextrainclude.cpp
+@@ -2,12 +2,12 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testextrainclude.h"
+-#include "testutil.h"
+-
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetalang.h>
+ #include <complextypeentry.h>
++#include <typedatabase.h>
+ #include <typesystemtypeentry.h>
+-#include <clangparser/triplet.h>
+ 
+ #include <QtCore/qversionnumber.h>
+ #include <QtTest/qtest.h>
+@@ -65,93 +65,4 @@ void TestExtraInclude::testGlobalExtraIncludes()
+     QCOMPARE(includes.constLast().name(), u"header2.h");
+ }
+ 
+-void TestExtraInclude::testParseTriplet_data()
+-{
+-    QTest::addColumn<QString>("tripletString");
+-    QTest::addColumn<bool>("expectedOk");
+-    QTest::addColumn<Architecture>("expectedArchitecture");
+-    QTest::addColumn<Platform>("expectedPlatform");
+-    QTest::addColumn<bool>("expectedCompilerPresent");
+-    QTest::addColumn<Compiler>("expectedCompiler");
+-    QTest::addColumn<bool>("expectedPlatformVersionPresent");
+-    QTest::addColumn<QVersionNumber>("expectedPlatformVersion");
+-    QTest::addColumn<QByteArray>("expectedConverted"); // test back-conversion
+-
+-    QTest::newRow("Invalid")
+-        << QString("Invalid"_L1)
+-        << false << Architecture::X64 << Platform::Linux << false << Compiler::Gpp
+-        << false << QVersionNumber{} << QByteArray{};
+-
+-    QTest::newRow("Linux")
+-        << QString("x86_64-unknown-linux-gnu"_L1)
+-        << true << Architecture::X64 << Platform::Linux << false << Compiler::Gpp
+-        << false << QVersionNumber{}
+-        << "x86_64-unknown-linux-gnu"_ba;
+-
+-    QTest::newRow("Poky Linux")
+-        << QString("aarch64-poky-linux"_L1)
+-        << true << Architecture::Arm64<< Platform::Linux << false << Compiler::Gpp
+-        << false << QVersionNumber{}
+-        << "arm64-unknown-linux"_ba;
+-
+-    QTest::newRow("WindowsArm")
+-        << QString("aarch64-pc-windows-msvc19.39.0"_L1)
+-        << true << Architecture::Arm64 << Platform::Windows << true << Compiler::Msvc
+-        << false << QVersionNumber{}
+-        << "arm64-pc-windows-msvc"_ba;
+-
+-    QTest::newRow("Apple")
+-        << QString("arm64-apple-macosx15.0.0"_L1)
+-        << true << Architecture::Arm64 << Platform::macOS << false << Compiler::Gpp
+-        << true << QVersionNumber{15, 0, 0}
+-        << "arm64-apple-macosx15.0.0"_ba;
+-
+-    QTest::newRow("AndroidArm32")
+-        << QString("armv7a-none-linux-android5.1"_L1)
+-        << true << Architecture::Arm32 << Platform::Android << false << Compiler::Gpp
+-        << true << QVersionNumber{5, 1}
+-        << "armv7a-unknown-linux-android5.1"_ba;
+-
+-    QTest::newRow("AndroidArm64")
+-        << QString("aarch64-none-linux-androideabi27.1"_L1)
+-        << true << Architecture::Arm64 << Platform::Android << false << Compiler::Gpp
+-        << true << QVersionNumber{27, 1}
+-        << "aarch64-unknown-linux-android27.1"_ba;
+-
+-    QTest::newRow("iOS")
+-        << QString("arm64-apple-ios"_L1)
+-        << true << Architecture::Arm64 << Platform::iOS << false << Compiler::Gpp
+-        << false << QVersionNumber{}
+-        << "arm64-apple-ios"_ba;
+-}
+-
+-void TestExtraInclude::testParseTriplet()
+-{
+-    QFETCH(QString, tripletString);
+-    QFETCH(bool, expectedOk);
+-    QFETCH(Architecture, expectedArchitecture);
+-    QFETCH(Platform, expectedPlatform);
+-    QFETCH(bool, expectedCompilerPresent);
+-    QFETCH(Compiler, expectedCompiler);
+-    QFETCH(bool, expectedPlatformVersionPresent);
+-    QFETCH(QVersionNumber, expectedPlatformVersion);
+-    QFETCH(QByteArray, expectedConverted);
+-
+-    auto tripletO = Triplet::fromString(tripletString);
+-
+-    QCOMPARE(tripletO.has_value(), expectedOk);
+-    if (expectedOk) {
+-        const Triplet &triplet = tripletO.value();
+-        QCOMPARE(triplet.architecture(), expectedArchitecture);
+-        QCOMPARE(triplet.platform(), expectedPlatform);
+-        if (expectedPlatformVersionPresent) {
+-            QCOMPARE(triplet.platformVersion().isNull(), expectedPlatformVersion.isNull());
+-            QCOMPARE(triplet.platformVersion(), expectedPlatformVersion);
+-        }
+-        if (expectedCompilerPresent)
+-            QCOMPARE(triplet.compiler(), expectedCompiler);
+-        QCOMPARE(triplet.toByteArray(), expectedConverted);
+-    }
+-}
+-
+ QTEST_APPLESS_MAIN(TestExtraInclude)
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testextrainclude.h b/sources/shiboken6_generator/ApiExtractor/tests/testextrainclude.h
+index 8a2493aa2..ae1a18686 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testextrainclude.h
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testextrainclude.h
+@@ -12,8 +12,6 @@ class TestExtraInclude : public QObject
+     private slots:
+         void testClassExtraInclude();
+         void testGlobalExtraIncludes();
+-        void testParseTriplet_data();
+-        void testParseTriplet();
+ };
+ 
+ #endif
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testfunctiontag.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testfunctiontag.cpp
+index 474aa5e46..b89a42ccf 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testfunctiontag.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testfunctiontag.cpp
+@@ -2,13 +2,14 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testfunctiontag.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <modifications.h>
++#include <typedatabase.h>
+ #include <typesystem.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testimplicitconversions.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testimplicitconversions.cpp
+index 681123573..1b77b992c 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testimplicitconversions.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testimplicitconversions.cpp
+@@ -2,9 +2,10 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testimplicitconversions.h"
+-#include "testutil.h"
+ 
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <abstractmetatype.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testinserttemplate.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testinserttemplate.cpp
+index b728468f0..3c458dbf0 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testinserttemplate.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testinserttemplate.cpp
+@@ -2,12 +2,13 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testinserttemplate.h"
+-#include "testutil.h"
+-
++#include <abstractmetabuilder_testutil.h>
++#include <abstractmetabuilder.h>
+ #include <abstractmetalang.h>
+ #include <codesnip.h>
+ #include <modifications.h>
+ #include <complextypeentry.h>
++#include <typedatabase.h>
+ #include <typesystemtypeentry.h>
+ 
+ #include <QtTest/qtest.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testmodifydocumentation.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testmodifydocumentation.cpp
+index 6f5f92683..18cc58c84 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testmodifydocumentation.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testmodifydocumentation.cpp
+@@ -2,16 +2,16 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testmodifydocumentation.h"
+-#include "testutil.h"
+-#include <abstractmetalang.h>
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
++#include <abstractmetalang.h>
++#include <complextypeentry.h>
+ #include <documentation.h>
+ #include <modifications.h>
+-#include <complextypeentry.h>
+ #include <qtdocparser.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtCore/qcoreapplication.h>
+ #include <QtCore/qtemporarydir.h>
+ #include <QtTest/qtest.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testmodifyfunction.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testmodifyfunction.cpp
+index 98117915a..253dd2eb7 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testmodifyfunction.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testmodifyfunction.cpp
+@@ -2,17 +2,18 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testmodifyfunction.h"
+-#include "testutil.h"
++
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
+ #include <abstractmetabuilder_p.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <abstractmetatype.h>
+ #include <modifications.h>
++#include <typedatabase.h>
+ #include <typesystem.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testmultipleinheritance.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testmultipleinheritance.cpp
+index bfd7d9254..1a70ea63a 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testmultipleinheritance.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testmultipleinheritance.cpp
+@@ -2,8 +2,8 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testmultipleinheritance.h"
+-#include "testutil.h"
+-
++#include <abstractmetabuilder_testutil.h>
++#include <abstractmetabuilder.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <typesystem.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testnamespace.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testnamespace.cpp
+index 7b4e80ccf..e38d145e0 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testnamespace.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testnamespace.cpp
+@@ -2,13 +2,13 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testnamespace.h"
+-#include "testutil.h"
+-#include <abstractmetalang.h>
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetaenum.h>
++#include <abstractmetalang.h>
+ #include <typesystem.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testnestedtypes.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testnestedtypes.cpp
+index 125488be5..4cfe7de29 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testnestedtypes.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testnestedtypes.cpp
+@@ -2,16 +2,17 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testnestedtypes.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <abstractmetatype.h>
+ #include <codesnip.h>
+-#include <modifications.h>
+ #include <complextypeentry.h>
++#include <modifications.h>
+ #include <primitivetypeentry.h>
+-
+-#include <qtcompat.h>
++#include <typedatabase.h>
+ 
+ #include <QtTest/qtest.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testnumericaltypedef.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testnumericaltypedef.cpp
+index 62d034215..ba965378f 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testnumericaltypedef.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testnumericaltypedef.cpp
+@@ -2,9 +2,10 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testnumericaltypedef.h"
+-#include "testutil.h"
+ 
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <abstractmetatype.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testprimitivetypetag.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testprimitivetypetag.cpp
+index adf201058..bfeabbd2e 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testprimitivetypetag.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testprimitivetypetag.cpp
+@@ -2,11 +2,12 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testprimitivetypetag.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetalang.h>
+ #include <primitivetypeentry.h>
+-
+-#include <qtcompat.h>
++#include <typedatabase.h>
+ 
+ #include <QtTest/qtest.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testrefcounttag.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testrefcounttag.cpp
+index 89e759ede..d5e2f18c9 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testrefcounttag.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testrefcounttag.cpp
+@@ -2,13 +2,13 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testrefcounttag.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <modifications.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testreferencetopointer.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testreferencetopointer.cpp
+index 986d91f70..373110aea 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testreferencetopointer.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testreferencetopointer.cpp
+@@ -2,9 +2,10 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testreferencetopointer.h"
+-#include "testutil.h"
+ 
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <abstractmetatype.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testremovefield.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testremovefield.cpp
+index 5aea29256..af9925953 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testremovefield.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testremovefield.cpp
+@@ -2,13 +2,14 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testremovefield.h"
+-#include "testutil.h"
+ 
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafield.h>
+ #include <abstractmetafunction.h>
+-#include <abstractmetatype.h>
+ #include <abstractmetalang.h>
++#include <abstractmetatype.h>
+ #include <typesystem.h>
+ 
+ #include <QtTest/qtest.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testremoveimplconv.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testremoveimplconv.cpp
+index 77b700f85..197e9345a 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testremoveimplconv.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testremoveimplconv.cpp
+@@ -2,9 +2,10 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testremoveimplconv.h"
+-#include "testutil.h"
+ 
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <abstractmetatype.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testremoveoperatormethod.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testremoveoperatormethod.cpp
+index be1e0792b..26b60a0f9 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testremoveoperatormethod.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testremoveoperatormethod.cpp
+@@ -2,13 +2,13 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testremoveoperatormethod.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <typesystem.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testresolvetype.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testresolvetype.cpp
+index 01c39a717..9e9e66413 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testresolvetype.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testresolvetype.cpp
+@@ -2,8 +2,10 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testresolvetype.h"
+-#include "testutil.h"
++
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetaenum.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+@@ -13,8 +15,6 @@
+ #include <primitivetypeentry.h>
+ #include <typedatabase.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testreverseoperators.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testreverseoperators.cpp
+index cb1bead16..e81248413 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testreverseoperators.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testreverseoperators.cpp
+@@ -2,12 +2,14 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testreverseoperators.h"
+-#include "testutil.h"
+ 
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <typesystem.h>
++
+ #include <clangparser/compilersupport.h>
+ 
+ #include <QtTest/qtest.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testtemplates.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testtemplates.cpp
+index 1a0599fc7..e9ed39683 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testtemplates.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testtemplates.cpp
+@@ -2,9 +2,10 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testtemplates.h"
+-#include "testutil.h"
+ 
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafield.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+@@ -12,8 +13,6 @@
+ #include <complextypeentry.h>
+ #include <containertypeentry.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtCore/qtemporaryfile.h>
+ #include <QtCore/qtextstream.h>
+ #include <QtTest/qtest.h>
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testtyperevision.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testtyperevision.cpp
+index 62a4b5570..49c0d08a1 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testtyperevision.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testtyperevision.cpp
+@@ -2,7 +2,9 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testtyperevision.h"
+-#include "testutil.h"
++
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetaenum.h>
+ #include <abstractmetalang.h>
+ #include <complextypeentry.h>
+@@ -10,8 +12,6 @@
+ #include <flagstypeentry.h>
+ #include <typedatabase.h>
+ 
+-#include <qtcompat.h>
+-
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testutil.h b/sources/shiboken6_generator/ApiExtractor/tests/testutil.h
+deleted file mode 100644
+index 1d21f84fb..000000000
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testutil.h
++++ /dev/null
+@@ -1,66 +0,0 @@
+-// Copyright (C) 2016 The Qt Company Ltd.
+-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+-
+-#ifndef TESTUTIL_H
+-#define TESTUTIL_H
+-
+-#include <abstractmetabuilder.h>
+-#include <reporthandler.h>
+-#include <typedatabase.h>
+-
+-#include <QtCore/qbuffer.h>
+-#include <QtCore/qdebug.h>
+-#include <QtCore/qdir.h>
+-#include <QtCore/qtemporaryfile.h>
+-
+-#include <exception>
+-#include <memory>
+-
+-namespace TestUtil
+-{
+-    static std::unique_ptr<AbstractMetaBuilder>
+-        parse(const char *cppCode, const char *xmlCode, bool silent = true,
+-              const QString &apiVersion = {}, const QStringList &dropTypeEntries = {},
+-              LanguageLevel languageLevel = LanguageLevel::Default)
+-    {
+-        ReportHandler::setSilent(silent);
+-        ReportHandler::startTimer();
+-        auto *td = TypeDatabase::instance(true);
+-        if (apiVersion.isEmpty())
+-            TypeDatabase::clearApiVersions();
+-        else if (!TypeDatabase::setApiVersion(QLatin1StringView("*"), apiVersion))
+-            return nullptr;
+-        td->setDropTypeEntries(dropTypeEntries);
+-        QBuffer buffer;
+-        // parse typesystem
+-        buffer.setData(xmlCode);
+-        if (!buffer.open(QIODevice::ReadOnly))
+-            return nullptr;
+-        if (!td->parseFile(&buffer))
+-            return nullptr;
+-        buffer.close();
+-        // parse C++ code
+-        QTemporaryFile tempSource(QDir::tempPath() + QLatin1StringView("/st_XXXXXX_main.cpp"));
+-        if (!tempSource.open()) {
+-            qWarning().noquote().nospace() << "Creation of temporary file failed: "
+-                << tempSource.errorString();
+-            return nullptr;
+-        }
+-        QByteArrayList arguments;
+-        arguments.append(QFile::encodeName(tempSource.fileName()));
+-        tempSource.write(cppCode, qint64(qstrlen(cppCode)));
+-        tempSource.close();
+-
+-        auto builder = std::make_unique<AbstractMetaBuilder>();
+-        try {
+-            if (!builder->build(arguments, {}, true, languageLevel))
+-                builder.reset();
+-        } catch (const std::exception &e) {
+-            qWarning("%s", e.what());
+-            builder.reset();
+-        }
+-        return builder;
+-    }
+-} // namespace TestUtil
+-
+-#endif
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testvaluetypedefaultctortag.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testvaluetypedefaultctortag.cpp
+index 197a74252..1061c8db2 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testvaluetypedefaultctortag.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testvaluetypedefaultctortag.cpp
+@@ -2,8 +2,9 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testvaluetypedefaultctortag.h"
+-#include "testutil.h"
+ 
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetalang.h>
+ #include <complextypeentry.h>
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testvoidarg.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testvoidarg.cpp
+index a7e8bbf08..0b5c71612 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testvoidarg.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testvoidarg.cpp
+@@ -2,9 +2,10 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
+ 
+ #include "testvoidarg.h"
+-#include "testutil.h"
+ 
+ #include <abstractmetaargument.h>
++#include <abstractmetabuilder.h>
++#include <abstractmetabuilder_testutil.h>
+ #include <abstractmetafunction.h>
+ #include <abstractmetalang.h>
+ #include <typesystem.h>
+-- 
+cgit v1.2.3
+

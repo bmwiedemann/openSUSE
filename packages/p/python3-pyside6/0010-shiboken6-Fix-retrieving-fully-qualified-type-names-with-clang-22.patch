@@ -1,0 +1,256 @@
+From 291ef13ec8352ff2890b1c5d149e44fdd5f49da1 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Tue, 10 Mar 2026 09:27:23 +0100
+Subject: shiboken6_generator: Fix retrieving fully qualified type names with
+ clang 22
+
+Change getTypeName() to use clang_getFullyQualifiedName() for version 22
+instead of clang_getTypeSpelling() which no longer returns fully
+qualified names.
+
+[ChangeLog][shiboken6] Clang version 22 is now supported.
+
+Fixes: PYSIDE-3286
+Change-Id: If55932c1ef45d08f20bafdb08f4b68c678988934
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+(cherry picked from commit 27cb9caa4980620cdd055cc82e080056dd22c13c)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ .../shiboken6_generator/ApiExtractor/CMakeLists.txt   |  2 +-
+ .../ApiExtractor/clangparser/clang_typedefs.h         | 19 +++++++++++++++++++
+ .../ApiExtractor/clangparser/clangbuilder.cpp         | 13 +++++++------
+ .../ApiExtractor/clangparser/clangparser.cpp          | 10 ++++++++++
+ .../ApiExtractor/clangparser/clangparser.h            |  6 +++++-
+ .../ApiExtractor/clangparser/clangutils.cpp           | 15 ++++++++++++---
+ .../ApiExtractor/clangparser/clangutils.h             | 11 ++++-------
+ 7 files changed, 58 insertions(+), 18 deletions(-)
+ create mode 100644 sources/shiboken6_generator/ApiExtractor/clangparser/clang_typedefs.h
+
+diff --git a/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt b/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt
+index 738ae6a88..d726e73b4 100644
+--- a/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt
++++ b/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt
+@@ -79,7 +79,7 @@ clangparser/clangbuilder.cpp clangparser/clangbuilder.h
+ clangparser/clangdebugutils.cpp clangparser/clangdebugutils.h
+ clangparser/clangparser.cpp clangparser/clangparser.h
+ clangparser/clangtype.cpp clangparser/clangtype.h
+-clangparser/clangutils.cpp clangparser/clangutils.h
++clangparser/clangutils.cpp clangparser/clangutils.h clangparser/clang_typedefs.h
+ clangparser/compilersupport.cpp clangparser/compilersupport.h
+ clangparser/triplet.cpp clangparser/triplet.h
+ # Old parser
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clang_typedefs.h b/sources/shiboken6_generator/ApiExtractor/clangparser/clang_typedefs.h
+new file mode 100644
+index 000000000..49efc2592
+--- /dev/null
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clang_typedefs.h
+@@ -0,0 +1,19 @@
++// Copyright (C) 2026 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
++
++#ifndef CLANG_TYPEDEFS_H
++#define CLANG_TYPEDEFS_H
++
++#include <clang-c/Index.h>
++
++namespace clang {
++
++#if LLVM_VERSION >= 22
++using PrintingPolicy = CXPrintingPolicy;
++#else
++using PrintingPolicy = void *;
++#endif
++
++} // namespace clang
++
++#endif // CLANG_TYPEDEFS_H
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+index 11f6580f6..1bddbc8be 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+@@ -623,7 +623,8 @@ std::optional<TypeInfo>
+     typeInfo.setConstant(clang_isConstQualifiedType(nestedType) != 0);
+     typeInfo.setVolatile(clang_isVolatileQualifiedType(nestedType) != 0);
+ 
+-    QString typeName = fixTypeName(getResolvedTypeName(nestedType));
++    QString typeName = fixTypeName(getResolvedTypeName(nestedType,
++                                                       m_baseVisitor->printingPolicy()));
+ 
+     if (!checkTypeName(typeName)) {
+         m_rejectedTypes.insert(typeName);
+@@ -776,7 +777,7 @@ std::pair<QString, ClassModelItem> BuilderPrivate::getBaseClass(CXType type) con
+ {
+     const auto decl = resolveBaseClassType(type);
+     // Note: spelling has "struct baseClass", use type
+-    QString baseClassName = getTypeName(decl.type);
++    QString baseClassName = getTypeName(decl.type, m_baseVisitor->printingPolicy());
+     if (baseClassName.startsWith(u"std::")) { // Simplify "std::" types
+         if (auto typeO = createTypeInfo(decl.type))
+             baseClassName = typeO.value().toString();
+@@ -995,7 +996,7 @@ static NamespaceType namespaceType(const CXCursor &cursor)
+     return NamespaceType::Default;
+ }
+ 
+-static QString enumType(const CXCursor &cursor)
++static QString enumType(const CXCursor &cursor, PrintingPolicy p)
+ {
+     QString name = getCursorSpelling(cursor); // "enum Foo { v1, v2 };"
+     if (name.contains(u"unnamed enum")) // Clang 16.0
+@@ -1003,7 +1004,7 @@ static QString enumType(const CXCursor &cursor)
+     if (name.isEmpty()) {
+         // PYSIDE-1228: For "typedef enum { v1, v2 } Foo;", type will return
+         // "Foo" as expected. Care must be taken to exclude real anonymous enums.
+-        name = getTypeName(clang_getCursorType(cursor));
++        name = getTypeName(clang_getCursorType(cursor), p);
+         if (name.contains(u"(unnamed") // Clang 12.0.1
+             || name.contains(u"(anonymous")) { // earlier
+             name.clear();
+@@ -1061,7 +1062,7 @@ BaseVisitor::StartTokenResult Builder::startToken(const CXCursor &cursor)
+         d->m_scope.back() += "<>"_L1;
+         break;
+     case CXCursor_EnumDecl: {
+-        QString name = enumType(cursor);
++        QString name = enumType(cursor, printingPolicy());
+         EnumKind kind = CEnum;
+         if (name.isEmpty()) {
+             kind = AnonymousEnum;
+@@ -1081,7 +1082,7 @@ BaseVisitor::StartTokenResult Builder::startToken(const CXCursor &cursor)
+             d->m_currentEnum->setDeprecated(true);
+         const auto enumType = fullyResolveType(clang_getEnumDeclIntegerType(cursor));
+         d->m_currentEnum->setSigned(isSigned(enumType.kind));
+-        d->m_currentEnum->setUnderlyingType(getTypeName(enumType));
++        d->m_currentEnum->setUnderlyingType(getTypeName(enumType, printingPolicy()));
+         if (std::dynamic_pointer_cast<_ClassModelItem>(d->m_scopeStack.back()))
+             d->m_currentEnum->setAccessPolicy(accessPolicy(clang_getCXXAccessSpecifier(cursor)));
+     }
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.cpp
+index d31d5712d..ff18e9657 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.cpp
+@@ -321,9 +321,19 @@ bool parse(const QByteArrayList  &clangArgs, bool addCompilerSupportArguments,
+     setupTarget(translationUnit);
+ 
+     CXCursor rootCursor = clang_getTranslationUnitCursor(translationUnit);
++#if LLVM_VERSION >= 22
++    CXPrintingPolicy printingPolicy = clang_getCursorPrintingPolicy(rootCursor);
++    clang_PrintingPolicy_setProperty(printingPolicy, CXPrintingPolicy_IncludeNewlines, 0);
++    bv.setPrintingPolicy(printingPolicy);
++#endif
+ 
+     clang_visitChildren(rootCursor, visitorCallback, reinterpret_cast<CXClientData>(&bv));
+ 
++#if LLVM_VERSION >= 22
++    bv.setPrintingPolicy(nullptr);
++    clang_PrintingPolicy_dispose(printingPolicy);
++#endif
++
+     QList<Diagnostic> diagnostics = getDiagnostics(translationUnit);
+     diagnostics.append(bv.diagnostics());
+     bv.setDiagnostics(diagnostics);
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.h b/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.h
+index 79dc855e2..7cc47e849 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.h
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.h
+@@ -4,7 +4,7 @@
+ #ifndef CLANGPARSER_H
+ #define CLANGPARSER_H
+ 
+-#include <clang-c/Index.h>
++#include "clang_typedefs.h"
+ 
+ #include <QtCore/qbytearraylist.h>
+ #include <QtCore/qhash.h>
+@@ -72,10 +72,14 @@ public:
+     // For usage by the parser
+     bool _handleVisitLocation( const CXSourceLocation &location);
+ 
++    PrintingPolicy printingPolicy() const { return m_printingPolicy; }
++    void setPrintingPolicy(CXPrintingPolicy p) { m_printingPolicy = p; }
++
+ private:
+     SourceFileCache m_fileCache;
+     Diagnostics m_diagnostics;
+     CXFile m_currentCxFile{};
++    PrintingPolicy m_printingPolicy = nullptr;
+     bool m_visitCurrent = true;
+ };
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangutils.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangutils.cpp
+index 384fd6815..24646db53 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangutils.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangutils.cpp
+@@ -10,6 +10,8 @@
+ 
+ #include <string_view>
+ 
++using namespace Qt::StringLiterals;
++
+ bool operator==(const CXCursor &c1, const CXCursor &c2) noexcept
+ {
+     return c1.kind == c2.kind
+@@ -137,11 +139,18 @@ CXType fullyResolveType(const CXType &type)
+     return resolveTypedef(resolveElaboratedType(type));
+ }
+ 
+-QString getTypeName(const CXType &type)
++QString getTypeName(const CXType &type, [[maybe_unused]] PrintingPolicy p)
+ {
++    // Behavioral change, clang_getTypeSpelling() may no longer return the qualified name in 22.1
++#if LLVM_VERSION >= 22
++    CXString qualName = clang_getFullyQualifiedName(type, p, 0);
++    QString result = QString::fromUtf8(clang_getCString(qualName));
++    clang_disposeString(qualName);
++#else
+     CXString typeSpelling = clang_getTypeSpelling(type);
+     const QString result = QString::fromUtf8(clang_getCString(typeSpelling));
+     clang_disposeString(typeSpelling);
++#endif
+     return result;
+ }
+ 
+@@ -157,9 +166,9 @@ bool hasScopeResolution(const CXType &type)
+ }
+ 
+ // Resolve elaborated types occurring with clang 16
+-QString getResolvedTypeName(const CXType &type)
++QString getResolvedTypeName(const CXType &type, PrintingPolicy p)
+ {
+-    return getTypeName(resolveElaboratedType(type));
++    return getTypeName(resolveElaboratedType(type), p);
+ }
+ 
+ Diagnostic::Diagnostic(const QString &m, const CXCursor &c, CXDiagnosticSeverity s)
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangutils.h b/sources/shiboken6_generator/ApiExtractor/clangparser/clangutils.h
+index bb819e61f..866be9282 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangutils.h
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangutils.h
+@@ -4,7 +4,8 @@
+ #ifndef CLANGUTILS_H
+ #define CLANGUTILS_H
+ 
+-#include <clang-c/Index.h>
++#include "clang_typedefs.h"
++
+ #include <QtCore/qstring.h>
+ #include <QtCore/qstringlist.h>
+ #include <QtCore/qcompare.h>
+@@ -26,14 +27,10 @@ namespace clang {
+ QString getCursorKindName(CXCursorKind cursorKind);
+ QString getCursorSpelling(const CXCursor &cursor);
+ QString getCursorDisplayName(const CXCursor &cursor);
+-QString getTypeName(const CXType &type);
++QString getTypeName(const CXType &type, PrintingPolicy p);
+ bool hasScopeResolution(const CXType &type);
+ CXType fullyResolveType(const CXType &type);
+-QString getResolvedTypeName(const CXType &type);
+-inline QString getCursorTypeName(const CXCursor &cursor)
+-    { return getTypeName(clang_getCursorType(cursor)); }
+-inline QString getCursorResultTypeName(const CXCursor &cursor)
+-    { return getTypeName(clang_getCursorResultType(cursor)); }
++QString getResolvedTypeName(const CXType &type, PrintingPolicy p);
+ 
+ inline bool isCursorValid(const CXCursor &c)
+ {
+-- 
+cgit v1.2.3
+

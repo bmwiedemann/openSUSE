@@ -1,0 +1,811 @@
+From 2bb7d3b19c3eeca8b196fe9dc1039ab61ed7e2d7 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Wed, 25 Mar 2026 15:08:50 +0100
+Subject: shiboken6_generator: Change class CodeModel into a non-instantiable
+ Q_GADGET
+
+CodeModel aggregated a global namespace item and some file items which
+were not actually used. Disable instantiation and remove the unused
+parts. Remove the code model instance from the node constructors
+and simplify the code accordingly. Also remove the node kind default
+parameter and provided by the macro DECLARE_MODEL_NODE and remove
+it entirely on this occasion. Repack the node classes' members.
+
+Task-number: PYSIDE-3286
+Change-Id: I643bab524adfee897eea840480623df84f22ff5f
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+(cherry picked from commit dbb6d8fab77e4ab1250da4f152a147b1fdcdc5d3)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ .../ApiExtractor/abstractmetabuilder.cpp           |   5 +-
+ .../ApiExtractor/clangparser/clangbuilder.cpp      |  32 ++--
+ .../ApiExtractor/parser/codemodel.cpp              | 172 ++++++++-------------
+ .../ApiExtractor/parser/codemodel.h                | 125 ++++++---------
+ 4 files changed, 123 insertions(+), 211 deletions(-)
+
+diff --git a/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder.cpp b/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder.cpp
+index fc6af578f..21e986221 100644
+--- a/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder.cpp
+@@ -3243,7 +3243,7 @@ QString AbstractMetaBuilder::fixDefaultValue(const QString &expr, const Abstract
+ bool AbstractMetaBuilderPrivate::isEnum(const FileModelItem &dom, const QStringList& qualified_name)
+ {
+     CodeModelItem item = CodeModel::findItem(qualified_name, dom);
+-    return item && item->kind() == _EnumModelItem::__node_kind;
++    return item && item->kind() == _CodeModelItem::Kind_Enum;
+ }
+ 
+ AbstractMetaClassPtr
+@@ -3842,8 +3842,7 @@ void AbstractMetaBuilderPrivate::pushScope(const NamespaceModelItem &item)
+         }
+     }
+     if (candidates.size() > 1) {
+-        auto joined = std::make_shared<_NamespaceModelItem>(m_scopes.constLast()->model(),
+-                                                            name, _CodeModelItem::Kind_Namespace);
++        auto joined = std::make_shared<_NamespaceModelItem>(name);
+         joined->setScope(item->scope());
+         for (const auto &n : candidates)
+             joined->appendNamespace(*n);
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+index 8e262d6d8..d26a7efaa 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+@@ -123,13 +123,9 @@ public:
+     using CursorClassHash = QHash<CXCursor, ClassModelItem>;
+     using TypeInfoHash = QHash<CXType, TypeInfo>;
+ 
+-    explicit BuilderPrivate(BaseVisitor *bv) : m_baseVisitor(bv), m_model(new CodeModel)
++    explicit BuilderPrivate(BaseVisitor *bv) : m_baseVisitor(bv)
+     {
+-       m_scopeStack.push(NamespaceModelItem(new _FileModelItem(m_model)));
+-    }
+-    ~BuilderPrivate()
+-    {
+-        delete m_model;
++       m_scopeStack.push(std::make_shared<_FileModelItem>());
+     }
+ 
+     // Determine scope from top item. Note that the scope list does not necessarily
+@@ -193,7 +189,6 @@ public:
+     void setFileName(const CXCursor &cursor, _CodeModelItem *item) const;
+ 
+     BaseVisitor *m_baseVisitor;
+-    CodeModel *m_model;
+ 
+     QStack<ScopeModelItem> m_scopeStack;
+     QStringList m_scope;
+@@ -225,7 +220,7 @@ public:
+ bool BuilderPrivate::addClass(const CXCursor &cursor, CodeModel::ClassType t)
+ {
+     QString className = getCursorSpelling(cursor);
+-    m_currentClass = std::make_shared<_ClassModelItem>(m_model, className);
++    m_currentClass = std::make_shared<_ClassModelItem>(className);
+     setFileName(cursor, m_currentClass.get());
+     m_currentClass->setClassType(t);
+     // Some inner class? Note that it does not need to be (lexically) contained in a
+@@ -330,7 +325,7 @@ FunctionModelItem BuilderPrivate::createFunction(const CXCursor &cursor,
+     // Apply type fixes to "operator X &" -> "operator X&"
+     if (name.startsWith(u"operator "))
+         name = fixTypeName(name);
+-    auto result = std::make_shared<_FunctionModelItem>(m_model, name);
++    auto result = std::make_shared<_FunctionModelItem>(name);
+     setFileName(cursor, result.get());
+     const auto type = clang_getCursorResultType(cursor);
+     result->setType(createTypeInfo(type));
+@@ -420,7 +415,7 @@ void BuilderPrivate::qualifyConstructor(const CXCursor &cursor)
+ 
+ TemplateParameterModelItem BuilderPrivate::createTemplateParameter(const CXCursor &cursor) const
+ {
+-    return std::make_shared<_TemplateParameterModelItem>(m_model, getCursorSpelling(cursor));
++    return std::make_shared<_TemplateParameterModelItem>(getCursorSpelling(cursor));
+ }
+ 
+ TemplateParameterModelItem BuilderPrivate::createNonTypeTemplateParameter(const CXCursor &cursor) const
+@@ -433,7 +428,7 @@ TemplateParameterModelItem BuilderPrivate::createNonTypeTemplateParameter(const
+ // CXCursor_VarDecl, CXCursor_FieldDecl cursors
+ void BuilderPrivate::addField(const CXCursor &cursor)
+ {
+-    auto field = std::make_shared<_VariableModelItem>(m_model, getCursorSpelling(cursor));
++    auto field = std::make_shared<_VariableModelItem>(getCursorSpelling(cursor));
+     field->setAccessPolicy(accessPolicy(clang_getCXXAccessSpecifier(cursor)));
+     field->setScope(m_scope);
+     field->setType(createTypeInfo(cursor));
+@@ -643,7 +638,7 @@ TypeInfo BuilderPrivate::createTypeInfo(const CXType &type) const
+ void BuilderPrivate::addTypeDef(const CXCursor &cursor, const CXType &cxType)
+ {
+     const QString target = getCursorSpelling(cursor);
+-    auto item = std::make_shared<_TypeDefModelItem>(m_model, target);
++    auto item = std::make_shared<_TypeDefModelItem>(target);
+     setFileName(cursor, item.get());
+     item->setType(createTypeInfo(cxType));
+     item->setScope(m_scope);
+@@ -664,7 +659,7 @@ ClassModelItem BuilderPrivate::currentTemplateClass() const
+ void BuilderPrivate::startTemplateTypeAlias(const CXCursor &cursor)
+ {
+     const QString target = getCursorSpelling(cursor);
+-    m_currentTemplateTypeAlias = std::make_shared<_TemplateTypeAliasModelItem>(m_model, target);
++    m_currentTemplateTypeAlias = std::make_shared<_TemplateTypeAliasModelItem>(target);
+     setFileName(cursor, m_currentTemplateTypeAlias.get());
+     m_currentTemplateTypeAlias->setScope(m_scope);
+ }
+@@ -1023,7 +1018,7 @@ BaseVisitor::StartTokenResult Builder::startToken(const CXCursor &cursor)
+ #endif
+             kind = EnumClass;
+         }
+-        d->m_currentEnum = std::make_shared<_EnumModelItem>(d->m_model, name);
++        d->m_currentEnum = std::make_shared<_EnumModelItem>(name);
+         d->setFileName(cursor, d->m_currentEnum.get());
+         d->m_currentEnum->setScope(d->m_scope);
+         d->m_currentEnum->setEnumKind(kind);
+@@ -1049,7 +1044,7 @@ BaseVisitor::StartTokenResult Builder::startToken(const CXCursor &cursor)
+             enumValue.setValue(clang_getEnumConstantDeclValue(cursor));
+         else
+             enumValue.setUnsignedValue(clang_getEnumConstantDeclUnsignedValue(cursor));
+-        auto enumConstant = std::make_shared<_EnumeratorModelItem>(d->m_model, name);
++        auto enumConstant = std::make_shared<_EnumeratorModelItem>(name);
+         enumConstant->setStringValue(BuilderPrivate::cursorValueExpression(this, cursor));
+         enumConstant->setValue(enumValue);
+         if (clang_getCursorAvailability(cursor) == CXAvailability_Deprecated)
+@@ -1128,10 +1123,7 @@ BaseVisitor::StartTokenResult Builder::startToken(const CXCursor &cursor)
+             appendDiagnostic(d);
+             return Error;
+         }
+-        // Treat namespaces separately to allow for extending namespaces
+-        // in subsequent modules.
+-        NamespaceModelItem namespaceItem = parentNamespaceItem->findNamespace(name);
+-        namespaceItem = std::make_shared<_NamespaceModelItem>(d->m_model, name);
++        auto namespaceItem = std::make_shared<_NamespaceModelItem>(name);
+         d->setFileName(cursor, namespaceItem.get());
+         namespaceItem->setScope(d->m_scope);
+         namespaceItem->setType(type);
+@@ -1144,7 +1136,7 @@ BaseVisitor::StartTokenResult Builder::startToken(const CXCursor &cursor)
+         // and function pointer typedefs.
+         if (!d->m_currentArgument && d->m_currentFunction) {
+             const QString name = getCursorSpelling(cursor);
+-            d->m_currentArgument = std::make_shared<_ArgumentModelItem>(d->m_model, name);
++            d->m_currentArgument = std::make_shared<_ArgumentModelItem>(name);
+             const auto type = clang_getCursorType(cursor);
+             d->m_currentArgument->setScopeResolution(hasScopeResolution(type));
+             d->m_currentArgument->setType(d->createTypeInfo(type));
+diff --git a/sources/shiboken6_generator/ApiExtractor/parser/codemodel.cpp b/sources/shiboken6_generator/ApiExtractor/parser/codemodel.cpp
+index bfccacbac..de3924388 100644
+--- a/sources/shiboken6_generator/ApiExtractor/parser/codemodel.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/parser/codemodel.cpp
+@@ -28,27 +28,6 @@ static std::shared_ptr<T> findModelItem(const QList<std::shared_ptr<T> > &list,
+ 
+ // ---------------------------------------------------------------------------
+ 
+-CodeModel::CodeModel() : m_globalNamespace(new _NamespaceModelItem(this))
+-{
+-}
+-
+-CodeModel::~CodeModel() = default;
+-
+-NamespaceModelItem CodeModel::globalNamespace() const
+-{
+-    return m_globalNamespace;
+-}
+-
+-void CodeModel::addFile(const FileModelItem &item)
+-{
+-    m_files.append(item);
+-}
+-
+-FileModelItem CodeModel::findFile(QAnyStringView name) const
+-{
+-    return findModelItem(m_files, name);
+-}
+-
+ static CodeModelItem findRecursion(const ScopeModelItem &scope,
+                                    const QStringList &qualifiedName, int segment = 0)
+ {
+@@ -102,44 +81,14 @@ QDebug operator<<(QDebug d, Access a)
+     }
+     return d;
+ }
+-
+-QDebug operator<<(QDebug d, const CodeModel *m)
+-{
+-    QDebugStateSaver s(d);
+-    d.noquote();
+-    d.nospace();
+-    d << "CodeModel(";
+-    if (m) {
+-        const NamespaceModelItem globalNamespaceP = m->globalNamespace();
+-        if (globalNamespaceP)
+-            globalNamespaceP->formatDebug(d);
+-    } else {
+-        d << '0';
+-    }
+-    d << ')';
+-    return d;
+-}
+ #endif // !QT_NO_DEBUG_STREAM
+ 
+ // ---------------------------------------------------------------------------
+-_CodeModelItem::_CodeModelItem(CodeModel *model, int kind)
+-        : m_model(model),
+-        m_kind(kind),
+-        m_startLine(0),
+-        m_startColumn(0),
+-        m_endLine(0),
+-        m_endColumn(0)
++_CodeModelItem::_CodeModelItem(Kind kind) : m_kind(kind)
+ {
+ }
+ 
+-_CodeModelItem::_CodeModelItem(CodeModel *model, const QString &name, int kind)
+-    : m_model(model),
+-    m_kind(kind),
+-    m_startLine(0),
+-    m_startColumn(0),
+-    m_endLine(0),
+-    m_endColumn(0),
+-    m_name(name)
++_CodeModelItem::_CodeModelItem(const QString &name, Kind kind) : m_name(name), m_kind(kind)
+ {
+ }
+ 
+@@ -195,11 +144,6 @@ void _CodeModelItem::setFileName(const QString &fileName)
+     m_fileName = fileName;
+ }
+ 
+-FileModelItem _CodeModelItem::file() const
+-{
+-    return model()->findFile(fileName());
+-}
+-
+ void _CodeModelItem::getStartPosition(int *line, int *column) const
+ {
+     *line = m_startLine;
+@@ -239,16 +183,6 @@ void _CodeModelItem::setEnclosingScope(const _ScopeModelItem *s)
+     m_enclosingScope = s;
+ }
+ 
+-_ScopeModelItem::_ScopeModelItem(CodeModel *model, int kind)
+-    : _CodeModelItem(model, kind)
+-{
+-}
+-
+-_ScopeModelItem::_ScopeModelItem(CodeModel *model, const QString &name, int kind)
+-    : _CodeModelItem(model, name, kind)
+-{
+-}
+-
+ #ifndef QT_NO_DEBUG_STREAM
+ void _CodeModelItem::formatKind(QDebug &d, int k)
+ {
+@@ -358,13 +292,11 @@ bool _ClassModelItem::extendsClass(const QString &name) const
+                        });
+ }
+ 
+-_ClassModelItem::_ClassModelItem(CodeModel *model, int kind)
+-    : _ScopeModelItem(model, kind)
++_ClassModelItem::_ClassModelItem() : _ScopeModelItem(_CodeModelItem::Kind_Class)
+ {
+ }
+ 
+-_ClassModelItem::_ClassModelItem(CodeModel *model, const QString &name, int kind)
+-    : _ScopeModelItem(model, name, kind)
++_ClassModelItem::_ClassModelItem(const QString &name) : _ScopeModelItem(name, _CodeModelItem::Kind_Class)
+ {
+ }
+ 
+@@ -754,13 +686,16 @@ FunctionList _ScopeModelItem::findFunctions(QAnyStringView name) const
+ }
+ 
+ // ---------------------------------------------------------------------------
+-_NamespaceModelItem::_NamespaceModelItem(CodeModel *model, int kind)
+-    : _ScopeModelItem(model, kind)
++_NamespaceModelItem::_NamespaceModelItem() : _ScopeModelItem(_CodeModelItem::Kind_Namespace)
+ {
+ }
+ 
+-_NamespaceModelItem::_NamespaceModelItem(CodeModel *model, const QString &name, int kind)
+-    : _ScopeModelItem(model, name, kind)
++_NamespaceModelItem::_NamespaceModelItem(const QString &name) :
++    _ScopeModelItem(name, _CodeModelItem::Kind_Namespace)
++{
++}
++
++_NamespaceModelItem::_NamespaceModelItem(Kind kind) : _ScopeModelItem(kind)
+ {
+ }
+ 
+@@ -777,6 +712,10 @@ NamespaceModelItem _NamespaceModelItem::findNamespace(QAnyStringView name) const
+     return findModelItem(m_namespaces, name);
+ }
+ 
++_FileModelItem::_FileModelItem() : _NamespaceModelItem(_CodeModelItem::Kind_File)
++{
++}
++
+ _FileModelItem::~_FileModelItem() = default;
+ 
+ void  _NamespaceModelItem::appendNamespace(const _NamespaceModelItem &other)
+@@ -804,13 +743,12 @@ void _NamespaceModelItem::formatDebug(QDebug &d) const
+ #endif // !QT_NO_DEBUG_STREAM
+ 
+ // ---------------------------------------------------------------------------
+-_ArgumentModelItem::_ArgumentModelItem(CodeModel *model, int kind)
+-    : _CodeModelItem(model, kind)
++_ArgumentModelItem::_ArgumentModelItem() : _CodeModelItem(_CodeModelItem::Kind_Argument)
+ {
+ }
+ 
+-_ArgumentModelItem::_ArgumentModelItem(CodeModel *model, const QString &name, int kind)
+-    : _CodeModelItem(model, name, kind)
++_ArgumentModelItem::_ArgumentModelItem(const QString &name)
++     : _CodeModelItem(name, _CodeModelItem::Kind_Argument)
+ {
+ }
+ 
+@@ -894,13 +832,13 @@ bool _FunctionModelItem::isSimilar(const FunctionModelItem &other) const
+     return true;
+ }
+ 
+-_FunctionModelItem::_FunctionModelItem(CodeModel *model, int kind)
+-    : _MemberModelItem(model, kind), m_flags(0)
++_FunctionModelItem::_FunctionModelItem()
++    : _MemberModelItem(_CodeModelItem::Kind_Function), m_flags(0)
+ {
+ }
+ 
+-_FunctionModelItem::_FunctionModelItem(CodeModel *model, const QString &name, int kind)
+-    : _MemberModelItem(model, name, kind), m_flags(0)
++_FunctionModelItem::_FunctionModelItem(const QString &name)
++    : _MemberModelItem(name, _CodeModelItem::Kind_Function), m_flags(0)
+ {
+ }
+ 
+@@ -1257,17 +1195,29 @@ void _FunctionModelItem::formatDebug(QDebug &d) const
+ }
+ #endif // !QT_NO_DEBUG_STREAM
+ 
++_VariableModelItem::_VariableModelItem() : _MemberModelItem(_CodeModelItem::Kind_Variable)
++{
++}
++
++_VariableModelItem::_VariableModelItem(const QString &name)
++     : _MemberModelItem(name, _CodeModelItem::Kind_Variable)
++{
++}
++
++_VariableModelItem::~_VariableModelItem() = default;
++
+ // ---------------------------------------------------------------------------
+-_TypeDefModelItem::_TypeDefModelItem(CodeModel *model, int kind)
+-    : _CodeModelItem(model, kind)
++_TypeDefModelItem::_TypeDefModelItem() : _CodeModelItem(_CodeModelItem::Kind_TypeDef)
+ {
+ }
+ 
+-_TypeDefModelItem::_TypeDefModelItem(CodeModel *model, const QString &name, int kind)
+-    : _CodeModelItem(model, name, kind)
++_TypeDefModelItem::_TypeDefModelItem(const QString &name)
++    : _CodeModelItem(name, _CodeModelItem::Kind_TypeDef)
+ {
+ }
+ 
++_TypeDefModelItem::~_TypeDefModelItem() = default;
++
+ TypeInfo _TypeDefModelItem::type() const
+ {
+     return m_type;
+@@ -1303,11 +1253,17 @@ void _TypeDefModelItem::formatDebug(QDebug &d) const
+ 
+ // ---------------------------------------------------------------------------
+ 
+-_TemplateTypeAliasModelItem::_TemplateTypeAliasModelItem(CodeModel *model, int kind)
+-    : _CodeModelItem(model, kind) {}
++_TemplateTypeAliasModelItem::_TemplateTypeAliasModelItem()
++    : _CodeModelItem(_CodeModelItem::Kind_TemplateTypeAlias)
++{
++}
++
++_TemplateTypeAliasModelItem::_TemplateTypeAliasModelItem(const QString &name)
++    : _CodeModelItem(name, _CodeModelItem::Kind_TemplateTypeAlias)
++{
++}
+ 
+-_TemplateTypeAliasModelItem::_TemplateTypeAliasModelItem(CodeModel *model, const QString &name, int kind)
+-    : _CodeModelItem(model, name, kind) {}
++_TemplateTypeAliasModelItem::~_TemplateTypeAliasModelItem() = default;
+ 
+ TemplateParameterList _TemplateTypeAliasModelItem::templateParameters() const
+ {
+@@ -1344,13 +1300,12 @@ void _TemplateTypeAliasModelItem::formatDebug(QDebug &d) const
+ #endif // !QT_NO_DEBUG_STREAM
+ 
+ // ---------------------------------------------------------------------------
+-_EnumModelItem::_EnumModelItem(CodeModel *model, const QString &name, int kind)
+-    : _CodeModelItem(model, name, kind)
++_EnumModelItem::_EnumModelItem(const QString &name)
++    : _CodeModelItem(name, _CodeModelItem::Kind_Enum)
+ {
+ }
+ 
+-_EnumModelItem::_EnumModelItem(CodeModel *model, int kind)
+-    : _CodeModelItem(model, kind)
++_EnumModelItem::_EnumModelItem() : _CodeModelItem(_CodeModelItem::Kind_Enum)
+ {
+ }
+ 
+@@ -1440,13 +1395,13 @@ void _EnumModelItem::formatDebug(QDebug &d) const
+ // ---------------------------------------------------------------------------
+ _EnumeratorModelItem::~_EnumeratorModelItem() = default;
+ 
+-_EnumeratorModelItem::_EnumeratorModelItem(CodeModel *model, int kind)
+-    : _CodeModelItem(model, kind)
++_EnumeratorModelItem::_EnumeratorModelItem()
++    : _CodeModelItem(_CodeModelItem::Kind_Enumerator)
+ {
+ }
+ 
+-_EnumeratorModelItem::_EnumeratorModelItem(CodeModel *model, const QString &name, int kind)
+-    : _CodeModelItem(model, name, kind)
++_EnumeratorModelItem::_EnumeratorModelItem(const QString &name)
++    : _CodeModelItem(name, _CodeModelItem::Kind_Enumerator)
+ {
+ }
+ 
+@@ -1483,14 +1438,13 @@ void _EnumeratorModelItem::formatDebug(QDebug &d) const
+ // ---------------------------------------------------------------------------
+ _TemplateParameterModelItem::~_TemplateParameterModelItem() = default;
+ 
+-_TemplateParameterModelItem::_TemplateParameterModelItem(CodeModel *model, int kind)
+-    : _CodeModelItem(model, kind)
++_TemplateParameterModelItem::_TemplateParameterModelItem()
++    : _CodeModelItem(_CodeModelItem::Kind_TemplateParameter)
+ {
+ }
+ 
+-_TemplateParameterModelItem::_TemplateParameterModelItem(CodeModel *model,
+-                                                         const QString &name, int kind)
+-    : _CodeModelItem(model, name, kind)
++_TemplateParameterModelItem::_TemplateParameterModelItem(const QString &name)
++    : _CodeModelItem(name, _CodeModelItem::Kind_TemplateParameter)
+ {
+ }
+ 
+@@ -1557,13 +1511,13 @@ void _MemberModelItem::setStatic(bool isStatic)
+     m_isStatic = isStatic;
+ }
+ 
+-_MemberModelItem::_MemberModelItem(CodeModel *model, int kind)
+-    : _CodeModelItem(model, kind), m_flags(0)
++_MemberModelItem::_MemberModelItem(Kind kind)
++    : _CodeModelItem(kind), m_flags(0)
+ {
+ }
+ 
+-_MemberModelItem::_MemberModelItem(CodeModel *model, const QString &name, int kind)
+-    : _CodeModelItem(model, name, kind), m_flags(0)
++_MemberModelItem::_MemberModelItem(const QString &name, Kind kind)
++    : _CodeModelItem(name, kind), m_flags(0)
+ {
+ }
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/parser/codemodel.h b/sources/shiboken6_generator/ApiExtractor/parser/codemodel.h
+index 7ff0a88e2..45bb85f5f 100644
+--- a/sources/shiboken6_generator/ApiExtractor/parser/codemodel.h
++++ b/sources/shiboken6_generator/ApiExtractor/parser/codemodel.h
+@@ -22,9 +22,6 @@
+ 
+ QT_FORWARD_DECLARE_CLASS(QDebug)
+ 
+-#define DECLARE_MODEL_NODE(k) \
+-    enum { __node_kind = Kind_##k };
+-
+ class SourceLocation;
+ 
+ class CodeModel
+@@ -67,26 +64,14 @@ public:
+     };
+     Q_ENUM(ClassType)
+ 
+-    CodeModel();
+-    virtual ~CodeModel();
+-
+-    FileList files() const { return m_files; }
+-    NamespaceModelItem globalNamespace() const;
+-
+-    void addFile(const FileModelItem &item);
+-    FileModelItem findFile(QAnyStringView name) const;
++    CodeModel() = delete;
+ 
+     static CodeModelItem findItem(const QStringList &qualifiedName,
+                                   const ScopeModelItem &scope);
+-
+-private:
+-    FileList m_files;
+-    NamespaceModelItem m_globalNamespace;
+ };
+ 
+ #ifndef QT_NO_DEBUG_STREAM
+ QDebug operator<<(QDebug d, Access a);
+-QDebug operator<<(QDebug d, const CodeModel *m);
+ #endif
+ 
+ class _CodeModelItem
+@@ -131,8 +116,6 @@ public:
+     QString fileName() const;
+     void setFileName(const QString &fileName);
+ 
+-    FileModelItem file() const;
+-
+     void getStartPosition(int *line, int *column) const;
+     int startLine() const { return m_startLine; }
+     void setStartPosition(int line, int column);
+@@ -142,8 +125,6 @@ public:
+ 
+     SourceLocation sourceLocation() const;
+ 
+-    inline CodeModel *model() const { return m_model; }
+-
+     const _ScopeModelItem *enclosingScope() const;
+     void setEnclosingScope(const _ScopeModelItem *s);
+ 
+@@ -153,20 +134,19 @@ public:
+ #endif
+ 
+ protected:
+-    explicit _CodeModelItem(CodeModel *model, int kind);
+-    explicit _CodeModelItem(CodeModel *model, const QString &name, int kind);
++    explicit _CodeModelItem(Kind kind);
++    explicit _CodeModelItem(const QString &name, Kind kind);
+ 
+ private:
+-    CodeModel *m_model;
+     const _ScopeModelItem *m_enclosingScope = nullptr;
+-    int m_kind;
+-    int m_startLine;
+-    int m_startColumn;
+-    int m_endLine;
+-    int m_endColumn;
+     QString m_name;
+     QString m_fileName;
+     QStringList m_scope;
++    int m_startLine = 0;
++    int m_startColumn = 0;
++    int m_endLine = 0;
++    int m_endColumn = 0;
++    Kind m_kind;
+ };
+ 
+ #ifndef QT_NO_DEBUG_STREAM
+@@ -177,7 +157,6 @@ class _ScopeModelItem: public _CodeModelItem
+ {
+ public:
+     Q_DISABLE_COPY_MOVE(_ScopeModelItem)
+-    DECLARE_MODEL_NODE(Scope)
+ 
+     ~_ScopeModelItem() override;
+ 
+@@ -222,9 +201,7 @@ public:
+ #endif
+ 
+ protected:
+-    explicit _ScopeModelItem(CodeModel *model, int kind = __node_kind);
+-    explicit _ScopeModelItem(CodeModel *model, const QString &name,
+-                             int kind = __node_kind);
++    using _CodeModelItem::_CodeModelItem;
+ 
+     void appendScope(const _ScopeModelItem &other);
+ 
+@@ -254,7 +231,6 @@ class _ClassModelItem: public _ScopeModelItem
+ {
+ public:
+     Q_DISABLE_COPY_MOVE(_ClassModelItem)
+-    DECLARE_MODEL_NODE(Class)
+ 
+     struct BaseClass
+     {
+@@ -270,9 +246,8 @@ public:
+         Access access = Access::Public;
+     };
+ 
+-    explicit _ClassModelItem(CodeModel *model, int kind = __node_kind);
+-    explicit _ClassModelItem(CodeModel *model, const QString &name,
+-                             int kind = __node_kind);
++    _ClassModelItem();
++    explicit _ClassModelItem(const QString &name);
+     ~_ClassModelItem() override;
+ 
+     const QList<BaseClass> &baseClasses() const { return m_baseClasses; }
+@@ -318,11 +293,9 @@ class _NamespaceModelItem: public _ScopeModelItem
+ {
+ public:
+     Q_DISABLE_COPY_MOVE(_NamespaceModelItem)
+-    DECLARE_MODEL_NODE(Namespace)
+ 
+-    explicit _NamespaceModelItem(CodeModel *model, int kind = __node_kind);
+-    explicit _NamespaceModelItem(CodeModel *model, const QString &name,
+-                                 int kind = __node_kind);
++    _NamespaceModelItem();
++    explicit _NamespaceModelItem(const QString &name);
+     ~_NamespaceModelItem() override;
+ 
+     const NamespaceList &namespaces() const { return m_namespaces; }
+@@ -340,6 +313,9 @@ public:
+     void formatDebug(QDebug &d) const override;
+ #endif
+ 
++protected:
++    explicit _NamespaceModelItem(Kind kind);
++
+ private:
+     NamespaceList m_namespaces;
+     NamespaceType m_type = NamespaceType::Default;
+@@ -349,10 +325,8 @@ class _FileModelItem: public _NamespaceModelItem
+ {
+ public:
+     Q_DISABLE_COPY_MOVE(_FileModelItem)
+-    DECLARE_MODEL_NODE(File)
+-
+-    using _NamespaceModelItem::_NamespaceModelItem;
+ 
++    _FileModelItem();
+     ~_FileModelItem() override;
+ };
+ 
+@@ -360,11 +334,9 @@ class _ArgumentModelItem: public _CodeModelItem
+ {
+ public:
+     Q_DISABLE_COPY_MOVE(_ArgumentModelItem)
+-    DECLARE_MODEL_NODE(Argument)
+ 
+-    explicit _ArgumentModelItem(CodeModel *model, int kind = __node_kind);
+-    explicit _ArgumentModelItem(CodeModel *model, const QString &name,
+-                                int kind = __node_kind);
++    _ArgumentModelItem();
++    explicit _ArgumentModelItem(const QString &name);
+     ~_ArgumentModelItem() override;
+ 
+     TypeInfo type() const;
+@@ -397,11 +369,7 @@ class _MemberModelItem: public _CodeModelItem
+ {
+ public:
+     Q_DISABLE_COPY_MOVE(_MemberModelItem)
+-    DECLARE_MODEL_NODE(Member)
+ 
+-    explicit _MemberModelItem(CodeModel *model, int kind = __node_kind);
+-    explicit _MemberModelItem(CodeModel *model, const QString &name,
+-                              int kind = __node_kind);
+     ~_MemberModelItem() override;
+ 
+     bool isConstant() const;
+@@ -441,6 +409,10 @@ public:
+     void formatDebug(QDebug &d) const override;
+ #endif
+ 
++protected:
++    explicit _MemberModelItem(Kind kind);
++    explicit _MemberModelItem(const QString &name, Kind kind);
++
+ private:
+     TemplateParameterList m_templateParameters;
+     TypeInfo m_type;
+@@ -465,12 +437,10 @@ class _FunctionModelItem: public _MemberModelItem
+ {
+ public:
+     Q_DISABLE_COPY_MOVE(_FunctionModelItem)
+-    DECLARE_MODEL_NODE(Function)
+ 
+-    explicit _FunctionModelItem(CodeModel *model, int kind = __node_kind);
+-    explicit _FunctionModelItem(CodeModel *model, const QString &name,
+-                                int kind = __node_kind);
+-    ~_FunctionModelItem();
++    _FunctionModelItem();
++    explicit _FunctionModelItem(const QString &name);
++    ~_FunctionModelItem() override;
+ 
+     ArgumentList arguments() const;
+ 
+@@ -551,19 +521,21 @@ private:
+ class _VariableModelItem: public _MemberModelItem
+ {
+ public:
+-    DECLARE_MODEL_NODE(Variable)
++    Q_DISABLE_COPY_MOVE(_VariableModelItem)
+ 
+-    using _MemberModelItem::_MemberModelItem;
++    _VariableModelItem();
++    explicit _VariableModelItem(const QString &name);
++    ~_VariableModelItem() override;
+ };
+ 
+ class _TypeDefModelItem: public _CodeModelItem
+ {
+ public:
+-    DECLARE_MODEL_NODE(TypeDef)
++    Q_DISABLE_COPY_MOVE(_TypeDefModelItem)
+ 
+-    explicit _TypeDefModelItem(CodeModel *model, int kind = __node_kind);
+-    explicit _TypeDefModelItem(CodeModel *model, const QString &name,
+-                               int kind = __node_kind);
++    _TypeDefModelItem();
++    explicit _TypeDefModelItem(const QString &name);
++    ~_TypeDefModelItem() override;
+ 
+     TypeInfo type() const;
+     void setType(const TypeInfo &type);
+@@ -578,18 +550,18 @@ public:
+ #endif
+ 
+ private:
+-    Access m_accessPolicy = Access::Public;
+     TypeInfo m_type;
++    Access m_accessPolicy = Access::Public;
+ };
+ 
+ class _TemplateTypeAliasModelItem : public _CodeModelItem
+ {
+ public:
+-    DECLARE_MODEL_NODE(TemplateTypeAlias)
++    Q_DISABLE_COPY_MOVE(_TemplateTypeAliasModelItem)
+ 
+-    explicit _TemplateTypeAliasModelItem(CodeModel *model, int kind = __node_kind);
+-    explicit _TemplateTypeAliasModelItem(CodeModel *model, const QString &name,
+-                                         int kind = __node_kind);
++    _TemplateTypeAliasModelItem();
++    explicit _TemplateTypeAliasModelItem(const QString &name);
++    ~_TemplateTypeAliasModelItem() override;
+ 
+     TemplateParameterList templateParameters() const;
+     void addTemplateParameter(const TemplateParameterModelItem &templateParameter);
+@@ -610,10 +582,9 @@ class _EnumModelItem: public _CodeModelItem
+ {
+ public:
+     Q_DISABLE_COPY_MOVE(_EnumModelItem)
+-    DECLARE_MODEL_NODE(Enum)
+ 
+-    explicit _EnumModelItem(CodeModel *model, const QString &name, int kind = __node_kind);
+-    explicit _EnumModelItem(CodeModel *model, int kind = __node_kind);
++    explicit _EnumModelItem(const QString &name);
++    _EnumModelItem();
+     ~_EnumModelItem() override;
+ 
+     Access accessPolicy() const;
+@@ -643,9 +614,9 @@ public:
+ 
+ private:
+     QString m_underlyingType;
+-    Access m_accessPolicy = Access::Public;
+     EnumeratorList m_enumerators;
+     EnumKind m_enumKind = CEnum;
++    Access m_accessPolicy = Access::Public;
+     bool m_deprecated = false;
+     bool m_signed = true;
+ };
+@@ -654,11 +625,9 @@ class _EnumeratorModelItem: public _CodeModelItem
+ {
+ public:
+     Q_DISABLE_COPY_MOVE(_EnumeratorModelItem)
+-    DECLARE_MODEL_NODE(Enumerator)
+ 
+-    explicit _EnumeratorModelItem(CodeModel *model, int kind = __node_kind);
+-    explicit _EnumeratorModelItem(CodeModel *model, const QString &name,
+-                                  int kind = __node_kind);
++    _EnumeratorModelItem();
++    explicit _EnumeratorModelItem(const QString &name);
+     ~_EnumeratorModelItem() override;
+ 
+     QString stringValue() const;
+@@ -684,11 +653,9 @@ class _TemplateParameterModelItem: public _CodeModelItem
+ {
+ public:
+     Q_DISABLE_COPY_MOVE(_TemplateParameterModelItem)
+-    DECLARE_MODEL_NODE(TemplateParameter)
+ 
+-    explicit _TemplateParameterModelItem(CodeModel *model, int kind = __node_kind);
+-    explicit _TemplateParameterModelItem(CodeModel *model, const QString &name,
+-                                         int kind = __node_kind);
++    _TemplateParameterModelItem();
++    explicit _TemplateParameterModelItem(const QString &name);
+     ~_TemplateParameterModelItem() override;
+ 
+     TypeInfo type() const;
+-- 
+cgit v1.2.3
+

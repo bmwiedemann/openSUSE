@@ -1,0 +1,21 @@
+Fixes warning with Clang 22:
+
+    /usr/include/qt6/QtGui/qguiapplication_platform.h:65: skipping public
+    abstract function 'Display* QNativeInterface::QX11Application::display()const',
+    unmatched return type 'Display*': Unable to translate type "Display*":
+    Cannot find type entry for "struct _XDisplay".
+
+We leave the original type intact for Clang < 22.
+
+diff --git a/sources/pyside6/PySide6/QtGui/typesystem_gui_x11.xml b/sources/pyside6/PySide6/QtGui/typesystem_gui_x11.xml
+index 70331e29c..8c3978763 100644
+--- a/sources/pyside6/PySide6/QtGui/typesystem_gui_x11.xml
++++ b/sources/pyside6/PySide6/QtGui/typesystem_gui_x11.xml
+@@ -4,6 +4,7 @@
+ // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+ -->
+ <typesystem package="PySide6.QtGui">
+     <custom-type name="_XDisplay"/>
++    <custom-type name="struct _XDisplay"/>
+     <custom-type name="xcb_connection_t"/>
+ </typesystem>

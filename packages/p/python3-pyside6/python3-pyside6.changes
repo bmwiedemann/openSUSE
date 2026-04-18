@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 12 16:21:12 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Backport patches for Clang 22 support (boo#1259783):
+  * 0000-shiboken6-Change-class-CodeModel-into-a-non-instantiable-Q_GADGET.patch
+  * 0001-shiboken6-Enable-testing-on-clang-level.patch
+  * 0002-shiboken6-clang-Add-a-define-for-the-LLVM-major-version.patch
+  * 0003-shiboken6-clang-Small-preparatory-refactorings-fixes.patch
+  * 0004-shiboken6-clang-Fix-type-names.patch
+  * 0005-shiboken6-clang-Prepare-for-introducing-error-handling-to-type-parsing.patch
+  * 0006-shiboken6-Add-infrastructure-for-error-handling-to-the-type-parsing.patch
+  * 0007-shiboken6-clang-Refactor-function-proto-type-handling.patch
+  * 0008-shiboken6-Add-some-type-checks.patch
+  * 0009-shiboken6-Add-clang-type-struct.patch
+  * 0010-shiboken6-Fix-retrieving-fully-qualified-type-names-with-clang-22.patch
+- Add 0011-QNativeInterface-QX11Application-display-type.patch to
+  work around an additional issue with Clang 22.
+
+-------------------------------------------------------------------
 Mon Mar 23 19:58:52 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.0. Check the installed changes-6.11.0 file for the

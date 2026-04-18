@@ -1,0 +1,54 @@
+From f1fc6675e5f634df103813d633807fd74db25db2 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Tue, 24 Mar 2026 13:41:24 +0100
+Subject: shiboken6_generator/clang parser: Add a define for the LLVM major
+ version
+
+The version macros CINDEX_VERSION_MAJOR, CINDEX_VERSION_MINOR have been
+unchanged for quite a while despite behavioral changes being introduced
+in clang 22. Add a LLVM_VERSION define for it.
+
+Task-number: PYSIDE-3286
+Change-Id: I03a359fb887fa33ad8c17678a8fbb7e963df2a51
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+(cherry picked from commit 2f25d2a3db2ffc4c5e18654138249d285e995d08)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.cpp | 3 ++-
+ sources/shiboken6_generator/cmake/ShibokenGeneratorSetup.cmake       | 5 ++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.cpp
+index 46d2a26f7..d31d5712d 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangparser.cpp
+@@ -285,7 +285,8 @@ static void setupTarget(CXTranslationUnit translationUnit)
+     QString message;
+     {
+         QTextStream str(&message);
+-        str << "CLANG v" << CINDEX_VERSION_MAJOR << '.' << CINDEX_VERSION_MINOR
++        str << "CLANG v" << LLVM_VERSION << '/'
++            << CINDEX_VERSION_MAJOR << '.' << CINDEX_VERSION_MINOR
+             << " targeting \"" << targetTriple << "\"/"
+             << optionsTriplet().compilerTripletValue()
+             << ", " << pointerSize << "bit";
+diff --git a/sources/shiboken6_generator/cmake/ShibokenGeneratorSetup.cmake b/sources/shiboken6_generator/cmake/ShibokenGeneratorSetup.cmake
+index 137824d15..7b7c46d6b 100644
+--- a/sources/shiboken6_generator/cmake/ShibokenGeneratorSetup.cmake
++++ b/sources/shiboken6_generator/cmake/ShibokenGeneratorSetup.cmake
+@@ -36,8 +36,11 @@ compute_config_py_values(shiboken6_VERSION)
+ 
+ shiboken_internal_set_python_site_packages()
+ 
++string(REGEX REPLACE "\\.[0-9]+\\.[0-9]+$" "" LLVM_VERSION "${LLVM_PACKAGE_VERSION}")
++
+ set_cmake_cxx_flags()
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D QT_NO_CAST_FROM_ASCII -D QT_NO_CAST_TO_ASCII")
++set(CMAKE_CXX_FLAGS
++    "${CMAKE_CXX_FLAGS} -D QT_NO_CAST_FROM_ASCII -D QT_NO_CAST_TO_ASCII -D LLVM_VERSION=${LLVM_VERSION}")
+ 
+ # Force usage of the C++17 standard
+ set(CMAKE_CXX_STANDARD 17)
+-- 
+cgit v1.2.3
+

@@ -1,0 +1,55 @@
+From 1ed68f23d4025f935c48e729cf9d39e277ec8e00 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Mon, 23 Mar 2026 11:07:43 +0100
+Subject: shiboken6_generator: Add some type checks
+
+Reject some types that do not make sense for the generator.
+
+Task-number: PYSIDE-3286
+Pick-to: 6.8
+Change-Id: I1f097b934f2626b5e69b5d5c81e1f6c8f74f280c
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+(cherry picked from commit d12cf3be34baccf2abe3c32b4931b73431c942bf)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ .../ApiExtractor/clangparser/clangbuilder.cpp           | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+index a31fae778..29e9f74c3 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+@@ -563,6 +563,18 @@ static TypeCategory typeCategoryFromClang(CXTypeKind k)
+     return TypeCategory::Other;
+ }
+ 
++// Reject decltype() expressions, template parameter packs, etc.
++static inline bool checkTypeName(const QString &name)
++{
++    static constexpr QLatin1StringView exclusions[] = {
++        "decltype("_L1, "std::declval"_L1, "::detail::"_L1, "std::enable_if<"_L1,
++        "template "_L1, "..."_L1
++    };
++
++    auto excludedPred = [&name](QLatin1StringView ex) { return name.contains(ex); };
++    return std::none_of(std::begin(exclusions), std::end(exclusions), excludedPred);
++}
++
+ static QString fixTypeName(QString typeName)
+ {
+     while (TypeInfo::stripLeadingConst(&typeName) || TypeInfo::stripLeadingVolatile(&typeName)) {
+@@ -639,6 +651,11 @@ std::optional<TypeInfo>
+ 
+     QString typeName = fixTypeName(getResolvedTypeName(nestedType));
+ 
++    if (!checkTypeName(typeName)) {
++        m_rejectedTypes.insert(typeName);
++        return std::nullopt;
++    }
++
+     // For typedefs within templates or nested classes within templates (iterators):
+     // "template <class T> class QList { using Value=T; .."
+     // the typedef source is named "type-parameter-0-0". Convert it back to the
+-- 
+cgit v1.2.3
+

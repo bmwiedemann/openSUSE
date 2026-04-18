@@ -1,0 +1,105 @@
+From a4d4eace908f875379be08d05bddeb69f1f020a4 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Tue, 24 Mar 2026 09:38:18 +0100
+Subject: shiboken6_generator/clang parser: Small preparatory
+ refactorings/fixes
+
+Introduce addTemplateParameter() to classes and member model items
+and fix function formatting.
+
+Task-number: PYSIDE-3286
+Change-Id: If4bc40de421e5f4adbfbc04862a85bf200a30c2a
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+(cherry picked from commit 4522cb44ba5d3deee88c068b7ed4aec07997b15b)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ .../ApiExtractor/clangparser/clangbuilder.cpp                |  4 ++--
+ .../shiboken6_generator/ApiExtractor/parser/codemodel.cpp    | 12 +++++++++---
+ sources/shiboken6_generator/ApiExtractor/parser/codemodel.h  |  4 ++--
+ 3 files changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+index d26a7efaa..a75cbd4a3 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+@@ -1156,7 +1156,7 @@ BaseVisitor::StartTokenResult Builder::startToken(const CXCursor &cursor)
+             ? d->createTemplateParameter(cursor) : d->createNonTypeTemplateParameter(cursor);
+         // Apply to function/member template?
+         if (d->m_currentFunction) {
+-            d->m_currentFunction->setTemplateParameters(d->m_currentFunction->templateParameters() << tItem);
++            d->m_currentFunction->addTemplateParameter(tItem);
+         } else if (d->m_currentTemplateTypeAlias) {
+             d->m_currentTemplateTypeAlias->addTemplateParameter(tItem);
+         } else if (d->m_currentClass) { // Apply to class
+@@ -1170,7 +1170,7 @@ BaseVisitor::StartTokenResult Builder::startToken(const CXCursor &cursor)
+                 appendDiagnostic(d);
+                 return Error;
+             }
+-            d->m_currentClass->setTemplateParameters(d->m_currentClass->templateParameters() << tItem);
++            d->m_currentClass->addTemplateParameter(tItem);
+         }
+     }
+         break;
+diff --git a/sources/shiboken6_generator/ApiExtractor/parser/codemodel.cpp b/sources/shiboken6_generator/ApiExtractor/parser/codemodel.cpp
+index de3924388..afa28fee5 100644
+--- a/sources/shiboken6_generator/ApiExtractor/parser/codemodel.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/parser/codemodel.cpp
+@@ -279,9 +279,9 @@ TemplateParameterList _ClassModelItem::templateParameters() const
+     return m_templateParameters;
+ }
+ 
+-void _ClassModelItem::setTemplateParameters(const TemplateParameterList &templateParameters)
++void _ClassModelItem::addTemplateParameter(const TemplateParameterModelItem &templateParameter)
+ {
+-    m_templateParameters = templateParameters;
++    m_templateParameters.append(templateParameter);
+ }
+ 
+ bool _ClassModelItem::extendsClass(const QString &name) const
+@@ -992,7 +992,8 @@ QString _FunctionModelItem::classQualifiedSignature() const
+     QTextStream str(&result);
+     if (m_attributes.testFlag(FunctionAttribute::Virtual))
+         str << "virtual ";
+-    str << type().toString() << ' ';
++    if (m_functionType != CodeModel::FunctionType::Constructor)
++        str << type().toString() << ' ';
+     const auto &scopeList = scope();
+     for (const auto &scope : scopeList)
+         str << scope << "::";
+@@ -1501,6 +1502,11 @@ void _MemberModelItem::setAccessPolicy(Access accessPolicy)
+     m_accessPolicy = accessPolicy;
+ }
+ 
++void _MemberModelItem::addTemplateParameter(const TemplateParameterModelItem &templateParameter)
++{
++    m_templateParameters.append(templateParameter);
++}
++
+ bool _MemberModelItem::isStatic() const
+ {
+     return m_isStatic;
+diff --git a/sources/shiboken6_generator/ApiExtractor/parser/codemodel.h b/sources/shiboken6_generator/ApiExtractor/parser/codemodel.h
+index 45bb85f5f..1641ad8f2 100644
+--- a/sources/shiboken6_generator/ApiExtractor/parser/codemodel.h
++++ b/sources/shiboken6_generator/ApiExtractor/parser/codemodel.h
+@@ -259,7 +259,7 @@ public:
+     void addBaseClass(const BaseClass &b) { m_baseClasses.append(b); }
+ 
+     TemplateParameterList templateParameters() const;
+-    void setTemplateParameters(const TemplateParameterList &templateParameters);
++    void addTemplateParameter(const TemplateParameterModelItem &templateParameter);
+ 
+     bool extendsClass(const QString &name) const;
+ 
+@@ -400,7 +400,7 @@ public:
+     void setAccessPolicy(Access accessPolicy);
+ 
+     TemplateParameterList templateParameters() const { return m_templateParameters; }
+-    void setTemplateParameters(const TemplateParameterList &templateParameters) { m_templateParameters = templateParameters; }
++    void addTemplateParameter(const TemplateParameterModelItem &templateParameter);
+ 
+     TypeInfo type() const;
+     void setType(const TypeInfo &type);
+-- 
+cgit v1.2.3
+

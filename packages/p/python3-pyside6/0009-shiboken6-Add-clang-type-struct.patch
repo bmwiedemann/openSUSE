@@ -1,0 +1,333 @@
+From ad389a63df0aedf7ef3dc18bedb9d1a1aad56f70 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Thu, 19 Mar 2026 08:42:27 +0100
+Subject: shiboken6_generator: Add clang type struct
+
+Add a struct, which stores the type name and the template
+parameters separately along with a parsing function and tests.
+
+Task-number: PYSIDE-3286
+Change-Id: I1c884d14008fcfaa2d76fd7c36f871f4df8842f5
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+(cherry picked from commit f4d0e173e797b70ca89b2373b65de0b49f65b3c2)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ .../ApiExtractor/CMakeLists.txt                    |  1 +
+ .../ApiExtractor/clangparser/clangbuilder.cpp      | 52 +++++---------
+ .../ApiExtractor/clangparser/clangtype.cpp         | 83 ++++++++++++++++++++++
+ .../ApiExtractor/clangparser/clangtype.h           | 28 ++++++++
+ .../ApiExtractor/tests/testclangparser.cpp         | 37 ++++++++++
+ .../ApiExtractor/tests/testclangparser.h           |  2 +
+ 6 files changed, 168 insertions(+), 35 deletions(-)
+ create mode 100644 sources/shiboken6_generator/ApiExtractor/clangparser/clangtype.cpp
+ create mode 100644 sources/shiboken6_generator/ApiExtractor/clangparser/clangtype.h
+
+diff --git a/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt b/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt
+index e1c4dcb92..738ae6a88 100644
+--- a/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt
++++ b/sources/shiboken6_generator/ApiExtractor/CMakeLists.txt
+@@ -78,6 +78,7 @@ xmlutils.cpp xmlutils.h xmlutils_libxslt.h xmlutils_qt.h
+ clangparser/clangbuilder.cpp clangparser/clangbuilder.h
+ clangparser/clangdebugutils.cpp clangparser/clangdebugutils.h
+ clangparser/clangparser.cpp clangparser/clangparser.h
++clangparser/clangtype.cpp clangparser/clangtype.h
+ clangparser/clangutils.cpp clangparser/clangutils.h
+ clangparser/compilersupport.cpp clangparser/compilersupport.h
+ clangparser/triplet.cpp clangparser/triplet.h
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+index 29e9f74c3..11f6580f6 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+@@ -4,6 +4,7 @@
+ #include "clangbuilder.h"
+ #include "compilersupport.h"
+ #include "clangutils.h"
++#include "clangtype.h"
+ #include "clangdebugutils.h"
+ 
+ #include <codemodel.h>
+@@ -171,7 +172,7 @@ public:
+     std::optional<TypeInfo> createFunctionTypeInfo(const CXType &type, TypeCategory cat,
+                                                    bool *cacheable) const;
+     void addTemplateInstantiations(const CXType &type,
+-                                   QString *typeName,
++                                   const QString &templateParameters,
+                                    TypeInfo *t) const;
+     bool addTemplateInstantiationsRecursion(const CXType &type, TypeInfo *t) const;
+ 
+@@ -457,27 +458,6 @@ void BuilderPrivate::addField(const CXCursor &cursor, bool staticField)
+     m_scopeStack.back()->addVariable(field);
+ }
+ 
+-// Create qualified name "std::list<std::string>" -> ("std", "list<std::string>")
+-static QStringList qualifiedName(const QString &t)
+-{
+-    QStringList result;
+-    auto end = t.indexOf(u'<');
+-    if (end == -1)
+-        end = t.indexOf(u'(');
+-    if (end == -1)
+-        end = t.size();
+-    qsizetype lastPos = 0;
+-    while (true) {
+-        const auto nextPos = t.indexOf(u"::"_s, lastPos);
+-        if (nextPos < 0 || nextPos >= end)
+-            break;
+-        result.append(t.mid(lastPos, nextPos - lastPos));
+-        lastPos = nextPos + 2;
+-    }
+-    result.append(t.right(t.size() - lastPos));
+-    return result;
+-}
+-
+ static bool isArrayType(CXTypeKind k)
+ {
+     return k == CXType_ConstantArray || k == CXType_IncompleteArray
+@@ -516,10 +496,8 @@ bool BuilderPrivate::addTemplateInstantiationsRecursion(const CXType &type, Type
+     return true;
+ }
+ 
+-static void dummyTemplateArgumentHandler(int, QStringView) {}
+-
+ void BuilderPrivate::addTemplateInstantiations(const CXType &type,
+-                                               QString *typeName,
++                                               const QString &templateParameters,
+                                                TypeInfo *t) const
+ {
+     // In most cases, for templates like "Vector<A>", Clang will give us the
+@@ -530,16 +508,12 @@ void BuilderPrivate::addTemplateInstantiations(const CXType &type,
+     //    Vector(const Vector&);
+     // };
+     // In that case, have TypeInfo parse the list from the spelling.
+-    // Finally, remove the list "<>" from the type name.
+     const bool parsed = addTemplateInstantiationsRecursion(type, t)
+         && !t->instantiations().isEmpty();
+-    if (!parsed)
++    if (!parsed) {
+         t->setInstantiations({});
+-    const auto pos = parsed
+-        ? parseTemplateArgumentList(*typeName, dummyTemplateArgumentHandler)
+-        : t->parseTemplateArgumentList(*typeName);
+-    if (pos.first != -1 && pos.second != -1 && pos.second > pos.first)
+-        typeName->remove(pos.first, pos.second - pos.first);
++        t->parseTemplateArgumentList(templateParameters);
++    }
+ }
+ 
+ static TypeCategory typeCategoryFromClang(CXTypeKind k)
+@@ -675,10 +649,18 @@ std::optional<TypeInfo>
+ 
+     // Obtain template instantiations if the name has '<' (thus excluding
+     // typedefs like "std::string".
+-    if (typeName.contains(u'<'))
+-        addTemplateInstantiations(nestedType, &typeName, &typeInfo);
+ 
+-    typeInfo.setQualifiedName(qualifiedName(typeName));
++    auto clangTypeNameO = clang::parseTypeName(typeName);
++    if (!clangTypeNameO.has_value()) {
++        m_rejectedTypes.insert(typeName);
++        return std::nullopt;
++    }
++
++    const auto &clangTypeName = clangTypeNameO.value();
++    if (!clangTypeName.templateParameters.isEmpty())
++        addTemplateInstantiations(nestedType, clangTypeName.templateParameters, &typeInfo);
++
++    typeInfo.setQualifiedName(clangTypeName.name.split("::"_L1));
+     // 3320:CINDEX_LINKAGE int clang_getNumArgTypes(CXType T); function ptr types?
+     typeInfo.simplifyStdType();
+     return typeInfo;
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangtype.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangtype.cpp
+new file mode 100644
+index 000000000..bd455bd53
+--- /dev/null
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangtype.cpp
+@@ -0,0 +1,83 @@
++// Copyright (C) 2026 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
++
++#include "clangtype.h"
++
++#include <QtCore/qdebug.h>
++
++using namespace Qt::StringLiterals;
++
++// Up until clang version 21, clang_getTypeSpelling() was used to retrieve type names,
++// which returned fully qualified names. In clang 22, clang_getTypeSpelling() was
++// changed to return the actual spelling, that is, no longer return fully qualified names
++// (from for example inner class contexts) unless they were spelled out.
++// clang_getFullyQualifiedName() was provided as a replacement, but that returns
++// template parameters of the class as well, that is, "std::list<int>::value_type"
++// instead of "std::list::value_type". Those they need to be removed for the
++// type entry lookup system to work. This is done by parseTypeName().
++// FIXME: Keep checking whether this can be replaced by a CXPrintingPolicy setting
++// in a later clang version.
++
++namespace clang {
++
++// Find the start of a template starting from the closing '>'
++static qsizetype findTemplateStart(QStringView sv, qsizetype pos)
++{
++    Q_ASSERT(pos > 0 && pos < sv.size() && sv.at(pos) == u'>');
++    int level = 1;
++    for (--pos; pos >= 0; --pos) {
++        switch (sv.at(pos).unicode()) {
++        case '>':
++            ++level;
++            break;
++        case '<':
++            if (--level == 0)
++                return pos;
++            break;
++        default:
++            break;
++        }
++    }
++    return -1;
++}
++
++std::optional<TypeName> parseTypeName(QString t)
++{
++    TypeName result;
++    // Skip over the trailing template parameters "list<T>::iterator<V>" ->
++    // "list<T>::iterator"
++    if (t.endsWith(u'>')) {
++        const auto pos = findTemplateStart(t, t.size() - 1);
++        if (pos == -1)
++            return std::nullopt;
++        result.templateParameters = t.sliced(pos, t.size() - pos);
++        t.truncate(pos);
++    }
++
++    // Remove class template parameters "list<T>::iterator" -> "list::iterator"
++    while (true) {
++        auto specEnd = t.lastIndexOf(">::"_L1);
++        if (specEnd == -1)
++            break;
++        const auto pos = findTemplateStart(t, specEnd);
++        if (pos == -1)
++            return std::nullopt;
++        t.remove(pos, specEnd + 1 - pos);
++    }
++    result.name = t;
++    return result;
++}
++
++QDebug operator<<(QDebug debug, const TypeName &ct)
++{
++    QDebugStateSaver saver(debug);
++    debug.nospace();
++    debug.noquote();
++    debug << "ClangTypeName(name=\"" << ct.name << '"';
++    if (!ct.templateParameters.isEmpty())
++        debug << ", templateParameters=\"" << ct.templateParameters << '"';
++    debug << ')';
++    return debug;
++}
++
++} // namespace clang
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangtype.h b/sources/shiboken6_generator/ApiExtractor/clangparser/clangtype.h
+new file mode 100644
+index 000000000..0ae970648
+--- /dev/null
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangtype.h
+@@ -0,0 +1,28 @@
++// Copyright (C) 2026 The Qt Company Ltd.
++// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only WITH Qt-GPL-exception-1.0
++
++#ifndef CLANGTYPE_H
++#define CLANGTYPE_H
++
++#include <QtCore/qstring.h>
++
++#include <optional>
++
++QT_FORWARD_DECLARE_CLASS(QDebug)
++
++namespace clang {
++
++struct TypeName
++{
++    QString name;
++    QString templateParameters;
++};
++
++// Split a type name "std::list<int>::value_type<T>" into the canonical name
++// "std::list::value_type" and its template parameters "<T>"
++std::optional<TypeName> parseTypeName(QString t);
++
++QDebug operator<<(QDebug, const TypeName &ct);
++} // namespace clang
++
++#endif // CLANGTYPE_H
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp
+index 806b0965c..947c8c9e3 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp
+@@ -4,13 +4,50 @@
+ #include "testclangparser.h"
+ #include <abstractmetabuilder_testutil.h>
+ 
++#include <clangparser/clangtype.h>
+ #include <clangparser/triplet.h>
++
+ #include <parser/codemodel.h>
+ 
+ #include <QtTest/qtest.h>
+ 
+ using namespace Qt::StringLiterals;
+ 
++void TestClangParser::testClangTypeParsing_data()
++{
++    QTest::addColumn<QString>("typeString");
++    QTest::addColumn<bool>("expectedSuccess");
++    QTest::addColumn<QString>("expectedTypeName");
++    QTest::addColumn<QString>("expectedTemplateParameters");
++
++    QTest::newRow("list")
++        << QString(u"std::list<int, std::allocator<int>>::value_type"_s)
++        << true << QString(u"std::list::value_type"_s) << QString{};
++
++    QTest::newRow("mapData")
++        << QString(u"QMapData<std::map<QString, QVariant, std::less<QString>, std::allocator<std::pair<const QString, QVariant>>>>::const_iterator<U, V>"_s)
++        << true << QString(u"QMapData::const_iterator"_s) << QString(u"<U, V>"_s);
++
++    QTest::newRow("fail") // unbalanced '>'
++        << QString(u"__optional_relop_t<decltype(std::declval<const _Tp &>() > std::declval<const _Up &>())>"_s)
++        << false << QString{} <<  QString{};
++}
++
++void TestClangParser::testClangTypeParsing()
++{
++    QFETCH(QString, typeString);
++    QFETCH(bool, expectedSuccess);
++    QFETCH(QString, expectedTypeName);
++    QFETCH(QString, expectedTemplateParameters);
++
++    auto typeNameO = clang::parseTypeName(typeString);
++    QCOMPARE(typeNameO.has_value(), expectedSuccess);
++    if (typeNameO.has_value()) {
++        QCOMPARE(typeNameO->name, expectedTypeName);
++        QCOMPARE(typeNameO->templateParameters, expectedTemplateParameters);
++    }
++}
++
+ void TestClangParser::testParseTriplet_data()
+ {
+     QTest::addColumn<QString>("tripletString");
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h
+index 2b8b285a6..d2e2fddab 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h
+@@ -10,6 +10,8 @@ class TestClangParser : public QObject
+ {
+     Q_OBJECT
+ private slots:
++    void testClangTypeParsing_data();
++    void testClangTypeParsing();
+     void testFunctionPointers();
+     void testParseTriplet_data();
+     void testParseTriplet();
+-- 
+cgit v1.2.3
+

@@ -1,0 +1,271 @@
+From 10a7218442218b0c47bf56f82f0242e8c27443ed Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Tue, 24 Mar 2026 15:50:35 +0100
+Subject: shiboken6_generator/clang parser: Refactor function proto type
+ handling
+
+Add FunctionPointer besides Function (Prototype) to the type categories
+and remove the corresponding bit field in TypeInfo. Parse the function
+arguments for function prototypes as well.
+
+Task-number: PYSIDE-3286
+Change-Id: Ie3a10f18de5c5c43effc8d3e17adc87b888a5d15
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+(cherry picked from commit 40965ebb2f1097d05d57f676765371179c4a86ea)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ .../ApiExtractor/abstractmetabuilder.cpp           |  2 +-
+ .../ApiExtractor/clangparser/clangbuilder.cpp      | 43 +++++++++++++---------
+ .../ApiExtractor/parser/codemodel_enums.h          |  3 +-
+ .../ApiExtractor/parser/typeinfo.cpp               | 36 ++++++++++--------
+ .../ApiExtractor/parser/typeinfo.h                 |  1 -
+ .../ApiExtractor/tests/testclangparser.cpp         | 21 +++++++++++
+ .../ApiExtractor/tests/testclangparser.h           |  1 +
+ 7 files changed, 72 insertions(+), 35 deletions(-)
+
+diff --git a/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder.cpp b/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder.cpp
+index 9ea616eb6..464ff27fe 100644
+--- a/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/abstractmetabuilder.cpp
+@@ -2879,7 +2879,7 @@ std::optional<AbstractMetaType>
+         newInfo.setIndirectionsV(typeInfo.indirectionsV());
+         newInfo.setConstant(typeInfo.isConstant());
+         newInfo.setVolatile(typeInfo.isVolatile());
+-        newInfo.setFunctionPointer(typeInfo.isFunctionPointer());
++        newInfo.setTypeCategory(typeInfo.typeCategory());
+         newInfo.setQualifiedName(typeInfo.qualifiedName());
+         newInfo.setReferenceType(typeInfo.referenceType());
+         newInfo.setVolatile(typeInfo.isVolatile());
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+index 9eb7d738e..a31fae778 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+@@ -168,6 +168,8 @@ public:
+     std::optional<TypeInfo> createTypeInfo(const CXType &type) const;
+     std::optional<TypeInfo> createTypeInfo(const CXCursor &cursor) const
+     { return createTypeInfo(clang_getCursorType(cursor)); }
++    std::optional<TypeInfo> createFunctionTypeInfo(const CXType &type, TypeCategory cat,
++                                                   bool *cacheable) const;
+     void addTemplateInstantiations(const CXType &type,
+                                    QString *typeName,
+                                    TypeInfo *t) const;
+@@ -573,28 +575,35 @@ static QString fixTypeName(QString typeName)
+     return typeName;
+ }
+ 
++std::optional<TypeInfo>
++    BuilderPrivate::createFunctionTypeInfo(const CXType &type, TypeCategory cat, bool *cacheable) const
++{
++    const int argCount = clang_getNumArgTypes(type);
++    if (argCount < 0)
++        return std::nullopt;
++    auto resultO = createTypeInfoUncached(clang_getResultType(type), cacheable);
++    if (!resultO.has_value())
++        return std::nullopt;
++    resultO->setTypeCategory(cat);
++    for (int a = 0; a < argCount; ++a) {
++        auto argTypeO = createTypeInfoUncached(clang_getArgType(type, unsigned(a)), cacheable);
++        if (!argTypeO.has_value())
++            return std::nullopt;
++        resultO->addArgument(argTypeO.value());
++    }
++    return resultO;
++}
++
+ std::optional<TypeInfo>
+     BuilderPrivate::createTypeInfoUncached(const CXType &type, bool *cacheable) const
+ {
++    if (type.kind == CXType_FunctionProto)
++        return createFunctionTypeInfo(type, TypeCategory::Function, cacheable);
++
+     if (type.kind == CXType_Pointer) { // Check for function pointers, first.
+         const CXType pointeeType = clang_getPointeeType(type);
+-        const int argCount = clang_getNumArgTypes(pointeeType);
+-        if (argCount >= 0) {
+-            auto resultO = createTypeInfoUncached(clang_getResultType(pointeeType), cacheable);
+-            if (!resultO.has_value())
+-                return std::nullopt;
+-            auto result = resultO.value();
+-            result.setTypeCategory(TypeCategory::Pointer);
+-            result.setFunctionPointer(true);
+-            for (int a = 0; a < argCount; ++a) {
+-                auto argTypeInfoO =
+-                    createTypeInfoUncached(clang_getArgType(pointeeType, unsigned(a)), cacheable);
+-                if (!argTypeInfoO.has_value())
+-                    return std::nullopt;
+-                result.addArgument(argTypeInfoO.value());
+-            }
+-            return result;
+-        }
++        if (pointeeType.kind == CXType_FunctionProto)
++            return createFunctionTypeInfo(pointeeType, TypeCategory::FunctionPointer, cacheable);
+     }
+ 
+     TypeInfo typeInfo;
+diff --git a/sources/shiboken6_generator/ApiExtractor/parser/codemodel_enums.h b/sources/shiboken6_generator/ApiExtractor/parser/codemodel_enums.h
+index 272140ae3..ae49b0e7c 100644
+--- a/sources/shiboken6_generator/ApiExtractor/parser/codemodel_enums.h
++++ b/sources/shiboken6_generator/ApiExtractor/parser/codemodel_enums.h
+@@ -59,13 +59,14 @@ enum class FunctionAttribute : std::uint8_t {
+ Q_DECLARE_FLAGS(FunctionAttributes, FunctionAttribute)
+ Q_DECLARE_OPERATORS_FOR_FLAGS(FunctionAttributes)
+ 
+-// C++ type category for TypeInfo, reflecting clang's CXTypeKind
++// C++ type category for TypeInfo, roughly reflecting clang's CXTypeKind
+ enum class TypeCategory : unsigned char {
+     Other,
+     Builtin,
+     Enum,
+     Pointer,
+     Function,
++    FunctionPointer, // not present in clang
+     Void
+ };
+ 
+diff --git a/sources/shiboken6_generator/ApiExtractor/parser/typeinfo.cpp b/sources/shiboken6_generator/ApiExtractor/parser/typeinfo.cpp
+index c530cafea..7bd0223db 100644
+--- a/sources/shiboken6_generator/ApiExtractor/parser/typeinfo.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/parser/typeinfo.cpp
+@@ -41,8 +41,7 @@ public:
+         struct {
+             uint m_constant: 1;
+             uint m_volatile: 1;
+-            uint m_functionPointer: 1;
+-            uint m_padding: 29;
++            uint m_padding: 30;
+         };
+     };
+ 
+@@ -223,13 +222,7 @@ void TypeInfo::addIndirection(Indirection i)
+ 
+ bool TypeInfo::isFunctionPointer() const
+ {
+-    return d->m_functionPointer;
+-}
+-
+-void TypeInfo::setFunctionPointer(bool is)
+-{
+-    if (d->m_functionPointer != is)
+-        d->m_functionPointer = is;
++    return d->m_category == TypeCategory::FunctionPointer;
+ }
+ 
+ const QStringList &TypeInfo::arrayElements() const
+@@ -426,8 +419,11 @@ QString TypeInfo::toString() const
+         break;
+     }
+ 
+-    if (isFunctionPointer()) {
+-        tmp += u" (*)("_s;
++    if (d->m_category == TypeCategory::Function || d->m_category == TypeCategory::FunctionPointer) {
++        tmp += u' ';
++        if (d->m_category == TypeCategory::FunctionPointer)
++            tmp += "(*)"_L1;
++        tmp += u'(';
+         for (qsizetype i = 0; i < d->m_arguments.size(); ++i) {
+             if (i != 0)
+                 tmp += u", "_s;
+@@ -461,7 +457,7 @@ bool TypeInfoData::equals(const TypeInfoData &other) const
+     return flags == other.flags
+            && m_qualifiedName == other.m_qualifiedName
+            && m_category == other.m_category
+-           && (!m_functionPointer || m_arguments == other.m_arguments)
++           && m_arguments == other.m_arguments
+            && m_instantiations == other.m_instantiations;
+ }
+ 
+@@ -602,8 +598,14 @@ void TypeInfo::formatDebug(QDebug &debug) const
+         debug << ", [pointer]";
+         break;
+     case TypeCategory::Function:
+-        debug << ", [function";
++        debug << ", [function]";
++        break;
++    case TypeCategory::FunctionPointer:
++        debug << ", [function-ptr]";
+         break;
++    default:
++        break;
++
+     }
+     if (!d->m_indirections.isEmpty()) {
+         debug << ", indirections=";
+@@ -625,8 +627,12 @@ void TypeInfo::formatDebug(QDebug &debug) const
+         formatSequence(debug, d->m_instantiations.begin(), d->m_instantiations.end());
+         debug << '>';
+     }
+-    if (d->m_functionPointer) {
+-        debug << ", function ptr(";
++
++    if (d->m_category == TypeCategory::Function || d->m_category == TypeCategory::FunctionPointer) {
++        debug << ", function";
++        if (d->m_category == TypeCategory::FunctionPointer)
++            debug << "_ptr";
++        debug << '(';
+         formatSequence(debug, d->m_arguments.begin(), d->m_arguments.end());
+         debug << ')';
+     }
+diff --git a/sources/shiboken6_generator/ApiExtractor/parser/typeinfo.h b/sources/shiboken6_generator/ApiExtractor/parser/typeinfo.h
+index 092fbb724..43c9947d9 100644
+--- a/sources/shiboken6_generator/ApiExtractor/parser/typeinfo.h
++++ b/sources/shiboken6_generator/ApiExtractor/parser/typeinfo.h
+@@ -71,7 +71,6 @@ public:
+     void setIndirections(int indirections);
+ 
+     bool isFunctionPointer() const;
+-    void setFunctionPointer(bool is);
+ 
+     const QStringList &arrayElements() const;
+     void setArrayElements(const QStringList &arrayElements);
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp
+index 7345c0501..806b0965c 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.cpp
+@@ -5,6 +5,7 @@
+ #include <abstractmetabuilder_testutil.h>
+ 
+ #include <clangparser/triplet.h>
++#include <parser/codemodel.h>
+ 
+ #include <QtTest/qtest.h>
+ 
+@@ -99,4 +100,24 @@ void TestClangParser::testParseTriplet()
+     }
+ }
+ 
++void TestClangParser::testFunctionPointers()
++{
++    static const char cppCode[] =R"(
++using FunctionType = void(int);
++using FunctionPointerType = void(*)(int);
++)";
++
++    auto dom = TestUtil::buildDom(cppCode);
++    QVERIFY(dom);
++    const auto &typeDefs = dom->typeDefs();
++    QCOMPARE(typeDefs.size(), 2);
++    for (const auto &typeDef : typeDefs) {
++        const auto &type = typeDef->type();
++        const auto expectedCategory = typeDef->name() == "FunctionType"_L1
++                                          ? TypeCategory::Function : TypeCategory::FunctionPointer;
++        QCOMPARE(type.arguments().size(), 1);
++        QCOMPARE(type.typeCategory(), expectedCategory);
++    }
++}
++
+ QTEST_APPLESS_MAIN(TestClangParser)
+diff --git a/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h
+index d44e7074c..2b8b285a6 100644
+--- a/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h
++++ b/sources/shiboken6_generator/ApiExtractor/tests/testclangparser.h
+@@ -10,6 +10,7 @@ class TestClangParser : public QObject
+ {
+     Q_OBJECT
+ private slots:
++    void testFunctionPointers();
+     void testParseTriplet_data();
+     void testParseTriplet();
+ };
+-- 
+cgit v1.2.3
+

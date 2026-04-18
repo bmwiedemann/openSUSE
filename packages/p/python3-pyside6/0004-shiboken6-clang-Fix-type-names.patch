@@ -1,0 +1,75 @@
+From e261816d80b62f14bc6f39910f43ef2d73bf499e Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Tue, 24 Mar 2026 13:04:42 +0100
+Subject: shiboken6_generator/clang parser: Fix type names
+
+Extract a helper fixTypeName() from createTypeInfoUncached() and rename
+the existing fixTypeName() for clarity. fixTypeName() strips
+"const"/"volatile" and replaces the "typename" keyword which is reported
+for some template parameters.
+
+Task-number: PYSIDE-3286
+Change-Id: I1b16c0b42721c32fdcc43cb6069596c6a326ee62
+Reviewed-by: Cristian Maureira-Fredes <cristian.maureira-fredes@qt.io>
+(cherry picked from commit 47b52076d2b9f941f439577fa64a849edddd23e1)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ .../ApiExtractor/clangparser/clangbuilder.cpp       | 21 +++++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+index a75cbd4a3..897b2f8cb 100644
+--- a/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
++++ b/sources/shiboken6_generator/ApiExtractor/clangparser/clangbuilder.cpp
+@@ -40,7 +40,7 @@ static inline bool withinClassDeclaration(const CXCursor &cursor)
+     return isClassCursor(clang_getCursorLexicalParent(cursor));
+ }
+ 
+-static QString fixTypeName(QString t)
++static QString fixOperatorTypeName(QString t)
+ {
+     // Fix "Foo &" -> "Foo&", similarly "Bar **" -> "Bar**"
+     auto pos = t.size() - 1;
+@@ -324,7 +324,7 @@ FunctionModelItem BuilderPrivate::createFunction(const CXCursor &cursor,
+     QString name = getCursorSpelling(cursor);
+     // Apply type fixes to "operator X &" -> "operator X&"
+     if (name.startsWith(u"operator "))
+-        name = fixTypeName(name);
++        name = fixOperatorTypeName(name);
+     auto result = std::make_shared<_FunctionModelItem>(name);
+     setFileName(cursor, result.get());
+     const auto type = clang_getCursorResultType(cursor);
+@@ -541,6 +541,18 @@ static TypeCategory typeCategoryFromClang(CXTypeKind k)
+     return TypeCategory::Other;
+ }
+ 
++static QString fixTypeName(QString typeName)
++{
++    while (TypeInfo::stripLeadingConst(&typeName) || TypeInfo::stripLeadingVolatile(&typeName)) {
++    }
++    static constexpr auto leadingTypename = "typename "_L1;
++    if (typeName.startsWith(leadingTypename))
++        typeName.remove(0, leadingTypename.size());
++    typeName.replace("<typename "_L1, "<"_L1);
++    typeName.replace(", typename "_L1, ", "_L1);
++    return typeName;
++}
++
+ TypeInfo BuilderPrivate::createTypeInfoUncached(const CXType &type,
+                                                 bool *cacheable) const
+ {
+@@ -590,10 +602,7 @@ TypeInfo BuilderPrivate::createTypeInfoUncached(const CXType &type,
+     typeInfo.setConstant(clang_isConstQualifiedType(nestedType) != 0);
+     typeInfo.setVolatile(clang_isVolatileQualifiedType(nestedType) != 0);
+ 
+-    QString typeName = getResolvedTypeName(nestedType);
+-    while (TypeInfo::stripLeadingConst(&typeName)
+-           || TypeInfo::stripLeadingVolatile(&typeName)) {
+-    }
++    QString typeName = fixTypeName(getResolvedTypeName(nestedType));
+ 
+     // For typedefs within templates or nested classes within templates (iterators):
+     // "template <class T> class QList { using Value=T; .."
+-- 
+cgit v1.2.3
+
