@@ -49,6 +49,7 @@ BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xaw7)
@@ -61,6 +62,8 @@ BuildRequires:  pkgconfig(xorg-macros) >= 1.4
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtrans)
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Requires:       /sbin/startproc
 Requires:       cpp
 Requires:       logrotate

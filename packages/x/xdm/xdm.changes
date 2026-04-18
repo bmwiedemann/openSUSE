@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:03:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly BuildRequire update-alternatives and mark it as being
+  used in post/postun: this was nicely masked by the fact that
+  binutils, installed on every system, already dragged u-a in,
+  which is no longer the case.
+
+-------------------------------------------------------------------
 Fri Jan 16 12:35:55 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - fix installation of authfiles directory for Immutable mode
