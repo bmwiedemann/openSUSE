@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyogrio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,15 @@
 %bcond_with test
 %endif
 Name:           python-pyogrio%{psuffix}
-Version:        0.11.1
+Version:        0.12.1
 Release:        0
 Summary:        Vectorized spatial vector file format I/O using GDAL/OGR
 License:        MIT
 URL:            https://github.com/geopandas/pyogrio
 Source:         https://files.pythonhosted.org/packages/source/p/pyogrio/pyogrio-%{version}.tar.gz
 Source99:       python-pyogrio.rpmlintrc
-BuildRequires:  %{python_module Cython >= 0.29}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module Cython >= 3.1}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli if %python-base < 3.11}
