@@ -1,7 +1,7 @@
 #
 # spec file for package rust-bindgen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2023, Martin Hauke <mardnh@gmx.de>
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           rust-bindgen
-Version:        0.72.0
+Version:        0.72.1
 Release:        0
 Summary:        Automatically generates Rust FFI bindings to C and C++ libraries
 License:        BSD-3-Clause
