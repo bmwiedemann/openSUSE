@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 16 13:07:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.2.2
+  * Reduce lag when resizing window, by moving resize from
+    idle to a timer
+
+-------------------------------------------------------------------
 Sun Mar 29 19:06:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.2.1:
