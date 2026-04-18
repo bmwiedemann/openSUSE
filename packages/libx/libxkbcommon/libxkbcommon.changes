@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 17 13:06:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13.1 [boo#1262256]
+  * context: The default include paths initialization is delayed
+    until required. This is more efficient for clients that only
+    get the keymap from the server and thus do not need to look up
+    any XKB files.
+  * Added the XKB extensions directories, a new mechanism to
+    facilitate keyboard layout packaging and distribution.
+
+-------------------------------------------------------------------
 Thu Dec  4 04:10:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12.4
