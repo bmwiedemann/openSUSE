@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 18 05:59:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.14.0:
+  * 63bc90e feat(branches): add rename subcommand (#939)
+  * 9e0a620 feat(pulls): add ci status field to pull request list
+    (#956)
+  * 84ecd16 fix(deps): update Go dependencies to latest versions
+    (#955)
+  * 53e53e1 feat(workflows): add dispatch, view, enable and disable
+    subcommands (#952)
+  * 0489d8c fix(deps): update module golang.org/x/sys to v0.43.0
+    (#951)
+  * f538c05 refactor: code cleanup across codebase (#947)
+  * 662e339 feat(pulls): add resolve, unresolve and review-comments
+    subcommands (#948)
+
+-------------------------------------------------------------------
 Thu Apr  9 13:18:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.13.0:

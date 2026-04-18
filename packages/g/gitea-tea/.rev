@@ -174,4 +174,12 @@
     <comment>update to 0.13.0 (forwarded request 1345554 from ojkastl_buildservice)</comment>
     <requestid>1345777</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8ae8dfcc39bb7249a927b6f7fc7238b5</srcmd5>
+    <version>0.14.0</version>
+    <time>1776541024</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.14.0 (forwarded request 1347887 from ojkastl_buildservice)</comment>
+    <requestid>1347927</requestid>
+  </revision>
 </revisionlist>
