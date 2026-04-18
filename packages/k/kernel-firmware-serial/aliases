@@ -26,6 +26,7 @@ io_edgeport: usb:v1608p0014d*dc*dsc*dp*ic*isc*ip*in*
 io_edgeport: usb:v1608p0018d*dc*dsc*dp*ic*isc*ip*in*
 io_edgeport: usb:v1608p0019d*dc*dsc*dp*ic*isc*ip*in*
 io_edgeport: usb:v1608p001Ad*dc*dsc*dp*ic*isc*ip*in*
+io_edgeport: usb:v1608p0801d*dc*dsc*dp*ic*isc*ip*in*
 io_edgeport: usb:v1608p1403d*dc*dsc*dp*ic*isc*ip*in*
 io_ti: usb:v1608p0201d*dc*dsc*dp*ic*isc*ip*in*
 io_ti: usb:v1608p0205d*dc*dsc*dp*ic*isc*ip*in*

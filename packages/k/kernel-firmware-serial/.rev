@@ -65,4 +65,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: add firmware for Moxa mux50u devices</comment>
     <requestid>1344445</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6b101b4c10109ae56abcb4a254749990</srcmd5>
+    <version>20260327</version>
+    <time>1776540675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update aliases from 7.0</comment>
+    <requestid>1347749</requestid>
+  </revision>
 </revisionlist>
