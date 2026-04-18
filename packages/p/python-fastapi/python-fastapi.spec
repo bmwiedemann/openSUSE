@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-fastapi%{psuffix}
-Version:        0.135.3
+Version:        0.136.0
 Release:        0
 Summary:        FastAPI framework
 License:        MIT

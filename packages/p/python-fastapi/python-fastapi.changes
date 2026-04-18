@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 17 17:33:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.136.0:
+  * Support free-threaded Python 3.14t.
+- update to 0.135.4:
+  * Remove April Fool's `@app.vibe()`
+
+-------------------------------------------------------------------
 Mon Apr  6 21:34:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.135.3:

@@ -699,4 +699,15 @@
   * Fix typo for `client_secret` in OAuth2 form docstrings.</comment>
     <requestid>1344811</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>58bea7f7f4005ded2aeea3cd5c0c1240</srcmd5>
+    <version>0.136.0</version>
+    <time>1776540676</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.136.0:
+  * Support free-threaded Python 3.14t.
+- update to 0.135.4:
+  * Remove April Fool's `@app.vibe()`</comment>
+    <requestid>1347784</requestid>
+  </revision>
 </revisionlist>
