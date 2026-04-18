@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 17 20:11:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.29.2:
+  https://istio.io/latest/news/releases/1.29.x/announcing-1.29.2/
+  * Fixed an issue where istioctl incorrectly reported an error on
+    EnvoyFilter with REPLACE operation on VIRTUAL_HOST. (Issue #59495)
+
+-------------------------------------------------------------------
 Wed Mar 11 06:24:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.29.1:
