@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Apr 18 17:19:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.101.0:
+  * New Features
+    - [jfrog-cli] Add conan support to JFrog CLI #3346 (@basel1322)
+    - [jfrog-cli-core] Added conan to projects #1522 (@basel1322)
+    - [jfrog-client-go] add build filter in pattern aql #1329
+      (@reshmifrog)
+  * Bug Fixes
+    - [jfrog-cli-artifactory] fix/build-filter-in-pattern-aql #415
+      (@reshmifrog)
+  * Internal Changes
+    - [jfrog-cli-core] Bump github.com/go-git/go-git/v5 from 5.17.1
+      to 5.18.0 #1544 (@dependabot[bot])
+  * Other Changes
+    - [jfrog-cli] RTECO-1049 - switch between podman and docker
+      #3442 (@fluxxBot)
+
+-------------------------------------------------------------------
+Fri Apr 17 20:06:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.100.0:
+  * No changes in: build-info-go, gofrog, jfrog-cli-security,
+    jfrog-client-go
+  * New Features
+    - [jfrog-cli] New Feature: Implement package alias to invoke
+      jfrog-cli based on package manager #3375 (@bhanurp)
+    - [jfrog-cli] JGC-448 - Add explicit GITHUB_TOKEN permissions
+      to CLA workflow #3428 (@RemiBou)
+    - [jfrog-cli] JGC-470 - Implement an api command #3418
+      (@ehl-jf)
+  * Bug Fixes
+    - [jfrog-cli-artifactory] Fix: Empty Build Info When Using
+      Maven Plugin Goals #406 (@agrasth)
+    - [jfrog-cli-artifactory]
+      fix/reference-token-privilege-escalation #416 (@reshmifrog)
+    - [jfrog-cli-core] Fix reference token privilege escalation
+      #1540 (@reshmifrog)
+  * Internal Changes
+    - [jfrog-cli-core] Bump pnpm/action-setup from 5 to 6 in the
+      github-actions group #1541 (@dependabot[bot])
+  * Other Changes
+    - [jfrog-cli-artifactory] set docker test platform url #419
+      (@reshmifrog)
+
+-------------------------------------------------------------------
+Thu Apr 09 08:13:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.99.0:
+  * No changes in: build-info-go, gofrog, jfrog-cli-security,
+    jfrog-client-go
+  * New Features
+    - [jfrog-cli] Add Ghost Frog Tests workflow #3400 (@bhanurp)
+    - [jfrog-cli-core] Added metrics for package alias #1527
+      (@bhanurp)
+  * Bug Fixes
+    - [jfrog-cli] Fixed github action reference in tests #3417
+      (@bhanurp)
+    - [jfrog-cli-artifactory] fix: omit empty credentials #384
+      (@tim-goto)
+
+-------------------------------------------------------------------
 Thu Apr 02 04:48:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.98.0:
