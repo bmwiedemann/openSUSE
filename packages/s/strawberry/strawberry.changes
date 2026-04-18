@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 17 19:26:16 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.19
+  + Fixed MPRIS2 Play causing playback to restart if already playing (#1995)
+  + Fixed incorrect use beginInsertRows() / endInsertRows() of when adding / removing devices (#2021)
+  + Fixed album cover manager save cover to file not working (#2039)
+  + Fixed repeat and shuffle button sizes (#1838)
+  + Fixed MPRIS2 resetting previous played track history
+  + Fixed Qobuz authentication (#2058)
+  + Rewrote Discord RPC with Qt and removed RapidJSON dependency
+  + New grouping shuffle mode
+  + Use HTTP POST for AcoustID lookup
+  + Write MusicBrainz Track Id when completing tags using MusicBrainz
+  + Added rating filter to the collection (#2054)
+
+-------------------------------------------------------------------
 Sun Feb  1 17:38:22 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.18

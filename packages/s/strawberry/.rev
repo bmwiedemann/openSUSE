@@ -1807,4 +1807,24 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1330265</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>7e5972f43c4c42b6a34ddbc6d835d806</srcmd5>
+    <version>1.2.19</version>
+    <time>1776540903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.19
+  + Fixed MPRIS2 Play causing playback to restart if already playing (#1995)
+  + Fixed incorrect use beginInsertRows() / endInsertRows() of when adding / removing devices (#2021)
+  + Fixed album cover manager save cover to file not working (#2039)
+  + Fixed repeat and shuffle button sizes (#1838)
+  + Fixed MPRIS2 resetting previous played track history
+  + Fixed Qobuz authentication (#2058)
+  + Rewrote Discord RPC with Qt and removed RapidJSON dependency
+  + New grouping shuffle mode
+  + Use HTTP POST for AcoustID lookup
+  + Write MusicBrainz Track Id when completing tags using MusicBrainz
+  + Added rating filter to the collection (#2054)
+</comment>
+    <requestid>1347803</requestid>
+  </revision>
 </revisionlist>
