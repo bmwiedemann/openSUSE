@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 17 07:29:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.201.1:
+  * defer Session destruction in KListener::completed
+  * Remove Data(const Data&amp; other), we don't need it
+  * Save roundtrip from subject to string to subject
+  * Mark Subject constructor as explicit
+  * Return {} instead of nullptr
+  * g_object_unref does not like being passed a nullptr
+  * Remove unnecessary g_object_unref call in 
+    enumerateTemporaryAuthorizationsSync function
+  * ListenerAdapter: uniquify the identities
+  * Build examples on CI
+  * Use undeprecated install dir variable
+  * Fix examples build for Qt 6.8.1
+
+-------------------------------------------------------------------
 Thu Feb 22 10:10:02 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 0.200.0:

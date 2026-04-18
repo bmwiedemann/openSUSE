@@ -1,7 +1,7 @@
 #
 # spec file for package polkit-qt-1
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ ExclusiveArch:  do-not-build
 %bcond_without released
 %define rname polkit-qt-1
 Name:           polkit%{pkg_suffix}-1
-Version:        0.200.0
+Version:        0.201.1
 Release:        0
 Summary:        PolicyKit Library Qt Bindings
 License:        LGPL-2.1-or-later
