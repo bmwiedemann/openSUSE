@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 16 05:47:48 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.46.1:
+  * Upstream changelog has gone missing due to merge into pydantic's repo.
+- Update URL to new home inside pydantic.
+
+-------------------------------------------------------------------
 Wed Dec  3 20:52:00 UTC 2025 - Guang Yee <gyee@suse.com>
 
 - Update to 2.41.5

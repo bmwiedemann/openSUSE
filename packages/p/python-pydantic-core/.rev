@@ -221,4 +221,14 @@
     * optimizations in URL implementation by @davidhewitt in #1833</comment>
     <requestid>1321925</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f8fd8349d50fbe49fcd596c953410555</srcmd5>
+    <version>2.46.1</version>
+    <time>1776540691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.46.1:
+  * Upstream changelog has gone missing due to merge into pydantic's repo.
+- Update URL to new home inside pydantic.</comment>
+    <requestid>1347217</requestid>
+  </revision>
 </revisionlist>

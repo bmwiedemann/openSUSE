@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic-core
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,11 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-core%{psuffix}
-Version:        2.41.5
+Version:        2.46.1
 Release:        0
 Summary:        Core functionality for pydantic validation and serialization
 License:        MIT
-URL:            https://github.com/pydantic/pydantic-core
+URL:            https://github.com/pydantic/pydantic/tree/main/pydantic-core
 Source0:        https://files.pythonhosted.org/packages/source/p/pydantic-core/pydantic_core-%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  %{python_module base >= 3.9}
@@ -54,7 +54,7 @@ BuildRequires:  %{python_module typing-inspection}
 %endif
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-typing-extensions >= 4.6.0
+Requires:       python-typing-extensions >= 4.14.1
 %python_subpackages
 
 %description
