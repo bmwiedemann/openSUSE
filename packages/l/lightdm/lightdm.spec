@@ -101,13 +101,15 @@ BuildRequires:  pkgconfig(xdmcp)
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc13-c++
 %endif
+BuildRequires:  update-alternatives
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # 3rd party greeters don't have to follow
 # the same versioning of lightdm.
 Requires:       lightdm-greeter
 # Uses pam configuration and relies on scripts provided by xdm.
 Requires:       xdm
 %sysusers_requires
-Recommends:     %{name}-lang
 # Migrate users from lxdm to lightdm - we only obsolete up to version 0.5.
 Obsoletes:      lxdm < 0.5
 %if 0%{?suse_version} >= 1500
