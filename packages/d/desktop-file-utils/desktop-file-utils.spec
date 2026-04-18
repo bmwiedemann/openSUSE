@@ -1,7 +1,7 @@
 #
 # spec file for package desktop-file-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        http://www.freedesktop.org/software/desktop-file-utils/releases/
 Source1:        suse-update-mime-defaults
 Source2:        macros.desktop-file-utils
 Source3:        install_man.py
+Source4:        update-desktop-database.service
 # PATCH-FEATURE-OPENSUSE desktop-file-utils-suse-keys.patch vuntz@opensuse.org -- Handle SUSE-specific keys in validator. This is not strictly necessary, since they are prefixed with X-, but we can verify that the value has the right type.
 Patch0:         desktop-file-utils-suse-keys.patch
 # PATCH-FIX-OPENSUSE install_man_desktop-file-edit_as_symlink.patch -- With Source3 makes manual page "desktop-file-edit.1" a symlink instead of a copy.
@@ -71,6 +72,9 @@ install -D -m644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.desktop-file-util
 mkdir -p %{buildroot}%{_datadir}/applications
 touch %{buildroot}%{_datadir}/applications/mimeinfo.cache
 
+install -d -m 755 %{buildroot}/%{_unitdir}
+install -m 644 %{SOURCE4} %{buildroot}%{_unitdir}
+
 %filetriggerin -- %{_datadir}/applications
 %{_bindir}/update-desktop-database --quiet %{_datadir}/applications || true
 %{_bindir}/suse-update-mime-defaults || true
@@ -80,6 +84,18 @@ if test -x %{_bindir}/update-desktop-database ; then
     %{_bindir}/update-desktop-database --quiet %{_datadir}/applications || true
     %{_bindir}/suse-update-mime-defaults || true
 fi
+
+%pre
+%service_add_pre update-desktop-database.service
+
+%post
+%service_add_post update-desktop-database.service
+
+%preun
+%service_del_preun update-desktop-database.service
+
+%postun
+%service_del_postun update-desktop-database.service
 
 %files
 %license COPYING
@@ -99,5 +115,6 @@ fi
 %dir %{_datadir}/emacs/site-lisp
 %{_datadir}/emacs/site-lisp/*.el*
 %{_rpmmacrodir}/macros.desktop-file-utils
+%{_unitdir}/update-desktop-database.service
 
 %changelog

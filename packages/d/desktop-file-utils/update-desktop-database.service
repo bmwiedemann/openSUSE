@@ -1,0 +1,12 @@
+[Unit]
+Description=Update desktop database and mime defaults
+Wants=local-fs.target
+ConditionFileIsExecutable=/usr/bin/update-desktop-database
+
+[Service]
+Type=oneshot
+ExecStart=-/usr/bin/update-desktop-database --quiet /usr/share/applications
+ExecStart=-/usr/bin/suse-update-mime-defaults
+
+[Install]
+WantedBy=default.target

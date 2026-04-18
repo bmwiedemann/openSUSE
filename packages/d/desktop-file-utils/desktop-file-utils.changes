@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 13 09:22:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not require systemd: either this is installed in a system that
+  uses systemd, then it's present, or the scripts are used withing
+  builds/containers where systemd is not used or wanted.
+
+-------------------------------------------------------------------
+Thu Apr  9 10:49:01 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add update-desktop-database.service to update the desktop files
+  database on boot which is needed in immutable systems since only
+  then the newly installed desktop files are available
+  (jsc#PED-14839).
+
+-------------------------------------------------------------------
 Fri Dec 27 09:11:30 UTC 2024 - Guido Berhoerster <guido+opensuse@berhoerster.name>
 
 - suse-update-mime-defaults:
