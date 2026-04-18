@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 17 09:23:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.4.22
+  * Previous release broke for projects that don't have a .coveragerc (#130)
+- from version 1.4.21
+  * Fixed a double initialization issue when coverage was active (#128)
+- from version 1.4.20
+  * Improved functionality of the -f option (#123)
+  * Added a workflow to publish to PyPi when a release is made on GitHub (#122)
+- from version 1.4.19
+  * Added current directory to sys.path during try_import to avoid any
+    relative import failures in test files (#118)
+- from version 1.4.18
+  * Removed setuptools as a dependency (#115)
+- from version 1.4.17
+  * Fixed a couple of bugs related to SubTests (#111)
+- from version 1.4.16
+  * Changed build system to hatchling; added a test workflow (#106)
+  * Fixed handling of --skip_dirs arg (#105)
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Dec 29 09:44:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.15:
