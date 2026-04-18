@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 16 10:25:50 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.0
+  * iplink_can: add initial CAN XL support
+  * dpll: add mode setting support
+  * dpll: add support for fractional frequency offset in ppt
+
+-------------------------------------------------------------------
 Fri Feb 20 12:51:57 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.19

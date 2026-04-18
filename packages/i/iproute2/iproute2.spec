@@ -17,7 +17,7 @@
 
 
 Name:           iproute2
-Version:        6.19
+Version:        7.0
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -27,8 +27,8 @@ URL:            https://wiki.linuxfoundation.org/networking/iproute2
 #DL-URL:        https://kernel.org/pub/linux/utils/net/iproute2/
 #Git-Clone:     https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/
 #Git-Mirror:    https://github.com/shemminger/iproute2 ## not regularly updated
-Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.xz
-Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.sign
+Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-v%version.0.tar.xz
+Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-v%version.0.tar.sign
 Source3:        %name.tmpfiles
 Source9:        %name.keyring
 Patch1:         adjust-installation-directories-for-openSUSE-SLE.patch
@@ -92,7 +92,7 @@ broadcasting due to limited standard size (512..1024 entries,
 depending on type) of the kernel ARP cache.
 
 %prep
-%autosetup -p1 -n %name-%version.0
+%autosetup -p1 -n %name-v%version.0
 
 find . -name "*.orig" -delete
 
