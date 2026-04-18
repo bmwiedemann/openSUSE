@@ -1238,4 +1238,15 @@
   Fix_Poppler_26_02_0_compat.patch</comment>
     <requestid>1333672</requestid>
   </revision>
+  <revision rev="154" vrev="4">
+    <srcmd5>19556b7b7c404b95bb5c52c7f0a17c04</srcmd5>
+    <version>1.4.3+git2.fcd0343856</version>
+    <time>1776540703</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  https://gitlab.com/inkscape/inkscape/-/merge_requests/7722
+  * inkscape-gcc16.patch
+</comment>
+    <requestid>1347242</requestid>
+  </revision>
 </revisionlist>

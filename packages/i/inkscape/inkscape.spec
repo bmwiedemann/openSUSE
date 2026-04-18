@@ -31,6 +31,8 @@ Source2:        inkscape-split-extensions-extra.py
 Patch0:         Fix_Poppler_26_01_00_compat.patch
 # PATCH-FIX-UPSTREAM -- rebased https://gitlab.com/inkscape/inkscape/-/commit/47e20c0503ab
 Patch1:         Fix_Poppler_26_02_0_compat.patch
+# PATCH-FIX-UPSTREAM -- https://gitlab.com/inkscape/inkscape/-/merge_requests/7722
+Patch2:         inkscape-gcc16.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel

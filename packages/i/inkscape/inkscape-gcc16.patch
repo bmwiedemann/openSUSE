@@ -1,0 +1,96 @@
+From 1a3b83d57e12d55ee7880a4ad4a7ff35722475f3 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Sun, 4 Jan 2026 03:09:27 +0200
+Subject: [PATCH] Include implicit headers for gcc-16
+
+New GCC release in the horizon, more implicit includes removed.
+
+This reverts some include removals in
+7c7241441d0c96b4d69e84c38c745612db8b22b7
+234ad1bf8aee61d5c5e0d8de9d057b8b41bd01c7
+
+Bug: https://bugs.gentoo.org/960304
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ src/colors/spaces/base.h                    | 1 +
+ src/display/control/ctrl-handle-rendering.h | 1 +
+ src/ui/icon-loader.h                        | 1 +
+ src/ui/svg-renderer.h                       | 1 +
+ src/ui/syntax.h                             | 1 +
+ src/ui/widget/color-preview.h               | 1 +
+ src/ui/widget/shapeicon.h                   | 1 +
+ src/util/pool.cpp                           | 1 +
+ 8 files changed, 8 insertions(+)
+
+Index: inkscape-1.4.3+git14.6280b1d6/src/display/control/ctrl-handle-rendering.h
+===================================================================
+--- inkscape-1.4.3+git14.6280b1d6.orig/src/display/control/ctrl-handle-rendering.h
++++ inkscape-1.4.3+git14.6280b1d6/src/display/control/ctrl-handle-rendering.h
+@@ -13,6 +13,7 @@
+  * Released under GNU GPL v2+, read the file 'COPYING' for more information.
+  */
+ 
++#include <cstdint>
+ #include <memory>
+ #include <compare>
+ 
+Index: inkscape-1.4.3+git14.6280b1d6/src/ui/icon-loader.h
+===================================================================
+--- inkscape-1.4.3+git14.6280b1d6.orig/src/ui/icon-loader.h
++++ inkscape-1.4.3+git14.6280b1d6/src/ui/icon-loader.h
+@@ -18,6 +18,7 @@
+ #include <glibmm/refptr.h>
+ #include <glibmm/ustring.h>
+ #include <gtkmm/enums.h>
++#include <cstdint>
+ 
+ namespace Gtk {
+ class Image;
+Index: inkscape-1.4.3+git14.6280b1d6/src/ui/syntax.h
+===================================================================
+--- inkscape-1.4.3+git14.6280b1d6.orig/src/ui/syntax.h
++++ inkscape-1.4.3+git14.6280b1d6/src/ui/syntax.h
+@@ -13,6 +13,7 @@
+ #define SEEN_UI_UI_SYNTAX_H
+ 
+ #include <memory>
++#include <cstdint>
+ #include <optional>
+ #include <vector>
+ #include <gtkmm/textview.h>
+Index: inkscape-1.4.3+git14.6280b1d6/src/ui/widget/color-preview.h
+===================================================================
+--- inkscape-1.4.3+git14.6280b1d6.orig/src/ui/widget/color-preview.h
++++ inkscape-1.4.3+git14.6280b1d6/src/ui/widget/color-preview.h
+@@ -16,6 +16,7 @@
+ #include <cstdint>
+ #include <cairomm/refptr.h>
+ #include <gtkmm/box.h>
++#include <cstdint>
+ 
+ namespace Cairo {
+ class Context;
+Index: inkscape-1.4.3+git14.6280b1d6/src/ui/widget/shapeicon.h
+===================================================================
+--- inkscape-1.4.3+git14.6280b1d6.orig/src/ui/widget/shapeicon.h
++++ inkscape-1.4.3+git14.6280b1d6/src/ui/widget/shapeicon.h
+@@ -20,6 +20,7 @@
+ #include <gtkmm/cellrendererpixbuf.h>
+ #include <gdkmm/rgba.h>
+ #include <sigc++/functors/mem_fun.h>
++#include <cstdint>
+ 
+ namespace Inkscape::UI::Widget {
+ 
+Index: inkscape-1.4.3+git14.6280b1d6/src/util/pool.cpp
+===================================================================
+--- inkscape-1.4.3+git14.6280b1d6.orig/src/util/pool.cpp
++++ inkscape-1.4.3+git14.6280b1d6/src/util/pool.cpp
+@@ -3,6 +3,7 @@
+ #include "pool.h"
+ 
+ #include <cassert>
++#include <cstdint>
+ #include <utility>
+ 
+ namespace Inkscape::Util {

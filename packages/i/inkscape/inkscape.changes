@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  9 07:41:56 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  https://gitlab.com/inkscape/inkscape/-/merge_requests/7722
+  * inkscape-gcc16.patch
+
+-------------------------------------------------------------------
 Tue Feb 17 19:49:57 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Poppler 26.02.0, add
