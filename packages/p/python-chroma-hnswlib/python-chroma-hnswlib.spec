@@ -1,7 +1,7 @@
 #
 # spec file for package python-chroma-hnswlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-chroma-hnswlib
-Version:        0.7.6
+Version:        0.8.2
 Release:        0
 Summary:        Chromas fork of hnswlib
 License:        Apache-2.0
@@ -44,6 +44,9 @@ Chroma-Hnswlib - fast approximate nearest neighbor search
 
 %prep
 %autosetup -p1 -n hnswlib-%{version}
+# fix version in setup.py as it was forgotten by upstream
+sed -i 's/__version__ = "0.7.6"/__version__ = "%{version}"/' setup.py
+sed -i 's/__version__ = "0.7.6"/__version__ = "%{version}"/' python_bindings/setup.py
 
 %build
 export HNSWLIB_NO_NATIVE=1
@@ -53,7 +56,6 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%python_expand rm -f %{buildroot}%{$python_sitearch}/chroma_hnswlib-0.7.5.dist-info/REQUESTED
 
 %check
 %python_expand export PYTHONPATH=$PYTHONPATH:%{buildroot}%{$python_sitelib}:%{buildroot}%{$python_sitearch}
