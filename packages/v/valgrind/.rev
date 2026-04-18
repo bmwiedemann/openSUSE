@@ -1647,4 +1647,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
   (upstream)</comment>
     <requestid>1318324</requestid>
   </revision>
+  <revision rev="158" vrev="2">
+    <srcmd5>41606cbdee49dedaa3026ca43816a9f5</srcmd5>
+    <version>3.26.0</version>
+    <time>1776540686</time>
+    <user>dimstar_suse</user>
+    <comment>- remove 32bit for all SLES 16 based products (jsc#PED-15782)</comment>
+    <requestid>1347181</requestid>
+  </revision>
 </revisionlist>

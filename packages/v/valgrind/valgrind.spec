@@ -1,7 +1,7 @@
 #
 # spec file for package valgrind
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ Patch1:         VEX-x86-pinsrd.patch
 Patch10:        dhat-use-datadir.patch
 BuildRequires:  automake
 BuildRequires:  pkgconfig
-%if %{suse_version} == 1600 && !0%{?is_opensuse}
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
 ExclusiveArch:  aarch64 x86_64 ppc64le s390x
 %else
 ExclusiveArch:  aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl riscv64
