@@ -86,4 +86,25 @@
 </comment>
     <requestid>1155039</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cda92f44435102633bb89033290cbf50</srcmd5>
+    <version>3.2.0</version>
+    <time>1776540862</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * !199: add support for embedded pictures and other binary data
+  * drop support for Python 3.9 (EOL)
+  * fix: add C++17 flag for MSVC on Windows
+  * bump Cython to 3.2.4
+  * !180: remove deprecated Cython IF by implementing custom C++
+    FileRef factory
+  * !182: bump bundled taglib to v2.1.1 and bundled utfcpp to
+  * !155: build wheels for Python 3.13 and MacOS 15
+  * !125: stop building wheels for out-of-support Python versions
+  * !123: upgrade to Taglib 2.0
+- Remove upgrade_taglib_version.patch: already included upstream.
+
+  * fix #88: rename pyprinttags3 --&gt; pyprinttags, ignore unsupported tags in the script</comment>
+    <requestid>1347926</requestid>
+  </revision>
 </revisionlist>

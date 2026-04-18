@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 10 17:33:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * !199: add support for embedded pictures and other binary data
+  * drop support for Python 3.9 (EOL)
+  * fix: add C++17 flag for MSVC on Windows
+  * bump Cython to 3.2.4
+  * !180: remove deprecated Cython IF by implementing custom C++
+    FileRef factory
+  * !182: bump bundled taglib to v2.1.1 and bundled utfcpp to
+  * !155: build wheels for Python 3.13 and MacOS 15
+  * !125: stop building wheels for out-of-support Python versions
+  * !123: upgrade to Taglib 2.0
+- Remove upgrade_taglib_version.patch: already included upstream.
+
+-------------------------------------------------------------------
 Fri Mar  1 14:49:51 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - version update to 2.1.0
@@ -22,7 +38,7 @@ Thu Oct  6 22:10:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * fix #93: publish PyPI packages from GitLab workflow
   * fix #92: build windows binary wheels from CI
   * fix #89: remove Python 2 support
-  * fix #88: rename pyprinttags3 --> pyprinttags, ignore unsupported tags in the script 
+  * fix #88: rename pyprinttags3 --> pyprinttags, ignore unsupported tags in the script
 
 -------------------------------------------------------------------
 Wed Dec  8 12:16:45 UTC 2021 - pgajdos@suse.com
