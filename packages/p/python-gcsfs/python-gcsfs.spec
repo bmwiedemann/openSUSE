@@ -1,7 +1,7 @@
 #
 # spec file for package python-gcsfs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-gcsfs
-Version:        2025.12.0
+Version:        2026.3.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
@@ -30,12 +30,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-aiohttp
+Requires:       python-aiohttp >= 3.9.0
 Requires:       python-decorator > 4.1.2
 Requires:       python-fsspec = %{version}
 Requires:       python-google-auth >= 1.2
 Requires:       python-google-auth-oauthlib
-Requires:       python-google-cloud-storage
+Requires:       python-google-cloud-storage >= 3.9.0
 Requires:       python-google-cloud-storage-control
 Requires:       python-requests
 Recommends:     dask
@@ -43,7 +43,7 @@ Recommends:     python-gcsfs-fuse = %{version}
 Suggests:       python-crcmod
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module aiohttp >= 3.9.0}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module decorator > 4.1.2}
 BuildRequires:  %{python_module fsspec = %{version}}
@@ -52,8 +52,8 @@ BuildRequires:  %{python_module google-api-core}
 BuildRequires:  %{python_module google-api-python-client}
 BuildRequires:  %{python_module google-auth >= 1.2}
 BuildRequires:  %{python_module google-auth-oauthlib}
+BuildRequires:  %{python_module google-cloud-storage >= 3.9.0}
 BuildRequires:  %{python_module google-cloud-storage-control}
-BuildRequires:  %{python_module google-cloud-storage}
 BuildRequires:  %{python_module grpc-google-iam-v1}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}

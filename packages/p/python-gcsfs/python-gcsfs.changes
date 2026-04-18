@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 31 09:40:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3.0:
+  * docs for zonal/rapid storage support
+  * test/ci/cov fixes
+  * fix zonalfile writes to track byte count
+  * benchmarks
+  * fix folder rename race (HNS)
+  * create zonal buckets
+  * graceful close
+  * list: pass only valid kwargs
+  * make mv_file atomic
+  * New readahead-chunks cacher
+  * test coverage
+  * info() integration tests for hierarchical
+  * more benchmark work
+  * zonal file downloads
+  * rm for hierarchical
+  * Support alternative GCP Universes
+  * overrides for HNS buckets (#731, 730, 727
+  * CI for HNS and zonal buckets
+  * Zonal bucket write mode
+  * CI auth fixes (#720, 725
+  * capture generation value after upload
+
+-------------------------------------------------------------------
 Fri Dec 19 02:59:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2025.12.0:
