@@ -17,9 +17,9 @@
 #
 
 
-%define _version 8
+%define _version 9
 Name:           nano
-Version:        8.7.1
+Version:        9.0
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later
