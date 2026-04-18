@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Mar 25 23:16:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.18.0:
+    * Removed 5250 host support along with tn5250_stream_host and
+      tn5250_make_socket APIs
+    * Remove tn5250_setenv API
+    * Removed stubbed out 3270 support along with its
+      undocumented APIs
+    * Remove defunct Python bindings
+    * Remove defunct S-Lang support
+    * Removed defunct Winelib support
+    * Remove custom automake build support on Windows (use CMake
+      instead)
+    * Default to using "old" Curses key handling on Unix
+    * terminfo files are no longer installed by default (use
+      --with-terminfo to re-enable, if desired)
+    * Require the Curses library be NCurses
+    * Preliminary CMake build support
+    * Basic mouse supported added (only supported using Curses
+      key handling)
+    * Add IPv6 support
+    * Use getaddrinfo instead of gethostbyname
+    * Added tn5250_has_error, tn5250_clear_error, tn5250_strerror
+      APIs for improved error handling
+    * Add Server Name Indication (SNI) support for TLS
+      connections
+    * Fix Escape/Meta handling bug requiring an extra key press
+      to redraw
+    * Fix various warnings
+    * Link with libtinfo, if required for certain Curses builds
+    * Lots of autotools build system cleanup
+    * Code reformatted with clang-format
+    * Many other general cleanups
+- drop tn5250-0.16.5-strings.patch, tn5250-gcc14.patch: obsolete
+- refresh tn5250-0.16.5-no-build-date.patch
+
+-------------------------------------------------------------------
 Thu Jul 25 14:57:12 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - tn5250-gcc14.patch: fixed build failure with gcc14
@@ -55,22 +92,22 @@ Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
 -------------------------------------------------------------------
 Sun Aug 29 20:27:46 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- Do not include build date in binaries 
+- Do not include build date in binaries
 
 -------------------------------------------------------------------
 Fri Jan  9 04:53:06 CET 2009 - crrodriguez@suse.de
 
-- remove static libraries and "la" files 
+- remove static libraries and "la" files
 
 -------------------------------------------------------------------
 Wed Jun  6 01:43:44 CEST 2007 - ro@suse.de
 
-- added ldconfig to post scripts 
+- added ldconfig to post scripts
 
 -------------------------------------------------------------------
 Wed Jun  6 01:39:31 CEST 2007 - ro@suse.de
 
-- split off devel package 
+- split off devel package
 
 -------------------------------------------------------------------
 Thu Mar 29 16:29:07 CEST 2007 - rguenther@suse.de
@@ -90,7 +127,7 @@ Wed Jan 25 21:42:14 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Tue Nov  8 14:48:51 CET 2005 - dmueller@suse.de
 
-- don't build as root 
+- don't build as root
 
 -------------------------------------------------------------------
 Mon Sep  8 12:05:09 CEST 2003 - poeml@suse.de
@@ -111,7 +148,7 @@ Tue Jan 14 17:54:50 CET 2003 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Wed Aug  7 11:39:01 CEST 2002 - poeml@suse.de
@@ -124,13 +161,13 @@ Wed Aug  7 11:39:01 CEST 2002 - poeml@suse.de
 -------------------------------------------------------------------
 Tue Jul 30 13:50:00 CEST 2002 - poeml@suse.de
 
-- update to latest stable release 0.16.4. New features include:                                                                             
-  - SSL client-side certificates now supported                                                  
+- update to latest stable release 0.16.4. New features include:
+  - SSL client-side certificates now supported
   - Changed license to LGPL
   - Added the scs2pdf print filter (to transform SCS printer
-    streams to PDF files)              
-  - Added support for re-mapping the screen colors.                                             
-  - Many, many bug fixes.                                                                       
+    streams to PDF files)
+  - Added support for re-mapping the screen colors.
+  - Many, many bug fixes.
 
 -------------------------------------------------------------------
 Tue Jul  2 13:36:42 CEST 2002 - meissner@suse.de
@@ -147,7 +184,7 @@ Mon Mar  4 17:00:09 CET 2002 - poeml@suse.de
 
 - add tn5250-0.16.2-terminfo.dif: use the xterm terminfo entry if
   an xterm-5250 one doesn't exist. This fixes the startup of the
-  xt5250 command. 
+  xt5250 command.
 
 -------------------------------------------------------------------
 Fri Aug 24 03:40:53 CEST 2001 - poeml@suse.de
@@ -157,7 +194,7 @@ Fri Aug 24 03:40:53 CEST 2001 - poeml@suse.de
 - add the files AUTHORS, BUGS, ChangeLog, NEWS, TODO, XTerm to the
   documentation, and update README.SuSE
 - drop the two patches (obsoleted)
-- build in Buildroot 
+- build in Buildroot
 
 -------------------------------------------------------------------
 Fri Mar 30 15:06:37 CEST 2001 - poeml@suse.de
@@ -171,7 +208,7 @@ Fri Mar 30 15:06:37 CEST 2001 - poeml@suse.de
 -------------------------------------------------------------------
 Thu Mar 22 18:08:39 CET 2001 - poeml@suse.de
 
-- add README.SuSE 
+- add README.SuSE
 
 -------------------------------------------------------------------
 Wed Mar  7 19:36:18 CET 2001 - poeml@suse.de
@@ -184,7 +221,7 @@ Wed Mar  7 19:36:18 CET 2001 - poeml@suse.de
 Tue Feb  1 01:47:28 CET 2000 - ro@suse.de
 
 - update to 0.15.6 to make it compile
-  (adds manpages libs tools) 
+  (adds manpages libs tools)
 
 -------------------------------------------------------------------
 Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de

@@ -1,7 +1,8 @@
-diff -uNr tn5250-0.16.2.orig/xt5250.in tn5250-0.16.2/xt5250.in
---- tn5250-0.16.2.orig/xt5250.in	Thu Aug 16 08:28:25 2001
-+++ tn5250-0.16.2/xt5250.in	Mon Mar  4 16:36:03 2002
-@@ -109,8 +109,10 @@
+Index: tn5250-0.18.0/xt5250.in
+===================================================================
+--- tn5250-0.18.0.orig/xt5250.in
++++ tn5250-0.18.0/xt5250.in
+@@ -106,8 +106,10 @@ get_host "$@"
  XUSERFILESEARCHPATH="$pkgdatadir/%N"
  export XUSERFILESEARCHPATH XT5250_HOST
  
