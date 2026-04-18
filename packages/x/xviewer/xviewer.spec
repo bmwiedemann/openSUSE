@@ -1,7 +1,7 @@
 #
 # spec file for package xviewer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           xviewer
-Version:        3.4.8
+Version:        3.4.16
 Release:        0
 Summary:        Fast and functional graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/linuxmint/xviewer
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch:          %{url}/commit/74d7d4ba2584c658ae6fb87208543671664943cc.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -34,6 +35,7 @@ BuildRequires:  pkgconfig(cinnamon-desktop)
 BuildRequires:  pkgconfig(exempi-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(lcms2)
@@ -78,7 +80,7 @@ This package provides the docs for %{name}
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \

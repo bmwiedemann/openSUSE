@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 16 14:58:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 74d7d4ba2584c658ae6fb87208543671664943cc.patch: build: Add
+  support for GIRepository-2.0 (future). Add explicit
+  pkgconfig(gobject-introspection-1.0) BuildRequires for now, as
+  libpeas1 still builds against that one.
+
+-------------------------------------------------------------------
+Thu Mar 26 08:02:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.16:
+  * l10n: Update translations
+  * l10n: Update translations
+  * Fix a focus bug when opening a new maximized window (#227)
+  * packaging: Don't depend on a transitional package name
+  * Switch to XApp symbolic icons
+  * Switch to xapp-symbolic-icons (XSI)
+  * fix xviewer-metadata-sidebar.h include guard typo (#215)
+  * fix indent of some new priv->modified code (#216)
+  * Fix GDK-PixBuf refcounting (#221)
+  * Revert 7a7b55b (add mutex locks...)
+  * misc: Avoid some navigation warnings that can crop up when
+    images are actively loading in the background.
+  * l10n: Update translations
+  * xviewer-list-store.c: Fix double lock condition when adding
+    images.
+  * l10n: Update translations
+  * Make color correction optional and disabled by default
+  * Preferences: Adjust spacing
+  * l10n: Update POT
+  * add mutex locks and unlocks to xviewer_list_store (#202)
+  * l10n: Update translations
+
+-------------------------------------------------------------------
 Sun Feb  9 21:34:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.8:
