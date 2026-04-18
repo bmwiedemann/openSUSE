@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 18 12:01:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.21:
+  * Support has been added for Global Segmentation Offload (GSO)
+    and Global Receive Offload (GRO) under Linux
+  * The `--bind-dev` option is now supported on macOS (PR #1945).
+  * The iperf3 server provides more information about various
+    error conditions to the client
+  * The maximum value for the `--set-mss` option is now 32K
+  * The cancellation type of child threads was changed from
+  * `PTHREAD_CANCEL_ASYNCHRONOUS` to `PTHREAD_CANCEL_DEFERRED`
+  * iperf3 no longer erroneously prints that zero UDP packets
+    were lost during a lossy UDP test (#1984, PR #1988).
+  * A division by zero error has been avoided (PR #2002).
+  * The security posture of the `iperf3.service` file has been
+  * improved considerably by updating a number of settings (PR
+  * #1855). Note that this file is neither installed nor
+    activated by default.
+
+-------------------------------------------------------------------
 Tue Dec 09 16:27:50 CET 2025 - Arvin Schnell <aschnell@suse.com>
 
 - update to 3.20:
