@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 15 15:41:40 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- enable installation of GL headers files and move them to
+  %docdir/include to be picked up by Mesa build later, because
+  in libglvnd sources these are still updated but in Mesa sources
+  they are not any longer and are completely outdated (boo#1260932)
+
+-------------------------------------------------------------------
 Wed Oct 11 15:12:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to 1.7.0:

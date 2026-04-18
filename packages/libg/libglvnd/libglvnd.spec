@@ -1,7 +1,7 @@
 #
 # spec file for package libglvnd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define provide_gl_headers_for_mesa 1
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
@@ -45,6 +47,9 @@ Obsoletes:      Mesa-libGLESv1_CM1
 Provides:       Mesa-libGLESv2-2
 Obsoletes:      Mesa-libGLESv2-2
 Requires:       Mesa-dri
+%if %provide_gl_headers_for_mesa
+Provides:       provide_gl_headers_for_mesa
+%endif
 
 %description
 Vendor-neutral dispatch layer for arbitrating OpenGL API calls between
@@ -75,6 +80,9 @@ sed -i -e "1s|#!.*|#!%{_bindir}/python3|" src/generate/*.py
 %endif
     --disable-static \
     --disable-headers \
+%if %provide_gl_headers_for_mesa
+    --enable-headers \
+%endif
     --disable-silent-rules
 %make_build
 
@@ -97,6 +105,11 @@ fi
 mkdir -p %{buildroot}%{_docdir}/%{name}/pkgconfig
 mv %{buildroot}/%{_libdir}/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc \
    %{buildroot}%{_docdir}/%{name}/pkgconfig
+%if %provide_gl_headers_for_mesa
+mkdir -p %{buildroot}%{_docdir}/%{name}/include
+mv %{buildroot}/%{_includedir}/{EGL,GL,GLES,GLES2,GLES3,KHR} \
+   %{buildroot}%{_docdir}/%{name}/include
+%endif
 
 %check
 %make_build check
@@ -107,6 +120,9 @@ mv %{buildroot}/%{_libdir}/pkgconfig/{gl,egl,glesv1_cm,glesv2}.pc \
 %files -f filelist.rpm
 %doc README.md
 %{_docdir}/%{name}/pkgconfig
+%if %provide_gl_headers_for_mesa
+%{_docdir}/%{name}/include/
+%endif
 %if 0%{?suse_version} < 1330
 %dir %{_prefix}/X11R6
 %dir %{_prefix}/X11R6/%{_lib}

@@ -344,4 +344,17 @@
     <comment></comment>
     <requestid>1117454</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>d9fa5867a761143d2643108f7536de5f</srcmd5>
+    <version>1.7.0</version>
+    <time>1776540841</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for Mesa update ...
+
+- enable installation of GL headers files and move them to
+  %docdir/include to be picked up by Mesa build later, because
+  in libglvnd sources these are still updated but in Mesa sources
+  they are not any longer and are completely outdated (boo#1260932)</comment>
+    <requestid>1347268</requestid>
+  </revision>
 </revisionlist>
