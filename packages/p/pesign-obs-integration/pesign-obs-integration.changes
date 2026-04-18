@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 09 02:06:21 UTC 2026 - jlee@suse.com
+
+- Update to version 10.2+git20260409.5b7f1bb:
+  * Revert "Fix file collisions during RPM extraction"
+  * Revert "Only extract RPMs that contain files to sign"
+
+-------------------------------------------------------------------
+Thu Apr 02 06:38:50 UTC 2026 - jlee@suse.com
+
+- Update to version 10.2+git20260402.224c81f:
+  * Only extract RPMs that contain files to sign
+  * Fix file collisions during RPM extraction
+  * repackage: do not fail if %buildroot does not exist
+  * repackage: also apply spec workaround to generated repackage spec
+  * spec: use Fedora debug_package workaround for CentOS/RHEL too
+  * Implement triggerprein capture
+
+-------------------------------------------------------------------
 Tue Dec 09 11:12:44 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 10.2+git20250930.8fd9632:

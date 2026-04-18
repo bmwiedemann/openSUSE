@@ -1,7 +1,7 @@
 #
 # spec file for package pesign-obs-integration
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 # needssslcertforbuild
 
 
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 %global debug_package %{nil}
 %endif
 
 Name:           pesign-obs-integration
-Version:        10.2+git20250930.8fd9632
+Version:        10.2+git20260409.5b7f1bb
 Release:        0
 Summary:        Macros and scripts to sign the kernel and bootloader
 License:        GPL-2.0-or-later

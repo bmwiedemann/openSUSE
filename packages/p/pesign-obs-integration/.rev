@@ -566,4 +566,12 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
     <comment></comment>
     <requestid>1322101</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>20bec5683672070d1c1087f1e8a26a1e</srcmd5>
+    <version>10.2+git20260409.5b7f1bb</version>
+    <time>1776540690</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1347203</requestid>
+  </revision>
 </revisionlist>
