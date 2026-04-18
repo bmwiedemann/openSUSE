@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 16 11:21:48 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.1
+  * Update README.md
+  * Support py314
+- Drop support-python314.patch, fixed upstream
+
+-------------------------------------------------------------------
 Fri Nov  7 05:23:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:
