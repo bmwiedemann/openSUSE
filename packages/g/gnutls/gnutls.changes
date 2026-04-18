@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 17 11:26:12 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with libnettle 4.0: (bsc#1257934)
+  * Support building with Nettle 4 [PR2075]
+  * accelerated: don't register custom HMAC for AArch64 if
+    Nettle 4 [PR2080]
+  * Add patches:
+    - gnutls-libnettle4-2075.patch
+    - gnutls-libnettle4-2080.patch
+
+-------------------------------------------------------------------
 Tue Mar 24 15:19:22 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix build with autoconf 2.73 (bsc#1260395)

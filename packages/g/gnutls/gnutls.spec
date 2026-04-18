@@ -70,6 +70,9 @@ Patch4:         gnutls-FIPS-disable-mac-sha1.patch
 Patch5:         gnutls-FIPS-140-3-references.patch
 #PATCH-FIX-SUSE bsc#1260395 Fix build with autoconf 2.73
 Patch6:         gnutls-C23.patch
+#PATCH-FIX-UPSTREAM bsc#1257934 Fix build with libnettle 4.0
+Patch7:         gnutls-libnettle4-2075.patch
+Patch8:         gnutls-libnettle4-2080.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge

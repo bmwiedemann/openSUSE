@@ -1,0 +1,127 @@
+From 80b2fd8c6606949b9639f860d73b01dd6ba450ac Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Wed, 4 Mar 2026 10:07:22 +0900
+Subject: [PATCH 1/2] accelerated: don't register custom HMAC for AArch64 if
+ Nettle 4
+
+As a follow-up of commit 4e3921c36529110a94c2a63e0d6601c502901589, add
+missing #ifdefs for AArch64, as Nettle 4 doesn't provide an easy way
+to implement a custom HMAC instance.
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+---
+ lib/accelerated/aarch64/aarch64-common.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/lib/accelerated/aarch64/aarch64-common.c b/lib/accelerated/aarch64/aarch64-common.c
+index 12b7386fc6..ce8fc8301a 100644
+--- a/lib/accelerated/aarch64/aarch64-common.c
++++ b/lib/accelerated/aarch64/aarch64-common.c
+@@ -141,11 +141,13 @@ static void _register_aarch64_crypto(unsigned capabilities)
+ 			gnutls_assert();
+ 		}
+ 
++#if defined(HAVE_LIBNETTLE) && defined(HMAC_SET_KEY)
+ 		ret = gnutls_crypto_single_mac_register(
+ 			GNUTLS_MAC_SHA1, 80, &_gnutls_hmac_sha_aarch64, 0);
+ 		if (ret < 0) {
+ 			gnutls_assert();
+ 		}
++#endif
+ 	}
+ 
+ 	if (_gnutls_arm_cpuid_s & ARMV8_SHA256) {
+@@ -157,11 +159,13 @@ static void _register_aarch64_crypto(unsigned capabilities)
+ 			gnutls_assert();
+ 		}
+ 
++#if defined(HAVE_LIBNETTLE) && defined(HMAC_SET_KEY)
+ 		ret = gnutls_crypto_single_mac_register(
+ 			GNUTLS_MAC_SHA224, 80, &_gnutls_hmac_sha_aarch64, 0);
+ 		if (ret < 0) {
+ 			gnutls_assert();
+ 		}
++#endif
+ 
+ 		ret = gnutls_crypto_single_digest_register(
+ 			GNUTLS_DIG_SHA256, 80, &_gnutls_sha_aarch64, 0);
+@@ -169,11 +173,13 @@ static void _register_aarch64_crypto(unsigned capabilities)
+ 			gnutls_assert();
+ 		}
+ 
++#if defined(HAVE_LIBNETTLE) && defined(HMAC_SET_KEY)
+ 		ret = gnutls_crypto_single_mac_register(
+ 			GNUTLS_MAC_SHA256, 80, &_gnutls_hmac_sha_aarch64, 0);
+ 		if (ret < 0) {
+ 			gnutls_assert();
+ 		}
++#endif
+ 
+ 		ret = gnutls_crypto_single_digest_register(
+ 			GNUTLS_DIG_SHA384, 80, &_gnutls_sha_aarch64, 0);
+@@ -181,11 +187,13 @@ static void _register_aarch64_crypto(unsigned capabilities)
+ 			gnutls_assert();
+ 		}
+ 
++#if defined(HAVE_LIBNETTLE) && defined(HMAC_SET_KEY)
+ 		ret = gnutls_crypto_single_mac_register(
+ 			GNUTLS_MAC_SHA384, 80, &_gnutls_hmac_sha_aarch64, 0);
+ 		if (ret < 0) {
+ 			gnutls_assert();
+ 		}
++#endif
+ 
+ 		ret = gnutls_crypto_single_digest_register(
+ 			GNUTLS_DIG_SHA512, 80, &_gnutls_sha_aarch64, 0);
+@@ -193,11 +201,13 @@ static void _register_aarch64_crypto(unsigned capabilities)
+ 			gnutls_assert();
+ 		}
+ 
++#if defined(HAVE_LIBNETTLE) && defined(HMAC_SET_KEY)
+ 		ret = gnutls_crypto_single_mac_register(
+ 			GNUTLS_MAC_SHA512, 80, &_gnutls_hmac_sha_aarch64, 0);
+ 		if (ret < 0) {
+ 			gnutls_assert();
+ 		}
++#endif
+ 	}
+ 
+ 	if (_gnutls_arm_cpuid_s & ARMV8_AES) {
+-- 
+GitLab
+
+
+From cea3a4e66e950f87e7f7a9fe319b1aef34250013 Mon Sep 17 00:00:00 2001
+From: Daiki Ueno <ueno@gnu.org>
+Date: Tue, 3 Mar 2026 15:41:44 +0900
+Subject: [PATCH 2/2] nettle: revert workaround for base64_decode_update return
+ values
+
+This reverts commit d6014115969655005968491be1da8892ddedc134, as it
+turned out that the change of error return value was only available in
+an unreleased version of Nettle.
+
+Signed-off-by: Daiki Ueno <ueno@gnu.org>
+---
+ lib/x509_b64.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/lib/x509_b64.c b/lib/x509_b64.c
+index 3fb2c94dfb..0ffbfa91bf 100644
+--- a/lib/x509_b64.c
++++ b/lib/x509_b64.c
+@@ -285,10 +285,7 @@ int _gnutls_base64_decode(const uint8_t *data, size_t data_size,
+ 
+ 	ret = base64_decode_update(&ctx, &size, result->data, pdata.size,
+ 				   (void *)pdata.data);
+-	/* Nettle 4 returns -1 on error, while Nettle 3 returns 0;
+-	 * catch both
+-	 */
+-	if (ret <= 0 || size == 0) {
++	if (ret == 0 || size == 0) {
+ 		gnutls_assert();
+ 		ret = GNUTLS_E_BASE64_DECODING_ERROR;
+ 		goto fail;
+-- 
+GitLab
+
