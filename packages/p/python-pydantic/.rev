@@ -652,4 +652,41 @@
     <comment></comment>
     <requestid>1331658</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>77727a763e12f62033a2fcbde2b839cc</srcmd5>
+    <version>2.13.1</version>
+    <time>1776540693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.1:
+  ## Notable changes include
+  * Add a new polymorphic_serialization option, solving issues with
+    serialize_as_any introduced in 2.12.
+  * Latest V1.10.26 release under the pydantic.v1 namespace. This version
+    includes support for Python 3.14.
+  * The pydantic-core repository was merged inside the main pydantic one.
+  ## New Features
+  * Allow default factories of private attributes to take validated model
+    data
+  * Add ascii_only option to StringConstraints
+  * Support exclude_if in computed fields
+  * Push down constraints in unions involving MISSING sentinel
+  * Add polymorphic_serialization option
+  * Support Root models with Literal root types as discriminator field types
+  ## Changes
+  * Warn when serializing fixed length tuples with too few items
+  * Track extra fields set after init in model_fields_set
+  * Do not include annotations that are not part of named tuple fields
+  * No longer fall back to trying all union members when the variant selected
+    by discriminator fails to serialize
+  * Use the complex() constructor unconditionally when validating complex
+    Python data
+  * Add support for three-tuple input for Decimal
+  * Align @field_serializer logic with @field_validator
+  * Make PydanticUserError a RuntimeError instead of a TypeError
+  * Remove redundant serialization attempts in nested unions
+  * Copy root value when making root model shallow copies
+  * Ensure deterministic JSON schema defaults by sorting sets
+  ## Fixes</comment>
+    <requestid>1347218</requestid>
+  </revision>
 </revisionlist>

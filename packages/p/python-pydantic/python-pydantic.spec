@@ -27,20 +27,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.12.5
+Version:        2.13.1
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
 URL:            https://github.com/pydantic/pydantic
 Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pydantic/pydantic/pull/12609 Remove xfail marker on a PEP 649 related test
-Patch0:         test.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic-core = 2.41.5}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module pydantic-core = 2.46.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
@@ -48,21 +46,24 @@ BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module email-validator >= 2.0}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module inline-snapshot}
 BuildRequires:  %{python_module jsonschema >= 4.23.0 }
 BuildRequires:  %{python_module pydantic = %{version}}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-examples}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-run-parallel}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module rich}
-BuildRequires:  %{python_module typing-inspection}
 %endif
 Requires:       python-annotated-types >= 0.6.0
-Requires:       python-pydantic-core = 2.41.5
+Requires:       python-pydantic-core = 2.46.1
 Requires:       python-typing-extensions >= 4.14.1
-Requires:       python-typing-inspection
+Requires:       python-typing-inspection >= 0.4.2
 Recommends:     python-email-validator >= 2.0
 BuildArch:      noarch
 %python_subpackages
@@ -89,7 +90,8 @@ sed -i '/.*Programming Language :: Python :: 3\.14.*/d' pyproject.toml
 %check
 %if %{with test}
 # test_base64url[Base64UrlBytes-bytes-alphabet-vanilla] fails with patched python314 https://github.com/pydantic/pydantic/issues/12778
-%pytest -k "not Base64UrlBytes-bytes-alphabet-vanilla"
+# README.md:18-68 different version of black
+%pytest -k "not (Base64UrlBytes-bytes-alphabet-vanilla or README.md:18-68)"
 %endif
 
 %if %{without test}

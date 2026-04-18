@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Apr 16 05:48:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.13.1:
+  ## Notable changes include
+  * Add a new polymorphic_serialization option, solving issues with
+    serialize_as_any introduced in 2.12.
+  * Latest V1.10.26 release under the pydantic.v1 namespace. This version
+    includes support for Python 3.14.
+  * The pydantic-core repository was merged inside the main pydantic one.
+  ## New Features
+  * Allow default factories of private attributes to take validated model
+    data
+  * Add ascii_only option to StringConstraints
+  * Support exclude_if in computed fields
+  * Push down constraints in unions involving MISSING sentinel
+  * Add polymorphic_serialization option
+  * Support Root models with Literal root types as discriminator field types
+  ## Changes
+  * Warn when serializing fixed length tuples with too few items
+  * Track extra fields set after init in model_fields_set
+  * Do not include annotations that are not part of named tuple fields
+  * No longer fall back to trying all union members when the variant selected
+    by discriminator fails to serialize
+  * Use the complex() constructor unconditionally when validating complex
+    Python data
+  * Add support for three-tuple input for Decimal
+  * Align @field_serializer logic with @field_validator
+  * Make PydanticUserError a RuntimeError instead of a TypeError
+  * Remove redundant serialization attempts in nested unions
+  * Copy root value when making root model shallow copies
+  * Ensure deterministic JSON schema defaults by sorting sets
+  ## Fixes
+  * Change type of Any when synthesizing _build_sources for
+    BaseSettings.__init__() signature in the mypy plugin
+  * Fix model equality when using runtime extra configuration
+  * Support discriminator metadata outside union type alias
+  * Respect extras_schema when only extra_fields_behavior is set on the
+    config in JSON Schema generation for typed dictionaries
+  * Ensure __pydantic_private__ is set in model_construct() with
+    user-defined model_post_init()
+  * Handle all schema generation errors in InstanceOf
+  * Allow dynamic models created with create_model() to be used as
+    annotations in the Mypy plugin
+  * Check for PlaceholderNode in Mypy plugin
+  * Try other branches in smart union in case of omit errors
+  * Patch unset attributes with MISSING during model serialization with
+    exclude_unset
+  * Ensure custom __init__() is called when using model_validate_strings()
+  * Allow any type form to be used in validate_as()
+  * Fix FieldInfo rebuilding when parameterizing generic models with an
+    Annotated type
+  * Fix nested model schema deduplication in JSON schema generation
+  * Fix InitVar being ignored when using with the pydantic.Field() function
+  * Fix support for enums with NamedTuple as values
+  * Do not delete mock validator/serializer in rebuild_dataclass()
+  * Require test suite to pass with free threading, switch back to global
+    generic types cache
+  * Refactor __pydantic_extra__ annotation handling
+  * Do not add claim of UUID "safety" provision
+  * Use Python hash to perform lookup in tagged union serializer
+  * Do not emit serialization warning MISSING sentinel is present in a nested
+    model
+  * Do not eagerly evaluate annotations in signature logic
+  * Fix serialization of typed dict unions when exclude_none is set
+  * Do not reuse prebuilt serializers/validators on rebuilds
+  * Fix type annotation of field_definitions in create_model()
+  * Fix incorrect dataclass constructor signature when overriding class
+    kw_only with Field()
+  * Use typing.Union when replacing types under Python 3.14
+  * Improve ImportString error when internal imports fail
+  * Fix serializing complex numbers with negative zero imaginary part
+  * Preserve custom docstrings on stdlib dataclasses in JSON schema
+- Drop patch test.patch, merged upstream.
+
+-------------------------------------------------------------------
 Thu Feb  5 13:58:33 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream test.patch to fix tests with Python 3.14
