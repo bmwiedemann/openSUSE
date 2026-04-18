@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr 18 05:48:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.4:
+  * chore(deps): lock file maintenance (#6944)
+  * fix(deps): update module
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+    to v1.43.0 [security] (#6896)
+  * chore(deps): update module go.opentelemetry.io/otel/sdk to
+    v1.43.0 [security] (#6897)
+  * chore(deps): update module
+    go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp
+    to v1.43.0 [security] (#6895)
+  * chore(deps): update module github.com/go-jose/go-jose/v4 to
+    v4.1.4 [security] (#6853)
+  * chore(deps): update module
+    go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp to
+    v0.19.0 [security] (#6894)
+  * chore(deps): lock file maintenance (#6826)
+  * chore(deps): lock file maintenance (#6790)
+  * update go version for CVE-2026-25679 (#6779) (#6794)
+  * chore(deps): update module github.com/antchfx/xpath to v1.3.6
+    [security] (#6765)
+  * chore(deps): update module github.com/buger/jsonparser to
+    v1.1.2 [security] (#6745)
+  * fix(deps): update module google.golang.org/grpc to v1.79.3
+    [security] (#6736)
+  * chore(deps): lock file maintenance (#6690)
+
+-------------------------------------------------------------------
 Wed Mar 18 07:08:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.10.3:
