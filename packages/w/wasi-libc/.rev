@@ -83,4 +83,22 @@
 </comment>
     <requestid>1303415</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>92cd1c00619cebbd2b6ec73f527938bb</srcmd5>
+    <version>31</version>
+    <time>1776540684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version (wasi-sdk-)31.
+  * Support for wasip2 and wasip3.
+  * Compatibility with LLVM 22.
+  * Switch build system to CMake.
+  * Add shared libraries.
+- For now, we build the default target wasm32-wasip1.
+- Use binary version of builtins library until we can build it
+  ourselves (using the URL from cmake/builtins.cmake).
+- Drop obsolete workaround-broken-makefile.patch.
+- Clean up rpmlintrc.
+</comment>
+    <requestid>1338970</requestid>
+  </revision>
 </revisionlist>
