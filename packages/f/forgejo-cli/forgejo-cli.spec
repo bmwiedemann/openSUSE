@@ -17,7 +17,7 @@
 
 
 Name:           forgejo-cli
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        CLI application for interacting with Forgejo
 License:        Apache-2.0 OR MIT

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Apr 17 20:34:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.5.0:
+  * Additions
+    - (!334) Support for managing labels on issues and repos.
+    - (!349) repo edit and repo units for modifying settings on a
+      repo and repo units.
+    - (!373) Use the needed CLI flags for more editors when opening
+      them.
+    - (!385) Use the editor defined in git's core.editor config
+      option by default (falling back to $EDITOR if it is not set).
+    - (!414) Add commands to assign and unassign users to issues
+      and PRs.
+    - (!415) Support all README files in fj repo readme, regardless
+      of case or extension.
+    - (!416) Add the option to choose what repo to own the new repo
+      to fj repo migrate.
+    - (!419) Show a warning when viewing an archived repo.
+    - (!420) Add a notice about git push --force not being
+      supported on AGit PRs.
+    - Added fj auth login support for the following instances:
+      - v15.next.forgejo.org
+      - codefloe.com
+  * Fixes
+    - (!393) Don't include pull requests in fj issues search.
+    - (!407) Guarantee opening the browser in fj auth login doesn't
+      block.
+    - (!417) Prevent incorrectly reusing the refresh token when
+      refreshing OAuth tokens.
+  * Other
+    - (!278) Improved "no repo info" error message.
+    - (!403) Build aarch64 artifacts for new releases.
+
+-------------------------------------------------------------------
 Mon Mar 16 06:15:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.4.1:
