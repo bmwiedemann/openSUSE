@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 17 11:17:56 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260416 (git commit a2f5a2941878):
+  * qcom: Update ADSP firmware for Kaanapali platform
+
+-------------------------------------------------------------------
+Wed Apr 15 05:02:50 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260414 (git commit f48f551a902b):
+  * qcom: Update ADSP firmware for QCM6490 platform
+
+-------------------------------------------------------------------
 Thu Apr  9 05:33:57 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260408 (git commit e9cae76da758):

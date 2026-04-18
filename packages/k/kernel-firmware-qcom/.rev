@@ -435,4 +435,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: add QUPv3 firmware for shikra</comment>
     <requestid>1345541</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>77ecdfda1c627994ea142ec7177f869e</srcmd5>
+    <version>20260416</version>
+    <time>1776540674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260416 (git commit a2f5a2941878):
+  * qcom: Update ADSP firmware for Kaanapali platform
+
+- Update to version 20260414 (git commit f48f551a902b):
+  * qcom: Update ADSP firmware for QCM6490 platform</comment>
+    <requestid>1347747</requestid>
+  </revision>
 </revisionlist>
