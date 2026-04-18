@@ -1,9 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 13 12:08:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.416
+  * Fixes hfstar's error output on failure to open a volume.
+    Previously the archive name was printed here instead of
+    the path to the volume.
+  * On macOS: ensures the rpath for libfuse is set in the
+    hfsfuse binary if needed (e.g. for FUSE-T).
+- from version 0.410
+  * This release features a modest performance improvement
+    for most operations.
+  * Fixes a bug that could cause LZVN HFS+ compressed files
+    to be incorrectly reported as unsupported.
+- Add missing changelog entry for 0.404
+
+-------------------------------------------------------------------
 Thu Feb 26 12:46:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.406
   * Fixes mounting with -o allow_other, which was broken in the previous
     release (thanks to li20034 for finding this and the quick patch.)
+- from version 0.404
+  * Fixes building with statx support.
+  * -o allow_other is no longer on by default. See 2a0a8df for the
+    rationale for this change and more information.
+  * Help and version text is now printed to stdout rather than stderr.
 
 -------------------------------------------------------------------
 Tue Feb 17 00:50:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
