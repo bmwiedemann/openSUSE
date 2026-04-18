@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 15 07:52:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.38.5
+  * Enable missing tests by @sfod in (#843)
+  * MQTT test refactor by @bretambrose in (#818)
+  * Manual Publish Acknowledgement Control by @sbSteveK in (#828)
+  * Skip IoT WS tests when relevant environment variable is not set
+    by @bretambrose in (#845)
+- Prefer explicit path and filenames over wildcards in %files section
+
+-------------------------------------------------------------------
 Fri Apr 10 08:48:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.38.4

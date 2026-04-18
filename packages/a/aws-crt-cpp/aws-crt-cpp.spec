@@ -20,7 +20,7 @@
 %define library_soversion 1
 
 Name:           aws-crt-cpp
-Version:        0.38.4
+Version:        0.38.5
 Release:        0
 Summary:        AWS C++ wrapper for AWS SDK C libraries
 License:        Apache-2.0
@@ -132,16 +132,18 @@ This package contains development files.
 %ldconfig_scriptlets -n lib%{name}%{library_soversion}
 
 %files bin
-%{_bindir}/*
+%{_bindir}/elasticurl_cpp
+%{_bindir}/mqtt5_app
+%{_bindir}/mqtt5_canary
 
 %files -n lib%{name}%{library_soversion}
 %doc README.md
-%{_libdir}/*.so.%{library_soversion}
-%{_libdir}/*.so.%{library_version}
+%{_libdir}/lib%{name}.so.%{library_soversion}
+%{_libdir}/lib%{name}.so.%{library_version}
 
 %files devel
 %{_includedir}/aws
-%{_libdir}/*.so
+%{_libdir}/lib%{name}.so
 %{_libdir}/cmake
 
 %changelog
