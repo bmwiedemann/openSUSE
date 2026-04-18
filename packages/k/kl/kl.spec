@@ -17,7 +17,7 @@
 
 
 Name:           kl
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        An interactive Kubernetes log viewer for your terminal
 License:        MIT

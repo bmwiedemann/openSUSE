@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 17 20:02:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.1:
+  * fix: keep terminated containers and logs until manually
+    deselected
+
+-------------------------------------------------------------------
 Mon Apr 13 05:11:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.0:
