@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 17 09:11:11 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 1.14.15
+  * Preliminary support for linux kernel v7.0
+  * Improve performance on Intel Core Ultra 7 platform
+  * Fix audio issues during MS Teams call
+  * Fix "Failed to map scanout buffer" error on Intel Core Ultra 7 platform
+  * Set libEvdi license to LGPL v2.1-or-later
+
+-------------------------------------------------------------------
 Tue Jan  6 12:25:49 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.14.12
