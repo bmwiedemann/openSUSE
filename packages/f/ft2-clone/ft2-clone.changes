@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 17 05:59:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.17
+  * Bug fix: The "Precise BPM" checkbox in Config->Audio was not
+    uninitialized properly and could accidentally be interacted
+    with in other screens.
+
+-------------------------------------------------------------------
 Mon Apr 13 16:11:04 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.16
