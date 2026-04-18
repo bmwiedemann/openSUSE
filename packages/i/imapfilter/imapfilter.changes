@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 18 12:37:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.5:
+  * Re-added OAuth2 example in the sample extend file
+  * Bug fix; minor incompatibility with Lua 5.5
+
+-------------------------------------------------------------------
 Thu Feb  5 15:39:54 UTC 2026 - Arun Persaud <arun@gmx.de>
 
 - update to 2.8.3:
