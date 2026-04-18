@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Apr 17 20:01:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 53.2.2:
+  * Release Highlights
+    Kubeshark 53.2.2 introduces MongoDB protocol dissection,
+    bringing L7 visibility to MongoDB traffic across the dashboard,
+    MCP tools, and KFL filtering. Kubernetes metadata enrichment
+    has been moved from the hub to the worker nodes, significantly
+    reducing hub load and improving scalability in large clusters.
+    The eBPF tracer now supports Envoy BoringSSL TLS decryption via
+    offset-based hooking and introduces a ring buffer-based packet
+    poller for improved capture performance.
+  * New Features
+    - Add MongoDB protocol dissector with request parsing (Phase
+      1), MCP transform support, and dashboard UI
+    - Add Envoy BoringSSL TLS decryption via offset-based hooking
+      in the eBPF tracer
+    - Add dashboard-level namespace, worker, and dissector filters
+      for granular traffic scoping
+    - Add back-end resolved entry summary display in the dashboard
+    - Add time preset buttons in snapshot creation dialog for quick
+      time window selection
+    - Add external volume support for dissection jobs, enabling
+      persistent storage across restarts
+    - Add recvmsg/sendmsg/recvmmsg/sendmmsg/readv/writev syscall
+      hooks for improved SSL-to-fd tracking
+  * Improvements
+    - Move Kubernetes metadata enrichment from hub to worker nodes
+      — reduces hub load and improves scalability
+    - Stream pod Modified events to workers when enrichment fields
+      change, keeping worker-side K8s metadata up to date
+    - Replace eBPF perf buffer with ring buffer-based packet poller
+      for improved capture performance and memory efficiency
+    - Add async pin cleanup for graceful eBPF tracer termination,
+      improving shutdown reliability
+    - Update MCP KFL schema to match KFL2 capabilities
+    - Update Network RCA AI skill resolution tools to
+      list_workloads/list_ips
+    - Improve JSON payload detection and formatting in the
+      dashboard
+    - Reset API stream on targeting change for consistent real-time
+      view
+    - Extract snapshot tar archives directly during download for
+      dissection
+    - Pass dissection storage flags to dissection jobs
+    - TCP flows in CLOSED state now bypass backend capture rules
+    - Add subPathExpr to worker DaemonSet for shared persistent
+      storage
+    - Refactor string splitting in loops for improved performance
+    - Bump Go base image from 1.25.7 to 1.26.1
+  * Bug Fixes
+    - Fix pod targeting collision for same-named pods in different
+      namespaces
+    - Fix KFL K8s field filtering for MCP live queries
+    - Fix eBPF-TLS capture source icon in the dashboard
+    - Fix snapshot creation to use only healthy workers
+    - Fix do_accept() compatibility issue in eBPF tracer
+    - Fix processing of stop raw capture command
+    - Fix flaking tests in hub
+
+-------------------------------------------------------------------
 Wed Apr 01 04:25:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 53.2.0:
