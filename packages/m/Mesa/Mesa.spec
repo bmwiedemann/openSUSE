@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define provide_gl_headers_for_mesa 1
 
 #!BuildIgnore: Mesa-dri
 
@@ -131,14 +132,14 @@
 
 # Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
 # See https://bugzilla.suse.com/show_bug.cgi?id=1235697
-%if 0%{?gcc_version} < 13
-%define gcc_version 13
+%if 0%{?gcc_version} < 15
+%define gcc_version 15
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.0.4
+Version:        26.0.5
 Release:        0
-%define pkg_version 26.0.4
+%define pkg_version 26.0.5
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
@@ -189,8 +190,8 @@ BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  gcc%{?gcc_version} >= 9
-BuildRequires:  gcc%{?gcc_version}-c++ >= 9
+BuildRequires:  gcc%{?gcc_version} >= 0%{?gcc_version}
+BuildRequires:  gcc%{?gcc_version}-c++ >= 0%{?gcc_version}
 BuildRequires:  glslang-devel
 BuildRequires:  imake
 BuildRequires:  libtool
@@ -302,6 +303,10 @@ BuildRequires:  rust-cbindgen >= 0.25
 BuildRequires:  rust
 BuildRequires:  rust-bindgen >= 0.71.1
 %endif
+%endif
+
+%if %provide_gl_headers_for_mesa
+BuildRequires:  provide_gl_headers_for_mesa
 %endif
 
 Requires:       Mesa-libEGL1 = %{version}
@@ -739,7 +744,9 @@ cp %{SOURCE5} subprojects/packagecache/
 cp %{SOURCE6} subprojects/packagecache/
 cp %{SOURCE22} subprojects/packagecache/
 
+%if %provide_gl_headers_for_mesa == 0
 %patch -P 2 -p1
+%endif
 # fixes build against python 3.6
 %patch -P 11 -p1
 %patch -P 12 -p1
@@ -899,6 +906,12 @@ rm -fv %{buildroot}/%{_libdir}/libspirv_to_dxil.a
 %endif
 
 rm -fv %{buildroot}/%{_libdir}/libEGL.so*
+
+%if %provide_gl_headers_for_mesa
+rm -v %{buildroot}/%{_includedir}/EGL/eglext_angle.h \
+      %{buildroot}/%{_includedir}/EGL/eglmesaext.h \
+      %{buildroot}/%{_includedir}/GL/internal/dri_interface.h
+%else
 # in Mesa-libEGL-devel
 rm -v %{buildroot}/%{_includedir}/EGL/egl.h \
 	%{buildroot}/%{_includedir}/EGL/eglext.h \
@@ -918,6 +931,10 @@ rm -Rfv %{buildroot}/%{_includedir}/GLES2
 #in Mesa-libGLESv3-devel
 rm -Rfv %{buildroot}/%{_includedir}/GLES3
 
+# in KHR-devel
+rm -Rfv %{buildroot}/%{_includedir}/KHR
+%endif
+
 #in Mesa-libEGL1
 rm -Rfv %{buildroot}/%{_libdir}/libEGL_mesa.so* \
 	%{buildroot}/%{_datadir}/glvnd
@@ -928,9 +945,6 @@ rm -fv %{buildroot}/%{_libdir}/libwayland-egl.so* \
 
 # in Mesa-dri-devel
 rm -v %{buildroot}/%{_libdir}/pkgconfig/dri.pc
-
-# in KHR-devel
-rm -Rfv %{buildroot}/%{_includedir}/KHR
 
 # in libgbm-devel
 rm -fv %{buildroot}%{_includedir}/gbm.h \
@@ -957,6 +971,15 @@ for i in gl egl glesv1_cm glesv2; do
 	install -vm 0644 "%{_docdir}/libglvnd/pkgconfig/$i.pc" \
 		%{buildroot}/%{_libdir}/pkgconfig/
 done
+
+%if %provide_gl_headers_for_mesa
+# pickup GL headers files from libglvnd build
+for i in EGL GL GLES GLES2 GLES3 KHR; do
+	install -d -m 755 %{buildroot}/%{_includedir}/$i
+	install -vm 0644 %{_docdir}/libglvnd/include/$i/* \
+		%{buildroot}/%{_includedir}/$i
+done
+%endif
 
 for dir in GL/gl GL/glx; do
  cd "../xc/doc/man/$dir"

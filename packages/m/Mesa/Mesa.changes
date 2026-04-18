@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 17 09:15:54 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.0.5 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.0.5
+
+-------------------------------------------------------------------
+Thu Apr 16 00:07:27 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- pick up GL header files from libglvnd, because in libglvnd
+  sources these are still updated but in Mesa sources they are not
+  any longer and are completely outdated (boo#1260932)
+- require gcc 15 in order to fix build on SLE16/Leap 16.0
+
+-------------------------------------------------------------------
 Wed Apr  1 18:15:30 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 26.0.4 bugfix release

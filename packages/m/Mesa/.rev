@@ -6744,4 +6744,18 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   devel package</comment>
     <requestid>1344206</requestid>
   </revision>
+  <revision rev="573" vrev="1">
+    <srcmd5>e198d019f99c2dacde0fd5d51fbe604e</srcmd5>
+    <version>26.0.5</version>
+    <time>1776540854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 26.0.5 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.0.5
+
+- pick up GL header files from libglvnd, because in libglvnd
+  sources these are still updated but in Mesa sources they are not
+  any longer and are completely outdated (boo#1260932)
+- require gcc 15 in order to fix build on SLE16/Leap 16.0</comment>
+    <requestid>1347669</requestid>
+  </revision>
 </revisionlist>
