@@ -503,4 +503,12 @@ Required by the latest version of python-gcsfs</comment>
     + better webHDFS proxies</comment>
     <requestid>1323588</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6cc3304a9b7833f30be107dba4dc5c45</srcmd5>
+    <version>2026.3.0</version>
+    <time>1776540857</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1344956</requestid>
+  </revision>
 </revisionlist>

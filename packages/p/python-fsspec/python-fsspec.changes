@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Mar 31 09:28:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3.0:
+  * non-string types in individual cond kwarg value env-vars
+  * allow withdirs in glob
+  * multi-file put in sftp
+  * support append and update mode for cachedFSs
+  * implement created()/modified() for webHDFS
+  * recover support for old zstandard package
+  * remove prefetching loop in block-cache causing double read
+  * fixes to parquet and known-cache
+  * return None for streamed arrow file size
+  * correct find() for ZipFS
+  * configure TLS protocol version for FTP
+  * Respect auto_mkdir in mv for local
+  * link to pydantic, code and union implementations ($1956)
+  * use backport.zstd or builtin
+  * docs typo
+
+-------------------------------------------------------------------
 Fri Dec 19 02:59:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2025.12.0:
