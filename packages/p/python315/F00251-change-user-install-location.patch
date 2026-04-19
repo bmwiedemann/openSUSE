@@ -28,10 +28,10 @@ Co-authored-by: Lumír Balhar <frenzy.madness@gmail.com>
  Lib/test/test_sysconfig.py |   17 +++++++++++++--
  2 files changed, 65 insertions(+), 3 deletions(-)
 
-Index: Python-3.15.0a1/Lib/sysconfig/__init__.py
+Index: Python-3.15.0a8/Lib/sysconfig/__init__.py
 ===================================================================
---- Python-3.15.0a1.orig/Lib/sysconfig/__init__.py	2025-10-24 23:53:22.709921139 +0200
-+++ Python-3.15.0a1/Lib/sysconfig/__init__.py	2025-10-24 23:53:34.981019958 +0200
+--- Python-3.15.0a8.orig/Lib/sysconfig/__init__.py	2026-04-08 13:45:34.229096811 +0200
++++ Python-3.15.0a8/Lib/sysconfig/__init__.py	2026-04-08 13:45:36.940641269 +0200
 @@ -106,6 +106,11 @@
  else:
      _INSTALL_SCHEMES['venv'] = _INSTALL_SCHEMES['posix_venv']
@@ -115,11 +115,11 @@ Index: Python-3.15.0a1/Lib/sysconfig/__init__.py
      if os.name == 'nt':
          # On Windows we want to substitute 'lib' for schemes rather
          # than the native value (without modifying vars, in case it
-Index: Python-3.15.0a1/Lib/test/test_sysconfig.py
+Index: Python-3.15.0a8/Lib/test/test_sysconfig.py
 ===================================================================
---- Python-3.15.0a1.orig/Lib/test/test_sysconfig.py	2025-10-24 23:53:24.545975205 +0200
-+++ Python-3.15.0a1/Lib/test/test_sysconfig.py	2025-10-24 23:53:34.981457517 +0200
-@@ -131,8 +131,19 @@
+--- Python-3.15.0a8.orig/Lib/test/test_sysconfig.py	2026-04-08 13:45:34.229096811 +0200
++++ Python-3.15.0a8/Lib/test/test_sysconfig.py	2026-04-08 13:45:36.941205552 +0200
+@@ -132,8 +132,19 @@
          for scheme in _INSTALL_SCHEMES:
              for name in _INSTALL_SCHEMES[scheme]:
                  expected = _INSTALL_SCHEMES[scheme][name].format(**config_vars)
@@ -140,7 +140,7 @@ Index: Python-3.15.0a1/Lib/test/test_sysconfig.py
                      os.path.normpath(expected),
                  )
  
-@@ -394,7 +405,7 @@
+@@ -393,7 +404,7 @@
          self.assertTrue(os.path.isfile(config_h), config_h)
  
      def test_get_scheme_names(self):
@@ -149,7 +149,7 @@ Index: Python-3.15.0a1/Lib/test/test_sysconfig.py
          if HAS_USER_BASE:
              wanted.extend(['nt_user', 'osx_framework_user', 'posix_user'])
          self.assertEqual(get_scheme_names(), tuple(sorted(wanted)))
-@@ -406,6 +417,8 @@
+@@ -405,6 +416,8 @@
              cmd = "-c", "import sysconfig; print(sysconfig.get_platform())"
              self.assertEqual(py.call_real(*cmd), py.call_link(*cmd))
  

@@ -2,11 +2,11 @@
  Lib/test/test_buffer.py |    1 +
  1 file changed, 1 insertion(+)
 
-Index: Python-3.15.0a6/Lib/test/test_buffer.py
+Index: Python-3.15.0a8/Lib/test/test_buffer.py
 ===================================================================
---- Python-3.15.0a6.orig/Lib/test/test_buffer.py	2026-02-12 00:38:25.599265172 +0100
-+++ Python-3.15.0a6/Lib/test/test_buffer.py	2026-02-12 00:46:24.303091378 +0100
-@@ -4463,6 +4463,7 @@
+--- Python-3.15.0a8.orig/Lib/test/test_buffer.py	2026-04-08 13:45:33.744093480 +0200
++++ Python-3.15.0a8/Lib/test/test_buffer.py	2026-04-08 13:46:05.816521482 +0200
+@@ -4475,6 +4475,7 @@
          self.assertEqual([ptr % align for ptr in ptrs], [0]*len(ptrs))
  
      @support.cpython_only

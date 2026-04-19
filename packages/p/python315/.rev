@@ -202,4 +202,57 @@ covered).</comment>
   http.cookies.BaseCookie.js_output (bsc#1259734, CVE-2026-3644).</comment>
     <requestid>1343740</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>186a1c907f591d8f8ba43c7726e61455</srcmd5>
+    <version>3.15.0~a8</version>
+    <time>1775743730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.15.0~a8 (the last alpha release):
+  - Security
+    - gh-145986: xml.parsers.expat: Fixed a crash caused by
+      unbounded C recursion when converting deeply nested XML
+      content models with ElementDeclHandler(). This addresses
+      CVE 2026-4224 (bsc#1259735, CVE-2026-4224).
+    - gh-145599: Reject control characters in http.cookies.Morsel
+      update() and js_output(). This addresses CVE 2026-3644
+      (bsc#1259734, CVE-2026-3644).
+    - gh-143930: Reject leading dashes in URLs passed to
+      webbrowser.open() (bsc#1260026, CVE-2026-4519).
+  - Core and Builtins
+    - gh-148157: Fix an unlikely crash when parsing an invalid
+      type comments for function parameters. Found by OSS Fuzz in
+      #492782951.
+    - gh-100239: Propagate result type and uniqueness information
+      through _BINARY_OP_EXTEND in the tier 2 optimizer, enabling
+      elimination of downstream type guards and selection of
+      inplace float operations.
+    - gh-148144: Initialize _PyInterpreterFrame.visited when
+      copying interpreter frames so incremental GC does not read
+      an uninitialized byte from generator and frame-object
+      copies.
+    - gh-148072: Cache pickle.dumps and pickle.loads per
+      interpreter in the XIData framework, avoiding repeated
+      module lookups on every cross-interpreter data transfer.
+      This speeds up InterpreterPoolExecutor for mutable types
+      (list, dict) by 1.7x–3.3x.
+    - gh-148110: Fix sys.set_lazy_imports_filter() so relative
+      lazy imports pass the resolved imported module name to the</comment>
+    <requestid>1345197</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>132a1567cb5c94d8a4ba4fb5a6d5751e</srcmd5>
+    <version>3.15.0~a8</version>
+    <time>1776601258</time>
+    <user>dimstar_suse</user>
+    <comment>- Rewrite structure of Python interpreter packages.
+  `python3*` symbols should be now provided by real python3
+  packages and its subpackages instead of the virtual provides
+  (bsc#1258364).
+
+- bsc#1261970 (CVE-2026-3446, gh#python/cpython#145264) has been
+  already fixed by the previous updated. Changelog updated.
+
+      end of the encoded data (bsc#1261970, CVE-2026-3446).</comment>
+    <requestid>1347984</requestid>
+  </revision>
 </revisionlist>

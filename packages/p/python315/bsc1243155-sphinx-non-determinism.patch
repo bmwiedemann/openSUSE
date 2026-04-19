@@ -14,10 +14,10 @@ https://github.com/python/cpython/issues/130979
  Doc/tools/extensions/audit_events.py |   11 ++++++++---
  1 file changed, 8 insertions(+), 3 deletions(-)
 
-Index: Python-3.14.0b3/Doc/tools/extensions/audit_events.py
+Index: Python-3.15.0a8/Doc/tools/extensions/audit_events.py
 ===================================================================
---- Python-3.14.0b3.orig/Doc/tools/extensions/audit_events.py	2025-06-17 17:40:54.000000000 +0200
-+++ Python-3.14.0b3/Doc/tools/extensions/audit_events.py	2025-07-02 15:06:57.802539821 +0200
+--- Python-3.15.0a8.orig/Doc/tools/extensions/audit_events.py	2026-04-08 13:45:33.832094085 +0200
++++ Python-3.15.0a8/Doc/tools/extensions/audit_events.py	2026-04-08 13:45:59.479006144 +0200
 @@ -68,8 +68,13 @@
              logger.warning(msg)
              return
