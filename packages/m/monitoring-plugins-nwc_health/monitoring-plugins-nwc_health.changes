@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Apr 19 09:49:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 12.12.2.5
+  * bugfix in Cisco WLC caching
+  * no more parameter tweaking for Huawei hwEntity (since GLPlugin
+    uses SNMP-XS).
+- Update to version 12.12.2.4
+  * rescan the accesspoints if a name was not immediately found.
+- Update to version 12.12.2.3
+  * improve queries to cisco wlc accesspoint-status use index
+    cacheing.
+
+-------------------------------------------------------------------
+Sat Mar 14 19:29:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 12.12.2.2
+  * bugfix in interface-status (suppress 0 Mbps) and
+    watch-accesspoints (speedup).
+- Update to version 12.12.2.1
+  * allow filtering of audiocode ip groups.
+- Update to version 12.12.2
+  * add audiocode modes.
+- Update to version 12.12.1
+  * output interface speed with mode interface-status.
+- Update to version 12.12
+  * add mode interface-savi-trust-status.
+- Update to version 12.11.1
+  * add phone-specific modes to Audiocodes.
+- Update to version 12.11
+  * add vrrp modes (list and state) for Fortigate.
+
+-------------------------------------------------------------------
 Mon Jan 19 09:22:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 12.10.2

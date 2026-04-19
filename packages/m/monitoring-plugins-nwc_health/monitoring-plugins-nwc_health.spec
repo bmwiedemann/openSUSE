@@ -19,7 +19,7 @@
 
 %define         realname check_nwc_health
 Name:           monitoring-plugins-nwc_health
-Version:        12.10.2
+Version:        12.12.2.5
 Release:        0
 Summary:        This plugin checks the health of network components and interfaces
 License:        GPL-2.0-or-later
