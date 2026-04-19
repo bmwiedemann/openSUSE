@@ -1,7 +1,7 @@
 #
 # spec file for package listres
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           listres
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Utility to list X resources in widgets
 License:        X11
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xmu)
@@ -42,15 +43,16 @@ in an X client written using a toolkit based on libXt.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING
+%doc ChangeLog
+%license COPYING
 %{_bindir}/listres
 %{_mandir}/man1/listres.1%{?ext_man}
 
