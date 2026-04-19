@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Apr 17 12:00:00 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Initial package of cpptrace 1.0.4.
+  Simple, portable, drop-in C++ stacktrace library, using libdwarf
+  for symbol resolution and libunwind for stack unwinding.
+- Split into libcpptrace1 (shared library) and cpptrace-devel
+  (headers, pkg-config data, CMake config files) per the openSUSE
+  Shared Library Packaging Policy.
+
