@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Apr 18 12:28:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 6.17:
+  * keys: don't require NL80211_ATTR_KEY_DATA
+  * iw: fix station dump beacon RX indent
+  * iw: scan: print RSN Element Override IEs
+  * iw: scan: rename OWE Transition parsing function
+  * update nl80211.h
+  * iw: util: use u8 type to print HE MAC capabilities
+  * iw: util: Fix 6 GHz 80 MHz CF1 configuration
+  * iw: survey: add BSS receive time to survey
+  * iw: Print Toffset as signed value
+  * iw: connect: Add support for WPA3 SAE association
+  * iw: bitrate: support link id
+  * iw: bitrate: support EHT rate/gi/ltf
+  * iw: bitrate: refactor description
+  * iw: util: support parsing link id
+  * update nl80211.h
+  * bump version to 6.17
+  * iw: add support to print link level information in station dump
+  * iw: Add support to set per-radio RTS threshold in multi-radio wiphy
+  * update nl80211.h
+  * iw: don't set stupid socket buffer size
+  * iw: scan: Add partial Multi-Link element printing
+  * iw: print HE mcs correctly when mcs_len
+  * iw: Add command to enable/disable EPCS
+  * update nl80211.h
+  * iw: Prevent segfault in ftm get stats
+  * iw: print NO-EHT flags for reg get command
+  * iw: fix EHT capabilities on Big Endian platforms
+  * iw: scan: Add printing of EHT Operation Element
+  * util: rename hz to Hz vol 2
+  * util: rename hz to Hz
+  * iw: scan: Decode additional WPA3 group ciphers
+  * iw: scan: Decode additional WPA3 AKM suite types
+  * iw: fix HE operation on Big Endian platforms
+  * iw: fix HE capabilities on Big Endian platforms
+  * iw: scan: add eht capability parsing
+  * iw: util: update and clean up eht capa printing
+  * iw: scan: replace passed ie buffer with ie context
+  * iw: print tx power per link for MLD
+  * iw: add output for wiphy interface combinations
+  * update nl80211.h
+  * iw: scan: add enum for element IDs
+  * scan: Add printing of HE Operation Element
+  * update nl80211.h
+  * iw: fix formats under MIPS64/PPC
+
+-------------------------------------------------------------------
 Fri Jun  7 08:22:32 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.9:
@@ -211,7 +260,7 @@ Mon Nov 25 04:27:32 UTC 2013 - crrodriguez@opensuse.org
 
 - Update to version 3.11, matching with features in the
   same kernel version.
-- build with libnl-3.0, as usual this "kernel style" hand written 
+- build with libnl-3.0, as usual this "kernel style" hand written
   makefiles are total crap so extra cflags are needed.
 
 -------------------------------------------------------------------
@@ -234,7 +283,7 @@ Fri Sep 16 12:02:37 UTC 2011 - jengelh@medozas.de
 -------------------------------------------------------------------
 Tue Mar 29 11:42:30 CEST 2011 - vlado@suse.cz
 
-- upgrade to version 0.9.22 
+- upgrade to version 0.9.22
      * bugfixes
      * P2P information
      * 4addr support

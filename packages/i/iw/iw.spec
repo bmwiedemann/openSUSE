@@ -1,7 +1,7 @@
 #
 # spec file for package iw
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           iw
-Version:        6.9
+Version:        6.17
 Release:        0
 Summary:        Configuration utility for nl80211 based wireless drivers
 License:        ISC
 URL:            https://wireless.wiki.kernel.org/en/users/documentation/iw
-Source:         iw-%{version}.tar.gz
+Source:         https://mirrors.edge.kernel.org/pub/software/network/iw/iw-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libnl-3.0)
 
