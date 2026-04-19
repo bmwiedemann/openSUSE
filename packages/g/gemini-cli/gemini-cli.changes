@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 19 13:29:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.38.2:
+  * fix(patch): cherry-pick 14b2f35 to release/v0.38.1-pr-24974
+    to patch version v0.38.1 and create version 0.38.2
+
+-------------------------------------------------------------------
 Fri Apr 17 11:46:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add fix-mount-path.patch for sandbox handling
