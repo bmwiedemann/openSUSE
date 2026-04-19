@@ -1,7 +1,7 @@
 #
 # spec file for package editres
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           editres
-Version:        1.0.9
+Version:        1.1.0
 Release:        0
 Summary:        Dynamic resource editor for X Toolkit applications
 License:        X11
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
@@ -44,15 +45,16 @@ Editres protocol.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING
+%doc AUTHORS ChangeLog
+%license COPYING
 %{_bindir}/editres
 %dir %{_datadir}/X11/app-defaults
 %{_datadir}/X11/app-defaults/Editres

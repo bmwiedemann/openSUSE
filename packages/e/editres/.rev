@@ -93,4 +93,17 @@
   * Fix shadowing box</comment>
     <requestid>1154484</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dba4f1d2d716df0e62ebe2b6f9b6e8c7</srcmd5>
+    <version>1.1.0</version>
+    <time>1776601258</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.0
+  * This release updates to version 6 of the editres protocol, introduced
+    in version 1.3.0 of libXmu (which is required to build this version),
+    providing support for 64-bit pointers to windows &amp; widgets.
+  * This release adds support for building with meson as well as autoconf.
+- switched to meson</comment>
+    <requestid>1348001</requestid>
+  </revision>
 </revisionlist>
