@@ -1,7 +1,7 @@
 #
 # spec file for package mkcomposecache
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           mkcomposecache
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Utility to create Compose cache files
 License:        MIT
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.3
@@ -41,15 +42,16 @@ especially in locales with large Compose tables (e.g. all UTF-8 locales).
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING
+%doc AUTHORS ChangeLog
+%license COPYING
 %{_sbindir}/mkcomposecache
 %{_mandir}/man8/mkcomposecache.8%{?ext_man}
 

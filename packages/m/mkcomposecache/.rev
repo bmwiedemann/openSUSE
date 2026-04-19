@@ -43,4 +43,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>968293</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a80d6e80ac0acde3139bbadad7043036</srcmd5>
+    <version>1.2.3</version>
+    <time>1776615343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.3
+  * This release adds support for building with meson as well as
+    autoconf.
+- switch to meson</comment>
+    <requestid>1348008</requestid>
+  </revision>
 </revisionlist>
