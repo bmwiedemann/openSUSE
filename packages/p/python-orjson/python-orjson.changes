@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 16 11:50:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.11.8
+  * Build and compatibility improvements
+
+-------------------------------------------------------------------
+Sun Mar 15 20:20:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.7:
+  * Use a faster library to serialize `float`. Users with byte-
+    exact regression
+  * tests should note positive exponents are now written using a
+    `+`, e.g., `1.2e+30` instead of `1.2e30`.
+  * ABI compatibility with CPython 3.15 alpha 5 free-threading.
+  * orjson now includes code licensed under the Mozilla Public
+    License 2.0 (MPL-2.0).
+  * Drop support for Python 3.9.
+  * ABI compatibility with CPython 3.15 alpha 5.
+  * Build now depends on Rust 1.89 or later instead of 1.85.
+  * Fix sporadic crash serializing deeply nested `list` of
+    `dict`.
+- drop CVE-2025-67221.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Jan 26 08:45:25 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add CVE-2025-67221.patch to fix write outsize of allocated memory
@@ -215,7 +239,7 @@ Mon Jan  2 20:07:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Oct 28 18:35:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 3.8.1 
+- Update to 3.8.1
   - Build maintenance for Python 3.11.
 
 -------------------------------------------------------------------

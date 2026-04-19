@@ -18,19 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-orjson
-Version:        3.11.5
+Version:        3.11.8
 Release:        0
 Summary:        Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy
-License:        Apache-2.0 OR MIT
+License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/ijl/orjson
 # Update: Change version and run `osc rm orjson-*.tar.gz && osc service runall download_files && sh ./devendor-sdist.sh && osc service runall cargo_vendor`
 Source0:        orjson-%{version}-devendored.tar.xz
 Source1:        vendor.tar.xz
-Source2:        https://files.pythonhosted.org/packages/source/o/orjson/orjson-%{version}.tar.gz
 Source3:        devendor-sdist.sh
 Source4:        PACKAGING_README.md
-# PATCH-FIX-OPENSUSE CVE-2025-67221.patch gh#ijl/orjson#637
-Patch0:         CVE-2025-67221.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module maturin >= 1.9.2}
 BuildRequires:  %{python_module pip}

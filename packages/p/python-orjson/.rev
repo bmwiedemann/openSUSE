@@ -206,4 +206,35 @@
     build on unsupported Python versions.</comment>
     <requestid>1329172</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>29d7b995fc0b0dc85ca30f7d0578eab6</srcmd5>
+    <version>3.11.7</version>
+    <time>1774469841</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.11.7:
+  * Use a faster library to serialize `float`. Users with byte-
+    exact regression
+  * tests should note positive exponents are now written using a
+    `+`, e.g., `1.2e+30` instead of `1.2e30`.
+  * ABI compatibility with CPython 3.15 alpha 5 free-threading.
+  * orjson now includes code licensed under the Mozilla Public
+    License 2.0 (MPL-2.0).
+  * Drop support for Python 3.9.
+  * ABI compatibility with CPython 3.15 alpha 5.
+  * Build now depends on Rust 1.89 or later instead of 1.85.
+  * Fix sporadic crash serializing deeply nested `list` of
+    `dict`.
+- drop CVE-2025-67221.patch (upstream)
+
+- Update to 3.8.1</comment>
+    <requestid>1342296</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>fbc3f60870f62d3a8f9dfac7ddfa6e88</srcmd5>
+    <version>3.11.8</version>
+    <time>1776601251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1347832</requestid>
+  </revision>
 </revisionlist>
