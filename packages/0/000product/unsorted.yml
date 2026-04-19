@@ -2734,6 +2734,7 @@ unsorted:
   - cpptasks 
   - cpptasks-javadoc 
   - cpptoml-devel 
+  - cpptrace-devel 
   - cppunit-devel 
   - cppunit-devel-32bit 
   - cppunit-devel-doc 
@@ -12781,6 +12782,7 @@ unsorted:
   - libcpluffxx-devel 
   - libcpluffxx0 
   - libcpp-httplib0_42 
+  - libcpptrace1 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
   - libcppunit_subunit0 
