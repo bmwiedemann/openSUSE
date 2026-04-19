@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 17 07:52:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.1
+  * This project now uses the pyasn1 library to parse ASN.1-encoded
+    values (#263), h/t @ggirol-rc)
+  * Some bare `dict` type annotations have been replaced with `Dict[str, Any]`
+    to satisfy stricter type checking setups (#262), h/t @typestring)
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Nov  4 15:45:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.7.0

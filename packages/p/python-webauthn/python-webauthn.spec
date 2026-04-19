@@ -1,7 +1,7 @@
 #
 # spec file for package python-webauthn
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-webauthn
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Pythonic WebAuthn
 License:        BSD-3-Clause
@@ -29,17 +29,17 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module asn1crypto >= 1.5.1}
+BuildRequires:  %{python_module pyasn1 >= 0.6.2}
 BuildRequires:  %{python_module cbor2 >= 5.6.2}
 BuildRequires:  %{python_module cryptography >= 44.0.2}
 BuildRequires:  %{python_module pyOpenSSL >= 25.0.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-asn1crypto >= 1.5.1
 Requires:       python-cbor2 >= 5.6.2
 Requires:       python-cryptography >= 44.0.2
 Requires:       python-pyOpenSSL >= 25.0.0
+Requires:       python-pyasn1 >= 0.6.2
 BuildArch:      noarch
 %python_subpackages
 
