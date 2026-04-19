@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Apr 15 18:00:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2026-3446-base64-padding.patch preventing ignoring
+  excess Base64 data after the first padded quad (bsc#1261970,
+  CVE-2026-3446, gh#python/cpython#145264).
+
+-------------------------------------------------------------------
+Wed Apr  8 16:12:36 CEST 2026 - Matej Cepl <mcepl@suse.com>
+
+- Rewrite structure of Python interpreter packages.
+  `python3*` symbols should be now provided by real python3
+  packages and its subpackages instead of the virtual provides
+  (bsc#1258364).
+
+-------------------------------------------------------------------
+Thu Apr  2 13:55:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2026-3479-pkgutil_get_data.patch pkgutil.get_data() has
+  the same security model as open(). The documented limitations
+  ensure compatibility with non-filesystem loaders; Python
+  doesn't check that. (bsc#1259989, CVE-2026-3479,
+  gh#python/cpython#146121).
+
+-------------------------------------------------------------------
 Fri Mar 27 17:51:07 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2026-4519-webbrowser-open-dashes.patch to reject
