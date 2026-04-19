@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 17 16:37:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-Fix-bytes-related-test-failures-with-urllib-3.patch
+
+-------------------------------------------------------------------
+Mon Mar  9 15:24:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.11.0:
+  * reno: Update master for unmaintained/2024.1
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 19:00:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.10.0:

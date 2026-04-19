@@ -1,7 +1,7 @@
 #
 # spec file for package python-glanceclient
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %global pythons %{primary_python}
 Name:           python-glanceclient
-Version:        4.10.0
+Version:        4.11.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Glance
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-glanceclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python_glanceclient/python_glanceclient-%{version}.tar.gz
+Patch:          0001-Fix-bytes-related-test-failures-with-urllib-3.patch
 BuildRequires:  %{python_module PrettyTable >= 0.7.1}
 BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module fixtures}

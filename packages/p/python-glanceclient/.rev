@@ -744,4 +744,16 @@ update to version 2.3.0
 - update to 0.8.0.13</comment>
     <requestid>1316847</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d2ac959f15817a892df5411e093f312f</srcmd5>
+    <version>4.11.0</version>
+    <time>1776610733</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-Fix-bytes-related-test-failures-with-urllib-3.patch
+
+- update to 4.11.0:
+  * reno: Update master for unmaintained/2024.1
+  * Update master for stable/2025.2</comment>
+    <requestid>1347759</requestid>
+  </revision>
 </revisionlist>
