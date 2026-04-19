@@ -1,7 +1,7 @@
 #
 # spec file for package libjodycode
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,10 @@
 #
 
 
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %define c_lib   libjodycode4
 Name:           libjodycode
-Version:        4.0
+Version:        4.1.2
 Release:        0
 Summary:        Shared code used by several utilities written by Jody Bruchon
 License:        MIT
@@ -54,7 +55,6 @@ libjodycode is a software code library containing code shared among several of t
 
 %install
 %make_install PREFIX="%{_prefix}" LIB_DIR="%{_libdir}"
-rm %{buildroot}%{_libdir}/libjodycode.a
 
 %post -n %{c_lib} -p /sbin/ldconfig
 %postun -n %{c_lib} -p /sbin/ldconfig
@@ -62,12 +62,13 @@ rm %{buildroot}%{_libdir}/libjodycode.a
 %files -n %{c_lib}
 %license LICENSE.txt
 %{_libdir}/libjodycode.so.4
-%{_libdir}/libjodycode.so.4.0
+%{_libdir}/libjodycode.so.%{version}
 
 %files -n libjodycode-devel
 %doc CHANGES.txt README.md
 %{_includedir}/libjodycode.h
 %{_libdir}/libjodycode.so
-%{_mandir}/man7/libjodycode.7%{?ext_man}
+%{_mandir}/man3/libjodycode.3%{?ext_man}
+%{_libdir}/libjodycode.a
 
 %changelog

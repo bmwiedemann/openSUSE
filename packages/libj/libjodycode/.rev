@@ -37,4 +37,27 @@
     future use</comment>
     <requestid>1301485</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d603f20cc905edac4191e8bc9c2c9d38</srcmd5>
+    <version>4.1.2</version>
+    <time>1776601253</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.2:
+  * Fix off-by-one error in jc_strtoepoch for the month value
+  * Faster directory enumeration on Windows Vista or higher
+  * Document the &quot;project skeleton&quot; so others can use libjodycode
+    easily
+  * Fix moderate performance regression caused by
+    jc_setup_unicode_terminal()
+  * Performance optimization for Windows directory reading
+  * Fix some man page issues
+  * Add a project &quot;skeleton&quot; for easily starting new libjodycode
+    programs
+  * Add jc_setup_unicode_terminal()
+  * Add size-prefixed string type JC_STR_T and some relevant functions
+  * Move manual from section 7 to 3
+  * Update manual to include all existing function definitions
+  * Build fixes for old Synology toolchains</comment>
+    <requestid>1347939</requestid>
+  </revision>
 </revisionlist>

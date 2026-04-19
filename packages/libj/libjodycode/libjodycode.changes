@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 18 12:33:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.2:
+  * Fix off-by-one error in jc_strtoepoch for the month value
+  * Faster directory enumeration on Windows Vista or higher
+  * Document the "project skeleton" so others can use libjodycode
+    easily
+  * Fix moderate performance regression caused by
+    jc_setup_unicode_terminal()
+  * Performance optimization for Windows directory reading
+  * Fix some man page issues
+  * Add a project "skeleton" for easily starting new libjodycode
+    programs
+  * Add jc_setup_unicode_terminal()
+  * Add size-prefixed string type JC_STR_T and some relevant functions
+  * Move manual from section 7 to 3
+  * Update manual to include all existing function definitions
+  * Build fixes for old Synology toolchains
+
+-------------------------------------------------------------------
 Tue Aug 19 16:16:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0:
