@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 17 14:19:10 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.12.2
+  * fix loss of context/cause on ExceptionGroup exceptions
+  * support trio strict_exception_groups=True
+  * expand type annotations
+  * add ability to specify receive buffer size, including None to
+    let trio choose
+  * drop support for Python 3.7
+  * fix omitted direct dependency on outcome
+  * fix incorrect port when using a wss:// URL without supplying an
+    explicit SSL context
+
+-------------------------------------------------------------------
 Fri Nov 22 08:59:09 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

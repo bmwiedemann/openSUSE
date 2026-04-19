@@ -1,7 +1,7 @@
 #
 # spec file for package python-trio-websocket
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-trio-websocket
-Version:        0.11.1
+Version:        0.12.2
 Release:        0
 Summary:        WebSocket library for Trio
 License:        MIT
 URL:            https://github.com/HyperionGray/trio-websocket
-Source0:        https://files.pythonhosted.org/packages/source/t/trio-websocket/trio-websocket-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/t/trio-websocket/trio_websocket-%{version}.tar.gz
 # Not included in sdist
 Source1:        https://raw.githubusercontent.com/HyperionGray/trio-websocket/master/pytest.ini
 BuildRequires:  %{python_module pip}
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module exceptiongroup if %python-base < 3.11}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trio >= 0.11}
@@ -39,9 +38,6 @@ BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module wsproto >= 0.14}
 # /SECTION
 BuildRequires:  fdupes
-%if 0%{?python_version_nodots} < 311
-Requires:       python-exceptiongroup
-%endif
 Requires:       python-trio >= 0.11
 Requires:       python-wsproto >= 0.14
 BuildArch:      noarch
@@ -51,7 +47,7 @@ BuildArch:      noarch
 WebSocket library for Trio
 
 %prep
-%autosetup -p1 -n trio-websocket-%{version}
+%autosetup -p1 -n trio_websocket-%{version}
 cp %{SOURCE1} .
 
 %build
