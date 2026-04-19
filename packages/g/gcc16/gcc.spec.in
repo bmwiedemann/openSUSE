@@ -117,9 +117,9 @@
 %endif
 
 %ifarch x86_64
-# SLE12 does not fulfil build requirements for GCN, SLE15 SP1 does
-# technically also SLE12 SP5 but do not bother there
-%if %{suse_version} >= 1550 || 0%{?sle_version:%sle_version} >= 150100
+# The default multilib set requires llvm20 or later but we support llvm19
+# as well with a reduced set of multilibs
+%if 0%{?product_libs_llvm_ver} >= 19
 %define build_gcn 1
 %else
 %define build_gcn 0
@@ -1677,7 +1677,7 @@ amdgcn-amdhsa,\
 %endif
 %endif
 %if 0%{?gcc_target_arch:1}
-%if 0%{?gcc_accel:1} || %{suse_version} < 1600
+%if 0%{?gcc_accel:1} || 0%{?gcc_libc_bootstrap:1} || %{suse_version} < 1600
 	--program-suffix=%{binsuffix} \
 %endif
 	--program-prefix=%{gcc_target_arch}- \
@@ -1720,8 +1720,10 @@ amdgcn-amdhsa,\
 %if "%{TARGET_ARCH}" == "amdgcn"
 	--enable-as-accelerator-for=%{GCCDIST} \
 	--enable-libgomp \
-%if 0%{?product_libs_llvm_ver} >= 19
-	--with-multilib-list=gfx900,gfx906,gfx908,gfx90a,gfx90c,gfx1030,gfx1036,gfx1100,gfx1103,gfx9-generic,gfx9-4-generic,gfx10-3-generic,gfx11-generic \
+%if 0%{?product_libs_llvm_ver} < 20
+	--with-multilib-list=gfx908,gfx90a,gfx9-generic,gfx942,gfx10-3-generic,gfx11-generic \
+%else
+	--with-multilib-list=default \
 %endif
 %endif
 %if "%{TARGET_ARCH}" == "avr"

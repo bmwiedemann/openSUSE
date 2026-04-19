@@ -1,7 +1,7 @@
 #
 # spec file for package gcc16
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -116,9 +116,9 @@
 %endif
 
 %ifarch x86_64
-# SLE12 does not fulfil build requirements for GCN, SLE15 SP1 does
-# technically also SLE12 SP5 but do not bother there
-%if %{suse_version} >= 1550 || 0%{?sle_version:%sle_version} >= 150100
+# The default multilib set requires llvm20 or later but we support llvm19
+# as well with a reduced set of multilibs
+%if 0%{?product_libs_llvm_ver} >= 19
 %define build_gcn 1
 %else
 %define build_gcn 0
@@ -224,7 +224,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        16.0.1+git8410
+Version:        16.0.1+git8711
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -2445,7 +2445,7 @@ Runtime library for the GNU GCC Algol 68 language.
 
 %package -n gcc16-testresults
 Summary:        Testsuite results
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Development/Languages/C and C++
 
 %description -n gcc16-testresults
@@ -2808,7 +2808,7 @@ amdgcn-amdhsa,\
 %endif
 %endif
 %if 0%{?gcc_target_arch:1}
-%if 0%{?gcc_accel:1} || %{suse_version} < 1600
+%if 0%{?gcc_accel:1} || 0%{?gcc_libc_bootstrap:1} || %{suse_version} < 1600
 	--program-suffix=%{binsuffix} \
 %endif
 	--program-prefix=%{gcc_target_arch}- \
@@ -2851,8 +2851,10 @@ amdgcn-amdhsa,\
 %if "%{TARGET_ARCH}" == "amdgcn"
 	--enable-as-accelerator-for=%{GCCDIST} \
 	--enable-libgomp \
-%if 0%{?product_libs_llvm_ver} >= 19
-	--with-multilib-list=gfx900,gfx906,gfx908,gfx90a,gfx90c,gfx1030,gfx1036,gfx1100,gfx1103,gfx9-generic,gfx9-4-generic,gfx10-3-generic,gfx11-generic \
+%if 0%{?product_libs_llvm_ver} < 20
+	--with-multilib-list=gfx908,gfx90a,gfx9-generic,gfx942,gfx10-3-generic,gfx11-generic \
+%else
+	--with-multilib-list=default \
 %endif
 %endif
 %if "%{TARGET_ARCH}" == "avr"

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 17 06:18:04 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to 16.0.1+git8711
+
+-------------------------------------------------------------------
+Thu Apr 16 09:24:46 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Streamline AMD GCN enablement and configuration by basing it on
+  LLVM version availability.  Support llvm19 and up.
+
+-------------------------------------------------------------------
+Thu Apr 16 07:12:44 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Fix bootstrap cross compiler packaging and simplify handling
+  by properly requesting suffixed binaries from configury.
+
+-------------------------------------------------------------------
+Wed Apr 15 12:39:48 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to 16.0.1+git8664
+
+-------------------------------------------------------------------
 Thu Apr  2 09:31:28 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Only package version suffixed binaries in %gcc_libc_bootstrap

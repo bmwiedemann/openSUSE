@@ -65,4 +65,24 @@ builds significantly due to switching to release checking.
 - Wipe all icecream backend build support from the spec file.</comment>
     <requestid>1345505</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>84eb3411e5f42e71b337013010719f33</srcmd5>
+    <version>16.0.1+git8711</version>
+    <time>1776601248</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage separately from 'gcc'
+
+#############
+
+- Update to 16.0.1+git8711
+
+- Streamline AMD GCN enablement and configuration by basing it on
+  LLVM version availability.  Support llvm19 and up.
+
+- Fix bootstrap cross compiler packaging and simplify handling
+  by properly requesting suffixed binaries from configury.
+
+- Update to 16.0.1+git8664</comment>
+    <requestid>1347658</requestid>
+  </revision>
 </revisionlist>
