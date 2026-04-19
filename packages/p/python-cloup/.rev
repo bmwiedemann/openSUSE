@@ -132,4 +132,15 @@ Following https://opensuse.github.io/scm-staging/user_guide.html pt 4
 (🤖: Submission of python-cloup via https://src.opensuse.org/pool/python-cloup/pulls/19 by glaubitz)</comment>
     <requestid>1303444</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6a0dc5919a226c7a49f8d5f3e738ca7d</srcmd5>
+    <version>3.0.9</version>
+    <time>1776616087</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.9:
+  * fix for the click.__version__ deprecation warning
+  * Pin setuptools&lt;81 in docs requirements
+  * Pin setuptools_scm&lt;10 in setup_requires</comment>
+    <requestid>1348055</requestid>
+  </revision>
 </revisionlist>

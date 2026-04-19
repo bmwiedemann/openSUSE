@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?sle15_python_module_pythons}
+
 Name:           python-cloup
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
 Summary:        Option groups, constraints, subcommand sections and help themes for Click
 License:        BSD-3-Clause
@@ -30,10 +30,12 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 8.0
+Requires:       python-typing-extensions
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 8.0}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 %python_subpackages
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 19 16:07:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.9:
+  * fix for the click.__version__ deprecation warning
+  * Pin setuptools<81 in docs requirements
+  * Pin setuptools_scm<10 in setup_requires
+
+-------------------------------------------------------------------
 Wed Sep 10 06:41:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.0.8
