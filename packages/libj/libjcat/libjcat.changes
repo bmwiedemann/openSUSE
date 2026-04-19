@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 14 12:54:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.2.6:
+  + New Features:
+    - Allow disabling time checks when not using a trust list
+  + Bugfixes:
+    - Do not allow multiple items with the same ID
+    - Do not try to change the GnuTLS system-wide config
+    - Require at least one successful verification regardless of
+      flags
+    - Return the correct error code using the gnutls rc
+    - Skip the PQ tests if the GnuTLS config is not malleable
+    - Use the correct flag when self-verifying PQC certs
+
+-------------------------------------------------------------------
 Mon Oct  6 07:35:38 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.5:
