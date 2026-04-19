@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 18 12:24:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to microcode-20260227:
+  * Update for functional issues. Refer to Intel® Xeon®
+    6700P-B/6500P-B-Series SoC with P-Cores for details.
+  * ### Updated Platforms
+  * | GNR-D          | B0/B1    | 06-ae-01/97 | 010002f3 |
+    01000303 | Xeon 6700P-B/6500P-B Series SoC with P-Cores
+
+-------------------------------------------------------------------
 Wed Feb 11 13:10:01 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - Intel CPU Microcode was updated to the 20260210 release (bsc#1258046)
@@ -25,7 +35,7 @@ Wed Feb 11 13:10:01 UTC 2026 - Marcus Meissner <meissner@suse.com>
   | AZB            | A0/R0    | 06-9a-04/40 | 0000000b | 0000000c | Atom C1100
   | EMR-SP         | A1       | 06-cf-02/87 | 210002c0 | 210002d3 | Xeon Scalable Gen5
   | GNR-AP/SP      | Bx/Hx/Lx | 06-ad-01/95 | 010003f0 | 01000405 | Xeon 6900/6700/6500 Series Processors with P-Cores
-  | GNR-D          | B0/B1    | 06-ae-01/97 | 01000273 | 010002f3 | Xeon 6700P-B/6500P-B Series SoC with P-Cores 
+  | GNR-D          | B0/B1    | 06-ae-01/97 | 01000273 | 010002f3 | Xeon 6700P-B/6500P-B Series SoC with P-Cores
   | GNR-SP R1S     | Bx/Hx/Lx | 06-ad-01/20 | 0a000124 | 0a000133 | Xeon 6700/6500-Series Processors with P-Cores
   | ICL-D          | B0       | 06-6c-01/10 | 010002e0 | 010002f1 | Xeon D-17xx, D-27xx
   | ICL-U/Y        | D1       | 06-7e-05/80 | 000000ca | 000000cc | Core Gen10 Mobile
@@ -201,7 +211,7 @@ Wed May 14 12:21:56 UTC 2025 - Marcus Meissner <meissner@suse.com>
   | ADL            | C0       | 06-97-02/07 | 00000038 | 0000003a | Core Gen12
   | ADL            | H0       | 06-97-05/07 | 00000038 | 0000003a | Core Gen12
   | ADL            | L0       | 06-9a-03/80 | 00000436 | 00000437 | Core Gen12
-  | ADL            | R0       | 06-9a-04/80 | 00000436 | 00000437 | Core Gen12 
+  | ADL            | R0       | 06-9a-04/80 | 00000436 | 00000437 | Core Gen12
   | ADL-N          | N0       | 06-be-00/19 | 0000001c | 0000001d | Core i3-N305/N300, N50/N97/N100/N200, Atom x7211E/x7213E/x7425E
   | AML-Y42        | V0       | 06-8e-0c/94 | 000000fc | 00000100 | Core Gen10 Mobile
   | AZB            | A0/R0    | 06-9a-04/40 | 00000009 | 0000000a | Intel(R) Atom(R) C1100
@@ -304,7 +314,7 @@ Wed Feb 12 13:14:00 UTC 2025 - Marcus Meissner <meissner@suse.com>
   | RPL-S          | H0       | 06-bf-05/07 | 00000037 | 00000038 | Core Gen13/Gen14
   | RKL-S          | B0       | 06-a7-01/02 | 00000062 | 00000063 | Core Gen11
   | SPR-HBM        | Bx       | 06-8f-08/10 | 2c000390 | 2c0003e0 | Xeon Max
-  | SPR-SP         | E4/S2    | 06-8f-07/87 | 2b000603 | 2b000620 | Xeon Scalable Gen4 
+  | SPR-SP         | E4/S2    | 06-8f-07/87 | 2b000603 | 2b000620 | Xeon Scalable Gen4
   | SPR-SP         | E5/S3    | 06-8f-08/87 | 2b000603 | 2b000620 | Xeon Scalable Gen4
   | TWL            | N0       | 06-be-00/19 | 0000001a | 0000001c | Core i3-N305/N300, N50/N97/N100/N200, Atom x7211E/x7213E/x7425E
 

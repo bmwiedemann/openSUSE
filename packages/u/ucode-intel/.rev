@@ -1475,4 +1475,21 @@
   | MTL            | C0       | 06-aa-04/e6 | 00000025 | 00000028 | Core Ultra Processor (forwarded request 1333609 from msmeissn)</comment>
     <requestid>1333610</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>bab856bbbfe63e7f88ec8c23673fee30</srcmd5>
+    <version>20260227</version>
+    <time>1776601252</time>
+    <user>dimstar_suse</user>
+    <comment>- update to microcode-20260227:
+  * Update for functional issues. Refer to Intel® Xeon®
+    6700P-B/6500P-B-Series SoC with P-Cores for details.
+  * ### Updated Platforms
+  * | GNR-D          | B0/B1    | 06-ae-01/97 | 010002f3 |
+    01000303 | Xeon 6700P-B/6500P-B Series SoC with P-Cores
+
+  | GNR-D          | B0/B1    | 06-ae-01/97 | 01000273 | 010002f3 | Xeon 6700P-B/6500P-B Series SoC with P-Cores
+  | ADL            | R0       | 06-9a-04/80 | 00000436 | 00000437 | Core Gen12
+  | SPR-SP         | E4/S2    | 06-8f-07/87 | 2b000603 | 2b000620 | Xeon Scalable Gen4</comment>
+    <requestid>1347936</requestid>
+  </revision>
 </revisionlist>
