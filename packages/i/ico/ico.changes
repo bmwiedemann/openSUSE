@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 19 09:39:31 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7
+  * This release adds support for building with meson as well as
+    autoconf.
+- switch to meson
+
+-------------------------------------------------------------------
 Wed Aug 31 09:09:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.6

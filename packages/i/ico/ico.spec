@@ -1,7 +1,7 @@
 #
 # spec file for package ico
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           ico
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Simple animation program used for testing X11 operations and extensions
 License:        MIT
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(x11) >= 0.99.1
 BuildRequires:  pkgconfig(xproto) >= 7.0.22
@@ -41,15 +42,16 @@ hidden faces removed.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%doc ChangeLog README.md
+%license COPYING
 %{_bindir}/ico
 %{_mandir}/man1/ico.1%{?ext_man}
 
