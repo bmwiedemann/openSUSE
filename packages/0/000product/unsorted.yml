@@ -4304,6 +4304,10 @@ unsorted:
   - flawfinder 
   - fldigi 
   - fldigi-lang 
+  - fleet-cli 
+  - fleet-cli-bash-completion 
+  - fleet-cli-fish-completion 
+  - fleet-cli-zsh-completion 
   - flex 
   - flickcurl 
   - flickcurl-doc 
@@ -4640,11 +4644,6 @@ unsorted:
   - gammaray-qt6-devel 
   - gammastep 
   - gammastep-indicator 
-  - gammu 
-  - gammu-bash-completion 
-  - gammu-devel 
-  - gammu-doc 
-  - gammu-smsd 
   - ganglia-web 
   - gap 
   - gap-4ti2interface 
@@ -9485,6 +9484,7 @@ unsorted:
   - jetty-http2-server 
   - jetty-io 
   - jetty-jaas 
+  - jetty-jaspi 
   - jetty-javax-websocket-client-impl 
   - jetty-javax-websocket-server-impl 
   - jetty-jmx 
@@ -11189,7 +11189,6 @@ unsorted:
   - libGLw-devel 
   - libGLw1 
   - libGLwM1 
-  - libGammu8 
   - libGraphicsMagick++-devel 
   - libGraphicsMagickWand-Q16-2 
   - libHACD3_17 
@@ -12781,7 +12780,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_38 
+  - libcpp-httplib0_42 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
   - libcppunit_subunit0 
@@ -13818,7 +13817,6 @@ unsorted:
   - libgsm-devel-32bit 
   - libgsm-utils 
   - libgsm1-32bit 
-  - libgsmsd8 
   - libgsoap-2_8_140 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
@@ -18338,7 +18336,6 @@ unsorted:
   - mac-robber 
   - macchanger 
   - macrofusion 
-  - madeline 
   - madplay 
   - madplay-lang 
   - maeparser-devel 
@@ -20108,6 +20105,7 @@ unsorted:
   - nsd 
   - nsjail 
   - nsnake 
+  - nss-pam-ldapd 
   - nss-shared-helper-devel 
   - nss_synth 
   - nss_wrapper 
@@ -50862,7 +50860,6 @@ unsorted:
   - xviewer-plugin-export-to-folder 
   - xviewer-plugin-light-theme 
   - xviewer-plugin-map 
-  - xviewer-plugin-postasa 
   - xviewer-plugin-pythonconsole 
   - xviewer-plugin-send-by-mail 
   - xviewer-plugin-slideshowshuffle 
