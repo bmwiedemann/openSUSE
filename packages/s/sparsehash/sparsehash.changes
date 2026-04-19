@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 17 18:57:24 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with gcc16, boo#1261682
+
+-------------------------------------------------------------------
 Thu Aug 13 07:37:31 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.4

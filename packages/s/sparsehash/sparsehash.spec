@@ -2,6 +2,7 @@
 # spec file for package sparsehash
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/sparsehash/sparsehash
 Source:         https://github.com/sparsehash/sparsehash/archive/sparsehash-%{version}.tar.gz
-BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  c++_compiler
+BuildRequires:  pkgconfig
 
 %description
 The Google SparseHash project contains several C++ template hash-map
@@ -47,8 +48,9 @@ speed.
 %autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
+export CXXFLAGS="-std=gnu++17 %{optflags}"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -57,6 +59,7 @@ rm %{buildroot}%{_datadir}/doc/%{name}-2.0.2/INSTALL
 rm %{buildroot}%{_datadir}/doc/%{name}-2.0.2/README_windows.txt
 
 %files devel
+%license COPYING
 %doc %{_datadir}/doc/%{name}-2.0.2/
 %{_includedir}/google/
 %{_includedir}/sparsehash/
