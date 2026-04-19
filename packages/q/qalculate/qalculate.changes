@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 15 00:24:42 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Regenerate configure script before build for GCC16 compatibility (boo#1261740)
+
+-------------------------------------------------------------------
 Sat Apr  4 04:42:42 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Update to version 5.10

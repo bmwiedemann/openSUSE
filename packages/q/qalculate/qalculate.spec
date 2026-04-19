@@ -26,16 +26,19 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://qalculate.github.io/
 Source:         https://github.com/Qalculate/libqalculate/releases/download/v%{version}/%{libname}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  intltool
+BuildRequires:  libtool
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
-BuildRequires:  libnghttp2-devel
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  (pkgconfig(readline) or readline-devel)
 BuildRequires:  pkgconfig(mpfr)
 Requires:       %{name}-data >= %{version}
 
@@ -93,6 +96,7 @@ you will need to install %{libname}-devel.
 %autosetup -n %{libname}-%{version}
 
 %build
+autoreconf -fiv
 %configure --disable-static
 %make_build
 
