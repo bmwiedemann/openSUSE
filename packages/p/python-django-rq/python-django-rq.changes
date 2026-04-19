@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 19 15:58:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1:
+  * Job detail page now shows execution results. Thanks @selwin!
+  * Fixed RQ worker-pool command for projects using Postgres with
+    SSL connections. Thanks @selwin!
+
+-------------------------------------------------------------------
 Mon Mar 30 11:20:40 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Don't kill redis-server prematurely during test run
