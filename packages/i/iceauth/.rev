@@ -89,4 +89,15 @@
   * minor bugfix release, including fixes for compiler warnings</comment>
     <requestid>1156809</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6e970d13664b7383b8d6565ef4d50865</srcmd5>
+    <version>1.0.11</version>
+    <time>1776615342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.11
+  * This release adds support for building with meson as well as
+    autoconf.
+- switched to meson</comment>
+    <requestid>1348003</requestid>
+  </revision>
 </revisionlist>
