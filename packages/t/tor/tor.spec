@@ -2,7 +2,7 @@
 # spec file for package tor
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define torgroup %{name}
 %define home_dir %{_localstatedir}/lib/empty
 Name:           tor
-Version:        0.4.8.21
+Version:        0.4.9.6
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
@@ -37,6 +37,7 @@ Source100:      https://www.torproject.org/dist/%{name}-%{version}.tar.gz.sha256
 Source101:      https://www.torproject.org/dist/%{name}-%{version}.tar.gz.sha256sum.asc
 Patch0:         tor-0.2.5.x-logrotate.patch
 Patch1:         fix-test.patch
+BuildRequires:  libscrypt-devel
 BuildRequires:  openssl-devel >= 1.0.1
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pwdutils
@@ -55,7 +56,6 @@ Recommends:     torsocks
 Provides:       group(%{torgroup})
 Provides:       user(%{toruser})
 %systemd_ordering
-BuildRequires:  libscrypt-devel
 
 %description
 Tor is a connection-based low-latency anonymous communication system.

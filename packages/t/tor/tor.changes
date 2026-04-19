@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Apr 19 13:22:04 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- upate to 0.4.9.5:
+  * first stable release in the 0.4.9 series
+  * introduces a new circuit-level encryption design for better
+    client security
+  * introduce a more scalable way for large relay operators to
+    annotate which relays they run so clients can avoid using too
+    many of them in a single circuit
+
+-------------------------------------------------------------------
+Sun Apr 19 11:43:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.4.8.23:
+  * Fix a memory compare using the wrong length. This could lead to
+    a remote crash when using the conflux subsystem
+    (TROVE-2026-004, boo#1262302)
+  * Fix a series of defense in depth security issues found across
+    the codebase
+  * Regenerate fallback directories generated on March 25, 2026.
+  * Update the geoip files to match the IPFire Location Database,
+    as retrieved on 2026/03/25.
+- includes changes from 0.4.8.22: 
+  * Avoid an out-of-bounds read error that could occur with
+    V1-formatted EXTEND cells
+    (TROVE-2025-016, boo#1262301)
+  * Allow old clients to fetch the consensus even if they use
+    version 0 of the SENDME protocol
+  * Do not check for compression bombs for buffers smaller than
+    5MB (increased from 64 KB)
+  * Improvements to directory server statistics
+
+-------------------------------------------------------------------
 Sat Jan  3 21:31:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.8.21:

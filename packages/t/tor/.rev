@@ -1224,4 +1224,12 @@ nicer version with try-reload-or-restart</comment>
   and (forwarded request 1325233 from dirkmueller)</comment>
     <requestid>1325335</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>358743657e772c654eed8e25c4a95acb</srcmd5>
+    <version>0.4.9.6</version>
+    <time>1776615423</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1348032</requestid>
+  </revision>
 </revisionlist>
