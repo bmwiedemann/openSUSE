@@ -18,7 +18,7 @@
 
 
 Name:           vdu_controls
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Visual Display Unit virtual control panel
 License:        GPL-3.0-or-later
@@ -40,6 +40,8 @@ Requires:       python3-qt6
 %endif
 Recommends:     ddcutil-service
 Recommends:     python3-pyserial
+Recommends:     python3-pyudev
+Recommends:     brightnessctl
 %endif
 %if 0%{?fedora_version}
 %define ext_man *
@@ -49,6 +51,8 @@ Requires:       google-noto-sans-symbols2-fonts
 Requires:       python3
 Requires:       python3-qt5
 Suggests:       python3-pyserial
+Suggests:       python3-pyudev
+Suggests:       brightnessctl
 %endif
 
 %description

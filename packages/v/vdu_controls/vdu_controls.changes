@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 19 20:44:43 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.6.0
+  * Added laptop-panel support, see Setting option "laptop-panel-enabled".
+    Requires the commonly available "brightnessctr" command to be installed.
+  * Udev is used to detect laptop brightness events, such as up/down 
+    function-keys and inactivity-dimming.
+  * The control-panel's icons/titles are now shortcuts to the relevant 
+    Settings tabs.  
+  * Fixed Settings text-input line-height on small screens.
+  * Cosmetic fixes to icons and spacing in the main panel layout.
+  * New recommended packages: brightnessctl, python3-pyudev
+
+-------------------------------------------------------------------
 Mon Apr  6 20:08:10 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.5.0
