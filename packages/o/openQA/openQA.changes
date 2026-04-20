@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 20 10:40:55 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1776681647.73d96c66:
+  * feat(Git): Use nickname as a fallback for fullname
+  * perf: Select only needed columns in _previous_scenario_jobs
+  * perf(IssueReporter): Cache regression_links
+  * feat: ignore "Investigations" job group on dashboard by default
+  * fix: prevent "Not enough storage" with consistent setting
+  * refactor: Improve code for `None` auth method
+  * refactor: Avoid duplicating code for OAuth2 and OpenID auth
+  * test: Improve OAuth2 tests
+  * docs: Explain the design of the OAuth2 plugin
+  * feat: Return to previous page after login via OAuth2
+  * fix: ensure priority increases for job groups with NULL description
+  * feat(Makefile): add convenience targets for all services
+  * feat: Handle deleted/altered system user more gracefully
+  * fix(worker): handle missing D-Bus socket gracefully
+  * test: Consider everything we track coverage of as covered
+  * test: Cover YAML validation script
+  * feat(cli): support lower-case test argument passing
+  * feat(mcp): promote endpoint from /experimental/mcp to /mcp
+
+-------------------------------------------------------------------
 Tue Apr 14 21:33:39 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1776202410.3448a30a:
