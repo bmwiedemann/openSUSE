@@ -760,4 +760,29 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * openClaw extensions (forwarded request 1346030 from adrianSuSE)</comment>
     <requestid>1346031</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>49f11ac1936c4708d4c92deadf8f357f</srcmd5>
+    <version>0.21.0</version>
+    <time>1776694289</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.21.0
+  * launch: skip unchanged integration rewrite configration
+  * launch/openclaw: fix --yes flag behaviour to skip channels configuration
+  * launch: OpenCode inline config
+  * launch: add hermes by
+  * launch: always list cloud recommendations first
+  * cmd/launch: add Copilot CLI integration
+- fixing vulkan dependencies, should also fix runtime
+  (so far ollama claimed to use vulkan, but actually didn't)
+- check for missing symbols in cuda and vulkan backend if available
+
+- Update to version 0.20.7
+  * Fix quality of gemma:e2b and gemma:e4b when thinking is disabled
+  * ROCm: Update to ROCm 7.2.1 on Linux by @saman-amd
+  * Gemma 4 tool calling ability is improved and updated to use Google's latest post-launch fixes
+  * Parallel tool calling improved for streaming responses
+  * Hermes agent Ollama integration guide is now available
+  * Ollama app is updated to fix image attachment errors (forwarded request 1348061 from adrianSuSE)</comment>
+    <requestid>1348062</requestid>
+  </revision>
 </revisionlist>

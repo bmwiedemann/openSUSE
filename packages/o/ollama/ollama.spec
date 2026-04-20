@@ -35,7 +35,7 @@
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.20.5
+Version:        0.21.0
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
@@ -46,6 +46,7 @@ Source2:        %{name}.service
 Source3:        %{name}-user.conf
 Source4:        sysconfig.%{name}
 Patch0:         fix-mlxrunner-tests.diff
+BuildRequires:  ccache
 BuildRequires:  cmake >= 3.24
 BuildRequires:  git-core
 BuildRequires:  ninja
@@ -57,6 +58,11 @@ BuildRequires:  golang(API) >= 1.24
 BuildRequires:  group(render)
 BuildRequires:  group(video)
 BuildRequires:  pkgconfig(vulkan)
+# For Vulkan, or we have missing symbols
+BuildRequires:  glslang-devel
+BuildRequires:  libggml-base0
+BuildRequires:  vulkan-tools
+
 Requires:       group(render)
 Requires:       group(video)
 Recommends:     ( %{name}-vulkan or %{name}-cuda or %{name}-rocm )
@@ -164,7 +170,8 @@ sed -i -e 's@"lib"@"%{_lib}"@' \
     -DGGML_BACKEND_DIR=%{_libdir}/ollama \
     %{?with_cuda:-DCMAKE_CUDA_COMPILER=/usr/local/cuda-%{cuda_version_major}.%{cuda_version_minor}/bin/nvcc} \
     %{?with_rocm:-DCMAKE_HIP_COMPILER=%rocmllvm_bindir/clang++ \
-       -DAMDGPU_TARGETS=%{rocm_gpu_list_default}} \
+       -DAMDGPU_TARGETS=%{rocm_gpu_list_default} \
+       -DCMAKE_HIP_FLAGS=--offload-compress} \
     %{nil}
 %cmake_build
 
@@ -196,6 +203,16 @@ export CC="gcc-%{?force_gcc_version}"
 export GOFLAGS="-mod=vendor"
 %endif
 go test -v ./...
+
+# verify for missing symbols to avoid shipping a broken version, which would
+# silently not load
+export LD_LIBRARY_PATH=%buildroot%_libdir/ollama
+for backend in cuda vulkan; do
+  file=%buildroot%_libdir/ollama/libggml-${backend}.so
+  test -e "$file" || continue
+  ldd -r "$file" | grep "undefined symbol:" && exit 1
+done
+exit 0
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service

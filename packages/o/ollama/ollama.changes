@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Apr 17 07:40:40 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.21.0
+  * launch: skip unchanged integration rewrite configration
+  * launch/openclaw: fix --yes flag behaviour to skip channels configuration
+  * launch: OpenCode inline config
+  * launch: add hermes by
+  * launch: always list cloud recommendations first
+  * cmd/launch: add Copilot CLI integration
+- fixing vulkan dependencies, should also fix runtime
+  (so far ollama claimed to use vulkan, but actually didn't)
+- check for missing symbols in cuda and vulkan backend if available
+
+-------------------------------------------------------------------
+Thu Apr 16 18:28:01 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Add HIP compiler flag `--offload-compress` for builds with ROCm
+  support. This will allow the package to build against ROCm 7.2
+  from science:GPU:ROCm.
+
+-------------------------------------------------------------------
+Wed Apr 15 16:14:31 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.20.7
+  * Fix quality of gemma:e2b and gemma:e4b when thinking is disabled
+  * ROCm: Update to ROCm 7.2.1 on Linux by @saman-amd
+  * Gemma 4 tool calling ability is improved and updated to use Google's latest post-launch fixes
+  * Parallel tool calling improved for streaming responses
+  * Hermes agent Ollama integration guide is now available
+  * Ollama app is updated to fix image attachment errors
+
+-------------------------------------------------------------------
 Sat Apr 11 06:58:38 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to versoin 0.20.5
