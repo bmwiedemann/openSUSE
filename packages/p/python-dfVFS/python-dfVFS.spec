@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfVFS
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
+#define skip_python314 1
 
-%define timestamp 20231208
+%define timestamp 20260411
 Name:           python-dfVFS
 Version:        0~%{timestamp}
 Release:        0
@@ -38,6 +39,7 @@ BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module libbde}
 BuildRequires:  %{python_module libcaes}
 BuildRequires:  %{python_module libewf}
+BuildRequires:  %{python_module libfcrypto}
 BuildRequires:  %{python_module libfsapfs}
 BuildRequires:  %{python_module libfsext}
 BuildRequires:  %{python_module libfsfat}
@@ -118,8 +120,7 @@ name conflicted with another project.
 dfVFS is currently implemented as a Python module.
 
 %prep
-%setup -q -n dfvfs-%{timestamp}
-%autopatch -p1
+%autosetup -p1 -n dfvfs-%{timestamp}
 
 find dfvfs -name \*.py | xargs sed -i "/#!\/usr\/bin\/python/d"
 chmod -x utils/check_dependencies.py
@@ -142,7 +143,7 @@ $python ./run_tests.py
 
 %files %{python_files}
 %license LICENSE
-%doc ACKNOWLEDGEMENTS AUTHORS README
+%doc ACKNOWLEDGEMENTS AUTHORS README.md
 %doc utils/check_dependencies.py utils/dependencies.py
 # these are installed into the wrong place
 %exclude %{_datadir}/doc/dfvfs/

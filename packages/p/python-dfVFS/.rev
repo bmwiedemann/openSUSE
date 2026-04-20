@@ -683,4 +683,12 @@ Move from python 2 to python 3</comment>
     <comment>- Use pyproject macros to build and install. (forwarded request 1286480 from StevenK)</comment>
     <requestid>1287232</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d63307f35144408cfa7869a5ee0a2cb2</srcmd5>
+    <version>0~20260411</version>
+    <time>1776694400</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20260411</comment>
+    <requestid>1348163</requestid>
+  </revision>
 </revisionlist>
