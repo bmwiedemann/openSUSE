@@ -345,4 +345,22 @@
   * Fixed playtime not counting when using protonfix</comment>
     <requestid>1347197</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c598e9a02bc0ecf8dbe1397e750fdb0c</srcmd5>
+    <version>1.18.3</version>
+    <time>1776694306</time>
+    <user>anag_factory</user>
+    <comment>- Remove python-filelock dependency from .spec file
+- Bump to version 1.18.3
+- Upstream changes:
+  * Added gamepad mapping
+  * Updated Portuguese translation
+  * Prevent duplicating dialogs when pressing gamepad buttons
+  * More keybindings for Gamepad navigation
+  * Fixed Proton-CachyOS (System) not working with tools
+  * Added support for gamepad navigation
+  * Updated splash window closing
+  * Now allows relative paths for the default prefix and Lossless Location</comment>
+    <requestid>1348069</requestid>
+  </revision>
 </revisionlist>

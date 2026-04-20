@@ -19,7 +19,7 @@
 %{?single_pythons_311plus}
 
 Name:           faugus-launcher
-Version:        1.18.2
+Version:        1.18.3
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
 License:        MIT
@@ -49,7 +49,6 @@ Requires:       ImageMagick
 Requires:       canberra-gtk-play
 Requires:       %{python_module base}
 Requires:       %{python_module Pillow}
-Requires:       (%{python_module filelock} if faugus-launcher <= 1.15.2)
 Requires:       %{python_module gobject}
 Requires:       %{python_module icoextract}
 Requires:       %{python_module psutil}

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr 17 20:11:01 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Remove python-filelock dependency from .spec file
+
+-------------------------------------------------------------------
+Fri Apr 17 20:06:12 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.18.3
+- Upstream changes:
+  * Added gamepad mapping
+  * Updated Portuguese translation
+  * Prevent duplicating dialogs when pressing gamepad buttons
+  * More keybindings for Gamepad navigation
+  * Fixed Proton-CachyOS (System) not working with tools
+  * Added support for gamepad navigation
+  * Updated splash window closing
+  * Now allows relative paths for the default prefix and Lossless Location
+
+-------------------------------------------------------------------
 Wed Apr 15 17:17:47 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.18.2
