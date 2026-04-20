@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-common
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-devpi-common
-Version:        4.0.3
+Version:        4.1.1
 Release:        0
 Summary:        Utilities jointly used by devpi-server and devpi-client
 License:        MIT
 URL:            https://github.com/devpi/devpi
-Source:         https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/devpi-common/devpi_common-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lazy
-Requires:       python-packaging
+Requires:       python-packaging-legacy
 Requires:       python-requests >= 2.3.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module py >= 1.4.20}
 BuildRequires:  %{python_module lazy}
+BuildRequires:  %{python_module packaging-legacy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.3.0}
 # /SECTION
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module requests >= 2.3.0}
 Utilities jointly used by devpi-server and devpi-client.
 
 %prep
-%autosetup -p1 -n devpi-common-%{version}
+%autosetup -p1 -n devpi_common-%{version}
 rm tox.ini
 
 %build

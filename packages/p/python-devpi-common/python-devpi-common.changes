@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 17 17:41:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.1:
+  * Implement missing __hash__ for Version and CompareMixin
+    classes.
+  * Fix ``py.typed`` to properly export type information.
+  * Use ``__slots__`` to reduce memory usage of ``Version``.
+  * Use ``filter='data'`` for ``extractall`` call on supported
+    Python versions as additional guard to the existing out of
+    path checks against malicious tar files.
+  * Remove custom ``LegacyVersion`` and use ``packaging-legacy``
+    instead, which is also used by pypi.org.
+
+-------------------------------------------------------------------
 Sat Nov 25 12:54:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.3:

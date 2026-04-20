@@ -94,4 +94,21 @@
   * Replace “cached_property” with “lazy” package, which uses __dict__</comment>
     <requestid>1128723</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>da7955252ab49669662efa99d1acb716</srcmd5>
+    <version>4.1.1</version>
+    <time>1776694262</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.1:
+  * Implement missing __hash__ for Version and CompareMixin
+    classes.
+  * Fix ``py.typed`` to properly export type information.
+  * Use ``__slots__`` to reduce memory usage of ``Version``.
+  * Use ``filter='data'`` for ``extractall`` call on supported
+    Python versions as additional guard to the existing out of
+    path checks against malicious tar files.
+  * Remove custom ``LegacyVersion`` and use ``packaging-legacy``
+    instead, which is also used by pypi.org.</comment>
+    <requestid>1347776</requestid>
+  </revision>
 </revisionlist>
