@@ -1,7 +1,7 @@
 #
 # spec file for package frei0r-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           frei0r-plugins
-Version:        2.3.3
+Version:        3.1.3
 Release:        0
 Summary:        Collection of video sources and filters plugins
 # Upstream says 2.0+ but quite few of their plugins are GPL-3.0+
@@ -68,7 +68,7 @@ adaptation issue of standard effects.
 
 %files
 %license COPYING
-%doc AUTHORS README.md
+%doc AUTHORS.md README.md
 %{_libdir}/frei0r-1/
 %exclude %{_libdir}/frei0r-1/facebl0r.so
 %exclude %{_libdir}/frei0r-1/facedetect.so
@@ -82,5 +82,12 @@ adaptation issue of standard effects.
 %files devel
 %{_libdir}/pkgconfig/frei0r.pc
 %{_includedir}/frei0r.h
+%{_includedir}/frei0r.hpp
+%dir %{_includedir}/frei0r
+%{_includedir}/frei0r/blur.h
+%{_includedir}/frei0r/cairo.h
+%{_includedir}/frei0r/cfc.h
+%{_includedir}/frei0r/colorspace.h
+%{_includedir}/frei0r/math.h
 
 %changelog
