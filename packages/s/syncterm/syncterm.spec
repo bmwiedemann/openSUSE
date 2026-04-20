@@ -1,7 +1,7 @@
 #
 # spec file for package syncterm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           syncterm
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        An ANSI-BBS terminal which supports telnet, rlogin, and SSH
 License:        GPL-2.0-only
@@ -25,6 +25,7 @@ Group:          Productivity/Networking/Other
 URL:            https://syncterm.net
 #Git-Clone:     https://gitlab.synchro.net/main/sbbs.git
 Source:         https://master.dl.sourceforge.net/project/syncterm/syncterm/%{name}-%{version}/%{name}-%{version}-src.tgz
+Patch0:         syncterm-1.8-cmake.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  hicolor-icon-theme
@@ -33,6 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(x11)
 
 %description
@@ -49,9 +51,6 @@ console, under X11 using XLib, or using SDL.
 
 %install
 %cmake_install
-# HACK should be fixed upstream
-install -d %{buildroot}%{_mandir}/man1/
-mv -v %{buildroot}%{_mandir}/syncterm.man %{buildroot}%{_mandir}/man1/syncterm.1
 
 %files
 %license src/syncterm/LICENCE src/syncterm/gpl.txt

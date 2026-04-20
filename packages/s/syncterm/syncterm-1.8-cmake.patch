@@ -1,0 +1,43 @@
+diff --git a/src/syncterm/CMakeLists.txt b/src/syncterm/CMakeLists.txt
+index 266455d..4d449b6 100644
+--- a/src/syncterm/CMakeLists.txt
++++ b/src/syncterm/CMakeLists.txt
+@@ -175,17 +175,25 @@ endif()
+ 
+ install(TARGETS syncterm DESTINATION bin)
+ if(UNIX)
+-	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/syncterm.man TYPE MAN)
+-	install(FILES syncterm.desktop DESTINATION share/applications)
+-	install(FILES syncterm.desktop DESTINATION share/applications)
+-	install(FILES syncterm16.png DESTINATION share/icons/hicolor/16x16/apps RENAME syncterm.png)
+-	install(FILES syncterm22.png DESTINATION share/icons/hicolor/22x22/apps RENAME syncterm.png)
+-	install(FILES syncterm24.png DESTINATION share/icons/hicolor/24x24/apps RENAME syncterm.png)
+-	install(FILES syncterm32.png DESTINATION share/icons/hicolor/32x32/apps RENAME syncterm.png)
+-	install(FILES syncterm36.png DESTINATION share/icons/hicolor/36x36/apps RENAME syncterm.png)
+-	install(FILES syncterm48.png DESTINATION share/icons/hicolor/48x48/apps RENAME syncterm.png)
+-	install(FILES syncterm64.png DESTINATION share/icons/hicolor/64x64/apps RENAME syncterm.png)
+-	install(FILES syncterm256.png DESTINATION share/icons/hicolor/256x256/apps RENAME syncterm.png)
+-	install(FILES icons/syncterm.svg DESTINATION share/icons/hicolor/scalable/apps)
+-	install(FILES icons/syncterm-mini.svg DESTINATION share/icons/hicolor/scalable/apps)
++    # Man page
++    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/syncterm.man
++            DESTINATION ${CMAKE_INSTALL_MANDIR}/man1
++            RENAME syncterm.1)
++
++    # Desktop entry
++    install(FILES syncterm.desktop DESTINATION share/applications)
++
++    # PNG Icons
++    foreach(SIZE 16 22 24 32 36 48 64 256)
++        install(FILES syncterm${SIZE}.png
++                DESTINATION share/icons/hicolor/${SIZE}x${SIZE}/apps
++                RENAME syncterm.png)
++    endforeach()
++
++    # SVG Icons
++    install(FILES
++        icons/syncterm.svg
++        icons/syncterm-mini.svg
++        DESTINATION share/icons/hicolor/scalable/apps
++    )
+ endif()
