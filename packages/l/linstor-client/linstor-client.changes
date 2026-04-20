@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 15 05:40:56 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Convert to noarch, this package builds no binaries.
+- Use pyproject macros to build and install.
+- Explicitly list files and directories to install under sitelib.
+
+-------------------------------------------------------------------
 Fri Mar  1 10:42:11 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -1,7 +1,7 @@
 #
 # spec file for package linstor-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define python_linstor 1.12
 Name:           linstor-client
 Version:        1.12.0
@@ -27,11 +26,13 @@ Group:          Productivity/Clustering/HA
 URL:            https://github.com/LINBIT/linstor-client
 Source:         https://pkg.linbit.com//downloads/linstor/%{name}-%{version}.tar.gz
 Patch1:         change-location-of-bash-completion.patch
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module linstor >= %{python_linstor}}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 Requires:       python-linstor >= %{python_linstor}}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -53,15 +54,22 @@ sed -i '/^#!/d' linstor_client_main.py \
 
 %build
 # man pages included in tarball
-%python_build
+%pyproject_wheel
 
 %install
-#python setup.py install --single-version-externally-managed -O1 --root=%{buildroot} --prefix=%{_prefix} --record=INSTALLED_FILES
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%pyproject_install
+# Move bash-completion, pip can't write outside of sitelib
+mv -v %{buildroot}%{python3_sitelib}/usr/share %{buildroot}/usr
+%{python_expand %fdupes %{buildroot}%{$python_sitelib}
+# And clean up
+rm -r %{buildroot}%{$python_sitelib}/usr
+}
 
 %files %{python_files}
-%{python_sitelib}
+%{python_sitelib}/linstor_client
+%{python_sitelib}/linstor_client-%{version}.dist-info
+%{python_sitelib}/linstor_client_main.py
+%pycache_only %{python_sitelib}/__pycache__/linstor_client_main.*.pyc
 
 %files -n linstor
 %{_bindir}/linstor
