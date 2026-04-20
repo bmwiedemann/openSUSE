@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 19 09:36:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.24
+  * Fixed Counter32 and TimeTicks overflow handling.
+  * Improved type hints and test coverage for SET command
+    functions.
+  * Improved AsyncioDispatcher to track loop state and ensure
+    proper event loop closure.
+  * Refined MibBuilder error handling and added tests for MIB
+    compilation errors.
+  * Fixed dispatcher close handling to avoid event loop/resource
+    leaks.
+
+-------------------------------------------------------------------
 Fri Apr 10 06:37:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.1.23
