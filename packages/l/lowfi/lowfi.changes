@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 18 08:20:06 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.0.6:
+  * docs: make a logo
+  * fix: sync mpris state before emission and send PlaybackStatus property
+    alongside Metadata
+
+-------------------------------------------------------------------
 Sat Mar 21 08:46:08 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.0.5:
