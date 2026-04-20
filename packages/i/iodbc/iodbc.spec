@@ -1,7 +1,7 @@
 #
 # spec file for package iodbc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        BSD-3-Clause OR LGPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://www.iodbc.org/
 Source:         https://download.sourceforge.net/iodbc/libiodbc-%{version}.tar.gz
+Patch0:         iodbc-gcc15-fixes.patch
 BuildRequires:  pkgconfig(gtk+-2.0)
 
 %description
@@ -87,6 +88,8 @@ This package provides tools for configuring and administering iODBC.
 %autosetup -n libiodbc-%{version} -p1
 
 %build
+# fix compilation with gcc15
+export CFLAGS="%{optflags} -std=gnu89 -fpermissive -Wno-error=strict-prototypes -Wno-error=implicit-function-declaration"
 %configure \
     --disable-static \
     --disable-libodbc \

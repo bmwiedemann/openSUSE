@@ -232,4 +232,15 @@ See COPYING file. Note that the only valid version of the LGPL for iodbc is the 
 - Remove upstreamed fix-nonvoid-return.diff</comment>
     <requestid>1111519</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>156953a622bc6cf0fb480f00f33c39d2</srcmd5>
+    <version>3.52.16</version>
+    <time>1776694389</time>
+    <user>anag_factory</user>
+    <comment>- Fix build with gcc15:
+  * Compile with `-std=gnu89 -fpermissive -Wno-error=strict-prototypes
+    -Wno-error=implicit-function-declaration`
+  * Add iodbc-gcc15-fixes.patch</comment>
+    <requestid>1347695</requestid>
+  </revision>
 </revisionlist>

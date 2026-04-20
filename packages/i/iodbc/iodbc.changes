@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 17 10:59:55 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Fix build with gcc15:
+  * Compile with `-std=gnu89 -fpermissive -Wno-error=strict-prototypes
+    -Wno-error=implicit-function-declaration`
+  * Add iodbc-gcc15-fixes.patch
+
+-------------------------------------------------------------------
 Fri Sep 15 10:03:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.52.16

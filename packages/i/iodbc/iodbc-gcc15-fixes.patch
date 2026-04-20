@@ -1,0 +1,13 @@
+Index: libiodbc-3.52.16/iodbc/itrace.h
+===================================================================
+--- libiodbc-3.52.16.orig/iodbc/itrace.h
++++ libiodbc-3.52.16/iodbc/itrace.h
+@@ -110,7 +110,7 @@ extern int ODBCSharedTraceFlag;
+ \
+ 	if (!t_penv->thread_safe) MUTEX_LOCK (t_penv->drv_lock); \
+ \
+-	ret = proc plist; \
++	ret = ((RETCODE (*)())proc) plist; \
+ 	if (errHandle) ((GENV_t *)(errHandle))->rc = ret; \
+ \
+ 	if (!t_penv->thread_safe) MUTEX_UNLOCK (t_penv->drv_lock); \
