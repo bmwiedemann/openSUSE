@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:41:42 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- CVE-2026-40260: crafted PDF can lead to large memory usage (bsc#1262284)
+  Add security patch: CVE-2026-40260.patch
+
+-------------------------------------------------------------------
 Fri Mar 20 15:53:50 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - CVE-2026-33123: excessive resource consumption when processing specially
