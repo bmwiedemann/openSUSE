@@ -81,4 +81,12 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>1011178</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e592daf82d5c3a9cfa54c1aa63472452</srcmd5>
+    <version>1.0.7</version>
+    <time>1776694467</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1348228</requestid>
+  </revision>
 </revisionlist>

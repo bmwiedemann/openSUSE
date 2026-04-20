@@ -1,7 +1,7 @@
 #
 # spec file for package xgc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xgc
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        X graphics demo
 License:        MIT
