@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-stl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2025-2026 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,14 +31,11 @@ Source3:        https://orthanc.uclouvain.be/downloads/third-party-downloads/STL
 Source4:        https://orthanc.uclouvain.be/downloads/third-party-downloads/STL/three-84.js.gz
 Source5:        https://orthanc.uclouvain.be/downloads/third-party-downloads/STL/Online3DViewer-0.12.0.tar.gz
 Source6:        https://orthanc.uclouvain.be/downloads/linux-standard-base/%{name}/%{version}/dist.zip
+Patch0:         math.diff
 
 BuildRequires:  cmake
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  dcmtk-devel
+BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_atomic-devel >= 1.66
@@ -47,18 +44,11 @@ BuildRequires:  libboost_filesystem-devel >= 1.66
 BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
-%if 0%{?suse_version} <= 1600
-BuildRequires:  libboost_system-devel >= 1.66
-%endif
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libcurl-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
-# Only needed for Leap 15.6
-%if 0%{?suse_version} == 1500
-BuildRequires:  python311
-%endif
 BuildRequires:  unzip
 BuildRequires:  vtk-devel
 BuildRequires:  zlib-devel
@@ -71,7 +61,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 plugin to provide support for DICOM STL in Orthanc (Encapsulated 3D Manufacturing Model IODs)
 
 %prep
-%autosetup -p2 -n OrthancSTL-%{version}
+%autosetup -p1 -n OrthancSTL-%{version}
 
 #OrthancPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
@@ -83,11 +73,10 @@ cd ..
 mkdir -p JavaScriptLibraries/
 unzip %{S:6} -d JavaScriptLibraries
 
+# boost komponente system entfernen
+sed -i 's/\(find_package([^)]* \)system\(.*\)/\1\2/g' CMakeLists.txt
+
 %build
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
-export CC=gcc-13
-export CXX=g++-13
-%endif
 
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \

@@ -1,0 +1,18 @@
+# HG changeset patch
+# User Sebastien Jodogne <s.jodogne@gmail.com>
+# Date 1776144488 -7200
+# Node ID 58085d105a0bd4a4a89c627419e73172a0771e34
+# Parent  07fd10c2605811722430bf33019f149430763a79
+fix build with framework 1.12.11
+
+diff -r 07fd10c26058 -r 58085d105a0b Sources/StructureSetGeometry.cpp
+--- a/Sources/StructureSetGeometry.cpp	Fri Jan 02 15:12:38 2026 +0100
++++ b/Sources/StructureSetGeometry.cpp	Tue Apr 14 07:28:08 2026 +0200
+@@ -29,6 +29,7 @@
+ #include <OrthancException.h>
+ 
+ #include <list>
++#include <math.h>
+ 
+ 
+ bool StructureSetGeometry::LookupProjectionIndex(size_t& index,

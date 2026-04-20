@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 17 07:18:45 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- math.diff added to fix build error with framework 1.12.11
+  some cleanup of spec file
+
+-------------------------------------------------------------------
+Wed Dec 10 15:09:16 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- patch out libboost-system to fix build error
+
+-------------------------------------------------------------------
 Wed Sep 10 09:33:25 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - remove libboost_system-devel for TW (removed in boost 1.89) 
