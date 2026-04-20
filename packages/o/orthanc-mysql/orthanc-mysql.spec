@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-mysql
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2020-2024 Dr. Axel Braun
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2020-2026 Dr. Axel Braun <DocB@openSUSE.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,11 @@ Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancMy
 Source1:        orthanc-mysql-readme.openSUSE
 Source2:        mysql.json
 Patch0:         ggl_index.patch
+Patch1:         mysql.patch
+
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
-BuildRequires:  gcc13-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -42,9 +40,6 @@ BuildRequires:  libboost_filesystem-devel >= 1.66
 BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
-%if 0%{?suse_version} <= 1600
-BuildRequires:  libboost_system-devel >= 1.66
-%endif
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libcurl-devel
 BuildRequires:  libmysqld-devel
@@ -66,10 +61,7 @@ MySQL/mariadb Database plugin for Orthanc, replaces SQLite database
 %autosetup -p1 -n OrthancMySQL-%{version}
 
 %build
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
-export CC=gcc-13
-export CXX=g++-13
-%endif
+
 %cmake ../MySQL \
        -DALLOW_DOWNLOADS=ON \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \

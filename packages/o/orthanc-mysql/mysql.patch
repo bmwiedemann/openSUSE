@@ -1,0 +1,25 @@
+diff -r -urEb OrthancMySQL-5.2.orig/Framework/Plugins/IndexBackend.cpp OrthancMySQL-5.2/Framework/Plugins/IndexBackend.cpp
+--- OrthancMySQL-5.2.orig/Framework/Plugins/IndexBackend.cpp	2024-06-06 15:12:01.000000000 +0200
++++ OrthancMySQL-5.2/Framework/Plugins/IndexBackend.cpp	2026-04-17 10:49:55.377160324 +0200
+@@ -34,8 +34,11 @@
+ #include <Compatibility.h>  // For std::unique_ptr<>
+ #include <Logging.h>
+ #include <OrthancException.h>
++#include <ElapsedTimer.h>
+ #include <Toolbox.h>
+ 
++#include <boost/lexical_cast.hpp>
++
+ 
+ namespace OrthancDatabases
+ {
+@@ -2887,7 +2890,7 @@
+     {
+       DatabaseManager::StandaloneStatement statement(manager, "SELECT 1");
+ 
+-      Orthanc::Toolbox::ElapsedTimer timer;
++      Orthanc::ElapsedTimer timer;
+ 
+       statement.ExecuteWithoutResult();
+ 
+Only in OrthancMySQL-5.2/MySQL: ThirdPartyDownloads
