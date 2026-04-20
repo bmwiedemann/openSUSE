@@ -60,4 +60,13 @@
   * improve pipeline create_from (#1158)</comment>
     <requestid>1344048</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c941b24da085301af68fcc25b1bc2516</srcmd5>
+    <version>2.27.0</version>
+    <time>1776694279</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.27.0:
+  * Prep for firestore GA</comment>
+    <requestid>1348065</requestid>
+  </revision>
 </revisionlist>

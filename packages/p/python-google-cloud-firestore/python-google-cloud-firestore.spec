@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-firestore
-Version:        2.26.0
+Version:        2.27.0
 Release:        0
 Summary:        Google Cloud Firestore API client library
 License:        Apache-2.0
