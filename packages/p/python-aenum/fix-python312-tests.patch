@@ -1,7 +1,7 @@
-Index: aenum-3.1.15/aenum/test_v3.py
+Index: aenum-3.1.16/aenum/test_v3.py
 ===================================================================
---- aenum-3.1.15.orig/aenum/test_v3.py
-+++ aenum-3.1.15/aenum/test_v3.py
+--- aenum-3.1.16.orig/aenum/test_v3.py
++++ aenum-3.1.16/aenum/test_v3.py
 @@ -1792,6 +1792,7 @@ class TestExtendEnumV3(TestCase):
          self.assertEqual(len(Color), 3)
  
@@ -10,11 +10,11 @@ Index: aenum-3.1.15/aenum/test_v3.py
      def test_extend_enum_shadow_property_stdlib(self):
          class Color(StdlibEnum):
              red = 1
-Index: aenum-3.1.15/aenum/doc/aenum.rst
+Index: aenum-3.1.16/aenum/doc/aenum.rst
 ===================================================================
---- aenum-3.1.15.orig/aenum/doc/aenum.rst
-+++ aenum-3.1.15/aenum/doc/aenum.rst
-@@ -1120,7 +1120,7 @@ alias::
+--- aenum-3.1.16.orig/aenum/doc/aenum.rst
++++ aenum-3.1.16/aenum/doc/aenum.rst
+@@ -1122,7 +1122,7 @@ alias::
      ...                     "aliases not allowed in UniqueEnum:  %r --> %r"
      ...                     % (a, e))
      ...
@@ -23,12 +23,3 @@ Index: aenum-3.1.15/aenum/doc/aenum.rst
      ...     _order_ = 'red green blue'
      ...     red = 1
      ...     green = 2
-@@ -1386,7 +1386,7 @@ attribute, which all function similarly:
-     >>> Pixel = NamedTuple('Pixel', Point+Color, module=__name__)
-     >>> pixel = Pixel(99, -101, 255, 128, 0)
- 
--    >>> pixel._asdict()
-+    >>> pixel._asdict()  # doctest: +SKIP
-     OrderedDict([('x', 99), ('y', -101), ('r', 255), ('g', 128), ('b', 0)])
- 
-     >>> Point._make((4, 5))

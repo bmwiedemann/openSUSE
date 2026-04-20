@@ -165,4 +165,17 @@ https://build.opensuse.org/request/show/612101</comment>
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1273885</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e5580874fd8b97699e5296f8a55248e8</srcmd5>
+    <version>3.1.16</version>
+    <time>1776694387</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.16:
+  * standardized handling of negative numbers in flags
+  * support dictionary-like key access to NamedTuple
+  * remove newer setup.py option include_package_data
+
+- Switch to pyproject macros.</comment>
+    <requestid>1348128</requestid>
+  </revision>
 </revisionlist>

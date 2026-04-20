@@ -2,11 +2,11 @@
  aenum/test.py |   32 ++++++++++++++++----------------
  1 file changed, 16 insertions(+), 16 deletions(-)
 
-Index: aenum-3.1.11/aenum/test.py
+Index: aenum-3.1.16/aenum/test.py
 ===================================================================
---- aenum-3.1.11.orig/aenum/test.py
-+++ aenum-3.1.11/aenum/test.py
-@@ -51,13 +51,18 @@ def load_tests(loader, tests, ignore):
+--- aenum-3.1.16.orig/aenum/test.py
++++ aenum-3.1.16/aenum/test.py
+@@ -52,13 +52,18 @@ def load_tests(loader, tests, ignore):
      return tests
  
  class TestCase(unittest.TestCase):
@@ -26,16 +26,24 @@ Index: aenum-3.1.11/aenum/test.py
  
  # for pickle tests
  try:
-@@ -940,6 +945,8 @@ class TestEnum(TestCase):
+@@ -943,6 +948,8 @@ class TestEnumType(TestCase):
+ class TestEnum(TestCase):
+ 
+     def setUp(self):
++        super(TestEnum, self).setUp()
++
+         class Season(Enum):
+             SPRING = 1
+             SUMMER = 2
+@@ -1004,6 +1011,7 @@ class TestEnum(TestCase):
              IDES_OF_MARCH = 2013, 3, 15
          self.Holiday = Holiday
  
-+        super(TestEnum, self).setUp()
 +
      def test_set_name(self):
          class Descriptor(object):
              name = None
-@@ -2081,7 +2088,7 @@ class TestEnum(TestCase):
+@@ -2189,7 +2197,7 @@ class TestEnum(TestCase):
          # for use with both Python 2/3
          JSONEnum = JSONEnumMeta('JsonEnum', (Enum, ), {})
  
@@ -44,16 +52,7 @@ Index: aenum-3.1.11/aenum/test.py
          with open(test_file, 'w') as f:
              f.write(
                  '[{"name":"Afghanistan","alpha-2":"AF","country-code":"004","notes":{"description":"pretty"}},'
-@@ -4040,6 +4047,8 @@ class TestFlag(TestCase):
-             CE = 1<<19
-         self.Open = Open
- 
-+        super(TestFlag, self).setUp()
-+
-     def test_set_name(self):
-         class Descriptor(object):
-             name = None
-@@ -4338,7 +4347,7 @@ class TestFlag(TestCase):
+@@ -4621,7 +4629,7 @@ class TestFlag(TestCase):
          self.assertEqual(AS.STREET._value_, 32)
          self.assertEqual(AS.SECONDARY_TYPE._value_, 128)
          self.assertEqual((AS.NAME | AS.STREET)._value_, 48, "%r is not 48" % (AS.NAME | AS.STREET))
@@ -62,16 +61,16 @@ Index: aenum-3.1.11/aenum/test.py
      def test_iteration(self):
          C = self.Color
          self.assertEqual(list(C), [C.RED, C.GREEN, C.BLUE])
-@@ -5025,6 +5034,8 @@ class TestIntFlag(TestCase):
-         self.Color = Color
-         self.Open = Open
+@@ -5609,6 +5617,8 @@ class TestIntFlag(TestCase):
+         self.assertIs(Y.D, Y.B|Y.E)
+         self.assertEqual(Y.D.value, 6)
  
 +        super(TestIntFlag, self).setUp()
 +
      def test_set_name(self):
          class Descriptor(object):
              name = None
-@@ -6197,10 +6208,10 @@ class TestStackoverflowAnswers(TestCase)
+@@ -7141,10 +7151,10 @@ class TestStackoverflowAnswers(TestCase)
                          fh.write('#define %s %r\n' % (enum.name, enum.value))
          class Arduino(CHeader):
              _order_ = 'ONE TWO'
@@ -84,3 +83,21 @@ Index: aenum-3.1.11/aenum/test.py
                  data = fh.read()
          self.assertEqual(textwrap.dedent("""\
                  initial header stuff here
+@@ -7488,7 +7498,7 @@ class TestExtendEnum(TestCase):
+         self.assertEqual(Color.BLACK.name, 'BLACK')
+         self.assertEqual(Color.BLACK.value, 'black')
+         self.assertEqual(len(Color), 4)
+-        
++
+ 
+ class TestIssues(TestCase):
+ 
+@@ -7561,7 +7571,7 @@ class TestIssues(TestCase):
+         extend_enum(FlagTest, 'HIGH', 4)
+         self.assertEqual(FlagTest.LOW | FlagTest.HIGH, FlagTest(5))
+         self.assertEqual((FlagTest.LOW | FlagTest.HIGH).value, 5)
+-        
++
+     def test_extend_unhashable(self):
+         class TestEnum(Enum):
+             ABC = {

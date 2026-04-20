@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 20 07:22:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.16:
+  * standardized handling of negative numbers in flags
+  * support dictionary-like key access to NamedTuple
+  * remove newer setup.py option include_package_data
+
+-------------------------------------------------------------------
 Fri May  2 03:13:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Switch to pyproject macros. 
+- Switch to pyproject macros.
 
 -------------------------------------------------------------------
 Tue Feb  6 08:42:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
