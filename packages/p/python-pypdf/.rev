@@ -193,4 +193,27 @@
 - Run the testsuite.</comment>
     <requestid>1343553</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>70eebcc460b79cf26e3ecb3308e9e77b</srcmd5>
+    <version>6.10.2</version>
+    <time>1776694349</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.10.2 (bsc#1262284, CVE-2026-40260)
+  * Do not rely on possibly invalid /Size for incremental cloning
+  * Introduce limits for FlateDecode parameters and image decoding
+- 6.10.1
+  * Limit the allowed size of xref and object streams
+  * Consider strict mode setting for decryption errors
+  * Use new parameter names for compress_identical_objects
+- 6.10.0
+  * Disallow custom XML entity declarations for XMP metadata
+  * Skip MD5 key derivation for AES-256 encrypted PDFs
+  * Use remove_orphans in compress_identical_objects
+  * Fix PdfReadError when xref table contains comments before trailer
+  * Correctly verify AES padding during decryption
+  * Fix stale object cache from non-authoritative object streams
+  * Fix extract_links pairing when annotations include non-links
+  * Add AI policy</comment>
+    <requestid>1348120</requestid>
+  </revision>
 </revisionlist>
