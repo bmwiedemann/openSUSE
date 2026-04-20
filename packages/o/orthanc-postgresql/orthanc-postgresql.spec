@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-postgresql
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2019-2025 Dr. Axel Braun
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2019-2026 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           orthanc-postgresql
 Summary:        Database plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        10.0
+Version:        10.1
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancPostgreSQL-%{version}.tar.gz
