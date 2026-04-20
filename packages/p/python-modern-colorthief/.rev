@@ -80,4 +80,15 @@
   + feat: add more docs and enable support for gil-less python (forwarded request 1345987 from rrahl0)</comment>
     <requestid>1345988</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7c5a76969228ba82f22d30a031461f61</srcmd5>
+    <version>0.2.0</version>
+    <time>1776694301</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.2.0:
+  * chore: update to new maturin action
+  * Update all dependencies (major)
+  * Update dependency python to 3.14</comment>
+    <requestid>1348080</requestid>
+  </revision>
 </revisionlist>
