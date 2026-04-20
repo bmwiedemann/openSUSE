@@ -1,0 +1,9 @@
+<package name="pf-bb-config" project="openSUSE:Factory">
+  <title>pf-bb-config</title>
+  <description>The Physical Function (PF) Baseband Device (BBDEV) Configuration Application 
+(pf_bb_config) from Intel to setup the ACC100/ACC200/AGX100 accelerator 
+cards.
+The program accesses the configuration space and sets various parameters 
+through memory-mapped I/O (MMIO) reads and writes.</description>
+  <url>github.com/intel/pf-bb-config</url>
+</package>

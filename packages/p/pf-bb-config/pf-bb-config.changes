@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Thu Jan 15 15:05:38 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update to 25.11
+  * No actual code change.
+  * Removing configuration files in PF mode to avoid confusion
+    since default usage in in VF mode.
+- Update to 25.01 
+  * VRB2: Allow for extra time when updating Power Gating to avoid potential condition when
+    status is not updated fast enough.
+  * Minor documentation update.
+- Update to 24.11
+  * VRB2: Support for the GNR-D B0 ES2 device.
+    This version 24.11 or later is required to support VRB2.
+  * VRB2: Update of the default FFT windowing for VRB2 with variety of window sizes.
+  * Fix: Minor error handling fix in case number of devices being provided is invalid.
+  * Fix: Minor explicit set turbo-decoder fallback settings to avoid unlikely negative scenario.
+- Update to 24.07
+  * VRB2: Enforce maximum 256 total queues configured per operation type.
+  * Prevent negative scenario with MMIO marginally outside of PF BAR.
+  * Cosmetic change to remind user to use VRB1 instead of deprecated ACC200, and VF mode by default.
+  * Cosmetic change to adjust log level when not required to be logged as INFO.
+  * Cosmetic change to remove obsolete directory ./acc200/ since ./vrb1 should be used.
+- Cleanup specfile
+  * remove not needed needssslcertforbuild, build-deps and %set_permission
+- Fix package immutable mode (jsc#PED-14970)
+  * all examples are places in %{_datadir}/pf-bb-config/examples/
+- Fix display version string
+
+-------------------------------------------------------------------
+Fri May  9 15:09:56 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build for reproducible builds (bsc#1237231)
+- Licensed under Apache-2.0
+
+-------------------------------------------------------------------
+Wed Jul 31 16:58:59 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
+
+- Update to version 24.03 (PED-8595) 
+  Some of the features nad fixes are
+   * Update support for Intel vRAN Boost v2 on GNR-D (Early Access Alpha)
+     including VRB2 fixes.
+   * Refactor of the FFT window loading and documentation improvement of
+     provided LUTs format.
+   * ACC100: Add an error report in case of exception after partial soft
+     reboot and reconfiguration.
+   * Fix: Engines counters were not consistently exposed as part of
+     Telemetry.
+   * Fix: Support for N3000 LTE using vfio-pci.
+
+-------------------------------------------------------------------
+Wed Jul 31 16:54:33 UTC 2024 - Duraisankar P <Duraisankar.pitchumani@suse.com>
+
+- Initial version 23.03 (PED-8595) 
