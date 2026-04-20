@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Tue Mar 17 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix lib64 issue
+
+-------------------------------------------------------------------
+Fri Mar 13 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge rocm-filesystem7.2 back
+
+-------------------------------------------------------------------
+Tue Mar 10 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge rocm-filesystem7.2 back
+
+-------------------------------------------------------------------
+Tue Feb 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Tue Feb 10 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- This is a noarch package
+
+-------------------------------------------------------------------
+Wed Feb  4 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Initial package
+
