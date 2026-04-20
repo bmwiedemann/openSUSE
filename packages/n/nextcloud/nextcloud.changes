@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 19 16:06:47 UTC 2026 - ecsos <ecsos@opensuse.org> - 33.0.2
+
+- Remove require of php-opcache if php8 >= 8.5 is installed.
+
+-------------------------------------------------------------------
 Thu Apr  2 08:57:50 UTC 2026 - ecsos <ecsos@opensuse.org> - 33.0.2
 
 - Update to 33.0.2

@@ -104,13 +104,13 @@ Requires:       php-curl
 # SUSE does not include the fileinfo module in php-common.
 Requires:       php-fileinfo
 Requires:       php-iconv
-Requires:       php-opcache
 Requires:       php-openssl
 Requires:       php-pear
 Requires:       php-xmlreader
 Requires:       php-xmlwriter
 Requires:       php-zip
 Requires:       php-zlib
+Requires:       (php-opcache if php < 8.5.0)
 Recommends:     sqlite3
 %{?systemd_requires}
 %endif
