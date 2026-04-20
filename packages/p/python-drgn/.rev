@@ -152,4 +152,40 @@
   * Linux 6.17 and 6.18 Support</comment>
     <requestid>1316034</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6d418f2227addd3c47130dfb208742ca</srcmd5>
+    <version>0.1.0</version>
+    <time>1776694340</time>
+    <user>anag_factory</user>
+    <comment>- Switch to using pyproject macros to build and install the Python module.
+
+- Recompress drgn 0.1.0 tarball with xz.
+- Add drgn-crash to the drgn package.
+
+- Update to drgn 0.1.0
+  * drgn now provides a few built-in commands accessed by starting
+    a line with the % character.
+  * py runs Python code, allowing its output to be piped or redirected.
+  * sh executes a shell command.
+  * source runs a script.
+  * drgn now provides a compatibility mode with the crash utility.
+  * Most commands have been ported from crash.
+  * Ported commands also have a --drgn option that prints example
+    drgn code for doing the equivalent of the command.
+  * Crash compatibility mode can be accessed with %crash from the
+    drgn CLI or directly with the new drgn-crash script.
+  * drgn.StackFrame.source() now returns a new type,
+    drgn.SourceLocation, instead of a tuple.
+  * drgn.Program.source_location() was added. It looks up the file, line
+    number, column number, and function name of a given code address.
+  * Several methods were added to drgn.Program for searching for
+    certain values or patterns in memory
+  * drgn.Program.set_linux_kernel_custom() was added. It allows
+    creating a drgn.Program representing the Linux kernel that
+    is backed by a custom backend defined by the user, like a
+    remote transport.
+  * Linux 6.19 is now supported. Linux 7.0 is now tentatively supported.
+  * Many new helpers were added.</comment>
+    <requestid>1348106</requestid>
+  </revision>
 </revisionlist>

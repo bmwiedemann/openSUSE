@@ -1,7 +1,46 @@
 -------------------------------------------------------------------
+Wed Apr 15 04:01:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to using pyproject macros to build and install the Python module.
+
+-------------------------------------------------------------------
+Wed Mar 11 10:40:29 UTC 2026 - Petr Tesařík <ptesarik@suse.com>
+
+- Recompress drgn 0.1.0 tarball with xz.
+- Add drgn-crash to the drgn package.
+
+-------------------------------------------------------------------
 Thu Nov  6 13:15:51 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
 
 - Split off a drgn package with the CLI program.
+
+-------------------------------------------------------------------
+Thu Nov  6 07:05:00 UTC 2025 - Christoph Grüninger <foss@grueninger.de>
+
+- Update to drgn 0.1.0
+  * drgn now provides a few built-in commands accessed by starting
+    a line with the % character.
+  * py runs Python code, allowing its output to be piped or redirected.
+  * sh executes a shell command.
+  * source runs a script.
+  * drgn now provides a compatibility mode with the crash utility.
+  * Most commands have been ported from crash.
+  * Ported commands also have a --drgn option that prints example
+    drgn code for doing the equivalent of the command.
+  * Crash compatibility mode can be accessed with %crash from the
+    drgn CLI or directly with the new drgn-crash script.
+  * drgn.StackFrame.source() now returns a new type,
+    drgn.SourceLocation, instead of a tuple.
+  * drgn.Program.source_location() was added. It looks up the file, line
+    number, column number, and function name of a given code address.
+  * Several methods were added to drgn.Program for searching for
+    certain values or patterns in memory
+  * drgn.Program.set_linux_kernel_custom() was added. It allows
+    creating a drgn.Program representing the Linux kernel that
+    is backed by a custom backend defined by the user, like a
+    remote transport.
+  * Linux 6.19 is now supported. Linux 7.0 is now tentatively supported.
+  * Many new helpers were added.
 
 -------------------------------------------------------------------
 Tue Nov  4 19:48:45 UTC 2025 - Petr Tesařík <ptesarik@suse.com>

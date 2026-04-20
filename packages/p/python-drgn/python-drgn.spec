@@ -1,7 +1,7 @@
 #
 # spec file for package python-drgn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{?sle15_python_module_pythons}
+
 %if %{undefined primary_python}
-%define primary_python python3
+%define first_arg() %1
+%define primary_python %{first_arg %pythons}
 %endif
 
 Name:           python-drgn
-Version:        0.0.33
+Version:        0.1.0
 Release:        0
 Summary:        Scriptable debugger library
 License:        LGPL-2.1-or-later
@@ -29,6 +32,8 @@ URL:            https://github.com/osandov/drgn
 Source:         drgn-%{version}.tar.xz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -41,6 +46,11 @@ BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+# Do not even try for ancient distributions
+%if %{undefined pythons}
+ExclusiveArch:  nothere
+%endif
+
 %python_subpackages
 
 %description
@@ -54,7 +64,7 @@ This package contains the Python module.
 Summary:        Scriptable debugger CLI
 Conflicts:      %{python_module drgn < 0.0.33}
 Provides:       %{python_module drgn:/usr/bin/drgn}
-Requires:       %{primary_python}-drgn
+Requires:       %{primary_python}-drgn = %{version}
 
 %description -n drgn
 drgn (pronounced “dragon”) is a debugger with an emphasis on
@@ -68,10 +78,10 @@ This package contains the CLI program.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -89,5 +99,6 @@ export CFLAGS="%{optflags}"
 %doc README.rst
 %license COPYING
 %{_bindir}/drgn
+%{_bindir}/drgn-crash
 
 %changelog
