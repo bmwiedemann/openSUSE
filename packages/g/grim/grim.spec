@@ -1,7 +1,7 @@
 #
 # spec file for package grim
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           grim
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Wayland compositor image grabber
 License:        MIT
 Group:          Productivity/Graphics/Other
-URL:            https://git.sr.ht/~emersion/grim
-Source:         https://git.sr.ht/~emersion/grim/refs/download/v%{version}/grim-%{version}.tar.gz
+URL:            https://gitlab.freedesktop.org/emersion/grim
+Source:         https://gitlab.freedesktop.org/emersion/grim/-/releases/v%{version}/downloads/%{name}-%{version}.tar.gz
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
@@ -31,7 +31,8 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.14
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.14.91
+BuildRequires:  pkgconfig(wayland-scanner)
 
 %description
 This tool can grab images from a Wayland compositor.
@@ -47,7 +48,7 @@ This tool can grab images from a Wayland compositor.
 %meson_install
 
 %files
-%license LICENSE
+%license LICENSE*
 %doc README.md
 %{_bindir}/%{name}
 %{_mandir}/man?/%{name}*

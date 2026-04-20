@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Apr 19 15:37:27 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- Update to 1.5.0
+	* write_jpg: use no/444 subsampling
+	* build: print feature summary
+	* Move man pages into doc/ directory
+	* build: always set HAVE_JPEG
+	* build: drop grim_inc
+	* build: use cc.get_supported_arguments() to check for -W flags
+	* build: turn on -Wundef
+	* build: find wayland-scanner via pkg-config
+	* build: require wayland-scanner >=1.14.91
+	* build: drop unnecessary join_paths() call
+	* build: drop unnecessary intermediate protocols static library
+	* Define _POSIX_C_SOURCE globally
+	* build: move wayland-protocols dep to protocol/
+	* Move generated protocol header includes to source files
+	* Check for wl_display_roundtrip() errors
+	* Drop "client" suffix in generated protocol header filenames
+	* Move screencopy manager check up
+	* gitignore: only ignore Meson subprojects/ directory
+	* Add support for ext-image-copy-capture-v1
+	* Prefer wl_output.name over xdg-output-unstable-v1 when available
+	* Migrate to gitlab.freedesktop.org
+	* Remove unnecessary strdup() for -o
+	* Bail out when both -o and -g are provided
+	* readme: quote -o argument in output capture example
+	* Add comment to describe what grim_output.geometry describes
+	* Stop using output->geometry in render()
+	* Introduce grim_capture
+	* Add support for toplevel capture
+	* Split grim_output.geometry into fallback_{x,y} and mode_{width,height
+	* build: bump version to 1.5.0
+
+-------------------------------------------------------------------
 Fri Jun 23 10:15:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.1:

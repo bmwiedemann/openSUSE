@@ -110,4 +110,12 @@
 - Drop 0001-write_jpg-fix-printf-format-specifier.patch</comment>
     <requestid>1094838</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea0291e720ed67c85133b7a37ae23d0f</srcmd5>
+    <version>1.5.0</version>
+    <time>1776694348</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1348117</requestid>
+  </revision>
 </revisionlist>
