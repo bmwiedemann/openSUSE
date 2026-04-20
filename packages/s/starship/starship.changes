@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 20 03:07:46 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.25.0:
+  * Features:
+    - add Maven module.
+    - add statusline subcommand for Claude Code integration.
+    - battery: Update default unknown_symbol.
+    - directory: add support for regexes in substitutions.
+    - env_var: include $symbol in default format.
+    - git_status: add variables to track worktree and index changes.
+    - python: add option to replace generic venv-names with parent dir.
+    - vcs: Introduce the VCS module.
+  * Bug Fixes:
+    - aws: isolate tests from host AWS config files.
+    - aws: support $duration for sso_session.
+    - direnv: accept null loadedRC state.
+    - docs: Re-add style option to env_var module.
+    - enable std feature for whoami crate.
+    - format: allow empty textgroups to set prev_fg/prev_bg.
+    - helm: remove deprecated --client flag from helm version command.
+    - hg_state: avoid false-positive MERGING state.
+    - install: improve UX for version option.
+
+-------------------------------------------------------------------
 Thu Jan  1 18:18:27 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.24.2:
