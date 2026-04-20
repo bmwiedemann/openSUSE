@@ -1,7 +1,7 @@
 #
 # spec file for package partio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,18 +21,18 @@
 %define pyver python3
 
 Name:           partio
-Version:        1.19.0
-Release:        1
+Version:        1.20.0
+Release:        0
 Summary:        Library for reading/writing/manipulating common animation particle
 License:        BSD-3-Clause
 URL:            https://github.com/wdas/%{name}
 Source:         https://github.com/wdas/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{pyver}-devel
 BuildRequires:  cmake >= 3.15
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  %{pyver}-devel
 BuildRequires:  swig
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glut)
