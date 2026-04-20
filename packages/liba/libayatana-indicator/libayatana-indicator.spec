@@ -1,7 +1,7 @@
 #
 # spec file for package libayatana-indicator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,7 @@ This package contains common files.
 
 
 #%%lang_package -n %%{common_name}
+
 %package -n libayatana-indicator%{?psuffix:%{psuffix}-}%{sover}
 Summary:        Ayatana panel indicator applet library
 Group:          System/Libraries

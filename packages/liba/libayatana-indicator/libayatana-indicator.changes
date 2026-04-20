@@ -87,8 +87,6 @@ Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
   * tools/indicator-loader.c: Silence unused parameter
     warnings/errors for various functions.
   * Fix compiler warnings.
--------------------------------------------------------------------
-
 - Drop libayatana-indicator-glib-2.58.patch: fixed upstream.
 - Drop libayatana-indicator-Wno-error-deprecated-declarations.patch:
   no longer needed.
