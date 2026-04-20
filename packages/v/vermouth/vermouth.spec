@@ -17,7 +17,7 @@
 
 
 Name:           vermouth
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        A Wine/Proton game launcher for KDE
 License:        MIT
@@ -36,6 +36,7 @@ BuildRequires:  AppStream
 BuildRequires:  cmake >= 3.20
 BuildRequires:  extra-cmake-modules >= 6.0.0
 BuildRequires:  fdupes
+BuildRequires:  desktop-file-utils
 BuildRequires:  cmake(KF6CoreAddons) >= 6.0.0
 BuildRequires:  cmake(KF6I18n) >= 6.0.0
 BuildRequires:  cmake(KF6Kirigami) >= 6.0.0
@@ -89,6 +90,8 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
 %fdupes %{buildroot}%{_datadir}
 
 %check
+# Checks for desktop files and appstream metadata
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/*.xml
 
 %files
