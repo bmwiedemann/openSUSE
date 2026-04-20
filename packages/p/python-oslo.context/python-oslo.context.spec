@@ -1,7 +1,7 @@
 #
 # spec file for package python-oslo.context
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,27 @@
 
 %bcond_without test
 Name:           python-oslo.context
-Version:        6.1.0
+Version:        6.3.0
 Release:        0
 Summary:        OpenStack Oslo context library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.context
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo_context/oslo_context-%{version}.tar.gz
-BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pbr >= 2.0.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module typing-extensions >= 4.12.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 BuildArch:      noarch
+Requires:       python-typing-extensions >= 4.12.0
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-oslo.context < %{version}
 %endif
 %if %{with test}
-BuildRequires:  %{python_module debtcollector}
-BuildRequires:  %{python_module fixtures}
-BuildRequires:  %{python_module oslotest}
-BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module fixtures >= 3.0.0}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module stestr >= 2.0.0}
 %endif
 %python_subpackages
 

@@ -328,4 +328,31 @@
     <comment>switch to singlespec</comment>
     <requestid>1316779</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>066948405ce4b88bef057ca14bc3aec1</srcmd5>
+    <version>6.3.0</version>
+    <time>1776694281</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.3.0:
+  * Add interface to override is\_admin check
+  * Add link for governance badges
+  * Add typing badge
+  * Add typing classifier
+  * Enable logging related ruff checks
+  * ruff: Enable missing E5 check
+  * typing: Simplify return type of
+    RequestContext.to\_policy\_values
+  * Run mypy from tox
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * Add missing py.typed file
+  * ruff: Use more specific name to enable pyupgrade rule
+  * reno: Update master for unmaintained/2024.1
+  * Add repository URL
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2</comment>
+    <requestid>1348074</requestid>
+  </revision>
 </revisionlist>

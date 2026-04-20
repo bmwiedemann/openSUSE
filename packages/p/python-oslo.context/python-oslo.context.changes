@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar  9 15:15:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.0:
+  * Add interface to override is\_admin check
+  * Add link for governance badges
+  * Add typing badge
+  * Add typing classifier
+  * Enable logging related ruff checks
+  * ruff: Enable missing E5 check
+  * typing: Simplify return type of
+    RequestContext.to\_policy\_values
+  * Run mypy from tox
+  * Delay string interpolations at logging calls
+  * Remove reference to tag framework
+  * Add missing py.typed file
+  * ruff: Use more specific name to enable pyupgrade rule
+  * reno: Update master for unmaintained/2024.1
+  * Add repository URL
+  * pre-commit: Bump dependencies
+  * Migrate setup configuration to pyproject.toml
+  * Drop Python 3.9 support
+  * Update master for stable/2025.2
+
+-------------------------------------------------------------------
 Sun Nov  9 09:14:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:
