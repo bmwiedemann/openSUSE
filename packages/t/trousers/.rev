@@ -492,4 +492,13 @@ Should be handled together with sr#769061</comment>
     <comment></comment>
     <requestid>1151833</requestid>
   </revision>
+  <revision rev="56" vrev="9">
+    <srcmd5>b54f2ac51f9b5de56c6ef13bd319e270</srcmd5>
+    <version>0.3.15</version>
+    <time>1776694468</time>
+    <user>anag_factory</user>
+    <comment>- add setid-hardening.patch (bsc#1262318): detect privilege drop errors, also
+  drop supplementary group membership.</comment>
+    <requestid>1348229</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,30 @@
+Index: trousers-0.3.15/src/tcsd/svrside.c
+===================================================================
+--- trousers-0.3.15.orig/src/tcsd/svrside.c
++++ trousers-0.3.15/src/tcsd/svrside.c
+@@ -39,6 +39,7 @@
+ #include "tcsps.h"
+ #include "tcsd.h"
+ #include "req_mgr.h"
++#include "grp.h"
+ 
+ struct tcsd_config tcsd_options;
+ struct tpm_properties tpm_metrics;
+@@ -473,8 +474,15 @@ main(int argc, char **argv)
+ 		}
+ 		return TCSERR(TSS_E_INTERNAL_ERROR);
+ 	}
+-	setgid(pwd->pw_gid);
+-	setuid(pwd->pw_uid);
++
++	/* the service can be started by systemd with the correct target
++	 * privileges already */
++	if (getuid() != pwd->pw_uid) {
++		if (setgid(pwd->pw_gid) != 0 || setgroups(0, NULL) != 0 || setuid(pwd->pw_uid) != 0) {
++			LogError("Dropping privileges failed: %s", strerror(errno));
++			return TCSERR(TSS_E_INTERNAL_ERROR);
++		}
++	}
+ #endif
+ #endif
+ 

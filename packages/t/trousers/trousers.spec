@@ -1,7 +1,7 @@
 #
 # spec file for package trousers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source1:        tcsd.service
 Source2:        baselibs.conf
 Source3:        91-trousers.rules
 Patch0:         fix-lto.patch
+Patch1:         setid-hardening.patch
 BuildRequires:  gtk2-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
