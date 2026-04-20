@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 19 15:43:08 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.10.39
+- Update sing-box
+- Migrate to lmdb database
+- Fix core dump on permission elevation
+
+-------------------------------------------------------------------
 Tue Apr 14 16:56:28 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.10.38

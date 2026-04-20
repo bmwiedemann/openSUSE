@@ -17,7 +17,7 @@
 
 %define core nekobox_core
 Name:           nekobox
-Version:        5.10.38
+Version:        5.10.39
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
@@ -36,6 +36,7 @@ BuildRequires:  %{!?nekobox_golang_package:golang >= 1.25}%{?nekobox_golang_pack
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  libacl-devel
+BuildRequires:  lmdb-devel
 BuildRequires:  thrift
 BuildRequires:  (libboost-devel or boost-devel)
 BuildRequires:  (libthrift-devel or thrift-devel)
@@ -47,11 +48,12 @@ BuildRequires:  cmake(Qt6Linguist)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  gcc-c++
 
-Requires:       %{name}-core
-Requires:       %{name}-qt
+Requires:       %{name}-core = %{version}
+Requires:       %{name}-qt = %{version}
 
 
 %ifarch x86_64 aarch64 arm32 %arm32 %arm64 %x86_64 ppc64le %power64 %riscv riscv32 riscv64 riscv128 %ix86 i386 i486 i586 i686 pentium3 pentium4 athlon geode
