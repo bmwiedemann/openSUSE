@@ -185,4 +185,21 @@
   * fix(media): reuse httpx client for requests</comment>
     <requestid>1345976</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e88c05f856cba3a00c0e83f5029912ed</srcmd5>
+    <version>4.3.1</version>
+    <time>1776694350</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.1:
+  * feat(api): update API spec from langfuse/langfuse 07cae52
+  * chore(deps): bump actions/github-script from 8.0.0 to 9.0.0
+    in the github-actions group
+  * refactor(tests): split suites by execution level and speed up
+    CI
+  * ci: add 7-day dependabot cooldown
+  * ci: harden GitHub Actions workflows with zizmor
+  * ci: make uv action tag explicit
+  * fix(langchain): propagate trace name metadata</comment>
+    <requestid>1348121</requestid>
+  </revision>
 </revisionlist>
