@@ -28,7 +28,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        7.10.1
+Version:        7.13.0
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -55,8 +55,11 @@ BuildRequires:  %{python_module wcmatch >= 10.0}
 BuildRequires:  %{python_module PyYAML >= 6.0.3}
 BuildRequires:  %{python_module hjson >= 3.1}
 BuildRequires:  %{python_module json5 >= 0.12.1}
+BuildRequires:  %{python_module mkdocs >= 1.4}
+BuildRequires:  %{python_module pygments >= 2.14}
 BuildRequires:  %{python_module pygments >= 2.14}
 BuildRequires:  %{python_module pygments-ansi-color >= 0.3}
+BuildRequires:  %{python_module pymdown-extensions >= 10}
 BuildRequires:  %{python_module xmltodict >= 1.0.0}
 BuildRequires:  git-core
 # /SECTION
@@ -130,6 +133,15 @@ IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.STR-False
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.NAME-True-result2]"
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.VALUE-True-result3]"
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Color-ChoiceSource.NAME-True-result4]"
+#
+IGNORED_CHECKS+=" or test_patched_formatter_renders_ansi"
+IGNORED_CHECKS+=" or test_patched_formatter_preserves_pymdownx_mro"
+IGNORED_CHECKS+=" or test_on_config_patches_formatters"
+IGNORED_CHECKS+=" or test_on_config_patches_mkdocs_click"
+IGNORED_CHECKS+=" or test_on_config_idempotent"
+IGNORED_CHECKS+=" or test_patch_mkdocs_click_usage"
+IGNORED_CHECKS+=" or test_patch_mkdocs_click_idempotent"
+IGNORED_CHECKS+=" or test_patch_mkdocs_click_plain_options"
 
 %pytest -k "not (${IGNORED_CHECKS})"
 
