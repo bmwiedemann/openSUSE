@@ -175,4 +175,12 @@
     <comment>Shade the asm classes again; for uyuni's sake</comment>
     <requestid>1333805</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>76bac0bda44d66603737913c79c669d7</srcmd5>
+    <version>1.18.8</version>
+    <time>1776694343</time>
+    <user>anag_factory</user>
+    <comment>1.18.8</comment>
+    <requestid>1348119</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           byte-buddy
-Version:        1.18.3
+Version:        1.18.8
 Release:        0
 Summary:        Runtime code generation for the Java virtual machine
 License:        Apache-2.0
@@ -113,7 +113,8 @@ rm -rf %{name}-agent/src/main/resources/win32-x86{,-64}
 %pom_remove_dep org.ow2.asm:asm-deprecated
 %pom_remove_dep codes.rafael.asmjdkbridge:asm-jdk-bridge %{name}-dep
 
-%pom_add_dep org.apache.maven:maven-resolver-provider:\${version.maven}:provided \
+%pom_add_dep \
+    org.apache.maven:maven-resolver-provider:\${version.maven}:provided \
     byte-buddy-maven-plugin
 
 %{mvn_package} :byte-buddy-parent __noinstall
@@ -124,9 +125,7 @@ rm -rf %{name}-agent/src/main/resources/win32-x86{,-64}
 
 %install
 %mvn_install
-%if %{without bootstrap}
 %fdupes -s %{buildroot}%{_javadocdir}
-%endif
 
 %files -f .mfiles-%{name} -f .mfiles-%{name}-dep
 %doc README.md release-notes.md
