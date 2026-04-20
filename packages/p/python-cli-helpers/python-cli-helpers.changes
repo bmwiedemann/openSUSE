@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 20 01:46:21 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.14.0:
+  * Downgrade Pygments requirement to v1.6+, and fix tests to support all
+    versions.
+  * Pin Pygments library to older version v2.19.2 to fix tests.
+
+-------------------------------------------------------------------
+Tue Mar 24 19:45:52 UTC 2026 - <marius.grossu@suse.com>
+
+- Update to 2.12.0:
+  * Probe tabulate version for `preserve_whitespace` keyword support.
+
+-------------------------------------------------------------------
 Sun Mar 15 14:53:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11.0:

@@ -161,4 +161,23 @@
   * Pin `tabulate` version more tightly.</comment>
     <requestid>1339105</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1a18cb34a63d90e924d714193d08e38f</srcmd5>
+    <version>2.12.0</version>
+    <time>1774469982</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342386</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>60f74bb5104154b08c55709c956e053e</srcmd5>
+    <version>2.14.0</version>
+    <time>1776694287</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.14.0:
+  * Downgrade Pygments requirement to v1.6+, and fix tests to support all
+    versions.
+  * Pin Pygments library to older version v2.19.2 to fix tests.</comment>
+    <requestid>1348091</requestid>
+  </revision>
 </revisionlist>
