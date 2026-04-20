@@ -1124,4 +1124,20 @@ various additional features.</comment>
     <comment></comment>
     <requestid>1342173</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>8df51faef19cac0e6ae86e9f654b647f</srcmd5>
+    <version>1.73.4</version>
+    <time>1775743803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1345438</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>64685541ad8a304faf54cb12a5f08268</srcmd5>
+    <version>1.73.5</version>
+    <time>1776694418</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1348174</requestid>
+  </revision>
 </revisionlist>
