@@ -241,4 +241,13 @@
     <comment></comment>
     <requestid>1342021</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2b7231311d894cab9324f0b6364ba9c5</srcmd5>
+    <version>2.6.19</version>
+    <time>1776694294</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.6.19:
+  * Add support for *.tif</comment>
+    <requestid>1348072</requestid>
+  </revision>
 </revisionlist>
