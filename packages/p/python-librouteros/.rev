@@ -98,4 +98,21 @@
     <comment></comment>
     <requestid>1320332</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f99752ed583936095e35ba3585024bf4</srcmd5>
+    <version>4.0.1</version>
+    <time>1776694282</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.1:
+  * fix: handle IPv6 correctly when saddr is not specified
+  * Fix 'cmd' in kwargs collision
+  * Remove Fix 'cmd' in kwargs collision. Breaks backwards
+    compatibility.
+  * Fix 'cmd' in kwargs collision
+  * Pass source address to async connect
+  * Drop Encoder, Decoder classes
+  * Handle broken stream errors
+  * Pass SSLContext to async connect</comment>
+    <requestid>1348082</requestid>
+  </revision>
 </revisionlist>

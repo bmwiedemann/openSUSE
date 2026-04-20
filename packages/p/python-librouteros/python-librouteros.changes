@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 19 21:10:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * fix: handle IPv6 correctly when saddr is not specified
+  * Fix 'cmd' in kwargs collision
+  * Remove Fix 'cmd' in kwargs collision. Breaks backwards
+    compatibility.
+  * Fix 'cmd' in kwargs collision
+  * Pass source address to async connect
+  * Drop Encoder, Decoder classes
+  * Handle broken stream errors
+  * Pass SSLContext to async connect
+
+-------------------------------------------------------------------
 Thu Nov 27 11:06:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.4.1
