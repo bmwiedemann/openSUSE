@@ -1,4 +1,180 @@
 -------------------------------------------------------------------
+Mon Apr 20 11:13:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.3.6+git91.af5637e93:
+  * BUG/MINOR: task: fix uninitialised read in run_tasks_from_lists()
+  * BUG/MEDIUM: mux-h2: ignore conn->owner when deciding if a connection is dead
+  * BUG/MINOR: threads: properly set the number of tgroups when non using policy
+  * BUG/MEDIUM: peers: trash of expired entries delayed after fullresync
+  * BUG/MINOR: acme: don't pass NULL into format string
+  * BUG/MEDIUM: htx: Don't count delta twice when block value is replaced
+  * BUG/MEDIUM: htx: Fix function used to change part of a block value when defrag
+  * BUG/MEDIUM: cli: Properly handle too big payload on a command line
+  * BUG/MINOR: log: Fix error message when using unavailable fetch in logfmt
+  * BUG/MINOR: ot: fixed wrong NULL check in flt_ot_parse_cfg_group()
+  * BUG/MINOR: hlua: fix use-after-free of HTTP reason string
+  * BUG/MEDIUM: mux-fcgi: prevent record-length truncation with large bufsize
+  * BUG/MINOR: sample: fix info leak in regsub when exp_replace fails
+  * BUG/MEDIUM: samples: Fix handling of SMP_T_METH samples
+  * BUG/MINOR: spoe: fix pointer arithmetic overflow in spoe_decode_buffer()
+  * BUG/MINOR: resolvers: fix memory leak on AAAA additional records
+  * BUG/MAJOR: slz: always make sure to limit fixed output to less than worst case literals
+  * BUG/MINOR: peers: fix OOB heap write in dictionary cache update
+  * BUG/MINOR: hlua: fix format-string vulnerability in Patref error path
+  * BUG/MINOR: hlua: fix stack overflow in httpclient headers conversion
+  * BUG: hlua: fix stack overflow in httpclient headers conversion
+  * BUG/MEDIUM: jwt: fix heap overflow in ECDSA signature DER conversion
+  * BUG/MEDIUM: payload: validate SNI name_len in req.ssl_sni
+  * BUG/MINOR: counters: fix unexpected 127 char GUID truncation for shm-stats-file objects
+  * BUG/MINOR: http-act: fix a typo in the "pause" action error message
+  * BUG/MEDIUM: mux-h1: Disable 0-copy forwarding when draining the request
+  * DOC: config: fix ambiguous info in log-steps directive description
+  * BUG/MINOR: cfgcond: fail cleanly on missing argument for "feature"
+  * BUG/MINOR: cfgcond: always set the error string on awslc_api checks
+  * BUG/MINOR: cfgcond: always set the error string on openssl_version checks
+  * BUG/MINOR: cfgcond: properly set the error pointer on evaluation error
+  * BUG/MINOR: quic: fix documentation for transport params decoding
+  * BUG/MINOR: tcpcheck: Use tcpcheck context for expressions parsing
+  * BUG/MINOR: tcpcheck: Don't enable http_needed when parsing HTTP samples
+  * BUG/MINOR: tcpcheck: Remove unexpected flag on tcpcheck rules for httchck option
+  * BUG/MEDIUM: mux-h1: Don't set MSG_MORE on bodyless responses forwarded to client
+  * DOC: configuration: mention QUIC server support
+  * BUG/MEDIUM: map/cli: CLI commands lack admin permission checks
+  * BUG/MEDIUM: ssl/ocsp: ocsp commands are missing permission checks
+  * BUG/MEDIUM: ssl/cli: tls-keys commands are missing permission checks
+  * BUG/MEDIUM: map/cli: map/acl commands warn when accessed without admin level
+  * BUG/MEDIUM: ssl/ocsp: ocsp commands warn when accessed without admin level
+  * BUG/MEDIUM: ssl/cli: tls-keys commands warn when accessed without admin level
+
+-------------------------------------------------------------------
+Mon Apr 20 10:36:27 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 3.3.6+git48.b25b83c54:
+  * SCRIPTS: git-show-backports: list new commits and how to review them with -L
+  * MINOR: mux-h2: report glitches on early RST_STREAM
+  * MINOR: stconn: flag the stream endpoint descriptor when the app has started
+  * BUG/MINOR: stconn: Always declare the SC created from healthchecks as a back SC
+  * BUG/MINOR: quic: close conn on packet reception with incompatible frame
+  * CI: github: fix tag listing by implementing proper API pagination
+  * BUG/MINOR: acme: fix task allocation leaked upon error
+  * BUG/MEDIUM: acme: skip doing challenge if it is already valid
+  * BUG/MINOR: http-ana: Only consider client abort for abortonclose
+  * BUG/MINOR: config: Properly test warnif_misplaced_* return values
+  * BUG/MINOR: acme: permission checks on the CLI
+  * BUG/MINOR: ech: permission checks on the CLI
+  * BUILD: tools: potential null pointer dereference in dl_collect_libs_cb
+  * BUG/MINOR: acme/cli: fix argument check and error in 'acme challenge_ready'
+  * BUG/MINOR: acme: replace atol with len-bounded __strl2uic() for retry-after
+  * BUG/MINOR: acme: free() DER buffer on a2base64url error path
+  * BUG/MINOR: quic: missing app ops init during backend 0-RTT sessions
+  * MINOR: ncbmbuf: improve itbmap_next() code
+  * BUG/MEDIUM: spoe: Acquire context buffer in applet before consuming a frame
+  * BUG/MINOR: acme: fix incorrect number of arguments allowed in config
+  * BUG/MINOR: acme: wrong labels logic always memprintf errmsg
+  * BUG/MINOR: acme: acme_ctx_destroy() leaks auth->dns
+  * BUG/MINOR: quic/h3: display QUIC/H3 backend module on HTML stats
+  * BUG/MINOR: quic: fix counters used on BE side
+  * BUG/MINOR: server: enable no-check-sni-auto for dynamic servers
+  * BUG/MINOR: server: set auto SNI for dynamic servers
+  * BUG/MINOR: proxy: detect strdup error on server auto SNI
+  * BUG/MEDIUM: stats-file: detect and fix inconsistent shared clock when resuming from shm-stats-file
+  * BUG/MINOR: stats-file: manipulate shm-stats-file heartbeat using unsigned int
+  * DOC: config: Reorder params for 'tcp-check expect' directive
+  * DOC: config: Add missing 'status-code' param for 'http-check expect' directive
+  * DOC: config: Fix alphabetical ordering of external-check directives
+  * DOC: config: Fix alphabetical ordering of proxy options
+  * Revert "BUG/MEDIUM: mux-h2: make sure to always report pending errors to the stream"
+  * BUG/MINOR: acme/cli: wrong argument check in 'acme renew'
+  * BUG/MINOR: acme: wrong error when checking for duplicate section
+  * BUG/MINOR: acme: leak of ext_san upon insertion error
+  * BUG/MEDIUM: acme: fix multiple resource leaks in acme_x509_req()
+  * BUILD: sched: fix leftover of debugging test in single-run changes
+  * MINOR: mux-h2: assign a limited frames processing budget
+  * MEDIUM: sched: change scheduler budgets to lower TL_BULK
+  * MEDIUM: sched: do not punish self-waking tasklets if TASK_WOKEN_ANY
+  * MINOR: sched: do not punish self-waking tasklets anymore
+  * MINOR: sched: do not requeue a tasklet into the current queue
+  * MEDIUM: sched: do not run a same task multiple times in series
+  * BUG/MINOR: qpack: fix 62-bit overflow and 1-byte OOB reads in decoding
+  * BUG/MINOR: sock: adjust accept() error messages for ENFILE and ENOMEM
+  * BUG/MINOR: mworker: fix sort order of mworker_proc in 'show proc'
+  * [RELEASE] Released version 3.3.6
+  * CI: github: treat vX.Y.Z release tags as stable like haproxy-* branches
+  * BUG/MINOR: mworker/cli: fix show proc pagination losing entries on resume
+  * MINOR: mworker/cli: extract worker "show proc" row printer
+  * BUG/MEDIUM: h3: reject unaligned frames except DATA
+  * BUG/MAJOR: h3: check body size with content-length on empty FIN
+    (bsc#1262103) VUL-0: CVE-2026-33555: haproxy: Request smuggling via HTTP/3 parser desynchronization
+  * BUG/MINOR: mux-h2: properly ignore R bit in WINDOW_UPDATE increments
+  * BUG/MINOR: mux-h2: properly ignore R bit in GOAWAY stream ID
+  * BUG/MEDIUM: peers: enforce check on incoming table key type
+  * BUG/MINOR: mworker: don't try to access an initializing process
+  * DOC: internals: short explanation on how thread_exec_ctx works
+  * MINOR: activity: raise the default number of memprofile buckets to 4k
+  * MINOR: activity: support aggregating by caller also for memprofile
+  * MINOR: cli: implement execution context for manually registered keywords
+  * MINOR: cli: keep track of the initcall context since kw registration
+  * MINOR: cli: keep the info of the current keyword being processed in the appctx
+  * MINOR: applet: set execution context on applet calls
+  * MINOR: task: set execution context on task/tasklet calls
+  * MINOR: connection: track mux calls to report their allocation context
+  * MINOR: ssl: set the thread execution context during message callbacks
+  * MINOR: filters: set the exec context to the current filter config
+  * MINOR: actions: also report execution contexts registered directly
+  * MINOR: actions: store the location of keywords registered via initcalls
+  * MINOR: tools: support an execution context that is just a function
+  * MINOR: sample: also report contexts registered directly
+  * MINOR: sample: store location for fetch/conv via initcalls
+  * MINOR: tools: support decoding ha_caller type exec context
+  * MINOR: tools: decode execution context TH_EX_CTX_INITCALL
+  * MINOR: initcall: record the file and line declaration of an INITCALL
+  * MINOR: memprof: report the execution context on profiling output
+  * MINOR: debug: report the execution context on thread dumps
+  * MINOR: tools: add a function to write a thread execution context.
+  * MINOR: memprof: also permit to sort output by calling context
+  * MINOR: memprof: prepare to consider exec_ctx in reporting
+  * MINOR: tinfo: start to add basic thread_exec_ctx
+  * MINOR: tools: add a new pointer hash function that also takes an argument
+  * BUILD: makefile: fix range build without test command
+  * MINOR: debug: opportunistically load libthread_db.so.1 with set-dumpable=libs
+  * MINOR: debug: copy debug symbols from /usr/lib/debug when present
+  * DEV: gdb: add a new utility to extract libs from a core dump: libs-from-core
+  * MINOR: debug: read all libs in memory when set-dumpable=libs
+  * MINOR: config: support explicit "on" and "off" for "set-dumpable"
+  * MINOR: tools: add a function to load a file into a tar archive
+  * MINOR: tools: add a function to create a tar file header
+  * DEV: gdb: add a utility to find the post-mortem address from a core
+  * BUILD: spoe: Remove unsused variable
+  * BUG/MINOR: spoe: Fix condition to abort processing on client abort
+  * BUG/MINOR: mjson: make mystrtod() length-aware to prevent out-of-bounds reads
+  * BUG/MINOR: stream: Fix crash in stream dump if the current rule has no keyword
+  * BUG/MINOR: proxy: do not forget to validate quic-initial rules
+  * BUG/MINOR: http-ana: Swap L7 buffer with request buffer by hand
+  * BUG/MINOR: h2/h3: Never insert partial headers/trailers in an HTX message
+  * MINOR: htx: Add function to truncate all blocks after a specific block
+  * BUG/MINOR: h2/h3: Only test number of trailers inserted in HTX message
+  * BUG/MEDIUM: spoe: Properly abort processing on client abort
+  * BUG/MINOR: spoe: Properly switch SPOE filter to WAITING_ACK state
+  * BUG/MINOR: sockpair: set FD_CLOEXEC on fd received via SCM_RIGHTS
+  * BUG/MINOR: mworker: avoid passing NULL version in proc list serialization
+  * BUG/MINOR: mworker: set a timeout on the worker socketpair read at startup
+  * BUG/MINOR: mworker: fix typo &= instead of & in proc list serialization
+  * BUG/MINOR: mworker: only match worker processes when looking for unspawned proc
+  * MINOR: memprof: attempt different retry slots for different hashes on collision
+  * MINOR: tools: extend the pointer hashing code to ease manipulations
+  * MINOR: activity: use dynamic allocation for "show profiling" entries
+  * BUG/MINOR: memprof: avoid a small memory leak in "show profiling"
+  * BUG/MEDIUM: ssl: Don't report read data as early data with AWS-LC
+  * BUG/MINOR: mworker: always stop the receiving listener
+  * BUG/MEDIUM: ssl: Handle receiving early data with BoringSSL/AWS-LC
+  * DOC/CLEANUP: config: update mentions of the old "Global parameters" section
+  * DOC: configuration: http-check expect example typo
+  * BUG/MINOR: jws: fix memory leak in jws_b64_signature
+  * BUG/MINOR: tcpcheck: Fix typo in error error message for `http-check expect`
+  * BUG/MINOR: mworker: don't set the PROC_O_LEAVING flag on master process
+  * BUG/MEDIUM: shctx: Use the next block when data exactly filled a block
+
+-------------------------------------------------------------------
 Thu Mar 12 10:12:34 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - Fix packages for %suse_version bump: haproxy
