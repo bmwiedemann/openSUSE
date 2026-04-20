@@ -1,7 +1,7 @@
 #
 # spec file for package ois
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover 1_5_0
+%define sover 1_6_0
 Name:           ois
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Object Oriented Input System
 License:        Zlib
@@ -61,11 +61,7 @@ devices (e.g. forcefeedback).
 
 %build
 %cmake \
-%if 0%{?sle_version} == 150200
-  -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
-%endif
   -DOIS_BUILD_SHARED_LIBS=ON
-%cmake_build
 
 %install
 %cmake_install
