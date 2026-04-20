@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 14 10:34:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.4177.0
+  * Add EnforceWorkspaceRootOwnership configuration to support disable
+    hardening of agent workspace
+  * Add reboot comment to Windows shutdown command for SSM Agent traceability
+  * Update privilege access check to verify ownership and permissions
+    of document state files
+
+-------------------------------------------------------------------
 Tue Mar 31 09:11:38 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.4121.0
