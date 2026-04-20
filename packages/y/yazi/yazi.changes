@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 19 18:54:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 26.1.22:
+  * chore: bump version to 26.1.22
+  * feat: experimental module-level async support (#3594)
+  * fix: properly drop the permit for terminal resources (#3592)
+  * fix: make environment detection work on WSL 2 (#3587)
+  * fix: `sort extension` excludes directories since only files have extensions (#3582)
+  * fix: set `orphan=true` for `xdg-open` to work around its odd behavior with programs that are both CLI/GUI (#3581)
+  * fix: build error on NetBSD (#3506)
+  * feat: disable ANSI escape sequences in `ya pkg` when stdout is not a TTY (#3566)
+  * feat: re-enable the TIFF feature (#3573)
+  * fix: merge duplicate top directories in archive previews
+- Disable update of vendored dependencies, breaks the build
+  currently.
+
+-------------------------------------------------------------------
 Tue Dec 30 02:47:39 UTC 2025 - Luan C. Adão <carluad@proton.me>
 
 - Update to version 25.12.29:
