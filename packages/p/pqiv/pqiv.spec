@@ -1,7 +1,7 @@
 #
 # spec file for package pqiv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,13 @@
 
 
 Name:           pqiv
-Version:        2.13.2
+Version:        2.13.3
 Release:        0
 Summary:        Minimalist image viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/phillipberndt/pqiv
 Source:         https://github.com/phillipberndt/pqiv/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         pqiv-2.13.2-avcodec_close.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(gtk+-3.0)

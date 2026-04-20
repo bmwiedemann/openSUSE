@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 19 13:33:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.3:
+  * This patch release contains two relevant changes:
+  * Backends now have a priority so more specialized or faster
+    ones are preferred, rather than alphabetic order
+  * ffmpeg 8.0 build compatibility
+- drop pqiv-2.13.2-avcodec_close.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Oct 10 21:44:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.13.2:
