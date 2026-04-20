@@ -79,7 +79,7 @@ Wed May 15 17:27:13 UTC 2019 - maurizio.galli@gmail.com
   (boo#1132659)
 
 -------------------------------------------------------------------
-Sun Jan 13 19:146:00 UTC 2019 - ximi.obs@gmail.com
+Sun Jan 13 19:14:00 UTC 2019 - ximi.obs@gmail.com
 
 - Changed the activate-support patch to signal an "activate-event"
   so users can create callbacks themselves.
