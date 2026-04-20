@@ -221,4 +221,17 @@
   * Short and long break command line argument #849</comment>
     <requestid>1346381</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c5d3c9b96c207a9f83b5c6f2aa18037f</srcmd5>
+    <version>3.4.1</version>
+    <time>1776694341</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.4.1:
+  * configuration: small fixes #837
+  * Update README with per-language translation status widget #880
+  * Add new long and short breaks #861
+  * translation updates for update version for new release #882
+  * New version (v3.4.1): Translation updates and new breaks #883</comment>
+    <requestid>1348114</requestid>
+  </revision>
 </revisionlist>

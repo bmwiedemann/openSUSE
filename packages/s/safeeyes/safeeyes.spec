@@ -19,7 +19,7 @@
 
 
 Name:           safeeyes
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Tool for reminding the user to take breaks
 License:        GPL-3.0-only

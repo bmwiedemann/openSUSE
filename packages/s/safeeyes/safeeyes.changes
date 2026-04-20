@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 20 06:39:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.4.1:
+  * configuration: small fixes #837
+  * Update README with per-language translation status widget #880
+  * Add new long and short breaks #861
+  * translation updates for update version for new release #882
+  * New version (v3.4.1): Translation updates and new breaks #883
+
+-------------------------------------------------------------------
 Mon Apr 13 08:19:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.4.0:
