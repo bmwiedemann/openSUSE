@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 19 20:12:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8:
+  * GH#288: No changes in source or functionality, just removed
+    files from the sdist content that prevented it from building
+    on non-x86_64 platforms.
+  * Py3.8 wheels were excluded due to lack of usage.  The package
+    still builds and is tested on Py3.8, but no pre-built wheels
+    are provided.
+
+-------------------------------------------------------------------
 Wed Apr  8 10:10:00 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.7 (bsc#1261595, CVE-2026-34444):
