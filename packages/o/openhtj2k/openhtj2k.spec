@@ -17,7 +17,7 @@
 
 
 Name:           openhtj2k
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        An open source implementation of ITU-T Rec.814 | ISO 15444-15 (a.k.a. HTJ2K)
 License:        BSD-3-Clause
@@ -71,10 +71,10 @@ OpenHTJ2K is an open source implementation of ITU-T Rec.814 | ISO/IEC 15444-15 (
 %dir %{_includedir}/open_htj2k/interface
 %{_includedir}/open_htj2k/interface/decoder.hpp
 %{_includedir}/open_htj2k/interface/encoder.hpp
-%{_libdir}/libopen_htj2k_R.so
+%{_libdir}/libopenhtj2k.so
 %{_libdir}/pkgconfig/open_htj2k.pc
 
 %files -n libopenhtj2k0
-%{_libdir}/libopen_htj2k_R.so.*
+%{_libdir}/libopenhtj2k.so.*
 
 %changelog

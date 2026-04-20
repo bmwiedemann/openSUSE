@@ -184,4 +184,17 @@
   * See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.14.0</comment>
     <requestid>1346887</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8c1dee8ec40d3f52a54618f0a8a21083</srcmd5>
+    <version>0.15.1</version>
+    <time>1776694352</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.1:
+  * HT block decoding stack buffer overflow
+  * https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.15.1
+
+- Update to 0.15.0:
+  * https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.15.0</comment>
+    <requestid>1348111</requestid>
+  </revision>
 </revisionlist>

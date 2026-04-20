@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 20 06:29:41 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * HT block decoding stack buffer overflow
+  * https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.15.1
+
+-------------------------------------------------------------------
+Mon Apr 20 06:29:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.0:
+  * https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.15.0
+
+-------------------------------------------------------------------
 Tue Apr 14 13:33:08 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.0:
