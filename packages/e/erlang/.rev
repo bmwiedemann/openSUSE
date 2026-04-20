@@ -1247,4 +1247,41 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
   * public_key: Added support for quantum crypto signature</comment>
     <requestid>1315719</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>bdb72aad322e6cb856d767179e06e49f</srcmd5>
+    <version>28.4.1</version>
+    <time>1776694324</time>
+    <user>anag_factory</user>
+    <comment>- Changes for 28.4.1:
+  * inets: The httpd server now rejects HTTP requests containing
+    multiple Content-Length headers with different values,
+    returning a 400 Bad Request response. This prevents potential
+    HTTP request smuggling attacks. Thanks Luigino Camastra at
+    Aisle Research for responsibly disclosing this vulnerability
+  * ssl: TLS-1.3 certificate request now preserves the order of
+    signature algorithms in certificate request extension to be in
+    the servers preferred order, which might affect the choice made
+    by some TLS clients.
+  * ssl: Document that setting transport protocol specific socket
+    options is not generally expected to work for TLS and if it
+    happens to work it comes with consequences that should be
+    understood an accepted by the user. Also retain some backwards
+    compatibility with such an option that happened to work to buy
+    time for people to come up with better solutions.
+  * crypto: Fix memory leak in crypo:engine_load if called with
+    incorrect commands.
+  * kernel: A vulnerability has been resolved in the (undocumented,
+    unsupported and unused in OTP) inet_dns_tsig module that leads
+    to a validation bypass.
+  * ssh: Fixed path traversal vulnerability in SFTP server's root
+    option allowing authenticated users to access sibling
+    directories with matching name prefixes. The root option used
+    string prefix matching instead of path component validation.
+    With {root, &quot;/home/user1&quot;}, attackers could access
+    /home/user10/ or /home/user123/. Thanks to Luigino Camastra,
+    Aisle Research.
+  * ssh: Fixed excessive memory usage vulnerability in SSH
+    compression allowing attackers to consume system resources</comment>
+    <requestid>1348094</requestid>
+  </revision>
 </revisionlist>

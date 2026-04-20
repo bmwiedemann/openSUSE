@@ -1,4 +1,465 @@
 -------------------------------------------------------------------
+Sun Apr 05 14:46:59 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Changes for 28.4.1:
+  * inets: The httpd server now rejects HTTP requests containing
+    multiple Content-Length headers with different values,
+    returning a 400 Bad Request response. This prevents potential
+    HTTP request smuggling attacks. Thanks Luigino Camastra at
+    Aisle Research for responsibly disclosing this vulnerability
+  * ssl: TLS-1.3 certificate request now preserves the order of
+    signature algorithms in certificate request extension to be in
+    the servers preferred order, which might affect the choice made
+    by some TLS clients.
+  * ssl: Document that setting transport protocol specific socket
+    options is not generally expected to work for TLS and if it
+    happens to work it comes with consequences that should be
+    understood an accepted by the user. Also retain some backwards
+    compatibility with such an option that happened to work to buy
+    time for people to come up with better solutions.
+  * crypto: Fix memory leak in crypo:engine_load if called with
+    incorrect commands.
+  * kernel: A vulnerability has been resolved in the (undocumented,
+    unsupported and unused in OTP) inet_dns_tsig module that leads
+    to a validation bypass.
+  * ssh: Fixed path traversal vulnerability in SFTP server's root
+    option allowing authenticated users to access sibling
+    directories with matching name prefixes. The root option used
+    string prefix matching instead of path component validation.
+    With {root, "/home/user1"}, attackers could access
+    /home/user10/ or /home/user123/. Thanks to Luigino Camastra,
+    Aisle Research.
+  * ssh: Fixed excessive memory usage vulnerability in SSH
+    compression allowing attackers to consume system resources
+    through decompression bombs. The 'zlib' and 'zlib@openssh.com'
+    algorithms lacked decompression size limits, allowing 256 KB
+    packets to expand to 255 MB (1029:1 ratio). This could lead to
+    crashes on systems with limited memory.
+
+-------------------------------------------------------------------
+Mon Mar 09 08:18:16 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Changes for 28.4:
+  * syntax_tools: Corrected the af_zip_generator() type in the
+    parser and syntax_tools.
+  * syntax_tools: Release applications, tests, and documentation
+    are now placed in their respective directories. Source SBOM
+    with more packages.
+  * observer: Release applications, tests, and documentation are
+    now placed in their respective directories. Source SBOM with
+    more packages.
+  * ssl: TLS servers that have early_data disabled will no longer
+    include the early_data extension in its session tickets.
+  * ssl: ssl:connection_information/2 will now return correct
+    information for TLS-1.2 session resumption.
+  * ssl: When performing renegotiation, in TLS-1.2 or earlier,
+    `max_frag_length` will no longer be renegotiated. Instead, the
+    connection will adhere to its originally negotiated value, and
+    if a value was not negotiated it will not be negotiated.
+  * ssl: The NSS Keylogging refactoring mixed up of Read and Write
+    connection states, could cause wrong NSS keylog labels, or
+    {error, closed} returned without keylog.
+  * ssl: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * runtime_tools: Release applications, tests, and documentation
+    are now placed in their respective directories. Source SBOM
+    with more packages.
+  * mnesia: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * reltool: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * public_key: Added missing mapping for der_encode/decode to
+    handle 'OCSPRequest'.
+  * public_key: public_key:pkix_crl_verify/2 now handles
+    certificates with EdDSA keys correctly instead of causing a
+    runtime error.
+  * compiler: Fixed a compiler alias analysis bug that could
+    generate unsafe code for repeated binary segments.
+  * snmp: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * erl_interface: Updated openssl from 3.6.0 to 3.6.1.
+  * erl_interface: The ei API for decoding/encoding terms is not
+    fully 64-bit compatible since terms that have a representation
+    on the external term format larger than 2 GB cannot be handled.
+  * eunit: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * tools: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * odbc: Corrected specs to eliminate Dialyzer warnings for
+    applications.
+  * parsetools: The documentation for the token/3 and tokens/3
+    functions was corrected. The return value when there were too
+    few characters is {more,Cont}.
+  * stdlib: Fixed functions ets:init_table/2,
+    [ets:tab2file/2,3](%60ets:tab2file/2%60),
+    [ets:table/1,2](%60ets:table/1%60), [ets:i/0,1](%60ets:i/0%60),
+    dets:from_ets/2, and dets:to_ets/2 to resolve named table
+    arguments only once. This will prevent strange effects if the
+    named table is deleted and recreated by a concurrent process.
+  * stdlib: Corrected the af_zip_generator() type in the parser and
+    syntax_tools.
+  * stdlib: For a function that started with a bracket-only pattern
+    (such as []), the ?FUNCTION_ARITY macro would evaluate to one
+    less than the actual arity.
+  * stdlib: Added support for zstd compression in the m:file
+    module.
+  * stdlib: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * stdlib: The removal of the m:slave and m:slave modules have
+    been postponed to Erlang/OTP 31.
+  * diameter: Release applications, tests, and documentation are
+    now placed in their respective directories. Source SBOM with
+    more packages.
+  * megaco: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * xmerl: Fixed license headers and links in documentation.
+  * inets: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * inets: Added a new HttpOption {autoretry, timeout()} to
+    httpc:request/4,5. This option allows the client to decide how
+    to act upon receiving a Retry-After response header. The
+    default behavior changes, as now only one retry is made before
+    returning the error code, instead of retrying infinitely.
+  * inets: Httpc will not add a Content-Length header for requests,
+    that do not have defined semantics for request content in
+    [RFC9110](https://datatracker.ietf.org/doc/html/rfc9110) and do
+    not include content. The list includes methods: [GET, HEAD,
+    OPTIONS, TRACE, DELETE]. The behavior for headers_as_is option
+    remains unchanged.
+  * inets: Improved documentation and specs for do/1 callback in
+    httpd module.
+  * sasl: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * kernel: The built in DNS resolver inet_res has been fixed to do
+    a final request assuming that the request name is absolute, as
+    customary for many DNS resolver client libraries.
+  * kernel: Added support for zstd compression in the m:file
+    module.
+  * kernel: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * common_test: Added documentation about the behavior of
+    ct:comment/1 and ct:comment/2 when executed from processes
+    other than the process running test functions.
+  * common_test: Updated jquery to 4.0.0
+  * common_test: The removal of the m:slave and m:slave modules
+    have been postponed to Erlang/OTP 31.
+  * asn1: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * ssh: The type specification for the CbInitArgs parameter in
+    ssh_client_channel:start/4 and ssh_client_channel:start_link/4
+    has been relaxed from [term()] to term(). This eliminates false
+    Dialyzer warnings when passing non-list arguments (such as maps
+    or atoms) to these functions. This change is backward
+    compatible as term() includes [term()].
+  * ssh: Added support for the PQC key exchange (kex) algorithm
+    mlkem768x25519-sha256, a hybrid quantum-resistant algorithm
+    combining ML-KEM-768 with X25519.
+  * crypto: Fixed crypto:crypto_one_time_aead/4, which could crash
+    the runtime system if invoked in parallel with the same state.
+  * erts: Fixed a documentation build warning when one or more
+    applications failed their configure step and were skipped.
+  * erts: The (IPv6) flowinfo control message header was not
+    properly supported.
+  * erts: Fixed NetBSD thread naming, using pthread_setname_np();
+    used for debugging.
+  * erts: The erlang:link_option/0 type is now exported.
+  * erts: Added persistent_term:put_new/2 that will quickly do
+    nothing if a term with the given name and value already exists,
+    and raise a badarg exception if the term exists with a
+    different value.
+  * erts: The manifest.xml file for the Windows build now has
+    version numbers updated to correctly report OS versions on
+    Windows 10, 11, Server 2016, 2019, 2022.
+  * erts: Improved yielding inside re:run. Regular expressions
+    searching for one specific byte character could spin in
+    memchr() without any yielding or reduction counting.
+  * erts: Updated openssl from 3.6.0 to 3.6.1.
+  * erts: Updated ryu implementation used to convert floats to
+    strings.
+  * erts: Upgraded asmjit to v1.18
+  * erts: Updated zlib to version 1.3.2.
+  * et: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+  * wx: Release applications, tests, and documentation are now
+    placed in their respective directories. Source SBOM with more
+    packages.
+- Changes for 28.3.3:
+  * erl_interface: Add missing copyrights.
+  * erts: Fixed bug in erlang:monitor_node for rare reconnect race
+    with multiple node monitoring from the same process.
+  * erts: Add missing copyrights.
+
+-------------------------------------------------------------------
+Mon Feb 23 07:42:28 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Changes for 28.3.2:
+  * tftp: An issue in the undocumented initial state option
+    [{root_dir,Dir}] to the tftp_file module has been fixed. The
+    request file name was just concatenated to Dir so it was
+    possible to traverse above Dir by using "../" file path
+    components. Now the option actually restricts local file
+    operations to the Dir directory and subdirectories.
+  * ssh: Fix handling of the SSH "each side may guess" key-exchange
+    mechanism as defined in RFC 4253, Section 7.
+  * ssh: Fix ssh_file:encode handling of OpenSSH V1 private keys
+    generated by public_key module. Also correct type
+    specifications for OpenSSH V1 keys in ssh_file encode and
+    decode operations.
+  * crypto: Fixed static linking of OpenSSL 3.5+ on Windows.
+  * erts: Fail the windows build properly when nsis is not
+    recognised.
+  * erts: Socket accept cancel could cause fatal crash (core dump)
+    on Windows.
+  * erts: Fixed bug in ets:update_counter/4 and
+    ets:update_element/4 accepting and inserting a default tuple
+    smaller than the keypos of the table. Such a tuple without a
+    key element would make the table internally inconsistent and
+    might lead to bad behavior at table access, like ERTS runtime
+    crash.
+  * erts: A missing memory barrier when unlocking process locks
+    could cause unexpected behavior on architectures with weak
+    memory ordering such as for example ARM.
+  * erts: A process could fail to wake from hibernation when a
+    non‑message signal followed by a message signal arrived
+    concurrently as the receiving process hibernated. If the
+    process had a large heap, triggering a dirty GC, the wakeup
+    could be lost.
+  * stdlib: Fixed bug in ets:update_counter/4 and
+    ets:update_element/4 accepting and inserting a default tuple
+    smaller than the keypos of the table. Such a tuple without a
+    key element would make the table internally inconsistent and
+    might lead to bad behavior at table access, like ERTS runtime
+    crash.
+- Changes for 28.3.1:
+  * ssl: Correct TLS-1.3 alert handling so server will always send
+    the alert with the encryption keys that the client is
+    expecting, that is if for instance if client certification
+    fails the alert will be sent using application traffic
+    encryption keys.
+  * ssl: Correct TLS-1.3 session tickets documentation.
+  * ssl: Corrected app environment handling for session callback
+    that was broken In OTP-23.
+  * xmerl: XML regular expressions in XSD validation now handle \s
+    and \S correctly.
+  * public_key: Add missing git ignore for SLH-DSA  generates.
+  * megaco: The megaco_tcp module had debug unintentionally
+    enabled.
+  * mnesia: Fixed bug where mnesia:del_table_copy/3 could fail when
+    deleting a node that had tables which was not active anywhere.
+- Changes for 28.3:
+  * wx: Fix getting wxImage pixel values. For example,
+    wxImage:getRed(Image) returned the wrong value.
+  * wx: Fixed reading out of array bounds and potential memory
+    leaks.
+  * wx: Updated the vendor dependencies SHA to improve the accuracy
+    of the source SBOM with purl pointing to the exact vendor
+    commit that Erlang/OTP builds upon.
+  * common_test: Updated the vendor dependencies SHA to improve the
+    accuracy of the source SBOM with purl pointing to the exact
+    vendor commit that Erlang/OTP builds upon.
+  * diameter: Add new option 'indirect_inherits' to
+    diameter_make:codec/2
+  * snmp: Fixed a bug where running snmp:config() from Elixir would
+    crash due to io:get_line/1 returning unexpected datatype.
+  * snmp: Inherit ERL_DETERMINISTIC variable for compiling
+    snmp_pdus_basic.beam.
+  * kernel: Fixed a shell crash when calling io:getopts() when
+    user_drv process is not responding/terminating
+  * kernel: logger:get_handler_config/0 will no longer crash if a
+    logger handler is removed concurrently with that call.
+  * kernel: Fixed a bug in the shell that made it incorrectly
+    output a newline after the output already containing a newline
+    but followed by an asci escape sequence.
+  * kernel: Receive buffer allocation has been optimized for socket
+    socket in that an underutilized buffers' content is copied to a
+    freshly allocated binary of the right size instead of being
+    reallocated.
+  * kernel: Option(s) to create gen_tcp and socket sockets with
+    protocol IPPROTO_MPTCP has been implemented.
+  * kernel: Support for the socket options TCP_KEEPCNT,
+    TCP_KEEPIDLE, and TCP_KEEPINTVL have been implemented for
+    gen_tcp, as well as TCP_USER_TIMEOUT for both gen_tcp and
+    socket.
+  * kernel: Limit size of sctp_event_subscribe on Linux
+  * ssh: Adjustment in ssh_file module allowing inclusion of
+    Erlang/OTP license in test files containing keys.
+  * eunit: The usages of deprecated slave module have been removed
+    from the application. The fixture clause for spawning a test
+    node now accepts Args either as a string or a list of strings
+    (previously only a string was accepted).
+  * ssl: Setting the internal process links between TLS
+    distribution processes has been reviewed.  In the TLS
+    distribution test framework there were issues fixed, but
+    probably not in the TLS distribution module.
+  * ssl: Correct documentation for fail_if_no_peer_cert option.
+  * ssl: Add support for MLKEM hybrid algorithms x25519mlkem768,
+    secp384r1mlkem1024, secp256r1mlkem768 in TLS-1.3
+  * ssl: Property based test needed to compare raw handshakes, that
+    is some utility decoding needs to be converted back.
+  * ssl: Add support in public_key and ssl for post quantum
+    algorithm SLH-DSA.
+  * crypto: The deprecated function crypto:rand_uniform/2 has
+    gotten a new replacement function crypto:strong_rand_range/1.
+    When implementing this the documentation of crypto and rand has
+    been rewritten a bit and improved.
+  * crypto: You can now build OTP with OpenSSL 3.5 or later on
+    windows.
+  * crypto: Added SLH-DSA algorithms for sign/verify. Twelve
+    variants supported in total; all combinations of SHAKE or SHA2
+    hashing, with 128, 192 or 256 bits, and fast(f) or small(s).
+  * crypto: Made crypto:generate_key(dh, [P, G,
+    MaxPrivateKeyBitLength]) accept values of
+    MaxPrivateKeyBitLength to be equal or larger than the bit
+    length of P. If so, the maximum bit length is adjusted down to
+    P's bit length minus one.
+  * inets: Fixed uri_string:uri_string() to string() type specs
+    inside httpc.erl module.
+  * inets: Fixed a bug where request options were not applied to a
+    https proxy connection.
+  * inets: The usages of slave module in inets were removed. The
+    httpd_bench_suite has been updated for SSL testing and is not
+    skipped anymore. The httpd_load_test example has been removed
+    completely as outdated.
+  * inets: Replace a call to application:which_applications() in
+    httpc:set_options/2 with try...catch to reduce bottleneck.
+  * compiler: For some function heads or case expressions with a
+    huge number of clauses, the compiler could spend an inordinate
+    amount of time compiling the code.
+  * compiler: Passing a type for a fun as a macro argument would
+    result in a "badly formed argument" error message from the
+    compiler. Example:
+  * compiler: In certain edge cases, the compiler could emit code
+    that would do an unsafe destructive update of a tuple. This has
+    been corrected.
+  * compiler: The compiler option beam_debug_stack combined with
+    beam_debug_info will attempt to make as many variables as
+    possible visible in the debugger. The option has no effect if
+    given without beam_debug_info.
+  * public_key: ASN.1 Encoding and decoding of some extensions did
+    not work, e.g. CRLEntryExtension.
+  * public_key: Add support in public_key and ssl for post quantum
+    algorithm SLH-DSA.
+  * erts: Fixed a build issue on modern compilers.
+  * erts: When multiple processes called the same fun whose
+    defining module was not loaded, a badfun exception could
+    sometimes occur in one of the calling processes. This would
+    only happen with the JIT runtime system.
+  * erts: Fix a bug where Erlang/OTP tools could load a different
+    boot script from CWD.
+  * erts: Fixed a bug when more than one session traced the same
+    BIF. Disabling tracing for a BIF in one session could
+    incorrectly disable tracing of the BIF in other trace sessions
+    as well.
+  * erts: Fixed a slight performance regression in
+    erlang:binary_to_term/1,2.
+  * erts: Two socket related code warts found by PVS Studio has
+    been fixed.  One caused gen_tcp to no convert the send error
+    econnaborted to econnreset on Windows. The other caused
+    socket:sendfile/* to indicate the wrong error for a bad Offset.
+  * erts: Fixed bug causing VM crash if an Erlang process gets
+    killed while executing re:run with a (presumably) large subject
+    string.
+  * erts: Updated the vendor dependencies SHA to improve the
+    accuracy of the source SBOM with purl pointing to the exact
+    vendor commit that Erlang/OTP builds upon.
+  * erts: Receive buffer allocation has been optimized for socket
+    socket in that an underutilized buffers' content is copied to a
+    freshly allocated binary of the right size instead of being
+    reallocated.
+  * erts: Option(s) to create gen_tcp and socket sockets with
+    protocol IPPROTO_MPTCP has been implemented.
+  * erts: erlc will now limit the number of ports and processes
+    when starting erl in order to use less memory.
+  * erts: Support for the socket options TCP_KEEPCNT, TCP_KEEPIDLE,
+    and TCP_KEEPINTVL have been implemented for gen_tcp, as well as
+    TCP_USER_TIMEOUT for both gen_tcp and socket.
+  * erts: Limit size of sctp_event_subscribe on Linux
+  * erts: Updated MD5 implementation from OpenSSL 3.5.0 to 3.6.0
+  * erts: Improved performance when doing socket:accept on the same
+    socket from many processes on large multi core systems under
+    high rate of connections. Mitigating performance regression
+    seen since OTP 28.0.
+  * erts: Updated STL version used.
+  * erts: Updated PCRE2 to 10.47. Also picked newer fix, from
+    upstream PCRE2, to bug that could cause benign random
+    uninitialized data in exported regular expressions.
+  * stdlib: When creating a tar archive using m:erl_tar, leading
+    slashes would be kept for filenames with up to 100 characters.
+    The slash would be dropped for longer filenames. This has been
+    corrected to always keep the leading slash.
+  * stdlib: For some function heads or case expressions with a huge
+    number of clauses, the compiler could spend an inordinate
+    amount of time compiling the code.
+  * stdlib: Passing a type for a fun as a macro argument would
+    result in a "badly formed argument" error message from the
+    compiler. Example:
+  * stdlib: Fixed an issue that prohibited the use of user defined
+    functions within a restricted shell.
+  * stdlib: The deprecated function crypto:rand_uniform/2 has
+    gotten a new replacement function crypto:strong_rand_range/1.
+    When implementing this the documentation of crypto and rand has
+    been rewritten a bit and improved.
+  * stdlib: Fixed a bug in the shell where a reference to a locally
+    defined function would cause a crash.
+  * stdlib: You are now able to read the reference manual with man.
+  * stdlib: Improved spec for ets:lookup_element/4.
+  * stdlib: The mnesia_registry module will be removed in
+    Erlang/OTP 29.
+  * erl_interface: Updated the vendor dependencies SHA to improve
+    the accuracy of the source SBOM with purl pointing to the exact
+    vendor commit that Erlang/OTP builds upon.
+  * erl_interface: Updated MD5 implementation from OpenSSL 3.5.0 to
+    3.6.0
+  * erl_interface: The ei API for decoding/encoding terms is not
+    fully 64-bit compatible since terms that have a representation
+    on the external term format larger than 2 GB cannot be handled.
+  * os_mon: Fixed a small documentation mistake in memsup
+  * mnesia: Add missing documentation about mnesia:activity/4
+  * mnesia: With this change mnesia will try to not leak internal
+    messages to user processes.
+  * mnesia: The mnesia_registry module will be removed in
+    Erlang/OTP 29.
+- Changes for 28.2:
+  * syntax_tools: Annotate map comprehensions and generators
+  * kernel: Fixed a race condition when registering the standard
+    error process.
+  * ssh: With this change user space buffers are used to limit ssh
+    hello message size instead of kernel buffers
+  * ssl: Graceful error handling added in negative test scenario.
+  * ssl: Handle duplicate change_cipher_spec message with an
+    unexpected message alert instead of failing later in corrupted
+    state.
+  * ssl: Make sure TLS-1.3 protocol spec is followed, that is psk-
+    hello extension is guaranteed to be included as the last
+    extension in the list of client hello extensions and internal
+    hello message truncation in handshake history is handled
+    correctly, the previous handling could cause interoperability
+    issues.
+  * ssl: If two certificate massages are sent to the server
+    generate an unexpected message alert for the second one.
+  * compiler: Fixed broken type inference for lists:mapfoldl/r.
+  * public_key: Added support for the Public-Key Infrastructure
+    Certificate Management Protocol (PKICMP) ASN.1 specification.
+  * erts: Fixed a JIT bug that could miscompile equality tests on
+    empty bitstrings.
+  * erts: The documentation building code produced warnings during
+    the build, if none of the applications were skipped. The
+    warnings were resolved.
+
+-------------------------------------------------------------------
 Wed Nov  5 07:53:15 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - Add README.md mostly for src.opensuse.org
