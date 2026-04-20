@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lib4sbom
-Version:        0.10.3
+Version:        0.10.4
 Release:        0
 Summary:        Library to ingest and generate SBOMs
 License:        Apache-2.0

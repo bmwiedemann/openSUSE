@@ -44,4 +44,17 @@
   * chore: update licence list to 3.28</comment>
     <requestid>1345088</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>820762130b73769ebda0cc7f3b22d840</srcmd5>
+    <version>0.10.4</version>
+    <time>1776694298</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.4:
+  * feat: add license exception handling
+  * fix: handle orlater (fixes #88)
+  * fix: SPDX3 license with exception (fixes #89)
+  * fix: SPDX handling of OPERATING-SYSTEM for JSON (fixes #78)
+  * test: add license test suite</comment>
+    <requestid>1348078</requestid>
+  </revision>
 </revisionlist>
