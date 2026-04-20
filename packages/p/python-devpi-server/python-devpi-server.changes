@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 17 17:49:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.19.3:
+  * Fix #1112: Parse simple JSON reply even with wrong content-
+    type in reply if the body seems to contain JSON.
+  * Return stale project list for mirrors when the lock can't be
+    acquired within the timeout.
+  * Fix importing of toxresults from devpi-server 6.5.0 to 6.9.0
+    where the wrong hash was stored.
+
+-------------------------------------------------------------------
 Mon Mar 30 21:36:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.19.2:
