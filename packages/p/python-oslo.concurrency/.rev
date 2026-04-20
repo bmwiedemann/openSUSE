@@ -425,4 +425,15 @@
   * Update master for stable/2025.2</comment>
     <requestid>1337519</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e168961476191f80ec1564809f1804af</srcmd5>
+    <version>7.4.1</version>
+    <time>1776694283</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.4.1:
+  * Make lock_path_prefix optional again
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.1
+  * Update .gitreview for stable/2026.1</comment>
+    <requestid>1348084</requestid>
+  </revision>
 </revisionlist>

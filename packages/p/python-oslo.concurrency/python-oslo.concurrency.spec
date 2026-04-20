@@ -17,13 +17,14 @@
 
 
 Name:           python-oslo.concurrency
-Version:        7.4.0
+Version:        7.4.1
 Release:        0
 Summary:        OpenStack oslo.concurrency library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.concurrency
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo-concurrency/oslo_concurrency-%{version}.tar.gz
+BuildRequires:  %{python_module debtcollector >= 3.0.0}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fasteners >= 0.7.0}
 BuildRequires:  %{python_module fixtures}
@@ -37,6 +38,7 @@ BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
+Requires:       python-debtcollector >= 3.0.0
 Requires:       python-fasteners >= 0.7.0
 Requires:       python-oslo.config >= 5.2.0
 Requires:       python-oslo.i18n >= 3.15.3

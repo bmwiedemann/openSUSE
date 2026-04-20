@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 19 21:30:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.4.1:
+  * Make lock_path_prefix optional again
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.1
+  * Update .gitreview for stable/2026.1
+
+-------------------------------------------------------------------
 Sun Mar  8 20:45:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.4.0:
