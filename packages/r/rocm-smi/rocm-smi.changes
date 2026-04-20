@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Mar 21 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Merge back rocm-smi7.2
+
+-------------------------------------------------------------------
+Wed Mar 11 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with preview
+
+-------------------------------------------------------------------
+Mon Jan 26 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+  * Add runtime power management detection and device wake support.
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Dec 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Wed Nov 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+  Removed: 0001-rocm-smi-fix-empty-return.patch
+
+-------------------------------------------------------------------
+Fri Oct 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Tue Sep 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.0
+  * Add support for GPU metrics 1.8.
+  * Remove backwards compatibility `rsmi_dev_gpu_metrics_info_get()`'s
+    `jpeg_activity` or `vcn_activity` fields: use
+    `xcp_stats.jpeg_busy` or `xcp_stats.vcn_busy.
+
+-------------------------------------------------------------------
 Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
 
 - Add Fedora copyright

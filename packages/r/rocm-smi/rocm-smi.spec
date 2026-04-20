@@ -21,7 +21,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,10 +36,34 @@
 #
 
 
-%global rocm_release 6.4
-%global rocm_patch 3
+%global upstreamname rocm-smi-lib
+
+%bcond_with preview
+%if %{with preview}
+%global rocm_release 7.11
+%global rocm_patch 0
+%global pkg_src therock-%{rocm_release}
+%else
+%global rocm_release 7.2
+%global rocm_patch 0
+%global pkg_src rocm-%{rocm_release}.%{rocm_patch}
+%endif
+
 %global rocm_version %{rocm_release}.%{rocm_patch}
-%global upstreamname rocm_smi_lib
+
+%bcond_with compat
+%if %{with compat}
+%global pkg_libdir lib
+%global pkg_prefix %{_prefix}/lib64/rocm/rocm-%{rocm_release}/
+%global pkg_suffix %{rocm_release}
+%global pkg_skip_install_rpath FALSE
+%else
+%global pkg_libdir %{_lib}
+%global pkg_prefix %{_prefix}
+%global pkg_suffix %{nil}
+%global pkg_skip_install_rpath TRUE
+%endif
+%global pkg_name rocm-smi%{pkg_suffix}
 
 %bcond_with test
 %if %{with test}
@@ -50,15 +74,49 @@
 
 %bcond_with doc
 
-Name:           rocm-smi
+Name:           %{pkg_name}
 Version:        %{rocm_version}
+%if %{with preview}
+Release:        0%{?dist}
+%else
 Release:        3%{?dist}
+%endif
 Summary:        ROCm System Management Interface Library
 
 License:        MIT AND NCSA
-URL:            https://github.com/ROCm/%{upstreamname}
-Source0:        %{url}/archive/rocm-%{version}.tar.gz#/%{upstreamname}-%{version}.tar.gz
-Patch0:         0001-rocm-smi-fix-empty-return.patch
+# The main license is MIT
+# The NCSA license applies to these files
+#  cmake_modules/utils.cmake
+#  include/rocm_smi/rocm_smi.h
+#  include/rocm_smi/rocm_smi_common.h
+#  include/rocm_smi/rocm_smi_counters.h
+#  include/rocm_smi/rocm_smi_device.h
+#  include/rocm_smi/rocm_smi_exception.h
+#  include/rocm_smi/rocm_smi_io_link.h
+#  include/rocm_smi/rocm_smi_kfd.h
+#  include/rocm_smi/rocm_smi_logger.h
+#  include/rocm_smi/rocm_smi_main.h
+#  include/rocm_smi/rocm_smi_monitor.h
+#  include/rocm_smi/rocm_smi_power_mon.h
+#  include/rocm_smi/rocm_smi_properties.h
+#  include/rocm_smi/rocm_smi_utils.h
+#  rocm_smi/example/rocm_smi_example.cc
+#  src/rocm_smi.cc
+#  src/rocm_smi_counters.cc
+#  src/rocm_smi_device.cc
+#  src/rocm_smi_io_link.cc
+#  src/rocm_smi_kfd.cc
+#  src/rocm_smi_logger.cc
+#  src/rocm_smi_main.cc
+#  src/rocm_smi_monitor.cc
+#  src/rocm_smi_power_mon.cc
+#  src/rocm_smi_properties.cc
+#  src/rocm_smi_utils.cc
+#  oam/src/oamConfig.in
+#  src/rocm_smi64Config.in
+
+URL:            https://github.com/ROCm/rocm-systems
+Source0:        %{url}/releases/download/%{pkg_src}/%{upstreamname}.tar.gz#/%{upstreamname}-%{version}.tar.gz
 
 %if 0%{?rhel} || 0%{?suse_version}
 ExclusiveArch:  x86_64
@@ -77,6 +135,15 @@ BuildRequires:  doxygen-latex >= 1.9.7
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  libdrm-devel
+BuildRequires:  rocm-filesystem%{pkg_suffix}
+
+%if %{with test}
+BuildRequires:  gtest-devel
+%endif
+
+%if %{with compat}
+Requires:       rocm-filesystem%{pkg_suffix}
+%endif
 
 %description
 The ROCm System Management Interface Library, or ROCm SMI library, is part of
@@ -103,7 +170,7 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 %endif
 
 %prep
-%autosetup -n %{upstreamname}-rocm-%{version} -p1
+%autosetup -n %{upstreamname} -p1
 
 # Don't change default C FLAGS and CXX FLAGS:
 sed -i '/CMAKE_C.*_FLAGS/d' CMakeLists.txt
@@ -112,20 +179,36 @@ sed -i '/CMAKE_C.*_FLAGS/d' CMakeLists.txt
 sed -i -e 's@env python3@python3@' python_smi_tools/*.py
 sed -i -e 's@env python3@python3@' python_smi_tools/rsmiBindingsInit.py.in
 
+# do not download gtest and install
+# https://github.com/ROCm/rocm-systems/issues/1022
+sed -i -e 's@FetchContent_MakeAvailable(googletest)@#FetchContent_MakeAvailable(googletest)@' tests/rocm_smi_test/CMakeLists.txt
+sed -i -e 's@PUBLIC GTest::gtest_main@PUBLIC gtest_main gtest@' tests/rocm_smi_test/CMakeLists.txt
+sed -i -e '/TARGETS gtest gtest_main/,+3d' tests/rocm_smi_test/CMakeLists.txt
+
+# fix iomanip include
+# https://github.com/ROCm/rocm-systems/issues/1021
+sed -i '/#include <string.*/a#include <iomanip>' tests/rocm_smi_test/test_base.h
+
+# Do not package tests if we are building them
+%if %{without test}
+rm -rf tests
+%endif
+
 %build
-%cmake -DFILE_REORG_BACKWARD_COMPATIBILITY=OFF -DCMAKE_INSTALL_LIBDIR=%{_lib} \
-       -DCMAKE_SKIP_INSTALL_RPATH=TRUE \
-       -DBUILD_TESTS=%build_test
+%cmake \
+    -DBUILD_TESTS=%{build_test} \
+    -DCMAKE_INSTALL_LIBDIR=%{pkg_libdir} \
+    -DCMAKE_INSTALL_PREFIX=%{pkg_prefix} \
+    -DCMAKE_SKIP_INSTALL_RPATH=%{pkg_skip_install_rpath} \
+    -DSHARE_INSTALL_PREFIX=%{pkg_prefix}/share
 
 %cmake_build
 
 %install
 %cmake_install
 
-# For Fedora < 38, the README is not installed if doxygen is disabled:
-install -D -m 644 README.md %{buildroot}%{_docdir}/rocm_smi/README.md
-
-rm -f %{buildroot}%{_datadir}/doc/rocm_smi/LICENSE.txt
+# Extra license
+rm -f %{buildroot}%{pkg_prefix}/share/doc/rocm-smi-lib/LICENSE.md
 
 %if 0%{?suse_version}
 %post   -p /sbin/ldconfig
@@ -133,23 +216,23 @@ rm -f %{buildroot}%{_datadir}/doc/rocm_smi/LICENSE.txt
 %endif
 
 %files
-%doc %{_docdir}/rocm_smi
-%license License.txt
-%{_bindir}/rocm-smi
-%{_libexecdir}/rocm_smi
-%{_libdir}/librocm_smi64.so.1{,.*}
-%{_libdir}/liboam.so.1{,.*}
+%doc README.md
+%license LICENSE.md
+%{pkg_prefix}/bin/rocm-smi
+%{pkg_prefix}/libexec/rocm_smi/
+%{pkg_prefix}/%{pkg_libdir}/librocm_smi64.so.1{,.*}
+%{pkg_prefix}/%{pkg_libdir}/liboam.so.1{,.*}
 
 %files devel
-%{_includedir}/rocm_smi/
-%{_includedir}/oam/
-%{_libdir}/librocm_smi64.so
-%{_libdir}/liboam.so
-%{_libdir}/cmake/rocm_smi/
+%{pkg_prefix}/include/rocm_smi/
+%{pkg_prefix}/include/oam/
+%{pkg_prefix}/%{pkg_libdir}/librocm_smi64.so
+%{pkg_prefix}/%{pkg_libdir}/liboam.so
+%{pkg_prefix}/%{pkg_libdir}/cmake/rocm_smi/
 
 %if %{with test}
 %files test
-%{_datarootdir}/rsmitst_tests
+%{pkg_prefix}/share/rsmitst_tests
 %endif
 
 %changelog

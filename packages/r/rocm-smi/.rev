@@ -7,4 +7,40 @@
     <comment>A new package rocm-smi</comment>
     <requestid>1303736</requestid>
   </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>91ec1cbf820fd80f941d29aeddc8894b</srcmd5>
+    <version>7.2.0</version>
+    <time>1776694260</time>
+    <user>anag_factory</user>
+    <comment>- Update to ROCm 7.2.1
+- Merge back rocm-smi7.2
+
+- Add --with preview
+
+- Update to 7.2.0
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+- Add --with compat
+
+- Update to 7.1.1
+- Merge back rocm-smi7.2
+
+- Add --with preview
+
+- Update to 7.2.0
+  * Add runtime power management detection and device wake support.
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+- Add --with compat
+
+- Update to 7.1.1
+
+- Update to 7.1.0
+  Removed: 0001-rocm-smi-fix-empty-return.patch
+
+- Update to 7.0.2</comment>
+    <requestid>1346948</requestid>
+  </revision>
 </revisionlist>
