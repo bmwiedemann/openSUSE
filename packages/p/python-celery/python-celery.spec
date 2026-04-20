@@ -28,15 +28,13 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-celery%{psuffix}
-Version:        5.6.2
+Version:        5.6.3
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
 URL:            https://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
-# PATCH-FIX-UPSTREAM gh#celery/celery#10074
-Patch1:         support-pymongo-4.16.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -49,7 +47,6 @@ Requires:       alts
 Requires:       python-billiard >= 4.2.1
 Requires:       python-click >= 8.1.2
 Requires:       python-click-didyoumean >= 0.3.0
-Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.2.0
 Requires:       python-dbm
 Requires:       python-kombu >= 5.6.0
@@ -65,25 +62,24 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module azure-storage-blob}
-BuildRequires:  %{python_module boto3 >= 1.9.178}
+BuildRequires:  %{python_module azure-storage-blob >= 12.15.0}
+BuildRequires:  %{python_module boto3 >= 1.26.143}
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module celery = %{version}}
 BuildRequires:  %{python_module cryptography >= 36.0.2}
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module eventlet >= 0.32.0}
-BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module gevent >= 1.5.0}
 BuildRequires:  %{python_module google-cloud-core}
-BuildRequires:  %{python_module google-cloud-firestore}
-BuildRequires:  %{python_module google-cloud-storage}
-BuildRequires:  %{python_module moto >= 2.2.6}
+BuildRequires:  %{python_module google-cloud-firestore >= 2.23.0}
+BuildRequires:  %{python_module google-cloud-storage >= 2.10.0}
+BuildRequires:  %{python_module moto >= 4.1.11}
 BuildRequires:  %{python_module msgpack}
-BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pydantic >= 2.4}
 BuildRequires:  %{python_module pymongo >= 4.0.2}
-BuildRequires:  %{python_module pytest >= 4.5.0}
+BuildRequires:  %{python_module pytest >= 8.4.2}
 BuildRequires:  %{python_module pytest-click}
-BuildRequires:  %{python_module pytest-subtests if %python-pytest < 9}
 BuildRequires:  %{python_module redis}
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
