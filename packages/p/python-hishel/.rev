@@ -125,4 +125,17 @@
   - chore(deps-dev): bump the python-packages group with 10 updates</comment>
     <requestid>1332674</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e693a71dd8dae15c7067ed844aab983d</srcmd5>
+    <version>1.1.10</version>
+    <time>1776694297</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.10:
+  * fix non-existing rfc reference by @karpetrosyan
+  * don't discard no-cache and vary-mismatched entries
+  * fix: properly save per-request hishel_ttl setting
+  * document storages
+  * move docs to vitepress</comment>
+    <requestid>1348075</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 19 20:04:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.10:
+  * fix non-existing rfc reference by @karpetrosyan
+  * don't discard no-cache and vary-mismatched entries
+  * fix: properly save per-request hishel_ttl setting
+  * document storages
+  * move docs to vitepress
+
+-------------------------------------------------------------------
 Thu Feb 12 10:07:35 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.1.9
