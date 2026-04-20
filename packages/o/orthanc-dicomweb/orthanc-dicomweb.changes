@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 15 14:22:57 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.23
+  * framework.diff and framework2.diff removed
+  * If calling "/rendered" route on a Encapsulated PDF, the plugin will now return the PDF file
+    instead of generating a 400 error.
+  * Added metrics:
+    - "orthanc_dicomweb_wadors_average_bandwidth_per_call_mbytes_per_second_5m" is the weighted
+      average bandwidth of each individual call to any WADO-RS route to retrieve instances, series
+      or studies. This metrics is only updated at the end of the call and averages the bandwidth
+      values that are also displayed in the logs if "EnablePerformanceLogs" is set to "true".
+    - "orthanc_dicomweb_wadors_total_bytes_transferred" counts the number of bytes that have
+      been returned by any WADO-RS route to retrieve instances, series, or studies. This is
+      updated while the response is returned.
+  * "DicomWebStowClient" jobs now have their "Content.Resources" and "Content.Server" fields
+    populated as soon as they are created, not only when they start being executed. 
+
+-------------------------------------------------------------------
 Tue Dec  9 10:00:46 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.22
