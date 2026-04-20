@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 11 10:55:26 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.70.0
+  * Bugfixes and minor changes:
+    - Replacing of invalid characters in filenames when downloading can no longer be disabled
+    - If saving of password was disabled, temporarily remembering passwords until FileZilla gets closed could result in additional password prompts
+    - SFTP: Fix accessing symbolic links
+    - FileZilla is now distributed under the terms of the GPL version 3 or later (formerly version 2 or later)
+- Changes from 3.70.0-rc3
+  * Bugfixes and minor changes:
+    - SFTP: Updated fzssh to 1.1.7 to address corrupted uploads
+- Changes from 3.70.0-rc2
+  * Bugfixes and minor changes:
+    - Updated fzssh to 1.1.6 to improve SSH channel window handling
+- Drop disable-avx-on-i586.patch because it can no longer be used.
+- filezilla-sftp_crypt_info_dlg.patch because it can no longer be used.
+
+-------------------------------------------------------------------
 Sat Nov 15 12:16:00 UTC 2025 - ecsos <ecsos@opensuse.org> - 3.69.5
 
 - Update to 3.69.5

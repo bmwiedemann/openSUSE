@@ -1,7 +1,7 @@
 #
 # spec file for package filezilla
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
-%define libversion 3.69.5
-%define libfilezillaversion 0.52.0
+%define libversion 3.70.0
+%define libfilezillaversion 0.55.0
 
 Name:           filezilla
-Version:        3.69.5
+Version:        3.70.0
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Clients
 URL:            https://filezilla-project.org/
 #Source0:        https://download.filezilla-project.org/client/FileZilla_%%{version}_src.tar.xz
-Source0:        FileZilla_%{version}_src.tar.xz
+Source0:        FileZilla_%{version}.1_src.tar.xz
 Patch0:         %{name}-welcome_dialog.patch
-Patch1:         disable-avx-on-i586.patch
-Patch3:         %{name}-sftp_crypt_info_dlg.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -65,6 +63,8 @@ BuildRequires:  pkgconfig(gnutls) >= 3.8.10
 %else
 BuildRequires:  pkgconfig(gnutls) >= 3.8.3
 %endif
+
+BuildRequires:  pkgconfig(libfzssh-client) >= 1.1.5
 
 %description
 FileZilla is a modern and powerful FTP client.
@@ -127,8 +127,6 @@ autoreconf -fi
 %license COPYING
 %doc README NEWS
 %{_bindir}/%{name}
-%{_bindir}/fzsftp
-%{_bindir}/fzputtygen
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor/480x480
@@ -140,8 +138,6 @@ autoreconf -fi
 %{_libdir}/libfzclient-commonui-private-%{libversion}.so
 %{_libdir}/libfzclient-private-%{libversion}.so
 %{_mandir}/man1/filezilla.1%{?ext_man}
-%{_mandir}/man1/fzputtygen.1%{?ext_man}
-%{_mandir}/man1/fzsftp.1%{?ext_man}
 %{_mandir}/man5/fzdefaults.xml.5%{?ext_man}
 
 %files devel
