@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 17 03:01:36 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 8.2.0
+  * Fixed a regression in the deep noise remover plugin. When the
+    plugin was restarted its settings were not being reapplied.
+
+-------------------------------------------------------------------
 Tue Apr 14 07:46:53 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 8.1.9
