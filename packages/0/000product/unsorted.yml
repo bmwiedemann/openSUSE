@@ -11315,7 +11315,7 @@ unsorted:
   - libMyGUICommon3_4_3 
   - libMyGUIEngine3_4_3 
   - libOIS-devel 
-  - libOIS1_5_0 
+  - libOIS1_6_0 
   - libOPNMIDI1 
   - libOSCFaust1 
   - libOgreBites-devel 
@@ -13453,6 +13453,9 @@ unsorted:
   - libfwsi1 
   - libfyaml-devel 
   - libfyaml-fy-tool 
+  - libfzssh 
+  - libfzssh-devel 
+  - libfzssh9_0_0 
   - libga68-2 
   - libga68-2-32bit 
   - libgadu-devel 
@@ -19953,6 +19956,8 @@ unsorted:
   - netty3-javadoc 
   - network-autoconfig 
   - newlib 
+  - newsboat 
+  - newsboat-lang 
   - newsflash 
   - newsflash-lang 
   - newt 
@@ -22927,6 +22932,7 @@ unsorted:
   - petsc-devel 
   - petsc-openmpi4-devel 
   - petsc-openmpi5-devel 
+  - pf-bb-config 
   - pfsalign 
   - pfscalibration 
   - pfsglview 
@@ -24371,7 +24377,6 @@ unsorted:
   - python311-PyAudio 
   - python311-PyAutoGUI 
   - python311-PyBindGen 
-  - python311-PyBrowserID 
   - python311-PyCBC 
   - python311-PyChromecast 
   - python311-PyCondor 
@@ -25154,7 +25159,6 @@ unsorted:
   - python311-boto3 
   - python311-botocore 
   - python311-bottle 
-  - python311-bowler 
   - python311-bpython 
   - python311-bqplot 
   - python311-bracex 
@@ -26622,6 +26626,7 @@ unsorted:
   - python311-ovirt-engine-sdk 
   - python311-pa-ringbuffer 
   - python311-packageurl-python 
+  - python311-packaging-legacy 
   - python311-paginate 
   - python311-paho-mqtt 
   - python311-pako 
@@ -28267,7 +28272,6 @@ unsorted:
   - python313-PyAudio 
   - python313-PyAutoGUI 
   - python313-PyBindGen 
-  - python313-PyBrowserID 
   - python313-PyCBC 
   - python313-PyChromecast 
   - python313-PyCondor 
@@ -29058,7 +29062,6 @@ unsorted:
   - python313-boto3 
   - python313-botocore 
   - python313-bottle 
-  - python313-bowler 
   - python313-bpython 
   - python313-bracex 
   - python313-branca 
@@ -30552,6 +30555,7 @@ unsorted:
   - python313-ovirt-engine-sdk 
   - python313-pa-ringbuffer 
   - python313-packageurl-python 
+  - python313-packaging-legacy 
   - python313-paginate 
   - python313-paho-mqtt 
   - python313-pako 
@@ -32310,6 +32314,7 @@ unsorted:
   - python314-actdiag 
   - python314-adal 
   - python314-adapt-parser 
+  - python314-adblock 
   - python314-addict 
   - python314-aeidon 
   - python314-aenum 
@@ -32961,7 +32966,6 @@ unsorted:
   - python314-boto3 
   - python314-botocore 
   - python314-bottle 
-  - python314-bowler 
   - python314-bracex 
   - python314-branca 
   - python314-breathe 
@@ -33039,6 +33043,7 @@ unsorted:
   - python314-circuitbreaker 
   - python314-ciso8601 
   - python314-cleo 
+  - python314-cli-helpers 
   - python314-click 
   - python314-click-aliases 
   - python314-click-command-tree 
@@ -33211,6 +33216,7 @@ unsorted:
   - python314-devpi-common 
   - python314-devpi-process 
   - python314-devpi-server 
+  - python314-dfVFS 
   - python314-dfdatetime 
   - python314-diagnostic 
   - python314-dialite 
@@ -34244,6 +34250,7 @@ unsorted:
   - python314-mutmut 
   - python314-mutt-ics 
   - python314-mwclient 
+  - python314-mycli 
   - python314-mygpoclient 
   - python314-mypy 
   - python314-mypy-protobuf 
@@ -34429,6 +34436,7 @@ unsorted:
   - python314-pa-ringbuffer 
   - python314-packageurl-python 
   - python314-packaging 
+  - python314-packaging-legacy 
   - python314-paginate 
   - python314-paho-mqtt 
   - python314-pako 
@@ -36980,6 +36988,7 @@ unsorted:
   - rocm-compilersupport-macros 
   - rocm-core-devel 
   - rocm-device-libs 
+  - rocm-filesystem 
   - rocm-hip 
   - rocm-hip-devel 
   - rocm-libc++ 
