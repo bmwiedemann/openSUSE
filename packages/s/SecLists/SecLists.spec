@@ -1,7 +1,7 @@
 #
 # spec file for package SecLists
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           SecLists
-Version:        2025.3
+Version:        2026.1
 Release:        0
 Summary:        SecLists is the security tester's companion
 License:        MIT
 URL:            https://github.com/danielmiessler/SecLists
 Source:         https://github.com/danielmiessler/SecLists/archive/refs/tags/%{version}.tar.gz
+BuildArch:      noarch
 
 %description
-
 SecLists is the security tester's companion. It's a collection of multiple
 types of lists used during security assessments, collected in one place. List
 types include usernames, passwords, URLs, sensitive data patterns, fuzzing

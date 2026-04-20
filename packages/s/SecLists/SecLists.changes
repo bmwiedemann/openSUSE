@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Mar 29 18:38:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2026.1
+  New wordlists
+  * Created 2025 most used passwords wordlist.
+  * Added AI ethical and safety boundary testing wordlists.
+  * Updated top1million subdomains lists with cloudflare data.
+  * Add wordlists for: Kubernetes, Docker, Elasticsearch, Grafana,
+    GitLab, Prometheus.
+  * Added OpenWRT discovery wordlist.
+  * Added RSTP camera wordlist.
+  * Added SOfensive LFI wordlist and removed redundant
+    GracefulSecurity wordlist.
+  * Added wordlist for Bluedit CMS.
+  * Added locale-codes wordlist and language-codes wordlist.
+  * Add common.txt in brazilian portuguese.
+  * Add more hispanic names.
+  * Added list of Brazilian names.
+  * Added polish password wordlist.
+  * Added Polish wordlist to Passwords/Common-Credentials/
+    Language-Specific.
+  Updates to existing wordlists
+  * Added more API fuzzing endpoints.
+  * Added more entries to "SAP-NetWeaver.txt".
+  * Added more payloads to graphql wordlist.
+  * Added more payloads to login_bypass.txt.
+  * Added more payloads to Swagger.txt.
+  * Updated list of Spring endpoints..
+  * Updated list of years in 'quickhits.txt'.
+- Set BuildArch to "noarch"
+
+-------------------------------------------------------------------
 Fri Sep 19 13:56:17 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2025.3
