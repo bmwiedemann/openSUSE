@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-wsi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2019-2025 Dr. Axel Braun
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2019-2026 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Source2:        https://orthanc.uclouvain.be/downloads/third-party-downloads/boo
 Source3:        https://orthanc.uclouvain.be/downloads/third-party-downloads/WSI/popper-2.11.8.min.js.gz
 Source11:       orthanc-wsi-readme.SUSE
 Patch0:         framework.patch
+Patch1:         cassert.diff
 
 BuildRequires:  boost-devel
 BuildRequires:  cmake
