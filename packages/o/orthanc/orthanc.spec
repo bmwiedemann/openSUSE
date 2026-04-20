@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.12.10
+Version:        1.12.11
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -37,8 +37,6 @@ Source10:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dic
 Source11:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/axios-0.19.0.tar.gz
 Source12:       https://orthanc.uclouvain.be/downloads/third-party-downloads/jquery-3.4.1.min.js
 Source13:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/vuejs-2.6.10.tar.gz
-Patch0:         370dir.diff
-Patch1:         dcmtk370.patch
 
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
@@ -196,21 +194,13 @@ mkdir -p -m 755 %{buildroot}/usr/src/%{name}
 tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
 
 #Apply decmtk patch to the source tree, this is needed by plugins
-patch -d %{buildroot}/usr/src/%{name}/OrthancFramework -p2 < %{P:0}
-patch -d %{buildroot}/usr/src/%{name}/OrthancFramework -p2 < %{P:1}
+##% patch -d %{buildroot}/usr/src/%{name}/OrthancFramework -p2 < %{P:0}
+##% patch -d %{buildroot}/usr/src/%{name}/OrthancFramework -p2 < %{P:1}
 
 %if 0%{?suse_version} >= 1600
 # BOOST komponente system raus patchen
 sed -i '/list(APPEND ORTHANC_BOOST_COMPONENTS/ s/ system//g' %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/BoostConfiguration.cmake
 %endif
-
-#Apply dcmtk patch
-## patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
-
-#Apply remaining patches to source tree
-## patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:1}
-## patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:2}
-## patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:3}
 
 # Do not mark Python scripts as executable
 find %{buildroot}/usr/src/%{name} -name '*.py' -exec chmod a-x "{}" +

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 15 14:03:36 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.12.11
+   370dir.diff and dcmtk370.patch removed (upstream)
+  * Lots of Bug- and CVE-Fixes. See News for details
+
+-------------------------------------------------------------------
 Tue Jan 13 09:30:09 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - dcmtk 370 breaks TW build
