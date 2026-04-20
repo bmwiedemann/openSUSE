@@ -42,4 +42,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324529</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2273de47e6175f63e33391c6a0d8fd78</srcmd5>
+    <version>8.0.0</version>
+    <time>1776694266</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.0.0:
+  + Ctrl + BackSpace can now be used delete words
+  + Ctrl + Click is now required to open a link
+  + Update code and packaging for Gtk4
+  + Flatter styles
+  + Tab bar now in window drag area
+  + Smart copy no longer deselects
+  + Translation updates (forwarded request 1347929 from rrahl0)</comment>
+    <requestid>1347930</requestid>
+  </revision>
 </revisionlist>

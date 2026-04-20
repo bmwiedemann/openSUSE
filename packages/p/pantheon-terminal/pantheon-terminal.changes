@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 18 11:15:15 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.0.0:
+  + Ctrl + BackSpace can now be used delete words
+  + Ctrl + Click is now required to open a link
+  + Update code and packaging for Gtk4
+  + Flatter styles
+  + Tab bar now in window drag area
+  + Smart copy no longer deselects
+  + Translation updates
+
+-------------------------------------------------------------------
 Sun Dec 21 03:21:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 7.2.0:

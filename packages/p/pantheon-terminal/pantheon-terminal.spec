@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-terminal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.terminal
 Name:           pantheon-terminal
-Version:        7.2.0
+Version:        8.0.0
 Release:        0
 Summary:        Lightweight and modern Terminal for the Pantheon Desktop
 License:        GPL-3.0-or-later
@@ -27,14 +27,17 @@ Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fish
+BuildRequires:  gettext-runtime
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  vala
+BuildRequires:  vala >= 0.56
 BuildRequires:  xvfb-run
-BuildRequires:  pkgconfig(granite)
-BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(vte-2.91)
+BuildRequires:  pkgconfig(granite-7) >= 7.7.0
+BuildRequires:  pkgconfig(gtk4) >= 4.1.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.0
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(vte-2.91) >= 0.76.0
 Provides:       elementary-terminal = %{version}
 Obsoletes:      elementary-terminal < %{version}
 
@@ -65,7 +68,10 @@ This package contains the configuration files when using the fish shell.
 %install
 %meson_install
 %find_lang %{appid}
-%fdupes %{buildroot}%{_datadir}
+%fdupes %{buildroot}
+
+%check
+%meson_test
 
 %files
 %license COPYING
