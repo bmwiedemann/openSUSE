@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 20 12:27:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.85.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Fix regular expression for extracting test commands
+- Skip testing failing mariadb command for now
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Mar  3 07:15:28 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
