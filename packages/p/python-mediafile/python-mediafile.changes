@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 19 19:59:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.2:
+  * Add raise_on_unsupported_wav parameter to MediaFile.__init__
+    to optionally raise FileTypeError for WAV files containing
+    non-PCM audio streams (WAVE_FORMAT_MPEGLAYER3,
+    WAVE_FORMAT_ADPCM, WAVE_FORMAT_ALAW, WAVE_FORMAT_MULAW).
+  * Raise FileTypeError for WAV files containing non-PCM audio
+    streams that mutagen cannot tag correctly, including
+    WAVE_FORMAT_MPEGLAYER3 (0x0055), WAVE_FORMAT_ADPCM (0x0002),
+    WAVE_FORMAT_ALAW (0x0006), and WAVE_FORMAT_MULAW (0x0007).
+  * Added a multiple-valued lyricists, composers and arrangers
+    fields while preserving lyricist, composer and arranger as
+    first-value convenience aliases.
+  * Added a multiple-valued remixers field.
+
+-------------------------------------------------------------------
 Mon Mar 16 20:25:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.0:
