@@ -2,7 +2,7 @@
 # spec file for package decibels
 #
 # Copyright (c) 2025 mantarimay
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define lname   org.gnome.Decibels
 %define sname   gi-typescript-definitions
 %define scommit dbbaa0527556cd3ce5434c4a5072cd99348eff7a
 Name:           decibels
-Version:        49.0
+Version:        49.6.1
 Release:        0
 Summary:        Play audio files with a waveform
 License:        GPL-3.0-or-later
@@ -32,8 +33,8 @@ BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.62.0
-BuildRequires:  typescript
 BuildRequires:  pkgconfig
+BuildRequires:  typescript
 BuildRequires:  pkgconfig(gjs-1.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
@@ -43,14 +44,14 @@ Provides:       bundled(gi-types)
 BuildArch:      noarch
 
 %description
-App that lets you play audio files. 
-It has a modern and adaptive interface, with a waveform, simple playback controls, 
+App that lets you play audio files.
+It has a modern and adaptive interface, with a waveform, simple playback controls,
 and the ability to control the speed at which the audio is played.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 tar -xf %{SOURCE1} --strip-components 1 -C gi-types
 
 %build

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 17 16:02:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.6.1:
+  * Fix invalid git tag
+- Changes from version 49.6:
+  * Bugs fixed:
+    - Decibels doesn't set audio stream metadata (pretty name, icon
+      and current playback title) for other PipeWire apps
+    - Volume Meter shows incorrect default value (50%) after
+      starting the application
+    - metainfo: Change component type to "desktop-application"
+    - fix(mpris): SetPosition and OpenUri
+    - metainfo: Use supports for controls
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 15 21:12:19 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 49.0
