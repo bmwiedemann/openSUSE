@@ -65,4 +65,14 @@
     (https://github.com/scikit-hep/hepunits/pull/280)</comment>
     <requestid>1342027</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0540d951a1f6c8351471ea0f63cd99a4</srcmd5>
+    <version>2.4.5</version>
+    <time>1776694278</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.5:
+  * Add a couple more non-SI units related to electromagnetism
+    actions group</comment>
+    <requestid>1348060</requestid>
+  </revision>
 </revisionlist>
