@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry-plugin-export
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,18 +27,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-plugin-export%{psuffix}
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Poetry plugin to export the dependencies to various formats
 License:        MIT
 URL:            https://python-poetry.org/
 # RepositorySource: https://github.com/python-poetry/poetry-plugin-export
 Source:         https://files.pythonhosted.org/packages/source/p/poetry-plugin-export/poetry_plugin_export-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry-plugin-export/pull/321 tests: adapt tests to cosmetic changes caused by poetry-core#826
-Patch:          tests.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.7.0 with %python-poetry-core < 3}
+BuildRequires:  %{python_module poetry-core >= 2.0}
 # No buildtime requirement of poetry: avoid build dep cycles!
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,8 +48,9 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 %endif
-Requires:       (python-poetry >= 1.8.0 with python-poetry < 3)
-Requires:       (python-poetry-core >= 1.7.0 with python-poetry-core < 3)
+Requires:       python-tomlkit >= 0.11.4
+Requires:       (python-poetry >= 2.1.0 with python-poetry < 3)
+Requires:       (python-poetry-core >= 2.1.0 with python-poetry-core < 3)
 Provides:       python-poetry_plugin_export = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages

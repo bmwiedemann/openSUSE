@@ -101,4 +101,20 @@ fix multibuild</comment>
   - Add upstream tests.patch to fix tests with recent poetry</comment>
     <requestid>1274046</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6a124e113ee4e24885d7fb1c4eeced44</srcmd5>
+    <version>1.10.0</version>
+    <time>1776694288</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.10.0:
+  ## Added
+  * Add support for exporting pylock.toml files.
+  ## Changed
+  * Drop support for Python 3.9.
+  ## Fixed
+  * Fix an issue where a &quot;dependency walk failed&quot; error message gave an
+    outdated advice.
+- Drop patch tests.patch, merged.</comment>
+    <requestid>1348101</requestid>
+  </revision>
 </revisionlist>

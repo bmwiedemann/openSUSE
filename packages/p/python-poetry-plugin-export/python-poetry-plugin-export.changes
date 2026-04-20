@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 20 04:59:53 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- update to 1.10.0:
+  ## Added
+  * Add support for exporting pylock.toml files.
+  ## Changed
+  * Drop support for Python 3.9.
+  ## Fixed
+  * Fix an issue where a "dependency walk failed" error message gave an
+    outdated advice.
+- Drop patch tests.patch, merged.
+
+-------------------------------------------------------------------
 Fri May  2 11:26:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.9.0
