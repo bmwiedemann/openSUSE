@@ -2,7 +2,7 @@
 # spec file for package hello
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # How to define macros
 %define hello echo "hello world"
 Name:           hello
-Version:        2.12.2
+Version:        2.12.3
 Release:        0
 Summary:        A Friendly Greeting Program
 License:        GPL-3.0-or-later
