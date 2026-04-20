@@ -79,4 +79,25 @@ Breaks
   PEP 621</comment>
     <requestid>1074916</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>04bfc2843935d34afd943803253a15f5</srcmd5>
+    <version>0.6.0+14.compat.g9e997bcbd</version>
+    <time>1776694285</time>
+    <user>anag_factory</user>
+    <comment>God I hate the Rust ecosystem. Anyway…
+
+- Upstream is unresponsive -- switch to downstream Git repository
+  with applied changes to make dealing with Cargo easier.
+  Unfortunately, updating dependencies is not possible because all
+  compatible versions of rmp-serde have been yanked, and updating
+  the adblock crate itself leads to both dependency hell and
+  changes that would break downstream users of this module.
+- Update to version 0.6.0+14.compat.g9e997bcbd:
+  * PyO3: Build flavor-specific versions
+  * update configuration for poetry 2.0
+  * upgrade to pyo3 0.28
+  * PEP 621 compatibility
+- Drop python-adblock-maturin-0-14-compat.patch</comment>
+    <requestid>1348089</requestid>
+  </revision>
 </revisionlist>
