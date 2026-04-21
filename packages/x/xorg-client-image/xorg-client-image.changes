@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 20 15:44:39 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- Explicitly set group ID to 100 (bsc#1262306)
+
+-------------------------------------------------------------------
+Thu Mar 26 12:42:13 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- rebuild rpm database to make it reproducible
+
+-------------------------------------------------------------------
 Tue Mar 10 21:46:15 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove move files that make containers unreproducible
