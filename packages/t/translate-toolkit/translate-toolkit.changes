@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr 17 08:05:16 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.19.5
+  * Improvements in many formats.
+  * Consolidated XML parsing to use lxml
+  * Apply limits on processed ZIP files
+
+-------------------------------------------------------------------
+Tue Mar 24 22:57:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.19.3
+  * Markdown:
+    - Support extracting code blocks for translation.
+    - Added --no-code-blocks option to md2po and po2md.
+  * Apple strings (.strings):
+    - Improved preservation of whitespace and comments.
+    - Generic comments are now hidden from notes but
+      preserved on round-trip.
+  * CI/Development:
+    - Switched from pre-commit to prek.
+  * Fixed blank line preservation in property converters.
+
+-------------------------------------------------------------------
 Tue Mar  3 14:31:15 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.19.2
