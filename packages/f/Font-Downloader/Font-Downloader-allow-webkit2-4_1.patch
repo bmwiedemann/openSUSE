@@ -1,0 +1,21 @@
+---
+ src/main.py |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+Index: Font-Downloader-10.0.0/src/main.py
+===================================================================
+--- Font-Downloader-10.0.0.orig/src/main.py
++++ Font-Downloader-10.0.0/src/main.py
+@@ -20,8 +20,11 @@ import gi
+ 
+ gi.require_version('Gtk', '3.0')
+ gi.require_version('Handy', '1')
+-gi.require_version('WebKit2', '4.0')
+ gi.require_version('Pango', '1.0')
++try:
++    gi.require_version('WebKit2', '4.1')
++except ValueError:
++    gi.require_version('WebKit2', '4.0')
+ 
+ from gi.repository import Gtk, Gio, Handy
+ if True: #os.environ['XDG_SESSION_TYPE'].lower() == "wayland"

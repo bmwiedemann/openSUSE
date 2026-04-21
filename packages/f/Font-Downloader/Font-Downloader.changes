@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 19 07:01:38 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Font-Downloader-allow-webkit2-4_1.patch: prefer using
+  `WebKit2` version '4.1' over '4.0' when possible. This is
+  probably not worth upstreaming as there is an effort to migrate
+  to Gtk4 and WebKit2 '6.0' anyway, including pending PR#124.
+- Relax version requirement on  typelib(webkit2) to allow versions
+  4.0 or later; on Tumbleweed, this allows using webkit2 4.1.
+
+-------------------------------------------------------------------
 Wed Sep 10 19:31:20 UTC 2025 - Alexander S <hriktux@proton.me>
 
 - Added fix for missing webkit 4.0 depenendency

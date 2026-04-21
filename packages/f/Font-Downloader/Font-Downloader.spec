@@ -1,7 +1,7 @@
 #
 # spec file for package Font-Downloader
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,15 @@ Summary:        Install fonts from online sources
 License:        GPL-3.0-or-later
 URL:            https://github.com/GustavoPeredo/Font-Downloader
 Source:         https://github.com/GustavoPeredo/Font-Downloader/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Font-Downloader-allow-webkit2-4_1.patch badshah400@gmail.com -- Prefer using `WebKit2` version '4.1' over '4.0' when possible
+Patch0:         Font-Downloader-allow-webkit2-4_1.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libhandy-1)
 Requires:       python3-gobject-Gdk
-Requires:       typelib(WebKit2) = 4.0
+Requires:       typelib(WebKit2) >= 4.0
 BuildArch:      noarch
 
 %description
