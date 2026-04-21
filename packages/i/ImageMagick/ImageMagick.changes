@@ -17,6 +17,17 @@ Wed Apr 15 08:30:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * Set BackgroundDispose for animated JXL frames with alpha #8635
   * Skip frame duplication for APNG in video coder #8636
 - fixes CVE-2026-33905 [bsc#1262097]
+        CVE-2026-33901 [bsc#1262155]
+        CVE-2026-33908 [bsc#1262152]
+        CVE-2026-33900 [bsc#1262156]
+        CVE-2026-40183 [bsc#1262145]
+        CVE-2026-40311 [bsc#1262146]
+        CVE-2026-34238 [bsc#1262147]
+        CVE-2026-40310 [bsc#1262148]
+        CVE-2026-40312 [bsc#1262149]
+        CVE-2026-40169 [bsc#1262150]
+        CVE-2026-33902 [bsc#1262153]
+        CVE-2026-33899 [bsc#1262154]
 
 -------------------------------------------------------------------
 Mon Mar 30 12:36:54 UTC 2026 - Petr Gajdos <pgajdos@suse.com>

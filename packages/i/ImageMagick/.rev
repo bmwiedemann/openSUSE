@@ -4405,4 +4405,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 - fixes CVE-2026-33905 [bsc#1262097]</comment>
     <requestid>1347119</requestid>
   </revision>
+  <revision rev="332" vrev="2">
+    <srcmd5>128a53f016d5f1cd90e4c20812e8f85e</srcmd5>
+    <version>7.1.2.19</version>
+    <time>1776768135</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-33901, [bsc#1262155], CVE-2026-33908, [bsc#1262152], CVE-2026-33900, [bsc#1262156], CVE-2026-40183, [bsc#1262145], CVE-2026-40311, [bsc#1262146], CVE-2026-34238, [bsc#1262147], CVE-2026-40310, [bsc#1262148], CVE-2026-40312, [bsc#1262149], CVE-2026-40169, [bsc#1262150], CVE-2026-33902, [bsc#1262153], CVE-2026-33899, [bsc#1262154]</comment>
+    <requestid>1348123</requestid>
+  </revision>
 </revisionlist>
