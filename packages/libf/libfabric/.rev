@@ -853,4 +853,41 @@ Binary file libfabric-1.6.0.0.0e74cba7ad59.tar.bz2 (revision 11) deleted</commen
     - Bump minor version and integrate fi_writedata API support</comment>
     <requestid>1341853</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>a58ebdc1526ca0e7b9636c90ad54cbcd</srcmd5>
+    <version>2.5.1</version>
+    <time>1776768112</time>
+    <user>anag_factory</user>
+    <comment>- Update to v2.5.1
+  - Core
+    - man: Fix typo in fi_cntr_readerr
+    - hmem: Enable CUDA p2p support if there is only one GPU visible
+    - configure.ac: define sanitizer macros and disable memhooks under ASAN
+  - CXI
+    - Fix build failure with older libcxi
+  - EFA
+    - Skip dmabuf supported check for explicit mr call
+    - fix pkt pool flag assertions for non-debug builds
+    - fix use-after-free in efa_mr_dereg_impl info log
+    - Set qp-&gt;base_ep in efa_qp_create
+    - Return error if efa_mr_reg_ibv_mr returns NULL
+    - Print iface string in the efa_mr_reg_ibv_mr log
+    - Correctly remove txe from longcts_send list on receipt recv completion
+    - fix err_buf memory leak in efa_cq_open error path
+    - fix fi_info memory leaks in unit tests
+    - Use getrandom/urandom for QKEY generation
+    - Explain why the CQ has to be drained after QP destruction
+    - move efa_device function declarations to efa_device.h
+    - disable MR cache by default under ASAN
+    - remove redundant efa_env.track_mr save/restore
+    - fix fi_info leak in efa_get_user_info
+    - fix memory leaks in unit tests
+    - initialize receipt header tx_id in DC release test
+    - fix use-after-free in efa_ah_cnt_av_impl
+    - fix use-after-free of cur_wq during EP close CQ drain
+    - warn when MR is closed with outstanding operations
+    - Add ope pool for efa direct if FI_EFA_TRACK_MR
+    - Track ep in a domain list if FI_EFA_TRACK_MR</comment>
+    <requestid>1348248</requestid>
+  </revision>
 </revisionlist>
