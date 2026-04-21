@@ -1,0 +1,386 @@
+From 2a75693f24a631b0a2a366bdce1ca5cb0c38d215 Mon Sep 17 00:00:00 2001
+From: Yuan Fu <casouri@gmail.com>
+Date: Tue, 27 Aug 2024 22:31:42 -0700
+Subject: [PATCH] Add Ftreesit_grammar_location
+
+* src/treesit.c (treesit_loaded_lang): New struct.
+(treesit_load_language): Return a struct instead of just the language
+object.  The struct contains both the language object and the path to
+the shared library.
+(Ftreesit_language_available_p, Ftreesit_language_abi_version)
+(treesit_ensure_query_compiled, Ftreesit_parser_create): Update
+call of treesit_load_language.
+(Ftreesit_grammar_location): New function.
+---
+ src/treesit.c | 71 +++++++++++++++++++++++++++++++++++++++++----------
+ 1 file changed, 58 insertions(+), 13 deletions(-)
+
+diff --git a/src/treesit.c b/src/treesit.c
+index 0ba6c733d64..8c586109b2d 100644
+--- a/src/treesit.c
++++ b/src/treesit.c
+@@ -22,6 +22,7 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
+ #include <config.h>
+ #include "lisp.h"
+ #include "buffer.h"
++#include "coding.h"
+ 
+ #include "treesit.h"
+ 
+@@ -541,6 +542,15 @@ treesit_debug_print_parser_list (char *msg, Lisp_Object parser)
+ 
+ /*** Loading language library  */
+ 
++struct treesit_loaded_lang
++{
++  /* The language object, or NULL if the language failed to load.  */
++  TSLanguage *lang;
++  /* The absolute file name of the shared library, or NULL if access
++     failed.  */
++  const char *filename;
++};
++
+ /* Translate a symbol treesit-<lang> to a C name treesit_<lang>.  */
+ static void
+ treesit_symbol_to_c_name (char *symbol_name)
+@@ -625,7 +635,7 @@ treesit_load_language_push_for_each_suffix (Lisp_Object lib_base_name,
+ 
+    If error occurs, return NULL and fill SIGNAL_SYMBOL and SIGNAL_DATA
+    with values suitable for xsignal.  */
+-static TSLanguage *
++static struct treesit_loaded_lang
+ treesit_load_language (Lisp_Object language_symbol,
+ 		       Lisp_Object *signal_symbol, Lisp_Object *signal_data)
+ {
+@@ -676,6 +686,7 @@ treesit_load_language (Lisp_Object language_symbol,
+   dynlib_handle_ptr handle;
+   const char *error;
+   Lisp_Object error_list = Qnil;
++  struct treesit_loaded_lang loaded_lang = { NULL, NULL };
+ 
+   tail = path_candidates;
+   error = NULL;
+@@ -700,7 +711,7 @@ treesit_load_language (Lisp_Object language_symbol,
+          mismatch.  */
+       *signal_symbol = Qtreesit_load_language_error;
+       *signal_data = Fcons (Qnot_found, Fnreverse (error_list));
+-      return NULL;
++      return loaded_lang;
+     }
+ 
+   /* Load TSLanguage.  */
+@@ -722,7 +733,7 @@ treesit_load_language (Lisp_Object language_symbol,
+     {
+       *signal_symbol = Qtreesit_load_language_error;
+       *signal_data = list2 (Qsymbol_error, build_string (error));
+-      return NULL;
++      return loaded_lang;
+     }
+   TSLanguage *lang = (*langfn) ();
+ 
+@@ -735,9 +746,14 @@ treesit_load_language (Lisp_Object language_symbol,
+       *signal_symbol = Qtreesit_load_language_error;
+       *signal_data = list2 (Qversion_mismatch,
+ 			    make_fixnum (ts_language_version (lang)));
+-      return NULL;
++      return loaded_lang;
+     }
+-  return lang;
++
++  const char *sym;
++  dynlib_addr ((void (*)) langfn, &loaded_lang.filename, &sym);
++
++  loaded_lang.lang = lang;
++  return loaded_lang;
+ }
+ 
+ DEFUN ("treesit-language-available-p", Ftreesit_language_available_p,
+@@ -754,7 +770,9 @@ If DETAIL is non-nil, return (t . nil) when LANGUAGE is available,
+   treesit_initialize ();
+   Lisp_Object signal_symbol = Qnil;
+   Lisp_Object signal_data = Qnil;
+-  if (treesit_load_language (language, &signal_symbol, &signal_data) == NULL)
++  struct treesit_loaded_lang loaded_lang
++    = treesit_load_language (language, &signal_symbol, &signal_data);
++  if (loaded_lang.lang == NULL)
+     {
+       if (NILP (detail))
+ 	return Qnil;
+@@ -800,9 +818,9 @@ Return nil if a grammar library for LANGUAGE is not available.  */)
+     {
+       Lisp_Object signal_symbol = Qnil;
+       Lisp_Object signal_data = Qnil;
+-      TSLanguage *ts_language = treesit_load_language (language,
+-						       &signal_symbol,
+-						       &signal_data);
++      struct treesit_loaded_lang lang
++	= treesit_load_language (language, &signal_symbol, &signal_data);
++      TSLanguage *ts_language = lang.lang;
+       if (ts_language == NULL)
+ 	return Qnil;
+       uint32_t version =  ts_language_version (ts_language);
+@@ -810,6 +828,30 @@ Return nil if a grammar library for LANGUAGE is not available.  */)
+     }
+ }
+ 
++/* This function isn't documented in the manual since it's mainly for
++   debugging.  */
++DEFUN ("treesit-grammar-location", Ftreesit_grammar_location,
++       Streesit_grammar_location,
++       1, 1, 0,
++       doc: /* Return the absolute file name of the grammar file for LANGUAGE.
++
++If LANGUAGE isn't loaded yet, load it first.  If the language can't be
++loaded or the file name couldn't be determined, return nil.  */)
++  (Lisp_Object language)
++{
++  CHECK_SYMBOL (language);
++
++  Lisp_Object signal_symbol = Qnil;
++  Lisp_Object signal_data = Qnil;
++  struct treesit_loaded_lang lang
++    = treesit_load_language (language, &signal_symbol, &signal_data);
++
++  if (!lang.lang || !lang.filename) return Qnil;
++
++  return DECODE_FILE (make_unibyte_string (lang.filename,
++					   strlen (lang.filename)));
++}
++
+ 
+ /*** Parsing functions  */
+ 
+@@ -1401,8 +1443,9 @@ treesit_ensure_query_compiled (Lisp_Object query, Lisp_Object *signal_symbol,
+   Lisp_Object language = XTS_COMPILED_QUERY (query)->language;
+   /* This is the main reason why we compile query lazily: to avoid
+      loading languages early.  */
+-  TSLanguage *treesit_lang = treesit_load_language (language, signal_symbol,
+-						    signal_data);
++  struct treesit_loaded_lang lang
++    = treesit_load_language (language, signal_symbol, signal_data);
++  TSLanguage *treesit_lang = lang.lang;
+   if (treesit_lang == NULL)
+     return NULL;
+ 
+@@ -1573,8 +1616,9 @@ an indirect buffer.  */)
+   Lisp_Object signal_symbol = Qnil;
+   Lisp_Object signal_data = Qnil;
+   TSParser *parser = ts_parser_new ();
+-  TSLanguage *lang = treesit_load_language (language, &signal_symbol,
+-					    &signal_data);
++  struct treesit_loaded_lang loaded_lang
++    = treesit_load_language (language, &signal_symbol, &signal_data);
++  TSLanguage *lang = loaded_lang.lang;
+   if (lang == NULL)
+     xsignal (signal_symbol, signal_data);
+   /* We check language version when loading a language, so this should
+@@ -4369,6 +4413,7 @@ applies to LANGUAGE-A will be redirected to LANGUAGE-B instead.  */);
+   defsubr (&Streesit_language_available_p);
+   defsubr (&Streesit_library_abi_version);
+   defsubr (&Streesit_language_abi_version);
++  defsubr (&Streesit_grammar_location);
+ 
+   defsubr (&Streesit_parser_p);
+   defsubr (&Streesit_node_p);
+-- 
+2.51.0
+
+From 38789e9a2878846cadb72fef58cc24872fe46ae4 Mon Sep 17 00:00:00 2001
+From: Eli Zaretskii <eliz@gnu.org>
+Date: Sun, 18 May 2025 09:05:07 +0300
+Subject: [PATCH] Improve reporting of language-grammar library ABI version
+ mismatch
+
+* lisp/treesit.el (treesit-ready-p): More accurate wording of
+message when grammar library fails to load.
+
+* src/treesit.c (treesit_load_language): Improve message when
+reporting library ABI version mismatch.  Suggested by Soham
+Gumaste <sohamg2@gmail.com>.
+---
+ lisp/treesit.el |  2 +-
+ src/treesit.c   | 18 ++++++++++++++----
+ 2 files changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/lisp/treesit.el b/lisp/treesit.el
+index a353bc942d3..68de843ce4d 100644
+--- a/lisp/treesit.el
++++ b/lisp/treesit.el
+@@ -4297,7 +4297,7 @@ instead of emitting a warning."
+         (pcase-let ((`(,available . ,err)
+                      (treesit-language-available-p lang t)))
+           (when (not available)
+-            (setq msg (format "language grammar for %s is unavailable (%s): %s"
++            (setq msg (format "language grammar for %s failed to load (%s): %s"
+                               lang (nth 0 err)
+                               (string-join
+                                (mapcar (lambda (x) (format "%s" x))
+diff --git a/src/treesit.c b/src/treesit.c
+index 3a19e0cb282..de74e41c89a 100644
+--- a/src/treesit.c
++++ b/src/treesit.c
+@@ -757,6 +757,7 @@ treesit_load_language (Lisp_Object language_symbol,
+   error = NULL;
+   handle = NULL;
+ 
++  Lisp_Object loaded_lib = Qnil;
+   FOR_EACH_TAIL (tail)
+     {
+       char *library_name = SSDATA (XCAR (tail));
+@@ -764,7 +765,10 @@ treesit_load_language (Lisp_Object language_symbol,
+       handle = dynlib_open (library_name);
+       error = dynlib_error ();
+       if (error == NULL)
+-	break;
++	{
++	  loaded_lib = XCAR (tail);
++	  break;
++	}
+       else
+ 	error_list = Fcons (build_string (error), error_list);
+     }
+@@ -808,9 +812,15 @@ treesit_load_language (Lisp_Object language_symbol,
+   ts_parser_delete (parser);
+   if (!success)
+     {
++      Lisp_Object fmt =
++	build_string ("%s's ABI version is %d, but supported versions are %d-%d");
++      Lisp_Object formatted_msg =
++	CALLN (Fformat_message, fmt, loaded_lib,
++	       make_fixnum (ts_language_version (lang)),
++	       make_fixnum (TREE_SITTER_MIN_COMPATIBLE_LANGUAGE_VERSION),
++	       make_fixnum (TREE_SITTER_LANGUAGE_VERSION));
+       *signal_symbol = Qtreesit_load_language_error;
+-      *signal_data = list2 (Qversion_mismatch,
+-			    make_fixnum (ts_language_version (lang)));
++      *signal_data = list2 (Qlang_version_mismatch, formatted_msg);
+       return loaded_lang;
+     }
+ 
+@@ -5091,7 +5101,7 @@ syms_of_treesit (void)
+ 
+   DEFSYM (Qnot_found, "not-found");
+   DEFSYM (Qsymbol_error, "symbol-error");
+-  DEFSYM (Qversion_mismatch, "version-mismatch");
++  DEFSYM (Qlang_version_mismatch, "language-grammar-version-mismatch");
+ 
+   DEFSYM (Qtreesit_error, "treesit-error");
+   DEFSYM (Qtreesit_query_error, "treesit-query-error");
+-- 
+2.51.0
+
+From d587ce8c65a0e22ab0a63ef2873a3dfcfbeba166 Mon Sep 17 00:00:00 2001
+From: Eli Zaretskii <eliz@gnu.org>
+Date: Fri, 17 Oct 2025 14:15:41 +0300
+Subject: [PATCH] Support Tree-sitter version 0.26 and later
+
+* src/treesit.c (init_treesit_functions)
+[TREE_SITTER_LANGUAGE_VERSION >= 15]: Define prototype for, and
+load 'ts_language_abi_version' instead of the deprecated (and
+removed in tree-sitter 0.26) 'ts_language_version'.
+(ts_language_abi_version) [TREE_SITTER_LANGUAGE_VERSION >= 15]:
+Define on WINDOWSNT, instead of 'ts_language_version'.
+(treesit_language_abi_version): New compatibility function.
+(treesit_load_language, Ftreesit_language_abi_version): Use
+'treesit_language_abi_version' instead of 'ts_language_version'.
+(Bug#79627)
+---
+ src/treesit.c | 36 ++++++++++++++++++++++++++++++++++--
+ 1 file changed, 34 insertions(+), 2 deletions(-)
+
+diff --git a/src/treesit.c b/src/treesit.c
+index bf982de580b..69751b5ea10 100644
+--- a/src/treesit.c
++++ b/src/treesit.c
+@@ -35,7 +35,11 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
+ # include "w32common.h"
+ 
+ /* In alphabetical order.  */
++#if TREE_SITTER_LANGUAGE_VERSION >= 15
++#undef ts_language_abi_version
++#else
+ #undef ts_language_version
++#endif
+ #undef ts_node_child
+ #undef ts_node_child_by_field_name
+ #undef ts_node_child_count
+@@ -90,7 +94,11 @@ along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.  */
+ #undef ts_tree_get_changed_ranges
+ #undef ts_tree_root_node
+ 
++#if TREE_SITTER_LANGUAGE_VERSION >= 15
++DEF_DLL_FN (uint32_t, ts_language_abi_version, (const TSLanguage *));
++#else
+ DEF_DLL_FN (uint32_t, ts_language_version, (const TSLanguage *));
++#endif
+ DEF_DLL_FN (TSNode, ts_node_child, (TSNode, uint32_t));
+ DEF_DLL_FN (TSNode, ts_node_child_by_field_name,
+ 	    (TSNode, const char *, uint32_t));
+@@ -167,7 +175,11 @@ init_treesit_functions (void)
+   if (!library)
+     return false;
+ 
++#if TREE_SITTER_LANGUAGE_VERSION >= 15
++  LOAD_DLL_FN (library, ts_language_abi_version);
++#else
+   LOAD_DLL_FN (library, ts_language_version);
++#endif
+   LOAD_DLL_FN (library, ts_node_child);
+   LOAD_DLL_FN (library, ts_node_child_by_field_name);
+   LOAD_DLL_FN (library, ts_node_child_count);
+@@ -225,7 +237,11 @@ init_treesit_functions (void)
+   return true;
+ }
+ 
++#if TREE_SITTER_LANGUAGE_VERSION >= 15
++#define ts_language_abi_version fn_ts_language_abi_version
++#else
+ #define ts_language_version fn_ts_language_version
++#endif
+ #define ts_node_child fn_ts_node_child
+ #define ts_node_child_by_field_name fn_ts_node_child_by_field_name
+ #define ts_node_child_count fn_ts_node_child_count
+@@ -711,6 +727,22 @@ treesit_load_language_push_for_each_suffix (Lisp_Object lib_base_name,
+     }
+ }
+ 
++/* This function is a compatibility shim.  Tree-sitter 0.25 introduced
++   ts_language_abi_version as a replacement for ts_language_version, and
++   tree-sitter 0.26 removed ts_language_version.  Here we use the fact
++   that 0.25 bumped TREE_SITTER_LANGUAGE_VERSION to 15, to use the new
++   function instead of the old one, when Emacs is compiled against
++   tree-sitter version 0.25 or newer.  */
++static uint32_t
++treesit_language_abi_version (const TSLanguage *ts_lang)
++{
++#if TREE_SITTER_LANGUAGE_VERSION >= 15
++  return ts_language_abi_version (ts_lang);
++#else
++  return ts_language_version (ts_lang);
++#endif
++}
++
+ /* Load the dynamic library of LANGUAGE_SYMBOL and return the pointer
+    to the language definition.
+ 
+@@ -832,7 +864,7 @@ treesit_load_language (Lisp_Object language_symbol,
+ 	build_string ("%s's ABI version is %d, but supported versions are %d-%d");
+       Lisp_Object formatted_msg =
+ 	CALLN (Fformat_message, fmt, loaded_lib,
+-	       make_fixnum (ts_language_version (lang)),
++	       make_fixnum (treesit_language_abi_version (lang)),
+ 	       make_fixnum (TREE_SITTER_MIN_COMPATIBLE_LANGUAGE_VERSION),
+ 	       make_fixnum (TREE_SITTER_LANGUAGE_VERSION));
+       *signal_symbol = Qtreesit_load_language_error;
+@@ -914,7 +946,7 @@ Return nil if a grammar library for LANGUAGE is not available.  */)
+       TSLanguage *ts_language = lang.lang;
+       if (ts_language == NULL)
+ 	return Qnil;
+-      uint32_t version =  ts_language_version (ts_language);
++      uint32_t version =  treesit_language_abi_version (ts_language);
+       return make_fixnum((ptrdiff_t) version);
+     }
+ }
+-- 
+2.51.0
+

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 20 08:37:05 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-30.2-silent.patch
+  * To silent the useless warning on memmove
+- Add patch emacs-30.2-tree-sitter-0.26.8.patch
+  * Make it build with tree-sitter-0.26.8 security update (boo#1262007)
+
+-------------------------------------------------------------------
 Sat Feb 28 18:48:54 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Add macro to add Emacs packages to load-path

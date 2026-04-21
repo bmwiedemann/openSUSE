@@ -242,6 +242,7 @@ Patch6:         emacs-30.1-silent.patch
 Patch7:         emacs-24.1-ps-mule.patch
 Patch8:         emacs-24.4-nonvoid.patch
 Patch9:         desktop.patch
+Patch10:        emacs-30.2-silent.patch
 Patch12:        emacs-24.3-x11r7.patch
 Patch15:        emacs-24.3-iconic.patch
 Patch16:        emacs-24.4-flyspell.patch
@@ -256,6 +257,7 @@ Patch53:        0013-Rename-to-inhibit-automatic-native-compilation.patch
 Patch55:        0015-Change-native-comp-async-jobs-number-default-to-1.patch
 Patch56:        0016-Change-native-comp-async-report-warnings-errors-to-s.patch
 Patch57:        emacs-30.2-fix-zoom.patch
+Patch58:        emacs-30.2-tree-sitter-0.26.8.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -434,6 +436,7 @@ and most assembler-like syntaxes.
 %patch -P55 -p1
 %patch -P56 -p1
 %patch -P57 -p1
+%patch -P58 -p1
 %patch -P1  -p0 -b .xauth
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc
@@ -445,6 +448,7 @@ and most assembler-like syntaxes.
 %patch -P7  -p0 -b .psmu
 %patch -P8  -p0 -b .nvoid
 %patch -P9  -p0
+%patch -P10 -p0
 %patch -P12 -p0 -b .x11r7
 %patch -P15 -p0 -b .iconic
 %patch -P16 -p0 -b .flyspell

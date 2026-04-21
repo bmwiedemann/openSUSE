@@ -1,0 +1,17 @@
+---
+ src/character.c |    3 +++
+ 1 file changed, 3 insertions(+)
+
+--- src/character.c
++++ src/character.c	2026-04-20 08:49:09.653698091 +0000
+@@ -617,7 +617,10 @@ str_as_multibyte (unsigned char *str, pt
+   to = p;
+   nbytes = endp - p;
+   endp = str + len;
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wstringop-overflow"
+   memmove (endp - nbytes, p, nbytes);
++#pragma GCC diagnostic pop
+   p = endp - nbytes;
+ 
+   if (nbytes >= MAX_MULTIBYTE_LENGTH)
