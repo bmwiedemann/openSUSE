@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 31 07:23:24 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 0.19.0
+  * Make installation command be better 
+  * Fix short help with analyzeCmd and diffCmd 
+  * add SECURITY.md 
+  * Wrong diff output 
+  * Extract to tmpdir without characters that are illegal on Windows 
+  * chore: slice loop replace 
+  * Update GitHub Action for Modern Syntax 
+  * update go to 1.21, remove vendor dir 
+  * Bump github.com/opencontainers/runc from 0.1.1 to 1.1.5 
+  * Bring repository up to date 
+  * mass update versions 
+
+-------------------------------------------------------------------
 Thu Jul 22 14:34:45 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Update to 0.17.0:
