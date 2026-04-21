@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Apr 19 21:26:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0 (CVE-2026-41066):
+  * This release fixes a possible external entity injection (XXE)
+    vulnerability in ``iterparse()`` and the ``ETCompatXMLParser``.
+  * GH#486: The HTML ARIA accessibility attributes were added to
+    the set of safe attributes in ``lxml.html.defs``.
+  * The default chunk size for reading from file-likes in
+    ``iterparse()`` is now configurable with a new ``chunk_size``
+    argument.
+  * LP#2148019: Spurious MemoryError during namespace cleanup.
+  * Several out of memory error cases now raise ``MemoryError``
+    that were not handled before.
+  * Slicing with large step values (outside of ``+/-
+    sys.maxsize``) could trigger undefined C behaviour.
+  * LP#2125399: Some failing tests were fixed or disabled in
+    PyPy.
+  * LP#2138421: Memory leak in error cases when setting the
+    ``public_id`` or ``system_url`` of a document.
+  * Memory leak in case of a memory allocation failure when
+    copying document subtrees.
+  * When mapping an XPath result to Python failed, the result
+    memory could leak.
+  * When preparing an XSLT transform failed, the XSLT parameter
+    memory could leak.
+
+-------------------------------------------------------------------
 Wed Sep 24 10:12:40 UTC 2025 - pgajdos@suse.com
 
 - version update to 6.0.2

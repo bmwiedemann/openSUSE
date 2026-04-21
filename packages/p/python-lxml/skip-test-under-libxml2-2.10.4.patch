@@ -1,8 +1,8 @@
-Index: lxml-5.1.0/src/lxml/tests/test_etree.py
+Index: lxml-6.1.0/src/lxml/tests/test_etree.py
 ===================================================================
---- lxml-5.1.0.orig/src/lxml/tests/test_etree.py
-+++ lxml-5.1.0/src/lxml/tests/test_etree.py
-@@ -3256,6 +3256,7 @@ class ETreeOnlyTestCase(HelperTestCase):
+--- lxml-6.1.0.orig/src/lxml/tests/test_etree.py
++++ lxml-6.1.0/src/lxml/tests/test_etree.py
+@@ -3327,6 +3327,7 @@ class ETreeOnlyTestCase(HelperTestCase):
          self.assertEqual(re, e.nsmap)
          self.assertEqual(r,  s.nsmap)
  

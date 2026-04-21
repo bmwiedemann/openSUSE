@@ -1212,4 +1212,34 @@ Send to Staging:E.
     <comment></comment>
     <requestid>1306904</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>e44de675ba34122e69b5dc5cc4da6113</srcmd5>
+    <version>6.1.0</version>
+    <time>1776768124</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.1.0 (CVE-2026-41066):
+  * This release fixes a possible external entity injection (XXE)
+    vulnerability in ``iterparse()`` and the ``ETCompatXMLParser``.
+  * GH#486: The HTML ARIA accessibility attributes were added to
+    the set of safe attributes in ``lxml.html.defs``.
+  * The default chunk size for reading from file-likes in
+    ``iterparse()`` is now configurable with a new ``chunk_size``
+    argument.
+  * LP#2148019: Spurious MemoryError during namespace cleanup.
+  * Several out of memory error cases now raise ``MemoryError``
+    that were not handled before.
+  * Slicing with large step values (outside of ``+/-
+    sys.maxsize``) could trigger undefined C behaviour.
+  * LP#2125399: Some failing tests were fixed or disabled in
+    PyPy.
+  * LP#2138421: Memory leak in error cases when setting the
+    ``public_id`` or ``system_url`` of a document.
+  * Memory leak in case of a memory allocation failure when
+    copying document subtrees.
+  * When mapping an XPath result to Python failed, the result
+    memory could leak.
+  * When preparing an XSLT transform failed, the XSLT parameter
+    memory could leak.</comment>
+    <requestid>1348083</requestid>
+  </revision>
 </revisionlist>

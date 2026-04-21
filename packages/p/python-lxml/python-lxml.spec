@@ -1,7 +1,7 @@
 #
 # spec file for package python-lxml
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lxml
-Version:        6.0.2
+Version:        6.1.0
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -29,7 +29,7 @@ Source99:       python-lxml.rpmlintrc
 # PATCH-FIX-OPENSUSE Skip a test under libxml2 2.10.4+
 # https://bugs.launchpad.net/lxml/+bug/2016939
 Patch1:         skip-test-under-libxml2-2.10.4.patch
-BuildRequires:  %{python_module Cython >= 3.0.7}
+BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module pip}
@@ -113,7 +113,7 @@ rm -v src/lxml/html/tests/test_html5parser.py
 
 %files %{python_files}
 %license LICENSES.txt
-%doc CHANGES.txt CREDITS.txt README.rst
+%doc CHANGES.txt README.rst
 %{python_sitearch}/lxml/
 %{python_sitearch}/lxml-%{version}.dist-info
 %exclude %{python_sitearch}/lxml/*.h
